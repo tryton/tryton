@@ -93,7 +93,7 @@
         dialog.login_input = jQuery('<input/>', {
             'class': 'form-control',
             'id': 'login-login',
-            'placeholder': Sao.i18n.gettext('Login')
+            'placeholder': Sao.i18n.gettext('User name')
         });
         dialog.body.append(jQuery('<div/>', {
             'class': 'form-group'
@@ -108,7 +108,7 @@
         }).append(jQuery('<label/>', {
             'class': 'control-label',
             'for': 'login-login'
-        }).append(Sao.i18n.gettext('Login')))
+        }).append(Sao.i18n.gettext('User name')))
         .append(dialog.login_input)
         );
         dialog.button = jQuery('<button/>', {
