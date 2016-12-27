@@ -1,10 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.tools import grouped_slice
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
+from trytond.model import fields
+from trytond.transaction import Transaction
+from trytond.pyson import Eval
 
-__all__ = ['Purchase']
+__all__ = ['Purchase', 'PurchaseLine']
 
 
 class Purchase:
@@ -22,20 +24,26 @@ class Purchase:
 
     @classmethod
     def delete(cls, purchases):
-        pool = Pool()
-        PurchaseRequest = pool.get('purchase.request')
-
-        purchase_lines = [pl.id
-            for purchase in purchases for pl in purchase.lines]
-        for sub_lines in grouped_slice(purchase_lines):
-            requests = PurchaseRequest.search([
-                    ('purchase_line', 'in', list(sub_lines)),
-                    ],
-                limit=1)
-            if requests:
-                purchase = requests[0].purchase
-                cls.raise_user_error('delete_purchase_request', {
-                        'purchase': purchase.rec_name,
-                        })
-
+        cls.check_delete_purchase_request(purchases)
         super(Purchase, cls).delete(purchases)
+
+    def check_delete_purchase_request(cls, purchases):
+        with Transaction().set_context(_check_access=False):
+            purchases = cls.browse(purchases)
+        for purchase in purchases:
+            for line in purchase.lines:
+                if line.requests:
+                    cls.raise_user_error('delete_purchase_request', {
+                            'purchase': purchase.rec_name,
+                            })
+
+
+class PurchaseLine:
+    __metaclass__ = PoolMeta
+    __name__ = 'purchase.line'
+
+    requests = fields.One2Many(
+        'purchase.request', 'purchase_line', "Requests", readonly=True,
+        states={
+            'invisible': ~Eval('requests'),
+            })

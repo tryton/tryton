@@ -13,6 +13,7 @@ def register():
         HandlePurchaseCancellationExceptionStart,
         CreatePurchaseAskParty,
         Purchase,
+        PurchaseLine,
         module='purchase_request', type_='model')
     Pool.register(
         CreatePurchase,

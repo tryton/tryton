@@ -357,6 +357,7 @@ class CreatePurchase(Wizard):
         pool = Pool()
         Request = pool.get('purchase.request')
         Purchase = pool.get('purchase.purchase')
+        Line = pool.get('purchase.line')
         Date = pool.get('ir.date')
 
         request_ids = Transaction().context['active_ids']
@@ -396,6 +397,8 @@ class CreatePurchase(Wizard):
         keyfunc = partial(self._group_purchase_key, requests)
         requests = sorted(requests, key=keyfunc)
 
+        purchases = []
+        lines = []
         for key, grouped_requests in groupby(requests, key=keyfunc):
             grouped_requests = list(grouped_requests)
             try:
@@ -409,17 +412,17 @@ class CreatePurchase(Wizard):
             purchase = Purchase(purchase_date=purchase_date)
             for f, v in key:
                 setattr(purchase, f, v)
-            purchase.save()
+            purchases.append(purchase)
             for line_key, line_requests in groupby(
                     grouped_requests, key=self._group_purchase_line_key):
                 line_requests = list(line_requests)
                 line = self.compute_purchase_line(
                     line_key, line_requests, purchase)
                 line.purchase = purchase
-                line.save()
-                Request.write(line_requests, {
-                        'purchase_line': line.id,
-                        })
+                line.requests = line_requests
+                lines.append(line)
+        Purchase.save(purchases)
+        Line.save(lines)
         return 'end'
 
     @staticmethod
