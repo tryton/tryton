@@ -13,10 +13,6 @@ __all__ = ['TreeViewControl']
 
 
 class TreeViewControl(gtk.TreeView):
-    __gsignals__ = {
-        'button-press-event': 'override',
-        'key-press-event': 'override',
-        }
 
     def do_button_press_event(self, event):
         self.grab_focus()  # grab focus because it doesn't whith CONTROL MASK
