@@ -115,7 +115,8 @@ class ViewBoard(object):
     def _parse_group(self, node, container, attributes):
         group = self.parse(node)
         group.table.set_homogeneous(attributes.get('homogeneous', False))
-        frame = gtk.Frame(attributes.get('string'))
+        frame = gtk.Frame()
+        frame.set_label(attributes.get('string'))
         if not attributes.get('string'):
             frame.set_shadow_type(gtk.SHADOW_NONE)
         frame.set_border_width(0)

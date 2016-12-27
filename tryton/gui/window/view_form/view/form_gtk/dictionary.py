@@ -319,7 +319,8 @@ class DictWidget(Widget):
         self.buttons = {}
         self.rows = {}
 
-        self.widget = gtk.Frame(attrs.get('string', ''))
+        self.widget = gtk.Frame()
+        self.widget.set_label(attrs.get('string', ''))
         self.widget.set_shadow_type(gtk.SHADOW_OUT)
 
         vbox = gtk.VBox()
