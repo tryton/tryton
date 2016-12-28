@@ -67,7 +67,7 @@ class ResourceMixin(ModelSQL, ModelView):
         with Transaction().set_context(_check_access=False):
             for record in cls.browse(ids):
                 if record.resource:
-                    model_names.add(record.resource.__name__)
+                    model_names.add(str(record.resource).split(',')[0])
         for model_name in model_names:
             ModelAccess.check(model_name, mode=mode)
 
