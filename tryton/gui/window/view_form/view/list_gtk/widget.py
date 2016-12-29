@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-
+import datetime
 import os
 import tempfile
 import gtk
@@ -387,7 +387,9 @@ class Time(Date):
             return ''
         value = record[self.attrs['name']].get_client(record)
         if value is not None:
-            return datetime_strftime(value, self.renderer.props.format)
+            if isinstance(value, datetime.datetime):
+                value = value.time()
+            return value.strftime(self.renderer.props.format)
         else:
             return ''
 
