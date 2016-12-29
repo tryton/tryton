@@ -138,6 +138,11 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
             'country': self.country.name if self.country else '',
             'country_code': self.country.code if self.country else '',
             }
+
+        # Map invalid substitutions district* to subdivision* on 4.2.
+        substitutions['district'] = substitutions['subdivision']
+        substitutions['district_code'] = substitutions['subdivision_code']
+
         if context.get('address_from_country') == self.country:
             substitutions['country'] = ''
         if context.get('address_with_party', False):
