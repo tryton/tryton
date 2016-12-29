@@ -43,7 +43,7 @@ def db_list(host, port):
     except Fault, exception:
         if exception.faultCode == 'AccessDenied':
             logging.getLogger(__name__).debug('AccessDenied')
-            return None
+            return []
         else:
             logging.getLogger(__name__).debug(repr(None))
             return None

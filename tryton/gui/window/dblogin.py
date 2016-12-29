@@ -314,10 +314,12 @@ class DBListEditor(object):
             if index == -1:
                 index = 0
             self.database_combo.set_active(index)
-            dbs = len(dbs)
             self.database_entry.set_text(self.current_database
                 if self.current_database else '')
-            self.database_combo.show()
+            if dbs:
+                self.database_combo.show()
+            else:
+                self.database_entry.show()
         self.db_cache = (host, port, self.current_profile['name'])
 
         self.add_button.set_sensitive(True)
