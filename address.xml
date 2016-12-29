@@ -268,7 +268,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
-${district}
+${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -297,7 +297,7 @@ ${COUNTRY}</field>
 ${name}
 ${street}
 ${CITY} ${zip}
-${district}
+${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -307,7 +307,7 @@ ${COUNTRY}</field>
 ${name}
 ${street}
 ${city} ${zip}
-${district}
+${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -317,7 +317,7 @@ ${COUNTRY}</field>
 ${name}
 ${city}
 ${street}
-${district}
+${subdivision}
 ${zip}
 ${COUNTRY}</field>
         </record>
@@ -327,7 +327,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
-${district}
+${subdivision}
 ${zip}
 ${COUNTRY}</field>
         </record>
@@ -355,7 +355,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
-${zip} ${city} ${DISTRICT_CODE}
+${zip} ${city} ${SUBDIVISION_CODE}
 ${COUNTRY}</field>
         </record>
 
@@ -386,7 +386,7 @@ ${COUNTRY}</field>
 ${name}
 ${street}
 ${city}
-${district}
+${subdivision}
 ${COUNTRY_CODE}-${ZIP}
 ${COUNTRY}</field>
         </record>
@@ -472,7 +472,7 @@ ${name}
 ${street}
 ${city}
 ${zip}
-${district}
+${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -482,7 +482,7 @@ ${COUNTRY}</field>
 ${name}
 ${street}
 ${city}
-${district}
+${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -592,7 +592,7 @@ ${COUNTRY}</field>
             <field name="country" ref="country.kr"/>
             <field name="language" ref="ir.lang_kp_KR"/>
             <field name="format_">${COUNTRY}
-${district}${city}${street}
+${subdivision}${city}${street}
 ${zip}</field>
         </record>
         -->
@@ -657,7 +657,7 @@ ${name}${party_name}</field>
             <field name="country" ref="country.tw"/>
             <field name="format_">${name} ${party_name}
 ${street}
-${city}, ${district} ${zip}
+${city}, ${subdivision} ${zip}
 ${COUNTRY}</field>
         </record>
 
@@ -666,7 +666,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
-${district}
+${subdivision}
 ${COUNTRY}
 ${zip}</field>
         </record>
@@ -676,7 +676,7 @@ ${zip}</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
-${zip} ${city} ${district}
+${zip} ${city} ${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -686,7 +686,7 @@ ${COUNTRY}</field>
 ${name}
 ${street}
 ${city}
-${district}
+${subdivision}
 ${zip}
 ${COUNTRY}</field>
         </record>
@@ -715,7 +715,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name} (${name})
 ${street}
 ${city}
-${district}
+${subdivision}
 ${COUNTRY}</field>
         </record>
 
