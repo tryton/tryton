@@ -36,6 +36,7 @@
                         for (j=0, c_len=child.children.length; j < c_len; j++) {
                             xfield = get_attributes(child.children[j]);
                             field = this.screen.model.fields[xfield.name];
+                            xfield.type = field.description.type;
                             if (!(xfield.string || '')) {
                                 xfield.string = field.description.string;
                             }
@@ -109,6 +110,10 @@
                 return function () {
                     record = group[index];
                     var x = record.field_get_client(this.xfield.name);
+                    // c3 does not support moment
+                    if (x && (x.isDate || x.isDateTime)) {
+                        x = x.toDate();
+                    }
                     data.columns[0][index + 1] = x;
                     this._add_id(x, record.id);
 
@@ -165,13 +170,10 @@
             });
         },
         _add_id: function(key, id) {
-            // c3 do not use the moment instance but its date repr when calling
-            // onclick
-            var id_x = (key.isDate || key.isDateTime) ? key._d : key;
-            if (!(id_x in this.ids)) {
-                this.ids[id_x] = [];
+            if (!(key in this.ids)) {
+                this.ids[key] = [];
             }
-            this.ids[id_x].push(id);
+            this.ids[key].push(id);
         },
         display: function(group) {
             var update_prm = this.update_data(group);
@@ -189,22 +191,12 @@
             c3_config.data.x = 'labels';
             c3_config.data.onclick = this.action.bind(this);
 
-            var i, len;
-            var found, labels;
-            for (i = 0, len = data.columns.length; i < len; i++) {
-                labels = data.columns[i];
-                if (labels[0] == 'labels') {
-                    found = true;
-                    break;
-                }
-            }
-            if (found && (labels.length > 1) &&
-                    (labels[1] && (labels[1].isDateTime || labels[1].isDate)))
-            {
+            var type = this.xfield.type;
+            if ((type == 'date') || (type == 'datetime')) {
                 var format_func, date_format, time_format;
                 date_format = this.view.screen.context.date_format || '%x';
                 time_format = '%X';
-                if (labels[1].isDateTime) {
+                if (type == 'datetime') {
                     format_func = function(dt) {
                         return Sao.common.format_datetime(date_format,
                                 time_format, moment(dt));
@@ -222,8 +214,7 @@
                         }
                     }
                 };
-            }
-            else {
+            } else {
                 c3_config.axis = {
                     x: {
                         type: 'category',
@@ -284,12 +275,12 @@
             // Pie chart do not support axis definition.
             delete config.axis;
             delete config.data.x;
-            var format_func, date_format, datetime_format;
-            if ((labels.length > 0) &&
-                    (labels[0].isDateTime || labels[0].isDate)) {
-                date_format = this.view.screen.context.date_format || '%x';
-                datetime_format = date_format + ' %X';
-                if (labels[1].isDateTime) {
+            var format_func;
+            var type = this.xfield.type;
+            if ((type == 'date') || (type == 'datetime')) {
+                var date_format = this.view.screen.context.date_format || '%x';
+                var datetime_format = date_format + ' %X';
+                if (type == 'datetime') {
                     format_func = function(dt) {
                         return Sao.common.format_datetime(datetime_format, dt);
                     };
@@ -314,20 +305,17 @@
             return config;
         },
         _add_id: function(key, id) {
-            var id_x = key;
-            if (key.isDateTime || key.isDate) {
+            var type = this.xfield.type;
+            if ((type == 'date') || (type == 'datetime')) {
                 var date_format = this.view.screen.context.date_format || '%x';
                 var datetime_format = date_format + ' %X';
-                if (key.isDateTime) {
-                    id_x = Sao.common.format_datetime(datetime_format, key);
+                if (type == 'datetime') {
+                    key = Sao.common.format_datetime(datetime_format, key);
                 } else {
-                    id_x = Sao.common.format_date(date_format, key);
+                    key = Sao.common.format_date(date_format, key);
                 }
             }
-            if (!(id_x in this.ids)) {
-                this.ids[id_x] = [];
-            }
-            this.ids[id_x].push(id);
+            Sao.View.Graph.Pie._super._add_id.call(this, key, id);
         },
         _action_key: function(data) {
             return data.id;
