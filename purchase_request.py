@@ -10,7 +10,7 @@ class PurchaseRequest:
     __name__ = 'purchase.request'
 
     @classmethod
-    def generate_requests(cls):
+    def generate_requests(cls, *args, **kwargs):
         pool = Pool()
         Forecast = pool.get('stock.forecast')
         Date = pool.get('ir.date')
@@ -22,5 +22,5 @@ class PurchaseRequest:
                 ('state', '=', 'done'),
                 ])
         Forecast.create_moves(forecasts)
-        super(PurchaseRequest, cls).generate_requests()
+        super(PurchaseRequest, cls).generate_requests(*args, **kwargs)
         Forecast.delete_moves(forecasts)
