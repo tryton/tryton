@@ -728,6 +728,64 @@ class StockTestCase(ModuleTestCase):
                 states[state].sort()
             self.assertEqual(states, result, msg=msg)
 
+    @with_transaction()
+    def test_assign_try_chained(self):
+        "Test Move assign_try chained"
+        pool = Pool()
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+
+        uom, = Uom.search([('name', '=', 'Meter')])
+        template = Template(
+            name='Test Move.assign_try',
+            type='goods',
+            list_price=Decimal(1),
+            cost_price=Decimal(0),
+            cost_price_method='fixed',
+            default_uom=uom,
+            )
+        template.save()
+        product = Product(template=template.id)
+        product.save()
+
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        storage2, = Location.copy([storage])
+        storage3, = Location.copy([storage])
+
+        company = create_company()
+        with set_company(company):
+            move, = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 1,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+            Move.do([move])
+
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 1,
+                        'from_location': from_.id,
+                        'to_location': to.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        } for from_, to in [
+                        (storage, storage2),
+                        (storage2, storage3)]])
+
+            self.assertFalse(Move.assign_try(moves))
+            self.assertEqual([m.state for m in moves], ['assigned', 'draft'])
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

@@ -814,7 +814,6 @@ class Move(Workflow, ModelSQL, ModelView):
                 if move.state == 'staging':
                     success = False
                 continue
-            to_location = move.to_location
             # Keep location order for pick_product
             location_qties = OrderedDict()
             if with_childs:
@@ -865,9 +864,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         move.product.default_uom, round=False)
 
                 from_key = get_key(move, from_location)
-                to_key = get_key(move, to_location)
                 pbl[from_key] = pbl.get(from_key, 0.0) - qty_default_uom
-                pbl[to_key] = pbl.get(to_key, 0.0) + qty_default_uom
         if to_write:
             cls.write(*to_write)
         if to_assign:
