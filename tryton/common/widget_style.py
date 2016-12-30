@@ -18,4 +18,5 @@ if gtk_version == 2:
             widget.modify_bg(gtk.STATE_NORMAL, style.bg[gtk.STATE_INSENSITIVE])
 else:
     def set_widget_style(widget, editable):
-        widget.set_css_name('editable' if editable else 'readonly')
+        # TODO
+        pass
