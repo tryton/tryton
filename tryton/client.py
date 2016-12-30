@@ -104,24 +104,6 @@ if os.environ.get('GTK_VERSION', '2').startswith('3'):
     Pango.SCALE_LARGE = 1.2
     Pango.SCALE_X_LARGE = 1.2 * 1.2
     Pango.SCALE_XX_LARGE = 1.2 * 1.2 * 1.2
-
-    style_provider = Gtk.CssProvider()
-    css = """
-    .editable {
-        background-color: @theme_base_color;
-        color: @theme_text_color;
-    }
-    .readonly {
-        background-color: @insensitive_bg_color;
-        color: @insensitive_fg_color;
-    }
-    """
-    style_provider.load_from_data(css)
-    Gtk.StyleContext.add_provider_for_screen(
-        Gdk.Screen.get_default(),
-        style_provider,
-        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-
 else:
     import pygtk
     pygtk.require('2.0')
