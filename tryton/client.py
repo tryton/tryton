@@ -41,6 +41,9 @@ if os.environ.get('GTK_VERSION', '2').startswith('3'):
     Gtk.PROGRESS_BOTTOM_TO_TOP = (Gtk.Orientation.VERTICAL, True)
     Gtk.PROGRESS_TOP_TO_BOTTOM = (Gtk.Orientation.VERTICAL, False)
 
+    Gtk.CLIPBOARD_PRIMARY = Gdk.Atom.intern('PRIMARY', True)
+    Gtk.CLIPBOARD_CLIPBOARD = Gdk.Atom.intern('CLIPBOARD', True)
+
     orig_tree_view_column_set_cell_data_func = (
         Gtk.TreeViewColumn.set_cell_data_func)
 
@@ -114,6 +117,9 @@ if not hasattr(gtk, 'TreePath'):
 if not hasattr(gtk, 'TargetEntry'):
     gtk.TargetEntry = lambda *a: a
     gtk.TargetEntry.new = lambda *a: a
+if not hasattr(gtk, 'CLIPBOARD_PRIMARY'):
+    gtk.CLIPBOARD_PRIMARY = 'PRIMARY'
+    gtk.CLIPBOARD_CLIPBOARD = 'CLIPBOARD'
 
 import gobject
 try:

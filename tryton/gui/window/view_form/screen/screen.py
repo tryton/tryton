@@ -1132,7 +1132,7 @@ class Screen(SignalEvent):
         elif action == 'reload context':
             RPCContextReload()
 
-    def get_url(self):
+    def get_url(self, name=''):
         query_string = []
         if self.domain:
             query_string.append(('domain', json.dumps(self.domain,
@@ -1140,6 +1140,8 @@ class Screen(SignalEvent):
         if self.context:
             query_string.append(('context', json.dumps(self.context,
                         cls=JSONEncoder)))
+        if name:
+            query_string.append(('name', json.dumps(name)))
         path = [rpc._DATABASE, 'model', self.model_name]
         view_ids = [v.view_id for v in self.views] + self.view_ids
         if self.current_view.view_type != 'form':

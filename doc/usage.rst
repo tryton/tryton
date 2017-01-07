@@ -110,8 +110,7 @@ Figure: Tryton client application::
                      |             | |                                               ||
                      |             | |                                               ||
                      |             | |                                               ||
-                     |             | |______________________________________________ ||
-  URL                |_____________| |tryton://______________________________________||
+                     |_____________| |_______________________________________________||
                      |________________________________________________________________|
 
 
@@ -540,6 +539,11 @@ E-Mail...:
 
 Print...:
   Shows all print actions for the actual view, model and record.
+
+.. _Toolbar-Copy-URL:
+
+Copy URL:
+   Copy the URL of the form into the clipboard.
 
 .. _Toolbar-Export_Data:
 

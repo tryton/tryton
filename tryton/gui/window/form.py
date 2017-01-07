@@ -85,6 +85,9 @@ class Form(SignalEvent, TabContent):
         (_('_Print...'), 'tryton-print', 'sig_print',
             '<tryton>/Form/Print'),
         (None,) * 4,
+        (_('Copy _URL...'), 'tryton-web-browser', 'sig_copy_url',
+            '<tryton>/Form/Copy URL'),
+        (None,) * 4,
         (_('_Export Data...'), 'tryton-save-as', 'sig_save_as',
             '<tryton>/Form/Export Data'),
         (_('_Import Data...'), None, 'sig_import',
@@ -126,11 +129,6 @@ class Form(SignalEvent, TabContent):
                 + self.menu_def[11][3:])
 
         self.create_tabcontent()
-
-        self.url_entry = url_entry = gtk.Entry()
-        url_entry.show()
-        url_entry.set_editable(False)
-        self.widget.pack_start(url_entry, False, False)
 
         self.set_buttons_sensitive()
 
@@ -449,6 +447,10 @@ class Form(SignalEvent, TabContent):
         if self.buttons['relate'].props.sensitive:
             self.buttons['relate'].props.active = True
 
+    def sig_copy_url(self, widget):
+        if self.buttons['copy_url'].props.sensitive:
+            self.buttons['copy_url'].props.active = True
+
     def sig_search(self, widget):
         search_container = self.screen.screen_container
         if hasattr(search_container, 'search_entry'):
@@ -492,7 +494,6 @@ class Form(SignalEvent, TabContent):
         self.status_label.set_text(msg)
         self.message_info()
         self.activate_save()
-        self.url_entry.set_text(self.screen.get_url())
 
     def _record_modified(self, screen, signal_data):
         # As it is called via idle_add, the form could have been destroyed in
@@ -585,6 +586,23 @@ class Form(SignalEvent, TabContent):
                 tbutton = gtk.SeparatorToolItem()
             gtktoolbar.insert(tbutton, -1)
 
+        gtktoolbar.insert(gtk.SeparatorToolItem(), -1)
+
+        url_button = gtk.ToggleToolButton('tryton-web-browser')
+        url_button.set_label(_('_Copy URL'))
+        url_button.set_use_underline(True)
+        self.tooltips.set_tip(
+            url_button, _('Copy URL into clipboard'))
+        url_button._menu = url_menu = gtk.Menu()
+        url_menuitem = gtk.MenuItem()
+        url_menuitem.connect('activate', self.url_copy)
+        url_menu.add(url_menuitem)
+        url_menu.show_all()
+        url_menu.connect('deactivate', self._popup_menu_hide, url_button)
+        url_button.connect('toggled', self.url_set, url_menuitem)
+        url_button.connect('toggled', self.action_popup)
+        self.buttons['copy_url'] = url_button
+        gtktoolbar.insert(url_button, -1)
         return gtktoolbar
 
     def _create_popup_menu(self, widget, keyword, actions, special_action):
@@ -659,6 +677,19 @@ class Form(SignalEvent, TabContent):
                             }), func)
                 menuitem._update_action = True
                 menu.add(menuitem)
+
+    def url_copy(self, menuitem):
+        url = self.screen.get_url(self.name)
+        for selection in [gtk.CLIPBOARD_PRIMARY, gtk.CLIPBOARD_CLIPBOARD]:
+            clipboard = gtk.clipboard_get(selection)
+            clipboard.set_text(url, -1)
+
+    def url_set(self, button, menuitem):
+        url = self.screen.get_url(self.name)
+        size = 80
+        if len(url) > size:
+            url = url[:size // 2] + '...' + url[-size // 2:]
+        menuitem.set_label(url)
 
     def set_cursor(self):
         if self.screen:
