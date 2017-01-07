@@ -72,7 +72,7 @@
                     }
                 }.bind(this));
             }.bind(this));
-            var dialog = new Sao.Dialog('', '', 'lg');
+            var dialog = new Sao.Dialog('', 'window-form', 'lg');
             this.el = dialog.modal;
 
             var readonly = (this.screen.attributes.readonly ||
@@ -115,7 +115,9 @@
             }.bind(this));
 
             if (view_type == 'tree') {
-                var menu = jQuery('<div/>').appendTo(dialog.body);
+                var menu = jQuery('<div/>', {
+                    'class': 'window-form-toolbar'
+                }).appendTo(dialog.body);
                 var group = jQuery('<div/>', {
                     'class': 'input-group input-group-sm'
                 }).appendTo(menu);
