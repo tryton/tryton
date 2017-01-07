@@ -175,6 +175,7 @@ class Move:
         MoveLine = pool.get('account.move.line')
         super(Move, cls).post(moves)
         lines = [l for m in moves for l in m.lines]
+        MoveLine.apply_rule(lines)
         MoveLine.set_analytic_state(lines)
         MoveLine.save(lines)
 
@@ -226,6 +227,37 @@ class MoveLine(ModelSQL, ModelView):
     @classmethod
     def default_analytic_state(cls):
         return 'draft'
+
+    @property
+    def rule_pattern(self):
+        return {
+            'company': self.move.company.id,
+            'account': self.account.id,
+            'journal': self.move.journal.id,
+            'party': self.party.id if self.party else None,
+            }
+
+    @classmethod
+    def apply_rule(cls, lines):
+        pool = Pool()
+        Rule = pool.get('analytic_account.rule')
+
+        rules = Rule.search([])
+
+        for line in lines:
+            if line.analytic_lines:
+                continue
+            pattern = line.rule_pattern
+            for rule in rules:
+                if rule.match(pattern):
+                    break
+            else:
+                continue
+            analytic_lines = []
+            for entry in rule.analytic_accounts:
+                analytic_lines.extend(
+                    entry.get_analytic_lines(line, line.move.post_date))
+            line.analytic_lines = analytic_lines
 
     @classmethod
     def set_analytic_state(cls, lines):

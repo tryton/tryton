@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from .account import *
 from .line import *
+from . import rule
 
 
 def register():
@@ -15,6 +16,7 @@ def register():
         Line,
         Move,
         MoveLine,
+        rule.Rule,
         module='analytic_account', type_='model')
     Pool.register(
         OpenChartAccount,

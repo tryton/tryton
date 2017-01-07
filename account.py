@@ -454,7 +454,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
 
     @classmethod
     def _get_origin(cls):
-        return []
+        return ['analytic_account.rule']
 
     @classmethod
     def get_origin(cls):

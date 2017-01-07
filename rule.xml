@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="rule_view_list">
+            <field name="model">analytic_account.rule</field>
+            <field name="type">tree</field>
+            <field name="name">rule_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="rule_view_form">
+            <field name="model">analytic_account.rule</field>
+            <field name="type">form</field>
+            <field name="name">rule_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_rule_form">
+            <field name="name">Analytic Rules</field>
+            <field name="res_model">analytic_account.rule</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_rule_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="rule_view_list"/>
+            <field name="act_window" ref="act_rule_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_rule_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="rule_view_form"/>
+            <field name="act_window" ref="act_rule_form"/>
+        </record>
+        <menuitem parent="menu_analytic_account_configuration"
+            action="act_rule_form" id="menu_rule_form"/>
+
+        <record model="ir.rule.group" id="rule_group_rule">
+            <field name="model"
+                search="[('model', '=', 'analytic_account.rule')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_rule1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_rule"/>
+        </record>
+
+        <record model="ir.model.access" id="access_rule">
+            <field name="model"
+                search="[('model', '=', 'analytic_account.rule')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_rule_account_admin">
+            <field name="model"
+                search="[('model', '=', 'analytic_account.rule')]"/>
+            <field name="group" ref="group_analytic_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+    </data>
+</tryton>

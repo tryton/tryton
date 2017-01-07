@@ -32,11 +32,15 @@ Create fiscal year::
 
 Create chart of accounts::
 
+    >>> Journal = Model.get('account.journal')
     >>> _ = create_chart(company)
     >>> accounts = get_accounts(company)
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
+    >>> journal_revenue, = Journal.find([
+    ...         ('code', '=', 'REV'),
+    ...         ])
 
 Create analytic accounts::
 
@@ -46,6 +50,21 @@ Create analytic accounts::
     >>> analytic_account = AnalyticAccount(root=root, parent=root,
     ...     name='Analytic')
     >>> analytic_account.save()
+    >>> analytic_account2 = AnalyticAccount(root=root, parent=root,
+    ...     name='Analytic 2')
+    >>> analytic_account2.save()
+
+Create analytic rules::
+
+    >>> AnalyticRule = Model.get('analytic_account.rule')
+    >>> rule1 = AnalyticRule(company=company, account=expense)
+    >>> entry, = rule1.analytic_accounts
+    >>> entry.account = analytic_account
+    >>> rule1.save()
+    >>> rule2 = AnalyticRule(company=company, account=revenue)
+    >>> entry, = rule2.analytic_accounts
+    >>> entry.account = analytic_account2
+    >>> rule2.save()
 
 Create parties::
 
@@ -55,14 +74,7 @@ Create parties::
 
 Create Move analytic accounts::
 
-    >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
-    >>> journal_revenue, = Journal.find([
-    ...         ('code', '=', 'REV'),
-    ...         ])
-    >>> journal_cash, = Journal.find([
-    ...         ('code', '=', 'CASH'),
-    ...         ])
     >>> move = Move()
     >>> move.period = period
     >>> move.journal = journal_revenue
@@ -104,3 +116,27 @@ Cancel Move::
     Decimal('42.00')
     >>> analytic_account.debit
     Decimal('42.00')
+
+Create Move without analytic accounts::
+
+    >>> move = Move()
+    >>> move.period = period
+    >>> move.journal = journal_revenue
+    >>> move.date = period.start_date
+    >>> line = move.lines.new()
+    >>> line.account = revenue
+    >>> line.credit = Decimal(73)
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.debit = Decimal(73)
+    >>> line.party = customer
+
+Check analytic lines are created on posting::
+
+    >>> move.click('post')
+    >>> line, = [l for l in move.lines if l.analytic_lines]
+    >>> analytic_line, = line.analytic_lines
+    >>> analytic_line.account == analytic_account2
+    True
+    >>> analytic_line.credit
+    Decimal('73')
