@@ -3,10 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath
-        expr="/form/notebook/page[@id='general']/field[@name='cost_price_method']"
-        position="after">
+        expr="/form/notebook/page[@id='general']/group[@id='checkboxes']"
+        position="inside">
         <label name="purchasable"/>
-        <field name="purchasable"/>
+        <field name="purchasable" xexpand="0" width="25"/>
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']" position="after">
         <page string="Suppliers" id="suppliers">
