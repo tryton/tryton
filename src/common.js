@@ -2612,7 +2612,7 @@
         },
         run: function() {
             if (this.running) {
-                return;
+                return jQuery.when();
             }
             var args = Array.prototype.slice.call(arguments);
             var prm = jQuery.Deferred();
