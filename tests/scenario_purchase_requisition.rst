@@ -186,7 +186,7 @@ Create Purchase order from Request::
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> pr.state
-    'draft'
+    u'draft'
     >>> pr.product == product
     True
     >>> pr.party == supplier
@@ -201,7 +201,7 @@ Create Purchase order from Request::
     True
     >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
     >>> pr.state
-    'purchased'
+    u'purchased'
     >>> requisition.state
     u'processing'
 
@@ -214,7 +214,7 @@ Cancel the purchase order::
     u'cancel'
     >>> pr.reload()
     >>> pr.state
-    'exception'
+    u'exception'
     >>> requisition.reload()
     >>> requisition.state
     u'done'
@@ -225,13 +225,13 @@ Handle request exception::
     ...     'purchase.request.handle.purchase.cancellation', [pr])
     >>> handle_exception.execute('reset')
     >>> pr.state
-    'draft'
+    u'draft'
     >>> requisition.reload()
     >>> requisition.state
     u'processing'
     >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
     >>> pr.state
-    'purchased'
+    u'purchased'
     >>> requisition.reload()
     >>> requisition.state
     u'processing'
