@@ -458,10 +458,13 @@ gobject.type_register(DateTime)
 
 
 def popup_position(widget, popup):
-    # XXX It does not result in the same position in GTK2 and GTK3
-    x, y = widget.window.get_origin()
     allocation = widget.get_allocation()
-    popup.move(x + allocation.x, y + allocation.y + allocation.height)
+    if hasattr(widget.window, 'get_root_coords'):
+        x, y = widget.window.get_root_coords(allocation.x, allocation.y)
+    else:
+        x, y = widget.window.get_origin()
+    width, height = popup.size_request()
+    popup.move(x + allocation.width - width, y + allocation.height)
 
 
 def popup_show(popup):

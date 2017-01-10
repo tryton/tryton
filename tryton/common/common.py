@@ -306,13 +306,17 @@ def get_sensible_widget(window):
 
 
 def center_window(window, parent, sensible):
-    parent_x, parent_y = sensible.get_window().get_origin()
-    window_allocation = window.get_allocation()
     sensible_allocation = sensible.get_allocation()
-    x = (parent_x + sensible_allocation.x +
-        int((sensible_allocation.width - window_allocation.width) / 2))
-    y = (parent_y + sensible_allocation.y +
-        int((sensible_allocation.height - window_allocation.height) / 2))
+    if hasattr(sensible.window, 'get_root_coords'):
+        x, y = sensible.window.get_root_coords(
+            sensible_allocation.x, sensible_allocation.y)
+    else:
+        x, y = sensible.get_window().get_origin()
+        x += sensible_allocation.x
+        y += sensible_allocation.y
+    window_allocation = window.get_allocation()
+    x = x + int((sensible_allocation.width - window_allocation.width) / 2)
+    y = y + int((sensible_allocation.height - window_allocation.height) / 2)
     window.move(x, y)
 
 

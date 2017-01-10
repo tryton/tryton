@@ -465,12 +465,15 @@ class Form(SignalEvent, TabContent):
             return
 
         def menu_position(menu, data):
-            x, y = widget.window.get_origin()
             widget_allocation = widget.get_allocation()
-            return (
-                x + widget_allocation.x,
-                y + widget_allocation.y + widget_allocation.height,
-                False)
+            if hasattr(widget.window, 'get_root_coords'):
+                x, y = widget.window.get_root_coords(
+                    widget_allocation.x, widget_allocation.y)
+            else:
+                x, y = widget.window.get_origin()
+                x += widget_allocation.x
+                y += widget_allocation.y
+            return (x, y + widget_allocation.height, False)
         menu.show_all()
         menu.popup(None, None, menu_position, 0, gtk.get_current_event_time(),
             None)

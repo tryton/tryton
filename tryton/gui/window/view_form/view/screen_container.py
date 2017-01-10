@@ -175,13 +175,15 @@ class ScreenContainer(object):
                 return
 
             def menu_position(menu, data=None):
-                x, y = widget.window.get_origin()
                 widget_allocation = widget.get_allocation()
-                return (
-                    widget_allocation.x + x,
-                    widget_allocation.y + widget_allocation.height + y,
-                    False
-                )
+                if hasattr(widget.window, 'get_root_coords'):
+                    x, y = widget.window.get_root_coords(
+                        widget_allocation.x, widget_allocation.y)
+                else:
+                    x, y = widget.window.get_origin()
+                    x += widget_allocation.x
+                    y += widget_allocation.y
+                return (x, y + widget_allocation.height, False)
 
             for id_, name, domain in self.bookmarks():
                 menuitem = gtk.MenuItem(name)
@@ -601,10 +603,14 @@ class ScreenContainer(object):
         self.search_window.resize(width, height)
 
         # Move the window under the button
-        x, y = button.window.get_origin()
-        self.search_window.move(
-            x + button_allocation.x,
-            y + button_allocation.y + button_allocation.height)
+        if hasattr(button.window, 'get_root_coords'):
+            x, y = button.window.get_root_coords(
+                button_allocation.x, button_allocation.y)
+        else:
+            x, y = button.window.get_origin()
+            x += button_allocation.x
+            y += button_allocation.y
+        self.search_window.move(x, y + button_allocation.height)
 
         from tryton.gui.main import Main
         page = Main.get_main().get_page()
