@@ -167,7 +167,7 @@ class Group:
             for payment, mandate in zip(self.payments, mandates):
                 if not mandate:
                     self.raise_user_error('no_mandate', payment.rec_name)
-                # Write one by one becasue mandate.sequence_type must be
+                # Write one by one because mandate.sequence_type must be
                 # recomputed each time
                 Payment.write([payment], {
                         'sepa_mandate': mandate,
