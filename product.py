@@ -106,14 +106,9 @@ class Template(ModelSQL, ModelView):
 
     @staticmethod
     def default_products():
-        pool = Pool()
-        Product = pool.get('product.product')
         if Transaction().user == 0:
             return []
-        fields_names = list(f for f in Product._fields.keys()
-            if f not in ('id', 'create_uid', 'create_date',
-                'write_uid', 'write_date'))
-        return [Product.default_get(fields_names)]
+        return [{}]
 
     @fields.depends('default_uom')
     def on_change_with_default_uom_category(self, name=None):
