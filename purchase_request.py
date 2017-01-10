@@ -5,9 +5,6 @@ from decimal import Decimal
 from itertools import groupby
 from functools import partial
 
-from sql import Null
-from sql.conditionals import Case
-
 from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
@@ -82,13 +79,13 @@ class PurchaseRequest(ModelSQL, ModelView):
     origin = fields.Reference('Origin', selection='get_origin', readonly=True,
             required=True)
     exception_ignored = fields.Boolean('Ignored Exception')
-    state = fields.Function(fields.Selection([
-        ('purchased', 'Purchased'),
-        ('done', 'Done'),
-        ('draft', 'Draft'),
-        ('cancel', 'Cancel'),
-        ('exception', 'Exception'),
-        ], 'State'), 'get_state', searcher='search_state')
+    state = fields.Selection([
+            ('purchased', "Purchased"),
+            ('done', "Done"),
+            ('draft', "Draft"),
+            ('cancel', "Cancel"),
+            ('exception', "Exception"),
+            ], "State", required=True, select=True)
 
     @classmethod
     def __setup__(cls):
@@ -110,8 +107,17 @@ class PurchaseRequest(ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
+        Purchase = pool.get('purchase.purchase')
+        PurchaseLine = pool.get('purchase.line')
         TableHandler = backend.get('TableHandler')
         model_data = ModelData.__table__()
+        purchase = Purchase.__table__()
+        purchase_line = PurchaseLine.__table__()
+        request = cls.__table__()
+
+        tablehandler = TableHandler(cls, module_name)
+        state_exist = tablehandler.column_exist('state')
+
         super(PurchaseRequest, cls).__register__(module_name)
 
         # Migration from 3.6: removing the constraint on the quantity
@@ -129,6 +135,31 @@ class PurchaseRequest(ModelSQL, ModelView):
         # Migration from 4.0: remove required on product and uom
         tablehandler.not_null_action('product', action='remove')
         tablehandler.not_null_action('uom', action='remove')
+
+        # Migration from 4.2: add state
+        if not state_exist:
+            cursor = Transaction().connection.cursor()
+            update = Transaction().connection.cursor()
+            query = request.join(purchase_line, type_='INNER',
+                condition=request.purchase_line == purchase_line.id
+                ).join(purchase, type_='INNER',
+                    condition=purchase_line.purchase == purchase.id
+                    ).select(
+                        request.id, purchase.state, request.exception_ignored)
+            cursor.execute(*query)
+            for request_id, purchase_state, exception_ignored in cursor:
+                if purchase_state == 'cancel' and not exception_ignored:
+                    state = 'exception'
+                elif purchase_state == 'cancel':
+                    state = 'cancel'
+                elif purchase_state == 'done':
+                    state = 'done'
+                else:
+                    state = 'purchased'
+                update.execute(*request.update(
+                        [request.state],
+                        [state],
+                        where=request.id == request_id))
 
     def get_rec_name(self, name):
         product_name = (self.product.name if self.product else
@@ -169,7 +200,11 @@ class PurchaseRequest(ModelSQL, ModelView):
     def currency(self):
         return self.company.currency
 
-    def get_state(self, name):
+    @classmethod
+    def default_state(cls):
+        return 'draft'
+
+    def get_state(self):
         if self.purchase_line:
             if (self.purchase_line.purchase.state == 'cancel'
                     and not self.exception_ignored):
@@ -183,35 +218,12 @@ class PurchaseRequest(ModelSQL, ModelView):
         return 'draft'
 
     @classmethod
-    def search_state(cls, name, clause):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        PurchaseLine = pool.get('purchase.line')
-
-        request = cls.__table__()
-        purchase_line = PurchaseLine.__table__()
-        purchase = Purchase.__table__()
-
-        _, operator_, state = clause
-        Operator = fields.SQL_OPERATORS[operator_]
-        state_case = Case(
-            ((purchase.state == 'cancel')
-                & (request.exception_ignored == False), 'exception'),
-            ((purchase.state == 'cancel')
-                & (request.exception_ignored == True), 'cancel'),
-            (purchase.state == 'done', 'done'),
-            (request.purchase_line != Null, 'purchased'),
-            else_='draft')
-        state_query = request.join(
-            purchase_line, type_='LEFT',
-            condition=request.purchase_line == purchase_line.id
-            ).join(purchase, type_='LEFT',
-            condition=purchase_line.purchase == purchase.id
-            ).select(
-            request.id,
-            where=Operator(state_case, state))
-
-        return [('id', 'in', state_query)]
+    def update_state(cls, requests):
+        for request in requests:
+            state = request.get_state()
+            if state != request.state:
+                request.state = state
+        cls.save(requests)
 
     def get_warehouse_required(self, name):
         return self.product and self.product.type in ('goods', 'assets')
@@ -423,6 +435,7 @@ class CreatePurchase(Wizard):
                 lines.append(line)
         Purchase.save(purchases)
         Line.save(lines)
+        Request.update_state(requests)
         return 'end'
 
     @staticmethod
@@ -492,9 +505,9 @@ class HandlePurchaseCancellationException(Wizard):
         PurchaseRequest = pool.get('purchase.request')
 
         requests = PurchaseRequest.browse(Transaction().context['active_ids'])
-        PurchaseRequest.write(requests, {
-                'purchase_line': None,
-                })
+        for request in requests:
+            request.purchase_line = None
+        PurchaseRequest.update_state(requests)
         return 'end'
 
     def transition_cancel_request(self):
@@ -502,9 +515,9 @@ class HandlePurchaseCancellationException(Wizard):
         PurchaseRequest = pool.get('purchase.request')
 
         requests = PurchaseRequest.browse(Transaction().context['active_ids'])
-        PurchaseRequest.write(requests, {
-                'exception_ignored': True,
-                })
+        for request in requests:
+            request.exception_ignored = True
+        PurchaseRequest.update_state(requests)
         return 'end'
 
 
