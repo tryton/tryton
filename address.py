@@ -4,7 +4,7 @@
 from string import Template
 
 from sql import Null
-from sql.conditionals import Case
+from sql.conditionals import Case, Coalesce
 from sql.operators import Concat
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
@@ -69,7 +69,9 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
 
         # Migration from 4.0: remove streetbis
         if table.column_exist('streetbis'):
-            value = Concat(sql_table.street, Concat('\n', sql_table.streetbis))
+            value = Concat(
+                Coalesce(sql_table.street, ''),
+                Concat('\n', Coalesce(sql_table.streetbis, '')))
             cursor.execute(*sql_table.update(
                     [sql_table.street],
                     [value]))
