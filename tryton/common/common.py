@@ -307,8 +307,8 @@ def get_sensible_widget(window):
 
 def center_window(window, parent, sensible):
     sensible_allocation = sensible.get_allocation()
-    if hasattr(sensible.window, 'get_root_coords'):
-        x, y = sensible.window.get_root_coords(
+    if hasattr(sensible.get_window(), 'get_root_coords'):
+        x, y = sensible.get_window().get_root_coords(
             sensible_allocation.x, sensible_allocation.y)
     else:
         x, y = sensible.get_window().get_origin()
