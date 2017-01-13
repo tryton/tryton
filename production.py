@@ -61,12 +61,18 @@ class Production:
         warehouse_ids = [w.id for w in warehouses]
         # fetch order points
         order_points = OrderPoint.search([
-                ('type', '=', 'production'),
+                ('warehouse_location', '!=', None),
+                ('company', '=', company.id if company else None),
                 ])
         # index them by product
         product2ops = {}
+        product2ops_other = {}
         for order_point in order_points:
-            product2ops[
+            if order_point.type == 'production':
+                dict_ = product2ops
+            else:
+                dict_ = product2ops_other
+            dict_[
                 (order_point.warehouse_location.id, order_point.product.id)
                 ] = order_point
 
@@ -94,10 +100,17 @@ class Production:
             for warehouse in warehouses:
                 quantities = defaultdict(lambda: 0,
                     ((x, pbl.pop((warehouse.id, x), 0)) for x in product_ids))
+                # Do not compute shortage for product
+                # with different order point
+                product_ids = [
+                    p.id for p in sub_products
+                    if (warehouse.id, p.id) not in product2ops_other]
                 shortages = cls.get_shortage(warehouse.id, product_ids, today,
                     quantities, products_period, product2ops)
 
                 for product in sub_products:
+                    if product.id not in shortages:
+                        continue
                     for date, quantity in shortages[product.id]:
                         req = cls.compute_request(product, warehouse,
                             quantity, date, company)
