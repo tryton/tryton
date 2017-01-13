@@ -856,7 +856,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': ((Eval('state').in_(['waiting', 'done', 'cancel']))
+                'readonly': ((Eval('state').in_(
+                            ['waiting', 'packed', 'done', 'cancel']))
                     | ~Eval('warehouse') | ~Eval('customer')),
                 },
             depends=['state', 'warehouse', 'customer', 'warehouse_output',
@@ -872,7 +873,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 ],
             states={
                 'readonly': Eval('state').in_(
-                    ['draft', 'packed', 'done', 'cancel']),
+                    ['draft', 'assigned', 'packed', 'done', 'cancel']),
                 },
             depends=['state', 'warehouse', 'warehouse_storage',
                 'warehouse_output', 'company']),
