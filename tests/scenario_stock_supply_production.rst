@@ -52,6 +52,8 @@ Create a need for product::
     >>> move.from_location = storage_loc
     >>> move.to_location = lost_loc
     >>> move.click('do')
+    >>> move.state
+    u'done'
 
 The is no production request::
 
