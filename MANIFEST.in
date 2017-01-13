@@ -9,3 +9,4 @@ include view/*.xml
 include locale/*.po
 include doc/*
 include icons/*
+include tests/*.rst
