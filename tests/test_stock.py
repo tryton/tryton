@@ -795,6 +795,11 @@ def suite():
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
+            'scenario_stock_shipment_out_same_storage_output.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
             'scenario_stock_average_cost_price.rst',
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,

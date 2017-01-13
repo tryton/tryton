@@ -182,6 +182,9 @@ out of which the product are going) and two list of moves:
   The moves between the output location of the warehouse and a
   customer location.
 
+If the picking or storage location is configured as the same as the output
+location, then only outgoing moves are created and no assignation is done.
+
 
 The customer shipment can be in one of this states:
 

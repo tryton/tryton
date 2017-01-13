@@ -19,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="warehouse"/>
     <field name="warehouse"/>
     <notebook colspan="4">
-        <page string="Inventory Moves" id="inventory_moves">
+        <page name="inventory_moves">
             <field name="inventory_moves" colspan="4"/>
         </page>
         <page string="Outgoing Moves" id="outgoing_moves">
@@ -39,4 +39,6 @@ this repository contains the full copyright notices and license terms. -->
             <button string="Done" name="done" icon="tryton-ok"/>
         </group>
     </group>
+    <field name="warehouse_storage" invisible="1" colspan="4"/>
+    <field name="warehouse_output" invisible="1" colspan="4"/>
 </form>

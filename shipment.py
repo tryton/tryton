@@ -307,7 +307,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def get_incoming_moves(self, name):
         moves = []
         for move in self.moves:
-            if move.to_location.id == self.warehouse.input_location.id:
+            if move.to_location == self.warehouse_input:
                 moves.append(move.id)
         return moves
 
@@ -322,8 +322,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def get_inventory_moves(self, name):
         moves = []
         for move in self.moves:
-            if (move.from_location.id ==
-                    self.warehouse.input_location.id):
+            if move.from_location == self.warehouse_input:
                 moves.append(move.id)
         return moves
 
@@ -410,7 +409,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         move.uom = incoming_move.uom
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
-        move.to_location = incoming_move.shipment.warehouse.storage_location
+        move.to_location = incoming_move.shipment.warehouse_storage
         move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
@@ -874,6 +873,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             states={
                 'readonly': Eval('state').in_(
                     ['draft', 'assigned', 'packed', 'done', 'cancel']),
+                'invisible': (
+                    Eval('warehouse_storage') == Eval('warehouse_output')),
                 },
             depends=['state', 'warehouse', 'warehouse_storage',
                 'warehouse_output', 'company']),
@@ -903,6 +904,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
+                ('waiting', 'packed'),
                 ('assigned', 'packed'),
                 ('packed', 'done'),
                 ('assigned', 'waiting'),
@@ -933,13 +935,18 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                             'tryton-go-next')),
                     },
                 'pack': {
-                    'invisible': Eval('state') != 'assigned',
+                    'invisible': If(Eval('warehouse_storage')
+                        == Eval('warehouse_output'),
+                        ~Eval('state').in_(['assigned', 'waiting']),
+                        Eval('state') != 'assigned'),
                     },
                 'done': {
                     'invisible': Eval('state') != 'packed',
                     },
                 'assign_wizard': {
-                    'invisible': Eval('state') != 'waiting',
+                    'invisible': ((Eval('state') != 'waiting')
+                        | (Eval('warehouse_storage')
+                            == Eval('warehouse_output'))),
                     },
                 'assign_try': {},
                 'assign_force': {},
@@ -1035,7 +1042,11 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     @fields.depends('warehouse')
     def on_change_with_warehouse_storage(self, name=None):
         if self.warehouse:
-            return self.warehouse.storage_location.id
+            if self.warehouse.picking_location:
+                location = self.warehouse.picking_location
+            else:
+                location = self.warehouse.storage_location
+            return location.id
 
     @classmethod
     def default_warehouse_output(cls):
@@ -1051,7 +1062,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def get_outgoing_moves(self, name):
         moves = []
         for move in self.moves:
-            if move.from_location.id == self.warehouse.output_location.id:
+            if move.from_location == self.warehouse_output:
                 moves.append(move.id)
         return moves
 
@@ -1066,7 +1077,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def get_inventory_moves(self, name):
         moves = []
         for move in self.moves:
-            if move.to_location.id == self.warehouse.output_location.id:
+            if move.to_location == self.warehouse_output:
                 moves.append(move.id)
         return moves
 
@@ -1107,6 +1118,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
         to_create = []
         for shipment in shipments:
+            if shipment.warehouse_storage == shipment.warehouse_output:
+                # Do not create inventory moves
+                continue
             for move in shipment.outgoing_moves:
                 if move.state in ('cancel', 'done'):
                     continue
@@ -1118,9 +1132,8 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         'Return inventory move for the outgoing move'
         pool = Pool()
         Move = pool.get('stock.move')
-        wrh = move.shipment.warehouse
         return Move(
-            from_location=wrh.picking_location or wrh.storage_location,
+            from_location=self.warehouse_storage,
             to_location=move.from_location,
             product=move.product,
             uom=move.uom,
@@ -1172,6 +1185,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
         for shipment in shipments:
+            if shipment.warehouse_storage == shipment.warehouse_output:
+                # Do not create inventory moves
+                continue
             # Sum all outgoing quantities
             outgoing_qty = {}
             for move in shipment.outgoing_moves:
@@ -1589,7 +1605,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     def get_incoming_moves(self, name):
         moves = []
         for move in self.moves:
-            if move.to_location.id == self.warehouse.input_location.id:
+            if move.to_location == self.warehouse_input:
                 moves.append(move.id)
         return moves
 
@@ -1604,7 +1620,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     def get_inventory_moves(self, name):
         moves = []
         for move in self.moves:
-            if move.from_location.id == self.warehouse.input_location.id:
+            if move.from_location == self.warehouse_input:
                 moves.append(move.id)
         return moves
 
@@ -1736,7 +1752,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         move.uom = incoming_move.uom
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
-        move.to_location = incoming_move.shipment.warehouse.storage_location
+        move.to_location = incoming_move.shipment.warehouse_storage
         move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
