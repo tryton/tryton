@@ -1194,7 +1194,7 @@ function eval_pyson(value){
                 'type': 'text',
                 'class': 'form-control input-sm'
             }).appendTo(this.group);
-            if (attributes.autocomplete) {
+            if (!jQuery.isEmptyObject(attributes.autocomplete)) {
                 this.datalist = jQuery('<datalist/>').appendTo(this.el);
                 this.datalist.uniqueId();
                 this.input.attr('list', this.datalist.attr('id'));
@@ -1228,15 +1228,22 @@ function eval_pyson(value){
             Sao.View.Form.Char._super.display.call(this, record, field);
             if (this.datalist) {
                 this.datalist.children().remove();
-                var selection = [];
-                if (record) {
-                    selection = record.autocompletion[this.field_name] || [];
+                var set_autocompletion = function() {
+                    var selection = [];
+                    if (record) {
+                        selection = record.autocompletion[this.field_name] || [];
+                    }
+                    selection.forEach(function(e) {
+                        jQuery('<option/>', {
+                            'value': e
+                        }).appendTo(this.datalist);
+                    }.bind(this));
+                }.bind(this);
+                if (record && !(this.field_name in record.autocompletion)) {
+                    record.do_autocomplete(this.field_name).done(set_autocompletion);
+                } else {
+                    set_autocompletion();
                 }
-                selection.forEach(function(e) {
-                    jQuery('<option/>', {
-                        'value': e
-                    }).appendTo(this.datalist);
-                }.bind(this));
             }
 
             // Set size
