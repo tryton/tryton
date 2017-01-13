@@ -76,7 +76,7 @@ class Production(Workflow, ModelSQL, ModelView):
         depends=['state'])
     product = fields.Many2One('product.product', 'Product',
         domain=[
-            ('type', '!=', 'service'),
+            ('producible', '=', True),
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),

@@ -4,6 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook" position="inside">
         <page string="Production" id="production">
+            <label name="producible"/>
+            <field name="producible"/>
             <field name="boms" colspan="4"
                 view_ids="production.product-bom_view_list_sequence"/>
             <field name="lead_times" colspan="4"

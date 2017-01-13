@@ -20,6 +20,7 @@ def register():
         OpenBOMTreeTree,
         Production,
         AssignFailed,
+        Template,
         Product,
         ProductBom,
         ProductionLeadTime,

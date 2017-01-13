@@ -5,7 +5,18 @@ from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
 from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
 
-__all__ = ['Product', 'ProductBom', 'ProductionLeadTime']
+__all__ = ['Template', 'Product', 'ProductBom', 'ProductionLeadTime']
+
+
+class Template:
+    __metaclass__ = PoolMeta
+    __name__ = 'product.template'
+    producible = fields.Boolean(
+        "Producible", states={
+            'readonly': ~Eval('active', True),
+            'invisible': Eval('type') == 'service',
+            },
+        depends=['active', 'type'])
 
 
 class Product:
@@ -15,17 +26,13 @@ class Product:
     boms = fields.One2Many('product.product-production.bom', 'product',
         'BOMs', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
-            'invisible': (Eval('type', 'service').in_(['service', None])
-                & (Eval('_parent_template', {}).get(
-                        'type', 'service').in_(['service', None]))),
+            'invisible': ~Eval('producible')
             },
         depends=['type'])
     lead_times = fields.One2Many('production.lead_time',
         'product', 'Lead Times', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
-            'invisible': (Eval('type', 'service').in_(['service', None])
-                & (Eval('_parent_template', {}).get(
-                        'type', 'service').in_(['service', None]))),
+            'invisible': ~Eval('producible'),
             },
         depends=['type'])
 
@@ -63,6 +70,13 @@ class Product:
         default.setdefault('boms', None)
         return super(Product, cls).copy(products, default=default)
 
+    @classmethod
+    def view_attributes(cls):
+        return super(Product, cls).view_attributes() + [
+            ('//page[@id="production"]', 'states', {
+                    'invisible': ~Eval('producible'),
+                    })]
+
 
 class ProductBom(sequence_ordered(), ModelSQL, ModelView):
     'Product - BOM'
@@ -71,7 +85,7 @@ class ProductBom(sequence_ordered(), ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product',
         ondelete='CASCADE', select=1, required=True,
         domain=[
-            ('type', '!=', 'service'),
+            ('producible', '=', True),
             ])
     bom = fields.Many2One('production.bom', 'BOM', ondelete='CASCADE',
         select=1, required=True, domain=[
