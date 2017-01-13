@@ -109,8 +109,24 @@ Create invoice::
     Decimal('10.00')
     >>> invoice.total_amount
     Decimal('120.00')
+    >>> invoice.save()
+    >>> invoice.state
+    u'draft'
+    >>> bool(invoice.move)
+    False
+    >>> invoice.click('validate_invoice')
+    >>> invoice.state
+    u'validated'
+    >>> bool(invoice.move)
+    True
+    >>> invoice.move.state
+    u'draft'
     >>> invoice.click('post')
     >>> invoice.state
+    u'posted'
+    >>> bool(invoice.move)
+    True
+    >>> invoice.move.state
     u'posted'
     >>> invoice.untaxed_amount
     Decimal('110.00')
