@@ -382,10 +382,6 @@ class Record(SignalEvent):
                         == self.group.parent.model_name):
                     vals[self.parent_name] = self.parent.id
             self.set_default(vals)
-        for fieldname, fieldinfo in self.group.fields.iteritems():
-            if not fieldinfo.attrs.get('autocomplete'):
-                continue
-            self.do_autocomplete(fieldname)
         return vals
 
     def rec_name(self):
@@ -478,9 +474,6 @@ class Record(SignalEvent):
         for fieldname, value in later.iteritems():
             self.group.fields[fieldname].set(self, value)
             self._loaded.add(fieldname)
-        for fieldname, fieldinfo in self.group.fields.iteritems():
-            if fieldinfo.attrs.get('autocomplete'):
-                self.do_autocomplete(fieldname)
         if validate:
             self.validate(fieldnames, softvalidation=True)
         if signal:

@@ -106,6 +106,8 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         super(Char, self).display(record, field)
         if self.autocomplete:
             if record:
+                if self.field_name not in record.autocompletion:
+                    record.do_autocomplete(self.field_name)
                 selection = record.autocompletion.get(self.field_name, [])
             else:
                 selection = []
