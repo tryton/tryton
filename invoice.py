@@ -1300,7 +1300,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 moves.append(move)
         if moves:
             Move.save(moves)
-        cls.save(invoices)
+        cls.save(invoices_in)
 
     @classmethod
     @ModelView.button
