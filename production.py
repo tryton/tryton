@@ -80,7 +80,7 @@ class Production:
         products = Product.search([
                 ('type', '=', 'goods'),
                 ('consumable', '=', False),
-                ('purchasable', '=', False),
+                ('producible', '=', True),
                 ])
         # compute requests
         today = Date.today()

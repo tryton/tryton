@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.pool import PoolMeta
 
 __all__ = ['OrderPoint']
@@ -13,6 +13,15 @@ class OrderPoint:
     @classmethod
     def __setup__(cls):
         super(OrderPoint, cls).__setup__()
+
+        cls.product.domain = [
+            cls.product.domain,
+            If(Eval('type') == 'production',
+                ('producible', '=', True),
+                ()),
+            ]
+        if 'type' not in cls.product.depends:
+            cls.product.depends.append('type')
 
         cls.warehouse_location.states['invisible'] &= (
             Eval('type') != 'production')
