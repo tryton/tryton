@@ -127,23 +127,34 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-xgettext');
-  grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-po2json');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-
-  // Default task(s).
-  grunt.registerTask('default', [
-      'concat', 'jshint', 'uglify', 'less', 'po2json'
-  ]);
-  grunt.registerTask('dev', ['concat', 'jshint', 'less:dev']);
-  grunt.registerTask('msgmerge', ['shell:msgmerge']);
-  grunt.registerTask('test', ['concat', 'jshint', 'less:dev', 'qunit']);
+  grunt.registerTask('default', 'Build for production.', function() {
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-po2json');
+    grunt.task.run(['concat', 'jshint', 'uglify', 'less', 'po2json']);
+    });
+  grunt.registerTask('dev', 'Build for development.', function() {
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.task.run(['concat', 'jshint', 'less:dev']);
+    });
+  grunt.registerTask('devwatch', 'Watch development', function() {
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.task.run(['watch']);
+    });
+  grunt.registerTask('msgmerge', 'Update locale messages.', function() {
+    grunt.loadNpmTasks('grunt-shell');
+    grunt.task.run(['shell:msgmerge']);
+    });
+  grunt.registerTask('test', 'Run tests', function() {
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.task.run(['concat', 'jshint', 'less:dev', 'qunit']);
+    });
 
 };
