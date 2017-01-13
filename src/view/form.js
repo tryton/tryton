@@ -1276,6 +1276,32 @@ function eval_pyson(value){
             Sao.View.Form.Password._super.init.call(this, field_name, model,
                 attributes);
             this.input.prop('type', 'password');
+            this.button = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm form-control',
+                'type': 'button'
+            }).appendTo(jQuery('<span/>', {
+                'class': 'input-group-btn'
+            }).appendTo(this.group));
+            this._set_password_label();
+            this.button.click(this.toggle_visibility.bind(this));
+
+        },
+        toggle_visibility: function() {
+            if (this.input.prop('type') == 'password') {
+                this.input.prop('type', 'text');
+                this.input.attr('autocomplete', 'off');
+            } else {
+                this.input.prop('type', 'password');
+                this.input.removeAttr('autocomplete');
+            }
+            this._set_password_label();
+        },
+        _set_password_label: function() {
+            if (this.input.prop('type') == 'password') {
+                this.button.text(Sao.i18n.gettext('Show'));
+            } else {
+                this.button.text(Sao.i18n.gettext('Hide'));
+            }
         }
     });
 
