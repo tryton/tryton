@@ -71,13 +71,18 @@ class PurchaseRequest:
         warehouse_ids = [w.id for w in warehouses]
         # fetch order points
         order_points = OrderPoint.search([
-            ('type', '=', 'purchase'),
+            ('warehouse_location', '!=', None),
             ('company', '=', company.id if company else None),
             ])
         # index them by product
         product2ops = {}
+        product2ops_other = {}
         for order_point in order_points:
-            product2ops[
+            if order_point.type == 'purchase':
+                dict_ = product2ops
+            else:
+                dict_ = product2ops_other
+            dict_[
                 (order_point.warehouse_location.id, order_point.product.id)
                 ] = order_point
 
@@ -111,12 +116,19 @@ class PurchaseRequest:
                     min_date_qties = defaultdict(lambda: 0,
                         ((x, pbl.pop((warehouse_id, x), 0))
                             for x in product_ids))
+                    # Do not compute shortage for product
+                    # with different order point
+                    product_ids = [
+                        p.id for p in sub_products
+                        if (warehouse_id, p.id) not in product2ops_other]
                     # Search for shortage between min-max
                     shortages = cls.get_shortage(warehouse_id, product_ids,
                         min_date, max_date, min_date_qties=min_date_qties,
                         order_points=product2ops)
 
                     for product in sub_products:
+                        if product.id not in shortages:
+                            continue
                         shortage_date, product_quantity = shortages[product.id]
                         if shortage_date is None or product_quantity is None:
                             continue
