@@ -31,10 +31,6 @@ __all__ = ['ShipmentIn', 'ShipmentInReturn',
     'SupplierRestockingList', 'CustomerReturnRestockingList',
     'InteralShipmentReport']
 
-STATES = {
-    'readonly': "state in ('cancel', 'done')",
-}
-
 
 class ShipmentIn(Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
