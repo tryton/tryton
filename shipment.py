@@ -1830,7 +1830,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         depends=['state'])
     planned_date = fields.Date('Planned Date',
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': ~Eval('state').in_(['request', 'draft']),
             }, depends=['state'])
     effective_start_date = fields.Date('Effective Start Date',
         states={
@@ -1839,13 +1839,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         depends=['state'])
     planned_start_date = fields.Date('Planned Start Date',
         states={
-            'readonly': ~Eval('state').in_(['draft']),
+            'readonly': ~Eval('state').in_(['request', 'draft']),
             'required': Bool(Eval('planned_date')),
             },
         depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': ~Eval('state').in_(['request', 'draft']),
             },
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
@@ -1855,18 +1855,20 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     number = fields.Char('Number', size=None, select=True, readonly=True)
     reference = fields.Char("Reference", size=None, select=True,
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': ~Eval('state').in_(['request', 'draft']),
             }, depends=['state'])
     from_location = fields.Many2One('stock.location', "From Location",
         required=True, states={
-            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
+            'readonly': (~Eval('state').in_(['request', 'draft'])
+                | Eval('moves', [0])),
             },
         domain=[
             ('type', 'in', ['view', 'storage', 'lost_found']),
             ], depends=['state'])
     to_location = fields.Many2One('stock.location', "To Location",
         required=True, states={
-            'readonly': (Eval('state') != 'draft') | Eval('moves', [0]),
+            'readonly': (~Eval('state').in_(['request', 'draft'])
+                    | Eval('moves', [0])),
             }, domain=[
             ('type', 'in', ['view', 'storage', 'lost_found']),
             ], depends=['state'])
@@ -1877,10 +1879,10 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
                 | ~Eval('from_location') | ~Eval('to_location')),
             'invisible': (Bool(Eval('transit_location'))
-                & (Eval('state') != 'draft')),
+                & ~Eval('state').in_(['request', 'draft'])),
             },
         domain=[
-            If(Eval('state') == 'draft', [
+            If(Eval('state').in_(['request', 'draft']), [
                     ('from_location', '=', Eval('from_location')),
                     ('to_location', '=', Eval('to_location')),
                     ],
@@ -1921,7 +1923,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 'readonly': Eval('state').in_(
                     ['assigned', 'shipped', 'done', 'cancel']),
                 'invisible': (~Eval('transit_location')
-                    | (Eval('state') == 'draft')),
+                    | Eval('state').in_(['request', 'draft'])),
                 },
             depends=['from_location', 'to_location', 'transit_location',
                 'state']),
@@ -1939,12 +1941,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             states={
                 'readonly': Eval('state').in_(['done', 'cancel']),
                 'invisible': (~Eval('transit_location')
-                    | (Eval('state') == 'draft')),
+                    | Eval('state').in_(['request', 'draft'])),
                 },
             depends=['from_location', 'to_location', 'transit_location',
                 'state']),
         'get_incoming_moves', setter='set_moves')
     state = fields.Selection([
+            ('request', 'Request'),
             ('draft', 'Draft'),
             ('cancel', 'Canceled'),
             ('waiting', 'Waiting'),
@@ -1962,6 +1965,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                     'before deletion.'),
                 })
         cls._transitions |= set((
+                ('request', 'draft'),
                 ('draft', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'assigned'),
@@ -1970,6 +1974,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 ('shipped', 'done'),
                 ('waiting', 'draft'),
                 ('assigned', 'waiting'),
+                ('request', 'cancel'),
                 ('draft', 'cancel'),
                 ('waiting', 'cancel'),
                 ('assigned', 'cancel'),
@@ -1981,10 +1986,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                         ['cancel', 'shipped', 'done']),
                     },
                 'draft': {
-                    'invisible': ~Eval('state').in_(['cancel', 'waiting']),
+                    'invisible': ~Eval('state').in_(
+                        ['cancel', 'request', 'waiting']),
                     'icon': If(Eval('state') == 'cancel',
                         'tryton-clear',
-                        'tryton-go-previous'),
+                        If(Eval('state') == 'request',
+                            'tryton-go-next',
+                            'tryton-go-previous')),
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['assigned', 'waiting',
@@ -2189,6 +2197,8 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         to_delete = []
         to_save = []
         for shipment in shipments:
+            if not shipment.transit_location:
+                continue
             product_qty = defaultdict(lambda: 0)
             for move in shipment.outgoing_moves:
                 if move.state == 'cancel':
@@ -2218,6 +2228,31 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             Move.delete(to_delete)
 
     @classmethod
+    def _set_transit(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+
+        to_write = []
+        for shipment in shipments:
+            if not shipment.transit_location:
+                continue
+            moves = [m for m in shipment.moves
+                if m.state != 'done'
+                and m.from_location != shipment.transit_location
+                and m.to_location != shipment.transit_location]
+            Move.copy(moves, default={
+                    'from_location': shipment.transit_location.id,
+                    'planned_date': shipment.planned_date,
+                    })
+            to_write.append(moves)
+            to_write.append({
+                    'to_location': shipment.transit_location.id,
+                    'planned_date': shipment.planned_start_date,
+                    })
+        if to_write:
+            Move.write(*to_write)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
@@ -2244,40 +2279,18 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
         Move.draft([m for s in shipments for m in s.moves])
 
-        direct = []
-        transit = []
-        for shipment in shipments:
-            if not shipment.transit_location:
-                direct.append(shipment)
-            else:
-                transit.append(shipment)
-
         moves = []
-        for shipment in direct:
+        for shipment in shipments:
+            if shipment.transit_location:
+                continue
             for move in shipment.moves:
                 if move.state != 'done':
                     move.planned_date = shipment.planned_date
                     moves.append(move)
         Move.save(moves)
 
-        to_write = []
-        for shipment in transit:
-            moves = [m for m in shipment.moves
-                if m.state != 'done'
-                and m.from_location != shipment.transit_location
-                and m.to_location != shipment.transit_location]
-            Move.copy(moves, default={
-                    'from_location': shipment.transit_location.id,
-                    'planned_date': shipment.planned_date,
-                    })
-            to_write.append(moves)
-            to_write.append({
-                    'to_location': shipment.transit_location.id,
-                    'planned_date': shipment.planned_start_date,
-                    })
-        if to_write:
-            Move.write(*to_write)
-        cls._sync_moves(transit)
+        cls._set_transit(shipments)
+        cls._sync_moves(shipments)
 
     @classmethod
     @Workflow.transition('assigned')
