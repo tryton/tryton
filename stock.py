@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pyson import Eval, If
-from trytond.pool import PoolMeta
+import datetime
 
-__all__ = ['OrderPoint']
+from trytond.pyson import Eval, If
+from trytond.pool import PoolMeta, Pool
+
+__all__ = ['OrderPoint', 'LocationLeadTime']
 
 
 class OrderPoint:
@@ -46,3 +48,16 @@ class OrderPoint:
         if self.type == 'production':
             return self.warehouse_location.id
         return location
+
+
+class LocationLeadTime:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.location.lead_time'
+
+    @classmethod
+    def _get_extra_lead_times(cls):
+        pool = Pool()
+        Configuration = pool.get('production.configuration')
+        extra = super(LocationLeadTime, cls)._get_extra_lead_times()
+        extra.append(datetime.timedelta(Configuration(1).supply_period or 0))
+        return extra
