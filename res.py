@@ -4,6 +4,8 @@ import logging
 import urlparse
 
 import ldap3
+from ldap3.core.exceptions import LDAPException
+
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 from trytond.config import config, parse_uri
@@ -91,7 +93,7 @@ class User:
             result = con.entries
             if result and len(result) > 1:
                 logger.info('ldap_search_user found more than 1 user')
-            return [(e.entry_get_dn(), e.entry_get_attributes_dict())
+            return [(e.entry_dn, e.entry_attributes_as_dict)
                 for e in result]
 
     @classmethod
@@ -105,7 +107,7 @@ class User:
                 if cls.ldap_search_user(login, server, attrs=[]):
                     find = True
                     break
-        except ldap3.LDAPException:
+        except LDAPException:
             logger.error('LDAPError when checking password', exc_info=True)
         if find:
             cls.raise_user_error('set_passwd_ldap_user', (login,))
@@ -154,7 +156,7 @@ class User:
                             del values['password']
                         else:
                             cls.raise_user_error('wrong_password')
-            except ldap3.LDAPException:
+            except LDAPException:
                 logger.error('LDAPError when setting preferences',
                     exc_info=True)
         super(User, cls).set_preferences(values, old_password=old_password)
@@ -185,5 +187,5 @@ class User:
                                         'login': login,
                                         }])
                             return user.id
-        except ldap3.LDAPException:
+        except LDAPException:
             logger.error('LDAPError when login', exc_info=True)
