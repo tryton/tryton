@@ -440,6 +440,7 @@ class Screen(SignalEvent):
             view.destroy()
         del self.views[:]
         super(Screen, self).destroy()
+        self.group.signal_unconnect(self)
         self.group.destroy()
 
     def default_row_activate(self):

@@ -444,6 +444,10 @@ class Group(SignalEvent, list):
                 self.parent.group.children.remove(self)
             except ValueError:
                 pass
+        # One2Many connect the group to itself to send signals to the parent
+        # but as we are destroying the group, we do not need to notify the
+        # parent otherwise it will trigger unnecessary display.
+        self.signal_unconnect(self)
         self.clear()
         super(Group, self).destroy()
 

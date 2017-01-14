@@ -181,6 +181,8 @@ class Form(SignalEvent, TabContent):
             and self.screen.search_value == value.screen.search_value)
 
     def destroy(self):
+        super(Form, self).destroy()
+        self.screen.signal_unconnect(self)
         self.screen.destroy()
 
     def sig_attach(self, widget=None):
