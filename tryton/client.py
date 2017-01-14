@@ -221,7 +221,7 @@ class TrytonClient(object):
             if sys.platform == 'win32':
                 while not self.quit_client.isSet():
                     with gtk.gdk.lock:
-                            gtk.main_iteration(True)
+                            gtk.main_iteration()
             else:
                 gtk.main()
         except KeyboardInterrupt:
