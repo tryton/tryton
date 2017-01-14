@@ -134,7 +134,7 @@ Execute internal supply::
     >>> Wizard('stock.shipment.internal.create').execute('create_')
     >>> shipment, = ShipmentInternal.find([])
     >>> shipment.state
-    u'waiting'
+    u'request'
     >>> len(shipment.moves)
     1
     >>> move, = shipment.moves
@@ -162,9 +162,10 @@ Create negative quantity in Second Storage::
 Execute internal supply::
 
     >>> Wizard('stock.shipment.internal.create').execute('create_')
-    >>> shipment, = ShipmentInternal.find([('id', '!=', shipment.id)])
+    >>> shipment, = ShipmentInternal.find(
+    ...     [('to_location', '=', sec_storage_loc.id)])
     >>> shipment.state
-    u'waiting'
+    u'request'
     >>> len(shipment.moves)
     1
     >>> move, = shipment.moves

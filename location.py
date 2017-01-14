@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 from trytond.pyson import Eval
 
@@ -33,9 +33,28 @@ class LocationLeadTime:
 
     @classmethod
     def get_max_lead_time(cls):
-        'Return the biggest lead time'
+        """Return the biggest lead time
+        increased by the maximum extra lead times"""
+        lead_time = datetime.timedelta(0)
         lead_times = cls.search([])
         if lead_times:
-            return max(r.lead_time for r in lead_times)
-        else:
-            return datetime.timedelta(0)
+            lead_time = sum(r.lead_time for r in lead_times if r.lead_time)
+        extra_lead_times = cls._get_extra_lead_times()
+        if extra_lead_times:
+            lead_time += max(extra_lead_times)
+        return lead_time
+
+    @classmethod
+    def _get_extra_lead_times(cls):
+        'Return a list of extra lead time'
+        pool = Pool()
+        ProductSupplier = pool.get('purchase.product_supplier')
+        extra = []
+
+        product_suppliers = ProductSupplier.search(
+            [('lead_time', '!=', None)],
+            order=[('lead_time', 'DESC')], limit=1)
+        if product_suppliers:
+            product_supplier, = product_suppliers
+            extra.append(product_supplier.lead_time)
+        return extra

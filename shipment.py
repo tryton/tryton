@@ -40,10 +40,12 @@ class ShipmentInternal(ModelSQL, ModelView):
         super(ShipmentInternal, cls).__register__(module_name)
 
     @classmethod
-    def generate_internal_shipment(cls):
+    def generate_internal_shipment(cls, clean=True):
         """
         Generate internal shipments to meet order points defined on
         non-warehouse location.
+
+        If clean is set, it will remove all previous requests.
         """
         pool = Pool()
         OrderPoint = pool.get('stock.order_point')
@@ -57,6 +59,13 @@ class ShipmentInternal(ModelSQL, ModelView):
         user_record = User(Transaction().user)
         today = Date.today()
         lead_time = LeadTime.get_max_lead_time()
+
+        if clean:
+            reqs = cls.search([
+                    ('state', '=', 'request'),
+                    ])
+            cls.delete(reqs)
+
         # fetch quantities on order points
         order_points = OrderPoint.search([
             ('type', '=', 'internal'),
@@ -125,6 +134,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                     from_location=from_location,
                     to_location=to_location,
                     planned_date=date,
+                    state='request',
                     )
                 shipment_moves = []
                 for move in moves:
@@ -145,8 +155,14 @@ class ShipmentInternal(ModelSQL, ModelView):
                     shipment.on_change_with_planned_start_date())
                 shipments.append(shipment)
             date += datetime.timedelta(1)
-        cls.save(shipments)
-        cls.wait(shipments)
+        if shipments:
+            cls.save(shipments)
+            # Split moves through transit to get accurate dates
+            cls._set_transit(shipments)
+            cls.generate_internal_shipment(False)
+            # Remove transit split as they are only requests
+            Move.delete([m for s in shipments for m in s.moves
+                    if m.from_location == s.transit_location])
         return shipments
 
 

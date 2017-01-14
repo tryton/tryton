@@ -1,3 +1,5 @@
+* Improve computation of max lead time
+* Generate request internal shipments recursively
 * Do not create purchase request if other order point exists
 
 Version 4.2.0 - 2016-11-28
