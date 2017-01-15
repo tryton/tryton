@@ -83,7 +83,6 @@ Pack shipment::
 
     >>> shipment_out.click('wait')
     >>> shipment_out.click('assign_force')
-    >>> shipment_out.click('pack')
 
 Package products::
 
@@ -96,7 +95,7 @@ Package products::
     2
     >>> package1.moves.append(moves[0])
 
-    >>> shipment_out.click('done')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment_out.click('pack')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     UserError: ...
@@ -107,4 +106,4 @@ Package products::
     1
     >>> package2.moves.append(moves[0])
 
-    >>> shipment_out.click('done')
+    >>> shipment_out.click('pack')

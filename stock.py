@@ -115,6 +115,19 @@ class PackageMixin(object):
                 'packages': value,
                 })
 
+    @classmethod
+    def check_packages(cls, shipments):
+        for shipment in shipments:
+            if not shipment.packages:
+                continue
+            length = sum(len(p.moves) for p in shipment.packages)
+            if len(shipment.packages_moves) != length:
+                cls.raise_user_error('package_mismatch', shipment.rec_name)
+
+    @property
+    def packages_moves(self):
+        raise NotImplementedError
+
 
 class ShipmentOut(PackageMixin, object):
     __metaclass__ = PoolMeta
@@ -130,15 +143,21 @@ class ShipmentOut(PackageMixin, object):
 
     @classmethod
     @ModelView.button
+    @Workflow.transition('packed')
+    def pack(cls, shipments):
+        super(ShipmentOut, cls).pack(shipments)
+        cls.check_packages(shipments)
+
+    @classmethod
+    @ModelView.button
     @Workflow.transition('done')
     def done(cls, shipments):
         super(ShipmentOut, cls).done(shipments)
-        for shipment in shipments:
-            if not shipment.packages:
-                continue
-            if (len(shipment.outgoing_moves)
-                    != sum(len(p.moves) for p in shipment.packages)):
-                cls.raise_user_error('package_mismatch', shipment.rec_name)
+        cls.check_packages(shipments)
+
+    @property
+    def packages_moves(self):
+        return self.outgoing_moves
 
 
 class ShipmentInReturn(PackageMixin, object):
@@ -149,7 +168,7 @@ class ShipmentInReturn(PackageMixin, object):
     def __setup__(cls):
         super(ShipmentInReturn, cls).__setup__()
         cls._error_messages.update({
-                'package_mismatch': ('Not all Outgoing Moves of '
+                'package_mismatch': ('Not all Moves of '
                     'Supplier Return Shipment "%s" are packaged.'),
                 })
 
@@ -158,12 +177,11 @@ class ShipmentInReturn(PackageMixin, object):
     @Workflow.transition('done')
     def done(cls, shipments):
         super(ShipmentInReturn, cls).done(shipments)
-        for shipment in shipments:
-            if not shipment.packages:
-                continue
-            if (len(shipment.moves)
-                    != sum(len(p.moves) for p in shipment.packages)):
-                cls.raise_user_error('package_mismatch', shipment.rec_name)
+        cls.check_packages(shipments)
+
+    @property
+    def packages_moves(self):
+        return self.moves
 
 
 class PackageLabel(Report):
