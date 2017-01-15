@@ -63,7 +63,7 @@ The is no production request::
 
 Create production request::
 
-    >>> create_pr = Wizard('production.create_request')
+    >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
 There is now a production request::

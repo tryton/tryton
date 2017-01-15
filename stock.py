@@ -4,8 +4,9 @@ import datetime
 
 from trytond.pyson import Eval, If
 from trytond.pool import PoolMeta, Pool
+from trytond.wizard import StateAction
 
-__all__ = ['OrderPoint', 'LocationLeadTime']
+__all__ = ['OrderPoint', 'LocationLeadTime', 'StockSupply']
 
 
 class OrderPoint:
@@ -61,3 +62,49 @@ class LocationLeadTime:
         extra = super(LocationLeadTime, cls)._get_extra_lead_times()
         extra.append(datetime.timedelta(Configuration(1).supply_period or 0))
         return extra
+
+
+class StockSupply:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.supply'
+
+    production = StateAction('stock_supply_production.act_production_request')
+
+    @classmethod
+    def __setup__(cls):
+        super(StockSupply, cls).__setup__()
+        cls._error_messages.update({
+                'late_productions': 'There are some late productions.',
+                })
+
+    @classmethod
+    def types(cls):
+        return super(StockSupply, cls).types() + ['production']
+
+    def transition_create_(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Move = pool.get('stock.move')
+        today = Date.today()
+        if Move.search([
+                    ('from_location.type', '=', 'production'),
+                    ('to_location.type', '=', 'storage'),
+                    ('state', '=', 'draft'),
+                    ('planned_date', '<', today),
+                    ], order=[]):
+            self.raise_user_warning('%s@%s' % (self.__name__, today),
+                'late_productions')
+        return super(StockSupply, self).transition_create_()
+
+    @property
+    def _production_parameters(self):
+        return {}
+
+    def generate_production(self, clean):
+        pool = Pool()
+        Production = pool.get('production')
+        return Production.generate_requests(
+            clean=clean, **self._production_parameters)
+
+    def transition_production(self):
+        return self.next_action('production')

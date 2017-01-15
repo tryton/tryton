@@ -1,3 +1,4 @@
+* Merge supply into one wizard
 * Do not create production request if other order point exists
 
 Version 4.2.0 - 2016-11-28

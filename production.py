@@ -3,14 +3,12 @@
 import datetime
 from collections import defaultdict
 
-from trytond.model import ModelView, fields
+from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.tools import grouped_slice
 
-__all__ = ['Configuration', 'Production',
-    'CreateProductionRequestStart', 'CreateProductionRequest']
+__all__ = ['Configuration', 'Production']
 
 
 class Configuration:
@@ -119,8 +117,6 @@ class Production:
                         req.save()
                         req.set_moves()
                         requests.append(req)
-        if requests:
-            cls.generate_requests(False, warehouses)
         return requests
 
     @classmethod
@@ -211,52 +207,3 @@ class Production:
                 current_qties[product_id] += qty
 
         return shortages
-
-
-class CreateProductionRequestStart(ModelView):
-    'Create Production Request'
-    __name__ = 'production.create_request.start'
-
-
-class CreateProductionRequest(Wizard):
-    'Create Production Requests'
-    __name__ = 'production.create_request'
-    start = StateView('production.create_request.start',
-        'stock_supply_production.production_create_request_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Create', 'create_', 'tryton-ok', default=True),
-            ])
-    create_ = StateAction('stock_supply_production.act_production_request')
-
-    @classmethod
-    def __setup__(cls):
-        super(CreateProductionRequest, cls).__setup__()
-        cls._error_messages.update({
-                'late_productions': 'There are some late productions.',
-                })
-
-    @property
-    def _requests_parameters(self):
-        return {}
-
-    def do_create_(self, action):
-        pool = Pool()
-        Date = pool.get('ir.date')
-        Move = pool.get('stock.move')
-        Production = pool.get('production')
-
-        today = Date.today()
-        if Move.search([
-                    ('from_location.type', '=', 'production'),
-                    ('to_location.type', '=', 'storage'),
-                    ('state', '=', 'draft'),
-                    ('planned_date', '<', today),
-                    ], order=[]):
-            self.raise_user_warning('%s@%s' % (self.__name__, today),
-                'late_productions')
-
-        Production.generate_requests(**self._requests_parameters)
-        return action, {}
-
-    def transition_create_(self):
-        return 'end'

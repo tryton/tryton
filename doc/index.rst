@@ -22,6 +22,6 @@ It adds a new type of Order Point:
   quantity is reached at any time on the warehouse it will result in a
   production request.
 
-The production requests are created by the schedulers with respect to stock
+The production requests are created by the supply wizard with respect to stock
 levels and existing requests. The stock levels are computed on the supply
 period define in the production configuration.

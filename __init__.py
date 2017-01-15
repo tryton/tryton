@@ -13,9 +13,8 @@ def register():
         LocationLeadTime,
         Configuration,
         Production,
-        CreateProductionRequestStart,
         Product,
         module='stock_supply_production', type_='model')
     Pool.register(
-        CreateProductionRequest,
+        StockSupply,
         module='stock_supply_production', type_='wizard')
