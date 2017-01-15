@@ -7,6 +7,7 @@ from .product import *
 from .purchase_request import *
 from .shipment import *
 from .location import *
+from . import stock
 
 
 def register():
@@ -16,13 +17,11 @@ def register():
         ProductSupplier,
         PurchaseConfiguration,
         PurchaseRequest,
-        CreatePurchaseRequestStart,
         ShipmentInternal,
-        CreateShipmentInternalStart,
         Location,
         LocationLeadTime,
+        stock.StockSupplyStart,
         module='stock_supply', type_='model')
     Pool.register(
-        CreatePurchaseRequest,
-        CreateShipmentInternal,
+        stock.StockSupply,
         module='stock_supply', type_='wizard')

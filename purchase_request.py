@@ -4,15 +4,12 @@ import datetime
 import operator
 from collections import defaultdict
 
-from trytond.model import ModelView, fields
-from trytond.wizard import Wizard, StateView, StateAction, Button
+from trytond.model import fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
-__all__ = ['PurchaseRequest', 'PurchaseConfiguration',
-    'CreatePurchaseRequestStart', 'CreatePurchaseRequest',
-    ]
+__all__ = ['PurchaseRequest', 'PurchaseConfiguration']
 
 
 class PurchaseConfiguration:
@@ -347,50 +344,3 @@ class PurchaseRequest:
 
         return dict((x, (res_dates.get(x), res_qties.get(x)))
             for x in product_ids)
-
-
-class CreatePurchaseRequestStart(ModelView):
-    'Create Purchase Request'
-    __name__ = 'purchase.request.create.start'
-
-
-class CreatePurchaseRequest(Wizard):
-    'Create Purchase Requests'
-    __name__ = 'purchase.request.create'
-    start = StateView('purchase.request.create.start',
-        'stock_supply.purchase_request_create_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Create', 'create_', 'tryton-ok', default=True),
-            ])
-    create_ = StateAction('purchase_request.act_purchase_request_form')
-
-    @classmethod
-    def __setup__(cls):
-        super(CreatePurchaseRequest, cls).__setup__()
-        cls._error_messages.update({
-                'late_supplier_moves': 'There are some late supplier moves.',
-                })
-
-    @property
-    def _requests_parameters(self):
-        return {}
-
-    def do_create_(self, action):
-        pool = Pool()
-        PurchaseRequest = pool.get('purchase.request')
-        Move = pool.get('stock.move')
-        Date = pool.get('ir.date')
-        today = Date.today()
-        if Move.search([
-                    ('from_location.type', '=', 'supplier'),
-                    ('to_location.type', '=', 'storage'),
-                    ('state', '=', 'draft'),
-                    ('planned_date', '<', today),
-                    ], order=[]):
-            self.raise_user_warning('%s@%s' % (self.__name__, today),
-                'late_supplier_moves')
-        PurchaseRequest.generate_requests(**self._requests_parameters)
-        return action, {}
-
-    def transition_create_(self):
-        return 'end'

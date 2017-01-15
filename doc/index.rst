@@ -26,7 +26,7 @@ can be:
   minimal quantity is reached on the warehouse it will result in a
   purchase request.
 
-The internal shipments and purchase requests are created by schedulers
+The internal shipments and purchase requests are created by the supply wizard
 with respect to stock levels and existing shipments and requests. The
 stock levels are computed between the next two supply dates computed over the
 Supply Period from the configuration (default: 1 day). If the stock level of a

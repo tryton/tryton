@@ -143,7 +143,7 @@ There is no purchase request::
 
 Create the purchase request::
 
-    >>> create_pr = Wizard('purchase.request.create')
+    >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
 There is now a draft purchase request::
