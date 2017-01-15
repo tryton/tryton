@@ -38,7 +38,9 @@ class LocationLeadTime:
         lead_time = datetime.timedelta(0)
         lead_times = cls.search([])
         if lead_times:
-            lead_time = sum(r.lead_time for r in lead_times if r.lead_time)
+            lead_time = sum(
+                (r.lead_time for r in lead_times if r.lead_time),
+                datetime.timedelta(0))
         extra_lead_times = cls._get_extra_lead_times()
         if extra_lead_times:
             lead_time += max(extra_lead_times)
