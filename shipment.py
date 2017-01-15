@@ -157,8 +157,4 @@ class ShipmentInternal(ModelSQL, ModelView):
             cls.save(shipments)
             # Split moves through transit to get accurate dates
             cls._set_transit(shipments)
-            cls.generate_internal_shipment(False)
-            # Remove transit split as they are only requests
-            Move.delete([m for s in shipments for m in s.moves
-                    if m.from_location == s.transit_location])
         return shipments

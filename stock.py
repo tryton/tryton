@@ -43,6 +43,7 @@ class StockSupply(Wizard):
     def transition_create_(self):
         pool = Pool()
         Move = pool.get('stock.move')
+        ShipmentInternal = pool.get('stock.shipment.internal')
         Date = pool.get('ir.date')
         today = Date.today()
         if Move.search([
@@ -61,6 +62,20 @@ class StockSupply(Wizard):
             for type_ in self.types():
                 created |= bool(getattr(self, 'generate_%s' % type_)(first))
             first = False
+
+        # Remove transit split of request
+        shipments = ShipmentInternal.search([
+                ('state', '=', 'request'),
+                ])
+        Move.delete([m for s in shipments for m in s.moves
+                if m.from_location == s.transit_location])
+        for shipment in shipments:
+            Move.write([m for m in shipment.moves], {
+                    'from_location': shipment.from_location.id,
+                    'to_location': shipment.to_location.id,
+                    'planned_date': shipment.planned_date,
+                    })
+
         return self.types()[0]
 
     def generate_internal(self, clean):
