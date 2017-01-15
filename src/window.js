@@ -548,13 +548,9 @@
 
                 var callback = function(result) {
                     if (result) {
-                        screen.save_current().then(function() {
-                            var record = screen.current_record;
-                            this.callback([[record.id,
-                                record._values.rec_name || '']]);
-                        }.bind(this), function() {
-                            this.callback(null);
-                        }.bind(this));
+                        var record = screen.current_record;
+                        this.callback([[record.id,
+                            record._values.rec_name || '']]);
                     } else {
                         this.callback(null);
                     }
@@ -562,6 +558,7 @@
                 this.el.modal('hide');
                 new Sao.Window.Form(screen, callback.bind(this), {
                     new_: true,
+                    save_current: true,
                     title: this.title
                 });
                 return;
