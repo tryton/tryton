@@ -1,6 +1,17 @@
 @import "variables";
 @import "mixins";
 
+#tablist {
+    & > li {
+        max-width: 10em;
+        & > a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
 .tab-form, .tab-board {
     & nav.toolbar {
         margin-bottom: 1px;

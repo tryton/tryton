@@ -71,7 +71,15 @@
             }))).append(jQuery('<ul/>', {
                 'class': 'dropdown-menu',
                 'role': 'menu'
-            }))).append(jQuery('<div/>', {
+            })).append(jQuery('<button/>', {
+                'type': 'button',
+                'class': 'close visible-xs visible-sm',
+                'aria-label': Sao.i18n.gettext('Close')
+            }).append(jQuery('<span/>', {
+                'aria-hidden': true
+            }).append('&times;')).click(function() {
+                this.close();
+            }.bind(this)))).append(jQuery('<div/>', {
                 'class': 'btn-toolbar navbar-right',
                 'role': 'toolbar'
             })));
@@ -141,15 +149,16 @@
         },
         close: function() {
             var tabs = jQuery('#tabs');
-            var tab = tabs.find('#nav-' + this.id);
+            var tablist = jQuery('#tablist');
+            var tab = tablist.find('#nav-' + this.id);
             var content = tabs.find('#' + this.id);
-            tabs.find('a[href="#' + this.id + '"]').tab('show');
+            tablist.find('a[href="#' + this.id + '"]').tab('show');
             return this._close_allowed().then(function() {
                 var next = tab.next();
                 if (!next.length) {
                     next = tab.prev();
                 }
-                tab.remove();
+                tab.tooltip('destroy').remove();
                 content.remove();
                 Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(this), 1);
                 if (next) {
@@ -163,6 +172,7 @@
         },
         set_name: function(name) {
             this.name_el.text(name);
+            this.name_el.parents('li').first().attr('title', name).tooltip();
         }
     });
 
@@ -238,6 +248,8 @@
 
     Sao.Tab.add = function(tab) {
         var tabs = jQuery('#tabs');
+        var tablist = jQuery('#tablist');
+        var tabcontent = jQuery('#tabcontent');
         var tab_link = jQuery('<a/>', {
             'aria-controls': tab.id,
             'role': 'tab',
@@ -256,15 +268,17 @@
         .append(tab.name_el);
         jQuery('<li/>', {
             'role': 'presentation',
+            'data-toggle': 'tooltip',
+            'data-placement': 'bottom',
             id: 'nav-' + tab.id
         }).append(tab_link)
-        .appendTo(tabs.find('> .nav-tabs'));
+        .appendTo(tablist);
         jQuery('<div/>', {
             role: 'tabpanel',
             'class': 'tab-pane',
             id: tab.id
         }).html(tab.el)
-        .appendTo(tabs.find('> .tab-content'));
+        .appendTo(tabcontent);
         tab_link.on('shown.bs.tab', function() {
             Sao.View.resize(tab.el);
         });

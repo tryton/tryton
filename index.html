@@ -63,6 +63,8 @@ this repository contains the full copyright notices and license terms. -->
                     <ul class="nav navbar-nav navbar-right">
                         <li id="user-logout"></li>
                     </ul>
+                    <ul id="tablist" class="nav navbar-nav nav-tabs nav-tabs-justified" role="tablist">
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -73,9 +75,7 @@ this repository contains the full copyright notices and license terms. -->
                     style="overflow-y: auto; height: 100%;"></div>
                 <div class="col-xs-12 col-md-9" style="overflow-y: auto; height: 100%;">
                     <div id="tabs" role="tabpanel">
-                        <ul class="nav nav-tabs" role="tablist">
-                        </ul>
-                        <div class="tab-content">
+                        <div id="tabcontent" class="tab-content">
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ this repository contains the full copyright notices and license terms. -->
                         jQuery('.row-offcanvas').toggleClass('active');
                         });
                     jQuery('#tabs').on('ready', function() {
-                        if (jQuery(this).find('> .nav-tabs').children().length) {
+                        if (jQuery('#tablist').children().length) {
                             jQuery('.row-offcanvas').removeClass('active');
                         } else {
                             jQuery('.row-offcanvas').addClass('active');
