@@ -114,14 +114,16 @@ class WinSearch(NoModal):
                 context=self.context, mode=['form'])
 
             def callback(result):
-                if result and screen.save_current():
+                if result:
                     record = screen.current_record
                     res = [(record.id, record.value.get('rec_name', ''))]
                     self.callback(res)
                 else:
                     self.callback(None)
             self.destroy()
-            WinForm(screen, callback, new=True, title=self.title)
+            WinForm(
+                screen, callback, new=True, save_current=True,
+                title=self.title)
             return
         if res:
             group = self.screen.group
