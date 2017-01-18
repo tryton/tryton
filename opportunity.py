@@ -5,7 +5,7 @@ import datetime
 
 from sql import Literal, Null
 from sql.aggregate import Max, Count, Sum
-from sql.conditionals import Case
+from sql.conditionals import Case, Coalesce
 from sql.functions import Extract
 
 from trytond.model import ModelView, ModelSQL, Workflow, fields, \
@@ -71,9 +71,13 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                 ['converted', 'lost', 'cancelled']),
             },
         depends=['state'])
-    employee = fields.Many2One('company.employee', 'Employee', required=True,
-            states=_STATES_STOP, depends=['state', 'company'],
-            domain=[('company', '=', Eval('company'))])
+    employee = fields.Many2One('company.employee', 'Employee',
+        states={
+            'readonly': _STATES_STOP['readonly'],
+            'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
+        },
+        depends=['state', 'company'],
+        domain=[('company', '=', Eval('company'))])
     start_date = fields.Date('Start Date', required=True, select=True,
         states=_STATES_START, depends=_DEPENDS_START)
     end_date = fields.Date('End Date', select=True,
@@ -151,6 +155,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                     [sql_table.probability / 100.0]))
             table.drop_constraint('check_percentage')
             table.drop_column('probability')
+
+        # Migration from 4.2: make employee not required
+        table.not_null_action('employee', action='remove')
 
     @classmethod
     def __setup__(cls):
@@ -609,7 +616,7 @@ class SaleOpportunityEmployee(SaleOpportunityReportMixin, ModelSQL, ModelView):
         query = super(SaleOpportunityEmployee, cls).table_query()
         opportunity, = query.from_
         query.columns += (
-            opportunity.employee.as_('id'),
+            Coalesce(opportunity.employee, 0).as_('id'),
             opportunity.employee,
             )
         where = Literal(True)
@@ -694,7 +701,7 @@ class SaleOpportunityEmployeeMonthly(
         query.columns += (
             Max(Extract('MONTH', opportunity.start_date)
                 + Extract('YEAR', opportunity.start_date) * 100
-                + opportunity.employee * 1000000
+                + Coalesce(opportunity.employee, 0) * 1000000
                 ).cast(type_id).as_('id'),
             year_column,
             month_column,

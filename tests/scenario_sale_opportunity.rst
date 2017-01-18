@@ -98,7 +98,6 @@ Create an lead::
     >>> config.user = sale_opportunity_user.id
     >>> Opportunity = Model.get('sale.opportunity')
     >>> opportunity = Opportunity()
-    >>> opportunity.employee = employee
     >>> opportunity.description = 'Opportunity'
     >>> opportunity.save()
     >>> opportunity.state
@@ -110,6 +109,7 @@ Convert to opportunity::
     >>> opportunity.address, = customer.addresses
     >>> opportunity.payment_term = payment_term
     >>> opportunity.amount = Decimal(100)
+    >>> opportunity.employee = employee
     >>> opportunity.click('opportunity')
     >>> opportunity.state
     u'opportunity'
