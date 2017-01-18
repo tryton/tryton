@@ -697,3 +697,25 @@ invoices::
     5.0
     >>> stock_move.state
     u'draft'
+
+Deleting a line from a invoice should recreate it::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> line = sale.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 10.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> invoice, = sale.invoices
+    >>> config.user = account_user.id
+    >>> invoice_line, = invoice.lines
+    >>> invoice.lines.remove(invoice_line)
+    >>> invoice.click('post')
+    >>> config.user = sale_user.id
+    >>> sale.reload()
+    >>> new_invoice, = sale.invoices
+    >>> new_invoice.number
+    >>> len(new_invoice.lines)
+    1

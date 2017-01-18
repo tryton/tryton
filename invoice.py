@@ -156,3 +156,16 @@ class InvoiceLine:
         models = super(InvoiceLine, cls)._get_origin()
         models.append('sale.line')
         return models
+
+    @classmethod
+    def delete(cls, lines):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        with Transaction().set_context(_check_access=False):
+            lines = cls.browse(lines)
+            invoices = (l.invoice for l in lines
+                if l.type == 'line' and l.invoice)
+            sales = [s for i in invoices for s in i.sales]
+        super(InvoiceLine, cls).delete(lines)
+        with Transaction().set_context(_check_access=False):
+            Sale.process(sales)
