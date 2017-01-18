@@ -3,14 +3,12 @@
 
 from trytond.pool import Pool
 from .purchase import *
-from .invoice import *
 
 
 def register():
     Pool.register(
         Purchase,
         PurchaseIgnoredInvoiceLine,
-        InvoiceLine,
         module='purchase_invoice_line_standalone', type_='model')
     Pool.register(
         HandleInvoiceException,
