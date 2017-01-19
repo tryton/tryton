@@ -81,6 +81,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                 ('provisioning_location', '!=', None),
                 ])
         id2location.update({l.id: l for l in provisioned})
+        location_ids = id2location.keys()
 
         # ordered by ids to speedup reduce_ids in products_by_location
         if provisioned:
@@ -92,32 +93,36 @@ class ShipmentInternal(ModelSQL, ModelView):
             product_ids = id2product.keys()
             product_ids.sort()
 
+        with Transaction().set_context(forecast=True, stock_date_end=today):
+            pbl = Product.products_by_location(
+                location_ids, product_ids, with_childs=True)
+
         shipments = []
         date = today
         end_date = date + lead_time
+        current_qties = pbl.copy()
         while date <= end_date:
-            with Transaction().set_context(forecast=True, stock_date_end=date):
-                pbl = Product.products_by_location(id2location.keys(),
-                    product_ids, with_childs=True)
-
             # Create a list of moves to create
             moves = {}
             for location in id2location.itervalues():
                 for product_id in product_ids:
-                    qty = pbl.get((location.id, product_id), 0)
+                    qty = current_qties.get((location.id, product_id), 0)
                     op = product2op.get((location.id, product_id))
                     if op:
                         min_qty, max_qty = op.min_quantity, op.max_quantity
-                        provisioning_location = op.provisioning_location
+                        prov_location = op.provisioning_location
                     elif location and location.provisioning_location:
                         min_qty, max_qty = 0, 0
-                        provisioning_location = location.provisioning_location
+                        prov_location = location.provisioning_location
                     else:
                         continue
                     if qty < min_qty:
-                        key = (
-                            provisioning_location.id, location.id, product_id)
+                        key = (prov_location.id, location.id, product_id)
                         moves[key] = max_qty - qty
+                        # Update quantities for move to create
+                        current_qties[
+                            (prov_location.id, product_id)] -= moves[key]
+                        current_qties[(location.id, product_id)] += moves[key]
 
             # Group moves by {from,to}_location
             to_create = {}
@@ -153,6 +158,17 @@ class ShipmentInternal(ModelSQL, ModelView):
                     shipment.on_change_with_planned_start_date())
                 shipments.append(shipment)
             date += datetime.timedelta(1)
+
+            # Update quantities with next moves
+            with Transaction().set_context(
+                    forecast=True,
+                    stock_date_start=date,
+                    stock_date_end=date):
+                pbl = Product.products_by_location(
+                    location_ids, product_ids, with_childs=True)
+            for key, qty in pbl.iteritems():
+                current_qties[key] += qty
+
         if shipments:
             cls.save(shipments)
             # Split moves through transit to get accurate dates
