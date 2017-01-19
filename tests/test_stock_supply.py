@@ -129,6 +129,11 @@ def suite():
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
+            'scenario_stock_internal_supply_lead_time.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
             'scenario_stock_supply_purchase_request.rst',
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,

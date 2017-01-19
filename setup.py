@@ -125,5 +125,6 @@ setup(name=name,
     convert_2to3_doctests=[
         'tests/scenario_stock_supply_purchase_request.rst',
         'tests/scenario_stock_internal_supply.rst',
+        'tests/scenario_stock_internal_supply_lead_time.rst',
         ],
     )
