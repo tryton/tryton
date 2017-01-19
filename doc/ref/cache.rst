@@ -14,6 +14,11 @@ be used to limit the number of values cached and the `context` parameter
 is used to indicate if the cache depends on the user context and is true
 by default.
 
+.. warning::
+    As there is no deepcopy of the values cached, they must never be mutated
+    after being set in or retrieved from the cache.
+..
+
 .. method:: get(key[, default])
 
 Retrieve the value of the key in the cache. If a `default` is specified it
