@@ -157,7 +157,7 @@ class User:
             except ldap3.LDAPException:
                 logger.error('LDAPError when setting preferences',
                     exc_info=True)
-        super(User, cls).set_preferences(values, old_password=old_password)
+        super(User, cls).set_preferences(values, parameters)
 
     @classmethod
     def _login_ldap(cls, login, parameters):
