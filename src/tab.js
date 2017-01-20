@@ -112,6 +112,7 @@
                 }))
                 .appendTo(group)
                 .data('toggle', 'tooltip')
+                .data('placement', 'bottom')
                 .tooltip();
                 if (tool[3]) {
                     this.buttons[tool[0]].click(this[tool[3]].bind(this));
@@ -410,6 +411,7 @@
                             'class': 'caret'
                         }))
                         .data('toggle', 'tooltip')
+                        .data('placement', 'bottom')
                         .tooltip())
                     .append(jQuery('<ul/>', {
                         'class': 'dropdown-menu',
