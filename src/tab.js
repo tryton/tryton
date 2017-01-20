@@ -399,7 +399,8 @@
                         'aria-expanded': false,
                         'aria-haspopup': true,
                         'title': menu_action[2],
-                        'id': menu_action[0]
+                        'id': menu_action[0],
+                        'disabled': !toolbars[menu_action[0]].length
                     })
                         .append(jQuery('<span/>', {
                             'class': 'glyphicon ' + menu_action[1],
