@@ -392,6 +392,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         default = default.copy()
         default['inventory_moves'] = None
         default['incoming_moves'] = None
+        default.setdefault('number')
         return super(ShipmentIn, cls).copy(shipments, default=default)
 
     @classmethod
@@ -719,6 +720,14 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                 cls.raise_user_error('delete_cancel', shipment.rec_name)
         Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentInReturn, cls).delete(shipments)
+
+    @classmethod
+    def copy(cls, shipments, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default.setdefault('number')
+        return super(ShipmentInReturn, cls).copy(shipments, default=default)
 
     @classmethod
     @ModelView.button
@@ -1327,6 +1336,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         default = default.copy()
         default['inventory_moves'] = None
         default['outgoing_moves'] = None
+        default.setdefault('number')
         return super(ShipmentOut, cls).copy(shipments, default=default)
 
     @classmethod
@@ -1686,6 +1696,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         default = default.copy()
         default['inventory_moves'] = None
         default['incoming_moves'] = None
+        default.setdefault('number')
         return super(ShipmentOutReturn, cls).copy(shipments, default=default)
 
     @classmethod
