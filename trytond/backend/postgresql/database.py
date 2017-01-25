@@ -295,6 +295,9 @@ class Database(DatabaseInterface):
                 self.put_connection(connection)
         return self._has_returning
 
+    def has_select_for(self):
+        return True
+
 register_type(UNICODE)
 if PYDATE:
     register_type(PYDATE)

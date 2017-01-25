@@ -16,11 +16,15 @@ class SequenceTestCase(unittest.TestCase):
     def setUpClass(cls):
         activate_module('tests')
 
+    @staticmethod
+    def get_model():
+        pool = Pool()
+        return pool.get('ir.sequence')
+
     @with_transaction()
     def test_incremental(self):
         'Test incremental'
-        pool = Pool()
-        Sequence = pool.get('ir.sequence')
+        Sequence = self.get_model()
 
         sequence, = Sequence.create([{
                     'name': 'Test incremental',
@@ -48,8 +52,7 @@ class SequenceTestCase(unittest.TestCase):
     @with_transaction()
     def test_decimal_timestamp(self):
         'Test Decimal Timestamp'
-        pool = Pool()
-        Sequence = pool.get('ir.sequence')
+        Sequence = self.get_model()
 
         sequence, = Sequence.create([{
                     'name': 'Test decimal timestamp',
@@ -73,8 +76,7 @@ class SequenceTestCase(unittest.TestCase):
     @with_transaction()
     def test_hexadecimal_timestamp(self):
         'Test Hexadecimal Timestamp'
-        pool = Pool()
-        Sequence = pool.get('ir.sequence')
+        Sequence = self.get_model()
 
         sequence, = Sequence.create([{
                     'name': 'Test hexadecimal timestamp',
@@ -99,8 +101,7 @@ class SequenceTestCase(unittest.TestCase):
     @with_transaction()
     def test_prefix_suffix(self):
         'Test prefix/suffix'
-        pool = Pool()
-        Sequence = pool.get('ir.sequence')
+        Sequence = self.get_model()
 
         sequence, = Sequence.create([{
                     'name': 'Test incremental',
@@ -121,5 +122,19 @@ class SequenceTestCase(unittest.TestCase):
                 '2010-08-15/2/15.08.2010')
 
 
+class SequenceStrictTestCase(SequenceTestCase):
+    "Test Sequence Strict"
+
+    @staticmethod
+    def get_model():
+        pool = Pool()
+        return pool.get('ir.sequence.strict')
+
+
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(SequenceTestCase)
+    suite_ = unittest.TestSuite()
+    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            SequenceTestCase))
+    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            SequenceStrictTestCase))
+    return suite_

@@ -3,7 +3,7 @@
 from string import Template
 import time
 from itertools import izip
-from sql import Flavor
+from sql import Flavor, Literal, For
 
 from ..model import ModelView, ModelSQL, fields, Check
 from ..tools import datetime_strftime
@@ -354,7 +354,7 @@ class Sequence(ModelSQL, ModelView):
         return ''
 
     @classmethod
-    def get_id(cls, domain):
+    def get_id(cls, domain, _lock=False):
         '''
         Return sequence value for the domain
         '''
@@ -370,6 +370,19 @@ class Sequence(ModelSQL, ModelView):
                     sequence, = cls.search(domain, limit=1)
                 except TypeError:
                     cls.raise_user_error('missing')
+                if _lock:
+                    transaction = Transaction()
+                    database = transaction.database
+                    connection = transaction.connection
+                    if not database.has_select_for():
+                        database.lock(connection, cls._table)
+                    else:
+                        table = cls.__table__()
+                        query = table.select(Literal(1),
+                            where=table.id == sequence.id,
+                            for_=For('UPDATE', nowait=True))
+                        cursor = connection.cursor()
+                        cursor.execute(*query)
                 date = Transaction().context.get('date')
                 return '%s%s%s' % (
                     cls._process(sequence.prefix, date=date),
@@ -390,6 +403,4 @@ class SequenceStrict(Sequence):
 
     @classmethod
     def get_id(cls, clause):
-        transaction = Transaction()
-        transaction.database.lock(transaction.connection, cls._table)
-        return super(SequenceStrict, cls).get_id(clause)
+        return super(SequenceStrict, cls).get_id(clause, _lock=True)

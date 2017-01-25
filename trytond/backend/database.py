@@ -151,3 +151,7 @@ class DatabaseInterface(object):
     def has_multirow_insert(self):
         'Return True if database supports multirow insert'
         return False
+
+    def has_select_for(self):
+        "Return if database supports FOR UPDATE/SHARE clause in SELECT."
+        return False
