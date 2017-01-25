@@ -101,10 +101,8 @@ steps:
 
     * Set the zoom to 100% (View>Zoom)
 
-    * Set the document in read-only mode
-
- (``Tools>Options>OpenOffice.org>Security``) (Decreases the time it takes to
- open the document.)
+    * Set the document in read-only mode (``File>Properties>Security``)
+      (Decreases the time it takes to open the document.)
 
  - Usage
 
