@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
+
+from sql import Literal, For
+
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -93,6 +96,20 @@ class Period(Workflow, ModelSQL, ModelView):
         Location = pool.get('stock.location')
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
+        transaction = Transaction()
+        connection = transaction.connection
+        database = transaction.database
+
+        # XXX: A move in the period could be inserted before the lock
+        # from a different transaction. It will not be taken in the pbl
+        # computation but it is quite rare because only past periods are
+        # closed.
+        database.lock(connection, Move._table)
+        if database.has_select_for():
+            move = Move.__table__()
+            query = move.select(Literal(1), for_=For('UPDATE', nowait=True))
+            with connection.cursor() as cursor:
+                cursor.execute(*query)
 
         locations = Location.search([
                 ('type', 'not in', ['warehouse', 'view']),

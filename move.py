@@ -7,7 +7,7 @@ from functools import partial
 from collections import OrderedDict, defaultdict
 from itertools import groupby
 
-from sql import Literal, Union, Column, Null
+from sql import Literal, Union, Column, Null, For
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 from sql.operators import Concat
@@ -778,8 +778,10 @@ class Move(Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
         Date = pool.get('ir.date')
         Location = pool.get('stock.location')
-
-        Transaction().database.lock(Transaction().connection, cls._table)
+        Period = pool.get('stock.period')
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
 
         if with_childs:
             locations = Location.search([
@@ -788,12 +790,42 @@ class Move(Workflow, ModelSQL, ModelView):
                     ])
         else:
             locations = list(set((m.from_location for m in moves)))
+        location_ids = [l.id for l in locations]
+        product_ids = list(set((m.product.id for m in moves)))
+        stock_date_end = Date.today()
+
+        if database.has_select_for():
+            table = cls.__table__()
+            query = table.select(Literal(1),
+                where=(table.to_location.in_(location_ids)
+                    | table.from_location.in_(location_ids))
+                & table.product.in_(product_ids),
+                for_=For('UPDATE', nowait=True))
+
+            PeriodCache = Period.get_cache(grouping)
+            if PeriodCache:
+                periods = Period.search([
+                        ('date', '<', stock_date_end),
+                        ('state', '=', 'closed'),
+                        ], order=[('date', 'DESC')], limit=1)
+                if periods:
+                    period, = periods
+                    query.where &= Coalesce(
+                        table.effective_date,
+                        table.planned_date,
+                        datetime.date.max) > period.date
+
+            with connection.cursor() as cursor:
+                cursor.execute(*query)
+        else:
+            database.lock(connection, cls._table)
+
         with Transaction().set_context(
-                stock_date_end=Date.today(),
+                stock_date_end=stock_date_end,
                 stock_assign=True):
             pbl = Product.products_by_location(
-                location_ids=[l.id for l in locations],
-                product_ids=[m.product.id for m in moves],
+                location_ids=location_ids,
+                product_ids=product_ids,
                 grouping=grouping)
 
         def get_key(move, location):
