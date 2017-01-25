@@ -725,15 +725,17 @@ class ModelSQL(ModelStorage):
 
         for column in columns:
             # Split the output name to remove SQLite type detection
-            field = column.output_name.split()[0]
-            if field == '_timestamp':
+            fname = column.output_name.split()[0]
+            if fname == '_timestamp':
                 continue
-            if (getattr(cls._fields[field], 'translate', False)
+            field = cls._fields[fname]
+            if (getattr(field, 'translate', False)
                     and not hasattr(field, 'get')):
-                translations = Translation.get_ids(cls.__name__ + ',' + field,
-                    'model', Transaction().language, ids)
+                translations = Translation.get_ids(
+                    cls.__name__ + ',' + fname, 'model',
+                    Transaction().language, ids)
                 for row in result:
-                    row[field] = translations.get(row['id']) or row[field]
+                    row[fname] = translations.get(row['id']) or row[fname]
 
         # all fields for which there is a get attribute
         getter_fields = [f for f in
