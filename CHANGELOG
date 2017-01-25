@@ -1,3 +1,4 @@
+* Add support for size on Many2Many
 * Allow to show plain text in password field
 
 Version 4.2.0 - 2016-11-28
