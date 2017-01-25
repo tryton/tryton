@@ -2518,7 +2518,7 @@ function eval_pyson(value){
             var field = this.field();
             if (record && field) {
                 var field_size = record.expr_eval(this.attributes.size);
-                o2m_size = field.get_eval(record);
+                o2m_size = field.get_eval(record).length;
                 size_limit = (((field_size !== undefined) &&
                             (field_size !== null)) &&
                         (o2m_size >= field_size >= 0));
