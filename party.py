@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from sql import Null
+from sql import Null, Literal, For
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -103,12 +103,19 @@ class Party:
         line = MoveLine.__table__()
         assert deposit_account.kind == 'deposit'
 
-        transaction.database.lock(transaction.connection, MoveLine._table)
+        where = ((line.account == deposit_account.id)
+            & (line.party == self.id)
+            & (line.reconciliation == Null))
+        if transaction.database.has_select_for():
+            cursor.execute(*line.select(
+                    Literal(1),
+                    where=where,
+                    for_=For('UPDATE', nowait=True)))
+        else:
+            transaction.database.lock(transaction.connection, MoveLine._table)
         cursor.execute(*line.select(
                 Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
-                where=(line.account == deposit_account.id)
-                & (line.party == self.id)
-                & (line.reconciliation == Null)))
+                where=where))
         amount, = cursor.fetchone()
         if amount and not isinstance(amount, Decimal):
             currency = deposit_account.company.currency
