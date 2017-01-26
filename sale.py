@@ -11,13 +11,18 @@ __all__ = ['Configuration', 'Sale', 'SaleLine']
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
-    sale_shipment_cost_method = fields.Property(fields.Selection([
-                ('order', 'On Order'),
-                ('shipment', 'On Shipment'),
-                ], 'Sale Shipment Cost Method',
+    sale_shipment_cost_method = fields.Property(fields.Selection(
+            'get_sale_shipment_cost_methods', 'Sale Shipment Cost Method',
             states={
                 'required': Bool(Eval('context', {}).get('company')),
                 }))
+
+    @classmethod
+    def get_sale_shipment_cost_methods(cls):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        field_name = 'shipment_cost_method'
+        return Sale.fields_get([field_name])[field_name]['selection']
 
     @staticmethod
     def default_sale_shipment_cost_method():
