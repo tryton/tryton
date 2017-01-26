@@ -8,12 +8,20 @@ this repository contains the full copyright notices and license terms. -->
     <field name="converted"/>
     <field name="won"/>
     <field name="lost"/>
-    <field name="conversion_rate"/>
-    <field name="winning_rate"/>
+    <field name="conversion_rate" factor="100">
+        <suffix string="%" name="conversion_rate"/>
+    </field>
+    <field name="winning_rate" factor="100">
+        <suffix string="%" name="winning_rate"/>
+    </field>
     <field name="amount"/>
     <field name="converted_amount"/>
     <field name="won_amount"/>
     <field name="currency"/>
-    <field name="conversion_amount_rate"/>
-    <field name="winning_amount_rate"/>
+    <field name="conversion_amount_rate" factor="100">
+        <suffix string="%" name="conversion_amount_rate"/>
+    </field>
+    <field name="winning_amount_rate" factor="100">
+        <suffix string="%" name="winning_amount_rate"/>
+    </field>
 </tree>

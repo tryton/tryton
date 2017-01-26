@@ -515,9 +515,9 @@ class SaleOpportunityReportMixin:
     number = fields.Integer('Number')
     converted = fields.Integer('Converted')
     conversion_rate = fields.Function(fields.Float('Conversion Rate',
-        help='In %'), 'get_conversion_rate')
+        digits=(1, 4)), 'get_conversion_rate')
     won = fields.Integer('Won')
-    winning_rate = fields.Function(fields.Float('Winning Rate', help='In %'),
+    winning_rate = fields.Function(fields.Float('Winning Rate', digits=(1, 4)),
         'get_winning_rate')
     lost = fields.Integer('Lost')
     company = fields.Many2One('company.company', 'Company')
@@ -531,12 +531,12 @@ class SaleOpportunityReportMixin:
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits'])
     conversion_amount_rate = fields.Function(fields.Float(
-        'Conversion Amount Rate', help='In %'), 'get_conversion_amount_rate')
+        'Conversion Amount Rate', digits=(1, 4)), 'get_conversion_amount_rate')
     won_amount = fields.Numeric('Won Amount',
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
     winning_amount_rate = fields.Function(fields.Float(
-            'Winning Amount Rate', help='In %'), 'get_winning_amount_rate')
+            'Winning Amount Rate', digits=(1, 4)), 'get_winning_amount_rate')
 
     @staticmethod
     def _converted_state():
@@ -552,13 +552,15 @@ class SaleOpportunityReportMixin:
 
     def get_conversion_rate(self, name):
         if self.number:
-            return float(self.converted) / self.number * 100.0
+            digits = getattr(self.__class__, name).digits[1]
+            return round(float(self.converted) / self.number, digits)
         else:
             return 0.0
 
     def get_winning_rate(self, name):
         if self.number:
-            return float(self.won) / self.number * 100.0
+            digits = getattr(self.__class__, name).digits[1]
+            return round(float(self.won) / self.number, digits)
         else:
             return 0.0
 
@@ -570,13 +572,16 @@ class SaleOpportunityReportMixin:
 
     def get_conversion_amount_rate(self, name):
         if self.amount:
-            return float(self.converted_amount) / float(self.amount) * 100.0
+            digits = getattr(self.__class__, name).digits[1]
+            return round(
+                float(self.converted_amount) / float(self.amount), digits)
         else:
             return 0.0
 
     def get_winning_amount_rate(self, name):
         if self.amount:
-            return float(self.won_amount) / float(self.amount) * 100.0
+            digits = getattr(self.__class__, name).digits[1]
+            return round(float(self.won_amount) / float(self.amount), digits)
         else:
             return 0.0
 
