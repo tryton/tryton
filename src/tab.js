@@ -155,9 +155,9 @@
             var content = tabs.find('#' + this.id);
             tablist.find('a[href="#' + this.id + '"]').tab('show');
             return this._close_allowed().then(function() {
-                var next = tab.next();
+                var next = tab.nextAll('li').first();
                 if (!next.length) {
-                    next = tab.prev();
+                    next = tab.prevAll('li').first();
                 }
                 tab.tooltip('destroy').remove();
                 content.remove();
@@ -225,7 +225,7 @@
         return jQuery.when();
     };
     Sao.Tab.tabs.get_current = function() {
-        var tabs = jQuery('#tabs > ul');
+        var tabs = jQuery('#tablist');
         var i = tabs.find('li').index(tabs.find('li.active'));
         return Sao.Tab.tabs[i];
     };
