@@ -6,7 +6,7 @@ import traceback
 
 from werkzeug.wrappers import Response
 from werkzeug.routing import Map, Rule
-from werkzeug.exceptions import abort, HTTPException
+from werkzeug.exceptions import abort, HTTPException, InternalServerError
 
 import wrapt
 
@@ -82,7 +82,10 @@ class TrytondWSGI(object):
                         response = cls.response(data, request)
                         break
                 else:
-                    response = Response(data)
+                    if isinstance(data, Exception):
+                        response = InternalServerError(data)
+                    else:
+                        response = Response(data)
         else:
             response = data
         # TODO custom process response
