@@ -154,7 +154,7 @@ class JSONProtocol:
                 response['result'] = data
         else:
             if isinstance(data, Exception):
-                return InternalServerError()
+                return InternalServerError(data)
             response = data
         return Response(json.dumps(response, cls=JSONEncoder),
             content_type='application/json')
