@@ -101,8 +101,7 @@ def with_pool(func):
         database_list = Pool.database_list()
         pool = Pool(database_name)
         if database_name not in database_list:
-            with Transaction().start(
-                    database_name, request.user_id, readonly=True):
+            with Transaction().start(database_name, 0, readonly=True):
                 pool.init()
         return func(request, pool, *args, **kwargs)
     return wrapper
