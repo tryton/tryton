@@ -24,7 +24,7 @@ from trytond.cache import Cache
 from trytond.config import config, parse_uri
 from trytond.wizard import StateView, StateAction
 
-__all__ = ['POOL', 'DB_NAME', 'USER', 'CONTEXT',
+__all__ = ['DB_NAME', 'USER', 'CONTEXT',
     'activate_module', 'ModuleTestCase', 'with_transaction',
     'doctest_setup', 'doctest_teardown', 'doctest_checker',
     'suite', 'all_suite', 'modules_suite']
@@ -34,9 +34,7 @@ USER = 1
 CONTEXT = {}
 DB_NAME = os.environ['DB_NAME']
 DB_CACHE = os.environ.get('DB_CACHE')
-DB = backend.get('Database')(DB_NAME)
 Pool.test = True
-POOL = Pool(DB_NAME)
 
 
 def activate_module(name):
@@ -47,7 +45,8 @@ def activate_module(name):
         return
     create_db()
     with Transaction().start(DB_NAME, 1) as transaction:
-        Module = POOL.get('ir.module')
+        pool = Pool()
+        Module = pool.get('ir.module')
 
         modules = Module.search([
                 ('name', '=', name),
@@ -63,7 +62,7 @@ def activate_module(name):
             Module.activate(modules)
             transaction.commit()
 
-            ActivateUpgrade = POOL.get('ir.module.activate_upgrade',
+            ActivateUpgrade = pool.get('ir.module.activate_upgrade',
                 type='wizard')
             instance_id, _, _ = ActivateUpgrade.create()
             transaction.commit()
@@ -84,7 +83,7 @@ def restore_db_cache(name):
             elif backend_name == 'postgresql':
                 result = _pg_restore(cache_file)
     if result:
-        POOL.init()
+        Pool(DB_NAME).init()
     return result
 
 
@@ -204,7 +203,8 @@ class ModuleTestCase(unittest.TestCase):
     @with_transaction()
     def test_view(self):
         'Test validity of all views of the module'
-        View = POOL.get('ir.ui.view')
+        pool = Pool()
+        View = pool.get('ir.ui.view')
         views = View.search([
                 ('module', '=', self.module),
                 ('model', '!=', ''),
@@ -215,7 +215,7 @@ class ModuleTestCase(unittest.TestCase):
             else:
                 view_id = view.id
             model = view.model
-            Model = POOL.get(model)
+            Model = pool.get(model)
             res = Model.fields_view_get(view_id)
             assert res['model'] == model
             tree = etree.fromstring(res['arch'])
