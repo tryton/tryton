@@ -6,6 +6,7 @@ import re
 import os
 import urllib
 from decimal import Decimal
+from threading import RLock
 
 try:
     from psycopg2cffi import compat
@@ -53,24 +54,31 @@ def replace_special_values(s, **mapping):
 
 class Database(DatabaseInterface):
 
+    _lock = RLock()
     _databases = {}
     _connpool = None
     _list_cache = None
     _list_cache_timestamp = None
     _version_cache = {}
+    _search_path = None
+    _current_user = None
+    _has_returning = None
     flavor = Flavor(ilike=True)
 
     def __new__(cls, name='template1'):
-        if name in cls._databases:
-            return cls._databases[name]
-        return DatabaseInterface.__new__(cls, name=name)
+        with cls._lock:
+            if name in cls._databases:
+                return cls._databases[name]
+            inst = DatabaseInterface.__new__(cls, name=name)
+            cls._databases[name] = inst
 
-    def __init__(self, name='template1'):
-        super(Database, self).__init__(name=name)
-        self._databases.setdefault(name, self)
-        self._search_path = None
-        self._current_user = None
-        self._has_returning = None
+            logger.info('connect to "%s"', name)
+            minconn = config.getint('database', 'minconn', default=1)
+            maxconn = config.getint('database', 'maxconn', default=64)
+            inst._connpool = ThreadedConnectionPool(
+                minconn, maxconn, cls.dsn(name))
+
+            return inst
 
     @classmethod
     def dsn(cls, name):
@@ -85,18 +93,9 @@ class Database(DatabaseInterface):
         return '%s %s %s %s %s' % (host, port, name, user, password)
 
     def connect(self):
-        if self._connpool is not None:
-            return self
-        logger.info('connect to "%s"', self.name)
-        minconn = config.getint('database', 'minconn', default=1)
-        maxconn = config.getint('database', 'maxconn', default=64)
-        self._connpool = ThreadedConnectionPool(
-            minconn, maxconn, self.dsn(self.name))
         return self
 
     def get_connection(self, autocommit=False, readonly=False):
-        if self._connpool is None:
-            self.connect()
         for count in range(config.getint('database', 'retry'), -1, -1):
             try:
                 conn = self._connpool.getconn()
@@ -120,10 +119,9 @@ class Database(DatabaseInterface):
         self._connpool.putconn(connection, close=close)
 
     def close(self):
-        if self._connpool is None:
-            return
-        self._connpool.closeall()
-        self._connpool = None
+        with self._lock:
+            self._connpool.closeall()
+            self._databases.pop(self.name)
 
     @classmethod
     def create(cls, connection, database_name):
