@@ -125,7 +125,6 @@ def with_transaction(readonly=None):
                     try:
                         Cache.clean(pool.database_name)
                         result = func(request, pool, *args, **kwargs)
-                        return result
                     except DatabaseOperationalError:
                         if count and not readonly_:
                             transaction.rollback()
@@ -138,6 +137,7 @@ def with_transaction(readonly=None):
                     # Need to commit to unlock SQLite database
                     transaction.commit()
                     Cache.resets(pool.database_name)
+                return result
         return wrapper
     return decorator
 
