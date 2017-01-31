@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import Workflow, ModelView, fields
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
 from trytond.pyson import Eval, Bool, Id
 from trytond.wizard import Wizard, StateTransition
 
@@ -87,10 +87,6 @@ class Package:
             'readonly': Eval('_parent_shipment', {}).get('carrier', False),
             })
     shipping_label = fields.Binary('Shipping Label', readonly=True)
-    weight = fields.Function(
-        fields.Float('Weight', digits=None,
-            help="The total weight of the package's moves in kg."),
-        'get_weight')
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -98,35 +94,6 @@ class Package:
         return ['OR', domain,
             ('shipping_reference',) + tuple(clause[:1]),
             ]
-
-    def get_weight(self, name):
-        pool = Pool()
-        UoM = pool.get('product.uom')
-        UoMCategory = pool.get('product.uom.category')
-        ModelData = pool.get('ir.model.data')
-
-        weight_category = UoMCategory(
-            ModelData.get_id('product', 'uom_cat_weight'))
-        kg = UoM(ModelData.get_id('product', 'uom_kilogram'))
-
-        weight = 0
-        for move in self.moves:
-            # Use first the weight from product_measurements as it could
-            # include some handling weight
-            if move.product.weight is not None:
-                weight += UoM.compute_qty(
-                    move.product.weight_uom,
-                    move.internal_quantity * move.product.weight,
-                    kg, round=False)
-            elif move.product.default_uom.category == weight_category:
-                weight += UoM.compute_qty(
-                    move.product.default_uom,
-                    move.internal_quantity,
-                    kg, round=False)
-            else:
-                weight = None
-                break
-        return weight
 
 
 class ShipmentOut:
