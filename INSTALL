@@ -9,6 +9,7 @@ Prerequisites
  * trytond_account_stock_landed_cost (http://www.tryton.org/)
  * trytond_product (http://www.tryton.org/)
  * trytond_product_measurements (http://www.tryton.org/)
+ * trytond_stock_shipment_measurements (http://www.tryton.org/)
 
 Installation
 ------------
