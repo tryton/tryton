@@ -123,7 +123,7 @@ def instanciate_values(Target, value):
         if isinstance(data, Target):
             return data
         elif isinstance(data, dict):
-            if data.get('id') >= 0:
+            if data.get('id', -1) >= 0:
                 values = {}
                 values.update(data)
                 values.update(kwargs)
