@@ -1,3 +1,6 @@
+* Add statement line number as move description
+* Set description on statement account line if unique
+
 Version 4.2.0 - 2016-11-28
 * Bug fixes (see mercurial logs for details)
 * Manage readonly state on Statement Line

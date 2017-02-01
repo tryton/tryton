@@ -148,6 +148,8 @@ Received 180 from customer::
 
     >>> statement_line = StatementLine()
     >>> statement.lines.append(statement_line)
+    >>> statement_line.number = '0001'
+    >>> statement_line.description = 'description'
     >>> statement_line.date = today
     >>> statement_line.amount = Decimal('180')
     >>> statement_line.party = customer
@@ -159,10 +161,15 @@ Received 180 from customer::
     >>> statement_line = statement.lines[-1]
     >>> statement_line.amount
     Decimal('80.00')
+    >>> statement_line.number
+    '0001'
+    >>> statement_line.description
+    'description'
     >>> statement_line.party == customer
     True
     >>> statement_line.account == receivable
     True
+    >>> statement_line.description = 'other description'
     >>> statement_line.invoice = customer_invoice2
     >>> statement_line.amount
     Decimal('80.00')
@@ -171,6 +178,8 @@ Paid 50 to customer::
 
     >>> statement_line = StatementLine()
     >>> statement.lines.append(statement_line)
+    >>> statement_line.number = '0002'
+    >>> statement_line.description = 'description'
     >>> statement_line.date = today
     >>> statement_line.amount = Decimal('-50')
     >>> statement_line.party = customer
@@ -200,6 +209,22 @@ Validate statement::
     >>> statement.click('validate_statement')
     >>> statement.state
     u'validated'
+
+Test posted moves::
+
+    >>> statement_line = statement.lines[0]
+    >>> move = statement_line.move
+    >>> move.description
+    u'0001'
+    >>> sorted((l.description for l in move.lines))
+    [u'', u'description', u'other description']
+
+    >>> statement_line = statement.lines[2]
+    >>> move = statement_line.move
+    >>> move.description
+    u'0002'
+    >>> sorted((l.description for l in move.lines))
+    [u'description', u'description']
 
 Test invoice state::
 

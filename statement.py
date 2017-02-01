@@ -450,7 +450,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                 move_lines.append((move_line, line))
 
             move_line = statement._get_move_line(
-                amount, amount_second_currency)
+                amount, amount_second_currency, lines)
             move_line.move = move
             move_lines.append((move_line, None))
 
@@ -474,9 +474,10 @@ class Statement(Workflow, ModelSQL, ModelView):
             date=key['date'],
             origin=self,
             company=self.company,
+            description=unicode(key['number']),
             )
 
-    def _get_move_line(self, amount, amount_second_currency):
+    def _get_move_line(self, amount, amount_second_currency, lines):
         'Return counterpart Move Line for the amount'
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -497,12 +498,19 @@ class Statement(Workflow, ModelSQL, ModelView):
             second_currency = None
             amount_second_currency = None
 
+        descriptions = {l.description for l in lines}
+        if len(descriptions) == 1:
+            description, = descriptions
+        else:
+            description = ''
+
         return MoveLine(
             debit=abs(amount) if amount < 0 else 0,
             credit=abs(amount) if amount > 0 else 0,
             account=account,
             second_currency=second_currency,
             amount_second_currency=amount_second_currency,
+            description=description,
             )
 
     @classmethod
