@@ -124,6 +124,7 @@ def register():
         ModelViewChangedValues,
         ModelViewChangedValuesTarget,
         ModelViewButton,
+        ModelViewRPC,
         MPTT,
         ImportDataBoolean,
         ImportDataInteger,

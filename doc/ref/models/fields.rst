@@ -178,6 +178,10 @@ Instance methods:
 
     Return the Column instance based on table.
 
+.. method:: Field.set_rpc(model)
+
+    Adds to `model` the default RPC instances required by the field.
+
 Default value
 =============
 

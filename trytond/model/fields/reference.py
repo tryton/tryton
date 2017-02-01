@@ -10,6 +10,7 @@ from .char import Char
 from ...transaction import Transaction
 from ...pool import Pool
 from ... import backend
+from ...rpc import RPC
 
 
 class Reference(Field):
@@ -47,6 +48,15 @@ class Reference(Field):
                 DeprecationWarning, stacklevel=2)
             self.selection_change_with |= set(selection_change_with)
     __init__.__doc__ += Field.__init__.__doc__
+
+    def set_rpc(self, model):
+        super(Reference, self).set_rpc(model)
+        if not isinstance(self.selection, (list, tuple)):
+            assert hasattr(model, self.selection), \
+                'Missing %s on model %s' % (self.selection, model.__name__)
+            instantiate = 0 if self.selection_change_with else None
+            model.__rpc__.setdefault(
+                self.selection, RPC(instantiate=instantiate))
 
     def get(self, ids, model, name, values=None):
         '''

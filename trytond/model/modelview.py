@@ -14,6 +14,8 @@ from trytond.pool import Pool
 from trytond.exceptions import UserError
 from trytond.rpc import RPC
 
+from .fields import on_change_result
+
 __all__ = ['ModelView']
 
 
@@ -84,10 +86,6 @@ def on_change(func):
         return self
     wrapper.on_change = True
     return wrapper
-
-
-def on_change_result(record):
-    return record._changed_values
 
 
 class ModelView(Model):
@@ -179,24 +177,7 @@ class ModelView(Model):
 
         # Update __rpc__
         for field_name, field in cls._fields.iteritems():
-            if (isinstance(field, (fields.Selection, fields.Reference))
-                    or (isinstance(field, fields.Function)
-                        and isinstance(field._field,
-                            (fields.Selection, fields.Reference)))) \
-                    and not isinstance(field.selection, (list, tuple)) \
-                    and field.selection not in cls.__rpc__:
-                instantiate = 0 if field.selection_change_with else None
-                cls.__rpc__.setdefault(field.selection,
-                    RPC(instantiate=instantiate))
-
-            for attribute in ('on_change', 'on_change_with', 'autocomplete'):
-                function_name = '%s_%s' % (attribute, field_name)
-                if getattr(cls, function_name, None):
-                    result = None
-                    if attribute == 'on_change':
-                        result = on_change_result
-                    cls.__rpc__.setdefault(function_name,
-                        RPC(instantiate=0, result=result))
+            field.set_rpc(cls)
 
         for button in cls._buttons:
             if not is_instance_method(cls, button):

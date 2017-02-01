@@ -7,6 +7,7 @@ from sql import Query, Expression
 
 from ... import backend
 from .field import Field, FieldTranslate, size_validate, SQLType
+from ...rpc import RPC
 
 
 class Char(FieldTranslate):
@@ -66,3 +67,11 @@ class Char(FieldTranslate):
         elif db_type == 'mysql':
             return SQLType('CHAR', 'VARCHAR(255)')
         return SQLType('VARCHAR', 'VARCHAR')
+
+    def set_rpc(self, model):
+        super(Char, self).set_rpc(model)
+        if self.autocomplete:
+            func_name = 'autocomplete_%s' % self.name
+            assert hasattr(model, func_name), \
+                'Missing %s on model %s' % (func_name, model.__name__)
+            model.__rpc__.setdefault(func_name, RPC(instantiate=0))

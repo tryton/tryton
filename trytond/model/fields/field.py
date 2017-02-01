@@ -14,6 +14,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDictTransaction
 
+from ...rpc import RPC
+
 
 def domain_validate(value):
     assert isinstance(value, list), 'domain must be a list'
@@ -135,6 +137,10 @@ def instanciate_values(Target, value):
             ids.append(data)
             return Target(data, **kwargs)
     return tuple(instance(x) for x in (value or []))
+
+
+def on_change_result(record):
+    return record._changed_values
 
 
 SQL_OPERATORS = {
@@ -321,6 +327,19 @@ class Field(object):
             return method(tables)
         else:
             return [self.sql_column(table)]
+
+    def set_rpc(self, model):
+        for attribute, result in (
+                ('on_change', on_change_result),
+                ('on_change_with', None),
+                ):
+            if not getattr(self, attribute):
+                continue
+            func_name = '%s_%s' % (attribute, self.name)
+            assert hasattr(model, func_name), \
+                'Missing %s on model %s' % (func_name, model.__name__)
+            model.__rpc__.setdefault(
+                func_name, RPC(instantiate=0, result=result))
 
 
 class FieldTranslate(Field):

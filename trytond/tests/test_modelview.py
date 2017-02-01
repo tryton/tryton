@@ -269,6 +269,34 @@ class ModelView(unittest.TestCase):
         clicks = [ButtonClick(user=user1), ButtonClick(user=user2)]
         self.assertTrue(rule.test(record, clicks))
 
+    @with_transaction()
+    def test_rpc_setup(self):
+        "Testing the computation of the RPC methods"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.rpc')
+
+        def check_rpc(rpc, attributes):
+            for key, value in attributes.items():
+                self.assertEqual(getattr(rpc, key), value)
+
+        NO_INSTANTIATION = {
+            'instantiate': None,
+            }
+        INSTANTIATE_FIRST = {
+            'instantiate': 0,
+            }
+        for rpc_name, rpc_attrs in [
+                ('get_selection', NO_INSTANTIATION),
+                ('get_function_selection', NO_INSTANTIATION),
+                ('get_reference', NO_INSTANTIATION),
+                ('get_function_reference', NO_INSTANTIATION),
+                ('on_change_with_integer', INSTANTIATE_FIRST),
+                ('on_change_float', INSTANTIATE_FIRST),
+                ('autocomplete_char', INSTANTIATE_FIRST),
+                ]:
+            self.assertIn(rpc_name, TestModel.__rpc__)
+            check_rpc(TestModel.__rpc__[rpc_name], rpc_attrs)
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase

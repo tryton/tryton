@@ -58,6 +58,9 @@ class Function(Field):
                 return
         setattr(self._field, name, value)
 
+    def set_rpc(self, model):
+        self._field.set_rpc(model)
+
     def sql_type(self):
         return None
 

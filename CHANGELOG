@@ -1,3 +1,4 @@
+* Add set_rpc on Field
 * Add has_select_for on Database
 * Store custom report translation in separate module
 * Add form action keyword for set/synchronize translation on report and view
