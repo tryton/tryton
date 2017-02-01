@@ -1,3 +1,5 @@
+* Use stock_moves from account_invoice_stock
+
 Version 4.2.0 - 2016-11-28
 * Bug fixes (see mercurial logs for details)
 

@@ -51,15 +51,6 @@ class InvoiceLine:
         result.append(move_line)
         return result
 
-    @property
-    def _anglo_saxon_stock_moves(self):
-        pool = Pool()
-        PurchaseLine = pool.get('purchase.line')
-        SaleLine = pool.get('sale.line')
-        if isinstance(self.origin, (PurchaseLine, SaleLine)):
-            return list(self.origin.moves)
-        return []
-
     def get_move_lines(self):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -82,8 +73,7 @@ class InvoiceLine:
             return result
 
         # an empty list means we'll use the current cost price
-        moves = [move for move in self._anglo_saxon_stock_moves
-            if move.state == 'done']
+        moves = [move for move in self.stock_moves if move.state == 'done']
         if self.invoice.type == 'in':
             type_ = 'in_supplier'
         elif self.invoice.type == 'out':

@@ -8,6 +8,7 @@ Prerequisites
  * trytond (http://www.tryton.org/)
  * trytond_account (http://www.tryton.org/)
  * trytond_account_invoice (http://www.tryton.org/)
+ * trytond_account_invoice_stock (http://www.tryton.org/)
  * trytond_account_product (http://www.tryton.org/)
  * trytond_stock_continental (http://www.tryton.org/)
 
