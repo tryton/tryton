@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
 from trytond.pool import Pool
-from trytond.rpc import RPC
 
 __all__ = ['Configuration']
 
@@ -15,11 +14,6 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
             'get_cost_price_methods', 'Default Cost Method'),
         'get_default_cost_price_method',
         setter='set_default_cost_price_method')
-
-    @classmethod
-    def __setup__(cls):
-        super(Configuration, cls).__setup__()
-        cls.__rpc__['get_cost_price_methods'] = RPC()
 
     @classmethod
     def default_default_cost_price_method(cls):
