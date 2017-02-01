@@ -309,7 +309,7 @@ class CreateShippingUPS(Wizard):
                 'UnitOfMeasurement': {
                     'Code': 'KGS' if use_metric else 'LBS',
                     },
-                'Weight': str(UoM.compute_qty(kg, package.weight,
+                'Weight': str(UoM.compute_qty(kg, package.total_weight,
                         kg if use_metric else lb)),
                 },
             }
