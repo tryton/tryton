@@ -46,6 +46,28 @@ Create product::
     >>> product.template = template
     >>> product.save()
 
+Create stock user::
+
+    >>> User = Model.get('res.user')
+    >>> Group = Model.get('res.group')
+    >>> Employee = Model.get('company.employee')
+    >>> stock_user = User()
+    >>> stock_user.name = "Stock"
+    >>> stock_user.login = 'stock'
+    >>> stock_user.main_company = company
+    >>> stock_user.groups.extend(Group.find([
+    ...             ('name', '=', 'Stock'),
+    ...             ]))
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> stock_user.employees.append(employee)
+    >>> stock_user.employee = employee
+    >>> stock_user.save()
+
+    >>> config.user = stock_user.id
+
 Get stock locations::
 
     >>> Location = Model.get('stock.location')
@@ -78,6 +100,9 @@ Add two shipment lines of same product::
     ...     move.unit_price = Decimal('1')
     ...     move.currency = company.currency
     >>> shipment_out.save()
+    >>> shipment_out.assigned_by
+    >>> shipment_out.packed_by
+    >>> shipment_out.done_by
 
 Set the shipment state to waiting::
 
@@ -132,7 +157,15 @@ Delete the draft move, assign and pack shipment::
     >>> shipment_out.inventory_moves.remove(move)
     >>> shipment_out.click('assign_try')
     True
+    >>> shipment_out.assigned_by == employee
+    True
+    >>> shipment_out.packed_by
+    >>> shipment_out.done_by
+
     >>> shipment_out.click('pack')
+    >>> shipment_out.packed_by == employee
+    True
+    >>> shipment_out.done_by
     >>> all(m.state == 'assigned' for m in shipment_out.outgoing_moves)
     True
     >>> len(shipment_out.outgoing_moves)
@@ -148,6 +181,8 @@ Delete the draft move, assign and pack shipment::
 Set the state as Done::
 
     >>> shipment_out.click('done')
+    >>> shipment_out.done_by == employee
+    True
     >>> all(m.state == 'done' for m in shipment_out.outgoing_moves)
     True
     >>> planned_dates = [m.planned_date for m in

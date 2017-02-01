@@ -25,6 +25,12 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Inventory Moves" id="inventory_moves">
             <field name="inventory_moves" colspan="4"/>
         </page>
+        <page string="Other Info" id="other">
+            <label name="received_by"/>
+            <field name="received_by"/>
+            <label name="done_by"/>
+            <field name="done_by"/>
+        </page>
     </notebook>
     <group col="4" colspan="6" id="state_buttons">
         <label name="state"/>

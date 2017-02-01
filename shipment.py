@@ -32,6 +32,38 @@ __all__ = ['ShipmentIn', 'ShipmentInReturn',
     'InteralShipmentReport']
 
 
+def set_employee(field):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(cls, shipments, *args, **kwargs):
+            pool = Pool()
+            User = pool.get('res.user')
+            user = User(Transaction().user)
+
+            result = func(cls, shipments, *args, **kwargs)
+            employee = user.employee
+            if employee:
+                company = employee.company
+                cls.write(
+                    [s for s in shipments
+                        if not getattr(s, field) and s.company == company], {
+                        field: employee.id,
+                        })
+            return result
+        return wrapper
+    return decorator
+
+
+def employee_field(string):
+    return fields.Many2One(
+        'company.employee', string,
+        domain=[('company', '=', Eval('company', -1))],
+        states={
+            'readonly': Eval('state').in_(['done', 'cancel']),
+            },
+        depends=['company', 'state'])
+
+
 class ShipmentIn(Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     __name__ = 'stock.shipment.in'
@@ -123,6 +155,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         depends=['company'])
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     number = fields.Char('Numer', size=None, select=True, readonly=True)
+    received_by = employee_field("Received By")
+    done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -393,6 +427,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         default['inventory_moves'] = None
         default['incoming_moves'] = None
         default.setdefault('number')
+        default.setdefault('received_by')
+        default.setdefault('done_by')
         return super(ShipmentIn, cls).copy(shipments, default=default)
 
     @classmethod
@@ -460,6 +496,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('received')
+    @set_employee('received_by')
     def receive(cls, shipments):
         Move = Pool().get('stock.move')
         Move.do([m for s in shipments for m in s.incoming_moves])
@@ -468,6 +505,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
+    @set_employee('done_by')
     def done(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -549,6 +587,8 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             ],
         depends=['state', 'from_location', 'to_location', 'company'])
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
+    assigned_by = employee_field("Assigned By")
+    done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
         ('cancel', 'Canceled'),
@@ -727,6 +767,8 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             default = {}
         default = default.copy()
         default.setdefault('number')
+        default.setdefault('assigned_by')
+        default.setdefault('done_by')
         return super(ShipmentInReturn, cls).copy(shipments, default=default)
 
     @classmethod
@@ -755,6 +797,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @Workflow.transition('assigned')
+    @set_employee('assigned_by')
     def assign(cls, shipments):
         Move = Pool().get('stock.move')
         Move.assign([m for s in shipments for m in s.moves])
@@ -762,6 +805,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
+    @set_employee('done_by')
     def done(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -889,6 +933,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     number = fields.Char('Number', size=None, select=True, readonly=True)
+    assigned_by = employee_field("Assigned By")
+    packed_by = employee_field("Packed By")
+    done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -1153,12 +1200,14 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @Workflow.transition('assigned')
+    @set_employee('assigned_by')
     def assign(cls, shipments):
         cls._sync_inventory_to_outgoing(shipments, create=True, write=False)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('packed')
+    @set_employee('packed_by')
     def pack(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -1256,6 +1305,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
+    @set_employee('done_by')
     def done(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -1337,6 +1387,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         default['inventory_moves'] = None
         default['outgoing_moves'] = None
         default.setdefault('number')
+        default.setdefault('assigned_by')
+        default.setdefault('packed_by')
+        default.setdefault('done_by')
         return super(ShipmentOut, cls).copy(shipments, default=default)
 
     @classmethod
@@ -1470,6 +1523,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         readonly=True)
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     number = fields.Char('Number', size=None, select=True, readonly=True)
+    received_by = employee_field("Received By")
+    done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
@@ -1697,6 +1752,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         default['inventory_moves'] = None
         default['incoming_moves'] = None
         default.setdefault('number')
+        default.setdefault('received_by')
+        default.setdefault('done_by')
         return super(ShipmentOutReturn, cls).copy(shipments, default=default)
 
     @classmethod
@@ -1723,6 +1780,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('received')
+    @set_employee('received_by')
     def receive(cls, shipments):
         Move = Pool().get('stock.move')
         Move.do([m for s in shipments for m in s.incoming_moves])
@@ -1731,6 +1789,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
+    @set_employee('done_by')
     def done(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -1957,6 +2016,9 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
             depends=['from_location', 'to_location', 'transit_location',
                 'state']),
         'get_incoming_moves', setter='set_moves')
+    assigned_by = employee_field("Received By")
+    shipped_by = employee_field("Shipped By")
+    done_by = employee_field("Done By")
     state = fields.Selection([
             ('request', 'Request'),
             ('draft', 'Draft'),
@@ -2189,6 +2251,9 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         default['incoming_moves'] = None
         default['moves'] = None
         default.setdefault('number')
+        default.setdefault('assigned_by')
+        default.setdefault('shipped_by')
+        default.setdefault('done_by')
         copies = super(ShipmentInternal, cls).copy(shipments, default=default)
         for shipment, copy in zip(shipments, copies):
             Move.copy(shipment.outgoing_moves, default={
@@ -2305,11 +2370,13 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @Workflow.transition('assigned')
+    @set_employee('assigned_by')
     def assign(cls, shipments):
         pass
 
     @classmethod
     @Workflow.transition('shipped')
+    @set_employee('shipped_by')
     def ship(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -2323,6 +2390,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
+    @set_employee('done_by')
     def done(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')

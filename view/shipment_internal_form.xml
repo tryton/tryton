@@ -30,6 +30,14 @@ this repository contains the full copyright notices and license terms. -->
         <page name="incoming_moves">
             <field name="incoming_moves" colspan="4"/>
         </page>
+        <page string="Other Info" id="other">
+            <label name="assigned_by"/>
+            <field name="assigned_by"/>
+            <label name="shipped_by"/>
+            <field name="shipped_by"/>
+            <label name="done_by"/>
+            <field name="done_by"/>
+        </page>
     </notebook>
     <label name="state"/>
     <field name="state"/>

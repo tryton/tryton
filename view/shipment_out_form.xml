@@ -25,6 +25,14 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Outgoing Moves" id="outgoing_moves">
             <field name="outgoing_moves" colspan="4"/>
         </page>
+        <page string="Other Info" id="other">
+            <label name="assigned_by"/>
+            <field name="assigned_by"/>
+            <label name="packed_by"/>
+            <field name="packed_by"/>
+            <label name="done_by"/>
+            <field name="done_by"/>
+        </page>
     </notebook>
     <group col="4" colspan="4" id="state_buttons">
         <label name="state"/>

@@ -53,12 +53,20 @@ Create stock user::
 
     >>> User = Model.get('res.user')
     >>> Group = Model.get('res.group')
+    >>> Party = Model.get('party.party')
+    >>> Employee = Model.get('company.employee')
     >>> stock_user = User()
     >>> stock_user.name = 'Stock'
     >>> stock_user.login = 'stock'
     >>> stock_user.main_company = company
     >>> stock_group, = Group.find([('name', '=', 'Stock')])
     >>> stock_user.groups.append(stock_group)
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> stock_user.employees.append(employee)
+    >>> stock_user.employee = employee
     >>> stock_user.save()
 
 Create Internal Shipment::
@@ -76,11 +84,17 @@ Create Internal Shipment::
     >>> move.from_location = internal_loc
     >>> move.to_location = storage_loc
     >>> move.currency = company.currency
+    >>> shipment.save()
+    >>> shipment.assigned_by
+    >>> shipment.done_by
+
     >>> shipment.click('wait')
     >>> shipment.state
     u'waiting'
     >>> shipment.click('assign_try')
     False
+    >>> shipment.assigned_by
+    >>> shipment.done_by
 
 Create Internal Shipment from lost_found location::
 
@@ -110,9 +124,15 @@ Check that now whe can finish the older shipment::
 
     >>> shipment.click('assign_try')
     True
+    >>> shipment.assigned_by == employee
+    True
+    >>> shipment.done_by
+
     >>> shipment.click('done')
     >>> shipment.state
     u'done'
+    >>> shipment.done_by == employee
+    True
 
 Add lead time inside the warehouse::
 
