@@ -5,15 +5,10 @@ from sql import Cast, Literal
 from sql.functions import Substring, Position
 from sql.conditionals import Coalesce
 
-from .field import Field, size_validate, instanciate_values
+from .field import Field, size_validate, instanciate_values, domain_validate
 from ...pool import Pool
 from ...tools import grouped_slice
 from ...transaction import Transaction
-
-
-def add_remove_validate(value):
-    if value:
-        assert isinstance(value, list), 'add_remove must be a list'
 
 
 class One2Many(Field):
@@ -63,7 +58,8 @@ class One2Many(Field):
         return self.__add_remove
 
     def _set_add_remove(self, value):
-        add_remove_validate(value)
+        if value is not None:
+            domain_validate(value)
         self.__add_remove = value
 
     add_remove = property(_get_add_remove, _set_add_remove)
