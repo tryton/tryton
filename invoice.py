@@ -1654,6 +1654,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def default_type():
         return 'line'
 
+    @classmethod
+    def default_invoice_state(cls):
+        return 'draft'
+
     @fields.depends('invoice', '_parent_invoice.state')
     def on_change_with_invoice_state(self, name=None):
         if self.invoice:
