@@ -208,7 +208,7 @@ class CreateDPDShipping(Wizard):
 
         parcel = {
             'customerReferenceNumber1': package.code,
-            'weight': int(package.weight * 10) * 10
+            'weight': int(package.total_weight * 10) * 10
             }
 
         length = UoM.compute_qty(
