@@ -689,7 +689,6 @@ class Line(ModelSQL, ModelView):
             ]
         cls.__rpc__.update({
                 'on_write': RPC(instantiate=0),
-                'get_origin': RPC(),
                 })
         cls._order[0] = ('id', 'DESC')
         cls._error_messages.update({
