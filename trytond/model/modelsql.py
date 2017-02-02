@@ -723,24 +723,37 @@ class ModelSQL(ModelStorage):
         else:
             result = [{'id': x} for x in ids]
 
+        cachable_fields = []
         for column in columns:
             # Split the output name to remove SQLite type detection
             fname = column.output_name.split()[0]
             if fname == '_timestamp':
                 continue
             field = cls._fields[fname]
-            if (getattr(field, 'translate', False)
-                    and not hasattr(field, 'get')):
-                translations = Translation.get_ids(
-                    cls.__name__ + ',' + fname, 'model',
-                    Transaction().language, ids)
-                for row in result:
-                    row[fname] = translations.get(row['id']) or row[fname]
+            if not hasattr(field, 'get'):
+                if getattr(field, 'translate', False):
+                    translations = Translation.get_ids(
+                        cls.__name__ + ',' + fname, 'model',
+                        Transaction().language, ids)
+                    for row in result:
+                        row[fname] = translations.get(row['id']) or row[fname]
+                if fname != 'id':
+                    cachable_fields.append(fname)
 
         # all fields for which there is a get attribute
         getter_fields = [f for f in
             fields_names + fields_related.keys() + datetime_fields
             if f in cls._fields and hasattr(cls._fields[f], 'get')]
+
+        if getter_fields and cachable_fields:
+            cache = transaction.get_cache().setdefault(
+                cls.__name__, LRUDict(cache_size()))
+            for row in result:
+                if row['id'] not in cache:
+                    cache[row['id']] = {}
+                for fname in cachable_fields:
+                    cache[row['id']][fname] = row[fname]
+
         func_fields = {}
         for fname in getter_fields:
             field = cls._fields[fname]
