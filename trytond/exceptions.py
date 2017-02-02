@@ -47,3 +47,7 @@ class ConcurrencyException(TrytonException):
             message)
         self.message = message
         self.code = 4
+
+
+class RateLimitException(TrytonException):
+    """User has sent too many requests in a given amount of time."""

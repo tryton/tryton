@@ -4,7 +4,7 @@ from trytond.pool import Pool
 from trytond.config import config
 from trytond.transaction import Transaction
 from trytond import backend
-from trytond.exceptions import LoginException
+from trytond.exceptions import LoginException, RateLimitException
 
 
 def _get_pool(dbname):
@@ -28,7 +28,7 @@ def login(dbname, loginname, parameters, cache=True, language=None):
                 if count:
                     continue
                 raise
-            except LoginException:
+            except (LoginException, RateLimitException):
                 # Let's store any changes done
                 transaction.commit()
                 raise

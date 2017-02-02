@@ -15,7 +15,8 @@ from trytond import __version__
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.exceptions import (
-    UserError, UserWarning, ConcurrencyException, LoginException)
+    UserError, UserWarning, ConcurrencyException, LoginException,
+    RateLimitException)
 from trytond.tools import is_instance_method
 from trytond.wsgi import app
 from .wrappers import with_pool
@@ -49,8 +50,13 @@ def login(request, database_name, user, parameters, language=None):
     except DatabaseOperationalError:
         logger.error('fail to connect to %s', database_name, exc_info=True)
         abort(404)
-    session = security.login(
-        database_name, user, parameters, language=language)
+    try:
+        session = security.login(
+            database_name, user, parameters, language=language)
+        code = 403
+    except RateLimitException:
+        session = None
+        code = 429
     with Transaction().start(database_name, 0):
         Cache.clean(database_name)
         Cache.resets(database_name)
@@ -58,7 +64,7 @@ def login(request, database_name, user, parameters, language=None):
     logger.info('%s \'%s\' from %s using %s on database \'%s\'',
         msg, user, request.remote_addr, request.scheme, database_name)
     if not session:
-        abort(403)
+        abort(code)
     return session
 
 

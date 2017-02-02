@@ -4,6 +4,9 @@ import logging
 import time
 import random
 
+from werkzeug.exceptions import abort
+
+from trytond.config import config
 from trytond.wsgi import app
 from trytond.protocols.wrappers import with_pool, with_transaction
 
@@ -46,7 +49,11 @@ def user_application(request, pool):
                     ]))
         return key
     elif request.method == 'DELETE':
-        time.sleep(2 ** LoginAttempt.count(login) - 1)
+        count = LoginAttempt.count(login)
+        if count > config.get('session', 'max_attempt', default=5):
+            LoginAttempt.add(login)
+            abort(429)
+        time.sleep(2 ** count - 1)
         applications = UserApplication.search([
                 ('user.login', '=', login),
                 ('key', '=', data.get('key')),

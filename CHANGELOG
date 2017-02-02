@@ -1,3 +1,4 @@
+* Return 429 status when too many login attempts
 * Add set_rpc on Field
 * Add has_select_for on Database
 * Store custom report translation in separate module

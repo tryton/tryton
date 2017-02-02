@@ -219,6 +219,15 @@ The time in seconds until a session expires.
 
 Default: `600`
 
+max_attempt
+~~~~~~~~~~~
+
+The maximum authentication attempt before the server answers unconditionally
+`Too Many Requests` for any other attempts. The counting is done on all
+attempts over a period of `timeout`.
+
+Default: `5`
+
 report
 ------
 

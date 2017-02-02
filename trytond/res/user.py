@@ -34,7 +34,7 @@ from ..pool import Pool
 from ..config import config
 from ..pyson import PYSONEncoder, Eval
 from ..rpc import RPC
-from ..exceptions import LoginException
+from ..exceptions import LoginException, RateLimitException
 
 __all__ = [
     'User', 'LoginAttempt', 'UserAction', 'UserGroup', 'Warning_',
@@ -496,7 +496,11 @@ class User(ModelSQL, ModelView):
         Return user id if password matches
         '''
         LoginAttempt = Pool().get('res.user.login.attempt')
-        time.sleep(2 ** LoginAttempt.count(login) - 1)
+        count = LoginAttempt.count(login)
+        if count > config.get('session', 'max_attempt', default=5):
+            LoginAttempt.add(login)
+            raise RateLimitException()
+        time.sleep(2 ** count - 1)
         for method in config.get(
                 'session', 'authentications', default='password').split(','):
             try:
