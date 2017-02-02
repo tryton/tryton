@@ -124,5 +124,6 @@ setup(name=name,
     use_2to3=True,
     convert_2to3_doctests=[
         'tests/scenario_production.rst',
+        'tests/scenario_production_rounding.rst',
         ],
     )

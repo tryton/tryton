@@ -121,13 +121,16 @@ class BOMInput(ModelSQL, ModelView):
         self.product.check_bom_recursion()
 
     def compute_quantity(self, factor):
-        return self.uom.round(self.quantity * factor)
+        return self.uom.ceil(self.quantity * factor)
 
 
 class BOMOutput(BOMInput):
     "Bill of Material Output"
     __name__ = 'production.bom.output'
     _table = 'production_bom_output'  # Needed to override BOMInput._table
+
+    def compute_quantity(self, factor):
+        return self.uom.floor(self.quantity * factor)
 
     @classmethod
     def delete(cls, outputs):
