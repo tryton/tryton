@@ -138,6 +138,9 @@ class TemplateFunction(fields.Function):
     def __init__(self, field):
         super(TemplateFunction, self).__init__(
             field, 'get_template', searcher='search_template')
+        # Disable on_change as it is managed by on_change_template
+        self.on_change = set()
+        self.on_change_with = set()
 
     def __copy__(self):
         return TemplateFunction(copy.copy(self._field))
