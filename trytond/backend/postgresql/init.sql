@@ -149,3 +149,11 @@ CREATE TABLE ir_module_dependency (
     FOREIGN KEY (write_uid) REFERENCES res_user ON DELETE SET NULL,
     FOREIGN KEY (module) REFERENCES ir_module ON DELETE CASCADE
 );
+
+CREATE SEQUENCE ir_cache_id_seq;
+
+CREATE TABLE ir_cache (
+    id INTEGER DEFAULT NEXTVAL('ir_cache_id_seq') NOT NULL,
+    name VARCHAR NOT NULL,
+    "timestamp" TIMESTAMP WITHOUT TIME ZONE
+);

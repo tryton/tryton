@@ -125,3 +125,9 @@ CREATE TABLE ir_module_dependency (
     CONSTRAINT ir_module_dependency_write_uid_fkey FOREIGN KEY (write_uid) REFERENCES res_user (id) ON DELETE SET NULL,
     CONSTRAINT ir_module_dependency_module_fkey FOREIGN KEY (module) REFERENCES ir_module (id) ON DELETE CASCADE
 ) ENGINE=InnoDB;
+
+CREATE TABLE ir_cache (
+    id BIGINT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(255),
+    "timestamp" TIMESTAMP
+) ENGINE=InnoDB;

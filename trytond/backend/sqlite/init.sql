@@ -101,3 +101,9 @@ CREATE TABLE ir_module_dependency (
     name VARCHAR,
     module INTEGER
 );
+
+CREATE TABLE ir_cache (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR,
+    "timestamp" TIMESTAMP
+);

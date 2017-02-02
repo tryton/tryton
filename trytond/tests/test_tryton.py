@@ -415,11 +415,12 @@ def db_exist(name=DB_NAME):
 def create_db(name=DB_NAME, lang='en'):
     Database = backend.get('Database')
     if not db_exist(name):
-        with Transaction().start(None, 0, close=True, autocommit=True) \
+        with Transaction().start(
+                None, 0, close=True, autocommit=True, _nocache=True) \
                 as transaction:
             transaction.database.create(transaction.connection, name)
 
-        with Transaction().start(name, 0) as transaction,\
+        with Transaction().start(name, 0, _nocache=True) as transaction,\
                 transaction.connection.cursor() as cursor:
             Database(name).init()
             ir_configuration = Table('ir_configuration')
@@ -448,7 +449,8 @@ def drop_db(name=DB_NAME):
         database = Database(name)
         database.close()
 
-        with Transaction().start(None, 0, close=True, autocommit=True) \
+        with Transaction().start(
+                None, 0, close=True, autocommit=True, _nocache=True) \
                 as transaction:
             database.drop(transaction.connection, name)
             Pool.stop(name)
