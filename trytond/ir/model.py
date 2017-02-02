@@ -785,6 +785,15 @@ class ModelButton(ModelSQL, ModelView):
         cls._reset_cache.clear()
 
     @classmethod
+    def copy(cls, buttons, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('clicks')
+        return super(ModelButton, cls).copy(buttons, default=default)
+
+    @classmethod
     def get_groups(cls, model, name):
         '''
         Return a set of group ids for the named button on the model.
