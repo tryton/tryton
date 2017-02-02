@@ -153,7 +153,6 @@ class _TrytondMethod(object):
         self._config = config
 
     def __call__(self, *args):
-        from trytond.cache import Cache
         from trytond.transaction import Transaction
         from trytond.rpc import RPC
 
@@ -166,7 +165,6 @@ class _TrytondMethod(object):
 
         with Transaction().start(self._config.database_name,
                 self._config.user, readonly=rpc.readonly) as transaction:
-            Cache.clean(self._config.database_name)
             args, kwargs, transaction.context, transaction.timestamp = \
                 rpc.convert(self._object, *args)
             meth = getattr(self._object, self._name)
@@ -182,7 +180,6 @@ class _TrytondMethod(object):
                         for i in inst]
             if not rpc.readonly:
                 transaction.commit()
-            Cache.resets(self._config.database_name)
         return result
 
 
@@ -214,7 +211,6 @@ class TrytondConfig(Config):
         from trytond.config import config
         config.update_etc(config_file)
         from trytond.pool import Pool
-        from trytond.cache import Cache
         from trytond.transaction import Transaction
         self.database = database
         database_name = None
@@ -232,7 +228,6 @@ class TrytondConfig(Config):
         self.pool.init()
 
         with Transaction().start(self.database_name, 0) as transaction:
-            Cache.clean(database_name)
             User = self.pool.get('res.user')
             transaction.context = self.context
             self.user = User.search([
@@ -240,7 +235,6 @@ class TrytondConfig(Config):
                 ], limit=1)[0].id
             with transaction.set_user(self.user):
                 self._context = User.get_preferences(context_only=True)
-            Cache.resets(database_name)
     __init__.__doc__ = object.__init__.__doc__
 
     def __repr__(self):
