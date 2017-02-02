@@ -58,6 +58,7 @@ class Transaction(object):
         if new or not transactions:
             instance = super(Transaction, cls).__new__(cls)
             instance.cache = {}
+            instance._atexit = []
             transactions.append(instance)
         else:
             instance = transactions[-1]
@@ -129,6 +130,9 @@ class Transaction(object):
                     self.delete = None
                     self.timestamp = None
                     self._datamanagers = []
+
+                for func, args, kwargs in self._atexit:
+                    func(*args, **kwargs)
         finally:
             current_instance = transactions.pop()
         assert current_instance is self, transactions
@@ -208,6 +212,9 @@ class Transaction(object):
         except ValueError:
             self._datamanagers.append(datamanager)
             return datamanager
+
+    def atexit(self, func, *args, **kwargs):
+        self._atexit.append((func, args, kwargs))
 
     @property
     def language(self):

@@ -500,7 +500,7 @@ class User(ModelSQL, ModelView):
         if count > config.get('session', 'max_attempt', default=5):
             LoginAttempt.add(login)
             raise RateLimitException()
-        time.sleep(2 ** count - 1)
+        Transaction().atexit(time.sleep, 2 ** count - 1)
         for method in config.get(
                 'session', 'authentications', default='password').split(','):
             try:

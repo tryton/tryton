@@ -96,6 +96,12 @@ commited.
     equivalent (in term of python equality) datamanager than the one passed to the
     method.
 
+.. method:: Transaction.atexit(func, \*args, \*\*kwargs)
+
+    Register a function to be executed upon normal transaction termination.
+    The function can not use the current transaction because it will be already
+    committed or rollbacked.
+
 .. _`context manager`: http://docs.python.org/reference/datamodel.html#context-managers
 .. _`PEP-0249`: https://www.python.org/dev/peps/pep-0249/
 .. _`Two-Phase Commit protocol`: https://en.wikipedia.org/wiki/Two-phase_commit_protocol

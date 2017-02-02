@@ -1,3 +1,4 @@
+* Allow to register multiple exit functions on Transaction
 * Return 429 status when too many login attempts
 * Add set_rpc on Field
 * Add has_select_for on Database

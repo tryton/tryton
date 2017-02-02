@@ -9,6 +9,7 @@ from werkzeug.exceptions import abort
 from trytond.config import config
 from trytond.wsgi import app
 from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +27,7 @@ def user_application(request, pool):
     if request.method == 'POST':
         # Make time random to process and try to use the same path as much as
         # possible to prevent guessing between valid and invalid requests.
-        time.sleep(random.random())
+        Transaction().atexit(time.sleep, random.random())
         users = User.search([
                 ('login', '=', login),
                 ])
@@ -53,7 +54,7 @@ def user_application(request, pool):
         if count > config.get('session', 'max_attempt', default=5):
             LoginAttempt.add(login)
             abort(429)
-        time.sleep(2 ** count - 1)
+        Transaction().atexit(time.sleep, 2 ** count - 1)
         applications = UserApplication.search([
                 ('user.login', '=', login),
                 ('key', '=', data.get('key')),
