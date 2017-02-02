@@ -79,8 +79,8 @@ class Calendar_(goocalendar.Calendar):
             if not record[dtstart].get(record):
                 continue
 
-            start = record[dtstart].get_client(record)
-            end = record[dtend].get_client(record)
+            start = record[dtstart].get(record)
+            end = record[dtend].get(record)
             midnight = datetime.time(0)
             all_day = False
             if not isinstance(start, datetime.datetime):
