@@ -3,6 +3,7 @@
 from __future__ import division
 from decimal import Decimal
 from sql import Table
+from math import ceil, floor, log10
 
 from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.pyson import Eval
@@ -135,12 +136,13 @@ class Uom(ModelSQL, ModelView):
             ]
 
     def round(self, number):
-        precision = self.rounding
-        i, d = divmod(precision, 1)
-        base = round(number / precision)
-        # Instead of multiply by the decimal part, we must divide by the
-        # integer to avoid precision lost due to float
-        return (base * i) + ((base / (1 / d)) if d != 0 else 0)
+        return _round(self, number, func=round)
+
+    def ceil(self, number):
+        return _round(self, number, func=ceil)
+
+    def floor(self, number):
+        return _round(self, number, func=floor)
 
     @classmethod
     def validate(cls, uoms):
@@ -265,3 +267,24 @@ class Uom(ModelSQL, ModelView):
             new_price = new_price / Decimal(rate_format % to_uom.rate)
 
         return new_price
+
+
+def _round(uom, number, func=round):
+    precision = uom.rounding
+    # Convert precision into an integer greater than 1 to avoid precision lost.
+    # This works for most cases because rounding is often: n * 10**i
+    if precision < 1:
+        exp = -floor(log10(precision))
+        factor = 10 ** exp
+        number *= factor
+        precision *= factor
+    else:
+        factor = 1
+    # Divide by factor which is an integer to avoid precision lost due to
+    # multiplication by float < 1.
+    # example:
+    # >>> 3 * 0.1
+    # 0.30000000000000004
+    # >>> 3 / 10.
+    # 0.3
+    return func(number / precision) * precision / factor
