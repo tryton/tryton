@@ -111,7 +111,7 @@ def _sqlite_copy(file_, restore=False):
         return False
     import sqlite3 as sqlite
 
-    with Transaction().start(DB_NAME, 0) as transaction, \
+    with Transaction().start(DB_NAME, 0, _nocache=True) as transaction, \
             sqlite.connect(file_) as conn2:
         conn1 = transaction.connection
         # sqlitebck does not work with pysqlite2
@@ -139,7 +139,8 @@ def _pg_options():
 
 
 def _pg_restore(cache_file):
-    with Transaction().start(None, 0, close=True, autocommit=True) \
+    with Transaction().start(
+            None, 0, close=True, autocommit=True, _nocache=True) \
             as transaction:
         transaction.database.create(transaction.connection, DB_NAME)
     cmd = ['pg_restore', '-d', DB_NAME]
