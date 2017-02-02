@@ -8,6 +8,7 @@ import datetime
 import time
 import sys
 import threading
+import logging
 
 _FIX_ROWCOUNT = False
 try:
@@ -25,6 +26,8 @@ from sql.functions import (Function, Extract, Position, Substring,
     Overlay, CharLength, CurrentTimestamp)
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
+
+logger = logging.getLogger(__name__)
 
 
 class SQLiteExtract(Function):
@@ -235,6 +238,9 @@ class Database(DatabaseInterface):
         self._conn.create_function('sign', 1, sign)
         self._conn.create_function('greatest', -1, greatest)
         self._conn.create_function('least', -1, least)
+        if (hasattr(self._conn, 'set_trace_callback')
+                and logger.isEnabledFor(logging.DEBUG)):
+            self._conn.set_trace_callback(logger.debug)
         self._conn.execute('PRAGMA foreign_keys = ON')
         return self
 

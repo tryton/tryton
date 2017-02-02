@@ -15,6 +15,7 @@ except ImportError:
     pass
 from psycopg2 import connect
 from psycopg2.pool import ThreadedConnectionPool, PoolError
+from psycopg2.extensions import cursor
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from psycopg2.extensions import register_type, register_adapter
@@ -52,6 +53,17 @@ def replace_special_values(s, **mapping):
     return s
 
 
+class LoggingCursor(cursor):
+    def execute(self, sql, args=None):
+        if logger.isEnabledFor(logging.DEBUG):
+            logger.debug(self.mogrify(sql, args))
+        try:
+            cursor.execute(self, sql, args)
+        except Exception, exc:
+            logger.error("%s: %s" % (exc.__class__.__name__, exc))
+            raise
+
+
 class Database(DatabaseInterface):
 
     _lock = RLock()
@@ -76,7 +88,8 @@ class Database(DatabaseInterface):
             minconn = config.getint('database', 'minconn', default=1)
             maxconn = config.getint('database', 'maxconn', default=64)
             inst._connpool = ThreadedConnectionPool(
-                minconn, maxconn, cls.dsn(name))
+                minconn, maxconn, cls.dsn(name),
+                cursor_factory=LoggingCursor)
 
             return inst
 
