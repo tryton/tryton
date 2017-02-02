@@ -105,7 +105,7 @@ class MemoryCache(BaseCache):
 
     @staticmethod
     def clean(dbname):
-        with Transaction().new_transaction() as transaction,\
+        with Transaction().new_transaction(_nocache=True) as transaction,\
                 transaction.connection.cursor() as cursor:
             table = Table('ir_cache')
             cursor.execute(*table.select(table.timestamp, table.name))
@@ -129,7 +129,7 @@ class MemoryCache(BaseCache):
     @staticmethod
     def resets(dbname):
         table = Table('ir_cache')
-        with Transaction().new_transaction() as transaction,\
+        with Transaction().new_transaction(_nocache=True) as transaction,\
                 transaction.connection.cursor() as cursor,\
                 Cache._resets_lock:
             Cache._resets.setdefault(dbname, set())

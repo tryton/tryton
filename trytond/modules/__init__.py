@@ -17,7 +17,6 @@ from sql.functions import CurrentTimestamp
 import trytond.tools as tools
 from trytond.config import config
 from trytond.transaction import Transaction
-from trytond.cache import Cache
 from trytond import backend
 import trytond.convert as convert
 
@@ -446,7 +445,6 @@ def load_modules(database_name, pool, update=None, lang=None):
                 Module.update_list()
         # Need to commit to unlock SQLite database
         transaction.commit()
-        Cache.resets(database_name)
 
     if not Transaction().connection:
         with Transaction().start(database_name, 0):

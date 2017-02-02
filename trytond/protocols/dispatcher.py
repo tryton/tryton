@@ -13,7 +13,6 @@ from trytond import backend
 from trytond.config import config
 from trytond import __version__
 from trytond.transaction import Transaction
-from trytond.cache import Cache
 from trytond.exceptions import (
     UserError, UserWarning, ConcurrencyException, LoginException,
     RateLimitException)
@@ -57,9 +56,6 @@ def login(request, database_name, user, parameters, language=None):
     except RateLimitException:
         session = None
         code = 429
-    with Transaction().start(database_name, 0):
-        Cache.clean(database_name)
-        Cache.resets(database_name)
     msg = 'successful login' if session else 'bad login or password'
     logger.info('%s \'%s\' from %s using %s on database \'%s\'',
         msg, user, request.remote_addr, request.scheme, database_name)
@@ -156,7 +152,6 @@ def _dispatch(request, pool, *args, **kwargs):
     for count in range(config.getint('database', 'retry'), -1, -1):
         with Transaction().start(pool.database_name, user,
                 readonly=rpc.readonly) as transaction:
-            Cache.clean(pool.database_name)
             try:
                 c_args, c_kwargs, transaction.context, transaction.timestamp \
                     = rpc.convert(obj, *args, **kwargs)
@@ -187,7 +182,6 @@ def _dispatch(request, pool, *args, **kwargs):
                 raise
             # Need to commit to unlock SQLite database
             transaction.commit()
-            Cache.resets(pool.database_name)
         if request.authorization.type == 'session':
             try:
                 with Transaction().start(pool.database_name, 0) as transaction:

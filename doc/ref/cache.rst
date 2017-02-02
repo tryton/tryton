@@ -13,6 +13,8 @@ be unique and it's used to identify the cache. We usually use
 be used to limit the number of values cached and the `context` parameter
 is used to indicate if the cache depends on the user context and is true
 by default.
+The cache is cleaned on :class:`Transaction` starts and resets on
+:class:`Transaction` commit or rollback.
 
 .. warning::
     As there is no deepcopy of the values cached, they must never be mutated

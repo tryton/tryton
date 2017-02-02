@@ -16,7 +16,6 @@ from trytond import security, backend
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.config import config
-from trytond.cache import Cache
 
 logger = logging.getLogger(__name__)
 
@@ -123,7 +122,6 @@ def with_transaction(readonly=None):
                         pool.database_name, 0, readonly=readonly_
                         ) as transaction:
                     try:
-                        Cache.clean(pool.database_name)
                         result = func(request, pool, *args, **kwargs)
                     except DatabaseOperationalError:
                         if count and not readonly_:
@@ -136,7 +134,6 @@ def with_transaction(readonly=None):
                         raise
                     # Need to commit to unlock SQLite database
                     transaction.commit()
-                    Cache.resets(pool.database_name)
                 return result
         return wrapper
     return decorator
