@@ -12,6 +12,7 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
+from trytond.exceptions import UserError
 from trytond.transaction import Transaction
 
 
@@ -132,17 +133,20 @@ class PartyTestCase(ModuleTestCase):
         pool = Pool()
         Party = pool.get('party.party')
         ContactMechanism = pool.get('party.contact_mechanism')
+        transaction = Transaction()
 
-        party1, = Party.create([{
-                    'name': 'Party 1',
-                    }])
-        mechanism, = ContactMechanism.create([{
-                    'party': party1.id,
-                    'type': 'phone',
-                    'value': '+442083661177',
-                    }])
+        def create(mtype, mvalue):
+            party1, = Party.create([{
+                        'name': 'Party 1',
+                        }])
+            return ContactMechanism.create([{
+                        'party': party1.id,
+                        'type': mtype,
+                        'value': mvalue,
+                        }])[0]
 
         # Test format on create
+        mechanism = create('phone', '+442083661177')
         self.assertEqual(mechanism.value, '+44 20 8366 1177')
         self.assertEqual(mechanism.value_compact, '+442083661177')
 
@@ -157,6 +161,20 @@ class PartyTestCase(ModuleTestCase):
                 })
         self.assertEqual(mechanism.value, '+44 20 8366 1179')
         self.assertEqual(mechanism.value_compact, '+442083661179')
+
+        # Test rejection of a phone type mechanism to non-phone value
+        with self.assertRaises(UserError):
+            mechanism.value = 'notaphone@example.com'
+            mechanism.save()
+        transaction.rollback()
+
+        # Test rejection of invalid phone number creation
+        with self.assertRaises(UserError):
+            mechanism = create('phone', 'alsonotaphone@example.com')
+        transaction.rollback()
+
+        # Test acceptance of a non-phone value when type is non-phone
+        mechanism = create('email', 'name@example.com')
 
 
 def suite():
