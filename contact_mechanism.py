@@ -30,6 +30,12 @@ _TYPES = [
     ('other', 'Other'),
 ]
 
+_PHONE_TYPES = {
+    'phone',
+    'mobile',
+    'fax',
+    }
+
 
 class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
     "Contact Mechanism"
@@ -136,7 +142,7 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def format_value(cls, value=None, type_=None):
-        if phonenumbers and type_ == 'phone':
+        if phonenumbers and type_ in _PHONE_TYPES:
             try:
                 phonenumber = phonenumbers.parse(value)
             except NumberParseException:
@@ -148,7 +154,7 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def format_value_compact(cls, value=None, type_=None):
-        if phonenumbers and type_ == 'phone':
+        if phonenumbers and type_ in _PHONE_TYPES:
             try:
                 phonenumber = phonenumbers.parse(value)
             except NumberParseException:
@@ -247,7 +253,7 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
             mechanism.check_valid_phonenumber()
 
     def check_valid_phonenumber(self):
-        if not phonenumbers:
+        if not phonenumbers or self.type not in _PHONE_TYPES:
             return
         try:
             phonenumbers.parse(self.value)
