@@ -65,7 +65,7 @@ class WinForm(NoModal, InfoBar):
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
         if self.save_current:
-            self.but_ok = gtk.Button(_('_Save'))
+            self.but_ok = gtk.Button(_('_Save'), use_underline=True)
             img_save = gtk.Image()
             img_save.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
             self.but_ok.set_image(img_save)
