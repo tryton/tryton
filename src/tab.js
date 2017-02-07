@@ -816,20 +816,17 @@
         },
         action: function() {
             window.setTimeout(function() {
-                this.buttons.action.find('ul.dropdown-menu')
-                    .dropdown('toggle');
+                this.buttons.action.find('button').click();
             }.bind(this));
         },
         relate: function() {
             window.setTimeout(function() {
-                this.buttons.relate.find('ul.dropdown-menu')
-                    .dropdown('toggle');
+                this.buttons.relate.find('button').click();
             }.bind(this));
         },
         print: function() {
             window.setTimeout(function() {
-                this.buttons.print.find('ul.dropdown-menu')
-                    .dropdown('toggle');
+                this.buttons.print.find('button').click();
             }.bind(this));
         },
         export: function(){
