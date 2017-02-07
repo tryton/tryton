@@ -67,6 +67,10 @@ class StockShipmentMeasurementsTestCase(ModuleTestCase):
             self.assertEqual(move.internal_weight, 0.2)
             self.assertEqual(move.internal_volume, None)
 
+            Move.write([move], {'quantity': 100})
+            self.assertEqual(move.internal_weight, 0.1)
+            self.assertEqual(move.internal_volume, None)
+
         template.weight = 1.1
         template.weight_uom = kg
         template.save()
@@ -84,6 +88,10 @@ class StockShipmentMeasurementsTestCase(ModuleTestCase):
                         'currency': currency,
                         }])
             self.assertEqual(move.internal_weight, 0.33)
+            self.assertEqual(move.internal_volume, None)
+
+            Move.write([move], {'quantity': 500})
+            self.assertEqual(move.internal_weight, 0.55)
             self.assertEqual(move.internal_volume, None)
 
         template.volume = 2
@@ -104,6 +112,10 @@ class StockShipmentMeasurementsTestCase(ModuleTestCase):
                         }])
             self.assertEqual(move.internal_weight, 0.55)
             self.assertEqual(move.internal_volume, 1)
+
+            Move.write([move], {'quantity': 600})
+            self.assertEqual(move.internal_weight, 0.66)
+            self.assertEqual(move.internal_volume, 1.2)
 
     @with_transaction()
     def test_shipment_out_measurements(self):

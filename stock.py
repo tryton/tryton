@@ -110,7 +110,7 @@ class Move:
                         and internal_volume != values.get('internal_volume')):
                     write['internal_volume'] = internal_volume
                 if write:
-                    to_write.extend([move], write)
+                    to_write.extend(([move], write))
         if to_write:
             cls.write(*to_write)
 
