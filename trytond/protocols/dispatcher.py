@@ -100,7 +100,8 @@ def db_exist(request, database_name):
 def db_list(*args):
     if not config.getboolean('database', 'list'):
         raise Exception('AccessDenied')
-    with Transaction().start(None, 0, close=True) as transaction:
+    with Transaction().start(
+            None, 0, close=True, _nocache=True) as transaction:
         return transaction.database.list()
 
 
