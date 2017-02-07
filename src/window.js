@@ -937,7 +937,6 @@
                 'size': '1',
                 'maxlength': '1',
                 'value': '\"',
-                'readonly': '' // Until PapaParse releases custom quote feature
             });
 
             jQuery('<div/>', {
@@ -1175,7 +1174,7 @@
             Papa.parse(this.file_input[0].files[0], {
                 config: {
                     delimiter: this.el_csv_delimiter.val(),
-                    // TODO quoteChar: this.el_csv_quotechar.val(),
+                    quoteChar: this.el_csv_quotechar.val(),
                     preview: 1,
                     encoding: this.el_csv_encoding.val()
                 },
@@ -1274,7 +1273,7 @@
             Papa.parse(this.file_input[0].files[0], {
                 config: {
                     delimiter: this.el_csv_delimiter.val(),
-                    // TODO quoteChar: this.el_csv_quotechar.val(),
+                    quoteChar: this.el_csv_quotechar.val(),
                     encoding: encoding
                 },
                 error: function(err, file, inputElem, reason) {
@@ -1695,7 +1694,7 @@
                 unparse_obj.fields = fields;
             }
             var csv = Papa.unparse(unparse_obj, {
-                // TODO quoteChar: this.el_csv_quotechar.val(),
+                quoteChar: this.el_csv_quotechar.val(),
                 delimiter: this.el_csv_delimiter.val()
             });
             var blob = new Blob([csv], {type: 'text/csv;charset=' + encoding});
