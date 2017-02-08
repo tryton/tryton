@@ -42,7 +42,7 @@ class Work:
             },
         depends=['invoiced_duration', 'type'])
     invoice_method = fields.Function(fields.Selection(INVOICE_METHODS,
-            'Invoice Method'), 'get_invoice_method')
+            'Invoice Method'), 'on_change_with_invoice_method')
     invoiced_duration = fields.Function(fields.TimeDelta('Invoiced Duration',
             'company_work_time',
             states={
@@ -96,7 +96,9 @@ class Work:
         default.setdefault('invoice_line', None)
         return super(Work, cls).copy(records, default=default)
 
-    def get_invoice_method(self, name):
+    @fields.depends('type', 'project_invoice_method',
+        'parent', '_parent_parent.invoice_method')
+    def on_change_with_invoice_method(self, name=None):
         if self.type == 'project':
             return self.project_invoice_method
         elif self.parent:
