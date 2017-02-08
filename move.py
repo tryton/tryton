@@ -71,7 +71,8 @@ class Move:
             to_write.extend(([self.__class__(move.id)], {
                         'fifo_quantity': new_quantity,
                         }))
-        self.__class__.write(*to_write)
+        if to_write:
+            self.__class__.write(*to_write)
 
         if Decimal(str(consumed_qty)) != Decimal("0"):
             cost_price = cost_price / Decimal(str(consumed_qty))
