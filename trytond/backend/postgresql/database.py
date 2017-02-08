@@ -57,11 +57,7 @@ class LoggingCursor(cursor):
     def execute(self, sql, args=None):
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(self.mogrify(sql, args))
-        try:
-            cursor.execute(self, sql, args)
-        except Exception, exc:
-            logger.error("%s: %s" % (exc.__class__.__name__, exc))
-            raise
+        cursor.execute(self, sql, args)
 
 
 class Database(DatabaseInterface):
