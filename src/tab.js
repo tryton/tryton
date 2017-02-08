@@ -430,7 +430,7 @@
                         });
                     var menu = button.find('ul[role*="menu"]');
                     if (menu_action[0] == 'action') {
-                        button.find('a').click(function() {
+                        button.click(function() {
                             menu.find('.action_button').remove();
                             var buttons = screen.get_buttons();
                             buttons.forEach(function(button) {
