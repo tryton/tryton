@@ -46,6 +46,7 @@ class Attachment(WinForm):
         new_record = self.screen.new()
         file_name = os.path.basename(urlparse.urlparse(uri).path)
         name_field.set_client(new_record, file_name)
+        uri = urllib.unquote(uri)
         uri = uri.decode('utf-8').encode(sys.getfilesystemencoding())
         data_field.set_client(new_record, urllib.urlopen(uri).read())
         self.screen.display()
