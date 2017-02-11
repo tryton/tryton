@@ -186,17 +186,22 @@ class ModelSQL(ModelStorage):
 
             if isinstance(field, fields.Many2One):
                 if field.model_name in ('res.user', 'res.group'):
+                    # XXX need to merge ir and res
                     ref = field.model_name.replace('.', '_')
                 else:
                     ref_model = pool.get(field.model_name)
-                    ref = ref_model._table
-                    # Create foreign key table if missing
-                    if not TableHandler.table_exist(ref):
-                        TableHandler(ref_model)
+                    if (isinstance(ref_model, ModelSQL)
+                            and not ref_model.table_query()):
+                        ref = ref_model._table
+                        # Create foreign key table if missing
+                        if not TableHandler.table_exist(ref):
+                            TableHandler(ref_model)
+                    else:
+                        ref = None
                 if field_name in ['create_uid', 'write_uid']:
                     # migration from 3.6
                     table.drop_fk(field_name)
-                else:
+                elif ref:
                     table.add_fk(field_name, ref, field.ondelete)
 
             table.index_action(

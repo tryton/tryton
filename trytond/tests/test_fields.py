@@ -3497,6 +3497,18 @@ class FieldsTestCase(unittest.TestCase):
             transaction.rollback()
 
     @with_transaction()
+    def test_many2one_no_foreign_key(self):
+        "Test Many2One without Foreign Key"
+        pool = Pool()
+        Many2OneNoForeignKey = pool.get('test.many2one_no_foreign_key')
+        Many2OneTargetStorage = pool.get('test.many2one_target_storage')
+
+        record = Many2OneNoForeignKey(many2one=1)
+        record.save()
+
+        self.assertIsInstance(record.many2one, Many2OneTargetStorage)
+
+    @with_transaction()
     def test_timedelta(self):
         'Test timedelta'
         pool = Pool()

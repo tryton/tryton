@@ -172,6 +172,8 @@ def register():
         Many2OneSearch,
         Many2OneTree,
         Many2OneMPTT,
+        Many2OneNoForeignKey,
+        Many2OneTargetStorage,
         TestHistory,
         TestHistoryLine,
         FieldContextChild,

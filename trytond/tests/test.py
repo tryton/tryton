@@ -3,7 +3,8 @@
 
 import datetime
 from decimal import Decimal
-from trytond.model import ModelSQL, DictSchemaMixin, fields, Unique
+from trytond.model import (
+    ModelSQL, ModelStorage, DictSchemaMixin, fields, Unique)
 from trytond.pyson import Eval
 
 __all__ = [
@@ -37,7 +38,8 @@ __all__ = [
     'DictSchema', 'Dict', 'DictDefault', 'DictRequired',
     'Binary', 'BinaryDefault', 'BinaryRequired', 'BinaryFileStorage',
     'Many2OneDomainValidation', 'Many2OneTarget', 'Many2OneOrderBy',
-    'Many2OneSearch', 'Many2OneTree', 'Many2OneMPTT',
+    'Many2OneSearch', 'Many2OneTree', 'Many2OneMPTT', 'Many2OneNoForeignKey',
+    'Many2OneTargetStorage'
     ]
 
 
@@ -794,3 +796,14 @@ class Many2OneMPTT(ModelSQL):
     @classmethod
     def default_right(cls):
         return 0
+
+
+class Many2OneNoForeignKey(ModelSQL):
+    "Many2One No Foreign Key"
+    __name__ = 'test.many2one_no_foreign_key'
+    many2one = fields.Many2One('test.many2one_target_storage', 'many2one')
+
+
+class Many2OneTargetStorage(ModelStorage):
+    "Many2One Target Storage"
+    __name__ = 'test.many2one_target_storage'
