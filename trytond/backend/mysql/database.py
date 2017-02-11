@@ -105,7 +105,7 @@ class Database(DatabaseInterface):
             args['passwd'] = urllib.unquote_plus(uri.password)
         conn = MySQLdb.connect(**args)
         cursor = Cursor(conn, self.database_name)
-        cursor.execute('SET time_zone = `UTC`')
+        cursor.execute('SET time_zone = "+00:00"')
         return cursor
 
     def close(self):
