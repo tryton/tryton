@@ -12,7 +12,7 @@ from tryton.gui.window.note import Note
 _ = gettext.gettext
 
 
-def populate(menu, model, record, title='', field=None):
+def populate(menu, model, record, title='', field=None, context=None):
     '''
     Fill menu with the actions of model for the record.
     If title is filled, the actions will be put in a submenu.
@@ -27,7 +27,7 @@ def populate(menu, model, record, title='', field=None):
 
     def load(record):
         if isinstance(record, (int, long)):
-            screen = Screen(model)
+            screen = Screen(model, context=context)
             screen.load([record])
             record = screen.current_record
         return record
@@ -51,7 +51,7 @@ def populate(menu, model, record, title='', field=None):
                 or event.state & gtk.gdk.MOD1_MASK):
             allow_similar = True
         with Window(hide_current=True, allow_similar=allow_similar):
-            Action._exec_action(action, data, {})
+            Action._exec_action(action, data, rec.get_context())
 
     def attachment(menuitem):
         Attachment(load(record), None)

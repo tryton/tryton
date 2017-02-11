@@ -906,7 +906,10 @@ class ViewTree(View):
                     if not model:
                         continue
                     label = field.attrs['string']
-                    populate(menu, model, record_id, title=label, field=field)
+                    context = field.get_context(record)
+                    populate(
+                        menu, model, record_id, title=label, field=field,
+                        context=context)
                 menu.show_all()
 
             selection = treeview.get_selection()
