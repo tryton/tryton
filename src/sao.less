@@ -1,15 +1,12 @@
 @import "variables";
 @import "mixins";
 
-#tablist {
-    & > li {
-        max-width: 10em;
-        & > a {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-    }
+#tablist > li > a > span {
+    display: inline-block;
+    max-width: 9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tab-form, .tab-board {
@@ -20,11 +17,6 @@
         top: @navbar-height + 1px;
         z-index: @zindex-navbar - 1;
     }
-}
-
-.nav-tabs > li .close {
-    margin: -2px 0 0 10px;
-    font-size: 18px;
 }
 
 @media screen and (max-width: @screen-xs-max) {
