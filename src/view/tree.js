@@ -1482,7 +1482,13 @@
                     name = value[1];
                 }
                 if (model) {
-                    cell.text(this.selection[model] || model + ',' + name);
+                    for (var i = 0, len = this.selection.length; i < len; i++) {
+                        if (this.selection[i][0] === model) {
+                            model = this.selection[i][1];
+                            break;
+                        }
+                    }
+                    cell.text(model + ',' + name);
                 } else {
                     cell.text(name);
                 }
