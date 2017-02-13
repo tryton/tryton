@@ -780,7 +780,8 @@
                     continue;
                 }
                 var field = this.model.fields[name];
-                if (field.description.readonly) {
+                if (field.description.readonly &&
+                        !(field instanceof Sao.field.One2Many)) {
                     continue;
                 }
                 if ((this._changed[name] === undefined) && this.id >= 0) {
