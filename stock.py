@@ -173,7 +173,6 @@ class CreateDPDShipping(Wizard):
         return {
             'printerLanguage': 'PDF',
             'paperFormat': 'A6',
-            'startPosition': 'UPPER_LEFT',
             }
 
     def shipping_party(self, party, address):
