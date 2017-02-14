@@ -71,7 +71,9 @@ class Form(SignalEvent, TabContent):
             (_('_Search'), 'tryton-find', 'sig_search',
                 '<tryton>/Form/Search'),
             (_('View _Logs...'), None, 'sig_logs', None),
-            (_('Show revisions...'), 'tryton-clock', 'revision', None),
+            (_('Show revisions...'), 'tryton-clock',
+                'revision' if self.model in common.MODELHISTORY else None,
+                None),
             (None,) * 4,
             (_('_Close Tab'), 'tryton-close', 'sig_win_close',
                 '<tryton>/Form/Close'),
@@ -127,12 +129,6 @@ class Form(SignalEvent, TabContent):
         self.screen.widget.show()
 
         self.name = name
-
-        if self.model not in common.MODELHISTORY:
-            self.menu_def = self.menu_def[:]
-            # Remove callback to revision
-            self.menu_def[11] = (self.menu_def[11][:2] + (None,)
-                + self.menu_def[11][3:])
 
         self.create_tabcontent()
 
