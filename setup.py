@@ -61,7 +61,8 @@ for dep in info.get('extras_depend', []):
 tests_require = [get_require_version('proteus'),
     'mock',  # For account_stock_anglo_saxon tests tools
     get_require_version('trytond_account_stock_continental'),
-    get_require_version('trytond_account_stock_anglo_saxon')]
+    get_require_version('trytond_account_stock_anglo_saxon'),
+    get_require_version('trytond_purchase')]
 dependency_links = []
 if minor_version % 2:
     # Add development index for testing with proteus
