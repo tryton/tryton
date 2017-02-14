@@ -170,7 +170,7 @@ def user_application(name, json=True):
                     if isinstance(e, HTTPException):
                         raise
                     logger.error('%s', request, exc_info=True)
-                    abort(500)
+                    abort(500, e)
             if not isinstance(response, Response) and json:
                 response = Response(json_.dumps(response, cls=JSONEncoder),
                     content_type='application/json')
