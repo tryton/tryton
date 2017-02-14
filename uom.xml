@@ -94,8 +94,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Carat</field>
             <field name="symbol">c</field>
             <field name="category" ref="uom_cat_weight"/>
-            <field name="factor" eval="5000."/>
-            <field name="rate" eval="0.0002"/>
+            <field name="factor" eval="0.0002"/>
+            <field name="rate" eval="5000."/>
         </record>
         <record model="product.uom" id="uom_pound">
             <field name="name">Pound</field>
