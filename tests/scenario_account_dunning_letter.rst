@@ -83,12 +83,7 @@ Create dunning procedure::
     >>> level = procedure.levels.new()
     >>> level.sequence = 1
     >>> level.overdue = datetime.timedelta(5)
-    >>> level = procedure.levels.new()
-    >>> level.sequence = 2
-    >>> level.overdue = datetime.timedelta(20)
-    >>> level = procedure.levels.new()
-    >>> level.sequence = 3
-    >>> level.overdue = datetime.timedelta(40)
+    >>> level.print_on_letter = True
     >>> procedure.save()
 
 Create parties::
@@ -109,6 +104,9 @@ Create some moves::
     >>> journal_cash, = Journal.find([
     ...         ('code', '=', 'CASH'),
     ...         ])
+
+Create reconciled moves::
+
     >>> move = Move()
     >>> move.period = period
     >>> move.journal = journal_revenue
@@ -138,6 +136,9 @@ Create some moves::
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [reconcile1, reconcile2])
+
+Create due move of 100::
+
     >>> move = Move()
     >>> move.period = period
     >>> move.journal = journal_revenue
@@ -152,6 +153,21 @@ Create some moves::
     >>> line.maturity_date = period.start_date
     >>> move.save()
     >>> dunning_line, = [l for l in move.lines if l.account == receivable]
+
+Add partial payment of 50::
+
+    >>> move = Move()
+    >>> move.period = period
+    >>> move.journal = journal_cash
+    >>> move.date = period.start_date
+    >>> line = move.lines.new()
+    >>> line.account = cash
+    >>> line.debit = Decimal(50)
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.credit = Decimal(50)
+    >>> line.party = customer
+    >>> move.save()
 
 Create dunnings::
 
@@ -170,4 +186,3 @@ Process dunning::
     >>> dunning.reload()
     >>> dunning.state
     u'done'
-
