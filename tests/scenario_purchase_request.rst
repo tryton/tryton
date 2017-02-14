@@ -17,7 +17,7 @@ Imports::
 
 Install stock_supply Module::
 
-    >>> config = activate_modules('stock_supply')
+    >>> config = activate_modules(['purchase_request', 'stock_supply'])
 
 Create company::
 
