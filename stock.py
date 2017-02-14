@@ -3,7 +3,9 @@
 from itertools import groupby
 from functools import partial
 
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
+
+from .common import parcel_weight
 
 __all__ = ['ShipmentIn', 'ShipmentOut']
 
@@ -19,8 +21,6 @@ class ShipmentIn:
         return None
 
     def _get_carrier_context(self):
-        Uom = Pool().get('product.uom')
-
         context = super(ShipmentIn, self)._get_carrier_context()
         if not self.carrier:
             return context
@@ -35,18 +35,7 @@ class ShipmentIn:
         lines = sorted(lines, key=keyfunc)
 
         for key, parcel in groupby(lines, key=keyfunc):
-            weight = 0
-            for line in parcel:
-                if (getattr(line, 'product', None)
-                        and getattr(line, 'quantity', None)
-                        and getattr(line, 'uom', None)
-                        and line.product.weight):
-                    quantity = Uom.compute_qty(line.uom, line.quantity,
-                        line.product.default_uom, round=False)
-                    weight += Uom.compute_qty(line.product.weight_uom,
-                        line.product.weight * quantity,
-                        self.carrier.weight_uom, round=False)
-            weights.append(weight)
+            weights.append(parcel_weight(parcel, self.carrier.weight_uom))
         return context
 
 
@@ -61,8 +50,6 @@ class ShipmentOut:
         return None
 
     def _get_carrier_context(self):
-        Uom = Pool().get('product.uom')
-
         context = super(ShipmentOut, self)._get_carrier_context()
         if not self.carrier:
             return context
@@ -77,16 +64,5 @@ class ShipmentOut:
         lines = sorted(lines, key=keyfunc)
 
         for key, parcel in groupby(lines, key=keyfunc):
-            weight = 0
-            for line in parcel:
-                if (line.product
-                        and line.quantity
-                        and line.uom
-                        and line.product.weight):
-                    quantity = Uom.compute_qty(line.uom, line.quantity,
-                        line.product.default_uom, round=False)
-                    weight += Uom.compute_qty(line.product.weight_uom,
-                        line.product.weight * quantity,
-                        self.carrier.weight_uom, round=False)
-            weights.append(weight)
+            weights.append(parcel_weight(parcel, self.carrier.weight_uom))
         return context

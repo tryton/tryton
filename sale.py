@@ -3,7 +3,9 @@
 from functools import partial
 from itertools import groupby
 
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
+
+from .common import parcel_weight
 
 __all__ = ['Sale']
 
@@ -19,8 +21,6 @@ class Sale:
         return None
 
     def _get_carrier_context(self):
-        Uom = Pool().get('product.uom')
-
         context = super(Sale, self)._get_carrier_context()
 
         if self.carrier.carrier_cost_method != 'weight':
@@ -34,16 +34,6 @@ class Sale:
         lines = sorted(lines, key=keyfunc)
 
         for key, parcel in groupby(lines, key=keyfunc):
-            weight = 0
-            for line in parcel:
-                if (getattr(line, 'product', None)
-                        and getattr(line, 'quantity', None)
-                        and getattr(line, 'unit', None)):
-                    quantity = Uom.compute_qty(line.unit, line.quantity,
-                        line.product.default_uom, round=False)
-                    if line.product.weight:
-                        weight += Uom.compute_qty(line.product.weight_uom,
-                            line.product.weight * quantity,
-                            self.carrier.weight_uom, round=False)
-            weights.append(weight)
+            weights.append(parcel_weight(
+                    parcel, self.carrier.weight_uom, 'unit'))
         return context

@@ -1,3 +1,5 @@
+* Use quantity if unit is weight as fallback for missing measurement
+
 Version 4.2.0 - 2016-11-28
 * Bug fixes (see mercurial logs for details)
 
