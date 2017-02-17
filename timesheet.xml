@@ -19,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="name">Timesheet Lines</field>
         <field name="res_model">timesheet.line</field>
         <field name="domain"
-            eval="[('invoice_line.invoice', 'in', Eval('active_ids'))]"
+            eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('invoice_line.invoice', '=', Eval('active_id')), ('invoice_line.invoice', 'in', Eval('active_ids')))]"
             pyson="1"/>
     </record>
     <record model="ir.action.keyword"
