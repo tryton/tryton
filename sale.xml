@@ -38,7 +38,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sale Promotions</field>
             <field name="res_model">sale.promotion</field>
             <field name="domain"
-                eval="[('price_list', 'in', Eval('active_ids', []))]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('price_list', '=', Eval('active_id')), ('price_list', 'in', Eval('active_ids')))]"
                 pyson="1"/>
             <field name="search_value"
                 eval="['OR', ('end_date', '>=', Date()), ('end_date', '=', None)]"
