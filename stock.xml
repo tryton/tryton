@@ -93,7 +93,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Moves</field>
             <field name="res_model">stock.move</field>
             <field name="domain"
-                eval="[('lot', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('lot', '=', Eval('active_id')), ('lot', 'in', Eval('active_ids')))]"
+                pyson="1"/>
             <field name="order"
                 eval="[('effective_date', 'DESC'), ('planned_date', 'DESC')]"
                 pyson="1"/>
