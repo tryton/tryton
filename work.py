@@ -420,6 +420,7 @@ class Work:
     def _group_lines_to_invoice_key(self, line):
         "The key to group lines"
         return (('product', line['product']),
+            ('unit', line['unit']),
             ('unit_price', line['unit_price']),
             ('description', line['description']))
 
@@ -427,23 +428,27 @@ class Work:
         "Return a invoice line for the lines"
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        ModelData = pool.get('ir.model.data')
         Uom = pool.get('product.uom')
 
-        hour = Uom(ModelData.get_id('product', 'uom_hour'))
         quantity = sum(l['quantity'] for l in lines)
         product = key['product']
 
         invoice_line = InvoiceLine()
         invoice_line.type = 'line'
-        invoice_line.quantity = Uom.compute_qty(hour, quantity,
-            product.default_uom)
-        invoice_line.unit = product.default_uom
-        invoice_line.product = product
         invoice_line.description = key['description']
         invoice_line.account = product.account_revenue_used
-        invoice_line.unit_price = Uom.compute_price(hour, key['unit_price'],
-            product.default_uom)
+        if (key['unit']
+                and key['unit'].category == product.default_uom.category):
+            invoice_line.product = product
+            invoice_line.unit_price = Uom.compute_price(
+                key['unit'], key['unit_price'], product.default_uom)
+            invoice_line.quantity = Uom.compute_qty(
+                key['unit'], quantity, product.default_uom)
+            invoice_line.unit = product.default_uom
+        else:
+            invoice_line.unit_price = key['unit_price']
+            invoice_line.quantity = quantity
+            invoice_line.unit = key['unit']
 
         taxes = []
         pattern = invoice_line._get_tax_rule_pattern()
@@ -466,6 +471,12 @@ class Work:
         return []
 
     def _get_lines_to_invoice_effort(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+
+        hour = Uom(ModelData.get_id('product', 'uom_hour'))
+
         if (not self.invoice_line
                 and self.effort_hours
                 and self.state == 'done'):
@@ -476,6 +487,7 @@ class Work:
             return [{
                     'product': self.product,
                     'quantity': self.effort_hours,
+                    'unit': hour,
                     'unit_price': self.list_price,
                     'origin': self,
                     'description': self.name,
@@ -508,6 +520,7 @@ class Work:
             return [{
                     'product': self.product,
                     'quantity': quantity,
+                    'unit': hour,
                     'unit_price': self.list_price,
                     'origin': invoiced_progress,
                     'description': self.name,
@@ -516,6 +529,11 @@ class Work:
         return []
 
     def _get_lines_to_invoice_timesheet(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+
+        hour = Uom(ModelData.get_id('product', 'uom_hour'))
         if (self.timesheet_works
                 and any(tw.timesheet_lines for tw in self.timesheet_works)):
             if not self.product:
@@ -525,6 +543,7 @@ class Work:
             return [{
                     'product': self.product,
                     'quantity': l.hours,
+                    'unit': hour,
                     'unit_price': self.list_price,
                     'origin': l,
                     'description': self.name,
