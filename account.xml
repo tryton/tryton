@@ -11,6 +11,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_line_list</field>
         </record>
 
+        <record model="ir.ui.view" id="move_line_view_form">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account.move_line_view_form"/>
+            <field name="name">move_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_view_form_move">
+            <field name="model">account.move.line</field>
+            <field name="inherit" ref="account.move_line_view_form_move"/>
+            <field name="name">move_line_form</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_move_line_form">
             <field name="name">Lines to Pay</field>
             <field name="res_model">account.move.line</field>
@@ -30,7 +42,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payable</field>
             <field name="sequence" eval="10"/>
             <field name="domain"
-                eval="['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)]"
+                eval="[['OR', ('credit', '&gt;', 0), ('debit', '&lt;', 0)], ('payment_direct_debit', '=', False)]"
                 pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_move_line_form"/>
@@ -115,6 +127,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="field"
                 search="[('model.model', '=', 'account.configuration'), ('name', '=', 'payment_group_sequence')]"/>
             <field name="value" eval="'ir.sequence,' + str(ref('sequence_account_payment_group'))"/>
+        </record>
+    </data>
+    <data depends="account_invoice">
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
         </record>
     </data>
 </tryton>

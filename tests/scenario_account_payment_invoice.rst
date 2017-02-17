@@ -69,6 +69,8 @@ Create invoice::
     >>> invoice.amount_to_pay
     Decimal('100.00')
     >>> line_to_pay, = invoice.lines_to_pay
+    >>> bool(line_to_pay.payment_direct_debit)
+    False
 
 Partially pay line::
 
@@ -106,3 +108,26 @@ Check amount to pay::
     >>> invoice.amount_to_pay
     Decimal('100.00')
 
+Set party as direct debit::
+
+    >>> party.payment_direct_debit = True
+    >>> party.save()
+
+Create invoice::
+
+    >>> Invoice = Model.get('account.invoice')
+    >>> invoice = Invoice()
+    >>> invoice.party = party
+    >>> invoice.payment_direct_debit
+    True
+    >>> line = invoice.lines.new()
+    >>> line.description = 'Description'
+    >>> line.account = revenue
+    >>> line.quantity = 1
+    >>> line.unit_price = Decimal('50')
+    >>> invoice.click('post')
+    >>> invoice.state
+    u'posted'
+    >>> line_to_pay, = invoice.lines_to_pay
+    >>> bool(line_to_pay.payment_direct_debit)
+    True

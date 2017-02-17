@@ -45,6 +45,14 @@ class MoveLine:
                 ] + KINDS, 'Payment Kind'), 'get_payment_kind',
         searcher='search_payment_kind')
     payment_blocked = fields.Boolean('Blocked', readonly=True)
+    payment_direct_debit = fields.Boolean("Direct Debit",
+        states={
+            'invisible': ~(
+                (Eval('payment_kind') == 'payable')
+                & ((Eval('credit', 0) > 0) | (Eval('debit', 0) < 0))),
+            },
+        depends=['payment_kind', 'debit', 'credit'],
+        help="Check if the line will be paid by direct debit.")
 
     @classmethod
     def __setup__(cls):
@@ -60,7 +68,12 @@ class MoveLine:
                     'invisible': ~Eval('payment_blocked', False),
                     },
                 })
-        cls._check_modify_exclude.add('payment_blocked')
+        cls._check_modify_exclude.update(
+            ['payment_blocked', 'payment_direct_debit'])
+
+    @classmethod
+    def default_payment_direct_debit(cls):
+        return False
 
     @classmethod
     def get_payment_amount(cls, lines, name):
@@ -300,6 +313,28 @@ class Configuration:
 class Invoice:
     __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
+
+    payment_direct_debit = fields.Boolean("Direct Debit",
+        states={
+            'invisible': Eval('type') != 'in',
+            },
+        depends=['type'],
+        help="Check if the invoice is paid by direct debit.")
+
+    @classmethod
+    def default_payment_direct_debit(cls):
+        return False
+
+    @fields.depends('party')
+    def on_change_party(self):
+        super(Invoice, self).on_change_party()
+        if self.party:
+            self.payment_direct_debit = self.party.payment_direct_debit
+
+    def _get_move_line(self, date, amount):
+        line = super(Invoice, self)._get_move_line(date, amount)
+        line.payment_direct_debit = self.payment_direct_debit
+        return line
 
     @classmethod
     def get_amount_to_pay(cls, invoices, name):
