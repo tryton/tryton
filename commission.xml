@@ -203,7 +203,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Commissions</field>
             <field name="res_model">commission</field>
             <field name="domain"
-                eval="[('agent', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('agent', '=', Eval('active_id')), ('agent', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_commission_form2_keyword1">
             <field name="keyword">form_relate</field>
