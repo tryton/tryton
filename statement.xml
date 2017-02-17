@@ -123,7 +123,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Statement Lines</field>
             <field name="res_model">account.statement.line</field>
             <field name="domain"
-                eval="[('move', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('move', '=', Eval('active_id')), ('move', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_statement_line_move_keyword1">
             <field name="keyword">form_relate</field>
@@ -135,7 +136,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Statement Lines</field>
             <field name="res_model">account.statement.line</field>
             <field name="domain"
-                eval="[('move.lines', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('move.lines', '=', Eval('active_id')), ('move.lines', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_statement_line_move_line_keyword1">
             <field name="keyword">form_relate</field>
@@ -342,7 +344,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Move Lines</field>
             <field name="res_model">account.move.line</field>
             <field name="domain"
-                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement')]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'account.statement'), ('origin.id', 'in', Eval('active_ids'), 'account.statement'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_move_lines_form_keyword1">
@@ -355,7 +357,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Moves</field>
             <field name="res_model">account.move</field>
             <field name="domain"
-                eval="[('origin.id', 'in', Eval('active_ids'), 'account.statement')]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'account.statement'), ('origin.id', 'in', Eval('active_ids'), 'account.statement'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_moves_form_keyword1">
@@ -368,7 +370,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Line Groups</field>
             <field name="res_model">account.statement.line.group</field>
             <field name="domain"
-                eval="[('journal', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('journal', '=', Eval('active_id')), ('journal', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_line_groups_form_keyword1">
             <field name="keyword">form_relate</field>
