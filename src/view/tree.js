@@ -1235,8 +1235,18 @@
                     if (next_row.length) {
                         focus_cell(next_row);
                     } else {
-                        // TODO access and size_limit
-                        this.tree.screen.new_().done(function() {
+                        var model = this.tree.screen.group;
+                        var access = Sao.common.MODELACCESS.get(
+                                this.tree.screen.model_name);
+                        var limit = ((this.tree.screen.size_limit !== null) &&
+                                (model.length >= this.tree.screen.size_limit));
+                        var prm;
+                        if (!access.create || limit) {
+                            prm = jQuery.when();
+                        } else {
+                            prm = this.tree.screen.new_();
+                        }
+                        prm.done(function() {
                             var new_row;
                             var rows = this.tree.tbody.children('tr');
                             if (this.tree.attributes.editable == 'bottom') {

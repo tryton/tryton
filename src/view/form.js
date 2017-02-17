@@ -2618,10 +2618,19 @@ function eval_pyson(value){
                     domain = field.get_domain(record);
                     size_limit = record.expr_eval(this.attributes.size);
                 }
+                if (this._readonly) {
+                    if (size_limit === null) {
+                        size_limit = this.screen.group.length;
+                    } else {
+                        size_limit = Math.min(
+                                size_limit, this.screen.group.length);
+                    }
+                }
                 if (!Sao.common.compare(this.screen.domain, domain)) {
                     this.screen.domain = domain;
                 }
                 this.screen.size_limit = size_limit;
+                this.screen.attributes.readonly = this._readonly;
                 this.screen.display();
             }.bind(this));
         },
