@@ -3242,13 +3242,12 @@ function eval_pyson(value){
                 prm = jQuery.when(field.get(record));
             }
             prm.done(function(data) {
-                var blob = new Blob([data], {type: mimetype});
-                var blob_url = window.URL.createObjectURL(blob);
-                if (this.blob_url) {
-                    window.URL.revokeObjectURL(this.blob_url);
+                var name;
+                var field = this.filename_field();
+                if (field) {
+                    name = field.get(this.record());
                 }
-                this.blob_url = blob_url;
-                window.open(blob_url);
+                Sao.common.download_file(data, name);
             }.bind(this));
         },
         clear: function() {

@@ -197,14 +197,8 @@
             var name = result[3];
 
             // TODO direct print
-            var blob = new Blob([data],
-                {type: Sao.common.guess_mimetype(report_type)});
-            var blob_url = window.URL.createObjectURL(blob);
-            if (Sao.Action.report_blob_url) {
-                window.URL.revokeObjectURL(Sao.Action.report_blob_url);
-            }
-            Sao.Action.report_blob_url = blob_url;
-            window.open(blob_url);
+            var file_name = name + '.' + report_type;
+            Sao.common.download_file(data, file_name);
         });
     };
 
