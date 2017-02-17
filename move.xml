@@ -89,7 +89,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Reconciliation Lines</field>
             <field name="res_model">account.move.line</field>
             <field name="domain"
-                eval="[('reconciliation', 'in', Eval('active_ids'))]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('reconciliation', '=', Eval('active_id')), ('reconciliation', 'in', Eval('active_ids')))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_move_reconciliation_lines_keyword1">
@@ -206,7 +206,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Payable/Receivable Lines</field>
             <field name="res_model">account.move.line</field>
             <field name="domain"
-                eval="[('party', 'in', Eval('active_ids')), ('account.kind', 'in', ['payable', 'receivable'])]"
+                eval="[('account.kind', 'in', ['payable', 'receivable']), If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
                 pyson="1"/>
             <field name="search_value"
                 eval="[('reconciliation', '=', None)]" pyson="1"/>
