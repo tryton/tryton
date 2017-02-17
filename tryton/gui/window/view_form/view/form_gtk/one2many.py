@@ -517,6 +517,11 @@ class One2Many(Widget):
         if record:
             domain = field.domain_get(record)
             size_limit = record.expr_eval(self.attrs.get('size'))
+        if self._readonly:
+            if size_limit is None:
+                size_limit = len(self.screen.group)
+            else:
+                size_limit = min(size_limit, len(self.screen.group))
         if self.screen.domain != domain:
             self.screen.domain = domain
         self.screen.size_limit = size_limit
