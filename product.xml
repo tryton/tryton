@@ -170,7 +170,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Variants</field>
             <field name="res_model">product.product</field>
             <field name="domain" pyson="1"
-                eval="[If(Len(Eval('active_ids', [])) == 1, ('template', '=', Eval('active_id')), ('template', 'in', Eval('active_ids')))]"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('template', '=', Eval('active_id')), ('template', 'in', Eval('active_ids')))]"/>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_product_from_template_list_view">
