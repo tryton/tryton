@@ -101,7 +101,7 @@ this repository contains the full copyright notices and license terms.
             <field name="name">Requests</field>
             <field name="res_model">purchase.request</field>
             <field name="domain"
-                eval="[('origin.id', 'in', Eval('active_ids'), 'purchase.requisition.line')]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'purchase.requisition.line'), ('origin.id', 'in', Eval('active_ids', 'purchase.requisition.line')))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
@@ -121,7 +121,7 @@ this repository contains the full copyright notices and license terms.
             <field name="name">Requests</field>
             <field name="res_model">purchase.request</field>
             <field name="domain"
-                eval="[('origin.requisition', 'in', Eval('active_ids'), 'purchase.requisition.line')]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.regisition', '=', Eval('active_id'), 'purchase.requisition.line'), ('origin.regisition', 'in', Eval('active_ids'), 'purchase.requisition.line'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
