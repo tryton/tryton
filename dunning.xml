@@ -188,7 +188,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Dunnings</field>
             <field name="res_model">account.dunning</field>
             <field name="domain"
-                eval="[('line.party', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('line.party', '=', Eval('active_id')), ('line.party', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_dunning_party_view1">
             <field name="sequence" eval="10"/>
