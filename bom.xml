@@ -148,7 +148,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">As Inputs</field>
             <field name="sequence" eval="10"/>
             <field name="domain" pyson="1"
-                eval="[('inputs.product', 'in', Eval('active_ids'))]"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('inputs.product', '=', Eval('active_id')), ('inputs.product', 'in', Eval('active_ids')))]"/>
             <field name="act_window" ref="act_product_in_bom"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -156,7 +156,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">As Outputs</field>
             <field name="sequence" eval="20"/>
             <field name="domain" pyson="1"
-                eval="[('outputs.product', 'in', Eval('active_ids'))]"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('outputs.product', '=', Eval('active_id')), ('outputs.product', 'in', Eval('active_ids')))]"/>
             <field name="act_window" ref="act_product_in_bom"/>
         </record>
         <record model="ir.action.keyword" id="act_product_in_bom_keyword1">
