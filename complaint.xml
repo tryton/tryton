@@ -119,7 +119,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Customer Complaints</field>
             <field name="res_model">sale.complaint</field>
             <field name="domain"
-                eval="[('customer', 'in', Eval('active_ids'))]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('customer', '=', Eval('active_id')), ('customer', 'in', Eval('active_ids')))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
