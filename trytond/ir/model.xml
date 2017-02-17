@@ -93,7 +93,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Access</field>
             <field name="res_model">ir.model.access</field>
             <field name="domain"
-                eval="[('model', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('model', '=', Eval('active_id')), ('model', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword"
             id="act_model_access_form_relate_model_keyword1">
@@ -137,7 +138,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Access</field>
             <field name="res_model">ir.model.field.access</field>
             <field name="domain"
-                eval="[('field', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('field', '=', Eval('active_id')), ('field', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword"
             id="act_modelfield__access_form_relate_field_keyword1">
@@ -240,7 +242,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Clicks</field>
             <field name="res_model">ir.model.button.click</field>
             <field name="domain"
-                eval="[('button', 'in', Eval('active_ids'))]" pyson="1"/>
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('button', '=', Eval('active_id')), ('button', 'in', Eval('active_ids')))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword"
             id="act_model_button_click_form_relate_model_button_keyword1">
