@@ -22,7 +22,8 @@ class Fingerprints(dict):
                     host, sha1 = line.split(' ')
                 except ValueError:
                     host, sha1 = line, ''
-                self[host] = sha1
+                # Skip current implementation to avoid save
+                dict.__setitem__(self, host, sha1)
 
     def save(self):
         with open(KNOWN_HOSTS_PATH, 'w') as known_hosts:
@@ -35,5 +36,7 @@ class Fingerprints(dict):
             assert len(value) == 59  # len of formated sha1
         else:
             value = ''
+        changed = value != self.get(key)
         super(Fingerprints, self).__setitem__(key, value)
-        self.save()
+        if changed:
+            self.save()
