@@ -3284,7 +3284,7 @@
     Sao.common.download_file = function(data, name) {
         var type = Sao.common.guess_mimetype(
             name ? name.split('.').pop() : undefined);
-        var blob = new Blob([data, {type: type}]);
+        var blob = new Blob([data], {type: type});
         var blob_url = window.URL.createObjectURL(blob);
 
         var dialog = new Sao.Dialog(Sao.i18n.gettext('Download'));
