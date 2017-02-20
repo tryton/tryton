@@ -195,6 +195,14 @@ class Many2One(Field):
                     return self.convert_domain_tree(
                         (name, operator, ids), tables)
 
+            # Used for Many2Many where clause
+            if operator.endswith('where'):
+                query = Target.search(value, order=[], query=True)
+                expression = column.in_(query)
+                if operator.startswith('not'):
+                    return ~expression
+                return expression
+
             if not isinstance(value, basestring):
                 return super(Many2One, self).convert_domain(domain, tables,
                     Model)

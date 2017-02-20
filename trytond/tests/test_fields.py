@@ -2677,6 +2677,29 @@ class FieldsTestCase(unittest.TestCase):
         transaction.rollback()
 
     @with_transaction()
+    def test_many2many_search_where_nested_value(self):
+        "Test Many2Many search where nested value"
+        pool = Pool()
+        Many2Many = pool.get('test.many2many')
+
+        record, = Many2Many.create([{
+                    'name': 'origin',
+                    'targets': [
+                        ('create', [{
+                                    'name': 'target',
+                                    }]),
+                        ],
+                    }])
+
+        result = Many2Many.search([
+                ('targets', 'where', ['OR',
+                        ('name', '=', 'target'),
+                        ('name', '=', 'other'),
+                        ]),
+                ])
+        self.assertEqual(result, [record])
+
+    @with_transaction()
     def test_many2many_add_to_list(self):
         "Test Many2Many add to list of records"
         pool = Pool()

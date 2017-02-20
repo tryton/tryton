@@ -362,11 +362,7 @@ class Many2Many(Field):
                 relation_domain.append(
                     (self.origin, 'like', Model.__name__ + ',%'))
         else:
-            relation_domain = []
-            for clause in value:
-                relation_domain.append(
-                        ('%s.%s' % (self.target, clause[0]),)
-                        + tuple(clause[1:]))
+            relation_domain = [self.target, operator, value]
         rule_domain = Rule.domain_get(Relation.__name__, mode='read')
         if rule_domain:
             relation_domain = [relation_domain, rule_domain]
@@ -377,8 +373,4 @@ class Many2Many(Field):
             relation_domain, tables=relation_tables)
         query_table = convert_from(None, relation_tables)
         query = query_table.select(origin, where=expression)
-        expression = table.id.in_(query)
-
-        if operator == 'not where':
-            expression = ~expression
-        return expression
+        return table.id.in_(query)
