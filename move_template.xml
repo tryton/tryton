@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="move_template_view_form"/>
             <field name="act_window" ref="act_move_template_form"/>
         </record>
-        <menuitem parent="menu_journal_configuration"
+        <menuitem parent="menu_templates"
             action="act_move_template_form" id="menu_move_template_form"/>
 
         <record model="ir.model.access" id="access_move_template">
