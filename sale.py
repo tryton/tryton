@@ -120,9 +120,14 @@ class Sale:
     @ModelView.button
     @Workflow.transition('quotation')
     def quote(cls, sales):
+        pool = Pool()
+        Line = pool.get('sale.line')
+
         super(Sale, cls).quote(sales)
+        removed = []
         for sale in sales:
-            sale.set_shipment_cost()
+            removed.extend(sale.set_shipment_cost())
+        Line.delete(removed)
         cls.save(sales)
 
     def _get_carrier_context(self):
@@ -151,6 +156,7 @@ class Sale:
                     self.currency)
             cost_line = self.get_shipment_cost_line(cost)
 
+        removed = []
         lines = list(self.lines or [])
         for line in self.lines:
             if line.type != 'line' or not line.shipment_cost:
@@ -159,9 +165,11 @@ class Sale:
                 cost_line = None
             else:
                 lines.remove(line)
+                removed.append(line)
         if cost_line:
             lines.append(cost_line)
         self.lines = lines
+        return removed
 
     def get_shipment_cost_line(self, cost):
         pool = Pool()
