@@ -2630,7 +2630,6 @@ function eval_pyson(value){
                     this.screen.domain = domain;
                 }
                 this.screen.size_limit = size_limit;
-                this.screen.attributes.readonly = this._readonly;
                 this.screen.display();
             }.bind(this));
         },
