@@ -1313,10 +1313,11 @@
     });
 
     Sao.Window.Export = Sao.class_(Sao.Window.CSV, {
-        init: function(screen, ids, names) {
+        init: function(screen, ids, names, context) {
             this.ids = ids;
             this.screen = screen;
             this.session = Sao.Session.current_session;
+            this.context = context;
             Sao.Window.Export._super.init.call(this,
                 Sao.i18n.gettext('Export to CSV')).then(function() {
                     names.forEach(function(name) {
@@ -1676,7 +1677,7 @@
                 Sao.rpc({
                     'method': 'model.' + this.screen.model_name +
                         '.export_data',
-                    'params': [this.ids, fields, {}]
+                    'params': [this.ids, fields, this.context]
                 }, this.session).then(function(data) {
                     this.export_csv(fields2, data).then(function() {
                         this.destroy();

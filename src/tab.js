@@ -834,7 +834,8 @@
                 this.screen.current_view.selected_records().map(function(r) {
                     return r.id;
                 }),
-                this.screen.current_view.get_fields());
+                this.screen.current_view.get_fields(),
+                this.screen.context);
         },
         import: function(){
             new Sao.Window.Import(this.screen);
