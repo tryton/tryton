@@ -111,11 +111,15 @@ class ShipmentOut:
         pattern = self._get_cost_tax_rule_pattern()
         for tax in product.customer_taxes_used:
             if party.customer_tax_rule:
-                tax_ids = party.customer_tax_rule.apply(None, pattern)
+                tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
                     taxes.extend(tax_ids)
                 continue
             taxes.append(tax.id)
+        if party.customer_tax_rule:
+            tax_ids = party.customer_tax_rule.apply(None, pattern)
+            if tax_ids:
+                taxes.extend(tax_ids)
         invoice_line.taxes = taxes
 
         invoice_line.account = product.account_revenue_used
