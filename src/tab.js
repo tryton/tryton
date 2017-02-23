@@ -128,12 +128,12 @@
                 'target': tabs.parent(),
                 'offset': {
                     'top': function() {
-                        return tabs.find('.nav-tabs').height();
+                        return jQuery('#main_navbar').height();
                     }
                 }
             });
             toolbar.on('affix.bs.affix', function() {
-                wrapper.height(toolbar.height());
+                wrapper.height(jQuery('#main_navbar').height());
             });
             toolbar.on('affix-top.bs.affix affix-bottom.bs.affix',
                     function() {
