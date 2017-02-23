@@ -406,6 +406,32 @@ class ModuleTestCase(unittest.TestCase):
                 if isinstance(state, StateAction):
                     state.get_action()
 
+    @with_transaction()
+    def test_selection_fields(self):
+        'Test selection values'
+        for mname, model in Pool().iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            for field_name, field in model._fields.iteritems():
+                selection = getattr(field, 'selection', None)
+                if selection is None:
+                    continue
+                selection_values = field.selection
+                if not isinstance(selection_values, (tuple, list)):
+                    sel_func = getattr(model, field.selection)
+                    if not is_instance_method(model, field.selection):
+                        selection_values = sel_func()
+                    else:
+                        record = model()
+                        selection_values = sel_func(record)
+                assert all(len(v) == 2 for v in selection_values), (
+                    'Invalid selection values "%(values)s" on field '
+                    '"%(field)s" of model "%(model)s"' % {
+                        'values': selection_values,
+                        'field': field_name,
+                        'model': model.__name__,
+                        })
+
 
 def db_exist(name=DB_NAME):
     Database = backend.get('Database')
