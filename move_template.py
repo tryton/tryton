@@ -285,7 +285,7 @@ class CreateMove(Wizard):
             Button('Create', 'create_', 'tryton-ok', default=True),
             ])
     create_ = StateTransition()
-    open_ = StateAction('account.act_move_form')
+    open_ = StateAction('account.act_move_from_template')
 
     def create_move(self):
         template = self.template.template
@@ -312,7 +312,7 @@ class CreateMove(Wizard):
 
     def transition_create_(self):
         model = Transaction().context.get('active_model')
-        if model:
+        if model == 'account.move.line':
             self.create_move()
             return 'end'
         else:
@@ -324,8 +324,9 @@ class CreateMove(Wizard):
         return action, {}
 
     def end(self):
-        # XXX only for model account.move.line
-        return 'reload'
+        model = Transaction().context.get('active_model')
+        if model == 'account.move.line':
+            return 'reload'
 
 
 class CreateMoveTemplate(ModelView):

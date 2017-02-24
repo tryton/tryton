@@ -183,5 +183,16 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_entries" action="act_move_template_create"
             id="menu_move_template_create"/>
+
+        <record model="ir.action.act_window" id="act_move_from_template">
+            <field name="name">Account Move</field>
+            <field name="res_model">account.move</field>
+        </record>
+        <record model="ir.action.act_window.view"
+                id="act_move_from_template_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_from_template"/>
+        </record>
     </data>
 </tryton>
