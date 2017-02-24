@@ -9,7 +9,7 @@ The credential for the webservice is specified by the following fields:
 UPS Carrier Credential
 **********************
 
-This model allows to define the credential used to connect the the UPS API.
+This model allows to define the credential used to connect the UPS API.
 The credentials used to connect to the UPS API will be automatically retrieved
 based on the company of the Shipment.
 
