@@ -206,8 +206,13 @@ class PurchaseHandleShipmentException:
         for line in purchase.lines:
             if not set(line.moves) & domain_moves:
                 continue
+            request = pline2request.get(line)
+            if not request:
+                continue
+            sale_line = request2sline.get(request)
+            if not sale_line:
+                continue
             if not any(m in to_recreate for m in line.moves):
-                sale_line = request2sline[pline2request[line]]
                 moves.update({m for m in sale_line.moves
                         if (m.state != 'done'
                             and m.from_location.type == 'drop')})
