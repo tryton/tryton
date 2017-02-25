@@ -1699,13 +1699,9 @@ class HandleInvoiceException(Wizard):
 
         sale = Sale(Transaction().context['active_id'])
 
-        skips = set(sale.invoices_ignored)
-        skips.update(sale.invoices_recreated)
         invoices_ignored = []
         invoices_recreated = []
-        for invoice in sale.invoices:
-            if invoice not in self.ask.domain_invoices or invoice in skips:
-                continue
+        for invoice in self.ask.domain_invoices:
             if invoice in self.ask.recreate_invoices:
                 invoices_recreated.append(invoice.id)
             else:
