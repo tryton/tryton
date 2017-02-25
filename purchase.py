@@ -1580,19 +1580,13 @@ class HandleInvoiceException(Wizard):
 
     def transition_handle(self):
         Purchase = Pool().get('purchase.purchase')
-        to_recreate = self.ask.recreate_invoices
-        domain_invoices = self.ask.domain_invoices
 
         purchase = Purchase(Transaction().context['active_id'])
 
-        skip = set(purchase.invoices_ignored)
-        skip.update(purchase.invoices_recreated)
         invoices_ignored = []
         invoices_recreated = []
-        for invoice in purchase.invoices:
-            if invoice not in domain_invoices or invoice in skip:
-                continue
-            if invoice in to_recreate:
+        for invoice in self.ask.domain_invoices:
+            if invoice in self.ask.recreate_invoices:
                 invoices_recreated.append(invoice.id)
             else:
                 invoices_ignored.append(invoice.id)

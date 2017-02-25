@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from itertools import chain
 from functools import wraps
 from sql import Table
 
@@ -86,10 +87,7 @@ class Invoice:
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, invoices):
-        Purchase = Pool().get('purchase.purchase')
-        purchases = Purchase.search([
-                ('invoices', 'in', [i.id for i in invoices]),
-                ])
+        purchases = list(chain(*(i.purchases for i in invoices)))
         if purchases and any(i.state == 'cancel' for i in invoices):
             cls.raise_user_error('reset_invoice_purchase')
 
