@@ -26,7 +26,6 @@ from tryton.gui.window.preference import Preference
 from tryton.gui.window import Limit
 from tryton.gui.window import Email
 from tryton.gui.window.dblogin import DBLogin
-from tryton.gui.window.tips import Tips
 from tryton.gui.window.about import About
 from tryton.gui.window.shortcuts import Shortcuts
 from tryton.common.cellrendererclickablepixbuf import \
@@ -648,15 +647,6 @@ class Main(object):
     def _set_menu_help(self):
         menu_help = gtk.Menu()
 
-        imagemenuitem_tips = gtk.ImageMenuItem(_('_Tips...'))
-        imagemenuitem_tips.set_use_underline(True)
-        image = gtk.Image()
-        image.set_from_stock('tryton-information', gtk.ICON_SIZE_MENU)
-        imagemenuitem_tips.set_image(image)
-        imagemenuitem_tips.connect('activate', self.sig_tips)
-        imagemenuitem_tips.set_accel_path('<tryton>/Help/Tips')
-        menu_help.add(imagemenuitem_tips)
-
         imagemenuitem_shortcuts = gtk.ImageMenuItem(
             _('_Keyboard Shortcuts...'))
         imagemenuitem_shortcuts.set_use_underline(True)
@@ -909,9 +899,6 @@ class Main(object):
         if disconnect:
             rpc.logout()
         return True
-
-    def sig_tips(self, *args):
-        Tips()
 
     def sig_about(self, widget):
         About()

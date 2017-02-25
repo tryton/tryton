@@ -206,8 +206,6 @@ class TrytonClient(object):
 
         sys.excepthook = excepthook
 
-        if CONFIG['tip.autostart']:
-            main.sig_tips()
         main.sig_login()
 
         if sys.platform == 'win32':
