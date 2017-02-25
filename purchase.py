@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
 
-from trytond.model import ModelView, Workflow
+from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
@@ -15,6 +15,9 @@ class PurchaseRequest:
     __metaclass__ = PoolMeta
     __name__ = 'purchase.request'
 
+    sale_lines = fields.One2Many(
+        'sale.line', 'purchase_request', "Sale Lines", readonly=True)
+
     @classmethod
     def _get_origin(cls):
         return super(PurchaseRequest, cls)._get_origin() | {'sale.sale'}
@@ -25,17 +28,11 @@ class PurchaseRequest:
         Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        sale_ids = list(set(r.origin.id for r in requests
-                if isinstance(r.origin, Sale)))
-
         with Transaction().set_context(_check_access=False):
-            sale_lines = []
-            for sub_requests in grouped_slice(requests):
-                sale_lines.append(SaleLine.search([
-                            ('purchase_request', 'in',
-                                [r.id for r in sub_requests]),
-                            ]))
-            sale_lines = list(chain(*sale_lines))
+            reqs = cls.browse(requests)
+            sale_ids = list(set(r.origin.id for r in reqs
+                    if isinstance(r.origin, Sale)))
+            sale_lines = [l for r in reqs for l in r.sale_lines]
             if sale_lines:
                 SaleLine.write(sale_lines, {
                         'purchase_request': None,
