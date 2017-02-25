@@ -67,4 +67,4 @@ class InvoiceLine:
 
     @fields.depends('origin')
     def on_change_account(self):
-        return super(InvoiceLine, self).on_change_account()
+        super(InvoiceLine, self).on_change_account()
