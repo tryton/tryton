@@ -4,7 +4,6 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.tools import grouped_slice
 
 
 __all__ = ['PurchaseRequest', 'PurchaseConfig', 'Purchase', 'PurchaseLine',
@@ -176,9 +175,7 @@ class PurchaseHandleShipmentException:
     def transition_handle(self):
         pool = Pool()
         Sale = pool.get('sale.sale')
-        SaleLine = pool.get('sale.line')
         Purchase = pool.get('purchase.purchase')
-        PurchaseRequest = pool.get('purchase.request')
         Move = pool.get('stock.move')
 
         super(PurchaseHandleShipmentException, self).transition_handle()
@@ -189,29 +186,16 @@ class PurchaseHandleShipmentException:
         domain_moves = set(self.ask.domain_moves)
         purchase = Purchase(Transaction().context['active_id'])
 
-        requests = []
-        for sub_lines in grouped_slice([pl.id for pl in purchase.lines]):
-            requests += PurchaseRequest.search([
-                    ('purchase_line', 'in', list(sub_lines)),
-                    ])
-        pline2request = {r.purchase_line: r for r in requests}
-        request2sline = {}
-        for sub_requests in grouped_slice(requests):
-            sale_lines = SaleLine.search([
-                    ('purchase_request', 'in', [r.id for r in sub_requests]),
-                    ])
-            request2sline.update({sl.purchase_request: sl
-                    for sl in sale_lines})
-
         for line in purchase.lines:
             if not set(line.moves) & domain_moves:
                 continue
             if not any(m in to_recreate for m in line.moves):
-                sale_line = request2sline[pline2request[line]]
-                moves.update({m for m in sale_line.moves
-                        if (m.state != 'done'
-                            and m.from_location.type == 'drop')})
-                sales.add(sale_line.sale)
+                for request in line.requests:
+                    for sale_line in request.sale_lines:
+                        moves.update({m for m in sale_line.moves
+                                if (m.state != 'done'
+                                    and m.from_location.type == 'drop')})
+                        sales.add(sale_line.sale)
 
         if moves:
             Move.cancel(list(moves))
