@@ -8,6 +8,7 @@
             Sao.Tab.tabs.push(this);
             this.buttons = {};
             this.id = 'tab-' + Sao.Tab.counter++;
+            this.name = '';
             this.name_el = jQuery('<span/>');
         },
         create_tabcontent: function() {
@@ -172,7 +173,8 @@
             return jQuery.when();
         },
         set_name: function(name) {
-            this.name_el.text(name);
+            this.name = name;
+            this.name_el.text(Sao.common.ellipsize(name, 20));
             this.name_el.parents('li').first().attr('title', name).tooltip();
         }
     });
@@ -724,9 +726,9 @@
                 var time_format = '%H:%M:%S.%f';
                 revision = Sao.common.format_datetime(date_format, time_format,
                         revision);
-                label = this.name_el.text() + ' @ '+ revision;
+                label = this.name + ' @ '+ revision;
             } else {
-                label = this.name_el.text();
+                label = this.name;
             }
             this.title.html(label);
             this.set_buttons_sensitive(revision);

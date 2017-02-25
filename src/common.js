@@ -3317,4 +3317,12 @@
         });
 
     };
+
+    Sao.common.ellipsize = function(string, length) {
+        if (string.length <= length) {
+            return string;
+        }
+        var ellipsis = Sao.i18n.gettext('...');
+        return string.slice(0, length - ellipsis.length) + ellipsis;
+    };
 }());
