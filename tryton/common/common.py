@@ -1391,3 +1391,10 @@ def get_label_attributes(readonly, required):
     if hasattr(pango, 'AttrStyle'):
         attrlist.change(pango.AttrStyle(style, 0, -1))
     return attrlist
+
+
+def ellipsize(string, length):
+    if len(string) <= length:
+        return string
+    ellipsis = _('...')
+    return string[:length - len(ellipsis)] + ellipsis

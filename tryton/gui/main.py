@@ -34,7 +34,6 @@ from tryton.common.cellrendererclickablepixbuf import \
 import tryton.translate as translate
 import tryton.plugins
 from tryton.common.placeholder_entry import PlaceholderEntry
-import pango
 if os.environ.get('GTKOSXAPPLICATION'):
     import gtkosx_application
 else:
@@ -48,7 +47,6 @@ _ = gettext.gettext
 
 
 _MAIN = []
-TAB_SIZE = 120
 
 
 class Main(object):
@@ -1099,10 +1097,6 @@ class Main(object):
         previous_page_id = self.notebook.get_current_page()
         previous_widget = self.notebook.get_nth_page(previous_page_id)
         if previous_widget and hide_current:
-            prev_tab_label = self.notebook.get_tab_label(previous_widget)
-            prev_tab_label.set_size_request(TAB_SIZE / 4, -1)
-            close_button = prev_tab_label.get_children()[-1]
-            close_button.hide()
             page_id = previous_page_id + 1
         else:
             page_id = -1
@@ -1115,21 +1109,12 @@ class Main(object):
             image = gtk.Image()
             image.set_from_stock(page.icon, gtk.ICON_SIZE_SMALL_TOOLBAR)
             hbox.pack_start(image, expand=False, fill=False)
-            noise_size = 2 * icon_w + 3
-        else:
-            noise_size = icon_w + 3
         name = page.name
-        label = gtk.Label(name)
+        label = gtk.Label(common.ellipsize(name, 20))
         self.tooltips.set_tip(label, page.name)
         self.tooltips.enable()
         label.set_alignment(0.0, 0.5)
         hbox.pack_start(label, expand=True, fill=True)
-        layout = label.get_layout()
-        w, h = layout.get_size()
-        if (w // pango.SCALE) > TAB_SIZE - noise_size:
-            label2 = gtk.Label('...')
-            self.tooltips.set_tip(label2, page.name)
-            hbox.pack_start(label2, expand=False, fill=False)
 
         button = gtk.Button()
         img = gtk.Image()
@@ -1146,7 +1131,6 @@ class Main(object):
         button.set_size_request(x, y)
 
         hbox.show_all()
-        hbox.set_size_request(TAB_SIZE, -1)
         label_menu = gtk.Label(page.name)
         label_menu.set_alignment(0.0, 0.5)
         self.notebook.insert_page_menu(page.widget, hbox, label_menu, page_id)
@@ -1220,10 +1204,6 @@ class Main(object):
     def _sig_page_changt(self, notebook, page, page_num):
         self.last_page = self.current_page
         last_form = self.get_page(self.current_page)
-        tab_label = notebook.get_tab_label(notebook.get_nth_page(page_num))
-        tab_label.set_size_request(TAB_SIZE, -1)
-        close_button = tab_label.get_children()[-1]
-        close_button.show()
         if last_form:
             for dialog in last_form.dialogs:
                 dialog.hide()
