@@ -111,6 +111,7 @@ class Party:
         if not user.company:
             return result
         company_id = user.company.id
+        to_round = False
 
         amount = Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0))
         for name in names:
@@ -138,7 +139,14 @@ class Party:
                     # SQLite uses float for SUM
                     if not isinstance(value, Decimal):
                         value = Decimal(str(value))
+                        to_round = True
                     result[name][party] = value
+        # Float amount must be rounded to get the right precision
+        if to_round:
+            currency = user.company.currency
+            for name, values in result.iteritems():
+                for id, value in values.iteritems():
+                    values[id] = currency.round(value)
         return result
 
     @classmethod
