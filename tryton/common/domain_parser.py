@@ -265,7 +265,7 @@ def convert_value(field, value, context=None):
     def convert_datetime():
         if not value:
             return
-        format_ = context.get('date_format', '%X') + ' %x'
+        format_ = context.get('date_format', '%x') + ' %X'
         try:
             dt = date_parse(value, format_)
             if dt.time() == datetime.time.min:
@@ -406,6 +406,9 @@ def test_convert_datetime():
             ('12/04/2002', datetime.datetime(2002, 12, 4)),
             ('12/04/2002 12:30:00', untimezoned_date(
                     datetime.datetime(2002, 12, 4, 12, 30))),
+            ('02/03/04', datetime.datetime(2004, 2, 3)),
+            ('02/03/04 05:06:07', untimezoned_date(
+                    datetime.datetime(2004, 2, 3, 5, 6, 7))),
             ('test', None),
             (None, None),
             ):
