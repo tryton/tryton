@@ -1008,7 +1008,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 date=accounting_date, test_state=test_state)
             period = Period(period_id)
             invoice_type = invoice.type
-            if all(l.amount <= 0 for l in invoice.lines):
+            if (all(l.amount < 0 for l in invoice.lines if l.product)
+                    and invoice.total_amount < 0):
                 invoice_type += '_credit_note'
             else:
                 invoice_type += '_invoice'
