@@ -3,8 +3,6 @@
 import copy
 import logging
 
-from sql import Column
-
 from trytond.model import ModelView, ModelSQL, Model, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
