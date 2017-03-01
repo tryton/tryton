@@ -38,10 +38,6 @@ class Company(ModelSQL, ModelView):
     employees = fields.One2Many('company.employee', 'company', 'Employees')
 
     @classmethod
-    def __setup__(cls):
-        super(Company, cls).__setup__()
-
-    @classmethod
     def validate(cls, companies):
         super(Company, cls).validate(companies)
         cls.check_recursion(companies)
