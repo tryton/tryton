@@ -4,7 +4,6 @@ from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond import backend
-from trytond.transaction import Transaction
 
 
 __all__ = ['Configuration', 'ProductConfiguration']
