@@ -262,6 +262,8 @@ class ModuleTestCase(unittest.TestCase):
                     fields |= get_eval_fields(field.digits)
                 if hasattr(field, 'add_remove'):
                     fields |= get_eval_fields(field.add_remove)
+                if hasattr(field, 'size'):
+                    fields |= get_eval_fields(field.size)
                 fields.discard(fname)
                 fields.discard('context')
                 fields.discard('_user')
