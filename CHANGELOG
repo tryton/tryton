@@ -1,3 +1,4 @@
+* Add support for overflowing quantities
 * Merge supply into one wizard
 * Improve computation of max lead time
 * Generate request internal shipments recursively

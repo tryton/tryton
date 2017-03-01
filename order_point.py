@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields, Check
+from sql import Null
+
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Equal, Eval, Not, In
 from trytond.transaction import Transaction
 from trytond import backend
@@ -48,17 +50,53 @@ class OrderPoint(ModelSQL, ModelView):
         domain=[('type', 'in', ['storage', 'view'])],
         states={
             'invisible': Not(Equal(Eval('type'), 'internal')),
-            'required': Equal(Eval('type'), 'internal'),
+            'required': ((Eval('type') == 'internal')
+                & (Eval('min_quantity', None) != None)),
         },
-        depends=['type'])
+        depends=['type', 'min_quantity'])
+    overflowing_location = fields.Many2One(
+        'stock.location', 'Overflowing Location',
+        domain=[('type', 'in', ['storage', 'view'])],
+        states={
+            'invisible': Eval('type') != 'internal',
+            'required': ((Eval('type') == 'internal')
+                & (Eval('max_quantity', None) != None)),
+            },
+        depends=['type', 'max_quantity'])
     type = fields.Selection(
         [('internal', 'Internal'),
          ('purchase', 'Purchase')],
         'Type', select=True, required=True)
-    min_quantity = fields.Float('Minimal Quantity', required=True,
-            digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
-    max_quantity = fields.Float('Maximal Quantity', required=True,
-            digits=(16, Eval('unit_digits', 2)), depends=['unit_digits'])
+    min_quantity = fields.Float('Minimal Quantity',
+        digits=(16, Eval('unit_digits', 2)),
+        domain=['OR',
+            ('min_quantity', '=', None),
+            ('min_quantity', '<=', Eval('target_quantity', 0)),
+            ],
+        depends=['unit_digits', 'target_quantity'])
+    target_quantity = fields.Float('Target Quantity', required=True,
+        digits=(16, Eval('unit_digits', 2)),
+        domain=[
+            ['OR',
+                ('min_quantity', '=', None),
+                ('target_quantity', '>=', Eval('min_quantity', 0)),
+                ],
+            ['OR',
+                ('max_quantity', '=', None),
+                ('target_quantity', '<=', Eval('max_quantity', 0)),
+                ],
+            ],
+        depends=['unit_digits', 'min_quantity', 'max_quantity'])
+    max_quantity = fields.Float('Maximal Quantity',
+        digits=(16, Eval('unit_digits', 2)),
+        states={
+            'invisible': Eval('type') != 'internal',
+            },
+        domain=['OR',
+            ('max_quantity', '=', None),
+            ('max_quantity', '>=', Eval('target_quantity', 0)),
+            ],
+        depends=['unit_digits', 'type', 'target_quantity'])
     company = fields.Many2One('company.company', 'Company', required=True,
             domain=[
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
@@ -71,28 +109,41 @@ class OrderPoint(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(OrderPoint, cls).__setup__()
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('check_max_qty_greater_min_qty',
-                Check(t, t.max_quantity >= t.min_quantity),
-                'Maximal quantity must be bigger than Minimal quantity'),
-            ]
         cls._error_messages.update({
                 'unique_op': ('Only one order point is allowed '
                     'for each product-location pair.'),
-                'concurrent_internal_op': ('You can not define '
-                    'two order points on the same product '
-                    'with opposite locations.'),
+                'concurrent_provisioning_location_internal_op': ('You can not '
+                    'define on the same product two order points with '
+                    'opposite locations (from "Storage Location" to '
+                    '"Provisioning Location" and vice versa).'),
+                'concurrent_overflowing_location_internal_op': ('You can not '
+                    'define on the same product two order points with '
+                    'opposite locations (from "Storage Location" to '
+                    '"Overflowing Location" and vice versa).'),
                 })
 
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+
         # Migration from 2.2
         table = TableHandler(cls, module_name)
         table.drop_constraint('check_min_max_quantity')
+        # Migration from 4.2
+        table.drop_constraint('check_max_qty_greater_min_qty')
+        table.not_null_action('min_quantity', 'remove')
+        table.not_null_action('max_quantity', 'remove')
+        target_qty_exist = table.column_exist('target_quantity')
 
         super(OrderPoint, cls).__register__(module_name)
+
+        # Migration from 4.2
+        if not target_qty_exist:
+            cursor.execute(*sql_table.update(
+                    [sql_table.target_quantity, sql_table.max_quantity],
+                    [sql_table.max_quantity, Null]))
 
     @staticmethod
     def default_type():
@@ -132,17 +183,23 @@ class OrderPoint(ModelSQL, ModelView):
         if not internals:
             return
 
-        query = ['OR']
-        for op in internals:
-            arg = ['AND',
-                   ('product', '=', op.product.id),
-                   ('provisioning_location', '=', op.storage_location.id),
-                   ('storage_location', '=', op.provisioning_location.id),
-                   ('company', '=', op.company.id),
-                   ('type', '=', 'internal')]
-            query.append(arg)
-        if cls.search(query):
-            cls.raise_user_error('concurrent_internal_op')
+        for location_name in [
+                'provisioning_location', 'overflowing_location']:
+            query = []
+            for op in internals:
+                if getattr(op, location_name, None) is None:
+                    continue
+                arg = ['AND',
+                    ('product', '=', op.product.id),
+                    (location_name, '=', op.storage_location.id),
+                    ('storage_location', '=',
+                        getattr(op, location_name).id),
+                    ('company', '=', op.company.id),
+                    ('type', '=', 'internal')]
+                query.append(arg)
+            if query and cls.search(['OR'] + query):
+                cls.raise_user_error(
+                    'concurrent_%s_internal_op' % location_name)
 
     @staticmethod
     def _type2field(type=None):

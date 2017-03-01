@@ -112,7 +112,7 @@ Create internal order point::
     >>> order_point.provisioning_location = provisioning_loc
     >>> order_point.type = 'internal'
     >>> order_point.min_quantity = 10
-    >>> order_point.max_quantity = 15
+    >>> order_point.target_quantity = 15
     >>> order_point.save()
 
 Create inventory to add enough quantity in Provisioning Location::

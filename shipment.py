@@ -77,14 +77,15 @@ class ShipmentInternal(ModelSQL, ModelView):
                 (op.storage_location.id, op.product.id)
                 ] = op
             id2location[op.storage_location.id] = op.storage_location
-        provisioned = Location.search([
+        implicit_locations = Location.search(['OR',
                 ('provisioning_location', '!=', None),
+                ('overflowing_location', '!=', None),
                 ])
-        id2location.update({l.id: l for l in provisioned})
+        id2location.update({l.id: l for l in implicit_locations})
         location_ids = id2location.keys()
 
         # ordered by ids to speedup reduce_ids in products_by_location
-        if provisioned:
+        if implicit_locations:
             products = Product.search([
                     ('type', 'in', ['goods', 'assets']),
                     ], order=[('id', 'ASC')])
@@ -110,19 +111,35 @@ class ShipmentInternal(ModelSQL, ModelView):
                     op = product2op.get((location.id, product_id))
                     if op:
                         min_qty, max_qty = op.min_quantity, op.max_quantity
+                        target_qty = op.target_quantity
                         prov_location = op.provisioning_location
-                    elif location and location.provisioning_location:
-                        min_qty, max_qty = 0, 0
+                        over_location = op.overflowing_location
+                    elif (location
+                            and (location.provisioning_location
+                                or location.overflowing_location)):
+                        target_qty = 0
+                        min_qty = 0 if location.provisioning_location else None
+                        max_qty = 0 if location.overflowing_location else None
                         prov_location = location.provisioning_location
+                        over_location = location.overflowing_location
                     else:
                         continue
-                    if qty < min_qty:
-                        key = (prov_location.id, location.id, product_id)
-                        moves[key] = max_qty - qty
-                        # Update quantities for move to create
-                        current_qties[
-                            (prov_location.id, product_id)] -= moves[key]
-                        current_qties[(location.id, product_id)] += moves[key]
+
+                    change_qty = 0
+                    if min_qty is not None and qty < min_qty:
+                        from_loc = prov_location.id
+                        to_loc = location.id
+                        change_qty = target_qty - qty
+                    elif max_qty is not None and qty > max_qty:
+                        from_loc = location.id
+                        to_loc = over_location.id
+                        change_qty = qty - target_qty
+
+                    if change_qty:
+                        key = (from_loc, to_loc, product_id)
+                        moves[key] = change_qty
+                        current_qties[(from_loc, product_id)] -= change_qty
+                        current_qties[(to_loc, product_id)] += change_qty
 
             # Group moves by {from,to}_location
             to_create = {}

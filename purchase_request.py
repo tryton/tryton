@@ -264,8 +264,8 @@ class PurchaseRequest:
         supplier, purchase_date = cls.find_best_supplier(product,
             shortage_date)
 
-        max_quantity = order_point and order_point.max_quantity or 0.0
-        computed_quantity = max_quantity - product_quantity
+        target_quantity = order_point.target_quantity if order_point else 0.0
+        computed_quantity = target_quantity - product_quantity
         quantity = Uom.compute_qty(product.default_uom, computed_quantity,
             product.purchase_uom or product.default_uom)
 
