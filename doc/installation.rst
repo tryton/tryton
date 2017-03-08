@@ -4,7 +4,7 @@ Installing tryton
 Prerequisites
 -------------
 
- * Python 2.7 or later (http://www.python.org/)
+ * Python 2.7.9 or later (http://www.python.org/)
  * gtk+ 2.6 or later and pygtk 2.22 or later (http://www.pygtk.org/)
  * gtk+ 3.20 or later and py-gobject3 (http://www.gtk.org/)
  * librsvg (http://librsvg.sourceforge.net/)

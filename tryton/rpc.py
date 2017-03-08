@@ -3,6 +3,7 @@
 import httplib
 import logging
 import socket
+import ssl
 import os
 from functools import partial
 from tryton.jsonrpc import ServerProxy, ServerPool, Fault
@@ -57,7 +58,8 @@ def server_version(host, port):
         result = connection.common.server.version()
         logging.getLogger(__name__).debug(repr(result))
         return result
-    except (Fault, socket.error):
+    except (Fault, socket.error, ssl.SSLError, ssl.CertificateError), e:
+        logging.getLogger(__name__).error(e)
         return None
 
 

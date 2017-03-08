@@ -181,8 +181,7 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
             return self._connection[1]
         host, self._extra_headers, x509 = self.get_host_info(host)
 
-        ca_certs = self.__ca_certs
-        cert_reqs = ssl.CERT_REQUIRED if ca_certs else ssl.CERT_NONE
+        ssl_ctx = ssl.create_default_context(cafile=self.__ca_certs)
 
         class HTTPSConnection(httplib.HTTPSConnection):
 
@@ -192,8 +191,8 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
                 if self._tunnel_host:
                     self.sock = sock
                     self._tunnel()
-                self.sock = ssl.wrap_socket(sock, self.key_file,
-                    self.cert_file, ca_certs=ca_certs, cert_reqs=cert_reqs)
+                self.sock = ssl_ctx.wrap_socket(
+                    sock, server_hostname=self.host)
 
         def http_connection():
             self._connection = host, httplib.HTTPConnection(host,
@@ -203,7 +202,7 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
             sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
 
-        def https_connection():
+        def https_connection(allow_http=False):
             self._connection = host, HTTPSConnection(host,
                 timeout=CONNECT_TIMEOUT)
             try:
@@ -222,7 +221,10 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
                         enumerate(value), '')
                 return format_hash(hashlib.sha1(peercert).hexdigest())
             except ssl.SSLError:
-                http_connection()
+                if allow_http:
+                    http_connection()
+                else:
+                    raise
 
         fingerprint = ''
         if self.__fingerprints is not None and host in self.__fingerprints:
@@ -231,15 +233,10 @@ class Transport(xmlrpclib.Transport, xmlrpclib.SafeTransport):
             else:
                 http_connection()
         else:
-            fingerprint = https_connection()
+            fingerprint = https_connection(allow_http=True)
 
         if self.__fingerprints is not None:
-            if host in self.__fingerprints and self.__fingerprints[host]:
-                if self.__fingerprints[host] != fingerprint:
-                    self.close()
-                    raise ssl.SSLError('BadFingerprint')
-            else:
-                self.__fingerprints[host] = fingerprint
+            self.__fingerprints[host] = fingerprint
         self._connection[1].timeout = DEFAULT_TIMEOUT
         self._connection[1].sock.settimeout(DEFAULT_TIMEOUT)
         return self._connection[1]
