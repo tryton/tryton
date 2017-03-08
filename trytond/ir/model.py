@@ -966,11 +966,13 @@ class ModelButtonClick(ModelSQL, ModelView):
 
         clicks = defaultdict(list)
         for records in grouped_slice(records):
-            clicks.update(groupby(cls.search([
-                            ('button', '=', button.id),
-                            ('record_id', 'in', [r.id for r in records]),
-                            ], order=[('record_id', 'ASC')]),
-                    key=lambda c: c.record_id))
+            records = cls.search([
+                    ('button', '=', button.id),
+                    ('record_id', 'in', [r.id for r in records]),
+                    ], order=[('record_id', 'ASC')])
+            clicks.update(
+                (k, list(v)) for k, v in groupby(
+                    records, key=lambda c: c.record_id))
         return clicks
 
     @classmethod
