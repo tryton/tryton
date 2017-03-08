@@ -147,9 +147,18 @@ class ProductSupplier:
 
     drop_shipment = fields.Boolean('Drop Shipment',
         states={
-            'invisible': ~Eval('_parent_product', {}).get('supply_on_sale',
-                False),
-            })
+            'invisible': ~Eval('drop_shipment_available', False),
+            },
+        depends=['drop_shipment_available'])
+    drop_shipment_available = fields.Function(
+        fields.Boolean("Drop Shipment Available"),
+        'on_change_with_drop_shipment_available')
+
+    @fields.depends('product',
+        '_parent_product.type', '_parent_product.supply_on_sale')
+    def on_change_with_drop_shipment_available(self, name=None):
+        if self.product and self.product.type in {'goods', 'assets'}:
+            return self.product.supply_on_sale
 
 
 class CreatePurchase:
