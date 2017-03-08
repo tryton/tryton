@@ -298,8 +298,10 @@ class Main(object):
                         'ids': [record_id],
                         }, context=self.menu_screen.context.copy())
             else:
-                Window.create(False, model, res_id=record_id,
-                    mode=['form', 'tree'], name=model_name)
+                Window.create(model,
+                    res_id=record_id,
+                    mode=['form', 'tree'],
+                    name=model_name)
             self.global_search_entry.set_text('')
             return True
 
@@ -692,8 +694,9 @@ class Main(object):
                 })
 
         def _manage_favorites(widget):
-            Window.create(False, self.menu_screen.model_name + '.favorite',
-                False, mode=['tree', 'form'], name=_('Manage Favorites'))
+            Window.create(self.menu_screen.model_name + '.favorite',
+                mode=['tree', 'form'],
+                name=_('Manage Favorites'))
         try:
             favorites = RPCExecute('model',
                 self.menu_screen.model_name + '.favorite', 'get',
@@ -1255,8 +1258,14 @@ class Main(object):
                     return
                 mode = ['form', 'tree']
             try:
-                Window.create(view_ids, model, res_id=res_id, domain=domain,
-                    context=context, mode=mode, name=name, limit=limit,
+                Window.create(model,
+                    view_ids=view_ids,
+                    res_id=res_id,
+                    domain=domain,
+                    context=context,
+                    mode=mode,
+                    name=name,
+                    limit=limit,
                     search_value=search_value)
             except Exception:
                 # Prevent crashing the client

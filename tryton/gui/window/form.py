@@ -102,30 +102,16 @@ class Form(SignalEvent, TabContent):
                 '<tryton>/Form/Import Data'),
             ]
 
-    def __init__(self, model, res_id=None, domain=None, order=None, mode=None,
-            view_ids=None, context=None, name='', limit=None,
-            search_value=None, tab_domain=None, context_model=None):
+    def __init__(self, model, res_id=None, name='', **attributes):
         super(Form, self).__init__()
-
-        if not mode:
-            mode = ['tree', 'form']
-        if domain is None:
-            domain = []
-        if view_ids is None:
-            view_ids = []
 
         self.model = model
         self.res_id = res_id
-        self.domain = domain
-        self.mode = mode
-        self.context = context
-        self.view_ids = view_ids
+        self.mode = attributes.get('mode')
+        self.view_ids = attributes.get('view_ids')
         self.dialogs = []
 
-        self.screen = Screen(self.model, mode=mode, context=context,
-            view_ids=view_ids, domain=domain, limit=limit, order=order,
-            search_value=search_value, tab_domain=tab_domain,
-            context_model=context_model)
+        self.screen = Screen(self.model, **attributes)
         self.screen.widget.show()
 
         self.name = name
@@ -174,7 +160,7 @@ class Form(SignalEvent, TabContent):
             return False
         return (self.model == value.model
             and self.res_id == value.res_id
-            and self.domain == value.domain
+            and self.screen.domain == value.screen.domain
             and self.mode == value.mode
             and self.view_ids == value.view_ids
             and self.screen.context == value.screen.context

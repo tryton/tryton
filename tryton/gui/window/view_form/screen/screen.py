@@ -39,41 +39,30 @@ class Screen(SignalEvent):
     # It is shared with all connection but it is the price for speed.
     tree_column_width = collections.defaultdict(lambda: {})
 
-    def __init__(self, model_name, view_ids=None, mode=None, context=None,
-            views_preload=None, domain=None, row_activate=None, limit=None,
-            readonly=False, exclude_field=None, order=None, search_value=None,
-            tab_domain=None, context_model=None, alternate_view=False):
-        if view_ids is None:
-            view_ids = []
-        if mode is None:
-            mode = ['tree', 'form']
-        if views_preload is None:
-            views_preload = {}
-        if domain is None:
-            domain = []
-
-        self.limit = limit or CONFIG['client.limit']
+    def __init__(self, model_name, **attributes):
+        context = attributes.get('context', {})
+        self.limit = attributes.get('limit') or CONFIG['client.limit']
         self.offset = 0
         super(Screen, self).__init__()
 
-        self.readonly = readonly
+        self.readonly = attributes.get('readonly', False)
         if not (MODELACCESS[model_name]['write']
                 or MODELACCESS[model_name]['create']):
             self.readonly = True
         self.search_count = 0
-        if not row_activate:
+        if not attributes.get('row_activate'):
             self.row_activate = self.default_row_activate
         else:
-            self.row_activate = row_activate
-        self.domain = domain
+            self.row_activate = attributes['row_activate']
+        self.domain = attributes.get('domain', [])
         self.size_limit = None
-        self.views_preload = views_preload
+        self.views_preload = attributes.get('views_preload', {})
         self.model_name = model_name
         self.views = []
-        self.view_ids = view_ids[:]
+        self.view_ids = attributes.get('view_ids', [])[:]
         self.parent = None
         self.parent_name = None
-        self.exclude_field = exclude_field
+        self.exclude_field = attributes.get('exclude_field')
         self.filter_widget = None
         self.tree_states = collections.defaultdict(
             lambda: collections.defaultdict(lambda: None))
@@ -82,14 +71,15 @@ class Screen(SignalEvent):
         self.new_group(context or {})
         self.__current_record = None
         self.current_record = None
-        self.screen_container = ScreenContainer(tab_domain)
-        self.screen_container.alternate_view = alternate_view
+        self.screen_container = ScreenContainer(attributes.get('tab_domain'))
+        self.screen_container.alternate_view = attributes.get(
+            'alternate_view', False)
         self.widget = self.screen_container.widget_get()
 
         self.context_screen = None
-        if context_model:
+        if attributes.get('context_model'):
             self.context_screen = Screen(
-                context_model, mode=['form'], context=context)
+                attributes['context_model'], mode=['form'], context=context)
             self.context_screen.new()
             context_widget = self.context_screen.widget
 
@@ -134,16 +124,16 @@ class Screen(SignalEvent):
             self.context_screen.widget.show()
 
         self.__current_view = 0
-        self.search_value = search_value
+        self.search_value = attributes.get('search_value')
         self.fields_view_tree = {}
-        self.order = self.default_order = order
+        self.order = self.default_order = attributes.get('order')
         self.__date_format = self.context.get(
             'date_format', rpc.CONTEXT.get('locale', {}).get('date', '%x'))
         self.view_to_load = []
         self._domain_parser = {}
         self.pre_validate = False
-        self.view_to_load = mode[:]
-        if view_ids or mode:
+        self.view_to_load = (attributes.get('mode') or ['tree', 'form'])[:]
+        if self.view_ids or self.view_to_load:
             self.switch_view()
         self.count_tab_domain()
 

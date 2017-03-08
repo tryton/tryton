@@ -41,19 +41,20 @@ class Board(SignalEvent, TabContent):
                 '<tryton>/Form/Close'),
             ]
 
-    def __init__(self, model, view_id, context=None, name=False):
+    def __init__(self, model, name='', **attributes):
         super(Board, self).__init__()
+
+        context = attributes.get('context')
+        self.view_ids = attributes.get('view_ids')
 
         try:
             view, = RPCExecute('model', 'ir.ui.view', 'read',
-                [view_id], ['arch'], context=context)
+                self.view_ids, ['arch'], context=context)
         except RPCException:
             raise
 
         self.board = ViewBoard(view['arch'], context=context)
         self.model = model
-        self.view_id = view_id
-        self.context = context
         self.dialogs = []
         if not name:
             self.name = self.board.name
@@ -81,8 +82,8 @@ class Board(SignalEvent, TabContent):
         if not isinstance(value, Board):
             return False
         return (self.model == value.model
-            and self.view_id == value.view_id
-            and self.context == value.context
+            and self.view_ids == value.view_ids
+            and self.board.context == value.board.context
             and self.name == value.name)
 
     def sig_win_close(self, widget):

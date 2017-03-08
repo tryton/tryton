@@ -19,24 +19,15 @@ class Window(object):
         Window.allow_similar = False
 
     @staticmethod
-    def create(view_ids, model, res_id=False, domain=None,
-            context=None, order=None, mode=None, name='', limit=None,
-            search_value=None, icon=None, tab_domain=None, context_model=None):
+    def create(model, **attributes):
         from tryton.gui import Main
-        if context is None:
-            context = {}
-
         if model:
             from form import Form
-            win = Form(model, res_id, domain, order=order, mode=mode,
-                view_ids=(view_ids or []), context=context, name=name,
-                limit=limit, search_value=search_value, tab_domain=tab_domain,
-                context_model=context_model)
+            win = Form(model, **attributes)
         else:
             from board import Board
-            win = Board(model, view_ids and view_ids[0] or None,
-                context=context, name=name)
-        win.icon = icon
+            win = Board(model, **attributes)
+        win.icon = attributes.get('icon')
         Main.get_main().win_add(win, hide_current=Window.hide_current,
             allow_similar=Window.allow_similar)
 

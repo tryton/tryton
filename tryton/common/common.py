@@ -774,9 +774,11 @@ class ConcurrencyDialog(UniqueDialog):
             return True
         if res == gtk.RESPONSE_APPLY:
             from tryton.gui.window import Window
-            Window.create(False, resource, res_id=obj_id,
+            Window.create(resource,
+                res_id=obj_id,
                 domain=[('id', '=', obj_id)],
-                context=context, mode=['form', 'tree'])
+                context=context,
+                mode=['form', 'tree'])
         return False
 
 concurrency = ConcurrencyDialog()

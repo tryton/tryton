@@ -89,7 +89,7 @@ class Action(object):
 
         data['action_id'] = action['id']
         if action['type'] == 'ir.action.act_window':
-            view_ids = False
+            view_ids = []
             view_mode = None
             if action.get('views', []):
                 view_ids = [x[0] for x in action['views']]
@@ -127,13 +127,19 @@ class Action(object):
             res_model = action.get('res_model', data.get('res_model'))
             res_id = action.get('res_id', data.get('res_id'))
 
-            Window.create(view_ids, res_model, res_id, domain,
-                    action_ctx, order, view_mode, name=name,
-                    limit=action.get('limit'),
-                    search_value=search_value,
-                    icon=(action.get('icon.rec_name') or ''),
-                    tab_domain=tab_domain,
-                    context_model=action['context_model'])
+            Window.create(res_model,
+                view_ids=view_ids,
+                res_id=res_id,
+                domain=domain,
+                context=action_ctx,
+                order=order,
+                mode=view_mode,
+                name=name,
+                limit=action.get('limit'),
+                search_value=search_value,
+                icon=(action.get('icon.rec_name') or ''),
+                tab_domain=tab_domain,
+                context_model=action['context_model'])
         elif action['type'] == 'ir.action.wizard':
             name = action.get('name', '')
             if action.get('keyword', 'form_action') == 'form_action':
