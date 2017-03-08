@@ -514,7 +514,8 @@ class AccountTemplate(ModelSQL, ModelView):
                 if template.id not in template_done:
                     if template.taxes:
                         tax_ids = [template2tax[x.id] for x in template.taxes]
-                        to_write.append([Account(template2account[template.id])])
+                        to_write.append(
+                            [Account(template2account[template.id])])
                         to_write.append({
                                 'taxes': [
                                     ('add', tax_ids)],
@@ -758,8 +759,9 @@ class Account(ModelSQL, ModelView):
                 balances[account.id])
 
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
-        func = lambda accounts, names: \
-            {names[0]: cls.get_balance(accounts, names[0])}
+
+        def func(accounts, names):
+            return {names[0]: cls.get_balance(accounts, names[0])}
         return cls._cumulate(fiscalyears, accounts, [name], {name: balances},
             func)[name]
 
