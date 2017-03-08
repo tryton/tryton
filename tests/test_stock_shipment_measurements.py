@@ -202,6 +202,7 @@ class StockShipmentMeasurementsTestCase(ModuleTestCase):
             package_root = Package()
             package_root.type = package_type
             package_root.shipment = shipment
+            package_root.additional_weight = 1
             package_root.save()
 
             package = Package()
@@ -217,7 +218,7 @@ class StockShipmentMeasurementsTestCase(ModuleTestCase):
             self.assertEqual(package.weight, 10)
             self.assertEqual(package.volume, 2)
 
-            self.assertEqual(package_root.total_weight, 10)
+            self.assertEqual(package_root.total_weight, 11)
             self.assertEqual(package_root.total_volume, 2)
 
 

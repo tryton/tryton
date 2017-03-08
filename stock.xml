@@ -35,5 +35,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="stock_package.package_view_list"/>
             <field name="name">package_list</field>
         </record>
+        <record model="ir.ui.view" id="package_view_form">
+            <field name="model">stock.package</field>
+            <field name="inherit" ref="stock_package.package_view_form"/>
+            <field name="name">package_form</field>
+        </record>
     </data>
 </tryton>

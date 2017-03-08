@@ -249,6 +249,9 @@ class Package(MeasurementsMixin, object):
     __metaclass__ = PoolMeta
     __name__ = 'stock.package'
 
+    additional_weight = fields.Float(
+        "Additional Weight",
+        help="The weight to add to the packages in kg.")
     total_weight = fields.Function(
         fields.Float("Total Weight", digits=None,
             help="The total weight of the packages in kg."),
@@ -268,5 +271,8 @@ class Package(MeasurementsMixin, object):
 
     def get_total_measurements(self, name):
         field = name[len('total_'):]
-        return ((getattr(self, field) or 0)
+        measurement = ((getattr(self, field) or 0)
             + sum(p.get_total_measurements(name) for p in self.children))
+        if name == 'total_weight' and self.additional_weight:
+            measurement += self.additional_weight
+        return measurement
