@@ -113,7 +113,7 @@ class View:
                 else:
                     group.append(element)
             root.append(group)
-        arch = etree.tostring(tree, encoding='utf-8')
+        arch = etree.tostring(tree, encoding='utf-8').decode('utf-8')
         return arch
 
     @classmethod
