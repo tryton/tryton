@@ -242,12 +242,9 @@ class CreateShippingUPS(Wizard):
             }
 
     def get_shipping_party(self, party, address):
-        assert party == address.party
-
         shipping_party = {
             'Name': party.name[:35],
-            'AttentionName': (address.name[:35]
-                if address.name else party.name[:35]),
+            'AttentionName': party.name[:35],
             'Address': {
                 'AddressLine': (address.street or '').splitlines(),
                 'City': address.city,
