@@ -515,7 +515,7 @@ class AccountTemplate(ModelSQL, ModelView):
                                 })
                     template_done.append(template.id)
             if to_write:
-                Account.write(to_write)
+                Account.write(*to_write)
 
         childs = [self]
         while childs:
