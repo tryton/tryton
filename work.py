@@ -419,8 +419,6 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def copy(cls, project_works, default=None):
-        TimesheetWork = Pool().get('timesheet.work')
-
         if default is None:
             default = {}
 
