@@ -95,7 +95,7 @@ path
 The directory where Tryton stores files and so the user running `trytond`
 must have write access on this directory.
 
-Default: The db folder under the user home directory running `trytond`.
+Default: The `db` folder under the user home directory running `trytond`.
 
 list
 ~~~~
