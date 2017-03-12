@@ -307,6 +307,8 @@ instance.
     the integer part. The second integer defines the total of numbers in the
     decimal part.
     Integers can be replaced by a :class:`~trytond.pyson.PYSON` statement.
+    If digits is None or any values of the tuple is `None`, no validation on
+    the numbers will be done.
 
 Numeric
 -------

@@ -541,6 +541,16 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(float7.float, 0.123456789012345)
 
     @with_transaction()
+    def test_float_digits_none(self):
+        pool = Pool()
+        FloatDigits = pool.get('test.float_digits')
+        record, = FloatDigits.create([{
+                    'float': 0.123456789012345,
+                    'digits': None,
+                    }])
+        self.assertEqual(record.float, 0.123456789012345)
+
+    @with_transaction()
     def test_float_search_none(self):
         'Test float search with None'
         pool = Pool()

@@ -1050,7 +1050,9 @@ class ModelStorage(Model):
                         error_args['value'] = repr(value)
                         cls.raise_user_error('digits_validation_record',
                             error_args=error_args)
-                    if value is None:
+                    if (value is None
+                            or not digits
+                            or any(d is None for d in digits)):
                         return
                     if isinstance(value, Decimal):
                         if (value.quantize(Decimal(str(10.0 ** -digits[1])))
@@ -1060,7 +1062,7 @@ class ModelStorage(Model):
                         if not (round(value, digits[1]) == float(value)):
                             raise_user_error(value)
                 # validate digits
-                if hasattr(field, 'digits') and field.digits:
+                if getattr(field, 'digits', None):
                     if is_pyson(field.digits):
                         pyson_digits = PYSONEncoder().encode(field.digits)
                         for record in records:
