@@ -21,6 +21,11 @@ class SaleLine(AnalyticMixin):
                     Eval('context', {}).get('company', -1),
                     Eval('_parent_sale', {}).get('company', -1))),
             ]
+        cls.analytic_accounts.states = {
+            'invisible': Eval('type') != 'line',
+            'readonly': Eval('sale_state') != 'draft',
+            }
+        cls.analytic_accounts.depends.extend(['type', 'sale_state'])
 
     def get_invoice_line(self):
         pool = Pool()
