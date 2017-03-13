@@ -101,30 +101,24 @@ Create a Project::
 
     >>> config.user = project_user.id
     >>> ProjectWork = Model.get('project.work')
-    >>> TimesheetWork = Model.get('timesheet.work')
     >>> project = ProjectWork()
     >>> project.name = 'Test effort'
-    >>> work = TimesheetWork()
-    >>> work.name = 'Test effort'
-    >>> work.save()
-    >>> project.work = work
     >>> project.type = 'project'
     >>> project.party = customer
     >>> project.project_invoice_method = 'effort'
     >>> project.product = product
     >>> project.effort_duration = datetime.timedelta(hours=1)
-    >>> task = ProjectWork()
+    >>> task = project.children.new()
     >>> task.name = 'Task 1'
-    >>> work = TimesheetWork()
-    >>> work.name = 'Task 1'
-    >>> work.save()
-    >>> task.work = work
     >>> task.type = 'task'
     >>> task.product = product
     >>> task.effort_duration = datetime.timedelta(hours=5)
-    >>> project.children.append(task)
+    >>> task_no_effort = project.children.new()
+    >>> task_no_effort.name = "Task 2"
+    >>> task_no_effort.type = 'task'
+    >>> task_no_effort.effort_duration = None
     >>> project.save()
-    >>> task, = project.children
+    >>> task, task_no_effort = project.children
 
 Check project duration::
 
@@ -165,6 +159,8 @@ Invoice project::
 Do project::
 
     >>> config.user = project_user.id
+    >>> task_no_effort.state = 'done'
+    >>> task_no_effort.save()
     >>> project.state = 'done'
     >>> project.save()
 
