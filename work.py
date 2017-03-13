@@ -122,7 +122,7 @@ class Work:
     @staticmethod
     def _get_hours_to_invoice_effort(works):
         return dict((w.id, w.effort) for w in works
-            if w.state == 'done' and not w.invoice_line)
+            if w.state == 'done' and not w.invoice_line and w.effort)
 
     @classmethod
     def _get_hours_to_invoice_timesheet(cls, works):
