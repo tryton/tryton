@@ -4,6 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="price_list"/>
     <field name="sequence"/>
+    <field name="category"/>
     <field name="product"/>
     <field name="quantity"/>
     <field name="formula"/>

@@ -53,7 +53,9 @@ class PriceList(ModelSQL, ModelView):
             pattern = {}
 
         pattern = pattern.copy()
-        pattern['product'] = product and product.id or None
+        if product:
+            pattern['categories'] = [c.id for c in product.categories]
+            pattern['product'] = product.id
         pattern['quantity'] = Uom.compute_qty(uom, quantity,
             product.default_uom, round=False) if product else quantity
 
@@ -71,9 +73,12 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     price_list = fields.Many2One('product.price_list', 'Price List',
             required=True, ondelete='CASCADE')
+    category = fields.Many2One(
+        'product.category', "Category", ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product', ondelete='CASCADE')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-            depends=['unit_digits'])
+            depends=['unit_digits'],
+        help="Minimal quantity in the product default UoM.")
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     formula = fields.Char('Formula', required=True,
@@ -107,7 +112,6 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def on_change_with_unit_digits(self, name=None):
         if self.product:
             return self.product.default_uom.digits
-        return 2
 
     @classmethod
     def validate(cls, lines):
@@ -137,6 +141,12 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             pattern = pattern.copy()
             quantity = pattern.pop('quantity')
             if self.quantity is not None and self.quantity > quantity:
+                return False
+        if 'categories' in pattern:
+            pattern = pattern.copy()
+            categories = pattern.pop('categories')
+            if (self.category is not None
+                    and self.category.id not in categories):
                 return False
         return super(PriceListLine, self).match(pattern)
 

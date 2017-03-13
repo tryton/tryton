@@ -78,6 +78,56 @@ class ProductPriceListTestCase(ModuleTestCase):
                         quantity, unit),
                     result)
 
+    @with_transaction()
+    def test_price_list_category(self):
+        "Test price list with category"
+        pool = Pool()
+        Category = pool.get('product.category')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        PriceList = pool.get('product.price_list')
+
+        category = Category(name="Category")
+        category.save()
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+
+        company = create_company()
+        with set_company(company):
+            template = Template(
+                name="Template",
+                list_price=Decimal(10),
+                cost_price=Decimal(3),
+                default_uom=unit,
+                products=None,
+                categories=[category],
+                )
+            template.save()
+            product = Product(template=template)
+            product.save()
+
+            price_list, = PriceList.create([{
+                        'name': "Price List",
+                        'lines': [('create', [{
+                                        'category': category.id,
+                                        'formula': 'unit_price * 0.8',
+                                        }, {
+                                        'formula': 'unit_price',
+                                        }])],
+                        }])
+
+            self.assertEqual(
+                price_list.compute(None, product, product.list_price, 1, unit),
+                Decimal(8))
+
+            template.categories = []
+            template.save()
+
+            self.assertEqual(
+                price_list.compute(None, product, product.list_price, 1, unit),
+                Decimal(10))
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
