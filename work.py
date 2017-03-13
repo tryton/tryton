@@ -58,9 +58,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             help="Total time spent on this work and the sub-works"),
         'get_total')
     effort_duration = fields.TimeDelta('Effort', 'company_work_time',
-        states={
-            'invisible': Eval('type') != 'task',
-            }, depends=['type'], help="Estimated Effort for this work")
+        help="Estimated Effort for this work")
     total_effort = fields.Function(fields.TimeDelta('Total Effort',
             'company_work_time',
             help="Estimated total effort for this work and the sub-works"),
@@ -73,10 +71,6 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
                 ('progress', '<=', 1),
                 ],
             ],
-        states={
-            'invisible': Eval('type') != 'task',
-            },
-        depends=['type'],
         help='Estimated progress for this work')
     total_progress = fields.Function(fields.Float('Total Progress',
             digits=(16, 4),
