@@ -1086,7 +1086,7 @@ class Screen(SignalEvent):
                     'model': self.model_name,
                     'id': self.current_record.id,
                     'ids': ids,
-                    }, context=self.context)
+                    }, context=self.context, keyword=True)
 
     def client_action(self, action):
         access = MODELACCESS[self.model_name]

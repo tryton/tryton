@@ -53,7 +53,7 @@ class Action(object):
         return True
 
     @staticmethod
-    def execute(act_id, data, action_type=None, context=None):
+    def execute(act_id, data, action_type=None, context=None, keyword=False):
         # Must be executed synchronously to avoid double execution
         # on double click.
         if not action_type:
@@ -63,6 +63,13 @@ class Action(object):
         action, = RPCExecute('model', action_type, 'search_read',
             [('action', '=', act_id)], 0, 1, None, None,
             context=context)
+        if keyword:
+            keywords = {
+                'ir.action.report': 'form_report',
+                'ir.action.wizard': 'form_action',
+                'ir.action.act_window': 'form_relate',
+                }
+            action.setdefault('keyword', keywords.get(action_type, ''))
         Action._exec_action(action, data, context=context)
 
     @staticmethod
