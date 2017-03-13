@@ -22,6 +22,11 @@ class InvoiceLine(AnalyticMixin):
                     Eval('company', -1))),
             ]
         cls.analytic_accounts.depends.append('company')
+        cls.analytic_accounts.states = {
+            'invisible': Eval('type') != 'line',
+            'readonly': Eval('invoice_state') != 'draft',
+            }
+        cls.analytic_accounts.depends.extend(['type', 'invoice_state'])
 
     def _credit(self):
         pool = Pool()
