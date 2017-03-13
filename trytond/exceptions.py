@@ -14,6 +14,9 @@ class UserError(TrytonException):
         self.description = description
         self.code = 1
 
+    def __str__(self):
+        return '%s - %s' % (self.message, self.description)
+
 
 class UserWarning(TrytonException):
 
@@ -24,6 +27,9 @@ class UserWarning(TrytonException):
         self.message = message
         self.description = description
         self.code = 2
+
+    def __str__(self):
+        return '%s - %s' % (self.message, self.description)
 
 
 class LoginException(TrytonException):
@@ -47,6 +53,9 @@ class ConcurrencyException(TrytonException):
             message)
         self.message = message
         self.code = 4
+
+    def __str__(self):
+        return self.message
 
 
 class RateLimitException(TrytonException):
