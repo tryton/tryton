@@ -304,7 +304,11 @@ class Screen(SignalEvent):
 
     def count_tab_domain(self):
         def set_tab_counter(count, idx):
-            self.screen_container.set_tab_counter(count(), idx)
+            try:
+                count = count()
+            except RPCException:
+                count = None
+            self.screen_container.set_tab_counter(count, idx)
         screen_domain = self.search_domain(self.screen_container.get_text())
         for idx, (name, domain, count) in enumerate(
                 self.screen_container.tab_domain):
