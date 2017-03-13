@@ -56,6 +56,11 @@ class PurchaseLine(AnalyticMixin):
                     Eval('context', {}).get('company', -1),
                     Eval('_parent_purchase', {}).get('company', -1))),
             ]
+        cls.analytic_accounts.states = {
+            'invisible': Eval('type') != 'line',
+            'readonly': Eval('purchase_state') != 'draft',
+            }
+        cls.analytic_accounts.depends.extend(['type', 'purchase_state'])
 
     def get_invoice_line(self):
         pool = Pool()
