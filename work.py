@@ -143,7 +143,7 @@ class Work:
     @staticmethod
     def _get_duration_to_invoice_effort(works):
         return dict((w.id, w.effort_duration) for w in works
-            if w.state == 'done' and not w.invoice_line)
+            if w.state == 'done' and not w.invoice_line and w.effort_duration)
 
     @staticmethod
     def _get_duration_to_invoice_progress(works):
