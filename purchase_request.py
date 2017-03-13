@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
-from itertools import groupby
+from itertools import groupby, ifilter
 from functools import partial
 
 from trytond import backend
@@ -372,18 +372,16 @@ class CreatePurchase(Wizard):
         Line = pool.get('purchase.line')
         Date = pool.get('ir.date')
 
-        request_ids = Transaction().context['active_ids']
+        requests = Request.browse(Transaction().context['active_ids'])
 
         if (getattr(self.ask_party, 'party', None)
                 and getattr(self.ask_party, 'company', None)):
-            reqs = Request.search([
-                    ('id', 'in', request_ids),
-                    ('purchase_line', '=', None),
-                    ('party', '=', None),
-                    ('product', '=', (self.ask_party.product.id
-                            if self.ask_party.product else None)),
-                    ('description', '=', self.ask_party.description),
-                    ])
+            def to_write(request):
+                return (not request.purchase_line
+                    and not request.party
+                    and request.product == self.ask_party.product
+                    and request.description == self.ask_party.description)
+            reqs = filter(to_write, requests)
             if reqs:
                 Request.write(reqs, {
                         'party': self.ask_party.party.id,
@@ -393,16 +391,13 @@ class CreatePurchase(Wizard):
             self.ask_party.party = None
             self.ask_party.company = None
 
-        reqs = Request.search([
-                ('id', 'in', request_ids),
-                ('purchase_line', '=', None),
-                ('party', '=', None),
-                ])
-        if reqs:
+        def to_ask_party(request):
+            return not request.purchase_line and not request.party
+        reqs = ifilter(to_ask_party, requests)
+        if any(reqs):
             return 'ask_party'
 
         today = Date.today()
-        requests = Request.browse(request_ids)
 
         requests = [r for r in requests if not r.purchase_line]
 
