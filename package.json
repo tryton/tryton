@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "test": "./node_modules/.bin/grunt test",
-    "postinstall": "./node_modules/.bin/bower install --allow-root"
+    "postinstall": "./node_modules/.bin/bower install"
   },
   "devDependencies": {
     "grunt-contrib-nodeunit": "^0.4",
