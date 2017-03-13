@@ -879,7 +879,6 @@
         toolbar_def: function() {
             return [
                 ['reload', 'glyphicon-refresh',
-                Sao.i18n.gettext('Reload'),
                 Sao.i18n.gettext('Reload'), 'reload']
             ];
         },
