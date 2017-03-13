@@ -202,20 +202,31 @@
         });
     };
 
-    Sao.Action.execute = function(id, data, type, context) {
+    Sao.Action.execute = function(id, data, type, context, keyword) {
         if (!type) {
             Sao.rpc({
                 'method': 'model.ir.action.read',
                 'params': [[id], ['type'], context]
             }, Sao.Session.current_session).done(function(result) {
-                Sao.Action.execute(id, data, result[0].type, context);
+                Sao.Action.execute(id, data, result[0].type, context, keyword);
             });
         } else {
             Sao.rpc({
                 'method': 'model.' + type + '.search_read',
                 'params': [[['action', '=', id]], 0, 1, null, null, context]
             }, Sao.Session.current_session).done(function(result) {
-                Sao.Action.exec_action(result[0], data, context);
+                var action = result[0];
+                if (keyword) {
+                    var keywords = {
+                        'ir.action.report': 'form_report',
+                        'ir.action.wizard': 'form_action',
+                        'ir.action.act_window': 'form_relate'
+                    };
+                    if (!action.keyword) {
+                        action.keyword = keywords[type];
+                    }
+                }
+                Sao.Action.exec_action(action, data, context);
             });
         }
     };

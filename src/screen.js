@@ -1493,7 +1493,7 @@
                         model: this.model_name,
                         id: this.current_record.id,
                         ids: ids
-                    }, null, this.context);
+                    }, null, this.context, true);
                 }
             };
 
