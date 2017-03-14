@@ -155,7 +155,7 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'commission.plan.line'
     plan = fields.Many2One('commission.plan', 'Plan', required=True,
         ondelete='CASCADE')
-    product = fields.Many2One('product.product', 'Product')
+    product = fields.Many2One('product.product', 'Product', ondelete='CASCADE')
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
             '- amount: the original amount'))
