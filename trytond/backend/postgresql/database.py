@@ -92,7 +92,6 @@ class Database(DatabaseInterface):
     @classmethod
     def dsn(cls, name):
         uri = parse_uri(config.get('database', 'uri'))
-        assert uri.scheme == 'postgresql'
         host = uri.hostname and "host=%s" % uri.hostname or ''
         port = uri.port and "port=%s" % uri.port or ''
         name = "dbname=%s" % name

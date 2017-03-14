@@ -92,7 +92,6 @@ class Database(DatabaseInterface):
             'conv': conv,
         }
         uri = parse_uri(config.get('database', 'uri'))
-        assert uri.scheme == 'mysql'
         if uri.hostname:
             args['host'] = uri.hostname
         if uri.port:
