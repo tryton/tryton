@@ -17,9 +17,11 @@ _ = gettext.gettext
 class Action(SignalEvent):
 
     def __init__(self, attrs=None, context=None):
+        if context is None:
+            context = {}
         super(Action, self).__init__()
         self.name = attrs['name']
-        self.context = context or {}
+        self.context = context.copy()
 
         try:
             self.action = RPCExecute('model', 'ir.action.act_window', 'get',
