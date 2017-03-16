@@ -115,6 +115,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="wiz_name">purchase.request.handle.purchase.cancellation</field>
             <field name="model">purchase.request</field>
         </record>
+        <record model="ir.action-res.group"
+            id="wizard_purchase_cancellation_handle_exception_group_purchase_request">
+            <field name="action"
+                ref="wizard_purchase_cancellation_handle_exception"/>
+            <field name="group" ref="group_purchase_request"/>
+        </record>
+
         <record model="ir.action.keyword" 
             id="wizard_purchase_cancellation_handle_exception_keyword">
             <field name="action"
