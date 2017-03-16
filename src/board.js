@@ -176,11 +176,14 @@
 
     Sao.View.Board.Action = Sao.class_(Object, {
         init: function(attributes, context) {
+            if (context === undefined) {
+                context = {};
+            }
             var model, action_prm, act_window;
             var decoder, search_context, search_value;
 
             this.name = attributes.name;
-            this.context = context || {};
+            this.context = jQuery.extend({}, context);
 
             act_window = new Sao.Model('ir.action.act_window');
             this.action_prm = act_window.execute('get', [this.name],
