@@ -85,7 +85,7 @@ class PurchaseRequest(ModelSQL, ModelView):
             ('draft', "Draft"),
             ('cancel', "Cancel"),
             ('exception', "Exception"),
-            ], "State", required=True, select=True)
+            ], "State", required=True, readonly=True, select=True)
 
     @classmethod
     def __setup__(cls):
