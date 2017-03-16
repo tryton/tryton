@@ -43,7 +43,8 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
             ('parent', '=', None),
             ],
         states=STATES, depends=['active', 'country'])
-    active = fields.Boolean('Active')
+    active = fields.Boolean('Active',
+        help="Uncheck to exclude the address from future use.")
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 
@@ -191,7 +192,8 @@ class AddressFormat(MatchMixin, ModelSQL, ModelView):
     __name__ = 'party.address.format'
     country = fields.Many2One('country.country', "Country")
     language = fields.Many2One('ir.lang', "Language")
-    active = fields.Boolean("Active")
+    active = fields.Boolean("Active",
+        help="Uncheck to exclude the format from future use.")
     format_ = fields.Text("Format", required=True,
         help="Available variables (also in upper case):\n"
         "- ${party_name}\n"

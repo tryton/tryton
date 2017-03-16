@@ -17,12 +17,16 @@ class Category(ModelSQL, ModelView):
     "Category"
     __name__ = 'party.category'
     name = fields.Char('Name', required=True, states=STATES, translate=True,
-        depends=DEPENDS)
+        depends=DEPENDS,
+        help="The main identifier of the category.")
     parent = fields.Many2One('party.category', 'Parent',
-        select=True, states=STATES, depends=DEPENDS)
+        select=True, states=STATES, depends=DEPENDS,
+        help="Add the category below the parent.")
     childs = fields.One2Many('party.category', 'parent',
-       'Children', states=STATES, depends=DEPENDS)
-    active = fields.Boolean('Active')
+       'Children', states=STATES, depends=DEPENDS,
+        help="Add children below the category.")
+    active = fields.Boolean('Active',
+        help="Uncheck to exclude the category from future use.")
 
     @classmethod
     def __setup__(cls):

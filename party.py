@@ -29,35 +29,43 @@ class Party(ModelSQL, ModelView):
     "Party"
     __name__ = 'party.party'
 
-    name = fields.Char('Name', select=True, states=STATES, depends=DEPENDS)
+    name = fields.Char('Name', select=True, states=STATES, depends=DEPENDS,
+        help="The main identifier of the party.")
     code = fields.Char('Code', required=True, select=True,
         states={
             'readonly': Eval('code_readonly', True),
             },
-        depends=['code_readonly'])
+        depends=['code_readonly'],
+        help="The unique identifier of the party.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
     lang = fields.Property(fields.Many2One("ir.lang", 'Language',
-            states=STATES, depends=DEPENDS))
+            states=STATES, depends=DEPENDS,
+            help="Used to translate communications with the party."))
     identifiers = fields.One2Many('party.identifier', 'party', 'Identifiers',
-        states=STATES, depends=DEPENDS)
+        states=STATES, depends=DEPENDS,
+        help="Add other identifiers of the party.")
     tax_identifier = fields.Function(fields.Many2One(
-            'party.identifier', 'Tax Identifier'),
+            'party.identifier', 'Tax Identifier',
+            help="The identifier used for tax report."),
         'get_tax_identifier', searcher='search_tax_identifier')
     addresses = fields.One2Many('party.address', 'party',
         'Addresses', states=STATES, depends=DEPENDS)
     contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
         'Contact Mechanisms', states=STATES, depends=DEPENDS)
     categories = fields.Many2Many('party.party-party.category',
-        'party', 'category', 'Categories', states=STATES, depends=DEPENDS)
+        'party', 'category', 'Categories', states=STATES, depends=DEPENDS,
+        help="The categories the party belongs to.")
     active = fields.Boolean('Active', select=True, states={
             'readonly': Bool(Eval('replaced_by')),
             },
-        depends=['replaced_by'])
+        depends=['replaced_by'],
+        help="Uncheck to exclude the party from future use.")
     replaced_by = fields.Many2One('party.party', "Replaced By", readonly=True,
         states={
             'invisible': ~Eval('replaced_by'),
-            })
+            },
+        help="The party replacing this one.")
     full_name = fields.Function(fields.Char('Full Name'), 'get_full_name')
     phone = fields.Function(fields.Char('Phone'), 'get_mechanism')
     mobile = fields.Function(fields.Char('Mobile'), 'get_mechanism')
@@ -249,7 +257,8 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'party.identifier'
     _rec_name = 'code'
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
-        required=True, select=True)
+        required=True, select=True,
+        help="The party identified by this record.")
     type = fields.Selection('get_types', 'Type')
     type_string = type.translated('type')
     code = fields.Char('Code', required=True)
@@ -496,12 +505,14 @@ class PartyReplace(Wizard):
 class PartyReplaceAsk(ModelView):
     "Replace Party"
     __name__ = 'party.replace.ask'
-    source = fields.Many2One('party.party', "Source", required=True)
+    source = fields.Many2One('party.party', "Source", required=True,
+        help="The party to be replaced.")
     destination = fields.Many2One('party.party', "Destination", required=True,
         domain=[
             ('id', '!=', Eval('source', -1)),
             ],
-        depends=['source'])
+        depends=['source'],
+        help="The party that replaces.")
 
     @classmethod
     def default_source(cls):

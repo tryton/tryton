@@ -12,4 +12,5 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
     party_sequence = fields.Property(fields.Many2One('ir.sequence',
             'Party Sequence', domain=[
                 ('code', '=', 'party.party'),
-                ]))
+                ],
+            help="Used to generate the party code."))

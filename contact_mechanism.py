@@ -51,7 +51,8 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
     comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
-    active = fields.Boolean('Active', select=True)
+    active = fields.Boolean('Active', select=True,
+        help="Uncheck to exclude the contact mechanism from future use.")
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
