@@ -43,6 +43,8 @@ of them are optional or completed with sensible default values:
     currency of the purchase.
   - Amount: The amount of the current line (Unit Price multiplied by
     Quantity).
+  - Delivery Date: The computed date at which the product is expected to be
+    delivered.
   - Taxes: The list of taxes that will be applied to the current line.
 
 - Invoice State: The state of the invoice related to the purchase.
