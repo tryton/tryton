@@ -139,6 +139,14 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     invoices_recreated = fields.Many2Many(
             'purchase.purchase-recreated-account.invoice',
             'purchase', 'invoice', 'Recreated Invoices', readonly=True)
+    delivery_date = fields.Date(
+        "Delivery Date",
+        states={
+            'readonly': Eval('state').in_([
+                    'processing', 'done', 'cancel']),
+            },
+        depends=['state'],
+        help="The default delivery date for each line.")
     shipment_state = fields.Selection([
             ('none', 'None'),
             ('waiting', 'Waiting'),
@@ -956,10 +964,29 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             'To Location'), 'get_to_location')
     delivery_date = fields.Function(fields.Date('Delivery Date',
             states={
-                'invisible': Eval('type') != 'line',
+                'invisible': ((Eval('type') != 'line')
+                    | Eval('delivery_date_edit', False)),
                 },
-            depends=['type']),
+            depends=['type', 'delivery_date_edit']),
         'on_change_with_delivery_date')
+    delivery_date_edit = fields.Boolean(
+        "Edit Delivery Date",
+        states={
+            'invisible': Eval('type') != 'line',
+            'readonly': Eval('purchase_state').in_([
+                    'processing', 'done', 'cancel']),
+            },
+        depends=['type', 'purchase_state'],
+        help="Check to edit the delivery date.")
+    delivery_date_store = fields.Date(
+        "Delivery Date",
+        states={
+            'invisible': ((Eval('type') != 'line')
+                | ~Eval('delivery_date_edit', False)),
+            'readonly': Eval('purchase_state').in_([
+                    'processing', 'done', 'cancel']),
+            },
+        depends=['type', 'delivery_date_edit', 'purchase_state'])
     purchase_state = fields.Function(
         fields.Selection(STATES, 'Purchase State'),
         'on_change_with_purchase_state')
@@ -997,6 +1024,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'line'
+
+    @classmethod
+    def default_delivery_date_edit(cls):
+        return False
 
     def get_move_done(self, name):
         Uom = Pool().get('product.uom')
@@ -1179,7 +1210,9 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             return self.purchase.party.supplier_location.id
 
     @fields.depends('product', 'quantity', 'moves',
-        '_parent_purchase.purchase_date', '_parent_purchase.party')
+        '_parent_purchase.purchase_date', '_parent_purchase.party',
+        'delivery_date_edit', 'delivery_date_store',
+        '_parent_purchase.delivery_date')
     def on_change_with_delivery_date(self, name=None):
         if self.moves:
             dates = filter(
@@ -1188,6 +1221,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 return min(dates)
             else:
                 return
+        if self.delivery_date_edit:
+            return self.delivery_date_store
+        if self.purchase and self.purchase.delivery_date:
+            return self.purchase.delivery_date
         if (self.product
                 and self.quantity is not None
                 and self.quantity > 0
@@ -1377,7 +1414,11 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     def view_attributes(cls):
         return [
             ('/form//field[@name="note"]|/form//field[@name="description"]',
-                'spell', Eval('_parent_purchase', {}).get('party_lang'))]
+                'spell', Eval('_parent_purchase', {}).get('party_lang')),
+            ('//label[@id="delivery_date"]', 'states', {
+                    'invisible': Eval('type') != 'line',
+                    }),
+            ]
 
     @classmethod
     def copy(cls, lines, default=None):

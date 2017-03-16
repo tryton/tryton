@@ -1,3 +1,5 @@
+* Allow to edit delivery date on purchase line
+
 Version 4.2.0 - 2016-11-28
 * Bug fixes (see mercurial logs for details)
 * Manage readonly state on Purchase Line
