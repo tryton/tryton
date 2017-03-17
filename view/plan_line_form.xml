@@ -4,12 +4,13 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="plan"/>
     <field name="plan"/>
-    <newline/>
-    <label name="product"/>
-    <field name="product"/>
     <label name="sequence"/>
     <field name="sequence"/>
-    <newline/>
+    <label name="category"/>
+    <field name="category"/>
+    <label name="product"/>
+    <field name="product"/>
+    <separator id="formula" colspan="4"/>
     <label name="formula"/>
     <field name="formula" colspan="3"/>
 </form>

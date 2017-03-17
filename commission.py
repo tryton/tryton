@@ -143,7 +143,9 @@ class Plan(ModelSQL, ModelView):
         'Compute commission amount for the amount'
         if pattern is None:
             pattern = {}
-        pattern['product'] = product.id if product else None
+        if product:
+            pattern['categories'] = [c.id for c in product.categories]
+            pattern['product'] = product.id
         context = self.get_context_formula(amount, product)
         for line in self.lines:
             if line.match(pattern):
@@ -155,6 +157,8 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'commission.plan.line'
     plan = fields.Many2One('commission.plan', 'Plan', required=True,
         ondelete='CASCADE')
+    category = fields.Many2One(
+        'product.category', "Category", ondelete='CASCADE')
     product = fields.Many2One('product.product', 'Product', ondelete='CASCADE')
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
@@ -196,6 +200,15 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         'Return amount (as Decimal)'
         context.setdefault('functions', {})['Decimal'] = Decimal
         return simple_eval(decistmt(self.formula), **context)
+
+    def match(self, pattern):
+        if 'categories' in pattern:
+            pattern = pattern.copy()
+            categories = pattern.pop('categories')
+            if (self.category is not None
+                    and self.category.id not in categories):
+                return False
+        return super(PlanLines, self).match(pattern)
 
 
 class Commission(ModelSQL, ModelView):
