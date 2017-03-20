@@ -15,7 +15,7 @@ class Bank(ModelSQL, ModelView):
     _rec_name = 'party'
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE')
-    bic = fields.Char('BIC', size=11, help='Bank/Business Identifier Code')
+    bic = fields.Char('BIC', size=11, help="Bank's Business Identifier Code.")
 
     def get_rec_name(self, name):
         return self.party.rec_name
@@ -24,13 +24,16 @@ class Bank(ModelSQL, ModelView):
 class BankAccount(ModelSQL, ModelView):
     'Bank Account'
     __name__ = 'bank.account'
-    bank = fields.Many2One('bank', 'Bank', required=True)
+    bank = fields.Many2One('bank', 'Bank', required=True,
+        help="The bank where the account is open.")
     owners = fields.Many2Many('bank.account-party.party', 'account', 'owner',
         'Owners')
     currency = fields.Many2One('currency.currency', 'Currency')
     numbers = fields.One2Many('bank.account.number', 'account', 'Numbers',
-        required=True)
-    active = fields.Boolean('Active', select=True)
+        required=True,
+        help="Add the numbers which identify the bank account.")
+    active = fields.Boolean('Active', select=True,
+        help="Uncheck to exclude the bank account from future use.")
 
     @staticmethod
     def default_active():
@@ -49,7 +52,8 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'bank.account.number'
     _rec_name = 'number'
     account = fields.Many2One('bank.account', 'Account', required=True,
-        ondelete='CASCADE', select=True)
+        ondelete='CASCADE', select=True,
+        help="The bank account which is identified by the number.")
     type = fields.Selection([
             ('iban', 'IBAN'),
             ('other', 'Other'),
