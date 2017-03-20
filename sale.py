@@ -1279,11 +1279,13 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             if self.warehouse:
                 return self.warehouse.output_location.id
         else:
-            return self.sale.party.customer_location.id
+            party = self.sale.shipment_party or self.sale.party
+            return party.customer_location.id
 
     def get_to_location(self, name):
         if (self.quantity or 0) >= 0:
-            return self.sale.party.customer_location.id
+            party = self.sale.shipment_party or self.sale.party
+            return party.customer_location.id
         else:
             if self.warehouse:
                 return self.warehouse.input_location.id
