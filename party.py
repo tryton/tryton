@@ -259,7 +259,10 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', ondelete='CASCADE',
         required=True, select=True,
         help="The party identified by this record.")
-    type = fields.Selection('get_types', 'Type')
+    type = fields.Selection([
+            (None, ''),
+            ('eu_vat', 'VAT'),
+            ], 'Type')
     type_string = type.translated('type')
     code = fields.Char('Code', required=True)
 
@@ -301,13 +304,6 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
             cls.save(identifiers)
             party_h.drop_column('vat_number')
             party_h.drop_column('vat_country')
-
-    @classmethod
-    def get_types(cls):
-        return [
-            (None, ''),
-            ('eu_vat', 'VAT'),
-            ]
 
     @fields.depends('type', 'code')
     def on_change_with_code(self):
