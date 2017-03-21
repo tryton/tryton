@@ -59,18 +59,13 @@ class PartyIdentifier:
     @classmethod
     def __setup__(cls):
         super(PartyIdentifier, cls).__setup__()
+        cls.type.selection.append(('sepa', 'SEPA Creditor Identifier'))
         cls._error_messages.update({
                 'unique_sepa': ('Party "%(party)s" has more than one '
                     'SEPA Creditor Identifier.'),
                 'sepa_invalid': ('The SEPA identifier "%(code)s" on party '
                     '"%(party)s" is not valid.'),
                 })
-
-    @classmethod
-    def get_types(cls):
-        return super(PartyIdentifier, cls).get_types() + [
-            ('sepa', 'SEPA Creditor Identifier'),
-            ]
 
     def check_code(self):
         super(PartyIdentifier, self).check_code()
