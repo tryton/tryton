@@ -9,7 +9,6 @@ from tryton.common.domain_parser import quote
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.datetime_ import Date, Time, DateTime, add_operators
-from tryton.config import TRYTON_ICON
 from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
@@ -140,17 +139,14 @@ class ScreenContainer(object):
         self.filter_vbox = gtk.VBox(spacing=0)
         self.filter_vbox.set_border_width(0)
         hbox = gtk.HBox(homogeneous=False, spacing=0)
-        self.filter_button = gtk.ToggleButton()
-        self.filter_button.set_use_underline(True)
-        self.filter_button.set_label(_('F_ilters'))
-        self.filter_button.set_relief(gtk.RELIEF_NONE)
-        self.filter_button.set_alignment(0.0, 0.5)
-        self.filter_button.connect('toggled', self.search_box)
-        hbox.pack_start(self.filter_button, expand=False, fill=False)
 
         self.search_entry = PlaceholderEntry()
         self.search_entry.set_placeholder_text(_('Search'))
         self.search_entry.set_alignment(0.0)
+        self.search_entry.set_icon_from_stock(
+            gtk.ENTRY_ICON_PRIMARY, 'tryton-find')
+        self.search_entry.set_icon_tooltip_text(
+            gtk.ENTRY_ICON_PRIMARY, _('Open filters'))
         self.completion = gtk.EntryCompletion()
         self.completion.set_model(gtk.ListStore(str))
         self.completion.set_text_column(0)
@@ -283,6 +279,10 @@ class ScreenContainer(object):
 
         tooltips.enable()
 
+    def destroy(self):
+        if self.search_window:
+            self.search_window.hide()
+
     def widget_get(self):
         return self.vbox
 
@@ -304,9 +304,6 @@ class ScreenContainer(object):
     def hide_filter(self):
         if self.filter_vbox:
             self.filter_vbox.hide()
-        if self.filter_button and self.filter_button.get_active():
-            self.filter_button.set_active(False)
-            self.filter_button.toggled()
         if self.notebook:
             self.notebook.set_show_tabs(False)
             if self.viewport not in self.vbox.get_children():
@@ -454,7 +451,9 @@ class ScreenContainer(object):
         gobject.idle_add(keypress)
 
     def icon_press(self, widget, icon_pos, event):
-        if icon_pos == 1:
+        if icon_pos == gtk.ENTRY_ICON_PRIMARY:
+            self.search_box(widget)
+        elif icon_pos == gtk.ENTRY_ICON_SECONDARY:
             icon_stock = self.search_entry.get_icon_stock(icon_pos)
             model_name = self.screen.model_name
             if icon_stock == 'tryton-unstar':
@@ -478,14 +477,18 @@ class ScreenContainer(object):
         self.update()
         self.search_entry.emit('changed')
 
-    def search_box(self, button):
-        def key_press(window, event):
+    def search_box(self, widget):
+        def window_hide(window, *args):
+            window.hide()
+            self.search_entry.grab_focus()
+
+        def key_press(widget, event):
             if event.keyval == gtk.keysyms.Escape:
-                button.set_active(False)
-                window.hide()
+                window_hide(widget)
+                return True
+            return False
 
         def search():
-            button.set_active(False)
             self.search_window.hide()
             text = ''
             for label, entry in self.search_table.fields:
@@ -505,16 +508,15 @@ class ScreenContainer(object):
 
         if not self.search_window:
             self.search_window = gtk.Window()
-            self.search_window.set_transient_for(button.get_toplevel())
+            self.search_window.set_transient_for(widget.get_toplevel())
             self.search_window.set_type_hint(
                 gtk.gdk.WINDOW_TYPE_HINT_POPUP_MENU)
             self.search_window.set_destroy_with_parent(True)
-            self.search_window.set_title('Tryton')
-            self.search_window.set_icon(TRYTON_ICON)
             self.search_window.set_decorated(False)
             self.search_window.set_deletable(False)
-            self.search_window.connect('delete-event', lambda *a: True)
+            self.search_window.connect('delete-event', window_hide)
             self.search_window.connect('key-press-event', key_press)
+            self.search_window.connect('focus-out-event', window_hide)
             vbox = gtk.VBox()
             fields = [f for f in self.screen.domain_parser.fields.itervalues()
                 if f.get('searchable', True)]
@@ -586,15 +588,15 @@ class ScreenContainer(object):
                     scrolled.size_request()))
             self.search_window.set_default_size(*new_size)
 
-        parent = button.get_toplevel()
-        button_x, button_y = button.translate_coordinates(parent, 0, 0)
-        button_allocation = button.get_allocation()
+        parent = widget.get_toplevel()
+        widget_x, widget_y = widget.translate_coordinates(parent, 0, 0)
+        widget_allocation = widget.get_allocation()
 
         # Resize the window to not be out of the parent
         width, height = self.search_window.get_default_size()
         allocation = parent.get_allocation()
-        delta_width = allocation.width - (button_x + width)
-        delta_height = allocation.height - (button_y + button_allocation.height
+        delta_width = allocation.width - (widget_x + width)
+        delta_height = allocation.height - (widget_y + widget_allocation.height
             + height)
         if delta_width < 0:
             width += delta_width
@@ -603,36 +605,25 @@ class ScreenContainer(object):
         self.search_window.resize(width, height)
 
         # Move the window under the button
-        if hasattr(button.window, 'get_root_coords'):
-            x, y = button.window.get_root_coords(
-                button_allocation.x, button_allocation.y)
+        if hasattr(widget.window, 'get_root_coords'):
+            x, y = widget.window.get_root_coords(
+                widget_allocation.x, widget_allocation.y)
         else:
-            x, y = button.window.get_origin()
-            x += button_allocation.x
-            y += button_allocation.y
-        self.search_window.move(x, y + button_allocation.height)
+            x, y = widget.window.get_origin()
+        self.search_window.move(
+            x, y + widget_allocation.height)
+        self.search_window.show()
+        self.search_window.grab_focus()
 
-        from tryton.gui.main import Main
-        page = Main.get_main().get_page()
-        if button.get_active():
-            if page and self.search_window not in page.dialogs:
-                page.dialogs.append(self.search_window)
-            self.search_window.show()
-
-            if self.last_search_text.strip() != self.get_text().strip():
-                for label, entry in self.search_table.fields:
-                    if isinstance(entry, gtk.ComboBox):
-                        entry.set_active(-1)
-                    elif isinstance(entry, Dates):
-                        entry.set_values(None, None)
-                    elif isinstance(entry, Selection):
-                        entry.treeview.get_selection().unselect_all()
-                    else:
-                        entry.set_text('')
-                if self.search_table.fields:
-                    self.search_table.fields[0][1].grab_focus()
-
-        else:
-            self.search_window.hide()
-            if page and self.search_window in page.dialogs:
-                page.dialogs.remove(self.search_window)
+        if self.last_search_text.strip() != self.get_text().strip():
+            for label, entry in self.search_table.fields:
+                if isinstance(entry, gtk.ComboBox):
+                    entry.set_active(-1)
+                elif isinstance(entry, Dates):
+                    entry.set_values(None, None)
+                elif isinstance(entry, Selection):
+                    entry.treeview.get_selection().unselect_all()
+                else:
+                    entry.set_text('')
+            if self.search_table.fields:
+                self.search_table.fields[0][1].grab_focus()

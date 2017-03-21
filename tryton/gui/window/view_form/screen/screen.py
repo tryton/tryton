@@ -430,6 +430,7 @@ class Screen(SignalEvent):
         return False
 
     def destroy(self):
+        self.screen_container.destroy()
         for view in self.views:
             view.destroy()
         del self.views[:]
