@@ -3,9 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath
-        expr="/form/notebook/page[@id='general']/field[@name='delivery_date']"
-        position="after">
-        <label name="work"/>
-        <field name="work"/>
+        expr="/form/notebook/page[@id='general']" position="after">
+        <page string="Project" id="project">
+            <label name="work"/>
+            <field name="work"/>
+        </page>
     </xpath>
 </data>
