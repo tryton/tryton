@@ -13,8 +13,10 @@ class RelationType(ModelSQL, ModelView):
     'Relation Type'
     __name__ = 'party.relation.type'
 
-    name = fields.Char('Name', required=True, translate=True)
-    reverse = fields.Many2One('party.relation.type', 'Reverse Relation')
+    name = fields.Char('Name', required=True, translate=True,
+        help="The main identifier of the relation type.")
+    reverse = fields.Many2One('party.relation.type', 'Reverse Relation',
+        help="Create automatically the reverse relation.")
 
 
 class PartyRelation(ModelSQL):
