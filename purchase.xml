@@ -91,7 +91,7 @@ this repository contains the full copyright notices and license terms.
             action="act_purchase_requisition_form"
             id="menu_purchase_requisition_form"/>
         <record model="ir.ui.menu-res.group"
-            id="menu_purchase_requisition_group_purchase_request">
+            id="menu_purchase_requisition_group_purchase_requisition">
             <field name="menu" ref="menu_purchase_requisition_form"/>
             <field name="group" ref="group_purchase_requisition"/>
         </record>
