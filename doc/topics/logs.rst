@@ -24,28 +24,28 @@ file rotated every day.
 ::
 
     [formatters]
-    keys: simple
+    keys=simple
 
     [handlers]
-    keys: rotate, console
+    keys=rotate,console
 
     [loggers]
-    keys: root
+    keys=root
 
     [formatter_simple]
-    format: %(asctime)s] %(levelname)s:%(name)s:%(message)s
-    datefmt: %a %b %d %H:%M:%S %Y
+    format=%(asctime)s] %(levelname)s:%(name)s:%(message)s
+    datefmt=%a %b %d %H:%M:%S %Y
 
     [handler_rotate]
-    class: handlers.TimedRotatingFileHandler
-    args: ('/tmp/tryton.log', 'D', 1, 30)
-    formatter: simple
+    class=handlers.TimedRotatingFileHandler
+    args=('/tmp/tryton.log', 'D', 1, 30)
+    formatter=simple
 
     [handler_console]
-    class: StreamHandler
-    formatter: simple
-    args: (sys.stdout,)
+    class=StreamHandler
+    formatter=simple
+    args=(sys.stdout,)
 
     [logger_root]
-    level: INFO
-    handlers: rotate, console
+    level=INFO
+    handlers=rotate,console

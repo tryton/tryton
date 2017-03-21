@@ -23,20 +23,6 @@ document, ``*.odt``, that displays the full name and the address lines of the
 first address of each party. The genshi code is placed in the template using
 ``Functions->Placeholder->Text`` Fields. These are specific to ODT files.
 
-.. highlight:: genshi
-
-::
-
-  <for each="party in objects">
-    <party.full_name>
-    <if test="party.addresses">
-      <for each="line in party.addresses[0].full_address.split('\n')">
-        <line>
-      </for>
-    </if>
-  </for>
-
-
 Report API
 ==========
 
@@ -245,8 +231,8 @@ employee object.
 
 .. _Genshi XML Templates: http://genshi.edgewall.org/wiki/Documentation/0.5.x/xml-templates.html
 
-.. _Quick Example: http://code.google.com/p/python-relatorio/wiki/QuickExample
+.. _Quick Example: https://relatorio.readthedocs.io/en/latest/quickexample.html
 
-.. _In Depth Introduction: http://code.google.com/p/python-relatorio/wiki/IndepthIntroduction
+.. _In Depth Introduction: https://relatorio.readthedocs.io/en/latest/indepthexample.html
 
-.. _Example Documents: http://code.google.com/p/python-relatorio/source/browse/#hg%2Fexamples
+.. _Example Documents: http://hg.tryton.org/relatorio/file/default/examples
