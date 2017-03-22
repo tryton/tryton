@@ -22,7 +22,7 @@ except ImportError:
     from sqlite3 import OperationalError as DatabaseOperationalError
 from sql import Flavor, Table
 from sql.functions import (Function, Extract, Position, Substring,
-    Overlay, CharLength, CurrentTimestamp)
+    Overlay, CharLength, CurrentTimestamp, Trim)
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 
@@ -142,6 +142,27 @@ class SQLiteCurrentTimestamp(Function):
     _function = 'NOW'  # More precise
 
 
+class SQLiteTrim(Trim):
+
+    def __str__(self):
+        flavor = Flavor.get()
+        param = flavor.param
+
+        function = {
+            'BOTH': 'TRIM',
+            'LEADING': 'LTRIM',
+            'TRAILING': 'RTRIM',
+            }[self.position]
+
+        def format(arg):
+            if isinstance(arg, basestring):
+                return param
+            else:
+                return str(arg)
+        return function + '(%s, %s)' % (
+            format(self.string), format(self.characters))
+
+
 def sign(value):
     if value > 0:
         return 1
@@ -174,6 +195,7 @@ MAPPING = {
     Overlay: SQLiteOverlay,
     CharLength: SQLiteCharLength,
     CurrentTimestamp: SQLiteCurrentTimestamp,
+    Trim: SQLiteTrim,
     }
 
 
