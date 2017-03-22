@@ -786,6 +786,14 @@ class StockTestCase(ModuleTestCase):
             self.assertFalse(Move.assign_try(moves))
             self.assertEqual([m.state for m in moves], ['assigned', 'draft'])
 
+    @with_transaction()
+    def test_assign_without_moves(self):
+        "Test Move assign_try with empty moves"
+        pool = Pool()
+        Move = pool.get('stock.move')
+
+        self.assertTrue(Move.assign_try([]))
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

@@ -783,6 +783,9 @@ class Move(Workflow, ModelSQL, ModelView):
         database = transaction.database
         connection = transaction.connection
 
+        if not moves:
+            return True
+
         if with_childs:
             locations = Location.search([
                     ('parent', 'child_of',
