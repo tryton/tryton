@@ -1419,7 +1419,9 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         Move = pool.get('account.move')
         LedgerAccount = pool.get('account.general_ledger.account')
         Account = pool.get('account.account')
-        context = Transaction().context
+        transaction = Transaction()
+        database = transaction.database
+        context = transaction.context
         line = Line.__table__()
         move = Move.__table__()
         account = Account.__table__()
@@ -1429,8 +1431,7 @@ class GeneralLedgerLine(ModelSQL, ModelView):
                 continue
             field_line = getattr(Line, fname, None)
             if fname == 'balance':
-                # TODO replace the test by a generic one on backend
-                if backend.name() == 'postgresql':
+                if database.has_window_functions():
                     w_columns = [line.account]
                     if context.get('party_cumulate', False):
                         w_columns.append(line.party)
