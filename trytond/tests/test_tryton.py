@@ -23,6 +23,7 @@ from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.config import config, parse_uri
 from trytond.wizard import StateView, StateAction
+from trytond.pyson import PYSONDecoder
 
 __all__ = ['DB_NAME', 'USER', 'CONTEXT',
     'activate_module', 'ModuleTestCase', 'with_transaction',
@@ -433,6 +434,35 @@ class ModuleTestCase(unittest.TestCase):
                         'field': field_name,
                         'model': model.__name__,
                         })
+
+    @with_transaction()
+    def test_ir_action_window(self):
+        'Test action windows are correctly defined'
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        ActionWindow = pool.get('ir.action.act_window')
+        for model_data in ModelData.search([
+                    ('module', '=', self.module),
+                    ('model', '=', 'ir.action.act_window'),
+                    ]):
+            action_window = ActionWindow(model_data.db_id)
+            if not action_window.res_model:
+                continue
+            Model = pool.get(action_window.res_model)
+            decoder = PYSONDecoder({
+                    'active_id': None,
+                    'active_ids': [],
+                    'active_model': action_window.res_model,
+                    })
+            domain = decoder.decode(action_window.pyson_domain)
+            order = decoder.decode(action_window.pyson_order)
+            context = decoder.decode(action_window.pyson_context)
+            with Transaction().set_context(context):
+                Model.search(domain, order=order, limit=action_window.limit)
+            for action_domain in action_window.act_window_domains:
+                if not action_domain.domain:
+                    continue
+                Model.search(decoder.decode(action_domain.domain))
 
 
 def db_exist(name=DB_NAME):
