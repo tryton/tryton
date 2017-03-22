@@ -155,3 +155,7 @@ class DatabaseInterface(object):
     def has_select_for(self):
         "Return if database supports FOR UPDATE/SHARE clause in SELECT."
         return False
+
+    def has_window_functions(self):
+        "Return if database supports window functions."
+        return False

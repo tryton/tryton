@@ -304,6 +304,9 @@ class Database(DatabaseInterface):
     def has_select_for(self):
         return True
 
+    def has_window_functions(self):
+        return True
+
 register_type(UNICODE)
 if PYDATE:
     register_type(PYDATE)
