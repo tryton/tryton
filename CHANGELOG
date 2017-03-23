@@ -1,3 +1,4 @@
+* Allow None limit in action window
 * Add has_window_functions on Database
 * Allow Many2One on ModelSQL to target ModelStorage
 * Manage Cache in Transaction

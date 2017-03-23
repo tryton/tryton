@@ -6,7 +6,7 @@ from operator import itemgetter
 from collections import defaultdict
 from functools import partial
 
-from sql import Table
+from sql import Table, Null
 from sql.aggregate import Count
 
 from ..model import ModelView, ModelStorage, ModelSQL, fields
@@ -703,8 +703,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     act_window_domains = fields.One2Many('ir.action.act_window.domain',
         'act_window', 'Domains')
     domains = fields.Function(fields.Binary('Domains'), 'get_domains')
-    limit = fields.Integer('Limit', required=True,
-            help='Default limit for the list view')
+    limit = fields.Integer('Limit', help='Default limit for the list view')
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
     search_value = fields.Char('Search Criteria',
@@ -751,6 +750,12 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
         # Migration from 4.0: window_name removed
         table.drop_column('window_name')
 
+        # Migration from 4.2: remove required on limit
+        table.not_null_action('limit', 'remove')
+        cursor.execute(*act_window.update(
+                [act_window.limit], [Null],
+                where=act_window.limit == 0))
+
     @staticmethod
     def default_type():
         return 'ir.action.act_window'
@@ -758,10 +763,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     @staticmethod
     def default_context():
         return '{}'
-
-    @staticmethod
-    def default_limit():
-        return 0
 
     @staticmethod
     def default_search_value():
