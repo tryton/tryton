@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="direct_print"/>
             <newline/>
             <label name="email"/>
-            <field name="email" colspan="3"/>
+            <field name="email" colspan="3" widget="pyson"/>
         </page>
         <page name="keywords">
             <field name="keywords" colspan="4"/>
