@@ -977,7 +977,7 @@ class Main(object):
         action_ctx = decoder.decode(action.get('pyson_context') or '{}')
         domain = decoder.decode(action['pyson_domain'])
         screen = Screen(action['res_model'], mode=['tree'], view_ids=view_ids,
-            domain=domain, context=action_ctx, readonly=True)
+            domain=domain, context=action_ctx, readonly=True, limit=None)
         # Use alternate view to not show search box
         screen.screen_container.alternate_view = True
         screen.switch_view(view_type=screen.current_view.view_type)

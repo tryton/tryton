@@ -41,7 +41,7 @@ class Screen(SignalEvent):
 
     def __init__(self, model_name, **attributes):
         context = attributes.get('context', {})
-        self.limit = attributes.get('limit') or CONFIG['client.limit']
+        self.limit = attributes.get('limit', CONFIG['client.limit'])
         self.offset = 0
         super(Screen, self).__init__()
 
@@ -225,11 +225,13 @@ class Screen(SignalEvent):
         return selection
 
     def search_prev(self, search_string):
-        self.offset -= self.limit
+        if self.limit:
+            self.offset -= self.limit
         self.search_filter(search_string=search_string)
 
     def search_next(self, search_string):
-        self.offset += self.limit
+        if self.limit:
+            self.offset += self.limit
         self.search_filter(search_string=search_string)
 
     def search_complete(self, search_string):
@@ -257,7 +259,7 @@ class Screen(SignalEvent):
         except RPCException:
             ids = []
         if not only_ids:
-            if len(ids) == self.limit:
+            if self.limit is not None and len(ids) == self.limit:
                 try:
                     self.search_count = RPCExecute('model', self.model_name,
                         'search_count', domain, context=self.context)
@@ -266,7 +268,8 @@ class Screen(SignalEvent):
             else:
                 self.search_count = len(ids)
         self.screen_container.but_prev.set_sensitive(bool(self.offset))
-        if (len(ids) == self.limit
+        if (self.limit is not None
+                and len(ids) == self.limit
                 and self.search_count > self.limit + self.offset):
             self.screen_container.but_next.set_sensitive(True)
         else:

@@ -95,7 +95,8 @@ class Many2Many(Widget):
         self.screen = Screen(attrs['relation'],
             view_ids=attrs.get('view_ids', '').split(','),
             mode=['tree'], views_preload=attrs.get('views', {}),
-            row_activate=self._on_activate)
+            row_activate=self._on_activate,
+            limit=None)
         self.screen.signal_connect(self, 'record-message', self._sig_label)
 
         vbox.pack_start(self.screen.widget, expand=True, fill=True)
