@@ -761,7 +761,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 to_pick.append((location, available_qty))
                 needed_qty -= available_qty
         # Force assignation for consumables:
-        if self.product.consumable:
+        if self.product.consumable and self.from_location.type != 'view':
             to_pick.append((self.from_location, needed_qty))
             return to_pick
         return to_pick
