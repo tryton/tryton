@@ -37,7 +37,7 @@ class Dict(Field):
         if value is None:
             return None
         assert isinstance(value, dict)
-        return json.dumps(value, cls=JSONEncoder)
+        return json.dumps(value, cls=JSONEncoder, separators=(',', ':'))
 
     def sql_type(self):
         return SQLType('TEXT', 'TEXT')

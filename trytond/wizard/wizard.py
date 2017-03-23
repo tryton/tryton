@@ -341,7 +341,7 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
             if isinstance(state, StateView):
                 data[state_name] = getattr(self, state_name)._default_values
         session = Session(self._session_id)
-        data = json.dumps(data, cls=JSONEncoder)
+        data = json.dumps(data, cls=JSONEncoder, separators=(',', ':'))
         if data != session.data.encode('utf-8'):
             Session.write([session], {
                     'data': data,

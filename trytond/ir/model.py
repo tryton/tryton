@@ -1115,7 +1115,8 @@ class ModelData(ModelSQL, ModelView):
 
     @classmethod
     def dump_values(cls, values):
-        return json.dumps(sorted(values.iteritems()), cls=JSONEncoder)
+        return json.dumps(
+            sorted(values.iteritems()), cls=JSONEncoder, separators=(',', ':'))
 
     @classmethod
     def load_values(cls, values):

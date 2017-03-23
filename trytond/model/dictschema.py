@@ -60,7 +60,7 @@ class DictSchemaMixin(object):
         db_selection = self.selection or ''
         selection = [[w.strip() for w in v.split(':', 1)]
             for v in db_selection.splitlines() if v]
-        return json.dumps(selection)
+        return json.dumps(selection, separators=(',', ':'))
 
     @classmethod
     def get_keys(cls, records):
