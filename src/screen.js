@@ -622,7 +622,6 @@
             this.model_name = model_name;
             this.model = new Sao.Model(model_name, attributes);
             this.attributes = jQuery.extend({}, attributes);
-            this.attributes.limit = this.attributes.limit || Sao.config.limit;
             this.view_ids = jQuery.extend([], attributes.view_ids);
             this.view_to_load = jQuery.extend([],
                 attributes.mode || ['tree', 'form']);
@@ -635,7 +634,11 @@
             this.current_record = null;
             this.domain = attributes.domain || [];
             this.size_limit = null;
-            this.limit = attributes.limit || Sao.config.limit;
+            if (this.attributes.limit === undefined) {
+                this.limit = Sao.config.limit;
+            } else {
+                this.limit = attributes.limit;
+            }
             this.offset = 0;
             this.order = this.default_order = attributes.order;
             var access = Sao.common.MODELACCESS.get(model_name);
@@ -828,7 +831,8 @@
             grp_prm.done(this.display.bind(this));
             jQuery.when(grp_prm, count_prm).done(function(group, count) {
                 this.screen_container.but_next.prop('disabled',
-                        !(group.length == this.limit &&
+                        !(this.limit !== undefined &&
+                            group.length == this.limit &&
                             count > this.limit + this.offset));
             }.bind(this));
             this.screen_container.but_prev.prop('disabled', this.offset <= 0);
@@ -1386,11 +1390,15 @@
             });
         },
         search_prev: function(search_string) {
-            this.offset -= this.limit;
+            if (this.limit) {
+                this.offset -= this.limit;
+            }
             this.search_filter(search_string);
         },
         search_next: function(search_string) {
-            this.offset += this.limit;
+            if (this.limit) {
+                this.offset += this.limit;
+            }
             this.search_filter(search_string);
         },
         invalid_message: function(record) {

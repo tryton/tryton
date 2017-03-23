@@ -398,7 +398,8 @@ var Sao = {};
             'view_ids': view_ids,
             'domain': domain,
             'context': action_ctx,
-            'selection_mode': Sao.common.SELECTION_NONE
+            'selection_mode': Sao.common.SELECTION_NONE,
+            'limit': null
         });
         Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
         form.view_prm.done(function() {
