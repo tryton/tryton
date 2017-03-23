@@ -1,14 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
+from trytond.model import (ModelView, ModelSQL, MatchMixin, fields,
+    sequence_ordered)
 from trytond.pyson import If, Eval, Bool
 from trytond import backend
 from trytond.pool import PoolMeta
 
-__all__ = ['ProductLocation', 'ShipmentIn', 'ShipmentOutReturn']
+__all__ = ['ProductLocation', 'Move', 'ShipmentIn', 'ShipmentOutReturn']
 
 
-class ProductLocation(sequence_ordered(), ModelSQL, ModelView):
+class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     '''
     Product Location
     It defines the default storage location by warehouse for a product.
@@ -37,6 +38,21 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView):
         table.not_null_action('sequence', action='remove')
 
 
+class Move:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.move'
+
+    def set_product_location(self, field='to_location', **pattern):
+        assert field in {'from_location', 'to_location'}
+        if getattr(self, 'shipment', None):
+            pattern.setdefault('warehouse', self.shipment.warehouse.id)
+
+        for product_location in self.product.locations:
+            if product_location.match(pattern):
+                setattr(self, field, product_location.location)
+                break
+
+
 class ShipmentIn:
     __metaclass__ = PoolMeta
     __name__ = 'stock.shipment.in'
@@ -45,11 +61,8 @@ class ShipmentIn:
     def _get_inventory_moves(cls, incoming_move):
         move = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
         if move:
-            for product_location in incoming_move.product.locations:
-                if product_location.warehouse.id != \
-                        incoming_move.shipment.warehouse.id:
-                    continue
-                move.to_location = product_location.location
+            move.set_product_location(
+                warehouse=incoming_move.shipment.warehouse.id)
         return move
 
 
@@ -62,8 +75,6 @@ class ShipmentOutReturn:
         move = super(ShipmentOutReturn, cls)._get_inventory_moves(
             incoming_move)
         if move:
-            for product_location in incoming_move.product.locations:
-                if (product_location.warehouse
-                        == incoming_move.shipment.warehouse):
-                    move.to_location = product_location.location
+            move.set_product_location(
+                warehouse=incoming_move.shipment.warehouse.id)
         return move
