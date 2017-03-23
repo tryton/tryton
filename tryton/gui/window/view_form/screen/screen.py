@@ -132,7 +132,10 @@ class Screen(SignalEvent):
         self.view_to_load = []
         self._domain_parser = {}
         self.pre_validate = False
-        self.view_to_load = (attributes.get('mode') or ['tree', 'form'])[:]
+        mode = attributes.get('mode')
+        if mode is None:
+            mode = ['tree', 'form']
+        self.view_to_load = mode[:]
         if self.view_ids or self.view_to_load:
             self.switch_view()
         self.count_tab_domain()
