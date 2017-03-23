@@ -262,7 +262,7 @@ class ServerProxy(xmlrpclib.ServerProxy):
                 'id': id_,
                 'method': methodname,
                 'params': params,
-                }, cls=JSONEncoder)
+                }, cls=JSONEncoder, separators=(',', ':'))
 
         try:
             response = self.__transport.request(

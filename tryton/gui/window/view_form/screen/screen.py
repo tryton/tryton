@@ -797,8 +797,9 @@ class Screen(SignalEvent):
                     timestamp, paths, selected_paths)
                 if store and view.attributes.get('tree_state', False):
                     json_domain = self.get_tree_domain(parent)
-                    json_paths = json.dumps(paths)
-                    json_selected_path = json.dumps(selected_paths)
+                    json_paths = json.dumps(paths, separators=(',', ':'))
+                    json_selected_path = json.dumps(
+                        selected_paths, separators=(',', ':'))
                     try:
                         RPCExecute('model', 'ir.ui.view_tree_state', 'set',
                             self.model_name, json_domain, view.children_field,
@@ -813,7 +814,8 @@ class Screen(SignalEvent):
             domain = (self.domain + [(self.exclude_field, '=', parent)])
         else:
             domain = self.domain
-        json_domain = json.dumps(domain, cls=JSONEncoder)
+        json_domain = json.dumps(
+            domain, cls=JSONEncoder, separators=(',', ':'))
         return json_domain
 
     def load(self, ids, set_cursor=True, modified=False):
@@ -1131,27 +1133,30 @@ class Screen(SignalEvent):
     def get_url(self, name=''):
         query_string = []
         if self.domain:
-            query_string.append(('domain', json.dumps(self.domain,
-                        cls=JSONEncoder)))
+            query_string.append(('domain', json.dumps(
+                        self.domain, cls=JSONEncoder, separators=(',', ':'))))
         if self.context:
-            query_string.append(('context', json.dumps(self.context,
-                        cls=JSONEncoder)))
+            query_string.append(('context', json.dumps(
+                        self.context, cls=JSONEncoder, separators=(',', ':'))))
         if name:
-            query_string.append(('name', json.dumps(name)))
+            query_string.append(
+                ('name', json.dumps(name, separators=(',', ':'))))
         path = [rpc._DATABASE, 'model', self.model_name]
         view_ids = [v.view_id for v in self.views] + self.view_ids
         if self.current_view.view_type != 'form':
             search_string = self.screen_container.get_text()
             search_value = self.domain_parser.parse(search_string)
             if search_value:
-                query_string.append(('search_value', json.dumps(search_value,
-                            cls=JSONEncoder)))
+                query_string.append(('search_value', json.dumps(
+                            search_value, cls=JSONEncoder,
+                            separators=(',', ':'))))
         elif self.current_record and self.current_record.id > -1:
             path.append(str(self.current_record.id))
             i = view_ids.index(self.current_view.view_id)
             view_ids = view_ids[i:] + view_ids[:i]
         if view_ids:
-            query_string.append(('views', json.dumps(view_ids)))
+            query_string.append(('views', json.dumps(
+                        view_ids, separators=(',', ':'))))
         query_string = urllib.urlencode(query_string)
         return urlparse.urlunparse(('tryton',
                 '%s:%s' % (rpc._HOST, rpc._PORT),

@@ -774,7 +774,8 @@ class ViewTree(View):
 
         def _func_sel_get(model, path, iter_, data):
             value = model.get_value(iter_, 0)
-            data.append(json.dumps(value.get_path(model.group)))
+            data.append(json.dumps(
+                    value.get_path(model.group), separators=(',', ':')))
         data = []
         treeselection = treeview.get_selection()
         treeselection.selected_foreach(_func_sel_get, data)
