@@ -83,7 +83,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_lots_by_locations"/>
         </record>
         <record model="ir.action.keyword"
-                id="act_products_by_locations_keyword2">
+                id="act_lots_by_locations_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.location,-1</field>
+            <field name="action" ref="act_lots_by_locations"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_lots_by_locations_keyword2">
             <field name="keyword">form_relate</field>
             <field name="model">stock.location,-1</field>
             <field name="action" ref="act_lots_by_locations"/>
