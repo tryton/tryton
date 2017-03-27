@@ -45,13 +45,14 @@ class Category:
         states={
             'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
             },
-        depends=['parent'])
+        depends=['parent'],
+        help="Check to convert into accouting category.")
     account_parent = fields.Boolean('Use Parent\'s accounts',
         states={
             'invisible': ~Eval('accounting', False),
             },
         depends=['accounting'],
-        help='Use the accounts defined on the parent category')
+        help="Use the accounts defined on the parent category.")
     account_expense = fields.Property(fields.Many2One('account.account',
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
@@ -83,7 +84,7 @@ class Category:
             'invisible': ~Eval('accounting', False),
             },
         depends=['accounting'],
-        help='Use the taxes defined on the parent category')
+        help="Use the taxes defined on the parent category.")
     customer_taxes = fields.Many2Many('product.category-customer-account.tax',
         'category', 'tax', 'Customer Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -96,7 +97,8 @@ class Category:
                 | Eval('taxes_parent')
                 | ~Eval('accounting', False)),
             },
-        depends=['taxes_parent', 'accounting'])
+        depends=['taxes_parent', 'accounting'],
+        help="The taxes to apply when selling products of this category.")
     supplier_taxes = fields.Many2Many('product.category-supplier-account.tax',
         'category', 'tax', 'Supplier Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -109,7 +111,8 @@ class Category:
                 | Eval('taxes_parent')
                 | ~Eval('accounting', False)),
             },
-        depends=['taxes_parent', 'accounting'])
+        depends=['taxes_parent', 'accounting'],
+        help="The taxes to apply when purchasing products of this category.")
     customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
             'Customer Taxes Used'), 'get_taxes')
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
@@ -234,7 +237,7 @@ class Template:
             },
         depends=['accounts_category', 'taxes_category'])
     accounts_category = fields.Boolean('Use Category\'s accounts',
-            help='Use the accounts defined on the category')
+            help="Check to use the accounts defined on the account category.")
     account_expense = fields.Property(fields.Many2One('account.account',
             'Account Expense', domain=[
                 ('kind', '=', 'expense'),
@@ -244,8 +247,8 @@ class Template:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('accounts_category')),
                 },
-            help='This account will be used instead of the one defined'
-            ' on the category.', depends=['accounts_category']))
+            help=("The account to use instead of the one defined on the "
+                "account category."), depends=['accounts_category']))
     account_revenue = fields.Property(fields.Many2One('account.account',
             'Account Revenue', domain=[
                 ('kind', '=', 'revenue'),
@@ -255,14 +258,14 @@ class Template:
                 'invisible': (~Eval('context', {}).get('company')
                     | Eval('accounts_category')),
                 },
-            help='This account will be used instead of the one defined'
-            ' on the category.', depends=['accounts_category']))
+            help=("The account to use instead of the one defined on the "
+                "account category."), depends=['accounts_category']))
     account_expense_used = MissingFunction(fields.Many2One('account.account',
         'Account Expense Used'), 'missing_account', 'get_account')
     account_revenue_used = MissingFunction(fields.Many2One('account.account',
         'Account Revenue Used'), 'missing_account', 'get_account')
     taxes_category = fields.Boolean('Use Category\'s Taxes',
-            help='Use the taxes defined on the category')
+            help="Check to use the taxes defined on the account category.")
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
         'product', 'tax', 'Customer Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -273,7 +276,8 @@ class Template:
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_category')),
-            }, depends=['taxes_category'])
+            }, depends=['taxes_category'],
+        help="The taxes to apply when selling the product.")
     supplier_taxes = fields.Many2Many('product.template-supplier-account.tax',
         'product', 'tax', 'Supplier Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -284,7 +288,8 @@ class Template:
         states={
             'invisible': (~Eval('context', {}).get('company')
                 | Eval('taxes_category')),
-            }, depends=['taxes_category'])
+            }, depends=['taxes_category'],
+        help="The taxes to apply when purchasing the product.")
     customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
         'Customer Taxes Used'), 'get_taxes')
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
