@@ -84,16 +84,15 @@ class Template:
     account_asset_used = MissingFunction(
         fields.Many2One('account.account', 'Account Asset Used'),
         'missing_account', 'get_account')
-    depreciation_duration = fields.Property(fields.Numeric(
-            'Depreciation Duration', digits=(16, 0),
-            states={
-                'readonly': ~Eval('active', True),
-                'invisible': (~Eval('depreciable')
-                    | (Eval('type', '') != 'assets')
-                    | ~Eval('context', {}).get('company')),
-                },
-            depends=['active', 'depreciable', 'type'],
-            help='In months'))
+    depreciation_duration = fields.Integer(
+        "Depreciation Duration",
+        states={
+            'readonly': ~Eval('active', True),
+            'invisible': (~Eval('depreciable')
+                | (Eval('type', '') != 'assets')),
+            },
+        depends=['active', 'depreciable', 'type'],
+        help='In months')
 
 
 class Product:

@@ -61,7 +61,7 @@ Create an asset::
     >>> asset_template.account_revenue = revenue
     >>> asset_template.account_asset = asset_account
     >>> asset_template.account_depreciation = depreciation_account
-    >>> asset_template.depreciation_duration = Decimal(24)
+    >>> asset_template.depreciation_duration = 24
     >>> asset_template.save()
     >>> asset_product.template = asset_template
     >>> asset_product.save()

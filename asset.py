@@ -275,7 +275,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             self.start_date = invoice.invoice_date
             if invoice_line.product.depreciation_duration:
                 duration = relativedelta.relativedelta(
-                    months=int(invoice_line.product.depreciation_duration),
+                    months=invoice_line.product.depreciation_duration,
                     days=-1)
                 self.end_date = self.start_date + duration
 
