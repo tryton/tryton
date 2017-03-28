@@ -431,7 +431,7 @@ class Translation(ModelSQL, ModelView):
         if not Transaction().context.get(
                 'fuzzy_translation', False):
             for obj_id in ids:
-                trans = cls._translation_cache.get((lang, ttype, name, obj_id),
+                trans = cls._translation_cache.get((name, ttype, lang, obj_id),
                     -1)
                 if trans != -1:
                     translations[obj_id] = trans
@@ -469,7 +469,7 @@ class Translation(ModelSQL, ModelView):
                     translations[res_id] = value
         for res_id in ids:
             if res_id not in translations:
-                cls._translation_cache.set((lang, ttype, name, res_id), False)
+                cls._translation_cache.set((name, ttype, lang, res_id), False)
                 translations[res_id] = False
         return translations
 
@@ -664,7 +664,7 @@ class Translation(ModelSQL, ModelView):
             lang = unicode(lang)
             if source is not None:
                 source = unicode(source)
-            trans = cls._translation_cache.get((lang, ttype, name, source), -1)
+            trans = cls._translation_cache.get((name, ttype, lang, source), -1)
             if trans != -1:
                 res[(name, ttype, lang, source)] = trans
             else:
