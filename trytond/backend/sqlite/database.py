@@ -221,7 +221,8 @@ class Database(DatabaseInterface):
 
     _local = threading.local()
     _conn = None
-    flavor = Flavor(paramstyle='qmark', function_mapping=MAPPING)
+    flavor = Flavor(
+        paramstyle='qmark', function_mapping=MAPPING, null_ordering=False)
     IN_MAX = 200
 
     def __new__(cls, name=':memory:'):

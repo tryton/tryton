@@ -378,7 +378,9 @@ Class attributes are:
 
     where the first element of the tuple is a field name of the model and the
     second is the sort ordering as `ASC` for ascending or `DESC` for
-    descending.
+    descending. This second element may contain 'NULLS FIRST' or 'NULLS LAST'
+    to sort null values before or after non-null values. If neither is
+    specified the default behavior of the backend is used.
 
     In case the field used for the first element is a :class:`fields.Many2One`,
     it is also possible to use the dotted notation to sort on a specific field
@@ -687,14 +689,13 @@ Class methods:
 sequence_ordered
 ================
 
-.. method:: sequence_ordered([field_name, [field_label, [order, [null_first]]]])
+.. method:: sequence_ordered([field_name, [field_label, [order]]])
 
 Retuns a mixin_ class which defines the order of a :class:`ModelSQL` with an
 :class:`trytond.model.fields.Integer` field. field_name indicates the name of
 the field to be created and its default values is `sequence`. field_label
 defines the label which will be used by the field and defaults to `Sequence`.
-Order specifies the order direction and defaults to `ASC` and null first
-if the null values should be ordered first and defaults to `True`.
+Order specifies the order direction and defaults to `ASC NULLS FIRST`.
 
 
 .. _mixin: http://en.wikipedia.org/wiki/Mixin

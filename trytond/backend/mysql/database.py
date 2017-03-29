@@ -75,7 +75,9 @@ class Database(DatabaseInterface):
 
     _list_cache = None
     _list_cache_timestamp = None
-    flavor = Flavor(max_limit=18446744073709551610, function_mapping=MAPPING)
+    flavor = Flavor(
+        max_limit=18446744073709551610, function_mapping=MAPPING,
+        null_ordering=False)
 
     def connect(self):
         return self

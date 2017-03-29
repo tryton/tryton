@@ -4,7 +4,8 @@ import datetime
 from itertools import islice, izip, chain, ifilter
 from collections import OrderedDict
 
-from sql import Table, Column, Literal, Desc, Asc, Expression, Null
+from sql import (Table, Column, Literal, Desc, Asc, Expression, Null,
+    NullsFirst, NullsLast)
 from sql.functions import CurrentTimestamp, Extract
 from sql.conditionals import Coalesce
 from sql.operators import Or, And, Operator
@@ -1149,14 +1150,25 @@ class ModelSQL(ModelStorage):
             'DESC': Desc,
             'ASC': Asc,
             }
+        null_ordering_types = {
+            'NULLS FIRST': NullsFirst,
+            'NULLS LAST': NullsLast,
+            None: lambda _: _
+            }
         if order is None or order is False:
             order = cls._order
         for oexpr, otype in order:
             fname, _, extra_expr = oexpr.partition('.')
             field = cls._fields[fname]
-            Order = order_types[otype.upper()]
+            otype = otype.upper()
+            try:
+                otype, null_ordering = otype.split(' ', 1)
+            except ValueError:
+                null_ordering = None
+            Order = order_types[otype]
+            NullOrdering = null_ordering_types[null_ordering]
             forder = field.convert_order(oexpr, tables, cls)
-            order_by.extend((Order(o) for o in forder))
+            order_by.extend((NullOrdering(Order(o)) for o in forder))
 
         # construct a clause for the rules :
         domain = Rule.domain_get(cls.__name__, mode='read')

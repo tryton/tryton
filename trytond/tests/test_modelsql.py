@@ -133,6 +133,32 @@ class ModelSQLTestCase(unittest.TestCase):
             TargetModel.name.string, TargetModel.__doc__)
         self.assertEqual(err.message, msg)
 
+    @with_transaction()
+    def test_null_ordering(self):
+        'Test NULL ordering'
+        pool = Pool()
+        NullOrder = pool.get('test.null_order')
+
+        NullOrder.create([{
+                    'integer': 1,
+                    }, {
+                    'integer': 3,
+                    }, {
+                    'integer': None,
+                    }])
+        integers = NullOrder.search([], order=[('integer', 'ASC NULLS FIRST')])
+        self.assertListEqual([i.integer for i in integers], [None, 1, 3])
+
+        integers = NullOrder.search(
+            [], order=[('integer', 'DESC NULLS FIRST')])
+        self.assertListEqual([i.integer for i in integers], [None, 3, 1])
+
+        integers = NullOrder.search([], order=[('integer', 'ASC NULLS LAST')])
+        self.assertListEqual([i.integer for i in integers], [1, 3, None])
+
+        integers = NullOrder.search([], order=[('integer', 'DESC NULLS LAST')])
+        self.assertListEqual([i.integer for i in integers], [3, 1, None])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelSQLTestCase)

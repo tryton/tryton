@@ -13,6 +13,7 @@ __all__ = [
     'Union', 'UnionUnion',
     'Model4UnionTree1', 'Model4UnionTree2', 'UnionTree',
     'SequenceOrderedModel',
+    'NullOrder',
     ]
 
 
@@ -161,3 +162,9 @@ class UnionTree(UnionMixin, ModelSQL):
 class SequenceOrderedModel(sequence_ordered(), ModelSQL):
     'Sequence Ordered Model'
     __name__ = 'test.order.sequence'
+
+
+class NullOrder(ModelSQL):
+    "Null Order"
+    __name__ = 'test.null_order'
+    integer = fields.Integer('Integer')

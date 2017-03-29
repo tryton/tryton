@@ -178,6 +178,7 @@ def register():
         TestHistoryLine,
         FieldContextChild,
         FieldContextParent,
+        NullOrder,
         module='tests', type_='model')
     Pool.register(
         TestWizard,
