@@ -146,7 +146,8 @@ class Action(object):
                 search_value=search_value,
                 icon=(action.get('icon.rec_name') or ''),
                 tab_domain=tab_domain,
-                context_model=action['context_model'])
+                context_model=action['context_model'],
+                context_domain=action['context_domain'])
         elif action['type'] == 'ir.action.wizard':
             name = action.get('name', '')
             if action.get('keyword', 'form_action') == 'form_action':

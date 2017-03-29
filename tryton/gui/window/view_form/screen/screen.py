@@ -27,6 +27,7 @@ from tryton.common.domain_parser import DomainParser
 from tryton.common import RPCExecute, RPCException, MODELACCESS, \
     node_attributes, sur, RPCContextReload, warning
 from tryton.action import Action
+from tryton.pyson import PYSONDecoder
 import tryton.rpc as rpc
 
 _ = gettext.gettext
@@ -55,6 +56,7 @@ class Screen(SignalEvent):
         else:
             self.row_activate = attributes['row_activate']
         self.domain = attributes.get('domain', [])
+        self.context_domain = attributes.get('context_domain')
         self.size_limit = None
         self.views_preload = attributes.get('views_preload', {})
         self.model_name = model_name
@@ -249,6 +251,9 @@ class Screen(SignalEvent):
             self.new_group(context)
 
         domain = self.search_domain(search_string, True)
+        if self.context_domain:
+            decoder = PYSONDecoder(self.context)
+            domain = ['AND', domain, decoder.decode(self.context_domain)]
         tab_domain = self.screen_container.get_tab_domain()
         if tab_domain:
             domain = ['AND', domain, tab_domain]
