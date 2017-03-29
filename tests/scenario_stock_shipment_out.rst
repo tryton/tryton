@@ -143,7 +143,7 @@ Assign the shipment now::
     >>> effective_dates = [m.effective_date for m in
     ...     shipment_out.inventory_moves]
     >>> len(set(effective_dates))
-    2
+    1
     >>> planned_dates = [m.planned_date for m in
     ...     shipment_out.outgoing_moves]
     >>> len(set(planned_dates))

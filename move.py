@@ -628,9 +628,6 @@ class Move(Workflow, ModelSQL, ModelView):
     @Workflow.transition('assigned')
     def assign(cls, moves):
         cls.check_origin(moves)
-        for move in moves:
-            move.set_effective_date()
-        cls.save(moves)
 
     @classmethod
     @ModelView.button
@@ -918,7 +915,8 @@ class Move(Workflow, ModelSQL, ModelView):
             stock_date_start: if set return the delta of the stock between the
                 two dates, (ignored if stock_date_end is missing).
             stock_assign: if set compute also the assigned outgoing moves as
-                done.
+                done at the stock_date_end except for delta which is at the
+                planned date.
             forecast: if set compute the forecast quantity.
             stock_destinations: A list of location ids. If set, restrict the
                 computation to moves from and to those locations.
@@ -979,6 +977,9 @@ class Move(Workflow, ModelSQL, ModelView):
                         & (move.planned_date <= context['stock_date_end'])
                         )
                     | (move.effective_date <= context['stock_date_end'])
+                    | (move.state == (
+                            'assigned' if not context.get('stock_date_start')
+                            else ''))
                     )
                 )
             state_date_clause_in = state_date_clause(False)
@@ -997,6 +998,10 @@ class Move(Workflow, ModelSQL, ModelView):
                             & (move.planned_date <= today)
                             )
                         | (move.effective_date <= today)
+                        | (move.state == (
+                                'assigned'
+                                if not context.get('stock_date_start')
+                                else ''))
                         )
                     )
                 | (move.state.in_(['done', 'assigned', 'draft'])
@@ -1012,6 +1017,10 @@ class Move(Workflow, ModelSQL, ModelView):
                             (move.effective_date <= context['stock_date_end'])
                             & (move.effective_date >= today)
                             )
+                        | (move.state == (
+                                'assigned'
+                                if not context.get('stock_date_start')
+                                else ''))
                         )
                     )
                 )

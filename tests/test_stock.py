@@ -794,6 +794,99 @@ class StockTestCase(ModuleTestCase):
 
         self.assertTrue(Move.assign_try([]))
 
+    @with_transaction()
+    def test_products_by_location_assign(self):
+        "Test products by location for assignation"
+        pool = Pool()
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        today = datetime.date.today()
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template = Template(
+            name="Product",
+            type='goods',
+            list_price=Decimal(1),
+            cost_price=Decimal(1),
+            cost_price_method='fixed',
+            default_uom=unit,
+            )
+        template.save()
+        product, = Product.create([{'template': template.id}])
+
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        customer, = Location.search([('code', '=', 'CUS')])
+
+        company = create_company()
+        with set_company(company):
+            move_supplier, = Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 10,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'planned_date': today,
+                        'company': company.id,
+                        'unit_price': product.cost_price,
+                        'currency': company.currency.id,
+                        }])
+            move_customer, = Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 5,
+                        'from_location': storage.id,
+                        'to_location': customer.id,
+                        'planned_date': today + relativedelta(days=1),
+                        'company': company.id,
+                        'unit_price': product.list_price,
+                        'currency': company.currency.id,
+                        }])
+
+            Move.assign([move_supplier])
+            with Transaction().set_context(
+                    stock_date_end=today,
+                    stock_assign=True):
+                pbl = Product.products_by_location([storage.id], [product.id])
+                self.assertDictEqual(pbl, {})
+
+            Move.assign([move_customer])
+            with Transaction().set_context(
+                    stock_date_end=today,
+                    stock_assign=True):
+                pbl = Product.products_by_location([storage.id], [product.id])
+                self.assertDictEqual(pbl, {(storage.id, product.id): -5})
+
+            Move.do([move_supplier])
+            with Transaction().set_context(
+                    stock_date_end=today,
+                    stock_assign=True):
+                pbl = Product.products_by_location([storage.id], [product.id])
+                self.assertDictEqual(pbl, {(storage.id, product.id): 5})
+
+            with Transaction().set_context(
+                    stock_date_end=today + relativedelta(days=1),
+                    stock_assign=True):
+                pbl = Product.products_by_location([storage.id], [product.id])
+                self.assertDictEqual(pbl, {(storage.id, product.id): 5})
+
+            with Transaction().set_context(
+                    stock_date_start=today,
+                    stock_date_end=today,
+                    stock_assign=True):
+                pbl = Product.products_by_location([storage.id], [product.id])
+                self.assertDictEqual(pbl, {(storage.id, product.id): 10})
+
+            with Transaction().set_context(
+                    stock_date_start=today + relativedelta(days=1),
+                    stock_date_end=today + relativedelta(days=1),
+                    stock_assign=True):
+                pbl = Product.products_by_location([storage.id], [product.id])
+                self.assertDictEqual(pbl, {(storage.id, product.id): -5})
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
