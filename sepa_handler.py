@@ -62,7 +62,7 @@ class CAMT054(SEPAHandler):
             # Version 1 doesn't have NtryDtls but directly TxDtls
             details = element.find('./{%s}TxDtls' % tag.namespace)
         if details is None:
-            return
+            return []
         instr_id = details.find('.//{%s}InstrId' % tag.namespace)
         if instr_id is not None:
             payments = self.Payment.search([
