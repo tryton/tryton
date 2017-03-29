@@ -347,7 +347,7 @@ def selection(title, values, alwaysask=False):
     scrolledwindow.add(treeview)
     dialog.vbox.pack_start(scrolledwindow, True, True)
 
-    treeview.get_selection().set_mode('single')
+    treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
     cell = gtk.CellRendererText()
     column = gtk.TreeViewColumn("Widget", cell, text=0)
     treeview.append_column(column)
