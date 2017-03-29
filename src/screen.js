@@ -633,6 +633,7 @@
             this.current_view = null;
             this.current_record = null;
             this.domain = attributes.domain || [];
+            this.context_domain = attributes.context_domain;
             this.size_limit = null;
             if (this.attributes.limit === undefined) {
                 this.limit = Sao.config.limit;
@@ -812,6 +813,10 @@
             }
 
             var domain = this.search_domain(search_string, true);
+            if (this.context_domain) {
+                var decoder = new Sao.PYSON.Decoder(this.context);
+                domain = ['AND', domain, decoder.decode(this.context_domain)];
+            }
             var tab_domain = this.screen_container.get_tab_domain();
             if (!jQuery.isEmptyObject(tab_domain)) {
                 domain = ['AND', domain, tab_domain];
