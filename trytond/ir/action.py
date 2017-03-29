@@ -697,6 +697,9 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     order = fields.Char('Order Value')
     res_model = fields.Char('Model')
     context_model = fields.Char('Context Model')
+    context_domain = fields.Char(
+        "Context Domain",
+        help="Part of the domain that will be evaluated on each refresh")
     act_window_views = fields.One2Many('ir.action.act_window.view',
             'act_window', 'Views')
     views = fields.Function(fields.Binary('Views'), 'get_views')
