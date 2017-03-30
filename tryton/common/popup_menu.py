@@ -61,7 +61,8 @@ def populate(menu, model, record, title='', field=None):
 
     def edit(menuitem):
         with Window(hide_current=True, allow_similar=True):
-            Window.create(field.attrs.get('view_ids'), model, id_(record),
+            Window.create(
+                field.attrs.get('view_ids', '').split(','), model, id_(record),
                 mode=['form'])
 
     if title:
