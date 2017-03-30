@@ -330,6 +330,9 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     True)
                 res[field]['delete'] = accesses.get(field, {}).get('delete',
                     True)
+            filter_ = getattr(cls._fields[field], 'filter', None)
+            if filter_:
+                res[field]['domain'] = ['AND', res[field]['domain'], filter_]
 
             # convert attributes into pyson
             for attr in ('states', 'domain', 'context', 'digits', 'size',

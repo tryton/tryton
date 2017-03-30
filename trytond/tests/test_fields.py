@@ -2488,6 +2488,34 @@ class FieldsTestCase(unittest.TestCase):
                     }])
 
     @with_transaction()
+    def test_one2many_filter(self):
+        'Test one2many with filter'
+        pool = Pool()
+        One2ManyFilter = pool.get('test.one2many_filter')
+
+        filtered, = One2ManyFilter.create([{
+                    'targets': [('create', [
+                                {'value': x} for x in range(4)])],
+                    }])
+        self.assertEqual(len(filtered.targets), 4)
+        filtered_target, = filtered.filtered_targets
+        self.assertEqual(filtered_target.value, 3)
+
+    @with_transaction()
+    def test_one2many_filter_fomain(self):
+        'Test one2many with filter and domain'
+        pool = Pool()
+        One2ManyFilterDomain = pool.get('test.one2many_filter_domain')
+
+        filtered, = One2ManyFilterDomain.create([{
+                    'targets': [('create', [
+                                {'value': x} for x in range(4)])],
+                    }])
+        self.assertEqual(len(filtered.targets), 4)
+        filtered_target, = filtered.filtered_targets
+        self.assertEqual(filtered_target.value, 3)
+
+    @with_transaction()
     def test_many2many(self):
         'Test Many2Many'
         pool = Pool()
@@ -2708,6 +2736,36 @@ class FieldsTestCase(unittest.TestCase):
                         ]),
                 ])
         self.assertEqual(result, [record])
+
+    @with_transaction()
+    def test_many2many_filter(self):
+        'Test many2many with filter'
+        pool = Pool()
+        Many2ManyFilter = pool.get('test.many2many_filter')
+
+        filtered, = Many2ManyFilter.create([{
+                    'targets': [('create', [
+                                {'value': x} for x in range(4)])],
+                    }])
+        self.assertEqual(len(filtered.targets), 4)
+        filtered_target, = filtered.filtered_targets
+        self.assertEqual(filtered_target.value, 3)
+        or_filtered_target, = filtered.or_filtered_targets
+        self.assertEqual(or_filtered_target.value, 3)
+
+    @with_transaction()
+    def test_many2many_filter_domain(self):
+        'Test many2many with filter and domain'
+        pool = Pool()
+        Many2ManyFilterDomain = pool.get('test.many2many_filter_domain')
+
+        filtered, = Many2ManyFilterDomain.create([{
+                    'targets': [('create', [
+                                {'value': x} for x in range(4)])],
+                    }])
+        self.assertEqual(len(filtered.targets), 4)
+        filtered_target, = filtered.filtered_targets
+        self.assertEqual(filtered_target.value, 3)
 
     @with_transaction()
     def test_many2many_add_to_list(self):

@@ -19,8 +19,8 @@ class One2Many(Field):
 
     def __init__(self, model_name, field, string='', add_remove=None,
             order=None, datetime_field=None, size=None, help='',
-            required=False, readonly=False, domain=None, states=None,
-            on_change=None, on_change_with=None, depends=None,
+            required=False, readonly=False, domain=None, filter=None,
+            states=None, on_change=None, on_change_with=None, depends=None,
             context=None, loading='lazy'):
         '''
         :param model_name: The name of the target model.
@@ -33,6 +33,7 @@ class One2Many(Field):
             allowing to specify the order of result.
         :param datetime_field: The name of the field that contains the datetime
             value to read the target records.
+        :param filter: A domain to filter target records.
         '''
         if datetime_field:
             if depends:
@@ -51,6 +52,8 @@ class One2Many(Field):
         self.datetime_field = datetime_field
         self.__size = None
         self.size = size
+        self.__filter = None
+        self.filter = filter
 
     __init__.__doc__ += Field.__init__.__doc__
 
@@ -73,6 +76,16 @@ class One2Many(Field):
 
     size = property(_get_size, _set_size)
 
+    @property
+    def filter(self):
+        return self.__filter
+
+    @filter.setter
+    def filter(self, value):
+        if value is not None:
+            domain_validate(value)
+        self.__filter = value
+
     def get(self, ids, model, name, values=None):
         '''
         Return target records ordered.
@@ -91,6 +104,8 @@ class One2Many(Field):
                 clause = [(self.field, 'in', references)]
             else:
                 clause = [(self.field, 'in', list(sub_ids))]
+            if self.filter:
+                clause.append(self.filter)
             targets.append(Relation.search(clause, order=self.order))
         targets = list(chain(*targets))
 

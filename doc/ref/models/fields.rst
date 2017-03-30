@@ -623,6 +623,11 @@ This field accepts as written value a list of tuples like this:
     client will allow to add/remove existing records instead of only
     create/delete.
 
+.. attribute:: One2Many.filter
+
+    A :ref:`domain <topics-domain>` that is not a constraint but only a
+    filter on the records.
+
 .. attribute:: One2Many.order
 
     A list of tuple defining the default order of the records like for
@@ -691,6 +696,10 @@ This field accepts as written value a list of tuples like the :class:`One2Many`.
 
     An alias to the :attr:`domain` for compatibility with the :class:`One2Many`.
 
+.. attribute:: Many2Many.filter
+
+    Same as :attr:`One2Many.filter`
+
 Instance methods:
 
 .. method:: Many2Many.get_target()
@@ -712,6 +721,10 @@ A one-to-one relation field.
 .. attribute:: One2One.datetime_field
 
     Same as :attr:`Many2One.datetime_field`
+
+.. attribute:: One2MOne.filter
+
+    Same as :attr:`One2Many.filter`
 
 Instance methods:
 

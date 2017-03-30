@@ -1,3 +1,4 @@
+* Add filter to xxx2Many fields
 * Add NULLS ordering
 * Add context domain on ir.action.act_window
 * Allow None limit in action window
