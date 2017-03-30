@@ -14,7 +14,7 @@ There are 4 types of invoice: *Invoice*, *Supplier Invoice*, *Credit Note* and
 - Tax Identifier: The tax identifier that will be printed on the invoice
   (By default the first tax identifier of the company).
 - Number: The invoice number set on validation for supplier invoices and on
-  posting for others using the sequence defined on the period or fiscal year.
+  posting for others using the sequence defined on the fiscalyear.
 - Reference: The optional external reference of the invoice.
 - Party: The party for which or from which the invoice is issued.
 - Invoice Address: The address of the party.
@@ -124,6 +124,17 @@ A wizard is provided to test the behaviour of the payment term. It display
 computed terms base on an amount and a date.
 
 .. note:: The last line of payment term must be a remainder.
+
+
+Fiscal Year Sequences
+*********************
+
+The sequence used to compute the invoice number is retrieved from the
+fiscalyear sequences model. At least one record must be defined for each
+fiscalyear. Additional criteria can be used like:
+
+* By period
+
 
 Configuration
 *************

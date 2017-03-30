@@ -5,14 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath
         expr="/form/notebook/page[@id='sequences']/field[@name='post_move_sequence']"
         position="after">
-        <newline/>
-        <label name="out_invoice_sequence"/>
-        <field name="out_invoice_sequence"/>
-        <label name="in_invoice_sequence"/>
-        <field name="in_invoice_sequence"/>
-        <label name="out_credit_note_sequence"/>
-        <field name="out_credit_note_sequence"/>
-        <label name="in_credit_note_sequence"/>
-        <field name="in_credit_note_sequence"/>
+        <field name="invoice_sequences" colspan="4" mode="form,tree"
+            view_ids="account_invoice.invoice_sequence_view_form,account_invoice.invoice_sequence_view_list_sequence"/>
     </xpath>
 </data>

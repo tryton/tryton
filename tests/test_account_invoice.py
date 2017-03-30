@@ -16,14 +16,19 @@ from trytond.modules.currency.tests import create_currency
 def set_invoice_sequences(fiscalyear):
     pool = Pool()
     Sequence = pool.get('ir.sequence.strict')
+    InvoiceSequence = pool.get('account.fiscalyear.invoice_sequence')
 
     sequence = Sequence(name=fiscalyear.name, code='account.invoice')
     sequence.company = fiscalyear.company
     sequence.save()
-    for type_ in ['out', 'in']:
-        for invoice in ['invoice', 'credit_note']:
-            name = '%s_%s_sequence' % (type_, invoice)
-            setattr(fiscalyear, name, sequence)
+    fiscalyear.invoice_sequences = []
+    invoice_sequence = InvoiceSequence()
+    invoice_sequence.fiscalyear = fiscalyear
+    invoice_sequence.in_invoice_sequence = sequence
+    invoice_sequence.in_credit_note_sequence = sequence
+    invoice_sequence.out_invoice_sequence = sequence
+    invoice_sequence.out_credit_note_sequence = sequence
+    invoice_sequence.save()
     return fiscalyear
 
 

@@ -12,10 +12,11 @@ def set_fiscalyear_invoice_sequences(fiscalyear, config=None):
     invoice_seq = SequenceStrict(name=fiscalyear.name, code='account.invoice',
         company=fiscalyear.company)
     invoice_seq.save()
-    fiscalyear.out_invoice_sequence = invoice_seq
-    fiscalyear.in_invoice_sequence = invoice_seq
-    fiscalyear.out_credit_note_sequence = invoice_seq
-    fiscalyear.in_credit_note_sequence = invoice_seq
+    seq, = fiscalyear.invoice_sequences
+    seq.out_invoice_sequence = invoice_seq
+    seq.in_invoice_sequence = invoice_seq
+    seq.out_credit_note_sequence = invoice_seq
+    seq.in_credit_note_sequence = invoice_seq
     return fiscalyear
 
 

@@ -214,9 +214,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'missing_tax_line2': (
                     'Invoice "%s" has taxes on invoice lines '
                     'that are not in the invoice.\nRe-compute the invoice.'),
-                'no_invoice_sequence': ('There is no invoice sequence for '
-                    'invoice "%(invoice)s" on the period/fiscal year '
-                    '"%(period)s".'),
+                'no_invoice_sequence': ('Missing invoice sequence for '
+                    'invoice "%(invoice)s on fiscalyear "%(fiscalyear)s"".'),
                 'modify_invoice': ('You can not modify invoice "%s" because '
                     'it is posted, paid or cancelled.'),
                 'same_debit_account': ('The debit account on journal '
@@ -257,6 +256,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'invisible': (~Eval('state').in_(['draft', 'validated'])
                         & ~((Eval('state') == 'posted')
                             & (Eval('type') == 'in'))),
+                    'help': 'Cancel the invoice',
                     },
                 'draft': {
                     'invisible': (~Eval('state').in_(['cancel', 'validated'])
@@ -984,8 +984,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Set number to the invoice
         '''
         pool = Pool()
-        Period = pool.get('account.period')
-        Sequence = pool.get('ir.sequence.strict')
         Date = pool.get('ir.date')
 
         for invoice in invoices:
@@ -999,33 +997,49 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if invoice.number:
                 continue
 
-            test_state = True
-            if invoice.type == 'in':
-                test_state = False
-
-            accounting_date = invoice.accounting_date or invoice.invoice_date
-            period_id = Period.find(invoice.company.id,
-                date=accounting_date, test_state=test_state)
-            period = Period(period_id)
-            invoice_type = invoice.type
-            if (all(l.amount < 0 for l in invoice.lines if l.product)
-                    and invoice.total_amount < 0):
-                invoice_type += '_credit_note'
-            else:
-                invoice_type += '_invoice'
-            sequence = period.get_invoice_sequence(invoice_type)
-            if not sequence:
-                cls.raise_user_error('no_invoice_sequence', {
-                        'invoice': invoice.rec_name,
-                        'period': period.rec_name,
-                        })
-            with Transaction().set_context(
-                    date=invoice.invoice_date or Date.today()):
-                number = Sequence.get_id(sequence.id)
-                invoice.number = number
-                if not invoice.invoice_date and invoice.type == 'out':
-                    invoice.invoice_date = Transaction().context['date']
+            if not invoice.invoice_date and invoice.type == 'out':
+                invoice.invoice_date = Date.today()
+            invoice.number = invoice.get_next_number()
         cls.save(invoices)
+
+    def get_next_number(self, pattern=None):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence.strict')
+        Period = pool.get('account.period')
+
+        if pattern is None:
+            pattern = {}
+        else:
+            pattern = pattern.copy()
+
+        period_id = Period.find(
+            self.company.id, date=self.accounting_date or self.invoice_date,
+            test_state=self.type != 'in')
+
+        period = Period(period_id)
+        fiscalyear = period.fiscalyear
+        pattern.setdefault('company', self.company.id)
+        pattern.setdefault('fiscalyear', fiscalyear.id)
+        pattern.setdefault('period', period.id)
+        invoice_type = self.type
+        if (all(l.amount < 0 for l in self.lines if l.product)
+                and self.total_amount < 0):
+            invoice_type += '_credit_note'
+        else:
+            invoice_type += '_invoice'
+
+        for invoice_sequence in fiscalyear.invoice_sequences:
+            if invoice_sequence.match(pattern):
+                sequence = getattr(
+                    invoice_sequence, '%s_sequence' % invoice_type)
+                break
+        else:
+            self.raise_user_error('no_invoice_sequence', {
+                    'invoice': self.rec_name,
+                    'fiscalyear': fiscalyear.rec_name,
+                    })
+        with Transaction().set_context(date=self.invoice_date):
+            return Sequence.get_id(sequence.id)
 
     @classmethod
     def _tax_identifier_types(cls):

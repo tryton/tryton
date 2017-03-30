@@ -1,30 +1,127 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from sql import Literal
+from sql.conditionals import Coalesce
+
+from trytond.model import (fields, ModelView, ModelSQL, MatchMixin,
+    sequence_ordered)
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
+from trytond import backend
 
 __all__ = ['FiscalYear',
-    'Period', 'Move', 'Reconciliation']
+    'Period', 'Move', 'Reconciliation', 'InvoiceSequence']
 
 
 class FiscalYear:
     __metaclass__ = PoolMeta
     __name__ = 'account.fiscalyear'
-    out_invoice_sequence = fields.Many2One('ir.sequence.strict',
-        'Customer Invoice Sequence', required=True,
+    invoice_sequences = fields.One2Many('account.fiscalyear.invoice_sequence',
+        'fiscalyear', "Invoice Sequences")
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        pool = Pool()
+        Sequence = pool.get('account.fiscalyear.invoice_sequence')
+        sequence = Sequence.__table__()
+        sql_table = cls.__table__()
+
+        super(FiscalYear, cls).__register__(module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
+
+        # Migration from 4.2: Use Match pattern for sequences
+        if (table.column_exist('in_invoice_sequence')
+                and table.column_exist('in_credit_note_sequence')
+                and table.column_exist('out_invoice_sequence')
+                and table.column_exist('out_credit_note_sequence')):
+            cursor.execute(*sequence.insert(columns=[
+                        sequence.sequence, sequence.fiscalyear,
+                        sequence.out_invoice_sequence,
+                        sequence.out_credit_note_sequence,
+                        sequence.in_invoice_sequence,
+                        sequence.in_credit_note_sequence],
+                    values=sql_table.select(
+                        Literal(20), sql_table.id,
+                        sql_table.out_invoice_sequence,
+                        sql_table.out_credit_note_sequence,
+                        sql_table.in_invoice_sequence,
+                        sql_table.in_credit_note_sequence)))
+            table.drop_column('out_invoice_sequence')
+            table.drop_column('out_credit_note_sequence')
+            table.drop_column('in_invoice_sequence')
+            table.drop_column('in_credit_note_sequence')
+
+    @staticmethod
+    def default_invoice_sequences():
+        if Transaction().user == 0:
+            return []
+        return [{}]
+
+
+class Period:
+    __metaclass__ = PoolMeta
+    __name__ = 'account.period'
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        pool = Pool()
+        Sequence = pool.get('account.fiscalyear.invoice_sequence')
+        FiscalYear = pool.get('account.fiscalyear')
+        sequence = Sequence.__table__()
+        fiscalyear = FiscalYear.__table__()
+        sql_table = cls.__table__()
+
+        super(Period, cls).__register__(module_name)
+        cursor = Transaction().connection.cursor()
+        table = TableHandler(cls, module_name)
+
+        # Migration from 4.2: Use Match pattern for sequences
+        if (table.column_exist('in_invoice_sequence')
+                and table.column_exist('in_credit_note_sequence')
+                and table.column_exist('out_invoice_sequence')
+                and table.column_exist('out_credit_note_sequence')):
+            cursor.execute(*sequence.insert(columns=[
+                        sequence.sequence, sequence.fiscalyear,
+                        sequence.period, sequence.out_invoice_sequence,
+                        sequence.out_credit_note_sequence,
+                        sequence.in_invoice_sequence,
+                        sequence.in_credit_note_sequence],
+                    values=sql_table.join(fiscalyear,
+                            condition=(fiscalyear.id == sql_table.fiscalyear)
+                        ).select(
+                        Literal(10), sql_table.fiscalyear,
+                        sql_table.id,
+                        Coalesce(sql_table.out_invoice_sequence,
+                            fiscalyear.out_invoice_sequence),
+                        Coalesce(sql_table.out_credit_note_sequence,
+                            fiscalyear.out_credit_note_sequence),
+                        Coalesce(sql_table.in_invoice_sequence,
+                            fiscalyear.in_invoice_sequence),
+                        Coalesce(sql_table.in_credit_note_sequence,
+                            fiscalyear.in_credit_note_sequence))))
+            table.drop_column('out_invoice_sequence')
+            table.drop_column('out_credit_note_sequence')
+            table.drop_column('in_invoice_sequence')
+            table.drop_column('in_credit_note_sequence')
+
+
+class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
+    'Invoice Sequence'
+    __name__ = 'account.fiscalyear.invoice_sequence'
+    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
+        required=True, ondelete='CASCADE')
+    period = fields.Many2One('account.period', 'Period',
         domain=[
-            ('code', '=', 'account.invoice'),
-            ['OR',
-                ('company', '=', Eval('company')),
-                ('company', '=', None),
-                ],
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('type', '=', 'standard'),
             ],
-        context={
-            'code': 'account.invoice',
-            'company': Eval('company'),
-            },
-        depends=['company'])
+        depends=['fiscalyear'])
+    company = fields.Function(fields.Many2One('company.company', 'Company',),
+        'on_change_with_company', searcher='search_company')
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Supplier Invoice Sequence', required=True,
         domain=[
@@ -34,10 +131,26 @@ class FiscalYear:
                 ('company', '=', None),
                 ],
             ],
-        context={
-            'code': 'account.invoice',
-            'company': Eval('company'),
-            },
+        depends=['company'])
+    in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
+        'Supplier Credit Note Sequence', required=True,
+        domain=[
+            ('code', '=', 'account.invoice'),
+            ['OR',
+                ('company', '=', Eval('company')),
+                ('company', '=', None),
+                ],
+            ],
+        depends=['company'])
+    out_invoice_sequence = fields.Many2One('ir.sequence.strict',
+        'Customer Invoice Sequence', required=True,
+        domain=[
+            ('code', '=', 'account.invoice'),
+            ['OR',
+                ('company', '=', Eval('company')),
+                ('company', '=', None),
+                ],
+            ],
         depends=['company'])
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Credit Note Sequence', required=True,
@@ -48,201 +161,21 @@ class FiscalYear:
                 ('company', '=', None),
                 ],
             ],
-        context={
-            'code': 'account.invoice',
-            'company': Eval('company'),
-            }, depends=['company'])
-    in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
-        'Supplier Credit Note Sequence', required=True,
-        domain=[
-            ('code', '=', 'account.invoice'),
-            ['OR',
-                ('company', '=', Eval('company')),
-                ('company', '=', None),
-                ],
-            ],
-        context={
-            'code': 'account.invoice',
-            'company': Eval('company'),
-            }, depends=['company'])
+        depends=['company'])
 
     @classmethod
     def __setup__(cls):
-        super(FiscalYear, cls).__setup__()
-        cls._error_messages.update({
-                'change_invoice_sequence': ('You can not change '
-                    'invoice sequence in fiscal year "%s" because there are '
-                    'already posted invoices in this fiscal year.'),
-                'different_invoice_sequence': ('Fiscal year "%(first)s" and '
-                    '"%(second)s" have the same invoice sequence.'),
-                })
+        super(InvoiceSequence, cls).__setup__()
+        cls._order.insert(0, ('fiscalyear', 'ASC'))
+
+    @fields.depends('fiscalyear')
+    def on_change_with_company(self, name=None):
+        if self.fiscalyear:
+            return self.fiscalyear.company.id
 
     @classmethod
-    def validate(cls, years):
-        super(FiscalYear, cls).validate(years)
-        for year in years:
-            year.check_invoice_sequences()
-
-    def check_invoice_sequences(self):
-        for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                'out_credit_note_sequence', 'in_credit_note_sequence'):
-            fiscalyears = self.search([
-                    (sequence, '=', getattr(self, sequence).id),
-                    ('id', '!=', self.id),
-                    ])
-            if fiscalyears:
-                self.raise_user_error('different_invoice_sequence', {
-                        'first': self.rec_name,
-                        'second': fiscalyears[0].rec_name,
-                        })
-
-    @classmethod
-    def write(cls, *args):
-        Invoice = Pool().get('account.invoice')
-
-        actions = iter(args)
-        for fiscalyears, values in zip(actions, actions):
-            for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                    'out_credit_note_sequence', 'in_credit_note_sequence'):
-                    if not values.get(sequence):
-                        continue
-                    for fiscalyear in fiscalyears:
-                        if (getattr(fiscalyear, sequence)
-                                and (getattr(fiscalyear, sequence).id !=
-                                    values[sequence])):
-                            if Invoice.search([
-                                        ('invoice_date', '>=',
-                                            fiscalyear.start_date),
-                                        ('invoice_date', '<=',
-                                            fiscalyear.end_date),
-                                        ('number', '!=', None),
-                                        ('type', '=', sequence[:-9]),
-                                        ]):
-                                cls.raise_user_error('change_invoice_sequence',
-                                    (fiscalyear.rec_name,))
-        super(FiscalYear, cls).write(*args)
-
-
-class Period:
-    __metaclass__ = PoolMeta
-    __name__ = 'account.period'
-    out_invoice_sequence = fields.Many2One('ir.sequence.strict',
-        'Customer Invoice Sequence',
-        domain=[('code', '=', 'account.invoice')],
-        context={'code': 'account.invoice'},
-        states={
-            'invisible': Eval('type') != 'standard',
-            },
-        depends=['type'])
-    in_invoice_sequence = fields.Many2One('ir.sequence.strict',
-        'Supplier Invoice Sequence',
-        domain=[('code', '=', 'account.invoice')],
-        context={'code': 'account.invoice'},
-        states={
-            'invisible': Eval('type') != 'standard',
-            },
-        depends=['type'])
-    out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
-        'Customer Credit Note Sequence',
-        domain=[('code', '=', 'account.invoice')],
-        context={'code': 'account.invoice'},
-        states={
-            'invisible': Eval('type') != 'standard',
-            },
-        depends=['type'])
-    in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
-        'Supplier Credit Note Sequence',
-        domain=[('code', '=', 'account.invoice')],
-        context={'code': 'account.invoice'},
-        states={
-            'invisible': Eval('type') != 'standard',
-            },
-        depends=['type'])
-
-    @classmethod
-    def __setup__(cls):
-        super(Period, cls).__setup__()
-        cls._error_messages.update({
-                'change_invoice_sequence': ('You can not change the invoice '
-                    'sequence in period "%s" because there is already an '
-                    'invoice posted in this period'),
-                'different_invoice_sequence': ('Period "%(first)s" and '
-                    '"%(second)s" have the same invoice sequence.'),
-                'different_period_fiscalyear_company': ('Period "%(period)s" '
-                    'must have the same company as its fiscal year '
-                    '(%(fiscalyear)s).'),
-                })
-
-    @classmethod
-    def validate(cls, periods):
-        super(Period, cls).validate(periods)
-        for period in periods:
-            period.check_invoice_sequences()
-
-    def check_invoice_sequences(self):
-        for sequence_name in ('out_invoice_sequence', 'in_invoice_sequence',
-                'out_credit_note_sequence', 'in_credit_note_sequence'):
-            sequence = getattr(self, sequence_name)
-            if not sequence:
-                continue
-            periods = self.search([
-                    (sequence_name, '=', sequence.id),
-                    ('fiscalyear', '!=', self.fiscalyear.id),
-                    ])
-            if periods:
-                self.raise_user_error('different_invoice_sequence', {
-                        'first': self.rec_name,
-                        'second': periods[0].rec_name,
-                        })
-            if (sequence.company
-                    and sequence.company != self.fiscalyear.company):
-                self.raise_user_error('different_period_fiscalyear_company', {
-                        'period': self.rec_name,
-                        'fiscalyear': self.fiscalyear.rec_name,
-                        })
-
-    @classmethod
-    def create(cls, vlist):
-        FiscalYear = Pool().get('account.fiscalyear')
-        vlist = [v.copy() for v in vlist]
-        for vals in vlist:
-            if vals.get('fiscalyear'):
-                fiscalyear = FiscalYear(vals['fiscalyear'])
-                for sequence in ('out_invoice_sequence', 'in_invoice_sequence',
-                        'out_credit_note_sequence', 'in_credit_note_sequence'):
-                    if not vals.get(sequence):
-                        vals[sequence] = getattr(fiscalyear, sequence).id
-        return super(Period, cls).create(vlist)
-
-    @classmethod
-    def write(cls, *args):
-        Invoice = Pool().get('account.invoice')
-
-        actions = iter(args)
-        for periods, values in zip(actions, actions):
-            for sequence_name in ('out_invoice_sequence',
-                    'in_invoice_sequence', 'out_credit_note_sequence',
-                    'in_credit_note_sequence'):
-                if not values.get(sequence_name):
-                    continue
-                for period in periods:
-                    sequence = getattr(period, sequence_name)
-                    if (sequence and sequence.id != values[sequence_name]):
-                        if Invoice.search([
-                                    ('invoice_date', '>=', period.start_date),
-                                    ('invoice_date', '<=', period.end_date),
-                                    ('number', '!=', None),
-                                    ('type', '=', sequence_name[:-9]),
-                                    ]):
-                            cls.raise_user_error('change_invoice_sequence',
-                                (period.rec_name,))
-        super(Period, cls).write(*args)
-
-    def get_invoice_sequence(self, invoice_type):
-        sequence = getattr(self, invoice_type + '_sequence')
-        if sequence:
-            return sequence
-        return getattr(self.fiscalyear, invoice_type + '_sequence')
+    def search_company(cls, name, clause):
+        return [('fiscalyear.%s' % name,) + tuple(clause[1:])]
 
 
 class Move:

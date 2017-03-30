@@ -26,8 +26,11 @@ def register():
         CreditInvoiceStart,
         Address,
         Party,
-        FiscalYear,
+        InvoiceSequence,
+        # Match pattern migration fallbacks to Fiscalyear values so Period
+        # must be registered before Fiscalyear
         Period,
+        FiscalYear,
         Move,
         Reconciliation,
         module='account_invoice', type_='model')
