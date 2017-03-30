@@ -221,6 +221,18 @@
                     }
                 };
             }
+            var colors = {};
+            for (var i = 0; i < this.yfields.length; i++) {
+                var field = this.yfields[i];
+                if (field.color) {
+                    colors[field.name] = field.color;
+                }
+            }
+            c3_config.data.color = function(color, column) {
+                // column is an object when called for legend
+                var name = column.id || column;
+                return colors[name] || color;
+            };
             return c3_config;
         },
         action: function(data, element) {
