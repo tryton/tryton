@@ -449,7 +449,6 @@ class ViewTree(View):
         return cls.WIDGETS[name]
 
     def set_column_widget(self, column, field, attributes, arrow=True):
-        tooltips = Tooltips()
         hbox = gtk.HBox(False, 2)
         label = gtk.Label(attributes['string'])
         if field and self.editable:
@@ -464,13 +463,15 @@ class ViewTree(View):
                     attrlist.change(pango.AttrStyle(pango.STYLE_ITALIC, 0, -1))
                 label.set_attributes(attrlist)
         label.show()
-        help = attributes['string']
+        help = None
         if field and field.attrs.get('help'):
-            help += '\n' + field.attrs['help']
+            help = field.attrs['help']
         elif attributes.get('help'):
-            help += '\n' + attributes['help']
-        tooltips.set_tip(label, help)
-        tooltips.enable()
+            help = attributes['help']
+        if help:
+            tooltips = Tooltips()
+            tooltips.set_tip(label, help)
+            tooltips.enable()
         if arrow:
             arrow_widget = gtk.Arrow(gtk.ARROW_NONE, gtk.SHADOW_NONE)
             arrow_widget.show()
