@@ -3,6 +3,7 @@
 from decimal import Decimal
 from itertools import chain
 
+from trytond import backend
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, If
 from trytond.model import Workflow, ModelView, fields, ModelSQL, \
@@ -13,7 +14,7 @@ from trytond.tools import grouped_slice
 
 from trytond.modules.product import price_digits
 
-__all__ = ['Configuration',
+__all__ = ['Configuration', 'ConfigurationSequence',
     'PurchaseRequisition', 'PurchaseRequisitionLine',
     'PurchaseRequest', 'HandlePurchaseCancellationException',
     'CreatePurchase', 'Purchase']
@@ -33,15 +34,64 @@ STATES = [
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'purchase.configuration'
-    purchase_requisition_sequence = fields.Property(
-        fields.Many2One(
-            'ir.sequence', 'Purchase Requisition Sequence',
+    purchase_requisition_sequence = fields.MultiValue(fields.Many2One(
+            'ir.sequence', "Purchase Requisition Sequence", required=True,
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'purchase.requisition'),
-                ],
-            required=True))
+                ]))
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'purchase_requisition_sequence':
+            return pool.get('purchase.configuration.sequence')
+        return super(Configuration, cls).multivalue_model(field)
+
+    @classmethod
+    def default_purchase_requisition_sequence(cls):
+        return cls.multivalue_model('purchase_requisition_sequence'
+            ).default_purchase_requisition_sequence()
+
+
+class ConfigurationSequence:
+    __metaclass__ = PoolMeta
+    __name__ = 'purchase.configuration.sequence'
+    purchase_requisition_sequence = fields.Many2One(
+        'ir.sequence', "Purchase Requisition Sequence", required=True,
+        domain=[
+            ('company', 'in', [Eval('company', -1), None]),
+            ('code', '=', 'purchase.requisition'),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+        if exist:
+            table = TableHandler(cls, module_name)
+            exist &= table.column_exist('purchase_requisition_sequence')
+
+        super(ConfigurationSequence, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('purchase_requisition_sequence')
+        value_names.append('purchase_requisition_sequence')
+        super(ConfigurationSequence, cls)._migrate_property(
+            field_names, value_names, fields)
+
+    @classmethod
+    def default_purchase_requisition_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id(
+            'purchase_requisition', 'sequence_purchase_requisition')
 
 
 class PurchaseRequisition(Workflow, ModelSQL, ModelView):

@@ -375,12 +375,4 @@ this repository contains the full copyright notices and license terms.
             <field name="inherit" ref="purchase.purchase_configuration_view_form"/>
         </record>
     </data>
-    <data noupdate="1">
-        <record model="ir.property" id="property_purchase_requisition_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'purchase.configuration'), ('name', '=', 'purchase_requisition_sequence')]"/>
-            <field name="value"
-                eval="'ir.sequence,' + str(ref('sequence_purchase_requisition'))"/>
-        </record>
-    </data>
 </tryton>
