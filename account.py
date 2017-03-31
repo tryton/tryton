@@ -1,54 +1,24 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pool import Pool, PoolMeta
-from trytond.model import fields
+from trytond.pool import PoolMeta
+from trytond.model import ModelSQL, ValueMixin, fields
 
 
-__all__ = ['Configuration', 'MoveLine']
+__all__ = ['Configuration', 'ConfigurationDefaultDunningProcedure', 'MoveLine']
+default_dunning_procedure = fields.Many2One(
+    'account.dunning.procedure', "Default Dunning Procedure")
 
 
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
-    default_dunning_procedure = fields.Function(fields.Many2One(
-            'account.dunning.procedure', 'Default Dunning Procedure'),
-        'get_dunning', setter='set_dunning')
+    default_dunning_procedure = fields.MultiValue(default_dunning_procedure)
 
-    def get_dunning(self, name):
-        pool = Pool()
-        Property = pool.get('ir.property')
-        ModelField = pool.get('ir.model.field')
-        dunning_field, = ModelField.search([
-                ('model.model', '=', 'party.party'),
-                ('name', '=', name[8:]),
-                ], limit=1)
-        properties = Property.search([
-                ('field', '=', dunning_field.id),
-                ('res', '=', None),
-                ], limit=1)
-        if properties:
-            prop, = properties
-            return prop.value.id
 
-    @classmethod
-    def set_dunning(cls, configurations, name, value):
-        pool = Pool()
-        Property = pool.get('ir.property')
-        ModelField = pool.get('ir.model.field')
-        dunning_field, = ModelField.search([
-                ('model.model', '=', 'party.party'),
-                ('name', '=', name[8:]),
-                ], limit=1)
-        properties = Property.search([
-                ('field', '=', dunning_field.id),
-                ('res', '=', None),
-                ])
-        Property.delete(properties)
-        if value:
-            Property.create([{
-                        'field': dunning_field.id,
-                        'value': 'account.dunning.procedure,%s' % value,
-                        }])
+class ConfigurationDefaultDunningProcedure(ModelSQL, ValueMixin):
+    "Account Configuration Default Dunning Procedure"
+    __name__ = 'account.configuration.default_dunning_procedure'
+    default_dunning_procedure = default_dunning_procedure
 
 
 class MoveLine:

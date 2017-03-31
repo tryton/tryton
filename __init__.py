@@ -15,7 +15,9 @@ def register():
         CreateDunningStart,
         ProcessDunningStart,
         Party,
+        PartyDunningProcedure,
         Configuration,
+        ConfigurationDefaultDunningProcedure,
         MoveLine,
         module='account_dunning', type_='model')
     Pool.register(
