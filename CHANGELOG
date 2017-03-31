@@ -1,3 +1,4 @@
+* Use generic SQL type in field and let backend determine the SQLType
 * Add filter to xxx2Many fields
 * Add NULLS ordering
 * Add context domain on ir.action.act_window

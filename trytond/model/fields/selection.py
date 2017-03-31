@@ -4,10 +4,9 @@ import warnings
 
 from sql.conditionals import Case
 
-from ... import backend
 from ...transaction import Transaction
 from ...tools import is_instance_method
-from .field import Field, SQLType
+from .field import Field
 from ...rpc import RPC
 
 
@@ -16,6 +15,7 @@ class Selection(Field):
     Define a selection field (``str``).
     '''
     _type = 'selection'
+    _sql_type = 'VARCHAR'
 
     def __init__(self, selection, string='', sort=True,
             selection_change_with=None, translate=True, help='',
@@ -54,12 +54,6 @@ class Selection(Field):
             instantiate = 0 if self.selection_change_with else None
             model.__rpc__.setdefault(
                 self.selection, RPC(instantiate=instantiate))
-
-    def sql_type(self):
-        db_type = backend.name()
-        if db_type == 'mysql':
-            return SQLType('CHAR', 'VARCHAR(255)')
-        return SQLType('VARCHAR', 'VARCHAR')
 
     def convert_order(self, name, tables, Model):
         if getattr(Model, 'order_%s' % name, None):

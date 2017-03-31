@@ -1,7 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import namedtuple
+
 DatabaseIntegrityError = None
 DatabaseOperationalError = None
+
+SQLType = namedtuple('SQLType', 'base type')
 
 
 class DatabaseInterface(object):
@@ -159,3 +163,11 @@ class DatabaseInterface(object):
     def has_window_functions(self):
         "Return if database supports window functions."
         return False
+
+    def sql_type(self, type_):
+        'Return the SQLType tuple corresponding to the SQL type'
+        pass
+
+    def sql_format(self, type_, value):
+        'Return value correctly casted into type_'
+        pass

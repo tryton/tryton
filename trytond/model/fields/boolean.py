@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from .field import Field, SQLType
+from .field import Field
 
 
 class Boolean(Field):
@@ -9,6 +9,7 @@ class Boolean(Field):
     Define a boolean field (``True`` or ``False``).
     '''
     _type = 'boolean'
+    _sql_type = 'BOOL'
 
     def __init__(self, string='', help='', readonly=False, domain=None,
             states=None, select=False, on_change=None, on_change_with=None,
@@ -19,9 +20,6 @@ class Boolean(Field):
             depends=depends, context=context, loading=loading)
 
     __init__.__doc__ = Field.__init__.__doc__
-
-    def sql_type(self):
-        return SQLType('BOOL', 'BOOL')
 
     def _domain_add_null(self, column, operator, value, expression):
         expression = super(Boolean, self)._domain_add_null(

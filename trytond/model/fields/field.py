@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import namedtuple
 import warnings
 from functools import wraps
 
-from sql import operators, Column, Literal, Select, CombiningQuery, Null
+from sql import (operators, Column, Literal, Select, CombiningQuery, Null,
+    Query, Expression)
 from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
 
+from trytond import backend
 from trytond.pyson import PYSON, PYSONEncoder, Eval
 from trytond.const import OPERATORS
 from trytond.transaction import Transaction
@@ -15,6 +16,8 @@ from trytond.pool import Pool
 from trytond.cache import LRUDictTransaction
 
 from ...rpc import RPC
+
+Database = backend.get('Database')
 
 
 def domain_validate(value):
@@ -161,6 +164,7 @@ SQL_OPERATORS = {
 
 class Field(object):
     _type = None
+    _sql_type = None
 
     def __init__(self, string='', help='', required=False, readonly=False,
             domain=None, states=None, select=False, on_change=None,
@@ -272,12 +276,17 @@ class Field(object):
             inst._values = {}
         inst._values[self.name] = value
 
-    @staticmethod
-    def sql_format(value):
-        return value
+    def sql_format(self, value):
+        if isinstance(value, (Query, Expression)):
+            return value
+
+        assert self._sql_type is not None
+        database = Transaction().database
+        return database.sql_format(self._sql_type, value)
 
     def sql_type(self):
-        return None
+        database = Transaction().database
+        return database.sql_type(self._sql_type)
 
     def sql_column(self, table):
         return Column(table, self.name)
@@ -438,5 +447,3 @@ class FieldTranslate(Field):
 
         return [Coalesce(NullIf(translation.value, ''),
                 self.sql_column(table))]
-
-SQLType = namedtuple('SQLType', 'base type')

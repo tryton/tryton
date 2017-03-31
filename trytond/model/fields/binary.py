@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Query, Expression, Column, Null
+from sql import Column, Null
 
-from .field import Field, SQLType
+from .field import Field
 from ...transaction import Transaction
-from ... import backend
 from ...tools import grouped_slice, reduce_ids
 from ...filestore import filestore
 
@@ -14,6 +13,7 @@ class Binary(Field):
     Define a binary field (``bytes``).
     '''
     _type = 'binary'
+    _sql_type = 'BLOB'
     cast = bytearray if bytes == str else bytes
 
     def __init__(self, string='', help='', required=False, readonly=False,
@@ -116,21 +116,3 @@ class Binary(Field):
                 values = [self.sql_format(value)]
             cursor.execute(*table.update(columns, values,
                     where=reduce_ids(table.id, ids)))
-
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
-        db_type = backend.name()
-        if db_type == 'postgresql' and value is not None:
-            import psycopg2
-            return psycopg2.Binary(value)
-        return value
-
-    def sql_type(self):
-        db_type = backend.name()
-        if db_type == 'postgresql':
-            return SQLType('BYTEA', 'BYTEA')
-        elif db_type == 'mysql':
-            return SQLType('LONGBLOB', 'LONGBLOB')
-        return SQLType('BLOB', 'BLOB')

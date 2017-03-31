@@ -76,6 +76,9 @@ class One2Many(Field):
 
     size = property(_get_size, _set_size)
 
+    def sql_type(self):
+        return None
+
     @property
     def filter(self):
         return self.__filter

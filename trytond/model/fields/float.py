@@ -1,9 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Query, Expression
-
-from ... import backend
-from .field import Field, SQLType
+from .field import Field
 from ...pyson import PYSON
 
 
@@ -23,6 +20,7 @@ class Float(Field):
     Define a float field (``float``).
     '''
     _type = 'float'
+    _sql_type = 'FLOAT'
 
     def __init__(self, string='', digits=None, help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -50,19 +48,7 @@ class Float(Field):
 
     digits = property(_get_digits, _set_digits)
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if value is None:
             return None
         return float(value)
-
-    def sql_type(self):
-        db_type = backend.name()
-        if db_type == 'postgresql':
-            return SQLType('FLOAT8', 'FLOAT8')
-        elif db_type == 'mysql':
-            return SQLType('DOUBLE', 'DOUBLE(255, 15)')
-        else:
-            return SQLType('FLOAT', 'FLOAT')

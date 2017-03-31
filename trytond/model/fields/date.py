@@ -1,10 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from sql import Query, Expression
 
-from ... import backend
-from .field import Field, SQLType
+from .field import Field
 
 
 class Date(Field):
@@ -12,11 +10,9 @@ class Date(Field):
     Define a date field (``date``).
     '''
     _type = 'date'
+    _sql_type = 'DATE'
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if value is None:
             return None
         if isinstance(value, basestring):
@@ -31,15 +27,13 @@ class Date(Field):
             or value.time() == datetime.time())
         return value
 
-    def sql_type(self):
-        return SQLType('DATE', 'DATE')
-
 
 class DateTime(Field):
     '''
     Define a datetime field (``datetime``).
     '''
     _type = 'datetime'
+    _sql_type = 'DATETIME'
 
     def __init__(self, string='', format='%H:%M:%S', help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -56,10 +50,7 @@ class DateTime(Field):
 
     __init__.__doc__ += Field.__init__.__doc__
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if not value:
             return None
         if isinstance(value, basestring):
@@ -70,25 +61,15 @@ class DateTime(Field):
         assert(isinstance(value, datetime.datetime))
         return value.replace(microsecond=0)
 
-    def sql_type(self):
-        db_type = backend.name()
-        if db_type == 'sqlite':
-            return SQLType('TIMESTAMP', 'TIMESTAMP')
-        elif db_type == 'mysql':
-            return SQLType('TIMESTAMP', 'TIMESTAMP NULL')
-        return SQLType('TIMESTAMP', 'TIMESTAMP(0)')
-
 
 class Timestamp(Field):
     '''
     Define a timestamp field (``datetime``).
     '''
     _type = 'timestamp'
+    _sql_type = 'TIMESTAMP'
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if value is None:
             return None
         if isinstance(value, basestring):
@@ -105,25 +86,15 @@ class Timestamp(Field):
         assert(isinstance(value, datetime.datetime))
         return value
 
-    def sql_type(self):
-        db_type = backend.name()
-        if db_type == 'sqlite':
-            return SQLType('TIMESTAMP', 'TIMESTAMP')
-        elif db_type == 'mysql':
-            return SQLType('TIMESTAMP', 'TIMESTAMP NULL')
-        return SQLType('TIMESTAMP', 'TIMESTAMP(6)')
-
 
 class Time(DateTime):
     '''
     Define a time field (``time``).
     '''
     _type = 'time'
+    _sql_type = 'TIME'
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if value is None:
             return None
         if isinstance(value, basestring):
@@ -132,15 +103,13 @@ class Time(DateTime):
         assert(isinstance(value, datetime.time))
         return value.replace(microsecond=0)
 
-    def sql_type(self):
-        return SQLType('TIME', 'TIME')
-
 
 class TimeDelta(Field):
     '''
     Define a timedelta field (``timedelta``).
     '''
     _type = 'timedelta'
+    _sql_type = 'INTERVAL'
 
     def __init__(self, string='', converter=None, help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -156,23 +125,11 @@ class TimeDelta(Field):
             depends=depends, context=context, loading=loading)
         self.converter = converter
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if value is None:
             return None
         assert(isinstance(value, datetime.timedelta))
-        db_type = backend.name()
-        if db_type == 'mysql':
-            return value.total_seconds()
-        return value
-
-    def sql_type(self):
-        db_type = backend.name()
-        if db_type == 'mysql':
-            return SQLType('DOUBLE', 'DOUBLE(255, 6)')
-        return SQLType('INTERVAL', 'INTERVAL')
+        return super(TimeDelta, self).sql_format(value)
 
     @classmethod
     def get(cls, ids, model, name, values=None):

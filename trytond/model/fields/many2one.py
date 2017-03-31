@@ -1,11 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Query, Expression, Literal
+from sql import Literal
 from sql.operators import Or
 
-from .field import Field, SQLType
+from .field import Field
 from ...pool import Pool
-from ... import backend
 from ...tools import reduce_ids
 from ...transaction import Transaction
 
@@ -15,6 +14,7 @@ class Many2One(Field):
     Define many2one field (``int``).
     '''
     _type = 'many2one'
+    _sql_type = 'INTEGER'
 
     def __init__(self, model_name, string='', left=None, right=None,
             ondelete='SET NULL', datetime_field=None, target_search='join',
@@ -78,23 +78,11 @@ class Many2One(Field):
         assert isinstance(value, (Target, type(None)))
         super(Many2One, self).__set__(inst, value)
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if value is None:
             return None
         assert value is not False
         return int(value)
-
-    def sql_type(self):
-        db_type = backend.name()
-        if db_type == 'postgresql':
-            return SQLType('INT4', 'INT4')
-        elif db_type == 'mysql':
-            return SQLType('SIGNED INTEGER', 'BIGINT')
-        else:
-            return SQLType('INTEGER', 'INTEGER')
 
     def convert_domain_mptt(self, domain, tables):
         cursor = Transaction().connection.cursor()

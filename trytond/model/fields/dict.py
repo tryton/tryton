@@ -1,9 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
 import json
-from sql import Query, Expression
 
-from .field import Field, SQLType
+from .field import Field
 from ...protocols.jsonrpc import JSONDecoder, JSONEncoder
 from ...pool import Pool
 from ...tools import grouped_slice
@@ -12,6 +11,7 @@ from ...tools import grouped_slice
 class Dict(Field):
     'Define dict field.'
     _type = 'dict'
+    _sql_type = 'TEXT'
 
     def __init__(self, schema_model, string='', help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -30,17 +30,11 @@ class Dict(Field):
                     object_hook=JSONDecoder())
         return dicts
 
-    @staticmethod
-    def sql_format(value):
-        if isinstance(value, (Query, Expression)):
-            return value
+    def sql_format(self, value):
         if value is None:
             return None
         assert isinstance(value, dict)
         return json.dumps(value, cls=JSONEncoder, separators=(',', ':'))
-
-    def sql_type(self):
-        return SQLType('TEXT', 'TEXT')
 
     def translated(self, name=None, type_='values'):
         "Return a descriptor for the translated value of the field"

@@ -13,7 +13,7 @@ try:
     compat.register()
 except ImportError:
     pass
-from psycopg2 import connect
+from psycopg2 import connect, Binary
 from psycopg2.pool import ThreadedConnectionPool, PoolError
 from psycopg2.extensions import cursor
 from psycopg2.extensions import ISOLATION_LEVEL_REPEATABLE_READ
@@ -29,7 +29,7 @@ from psycopg2 import OperationalError as DatabaseOperationalError
 
 from sql import Flavor
 
-from trytond.backend.database import DatabaseInterface
+from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
@@ -72,6 +72,12 @@ class Database(DatabaseInterface):
     _current_user = None
     _has_returning = None
     flavor = Flavor(ilike=True)
+
+    TYPES_MAPPING = {
+        'BLOB': SQLType('BYTEA', 'BYTEA'),
+        'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP(0)'),
+        'TIMESTAMP': SQLType('TIMESTAMP', 'TIMESTAMP(6)'),
+        }
 
     def __new__(cls, name='template1'):
         with cls._lock:
@@ -306,6 +312,19 @@ class Database(DatabaseInterface):
 
     def has_window_functions(self):
         return True
+
+    def sql_type(self, type_):
+        if type_ in self.TYPES_MAPPING:
+            return self.TYPES_MAPPING[type_]
+        if type_.startswith('VARCHAR'):
+            return SQLType('VARCHAR', type_)
+        return SQLType(type_, type_)
+
+    def sql_format(self, type_, value):
+        if type_ == 'BLOB':
+            if value is not None:
+                return Binary(value)
+        return value
 
 register_type(UNICODE)
 if PYDATE:

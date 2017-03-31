@@ -15,6 +15,7 @@ Introduction to all the key parts of trytond:
     logs
     start_server
     models/index
+    backend-types
     models/fields_default_value
     models/fields_on_change
     domain

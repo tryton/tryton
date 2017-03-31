@@ -174,6 +174,12 @@ Instance methods:
     use for creation and casting. Or `None` if the field is not stored in the
     database.
 
+    sql_type is using the `_sql_type` attribute to compute its return value.
+    The backend is responsible for the computation.
+
+    For the list of supported types by Tryton see 
+    :ref:`backend types <topics-backend_types>`.
+
 .. method:: Field.sql_column(table)
 
     Return the Column instance based on table.

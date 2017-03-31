@@ -79,6 +79,9 @@ class Many2Many(Field):
     def add_remove(self):
         return self.domain
 
+    def sql_type(self):
+        return None
+
     def get(self, ids, model, name, values=None):
         '''
         Return target records ordered.
