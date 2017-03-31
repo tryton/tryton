@@ -11,8 +11,10 @@ from . import configuration
 def register():
     Pool.register(
         Party,
+        PartySalePriceList,
         Sale,
         SaleLine,
         Product,
         configuration.Configuration,
+        configuration.ConfigurationSalePriceList,
         module='sale_price_list', type_='model')

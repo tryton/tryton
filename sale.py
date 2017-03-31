@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pyson import Eval, Not, Equal, Or, Bool
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 
 __all__ = ['Sale', 'SaleLine']
 
@@ -29,10 +29,14 @@ class Sale:
             cls.lines.depends.append('party')
 
     def on_change_party(self):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
         super(Sale, self).on_change_party()
-        self.price_list = None
         if self.party and self.party.sale_price_list:
             self.price_list = self.party.sale_price_list
+        else:
+            config = Configuration(1)
+            self.price_list = config.sale_price_list
 
 
 class SaleLine:
