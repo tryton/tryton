@@ -2165,7 +2165,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Config = pool.get('stock.configuration')
         if self.planned_date != self.planned_start_date:
-            return Config(1).shipment_internal_transit.id
+            return Config(1).get_multivalue('shipment_internal_transit').id
 
     @fields.depends('planned_date', 'from_location', 'to_location')
     def on_change_with_planned_start_date(self, pattern=None):

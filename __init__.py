@@ -16,6 +16,7 @@ def register():
     Pool.register(
         Location,
         Party,
+        PartyLocation,
         ProductsByLocationsContext,
         LocationLeadTime,
         Move,
@@ -38,6 +39,8 @@ def register():
         Inventory,
         InventoryLine,
         Configuration,
+        ConfigurationSequence,
+        ConfigurationLocation,
         module='stock', type_='model')
     Pool.register(
         AssignShipmentOut,

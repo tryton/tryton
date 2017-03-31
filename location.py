@@ -3,15 +3,16 @@
 import datetime
 from decimal import Decimal
 
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
+from trytond.model import (ModelView, ModelSQL, MatchMixin, ValueMixin, fields,
+    sequence_ordered)
 from trytond import backend
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
+from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Location', 'Party', 'ProductsByLocationsContext',
+__all__ = ['Location', 'Party', 'PartyLocation', 'ProductsByLocationsContext',
     'LocationLeadTime']
 
 STATES = {
@@ -396,17 +397,78 @@ class Location(ModelSQL, ModelView):
         return res
 
 
+supplier_location = fields.Many2One(
+    'stock.location', "Supplier Location", domain=[('type', '=', 'supplier')],
+    help='The default source location when receiving products from the party.')
+customer_location = fields.Many2One(
+    'stock.location', "Customer Location", domain=[('type', '=', 'customer')],
+    help='The default destination location when sending products to the party.'
+    )
+
+
 class Party:
     __metaclass__ = PoolMeta
     __name__ = 'party.party'
-    supplier_location = fields.Property(fields.Many2One('stock.location',
-        'Supplier Location', domain=[('type', '=', 'supplier')],
-        help='The default source location when receiving products from the '
-        'party.'))
-    customer_location = fields.Property(fields.Many2One('stock.location',
-        'Customer Location', domain=[('type', '=', 'customer')],
-        help='The default destination location when sending products to the '
-        'party.'))
+    supplier_location = fields.MultiValue(supplier_location)
+    customer_location = fields.MultiValue(customer_location)
+    locations = fields.One2Many(
+        'party.party.location', 'party', "Locations")
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field in {'supplier_location', 'customer_location'}:
+            return pool.get('party.party.location')
+        return super(Party, cls).multivalue_model(field)
+
+    @classmethod
+    def default_supplier_location(cls, **pattern):
+        return cls.multivalue_model(
+            'supplier_location').default_supplier_location()
+
+    @classmethod
+    def default_customer_location(cls, **pattern):
+        return cls.multivalue_model(
+            'customer_location').default_customer_location()
+
+
+class PartyLocation(ModelSQL, ValueMixin):
+    "Party Location"
+    __name__ = 'party.party.location'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    supplier_location = supplier_location
+    customer_location = customer_location
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(PartyLocation, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.extend(['supplier_location', 'customer_location'])
+        value_names.extend(['supplier_location', 'customer_location'])
+        migrate_property(
+            'party.party', field_names, cls, value_names,
+            parent='party', fields=fields)
+
+    @classmethod
+    def default_supplier_location(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id('stock', 'location_supplier')
+
+    @classmethod
+    def default_customer_location(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id('stock', 'location_customer')
 
 
 class ProductsByLocationsContext(ModelView):

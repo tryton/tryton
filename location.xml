@@ -215,25 +215,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Transit</field>
             <field name="type">storage</field>
         </record>
-
-        <record model="ir.property" id="property_supplier_location">
-            <field name="field"
-                   search="[('model.model', '=', 'party.party'),
-                           ('name', '=', 'supplier_location')]"/>
-            <field name="value" eval="'stock.location,' + str(ref('location_supplier'))"/>
-        </record>
-        <record model="ir.property" id="property_customer_location">
-            <field name="field"
-                   search="[('model.model', '=', 'party.party'),
-                           ('name', '=', 'customer_location')]"/>
-            <field name="value" eval="'stock.location,' + str(ref('location_customer'))"/>
-        </record>
-
-        <record model="ir.property" id="property_shipment_internal_transit">
-            <field name="field"
-                   search="[('model.model', '=', 'stock.configuration'),
-                           ('name', '=', 'shipment_internal_transit')]"/>
-            <field name="value" eval="'stock.location,' + str(ref('location_transit'))"/>
-        </record>
     </data>
 </tryton>
