@@ -20,6 +20,7 @@ def register():
         SaleOpportunityMonthly,
         SaleOpportunityEmployeeMonthly,
         Configuration,
+        ConfigurationSequence,
         Sale,
         Party,
         Address,
