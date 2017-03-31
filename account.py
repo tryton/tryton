@@ -8,19 +8,66 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond import backend
+from trytond.tools.multivalue import migrate_property
+from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'LandedCost', 'LandedCost_Shipment', 'InvoiceLine']
+__all__ = ['Configuration', 'ConfigurationLandedCostSequence',
+    'LandedCost', 'LandedCost_Shipment', 'InvoiceLine']
 
 
 class Configuration:
     __name__ = 'account.configuration'
     __metaclass__ = PoolMeta
-    landed_cost_sequence = fields.Property(fields.Many2One('ir.sequence',
-            'Landed Cost Sequence', domain=[
+    landed_cost_sequence = fields.MultiValue(fields.Many2One(
+            'ir.sequence', "Landed Cost Sequence", required=True,
+            domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'account.landed_cost'),
-                ], required=True))
+                ]))
+
+    @classmethod
+    def default_landed_cost_sequence(cls):
+        return cls.multivalue_model(
+            'landed_cost_sequence').default_landed_cost_sequence()
+
+
+class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
+    "Account Configuration Landed Cost Sequence"
+    __name__ = 'account.configuration.landed_cost_sequence'
+    landed_cost_sequence = fields.Many2One(
+        'ir.sequence', "Landed Cost Sequence", required=True,
+        domain=[
+            ('company', 'in', [Eval('company', -1), None]),
+            ('code', '=', 'account.landed_cost'),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(ConfigurationLandedCostSequence, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('landed_cost_sequence')
+        value_names.append('landed_cost_sequence')
+        fields.append('company')
+        migrate_property(
+            'account.configuration', field_names, cls, value_names,
+            fields=fields)
+
+    @classmethod
+    def default_landed_cost_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id(
+            'account_stock_landed_cost', 'sequence_landed_cost')
 
 
 class LandedCost(Workflow, ModelSQL, ModelView):

@@ -110,11 +110,4 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">invoice_line_form</field>
         </record>
     </data>
-    <data noupdate="1">
-        <record model="ir.property" id="property_landed_cost_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'account.configuration'), ('name', '=', 'landed_cost_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_landed_cost'))"/>
-        </record>
-    </data>
 </tryton>

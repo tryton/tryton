@@ -12,6 +12,7 @@ def register():
         Template,
         Product,
         Configuration,
+        ConfigurationLandedCostSequence,
         LandedCost,
         LandedCost_Shipment,
         InvoiceLine,
