@@ -27,11 +27,4 @@ this repository contains the full copyright notices and license terms. -->
             sequence="0" icon="tryton-list"/>
 
     </data>
-    <data noupdate="1">
-        <record model="ir.property" id="property_production_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'production.configuration'), ('name', '=', 'production_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_production'))"/>
-        </record>
-    </data>
 </tryton>

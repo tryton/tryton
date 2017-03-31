@@ -12,6 +12,7 @@ from .stock import *
 def register():
     Pool.register(
         Configuration,
+        ConfigurationProductionSequence,
         BOM,
         BOMInput,
         BOMOutput,
