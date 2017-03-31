@@ -1,3 +1,4 @@
+* Manage help attribute on tree views
 * Manage color attribute on graph view
 * Add support for size on Many2Many
 * Allow to show plain text in password field

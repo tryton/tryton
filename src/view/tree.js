@@ -99,6 +99,11 @@
                         label.addClass('editable');
                     }
                 }
+                if (column.attributes.help) {
+                    label.data('toggle', 'tooltip');
+                    label.attr('title', column.attributes.help);
+                    label.tooltip();
+                }
                 if (column.sortable) {
                     var arrow = jQuery('<span/>');
                     label.append(arrow);
@@ -153,7 +158,7 @@
                         'add_remove', 'sort', 'context', 'filename',
                         'autocomplete', 'translate', 'create', 'delete',
                         'selection_change_with', 'schema_model', 'required',
-                        'readonly'];
+                        'readonly', 'help'];
                     for (i in attribute_names) {
                         var attr = attribute_names[i];
                         if ((attr in model.fields[name].description) &&
