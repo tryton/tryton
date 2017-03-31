@@ -6,27 +6,42 @@ from sql import Union, Join, Select, Table, Null
 from sql.conditionals import Greatest
 
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelView, Workflow, fields
+from trytond.model import ModelView, Workflow, ModelSQL, ValueMixin, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
-__all__ = ['Configuration', 'Lot', 'Move', 'Period']
+__all__ = ['Configuration', 'ConfigurationLotShelfLife',
+    'Lot', 'Move', 'Period']
 
 DATE_STATE = [
     ('none', 'None'),
     ('optional', 'Optional'),
     ('required', 'Required'),
     ]
+shelf_life_delay = fields.TimeDelta(
+    "Shelf Life Delay",
+    help="The delay before removal from the forecast.")
 
 
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'stock.configuration'
 
-    shelf_life_delay = fields.Property(fields.Integer('Shelf Life Delay',
-            help='The delay in number of days before '
-            'removal from the forecast'))
+    shelf_life_delay = fields.MultiValue(shelf_life_delay)
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'shelf_life_delay':
+            return pool.get('stock.location.lot.shelf_life')
+        return super(Configuration, cls).multivalue_model(field)
+
+
+class ConfigurationLotShelfLife(ModelSQL, ValueMixin):
+    "Stock Configuration Lot Shelf Life"
+    __name__ = 'stock.location.lot.shelf_life'
+    shelf_life_delay = shelf_life_delay
 
 
 class Lot:
@@ -233,9 +248,9 @@ class Move:
             lot = Lot.__table__()
 
             config = Config(1)
-            if config.shelf_life_delay:
-                expiration_date = stock_date_end + datetime.timedelta(
-                    days=config.shelf_life_delay)
+            shelf_life_delay = config.get_multivalue('shelf_life_delay')
+            if shelf_life_delay:
+                expiration_date = stock_date_end + shelf_life_delay
             else:
                 expiration_date = stock_date_end
 

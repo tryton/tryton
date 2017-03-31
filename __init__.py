@@ -11,6 +11,7 @@ def register():
         Template,
         Product,
         Configuration,
+        ConfigurationLotShelfLife,
         Lot,
         Move,
         Period,
