@@ -10,11 +10,14 @@ def register():
     Pool.register(
         ProductConfiguration,
         Category,
+        CategoryAccount,
         CategoryCustomerTax,
         CategorySupplierTax,
         Template,
+        TemplateAccount,
         TemplateCustomerTax,
         TemplateSupplierTax,
         Product,
         Configuration,
+        ConfigurationDefaultAccount,
         module='account_product', type_='model')
