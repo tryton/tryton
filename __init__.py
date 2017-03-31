@@ -29,6 +29,8 @@ def register():
         HandleShipmentExceptionAsk,
         HandleInvoiceExceptionAsk,
         Configuration,
+        ConfigurationSequence,
+        ConfigurationPurchaseMethod,
         Invoice,
         InvoiceLine,
         Location,

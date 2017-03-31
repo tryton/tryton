@@ -999,8 +999,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                     'misses the supplier location for line "%(line)s".'),
                 'missing_account_expense': ('Product "%(product)s" of '
                     'purchase %(purchase)s misses an expense account.'),
-                'missing_account_expense_property': ('Purchase "%(purchase)s" '
-                    'misses an "account expense" default property.'),
+                'missing_default_account_expense': ('Purchase "%(purchase)s" '
+                    'misses a default "account expense".'),
                 })
 
     @classmethod
@@ -1247,8 +1247,9 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     def get_invoice_line(self):
         'Return a list of invoice line for purchase line'
         pool = Pool()
-        Property = pool.get('ir.property')
         InvoiceLine = pool.get('account.invoice.line')
+        AccountConfiguration = pool.get('account.configuration')
+        account_config = AccountConfiguration(1)
 
         invoice_line = InvoiceLine()
         invoice_line.type = self.type
@@ -1284,12 +1285,13 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                         'purchase': self.purchase.rec_name,
                         })
         else:
-            for model in ('product.template', 'product.category'):
-                invoice_line.account = Property.get('account_expense', model)
+            for name in ['default_product_account_expense',
+                    'default_category_account_expense']:
+                invoice_line.account = account_config.get_multivalue(name)
                 if invoice_line.account:
                     break
             if not invoice_line.account:
-                self.raise_user_error('missing_account_expense_property',
+                self.raise_user_error('missing_default_account_expense',
                     {'purchase': self.purchase.rec_name})
         invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
