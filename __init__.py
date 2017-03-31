@@ -26,6 +26,7 @@ def register():
         CreditInvoiceStart,
         Address,
         Party,
+        PartyPaymentTerm,
         InvoiceSequence,
         # Match pattern migration fallbacks to Fiscalyear values so Period
         # must be registered before Fiscalyear
