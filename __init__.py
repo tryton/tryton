@@ -11,13 +11,16 @@ from .party import PartyReplace
 def register():
     Pool.register(
         Configuration,
+        ConfigurationSequence,
         ShipmentDrop,
         Move,
         SaleConfig,
+        SaleConfigSaleDropLocation,
         Sale,
         SaleLine,
         PurchaseRequest,
         PurchaseConfig,
+        PurchaseConfigPurchaseDropLocation,
         Purchase,
         PurchaseLine,
         ProductSupplier,

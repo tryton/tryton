@@ -1,13 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from trytond import backend
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.tools.multivalue import migrate_property
 
 
-__all__ = ['PurchaseRequest', 'PurchaseConfig', 'Purchase', 'PurchaseLine',
+__all__ = ['PurchaseRequest', 'PurchaseConfig',
+    'PurchaseConfigPurchaseDropLocation', 'Purchase', 'PurchaseLine',
     'ProductSupplier', 'CreatePurchase', 'PurchaseHandleShipmentException']
+purchase_drop_location = fields.Many2One(
+    'stock.location', "Purchase Drop Location", domain=[('type', '=', 'drop')])
 
 
 class PurchaseRequest:
@@ -31,9 +36,44 @@ class PurchaseConfig:
     __metaclass__ = PoolMeta
     __name__ = 'purchase.configuration'
 
-    purchase_drop_location = fields.Property(
-        fields.Many2One('stock.location', 'Purchase Drop Location',
-            domain=[('type', '=', 'drop')]))
+    purchase_drop_location = fields.MultiValue(purchase_drop_location)
+
+    @classmethod
+    def default_purchase_drop_location(cls, **pattern):
+        return cls.multivalue_model(
+            'purchase_drop_location').default_purchase_drop_location()
+
+
+class PurchaseConfigPurchaseDropLocation(ModelSQL, ValueMixin):
+    "Purchase Configuration Purchase Drop Location"
+    __name__ = 'purchase.configuration.purchase_drop_location'
+    purchase_drop_location = purchase_drop_location
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(PurchaseConfigPurchaseDropLocation, cls).__register__(
+            module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('purchase_drop_location')
+        value_names.append('purchase_drop_location')
+        migrate_property(
+            'purchase.configuration', field_names, cls, value_names,
+            fields=fields)
+
+    @classmethod
+    def default_purchase_drop_location(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id(
+            'sale_supply_drop_shipment', 'location_drop')
 
 
 class Purchase:

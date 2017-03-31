@@ -6,6 +6,7 @@ from decimal import Decimal
 from sql.operators import Concat
 from sql.aggregate import Count
 
+from trytond import backend
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
@@ -13,19 +14,71 @@ from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
 
-__all__ = ['Configuration', 'ShipmentDrop', 'Move']
+__all__ = ['Configuration', 'ConfigurationSequence', 'ShipmentDrop', 'Move']
 
 
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'stock.configuration'
 
-    shipment_drop_sequence = fields.Property(fields.Many2One('ir.sequence',
-            'Drop Shipment Sequence', domain=[
+    shipment_drop_sequence = fields.MultiValue(fields.Many2One(
+            'ir.sequence', "Drop Shipment Sequence", required=True,
+            domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.drop'),
-                ], required=True))
+                ]))
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'shipment_drop_sequence':
+            return pool.get('stock.configuration.sequence')
+        return super(Configuration, cls).multivalue_model(field)
+
+    @classmethod
+    def default_shipment_drop_sequence(cls, **pattern):
+        return cls.multivalue_model(
+            'shipment_drop_sequence').default_shipment_drop_sequence()
+
+
+class ConfigurationSequence:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.configuration.sequence'
+    shipment_drop_sequence = fields.Many2One(
+        'ir.sequence', "Drop Shipment Sequence", required=True,
+        domain=[
+            ('company', 'in', [Eval('company', -1), None]),
+            ('code', '=', 'stock.shipment.drop'),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+        if exist:
+            table = TableHandler(cls, module_name)
+            exist &= table.column_exist('shipment_drop_sequence')
+
+        super(ConfigurationSequence, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('shipment_drop_sequence')
+        value_names.append('shipment_drop_sequence')
+        super(ConfigurationSequence, cls)._migrate_property(
+            field_names, value_names, fields)
+
+    @classmethod
+    def default_shipment_drop_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id(
+            'sale_supply_drop_shipment', 'sequence_shipment_drop')
 
 
 class ShipmentDrop(Workflow, ModelSQL, ModelView):

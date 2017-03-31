@@ -202,24 +202,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">drop</field>
         </record>
 
-        <record model="ir.property" id="property_shipment_drop_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'shipment_drop_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_shipment_drop'))"/>
-        </record>
-
-        <record model="ir.property" id="default_sale_location_drop">
-            <field name="field" 
-                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'sale_drop_location')]"/>
-            <field name="value"
-                eval="'stock.location,' + str(ref('location_drop'))"/>
-        </record>
-        <record model="ir.property" id="default_purchase_location_drop">
-            <field name="field" 
-                search="[('model.model', '=', 'purchase.configuration'), ('name', '=', 'purchase_drop_location')]"/>
-            <field name="value"
-                eval="'stock.location,' + str(ref('location_drop'))"/>
-        </record>
-
     </data>
 </tryton>
