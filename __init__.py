@@ -13,6 +13,7 @@ def register():
     Pool.register(
         Category,
         Party,
+        PartyLang,
         PartyCategory,
         PartyIdentifier,
         CheckVIESResult,
@@ -21,6 +22,8 @@ def register():
         AddressFormat,
         ContactMechanism,
         Configuration,
+        ConfigurationSequence,
+        ConfigurationLang,
         module='party', type_='model')
     Pool.register(
         CheckVIES,

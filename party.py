@@ -1,20 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import groupby
-
 import stdnum.eu.vat as vat
 import stdnum.exceptions
 from sql import Null, Column
 from sql.functions import CharLength
 
-from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
+from trytond.model import (ModelView, ModelSQL, MultiValueMixin, ValueMixin,
+    fields, Unique, sequence_ordered)
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
+from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Party', 'PartyCategory', 'PartyIdentifier',
+__all__ = ['Party', 'PartyLang', 'PartyCategory', 'PartyIdentifier',
     'CheckVIESResult', 'CheckVIES',
     'PartyReplace', 'PartyReplaceAsk']
 
@@ -25,7 +25,7 @@ STATES = {
 DEPENDS = ['active']
 
 
-class Party(ModelSQL, ModelView):
+class Party(ModelSQL, ModelView, MultiValueMixin):
     "Party"
     __name__ = 'party.party'
 
@@ -39,9 +39,11 @@ class Party(ModelSQL, ModelView):
         help="The unique identifier of the party.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
-    lang = fields.Property(fields.Many2One("ir.lang", 'Language',
-            states=STATES, depends=DEPENDS,
+    lang = fields.MultiValue(
+        fields.Many2One('ir.lang', "Language", states=STATES, depends=DEPENDS,
             help="Used to translate communications with the party."))
+    langs = fields.One2Many(
+        'party.party.lang', 'party', "Languages")
     identifiers = fields.One2Many('party.identifier', 'party', 'Identifiers',
         states=STATES, depends=DEPENDS,
         help="Add other identifiers of the party.")
@@ -86,24 +88,20 @@ class Party(ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         pool = Pool()
-        Property = pool.get('ir.property')
+        PartyLang = pool.get('party.party.lang')
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
+        party_lang = PartyLang.__table__()
 
         super(Party, cls).__register__(module_name)
 
         table_h = TableHandler(cls, module_name)
         if table_h.column_exist('lang'):
-            cursor.execute(*table.select(table.id, table.lang,
-                    order_by=table.lang))
-            for lang_id, group in groupby(cursor.fetchall(), lambda r: r[1]):
-                ids = [id_ for id_, _ in group]
-                if lang_id is not None:
-                    value = '%s,%s' % (cls.lang.model_name, lang_id)
-                else:
-                    value = None
-                Property.set('lang', cls.__name__, ids, value)
+            query = party_lang.insert(
+                [party_lang.party, party_lang.lang],
+                table.select(table.id, table.lang))
+            cursor.execute(*query)
             table_h.drop_column('lang')
 
         # Migration from 3.8
@@ -128,11 +126,18 @@ class Party(ModelSQL, ModelView):
             return []
         return [{}]
 
-    @staticmethod
-    def default_code_readonly():
+    @classmethod
+    def default_lang(cls, **pattern):
         Configuration = Pool().get('party.configuration')
         config = Configuration(1)
-        return bool(config.party_sequence)
+        lang = config.get_multivalue('party_lang', **pattern)
+        return lang.id if lang else None
+
+    @classmethod
+    def default_code_readonly(cls, **pattern):
+        Configuration = Pool().get('party.configuration')
+        config = Configuration(1)
+        return bool(config.get_multivalue('party_sequence', **pattern))
 
     def get_code_readonly(self, name):
         return True
@@ -179,15 +184,21 @@ class Party(ModelSQL, ModelView):
         return ''
 
     @classmethod
-    def create(cls, vlist):
-        Sequence = Pool().get('ir.sequence')
-        Configuration = Pool().get('party.configuration')
+    def _new_code(cls, **pattern):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Configuration = pool.get('party.configuration')
+        config = Configuration(1)
+        sequence = config.get_multivalue('party_sequence', **pattern)
+        if sequence:
+            return Sequence.get_id(sequence.id)
 
+    @classmethod
+    def create(cls, vlist):
         vlist = [x.copy() for x in vlist]
         for values in vlist:
             if not values.get('code'):
-                config = Configuration(1)
-                values['code'] = Sequence.get_id(config.party_sequence.id)
+                values['code'] = cls._new_code()
             values.setdefault('addresses', None)
         return super(Party, cls).create(vlist)
 
@@ -240,6 +251,32 @@ class Party(ModelSQL, ModelView):
             if getattr(address, type):
                 return address
         return default_address
+
+
+class PartyLang(ModelSQL, ValueMixin):
+    "Party Lang"
+    __name__ = 'party.party.lang'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    lang = fields.Many2One('ir.lang', "Language")
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(PartyLang, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('lang')
+        value_names.append('lang')
+        migrate_property(
+            'party.party', field_names, cls, value_names,
+            parent='party', fields=fields)
 
 
 class PartyCategory(ModelSQL):

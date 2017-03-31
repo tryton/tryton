@@ -29,10 +29,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
     <data noupdate="1">
-        <record model="ir.property" id="property_party_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'party.configuration'), ('name', '=', 'party_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_party'))"/>
+        <record model="party.configuration.party_sequence"
+            id="configuration_party_sequence">
+            <field name="party_sequence" ref="sequence_party"/>
         </record>
     </data>
 </tryton>
