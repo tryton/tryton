@@ -12,6 +12,7 @@ def register():
         OrderPoint,
         LocationLeadTime,
         Configuration,
+        ConfigurationSupplyPeriod,
         Production,
         Product,
         module='stock_supply_production', type_='model')

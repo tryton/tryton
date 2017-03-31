@@ -59,8 +59,10 @@ class LocationLeadTime:
     def _get_extra_lead_times(cls):
         pool = Pool()
         Configuration = pool.get('production.configuration')
+        config = Configuration(1)
+        supply_period = config.get_multivalue('supply_period')
         extra = super(LocationLeadTime, cls)._get_extra_lead_times()
-        extra.append(datetime.timedelta(Configuration(1).supply_period or 0))
+        extra.append(supply_period or datetime.timedelta(0))
         return extra
 
 
