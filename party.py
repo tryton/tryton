@@ -1,35 +1,33 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import PoolMeta
-from trytond.model import fields
+from trytond.model import ModelSQL, fields
+from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Party', 'PartyReplace']
+__all__ = ['Party', 'PartyPaymentDirectDebit', 'PartyReplace']
+payment_direct_debit = fields.Boolean(
+    "Direct Debit", help="Check if supplier does direct debit.")
 
 
 class Party:
     __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
-    payment_direct_debit_int = fields.Property(
-        fields.Integer("Direct Debit Internal"))
-    payment_direct_debit = fields.Function(
-        fields.Boolean(
-            "Direct Debit", help="Check if supplier does direct debit."),
-        'get_payment_direct_debit', setter='set_payment_direct_debit')
+    payment_direct_debit = fields.MultiValue(payment_direct_debit)
+    payment_direct_debits = fields.One2Many(
+        'party.party.payment_direct_debit', 'party', "Direct Debits")
 
     @classmethod
-    def default_payment_direct_debit(cls):
+    def default_payment_direct_debit(cls, **pattern):
         return False
 
-    def get_payment_direct_debit(self, name):
-        return bool(self.payment_direct_debit_int)
 
-    @classmethod
-    def set_payment_direct_debit(cls, parties, name, value):
-        cls.write(parties, {
-                'payment_direct_debit_int': (
-                    int(value) if value is not None else None),
-                })
+class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
+    "Party Payment Direct Debit"
+    __name__ = 'party.party.payment_direct_debit'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    payment_direct_debit = payment_direct_debit
 
 
 class PartyReplace:

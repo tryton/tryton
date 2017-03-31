@@ -122,13 +122,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">configuration_form</field>
         </record>
     </data>
-    <data noupdate="1">
-        <record model="ir.property" id="property_payment_group_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'account.configuration'), ('name', '=', 'payment_group_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_account_payment_group'))"/>
-        </record>
-    </data>
     <data depends="account_invoice">
         <record model="ir.ui.view" id="invoice_view_form">
             <field name="model">account.invoice</field>

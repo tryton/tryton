@@ -15,8 +15,10 @@ def register():
         ProcessPaymentStart,
         PayLineAskJournal,
         Configuration,
+        ConfigurationPaymentGroupSequence,
         Invoice,
         party.Party,
+        party.PartyPaymentDirectDebit,
         module='account_payment', type_='model')
     Pool.register(
         ProcessPayment,

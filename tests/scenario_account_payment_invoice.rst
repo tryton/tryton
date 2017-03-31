@@ -118,7 +118,7 @@ Create invoice::
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice()
     >>> invoice.party = party
-    >>> invoice.payment_direct_debit
+    >>> bool(invoice.payment_direct_debit)
     True
     >>> line = invoice.lines.new()
     >>> line.description = 'Description'

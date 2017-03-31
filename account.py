@@ -7,16 +7,20 @@ from sql.aggregate import Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Abs
 
+from trytond import backend
 from trytond.pool import Pool, PoolMeta
-from trytond.model import ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval, If, Bool
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
     Button)
 from trytond.transaction import Transaction
+from trytond.tools.multivalue import migrate_property
+from trytond.modules.company.model import CompanyValueMixin
 
 from .payment import KINDS
 
-__all__ = ['MoveLine', 'PayLine', 'PayLineAskJournal', 'Configuration',
+__all__ = ['MoveLine', 'PayLine', 'PayLineAskJournal',
+    'Configuration', 'ConfigurationPaymentGroupSequence',
     'Invoice']
 
 
@@ -302,12 +306,56 @@ class PayLine(Wizard):
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
-    payment_group_sequence = fields.Property(fields.Many2One('ir.sequence',
-            'Payment Group Sequence', domain=[
+    payment_group_sequence = fields.MultiValue(fields.Many2One(
+            'ir.sequence', 'Payment Group Sequence', required=True,
+            domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'account.payment.group'),
-                ], required=True))
+                ]))
+
+    @classmethod
+    def default_payment_group_sequence(cls):
+        return cls.multivalue_model(
+            'payment_group_sequence').default_payment_group_sequence()
+
+
+class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
+    "Account Configuration Payment Group Sequence"
+    __name__ = 'account.configuration.payment_group_sequence'
+    payment_group_sequence = fields.Many2One(
+        'ir.sequence', "Payment Group Sequence", required=True,
+        domain=[
+            ('company', 'in', [Eval('company', -1), None]),
+            ('code', '=', 'account.payment.group'),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(ConfigurationPaymentGroupSequence, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('payment_group_sequence')
+        value_names.append('payment_group_sequence')
+        fields.append('company')
+        migrate_property(
+            'account.configuration', field_names, cls, value_names,
+            fields=fields)
+
+    @classmethod
+    def default_payment_group_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id(
+            'account_payment', 'sequence_account_payment_group')
 
 
 class Invoice:
