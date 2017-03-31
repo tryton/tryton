@@ -29,11 +29,4 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">sale.complaint</field>
         </record>
     </data>
-    <data noupdate="1">
-        <record model="ir.property" id="property_complaint_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'sale.configuration'), ('name', '=', 'complaint_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_complaint'))"/>
-        </record>
-    </data>
 </tryton>

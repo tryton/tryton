@@ -15,6 +15,7 @@ def register():
         Action_SaleLine,
         Action_InvoiceLine,
         Configuration,
+        ConfigurationSequence,
         Sale,
         InvoiceLine,
         module='sale_complaint', type_='model')
