@@ -9,6 +9,7 @@ from .stock import *
 def register():
     Pool.register(
         Configuration,
+        ConfigurationSaleMethod,
         Sale,
         SaleLine,
         ShipmentOut,

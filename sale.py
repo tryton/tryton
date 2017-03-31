@@ -1,32 +1,73 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.transaction import Transaction
-from trytond.pyson import Eval, Bool, If
+from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Configuration', 'Sale', 'SaleLine']
+__all__ = ['Configuration', 'ConfigurationSaleMethod', 'Sale', 'SaleLine']
+sale_shipment_cost_method = fields.Selection(
+        'get_sale_shipment_cost_methods', "Sale Shipment Cost Method")
+
+
+def get_sale_methods(field_name):
+    @classmethod
+    def func(cls):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        return Sale.fields_get([field_name])[field_name]['selection']
+    return func
 
 
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
-    sale_shipment_cost_method = fields.Property(fields.Selection(
-            'get_sale_shipment_cost_methods', 'Sale Shipment Cost Method',
-            states={
-                'required': Bool(Eval('context', {}).get('company')),
-                }))
+    sale_shipment_cost_method = fields.MultiValue(sale_shipment_cost_method)
+    get_sale_shipment_cost_methods = get_sale_methods('shipment_cost_method')
 
     @classmethod
-    def get_sale_shipment_cost_methods(cls):
+    def multivalue_model(cls, field):
         pool = Pool()
-        Sale = pool.get('sale.sale')
-        field_name = 'shipment_cost_method'
-        return Sale.fields_get([field_name])[field_name]['selection']
+        if field == 'sale_shipment_cost_method':
+            return pool.get('sale.configuration.sale_method')
+        return super(Configuration, cls).multivalue_model(field)
 
-    @staticmethod
-    def default_sale_shipment_cost_method():
-        return 'shipment'
+    @classmethod
+    def default_sale_shipment_cost_method(cls, **pattern):
+        return cls.multivalue_model(
+            'sale_shipment_cost_method').default_sale_shipment_cost_method()
+
+
+class ConfigurationSaleMethod:
+    __metaclass__ = PoolMeta
+    __name__ = 'sale.configuration.sale_method'
+    sale_shipment_cost_method = sale_shipment_cost_method
+    get_sale_shipment_cost_methods = get_sale_methods('shipment_cost_method')
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+        if exist:
+            table = TableHandler(cls, module_name)
+            exist &= table.column_exist('sale_shipment_cost_method')
+
+        super(ConfigurationSaleMethod, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('sale_shipment_cost_method')
+        value_names.append('sale_shipment_cost_method')
+        super(ConfigurationSaleMethod, cls)._migrate_property(
+            field_names, value_names, fields)
+
+    @classmethod
+    def default_sale_shipment_cost_method(cls):
+        return 'order'
 
 
 class Sale:
