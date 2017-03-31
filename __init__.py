@@ -9,5 +9,6 @@ from .sale import *
 def register():
     Pool.register(
         Party,
+        PartySaleShipmentGroupingMethod,
         Sale,
         module='sale_shipment_grouping', type_='model')
