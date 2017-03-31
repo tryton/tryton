@@ -13,14 +13,16 @@ def register():
         Employee,
         UserEmployee,
         User,
-        Property,
         Sequence,
         SequenceStrict,
         Date,
         CompanyConfigStart,
         Cron,
         CronCompany,
-        PartyConfiguration,
+        Configuration,
+        PartyConfigurationLang,
+        Party,
+        PartyLang,
         Rule,
         module='company', type_='model')
     Pool.register(

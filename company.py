@@ -18,7 +18,7 @@ TIMEZONES += [(None, '')]
 
 Transaction.cache_keys.update({'company', 'employee'})
 
-__all__ = ['Company', 'Employee', 'UserEmployee', 'User', 'Property',
+__all__ = ['Company', 'Employee', 'UserEmployee', 'User',
     'Sequence', 'SequenceStrict', 'Date', 'CompanyConfigStart',
     'CompanyConfig', 'CompanyReport', 'LetterReport', 'Rule']
 
@@ -266,36 +266,6 @@ class User:
         super(User, cls).write(*args)
         # Restart the cache on the domain_get method
         Rule._domain_get_cache.clear()
-
-
-class Property:
-    __metaclass__ = PoolMeta
-    __name__ = 'ir.property'
-    company = fields.Many2One('company.company', 'Company',
-        domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ])
-
-    @classmethod
-    def _set_values(cls, model, res_id, val, field_id):
-        User = Pool().get('res.user')
-        user_id = Transaction().user
-        if user_id == 0:
-            user_id = Transaction().context.get('user', user_id)
-        user = User(user_id)
-        res = super(Property, cls)._set_values(model, res_id, val, field_id)
-        if user and user.company:
-            res['company'] = user.company.id
-        return res
-
-    @classmethod
-    def search(cls, domain, offset=0, limit=None, order=None, count=False,
-            query=False):
-        if Transaction().user == 0 and 'user' not in Transaction().context:
-            domain = ['AND', domain[:], ('company', '=', None)]
-        return super(Property, cls).search(domain, offset=offset, limit=limit,
-            order=order, count=count, query=query)
 
 
 class Sequence:
