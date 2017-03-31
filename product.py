@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
+
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 
@@ -17,8 +19,10 @@ class ProductSupplier:
     __metaclass__ = PoolMeta
     __name__ = 'purchase.product_supplier'
 
-    def get_supply_period(self):
-        'Return the supply period for the purchase request in days'
+    def get_supply_period(self, **pattern):
+        'Return the supply period for the purchase request'
         pool = Pool()
         Configuration = pool.get('purchase.configuration')
-        return Configuration(1).supply_period or 1
+        config = Configuration(1)
+        supply_period = config.get_multivalue('supply_period', **pattern)
+        return supply_period or datetime.timedelta(1)

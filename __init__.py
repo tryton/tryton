@@ -16,6 +16,7 @@ def register():
         Product,
         ProductSupplier,
         PurchaseConfiguration,
+        PurchaseConfigurationSupplyPeriod,
         PurchaseRequest,
         ShipmentInternal,
         Location,

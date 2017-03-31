@@ -4,19 +4,26 @@ import datetime
 import operator
 from collections import defaultdict
 
-from trytond.model import fields
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
-__all__ = ['PurchaseRequest', 'PurchaseConfiguration']
+__all__ = ['PurchaseRequest', 'PurchaseConfiguration',
+    'PurchaseConfigurationSupplyPeriod']
+supply_period = fields.TimeDelta("Supply Period")
 
 
 class PurchaseConfiguration:
     __metaclass__ = PoolMeta
     __name__ = 'purchase.configuration'
-    supply_period = fields.Property(fields.Integer('Supply Period',
-            help='In number of days', required=True))
+    supply_period = fields.MultiValue(supply_period)
+
+
+class PurchaseConfigurationSupplyPeriod(ModelSQL, ValueMixin):
+    "Purchase Configuration Supply Period"
+    __name__ = 'purchase.configuration.supply_period'
+    supply_period = supply_period
 
 
 class PurchaseRequest:
@@ -229,8 +236,7 @@ class PurchaseRequest:
 
         for product_supplier in product.product_suppliers:
             supply_date = product_supplier.compute_supply_date(date=today)
-            next_day = today + datetime.timedelta(
-                product_supplier.get_supply_period())
+            next_day = today + product_supplier.get_supply_period()
             next_supply_date = product_supplier.compute_supply_date(
                 date=next_day)
             if (not min_date) or supply_date < min_date:
