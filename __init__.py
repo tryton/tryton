@@ -9,6 +9,8 @@ from party import *
 def register():
     Pool.register(
         Configuration,
+        ConfigurationDefaultCreditLimitAmount,
         Level,
         Party,
+        PartyCreditLimitAmount,
         module='account_credit_limit', type_='model')

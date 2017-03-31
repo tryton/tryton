@@ -1,11 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from trytond import backend
+from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
+from trytond.tools.multivalue import migrate_property
+from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Party']
+__all__ = ['Party', 'PartyCreditLimitAmount']
 
 
 class Party:
@@ -16,12 +19,14 @@ class Party:
             digits=(16, Eval('credit_limit_digits', 2)),
             depends=['credit_limit_digits']),
         'get_credit_amount')
-    credit_limit_amount = fields.Property(fields.Numeric(
+    credit_limit_amount = fields.MultiValue(fields.Numeric(
             'Credit Limit Amount',
             digits=(16, Eval('credit_limit_digits', 2)),
             depends=['credit_limit_digits']))
     credit_limit_digits = fields.Function(fields.Integer('Currency Digits'),
         'get_credit_limit_digits')
+    credit_limit_amounts = fields.One2Many(
+        'party.party.credit_limit_amount', 'party', "Credit Limit Amounts")
 
     @classmethod
     def __setup__(cls):
@@ -32,6 +37,14 @@ class Party:
                 'credit_limit_dunning': (
                     '"%s" has reached the dunning credit limit (%s)'),
                 })
+
+    @classmethod
+    def default_credit_limit_amount(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        return config.get_multivalue(
+            'default_credit_limit_amount', **pattern)
 
     @classmethod
     def get_credit_amount(cls, parties, name):
@@ -102,7 +115,42 @@ class Party:
         pool = Pool()
         Company = pool.get('company.company')
         company_id = Transaction().context.get('company')
-        if not company_id:
-            return 2
-        company = Company(company_id)
-        return company.currency.digits
+        if company_id:
+            company = Company(company_id)
+            return company.currency.digits
+
+
+class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
+    "Party Credit Limit Amount"
+    __name__ = 'party.party.credit_limit_amount'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    credit_limit_amount = fields.Numeric(
+        "Credit Limit Amount", digits=(16, Eval('credit_limit_digits', 2)),
+        depends=['credit_limit_digits'])
+    credit_limit_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_credit_limit_digits')
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(PartyCreditLimitAmount, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('credit_limit_amount')
+        value_names.append('credit_limit_amount')
+        fields.append('company')
+        migrate_property(
+            'party.party', field_names, cls, value_names,
+            parent='party', fields=fields)
+
+    @fields.depends('company')
+    def on_change_with_credit_limit_digits(self, name=None):
+        if self.company:
+            return self.company.currency.digits
