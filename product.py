@@ -3,6 +3,7 @@
 from decimal import Decimal
 from functools import partial
 
+from trytond import backend
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval
@@ -12,15 +13,20 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.account_product import MissingFunction
 from trytond.modules.product import price_digits, TemplateFunction
 
-__all__ = ['Category', 'Template', 'Product', 'UpdateCostPriceAsk',
+__all__ = ['Category', 'CategoryAccount', 'Template', 'TemplateAccount',
+    'Product', 'UpdateCostPriceAsk',
     'UpdateCostPriceShowMove', 'UpdateCostPrice']
+account_names = [
+    'account_stock', 'account_stock_supplier', 'account_stock_customer',
+    'account_stock_production', 'account_stock_lost_found']
 
 
 class Category:
     __metaclass__ = PoolMeta
     __name__ = 'product.category'
-    account_stock = fields.Property(fields.Many2One('account.account',
-            'Account Stock', domain=[
+    account_stock = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock",
+            domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -30,8 +36,9 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_stock_supplier = fields.Property(fields.Many2One('account.account',
-            'Account Stock Supplier', domain=[
+    account_stock_supplier = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock Supplier",
+            domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -41,8 +48,9 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_stock_customer = fields.Property(fields.Many2One('account.account',
-            'Account Stock Customer', domain=[
+    account_stock_customer = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock Customer",
+            domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -52,9 +60,9 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_stock_production = fields.Property(
-        fields.Many2One('account.account',
-            'Account Stock Production', domain=[
+    account_stock_production = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock Production",
+            domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -64,8 +72,9 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_stock_lost_found = fields.Property(fields.Many2One(
-            'account.account', 'Account Stock Lost and Found', domain=[
+    account_stock_lost_found = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock Lost and Found",
+            domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -90,12 +99,80 @@ class Category:
         'account.account', 'Account Stock Lost and Found'),
         'missing_account', 'get_account')
 
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field in account_names:
+            return pool.get('product.category.account')
+        return super(Category, cls).multivalue_model(field)
+
+
+class CategoryAccount:
+    __metaclass__ = PoolMeta
+    __name__ = 'product.category.account'
+    account_stock = fields.Many2One(
+        'account.account', "Account Stock",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_supplier = fields.Many2One(
+        'account.account', "Account Stock Supplier",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_customer = fields.Many2One(
+        'account.account', "Account Stock Customer",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_production = fields.Many2One(
+        'account.account', "Account Stock Production",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_lost_found = fields.Many2One(
+        'account.account', "Account Stock Lost and Found",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+        if exist:
+            table = TableHandler(cls, module_name)
+            exist &= all(table.column_exist(c) for c in account_names)
+
+        super(CategoryAccount, cls).__register__(module_name)
+
+        if not exist:
+            # Re-migration
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.extend(account_names)
+        value_names.extend(account_names)
+        super(CategoryAccount, cls)._migrate_property(
+            field_names, value_names, fields)
+
 
 class Template:
     __metaclass__ = PoolMeta
     __name__ = 'product.template'
-    account_stock = fields.Property(fields.Many2One('account.account',
-            'Account Stock',
+    account_stock = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock",
             domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
@@ -107,8 +184,8 @@ class Template:
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_stock_supplier = fields.Property(fields.Many2One('account.account',
-            'Account Stock Supplier',
+    account_stock_supplier = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock Supplier",
             domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
@@ -120,8 +197,8 @@ class Template:
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_stock_customer = fields.Property(fields.Many2One('account.account',
-            'Account Stock Customer',
+    account_stock_customer = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock Customer",
             domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
@@ -133,9 +210,8 @@ class Template:
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_stock_production = fields.Property(
-        fields.Many2One('account.account',
-            'Account Stock Production',
+    account_stock_production = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock Production",
             domain=[
                 ('kind', '=', 'stock'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
@@ -147,7 +223,7 @@ class Template:
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_stock_lost_found = fields.Property(fields.Many2One(
+    account_stock_lost_found = fields.MultiValue(fields.Many2One(
             'account.account', 'Account Stock Lost and Found',
             domain=[
                 ('kind', '=', 'stock'),
@@ -184,6 +260,74 @@ class Template:
                     'a product which is associated to stock moves.\n'
                     'You must use the "Update Cost Price" wizard.'),
                 })
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field in account_names:
+            return pool.get('product.template.account')
+        return super(Template, cls).multivalue_model(field)
+
+
+class TemplateAccount:
+    __metaclass__ = PoolMeta
+    __name__ = 'product.template.account'
+    account_stock = fields.Many2One(
+        'account.account', "Account Stock",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_supplier = fields.Many2One(
+        'account.account', "Account Stock Supplier",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_customer = fields.Many2One(
+        'account.account', "Account Stock Customer",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_production = fields.Many2One(
+        'account.account', "Account Stock Production",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_stock_lost_found = fields.Many2One(
+        'account.account', "Account Stock Lost and Found",
+        domain=[
+            ('kind', '=', 'stock'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+        if exist:
+            table = TableHandler(cls, module_name)
+            exist &= all(table.column_exist(c) for c in account_names)
+
+        super(TemplateAccount, cls).__register__(module_name)
+
+        if not exist:
+            # Re-migration
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.extend(account_names)
+        value_names.extend(account_names)
+        super(TemplateAccount, cls)._migrate_property(
+            field_names, value_names, fields)
 
 
 class Product:

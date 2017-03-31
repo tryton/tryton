@@ -1,24 +1,53 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
-from trytond.pyson import Eval, Bool, Get
-from trytond.pool import PoolMeta
+from trytond.model import ModelSQL, ValueMixin, fields
+from trytond.pyson import Eval, Get
+from trytond.pool import PoolMeta, Pool
+from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'FiscalYear', 'AccountMove']
+__all__ = ['Configuration', 'ConfigurationStockJournal',
+    'ConfigurationCostPriceCounterpartAccount',
+    'FiscalYear', 'AccountMove']
+stock_journal = fields.Many2One(
+    'account.journal', "Stock Journal", required=True)
 
 
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'account.configuration'
-    stock_journal = fields.Property(fields.Many2One(
-            'account.journal', 'Stock Journal',
-            states={
-                'required': Bool(Eval('context', {}).get('company')),
-                }))
-    cost_price_counterpart_account = fields.Property(fields.Many2One(
-            'account.account', 'Cost Price Counterpart Account', domain=[
+    stock_journal = fields.MultiValue(stock_journal)
+    cost_price_counterpart_account = fields.MultiValue(fields.Many2One(
+            'account.account', "Cost Price Counterpart Account",
+            domain=[
                 ('company', 'in', [Get(Eval('context', {}), 'company'), None]),
                 ]))
+
+    @classmethod
+    def default_stock_journal(cls, **pattern):
+        return cls.multivalue_model('stock_journal').default_stock_journal()
+
+
+class ConfigurationStockJournal(ModelSQL, ValueMixin):
+    "Account Configuration Stock Journal"
+    __name__ = 'account.configuration.stock_journal'
+    stock_journal = stock_journal
+
+    @classmethod
+    def default_stock_journal(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id('account', 'journal_stock')
+
+
+class ConfigurationCostPriceCounterpartAccount(ModelSQL, CompanyValueMixin):
+    "Account Configuration Cost Price Counterpart Account"
+    __name__ = 'account.configuration.cost_price_counterpart_account'
+    cost_price_counterpart_account = fields.Many2One(
+        'account.account', "Cost Price Counterpart Account",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
 
 
 class FiscalYear:

@@ -11,9 +11,13 @@ def register():
     Pool.register(
         Move,
         Category,
+        CategoryAccount,
         Template,
+        TemplateAccount,
         Product,
         Configuration,
+        ConfigurationStockJournal,
+        ConfigurationCostPriceCounterpartAccount,
         FiscalYear,
         AccountMove,
         UpdateCostPriceAsk,
