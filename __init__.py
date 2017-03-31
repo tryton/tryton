@@ -10,4 +10,5 @@ def register():
     Pool.register(
         Sale,
         Party,
+        PartySaleInvoiceGroupingMethod,
         module='sale_invoice_grouping', type_='model')
