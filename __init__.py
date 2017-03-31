@@ -16,6 +16,7 @@ def register():
         Party,
         PartyIdentifier,
         Configuration,
+        ConfigurationSepaMandateSequence,
         module='account_payment_sepa', type_='model')
     Pool.register(
         MandateReport,
