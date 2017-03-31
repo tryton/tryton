@@ -145,12 +145,4 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data noupdate="1">
-        <record model="ir.property" id="property_package_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'package_sequence')]"/>
-            <field name="value"
-                eval="'ir.sequence,' + str(ref('sequence_package'))"/>
-        </record>
-    </data>
 </tryton>

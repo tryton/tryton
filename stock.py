@@ -1,23 +1,74 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-
+from trytond import backend
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.report import Report
 
-__all__ = ['Configuration', 'Package', 'Type', 'Move',
+__all__ = ['Configuration', 'ConfigurationSequence', 'Package', 'Type', 'Move',
     'ShipmentOut', 'ShipmentInReturn', 'PackageLabel']
 
 
 class Configuration:
     __metaclass__ = PoolMeta
     __name__ = 'stock.configuration'
-    package_sequence = fields.Property(fields.Many2One('ir.sequence',
-            'Package Sequence', domain=[
+    package_sequence = fields.MultiValue(fields.Many2One(
+            'ir.sequence', "Package Sequence", required=True,
+            domain=[
                 ('company', 'in', [Eval('context', {}).get('company'), None]),
                 ('code', '=', 'stock.package'),
-                ], required=True))
+                ]))
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'package_sequence':
+            return pool.get('stock.configuration.sequence')
+        return super(Configuration, cls).multivalue_model(field)
+
+    @classmethod
+    def default_package_sequence(cls, **pattern):
+        return cls.multivalue_model(
+            'package_sequence').default_package_sequence()
+
+
+class ConfigurationSequence:
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.configuration.sequence'
+    package_sequence = fields.Many2One(
+        'ir.sequence', "Package Sequence", required=True,
+        domain=[
+            ('company', 'in', [Eval('company', -1), None]),
+            ('code', '=', 'stock.package'),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+        if exist:
+            table = TableHandler(cls, module_name)
+            exist &= table.column_exist('package_sequence')
+
+        super(ConfigurationSequence, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('package_sequence')
+        value_names.append('package_sequence')
+        super(ConfigurationSequence, cls)._migrate_property(
+            field_names, value_names, fields)
+
+    @classmethod
+    def default_package_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id('stock_package', 'sequence_package')
 
 
 class Package(ModelSQL, ModelView):

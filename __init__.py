@@ -8,6 +8,7 @@ from .stock import *
 def register():
     Pool.register(
         Configuration,
+        ConfigurationSequence,
         Type,
         Package,
         Move,
