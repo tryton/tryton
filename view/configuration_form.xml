@@ -10,5 +10,4 @@ this repository contains the full copyright notices and license terms. -->
     <separator id="invoice" string="Invoice" colspan="4"/>
     <label name="tax_rounding"/>
     <field name="tax_rounding"/>
-    <field name="tax_roundings" colspan="2" yexpand="0"/>
 </form>

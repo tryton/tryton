@@ -1080,6 +1080,7 @@ class TaxableMixin(object):
         Configuration = pool.get('account.configuration')
 
         config = Configuration(1)
+        tax_rounding = config.tax_rounding
         taxes = {}
         with Transaction().set_context(self._get_tax_context()):
             taxable_lines = [_TaxableLine(*params)
@@ -1096,9 +1097,9 @@ class TaxableMixin(object):
                     else:
                         taxes[taxline]['base'] += taxline['base']
                         taxes[taxline]['amount'] += taxline['amount']
-                if config.tax_rounding == 'line':
+                if tax_rounding == 'line':
                     self._round_taxes(taxes)
-        if config.tax_rounding == 'document':
+        if tax_rounding == 'document':
             self._round_taxes(taxes)
         return taxes
 

@@ -41,9 +41,12 @@ def register():
         AgedBalanceContext,
         AgedBalance,
         Configuration,
+        ConfigurationDefaultAccount,
         Period,
         JournalType,
         Journal,
+        JournalSequence,
+        JournalAccount,
         JournalCashContext,
         JournalPeriod,
         Move,
@@ -75,6 +78,7 @@ def register():
         CreateMoveTemplate,
         CreateMoveKeywords,
         Party,
+        PartyAccount,
         module='account', type_='model')
     Pool.register(
         OpenType,

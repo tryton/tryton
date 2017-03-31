@@ -6,20 +6,29 @@ from sql import Literal, Null, Cast
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
-from trytond.model import fields
+from trytond import backend
+from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
+from trytond.tools.multivalue import migrate_property
+from trytond.modules.company.model import (
+    CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Party', 'PartyReplace']
+__all__ = ['Party', 'PartyAccount', 'PartyReplace']
+account_names = [
+    'account_payable', 'account_receivable',
+    'customer_tax_rule', 'supplier_tax_rule']
 
 
-class Party:
+class Party(CompanyMultiValueMixin):
     __metaclass__ = PoolMeta
     __name__ = 'party.party'
-    account_payable = fields.Property(fields.Many2One('account.account',
-            'Account Payable', domain=[
+    accounts = fields.One2Many('party.party.account', 'party', "Accounts")
+    account_payable = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Payable",
+            domain=[
                 ('kind', '=', 'payable'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -27,8 +36,9 @@ class Party:
                 'required': Bool(Eval('context', {}).get('company')),
                 'invisible': ~Eval('context', {}).get('company'),
                 }))
-    account_receivable = fields.Property(fields.Many2One('account.account',
-            'Account Receivable', domain=[
+    account_receivable = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Receivable",
+            domain=[
                 ('kind', '=', 'receivable'),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -36,8 +46,8 @@ class Party:
                 'required': Bool(Eval('context', {}).get('company')),
                 'invisible': ~Eval('context', {}).get('company'),
                 }))
-    customer_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
-            'Customer Tax Rule',
+    customer_tax_rule = fields.MultiValue(fields.Many2One(
+            'account.tax.rule', "Customer Tax Rule",
             domain=[
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ('kind', 'in', ['sale', 'both']),
@@ -45,8 +55,8 @@ class Party:
             states={
                 'invisible': ~Eval('context', {}).get('company'),
                 }, help='Apply this rule on taxes when party is customer.'))
-    supplier_tax_rule = fields.Property(fields.Many2One('account.tax.rule',
-            'Supplier Tax Rule',
+    supplier_tax_rule = fields.MultiValue(fields.Many2One(
+            'account.tax.rule', "Supplier Tax Rule",
             domain=[
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ('kind', 'in', ['purchase', 'both']),
@@ -72,6 +82,31 @@ class Party:
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
             'get_receivable_payable', searcher='search_receivable_payable')
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field in account_names:
+            return pool.get('party.party.account')
+        return super(Party, cls).multivalue_model(field)
+
+    @classmethod
+    def default_account_payable(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        account = config.get_multivalue(
+            'default_account_payable', **pattern)
+        return account.id if account else None
+
+    @classmethod
+    def default_account_receivable(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        account = config.get_multivalue(
+            'default_account_receivable', **pattern)
+        return account.id if account else None
 
     @classmethod
     def get_currency_digits(cls, parties, name):
@@ -195,6 +230,60 @@ class Party:
                     group_by=line.party,
                     having=Operator(amount, value))
         return [('id', 'in', query)]
+
+
+class PartyAccount(ModelSQL, CompanyValueMixin):
+    "Party Account"
+    __name__ = 'party.party.account'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    account_payable = fields.Many2One(
+        'account.account', "Account Payable",
+        domain=[
+            ('kind', '=', 'payable'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    account_receivable = fields.Many2One(
+        'account.account', "Account Receivable",
+        domain=[
+            ('kind', '=', 'receivable'),
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+    customer_tax_rule = fields.Many2One(
+        'account.tax.rule', "Customer Tax Rule",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('kind', 'in', ['sale', 'both']),
+            ],
+        depends=['company'])
+    supplier_tax_rule = fields.Many2One(
+        'account.tax.rule', "Supplier Tax Rule",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('kind', 'in', ['purchase', 'both']),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(PartyAccount, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.extend(account_names)
+        value_names.extend(account_names)
+        fields.append('company')
+        migrate_property(
+            'party.party', field_names, cls, value_names,
+            parent='party', fields=fields)
 
 
 class PartyReplace:

@@ -2004,44 +2004,18 @@ class CreateChart(Wizard):
 
     def transition_create_properties(self):
         pool = Pool()
-        Property = pool.get('ir.property')
-        ModelField = pool.get('ir.model.field')
+        Configuration = pool.get('account.configuration')
 
         with Transaction().set_context(company=self.properties.company.id):
-            account_receivable_field, = ModelField.search([
-                    ('model.model', '=', 'party.party'),
-                    ('name', '=', 'account_receivable'),
-                    ], limit=1)
-            properties = Property.search([
-                    ('field', '=', account_receivable_field.id),
-                    ('res', '=', None),
-                    ('company', '=', self.properties.company.id),
-                    ])
-            Property.delete(properties)
-            if self.properties.account_receivable:
-                Property.create([{
-                            'field': account_receivable_field.id,
-                            'value': str(
-                                self.properties.account_receivable),
-                            'company': self.properties.company.id,
-                            }])
-
-            account_payable_field, = ModelField.search([
-                    ('model.model', '=', 'party.party'),
-                    ('name', '=', 'account_payable'),
-                    ], limit=1)
-            properties = Property.search([
-                    ('field', '=', account_payable_field.id),
-                    ('res', '=', None),
-                    ('company', '=', self.properties.company.id),
-                    ])
-            Property.delete(properties)
-            if self.properties.account_payable:
-                Property.create([{
-                            'field': account_payable_field.id,
-                            'value': str(self.properties.account_payable),
-                            'company': self.properties.company.id,
-                            }])
+            account_receivable = self.properties.account_receivable
+            account_payable = self.properties.account_payable
+            config = Configuration(1)
+            config.set_multivalue(
+                'default_account_receivable',
+                account_receivable.id if account_receivable else None)
+            config.set_multivalue(
+                'default_account_payable',
+                account_payable.id if account_payable else None)
         return 'end'
 
 
