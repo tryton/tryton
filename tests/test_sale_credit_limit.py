@@ -26,8 +26,7 @@ class SaleCreditLimitTestCase(ModuleTestCase):
         Party = pool.get('party.party')
         Sale = pool.get('sale.sale')
         PaymentTerm = pool.get('account.invoice.payment_term')
-        Property = pool.get('ir.property')
-        ModelField = pool.get('ir.model.field')
+        Configuration = pool.get('account.configuration')
         FiscalYear = pool.get('account.fiscalyear')
 
         company = create_company()
@@ -75,15 +74,9 @@ class SaleCreditLimitTestCase(ModuleTestCase):
                                         }])
                             ],
                         }])
-            field, = ModelField.search([
-                    ('model.model', '=', 'product.template'),
-                    ('name', '=', 'account_revenue'),
-                    ], limit=1)
-            Property.create([{
-                    'field': field.id,
-                    'value': str(revenue),
-                    'company': company.id,
-                    }])
+            config = Configuration(1)
+            config.default_product_account_revenue = revenue
+            config.save()
             sale, = Sale.create([{
                         'party': party.id,
                         'company': company.id,
