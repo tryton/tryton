@@ -18,10 +18,13 @@ def register():
         UpdateAssetShowDepreciation,
         PrintDepreciationTableStart,
         Category,
+        CategoryAccount,
         Template,
+        TemplateAccount,
         Product,
         InvoiceLine,
         Configuration,
+        ConfigurationAssetSequence,
         Move,
         PurchaseLine,
         module='account_asset', type_='model')
