@@ -113,19 +113,15 @@ class TableHandlerInterface(object):
         '''
         raise NotImplementedError
 
-    def add_raw_column(self, column_name, column_type, column_format,
-            default_fun=None, field_size=None, migrate=True,
-            string=''):
+    def add_column(self, column_name, abstract_type, default=object(),
+            comment=''):
         '''
         Add a column
 
         :param column_name: the column name
-        :param column_type: the column definition
-        :param column_format: the function to format default value
-        :param default_fun: the function that return the default value
-        :param field_size: the size of the column if there is one
-        :param migrate: boolean to try to migrate the column if exists
-        :param string: the label of the column
+        :param abstract_type: the abstract type that will represent this column
+        :param default: the default value to use
+        :param comment: An optional comment on the column
         '''
         raise NotImplementedError
 

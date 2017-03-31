@@ -1,12 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import re
+import logging
+
 from trytond.transaction import Transaction
 from trytond.backend.table import TableHandlerInterface
-import logging
 
 __all__ = ['TableHandler']
 
 logger = logging.getLogger(__name__)
+VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
+_NO_DEFAULT = object()
 
 
 class TableHandler(TableHandlerInterface):
@@ -234,23 +238,26 @@ class TableHandler(TableHandlerInterface):
                 'ALTER COLUMN "' + column_name + '" SET DEFAULT %s',
                 (value,))
 
-    def add_raw_column(self, column_name, column_type, column_format,
-            default_fun=None, field_size=None, migrate=True, string=''):
+    def add_column(self, column_name, sql_type, default=_NO_DEFAULT,
+            comment=''):
         cursor = Transaction().connection.cursor()
+        database = Transaction().database
 
-        def comment():
-            if self.is_owner:
+        column_type = database.sql_type(sql_type)
+        match = VARCHAR_SIZE_RE.match(sql_type)
+        field_size = int(match.group(1)) if match else None
+
+        def add_comment():
+            if comment and self.is_owner:
                 cursor.execute('COMMENT ON COLUMN "%s"."%s" IS \'%s\'' %
-                    (self.table_name, column_name, string.replace("'", "''")))
+                    (self.table_name, column_name, comment.replace("'", "''")))
         if self.column_exist(column_name):
             if (column_name in ('create_date', 'write_date')
                     and column_type[1].lower() != 'timestamp(6)'):
                 # Migrate dates from timestamp(0) to timestamp
                 cursor.execute('ALTER TABLE "' + self.table_name + '" '
                     'ALTER COLUMN "' + column_name + '" TYPE timestamp')
-            comment()
-            if not migrate:
-                return
+            add_comment()
             base_type = column_type[0].lower()
             if base_type != self._columns[column_name]['typname']:
                 if (self._columns[column_name]['typname'], base_type) in [
@@ -290,19 +297,15 @@ class TableHandler(TableHandlerInterface):
         column_type = column_type[1]
         cursor.execute('ALTER TABLE "%s" ADD COLUMN "%s" %s'
             % (self.table_name, column_name, column_type))
-        comment()
+        add_comment()
 
-        if column_format:
+        if default is not _NO_DEFAULT:
             # check if table is non-empty:
             cursor.execute('SELECT 1 FROM "%s" limit 1' % self.table_name)
             if cursor.rowcount:
                 # Populate column with default values:
-                default = None
-                if default_fun is not None:
-                    default = default_fun()
                 cursor.execute('UPDATE "' + self.table_name + '" '
-                    'SET "' + column_name + '" = %s',
-                    (column_format(default),))
+                    'SET "' + column_name + '" = %s', (default,))
 
         self._update_definitions(columns=True)
 

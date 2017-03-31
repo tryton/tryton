@@ -105,10 +105,7 @@ class Translation(ModelSQL, ModelView):
         # Migration from 1.8: new field src_md5
         src_md5_exist = table.column_exist('src_md5')
         if not src_md5_exist:
-            table.add_raw_column('src_md5',
-                cls.src_md5.sql_type(),
-                cls.src_md5.sql_format, None,
-                cls.src_md5.size, string=cls.src_md5.string)
+            table.add_column('src_md5', cls.src_md5._sql_type)
         table.drop_constraint('translation_uniq')
         table.index_action(['lang', 'type', 'name', 'src'], 'remove')
 

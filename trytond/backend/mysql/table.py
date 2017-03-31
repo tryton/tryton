@@ -1,11 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import re
+import logging
 
 from trytond.transaction import Transaction
 from trytond.backend.table import TableHandlerInterface
-import logging
 
 logger = logging.getLogger(__name__)
+VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
+_NO_DEFAULT = object()
 
 
 class TableHandler(TableHandlerInterface):
@@ -178,11 +181,16 @@ class TableHandler(TableHandlerInterface):
                 self._column_definition(column_name, default=value)))
         self._update_definitions(columns=True)
 
-    def add_raw_column(self, column_name, column_type, column_format,
-            default_fun=None, field_size=None, migrate=True, string=''):
+    def add_column(self, column_name, sql_type, default=_NO_DEFAULT,
+            comment=''):
+        cursor = Transaction().connection.cursor()
+        database = Transaction().database
+
+        column_type = database.sql_type(sql_type)
+        match = VARCHAR_SIZE_RE.match(sql_type)
+        field_size = int(match.group(1)) if match else None
+
         if self.column_exist(column_name):
-            if not migrate:
-                return
             base_type = column_type[0].lower()
             convert = {
                 'char': 'varchar',
@@ -224,22 +232,17 @@ class TableHandler(TableHandlerInterface):
                         field_size)
             return
 
-        cursor = Transaction().connection.cursor()
         column_type = column_type[1]
         cursor.execute('ALTER TABLE `%s` ADD COLUMN `%s` %s' %
                 (self.table_name, column_name, column_type))
 
-        if column_format:
+        if default is not _NO_DEFAULT:
             # check if table is non-empty:
             cursor.execute('SELECT 1 FROM `%s` limit 1' % self.table_name)
             if cursor.rowcount:
                 # Populate column with default values:
-                default = None
-                if default_fun is not None:
-                    default = default_fun()
                 cursor.execute('UPDATE `' + self.table_name + '` '
-                    'SET `' + column_name + '` = %s',
-                    (column_format(default),))
+                    'SET `' + column_name + '` = %s', (default,))
 
         self._update_definitions(columns=True)
 

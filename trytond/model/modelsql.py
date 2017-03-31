@@ -149,34 +149,20 @@ class ModelSQL(ModelStorage):
             sql_type = field.sql_type()
             if not sql_type:
                 continue
-            default_fun = None
+
+            # Using a dict to specify the default values allows to not override
+            # the 'default' default value specified in the backend which is an
+            # object() hack
+            kwargs = {}
             if field_name in cls._defaults:
-                default_fun = cls._defaults[field_name]
+                default_ = cls._clean_defaults({
+                        field_name: cls._defaults[field_name](),
+                        })[field_name]
+                kwargs['default'] = field.sql_format(default_)
 
-                def unpack_wrapper(fun):
-                    def unpack_result(*a):
-                        try:
-                            # XXX ugly hack: some default fct try
-                            # to access the non-existing table
-                            result = fun(*a)
-                        except Exception:
-                            return None
-                        clean_results = cls._clean_defaults(
-                            {field_name: result})
-                        return clean_results[field_name]
-                    return unpack_result
-                default_fun = unpack_wrapper(default_fun)
-
-            if hasattr(field, 'size') and isinstance(field.size, int):
-                field_size = field.size
-            else:
-                field_size = None
-
-            table.add_raw_column(field_name, sql_type, field.sql_format,
-                default_fun, field_size, string=field.string)
+            table.add_column(field_name, field._sql_type, **kwargs)
             if cls._history:
-                history_table.add_raw_column(field_name, sql_type, None,
-                    string=field.string)
+                history_table.add_column(field_name, field._sql_type)
 
             if isinstance(field, (fields.Integer, fields.Float)):
                 # migration from tryton 2.2
@@ -255,16 +241,11 @@ class ModelSQL(ModelStorage):
     def _update_history_table(cls):
         TableHandler = backend.get('TableHandler')
         if cls._history:
-            table = TableHandler(cls)
             history_table = TableHandler(cls, history=True)
-            for column_name in table._columns:
-                string = ''
-                if column_name in cls._fields:
-                    string = cls._fields[column_name].string
-                history_table.add_raw_column(column_name,
-                    (table._columns[column_name]['typname'],
-                        table._columns[column_name]['typname']),
-                    None, string=string)
+            for field_name, field in cls._fields.iteritems():
+                if not field.sql_type():
+                    continue
+                history_table.add_column(field_name, field._sql_type)
 
     @classmethod
     def _get_error_messages(cls):

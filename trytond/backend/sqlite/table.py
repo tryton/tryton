@@ -10,6 +10,8 @@ import warnings
 __all__ = ['TableHandler']
 
 logger = logging.getLogger(__name__)
+VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
+_NO_DEFAULT = object()
 
 
 class TableHandler(TableHandlerInterface):
@@ -107,8 +109,7 @@ class TableHandler(TableHandlerInterface):
                     in self._columns.iteritems():
                 if column == old_name:
                     column = new_name
-                new_table.add_raw_column(column, typname, False,
-                    field_size=size)
+                new_table._add_raw_column(column, typname, field_size=size)
             new_columns = new_table._columns.keys()
             old_columns = [x if x != old_name else new_name
                 for x in new_columns]
@@ -176,11 +177,19 @@ class TableHandler(TableHandlerInterface):
     def db_default(self, column_name, value):
         warnings.warn('Unable to set default on column with SQLite backend')
 
-    def add_raw_column(self, column_name, column_type, column_format,
-            default_fun=None, field_size=None, migrate=True, string=''):
+    def add_column(self, column_name, sql_type, default=_NO_DEFAULT,
+            comment=''):
+        database = Transaction().database
+        column_type = database.sql_type(sql_type)
+        match = VARCHAR_SIZE_RE.match(sql_type)
+        field_size = int(match.group(1)) if match else None
+
+        self._add_raw_column(column_name, column_type, default, field_size,
+            comment)
+
+    def _add_raw_column(self, column_name, column_type, default=_NO_DEFAULT,
+            field_size=None, string=''):
         if self.column_exist(column_name):
-            if not migrate:
-                return
             base_type = column_type[0].upper()
             if base_type != self._columns[column_name]['typname']:
                 if (self._columns[column_name]['typname'], base_type) in [
@@ -219,21 +228,16 @@ class TableHandler(TableHandlerInterface):
 
         cursor = Transaction().connection.cursor()
         column_type = column_type[1]
-        default = ''
-        cursor.execute(('ALTER TABLE "%s" ADD COLUMN "%s" %s' + default) %
+        cursor.execute(('ALTER TABLE "%s" ADD COLUMN "%s" %s') %
                        (self.table_name, column_name, column_type))
 
-        if column_format:
+        if default is not _NO_DEFAULT:
             # check if table is non-empty:
             cursor.execute('SELECT 1 FROM "%s" limit 1' % self.table_name)
             if cursor.fetchone():
                 # Populate column with default values:
-                default = None
-                if default_fun is not None:
-                    default = default_fun()
                 cursor.execute('UPDATE "' + self.table_name + '" '
-                    'SET "' + column_name + '" = ?',
-                    (column_format(default),))
+                    'SET "' + column_name + '" = ?', (default,))
 
         self._update_definitions(columns=True)
 
@@ -302,8 +306,7 @@ class TableHandler(TableHandlerInterface):
         for name, (notnull, hasdef, size, typname) \
                 in self._columns.iteritems():
             if name != column_name:
-                new_table.add_raw_column(name, typname, True,
-                    field_size=size)
+                new_table._add_raw_column(name, typname, field_size=size)
         columns_name = [x for x in new_table._columns.keys()]
         cursor.execute(('INSERT INTO "%s" (' +
                         ','.join('"%s"' % c for c in columns_name) +
