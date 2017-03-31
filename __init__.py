@@ -28,6 +28,8 @@ def register():
         HandleInvoiceExceptionAsk,
         ReturnSaleStart,
         Configuration,
+        ConfigurationSequence,
+        ConfigurationSaleMethod,
         Invoice,
         InvoiceLine,
         module='sale', type_='model')

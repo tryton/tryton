@@ -1072,8 +1072,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                     'customer location in line "%(line)s".'),
                 'missing_account_revenue': ('Product "%(product)s" of sale '
                     '%(sale)s misses a revenue account.'),
-                'missing_account_revenue_property': ('Sale "%(sale)s" '
-                    'misses an "account revenue" default property.'),
+                'missing_default_account_revenue': ('Sale "%(sale)s" '
+                    'misses a default "account revenue".'),
                 })
 
     @classmethod
@@ -1309,8 +1309,9 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     def get_invoice_line(self):
         'Return a list of invoice lines for sale line'
         pool = Pool()
-        Property = pool.get('ir.property')
         InvoiceLine = pool.get('account.invoice.line')
+        AccountConfiguration = pool.get('account.configuration')
+        account_config = AccountConfiguration(1)
 
         invoice_line = InvoiceLine()
         invoice_line.type = self.type
@@ -1346,12 +1347,13 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                         'product': self.product.rec_name,
                         })
         else:
-            for model in ('product.template', 'product.category'):
-                invoice_line.account = Property.get('account_revenue', model)
+            for name in ['default_product_account_revenue',
+                    'default_category_account_revenue']:
+                invoice_line.account = account_config.get_multivalue(name)
                 if invoice_line.account:
                     break
             if not invoice_line.account:
-                self.raise_user_error('missing_account_revenue_property', {
+                self.raise_user_error('missing_default_account_revenue', {
                         'sale': self.sale.rec_name,
                         })
         invoice_line.stock_moves = self._get_invoice_line_moves()
