@@ -15,6 +15,9 @@ def register():
         Category,
         Template,
         Product,
+        ProductListPrice,
+        ProductCostPrice,
         TemplateCategory,
         Configuration,
+        ConfigurationDefaultCostPriceMethod,
         module='product', type_='model')

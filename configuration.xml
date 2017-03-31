@@ -30,10 +30,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
     <data noupdate="1">
-        <record model="ir.property" id="property_cost_price_method">
-            <field name="field"
-                search="[('model.model', '=', 'product.template'), ('name', '=', 'cost_price_method')]"/>
-            <field name="value">,fixed</field>
+        <record model="product.configuration.default_cost_price_method"
+            id="cost_price_method">
+            <field name="default_cost_price_method">fixed</field>
         </record>
     </data>
 </tryton>

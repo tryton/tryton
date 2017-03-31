@@ -9,9 +9,12 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 from trytond.config import config
+from trytond.tools.multivalue import migrate_property
+from trytond.modules.company.model import (
+    CompanyMultiValueMixin, CompanyValueMixin)
 
 __all__ = ['Template', 'Product', 'price_digits', 'TemplateFunction',
-    'TemplateCategory']
+    'ProductListPrice', 'ProductCostPrice', 'TemplateCategory']
 logger = logging.getLogger(__name__)
 
 STATES = {
@@ -31,7 +34,7 @@ COST_PRICE_METHODS = [
 price_digits = (16, config.getint('product', 'price_decimal', default=4))
 
 
-class Template(ModelSQL, ModelView):
+class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
     "Product Template"
     __name__ = "product.template"
     name = fields.Char('Name', size=None, required=True, translate=True,
@@ -44,12 +47,19 @@ class Template(ModelSQL, ModelView):
             'invisible': Eval('type', 'goods') != 'goods',
             },
         depends=['active', 'type'])
-    list_price = fields.Property(fields.Numeric('List Price', states=STATES,
-            digits=price_digits, depends=DEPENDS, required=True))
-    cost_price = fields.Property(fields.Numeric('Cost Price', states=STATES,
-            digits=price_digits, depends=DEPENDS, required=True))
-    cost_price_method = fields.Property(fields.Selection(COST_PRICE_METHODS,
-            'Cost Method', required=True, states=STATES, depends=DEPENDS))
+    list_price = fields.MultiValue(fields.Numeric(
+            "List Price", required=True, digits=price_digits,
+            states=STATES, depends=DEPENDS))
+    list_prices = fields.One2Many(
+        'product.list_price', 'template', "List Prices")
+    cost_price = fields.MultiValue(fields.Numeric(
+            "Cost Price", required=True, digits=price_digits,
+            states=STATES, depends=DEPENDS))
+    cost_price_method = fields.MultiValue(fields.Selection(
+            COST_PRICE_METHODS, "Cost Method", required=True,
+            states=STATES, depends=DEPENDS))
+    cost_prices = fields.One2Many(
+        'product.cost_price', 'template', "Cost Prices")
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
         states=STATES, depends=DEPENDS)
     default_uom_category = fields.Function(
@@ -90,6 +100,15 @@ class Template(ModelSQL, ModelView):
                 'The column "category" on table "%s" must be dropped manually',
                 cls._table)
 
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'list_price':
+            return pool.get('product.list_price')
+        elif field in {'cost_price', 'cost_price_method'}:
+            return pool.get('product.cost_price')
+        return super(Template, cls).multivalue_model(field)
+
     @staticmethod
     def default_active():
         return True
@@ -101,6 +120,12 @@ class Template(ModelSQL, ModelView):
     @staticmethod
     def default_consumable():
         return False
+
+    @classmethod
+    def default_cost_price_method(cls):
+        pool = Pool()
+        Configuration = pool.get('product.configuration')
+        return Configuration(1).default_cost_price_method
 
     @staticmethod
     def default_products():
@@ -291,6 +316,72 @@ class Product(ModelSQL, ModelView):
         for id_, rec_name, icon in super(Product, cls).search_global(text):
             icon = icon or 'tryton-product'
             yield id_, rec_name, icon
+
+
+class ProductListPrice(ModelSQL, CompanyValueMixin):
+    "Product List Price"
+    __name__ = 'product.list_price'
+    template = fields.Many2One(
+        'product.template', "Template", ondelete='CASCADE', select=True)
+    list_price = fields.Numeric("List Price", digits=price_digits)
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(ProductListPrice, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.append('list_price')
+        value_names.append('list_price')
+        fields.append('company')
+        migrate_property(
+            'product.template', field_names, cls, value_names,
+            parent='template', fields=fields)
+
+
+class ProductCostPrice(ModelSQL, CompanyValueMixin):
+    "Product Cost Price"
+    __name__ = 'product.cost_price'
+    template = fields.Many2One(
+        'product.template', "Template", ondelete='CASCADE', select=True)
+    cost_price = fields.Numeric(
+        "Cost Price", digits=price_digits)
+    cost_price_method = fields.Selection(
+        'get_cost_price_methods', "Cost Method")
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        exist = TableHandler.table_exist(cls._table)
+
+        super(ProductCostPrice, cls).__register__(module_name)
+
+        if not exist:
+            cls._migrate_property([], [], [])
+
+    @classmethod
+    def _migrate_property(cls, field_names, value_names, fields):
+        field_names.extend(['cost_price', 'cost_price_method'])
+        value_names.extend(['cost_price', 'cost_price_method'])
+        fields.append('company')
+        migrate_property(
+            'product.template', field_names, cls, value_names,
+            parent='template', fields=fields)
+
+    @classmethod
+    def get_cost_price_methods(cls):
+        pool = Pool()
+        Template = pool.get('product.template')
+        field_name = 'cost_price_method'
+        methods = Template.fields_get([field_name])[field_name]['selection']
+        methods.append((None, ''))
+        return methods
 
 
 class TemplateCategory(ModelSQL):
