@@ -286,8 +286,8 @@ class ModelStorage(Model):
                 if field_name in default:
                     data[field_name] = default[field_name]
                 elif (isinstance(cls._fields[field_name], fields.Function)
-                        and not isinstance(cls._fields[field_name],
-                            fields.Property)):
+                        and not isinstance(
+                            cls._fields[field_name], fields.MultiValue)):
                     del data[field_name]
                 elif ftype in ('many2one', 'one2one'):
                     try:
@@ -315,7 +315,7 @@ class ModelStorage(Model):
                 mptt.add(field.right)
         fields_names = [n for n, f in cls._fields.iteritems()
             if (not isinstance(f, fields.Function)
-                or isinstance(f, fields.Property))
+                or isinstance(f, fields.MultiValue))
             and n not in mptt]
         ids = map(int, records)
         datas = cls.read(ids, fields_names=fields_names)

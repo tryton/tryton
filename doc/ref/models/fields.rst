@@ -819,29 +819,25 @@ Instance methods:
     :class:`~trytond.model.Model` instance of the field, `name` is the name of
     the field, `clause` is a clause of :ref:`domain <topics-domain>`.
 
-Property
---------
+MultiValue
+----------
 
-.. class:: Property(field)
+.. class:: MultiValue(field)
 
-A property field that is like a :class:`Function` field but with predifined
-:attr:`~Function.getter`, :attr:`~Function.setter` and
-:attr:`~Function.searcher` that use the :class:`~trytond.model.ModelSQL`
-`ir.property` to store values.
+A multivalue field that is like a :class:`Function` field but with predefined
+:attr:`~Function.getter` and :attr:`~Function.setter` that use the
+:class:`~trytond.model.MultiValueMixin` for stored values.
 
-Instance methods:
+.. warning::
+    The :meth:`~trytond.model.MultiValueMixin.get_multivalue` and
+    :meth:`~trytond.model.MultiValueMixin.set_multivalue` should be prefered
+    over the descriptors of the field.
+..
 
-.. method:: Property.get(ids, model, name[, values])
-
-    Same as :meth:`Function.get`.
-
-.. method:: Property.set(ids, model, name, value)
-
-    Same as :meth:`Function.set`.
-
-.. method:: Property.search(model, name, clause)
-
-    Same as :meth:`Function.search`.
+.. warning::
+    The :ref:`default <topics-fields_default_value>` method of the field must
+    accept pattern as keyword argument.
+..
 
 Dict
 ----

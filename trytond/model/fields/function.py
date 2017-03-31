@@ -3,6 +3,7 @@
 
 import inspect
 import copy
+
 from trytond.model.fields.field import Field
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
@@ -116,3 +117,18 @@ class Function(Field):
 
     def __set__(self, inst, value):
         self._field.__set__(inst, value)
+
+
+class MultiValue(Function):
+
+    def __init__(self, field, loading='lazy'):
+        super(MultiValue, self).__init__(
+            field, '_multivalue_getter', setter='_multivalue_setter',
+            loading=loading)
+
+    def __copy__(self):
+        return MultiValue(copy.copy(self._field), loading=self.loading)
+
+    def __deepcopy__(self, memo):
+        return MultiValue(
+            copy.deepcopy(self._field, memo), loading=self.loading)

@@ -371,21 +371,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
-        <record model="ir.model.access" id="access_ir_property">
-            <field name="model" search="[('model', '=', 'ir.property')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_ir_property_admin">
-            <field name="model" search="[('model', '=', 'ir.property')]"/>
-            <field name="group" ref="group_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
         <record model="ir.model.access" id="access_ir_module">
             <field name="model" search="[('model', '=', 'ir.module')]"/>
             <field name="perm_read" eval="True"/>
@@ -692,14 +677,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.ui.menu-res.group" id="menu_rule_group_form_group_admin">
             <field name="menu" ref="ir.menu_rule_group_form"/>
-            <field name="group" ref="group_admin"/>
-        </record>
-        <record model="ir.ui.menu-res.group" id="menu_property_form_default_group_admin">
-            <field name="menu" ref="ir.menu_property_form_default"/>
-            <field name="group" ref="group_admin"/>
-        </record>
-        <record model="ir.ui.menu-res.group" id="menu_property_form_group_admin">
-            <field name="menu" ref="ir.menu_property_form"/>
             <field name="group" ref="group_admin"/>
         </record>
         <record model="ir.ui.menu-res.group" id="menu_modules_group_admin">

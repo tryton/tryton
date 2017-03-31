@@ -15,6 +15,7 @@ from .workflow import *
 from .copy_ import *
 from history import *
 from .field_context import *
+from . import multivalue
 
 
 def register():
@@ -101,7 +102,6 @@ def register():
         Reference,
         ReferenceTarget,
         ReferenceRequired,
-        Property,
         Selection,
         SelectionRequired,
         DictSchema,
@@ -193,6 +193,8 @@ def register():
     Pool.register(
         TestWizard,
         module='tests', type_='wizard')
+
+    multivalue.register('tests')
 
 
 def suite():

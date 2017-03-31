@@ -77,8 +77,6 @@ class Model(ModelSQL, ModelView):
 
     @classmethod
     def register(cls, model, module_name):
-        pool = Pool()
-        Property = pool.get('ir.property')
         cursor = Transaction().connection.cursor()
 
         ir_model = cls.__table__()
@@ -97,7 +95,6 @@ class Model(ModelSQL, ModelView):
                         ir_model.module],
                     [[model.__name__, model._get_name(), model.__doc__,
                             module_name]]))
-            Property._models_get_cache.clear()
             cursor.execute(*ir_model.select(ir_model.id,
                     where=ir_model.model == model.__name__))
             (model_id,) = cursor.fetchone()
@@ -123,31 +120,6 @@ class Model(ModelSQL, ModelView):
         'Return a list of all models with history'
         return [name for name, model in Pool().iterobject()
             if getattr(model, '_history', False)]
-
-    @classmethod
-    def create(cls, vlist):
-        pool = Pool()
-        Property = pool.get('ir.property')
-        res = super(Model, cls).create(vlist)
-        # Restart the cache of models_get
-        Property._models_get_cache.clear()
-        return res
-
-    @classmethod
-    def write(cls, models, values, *args):
-        pool = Pool()
-        Property = pool.get('ir.property')
-        super(Model, cls).write(models, values, *args)
-        # Restart the cache of models_get
-        Property._models_get_cache.clear()
-
-    @classmethod
-    def delete(cls, models):
-        pool = Pool()
-        Property = pool.get('ir.property')
-        super(Model, cls).delete(models)
-        # Restart the cache of models_get
-        Property._models_get_cache.clear()
 
     @classmethod
     def global_search(cls, text, limit, menu='ir.ui.menu'):

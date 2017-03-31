@@ -123,7 +123,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
         If with_rec_name is True, rec_name will be added.
         '''
         pool = Pool()
-        Property = pool.get('ir.property')
         value = {}
 
         default_rec_name = Transaction().context.get('default_rec_name')
@@ -140,8 +139,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
             if (field._type == 'boolean'
                     and field_name not in value):
                 value[field_name] = False
-            if isinstance(field, fields.Property):
-                value[field_name] = Property.get(field_name, cls.__name__)
             if (with_rec_name
                     and field._type in ('many2one',)
                     and value.get(field_name)):
@@ -243,10 +240,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
             if ((isinstance(cls._fields[field], fields.Function)
                         and not (cls._fields[field].searcher
                             or getattr(cls, 'domain_%s' % field, None)))
-                    or (cls._fields[field]._type in ('binary', 'sha'))
-                    or (isinstance(cls._fields[field], fields.Property)
-                        and isinstance(cls._fields[field]._field,
-                            fields.Many2One))):
+                    or (cls._fields[field]._type in ('binary', 'sha'))):
                 res[field]['searchable'] = False
             else:
                 res[field]['searchable'] = True

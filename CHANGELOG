@@ -1,3 +1,5 @@
+* Remove Property field
+* Add MultiValueMixin and ValueMixin
 * Use sql type in column creation
 * Use generic SQL type in field and let backend determine the SQLType
 * Add filter to xxx2Many fields

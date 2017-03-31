@@ -38,7 +38,6 @@ __all__ = [
     'Many2ManyFilterDomain', 'Many2ManyFilterDomainTarget',
     'Many2ManyFilterDomainRelation',
     'Reference', 'ReferenceTarget', 'ReferenceRequired',
-    'Property',
     'Selection', 'SelectionRequired',
     'DictSchema', 'Dict', 'DictDefault', 'DictRequired',
     'Binary', 'BinaryDefault', 'BinaryRequired', 'BinaryFileStorage',
@@ -718,20 +717,6 @@ class ReferenceRequired(ModelSQL):
             (None, ''),
             ('test.reference.target', 'Target'),
             ], required=True)
-
-
-class Property(ModelSQL):
-    'Property'
-    __name__ = 'test.property'
-    char = fields.Property(fields.Char('Test Char'))
-    many2one = fields.Property(fields.Many2One('test.char',
-            'Test Many2One'))
-    numeric = fields.Property(fields.Numeric('Test Numeric'))
-    selection = fields.Property(fields.Selection([
-                (None, ''),
-                ('option_a', 'Option A'),
-                ('option_b', 'Option B')
-            ], 'Test Selection'))
 
 
 class Selection(ModelSQL):
