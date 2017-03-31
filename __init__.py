@@ -11,7 +11,9 @@ from .account import *
 def register():
     Pool.register(
         Category,
+        CategoryAccount,
         Template,
+        TemplateAccount,
         Product,
         Move,
         InvoiceLine,
