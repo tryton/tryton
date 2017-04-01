@@ -36,7 +36,10 @@ class ConfigurationStockJournal(ModelSQL, ValueMixin):
     def default_stock_journal(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('account', 'journal_stock')
+        try:
+            return ModelData.get_id('account', 'journal_stock')
+        except KeyError:
+            return None
 
 
 class ConfigurationCostPriceCounterpartAccount(ModelSQL, CompanyValueMixin):
