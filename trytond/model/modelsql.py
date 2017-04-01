@@ -150,17 +150,15 @@ class ModelSQL(ModelStorage):
             if not sql_type:
                 continue
 
-            # Using a dict to specify the default values allows to not override
-            # the 'default' default value specified in the backend which is an
-            # object() hack
-            kwargs = {}
+            default = None
             if field_name in cls._defaults:
-                default_ = cls._clean_defaults({
-                        field_name: cls._defaults[field_name](),
-                        })[field_name]
-                kwargs['default'] = field.sql_format(default_)
+                def default():
+                    default_ = cls._clean_defaults({
+                            field_name: cls._defaults[field_name](),
+                            })[field_name]
+                    return field.sql_format(default_)
 
-            table.add_column(field_name, field._sql_type, **kwargs)
+            table.add_column(field_name, field._sql_type, default=default)
             if cls._history:
                 history_table.add_column(field_name, field._sql_type)
 

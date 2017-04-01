@@ -11,7 +11,6 @@ __all__ = ['TableHandler']
 
 logger = logging.getLogger(__name__)
 VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
-_NO_DEFAULT = object()
 
 
 class TableHandler(TableHandlerInterface):
@@ -177,8 +176,7 @@ class TableHandler(TableHandlerInterface):
     def db_default(self, column_name, value):
         warnings.warn('Unable to set default on column with SQLite backend')
 
-    def add_column(self, column_name, sql_type, default=_NO_DEFAULT,
-            comment=''):
+    def add_column(self, column_name, sql_type, default=None, comment=''):
         database = Transaction().database
         column_type = database.sql_type(sql_type)
         match = VARCHAR_SIZE_RE.match(sql_type)
@@ -187,7 +185,7 @@ class TableHandler(TableHandlerInterface):
         self._add_raw_column(column_name, column_type, default, field_size,
             comment)
 
-    def _add_raw_column(self, column_name, column_type, default=_NO_DEFAULT,
+    def _add_raw_column(self, column_name, column_type, default=None,
             field_size=None, string=''):
         if self.column_exist(column_name):
             base_type = column_type[0].upper()
@@ -231,13 +229,13 @@ class TableHandler(TableHandlerInterface):
         cursor.execute(('ALTER TABLE "%s" ADD COLUMN "%s" %s') %
                        (self.table_name, column_name, column_type))
 
-        if default is not _NO_DEFAULT:
+        if default:
             # check if table is non-empty:
             cursor.execute('SELECT 1 FROM "%s" limit 1' % self.table_name)
             if cursor.fetchone():
                 # Populate column with default values:
                 cursor.execute('UPDATE "' + self.table_name + '" '
-                    'SET "' + column_name + '" = ?', (default,))
+                    'SET "' + column_name + '" = ?', (default(),))
 
         self._update_definitions(columns=True)
 

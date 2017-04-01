@@ -8,7 +8,6 @@ from trytond.backend.table import TableHandlerInterface
 
 logger = logging.getLogger(__name__)
 VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
-_NO_DEFAULT = object()
 
 
 class TableHandler(TableHandlerInterface):
@@ -181,8 +180,7 @@ class TableHandler(TableHandlerInterface):
                 self._column_definition(column_name, default=value)))
         self._update_definitions(columns=True)
 
-    def add_column(self, column_name, sql_type, default=_NO_DEFAULT,
-            comment=''):
+    def add_column(self, column_name, sql_type, default=None, comment=''):
         cursor = Transaction().connection.cursor()
         database = Transaction().database
 
@@ -236,13 +234,13 @@ class TableHandler(TableHandlerInterface):
         cursor.execute('ALTER TABLE `%s` ADD COLUMN `%s` %s' %
                 (self.table_name, column_name, column_type))
 
-        if default is not _NO_DEFAULT:
+        if default:
             # check if table is non-empty:
             cursor.execute('SELECT 1 FROM `%s` limit 1' % self.table_name)
             if cursor.rowcount:
                 # Populate column with default values:
                 cursor.execute('UPDATE `' + self.table_name + '` '
-                    'SET `' + column_name + '` = %s', (default,))
+                    'SET `' + column_name + '` = %s', (default(),))
 
         self._update_definitions(columns=True)
 

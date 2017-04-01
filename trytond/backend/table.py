@@ -113,14 +113,13 @@ class TableHandlerInterface(object):
         '''
         raise NotImplementedError
 
-    def add_column(self, column_name, abstract_type, default=object(),
-            comment=''):
+    def add_column(self, column_name, abstract_type, default=None, comment=''):
         '''
         Add a column
 
         :param column_name: the column name
         :param abstract_type: the abstract type that will represent this column
-        :param default: the default value to use
+        :param default: the method that return default value to use
         :param comment: An optional comment on the column
         '''
         raise NotImplementedError
