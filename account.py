@@ -66,8 +66,11 @@ class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
     def default_landed_cost_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id(
-            'account_stock_landed_cost', 'sequence_landed_cost')
+        try:
+            return ModelData.get_id(
+                'account_stock_landed_cost', 'sequence_landed_cost')
+        except KeyError:
+            return None
 
 
 class LandedCost(Workflow, ModelSQL, ModelView):
