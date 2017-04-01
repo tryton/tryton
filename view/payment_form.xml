@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//group[@id='buttons']" position="inside">
+        <button string="Stripe Checkout" name="stripe_checkout"/>
+    </xpath>
+    <xpath expr="/form" position="inside">
+        <field name="stripe_checkout_needed" invisible="1" colspan="4"/>
+    </xpath>
+    <xpath expr="//field[@name='description']" position="after">
+        <label name="stripe_error_message"/>
+        <field name="stripe_error_message"/>
+        <newline/>
+        <label name="stripe_error_code"/>
+        <field name="stripe_error_code"/>
+        <label name="stripe_error_param"/>
+        <field name="stripe_error_param"/>
+    </xpath>
+</data>

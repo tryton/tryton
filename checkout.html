@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Stripe Checkout</title>
+    </head>
+    <body>
+        <py:for each="record in records[:1]">
+        <script src="https://checkout.stripe.com/checkout.js">
+        </script>
+        <div style="display: block; text-align: center">
+            <h1>Stripe Checkout for ${record.party.rec_name}</h1>
+            <form method="POST" id="form">
+                <button id="customButton"
+                        style="cursor:pointer;
+                        padding: 0.5em 1em; font-size:2em;
+                        border: 1px solid #2E6DA4; border-radius: 4px;
+                        color: #FFF; background-color: #337AB7;">
+                    <py:choose test="data['model']">
+                    <py:when test="'account.payment'">
+                    Pay ${record.currency.symbol}${record.amount}
+                    </py:when>
+                    <py:when test="'account.payment.stripe.customer'">
+                    Register
+                    </py:when>
+                    </py:choose>
+                </button>
+                <input type="hidden" name="stripeToken" id="token"/>
+            </form>
+        </div>
+        <script>
+            function ready(fn) {
+                if (document.readyState != 'loading') {
+                    fn();
+                } else {
+                    document.addEventListener('DOMContentLoaded', fn);
+                }
+            }
+            var handler = StripeCheckout.configure({
+                key: '${record.stripe_account.publishable_key}',
+                // TODO image
+                locale: 'auto',
+                token: function(token) {
+                    document.getElementById('token')
+                        .setAttribute('value', token.id);
+                    document.getElementById('form')
+                        .submit();
+                }
+            });
+            function handler_open() {
+                handler.open({
+                    name: '${record.stripe_account.name}',
+                    zipCode: ${'true' if record.stripe_account.zip_code else 'false'},
+                    <py:if test="data['model'] == 'account.payment'">
+                    description: '${record.description}',
+                    currency: '${record.currency.code}',
+                    amount: ${record.stripe_amount},
+                    </py:if>
+                    email: '${record.party.email}'
+                });
+            }
+            document.getElementById('customButton')
+                .addEventListener('click', function(e) {
+                    handler_open();
+                    e.preventDefault();
+                });
+            window.addEventListener('popstate', function() {
+                handler.close();
+            });
+            ready(function() {
+                handler_open();
+                return false;
+            });
+        </script>
+        </py:for>
+    </body>
+</html>
