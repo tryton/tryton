@@ -354,8 +354,11 @@ class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
     def default_payment_group_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id(
-            'account_payment', 'sequence_account_payment_group')
+        try:
+            return ModelData.get_id(
+                'account_payment', 'sequence_account_payment_group')
+        except KeyError:
+            return None
 
 
 class Invoice:
