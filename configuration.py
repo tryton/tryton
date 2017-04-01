@@ -34,7 +34,10 @@ def default_sequence(name):
     def default(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('stock', name)
+        try:
+            return ModelData.get_id('stock', name)
+        except KeyError:
+            return None
     return default
 
 
@@ -211,4 +214,7 @@ class ConfigurationLocation(ModelSQL, ValueMixin):
     def default_shipment_internal_transit(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('stock', 'location_transit')
+        try:
+            return ModelData.get_id('stock', 'location_transit')
+        except KeyError:
+            return None

@@ -462,13 +462,19 @@ class PartyLocation(ModelSQL, ValueMixin):
     def default_supplier_location(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('stock', 'location_supplier')
+        try:
+            return ModelData.get_id('stock', 'location_supplier')
+        except KeyError:
+            return None
 
     @classmethod
     def default_customer_location(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('stock', 'location_customer')
+        try:
+            return ModelData.get_id('stock', 'location_customer')
+        except KeyError:
+            return None
 
 
 class ProductsByLocationsContext(ModelView):
