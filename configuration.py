@@ -28,7 +28,7 @@ class Configuration:
         return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
-    def default_sale_opportunity_sequence(cls):
+    def default_sale_opportunity_sequence(cls, **pattern):
         return cls.multivalue_model(
             'sale_opportunity_sequence').default_sale_opportunity_sequence()
 
