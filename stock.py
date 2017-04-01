@@ -68,7 +68,10 @@ class ConfigurationSequence:
     def default_package_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('stock_package', 'sequence_package')
+        try:
+            return ModelData.get_id('stock_package', 'sequence_package')
+        except KeyError:
+            return None
 
 
 class Package(ModelSQL, ModelView):
