@@ -68,5 +68,8 @@ class ConfigurationSequence:
     def default_sale_opportunity_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id(
-            'sale_opportunity', 'sequence_sale_opportunity')
+        try:
+            return ModelData.get_id(
+                'sale_opportunity', 'sequence_sale_opportunity')
+        except KeyError:
+            return None
