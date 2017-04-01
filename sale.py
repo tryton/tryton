@@ -70,7 +70,10 @@ class ConfigurationSequence:
     def default_complaint_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('sale_complaint', 'sequence_complaint')
+        try:
+            return ModelData.get_id('sale_complaint', 'sequence_complaint')
+        except KeyError:
+            return None
 
 
 class Sale:
