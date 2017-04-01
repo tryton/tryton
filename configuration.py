@@ -64,4 +64,7 @@ class ConfigurationProductionSequence(ModelSQL, CompanyValueMixin):
     def default_production_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('production', 'sequence_production')
+        try:
+            return ModelData.get_id('production', 'sequence_production')
+        except KeyError:
+            return None
