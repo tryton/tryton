@@ -62,6 +62,9 @@ class Function(Field):
     def set_rpc(self, model):
         self._field.set_rpc(model)
 
+    def sql_format(self, value):
+        return self._field.sql_format(value)
+
     def sql_type(self):
         return None
 
