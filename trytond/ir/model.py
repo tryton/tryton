@@ -1079,7 +1079,7 @@ class ModelData(ModelSQL, ModelView):
             ('fs_id', '=', fs_id),
             ], limit=1)
         if not data:
-            raise Exception("Reference to %s not found"
+            raise KeyError("Reference to %s not found"
                 % ".".join([module, fs_id]))
         id_ = cls.read([d.id for d in data], ['db_id'])[0]['db_id']
         cls._get_id_cache.set(key, id_)
