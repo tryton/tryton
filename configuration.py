@@ -99,7 +99,10 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
     def default_sale_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('sale', 'sequence_sale')
+        try:
+            return ModelData.get_id('sale', 'sequence_sale')
+        except KeyError:
+            return None
 
 
 class ConfigurationSaleMethod(ModelSQL, ValueMixin):
