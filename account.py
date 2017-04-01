@@ -60,7 +60,10 @@ class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
     def default_asset_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id('account_asset', 'sequence_asset')
+        try:
+            return ModelData.get_id('account_asset', 'sequence_asset')
+        except KeyError:
+            return None
 
 
 class Move:
