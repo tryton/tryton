@@ -90,8 +90,11 @@ class ConfigurationSequence:
     def default_purchase_requisition_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id(
-            'purchase_requisition', 'sequence_purchase_requisition')
+        try:
+            return ModelData.get_id(
+                'purchase_requisition', 'sequence_purchase_requisition')
+        except KeyError:
+            return None
 
 
 class PurchaseRequisition(Workflow, ModelSQL, ModelView):
