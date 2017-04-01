@@ -77,8 +77,11 @@ class ConfigurationSequence:
     def default_shipment_drop_sequence(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id(
-            'sale_supply_drop_shipment', 'sequence_shipment_drop')
+        try:
+            return ModelData.get_id(
+                'sale_supply_drop_shipment', 'sequence_shipment_drop')
+        except KeyError:
+            return None
 
 
 class ShipmentDrop(Workflow, ModelSQL, ModelView):

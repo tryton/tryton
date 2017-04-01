@@ -52,8 +52,11 @@ class SaleConfigSaleDropLocation(ModelSQL, ValueMixin):
     def default_sale_drop_location(cls):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        return ModelData.get_id(
-            'sale_supply_drop_shipment', 'location_drop')
+        try:
+            return ModelData.get_id(
+                'sale_supply_drop_shipment', 'location_drop')
+        except KeyError:
+            return None
 
 
 class Sale:
