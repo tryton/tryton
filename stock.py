@@ -26,6 +26,7 @@ class StockSupply(Wizard):
         super(StockSupply, cls).__setup__()
         cls._error_messages.update({
                 'late_supplier_moves': 'There are some late supplier moves.',
+                'late_customer_moves': 'There are some late customer moves.',
                 })
 
     @classmethod
@@ -52,8 +53,16 @@ class StockSupply(Wizard):
                     ('state', '=', 'draft'),
                     ('planned_date', '<', today),
                     ], order=[]):
-            self.raise_user_warning('%s@%s' % (self.__name__, today),
+            self.raise_user_warning('%s.supplier@%s' % (self.__name__, today),
                 'late_supplier_moves')
+        if Move.search([
+                    ('from_location.type', '=', 'storage'),
+                    ('to_location.type', '=', 'customer'),
+                    ('state', '=', 'draft'),
+                    ('planned_date', '<', today),
+                    ], order=[]):
+            self.raise_user_warning('%s.customer@%s' % (self.__name__, today),
+                'late_customer_moves')
 
         first = True
         created = False
