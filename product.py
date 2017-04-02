@@ -99,6 +99,14 @@ class Product:
     __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
+    purchase_price_uom = fields.Function(fields.Numeric(
+            "Purchase Price", digits=price_digits), 'get_purchase_price_uom')
+
+    @classmethod
+    def get_purchase_price_uom(cls, products, name):
+        quantity = Transaction().context.get('quantity', 0)
+        return cls.get_purchase_price(products, quantity=quantity)
+
     @classmethod
     def get_purchase_price(cls, products, quantity=0):
         '''
@@ -135,20 +143,22 @@ class Product:
             default_uom = product.default_uom
             default_currency = (user.company.currency if user.company
                 else None)
-            if not uom:
-                uom = default_uom
+            if not uom or default_uom.category != uom.category:
+                product_uom = default_uom
+            else:
+                product_uom = uom
             pattern = ProductSupplier.get_pattern()
             for product_supplier in product.product_suppliers:
                 if product_supplier.match(pattern):
                     pattern = ProductSupplierPrice.get_pattern()
                     for price in product_supplier.prices:
-                        if price.match(quantity, uom, pattern):
+                        if price.match(quantity, product_uom, pattern):
                             prices[product.id] = price.unit_price
                             default_uom = product_supplier.uom
                             default_currency = product_supplier.currency
                     break
             prices[product.id] = Uom.compute_price(
-                default_uom, prices[product.id], uom)
+                default_uom, prices[product.id], product_uom)
             if currency and default_currency:
                 date = context.get('purchase_date') or today
                 with Transaction().set_context(date=date):

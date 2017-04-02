@@ -912,6 +912,13 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             'stock_date_end': Eval('_parent_purchase', {}).get(
                 'purchase_date'),
             'stock_skip_warehouse': True,
+            # From _get_context_purchase_price
+            'currency': Eval('_parent_purchase', {}).get('currency'),
+            'supplier': Eval('_parent_purchase', {}).get('party'),
+            'purchase_date': Eval('_parent_purchase', {}).get('purchase_date'),
+            'uom': Eval('unit'),
+            'taxes': Eval('taxes', []),
+            'quantity': Eval('quantity'),
             }, depends=['type', 'purchase_state'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
