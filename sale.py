@@ -49,6 +49,8 @@ class SaleLine:
         cls.quantity.on_change.add('_parent_sale.price_list')
         cls.unit.on_change.add('_parent_sale.price_list')
         cls.product.on_change.add('_parent_sale.price_list')
+        cls.product.context['price_list'] = Eval(
+            '_parent_sale', {}).get('price_list')
 
     def _get_context_sale_price(self):
         context = super(SaleLine, self)._get_context_sale_price()
