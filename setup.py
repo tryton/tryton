@@ -27,7 +27,7 @@ def get_require_version(name):
         major_version, minor_version + 1)
     return require
 
-config = ConfigParser.ConfigParser()
+config = ConfigParser()
 config.readfp(open('tryton.cfg'))
 info = dict(config.items('tryton'))
 for key in ('depends', 'extras_depend', 'xml'):
@@ -49,7 +49,7 @@ if minor_version % 2:
 
 requires = ['simpleeval']
 for dep in info.get('depends', []):
-    if not re.match(r'(ir|res|webdav)(\W|$)', dep):
+    if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
