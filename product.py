@@ -303,12 +303,15 @@ class Product(ModelSQL, ModelView):
         field = name[:-4]
         if Transaction().context.get('uom'):
             to_uom = Uom(Transaction().context['uom'])
-            for product in products:
-                res[product.id] = Uom.compute_price(
-                    product.default_uom, getattr(product, field), to_uom)
         else:
-            for product in products:
-                res[product.id] = getattr(product, field)
+            to_uom = None
+        for product in products:
+            price = getattr(product, field)
+            if to_uom and product.default_uom.category == to_uom.category:
+                res[product.id] = Uom.compute_price(
+                    product.default_uom, price, to_uom)
+            else:
+                res[product.id] = price
         return res
 
     @classmethod
