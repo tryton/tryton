@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
 from decimal import Decimal
 from itertools import groupby, chain
 from functools import partial
@@ -788,7 +789,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         line_id, move = move
         line = SaleLine(line_id)
 
-        planned_date = max(m.planned_date for m in moves)
+        if any(m.planned_date is None for m in moves):
+            planned_date = None
+        else:
+            planned_date = max(m.planned_date for m in moves)
         return (
             ('planned_date', planned_date),
             ('warehouse', line.warehouse.id),
@@ -1299,7 +1303,10 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 return
         if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
-            return self.product.compute_shipping_date(date=date)
+            shipping_date = self.product.compute_shipping_date(date=date)
+            if shipping_date == datetime.date.max:
+                return None
+            return shipping_date
 
     @fields.depends('sale', '_parent_sale.state')
     def on_change_with_sale_state(self, name=None):

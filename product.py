@@ -29,7 +29,6 @@ class Template:
     lead_time = fields.TimeDelta('Lead Time', states={
             'readonly': ~Eval('active', True),
             'invisible': ~Eval('salable', False),
-            'required': Eval('salable', False),
             },
         depends=['active', 'salable'])
 
@@ -148,4 +147,6 @@ class Product:
 
         if not date:
             date = Date.today()
+        if self.lead_time is None:
+            return datetime.date.max
         return date + self.lead_time
