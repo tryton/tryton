@@ -7,6 +7,7 @@ from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond import backend
+from trytond.modules.product import price_digits
 
 __all__ = ['Template', 'Product']
 
@@ -98,6 +99,14 @@ class Product:
     __metaclass__ = PoolMeta
     __name__ = 'product.product'
 
+    sale_price_uom = fields.Function(fields.Numeric(
+            "Sale Price", digits=price_digits), 'get_sale_price_uom')
+
+    @classmethod
+    def get_sale_price_uom(cls, products, name):
+        quantity = Transaction().context.get('quantity', 0)
+        return cls.get_sale_price(products, quantity=quantity)
+
     @staticmethod
     def get_sale_price(products, quantity=0):
         '''
@@ -127,7 +136,7 @@ class Product:
 
         for product in products:
             prices[product.id] = product.list_price
-            if uom:
+            if uom and product.default_uom.category == uom.category:
                 prices[product.id] = Uom.compute_price(
                     product.default_uom, prices[product.id], uom)
             if currency and user.company:

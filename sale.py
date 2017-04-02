@@ -1008,6 +1008,13 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 [Eval('_parent_sale', {}).get('warehouse', 0)], []),
             'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
             'stock_skip_warehouse': True,
+            # From _get_context_sale_price
+            'currency': Eval('_parent_sale', {}).get('currency'),
+            'customer': Eval('_parent_sale', {}).get('party'),
+            'sale_date': Eval('_parent_sale', {}).get('sale_date'),
+            'uom': Eval('unit'),
+            'taxes': Eval('taxes', []),
+            'quantity': Eval('quantity'),
             }, depends=['type', 'sale_state'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),

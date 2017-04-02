@@ -4,6 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="code"/>
     <field name="name"/>
+    <field name="sale_price_uom"/>
     <field name="list_price_uom"/>
     <field name="cost_price_uom"/>
     <field name="quantity"/>
