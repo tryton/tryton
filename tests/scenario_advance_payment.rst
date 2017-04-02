@@ -301,7 +301,7 @@ The advance payment invoice has been created, now pay it::
     >>> pay.form.journal = cash_journal
     >>> pay.execute('choice')
 
-There is now a purchase request of the deisred quantity::
+There is now a purchase request of the desired quantity::
 
     >>> purchase_request, = PurchaseRequest.find()
     >>> purchase_request.quantity
