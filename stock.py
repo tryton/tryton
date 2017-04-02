@@ -136,16 +136,21 @@ class ShipmentOut:
             ]
 
     @classmethod
-    @Workflow.transition('packed')
-    def pack(cls, shipments):
-        super(ShipmentOut, cls).pack(shipments)
+    def validate(cls, shipments):
+        super(ShipmentOut, cls).validate(shipments)
         for shipment in shipments:
             if shipment.carrier and shipment.carrier.shipping_service:
                 method_name = ('validate_packing_%s'
                     % shipment.carrier.shipping_service)
                 validator = getattr(shipment, method_name)
                 validator()
-            elif not shipment.carrier:
+
+    @classmethod
+    @Workflow.transition('packed')
+    def pack(cls, shipments):
+        super(ShipmentOut, cls).pack(shipments)
+        for shipment in shipments:
+            if not shipment.carrier:
                 cls.raise_user_warning(
                     'shipment_out_no_carrier_%s' % shipment.id,
                     'shipment_without_carrier', {
