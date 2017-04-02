@@ -1,22 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard, StateTransition
+from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.const import OPERATORS
 from trytond import backend
 
-__all__ = ['Period', 'ClosePeriod', 'ReOpenPeriod']
+__all__ = ['Period']
 
 _STATES = {
-    'readonly': Eval('state') == 'close',
+    'readonly': Eval('state') != 'open',
 }
 _DEPENDS = ['state']
 
 
-class Period(ModelSQL, ModelView):
+class Period(Workflow, ModelSQL, ModelView):
     'Period'
     __name__ = 'account.period'
     name = fields.Char('Name', required=True)
@@ -29,9 +28,10 @@ class Period(ModelSQL, ModelView):
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
         required=True, states=_STATES, depends=_DEPENDS, select=True)
     state = fields.Selection([
-        ('open', 'Open'),
-        ('close', 'Close'),
-        ], 'State', readonly=True, required=True)
+            ('open', 'Open'),
+            ('close', 'Close'),
+            ('locked', 'Locked'),
+            ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
         domain=[
             ('code', '=', 'account.move'),
@@ -48,6 +48,7 @@ class Period(ModelSQL, ModelView):
         states=_STATES, depends=_DEPENDS, select=True)
     company = fields.Function(fields.Many2One('company.company', 'Company',),
         'on_change_with_company', searcher='search_company')
+    icon = fields.Function(fields.Char("Icon"), 'get_icon')
 
     @classmethod
     def __register__(cls, module_name):
@@ -85,6 +86,22 @@ class Period(ModelSQL, ModelView):
                 'fiscalyear_dates': ('Dates of period "%s" are outside '
                     'are outside it\'s fiscal year dates.'),
                 })
+        cls._transitions |= set((
+                ('open', 'close'),
+                ('close', 'locked'),
+                ('close', 'open'),
+                ))
+        cls._buttons.update({
+                'close': {
+                    'invisible': Eval('state') != 'open',
+                    },
+                'reopen': {
+                    'invisible': Eval('state') != 'close',
+                    },
+                'lock': {
+                    'invisible': Eval('state') != 'close',
+                    },
+                })
 
     @staticmethod
     def default_state():
@@ -102,6 +119,13 @@ class Period(ModelSQL, ModelView):
     @classmethod
     def search_company(cls, name, clause):
         return [('fiscalyear.%s' % name,) + tuple(clause[1:])]
+
+    def get_icon(self, name):
+        return {
+            'open': 'tryton-open',
+            'close': 'tryton-close',
+            'locked': 'tryton-readonly',
+            }.get(self.state)
 
     @classmethod
     def validate(cls, periods):
@@ -177,7 +201,7 @@ class Period(ModelSQL, ModelView):
             ('type', '=', 'standard'),
             ]
         if test_state:
-            clause.append(('state', '!=', 'close'))
+            clause.append(('state', '=', 'open'))
         periods = cls.search(clause, order=[('start_date', 'DESC')], limit=1)
         if not periods:
             if exception:
@@ -237,7 +261,7 @@ class Period(ModelSQL, ModelView):
         for vals in vlist:
             if vals.get('fiscalyear'):
                 fiscalyear = FiscalYear(vals['fiscalyear'])
-                if fiscalyear.state == 'close':
+                if fiscalyear.state != 'open':
                     cls.raise_user_error('create_period_closed_fiscalyear',
                         (fiscalyear.rec_name,))
                 if not vals.get('post_move_sequence'):
@@ -262,7 +286,7 @@ class Period(ModelSQL, ModelView):
                     break
             if values.get('state') == 'open':
                 for period in periods:
-                    if period.fiscalyear.state == 'close':
+                    if period.fiscalyear.state != 'open':
                         cls.raise_user_error('open_period_closed_fiscalyear', {
                                 'period': period.rec_name,
                                 'fiscalyear': period.fiscalyear.rec_name,
@@ -287,10 +311,18 @@ class Period(ModelSQL, ModelView):
         super(Period, cls).delete(periods)
 
     @classmethod
+    @ModelView.button
+    @Workflow.transition('close')
     def close(cls, periods):
         pool = Pool()
         JournalPeriod = pool.get('account.journal.period')
         Move = pool.get('account.move')
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+
+        # Lock period to be sure no new period will be created in between.
+        database.lock(connection, JournalPeriod._table)
 
         unposted_moves = Move.search([
                 ('period', 'in', [p.id for p in periods]),
@@ -302,47 +334,24 @@ class Period(ModelSQL, ModelView):
                     'period': unposted_move.period.rec_name,
                     'move': unposted_move.rec_name,
                     })
-        # First close the period to be sure
-        # it will not have new journal.period created between.
-        cls.write(periods, {
-                'state': 'close',
-                })
         journal_periods = JournalPeriod.search([
             ('period', 'in', [p.id for p in periods]),
             ])
         JournalPeriod.close(journal_periods)
 
     @classmethod
-    def open_(cls, periods):
-        "Open Journal"
-        cls.write(periods, {
-                'state': 'open',
-                })
+    @ModelView.button
+    @Workflow.transition('open')
+    def reopen(cls, periods):
+        "Re-open period"
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('locked')
+    def lock(cls, periods):
+        pass
 
     @property
     def post_move_sequence_used(self):
         return self.post_move_sequence or self.fiscalyear.post_move_sequence
-
-
-class ClosePeriod(Wizard):
-    'Close Period'
-    __name__ = 'account.period.close'
-    start_state = 'close'
-    close = StateTransition()
-
-    def transition_close(self):
-        Period = Pool().get('account.period')
-        Period.close(Period.browse(Transaction().context['active_ids']))
-        return 'end'
-
-
-class ReOpenPeriod(Wizard):
-    'Re-Open Period'
-    __name__ = 'account.period.reopen'
-    start_state = 'reopen'
-    reopen = StateTransition()
-
-    def transition_reopen(self):
-        Period = Pool().get('account.period')
-        Period.open_(Period.browse(Transaction().context['active_ids']))
-        return 'end'

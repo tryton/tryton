@@ -5,8 +5,7 @@ from decimal import Decimal
 from sql import Null
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.wizard import Wizard, StateTransition
+from trytond.model import ModelView, ModelSQL, Workflow, fields, Unique
 from trytond import backend
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -18,17 +17,12 @@ from trytond.modules.company.model import (
 
 __all__ = ['JournalType', 'Journal', 'JournalSequence', 'JournalAccount',
     'JournalCashContext',
-    'JournalPeriod', 'CloseJournalPeriod', 'ReOpenJournalPeriod']
+    'JournalPeriod']
 
 STATES = {
     'readonly': Eval('state') == 'close',
 }
 DEPENDS = ['state']
-
-_ICONS = {
-    'open': 'tryton-open',
-    'close': 'tryton-readonly',
-}
 
 
 class JournalType(ModelSQL, ModelView):
@@ -312,7 +306,7 @@ class JournalCashContext(ModelView):
     default_end_date = default_start_date
 
 
-class JournalPeriod(ModelSQL, ModelView):
+class JournalPeriod(Workflow, ModelSQL, ModelView):
     'Journal - Period'
     __name__ = 'account.journal.period'
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -344,6 +338,18 @@ class JournalPeriod(ModelSQL, ModelView):
                 'open_journal_period': ('You can not open '
                     'journal - period "%(journal_period)s" because period '
                     '"%(period)s" is closed.'),
+                })
+        cls._transitions |= set((
+                ('open', 'close'),
+                ('close', 'open'),
+                ))
+        cls._buttons.update({
+                'close': {
+                    'invisible': Eval('state') != 'open',
+                    },
+                'reopen': {
+                    'invisible': Eval('state') != 'close',
+                    },
                 })
 
     @classmethod
@@ -379,7 +385,10 @@ class JournalPeriod(ModelSQL, ModelView):
                 ]
 
     def get_icon(self, name):
-        return _ICONS.get(self.state, '')
+        return {
+            'open': 'tryton-open',
+            'close': 'tryton-close',
+            }.get(self.state)
 
     @classmethod
     def _check(cls, periods):
@@ -399,7 +408,7 @@ class JournalPeriod(ModelSQL, ModelView):
         for vals in vlist:
             if vals.get('period'):
                 period = Period(vals['period'])
-                if period.state == 'close':
+                if period.state != 'open':
                     cls.raise_user_error('create_journal_period', (
                             period.rec_name,))
         return super(JournalPeriod, cls).create(vlist)
@@ -413,7 +422,7 @@ class JournalPeriod(ModelSQL, ModelView):
                 cls._check(journal_periods)
             if values.get('state') == 'open':
                 for journal_period in journal_periods:
-                    if journal_period.period.state == 'close':
+                    if journal_period.period.state != 'open':
                         cls.raise_user_error('open_journal_period', {
                                 'journal_period': journal_period.rec_name,
                                 'period': journal_period.period.rec_name,
@@ -426,43 +435,17 @@ class JournalPeriod(ModelSQL, ModelView):
         super(JournalPeriod, cls).delete(periods)
 
     @classmethod
+    @ModelView.button
+    @Workflow.transition('close')
     def close(cls, periods):
         '''
         Close journal - period
         '''
-        cls.write(periods, {
-                'state': 'close',
-                })
+        pass
 
     @classmethod
-    def open_(cls, periods):
+    @ModelView.button
+    @Workflow.transition('open')
+    def reopen(cls, periods):
         "Open journal - period"
-        cls.write(periods, {
-                'state': 'open',
-                })
-
-
-class CloseJournalPeriod(Wizard):
-    'Close Journal - Period'
-    __name__ = 'account.journal.period.close'
-    start_state = 'close'
-    close = StateTransition()
-
-    def transition_close(self):
-        JournalPeriod = Pool().get('account.journal.period')
-        JournalPeriod.close(
-            JournalPeriod.browse(Transaction().context['active_ids']))
-        return 'end'
-
-
-class ReOpenJournalPeriod(Wizard):
-    'Re-Open Journal - Period'
-    __name__ = 'account.journal.period.reopen'
-    start_state = 'reopen'
-    reopen = StateTransition()
-
-    def transition_reopen(self):
-        JournalPeriod = Pool().get('account.journal.period')
-        JournalPeriod.open_(
-            JournalPeriod.browse(Transaction().context['active_ids']))
-        return 'end'
+        pass

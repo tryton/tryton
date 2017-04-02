@@ -1,25 +1,23 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from dateutil.relativedelta import relativedelta
-from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
-    Button
+from trytond.model import ModelView, ModelSQL, Workflow, fields
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.tools import datetime_strftime
 from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 __all__ = ['FiscalYear', 'FiscalYearLine',
-    'BalanceNonDeferralStart', 'BalanceNonDeferral',
-    'CloseFiscalYearStart', 'CloseFiscalYear']
+    'BalanceNonDeferralStart', 'BalanceNonDeferral']
 
 STATES = {
-    'readonly': Eval('state') == 'close',
+    'readonly': Eval('state') != 'open',
 }
 DEPENDS = ['state']
 
 
-class FiscalYear(ModelSQL, ModelView):
+class FiscalYear(Workflow, ModelSQL, ModelView):
     'Fiscal Year'
     __name__ = 'account.fiscalyear'
     name = fields.Char('Name', size=None, required=True, depends=DEPENDS)
@@ -32,9 +30,10 @@ class FiscalYear(ModelSQL, ModelView):
     periods = fields.One2Many('account.period', 'fiscalyear', 'Periods',
             states=STATES, depends=DEPENDS)
     state = fields.Selection([
-        ('open', 'Open'),
-        ('close', 'Close'),
-        ], 'State', readonly=True, required=True)
+            ('open', 'Open'),
+            ('close', 'Close'),
+            ('locked', 'Locked'),
+            ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
             required=True, domain=[('code', '=', 'account.move'),
                 ['OR',
@@ -53,6 +52,7 @@ class FiscalYear(ModelSQL, ModelView):
             ], select=True)
     close_lines = fields.Many2Many('account.fiscalyear-account.move.line',
             'fiscalyear', 'line', 'Close Lines')
+    icon = fields.Function(fields.Char("Icon"), 'get_icon')
 
     @classmethod
     def __setup__(cls):
@@ -73,6 +73,11 @@ class FiscalYear(ModelSQL, ModelView):
                 'reopen_error': ('You can not reopen fiscal year "%s" until '
                     'you reopen all later fiscal years.'),
                 })
+        cls._transitions |= set((
+                ('open', 'close'),
+                ('close', 'locked'),
+                ('close', 'open'),
+                ))
         cls._buttons.update({
                 'create_period': {
                     'invisible': ((Eval('state') != 'open')
@@ -88,6 +93,9 @@ class FiscalYear(ModelSQL, ModelView):
                 'reopen': {
                     'invisible': Eval('state') != 'close',
                     },
+                'lock': {
+                    'invisible': Eval('state') != 'close',
+                    },
                 })
 
     @staticmethod
@@ -97,6 +105,13 @@ class FiscalYear(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    def get_icon(self, name):
+        return {
+            'open': 'tryton-open',
+            'close': 'tryton-close',
+            'locked': 'tryton-readonly',
+            }.get(self.state)
 
     @classmethod
     def validate(cls, years):
@@ -258,6 +273,7 @@ class FiscalYear(ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
+    @Workflow.transition('close')
     def close(cls, fiscalyears):
         '''
         Close a fiscal year
@@ -266,6 +282,12 @@ class FiscalYear(ModelSQL, ModelView):
         Period = pool.get('account.period')
         Account = pool.get('account.account')
         Deferral = pool.get('account.account.deferral')
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+
+        # Lock period to be sure no new period will be created in between.
+        database.lock(connection, Period._table)
 
         deferrals = []
         for fiscalyear in fiscalyears:
@@ -276,11 +298,6 @@ class FiscalYear(ModelSQL, ModelView):
                         ]):
                 cls.raise_user_error('close_error', (fiscalyear.rec_name,))
 
-            # First close the fiscalyear to be sure
-            # it will not have new period created between.
-            cls.write([fiscalyear], {
-                'state': 'close',
-                })
             periods = Period.search([
                     ('fiscalyear', '=', fiscalyear.id),
                     ])
@@ -297,6 +314,7 @@ class FiscalYear(ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
+    @Workflow.transition('open')
     def reopen(cls, fiscalyears):
         '''
         Re-open a fiscal year
@@ -306,7 +324,7 @@ class FiscalYear(ModelSQL, ModelView):
         for fiscalyear in fiscalyears:
             if cls.search([
                         ('start_date', '>=', fiscalyear.end_date),
-                        ('state', '=', 'close'),
+                        ('state', '!=', 'open'),
                         ('company', '=', fiscalyear.company.id),
                         ]):
                 cls.raise_user_error('reopen_error')
@@ -316,9 +334,16 @@ class FiscalYear(ModelSQL, ModelView):
                 ])
             Deferral.delete(deferrals)
 
-            cls.write([fiscalyear], {
-                'state': 'open',
-                })
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('locked')
+    def lock(cls, fiscalyears):
+        pool = Pool()
+        Period = pool.get('account.period')
+        periods = Period.search([
+                ('fiscalyear', 'in', [f.id for f in fiscalyears]),
+                ])
+        Period.lock(periods)
 
 
 class FiscalYearLine(ModelSQL):
@@ -453,27 +478,3 @@ class BalanceNonDeferral(Wizard):
                 ('origin', '=', str(self.start.fiscalyear)),
                 ])
         return action, {}
-
-
-class CloseFiscalYearStart(ModelView):
-    'Close Fiscal Year'
-    __name__ = 'account.fiscalyear.close.start'
-    close_fiscalyear = fields.Many2One('account.fiscalyear',
-            'Fiscal Year to close', required=True,
-            domain=[('state', '!=', 'close')])
-
-
-class CloseFiscalYear(Wizard):
-    'Close Fiscal Year'
-    __name__ = 'account.fiscalyear.close'
-    start = StateView('account.fiscalyear.close.start',
-        'account.fiscalyear_close_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Close', 'close', 'tryton-ok', default=True),
-            ])
-    close = StateTransition()
-
-    def transition_close(self):
-        Fiscalyear = Pool().get('account.fiscalyear')
-        Fiscalyear.close([self.start.close_fiscalyear])
-        return 'end'

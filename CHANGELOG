@@ -1,3 +1,5 @@
+* Add definitive lock of period and fiscal year
+
 Version 4.2.0 - 2016-11-28
 * Bug fixes (see mercurial logs for details)
 * Add test wizard for taxes

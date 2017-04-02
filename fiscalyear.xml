@@ -15,6 +15,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">fiscalyear_tree</field>
         </record>
+        <record model="ir.ui.view" id="fiscalyear_view_list_close">
+            <field name="model">account.fiscalyear</field>
+            <field name="type">tree</field>
+            <field name="name">fiscalyear_list_close</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_fiscalyear_form">
             <field name="name">Fiscal Years</field>
             <field name="res_model">account.fiscalyear</field>
@@ -59,6 +65,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_fiscalyear"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_fiscalyear_form_close">
+            <field name="name">Close Fiscal Years</field>
+            <field name="res_model">account.fiscalyear</field>
+            <field name="search_value"
+                eval="[('state', '=', 'open')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_fiscalyear_form_close_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="fiscalyear_view_list_close"/>
+            <field name="act_window" ref="act_fiscalyear_form_close"/>
+        </record>
+
+        <menuitem parent="menu_processing" sequence="40"
+            action="act_fiscalyear_form_close" id="menu_close_fiscalyear"/>
+
         <record model="ir.ui.view"
             id="fiscalyear_balance_non_deferral_start_view_form">
             <field
@@ -76,18 +98,5 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_processing" sequence="10"
             action="act_balance_non_deferral"
             id="menu_balance_non_deferral"/>
-
-        <record model="ir.ui.view" id="fiscalyear_close_start_view_form">
-            <field name="model">account.fiscalyear.close.start</field>
-            <field name="type">form</field>
-            <field name="name">fiscalyear_close_start_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="act_close_fiscalyear">
-            <field name="name">Close Fiscal Year</field>
-            <field name="wiz_name">account.fiscalyear.close</field>
-        </record>
-        <menuitem parent="menu_processing" sequence="20"
-            action="act_close_fiscalyear" id="menu_close_fiscalyear"/>
     </data>
 </tryton>

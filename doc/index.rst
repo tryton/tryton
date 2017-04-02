@@ -8,15 +8,16 @@ Fiscal Year
 ***********
 
 A fiscal year aggregates a set of periods that are included between
-two dates. A Fiscal year can be *Open* or *Closed*. Closing a fiscal
-year will close all the corresponding periods.
+two dates. A Fiscal year can be *Open*, *Closed* or *Locked*. Closing a fiscal
+year will close all the corresponding periods. A *Locked* fiscal can not be
+re-open.
 
 - Name: The name of the fiscal year.
 - Code: The code, useful for fast data entry and searching.
 - Starting and Ending Date: The dates in which the periods should be
   included.
 - Company: The company for which the fiscal year is defined.
-- State: Can be *Open* or *Closed*.
+- State: Can be *Open*, *Closed* or *Locked*.
 - Periods: The list of periods.
 - Post Move Sequence: The sequence to use for numbering moves in this
   fiscal year.
@@ -30,7 +31,7 @@ Period
 ******
 
 A period is mainly defined by a Starting and an Ending date, a Fiscal
-Year, a Type and a State (*Open* or *Closed* ).
+Year, a Type and a State (*Open*, *Closed* or *Locked*).
 
 The type can be *Standard* or *Adjustement*: Periods of type
 *Standard* on the same fiscal year can not overlap. Period of type
