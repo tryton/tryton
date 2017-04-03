@@ -11,16 +11,13 @@ class Country(ModelSQL, ModelView):
     'Country'
     __name__ = 'country.country'
     name = fields.Char('Name', required=True, translate=True,
-           help='The full name of the country.', select=True)
+           help="The main identifier of the country.", select=True)
     code = fields.Char('Code', size=2, select=True,
-           help='The ISO country code in two chars.\n'
-           'You can use this field for quick search.')
+           help="The 2 chars ISO country code.")
     code3 = fields.Char('3-letters Code', size=3, select=True,
-        help=('The ISO country code in three chars.\n'
-            'You can use this field for quick search.'))
+        help="The 3 chars ISO country code.")
     code_numeric = fields.Char('Numeric Code', select=True,
-        help=('The ISO numeric country code.\n'
-            'You can use this field for quick search.'))
+        help="The ISO numeric country code.")
     subdivisions = fields.One2Many('country.subdivision',
             'country', 'Subdivisions')
 
@@ -78,9 +75,12 @@ class Subdivision(ModelSQL, ModelView):
     "Subdivision"
     __name__ = 'country.subdivision'
     country = fields.Many2One('country.country', 'Country',
-            required=True, select=True)
-    name = fields.Char('Name', required=True, select=True, translate=True)
-    code = fields.Char('Code', required=True, select=True)
+            required=True, select=True,
+        help="The country where this subdivision is.")
+    name = fields.Char('Name', required=True, select=True, translate=True,
+        help="The main identifier of the subdivision.")
+    code = fields.Char('Code', required=True, select=True,
+        help="The ISO code of the subdivision.")
     type = fields.Selection([
         ('administration', 'Administration'),
         ('administrative area', 'Administrative area'),
@@ -188,7 +188,8 @@ class Subdivision(ModelSQL, ModelView):
         domain=[
             ('country', '=', Eval('country', -1)),
             ],
-        depends=['country'])
+        depends=['country'],
+        help="Add subdivision below the parent.")
 
     @classmethod
     def __setup__(cls):
@@ -226,13 +227,15 @@ class Zip(ModelSQL, ModelView):
     "Zip"
     __name__ = 'country.zip'
     country = fields.Many2One('country.country', 'Country', required=True,
-        select=True, ondelete='CASCADE')
+        select=True, ondelete='CASCADE',
+        help="The country where the zip is.")
     subdivision = fields.Many2One('country.subdivision', 'Subdivision',
         select=True, ondelete='CASCADE',
         domain=[('country', '=', Eval('country', -1))],
-        depends=['country'])
+        depends=['country'],
+        help="The subdivision where the zip is.")
     zip = fields.Char('Zip')
-    city = fields.Char('City')
+    city = fields.Char('City', help="The name of the city for the zip.")
 
     @classmethod
     def __setup__(cls):
