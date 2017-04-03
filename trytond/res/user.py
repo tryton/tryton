@@ -226,11 +226,11 @@ class User(ModelSQL, ModelView):
 
     @classmethod
     def validate_password(cls, password, users):
+        password_b = password
+        if isinstance(password, unicode):
+            password_b = password.encode('utf-8')
         length = config.getint('password', 'length', default=0)
         if length > 0:
-            password_b = password
-            if isinstance(password, unicode):
-                password_b = password.encode('utf-8')
             if len(password_b) < length:
                 cls.raise_user_error('password_length')
         path = config.get('password', 'forbidden', default=None)
@@ -238,7 +238,7 @@ class User(ModelSQL, ModelView):
             with open(path, 'r') as f:
                 forbidden = mmap.mmap(
                     f.fileno(), 0, access=mmap.ACCESS_READ)
-                if forbidden.find(password) >= 0:
+                if forbidden.find(password_b) >= 0:
                     cls.raise_user_error('password_forbidden')
         entropy = config.getfloat('password', 'entropy', default=0)
         if entropy:
