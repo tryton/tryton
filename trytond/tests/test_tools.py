@@ -134,6 +134,11 @@ class ToolsTestCase(unittest.TestCase):
         with self.assertRaisesRegexp(IOError, "Permission denied:"):
             file_open('../../foo')
 
+    def test_file_open_suffix(self):
+        "Test file_open from same root name but with a suffix"
+        with self.assertRaisesRegexp(IOError, "Permission denied:"):
+            file_open('../trytond_suffix', subdir=None)
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase

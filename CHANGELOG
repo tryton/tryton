@@ -1,3 +1,4 @@
+* Sanitize path in file_open against suffix (CVE-2017-0360)
 * Add constraint on user password
 * Remove Property field
 * Add MultiValueMixin and ValueMixin
