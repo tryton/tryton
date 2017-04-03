@@ -63,6 +63,9 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
         self.set('session', 'authentications', 'password')
         self.set('session', 'timeout', 600)
         self.set('session', 'max_attempt', 5)
+        self.add_section('password')
+        self.set('password', 'length', 8)
+        self.set('password', 'entropy', 0.75)
         self.add_section('report')
         self.set('report', 'unoconv',
             'pipe,name=trytond;urp;StarOffice.ComponentContext')

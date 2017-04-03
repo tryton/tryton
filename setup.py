@@ -57,7 +57,7 @@ setup(name=name,
         'trytond.ir.module': ['*.xml'],
         'trytond.ir.ui': ['*.xml', '*.rng', '*.rnc'],
         'trytond.res': ['tryton.cfg', '*.xml', 'view/*.xml', 'locale/*.po'],
-        'trytond.tests': ['tryton.cfg', '*.xml'],
+        'trytond.tests': ['tryton.cfg', '*.xml', 'forbidden.txt'],
         },
     scripts=['bin/trytond', 'bin/trytond-admin', 'bin/trytond-cron'],
     classifiers=[

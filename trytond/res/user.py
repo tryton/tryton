@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "User"
+from __future__ import division
 import copy
 import string
 import random
@@ -9,6 +10,7 @@ import time
 import datetime
 import logging
 import uuid
+import mmap
 from functools import wraps
 from itertools import groupby, ifilter
 from operator import attrgetter
@@ -116,6 +118,17 @@ class User(ModelSQL, ModelView):
                     'for logging purpose.\n'
                     'Instead you must inactivate them.'),
                 'wrong_password': 'Wrong password!',
+                'password_length': "The password is too short.",
+                'password_forbidden': "The password is forbidden.",
+                'password_name': (
+                    "The password can not be the same as user name."),
+                'password_login': (
+                    "The password can not be the same as user login."),
+                'password_email': (
+                    "The password can not be the same as user email."),
+                'password_entropy': (
+                    "The password contains too much times "
+                    "the same characters."),
                 })
 
     @classmethod
@@ -200,12 +213,46 @@ class User(ModelSQL, ModelView):
     def set_password(cls, users, name, value):
         if value == 'x' * 10:
             return
+
+        if Transaction().user and value:
+            cls.validate_password(value, users)
+
         to_write = []
         for user in users:
             to_write.extend([[user], {
                         'password_hash': cls.hash_password(value),
                         }])
         cls.write(*to_write)
+
+    @classmethod
+    def validate_password(cls, password, users):
+        length = config.getint('password', 'length', default=0)
+        if length > 0:
+            password_b = password
+            if isinstance(password, unicode):
+                password_b = password.encode('utf-8')
+            if len(password_b) < length:
+                cls.raise_user_error('password_length')
+        path = config.get('password', 'forbidden', default=None)
+        if path:
+            with open(path, 'r') as f:
+                forbidden = mmap.mmap(
+                    f.fileno(), 0, access=mmap.ACCESS_READ)
+                if forbidden.find(password) >= 0:
+                    cls.raise_user_error('password_forbidden')
+        entropy = config.getfloat('password', 'entropy', default=0)
+        if entropy:
+            if len(set(password)) / len(password) < entropy:
+                cls.raise_user_error('password_entropy')
+        for user in users:
+            # Use getattr to allow to use non User instances
+            for test, error in [
+                    (getattr(user, 'name', ''), 'password_name'),
+                    (getattr(user, 'login', ''), 'password_login'),
+                    (getattr(user, 'email', ''), 'password_email'),
+                    ]:
+                if test and password.lower() == test.lower():
+                    cls.raise_user_error(error)
 
     @staticmethod
     def get_sessions(users, name):

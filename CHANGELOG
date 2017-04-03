@@ -1,3 +1,4 @@
+* Add constraint on user password
 * Remove Property field
 * Add MultiValueMixin and ValueMixin
 * Use sql type in column creation

@@ -228,6 +228,28 @@ attempts over a period of `timeout`.
 
 Default: `5`
 
+password
+--------
+
+length
+~~~~~~
+
+The minimal length required for the user password.
+
+Default: `8`
+
+forbidden
+~~~~~~~~~
+
+The path to a file containing one forbidden password per line.
+
+entropy
+~~~~~~~
+
+The ratio of non repeated characters for the user password.
+
+Default: `0.75`
+
 report
 ------
 
