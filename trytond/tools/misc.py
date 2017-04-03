@@ -32,7 +32,7 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
         "Join paths and ensure it still below root"
         path = os.path.join(root, *paths)
         path = os.path.normpath(path)
-        if not path.startswith(root):
+        if not path.startswith(os.path.join(root, '')):
             raise IOError("Permission denied: %s" % name)
         return path
 
