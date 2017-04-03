@@ -120,8 +120,15 @@ class User(ModelSQL, ModelView):
 
     @classmethod
     def set_password(cls, users, name, value):
+        pool = Pool()
+        User = pool.get('res.user')
+
         if value == 'x' * 10:
             return
+
+        if Transaction().user and value:
+            User.validate_password(value, users)
+
         to_write = []
         for user in users:
             to_write.extend([[user], {

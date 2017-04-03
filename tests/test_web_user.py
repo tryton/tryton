@@ -38,6 +38,14 @@ class WebUserTestCase(ModuleTestCase):
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
+        length = config.get('password', 'length')
+        config.set('password', 'length', 4)
+        self.addCleanup(config.set, 'password', 'length', length)
+
+        entropy = config.get('password', 'entropy')
+        config.set('password', 'entropy', 0.8)
+        self.addCleanup(config.set, 'password', 'entropy', entropy)
+
     def create_user(self, email, password, hash_method=None):
         pool = Pool()
         User = pool.get('web.user')
