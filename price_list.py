@@ -19,14 +19,19 @@ class PriceList(ModelSQL, ModelView):
     'Price List'
     __name__ = 'product.price_list'
 
-    name = fields.Char('Name', required=True, translate=True)
+    name = fields.Char('Name', required=True, translate=True,
+        help="The main identifier of the price list.")
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
-            ])
-    tax_included = fields.Boolean('Tax Included')
-    lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines')
+            ],
+        help=("Make the price list belong to the company.\n"
+            "It defines the currency of the price list."))
+    tax_included = fields.Boolean('Tax Included',
+        help="Check if result's formula includes taxes.")
+    lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines',
+        help="Add price formulas for different criterias.")
 
     @staticmethod
     def default_company():
@@ -72,13 +77,16 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     __name__ = 'product.price_list.line'
 
     price_list = fields.Many2One('product.price_list', 'Price List',
-            required=True, ondelete='CASCADE')
+            required=True, ondelete='CASCADE',
+        help="The price list to which the line belongs.")
     category = fields.Many2One(
-        'product.category', "Category", ondelete='CASCADE')
-    product = fields.Many2One('product.product', 'Product', ondelete='CASCADE')
+        'product.category', "Category", ondelete='CASCADE',
+        help="Apply only to products of this category.")
+    product = fields.Many2One('product.product', 'Product', ondelete='CASCADE',
+        help="Apply only to this product.")
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
             depends=['unit_digits'],
-        help="Minimal quantity in the product default UoM.")
+        help="Apply only when quantity is greater.")
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     formula = fields.Char('Formula', required=True,
