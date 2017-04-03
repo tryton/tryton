@@ -16,7 +16,8 @@ class Carrier:
         states={
             'invisible': Eval('carrier_cost_method') != 'percentage',
             },
-        depends=['carrier_cost_method'])
+        depends=['carrier_cost_method'],
+        help="The percentage applied on the amount to compute the cost.")
 
     @classmethod
     def __setup__(cls):
