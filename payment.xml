@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_succeed">
-            <field name="name">Succeed Payments"</field>
+            <field name="name">Succeed Payments</field>
             <field name="wiz_name">account.payment.succeed</field>
             <field name="model">account.payment</field>
         </record>
