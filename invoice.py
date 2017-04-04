@@ -215,7 +215,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'Invoice "%s" has taxes on invoice lines '
                     'that are not in the invoice.\nRe-compute the invoice.'),
                 'no_invoice_sequence': ('Missing invoice sequence for '
-                    'invoice "%(invoice)s on fiscalyear "%(fiscalyear)s"".'),
+                    'invoice "%(invoice)s" on fiscalyear "%(fiscalyear)s".'),
                 'modify_invoice': ('You can not modify invoice "%s" because '
                     'it is posted, paid or cancelled.'),
                 'same_debit_account': ('The debit account on journal '
