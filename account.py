@@ -2010,12 +2010,9 @@ class CreateChart(Wizard):
             account_receivable = self.properties.account_receivable
             account_payable = self.properties.account_payable
             config = Configuration(1)
-            config.set_multivalue(
-                'default_account_receivable',
-                account_receivable.id if account_receivable else None)
-            config.set_multivalue(
-                'default_account_payable',
-                account_payable.id if account_payable else None)
+            config.default_account_receivable = account_receivable
+            config.default_account_payable = account_payable
+            config.save()
         return 'end'
 
 
