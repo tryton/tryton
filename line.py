@@ -22,7 +22,8 @@ __all__ = ['Line', 'EnterLinesStart', 'EnterLines',
 class Line(ModelSQL, ModelView):
     'Timesheet Line'
     __name__ = 'timesheet.line'
-    company = fields.Many2One('company.company', 'Company', required=True)
+    company = fields.Many2One('company.company', 'Company', required=True,
+        help="The company on which the time is spent.")
     employee = fields.Many2One('company.employee', 'Employee', required=True,
         select=True, domain=[
             ('company', '=', Eval('company', -1)),
@@ -35,8 +36,10 @@ class Line(ModelSQL, ModelView):
                 ('end_date', '>=', Eval('date')),
                 ],
             ],
-        depends=['company', 'date'])
-    date = fields.Date('Date', required=True, select=True)
+        depends=['company', 'date'],
+        help="The employee who spends the time.")
+    date = fields.Date('Date', required=True, select=True,
+        help="When the time is spent.")
     duration = fields.TimeDelta('Duration', 'company_work_time', required=True)
     work = fields.Many2One('timesheet.work', 'Work',
         required=True, select=True, domain=[
@@ -50,8 +53,10 @@ class Line(ModelSQL, ModelView):
                 ('timesheet_end_date', '>=', Eval('date')),
                 ],
             ],
-        depends=['date', 'company'])
-    description = fields.Char('Description')
+        depends=['date', 'company'],
+        help="The work on which is the time is spent.")
+    description = fields.Char('Description',
+        help="Additional description of the work done.")
 
     @classmethod
     def __setup__(cls):
@@ -149,8 +154,10 @@ class EnterLinesStart(ModelView):
                 ('end_date', '>=', Eval('date')),
                 ],
             ],
-        depends=['date'])
-    date = fields.Date('Date', required=True)
+        depends=['date'],
+        help="The employee who spends the time.")
+    date = fields.Date('Date', required=True,
+        help="When the time is spent.")
 
     @staticmethod
     def default_employee():

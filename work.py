@@ -25,16 +25,19 @@ class Work(ModelSQL, ModelView):
             'invisible': Bool(Eval('origin')),
             'required': ~Eval('origin'),
             },
-        depends=['origin'])
+        depends=['origin'],
+        help="The main identifier of the work.")
     origin = fields.Reference('Origin', selection='get_origin',
         states={
             'invisible': Bool(Eval('name')),
             'required': ~Eval('name'),
             },
-        depends=['name'])
-    active = fields.Boolean('Active')
+        depends=['name'],
+        help="Use to relate the time spent to other records.")
+    active = fields.Boolean('Active',
+        help="Uncheck to exclude the work from future use.")
     duration = fields.Function(fields.TimeDelta('Timesheet Duration',
-            'company_work_time', help="Total time spent on this work"),
+            'company_work_time', help="Total time spent on this work."),
         'get_duration')
     timesheet_start_date = fields.Date('Timesheet Start',
         domain=[
@@ -42,22 +45,25 @@ class Work(ModelSQL, ModelView):
                 ('timesheet_start_date', '<=', Eval('timesheet_end_date')),
                 ()),
             ],
-        depends=['timesheet_end_date'])
+        depends=['timesheet_end_date'],
+        help="Restrict adding lines before the date.")
     timesheet_end_date = fields.Date('Timesheet End',
         domain=[
             If(Eval('timesheet_start_date') & Eval('timesheet_end_date'),
                 ('timesheet_end_date', '>=', Eval('timesheet_start_date')),
                 ()),
             ],
-        depends=['timesheet_start_date'])
+        depends=['timesheet_start_date'],
+        help="Restrict adding lines after the date.")
     company = fields.Many2One('company.company', 'Company', required=True,
-        select=True)
+        select=True, help="Make the work belong to the company.")
     timesheet_lines = fields.One2Many('timesheet.line', 'work',
         'Timesheet Lines',
         depends=['active'],
         states={
             'readonly': Not(Bool(Eval('active'))),
-            })
+            },
+        help="Spend time on this work.")
     # Self referring field to use for aggregation in graph view
     work = fields.Function(fields.Many2One('timesheet.work', 'Work'),
         'get_work')
@@ -230,5 +236,7 @@ class Work(ModelSQL, ModelView):
 class WorkContext(ModelView):
     'Work Context'
     __name__ = 'timesheet.work.context'
-    from_date = fields.Date('From Date')
-    to_date = fields.Date('To Date')
+    from_date = fields.Date('From Date',
+        help="Do not take into account lines before the date.")
+    to_date = fields.Date('To Date',
+        help="Do not take into account lines after the date.")
