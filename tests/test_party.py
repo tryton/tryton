@@ -104,6 +104,31 @@ class PartyTestCase(ModuleTestCase):
                 "City")
 
     @with_transaction()
+    def test_full_address_country_subdivision(self):
+        'Test full address with country and subdivision'
+        pool = Pool()
+        Party = pool.get('party.party')
+        Country = pool.get('country.country')
+        Subdivision = pool.get('country.subdivision')
+        Address = pool.get('party.address')
+        party, = Party.create([{
+                    'name': 'Party',
+                    }])
+        country = Country(name='Country')
+        country.save()
+        subdivision = Subdivision(
+            name='Subdivision', country=country, code='SUB', type='area')
+        subdivision.save()
+        address, = Address.create([{
+                    'party': party.id,
+                    'subdivision': subdivision.id,
+                    'country': country.id,
+                    }])
+        self.assertMultiLineEqual(address.full_address,
+            "Subdivision\n"
+            "COUNTRY")
+
+    @with_transaction()
     def test_party_label_report(self):
         'Test party label report'
         pool = Pool()
