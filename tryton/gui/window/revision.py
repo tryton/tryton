@@ -14,7 +14,7 @@ _ = gettext.gettext
 class Revision(object):
     'Ask revision'
 
-    def __init__(self, revisions, revision=None, format_='%x %X.%f'):
+    def __init__(self, revisions, revision=None, format_='%x %H:%M:%S.%f'):
         self.parent = get_toplevel_window()
         self.win = gtk.Dialog(_('Revision'), self.parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,

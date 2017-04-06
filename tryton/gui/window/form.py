@@ -254,7 +254,7 @@ class Form(SignalEvent, TabContent):
         except RPCException:
             return
         date_format = self.screen.context.get('date_format', '%x')
-        datetime_format = date_format + ' %X.%f'
+        datetime_format = date_format + ' %H:%M:%S.%f'
         message_str = ''
         for line in res:
             for (key, val) in fields:
@@ -280,7 +280,7 @@ class Form(SignalEvent, TabContent):
             return
         revision = self.screen.context.get('_datetime')
         format_ = self.screen.context.get('date_format', '%x')
-        format_ += ' %X.%f'
+        format_ += ' %H:%M:%S.%f'
         revision = Revision(revisions, revision, format_).run()
         # Prevent too old revision in form view
         if (self.screen.current_view.view_type == 'form'
@@ -304,7 +304,7 @@ class Form(SignalEvent, TabContent):
         revision = self.screen.context.get('_datetime')
         if revision:
             format_ = self.screen.context.get('date_format', '%x')
-            format_ += ' %X.%f'
+            format_ += ' %H:%M:%S.%f'
             revision = datetime_strftime(revision, format_)
             self.title.set_label('%s @ %s' % (self.name, revision))
         else:
