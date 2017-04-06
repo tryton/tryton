@@ -129,6 +129,11 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
 
     def _get_address_substitutions(self):
         context = Transaction().context
+        subdivision_code = ''
+        if getattr(self, 'subdivision', None):
+            subdivision_code = self.subdivision.code or ''
+            if '-' in subdivision_code:
+                subdivision_code = subdivision_code.split('-', 1)[1]
         substitutions = {
             'party_name': '',
             'name': getattr(self, 'name', None) or '',
@@ -137,11 +142,10 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
             'city': getattr(self, 'city', None) or '',
             'subdivision': (self.subdivision.name
                 if getattr(self, 'subdivision', None) else ''),
-            'subdivision_code': (self.subdivision.code.split('-', 1)[1]
-                if getattr(self, 'subdivision', None) else ''),
+            'subdivision_code': subdivision_code,
             'country': (self.country.name
                 if getattr(self, 'country', None) else ''),
-            'country_code': (self.country.code
+            'country_code': (self.country.code or ''
                 if getattr(self, 'country', None) else ''),
             }
         if context.get('address_from_country') == getattr(self, 'country', ''):
