@@ -149,6 +149,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.task.run(['shell:msgmerge']);
     });
+  grunt.registerTask('xgettext', ' Extracts translatable messages', function() {
+    grunt.loadNpmTasks('grunt-xgettext');
+    grunt.task.run(['xgettext']);
+  });
   grunt.registerTask('test', 'Run tests', function() {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-jshint');
