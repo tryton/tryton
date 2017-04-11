@@ -400,7 +400,7 @@ class Sale:
         invoice = super(Sale, self).create_invoice()
 
         if self.advance_payment_eligible():
-            if invoice is None and not self.advance_payment_completed:
+            if not self.advance_payment_completed:
                 for condition in self.advance_payment_conditions:
                     condition.create_invoice()
             elif invoice is not None:
