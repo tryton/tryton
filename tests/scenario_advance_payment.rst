@@ -126,6 +126,8 @@ Create a normal sale::
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
+    >>> sale.state
+    u'processing'
 
 As usual an invoice and a shipment has been created::
 
@@ -153,6 +155,8 @@ Create a sale with advance payment::
     Decimal('10.00')
     >>> sale.click('confirm')
     >>> sale.click('process')
+    >>> sale.state
+    u'processing'
 
 The advance payment invoice has been created::
 
@@ -177,6 +181,8 @@ Let's pay the advance payment invoice::
     >>> pay.execute('choice')
 
     >>> sale.reload()
+    >>> sale.state
+    u'processing'
     >>> len(sale.invoices)
     1
     >>> len(sale.shipments)
@@ -222,6 +228,8 @@ Create a sale with advance payment::
     Decimal('12.00')
     >>> sale.click('confirm')
     >>> sale.click('process')
+    >>> sale.state
+    u'processing'
 
 The shipment has been created::
 
@@ -244,6 +252,9 @@ Let's pay the advance payment invoice::
     >>> pay = Wizard('account.invoice.pay', [invoice])
     >>> pay.form.journal = cash_journal
     >>> pay.execute('choice')
+    >>> sale.reload()
+    >>> sale.state
+    u'processing'
 
 Packing the shipment is now allowed::
 
@@ -286,6 +297,8 @@ Sell 10 of those products::
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
+    >>> sale.state
+    u'processing'
 
 There is no purchase request created yet::
 
@@ -300,6 +313,9 @@ The advance payment invoice has been created, now pay it::
     >>> pay = Wizard('account.invoice.pay', [invoice])
     >>> pay.form.journal = cash_journal
     >>> pay.execute('choice')
+    >>> sale.reload()
+    >>> sale.state
+    u'processing'
 
 There is now a purchase request of the desired quantity::
 
@@ -325,6 +341,8 @@ Create a sale with this term::
     Decimal('10.00')
     >>> sale.click('confirm')
     >>> sale.click('process')
+    >>> sale.state
+    u'processing'
 
 Let's cancel the advance invoice::
 
@@ -362,6 +380,8 @@ it::
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.click('process')
+    >>> sale.state
+    u'processing'
     >>> inv, = sale.advance_payment_invoices
     >>> inv.click('cancel')
     >>> sale.reload()

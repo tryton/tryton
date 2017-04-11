@@ -360,10 +360,15 @@ class Sale:
         state = super(Sale, self).get_invoice_state()
         skip_ids = set(x.id for x in self.invoices_ignored)
         skip_ids.update(x.id for x in self.invoices_recreated)
-        invoices = (
-            i for i in self.advance_payment_invoices if i.id not in skip_ids)
-        if any(i.state == 'cancel' for i in invoices):
-            return 'exception'
+        invoices = [i
+            for i in self.advance_payment_invoices if i.id not in skip_ids]
+        if invoices:
+            if any(i.state == 'cancel' for i in invoices):
+                return 'exception'
+            elif all(i.state == 'paid' for i in invoices):
+                return state
+            else:
+                return 'waiting'
         return state
 
     def get_recall_lines(self, invoice):
