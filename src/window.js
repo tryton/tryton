@@ -414,7 +414,7 @@
                 this.screen.group.forEach(function(record) {
                     resource.set_client(record, this.resource);
                 }.bind(this));
-                prm = this.screen.group.save();
+                prm = this.screen.save_current();
             }
             if (this.attachment_callback) {
                 prm.always(this.attachment_callback.bind(this));
@@ -455,7 +455,7 @@
                         }
                     }
                 }.bind(this));
-                prm = this.screen.group.save();
+                prm = this.screen.save_current();
             }
             if (this.note_callback) {
                 prm.always(this.note_callback.bind(this));

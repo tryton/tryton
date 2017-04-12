@@ -239,7 +239,7 @@
             if (modified) {
                 record._changed.id = true;
             }
-            if (!(record.group.parent) || (record.id < 0) || force_remove) {
+            if ((record.id < 0) || force_remove) {
                 this._remove(record);
             }
             record.group.changed();
@@ -294,7 +294,11 @@
                 deferreds.push(record.save());
             });
             if (!jQuery.isEmptyObject(this.record_deleted)) {
+                this.record_deleted.forEach(function(record) {
+                    this._remove(record);
+                }.bind(this));
                 deferreds.push(this.model.delete_(this.record_deleted));
+                this.record_deleted.splice(0, this.record_deleted.length);
             }
             return jQuery.when.apply(jQuery, deferreds);
         };

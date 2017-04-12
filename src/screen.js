@@ -1144,12 +1144,15 @@
             var path = current_record.get_path(this.group);
             var prm = jQuery.Deferred();
             if (this.current_view.view_type == 'tree') {
-                prm = this.group.save();
+                prm = this.group.save().then(function() {
+                    return this.current_record;
+                }.bind(this));
             } else {
                 current_record.validate(fields).then(function(validate) {
                     if (validate) {
-                        current_record.save().then(
-                            prm.resolve, prm.reject);
+                        current_record.save().then(function() {
+                            prm.resolve(current_record);
+                        }, prm.reject);
                     } else {
                         this.current_view.display().done(
                                 this.set_cursor.bind(this));
@@ -1158,8 +1161,8 @@
                 }.bind(this));
             }
             var dfd = jQuery.Deferred();
-            prm = prm.then(function() {
-                if (path && current_record.id) {
+            prm = prm.then(function(current_record) {
+                if (path && current_record && current_record.id) {
                     path.splice(-1, 1,
                             [path[path.length - 1][0], current_record.id]);
                 }
