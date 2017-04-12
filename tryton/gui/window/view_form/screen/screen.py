@@ -599,7 +599,7 @@ class Screen(SignalEvent):
         path = self.current_record.get_path(self.group)
         if self.current_view.view_type == 'tree':
             saved = all(self.group.save())
-            record_id = self.current_record.id
+            record_id = self.current_record.id if self.current_record else None
         elif self.current_record.validate(fields):
             record_id = self.current_record.save(force_reload=True)
             saved = bool(record_id)

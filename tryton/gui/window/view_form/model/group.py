@@ -161,7 +161,11 @@ class Group(SignalEvent, list):
         for record in self:
             saved.append(record.save(force_reload=False))
         if self.record_deleted:
+            for record in self.record_deleted:
+                self._remove(record)
+                record.destroy()
             self.delete(self.record_deleted)
+            del self.record_deleted[:]
         return saved
 
     def delete(self, records):
@@ -365,7 +369,7 @@ class Group(SignalEvent, list):
         if modified:
             record.modified_fields.setdefault('id')
             record.signal('record-modified')
-        if not record.parent or self[idx].id < 0 or force_remove:
+        if self[idx].id < 0 or force_remove:
             self._remove(self[idx])
 
         if len(self):

@@ -35,6 +35,6 @@ class Note(WinForm):
                     resource.set_client(record, self.resource)
                     if 'unread' not in record.modified_fields:
                         unread.set_client(record, False)
-            self.screen.group.save()
+            self.screen.save_current()
         if self.note_callback:
             self.note_callback()
