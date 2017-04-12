@@ -19,11 +19,9 @@ Synopsis
 
   tryton [options] [url]
 
-After startup, there raises the `login dialog`__ and optionally a
-`tips dialog`__.
+After startup the `login dialog`__ is displayed.
 
 __ Menu-Connection_
-__ Menu-Help-Tips_
 
 
 Options
@@ -180,16 +178,8 @@ All of them are dynamically provided by the actual set of the installed
 :term:`modules` depending on the access rules of the current user. If a menu
 item is clicked, the appropriate action will open in a new tab.
 
-
-Home
-++++
-A tab opens during the startup of the Tryton client: the home.  It is
-usually an item of the `Menu`_ opening when the user calls his
-`Home`__ action defined in the `preferences`__.
-
-__ Menu-User-Home_
-
-__ Menu-User-Preferences_
+A search field allows to quickly filter the menu items by name and to search in
+models for which the global search is enabled.
 
 
 Menu Bar Items
@@ -224,9 +214,6 @@ Connect...
 .. note:: Depending on server configuration for session timeout, the actual
    user may be logged out of the current session, and need to login again.
    Default timeout for inactivity logout is six minutes.
-
-__ Connection-Server-Connection_
-
 
 .. _Menu-Connection-Disconnect:
 
@@ -271,10 +258,11 @@ Preferences...
   * Signature: Signature block for the Tryton user.
   * Menu Action: Defines the action which is called as the
     `Menu`_.
-  * Home Action: Defines the action which is called as `Home`__.
   * Language: Language of the client interface.
   * Timezone: The local timezone where the user/client resides.
   * Groups: Displays the users membership to access groups.
+  * Applications: A list of applications along with their access
+    key and the authorization state.
 
 .. _Menu-User-Menu-Reload:
 
@@ -285,11 +273,6 @@ Menu Reload:
 
 Menu Toggle:
   Toggle the menu visibility
-
-.. _Menu-User-Home:
-
-Home:
-  Opens a new `Home`__ tab.
 
 
 Options
@@ -408,16 +391,6 @@ A collection of user defined menu favorites.
 
 Help
 ^^^^
-
-.. _Menu-Help-Tips:
-
-Tips...:
-  Opens the tips dialog.
-
-  * Display a new tip next time: If *checked*, the tips dialog will appear on
-    start.
-  * Previous: Shows last tip.
-  * Next: Shows next tip.
 
 .. _Menu-Help-Keyboard_Shortcuts:
 
@@ -606,7 +579,7 @@ will explains some of them.
 Date/DateTime/Time Widgets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Those widgets has several key shortucts to quickly modify the value. Each key
+These widgets have several key shortcuts to quickly modify the value. Each key
 increases if lower case or decreases if upper case:
 
     - `y`: by one year
@@ -713,7 +686,7 @@ using parenthesis.
     which is evaluated as ``Name: Michael or (Name: Pam and Amount: 100)``
 
 RichText Editor
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
 
 This feature create a rich text editor with various features that allow for
 text formatting. The features are:
@@ -736,16 +709,16 @@ formatted text. The tags are explain follows:
   * Bold: Tag `b` is used, i.e. <b>text</b>
   * Italic: Tag `i` is used, i.e. <i>text</i>
   * Underline: Tag `u` is used, i.e. <u>text</u>
-  * Font family: It is a attrbute `font-family` for `span` tag, i.e.
+  * Font family: It is a attribute `font-family` for `span` tag, i.e.
     <span font-family="Arial">text</span>
-  * Font size: It is a attrbute `size` for `span` tag, i.e. <span size="12">
+  * Font size: It is a attribute `size` for `span` tag, i.e. <span size="12">
     text</span>
   * Text Justify: For justification text is used paragraph tag `p`. The
     paragraph tag is used to create new lines and the alignment is applied
     across the board. Example: <p align='center'>some text</p>
-  * Background color: It is a attrbute `background` for `span` tag, i.e.
+  * Background color: It is a attribute `background` for `span` tag, i.e.
     <span background='#7f7f7f'>text</span>
-  * Foreground color: It is a attrbute `foreground` for `span` tag, i.e.
+  * Foreground color: It is a attribute `foreground` for `span` tag, i.e.
     <span foreground='#00f'>text</span>
 
 Appendix
