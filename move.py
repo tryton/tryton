@@ -685,7 +685,7 @@ class Line(ModelSQL, ModelView):
             ('second_currency_sign',
                 Check(table, Coalesce(table.amount_second_currency, 0)
                     * (table.debit - table.credit) >= 0),
-                'wrong_second_currency_sign'),
+                "Wrong second currency sign."),
             ]
         cls.__rpc__.update({
                 'on_write': RPC(instantiate=0),
@@ -707,7 +707,6 @@ class Line(ModelSQL, ModelView):
                 'already_reconciled': 'Line "%s" (%d) already reconciled.',
                 'party_required': 'Party is required on line "%s"',
                 'party_set': 'Party must not be set on line "%s"',
-                'wrong_second_currency_sign': 'Wrong second currency sign.',
                 })
 
     @classmethod
