@@ -154,7 +154,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         domain=[('company', '=', Eval('company'))], readonly=True,
         depends=['company'])
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
-    number = fields.Char('Numer', size=None, select=True, readonly=True)
+    number = fields.Char('Number', size=None, select=True, readonly=True)
     received_by = employee_field("Received By")
     done_by = employee_field("Done By")
     state = fields.Selection([
