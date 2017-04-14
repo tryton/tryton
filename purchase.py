@@ -1120,7 +1120,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 if tax_ids:
                     taxes.extend(tax_ids)
                 continue
-            taxes.append(tax)
+            taxes.append(tax.id)
         if party and party.supplier_tax_rule:
             tax_ids = party.supplier_tax_rule.apply(None, pattern)
             if tax_ids:
