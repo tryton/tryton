@@ -151,7 +151,7 @@ class Database(DatabaseInterface):
     def drop(self, connection, database_name):
         cursor = connection.cursor()
         cursor.execute('DROP DATABASE "' + database_name + '"')
-        Database._list_cache = None
+        self.__class__._list_cache = None
 
     def get_version(self, connection):
         if self.name not in self._version_cache:
@@ -165,8 +165,8 @@ class Database(DatabaseInterface):
     def list(self):
         now = time.time()
         timeout = config.getint('session', 'timeout')
-        res = Database._list_cache
-        if res and abs(Database._list_cache_timestamp - now) < timeout:
+        res = self.__class__._list_cache
+        if res and abs(self.__class__._list_cache_timestamp - now) < timeout:
             return res
 
         connection = self.get_connection()
@@ -183,8 +183,8 @@ class Database(DatabaseInterface):
                 continue
         self.put_connection(connection)
 
-        Database._list_cache = res
-        Database._list_cache_timestamp = now
+        self.__class__._list_cache = res
+        self.__class__._list_cache_timestamp = now
         return res
 
     def init(self):
