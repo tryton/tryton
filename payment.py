@@ -115,7 +115,8 @@ class Payment:
             line.debit, line.credit = 0, local_amount
         line.account = self.line.account
         if not local_currency:
-            line.amount_second_currency = self.amount
+            line.amount_second_currency = self.amount.copy_sign(
+                line.debit - line.credit)
             line.second_currency = self.journal.currency
 
         line.party = (self.line.party
@@ -127,7 +128,8 @@ class Payment:
             counterpart.debit, counterpart.credit = local_amount, 0
         counterpart.account = self.journal.clearing_account
         if not local_currency:
-            counterpart.amount_second_currency = -self.amount
+            counterpart.amount_second_currency = self.amount.copy_sign(
+                counterpart.debit - counterpart.credit)
             counterpart.second_currency = self.journal.currency
         move.lines = (line, counterpart)
         return move
