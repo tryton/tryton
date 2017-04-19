@@ -184,6 +184,10 @@ Sale 5 products::
     (Decimal('50.00'), Decimal('5.00'), Decimal('55.00'))
     >>> sale.state
     u'processing'
+    >>> sale.shipment_state
+    u'waiting'
+    >>> sale.invoice_state
+    u'waiting'
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
     >>> invoice, = sale.invoices
@@ -255,6 +259,10 @@ Sale 5 products with an invoice method 'on shipment'::
     >>> sale.click('process')
     >>> sale.state
     u'processing'
+    >>> sale.shipment_state
+    u'waiting'
+    >>> sale.invoice_state
+    u'none'
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 0)
@@ -281,6 +289,8 @@ Open customer invoice::
 
     >>> config.user = sale_user.id
     >>> sale.reload()
+    >>> sale.invoice_state
+    u'waiting'
     >>> invoice, = sale.invoices
     >>> config.user = account_user.id
     >>> Invoice = Model.get('account.invoice')
@@ -325,6 +335,10 @@ Sale 5 products with shipment method 'on invoice'::
     >>> sale.click('process')
     >>> sale.state
     u'processing'
+    >>> sale.shipment_state
+    u'none'
+    >>> sale.invoice_state
+    u'waiting'
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (0, 0, 1)
 
@@ -420,27 +434,41 @@ Create a Return::
     >>> return_.click('process')
     >>> return_.state
     u'processing'
-    >>> return_.reload()
+    >>> return_.shipment_state
+    u'waiting'
+    >>> return_.invoice_state
+    u'none'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 1, 0)
 
-Check Return Shipments::
+Receive Return Shipment for 3 products::
 
     >>> config.user = sale_user.id
     >>> ship_return, = return_.shipment_returns
     >>> config.user = stock_user.id
-    >>> ship_return.click('receive')
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.rec_name
     u'product'
     >>> move_return.quantity
     4.0
+    >>> move_return.quantity = 3
+    >>> ship_return.click('receive')
 
-Open customer credit note::
+Check Return::
 
     >>> config.user = sale_user.id
     >>> return_.reload()
+    >>> return_.shipment_state
+    u'waiting'
+    >>> return_.invoice_state
+    u'waiting'
+    >>> (len(return_.shipments), len(return_.shipment_returns),
+    ...     len(return_.invoices))
+    (0, 2, 1)
+
+Open customer credit note::
+
     >>> credit_note, = return_.invoices
     >>> config.user = account_user.id
     >>> credit_note = Invoice(credit_note.id)
@@ -449,8 +477,33 @@ Open customer credit note::
     >>> len(credit_note.lines)
     1
     >>> sum(l.quantity for l in credit_note.lines)
-    -4.0
+    -3.0
     >>> credit_note.click('post')
+
+Receive Remaining Return Shipment::
+
+    >>> config.user = sale_user.id
+    >>> return_.reload()
+    >>> _, ship_return = return_.shipment_returns
+    >>> config.user = stock_user.id
+    >>> move_return, = ship_return.incoming_moves
+    >>> move_return.product.rec_name
+    u'product'
+    >>> move_return.quantity
+    1.0
+    >>> ship_return.click('receive')
+
+Check Return::
+
+    >>> config.user = sale_user.id
+    >>> return_.reload()
+    >>> return_.shipment_state
+    u'sent'
+    >>> return_.invoice_state
+    u'waiting'
+    >>> (len(return_.shipments), len(return_.shipment_returns),
+    ...     len(return_.invoices))
+    (0, 2, 2)
 
 Mixing return and sale::
 
@@ -476,7 +529,10 @@ Mixing return and sale::
     >>> mix.click('process')
     >>> mix.state
     u'processing'
-    >>> mix.reload()
+    >>> mix.shipment_state
+    u'waiting'
+    >>> mix.invoice_state
+    u'waiting'
     >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
     (1, 1, 1)
 
@@ -541,6 +597,10 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix.click('process')
     >>> mix.state
     u'processing'
+    >>> mix.shipment_state
+    u'waiting'
+    >>> mix.invoice_state
+    u'none'
     >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
     (1, 1, 0)
 
@@ -580,6 +640,10 @@ Sale services::
     >>> service_sale.click('process')
     >>> service_sale.state
     u'processing'
+    >>> service_sale.shipment_state
+    u'none'
+    >>> service_sale.invoice_state
+    u'waiting'
     >>> service_invoice, = service_sale.invoices
 
 Pay the service invoice::
@@ -664,7 +728,7 @@ to invoices::
     >>> stock_move.state
     u'done'
 
-Create a sale to be sent on invoice partialy and check correctly linked to
+Create a sale to be sent on invoice partially and check correctly linked to
 invoices::
 
     >>> sale = Sale()
