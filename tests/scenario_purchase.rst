@@ -184,6 +184,10 @@ Purchase 5 products::
     (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
     >>> purchase.state
     u'processing'
+    >>> purchase.shipment_state
+    u'waiting'
+    >>> purchase.invoice_state
+    u'waiting'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
     >>> invoice, = purchase.invoices
@@ -214,6 +218,10 @@ Post invoice and check no new invoices::
     >>> invoice.click('post')
     >>> config.user = purchase_user.id
     >>> purchase.reload()
+    >>> purchase.shipment_state
+    u'waiting'
+    >>> purchase.invoice_state
+    u'waiting'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
 
@@ -239,6 +247,12 @@ Purchase 5 products with an invoice method 'on shipment'::
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')
+    >>> purchase.state
+    u'processing'
+    >>> purchase.shipment_state
+    u'waiting'
+    >>> purchase.invoice_state
+    u'none'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 0)
 
@@ -267,12 +281,16 @@ Validate Shipments::
     >>> shipment.click('receive')
     >>> shipment.click('done')
     >>> purchase.reload()
+    >>> purchase.shipment_state
+    u'received'
     >>> len(purchase.shipments), len(purchase.shipment_returns)
     (1, 0)
 
 Open supplier invoice::
 
     >>> config.user = purchase_user.id
+    >>> purchase.invoice_state
+    u'waiting'
     >>> invoice, = purchase.invoices
     >>> config.user = account_user.id
     >>> invoice = Invoice(invoice.id)
@@ -331,7 +349,10 @@ Create a Return::
     >>> return_.click('process')
     >>> return_.state
     u'processing'
-    >>> return_.reload()
+    >>> return_.shipment_state
+    u'waiting'
+    >>> return_.invoice_state
+    u'none'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 1, 0)
@@ -353,7 +374,14 @@ Check Return Shipments::
     >>> ship_return.click('done')
     >>> ship_return.state
     u'done'
+    >>> config.user = purchase_user.id
     >>> return_.reload()
+    >>> return_.state
+    u'processing'
+    >>> return_.shipment_state
+    u'received'
+    >>> return_.invoice_state
+    u'waiting'
 
 Open supplier credit note::
 
@@ -394,7 +422,10 @@ Mixing return and purchase::
     >>> mix.click('process')
     >>> mix.state
     u'processing'
-    >>> mix.reload()
+    >>> mix.shipment_state
+    u'waiting'
+    >>> mix.invoice_state
+    u'waiting'
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
     (2, 1, 1)
 
@@ -465,7 +496,10 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix.click('process')
     >>> mix.state
     u'processing'
-    >>> mix.reload()
+    >>> mix.shipment_state
+    u'waiting'
+    >>> mix.invoice_state
+    u'none'
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
     (2, 1, 0)
 
@@ -511,6 +545,10 @@ Purchase services::
     >>> service_purchase.click('process')
     >>> service_purchase.state
     u'processing'
+    >>> service_purchase.shipment_state
+    u'none'
+    >>> service_purchase.invoice_state
+    u'waiting'
     >>> service_invoice, = service_purchase.invoices
 
 Pay the service invoice::
@@ -537,7 +575,7 @@ Check service purchase states::
     >>> service_purchase.state
     u'done'
 
-Create a purchase to be invoiced on shipment partialy and check correctly
+Create a purchase to be invoiced on shipment partially and check correctly
 linked to invoices::
 
     >>> purchase = Purchase()

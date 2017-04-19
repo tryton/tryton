@@ -1036,26 +1036,29 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     def default_delivery_date_edit(cls):
         return False
 
-    def get_move_done(self, name):
-        Uom = Pool().get('product.uom')
-        done = True
+    @property
+    def _move_remaining_quantity(self):
+        "Compute the remaining quantity to receive"
+        pool = Pool()
+        Uom = pool.get('product.uom')
         if self.type != 'line' or not self.product:
-            return True
+            return
         if self.product.type == 'service':
-            return True
-        skip_ids = set(x.id for x in self.moves_recreated
-            + self.moves_ignored)
-        quantity = self.quantity
+            return
+        skip_ids = set(x.id for x in self.moves_ignored)
+        skip_ids.update(x.id for x in self.moves_recreated)
+        quantity = abs(self.quantity)
         for move in self.moves:
-            if move.state != 'done' \
-                    and move.id not in skip_ids:
-                done = False
-                break
-            quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
-        if done:
-            if self.unit.round(quantity) > 0.0:
-                done = False
-        return done
+            if move.state == 'done' or move.id in skip_ids:
+                quantity -= Uom.compute_qty(move.uom, move.quantity, self.unit)
+        return quantity
+
+    def get_move_done(self, name):
+        quantity = self._move_remaining_quantity
+        if quantity is None:
+            return True
+        else:
+            return self.unit.round(quantity) <= 0
 
     def get_move_exception(self, name):
         skip_ids = set(x.id for x in self.moves_ignored
