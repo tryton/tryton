@@ -6,6 +6,7 @@ from trytond.transaction import Transaction
 
 __all__ = [
     'Model',
+    'ModelParent', 'ModelChild', 'ModelChildChild',
     'Singleton', 'URLObject',
     'ModelStorage', 'ModelStorageRequired', 'ModelStorageContext',
     'ModelSQLRequiredField', 'ModelSQLTimestamp', 'ModelSQLFieldSet',
@@ -21,6 +22,26 @@ class Model(ModelSQL):
     'Model'
     __name__ = 'test.model'
     name = fields.Char('Name')
+
+
+class ModelParent(Model):
+    "Model Parent"
+    __name__ = 'test.model_parent'
+    name = fields.Char("Name")
+
+
+class ModelChild(Model):
+    "Model Child"
+    __name__ = 'test.model_child'
+    name = fields.Char("Name")
+    parent = fields.Many2One('test.model_parent', "Parent")
+
+
+class ModelChildChild(Model):
+    "Model Child Child"
+    __name__ = 'test.model_child_child'
+    name = fields.Char("Name")
+    parent = fields.Many2One('test.model_child', "Parent")
 
 
 class Singleton(ModelSingleton, ModelSQL):

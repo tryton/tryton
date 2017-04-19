@@ -359,14 +359,21 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     setattr(self, name, value)
                 else:
                     parent_values[name] = value
-            for name, value in parent_values.iteritems():
+
+            def set_parent_value(record, name, value):
                 parent_name, field = name.split('.', 1)
                 parent_name = parent_name[8:]  # Strip '_parent_'
-                parent = getattr(self, parent_name, None)
+                parent = getattr(record, parent_name, None)
                 if parent is not None:
-                    setattr(parent, field, value)
+                    if not field.startswith('_parent_'):
+                        setattr(parent, field, value)
+                    else:
+                        set_parent_value(parent, field, value)
                 else:
-                    setattr(self, parent_name, {field: value})
+                    setattr(record, parent_name, {field: value})
+
+            for name, value in parent_values.iteritems():
+                set_parent_value(self, name, value)
             self._init_values = self._values.copy()
         else:
             self._values = None
