@@ -115,7 +115,7 @@ class RecurrenceRule(ModelSQL, ModelView):
                 'invalid_bymonth': (
                     '"By Month" (%(bymonth)s) is not valid.'),
                 'invalid_bysetpos': (
-                    '"By Position" (%(bysetpos)s) is not valie.'),
+                    '"By Position" (%(bysetpos)s) is not valid.'),
                 })
 
     @classmethod
