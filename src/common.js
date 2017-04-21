@@ -2972,7 +2972,7 @@
             });
             this.el.append(jQuery('<span/>', {
                 'class': 'label label-info',
-                'text': 'Processing...'
+                'text': Sao.i18n.gettext('Processing...')
             }));
             this.el.hide();
             jQuery(function() {
