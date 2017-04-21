@@ -386,7 +386,8 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     'Analytic Account Entry'
     __name__ = 'analytic.account.entry'
     origin = fields.Reference('Origin', selection='get_origin', select=True)
-    root = fields.Many2One('analytic_account.account', 'Root Analytic',
+    root = fields.Many2One(
+        'analytic_account.account', "Root Analytic", required=True,
         domain=[
             If(~Eval('company'),
                 # No constraint if the origin is not set
