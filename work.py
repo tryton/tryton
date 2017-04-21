@@ -78,7 +78,7 @@ class Work(ModelSQL, ModelView):
             ]
         cls._error_messages.update({
                 'mismatch_company': ('The company of the work "%(work)s" '
-                    'is different then the origin\'s company'),
+                    'is different than the origin\'s company'),
                 })
 
     @classmethod
