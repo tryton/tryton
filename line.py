@@ -54,7 +54,7 @@ class Line(ModelSQL, ModelView):
                 ],
             ],
         depends=['date', 'company'],
-        help="The work on which is the time is spent.")
+        help="The work on which the time is spent.")
     description = fields.Char('Description',
         help="Additional description of the work done.")
 
