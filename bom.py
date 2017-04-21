@@ -69,7 +69,10 @@ class BOMInput(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     quantity = fields.Float('Quantity', required=True,
-        domain=[('quantity', '>=', 0)],
+        domain=['OR',
+            ('quantity', '>=', 0),
+            ('quantity', '=', None),
+            ],
         digits=(16, Eval('unit_digits', 2)),
         depends=['unit_digits'])
 
