@@ -57,7 +57,8 @@ class Sale:
         except KeyError:
             PurchaseRequest = None
 
-        if PurchaseRequest and product.purchasable:
+        if (getattr(PurchaseRequest, 'get_supply_dates', None)
+                and product.purchasable):
             return PurchaseRequest.get_supply_dates(product)[0]
         else:
             # TODO compute supply date for production
