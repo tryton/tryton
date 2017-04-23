@@ -5,7 +5,10 @@
 import sys
 import pycountry
 
+sys.stdout.write(u'<?xml version="1.0"?>\n')
+sys.stdout.write(u'<tryton>\n')
 sys.stdout.write(u'    <data skiptest="1" grouped="1">\n')
+
 for country in pycountry.countries:
     record = u'''
         <record model="country.country" id="%s">
@@ -13,13 +16,14 @@ for country in pycountry.countries:
             <field name="code">%s</field>
             <field name="code3">%s</field>
             <field name="code_numeric">%s</field>
-        </record>\n''' % (country.alpha2.lower(), country.name,
-                country.alpha2, country.alpha3, country.numeric)
+        </record>\n''' % (country.alpha_2.lower(), country.name,
+                country.alpha_2, country.alpha_3, country.numeric)
     sys.stdout.write(record.encode('utf-8'))
 sys.stdout.write(u'    </data>\n')
 
+subdivision_codes = {s.code.lower() for s in pycountry.subdivisions}
 existing_parents = set()
-while len(existing_parents) != len(pycountry.subdivisions):
+while existing_parents < subdivision_codes:
     sys.stdout.write(u'    <data skiptest="1" grouped="1">\n')
     new_parents = set()
     for subdivision in pycountry.subdivisions:
@@ -29,8 +33,6 @@ while len(existing_parents) != len(pycountry.subdivisions):
                     existing_parents)):
             continue
         new_parents.add(subdivision.code.lower())
-        # XXX fix for second level of regional divisions
-        subdivision.country_code = subdivision.country_code.split(' ', 1)[0]
         record = u'''
         <record model="country.subdivision" id="%s">
             <field name="name">%s</field>
@@ -44,8 +46,10 @@ while len(existing_parents) != len(pycountry.subdivisions):
                 subdivision.parent.code.lower()
         record += u'''\
             <field name="country" ref="%s"/>
-        </record>\n''' % subdivision.country.alpha2.lower()
+        </record>\n''' % subdivision.country.alpha_2.lower()
 
         sys.stdout.write(record.encode('utf-8'))
     sys.stdout.write(u'    </data>\n')
     existing_parents |= new_parents
+
+sys.stdout.write(u'</tryton>\n')
