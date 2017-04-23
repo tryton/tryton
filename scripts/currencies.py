@@ -186,9 +186,13 @@ currencies = {
         },
 }
 
+sys.stdout.write(u'<?xml version="1.0"?>\n')
+sys.stdout.write(u'<tryton>\n')
+sys.stdout.write(u'    <data skiptest="1" grouped="1">\n')
+
 for currency in pycountry.currencies:
     extend = ''
-    if currency.letter in currencies:
+    if currency.alpha_3 in currencies:
         extend = u'''
             <field name="rounding" eval="%(rounding)s"/>
             <field name="digits" eval="%(digits)s"/>
@@ -203,14 +207,17 @@ for currency in pycountry.currencies:
             <field name="n_sign_posn" eval="%(n_sign_posn)s"/>
             <field name="negative_sign">%(negative_sign)s</field>
             <field name="positive_sign">%(positive_sign)s</field>''' % (
-                currencies[currency.letter])
+                currencies[currency.alpha_3])
     record = u'''
         <record model="currency.currency" id="%s">
             <field name="name">%s</field>
             <field name="code">%s</field>
             <field name="numeric_code">%s</field>
             <field name="symbol">%s</field>%s
-        </record>\n''' % (currency.letter.lower(), currency.name,
-                currency.letter, getattr(currency, 'numeric', ''),
-                symbols.get(currency.letter, currency.letter), extend)
+        </record>\n''' % (currency.alpha_3.lower(), currency.name,
+                currency.alpha_3, currency.numeric,
+                symbols.get(currency.alpha_3, currency.alpha_3), extend)
     sys.stdout.write(record.encode('utf-8'))
+
+sys.stdout.write(u'    </data>\n')
+sys.stdout.write(u'</tryton>\n')
