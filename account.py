@@ -95,13 +95,18 @@ class AccountFrFEC(Wizard):
     def transition_generate(self):
         fec = BytesIO()
         writer = self.get_writer(fec)
+        writer.writerow(self.get_header())
         format_date = self.get_format_date()
         format_number = self.get_format_number()
+
+        def convert(c):
+            delimiter = writer.dialect.delimiter
+            return (c or '').replace(delimiter, ' ').encode('utf-8')
         for row in self.get_start_balance():
-            writer.writerow([(c or '').encode('utf-8') for c in row])
+            writer.writerow(map(convert, row))
         for line in self.get_lines():
             row = self.get_row(line, format_date, format_number)
-            writer.writerow([(c or '').encode('utf-8') for c in row])
+            writer.writerow(map(convert, row))
         self.result.file = fec.getvalue()
         return 'result'
 
@@ -119,7 +124,9 @@ class AccountFrFEC(Wizard):
             }
 
     def get_writer(self, fd):
-        return csv.writer(fd)
+        return csv.writer(
+            fd, delimiter='\t', doublequote=False, escapechar='\\',
+            quoting=csv.QUOTE_NONE)
 
     def get_format_date(self):
         pool = Pool()
@@ -135,6 +142,28 @@ class AccountFrFEC(Wizard):
             grouping='[]',
             )
         return lambda value: Lang.format(fr, '%.2f', value)
+
+    def get_header(self):
+        return [
+            'JournalCode ',
+            'JournalLib ',
+            'EcritureNum',
+            'EcritureDate',
+            'CompteNum',
+            'CompteLib',
+            'CompAuxNum',
+            'CompAuxLib',
+            'PieceRef',
+            'PieceDate',
+            'EcritureLib',
+            'Debit',
+            'Credit',
+            'EcritureLet',
+            'DateLet',
+            'ValidDate',
+            'Montantdevise',
+            'Idevise',
+            ]
 
     def get_start_balance(self):
         pool = Pool()
