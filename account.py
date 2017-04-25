@@ -123,13 +123,16 @@ class AccountFrFEC(Wizard):
     def get_format_date(self):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        fr, = Lang.search([('code', '=', 'fr_FR')])
-        return lambda value: Lang.strftime(value, fr.code, '%Y%m%d')
+        return lambda value: Lang.strftime(value, 'fr_FR', '%Y%m%d')
 
     def get_format_number(self):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        fr, = Lang.search([('code', '=', 'fr_FR')])
+        fr = Lang(
+            decimal_point=',',
+            thousands_sep='',
+            grouping='[]',
+            )
         return lambda value: Lang.format(fr, '%.2f', value)
 
     def get_start_balance(self):
