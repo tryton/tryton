@@ -21,12 +21,14 @@ class HistoryTestCase(unittest.TestCase):
     def tearDown(self):
         pool = Pool()
         History = pool.get('test.history')
+        HistoryLine = pool.get('test.history.line')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        table = History.__table__()
-        history_table = History.__table_history__()
-        cursor.execute(*table.delete())
-        cursor.execute(*history_table.delete())
+        for Model in [History, HistoryLine]:
+            table = Model.__table__()
+            history_table = Model.__table_history__()
+            cursor.execute(*table.delete())
+            cursor.execute(*history_table.delete())
         transaction.commit()
 
     @with_transaction()
@@ -342,6 +344,40 @@ class HistoryTestCase(unittest.TestCase):
                 self.assertEqual(records, instances)
                 self.assertEqual([x.value for x in records], values)
             transaction.rollback()
+
+    @with_transaction()
+    def test_ordered_search_nested(self):
+        "Test ordered search nested"
+        pool = Pool()
+        History = pool.get('test.history')
+        HistoryLine = pool.get('test.history.line')
+        transaction = Transaction()
+        order = [('history.value', 'ASC')]
+
+        history = History(value=1)
+        history.save()
+        history2 = History(value=2)
+        history2.save()
+        line = HistoryLine(history=history)
+        line.save()
+        line2 = HistoryLine(history=history2)
+        line2.save()
+        first_stamp = line2.create_date
+        transaction.commit()
+
+        history.value = 3
+        history.save()
+        second_stamp = history.write_date
+        transaction.commit()
+
+        results = [
+            (first_stamp, [line, line2]),
+            (second_stamp, [line2, line]),
+            ]
+        for timestamp, instances in results:
+            with Transaction().set_context(_datetime=timestamp):
+                records = HistoryLine.search([], order=order)
+                self.assertListEqual(records, instances)
 
     @with_transaction()
     def test_browse(self):
