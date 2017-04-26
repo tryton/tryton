@@ -1072,7 +1072,7 @@
                     if (fields && !~fields.indexOf(fname)) {
                         continue;
                     }
-                    if (field.get_state_attrs(this).readonly) {
+                    if (field.description.readonly) {
                         continue;
                     }
                     if (~exclude_fields.indexOf(fname)) {
