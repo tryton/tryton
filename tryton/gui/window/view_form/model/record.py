@@ -401,7 +401,7 @@ class Record(SignalEvent):
         for field_name, field in self.group.fields.iteritems():
             if fields is not None and field_name not in fields:
                 continue
-            if field.get_state_attrs(self).get('readonly', False):
+            if field.attrs.get('readonly'):
                 continue
             if field_name == self.group.exclude_field:
                 continue
