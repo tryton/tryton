@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal
+from sql import Literal, Column
+from sql.aggregate import Max
+from sql.conditionals import Coalesce
 from sql.operators import Or
 
 from .field import Field
@@ -244,13 +246,27 @@ class Many2One(Field):
         Target = self.get_target()
         table, _ = tables[None]
         target_tables = tables.get(self.name)
+        context = Transaction().context
         if target_tables is None:
-            if Target._history and Transaction().context.get('_datetime'):
+            if Target._history and context.get('_datetime'):
                 target = Target.__table_history__()
+                target_history = Target.__table_history__()
+                history_condition = Column(target, '__id').in_(
+                    target_history.select(
+                        Max(Column(target_history, '__id')),
+                        where=Coalesce(
+                            target_history.write_date,
+                            target_history.create_date)
+                        <= context['_datetime'],
+                        group_by=target_history.id))
             else:
                 target = Target.__table__()
+                history_condition = None
+            condition = target.id == self.sql_column(table)
+            if history_condition:
+                condition &= history_condition
             target_tables = {
-                None: (target, target.id == self.sql_column(table)),
+                None: (target, condition),
                 }
             tables[self.name] = target_tables
         return target_tables
