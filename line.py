@@ -84,15 +84,15 @@ class Line(ModelSQL, ModelView):
     def default_credit():
         return Decimal(0)
 
-    @fields.depends('move_line')
+    @fields.depends('move_line', '_parent_move_line.account')
     def on_change_with_currency_digits(self, name=None):
-        if self.move_line:
+        if self.move_line and self.move_line.account:
             return self.move_line.account.company.currency.digits
         return 2
 
-    @fields.depends('move_line')
+    @fields.depends('move_line', '_parent_move_line.account')
     def on_change_with_company(self, name=None):
-        if self.move_line:
+        if self.move_line and self.move_line.account:
             return self.move_line.account.company.id
 
     @classmethod
