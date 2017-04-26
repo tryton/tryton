@@ -65,6 +65,21 @@ def size_validate(value):
                 'size must return integer'
 
 
+def _set_value(record, field):
+    try:
+        field, nested = field.split('.', 1)
+    except ValueError:
+        nested = None
+    if field.startswith('_parent_'):
+        field = field[8:]  # Strip '_parent_'
+    if not hasattr(record, field):
+        setattr(record, field, None)
+    elif nested:
+        parent = getattr(record, field)
+        if parent:
+            _set_value(parent, nested)
+
+
 def depends(*fields, **kwargs):
     methods = kwargs.pop('methods', None)
     assert not kwargs
@@ -82,11 +97,7 @@ def depends(*fields, **kwargs):
         @wraps(func)
         def wrapper(self, *args, **kwargs):
             for field in fields:
-                field = field.split('.')[0]
-                if field.startswith('_parent_'):
-                    field = field[8:]  # Strip '_parent_'
-                if not hasattr(self, field):
-                    setattr(self, field, None)
+                _set_value(self, field)
             return func(self, *args, **kwargs)
         return wrapper
     return decorator
