@@ -2678,8 +2678,7 @@
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.WarningDialog._super.build_dialog.call(
                 this);
-            dialog.add_title(title);
-            dialog.body.append(jQuery('<div/>', {
+            var content = jQuery('<div/>', {
                 'class': 'alert alert-warning',
                 role: 'alert'
             }).append(jQuery('<span/>', {
@@ -2688,9 +2687,15 @@
             })).append(jQuery('<span/>', {
                 'class': 'sr-only'
             }).append(Sao.i18n.gettext('Warning: '))
-            ).append(jQuery('<span/>')
-                .append(message)
-                .css('white-space', 'pre-wrap')));
+            ).append(jQuery('<h4/>')
+                .append(title)
+                .css('white-space', 'pre-wrap'));
+            if (message) {
+                content.append(jQuery('<span/>')
+                    .append(message)
+                    .css('white-space', 'pre-wrap'));
+            }
+            dialog.body.append(content);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button'
