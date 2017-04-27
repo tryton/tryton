@@ -443,7 +443,7 @@
                     jQuery('<div/>', {
                         'class': 'col-sm-8'
                     }).append(input).appendTo(form_group);
-                    this.search_form.fields.push([field.string, entry]);
+                    this.search_form.fields.push([field.string, entry, input]);
                 }
 
                 jQuery('<button/>', {
@@ -469,7 +469,7 @@
                             fentry.val('');
                     }
                 }
-                this.search_form.fields[0][1].focus();
+                this.search_form.fields[0][2].focus();
             }
         }
     });
