@@ -1052,7 +1052,7 @@
                 }.bind(this));
             }
             var dfd = jQuery.Deferred();
-            prm = prm.then(function() {
+            prm.then(function() {
                 if (path && current_record.id) {
                     path.splice(-1, 1,
                             [path[path.length - 1][0], current_record.id]);
@@ -1060,8 +1060,7 @@
                 return this.group.get_by_path(path).then(function(record) {
                     this.set_current_record(record);
                 }.bind(this));
-            }.bind(this));
-            prm.then(function() {
+            }.bind(this)).then(function() {
                 this.display().always(dfd.resolve);
             }.bind(this), function() {
                 this.display().always(dfd.reject);
