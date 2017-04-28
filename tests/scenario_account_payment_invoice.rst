@@ -108,6 +108,24 @@ Check amount to pay::
     >>> invoice.amount_to_pay
     Decimal('100.00')
 
+Create multiple valid payments for one line::
+
+    >>> line_to_pay, = invoice.lines_to_pay
+    >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
+    >>> pay_line.execute('start')
+    >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
+    >>> pay_line.execute('start')
+    >>> payments = Payment.find([('state', '=', 'draft')])
+    >>> for payment in payments:
+    ...     payment.amount = Decimal('30')
+    >>> Payment.click(payments, 'approve')
+
+Check amount to pay::
+
+    >>> invoice.reload()
+    >>> invoice.amount_to_pay
+    Decimal('40.00')
+
 Set party as direct debit::
 
     >>> party.payment_direct_debit = True
