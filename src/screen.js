@@ -912,10 +912,10 @@
             this.tree_states_done = [];
             this.group = group;
             this.model = group.model;
-            if (jQuery.isEmptyObject(group)) {
-                this.set_current_record(null);
-            } else {
+            if (group && group.length) {
                 this.set_current_record(group[0]);
+            } else {
+                this.set_current_record(null);
             }
             this.group.add_fields(fields);
         },
@@ -947,7 +947,7 @@
             var deferreds = [];
             if (this.current_record &&
                     ~this.current_record.group.indexOf(this.current_record)) {
-            } else if (!jQuery.isEmptyObject(this.group) &&
+            } else if (this.group && this.group.length &&
                     (this.current_view.view_type != 'calendar')) {
                 this.current_record = this.group[0];
             } else {
@@ -1124,7 +1124,7 @@
             var current_record = this.current_record;
             if (!current_record) {
                 if ((this.current_view.view_type == 'tree') &&
-                        (!jQuery.isEmptyObject(this.group))) {
+                        this.group && this.group.length) {
                     this.set_current_record(this.group[0]);
                 } else {
                     return jQuery.when();
