@@ -313,7 +313,7 @@ class Invoice:
                 for payment in line.payments:
                     if payment.state != 'failed':
                         with Transaction().set_context(date=payment.date):
-                            payment_amount = Currency.compute(
+                            payment_amount += Currency.compute(
                                 payment.currency, payment.amount,
                                 invoice.currency)
                 amounts[invoice.id] -= payment_amount
