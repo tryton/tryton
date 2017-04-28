@@ -315,7 +315,7 @@ class Configuration:
                 ]))
 
     @classmethod
-    def default_payment_group_sequence(cls):
+    def default_payment_group_sequence(cls, **pattern):
         return cls.multivalue_model(
             'payment_group_sequence').default_payment_group_sequence()
 
