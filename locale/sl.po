@@ -18,9 +18,42 @@ msgctxt "field:purchase.configuration,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr "Nabavna dostavna lokacija"
 
+msgctxt "field:purchase.configuration.purchase_drop_location,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Nabavna dostavna lokacija"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
 msgstr "Dostava"
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
+msgstr "Dostava na voljo"
 
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
@@ -50,6 +83,34 @@ msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr "Prodajna dostavna lokacija"
 
+msgctxt "field:sale.configuration.sale_drop_location,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:sale.configuration.sale_drop_location,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:sale.configuration.sale_drop_location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Prodajna dostavna lokacija"
+
+msgctxt "field:sale.configuration.sale_drop_location,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:sale.configuration.sale_drop_location,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
 msgstr "Dostavna lokacija"
@@ -59,6 +120,10 @@ msgid "Drop Shipments"
 msgstr "Dostave"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Štetje dostav"
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
 msgstr "Štetje dostav"
 
@@ -167,7 +232,7 @@ msgstr "Priprava"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
-msgstr "Poslano"
+msgstr "Odpremljeno"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
@@ -185,6 +250,14 @@ msgstr "Dostava"
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr "Dostave"
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr "Konfiguracija nabavne dostavne lokacije"
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
+msgstr "Konfiguracija prodajne dostavne lokacije"
 
 msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"
@@ -208,7 +281,7 @@ msgstr "V pripravi"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Shipped"
-msgstr "Poslano"
+msgstr "Odpremljeno"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"

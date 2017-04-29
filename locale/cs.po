@@ -16,8 +16,42 @@ msgctxt "field:purchase.configuration,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr ""
 
+msgctxt "field:purchase.configuration.purchase_drop_location,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:purchase.configuration.purchase_drop_location,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:purchase.configuration.purchase_drop_location,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:purchase.configuration.purchase_drop_location,write_uid:"
+msgid "Write User"
+msgstr ""
+
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
+msgstr ""
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
 msgstr ""
 
 msgctxt "field:purchase.purchase,customer:"
@@ -48,6 +82,35 @@ msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr ""
 
+msgctxt "field:sale.configuration.sale_drop_location,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_drop_location,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_drop_location,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_drop_location,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_drop_location,write_uid:"
+msgid "Write User"
+msgstr ""
+
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
 msgstr ""
@@ -57,6 +120,10 @@ msgid "Drop Shipments"
 msgstr ""
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
 msgstr ""
 
@@ -183,6 +250,14 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
+msgstr ""
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr ""
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
 msgstr ""
 
 msgctxt "model:stock.location,name:location_drop"

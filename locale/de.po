@@ -20,9 +20,42 @@ msgctxt "field:purchase.configuration,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr "Lagerort Direktlieferung Einkauf"
 
+msgctxt "field:purchase.configuration.purchase_drop_location,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
+msgid "Purchase Drop Location"
+msgstr "Lagerort Direktlieferung Einkauf"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:purchase.configuration.purchase_drop_location,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
 msgstr "Direkter Lieferposten"
+
+msgctxt "field:purchase.product_supplier,drop_shipment_available:"
+msgid "Drop Shipment Available"
+msgstr "Direktlieferung möglich"
 
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
@@ -52,6 +85,34 @@ msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr "Lagerort Direktlieferung Verkauf"
 
+msgctxt "field:sale.configuration.sale_drop_location,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:sale.configuration.sale_drop_location,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:sale.configuration.sale_drop_location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
+msgid "Sale Drop Location"
+msgstr "Lagerort Direktlieferung Verkauf"
+
+msgctxt "field:sale.configuration.sale_drop_location,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:sale.configuration.sale_drop_location,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
 msgstr "Lagerort Direktlieferung"
@@ -61,6 +122,10 @@ msgid "Drop Shipments"
 msgstr "Direkte Lieferposten"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
+msgid "Drop Shipment Sequence"
+msgstr "Nummernkreis Direkte Lieferposten"
+
+msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
 msgstr "Nummernkreis Direkte Lieferposten"
 
@@ -187,6 +252,14 @@ msgstr "Direkter Lieferposten"
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
 msgstr "Direkte Lieferposten"
+
+msgctxt "model:purchase.configuration.purchase_drop_location,name:"
+msgid "Purchase Configuration Purchase Drop Location"
+msgstr "Einstellungen Einkauf Lagerort Direktlieferung"
+
+msgctxt "model:sale.configuration.sale_drop_location,name:"
+msgid "Sale Configuration Sale Drop Location"
+msgstr "Einstellungen Verkauf Lagerort Direktlieferung"
 
 msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"
