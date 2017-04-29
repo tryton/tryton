@@ -36,7 +36,7 @@ msgstr "Sequência"
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
-msgstr "Armazém"
+msgstr "Almoxarifado"
 
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
