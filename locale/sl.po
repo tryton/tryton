@@ -26,6 +26,10 @@ msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr "Nabavnega zahtevka ni možno izbrisati."
 
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "Zahtevki"
+
 msgctxt "field:purchase.request,company:"
 msgid "Company"
 msgstr "Družba"
@@ -50,7 +54,6 @@ msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "Privzete decimalke"
 
-#, fuzzy
 msgctxt "field:purchase.request,description:"
 msgid "Description"
 msgstr "Opis"
@@ -135,7 +138,6 @@ msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,description:"
 msgid "Description"
 msgstr "Opis"

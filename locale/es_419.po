@@ -7,6 +7,8 @@ msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
 "least one purchase request."
 msgstr ""
+"No puede eliminar la compra \"%(purchase)s\" porque está asociada al menos a"
+" una solicitud de compra."
 
 msgctxt "error:purchase.request.create_purchase:"
 msgid "Purchase price is missing for product \"%s\"."
@@ -18,10 +20,14 @@ msgstr ""
 
 msgctxt "error:purchase.request:"
 msgid "Purchase requests are only created by the system."
-msgstr ""
+msgstr "Las solicitudes de compra sólo son creadas por el sistema."
 
 msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
+msgstr ""
+
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
 msgstr ""
 
 msgctxt "field:purchase.request,company:"
@@ -42,7 +48,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
@@ -102,7 +108,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
-msgstr ""
+msgstr "Fecha de suministro estimada"
 
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
@@ -114,11 +120,11 @@ msgstr ""
 
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Bodega"
 
 msgctxt "field:purchase.request,warehouse_required:"
 msgid "Warehouse Required"
-msgstr ""
+msgstr "Bodega requerida"
 
 msgctxt "field:purchase.request,write_date:"
 msgid "Write Date"
@@ -126,7 +132,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
@@ -154,39 +160,38 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
-msgstr "Create Purchase"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
-msgstr "Handle Purchase Cancellation"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
 msgid "Exception"
-msgstr "Exception"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
-msgstr "Purchase Request"
+msgstr ""
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
@@ -194,11 +199,11 @@ msgstr ""
 
 msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
 msgid "Handle Purchase Cancellation Exception - Start"
-msgstr ""
+msgstr "Gestionar excepción de cancelación de compra - Inicio"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
-msgstr "Purchase Request"
+msgstr ""
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
@@ -206,17 +211,15 @@ msgstr ""
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
-msgstr ""
+msgstr "Realizada"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Exception"
-msgstr "Exception"
+msgstr ""
 
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
@@ -226,18 +229,17 @@ msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:purchase.request:"
 msgid "Handle Purchase Cancellation"
-msgstr "Handle Purchase Cancellation"
+msgstr ""
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
-msgstr ""
+msgstr "Información de producto"
 
 msgctxt "view:purchase.request:"
 msgid "Supply Info"
-msgstr ""
+msgstr "Información de proveedor"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"

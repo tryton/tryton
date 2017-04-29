@@ -24,6 +24,10 @@ msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr ""
 
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:purchase.request,company:"
 msgid "Company"

@@ -26,6 +26,10 @@ msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr "Vous ne pouvez pas supprimer des demandes d'achat commandées."
 
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "Demandes"
+
 msgctxt "field:purchase.request,company:"
 msgid "Company"
 msgstr "Société"

@@ -26,6 +26,10 @@ msgctxt "error:purchase.request:"
 msgid "You can not delete purchased request."
 msgstr "Ein beauftragter Bestellvorschlag kann nicht gelöscht werden."
 
+msgctxt "field:purchase.line,requests:"
+msgid "Requests"
+msgstr "Anfragen"
+
 msgctxt "field:purchase.request,company:"
 msgid "Company"
 msgstr "Unternehmen"
