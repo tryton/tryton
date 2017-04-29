@@ -167,7 +167,23 @@ msgid "Bank Accounts"
 msgstr ""
 
 msgctxt "help:bank,bic:"
-msgid "Bank/Business Identifier Code"
+msgid "Bank/Business Identifier Code."
+msgstr ""
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr ""
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr ""
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr ""
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
 msgstr ""
 
 msgctxt "model:bank,name:"

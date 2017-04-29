@@ -40,7 +40,7 @@ msgstr "Zapisał"
 
 msgctxt "field:bank.account,active:"
 msgid "Active"
-msgstr "Aktywny"
+msgstr "Aktywne"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
@@ -64,7 +64,7 @@ msgstr "ID"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr "Numery"
+msgstr "Numery kont"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
@@ -144,7 +144,7 @@ msgstr "Nazwa"
 
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
-msgstr "Kolejność"
+msgstr "Sekwencja"
 
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
@@ -163,8 +163,24 @@ msgid "Bank Accounts"
 msgstr "Konta bankowe"
 
 msgctxt "help:bank,bic:"
-msgid "Bank/Business Identifier Code"
-msgstr "Bankowy/biznesowy kod identyfikacyjny"
+msgid "Bank/Business Identifier Code."
+msgstr "Bankowy/biznesowy kod identyfikacyjny."
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr "Odznacz, aby nie używać konta w przyszłości."
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr "Bank, w którym otworzono konto."
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr "Dodaj cyfry identyfikujące konto w banku."
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr "Konto bankowe identyfikowane przez numer."
 
 msgctxt "model:bank,name:"
 msgid "Bank"
@@ -184,7 +200,7 @@ msgstr "Numer konta bankowego"
 
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Konta"
+msgstr "Konta bankowe"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
@@ -192,7 +208,7 @@ msgstr "Banki"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Konta"
+msgstr "Konta bankowe"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"

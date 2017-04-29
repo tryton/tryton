@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:bank,id:"
 msgid "ID"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:bank.account,active:"
 msgid "Active"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
@@ -80,7 +80,7 @@ msgstr ""
 
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
@@ -92,7 +92,7 @@ msgstr ""
 
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
@@ -112,7 +112,7 @@ msgstr ""
 
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
@@ -124,7 +124,7 @@ msgstr ""
 
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
@@ -156,15 +156,31 @@ msgstr ""
 
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr ""
 
 msgctxt "help:bank,bic:"
-msgid "Bank/Business Identifier Code"
+msgid "Bank/Business Identifier Code."
 msgstr "Código de Identificación del Banco (BIC / SWIFT)"
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr ""
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr ""
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr ""
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr ""
 
 msgctxt "model:bank,name:"
 msgid "Bank"
@@ -200,7 +216,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Bancos"
+msgstr ""
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
@@ -216,4 +232,4 @@ msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr "Bancos"
+msgstr ""

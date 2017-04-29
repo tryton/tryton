@@ -4,252 +4,232 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:bank.account.number:"
 msgid "Invalid IBAN \"%s\"."
-msgstr ""
+msgstr "ເລກບັນຊີ IBAN \"%s\" ບໍ່ຖືກຕ້ອງ."
 
 msgctxt "field:bank,bic:"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
-#, fuzzy
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:bank,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
 
-#, fuzzy
 msgctxt "field:bank,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:bank.account,active:"
 msgid "Active"
 msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
-msgstr ""
+msgstr "ທະນາຄານ"
 
-#, fuzzy
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
 
-#, fuzzy
 msgctxt "field:bank.account,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr "ເລກທີ"
+msgstr "ເລກບັນຊີ"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr ""
+msgstr "ເຈົ້າຂອງບັນຊີ"
 
-#, fuzzy
 msgctxt "field:bank.account,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
-msgstr ""
+msgstr "ເຈົ້າຂອງບັນຊີ"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
-msgstr "ເລກທີ"
+msgstr "ເລກບັນຊີ"
 
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
-msgstr ""
+msgstr "ເລກບັນຊີຍໍ້"
 
-#, fuzzy
 msgctxt "field:bank.account.number,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"
 msgstr "ລໍາດັບ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr "ຮູບແບບ"
+msgstr "ປະເພດ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
-msgstr ""
+msgstr "ບັນຊີທະນາຄານ"
 
 msgctxt "help:bank,bic:"
-msgid "Bank/Business Identifier Code"
-msgstr ""
+msgid "Bank/Business Identifier Code."
+msgstr "ທະນາຄານ/ລະຫັດລະບຸຕົວຕົນທຸລະກິດ"
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr "ປົດໝາຍອອກເພື່ອບໍ່ລວມເອົາບັນຊີທະນາຄານຈາກການໃຊ້ງານໃນອະນາຄົດ"
+
+msgctxt "help:bank.account,bank:"
+msgid "The bank where the account is open."
+msgstr "ທະນາຄານບ່ອນທີ່ເປີດບັນຊີຢູ່"
+
+msgctxt "help:bank.account,numbers:"
+msgid "Add the numbers which identify the bank account."
+msgstr "ໃສ່ເລກທີ່ລະບຸບັນຊີທະນາຄານ"
+
+msgctxt "help:bank.account.number,account:"
+msgid "The bank account which is identified by the number."
+msgstr "ບັນຊີທະນາຄານທີ່ຖືກລະບຸຕົວຕົນດ້ວຍເລກບັນຊີ"
 
 msgctxt "model:bank,name:"
 msgid "Bank"
-msgstr ""
+msgstr "ທະນາຄານ"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
-msgstr ""
+msgstr "ບັນຊີທະນາຄານ"
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
-msgstr ""
+msgstr "ບັນຊີທະນາຄານ - ພາກສ່ວນ"
 
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "ເລກບັນຊີທະນາຄານ"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
 msgstr "ບັນຊີ"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "ທະນາຄານ"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
 msgstr "ບັນຊີ"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "ທະນາຄານ"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr ""
+msgstr "ການທະນາຄານ"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr ""
+msgstr "ການບໍລິຫານທະນາຄານ"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
-#, fuzzy
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "ອື່ນໆ"
 
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr ""
+msgstr "ການທະນາຄານ"
