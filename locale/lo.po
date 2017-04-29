@@ -4,78 +4,72 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.fr.fec.result,file:"
 msgid "File"
-msgstr ""
+msgstr "ແຟ້ມ"
 
 msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
-msgstr ""
+msgstr "ຊື່ແຟັມ"
 
-#, fuzzy
 msgctxt "field:account.fr.fec.result,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
 msgctxt "field:account.fr.fec.start,deferral_journal:"
 msgid "Deferral Journal"
-msgstr ""
+msgstr "ບັນຊີເລື່ອນຊໍາລະປະຈຳວັນ"
 
 msgctxt "field:account.fr.fec.start,deferral_post_number:"
 msgid "Deferral Number"
-msgstr ""
+msgstr "ເລກບັນຊີເລື່ອນຊໍາລະ"
 
-#, fuzzy
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "ປີການບັນຊີ"
 
-#, fuzzy
 msgctxt "field:account.fr.fec.start,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:account.fr.fec.start,type:"
 msgid "Type"
-msgstr "ຮູບແບບ"
+msgstr "ປະເພດ"
 
 msgctxt "help:account.fr.fec.start,deferral_journal:"
 msgid "Journal used for pseudo deferral move"
-msgstr ""
+msgstr "ບັນຊີປະຈຳວັນທີ່ນໍາໃຊ້ສໍາລັບເຄື່ອນໄຫວເລື່ອນຊໍາລະຊົ່ວຄາວ"
 
 msgctxt "help:account.fr.fec.start,deferral_post_number:"
 msgid "Post number used for pseudo deferral move"
-msgstr ""
+msgstr "ປະກາດເລກບັນຊີທີ່ໃຊ້ສຳລັບເຄື່ອນໄຫວເລື່ອນຊຳລະຊົ່ວຄາວ"
 
 msgctxt "model:account.fr.fec.result,name:"
 msgid "Generate FEC"
-msgstr ""
+msgstr "ສ້າງ FEC"
 
 msgctxt "model:account.fr.fec.start,name:"
 msgid "Generate FEC"
-msgstr ""
+msgstr "ສ້າງ FEC"
 
 msgctxt "model:ir.action,name:act_fec"
 msgid "Generate FEC"
-msgstr ""
+msgstr "ສ້າງ FEC"
 
 msgctxt "model:ir.ui.menu,name:menu_fec"
 msgid "Generate FEC"
-msgstr ""
+msgstr "ສ້າງ FEC"
 
 msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
-msgstr ""
+msgstr "IS-BIC"
 
-#, fuzzy
 msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
 msgstr "ອັດ"
 
-#, fuzzy
 msgctxt "wizard_button:account.fr.fec,start,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:account.fr.fec,start,generate:"
 msgid "Generate"
-msgstr ""
+msgstr "ສ້າງ"
