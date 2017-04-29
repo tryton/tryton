@@ -131,6 +131,14 @@ msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr ""
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
 msgstr ""

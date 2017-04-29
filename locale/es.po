@@ -110,6 +110,14 @@ msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr "El identificador principal del tipo de relación."
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr "Crea automáticamente la relación inversa."
+
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
 msgstr "Relaciones entre terceros"

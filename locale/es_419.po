@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
@@ -40,7 +40,7 @@ msgstr ""
 
 msgctxt "field:party.relation,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:party.relation.all,create_date:"
 msgid "Create Date"
@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:party.relation.all,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:party.relation.all,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
@@ -108,7 +108,15 @@ msgstr ""
 
 msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
+
+msgctxt "help:party.relation.type,name:"
+msgid "The main identifier of the relation type."
+msgstr ""
+
+msgctxt "help:party.relation.type,reverse:"
+msgid "Create automatically the reverse relation."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
