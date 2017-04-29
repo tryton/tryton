@@ -158,7 +158,6 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:product.category,customs:"
 msgid "Customs"
 msgstr "Aduana"
@@ -173,21 +172,19 @@ msgstr "Usar Códigos de Aduana do Pai"
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Categoria Aduana"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
 msgstr "Códigos de Aduana"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Utilizar os Códigos da Categoria de Tarifa"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Categoria Aduana"
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
@@ -205,10 +202,9 @@ msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
 msgstr "Utilizar os códigos de aduana definidos na categoria pai"
 
-#, fuzzy
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr "Usar dos códifos de tarifa definidos na categoria"
+msgstr "Usar os códifos de tarifa definidos na categoria"
 
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
@@ -274,10 +270,9 @@ msgctxt "selection:customs.duty.rate,type:"
 msgid "Import"
 msgstr "Importar"
 
-#, fuzzy
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid ""
-msgstr "Português (Brasil)"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
@@ -327,10 +322,9 @@ msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
 msgstr "Setembro"
 
-#, fuzzy
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid ""
-msgstr "Português (Brasil)"
+msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"

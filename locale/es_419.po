@@ -42,10 +42,9 @@ msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
@@ -87,10 +86,9 @@ msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Tasas de aduana"
 
 msgctxt "field:customs.tariff.code,end_day:"
 msgid "End Day"
@@ -148,10 +146,9 @@ msgctxt "field:product-customs.tariff.code,sequence:"
 msgid "Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
@@ -161,45 +158,41 @@ msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category,customs:"
 msgid "Customs"
-msgstr "Customs"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
-msgstr ""
+msgstr "Utilizar los códigos arancelarios del padre"
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr ""
+msgstr "Utilizar los códigos arancelarios de la categoría"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr ""
+msgstr "Utilizar los códigos arancelarios de la categoría"
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
@@ -207,53 +200,51 @@ msgstr ""
 
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
-msgstr ""
+msgstr "Utilizar los códigos arancelarios definidos en la categoría padre"
 
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr ""
+msgstr "Utilizar los códigos arancelarios definidos en la categoría"
 
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr ""
+msgstr "Utilizar los códigos arancelarios definidos en la categoría"
 
-#, fuzzy
 msgctxt "model:customs.duty.rate,name:"
 msgid "Duty Rate"
-msgstr "Duty Rates"
+msgstr "Tasa de aduana"
 
-#, fuzzy
 msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Tasas de aduana"
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Export"
+msgstr "Exportar"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Import"
+msgstr "Importar"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Customs"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Tasas de aduana"
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr ""
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"
@@ -261,7 +252,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
-msgstr "Customs Administration"
+msgstr ""
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"
@@ -271,15 +262,13 @@ msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Export"
-msgstr "Export"
+msgstr "Exportar"
 
-#, fuzzy
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Import"
-msgstr "Import"
+msgstr "Importar"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid ""
@@ -405,12 +394,10 @@ msgctxt "view:customs.tariff.code:"
 msgid "To"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:product.category:"
 msgid "Customs"
-msgstr "Customs"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Customs"
-msgstr "Customs"
+msgstr ""
