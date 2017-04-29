@@ -135,9 +135,56 @@ msgctxt "field:party.party,customer_location:"
 msgid "Customer Location"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.party,locations:"
+msgid "Locations"
+msgstr "Raktárhely"
+
 msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.location,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:party.party.location,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:party.party.location,customer_location:"
+msgid "Customer Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.location,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.location,party:"
+msgid "Party"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.location,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.party.location,supplier_location:"
+msgid "Supplier Location"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.location,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:party.party.location,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
 
 msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
@@ -235,6 +282,99 @@ msgstr "utolsó módosítás dátuma"
 
 #, fuzzy
 msgctxt "field:stock.configuration,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:stock.configuration.location,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:stock.configuration.location,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+#, fuzzy
+msgctxt "field:stock.configuration.location,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:stock.configuration.location,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:stock.configuration.location,shipment_internal_transit:"
+msgid "Internal Shipment Transit"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.configuration.location,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:stock.configuration.location,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.configuration.sequence,inventory_sequence:"
+msgid "Inventory Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
+msgid "Supplier Return Shipment Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,shipment_in_sequence:"
+msgid "Supplier Shipment Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,shipment_internal_sequence:"
+msgid "Internal Shipment Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,shipment_out_return_sequence:"
+msgid "Customer Return Shipment Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,shipment_out_sequence:"
+msgid "Customer Shipment Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
@@ -825,6 +965,10 @@ msgctxt "field:stock.shipment.in,create_uid:"
 msgid "Create User"
 msgstr "Által létrehozva "
 
+msgctxt "field:stock.shipment.in,done_by:"
+msgid "Done By"
+msgstr ""
+
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
 msgstr ""
@@ -849,7 +993,7 @@ msgstr "Raktár mozgás"
 
 #, fuzzy
 msgctxt "field:stock.shipment.in,number:"
-msgid "Numer"
+msgid "Number"
 msgstr "Szám"
 
 msgctxt "field:stock.shipment.in,origins:"
@@ -864,6 +1008,10 @@ msgstr ""
 msgctxt "field:stock.shipment.in,rec_name:"
 msgid "Name"
 msgstr "Név"
+
+msgctxt "field:stock.shipment.in,received_by:"
+msgid "Received By"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,reference:"
 msgid "Reference"
@@ -906,6 +1054,10 @@ msgctxt "field:stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+msgctxt "field:stock.shipment.in.return,assigned_by:"
+msgid "Assigned By"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
@@ -923,6 +1075,10 @@ msgstr "Által létrehozva "
 
 msgctxt "field:stock.shipment.in.return,delivery_address:"
 msgid "Delivery Address"
+msgstr ""
+
+msgctxt "field:stock.shipment.in.return,done_by:"
+msgid "Done By"
 msgstr ""
 
 msgctxt "field:stock.shipment.in.return,effective_date:"
@@ -999,6 +1155,10 @@ msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
 msgid "Moves"
 msgstr "Raktár mozgás"
 
+msgctxt "field:stock.shipment.internal,assigned_by:"
+msgid "Received By"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.shipment.internal,company:"
 msgid "Company"
@@ -1013,6 +1173,10 @@ msgstr "Létrehozás détuma"
 msgctxt "field:stock.shipment.internal,create_uid:"
 msgid "Create User"
 msgstr "Által létrehozva "
+
+msgctxt "field:stock.shipment.internal,done_by:"
+msgid "Done By"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,effective_date:"
 msgid "Effective Date"
@@ -1066,6 +1230,10 @@ msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
 msgstr ""
 
+msgctxt "field:stock.shipment.internal,shipped_by:"
+msgid "Shipped By"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.shipment.internal,state:"
 msgid "State"
@@ -1099,6 +1267,10 @@ msgctxt "field:stock.shipment.internal.assign.failed,moves:"
 msgid "Moves"
 msgstr "Raktár mozgás"
 
+msgctxt "field:stock.shipment.out,assigned_by:"
+msgid "Assigned By"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
@@ -1125,6 +1297,10 @@ msgstr ""
 
 msgctxt "field:stock.shipment.out,delivery_address:"
 msgid "Delivery Address"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,done_by:"
+msgid "Done By"
 msgstr ""
 
 msgctxt "field:stock.shipment.out,effective_date:"
@@ -1156,6 +1332,10 @@ msgstr ""
 
 msgctxt "field:stock.shipment.out,outgoing_moves:"
 msgid "Outgoing Moves"
+msgstr ""
+
+msgctxt "field:stock.shipment.out,packed_by:"
+msgid "Packed By"
 msgstr ""
 
 msgctxt "field:stock.shipment.out,planned_date:"
@@ -1236,6 +1416,10 @@ msgctxt "field:stock.shipment.out.return,delivery_address:"
 msgid "Delivery Address"
 msgstr ""
 
+msgctxt "field:stock.shipment.out.return,done_by:"
+msgid "Done By"
+msgstr ""
+
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
 msgstr ""
@@ -1276,6 +1460,10 @@ msgctxt "field:stock.shipment.out.return,rec_name:"
 msgid "Name"
 msgstr "Név"
 
+msgctxt "field:stock.shipment.out.return,received_by:"
+msgid "Received By"
+msgstr ""
+
 msgctxt "field:stock.shipment.out.return,reference:"
 msgid "Reference"
 msgstr ""
@@ -1313,6 +1501,14 @@ msgid "The default destination location when sending products to the party."
 msgstr ""
 
 msgctxt "help:party.party,supplier_location:"
+msgid "The default source location when receiving products from the party."
+msgstr ""
+
+msgctxt "help:party.party.location,customer_location:"
+msgid "The default destination location when sending products to the party."
+msgstr ""
+
+msgctxt "help:party.party.location,supplier_location:"
 msgid "The default source location when receiving products from the party."
 msgstr ""
 
@@ -1527,6 +1723,11 @@ msgid "Draft"
 msgstr ""
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
+msgid "Requests"
+msgstr ""
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_shipped"
 msgid "Shipped"
 msgstr ""
@@ -1692,6 +1893,10 @@ msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
 msgstr ""
 
+msgctxt "model:party.party.location,name:"
+msgid "Party Location"
+msgstr ""
+
 msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
 msgstr ""
@@ -1710,6 +1915,14 @@ msgstr ""
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
+msgstr ""
+
+msgctxt "model:stock.configuration.location,name:"
+msgid "Stock Configuration Location"
+msgstr ""
+
+msgctxt "model:stock.configuration.sequence,name:"
+msgid "Stock Configuration Sequence"
 msgstr ""
 
 msgctxt "model:stock.inventory,name:"
@@ -2233,6 +2446,10 @@ msgid "Draft"
 msgstr ""
 
 msgctxt "selection:stock.shipment.internal,state:"
+msgid "Request"
+msgstr ""
+
+msgctxt "selection:stock.shipment.internal,state:"
 msgid "Shipped"
 msgstr ""
 
@@ -2363,6 +2580,10 @@ msgid "Draft"
 msgstr ""
 
 msgctxt "view:stock.shipment.in.return:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
 msgstr ""
 
@@ -2382,6 +2603,10 @@ msgstr ""
 
 msgctxt "view:stock.shipment.in:"
 msgid "Inventory Moves"
+msgstr ""
+
+msgctxt "view:stock.shipment.in:"
+msgid "Other Info"
 msgstr ""
 
 msgctxt "view:stock.shipment.in:"
@@ -2412,6 +2637,10 @@ msgstr "Kész"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Draft"
+msgstr ""
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Other Info"
 msgstr ""
 
 msgctxt "view:stock.shipment.internal:"
@@ -2449,6 +2678,10 @@ msgid "Inventory Moves"
 msgstr ""
 
 msgctxt "view:stock.shipment.out.return:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:stock.shipment.out.return:"
 msgid "Received"
 msgstr ""
 
@@ -2471,11 +2704,11 @@ msgid "Draft"
 msgstr ""
 
 msgctxt "view:stock.shipment.out:"
-msgid "Inventory Moves"
+msgid "Make shipment"
 msgstr ""
 
 msgctxt "view:stock.shipment.out:"
-msgid "Make shipment"
+msgid "Other Info"
 msgstr ""
 
 msgctxt "view:stock.shipment.out:"
