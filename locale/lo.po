@@ -4,17 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.routing.operation,timesheet_available:"
 msgid "Available on timesheets"
-msgstr ""
+msgstr "ມີໃຫ້ໃຊ້ໃນໃບຕິດຕາມເວລາ"
 
 msgctxt "field:production.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr ""
+msgstr "ມີໃຫ້ໃຊ້ໃນໃບຕິດຕາມເວລາ"
 
-#, fuzzy
 msgctxt "field:production.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr "ແຖວຕາຕະລາງເຮັດວຽກ"
+msgstr "ລາຍການ ໃນໃບຕິດຕາມເວລາ"
 
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr ""
+msgstr "ໜ້າວຽກໃນໃບຕິດຕາມເວລາ"
