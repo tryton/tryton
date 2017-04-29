@@ -35,3 +35,7 @@ msgstr "Рабочие затраты"
 msgctxt "view:project.work:"
 msgid "Purchases"
 msgstr "Покупки"
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr ""

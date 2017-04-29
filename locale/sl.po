@@ -33,3 +33,7 @@ msgstr "Ocena naloge"
 msgctxt "view:project.work:"
 msgid "Purchases"
 msgstr "Nabavni nalogi"
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr "Projekt"

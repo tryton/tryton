@@ -33,3 +33,7 @@ msgstr ""
 msgctxt "view:project.work:"
 msgid "Purchases"
 msgstr ""
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr ""

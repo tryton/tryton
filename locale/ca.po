@@ -33,3 +33,7 @@ msgstr "Temps del treball"
 msgctxt "view:project.work:"
 msgid "Purchases"
 msgstr "Compres"
+
+msgctxt "view:purchase.line:"
+msgid "Project"
+msgstr "Projecte"
