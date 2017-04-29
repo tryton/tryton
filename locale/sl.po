@@ -94,19 +94,17 @@ msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
 msgstr "Trajanje"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr "Konec evidence"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Začetek evidence"
 
 msgctxt "field:project.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr ""
+msgstr "Evidentirane naloge"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
@@ -163,6 +161,10 @@ msgstr "Projekti"
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
 msgstr "Naloge"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Postavke evidence"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"

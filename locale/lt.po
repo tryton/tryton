@@ -160,6 +160,10 @@ msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
 msgstr ""

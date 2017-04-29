@@ -56,7 +56,7 @@ msgstr "Nome"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Parente"
+msgstr "Pai"
 
 msgctxt "field:project.work,party:"
 msgid "Party"
@@ -94,19 +94,17 @@ msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
 msgstr "Duração"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_end_date:"
 msgid "Timesheet End"
 msgstr "Fim do Horário de Trabalho"
 
-#, fuzzy
 msgctxt "field:project.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Início do Horário de Trabalho"
 
 msgctxt "field:project.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr ""
+msgstr "Horários de Trabalho"
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
@@ -164,6 +162,10 @@ msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
 msgstr "Tarefas"
 
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Lançamentos de Horários"
+
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
 msgstr "Esforços dos trabalhos"
@@ -178,7 +180,7 @@ msgstr "Feito"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Abriu"
+msgstr "Aberto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
@@ -186,7 +188,7 @@ msgstr "Feito"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Abriu"
+msgstr "Aberto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
@@ -238,7 +240,7 @@ msgstr "Feito"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Abriu"
+msgstr "Aberto"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
@@ -254,7 +256,7 @@ msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "Children"
-msgstr "Criança"
+msgstr "Filhos"
 
 msgctxt "view:project.work:"
 msgid "General"

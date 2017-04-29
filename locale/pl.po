@@ -46,9 +46,10 @@ msgctxt "field:project.work,left:"
 msgid "Left"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
@@ -157,6 +158,10 @@ msgstr "Projekty"
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
 msgstr "Zadania"
+
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"

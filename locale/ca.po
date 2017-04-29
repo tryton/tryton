@@ -162,6 +162,10 @@ msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
 msgstr "Tasques"
 
+msgctxt "model:ir.action,name:act_timesheet_line_form_work"
+msgid "Timesheet Lines"
+msgstr "Línies de full de treball"
+
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
 msgstr "Projectes i tasques"
