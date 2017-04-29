@@ -8,7 +8,7 @@ msgstr "El temps de la línia \"%(line)s\" ha de ser positiu."
 
 msgctxt "error:timesheet.work:"
 msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
+"The company of the work \"%(work)s\" is different than the origin's company"
 msgstr ""
 "L'empresa del full de treball \"%(work)s\" és diferent de l'empresa de "
 "l'orígen"
@@ -281,9 +281,73 @@ msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
 msgstr "Fins a la data"
 
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "L'empresa on s'ha invertit el temps."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Quan s'ha realitzat el treball."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Descripció addicional del treball realitzat."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "El empleat que realitzat el treball."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "El treball en que s'ha invertit el temps."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Quan s'han realitzat els treballs."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "L'empleat que ha realitzat els treballs."
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Desmarca per excloure el treball d'us en el futur."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Feu que el treball pertanyi a l'empresa."
+
 msgctxt "help:timesheet.work,duration:"
-msgid "Total time spent on this work"
+msgid "Total time spent on this work."
 msgstr "Temps total dedicat en aquest treball."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "El identificador principal del treball."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Utilitzeu-ho per relacionar el temps invertit amb altres registres."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Restringeix afegir línies desprès de la data."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Inverteix temps en aquest treball."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Restringeix afegir línies abans de la data."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "No tinguis en compte les línies abans de la data."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "No tinguis en compte les línies desprès de la data."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -412,6 +476,17 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Afegeix"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr ""
+"L'empresa del full de treball \"%(work)s\" és diferent de l'empresa de "
+"l'orígen"
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which is the time is spent."
+msgstr "El treball en que s'ha invertit el temps."
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"

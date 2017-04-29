@@ -8,12 +8,12 @@ msgstr "Trajanje na postavki \"%(line)s\" mora biti nenegativno."
 
 msgctxt "error:timesheet.work:"
 msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
-msgstr ""
+"The company of the work \"%(work)s\" is different than the origin's company"
+msgstr "Družba naloge \"%(work)s\" je različna od družbe porekla"
 
 msgctxt "error:timesheet.work:"
 msgid "The origin must be unique per company."
-msgstr ""
+msgstr "Poreklo mora biti unikatno po družbi."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -47,20 +47,17 @@ msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr "Končni datum"
+msgstr "Konec"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Začetni datum"
+msgstr "Začetek"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
@@ -238,7 +235,6 @@ msgctxt "field:timesheet.work,name:"
 msgid "Name"
 msgstr "Naziv"
 
-#, fuzzy
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr "Poreklo"
@@ -259,7 +255,6 @@ msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Začetek evidence"
 
-#, fuzzy
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
 msgstr "Naloga"
@@ -272,24 +267,85 @@ msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "Od"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
 msgstr "Do"
 
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "Družba, za katero se evidentira čas."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Dan evidentiranja časa."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Dodaten opis opravljene naloge."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "Zaposlenec, katerega čas se evidentira."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "Naloga, za katero se evidentira čas."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Dan evidentiranja časa."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "Zaposlenec, katerega čas se evidentira."
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Odznačite za izklop nadaljne uporabe naloge."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Poveži nalogo z družbo."
+
 msgctxt "help:timesheet.work,duration:"
-msgid "Total time spent on this work"
-msgstr "Skupen čas, porabljen na tej nalogi"
+msgid "Total time spent on this work."
+msgstr "Skupen čas, porabljen na nalogi."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "Glavni identifikator naloge."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Povezuje porabljen čas z drugimi zapisi."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Evidentiranje časa po tem datumu je onemogočeno."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Evidentiranje časa, porabljenega na nalogi."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Evidentiranje časa pred tem datumom je onemogočeno."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "Evidenca časa pred tem datumom se ne upošteva."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "Evidenca časa po tem datumu se ne upošteva."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -319,7 +375,6 @@ msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
 msgstr "Naloge"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Naloge"
@@ -328,7 +383,6 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Nastavitve"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
 msgstr "Ure po zaposlencu"
@@ -361,7 +415,6 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Naloge"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
 msgstr "Naloge"
@@ -376,7 +429,7 @@ msgstr "Ure po zaposlencu"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr ""
+msgstr "Ure po kontekstu zaposlenca"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -400,9 +453,8 @@ msgstr "Naloga"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr ""
+msgstr "Kontekst naloge"
 
-#, fuzzy
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "Evidenca dela"
@@ -422,6 +474,15 @@ msgstr "Prekliči"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Vnos"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr "Družba naloge \"%(work)s\" je različna od družbe porekla"
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which is the time is spent."
+msgstr "Naloga, za katero se evidentira čas."
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"

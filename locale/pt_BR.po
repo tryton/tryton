@@ -8,12 +8,12 @@ msgstr "A duração da linha \"%(line)s\" deve ser positiva."
 
 msgctxt "error:timesheet.work:"
 msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
-msgstr ""
+"The company of the work \"%(work)s\" is different than the origin's company"
+msgstr "A empresa do trabalho \"%(work)s\" é diferente da empresa de origem"
 
 msgctxt "error:timesheet.work:"
 msgid "The origin must be unique per company."
-msgstr ""
+msgstr "A origem deve ser única por empresa."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -47,20 +47,17 @@ msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr "Data de fim"
+msgstr "Data de término"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Data inicial"
+msgstr "Data de início"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
@@ -86,7 +83,6 @@ msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "Mês"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
 msgid "Month"
 msgstr "Mês"
@@ -135,7 +131,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Semana"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Semana"
@@ -240,7 +235,6 @@ msgctxt "field:timesheet.work,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr "Origem"
@@ -261,7 +255,6 @@ msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "Início do Horário de Trabalho"
 
-#, fuzzy
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
 msgstr "Trabalho"
@@ -274,24 +267,85 @@ msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "Desde a Data"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
-msgstr "Data final"
+msgstr "À Data"
+
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "A empresa à qual o tempo é gasto."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Quando o tempo é gasto."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Descrição adicional do trabalho feito."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "O empregado que gasta o tempo."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "O trabalho no qual o tempo é gasto."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Quando o tempo é gasto."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "O empregado que gasta o tempo."
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Desmarque para não usar o trabalho futuramente."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Faça com que o trabalho pertença à empresa."
 
 msgctxt "help:timesheet.work,duration:"
-msgid "Total time spent on this work"
-msgstr "Total de tempo gasto neste trabalho"
+msgid "Total time spent on this work."
+msgstr "Tempo total gasto neste trabalho."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "O identificador principal do trabalho."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Use para relacionar o tempo gasto a outros registros."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Restringe a adição de lançamentos após a data."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Tempo gasto neste trabalho."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Restringe a adição de lançamentos antes da data."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "Não considere lançamentos antes da data."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "Não considere lançamentos após a data."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -321,7 +375,6 @@ msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
 msgstr "Trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Trabalhos"
@@ -330,7 +383,6 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
 msgstr "Horas por Empregado"
@@ -363,7 +415,6 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
 msgstr "Trabalhos"
@@ -378,7 +429,7 @@ msgstr "Horas por Empregado"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr ""
+msgstr "Contexto das Horas por Empregado"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -402,9 +453,8 @@ msgstr "Trabalho"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr ""
+msgstr "Contexto do Trabalho"
 
-#, fuzzy
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "Quadro de tempo"
@@ -424,6 +474,15 @@ msgstr "Cancelar"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Inserir"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr "A empresa do trabalho \"%(work)s\" é diferente da empresa de origem"
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which is the time is spent."
+msgstr "O trabalho no qual o tempo é gasto."
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"

@@ -6,14 +6,17 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "ກຳນົດເວລາຂອງ \"%(line)s\" ຕ້ອງເປັນບວກ"
 
+#, fuzzy
 msgctxt "error:timesheet.work:"
 msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
+"The company of the work \"%(work)s\" is different than the origin's company"
 msgstr ""
+"ສຳນັກງານທີ່ຮັບຜິດຊອບວຽກ \"%(work)s\" ແຕກຕ່າງກັນ "
+"ດັ່ງນັ້ນຈະໃຊ້ສຳນັກງານເດີມແທນ."
 
 msgctxt "error:timesheet.work:"
 msgid "The origin must be unique per company."
-msgstr ""
+msgstr "ສຳນັກງານເດີມຕ້ອງບໍ່ຊໍ້າກັນ."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
@@ -47,17 +50,14 @@ msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
 msgstr "ຂຽນຊື່ຜູ່ໃຊ້"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
 msgstr "ວັນທີເລີ່ມ"
@@ -238,10 +238,9 @@ msgctxt "field:timesheet.work,name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
-msgstr "ລາຍການຂັ້ນຕົ້ນ"
+msgstr "ໜ້າວຽກເດີມ"
 
 msgctxt "field:timesheet.work,rec_name:"
 msgid "Name"
@@ -259,10 +258,9 @@ msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
 msgstr "ຕາຕະລາງເຮັດວຽກເລີ້ມເວລາ"
 
-#, fuzzy
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr "ເຮັດວຽກ"
+msgstr "ວຽກ"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
@@ -272,24 +270,86 @@ msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
 msgstr "ຂຽນຊື່ຜູ່ໃຊ້"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "ແຕ່ວັນທີ"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
 msgstr "ເຖິງວັນທີ"
 
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr ""
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr ""
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr ""
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr ""
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr ""
+
+#, fuzzy
 msgctxt "help:timesheet.work,duration:"
-msgid "Total time spent on this work"
+msgid "Total time spent on this work."
 msgstr "ເວລາທັງໝົດທີ່ໃຊ້ໃນໜ້າວຽກນີ້"
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr ""
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr ""
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr ""
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -319,19 +379,17 @@ msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
 msgstr "ເຮັດວຽກ"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "ເຮັດວຽກ"
+msgstr "ບັນດາວຽກ"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "ການຕັ້ງຄ່າ"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນື່ງ"
+msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນຶ່ງ"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
@@ -361,10 +419,9 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "ເຮັດວຽກ"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "ເຮັດວຽກ"
+msgstr "ບັນດາວຽກ"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
@@ -376,7 +433,7 @@ msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນື່
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr ""
+msgstr "ຕົວຈິງຊົ່ວໂມງຕໍ່ພະນັກງານ"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
@@ -400,9 +457,8 @@ msgstr "ເຮັດວຽກ"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr ""
+msgstr "ວຽກຕົວຈິງ"
 
-#, fuzzy
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
 msgstr "ຕາຕະລາງເຮັດວຽກ"
@@ -422,6 +478,13 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "ເຂົ້າໄປ"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr ""
+"ສຳນັກງານທີ່ຮັບຜິດຊອບວຽກ \"%(work)s\" ແຕກຕ່າງກັນ "
+"ດັ່ງນັ້ນຈະໃຊ້ສຳນັກງານເດີມແທນ."
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"

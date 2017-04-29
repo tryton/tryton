@@ -4,13 +4,13 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
-msgstr "Zeitdauer von Zeile \"%(line)s\" muss positiv sein"
+msgstr "Zeitdauer von Zeile \"%(line)s\" muss positiv sein."
 
 msgctxt "error:timesheet.work:"
 msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
+"The company of the work \"%(work)s\" is different than the origin's company"
 msgstr ""
-"Das Unternehmen für Tätigkeit \"%(work)s\" unterscheidet sich von dem "
+"Das Unternehmen für die Tätigkeit \"%(work)s\" unterscheidet sich von dem "
 "Unternehmen der Herkunft."
 
 msgctxt "error:timesheet.work:"
@@ -281,9 +281,73 @@ msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
 msgstr "Bis Datum"
 
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "Das Unternehmen für das Zeit aufgewendet wird."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Wann die Zeit aufgewendet wird."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Zusätzliche Beschreibung der erledigten Aufgabe."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "Der Mitarbeiter der Zeit aufwendet."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "Die Aufgabe für die Zeit aufgewendet wird."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Wann die Zeit aufgewendet wird."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "Der Mitarbeiter der Zeit aufwendet."
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Deaktivieren um die Aufgabe für zukünftige Nutzung zu sperren."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Die Aufgabe dem Unternehmen zuordnen."
+
 msgctxt "help:timesheet.work,duration:"
-msgid "Total time spent on this work"
-msgstr "Die gesamte Zeit, die für diese Aufgabe verwendet wurde"
+msgid "Total time spent on this work."
+msgstr "Die gesamte Zeit, die für diese Aufgabe verwendet wurde."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "Die Hauptbezeichnung der Aufgabe."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Die aufgewendete Zeit auf andere Datensätze anwenden"
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Hinzufügen von Positionen nach dem Datum beschränken."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Zeit für diese Aufgabe aufwenden."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Hinzufügen von Positionen vor dem Datum beschränken."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "Buchungspositionen vor dem Datum nicht berücksichtigen."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "Buchungspositionen nach dem Datum nicht berücksichtigen."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -412,6 +476,13 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Zur Eingabe"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr ""
+"Das Unternehmen für die Tätigkeit \"%(work)s\" unterscheidet sich von dem "
+"Unternehmen der Herkunft."
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"

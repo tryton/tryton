@@ -8,7 +8,7 @@ msgstr "La durée de la ligne « %(line)s » doit être positive."
 
 msgctxt "error:timesheet.work:"
 msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
+"The company of the work \"%(work)s\" is different than the origin's company"
 msgstr ""
 "La société du travail « %(work)s » est différente de la société d'origine"
 
@@ -280,9 +280,73 @@ msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
 msgstr "Date de fin"
 
+msgctxt "help:timesheet.line,company:"
+msgid "The company on which the time is spent."
+msgstr "La société pour laquelle le temps est passé."
+
+msgctxt "help:timesheet.line,date:"
+msgid "When the time is spent."
+msgstr "Quand le temps a été passé."
+
+msgctxt "help:timesheet.line,description:"
+msgid "Additional description of the work done."
+msgstr "Description additionnelle du travail réalisé."
+
+msgctxt "help:timesheet.line,employee:"
+msgid "The employee who spends the time."
+msgstr "L'employé qui a passé le temps."
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which the time is spent."
+msgstr "Le travail sur lequel le temps est passé."
+
+msgctxt "help:timesheet.line.enter.start,date:"
+msgid "When the time is spent."
+msgstr "Quand le temps a été passé."
+
+msgctxt "help:timesheet.line.enter.start,employee:"
+msgid "The employee who spends the time."
+msgstr "L'employé qui a passé le temps."
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Décocher pour exclure le travail d'une utilisation future."
+
+msgctxt "help:timesheet.work,company:"
+msgid "Make the work belong to the company."
+msgstr "Faire appartenir le travail à la société."
+
 msgctxt "help:timesheet.work,duration:"
-msgid "Total time spent on this work"
-msgstr "Temps total passé sur ce travail"
+msgid "Total time spent on this work."
+msgstr "Temps total passé sur ce travail."
+
+msgctxt "help:timesheet.work,name:"
+msgid "The main identifier of the work."
+msgstr "L'identifiant principal du travail."
+
+msgctxt "help:timesheet.work,origin:"
+msgid "Use to relate the time spent to other records."
+msgstr "Sert à lier le temps passé sur d'autres enregistrements."
+
+msgctxt "help:timesheet.work,timesheet_end_date:"
+msgid "Restrict adding lines after the date."
+msgstr "Restreint l'ajout de lignes après la date."
+
+msgctxt "help:timesheet.work,timesheet_lines:"
+msgid "Spend time on this work."
+msgstr "Passer du temps sur ce travail."
+
+msgctxt "help:timesheet.work,timesheet_start_date:"
+msgid "Restrict adding lines before the date."
+msgstr "Restreint l'ajout de lignes avant la date."
+
+msgctxt "help:timesheet.work.context,from_date:"
+msgid "Do not take into account lines before the date."
+msgstr "Ne pas prendre en compte les lignes avant la date."
+
+msgctxt "help:timesheet.work.context,to_date:"
+msgid "Do not take into account lines after the date."
+msgstr "Ne pas prendre en compte les lignes après la date."
 
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
@@ -411,6 +475,16 @@ msgstr "Annuler"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Entrer"
+
+msgctxt "error:timesheet.work:"
+msgid ""
+"The company of the work \"%(work)s\" is different then the origin's company"
+msgstr ""
+"La société du travail « %(work)s » est différente de la société d'origine"
+
+msgctxt "help:timesheet.line,work:"
+msgid "The work on which is the time is spent."
+msgstr "Le travail sur lequel le temps est passé."
 
 msgctxt "view:timesheet.hours_employee_monthly:"
 msgid "Hours per Employee per Month"
