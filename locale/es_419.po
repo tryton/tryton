@@ -7,22 +7,90 @@ msgid ""
 "You cannot change the cost price for a product which is associated to stock moves.\n"
 "You must use the \"Update Cost Price\" wizard."
 msgstr ""
+"No puede cambiar el precio de costo de un producto el cual está asociado a movimientos de stock.\n"
+"Para actualizar el costo debe utilizar el asistente \"Actualizar precio de costo\"."
 
 msgctxt "error:product.update_cost_price:"
 msgid "The stock account and the counterpart can not be the same account"
 msgstr ""
+"La cuenta de inventario y la de contrapartida no pueden ser la misma cuenta"
 
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
-msgstr ""
+msgstr "Cuenta contrapartida del precio de costo"
 
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
+msgstr "Libro diario de inventario"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "Cuenta contrapartida del precio de costo"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:account.configuration.stock_journal,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.configuration.stock_journal,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.configuration.stock_journal,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.configuration.stock_journal,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:account.configuration.stock_journal,stock_journal:"
+msgid "Stock Journal"
+msgstr "Libro diario de inventario"
+
+msgctxt "field:account.configuration.stock_journal,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.configuration.stock_journal,write_uid:"
+msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
-msgstr ""
+msgstr "Método de contabilización de inventario"
 
 msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
@@ -60,8 +128,29 @@ msgctxt "field:product.category,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
+msgstr "Método de contabilización de inventario"
+
+msgctxt "field:product.category.account,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.category.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.category.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.category.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr ""
+
+msgctxt "field:product.category.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
 msgstr ""
 
 msgctxt "field:product.product,account_stock:"
@@ -100,9 +189,10 @@ msgctxt "field:product.product,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,account_stock_used:"
 msgid "Account Stock Used"
-msgstr ""
+msgstr "Método de contabilización de inventario"
 
 msgctxt "field:product.template,account_stock:"
 msgid "Account Stock"
@@ -140,13 +230,34 @@ msgctxt "field:product.template,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,account_stock_used:"
 msgid "Account Stock Used"
+msgstr "Método de contabilización de inventario"
+
+msgctxt "field:product.template.account,account_stock:"
+msgid "Account Stock"
+msgstr ""
+
+msgctxt "field:product.template.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr ""
+
+msgctxt "field:product.template.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr ""
+
+msgctxt "field:product.template.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr ""
+
+msgctxt "field:product.template.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
 msgstr ""
 
 msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Precio de costo"
 
 msgctxt "field:product.update_cost_price.ask,id:"
 msgid "ID"
@@ -182,7 +293,7 @@ msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Libro diario"
 
 msgctxt "field:product.update_cost_price.show_move,price_difference:"
 msgid "Price Difference"
@@ -232,18 +343,25 @@ msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 
+msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
+msgid "Account Configuration Cost Price Counterpart Account"
+msgstr "Configuración de cuenta de la contrapartida del precio de costo"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "Configuración del diario de existencias"
+
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
-msgstr "Update Cost Price"
+msgstr "Actualizar precio de costo"
 
-#, fuzzy
 msgctxt "model:product.update_cost_price.ask,name:"
 msgid "Update Cost Price Ask"
-msgstr "Update Cost Price"
+msgstr "Solicitar actualizar precio de costo"
 
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"
-msgstr ""
+msgstr "Actualizar precio de costo - Mostrar asiento"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"

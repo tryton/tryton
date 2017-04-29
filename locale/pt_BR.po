@@ -22,6 +22,71 @@ msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
 msgstr "Diário de Estoque"
 
+msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
+msgid "Cost Price Counterpart Account"
+msgstr "Conta de Contrapartida de Preço de Custo"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.cost_price_counterpart_account,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt ""
+"field:account.configuration.cost_price_counterpart_account,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:account.configuration.stock_journal,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.configuration.stock_journal,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:account.configuration.stock_journal,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.stock_journal,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.configuration.stock_journal,stock_journal:"
+msgid "Stock Journal"
+msgstr "Diário de Estoque"
+
+msgctxt "field:account.configuration.stock_journal,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:account.configuration.stock_journal,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
 msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
 msgstr "Método de Contabilização de Estoque"
@@ -66,52 +131,62 @@ msgctxt "field:product.category,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Conta de Estoque Utilizada"
 
-#, fuzzy
+msgctxt "field:product.category.account,account_stock:"
+msgid "Account Stock"
+msgstr "Conta de Estoque"
+
+msgctxt "field:product.category.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Conta de Estoque do Cliente"
+
+msgctxt "field:product.category.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Conta de Estoque de Achados e Perdidos"
+
+msgctxt "field:product.category.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Conta de Estoque de Produção"
+
+msgctxt "field:product.category.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Conta de Estoque do Fornecedor"
+
 msgctxt "field:product.product,account_stock:"
 msgid "Account Stock"
 msgstr "Conta de Estoque"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer:"
 msgid "Account Stock Customer"
 msgstr "Conta de Estoque do Cliente"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_customer_used:"
 msgid "Account Stock Customer Used"
-msgstr "Conta de Estoque do Cliente Utilizada"
+msgstr "Conta de Estoque Utilizada do Cliente"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found:"
 msgid "Account Stock Lost and Found"
 msgstr "Conta de Estoque de Achados e Perdidos"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Conta de Estoque de Achados e Perdidos"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production:"
 msgid "Account Stock Production"
 msgstr "Conta de Estoque de Produção"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_production_used:"
 msgid "Account Stock Production Used"
-msgstr "Conta de Estoque de Produção Utilizada"
+msgstr "Conta de Estoque Utilizada para Produção"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier:"
 msgid "Account Stock Supplier"
-msgstr "Conta de Estoque de Fornecedor"
+msgstr "Conta de Estoque do Fornecedor"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_supplier_used:"
 msgid "Account Stock Supplier Used"
-msgstr "Conta de Estoque de Fornecedor Utilizada"
+msgstr "Conta de Estoque Utilizada do Fornecedor"
 
-#, fuzzy
 msgctxt "field:product.product,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Conta de Estoque Utilizada"
@@ -155,6 +230,26 @@ msgstr "Conta de Estoque de Fornecedor Utilizada"
 msgctxt "field:product.template,account_stock_used:"
 msgid "Account Stock Used"
 msgstr "Conta de Estoque Utilizada"
+
+msgctxt "field:product.template.account,account_stock:"
+msgid "Account Stock"
+msgstr "Conta de Estoque"
+
+msgctxt "field:product.template.account,account_stock_customer:"
+msgid "Account Stock Customer"
+msgstr "Conta de Estoque do Cliente"
+
+msgctxt "field:product.template.account,account_stock_lost_found:"
+msgid "Account Stock Lost and Found"
+msgstr "Conta de Estoque de Achados e Perdidos"
+
+msgctxt "field:product.template.account,account_stock_production:"
+msgid "Account Stock Production"
+msgstr "Conta de Estoque de Produção"
+
+msgctxt "field:product.template.account,account_stock_supplier:"
+msgid "Account Stock Supplier"
+msgstr "Conta de Estoque do Fornecedor"
 
 msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
@@ -204,27 +299,22 @@ msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Conta de Estoque"
 
-#, fuzzy
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta conta será utilizada no lugar daquela definida na categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_customer:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta conta será utilizada no lugar daquela definida na categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_lost_found:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta conta será utilizada no lugar daquela definida na categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_production:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta conta será utilizada no lugar daquela definida na categoria."
 
-#, fuzzy
 msgctxt "help:product.product,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta conta será utilizada no lugar daquela definida na categoria."
@@ -249,6 +339,15 @@ msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta conta será utilizada no lugar daquela definida na categoria."
 
+msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
+msgid "Account Configuration Cost Price Counterpart Account"
+msgstr ""
+"Configurações de Contabilidade Preço de Custo da Conta de Contrapartida"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "Configurações de Contabilidade Diário de Estoque"
+
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Atualizar Preço de Custo"
@@ -271,7 +370,7 @@ msgstr "Nenhum"
 
 msgctxt "view:account.configuration:"
 msgid "Stock"
-msgstr ""
+msgstr "Estoque"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
