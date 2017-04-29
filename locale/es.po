@@ -26,10 +26,6 @@ msgctxt "field:stock.package,shipping_reference:"
 msgid "Shipping Reference"
 msgstr "Referencia de envío"
 
-msgctxt "field:stock.package,weight:"
-msgid "Weight"
-msgstr "Peso"
-
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
 msgstr "Altura"
@@ -69,10 +65,6 @@ msgstr "Unidad del ancho"
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
 msgstr "Descripción del envío"
-
-msgctxt "help:stock.package,weight:"
-msgid "The total weight of the package's moves in kg."
-msgstr "El peso total del contenido del paquete en Kg."
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"

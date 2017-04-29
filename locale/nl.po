@@ -25,11 +25,6 @@ msgid "Shipping Reference"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.package,weight:"
-msgid "Weight"
-msgstr "Gewicht"
-
-#, fuzzy
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
 msgstr "Gewicht"
@@ -70,10 +65,6 @@ msgstr ""
 
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
-msgstr ""
-
-msgctxt "help:stock.package,weight:"
-msgid "The total weight of the package's moves in kg."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"

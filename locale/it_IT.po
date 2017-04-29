@@ -24,10 +24,6 @@ msgctxt "field:stock.package,shipping_reference:"
 msgid "Shipping Reference"
 msgstr ""
 
-msgctxt "field:stock.package,weight:"
-msgid "Weight"
-msgstr ""
-
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
 msgstr ""
@@ -67,10 +63,6 @@ msgstr ""
 
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
-msgstr ""
-
-msgctxt "help:stock.package,weight:"
-msgid "The total weight of the package's moves in kg."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
