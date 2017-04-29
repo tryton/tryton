@@ -18,10 +18,8 @@ msgstr ""
 "%(purchase)s."
 
 msgctxt "error:purchase.line:"
-msgid "Purchase \"%(purchase)s\" misses an \"account expense\" default property."
-msgstr ""
-"Falta la propietat \"Compte de despeses\" per defecte de la compra "
-"\"%(purchase)s\"."
+msgid "Purchase \"%(purchase)s\" misses a default \"account expense\"."
+msgstr "Falta el \"compte de despeses\" per defecte per la compra \"%(purchase)s\"."
 
 msgctxt "error:purchase.line:"
 msgid "Purchase \"%(purchase)s\" misses the supplier location for line \"%(line)s\"."
@@ -68,6 +66,10 @@ msgstr "Proveïdors"
 msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
 msgstr "Comprable"
+
+msgctxt "field:product.product,purchase_price_uom:"
+msgid "Purchase Price"
+msgstr "Preu de compra"
 
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
@@ -117,6 +119,67 @@ msgctxt "field:purchase.configuration,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "field:purchase.configuration.purchase_method,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:purchase.configuration.purchase_method,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:purchase.configuration.purchase_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:purchase.configuration.purchase_method,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Mètode de facturació"
+
+msgctxt "field:purchase.configuration.purchase_method,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.configuration.purchase_method,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:purchase.configuration.purchase_method,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:purchase.configuration.sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:purchase.configuration.sequence,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:purchase.configuration.sequence,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:purchase.configuration.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr "Seqüència de compra"
+
+msgctxt "field:purchase.configuration.sequence,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:purchase.configuration.sequence,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:purchase.configuration.sequence,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Domini de les factures"
@@ -154,6 +217,14 @@ msgid "Create User"
 msgstr "Usuari de creació"
 
 msgctxt "field:purchase.line,delivery_date:"
+msgid "Delivery Date"
+msgstr "Data lliurament"
+
+msgctxt "field:purchase.line,delivery_date_edit:"
+msgid "Edit Delivery Date"
+msgstr "Modificar data de lliurament"
+
+msgctxt "field:purchase.line,delivery_date_store:"
 msgid "Delivery Date"
 msgstr "Data lliurament"
 
@@ -477,6 +548,10 @@ msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimals de la moneda"
 
+msgctxt "field:purchase.purchase,delivery_date:"
+msgid "Delivery Date"
+msgstr "Data lliurament"
+
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
 msgstr "Descripció"
@@ -710,9 +785,17 @@ msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr "Els moviments seleccionats es refaran. Els altres s'ignoraran."
 
+msgctxt "help:purchase.line,delivery_date_edit:"
+msgid "Check to edit the delivery date."
+msgstr "Marca per modificar la data de lliurament."
+
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Quantitat mínima."
+
+msgctxt "help:purchase.purchase,delivery_date:"
+msgid "The default delivery date for each line."
+msgstr "La data de lliurament per defecte de cada línia."
 
 msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used"
@@ -833,6 +916,14 @@ msgstr "Tercers amb compres"
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Configuració de les compres"
+
+msgctxt "model:purchase.configuration.purchase_method,name:"
+msgid "Purchase Configuration Purchase Method"
+msgstr "Configuració dels mètodes de compra"
+
+msgctxt "model:purchase.configuration.sequence,name:"
+msgid "Purchase Configuration Sequence"
+msgstr "Configuració de seqüencies de compra"
 
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
@@ -957,18 +1048,6 @@ msgstr "Ignorat"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Recreada"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Order"
-msgstr "Basat en la comanda"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Shipment"
-msgstr "Basat en l'enviament"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Manual"
-msgstr "Manual"
 
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Canceled"
@@ -1101,6 +1180,10 @@ msgstr "Seleccioneu les factures a recrear"
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
 msgstr "Seleccioneu els moviments a recrear"
+
+msgctxt "view:purchase.line:"
+msgid "Delivery Date"
+msgstr "Data lliurament"
 
 msgctxt "view:purchase.line:"
 msgid "General"

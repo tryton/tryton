@@ -20,10 +20,8 @@ msgstr ""
 "eingetragen."
 
 msgctxt "error:purchase.line:"
-msgid "Purchase \"%(purchase)s\" misses an \"account expense\" default property."
-msgstr ""
-"Für Einkauf \"%(purchase)s\" ist keine Standardeigenschaft für das "
-"Aufwandskonto eingetragen."
+msgid "Purchase \"%(purchase)s\" misses a default \"account expense\"."
+msgstr "Für den Einkauf \"%(purchase)s\" ist kein Aufwandskonto eingetragen."
 
 msgctxt "error:purchase.line:"
 msgid "Purchase \"%(purchase)s\" misses the supplier location for line \"%(line)s\"."
@@ -73,6 +71,10 @@ msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
 msgstr "Käuflich"
 
+msgctxt "field:product.product,purchase_price_uom:"
+msgid "Purchase Price"
+msgstr "Einkaufspreis"
+
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "Maßeinheit Einkauf"
@@ -121,6 +123,67 @@ msgctxt "field:purchase.configuration,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:purchase.configuration.purchase_method,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:purchase.configuration.purchase_method,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:purchase.configuration.purchase_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:purchase.configuration.purchase_method,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Rechnungsstellung Einkauf"
+
+msgctxt "field:purchase.configuration.purchase_method,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:purchase.configuration.purchase_method,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:purchase.configuration.purchase_method,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:purchase.configuration.sequence,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:purchase.configuration.sequence,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:purchase.configuration.sequence,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:purchase.configuration.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr "Nummernkreis Einkauf"
+
+msgctxt "field:purchase.configuration.sequence,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:purchase.configuration.sequence,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:purchase.configuration.sequence,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Wertebereich Rechnungen (Domain)"
@@ -158,6 +221,14 @@ msgid "Create User"
 msgstr "Erstellt durch"
 
 msgctxt "field:purchase.line,delivery_date:"
+msgid "Delivery Date"
+msgstr "Lieferdatum"
+
+msgctxt "field:purchase.line,delivery_date_edit:"
+msgid "Edit Delivery Date"
+msgstr "Lieferdatum geändert"
+
+msgctxt "field:purchase.line,delivery_date_store:"
 msgid "Delivery Date"
 msgstr "Lieferdatum"
 
@@ -399,7 +470,7 @@ msgstr "Preise"
 
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:purchase.product_supplier,rec_name:"
 msgid "Name"
@@ -480,6 +551,10 @@ msgstr "Währung"
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
 msgstr "Nachkommastellen Währung"
+
+msgctxt "field:purchase.purchase,delivery_date:"
+msgid "Delivery Date"
+msgstr "Lieferdatum"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -718,9 +793,17 @@ msgstr ""
 "Die ausgewählten Lagerbewegungen werden neu erstellt. Alle anderen werden "
 "ignoriert."
 
+msgctxt "help:purchase.line,delivery_date_edit:"
+msgid "Check to edit the delivery date."
+msgstr "Aktivieren um das Lieferdatum zu ändern."
+
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Minimale Anzahl"
+
+msgctxt "help:purchase.purchase,delivery_date:"
+msgid "The default delivery date for each line."
+msgstr "Das Standard-Lieferdatum für jede Position."
 
 msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used"
@@ -841,6 +924,14 @@ msgstr "Parteien mit Einkäufen"
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Einstellungen Einkauf"
+
+msgctxt "model:purchase.configuration.purchase_method,name:"
+msgid "Purchase Configuration Purchase Method"
+msgstr "Einstellungen Einkauf Methode"
+
+msgctxt "model:purchase.configuration.sequence,name:"
+msgid "Purchase Configuration Sequence"
+msgstr "Einstellungen Einkauf Nummernkreis"
 
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
@@ -965,18 +1056,6 @@ msgstr "Ignoriert"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Neu erstellt"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Order"
-msgstr "Bei Beauftragung"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Shipment"
-msgstr "Bei Lieferung"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Manual"
-msgstr "Manuell"
 
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Canceled"
@@ -1109,6 +1188,10 @@ msgstr "Rechnungen zur Neuerstellung auswählen"
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
 msgstr "Lagerbewegungen zur Neuerstellung auswählen"
+
+msgctxt "view:purchase.line:"
+msgid "Delivery Date"
+msgstr "Lieferdatum"
 
 msgctxt "view:purchase.line:"
 msgid "General"

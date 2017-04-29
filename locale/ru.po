@@ -18,8 +18,8 @@ msgstr ""
 "расходов."
 
 msgctxt "error:purchase.line:"
-msgid "Purchase \"%(purchase)s\" misses an \"account expense\" default property."
-msgstr "У покупки \"%(purchase)s\" не заполнено поле \"Счет расходов\"."
+msgid "Purchase \"%(purchase)s\" misses a default \"account expense\"."
+msgstr ""
 
 msgctxt "error:purchase.line:"
 msgid "Purchase \"%(purchase)s\" misses the supplier location for line \"%(line)s\"."
@@ -70,6 +70,11 @@ msgid "Purchasable"
 msgstr "Для покупки"
 
 #, fuzzy
+msgctxt "field:product.product,purchase_price_uom:"
+msgid "Purchase Price"
+msgstr "Строка покупки"
+
+#, fuzzy
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "Покупка, ед. измерения"
@@ -118,6 +123,81 @@ msgctxt "field:purchase.configuration,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
+msgctxt "field:purchase.configuration.purchase_method,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.purchase_method,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.purchase_method,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt ""
+"field:purchase.configuration.purchase_method,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Метод инвойса"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.purchase_method,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.purchase_method,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.purchase_method,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Домен инвойсов"
@@ -155,6 +235,15 @@ msgid "Create User"
 msgstr "Создано пользователем"
 
 msgctxt "field:purchase.line,delivery_date:"
+msgid "Delivery Date"
+msgstr "Дата доставки"
+
+msgctxt "field:purchase.line,delivery_date_edit:"
+msgid "Edit Delivery Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.line,delivery_date_store:"
 msgid "Delivery Date"
 msgstr "Дата доставки"
 
@@ -480,6 +569,11 @@ msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
 msgstr "Кол-во цифр валюты"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,delivery_date:"
+msgid "Delivery Date"
+msgstr "Дата доставки"
+
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
 msgstr "Описание"
@@ -716,9 +810,17 @@ msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr ""
 "Выбранные перемещения будут созданы заново. Остальные будут проигнорированы."
 
+msgctxt "help:purchase.line,delivery_date_edit:"
+msgid "Check to edit the delivery date."
+msgstr ""
+
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Минимальное кол-во"
+
+msgctxt "help:purchase.purchase,delivery_date:"
+msgid "The default delivery date for each line."
+msgstr ""
 
 msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used"
@@ -845,6 +947,14 @@ msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Конфигурация покупок"
 
+msgctxt "model:purchase.configuration.purchase_method,name:"
+msgid "Purchase Configuration Purchase Method"
+msgstr ""
+
+msgctxt "model:purchase.configuration.sequence,name:"
+msgid "Purchase Configuration Sequence"
+msgstr ""
+
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
 msgstr "Обработка особых ситуаций инвойса"
@@ -970,18 +1080,6 @@ msgstr "Игнорируется"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Создано заново"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Order"
-msgstr "Основанные на заказе"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Shipment"
-msgstr "Основанные на доставке"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Manual"
-msgstr "Ручной"
 
 #, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
@@ -1121,6 +1219,11 @@ msgstr "Выберите инвойсы для пересоздания"
 msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
 msgstr "Выберите проводки для пересоздания"
+
+#, fuzzy
+msgctxt "view:purchase.line:"
+msgid "Delivery Date"
+msgstr "Дата доставки"
 
 msgctxt "view:purchase.line:"
 msgid "General"

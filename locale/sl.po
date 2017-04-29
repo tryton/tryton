@@ -20,10 +20,8 @@ msgstr ""
 "konto."
 
 msgctxt "error:purchase.line:"
-msgid "Purchase \"%(purchase)s\" misses an \"account expense\" default property."
-msgstr ""
-"Nabavnemu nalogu \"%(purchase)s\" manjka privzeta lastnost odhodkovnega "
-"konta."
+msgid "Purchase \"%(purchase)s\" misses a default \"account expense\"."
+msgstr "Nabavnemu nalogu \"%(purchase)s\" manjka privzeti odhodkovni konto."
 
 msgctxt "error:purchase.line:"
 msgid "Purchase \"%(purchase)s\" misses the supplier location for line \"%(line)s\"."
@@ -73,6 +71,10 @@ msgctxt "field:product.product,purchasable:"
 msgid "Purchasable"
 msgstr "Za nabavo"
 
+msgctxt "field:product.product,purchase_price_uom:"
+msgid "Purchase Price"
+msgstr "Nabavna cena"
+
 msgctxt "field:product.product,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "Nabavna ME"
@@ -121,6 +123,67 @@ msgctxt "field:purchase.configuration,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:purchase.configuration.purchase_method,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:purchase.configuration.purchase_method,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:purchase.configuration.purchase_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:purchase.configuration.purchase_method,purchase_invoice_method:"
+msgid "Invoice Method"
+msgstr "Način obračuna"
+
+msgctxt "field:purchase.configuration.purchase_method,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:purchase.configuration.purchase_method,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:purchase.configuration.purchase_method,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:purchase.configuration.sequence,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:purchase.configuration.sequence,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:purchase.configuration.sequence,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:purchase.configuration.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
+msgid "Purchase Sequence"
+msgstr "Štetje nabavnih nalogov"
+
+msgctxt "field:purchase.configuration.sequence,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:purchase.configuration.sequence,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:purchase.configuration.sequence,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Vključeni računi"
@@ -159,7 +222,15 @@ msgstr "Izdelal"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
-msgstr "Dostavljeno"
+msgstr "Datum dostave"
+
+msgctxt "field:purchase.line,delivery_date_edit:"
+msgid "Edit Delivery Date"
+msgstr "Popravek datuma dostave"
+
+msgctxt "field:purchase.line,delivery_date_store:"
+msgid "Delivery Date"
+msgstr "Datum dostave"
 
 msgctxt "field:purchase.line,description:"
 msgid "Description"
@@ -215,7 +286,7 @@ msgstr "Nabavni nalog"
 
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
-msgstr ""
+msgstr "Stanje nabave"
 
 msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
@@ -481,6 +552,10 @@ msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimalke"
 
+msgctxt "field:purchase.purchase,delivery_date:"
+msgid "Delivery Date"
+msgstr "Datum dostave"
+
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
 msgstr "Opis"
@@ -714,9 +789,17 @@ msgctxt "help:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "The selected moves will be recreated. The other ones will be ignored."
 msgstr "Izbran promet bo ponovno izdelan, ostalo bo prezrto."
 
+msgctxt "help:purchase.line,delivery_date_edit:"
+msgid "Check to edit the delivery date."
+msgstr "Označite, če popravljate datum dostave."
+
 msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity"
 msgstr "Minimalna količina"
+
+msgctxt "help:purchase.purchase,delivery_date:"
+msgid "The default delivery date for each line."
+msgstr "Privzet datum dostave za postavko."
 
 msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used"
@@ -838,6 +921,14 @@ msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Nabavna konfiguracija"
 
+msgctxt "model:purchase.configuration.purchase_method,name:"
+msgid "Purchase Configuration Purchase Method"
+msgstr "Konfiguracija načina nabave"
+
+msgctxt "model:purchase.configuration.sequence,name:"
+msgid "Purchase Configuration Sequence"
+msgstr "Konfiguacija štetja nabavnih nalogov"
+
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
 msgstr "Obravnava pridržanih računov"
@@ -890,7 +981,6 @@ msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
 msgstr "Nabava - vodenje"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid ":"
 msgstr ":"
@@ -963,44 +1053,26 @@ msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Ponovno izdelano"
 
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Order"
-msgstr "Na podlagi naloga"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Based On Shipment"
-msgstr "Na podlagi prevzemnice"
-
-msgctxt "selection:purchase.configuration,purchase_invoice_method:"
-msgid "Manual"
-msgstr "Ročno"
-
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Canceled"
 msgstr "Preklicano"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Confirmed"
 msgstr "Potrjeno"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Done"
 msgstr "Zaključeno"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Draft"
 msgstr "V pripravi"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Processing"
 msgstr "Obdelava"
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Quotation"
 msgstr "Ponudba"
@@ -1114,6 +1186,10 @@ msgid "Choose move to recreate"
 msgstr "Izbor prometa za ponovno izdelavo"
 
 msgctxt "view:purchase.line:"
+msgid "Delivery Date"
+msgstr "Datum dostave"
+
+msgctxt "view:purchase.line:"
 msgid "General"
 msgstr "Splošno"
 
@@ -1161,12 +1237,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Quote"
 msgstr "Ponudba"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
 msgstr "Prekliči"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
 msgstr "Ponastavitev"
