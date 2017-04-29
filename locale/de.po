@@ -14,6 +14,14 @@ msgctxt "field:account.payment.journal,clearing_journal:"
 msgid "Clearing Journal"
 msgstr "Auszifferungsjournal"
 
+msgctxt "field:account.payment.succeed.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.payment.succeed.start,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
 msgstr "Zahlung"
@@ -22,6 +30,22 @@ msgctxt "field:account.statement.line,payment_group:"
 msgid "Payment Group"
 msgstr "Zahlungsgruppe"
 
+msgctxt "model:account.payment.succeed.start,name:"
+msgid "Succeed Payment"
+msgstr "Erfolgreiche Zahlung"
+
+msgctxt "model:ir.action,name:wizard_succeed"
+msgid "Succeed Payments"
+msgstr "Erfolgreiche Zahlungen"
+
 msgctxt "view:account.payment.journal:"
 msgid "Clearing"
 msgstr "Auszifferung"
+
+msgctxt "wizard_button:account.payment.succeed,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.payment.succeed,start,succeed:"
+msgid "Succeed"
+msgstr "Erfolgreich"
