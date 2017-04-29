@@ -10,6 +10,11 @@ msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Metodo costo di spedizione per vendita"
 
+#, fuzzy
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Metodo costo di spedizione per vendita"
+
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "costo di spedizione"
@@ -45,14 +50,6 @@ msgstr "posizioni valuta costo"
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Riga fattura costo"
-
-msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
-msgid "On Order"
-msgstr "su Ordine"
-
-msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
-msgid "On Shipment"
-msgstr "su Spedizione"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"

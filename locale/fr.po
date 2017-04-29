@@ -10,6 +10,10 @@ msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Méthode de coût de l'expédition de vente"
 
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Méthode de coût de l'expédition de vente"
+
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Coût d'expédition"
@@ -45,14 +49,6 @@ msgstr "Décimales de la devise du coût"
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Ligne de facture du coût"
-
-msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
-msgid "On Order"
-msgstr "À la commande"
-
-msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
-msgid "On Shipment"
-msgstr "À l'expédition"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"

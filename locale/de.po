@@ -10,6 +10,10 @@ msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Lieferposten Kostenmethode Verkauf"
 
+msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
+msgid "Sale Shipment Cost Method"
+msgstr "Lieferposten Kostenmethode Verkauf"
+
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
 msgstr "Lieferposten Kosten"
@@ -45,14 +49,6 @@ msgstr "Nachkommastellen Währung Kosten"
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Rechnungsposition Kosten"
-
-msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
-msgid "On Order"
-msgstr "Pro Auftrag"
-
-msgctxt "selection:sale.configuration,sale_shipment_cost_method:"
-msgid "On Shipment"
-msgstr "Pro Lieferposten"
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"
