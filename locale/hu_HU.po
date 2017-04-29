@@ -32,7 +32,6 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Társaság"
 
-#, fuzzy
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
 msgstr "Létrehozás détuma"
@@ -62,7 +61,6 @@ msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.asset,id:"
 msgid "ID"
 msgstr "ID"
@@ -76,7 +74,6 @@ msgctxt "field:account.asset,move:"
 msgid "Account Move"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.asset,number:"
 msgid "Number"
 msgstr "Szám"
@@ -90,7 +87,6 @@ msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
@@ -324,6 +320,45 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
 
+msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
+msgid "Asset Reference Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
 #, fuzzy
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
@@ -347,6 +382,14 @@ msgstr ""
 
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
+msgstr ""
+
+msgctxt "field:product.category.account,account_asset:"
+msgid "Account Asset"
+msgstr ""
+
+msgctxt "field:product.category.account,account_depreciation:"
+msgid "Account Depreciation"
 msgstr ""
 
 msgctxt "field:product.product,account_asset:"
@@ -397,6 +440,14 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr ""
 
+msgctxt "field:product.template.account,account_asset:"
+msgid "Account Asset"
+msgstr ""
+
+msgctxt "field:product.template.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr ""
+
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -438,6 +489,10 @@ msgstr ""
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
+msgstr ""
+
+msgctxt "model:account.configuration.asset_sequence,name:"
+msgid "Account Configuration Asset Sequence"
 msgstr ""
 
 #, fuzzy

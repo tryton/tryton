@@ -288,6 +288,38 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Séquence de référence d'actif"
 
+msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
+msgid "Asset Reference Sequence"
+msgstr "Séquence de référence d'actif"
+
+msgctxt "field:account.configuration.asset_sequence,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.configuration.asset_sequence,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:account.configuration.asset_sequence,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:account.configuration.asset_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.asset_sequence,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.configuration.asset_sequence,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:account.configuration.asset_sequence,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
 msgstr "Actif"
@@ -311,6 +343,14 @@ msgstr "Compte d'amortissement"
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Compte d'amortissement utilisé"
+
+msgctxt "field:product.category.account,account_asset:"
+msgid "Account Asset"
+msgstr "Compte d'actif"
+
+msgctxt "field:product.category.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Compte d'amortissement"
 
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
@@ -360,6 +400,14 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durée d'amortissement"
 
+msgctxt "field:product.template.account,account_asset:"
+msgid "Account Asset"
+msgstr "Compte d'actif"
+
+msgctxt "field:product.template.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Compte d'amortissement"
+
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -403,6 +451,10 @@ msgstr "Mise à jour des actifs - Affichage des amortissements"
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "Mise à jour des actifs - début"
+
+msgctxt "model:account.configuration.asset_sequence,name:"
+msgid "Account Configuration Asset Sequence"
+msgstr "Configuration comptable séquence d'actif"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"

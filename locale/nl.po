@@ -334,6 +334,45 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
 
+msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
+msgid "Asset Reference Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,rec_name:"
+msgid "Name"
+msgstr "Naam bijlage"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_sequence,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
 #, fuzzy
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
@@ -357,6 +396,14 @@ msgstr ""
 
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
+msgstr ""
+
+msgctxt "field:product.category.account,account_asset:"
+msgid "Account Asset"
+msgstr ""
+
+msgctxt "field:product.category.account,account_depreciation:"
+msgid "Account Depreciation"
 msgstr ""
 
 msgctxt "field:product.product,account_asset:"
@@ -407,6 +454,14 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr ""
 
+msgctxt "field:product.template.account,account_asset:"
+msgid "Account Asset"
+msgstr ""
+
+msgctxt "field:product.template.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr ""
+
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -448,6 +503,10 @@ msgstr ""
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
+msgstr ""
+
+msgctxt "model:account.configuration.asset_sequence,name:"
+msgid "Account Configuration Asset Sequence"
 msgstr ""
 
 #, fuzzy

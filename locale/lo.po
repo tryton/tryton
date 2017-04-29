@@ -286,6 +286,38 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "ລໍາດັບ ເອກະສານອ້າງອີງ ຊັບສິນ"
 
+msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
+msgid "Asset Reference Sequence"
+msgstr "ລໍາດັບ ເອກະສານອ້າງອີງ ຊັບສິນ"
+
+msgctxt "field:account.configuration.asset_sequence,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:account.configuration.asset_sequence,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:account.configuration.asset_sequence,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:account.configuration.asset_sequence,id:"
+msgid "ID"
+msgstr "ເລກລໍາດັບ"
+
+msgctxt "field:account.configuration.asset_sequence,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.configuration.asset_sequence,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີຂຽນ"
+
+msgctxt "field:account.configuration.asset_sequence,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ຂຽນ"
+
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
 msgstr "ຊັບສິນ"
@@ -309,6 +341,14 @@ msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນທີ່ໃຊ້ແລ້ວ"
+
+msgctxt "field:product.category.account,account_asset:"
+msgid "Account Asset"
+msgstr "ບັນຊີຊັບສິນ"
+
+msgctxt "field:product.category.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
 
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
@@ -358,6 +398,14 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "ກຳນົດຫັກຄ່າຫຼຸ້ຍຫ້ຽນ"
 
+msgctxt "field:product.template.account,account_asset:"
+msgid "Account Asset"
+msgstr "ບັນຊີຊັບສິນ"
+
+msgctxt "field:product.template.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
+
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -401,6 +449,10 @@ msgstr "ປັບປຸງ ຊັບສິນ ສະແດງ ຄ່າຫຼຸ
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "ເລີ່ມປັບປຸງຊັບສິນ"
+
+msgctxt "model:account.configuration.asset_sequence,name:"
+msgid "Account Configuration Asset Sequence"
+msgstr "ລຳດັບ ການກຳນົດຄ່າບັນຊີຊັບສິນ"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"

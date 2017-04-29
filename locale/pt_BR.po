@@ -287,6 +287,38 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Sequência de Referência do Ativo"
 
+msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
+msgid "Asset Reference Sequence"
+msgstr "Sequência de Referência do Ativo"
+
+msgctxt "field:account.configuration.asset_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.asset_sequence,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.configuration.asset_sequence,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:account.configuration.asset_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.asset_sequence,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.configuration.asset_sequence,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:account.configuration.asset_sequence,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
 msgstr "Ativo"
@@ -310,6 +342,14 @@ msgstr "Conta de Depreciação"
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Conta de Depreciação Utilizada"
+
+msgctxt "field:product.category.account,account_asset:"
+msgid "Account Asset"
+msgstr "Conta de Ativos"
+
+msgctxt "field:product.category.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Conta de Depreciação"
 
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
@@ -359,6 +399,14 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Duração da Depreciação"
 
+msgctxt "field:product.template.account,account_asset:"
+msgid "Account Asset"
+msgstr "Conta de Ativos"
+
+msgctxt "field:product.template.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Conta de Depreciação"
+
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -402,6 +450,10 @@ msgstr "Atualiza Ativos - Mostrar Depreciação"
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "Atualiza Ativos - Início"
+
+msgctxt "model:account.configuration.asset_sequence,name:"
+msgid "Account Configuration Asset Sequence"
+msgstr "Configuração de Contas Sequência de Ativo"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"

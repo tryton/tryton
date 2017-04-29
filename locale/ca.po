@@ -287,6 +287,38 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Seqüència de referència d'actiu"
 
+msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
+msgid "Asset Reference Sequence"
+msgstr "Seqüència de referència d'actiu"
+
+msgctxt "field:account.configuration.asset_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.asset_sequence,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.configuration.asset_sequence,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.configuration.asset_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.asset_sequence,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.configuration.asset_sequence,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.configuration.asset_sequence,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
 msgstr "Actiu"
@@ -310,6 +342,14 @@ msgstr "Compte d'amortització"
 msgctxt "field:product.category,account_depreciation_used:"
 msgid "Account Depreciation Used"
 msgstr "Compte d'amortització utilitzat"
+
+msgctxt "field:product.category.account,account_asset:"
+msgid "Account Asset"
+msgstr "Compte d'actiu"
+
+msgctxt "field:product.category.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Compte d'amortització"
 
 msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
@@ -359,6 +399,14 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durada de l'amortització"
 
+msgctxt "field:product.template.account,account_asset:"
+msgid "Account Asset"
+msgstr "Compte d'actiu"
+
+msgctxt "field:product.template.account,account_depreciation:"
+msgid "Account Depreciation"
+msgstr "Compte d'amortització"
+
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -402,6 +450,10 @@ msgstr "Actualitza actius - Mostra amortització"
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "Actualitza actius - Inici"
+
+msgctxt "model:account.configuration.asset_sequence,name:"
+msgid "Account Configuration Asset Sequence"
+msgstr "Configuració de la seqüencia dels actius"
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
