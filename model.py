@@ -8,6 +8,15 @@ __all__ = ['CompanyMultiValueMixin', 'CompanyValueMixin']
 
 class CompanyMultiValueMixin(MultiValueMixin):
 
+    def multivalue_records(self, field):
+        Value = self.multivalue_model(field)
+        records = super(CompanyMultiValueMixin, self).multivalue_records(field)
+        if issubclass(Value, CompanyValueMixin):
+            # Sort to get record with empty company at the end
+            # and so give priority to record with company filled.
+            records = sorted(records, key=lambda r: r.company is None)
+        return records
+
     def get_multivalue(self, name, **pattern):
         Value = self.multivalue_model(name)
         if issubclass(Value, CompanyValueMixin):
