@@ -212,7 +212,7 @@ msgstr "Izpisek"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
-msgstr ""
+msgstr "Stanje izpiska"
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
@@ -457,22 +457,18 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Število postavk"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Canceled"
 msgstr "Preklicano"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Draft"
 msgstr "V pripravi"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Posted"
 msgstr "Knjiženo"
 
-#, fuzzy
 msgctxt "selection:account.statement.line,statement_state:"
 msgid "Validated"
 msgstr "Odobreno"
