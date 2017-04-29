@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Categoría de UdM"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
@@ -32,12 +32,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Split Move"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr "Split Move"
+msgstr ""
 
 msgctxt "view:stock.move:"
 msgid "Split"

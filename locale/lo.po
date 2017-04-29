@@ -16,7 +16,7 @@ msgstr "ຈຳນວນ"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "ສະກຸນເງິນ"
+msgstr "ຫຼັກໜ່ວຍ"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"

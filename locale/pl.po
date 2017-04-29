@@ -8,11 +8,11 @@ msgstr ""
 
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Ilość"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
@@ -20,11 +20,11 @@ msgstr ""
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "Jednostka miary"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Kategoria jednostki miary"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
@@ -45,7 +45,7 @@ msgstr ""
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
