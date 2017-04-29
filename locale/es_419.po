@@ -4,13 +4,17 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.requisition:"
 msgid "A warehouse must be defined for requisition: \"%(requisition)s\"."
-msgstr ""
+msgstr "Debe definirse una bodega para la petición: \"%(requisition)s\"."
 
 msgctxt "error:purchase.requisition:"
 msgid "Requisition \"%s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
+msgid "Purchase Requisition Sequence"
+msgstr ""
+
+msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr ""
 
@@ -24,7 +28,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
@@ -64,7 +68,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,supply_date:"
 msgid "Supply Date"
-msgstr ""
+msgstr "Fecha de suministro"
 
 msgctxt "field:purchase.requisition,total_amount:"
 msgid "Total"
@@ -76,7 +80,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Bodega"
 
 msgctxt "field:purchase.requisition,write_date:"
 msgid "Write Date"
@@ -84,7 +88,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
@@ -96,7 +100,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
@@ -112,7 +116,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Categoría de UdM del producto"
 
 msgctxt "field:purchase.requisition.line,purchase_requests:"
 msgid "Purchase Request"
@@ -148,7 +152,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Decimales de la unidad"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
@@ -160,7 +164,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
@@ -296,7 +300,7 @@ msgstr ""
 
 msgctxt "view:purchase.requisition:"
 msgid "Other Info"
-msgstr ""
+msgstr "Información adicional"
 
 msgctxt "view:purchase.requisition:"
 msgid "Reject"

@@ -8,11 +8,15 @@ msgstr "Za naročilnico: \"%(requisition)s\" mora biti predpisano skladišče."
 
 msgctxt "error:purchase.requisition:"
 msgid "Requisition \"%s\" must be cancelled before deletion."
-msgstr ""
+msgstr "Pred brisanjem mora biti naročilnica \"%s\" preklicana."
 
 msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
-msgstr ""
+msgstr "Štetje naročilnic"
+
+msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
+msgid "Purchase Requisition Sequence"
+msgstr "Štetje naročilnic"
 
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
@@ -64,7 +68,7 @@ msgstr "Stanje"
 
 msgctxt "field:purchase.requisition,supply_date:"
 msgid "Supply Date"
-msgstr ""
+msgstr "Datum dobave"
 
 msgctxt "field:purchase.requisition,total_amount:"
 msgid "Total"
@@ -172,7 +176,7 @@ msgstr "Zahtevki"
 
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
 msgid "Purchase Requisitions"
-msgstr ""
+msgstr "Naročilnice"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_all"
@@ -196,19 +200,19 @@ msgstr "Čakajoče"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Naročilnica"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase_requisition"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Naročilnica"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
 msgid "Purchase Requisitions"
-msgstr ""
+msgstr "Naročilnice"
 
 msgctxt "model:purchase.requisition,name:"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Naročilnica"
 
 msgctxt "model:purchase.requisition.line,name:"
 msgid "Purchase Requisition Line"
@@ -216,11 +220,11 @@ msgstr "Postavka naročilnice"
 
 msgctxt "model:res.group,name:group_purchase_requisition"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Naročilnica"
 
 msgctxt "model:res.group,name:group_purchase_requisition_approval"
 msgid "Purchase Requisition Approval"
-msgstr ""
+msgstr "Naročilnica - odobritev"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Approved"
@@ -304,7 +308,7 @@ msgstr "Zavrnitev"
 
 msgctxt "view:purchase.requisition:"
 msgid "Requisition"
-msgstr ""
+msgstr "Naročilnica"
 
 msgctxt "view:purchase.requisition:"
 msgid "Wait"

@@ -14,6 +14,11 @@ msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr "Sequenza richiesta fornitura"
 
+#, fuzzy
+msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
+msgid "Purchase Requisition Sequence"
+msgstr "Sequenza richiesta fornitura"
+
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Azienda"
