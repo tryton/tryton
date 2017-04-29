@@ -56,6 +56,34 @@ msgctxt "field:stock.configuration,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr "Zakasnitev roka trajanja"
 
+msgctxt "field:stock.location.lot.shelf_life,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:stock.location.lot.shelf_life,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:stock.location.lot.shelf_life,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.location.lot.shelf_life,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Zakasnitev roka trajanja"
+
+msgctxt "field:stock.location.lot.shelf_life,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:stock.location.lot.shelf_life,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
 msgstr "Rok uporabe"
@@ -89,12 +117,20 @@ msgid "In number of days"
 msgstr "V dnevih"
 
 msgctxt "help:stock.configuration,shelf_life_delay:"
-msgid "The delay in number of days before removal from the forecast"
-msgstr "Zakasnitev v dnevih pred zbrisom iz napovedi"
+msgid "The delay before removal from the forecast."
+msgstr "Zakasnitev pred odstranitvijo iz napovedi."
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "Zakasnitev pred odstranitvijo iz napovedi."
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Zaloga - rok uporabe"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr "Konfiguracija roka trajanja serije"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"

@@ -58,6 +58,34 @@ msgctxt "field:stock.configuration,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr "Retraso de la vida útil"
 
+msgctxt "field:stock.location.lot.shelf_life,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:stock.location.lot.shelf_life,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:stock.location.lot.shelf_life,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.location.lot.shelf_life,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "Shelf Life Delay"
+msgstr "Retraso de la vida útil"
+
+msgctxt "field:stock.location.lot.shelf_life,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:stock.location.lot.shelf_life,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
 msgstr "Fecha caducidad"
@@ -91,12 +119,20 @@ msgid "In number of days"
 msgstr "En número de días."
 
 msgctxt "help:stock.configuration,shelf_life_delay:"
-msgid "The delay in number of days before removal from the forecast"
-msgstr "El retraso en número de días antes de la eliminación de la previsión."
+msgid "The delay before removal from the forecast."
+msgstr "El retraso antes de eliminar de las previsiones."
+
+msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
+msgid "The delay before removal from the forecast."
+msgstr "El retraso antes de eliminar de las previsiones."
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
 msgstr "Forzar caducidades en logística"
+
+msgctxt "model:stock.location.lot.shelf_life,name:"
+msgid "Stock Configuration Lot Shelf Life"
+msgstr "Configuración del retraso de la vida útil"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
