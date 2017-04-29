@@ -2,10 +2,12 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="fiscalyear"/>
-    <field name="fiscalyear"/>
+    <label name="company"/>
+    <field name="company"/>
     <label name="sequence"/>
     <field name="sequence"/>
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
     <separator id="pattern" colspan="4"/>
     <label name="period"/>
     <field name="period"/>

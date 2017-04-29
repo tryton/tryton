@@ -17,8 +17,13 @@ __all__ = ['FiscalYear',
 class FiscalYear:
     __metaclass__ = PoolMeta
     __name__ = 'account.fiscalyear'
-    invoice_sequences = fields.One2Many('account.fiscalyear.invoice_sequence',
-        'fiscalyear', "Invoice Sequences")
+    invoice_sequences = fields.One2Many(
+        'account.fiscalyear.invoice_sequence', 'fiscalyear',
+        "Invoice Sequences",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
 
     @classmethod
     def __register__(cls, module_name):
@@ -39,12 +44,14 @@ class FiscalYear:
                 and table.column_exist('out_credit_note_sequence')):
             cursor.execute(*sequence.insert(columns=[
                         sequence.sequence, sequence.fiscalyear,
+                        sequence.company,
                         sequence.out_invoice_sequence,
                         sequence.out_credit_note_sequence,
                         sequence.in_invoice_sequence,
                         sequence.in_credit_note_sequence],
                     values=sql_table.select(
                         Literal(20), sql_table.id,
+                        sql_table.company,
                         sql_table.out_invoice_sequence,
                         sql_table.out_credit_note_sequence,
                         sql_table.in_invoice_sequence,
@@ -112,16 +119,19 @@ class Period:
 class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Invoice Sequence'
     __name__ = 'account.fiscalyear.invoice_sequence'
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True, ondelete='CASCADE')
+    company = fields.Many2One('company.company', "Company", required=True)
+    fiscalyear = fields.Many2One(
+        'account.fiscalyear', "Fiscal Year", required=True, ondelete='CASCADE',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     period = fields.Many2One('account.period', 'Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
             ('type', '=', 'standard'),
             ],
         depends=['fiscalyear'])
-    company = fields.Function(fields.Many2One('company.company', 'Company',),
-        'on_change_with_company', searcher='search_company')
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Supplier Invoice Sequence', required=True,
         domain=[
@@ -168,14 +178,9 @@ class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         super(InvoiceSequence, cls).__setup__()
         cls._order.insert(0, ('fiscalyear', 'ASC'))
 
-    @fields.depends('fiscalyear')
-    def on_change_with_company(self, name=None):
-        if self.fiscalyear:
-            return self.fiscalyear.company.id
-
     @classmethod
-    def search_company(cls, name, clause):
-        return [('fiscalyear.%s' % name,) + tuple(clause[1:])]
+    def default_company(cls):
+        return Transaction().context.get('company')
 
 
 class Move:
