@@ -2,8 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Outgoing Moves of Supplier Return Shipment \"%s\" are packaged."
+msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
 msgstr "Nem lehetett az összes elfogyó visszárut  \"%s\" elcsomagolni"
 
 msgctxt "error:stock.shipment.out:"
@@ -11,6 +12,11 @@ msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
 msgstr "Nem lehetett az összes elfogyó beszállítói tételt \"%s\" elcsomagolni."
 
 msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Csomag számkör"
+
+#, fuzzy
+msgctxt "field:stock.configuration.sequence,package_sequence:"
 msgid "Package Sequence"
 msgstr "Csomag számkör"
 

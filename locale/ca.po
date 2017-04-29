@@ -3,14 +3,20 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Outgoing Moves of Supplier Return Shipment \"%s\" are packaged."
-msgstr "L'albarà de devolució a proveïdor \"%s\" no està completament empaquetat."
+msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
+msgstr ""
+"No s'han empaquetat tots els moviments de l'albarà de devolució a proveïdor "
+"\"%s\"."
 
 msgctxt "error:stock.shipment.out:"
 msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
 msgstr "L'albarà de client \"%s\" no està completament empaquetat."
 
 msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr "Seqüència de paquet"
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
 msgid "Package Sequence"
 msgstr "Seqüència de paquet"
 

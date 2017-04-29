@@ -3,7 +3,7 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Outgoing Moves of Supplier Return Shipment \"%s\" are packaged."
+msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
 msgstr ""
 
 msgctxt "error:stock.shipment.out:"
@@ -11,6 +11,10 @@ msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
 msgstr ""
 
 msgctxt "field:stock.configuration,package_sequence:"
+msgid "Package Sequence"
+msgstr ""
+
+msgctxt "field:stock.configuration.sequence,package_sequence:"
 msgid "Package Sequence"
 msgstr ""
 
