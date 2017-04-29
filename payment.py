@@ -172,7 +172,7 @@ class Payment:
     @ModelView.button_action('account_payment_stripe.wizard_checkout')
     def stripe_checkout(cls, payments):
         for payment in payments:
-            payment.stripe_checkout_id = uuid.uuid4().get_hex()
+            payment.stripe_checkout_id = uuid.uuid4().hex
         cls.save(payments)
 
     @classmethod
@@ -320,7 +320,7 @@ class Customer(ModelSQL, ModelView):
     @ModelView.button_action('account_payment_stripe.wizard_checkout')
     def stripe_checkout(cls, customers):
         for customer in customers:
-            customer.stripe_checkout_id = uuid.uuid4().get_hex()
+            customer.stripe_checkout_id = uuid.uuid4().hex
         cls.save(customers)
 
     @classmethod
