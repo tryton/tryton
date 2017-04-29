@@ -6,6 +6,47 @@ msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "Método agrupación albaranes de venta"
 
+msgctxt "field:party.party,sale_shipment_grouping_methods:"
+msgid "Sale Shipment Grouping Methods"
+msgstr "Método agrupación albaranes de venta"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt ""
+"field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Método agrupación albaranes de venta"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "model:party.party.sale_shipment_grouping_method,name:"
+msgid "Party Sale Shipment Grouping Method"
+msgstr "Método agrupación albaranes de venta"
+
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
 msgstr "Ninguno"
