@@ -8,7 +8,11 @@ msgstr "A Oportunidade de Venda \"%s\" deve ser cancelada antes de ser apagada."
 
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr ""
+msgstr "Sequência de Oportunidade"
+
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "Sequência de Oportunidade"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -28,7 +32,7 @@ msgstr "Empresa"
 
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
-msgstr ""
+msgstr "Probabilidade de Conversão"
 
 msgctxt "field:sale.opportunity,create_date:"
 msgid "Create Date"
@@ -70,10 +74,9 @@ msgctxt "field:sale.opportunity,lost_reason:"
 msgid "Reason for loss"
 msgstr "Razão da perda"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,number:"
 msgid "Number"
-msgstr "Numero"
+msgstr "Número"
 
 msgctxt "field:sale.opportunity,party:"
 msgid "Party"
@@ -81,7 +84,7 @@ msgstr "Parceiro"
 
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
-msgstr "Vencimento do pagamento"
+msgstr "Prazo de Pagamento"
 
 msgctxt "field:sale.opportunity,rec_name:"
 msgid "Name"
@@ -129,7 +132,7 @@ msgstr "Oportunidade"
 
 msgctxt "field:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity State"
-msgstr ""
+msgstr "Estado da Oportunidade"
 
 msgctxt "field:sale.opportunity.line,product:"
 msgid "Product"
@@ -247,20 +250,17 @@ msgctxt "field:sale.opportunity_employee,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
-msgstr "Data de fim"
+msgstr "Data de Término"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Data inicial"
+msgstr "Data de Início"
 
 msgctxt "field:sale.opportunity_employee_monthly,amount:"
 msgid "Amount"
@@ -452,55 +452,7 @@ msgstr "Monante estimado de receitas"
 
 msgctxt "help:sale.opportunity,conversion_probability:"
 msgid "Percentage between 0 and 100"
-msgstr ""
-
-msgctxt "help:sale.opportunity_employee,conversion_amount_rate:"
-msgid "In %"
-msgstr "Em %"
-
-msgctxt "help:sale.opportunity_employee,conversion_rate:"
-msgid "In %"
-msgstr "Em %"
-
-msgctxt "help:sale.opportunity_employee,winning_amount_rate:"
-msgid "In %"
-msgstr "Em %"
-
-msgctxt "help:sale.opportunity_employee,winning_rate:"
-msgid "In %"
-msgstr "Em %"
-
-msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:"
-msgid "In %"
-msgstr "Em %"
-
-msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:"
-msgid "In %"
-msgstr "Em % "
-
-msgctxt "help:sale.opportunity_employee_monthly,winning_amount_rate:"
-msgid "In %"
-msgstr "Em % "
-
-msgctxt "help:sale.opportunity_employee_monthly,winning_rate:"
-msgid "In %"
-msgstr "Em % "
-
-msgctxt "help:sale.opportunity_monthly,conversion_amount_rate:"
-msgid "In %"
-msgstr "Em % "
-
-msgctxt "help:sale.opportunity_monthly,conversion_rate:"
-msgid "In %"
-msgstr "Em %"
-
-msgctxt "help:sale.opportunity_monthly,winning_amount_rate:"
-msgid "In %"
-msgstr "Em %"
-
-msgctxt "help:sale.opportunity_monthly,winning_rate:"
-msgid "In %"
-msgstr "Em %"
+msgstr "Porcentagem entre 0 e 100"
 
 msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
@@ -605,10 +557,9 @@ msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
 msgstr "Oportunidade de Venda por Empregado"
 
-#, fuzzy
 msgctxt "model:sale.opportunity_employee.context,name:"
 msgid "Sale Opportunity per Employee Context"
-msgstr "Oportunidade de Venda por Empregado por Mês"
+msgstr "Contexto da Oportunidade de Venda por Empregado"
 
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
@@ -642,37 +593,30 @@ msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "Ganhou"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Cancelled"
 msgstr "Cancelado"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Converted"
 msgstr "Convertido"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lead"
-msgstr "Chumbo"
+msgstr "Lead"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lost"
 msgstr "Perdida"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity"
 msgstr "Oportunidade"
 
-#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
-msgstr "Won"
+msgstr "Ganhou"
 
-#, fuzzy
 msgctxt "view:sale.opportunity:"
 msgid "%"
 msgstr "%"
@@ -699,7 +643,19 @@ msgstr "Marcar como Perdida"
 
 msgctxt "view:sale.opportunity:"
 msgid "Set as Lead"
-msgstr "Converter em Lead"
+msgstr "Definir como Lead"
+
+msgctxt "view:sale.opportunity_employee:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_employee_monthly:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:sale.opportunity_monthly:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "Opportunities per Employee"

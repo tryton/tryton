@@ -10,6 +10,11 @@ msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
 msgstr "sequenza opportunity"
 
+#, fuzzy
+msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
+msgid "Opportunity Sequence"
+msgstr "sequenza opportunity"
+
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
 msgstr "Indirizzo"
@@ -450,54 +455,6 @@ msgctxt "help:sale.opportunity,conversion_probability:"
 msgid "Percentage between 0 and 100"
 msgstr "percentuale fra 0 e 100"
 
-msgctxt "help:sale.opportunity_employee,conversion_amount_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_employee,conversion_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_employee,winning_amount_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_employee,winning_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_employee_monthly,conversion_amount_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_employee_monthly,conversion_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_employee_monthly,winning_amount_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_employee_monthly,winning_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_monthly,conversion_amount_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_monthly,conversion_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_monthly,winning_amount_rate:"
-msgid "In %"
-msgstr "In %"
-
-msgctxt "help:sale.opportunity_monthly,winning_rate:"
-msgid "In %"
-msgstr "In %"
-
 msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
 msgstr "Vendite"
@@ -688,3 +645,18 @@ msgstr "segna perso"
 msgctxt "view:sale.opportunity:"
 msgid "Set as Lead"
 msgstr "indica come lead"
+
+#, fuzzy
+msgctxt "view:sale.opportunity_employee:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity_employee_monthly:"
+msgid "%"
+msgstr "%"
+
+#, fuzzy
+msgctxt "view:sale.opportunity_monthly:"
+msgid "%"
+msgstr "%"
