@@ -41,7 +41,6 @@ Create the required users::
     >>> accountant = User()
     >>> accountant.name = 'Accountant'
     >>> accountant.login = 'accountant'
-    >>> accountant.password = 'accountant'
     >>> account_group, = Group.find([('name', '=', 'Account')])
     >>> accountant.groups.append(account_group)
     >>> accountant.save()
@@ -49,7 +48,6 @@ Create the required users::
     >>> product_user = User()
     >>> product_user.name = 'Product User'
     >>> product_user.login = 'product_user'
-    >>> product_user.password = 'product_user'
     >>> product_group, = Group.find([('name', '=', 'Product Administration')])
     >>> product_user.groups.append(product_group)
     >>> product_user.save()
@@ -57,7 +55,6 @@ Create the required users::
     >>> purchase_user = User()
     >>> purchase_user.name = 'Purchase User'
     >>> purchase_user.login = 'purchase_user'
-    >>> purchase_user.password = 'purchase_user'
     >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
     >>> purchase_user.groups.append(purchase_group)
     >>> purchase_user.save()
@@ -65,7 +62,6 @@ Create the required users::
     >>> stock_user = User()
     >>> stock_user.name = 'Sale User'
     >>> stock_user.login = 'stock_user'
-    >>> stock_user.password = 'stock_user'
     >>> stock_group, = Group.find([('name', '=', 'Stock')])
     >>> stock_user.groups.append(stock_group)
     >>> stock_user.save()
