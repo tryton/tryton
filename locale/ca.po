@@ -22,6 +22,10 @@ msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
 msgstr "No podeu crear un apunt utilitzant el compte de vista \"%s\"."
 
+msgctxt "error:analytic_account.rule:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Falten alguns comptes arrel obligatoris a \"%(name)s\""
+
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Línies analítiques"
@@ -278,6 +282,62 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Data inicial"
 
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Comptes analítics"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Mida comptes analítics"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.rule,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:analytic_account.rule,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:analytic_account.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Tercer visible"
+
+msgctxt "field:analytic_account.rule,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.rule,sequence:"
+msgid "Sequence"
+msgstr "Seqüència"
+
+msgctxt "field:analytic_account.rule,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:analytic_account.rule,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr "Força que aquest compte sigui obligatori quan s'omplin documents."
@@ -301,6 +361,10 @@ msgstr "Línia analítica"
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr "Obre pla comptable"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Regla analítica"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
@@ -330,6 +394,10 @@ msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Obre pla analític"
 
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Regles analítiques"
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr "Comptes analítics"
@@ -349,6 +417,10 @@ msgstr "Línies analítiques per completar"
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Obre pla analític"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Regles analítiques"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"

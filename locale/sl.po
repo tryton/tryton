@@ -22,6 +22,10 @@ msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
 msgstr "Knjiženje postavke ni možno izvesti z vpoglednim kontom \"%s\"."
 
+msgctxt "error:analytic_account.rule:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Manjka obvezen korenski konto na \"%(name)s\""
+
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Analitične postavke"
@@ -34,7 +38,6 @@ msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
 msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "Družba"
@@ -175,22 +178,18 @@ msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,id:"
 msgid "ID"
 msgstr "ID"
@@ -203,22 +202,18 @@ msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
 msgstr "Delež"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
 msgstr "Koren"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
@@ -287,6 +282,62 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
 
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Konto"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Analitični konti"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Število analitičnih kontov"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:analytic_account.rule,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:analytic_account.rule,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:analytic_account.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Dnevnik"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Partner"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Partner viden"
+
+msgctxt "field:analytic_account.rule,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:analytic_account.rule,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
+
+msgctxt "field:analytic_account.rule,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:analytic_account.rule,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr "Pri vnašanju dokumentov naj bo ta konto obvezen"
@@ -310,6 +361,10 @@ msgstr "Analitična postavka"
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr "Odpri kontni načrt"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Analitično pravilo"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
@@ -339,6 +394,10 @@ msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Odpri analitični kontni načrt"
 
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Analitična pravila"
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr "Analitični konti"
@@ -359,11 +418,14 @@ msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Odpri analitični kontni načrt"
 
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Analitična pravila"
+
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
 msgstr "Analitika - vodenje"
 
-#, fuzzy
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"
 msgstr "V pripravi"
@@ -412,17 +474,14 @@ msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Analitično"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Credit"
 msgstr "Kredit"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Debit"
 msgstr "Debet"
 
-#, fuzzy
 msgctxt "view:analytic_account.account.distribution:"
 msgid "%"
 msgstr "%"

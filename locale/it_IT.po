@@ -25,6 +25,10 @@ msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
 msgstr "Movimento non creabile utilizzando il conto vista \"%s\"."
 
+msgctxt "error:analytic_account.rule:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr ""
+
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Righe analitiche"
@@ -281,6 +285,74 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Data inizio"
 
+#, fuzzy
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Conto"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Conti analitici"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Conti analitici"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Azienda"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,create_date:"
+msgid "Create Date"
+msgstr "Creato il"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,create_uid:"
+msgid "Create User"
+msgstr "Creato da"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Registro"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Controparti"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:analytic_account.rule,sequence:"
+msgid "Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,write_date:"
+msgid "Write Date"
+msgstr "Modificato il"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr "Rendere questo conto obbligatorio nel completare i documenti"
@@ -304,6 +376,11 @@ msgstr "Riga analitica"
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr "Apertura prospetto contabile"
+
+#, fuzzy
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Riga analitica"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
@@ -333,6 +410,11 @@ msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Apri Prospetto conti analitici"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Righe analitiche"
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr "Conti analitici"
@@ -352,6 +434,11 @@ msgstr "Righe analittiche da completare"
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Apertura prospetto conti analitici"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Righe analitiche"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"

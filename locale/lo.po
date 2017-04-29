@@ -23,6 +23,10 @@ msgctxt "error:analytic_account.line:"
 msgid "You can not create a move line using view account \"%s\"."
 msgstr ""
 
+msgctxt "error:analytic_account.rule:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr ""
+
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr ""
@@ -334,6 +338,74 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "ວັນທີເລີ່ມ"
 
+#, fuzzy
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "ບັນຊີວິເຄາະ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "ບັນຊີວິເຄາະ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:analytic_account.rule,sequence:"
+msgid "Sequence"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,write_uid:"
+msgid "Write User"
+msgstr "ສ້າງຜູ້ໃຊ້"
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr ""
@@ -359,6 +431,10 @@ msgstr ""
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr "ໄຂຜັງບັນຊີ"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
@@ -391,6 +467,10 @@ msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
@@ -412,6 +492,10 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
 msgstr ""
 
 msgctxt "model:res.group,name:group_analytic_admin"

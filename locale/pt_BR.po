@@ -8,7 +8,7 @@ msgstr "Somente se permite uma conta por raiz analítica e origem."
 
 msgctxt "error:analytic_account.account:"
 msgid "The distribution sum of account \"%(account)s\" is not 100%."
-msgstr ""
+msgstr "A soma distributiva da conta \"%(account)s\" não é 100%."
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
@@ -24,19 +24,22 @@ msgid "You can not create a move line using view account \"%s\"."
 msgstr ""
 "Você não pode criar uma linha de lançamento usando a conta de visão \"%s\""
 
+msgctxt "error:analytic_account.rule:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Alguma conta raiz obrigatória está faltando em \"%(name)s\""
+
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Linhas Analíticas"
 
 msgctxt "field:account.move.line,analytic_state:"
 msgid "Analytic State"
-msgstr ""
+msgstr "Estado Analítico"
 
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
 msgstr "Contas"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -127,11 +130,11 @@ msgstr "Mostrar Saldo"
 
 msgctxt "field:analytic_account.account,distribution_parents:"
 msgid "Distribution Parents"
-msgstr ""
+msgstr "Distribuição Pais"
 
 msgctxt "field:analytic_account.account,distributions:"
 msgid "Distributions"
-msgstr ""
+msgstr "Distribuições"
 
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
@@ -151,7 +154,7 @@ msgstr "Observação"
 
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr "Parente"
+msgstr "Pai"
 
 msgctxt "field:analytic_account.account,rec_name:"
 msgid "Name"
@@ -177,54 +180,45 @@ msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
-msgstr "Contas"
+msgstr "Conta"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,create_uid:"
 msgid "Create User"
-msgstr "Criado pelo usuário"
+msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
-msgstr "Parente"
+msgstr "Pai"
 
 msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Proporção"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
 msgstr "Raiz"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,write_date:"
 msgid "Write Date"
-msgstr "Data de gravação"
+msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Editado por"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
@@ -290,9 +284,66 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Data de início"
 
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Conta"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Contas Analíticas"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Tamanho da Conta Analítica"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:analytic_account.rule,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:analytic_account.rule,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:analytic_account.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Diário"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Pessoa Visível"
+
+msgctxt "field:analytic_account.rule,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:analytic_account.rule,sequence:"
+msgid "Sequence"
+msgstr "Sequência"
+
+msgctxt "field:analytic_account.rule,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:analytic_account.rule,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr ""
+"Faça com que esta conta seja obrigatória quando preenchendo documentos"
 
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
@@ -304,7 +355,7 @@ msgstr "Conta Analítica"
 
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
-msgstr ""
+msgstr "Distribuição da Conta Analítica"
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
@@ -313,6 +364,10 @@ msgstr "Linha Analítica"
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr "Abrir Plano de Contas"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Regra Analítica"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
@@ -332,7 +387,7 @@ msgstr "Linhas Analíticas"
 
 msgctxt "model:ir.action,name:act_move_line_form_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Lançamentos Analíticos a Completar"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
@@ -341,6 +396,10 @@ msgstr "Abrir Conta"
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Abrir Plano de Contas Analíticas"
+
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Regras Analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
@@ -356,24 +415,27 @@ msgstr "Conta Analíticas"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Lançamentos Analíticos a Completar"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Abrir Plano de Contas Analíticas"
 
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Regras Analíticas"
+
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
 msgstr "Administração da Analítica"
 
-#, fuzzy
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"
 msgstr "Rascunho"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
-msgstr ""
+msgstr "Válido"
 
 msgctxt "selection:analytic_account.account,display_balance:"
 msgid "Credit - Debit"
@@ -397,7 +459,7 @@ msgstr "Abriu"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Distribution"
-msgstr ""
+msgstr "Distribuição"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
@@ -415,17 +477,14 @@ msgctxt "view:account.move.line:"
 msgid "Analytic"
 msgstr "Analítico"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Credit"
 msgstr "Crédito"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Debit"
 msgstr "Débito"
 
-#, fuzzy
 msgctxt "view:analytic_account.account.distribution:"
 msgid "%"
 msgstr "%"

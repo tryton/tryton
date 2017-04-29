@@ -27,6 +27,10 @@ msgstr ""
 "Vous ne pouvez pas crér une ligne de mouvement avec le compte de type vue « "
 "%s »."
 
+msgctxt "error:analytic_account.rule:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Certains comptes racines obligatoires sont manquants sur « %(name)s »"
+
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Lignes analytiques"
@@ -283,6 +287,62 @@ msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
 msgstr "Date de début"
 
+msgctxt "field:analytic_account.rule,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:analytic_account.rule,analytic_accounts:"
+msgid "Analytic Accounts"
+msgstr "Comptes analytiques"
+
+msgctxt "field:analytic_account.rule,analytic_accounts_size:"
+msgid "Analytic Accounts Size"
+msgstr "Taille des comptes analytiques"
+
+msgctxt "field:analytic_account.rule,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:analytic_account.rule,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:analytic_account.rule,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:analytic_account.rule,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:analytic_account.rule,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:analytic_account.rule,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:analytic_account.rule,party_visible:"
+msgid "Party Visible"
+msgstr "Tiers visible"
+
+msgctxt "field:analytic_account.rule,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:analytic_account.rule,sequence:"
+msgid "Sequence"
+msgstr "Séquence"
+
+msgctxt "field:analytic_account.rule,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:analytic_account.rule,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr "Rendre ce compte obligatoire quand les documents sont remplis"
@@ -306,6 +366,10 @@ msgstr "Ligne analytique"
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr "Ouvrir le plan comptable"
+
+msgctxt "model:analytic_account.rule,name:"
+msgid "Analytic Rule"
+msgstr "Règle analytique"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
@@ -335,6 +399,10 @@ msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Ouvrir le plan comptable analytique"
 
+msgctxt "model:ir.action,name:act_rule_form"
+msgid "Analytic Rules"
+msgstr "Règles analytiques"
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr "Comptes analytiques"
@@ -354,6 +422,10 @@ msgstr "Lignes analytiques à compléter"
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
 msgstr "Ouvrir le plan comptable analytique"
+
+msgctxt "model:ir.ui.menu,name:menu_rule_form"
+msgid "Analytic Rules"
+msgstr "Règles analytiques"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
