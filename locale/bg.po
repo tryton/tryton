@@ -2,7 +2,7 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:production.create_request:"
+msgctxt "error:stock.supply:"
 msgid "There are some late productions."
 msgstr ""
 
@@ -10,22 +10,37 @@ msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
 msgstr ""
 
+msgctxt "field:production.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr ""
+
 #, fuzzy
-msgctxt "field:production.create_request.start,id:"
+msgctxt "field:production.configuration.supply_period,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
-msgctxt "help:production.configuration,supply_period:"
-msgid "In number of days"
-msgstr "В брой дни"
+msgctxt "field:production.configuration.supply_period,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:production.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_production_request_create"
-msgid "Create Production Requests"
 msgstr ""
 
 #, fuzzy
@@ -34,16 +49,8 @@ msgctxt ""
 msgid "Production"
 msgstr "Управление на производство"
 
-msgctxt "model:ir.cron,name:cron_generate_request"
-msgid "Generate Production Requests"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_production_request_create"
-msgid "Create Production Requests"
-msgstr ""
-
-msgctxt "model:production.create_request.start,name:"
-msgid "Create Production Request"
+msgctxt "model:production.configuration.supply_period,name:"
+msgid "Production Configuration Supply Period"
 msgstr ""
 
 #, fuzzy
@@ -51,9 +58,10 @@ msgctxt "selection:stock.order_point,type:"
 msgid "Production"
 msgstr "Управление на производство"
 
-msgctxt "view:production.create_request.start:"
-msgid "Create Production Requests?"
-msgstr ""
+#, fuzzy
+msgctxt "help:production.configuration,supply_period:"
+msgid "In number of days"
+msgstr "В брой дни"
 
 #, fuzzy
 msgctxt "wizard_button:production.create_request,start,create_:"
