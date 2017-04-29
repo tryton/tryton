@@ -87,6 +87,111 @@ msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:product.configuration.default_cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt ""
+"field:product.configuration.default_cost_price_method,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "Privzeti obračun"
+
+msgctxt "field:product.configuration.default_cost_price_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.configuration.default_cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.cost_price,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:product.cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "Nabavna cena"
+
+msgctxt "field:product.cost_price,cost_price_method:"
+msgid "Cost Method"
+msgstr "Obračun"
+
+msgctxt "field:product.cost_price,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.cost_price,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.cost_price,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.cost_price,template:"
+msgid "Template"
+msgstr "Predloga"
+
+msgctxt "field:product.cost_price,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:product.list_price,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:product.list_price,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:product.list_price,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:product.list_price,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.list_price,list_price:"
+msgid "List Price"
+msgstr "Prodajna cena"
+
+msgctxt "field:product.list_price,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:product.list_price,template:"
+msgid "Template"
+msgstr "Predloga"
+
+msgctxt "field:product.list_price,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:product.list_price,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Aktivno"
@@ -114,6 +219,10 @@ msgstr "Obračun"
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
 msgstr "Nabavna cena"
+
+msgctxt "field:product.product,cost_prices:"
+msgid "Cost Prices"
+msgstr "Nabavne cene"
 
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
@@ -146,6 +255,10 @@ msgstr "Prodajna cena"
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
 msgstr "Prodajna cena"
+
+msgctxt "field:product.product,list_prices:"
+msgid "List Prices"
+msgstr "Prodajne cene"
 
 msgctxt "field:product.product,name:"
 msgid "Name"
@@ -191,6 +304,10 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "Obračun"
 
+msgctxt "field:product.template,cost_prices:"
+msgid "Cost Prices"
+msgstr "Nabavne cene"
+
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -214,6 +331,10 @@ msgstr "ID"
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr "Prodajna cena"
+
+msgctxt "field:product.template,list_prices:"
+msgid "List Prices"
+msgstr "Prodajne cene"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -454,6 +575,18 @@ msgstr "Kategorija izdelkov"
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
 msgstr "Konfiguracija izdelkov"
+
+msgctxt "model:product.configuration.default_cost_price_method,name:"
+msgid "Product Configuration Default Cost Price Method"
+msgstr "Konfiguracija privzetega obračuna nabavne cene"
+
+msgctxt "model:product.cost_price,name:"
+msgid "Product Cost Price"
+msgstr "Nabavna cena izdelka"
+
+msgctxt "model:product.list_price,name:"
+msgid "Product List Price"
+msgstr "Prodajna cena izdelka"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"

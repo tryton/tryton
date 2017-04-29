@@ -95,6 +95,134 @@ msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt ""
+"field:product.configuration.default_cost_price_method,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:product.cost_price,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "Себестоимость"
+
+#, fuzzy
+msgctxt "field:product.cost_price,cost_price_method:"
+msgid "Cost Method"
+msgstr "Учет стоимости"
+
+#, fuzzy
+msgctxt "field:product.cost_price,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:product.cost_price,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:product.cost_price,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:product.cost_price,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+#, fuzzy
+msgctxt "field:product.cost_price,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:product.list_price,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.list_price,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:product.list_price,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:product.list_price,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:product.list_price,list_price:"
+msgid "List Price"
+msgstr "Цена"
+
+#, fuzzy
+msgctxt "field:product.list_price,rec_name:"
+msgid "Name"
+msgstr "Наименование"
+
+#, fuzzy
+msgctxt "field:product.list_price,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+#, fuzzy
+msgctxt "field:product.list_price,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:product.list_price,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
 msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Действующий"
@@ -125,6 +253,11 @@ msgstr "Учет стоимости"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
+msgstr "Себестоимость"
+
+#, fuzzy
+msgctxt "field:product.product,cost_prices:"
+msgid "Cost Prices"
 msgstr "Себестоимость"
 
 msgctxt "field:product.product,create_date:"
@@ -159,6 +292,11 @@ msgstr "Цена"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
+msgstr "Цена"
+
+#, fuzzy
+msgctxt "field:product.product,list_prices:"
+msgid "List Prices"
 msgstr "Цена"
 
 #, fuzzy
@@ -207,6 +345,11 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "Учет стоимости"
 
+#, fuzzy
+msgctxt "field:product.template,cost_prices:"
+msgid "Cost Prices"
+msgstr "Себестоимость"
+
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
@@ -229,6 +372,11 @@ msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
+msgstr "Цена"
+
+#, fuzzy
+msgctxt "field:product.template,list_prices:"
+msgid "List Prices"
 msgstr "Цена"
 
 msgctxt "field:product.template,name:"
@@ -480,6 +628,18 @@ msgstr "Категория продукции"
 
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
+msgstr ""
+
+msgctxt "model:product.configuration.default_cost_price_method,name:"
+msgid "Product Configuration Default Cost Price Method"
+msgstr ""
+
+msgctxt "model:product.cost_price,name:"
+msgid "Product Cost Price"
+msgstr ""
+
+msgctxt "model:product.list_price,name:"
+msgid "Product List Price"
 msgstr ""
 
 msgctxt "model:product.product,name:"

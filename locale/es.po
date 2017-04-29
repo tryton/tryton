@@ -88,6 +88,111 @@ msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "field:product.configuration.default_cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt ""
+"field:product.configuration.default_cost_price_method,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "Método de coste por defecto"
+
+msgctxt "field:product.configuration.default_cost_price_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.configuration.default_cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.cost_price,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:product.cost_price,cost_price_method:"
+msgid "Cost Method"
+msgstr "Método de coste"
+
+msgctxt "field:product.cost_price,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.cost_price,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.cost_price,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.cost_price,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.cost_price,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:product.list_price,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:product.list_price,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.list_price,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.list_price,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.list_price,list_price:"
+msgid "List Price"
+msgstr "Precio de venta"
+
+msgctxt "field:product.list_price,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.list_price,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.list_price,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:product.list_price,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
 msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Activo"
@@ -114,6 +219,10 @@ msgstr "Método de coste"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:product.product,cost_prices:"
+msgid "Cost Prices"
 msgstr "Precio de coste"
 
 msgctxt "field:product.product,create_date:"
@@ -146,6 +255,10 @@ msgstr "Precio de venta"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
+msgstr "Precio de venta"
+
+msgctxt "field:product.product,list_prices:"
+msgid "List Prices"
 msgstr "Precio de venta"
 
 msgctxt "field:product.product,name:"
@@ -192,6 +305,10 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "Método de coste"
 
+msgctxt "field:product.template,cost_prices:"
+msgid "Cost Prices"
+msgstr "Precio de coste"
+
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
 msgstr "Fecha de creación"
@@ -214,6 +331,10 @@ msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
+msgstr "Precio de venta"
+
+msgctxt "field:product.template,list_prices:"
+msgid "List Prices"
 msgstr "Precio de venta"
 
 msgctxt "field:product.template,name:"
@@ -455,6 +576,18 @@ msgstr "Categoría de producto"
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
 msgstr "Configuración de productos"
+
+msgctxt "model:product.configuration.default_cost_price_method,name:"
+msgid "Product Configuration Default Cost Price Method"
+msgstr "Configuración del método de coste por defecto del producto"
+
+msgctxt "model:product.cost_price,name:"
+msgid "Product Cost Price"
+msgstr "Precio de coste del producto"
+
+msgctxt "model:product.list_price,name:"
+msgid "Product List Price"
+msgstr "Precio de venta del producto"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"

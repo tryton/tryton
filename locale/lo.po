@@ -7,32 +7,32 @@ msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
-"ຖ້າໜ່ວຍວັດແທກນີ້ຍັງບໍ່ຖຶກໃຊ້,ໃຫ້ລືບຖິ້ມຫຼືບໍ່ກໍ່ໝາຍໃສ່ບໍ່ໃຊ້ອິກຫຼືສ້າງຂຶ້ນໃໝ່."
+"ຖ້າຫົວໜ່ວຍວັດແທກນີ້ຍັງບໍ່ຖືກໃຊ້, ໃຫ້ລຶບຖິ້ມ ຫຼື ບໍ່ກໍ່ໝາຍໃສ່ບໍ່ໃຊ້ອີກ ຫຼື "
+"ສ້າງຂຶ້ນໃໝ່."
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "ປັດໄຈຄູນ ແລະ ຄ່າອັດຕາ ໃນຫົວໜ່ວຍ \"%s\" ບໍ່ຖຶກຕ້ອງ."
+msgstr "ປັດໄຈ ແລະ ຄ່າອັດຕາ ໃນຫົວໜ່ວຍ \"%s\" ບໍ່ຖືກຕ້ອງ."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
 msgstr "ອັດຕາ ແລະ ປັດໄຈຄູນ ທັງສອງບໍ່ສາມາດເທົ່າກັບສູນໄດ້."
 
-#, fuzzy
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr "ເຈົ້າບໍ່ສາມາດປ່ຽນອັດຕາ,ທະວີຄູນຫຼືປະເພດຂອງໜ່ວຍວັດແທກ."
+msgstr "ທ່ານບໍ່ສາມາດປ່ຽນອັດຕາ, ປັດໄຈ ຫຼື ປະເພດຫົວໜ່ວຍ ຂອງ ການວັດແທກ."
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr "ບັນຊີລູກ"
+msgstr "ໝວດຍ່ອຍ"
 
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:product.category,id:"
 msgid "ID"
@@ -52,51 +52,173 @@ msgstr "ຊື່"
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "ວິທີຄິດໄລ່ລາຄາເດີມ"
 
-#, fuzzy
 msgctxt "field:product.configuration,id:"
 msgid "ID"
-msgstr "ເລກທີ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:product.configuration,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt ""
+"field:product.configuration.default_cost_price_method,default_cost_price_method:"
+msgid "Default Cost Method"
+msgstr "ວິທີຄິດໄລ່ລາຄາເດີມ"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,id:"
+msgid "ID"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:product.cost_price,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price,cost_price:"
+msgid "Cost Price"
+msgstr "ລາຄາຄິດໄລ່"
+
+#, fuzzy
+msgctxt "field:product.cost_price,cost_price_method:"
+msgid "Cost Method"
+msgstr "ວິທີຄິດໄລ່"
+
+#, fuzzy
+msgctxt "field:product.cost_price,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.cost_price,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.cost_price,id:"
+msgid "ID"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:product.cost_price,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+#, fuzzy
+msgctxt "field:product.cost_price,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:product.list_price,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.list_price,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.list_price,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.list_price,id:"
+msgid "ID"
+msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:product.list_price,list_price:"
+msgid "List Price"
+msgstr "ລາຄາຂາຍ"
+
+#, fuzzy
+msgctxt "field:product.list_price,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:product.list_price,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+#, fuzzy
+msgctxt "field:product.list_price,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.list_price,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "ຍັງໃຊ້ຢູ່"
 
-#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr "ປະເພດ"
@@ -105,17 +227,14 @@ msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "ລະຫັດ"
 
-#, fuzzy
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
 msgstr "ວັດຖຸສິ້ນເປືອງ"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
 msgstr "ລາຄາຄິດໄລ່"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Method"
 msgstr "ວິທີຄິດໄລ່"
@@ -124,32 +243,35 @@ msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
 msgstr "ລາຄາຄິດໄລ່"
 
+#, fuzzy
+msgctxt "field:product.product,cost_prices:"
+msgid "Cost Prices"
+msgstr "ລາຄາຄິດໄລ່"
+
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
-msgstr "ໜ່ວຍເດີມ"
+msgstr "ຫົວໜ່ວຍເດີມ"
 
-#, fuzzy
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "ໝວດຫົວໜ່ວຍເດີມ"
+msgstr "ປະເພດຫົວໜ່ວຍເດີມ"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
-msgstr "ລາຍລະອຽດ"
+msgstr "ຄຳອະທິບາຍ"
 
 msgctxt "field:product.product,id:"
 msgid "ID"
 msgstr "ເລກທີ"
 
-#, fuzzy
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
 msgstr "ລາຄາຂາຍ"
@@ -159,6 +281,10 @@ msgid "List Price"
 msgstr "ລາຄາຂາຍ"
 
 #, fuzzy
+msgctxt "field:product.product,list_prices:"
+msgid "List Prices"
+msgstr "ລາຄາຂາຍ"
+
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "ຊື່"
@@ -177,17 +303,16 @@ msgstr "ຊະນິດ"
 
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr "ຂຽນຊື່ຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:product.template,active:"
 msgid "Active"
 msgstr "ຍັງໃຊ້ຢູ່"
 
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "ປະເພດ"
@@ -204,13 +329,18 @@ msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Method"
 msgstr "ວິທີຄິດໄລ່"
 
+#, fuzzy
+msgctxt "field:product.template,cost_prices:"
+msgid "Cost Prices"
+msgstr "ລາຄາຄິດໄລ່"
+
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
@@ -218,7 +348,7 @@ msgstr "ຫົວໜ່ວຍເດີມ"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr "ໝວດຫົວໜ່ວຍເດີມ"
+msgstr "ປະເພດຫົວໜ່ວຍເດີມ"
 
 msgctxt "field:product.template,id:"
 msgid "ID"
@@ -227,6 +357,11 @@ msgstr "ເລກທີ"
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
 msgstr "ລາຍການລາຄາ"
+
+#, fuzzy
+msgctxt "field:product.template,list_prices:"
+msgid "List Prices"
+msgstr "ລາຄາຂາຍ"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -246,72 +381,63 @@ msgstr "ປະເພດ"
 
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
-msgstr "ໝວດ"
+msgstr "ປະເພດ"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
 msgstr "ເລກທີ"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
 msgstr "ຮ່າງແບບ"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:product.uom,active:"
 msgid "Active"
 msgstr "ຍັງໃຊ້ຢູ່"
 
-#, fuzzy
 msgctxt "field:product.uom,category:"
 msgid "Category"
-msgstr "ໝວດ"
+msgstr "ປະເພດ"
 
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
-msgstr "ສະແດງໂຕເລກ"
+msgstr "ສະແດງເລກເສດ"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
@@ -319,7 +445,7 @@ msgstr "ປັດໄຈຄູນ"
 
 msgctxt "field:product.uom,id:"
 msgid "ID"
-msgstr "ບັດ"
+msgstr "ເລກລຳດັບ"
 
 msgctxt "field:product.uom,name:"
 msgid "Name"
@@ -343,23 +469,23 @@ msgstr "ສັນຍະລັກ"
 
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ສ້າງ"
 
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
-msgstr "ບັດ"
+msgstr "ເລກລຳດັບ"
 
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
@@ -375,27 +501,27 @@ msgstr "ຫົວໜ່ວຍວັດແທກ"
 
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
+msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
 "coef (base unit) = 1 (this unit)"
 msgstr ""
-"ຄ່າຄູນຂອງສູດ:\n"
-"ຄ່າຄູນ (ໜ່ວຍພຶ້ນຖານ)= 1 (ໜ່ວຍນີ້) "
+"ຄ່າສຳປະສິດຂອງສູດ:\n"
+"coef (ໜ່ວຍພຶ້ນຖານ)= 1 (ໜ່ວຍນີ້) "
 
 msgctxt "help:product.uom,rate:"
 msgid ""
 "The coefficient for the formula:\n"
 "1 (base unit) = coef (this unit)"
 msgstr ""
-"ຄ່າຄູນຂອງສູດ:\n"
-"ຄ່າຄູນ (ໜ່ວຍພຶ້ນຖານ)= 1 (ໜ່ວຍນີ້) "
+"ຄ່າສຳປະສິດຂອງສູດ:\n"
+"1 (ໜ່ວຍພຶ້ນຖານ)= coef (ໜ່ວຍນີ້)"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
@@ -407,16 +533,15 @@ msgstr "ປະເພດ"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr ""
+msgstr "ກຳນົດຄ່າຜະລິດຕະພັນ"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "ໜ່ວຍວັດແທກ"
+msgstr "ຜະລິດຕະພັນຍ່ອຍ"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "ໜ່ວຍວັດແທກ"
+msgstr "ຜະລິດຕະພັນໃນກຸ່ມດຽວກັນ"
 
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
@@ -436,16 +561,15 @@ msgstr "ໜ່ວຍວັດແທກ"
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "ໝວດ"
+msgstr "ປະເພດ"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "ໝວດ"
+msgstr "ປະເພດ"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "ການຕັ້ງຄ່າ"
+msgstr "ການກຳນົດຄ່າ"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
@@ -457,7 +581,7 @@ msgstr "ຜະລິດຕະພັນຍ່ອຍ"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr ""
+msgstr "ກຳນົດຄ່າຜະລິດຕະພັນ"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -465,7 +589,7 @@ msgstr "ຜະລິດຕະພັນ"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "ໝວດ"
+msgstr "ປະເພດ"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
@@ -477,6 +601,18 @@ msgstr "ປະເພດຜະລິດຕະພັນ"
 
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
+msgstr "ກຳນົດຄ່າຜະລິດຕະພັນ"
+
+msgctxt "model:product.configuration.default_cost_price_method,name:"
+msgid "Product Configuration Default Cost Price Method"
+msgstr ""
+
+msgctxt "model:product.cost_price,name:"
+msgid "Product Cost Price"
+msgstr ""
+
+msgctxt "model:product.list_price,name:"
+msgid "Product List Price"
 msgstr ""
 
 msgctxt "model:product.product,name:"
@@ -489,7 +625,7 @@ msgstr "ຮ່າງຂໍ້ມູນຜະລິດຕະພັນ"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr ""
+msgstr "ຮ່າງແບບ - ປະເພດ"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
@@ -501,7 +637,7 @@ msgstr "ອາຣ໌"
 
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "ກາລັດ"
+msgstr "ກາຣັດ"
 
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
@@ -525,7 +661,7 @@ msgstr "ແມັດກ້ອນ"
 
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "ມຶ້"
+msgstr "ມື້"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
@@ -617,7 +753,7 @@ msgstr "ໜ່ວຍ"
 
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "ມື້ເຮັດວຽກ"
+msgstr "ມື້ວຽກ"
 
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
@@ -637,7 +773,7 @@ msgstr "ຊມ"
 
 msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
 msgid "cm³"
-msgstr "ຊມ2"
+msgstr "ຊມ3"
 
 msgctxt "model:product.uom,symbol:uom_cubic_foot"
 msgid "ft³"
@@ -649,7 +785,7 @@ msgstr "ກຸບບິກນິ້ວ"
 
 msgctxt "model:product.uom,symbol:uom_cubic_meter"
 msgid "m³"
-msgstr "ມ2"
+msgstr "ມ3"
 
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
@@ -713,7 +849,7 @@ msgstr "ອອນ"
 
 msgctxt "model:product.uom,symbol:uom_pound"
 msgid "lb"
-msgstr ""
+msgstr "ພາວ"
 
 msgctxt "model:product.uom,symbol:uom_second"
 msgid "s"
@@ -753,7 +889,7 @@ msgstr "ຫລາ"
 
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
-msgstr "ປະເພດຫົວໜ່ວຍວັດແທກຜະລິດຕະພັນ"
+msgstr "ປະເພດໜ່ວຍວັດແທກຜະລິດຕະພັນ"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
@@ -761,7 +897,7 @@ msgstr "ຄວາມຍາວ"
 
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "ໜ້າພຽງ"
+msgstr "ເນື້ອທີ່"
 
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
@@ -783,19 +919,17 @@ msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
 msgstr "ບໍລິຫານຜະລິດຕະພັນ"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
 msgstr "ສະເລັ່ຍ"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
 msgstr "ຄົງທີ່"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "ຊັບສົມສິນ"
+msgstr "ຊັບສິນ"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
@@ -833,10 +967,9 @@ msgctxt "view:product.template:"
 msgid "General"
 msgstr "ທົ່ວໄປ"
 
-#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr "ການຕັ້ງຄ່າພາກສ່ວນ"
+msgstr "ກຳນົດຄ່າພາກສ່ວນ"
 
 msgctxt "view:product.product:"
 msgid "Product"
