@@ -2,26 +2,29 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:product.product,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Suprir Na Venda"
+msgstr "Abastecimento Na Venda"
 
 msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Suprir Na Venda"
+msgstr "Abastecimento Na Venda"
+
+msgctxt "field:purchase.request,sale_lines:"
+msgid "Sale Lines"
+msgstr "Linhas de Venda"
 
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
-msgstr "Requisição de Compra"
+msgstr "Pedido de Compra"
 
 msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
-msgstr "Estado da Requisição de Compra"
+msgstr "Estado do Pedido de Compra"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Requisições de Compra"
+msgstr "Pedidos de Compra"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
@@ -37,4 +40,4 @@ msgstr "Comprado"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Requested"
-msgstr "Requisitado"
+msgstr "Solicitado"

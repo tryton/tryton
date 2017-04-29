@@ -10,6 +10,10 @@ msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
 msgstr "Suministra en la venta"
 
+msgctxt "field:purchase.request,sale_lines:"
+msgid "Sale Lines"
+msgstr "Líneas de venta"
+
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
 msgstr "Solicitud de compra"
