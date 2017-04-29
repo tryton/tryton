@@ -250,6 +250,11 @@ msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
 msgstr "Reklamáció számkör"
 
+#, fuzzy
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Reklamáció számkör"
+
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines"
 msgstr "Üresen hagyni a soroknak"

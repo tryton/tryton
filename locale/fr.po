@@ -251,6 +251,10 @@ msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
 msgstr "Séquence de plainte"
 
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Séquence de plainte"
+
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines"
 msgstr "Laisser vide pour toutes les lignes"

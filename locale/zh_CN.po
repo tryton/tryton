@@ -289,6 +289,10 @@ msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
 msgstr ""
 
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr ""
+
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines"
 msgstr ""

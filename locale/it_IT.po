@@ -250,6 +250,11 @@ msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
 msgstr "sequenza reclamo"
 
+#, fuzzy
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "sequenza reclamo"
+
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines"
 msgstr "lasciare vuoto per tutte le righe"

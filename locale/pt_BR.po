@@ -50,7 +50,6 @@ msgctxt "field:sale.complaint,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
 msgstr "Número"
@@ -248,6 +247,10 @@ msgid "Write User"
 msgstr "Editado por"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
+msgid "Complaint Sequence"
+msgstr "Sequência de Reclamação"
+
+msgctxt "field:sale.configuration.sequence,complaint_sequence:"
 msgid "Complaint Sequence"
 msgstr "Sequência de Reclamação"
 
