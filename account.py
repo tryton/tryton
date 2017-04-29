@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import csv
-from io import BytesIO
+import sys
+from io import BytesIO, StringIO
 
 from sql import Table
 
@@ -93,21 +94,33 @@ class AccountFrFEC(Wizard):
             ])
 
     def transition_generate(self):
-        fec = BytesIO()
+        if sys.version_info < (3,):
+            fec = BytesIO()
+        else:
+            fec = StringIO()
         writer = self.get_writer(fec)
         writer.writerow(self.get_header())
         format_date = self.get_format_date()
         format_number = self.get_format_number()
 
-        def convert(c):
+        def replace_delimiter(c):
             delimiter = writer.dialect.delimiter
-            return (c or '').replace(delimiter, ' ').encode('utf-8')
+            return (c or '').replace(delimiter, ' ')
+        if sys.version_info < (3,):
+            def convert(c):
+                return replace_delimiter(c).encode('utf-8')
+        else:
+            convert = replace_delimiter
+
         for row in self.get_start_balance():
             writer.writerow(map(convert, row))
         for line in self.get_lines():
             row = self.get_row(line, format_date, format_number)
             writer.writerow(map(convert, row))
-        self.result.file = fec.getvalue()
+        value = fec.getvalue()
+        if not isinstance(value, bytes):
+            value = value.encode('utf-8')
+        self.result.file = self.result.__class__.file.cast(value)
         return 'result'
 
     def default_result(self, fields):
