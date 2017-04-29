@@ -427,6 +427,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Kontext"
 
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "Kontext des Wertebereichs"
+
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr "Kontextmodell"
@@ -690,6 +694,10 @@ msgstr "Symbol"
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "Ist personalisiert"
 
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
@@ -1883,42 +1891,6 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "field:ir.property,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:ir.property,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:ir.property,field:"
-msgid "Field"
-msgstr "Feld"
-
-msgctxt "field:ir.property,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.property,rec_name:"
-msgid "Name"
-msgstr "Name"
-
-msgctxt "field:ir.property,res:"
-msgid "Resource"
-msgstr "Ressource"
-
-msgctxt "field:ir.property,value:"
-msgid "Value"
-msgstr "Wert"
-
-msgctxt "field:ir.property,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:ir.property,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -2819,6 +2791,10 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr "Teil des Wertebereichs der bei jeder Aktualisierung ausgewertet wird"
+
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view"
 msgstr "Standardobergrenze für die Listenanscht"
@@ -3069,14 +3045,6 @@ msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr "Notizen"
 
-msgctxt "model:ir.action,name:act_property_form"
-msgid "Properties"
-msgstr "Eigenschaften"
-
-msgctxt "model:ir.action,name:act_property_form_default"
-msgid "Default Properties"
-msgstr "Standardeigenschaften"
-
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
 msgstr "Datensatzregeln"
@@ -3102,6 +3070,10 @@ msgid "Export Translations"
 msgstr "Übersetzungen exportieren"
 
 msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Übersetzungen"
+
+msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
 msgstr "Übersetzungen"
 
@@ -3149,6 +3121,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Workflow Graph"
 
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Übersetzungen"
+
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
 msgstr "Aktion aktives Fenster"
@@ -3166,6 +3142,16 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
 msgstr "Nicht synchronisiert"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "Lokal"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Module"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -3260,7 +3246,7 @@ msgid "Italian"
 msgstr "Italienisch"
 
 msgctxt "model:ir.lang,name:lang_lo"
-msgid "ລາວ"
+msgid "Lao"
 msgstr "Laotisch"
 
 msgctxt "model:ir.lang,name:lang_lt"
@@ -3270,6 +3256,10 @@ msgstr "Litauisch"
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Niederländisch"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "Polnisch"
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
@@ -3284,8 +3274,8 @@ msgid "Slovenian"
 msgstr "Slowenisch"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "中国（简体）"
-msgstr "Chinesisch (vereinfacht)"
+msgid "Chinese Simplified"
+msgstr "Chinesisch (Vereinfacht)"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3366,10 +3356,6 @@ msgstr "Notiz"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "Notiz gelesen"
-
-msgctxt "model:ir.property,name:"
-msgid "Property"
-msgstr "Eigenschaft"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -3551,14 +3537,6 @@ msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
 msgstr "Notizen"
 
-msgctxt "model:ir.ui.menu,name:menu_property_form"
-msgid "Properties"
-msgstr "Eigenschaften"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form_default"
-msgid "Default Properties"
-msgstr "Standardeigenschaften"
-
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
 msgstr "Datensatzregeln"
@@ -3717,7 +3695,7 @@ msgstr "Nicht aktiviert"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be activated"
-msgstr "Zu ak"
+msgstr "Zu aktivieren"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
@@ -4117,35 +4095,3 @@ msgstr "Eingeben"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Schließen"
-
-msgctxt "model:ir.action,name:"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"
-
-msgctxt "model:ir.lang,name:"
-msgid "Spanish (Argentina)"
-msgstr "Spanisch (Argentinien)"
-
-msgctxt "model:ir.lang,name:"
-msgid "Spanish (Colombia)"
-msgstr "Spanisch (Kolumbien)"
-
-msgctxt "model:ir.lang,name:"
-msgid "Spanish (Ecuador)"
-msgstr "Spanisch (Ecuador)"
-
-msgctxt "model:ir.lang,name:"
-msgid "Spanish (Mexico)"
-msgstr "Spanisch (Mexiko)"
-
-msgctxt "model:ir.lang,name:lang_lo"
-msgid "Lao"
-msgstr "Laotisch"
-
-msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "Chinese Simplified"
-msgstr "Chinesisch (Vereinfacht)"
-
-msgctxt "model:ir.ui.menu,name:"
-msgid "Perform Pending Installation/Upgrade"
-msgstr "Vorgemerkte Installationen / Aktualisierungen durchführen"

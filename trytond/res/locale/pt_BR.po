@@ -7,6 +7,30 @@ msgid "The name of the group must be unique!"
 msgstr "O nome do grupo deve ser único!"
 
 msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr "A sena não pode ser a mesma que o email."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr "A senha não pode ser sa mesma que o usuário."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr "A senha não pode ser a mesma que o nome do usuário."
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr "A senha contém muitas vezes o mesmo caracter."
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr "A senha é proibida."
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr "A senha é muito curta."
+
+msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
@@ -90,12 +114,10 @@ msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,user:"
 msgid "User"
 msgstr "Usuário"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Grupo"
@@ -272,6 +294,10 @@ msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Botões"
+
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -330,7 +356,7 @@ msgstr "Ativo"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
-msgstr ""
+msgstr "Aplicações"
 
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
@@ -482,50 +508,43 @@ msgstr "Gravado pelo usuário"
 
 msgctxt "field:res.user.application,application:"
 msgid "Application"
-msgstr ""
+msgstr "Aplicação"
 
-#, fuzzy
 msgctxt "field:res.user.application,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:res.user.application,create_uid:"
 msgid "Create User"
 msgstr "Criado pelo usuário"
 
-#, fuzzy
 msgctxt "field:res.user.application,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:res.user.application,key:"
 msgid "Key"
-msgstr ""
+msgstr "Chave"
 
-#, fuzzy
 msgctxt "field:res.user.application,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
-#, fuzzy
 msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Usuário"
 
-#, fuzzy
 msgctxt "field:res.user.application,write_date:"
 msgid "Write Date"
-msgstr "Data de gravação"
+msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Editado por"
 
 msgctxt "field:res.user.config.start,id:"
 msgid "ID"
@@ -681,7 +700,7 @@ msgstr "Usuário - Grupo"
 
 msgctxt "model:res.user.application,name:"
 msgid "User Application"
-msgstr ""
+msgstr "Aplicação do Usuário"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
@@ -697,15 +716,15 @@ msgstr "Alerta de Usuário"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelado"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Requested"
-msgstr ""
+msgstr "Solicitado"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Validated"
-msgstr ""
+msgstr "Validado"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
@@ -715,14 +734,13 @@ msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Membros"
 
-#, fuzzy
 msgctxt "view:res.user.application:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "view:res.user.application:"
 msgid "Validate"
-msgstr ""
+msgstr "Validar"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"

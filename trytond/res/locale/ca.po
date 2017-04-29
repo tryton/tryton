@@ -7,6 +7,31 @@ msgid "The name of the group must be unique!"
 msgstr "El nom del grup ha de ser únic."
 
 msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr ""
+"La contrasenya no pot ser la mateixa que el correu electrònic de l'usuari."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr "La contrasenya no pot ser la mateixa que el nom d'usuari de l'usuari."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr "La contrasenya no pot ser la mateixa que el nom de l'usuari."
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr "La contrasenya té massa vegades els mateixos caràcters."
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr "La contrasenya està prohibida."
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr "La contrasenya es massa curta."
+
+msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
@@ -269,6 +294,10 @@ msgstr "Data de modificació"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Botons"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"

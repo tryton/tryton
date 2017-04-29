@@ -417,6 +417,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Context"
 
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "Domini del context"
+
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr "Model del context"
@@ -680,6 +684,10 @@ msgstr "Icona"
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "Es personalitzat"
 
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
@@ -1873,42 +1881,6 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
-msgctxt "field:ir.property,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:ir.property,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:ir.property,field:"
-msgid "Field"
-msgstr "Camp"
-
-msgctxt "field:ir.property,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.property,rec_name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:ir.property,res:"
-msgid "Resource"
-msgstr "Recurs"
-
-msgctxt "field:ir.property,value:"
-msgid "Value"
-msgstr "Valor"
-
-msgctxt "field:ir.property,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:ir.property,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"
@@ -2809,6 +2781,10 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr "La part del domini que s'avaluarà cada vegada que es refresqui"
+
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view"
 msgstr "Límit per defecte en les vistes de llista."
@@ -3055,14 +3031,6 @@ msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr "Notes"
 
-msgctxt "model:ir.action,name:act_property_form"
-msgid "Properties"
-msgstr "Propietats"
-
-msgctxt "model:ir.action,name:act_property_form_default"
-msgid "Default Properties"
-msgstr "Propietats per defecte"
-
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
 msgstr "Regles dels registres"
@@ -3088,6 +3056,10 @@ msgid "Export Translations"
 msgstr "Exporta traduccions"
 
 msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Traduccions"
+
+msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
 msgstr "Traduccions"
 
@@ -3135,6 +3107,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Graf dels estats"
 
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Traduccions"
+
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
 msgstr "Accions de finestra"
@@ -3152,6 +3128,16 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
 msgstr "Sense sincronitzar"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "Local"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Mòduls"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -3246,8 +3232,8 @@ msgid "Italian"
 msgstr "Italià"
 
 msgctxt "model:ir.lang,name:lang_lo"
-msgid "ລາວ"
-msgstr "ລາວ"
+msgid "Lao"
+msgstr "Laosià"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3256,6 +3242,10 @@ msgstr "Lituà"
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Holandès"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "Polonès"
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
@@ -3270,8 +3260,8 @@ msgid "Slovenian"
 msgstr "Eslovè"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "中国（简体）"
-msgstr "中国（简体）"
+msgid "Chinese Simplified"
+msgstr "Xinès simplificat"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3352,10 +3342,6 @@ msgstr "Nota"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "Nota llegida"
-
-msgctxt "model:ir.property,name:"
-msgid "Property"
-msgstr "Propietat"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -3536,14 +3522,6 @@ msgstr "Mòduls"
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
 msgstr "Notes"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form"
-msgid "Properties"
-msgstr "Propietats"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form_default"
-msgid "Default Properties"
-msgstr "Propietats per defecte"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"

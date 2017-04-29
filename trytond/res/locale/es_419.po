@@ -7,10 +7,36 @@ msgid "The name of the group must be unique!"
 msgstr ""
 
 msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr ""
+
+msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
 msgstr ""
+"Por motivos de registro, los usuarios no pueden ser eliminados.\n"
+"En vez de eso, debe desactivarlos."
 
 msgctxt "error:res.user:"
 msgid "Wrong password!"
@@ -32,10 +58,9 @@ msgctxt "field:ir.action-res.group,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:ir.action-res.group,id:"
 msgid "ID"
@@ -49,9 +74,10 @@ msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:ir.model.button-res.group,active:"
 msgid "Active"
@@ -69,10 +95,9 @@ msgctxt "field:ir.model.button-res.group,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.button-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:ir.model.button-res.group,id:"
 msgid "ID"
@@ -86,19 +111,19 @@ msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 #, fuzzy
 msgctxt "field:ir.model.button.click,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:ir.model.field-res.group,create_date:"
 msgid "Create Date"
@@ -112,10 +137,9 @@ msgctxt "field:ir.model.field-res.group,field:"
 msgid "Model Field"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.field-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:ir.model.field-res.group,id:"
 msgid "ID"
@@ -129,9 +153,10 @@ msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.field-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
@@ -141,10 +166,9 @@ msgctxt "field:ir.rule.group-res.group,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.group,id:"
 msgid "ID"
@@ -162,9 +186,10 @@ msgctxt "field:ir.rule.group-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:ir.rule.group-res.user,create_date:"
 msgid "Create Date"
@@ -189,15 +214,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:ir.rule.group-res.user,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "field:ir.rule.group-res.user,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.rule.group-res.user,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
@@ -239,9 +265,10 @@ msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.type-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:ir.ui.menu-res.group,create_date:"
 msgid "Create Date"
@@ -251,10 +278,9 @@ msgctxt "field:ir.ui.menu-res.group,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:ir.ui.menu-res.group,id:"
 msgid "ID"
@@ -272,8 +298,13 @@ msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
+msgstr "Modi"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
 msgstr ""
 
 msgctxt "field:res.group,create_date:"
@@ -315,15 +346,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:res.group,users:"
 msgid "Users"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "field:res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:res.user,actions:"
 msgid "Actions"
@@ -349,10 +381,9 @@ msgctxt "field:res.user,email:"
 msgid "Email"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user,groups:"
 msgid "Groups"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:res.user,id:"
 msgid "ID"
@@ -420,7 +451,7 @@ msgstr ""
 
 msgctxt "field:res.user,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:res.user-ir.action,action:"
 msgid "Action"
@@ -445,15 +476,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "field:res.user-ir.action,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user-ir.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:res.user-res.group,create_date:"
 msgid "Create Date"
@@ -463,10 +495,9 @@ msgctxt "field:res.user-res.group,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "field:res.user-res.group,id:"
 msgid "ID"
@@ -479,15 +510,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "field:res.user-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:res.user.application,application:"
 msgid "Application"
@@ -520,15 +552,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:res.user.application,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "field:res.user.application,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:res.user.config.start,id:"
 msgid "ID"
@@ -558,9 +591,10 @@ msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.login.attempt,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "field:res.user.warning,always:"
 msgid "Always"
@@ -589,15 +623,16 @@ msgstr ""
 #, fuzzy
 msgctxt "field:res.user.warning,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "field:res.user.warning,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modi"
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
@@ -605,19 +640,20 @@ msgstr ""
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
-msgstr ""
+msgstr "Las acciones que se ejecutarán al iniciar sesión"
 
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
-msgstr "Configure Users"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
@@ -625,7 +661,7 @@ msgstr ""
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Run On Time Triggers"
+msgstr ""
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
@@ -649,33 +685,34 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr "Users"
+msgstr "Usuario"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:"
 msgid "Group"
-msgstr "Groups"
+msgstr ""
 
 msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
-msgstr "Administration"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:res.user,name:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
@@ -735,7 +772,7 @@ msgstr ""
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr ""
+msgstr "Si lo desea, ahora puede agregar más usuarios en el sistema."
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
@@ -753,10 +790,9 @@ msgctxt "view:res.user:"
 msgid "Preferences"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:res.user:"
 msgid "User"
-msgstr "Users"
+msgstr "Usuario"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"

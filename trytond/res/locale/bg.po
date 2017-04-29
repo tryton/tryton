@@ -7,6 +7,30 @@ msgid "The name of the group must be unique!"
 msgstr "Името на групата трябва да е уникално!"
 
 msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr ""
+
+msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
@@ -270,6 +294,11 @@ msgstr "Променено на"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Бутон"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"

@@ -384,6 +384,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr ""
 
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr ""
+
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr ""
@@ -652,6 +656,10 @@ msgstr ""
 
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
 msgstr ""
 
 msgctxt "field:ir.action.report,keywords:"
@@ -1883,43 +1891,6 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "field:ir.property,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:ir.property,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:ir.property,field:"
-msgid "Field"
-msgstr ""
-
-msgctxt "field:ir.property,id:"
-msgid "ID"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.property,rec_name:"
-msgid "Name"
-msgstr "Namu"
-
-msgctxt "field:ir.property,res:"
-msgid "Resource"
-msgstr ""
-
-msgctxt "field:ir.property,value:"
-msgid "Value"
-msgstr ""
-
-msgctxt "field:ir.property,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:ir.property,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -2842,6 +2813,10 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr ""
+
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view"
 msgstr ""
@@ -3070,14 +3045,6 @@ msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_property_form"
-msgid "Properties"
-msgstr ""
-
-msgctxt "model:ir.action,name:act_property_form_default"
-msgid "Default Properties"
-msgstr ""
-
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
 msgstr ""
@@ -3103,6 +3070,10 @@ msgid "Export Translations"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
 msgstr ""
 
@@ -3150,6 +3121,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr ""
 
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr ""
+
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
 msgstr ""
@@ -3166,6 +3141,16 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
 msgstr ""
 
 msgctxt "model:ir.action.act_window.view,name:"
@@ -3261,7 +3246,7 @@ msgid "Italian"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_lo"
-msgid "ລາວ"
+msgid "Lao"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_lt"
@@ -3270,6 +3255,10 @@ msgstr ""
 
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
+msgstr ""
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
@@ -3285,7 +3274,7 @@ msgid "Slovenian"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "中国（简体）"
+msgid "Chinese Simplified"
 msgstr ""
 
 msgctxt "model:ir.model,name:"
@@ -3366,10 +3355,6 @@ msgstr ""
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
-msgstr ""
-
-msgctxt "model:ir.property,name:"
-msgid "Property"
 msgstr ""
 
 msgctxt "model:ir.rule,name:"
@@ -3550,14 +3535,6 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_property_form"
-msgid "Properties"
-msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_property_form_default"
-msgid "Default Properties"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"

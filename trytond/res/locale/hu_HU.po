@@ -7,6 +7,30 @@ msgid "The name of the group must be unique!"
 msgstr "Egy csoport neve csak egyszer adható ki"
 
 msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr ""
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr ""
+
+msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
@@ -269,6 +293,11 @@ msgstr "Utolsó módosítás dátuma"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
+
+#, fuzzy
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Gomb"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"

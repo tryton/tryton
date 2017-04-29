@@ -68,10 +68,9 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "E-mail inválido na definição do relatório\"%s\"."
 
-#, fuzzy
 msgctxt "error:ir.attachment:"
 msgid "The names of attachments must be unique by resource."
-msgstr "Os nomes dos anexos devem ser únicos por reurso!"
+msgstr "Os nomes dos anexos devem ser únicos por recurso!"
 
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
@@ -127,14 +126,13 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr "Você não pode editar este documento!(%s)"
 
-#, fuzzy
 msgctxt "error:ir.model.button.rule:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
 "\"%(rule)s\"."
 msgstr ""
-"A condição \"%(condition)s\" não é uma expressão PYSON válida sobre o "
-"trigger \"%(trigger)s\"."
+"A condição \"%(condition)s\" não é uma expressão PYSON válida sobre a regra "
+"\"%(rule)s\" do botão."
 
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
@@ -172,15 +170,15 @@ msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
+"Alguns módulos ativados dependem nos que você está tentando desativar:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "O nome do módulo deve ser único!"
 
-#, fuzzy
 msgctxt "error:ir.module:"
 msgid "You can not remove a module that is activated or will be activated"
-msgstr "Você não pode remover um módulo que está instalado ou será instalado."
+msgstr "Você não pode remover um módulo que está ativado ou que será ativado"
 
 msgctxt "error:ir.rule.group:"
 msgid "Global and Default are mutually exclusive!"
@@ -252,7 +250,7 @@ msgid ""
 "\"%(trigger)s\"."
 msgstr ""
 "A condição \"%(condition)s\" não é uma expressão PYSON válida sobre o "
-"trigger \"%(trigger)s\"."
+"gatilho \"%(trigger)s\"."
 
 msgctxt "error:ir.ui.menu:"
 msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
@@ -418,9 +416,13 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Valor do contexto"
 
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "Contexto do Domínio"
+
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
-msgstr ""
+msgstr "Contexto do Modelo"
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -522,10 +524,9 @@ msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr "Ativo"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window.domain,count:"
 msgid "Count"
-msgstr "Contagem"
+msgstr "Quantidade"
 
 msgctxt "field:ir.action.act_window.domain,create_date:"
 msgid "Create Date"
@@ -682,6 +683,10 @@ msgstr "Ícone"
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "É personalizado"
 
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
@@ -901,7 +906,7 @@ msgstr "Descrição"
 
 msgctxt "field:ir.attachment,file_id:"
 msgid "File ID"
-msgstr ""
+msgstr "ID do Arquivo"
 
 msgctxt "field:ir.attachment,id:"
 msgid "ID"
@@ -1065,7 +1070,7 @@ msgstr "Repetir faltantes"
 
 msgctxt "field:ir.cron,request_user:"
 msgid "Request User"
-msgstr "Usuário da requisição"
+msgstr "Solicitar Usuário"
 
 msgctxt "field:ir.cron,user:"
 msgid "Execution User"
@@ -1313,7 +1318,7 @@ msgstr "Gravado pelo usuário"
 
 msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
-msgstr ""
+msgstr "Cliques"
 
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
@@ -1345,16 +1350,15 @@ msgstr "Nome"
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
-msgstr ""
+msgstr "Reiniciar"
 
 msgctxt "field:ir.model.button,reset_by:"
 msgid "Reset by"
-msgstr ""
+msgstr "Reiniciado por"
 
-#, fuzzy
 msgctxt "field:ir.model.button,rules:"
 msgid "Rules"
-msgstr "Regra"
+msgstr "Regras"
 
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1364,138 +1368,113 @@ msgctxt "field:ir.model.button,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,button:"
 msgid "Button"
 msgstr "Botão"
 
 msgctxt "field:ir.model.button-button.reset,button_ruled:"
 msgid "Button Ruled"
-msgstr ""
+msgstr "Regra do Botão (Button Ruled)"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_date:"
 msgid "Write Date"
 msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,active:"
 msgid "Active"
 msgstr "Ativo"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,button:"
 msgid "Button"
 msgstr "Botão"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,record_id:"
 msgid "Record ID"
 msgstr "ID do registro"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,write_date:"
 msgid "Write Date"
 msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,button:"
 msgid "Button"
 msgstr "Botão"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,condition:"
 msgid "Condition"
 msgstr "Condição"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,description:"
 msgid "Description"
 msgstr "Descrição"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
-msgstr ""
+msgstr "Número do Usuário"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,write_date:"
 msgid "Write Date"
 msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Editado por"
 
 msgctxt "field:ir.model.data,create_date:"
 msgid "Create Date"
@@ -1721,17 +1700,14 @@ msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:ir.module.activate_upgrade.done,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.module.activate_upgrade.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Módulos a atualizar"
@@ -1824,140 +1800,85 @@ msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:ir.note,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Data de Criação"
 
-#, fuzzy
 msgctxt "field:ir.note,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:ir.note,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Última modificação"
 
-#, fuzzy
 msgctxt "field:ir.note,last_user:"
 msgid "Last User"
 msgstr "Último usuário"
 
-#, fuzzy
 msgctxt "field:ir.note,message:"
 msgid "Message"
 msgstr "Mensagem"
 
-#, fuzzy
 msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
 msgstr "Mensagem"
 
-#, fuzzy
 msgctxt "field:ir.note,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
 msgstr "Recurso"
 
 msgctxt "field:ir.note,unread:"
 msgid "Unread"
-msgstr ""
+msgstr "Não lida"
 
-#, fuzzy
 msgctxt "field:ir.note,write_date:"
 msgid "Write Date"
 msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:ir.note,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:ir.note.read,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:ir.note.read,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
-msgstr "Observação"
+msgstr "Nota"
 
-#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:ir.note.read,user:"
 msgid "User"
 msgstr "Usuário"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_date:"
 msgid "Write Date"
 msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
-
-msgctxt "field:ir.property,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:ir.property,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:ir.property,field:"
-msgid "Field"
-msgstr "Campo"
-
-msgctxt "field:ir.property,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.property,rec_name:"
-msgid "Name"
-msgstr "Nome"
-
-msgctxt "field:ir.property,res:"
-msgid "Resource"
-msgstr "Recurso"
-
-msgctxt "field:ir.property,value:"
-msgid "Value"
-msgstr "Avaliar"
-
-msgctxt "field:ir.property,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:ir.property,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Editado por"
 
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
@@ -2309,7 +2230,7 @@ msgstr "Criado por"
 
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
-msgstr "Aproximado (fuzzy)"
+msgstr "Vago"
 
 msgctxt "field:ir.translation,id:"
 msgid "ID"
@@ -2505,7 +2426,7 @@ msgstr "ID do registro"
 
 msgctxt "field:ir.trigger.log,trigger:"
 msgid "Trigger"
-msgstr "Trigger"
+msgstr "Gatilho"
 
 msgctxt "field:ir.trigger.log,write_date:"
 msgid "Write Date"
@@ -2859,6 +2780,10 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr "Parte do domínio que será avaliado em cada atualização"
+
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view"
 msgstr "Limit padrão para a listagem"
@@ -2897,7 +2822,7 @@ msgstr ""
 
 msgctxt "help:ir.cron,request_user:"
 msgid "The user who will receive requests in case of failure"
-msgstr "O usuário que irá receber a requisição em caso de falha."
+msgstr "O usuário que receberá a solicitação em caso de falha."
 
 msgctxt "help:ir.cron,user:"
 msgid "The user used to execute this action"
@@ -2913,9 +2838,8 @@ msgstr "Módulo no qual este modelo está definido"
 
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules"
-msgstr ""
+msgstr "Botão que reiniciará as regras"
 
-#, fuzzy
 msgctxt "help:ir.model.button.rule,condition:"
 msgid ""
 "A PYSON statement evaluated with the record represented by \"self\"\n"
@@ -3058,11 +2982,11 @@ msgstr "Acesso a modelos"
 
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr ""
+msgstr "Acesso"
 
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
-msgstr ""
+msgstr "Cliques"
 
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
@@ -3078,7 +3002,7 @@ msgstr "Acesso a campos"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr ""
+msgstr "Acesso"
 
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
@@ -3088,10 +3012,9 @@ msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Modelos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr "Realizar instalações/atualizações pendentes"
+msgstr "Realizar Ativações/Atualizações Pendentes"
 
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
@@ -3105,18 +3028,9 @@ msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
 msgstr "Módulos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
-msgstr "Observações"
-
-msgctxt "model:ir.action,name:act_property_form"
-msgid "Properties"
-msgstr "Propriedades"
-
-msgctxt "model:ir.action,name:act_property_form_default"
-msgid "Default Properties"
-msgstr "Propriedades Padrão"
+msgstr "Notas"
 
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
@@ -3146,7 +3060,10 @@ msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
 msgstr "Traduções"
 
-#, fuzzy
+msgctxt "model:ir.action,name:act_translation_report"
+msgid "Translations"
+msgstr "Traduções"
+
 msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
 msgstr "Definir traduções"
@@ -3157,7 +3074,7 @@ msgstr "Sincronizar traduções"
 
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
-msgstr "Triggers"
+msgstr "Gatilhos"
 
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
@@ -3189,7 +3106,11 @@ msgstr "Grafo"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr ""
+msgstr "Grafo do Fluxo de Trabalho (Workflow)"
+
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Traduções"
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3208,6 +3129,16 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
 msgstr "Fora de Sincronia"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "Local"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Módulos"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -3281,14 +3212,13 @@ msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
 msgstr "Inglês"
 
-#, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
 msgstr "Espanhol (Espanha)"
 
 msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
-msgstr ""
+msgstr "Espanhol (América Latina)"
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
@@ -3303,8 +3233,8 @@ msgid "Italian"
 msgstr "Italiano"
 
 msgctxt "model:ir.lang,name:lang_lo"
-msgid "ລາວ"
-msgstr ""
+msgid "Lao"
+msgstr "Lao"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3313,6 +3243,10 @@ msgstr "Lituano"
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Holandês"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "Polonês"
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
@@ -3327,8 +3261,8 @@ msgid "Slovenian"
 msgstr "Esloveno"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "中国（简体）"
-msgstr ""
+msgid "Chinese Simplified"
+msgstr "Chinês Simplificado"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3344,15 +3278,15 @@ msgstr "Botão do modelo"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
-msgstr ""
+msgstr "Reiniciar Botão do Modelo"
 
 msgctxt "model:ir.model.button.click,name:"
 msgid "Model Button Click"
-msgstr ""
+msgstr "Clique no Botão do Modelo"
 
 msgctxt "model:ir.model.button.rule,name:"
 msgid "Model Button Rule"
-msgstr ""
+msgstr "Regra do Botão do Modelo"
 
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
@@ -3374,15 +3308,13 @@ msgctxt "model:ir.module,name:"
 msgid "Module"
 msgstr "Módulo"
 
-#, fuzzy
 msgctxt "model:ir.module.activate_upgrade.done,name:"
 msgid "Module Activate Upgrade Done"
-msgstr "Atualização / Instalação do módulo terminada"
+msgstr "Ativação do Módulo Concluída"
 
-#, fuzzy
 msgctxt "model:ir.module.activate_upgrade.start,name:"
 msgid "Module Activate Upgrade Start"
-msgstr "Iniciar a Atualização / Instalação do módulo"
+msgstr "Iniciar a Atualização do Módulo"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
@@ -3392,11 +3324,9 @@ msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "Primeiro assistente de configuração do módulo"
 
-#, fuzzy
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after activating a module"
-msgstr ""
-"Assistente de configuração a ser executado após a instalação do módulo"
+msgstr "Assistente de configuração a ser executado após ativar um módulo"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
@@ -3406,18 +3336,13 @@ msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
 msgstr "Dependência do módulo"
 
-#, fuzzy
 msgctxt "model:ir.note,name:"
 msgid "Note"
-msgstr "Observação"
+msgstr "Nota"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
-msgstr ""
-
-msgctxt "model:ir.property,name:"
-msgid "Property"
-msgstr "Propriedade"
+msgstr "Nota Lida"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -3481,11 +3406,11 @@ msgstr "Atualizar tradução"
 
 msgctxt "model:ir.trigger,name:"
 msgid "Trigger"
-msgstr "Trigger"
+msgstr "Gatilhos"
 
 msgctxt "model:ir.trigger.log,name:"
 msgid "Trigger Log"
-msgstr "Registro do trigger"
+msgstr "Registro de Gatilhos"
 
 msgctxt "model:ir.ui.icon,name:"
 msgid "Icon"
@@ -3583,10 +3508,9 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Modelos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr "Realizar instalações/atualizações pendentes"
+msgstr "Realizar Ativações/Atualizações Pendentes"
 
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
@@ -3596,18 +3520,9 @@ msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Módulos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
-msgstr "Observações"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form"
-msgid "Properties"
-msgstr "Propriedades"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form_default"
-msgid "Default Properties"
-msgstr "Propriedades padrão"
+msgstr "Notas"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
@@ -3651,7 +3566,7 @@ msgstr "Sincronizar traduções"
 
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
-msgstr "Triggers"
+msgstr "Gatilhos"
 
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
@@ -3759,15 +3674,15 @@ msgstr "Direta para a esquerda"
 
 msgctxt "selection:ir.module,state:"
 msgid "Activated"
-msgstr ""
+msgstr "Ativo"
 
 msgctxt "selection:ir.module,state:"
 msgid "Not Activated"
-msgstr ""
+msgstr "Inativo"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be activated"
-msgstr ""
+msgstr "A ser ativado"
 
 msgctxt "selection:ir.module,state:"
 msgid "To be removed"
@@ -3787,15 +3702,15 @@ msgstr "Abrir"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Activated"
-msgstr ""
+msgstr "Ativo"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "Not Activated"
-msgstr ""
+msgstr "Inativo"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be activated"
-msgstr ""
+msgstr "A ser ativado"
 
 msgctxt "selection:ir.module.dependency,state:"
 msgid "To be removed"
@@ -3849,7 +3764,6 @@ msgctxt "selection:ir.translation,type:"
 msgid "Model"
 msgstr "Modelo"
 
-#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
 msgstr "Relatório"
@@ -3866,10 +3780,9 @@ msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
 msgstr "Botão do Assistente"
 
-#, fuzzy
 msgctxt "selection:ir.ui.menu,action:"
 msgid ""
-msgstr "Português (Brasil)"
+msgstr ""
 
 msgctxt "selection:ir.ui.menu,action:"
 msgid "ir.action.act_window"
@@ -3937,11 +3850,11 @@ msgstr "Hora da última modificação"
 
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
-msgstr "Ação a disparar"
+msgstr "Ação a Disparar"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr ""
+msgstr "Executar uma vez"
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
@@ -3955,17 +3868,14 @@ msgctxt "view:ir.model.data:"
 msgid "Sync"
 msgstr "Sincronizar"
 
-#, fuzzy
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
-msgstr "Os módulos foram atualizados/instalados!"
+msgstr "Os módulos foram atualizados / ativados."
 
-#, fuzzy
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
-msgstr "Esta operação pode levar alguns minutos."
+msgstr "Observação: Esta operação pode levar alguns minutos."
 
-#, fuzzy
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Your system will be upgraded."
 msgstr "Seu sistema será atualizado."
@@ -3983,11 +3893,11 @@ msgstr ""
 
 msgctxt "view:ir.module:"
 msgid "Cancel Activation"
-msgstr ""
+msgstr "Cancelar Ativação"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Deactivation"
-msgstr ""
+msgstr "Cancelar Desativação"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
@@ -3995,27 +3905,24 @@ msgstr "Cancelar atualização"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Activation"
-msgstr ""
+msgstr "Marcar para Ativação"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Deactivation (beta)"
-msgstr ""
+msgstr "Marcar para Desativação (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
 msgstr "Marcar para desinstação (beta)"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "Time"
 msgstr "Tempo"
 
-#, fuzzy
 msgctxt "view:ir.note:"
 msgid "User"
 msgstr "Usuário"
@@ -4095,17 +4002,14 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Imprimir"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
 msgid "OK"
 msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Iniciar Atualização"

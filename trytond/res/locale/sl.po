@@ -7,6 +7,30 @@ msgid "The name of the group must be unique!"
 msgstr "Naziv skupine mora biti edinstven."
 
 msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr "Geslo mora biti različno od elektronskega naslova uporabnika."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr "Geslo mora biti različno od uporabnikove prijave."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr "Geslo mora biti različno od uporabniškega imena."
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr "Geslo vsebuje preveč istih znakov."
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr "Geslo je prepovedano."
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr "Geslo je prekratko."
+
+msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
@@ -90,12 +114,10 @@ msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Skupina"
@@ -272,6 +294,10 @@ msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Gumbi"
+
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -330,7 +356,7 @@ msgstr "Aktivno"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
-msgstr ""
+msgstr "Aplikacije"
 
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
@@ -482,19 +508,16 @@ msgstr "Zapisal"
 
 msgctxt "field:res.user.application,application:"
 msgid "Application"
-msgstr ""
+msgstr "Aplikacija"
 
-#, fuzzy
 msgctxt "field:res.user.application,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:res.user.application,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:res.user.application,id:"
 msgid "ID"
 msgstr "ID"
@@ -503,7 +526,6 @@ msgctxt "field:res.user.application,key:"
 msgid "Key"
 msgstr "Ključ"
 
-#, fuzzy
 msgctxt "field:res.user.application,rec_name:"
 msgid "Name"
 msgstr "Ime"
@@ -512,17 +534,14 @@ msgctxt "field:res.user.application,state:"
 msgid "State"
 msgstr "Stanje"
 
-#, fuzzy
 msgctxt "field:res.user.application,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "field:res.user.application,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
@@ -681,7 +700,7 @@ msgstr "Uporabnik - Skupina"
 
 msgctxt "model:res.user.application,name:"
 msgid "User Application"
-msgstr ""
+msgstr "Uporabniška aplikacija"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
@@ -715,7 +734,6 @@ msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Člani"
 
-#, fuzzy
 msgctxt "view:res.user.application:"
 msgid "Cancel"
 msgstr "Prekliči"

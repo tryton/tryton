@@ -414,6 +414,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Vrednost konteksta"
 
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr "Kontekstna domena"
+
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr "Kontekstni model"
@@ -518,7 +522,6 @@ msgctxt "field:ir.action.act_window.domain,active:"
 msgid "Active"
 msgstr "Aktivno"
 
-#, fuzzy
 msgctxt "field:ir.action.act_window.domain,count:"
 msgid "Count"
 msgstr "Število"
@@ -678,6 +681,10 @@ msgstr "Ikona"
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr "Po meri"
 
 msgctxt "field:ir.action.report,keywords:"
 msgid "Keywords"
@@ -1359,7 +1366,6 @@ msgctxt "field:ir.model.button,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,button:"
 msgid "Button"
 msgstr "Gumb"
@@ -1368,17 +1374,14 @@ msgctxt "field:ir.model.button-button.reset,button_ruled:"
 msgid "Button Ruled"
 msgstr "Gumbi s pravili"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,id:"
 msgid "ID"
 msgstr "ID"
@@ -1387,37 +1390,30 @@ msgctxt "field:ir.model.button-button.reset,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,active:"
 msgid "Active"
 msgstr "Aktivno"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,button:"
 msgid "Button"
 msgstr "Gumb"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,id:"
 msgid "ID"
 msgstr "ID"
@@ -1426,47 +1422,38 @@ msgctxt "field:ir.model.button.click,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,record_id:"
 msgid "Record ID"
 msgstr "ID zapisa"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,button:"
 msgid "Button"
 msgstr "Gumb"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,condition:"
 msgid "Condition"
 msgstr "Pogoj"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,description:"
 msgid "Description"
 msgstr "Opis"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,id:"
 msgid "ID"
 msgstr "ID"
@@ -1479,12 +1466,10 @@ msgctxt "field:ir.model.button.rule,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
@@ -1713,17 +1698,14 @@ msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:ir.module.activate_upgrade.done,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.module.activate_upgrade.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "Moduli za posodobitev"
@@ -1893,42 +1875,6 @@ msgid "Write Date"
 msgstr "Zapisano"
 
 msgctxt "field:ir.note.read,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:ir.property,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:ir.property,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:ir.property,field:"
-msgid "Field"
-msgstr "Polje"
-
-msgctxt "field:ir.property,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.property,rec_name:"
-msgid "Name"
-msgstr "Ime"
-
-msgctxt "field:ir.property,res:"
-msgid "Resource"
-msgstr "Vir"
-
-msgctxt "field:ir.property,value:"
-msgid "Value"
-msgstr "Vrednost"
-
-msgctxt "field:ir.property,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:ir.property,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
@@ -2832,6 +2778,10 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr "Del domene, ki se ovrednoti ob vsaki osvežitvi"
+
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view"
 msgstr "Privzeta meja za naštevni pogled"
@@ -2912,7 +2862,7 @@ msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
-msgstr "Vpis Python regularnega izraza izloči najdene modele iz grafa."
+msgstr "Vpis Pythonskega regularnega izraza izloči najdene modele iz grafa."
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -3078,14 +3028,6 @@ msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr "Zabeležke"
 
-msgctxt "model:ir.action,name:act_property_form"
-msgid "Properties"
-msgstr "Lastnosti"
-
-msgctxt "model:ir.action,name:act_property_form_default"
-msgid "Default Properties"
-msgstr "Privzete lastnosti"
-
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
 msgstr "Pravila za zapise"
@@ -3111,6 +3053,10 @@ msgid "Export Translations"
 msgstr "Izvozi prevode"
 
 msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Prevodi"
+
+msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
 msgstr "Prevodi"
 
@@ -3158,6 +3104,10 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr "Grafa delovnega toka"
 
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Prevodi"
+
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
 msgstr "Ukrep za okna"
@@ -3175,6 +3125,16 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
 msgstr "Nesinhronizirano"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr "Lokalno"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Moduli"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -3269,8 +3229,8 @@ msgid "Italian"
 msgstr "Italijanščina"
 
 msgctxt "model:ir.lang,name:lang_lo"
-msgid "ລາວ"
-msgstr "Laoščina"
+msgid "Lao"
+msgstr "laoščina"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
@@ -3279,6 +3239,10 @@ msgstr "Litovščina"
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Holandščina"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr "poljščina"
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
@@ -3293,8 +3257,8 @@ msgid "Slovenian"
 msgstr "Slovenščina"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "中国（简体）"
-msgstr "Kitajščina"
+msgid "Chinese Simplified"
+msgstr "Poenostavljena kitajščina"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3356,10 +3320,9 @@ msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
 msgstr "Začetek konfiguracije modula"
 
-#, fuzzy
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after activating a module"
-msgstr "Nastavitveni čarovnik po namestitvi modula"
+msgstr "Nastavitveni čarovnik po aktivaciji modula"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
@@ -3376,10 +3339,6 @@ msgstr "Zabeležka"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "Prebrana zabeležka"
-
-msgctxt "model:ir.property,name:"
-msgid "Property"
-msgstr "Lastnost"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -3560,14 +3519,6 @@ msgstr "Moduli"
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
 msgstr "Zabeležke"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form"
-msgid "Properties"
-msgstr "Lastnosti"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form_default"
-msgid "Default Properties"
-msgstr "Privzete lastnosti"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
@@ -3917,7 +3868,6 @@ msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
 msgstr "Moduli nadgrajeni oziroma aktivirani."
 
-#, fuzzy
 msgctxt "view:ir.module.activate_upgrade.start:"
 msgid "Note that this operation may take a few minutes."
 msgstr "Ta operacija lahko traja nekaj minut."
@@ -4045,17 +3995,14 @@ msgctxt "wizard_button:ir.model.print_model_graph,start,print_:"
 msgid "Print"
 msgstr "Natisni"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,done,config:"
 msgid "OK"
 msgstr "V redu"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
 
-#, fuzzy
 msgctxt "wizard_button:ir.module.activate_upgrade,start,upgrade:"
 msgid "Start Upgrade"
 msgstr "Nadgradi"
@@ -4127,11 +4074,3 @@ msgstr "Posodobi"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Zapri"
-
-msgctxt "error:access_error:"
-msgid ""
-"You try to ypass an access rule.\n"
-"(Document type: %s)"
-msgstr ""
-"Poskus izogiba zaščite dostopa.\n"
-"(Vrsta dokumenta: %s)"

@@ -7,40 +7,32 @@ msgid ""
 "You try to bypass an access rule.\n"
 "(Document type: %s)"
 msgstr ""
-"You try to bypass an access rule.\n"
-"(Document type: %s)"
 
 msgctxt "error:delete_xml_record:"
 msgid "You are not allowed to delete this record."
-msgstr "You are not allowed to delete this record."
+msgstr ""
 
 msgctxt "error:digits_validation_record:"
 msgid ""
 "The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
 "exceeds its limit."
 msgstr ""
-"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
-"exceeds its limit."
 
 msgctxt "error:domain_validation_record:"
 msgid ""
 "The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
 " to its domain."
 msgstr ""
-"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
-" to its domain."
 
 msgctxt "error:foreign_model_exist:"
 msgid ""
 "Could not delete the records because they are used on field \"%(field)s\" of"
 " \"%(model)s\"."
 msgstr ""
-"Could not delete the records because they are used on field \"%(field)s\" of"
-" \"%(model)s\"."
 
 msgctxt "error:foreign_model_missing:"
 msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr ""
 
 msgctxt "error:ir.action.act_window.domain:"
 msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
@@ -251,82 +243,72 @@ msgid ""
 "You try to read records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"You try to read records that don't exist anymore.\n"
-"(Document type: %s)"
 
 msgctxt "error:recursion_error:"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr ""
-"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
-" was configured as ancestor of itself."
 
 msgctxt "error:reference_syntax_error:"
 msgid "Syntax error for reference %r in %s"
-msgstr "Syntax error for reference %r in %s"
+msgstr ""
 
 msgctxt "error:relation_not_found:"
 msgid "Relation not found: %r in %s"
-msgstr "Relation not found: %r in %s"
+msgstr ""
 
 msgctxt "error:required_field:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr ""
 
 msgctxt "error:required_validation_record:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr ""
 
 msgctxt "error:search_function_missing:"
 msgid "Missing search function on field \"%s\"."
-msgstr "Missing search function on field \"%s\"."
+msgstr ""
 
 msgctxt "error:selection_validation_record:"
 msgid ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
 "the selection."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
-"the selection."
 
 msgctxt "error:selection_value_notfound:"
 msgid "Value not in the selection for field \"%s\"."
-msgstr "Value not in the selection for field \"%s\"."
+msgstr ""
 
 msgctxt "error:size_validation_record:"
 msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
-msgstr "The size \"%(size)s\" of the field \"%(field)s\" on \"(model)%s\" is too long."
+msgstr ""
 
 msgctxt "error:time_format_validation_record:"
 msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
 msgstr ""
-"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
-"valid."
 
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
-msgstr "Too many relations found: %r in %s"
+msgstr ""
 
 msgctxt "error:write_error:"
 msgid ""
 "You try to write on records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"You try to write on records that don't exist anymore.\n"
-"(Document type: %s)"
 
 msgctxt "error:write_xml_record:"
 msgid "You are not allowed to modify this record."
-msgstr "You are not allowed to modify this record."
+msgstr ""
 
 msgctxt "error:xml_id_syntax_error:"
 msgid "Syntax error for XML id %r in %s"
-msgstr "Syntax error for XML id %r in %s"
+msgstr ""
 
 msgctxt "error:xml_record_desc:"
 msgid "This record is part of the base configuration."
-msgstr "This record is part of the base configuration."
+msgstr ""
 
 msgctxt "field:ir.action,active:"
 msgid "Active"
@@ -338,7 +320,7 @@ msgstr ""
 
 msgctxt "field:ir.action,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action,groups:"
 msgid "Groups"
@@ -379,7 +361,7 @@ msgstr ""
 
 msgctxt "field:ir.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
@@ -403,6 +385,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr ""
 
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr ""
+
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr ""
@@ -413,7 +399,7 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
@@ -500,7 +486,7 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.action.act_window.domain,act_window:"
@@ -521,7 +507,7 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.act_window.domain,domain:"
 msgid "Domain"
@@ -550,7 +536,7 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.action.act_window.view,act_window:"
@@ -567,7 +553,7 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window.view,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.act_window.view,id:"
 msgid "ID"
@@ -593,7 +579,7 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window.view,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.action.keyword,action:"
@@ -606,7 +592,7 @@ msgstr ""
 
 msgctxt "field:ir.action.keyword,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.keyword,groups:"
 msgid "Groups"
@@ -635,7 +621,7 @@ msgstr ""
 
 msgctxt "field:ir.action.keyword,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.action.report,action:"
@@ -652,7 +638,7 @@ msgstr ""
 
 msgctxt "field:ir.action.report,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
@@ -677,6 +663,10 @@ msgstr "Icons"
 
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
 msgstr ""
 
 msgctxt "field:ir.action.report,keywords:"
@@ -743,7 +733,7 @@ msgstr ""
 
 msgctxt "field:ir.action.report,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.action.url,action:"
@@ -760,7 +750,7 @@ msgstr ""
 
 msgctxt "field:ir.action.url,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.url,groups:"
 msgid "Groups"
@@ -805,7 +795,7 @@ msgstr ""
 
 msgctxt "field:ir.action.url,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.action.wizard,action:"
@@ -822,7 +812,7 @@ msgstr ""
 
 msgctxt "field:ir.action.wizard,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.action.wizard,email:"
 msgid "Email"
@@ -880,7 +870,7 @@ msgstr ""
 
 msgctxt "field:ir.action.wizard,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.attachment,create_date:"
 msgid "Create Date"
@@ -888,7 +878,7 @@ msgstr ""
 
 msgctxt "field:ir.attachment,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.attachment,data:"
@@ -949,7 +939,7 @@ msgstr ""
 
 msgctxt "field:ir.attachment,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.cache,create_date:"
 msgid "Create Date"
@@ -957,7 +947,7 @@ msgstr ""
 
 msgctxt "field:ir.cache,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.cache,id:"
 msgid "ID"
@@ -981,7 +971,7 @@ msgstr ""
 
 msgctxt "field:ir.cache,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.configuration,create_date:"
 msgid "Create Date"
@@ -989,7 +979,7 @@ msgstr ""
 
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -1010,7 +1000,7 @@ msgstr ""
 
 msgctxt "field:ir.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.cron,active:"
 msgid "Active"
@@ -1026,7 +1016,7 @@ msgstr ""
 
 msgctxt "field:ir.cron,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.cron,function:"
 msgid "Function"
@@ -1083,7 +1073,7 @@ msgstr ""
 
 msgctxt "field:ir.cron,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.date,id:"
 msgid "ID"
@@ -1095,7 +1085,7 @@ msgstr ""
 
 msgctxt "field:ir.export,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.export,export_fields:"
@@ -1124,7 +1114,7 @@ msgstr ""
 
 msgctxt "field:ir.export,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.export.line,create_date:"
 msgid "Create Date"
@@ -1132,7 +1122,7 @@ msgstr ""
 
 msgctxt "field:ir.export.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.export.line,export:"
@@ -1157,7 +1147,7 @@ msgstr ""
 
 msgctxt "field:ir.export.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.lang,active:"
 msgid "Active"
@@ -1173,7 +1163,7 @@ msgstr ""
 
 msgctxt "field:ir.lang,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.lang,date:"
@@ -1218,7 +1208,7 @@ msgstr ""
 
 msgctxt "field:ir.lang,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model,create_date:"
 msgid "Create Date"
@@ -1226,7 +1216,7 @@ msgstr ""
 
 msgctxt "field:ir.model,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.model,fields:"
@@ -1268,7 +1258,7 @@ msgstr ""
 
 msgctxt "field:ir.model,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model.access,create_date:"
 msgid "Create Date"
@@ -1276,7 +1266,7 @@ msgstr ""
 
 msgctxt "field:ir.model.access,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.access,description:"
 msgid "Description"
@@ -1321,7 +1311,7 @@ msgstr ""
 
 msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
@@ -1333,7 +1323,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
@@ -1374,7 +1364,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.model.button-button.reset,button:"
@@ -1391,7 +1381,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button-button.reset,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.button-button.reset,id:"
 msgid "ID"
@@ -1407,7 +1397,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button-button.reset,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model.button.click,active:"
 msgid "Active"
@@ -1424,7 +1414,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button.click,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.button.click,id:"
 msgid "ID"
@@ -1444,7 +1434,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button.click,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.model.button.rule,button:"
@@ -1461,7 +1451,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button.rule,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.button.rule,description:"
 msgid "Description"
@@ -1485,7 +1475,7 @@ msgstr ""
 
 msgctxt "field:ir.model.button.rule,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model.data,create_date:"
 msgid "Create Date"
@@ -1493,7 +1483,7 @@ msgstr ""
 
 msgctxt "field:ir.model.data,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
@@ -1544,7 +1534,7 @@ msgstr ""
 
 msgctxt "field:ir.model.data,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model.field,create_date:"
 msgid "Create Date"
@@ -1552,7 +1542,7 @@ msgstr ""
 
 msgctxt "field:ir.model.field,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
@@ -1602,7 +1592,7 @@ msgstr ""
 
 msgctxt "field:ir.model.field,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model.field.access,create_date:"
 msgid "Create Date"
@@ -1610,7 +1600,7 @@ msgstr ""
 
 msgctxt "field:ir.model.field.access,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.model.field.access,description:"
 msgid "Description"
@@ -1655,7 +1645,7 @@ msgstr ""
 
 msgctxt "field:ir.model.field.access,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
@@ -1679,7 +1669,7 @@ msgstr ""
 
 msgctxt "field:ir.module,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
@@ -1715,7 +1705,7 @@ msgstr ""
 
 msgctxt "field:ir.module,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.module.activate_upgrade.done,id:"
 msgid "ID"
@@ -1748,7 +1738,7 @@ msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.module.config_wizard.item,id:"
 msgid "ID"
@@ -1773,7 +1763,7 @@ msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.module.config_wizard.other,id:"
 msgid "ID"
@@ -1789,7 +1779,7 @@ msgstr ""
 
 msgctxt "field:ir.module.dependency,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.module.dependency,id:"
 msgid "ID"
@@ -1818,7 +1808,7 @@ msgstr ""
 
 msgctxt "field:ir.module.dependency,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.note,create_date:"
 msgid "Create Date"
@@ -1826,7 +1816,7 @@ msgstr ""
 
 msgctxt "field:ir.note,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.note,id:"
 msgid "ID"
@@ -1866,7 +1856,7 @@ msgstr ""
 
 msgctxt "field:ir.note,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.note.read,create_date:"
 msgid "Create Date"
@@ -1874,7 +1864,7 @@ msgstr ""
 
 msgctxt "field:ir.note.read,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.note.read,id:"
 msgid "ID"
@@ -1899,44 +1889,7 @@ msgstr ""
 
 msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
-msgstr ""
-
-msgctxt "field:ir.property,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:ir.property,create_uid:"
-msgid "Create User"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.property,field:"
-msgid "Field"
-msgstr "Fields"
-
-msgctxt "field:ir.property,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:ir.property,rec_name:"
-msgid "Name"
-msgstr ""
-
-msgctxt "field:ir.property,res:"
-msgid "Resource"
-msgstr ""
-
-msgctxt "field:ir.property,value:"
-msgid "Value"
-msgstr ""
-
-msgctxt "field:ir.property,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:ir.property,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
@@ -1944,7 +1897,7 @@ msgstr ""
 
 msgctxt "field:ir.rule,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.rule,domain:"
 msgid "Domain"
@@ -1968,7 +1921,7 @@ msgstr ""
 
 msgctxt "field:ir.rule,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.rule.group,create_date:"
 msgid "Create Date"
@@ -1976,7 +1929,7 @@ msgstr ""
 
 msgctxt "field:ir.rule.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.rule.group,default_p:"
 msgid "Default"
@@ -2037,7 +1990,7 @@ msgstr ""
 
 msgctxt "field:ir.rule.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.sequence,active:"
 msgid "Active"
@@ -2054,7 +2007,7 @@ msgstr ""
 
 msgctxt "field:ir.sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.sequence,id:"
 msgid "ID"
@@ -2115,7 +2068,7 @@ msgstr ""
 
 msgctxt "field:ir.sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.sequence.strict,active:"
 msgid "Active"
@@ -2132,7 +2085,7 @@ msgstr ""
 
 msgctxt "field:ir.sequence.strict,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.sequence.strict,id:"
 msgid "ID"
@@ -2193,7 +2146,7 @@ msgstr ""
 
 msgctxt "field:ir.sequence.strict,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.sequence.type,code:"
@@ -2206,7 +2159,7 @@ msgstr ""
 
 msgctxt "field:ir.sequence.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.sequence.type,id:"
 msgid "ID"
@@ -2227,7 +2180,7 @@ msgstr ""
 
 msgctxt "field:ir.sequence.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.session,create_date:"
 msgid "Create Date"
@@ -2235,7 +2188,7 @@ msgstr ""
 
 msgctxt "field:ir.session,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.session,id:"
 msgid "ID"
@@ -2255,7 +2208,7 @@ msgstr ""
 
 msgctxt "field:ir.session,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.session.wizard,create_date:"
 msgid "Create Date"
@@ -2263,7 +2216,7 @@ msgstr ""
 
 msgctxt "field:ir.session.wizard,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.session.wizard,data:"
@@ -2284,7 +2237,7 @@ msgstr ""
 
 msgctxt "field:ir.session.wizard,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.translation,create_date:"
 msgid "Create Date"
@@ -2292,7 +2245,7 @@ msgstr ""
 
 msgctxt "field:ir.translation,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
@@ -2355,7 +2308,7 @@ msgstr ""
 
 msgctxt "field:ir.translation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.translation.clean.start,id:"
 msgid "ID"
@@ -2426,7 +2379,7 @@ msgstr ""
 
 msgctxt "field:ir.trigger,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.trigger,id:"
 msgid "ID"
@@ -2475,7 +2428,7 @@ msgstr ""
 
 msgctxt "field:ir.trigger,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.trigger.log,create_date:"
 msgid "Create Date"
@@ -2483,7 +2436,7 @@ msgstr ""
 
 msgctxt "field:ir.trigger.log,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.trigger.log,id:"
 msgid "ID"
@@ -2508,7 +2461,7 @@ msgstr ""
 
 msgctxt "field:ir.trigger.log,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.ui.icon,create_date:"
 msgid "Create Date"
@@ -2516,7 +2469,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.icon,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.ui.icon,icon:"
@@ -2555,7 +2508,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.icon,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.ui.menu,action:"
@@ -2584,7 +2537,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.menu,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
@@ -2627,7 +2580,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.menu,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.ui.menu.favorite,create_date:"
 msgid "Create Date"
@@ -2635,7 +2588,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.menu.favorite,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.ui.menu.favorite,id:"
 msgid "ID"
@@ -2665,7 +2618,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.menu.favorite,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
@@ -2677,7 +2630,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.ui.view,data:"
@@ -2732,7 +2685,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.ui.view.show.start,id:"
 msgid "ID"
@@ -2744,7 +2697,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_search,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.ui.view_search,domain:"
 msgid "Domain"
@@ -2777,7 +2730,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_search,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
@@ -2789,7 +2742,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.ui.view_tree_state,domain:"
 msgid "Domain"
@@ -2826,7 +2779,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:ir.ui.view_tree_width,create_date:"
 msgid "Create Date"
@@ -2834,7 +2787,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 #, fuzzy
 msgctxt "field:ir.ui.view_tree_width,field:"
@@ -2868,6 +2821,10 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
 msgstr ""
 
 msgctxt "help:ir.action.act_window,limit:"
@@ -2991,90 +2948,106 @@ msgctxt "model:ir.action,name:"
 msgid "Action"
 msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr "Acciones de ventana"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
 msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
 msgstr "Reports"
 
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
-msgstr "URLs"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
 msgstr "Attachments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Config Wizard Items"
+msgstr "Elementos del asistente de configuración"
 
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
-msgstr "Scheduled Actions"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr "Exports"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "Icons"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
 msgstr "Languages"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_menu_list"
 msgid "Menu"
 msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
 msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
-msgstr "Models Access"
+msgstr "Acceso a modelos"
 
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr "Access"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
 msgstr "Buttons"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
 msgstr "Data"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr "Fields Access"
+msgstr "Permisos de acceso a campos"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr "Access"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
 msgstr "Fields"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr "Models"
@@ -3086,53 +3059,58 @@ msgstr "Perform Pending Installation/Upgrade"
 
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
-msgstr "Configure Modules"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_module_config_wizard"
 msgid "Module Configuration"
-msgstr "Module Configuration"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
 msgstr "Modules"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr "Notes"
 
-msgctxt "model:ir.action,name:act_property_form"
-msgid "Properties"
-msgstr "Properties"
-
-msgctxt "model:ir.action,name:act_property_form_default"
-msgid "Default Properties"
-msgstr "Default Properties"
-
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
-msgstr "Record Rules"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
 msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
 msgstr "Sequences Strict"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
 msgid "Sequence Types"
 msgstr "Sequence Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
 msgstr "Clean Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
 msgstr "Export Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Translations"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
 msgstr "Translations"
 
@@ -3141,45 +3119,58 @@ msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
 msgstr "Set Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
 msgstr "Synchronize Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
 msgstr "Triggers"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
 msgstr "Views"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
 msgstr "View Search"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
 msgstr "Show View"
 
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
-msgstr "Tree State"
+msgstr "Estado de árbol"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
-msgstr "View Tree Width"
+msgstr "Ancho de la vista de árbol"
 
+#, fuzzy
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
 msgstr "Graph"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
 msgstr "Graph"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr "Workflow Graph"
+msgstr "Gráfico de estados"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Translations"
 
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
@@ -3192,12 +3183,24 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
 msgstr "Out of Sync"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Modules"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -3257,27 +3260,27 @@ msgstr "Languages"
 
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
-msgstr "Bulgarian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_ca"
 msgid "Català"
-msgstr "Català"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_cs"
 msgid "Czech"
-msgstr "Czech"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
-msgstr "German"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
-msgstr "English"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
-msgstr "Spanish"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
@@ -3285,43 +3288,47 @@ msgstr ""
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
-msgstr "French"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_hu_HU"
 msgid "Hungarian"
-msgstr "Hungarian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
-msgstr "Italian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_lo"
-msgid "ລາວ"
-msgstr "ລາວ"
+msgid "Lao"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
-msgstr "Lithuanian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
-msgstr "Dutch"
+msgstr ""
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
-msgstr "Portuguese (Brazil)"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
-msgstr "Russian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
-msgstr "Slovenian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "中国（简体）"
-msgstr "中国（简体）"
+msgid "Chinese Simplified"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.model,name:"
@@ -3405,10 +3412,6 @@ msgstr "Notes"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
-msgstr ""
-
-msgctxt "model:ir.property,name:"
-msgid "Property"
 msgstr ""
 
 msgctxt "model:ir.rule,name:"
@@ -3499,90 +3502,103 @@ msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
 msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
 msgstr "Actions"
 
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr "Acciones de ventana"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
 msgstr "Reports"
 
 msgctxt "model:ir.ui.menu,name:menu_action_url"
 msgid "URLs"
-msgstr "URLs"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_action_wizard"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
-msgstr "Administration"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
 msgstr "Attachments"
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Config Wizard Items"
+msgstr "Elementos del asistente de configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
-msgstr "Scheduled Actions"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
 msgstr "Exports"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
 msgstr "Icons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Sequence Types"
 msgstr "Sequence Types"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
 msgstr "Languages"
 
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
-msgstr "Localization"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr "Menu"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
-msgstr "Models Access"
+msgstr "Acceso a modelos"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
 msgstr "Buttons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
 msgstr "Data"
 
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr "Fields Access"
+msgstr "Permisos de acceso a campos"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
 msgstr "Models"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr "Models"
@@ -3592,90 +3608,97 @@ msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "Perform Pending Installation/Upgrade"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
 msgstr "Modules"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
 msgstr "Modules"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
 msgstr "Notes"
 
-msgctxt "model:ir.ui.menu,name:menu_property_form"
-msgid "Properties"
-msgstr "Properties"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form_default"
-msgid "Default Properties"
-msgstr "Default Properties"
-
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
-msgstr "Record Rules"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
-msgstr "Scheduler"
+msgstr "Programador de tareas"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_form"
 msgid "Sequences"
 msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
 msgid "Sequences Strict"
 msgstr "Sequences Strict"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
 msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
 msgstr "Clean Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
 msgstr "Export Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
 msgstr "Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
 msgstr "Set Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
 msgstr "Synchronize Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
 msgstr "Triggers"
 
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
-msgstr "User Interface"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
 msgstr "Views"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
 msgstr "View Search"
 
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
-msgstr "Tree State"
+msgstr "Estado de árbol"
 
 msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
-msgstr "View Tree Width"
+msgstr "Ancho de la vista de árbol"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
 msgstr "Fields"

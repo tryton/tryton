@@ -395,6 +395,10 @@ msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "Стойност на котекст"
 
+msgctxt "field:ir.action.act_window,context_domain:"
+msgid "Context Domain"
+msgstr ""
+
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr ""
@@ -681,6 +685,10 @@ msgstr "Икона"
 msgctxt "field:ir.action.report,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:ir.action.report,is_custom:"
+msgid "Is Custom"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.action.report,keywords:"
@@ -1948,42 +1956,6 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
-msgctxt "field:ir.property,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:ir.property,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-msgctxt "field:ir.property,field:"
-msgid "Field"
-msgstr "Поле"
-
-msgctxt "field:ir.property,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.property,rec_name:"
-msgid "Name"
-msgstr "Име"
-
-msgctxt "field:ir.property,res:"
-msgid "Resource"
-msgstr "Ресурс"
-
-msgctxt "field:ir.property,value:"
-msgid "Value"
-msgstr "Стойност"
-
-msgctxt "field:ir.property,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:ir.property,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr "Създадено на"
@@ -2918,6 +2890,10 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "help:ir.action.act_window,context_domain:"
+msgid "Part of the domain that will be evaluated on each refresh"
+msgstr ""
+
 msgctxt "help:ir.action.act_window,limit:"
 msgid "Default limit for the list view"
 msgstr "Ограничение по подразбиране за изглед със списък"
@@ -3167,14 +3143,6 @@ msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr "Бележки"
 
-msgctxt "model:ir.action,name:act_property_form"
-msgid "Properties"
-msgstr "Свойства"
-
-msgctxt "model:ir.action,name:act_property_form_default"
-msgid "Default Properties"
-msgstr "Свойства по подразбиране"
-
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
 msgstr "Правила на запис"
@@ -3200,6 +3168,11 @@ msgid "Export Translations"
 msgstr "Извличане на преводи"
 
 msgctxt "model:ir.action,name:act_translation_form"
+msgid "Translations"
+msgstr "Преводи"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_translation_report"
 msgid "Translations"
 msgstr "Преводи"
 
@@ -3248,6 +3221,11 @@ msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_translation_report"
+msgid "Translations"
+msgstr "Преводи"
+
 msgctxt "model:ir.action.act_window,name:"
 msgid "Action act window"
 msgstr "Действие на активния прозорец"
@@ -3266,6 +3244,17 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
 msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_local"
+msgid "Local"
+msgstr ""
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_translation_form_domain_module"
+msgid "Modules"
+msgstr "Модули"
 
 msgctxt "model:ir.action.act_window.view,name:"
 msgid "Action act window view"
@@ -3363,7 +3352,7 @@ msgid "Italian"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_lo"
-msgid "ລາວ"
+msgid "Lao"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_lt"
@@ -3373,6 +3362,10 @@ msgstr ""
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
 msgstr "Холандски"
+
+msgctxt "model:ir.lang,name:lang_pl"
+msgid "Polish"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
@@ -3387,7 +3380,7 @@ msgid "Slovenian"
 msgstr ""
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
-msgid "中国（简体）"
+msgid "Chinese Simplified"
 msgstr ""
 
 msgctxt "model:ir.model,name:"
@@ -3474,10 +3467,6 @@ msgstr "Бележка"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr ""
-
-msgctxt "model:ir.property,name:"
-msgid "Property"
-msgstr "Свойство"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -3663,14 +3652,6 @@ msgstr "Модули"
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
 msgstr "Бележки"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form"
-msgid "Properties"
-msgstr "Свойства"
-
-msgctxt "model:ir.ui.menu,name:menu_property_form_default"
-msgid "Default Properties"
-msgstr "Свойства по подразбиране"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"

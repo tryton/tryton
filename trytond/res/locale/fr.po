@@ -7,6 +7,32 @@ msgid "The name of the group must be unique!"
 msgstr "Le nom du groupe doit être unique !"
 
 msgctxt "error:res.user:"
+msgid "The password can not be the same as user email."
+msgstr ""
+"Le mot de passe ne peut pas être le même que l'e-mail de l'utilisateur."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user login."
+msgstr ""
+"Le mot de passe ne peut pas être le même que le login de l'utilisateur."
+
+msgctxt "error:res.user:"
+msgid "The password can not be the same as user name."
+msgstr "Le mot de passe ne peut pas être le même que le nom de l'utilisateur."
+
+msgctxt "error:res.user:"
+msgid "The password contains too much times the same characters."
+msgstr "Le mot de passe contient trop de fois les même caractères."
+
+msgctxt "error:res.user:"
+msgid "The password is forbidden."
+msgstr "Le mot de passe est interdit."
+
+msgctxt "error:res.user:"
+msgid "The password is too short."
+msgstr "Le mot de passe est trop court."
+
+msgctxt "error:res.user:"
 msgid ""
 "Users can not be deleted for logging purpose.\n"
 "Instead you must inactivate them."
@@ -269,6 +295,10 @@ msgstr "Date de mise à jour"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
+
+msgctxt "field:res.group,buttons:"
+msgid "Buttons"
+msgstr "Boutons"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
