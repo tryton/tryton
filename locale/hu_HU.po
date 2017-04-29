@@ -7,6 +7,10 @@ msgctxt "field:carrier,percentage:"
 msgid "Percentage"
 msgstr "Százalék:"
 
+msgctxt "help:carrier,percentage:"
+msgid "The percentage applied on the amount to compute the cost."
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Percentage"
