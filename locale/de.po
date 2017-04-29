@@ -18,6 +18,43 @@ msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Nummernkreis Zahlungsgruppe"
 
+msgctxt "field:account.configuration.payment_group_sequence,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.configuration.payment_group_sequence,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.configuration.payment_group_sequence,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.configuration.payment_group_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.configuration.payment_group_sequence,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Nummernkreis Zahlungsgruppe"
+
+msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.configuration.payment_group_sequence,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.configuration.payment_group_sequence,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Lastschrifteinzug"
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Betrag"
@@ -25,6 +62,10 @@ msgstr "Betrag"
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
 msgstr "Gesperrt"
+
+msgctxt "field:account.move.line,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Lastschrifteinzug"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
@@ -214,6 +255,70 @@ msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.party,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Lastschrifteinzug"
+
+msgctxt "field:party.party,payment_direct_debits:"
+msgid "Direct Debits"
+msgstr "Lastschrifteinzüge"
+
+msgctxt "field:party.party.payment_direct_debit,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:party.party.payment_direct_debit,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:party.party.payment_direct_debit,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:party.party.payment_direct_debit,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.payment_direct_debit,party:"
+msgid "Party"
+msgstr "Partei"
+
+msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Lastschrifteinzug"
+
+msgctxt "field:party.party.payment_direct_debit,rec_name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:party.party.payment_direct_debit,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:party.party.payment_direct_debit,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
+msgctxt "help:account.invoice,payment_direct_debit:"
+msgid "Check if the invoice is paid by direct debit."
+msgstr "Aktivieren wenn die Rechnung per Lastschrift bezahlt wird."
+
+msgctxt "help:account.move.line,payment_direct_debit:"
+msgid "Check if the line will be paid by direct debit."
+msgstr "Aktivieren wenn die Rechnungsposition per Lastschrift bezahlt wird."
+
+msgctxt "help:party.party,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Aktivieren wenn der Lieferant eine Lastschrift durchführt."
+
+msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Aktivieren wenn der Lieferant eine Lastschrift durchführt."
+
+msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "Einstellungen Buchhaltung Nummernkreis Zahlungsgruppe"
+
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
 msgstr "Zahlungsposition bezahlen"
@@ -335,6 +440,10 @@ msgstr "Zahlungsjournale"
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
 msgstr "Zahlungswesen"
+
+msgctxt "model:party.party.payment_direct_debit,name:"
+msgid "Party Payment Direct Debit"
+msgstr "Partei Zahlung per Lastschrift"
 
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"

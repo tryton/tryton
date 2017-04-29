@@ -18,6 +18,43 @@ msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Secuencia de grupos de pago"
 
+msgctxt "field:account.configuration.payment_group_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.payment_group_sequence,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.configuration.payment_group_sequence,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:account.configuration.payment_group_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.configuration.payment_group_sequence,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Secuencia de grupos de pago"
+
+msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.configuration.payment_group_sequence,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.configuration.payment_group_sequence,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Domiciliación bancaria"
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Importe del pago"
@@ -25,6 +62,10 @@ msgstr "Importe del pago"
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
 msgstr "Bloqueado"
+
+msgctxt "field:account.move.line,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Domiciliación bancaria"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
@@ -214,6 +255,70 @@ msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.party,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Domiciliación bancaria"
+
+msgctxt "field:party.party,payment_direct_debits:"
+msgid "Direct Debits"
+msgstr "Domiciliaciones bancarias"
+
+msgctxt "field:party.party.payment_direct_debit,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.payment_direct_debit,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:party.party.payment_direct_debit,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:party.party.payment_direct_debit,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.payment_direct_debit,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Domiciliación bancaria"
+
+msgctxt "field:party.party.payment_direct_debit,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.party.payment_direct_debit,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:party.party.payment_direct_debit,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "help:account.invoice,payment_direct_debit:"
+msgid "Check if the invoice is paid by direct debit."
+msgstr "Marcar si la factura se paga con domiciliación bancaria."
+
+msgctxt "help:account.move.line,payment_direct_debit:"
+msgid "Check if the line will be paid by direct debit."
+msgstr "Marcar si la linea se paga con domiciliación bancaria."
+
+msgctxt "help:party.party,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Marcar si se paga al proveedor con domiciliación bancaria."
+
+msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Marcar si se paga al proveedor con domiciliación bancaria."
+
+msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "Configuración de la secuencia de grupos de pagos"
+
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
 msgstr "Pagar efecto"
@@ -335,6 +440,10 @@ msgstr "Diarios de pago"
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
 msgstr "Pagos"
+
+msgctxt "model:party.party.payment_direct_debit,name:"
+msgid "Party Payment Direct Debit"
+msgstr "Domiciliaciones bancarias de terceros"
 
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"

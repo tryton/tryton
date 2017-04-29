@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.move.line.pay:"
 msgid "The Line \"%(line)s\" is blocked."
-msgstr ""
+msgstr "A linha \"%(line)s\" está bloqueada."
 
 msgctxt "error:account.payment.process:"
 msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
@@ -18,13 +18,54 @@ msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Sequência do Grupo de Pagamento"
 
+msgctxt "field:account.configuration.payment_group_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.payment_group_sequence,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.configuration.payment_group_sequence,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:account.configuration.payment_group_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.configuration.payment_group_sequence,payment_group_sequence:"
+msgid "Payment Group Sequence"
+msgstr "Sequência do Grupo de Pagamento"
+
+msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.configuration.payment_group_sequence,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:account.configuration.payment_group_sequence,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:account.invoice,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Débito Direto"
+
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
 msgstr "Montante do Pagamento"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqueado"
+
+msgctxt "field:account.move.line,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Débito Direto"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
@@ -34,30 +75,25 @@ msgctxt "field:account.move.line,payments:"
 msgid "Payments"
 msgstr "Pagamentos"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.ask_journal,currency:"
 msgid "Currency"
 msgstr "Moeda"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
 msgstr "Diário"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
-msgstr "Diário"
+msgstr "Diários"
 
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
@@ -219,7 +255,70 @@ msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
+msgctxt "field:party.party,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Débito Direto"
+
+msgctxt "field:party.party,payment_direct_debits:"
+msgid "Direct Debits"
+msgstr "Débitos Diretos"
+
+msgctxt "field:party.party.payment_direct_debit,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.payment_direct_debit,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:party.party.payment_direct_debit,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:party.party.payment_direct_debit,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.payment_direct_debit,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Direct Debit"
+msgstr "Débito Direto"
+
+msgctxt "field:party.party.payment_direct_debit,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:party.party.payment_direct_debit,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:party.party.payment_direct_debit,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "help:account.invoice,payment_direct_debit:"
+msgid "Check if the invoice is paid by direct debit."
+msgstr "Marque se a fatura foi paga por Débito Direto."
+
+msgctxt "help:account.move.line,payment_direct_debit:"
+msgid "Check if the line will be paid by direct debit."
+msgstr "Marque se a linha será paga por Débito Direto."
+
+msgctxt "help:party.party,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Marque se o fornecedor faz débito direto."
+
+msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
+msgid "Check if supplier does direct debit."
+msgstr "Marque se fornecedor faz débito direto."
+
+msgctxt "model:account.configuration.payment_group_sequence,name:"
+msgid "Account Configuration Payment Group Sequence"
+msgstr "Configurações de Sequência de Pagamento Agrupado"
+
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
 msgstr "Linha de Pagamento"
@@ -342,18 +441,21 @@ msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
 msgstr "Pagamentos"
 
+msgctxt "model:party.party.payment_direct_debit,name:"
+msgid "Party Payment Direct Debit"
+msgstr "Pagamento da Pessoa Débito Direto"
+
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
 msgstr "Pagamento"
 
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
-msgstr ""
+msgstr "Aprovação do Pagamento"
 
-#, fuzzy
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
-msgstr "Português (Brasil)"
+msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
@@ -413,7 +515,7 @@ msgstr "Pagamento"
 
 msgctxt "view:account.move.line:"
 msgid "Block"
-msgstr ""
+msgstr "Bloquear"
 
 msgctxt "view:account.move.line:"
 msgid "Pay Lines"
@@ -421,7 +523,7 @@ msgstr "Linhas de Pagamento"
 
 msgctxt "view:account.move.line:"
 msgid "Unblock"
-msgstr ""
+msgstr "Desbloquear"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
@@ -451,12 +553,10 @@ msgctxt "view:account.payment:"
 msgid "Succeed"
 msgstr "Sucesso"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
 msgid "Pay"
 msgstr "Pagar"
