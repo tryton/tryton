@@ -2,16 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.fiscalyear:"
-msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not change invoice sequence in fiscal year \"%s\" because there are "
-"already posted invoices in this fiscal year."
-msgstr ""
-
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
@@ -136,6 +126,12 @@ msgstr ""
 
 msgctxt "error:account.invoice:"
 msgid ""
+"Missing invoice sequence for invoice \"%(invoice)s\" on fiscalyear "
+"\"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "error:account.invoice:"
+msgid ""
 "The credit account on journal \"%(journal)s\" is the same as invoice "
 "\"%(invoice)s\"'s account."
 msgstr ""
@@ -159,46 +155,76 @@ msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid ""
-"There is no invoice sequence for invoice \"%(invoice)s\" on the "
-"period/fiscal year \"%(period)s\"."
-msgstr ""
-
-msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
 msgstr ""
 
-msgctxt "error:account.period:"
-msgid "Period \"%(first)s\" and \"%(second)s\" have the same invoice sequence."
+msgctxt "field:account.fiscalyear,invoice_sequences:"
+msgid "Invoice Sequences"
 msgstr ""
 
-msgctxt "error:account.period:"
-msgid ""
-"Period \"%(period)s\" must have the same company as its fiscal year "
-"(%(fiscalyear)s)."
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
+msgid "Fiscal Year"
 msgstr ""
 
-msgctxt "error:account.period:"
-msgid ""
-"You can not change the invoice sequence in period \"%s\" because there is "
-"already an invoice posted in this period"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,id:"
+msgid "ID"
+msgstr "ID"
 
-msgctxt "field:account.fiscalyear,in_credit_note_sequence:"
+msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
 msgstr ""
 
-msgctxt "field:account.fiscalyear,in_invoice_sequence:"
+msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
 msgstr ""
 
-msgctxt "field:account.fiscalyear,out_credit_note_sequence:"
+msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
 msgstr ""
 
-msgctxt "field:account.fiscalyear,out_invoice_sequence:"
+msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
 msgstr ""
+
+msgctxt "field:account.fiscalyear.invoice_sequence,period:"
+msgid "Period"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,sequence:"
+msgid "Sequence"
+msgstr "Számkör"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.invoice_sequence,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
 
 #, fuzzy
 msgctxt "field:account.invoice,account:"
@@ -435,6 +461,10 @@ msgstr "ID"
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
+msgstr ""
+
+msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
+msgid "With Refund Allowed"
 msgstr ""
 
 #, fuzzy
@@ -1032,22 +1062,6 @@ msgctxt "field:account.invoice.tax,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
-msgctxt "field:account.period,in_credit_note_sequence:"
-msgid "Supplier Credit Note Sequence"
-msgstr ""
-
-msgctxt "field:account.period,in_invoice_sequence:"
-msgid "Supplier Invoice Sequence"
-msgstr ""
-
-msgctxt "field:account.period,out_credit_note_sequence:"
-msgid "Customer Credit Note Sequence"
-msgstr ""
-
-msgctxt "field:account.period,out_invoice_sequence:"
-msgid "Customer Invoice Sequence"
-msgstr ""
-
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
 msgstr ""
@@ -1056,12 +1070,63 @@ msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
 msgstr ""
 
+msgctxt "field:party.party,payment_terms:"
+msgid "Payment Terms"
+msgstr ""
+
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:party.party.payment_term,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás détuma"
+
+#, fuzzy
+msgctxt "field:party.party.payment_term,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva "
+
+msgctxt "field:party.party.payment_term,customer_payment_term:"
+msgid "Customer Payment Term"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.payment_term,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.party.payment_term,party:"
+msgid "Party"
+msgstr "Partner"
+
+#, fuzzy
+msgctxt "field:party.party.payment_term,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:party.party.payment_term,supplier_payment_term:"
+msgid "Supplier Payment Term"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.payment_term,write_date:"
+msgid "Write Date"
+msgstr "utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:party.party.payment_term,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
+msgstr ""
+
+msgctxt "model:account.fiscalyear.invoice_sequence,name:"
+msgid "Invoice Sequence"
 msgstr ""
 
 msgctxt "model:account.invoice,name:"
@@ -1222,6 +1287,10 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
+msgstr ""
+
+msgctxt "model:party.party.payment_term,name:"
+msgid "Party Payment Term"
 msgstr ""
 
 #, fuzzy
