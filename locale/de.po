@@ -28,7 +28,7 @@ msgstr "E-Mail"
 
 msgctxt "field:web.user,email_token:"
 msgid "E-mail Token"
-msgstr " E-Mail Token"
+msgstr "E-Mail Token"
 
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"

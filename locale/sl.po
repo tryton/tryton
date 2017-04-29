@@ -4,50 +4,44 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:web.user.session:"
 msgid "Key must be unique"
-msgstr ""
+msgstr "Ključ mora biti unikaten"
 
 msgctxt "error:web.user:"
 msgid "E-mail must be unique"
-msgstr ""
+msgstr "Elektronski naslov mora biti unikaten"
 
-#, fuzzy
 msgctxt "field:web.user,active:"
 msgid "Active"
 msgstr "Aktivno"
 
-#, fuzzy
 msgctxt "field:web.user,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:web.user,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
 msgctxt "field:web.user,email:"
 msgid "E-mail"
-msgstr ""
+msgstr "e-naslov"
 
 msgctxt "field:web.user,email_token:"
 msgid "E-mail Token"
-msgstr ""
+msgstr "Žeton e-naslova"
 
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
-msgstr ""
+msgstr "e-naslov veljaven"
 
-#, fuzzy
 msgctxt "field:web.user,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:web.user,party:"
 msgid "Party"
 msgstr "Partner"
 
-#, fuzzy
 msgctxt "field:web.user,password:"
 msgid "Password"
 msgstr "Geslo"
@@ -62,13 +56,12 @@ msgstr "Ime"
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
-msgstr ""
+msgstr "Žeton za ponastavitev gesla"
 
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
-msgstr ""
+msgstr "Zapadlost ponastavitvenga žetona"
 
-#, fuzzy
 msgctxt "field:web.user,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
@@ -117,7 +110,6 @@ msgctxt "field:web.user.session,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:web.user.session,key:"
 msgid "Key"
 msgstr "Ključ"
@@ -126,86 +118,82 @@ msgctxt "field:web.user.session,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "Uporabnik"
 
-#, fuzzy
 msgctxt "field:web.user.session,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:web.user.session,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Spletni uporabniki"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr ""
+msgstr "Ponastavitev gesla"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr ""
+msgstr "Preverjanje elektronskega naslova"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Spletni uporabniki"
 
 msgctxt "model:web.user,name:"
 msgid "Web User"
-msgstr ""
+msgstr "Spletni uporabnik"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
-msgstr ""
+msgstr "Poskus overjanja spletnega uporabnika"
 
 msgctxt "model:web.user.session,name:"
 msgid "Web User Session"
-msgstr ""
+msgstr "Seja spletnega uporabnika"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Gumb ne deluje? Prilepite sledeče v vaš brskalnik:"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
-msgstr ""
+msgstr "Če niste zahtevali tega sporočila, ga preprosto prezrite."
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Ponastavitev gesla"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
-msgstr ""
+msgstr "Prejeli smo zahtevek za ponastavitev gesla vašega računa,"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Gumb ne deluje? Prilepite sledeče v vaš brskalnik:"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr ""
+msgstr "Če ste po pomoti prejeli to sporočilo, ga preprosto prezrite."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Just one more step.."
-msgstr ""
+msgstr "Samo še en korak ..."
 
-#, fuzzy
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
-msgstr "Odobritev"
+msgstr "Preveri veljavnost"
 
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Ponastavi geslo"
 
 msgctxt "view:web.user:"
 msgid "Validate E-mail"
-msgstr ""
+msgstr "Preveri e-naslov"

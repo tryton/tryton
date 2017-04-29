@@ -132,24 +132,23 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr "Email Validation"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:web.user,name:"
 msgid "Web User"
-msgstr "Web Users"
+msgstr ""
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
@@ -167,10 +166,9 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
 msgstr ""
 
-#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr ""
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
@@ -192,10 +190,9 @@ msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr ""
 
 msgctxt "view:web.user:"
 msgid "Validate E-mail"

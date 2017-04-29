@@ -4,222 +4,196 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:web.user.session:"
 msgid "Key must be unique"
-msgstr ""
+msgstr "Chave deve ser única"
 
 msgctxt "error:web.user:"
 msgid "E-mail must be unique"
-msgstr ""
+msgstr "E-mail deve ser único"
 
-#, fuzzy
 msgctxt "field:web.user,active:"
 msgid "Active"
 msgstr "Ativo"
 
-#, fuzzy
 msgctxt "field:web.user,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:web.user,create_uid:"
 msgid "Create User"
-msgstr "Usuário de Criação"
+msgstr "Criar usuário"
 
 msgctxt "field:web.user,email:"
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 msgctxt "field:web.user,email_token:"
 msgid "E-mail Token"
-msgstr ""
+msgstr "Token do E-mail"
 
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
-msgstr ""
+msgstr "E-mail Válido"
 
-#, fuzzy
 msgctxt "field:web.user,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:web.user,party:"
 msgid "Party"
 msgstr "Pessoa"
 
-#, fuzzy
 msgctxt "field:web.user,password:"
 msgid "Password"
 msgstr "Senha"
 
-#, fuzzy
 msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
-msgstr "Hash de Senha"
+msgstr "Hash da Senha"
 
-#, fuzzy
 msgctxt "field:web.user,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
-msgstr ""
+msgstr "Redefinir Token da Senha"
 
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
-msgstr ""
+msgstr "Redefinir Validade do Token da Senha"
 
-#, fuzzy
 msgctxt "field:web.user,write_date:"
 msgid "Write Date"
-msgstr "Editado por"
+msgstr "Data de Edição"
 
-#, fuzzy
 msgctxt "field:web.user,write_uid:"
 msgid "Write User"
-msgstr "Gravado por"
+msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,create_uid:"
 msgid "Create User"
-msgstr "Usuário de Criação"
+msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
-msgstr "Login"
+msgstr "Entrar"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,write_date:"
 msgid "Write Date"
-msgstr "Editado por"
+msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,write_uid:"
 msgid "Write User"
-msgstr "Gravado por"
+msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:web.user.session,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:web.user.session,create_uid:"
 msgid "Create User"
-msgstr "Usuário de Criação"
+msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:web.user.session,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:web.user.session,key:"
 msgid "Key"
 msgstr "Chave"
 
-#, fuzzy
 msgctxt "field:web.user.session,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "Usuário"
 
-#, fuzzy
 msgctxt "field:web.user.session,write_date:"
 msgid "Write Date"
-msgstr "Editado por"
+msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:web.user.session,write_uid:"
 msgid "Write User"
-msgstr "Gravado por"
+msgstr "Editado por"
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Usuários Web"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr ""
+msgstr "Redefinir senha"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr ""
+msgstr "Validação do Email"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Usuários Web"
 
 msgctxt "model:web.user,name:"
 msgid "Web User"
-msgstr ""
+msgstr "Usuário Web"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
-msgstr ""
+msgstr "Tentativa de autenticação do usuário Web"
 
 msgctxt "model:web.user.session,name:"
 msgid "Web User Session"
-msgstr ""
+msgstr "Sessão de Usuário Web"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "O botão não está funcionando? Cole isso em seu navegador:"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
-msgstr ""
+msgstr "Se você não fez esta solicitação, você pode ignorar esse email."
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Redefinir senha"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
-msgstr ""
+msgstr "Nós recebemos uma solicitação para redefinir a senha da sua conta,"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Botão não está funcionando? Cole isso no seu navegador:"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr ""
+msgstr "Se você recebeu esse email por engano, apenas ignore-o."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Just one more step.."
-msgstr ""
+msgstr "Apenas mais um passo..."
 
-#, fuzzy
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Validar"
 
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Redefinir senha"
 
 msgctxt "view:web.user:"
 msgid "Validate E-mail"
-msgstr ""
+msgstr "Validar E-mail"
