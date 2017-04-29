@@ -8,46 +8,134 @@ msgstr "ໜີ້ \"%s\" ຮອດຂີດຈຳນວນຈຳກັດ (%s) �
 
 msgctxt "error:party.party:"
 msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr ""
+msgstr "\"%s\" ໄດ້ຮອດກຳນົດວົງເງິນຈຳກັດຕິດໜີ້ແລ້ວ (%s)"
 
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
-msgstr ""
+msgstr "ມູນຄ່າຈຳກັດລົງເງິນຕິດໜີ້ພື້ນຖານ"
 
-#, fuzzy
 msgctxt "field:account.configuration,default_credit_limit_amount_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "Default Credit Limit Amount"
+msgstr "ມູນຄ່າຈຳກັດວົງເງິນຕິດໜີ້ພື້ນຖານ"
+
+msgctxt ""
+"field:account.configuration.default_credit_limit_amount,default_credit_limit_amount_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີຂຽນ"
+
+msgctxt "field:account.configuration.default_credit_limit_amount,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ຂຽນ"
 
 msgctxt "field:account.dunning.level,credit_limit:"
 msgid "Credit Limit"
-msgstr ""
+msgstr "ວົງໜີ້ຈຳກັດ"
 
 msgctxt "field:party.party,credit_amount:"
 msgid "Credit Amount"
-msgstr ""
+msgstr "ມູນຄ່າໜີ້"
 
 msgctxt "field:party.party,credit_limit_amount:"
 msgid "Credit Limit Amount"
-msgstr ""
+msgstr "ມູນຄ່າວົງໜີ້ຈຳກັດ"
 
-#, fuzzy
+msgctxt "field:party.party,credit_limit_amounts:"
+msgid "Credit Limit Amounts"
+msgstr "ມູນຄ່າຈຳກັດວົງໜີ້"
+
 msgctxt "field:party.party,credit_limit_digits:"
 msgid "Currency Digits"
-msgstr "ໂຕເລກສະກຸນເງິນ"
+msgstr "້ລກເສດສະກຸນເງິນ"
+
+msgctxt "field:party.party.credit_limit_amount,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+msgctxt "field:party.party.credit_limit_amount,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+msgctxt "field:party.party.credit_limit_amount,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
+msgid "Credit Limit Amount"
+msgstr "ມູນຄ່າຈຳກັດວົງໜີ້"
+
+msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+msgctxt "field:party.party.credit_limit_amount,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:party.party.credit_limit_amount,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+msgctxt "field:party.party.credit_limit_amount,rec_name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:party.party.credit_limit_amount,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີຂຽນ"
+
+msgctxt "field:party.party.credit_limit_amount,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ຂຽນ"
 
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
-msgstr ""
+msgstr "ໄດ້ຮອດວົງຈຳກັດໜີ້ແລ້ວ"
+
+msgctxt "model:account.configuration.default_credit_limit_amount,name:"
+msgid "Account Configuration Default Credit Limit Amount"
+msgstr "ການກຳນົດຄ່າບັນຊີຕົ້ນມູນຄ່າຈຳກັດວົງໜີ້"
+
+msgctxt "model:party.party.credit_limit_amount,name:"
+msgid "Party Credit Limit Amount"
+msgstr "ມູນຄ່າຈຳກັດລົງເງິນຕິດໜີ້ຂອງພາກສ່ວນ"
 
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr ""
+msgstr "ບັນຊີວົງໜີ້ຈຳກັດ"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"
-msgstr ""
+msgstr "ວົງໜີ້ຈຳກັດ"
 
 msgctxt "view:party.party:"
 msgid "Credit Limit"
-msgstr ""
+msgstr "ວົງໜີ້ຈຳກັດ"
