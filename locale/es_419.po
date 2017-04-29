@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:production.routing,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:production.routing,id:"
 msgid "ID"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:production.routing,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:production.routing-production.bom,bom:"
 msgid "BOM"
@@ -64,7 +64,7 @@ msgstr ""
 
 msgctxt "field:production.routing-production.bom,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:production.routing-production.bom,id:"
 msgid "ID"
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "field:production.routing-production.bom,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:production.routing.operation,active:"
 msgid "Active"
@@ -96,7 +96,7 @@ msgstr ""
 
 msgctxt "field:production.routing.operation,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:production.routing.operation,id:"
 msgid "ID"
@@ -116,7 +116,7 @@ msgstr ""
 
 msgctxt "field:production.routing.operation,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:production.routing.step,create_date:"
 msgid "Create Date"
@@ -124,7 +124,7 @@ msgstr ""
 
 msgctxt "field:production.routing.step,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:production.routing.step,id:"
 msgid "ID"
@@ -152,7 +152,7 @@ msgstr ""
 
 msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
