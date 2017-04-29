@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice.line,stock_moves:"
 msgid "Stock Moves"
-msgstr "Movimientos de stock"
+msgstr "Movimientos de existencias"
 
 msgctxt "field:account.invoice.line-stock.move,create_date:"
 msgid "Create Date"
@@ -28,7 +28,7 @@ msgstr "Nombre"
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
-msgstr "Movimiento de stock"
+msgstr "Movimiento de existencias"
 
 msgctxt "field:account.invoice.line-stock.move,write_date:"
 msgid "Write Date"
@@ -44,7 +44,7 @@ msgstr "Líneas de factura"
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
-msgstr "Línea de factura - Movimiento de stock"
+msgstr "Línea de factura - Movimiento de existencias"
 
 msgctxt "view:account.invoice.line:"
 msgid "Stock"
