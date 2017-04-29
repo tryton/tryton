@@ -4,56 +4,48 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.split.start,count:"
 msgid "Count"
-msgstr ""
+msgstr "ນັບ"
 
-#, fuzzy
 msgctxt "field:production.split.start,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
-#, fuzzy
 msgctxt "field:production.split.start,unit_digits:"
 msgid "Unit Digits"
 msgstr "ຫົວໜ່ວຍເສດ"
 
-#, fuzzy
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
 msgstr "ຫົວໜ່ວຍ"
 
-#, fuzzy
 msgctxt "field:production.split.start,uom_category:"
 msgid "Uom Category"
 msgstr "ໝວດຫົວໜ່ວຍ"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
-msgstr ""
+msgstr "ຈຳນວນຈຳກັດຂອງການຜະລິດ"
 
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr ""
+msgstr "ແຍກການຜະລິດ"
 
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
-msgstr ""
+msgstr "ແຍກການຜະລິດ"
 
-#, fuzzy
 msgctxt "view:production:"
 msgid "Split"
 msgstr "ແຍກ"
 
-#, fuzzy
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
-#, fuzzy
 msgctxt "wizard_button:production.split,start,split:"
 msgid "Split"
 msgstr "ແຍກ"
