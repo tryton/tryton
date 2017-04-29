@@ -326,6 +326,13 @@ class One2Many(Widget):
                 return False
         return True
 
+    def _sequence(self):
+        for view in self.screen.views:
+            if view.view_type == 'tree':
+                sequence = view.attributes.get('sequence')
+                if sequence:
+                    return sequence
+
     def _sig_new(self, *args):
         if not common.MODELACCESS[self.screen.model_name]['create']:
             return
@@ -340,12 +347,7 @@ class One2Many(Widget):
     def _new_single(self):
         ctx = {}
         ctx.update(self.field.get_context(self.record))
-        sequence = None
-        for view in self.screen.views:
-            if view.view_type == 'tree':
-                sequence = view.attributes.get('sequence')
-                if sequence:
-                    break
+        sequence = self._sequence()
 
         def update_sequence():
             if sequence:
@@ -409,6 +411,10 @@ class One2Many(Widget):
                     default_value[field + '.rec_name'] = rec_name
                 record.set_default(default_value)
 
+            sequence = self._sequence()
+            if sequence:
+                self.screen.group.set_sequence(field=sequence)
+
         search_set()
 
     def _sig_edit(self, widget=None):
@@ -460,9 +466,7 @@ class One2Many(Widget):
 
         self.focus_out = False
 
-        sequence = None
-        if self.screen.current_view.view_type == 'tree':
-            sequence = self.screen.current_view.attributes.get('sequence')
+        sequence = self._sequence()
 
         def callback(result):
             self.focus_out = True
