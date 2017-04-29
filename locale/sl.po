@@ -244,7 +244,6 @@ msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
 msgstr "Naloge"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
 msgstr "Vse"
@@ -253,17 +252,14 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
 msgstr "Priprava"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
 msgstr "Zahtevek"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
 msgid "Running"
 msgstr "Tekoče"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "Čakajoče"
@@ -284,7 +280,6 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
 msgstr "Naloge"
 
-#, fuzzy
 msgctxt "model:production.work,name:"
 msgid "Production Work"
 msgstr "Naloga"
