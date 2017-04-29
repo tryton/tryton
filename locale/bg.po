@@ -136,10 +136,6 @@ msgctxt "error:account.move.line:"
 msgid "You can not modify lines of move \"%s\" because it is already posted."
 msgstr ""
 
-msgctxt "error:account.move.line:"
-msgid "wrong_second_currency_sign"
-msgstr ""
-
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not create a reconciliation where debit \"%(debit)s\" and credit "
@@ -876,15 +872,57 @@ msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
 msgstr ""
 
-msgctxt "field:account.configuration,tax_roundings:"
-msgid "Tax Roundings"
-msgstr ""
-
 msgctxt "field:account.configuration,write_date:"
 msgid "Write Date"
 msgstr "Променено на"
 
 msgctxt "field:account.configuration,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "Разнодна сметка по подразбиране"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_account,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "Приходна сметка по подразбиране"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
@@ -914,19 +952,14 @@ msgid "ID"
 msgstr "ID"
 
 #, fuzzy
-msgctxt "field:account.configuration.tax_rounding,method:"
-msgid "Method"
-msgstr "Метод"
-
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,rec_name:"
 msgid "Name"
 msgstr "Име"
 
 #, fuzzy
-msgctxt "field:account.configuration.tax_rounding,sequence:"
-msgid "Sequence"
-msgstr "Последователност"
+msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
+msgid "Method"
+msgstr "Метод"
 
 #, fuzzy
 msgctxt "field:account.configuration.tax_rounding,write_date:"
@@ -989,6 +1022,11 @@ msgstr "Създадено от"
 msgctxt "field:account.fiscalyear,end_date:"
 msgid "Ending Date"
 msgstr "Крайна дата"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear,icon:"
+msgid "Icon"
+msgstr "Икона"
 
 msgctxt "field:account.fiscalyear,id:"
 msgid "ID"
@@ -1090,14 +1128,6 @@ msgstr "Дневник"
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
 msgstr "Период"
-
-msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
-msgid "Fiscal Year to close"
-msgstr "Финансова година за затваряне"
-
-msgctxt "field:account.fiscalyear.close.start,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account,active:"
@@ -1410,6 +1440,11 @@ msgctxt "field:account.income_statement.context,start_period_cmp:"
 msgid "Start Period"
 msgstr "Начален период"
 
+#, fuzzy
+msgctxt "field:account.journal,accounts:"
+msgid "Accounts"
+msgstr "Сметки"
+
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Активен"
@@ -1466,6 +1501,11 @@ msgctxt "field:account.journal,sequence:"
 msgid "Sequence"
 msgstr "Последователност"
 
+#, fuzzy
+msgctxt "field:account.journal,sequences:"
+msgid "Sequences"
+msgstr "Последователности"
+
 msgctxt "field:account.journal,type:"
 msgid "Type"
 msgstr "Вид"
@@ -1475,6 +1515,56 @@ msgid "Write Date"
 msgstr "Променено на"
 
 msgctxt "field:account.journal,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.journal.account,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.journal.account,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.journal.account,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.journal.account,credit_account:"
+msgid "Default Credit Account"
+msgstr "Кредитна сметка по подразбиране"
+
+#, fuzzy
+msgctxt "field:account.journal.account,debit_account:"
+msgid "Default Debit Account"
+msgstr "Дебитна сметка по подразбиране"
+
+#, fuzzy
+msgctxt "field:account.journal.account,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.journal.account,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.journal.account,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "field:account.journal.account,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.journal.account,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
@@ -1534,6 +1624,51 @@ msgid "Write Date"
 msgstr "Променено на"
 
 msgctxt "field:account.journal.period,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,journal:"
+msgid "Journal"
+msgstr "Дневник"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,sequence:"
+msgid "Sequence"
+msgstr "Последователност"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
@@ -2128,6 +2263,11 @@ msgstr "Крайна дата"
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Финансова година"
+
+#, fuzzy
+msgctxt "field:account.period,icon:"
+msgid "Icon"
+msgstr "Икона"
 
 msgctxt "field:account.period,id:"
 msgid "ID"
@@ -3010,6 +3150,16 @@ msgctxt "field:party.party,account_receivable:"
 msgid "Account Receivable"
 msgstr "Приходна сметка"
 
+#, fuzzy
+msgctxt "field:party.party,accounts:"
+msgid "Accounts"
+msgstr "Сметки"
+
+#, fuzzy
+msgctxt "field:party.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
+
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
 msgstr "Правило за данък на клиент"
@@ -3033,6 +3183,66 @@ msgstr "За получаване днес"
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
 msgstr "Правило за данък на доставчик"
+
+#, fuzzy
+msgctxt "field:party.party.account,account_payable:"
+msgid "Account Payable"
+msgstr "Разходна сметка"
+
+#, fuzzy
+msgctxt "field:party.party.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "Приходна сметка"
+
+#, fuzzy
+msgctxt "field:party.party.account,company:"
+msgid "Company"
+msgstr "Фирма"
+
+#, fuzzy
+msgctxt "field:party.party.account,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:party.party.account,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:party.party.account,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "Правило за данък на клиент"
+
+#, fuzzy
+msgctxt "field:party.party.account,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.party.account,party:"
+msgid "Party"
+msgstr "Партньор"
+
+#, fuzzy
+msgctxt "field:party.party.account,rec_name:"
+msgid "Name"
+msgstr "Име"
+
+#, fuzzy
+msgctxt "field:party.party.account,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "Правило за данък на доставчик"
+
+#, fuzzy
+msgctxt "field:party.party.account,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:party.party.account,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
 
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
@@ -3111,8 +3321,16 @@ msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
 msgstr "Втората валута"
 
+msgctxt "help:account.move.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr ""
+
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')."
+msgstr ""
+
+msgctxt "help:account.move.line.template,party:"
+msgid "The name of the 'Party' keyword."
 msgstr ""
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
@@ -3124,11 +3342,11 @@ msgid "Highest date of the reconciled lines"
 msgstr ""
 
 msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today"
+msgid "Leave empty for today."
 msgstr ""
 
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')."
 msgstr ""
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
@@ -3177,6 +3395,10 @@ msgstr "Оставете празно за всички отворени фин�
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year"
 msgstr "Оствете празно за всички периоди за всички финансови години"
+
+msgctxt "help:account.tax.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr ""
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
@@ -3246,6 +3468,10 @@ msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
 msgstr "Настройване на сметка"
 
+msgctxt "model:account.configuration.default_account,name:"
+msgid "Account Configuration Default Account"
+msgstr ""
+
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
 msgstr ""
@@ -3273,10 +3499,6 @@ msgstr "Финансова година - Ред от движение"
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
 msgstr ""
-
-msgctxt "model:account.fiscalyear.close.start,name:"
-msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
 
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
@@ -3318,6 +3540,10 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Наличност"
 
+msgctxt "model:account.journal.account,name:"
+msgid "Journal Account"
+msgstr ""
+
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
 msgstr ""
@@ -3325,6 +3551,10 @@ msgstr ""
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
 msgstr "Дневник - Период"
+
+msgctxt "model:account.journal.sequence,name:"
+msgid "Journal Sequence"
+msgstr ""
 
 msgctxt "model:account.journal.type,name:"
 msgid "Journal Type"
@@ -3537,10 +3767,6 @@ msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_close_fiscalyear"
-msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
-
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
 msgstr "Отваряне на таблица с кодове на данъци"
@@ -3552,6 +3778,11 @@ msgstr "Настройване на сметка"
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "Финансови години"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_fiscalyear_form_close"
+msgid "Close Fiscal Years"
+msgstr "Затваряне на финансова година"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
@@ -3569,17 +3800,10 @@ msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_journal_period_close"
+#, fuzzy
+msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
 msgstr "Затваряне на дневници - Периоди"
-
-msgctxt "model:ir.action,name:act_journal_period_form"
-msgid "Journals - Periods"
-msgstr "Дневници - Периоди"
-
-msgctxt "model:ir.action,name:act_journal_period_reopen"
-msgid "Re-Open Journals - Periods"
-msgstr "Наново отваряне на дневници - периоди"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
@@ -3596,6 +3820,11 @@ msgstr "Видове дневници"
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "Движения по сметка"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_from_template"
+msgid "Account Move"
+msgstr "Движение по сметка"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
@@ -3639,21 +3868,14 @@ msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_period_close"
-msgid "Close Periods"
-msgstr "Затваряне на периоди"
-
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "Периоди"
 
-msgctxt "model:ir.action,name:act_period_form2"
-msgid "Periods"
-msgstr "Периоди"
-
-msgctxt "model:ir.action,name:act_period_reopen"
-msgid "Re-Open Periods"
-msgstr "Повторно отваряне на периоди"
+#, fuzzy
+msgctxt "model:ir.action,name:act_period_form_close"
+msgid "Close Periods"
+msgstr "Затваряне на периоди"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3822,9 +4044,20 @@ msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
 msgstr "Графики"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Year"
+msgid "Close Fiscal Years"
 msgstr "Затваряне на финансова година"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
+msgid "Close Journals - Periods"
+msgstr "Затваряне на дневници - Периоди"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_close_period"
+msgid "Close Periods"
+msgstr "Затваряне на периоди"
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
@@ -3866,10 +4099,6 @@ msgstr "Дневници"
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
 msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
-msgid "Close Journals - Periods"
-msgstr "Затваряне на дневници - Периоди"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
@@ -3915,10 +4144,6 @@ msgstr "Достъп до меню"
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
 msgstr "Периоди"
-
-msgctxt "model:ir.ui.menu,name:menu_period_form2"
-msgid "Close Periods"
-msgstr "Затваряне на периоди"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
@@ -3989,6 +4214,10 @@ msgstr "Обновяване на сметкпланове от шаблон"
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
 msgstr "Настройване на сметка"
+
+msgctxt "model:party.party.account,name:"
+msgid "Party Account"
+msgstr ""
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
@@ -4376,17 +4605,21 @@ msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Line"
 msgstr ""
 
-msgctxt "selection:account.configuration.tax_rounding,method:"
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Document"
 msgstr ""
 
-msgctxt "selection:account.configuration.tax_rounding,method:"
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr ""
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
 msgstr "Затваряне"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Locked"
+msgstr ""
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
@@ -4465,6 +4698,10 @@ msgstr "Управление на партньор"
 msgctxt "selection:account.period,state:"
 msgid "Close"
 msgstr "Затваряне"
+
+msgctxt "selection:account.period,state:"
+msgid "Locked"
+msgstr ""
 
 msgctxt "selection:account.period,state:"
 msgid "Open"
@@ -4590,13 +4827,15 @@ msgstr ""
 "Вече може да създадете сметкоплан за вашата фирма избирайки сметкоплан от "
 "шаблон"
 
+#, fuzzy
 msgctxt "view:account.fiscalyear:"
-msgid "Are you sure to close fiscal year?"
+msgid "Are you sure to lock the fiscal year?"
 msgstr "Сигурни ли сте че искате да затворите финансовата година?"
 
+#, fuzzy
 msgctxt "view:account.fiscalyear:"
-msgid "Close Fiscal Year"
-msgstr "Затваряне на финансова година"
+msgid "Close"
+msgstr "Затваряне"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create 3 Months Periods"
@@ -4607,12 +4846,16 @@ msgid "Create Monthly Periods"
 msgstr "Създаване на месечни периоди"
 
 msgctxt "view:account.fiscalyear:"
+msgid "Lock"
+msgstr ""
+
+msgctxt "view:account.fiscalyear:"
 msgid "Periods"
 msgstr "Периоди"
 
 msgctxt "view:account.fiscalyear:"
-msgid "Re-Open Fiscal Year"
-msgstr "Отваряне наново на финансова година"
+msgid "Re-Open"
+msgstr ""
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
@@ -4648,6 +4891,15 @@ msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
 msgstr "Дебит"
 
+#, fuzzy
+msgctxt "view:account.journal.period:"
+msgid "Close"
+msgstr "Затваряне"
+
+msgctxt "view:account.journal.period:"
+msgid "Re-Open"
+msgstr ""
+
 msgctxt "view:account.journal:"
 msgid "General Information"
 msgstr "Обща информация"
@@ -4677,6 +4929,23 @@ msgstr "Шаблон"
 msgctxt "view:account.move:"
 msgid "Post"
 msgstr "Публикуван"
+
+msgctxt "view:account.period:"
+msgid "Are you sure to lock the period?"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.period:"
+msgid "Close"
+msgstr "Затваряне"
+
+msgctxt "view:account.period:"
+msgid "Lock"
+msgstr ""
+
+msgctxt "view:account.period:"
+msgid "Re-Open"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.reconcile.show:"
@@ -4791,14 +5060,6 @@ msgstr "Добре"
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
 msgstr "Отказване"
-
-msgctxt "wizard_button:account.fiscalyear.close,start,close:"
-msgid "Close"
-msgstr "Затваряне"
-
-msgctxt "wizard_button:account.fiscalyear.close,start,end:"
-msgid "Cancel"
-msgstr "Отказ"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,cancel:"

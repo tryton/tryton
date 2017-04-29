@@ -150,11 +150,6 @@ msgctxt "error:account.move.line:"
 msgid "You can not modify lines of move \"%s\" because it is already posted."
 msgstr "Riga \"%s\" non modificabile perché riconciliata"
 
-#, fuzzy
-msgctxt "error:account.move.line:"
-msgid "wrong_second_currency_sign"
-msgstr "Il simbolo della seconda valuta non è corretto."
-
 msgctxt "error:account.move.reconciliation:"
 msgid ""
 "You can not create a reconciliation where debit \"%(debit)s\" and credit "
@@ -900,16 +895,58 @@ msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
 msgstr ""
 
-msgctxt "field:account.configuration,tax_roundings:"
-msgid "Tax Roundings"
-msgstr ""
-
 msgctxt "field:account.configuration,write_date:"
 msgid "Write Date"
 msgstr "Data di Scrittura"
 
 #, fuzzy
 msgctxt "field:account.configuration,write_uid:"
+msgid "Write User"
+msgstr "Scrivente"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,company:"
+msgid "Company"
+msgstr "Azienda"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,create_date:"
+msgid "Create Date"
+msgstr "Creazione Data"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,create_uid:"
+msgid "Create User"
+msgstr "Creazione Utente"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,default_account_payable:"
+msgid "Default Account Payable"
+msgstr "Conto di debito predefinito"
+
+#, fuzzy
+msgctxt ""
+"field:account.configuration.default_account,default_account_receivable:"
+msgid "Default Account Receivable"
+msgstr "Conto di credito predefinito"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,write_date:"
+msgid "Write Date"
+msgstr "Data di Scrittura"
+
+#, fuzzy
+msgctxt "field:account.configuration.default_account,write_uid:"
 msgid "Write User"
 msgstr "Scrivente"
 
@@ -935,17 +972,14 @@ msgctxt "field:account.configuration.tax_rounding,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.configuration.tax_rounding,method:"
-msgid "Method"
-msgstr "Metodo"
-
 msgctxt "field:account.configuration.tax_rounding,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-msgctxt "field:account.configuration.tax_rounding,sequence:"
-msgid "Sequence"
-msgstr "Sequenza"
+#, fuzzy
+msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
+msgid "Method"
+msgstr "Metodo"
 
 #, fuzzy
 msgctxt "field:account.configuration.tax_rounding,write_date:"
@@ -1009,6 +1043,11 @@ msgstr "Creazione Utente"
 msgctxt "field:account.fiscalyear,end_date:"
 msgid "Ending Date"
 msgstr "Data Fine"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear,icon:"
+msgid "Icon"
+msgstr "Icona"
 
 msgctxt "field:account.fiscalyear,id:"
 msgid "ID"
@@ -1110,14 +1149,6 @@ msgstr "Registro"
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
 msgstr "Periodo"
-
-msgctxt "field:account.fiscalyear.close.start,close_fiscalyear:"
-msgid "Fiscal Year to close"
-msgstr "Esercizio da chiudere"
-
-msgctxt "field:account.fiscalyear.close.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
@@ -1380,6 +1411,11 @@ msgctxt "field:account.income_statement.context,start_period_cmp:"
 msgid "Start Period"
 msgstr "Periodo Iniziale"
 
+#, fuzzy
+msgctxt "field:account.journal,accounts:"
+msgid "Accounts"
+msgstr "Conti"
+
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Attivo"
@@ -1438,6 +1474,11 @@ msgctxt "field:account.journal,sequence:"
 msgid "Sequence"
 msgstr "Sequenza"
 
+#, fuzzy
+msgctxt "field:account.journal,sequences:"
+msgid "Sequences"
+msgstr "Sequenze"
+
 msgctxt "field:account.journal,type:"
 msgid "Type"
 msgstr "Tipo"
@@ -1448,6 +1489,56 @@ msgid "Write Date"
 msgstr "Data di Scrittura"
 
 msgctxt "field:account.journal,write_uid:"
+msgid "Write User"
+msgstr "Scrivente"
+
+#, fuzzy
+msgctxt "field:account.journal.account,company:"
+msgid "Company"
+msgstr "Azienda"
+
+#, fuzzy
+msgctxt "field:account.journal.account,create_date:"
+msgid "Create Date"
+msgstr "Creazione Data"
+
+#, fuzzy
+msgctxt "field:account.journal.account,create_uid:"
+msgid "Create User"
+msgstr "Creazione Utente"
+
+#, fuzzy
+msgctxt "field:account.journal.account,credit_account:"
+msgid "Default Credit Account"
+msgstr "Conto AVERE predefinito"
+
+#, fuzzy
+msgctxt "field:account.journal.account,debit_account:"
+msgid "Default Debit Account"
+msgstr "Conto DARE predefinito"
+
+#, fuzzy
+msgctxt "field:account.journal.account,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.journal.account,journal:"
+msgid "Journal"
+msgstr "Registro"
+
+#, fuzzy
+msgctxt "field:account.journal.account,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:account.journal.account,write_date:"
+msgid "Write Date"
+msgstr "Data di Scrittura"
+
+#, fuzzy
+msgctxt "field:account.journal.account,write_uid:"
 msgid "Write User"
 msgstr "Scrivente"
 
@@ -1509,6 +1600,51 @@ msgstr "Data di Scrittura"
 
 #, fuzzy
 msgctxt "field:account.journal.period,write_uid:"
+msgid "Write User"
+msgstr "Scrivente"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,company:"
+msgid "Company"
+msgstr "Azienda"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,create_date:"
+msgid "Create Date"
+msgstr "Creazione Data"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,create_uid:"
+msgid "Create User"
+msgstr "Creazione Utente"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,journal:"
+msgid "Journal"
+msgstr "Registro"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,sequence:"
+msgid "Sequence"
+msgstr "Sequenza"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,write_date:"
+msgid "Write Date"
+msgstr "Data di Scrittura"
+
+#, fuzzy
+msgctxt "field:account.journal.sequence,write_uid:"
 msgid "Write User"
 msgstr "Scrivente"
 
@@ -2071,6 +2207,11 @@ msgstr "Data Fine"
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Esercizio"
+
+#, fuzzy
+msgctxt "field:account.period,icon:"
+msgid "Icon"
+msgstr "Icona"
 
 #, fuzzy
 msgctxt "field:account.period,id:"
@@ -2984,6 +3125,16 @@ msgctxt "field:party.party,account_receivable:"
 msgid "Account Receivable"
 msgstr "Conto Creditore"
 
+#, fuzzy
+msgctxt "field:party.party,accounts:"
+msgid "Accounts"
+msgstr "Conti"
+
+#, fuzzy
+msgctxt "field:party.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Posizioni Valuta"
+
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
 msgstr "Regola Imposta cliente"
@@ -3007,6 +3158,66 @@ msgstr "Scaduto alla data odierna"
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
 msgstr "Regola Imposta Fornitore"
+
+#, fuzzy
+msgctxt "field:party.party.account,account_payable:"
+msgid "Account Payable"
+msgstr "Conto Fornitore"
+
+#, fuzzy
+msgctxt "field:party.party.account,account_receivable:"
+msgid "Account Receivable"
+msgstr "Conto Creditore"
+
+#, fuzzy
+msgctxt "field:party.party.account,company:"
+msgid "Company"
+msgstr "Azienda"
+
+#, fuzzy
+msgctxt "field:party.party.account,create_date:"
+msgid "Create Date"
+msgstr "Creazione Data"
+
+#, fuzzy
+msgctxt "field:party.party.account,create_uid:"
+msgid "Create User"
+msgstr "Creazione Utente"
+
+#, fuzzy
+msgctxt "field:party.party.account,customer_tax_rule:"
+msgid "Customer Tax Rule"
+msgstr "Regola Imposta cliente"
+
+#, fuzzy
+msgctxt "field:party.party.account,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.party.account,party:"
+msgid "Party"
+msgstr "Controparti"
+
+#, fuzzy
+msgctxt "field:party.party.account,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+#, fuzzy
+msgctxt "field:party.party.account,supplier_tax_rule:"
+msgid "Supplier Tax Rule"
+msgstr "Regola Imposta Fornitore"
+
+#, fuzzy
+msgctxt "field:party.party.account,write_date:"
+msgid "Write Date"
+msgstr "Data di Scrittura"
+
+#, fuzzy
+msgctxt "field:party.party.account,write_uid:"
+msgid "Write User"
+msgstr "Scrivente"
 
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
@@ -3077,10 +3288,19 @@ msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
 msgstr ""
 
+msgctxt "help:account.move.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr ""
+
+#, fuzzy
 msgctxt "help:account.move.line.template,description:"
-msgid "Keywords values substitutions are identified by braces ('{' and '}')"
+msgid "Keywords values substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Le sostituzioni di valori di keyword sono identificate da graffe ('{'e'}')"
+
+msgctxt "help:account.move.line.template,party:"
+msgid "The name of the 'Party' keyword."
+msgstr ""
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
@@ -3090,12 +3310,14 @@ msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.move.template,date:"
-msgid "Leave empty for today"
+msgid "Leave empty for today."
 msgstr "Lasciare vuoto per oggi"
 
+#, fuzzy
 msgctxt "help:account.move.template,description:"
-msgid "Keyword values substitutions are identified by braces ('{' and '}')"
+msgid "Keyword values substitutions are identified by braces ('{' and '}')."
 msgstr ""
 "Le sostituzioni di valori di keyword sono identificate da graffe ('{'e'}')"
 
@@ -3144,6 +3366,10 @@ msgstr "Lasciare vuoto per tutto l'esercizio aperto"
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year"
 msgstr "Lasciare vuoto per tutti i periodi di tutto l'esercizio aperto"
+
+msgctxt "help:account.tax.line.template,amount:"
+msgid "A python expression that will be evaluated with the keywords."
+msgstr ""
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
@@ -3213,6 +3439,10 @@ msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
 msgstr "Configurazione Conto"
 
+msgctxt "model:account.configuration.default_account,name:"
+msgid "Account Configuration Default Account"
+msgstr ""
+
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
 msgstr ""
@@ -3240,10 +3470,6 @@ msgstr "Esercizio - movimento"
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
 msgstr "Saldo - non differito"
-
-msgctxt "model:account.fiscalyear.close.start,name:"
-msgid "Close Fiscal Year"
-msgstr "Chiusura Esercizio"
 
 #, fuzzy
 msgctxt "model:account.general_ledger.account,name:"
@@ -3289,6 +3515,10 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Magazzino"
 
+msgctxt "model:account.journal.account,name:"
+msgid "Journal Account"
+msgstr ""
+
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
 msgstr ""
@@ -3296,6 +3526,10 @@ msgstr ""
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
 msgstr "Registro - Periodo"
+
+msgctxt "model:account.journal.sequence,name:"
+msgid "Journal Sequence"
+msgstr ""
 
 msgctxt "model:account.journal.type,name:"
 msgid "Journal Type"
@@ -3504,10 +3738,6 @@ msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
 msgstr "Cancella Movimenti"
 
-msgctxt "model:ir.action,name:act_close_fiscalyear"
-msgid "Close Fiscal Year"
-msgstr "Chiusura Esercizio"
-
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
 msgstr "Apertura prospetto fiscale"
@@ -3519,6 +3749,11 @@ msgstr "Configurazione Conto"
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "Esercizi"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_fiscalyear_form_close"
+msgid "Close Fiscal Years"
+msgstr "Chiusura Esercizio"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
@@ -3538,17 +3773,10 @@ msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_journal_period_close"
+#, fuzzy
+msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
 msgstr "Chiusura Registri - Periodi"
-
-msgctxt "model:ir.action,name:act_journal_period_form"
-msgid "Journals - Periods"
-msgstr "Registri - Periodi"
-
-msgctxt "model:ir.action,name:act_journal_period_reopen"
-msgid "Re-Open Journals - Periods"
-msgstr "Riaprire Registri - Periodi"
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
@@ -3565,6 +3793,11 @@ msgstr "Tipi Registro"
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "Movimenti contabili"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_from_template"
+msgid "Account Move"
+msgstr "Movimento contabile"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
@@ -3606,21 +3839,14 @@ msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
 msgstr "Apertura Tipo"
 
-msgctxt "model:ir.action,name:act_period_close"
-msgid "Close Periods"
-msgstr "Chiusura Periodi"
-
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "Periodi"
 
-msgctxt "model:ir.action,name:act_period_form2"
-msgid "Periods"
-msgstr "Periodi"
-
-msgctxt "model:ir.action,name:act_period_reopen"
-msgid "Re-Open Periods"
-msgstr "Riaprire Periodi"
+#, fuzzy
+msgctxt "model:ir.action,name:act_period_form_close"
+msgid "Close Periods"
+msgstr "Chiusura Periodi"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
@@ -3789,9 +4015,20 @@ msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
 msgstr "Prospetti"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
-msgid "Close Fiscal Year"
+msgid "Close Fiscal Years"
 msgstr "Chiusura Esercizio"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
+msgid "Close Journals - Periods"
+msgstr "Chiusura Registri - Periodi"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_close_period"
+msgid "Close Periods"
+msgstr "Chiusura Periodi"
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
@@ -3833,10 +4070,6 @@ msgstr "Registri"
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
 msgstr ""
-
-msgctxt "model:ir.ui.menu,name:menu_journal_period_form"
-msgid "Close Journals - Periods"
-msgstr "Chiusura Registri - Periodi"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
@@ -3881,10 +4114,6 @@ msgstr "Apertura Registro"
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
 msgstr "Periodi"
-
-msgctxt "model:ir.ui.menu,name:menu_period_form2"
-msgid "Close Periods"
-msgstr "Chiusura Periodi"
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
@@ -3955,6 +4184,10 @@ msgstr "Crea Prospetto Contabile da Modello"
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
 msgstr "Configurazione Conto"
+
+msgctxt "model:party.party.account,name:"
+msgid "Party Account"
+msgstr ""
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
@@ -4352,17 +4585,21 @@ msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Line"
 msgstr ""
 
-msgctxt "selection:account.configuration.tax_rounding,method:"
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Document"
 msgstr ""
 
-msgctxt "selection:account.configuration.tax_rounding,method:"
+msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr ""
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
 msgstr "Chiusura"
+
+msgctxt "selection:account.fiscalyear,state:"
+msgid "Locked"
+msgstr ""
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
@@ -4440,6 +4677,10 @@ msgstr "Controparti"
 msgctxt "selection:account.period,state:"
 msgid "Close"
 msgstr "Chiusura"
+
+msgctxt "selection:account.period,state:"
+msgid "Locked"
+msgstr ""
 
 msgctxt "selection:account.period,state:"
 msgid "Open"
@@ -4554,13 +4795,15 @@ msgstr ""
 "E' ora possibile creare un piano dei conti per l'azienda scegliendo un "
 "modello di piano dei conti"
 
+#, fuzzy
 msgctxt "view:account.fiscalyear:"
-msgid "Are you sure to close fiscal year?"
+msgid "Are you sure to lock the fiscal year?"
 msgstr "Confermi la chiusura dell'esercizio?"
 
+#, fuzzy
 msgctxt "view:account.fiscalyear:"
-msgid "Close Fiscal Year"
-msgstr "Chiusura Esercizio"
+msgid "Close"
+msgstr "Chiusura"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Create 3 Months Periods"
@@ -4571,12 +4814,16 @@ msgid "Create Monthly Periods"
 msgstr "Creazione periodi mensili"
 
 msgctxt "view:account.fiscalyear:"
+msgid "Lock"
+msgstr ""
+
+msgctxt "view:account.fiscalyear:"
 msgid "Periods"
 msgstr "Periodi"
 
 msgctxt "view:account.fiscalyear:"
-msgid "Re-Open Fiscal Year"
-msgstr "Ri-apri Esercizio"
+msgid "Re-Open"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.fiscalyear:"
@@ -4613,6 +4860,15 @@ msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
 msgstr "DARE"
 
+#, fuzzy
+msgctxt "view:account.journal.period:"
+msgid "Close"
+msgstr "Chiusura"
+
+msgctxt "view:account.journal.period:"
+msgid "Re-Open"
+msgstr ""
+
 msgctxt "view:account.journal:"
 msgid "General Information"
 msgstr "Informazioni generali"
@@ -4640,6 +4896,23 @@ msgstr ""
 msgctxt "view:account.move:"
 msgid "Post"
 msgstr "Registra"
+
+msgctxt "view:account.period:"
+msgid "Are you sure to lock the period?"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.period:"
+msgid "Close"
+msgstr "Chiusura"
+
+msgctxt "view:account.period:"
+msgid "Lock"
+msgstr ""
+
+msgctxt "view:account.period:"
+msgid "Re-Open"
+msgstr ""
 
 msgctxt "view:account.reconcile.show:"
 msgid "Amount"
@@ -4755,15 +5028,6 @@ msgstr "OK"
 
 #, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
-msgid "Cancel"
-msgstr "Cancella"
-
-#, fuzzy
-msgctxt "wizard_button:account.fiscalyear.close,start,close:"
-msgid "Close"
-msgstr "Chiusura"
-
-msgctxt "wizard_button:account.fiscalyear.close,start,end:"
 msgid "Cancel"
 msgstr "Cancella"
 
