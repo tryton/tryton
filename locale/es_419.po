@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:dashboard.action,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:dashboard.action,id:"
 msgid "ID"
@@ -36,11 +36,12 @@ msgstr ""
 
 msgctxt "field:dashboard.action,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr "Acciones del panel de control"
+msgstr "Acción del panel de control"
 
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"

@@ -64,11 +64,11 @@ msgstr "Quadrado"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr "Empilhar no Fundo"
+msgstr "Empilhar Embaixo"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr "Esquerda da Pilha"
+msgstr "Empilhar à Esquerda"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
