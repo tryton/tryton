@@ -76,7 +76,7 @@ msgstr "Criado pelo usuário"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data de término"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -92,7 +92,7 @@ msgstr "Nome"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data de início"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
@@ -138,10 +138,6 @@ msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-msgctxt "field:ir.property,company:"
-msgid "Company"
-msgstr "Empresa"
-
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -150,9 +146,17 @@ msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:res.user,companies:"
-msgid "Current Companies"
-msgstr "Empresas Atuais"
+msgid "Companies"
+msgstr "Empresas"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
@@ -202,9 +206,77 @@ msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "Adicione filhos abaixo da empresa."
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "A principal moeda para a empresa."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Adicione empregados à empresa."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "Texto a ser exibido no rodapé dos relatórios."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "Texto a ser exibido no cabeçalho dos relatórios."
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "Adicione a empresa abaixo do pai."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Usado para computar a data de hoje."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "A empresa a qual o empregado pertence."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Quando o empregado sai da empresa."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "A pessoa que representa o empregado."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Quando o empregado entra na empresa."
+
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
 msgstr "Empresas registradas para este cron"
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Restringe a sequência usada pela empresa."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Restringe a sequência usada pela empresa."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Selecione a empresa a trabalhar para."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Selecione o empregado para fazer com que o usuário o represente."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Adicione empregados para que os usuários tenham acesso a eles."
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "Permitir acesso à empresa e seus filhos."
 
 msgctxt "model:company.company,name:"
 msgid "Company"

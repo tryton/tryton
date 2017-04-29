@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
-msgstr "Elementy podrzędne"
+msgstr "Firmy córki"
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
@@ -36,7 +36,7 @@ msgstr "ID"
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
-msgstr "Element nadrzędny"
+msgstr "Firma nadrzędna"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
@@ -138,10 +138,6 @@ msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
-msgctxt "field:ir.property,company:"
-msgid "Company"
-msgstr "Firma"
-
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
 msgstr "Firma"
@@ -150,9 +146,17 @@ msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr "Firma"
 
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Firma"
+
 msgctxt "field:res.user,companies:"
-msgid "Current Companies"
-msgstr "Aktualne firmy"
+msgid "Companies"
+msgstr "Firmy"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
@@ -202,9 +206,77 @@ msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "Dodaj firmy zależne od firmy matki."
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "Podstawowa waluta firmy."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Dodaj pracowników do firmy."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "Tekst w stopkach raportów."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "Tekst w nagłówkach raportów."
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "Wybierz firmę nadrzędną."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Służy do wznaczenia lokalnej daty."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "Firma, do której należą pracownicy."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Data rozstania się pracownika z firmą."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "Strona reprezentująca pracownika."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Data przyjęcia pracownika do firmy."
+
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
 msgstr "Firmy zarejestrowane dla crona"
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Ograniczenie użycia sekwencji do firmy."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Ograniczenie użycia sekwencji do firmy."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Firma, w której użytkownik pracuje."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Wybór pracownika reprezentującego użytkownika."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Pracownicy, do których użytkownik ma dostęp."
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "Przyznanie dostępu do firmy i jej córek."
 
 msgctxt "model:company.company,name:"
 msgid "Company"
@@ -228,7 +300,7 @@ msgstr "Firmy"
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Firmy"
+msgstr "Struktura firm"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
@@ -248,7 +320,7 @@ msgstr "Firmy"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Firmy"
+msgstr "Struktura firm"
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"

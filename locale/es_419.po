@@ -18,10 +18,9 @@ msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Employees"
+msgstr ""
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
@@ -103,10 +102,9 @@ msgctxt "field:company.employee,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Companies"
+msgstr ""
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
@@ -122,7 +120,7 @@ msgstr ""
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr ""
+msgstr "Programador de tareas"
 
 msgctxt "field:ir.cron-company.company,id:"
 msgid "ID"
@@ -140,10 +138,6 @@ msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
 msgstr ""
 
-msgctxt "field:ir.property,company:"
-msgid "Company"
-msgstr ""
-
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
 msgstr ""
@@ -152,8 +146,16 @@ msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr ""
 
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr ""
+
 msgctxt "field:res.user,companies:"
-msgid "Current Companies"
+msgid "Companies"
 msgstr ""
 
 msgctxt "field:res.user,company:"
@@ -164,10 +166,9 @@ msgctxt "field:res.user,employee:"
 msgid "Current Employee"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Employees"
+msgstr ""
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
@@ -181,10 +182,9 @@ msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
-msgstr "Employees"
+msgstr ""
 
 msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
@@ -206,8 +206,76 @@ msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr ""
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr ""
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr ""
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr ""
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr ""
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr ""
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr ""
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr ""
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr ""
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr ""
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr ""
+
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
+msgstr ""
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr ""
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr ""
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr ""
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
 msgstr ""
 
 msgctxt "model:company.company,name:"
@@ -218,30 +286,29 @@ msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:company.employee,name:"
 msgid "Employee"
-msgstr "Employees"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configure Company"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Companies"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Letter"
+msgstr ""
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
@@ -249,15 +316,15 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Companies"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"

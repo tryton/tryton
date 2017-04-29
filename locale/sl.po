@@ -74,10 +74,9 @@ msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr "Konec amortizacije"
+msgstr "Zapustil"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -139,10 +138,6 @@ msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-msgctxt "field:ir.property,company:"
-msgid "Company"
-msgstr "Družba"
-
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
 msgstr "Družba"
@@ -151,9 +146,17 @@ msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr "Družba"
 
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Družba"
+
 msgctxt "field:res.user,companies:"
-msgid "Current Companies"
-msgstr "Trenutne družbe"
+msgid "Companies"
+msgstr "Družbe"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
@@ -169,7 +172,7 @@ msgstr "Zaposlenci"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr "Glavno družba"
+msgstr "Glavna družba"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
@@ -203,9 +206,77 @@ msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "Dodajanje hčerinskih družb."
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "Glavna valuta družbe."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Dodaj družbi zaposlence."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "Besedilo za prikaz v nogi poročil."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "Besedilo za prikaz v glavi poročil."
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "Dodajanje družbe matični družbi."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Se uporablja za izračun današnjega datuma."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "Družba, ki ji pripada zaposlenec."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Datum, ko zaposlenec zapusti družbo."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "Partner, ki predstavlja zaposlenca."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Datum, ko zaposlenec vstopi v družbo."
+
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
 msgstr "Družbe, registrirana na ta razporejevalnik"
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Omeji uporabo šifranta na družbo."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Omeji uporabo šifranta na družbo."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Izberite družbo za delo."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Poveži uporabniško ime z zaposlencem."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Dodeli dostop preko uporabniškega imena izbranim zaposlencem."
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "Odobrite dostop do družbe in hčerinskih podjetij."
 
 msgctxt "model:company.company,name:"
 msgid "Company"

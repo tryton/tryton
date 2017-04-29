@@ -138,10 +138,6 @@ msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
-msgctxt "field:ir.property,company:"
-msgid "Company"
-msgstr "Társaság"
-
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
 msgstr "Társaság"
@@ -150,9 +146,20 @@ msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr "Társaság"
 
+#, fuzzy
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Társaság"
+
+#, fuzzy
 msgctxt "field:res.user,companies:"
-msgid "Current Companies"
-msgstr "Aktuális társaság"
+msgid "Companies"
+msgstr "Társaságok"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
@@ -202,9 +209,77 @@ msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr ""
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr ""
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr ""
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr ""
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr ""
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr ""
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr ""
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr ""
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr ""
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr ""
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr ""
+
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
 msgstr "Társaság, mely részére készül a megbízás"
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr ""
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr ""
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr ""
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr ""
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr ""
 
 msgctxt "model:company.company,name:"
 msgid "Company"

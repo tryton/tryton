@@ -138,10 +138,6 @@ msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
-msgctxt "field:ir.property,company:"
-msgid "Company"
-msgstr "Empresa"
-
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -150,9 +146,17 @@ msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:party.configuration.party_lang,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:party.party.lang,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:res.user,companies:"
-msgid "Current Companies"
-msgstr "Empreses actuals"
+msgid "Companies"
+msgstr "Empreses"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
@@ -202,9 +206,77 @@ msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:company.company,childs:"
+msgid "Add children below the company."
+msgstr "Afegeix fills davall de l'empresa."
+
+msgctxt "help:company.company,currency:"
+msgid "The main currency for the company."
+msgstr "La moneda principal de l'empresa."
+
+msgctxt "help:company.company,employees:"
+msgid "Add employees to the company."
+msgstr "Afegiu empleats a l'empresa."
+
+msgctxt "help:company.company,footer:"
+msgid "The text to display on report footers."
+msgstr "El text a mostrar als peus dels informes."
+
+msgctxt "help:company.company,header:"
+msgid "The text to display on report headers."
+msgstr "El text a mostrar a les capcel·leres dels informes."
+
+msgctxt "help:company.company,parent:"
+msgid "Add the company below the parent."
+msgstr "Afegeix l'empresa davall del pare."
+
+msgctxt "help:company.company,timezone:"
+msgid "Used to compute the today date."
+msgstr "Utilitzat per calcular la data d'avui."
+
+msgctxt "help:company.employee,company:"
+msgid "The company to which the employee belongs."
+msgstr "L'empresa a la que pertany l'empleat."
+
+msgctxt "help:company.employee,end_date:"
+msgid "When the employee leaves the company."
+msgstr "Quan l'empleat marxa de l'empresa."
+
+msgctxt "help:company.employee,party:"
+msgid "The party which represents the employee."
+msgstr "El tercer que representa l'empleat."
+
+msgctxt "help:company.employee,start_date:"
+msgid "When the employee joins the company."
+msgstr "Quan l'empleat entra a l'empresa."
+
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
 msgstr "Empreses registrades en aquest planificador."
+
+msgctxt "help:ir.sequence,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Restringeix l'ús de la seqüencia a l'empresa."
+
+msgctxt "help:ir.sequence.strict,company:"
+msgid "Restrict the sequence usage to the company."
+msgstr "Restringeix l'ús de la seqüencia a l'empresa."
+
+msgctxt "help:res.user,company:"
+msgid "Select the company to work for."
+msgstr "Seleccioneu l'empresa en la que voleu treballar."
+
+msgctxt "help:res.user,employee:"
+msgid "Select the employee to make the user behave as such."
+msgstr "Seleccioneu l'empleat com al que es comportarà l'usuari."
+
+msgctxt "help:res.user,employees:"
+msgid "Add employees to grant the user access to them."
+msgstr "Afegeix empleats als que podrà accedir l'usuari."
+
+msgctxt "help:res.user,main_company:"
+msgid "Grant access to the company and its children."
+msgstr "Permet accedir a l'empresa i a totes les seves filles."
 
 msgctxt "model:company.company,name:"
 msgid "Company"
