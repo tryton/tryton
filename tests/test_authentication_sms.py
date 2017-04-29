@@ -35,6 +35,14 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         self.addCleanup(config.remove_section, 'authentication_sms')
         del sms_queue[:]
 
+        length = config.get('password', 'length')
+        config.set('password', 'length', 4)
+        self.addCleanup(config.set, 'password', 'length', length)
+
+        entropy = config.get('password', 'entropy')
+        config.set('password', 'entropy', 0.8)
+        self.addCleanup(config.set, 'password', 'entropy', entropy)
+
     @with_transaction()
     def test_sms_code_default_code(self):
         pool = Pool()
@@ -98,7 +106,7 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         SMSCode = pool.get('res.user.login.sms_code')
 
         user = User(
-            name='sms', login='sms', password='sms', mobile='+123456789')
+            name='sms', login='sms', password='secret', mobile='+123456789')
         user.save()
 
         with self.assertRaises(LoginException) as cm:
@@ -108,7 +116,7 @@ class AuthenticationSMSTestCase(ModuleTestCase):
 
         with self.assertRaises(LoginException) as cm:
             User.get_login('sms', {
-                    'password': 'sms',
+                    'password': 'secret',
                     })
         self.assertEqual(cm.exception.name, 'sms_code')
         self.assertEqual(cm.exception.type, 'char')
@@ -117,7 +125,7 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         sms_code = record.code
 
         user_id = User.get_login('sms', {
-                'password': 'sms',
+                'password': 'secret',
                 'sms_code': sms_code,
                 })
         self.assertEqual(user_id, user.id)
