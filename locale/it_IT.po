@@ -145,29 +145,49 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Zip"
 
-#, fuzzy
 msgctxt "help:country.country,code3:"
-msgid ""
-"The ISO country code in three chars.\n"
-"You can use this field for quick search."
-msgstr "Il codice Nazione in due caratteri"
+msgid "The 3 chars ISO country code."
+msgstr ""
 
 msgctxt "help:country.country,code:"
-msgid ""
-"The ISO country code in two chars.\n"
-"You can use this field for quick search."
-msgstr "Il codice Nazione in due caratteri"
+msgid "The 2 chars ISO country code."
+msgstr ""
 
-#, fuzzy
 msgctxt "help:country.country,code_numeric:"
-msgid ""
-"The ISO numeric country code.\n"
-"You can use this field for quick search."
-msgstr "Il codice Nazione in due caratteri"
+msgid "The ISO numeric country code."
+msgstr ""
 
 msgctxt "help:country.country,name:"
-msgid "The full name of the country."
-msgstr "Il nome completo del Paese"
+msgid "The main identifier of the country."
+msgstr ""
+
+msgctxt "help:country.subdivision,code:"
+msgid "The ISO code of the subdivision."
+msgstr ""
+
+msgctxt "help:country.subdivision,country:"
+msgid "The country where this subdivision is."
+msgstr ""
+
+msgctxt "help:country.subdivision,name:"
+msgid "The main identifier of the subdivision."
+msgstr ""
+
+msgctxt "help:country.subdivision,parent:"
+msgid "Add subdivision below the parent."
+msgstr ""
+
+msgctxt "help:country.zip,city:"
+msgid "The name of the city for the zip."
+msgstr ""
+
+msgctxt "help:country.zip,country:"
+msgid "The country where the zip is."
+msgstr ""
+
+msgctxt "help:country.zip,subdivision:"
+msgid "The subdivision where the zip is."
+msgstr ""
 
 msgctxt "model:country.country,name:"
 msgid "Country"
@@ -378,8 +398,8 @@ msgid "Cuba"
 msgstr "Cuba"
 
 msgctxt "model:country.country,name:cv"
-msgid "Cape Verde"
-msgstr "Capo Verde"
+msgid "Cabo Verde"
+msgstr "Cabo Verde"
 
 msgctxt "model:country.country,name:cw"
 msgid "Curaçao"
@@ -5727,8 +5747,8 @@ msgid "Badajoz"
 msgstr "Badajoz"
 
 msgctxt "model:country.subdivision,name:es-bi"
-msgid "Vizcayaa / Bizkaia"
-msgstr "Vizcayaa / Bizkaia"
+msgid "Bizkaia"
+msgstr "Bizkaia"
 
 msgctxt "model:country.subdivision,name:es-bu"
 msgid "Burgos"
@@ -5923,8 +5943,8 @@ msgid "Soria"
 msgstr "Soria"
 
 msgctxt "model:country.subdivision,name:es-ss"
-msgid "Guipúzcoa / Gipuzkoa"
-msgstr "Guipúzcoa / Gipuzkoa"
+msgid "Gipuzkoa"
+msgstr "Gipuzkoa"
 
 msgctxt "model:country.subdivision,name:es-t"
 msgid "Tarragona"
@@ -5951,8 +5971,8 @@ msgid "Valladolid"
 msgstr "Valladolid"
 
 msgctxt "model:country.subdivision,name:es-vc"
-msgid "Valenciana, Comunidad / Valenciana, Comunitat "
-msgstr "Comunità Valenciana"
+msgid "Valenciana, Comunidad / Valenciana, Comunitat"
+msgstr "Valenciana, Comunidad / Valenciana, Comunitat"
 
 msgctxt "model:country.subdivision,name:es-vi"
 msgid "Álava"
@@ -10775,12 +10795,12 @@ msgid "Xékong"
 msgstr "Xekong"
 
 msgctxt "model:country.subdivision,name:la-xi"
-msgid "Xiangkhoang"
-msgstr "Xiangkhoang"
+msgid "Xiangkhouang"
+msgstr "Xiangkhouang"
 
-msgctxt "model:country.subdivision,name:la-xn"
-msgid "Xiasômboun"
-msgstr "Xiasomboun"
+msgctxt "model:country.subdivision,name:la-xs"
+msgid "Xaisômboun"
+msgstr "Xaisômboun"
 
 msgctxt "model:country.subdivision,name:lb-ak"
 msgid "Aakkâr"
@@ -15039,8 +15059,8 @@ msgid "North Cotabato"
 msgstr "Cotabato Nord"
 
 msgctxt "model:country.subdivision,name:ph-nec"
-msgid "Negroe Occidental"
-msgstr "Negroe occidentale"
+msgid "Negros Occidental"
+msgstr "Negros Occidental"
 
 msgctxt "model:country.subdivision,name:ph-ner"
 msgid "Negros Oriental"
@@ -20983,6 +21003,34 @@ msgstr ""
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"
 msgstr ""
+
+msgctxt "model:country.country,name:cv"
+msgid "Cape Verde"
+msgstr "Capo Verde"
+
+msgctxt "model:country.subdivision,name:es-bi"
+msgid "Vizcayaa / Bizkaia"
+msgstr "Vizcayaa / Bizkaia"
+
+msgctxt "model:country.subdivision,name:es-ss"
+msgid "Guipúzcoa / Gipuzkoa"
+msgstr "Guipúzcoa / Gipuzkoa"
+
+msgctxt "model:country.subdivision,name:es-vc"
+msgid "Valenciana, Comunidad / Valenciana, Comunitat "
+msgstr "Comunità Valenciana"
+
+msgctxt "model:country.subdivision,name:la-xi"
+msgid "Xiangkhoang"
+msgstr "Xiangkhoang"
+
+msgctxt "model:country.subdivision,name:la-xn"
+msgid "Xiasômboun"
+msgstr "Xiasomboun"
+
+msgctxt "model:country.subdivision,name:ph-nec"
+msgid "Negroe Occidental"
+msgstr "Negroe occidentale"
 
 msgctxt "view:country.country:"
 msgid "Countries"

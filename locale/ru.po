@@ -141,35 +141,49 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Индекс"
 
-#, fuzzy
 msgctxt "help:country.country,code3:"
-msgid ""
-"The ISO country code in three chars.\n"
-"You can use this field for quick search."
+msgid "The 3 chars ISO country code."
 msgstr ""
-"ISO-код страны из двух симовлов.\n"
-"Вы можете использовать это поле для быстрого поиска."
 
 msgctxt "help:country.country,code:"
-msgid ""
-"The ISO country code in two chars.\n"
-"You can use this field for quick search."
+msgid "The 2 chars ISO country code."
 msgstr ""
-"ISO-код страны из двух симовлов.\n"
-"Вы можете использовать это поле для быстрого поиска."
 
-#, fuzzy
 msgctxt "help:country.country,code_numeric:"
-msgid ""
-"The ISO numeric country code.\n"
-"You can use this field for quick search."
+msgid "The ISO numeric country code."
 msgstr ""
-"ISO-код страны из двух симовлов.\n"
-"Вы можете использовать это поле для быстрого поиска."
 
 msgctxt "help:country.country,name:"
-msgid "The full name of the country."
-msgstr "Полное название страны."
+msgid "The main identifier of the country."
+msgstr ""
+
+msgctxt "help:country.subdivision,code:"
+msgid "The ISO code of the subdivision."
+msgstr ""
+
+msgctxt "help:country.subdivision,country:"
+msgid "The country where this subdivision is."
+msgstr ""
+
+msgctxt "help:country.subdivision,name:"
+msgid "The main identifier of the subdivision."
+msgstr ""
+
+msgctxt "help:country.subdivision,parent:"
+msgid "Add subdivision below the parent."
+msgstr ""
+
+msgctxt "help:country.zip,city:"
+msgid "The name of the city for the zip."
+msgstr ""
+
+msgctxt "help:country.zip,country:"
+msgid "The country where the zip is."
+msgstr ""
+
+msgctxt "help:country.zip,subdivision:"
+msgid "The subdivision where the zip is."
+msgstr ""
 
 msgctxt "model:country.country,name:"
 msgid "Country"
@@ -380,8 +394,8 @@ msgid "Cuba"
 msgstr "Куба"
 
 msgctxt "model:country.country,name:cv"
-msgid "Cape Verde"
-msgstr "Кабо-Верде"
+msgid "Cabo Verde"
+msgstr "Cabo Verde"
 
 msgctxt "model:country.country,name:cw"
 msgid "Curaçao"
@@ -433,7 +447,7 @@ msgstr "Эстония"
 
 msgctxt "model:country.country,name:eg"
 msgid "Egypt"
-msgstr "Египт"
+msgstr "Египет"
 
 msgctxt "model:country.country,name:eh"
 msgid "Western Sahara"
@@ -4204,9 +4218,10 @@ msgctxt "model:country.subdivision,name:co-atl"
 msgid "Atlántico"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:co-bol"
 msgid "Bolívar"
-msgstr ""
+msgstr "Bolívar"
 
 msgctxt "model:country.subdivision,name:co-boy"
 msgid "Boyacá"
@@ -5420,9 +5435,10 @@ msgctxt "model:country.subdivision,name:ec-a"
 msgid "Azuay"
 msgstr "Аруба"
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ec-b"
 msgid "Bolívar"
-msgstr ""
+msgstr "Bolívar"
 
 msgctxt "model:country.subdivision,name:ec-c"
 msgid "Carchi"
@@ -5745,7 +5761,7 @@ msgid "Badajoz"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:es-bi"
-msgid "Vizcayaa / Bizkaia"
+msgid "Bizkaia"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:es-bu"
@@ -5942,7 +5958,7 @@ msgid "Soria"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:es-ss"
-msgid "Guipúzcoa / Gipuzkoa"
+msgid "Gipuzkoa"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:es-t"
@@ -5970,7 +5986,7 @@ msgid "Valladolid"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:es-vc"
-msgid "Valenciana, Comunidad / Valenciana, Comunitat "
+msgid "Valenciana, Comunidad / Valenciana, Comunitat"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:es-vi"
@@ -10807,11 +10823,11 @@ msgid "Xékong"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:la-xi"
-msgid "Xiangkhoang"
+msgid "Xiangkhouang"
 msgstr ""
 
-msgctxt "model:country.subdivision,name:la-xn"
-msgid "Xiasômboun"
+msgctxt "model:country.subdivision,name:la-xs"
+msgid "Xaisômboun"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:lb-ak"
@@ -15094,7 +15110,7 @@ msgid "North Cotabato"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:ph-nec"
-msgid "Negroe Occidental"
+msgid "Negros Occidental"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:ph-ner"
@@ -20040,9 +20056,10 @@ msgctxt "model:country.subdivision,name:ve-e"
 msgid "Barinas"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ve-f"
 msgid "Bolívar"
-msgstr ""
+msgstr "Bolívar"
 
 msgctxt "model:country.subdivision,name:ve-g"
 msgid "Carabobo"
@@ -21058,6 +21075,10 @@ msgstr ""
 msgctxt "selection:country.subdivision,type:"
 msgid "zone"
 msgstr ""
+
+msgctxt "model:country.country,name:cv"
+msgid "Cape Verde"
+msgstr "Кабо-Верде"
 
 msgctxt "view:country.country:"
 msgid "Countries"
