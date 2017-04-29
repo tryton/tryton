@@ -42,9 +42,10 @@ msgctxt "field:project.work,invoiced_duration:"
 msgid "Invoiced Duration"
 msgstr "Duración facturada"
 
+#, fuzzy
 msgctxt "field:project.work,invoiced_progress:"
 msgid "Invoiced Progress"
-msgstr ""
+msgstr "Progreso facturado de trabajo"
 
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
