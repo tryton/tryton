@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:carrier,id:"
 msgid "ID"
@@ -36,11 +36,11 @@ msgstr ""
 
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
@@ -80,7 +80,7 @@ msgstr ""
 
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"

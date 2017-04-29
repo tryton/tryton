@@ -38,32 +38,26 @@ msgctxt "field:carrier,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
-#, fuzzy
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
 msgstr "Aktivno"
 
-#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
 msgstr "Špediter"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
 msgstr "Iz države"
 
-#, fuzzy
 msgctxt "field:carrier.selection,id:"
 msgid "ID"
 msgstr "ID"
@@ -76,17 +70,14 @@ msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
 msgstr "Zap.št."
 
-#, fuzzy
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
 msgstr "V državo"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
@@ -101,7 +92,7 @@ msgstr "Špediter"
 
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Izbira špediterja"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
@@ -109,7 +100,7 @@ msgstr "Špediterji"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Izbira špediterja"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -121,7 +112,7 @@ msgstr "Špediterji"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Izbira špediterja"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
@@ -133,7 +124,7 @@ msgstr "Cena izdelka"
 
 msgctxt "view:carrier.selection:"
 msgid "Criteria"
-msgstr ""
+msgstr "Kriterij"
 
 msgctxt "view:carrier:"
 msgid "Carrier"

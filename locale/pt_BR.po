@@ -38,60 +38,49 @@ msgctxt "field:carrier,write_uid:"
 msgid "Write User"
 msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
 msgstr "Ativo"
 
-#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
 msgstr "Transportadora"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
-msgstr "Usuário de Criação"
+msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
 msgstr "País de Origem"
 
-#, fuzzy
 msgctxt "field:carrier.selection,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
 msgstr "Sequência"
 
-#, fuzzy
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
 msgstr "País de Destino"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
-msgstr "Editado por"
+msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
-msgstr "Gravado por"
+msgstr "Editado por"
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
@@ -103,7 +92,7 @@ msgstr "Transportadora"
 
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
-msgstr ""
+msgstr "Seleção de Transportadora"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
@@ -111,7 +100,7 @@ msgstr "Transportadoras"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr ""
+msgstr " Seleção de Transportadora"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
@@ -123,7 +112,7 @@ msgstr "Transportadoras"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr ""
+msgstr " Seleção de Transportadora"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
@@ -135,7 +124,7 @@ msgstr "Preço do produto"
 
 msgctxt "view:carrier.selection:"
 msgid "Criteria"
-msgstr ""
+msgstr "Critério"
 
 msgctxt "view:carrier:"
 msgid "Carrier"
