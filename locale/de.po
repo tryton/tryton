@@ -50,6 +50,10 @@ msgctxt "field:product.price_list,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Kategorie"
+
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -98,6 +102,30 @@ msgctxt "field:product.price_list.line,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+"Die Preisliste dem Unternehmen zuordnen.\n"
+"Dies definiert die Währung der Preisliste."
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr "Preisformeln für verschiedene Kriterien hinzufügen."
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "Die Hauptbezeichnung der Preisliste."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "Aktivieren wenn das Ergebnis der Formel die Steuern beinhaltet."
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr "Nur auf Varianten dieser Kategorie anwenden."
+
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -105,6 +133,18 @@ msgid ""
 msgstr ""
 "Ein Pythonausdruck, der ausgewertet wird mit:\n"
 "unit_price: originaler unit_price (Preis pro Einheit)"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr "Die Preisliste zu der die Position zugeordnet ist."
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "Nur auf diese Variante anwenden."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "Nur anwenden, wenn die Menge größer ist."
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"

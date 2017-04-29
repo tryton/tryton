@@ -50,6 +50,10 @@ msgctxt "field:product.price_list,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Categoria"
+
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -98,6 +102,30 @@ msgctxt "field:product.price_list.line,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+"Faça com que o preço de tabela pertença à empresa.\n"
+"Isto define a moeda do preço de tabela."
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr "Adiciona fórmulas de preço para diversos critérios."
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "O identificador principal do preço de tabela."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "Marque se o resultado da fórmula incluir tributos."
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr "Aplicar apenas a produtos desta categoria."
+
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -105,6 +133,18 @@ msgid ""
 msgstr ""
 "Expressão Python que será avaliada com:\n"
 "- unit_price: o preço unitário original"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr "O preço de tabela ao qual esta linha pertence."
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "Aplicar apenas a este produto."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "Aplicar apenas quando a quantidade for maior."
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"

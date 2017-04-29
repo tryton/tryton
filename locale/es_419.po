@@ -50,6 +50,10 @@ msgctxt "field:product.price_list,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr ""
+
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -98,6 +102,28 @@ msgctxt "field:product.price_list.line,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr ""
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr ""
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr ""
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr ""
+
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -105,6 +131,18 @@ msgid ""
 msgstr ""
 "Expresión de Python que se evaluará con:\n"
 "- unit_price: el precio unitario original"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr ""
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr ""
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"

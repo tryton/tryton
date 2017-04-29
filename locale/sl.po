@@ -50,6 +50,10 @@ msgctxt "field:product.price_list,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Kategorija"
+
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -98,6 +102,28 @@ msgctxt "field:product.price_list.line,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr "Poveži cenik z družbo, ki s tem določa tudi valuto cenika."
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr "Dodaj formule cen za različne kriterije."
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "Glavni identifikator cenika."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "Označite, če formula vključuje davek."
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr "Upoštevaj samo pri izdelkih te kategorije."
+
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -105,6 +131,18 @@ msgid ""
 msgstr ""
 "Pythonski izraz, preračunan z:\n"
 "- unit_price: izvorna cena"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr "Cenik za postavko."
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "Upoštevaj samo pri tem izdelku."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "Upoštevaj samo, ko je količina večja."
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"

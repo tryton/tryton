@@ -50,6 +50,10 @@ msgctxt "field:product.price_list,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Categoría"
+
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
 msgstr "Fecha de creación"
@@ -98,6 +102,29 @@ msgctxt "field:product.price_list.line,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+"Hacer que la tarifa pertenezca a la empresa.Define la moneda de la tarifa."
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr "Añadir formulas de precio por distintos criterios."
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "El identificador principal de la tarifa."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "Marcar si el resultado de la formula incluye impuestos."
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr "Aplicar sólo a los productos de esta categoría."
+
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -105,6 +132,18 @@ msgid ""
 msgstr ""
 "Expresión de Python que se evaluará como:\n"
 "- unit_price: El precio por unidad original"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr "La tarifa a la que pertenece la línea."
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "Aplicar sólo a este producto."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "Aplicar sólo cuando la cantidad es mas grande. "
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"

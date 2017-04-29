@@ -50,6 +50,10 @@ msgctxt "field:product.price_list,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "field:product.price_list.line,category:"
+msgid "Category"
+msgstr "Categoria"
+
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"
@@ -98,6 +102,29 @@ msgctxt "field:product.price_list.line,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:product.price_list,company:"
+msgid ""
+"Make the price list belong to the company.\n"
+"It defines the currency of the price list."
+msgstr ""
+"Fes que la tarifa pertanyi a l'empresa.Defineix la moneda de la tarifa."
+
+msgctxt "help:product.price_list,lines:"
+msgid "Add price formulas for different criterias."
+msgstr "Afegiu formules de preu per diferents criteris."
+
+msgctxt "help:product.price_list,name:"
+msgid "The main identifier of the price list."
+msgstr "El identificador principal de la tarifa."
+
+msgctxt "help:product.price_list,tax_included:"
+msgid "Check if result's formula includes taxes."
+msgstr "Marca si el resultat de la formula inclou impostos."
+
+msgctxt "help:product.price_list.line,category:"
+msgid "Apply only to products of this category."
+msgstr "Aplica només als productes d'aquesta categoria."
+
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -105,6 +132,18 @@ msgid ""
 msgstr ""
 "Expressió Python que s'avaluarà amb:\n"
 "- unit_price: El preu per unitat original"
+
+msgctxt "help:product.price_list.line,price_list:"
+msgid "The price list to which the line belongs."
+msgstr "La tarifa a la qual pertany la línia."
+
+msgctxt "help:product.price_list.line,product:"
+msgid "Apply only to this product."
+msgstr "Aplica només a aquest producte."
+
+msgctxt "help:product.price_list.line,quantity:"
+msgid "Apply only when quantity is greater."
+msgstr "Aplica només quan la quantitat es més gran."
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
