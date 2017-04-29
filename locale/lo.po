@@ -4,75 +4,68 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr ""
+msgstr "ວັນໃນອາທິດ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "ວັນທີສ້າງ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "ຜູ້ສ້າງ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
 msgstr "ຜູ້ສະໜອງ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Name"
 msgstr "ຊື່"
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
-msgstr ""
+msgstr "ວັນໃນອາທິດ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr ""
+msgstr "ມື້ສະໜອງຜະລິດຕະພັນ"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
-msgstr ""
+msgstr "ສຸກ"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
-msgstr ""
+msgstr "ຈັນ"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
-msgstr ""
+msgstr "ເສົາ"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Sunday"
-msgstr ""
+msgstr "ອາທິດ"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
-msgstr ""
+msgstr "ພະຫັດ"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Tuesday"
-msgstr ""
+msgstr "ອັງຄານ"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
-msgstr ""
+msgstr "ພຸດ"
