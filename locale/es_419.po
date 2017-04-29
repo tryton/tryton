@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:product.classification.dummy,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:product.classification.dummy,id:"
 msgid "ID"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:product.classification.dummy,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,active:"
 msgid "Active"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,id:"
 msgid "ID"
@@ -80,7 +80,7 @@ msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:product.product,classification:"
 msgid "Classification"
