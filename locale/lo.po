@@ -32,7 +32,7 @@ msgstr "ວັນທີຕ້ອງຈ່າຍ"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr ""
+msgstr "ຄ່າທຳນຽມ:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
@@ -46,7 +46,6 @@ msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "ໜັງສືແຈ້ງເຕືອນ"
 
-#, fuzzy
 msgctxt "report:account.dunning.letter:"
 msgid "s"
 msgstr "ວິນາທີ"

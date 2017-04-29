@@ -32,7 +32,7 @@ msgstr "Zapadlost"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr ""
+msgstr "Stroški izterjave:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
@@ -45,8 +45,3 @@ msgstr "Sklic"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Opomin"
-
-#, fuzzy
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr "s"
