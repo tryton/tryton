@@ -2,26 +2,33 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.request.create:"
-msgid "There are some late supplier moves."
-msgstr "Létezik későbbi szállítói anyag mozgatás."
-
-msgctxt "error:stock.order_point:"
-msgid "Maximal quantity must be bigger than Minimal quantity"
-msgstr ""
-"A maximális mennyiségnek nagyobb kell lenni, mint a minimális mennyiség."
-
 msgctxt "error:stock.order_point:"
 msgid "Only one order point is allowed for each product-location pair."
 msgstr "Csak egy rendelés pont engedélyezett termék-raktárhelyként."
 
 msgctxt "error:stock.order_point:"
 msgid ""
-"You can not define two order points on the same product with opposite "
-"locations."
+"You can not define on the same product two order points with opposite "
+"locations (from \"Storage Location\" to \"Overflowing Location\" and vice "
+"versa)."
 msgstr ""
-"Egy termékhez nem lehet különböző rendelés pontot, különböző telephellyel "
-"létrehozni."
+
+msgctxt "error:stock.order_point:"
+msgid ""
+"You can not define on the same product two order points with opposite "
+"locations (from \"Storage Location\" to \"Provisioning Location\" and vice "
+"versa)."
+msgstr ""
+
+#, fuzzy
+msgctxt "error:stock.supply:"
+msgid "There are some late customer moves."
+msgstr "Létezik későbbi szállítói anyag mozgatás."
+
+#, fuzzy
+msgctxt "error:stock.supply:"
+msgid "There are some late supplier moves."
+msgstr "Létezik későbbi szállítói anyag mozgatás."
 
 msgctxt "field:product.product,order_points:"
 msgid "Order Points"
@@ -32,9 +39,44 @@ msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Beszerzési időszak"
 
-msgctxt "field:purchase.request.create.start,id:"
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,id:"
 msgid "ID"
 msgstr "ID"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,rec_name:"
+msgid "Name"
+msgstr "Név"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,supply_period:"
+msgid "Supply Period"
+msgstr "Beszerzési időszak"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,write_date:"
+msgid "Write Date"
+msgstr "Módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:purchase.configuration.supply_period,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
+msgctxt "field:stock.location,overflowing_location:"
+msgid "Overflowing Location"
+msgstr ""
 
 msgctxt "field:stock.location,provisioning_location:"
 msgid "Provisioning Location"
@@ -68,6 +110,10 @@ msgctxt "field:stock.order_point,min_quantity:"
 msgid "Minimal Quantity"
 msgstr "Min. mennyiség"
 
+msgctxt "field:stock.order_point,overflowing_location:"
+msgid "Overflowing Location"
+msgstr ""
+
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
 msgstr "Termék"
@@ -83,6 +129,10 @@ msgstr "Név"
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr "Raktár helye"
+
+msgctxt "field:stock.order_point,target_quantity:"
+msgid "Target Quantity"
+msgstr ""
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
@@ -108,14 +158,15 @@ msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
-msgctxt "field:stock.shipment.internal.create.start,id:"
+#, fuzzy
+msgctxt "field:stock.supply.start,id:"
 msgid "ID"
 msgstr "ID"
 
 #, fuzzy
-msgctxt "help:purchase.configuration,supply_period:"
-msgid "In number of days"
-msgstr "Napok száma"
+msgctxt "help:stock.location,overflowing_location:"
+msgid "Leave empty for no default overflowing"
+msgstr "Üresen hagyni, ha nincs előkészítési hely "
 
 msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
@@ -133,13 +184,9 @@ msgctxt "model:ir.action,name:act_order_point_form_relate2"
 msgid "Order Points"
 msgstr "Rendelés pont"
 
-msgctxt "model:ir.action,name:act_purchase_request_create"
-msgid "Create Purchase Requests"
-msgstr "Rendelés javaslat készítése"
-
-msgctxt "model:ir.action,name:act_shipment_internal_create"
-msgid "Create Internal Shipments"
-msgstr "Belső szállítások "
+msgctxt "model:ir.action,name:act_stock_supply"
+msgid "Supply Stock"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
@@ -156,6 +203,57 @@ msgctxt ""
 msgid "Purchase"
 msgstr "Vásárlás"
 
+msgctxt "model:ir.ui.menu,name:menu_order_point_form"
+msgid "Order Points"
+msgstr "Rendelés pont"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_supply"
+msgid "Supply Stock"
+msgstr ""
+
+msgctxt "model:purchase.configuration.supply_period,name:"
+msgid "Purchase Configuration Supply Period"
+msgstr ""
+
+msgctxt "model:stock.order_point,name:"
+msgid "Order Point"
+msgstr "Rendelés pont"
+
+msgctxt "model:stock.supply.start,name:"
+msgid "Supply Stock"
+msgstr ""
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Internal"
+msgstr "Belső"
+
+msgctxt "selection:stock.order_point,type:"
+msgid "Purchase"
+msgstr "Vásárlás"
+
+msgctxt "view:stock.order_point:"
+msgid "Order Point Type"
+msgstr "Rendelés pont típus"
+
+#, fuzzy
+msgctxt "view:stock.order_point:"
+msgid "Product Info"
+msgstr "Termék infó"
+
+msgctxt "view:stock.supply.start:"
+msgid "Supply Stock?"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.supply,start,create_:"
+msgid "Create"
+msgstr "Létrehozás"
+
+#, fuzzy
+msgctxt "wizard_button:stock.supply,start,end:"
+msgid "Cancel"
+msgstr "Mégse"
+
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
 msgstr "Rendelés javaslat létrehozása"
@@ -163,10 +261,6 @@ msgstr "Rendelés javaslat létrehozása"
 msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
 msgstr "Belső szállítások létrehozása"
-
-msgctxt "model:ir.ui.menu,name:menu_order_point_form"
-msgid "Order Points"
-msgstr "Rendelés pont"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
 msgid "Create Purchase Requests"
@@ -180,46 +274,17 @@ msgctxt "model:purchase.request.create.start,name:"
 msgid "Create Purchase Request"
 msgstr "Rendelés javaslat létrehozása"
 
-msgctxt "model:stock.order_point,name:"
-msgid "Order Point"
-msgstr "Rendelés pont"
-
 msgctxt "model:stock.shipment.internal.create.start,name:"
 msgid "Create Shipment Internal"
 msgstr "Belső szállítások létrehozása"
-
-msgctxt "selection:stock.order_point,type:"
-msgid "Internal"
-msgstr "Belső"
-
-msgctxt "selection:stock.order_point,type:"
-msgid "Purchase"
-msgstr "Vásárlás"
 
 msgctxt "view:purchase.request.create.start:"
 msgid "Create Purchase Requests?"
 msgstr "Rendelés javaslat létrehozása?"
 
-msgctxt "view:stock.order_point:"
-msgid "Order Point Type"
-msgstr "Rendelés pont típus"
-
-#, fuzzy
-msgctxt "view:stock.order_point:"
-msgid "Product Info"
-msgstr "Termék infó"
-
 msgctxt "view:stock.shipment.internal.create.start:"
 msgid "Create Internal Shipments?"
 msgstr "Belső szállítások létrehozása?"
-
-msgctxt "wizard_button:purchase.request.create,start,create_:"
-msgid "Create"
-msgstr "Létrehozás"
-
-msgctxt "wizard_button:purchase.request.create,start,end:"
-msgid "Cancel"
-msgstr "Mégse"
 
 msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
 msgid "Create"
