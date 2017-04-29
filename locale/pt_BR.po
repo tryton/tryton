@@ -122,7 +122,6 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
 msgctxt "field:product.product,attribute_set:"
 msgid "Attribute Set"
 msgstr "Conjuntos de atributos"
@@ -131,7 +130,6 @@ msgctxt "field:product.product,attributes:"
 msgid "Attributes"
 msgstr "Atributos"
 
-#, fuzzy
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
 msgstr "Conjuntos de atributos"
@@ -204,7 +202,6 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Seleção"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Attributes"
 msgstr "Atributos"

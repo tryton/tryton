@@ -62,9 +62,10 @@ msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
 msgstr "Atrybuty"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr ""
+msgstr "Zestawy"
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
