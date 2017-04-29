@@ -16,7 +16,7 @@ msgstr "La quantitat de la línia ha de ser positiva."
 
 msgctxt "error:stock.forecast.line:"
 msgid "Product must be unique by forecast"
-msgstr "El producte ha de ser únic en la previsió d'estocs."
+msgstr "El producte ha de ser únic en la previsió d'existències."
 
 msgctxt "error:stock.forecast:"
 msgid "\"To Date\" must be greater than \"From Date\""
@@ -233,11 +233,11 @@ msgstr "Previsions"
 
 msgctxt "model:res.group,name:group_stock_forecast"
 msgid "Stock Forecast"
-msgstr "Previsió d'estoc"
+msgstr "Previsió d'existències"
 
 msgctxt "model:stock.forecast,name:"
 msgid "Stock Forecast"
-msgstr "Previsió d'estoc"
+msgstr "Previsió d'existències"
 
 msgctxt "model:stock.forecast.complete.ask,name:"
 msgid "Complete Forecast"
@@ -249,7 +249,7 @@ msgstr "Triar previsió completa"
 
 msgctxt "model:stock.forecast.line,name:"
 msgid "Stock Forecast Line"
-msgstr "Línia de previsió d'estoc"
+msgstr "Línia de previsió d'existències"
 
 msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"

@@ -124,7 +124,7 @@ msgstr "Previsão"
 
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
-msgstr ""
+msgstr "Estado da Previsão"
 
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
@@ -267,17 +267,14 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Rascunho"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Done"
 msgstr "Feito"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Rascunho"

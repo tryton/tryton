@@ -124,7 +124,7 @@ msgstr "Napoved"
 
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
-msgstr ""
+msgstr "Stanje napovedi"
 
 msgctxt "field:stock.forecast.line,id:"
 msgid "ID"
@@ -271,12 +271,10 @@ msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Cancel"
 msgstr "Preklicano"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Done"
 msgstr "Zaključeno"
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "V pripravi"
