@@ -14,6 +14,11 @@ msgctxt "field:product.category,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Conto costo del venduto usato"
 
+#, fuzzy
+msgctxt "field:product.category.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Conto costo del venduto"
+
 msgctxt "field:product.product,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Conto costo del venduto"
@@ -29,6 +34,11 @@ msgstr "Conto costo del venduto"
 msgctxt "field:product.template,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Conto costo del venduto Usato"
+
+#, fuzzy
+msgctxt "field:product.template.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Conto costo del venduto"
 
 msgctxt "field:stock.move,in_anglo_saxon_quantity:"
 msgid "Input Anglo-Saxon Quantity"

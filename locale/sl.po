@@ -14,6 +14,10 @@ msgctxt "field:product.category,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Uporabljen konto stroškov prodanega blaga"
 
+msgctxt "field:product.category.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto stroškov prodanega blaga"
+
 msgctxt "field:product.product,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Konto stroškov prodanega blaga"
@@ -29,6 +33,10 @@ msgstr "Konto stroškov prodanega blaga"
 msgctxt "field:product.template,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Uporabljen konto stroškov prodanega blaga"
+
+msgctxt "field:product.template.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Konto stroškov prodanega blaga"
 
 msgctxt "field:stock.move,in_anglo_saxon_quantity:"
 msgid "Input Anglo-Saxon Quantity"

@@ -14,12 +14,14 @@ msgctxt "field:product.category,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Conta de Custo de Mercadorias Vendidas Utilizada"
 
-#, fuzzy
+msgctxt "field:product.category.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Conta de Custo de Mercadorias Vendidas"
+
 msgctxt "field:product.product,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Conta de Custo de Mercadorias Vendidas"
 
-#, fuzzy
 msgctxt "field:product.product,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Conta de Custo de Mercadorias Vendidas Utilizada"
@@ -32,6 +34,10 @@ msgctxt "field:product.template,account_cogs_used:"
 msgid "Account Cost of Goods Sold Used"
 msgstr "Conta de Custo de Mercadorias Vendidas Utilizada"
 
+msgctxt "field:product.template.account,account_cogs:"
+msgid "Account Cost of Goods Sold"
+msgstr "Conta de Custo de Mercadorias Vendidas"
+
 msgctxt "field:stock.move,in_anglo_saxon_quantity:"
 msgid "Input Anglo-Saxon Quantity"
 msgstr "Quantidade Anglo-Saxã de Entrada"
@@ -40,7 +46,6 @@ msgctxt "field:stock.move,out_anglo_saxon_quantity:"
 msgid "Output Anglo-Saxon Quantity"
 msgstr "Quantidade Anglo-Saxã de Saída"
 
-#, fuzzy
 msgctxt "help:product.product,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Esta conta será utilizada no lugar daquela definida na categoria."
