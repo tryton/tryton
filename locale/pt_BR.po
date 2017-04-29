@@ -8,6 +8,9 @@ msgid ""
 "\n"
 "%(message)s"
 msgstr ""
+"A chamada ao serviço web DPD falhou com a mensagem de erro:\n"
+"\n"
+"%(message)s"
 
 msgctxt "error:stock.shipment.create_shipping.dpd:"
 msgid ""
@@ -15,101 +18,94 @@ msgid ""
 "\n"
 "%(message)s"
 msgstr ""
+"A chamada ao serviço web DPD falhou com a mensagem de erro:\n"
+"\n"
+"%(message)s"
 
 msgctxt "error:stock.shipment.create_shipping.dpd:"
 msgid "Shipment \"%(shipment)s\" already has a reference number."
-msgstr ""
+msgstr "O Envio \"%(shipment)s\"  já possui número de referência."
 
 msgctxt "error:stock.shipment.out:"
 msgid "An address is required for warehouse \"%(warehouse)s\"."
-msgstr ""
+msgstr "É necessário um endereço para o almoxarifado \"%(warehouse)s\"."
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,create_uid:"
 msgid "Create User"
-msgstr "Usuário de Criação"
+msgstr "Criado por"
 
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
-msgstr ""
+msgstr "Depósito"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
 msgstr "Senha"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
 msgstr "Servidor"
 
 msgctxt "field:carrier.credential.dpd,token:"
 msgid "Token"
-msgstr ""
+msgstr "Token:"
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
-msgstr ""
+msgstr "ID de usuário"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,write_date:"
 msgid "Write Date"
-msgstr "Editado por"
+msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,write_uid:"
 msgid "Write User"
-msgstr "Gravado por"
+msgstr "Editado por"
 
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
-msgstr ""
+msgstr "Credencial DPD"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
-msgstr ""
+msgstr "Criar Envio DPD para Pacotes"
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr ""
+msgstr "Credenciais DPD"
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr ""
+msgstr "Credenciais DPD"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"
-msgstr ""
+msgstr "DPD"
 
-#, fuzzy
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Production"
 msgstr "Produção"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Testing"
-msgstr ""
+msgstr "Testando"
 
 msgctxt "view:carrier.credential.dpd:"
 msgid "Credential Informations"
-msgstr ""
+msgstr "Informações da Credencial"
