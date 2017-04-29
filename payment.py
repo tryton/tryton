@@ -214,7 +214,7 @@ class Payment:
                 payment.save()
                 if charge.status == 'succeeded':
                     cls.succeed([payment])
-                else:
+                elif charge.status == 'failed':
                     cls.fail([payment])
             Transaction().commit()
 
