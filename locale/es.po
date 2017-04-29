@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.address.format:"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "El format \"%(format)s\" es invalido con la excepción \"%(exception)s\"."
+
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
 msgstr "No puede modificar el tercero de la dirección \"%s\"."
@@ -218,6 +222,10 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Idioma del tercero"
+
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Secuencia de tercero"
@@ -231,6 +239,62 @@ msgid "Write Date"
 msgstr "Fecha de modificación"
 
 msgctxt "field:party.configuration,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:party.configuration.party_lang,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:party.configuration.party_lang,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:party.configuration.party_lang,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Idioma del tercero"
+
+msgctxt "field:party.configuration.party_lang,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.configuration.party_lang,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:party.configuration.party_lang,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:party.configuration.party_sequence,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:party.configuration.party_sequence,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:party.configuration.party_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Secuencia de tercero"
+
+msgctxt "field:party.configuration.party_sequence,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.configuration.party_sequence,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:party.configuration.party_sequence,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
@@ -406,6 +470,10 @@ msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Idioma"
 
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Idiomas"
+
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
 msgstr "Móvil"
@@ -474,6 +542,38 @@ msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "field:party.party.lang,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:party.party.lang,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:party.party.lang,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Idioma"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party.party.lang,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.party.lang,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:party.party.lang,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
 msgstr "Destino"
@@ -485,6 +585,14 @@ msgstr "ID"
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Origen"
+
+msgctxt "help:party.address,active:"
+msgid "Uncheck to exclude the address from future use."
+msgstr "Desmarcar para excluir la dirección de uso en el futuro."
+
+msgctxt "help:party.address.format,active:"
+msgid "Uncheck to exclude the format from future use."
+msgstr "Desmarcar para excluir el formato de uso en el futuro."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -509,6 +617,86 @@ msgstr ""
 "- ${subdivision_code}\n"
 "- ${country}\n"
 "- ${country_code}"
+
+msgctxt "help:party.category,active:"
+msgid "Uncheck to exclude the category from future use."
+msgstr "Desmarcar para excluir la categoría de uso en el futuro."
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Añade hijos debajo de la categoría."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "El identificador principal de la categoría."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Añade la categoría debajo del padre."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "El idioma por defecto de los nuevos terceros."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Utilizado para generar el código del tercero"
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "El idioma por defecto de los nuevos terceros."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Utilizada para generar el código del tercero."
+
+msgctxt "help:party.contact_mechanism,active:"
+msgid "Uncheck to exclude the contact mechanism from future use."
+msgstr "Desmarcar para excluir el método de contacto de uso en el futuro."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "El tercero identificado por este registro."
+
+msgctxt "help:party.party,active:"
+msgid "Uncheck to exclude the party from future use."
+msgstr "Desmarcar para excluir el tercero de uso en el futuro."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "Las categorías a las que pertenece el tercero."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "El identificador único del tercero."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Añade otros identificadores del tercero."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Utilizado para traducir las comunicaciones con el tercero."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "El identificador principal del tercero"
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "El tercero que sustituye este."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "El identificador utilizado con las autoridades impositivas."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "El tercero que sustituye."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "El tercero que se sustituye."
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -618,6 +806,14 @@ msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
 msgstr "Configuración de terceros"
 
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Configuración del idioma del tercero"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Configuración de las secuencias de terceros"
+
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Medio de contacto"
@@ -633,6 +829,10 @@ msgstr "Tercero"
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
 msgstr "Terceros - Categoría"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Idioma del tercero"
 
 msgctxt "model:party.replace.ask,name:"
 msgid "Replace Party"
@@ -681,6 +881,14 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Sitio Web"
+
+msgctxt "selection:party.identifier,type:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "VAT"
+msgstr "NIF/CIF"
 
 msgctxt "view:party.party:"
 msgid "General"

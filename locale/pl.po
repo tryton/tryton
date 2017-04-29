@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.address.format:"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "Niewłaściwy format \"%(format)s\". Wyjątek \"%(exception)s\"."
+
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
 msgstr "Nie możesz modyfikować strony z adresem \"%s\"."
@@ -90,7 +94,7 @@ msgstr "Nazwa"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
-msgstr "Kolejność"
+msgstr "Sekwencja"
 
 msgctxt "field:party.address,street:"
 msgid "Street"
@@ -154,11 +158,11 @@ msgstr "Zapisał"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
-msgstr "Aktywny"
+msgstr "Aktywna"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr "Elementy podrzędne"
+msgstr "Podkategorie"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
@@ -178,7 +182,7 @@ msgstr "Nazwa"
 
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr "Element nadrzędny"
+msgstr "Kategoria nadrzędna"
 
 msgctxt "field:party.category,rec_name:"
 msgid "Name"
@@ -216,9 +220,13 @@ msgctxt "field:party.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.configuration,party_lang:"
+msgid "Party Language"
+msgstr "Język strony"
+
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Kolejność strony"
+msgstr "Sekwencja strony"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Name"
@@ -229,6 +237,62 @@ msgid "Write Date"
 msgstr "Data zapisu"
 
 msgctxt "field:party.configuration,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:party.configuration.party_lang,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:party.configuration.party_lang,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:party.configuration.party_lang,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration.party_lang,party_lang:"
+msgid "Party Language"
+msgstr "Język strony"
+
+msgctxt "field:party.configuration.party_lang,rec_name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:party.configuration.party_lang,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:party.configuration.party_lang,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:party.configuration.party_sequence,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:party.configuration.party_sequence,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:party.configuration.party_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.configuration.party_sequence,party_sequence:"
+msgid "Party Sequence"
+msgstr "Sekwencja strony"
+
+msgctxt "field:party.configuration.party_sequence,rec_name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:party.configuration.party_sequence,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:party.configuration.party_sequence,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
@@ -270,7 +334,7 @@ msgstr "Nazwa"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
-msgstr "Kolejność"
+msgstr "Sekwencja"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -334,7 +398,7 @@ msgstr "Nazwa"
 
 msgctxt "field:party.identifier,sequence:"
 msgid "Sequence"
-msgstr "Kolejność"
+msgstr "Sekwencja"
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
@@ -350,7 +414,7 @@ msgstr "Zapisał"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
-msgstr "Aktywny"
+msgstr "Aktywna"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -403,6 +467,10 @@ msgstr "Identyfikatory"
 msgctxt "field:party.party,lang:"
 msgid "Language"
 msgstr "Język"
+
+msgctxt "field:party.party,langs:"
+msgid "Languages"
+msgstr "Języki"
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
@@ -472,6 +540,38 @@ msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
+msgctxt "field:party.party.lang,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:party.party.lang,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:party.party.lang,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.party.lang,lang:"
+msgid "Language"
+msgstr "Język"
+
+msgctxt "field:party.party.lang,party:"
+msgid "Party"
+msgstr "Strona"
+
+msgctxt "field:party.party.lang,rec_name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:party.party.lang,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:party.party.lang,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
 msgstr "Cel"
@@ -483,6 +583,14 @@ msgstr "ID"
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Źródło"
+
+msgctxt "help:party.address,active:"
+msgid "Uncheck to exclude the address from future use."
+msgstr "Odznacz, aby nie używać adresu w przyszłości."
+
+msgctxt "help:party.address.format,active:"
+msgid "Uncheck to exclude the format from future use."
+msgstr "Odznacz, aby nie używać formatu w przyszłości."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -507,6 +615,86 @@ msgstr ""
 "- ${subdivision_code}\n"
 "- ${country}\n"
 "- ${country_code}"
+
+msgctxt "help:party.category,active:"
+msgid "Uncheck to exclude the category from future use."
+msgstr "Odznacz, aby nie używać kategorii w przyszłości."
+
+msgctxt "help:party.category,childs:"
+msgid "Add children below the category."
+msgstr "Dodaj podkategorie."
+
+msgctxt "help:party.category,name:"
+msgid "The main identifier of the category."
+msgstr "Główny identyfikator kategorii."
+
+msgctxt "help:party.category,parent:"
+msgid "Add the category below the parent."
+msgstr "Wybierz kategorię nadrzędną."
+
+msgctxt "help:party.configuration,party_lang:"
+msgid "The default language for new parties."
+msgstr "Domyślny język dla nowych stron."
+
+msgctxt "help:party.configuration,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Służy do wygenerowania kodu strony."
+
+msgctxt "help:party.configuration.party_lang,party_lang:"
+msgid "The default language for new parties."
+msgstr "Domyślny język dla nowych stron."
+
+msgctxt "help:party.configuration.party_sequence,party_sequence:"
+msgid "Used to generate the party code."
+msgstr "Służy do wygenerowania kodu strony."
+
+msgctxt "help:party.contact_mechanism,active:"
+msgid "Uncheck to exclude the contact mechanism from future use."
+msgstr "Odznacz, aby nie używać sposobu kontaktu w przyszłości."
+
+msgctxt "help:party.identifier,party:"
+msgid "The party identified by this record."
+msgstr "Strona identyfikowana przez ten rekord."
+
+msgctxt "help:party.party,active:"
+msgid "Uncheck to exclude the party from future use."
+msgstr "Odznacz, aby nie używać stron w przyszłości."
+
+msgctxt "help:party.party,categories:"
+msgid "The categories the party belongs to."
+msgstr "Kategorie przydzielone do strony."
+
+msgctxt "help:party.party,code:"
+msgid "The unique identifier of the party."
+msgstr "Unikatowy identyfikator strony."
+
+msgctxt "help:party.party,identifiers:"
+msgid "Add other identifiers of the party."
+msgstr "Dodaj inne identyfikatory strony."
+
+msgctxt "help:party.party,lang:"
+msgid "Used to translate communications with the party."
+msgstr "Język komunikacji ze stroną."
+
+msgctxt "help:party.party,name:"
+msgid "The main identifier of the party."
+msgstr "Główny identyfikator strony."
+
+msgctxt "help:party.party,replaced_by:"
+msgid "The party replacing this one."
+msgstr "Strona zastępująca."
+
+msgctxt "help:party.party,tax_identifier:"
+msgid "The identifier used for tax report."
+msgstr "Identyfikator używany przy raportach podatkowych."
+
+msgctxt "help:party.replace.ask,destination:"
+msgid "The party that replaces."
+msgstr "Strona zastępująca."
+
+msgctxt "help:party.replace.ask,source:"
+msgid "The party to be replaced."
+msgstr "Strona zastępowana."
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
@@ -534,7 +722,7 @@ msgstr "Strony wg kategorii"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Konfiguracja ustawień strony"
+msgstr "Ustawienia strony"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
@@ -590,7 +778,7 @@ msgstr "Strona"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Konfiguracja ustawień strony"
+msgstr "Ustawienia strony"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -614,7 +802,15 @@ msgstr "Sprawdź VIES"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Konfiguracja ustawień strony"
+msgstr "Ustawienia strony"
+
+msgctxt "model:party.configuration.party_lang,name:"
+msgid "Party Configuration Lang"
+msgstr "Język konfiguracji strony"
+
+msgctxt "model:party.configuration.party_sequence,name:"
+msgid "Party Configuration Sequence"
+msgstr "Sekwencja konfiguracji strony"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
@@ -631,6 +827,10 @@ msgstr "Strona"
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
 msgstr "Strona - Kategoria"
+
+msgctxt "model:party.party.lang,name:"
+msgid "Party Lang"
+msgstr "Język strony"
 
 msgctxt "model:party.replace.ask,name:"
 msgid "Replace Party"
@@ -679,6 +879,14 @@ msgstr "Skype"
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
 msgstr "Strona WWW"
+
+msgctxt "selection:party.identifier,type:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "VAT"
+msgstr "VAT-UE"
 
 msgctxt "view:party.party:"
 msgid "General"
