@@ -3,6 +3,10 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.group:"
+msgid "No bank account for payment \"%s\"."
+msgstr "Não há conta bancária para o pagamento \"%s\"."
+
+msgctxt "error:account.payment.group:"
 msgid "No valid mandate for payment \"%s\""
 msgstr "Não há mandato válido para o pagamento \"%s\""
 
@@ -20,15 +24,48 @@ msgstr ""
 
 msgctxt "error:party.identifier:"
 msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
-msgstr ""
+msgstr "A pessoa \"%(party)s\" tem mais de um Identificador de Credor SEPA."
 
 msgctxt "error:party.identifier:"
 msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
-msgstr ""
+msgstr "O identificador SEPA \"%(code)s\" da pessoa \"%(party)s\" é inválido."
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "Sequência de Mandato SEPA"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt ""
+"field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr "Sequência de Mandato SEPA"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -128,7 +165,7 @@ msgstr "Esquema"
 
 msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
 msgid "Always use RCUR"
-msgstr ""
+msgstr "Sempre usar RCUR"
 
 msgctxt "field:account.payment.sepa.mandate,signature_date:"
 msgid "Signature Date"
@@ -206,6 +243,10 @@ msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "Mandatos SEPA"
 
+msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
+msgid "Account Configuration SEPA Mandate Sequence"
+msgstr "Configurações de Contabilidade Sequência de Mandato SEPA"
+
 msgctxt "model:account.payment.sepa.mandate,name:"
 msgid "SEPA Mandate"
 msgstr "Mandato SEPA"
@@ -230,23 +271,19 @@ msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr "Mandato"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
 msgid "All"
 msgstr "Todos"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
 msgid "Draft"
 msgstr "Rascunho"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
 msgid "Requested"
 msgstr "Solicitado"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
 msgid "Validated"
@@ -481,6 +518,10 @@ msgstr "ENTRADA"
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "SAÍDA"
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Creditor Identifier"
+msgstr "Identificador do Credor SEPA"
 
 msgctxt "view:account.configuration:"
 msgid "SEPA"

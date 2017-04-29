@@ -3,6 +3,10 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.group:"
+msgid "No bank account for payment \"%s\"."
+msgstr ""
+
+msgctxt "error:account.payment.group:"
 msgid "No valid mandate for payment \"%s\""
 msgstr ""
 
@@ -26,6 +30,39 @@ msgstr ""
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
+msgstr ""
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr ""
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
+msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
@@ -206,6 +243,10 @@ msgstr ""
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "SEPA Mandates"
+
+msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
+msgid "Account Configuration SEPA Mandate Sequence"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:account.payment.sepa.mandate,name:"
@@ -482,6 +523,10 @@ msgstr ""
 
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Creditor Identifier"
 msgstr ""
 
 msgctxt "view:account.configuration:"

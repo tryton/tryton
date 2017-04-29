@@ -3,6 +3,10 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.group:"
+msgid "No bank account for payment \"%s\"."
+msgstr "Manjka bančni račun za plačilo \"%s\"."
+
+msgctxt "error:account.payment.group:"
 msgid "No valid mandate for payment \"%s\""
 msgstr "Ni veljavnega soglasja za plačilo \"%s\""
 
@@ -18,15 +22,48 @@ msgstr "Soglasja \"%s\" ni možno zbrisati, ker ni v pripravi ali preklicano."
 
 msgctxt "error:party.identifier:"
 msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
-msgstr ""
+msgstr "Partner \"%(party)s\" ima več identifikatorjev za SEPA upnika."
 
 msgctxt "error:party.identifier:"
 msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
-msgstr ""
+msgstr "SEPA identifikator \"%(code)s\" ni veljaven za partnerja \"%(party)s\"."
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "Štetje SEPA soglasij"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt ""
+"field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
+msgid "SEPA Mandate Sequence"
+msgstr "Štetje SEPA soglasij"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -126,7 +163,7 @@ msgstr "Shema"
 
 msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
 msgid "Always use RCUR"
-msgstr ""
+msgstr "Vedno uporabi RCUR"
 
 msgctxt "field:account.payment.sepa.mandate,signature_date:"
 msgid "Signature Date"
@@ -204,6 +241,10 @@ msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "SEPA soglasja"
 
+msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
+msgid "Account Configuration SEPA Mandate Sequence"
+msgstr "Konfiguracija štetja SEPA soglasij"
+
 msgctxt "model:account.payment.sepa.mandate,name:"
 msgid "SEPA Mandate"
 msgstr "SEPA soglasje"
@@ -228,23 +269,19 @@ msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
 msgstr "Soglasje"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
 msgid "All"
 msgstr "Vse"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
 msgid "Draft"
 msgstr "Priprava"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
 msgid "Requested"
 msgstr "Zahtevano"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
 msgid "Validated"
@@ -479,6 +516,10 @@ msgstr "Vhod"
 msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Izhod"
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Creditor Identifier"
+msgstr "Identifikator SEPA upnika"
 
 msgctxt "view:account.configuration:"
 msgid "SEPA"
