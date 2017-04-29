@@ -192,6 +192,10 @@ msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr ""
+
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
 msgstr ""

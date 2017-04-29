@@ -190,6 +190,10 @@ msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "Categoria"
+
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -230,7 +234,6 @@ msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr "Comissões Principais"
@@ -383,10 +386,9 @@ msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
 msgstr "Administração de Comissão"
 
-#, fuzzy
 msgctxt "selection:commission,invoice_state:"
 msgid ""
-msgstr "Português (Brasil)"
+msgstr ""
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"

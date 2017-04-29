@@ -190,6 +190,10 @@ msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "Categoria"
+
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"

@@ -223,6 +223,10 @@ msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"

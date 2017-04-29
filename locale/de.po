@@ -190,6 +190,10 @@ msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:commission.plan.line,category:"
+msgid "Category"
+msgstr "Kategorie"
+
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
