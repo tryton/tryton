@@ -200,7 +200,7 @@ msgid ""
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
-"Permet calcular les quantitats previstes d'estoc per a aquesta data.\n"
+"Permet calcular les quantitats previstes per a aquesta data.\n"
 "* Un valor buit és un data infinita en el futur.\n"
 "* Una data en el passat proporcionarà valors històrics. "
 
@@ -258,7 +258,7 @@ msgstr "Lot per ubicació"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr "Període d'estoc precalculat per lot"
+msgstr "Període d'existències precalculat per lot"
 
 msgctxt "view:product.template:"
 msgid "Lots"
@@ -274,8 +274,8 @@ msgstr "Lots"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Cache"
-msgstr "Període d'estoc precalculat "
+msgstr "Període d'existències precalculat"
 
 msgctxt "view:stock.period.cache.lot:"
 msgid "Period Lot Caches"
-msgstr "Períodes d'estoc precalculat "
+msgstr "Períodes d'existències precalculat"

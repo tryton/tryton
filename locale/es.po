@@ -226,11 +226,11 @@ msgstr "Plantilla - Tipo de lote"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr "Lote stock"
+msgstr "Lote"
 
 msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
-msgstr "Tipo lote stock"
+msgstr "Tipo lote"
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
@@ -258,7 +258,7 @@ msgstr "Lote por ubicación"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr "Período de stock precalculado por lote"
+msgstr "Período de existencias precalculado por lote"
 
 msgctxt "view:product.template:"
 msgid "Lots"

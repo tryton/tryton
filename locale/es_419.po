@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr ""
+msgstr "El lote es requerido para el movimiento del producto \\\"%s\\\"."
 
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
-msgstr ""
+msgstr "Lote requerido"
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
-msgstr ""
+msgstr "Lote requerido"
 
 msgctxt "field:product.template-stock.lot.type,create_date:"
 msgid "Create Date"
@@ -20,7 +20,7 @@ msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
@@ -44,12 +44,11 @@ msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr ""
 
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
@@ -57,7 +56,7 @@ msgstr ""
 
 msgctxt "field:stock.lot,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
@@ -89,7 +88,7 @@ msgstr ""
 
 msgctxt "field:stock.lot,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:stock.lot.type,code:"
 msgid "Code"
@@ -101,7 +100,7 @@ msgstr ""
 
 msgctxt "field:stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:stock.lot.type,id:"
 msgid "ID"
@@ -121,7 +120,7 @@ msgstr ""
 
 msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
@@ -135,10 +134,9 @@ msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr ""
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
@@ -150,7 +148,7 @@ msgstr ""
 
 msgctxt "field:stock.period.cache.lot,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:stock.period.cache.lot,id:"
 msgid "ID"
@@ -164,10 +162,9 @@ msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr ""
 
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
@@ -187,15 +184,15 @@ msgstr ""
 
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr ""
+msgstr "El tipo de ubicación para la cual el lote es requerido"
 
 msgctxt "help:product.template,lot_required:"
 msgid "The type of location for which lot is required"
-msgstr ""
+msgstr "El tipo de ubicación para la cual el lote es requerido"
 
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
 msgid ""
@@ -206,51 +203,51 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Lots"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
-msgstr "Lot"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Moves"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Lots"
+msgstr ""
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
-msgstr ""
+msgstr "Plantilla - Tipo de lote de stock"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr ""
+msgstr "Lote de stock"
 
 msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
-msgstr ""
+msgstr "Tipo de lote de stock"
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Customer"
+msgstr ""
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Lost and Found"
+msgstr "Perdido y encontrado"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr "Production"
+msgstr ""
 
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Storage"
+msgstr ""
 
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "Supplier"
+msgstr ""
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
@@ -260,7 +257,6 @@ msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Lots"
+msgstr ""

@@ -6,7 +6,6 @@ msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
 msgstr "O Lote é requerido para a movimentação do produto \"%s\"."
 
-#, fuzzy
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
 msgstr "Lote Obrigatório"
@@ -125,16 +124,15 @@ msgstr "Editado por"
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
-msgstr ""
+msgstr "Na Data"
 
-#, fuzzy
 msgctxt "field:stock.lots_by_location.context,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr ""
+msgstr "Na Data"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -188,7 +186,6 @@ msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
-#, fuzzy
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required"
 msgstr "O tipo de localização para a qual o lote é obrigatório"
@@ -203,12 +200,14 @@ msgid ""
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
+"Permite o cálculo esperado das quantidades do estoque para esta data.\n"
+"* Um valor vazio é uma data infinita no futuro.\n"
+"* Uma data no passado mostrará valores históricos."
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lotes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
 msgstr "Lote"
@@ -255,7 +254,7 @@ msgstr "Fornecedor"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
-msgstr ""
+msgstr "Lote Localização"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"

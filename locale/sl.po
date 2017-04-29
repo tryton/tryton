@@ -124,16 +124,15 @@ msgstr "Zapisal"
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
-msgstr ""
+msgstr "Na dan"
 
-#, fuzzy
 msgctxt "field:stock.lots_by_location.context,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr ""
+msgstr "Na dan"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -201,12 +200,14 @@ msgid ""
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
+"Omogoča izračun predvidenih zalog na ta dan.\n"
+"* Prazno polje pomeni neskončno v prihodnost.\n"
+"* Pretekli datum daje zgodovino zaloge."
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Serije"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
 msgstr "Serija"
@@ -253,7 +254,7 @@ msgstr "Dobavitelj"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
-msgstr ""
+msgstr "Serija po lokaciji"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
