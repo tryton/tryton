@@ -47,6 +47,10 @@ msgctxt "field:product.product,lead_times:"
 msgid "Lead Times"
 msgstr ""
 
+msgctxt "field:product.product,producible:"
+msgid "Producible"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
@@ -82,6 +86,10 @@ msgstr ""
 
 msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
+msgstr ""
+
+msgctxt "field:product.template,producible:"
+msgid "Producible"
 msgstr ""
 
 #, fuzzy
@@ -425,6 +433,39 @@ msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:production.configuration.production_sequence,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:production.configuration.production_sequence,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:production.configuration.production_sequence,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:production.configuration.production_sequence,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt ""
+"field:production.configuration.production_sequence,production_sequence:"
+msgid "Production Sequence"
+msgstr ""
+
+msgctxt "field:production.configuration.production_sequence,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:production.configuration.production_sequence,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:production.configuration.production_sequence,write_uid:"
+msgid "Write User"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
@@ -627,6 +668,10 @@ msgstr ""
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
 msgstr "Production Configuration"
+
+msgctxt "model:production.configuration.production_sequence,name:"
+msgid "Production Configuration Production Sequence"
+msgstr ""
 
 msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"

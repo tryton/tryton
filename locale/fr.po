@@ -50,6 +50,10 @@ msgctxt "field:product.product,lead_times:"
 msgid "Lead Times"
 msgstr "Délai de livraison"
 
+msgctxt "field:product.product,producible:"
+msgid "Producible"
+msgstr "Productible"
+
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
 msgstr "Nomenclature"
@@ -85,6 +89,10 @@ msgstr "Date de mise à jour"
 msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
+
+msgctxt "field:product.template,producible:"
+msgid "Producible"
+msgstr "Productible"
 
 msgctxt "field:production,bom:"
 msgid "BOM"
@@ -422,6 +430,39 @@ msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:production.configuration.production_sequence,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:production.configuration.production_sequence,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:production.configuration.production_sequence,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:production.configuration.production_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:production.configuration.production_sequence,production_sequence:"
+msgid "Production Sequence"
+msgstr "Séquence de production"
+
+msgctxt "field:production.configuration.production_sequence,rec_name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:production.configuration.production_sequence,write_date:"
+msgid "Write Date"
+msgstr "Date de mise à jour"
+
+msgctxt "field:production.configuration.production_sequence,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
 msgstr "Nomenclature"
@@ -617,6 +658,10 @@ msgstr "Ouvrir l'arbre de nomenclatures"
 msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
 msgstr "Configuration de la production"
+
+msgctxt "model:production.configuration.production_sequence,name:"
+msgid "Production Configuration Production Sequence"
+msgstr "Configuration de production séquence de production"
 
 msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"

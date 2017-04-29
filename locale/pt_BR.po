@@ -48,7 +48,11 @@ msgstr "Listas de Materiais"
 
 msgctxt "field:product.product,lead_times:"
 msgid "Lead Times"
-msgstr ""
+msgstr "Tempo de Espera"
+
+msgctxt "field:product.product,producible:"
+msgid "Producible"
+msgstr "Produzível"
 
 msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
@@ -86,6 +90,10 @@ msgctxt "field:product.product-production.bom,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "field:product.template,producible:"
+msgid "Producible"
+msgstr "Produzível"
+
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "Lista de materiais"
@@ -112,7 +120,7 @@ msgstr "Data efetiva"
 
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
-msgstr ""
+msgstr "Data Efetiva de Início "
 
 msgctxt "field:production,id:"
 msgid "ID"
@@ -126,7 +134,6 @@ msgctxt "field:production,location:"
 msgid "Location"
 msgstr "Localização"
 
-#, fuzzy
 msgctxt "field:production,number:"
 msgid "Number"
 msgstr "Número"
@@ -141,7 +148,7 @@ msgstr "Data planejada"
 
 msgctxt "field:production,planned_start_date:"
 msgid "Planned Start Date"
-msgstr ""
+msgstr "Data Planejada para Início"
 
 msgctxt "field:production,product:"
 msgid "Product"
@@ -177,7 +184,7 @@ msgstr "Categoria da UDM"
 
 msgctxt "field:production,warehouse:"
 msgid "Warehouse"
-msgstr "Estoque/Almoxarifado"
+msgstr "Almoxarifado"
 
 msgctxt "field:production,write_date:"
 msgid "Write Date"
@@ -423,54 +430,78 @@ msgctxt "field:production.configuration,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
-#, fuzzy
+msgctxt "field:production.configuration.production_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:production.configuration.production_sequence,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:production.configuration.production_sequence,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:production.configuration.production_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:production.configuration.production_sequence,production_sequence:"
+msgid "Production Sequence"
+msgstr "Sequência de Produção"
+
+msgctxt "field:production.configuration.production_sequence,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:production.configuration.production_sequence,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:production.configuration.production_sequence,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
-msgstr "Lista de materiais"
+msgstr "Lista de Materiais"
 
-#, fuzzy
 msgctxt "field:production.lead_time,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
 
-#, fuzzy
 msgctxt "field:production.lead_time,create_uid:"
 msgid "Create User"
-msgstr "Usuário de Criação"
+msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:production.lead_time,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:production.lead_time,lead_time:"
 msgid "Lead Time"
-msgstr ""
+msgstr "Tempo de Espera"
 
-#, fuzzy
 msgctxt "field:production.lead_time,product:"
 msgid "Product"
 msgstr "Produto"
 
-#, fuzzy
 msgctxt "field:production.lead_time,rec_name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:production.lead_time,sequence:"
 msgid "Sequence"
 msgstr "Sequência"
 
-#, fuzzy
 msgctxt "field:production.lead_time,write_date:"
 msgid "Write Date"
-msgstr "Editado por"
+msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:production.lead_time,write_uid:"
 msgid "Write User"
-msgstr "Gravado por"
+msgstr "Editado por"
 
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
@@ -492,7 +523,6 @@ msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
 msgstr "Lista de Materiais"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_in_bom"
 msgid "BOMs"
 msgstr "Listas de Materiais"
@@ -520,12 +550,12 @@ msgstr "Listagem da lista de materiais"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
 msgid "As Inputs"
-msgstr ""
+msgstr "Como Entradas"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
 msgid "As Outputs"
-msgstr ""
+msgstr "Como Saídas"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
@@ -545,7 +575,7 @@ msgstr "Rascunho"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "Requisições"
+msgstr "Solicitações"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
@@ -629,9 +659,13 @@ msgctxt "model:production.configuration,name:"
 msgid "Production Configuration"
 msgstr "Configuração de produção"
 
+msgctxt "model:production.configuration.production_sequence,name:"
+msgid "Production Configuration Production Sequence"
+msgstr "Configuração de Produção Sequência de Produção"
+
 msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"
-msgstr ""
+msgstr "Tempo de Espera da Produção"
 
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
@@ -663,7 +697,7 @@ msgstr "Rascunho"
 
 msgctxt "selection:production,state:"
 msgid "Request"
-msgstr "Requisições"
+msgstr "Solicitação"
 
 msgctxt "selection:production,state:"
 msgid "Running"
@@ -673,7 +707,6 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Espera"
 
-#, fuzzy
 msgctxt "view:product.product:"
 msgid "Production"
 msgstr "Produção"
