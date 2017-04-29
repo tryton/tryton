@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.create_shipping.ups:"
 msgid "Shipment \"%(shipment)s\" already has a reference number."
-msgstr ""
+msgstr "Pošiljka \"%(shipment)s\" že ima sklicno številko."
 
 msgctxt "error:stock.shipment.create_shipping.ups:"
 msgid ""
@@ -12,57 +12,54 @@ msgid ""
 "\n"
 "%(message)s"
 msgstr ""
+"Sporočilo napake pri klicu UPS spletne storitve:\n"
+"\n"
+"%(message)s"
 
 msgctxt "error:stock.shipment.out:"
 msgid "A phone number is required for party \"%(party)s\"."
-msgstr ""
+msgstr "Pri partnerju \"%(party)s\" je telefonska številka obvezna."
 
 msgctxt "error:stock.shipment.out:"
 msgid "A shipping description is required for shipment \"%(shipment)s\"."
-msgstr ""
+msgstr "Za pošiljko \"%(shipment)s\" je opis pošiljke obvezen."
 
 msgctxt "field:carrier,ups_label_height:"
 msgid "Label Height"
-msgstr ""
+msgstr "Velikost nalepke"
 
 msgctxt "field:carrier,ups_label_image_format:"
 msgid "Label Image Format"
-msgstr ""
+msgstr "Format nalepke"
 
 msgctxt "field:carrier,ups_service_type:"
 msgid "Service Type"
-msgstr ""
+msgstr "Vrsta storitve"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,account_number:"
 msgid "Account Number"
-msgstr "Bančni račun"
+msgstr "Številka računa"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
 msgstr "Družba"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,create_uid:"
 msgid "Create User"
 msgstr "Izdelal"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
-msgstr ""
+msgstr "Dovoljenje"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
 msgstr "Geslo"
@@ -71,48 +68,45 @@ msgctxt "field:carrier.credential.ups,rec_name:"
 msgid "Name"
 msgstr "Ime"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
 msgstr "Strežnik"
 
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
-msgstr ""
+msgstr "Metrični sistem"
 
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
-msgstr ""
+msgstr "Uporabnikov ID"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
-msgstr ""
+msgstr "UPS Šifra"
 
 msgctxt "model:carrier.credential.ups,name:"
 msgid "UPS Credential"
-msgstr ""
+msgstr "UPS prijava"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr ""
+msgstr "Izdelava UPS paketne dostave"
 
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr ""
+msgstr "UPS prijava"
 
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr ""
+msgstr "UPS prijava"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"
@@ -128,11 +122,11 @@ msgstr "Preizkusni"
 
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Informations"
-msgstr ""
+msgstr "Prijava"
 
 msgctxt "view:carrier:"
 msgid "UPS"
-msgstr ""
+msgstr "UPS"
 
 msgctxt "view:stock.package.type:"
 msgid "UPS"
