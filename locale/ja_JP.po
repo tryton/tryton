@@ -6,6 +6,39 @@ msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr ""
 
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:account.configuration.landed_cost_sequence,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr ""
+
+msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
+msgid "Write User"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
@@ -108,6 +141,10 @@ msgstr "Landed Cost"
 
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
+msgstr ""
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
 msgstr ""
 
 #, fuzzy

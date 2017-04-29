@@ -6,6 +6,39 @@ msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr "Sequência de Custo de Recepção"
 
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:account.configuration.landed_cost_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Sequência de Custo de Recepção"
+
+msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
 msgstr "Custo de Recepção"
@@ -34,7 +67,6 @@ msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Linhas da Fatura"
 
-#, fuzzy
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
 msgstr "Número"
@@ -95,7 +127,6 @@ msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
-#, fuzzy
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
 msgstr "Custo de Recepção"
@@ -107,6 +138,10 @@ msgstr "Custo de Recepção"
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
 msgstr "Unidade de Custo de Recepção"
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
+msgstr "Configurações de Contabilidade Sequência de Custo de Recepção"
 
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
@@ -163,12 +198,10 @@ msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
 msgstr "Confirmado"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
 msgstr "Custo de Recepção"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Sequence"
 msgstr "Sequência"

@@ -6,6 +6,39 @@ msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr "Štetje raztovora"
 
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+msgctxt "field:account.configuration.landed_cost_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Štetje raztovora"
+
+msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
+msgid "Name"
+msgstr "Ime"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
 msgstr "Raztovor"
@@ -105,6 +138,10 @@ msgstr "Raztovor"
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
 msgstr "Enota raztovora"
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
+msgstr "Konfiguracija štetja raztovora"
 
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"

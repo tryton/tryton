@@ -6,6 +6,39 @@ msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr "Secuencia de coste de recepción"
 
+msgctxt "field:account.configuration.landed_cost_sequence,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.configuration.landed_cost_sequence,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:account.configuration.landed_cost_sequence,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt ""
+"field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
+msgid "Landed Cost Sequence"
+msgstr "Secuencia de coste de recepción"
+
+msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
 msgstr "Coste de recepción"
@@ -105,6 +138,10 @@ msgstr "Coste de recepción"
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
 msgstr "Unidad coste de recepción"
+
+msgctxt "model:account.configuration.landed_cost_sequence,name:"
+msgid "Account Configuration Landed Cost Sequence"
+msgstr "Configuración de la secuencia de coste de recepción"
 
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
