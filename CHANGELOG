@@ -1,3 +1,5 @@
+Version 4.4.0 - 2017-05-01
+* Bug fixes (see mercurial logs for details)
 * Support direct debit of payable line
 * Set default journal when paying line
 
