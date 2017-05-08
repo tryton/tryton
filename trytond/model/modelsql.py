@@ -175,7 +175,7 @@ class ModelSQL(ModelStorage):
                     ref = field.model_name.replace('.', '_')
                 else:
                     ref_model = pool.get(field.model_name)
-                    if (isinstance(ref_model, ModelSQL)
+                    if (issubclass(ref_model, ModelSQL)
                             and not ref_model.table_query()):
                         ref = ref_model._table
                         # Create foreign key table if missing
