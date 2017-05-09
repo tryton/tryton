@@ -1129,7 +1129,6 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         if self.product.type == 'service':
             return
         skip_ids = set(x.id for x in self.moves_ignored)
-        skip_ids.update(x.id for x in self.moves_recreated)
         quantity = abs(self.quantity)
         for move in self.moves:
             if move.state == 'done' or move.id in skip_ids:
