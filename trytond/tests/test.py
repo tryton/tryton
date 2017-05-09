@@ -537,7 +537,7 @@ class One2ManyFilterDomain(ModelSQL):
 class One2ManyFilterDomainTarget(ModelSQL):
     'One2Many Filter Domain Target'
     __name__ = 'test.one2many_filter_domain.target'
-    origin = fields.Many2One('test.one2many_filter', 'Origin')
+    origin = fields.Many2One('test.one2many_filter_domain', 'Origin')
     value = fields.Integer('Value')
 
 
