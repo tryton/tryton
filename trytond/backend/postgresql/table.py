@@ -13,6 +13,7 @@ VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
 
 
 class TableHandler(TableHandlerInterface):
+    namedatalen = 64
 
     def __init__(self, model, module_name=None, history=False):
         super(TableHandler, self).__init__(model,
@@ -314,17 +315,14 @@ class TableHandler(TableHandlerInterface):
             on_delete = 'SET NULL'
 
         cursor = Transaction().connection.cursor()
-        name = self.table_name + '_' + column_name + '_fkey'
-        cursor.execute('SELECT 1 '
-            'FROM information_schema.key_column_usage '
-            'WHERE table_name = %s AND table_schema = %s '
-            'AND constraint_name = %s',
-            (self.table_name, self.table_schema, name))
-        add = False
-        if not cursor.rowcount:
-            add = True
-        elif self._fk_deltypes.get(column_name) != on_delete:
-            self.drop_fk(column_name)
+        name = self.convert_name(self.table_name + '_' + column_name + '_fkey')
+        if name in self._constraints:
+            if self._fk_deltypes.get(column_name) != on_delete:
+                self.drop_fk(column_name)
+                add = True
+            else:
+                add = False
+        else:
             add = True
         if add:
             cursor.execute('ALTER TABLE "' + self.table_name + '" '
@@ -340,16 +338,13 @@ class TableHandler(TableHandlerInterface):
     def index_action(self, column_name, action='add', table=None):
         if isinstance(column_name, basestring):
             column_name = [column_name]
-        index_name = ((table or self.table_name) + "_" + '_'.join(column_name)
-            + "_index")
-        if self._indexes:
-            test_index_name = index_name[:max(map(len, self._indexes))]
-        else:
-            test_index_name = index_name
+        index_name = self.convert_name(
+            ((table or self.table_name) + "_" + '_'.join(column_name) +
+                "_index"))
 
         with Transaction().connection.cursor() as cursor:
             if action == 'add':
-                if test_index_name in self._indexes:
+                if index_name in self._indexes:
                     return
                 cursor.execute('CREATE INDEX "' + index_name + '" '
                     'ON "' + self.table_name + '" ( '
@@ -361,7 +356,7 @@ class TableHandler(TableHandlerInterface):
                                 self.module_name) != self.module_name):
                         return
 
-                if test_index_name in self._indexes:
+                if index_name in self._indexes:
                     cursor.execute('DROP INDEX "%s" ' % (index_name,))
                     self._update_definitions(indexes=True)
             else:
@@ -407,7 +402,7 @@ class TableHandler(TableHandlerInterface):
                 raise Exception('Not null action not supported!')
 
     def add_constraint(self, ident, constraint, exception=False):
-        ident = self.table_name + "_" + ident
+        ident = self.convert_name(self.table_name + "_" + ident)
         if ident in self._constraints:
             # This constrain already exist
             return
@@ -429,7 +424,7 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions(constraints=True)
 
     def drop_constraint(self, ident, exception=False, table=None):
-        ident = (table or self.table_name) + "_" + ident
+        ident = self.convert_name((table or self.table_name) + "_" + ident)
         if ident not in self._constraints:
             return
         cursor = Transaction().connection.cursor()
