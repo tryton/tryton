@@ -11,6 +11,7 @@ VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
 
 
 class TableHandler(TableHandlerInterface):
+    namedatalen = 64
 
     def __init__(self, model, module_name=None, history=False):
         super(TableHandler, self).__init__(model,
@@ -247,7 +248,8 @@ class TableHandler(TableHandlerInterface):
     def add_fk(self, column_name, reference, on_delete=None):
         if on_delete is None:
             on_delete = 'SET NULL'
-        conname = '%s_%s_fkey' % (self.table_name, column_name)
+        conname = self.convert_name(
+            '%s_%s_fkey' % (self.table_name, column_name))
         if conname in self._fkeys:
             self.drop_fk(column_name)
         cursor = Transaction().connection.cursor()
@@ -259,7 +261,8 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions(constraints=True)
 
     def drop_fk(self, column_name, table=None):
-        conname = '%s_%s_fkey' % (self.table_name, column_name)
+        conname = self.convert_name(
+            '%s_%s_fkey' % (self.table_name, column_name))
         if conname not in self._fkeys:
             return
         cursor = Transaction().connection.cursor()
@@ -270,10 +273,9 @@ class TableHandler(TableHandlerInterface):
     def index_action(self, column_name, action='add', table=None):
         if isinstance(column_name, basestring):
             column_name = [column_name]
-        index_name = ((table or self.table_name) + "_" + '_'.join(column_name)
-            + "_index")
-        # Index name length is limited to 64
-        index_name = index_name[:64]
+        index_name = self.convert_name(
+            ((table or self.table_name) + "_" + '_'.join(column_name) +
+                "_index"))
 
         for k in column_name:
             if k in self._columns:
@@ -348,7 +350,7 @@ class TableHandler(TableHandlerInterface):
                 raise Exception('Not null action not supported!')
 
     def add_constraint(self, ident, constraint, exception=False):
-        ident = self.table_name + "_" + ident
+        ident = self.convert_name(self.table_name + "_" + ident)
         if ident in self._constraints:
             # This constrain already exists
             return
@@ -371,7 +373,7 @@ class TableHandler(TableHandlerInterface):
         self._update_definitions(constraints=True)
 
     def drop_constraint(self, ident, exception=False, table=None):
-        ident = (table or self.table_name) + "_" + ident
+        ident = self.convert_name((table or self.table_name) + "_" + ident)
         if ident not in self._constraints:
             return
 

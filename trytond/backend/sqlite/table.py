@@ -248,7 +248,8 @@ class TableHandler(TableHandlerInterface):
     def index_action(self, column_name, action='add', table=None):
         if isinstance(column_name, basestring):
             column_name = [column_name]
-        index_name = self.table_name + "_" + '_'.join(column_name) + "_index"
+        index_name = self.convert_name(
+            self.table_name + "_" + '_'.join(column_name) + "_index")
 
         cursor = Transaction().connection.cursor()
         if action == 'add':

@@ -261,6 +261,7 @@ class ModelSQL(ModelStorage):
     def __raise_integrity_error(
             cls, exception, values, field_names=None, transaction=None):
         pool = Pool()
+        TableHandler = backend.get('TableHandler')
         if field_names is None:
             field_names = cls._fields.keys()
         if transaction is None:
@@ -293,10 +294,10 @@ class ModelSQL(ModelStorage):
                     cls.raise_user_error('foreign_model_missing',
                         error_args=error_args)
         for name, _, error in cls._sql_constraints:
-            if name in str(exception):
+            if TableHandler.convert_name(name) in str(exception):
                 cls.raise_user_error(error)
         for name, error in cls._sql_error_messages.iteritems():
-            if name in str(exception):
+            if TableHandler.convert_name(name) in str(exception):
                 cls.raise_user_error(error)
 
     @classmethod

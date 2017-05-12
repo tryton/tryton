@@ -1,11 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import hashlib
 
 
 class TableHandlerInterface(object):
     '''
     Define generic interface to handle database table
     '''
+    namedatalen = None
 
     def __init__(self, model, module_name=None, history=False):
         '''
@@ -204,3 +206,14 @@ class TableHandlerInterface(object):
         :param cascade: a boolean to add "CASCADE" to the delete query
         '''
         raise NotImplementedError
+
+    @classmethod
+    def convert_name(cls, name):
+        '''
+        Convert data name in respect of namedatalen.
+
+        :param name: the data name
+        '''
+        if cls.namedatalen and len(name) >= cls.namedatalen:
+            name = hashlib.sha256(name).hexdigest()[:cls.namedatalen - 1]
+        return name
