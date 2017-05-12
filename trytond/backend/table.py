@@ -215,5 +215,7 @@ class TableHandlerInterface(object):
         :param name: the data name
         '''
         if cls.namedatalen and len(name) >= cls.namedatalen:
+            if isinstance(name, unicode):
+                name = name.encode('utf-8')
             name = hashlib.sha256(name).hexdigest()[:cls.namedatalen - 1]
         return name
