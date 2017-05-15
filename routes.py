@@ -40,13 +40,14 @@ def checkout(request, pool, model, id):
     elif request.method == 'POST':
         record.stripe_token = request.form['stripeToken']
         record.save()
-        email = request.form['stripeEmail']
-        for mechanism in record.party.contact_mechanisms:
-            if mechanism.type == 'email' and mechanism.value == email:
-                break
-        else:
-            mechanism = ContactMechanism(
-                type='email', value=email, party=record.party)
-            mechanism.save()
+        email = request.form.get('stripeEmail')
+        if email:
+            for mechanism in record.party.contact_mechanisms:
+                if mechanism.type == 'email' and mechanism.value == email:
+                    break
+            else:
+                mechanism = ContactMechanism(
+                    type='email', value=email, party=record.party)
+                mechanism.save()
         return Response(
             '<body onload="window.close()">', 200, content_type='text/html')
