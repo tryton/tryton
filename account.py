@@ -149,8 +149,12 @@ class AccountFrFEC(Wizard):
             accounts = Account.search([])
 
         for account in accounts:
-            if not account.credit and not account.debit:
+            if account.credit == account.debit:
                 continue
+            if account.debit > account.credit:
+                debit, credit = account.debit - account.credit, 0
+            else:
+                debit, credit = 0, account.debit - account.credit
             yield [
                 self.start.deferral_journal.code,
                 self.start.deferral_journal.name,
@@ -163,8 +167,8 @@ class AccountFrFEC(Wizard):
                 '',
                 format_date(self.start.fiscalyear.start_date),
                 '',
-                format_number(account.debit or 0),
-                format_number(account.credit or 0),
+                format_number(debit),
+                format_number(credit),
                 '',
                 '',
                 format_date(self.start.fiscalyear.start_date),
