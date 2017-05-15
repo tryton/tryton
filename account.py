@@ -157,7 +157,8 @@ class AccountFrFEC(Wizard):
             else:
                 debit, credit = 0, account.debit - account.credit
             yield [
-                self.start.deferral_journal.code,
+                self.start.deferral_journal.code
+                or self.start.deferral_journal.name,
                 self.start.deferral_journal.name,
                 self.start.deferral_post_number,
                 format_date(self.start.fiscalyear.start_date),
@@ -165,9 +166,9 @@ class AccountFrFEC(Wizard):
                 account.name,
                 '',
                 '',
-                '',
+                '-',
                 format_date(self.start.fiscalyear.start_date),
-                '',
+                '-',
                 format_number(debit),
                 format_number(credit),
                 '',
@@ -202,7 +203,7 @@ class AccountFrFEC(Wizard):
         if line.reconciliation and line.reconciliation.date <= end_date:
             reconciliation = line.reconciliation
         return [
-            line.move.journal.code,
+            line.move.journal.code or line.move.journal.name,
             line.move.journal.name,
             line.move.post_number,
             format_date(line.move.date),
@@ -210,9 +211,9 @@ class AccountFrFEC(Wizard):
             line.account.name,
             line.party.code if line.party else '',
             line.party.name if line.party else '',
-            self.get_reference(line),
+            self.get_reference(line) or '-',
             format_date(self.get_reference_date(line)),
-            description(),
+            description() or '-',
             format_number(line.debit or 0),
             format_number(line.credit or 0),
             reconciliation.rec_name if reconciliation else '',
