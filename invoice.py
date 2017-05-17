@@ -2018,7 +2018,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         '''
         line = self.__class__()
         line.origin = self
-        line.quantity = -self.quantity
+        if self.quantity:
+            line.quantity = -self.quantity
+        else:
+            line.quantity = self.quantity
 
         for field in ('sequence', 'type', 'invoice_type', 'unit_price',
                 'description', 'unit', 'product', 'account'):
