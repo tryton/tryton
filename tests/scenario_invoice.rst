@@ -343,3 +343,20 @@ The invoice is posted when the reconciliation is deleted::
     >>> invoice.state
     u'posted'
     >>> invoice.tax_identifier
+
+Credit invoice with non line lines::
+
+    >>> invoice = Invoice()
+    >>> invoice.party = party
+    >>> invoice.payment_term = payment_term
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 5
+    >>> line.unit_price = Decimal('40')
+    >>> line = invoice.lines.new()
+    >>> line.type = 'comment'
+    >>> line.description = 'Comment'
+    >>> invoice.click('post')
+    >>> credit = Wizard('account.invoice.credit', [invoice])
+    >>> credit.form.with_refund = True
+    >>> credit.execute('credit')
