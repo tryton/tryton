@@ -1954,7 +1954,10 @@ class InvoiceLine(ModelSQL, ModelView, TaxableMixin):
         '''
         res = {}
         res['origin'] = str(self)
-        res['quantity'] = -self.quantity
+        if self.quantity:
+            res['quantity'] = -self.quantity
+        else:
+            res['quantity'] = self.quantity
 
         for field in ('sequence', 'type', 'invoice_type', 'unit_price',
                 'description'):
