@@ -29,7 +29,7 @@ class ConfigurationSepaMandateSequence(ModelSQL, CompanyValueMixin):
         'ir.sequence', "SEPA Mandate Sequence",
         domain=[
             ('code', '=', 'account.payment.sepa.mandate'),
-            ('company', '=', Eval('company', -1)),
+            ('company', 'in', [Eval('company', -1), None]),
             ],
         depends=['company'])
 
