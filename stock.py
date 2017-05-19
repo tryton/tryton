@@ -3,6 +3,7 @@
 from collections import defaultdict
 from decimal import Decimal
 
+from sql import Column
 from sql.operators import Concat
 from sql.aggregate import Count
 
@@ -11,7 +12,7 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.tools import grouped_slice
+from trytond.tools import grouped_slice, cursor_dict
 
 
 __all__ = ['Configuration', 'ConfigurationSequence', 'ShipmentDrop', 'Move']
@@ -216,12 +217,19 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                         values=[drop_shipment_location],
                         where=move.id.in_(sub_ids)))
 
-            create_move = move.insert(values=move.select(
-                    where=move.shipment.like('stock.shipment.drop,%')))
-            cursor.execute(*create_move)
+            cursor.execute(*move.select(limit=1))
+            moves = list(cursor_dict(cursor))
+            if moves:
+                move_columns = moves[0].keys()
+                columns = [Column(move, c) for c in move_columns if c != 'id']
+                create_move = move.insert(
+                    columns=columns, values=move.select(
+                        *columns,
+                        where=move.shipment.like('stock.shipment.drop,%')))
+                cursor.execute(*create_move)
 
             for move_id, customer_location, line_id in move_sales:
-                cursor.execute(move.update(
+                cursor.execute(*move.update(
                         columns=[move.origin, move.from_location,
                             move.to_location],
                         values=[Concat('sale.line,', str(line_id)),
