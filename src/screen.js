@@ -1067,7 +1067,7 @@
             }
             var prm = jQuery.when();
             if (this.current_view.view_type == 'calendar') {
-                var selected_date = this.current_view.date;
+                var selected_date = this.current_view.get_selected_date();
                 prm = this.switch_view('form');
             }
             if (this.current_view &&
