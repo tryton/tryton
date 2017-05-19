@@ -233,7 +233,8 @@
             var model_access = Sao.common.MODELACCESS.get(
                 this.screen.model_name);
             if (model_access.create) {
-                this.date = date;
+                // Set the calendar date to the clicked date
+                this.el.fullCalendar('gotoDate', date);
                 this.screen.set_current_record(null);
                 this.screen.new_();
             }
@@ -263,11 +264,11 @@
         },
         set_default_date: function(record, selected_date){
             var dtstart = this.attributes.dtstart;
-            if (record.model.fields[dtstart].description.type == 'datetime') {
-                selected_date = Sao.DateTime(selected_date.format()).utc();
-            }
-            record.field_set_client(dtstart, selected_date);
+            record.field_set(dtstart, selected_date);
         },
+        get_selected_date: function(){
+            return this.el.fullCalendar('getDate');
+        }
     });
 
 }());
