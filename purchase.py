@@ -131,6 +131,13 @@ class Purchase:
         if self.customer:
             self.delivery_address = self.customer.address_get(type='delivery')
 
+    @property
+    def delivery_full_address(self):
+        address = super(Purchase, self).delivery_full_address
+        if self.customer and self.delivery_address:
+            address = self.delivery_address.full_address
+        return address
+
     def get_drop_shipments(self, name):
         DropShipment = Pool().get('stock.shipment.drop')
         return list(set(m.shipment.id for l in self.lines for m in l.moves
