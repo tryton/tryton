@@ -575,6 +575,13 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     })
 
     @property
+    def report_address(self):
+        if self.invoice_address:
+            return self.invoice_address.full_address
+        else:
+            return ''
+
+    @property
     def delivery_full_address(self):
         if self.warehouse and self.warehouse.address:
             return self.warehouse.address.full_address
