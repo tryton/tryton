@@ -8,6 +8,7 @@ import time
 import urllib
 import urlparse
 import uuid
+from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -43,7 +44,7 @@ def _send_email(from_, users, email_func):
         msg, title = email_func(user)
         msg['From'] = from_
         msg['To'] = user.email
-        msg['Subject'] = title
+        msg['Subject'] = Header(title, 'utf-8')
         sendmail_transactional(from_, [user.email], msg)
 
 
@@ -56,10 +57,10 @@ def _get_email_template(report, user):
     if ext == 'html' and html2text:
         h = html2text.HTML2Text()
         msg = MIMEMultipart('alternative')
-        msg.attach(MIMEText(h.handle(content), 'plain'))
-        msg.attach(MIMEText(content, ext))
+        msg.attach(MIMEText(h.handle(content), 'plain', _charset='utf-8'))
+        msg.attach(MIMEText(content, ext, _charset='utf-8'))
     else:
-        msg = MIMEText(content, ext)
+        msg = MIMEText(content, ext, _charset='utf-8')
     return msg, title
 
 
