@@ -574,6 +574,12 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'shipment_state': state,
                     })
 
+    @property
+    def delivery_full_address(self):
+        if self.warehouse and self.warehouse.address:
+            return self.warehouse.address.full_address
+        return ''
+
     def get_rec_name(self, name):
         if self.number:
             return self.number
