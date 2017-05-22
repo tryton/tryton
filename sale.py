@@ -633,6 +633,13 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
 
+    @property
+    def report_address(self):
+        if self.invoice_address:
+            return self.invoice_address.full_address
+        else:
+            return ''
+
     @classmethod
     def validate(cls, sales):
         super(Sale, cls).validate(sales)
