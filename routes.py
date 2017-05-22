@@ -33,7 +33,9 @@ def timesheet_works(request, pool, employee):
     employee = Employee(employee)
     with Transaction().set_context(
             company=employee.company.id, employee=employee.id):
-        works = Work.search([])
+        works = Work.search([
+                ('company', '=', employee.company.id),
+                ])
     return [{
             'id': w.id,
             'name': w.rec_name,
