@@ -105,8 +105,11 @@ def timesheet(request, pool, line=None):
             if not line:
                 line, = Line.create([request.parsed_data])
             else:
-                line = Line(line)
-                Line.write([line], request.parsed_data)
+                lines = Line.search([('id', '=', line)])
+                if not lines:
+                    return Response(None, 204)
+                line, = lines
+                Line.write(lines, request.parsed_data)
         return {
             'id': line.id,
             'work': line.work.id,
@@ -115,7 +118,12 @@ def timesheet(request, pool, line=None):
             'description': line.description,
             }
     else:
-        with Transaction().set_context(
-                company=line.company.id, employee=line.employee.id):
-            Line.delete([line])
+        with Transaction().set_user(0):
+            lines = Line.search([('id', '=', line)])
+        if lines:
+            line, = lines
+            with Transaction().set_context(
+                    company=line.company.id, employee=line.employee.id):
+                lines = Line.search([('id', '=', line.id)])
+                Line.delete(lines)
         return Response(None, 204)
