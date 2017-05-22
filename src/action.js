@@ -49,7 +49,7 @@
         var name_prm;
         switch (action.type) {
             case 'ir.action.act_window':
-                params.view_ids = false;
+                params.view_ids = [];
                 params.mode = null;
                 if (!jQuery.isEmptyObject(action.views)) {
                     params.view_ids = [];
@@ -71,18 +71,16 @@
                     active_ids: data.ids
                 };
                 ctx = jQuery.extend(ctx, session.context);
-                var eval_ctx = jQuery.extend({}, ctx);
-                eval_ctx._user = session.user_id;
+                ctx._user = session.user_id;
+                var decoder = new Sao.PYSON.Decoder(ctx);
                 params.context = jQuery.extend(
-                        {}, context, new Sao.PYSON.Decoder(eval_ctx).decode(
-                            action.pyson_context || '{}'));
+                    {}, context,
+                    decoder.decode( action.pyson_context || '{}'));
                 ctx = jQuery.extend(ctx, params.context);
                 ctx = jQuery.extend(ctx, context);
 
-                var domain_context = jQuery.extend({}, ctx);
-                domain_context.context = ctx;
-                domain_context._user = session.user_id;
-                var decoder = new Sao.PYSON.Decoder(domain_context);
+                ctx.context = ctx;
+                decoder = new Sao.PYSON.Decoder(ctx);
                 params.domain = decoder.decode(action.pyson_domain);
                 params.order = decoder.decode(action.pyson_order);
                 params.search_value = decoder.decode(
