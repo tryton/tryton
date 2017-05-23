@@ -39,6 +39,7 @@ class Purchase:
         cls.check_delete_purchase_request(purchases)
         super(Purchase, cls).delete(purchases)
 
+    @classmethod
     def check_delete_purchase_request(cls, purchases):
         with Transaction().set_context(_check_access=False):
             purchases = cls.browse(purchases)
