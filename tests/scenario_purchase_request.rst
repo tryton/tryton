@@ -268,3 +268,10 @@ Create the purchase without product::
     >>> pr.purchase_line.unit
     >>> pr.purchase_line.unit_price
     Decimal('0.0000')
+
+It's not possible to delete a purchase linked to a purchase_request::
+
+    >>> pr.purchase_line.purchase.delete()  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    UserError: ...
