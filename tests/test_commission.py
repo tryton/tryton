@@ -15,6 +15,44 @@ from trytond.pool import Pool
 from trytond.modules.company.tests import create_company, set_company
 
 
+def create_product(name, list_price, cost_price, categories=None):
+    pool = Pool()
+    Template = pool.get('product.template')
+    Product = pool.get('product.product')
+    Uom = pool.get('product.uom')
+
+    unit, = Uom.search([('name', '=', 'Unit')])
+    template = Template(
+        name=name,
+        type='service',
+        list_price=list_price,
+        cost_price=cost_price,
+        default_uom=unit,
+        products=None,
+        )
+    if categories:
+        template.categories = categories
+    template.save()
+    product = Product(template=template)
+    product.save()
+    return product
+
+
+def create_plan(lines):
+    pool = Pool()
+    Plan = pool.get('commission.plan')
+
+    commission_product = create_product("Commission", Decimal(10),
+        Decimal(3), [])
+    plan, = Plan.create([{
+                'name': "Commission Plan",
+                'commission_product': commission_product.id,
+                'lines': [('create', lines)]
+
+                }])
+    return plan
+
+
 class CommissionTestCase(ModuleTestCase):
     'Test Commission module'
     module = 'commission'
@@ -24,58 +62,58 @@ class CommissionTestCase(ModuleTestCase):
         "Test plan with category"
         pool = Pool()
         Category = pool.get('product.category')
-        Template = pool.get('product.template')
-        Product = pool.get('product.product')
-        Uom = pool.get('product.uom')
-        Plan = pool.get('commission.plan')
 
         category = Category(name="Category")
         category.save()
 
-        unit, = Uom.search([('name', '=', 'Unit')])
-
         company = create_company()
         with set_company(company):
-            commission_template = Template(
-                name="Commission",
-                type='service',
-                list_price=Decimal(10),
-                cost_price=Decimal(3),
-                default_uom=unit,
-                products=None,
-                )
-            commission_template.save()
-            commission_product = Product(template=commission_template)
-            commission_product.save()
-            template = Template(
-                name="Template",
-                list_price=Decimal(10),
-                cost_price=Decimal(3),
-                default_uom=unit,
-                products=None,
-                categories=[category],
-                )
-            template.save()
-            product = Product(template=template)
-            product.save()
+            product = create_product(
+                "Other", Decimal(10), Decimal(3), [category])
 
-            plan, = Plan.create([{
-                        'name': "Commission Plan",
-                        'commission_product': commission_product.id,
-                        'lines': [('create', [{
-                                        'category': category.id,
-                                        'formula': 'amount * 0.8',
-                                        }, {
-                                        'formula': 'amount',
-                                        }])],
+            plan = create_plan([{
+                        'category': category.id,
+                        'formula': 'amount * 0.8',
+                        }, {
+                        'formula': 'amount',
                         }])
 
             self.assertEqual(plan.compute(Decimal(1), product), Decimal('0.8'))
 
+            template = product.template
             template.categories = []
             template.save()
 
             self.assertEqual(plan.compute(Decimal(1), product), Decimal(1))
+
+    @with_transaction()
+    def test_plan_no_product(self):
+        "Test plan with no product"
+        pool = Pool()
+        Category = pool.get('product.category')
+        PlanLine = pool.get('commission.plan.line')
+
+        category = Category(name="Category")
+        category.save()
+
+        company = create_company()
+        with set_company(company):
+            product = create_product("Other", Decimal(10), Decimal(3))
+            plan = create_plan([{
+                        'category': category.id,
+                        'formula': 'amount * 0.8',
+                        }, {
+                        'product': product.id,
+                        'formula': 'amount * 0.7',
+                        }, {
+                        'formula': 'amount',
+                        }])
+
+            self.assertEqual(plan.compute(Decimal(1), None), Decimal(1))
+
+            PlanLine.delete(plan.lines[1:])
+
+            self.assertEqual(plan.compute(Decimal(1), None), None)
 
 
 def suite():

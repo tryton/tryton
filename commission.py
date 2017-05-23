@@ -146,6 +146,9 @@ class Plan(ModelSQL, ModelView):
         if product:
             pattern['categories'] = [c.id for c in product.categories]
             pattern['product'] = product.id
+        else:
+            pattern['categories'] = []
+            pattern['product'] = None
         context = self.get_context_formula(amount, product)
         for line in self.lines:
             if line.match(pattern):
