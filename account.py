@@ -93,7 +93,8 @@ class Period:
                 and table.column_exist('out_credit_note_sequence')):
             cursor.execute(*sequence.insert(columns=[
                         sequence.sequence, sequence.fiscalyear,
-                        sequence.period, sequence.out_invoice_sequence,
+                        sequence.company, sequence.period,
+                        sequence.out_invoice_sequence,
                         sequence.out_credit_note_sequence,
                         sequence.in_invoice_sequence,
                         sequence.in_credit_note_sequence],
@@ -101,7 +102,7 @@ class Period:
                             condition=(fiscalyear.id == sql_table.fiscalyear)
                         ).select(
                         Literal(10), sql_table.fiscalyear,
-                        sql_table.id,
+                        fiscalyear.company, sql_table.id,
                         Coalesce(sql_table.out_invoice_sequence,
                             fiscalyear.out_invoice_sequence),
                         Coalesce(sql_table.out_credit_note_sequence,
