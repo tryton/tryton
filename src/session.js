@@ -3,6 +3,11 @@
 (function() {
     'use strict';
 
+    // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa#Unicode_strings
+    function utoa(str) {
+        return window.btoa(unescape(encodeURIComponent(str)));
+    }
+
     Sao.Session = Sao.class_(Object, {
         init: function(database, login) {
             this.user_id = null;
@@ -16,7 +21,7 @@
             }
         },
         get_auth: function() {
-            return btoa(this.login + ':' + this.user_id + ':' + this.session);
+            return utoa(this.login + ':' + this.user_id + ':' + this.session);
         },
         do_login: function(login, password) {
             var dfd = jQuery.Deferred();
