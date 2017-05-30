@@ -7,6 +7,7 @@ from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.transaction import Transaction
+from trytond.tools import grouped_slice
 from trytond.pool import Pool
 from trytond.rpc import RPC
 
@@ -183,10 +184,12 @@ class UIMenu(ModelSQL, ModelView):
             return menus
 
         if menus:
-            parent_ids = [x.parent.id for x in menus if x.parent]
-            parents = cls.search([
-                    ('id', 'in', parent_ids),
-                    ])
+            parent_ids = {x.parent.id for x in menus if x.parent}
+            parents = set()
+            for sub_parent_ids in grouped_slice(parent_ids):
+                parents.update(cls.search([
+                            ('id', 'in', list(sub_parent_ids)),
+                            ]))
             menus = [x for x in menus
                 if (x.parent and x.parent in parents) or not x.parent]
 
