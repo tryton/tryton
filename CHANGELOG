@@ -1,3 +1,4 @@
+* Add cron task to process confirmed purchase
 * Add report_address property on purchase
 
 Version 4.4.0 - 2017-05-01
