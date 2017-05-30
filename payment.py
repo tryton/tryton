@@ -263,7 +263,7 @@ class Payment:
     def search_end_to_end_id(cls, name, domain):
         table = cls.__table__()
         _, operator, value = domain
-        cast = cls.sepa_end_to_end_id.sql_type().base
+        cast = cls.sepa_end_to_end_id._field.sql_type().base
         Operator = fields.SQL_OPERATORS[operator]
         query = table.select(table.id,
             where=Operator(table.id.cast(cast), value))
