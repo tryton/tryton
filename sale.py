@@ -90,6 +90,7 @@ class Sale:
         def filter_line(line):
             return (line.product
                 and line.product.type == 'goods'
+                and not line.product.consumable
                 and line.quantity > 0
                 # Use getattr as supply_on_sale comes from sale_supply module
                 and not getattr(line, 'supply_on_sale', False))
