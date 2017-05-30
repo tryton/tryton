@@ -182,8 +182,9 @@ def _dispatch(request, pool, *args, **kwargs):
             % (method, obj))
 
     log_message = '%s.%s(*%s, **%s) from %s@%s/%s'
-    log_args = (obj, method, args, kwargs,
-        request.authorization.username, request.remote_addr, request.path)
+    username = request.authorization.username.decode('utf-8')
+    log_args = (
+        obj, method, args, kwargs, username, request.remote_addr, request.path)
     logger.info(log_message, *log_args)
 
     user = request.user_id
