@@ -918,6 +918,13 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         pass
 
     @classmethod
+    def cron_process(cls):
+        sales = cls.search([
+                ('state', '=', 'confirmed'),
+                ])
+        cls.process(sales)
+
+    @classmethod
     @ModelView.button
     def process(cls, sales):
         done = []
