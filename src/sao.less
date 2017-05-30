@@ -55,7 +55,10 @@ button {
     & > table.tree {
         width: 100%;
 
-        & > thead > tr > th.selection {
+        & th.selection, td.selection {
+            & > input {
+                .center-block();
+            }
             width: 30px;
         }
         & > thead > tr > th {
@@ -203,7 +206,7 @@ button {
 .column-integer, .column-float, .column-timedelta {
     text-align: right;
 }
-input.column-boolean, input.selection {
+input.column-boolean {
     .center-block();
 }
 

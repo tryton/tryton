@@ -80,7 +80,6 @@
                 });
                 this.selection = jQuery('<input/>', {
                     'type': 'checkbox',
-                    'class': 'selection'
                 });
                 this.selection.change(this.selection_changed.bind(this));
                 th.append(this.selection);
@@ -649,11 +648,12 @@
 
             var td;
             if (this.tree.selection_mode != Sao.common.SELECTION_NONE) {
-                td = jQuery('<td/>');
+                td = jQuery('<td/>', {
+                    'class': 'selection',
+                });
                 this.el.append(td);
                 this.selection = jQuery('<input/>', {
                     'type': 'checkbox',
-                    'class': 'selection'
                 });
                 this.selection.change(this.selection_changed.bind(this));
                 td.append(this.selection);
