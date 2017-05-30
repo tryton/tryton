@@ -376,11 +376,15 @@ class CreatePurchase(Wizard):
 
         if (getattr(self.ask_party, 'party', None)
                 and getattr(self.ask_party, 'company', None)):
+            def compare_string(first, second):
+                return (first or '') == (second or '')
+
             def to_write(request):
                 return (not request.purchase_line
                     and not request.party
                     and request.product == self.ask_party.product
-                    and request.description == self.ask_party.description)
+                    and compare_string(
+                        request.description, self.ask_party.description))
             reqs = filter(to_write, requests)
             if reqs:
                 Request.write(reqs, {
