@@ -119,7 +119,8 @@ class Payment(Workflow, ModelSQL, ModelView):
             ],
         depends=_DEPENDS + ['company'])
     currency = fields.Function(fields.Many2One('currency.currency',
-            'Currency'), 'on_change_with_currency')
+            'Currency'), 'on_change_with_currency',
+        searcher='search_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     kind = fields.Selection(KINDS, 'Kind', required=True,
@@ -156,6 +157,12 @@ class Payment(Workflow, ModelSQL, ModelView):
         states=_STATES, depends=_DEPENDS + ['party', 'currency', 'kind',
             'company'])
     description = fields.Char('Description', states=_STATES, depends=_DEPENDS)
+    origin = fields.Reference(
+        "Origin", selection='get_origin', select=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
     group = fields.Many2One('account.payment.group', 'Group', readonly=True,
         ondelete='RESTRICT',
         states={
@@ -240,6 +247,10 @@ class Payment(Workflow, ModelSQL, ModelView):
             return self.journal.currency.digits
         return 2
 
+    @classmethod
+    def search_currency(cls, name, clause):
+        return [('journal.currency',) + tuple(clause[1:])]
+
     @fields.depends('kind')
     def on_change_kind(self):
         self.line = None
@@ -253,6 +264,20 @@ class Payment(Workflow, ModelSQL, ModelView):
         if self.line:
             self.date = self.line.maturity_date
             self.amount = self.line.payment_amount
+
+    @classmethod
+    def _get_origin(cls):
+        'Return list of Model names for origin Reference'
+        return []
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
     def delete(cls, payments):

@@ -26,6 +26,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="company"/>
             <label name="group"/>
             <field name="group"/>
+            <label name="origin"/>
+            <field name="origin"/>
         </page>
     </notebook>
     <group col="4" colspan="4" id="state_buttons">
