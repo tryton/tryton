@@ -22,7 +22,7 @@ Example::
 
 .. _Rule Format: http://werkzeug.pocoo.org/docs/latest/routing/#rule-format
 
-Tryton also provides some wrappers in `trytond.procotols.wrappers` to ease the
+Tryton also provides some wrappers in `trytond.protocols.wrappers` to ease the
 creation of such route.
 
     - `with_pool`: which takes the first parameter as database name and
