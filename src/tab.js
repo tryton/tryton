@@ -391,6 +391,10 @@
                 ['print', 'glyphicon-print',
                      Sao.i18n.gettext('Print report')]
                 ].forEach(function(menu_action) {
+                    var disabled = false;
+                    if (menu_action[0] != 'action') {
+                        disabled = !toolbars[menu_action[0]].length;
+                    }
                     var button = jQuery('<div/>', {
                         'class': 'btn-group',
                         'role': 'group'
@@ -403,7 +407,7 @@
                         'aria-haspopup': true,
                         'title': menu_action[2],
                         'id': menu_action[0],
-                        'disabled': !toolbars[menu_action[0]].length
+                        'disabled': disabled
                     })
                         .append(jQuery('<span/>', {
                             'class': 'glyphicon ' + menu_action[1],
