@@ -33,8 +33,9 @@ def sendmail(from_addr, to_addrs, msg, server=None):
         senderrs = server.sendmail(from_addr, to_addrs, msg.as_string())
     except smtplib.SMTPException:
         logger.error('fail to send email', exc_info=True)
-    if senderrs:
-        logger.warn('fail to send email to %s', senderrs)
+    else:
+        if senderrs:
+            logger.warn('fail to send email to %s', senderrs)
     if quit:
         server.quit()
 
