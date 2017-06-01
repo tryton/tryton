@@ -981,6 +981,25 @@ class ActionActWindowDomain(ModelSQL, ModelView):
                         'action': action.rec_name,
                         })
 
+    @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        domains = super(ActionActWindowDomain, cls).create(vlist)
+        pool.get('ir.action.keyword')._get_keyword_cache.clear()
+        return domains
+
+    @classmethod
+    def write(cls, domains, values, *args):
+        pool = Pool()
+        super(ActionActWindowDomain, cls).write(domains, values, *args)
+        pool.get('ir.action.keyword')._get_keyword_cache.clear()
+
+    @classmethod
+    def delete(cls, domains):
+        pool = Pool()
+        super(ActionActWindowDomain, cls).delete(domains)
+        pool.get('ir.action.keyword')._get_keyword_cache.clear()
+
 
 class ActionWizard(ActionMixin, ModelSQL, ModelView):
     "Action wizard"
