@@ -275,3 +275,12 @@ class InvoiceLine:
     def __setup__(cls):
         super(InvoiceLine, cls).__setup__()
         cls._check_modify_exclude.add('landed_cost')
+
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('landed_cost', None)
+        return super(InvoiceLine, cls).copy(lines, default=default)
