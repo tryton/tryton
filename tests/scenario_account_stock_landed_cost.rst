@@ -149,3 +149,10 @@ Check move unit price is 101::
     >>> move.reload()
     >>> move.unit_price
     Decimal('101.0000')
+
+Landed cost is cleared when duplicated invoice::
+
+    >>> copy_invoice = invoice.duplicate()
+    >>> landed_cost.reload()
+    >>> len(landed_cost.invoice_lines)
+    1
