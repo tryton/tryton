@@ -11,7 +11,7 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond.tools import grouped_slice, cursor_dict
+from trytond.tools import grouped_slice
 
 
 __all__ = ['Configuration', 'ShipmentDrop', 'Move']
@@ -162,7 +162,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                         where=move.id.in_(sub_ids)))
 
             cursor.execute(*move.select(limit=1))
-            moves = list(cursor_dict(cursor))
+            moves = cursor.dictfetchall()
             if moves:
                 move_columns = moves[0].keys()
                 columns = [Column(move, c) for c in move_columns if c != 'id']
