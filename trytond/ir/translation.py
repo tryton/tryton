@@ -468,11 +468,12 @@ class Translation(ModelSQL, ModelView):
                 cursor.execute(*table.select(table.res_id, table.value,
                         where=where))
                 translations.update(cursor)
-        for res_id in ids:
-            value = translations.setdefault(res_id)
             # Don't store fuzzy translation in cache
             if not Transaction().context.get('fuzzy_translation', False):
-                cls._translation_cache.set((name, ttype, lang, res_id), value)
+                for res_id in to_fetch:
+                    value = translations.setdefault(res_id)
+                    cls._translation_cache.set(
+                        (name, ttype, lang, res_id), value)
         return translations
 
     @classmethod
@@ -628,6 +629,7 @@ class Translation(ModelSQL, ModelView):
                 res.update(cls.get_sources(list(sub_args)))
             return res
 
+        to_cache = []
         for name, ttype, lang, source in args:
             name = unicode(name)
             ttype = unicode(ttype)
@@ -638,6 +640,7 @@ class Translation(ModelSQL, ModelView):
             if trans != -1:
                 res[(name, ttype, lang, source)] = trans
             else:
+                to_cache.append((name, ttype, lang, source))
                 parent_lang = get_parent(lang)
                 if parent_lang:
                     parent_args.append((name, ttype, parent_lang, source))
@@ -674,8 +677,8 @@ class Translation(ModelSQL, ModelView):
                     if (name, ttype, lang, source) not in args:
                         source = None
                     res[(name, ttype, lang, source)] = value
-        for key, value in res.iteritems():
-            cls._translation_cache.set(key, value)
+        for key in to_cache:
+            cls._translation_cache.set(key, res[key])
         return res
 
     @classmethod
