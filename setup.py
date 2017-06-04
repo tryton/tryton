@@ -43,7 +43,8 @@ if minor_version % 2:
 dependency_links = []
 if minor_version % 2:
     # Add development index for testing with trytond
-    dependency_links.append('https://trydevpi.tryton.org/')
+    dependency_links.append('https://trydevpi.tryton.org/%s.%s'
+        % (major_version, minor_version))
 
 setup(name=name,
     version=version,
