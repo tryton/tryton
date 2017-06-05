@@ -1,3 +1,6 @@
+Version 4.0.9 - 2017-06-05
+* Bug fixes (see mercurial logs for details)
+
 Version 4.0.8 - 2017-04-03
 * Bug fixes (see mercurial logs for details)
 * Sanitize path in file_open against suffix (CVE-2017-0360)
