@@ -470,17 +470,21 @@ class CreatePurchase(Wizard):
                 Decimal(1) / 10 ** Line.unit_price.digits[1])
             line.unit_price = product_price
 
+        taxes = []
+        pattern = cls._get_tax_rule_pattern(line, purchase)
         if line.product:
-            taxes = []
             for tax in line.product.supplier_taxes_used:
                 if purchase.party and purchase.party.supplier_tax_rule:
-                    pattern = cls._get_tax_rule_pattern(line, purchase)
                     tax_ids = purchase.party.supplier_tax_rule.apply(
                         tax, pattern)
                     if tax_ids:
                         taxes.extend(tax_ids)
                     continue
                 taxes.append(tax.id)
+        if purchase.party and purchase.party.supplier_tax_rule:
+            tax_ids = purchase.party.supplier_tax_rule.apply(None, pattern)
+            if tax_ids:
+                taxes.extend(tax_ids)
             line.taxes = taxes
         return line
 
