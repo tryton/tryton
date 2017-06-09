@@ -39,7 +39,7 @@ __all__ = [
     'Many2ManyFilterDomainRelation',
     'Reference', 'ReferenceTarget', 'ReferenceRequired',
     'Selection', 'SelectionRequired',
-    'DictSchema', 'Dict', 'DictDefault', 'DictRequired',
+    'DictSchema', 'Dict', 'DictDefault', 'DictRequired', 'DictJSONB',
     'Binary', 'BinaryDefault', 'BinaryRequired', 'BinaryFileStorage',
     'Many2OneDomainValidation', 'Many2OneTarget', 'Many2OneOrderBy',
     'Many2OneSearch', 'Many2OneTree', 'Many2OneMPTT', 'Many2OneNoForeignKey',
@@ -780,6 +780,12 @@ class DictRequired(ModelSQL):
     'Dict Required'
     __name__ = 'test.dict_required'
     dico = fields.Dict(None, 'Test Dict', required=True)
+
+
+class DictJSONB(ModelSQL):
+    'Dict JSONB'
+    __name__ = 'test.dict_jsonb'
+    dico = fields.Dict('test.dict.schema', 'Test Dict')
 
 
 class Binary(ModelSQL):

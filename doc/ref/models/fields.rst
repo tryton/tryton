@@ -846,6 +846,10 @@ Dict
 
 A dictionary field with predefined keys.
 
+.. note::
+    It is possible to store the dict as JSON in the database if the backend
+    supports by manually altering the column type to JSON on the database.
+
 :class:`Dict` has one extra required argument:
 
 .. attribute:: Dict.schema_model

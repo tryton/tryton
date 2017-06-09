@@ -5,6 +5,7 @@ import logging
 import re
 import os
 import urllib
+import json
 from decimal import Decimal
 from threading import RLock
 
@@ -26,11 +27,13 @@ except ImportError:
     PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
+from psycopg2.extras import register_default_json, register_default_jsonb
 
 from sql import Flavor
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
+from trytond.protocols.jsonrpc import JSONDecoder
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 
@@ -340,3 +343,9 @@ if PYINTERVAL:
     register_type(PYINTERVAL)
 register_adapter(float, lambda value: AsIs(repr(value)))
 register_adapter(Decimal, lambda value: AsIs(str(value)))
+
+
+def convert_json(value):
+    return json.loads(value, object_hook=JSONDecoder())
+register_default_json(loads=convert_json)
+register_default_jsonb(loads=convert_json)

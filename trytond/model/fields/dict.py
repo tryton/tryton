@@ -25,9 +25,12 @@ class Dict(Field):
     def get(self, ids, model, name, values=None):
         dicts = dict((id, None) for id in ids)
         for value in values or []:
-            if value[name]:
-                dicts[value['id']] = json.loads(value[name],
-                    object_hook=JSONDecoder())
+            data = value[name]
+            if data:
+                # If stored as JSON conversion is done on backend
+                if isinstance(data, basestring):
+                    data = json.loads(data, object_hook=JSONDecoder())
+                dicts[value['id']] = data
         return dicts
 
     def sql_format(self, value):

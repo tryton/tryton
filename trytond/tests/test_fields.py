@@ -21,6 +21,7 @@ from trytond.exceptions import UserError
 from trytond.model import fields
 from trytond.pool import Pool
 from trytond.config import config
+from trytond import backend
 
 
 class FieldsTestCase(unittest.TestCase):
@@ -3123,6 +3124,31 @@ class FieldsTestCase(unittest.TestCase):
 
         self.assertRaises(UserError, DictRequired.create,
             [{'dico': {}}])
+
+    @with_transaction()
+    @unittest.skipIf(
+        backend.name() != 'postgresql', 'jsonb only suported by postgresql')
+    def test_dict_jsonb(self):
+        'Test Dict stored as jsonb'
+        pool = Pool()
+        Dict = pool.get('test.dict_jsonb')
+        connection = Transaction().connection
+        cursor = connection.cursor()
+
+        Database = backend.get('Database')
+        if Database().get_version(connection) < (9, 2):
+            return
+
+        cursor.execute('ALTER TABLE "%s" '
+            'ALTER COLUMN dico TYPE json USING dico::json' % Dict._table)
+
+        dict1, = Dict.create([{
+                    'dico': {'a': 1, 'b': 2},
+                    }])
+        self.assert_(dict1.dico == {'a': 1, 'b': 2})
+
+        Dict.write([dict1], {'dico': {'z': 26}})
+        self.assert_(dict1.dico == {'z': 26})
 
     @with_transaction()
     def test_binary(self):

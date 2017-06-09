@@ -108,6 +108,7 @@ def register():
         Dict,
         DictDefault,
         DictRequired,
+        DictJSONB,
         Binary,
         BinaryDefault,
         BinaryRequired,
