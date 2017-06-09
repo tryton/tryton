@@ -1,3 +1,4 @@
+* Remove empty pages from notebook
 * Allow to store Dict as JSON on the database
 
 Version 4.4.0 - 2017-05-01

@@ -410,6 +410,11 @@ class ModelView(Model):
                     if colspan is not None:
                         element.attrib['colspan'] = colspan
 
+        # Remove empty pages
+        if type == 'form':
+            for page in tree.xpath('//page[not(descendant::*)]'):
+                page.getparent().remove(page)
+
         if type == 'tree':
             ViewTreeWidth = pool.get('ir.ui.view_tree_width')
             viewtreewidth_ids = ViewTreeWidth.search([

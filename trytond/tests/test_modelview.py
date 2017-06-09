@@ -3,6 +3,7 @@
 
 import unittest
 from mock import patch
+from lxml import etree
 
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
@@ -296,6 +297,19 @@ class ModelView(unittest.TestCase):
                 ]:
             self.assertIn(rpc_name, TestModel.__rpc__)
             check_rpc(TestModel.__rpc__[rpc_name], rpc_attrs)
+
+    @with_transaction()
+    def test_remove_empty_page(self):
+        "Testing the removal of empty pages"
+        pool = Pool()
+        EmptyPage = pool.get('test.modelview.empty_page')
+
+        arch = EmptyPage.fields_view_get(view_type='form')['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        pages = tree.xpath('//page')
+        self.assertEqual(len(pages), 1)
+        self.assertEqual(pages[0].attrib['id'], 'non-empty')
 
 
 def suite():

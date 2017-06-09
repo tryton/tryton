@@ -10,6 +10,7 @@ __all__ = [
     'ModelViewChangedValuesTarget',
     'ModelViewButton',
     'ModelViewRPC',
+    'ModelViewEmptyPage',
     ]
 
 
@@ -106,3 +107,8 @@ class ModelViewRPC(ModelView):
     @classmethod
     def get_function_reference(cls):
         pass
+
+
+class ModelViewEmptyPage(ModelView):
+    'ModelView Empty Page'
+    __name__ = 'test.modelview.empty_page'
