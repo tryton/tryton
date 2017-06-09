@@ -1535,7 +1535,8 @@
         button_clicked: function(event) {
             var record = event.data;
             if (record != this.screen.current_record) {
-                return;
+                // Need to raise the event to get the record selected
+                return true;
             }
             var states = record.expr_eval(this.attributes.states || {});
             if (states.invisible || states.readonly) {
