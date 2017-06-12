@@ -249,7 +249,7 @@ class CreateShippingUPS(Wizard):
                 'AddressLine': (address.street or '').splitlines(),
                 'City': address.city,
                 'PostalCode': address.zip,
-                'CountryCode': address.country.code,
+                'CountryCode': address.country.code if address.country else '',
                 },
             }
 
