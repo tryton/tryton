@@ -1,3 +1,4 @@
+* Delete missing modules not activated when updating module list
 * Remove empty pages from notebook
 * Allow to store Dict as JSON on the database
 

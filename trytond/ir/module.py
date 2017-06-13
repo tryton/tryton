@@ -285,6 +285,8 @@ class Module(ModelSQL, ModelView):
 
         modules = cls.search([])
         name2module = dict((m.name, m) for m in modules)
+        cls.delete([m for m in modules
+                if m.state != 'activated' and m.name not in module_names])
 
         # iterate through activated modules and mark them as being so
         for name in module_names:
