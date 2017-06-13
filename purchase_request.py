@@ -76,8 +76,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
                     Eval('context', {}).get('company', -1)),
             ])
-    origin = fields.Reference('Origin', selection='get_origin', readonly=True,
-            required=True)
+    origin = fields.Reference('Origin', selection='get_origin', readonly=True)
     exception_ignored = fields.Boolean('Ignored Exception')
     state = fields.Selection([
             ('purchased', "Purchased"),
@@ -160,6 +159,9 @@ class PurchaseRequest(ModelSQL, ModelView):
                         [request.state],
                         [state],
                         where=request.id == request_id))
+
+        # Migration from 4.4: remove required on origin
+        tablehandler.not_null_action('origin', action='remove')
 
     def get_rec_name(self, name):
         product_name = (self.product.name if self.product else
@@ -252,7 +254,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         models = IrModel.search([
                 ('model', 'in', list(cls._get_origin())),
                 ])
-        return [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
     def create(cls, vlist):
