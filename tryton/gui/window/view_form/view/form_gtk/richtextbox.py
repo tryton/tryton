@@ -117,6 +117,14 @@ class RichTextBox(TextBox):
             return serialize(
                 self.text_buffer, self.text_buffer, start, end, None)
 
+    def set_value(self, record, field):
+        # avoid modification of not normalized value
+        value = self.get_value()
+        prev_value = field.get_client(record) or ''
+        if value == normalize_markup(prev_value):
+            value = prev_value
+        field.set_client(record, value)
+
     @property
     def modified(self):
         if self.record and self.field:
