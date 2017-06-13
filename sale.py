@@ -1,10 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 from trytond import backend
 from trytond.model import ModelView, Workflow, fields
 from trytond.transaction import Transaction
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
+
+from trytond.modules.product import price_digits
 
 __all__ = ['Configuration', 'ConfigurationSaleMethod', 'Sale', 'SaleLine']
 sale_shipment_cost_method = fields.Selection(
@@ -194,7 +198,7 @@ class Sale:
             date = self.sale_date or today
             with Transaction().set_context(date=date):
                 cost = Currency.compute(Currency(currency_id), cost,
-                    self.currency)
+                    self.currency, round=False)
             cost_line = self.get_shipment_cost_line(cost)
 
         removed = []
@@ -224,6 +228,8 @@ class Sale:
             if last_line.sequence is not None:
                 sequence = last_line.sequence + 1
 
+        shipment_cost = cost.quantize(
+            Decimal(1) / 10 ** SaleLine.shipment_cost.digits[1])
         cost_line = SaleLine(
             sale=self,
             sequence=sequence,
@@ -231,10 +237,12 @@ class Sale:
             product=product,
             quantity=1,  # XXX
             unit=product.sale_uom,
-            shipment_cost=cost,
+            shipment_cost=shipment_cost,
             )
         cost_line.on_change_product()
-        cost_line.unit_price = cost_line.amount = cost
+        cost_line.unit_price = cost.quantize(
+            Decimal(1) / 10 ** SaleLine.unit_price.digits[1])
+        cost_line.amount = cost_line.on_change_with_amount()
         return cost_line
 
     def create_shipment(self, shipment_type):
@@ -247,6 +255,8 @@ class Sale:
                 with Transaction().set_context(
                         shipment.get_carrier_context()):
                     cost, currency_id = self.carrier.get_sale_price()
+                cost = cost.quantize(
+                    Decimal(1) / 10 ** Shipment.cost.digits[1])
                 Shipment.write([shipment], {
                         'carrier': self.carrier.id,
                         'cost': cost,
@@ -281,8 +291,7 @@ class Sale:
 class SaleLine:
     __metaclass__ = PoolMeta
     __name__ = 'sale.line'
-    shipment_cost = fields.Numeric('Shipment Cost',
-        digits=(16, Eval('_parent_sale', {}).get('currency_digits', 2)))
+    shipment_cost = fields.Numeric('Shipment Cost', digits=price_digits)
 
     def _get_invoice_line_quantity(self):
         quantity = super(SaleLine, self)._get_invoice_line_quantity()
