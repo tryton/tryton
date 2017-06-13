@@ -238,14 +238,16 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def write(cls, *args):
         actions = iter(args)
+        all_mechanisms = []
         for mechanisms, values in zip(actions, actions):
+            all_mechanisms.extend(mechanisms)
             if 'party' in values:
                 for mechanism in mechanisms:
                     if mechanism.party.id != values['party']:
                         cls.raise_user_error(
                             'write_party', (mechanism.rec_name,))
         super(ContactMechanism, cls).write(*args)
-        cls._format_values(mechanisms)
+        cls._format_values(all_mechanisms)
 
     @classmethod
     def validate(cls, mechanisms):
