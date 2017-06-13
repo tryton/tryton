@@ -1,3 +1,5 @@
+* Compute sale price with price list even if there is no customer
+
 Version 4.4.0 - 2017-05-01
 * Bug fixes (see mercurial logs for details)
 

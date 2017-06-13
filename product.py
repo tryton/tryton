@@ -21,9 +21,12 @@ class Product:
 
         prices = super(Product, cls).get_sale_price(products,
             quantity=quantity)
-        if context.get('price_list') and context.get('customer'):
+        if context.get('price_list'):
             price_list = PriceList(Transaction().context['price_list'])
-            customer = Party(Transaction().context['customer'])
+            if context.get('customer'):
+                customer = Party(context['customer'])
+            else:
+                customer = None
             context_uom = None
             if context.get('uom'):
                 context_uom = Uom(Transaction().context['uom'])
