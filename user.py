@@ -74,6 +74,10 @@ def _add_params(url, **params):
     return urlparse.urlunsplit(parts)
 
 
+def _extract_params(url):
+    return urlparse.parse_qsl(urlparse.urlsplit(url).query)
+
+
 class User(ModelSQL, ModelView):
     'Web User'
     __name__ = 'web.user'
@@ -397,6 +401,18 @@ class UserSession(ModelSQL):
 class EmailValidation(Report):
     __name__ = 'web.user.email_validation'
 
+    @classmethod
+    def get_context(cls, records, data):
+        context = super(EmailValidation, cls).get_context(records, data)
+        context['extract_params'] = _extract_params
+        return context
+
 
 class EmailResetPassword(Report):
     __name__ = 'web.user.email_reset_password'
+
+    @classmethod
+    def get_context(cls, records, data):
+        context = super(EmailResetPassword, cls).get_context(records, data)
+        context['extract_params'] = _extract_params
+        return context
