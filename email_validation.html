@@ -7,6 +7,9 @@
                 <h1>Just one more step..</h1>
                 <p>${user.email}</p>
                 <form action="${user.get_email_validation_url()}">
+                    <py:for each="name, value in extract_params(user.get_email_validation_url())">
+                    <input type="hidden" name="${name}" value="${value}"/>
+                    </py:for>
                     <button type="submit"
                             style="cursor:pointer;
                             padding: 0.5em 1em; font-size:2em;
