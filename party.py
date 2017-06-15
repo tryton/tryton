@@ -167,8 +167,7 @@ class Party(CompanyMultiValueMixin):
                             & (line.reconciliation == Null)
                             & (account.company == company_id)
                             & party_where
-                            & today_where
-                            & (account.kind == code)),
+                            & today_where),
                         group_by=line.party))
                 for party, value in cursor.fetchall():
                     # SQLite uses float for SUM
