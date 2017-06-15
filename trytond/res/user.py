@@ -544,7 +544,7 @@ class User(ModelSQL, ModelView):
         '''
         LoginAttempt = Pool().get('res.user.login.attempt')
         count = LoginAttempt.count(login)
-        if count > config.get('session', 'max_attempt', default=5):
+        if count > config.getint('session', 'max_attempt', default=5):
             LoginAttempt.add(login)
             raise RateLimitException()
         Transaction().atexit(time.sleep, 2 ** count - 1)
