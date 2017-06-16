@@ -4,6 +4,7 @@ Production Request Scenario
 
 Imports::
 
+    >>> from datetime import timedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
@@ -36,6 +37,13 @@ Create product::
     >>> template.save()
     >>> product.template = template
     >>> product.save()
+
+Define a supply period for production::
+
+    >>> ProductionConfiguration = Model.get('production.configuration')
+    >>> production_configuration = ProductionConfiguration(1)
+    >>> production_configuration.supply_period = timedelta(1)
+    >>> production_configuration.save()
 
 Get stock locations::
 
