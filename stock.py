@@ -180,7 +180,7 @@ class CreateDPDShipping(Wizard):
             'name1': party.name[:50],
             'name2': address.name[:35] if address.name else party.name[:35],
             'street': ' '.join((address.street or '').splitlines())[:35],
-            'country': address.country.code,
+            'country': address.country.code if address.country else '',
             'zipCode': address.zip[:9],
             'city': address.city[:50],
             }
