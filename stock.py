@@ -85,7 +85,7 @@ class ShipmentOut:
                         break
                 else:
                     self.raise_user_error('phone_required', {
-                            'party': self.customer.rec_name,
+                            'party': party.rec_name,
                             })
             if not self.shipping_description:
                 if (any(p.type.ups_code != '01' for p in self.root_packages)
