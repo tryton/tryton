@@ -193,7 +193,7 @@ class Production:
 
             # Remove product with smaller period
             while (products_period
-                    and products_period[0][0] <= (current_date - date).days):
+                    and products_period[0][0] <= (current_date - date)):
                 _, product = products_period.pop(0)
                 product_ids.remove(product.id)
             current_date += datetime.timedelta(1)
