@@ -1,3 +1,4 @@
+* Add localhost_name and timeout as get_smtp_server uri parameters
 * Delete missing modules not activated when updating module list
 * Remove empty pages from notebook
 * Allow to store Dict as JSON on the database

@@ -4,6 +4,7 @@ import logging
 import smtplib
 import urllib
 from email.message import Message
+from urlparse import parse_qs
 
 from .config import config, parse_uri
 from .transaction import Transaction
@@ -44,10 +45,15 @@ def get_smtp_server(uri=None):
     if uri is None:
         uri = config.get('email', 'uri')
     uri = parse_uri(uri)
+    extra = {}
+    if uri.query:
+        cast = {'timeout': int}
+        for key, value in parse_qs(uri.query, strict_parsing=True).iteritems():
+            extra[key] = cast.get(key, lambda a: a)(value[0])
     if uri.scheme.startswith('smtps'):
-        server = smtplib.SMTP_SSL(uri.hostname, uri.port)
+        server = smtplib.SMTP_SSL(uri.hostname, uri.port, **extra)
     else:
-        server = smtplib.SMTP(uri.hostname, uri.port)
+        server = smtplib.SMTP(uri.hostname, uri.port, **extra)
 
     if 'tls' in uri.scheme:
         server.starttls()

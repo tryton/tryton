@@ -191,6 +191,15 @@ The available protocols are:
     - `smtp+tls`: SMTP with STARTTLS
     - `smtps`: SMTP with SSL
 
+The uri accepts the following additional parameters:
+
+* `local_hostname`: used as FQDN of the local host in the HELO/EHLO commands,
+  if omited it will use the value of `socket.getfqdn()`.
+* `timeout`: A number of seconds used as timeout for blocking operations. A
+  `socket.timeout` will be raised when exceeded. If omited the default timeout
+  will be used.
+
+
 Default: `smtp://localhost:25`
 
 from

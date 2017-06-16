@@ -67,6 +67,16 @@ class SendmailTestCase(unittest.TestCase):
             SMTP.assert_called_once_with('localhost', 25)
             server.starttls.assert_called_once_with()
 
+    def test_get_smtp_server_extra_parameters(self):
+        'Test get_smtp_server uri extra parameters'
+        with patch.object(smtplib, 'SMTP') as SMTP:
+            SMTP.return_value = server = Mock()
+            params = 'timeout=30&local_hostname=smtp.example.com'
+            self.assertEqual(
+                get_smtp_server('smtp://localhost:25?%s' % params), server)
+            SMTP.assert_called_once_with(
+                'localhost', 25, timeout=30, local_hostname='smtp.example.com')
+
     @patch('trytond.sendmail.get_smtp_server')
     @with_transaction()
     def test_SMTPDataManager(self, get_smtp_server):
