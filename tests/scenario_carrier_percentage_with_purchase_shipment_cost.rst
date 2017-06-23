@@ -164,13 +164,13 @@ Send products::
     >>> shipment.carrier == carrier
     True
     >>> shipment.cost
-    Decimal('15.00')
+    Decimal('15.0000')
     >>> shipment.cost_currency == company.currency
     True
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
     >>> shipment.cost
-    Decimal('12.00')
+    Decimal('12.0000')
     >>> shipment.cost_currency == company.currency
     True
     >>> shipment.state
