@@ -161,7 +161,7 @@ class Payment:
             return self.journal.stripe_account.id
 
     def get_stripe_amount(self, name):
-        return int(self.amount * 10**self.currency_digits)
+        return int(self.amount * 10 ** self.currency_digits)
 
     @classmethod
     def validate(cls, payments):
