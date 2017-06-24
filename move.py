@@ -457,15 +457,16 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @fields.depends('from_location', 'to_location')
     def on_change_with_unit_price_required(self, name=None):
-        if (self.from_location
-                and self.from_location.type in ('supplier', 'production')):
+        from_type = self.from_location.type if self.from_location else None
+        to_type = self.to_location.type if self.to_location else None
+
+        if from_type == 'supplier' and to_type == 'storage':
             return True
-        if (self.to_location
-                and self.to_location.type == 'customer'):
+        if from_type == 'production':
             return True
-        if (self.from_location and self.to_location
-                and self.from_location.type == 'storage'
-                and self.to_location.type == 'supplier'):
+        if from_type == 'storage' and to_type == 'customer':
+            return True
+        if from_type == 'storage' and to_type == 'supplier':
             return True
         return False
 
