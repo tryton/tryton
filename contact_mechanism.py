@@ -259,8 +259,10 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
         if not phonenumbers or self.type not in _PHONE_TYPES:
             return
         try:
-            phonenumbers.parse(self.value)
+            phonenumber = phonenumbers.parse(self.value)
         except NumberParseException:
+            phonenumber = None
+        if not (phonenumber and phonenumbers.is_valid_number(phonenumber)):
             self.raise_user_error(
                 'invalid_phonenumber', {
                     'phone': self.value,
