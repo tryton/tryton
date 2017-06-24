@@ -48,6 +48,7 @@ Define a supply period for production::
 Get stock locations::
 
     >>> Location = Model.get('stock.location')
+    >>> warehouse_loc, = Location.find([('code', '=', 'WH')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
     >>> lost_loc, = Location.find([('type', '=', 'lost_found')])
 
@@ -83,3 +84,45 @@ There is now a production request::
     True
     >>> production.quantity
     1.0
+
+With an order point without minimal quantity::
+
+    >>> OrderPoint = Model.get('stock.order_point')
+    >>> order_point = OrderPoint()
+    >>> order_point.type = 'production'
+    >>> order_point.product = product
+    >>> order_point.warehouse_location = warehouse_loc
+    >>> order_point.min_quantity = None
+    >>> order_point.target_quantity = 10
+    >>> order_point.save()
+
+Create production request::
+
+    >>> create_pr = Wizard('stock.supply')
+    >>> create_pr.execute('create_')
+
+The is no more production request::
+
+    >>> Production = Model.get('production')
+    >>> Production.find([])
+    []
+
+Set a minimal quantity on order point::
+
+    >>> order_point.min_quantity = 5
+    >>> order_point.save()
+
+Create production request::
+
+    >>> create_pr = Wizard('stock.supply')
+    >>> create_pr.execute('create_')
+
+There is now a production request::
+
+    >>> production, = Production.find([])
+    >>> production.state
+    u'request'
+    >>> production.product == product
+    True
+    >>> production.quantity
+    11.0
