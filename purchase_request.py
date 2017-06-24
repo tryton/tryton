@@ -328,7 +328,7 @@ class PurchaseRequest:
                 min_quantity = min_quantities[product_id]
                 res_qty = res_qties.get(product_id)
                 res_date = res_dates.get(product_id)
-                if current_qty < min_quantity:
+                if min_quantity is not None and current_qty < min_quantity:
                     if not res_date:
                         res_dates[product_id] = current_date
                     if (not res_qty) or (current_qty < res_qty):
