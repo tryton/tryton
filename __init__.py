@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from .account import *
 from .sale import *
 from .purchase import *
+from . import stock
 
 
 def register():
@@ -15,4 +16,5 @@ def register():
         Sale,
         SaleLine,
         PurchaseLine,
+        stock.Move,
         module='account_tax_rule_country', type_='model')

@@ -23,3 +23,10 @@ The countries are picked from the origin document:
 
   - The origin country comes from the invoice address.
   - The destination country comes from the address of the warehouse.
+
+- Stock Consignment:
+
+  - The origin country comes from the warehouse's address of the location or
+    the delivery address for returned customer shipment.
+  - The destination country comes from the warehouse's address of the location
+    or the delivery address for customer shipment.
