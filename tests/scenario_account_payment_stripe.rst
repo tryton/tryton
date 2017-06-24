@@ -107,6 +107,8 @@ Run cron::
     >>> payment.reload()
     >>> payment.state
     u'succeeded'
+    >>> bool(payment.stripe_captured)
+    True
 
 Create failing payment::
 
@@ -212,3 +214,52 @@ Run cron::
     >>> stripe_customer.reload()
     >>> stripe_customer.stripe_token
     >>> stripe_customer.stripe_customer_id
+
+Create capture payment::
+
+    >>> payment, = payment.duplicate()
+    >>> payment.stripe_capture = False
+    >>> payment.click('approve')
+    >>> payment.state
+    u'approved'
+
+Checkout the capture payment::
+
+    >>> token = stripe.Token.create(
+    ...     api_key=payment.journal.stripe_account.secret_key,
+    ...     card={
+    ...         'number': '4242424242424242',
+    ...         'exp_month': 12,
+    ...         'exp_year': datetime.date.today().year + 1,
+    ...         'cvc': '123',
+    ...         },
+    ...     )
+    >>> payment.stripe_token = token.id
+    >>> payment.save()
+
+Process the capture payment::
+
+    >>> process_payment = Wizard('account.payment.process', [payment])
+    >>> process_payment.execute('process')
+    >>> payment.state
+    u'processing'
+
+Run cron::
+
+    >>> Cron = Model.get('ir.cron')
+    >>> cron_charge.click('run_once')
+
+    >>> payment.reload()
+    >>> payment.state
+    u'processing'
+    >>> bool(payment.stripe_captured)
+    False
+
+Capture lower amount::
+
+    >>> payment.amount = Decimal('40')
+    >>> payment.click('stripe_capture_')
+    >>> payment.state
+    u'succeeded'
+    >>> bool(payment.stripe_captured)
+    True

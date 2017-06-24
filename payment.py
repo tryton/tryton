@@ -72,10 +72,24 @@ class Payment:
     __metaclass__ = PoolMeta
     __name__ = 'account.payment'
 
+    stripe_journal = fields.Function(
+        fields.Boolean("Stripe Journal"), 'on_change_with_stripe_journal')
     stripe_checkout_needed = fields.Function(
         fields.Boolean("Stripe Checkout Needed"), 'get_stripe_checkout_needed')
     stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
     stripe_charge_id = fields.Char("Stripe Charge ID", readonly=True)
+    stripe_capture = fields.Boolean(
+        "Stripe Capture",
+        states={
+            'invisible': ~Eval('stripe_journal'),
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
+    stripe_captured = fields.Boolean(
+        "Stripe Captured", readonly=True)
+    stripe_capture_needed = fields.Function(
+        fields.Boolean("Stripe Capture Needed"),
+        'get_stripe_capture_needed')
     stripe_token = fields.Char("Stripe Token", readonly=True)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
@@ -105,6 +119,8 @@ class Payment:
     @classmethod
     def __setup__(cls):
         super(Payment, cls).__setup__()
+        cls.amount.states['readonly'] &= ~Eval('stripe_capture_needed')
+        cls.amount.depends.append('stripe_capture_needed')
         cls._error_messages.update({
                 'stripe_receivable': ('Stripe journal "%(journal)s" '
                     'can only be used for receivable payment "%(payment)s".'),
@@ -115,12 +131,29 @@ class Payment:
                             ['approved', 'processing'])
                         | ~Eval('stripe_checkout_needed', False)),
                     },
+                'stripe_capture_': {
+                    'invisible': ((Eval('state', 'draft') != 'processing')
+                        | ~Eval('stripe_capture_needed')),
+                    },
                 })
+
+    @classmethod
+    def default_stripe_capture(cls):
+        return True
+
+    @classmethod
+    def default_stripe_captured(cls):
+        return False
 
     def get_stripe_checkout_needed(self, name):
         return (self.journal.process_method == 'stripe'
             and not self.stripe_token
             and not self.stripe_customer)
+
+    def get_stripe_capture_needed(self, name):
+        return (self.journal.process_method == 'stripe'
+            and self.stripe_charge_id
+            and not self.stripe_captured)
 
     @fields.depends('journal')
     def on_change_with_stripe_account(self, name=None):
@@ -211,8 +244,9 @@ class Payment:
                 continue
             else:
                 payment.stripe_charge_id = charge.id
+                payment.stripe_captured = charge.captured
                 payment.save()
-                if charge.status == 'succeeded':
+                if charge.status == 'succeeded' and charge.captured:
                     cls.succeed([payment])
                 elif charge.status == 'failed':
                     cls.fail([payment])
@@ -228,10 +262,55 @@ class Payment:
             'api_key': self.journal.stripe_account.secret_key,
             'amount': self.stripe_amount,
             'currency': self.currency.code,
+            'capture': bool(self.stripe_capture),
             'description': self.description,
             'customer': customer,
             'source': source,
             'idempotency_key': self.stripe_checkout_id,
+            }
+
+    @classmethod
+    @ModelView.button
+    def stripe_capture_(cls, payments):
+        """Capture stripe payments
+
+        The transaction is committed after each payment capture.
+        """
+        for payment in payments:
+            if (not payment.stripe_charge_id
+                    or payment.stripe_captured
+                    or payment.state != 'processing'):
+                continue
+            try:
+                charge = stripe.Charge.retrieve(
+                    payment.stripe_charge_id,
+                    api_key=payment.journal.stripe_account.secret_key)
+                charge.capture(**payment._capture_parameters())
+            except stripe.error.RateLimitError:
+                logger.warning("Rate limit error")
+                continue
+            except stripe.error.StripeError as e:
+                payment.stripe_error_message = unicode(e)
+                payment.save()
+                cls.fail([payment])
+            except Exception:
+                logger.error(
+                    "Error when capturing payment %d", payment.id,
+                    exc_info=True)
+                continue
+            else:
+                payment.stripe_charge_id = charge.id
+                payment.stripe_captured = charge.captured
+                payment.save()
+                if charge.status == 'succeeded' and charge.captured:
+                    cls.succeed([payment])
+                elif charge.status == 'failed':
+                    cls.fail([payment])
+            Transaction().commit()
+
+    def _capture_parameters(self):
+        return {
+            'amount': self.stripe_amount,
             }
 
 

@@ -4,9 +4,15 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='buttons']" position="inside">
         <button string="Stripe Checkout" name="stripe_checkout"/>
+        <button string="Stripe Capture" name="stripe_capture_"/>
+    </xpath>
+    <xpath expr="//field[@name='date']" position="after">
+        <label name="stripe_capture"/>
+        <field name="stripe_capture"/>
     </xpath>
     <xpath expr="/form" position="inside">
         <field name="stripe_checkout_needed" invisible="1" colspan="4"/>
+        <field name="stripe_capture_needed" invisible="1" colspan="4"/>
     </xpath>
     <xpath expr="//field[@name='description']" position="after">
         <label name="stripe_error_message"/>

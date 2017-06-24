@@ -33,3 +33,6 @@ The payment has also a checkout button which opens the Stripe checkout form.
 In case of error, it has also new fields which display the error messages.
 
 A cron task runs every 15 minutes to charge each processing payment.
+
+The capture box can be unchecked to only authorize on processing and capture
+the amount in a second step.
