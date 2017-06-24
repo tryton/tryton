@@ -733,8 +733,8 @@ class Move(Workflow, ModelSQL, ModelView):
         if not types:
             return
         for move in moves:
-            if ((move.from_location.type in types
-                        or move.to_location.type in types)
+            if ((move.from_location.type in types) ^
+                    (move.to_location.type in types)
                     and not move.origin):
                 cls.raise_user_warning('%s.done' % move,
                     'no_origin', move.rec_name)
