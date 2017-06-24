@@ -166,15 +166,15 @@ class Production:
         shortages = {}
 
         min_quantities = {}
-        max_quantities = {}
+        target_quantities = {}
         for product_id in product_ids:
             order_point = order_points.get((location_id, product_id))
             if order_point:
                 min_quantities[product_id] = order_point.min_quantity
-                max_quantities[product_id] = order_point.max_quantity
+                target_quantities[product_id] = order_point.target_quantity
             else:
                 min_quantities[product_id] = 0.0
-                max_quantities[product_id] = 0.0
+                target_quantities[product_id] = 0.0
             shortages[product_id] = []
 
         products_period = products_period[:]
@@ -185,9 +185,9 @@ class Production:
             for product_id in product_ids:
                 current_qty = current_qties[product_id]
                 min_quantity = min_quantities[product_id]
-                if current_qty < min_quantity:
-                    max_quantity = max_quantities[product_id]
-                    quantity = max_quantity - current_qty
+                if min_quantity is not None and current_qty < min_quantity:
+                    target_quantity = target_quantities[product_id]
+                    quantity = target_quantity - current_qty
                     shortages[product_id].append((current_date, quantity))
                     current_qties[product_id] += quantity
 
