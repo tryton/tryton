@@ -833,8 +833,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     def assign_try(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
-        if Move.assign_try([m for s in shipments for m in s.moves],
-                with_childs=False):
+        to_assign = [m for s in shipments for m in s.moves
+            if m.assignation_required]
+        if Move.assign_try(to_assign, with_childs=False):
             cls.assign(shipments)
             return True
         else:
@@ -1425,8 +1426,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     @ModelView.button
     def assign_try(cls, shipments):
         Move = Pool().get('stock.move')
-        if Move.assign_try([m for s in shipments
-                    for m in s.inventory_moves]):
+        to_assign = [m for s in shipments for m in s.inventory_moves
+            if m.assignation_required]
+        if Move.assign_try(to_assign):
             cls.assign(shipments)
             return True
         else:
@@ -2417,7 +2419,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def assign_try(cls, shipments):
         Move = Pool().get('stock.move')
         to_assign = [m for s in shipments for m in s.outgoing_moves
-            if m.from_location.type != 'lost_found']
+            if m.assignation_required]
         if not to_assign or Move.assign_try(to_assign):
             cls.assign(shipments)
             return True
