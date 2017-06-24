@@ -142,9 +142,30 @@ class User(ModelSQL, ModelView):
         cls.write(*to_write)
 
     @classmethod
+    def _format_email(cls, users):
+        for user in users:
+            email = user.email.lower()
+            if email != user.email:
+                user.email = email
+        cls.save(users)
+
+    @classmethod
+    def create(cls, vlist):
+        users = super(User, cls).create(vlist)
+        cls._format_email(users)
+        return users
+
+    @classmethod
+    def write(cls, *args):
+        super(User, cls).write(*args)
+        users = sum(args[0:None:2], [])
+        cls._format_email(users)
+
+    @classmethod
     def authenticate(cls, email, password):
         pool = Pool()
         Attempt = pool.get('web.user.authenticate.attempt')
+        email = email.lower()
 
         # Prevent brute force attack
         time.sleep(2 ** Attempt.count(email) - 1)
@@ -309,6 +330,7 @@ class User(ModelSQL, ModelView):
     def set_password_token(cls, email, token, password):
         pool = Pool()
         Attempt = pool.get('web.user.authenticate.attempt')
+        email = email.lower()
 
         # Prevent brute force attack
         time.sleep(2 ** Attempt.count(email) - 1)

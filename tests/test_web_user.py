@@ -184,6 +184,41 @@ class WebUserTestCase(ModuleTestCase):
         self.assertFalse(user.reset_password_token)
         self.assertFalse(user.reset_password_token_expire)
 
+    @with_transaction()
+    def test_create_format_email(self):
+        "Test create format email"
+        pool = Pool()
+        User = pool.get('web.user')
+
+        user = User(email='FOO@Example.com')
+        user.save()
+
+        self.assertEqual(user.email, 'foo@example.com')
+
+    @with_transaction()
+    def test_write_format_email(self):
+        "Test write format email"
+        pool = Pool()
+        User = pool.get('web.user')
+
+        user = User(email='foo@example.com')
+        user.save()
+        User.write([user], {'email': 'BAR@Example.com'})
+
+        self.assertEqual(user.email, 'bar@example.com')
+
+    @with_transaction()
+    def test_authenticate_case_insensitive(self):
+        "Test authenticate case insensitive"
+        pool = Pool()
+        User = pool.get('web.user')
+
+        user = User(email='foo@example.com', password='secret')
+        user.save()
+        auth_user = User.authenticate('FOO@Example.com', 'secret')
+
+        self.assertEqual(auth_user, user)
+
 
 def suite():
     suite = test_suite()
