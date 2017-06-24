@@ -273,6 +273,8 @@ class Move:
     def on_change_with_purchase_visible(self, name=None):
         if self.from_location:
             if self.from_location.type == 'supplier':
+                if self.to_location and self.to_location == 'supplier':
+                    return False
                 return True
         elif self.to_location:
             if self.to_location.type == 'supplier':
