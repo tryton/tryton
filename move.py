@@ -472,7 +472,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @fields.depends('from_location')
     def on_change_with_assignation_required(self, name=None):
         if self.from_location:
-            return self.from_location.type == 'storage'
+            return self.from_location.type in {'storage', 'view'}
 
     @staticmethod
     def _get_shipment():
