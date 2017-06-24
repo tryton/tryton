@@ -1,3 +1,4 @@
+* Invoice shipment cost when at least one shipment is done
 * Use price_digits for storing cost
 
 Version 4.4.0 - 2017-05-01
