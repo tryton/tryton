@@ -36,14 +36,15 @@ def timesheet_works(request, pool, employee):
         works = Work.search([
                 ('company', '=', employee.company.id),
                 ])
-    return [{
-            'id': w.id,
-            'name': w.rec_name,
-            'start': (w.timesheet_start_date.strftime('%Y-%m-%d')
-                if w.timesheet_start_date else None),
-            'end': (w.timesheet_end_date.strftime('%Y-%m-%d')
-                if w.timesheet_end_date else None),
-            } for w in works]
+    return sorted(({
+                'id': w.id,
+                'name': w.rec_name,
+                'start': (w.timesheet_start_date.strftime('%Y-%m-%d')
+                    if w.timesheet_start_date else None),
+                'end': (w.timesheet_end_date.strftime('%Y-%m-%d')
+                    if w.timesheet_end_date else None),
+                } for w in works),
+        key=lambda w: w['name'].lower())
 
 
 @app.route('/<database_name>/timesheet/employee/<int:employee>/lines/<date>',
