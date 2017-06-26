@@ -601,7 +601,9 @@ class DBLogin(object):
             active_profile = self.combo_profile.get_active()
             if active_profile != -1:
                 profile = self.profile_store[active_profile][0]
-                CONFIG['login.profile'] = profile
+            else:
+                profile = ''
+            CONFIG['login.profile'] = profile
             netloc = self.entry_host.get_text()
             host = common.get_hostname(netloc)
             port = common.get_port(netloc)
