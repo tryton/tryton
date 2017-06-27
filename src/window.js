@@ -909,13 +909,18 @@
                 'for': 'input-delimiter'
             });
 
+            var separator = ',';
+            if (navigator.platform == 'Win32' ||
+                navigator.platform == 'Windows') {
+                separator = ';';
+            }
             this.el_csv_delimiter = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control',
                 'id': 'input-delimiter',
                 'size': '1',
                 'maxlength': '1',
-                'value': ','
+                'value': separator
             });
 
             jQuery('<div/>', {
