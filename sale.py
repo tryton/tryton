@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['Sale']
 
@@ -25,7 +26,7 @@ class Sale:
 
     def _get_grouped_invoice_domain(self, invoice):
         "Returns a domain that will find invoices that should be grouped"
-        Invoice = Pool().get('account.invoice')
+        Invoice = invoice.__class__
         invoice_domain = [
             ('lines.origin', 'like', 'sale.line,%'),
             ]
@@ -38,9 +39,14 @@ class Sale:
         return invoice_domain
 
     def _get_invoice_sale(self):
-        Invoice = Pool().get('account.invoice')
+        transaction = Transaction()
+        context = transaction.context
         invoice = super(Sale, self)._get_invoice_sale()
-        if self.invoice_grouping_method:
+        if (not context.get('skip_grouping', False)
+                and self.invoice_grouping_method):
+            with transaction.set_context(skip_grouping=True):
+                invoice = self._get_invoice_sale()
+            Invoice = invoice.__class__
             domain = self._get_grouped_invoice_domain(invoice)
             order = self._get_grouped_invoice_order()
             grouped_invoices = Invoice.search(domain, order=order, limit=1)
