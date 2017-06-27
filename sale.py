@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['Sale']
 
@@ -41,9 +42,14 @@ class Sale:
         return shipment_domain
 
     def _get_shipment_sale(self, shipment_type, values):
+        transaction = Transaction()
+        context = transaction.context
         shipment = super(Sale, self)._get_shipment_sale(shipment_type, values)
-        Shipment = shipment.__class__
-        if self.shipment_grouping_method:
+        if (not context.get('skip_grouping', False)
+                and self.shipment_grouping_method):
+            with transaction.set_context(skip_grouping=True):
+                shipment = self._get_shipment_sale(shipment_type, values)
+            Shipment = shipment.__class__
             domain = self._get_grouped_shipment_domain(shipment)
             order = self._get_grouped_shipment_order()
             grouped_shipments = Shipment.search(domain, order=order, limit=1)
