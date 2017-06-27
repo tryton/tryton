@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import sys
 import unittest
 try:
     from unittest.mock import patch, ANY
@@ -28,6 +29,8 @@ class NotificationEmailTestCase(ModuleTestCase):
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
+    @unittest.skipIf(
+        (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
     @with_transaction()
     def test_notification_email(self):
         "Test email notificiation is sent on trigger"
