@@ -2375,6 +2375,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('shipped')
     @set_employee('shipped_by')
     def ship(cls, shipments):
