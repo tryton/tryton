@@ -2272,6 +2272,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
+    @ModelView.button
     @Workflow.transition('shipped')
     def ship(cls, shipments):
         pool = Pool()
