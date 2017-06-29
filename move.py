@@ -885,7 +885,7 @@ class Line(ModelSQL, ModelView):
                             else:
                                 line_amount -= tax_line['amount']
                             tax_amount += tax_line['amount'] * \
-                                tax_line['tax'][key + '_tax_sign']
+                                getattr(tax_line['tax'], key + '_tax_sign')
                     line_amount = line.account.company.currency.round(
                         line_amount)
                     tax_amount = line.account.company.currency.round(
