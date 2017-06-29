@@ -176,15 +176,19 @@ class Location(ModelSQL, ModelView):
         """ Check locations with moves have types compatible with moves. """
         invalid_move_types = ['warehouse', 'view']
         Move = Pool().get('stock.move')
-        if (self.type in invalid_move_types
-                and Move.search([
+        if self.type in invalid_move_types:
+            # Use root to compute for all companies
+            with Transaction().set_user(0):
+                moves = Move.search([
                         ['OR',
                             ('to_location', '=', self.id),
                             ('from_location', '=', self.id),
                             ],
                         ('state', 'not in', ['staging', 'draft']),
-                        ])):
-            self.raise_user_error('invalid_type_for_moves', (self.rec_name,))
+                        ])
+            if moves:
+                self.raise_user_error(
+                    'invalid_type_for_moves', (self.rec_name,))
 
     @staticmethod
     def default_active():
