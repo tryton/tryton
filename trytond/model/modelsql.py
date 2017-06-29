@@ -596,12 +596,12 @@ class ModelSQL(ModelStorage):
 
         cls.__insert_history(new_ids)
 
+        field_names = cls._fields.keys()
+        cls._update_mptt(field_names, [new_ids] * len(field_names))
+
         records = cls.browse(new_ids)
         for sub_records in grouped_slice(records, cache_size()):
             cls._validate(sub_records)
-
-        field_names = cls._fields.keys()
-        cls._update_mptt(field_names, [new_ids] * len(field_names))
 
         cls.trigger_create(records)
         return records
