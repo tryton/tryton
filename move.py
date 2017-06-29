@@ -1059,7 +1059,7 @@ class Line(ModelSQL, ModelView):
                     tax_line = TaxLine(**TaxLine.default_get(
                             TaxLine._fields.keys()))
 
-                    tax_line.amount = base_amounts[code_id, tax_id],
+                    tax_line.amount = base_amounts[code_id, tax_id]
                     tax_line.currency_digits = self.account.currency_digits
                     tax_line.code = code_id
                     tax_line.tax = tax_id
