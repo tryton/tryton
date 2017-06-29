@@ -227,8 +227,9 @@ class Payment:
         for payment in payments:
             try:
                 charge = stripe.Charge.create(**payment._charge_parameters())
-            except stripe.error.RateLimitError:
-                logger.warning("Rate limit error")
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
                 continue
             except stripe.error.StripeError as e:
                 payment.stripe_error_message = unicode(e)
@@ -286,8 +287,9 @@ class Payment:
                     payment.stripe_charge_id,
                     api_key=payment.journal.stripe_account.secret_key)
                 charge.capture(**payment._capture_parameters())
-            except stripe.error.RateLimitError:
-                logger.warning("Rate limit error")
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
                 continue
             except stripe.error.StripeError as e:
                 payment.stripe_error_message = unicode(e)
