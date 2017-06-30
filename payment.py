@@ -84,7 +84,7 @@ class Payment:
             'invisible': ~Eval('stripe_journal'),
             'readonly': Eval('state') != 'draft',
             },
-        depends=['state'])
+        depends=['stripe_journal', 'state'])
     stripe_captured = fields.Boolean(
         "Stripe Captured", readonly=True)
     stripe_capture_needed = fields.Function(
@@ -144,6 +144,13 @@ class Payment:
     @classmethod
     def default_stripe_captured(cls):
         return False
+
+    @fields.depends('journal')
+    def on_change_with_stripe_journal(self, name=None):
+        if self.journal:
+            return self.journal.process_method == 'stripe'
+        else:
+            return False
 
     def get_stripe_checkout_needed(self, name):
         return (self.journal.process_method == 'stripe'
