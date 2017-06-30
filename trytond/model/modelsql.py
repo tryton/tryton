@@ -1051,6 +1051,19 @@ class ModelSQL(ModelStorage):
 
         cls.trigger_delete(records)
 
+        def get_related_records(Model, field_name, sub_ids):
+            if issubclass(Model, ModelSQL):
+                foreign_table = Model.__table__()
+                foreign_red_sql = reduce_ids(
+                    Column(foreign_table, field_name), sub_ids)
+                cursor.execute(*foreign_table.select(foreign_table.id,
+                        where=foreign_red_sql))
+                records = Model.browse([x[0] for x in cursor.fetchall()])
+            else:
+                with transaction.set_context(active_test=False):
+                    records = Model.search([(field_name, 'in', sub_ids)])
+            return records
+
         for sub_ids, sub_records in izip(
                 grouped_slice(ids), grouped_slice(records)):
             sub_ids = list(sub_ids)
@@ -1063,14 +1076,9 @@ class ModelSQL(ModelStorage):
                 if (not hasattr(Model, 'search')
                         or not hasattr(Model, 'write')):
                     continue
-                foreign_table = Model.__table__()
-                foreign_red_sql = reduce_ids(
-                    Column(foreign_table, field_name), sub_ids)
-                cursor.execute(*foreign_table.select(foreign_table.id,
-                        where=foreign_red_sql))
-                models = Model.browse([x[0] for x in cursor.fetchall()])
-                if models:
-                    Model.write(models, {
+                records = get_related_records(Model, field_name, sub_ids)
+                if records:
+                    Model.write(records, {
                             field_name: None,
                             })
 
@@ -1078,14 +1086,9 @@ class ModelSQL(ModelStorage):
                 if (not hasattr(Model, 'search')
                         or not hasattr(Model, 'delete')):
                     continue
-                foreign_table = Model.__table__()
-                foreign_red_sql = reduce_ids(
-                    Column(foreign_table, field_name), sub_ids)
-                cursor.execute(*foreign_table.select(foreign_table.id,
-                        where=foreign_red_sql))
-                models = Model.browse([x[0] for x in cursor.fetchall()])
-                if models:
-                    Model.delete(models)
+                records = get_related_records(Model, field_name, sub_ids)
+                if records:
+                    Model.delete(records)
 
             for Model, field_name in foreign_keys_tocheck:
                 with Transaction().set_context(_check_access=False):
