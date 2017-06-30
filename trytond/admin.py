@@ -50,7 +50,8 @@ def run(options):
             lang = set()
         lang |= set(options.languages)
         pool = Pool(db_name)
-        pool.init(update=options.update, lang=list(lang))
+        pool.init(update=options.update, lang=list(lang),
+            installdeps=options.installdeps)
 
         if options.update_modules_list:
             with Transaction().start(db_name, 0) as transaction:

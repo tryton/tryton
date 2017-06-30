@@ -1,3 +1,4 @@
+* Add option install module dependencies with trytond-admin
 * Add localhost_name and timeout as get_smtp_server uri parameters
 * Delete missing modules not activated when updating module list
 * Remove empty pages from notebook

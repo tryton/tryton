@@ -133,7 +133,7 @@ class Pool(object):
         '''
         return self._locks[self.database_name]
 
-    def init(self, update=None, lang=None):
+    def init(self, update=None, lang=None, installdeps=False):
         '''
         Init pool
         Set update to proceed to update
@@ -152,7 +152,7 @@ class Pool(object):
             for type in self.classes.keys():
                 self._pool[self.database_name][type] = {}
             restart = not load_modules(self.database_name, self, update=update,
-                    lang=lang)
+                    lang=lang, installdeps=installdeps)
             if restart:
                 self.init()
 
