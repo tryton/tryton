@@ -71,12 +71,14 @@ def file_open(name, mode="r", subdir='modules'):
             epoint = EGG_MODULES[module_name]
             mod_path = os.path.join(epoint.dist.location,
                     *epoint.module_name.split('.')[:-1])
+            mod_path = os.path.abspath(mod_path)
             egg_name = secure_join(mod_path, name)
             if not os.path.isfile(egg_name):
                 # Find module in path
                 for path in sys.path:
                     mod_path = os.path.join(path,
                             *epoint.module_name.split('.')[:-1])
+                    mod_path = os.path.abspath(mod_path)
                     egg_name = secure_join(mod_path, name)
                     if os.path.isfile(egg_name):
                         break
