@@ -1138,7 +1138,7 @@ function eval_pyson(value){
         }
         var session = this.model.session;
         var params = [
-            [['translatable', '=', 'true']]
+            [['translatable', '=', true]]
         ];
         var args = {
             'method': 'model.ir.lang.search',
