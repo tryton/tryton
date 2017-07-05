@@ -22,11 +22,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">product.product,-1</field>
             <field name="action" ref="wizard_update_cost_price"/>
         </record>
-        <record model="ir.action.keyword" id="update_cost_price_template_keyword">
-            <field name="keyword">form_action</field>
-            <field name="model">product.template,-1</field>
-            <field name="action" ref="wizard_update_cost_price"/>
-        </record>
         <record model="ir.action-res.group"
             id="wizard_update_cost_price-group_account">
             <field name="action" ref="wizard_update_cost_price"/>

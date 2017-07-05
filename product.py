@@ -416,24 +416,13 @@ class UpdateCostPrice(Wizard):
     def default_ask_price(self, fields):
         pool = Pool()
         Product = pool.get('product.product')
-        Template = pool.get('product.template')
 
         context = Transaction().context
         default = {}
-        if ('product' in fields
-                and context['active_model'] == 'product.product'):
-            product = Product(context['active_id'])
-            template = product.template
-            default['product'] = product.id
-        elif ('template' in fields
-                and context['active_model'] == 'product.template'):
-            template = Template(context['active_id'])
-            product = template.products[0]
-            default['template'] = template.id
-        else:
-            return default
-        default['cost_price'] = getattr(product, 'recompute_cost_price_%s' %
-            product.cost_price_method)()
+        product = Product(context['active_id'])
+        default['product'] = product.id
+        default['cost_price'] = getattr(
+            product, 'recompute_cost_price_%s' % product.cost_price_method)()
         return default
 
     @staticmethod
@@ -441,12 +430,8 @@ class UpdateCostPrice(Wizard):
         'Return the product or template instance'
         pool = Pool()
         Product = pool.get('product.product')
-        ProductTemplate = pool.get('product.template')
         context = Transaction().context
-        if context['active_model'] == 'product.product':
-            return Product(context['active_id'])
-        else:
-            return ProductTemplate(context['active_id'])
+        return Product(context['active_id'])
 
     @classmethod
     def get_quantity(cls):
@@ -459,10 +444,7 @@ class UpdateCostPrice(Wizard):
         with Transaction().set_context(locations=[l.id for l in locations],
                 stock_date_end=stock_date_end):
             product = cls.get_product()
-            if hasattr(product.__class__, 'cost_price'):
-                return product.quantity
-            else:
-                return product.template.quantity
+            return product.quantity
 
     def transition_should_show_move(self):
         if self.get_quantity() != 0:
@@ -540,16 +522,6 @@ class UpdateCostPrice(Wizard):
     def transition_update_price(self):
         pool = Pool()
         Product = pool.get('product.product')
-        ProductTemplate = pool.get('product.template')
-
-        if not isinstance(Product.cost_price, TemplateFunction):
-            write = partial(Product.write, [self.ask_price.product])
-        else:
-            if self.ask_price.template:
-                template = self.ask_price.template
-            else:
-                template = self.ask_price.product.template
-            write = partial(ProductTemplate.write, [template])
-
-        write({'cost_price': self.ask_price.cost_price})
+        self.ask_price.product.set_multivalue(
+            'cost_price', self.ask_price.cost_price)
         return 'end'

@@ -67,8 +67,6 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
@@ -76,7 +74,6 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('5')
     >>> template.cost_price_method = 'fixed'
     >>> template.lead_time = datetime.timedelta(0)
     >>> template.account_expense = expense
@@ -86,15 +83,14 @@ Create product::
     >>> template.account_stock_customer = stock_customer
     >>> template.account_stock_production = stock_production
     >>> template.account_stock_lost_found = stock_lost_found
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('5')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
-    >>> template_average, = ProductTemplate.duplicate([template], {
+    >>> product, = template.products
+    >>> template_average, = template.duplicate({
     ...         'cost_price_method': 'average',
     ...         })
-    >>> product_average, = Product.duplicate([product], {
-    ...         'template': template_average.id,
-    ...         })
+    >>> product_average, = template_average.products
 
 Create payment term::
 
