@@ -43,9 +43,8 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
@@ -53,12 +52,10 @@ Create product::
     >>> template.salable = True
     >>> template.lead_time = datetime.timedelta(0)
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.account_revenue = revenue
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
-    >>> extra_product = Product()
+    >>> product, = template.products
+
     >>> extra_template = ProductTemplate()
     >>> extra_template.name = 'Extra'
     >>> extra_template.default_uom = unit
@@ -66,11 +63,9 @@ Create product::
     >>> extra_template.salable = True
     >>> extra_template.lead_time = datetime.timedelta(0)
     >>> extra_template.list_price = Decimal('3')
-    >>> extra_template.cost_price = Decimal('3')
     >>> extra_template.account_revenue = revenue
     >>> extra_template.save()
-    >>> extra_product.template = extra_template
-    >>> extra_product.save()
+    >>> extra_product, = extra_template.products
 
 Create payment term::
 
