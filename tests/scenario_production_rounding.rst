@@ -24,44 +24,35 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.producible = True
     >>> template.list_price = Decimal(30)
-    >>> template.cost_price = Decimal(20)
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Create component::
 
-    >>> component = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'component'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal(5)
-    >>> template.cost_price = Decimal(1)
     >>> template.save()
-    >>> component.template = template
-    >>> component.save()
+    >>> component, = template.products
 
 Create residual::
 
-    >>> residual = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'residual'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal(0)
-    >>> template.cost_price = Decimal(0)
     >>> template.save()
-    >>> residual.template = template
-    >>> residual.save()
+    >>> residual, = template.products
 
 Create Bill of Material with rational ratio::
 
