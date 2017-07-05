@@ -97,8 +97,7 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
@@ -106,29 +105,28 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('5')
     >>> template.cost_price_method = 'fixed'
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
     >>> template.supplier_taxes.append(tax)
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('5')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
-    >>> service = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'service'
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.purchasable = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
+    >>> service, = template.products
+    >>> service.cost_price = Decimal('10')
     >>> template.save()
-    >>> service.template = template
-    >>> service.save()
+    >>> service, = template.products
 
 Create payment term::
 

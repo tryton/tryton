@@ -50,8 +50,9 @@ class PurchaseTestCase(ModuleTestCase):
                         'default_uom': g.id,
                         'purchase_uom': kg.id,
                         'list_price': Decimal(5),
-                        'cost_price': Decimal(2),
-                        'products': [('create', [{}])],
+                        'products': [('create', [{
+                                        'cost_price': Decimal(2),
+                                        }])],
                         }])
             product, = template.products
 
