@@ -64,14 +64,11 @@ Create an asset::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> asset_product = Product()
     >>> asset_template = ProductTemplate()
     >>> asset_template.name = 'Asset'
     >>> asset_template.type = 'assets'
     >>> asset_template.default_uom = unit
     >>> asset_template.list_price = Decimal('1000')
-    >>> asset_template.cost_price = Decimal('1000')
     >>> asset_template.depreciable = True
     >>> asset_template.account_expense = expense
     >>> asset_template.account_revenue = revenue
@@ -79,8 +76,7 @@ Create an asset::
     >>> asset_template.account_depreciation = depreciation_account
     >>> asset_template.depreciation_duration = 10
     >>> asset_template.save()
-    >>> asset_product.template = asset_template
-    >>> asset_product.save()
+    >>> asset_product, = asset_template.products
 
 Buy an asset::
 
