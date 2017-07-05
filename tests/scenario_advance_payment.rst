@@ -67,9 +67,8 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
@@ -77,11 +76,9 @@ Create product::
     >>> template.salable = True
     >>> template.delivery_time = 0
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.account_revenue = revenue
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Create payment term::
 
@@ -268,7 +265,6 @@ In case the product is to be supplied on sale
 
 Create the product::
 
-    >>> sos_product = Product()
     >>> sos_template = ProductTemplate()
     >>> sos_template.name = 'Supply On Sale product'
     >>> sos_template.default_uom = unit
@@ -276,13 +272,11 @@ Create the product::
     >>> sos_template.purchasable = True
     >>> sos_template.salable = True
     >>> sos_template.list_price = Decimal('10')
-    >>> sos_template.cost_price = Decimal('5')
     >>> sos_template.account_expense = expense
     >>> sos_template.account_revenue = revenue
     >>> sos_template.supply_on_sale = True
     >>> sos_template.save()
-    >>> sos_product.template = sos_template
-    >>> sos_product.save()
+    >>> sos_product, = sos_template.products
 
 Sell 10 of those products::
 
