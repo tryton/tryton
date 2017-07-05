@@ -3,7 +3,6 @@
 import datetime
 import operator
 from decimal import Decimal
-from functools import partial
 from collections import OrderedDict, defaultdict
 from itertools import groupby
 
@@ -19,7 +18,7 @@ from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from trytond.modules.product import price_digits, TemplateFunction
+from trytond.modules.product import price_digits
 
 __all__ = ['StockMixin', 'Move']
 
