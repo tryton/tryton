@@ -57,7 +57,6 @@ Create fees::
     >>> template_fee.default_uom = unit
     >>> template_fee.type = 'service'
     >>> template_fee.list_price = Decimal('10')
-    >>> template_fee.cost_price = Decimal('0')
     >>> template_fee.account_revenue = revenue
     >>> template_fee.save()
     >>> product_fee, = template_fee.products
