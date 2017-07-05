@@ -38,7 +38,6 @@ class ProductPriceListTestCase(ModuleTestCase):
             template = Template(
                 name='Test Lot Sequence',
                 list_price=Decimal(10),
-                cost_price=Decimal(5),
                 default_uom=kilogram,
                 )
             template.save()
@@ -98,7 +97,6 @@ class ProductPriceListTestCase(ModuleTestCase):
             template = Template(
                 name="Template",
                 list_price=Decimal(10),
-                cost_price=Decimal(3),
                 default_uom=unit,
                 products=None,
                 categories=[category],
