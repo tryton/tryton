@@ -47,20 +47,16 @@ Create commission product::
 
     >>> Uom = Model.get('product.uom')
     >>> Template = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> unit, = Uom.find([('name', '=', 'Unit')])
-    >>> commission_product = Product()
     >>> template = Template()
     >>> template.name = 'Commission'
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal(0)
-    >>> template.cost_price = Decimal(0)
     >>> template.account_expense = accounts['expense']
     >>> template.account_revenue = accounts['revenue']
     >>> template.save()
-    >>> commission_product.template = template
-    >>> commission_product.save()
+    >>> commission_product, = template.products
 
 Create commission plan::
 
@@ -102,7 +98,6 @@ Create principal::
 
 Create product sold::
 
-    >>> product = Product()
     >>> template = Template()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
@@ -113,8 +108,7 @@ Create product sold::
     >>> template.account_revenue = accounts['revenue']
     >>> template.principals.append(principal)
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 
 Create invoice::

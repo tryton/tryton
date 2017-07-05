@@ -15,7 +15,7 @@ from trytond.pool import Pool
 from trytond.modules.company.tests import create_company, set_company
 
 
-def create_product(name, list_price, cost_price, categories=None):
+def create_product(name, list_price, categories=None):
     pool = Pool()
     Template = pool.get('product.template')
     Product = pool.get('product.product')
@@ -26,7 +26,6 @@ def create_product(name, list_price, cost_price, categories=None):
         name=name,
         type='service',
         list_price=list_price,
-        cost_price=cost_price,
         default_uom=unit,
         products=None,
         )
@@ -42,8 +41,7 @@ def create_plan(lines):
     pool = Pool()
     Plan = pool.get('commission.plan')
 
-    commission_product = create_product("Commission", Decimal(10),
-        Decimal(3), [])
+    commission_product = create_product("Commission", Decimal(10), [])
     plan, = Plan.create([{
                 'name': "Commission Plan",
                 'commission_product': commission_product.id,
@@ -68,8 +66,7 @@ class CommissionTestCase(ModuleTestCase):
 
         company = create_company()
         with set_company(company):
-            product = create_product(
-                "Other", Decimal(10), Decimal(3), [category])
+            product = create_product("Other", Decimal(10), [category])
 
             plan = create_plan([{
                         'category': category.id,
@@ -98,7 +95,7 @@ class CommissionTestCase(ModuleTestCase):
 
         company = create_company()
         with set_company(company):
-            product = create_product("Other", Decimal(10), Decimal(3))
+            product = create_product("Other", Decimal(10))
             plan = create_plan([{
                         'category': category.id,
                         'formula': 'amount * 0.8',
