@@ -83,19 +83,16 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> hour, = ProductUom.find([('name', '=', 'Hour')])
-    >>> Product = Model.get('product.product')
     >>> ProductTemplate = Model.get('product.template')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Service'
     >>> template.default_uom = hour
     >>> template.type = 'service'
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('5')
     >>> template.account_revenue = revenue
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Create a Project::
 
