@@ -90,7 +90,6 @@ class StockSupplyTestCase(ModuleTestCase):
                     'name': 'ProductTest',
                     'default_uom': uom.id,
                     'list_price': Decimal(0),
-                    'cost_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
