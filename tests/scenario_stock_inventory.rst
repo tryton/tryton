@@ -33,14 +33,16 @@ Create products::
 
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
+
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('300')
-    >>> template.cost_price = Decimal('80')
     >>> template.cost_price_method = 'average'
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('80')
     >>> template.save()
     >>> product, = template.products
 
@@ -50,8 +52,9 @@ Create products::
     >>> template2.default_uom = kg
     >>> template2.type = 'goods'
     >>> template2.list_price = Decimal('140')
-    >>> template2.cost_price = Decimal('60')
     >>> template2.cost_price_method = 'average'
+    >>> product2, = template2.products
+    >>> product2.cost_price = Decimal('60')
     >>> template2.save()
     >>> product2, = template2.products
 

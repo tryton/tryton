@@ -31,16 +31,13 @@ Create product::
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Get stock locations::
 

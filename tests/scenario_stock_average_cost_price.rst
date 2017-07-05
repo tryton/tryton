@@ -28,28 +28,28 @@ Create product::
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('300')
-    >>> template.cost_price = Decimal('80')
     >>> template.cost_price_method = 'average'
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('80')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
-    >>> negative_product = Product()
+    >>> product, = template.products
+
     >>> template = ProductTemplate()
     >>> template.name = 'Negative Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('28')
-    >>> template.cost_price = Decimal('5')
     >>> template.cost_price_method = 'average'
+    >>> negative_product, = template.products
+    >>> negative_product.cost_price = Decimal('5')
     >>> template.save()
-    >>> negative_product.template = template
-    >>> negative_product.save()
+    >>> negative_product, = template.products
 
 Get stock locations::
 
@@ -77,7 +77,7 @@ Make 1 unit of the product available @ 100 ::
 Check Cost Price is 100::
 
     >>> product.reload()
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('100.0000')
 
 Add 1 more unit @ 200::
@@ -98,7 +98,7 @@ Add 1 more unit @ 200::
 Check Cost Price Average is 150::
 
     >>> product.reload()
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('150.0000')
 
 Add twice 1 more unit @ 200::
@@ -137,20 +137,20 @@ Add twice 1 more unit @ 200::
 Check Cost Price Average is 175::
 
     >>> product.reload()
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('175.0000')
 
 Change Cost Price to 125, to force to write recomputed price later::
 
-    >>> product.template.cost_price = Decimal('125.0000')
-    >>> product.template.save()
-    >>> product.template.cost_price
+    >>> product.cost_price = Decimal('125.0000')
+    >>> product.save()
+    >>> product.cost_price
     Decimal('125.0000')
 
 Recompute Cost Price::
 
     >>> recompute = Wizard('product.recompute_cost_price', [product])
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('175.0000')
 
 Send one product we dont have in stock::
@@ -184,5 +184,5 @@ Recieve two units of the product with negative stock::
 
 Cost price should be set to 2::
 
-    >>> negative_product.template.cost_price
+    >>> negative_product.cost_price
     Decimal('2.0000')

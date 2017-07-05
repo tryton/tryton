@@ -548,7 +548,6 @@ class Move(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Uom = pool.get('product.uom')
         Product = pool.get('product.product')
-        ProductTemplate = pool.get('product.template')
         Location = pool.get('stock.location')
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
@@ -568,11 +567,7 @@ class Move(Workflow, ModelSQL, ModelView):
         qty = Uom.compute_qty(self.uom, quantity, product.default_uom)
 
         qty = Decimal(str(qty))
-        if not isinstance(Product.cost_price, TemplateFunction):
-            product_qty = product.quantity
-        else:
-            product_qty = product.template.quantity
-        product_qty = Decimal(str(max(product_qty, 0)))
+        product_qty = Decimal(str(max(product.quantity, 0)))
         # convert wrt currency
         with Transaction().set_context(date=self.effective_date):
             unit_price = Currency.compute(self.currency, self.unit_price,
@@ -587,18 +582,12 @@ class Move(Workflow, ModelSQL, ModelView):
         else:
             new_cost_price = product.cost_price
 
-        if not isinstance(Product.cost_price, TemplateFunction):
-            digits = Product.cost_price.digits
-            write = partial(Product.write, [product])
-        else:
-            digits = ProductTemplate.cost_price.digits
-            write = partial(ProductTemplate.write, [product.template])
+        digits = Product.cost_price.digits
         new_cost_price = new_cost_price.quantize(
             Decimal(str(10.0 ** -digits[1])))
 
-        write({
-                'cost_price': new_cost_price,
-                })
+        product.set_multivalue(
+            'cost_price', new_cost_price, company=self.company.id)
 
     @staticmethod
     def _get_internal_quantity(quantity, uom, product):

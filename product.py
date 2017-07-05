@@ -185,18 +185,7 @@ class Product(StockMixin, object):
 
     @classmethod
     def recompute_cost_price(cls, products):
-        pool = Pool()
-        Template = pool.get('product.template')
-
-        if not isinstance(cls.cost_price, TemplateFunction):
-            digits = cls.cost_price.digits
-            write = cls.write
-            record = lambda p: p
-        else:
-            digits = Template.cost_price.digits
-            write = Template.write
-            record = lambda p: p.template
-
+        digits = cls.cost_price.digits
         costs = defaultdict(list)
         for product in products:
             if product.type == 'service':
@@ -204,7 +193,7 @@ class Product(StockMixin, object):
             cost = getattr(product,
                 'recompute_cost_price_%s' % product.cost_price_method)()
             cost = cost.quantize(Decimal(str(10.0 ** -digits[1])))
-            costs[cost].append(record(product))
+            costs[cost].append(product)
 
         if not costs:
             return
@@ -216,7 +205,7 @@ class Product(StockMixin, object):
 
         # Enforce check access for account_stock*
         with Transaction().set_context(_check_access=True):
-            write(*to_write)
+            cls.write(*to_write)
 
     def recompute_cost_price_fixed(self):
         return self.cost_price
