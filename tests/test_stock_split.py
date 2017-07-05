@@ -27,10 +27,8 @@ class StockSplitTestCase(ModuleTestCase):
         template, = Template.create([{
                     'name': 'Test Split',
                     'type': 'goods',
-                    'cost_price_method': 'fixed',
                     'default_uom': unit.id,
                     'list_price': Decimal(0),
-                    'cost_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
