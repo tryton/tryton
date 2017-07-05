@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="code"/>
     <label name="active"/>
     <field name="active" xexpand="0" width="100"/>
+    <label name="cost_price"/>
+    <field name="cost_price"/>
     <separator name="description" colspan="6"/>
     <field name="description" colspan="6"/>
 </form>

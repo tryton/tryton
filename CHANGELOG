@@ -1,3 +1,5 @@
+* Move cost_price from Template to Product
+
 Version 4.4.0 - 2017-05-01
 * Bug fixes (see mercurial logs for details)
 * Add ceil and floor as uom rounding

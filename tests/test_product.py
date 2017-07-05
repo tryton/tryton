@@ -226,7 +226,6 @@ class ProductTestCase(ModuleTestCase):
                     'name': 'P1',
                     'type': 'goods',
                     'list_price': Decimal(20),
-                    'cost_price': Decimal(10),
                     'default_uom': kilogram.id,
                     'products': [('create', [{
                                     'code': '1',
@@ -235,7 +234,6 @@ class ProductTestCase(ModuleTestCase):
                     'name': 'P2',
                     'type': 'goods',
                     'list_price': Decimal(20),
-                    'cost_price': Decimal(10),
                     'default_uom': millimeter.id,
                     'products': [('create', [{
                                     'code': '2',
@@ -267,7 +265,6 @@ class ProductTestCase(ModuleTestCase):
             'categories': [('add', [category1.id])],
             'type': 'goods',
             'list_price': Decimal('10'),
-            'cost_price': Decimal('5'),
             'default_uom': uom.id,
             'products': [('create', [{}])],
             }
@@ -276,7 +273,6 @@ class ProductTestCase(ModuleTestCase):
             'categories': [('add', [category2.id])],
             'type': 'goods',
             'list_price': Decimal('10'),
-            'cost_price': Decimal('5'),
             'default_uom': uom.id,
             'products': [('create', [{}])],
             }
@@ -348,7 +344,6 @@ class ProductTestCase(ModuleTestCase):
             'name': 'Product A',
             'type': 'assets',
             'list_price': Decimal('10'),
-            'cost_price': Decimal('5'),
             'default_uom': uom.id,
             'products': [('create', [{'code': 'AA'}])],
             }
@@ -356,7 +351,6 @@ class ProductTestCase(ModuleTestCase):
             'name': 'Product B',
             'type': 'goods',
             'list_price': Decimal('10'),
-            'cost_price': Decimal('5'),
             'default_uom': uom.id,
             'products': [('create', [{'code': 'BB'}])],
             }
