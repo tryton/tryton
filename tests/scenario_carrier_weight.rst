@@ -58,34 +58,33 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> gram, = ProductUom.find([('name', '=', 'Gram')])
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.salable = True
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.account_revenue = revenue
     >>> template.weight = 250
     >>> template.weight_uom = gram
     >>> template.save()
-    >>> product.template = template
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('8')
     >>> product.save()
-    >>> carrier_product = Product()
+
     >>> carrier_template = ProductTemplate()
     >>> carrier_template.name = 'Carrier Product'
     >>> carrier_template.default_uom = unit
     >>> carrier_template.type = 'service'
     >>> carrier_template.salable = True
     >>> carrier_template.list_price = Decimal('3')
-    >>> carrier_template.cost_price = Decimal('3')
     >>> carrier_template.account_revenue = revenue
     >>> carrier_template.save()
-    >>> carrier_product.template = carrier_template
+    >>> carrier_product, = carrier_template.products
+    >>> carrier_product.cost_price = Decimal('3')
     >>> carrier_product.save()
 
 Create carrier::
