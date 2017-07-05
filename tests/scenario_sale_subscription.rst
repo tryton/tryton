@@ -79,22 +79,18 @@ Create subscription service::
 
     >>> Service = Model.get('sale.subscription.service')
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> Uom = Model.get('product.uom')
 
     >>> unit, = Uom.find([('name', '=', 'Unit')])
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Rental'
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('4')
-    >>> template.cost_method = 'fixed'
     >>> template.account_revenue = revenue
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
     >>> service = Service()
     >>> service.product = product
