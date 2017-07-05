@@ -23,7 +23,7 @@ class ProductCostHistory(ModelSQL, ModelView):
     'History of Product Cost'
     __name__ = 'product.product.cost_history'
     _rec_name = 'date'
-    template = fields.Many2One('product.template', 'Product')
+    product = fields.Many2One('product.product', "Product")
     date = fields.DateTime('Date')
     cost_price = fields.Numeric('Cost Price')
 
@@ -44,11 +44,11 @@ class ProductCostHistory(ModelSQL, ModelView):
             Max(history.write_date).as_('write_date'),
             Coalesce(history.write_date,
                 history.create_date).as_('date'),
-            history.template.as_('template'),
+            history.product.as_('product'),
             history.cost_price.as_('cost_price'),
             group_by=(history.id,
                 Coalesce(history.write_date, history.create_date),
-                history.template, history.cost_price))
+                history.product, history.cost_price))
 
 
 class OpenProductCostHistory(Wizard):
@@ -64,11 +64,11 @@ class OpenProductCostHistory(Wizard):
         active_id = Transaction().context.get('active_id')
         if not active_id or active_id < 0:
             action['pyson_domain'] = PYSONEncoder().encode([
-                    ('template', '=', None),
+                    ('product', '=', None),
                     ])
         else:
             product = Product(active_id)
             action['pyson_domain'] = PYSONEncoder().encode([
-                    ('template', '=', product.template.id),
+                    ('product', '=', product.id),
                     ])
         return action, {}
