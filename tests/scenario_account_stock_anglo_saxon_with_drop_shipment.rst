@@ -120,8 +120,6 @@ Create product::
     >>> ProductSupplier = Model.get('purchase.product_supplier')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
@@ -129,7 +127,6 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('5')
     >>> template.cost_price_method = 'fixed'
     >>> template.lead_time = datetime.timedelta(0)
     >>> template.account_expense = expense
@@ -144,9 +141,10 @@ Create product::
     >>> template.account_journal_stock_customer = stock_journal
     >>> template.account_journal_stock_lost_found = stock_journal
     >>> template.supply_on_sale = True
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('5')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
     >>> product_supplier = ProductSupplier()
     >>> product_supplier.product = template
     >>> product_supplier.party = supplier

@@ -105,8 +105,6 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
@@ -114,7 +112,6 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('5')
     >>> template.cost_price_method = 'fixed'
     >>> template.lead_time = datetime.timedelta(0)
     >>> template.account_expense = expense
@@ -128,15 +125,12 @@ Create product::
     >>> template.account_journal_stock_supplier = stock_journal
     >>> template.account_journal_stock_customer = stock_journal
     >>> template.account_journal_stock_lost_found = stock_journal
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('5')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
-    >>> template_average, = ProductTemplate.duplicate([template])
-    >>> template_average.cost_price_method = 'average'
-    >>> template_average.save()
-    >>> product_average, = Product.duplicate([product], {
-    ...         'template': template_average.id,
-    ...         })
+    >>> product, = template.products
+    >>> template_average, = template.duplicate({'cost_price_method': 'average'})
+    >>> product_average, = template_average.products
 
 Create payment term::
 
@@ -351,7 +345,6 @@ Now we will use a product with different unit of measure::
     ...    factor=5, digits=0)
     >>> unit_5.save()
 
-    >>> product_by5 = Product()
     >>> template_by5 = ProductTemplate()
     >>> template_by5.name = 'product'
     >>> template_by5.default_uom = unit
@@ -361,7 +354,6 @@ Now we will use a product with different unit of measure::
     >>> template_by5.salable = True
     >>> template_by5.sale_uom = unit_5
     >>> template_by5.list_price = Decimal('10')
-    >>> template_by5.cost_price = Decimal('5')
     >>> template_by5.cost_price_method = 'fixed'
     >>> template_by5.lead_time = datetime.timedelta(0)
     >>> template_by5.account_expense = expense
@@ -375,9 +367,10 @@ Now we will use a product with different unit of measure::
     >>> template_by5.account_journal_stock_supplier = stock_journal
     >>> template_by5.account_journal_stock_customer = stock_journal
     >>> template_by5.account_journal_stock_lost_found = stock_journal
+    >>> product_by5, = template_by5.products
+    >>> product_by5.cost_price = Decimal('5')
     >>> template_by5.save()
-    >>> product_by5.template = template_by5
-    >>> product_by5.save()
+    >>> product_by5, = template_by5.products
 
     >>> config.user = purchase_user.id
     >>> purchase = Purchase()
