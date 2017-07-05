@@ -34,7 +34,6 @@ class StockLotSLEDTestCase(ModuleTestCase):
             name='Test SLED',
             type='goods',
             list_price=0,
-            cost_price=0,
             default_uom=u,
             shelf_life_state='optional',
             )
