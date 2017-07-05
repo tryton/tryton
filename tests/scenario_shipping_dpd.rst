@@ -98,8 +98,7 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
@@ -108,13 +107,10 @@ Create product::
     >>> template.weight = 100
     >>> template.weight_uom = g
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('5')
-    >>> template.cost_price_method = 'fixed'
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Create an Inventory::
 
@@ -154,20 +150,16 @@ Create a DPD Carrier and the related credential::
     >>> credential.server = 'testing'
     >>> credential.save()
 
-    >>> carrier_product = Product()
     >>> carrier_product_template = ProductTemplate()
     >>> carrier_product_template.name = 'DPD Delivery'
     >>> carrier_product_template.default_uom = unit
     >>> carrier_product_template.type = 'service'
     >>> carrier_product_template.salable = True
     >>> carrier_product_template.list_price = Decimal(20)
-    >>> carrier_product_template.cost_price = Decimal(14)
-    >>> carrier_product_template.cost_price_method = 'fixed'
     >>> carrier_product_template.account_expense = expense
     >>> carrier_product_template.account_revenue = revenue
     >>> carrier_product_template.save()
-    >>> carrier_product.template = carrier_product_template
-    >>> carrier_product.save()
+    >>> carrier_product, = carrier_product_template.products
 
     >>> dpd = Party(name='DPD')
     >>> dpd.save()
