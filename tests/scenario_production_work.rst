@@ -28,41 +28,39 @@ Create product::
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.producible = True
     >>> template.list_price = Decimal(30)
-    >>> template.cost_price = Decimal(20)
+    >>> product, = template.products
+    >>> product.cost_price = Decimal(20)
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Create Components::
 
-    >>> component1 = Product()
     >>> template1 = ProductTemplate()
     >>> template1.name = 'component 1'
     >>> template1.default_uom = unit
     >>> template1.type = 'goods'
     >>> template1.list_price = Decimal(5)
-    >>> template1.cost_price = Decimal(1)
+    >>> component1, = template1.products
+    >>> component1.cost_price = Decimal(1)
     >>> template1.save()
-    >>> component1.template = template1
-    >>> component1.save()
+    >>> component1, = template1.products
 
-    >>> component2 = Product()
     >>> template2 = ProductTemplate()
     >>> template2.name = 'component 2'
     >>> template2.default_uom = unit
     >>> template2.type = 'goods'
     >>> template2.list_price = Decimal(5)
-    >>> template2.cost_price = Decimal(1)
+    >>> component2, = template2.products
+    >>> component2.cost_price = Decimal(1)
     >>> template2.save()
-    >>> component2.template = template2
-    >>> component2.save()
+    >>> component2, = template2.products
 
 Create work centers::
 
