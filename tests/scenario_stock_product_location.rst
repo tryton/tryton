@@ -55,17 +55,15 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.save()
-    >>> product.template = template
+    >>> product, = template.products
     >>> product_location = product.locations.new()
     >>> product_location.warehouse = warehouse_loc
     >>> product_location.location = child_loc

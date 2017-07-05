@@ -39,17 +39,15 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.producible = True
     >>> template.list_price = Decimal(30)
-    >>> template.cost_price = Decimal(20)
     >>> template.save()
-    >>> product.template = template
+    >>> product, = template.products
     >>> product_location = product.locations.new()
     >>> product_location.warehouse = warehouse_loc
     >>> product_location.location = child_loc
@@ -57,29 +55,23 @@ Create product::
 
 Create Components::
 
-    >>> component1 = Product()
     >>> template1 = ProductTemplate()
     >>> template1.name = 'component 1'
     >>> template1.default_uom = unit
     >>> template1.type = 'goods'
     >>> template1.list_price = Decimal(5)
-    >>> template1.cost_price = Decimal(1)
     >>> template1.save()
-    >>> component1.template = template1
-    >>> component1.save()
+    >>> component1, = template1.products
 
     >>> meter, = ProductUom.find([('name', '=', 'Meter')])
     >>> centimeter, = ProductUom.find([('name', '=', 'centimeter')])
-    >>> component2 = Product()
     >>> template2 = ProductTemplate()
     >>> template2.name = 'component 2'
     >>> template2.default_uom = meter
     >>> template2.type = 'goods'
     >>> template2.list_price = Decimal(7)
-    >>> template2.cost_price = Decimal(5)
     >>> template2.save()
-    >>> component2.template = template2
-    >>> component2.save()
+    >>> component2, = template2.products
 
 Create Bill of Material::
 
