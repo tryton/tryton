@@ -26,19 +26,18 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('300')
-    >>> template.cost_price = Decimal('80')
     >>> template.cost_price_method = 'fifo'
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('80')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Get stock locations::
 
@@ -65,7 +64,7 @@ Make 4 units of the product available @ 10 ::
 Check Cost Price is 10::
 
     >>> product.reload()
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('10.0000')
 
 Add 2 more units @ 25::
@@ -85,7 +84,7 @@ Add 2 more units @ 25::
 Check Cost Price FIFO is 15::
 
     >>> product.reload()
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('15.0000')
 
 Sell 3 units @ 50::
@@ -105,7 +104,7 @@ Sell 3 units @ 50::
 Check Cost Price FIFO is 20::
 
     >>> product.reload()
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('20.0000')
 
 Sell twice 1 more units @ 50::
@@ -142,5 +141,5 @@ Sell twice 1 more units @ 50::
 Check Cost Price FIFO is 25::
 
     >>> product.reload()
-    >>> product.template.cost_price
+    >>> product.cost_price
     Decimal('25.0000')

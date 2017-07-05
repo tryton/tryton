@@ -44,7 +44,7 @@ class Move:
         total_qty = Uom.compute_qty(self.uom, self.quantity,
             self.product.default_uom, round=False)
 
-        fifo_moves = self.product.template.get_fifo_move(total_qty)
+        fifo_moves = self.product.get_fifo_move(total_qty)
 
         cost_price = Decimal("0.0")
         consumed_qty = 0.0
