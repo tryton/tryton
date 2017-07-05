@@ -88,8 +88,7 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
-    >>> product = Product()
+
     >>> template = ProductTemplate()
     >>> template.name = 'product'
     >>> template.default_uom = unit
@@ -97,13 +96,11 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('5')
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
     >>> template.supply_on_sale = True
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
 Create payment term::
 
@@ -202,7 +199,7 @@ Switching from not supplying on sale to supplying on sale for product should
 not create a new purchase request::
 
     >>> config.user = admin_user.id
-    >>> changing_product = Product()
+
     >>> changing_template = ProductTemplate()
     >>> changing_template.name = 'product'
     >>> changing_template.default_uom = unit
@@ -210,13 +207,11 @@ not create a new purchase request::
     >>> changing_template.purchasable = True
     >>> changing_template.salable = True
     >>> changing_template.list_price = Decimal('10')
-    >>> changing_template.cost_price = Decimal('5')
     >>> changing_template.account_expense = expense
     >>> changing_template.account_revenue = revenue
     >>> changing_template.supply_on_sale = False
     >>> changing_template.save()
-    >>> changing_product.template = changing_template
-    >>> changing_product.save()
+    >>> changing_product, = changing_template.products
 
     >>> config.user = sale_user.id
     >>> Sale = Model.get('sale.sale')
