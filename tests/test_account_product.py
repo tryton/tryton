@@ -40,8 +40,8 @@ class AccountProductTestCase(ModuleTestCase):
             template = ProductTemplate(
                 name='test account used',
                 list_price=Decimal(10),
-                cost_price=Decimal(3),
                 default_uom=unit.id,
+                products=[],
                 )
             template.save()
 
@@ -54,9 +54,9 @@ class AccountProductTestCase(ModuleTestCase):
             template = ProductTemplate(
                 name='test account used',
                 list_price=Decimal(10),
-                cost_price=Decimal(3),
                 default_uom=unit.id,
                 account_expense=account_expense.id,
+                products=[],
                 )
             template.save()
 
@@ -92,15 +92,15 @@ class AccountProductTestCase(ModuleTestCase):
             templates = ProductTemplate.create([{
                         'name': 'test with account',
                         'list_price': Decimal(10),
-                        'cost_price': Decimal(3),
                         'default_uom': unit.id,
                         'account_expense': account_expense.id,
+                        'products': [],
                         }, {
                         'name': 'test without account',
                         'list_price': Decimal(10),
-                        'cost_price': Decimal(3),
                         'default_uom': unit.id,
                         'account_expense': None,
+                        'products': [],
                         }])
 
             self.assertEqual(templates[0].account_expense_used.id,
