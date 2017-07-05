@@ -46,10 +46,8 @@ class StockForecastTestCase(ModuleTestCase):
         template, = Template.create([{
                     'name': 'Test create_moves',
                     'type': 'goods',
-                    'cost_price_method': 'fixed',
                     'default_uom': unit.id,
                     'list_price': Decimal('1'),
-                    'cost_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
@@ -125,10 +123,8 @@ class StockForecastTestCase(ModuleTestCase):
         template, = Template.create([{
                     'name': 'Test complete',
                     'type': 'goods',
-                    'cost_price_method': 'fixed',
                     'default_uom': unit.id,
                     'list_price': Decimal('1'),
-                    'cost_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
