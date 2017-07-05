@@ -51,35 +51,32 @@ Create products::
 
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
-    >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('300')
-    >>> template.cost_price = Decimal('80')
     >>> template.cost_price_method = 'average'
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
+    >>> product, = template.products
+    >>> product.cost_price = Decimal('80')
     >>> template.save()
-    >>> product.template = template
-    >>> product.save()
+    >>> product, = template.products
 
-    >>> product_landed_cost = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'Landed Cost'
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.landed_cost = True
     >>> template.list_price = Decimal('10')
-    >>> template.cost_price = Decimal('10')
     >>> template.account_expense = expense
     >>> template.account_revenue = revenue
+    >>> product_landed_cost, = template.products
+    >>> product_landed_cost.cost_price = Decimal('10')
     >>> template.save()
-    >>> product_landed_cost.template = template
-    >>> product_landed_cost.save()
+    >>> product_landed_cost, = template.products
 
 Get stock locations::
 
