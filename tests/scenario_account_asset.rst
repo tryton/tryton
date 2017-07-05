@@ -55,7 +55,6 @@ Create an asset::
     >>> asset_template.type = 'assets'
     >>> asset_template.default_uom = unit
     >>> asset_template.list_price = Decimal('1000')
-    >>> asset_template.cost_price = Decimal('1000')
     >>> asset_template.depreciable = True
     >>> asset_template.account_expense = expense
     >>> asset_template.account_revenue = revenue
@@ -63,8 +62,7 @@ Create an asset::
     >>> asset_template.account_depreciation = depreciation_account
     >>> asset_template.depreciation_duration = 24
     >>> asset_template.save()
-    >>> asset_product.template = asset_template
-    >>> asset_product.save()
+    >>> asset_product, = asset_template.products
 
 Create supplier::
 
