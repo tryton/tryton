@@ -37,7 +37,6 @@ class CarrierPercentageTestCase(ModuleTestCase):
                     'default_uom': uom.id,
                     'type': 'service',
                     'list_price': Decimal(0),
-                    'cost_price': Decimal(0),
                     }])
         product, = Product.create([{
                     'template': template.id,
