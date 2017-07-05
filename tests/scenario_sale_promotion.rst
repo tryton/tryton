@@ -49,7 +49,6 @@ Create products::
     >>> template.salable = True
     >>> template.lead_time = datetime.timedelta(0)
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.account_revenue = revenue
     >>> template.save()
     >>> product1 = Product()
