@@ -44,8 +44,6 @@ class StockShipmentMeasurementsTestCase(ModuleTestCase):
                     'name': "Test internal measurements",
                     'type': 'goods',
                     'list_price': Decimal(1),
-                    'cost_price': Decimal(0),
-                    'cost_price_method': 'fixed',
                     'default_uom': kg,
                     }])
         product, = Product.create([{
@@ -147,8 +145,6 @@ class StockShipmentMeasurementsTestCase(ModuleTestCase):
                     'name': "Test measurements",
                     'type': 'goods',
                     'list_price': Decimal(1),
-                    'cost_price': Decimal(0),
-                    'cost_price_method': 'fixed',
                     'default_uom': kg,
                     'volume': 0.2,
                     'volume_uom': liter,
