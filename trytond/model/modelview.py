@@ -720,7 +720,18 @@ class ModelView(Model):
                             target_changed['id'] = target.id
                             value['update'].append(target_changed)
                     else:
-                        value['add'].append((i, target._default_values))
+                        if isinstance(target, ModelView):
+                            # Ensure initial values are returned because target
+                            # was instantiated on server side.
+                            target_init_values = target._init_values
+                            target._init_values = None
+                            try:
+                                added_values = target._changed_values
+                            finally:
+                                target._init_values = target_init_values
+                        else:
+                            added_values = target._default_values
+                        value['add'].append((i, added_values))
                 if not value['remove']:
                     del value['remove']
                 if not value:
