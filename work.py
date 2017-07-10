@@ -223,6 +223,7 @@ class Work(ModelSQL, ModelView):
     @classmethod
     def validate(cls, works):
         super(Work, cls).validate(works)
+        cls.check_recursion(works, rec_name='name')
         for work in works:
             work.check_state()
 
