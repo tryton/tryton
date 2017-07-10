@@ -455,10 +455,9 @@ class ViewTree(View):
             required = field.attrs.get('required')
             readonly = field.attrs.get('readonly')
             if (required or not readonly) and hasattr(pango, 'AttrWeight'):
-                # FIXME when Pango.attr_weight_new is introspectable
                 attrlist = pango.AttrList()
                 if required:
-                    attrlist.insert(pango.AttrWeight(pango.WEIGHT_BOLD, 0, -1))
+                    attrlist.change(pango.AttrWeight(pango.WEIGHT_BOLD, 0, -1))
                 if not readonly:
                     attrlist.change(pango.AttrStyle(pango.STYLE_ITALIC, 0, -1))
                 label.set_attributes(attrlist)

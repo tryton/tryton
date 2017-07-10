@@ -1388,7 +1388,6 @@ def get_label_attributes(readonly, required):
             weight = pango.WEIGHT_NORMAL
     attrlist = pango.AttrList()
     if hasattr(pango, 'AttrWeight'):
-        # FIXME when Pango.attr_weight_new is introspectable
         attrlist.change(pango.AttrWeight(weight, 0, -1))
     if hasattr(pango, 'AttrStyle'):
         attrlist.change(pango.AttrStyle(style, 0, -1))
