@@ -56,13 +56,13 @@ class Template:
                 ],
             states={
                 'readonly': ~Eval('active', True),
-                'required': ~Eval('account_category') & Eval('depreciable'),
+                'required': ~Eval('accounts_category') & Eval('depreciable'),
                 'invisible': (~Eval('depreciable')
                     | (Eval('type', '') != 'assets')
                     | ~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('accounts_category')),
                 },
-            depends=['active', 'depreciable', 'type', 'account_category']))
+            depends=['active', 'depreciable', 'type', 'accounts_category']))
     account_depreciation_used = MissingFunction(
         fields.Many2One('account.account', 'Account Depreciation Used'),
         'missing_account', 'get_account')
@@ -74,13 +74,13 @@ class Template:
                 ],
             states={
                 'readonly': ~Eval('active', True),
-                'required': ~Eval('account_category') & Eval('depreciable'),
+                'required': ~Eval('accounts_category') & Eval('depreciable'),
                 'invisible': (~Eval('depreciable')
                     | (Eval('type', '') != 'assets')
                     | ~Eval('context', {}).get('company')
-                    | Eval('account_category')),
+                    | Eval('accounts_category')),
                 },
-            depends=['active', 'depreciable', 'type', 'account_category']))
+            depends=['active', 'depreciable', 'type', 'accounts_category']))
     account_asset_used = MissingFunction(
         fields.Many2One('account.account', 'Account Asset Used'),
         'missing_account', 'get_account')
