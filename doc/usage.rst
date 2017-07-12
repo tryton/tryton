@@ -43,9 +43,7 @@ Options
 
 -u LOGIN, --user=LOGIN               Specify the login user
 
--p PORT, --port=PORT                 Specify the server port
-
--s SERVER, --server=SERVER           Specify the server hostname
+-s SERVER, --server=SERVER           Specify the server hostname:port
 
 Environment
 ***********
