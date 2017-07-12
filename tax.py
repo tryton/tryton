@@ -1135,10 +1135,6 @@ class TaxLine(ModelSQL, ModelView):
             return self.move_line.currency_digits
         return 2
 
-    @fields.depends('tax')
-    def on_change_tax(self):
-        self.code = None
-
     @fields.depends('_parent_move_line.account', 'move_line')
     def on_change_with_company(self, name=None):
         if self.move_line:
