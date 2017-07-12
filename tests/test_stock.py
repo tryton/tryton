@@ -420,15 +420,27 @@ class StockTestCase(ModuleTestCase):
                 products_by_location[(warehouse.id, product.id)], 1)
             self.assertEqual(products_by_location[(storage.id, product.id)], 2)
 
+            with Transaction().set_context(locations=[warehouse.id]):
+                found_products = Product.search([
+                        ('quantity', '=', 1),
+                        ])
+                self.assertListEqual([product], found_products)
+
             with Transaction().set_context(stock_skip_warehouse=True):
                 products_by_location = Product.products_by_location(
                     [warehouse.id], [product.id], with_childs=True)
                 products_by_location_all = Product.products_by_location(
                     [warehouse.id], None, with_childs=True)
-            self.assertEqual(
-                products_by_location[(warehouse.id, product.id)], 2)
-            self.assertEqual(
-                products_by_location_all[(warehouse.id, product.id)], 2)
+                self.assertEqual(
+                    products_by_location[(warehouse.id, product.id)], 2)
+                self.assertEqual(
+                    products_by_location_all[(warehouse.id, product.id)], 2)
+
+                with Transaction().set_context(locations=[warehouse.id]):
+                    found_products = Product.search([
+                            ('quantity', '=', 2),
+                            ])
+                    self.assertListEqual([product], found_products)
 
     @with_transaction()
     def test_period(self):
