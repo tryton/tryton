@@ -30,6 +30,9 @@ LOCATION_DOMAIN = [
     If(Eval('state').in_(['staging', 'draft', 'cancel']),
         ('type', 'not in', ['warehouse']),
         ('type', 'not in', ['warehouse', 'view'])),
+    If(~Eval('state').in_(['done', 'cancel']),
+        ('active', '=', True),
+        ()),
     ]
 LOCATION_DEPENDS = ['state']
 

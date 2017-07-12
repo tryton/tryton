@@ -121,6 +121,9 @@ class Location(ModelSQL, ModelView):
                     ),
                 'child_of_warehouse': ('Location "%(location)s" must be a '
                     'child of warehouse "%(warehouse)s".'),
+                'inactive_location_with_moves': (
+                    "The location '%(location)s' must be empty "
+                    "to be deactivated."),
                 })
 
         parent_domain = []
@@ -170,8 +173,12 @@ class Location(ModelSQL, ModelView):
     def validate(cls, locations):
         super(Location, cls).validate(locations)
         cls.check_recursion(locations)
+        inactives = []
         for location in locations:
             location.check_type_for_moves()
+            if not location.active:
+                inactives.append(location)
+        cls.check_inactive(locations)
 
     def check_type_for_moves(self):
         """ Check locations with moves have types compatible with moves. """
@@ -190,6 +197,51 @@ class Location(ModelSQL, ModelView):
             if moves:
                 self.raise_user_error(
                     'invalid_type_for_moves', (self.rec_name,))
+
+    @classmethod
+    def check_inactive(cls, locations):
+        "Check inactive location are empty"
+        empty = cls.get_empty_locations(locations)
+        non_empty = set(locations) - set(empty)
+        if non_empty:
+            cls.raise_user_error('inactive_location_with_moves', {
+                    'location': iter(non_empty).next().rec_name,
+                    })
+
+    @classmethod
+    def get_empty_locations(cls, locations=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        if locations is None:
+            locations = cls.search([])
+        if not locations:
+            return []
+        location_ids = map(int, locations)
+        # Use root to compute for all companies
+        # and ensures inactive locations are in the query
+        with Transaction().set_user(0), \
+                Transaction().set_context(active_test=False):
+            query = Move.compute_quantities_query(
+                location_ids, with_childs=True)
+            quantities = Move.compute_quantities(
+                query, location_ids, with_childs=True)
+            empty = set(location_ids)
+            for (location_id, product), quantity in quantities.iteritems():
+                if quantity:
+                    empty.discard(location_id)
+            for sub_ids in grouped_slice(list(empty)):
+                sub_ids = list(sub_ids)
+                moves = Move.search([
+                        ('state', 'not in', ['done', 'cancel']),
+                        ['OR',
+                            ('from_location', 'in', sub_ids),
+                            ('to_location', 'in', sub_ids),
+                            ],
+                        ])
+                for move in moves:
+                    for location in [move.from_location, move.to_location]:
+                        empty.discard(location.id)
+        return cls.browse(empty)
 
     @staticmethod
     def default_active():

@@ -13,7 +13,7 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
-from trytond.exceptions import UserWarning
+from trytond.exceptions import UserWarning, UserError
 from trytond.pool import Pool
 
 from trytond.modules.company.tests import create_company, set_company
@@ -882,6 +882,107 @@ class StockTestCase(ModuleTestCase):
                     stock_assign=True):
                 pbl = Product.products_by_location([storage.id], [product.id])
                 self.assertDictEqual(pbl, {(storage.id, product.id): -5})
+
+    @with_transaction()
+    def test_location_inactive_without_move(self):
+        "Test inactivate location without move"
+        pool = Pool()
+        Location = pool.get('stock.location')
+        storage, = Location.search([('code', '=', 'STO')])
+        location, = Location.create([{
+                    'name': "Location",
+                    'parent': storage.id,
+                    }])
+
+        location.active = False
+        location.save()
+
+    @with_transaction()
+    def test_location_inactive_with_quantity(self):
+        "Test inactivate location with quantity"
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+
+        storage, = Location.search([('code', '=', 'STO')])
+        location, = Location.create([{
+                    'name': "Location",
+                    'parent': storage.id,
+                    }])
+        unit, = Uom.search([('name', '=', "Unit")])
+        template, = Template.create([{
+                    'name': "Product",
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{'template': template.id}])
+
+        company = create_company()
+        with set_company(company):
+
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': storage.id,
+                        'to_location': location.id,
+                        'company': company.id,
+                        }])
+            Move.do(moves)
+            with self.assertRaises(UserError):
+                location.active = False
+                location.save()
+
+    @with_transaction()
+    def test_location_inactive_with_draft_moves(self):
+        "Test inactivate location with draft moves"
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+
+        storage, = Location.search([('code', '=', 'STO')])
+        location, = Location.create([{
+                    'name': "Location",
+                    'parent': storage.id,
+                    }])
+        unit, = Uom.search([('name', '=', "Unit")])
+        template, = Template.create([{
+                    'name': "Product",
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'cost_price': Decimal(0),
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{'template': template.id}])
+
+        company = create_company()
+        with set_company(company):
+            Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': storage.id,
+                        'to_location': location.id,
+                        'company': company.id,
+                        }, {
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': location.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        }])
+            with self.assertRaises(UserError):
+                location.active = False
+                location.save()
 
 
 def suite():
