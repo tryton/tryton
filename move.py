@@ -82,10 +82,12 @@ class StockMixin:
             return quantities
 
         product_ids = products and [p.id for p in products] or None
+        with_childs = Transaction().context.get(
+            'with_childs', len(location_ids) == 1)
 
         with Transaction().set_context(cls._quantity_context(name)):
             pbl = Product.products_by_location(location_ids=location_ids,
-                product_ids=product_ids, with_childs=True,
+                product_ids=product_ids, with_childs=with_childs,
                 grouping=grouping)
 
         for key, quantity in pbl.iteritems():
@@ -117,10 +119,13 @@ class StockMixin:
 
         if not location_ids or not domain:
             return []
+        with_childs = Transaction().context.get(
+            'with_childs', len(location_ids) == 1)
 
         with Transaction().set_context(cls._quantity_context(name)):
             pbl = Product.products_by_location(
-                location_ids=location_ids, with_childs=True, grouping=grouping)
+                location_ids=location_ids, with_childs=with_childs,
+                grouping=grouping)
 
         _, operator_, operand = domain
         operator_ = {
@@ -533,6 +538,7 @@ class Move(Workflow, ModelSQL, ModelView):
         locations = Location.search([
                 ('type', '=', 'storage'),
                 ])
+        context['with_childs'] = False
         context['locations'] = [l.id for l in locations]
         context['stock_date_end'] = Date.today()
         with Transaction().set_context(context):
