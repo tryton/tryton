@@ -528,7 +528,7 @@ class DBLogin(object):
         else:
             self.entry_login.set_text('')
 
-    def clear_profile_combo(self, entry, event):
+    def clear_profile_combo(self, *args):
         netloc = self.entry_host.get_text()
         host = common.get_hostname(netloc)
         port = common.get_port(netloc)
@@ -580,6 +580,7 @@ class DBLogin(object):
             db = CONFIG['login.db'] if CONFIG['login.db'] else ''
             self.entry_database.set_text(db)
             self.entry_login.set_text(CONFIG['login.login'])
+            self.clear_profile_combo()
         self.dialog.show_all()
 
         self.entry_login.grab_focus()
@@ -595,6 +596,7 @@ class DBLogin(object):
             response = self.dialog.run()
             if response != gtk.RESPONSE_OK:
                 break
+            self.clear_profile_combo()
             active_profile = self.combo_profile.get_active()
             if active_profile != -1:
                 profile = self.profile_store[active_profile][0]
