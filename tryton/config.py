@@ -36,8 +36,7 @@ class ConfigManager(object):
         self.defaults = {
             'login.profile': demo_server,
             'login.login': 'demo',
-            'login.server': demo_server,
-            'login.port': '8000',
+            'login.host': demo_server,
             'login.db': demo_database,
             'login.expanded': False,
             'client.title': 'Tryton',
@@ -61,9 +60,7 @@ class ConfigManager(object):
             'menu.expanded': True,
         }
         self.config = {}
-        self.options = {
-            'login.host': True
-        }
+        self.options = {}
         self.arguments = []
 
     def parse(self):

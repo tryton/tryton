@@ -477,20 +477,19 @@ class DBLogin(object):
 
         # Profile informations
         self.profile_cfg = os.path.join(get_config_dir(), 'profiles.cfg')
-        self.profiles = ConfigParser.SafeConfigParser({'port': '8000'})
+        self.profiles = ConfigParser.SafeConfigParser()
         if not os.path.exists(self.profile_cfg):
             short_version = '.'.join(__version__.split('.', 2)[:2])
             name = 'demo%s.tryton.org' % short_version
             self.profiles.add_section(name)
             self.profiles.set(name, 'host', name)
-            self.profiles.set(name, 'port', '8000')
             self.profiles.set(name, 'database', 'demo%s' % short_version)
             self.profiles.set(name, 'username', 'demo')
         else:
             self.profiles.read(self.profile_cfg)
         for section in self.profiles.sections():
             active = all(self.profiles.has_option(section, option)
-                for option in ('host', 'port', 'database'))
+                for option in ('host', 'database'))
             self.profile_store.append([section, active])
 
     def profile_manage(self, widget):
@@ -560,8 +559,10 @@ class DBLogin(object):
         profile_name = CONFIG['login.profile']
         can_use_profile = self.profiles.has_section(profile_name)
         if can_use_profile:
-            for (configname, sectionname) in (('login.server', 'host'),
-                    ('login.port', 'port'), ('login.db', 'database')):
+            for (configname, sectionname) in [
+                    ('login.host', 'host'),
+                    ('login.db', 'database'),
+                    ]:
                 if (self.profiles.get(profile_name, sectionname)
                         != CONFIG[configname]):
                     can_use_profile = False
@@ -574,12 +575,8 @@ class DBLogin(object):
                     break
         else:
             self.combo_profile.set_active(-1)
-            if ':' in CONFIG['login.server']:
-                host = '[%s]' % CONFIG['login.server']
-            else:
-                host = CONFIG['login.server']
-            self.entry_host.set_text('%s:%s' % (host,
-                CONFIG['login.port']))
+            host = CONFIG['login.host'] if CONFIG['login.host'] else ''
+            self.entry_host.set_text(host)
             db = CONFIG['login.db'] if CONFIG['login.db'] else ''
             self.entry_database.set_text(db)
             self.entry_login.set_text(CONFIG['login.login'])
@@ -604,11 +601,11 @@ class DBLogin(object):
             else:
                 profile = ''
             CONFIG['login.profile'] = profile
-            netloc = self.entry_host.get_text()
-            host = common.get_hostname(netloc)
-            port = common.get_port(netloc)
+            host = self.entry_host.get_text()
+            hostname = common.get_hostname(host)
+            port = common.get_port(host)
             try:
-                test = DBListEditor.test_server_version(host, port)
+                test = DBListEditor.test_server_version(hostname, port)
                 if not test:
                     if test is False:
                         common.warning('',
@@ -622,13 +619,12 @@ class DBLogin(object):
                 continue
             database = self.entry_database.get_text()
             login = self.entry_login.get_text()
-            CONFIG['login.server'] = host
-            CONFIG['login.port'] = port
+            CONFIG['login.host'] = host
             CONFIG['login.db'] = database
             CONFIG['login.expanded'] = self.expander.props.expanded
             CONFIG['login.login'] = login
             result = (
-                host, port, database, self.entry_login.get_text())
+                hostname, port, database, self.entry_login.get_text())
 
         self.parent.present()
         self.dialog.destroy()

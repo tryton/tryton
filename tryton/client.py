@@ -224,13 +224,12 @@ class TrytonClient(object):
             urlp = urlparse(url)
             if urlp.scheme == 'tryton':
                 urlp = urlparse('http' + url[6:])
-                hostname, port = (urlp.netloc.split(':', 1)
-                        + [CONFIG.defaults['login.port']])[:2]
+                hostname = common.get_hostname(urlp.netloc)
+                port = common.get_port(urlp.netloc)
                 database, _ = (urlp.path[1:].split('/', 1) + [None])[:2]
                 if IPCClient(hostname, port, database).write(url):
                     sys.exit(0)
-                CONFIG['login.server'] = hostname
-                CONFIG['login.port'] = port
+                CONFIG['login.host'] = urlp.netloc
                 CONFIG['login.db'] = database
                 CONFIG['login.expanded'] = True
         translate.set_language_direction(CONFIG['client.language_direction'])

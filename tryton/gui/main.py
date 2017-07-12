@@ -1215,8 +1215,8 @@ class Main(object):
         if not urlp.scheme == 'tryton':
             return
         urlp = urlparse('http' + url[6:])
-        hostname, port = map(urllib.unquote,
-            (urlp.netloc.split(':', 1) + [CONFIG.defaults['login.port']])[:2])
+        hostname = common.get_hostname(urlp.netloc)
+        port = common.get_port(urlp.netloc)
         database, path = map(urllib.unquote,
             (urlp.path[1:].split('/', 1) + [''])[:2])
         if (not path or
