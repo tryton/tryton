@@ -17,7 +17,7 @@ from sql import Table
 from trytond.pool import Pool, isregisteredby
 from trytond import backend
 from trytond.model import Workflow
-from trytond.model.fields import get_eval_fields
+from trytond.model.fields import get_eval_fields, Function
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
 from trytond.cache import Cache
@@ -434,6 +434,26 @@ class ModuleTestCase(unittest.TestCase):
                         'field': field_name,
                         'model': model.__name__,
                         })
+
+    @with_transaction()
+    def test_function_fields(self):
+        "Test function fields methods"
+        for mname, model in Pool().iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            for field_name, field in model._fields.iteritems():
+                if not isinstance(field, Function):
+                    continue
+                for func_name in [field.getter, field.setter, field.searcher]:
+                    if not func_name:
+                        continue
+                    assert getattr(model, func_name, None), (
+                        "Missing method '%(func_name)s' "
+                        "on model '%(model)s' for field '%(field)s" % {
+                            'func_name': func_name,
+                            'model': model.__name__,
+                            'field': field_name,
+                            })
 
     @with_transaction()
     def test_ir_action_window(self):
