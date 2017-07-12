@@ -56,6 +56,9 @@ Get stock locations::
     >>> Location = Model.get('stock.location')
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
+    >>> storage_sub_loc = Location(
+    ...     name="Storage Sub", type='storage', parent=storage_loc)
+    >>> storage_sub_loc.save()
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
 
 Make 1 unit of the product available @ 100 ::
@@ -66,7 +69,7 @@ Make 1 unit of the product available @ 100 ::
     >>> incoming_move.uom = unit
     >>> incoming_move.quantity = 1
     >>> incoming_move.from_location = supplier_loc
-    >>> incoming_move.to_location = storage_loc
+    >>> incoming_move.to_location = storage_sub_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.effective_date = today
     >>> incoming_move.company = company
