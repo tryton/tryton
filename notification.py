@@ -169,9 +169,10 @@ class Email(ModelSQL, ModelView):
         else:
             return {self._get_language(value)}
 
-    def get_email(self, record, to, cc, bcc, languages):
+    def get_email(self, record, from_, to, cc, bcc, languages):
         msg, title = _get_email_template(
             self.content.report_name, record, languages)
+        msg['From'] = from_
         msg['To'] = ', '.join(to)
         msg['Cc'] = ', '.join(cc)
         msg['Bcc'] = ', '.join(bcc)
@@ -226,7 +227,7 @@ class Email(ModelSQL, ModelView):
                     languagues.update(self._get_languages(recipients_hidden))
                     bcc = self._get_addresses(recipients_hidden)
 
-            msg = self.get_email(record, to, cc, bcc, languagues)
+            msg = self.get_email(record, from_, to, cc, bcc, languagues)
             to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
             if to_addrs:
                 sendmail_transactional(

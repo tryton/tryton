@@ -91,6 +91,7 @@ class NotificationEmailTestCase(ModuleTestCase):
                 FROM, ['user@example.com'], ANY,
                 datamanager=ANY)
             _, _, msg = sendmail.call_args[0]
+            self.assertEqual(msg['From'], FROM)
             self.assertEqual(msg['Subject'], 'Notification Email')
             self.assertEqual(msg['To'], 'Administrator <user@example.com>')
             self.assertEqual(msg.get_content_type(), 'multipart/alternative')
