@@ -205,7 +205,7 @@ class Location(ModelSQL, ModelView):
         non_empty = set(locations) - set(empty)
         if non_empty:
             cls.raise_user_error('inactive_location_with_moves', {
-                    'location': iter(non_empty).next().rec_name,
+                    'location': next(iter(non_empty)).rec_name,
                     })
 
     @classmethod
