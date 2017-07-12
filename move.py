@@ -106,47 +106,32 @@ class StockMixin:
             whose quantity is computed.
         """
         pool = Pool()
-        Location = pool.get('stock.location')
-        Move = pool.get('stock.move')
+        Product = pool.get('product.product')
 
         if not location_ids or not domain:
             return []
 
-        # Skip warehouse location in favor of their storage location
-        # to compute quantities. Keep track of which ids to remove
-        # and to add after the query.
-        if Transaction().context.get('stock_skip_warehouse'):
-            location_ids = set(location_ids)
-            for location in Location.browse(list(location_ids)):
-                if location.type == 'warehouse':
-                    location_ids.remove(location.id)
-                    location_ids.add(location.storage_location.id)
-            location_ids = list(location_ids)
-
         with Transaction().set_context(cls._quantity_context(name)):
-            query = Move.compute_quantities_query(location_ids,
-                with_childs=True, grouping=grouping,
-                grouping_filter=None)
-            having_domain = getattr(cls, name)._field.convert_domain(domain, {
-                    None: (query, {}),
-                    }, cls)
-            # The last column of 'query' is always the quantity for the 'key'.
-            # It is computed with a SUM() aggregator so in having we have to
-            # use the SUM() expression and not the name of column
-            having_domain.left = query.columns[-1].expression
-            if query.having:
-                query.having &= having_domain
-            else:
-                query.having = having_domain
-            quantities = Move.compute_quantities(query, location_ids,
-                with_childs=True, grouping=grouping,
-                grouping_filter=None)
+            pbl = Product.products_by_location(
+                location_ids=location_ids, with_childs=True, grouping=grouping)
 
+        _, operator_, operand = domain
+        operator_ = {
+            '=': operator.eq,
+            '>=': operator.ge,
+            '>': operator.gt,
+            '<=': operator.le,
+            '<': operator.lt,
+            '!=': operator.ne,
+            'in': lambda v, l: v in l,
+            'not in': lambda v, l: v not in l,
+            }.get(operator_, lambda v, l: False)
         record_ids = []
-        for key, quantity in quantities.iteritems():
-            # pbl could return None in some keys
-            if key[position] is not None:
-                record_ids.append(key[position])
+        for key, quantity in pbl.iteritems():
+            if operator_(quantity, operand):
+                # pbl could return None in some keys
+                if key[position] is not None:
+                    record_ids.append(key[position])
 
         return [('id', 'in', record_ids)]
 
