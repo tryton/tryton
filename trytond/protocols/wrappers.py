@@ -151,7 +151,7 @@ def user_application(name, json=True):
             pool = Pool()
             UserApplication = pool.get('res.user.application')
 
-            authorization = request.headers['Authorization']
+            authorization = wsgi_to_bytes(request.headers['Authorization'])
             try:
                 auth_type, auth_info = authorization.split(None, 1)
                 auth_type = auth_type.lower()
