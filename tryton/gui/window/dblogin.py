@@ -602,7 +602,6 @@ class DBLogin(object):
                 profile = self.profile_store[active_profile][0]
             else:
                 profile = ''
-            CONFIG['login.profile'] = profile
             host = self.entry_host.get_text()
             hostname = common.get_hostname(host)
             port = common.get_port(host)
@@ -621,6 +620,7 @@ class DBLogin(object):
                 continue
             database = self.entry_database.get_text()
             login = self.entry_login.get_text()
+            CONFIG['login.profile'] = profile
             CONFIG['login.host'] = host
             CONFIG['login.db'] = database
             CONFIG['login.expanded'] = self.expander.props.expanded
