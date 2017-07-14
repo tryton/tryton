@@ -476,7 +476,7 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
     @classmethod
     def _migrate_property(cls, field_names, value_names, fields):
         field_names.append('cost_price')
-        value_names.extend('cost_price')
+        value_names.append('cost_price')
         fields.append('company')
         migrate_property(
             'product.template', field_names, cls, value_names,
