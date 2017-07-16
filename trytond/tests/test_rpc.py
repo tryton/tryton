@@ -4,13 +4,17 @@ import unittest
 
 from mock import Mock, DEFAULT, call
 
-from trytond.tests.test_tryton import with_transaction
+from trytond.tests.test_tryton import with_transaction, activate_module
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 
 
 class RPCTestCase(unittest.TestCase):
     "Test RPC"
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('ir')
 
     @with_transaction()
     def test_simple(self):
@@ -79,6 +83,20 @@ class RPCTestCase(unittest.TestCase):
             rpc.convert(obj, [1, 2, 3], {'test': True}),
             ([instances], {}, {'test': True, '_check_access': True}, None))
         obj.browse.assert_called_once_with([1, 2, 3])
+
+    @with_transaction()
+    def test_instantiate_unique(self):
+        "Test instantiate unique"
+        rpc = RPC(instantiate=0, unique=True)
+        obj = Mock()
+
+        rpc.convert(obj, [1, 2], {})
+        obj.browse.assert_called_once_with([1, 2])
+
+        obj.reset_mock()
+
+        with self.assertRaises(ValueError):
+            rpc.convert(obj, [1, 1], {})
 
     @with_transaction()
     def test_instantiate_slice(self):

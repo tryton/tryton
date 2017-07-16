@@ -66,12 +66,12 @@ class ModelStorage(Model):
                     'write': RPC(readonly=False,
                         instantiate=slice(0, None, 2)),
                     'delete': RPC(readonly=False, instantiate=0),
-                    'copy': RPC(readonly=False, instantiate=0,
+                    'copy': RPC(readonly=False, instantiate=0, unique=False,
                         result=lambda r: map(int, r)),
                     'search': RPC(result=lambda r: map(int, r)),
                     'search_count': RPC(),
                     'search_read': RPC(),
-                    'export_data': RPC(instantiate=0),
+                    'export_data': RPC(instantiate=0, unique=False),
                     'import_data': RPC(readonly=False),
                     })
         cls._constraints = []

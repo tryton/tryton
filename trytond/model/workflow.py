@@ -23,6 +23,8 @@ class Workflow(object):
                 filtered = []
                 to_update = OrderedDict()
 
+                assert len(records) == len(set(records)), "Duplicate records"
+
                 for record in records:
                     current_state = getattr(record, cls._transition_state)
                     transition = (current_state, state)

@@ -595,6 +595,8 @@ class ModelView(Model):
             transaction = Transaction()
             check_access = transaction.context.get('_check_access')
 
+            assert len(records) == len(set(records)), "Duplicate records"
+
             if (transaction.user != 0) and check_access:
                 ModelAccess.check(cls.__name__, 'read')
                 groups = set(User.get_groups())
