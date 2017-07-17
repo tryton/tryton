@@ -1184,7 +1184,7 @@ class Line(ModelSQL, ModelView):
             name = name[5:]
         return [('move.' + name,) + tuple(clause[1:])]
 
-    @fields.depends('move','_parent_move.state')
+    @fields.depends('move', '_parent_move.state')
     def on_change_with_move_state(self, name=None):
         if self.move:
             return self.move.state
