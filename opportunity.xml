@@ -207,7 +207,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sales</field>
             <field name="res_model">sale.sale</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id', 'sale.opportunity')), ('origin.id', 'in', Eval('active_ids'), 'sale.opportunity'))]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'sale.opportunity'), ('origin.id', 'in', Eval('active_ids'), 'sale.opportunity'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword" id="act_open_sale_keyword1">
