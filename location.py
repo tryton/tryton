@@ -178,7 +178,7 @@ class Location(ModelSQL, ModelView):
             location.check_type_for_moves()
             if not location.active:
                 inactives.append(location)
-        cls.check_inactive(locations)
+        cls.check_inactive(inactives)
 
     def check_type_for_moves(self):
         """ Check locations with moves have types compatible with moves. """
@@ -201,6 +201,7 @@ class Location(ModelSQL, ModelView):
     @classmethod
     def check_inactive(cls, locations):
         "Check inactive location are empty"
+        assert all(not l.active for l in locations)
         empty = cls.get_empty_locations(locations)
         non_empty = set(locations) - set(empty)
         if non_empty:
