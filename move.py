@@ -262,8 +262,8 @@ class Move(Workflow, ModelSQL, ModelView):
             'set_state_assigned': ('You can not set stock move "%s" to '
                 'assigned state.'),
             'set_state_done': 'You can not set stock move "%s" to done state.',
-            'del_draft_cancel': ('You can not delete stock move "%s" because '
-                'it is not in draft or cancelled state.'),
+            'delele_state': ('You can not delete stock move "%s" because '
+                'it is not in staging, draft nor cancelled state.'),
             'period_closed': ('You can not modify move "%(move)s" because '
                 'period "%(period)s" is closed.'),
             'modify_assigned': ('You can not modify stock move "%s" because '
@@ -700,8 +700,8 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def delete(cls, moves):
         for move in moves:
-            if move.state not in ('draft', 'cancel'):
-                cls.raise_user_error('del_draft_cancel', (move.rec_name,))
+            if move.state not in {'staging', 'draft', 'cancel'}:
+                cls.raise_user_error('delele_state', (move.rec_name,))
         super(Move, cls).delete(moves)
 
     @staticmethod
