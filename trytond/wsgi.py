@@ -95,3 +95,4 @@ class TrytondWSGI(object):
         return self.wsgi_app(environ, start_response)
 
 app = TrytondWSGI()
+import trytond.protocols.dispatcher

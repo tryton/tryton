@@ -1,3 +1,4 @@
+* Add environment variables to wsgi script
 * Add unique ids check on RPC
 * Assert unique records on ModelView.button and Workflow.transition
 * Add test for function field methods

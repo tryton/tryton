@@ -21,9 +21,13 @@ WSGI server
 -----------
 
 If you prefer to run Tryton inside your own WSGI server instead of the simple
-server of Werkzeug, you can use the application `trytond.application.app` and
-set the environment variable `TRYTOND_CONFIG` to point to the
-:ref:`configuration <topics-configuration>`.
+server of Werkzeug, you can use the application `trytond.application.app`.
+Following environment variables can be set:
+
+ * `TRYTOND_CONFIG`: Point to :ref:`configuration <topics-configuration>` file.
+ * `TRYTOND_LOGGING_CONFIG`: Point to :ref:`logging <topics-logs>` file.
+ * `TRYTOND_DATABASE_NAMES`: A list of database names in CSV format, using
+   python default dialect.
 
 .. warning:: You must manage to serve the static files from the web root.
 

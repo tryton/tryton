@@ -21,11 +21,12 @@ commandline.config_log(options)
 config.update_etc(options.configfile)
 
 # Import trytond things after it is configured
-from trytond.application import app
+from trytond.wsgi import app
 from trytond.pool import Pool
 from trytond.modules import get_module_list, get_module_info
 
 with commandline.pidfile(options):
+    Pool.start()
     for name in options.database_names:
         Pool(name).init()
     hostname, port = split_netloc(config.get('web', 'listen'))
