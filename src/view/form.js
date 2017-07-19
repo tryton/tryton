@@ -3849,7 +3849,7 @@ function eval_pyson(value){
                 }
                 var removed_key_names = Object.keys(this.fields).filter(
                         function(e) {
-                            return !value[e];
+                            return !(e in value);
                         });
                 for (i = 0, len = removed_key_names.length; i < len; i++) {
                     key = removed_key_names[i];
