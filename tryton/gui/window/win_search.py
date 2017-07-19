@@ -17,6 +17,8 @@ class WinSearch(NoModal):
             domain=None, view_ids=None, views_preload=None, new=True,
             title=''):
         NoModal.__init__(self)
+        if view_ids is None:
+            view_ids = []
         if views_preload is None:
             views_preload = {}
         self.domain = domain or []

@@ -967,7 +967,7 @@ class Main(object):
         self.menu_screen = None
         self.menu_expander_clear()
         action = PYSONDecoder().decode(prefs['pyson_menu'])
-        view_ids = False
+        view_ids = []
         if action.get('views', []):
             view_ids = [x[0] for x in action['views']]
         elif action.get('view_id', False):
