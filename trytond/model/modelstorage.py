@@ -1457,9 +1457,10 @@ class ModelStorage(Model):
             save_values = {}
             to_create = []
             to_write = []
-            transaction = records[0]._transaction
-            user = records[0]._user
-            context = records[0]._context
+            first = next(iter(records))
+            transaction = first._transaction
+            user = first._user
+            context = first._context
             for record in records:
                 if (record._transaction != transaction
                         or user != record._user
