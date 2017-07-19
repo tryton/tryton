@@ -29,7 +29,7 @@ class Action(SignalEvent):
         except RPCException:
             raise
 
-        view_ids = None
+        view_ids = []
         self.action['view_mode'] = None
         if self.action.get('views', []):
             view_ids = [x[0] for x in self.action['views']]
