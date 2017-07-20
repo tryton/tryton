@@ -152,7 +152,7 @@ class _TrytondMethod(object):
         self._object = model
         self._config = config
 
-    def __call__(self, *args):
+    def __call__(self, *args, **kwargs):
         from trytond.transaction import Transaction
         from trytond.rpc import RPC
 
@@ -166,7 +166,7 @@ class _TrytondMethod(object):
         with Transaction().start(self._config.database_name,
                 self._config.user, readonly=rpc.readonly) as transaction:
             args, kwargs, transaction.context, transaction.timestamp = \
-                rpc.convert(self._object, *args)
+                rpc.convert(self._object, *args, **kwargs)
             meth = getattr(self._object, self._name)
             if not hasattr(meth, 'im_self') or meth.im_self:
                 result = rpc.result(meth(*args, **kwargs))
