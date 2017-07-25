@@ -50,7 +50,7 @@ class Configuration:
         return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
-    def default_purchase_requisition_sequence(cls):
+    def default_purchase_requisition_sequence(cls, **pattern):
         return cls.multivalue_model('purchase_requisition_sequence'
             ).default_purchase_requisition_sequence()
 
