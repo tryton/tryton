@@ -27,7 +27,7 @@ class Configuration:
                 ]))
 
     @classmethod
-    def default_landed_cost_sequence(cls):
+    def default_landed_cost_sequence(cls, **pattern):
         return cls.multivalue_model(
             'landed_cost_sequence').default_landed_cost_sequence()
 
@@ -63,7 +63,7 @@ class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
             fields=fields)
 
     @classmethod
-    def default_landed_cost_sequence(cls):
+    def default_landed_cost_sequence(cls, **pattern):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         try:
