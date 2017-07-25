@@ -78,7 +78,7 @@ def run(options):
             if passpath:
                 try:
                     with open(passpath) as passfile:
-                        password = passfile.readline()[:-1]
+                        password, = passfile.read().splitlines()
                 except Exception, err:
                     sys.stderr.write('Can not read password '
                         'from "%s": "%s"\n' % (passpath, err))
