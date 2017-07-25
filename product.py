@@ -130,10 +130,11 @@ class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
             return product.cost_price
 
     @classmethod
-    def default_cost_price_method(cls):
+    def default_cost_price_method(cls, **pattern):
         pool = Pool()
         Configuration = pool.get('product.configuration')
-        return Configuration(1).default_cost_price_method
+        return Configuration(1).get_multivalue(
+            'default_cost_price_method', **pattern)
 
     @staticmethod
     def default_products():
@@ -277,7 +278,7 @@ class Product(ModelSQL, ModelView, CompanyMultiValueMixin):
         return super(Product, cls).multivalue_model(field)
 
     @classmethod
-    def default_cost_price(cls):
+    def default_cost_price(cls, **pattern):
         return Decimal(0)
 
     @classmethod
