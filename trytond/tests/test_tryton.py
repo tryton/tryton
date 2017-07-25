@@ -16,7 +16,7 @@ from sql import Table
 
 from trytond.pool import Pool, isregisteredby
 from trytond import backend
-from trytond.model import Workflow
+from trytond.model import Workflow, fields
 from trytond.model.fields import get_eval_fields, Function
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
@@ -306,7 +306,16 @@ class ModuleTestCase(unittest.TestCase):
                             mname, attr))
 
                     if attr.startswith('default_'):
-                        getattr(model, attr)()
+                        fname = attr[len('default_'):]
+                        if isinstance(model._fields[fname], fields.MultiValue):
+                            try:
+                                getattr(model, attr)(pattern=None)
+                            # get_multivalue may raise an AttributeError
+                            # if pattern is not defined on the model
+                            except AttributeError:
+                                pass
+                        else:
+                            getattr(model, attr)()
                     elif attr.startswith('order_'):
                         tables = {None: (model.__table__(), None)}
                         getattr(model, attr)(tables)
