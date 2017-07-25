@@ -135,8 +135,8 @@ class Journal(ModelSQL, ModelView, CompanyMultiValueMixin):
     def default_active():
         return True
 
-    @staticmethod
-    def default_sequence():
+    @classmethod
+    def default_sequence(cls, **pattern):
         return None
 
     @staticmethod
