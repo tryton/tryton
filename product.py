@@ -122,10 +122,11 @@ class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
         return False
 
     @classmethod
-    def default_cost_price_method(cls):
+    def default_cost_price_method(cls, **pattern):
         pool = Pool()
         Configuration = pool.get('product.configuration')
-        return Configuration(1).default_cost_price_method
+        return Configuration(1).get_multivalue(
+            'default_cost_price_method', **pattern)
 
     @staticmethod
     def default_products():
