@@ -30,7 +30,7 @@ class Configuration:
         return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
-    def default_complaint_sequence(cls):
+    def default_complaint_sequence(cls, **pattern):
         return cls.multivalue_model(
             'complaint_sequence').default_complaint_sequence()
 
