@@ -244,7 +244,6 @@ class Currency(ModelSQL, ModelView):
 class Rate(ModelSQL, ModelView):
     'Rate'
     __name__ = 'currency.currency.rate'
-    _rec_name = 'date'
     date = fields.Date('Date', required=True, select=True)
     rate = fields.Numeric('Rate', digits=(12, 6), required=1)
     currency = fields.Many2One('currency.currency', 'Currency',
@@ -270,3 +269,6 @@ class Rate(ModelSQL, ModelView):
     @classmethod
     def check_xml_record(self, records, values):
         return True
+
+    def get_rec_name(self, name):
+        return str(self.date)
