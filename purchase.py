@@ -451,7 +451,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     def get_tax_amount(self):
         taxes = self._get_taxes().itervalues()
-        return sum(tax['amount'] for tax in taxes)
+        return sum((tax['amount'] for tax in taxes), Decimal(0))
 
     @classmethod
     def get_amount(cls, purchases, names):
@@ -824,7 +824,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 purchase.create_return_shipment(return_moves)
             purchase.set_shipment_state()
             if purchase.is_done():
-                done.append(purchase)
+                if purchase.state != 'done':
+                    if purchase.state == 'confirmed':
+                        process.append(purchase)
+                    done.append(purchase)
             elif purchase.state != 'processing':
                 process.append(purchase)
         if process:
