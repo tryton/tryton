@@ -90,7 +90,12 @@ class Payment:
     stripe_capture_needed = fields.Function(
         fields.Boolean("Stripe Capture Needed"),
         'get_stripe_capture_needed')
-    stripe_token = fields.Char("Stripe Token", readonly=True)
+    stripe_token = fields.Char("Stripe Token",
+        states={
+            'invisible': ~Eval('stripe_journal') | Eval('stripe_customer'),
+            'readonly': ~Eval('state').in_(['draft', 'approved']),
+            },
+        depends=['stripe_journal', 'stripe_customer', 'state'])
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
@@ -104,12 +109,16 @@ class Payment:
             'invisible': ~Eval('stripe_error_param'),
             })
     stripe_customer = fields.Many2One(
-        'account.payment.stripe.customer', "Stripe Customer", readonly=True,
+        'account.payment.stripe.customer', "Stripe Customer",
         domain=[
             ('party', '=', Eval('party', -1)),
             ('stripe_account', '=', Eval('stripe_account', -1)),
             ],
-        depends=['party', 'stripe_account'])
+        states={
+            'invisible': ~Eval('stripe_journal') | Eval('stripe_token'),
+            'readonly': ~Eval('state').in_(['draft', 'approved']),
+            },
+        depends=['party', 'stripe_account', 'stripe_journal', 'state'])
     stripe_account = fields.Function(fields.Many2One(
             'account.payment.stripe.account', "Stripe Account"),
         'on_change_with_stripe_account')
@@ -386,6 +395,10 @@ class Customer(ModelSQL, ModelView):
 
     def get_stripe_checkout_needed(self, name):
         return not self.stripe_token
+
+    def get_rec_name(self, name):
+        name = super(Customer, self).get_rec_name(name)
+        return self.stripe_token if self.stripe_token else name
 
     @classmethod
     def delete(cls, customers):

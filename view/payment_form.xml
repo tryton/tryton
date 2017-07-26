@@ -7,6 +7,11 @@ this repository contains the full copyright notices and license terms. -->
         <button string="Stripe Capture" name="stripe_capture_"/>
     </xpath>
     <xpath expr="//field[@name='date']" position="after">
+        <newline/>
+        <label name="stripe_customer"/>
+        <field name="stripe_customer" colspan="3"/>
+        <label name="stripe_token"/>
+        <field name="stripe_token" colspan="3"/>
         <label name="stripe_capture"/>
         <field name="stripe_capture"/>
     </xpath>
