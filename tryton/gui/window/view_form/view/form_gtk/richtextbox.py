@@ -303,12 +303,13 @@ class RichTextBox(TextBox):
 
         dialog = gtk.ColorSelectionDialog(_('Select a color'))
         dialog.set_transient_for(get_toplevel_window())
-        dialog.colorsel.set_has_palette(True)
+        colorsel = dialog.get_color_selection()
+        colorsel.set_has_palette(True)
         color = self.colors.get(name)
         if color:
-            dialog.colorsel.set_current_color(color)
+            colorsel.set_current_color(color)
         if dialog.run() == gtk.RESPONSE_OK:
-            color = dialog.colorsel.get_current_color()
+            color = colorsel.get_current_color()
             self.colors[name] = color
             if start is not None and end is not None:
                 start = self.text_buffer.get_iter_at_offset(start)
