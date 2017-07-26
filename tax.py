@@ -1107,7 +1107,6 @@ class TaxableMixin(object):
 class TaxLine(ModelSQL, ModelView):
     'Tax Line'
     __name__ = 'account.tax.line'
-    _rec_name = 'amount'
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
@@ -1139,6 +1138,13 @@ class TaxLine(ModelSQL, ModelView):
     def on_change_with_company(self, name=None):
         if self.move_line:
             return self.move_line.account.company.id
+
+    def get_rec_name(self, name):
+        return self.code.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('code',) + tuple(clause[1:])]
 
 
 class TaxRuleTemplate(ModelSQL, ModelView):
@@ -1390,7 +1396,6 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
 class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Tax Rule Line'
     __name__ = 'account.tax.rule.line'
-    _rec_name = 'tax'
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
             select=True, ondelete='CASCADE')
     group = fields.Many2One('account.tax.group', 'Tax Group',
