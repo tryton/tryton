@@ -168,7 +168,7 @@ class User(ModelSQL, ModelView):
         email = email.lower()
 
         # Prevent brute force attack
-        time.sleep(2 ** Attempt.count(email) - 1)
+        Transaction().atexit(time.sleep, 2 ** Attempt.count(email) - 1)
 
         users = cls.search([('email', '=', email)])
         if users:
@@ -333,7 +333,7 @@ class User(ModelSQL, ModelView):
         email = email.lower()
 
         # Prevent brute force attack
-        time.sleep(2 ** Attempt.count(email) - 1)
+        Transaction().atexit(time.sleep, 2 ** Attempt.count(email) - 1)
 
         users = cls.search([
                 ('email', '=', email),
