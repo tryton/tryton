@@ -201,6 +201,10 @@ class ModuleTestCase(unittest.TestCase):
             assert model._rec_name in model._fields, (
                 'Wrong _rec_name "%s" for %s'
                 % (model._rec_name, mname))
+            field = model._fields[model._rec_name]
+            assert field._type in {'char', 'text'}, (
+                "Wrong '%s' type for _rec_name of %s'"
+                % (field._type, mname))
 
     @with_transaction()
     def test_view(self):
