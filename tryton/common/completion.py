@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
+import logging
 import gettext
+
+import gtk
 import gobject
 
 from tryton.config import CONFIG
@@ -9,6 +11,7 @@ from tryton.common import RPCExecute
 from tryton.exceptions import TrytonServerError, TrytonError
 
 _ = gettext.gettext
+logger = logging.getLogger(__name__)
 
 
 def get_completion(search=True, create=True):
@@ -57,9 +60,14 @@ def update_completion(entry, record, field, model, domain=None):
             completion_model.search_text = search_text
             # Force display of popup
             entry.emit('changed')
-        RPCExecute('model', model, 'search_read', domain, 0,
-            CONFIG['client.limit'], None, ['rec_name'], context=context,
-            process_exception=False, callback=callback)
+        try:
+            RPCExecute('model', model, 'search_read', domain, 0,
+                CONFIG['client.limit'], None, ['rec_name'], context=context,
+                process_exception=False, callback=callback)
+        except Exception:
+            logging.warn(
+                _("Unable to search for completion of %s") % model,
+                exc_info=True)
         return False
     search_text = entry.get_text().decode('utf-8')
     gobject.timeout_add(300, update, search_text, domain)
