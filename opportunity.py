@@ -435,7 +435,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
 class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     'Sale Opportunity Line'
     __name__ = "sale.opportunity.line"
-    _rec_name = "product"
     _history = True
     _states = {
         'readonly': Eval('opportunity_state').in_(
@@ -509,6 +508,13 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             )
         sale_line.on_change_product()
         return sale_line
+
+    def get_rec_name(self, name):
+        return self.product.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product',) + tuple(clause[1:])]
 
 
 class SaleOpportunityReportMixin:
