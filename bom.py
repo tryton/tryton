@@ -52,7 +52,6 @@ class BOM(ModelSQL, ModelView):
 class BOMInput(ModelSQL, ModelView):
     "Bill of Material Input"
     __name__ = 'production.bom.input'
-    _rec_name = 'product'
 
     bom = fields.Many2One('production.bom', 'BOM', required=True,
         select=1, ondelete='CASCADE')
@@ -110,6 +109,13 @@ class BOMInput(ModelSQL, ModelView):
         if self.uom:
             return self.uom.digits
         return 2
+
+    def get_rec_name(self, name):
+        return self.product.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product',) + tuple(clause[1:])]
 
     @classmethod
     def validate(cls, boms):
