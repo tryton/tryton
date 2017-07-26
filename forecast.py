@@ -34,7 +34,6 @@ FORECAST_STATES = [
 class Forecast(Workflow, ModelSQL, ModelView):
     "Stock Forecast"
     __name__ = "stock.forecast"
-    _rec_name = 'warehouse'
     warehouse = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'warehouse')], states={
@@ -189,6 +188,13 @@ class Forecast(Workflow, ModelSQL, ModelView):
         else:
             return []
 
+    def get_rec_name(self, name):
+        return self.warehouse.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('warehouse',) + tuple(clause[1:])]
+
     @classmethod
     def validate(cls, forecasts):
         super(Forecast, cls).validate(forecasts)
@@ -297,7 +303,6 @@ class Forecast(Workflow, ModelSQL, ModelView):
 class ForecastLine(ModelSQL, ModelView):
     'Stock Forecast Line'
     __name__ = 'stock.forecast.line'
-    _rec_name = 'product'
     _states = {
         'readonly': Eval('forecast_state') != 'draft',
         }
@@ -392,6 +397,13 @@ class ForecastLine(ModelSQL, ModelView):
     def on_change_with_forecast_state(self, name=None):
         if self.forecast:
             return self.forecast.state
+
+    def get_rec_name(self, name):
+        return self.product.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product',) + tuple(clause[1:])]
 
     @classmethod
     def get_quantity_executed(cls, lines, name):
