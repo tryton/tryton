@@ -240,7 +240,7 @@ def serialize(register, content, start, end, data):
             # Move to next tag toggle
             while True:
                 iter_.forward_char()
-                if iter_.get_char() == '\0':
+                if iter_.compare(end) == 0:
                     break
                 if iter_.toggles_tag():
                     break
