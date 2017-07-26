@@ -517,6 +517,13 @@ class ScreenContainer(object):
             self.search_window.connect('delete-event', window_hide)
             self.search_window.connect('key-press-event', key_press)
             self.search_window.connect('focus-out-event', window_hide)
+
+            def toggle_window_hide(combobox, shown):
+                if combobox.props.popup_shown:
+                    self.search_window.handler_block_by_func(window_hide)
+                else:
+                    self.search_window.handler_unblock_by_func(window_hide)
+
             vbox = gtk.VBox()
             fields = [f for f in self.screen.domain_parser.fields.itervalues()
                 if f.get('searchable', True)]
@@ -539,6 +546,7 @@ class ScreenContainer(object):
                         entry = gtk.ComboBoxText()
                     else:
                         entry = gtk.combo_box_new_text()
+                    entry.connect('notify::popup-shown', toggle_window_hide)
                     entry.append_text('')
                     selections = (_('True'), _('False'))
                     for selection in selections:
