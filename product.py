@@ -17,7 +17,6 @@ __all__ = ['ProductCostHistory', 'OpenProductCostHistory']
 class ProductCostHistory(ModelSQL, ModelView):
     'History of Product Cost'
     __name__ = 'product.product.cost_history'
-    _rec_name = 'date'
     template = fields.Many2One('product.template', 'Product')
     date = fields.DateTime('Date')
     cost_price = fields.Numeric('Cost Price')
@@ -53,6 +52,9 @@ class ProductCostHistory(ModelSQL, ModelView):
                     Coalesce(property_history.write_date,
                         property_history.create_date),
                     property_history.res, property_history.value))
+
+    def get_rec_name(self, name):
+        return str(self.date)
 
 
 class OpenProductCostHistory(Wizard):
