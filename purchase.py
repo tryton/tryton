@@ -46,7 +46,6 @@ class ProductSupplier:
 class ProductSupplierDay(ModelSQL, ModelView):
     'Product Supplier Day'
     __name__ = 'purchase.product_supplier.day'
-    _rec_name = 'weekday'
     product_supplier = fields.Many2One('purchase.product_supplier', 'Supplier',
             required=True, ondelete='CASCADE')
     weekday = fields.Selection([
