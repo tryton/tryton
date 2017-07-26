@@ -12,13 +12,16 @@ __all__ = ['Bank', 'BankAccount', 'BankAccountNumber', 'BankAccountParty']
 class Bank(ModelSQL, ModelView):
     'Bank'
     __name__ = 'bank'
-    _rec_name = 'party'
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE')
     bic = fields.Char('BIC', size=11, help="Bank/Business Identifier Code.")
 
     def get_rec_name(self, name):
         return self.party.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('party',) + tuple(clause[1:])]
 
 
 class BankAccount(ModelSQL, ModelView):
