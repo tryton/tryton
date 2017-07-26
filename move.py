@@ -757,6 +757,29 @@ class Line(ModelSQL, ModelView):
             date = Transaction().context['date']
         return date
 
+    @classmethod
+    def default_move(cls):
+        transaction = Transaction()
+        context = transaction.context
+        if context.get('journal') and context.get('period'):
+            lines = cls.search([
+                    ('move.journal', '=', context['journal']),
+                    ('move.period', '=', context['period']),
+                    ('create_uid', '=', transaction.user),
+                    ('state', '=', 'draft'),
+                    ], order=[('id', 'DESC')], limit=1)
+            if lines:
+                line, = lines
+                return line.move.id
+
+    @fields.depends('move', 'debit', 'credit', '_parent_move.lines')
+    def on_change_move(self):
+        if self.move and not self.debit and not self.credit:
+            total = sum(l.debit - l.credit
+                for l in getattr(self.move, 'lines', []))
+            self.debit = -total if total < 0 else Decimal(0)
+            self.credit = total if total > 0 else Decimal(0)
+
     @staticmethod
     def default_state():
         return 'draft'
@@ -772,176 +795,6 @@ class Line(ModelSQL, ModelView):
     @staticmethod
     def default_credit():
         return Decimal(0)
-
-    @classmethod
-    def default_get(cls, fields, with_rec_name=True):
-        pool = Pool()
-        Move = pool.get('account.move')
-        Tax = pool.get('account.tax')
-        Account = pool.get('account.account')
-        TaxCode = pool.get('account.tax.code')
-        values = super(Line, cls).default_get(fields,
-                with_rec_name=with_rec_name)
-
-        if 'move' not in fields:
-            # Not manual entry
-            if 'date' in values:
-                values = values.copy()
-                del values['date']
-            return values
-
-        if (Transaction().context.get('journal')
-                and Transaction().context.get('period')):
-            lines = cls.search([
-                ('move.journal', '=', Transaction().context['journal']),
-                ('move.period', '=', Transaction().context['period']),
-                ('create_uid', '=', Transaction().user),
-                ('state', '=', 'draft'),
-                ], order=[('id', 'DESC')], limit=1)
-            if not lines:
-                return values
-            move = lines[0].move
-            values['move'] = move.id
-            values['move.rec_name'] = move.rec_name
-
-        if 'move' not in values:
-            return values
-
-        move = Move(values['move'])
-        total = Decimal('0.0')
-        taxes = {}
-        no_code_taxes = []
-        for line in move.lines:
-            total += line.debit - line.credit
-            if line.party and 'party' in fields and 'party' not in values:
-                values['party'] = line.party.id
-                values['party.rec_name'] = line.party.rec_name
-            if move.journal.type in ('expense', 'revenue'):
-                line_code_taxes = [x.code.id for x in line.tax_lines]
-                for tax in line.account.taxes:
-                    if move.journal.type == 'revenue':
-                        if line.debit:
-                            base_id = (tax.credit_note_base_code.id
-                                if tax.credit_note_base_code else None)
-                            code_id = (tax.credit_note_tax_code.id
-                                if tax.credit_note_tax_code else None)
-                            account_id = (tax.credit_note_account.id
-                                if tax.credit_note_account else None)
-                        else:
-                            base_id = (tax.invoice_base_code.id
-                                if tax.invoice_base_code else None)
-                            code_id = (tax.invoice_tax_code.id
-                                if tax.invoice_tax_code else None)
-                            account_id = (tax.invoice_account.id
-                                if tax.invoice_account else None)
-                    else:
-                        if line.debit:
-                            base_id = (tax.invoice_base_code.id
-                                if tax.invoice_base_code else None)
-                            code_id = (tax.invoice_tax_code.id
-                                if tax.invoice_tax_code else None)
-                            account_id = (tax.invoice_account.id
-                                if tax.invoice_account else None)
-                        else:
-                            base_id = (tax.credit_note_base_code.id
-                                if tax.credit_note_base_code else None)
-                            code_id = (tax.credit_note_tax_code.id
-                                if tax.credit_note_tax_code else None)
-                            account_id = (tax.credit_note_account.id
-                                if tax.credit_note_account else None)
-                    if base_id in line_code_taxes or not base_id:
-                        taxes.setdefault((account_id, code_id, tax.id), None)
-                for tax_line in line.tax_lines:
-                    taxes[
-                        (line.account.id, tax_line.code.id, tax_line.tax.id)
-                        ] = True
-                if not line.tax_lines:
-                    no_code_taxes.append(line.account.id)
-        for no_code_account_id in no_code_taxes:
-            for (account_id, code_id, tax_id), test in \
-                    taxes.iteritems():
-                if (not test
-                        and not code_id
-                        and no_code_account_id == account_id):
-                    taxes[(account_id, code_id, tax_id)] = True
-
-        if 'account' in fields:
-            account = None
-            if total >= Decimal('0.0'):
-                if move.journal.credit_account:
-                    account = move.journal.credit_account
-            else:
-                if move.journal.debit_account:
-                    account = move.journal.debit_account
-            if account:
-                    values['account'] = account.id
-                    values['account.rec_name'] = account.rec_name
-            else:
-                values['account'] = None
-
-        if ('debit' in fields) or ('credit' in fields):
-            values['debit'] = total < 0 and - total or Decimal(0)
-            values['credit'] = total > 0 and total or Decimal(0)
-
-        if move.journal.type in ('expense', 'revenue'):
-            for account_id, code_id, tax_id in taxes:
-                if taxes[(account_id, code_id, tax_id)]:
-                    continue
-                for line in move.lines:
-                    if move.journal.type == 'revenue':
-                        if line.debit:
-                            key = 'credit_note'
-                        else:
-                            key = 'invoice'
-                    else:
-                        if line.debit:
-                            key = 'invoice'
-                        else:
-                            key = 'credit_note'
-                    line_amount = Decimal('0.0')
-                    tax_amount = Decimal('0.0')
-                    for tax_line in Tax.compute(line.account.taxes,
-                            line.debit or line.credit, 1):
-                        tax_account = getattr(tax_line['tax'],
-                            key + '_account')
-                        tax_code = getattr(tax_line['tax'], key + '_tax_code')
-                        if ((tax_account.id if tax_account
-                                    else line.account.id) == account_id
-                                and (tax_code.id if tax_code else None
-                                    == code_id)
-                                and tax_line['tax'].id == tax_id):
-                            if line.debit:
-                                line_amount += tax_line['amount']
-                            else:
-                                line_amount -= tax_line['amount']
-                            tax_amount += tax_line['amount'] * \
-                                getattr(tax_line['tax'], key + '_tax_sign')
-                    line_amount = line.account.company.currency.round(
-                        line_amount)
-                    tax_amount = line.account.company.currency.round(
-                        tax_amount)
-                    if ('debit' in fields):
-                        values['debit'] = line_amount > Decimal('0.0') \
-                            and line_amount or Decimal('0.0')
-                    if ('credit' in fields):
-                        values['credit'] = line_amount < Decimal('0.0') \
-                            and - line_amount or Decimal('0.0')
-                    if 'account' in fields and account_id:
-                        values['account'] = account_id
-                        values['account.rec_name'] = Account(
-                            account_id).rec_name
-                    if 'tax_lines' in fields and code_id:
-                        values['tax_lines'] = [
-                            {
-                                'amount': tax_amount,
-                                'currency_digits': line.currency_digits,
-                                'code': code_id,
-                                'code.rec_name': TaxCode(code_id).rec_name,
-                                'tax': tax_id,
-                                'tax.rec_name': Tax(tax_id).rec_name,
-                            },
-                        ]
-        return values
 
     @fields.depends('account')
     def on_change_with_currency_digits(self, name=None):
@@ -962,26 +815,14 @@ class Line(ModelSQL, ModelView):
         Move = Pool().get('account.move')
         return Move.get_origin()
 
-    @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
-        'move', 'amount_second_currency')
+    @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_debit(self):
-        Journal = Pool().get('account.journal')
-        if self.journal or Transaction().context.get('journal'):
-            journal = self.journal or Journal(Transaction().context['journal'])
-            if journal.type in ('expense', 'revenue'):
-                self._compute_tax_lines(journal.type)
         if self.debit:
             self.credit = Decimal('0.0')
         self._amount_second_currency_sign()
 
-    @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
-        'move', 'amount_second_currency')
+    @fields.depends('debit', 'credit', 'amount_second_currency')
     def on_change_credit(self):
-        Journal = Pool().get('account.journal')
-        if self.journal or Transaction().context.get('journal'):
-            journal = self.journal or Journal(Transaction().context['journal'])
-            if journal.type in ('expense', 'revenue'):
-                self._compute_tax_lines(journal.type)
         if self.credit:
             self.debit = Decimal('0.0')
         self._amount_second_currency_sign()
@@ -996,16 +837,8 @@ class Line(ModelSQL, ModelView):
             self.amount_second_currency = \
                 self.amount_second_currency.copy_sign(self.debit - self.credit)
 
-    @fields.depends('account', 'debit', 'credit', 'tax_lines', 'journal',
-        'move')
+    @fields.depends('account')
     def on_change_account(self):
-        Journal = Pool().get('account.journal')
-
-        if Transaction().context.get('journal'):
-            journal = Journal(Transaction().context['journal'])
-            if journal.type in ('expense', 'revenue'):
-                self._compute_tax_lines(journal.type)
-
         if self.account:
             self.currency_digits = self.account.currency_digits
             if self.account.second_currency:
@@ -1025,136 +858,6 @@ class Line(ModelSQL, ModelView):
         if self.account:
             return self.account.party_required
         return False
-
-    def _compute_tax_lines(self, journal_type):
-        pool = Pool()
-        Tax = pool.get('account.tax')
-        TaxLine = pool.get('account.tax.line')
-
-        if self.move:
-            # Only for first line
-            return
-        tax_lines = []
-        if self.account:
-            debit = self.debit or Decimal('0.0')
-            credit = self.credit or Decimal('0.0')
-            for tax in self.account.taxes:
-                if journal_type == 'revenue':
-                    if debit:
-                        key = 'credit_note'
-                    else:
-                        key = 'invoice'
-                else:
-                    if debit:
-                        key = 'invoice'
-                    else:
-                        key = 'credit_note'
-                base_amounts = {}
-                for tax_line in Tax.compute(self.account.taxes,
-                        debit or credit, 1):
-                    code = getattr(tax_line['tax'], key + '_base_code')
-                    code_id = code.id if code else None
-                    if not code_id:
-                        continue
-                    tax_id = tax_line['tax'].id
-                    base_amounts.setdefault((code_id, tax_id), Decimal('0.0'))
-                    base_amounts[code_id, tax_id] += tax_line['base'] * \
-                        getattr(tax_line['tax'], key + '_tax_sign')
-                for code_id, tax_id in base_amounts:
-                    if not base_amounts[code_id, tax_id]:
-                        continue
-                    tax_line = TaxLine(**TaxLine.default_get(
-                            TaxLine._fields.keys()))
-
-                    tax_line.amount = base_amounts[code_id, tax_id]
-                    tax_line.currency_digits = self.account.currency_digits
-                    tax_line.code = code_id
-                    tax_line.tax = tax_id
-                    tax_lines.append(tax_line)
-        self.tax_lines = tax_lines
-
-    @fields.depends('move', 'party', 'account', 'debit', 'credit', 'journal')
-    def on_change_party(self):
-        Journal = Pool().get('account.journal')
-        cursor = Transaction().connection.cursor()
-        if (not self.party) or self.account:
-            return
-
-        if not self.party.account_receivable \
-                or not self.party.account_payable:
-            return
-
-        if self.party and (not self.debit) and (not self.credit):
-            type_name = self.__class__.debit.sql_type().base
-            table = self.__table__()
-            column = Coalesce(Sum(Coalesce(table.debit, 0)
-                    - Coalesce(table.credit, 0)), 0).cast(type_name)
-            where = ((table.reconciliation == Null)
-                & (table.party == self.party.id))
-            cursor.execute(*table.select(column,
-                    where=where
-                    & (table.account == self.party.account_receivable.id)))
-            amount = cursor.fetchone()[0]
-            # SQLite uses float for SUM
-            if not isinstance(amount, Decimal):
-                amount = Decimal(str(amount))
-            if not self.party.account_receivable.currency.is_zero(amount):
-                if amount > Decimal('0.0'):
-                    self.credit = \
-                        self.party.account_receivable.currency.round(amount)
-                    self.debit = Decimal('0.0')
-                else:
-                    self.credit = Decimal('0.0')
-                    self.debit = \
-                        - self.party.account_receivable.currency.round(amount)
-                self.account = self.party.account_receivable
-            else:
-                cursor.execute(*table.select(column,
-                        where=where
-                        & (table.account == self.party.account_payable.id)))
-                amount = cursor.fetchone()[0]
-                # SQLite uses float for SUM
-                if not isinstance(amount, Decimal):
-                    amount = Decimal(str(amount))
-                if not self.party.account_payable.currency.is_zero(amount):
-                    if amount > Decimal('0.0'):
-                        self.credit = \
-                            self.party.account_payable.currency.round(amount)
-                        self.debit = Decimal('0.0')
-                    else:
-                        self.credit = Decimal('0.0')
-                        self.debit = \
-                            - self.party.account_payable.currency.round(amount)
-                    self.account = self.party.account_payable
-
-        if self.party and self.debit:
-            if self.debit > Decimal('0.0'):
-                if not self.account:
-                    self.account = self.party.account_receivable
-            else:
-                if not self.account:
-                    self.account = self.party.account_payable
-
-        if self.party and self.credit:
-            if self.credit > Decimal('0.0'):
-                if not self.account:
-                    self.account = self.party.account_payable
-            else:
-                if not self.account:
-                    self.account = self.party.account_receivable
-
-        journal = None
-        if self.journal:
-            journal = self.journal
-        elif Transaction().context.get('journal'):
-            journal = Journal(Transaction().context.get('journal'))
-        if journal and self.party:
-            if journal.type == 'revenue':
-                if not self.account:
-                    self.account = self.party.account_receivable
-            elif journal.type == 'expense':
-                if not self.account:
-                    self.account = self.party.account_payable
 
     def get_move_field(self, name):
         field = getattr(self.__class__, name)
