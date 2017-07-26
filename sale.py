@@ -456,7 +456,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         return 'invoice'
 
     def get_tax_amount(self):
-        return sum(v['amount'] for v in self._get_taxes().itervalues())
+        return sum(
+            (v['amount'] for v in self._get_taxes().itervalues()), Decimal(0))
 
     @classmethod
     def get_amount(cls, sales, names):
@@ -925,6 +926,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             sale.set_shipment_state()
             if sale.is_done():
                 if sale.state != 'done':
+                    if sale.state == 'confirmed':
+                        process.append(sale)
                     done.append(sale)
             elif sale.state != 'processing':
                 process.append(sale)
