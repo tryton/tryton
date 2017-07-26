@@ -547,7 +547,7 @@ msgstr "Tabblad sluiten"
 #: tryton/gui/window/attachment.py:22
 #, python-format, fuzzy, python-format
 msgid "Attachments (%s)"
-msgstr "Bijlage (%d)"
+msgstr "Bijlage (%s)"
 
 #: tryton/gui/window/board.py:21 tryton/gui/window/form.py:34
 #, fuzzy
