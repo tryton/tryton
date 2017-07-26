@@ -2168,7 +2168,7 @@ function eval_pyson(value){
             var value = field.get(record);
             if (this.has_target(value)) {
                 var id = this.id_from_value(value);
-                if ((id !== undefined) && (id > 0)) {
+                if ((id !== undefined) && (id >= 0)) {
                     return jQuery.when();
                 }
             }

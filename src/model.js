@@ -477,7 +477,14 @@
         init: function(model, id) {
             this.model = model;
             this.group = Sao.Group(model, {}, []);
-            this.id = id || Sao.Record.prototype.id_counter--;
+            if ((id === undefined) || (id === null)) {
+                this.id = Sao.Record.prototype.id_counter;
+            } else {
+                this.id = id;
+            }
+            if (this.id < 0) {
+                Sao.Record.prototype.id_counter--;
+            }
             this._values = {};
             this._changed = {};
             this._loaded = {};
