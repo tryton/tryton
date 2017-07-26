@@ -1884,11 +1884,16 @@ function eval_pyson(value){
         get_screen: function() {
             var domain = this.field().get_domain(this.record());
             var context = this.field().get_context(this.record());
+            var view_ids = (this.attributes.view_ids || '').split(',');
+            if (!jQuery.isEmptyObject(view_ids)) {
+                // Remove the first tree view as mode is form only
+                view_ids.shift();
+            }
             return new Sao.Screen(this.get_model(), {
                 'context': context,
                 'domain': domain,
                 'mode': ['form'],
-                'view_ids': (this.attributes.view_ids || '').split(','),
+                'view_ids': view_ids,
                 'views_preload': this.attributes.views,
                 'readonly': this._readonly
             });

@@ -470,6 +470,8 @@
             this.model_name = model;
             this.domain = kwargs.domain || [];
             this.context = kwargs.context || {};
+            this.view_ids = kwargs.view_ids;
+            this.views_preload = views_preload;
             this.sel_multi = kwargs.sel_multi;
             this.callback = callback;
             this.title = kwargs.title || '';
@@ -540,10 +542,17 @@
                 this.screen.search_filter();
                 return;
             } else if (response_id == 'RESPONSE_ACCEPT') {
+                var view_ids = jQuery.extend([], this.view_ids);
+                if (!jQuery.isEmptyObject(view_ids)) {
+                    // Remove the first tree view as mode is form only
+                    view_ids.shift();
+                }
                 var screen = new Sao.Screen(this.model_name, {
                     domain: this.domain,
                     context: this.context,
-                    mode: ['form']
+                    mode: ['form'],
+                    view_ids: view_ids,
+                    views_preload: this.views_preload,
                 });
 
                 var callback = function(result) {
