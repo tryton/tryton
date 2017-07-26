@@ -29,7 +29,6 @@ class Procedure(ModelSQL, ModelView):
 class Level(sequence_ordered(), ModelSQL, ModelView):
     'Account Dunning Level'
     __name__ = 'account.dunning.level'
-    _rec_name = 'procedure'
     procedure = fields.Many2One('account.dunning.procedure', 'Procedure',
         required=True, select=True)
     overdue = fields.TimeDelta('Overdue')
