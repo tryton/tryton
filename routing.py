@@ -33,7 +33,6 @@ class Operation(ModelSQL, ModelView):
 class RoutingStep(sequence_ordered(), ModelSQL, ModelView):
     'Route'
     __name__ = 'production.routing.step'
-    _rec_name = 'operation'
     operation = fields.Many2One('production.routing.operation', 'Operation',
         required=True)
     routing = fields.Many2One('production.routing', 'Routing', required=True,
@@ -41,6 +40,10 @@ class RoutingStep(sequence_ordered(), ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         return self.operation.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('operation',) + tuple(clause[1:])]
 
 
 class Routing_BOM(ModelSQL):
