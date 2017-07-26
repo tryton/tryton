@@ -10,7 +10,6 @@ __all__ = ['Allocation']
 class Allocation(ModelSQL, ModelView):
     'Allocation'
     __name__ = 'project.allocation'
-    _rec_name = 'employee'
     employee = fields.Many2One('company.employee', 'Employee', required=True,
             select=True, ondelete='CASCADE')
     work = fields.Many2One('project.work', 'Work', required=True,
@@ -31,6 +30,13 @@ class Allocation(ModelSQL, ModelView):
     @staticmethod
     def default_percentage():
         return 100
+
+    def get_rec_name(self, name):
+        return self.employee.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('employee',) + tuple(clause[1:])]
 
     @classmethod
     def write(cls, *args):
