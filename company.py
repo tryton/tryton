@@ -73,7 +73,6 @@ class Employee:
 class EmployeeCostPrice(ModelSQL, ModelView):
     'Employee Cost Price'
     __name__ = 'company.employee_cost_price'
-    _rec_name = 'date'
     date = fields.Date('Date', required=True, select=True)
     cost_price = fields.Numeric('Cost Price',
         digits=price_digits, required=True, help="Hourly cost price")
@@ -107,6 +106,9 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
+
+    def get_rec_name(self, name):
+        return str(self.date)
 
     @classmethod
     def delete(cls, prices):
