@@ -737,9 +737,12 @@ Instance methods:
 
     Return the value of the field `name` for the pattern.
 
-.. method:: MultiValueMixin.set_multivalue(name, value, \*\*pattern)
+.. method:: MultiValueMixin.set_multivalue(name, value[, save], \*\*pattern)
 
     Store the value of the field `name` for the pattern.
+    If `save` is true, it will be stored in the database, otherwise the
+    modified :class:`ValueMixin` records are returned unsaved. `save` is true
+    by default.
 
 .. warning::
     To customize the pattern, both methods must be override the same way.

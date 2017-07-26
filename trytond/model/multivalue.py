@@ -60,14 +60,14 @@ class MultiValueMixin(object):
         else:
             return value
 
-    def set_multivalue(self, name, value, _save=True, **pattern):
+    def set_multivalue(self, name, value, save=True, **pattern):
         Value = self.multivalue_model(name)
         values = self.__values(name, pattern, match_none=True)
         if not values:
             values = [self.multivalue_record(name, **pattern)]
         for record in values:
             setattr(record, name, value)
-        if _save:
+        if save:
             Value.save(values)
         else:
             return values
@@ -77,7 +77,7 @@ class MultiValueMixin(object):
         Value = cls.multivalue_model(name)
         to_save = []
         for record in records:
-            to_save.extend(record.set_multivalue(name, val, _save=False))
+            to_save.extend(record.set_multivalue(name, val, save=False))
         Value.save(to_save)
 
 
