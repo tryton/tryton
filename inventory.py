@@ -266,7 +266,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
 class InventoryLine(ModelSQL, ModelView):
     'Stock Inventory Line'
     __name__ = 'stock.inventory.line'
-    _rec_name = 'product'
     _states = {
         'readonly': Eval('inventory_state') != 'draft',
         }
@@ -356,6 +355,10 @@ class InventoryLine(ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         return self.product.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('product',) + tuple(clause[1:])]
 
     def get_uom(self, name):
         return self.product.default_uom.id

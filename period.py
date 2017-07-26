@@ -13,7 +13,6 @@ __all__ = ['Period', 'Cache']
 class Period(Workflow, ModelSQL, ModelView):
     'Stock Period'
     __name__ = 'stock.period'
-    _rec_name = 'date'
     date = fields.Date('Date', required=True, states={
             'readonly': Eval('state') == 'closed',
             }, depends=['state'])
@@ -69,6 +68,10 @@ class Period(Workflow, ModelSQL, ModelView):
         pool = Pool()
         if grouping == ('product',):
             return pool.get('stock.period.cache')
+
+    @classmethod
+    def get_rec_name(self, name):
+        return str(self.date)
 
     @classmethod
     @ModelView.button
