@@ -379,7 +379,6 @@ class ModuleDependency(ModelSQL, ModelView):
 class ModuleConfigWizardItem(ModelSQL, ModelView):
     "Config wizard to run after activating a module"
     __name__ = 'ir.module.config_wizard.item'
-    _rec_name = 'action'
     action = fields.Many2One('ir.action', 'Action', required=True,
         readonly=True)
     sequence = fields.Integer('Sequence', required=True)
