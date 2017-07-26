@@ -152,8 +152,10 @@ class Many2One(Widget):
     def get_screen(self):
         domain = self.field.domain_get(self.record)
         context = self.field.get_context(self.record)
+        # Remove first tree view as mode is form only
+        view_ids = self.attrs.get('view_ids', '').split(',')[1:]
         return Screen(self.get_model(), domain=domain, context=context,
-            mode=['form'], view_ids=self.attrs.get('view_ids', '').split(','),
+            mode=['form'], view_ids=view_ids,
             views_preload=self.attrs.get('views', {}), readonly=self._readonly,
             exclude_field=self.attrs.get('relation_field'))
 

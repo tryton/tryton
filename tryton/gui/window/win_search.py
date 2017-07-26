@@ -23,6 +23,8 @@ class WinSearch(NoModal):
             views_preload = {}
         self.domain = domain or []
         self.context = context or {}
+        self.view_ids = view_ids
+        self.views_preload = views_preload
         self.sel_multi = sel_multi
         self.callback = callback
         self.title = title
@@ -112,8 +114,11 @@ class WinSearch(NoModal):
             self.screen.search_filter(self.screen.screen_container.get_text())
             return
         elif response_id == gtk.RESPONSE_ACCEPT:
+            # Remove first tree view as mode if form only
+            view_ids = self.view_ids[1:]
             screen = Screen(self.model_name, domain=self.domain,
-                context=self.context, mode=['form'])
+                context=self.context, mode=['form'],
+                view_ids=view_ids, views_preload=self.views_preload)
 
             def callback(result):
                 if result:

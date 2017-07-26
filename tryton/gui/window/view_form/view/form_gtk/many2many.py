@@ -176,10 +176,8 @@ class Many2Many(Widget):
         if add_remove:
             domain = [domain, add_remove]
         context = self.field.get_context(self.record)
-        view_ids = self.attrs.get('view_ids', '').split(',')
-        if view_ids:
-            # Remove the first tree view as mode is form only
-            view_ids.pop(0)
+        # Remove the first tree view as mode is form only
+        view_ids = self.attrs.get('view_ids', '').split(',')[1:]
         return Screen(self.attrs['relation'], domain=domain,
             view_ids=view_ids,
             mode=['form'], views_preload=self.attrs.get('views', {}),
