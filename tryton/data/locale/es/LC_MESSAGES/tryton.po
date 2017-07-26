@@ -529,7 +529,7 @@ msgstr "Cerrar pestaña"
 #: tryton/gui/window/attachment.py:22
 #, python-format, python-format, python-format
 msgid "Attachments (%s)"
-msgstr "Adjuntos (%d)"
+msgstr "Adjuntos (%s)"
 
 #: tryton/gui/window/board.py:19 tryton/gui/window/form.py:32
 msgid "New"
