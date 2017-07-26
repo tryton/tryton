@@ -87,22 +87,11 @@ class Party(ModelSQL, ModelView, MultiValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        pool = Pool()
-        PartyLang = pool.get('party.party.lang')
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
-        party_lang = PartyLang.__table__()
 
         super(Party, cls).__register__(module_name)
 
         table_h = TableHandler(cls, module_name)
-        if table_h.column_exist('lang'):
-            query = party_lang.insert(
-                [party_lang.party, party_lang.lang],
-                table.select(table.id, table.lang))
-            cursor.execute(*query)
-            table_h.drop_column('lang')
 
         # Migration from 3.8
         table_h.not_null_action('name', 'remove')
@@ -262,13 +251,26 @@ class PartyLang(ModelSQL, ValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Party = pool.get('party.party')
         TableHandler = backend.get('TableHandler')
+        cursor = Transaction().connection.cursor()
         exist = TableHandler.table_exist(cls._table)
+        table = cls.__table__()
+        party = Party.__table__()
 
         super(PartyLang, cls).__register__(module_name)
 
         if not exist:
-            cls._migrate_property([], [], [])
+            party_h = TableHandler(Party, module_name)
+            if party_h.column_exist('lang'):
+                query = table.insert(
+                    [table.party, table.lang],
+                    party.select(party.id, party.lang))
+                cursor.execute(*query)
+                party_h.drop_column('lang')
+            else:
+                cls._migrate_property([], [], [])
 
     @classmethod
     def _migrate_property(cls, field_names, value_names, fields):
