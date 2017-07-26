@@ -26,7 +26,6 @@ __all__ = ['Company', 'Employee', 'UserEmployee', 'User',
 class Company(ModelSQL, ModelView):
     'Company'
     __name__ = 'company.company'
-    _rec_name = 'party'
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
     parent = fields.Many2One('company.company', 'Parent',
@@ -53,6 +52,10 @@ class Company(ModelSQL, ModelView):
         return self.party.rec_name
 
     @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('party',) + tuple(clause[1:])]
+
+    @classmethod
     def write(cls, companies, values, *args):
         super(Company, cls).write(companies, values, *args)
         # Restart the cache on the domain_get method
@@ -62,7 +65,6 @@ class Company(ModelSQL, ModelView):
 class Employee(ModelSQL, ModelView):
     'Employee'
     __name__ = 'company.employee'
-    _rec_name = 'party'
     party = fields.Many2One('party.party', 'Party', required=True,
         help="The party which represents the employee.")
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -91,6 +93,9 @@ class Employee(ModelSQL, ModelView):
     def get_rec_name(self, name):
         return self.party.rec_name
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('party',) + tuple(clause[1:])]
 
 class UserEmployee(ModelSQL):
     'User - Employee'
