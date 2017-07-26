@@ -899,7 +899,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
 class ActionActWindowView(ModelSQL, ModelView):
     "Action act window view"
     __name__ = 'ir.action.act_window.view'
-    _rec_name = 'view'
     sequence = fields.Integer('Sequence', required=True)
     view = fields.Many2One('ir.ui.view', 'View', required=True,
             ondelete='CASCADE')

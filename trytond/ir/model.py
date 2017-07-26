@@ -384,7 +384,6 @@ class ModelField(ModelSQL, ModelView):
 class ModelAccess(ModelSQL, ModelView):
     "Model access"
     __name__ = 'ir.model.access'
-    _rec_name = 'model'
     model = fields.Many2One('ir.model', 'Model', required=True,
             ondelete="CASCADE")
     group = fields.Many2One('res.group', 'Group',
@@ -439,6 +438,13 @@ class ModelAccess(ModelSQL, ModelView):
     @staticmethod
     def default_perm_delete():
         return False
+
+    def get_rec_name(self, name):
+        return self.model.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('model',) + tuple(clause[1:])]
 
     @classmethod
     def get_access(cls, models):
@@ -568,7 +574,6 @@ class ModelAccess(ModelSQL, ModelView):
 class ModelFieldAccess(ModelSQL, ModelView):
     "Model Field Access"
     __name__ = 'ir.model.field.access'
-    _rec_name = 'field'
     field = fields.Many2One('ir.model.field', 'Field', required=True,
             ondelete='CASCADE')
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE')
@@ -617,6 +622,13 @@ class ModelFieldAccess(ModelSQL, ModelView):
     @staticmethod
     def default_perm_delete():
         return True
+
+    def get_rec_name(self, name):
+        return self.field.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('field',) + tuple(clause[1:])]
 
     @classmethod
     def get_access(cls, models):
