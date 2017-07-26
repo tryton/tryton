@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
 from io import BytesIO
 import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape, unescape
@@ -35,6 +36,12 @@ ALIGN2JUSTIFICATION = {
     }
 JUSTIFICATION2ALIGN = _reverse_dict(ALIGN2JUSTIFICATION)
 FAMILIES = ['normal', 'sans', 'serif', 'monospace']
+
+
+def gdk_to_hex(gdk_color):
+    "Convert color to 2 digit hex"
+    colors = [gdk_color.red, gdk_color.green, gdk_color.blue]
+    return "#" + "".join(["%02x" % (color / 256) for color in colors])
 
 
 def _markup(text):
@@ -325,7 +332,7 @@ def _get_tags(content, element):
         yield tag_table.lookup('size %s' % size)
     if 'color' in element.attrib:
         yield register_foreground(
-            content, gtk.gdk.Color(element.attrib['color']))
+            content, gtk.gdk.color_parse(element.attrib['color']))
     align = element.attrib.get('align')
     if align in ALIGN2JUSTIFICATION:
         yield tag_table.lookup('justification %s' % align)
@@ -350,8 +357,8 @@ def _get_html(texttag, close=False, div_only=False):
     if texttag.props.scale_set and texttag.props.scale != pango.SCALE_MEDIUM:
         font['size'] = SCALE2SIZE[texttag.props.scale]
     if (texttag.props.foreground_set
-            and texttag.props.foreground_gdk != gtk.gdk.Color()):
-        font['color'] = str(texttag.props.foreground_gdk)
+            and texttag.props.foreground_gdk != gtk.gdk.Color(0, 0, 0)):
+        font['color'] = gdk_to_hex(texttag.props.foreground_gdk)
     # TODO style background-color
     if font:
         tags.append('font')
@@ -393,7 +400,7 @@ if __name__ == '__main__':
  <u>Underline</u>
 <div><br/></div>
 <div align="center">Center</div>
-<div><font face="sans" size="6">Sans6<font color="#f00">red</font></font></div>
+<div><font face="sans" size="6">Sans6<font color="#ff0000">red</font></font></div>
 <div align="center"> <b> <i><u>Title</u></i> </b></div>'''
 
     win = gtk.Window()
