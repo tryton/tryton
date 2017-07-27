@@ -598,11 +598,13 @@ class Screen(SignalEvent):
         fields = self.current_view.get_fields()
         path = self.current_record.get_path(self.group)
         if self.current_view.view_type == 'tree':
-            saved = all(self.group.save())
+            # False value must be not saved
+            saved = all((x is 0 or x > 0 for x in self.group.save()))
             record_id = self.current_record.id if self.current_record else None
         elif self.current_record.validate(fields):
             record_id = self.current_record.save(force_reload=True)
-            saved = bool(record_id)
+            # False value must be not saved
+            saved = record_id is 0 or record_id > 0
         else:
             self.set_cursor()
             self.current_view.display()
