@@ -31,7 +31,7 @@ class Revision(object):
         hbox.pack_start(label, expand=True, fill=True)
         list_store = gtk.ListStore(str, str)
         # Set model on instantiation to get the default cellrenderer as text
-        combobox = gtk.ComboBoxEntry(list_store)
+        combobox = gtk.ComboBoxEntry(model=list_store)
         self.entry = combobox.get_child()
         self.entry.connect('focus-out-event', self.focus_out)
         self.entry.connect('activate', self.activate)
