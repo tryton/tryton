@@ -229,7 +229,6 @@ class RecordTagHandler:
                 context['time'] = time
                 context['version'] = __version__.rsplit('.', 1)[0]
                 context['ref'] = self.mh.get_id
-                context['obj'] = lambda *a: 1
                 context['Decimal'] = Decimal
                 if pyson_attr:
                     context.update(CONTEXT)
