@@ -144,6 +144,7 @@ Here is the list of the tags:
             * ``version``: The current Tryton version
             * ``ref``: A function that converts an XML id into a database id.
             * ``Decimal``: The python Decimal_ object
+            * ``datetime``: The python datetime_ module
 
         * ``pyson``: convert the evaluated value into :ref:`PYSON <ref-pyson>`
           string.
@@ -178,4 +179,5 @@ Here is the list of the tags:
 
 .. _ConfigParser: http://docs.python.org/library/configparser.html
 .. _time: http://docs.python.org/library/time.html
-.. _Decimal: https://docs.python.org/3/library/decimal.html?highlight=decimal#decimal.Decimal
+.. _Decimal: https://docs.python.org/library/decimal.html
+.. _datetime: https://docs.python.org/library/datetime.html
