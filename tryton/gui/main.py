@@ -377,10 +377,17 @@ class Main(object):
         self.global_search_entry.grab_focus()
 
     def set_title(self, value=''):
-        title = CONFIG['client.title']
+        if CONFIG['login.profile']:
+            login_info = CONFIG['login.profile']
+        else:
+            login_info = '%s@%s/%s' % (
+                CONFIG['login.login'],
+                CONFIG['login.host'],
+                CONFIG['login.db'])
+        titles = [CONFIG['client.title'], login_info]
         if value:
-            title += ' - ' + value
-        self.window.set_title(title)
+            titles.append(value)
+        self.window.set_title(' - '.join(titles))
 
     def _set_menu_connection(self):
         menu_connection = gtk.Menu()
@@ -847,6 +854,7 @@ class Main(object):
             raise
         func = lambda parameters: rpc.login(
             host, port, database, username, parameters, language)
+        self.set_title()  # Adds username/profile while password is asked
         try:
             common.Login(func)
         except Exception, exception:
