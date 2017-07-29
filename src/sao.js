@@ -236,11 +236,7 @@ var Sao = {};
                     (preferences.actions || []).forEach(function(action_id) {
                         Sao.Action.execute(action_id, {}, null, {});
                     });
-                    var title = Sao.config.title;
-                    if (!jQuery.isEmptyObject(preferences.status_bar)) {
-                        title += ' - ' + preferences.status_bar;
-                    }
-                    document.title = title;
+                    Sao.set_title(preferences.status_bar);
                     var new_lang = preferences.language != Sao.i18n.getLocale();
                     var prm = jQuery.Deferred();
                     Sao.i18n.setlang(preferences.language).always(function() {
@@ -253,6 +249,27 @@ var Sao = {};
                 });
             });
         });
+    };
+
+    Sao.set_title = function(value) {
+        var title = [Sao.config.title];
+        var session = Sao.Session.current_session;
+        var login_info = '';
+        if (session) {
+            if (session.login) {
+                login_info = session.login + '@' + document.location.host;
+            }
+            if (session.database) {
+                login_info += '/' + session.database;
+            }
+            title = title.concat(login_info);
+        } else {
+            title = title.concat(document.location.host);
+        }
+        if (value) {
+            title = title.concat(value);
+        }
+        document.title = title.join(' - ');
     };
 
     Sao.login = function() {
@@ -273,8 +290,8 @@ var Sao = {};
             jQuery('#user-logout').children().remove();
             jQuery('#user-favorites').children().remove();
             jQuery('#menu').children().remove();
-            document.title = Sao.config.title;
             session.do_logout().always(Sao.login);
+            Sao.set_title();
         });
     };
 
