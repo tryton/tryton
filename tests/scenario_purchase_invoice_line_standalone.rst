@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -140,7 +140,7 @@ Create a supplier invoice::
 
 Create a supplier invoice with an accountant::
 
-    >>> current_config.user = accountant.id
+    >>> set_user(accountant)
     >>> Invoice = Model.get('account.invoice')
     >>> Partner = Model.get('party.party')
     >>> supplier, = Partner.find([('name', '=', 'Supplier')])
