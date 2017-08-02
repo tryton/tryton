@@ -18,7 +18,7 @@ from trytond.pyson import Eval
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 
-__all__ = ['Email', 'EmailAttachment', 'Log']
+__all__ = ['Email', 'EmailAttachment', 'EmailLog']
 
 
 def _formataddr(name, email):
@@ -221,7 +221,7 @@ class Email(ModelSQL, ModelView):
 
     def send_email(self, records, trigger):
         pool = Pool()
-        Log = pool.get('notification.log')
+        Log = pool.get('notification.email.log')
         datamanager = SMTPDataManager()
         Transaction().join(datamanager)
         from_ = self.from_ or config.get('email', 'from')
@@ -300,9 +300,9 @@ class EmailAttachment(ModelSQL):
         return msg
 
 
-class Log(ModelSQL, ModelView):
-    "Notitification Log"
-    __name__ = 'notification.log'
+class EmailLog(ModelSQL, ModelView):
+    "Notitification Email Log"
+    __name__ = 'notification.email.log'
     date = fields.Function(fields.DateTime('Date'), 'get_date')
     recipients = fields.Char("Recipients")
     recipients_secondary = fields.Char("Secondary Recipients")

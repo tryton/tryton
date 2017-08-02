@@ -42,7 +42,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         Trigger = pool.get('ir.trigger')
         User = pool.get('res.user')
         NotificationEmail = pool.get('notification.email')
-        Log = pool.get('notification.log')
+        Log = pool.get('notification.email.log')
 
         model, = Model.search([
                 ('model', '=', User.__name__),
