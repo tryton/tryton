@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -73,7 +73,7 @@ Create chart of accounts::
 
 Create dunning procedure::
 
-    >>> config.user = account_admin_user.id
+    >>> set_user(account_admin_user)
     >>> Procedure = Model.get('account.dunning.procedure')
     >>> procedure = Procedure(name='Procedure')
     >>> level = procedure.levels.new()
@@ -96,7 +96,7 @@ Create parties::
 
 Create some moves::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
     >>> journal_revenue, = Journal.find([
@@ -151,7 +151,7 @@ Create some moves::
 
 Create dunnings on 4 days::
 
-    >>> config.user = dunning_user.id
+    >>> set_user(dunning_user)
     >>> Dunning = Model.get('account.dunning')
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.form.date = period.start_date + relativedelta(days=4)
@@ -236,7 +236,7 @@ Create dunnings on 30 days::
 
 Pay dunning::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> MoveLine = Model.get('account.move.line')
     >>> move = Move()
     >>> move.period = period
@@ -258,7 +258,7 @@ Pay dunning::
 
 Create dunnings on 50 days::
 
-    >>> config.user = dunning_user.id
+    >>> set_user(dunning_user)
     >>> create_dunning = Wizard('account.dunning.create')
     >>> create_dunning.form.date = period.start_date + relativedelta(days=50)
     >>> create_dunning.execute('create_')
