@@ -169,7 +169,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         attachment = msg.get_payload(1)
         self.assertEqual(
             attachment.get_payload(None, True),
-            'attachment for Michael Scott')
+            b'attachment for Michael Scott')
         self.assertEqual(
             attachment.get_content_type(), 'application/octet-stream')
         self.assertEqual(attachment.get_filename(), "Attachment.plain")
