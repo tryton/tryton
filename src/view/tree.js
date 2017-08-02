@@ -1113,7 +1113,7 @@
                     widget.display(this.record, field);
                     this.get_static_el().hide();
                     this.get_editable_el().show();
-                    widget.el.focus();
+                    widget.focus();
                 } else if (!selected) {
                     this.set_selection(true);
                     this.selection_changed();
