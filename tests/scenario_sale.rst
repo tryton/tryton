@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -129,7 +129,7 @@ Create payment term::
 
 Create an Inventory::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> Location = Model.get('stock.location')
     >>> storage, = Location.find([
@@ -146,7 +146,7 @@ Create an Inventory::
 
 Sale 5 products::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -207,11 +207,11 @@ Invoice line must be linked to stock move::
 Post invoice and check no new invoices::
 
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> Invoice = Model.get('account.invoice')
     >>> for invoice in sale.invoices:
     ...     invoice.click('post')
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
@@ -227,7 +227,7 @@ Testing the report::
 
 Sale 5 products with an invoice method 'on shipment'::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -262,7 +262,7 @@ Sale 5 products with an invoice method 'on shipment'::
 Not yet linked to invoice lines::
 
     >>> shipment, = sale.shipments
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> stock_move1, stock_move2 = sorted(shipment.outgoing_moves,
     ...     key=lambda m: m.quantity or 0)
     >>> len(stock_move1.invoice_lines)
@@ -279,12 +279,12 @@ Validate Shipments::
 
 Open customer invoice::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.invoice_state
     u'waiting'
     >>> invoice, = sale.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice(invoice.id)
     >>> invoice.type
@@ -305,7 +305,7 @@ Invoice lines must be linked to each stock moves::
 
 Check second invoices::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> len(sale.invoices)
     2
@@ -314,7 +314,7 @@ Check second invoices::
 
 Sale 5 products with shipment method 'on invoice'::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer
     >>> sale.payment_term = payment_term
@@ -337,7 +337,7 @@ Sale 5 products with shipment method 'on invoice'::
 Not yet linked to stock moves::
 
     >>> invoice, = sale.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoice_line, = invoice.lines
     >>> len(invoice_line.stock_moves)
     0
@@ -360,17 +360,17 @@ Post and Pay Invoice for 4 products::
 
 Invoice lines linked to 1 move::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoice_line, = invoice.lines
     >>> len(invoice_line.stock_moves)
     1
 
 Stock moves must be linked to invoice line::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> shipment, = sale.shipments
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment.reload()
     >>> stock_move, = shipment.outgoing_moves
     >>> stock_move.quantity
@@ -393,14 +393,14 @@ Ship 3 products::
 
 New shipments created::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> len(sale.shipments)
     2
 
 Invoice lines linked to new moves::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoice.reload()
     >>> invoice_line, = invoice.lines
     >>> len(invoice_line.stock_moves)
@@ -408,7 +408,7 @@ Invoice lines linked to new moves::
 
 Create a Return::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> return_ = Sale()
     >>> return_.party = customer
     >>> return_.payment_term = payment_term
@@ -436,9 +436,9 @@ Create a Return::
 
 Receive Return Shipment for 3 products::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> ship_return, = return_.shipment_returns
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.rec_name
     u'product'
@@ -449,7 +449,7 @@ Receive Return Shipment for 3 products::
 
 Check Return::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> return_.reload()
     >>> return_.shipment_state
     u'waiting'
@@ -462,7 +462,7 @@ Check Return::
 Open customer credit note::
 
     >>> credit_note, = return_.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> credit_note = Invoice(credit_note.id)
     >>> credit_note.type
     u'out'
@@ -474,10 +474,10 @@ Open customer credit note::
 
 Receive Remaining Return Shipment::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> return_.reload()
     >>> _, ship_return = return_.shipment_returns
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.rec_name
     u'product'
@@ -487,7 +487,7 @@ Receive Remaining Return Shipment::
 
 Check Return::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> return_.reload()
     >>> return_.shipment_state
     u'sent'
@@ -499,7 +499,7 @@ Check Return::
 
 Mixing return and sale::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> mix = Sale()
     >>> mix.party = customer
     >>> mix.payment_term = payment_term
@@ -530,10 +530,10 @@ Mixing return and sale::
 
 Checking Shipments::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> mix_return, = mix.shipment_returns
     >>> mix_shipment, = mix.shipments
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> mix_return.click('receive')
     >>> move_return, = mix_return.incoming_moves
     >>> move_return.product.rec_name
@@ -552,10 +552,10 @@ Checking Shipments::
 
 Checking the invoice::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> mix.reload()
     >>> mix_invoice, = mix.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> mix_invoice = Invoice(mix_invoice.id)
     >>> mix_invoice.type
     u'out'
@@ -567,7 +567,7 @@ Checking the invoice::
 
 Mixing stuff with an invoice method 'on shipment'::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> mix = Sale()
     >>> mix.party = customer
     >>> mix.payment_term = payment_term
@@ -598,10 +598,10 @@ Mixing stuff with an invoice method 'on shipment'::
 
 Checking Shipments::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> mix_return, = mix.shipment_returns
     >>> mix_shipment, = mix.shipments
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> mix_return.click('receive')
     >>> move_return, = mix_return.incoming_moves
     >>> move_return.product.rec_name
@@ -619,7 +619,7 @@ Checking Shipments::
 
 Sale services::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> service_sale = Sale()
     >>> service_sale.party = customer
     >>> service_sale.payment_term = payment_term
@@ -640,7 +640,7 @@ Sale services::
 
 Pay the service invoice::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> service_invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [service_invoice])
     >>> pay.form.journal = cash_journal
@@ -651,7 +651,7 @@ Pay the service invoice::
 
 Check service sale states::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> service_sale.reload()
     >>> service_sale.invoice_state
     u'paid'
@@ -662,7 +662,7 @@ Check service sale states::
 
 Return sales using the wizard::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale_to_return = Sale()
     >>> sale_to_return.party = customer
     >>> sale_to_return.payment_term = payment_term
@@ -701,14 +701,14 @@ to invoices::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> shipment, = sale.shipments
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> for move in shipment.inventory_moves:
     ...     move.quantity = 5.0
     >>> shipment.click('assign_try')
     True
     >>> shipment.click('pack')
     >>> shipment.click('done')
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> invoice, = sale.invoices
     >>> invoice_line, = invoice.lines
@@ -734,7 +734,7 @@ invoices::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> invoice, = sale.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoice_line, = invoice.lines
     >>> invoice_line.stock_moves == []
     True
@@ -746,7 +746,7 @@ invoices::
     >>> invoice.reload()
     >>> invoice.state
     u'paid'
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> invoice_line.reload()
     >>> stock_move, = invoice_line.stock_moves
     >>> stock_move.quantity
@@ -765,11 +765,11 @@ Deleting a line from a invoice should recreate it::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> invoice, = sale.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoice_line, = invoice.lines
     >>> invoice.lines.remove(invoice_line)
     >>> invoice.click('post')
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> new_invoice, = sale.invoices
     >>> new_invoice.number
