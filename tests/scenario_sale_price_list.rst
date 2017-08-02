@@ -7,7 +7,7 @@ Imports::
     >>> import datetime
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -121,7 +121,7 @@ Create a price List and assign it to customer::
 
 Use the price list on sale::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -145,7 +145,7 @@ Use the price list on sale::
 
 Create a sale price List and assign to configuration::
 
-    >>> config.user = sale_admin.id
+    >>> set_user(sale_admin)
     >>> sale_price_list = PriceList(name='Sale price List')
     >>> sale_price_list_line = sale_price_list.lines.new()
     >>> sale_price_list_line.formula = 'unit_price * 0.5'
@@ -157,7 +157,7 @@ Create a sale price List and assign to configuration::
 
 Use the sale price list on sale::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.party = customer_without_price_list
     >>> sale.price_list == sale_price_list
     True
