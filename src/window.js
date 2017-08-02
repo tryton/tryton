@@ -711,7 +711,7 @@
                 this.select.append(jQuery('<option/>', {
                     value: revision.valueOf(),
                     text: Sao.common.format_datetime(
-                        date_format, time_format, revision) + ' ' + this.title
+                        date_format, time_format, revision) + ' ' + name,
                 }));
             }.bind(this));
             this.el.modal('show');
