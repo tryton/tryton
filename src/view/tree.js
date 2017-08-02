@@ -565,16 +565,10 @@
                 column = row.next_column(null, new_);
                 if (column !== null) {
                     td = row._get_column_td(column);
-                    if (this.editable) {
+                    if (this.editable && new_) {
                         td.triggerHandler('click');
-                        if (new_) {
-                            td.triggerHandler('click');
-                        } else {
-                            td.find(':input,[tabindex=0]').focus();
-                        }
-                    } else {
-                        td.find(':input,[tabindex=0]').focus();
                     }
+                    td.find(':input,[tabindex=0]').focus();
                 }
             }
         }
