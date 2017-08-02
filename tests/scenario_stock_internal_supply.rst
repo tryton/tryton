@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> today = datetime.date.today()
@@ -58,7 +58,7 @@ Create product user::
 
 Create product::
 
-    >>> config.user = product_admin_user.id
+    >>> set_user(product_admin_user)
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
@@ -73,7 +73,7 @@ Create product::
 
 Get stock locations::
 
-    >>> config.user = stock_admin_user.id
+    >>> set_user(stock_admin_user)
     >>> Location = Model.get('stock.location')
     >>> warehouse_loc, = Location.find([('code', '=', 'WH')])
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
@@ -114,7 +114,7 @@ Create internal order point::
 
 Create inventory to add enough quantity in Provisioning Location::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> inventory = Inventory()
     >>> inventory.location = provisioning_loc
