@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -96,7 +96,7 @@ Create payment term::
 
 Sale with analytic accounts::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -134,7 +134,7 @@ Check analytic accounts on invoice::
 
 Sale with an empty analytic account::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> SaleLine = Model.get('sale.line')
     >>> sale = Sale()
@@ -161,7 +161,7 @@ Check invoice analytic accounts::
 
 Return sales using the wizard::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> return_sale = Wizard('sale.return_sale', [sale])
     >>> return_sale.execute('return_')
     >>> returned_sale, = Sale.find([
