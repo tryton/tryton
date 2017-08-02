@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -123,7 +123,7 @@ Create payment term::
 
 Sale 250 products::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -143,7 +143,7 @@ Sale 250 products::
 
 Create Purchase from Request::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
@@ -163,7 +163,7 @@ Create Purchase from Request::
     >>> purchase.state
     u'processing'
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
@@ -171,28 +171,28 @@ Create Purchase from Request::
 
 Receiving only 100 products::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> move, = shipment.supplier_moves
     >>> move.quantity = 100
     >>> shipment.click('ship')
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
     >>> shipment, = sale.drop_shipments
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment.click('done')
     >>> shipment.state
     u'done'
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
 
 The purchase is now waiting for his new drop shipment::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
     u'waiting'
@@ -208,10 +208,10 @@ The purchase is now waiting for his new drop shipment::
 Let's cancel the shipment and handle the issue on the purchase.
 As a consequence the sale order is now in exception::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment.click('cancel')
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
     u'exception'
@@ -223,7 +223,7 @@ As a consequence the sale order is now in exception::
     >>> purchase.shipment_state
     u'received'
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
     u'exception'
@@ -247,7 +247,7 @@ Cancelling the workflow on the purchase step::
     >>> sale.drop_shipments
     []
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> purchase_request, = PurchaseRequest.find([('purchase_line', '=', None)])
     >>> purchase_request.quantity
     125.0
@@ -289,7 +289,7 @@ the sale::
 
 The sale is then in exception::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
     u'exception'
@@ -304,12 +304,12 @@ from stock::
 
     >>> shipment, = sale.shipments
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment.click('assign_force')
     >>> shipment.click('pack')
     >>> shipment.click('done')
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
     u'sent'
