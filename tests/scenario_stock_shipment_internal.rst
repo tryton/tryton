@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> today = datetime.date.today()
@@ -68,7 +68,7 @@ Create stock user::
 
 Create Internal Shipment::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> Shipment = Model.get('stock.shipment.internal')
     >>> StockMove = Model.get('stock.move')
     >>> shipment = Shipment()
@@ -133,7 +133,7 @@ Check that now whe can finish the older shipment::
 
 Add lead time inside the warehouse::
 
-    >>> config.user = 1
+    >>> set_user(1)
     >>> LeadTime = Model.get('stock.location.lead_time')
     >>> lead_time = LeadTime()
     >>> lead_time.from_warehouse = storage_loc.warehouse
@@ -143,7 +143,7 @@ Add lead time inside the warehouse::
 
 Create Internal Shipment with lead time::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment = Shipment()
     >>> shipment.planned_date = tomorrow
     >>> shipment.from_location = internal_loc

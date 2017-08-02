@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> today = datetime.date.today()
@@ -63,7 +63,7 @@ Create stock user::
     >>> stock_user.employee = employee
     >>> stock_user.save()
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
 
 Get stock locations::
 
