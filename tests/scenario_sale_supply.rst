@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -109,7 +109,7 @@ Create payment term::
 
 Sale 250 products::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -132,7 +132,7 @@ Sale 250 products::
 
 Delete Purchase Request::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
     >>> purchase_request.quantity
@@ -144,7 +144,7 @@ Delete Purchase Request::
 
 Create Purchase from Request::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase_request, = PurchaseRequest.find()
     >>> purchase_request.quantity
@@ -160,7 +160,7 @@ Create Purchase from Request::
     >>> purchase.click('process')
     >>> purchase.state
     u'processing'
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> shipment, = sale.shipments
     >>> move, = shipment.outgoing_moves
@@ -172,7 +172,7 @@ Create Purchase from Request::
 
 Receive 100 products::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> Move = Model.get('stock.move')
     >>> shipment = ShipmentIn(supplier=supplier)
@@ -183,7 +183,7 @@ Receive 100 products::
     >>> shipment.click('done')
     >>> shipment.state
     u'done'
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> shipment, = sale.shipments
     >>> move, = [x for x in shipment.inventory_moves
@@ -198,7 +198,7 @@ Receive 100 products::
 Switching from not supplying on sale to supplying on sale for product should
 not create a new purchase request::
 
-    >>> config.user = admin_user.id
+    >>> set_user(admin_user)
 
     >>> changing_template = ProductTemplate()
     >>> changing_template.name = 'product'
@@ -213,7 +213,7 @@ not create a new purchase request::
     >>> changing_template.save()
     >>> changing_product, = changing_template.products
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -227,7 +227,7 @@ not create a new purchase request::
     >>> sale.state
     u'processing'
     >>> shipment, = sale.shipments
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> Location = Model.get('stock.location')
     >>> storage, = Location.find([
@@ -248,11 +248,11 @@ not create a new purchase request::
     True
     >>> shipment.click('pack')
 
-    >>> config.user = admin_user.id
+    >>> set_user(admin_user)
     >>> changing_template.supply_on_sale = True
     >>> changing_template.save()
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment.click('done')
     >>> len(PurchaseRequest.find([('product', '=', changing_product.id)]))
     0
