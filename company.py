@@ -266,7 +266,8 @@ class User:
                             ])
                     company_id = Transaction().context['company']
                     if ((company_id and company_id in map(int, companies))
-                            or not company_id):
+                            or not company_id
+                            or Transaction().user == 0):
                         values['company'] = company_id
                 if ('employee' in fields_names
                         and 'employee' in Transaction().context):
@@ -275,7 +276,9 @@ class User:
                         employees = cls.read([user_id],
                             ['employees'])[0]['employees']
                     employee_id = Transaction().context['employee']
-                    if employee_id and employee_id in employees:
+                    if ((employee_id and employee_id in employees)
+                            or not employee_id
+                            or Transaction().user == 0):
                         values['employee'] = employee_id
         return result
 
