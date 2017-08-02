@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import (create_company,
     ...     get_company)
     >>> from trytond.modules.account.tests.tools import (create_chart,
@@ -110,7 +110,7 @@ Create product::
 
 Create purchase requisition without product and description::
 
-    >>> config.user = requisition_user.id
+    >>> set_user(requisition_user)
     >>> PurchaseRequisition = Model.get('purchase.requisition')
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
@@ -157,7 +157,7 @@ Create purchase requisition with supplier and price::
 Approve workflow by requisition user raise an exception because he's not in
 approval_group::
 
-    >>> config.user = requisition_user.id
+    >>> set_user(requisition_user)
     >>> requisition.click('approve')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -166,7 +166,7 @@ approval_group::
 Approve workflow by purchaser raise an exception because he's not in
 approval_group::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> requisition.click('approve')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -174,14 +174,14 @@ approval_group::
 
 Approve workflow with user in approval_group::
 
-    >>> config.user = requisition_approval_user.id
+    >>> set_user(requisition_approval_user)
     >>> requisition.click('approve')
     >>> requisition.state
     u'processing'
 
 Create Purchase order from Request::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> pr.state
@@ -252,7 +252,7 @@ Confirm the purchase order::
 
 Try to delete requisition done::
 
-    >>> config.user = requisition_user.id
+    >>> set_user(requisition_user)
     >>> PurchaseRequisition.delete([requisition])  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -268,7 +268,7 @@ Delete draft requisition::
 
 Create purchase requisition with two different suppliers::
 
-    >>> config.user = requisition_user.id
+    >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
     >>> requisition.employee = requisition_user.employee
@@ -283,10 +283,10 @@ Create purchase requisition with two different suppliers::
     >>> requisition_line.supplier = supplier2
     >>> requisition.click('wait')
 
-    >>> config.user = requisition_approval_user.id
+    >>> set_user(requisition_approval_user)
     >>> requisition.click('approve')
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> pr = PurchaseRequest.find([('state', '=', 'draft')])
     >>> len(pr)
     2
@@ -315,7 +315,7 @@ Create purchase requisition with two different suppliers::
 
 Create purchase requisition then cancel::
 
-    >>> config.user = requisition_user.id
+    >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
     >>> requisition.employee = requisition_user.employee
@@ -329,7 +329,7 @@ Create purchase requisition then cancel::
 
 Create purchase requisition, wait then reject::
 
-    >>> config.user = requisition_user.id
+    >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
     >>> requisition.employee = requisition_user.employee
@@ -341,7 +341,7 @@ Create purchase requisition, wait then reject::
     >>> requisition.state
     u'waiting'
 
-    >>> config.user = requisition_approval_user.id
+    >>> set_user(requisition_approval_user)
     >>> requisition.click('reject')
     >>> requisition.state
     u'rejected'
