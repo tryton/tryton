@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -159,7 +159,7 @@ Create payment term::
 
 Sale 50 products::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -175,7 +175,7 @@ Sale 50 products::
 
 Create Purchase from Request::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
@@ -190,7 +190,7 @@ Create Purchase from Request::
     >>> purchase.click('process')
     >>> purchase.state
     u'processing'
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
     []
@@ -198,7 +198,7 @@ Create Purchase from Request::
 
 Receive 50 products::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment.click('ship')
     >>> shipment.click('done')
     >>> shipment.state
@@ -221,10 +221,10 @@ Receive 50 products::
 
 Open supplier invoice::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
@@ -247,10 +247,10 @@ Open supplier invoice::
 
 Open customer invoice::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.reload()
     >>> invoice, = sale.invoices
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoice.click('post')
     >>> invoice.state
     u'posted'

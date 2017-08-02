@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -310,7 +310,7 @@ Now create a supplier invoice with an accountant::
     >>> purchase.state
     u'processing'
 
-    >>> config.user = accountant.id
+    >>> set_user(accountant)
     >>> for invoice in purchase.invoices:
     ...     invoice.invoice_date = today
     >>> Invoice.save(purchase.invoices)
@@ -338,7 +338,7 @@ Create customer invoice with negative quantity::
 
 Now we will use a product with different unit of measure::
 
-    >>> config.user = product_user.id
+    >>> set_user(product_user)
     >>> UomCategory = Model.get('product.uom.category')
     >>> unit_category, = UomCategory.find([('name', '=', 'Units')])
     >>> unit_5 = ProductUom(name='5', symbol='5', category=unit_category,
@@ -372,7 +372,7 @@ Now we will use a product with different unit of measure::
     >>> template_by5.save()
     >>> product_by5, = template_by5.products
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
@@ -384,7 +384,7 @@ Now we will use a product with different unit of measure::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipment = ShipmentIn(supplier=supplier)
     >>> move = Move(purchase.moves[0].id)
     >>> move.in_anglo_saxon_quantity
@@ -393,7 +393,7 @@ Now we will use a product with different unit of measure::
     >>> shipment.click('receive')
     >>> shipment.click('done')
 
-    >>> config.user = accountant.id
+    >>> set_user(accountant)
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
     >>> invoice.invoice_date = today
@@ -401,7 +401,7 @@ Now we will use a product with different unit of measure::
     >>> invoice.state
     u'posted'
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> move = Move(purchase.moves[0].id)
     >>> move.in_anglo_saxon_quantity
     1.0
