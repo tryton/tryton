@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import (create_chart,
@@ -86,7 +86,7 @@ Create purchase user::
 
 Create product::
 
-    >>> config.user = product_admin_user.id
+    >>> set_user(product_admin_user)
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
@@ -105,7 +105,7 @@ Create product::
 
 Get stock locations::
 
-    >>> config.user = stock_admin_user.id
+    >>> set_user(stock_admin_user)
     >>> Location = Model.get('stock.location')
     >>> warehouse_loc, = Location.find([('code', '=', 'WH')])
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
@@ -115,7 +115,7 @@ Get stock locations::
 
 Create a need for missing product::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipment_out = ShipmentOut()
     >>> shipment_out.planned_date = today
@@ -147,7 +147,7 @@ Create the purchase request::
 
 There is now a draft purchase request::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> pr.product == product
     True
@@ -206,7 +206,7 @@ Re-create the purchase request::
 
 Create a second purchase request manually::
 
-    >>> config.user = 1  # admin
+    >>> set_user(1)  # admin
     >>> pr = PurchaseRequest()
     >>> pr.product = product
     >>> pr.quantity = 1
@@ -217,7 +217,7 @@ Create a second purchase request manually::
 
 There is now 2 draft purchase requests::
 
-    >>> config.user = purchase_user.id
+    >>> set_user(purchase_user)
     >>> prs = PurchaseRequest.find([('state', '=', 'draft')])
     >>> len(prs)
     2
@@ -244,7 +244,7 @@ Create the purchase with a unique line::
 
 Create a purchase request without product::
 
-    >>> config.user = 1  # admin
+    >>> set_user(1)  # admin
     >>> pr = PurchaseRequest()
     >>> pr.description = "Custom product"
     >>> pr.quantity = 1
