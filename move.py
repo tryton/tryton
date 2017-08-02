@@ -532,7 +532,7 @@ class Move(Workflow, ModelSQL, ModelView):
     def search_rec_name(cls, name, clause):
         return [('product',) + tuple(clause[1:])]
 
-    def _update_product_cost_price(self, direction):
+    def _compute_product_cost_price(self, direction):
         """
         Update the cost price on the given product.
         The direction must be "in" if incoming and "out" if outgoing.
@@ -540,47 +540,35 @@ class Move(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Uom = pool.get('product.uom')
         Product = pool.get('product.product')
-        Location = pool.get('stock.location')
         Currency = pool.get('currency.currency')
-        Date = pool.get('ir.date')
 
         if direction == 'in':
             quantity = self.quantity
         elif direction == 'out':
             quantity = -self.quantity
-        context = {}
-        locations = Location.search([
-                ('type', '=', 'storage'),
-                ])
-        context['with_childs'] = False
-        context['locations'] = [l.id for l in locations]
-        context['stock_date_end'] = Date.today()
-        with Transaction().set_context(context):
-            product = Product(self.product.id)
-        qty = Uom.compute_qty(self.uom, quantity, product.default_uom)
+        qty = Uom.compute_qty(self.uom, quantity, self.product.default_uom)
 
         qty = Decimal(str(qty))
-        product_qty = Decimal(str(max(product.quantity, 0)))
+        product_qty = Decimal(str(max(self.product.quantity, 0)))
         # convert wrt currency
         with Transaction().set_context(date=self.effective_date):
             unit_price = Currency.compute(self.currency, self.unit_price,
                 self.company.currency, round=False)
         # convert wrt to the uom
         unit_price = Uom.compute_price(self.uom, unit_price,
-            product.default_uom)
+            self.product.default_uom)
+        cost_price = self.product.get_multivalue(
+            'cost_price', **self._cost_price_pattern)
         if product_qty + qty != Decimal('0.0'):
             new_cost_price = (
-                (product.cost_price * product_qty) + (unit_price * qty)
+                (cost_price * product_qty) + (unit_price * qty)
                 ) / (product_qty + qty)
         else:
-            new_cost_price = product.cost_price
+            new_cost_price = cost_price
 
         digits = Product.cost_price.digits
-        new_cost_price = new_cost_price.quantize(
+        return new_cost_price.quantize(
             Decimal(str(10.0 ** -digits[1])))
-
-        product.set_multivalue(
-            'cost_price', new_cost_price, company=self.company.id)
 
     @staticmethod
     def _get_internal_quantity(quantity, uom, product):
@@ -616,26 +604,93 @@ class Move(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def do(cls, moves):
+        pool = Pool()
+        Product = pool.get('product.product')
+
+        def set_cost_values(cost_values):
+            Value = Product.multivalue_model('cost_price')
+            values = []
+            for product, cost_price, pattern in cost_values:
+                values.extend(product.set_multivalue(
+                        'cost_price', cost_price, save=False, **pattern))
+            Value.save(values)
+
         cls.check_origin(moves)
-        for move in moves:
-            move.set_effective_date()
-            move._do()
-            move.state = 'done'
-            # This save() call can't be grouped because the average computation
-            # of product cost price requires each move to be done separately
-            move.save()
+        for key, grouped_moves in groupby(moves, key=cls._cost_price_key):
+            to_save = []
+            cost_values = []
+            products = set()
+            grouped_moves = list(grouped_moves)
+            context = dict(key)
+            context.update(cls._cost_price_context(grouped_moves))
+            with Transaction().set_context(context):
+                grouped_moves = cls.browse(grouped_moves)
+                for move in grouped_moves:
+                    if move.product in products:
+                        # The average computation of product cost price
+                        # requires each previous move of the same product to be
+                        # saved
+                        cls.save(to_save)
+                        set_cost_values(cost_values)
+                        del to_save[:]
+                        del cost_values[:]
+                        products.clear()
+
+                    move.set_effective_date()
+                    cost_price = move._do()
+                    if cost_price is not None:
+                        cost_values.append(
+                            (move.product, cost_price,
+                                move._cost_price_pattern))
+                    if move.cost_price is None:
+                        if cost_price is None:
+                            cost_price = move.product.get_multivalue(
+                                'cost_price', **move._cost_price_pattern)
+                        move.cost_price = cost_price
+                    move.state = 'done'
+
+                    to_save.append(move)
+                    products.add(move.product)
+
+                if to_save:
+                    cls.save(to_save)
+                if cost_values:
+                    set_cost_values(cost_values)
+
+    @property
+    def _cost_price_pattern(self):
+        return {
+            'company': self.company.id,
+            }
+
+    def _cost_price_key(self):
+        return (
+            ('company', self.company.id),
+            )
+
+    @classmethod
+    def _cost_price_context(cls, moves):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        Date = pool.get('ir.date')
+        context = {}
+        locations = Location.search([
+                ('type', '=', 'storage'),
+                ])
+        context['with_childs'] = False
+        context['locations'] = [l.id for l in locations]
+        context['stock_date_end'] = Date.today()
+        return context
 
     def _do(self):
         if (self.from_location.type in ('supplier', 'production')
                 and self.to_location.type == 'storage'
                 and self.product.cost_price_method == 'average'):
-            self._update_product_cost_price('in')
+            return self._compute_product_cost_price('in')
         elif (self.to_location.type == 'supplier'
                 and self.from_location.type == 'storage'
                 and self.product.cost_price_method == 'average'):
-            self._update_product_cost_price('out')
-        if self.cost_price is None:
-            self.cost_price = self.product.cost_price
+            return self._compute_product_cost_price('out')
 
     @classmethod
     @ModelView.button
