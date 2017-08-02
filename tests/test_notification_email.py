@@ -94,6 +94,7 @@ class NotificationEmailTestCase(ModuleTestCase):
             self.assertEqual(msg['From'], FROM)
             self.assertEqual(msg['Subject'], 'Notification Email')
             self.assertEqual(msg['To'], 'Administrator <user@example.com>')
+            self.assertEqual(msg['Auto-Submitted'], 'auto-generated')
             self.assertEqual(msg.get_content_type(), 'multipart/alternative')
             self.assertEqual(
                 msg.get_payload(0).get_payload(), 'Hello Michael Scott')
