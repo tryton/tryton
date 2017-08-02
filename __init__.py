@@ -10,6 +10,5 @@ def register():
         notification.Email,
         notification.EmailAttachment,
         notification.EmailLog,
-        notification.Log,
         ir.Trigger,
         module='notification_email', type_='model')
