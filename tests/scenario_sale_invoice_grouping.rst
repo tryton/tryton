@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -96,7 +96,7 @@ Create payment term::
 
 Sale some products::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -122,7 +122,7 @@ Make another sale::
 
 Check the invoices::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> Invoice = Model.get('account.invoice')
     >>> invoices = Invoice.find([('party', '=', customer.id)])
     >>> len(invoices)
@@ -136,7 +136,7 @@ Check the invoices::
 
 Now we'll use the same scenario with the grouped customer::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer_grouped
     >>> sale.payment_term = payment_term
@@ -167,7 +167,7 @@ Make another sale::
 
 Check the invoices::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoices = Invoice.find([
     ...     ('party', '=', customer_grouped.id),
     ...     ('state', '=', 'draft'),
@@ -194,7 +194,7 @@ Create a manual invoice::
 
 Check that a new sale won't be grouped with the manual invoice::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer_grouped
     >>> sale.payment_term = payment_term
@@ -210,7 +210,7 @@ Check that a new sale won't be grouped with the manual invoice::
 
 Check the invoices::
 
-    >>> config.user = account_user.id
+    >>> set_user(account_user)
     >>> invoices = Invoice.find([
     ...     ('party', '=', customer_grouped.id),
     ...     ('state', '=', 'draft'),
