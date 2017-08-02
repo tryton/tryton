@@ -6,7 +6,7 @@ Imports::
 
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -91,7 +91,7 @@ Create payment term::
 
 Create an lead::
 
-    >>> config.user = sale_opportunity_user.id
+    >>> set_user(sale_opportunity_user)
     >>> Opportunity = Model.get('sale.opportunity')
     >>> opportunity = Opportunity()
     >>> opportunity.description = 'Opportunity'
@@ -125,7 +125,7 @@ Convert to sale::
 
 Find the sale::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale, = Sale.find(
     ...     [('origin', '=', 'sale.opportunity,%s' % opportunity.id)])
@@ -142,7 +142,7 @@ Quote different quantity::
 
 Check opportunity amount updated::
 
-    >>> config.user = sale_opportunity_user.id
+    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.amount
     Decimal('90.00')
@@ -151,7 +151,7 @@ Check opportunity amount updated::
 
 Add a second quotation::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> second_sale = Sale()
     >>> second_sale.origin = opportunity
     >>> second_sale.party = customer
@@ -163,7 +163,7 @@ Add a second quotation::
 
 Check opportunity amount updated::
 
-    >>> config.user = sale_opportunity_user.id
+    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.amount
     Decimal('100.00')
@@ -172,14 +172,14 @@ Check opportunity amount updated::
 
 Cancel second quotation::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> second_sale.click('cancel')
     >>> second_sale.state
     u'cancel'
 
 Check opportunity amount updated::
 
-    >>> config.user = sale_opportunity_user.id
+    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.amount
     Decimal('90.00')
@@ -188,16 +188,16 @@ Check opportunity amount updated::
 
 Won opportunity::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale.click('confirm')
-    >>> config.user = sale_opportunity_user.id
+    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.state
     u'won'
 
 Check opportunity state updated::
 
-    >>> config.user = sale_opportunity_user.id
+    >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.state
     u'won'
