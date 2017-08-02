@@ -105,6 +105,75 @@ class NotificationEmailTestCase(ModuleTestCase):
         self.assertEqual(log.recipients_secondary, '')
         self.assertEqual(log.recipients_hidden, '')
 
+    @with_transaction()
+    def test_notification_email_attachment(self):
+        "Test email notificiation with attachment"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        ModelField = pool.get('ir.model.field')
+        Action = pool.get('ir.action')
+        Report = pool.get('ir.action.report')
+        User = pool.get('res.user')
+        NotificationEmail = pool.get('notification.email')
+
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        action_model, = Model.search([
+                ('model', '=', 'notification.email'),
+                ])
+
+        action = Action(name="Notification Email", type='ir.action.report')
+        action.save()
+        report = Report()
+        report.report_name = 'notification_notification.test.report'
+        report.action = action
+        report.template_extension = 'plain'
+        report.report_content = b'Hello ${records[0].name}'
+        report.model = model.model
+        report.save()
+
+        attachment = Report()
+        attachment.name = "Attachment"
+        attachment.report_name = 'notification_notification.test.report'
+        attachment.template_extension = 'plain'
+        attachment.report_content = b'attachment for ${records[0].name}'
+        attachment.model = model.model
+        attachment.save()
+
+        user = User(Transaction().user)
+        user.email = 'user@example.com'
+        user.save()
+
+        notification_email = NotificationEmail()
+        notification_email.recipients, = ModelField.search([
+                ('model.model', '=', model.model),
+                ('name', '=', 'create_uid'),
+                ])
+        notification_email.content = report
+        notification_email.attachments = [attachment]
+        notification_email.save()
+
+        user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
+
+        msg = notification_email.get_email(
+            user, FROM, ['Administrator <user@example.com>'], [], [], ['en'])
+
+        self.assertEqual(msg['From'], FROM)
+        self.assertEqual(msg['Subject'], 'Notification Email')
+        self.assertEqual(msg['To'], 'Administrator <user@example.com>')
+        self.assertEqual(msg.get_content_type(), 'multipart/mixed')
+        self.assertEqual(
+            msg.get_payload(0).get_content_type(), 'multipart/alternative')
+
+        attachment = msg.get_payload(1)
+        self.assertEqual(
+            attachment.get_payload(None, True),
+            'attachment for Michael Scott')
+        self.assertEqual(
+            attachment.get_content_type(), 'application/octet-stream')
+        self.assertEqual(attachment.get_filename(), "Attachment.plain")
+
 
 def suite():
     suite = test_suite()

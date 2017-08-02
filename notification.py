@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from email.header import Header
+from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr, getaddresses
@@ -17,7 +18,7 @@ from trytond.pyson import Eval
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 
-__all__ = ['Email', 'Log']
+__all__ = ['Email', 'EmailAttachment', 'Log']
 
 
 def _formataddr(name, email):
@@ -85,6 +86,14 @@ class Email(ModelSQL, ModelView):
         'ir.action.report', "Content", required=True,
         domain=[('template_extension', 'in', ['plain', 'html', 'xhtml'])],
         help="The report used as email template.")
+    attachments = fields.Many2Many(
+        'notification.email.attachment', 'notification', 'report',
+        "Attachments",
+        domain=[
+            ('model', '=', Eval('model')),
+            ],
+        depends=['model'],
+        help="The reports used as attachments.")
 
     triggers = fields.One2Many(
         'ir.trigger', 'notification_email', "Triggers",
@@ -170,8 +179,21 @@ class Email(ModelSQL, ModelView):
             return {self._get_language(value)}
 
     def get_email(self, record, from_, to, cc, bcc, languages):
-        msg, title = _get_email_template(
+        pool = Pool()
+        Attachment = pool.get('notification.email.attachment')
+
+        content, title = _get_email_template(
             self.content.report_name, record, languages)
+
+        if self.attachments:
+            msg = MIMEMultipart('mixed')
+            msg.attach(content)
+            language = list(languages)[-1]
+            for report in self.attachments:
+                msg.attach(Attachment.get_mime(report, record, language))
+        else:
+            msg = content
+
         msg['From'] = from_
         msg['To'] = ', '.join(to)
         msg['Cc'] = ', '.join(cc)
@@ -236,6 +258,46 @@ class Email(ModelSQL, ModelView):
                 logs.append(self.get_log(record, trigger, msg))
         if logs:
             Log.create(logs)
+
+
+class EmailAttachment(ModelSQL):
+    "Email Notification Attachment"
+    __name__ = 'notification.email.attachment'
+
+    notification = fields.Many2One(
+        'notification.email', "Notification",
+        required=True, select=True)
+    report = fields.Many2One(
+        'ir.action.report', "Report", required=True,
+        domain=[
+            ('model', '=', Eval('model')),
+            ],
+        depends=['model'])
+
+    model = fields.Function(fields.Char("Model"), 'get_model')
+
+    def get_model(self, name):
+        return self.notification.model
+
+    @classmethod
+    def get_mime(cls, report, record, language):
+        pool = Pool()
+        Report = pool.get(report.report_name, type='report')
+        with Transaction().set_context(language=language):
+            ext, content, _, title = Report.execute(
+                [record.id], {
+                    'action_id': report.id,
+                    })
+        name = '%s.%s' % (title, ext)
+        msg = MIMEApplication(content)
+        if not isinstance(name, str):
+            name = name.encode('utf-8')
+        if not isinstance(language, str):
+            language = language.encode('utf-8')
+        msg.add_header(
+            'Content-Disposition', 'attachment',
+            filename=('utf-8', language, name))
+        return msg
 
 
 class Log(ModelSQL, ModelView):
