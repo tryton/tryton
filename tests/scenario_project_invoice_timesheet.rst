@@ -8,7 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_chart, \
@@ -96,7 +96,7 @@ Create product::
 
 Create a Project::
 
-    >>> config.user = project_user.id
+    >>> set_user(project_user)
     >>> ProjectWork = Model.get('project.work')
     >>> project = ProjectWork()
     >>> project.name = 'Test timesheet'
@@ -147,7 +147,7 @@ Check project duration::
 
 Invoice project::
 
-    >>> config.user = project_invoice_user.id
+    >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.invoiced_duration
     datetime.timedelta(0, 18000)
@@ -158,7 +158,7 @@ Invoice project::
 
 Create more timesheets::
 
-    >>> config.user = project_user.id
+    >>> set_user(project_user)
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine()
     >>> line.employee = employee
@@ -178,7 +178,7 @@ Check project duration::
 
 Invoice again project::
 
-    >>> config.user = project_invoice_user.id
+    >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.invoiced_duration
     datetime.timedelta(0, 32400)
