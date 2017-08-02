@@ -48,7 +48,7 @@ class Move:
 
         cost_price = Decimal("0.0")
         consumed_qty = 0.0
-        to_write = []
+        to_save = []
         for move, move_qty in fifo_moves:
             consumed_qty += move_qty
 
@@ -60,46 +60,49 @@ class Move:
                     move.product.default_uom)
             cost_price += move_unit_price * Decimal(str(move_qty))
 
-            move.quantity = move_qty
-            move._update_product_cost_price('out')
-
             move_qty = Uom.compute_qty(self.product.default_uom, move_qty,
                     move.uom, round=False)
-            # Use write as move instance quantity was modified to call
-            # _update_product_cost_price
-            new_quantity = (move.fifo_quantity or 0.0) + move_qty
-            to_write.extend(([self.__class__(move.id)], {
-                        'fifo_quantity': new_quantity,
-                        }))
-        if to_write:
-            self.__class__.write(*to_write)
+            move.fifo_quantity = (move.fifo_quantity or 0.0) + move_qty
+            to_save.append(move)
+        if to_save:
+            # TODO save in do method when product change
+            self.__class__.save(to_save)
 
         if Decimal(str(consumed_qty)) != Decimal("0"):
             cost_price = cost_price / Decimal(str(consumed_qty))
 
+        # Compute average cost price
+        unit_price = self.unit_price
+        self.unit_price = cost_price
+        average_cost_price = self._compute_product_cost_price('out')
+        self.unit_price = unit_price
+
         if cost_price != Decimal("0"):
             digits = self.__class__.cost_price.digits
-            return cost_price.quantize(
+            cost_price = cost_price.quantize(
                 Decimal(str(10.0 ** -digits[1])))
         else:
-            return self.product.cost_price
+            cost_price = average_cost_price
+        return cost_price, average_cost_price
 
     def _do(self):
+        cost_price = super(Move, self)._do()
         if (self.from_location.type in ('supplier', 'production')
                 and self.to_location.type == 'storage'
                 and self.product.cost_price_method == 'fifo'):
-            self._update_product_cost_price('in')
+            cost_price = self._compute_product_cost_price('in')
         elif (self.to_location.type == 'supplier'
                 and self.from_location.type == 'storage'
                 and self.product.cost_price_method == 'fifo'):
-            self._update_product_cost_price('out')
+            cost_price = self._compute_product_cost_price('out')
         elif (self.from_location.type == 'storage'
                 and self.to_location.type != 'storage'
                 and self.product.cost_price_method == 'fifo'):
-            cost_price = self._update_fifo_out_product_cost_price()
+            fifo_cost_price, cost_price = (
+                self._update_fifo_out_product_cost_price())
             if self.cost_price is None:
-                self.cost_price = cost_price
-        super(Move, self)._do()
+                self.cost_price = fifo_cost_price
+        return cost_price
 
     @classmethod
     @ModelView.button

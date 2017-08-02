@@ -101,11 +101,13 @@ Sell 3 units @ 50::
     >>> outgoing_move.currency = company.currency
     >>> outgoing_move.click('do')
 
-Check Cost Price FIFO is 20::
+Check Cost Price FIFO is 20 and cost is 10::
 
     >>> product.reload()
     >>> product.cost_price
     Decimal('20.0000')
+    >>> outgoing_move.cost_price
+    Decimal('10.0000')
 
 Sell twice 1 more units @ 50::
 
@@ -138,8 +140,10 @@ Sell twice 1 more units @ 50::
 
     >>> StockMove.click(outgoing_moves, 'do')
 
-Check Cost Price FIFO is 25::
+Check Cost Price FIFO is 25 and costs are 10 and 25::
 
     >>> product.reload()
     >>> product.cost_price
     Decimal('25.0000')
+    >>> [m.cost_price for m in outgoing_moves]
+    [Decimal('10.0000'), Decimal('25.0000')]
