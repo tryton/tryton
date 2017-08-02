@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -96,7 +96,7 @@ Create payment term::
 
 Create an inventory::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> InventoryLine = Model.get('stock.inventory.line')
     >>> Location = Model.get('stock.location')
@@ -115,7 +115,7 @@ Create an inventory::
 
 Sell some products::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> Sale = Model.get('sale.sale')
     >>> sale = Sale()
     >>> sale.party = customer
@@ -141,7 +141,7 @@ Make another sale::
 
 Check the shipments::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> ShipmentOut = Model.get('stock.shipment.out')
     >>> shipments = ShipmentOut.find([('customer', '=', customer.id)])
     >>> len(shipments)
@@ -153,7 +153,7 @@ Check the shipments::
 
 Now we'll use the same scenario with the grouped customer::
 
-    >>> config.user = sale_user.id
+    >>> set_user(sale_user)
     >>> sale = Sale()
     >>> sale.party = customer_grouped
     >>> sale.payment_term = payment_term
@@ -184,7 +184,7 @@ Make another sale::
 
 Check the shipments::
 
-    >>> config.user = stock_user.id
+    >>> set_user(stock_user)
     >>> shipments = ShipmentOut.find([
     ...     ('customer', '=', customer_grouped.id),
     ...     ('state', '=', 'waiting'),
