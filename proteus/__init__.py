@@ -710,6 +710,9 @@ class Model(object):
     def __hash__(self):
         return hash(self.__class__.__name__) ^ hash(self.id)
 
+    def __int__(self):
+        return self.id
+
     @property
     def id(self):
         'The unique ID'

@@ -19,6 +19,11 @@ class TestModel(ProteusTestCase):
         User = Model.get('res.user')
         self.assert_(len(User.search([('login', '=', 'admin')], {})))
 
+    def test_int(self):
+        User = Model.get('res.user')
+        admin = User.find([('login', '=', 'admin')])[0]
+        self.assertEqual(int(admin), admin.id)
+
     def test_find(self):
         User = Model.get('res.user')
         admin = User.find([('login', '=', 'admin')])[0]
