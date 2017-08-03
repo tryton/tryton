@@ -86,6 +86,7 @@ class Package(ModelSQL, ModelView):
         domain=[
             ('shipment', '=', Eval('shipment')),
             ('to_location.type', 'in', ['customer', 'supplier']),
+            ('state', '!=', 'cancel'),
             ],
         add_remove=[
             ('package', '=', None),
@@ -175,7 +176,7 @@ class PackageMixin(object):
             if not shipment.packages:
                 continue
             length = sum(len(p.moves) for p in shipment.packages)
-            if len(shipment.packages_moves) != length:
+            if len(list(shipment.packages_moves)) != length:
                 cls.raise_user_error('package_mismatch', shipment.rec_name)
 
     @property
@@ -211,7 +212,7 @@ class ShipmentOut(PackageMixin, object):
 
     @property
     def packages_moves(self):
-        return self.outgoing_moves
+        return (m for m in self.outgoing_moves if m.state != 'cancel')
 
 
 class ShipmentInReturn(PackageMixin, object):
@@ -235,7 +236,7 @@ class ShipmentInReturn(PackageMixin, object):
 
     @property
     def packages_moves(self):
-        return self.moves
+        return (m for m in self.moves if m.state != 'cancel')
 
 
 class PackageLabel(Report):
