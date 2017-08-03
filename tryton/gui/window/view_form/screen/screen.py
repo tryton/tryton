@@ -1034,8 +1034,6 @@ class Screen(SignalEvent):
     def get_buttons(self):
         'Return active buttons for the current view'
         def is_active(record, button):
-            if record.group.readonly or record.readonly:
-                return False
             if button.attrs.get('type', 'class') == 'instance':
                 return False
             states = record.expr_eval(button.attrs.get('states', {}))
