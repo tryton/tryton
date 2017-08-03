@@ -364,7 +364,13 @@ class Customer(ModelSQL, ModelView):
     stripe_checkout_needed = fields.Function(
         fields.Boolean("Stripe Checkout Needed"), 'get_stripe_checkout_needed')
     stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
-    stripe_customer_id = fields.Char("Stripe Customer ID", readonly=True)
+    stripe_customer_id = fields.Char(
+        "Stripe Customer ID",
+        states={
+            'readonly': ((Eval('stripe_customer_id') | Eval('stripe_token'))
+                & (Eval('id', -1) >= 0)),
+            },
+        depends=['stripe_token'])
     stripe_token = fields.Char("Stripe Token", readonly=True)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
@@ -394,7 +400,7 @@ class Customer(ModelSQL, ModelView):
         return True
 
     def get_stripe_checkout_needed(self, name):
-        return not self.stripe_token
+        return not self.stripe_customer_id and not self.stripe_token
 
     def get_rec_name(self, name):
         name = super(Customer, self).get_rec_name(name)

@@ -9,8 +9,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="stripe_account"/>
     <field name="stripe_account"/>
     <newline/>
-    <label name="stripe_token"/>
-    <field name="stripe_token"/>
+    <label name="stripe_customer_id"/>
+    <field name="stripe_customer_id"/>
     <button string="Stripe Checkout" name="stripe_checkout" colspan="2"/>
     <field name="stripe_checkout_needed" colspan="4" invisible="1"/>
     <label name="stripe_error_message"/>
