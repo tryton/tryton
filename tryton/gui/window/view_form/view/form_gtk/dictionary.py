@@ -507,14 +507,17 @@ class DictWidget(Widget):
                 key_ids = RPCExecute('model', self.schema_model, 'search',
                     [('name', 'in', sub_keys), domain], 0,
                     CONFIG['client.limit'], None, context=context)
-                if not key_ids:
-                    continue
+            except RPCException:
+                key_ids = []
+            if not key_ids:
+                continue
+            try:
                 values = RPCExecute('model', self.schema_model,
                     'get_keys', key_ids, context=context)
-                if not values:
-                    continue
             except RPCException:
-                pass
+                values = []
+            if not values:
+                continue
             self.keys.update({k['name']: k for k in values})
 
     def display(self, record, field):
