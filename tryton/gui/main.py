@@ -388,6 +388,17 @@ class Main(object):
         if value:
             titles.append(value)
         self.window.set_title(' - '.join(titles))
+        try:
+            style_context = self.window.get_style_context()
+        except AttributeError:
+            pass
+        else:
+            for name in style_context.list_classes():
+                if name.startswith('profile-'):
+                    style_context.remove_class(name)
+            if CONFIG['login.profile']:
+                style_context.add_class(
+                    'profile-%s' % CONFIG['login.profile'])
 
     def _set_menu_connection(self):
         menu_connection = gtk.Menu()

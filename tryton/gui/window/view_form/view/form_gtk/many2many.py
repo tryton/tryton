@@ -11,6 +11,7 @@ import gettext
 from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.domain_parser import quote
+from tryton.common.widget_style import widget_class
 
 _ = gettext.gettext
 
@@ -228,6 +229,8 @@ class Many2Many(Widget):
     def _set_label_state(self):
         attrlist = common.get_label_attributes(self._readonly, self._required)
         self.title.set_attributes(attrlist)
+        widget_class(self.title, 'readonly', self._readonly)
+        widget_class(self.title, 'required', self._required)
 
     def _set_button_sensitive(self):
         if self.record and self.field:

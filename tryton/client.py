@@ -14,6 +14,8 @@ except ImportError:
     sys.modules['cdecimal'] = decimal
 import os
 
+Gdk = None
+Gtk = None
 if os.environ.get('GTK_VERSION', '2').startswith('3'):
     import pygtkcompat
     pygtkcompat.enable()
@@ -212,6 +214,32 @@ if sys.platform == 'win32':
             with gtk.gdk.lock:
                 return super(Dialog, self).run()
     gtk.Dialog = Dialog
+
+CSS = """
+.readonly entry {
+    background-color: @insensitive_bg_color;
+}
+.required entry {
+    border-color: darker(@unfocused_borders);
+}
+.invalid entry {
+    border-color: @error_color;
+}
+"""
+
+if Gdk and Gtk:
+    screen = Gdk.Screen.get_default()
+    style_context = Gtk.StyleContext()
+    provider = Gtk.CssProvider()
+    provider.load_from_data(CSS)
+    style_context.add_provider_for_screen(
+        screen, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+    theme_path = os.path.join(get_config_dir(), 'theme.css')
+    if os.path.exists(theme_path):
+        provider = Gtk.CssProvider()
+        provider.load_from_path(theme_path)
+        style_context.add_provider_for_screen(
+            screen, provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
 
 class TrytonClient(object):

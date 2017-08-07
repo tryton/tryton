@@ -16,7 +16,16 @@ if gtk_version == 2:
             widget.modify_base(
                 gtk.STATE_NORMAL, style.base[gtk.STATE_INSENSITIVE])
             widget.modify_bg(gtk.STATE_NORMAL, style.bg[gtk.STATE_INSENSITIVE])
+
+    def widget_class(widget, name, value):
+        pass
 else:
     def set_widget_style(widget, editable):
-        # TODO
         pass
+
+    def widget_class(widget, name, value):
+        style_context = widget.get_style_context()
+        if value:
+            style_context.add_class(name)
+        else:
+            style_context.remove_class(name)

@@ -1,3 +1,5 @@
+* Make readonly, required and invalid widget themable
+* Load user CSS theme
 * Use profile name or login details in title
 
 Version 4.4.0 - 2017-05-01

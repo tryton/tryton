@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import gobject
 import gtk
-import pango
 import sys
 import json
 import locale
@@ -17,6 +16,7 @@ from tryton.gui.window import Window
 from tryton.common.popup_menu import populate
 from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
 from tryton.common import domain_inversion, simplify, unique_value
+from tryton.common.widget_style import widget_class
 from tryton.pyson import PYSONDecoder
 import tryton.common as common
 from . import View
@@ -454,13 +454,10 @@ class ViewTree(View):
         if field and self.editable:
             required = field.attrs.get('required')
             readonly = field.attrs.get('readonly')
-            if (required or not readonly) and hasattr(pango, 'AttrWeight'):
-                attrlist = pango.AttrList()
-                if required:
-                    attrlist.change(pango.AttrWeight(pango.WEIGHT_BOLD, 0, -1))
-                if not readonly:
-                    attrlist.change(pango.AttrStyle(pango.STYLE_ITALIC, 0, -1))
-                label.set_attributes(attrlist)
+            attrlist = common.get_label_attributes(readonly, required)
+            label.set_attributes(attrlist)
+            widget_class(label, 'readonly', readonly)
+            widget_class(label, 'required', required)
         label.show()
         help = None
         if field and field.attrs.get('help'):
