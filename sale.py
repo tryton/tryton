@@ -35,7 +35,8 @@ class Sale:
         Config = pool.get('sale.configuration')
 
         config = Config(1)
-        return config.sale_drop_location.id
+        if config.sale_drop_location:
+            return config.sale_drop_location.id
 
     def get_drop_shipments(self, name):
         DropShipment = Pool().get('stock.shipment.drop')
