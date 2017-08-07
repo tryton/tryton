@@ -924,7 +924,17 @@ function eval_pyson(value){
                 readonly = true;
             }
             this.set_readonly(readonly);
+            if (readonly) {
+                this.el.addClass('readonly');
+            } else {
+                this.el.removeClass('readonly');
+            }
             this.set_required(required);
+            if (!readonly && required) {
+                this.el.addClass('required');
+            } else {
+                this.el.removeClass('required');
+            }
             var invalid = state_attrs.invalid;
             if (!readonly && invalid) {
                 this.el.addClass('has-error');
