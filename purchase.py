@@ -123,7 +123,8 @@ class Purchase:
         PurchaseConfig = pool.get('purchase.configuration')
 
         config = PurchaseConfig(1)
-        return config.purchase_drop_location.id
+        if config.purchase_drop_location:
+            return config.purchase_drop_location.id
 
     @fields.depends('customer', 'delivery_address')
     def on_change_customer(self):
