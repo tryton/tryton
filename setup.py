@@ -115,7 +115,7 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'VIES': ['python-stdnum[VIES]'],
-        'VIES-ALT': ['python-stdnum[VIEW-ALT]'],
+        'VIES-ALT': ['python-stdnum[VIES-ALT]'],
         'phonenumbers': ['phonenumbers'],
         },
     dependency_links=dependency_links,
