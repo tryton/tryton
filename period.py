@@ -72,7 +72,6 @@ class Period(Workflow, ModelSQL, ModelView):
         if grouping == ('product',):
             return pool.get('stock.period.cache')
 
-    @classmethod
     def get_rec_name(self, name):
         return str(self.date)
 
