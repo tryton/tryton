@@ -270,10 +270,12 @@ class PurchaseRequest:
         supplier, purchase_date = cls.find_best_supplier(product,
             shortage_date)
 
+        uom = product.purchase_uom or product.default_uom
         target_quantity = order_point.target_quantity if order_point else 0.0
         computed_quantity = target_quantity - product_quantity
-        quantity = Uom.compute_qty(product.default_uom, computed_quantity,
-            product.purchase_uom or product.default_uom)
+        product_quantity = uom.round(product_quantity)
+        quantity = Uom.compute_qty(
+            product.default_uom, computed_quantity, uom)
 
         if order_point:
             origin = 'stock.order_point,%s' % order_point.id
@@ -282,7 +284,7 @@ class PurchaseRequest:
         return Request(product=product,
             party=supplier and supplier or None,
             quantity=quantity,
-            uom=product.purchase_uom or product.default_uom,
+            uom=uom,
             computed_quantity=computed_quantity,
             computed_uom=product.default_uom,
             purchase_date=purchase_date,
