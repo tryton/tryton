@@ -144,10 +144,10 @@ class Database(DatabaseInterface):
             self._databases.pop(self.name)
 
     @classmethod
-    def create(cls, connection, database_name):
+    def create(cls, connection, database_name, template='template0'):
         cursor = connection.cursor()
         cursor.execute('CREATE DATABASE "' + database_name + '" '
-            'TEMPLATE template0 ENCODING \'unicode\'')
+            'TEMPLATE "' + template + '" ENCODING \'unicode\'')
         connection.commit()
         cls._list_cache = None
 

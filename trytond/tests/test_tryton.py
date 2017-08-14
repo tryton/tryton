@@ -45,7 +45,7 @@ def activate_module(name):
     if not db_exist(DB_NAME) and restore_db_cache(name):
         return
     create_db()
-    with Transaction().start(DB_NAME, 1) as transaction:
+    with Transaction().start(DB_NAME, 1, close=True) as transaction:
         pool = Pool()
         Module = pool.get('ir.module')
 
@@ -94,10 +94,11 @@ def backup_db_cache(name):
             os.makedirs(DB_CACHE)
         backend_name = backend.name()
         cache_file = _db_cache_file(DB_CACHE, name, backend_name)
-        if backend_name == 'sqlite':
-            _sqlite_copy(cache_file)
-        elif backend_name == 'postgresql':
-            _pg_dump(cache_file)
+        if not os.path.exists(cache_file):
+            if backend_name == 'sqlite':
+                _sqlite_copy(cache_file)
+            elif backend_name == 'postgresql':
+                _pg_dump(cache_file)
 
 
 def _db_cache_file(path, name, backend_name):
@@ -148,7 +149,17 @@ def _pg_restore(cache_file):
     options, env = _pg_options()
     cmd.extend(options)
     cmd.append(cache_file)
-    return not subprocess.call(cmd, env=env)
+    try:
+        return not subprocess.call(cmd, env=env)
+    except OSError:
+        cache_name, _ = os.path.splitext(os.path.basename(cache_file))
+        with Transaction().start(
+                None, 0, close=True, autocommit=True, _nocache=True) \
+                as transaction:
+            transaction.database.drop(transaction.connection, DB_NAME)
+            transaction.database.create(
+                transaction.connection, DB_NAME, cache_name)
+        return True
 
 
 def _pg_dump(cache_file):
@@ -156,7 +167,17 @@ def _pg_dump(cache_file):
     options, env = _pg_options()
     cmd.extend(options)
     cmd.append(DB_NAME)
-    return not subprocess.call(cmd, env=env)
+    try:
+        return not subprocess.call(cmd, env=env)
+    except OSError:
+        cache_name, _ = os.path.splitext(os.path.basename(cache_file))
+        with Transaction().start(
+                None, 0, close=True, autocommit=True, _nocache=True) \
+                as transaction:
+            transaction.database.create(
+                transaction.connection, cache_name, DB_NAME)
+        open(cache_file, 'a').close()
+        return True
 
 
 def with_transaction(user=1, context=None):
