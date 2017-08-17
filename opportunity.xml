@@ -117,6 +117,11 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="sale.menu_sale" action="act_opportunity_form"
             id="menu_opportunity_form" sequence="5"/>
+        <record model="ir.ui.menu-res.group"
+                id="menu_sale_opportunity_group_opportunity">
+            <field name="menu" ref="sale.menu_sale"/>
+            <field name="group" ref="group_opportunity"/>
+        </record>
 
         <record model="ir.model.access" id="access_opportunity">
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
