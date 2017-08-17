@@ -519,8 +519,6 @@ class UpdateCostPrice(Wizard):
         return 'update_price'
 
     def transition_update_price(self):
-        pool = Pool()
-        Product = pool.get('product.product')
         self.ask_price.product.set_multivalue(
             'cost_price', self.ask_price.cost_price)
         return 'end'
