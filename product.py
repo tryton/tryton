@@ -427,7 +427,7 @@ class UpdateCostPrice(Wizard):
 
     @staticmethod
     def get_product():
-        'Return the product or template instance'
+        'Return the product instance'
         pool = Pool()
         Product = pool.get('product.product')
         context = Transaction().context
