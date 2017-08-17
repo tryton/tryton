@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from functools import partial
 
 from trytond import backend
 from trytond.model import ModelView, fields
@@ -11,7 +10,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account_product import MissingFunction
-from trytond.modules.product import price_digits, TemplateFunction
+from trytond.modules.product import price_digits
 
 __all__ = ['Category', 'CategoryAccount', 'Template', 'TemplateAccount',
     'Product', 'UpdateCostPriceAsk',
