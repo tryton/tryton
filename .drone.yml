@@ -1,9 +1,51 @@
-image: python:all
-env:
-  - POSTGRESQL_URI=postgresql://postgres@127.0.0.1:5432/
-  - MYSQL_URI=mysql://root@127.0.0.1:3306/
-script:
-  - pip install tox
-  - tox -e "{py27,py33,py34,py35}-{sqlite,postgresql}" --skip-missing-interpreters
+clone:
+    hg:
+        image: plugins/hg
+
+pipeline:
+    tox:
+        image: ${IMAGE}
+        environment:
+            - CFLAGS=-O0
+            - DB_CACHE=/cache
+            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE
+            - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
+        commands:
+            - pip install tox
+            - tox -e "${TOXENV}-${DATABASE}"
+        volumes:
+            - cache:/root/.cache
+
 services:
-  - postgres
+    postgresql:
+        image: postgres
+        when:
+            matrix:
+                DATABASE: postgresql
+
+matrix:
+    include:
+        - IMAGE: python:2.7
+          TOXENV: py27
+          DATABASE: sqlite
+        - IMAGE: python:2.7
+          TOXENV: py27
+          DATABASE: postgresql
+        - IMAGE: python:3.3
+          TOXENV: py33
+          DATABASE: sqlite
+        - IMAGE: python:3.3
+          TOXENV: py33
+          DATABASE: postgresql
+        - IMAGE: python:3.4
+          TOXENV: py34
+          DATABASE: sqlite
+        - IMAGE: python:3.4
+          TOXENV: py34
+          DATABASE: postgresql
+        - IMAGE: python:3.5
+          TOXENV: py35
+          DATABASE: sqlite
+        - IMAGE: python:3.5
+          TOXENV: py35
+          DATABASE: postgresql
