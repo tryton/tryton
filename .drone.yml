@@ -1,4 +1,23 @@
-image: python:all
-script:
-  - pip install tox pydot
-  - tox -e "py27,py33,py34,py35" --skip-missing-interpreters
+clone:
+    hg:
+        image: plugins/hg
+
+pipeline:
+    tox:
+        image: ${IMAGE}
+        commands:
+            - pip install tox pydot
+            - tox -e "${TOXENV}"
+        volumes:
+             - cache:/root/.cache
+
+matrix:
+    include:
+        - IMAGE: python:2.7
+          TOXENV: py27
+        - IMAGE: python:3.3
+          TOXENV: py33
+        - IMAGE: python:3.4
+          TOXENV: py34
+        - IMAGE: python:3.5
+          TOXENV: py35
