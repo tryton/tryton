@@ -6,7 +6,7 @@ pipeline:
     npm:
         image: node
         commands:
-            - echo '{ "allow_root": true }' > ~/.bowerrc
+            - sh .bower_allow_root.sh
             - npm -s install --unsafe-perm
             - npm test
         volumes:
