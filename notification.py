@@ -84,7 +84,7 @@ class Email(ModelSQL, ModelView):
 
     content = fields.Many2One(
         'ir.action.report', "Content", required=True,
-        domain=[('template_extension', 'in', ['plain', 'html', 'xhtml'])],
+        domain=[('template_extension', 'in', ['txt', 'html', 'xhtml'])],
         help="The report used as email template.")
     attachments = fields.Many2Many(
         'notification.email.attachment', 'notification', 'report',

@@ -56,7 +56,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         report = Report()
         report.report_name = 'notification_notification.test.report'
         report.action = action
-        report.template_extension = 'plain'
+        report.template_extension = 'txt'
         report.report_content = b'Hello ${records[0].name}'
         report.model = model.model
         report.save()
@@ -128,7 +128,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         report = Report()
         report.report_name = 'notification_notification.test.report'
         report.action = action
-        report.template_extension = 'plain'
+        report.template_extension = 'txt'
         report.report_content = b'Hello ${records[0].name}'
         report.model = model.model
         report.save()
@@ -136,7 +136,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         attachment = Report()
         attachment.name = "Attachment"
         attachment.report_name = 'notification_notification.test.report'
-        attachment.template_extension = 'plain'
+        attachment.template_extension = 'txt'
         attachment.report_content = b'attachment for ${records[0].name}'
         attachment.model = model.model
         attachment.save()
@@ -172,7 +172,7 @@ class NotificationEmailTestCase(ModuleTestCase):
             b'attachment for Michael Scott')
         self.assertEqual(
             attachment.get_content_type(), 'application/octet-stream')
-        self.assertEqual(attachment.get_filename(), "Attachment.plain")
+        self.assertEqual(attachment.get_filename(), "Attachment.txt")
 
 
 def suite():
