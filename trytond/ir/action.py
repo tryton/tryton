@@ -414,7 +414,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             ('odp', 'OpenDocument Presentation'),
             ('ods', 'OpenDocument Spreadsheet'),
             ('odg', 'OpenDocument Graphics'),
-            ('plain', 'Plain Text'),
+            ('txt', 'Plain Text'),
             ('xml', 'XML'),
             ('html', 'HTML'),
             ('xhtml', 'XHTML'),
@@ -563,6 +563,12 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
         # Migration from 3.4 remove report_name_module_uniq constraint
         table.drop_constraint('report_name_module_uniq')
+
+        # Migration from 4.4 replace plain extension by txt
+        cursor.execute(*action_report.update(
+                [action_report.extension],
+                ['txt'],
+                where=action_report.extension == 'plain'))
 
     @staticmethod
     def default_type():

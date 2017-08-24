@@ -26,7 +26,7 @@ MIMETYPES = {
     'odp': 'application/vnd.oasis.opendocument.presentation',
     'ods': 'application/vnd.oasis.opendocument.spreadsheet',
     'odg': 'application/vnd.oasis.opendocument.graphics',
-    'plain': 'text/plain',
+    'txt': 'text/plain',
     'xml': 'text/xml',
     'html': 'text/html',
     'xhtml': 'text/xhtml',
