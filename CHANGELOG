@@ -1,3 +1,4 @@
+* Replace plain extension by txt
 * Support test database cache for remote postgresql
 * Increase session randomness to 32 bytes
 * Allow to specify datetime related values in XML files
