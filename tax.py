@@ -1280,7 +1280,7 @@ class TaxRule(ModelSQL, ModelView):
                 if vals:
                     values.append([rule])
                     values.append(vals)
-            template2rule[rule.template.id] = rule.id
+                template2rule[rule.template.id] = rule.id
         if values:
             cls.write(*values)
 
