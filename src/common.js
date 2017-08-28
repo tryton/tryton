@@ -664,7 +664,7 @@
                     if (this.nullable_widget) {
                         selection.push([null, '']);
                     }
-                    this._last_domain = domain;
+                    this._last_domain = [domain, context];
                     this._domain_cache[jdomain] = selection;
                     this.selection = jQuery.extend([], selection);
                     if (callback) {
