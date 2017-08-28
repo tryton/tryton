@@ -5,6 +5,14 @@ import datetime
 import tempfile
 import warnings
 import subprocess
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+try:
+    import html2text
+except ImportError:
+    html2text = None
+
 warnings.simplefilter("ignore")
 import relatorio.reporting
 warnings.resetwarnings()
@@ -298,3 +306,30 @@ class Report(URLMixin, PoolBase):
 
         return Lang.format(lang, '%.' + str(digits) + 'f', value,
             grouping=grouping, monetary=monetary)
+
+
+def get_email(report, record, languages):
+    "Return email.mime and title from the report execution"
+    pool = Pool()
+    Report = pool.get(report.report_name, type='report')
+    converter = None
+    msg = MIMEMultipart('alternative')
+    msg.add_header('Content-Language', ', '.join(l.code for l in languages))
+    for language in languages:
+        with Transaction().set_context(language=language.code):
+            ext, content, _, title = Report.execute(
+                [record.id], {
+                    'action_id': report.id,
+                    'language': language,
+                    })
+        if ext == 'html' and html2text:
+            if not converter:
+                converter = html2text.HTML2Text()
+            part = MIMEText(
+                converter.handle(content), 'plain', _charset='utf-8')
+            part.add_header('Content-Language', language.code)
+            msg.attach(part)
+        part = MIMEText(content, ext, _charset='utf-8')
+        part.add_header('Content-Language', language.code)
+        msg.attach(part)
+    return msg, title

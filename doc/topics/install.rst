@@ -27,6 +27,7 @@ Prerequisites
     * Optional: python-Levenshtein
       (http://github.com/miohtama/python-Levenshtein)
     * Optional: bcrypt (https://github.com/pyca/bcrypt)
+    * Optional: html2text (https://pypi.python.org/pypi/html2text)
     * Optional: mock (http://www.voidspace.org.uk/python/mock/)
 
 Install Tryton
