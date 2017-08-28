@@ -909,7 +909,7 @@ class BinaryField(Field):
 
     def get_data(self, record):
         if not isinstance(record.value.get(self.name),
-                (basestring, bytes, bytearray)):
+                (basestring, bytes, bytearray, _FileCache)):
             if record.id < 0:
                 return ''
             context = record.get_context()
