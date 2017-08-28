@@ -737,6 +737,8 @@ class Screen(SignalEvent):
             return
         if (view.view_type == 'tree'
                 and not view.attributes.get('tree_state', False)):
+            # Mark as done to not set later when the view_type change
+            self.tree_states_done.add(id(view))
             return
         parent = self.parent.id if self.parent else None
         if parent is not None and parent < 0:
