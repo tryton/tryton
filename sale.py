@@ -114,13 +114,25 @@ class SaleLine:
             or (self.moves and all(m.from_location.type == 'drop'
                     for m in self.moves)))
 
+    @property
+    def supply_on_sale_drop_move(self):
+        "Return True if the sale line can have drop move"
+        if not self.supply_on_sale:
+            return False
+        if not self.purchase_request or not self.purchase_request.customer:
+            return False
+        if self.purchase_request_state == 'cancel':
+            return False
+        purchase_line = self.purchase_request.purchase_line
+        if purchase_line and purchase_line.move_done:
+            return False
+        return True
+
     def get_move(self, shipment_type):
         result = super(SaleLine, self).get_move(shipment_type)
         if (shipment_type == 'out'
-                and not Transaction().context.get('_drop_shipment')
-                and self.supply_on_sale):
-            if (self.purchase_request and self.purchase_request.customer
-                    and self.purchase_request_state != 'cancel'):
+                and not Transaction().context.get('_drop_shipment')):
+            if self.supply_on_sale_drop_move:
                 return
         return result
 
@@ -145,7 +157,7 @@ class SaleLine:
                 or not self.product):
             return []
         moves = []
-        if self.purchase_request and self.purchase_request.customer:
+        if self.supply_on_sale_drop_move:
             move = self.get_move('out')
             if move is not None:
                 move.from_location = self.sale.drop_location
