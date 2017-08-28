@@ -115,6 +115,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         Report = pool.get('ir.action.report')
         User = pool.get('res.user')
         NotificationEmail = pool.get('notification.email')
+        Language = pool.get('ir.lang')
 
         model, = Model.search([
                 ('model', '=', User.__name__),
@@ -122,6 +123,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         action_model, = Model.search([
                 ('model', '=', 'notification.email'),
                 ])
+        en, = Language.search([('code', '=', 'en')])
 
         action = Action(name="Notification Email", type='ir.action.report')
         action.save()
@@ -157,7 +159,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
 
         msg = notification_email.get_email(
-            user, FROM, ['Administrator <user@example.com>'], [], [], ['en'])
+            user, FROM, ['Administrator <user@example.com>'], [], [], [en])
 
         self.assertEqual(msg['From'], FROM)
         self.assertEqual(msg['Subject'], 'Notification Email')

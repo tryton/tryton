@@ -166,7 +166,7 @@ class Email(ModelSQL, ModelView):
             msg.attach(content)
             language = list(languages)[-1]
             for report in self.attachments:
-                msg.attach(Attachment.get_mime(report, record, language))
+                msg.attach(Attachment.get_mime(report, record, language.code))
         else:
             msg = content
 
