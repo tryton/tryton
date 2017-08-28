@@ -274,6 +274,7 @@ class Move(Workflow, ModelSQL, ModelView):
             })
         cls._transitions |= set((
                 ('staging', 'draft'),
+                ('staging', 'cancel'),
                 ('draft', 'assigned'),
                 ('draft', 'done'),
                 ('draft', 'cancel'),
