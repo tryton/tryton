@@ -1695,6 +1695,7 @@
                 return;
             }
             if (view.view_type == 'tree' && !view.attributes.tree_state) {
+                this.tree_states_done.push(view);
                 return;
             }
 
