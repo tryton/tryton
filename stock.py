@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
+
 from trytond.model import ModelView, Workflow
 from trytond.pool import Pool, PoolMeta
 
@@ -27,11 +29,8 @@ class ShipmentIn:
                         'in', move_ids),
                     ('purchase_request.origin', 'like', 'sale.sale,%'),
                     ])
-            pbl = {}
+            pbl = defaultdict(lambda: defaultdict(lambda: 0))
             for move in shipment.inventory_moves:
-                pbl.setdefault(move.product, {}).setdefault(
-                    move.to_location, 0.0)
-                pbl[move.product][move.to_location] += \
-                    move.internal_quantity
+                pbl[move.product][move.to_location] += move.internal_quantity
             for sale_line in sale_lines:
                 sale_line.assign_supplied(pbl[sale_line.product])
