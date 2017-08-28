@@ -3,18 +3,13 @@
 from email.header import Header
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 from email.utils import formataddr, getaddresses
-
-try:
-    import html2text
-except ImportError:
-    html2text = None
 
 from trytond.config import config
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.report import get_email
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 
@@ -25,29 +20,6 @@ def _formataddr(name, email):
     if name:
         name = str(Header(name, 'utf-8'))
     return formataddr((name, email))
-
-
-def _get_email_template(report, record, languages):
-    pool = Pool()
-    Report = pool.get(report, type='report')
-    converter = None
-    msg = MIMEMultipart('alternative')
-    msg.add_header('Content-Language', ', '.join(languages))
-    # TODO order languages to get default as last one for title
-    for language in languages:
-        with Transaction().set_context(language=language):
-            ext, content, _, title = Report.execute([record.id], {})
-        if ext == 'html' and html2text:
-            if not converter:
-                converter = html2text.HTML2Text()
-            part = MIMEText(
-                converter.handle(content), 'plain', _charset='utf-8')
-            part.add_header('Content-Language', language)
-            msg.attach(part)
-        part = MIMEText(content, ext, _charset='utf-8')
-        part.add_header('Content-Language', language)
-        msg.attach(part)
-    return msg, title
 
 
 class Email(ModelSQL, ModelView):
@@ -153,6 +125,7 @@ class Email(ModelSQL, ModelView):
         pool = Pool()
         Configuration = pool.get('ir.configuration')
         User = pool.get('res.user')
+        Lang = pool.get('ir.lang')
         try:
             Party = pool.get('party.party')
         except KeyError:
@@ -163,14 +136,17 @@ class Email(ModelSQL, ModelView):
             WebUser = None
         if isinstance(record, User):
             if record.language:
-                return record.language.code
+                return record.language
         elif Party and isinstance(record, Party):
             if record.lang:
-                return record.lang.code
+                return record.lang
         elif WebUser and isinstance(record, WebUser):
             if record.party and record.party.lang:
-                return record.party.lang.code
-        return Configuration.get_language()
+                return record.party.lang
+        lang, = Lang.search([
+                ('code', '=', Configuration.get_language()),
+                ], limit=1)
+        return lang
 
     def _get_languages(self, value):
         if isinstance(value, (list, tuple)):
@@ -182,8 +158,8 @@ class Email(ModelSQL, ModelView):
         pool = Pool()
         Attachment = pool.get('notification.email.attachment')
 
-        content, title = _get_email_template(
-            self.content.report_name, record, languages)
+        # TODO order languages to get default as last one for title
+        content, title = get_email(self.content, record, languages)
 
         if self.attachments:
             msg = MIMEMultipart('mixed')

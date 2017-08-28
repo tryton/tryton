@@ -115,9 +115,6 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
-    extras_require={
-        'html2text': ['html2text'],
-        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
