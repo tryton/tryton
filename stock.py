@@ -433,7 +433,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                         s_move.unit_price * internal_quantity)
             for product, cost in product_cost.iteritems():
                 qty = Decimal(str(product_qty[product]))
-                product_cost[product] = (cost / qty).quantize(cost_exp)
+                if qty:
+                    product_cost[product] = (cost / qty).quantize(cost_exp)
             for c_move in shipment.customer_moves:
                 if c_move.state == 'cancel':
                     continue
