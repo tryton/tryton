@@ -689,22 +689,24 @@ var Sao = {};
     });
 
     function set_shortcuts() {
-        shortcuts_defs().forEach(function(definition) {
-            Mousetrap.bind(definition.shortcut, function() {
-                if (definition.id){
-                    var current_tab = Sao.Tab.tabs.get_current();
-                    if (current_tab) {
-                        var focused = $(':focus');
-                        focused.blur();
-                        current_tab.el.find('a[id="' + definition.id + '"]').click();
-                        focused.focus();
+        if (typeof Mousetrap != 'undefined') {
+            shortcuts_defs().forEach(function(definition) {
+                Mousetrap.bind(definition.shortcut, function() {
+                    if (definition.id){
+                        var current_tab = Sao.Tab.tabs.get_current();
+                        if (current_tab) {
+                            var focused = $(':focus');
+                            focused.blur();
+                            current_tab.el.find('a[id="' + definition.id + '"]').click();
+                            focused.focus();
+                        }
+                    } else if (definition.callback) {
+                        jQuery.when().then(definition.callback);
                     }
-                } else if (definition.callback) {
-                    jQuery.when().then(definition.callback);
-                }
-                return false;
+                    return false;
+                });
             });
-        });
+        }
     }
 
     function shortcuts_dialog() {
