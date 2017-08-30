@@ -110,11 +110,17 @@ class Main(object):
         gtk.accel_map_add_entry('<tryton>/Form/Close', gtk.keysyms.W,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Previous Tab',
-            gtk.keysyms.Page_Up, gtk.gdk.CONTROL_MASK)
+            gtk.keysyms.Left, gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Next Tab',
-            gtk.keysyms.Page_Down, gtk.gdk.CONTROL_MASK)
+            gtk.keysyms.Right, gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Reload', gtk.keysyms.R,
                 gtk.gdk.CONTROL_MASK)
+        gtk.accel_map_add_entry('<tryton>/Form/Attachments', gtk.keysyms.T,
+            gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
+        gtk.accel_map_add_entry('<tryton>/Form/Notes', gtk.keysyms.O,
+            gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
+        gtk.accel_map_add_entry('<tryton>/Form/Relate', gtk.keysyms.R,
+            gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Actions', gtk.keysyms.E,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Report', gtk.keysyms.P,
