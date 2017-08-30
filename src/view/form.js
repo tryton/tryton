@@ -2435,6 +2435,38 @@ function eval_pyson(value){
                 'class': 'input-group-btn'
             }).appendTo(group);
 
+            this.but_switch = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext('Switch')
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-list-alt'
+            })).appendTo(buttons);
+            this.but_switch.click(this.switch_.bind(this));
+
+            this.but_previous = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext('Previous')
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-chevron-left'
+            })).appendTo(buttons);
+            this.but_previous.click(this.previous.bind(this));
+
+            this.label = jQuery('<span/>', {
+                'class': 'btn'
+            }).appendTo(buttons);
+            this.label.text('(0, 0)');
+
+            this.but_next = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext('Next')
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-chevron-right'
+            })).appendTo(buttons);
+            this.but_next.click(this.next.bind(this));
+
             if (attributes.add_remove) {
                 this.wid_text.show();
                 // TODO add completion
@@ -2493,38 +2525,6 @@ function eval_pyson(value){
                 'class': 'glyphicon glyphicon-repeat'
             })).appendTo(buttons);
             this.but_undel.click(this.undelete.bind(this));
-
-            this.but_previous = jQuery('<button/>', {
-                'class': 'btn btn-default btn-sm',
-                'type': 'button',
-                'aria-label': Sao.i18n.gettext('Previous')
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-chevron-left'
-            })).appendTo(buttons);
-            this.but_previous.click(this.previous.bind(this));
-
-            this.label = jQuery('<span/>', {
-                'class': 'btn'
-            }).appendTo(buttons);
-            this.label.text('(0, 0)');
-
-            this.but_next = jQuery('<button/>', {
-                'class': 'btn btn-default btn-sm',
-                'type': 'button',
-                'aria-label': Sao.i18n.gettext('Next')
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-chevron-right'
-            })).appendTo(buttons);
-            this.but_next.click(this.next.bind(this));
-
-            this.but_switch = jQuery('<button/>', {
-                'class': 'btn btn-default btn-sm',
-                'type': 'button',
-                'aria-label': Sao.i18n.gettext('Switch')
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-list-alt'
-            })).appendTo(buttons);
-            this.but_switch.click(this.switch_.bind(this));
 
             this.content = jQuery('<div/>', {
                 'class': this.class_ + '-content panel-body'
