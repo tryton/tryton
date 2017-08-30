@@ -529,7 +529,8 @@ var Sao = {};
                 'class': 'global-search-container'
             });
             this.search_entry = jQuery('<input>', {
-                'class': 'form-control',
+                'id': 'global-search-entry',
+                'class': 'form-control mousetrap',
                 'placeholder': Sao.i18n.gettext('Search...')
             });
             this.el.append(this.search_entry);
@@ -590,6 +591,166 @@ var Sao = {};
             this.search_entry.val('');
         }
     });
+
+    function shortcuts_defs() {
+        // Shortcuts available on Tab on this format:
+        // {shortcut, label, id of tab button or callback method}
+        return [
+            {
+                shortcut: 'ctrl+a',
+                label: Sao.i18n.gettext('New'),
+                id: 'new_',
+            }, {
+                shortcut: 'ctrl+s',
+                label: Sao.i18n.gettext('Save'),
+                id: 'save',
+            }, {
+                shortcut: 'ctrl+l',
+                label: Sao.i18n.gettext('Switch'),
+                id: 'switch_',
+            }, {
+                shortcut: 'ctrl+r',
+                label: Sao.i18n.gettext('Reload/Undo'),
+                id: 'reload',
+            }, {
+                shortcut: 'ctrl+shift+d',
+                label: Sao.i18n.gettext('Duplicate'),
+                id: 'copy',
+            }, {
+                shortcut: 'ctrl+d',
+                label: Sao.i18n.gettext('Delete'),
+                id: 'delete_',
+            }, {
+                shortcut: 'ctrl+up',
+                label: Sao.i18n.gettext('Previous'),
+                id: 'previous',
+            }, {
+                shortcut: 'ctrl+down',
+                label: Sao.i18n.gettext('Next'),
+                id: 'next',
+            }, {
+                shortcut: 'ctrl+f',
+                label: Sao.i18n.gettext('Search'),
+                id: 'search',
+            }, {
+                shortcut: 'ctrl+x',
+                label: Sao.i18n.gettext('Close Tab'),
+                id: 'close',
+            }, {
+                shortcut: 'ctrl+shift+t',
+                label: Sao.i18n.gettext('Attachment'),
+                id: 'attach',
+            }, {
+                shortcut: 'ctrl+shift+o',
+                label: Sao.i18n.gettext('Note'),
+                id: 'note',
+            }, {
+                shortcut: 'ctrl+e',
+                label: Sao.i18n.gettext('Action'),
+                id: 'action',
+            }, {
+                shortcut: 'ctrl+shift+r',
+                label: Sao.i18n.gettext('Relate'),
+                id: 'relate',
+            }, {
+                shortcut: 'ctrl+p',
+                label: Sao.i18n.gettext('Print'),
+                id: 'print',
+            }, {
+                shortcut: 'ctrl+left',
+                label: Sao.i18n.gettext('Previous tab'),
+                callback: function() {
+                    Sao.Tab.previous_tab();
+                },
+            }, {
+                shortcut: 'ctrl+right',
+                label: Sao.i18n.gettext('Next tab'),
+                callback: function() {
+                    Sao.Tab.next_tab();
+                },
+            }, {
+                shortcut: 'ctrl+k',
+                label: Sao.i18n.gettext('Global search'),
+                callback: function() {
+                    jQuery('#global-search-entry').focus();
+                },
+            }, {
+                shortcut: 'ctrl+h',
+                label: Sao.i18n.gettext('Show this help'),
+                callback: function() {
+                    shortcuts_dialog();
+                },
+            },
+        ];
+    }
+
+    jQuery(document).ready(function() {
+        set_shortcuts();
+    });
+
+    function set_shortcuts() {
+        shortcuts_defs().forEach(function(definition) {
+            Mousetrap.bind(definition.shortcut, function() {
+                if (definition.id){
+                    var current_tab = Sao.Tab.tabs.get_current();
+                    if (current_tab) {
+                        var focused = $(':focus');
+                        focused.blur();
+                        current_tab.el.find('a[id="' + definition.id + '"]').click();
+                        focused.focus();
+                    }
+                } else if (definition.callback) {
+                    jQuery.when().then(definition.callback);
+                }
+                return false;
+            });
+        });
+    }
+
+    function shortcuts_dialog() {
+        var dialog = new Sao.Dialog(Sao.i18n.gettext('Keyboard shortcuts'),
+            'shortcut-dialog', 'm');
+        jQuery('<button>', {
+            'class': 'close',
+            'data-dismiss': 'modal',
+            'aria-label': Sao.i18n.gettext("Close"),
+        }).append(jQuery('<span>', {
+            'aria-hidden': true,
+        }).append('&times;')).prependTo(dialog.header);
+        var row = jQuery('<div/>', {
+            'class': 'row'
+        }).appendTo(dialog.body);
+        var global_shortcuts_dl = jQuery('<dl/>', {
+            'class': 'dl-horizontal col-md-6'
+        }).append(jQuery('<h5/>')
+                  .append(Sao.i18n.gettext('Global shortcuts')))
+            .appendTo(row);
+        var tab_shortcuts_dl = jQuery('<dl/>', {
+            'class': 'dl-horizontal col-md-6'
+        }).append(jQuery('<h5/>')
+            .append(Sao.i18n.gettext('Tab shortcuts')))
+        .appendTo(row);
+
+        shortcuts_defs().forEach(function(definition) {
+            var dt = jQuery('<dt/>').append(definition.label);
+            var dd = jQuery('<dd/>').append(jQuery('<kbd>')
+                .append(definition.shortcut));
+            var dest_dl;
+            if (definition.id) {
+                dest_dl = tab_shortcuts_dl;
+            } else {
+                dest_dl = global_shortcuts_dl;
+            }
+            dt.appendTo(dest_dl);
+            dd.appendTo(dest_dl);
+        });
+        dialog.modal.on('hidden.bs.modal', function() {
+            jQuery(this).remove();
+        });
+
+        dialog.modal.modal('show');
+        return false;
+    }
 
     // Fix stacked modal
     jQuery(document)

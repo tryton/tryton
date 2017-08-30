@@ -33,7 +33,7 @@
             }).append(Sao.i18n.gettext('Filters'));
             this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {
-                'class': 'form-control',
+                'class': 'form-control mousetrap',
                 'placeholder': Sao.i18n.gettext('Search')
             });
             this.search_list = jQuery('<datalist/>');

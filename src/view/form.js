@@ -1202,7 +1202,7 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(this.group);
             if (!jQuery.isEmptyObject(attributes.autocomplete)) {
                 this.datalist = jQuery('<datalist/>').appendTo(this.el);
@@ -1336,7 +1336,7 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.input = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(this.date);
             jQuery('<span/>', {
                 'class': 'input-group-btn'
@@ -1428,7 +1428,7 @@ function eval_pyson(value){
             });
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(this.el);
             this.el.change(this.focus_out.bind(this));
         },
@@ -1487,7 +1487,7 @@ function eval_pyson(value){
                 'class': this.class_
             });
             this.select = this.labelled = jQuery('<select/>', {
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             });
             this.el.append(this.select);
             this.select.change(this.focus_out.bind(this));
@@ -1578,7 +1578,7 @@ function eval_pyson(value){
             });
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'checkbox',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(this.el);
             this.input.change(this.focus_out.bind(this));
             this.input.click(function() {
@@ -1617,7 +1617,7 @@ function eval_pyson(value){
                 'class': this.class_
             });
             this.input = this.labelled = jQuery('<textarea/>', {
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(this.el);
             this.input.change(this.focus_out.bind(this));
             if (this.attributes.translate) {
@@ -1673,7 +1673,7 @@ function eval_pyson(value){
                 this.get_toolbar().appendTo(this.el);
             }
             this.input = this.labelled = jQuery('<div/>', {
-                'class': 'richtext',
+                'class': 'richtext mousetrap',
                 'contenteditable': true
             }).appendTo(jQuery('<div/>', {
                 'class': 'panel-body'
@@ -1855,7 +1855,7 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.entry = this.labelled = jQuery('<input/>', {
                 'type': 'input',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(group);
             // Use keydown to not receive focus-in TAB
             this.entry.on('keydown', this.key_press.bind(this));
@@ -2924,7 +2924,7 @@ function eval_pyson(value){
             }).appendTo(toolbar);
             this.entry = jQuery('<input/>', {
                 type: 'text',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(group);
             // Use keydown to not receive focus-in TAB
             this.entry.on('keydown', this.key_press.bind(this));
@@ -3912,7 +3912,7 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             }).appendTo(group);
             this.button = jQuery('<button/>', {
                 'class': 'btn btn-default',
@@ -3960,7 +3960,7 @@ function eval_pyson(value){
         create_widget: function() {
             Sao.View.Form.Dict.Selection._super.create_widget.call(this);
             var select = jQuery('<select/>', {
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm mousetrap'
             });
             select.change(
                     this.parent_widget.focus_out.bind(this.parent_widget));

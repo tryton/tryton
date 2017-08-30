@@ -128,6 +128,7 @@
                         'role': 'presentation'
                     });
                     var link = jQuery('<a/>', {
+                        'id': item.id,
                         'role': 'menuitem',
                         'href': '#',
                         'tabindex': -1
@@ -387,6 +388,26 @@
         });
         tab_link.tab('show');
         tabs.trigger('ready');
+    };
+
+    Sao.Tab.previous_tab = function() {
+        Sao.Tab.move('prevAll');
+    };
+
+    Sao.Tab.next_tab = function() {
+        Sao.Tab.move('nextAll');
+    };
+
+    Sao.Tab.move = function(direction) {
+        var current_tab = this.tabs.get_current();
+        var tabs = jQuery('#tabs');
+        var tablist = jQuery('#tablist');
+        var tab = tablist.find('#nav-' + current_tab.id);
+        var next = tab[direction]('li').first();
+        if (next) {
+            next.find('a').tab('show');
+            tabs.trigger('ready');
+        }
     };
 
     Sao.Tab.Form = Sao.class_(Sao.Tab, {
