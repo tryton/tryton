@@ -15,32 +15,6 @@ _ = gettext.gettext
 class Board(SignalEvent, TabContent):
     'Board'
 
-    @property
-    def toolbar_def(self):
-        return [
-            ('new', 'tryton-new', _('New'), _('Create a new record'), None),
-            ('save', 'tryton-save', _('Save'), _('Save this record'), None),
-            ('switch', 'tryton-fullscreen', _('Switch'), _('Switch view'),
-                None),
-            ('reload', 'tryton-refresh', _('_Reload'), _('Reload'),
-                'sig_reload'),
-            ]
-
-    @property
-    def menu_def(self):
-        return [
-            (_('_New'), 'tryton-new', None, '<tryton>/Form/New'),
-            (_('_Save'), 'tryton-save', None, '<tryton>/Form/Save'),
-            (_('_Switch View'), 'tryton-fullscreen', None,
-                '<tryton>/Form/Switch View'),
-            (_('_Reload/Undo'), 'tryton-refresh', 'sig_reload',
-                '<tryton>/Form/Reload'),
-            (_('_Delete...'), 'tryton-delete', None, '<tryton>/Form/Delete'),
-            (None,) * 4,
-            (_('_Close Tab'), 'tryton-close', 'sig_win_close',
-                '<tryton>/Form/Close'),
-            ]
-
     def __init__(self, model, name='', **attributes):
         super(Board, self).__init__()
 

@@ -1,3 +1,5 @@
+* Update states of both toolbar and menu
+* Improve toolbar order
 * Make readonly, required and invalid widget themable
 * Load user CSS theme
 * Use profile name or login details in title

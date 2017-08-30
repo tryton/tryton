@@ -13,10 +13,154 @@ from .infobar import InfoBar
 _ = gettext.gettext
 
 
+class ToolbarItem(object):
+    def __init__(self, id, label,
+            tooltip=None, stock_id=None, accel_path=None):
+        self.id = id
+        self.label = label
+        self.tooltip = tooltip
+        self.stock_id = stock_id
+        self.accel_path = accel_path
+
+    @property
+    def menu(self):
+        return True
+
+    @property
+    def toolbar(self):
+        return bool(self.tooltip)
+
+
 class TabContent(InfoBar):
+
+    @property
+    def menu_def(self):
+        return [
+            ToolbarItem(
+                id='switch',
+                label=_("_Switch View"),
+                tooltip=_("Switch View"),
+                stock_id='tryton-fullscreen',
+                accel_path='<tryton>/Form/Switch View'),
+            ToolbarItem(
+                id='previous',
+                label=_("_Previous"),
+                tooltip=_("Previous Record"),
+                stock_id='tryton-go-previous',
+                accel_path='<tryton>/Form/Previous'),
+            ToolbarItem(
+                id='next',
+                label=_("_Next"),
+                tooltip=_("Next Record"),
+                stock_id='tryton-go-next',
+                accel_path='<tryton>/Form/Next'),
+            ToolbarItem(
+                id='search',
+                label=_("_Search"),
+                stock_id='tryton-find',
+                accel_path='<tryton>/Form/Search'),
+            None,
+            ToolbarItem(
+                id='new',
+                label=_("_New"),
+                tooltip=_("Create a new record"),
+                stock_id='tryton-new',
+                accel_path='<tryton>/Form/New'),
+            ToolbarItem(
+                id='save',
+                label=_("_Save"),
+                tooltip=_("Save this record"),
+                stock_id='tryton-save',
+                accel_path='<tryton>/Form/Save'),
+            ToolbarItem(
+                id='reload',
+                label=_("_Reload/Undo"),
+                tooltip=_("Reload/Undo"),
+                stock_id='tryton-refresh',
+                accel_path='<tryton>/Form/Reload'),
+            ToolbarItem(
+                id='copy',
+                label=_("_Duplicate"),
+                stock_id='tryton-copy',
+                accel_path='<tryton>/Form/Duplicate'),
+            ToolbarItem(
+                id='remove',
+                label=_("_Delete..."),
+                stock_id='tryton-delete',
+                accel_path='<tryton>/Form/Delete'),
+            None,
+            ToolbarItem(
+                id='logs',
+                label=_("View _Logs...")),
+            ToolbarItem(
+                id='revision' if self.model in common.MODELHISTORY else None,
+                label=_("Show revisions..."),
+                stock_id='tryton-clock'),
+            None,
+            ToolbarItem(
+                id='attach',
+                label=_("A_ttachments..."),
+                tooltip=_("Add an attachment to the record"),
+                stock_id='tryton-attachment',
+                accel_path='<tryton>/Form/Attachments'),
+            ToolbarItem(
+                id='note',
+                label=_("_Notes..."),
+                tooltip=_("Add a note to the record"),
+                stock_id='tryton-note',
+                accel_path='<tryton>/Form/Notes'),
+            ToolbarItem(
+                id='action',
+                label=_("_Actions..."),
+                stock_id='tryton-executable',
+                accel_path='<tryton>/Form/Actions'),
+            ToolbarItem(
+                id='relate',
+                label=_("_Relate..."),
+                stock_id='tryton-go-jump',
+                accel_path='<tryton>/Form/Relate'),
+            None,
+            ToolbarItem(
+                id='print_open',
+                label=_("_Report..."),
+                stock_id='tryton-print-open',
+                accel_path='<tryton>/Form/Report'),
+            ToolbarItem(
+                id='print_email',
+                label=_("_E-Mail..."),
+                stock_id='tryton-print-email',
+                accel_path='<tryton>/Form/Email'),
+            ToolbarItem(
+                id='print',
+                label=_("_Print..."),
+                stock_id='tryton-print',
+                accel_path='<tryton>/Form/Print'),
+            None,
+            ToolbarItem(
+                id='export',
+                label=_("_Export Data..."),
+                stock_id='tryton-save-as',
+                accel_path='<tryton>/Form/Export Data'),
+            ToolbarItem(
+                id='import',
+                label=_("_Import Data..."),
+                accel_path='<tryton>/Form/Import Data'),
+            ToolbarItem(
+                id='copy_url',
+                label=_("Copy _URL..."),
+                stock_id='tryton-web-browser',
+                accel_path='<tryton>/Form/Copy URL'),
+            None,
+            ToolbarItem(
+                id='win_close',
+                label=_("_Close Tab"),
+                stock_id='tryton-close',
+                accel_path='<tryton>/Form/Close'),
+            ]
 
     def create_tabcontent(self):
         self.buttons = {}
+        self.menu_buttons = {}
         self.tooltips = common.Tooltips()
         self.accel_group = Main.get_main().accel_group
 
@@ -99,43 +243,51 @@ class TabContent(InfoBar):
         return title_box
 
     def create_base_toolbar(self, toolbar):
-
-        for button_id, stock_id, label, tooltip, callback in self.toolbar_def:
-            if button_id:
-                toolitem = gtk.ToolButton(stock_id)
-                toolitem.set_label(label)
+        previous = None
+        for item in self.menu_def:
+            if item and item.toolbar:
+                callback = getattr(self, 'sig_%s' % item.id, None)
+                if not callback:
+                    continue
+                toolitem = gtk.ToolButton(item.stock_id)
+                toolitem.set_label(item.label)
                 toolitem.set_use_underline(True)
-                if callback:
-                    toolitem.connect('clicked', getattr(self, callback))
-                else:
-                    toolitem.props.sensitive = False
-                self.tooltips.set_tip(toolitem, tooltip)
-                self.buttons[button_id] = toolitem
-            else:
+                toolitem.connect('clicked', callback)
+                self.tooltips.set_tip(toolitem, item.tooltip)
+                self.buttons[item.id] = toolitem
+            elif not item and previous:
                 toolitem = gtk.SeparatorToolItem()
+            else:
+                continue
+            previous = item
             toolbar.insert(toolitem, -1)
 
     def set_menu_form(self):
         menu_form = gtk.Menu()
         menu_form.set_accel_group(self.accel_group)
         menu_form.set_accel_path('<tryton>/Form')
-
-        for label, stock_id, callback, accel_path in self.menu_def:
-            if label:
-                menuitem = gtk.ImageMenuItem(label, self.accel_group)
+        previous = None
+        for item in self.menu_def:
+            if item and item.menu:
+                callback = getattr(self, 'sig_%s' % item.id, None)
+                if not callback:
+                    continue
+                menuitem = gtk.ImageMenuItem(item.label, self.accel_group)
                 menuitem.set_use_underline(True)
-                if callback:
-                    menuitem.connect('activate', getattr(self, callback))
-                else:
-                    menuitem.props.sensitive = False
-                if stock_id:
+                menuitem.connect('activate', callback)
+
+                if item.stock_id:
                     image = gtk.Image()
-                    image.set_from_stock(stock_id, gtk.ICON_SIZE_MENU)
+                    image.set_from_stock(item.stock_id, gtk.ICON_SIZE_MENU)
                     menuitem.set_image(image)
-                if accel_path:
-                    menuitem.set_accel_path(accel_path)
-            else:
+                if item.accel_path:
+                    menuitem.set_accel_path(item.accel_path)
+                self.menu_buttons[item.id] = menuitem
+            elif not item and previous:
                 menuitem = gtk.SeparatorMenuItem()
+            else:
+                continue
+            previous = item
             menu_form.add(menuitem)
 
         menu_form.show_all()

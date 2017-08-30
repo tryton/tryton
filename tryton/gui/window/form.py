@@ -28,80 +28,6 @@ _ = gettext.gettext
 class Form(SignalEvent, TabContent):
     "Form"
 
-    @property
-    def toolbar_def(self):
-        return [
-            ('new', 'tryton-new', _('New'), _('Create a new record'),
-                'sig_new'),
-            ('save', 'tryton-save', _('Save'), _('Save this record'),
-                'sig_save'),
-            ('switch', 'tryton-fullscreen', _('Switch'), _('Switch view'),
-                'sig_switch'),
-            ('reload', 'tryton-refresh', _('_Reload'), _('Reload'),
-                'sig_reload'),
-            (None,) * 5,
-            ('previous', 'tryton-go-previous', _('Previous'),
-                _('Previous Record'), 'sig_previous'),
-            ('next', 'tryton-go-next', _('Next'), _('Next Record'),
-                'sig_next'),
-            (None,) * 5,
-            ('attach', 'tryton-attachment', _('Attachment(0)'),
-                _('Add an attachment to the record'), 'sig_attach'),
-            ('note', 'tryton-note', _('Note(0)'),
-                _('Add a note to the record'), 'sig_note'),
-            ]
-
-    @property
-    def menu_def(self):
-        return [
-            (_('_New'), 'tryton-new', 'sig_new', '<tryton>/Form/New'),
-            (_('_Save'), 'tryton-save', 'sig_save', '<tryton>/Form/Save'),
-            (_('_Switch View'), 'tryton-fullscreen', 'sig_switch',
-                '<tryton>/Form/Switch View'),
-            (_('_Reload/Undo'), 'tryton-refresh', 'sig_reload',
-                '<tryton>/Form/Reload'),
-            (_('_Duplicate'), 'tryton-copy', 'sig_copy',
-                '<tryton>/Form/Duplicate'),
-            (_('_Delete...'), 'tryton-delete', 'sig_remove',
-                '<tryton>/Form/Delete'),
-            (None,) * 4,
-            (_('_Previous'), 'tryton-go-previous', 'sig_previous',
-                '<tryton>/Form/Previous'),
-            (_('_Next'), 'tryton-go-next', 'sig_next', '<tryton>/Form/Next'),
-            (_('_Search'), 'tryton-find', 'sig_search',
-                '<tryton>/Form/Search'),
-            (_('View _Logs...'), None, 'sig_logs', None),
-            (_('Show revisions...'), 'tryton-clock',
-                'revision' if self.model in common.MODELHISTORY else None,
-                None),
-            (None,) * 4,
-            (_('_Close Tab'), 'tryton-close', 'sig_win_close',
-                '<tryton>/Form/Close'),
-            (None,) * 4,
-            (_('A_ttachments...'), 'tryton-attachment', 'sig_attach',
-                '<tryton>/Form/Attachments'),
-            (_('_Notes...'), 'tryton-note', 'sig_note', '<tryton>/Form/Notes'),
-            (_('_Actions...'), 'tryton-executable', 'sig_action',
-                '<tryton>/Form/Actions'),
-            (_('_Relate...'), 'tryton-go-jump', 'sig_relate',
-                '<tryton>/Form/Relate'),
-            (None,) * 4,
-            (_('_Report...'), 'tryton-print-open', 'sig_print_open',
-                '<tryton>/Form/Report'),
-            (_('_E-Mail...'), 'tryton-print-email', 'sig_print_email',
-                '<tryton>/Form/Email'),
-            (_('_Print...'), 'tryton-print', 'sig_print',
-                '<tryton>/Form/Print'),
-            (None,) * 4,
-            (_('Copy _URL...'), 'tryton-web-browser', 'sig_copy_url',
-                '<tryton>/Form/Copy URL'),
-            (None,) * 4,
-            (_('_Export Data...'), 'tryton-save-as', 'sig_save_as',
-                '<tryton>/Form/Export Data'),
-            (_('_Import Data...'), None, 'sig_import',
-                '<tryton>/Form/Import Data'),
-            ]
-
     def __init__(self, model, res_id=None, name='', **attributes):
         super(Form, self).__init__()
 
@@ -268,7 +194,7 @@ class Form(SignalEvent, TabContent):
         message(message_str)
         return True
 
-    def revision(self, widget=None):
+    def sig_revision(self, widget=None):
         if not self.modified_save():
             return
         current_id = (self.screen.current_record.id
@@ -314,12 +240,23 @@ class Form(SignalEvent, TabContent):
     def set_buttons_sensitive(self, revision=None):
         if not revision:
             access = common.MODELACCESS[self.model]
-            self.buttons['new'].props.sensitive = access['create']
-            self.buttons['save'].props.sensitive = (
-                access['create'] or access['write'])
+            for name, sensitive in [
+                    ('new', access['create']),
+                    ('save', access['create'] or access['write']),
+                    ('remove', access['delete']),
+                    ('copy', access['create']),
+                    ('import', access['create']),
+                    ]:
+                if name in self.buttons:
+                    self.buttons[name].props.sensitive = sensitive
+                if name in self.menu_buttons:
+                    self.menu_buttons[name].props.sensitive = sensitive
         else:
-            for button in ['new', 'save']:
-                self.buttons[button].props.sensitive = False
+            for name in ['new', 'save', 'remove', 'copy', 'import']:
+                if name in self.buttons:
+                    self.buttons[name].props.sensitive = False
+                if name in self.menu_buttons:
+                    self.menu_buttons[name].props.sensitive = False
 
     def sig_remove(self, widget=None):
         if not common.MODELACCESS[self.model]['delete']:
@@ -338,7 +275,7 @@ class Form(SignalEvent, TabContent):
     def sig_import(self, widget=None):
         WinImport(self.model, self.screen.context)
 
-    def sig_save_as(self, widget=None):
+    def sig_export(self, widget=None):
         export = WinExport(self.model,
             [r.id for r in self.screen.selected_records],
             context=self.screen.context)
