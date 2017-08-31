@@ -439,7 +439,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">General Ledger</field>
             <field name="model">account.general_ledger.account</field>
             <field name="report_name">account.general_ledger</field>
-            <field name="report">account/general_ledger.odt</field>
+            <field name="report">account/general_ledger.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_general_ledger_keyword">
             <field name="keyword">form_print</field>
@@ -451,7 +451,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Trial Balance</field>
             <field name="model">account.general_ledger.account</field>
             <field name="report_name">account.trial_balance</field>
-            <field name="report">account/trial_balance.odt</field>
+            <field name="report">account/trial_balance.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_trial_balance_keyword">
             <field name="keyword">form_print</field>
@@ -687,7 +687,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Aged Balance</field>
             <field name="model">account.aged_balance</field>
             <field name="report_name">account.aged_balance</field>
-            <field name="report">account/aged_balance.odt</field>
+            <field name="report">account/aged_balance.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_aged_balance_keyword">
             <field name="keyword">form_print</field>

@@ -360,7 +360,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">General Journal</field>
             <field name="model">account.move</field>
             <field name="report_name">account.move.general_journal</field>
-            <field name="report">account/general_journal.odt</field>
+            <field name="report">account/general_journal.fodt</field>
         </record>
     </data>
 </tryton>
