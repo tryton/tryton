@@ -194,7 +194,7 @@
             <field name="name">Depreciation Table</field>
             <field name="model">account.asset</field>
             <field name="report_name">account.asset.depreciation_table</field>
-            <field name="report">account_asset/asset_table.odt</field>
+            <field name="report">account_asset/asset_table.fodt</field>
         </record>
         <record model="ir.ui.view"
             id="print_depreciation_table_start_view_form">
