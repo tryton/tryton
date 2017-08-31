@@ -789,9 +789,12 @@ function eval_pyson(value){
         class_: 'form-group_',
         init: function(attributes) {
             Sao.View.Form.Group._super.init.call(this, attributes);
-            this.el = jQuery('<div/>', {
+            this.el = jQuery('<fieldset/>', {
                 'class': this.class_
             });
+            if (attributes.string) {
+                this.el.append(jQuery('<legend/>').text(attributes.string));
+            }
         },
         add: function(widget) {
             this.el.append(widget.el);
