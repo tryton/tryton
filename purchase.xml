@@ -323,7 +323,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchase</field>
             <field name="model">purchase.purchase</field>
             <field name="report_name">purchase.purchase</field>
-            <field name="report">purchase/purchase.odt</field>
+            <field name="report">purchase/purchase.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_purchase_keyword">
             <field name="keyword">form_print</field>
