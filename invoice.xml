@@ -201,7 +201,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Invoice</field>
             <field name="model">account.invoice</field>
             <field name="report_name">account.invoice</field>
-            <field name="report">account_invoice/invoice.odt</field>
+            <field name="report">account_invoice/invoice.fodt</field>
         </record>
         <record model="ir.sequence.type" id="sequence_type_account_invoice">
             <field name="name">Invoice</field>
