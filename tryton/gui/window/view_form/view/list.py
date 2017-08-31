@@ -515,7 +515,7 @@ class ViewTree(View):
         expand = attributes.get('expand', False)
         column.set_expand(expand)
         column.set_resizable(True)
-        if not field or field.attrs['type'] != 'text':
+        if attributes.get('widget') != 'text':
             column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
 
     def get_column_widget(self, column):
