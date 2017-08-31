@@ -128,7 +128,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.report" id="report_package_label">
             <field name="name">Package Labels</field>
             <field name="report_name">stock.package.label</field>
-            <field name="report">stock_package/label.odt</field>
+            <field name="report">stock_package/label.fodt</field>
         </record>
         <record model="ir.action.keyword"
             id="report_package_label_shipment_out_keyword">
