@@ -75,7 +75,7 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.product_price_list_dates': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
                 'icons/*.svg', 'tests/*.rst']),
         },
     classifiers=[
