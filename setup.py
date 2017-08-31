@@ -75,7 +75,7 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_payment_stripe': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt', '*.html',
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt', '*.html',
                 'icons/*.svg', 'tests/*.rst']),
         },
     classifiers=[
