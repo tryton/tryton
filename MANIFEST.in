@@ -11,4 +11,4 @@ include doc/*
 include tests/*.rst
 include tests/*.xsd
 include template/*.xml
-include *.odt
+include *.fodt

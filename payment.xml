@@ -235,7 +235,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Mandate</field>
             <field name="model">account.payment.sepa.mandate</field>
             <field name="report_name">account.payment.sepa.mandate</field>
-            <field name="report">account_payment_sepa/mandate.odt</field>
+            <field name="report">account_payment_sepa/mandate.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_mandate_keyword">
             <field name="keyword">form_print</field>
