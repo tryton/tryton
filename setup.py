@@ -75,7 +75,7 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_dunning_fee': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
                 'icons/*.svg', 'tests/*.rst']),
         },
     classifiers=[
