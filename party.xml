@@ -77,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Labels</field>
             <field name="model">party.party</field>
             <field name="report_name">party.label</field>
-            <field name="report">party/label.odt</field>
+            <field name="report">party/label.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_label_party">
             <field name="keyword">form_print</field>
