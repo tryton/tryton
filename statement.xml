@@ -92,7 +92,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Statement</field>
             <field name="model">account.statement</field>
             <field name="report_name">account.statement</field>
-            <field name="report">account_statement/statement.odt</field>
+            <field name="report">account_statement/statement.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_statement_keyword">
             <field name="keyword">form_print</field>
