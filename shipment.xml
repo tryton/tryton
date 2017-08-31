@@ -353,7 +353,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Delivery Note</field>
             <field name="model">stock.shipment.out</field>
             <field name="report_name">stock.shipment.out.delivery_note</field>
-            <field name="report">stock/delivery_note.odt</field>
+            <field name="report">stock/delivery_note.fodt</field>
         </record>
         <record model="ir.action.keyword"
          id="report_shipment_out_delivery_note_keyword">
@@ -366,7 +366,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Picking List</field>
             <field name="model">stock.shipment.out</field>
             <field name="report_name">stock.shipment.out.picking_list</field>
-            <field name="report">stock/picking_list.odt</field>
+            <field name="report">stock/picking_list.fodt</field>
         </record>
         <record model="ir.action.keyword"
          id="report_shipment_out_picking_list_keyword">
@@ -379,7 +379,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Restocking List</field>
             <field name="model">stock.shipment.in</field>
             <field name="report_name">stock.shipment.in.restocking_list</field>
-            <field name="report">stock/supplier_restocking_list.odt</field>
+            <field name="report">stock/supplier_restocking_list.fodt</field>
         </record>
         <record model="ir.action.keyword"
          id="report_shipment_in_restocking_list_keyword">
@@ -392,7 +392,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Restocking List</field>
             <field name="model">stock.shipment.out.return</field>
             <field name="report_name">stock.shipment.out.return.restocking_list</field>
-            <field name="report">stock/customer_return_restocking_list.odt</field>
+            <field name="report">stock/customer_return_restocking_list.fodt</field>
         </record>
         <record model="ir.action.keyword"
          id="report_shipment_out_return_restocking_list_keyword">
@@ -405,7 +405,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Internal Shipment</field>
             <field name="model">stock.shipment.internal</field>
             <field name="report_name">stock.shipment.internal.report</field>
-            <field name="report">stock/internal_shipment.odt</field>
+            <field name="report">stock/internal_shipment.fodt</field>
         </record>
         <record model="ir.action.keyword"
          id="report_shipment_internal_keyword">
