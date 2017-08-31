@@ -94,7 +94,7 @@ setup(name=name,
     license='GPL-3',
     install_requires=[
         'lxml >= 2.0',
-        'relatorio >= 0.7.0',
+        'relatorio[fodt] >= 0.7.0',
         'Genshi',
         'python-dateutil',
         'polib',
