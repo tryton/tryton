@@ -309,7 +309,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Sale</field>
             <field name="model">sale.sale</field>
             <field name="report_name">sale.sale</field>
-            <field name="report">sale/sale.odt</field>
+            <field name="report">sale/sale.fodt</field>
         </record>
         <record model="ir.action.keyword" id="report_sale_keyword">
             <field name="keyword">form_print</field>
