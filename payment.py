@@ -77,7 +77,12 @@ class Payment:
     stripe_checkout_needed = fields.Function(
         fields.Boolean("Stripe Checkout Needed"), 'get_stripe_checkout_needed')
     stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
-    stripe_charge_id = fields.Char("Stripe Charge ID", readonly=True)
+    stripe_charge_id = fields.Char(
+        "Stripe Charge ID", readonly=True,
+        states={
+            'invisible': ~Eval('stripe_journal') & ~Eval('stripe_charge_id'),
+            },
+        depends=['stripe_journal'])
     stripe_capture = fields.Boolean(
         "Stripe Capture",
         states={
@@ -404,7 +409,7 @@ class Customer(ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         name = super(Customer, self).get_rec_name(name)
-        return self.stripe_token if self.stripe_token else name
+        return self.stripe_customer_id if self.stripe_customer_id else name
 
     @classmethod
     def delete(cls, customers):

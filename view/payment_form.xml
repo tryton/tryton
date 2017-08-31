@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     </xpath>
     <xpath expr="//field[@name='date']" position="after">
         <newline/>
+        <label name="stripe_charge_id"/>
+        <field name="stripe_charge_id" colspan="3"/>
         <label name="stripe_customer"/>
         <field name="stripe_customer" colspan="3"/>
         <label name="stripe_token"/>
