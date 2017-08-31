@@ -11,7 +11,7 @@ Prerequisites
     * Werkzeug (http://werkzeug.pocoo.org/)
     * wrapt (https://github.com/GrahamDumpleton/wrapt)
     * lxml 2.0 or later (http://lxml.de/)
-    * relatorio 0.2.0 or later (http://code.google.com/p/python-relatorio/)
+    * relatorio 0.7.0 or later (http://relatorio.tryton.org/)
     * Genshi (http://genshi.edgewall.org/)
     * python-dateutil (http://labix.org/python-dateutil)
     * polib (https://bitbucket.org/izi/polib/wiki/Home)

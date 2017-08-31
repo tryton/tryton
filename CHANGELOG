@@ -1,3 +1,4 @@
+* Add support for Flat OpenDocument
 * Add get_email in trytond.report
 * Replace plain extension by txt
 * Support test database cache for remote postgresql
