@@ -1419,7 +1419,11 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         move.company = self.purchase.company
         move.unit_price = self.unit_price
         move.currency = self.purchase.currency
-        move.planned_date = self.delivery_date
+        if self.moves:
+            # backorder can not be planned
+            move.planned_date = None
+        else:
+            move.planned_date = self.delivery_date
         move.invoice_lines = self._get_move_invoice_lines(move_type)
         move.origin = self
         return move
