@@ -1041,6 +1041,8 @@ class Main(object):
             lambda *a: gobject.idle_add(toggle_favorite, *a), treeview)
         # Unset fixed height mode to add column
         treeview.set_fixed_height_mode(False)
+        treeview.set_property(
+            'enable-grid-lines', gtk.TREE_VIEW_GRID_LINES_NONE)
         treeview.append_column(column)
 
         screen.search_filter()

@@ -276,12 +276,15 @@ class ViewTree(View):
         self.reload = False
         if self.attributes.get('editable'):
             self.treeview = EditableTreeView(self.attributes['editable'], self)
+            grid_lines = gtk.TREE_VIEW_GRID_LINES_BOTH
         else:
             self.treeview = TreeView(self)
+            grid_lines = gtk.TREE_VIEW_GRID_LINES_VERTICAL
 
         self.parse(xml)
 
         self.treeview.set_property('rules-hint', True)
+        self.treeview.set_property('enable-grid-lines', grid_lines)
         self.treeview.set_fixed_height_mode(
             all(c.get_sizing() == gtk.TREE_VIEW_COLUMN_FIXED
                 for c in self.treeview.get_columns()))
@@ -386,7 +389,7 @@ class ViewTree(View):
             column.set_cell_data_func(suffix.renderer,
                 suffix.setter)
 
-        self.set_column_widget(column, field, node_attrs)
+        self.set_column_widget(column, field, node_attrs, align=widget.align)
         self.set_column_width(column, field, node_attrs)
 
         if (not self.attributes.get('sequence')
@@ -448,7 +451,8 @@ class ViewTree(View):
     def get_widget(cls, name):
         return cls.WIDGETS[name]
 
-    def set_column_widget(self, column, field, attributes, arrow=True):
+    def set_column_widget(self, column, field, attributes,
+            arrow=True, align=0.5):
         hbox = gtk.HBox(False, 2)
         label = gtk.Label(attributes['string'])
         if field and self.editable:
@@ -478,7 +482,7 @@ class ViewTree(View):
             column.set_clickable(True)
         hbox.show()
         column.set_widget(hbox)
-        column.set_alignment(0.5)
+        column.set_alignment(align)
 
     def set_column_width(self, column, field, attributes):
         default_width = {
