@@ -30,12 +30,36 @@ class Journal:
 class Payment:
     __metaclass__ = PoolMeta
     __name__ = 'account.payment'
+    account = fields.Many2One(
+        'account.account', "Account", ondelete='RESTRICT',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('kind', 'in', ['receivable', 'payable', 'deposit']),
+            ['OR',
+                ('second_currency', '=', Eval('currency', None)),
+                [
+                    ('company.currency', '=', Eval('currency', None)),
+                    ('second_currency', '=', None),
+                    ],
+                ],
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            'invisible': Bool(Eval('line')),
+            },
+        depends=['company', 'currency', 'state', 'line'],
+        help="Define the account to use for clearing move.")
     clearing_move = fields.Many2One('account.move', 'Clearing Move',
         readonly=True)
 
     @classmethod
     def __setup__(cls):
         super(Payment, cls).__setup__()
+        line_invisible = Bool(Eval('account'))
+        if 'invisible' in cls.line.states:
+            cls.line.states['invisible'] &= line_invisible
+        else:
+            cls.line.states['invisible'] = line_invisible
         cls._buttons.update({
                 'succeed_wizard': cls._buttons['succeed'],
                 })
@@ -78,6 +102,20 @@ class Payment:
         for lines in to_reconcile:
             Line.reconcile(lines)
 
+    @property
+    def clearing_account(self):
+        if self.line:
+            return self.line.account
+        elif self.account:
+            return self.account
+
+    @property
+    def clearing_party(self):
+        if self.line:
+            return self.line.party
+        else:
+            return self.party
+
     def create_clearing_move(self, date=None):
         pool = Pool()
         Move = pool.get('account.move')
@@ -86,7 +124,7 @@ class Payment:
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
 
-        if not self.line:
+        if not self.clearing_account:
             return
         if (not self.journal.clearing_account
                 or not self.journal.clearing_journal):
@@ -113,14 +151,14 @@ class Payment:
             line.debit, line.credit = local_amount, 0
         else:
             line.debit, line.credit = 0, local_amount
-        line.account = self.line.account
+        line.account = self.clearing_account
         if not local_currency:
             line.amount_second_currency = self.amount.copy_sign(
                 line.debit - line.credit)
             line.second_currency = self.journal.currency
 
-        line.party = (self.line.party
-            if self.line.account.party_required else None)
+        line.party = (self.clearing_party
+            if line.account.party_required else None)
         counterpart = Line()
         if self.kind == 'payable':
             counterpart.debit, counterpart.credit = 0, local_amount

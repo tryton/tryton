@@ -1,3 +1,5 @@
+* Allow to use account instead of line for clearing
+
 Version 4.4.0 - 2017-05-01
 * Bug fixes (see mercurial logs for details)
 * Allow to set the date of the clearing move
