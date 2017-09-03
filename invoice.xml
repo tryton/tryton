@@ -202,7 +202,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.invoice</field>
             <field name="report_name">account.invoice</field>
             <field name="report">account_invoice/invoice.fodt</field>
+            <field name="single" eval="True"/>
         </record>
+        <record model="ir.action.keyword" id="report_invoice_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="report_invoice"/>
+        </record>
+
         <record model="ir.sequence.type" id="sequence_type_account_invoice">
             <field name="name">Invoice</field>
             <field name="code">account.invoice</field>
@@ -298,23 +305,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.invoice.pay.ask</field>
             <field name="type">form</field>
             <field name="name">pay_ask_form</field>
-        </record>
-
-        <record model="ir.ui.view" id="print_warning_view_form">
-            <field name="model">account.invoice.print.warning</field>
-            <field name="type">form</field>
-            <field name="name">print_warning_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="print">
-            <field name="name">Invoice</field>
-            <field name="wiz_name">account.invoice.print</field>
-            <field name="model">account.invoice</field>
-        </record>
-        <record model="ir.action.keyword" id="print_keyword">
-            <field name="keyword">form_print</field>
-            <field name="model">account.invoice,-1</field>
-            <field name="action" ref="print"/>
         </record>
 
         <record model="ir.ui.view" id="credit_start_view_form">

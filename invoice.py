@@ -15,7 +15,7 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
     sequence_ordered
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
-    StateReport, Button
+    Button
 from trytond import backend
 from trytond.pyson import If, Eval, Bool
 from trytond.tools import reduce_ids, grouped_slice
@@ -29,7 +29,7 @@ from trytond.modules.product import price_digits
 
 __all__ = ['Invoice', 'InvoicePaymentLine', 'InvoiceLine',
     'InvoiceLineTax', 'InvoiceTax',
-    'PrintInvoiceWarning', 'PrintInvoice', 'InvoiceReport',
+    'InvoiceReport',
     'PayInvoiceStart', 'PayInvoiceAsk', 'PayInvoice',
     'CreditInvoiceStart', 'CreditInvoice']
 
@@ -2317,39 +2317,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         return line
 
 
-class PrintInvoiceWarning(ModelView):
-    'Print Invoice Report Warning'
-    __name__ = 'account.invoice.print.warning'
-
-
-class PrintInvoice(Wizard):
-    'Print Invoice Report'
-    __name__ = 'account.invoice.print'
-    start = StateTransition()
-    warning = StateView('account.invoice.print.warning',
-        'account_invoice.print_warning_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Print', 'print_', 'tryton-print', default=True),
-            ])
-    print_ = StateReport('account.invoice')
-
-    def transition_start(self):
-        if len(Transaction().context['active_ids']) > 1:
-            return 'warning'
-        return 'print_'
-
-    def do_print_(self, action):
-        data = {}
-        data['id'] = Transaction().context['active_ids'].pop()
-        data['ids'] = [data['id']]
-        return action, data
-
-    def transition_print_(self):
-        if Transaction().context['active_ids']:
-            return 'print_'
-        return 'end'
-
-
 class InvoiceReport(Report):
     __name__ = 'account.invoice'
 
@@ -2359,42 +2326,51 @@ class InvoiceReport(Report):
         cls.__rpc__['execute'] = RPC(False)
 
     @classmethod
-    def execute(cls, ids, data):
-        Invoice = Pool().get('account.invoice')
-
-        with Transaction().set_context(address_with_party=True):
-            result = super(InvoiceReport, cls).execute(ids, data)
-        invoice = Invoice(ids[0])
-
-        if len(ids) > 1:
-            result = result[:2] + (True,) + result[3:]
-        else:
-            if invoice.number:
-                result = result[:3] + (result[3] + ' - ' + invoice.number,)
-
+    def _execute(cls, records, data, action):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        # Re-instantiate because records are TranslateModel
+        invoice, = Invoice.browse(records)
         if invoice.invoice_report_cache:
-            result = (invoice.invoice_report_format,
-                invoice.invoice_report_cache) + result[2:]
+            return (
+                invoice.invoice_report_format,
+                bytes(invoice.invoice_report_cache))
         else:
+            result = super(InvoiceReport, cls)._execute(records, data, action)
             # If the invoice is posted or paid and the report not saved in
             # invoice_report_cache there was an error somewhere. So we save it
             # now in invoice_report_cache
             if invoice.state in {'posted', 'paid'} and invoice.type == 'out':
-                invoice.invoice_report_format, invoice.invoice_report_cache = \
-                    result[:2]
+                format_, data = result
+                invoice.invoice_report_format = format_
+                invoice.invoice_report_cache = \
+                    Invoice.invoice_report_cache.cast(data)
                 invoice.save()
+            return result
+
+    @classmethod
+    def execute(cls, ids, data):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        result = super(InvoiceReport, cls).execute(ids, data)
+        if len(ids) == 1:
+            invoice, = Invoice.browse(ids)
+            if invoice.number:
+                result = result[:3] + (result[3] + ' - ' + invoice.number,)
         return result
 
     @classmethod
     def _get_records(cls, ids, model, data):
-        with Transaction().set_context(language=False):
-            return super(InvoiceReport, cls)._get_records(ids[:1], model, data)
+        with Transaction().set_context(
+                language=False,
+                address_with_party=True):
+            return super(InvoiceReport, cls)._get_records(ids, model, data)
 
     @classmethod
     def get_context(cls, records, data):
-        report_context = super(InvoiceReport, cls).get_context(records, data)
-        report_context['company'] = report_context['user'].company
-        return report_context
+        context = super(InvoiceReport, cls).get_context(records, data)
+        context['invoice'] = context['record']
+        return context
 
 
 class PayInvoiceStart(ModelView):

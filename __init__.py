@@ -20,7 +20,6 @@ def register():
         InvoiceLine,
         InvoiceLineTax,
         InvoiceTax,
-        PrintInvoiceWarning,
         PayInvoiceStart,
         PayInvoiceAsk,
         CreditInvoiceStart,
@@ -37,7 +36,6 @@ def register():
         module='account_invoice', type_='model')
     Pool.register(
         TestPaymentTerm,
-        PrintInvoice,
         PayInvoice,
         CreditInvoice,
         PartyReplace,
