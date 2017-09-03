@@ -392,8 +392,10 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
         Move.cancel([m for s in shipments for m in s.supplier_moves])
-        Move.write([m for s in shipments for m in s.customer_moves],
-            {'shipment': None})
+        Move.cancel([m for s in shipments for m in s.customer_moves
+                if s.state == 'shipped'])
+        Move.write([m for s in shipments for m in s.customer_moves
+                if s.state != 'shipped'], {'shipment': None})
 
     @classmethod
     @ModelView.button
