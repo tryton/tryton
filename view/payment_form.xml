@@ -12,6 +12,9 @@ this repository contains the full copyright notices and license terms. -->
         <field name="stripe_charge_id" colspan="3"/>
         <label name="stripe_customer"/>
         <field name="stripe_customer" colspan="3"/>
+        <field name="stripe_customer_source" colspan="4" invisible="1"/>
+        <label name="stripe_customer_source_selection"/>
+        <field name="stripe_customer_source_selection" colspan="3"/>
         <label name="stripe_token"/>
         <field name="stripe_token" colspan="3"/>
         <label name="stripe_capture"/>

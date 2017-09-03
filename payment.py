@@ -7,7 +7,7 @@ import stripe
 
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 from trytond.report import Report
 from trytond.transaction import Transaction
 from trytond.url import HOSTNAME
@@ -97,10 +97,11 @@ class Payment:
         'get_stripe_capture_needed')
     stripe_token = fields.Char("Stripe Token",
         states={
-            'invisible': ~Eval('stripe_journal') | Eval('stripe_customer'),
+            'invisible': (~Eval('stripe_journal')
+                | Eval('stripe_customer_source')),
             'readonly': ~Eval('state').in_(['draft', 'approved']),
             },
-        depends=['stripe_journal', 'stripe_customer', 'state'])
+        depends=['stripe_journal', 'stripe_customer_source', 'state'])
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
@@ -120,10 +121,32 @@ class Payment:
             ('stripe_account', '=', Eval('stripe_account', -1)),
             ],
         states={
-            'invisible': ~Eval('stripe_journal') | Eval('stripe_token'),
+            'invisible': ~Eval('stripe_journal'),
+            'required': Bool(Eval('stripe_customer_source')),
             'readonly': ~Eval('state').in_(['draft', 'approved']),
             },
-        depends=['party', 'stripe_account', 'stripe_journal', 'state'])
+        depends=['party', 'stripe_account', 'stripe_journal',
+            'stripe_customer_source', 'state'])
+    stripe_customer_source = fields.Char(
+        "Stripe Customer Source",
+        states={
+            'invisible': (~Eval('stripe_journal') | Eval('stripe_token')
+                | ~Eval('stripe_customer')),
+            'readonly': ~Eval('state').in_(['draft', 'approved']),
+            },
+        depends=['stripe_account', 'stripe_token', 'stripe_customer', 'state'])
+    # Use Function field with selection to avoid to query Stripe
+    # to validate the value
+    stripe_customer_source_selection = fields.Function(fields.Selection(
+            'get_stripe_customer_sources', "Stripe Customer Source",
+            states={
+                'invisible': (~Eval('stripe_journal') | Eval('stripe_token')
+                    | ~Eval('stripe_customer')),
+                'readonly': ~Eval('state').in_(['draft', 'approved']),
+                },
+            depends=[
+                'stripe_account', 'stripe_token', 'stripe_customer', 'state']),
+        'get_stripe_customer_source')
     stripe_account = fields.Function(fields.Many2One(
             'account.payment.stripe.account', "Stripe Account"),
         'on_change_with_stripe_account')
@@ -150,6 +173,9 @@ class Payment:
                         | ~Eval('stripe_capture_needed')),
                     },
                 })
+        # As there is not setter to avoid the cost of validation,
+        # the readonly attribute must be unset.
+        cls.stripe_customer_source_selection._field.readonly = False
 
     @classmethod
     def default_stripe_capture(cls):
@@ -165,6 +191,26 @@ class Payment:
             return self.journal.process_method == 'stripe'
         else:
             return False
+
+    @fields.depends('stripe_customer', 'stripe_customer_source')
+    def get_stripe_customer_sources(self):
+        sources = [('', '')]
+        if self.stripe_customer:
+            sources.extend(self.stripe_customer.sources())
+        if (self.stripe_customer_source
+                and self.stripe_customer_source not in dict(sources)):
+            sources.append(
+                (self.stripe_customer_source, self.stripe_customer_source))
+        return sources
+
+    @fields.depends(
+        'stripe_customer_source_selection',
+        'stripe_customer_source')
+    def on_change_stripe_customer_source_selection(self):
+        self.stripe_customer_source = self.stripe_customer_source_selection
+
+    def get_stripe_customer_source(self, name):
+        return self.stripe_customer_source
 
     def get_stripe_checkout_needed(self, name):
         return (self.journal.process_method == 'stripe'
@@ -278,7 +324,9 @@ class Payment:
         source, customer = None, None
         if self.stripe_token:
             source = self.stripe_token
-        elif self.stripe_customer:
+        elif self.stripe_customer_source:
+            source = self.stripe_customer_source
+        if self.stripe_customer:
             customer = self.stripe_customer.stripe_customer_id
         return {
             'api_key': self.journal.stripe_account.secret_key,
@@ -504,6 +552,51 @@ class Customer(ModelSQL, ModelView):
             customer.stripe_customer_id = None
             customer.save()
             Transaction().commit()
+
+    def retrieve(self):
+        try:
+            return stripe.Customer.retrieve(
+                api_key=self.stripe_account.secret_key,
+                id=self.stripe_customer_id)
+        except (stripe.error.RateLimitError,
+                stripe.error.APIConnectionError) as e:
+            logger.warning(str(e))
+
+    def sources(self):
+        sources = []
+        customer = self.retrieve()
+        if customer:
+            for source in customer.sources:
+                name = source.id
+                if source.object == 'card':
+                    name = self._source_name(source)
+                elif source.object == 'source':
+                    if source.usage != 'reusable':
+                        continue
+                    name = self._source_name(source)
+                else:
+                    continue
+                sources.append((source.id, name))
+        return sources
+
+    def _source_name(cls, source):
+        def card_name(card):
+            name = card.brand
+            if card.last4 or card.dynamic_last4:
+                name += ' ****' + (card.last4 or card.dynamic_last4)
+            if card.exp_month and card.exp_year:
+                name += ' %s/%s' % (card.exp_month, card.exp_year)
+            return name
+
+        name = source.id
+        if source.object == 'card':
+            name = card_name(source)
+        elif source.object == 'source':
+            if source.type == 'card':
+                name = card_name(source.card)
+            elif source.type == 'sepa_debit':
+                name = '****' + source.sepa_debit.last4
+        return name
 
 
 class Checkout(Wizard):
