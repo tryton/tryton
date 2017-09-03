@@ -409,6 +409,8 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
     direct_print = fields.Boolean('Direct Print')
+    single = fields.Boolean("Single",
+        help="Check if the template works only for one record.")
     template_extension = fields.Selection([
             ('odt', 'OpenDocument Text'),
             ('odp', 'OpenDocument Presentation'),
@@ -580,6 +582,10 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
     @staticmethod
     def default_direct_print():
+        return False
+
+    @classmethod
+    def default_single(cls):
         return False
 
     @staticmethod

@@ -1,12 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import os
 import datetime
+import os
+import subprocess
 import tempfile
 import warnings
-import subprocess
+import zipfile
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from io import BytesIO
 
 try:
     import html2text
@@ -152,16 +154,31 @@ class Report(URLMixin, PoolBase):
         else:
             action_report = ActionReport(action_id)
 
-        records = None
+        records = []
         model = action_report.model or data.get('model')
         if model:
             records = cls._get_records(ids, model, data)
-        report_context = cls.get_context(records, data)
-        oext, content = cls.convert(action_report,
-            cls.render(action_report, report_context))
+        if action_report.single and len(records) > 1:
+            content = BytesIO()
+            with zipfile.ZipFile(content, 'w') as content_zip:
+                for record in records:
+                    oext, rcontent = cls._execute(
+                        [record], data, action_report)
+                    rfilename = '%s-%s.%s' % (
+                        record.id, record.rec_name, oext)
+                    content_zip.writestr(rfilename, rcontent)
+            content = content.getvalue()
+            oext = 'zip'
+        else:
+            oext, content = cls._execute(records, data, action_report)
         if not isinstance(content, unicode):
             content = bytearray(content) if bytes == str else bytes(content)
         return (oext, content, action_report.direct_print, action_report.name)
+
+    @classmethod
+    def _execute(cls, records, data, action):
+        report_context = cls.get_context(records, data)
+        return cls.convert(action, cls.render(action, report_context))
 
     @classmethod
     def _get_records(cls, ids, model, data):
@@ -200,6 +217,7 @@ class Report(URLMixin, PoolBase):
         report_context['context'] = Transaction().context
         report_context['user'] = User(Transaction().user)
         report_context['records'] = records
+        report_context['record'] = records[0] if records else None
         report_context['format_date'] = cls.format_date
         report_context['format_currency'] = cls.format_currency
         report_context['format_number'] = cls.format_number

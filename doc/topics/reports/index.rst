@@ -50,6 +50,10 @@ When defining an `ir.action.report` the following attributes are available:
 
     * ``template_extension``: The template format.
 
+    * ``single``: `True` if the template works only for one record. If such
+      report is called with more than one record, a zip file containing all the
+      reports will be generated.
+
 
 Report Usage
 ============
@@ -129,12 +133,12 @@ Accessing models from within the report
 ---------------------------------------
 
 By default instances of the models the report is for are passed in to the
-report via a list of objects called `objects`.  These objects behave just as
-they would within trytond itself. You can access any of the models relations as
-well.  For example within the invoice report each object is an invoice and you
-can access the name of the party of the invoice via `invoice.party.name`.
-Additional objects can be passed to a report. This is discussed below in
-`Passing custom data to a report`.
+report via a list of objects called `records` (or `record` if `single` is
+`True`).  These records behave just as they would within trytond itself. You
+can access any of the models relations as well.  For example within the invoice
+report each object is an invoice and you can access the name of the party of
+the invoice via `invoice.party.name`.  Additional objects can be passed to a
+report. This is discussed below in `Passing custom data to a report`.
 
 Within Tryton the underlying model the report can be found by following the
 Menu to ``Administration > UI > Actions > Report``. Furthermore in tryton the
