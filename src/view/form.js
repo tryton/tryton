@@ -449,8 +449,8 @@ function eval_pyson(value){
                         }
                     }
                 }
-                // Only input & textarea can grab the focus
-                jQuery(focus_el).find('input,select,textarea').focus();
+                jQuery(focus_el).find('input,select,textarea')
+                    .addBack(focus_el).focus();
             }
         }
     });
