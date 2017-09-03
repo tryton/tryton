@@ -69,6 +69,13 @@ button {
             text-overflow: ellipsis;
             min-width: 30px;
             text-align: center;
+            &.char, &.text, &.many2one, &.one2one, &.date, &.time, &.selection,
+            &.reference, &.url, &.email, &.callto, &.sip {
+                text-align: left;
+            }
+            &.timedelta, &.float, &.numeric, &.integer, &.biginteger {
+                text-align: right;
+            }
         }
         & > tbody > tr > td {
             cursor: pointer;
@@ -209,6 +216,9 @@ button {
 }
 .column-integer, .column-float, .column-timedelta {
     text-align: right;
+}
+.column-many2many, .column-one2many {
+    text-align: center;
 }
 input.column-boolean {
     .center-block();

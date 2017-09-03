@@ -71,6 +71,9 @@
             this.table = jQuery('<table/>', {
                 'class': 'tree table table-hover table-striped'
             });
+            if (this.editable) {
+                this.table.addClass('table-bordered');
+            }
             this.el.append(this.table);
             this.thead = jQuery('<thead/>').appendTo(this.table);
             var tr = jQuery('<tr/>');
@@ -87,7 +90,9 @@
             }
             this.thead.append(tr);
             this.columns.forEach(function(column) {
-                th = jQuery('<th/>');
+                th = jQuery('<th/>', {
+                    'class': column.attributes.widget,
+                });
                 var label = jQuery('<label/>')
                     .text(column.attributes.string);
                 if (this.editable) {
