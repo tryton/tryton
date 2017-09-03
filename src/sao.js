@@ -516,6 +516,14 @@ var Sao = {};
             this.footer = jQuery('<div/>', {
                 'class': 'modal-footer'
             }).appendTo(this.content);
+
+            this.modal.on('shown.bs.modal', function() {
+                var currently_focused = jQuery(document.activeElement);
+                var has_focus = currently_focused.closest(this.el) > 0;
+                if (!has_focus) {
+                    jQuery(this).find(':input:visible:first').focus();
+                }
+            });
         },
         add_title: function(title) {
             this.header.append(jQuery('<h4/>', {

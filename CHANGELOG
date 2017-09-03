@@ -1,3 +1,4 @@
+* Set focus on first visible input when modal is shown
 * Improve treeview headers
 * Add keyboard shortcuts
 * Update states of both toolbar and menu
