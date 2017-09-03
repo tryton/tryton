@@ -1450,6 +1450,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         '''
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
 
         if self.type != 'line':
             return
@@ -1483,7 +1484,11 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         move.company = self.sale.company
         move.unit_price = self.unit_price
         move.currency = self.sale.currency
-        move.planned_date = self.shipping_date
+        if self.moves:
+            # backorder can not be planned
+            move.planned_date = Date.today()
+        else:
+            move.planned_date = self.shipping_date
         move.invoice_lines = self._get_move_invoice_lines(shipment_type)
         move.origin = self
         return move

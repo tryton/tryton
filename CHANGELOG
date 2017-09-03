@@ -1,3 +1,4 @@
+* Plan backorder moves to today
 * Add cron task to process confirmed sale
 * Add report_address property on sale
 
