@@ -185,7 +185,7 @@ class Report(URLMixin, PoolBase):
         pool = Pool()
         Model = pool.get(model)
 
-        class TranslateModel:
+        class TranslateModel(object):
             _languages = {}
 
             def __init__(self, id):
@@ -205,6 +205,15 @@ class Report(URLMixin, PoolBase):
                     id2record = TranslateModel._languages[self._language]
                 record = id2record[self.id]
                 return getattr(record, name)
+
+            def __int__(self):
+                return int(self.id)
+
+            def __str__(self):
+                return '%s,%s' % (Model.__name__, self.id)
+
+            def __unicode__(self):
+                return u'%s,%s' % (Model.__name__, self.id)
         return [TranslateModel(id) for id in ids]
 
     @classmethod
