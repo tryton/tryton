@@ -1,3 +1,4 @@
+* Increase session randomness to 32 bytes
 * Manage email case insensitively
 
 Version 4.4.0 - 2017-05-01

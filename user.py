@@ -7,7 +7,6 @@ import string
 import time
 import urllib
 import urlparse
-import uuid
 from email.header import Header
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -31,6 +30,7 @@ from trytond.report import Report
 from trytond.transaction import Transaction
 from trytond.sendmail import sendmail_transactional
 
+from trytond.ir.session import token_hex
 from trytond.res.user import LoginAttempt
 
 __all__ = ['User', 'UserAuthenticateAttempt', 'UserSession',
@@ -253,8 +253,8 @@ class User(ModelSQL, ModelView):
         cls.save(users)
         _send_email(from_, users, cls.get_email_validation)
 
-    def set_email_token(self):
-        self.email_token = uuid.uuid4().hex
+    def set_email_token(self, nbytes=None):
+        self.email_token = token_hex(nbytes)
 
     def get_email_validation(self):
         return _get_email_template('web.user.email_validation', self)
@@ -298,8 +298,8 @@ class User(ModelSQL, ModelView):
         cls.save(users)
         _send_email(from_, users, cls.get_email_reset_password)
 
-    def set_reset_password_token(self):
-        self.reset_password_token = uuid.uuid4().hex
+    def set_reset_password_token(self, nbytes=None):
+        self.reset_password_token = token_hex(nbytes)
         self.reset_password_token_expire = (
             datetime.datetime.now() + datetime.timedelta(
                 seconds=config.getint(
@@ -378,8 +378,8 @@ class UserSession(ModelSQL):
             ]
 
     @classmethod
-    def default_key(cls):
-        return uuid.uuid4().hex
+    def default_key(cls, nbytes=None):
+        return token_hex(nbytes)
 
     @classmethod
     def add(cls, user):
