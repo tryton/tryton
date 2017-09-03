@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import httplib
 import logging
 import sys
 import traceback
@@ -10,6 +11,7 @@ from werkzeug.exceptions import abort, HTTPException, InternalServerError
 
 import wrapt
 
+from trytond.config import config
 from trytond.protocols.wrappers import Request
 from trytond.protocols.jsonrpc import JSONProtocol
 from trytond.protocols.xmlrpc import XMLProtocol
@@ -38,12 +40,33 @@ class TrytondWSGI(object):
         if request.user_id:
             return wrapped(*args, **kwargs)
         else:
-            abort(303)
+            abort(httplib.UNAUTHORIZED)
+
+    def check_request_size(self, request, size=None):
+        if request.method not in {'POST', 'PUT', 'PATCH'}:
+            return
+        if size is None:
+            if request.user_id:
+                max_size = config.getint(
+                    'request', 'max_size_authenticated')
+            else:
+                max_size = config.getint(
+                    'request', 'max_size')
+        else:
+            max_size = size
+        if max_size:
+            content_length = request.content_length
+            if content_length is None:
+                abort(httplib.LENGTH_REQUIRED)
+            elif content_length > max_size:
+                abort(httplib.REQUEST_ENTITY_TOO_LARGE)
 
     def dispatch_request(self, request):
         adapter = self.url_map.bind_to_environ(request.environ)
         try:
             endpoint, request.view_args = adapter.match()
+            max_request_size = getattr(endpoint, 'max_request_size', None)
+            self.check_request_size(request, max_request_size)
             return endpoint(request, **request.view_args)
         except HTTPException, e:
             return e

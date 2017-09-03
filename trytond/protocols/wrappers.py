@@ -54,20 +54,18 @@ class Request(_Request):
 
     @cached_property
     def user_id(self):
-        database_name = self.view_args['database_name']
+        database_name = self.view_args.get('database_name')
+        if not database_name:
+            return None
         auth = self.authorization
         if not auth:
-            abort(401)
+            return None
         if auth.type == 'session':
             user_id = security.check(
                 database_name, auth.get('userid'), auth.get('session'))
-            if not user_id:
-                abort(403)
         else:
             user_id = security.login(
                 database_name, auth.username, auth, cache=False)
-            if not user_id:
-                abort(401)
         return user_id
 
 
@@ -92,6 +90,13 @@ def parse_authorization_header(value):
                 'userid': userid,
                 'session': bytes_to_wsgi(session),
                 })
+
+
+def set_max_request_size(size):
+    def decorator(func):
+        func.max_request_size = size
+        return func
+    return decorator
 
 
 def with_pool(func):

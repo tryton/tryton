@@ -1,3 +1,4 @@
+* Add a maximum size for request
 * Add support for single record report
 * Add support for Flat OpenDocument
 * Add get_email in trytond.report

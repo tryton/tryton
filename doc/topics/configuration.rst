@@ -119,6 +119,24 @@ table for translations.
 
 Default: `en`
 
+request
+-------
+
+max_size
+~~~~~~~~
+
+The maximum size in bytes of unauthenticated request (zero means no limit).
+
+Default: 2MB
+
+max_size_authenticated
+~~~~~~~~~~~~~~~~~~~~~~
+
+The maximum size in bytes of an authenticated request (zero means no limit).
+
+Default: 2GB
+
+
 cache
 -----
 
