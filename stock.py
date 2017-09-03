@@ -77,11 +77,11 @@ class Move:
         type_ = (self.from_location.type, self.to_location.type)
         if type_ in [('supplier', 'storage'), ('supplier', 'drop')]:
             return 'in_supplier'
-        elif type_ == ('storage', 'supplier'):
+        elif type_ in [('storage', 'supplier'), ('drop', 'supplier')]:
             return 'out_supplier'
         elif type_ in [('storage', 'customer'), ('drop', 'customer')]:
             return 'out_customer'
-        elif type_ == ('customer', 'storage'):
+        elif type_ in [('customer', 'storage'), ('customer', 'drop')]:
             return 'in_customer'
         elif type_ == ('storage', 'lost_found'):
             return 'out_lost_found'
