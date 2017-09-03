@@ -39,6 +39,7 @@ def checkout(request, pool, model, id):
         return Response(content, 200, content_type='text/html')
     elif request.method == 'POST':
         record.stripe_token = request.form['stripeToken']
+        record.stripe_chargeable = True
         record.save()
         email = request.form.get('stripeEmail')
         if email:

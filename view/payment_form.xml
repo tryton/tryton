@@ -19,6 +19,8 @@ this repository contains the full copyright notices and license terms. -->
         <field name="stripe_token" colspan="3"/>
         <label name="stripe_capture"/>
         <field name="stripe_capture"/>
+        <label name="stripe_chargeable"/>
+        <field name="stripe_chargeable"/>
     </xpath>
     <xpath expr="/form" position="inside">
         <field name="stripe_checkout_needed" invisible="1" colspan="4"/>

@@ -102,6 +102,12 @@ class Payment:
             'readonly': ~Eval('state').in_(['draft', 'approved']),
             },
         depends=['stripe_journal', 'stripe_customer_source', 'state'])
+    stripe_chargeable = fields.Boolean(
+        "Stripe Chargeable",
+        states={
+            'invisible': ~Eval('stripe_journal') | ~Eval('stripe_token'),
+            },
+        depends=['stripe_journal', 'stripe_token'])
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
@@ -183,6 +189,10 @@ class Payment:
 
     @classmethod
     def default_stripe_captured(cls):
+        return False
+
+    @classmethod
+    def default_stripe_chargeable(cls):
         return False
 
     @fields.depends('journal')
@@ -286,7 +296,10 @@ class Payment:
                     ('state', '=', 'processing'),
                     ('journal.process_method', '=', 'stripe'),
                     ['OR',
-                        ('stripe_token', '!=', None),
+                        [
+                            ('stripe_token', '!=', None),
+                            ('stripe_chargeable', '=', True),
+                            ],
                         ('stripe_customer', '!=', None),
                         ],
                     ('stripe_charge_id', '=', None),
