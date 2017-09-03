@@ -210,6 +210,26 @@ Validate statement::
     >>> statement.state
     u'validated'
 
+Cancel statement::
+
+    >>> statement.click('cancel')
+    >>> statement.state
+    u'cancel'
+    >>> filter(None, [l.move for l in statement.lines])
+    []
+
+Reset to draft, validate and post statement::
+
+    >>> statement.click('draft')
+    >>> statement.state
+    u'draft'
+    >>> statement.click('validate_statement')
+    >>> statement.state
+    u'validated'
+    >>> statement.click('post')
+    >>> statement.state
+    u'posted'
+
 Test posted moves::
 
     >>> statement_line = statement.lines[0]

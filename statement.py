@@ -719,7 +719,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def delete_move(cls, lines):
-        Move = Pool().get('account.move')
+        pool = Pool()
+        Move = pool.get('account.move')
+        Reconciliation = pool.get('account.move.reconciliation')
+
+        reconciliations = [l.reconciliation
+            for line in lines for l in line.move.lines
+            if line.move and l.reconciliation]
+        Reconciliation.delete(reconciliations)
         Move.delete(list({l.move for l in lines if l.move}))
 
     def get_move_line(self):
