@@ -85,6 +85,7 @@ Checkout the payment::
     ...         },
     ...     )
     >>> payment.stripe_token = token.id
+    >>> payment.stripe_chargeable = True
     >>> payment.save()
 
 Process the payment::
