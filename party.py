@@ -8,6 +8,7 @@ from sql.conditionals import Coalesce
 
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, reduce_ids
 
@@ -19,7 +20,9 @@ class Party:
     __metaclass__ = PoolMeta
     __name__ = 'party.party'
 
-    deposit = fields.Function(fields.Numeric('Deposit'),
+    deposit = fields.Function(fields.Numeric('Deposit',
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
         'get_deposit', searcher='search_deposit')
 
     @classmethod
