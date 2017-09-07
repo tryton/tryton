@@ -468,6 +468,9 @@
     Sao.common.MODELHISTORY = new Sao.common.ModelHistory();
 
     Sao.common.ViewSearch = Sao.class_(Object, {
+        init: function() {
+            this.encoder = new Sao.PYSON.Encoder();
+        },
         load_searches: function() {
             this.searches = {};
             return Sao.rpc({
@@ -486,7 +489,7 @@
                 'params': [[{
                     'model': model,
                     'name': name,
-                    'domain': new Sao.PYSON.Encoder().encode(domain)
+                    'domain': this.encoder.encode(domain)
                 }], {}]
             }, Sao.Session.current_session).then(function(ids) {
                 var id = ids[0];
