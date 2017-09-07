@@ -1050,7 +1050,8 @@ def process_exception(exception, *args, **kwargs):
             else:
                 message(_('Concurrency Exception'), msg_type=gtk.MESSAGE_ERROR)
                 return False
-        elif exception.faultCode.startswith('403'):
+        elif (exception.faultCode.startswith('403')
+                or exception.faultCode.startswith('401')):
             from tryton.gui.main import Main
             if not PLOCK.acquire(False):
                 return False
