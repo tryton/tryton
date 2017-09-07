@@ -148,6 +148,10 @@
                 .decode(eval_), false, "decode(Bool(Sao.TimeDelta()))");
         QUnit.strictEqual(new Sao.PYSON.Decoder({value: Sao.TimeDelta(1)})
                 .decode(eval_), true, "decode(Bool(Sao.TimeDelta(1)))");
+        QUnit.strictEqual(new Sao.PYSON.Decoder({value: new Sao.Decimal(0)})
+                .decode(eval_), false, "decode(Bool(Sao.Decimal(0)))");
+        QUnit.strictEqual(new Sao.PYSON.Decoder({value: new Sao.Decimal(1)})
+                .decode(eval_), true, "decode(Bool(Sao.Decimal(1)))");
 
         QUnit.strictEqual(new Sao.PYSON.Bool('test').toString(),
                 "Bool(\"test\")");
