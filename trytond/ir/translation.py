@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import zipfile
 import polib
 import xml.dom.minidom
 from difflib import SequenceMatcher
@@ -18,6 +17,7 @@ from sql.aggregate import Max
 
 from genshi.filters.i18n import extract as genshi_extract
 from relatorio.reporting import MIMETemplateLoader
+from relatorio.templates.opendocument import get_zip_file
 
 from ..model import ModelView, ModelSQL, fields, Unique
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
@@ -1010,21 +1010,15 @@ class TranslationSet(Wizard):
                 for string in extract(child):
                     yield string
 
-        content = BytesIO(content)
-        try:
-            content = zipfile.ZipFile(content, mode='r')
-        except zipfile.BadZipfile:
-            return
+        zip_ = get_zip_file(BytesIO(content))
+        for content_xml in [
+                zip_.read('content.xml'),
+                zip_.read('styles.xml'),
+                ]:
+            document = xml.dom.minidom.parseString(content_xml)
+            for string in extract(document.documentElement):
+                yield string
 
-        content_xml = content.read('content.xml')
-        document = xml.dom.minidom.parseString(content_xml)
-        for string in extract(document.documentElement):
-            yield string
-
-        style_xml = content.read('styles.xml')
-        document = xml.dom.minidom.parseString(style_xml)
-        for string in extract(document.documentElement):
-            yield string
     extract_report_odt = extract_report_opendocument
     extract_report_odp = extract_report_opendocument
     extract_report_ods = extract_report_opendocument
