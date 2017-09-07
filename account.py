@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import datetime
+import operator
 from functools import wraps
 
 from dateutil.relativedelta import relativedelta
@@ -1205,28 +1206,36 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
     company = fields.Many2One('company.company', 'Company')
     start_debit = fields.Function(fields.Numeric('Start Debit',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_account')
+            depends=['currency_digits']),
+        'get_account', searcher='search_account')
     debit = fields.Function(fields.Numeric('Debit',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_debit_credit')
+            depends=['currency_digits']),
+        'get_debit_credit', searcher='search_debit_credit')
     end_debit = fields.Function(fields.Numeric('End Debit',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_account')
+            depends=['currency_digits']),
+        'get_account', searcher='search_account')
     start_credit = fields.Function(fields.Numeric('Start Credit',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_account')
+            depends=['currency_digits']),
+        'get_account', searcher='search_account')
     credit = fields.Function(fields.Numeric('Credit',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_debit_credit')
+            depends=['currency_digits']),
+        'get_debit_credit', searcher='search_debit_credit')
     end_credit = fields.Function(fields.Numeric('End Credit',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_account')
+            depends=['currency_digits']),
+        'get_account', searcher='search_account')
     start_balance = fields.Function(fields.Numeric('Start Balance',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_account')
+            depends=['currency_digits']),
+        'get_account', searcher='search_account')
     end_balance = fields.Function(fields.Numeric('End Balance',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']), 'get_account')
+            depends=['currency_digits']),
+        'get_account', searcher='search_account')
     lines = fields.One2Many('account.general_ledger.line', 'account', 'Lines',
         readonly=True)
     general_ledger_balance = fields.Boolean('General Ledger Balance')
@@ -1311,6 +1320,36 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
         return {a.id: getattr(a, fname) for a in accounts}
 
     @classmethod
+    def search_account(cls, name, domain):
+        pool = Pool()
+        Account = pool.get('account.account')
+
+        period_ids = cls.get_period_ids(name)
+        with Transaction().set_context(periods=period_ids):
+            accounts = Account.search([], order=[])
+
+        _, operator_, operand = domain
+        operator_ = {
+            '=': operator.eq,
+            '>=': operator.ge,
+            '>': operator.gt,
+            '<=': operator.le,
+            '<': operator.lt,
+            '!=': operator.ne,
+            'in': lambda v, l: v in l,
+            'not in': lambda v, l: v not in l,
+            }.get(operator_, lambda v, l: False)
+        fname = name
+        for test in ['start_', 'end_']:
+            if name.startswith(test):
+                fname = name[len(test):]
+                break
+
+        ids = [a.id for a in accounts
+            if operator_(getattr(a, fname), operand)]
+        return [('id', 'in', ids)]
+
+    @classmethod
     def get_debit_credit(cls, records, name):
         pool = Pool()
         Account = pool.get('account.account')
@@ -1322,6 +1361,34 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
         with Transaction().set_context(periods=periods_ids):
             accounts = Account.browse(records)
         return {a.id: getattr(a, name) for a in accounts}
+
+    @classmethod
+    def search_debit_credit(cls, name, domain):
+        pool = Pool()
+        Account = pool.get('account.account')
+
+        start_period_ids = cls.get_period_ids('start_%s' % name)
+        end_period_ids = cls.get_period_ids('end_%s' % name)
+        periods_ids = list(
+            set(end_period_ids).difference(set(start_period_ids)))
+        with Transaction().set_context(periods=periods_ids):
+            accounts = Account.search([], order=[])
+
+        _, operator_, operand = domain
+        operator_ = {
+            '=': operator.eq,
+            '>=': operator.ge,
+            '>': operator.gt,
+            '<=': operator.le,
+            '<': operator.lt,
+            '!=': operator.ne,
+            'in': lambda v, l: v in l,
+            'not in': lambda v, l: v not in l,
+            }.get(operator_, lambda v, l: False)
+
+        ids = [a.id for a in accounts
+            if operator_(getattr(a, name), operand)]
+        return [('id', 'in', ids)]
 
     def get_currency_digits(self, name):
         return self.company.currency.digits
