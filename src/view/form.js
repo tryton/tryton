@@ -289,7 +289,7 @@ function eval_pyson(value){
             var record = this.screen.current_record;
             var field;
             var name;
-            var promesses = {};
+            var promesses = [];
             if (record) {
                 // Force to set fields in record
                 // Get first the lazy one to reduce number of requests
@@ -303,45 +303,29 @@ function eval_pyson(value){
                 });
                 fields.forEach(function(e) {
                     var name = e[0];
-                    promesses[name] = record.load(name);
+                    promesses.push(record.load(name));
                 });
             }
-            var set_state = function(record, field, name) {
-                var prm = jQuery.when();
-                if (name in promesses) {
-                    prm = promesses[name];
-                }
-                prm.done(function() {
-                    field.set_state(record);
-                });
-            };
-            var display = function(record, field, name) {
+            var display = function(record, field) {
                 return function(widget) {
-                    var prm = jQuery.when();
-                    if (name in promesses) {
-                        prm = promesses[name];
-                    }
-                    prm.done(function() {
-                        widget.display(record, field);
-                    });
+                    widget.display(record, field);
                 };
             };
-            for (name in this.widgets) {
-                var widgets = this.widgets[name];
-                field = null;
-                if (record) {
-                    field = record.model.fields[name];
-                }
-                if (field) {
-                    set_state(record, field, name);
-                }
-                widgets.forEach(display(record, field, name));
-            }
-            return jQuery.when.apply(jQuery,
-                    jQuery.map(promesses, function(p) {
-                        return p;
-                    })
-                ).done(function() {
+            return jQuery.when.apply(jQuery,promesses)
+                .done(function() {
+                    for (name in this.widgets) {
+                        var widgets = this.widgets[name];
+                        field = null;
+                        if (record) {
+                            field = record.model.fields[name];
+                        }
+                        if (field) {
+                            field.set_state(record);
+                        }
+                        widgets.forEach(display(record, field));
+                    }
+                }.bind(this))
+                .done(function() {
                     var j;
                     for (j in this.state_widgets) {
                         var state_widget = this.state_widgets[j];
