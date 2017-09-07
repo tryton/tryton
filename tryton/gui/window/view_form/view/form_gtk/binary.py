@@ -25,27 +25,6 @@ class BinaryMixin(Widget):
         hbox = gtk.HBox(spacing=0)
         tooltips = Tooltips()
 
-        self.but_select = gtk.Button()
-        img_select = gtk.Image()
-        img_select.set_from_stock('tryton-find', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.but_select.set_image(img_select)
-        self.but_select.set_relief(gtk.RELIEF_NONE)
-        self.but_select.connect('clicked', self.select)
-        tooltips.set_tip(self.but_select, _('Select...'))
-        hbox.pack_start(self.but_select, expand=False, fill=False)
-
-        if self.filename:
-            self.but_open = gtk.Button()
-            img_open = gtk.Image()
-            img_open.set_from_stock('tryton-open', gtk.ICON_SIZE_SMALL_TOOLBAR)
-            self.but_open.set_image(img_open)
-            self.but_open.set_relief(gtk.RELIEF_NONE)
-            self.but_open.connect('clicked', self.open_)
-            tooltips.set_tip(self.but_open, _('Open...'))
-            hbox.pack_start(self.but_open, expand=False, fill=False)
-        else:
-            self.but_open = None
-
         self.but_save_as = gtk.Button()
         img_save_as = gtk.Image()
         img_save_as.set_from_stock('tryton-save-as',
@@ -55,6 +34,15 @@ class BinaryMixin(Widget):
         self.but_save_as.connect('clicked', self.save_as)
         tooltips.set_tip(self.but_save_as, _('Save As...'))
         hbox.pack_start(self.but_save_as, expand=False, fill=False)
+
+        self.but_select = gtk.Button()
+        img_select = gtk.Image()
+        img_select.set_from_stock('tryton-find', gtk.ICON_SIZE_SMALL_TOOLBAR)
+        self.but_select.set_image(img_select)
+        self.but_select.set_relief(gtk.RELIEF_NONE)
+        self.but_select.connect('clicked', self.select)
+        tooltips.set_tip(self.but_select, _('Select...'))
+        hbox.pack_start(self.but_select, expand=False, fill=False)
 
         self.but_clear = gtk.Button()
         img_clear = gtk.Image()
@@ -82,6 +70,16 @@ class BinaryMixin(Widget):
     @property
     def preview(self):
         return False
+
+    def update_buttons(self, value):
+        if value:
+            self.but_save_as.show()
+            self.but_select.hide()
+            self.but_clear.show()
+        else:
+            self.but_save_as.hide()
+            self.but_select.show()
+            self.but_clear.hide()
 
     def select(self, widget=None):
         if not self.field:
@@ -152,6 +150,7 @@ class Binary(BinaryMixin, Widget):
             self.wid_text.connect('focus-out-event',
                 lambda x, y: self._focus_out())
             self.wid_text.connect_after('key_press_event', self.sig_key_press)
+            self.wid_text.connect('icon-press', self.sig_icon_press)
             self.widget.pack_start(self.wid_text, expand=True, fill=True)
         else:
             self.wid_text = None
@@ -162,12 +161,8 @@ class Binary(BinaryMixin, Widget):
         self.widget.pack_start(self.toolbar(), expand=False, fill=False)
 
     def _readonly_set(self, value):
-        if value:
-            self.but_select.hide()
-            self.but_clear.hide()
-        else:
-            self.but_select.show()
-            self.but_clear.show()
+        self.but_select.set_sensitive(not value)
+        self.but_clear.set_sensitive(not value)
         if self.wid_text:
             self.wid_text.set_editable(not value)
             set_widget_style(self.wid_text, not value)
@@ -189,28 +184,35 @@ class Binary(BinaryMixin, Widget):
             return True
         return False
 
+    def sig_icon_press(self, widget, icon_pos, event):
+        if icon_pos == gtk.ENTRY_ICON_PRIMARY:
+            self.open_()
+
     def display(self, record, field):
         super(Binary, self).display(record, field)
         if not field:
             if self.wid_text:
                 self.wid_text.set_text('')
             self.wid_size.set_text('')
-            if self.but_open:
-                self.but_open.set_sensitive(False)
-            self.but_save_as.set_sensitive(False)
+            self.but_save_as.hide()
             return False
-        if self.wid_text:
-            self.wid_text.set_text(self.filename_field.get(record) or '')
-            reset_position(self.wid_text)
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
         else:
             size = len(field.get(record))
         self.wid_size.set_text(common.humanize(size or 0))
         reset_position(self.wid_size)
-        if self.but_open:
-            self.but_open.set_sensitive(bool(size))
-        self.but_save_as.set_sensitive(bool(size))
+        if self.wid_text:
+            self.wid_text.set_text(self.filename_field.get(record) or '')
+            reset_position(self.wid_text)
+            if size:
+                stock, tooltip = 'tryton-open', _("Open...")
+            else:
+                stock, tooltip = None, ''
+            pos = gtk.ENTRY_ICON_PRIMARY
+            self.wid_text.set_icon_from_stock(pos, stock)
+            self.wid_text.set_icon_tooltip_text(pos, tooltip)
+        self.update_buttons(bool(size))
         return True
 
     def set_value(self, record, field):

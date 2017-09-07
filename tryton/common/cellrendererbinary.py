@@ -6,8 +6,8 @@ import pango
 
 gtk_version = getattr(gtk, 'get_major_version', lambda: 2)()
 
-BUTTON_BORDER = 10
-BUTTON_SPACING = 2
+BUTTON_BORDER = 2
+BUTTON_SPACING = 1
 
 
 class CellRendererBinary(gtk.GenericCellRenderer):
@@ -36,10 +36,6 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         self.editable = False
         self.set_property('mode', gtk.CELL_RENDERER_MODE_EDITABLE)
         self.use_filename = use_filename
-        if use_filename:
-            self.buttons = ('select', 'open', 'save', 'clear')
-        else:
-            self.buttons = ('select', 'save', 'clear')
         self.clicking = ''
         self.images = {}
         widget = gtk.Button()
@@ -57,6 +53,18 @@ class CellRendererBinary(gtk.GenericCellRenderer):
             height = img_sensitive.get_height()
             self.images[key] = (img_sensitive, img_insensitive, width, height)
 
+    @property
+    def buttons(self):
+        buttons = []
+        if self.size:
+            if self.use_filename:
+                buttons.append('open')
+            buttons.append('save')
+            buttons.append('clear')
+        else:
+            buttons.append('select')
+        return buttons
+
     def do_set_property(self, pspec, value):
         setattr(self, pspec.name, value)
 
@@ -64,7 +72,8 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         return getattr(self, pspec.name)
 
     def button_width(self):
-        return (sum(width for _, _, width, _ in self.images.itervalues())
+        return (sum(width for n, (_, _, width, _) in self.images.iteritems()
+                if n in self.buttons)
             + (2 * (BUTTON_BORDER + BUTTON_SPACING) * len(self.buttons))
             - 2 * BUTTON_SPACING)
 
@@ -84,8 +93,12 @@ class CellRendererBinary(gtk.GenericCellRenderer):
 
         for index, button_name in enumerate(self.buttons):
             _, _, pxbf_width, _ = self.images[button_name]
-            x_offset = (cell_area.width - button_width
-                + (pxbf_width + (2 * BUTTON_BORDER) + BUTTON_SPACING) * index)
+            if index == 0 and button_name == 'open':
+                x_offset = 0
+            else:
+                x_offset = (cell_area.width - button_width
+                    + (pxbf_width + (2 * BUTTON_BORDER) + BUTTON_SPACING)
+                    * index)
             x_button = cell_area.x + x_offset
             if x_button < event.x < (x_button + pxbf_width
                     + (2 * BUTTON_BORDER)):
@@ -150,9 +163,12 @@ class CellRendererBinary(gtk.GenericCellRenderer):
                     pixbuf = pxbf_insens
                 else:
                     pixbuf = pxbf_sens
-                x_offset = (cell_area.width - button_width
-                    + (pxbf_width + (2 * BUTTON_BORDER) + BUTTON_SPACING)
-                    * index)
+                if index == 0 and button_name == 'open':
+                    x_offset = 0
+                else:
+                    x_offset = (cell_area.width - button_width
+                        + (pxbf_width + (2 * BUTTON_BORDER) + BUTTON_SPACING)
+                        * index)
                 if x_offset < 0:
                     continue
                 widget.style.paint_box(window, state, shadow,
@@ -185,13 +201,13 @@ class CellRendererBinary(gtk.GenericCellRenderer):
 
             padding = context.get_padding(state)
             layout = widget.create_pango_layout(self.size)
-            lwidth = (
-                min(w / 2, w - button_width) - padding.left - padding.right)
+            lwidth = w - button_width - padding.left - padding.right
             if lwidth < 0:
                 lwidth = 0
             layout.set_width(lwidth * pango.SCALE)
             layout.set_ellipsize(pango.ELLIPSIZE_END)
             layout.set_wrap(pango.WRAP_CHAR)
+            layout.set_alignment(pango.ALIGN_RIGHT)
 
             if lwidth > 0:
                 lw, lh = layout.get_size()  # Can not use get_pixel_extents
@@ -199,6 +215,9 @@ class CellRendererBinary(gtk.GenericCellRenderer):
                 lh /= pango.SCALE
 
                 lx = x + padding.left
+                if self.buttons and self.buttons[0] == 'open':
+                    pxbf_width = self.images['open'][2]
+                    lx += pxbf_width + 2 * BUTTON_BORDER + BUTTON_SPACING
                 ly = y + padding.top + 0.5 * (
                     h - padding.top - padding.bottom - lh)
 
@@ -218,9 +237,12 @@ class CellRendererBinary(gtk.GenericCellRenderer):
                 else:
                     pixbuf = pxbf_sens
 
-                x_offset = (w - button_width
-                    + (pxbf_width + (2 * BUTTON_BORDER) + BUTTON_SPACING)
-                    * index)
+                if index == 0 and button_name == 'open':
+                    x_offset = 0
+                else:
+                    x_offset = (w - button_width
+                        + (pxbf_width + (2 * BUTTON_BORDER) + BUTTON_SPACING)
+                        * index)
                 if x_offset < 0:
                     continue
                 bx = cell_area.x + x_offset

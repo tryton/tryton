@@ -56,10 +56,8 @@ class Image(BinaryMixin, Widget):
 
     def _readonly_set(self, value):
         self._readonly = value
-        for button in [self.but_select, self.but_open, self.but_save_as,
-                self.but_clear]:
-            if button:
-                button.set_sensitive(not value)
+        self.but_select.set_sensitive(not value)
+        self.but_clear.set_sensitive(not value)
 
     def clear(self, widget=None):
         super(Image, self).clear(widget=widget)
@@ -102,7 +100,9 @@ class Image(BinaryMixin, Widget):
                 value = self.field.get_data(self.record)
         pixbuf = resize_pixbuf(data2pixbuf(value), self.width, self.height)
         self.image.set_from_pixbuf(pixbuf)
+        return bool(value)
 
     def display(self, record, field):
         super(Image, self).display(record, field)
-        self.update_img()
+        value = self.update_img()
+        self.update_buttons(bool(value))
