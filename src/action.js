@@ -95,7 +95,11 @@
                 params.res_id = action.res_id || data.res_id;
                 params.context_model = action.context_model;
                 params.context_domain = action.context_domain;
-                params.limit = action.limit;
+                if (action.limit !== null) {
+                    params.limit = action.limit;
+                } else {
+                    params.limit = Sao.config.limit;
+                }
                 params.icon = action['icon.rec_name'] || '';
 
                 if ((action.keyword || '') === 'form_relate') {
