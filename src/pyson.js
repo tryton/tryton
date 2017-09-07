@@ -168,6 +168,8 @@
                     value.v.second() || value.v.millisecond());
         } else if (moment.isDuration(value.v)) {
             return Boolean(value.v.valueOf());
+        } else if (value.v instanceof Number) {
+            return Boolean(value.v.valueOf());
         } else if (value.v instanceof Object) {
             return !jQuery.isEmptyObject(value.v);
         } else {
