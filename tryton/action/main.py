@@ -9,6 +9,7 @@ import tempfile
 import os
 import webbrowser
 from tryton.common import RPCProgress, RPCExecute, RPCException, slugify
+from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -133,6 +134,9 @@ class Action(object):
 
             res_model = action.get('res_model', data.get('res_model'))
             res_id = action.get('res_id', data.get('res_id'))
+            limit = action.get('limit')
+            if limit is None:
+                limit = CONFIG['client.limit']
 
             Window.create(res_model,
                 view_ids=view_ids,
@@ -142,7 +146,7 @@ class Action(object):
                 order=order,
                 mode=view_mode,
                 name=name,
-                limit=action.get('limit'),
+                limit=limit,
                 search_value=search_value,
                 icon=(action.get('icon.rec_name') or ''),
                 tab_domain=tab_domain,
