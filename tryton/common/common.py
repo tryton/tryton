@@ -12,6 +12,7 @@ import re
 import logging
 import unicodedata
 import colorsys
+from decimal import Decimal
 from functools import partial
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
@@ -178,6 +179,14 @@ MODELHISTORY = ModelHistory()
 class ViewSearch(object):
     searches = {}
 
+    def __init__(self):
+        class Encoder(PYSONEncoder):
+            def default(self, obj):
+                if isinstance(obj, Decimal):
+                    return float(obj)
+                return super(Encoder, self).default(obj)
+        self.encoder = Encoder()
+
     def load_searches(self):
         try:
             self.searches = rpc.execute('model', 'ir.ui.view_search',
@@ -194,7 +203,7 @@ class ViewSearch(object):
                 'create', [{
                         'model': model,
                         'name': name,
-                        'domain': PYSONEncoder().encode(domain),
+                        'domain': self.encoder.encode(domain),
                         }])
         except RPCException:
             return
