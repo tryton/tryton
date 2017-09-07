@@ -14,7 +14,7 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.report import Report
 from trytond.tools import reduce_ids, grouped_slice
-from trytond.pyson import Eval, PYSONEncoder
+from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
@@ -1284,12 +1284,24 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
         return period_ids
 
     @classmethod
+    def get_dates(cls, name):
+        context = Transaction().context
+        if name.startswith('start_'):
+            return None, context.get('from_date')
+        elif name.startswith('end_'):
+            return None, context.get('to_date')
+        return None, None
+
+    @classmethod
     def get_account(cls, records, name):
         pool = Pool()
         Account = pool.get('account.account')
 
         period_ids = cls.get_period_ids(name)
-        with Transaction().set_context(periods=period_ids):
+        from_date, to_date = cls.get_dates(name)
+        with Transaction().set_context(
+                periods=period_ids,
+                from_date=from_date, to_date=to_date):
             accounts = Account.browse(records)
         fname = name
         for test in ['start_', 'end_']:
@@ -1335,6 +1347,20 @@ class GeneralLedgerAccountContext(ModelView):
             ('start_date', '>=', (Eval('start_period'), 'start_date'))
             ],
         depends=['fiscalyear', 'start_period'])
+    from_date = fields.Date("From Date",
+        domain=[
+            If(Eval('to_date') & Eval('from_date'),
+                ('from_date', '<=', Eval('to_date')),
+                ()),
+            ],
+        depends=['to_date'])
+    to_date = fields.Date("To Date",
+        domain=[
+            If(Eval('from_date') & Eval('to_date'),
+                ('to_date', '>=', Eval('from_date')),
+                ()),
+            ],
+        depends=['from_date'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
 
@@ -1362,6 +1388,14 @@ class GeneralLedgerAccountContext(ModelView):
     @classmethod
     def default_posted(cls):
         return Transaction().context.get('posted', False)
+
+    @classmethod
+    def default_from_date(cls):
+        return Transaction().context.get('from_date')
+
+    @classmethod
+    def default_to_date(cls):
+        return Transaction().context.get('to_date')
 
     @fields.depends('fiscalyear', 'start_period', 'end_period')
     def on_change_fiscalyear(self):
@@ -1504,6 +1538,8 @@ class GeneralLedger(Report):
                 report_context[period] = Period(context[period])
             else:
                 report_context[period] = None
+        report_context['from_date'] = context.get('from_date')
+        report_context['to_date'] = context.get('to_date')
 
         report_context['accounts'] = records
         return report_context
@@ -1530,6 +1566,8 @@ class TrialBalance(Report):
                 report_context[period] = Period(context[period])
             else:
                 report_context[period] = None
+        report_context['from_date'] = context.get('from_date')
+        report_context['to_date'] = context.get('to_date')
 
         report_context['accounts'] = records
         report_context['sum'] = cls.sum
@@ -1602,6 +1640,20 @@ class IncomeStatementContext(ModelView):
             ('start_date', '>=', (Eval('start_period'), 'start_date')),
             ],
         depends=['start_period', 'fiscalyear'])
+    from_date = fields.Date("From Date",
+        domain=[
+            If(Eval('to_date') & Eval('from_date'),
+                ('from_date', '<=', Eval('to_date')),
+                ()),
+            ],
+        depends=['to_date'])
+    to_date = fields.Date("To Date",
+        domain=[
+            If(Eval('from_date') & Eval('to_date'),
+                ('to_date', '>=', Eval('from_date')),
+                ()),
+            ],
+        depends=['from_date'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
     comparison = fields.Boolean('Comparison')
@@ -1628,6 +1680,26 @@ class IncomeStatementContext(ModelView):
             'invisible': ~Eval('comparison', False),
             },
         depends=['start_period_cmp', 'fiscalyear_cmp'])
+    from_date_cmp = fields.Date("From Date",
+        domain=[
+            If(Eval('to_date_cmp') & Eval('from_date_cmp'),
+                ('from_date_cmp', '<=', Eval('to_date_cmp')),
+                ()),
+            ],
+        states={
+            'invisible': ~Eval('comparison', False),
+            },
+        depends=['to_date_cmp', 'comparison'])
+    to_date_cmp = fields.Date("To Date",
+        domain=[
+            If(Eval('from_date_cmp') & Eval('to_date_cmp'),
+                ('to_date_cmp', '>=', Eval('from_date_cmp')),
+                ()),
+            ],
+        states={
+            'invisible': ~Eval('comparison', False),
+            },
+        depends=['from_date_cmp', 'comparison'])
 
     @staticmethod
     def default_fiscalyear():

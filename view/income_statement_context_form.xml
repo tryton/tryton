@@ -13,6 +13,11 @@ this repository contains the full copyright notices and license terms. -->
     <label name="end_period"/>
     <field name="end_period"/>
     <newline/>
+    <label name="from_date"/>
+    <field name="from_date"/>
+    <label name="to_date"/>
+    <field name="to_date"/>
+    <newline/>
     <label name="comparison"/>
     <field name="comparison"/>
     <newline/>
@@ -24,4 +29,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="start_period_cmp"/>
     <label name="end_period_cmp"/>
     <field name="end_period_cmp"/>
+    <newline/>
+    <label name="from_date_cmp"/>
+    <field name="from_date_cmp"/>
+    <label name="to_date_cmp"/>
+    <field name="to_date_cmp"/>
 </form>

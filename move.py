@@ -6,7 +6,7 @@ from itertools import groupby, combinations
 from operator import itemgetter
 from collections import defaultdict
 
-from sql import Null
+from sql import Null, Literal
 from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
 
@@ -56,8 +56,8 @@ class Move(ModelSQL, ModelView):
         states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company'], select=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS)
-    date = fields.Date('Effective Date', required=True, states=_MOVE_STATES,
-        depends=_MOVE_DEPENDS)
+    date = fields.Date('Effective Date', required=True, select=True,
+        states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     post_date = fields.Date('Post Date', readonly=True)
     description = fields.Char('Description', states=_MOVE_STATES,
         depends=_MOVE_DEPENDS)
@@ -953,83 +953,61 @@ class Line(ModelSQL, ModelView):
         Period = pool.get('account.period')
         move = Move.__table__()
         period = Period.__table__()
+        fiscalyear = FiscalYear.__table__()
+        context = Transaction().context
+        company = context.get('company')
 
-        if Transaction().context.get('date'):
+        fiscalyear_ids = []
+        where = Literal(True)
+
+        if context.get('posted'):
+            where &= move.state == 'posted'
+
+        date = context.get('date')
+        from_date, to_date = context.get('from_date'), context.get('to_date')
+        fiscalyear_id = context.get('fiscalyear')
+        period_ids = context.get('periods')
+        if date:
             fiscalyears = FiscalYear.search([
-                    ('start_date', '<=', Transaction().context['date']),
-                    ('end_date', '>=', Transaction().context['date']),
-                    ('company', '=', Transaction().context.get('company')),
+                    ('start_date', '<=', date),
+                    ('end_date', '>=', date),
+                    ('company', '=', company),
                     ], limit=1)
-
-            fiscalyear_id = fiscalyears and fiscalyears[0].id or 0
-
-            if Transaction().context.get('posted'):
-                return ((table.state != 'draft')
-                    & table.move.in_(move.join(period,
-                            condition=move.period == period.id
-                            ).select(move.id,
-                            where=(period.fiscalyear == fiscalyear_id)
-                            & (move.date <= Transaction().context['date'])
-                            & (move.state == 'posted'))),
-                    [f.id for f in fiscalyears])
+            if fiscalyears:
+                fiscalyear_id = fiscalyears[0].id
             else:
-                return ((table.state != 'draft')
-                    & table.move.in_(move.join(period,
-                            condition=move.period == period.id
-                            ).select(move.id,
-                            where=(period.fiscalyear == fiscalyear_id)
-                            & (move.date <= Transaction().context['date']))),
-                    [f.id for f in fiscalyears])
-
-        if Transaction().context.get('periods'):
-            if Transaction().context.get('fiscalyear'):
-                fiscalyear_ids = [Transaction().context['fiscalyear']]
-            else:
-                fiscalyear_ids = []
-            if Transaction().context.get('posted'):
-                return ((table.state != 'draft')
-                    & table.move.in_(
-                            move.select(move.id,
-                                where=move.period.in_(
-                                    Transaction().context['periods'])
-                                & (move.state == 'posted'))),
-                    fiscalyear_ids)
-            else:
-                return ((table.state != 'draft')
-                    & table.move.in_(
-                        move.select(move.id,
-                            where=move.period.in_(
-                                Transaction().context['periods']))),
-                    fiscalyear_ids)
+                fiscalyear_id = -1
+            fiscalyear_ids = map(int, fiscalyears)
+            where &= period.fiscalyear == fiscalyear_id
+            where &= move.date <= date
+        elif fiscalyear_id or period_ids or from_date or to_date:
+            if fiscalyear_id:
+                fiscalyear_ids = [fiscalyear_id]
+                where &= fiscalyear.id == fiscalyear_id
+            if period_ids:
+                where &= move.period.in_(period_ids)
+            if from_date:
+                where &= move.date >= from_date
+            if to_date:
+                where &= move.date <= to_date
         else:
-            if not Transaction().context.get('fiscalyear'):
-                fiscalyears = FiscalYear.search([
+            where &= fiscalyear.state == 'open'
+            where &= fiscalyear.company == company
+            fiscalyears = FiscalYear.search([
                     ('state', '=', 'open'),
-                    ('company', '=', Transaction().context.get('company')),
+                    ('company', '=', company),
                     ])
-                fiscalyear_ids = [f.id for f in fiscalyears] or [0]
-            else:
-                fiscalyear_ids = [Transaction().context.get('fiscalyear')]
+            fiscalyear_ids = map(int, fiscalyears)
 
-            if Transaction().context.get('posted'):
-                return ((table.state != 'draft')
-                    & table.move.in_(
-                        move.select(move.id,
-                            where=move.period.in_(
-                                period.select(period.id,
-                                    where=period.fiscalyear.in_(
-                                        fiscalyear_ids)))
-                            & (move.state == 'posted'))),
-                    fiscalyear_ids)
-            else:
-                return ((table.state != 'draft')
-                    & table.move.in_(
-                        move.select(move.id,
-                            where=move.period.in_(
-                                period.select(period.id,
-                                    where=period.fiscalyear.in_(
-                                        fiscalyear_ids))))),
-                    fiscalyear_ids)
+        # Use LEFT JOIN to allow database optimization
+        # if no joined table is used in the where clause.
+        return ((table.state != 'draft')
+            & table.move.in_(move
+                .join(period, 'LEFT', condition=move.period == period.id)
+                .join(fiscalyear, 'LEFT',
+                    condition=period.fiscalyear == fiscalyear.id)
+                .select(move.id, where=where)),
+            fiscalyear_ids)
 
     @classmethod
     def on_write(cls, lines):

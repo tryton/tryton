@@ -12,4 +12,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="start_period"/>
     <label name="end_period"/>
     <field name="end_period"/>
+    <newline/>
+    <label name="from_date"/>
+    <field name="from_date"/>
+    <label name="to_date"/>
+    <field name="to_date"/>
 </form>
