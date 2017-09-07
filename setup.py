@@ -52,7 +52,7 @@ for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
-tests_require = []
+tests_require = [get_require_version('proteus')]
 
 setup(name=name,
     version=version,
@@ -116,4 +116,7 @@ setup(name=name,
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
     use_2to3=True,
+    convert_2to3_doctests=[
+        'tests/scenario_stock_split_shipment.rst',
+        ],
     )

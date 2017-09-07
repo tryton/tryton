@@ -6,7 +6,9 @@ from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Move', 'SplitMoveStart', 'SplitMove']
+__all__ = ['Move', 'SplitMoveStart', 'SplitMove',
+    'ShipmentInReturn', 'ShipmentOut', 'ShipmentInternal',
+    'SplitShipment', 'SplitShipmentStart']
 
 
 class Move:
@@ -123,3 +125,106 @@ class SplitMove(Wizard):
         move = Move(Transaction().context['active_id'])
         move.split(self.start.quantity, self.start.uom, self.start.count)
         return 'end'
+
+
+class _ShipmentSplit(ModelView):
+
+    @classmethod
+    def __setup__(cls):
+        super(_ShipmentSplit, cls).__setup__()
+        cls._buttons.update({
+                'split_wizard': {
+                    'readonly': Eval('state') != 'draft',
+                    'invisible': Eval('state') != 'draft',
+                    },
+                })
+
+    @classmethod
+    @ModelView.button_action('stock_split.wizard_split_shipment')
+    def split_wizard(cls, shipments):
+        pass
+
+
+class ShipmentInReturn(_ShipmentSplit):
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.shipment.in.return'
+
+
+class ShipmentOut(_ShipmentSplit):
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.shipment.out'
+
+
+class ShipmentInternal(_ShipmentSplit):
+    __metaclass__ = PoolMeta
+    __name__ = 'stock.shipment.internal'
+
+
+class SplitShipment(Wizard):
+    "Split Shipment"
+    __name__ = 'stock.shipment.split'
+    start = StateView('stock.shipment.split.start',
+        'stock_split.shipment_split_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Split", 'split', 'tryton-ok', default=True),
+            ])
+    split = StateTransition()
+
+    def get_shipment(self):
+        pool = Pool()
+        context = Transaction().context
+        if context['active_model'] in {
+                'stock.shipment.in.return',
+                'stock.shipment.out',
+                'stock.shipment.internal',
+                }:
+            Shipment = pool.get(context['active_model'])
+            return Shipment(context['active_id'])
+
+    def get_moves(self, shipment):
+        if shipment.__name__ == 'stock.shipment.out':
+            return shipment.outgoing_moves
+        elif shipment.__name__ in {
+                'stock.shipment.in.return',
+                'stock.shipment.internal',
+                }:
+            return shipment.moves
+
+    def default_start(self, fields):
+        shipment = self.get_shipment()
+        moves = self.get_moves(shipment)
+        moves = filter(lambda m: m.state == 'draft', moves)
+        return {
+            'domain_moves': map(int, moves),
+            }
+
+    def transition_split(self):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        shipment = self.get_shipment()
+        Shipment = shipment.__class__
+        if shipment.state != 'draft':
+            raise ValueError("Wrong shipment state")
+        if not set(self.start.moves).issubset(self.start.domain_moves):
+            raise ValueError("Invalid moves, %s != %s" % (self.start.moves,
+                    self.start.domain_moves))
+
+        if Shipment.__name__ == 'stock.shipment.out':
+            Move.draft(shipment.inventory_moves)
+            Move.delete(
+                filter(lambda m: m.state == 'draft', shipment.inventory_moves))
+
+        shipment, = Shipment.copy([shipment.id], default={'moves': None})
+        Move.write(list(self.start.moves), {'shipment': str(shipment)})
+        return 'end'
+
+
+class SplitShipmentStart(ModelView):
+    "Split Shipment"
+    __name__ = 'stock.shipment.split.start'
+    moves = fields.Many2Many(
+        'stock.move', None, None, "Moves",
+        domain=[('id', 'in', Eval('domain_moves'))],
+        depends=['domain_moves'],
+        help="The selected moves will be sent in the new shipment.")
+    domain_moves = fields.Many2Many('stock.move', None, None, "Domain Moves")
