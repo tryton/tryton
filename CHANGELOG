@@ -1,3 +1,4 @@
+* Re-position buttons on Binary/Image widget
 * Set focus on first visible input when modal is shown
 * Improve treeview headers
 * Add keyboard shortcuts

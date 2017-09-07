@@ -1561,6 +1561,15 @@
 
     Sao.View.Tree.BinaryColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-binary',
+        init: function(model, attributes) {
+            Sao.View.Tree.BinaryColumn._super.init.call(this, model, attributes);
+            this.filename = attributes.filename || null;
+        },
+        get_cell: function() {
+            var cell = Sao.View.Tree.BinaryColumn._super.get_cell.call(this);
+            jQuery('<span/>').appendTo(cell);
+            return cell;
+        },
         update_text: function(cell, record) {
             var size;
             if (this.field.get_size) {
@@ -1568,8 +1577,46 @@
             } else {
                 size = this.field.get(record).length;
             }
-            cell.text(Sao.common.humanize(size));
-        }
+            var text = size? Sao.common.humanize(size) : '';
+            cell.children('span').text(text);
+            var button = cell.children('button');
+            if (!button.length) {
+                button = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'type': 'button',
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-save',
+                })).appendTo(cell)
+                    .click(record, function(event) {
+                        // Prevent editable tree to start edition
+                        event.stopPropagation();
+                        this.save_as(event.data);
+                    }.bind(this));
+            }
+            if (!size) {
+                button.hide();
+            } else {
+                button.show();
+            }
+        },
+        save_as: function(record) {
+            var filename;
+            var mimetype = 'application/octet-binary';
+            var filename_field = record.model.fields[this.filename];
+            if (filename_field) {
+                filename = filename_field.get_client(record);
+                mimetype = Sao.common.guess_mimetype(filename);
+            }
+            var prm;
+            if (this.field.get_data) {
+                prm = this.field.get_data(record);
+            } else {
+                prm = jQuery.when(this.field.get(record));
+            }
+            prm.done(function(data) {
+                Sao.common.download_file(data, filename);
+            }.bind(this));
+        },
     });
 
     Sao.View.Tree.ImageColumn = Sao.class_(Sao.View.Tree.CharColumn, {

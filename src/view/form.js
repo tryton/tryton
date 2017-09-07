@@ -3153,24 +3153,6 @@ function eval_pyson(value){
                 'role': 'group'
             });
 
-            this.but_select = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button'
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-search'
-            })).appendTo(group);
-            this.but_select.click(this.select.bind(this));
-
-            if (this.filename) {
-                this.but_open = jQuery('<button/>', {
-                    'class': 'btn btn-default',
-                    'type': 'button'
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-folder-open'
-                })).appendTo(group);
-                this.but_open.click(this.open.bind(this));
-            }
-
             this.but_save_as = jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button'
@@ -3178,6 +3160,14 @@ function eval_pyson(value){
                 'class': 'glyphicon glyphicon-save'
             })).appendTo(group);
             this.but_save_as.click(this.save_as.bind(this));
+
+            this.but_select = jQuery('<button/>', {
+                'class': 'btn btn-default',
+                'type': 'button'
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-search'
+            })).appendTo(group);
+            this.but_select.click(this.select.bind(this));
 
             this.but_clear = jQuery('<button/>', {
                 'class': 'btn btn-default',
@@ -3193,6 +3183,17 @@ function eval_pyson(value){
             var record = this.record();
             if (record) {
                 return record.model.fields[this.filename];
+            }
+        },
+        update_buttons: function(value) {
+            if (value) {
+                this.but_save_as.show();
+                this.but_select.hide();
+                this.but_clear.show();
+            } else {
+                this.but_save_as.hide();
+                this.but_select.show();
+                this.but_clear.hide();
             }
         },
         select: function() {
@@ -3279,7 +3280,7 @@ function eval_pyson(value){
             }.bind(this));
         },
         clear: function() {
-	    var filename_field = this.filename_field();
+            var filename_field = this.filename_field();
             if (filename_field) {
                 filename_field.set_client(this.record(), null);
             }
@@ -3297,39 +3298,48 @@ function eval_pyson(value){
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
-
-            if (this.filename && attributes.filename_visible) {
-                this.text = jQuery('<input/>', {
-                    type: 'input',
-                    'class': 'form-control input-sm'
-                }).appendTo(this.el);
-                this.text.change(this.focus_out.bind(this));
-                // Use keydown to not receive focus-in TAB
-                this.text.on('keydown', this.key_press.bind(this));
-            }
-
             var group = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(this.el);
+
             this.size = jQuery('<input/>', {
                 type: 'input',
                 'class': 'form-control input-sm',
                 'readonly': true
             }).appendTo(group);
 
+            if (this.filename && attributes.filename_visible) {
+                this.text = jQuery('<input/>', {
+                    type: 'input',
+                    'class': 'form-control input-sm'
+                }).prependTo(group);
+                this.text.change(this.focus_out.bind(this));
+                // Use keydown to not receive focus-in TAB
+                this.text.on('keydown', this.key_press.bind(this));
+                this.text.css('width', '50%');
+                this.size.css('width', '50%');
+
+                this.but_open = jQuery('<button/>', {
+                    'class': 'btn btn-default',
+                    'type': 'button'
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-folder-open'
+                })).appendTo(jQuery('<span/>', {
+                    'class': 'input-group-btn',
+                }).prependTo(group));
+                this.but_open.click(this.open.bind(this));
+            }
+
             this.toolbar('input-group-btn').appendTo(group);
         },
         display: function(record, field) {
             Sao.View.Form.Binary._super.display.call(this, record, field);
             if (!field) {
-                this.size.val('');
-                if (this.filename) {
-                    this.but_open.button('disable');
-                }
                 if (this.text) {
                     this.text.val('');
                 }
-                this.but_save_as.button('disable');
+                this.size.val('');
+                this.but_save_as.hide();
                 return;
             }
             var size;
@@ -3338,21 +3348,17 @@ function eval_pyson(value){
             } else {
                 size = field.get(record).length;
             }
-            var button_sensitive;
-            if (size) {
-                button_sensitive = 'enable';
-            } else {
-                button_sensitive = 'disable';
-            }
-
-            if (this.filename) {
-                if (this.text) {
-                    this.text.val(this.filename_field().get(record) || '');
-                }
-                this.but_open.button(button_sensitive);
-            }
             this.size.val(Sao.common.humanize(size));
-            this.but_save_as.button(button_sensitive);
+
+            if (this.text) {
+                this.text.val(this.filename_field().get(record) || '');
+                if (size) {
+                    this.but_open.parent().show();
+                } else {
+                    this.but_open.parent().hide();
+                }
+            }
+            this.update_buttons(Boolean(size));
         },
         key_press: function(evt) {
             var editable = !this.wid_text.prop('readonly');
@@ -3371,14 +3377,8 @@ function eval_pyson(value){
             }
         },
         set_readonly: function(readonly) {
-            if (readonly) {
-                this.but_select.hide();
-                this.but_clear.hide();
-
-            } else {
-                this.but_select.show();
-                this.but_clear.show();
-            }
+            this.but_select.prop('disabled', readonly);
+            this.but_clear.prop('disabled', readonly);
             if (this.wid_text) {
                 this.wid_text.prop('readonly', readonly);
             }
@@ -3456,12 +3456,8 @@ function eval_pyson(value){
             this.update_img();
         },
         set_readonly: function(readonly) {
-            [this.but_select, this.but_open, this.but_save_as, this.but_clear]
-                .forEach(function(button) {
-                    if (button) {
-                        button.prop('disable', readonly);
-                    }
-                });
+            this.but_select.prop('disable', readonly);
+            this.but_clear.prop('disable', readonly);
         },
         clear: function() {
             Sao.View.Form.Image._super.clear.call(this);
@@ -3492,6 +3488,7 @@ function eval_pyson(value){
                     url = window.URL.createObjectURL(blob);
                 }
                 this.image.attr('src', url);
+                this.update_buttons(Boolean(data));
             }.bind(this));
         },
         display: function(record, field) {
