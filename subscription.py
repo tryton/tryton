@@ -333,7 +333,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
                     assert not consumption.invoice_line
                     consumption.invoice_line = invoice_line
                     all_consumptions.append(consumption)
-        Consumption.save(consumptions)
+        Consumption.save(all_consumptions)
 
         Invoice.update_taxes(all_invoices)
 
