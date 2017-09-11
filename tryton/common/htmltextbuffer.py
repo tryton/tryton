@@ -416,7 +416,8 @@ if __name__ == '__main__':
     win.add(vbox)
 
     text_buffer = gtk.TextBuffer()
-    text_view = gtk.TextView(text_buffer)
+    text_view = gtk.TextView()
+    text_view.set_buffer(text_buffer)
     vbox.pack_start(text_view)
 
     setup_tags(text_buffer)
