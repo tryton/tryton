@@ -50,7 +50,8 @@ class Party:
             cursor.execute(*line.join(account,
                     condition=account.id == line.account
                     ).select(line.party,
-                    Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                    # Use credit - debit to positive deposit amount
+                    Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
                     where=account.active
                     & (account.kind == 'deposit')
                     & party_clause

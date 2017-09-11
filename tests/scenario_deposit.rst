@@ -67,7 +67,7 @@ Check party deposit::
 
     >>> party.reload()
     >>> party.deposit
-    Decimal('-100.00')
+    Decimal('100.00')
 
 Create final invoice::
 
