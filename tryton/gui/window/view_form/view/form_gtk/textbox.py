@@ -44,7 +44,8 @@ class TextBox(Widget, TranslateMixin):
     def _get_textview(self):
         if self.attrs.get('size'):
             textbuffer = TextBufferLimitSize(int(self.attrs['size']))
-            textview = gtk.TextView(textbuffer)
+            textview = gtk.TextView()
+            textview.set_buffer(textbuffer)
         else:
             textview = gtk.TextView()
         textview.set_wrap_mode(gtk.WRAP_WORD)
