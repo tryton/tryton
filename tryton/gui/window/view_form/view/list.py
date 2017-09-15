@@ -11,7 +11,6 @@ from collections import defaultdict
 
 from tryton.config import CONFIG
 from tryton.common.cellrendererbutton import CellRendererButton
-from tryton.common.cellrenderertoggle import CellRendererToggle
 from tryton.gui.window import Window
 from tryton.common.popup_menu import populate
 from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
@@ -274,7 +273,7 @@ class ViewTree(View):
         self.sum_widgets = []
         self.sum_box = gtk.HBox()
         self.reload = False
-        if self.attributes.get('editable'):
+        if self.attributes.get('editable') and not screen.readonly:
             self.treeview = EditableTreeView(self.attributes['editable'], self)
             grid_lines = gtk.TREE_VIEW_GRID_LINES_BOTH
         else:
@@ -628,7 +627,8 @@ class ViewTree(View):
 
     @property
     def editable(self):
-        return bool(getattr(self.treeview, 'editable', False))
+        return (bool(getattr(self.treeview, 'editable', False))
+            and not self.screen.readonly)
 
     def get_fields(self):
         return [col.name for col in self.treeview.get_columns() if col.name]
@@ -1187,19 +1187,6 @@ class ViewTree(View):
         sel = self.treeview.get_selection()
         sel.selected_foreach(_func_sel_get, records)
         return records
-
-    def unset_editable(self):
-        self.treeview.editable = False
-        for col in self.treeview.get_columns():
-            for renderer in col.get_cell_renderers():
-                if isinstance(renderer, CellRendererToggle):
-                    renderer.set_property('activatable', False)
-                elif isinstance(renderer,
-                        (gtk.CellRendererProgress, CellRendererButton,
-                            gtk.CellRendererPixbuf)):
-                    pass
-                else:
-                    renderer.set_property('editable', False)
 
     def get_selected_paths(self):
         selection = self.treeview.get_selection()

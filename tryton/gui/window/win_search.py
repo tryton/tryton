@@ -60,9 +60,8 @@ class WinSearch(NoModal):
 
         self.screen = Screen(model, domain=domain, mode=['tree'],
             context=context, view_ids=view_ids, views_preload=views_preload,
-            row_activate=self.sig_activate)
+            row_activate=self.sig_activate, readonly=True)
         self.view = self.screen.current_view
-        self.view.unset_editable()
         # Prevent to set tree_state
         self.screen.tree_states_done.add(id(self.view))
         sel = self.view.treeview.get_selection()
