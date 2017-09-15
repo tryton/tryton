@@ -968,7 +968,13 @@ class AccountTestCase(ModuleTestCase):
                         Party.search([(field, '=', value)]),
                         [party_test], msg=msg)
                     self.assertEqual(
+                        Party.search([(field, 'in', [value])]),
+                        [party_test], msg=msg)
+                    self.assertEqual(
                         Party.search([(field, '!=', value)]),
+                        [], msg=msg)
+                    self.assertEqual(
+                        Party.search([(field, 'not in', [value])]),
                         [], msg=msg)
 
             check_fields()
