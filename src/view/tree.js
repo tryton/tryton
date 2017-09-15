@@ -60,7 +60,8 @@
             });
             this.expanded = {};
             this.children_field = children_field;
-            this.editable = Boolean(this.attributes.editable);
+            this.editable = (Boolean(this.attributes.editable) &&
+                !screen.attributes.readonly);
 
             // Columns
             this.columns = [];

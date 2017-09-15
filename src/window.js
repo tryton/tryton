@@ -514,7 +514,8 @@
                 domain: this.domain,
                 view_ids: kwargs.view_ids,
                 views_preload: views_preload,
-                row_activate: this.activate.bind(this)
+                row_activate: this.activate.bind(this),
+                readonly: true,
             });
             this.screen.load_next_view().done(function() {
                 this.screen.switch_view().done(function() {
