@@ -133,6 +133,7 @@ class Party:
         if name not in ('receivable', 'payable',
                 'receivable_today', 'payable_today'):
             raise Exception('Bad argument')
+        _, operator, value = clause
 
         user = User(Transaction().user)
         if not user.company:
@@ -146,14 +147,17 @@ class Party:
             today_query = ((line.maturity_date <= Date.today())
                 | (line.maturity_date == Null))
 
-        Operator = fields.SQL_OPERATORS[clause[1]]
+        Operator = fields.SQL_OPERATORS[operator]
 
         # Need to cast numeric for sqlite
         type_ = MoveLine.debit.sql_type().base
         amount = Cast(
             Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
             type_)
-        value = Cast(Literal(Decimal(clause[2] or 0)), type_)
+        if operator in {'in', 'not in'}:
+            value = [Cast(Literal(Decimal(v or 0)), type_) for v in value]
+        else:
+            value = Cast(Literal(Decimal(value or 0)), type_)
         query = line.join(account, condition=account.id == line.account
                 ).select(line.party,
                     where=account.active
