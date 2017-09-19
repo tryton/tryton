@@ -39,8 +39,7 @@ def update_egg_modules():
     try:
         import pkg_resources
         for ep in pkg_resources.iter_entry_points('trytond.modules'):
-            mod_name = ep.module_name.split('.')[-1]
-            EGG_MODULES[mod_name] = ep
+            EGG_MODULES[ep.name] = ep
     except ImportError:
         pass
 update_egg_modules()
