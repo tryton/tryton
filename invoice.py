@@ -154,7 +154,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
-        states=_STATES, depends=['state', 'currency_date', 'company'])
+        states={
+            'readonly': (Eval('state') != 'draft') | ~Eval('company'),
+            },
+        depends=['state', 'company'])
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
         states=_STATES, depends=_DEPENDS)
     comment = fields.Text('Comment', states=_STATES, depends=_DEPENDS)
