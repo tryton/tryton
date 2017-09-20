@@ -4,7 +4,8 @@ from trytond import backend
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta, Pool
-from trytond.modules.account_product import MissingFunction
+from trytond.modules.account_product.product import (
+    account_used, template_property)
 
 __all__ = ['Category', 'CategoryAccount', 'Template', 'TemplateAccount',
     'Product']
@@ -24,9 +25,6 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_depreciation_used = MissingFunction(
-        fields.Many2One('account.account', 'Account Depreciation Used'),
-        'missing_account', 'get_account')
     account_asset = fields.MultiValue(fields.Many2One('account.account',
             'Account Asset',
             domain=[
@@ -39,9 +37,6 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_asset_used = MissingFunction(
-        fields.Many2One('account.account', 'Account Asset Used'),
-        'missing_account', 'get_account')
 
     @classmethod
     def multivalue_model(cls, field):
@@ -49,6 +44,16 @@ class Category:
         if field in {'account_depreciation', 'account_asset'}:
             return pool.get('product.category.account')
         return super(Category, cls).multivalue_model(field)
+
+    @property
+    @account_used('account_depreciation')
+    def account_depreciation_used(self):
+        pass
+
+    @property
+    @account_used('account_asset')
+    def account_asset_used(self):
+        pass
 
 
 class CategoryAccount:
@@ -113,9 +118,6 @@ class Template:
                     | Eval('accounts_category')),
                 },
             depends=['active', 'depreciable', 'type', 'accounts_category']))
-    account_depreciation_used = MissingFunction(
-        fields.Many2One('account.account', 'Account Depreciation Used'),
-        'missing_account', 'get_account')
     account_asset = fields.MultiValue(fields.Many2One('account.account',
             'Account Asset',
             domain=[
@@ -131,9 +133,6 @@ class Template:
                     | Eval('accounts_category')),
                 },
             depends=['active', 'depreciable', 'type', 'accounts_category']))
-    account_asset_used = MissingFunction(
-        fields.Many2One('account.account', 'Account Asset Used'),
-        'missing_account', 'get_account')
     depreciation_duration = fields.Integer(
         "Depreciation Duration",
         states={
@@ -150,6 +149,16 @@ class Template:
         if field in {'account_depreciation', 'account_asset'}:
             return pool.get('product.template.account')
         return super(Template, cls).multivalue_model(field)
+
+    @property
+    @account_used('account_depreciation')
+    def account_depreciation_used(self):
+        pass
+
+    @property
+    @account_used('account_asset')
+    def account_asset_used(self):
+        pass
 
 
 class TemplateAccount:
@@ -196,10 +205,6 @@ class TemplateAccount:
 class Product:
     __metaclass__ = PoolMeta
     __name__ = 'product.product'
-    # Avoid raise of UserError from MissingFunction
-    account_depreciation_used = fields.Function(
-        fields.Many2One('account.account', 'Account Depreciation Used'),
-        'get_template')
-    account_asset_used = fields.Function(
-        fields.Many2One('account.account', 'Account Asset Used'),
-        'get_template')
+
+    account_depreciation_used = template_property('account_depreciation_used')
+    account_asset_used = template_property('account_asset_used')
