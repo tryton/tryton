@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import copy
+from functools import wraps
 
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Or, Bool
@@ -15,32 +15,31 @@ __all__ = ['Category', 'CategoryAccount',
     'CategoryCustomerTax', 'CategorySupplierTax',
     'Template', 'TemplateAccount',
     'TemplateCustomerTax', 'TemplateSupplierTax',
-    'Product', 'MissingFunction']
+    'Product', 'account_used', 'template_property']
 
 
-class MissingFunction(fields.Function):
-    '''Function field that will raise the error
-    when the value is accessed and is None'''
+def account_used(field_name):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(self):
+            account = func(self)
+            if not account:
+                account = self.get_account(field_name + '_used')
+            if not account:
+                self.raise_user_error('missing_account', {
+                        'name': self.name,
+                        'id': self.id,
+                        })
+            return account
+        return wrapper
+    return decorator
 
-    def __init__(self, field, error, getter, setter=None, searcher=None,
-            loading='lazy'):
-        super(MissingFunction, self).__init__(field, getter, setter=setter,
-            searcher=searcher, loading=loading)
-        self.error = error
 
-    def __copy__(self):
-        return MissingFunction(copy.copy(self._field), self.error, self.getter,
-            setter=self.setter, searcher=self.searcher)
-
-    def __deepcopy__(self, memo):
-        return MissingFunction(copy.deepcopy(self._field, memo), self.error,
-            self.getter, setter=self.setter, searcher=self.searcher)
-
-    def __get__(self, inst, cls):
-        value = super(MissingFunction, self).__get__(inst, cls)
-        if inst is not None and value is None:
-            inst.raise_user_error(self.error, (inst.name, inst.id))
-        return value
+def template_property(field_name):
+    @property
+    def prop(self):
+        return getattr(self.template, field_name)
+    return prop
 
 
 class Category(CompanyMultiValueMixin):
@@ -82,10 +81,6 @@ class Category(CompanyMultiValueMixin):
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_expense_used = MissingFunction(fields.Many2One('account.account',
-            'Account Expense Used'), 'missing_account', 'get_account')
-    account_revenue_used = MissingFunction(fields.Many2One('account.account',
-            'Account Revenue Used'), 'missing_account', 'get_account')
     taxes_parent = fields.Boolean('Use the Parent\'s Taxes',
         states={
             'invisible': ~Eval('accounting', False),
@@ -131,7 +126,7 @@ class Category(CompanyMultiValueMixin):
         cls._error_messages.update({
             'missing_account': ('There is no account '
                     'expense/revenue defined on the category '
-                    '%s (%d)'),
+                    '%(name)s (%(id)d)'),
             })
         cls.parent.domain = [
             ('accounting', '=', Eval('accounting', False)),
@@ -175,8 +170,7 @@ class Category(CompanyMultiValueMixin):
         if self.account_parent:
             return self.parent.get_account(name, **pattern)
         else:
-            account = self.get_multivalue(name[:-5], **pattern)
-            return account.id if account else None
+            return self.get_multivalue(name[:-5], **pattern)
 
     def get_taxes(self, name):
         if self.taxes_parent:
@@ -211,6 +205,16 @@ class Category(CompanyMultiValueMixin):
                     'invisible': ~Eval('accounting', False),
                     }),
             ]
+
+    @property
+    @account_used('account_expense')
+    def account_expense_used(self):
+        pass
+
+    @property
+    @account_used('account_revenue')
+    def account_revenue_used(self):
+        pass
 
 
 class CategoryAccount(ModelSQL, CompanyValueMixin):
@@ -333,10 +337,6 @@ class Template(CompanyMultiValueMixin):
                 },
             help=("The account to use instead of the one defined on the "
                 "account category."), depends=['accounts_category']))
-    account_expense_used = MissingFunction(fields.Many2One('account.account',
-        'Account Expense Used'), 'missing_account', 'get_account')
-    account_revenue_used = MissingFunction(fields.Many2One('account.account',
-        'Account Revenue Used'), 'missing_account', 'get_account')
     taxes_category = fields.Boolean('Use Category\'s Taxes',
             help="Check to use the taxes defined on the account category.")
     customer_taxes = fields.Many2Many('product.template-customer-account.tax',
@@ -444,8 +444,7 @@ class Template(CompanyMultiValueMixin):
         if self.accounts_category:
             return self.account_category.get_account(name, **pattern)
         else:
-            account = self.get_multivalue(name[:-5], **pattern)
-            return account.id if account else None
+            return self.get_multivalue(name[:-5], **pattern)
 
     def get_taxes(self, name):
         if self.taxes_category:
@@ -468,6 +467,16 @@ class Template(CompanyMultiValueMixin):
                 self.customer_taxes = self.account_revenue.taxes
             else:
                 self.customer_taxes = []
+
+    @property
+    @account_used('account_expense')
+    def account_expense_used(self):
+        pass
+
+    @property
+    @account_used('account_revenue')
+    def account_revenue_used(self):
+        pass
 
 
 class TemplateAccount(ModelSQL, CompanyValueMixin):
@@ -533,11 +542,8 @@ class TemplateSupplierTax(ModelSQL):
 class Product:
     __metaclass__ = PoolMeta
     __name__ = 'product.product'
-    # Avoid raise of UserError from MissingFunction
-    account_expense_used = fields.Function(fields.Many2One('account.account',
-        'Account Expense Used'), 'get_template')
-    account_revenue_used = fields.Function(fields.Many2One('account.account',
-        'Account Revenue Used'), 'get_template')
+    account_expense_used = template_property('account_expense_used')
+    account_revenue_used = template_property('account_revenue_used')
     customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
             'Customer Taxes Used'), 'get_template')
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
