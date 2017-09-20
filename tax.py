@@ -569,14 +569,12 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
     active = fields.Boolean('Active')
     start_date = fields.Date('Starting Date')
     end_date = fields.Date('Ending Date')
-    currency_digits = fields.Function(fields.Integer('Currency Digits'),
-        'on_change_with_currency_digits')
-    amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
+    amount = fields.Numeric('Amount', digits=(16, 8),
         states={
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
             }, help='In company\'s currency',
-        depends=['type', 'currency_digits'])
+        depends=['type'])
     rate = fields.Numeric('Rate', digits=(14, 10),
         states={
             'required': Eval('type') == 'percentage',
@@ -756,12 +754,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
-
-    @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
-        if self.company:
-            return self.company.currency.digits
-        return 2
 
     @classmethod
     def copy(cls, taxes, default=None):
