@@ -9,7 +9,8 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-from trytond.modules.account_product import MissingFunction
+from trytond.modules.account_product.product import (
+    account_used, template_property)
 from trytond.modules.product import price_digits
 
 __all__ = ['Category', 'CategoryAccount', 'Template', 'TemplateAccount',
@@ -83,20 +84,6 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_stock_used = MissingFunction(fields.Many2One('account.account',
-        'Account Stock Used'), 'missing_account', 'get_account')
-    account_stock_supplier_used = MissingFunction(fields.Many2One(
-            'account.account', 'Account Stock Supplier Used'),
-        'missing_account', 'get_account')
-    account_stock_customer_used = MissingFunction(fields.Many2One(
-            'account.account', 'Account Stock Customer Used'),
-        'missing_account', 'get_account')
-    account_stock_production_used = MissingFunction(fields.Many2One(
-            'account.account', 'Account Stock Production Used'),
-        'missing_account', 'get_account')
-    account_stock_lost_found_used = MissingFunction(fields.Many2One(
-        'account.account', 'Account Stock Lost and Found'),
-        'missing_account', 'get_account')
 
     @classmethod
     def multivalue_model(cls, field):
@@ -104,6 +91,31 @@ class Category:
         if field in account_names:
             return pool.get('product.category.account')
         return super(Category, cls).multivalue_model(field)
+
+    @property
+    @account_used('account_stock')
+    def account_stock_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_supplier')
+    def account_stock_supplier_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_customer')
+    def account_stock_customer_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_production')
+    def account_stock_production_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_lost_found')
+    def account_stock_lost_found_used(self):
+        pass
 
 
 class CategoryAccount:
@@ -235,20 +247,6 @@ class Template:
                 }, help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_stock_used = MissingFunction(fields.Many2One('account.account',
-        'Account Stock Used'), 'missing_account', 'get_account')
-    account_stock_supplier_used = MissingFunction(fields.Many2One(
-            'account.account', 'Account Stock Supplier Used'),
-        'missing_account', 'get_account')
-    account_stock_customer_used = MissingFunction(fields.Many2One(
-            'account.account', 'Account Stock Customer Used'),
-        'missing_account', 'get_account')
-    account_stock_production_used = MissingFunction(fields.Many2One(
-            'account.account', 'Account Stock Production Used'),
-        'missing_account', 'get_account')
-    account_stock_lost_found_used = MissingFunction(fields.Many2One(
-            'account.account', 'Account Stock Lost and Found'),
-        'missing_account', 'get_account')
 
     @classmethod
     def __setup__(cls):
@@ -266,6 +264,31 @@ class Template:
         if field in account_names:
             return pool.get('product.template.account')
         return super(Template, cls).multivalue_model(field)
+
+    @property
+    @account_used('account_stock')
+    def account_stock_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_supplier')
+    def account_stock_supplier_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_customer')
+    def account_stock_customer_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_production')
+    def account_stock_production_used(self):
+        pass
+
+    @property
+    @account_used('account_stock_lost_found')
+    def account_stock_lost_found_used(self):
+        pass
 
 
 class TemplateAccount:
@@ -332,22 +355,15 @@ class TemplateAccount:
 class Product:
     __metaclass__ = PoolMeta
     __name__ = 'product.product'
-    # Avoid raise of UserError from MissingFunction
-    account_stock_used = fields.Function(
-        fields.Many2One('account.account', 'Account Stock Used'),
-        'get_template')
-    account_stock_supplier_used = fields.Function(
-        fields.Many2One('account.account', 'Account Stock Supplier Used'),
-        'get_template')
-    account_stock_customer_used = fields.Function(
-        fields.Many2One('account.account', 'Account Stock Customer Used'),
-        'get_template')
-    account_stock_production_used = fields.Function(
-        fields.Many2One('account.account', 'Account Stock Production Used'),
-        'get_template')
-    account_stock_lost_found_used = fields.Function(
-        fields.Many2One('account.account', 'Account Stock Lost and Found'),
-        'get_template')
+    account_stock_used = template_property('account_stock_used')
+    account_stock_supplier_used = template_property(
+        'account_stock_supplier_used')
+    account_stock_customer_used = template_property(
+        'account_stock_customer_used')
+    account_stock_production_used = template_property(
+        'account_stock_production_used')
+    account_stock_lost_found_used = template_property(
+        'account_stock_lost_found_used')
 
 
 class UpdateCostPriceAsk(ModelView):
