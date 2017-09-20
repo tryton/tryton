@@ -1,3 +1,4 @@
+* Implement alter_type and alter_size for sqlite backend
 * Add a maximum size for request
 * Add support for single record report
 * Add support for Flat OpenDocument

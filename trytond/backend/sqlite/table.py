@@ -97,28 +97,35 @@ class TableHandler(TableHandlerInterface):
     def column_exist(self, column_name):
         return column_name in self._columns
 
+    def _recreate_table(self, new_columns):
+        transaction = Transaction()
+        database = transaction.database
+        cursor = transaction.connection.cursor()
+        temp_table = '_temp_%s' % self.table_name
+        TableHandler.table_rename(self.table_name, temp_table)
+        new_table = TableHandler(self._model, history=self.history)
+        columns, old_columns = [], []
+        for column, values in self._columns.iteritems():
+            typname = new_columns.get(column, {}).get(
+                'typname', values['typname'])
+            size = new_columns.get(column, {}).get('size', values['size'])
+            new_column = new_columns.get(column, {}).get('name', column)
+            new_table._add_raw_column(
+                new_column, database.sql_type(typname), field_size=size)
+            columns.append(new_column)
+            old_columns.append(column)
+        cursor.execute(('INSERT INTO "%s" (' +
+                ','.join('"%s"' % x for x in columns) +
+                ') SELECT ' +
+                ','.join('"%s"' % x for x in old_columns) + ' ' +
+                'FROM "%s"') % (self.table_name, temp_table))
+        cursor.execute('DROP TABLE "%s"' % temp_table)
+        self._update_definitions()
+
     def column_rename(self, old_name, new_name, exception=False):
-        cursor = Transaction().connection.cursor()
         if self.column_exist(old_name) and \
                 not self.column_exist(new_name):
-            temp_table = '_temp_%s' % self.table_name
-            TableHandler.table_rename(self.table_name, temp_table)
-            new_table = TableHandler(self._model, history=self.history)
-            for column, (notnull, hasdef, size, typname) \
-                    in self._columns.iteritems():
-                if column == old_name:
-                    column = new_name
-                new_table._add_raw_column(column, typname, field_size=size)
-            new_columns = new_table._columns.keys()
-            old_columns = [x if x != old_name else new_name
-                for x in new_columns]
-            cursor.execute(('INSERT INTO "%s" (' +
-                    ','.join('"%s"' % x for x in new_columns) +
-                    ') SELECT ' +
-                    ','.join('"%s"' % x for x in old_columns) + ' ' +
-                    'FROM "%s"') % (self.table_name, temp_table))
-            cursor.execute('DROP TABLE "%s"' % temp_table)
-            self._update_definitions()
+            self._recreate_table({old_name: {'name': new_name}})
         elif exception and self.column_exist(new_name):
             raise Exception('Unable to rename column %s.%s to %s.%s: '
                 '%s.%s already exist!'
@@ -168,10 +175,10 @@ class TableHandler(TableHandlerInterface):
         return dict(cursor)
 
     def alter_size(self, column_name, column_type):
-        warnings.warn('Unable to alter size of column with SQLite backend')
+        self._recreate_table({column_name: {'size': column_type}})
 
     def alter_type(self, column_name, column_type):
-        warnings.warn('Unable to alter type of column with SQLite backend')
+        self._recreate_table({column_name: {'typname': column_type}})
 
     def db_default(self, column_name, value):
         warnings.warn('Unable to set default on column with SQLite backend')
