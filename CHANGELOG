@@ -1,3 +1,4 @@
+* Allow to set default category and product accounts on configuration wizard
 * Replace MissingFunction with properties
 
 Version 4.4.0 - 2017-05-01
