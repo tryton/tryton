@@ -603,10 +603,18 @@ function eval_pyson(value){
                     } else {
                         cell.css('width', '');
                     }
+                    // show/hide when container is horizontal or vertical
+                    // to not show padding
                     if (cell.children().css('display') == 'none') {
                         cell.css('visibility', 'collapse');
+                        if (col <= 1) {
+                            cell.hide();
+                        }
                     } else {
                         cell.css('visibility', 'visible');
+                        if (col <= 1) {
+                            cell.show();
+                        }
                     }
                     i += colspan;
                 });
