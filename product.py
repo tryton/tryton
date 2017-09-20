@@ -5,7 +5,8 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta, Pool
 
-from trytond.modules.account_product import MissingFunction
+from trytond.modules.account_product.product import (
+    account_used, template_property)
 
 __all__ = ['Category', 'CategoryAccount', 'Template', 'TemplateAccount',
     'Product']
@@ -25,9 +26,6 @@ class Category:
                     | ~Eval('accounting', False)),
                 },
             depends=['account_parent', 'accounting']))
-    account_cogs_used = MissingFunction(fields.Many2One('account.account',
-            'Account Cost of Goods Sold Used'), 'missing_account',
-        'get_account')
 
     @classmethod
     def multivalue_model(cls, field):
@@ -35,6 +33,11 @@ class Category:
         if field == 'account_cogs':
             return pool.get('product.category.account')
         return super(Category, cls).multivalue_model(field)
+
+    @property
+    @account_used('account_cogs')
+    def account_cogs_used(self):
+        pass
 
 
 class CategoryAccount:
@@ -86,9 +89,6 @@ class Template:
             help='This account will be used instead of the one defined '
             'on the category.',
             depends=['account_category', 'type']))
-    account_cogs_used = MissingFunction(fields.Many2One('account.account',
-            'Account Cost of Goods Sold Used'), 'missing_account',
-        'get_account')
 
     @classmethod
     def multivalue_model(cls, field):
@@ -96,6 +96,11 @@ class Template:
         if field == 'account_cogs':
             return pool.get('product.template.account')
         return super(Template, cls).multivalue_model(field)
+
+    @property
+    @account_used('account_cogs')
+    def account_cogs_used(self):
+        pass
 
 
 class TemplateAccount:
@@ -134,7 +139,4 @@ class TemplateAccount:
 class Product:
     __metaclass__ = PoolMeta
     __name__ = 'product.product'
-    # Avoid raise of UserError from MissingFunction
-    account_cogs_used = fields.Function(
-        fields.Many2One('account.account', 'Account Cost of Goods Sold Used'),
-        'get_template')
+    account_cogs_used = template_property('account_cogs_used')
