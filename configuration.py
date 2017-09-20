@@ -14,6 +14,7 @@ class Configuration(CompanyMultiValueMixin):
     __name__ = 'sale.configuration'
     sale_price_list = fields.MultiValue(fields.Many2One(
             'product.price_list', "Sale Price List",
+            help="The default price list for new parties.",
             domain=[
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],

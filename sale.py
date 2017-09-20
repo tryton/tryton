@@ -11,6 +11,7 @@ class Sale:
     __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
     price_list = fields.Many2One('product.price_list', 'Price List',
+        help="Use to compute the unit price of lines.",
         domain=[('company', '=', Eval('company'))],
         states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
