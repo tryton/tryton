@@ -56,6 +56,6 @@ class CreateChart:
             for name in ['product_account_expense', 'product_account_revenue',
                     'category_account_expense', 'category_account_revenue']:
                 setattr(config, 'default_%s' % name,
-                    getattr(self.properties, name))
+                    getattr(self.properties, name, None))
             config.save()
         return state
