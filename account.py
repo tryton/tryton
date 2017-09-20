@@ -1694,7 +1694,11 @@ class IncomeStatementContext(ModelView):
     'Income Statement Context'
     __name__ = 'account.income_statement.context'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True)
+        required=True,
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
     start_period = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),
@@ -1728,7 +1732,11 @@ class IncomeStatementContext(ModelView):
         states={
             'required': Eval('comparison', False),
             'invisible': ~Eval('comparison', False),
-            })
+            },
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
     start_period_cmp = fields.Many2One('account.period', 'Start Period',
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear_cmp')),
