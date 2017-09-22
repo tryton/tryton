@@ -7,7 +7,7 @@ from decimal import Decimal
 from sql import Null, Column
 
 from trytond.model import ModelView, ModelSQL, Model, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
@@ -60,7 +60,11 @@ class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
             "Cost Price", digits=price_digits), 'get_cost_price')
     cost_price_method = fields.MultiValue(fields.Selection(
             COST_PRICE_METHODS, "Cost Price Method", required=True,
-            states=STATES, depends=DEPENDS))
+            domain=[If((Eval('type') == 'service'),
+                    ('cost_price_method', '=', 'fixed'),
+                    (),
+                )
+            ], states=STATES, depends=DEPENDS + ['type']))
     cost_price_methods = fields.One2Many(
         'product.cost_price_method', 'template', "Cost Price Methods")
     default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
