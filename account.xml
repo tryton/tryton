@@ -614,7 +614,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.account.type</field>
             <field name="context_model">account.income_statement.context</field>
             <field name="context_domain"
-                eval="[('company', '=', Eval('context', {}).get('company', -1))]"
+                eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
             <field name="domain"
                 eval="[('income_statement', '=', True), ['OR', ('parent', '=', None), ('parent.income_statement', '=', False)]]"
