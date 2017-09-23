@@ -583,6 +583,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
             <field name="context_model">account.balance_sheet.context</field>
+            <field name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
             <field name="domain"
                 eval="[('balance_sheet', '=', True), ['OR', ('parent', '=', None), ('parent.balance_sheet', '=', False)]]"
                 pyson="1"/>
