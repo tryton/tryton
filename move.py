@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import hashlib
 import operator
 from decimal import Decimal
 from collections import OrderedDict, defaultdict
@@ -272,7 +273,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 'it is in "Assigned" state.'),
             'modify_done_cancel': ('You can not modify stock move "%s" '
                 'because it is in "Done" or "Cancel" state.'),
-            'no_origin': 'The stock move "%s" has no origin.',
+            'no_origin': 'The stock moves "%s" have no origin.',
             })
         cls._transitions |= set((
                 ('staging', 'draft'),
@@ -773,12 +774,18 @@ class Move(Workflow, ModelSQL, ModelView):
             types = cls.check_origin_types()
         if not types:
             return
-        for move in moves:
-            if ((move.from_location.type in types) ^
-                    (move.to_location.type in types)
-                    and not move.origin):
-                cls.raise_user_warning('%s.done' % move,
-                    'no_origin', move.rec_name)
+
+        def no_origin(move):
+            return ((move.from_location.type in types) ^
+                (move.to_location.type in types)
+                and not move.origin)
+        moves = filter(no_origin, moves)
+        if moves:
+            names = ', '.join(m.rec_name for m in moves[:5])
+            if len(moves) > 5:
+                names += '...'
+            warning_name = '%s.done' % hashlib.md5(str(moves)).hexdigest()
+            cls.raise_user_warning(warning_name, 'no_origin', names)
 
     def pick_product(self, location_quantities):
         """
