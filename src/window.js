@@ -1439,6 +1439,17 @@
                         field: field,
                         string: Sao.i18n.gettext('%1 (string)', string)
                     });
+                } else if (field.type == 'reference') {
+                    items.push({
+                        name: name + '.translated',
+                        field: field,
+                        string: Sao.i18n.gettext("%1 (model name)", string),
+                    });
+                    items.push({
+                        name: name + '/rec_name',
+                        field: field,
+                        string: Sao.i18n.gettext("%1 (record name)", string),
+                    });
                 }
 
                 items.forEach(function(item) {
