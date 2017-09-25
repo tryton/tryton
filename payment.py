@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import uuid
 import logging
+import urllib
 
 import stripe
 
@@ -405,11 +406,161 @@ class Account(ModelSQL, ModelView):
     name = fields.Char("Name", required=True)
     secret_key = fields.Char("Secret Key", required=True)
     publishable_key = fields.Char("Publishable Key", required=True)
+    webhook_identifier = fields.Char("Webhook Identifier", readonly=True)
+    webhook_endpoint = fields.Function(
+        fields.Char(
+            "Webhook Endpoint",
+            help="The URL to be called by Stripe."),
+        'on_change_with_webhook_endpoint')
+    webhook_signing_secret = fields.Char(
+        "Webhook Signing Secret",
+        states={
+            'invisible': ~Eval('webhook_identifier'),
+            },
+        depends=['webhook_identifier'],
+        help="The Stripe's signing secret of the webhook.")
     zip_code = fields.Boolean("Zip Code", help="Verification on checkout")
+
+    @classmethod
+    def __setup__(cls):
+        super(Account, cls).__setup__()
+        cls._buttons.update({
+                'new_identifier': {
+                    'icon': 'tryton-refresh',
+                    },
+                })
 
     @classmethod
     def default_zip_code(cls):
         return True
+
+    @fields.depends('webhook_identifier')
+    def on_change_with_webhook_endpoint(self, name=None):
+        if not self.webhook_identifier:
+            return ''
+        # TODO add basic authentication support
+        url_part = {
+            'identifier': self.webhook_identifier,
+            'database_name': Transaction().database.name,
+            }
+        return 'https://' + HOSTNAME + (
+            urllib.quote(
+                '/%(database_name)s/account_payment_stripe'
+                '/webhook/%(identifier)s'
+                % url_part))
+
+    def webhook(self, payload):
+        """This method handles stripe webhook callbacks
+
+        The return values are:
+            - None if the method could not handle payload['type']
+            - True if the payload has been handled
+            - False if the webhook should be retried by Stripe
+        """
+        data = payload['data']
+        type_ = payload['type']
+        if type_ == 'charge.succeeded':
+            return self.webhook_charge_succeeded(data)
+        elif type_ == 'charge.failed':
+            return self.webhook_charge_failed(data)
+        elif type_ == 'source.chargeable':
+            return self.webhook_source_chargeable(data)
+        elif type_ == 'source.failed':
+            return self.webhook_source_failed(data)
+        elif type_ == 'source.canceled':
+            return self.webhook_source_canceled(data)
+        return None
+
+    def webhook_charge_succeeded(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        charge = payload['object']
+        payments = Payment.search([
+                ('stripe_charge_id', '=', charge['id']),
+                ])
+        if not payments:
+            logger.error("charge.succeeded: No payment '%s'", charge['id'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                payment.stripe_captured = charge['captured']
+                payment.save()
+                if charge['status'] == 'succeeded' and charge['captured']:
+                    Payment.succeed([payment])
+        return bool(payments)
+
+    def webhook_charge_failed(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        charge = payload['object']
+        payments = Payment.search([
+                ('stripe_charge_id', '=', charge['id']),
+                ])
+        if not payments:
+            logger.error("charge.failed: No payment '%s'", charge['id'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                payment.stripe_error_message = charge['failure_message']
+                payment.stripe_error_code = charge['failure_code']
+                payment.stripe_error_param = None
+                payment.save()
+                if charge['status'] == 'failed':
+                    Payment.fail([payment])
+        return bool(payments)
+
+    def webhook_source_chargeable(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        source = payload['object']
+        payments = Payment.search([
+                ('stripe_token', '=', source['id']),
+                ])
+        if payments:
+            Payment.write(payments, {'stripe_chargeable': True})
+        return True
+
+    def webhook_source_failed(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        source = payload['object']
+        payments = Payment.search([
+                ('stripe_token', '=', source['id']),
+                ])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                payment.stripe_error_message = source['failure_message']
+                payment.stripe_error_code = source['failure_code']
+                payment.stripe_error_param = None
+                payment.save()
+                Payment.fail([payment])
+        return True
+
+    def webhook_source_canceled(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        source = payload['object']
+        payments = Payment.search([
+                ('stripe_token', '=', source['id']),
+                ])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                Payment.fail([payment])
+        return True
+
+    @classmethod
+    @ModelView.button
+    def new_identifier(cls, accounts):
+        for account in accounts:
+            account.webhook_identifier = uuid.uuid4().hex()
+        cls.save(accounts)
 
 
 class Customer(ModelSQL, ModelView):

@@ -9,8 +9,15 @@ It uses the checkout form in the browser.
 Account
 *******
 
-The Account stores the information about the Stripe account like the secret key
-and the publishable key.
+The Account stores the information about the Stripe account like the secret
+key, the publishable key and the webhook signing secret.
+
+The account's webhook endpoint is the URL used by stripe webhooks_. For
+additional security, the Stripe's requests signature can be verified if the
+webhook `signing secret`_ is set on the Account.
+
+.. _webhooks: https://stripe.com/docs/webhooks
+.. _`endpoint secret`: https://stripe.com/docs/webhooks#signatures
 
 Customer
 ********
