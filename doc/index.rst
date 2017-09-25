@@ -18,6 +18,7 @@ There are 4 types of invoice: *Invoice*, *Supplier Invoice*, *Credit Note* and
 - Reference: The optional external reference of the invoice.
 - Party: The party for which or from which the invoice is issued.
 - Invoice Address: The address of the party.
+- Party Tax Identifier: The tax identifier of the party.
 - Description: An optional description of the invoice.
 - Comment: A text fields to add custom comments.
 - Invoice Date: The date of the invoice. It is set on posting the invoice if not.

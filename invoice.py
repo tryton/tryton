@@ -111,6 +111,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         depends=_DEPENDS)
     party = fields.Many2One('party.party', 'Party',
         required=True, states=_STATES, depends=_DEPENDS)
+    party_tax_identifier = fields.Many2One(
+        'party.identifier', "Party Tax Identifier",
+        states=_STATES,
+        domain=[
+            ('party', '=', Eval('party', -1)),
+            ],
+        depends=_DEPENDS + ['party'])
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
@@ -461,6 +468,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
+            self.party_tax_identifier = self.party.tax_identifier
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
@@ -996,6 +1004,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 continue
             if not invoice.tax_identifier:
                 invoice.tax_identifier = invoice.get_tax_identifier()
+            # Generated invoice may not fill the party tax identifier
+            if not invoice.party_tax_identifier:
+                invoice.party_tax_identifier = invoice.party.tax_identifier
 
             if invoice.number:
                 continue
