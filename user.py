@@ -397,6 +397,7 @@ class UserSession(ModelSQL):
 
     @classmethod
     def get_user(cls, session):
+        transaction = Transaction()
         sessions = cls.search([
                 ('key', '=', session),
                 ])
@@ -405,7 +406,7 @@ class UserSession(ModelSQL):
         session, = sessions
         if not session.expired:
             return session.user
-        else:
+        elif not transaction.readonly:
             cls.delete([session])
 
     @classmethod
