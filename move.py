@@ -191,11 +191,13 @@ class Move(Workflow, ModelSQL, ModelView):
                 | Eval('shipment'))
             }, depends=['state', 'shipment'],
         select=True)
-    effective_date = fields.Date("Effective Date", readonly=True, select=True,
+    effective_date = fields.Date("Effective Date", select=True,
         states={
             'required': Eval('state') == 'done',
+            'readonly': (Eval('state').in_(['cancel', 'done'])
+                | Eval('shipment')),
             },
-        depends=['state'])
+        depends=['state', 'shipment'])
     state = fields.Selection([
         ('staging', 'Staging'),
         ('draft', 'Draft'),

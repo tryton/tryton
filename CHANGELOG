@@ -1,3 +1,4 @@
+* Allow to set manual effective date on move
 * Improve computation of cost price
 * Limit move locations 'child_of' constraints to specific shipment states
 * Allow to delete staging move
