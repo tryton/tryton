@@ -6,12 +6,13 @@ from sql import Cast, Literal, Query, Expression
 from sql.functions import Substring, Position
 
 from .field import Field
+from .selection import SelectionMixin
 from ...transaction import Transaction
 from ...pool import Pool
 from ...rpc import RPC
 
 
-class Reference(Field):
+class Reference(Field, SelectionMixin):
     '''
     Define a reference field (``str``).
     '''

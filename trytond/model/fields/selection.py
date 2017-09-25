@@ -10,7 +10,18 @@ from .field import Field
 from ...rpc import RPC
 
 
-class Selection(Field):
+class SelectionMixin:
+
+    def translated(self, name=None):
+        "Return a descriptor for the translated value of the field"
+        if name is None:
+            name = self.name
+        if name is None:
+            raise ValueError('Missing name argument')
+        return TranslatedSelection(name)
+
+
+class Selection(Field, SelectionMixin):
     '''
     Define a selection field (``str``).
     '''
@@ -70,14 +81,6 @@ class Selection(Field):
             whens.append((column == key, value))
         return [Case(*whens, else_=column)]
 
-    def translated(self, name=None):
-        "Return a descriptor for the translated value of the field"
-        if name is None:
-            name = self.name
-        if name is None:
-            raise ValueError('Missing name argument')
-        return TranslatedSelection(name)
-
 
 class TranslatedSelection(object):
     'A descriptor for translated value of Selection field'
@@ -86,6 +89,7 @@ class TranslatedSelection(object):
         self.name = name
 
     def __get__(self, inst, cls):
+        from ..model import Model
         if inst is None:
             return self
         with Transaction().set_context(getattr(inst, '_context', {})):
@@ -102,4 +106,7 @@ class TranslatedSelection(object):
         if value is None or value == '':
             if value not in selection:
                 value = {None: '', '': None}[value]
+        # Use Model __name__ for Reference field
+        elif isinstance(value, Model):
+            value = value.__name__
         return selection[value]

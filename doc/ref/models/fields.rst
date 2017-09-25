@@ -507,6 +507,12 @@ But a ``tuple`` can be used to search or set value.
 
     Same as :attr:`Many2One.datetime_field`
 
+Instance methods:
+
+.. method:: Reference.translated([name])
+
+    Same as :meth:`~Selection.translated` but for the translated name of the
+    target model.
 
 Many2One
 --------

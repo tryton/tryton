@@ -341,7 +341,7 @@ class ExportDataTestCase(unittest.TestCase):
         ExportData = pool.get('test.export_data')
         ExportDataTarget = pool.get('test.export_data.target')
 
-        target1, = ExportDataTarget.create([{}])
+        target1, = ExportDataTarget.create([{'name': "Target test"}])
         export1, = ExportData.create([{
                     'reference': str(target1),
                     }])
@@ -359,6 +359,14 @@ class ExportDataTestCase(unittest.TestCase):
             ExportData.export_data([export1, export2],
                 ['reference']),
             [[str(target1)], ['']])
+
+        self.assertEqual(
+            ExportData.export_data([export1], ['reference/rec_name']),
+            [[target1.rec_name]])
+
+        self.assertEqual(
+            ExportData.export_data([export1], ['reference.translated']),
+            [["Target"]])
 
 
 def suite():
