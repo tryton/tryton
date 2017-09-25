@@ -254,10 +254,12 @@ class Product(StockMixin, object):
                         move.company.currency, round=False)
                 unit_price = Uom.compute_price(move.uom, unit_price,
                     self.default_uom)
-                if quantity + qty != 0:
+                if quantity + qty > 0 and quantity >= 0:
                     cost_price = (
                         (cost_price * quantity) + (unit_price * qty)
                         ) / (quantity + qty)
+                elif qty > 0:
+                    cost_price = unit_price
             quantity += qty
         return cost_price
 

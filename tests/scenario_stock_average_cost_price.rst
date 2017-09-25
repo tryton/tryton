@@ -47,7 +47,7 @@ Create product::
     >>> template.list_price = Decimal('28')
     >>> template.cost_price_method = 'average'
     >>> negative_product, = template.products
-    >>> negative_product.cost_price = Decimal('5')
+    >>> negative_product.cost_price = Decimal('5.0000')
     >>> template.save()
     >>> negative_product, = template.products
 
@@ -156,7 +156,7 @@ Recompute Cost Price::
     >>> product.cost_price
     Decimal('175.0000')
 
-Send one product we dont have in stock::
+Send one product we don't have in stock::
 
     >>> outgoing_move = StockMove()
     >>> outgoing_move.product = negative_product
@@ -170,7 +170,52 @@ Send one product we dont have in stock::
     >>> outgoing_move.currency = company.currency
     >>> outgoing_move.click('do')
 
-Recieve two units of the product with negative stock::
+Cost price should stay 5::
+
+    >>> negative_product.cost_price
+    Decimal('5.0000')
+
+Return one product to the supplier::
+
+    >>> outgoing_move = StockMove()
+    >>> outgoing_move.product = negative_product
+    >>> outgoing_move.uom = unit
+    >>> outgoing_move.quantity = 1
+    >>> outgoing_move.from_location = storage_loc
+    >>> outgoing_move.to_location = supplier_loc
+    >>> outgoing_move.planned_date = today
+    >>> outgoing_move.effective_date = today
+    >>> outgoing_move.company = company
+    >>> outgoing_move.currency = company.currency
+    >>> outgoing_move.click('do')
+
+Cost price should stay 5::
+
+    >>> negative_product.cost_price
+    Decimal('5.0000')
+
+Receive one unit of the product with negative stock so the stock stays negative::
+
+    >>> incoming_move = StockMove()
+    >>> incoming_move.product = negative_product
+    >>> incoming_move.uom = unit
+    >>> incoming_move.quantity = 1
+    >>> incoming_move.from_location = supplier_loc
+    >>> incoming_move.to_location = storage_loc
+    >>> incoming_move.planned_date = today
+    >>> incoming_move.effective_date = today
+    >>> incoming_move.company = company
+    >>> incoming_move.unit_price = Decimal('3')
+    >>> incoming_move.currency = company.currency
+    >>> incoming_move.click('do')
+
+Cost price should be set to last unit price::
+
+    >>> negative_product.reload()
+    >>> negative_product.cost_price
+    Decimal('3.0000')
+
+Receive two units of the product so the stock becomes positive::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = negative_product
@@ -185,7 +230,21 @@ Recieve two units of the product with negative stock::
     >>> incoming_move.currency = company.currency
     >>> incoming_move.click('do')
 
-Cost price should be set to 2::
+Cost price should be set to last unit price::
 
+    >>> negative_product.reload()
+    >>> negative_product.cost_price
+    Decimal('2.0000')
+
+Change Cost Price to 5, to force to write recomputed price later::
+
+    >>> negative_product.cost_price = Decimal('5.0000')
+    >>> negative_product.save()
+    >>> negative_product.cost_price
+    Decimal('5.0000')
+
+Recompute Cost Price::
+
+    >>> recompute = Wizard('product.recompute_cost_price', [negative_product])
     >>> negative_product.cost_price
     Decimal('2.0000')
