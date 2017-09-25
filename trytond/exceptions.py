@@ -3,7 +3,9 @@
 
 
 class TrytonException(Exception):
-    pass
+
+    def __str__(self):
+        return unicode(self).encode('utf-8')
 
 
 class UserError(TrytonException):
@@ -14,8 +16,8 @@ class UserError(TrytonException):
         self.description = description
         self.code = 1
 
-    def __str__(self):
-        return '%s - %s' % (self.message, self.description)
+    def __unicode__(self):
+        return u'%s - %s' % (self.message, self.description)
 
 
 class UserWarning(TrytonException):
@@ -28,8 +30,8 @@ class UserWarning(TrytonException):
         self.description = description
         self.code = 2
 
-    def __str__(self):
-        return '%s - %s' % (self.message, self.description)
+    def __unicode__(self):
+        return u'%s - %s' % (self.message, self.description)
 
 
 class LoginException(TrytonException):
@@ -54,7 +56,7 @@ class ConcurrencyException(TrytonException):
         self.message = message
         self.code = 4
 
-    def __str__(self):
+    def __unicode__(self):
         return self.message
 
 
@@ -67,5 +69,5 @@ class MissingDependenciesException(TrytonException):
     def __init__(self, missings):
         self.missings = missings
 
-    def __str__(self):
+    def __unicode__(self):
         return 'Missing dependencies: %s' % ' '.join(self.missings)
