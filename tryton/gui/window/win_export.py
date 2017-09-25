@@ -102,6 +102,11 @@ class WinExport(WinCSV):
             if field['type'] == 'selection':
                 items.insert(0, ('%s.translated' % name, field,
                         _('%s (string)') % string_))
+            elif field['type'] == 'reference':
+                items.insert(0, ('%s.translated' % name, field,
+                        _('%s (model name)') % string_))
+                items.insert(0, ('%s/rec_name' % name, field,
+                        _("%s (record name)") % string_))
 
             for name, field, string_ in items:
                 path = prefix_field + name
