@@ -264,3 +264,9 @@ real quantity (the real products on the shelves).
 
 When the inventory is confirmed, moves are created to balance expected
 quantities and real ones.
+
+.. warning::
+    Inventory is not suited to import initial stock level especially if other
+    cost price method than `fixed` is used.
+    Individual moves from supplier to each locations must be used with the cost
+    price as unit price.
