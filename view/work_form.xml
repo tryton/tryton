@@ -48,8 +48,8 @@ this repository contains the full copyright notices and license terms. -->
                 </group>
             </group>
         </page>
-        <page string="Children" id="children">
-              <field name="children" colspan="4"
+        <page name="children" col="1">
+              <field name="children"
                   view_ids="project.work_view_list_children"/>
         </page>
     </notebook>
