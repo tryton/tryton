@@ -560,7 +560,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
     '''
     __name__ = 'account.tax'
     name = fields.Char('Name', required=True)
-    description = fields.Char('Description', required=True,
+    description = fields.Char('Description', required=True, translate=True,
             help="The name that will be used in reports")
     group = fields.Many2One('account.tax.group', 'Group',
             states={
