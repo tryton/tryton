@@ -786,7 +786,8 @@ class Move(Workflow, ModelSQL, ModelView):
             names = ', '.join(m.rec_name for m in moves[:5])
             if len(moves) > 5:
                 names += '...'
-            warning_name = '%s.done' % hashlib.md5(str(moves)).hexdigest()
+            warning_name = '%s.done' % hashlib.md5(
+                str(moves).encode('utf-8')).hexdigest()
             cls.raise_user_warning(warning_name, 'no_origin', names)
 
     def pick_product(self, location_quantities):
