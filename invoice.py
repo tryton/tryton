@@ -93,13 +93,14 @@ class AnalyticAccountEntry:
         domain = super(AnalyticAccountEntry, cls).search_company(name, clause),
         domain = ['OR',
             domain,
-            (('origin.company',) + tuple(clause[1:]) +
-                ('account.invoice.line',)),
+            (('origin.' + clause[0],) + tuple(clause[1:3])
+                + ('account.invoice.line',) + tuple(clause[3:])),
             ]
         try:
             pool.get('account.asset')
             domain.append(
-                (('origin.company',) + tuple(clause[1:]) + ('account.asset',)))
+                (('origin.' + clause[0],) + tuple(clause[1:3])
+                    + ('account.asset',) + tuple(clause[3:])))
         except KeyError:
             pass
         return domain
