@@ -5,17 +5,22 @@ from collections import namedtuple
 from itertools import groupby
 
 from sql import Null
+from sql.conditionals import Coalesce
 from sql.aggregate import Max, Sum
 
+from trytond.config import config
 from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
-    sequence_ordered
+    sequence_ordered, DictSchemaMixin
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond import backend
 from trytond.pool import Pool
+from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.modules.company import CompanyReport
 
-__all__ = ['Statement', 'Line', 'LineGroup', 'StatementReport']
+__all__ = ['Statement', 'Line', 'LineGroup',
+    'Origin', 'OriginInformation',
+    'ImportStatementStart', 'ImportStatement', 'StatementReport']
 
 _STATES = {'readonly': Eval('state') != 'draft'}
 _DEPENDS = ['state']
@@ -47,6 +52,14 @@ STATES = [
     ('cancel', 'Canceled'),
     ('posted', 'Posted'),
     ]
+
+if config.getboolean('account_statement', 'filestore', default=False):
+    file_id = 'origin_file_id'
+    store_prefix = config.get(
+        'account_statement', 'store_prefix', default=None)
+else:
+    file_id = None
+    store_prefix = None
 
 
 class Unequal(object):
@@ -106,6 +119,15 @@ class Statement(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
             },
         depends=['state', 'journal'])
+    origins = fields.One2Many('account.statement.origin', 'statement',
+        "Origins", states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
+    origin_file = fields.Binary(
+        "Origin File", readonly=True,
+        file_id=file_id, store_prefix=store_prefix)
+    origin_file_id = fields.Char("Origin File ID", readonly=True)
     state = fields.Selection(STATES, 'State', readonly=True, select=True)
     validation = fields.Function(fields.Char('Validation'),
         'on_change_with_validation')
@@ -124,6 +146,9 @@ class Statement(Workflow, ModelSQL, ModelView):
                     'draft statements.'),
                 'debit_credit_account_statement_journal': ('Please provide '
                     'debit and credit account on statement journal "%s".'),
+                'post_with_pending_amount': ('Origin line "%(origin)s" '
+                    'of statement "%(statement)s" still has a pending amount '
+                    'of "%(amount)s".'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -327,7 +352,10 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @property
     def grouped_lines(self):
-        if self.lines:
+        if self.origins:
+            for origin in self.origins:
+                yield origin
+        elif self.lines:
             Line = self._get_grouped_line()
             for key, lines in groupby(self.lines, key=self._group_key):
                 yield Line(**dict(key + (('lines', list(lines)),)))
@@ -518,6 +546,14 @@ class Statement(Workflow, ModelSQL, ModelView):
     @Workflow.transition('posted')
     def post(cls, statements):
         StatementLine = Pool().get('account.statement.line')
+        for statement in statements:
+            for origin in statement.origins:
+                if origin.pending_amount:
+                    cls.raise_user_error('post_with_pending_amount', {
+                            'origin': origin.rec_name,
+                            'amount': origin.pending_amount,
+                            'statement': statement.rec_name,
+                            })
 
         lines = [l for s in statements for l in s.lines]
         StatementLine.post_move(lines)
@@ -532,53 +568,109 @@ class Statement(Workflow, ModelSQL, ModelView):
         StatementLine.delete_move(lines)
 
 
-class Line(sequence_ordered(), ModelSQL, ModelView):
+def origin_mixin(_states, _depends):
+    class Mixin:
+        statement = fields.Many2One(
+            'account.statement', "Statement",
+            required=True, ondelete='CASCADE', states=_states,
+            depends=_depends)
+        statement_state = fields.Function(
+            fields.Selection('get_statement_states', "Statement State"),
+            'on_change_with_statement_state')
+        company = fields.Function(
+            fields.Many2One('company.company', "Company"),
+            'on_change_with_company', searcher='search_company')
+        number = fields.Char("Number")
+        date = fields.Date(
+            "Date", required=True, states=_states, depends=_depends)
+        amount = fields.Numeric(
+            "Amount", required=True,
+            digits=(16, Eval('_parent_statement', {})
+                .get('currency_digits', 2)),
+            states=_states, depends=_depends)
+        party = fields.Many2One(
+            'party.party', "Party", states=_states, depends=_depends)
+        account = fields.Many2One(
+            'account.account', "Account",
+            domain=[
+                ('company', '=', Eval('company', 0)),
+                ('kind', '!=', 'view'),
+                ],
+            states=_states, depends=_depends + ['company'])
+        description = fields.Char(
+            "Description", states=_states, depends=_depends)
+
+        @classmethod
+        def get_statement_states(cls):
+            pool = Pool()
+            Statement = pool.get('account.statement')
+            return Statement.fields_get(['state'])['state']['selection']
+
+        @fields.depends('statement', '_parent_statement.state')
+        def on_change_with_statement_state(self, name=None):
+            if self.statement:
+                return self.statement.state
+
+        @fields.depends('statement', '_parent_statement.company')
+        def on_change_with_company(self, name=None):
+            if self.statement and self.statement.company:
+                return self.statement.company.id
+
+        @classmethod
+        def search_company(cls, name, clause):
+            return [('statement.company',) + tuple(clause[1:])]
+
+    return Mixin
+
+
+_states = {
+    'readonly': Eval('statement_state') != 'draft',
+    }
+_depends = ['statement_state']
+
+
+class Line(
+        origin_mixin(_states, _depends), sequence_ordered(),
+        ModelSQL, ModelView):
     'Account Statement Line'
     __name__ = 'account.statement.line'
-    _states = {
-        'readonly': Eval('statement_state') != 'draft',
-        }
-    _depends = ['statement_state']
 
-    statement = fields.Many2One('account.statement', 'Statement',
-        required=True, ondelete='CASCADE', states=_states, depends=_depends)
-    statement_state = fields.Function(
-        fields.Selection(STATES, 'Statement State'),
-        'on_change_with_statement_state')
-    number = fields.Char('Number')
-    date = fields.Date('Date', required=True, states=_states, depends=_depends)
-    amount = fields.Numeric('Amount', required=True,
-        digits=(16, Eval('_parent_statement', {}).get('currency_digits', 2)),
-        states=_states, depends=_depends)
-    party = fields.Many2One('party.party', 'Party',
-        states=_states, depends=_depends)
-    account = fields.Many2One('account.account', 'Account', required=True,
-        domain=[
-            ('company', '=', Eval('_parent_statement', {}).get('company', 0)),
-            ('kind', '!=', 'view'),
-            ],
-        states=_states, depends=_depends)
-    description = fields.Char('Description', states=_states, depends=_depends)
     move = fields.Many2One('account.move', 'Account Move', readonly=True,
         domain=[
-            ('company', '=', Eval('_parent_statement', {}).get('company', -1)),
-            ])
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     invoice = fields.Many2One('account.invoice', 'Invoice',
         domain=[
             If(Bool(Eval('party')), [('party', '=', Eval('party'))], []),
             If(Bool(Eval('account')), [('account', '=', Eval('account'))], []),
-            If(Eval('_parent_statement', {}).get('state') == 'draft',
+            If(Eval('statement_state') == 'draft',
                 ('state', '=', 'posted'),
                 ('state', '!=', '')),
             ],
         states=_states,
         depends=['party', 'account'] + _depends)
-
-    del _states, _depends
+    origin = fields.Many2One('account.statement.origin', 'Origin',
+        readonly=True,
+        states={
+            'invisible': ~Bool(Eval('origin')),
+            },
+        domain=[
+            ('statement', '=', Eval('statement')),
+            ('date', '=', Eval('date')),
+            ],
+        depends=['statement', 'date'])
 
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        if 'origin' not in cls.date.depends:
+            cls.date.states.update({
+                    'readonly': (cls.date.states['readonly'] |
+                        Bool(Eval('origin', 0))),
+                    })
+            cls.date.depends.append('origin')
+        cls.account.required = True
         cls._error_messages.update({
                 'amount_greater_invoice_amount_to_pay': ('Amount "%s" is '
                     'greater than the amount to pay of invoice.'),
@@ -588,11 +680,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             ('check_statement_line_amount', Check(t, t.amount != 0),
                 'Amount should be a positive or negative value.'),
             ]
-
-    @fields.depends('statement', '_parent_statement.state')
-    def on_change_with_statement_state(self, name=None):
-        if self.statement:
-            return self.statement.state
 
     @staticmethod
     def default_amount():
@@ -614,7 +701,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             else:
                 self.invoice = None
 
-    @fields.depends('amount', 'party', 'account', 'invoice',
+    @fields.depends('amount', 'party', 'account', 'invoice', 'statement',
         '_parent_statement.journal')
     def on_change_amount(self):
         Currency = Pool().get('currency.currency')
@@ -656,6 +743,45 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 self.party = self.invoice.party
             if not self.account:
                 self.account = self.invoice.account
+
+    @fields.depends('origin',
+        '_parent_origin.pending_amount', '_parent_origin.date',
+        '_parent_origin.party', '_parent_origin.account',
+        '_parent_origin.number', '_parent_origin.description',
+        '_parent_origin.statement',
+        methods=['party'])
+    def on_change_origin(self):
+        if self.origin:
+            self.amount = self.origin.pending_amount
+            self.date = self.origin.date
+            self.party = self.origin.party
+            self.number = self.origin.number
+            self.description = self.origin.description
+            self.statement = self.origin.statement
+            if self.origin.account:
+                self.account = self.origin.account
+            else:
+                self.on_change_party()
+
+    @fields.depends('origin', '_parent_origin.company')
+    def on_change_with_company(self, name=None):
+        try:
+            company = super(Line, self).on_change_with_company()
+        except AttributeError:
+            company = None
+        if self.origin and self.origin.company:
+            return self.origin.company.id
+        return company
+
+    @fields.depends('origin', '_parent_origin.state')
+    def on_change_with_statement_state(self, name=None):
+        try:
+            state = super(Line, self).on_change_with_statement_state()
+        except AttributeError:
+            state = None
+        if self.origin:
+            return self.origin.statement_state
+        return state
 
     def get_rec_name(self, name):
         return self.statement.rec_name
@@ -757,6 +883,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             amount_second_currency=amount_second_currency,
             )
 
+del _states, _depends
+
 
 class LineGroup(ModelSQL, ModelView):
     'Account Statement Line Group'
@@ -829,6 +957,114 @@ class LineGroup(ModelSQL, ModelView):
 
     def get_currency_digits(self, name):
         return self.statement.journal.currency.digits
+
+
+_states = {
+    'readonly': (Eval('statement_state') != 'draft') | Eval('lines', []),
+    }
+_depends = ['statement_state']
+
+
+class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
+    "Account Statement Origin"
+    __name__ = 'account.statement.origin'
+    _rec_name = 'number'
+
+    lines = fields.One2Many(
+        'account.statement.line', 'origin', "Lines",
+        states={
+            'readonly': ((Eval('statement_id', -1) < 0) |
+                ~Eval('statement_state').in_(['draft', 'validated'])),
+            },
+        domain=[
+            ('statement', '=', Eval('statement')),
+            ('date', '=', Eval('date')),
+            ],
+        depends=['statement', 'date', 'statement_id'])
+    statement_id = fields.Function(
+        fields.Integer("Statement ID"), 'on_change_with_statement_id')
+    pending_amount = fields.Function(
+        fields.Numeric("Pending Amount",
+            digits=(16, Eval('_parent_statement', {})
+                .get('currency_digits', 2))),
+        'on_change_with_pending_amount', searcher='search_pending_amount')
+    informations = fields.Dict(
+        'account.statement.origin.information', "Informations", readonly=True)
+
+    @fields.depends('statement')
+    def on_change_with_statement_id(self, name=None):
+        if self.statement:
+            return self.statement.id
+        return -1
+
+    @fields.depends('lines', 'amount')
+    def on_change_with_pending_amount(self, name=None):
+        lines_amount = sum(
+            getattr(l, 'amount') or Decimal(0) for l in self.lines)
+        return (self.amount or Decimal(0)) - lines_amount
+
+    @classmethod
+    def search_pending_amount(cls, name, clause):
+        pool = Pool()
+        Line = pool.get('account.statement.line')
+        table = cls.__table__()
+        line = Line.__table__()
+
+        _, operator, value = clause
+        Operator = fields.SQL_OPERATORS[operator]
+
+        query = (table.join(line, 'LEFT', condition=line.origin == table.id)
+            .select(table.id,
+                having=Operator(
+                    table.amount - Coalesce(Sum(line.amount), 0), value),
+                group_by=table.id))
+        return [('id', 'in', query)]
+del _states, _depends
+
+
+class OriginInformation(DictSchemaMixin, ModelSQL, ModelView):
+    "Statement Origin Information"
+    __name__ = 'account.statement.origin.information'
+
+
+class ImportStatementStart(ModelView):
+    "Statement Import Start"
+    __name__ = 'account.statement.import.start'
+    company = fields.Many2One('company.company', "Company", required=True)
+    file_ = fields.Binary("File", required=True)
+    file_format = fields.Selection([(None, '')], 'File Format', required=True)
+
+    @classmethod
+    def default_file_format(cls):
+        return None
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+
+class ImportStatement(Wizard):
+    "Statement Import"
+    __name__ = 'account.statement.import'
+    start = StateView('account.statement.import.start',
+        'account_statement.statement_import_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Import", 'import_', 'tryton-ok', default=True),
+            ])
+    import_ = StateAction('account_statement.act_statement_form')
+
+    def do_import_(self, action):
+        pool = Pool()
+        Statement = pool.get('account.statement')
+        statements = list(getattr(self, 'parse_%s' % self.start.file_format)())
+        for statement in statements:
+            statement.origin_file = self.start.file_
+        Statement.save(statements)
+
+        data = {'res_id': map(int, statements)}
+        if len(statements) == 1:
+            action['views'].reverse()
+        return action, data
 
 
 class StatementReport(CompanyReport):

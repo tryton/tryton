@@ -15,9 +15,13 @@ def register():
         Line,
         LineGroup,
         Move,
+        Origin,
+        OriginInformation,
+        ImportStatementStart,
         module='account_statement', type_='model')
     Pool.register(
         PartyReplace,
+        ImportStatement,
         module='account_statement', type_='wizard')
     Pool.register(
         StatementReport,

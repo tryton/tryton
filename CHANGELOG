@@ -1,3 +1,5 @@
+* Add generic wizard to import statement from files
+* Add statement origins
 * Unreconcile lines when cancelling statement
 
 Version 4.4.0 - 2017-05-01

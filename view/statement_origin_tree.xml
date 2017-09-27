@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree>
+    <field name="statement"/>
+    <field name="number"/>
+    <field name="date"/>
+    <field name="amount" sum="Amount"/>
+    <field name="pending_amount"/>
+    <field name="party"/>
+    <field name="account"/>
+    <field name="description"/>
+</tree>

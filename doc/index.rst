@@ -49,6 +49,12 @@ A Statement Line is mainly defined by:
 - Description.
 - Move: The move created for this line.
 
+Origin
+******
+
+The statement origin store the raw information from an external system that
+are imported. The origin are converted into statement lines.
+
 Line Group
 **********
 
@@ -77,3 +83,21 @@ The Amount validation requests to set the total amount to check against the
 total amount of the lines.
 The Number of Lines requests to set the number of unique lines on the
 statement.
+
+Import Statement
+****************
+
+A wizard to import statements from an external system. It creates statements
+with origins filled.
+
+Configuration
+*************
+
+The account_statement module uses the section `account_statement` to retrieve
+some parameters:
+
+- `filestore`: a boolean value to store origin file in the FileStore.
+  The default value is `False`.
+
+- `store_prefix`: the prefix to use with the FileStore.
+  The default value is `None`.

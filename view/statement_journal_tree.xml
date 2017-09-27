@@ -6,4 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="journal"/>
     <field name="currency"/>
     <field name="company"/>
+    <field name="bank_account"/>
 </tree>

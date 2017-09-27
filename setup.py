@@ -125,5 +125,6 @@ setup(name=name,
     use_2to3=True,
     convert_2to3_doctests=[
         'tests/scenario_account_statement.rst',
+        'tests/scenario_statement_origin.rst',
         ],
     )
