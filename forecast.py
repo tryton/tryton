@@ -193,7 +193,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('warehouse',) + tuple(clause[1:])]
+        return [('warehouse.rec_name',) + tuple(clause[1:])]
 
     @classmethod
     def validate(cls, forecasts):
@@ -403,7 +403,7 @@ class ForecastLine(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('product',) + tuple(clause[1:])]
+        return [('product.rec_name',) + tuple(clause[1:])]
 
     @classmethod
     def get_quantity_executed(cls, lines, name):
