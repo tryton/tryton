@@ -136,7 +136,7 @@ class ActionKeyword(ModelSQL, ModelView):
 
     @classmethod
     def search_groups(cls, name, clause):
-        return [('action.groups',) + tuple(clause[1:])]
+        return [('action.' + clause[0],) + tuple(clause[1:])]
 
     @classmethod
     def validate(cls, actions):
@@ -288,7 +288,7 @@ class ActionMixin(ModelSQL):
 
     @classmethod
     def search_action(cls, name, clause):
-        return [('action.' + name,) + tuple(clause[1:])]
+        return [('action.' + clause[0],) + tuple(clause[1:])]
 
     @classmethod
     def create(cls, vlist):
