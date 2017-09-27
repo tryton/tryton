@@ -115,7 +115,7 @@ class BOMInput(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('product',) + tuple(clause[1:])]
+        return [('product.rec_name',) + tuple(clause[1:])]
 
     @classmethod
     def validate(cls, boms):
