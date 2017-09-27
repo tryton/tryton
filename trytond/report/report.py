@@ -338,15 +338,25 @@ class Report(URLMixin, PoolBase):
 def get_email(report, record, languages):
     "Return email.mime and title from the report execution"
     pool = Pool()
-    Report = pool.get(report.report_name, type='report')
+    ActionReport = pool.get('ir.action.report')
+    report_id = None
+    if isinstance(report, Report):
+        Report_ = report
+    else:
+        if isinstance(report, ActionReport):
+            report_name = report.report_name
+            report_id = report.id
+        else:
+            report_name = report
+        Report_ = pool.get(report_name, type='report')
     converter = None
     msg = MIMEMultipart('alternative')
     msg.add_header('Content-Language', ', '.join(l.code for l in languages))
     for language in languages:
         with Transaction().set_context(language=language.code):
-            ext, content, _, title = Report.execute(
+            ext, content, _, title = Report_.execute(
                 [record.id], {
-                    'action_id': report.id,
+                    'action_id': report_id,
                     'language': language,
                     })
         if ext == 'html' and html2text:
