@@ -141,7 +141,8 @@ class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
 
     @classmethod
     def search_default_uom_category(cls, name, clause):
-        return [('default_uom.category',) + tuple(clause[1:])]
+        return [('default_uom.category' + clause[0].lstrip(name),)
+            + tuple(clause[1:])]
 
     @classmethod
     def create(cls, vlist):
@@ -259,7 +260,7 @@ class Product(ModelSQL, ModelView):
 
     @classmethod
     def search_template(cls, name, clause):
-        return [('template.%s' % name,) + tuple(clause[1:])]
+        return [('template.' + clause[0],) + tuple(clause[1:])]
 
     @classmethod
     def order_rec_name(cls, tables):
