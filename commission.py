@@ -70,8 +70,8 @@ class Agent(ModelSQL, ModelView):
         else:
             bool_op = 'OR'
         return [bool_op,
-            ('party',) + tuple(clause[1:]),
-            ('plan',) + tuple(clause[1:]),
+            ('party.rec_name',) + tuple(clause[1:]),
+            ('plan.rec_name',) + tuple(clause[1:]),
             ]
 
     @classmethod
