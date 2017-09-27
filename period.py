@@ -102,7 +102,7 @@ class Period(ModelSQL, ModelView):
 
     @classmethod
     def search_company(cls, name, clause):
-        return [('fiscalyear.%s' % name,) + tuple(clause[1:])]
+        return [('fiscalyear.' + clause[0],) + tuple(clause[1:])]
 
     @classmethod
     def validate(cls, periods):
