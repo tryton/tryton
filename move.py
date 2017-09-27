@@ -1145,9 +1145,10 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def search_move_field(cls, name, clause):
+        nested = clause[0].lstrip(name)
         if name.startswith('move_'):
             name = name[5:]
-        return [('move.' + name,) + tuple(clause[1:])]
+        return [('move.' + name + nested,) + tuple(clause[1:])]
 
     def _order_move_field(name):
         def order_field(tables):
