@@ -163,7 +163,8 @@ class Move:
 
     @classmethod
     def search_sale(cls, name, clause):
-        return [('origin.' + name,) + tuple(clause[1:]) + ('sale.line',)]
+        return [('origin.' + clause[0],) + tuple(clause[1:3])
+            + ('sale.line',) + tuple(clause[3:])]
 
     def get_sale_exception_state(self, name):
         SaleLine = Pool().get('sale.line')

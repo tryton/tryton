@@ -530,7 +530,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def search_invoices(cls, name, clause):
-        return [('lines.invoice_lines.invoice',) + tuple(clause[1:])]
+        return [('lines.invoice_lines.invoice' + clause[0].lstrip(name),)
+            + tuple(clause[1:])]
 
     def get_invoice_state(self):
         '''
@@ -578,12 +579,12 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         Search on shipments or returns
         '''
         def method(self, name, clause):
-            if isinstance(clause[2], basestring):
-                target = 'rec_name'
+            nested = clause[0].lstrip(name)
+            if nested:
+                return [('lines.moves.shipment' + nested,)
+                    + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
             else:
-                target = 'id'
-            return [('lines.moves.shipment.' + target,) + tuple(clause[1:])
-                + (model_name,)]
+                return [('lines.moves.shipment',) + tuple(clause[1:3])]
         return classmethod(method)
 
     search_shipments = search_shipments_returns('stock.shipment.out')
