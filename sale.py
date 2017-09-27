@@ -60,5 +60,6 @@ class AnalyticAccountEntry:
         domain = super(AnalyticAccountEntry, cls).search_company(name, clause),
         return ['OR',
             domain,
-            ('origin.sale.company',) + tuple(clause[1:]) + ('sale.line',),
+            (('origin.sale.' + clause[0],) + tuple(clause[1:3])
+                + ('sale.line',) + tuple(clause[3:])),
             ]
