@@ -118,7 +118,7 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def search_company(cls, name, clause):
-        return [('fiscalyear.%s' % name,) + tuple(clause[1:])]
+        return [('fiscalyear.' + clause[0],) + tuple(clause[1:])]
 
     def get_icon(self, name):
         return {
