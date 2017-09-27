@@ -20,6 +20,7 @@ if sys.platform == 'win32':
     include_files.extend([
         (os.path.join(sys.prefix, 'share/themes/MS-Windows'),
             'share/themes/MS-Windows'),
+        (os.path.join(sys.prefix, 'ssl'), 'etc/ssl'),
         ])
     dll_paths = os.getenv('PATH', os.defpath).split(os.pathsep)
     required_dlls = [
