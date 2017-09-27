@@ -1181,9 +1181,10 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def search_move_field(cls, name, clause):
+        nested = clause[0].lstrip(name)
         if name.startswith('move_'):
             name = name[5:]
-        return [('move.' + name,) + tuple(clause[1:])]
+        return [('move.' + name + nested,) + tuple(clause[1:])]
 
     @fields.depends('move','_parent_move.state')
     def on_change_with_move_state(self, name=None):
