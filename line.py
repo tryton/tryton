@@ -97,7 +97,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def search_company(cls, name, clause):
-        return [('move_line.account.company',) + tuple(clause[1:])]
+        return [('move_line.account.' + clause[0],) + tuple(clause[1:])]
 
     @fields.depends('move_line', '_parent_move_line.date',
         '_parent_move_line.debit', '_parent_move_line.credit')
