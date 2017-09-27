@@ -163,7 +163,7 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     @classmethod
     def search_purchase(cls, name, clause):
-        return [('purchase_line.purchase',) + tuple(clause[1:])]
+        return [('purchase_line.' + clause[0],) + tuple(clause[1:])]
 
     @property
     def currency(self):
