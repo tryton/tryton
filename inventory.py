@@ -358,7 +358,7 @@ class InventoryLine(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('product',) + tuple(clause[1:])]
+        return [('product.rec_name',) + tuple(clause[1:])]
 
     def get_uom(self, name):
         return self.product.default_uom.id
