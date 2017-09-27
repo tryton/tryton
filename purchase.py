@@ -41,7 +41,7 @@ class Purchase:
 
     @classmethod
     def search_invoice_lines(cls, name, clause):
-        return [('lines.invoice_lines',) + tuple(clause[1:])]
+        return [('lines.' + clause[0],) + tuple(clause[1:])]
 
     def create_invoice(self):
         pool = Pool()
