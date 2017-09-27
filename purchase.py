@@ -198,8 +198,12 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     },
                 'quote': {
                     'pre_validate': [
-                        ('purchase_date', '!=', None),
-                        ('invoice_address', '!=', None),
+                        If(~Eval('purchase_date'),
+                            ('purchase_date', '!=', None),
+                            ()),
+                        If(~Eval('invoice_address'),
+                            ('invoice_address', '!=', None),
+                            ()),
                         ],
                     'invisible': Eval('state') != 'draft',
                     'readonly': ~Eval('lines', []),
