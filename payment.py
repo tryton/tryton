@@ -249,7 +249,7 @@ class Payment(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def search_currency(cls, name, clause):
-        return [('journal.currency',) + tuple(clause[1:])]
+        return [('journal.' + clause[0],) + tuple(clause[1:])]
 
     @fields.depends('kind')
     def on_change_kind(self):
