@@ -67,8 +67,8 @@ class Invoice:
 
     @classmethod
     def search_purchases(cls, name, clause):
-        return [('lines.origin.purchase',) + tuple(clause[1:])
-            + ('purchase.line',)]
+        return [('lines.origin.purchase' + clause[0].lstrip(name),)
+            + tuple(clause[1:3]) + ('purchase.line',) + tuple(clause[3:])]
 
     @classmethod
     @process_purchase
