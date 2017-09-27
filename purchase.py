@@ -500,7 +500,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def search_invoices(cls, name, clause):
-        return [('lines.invoice_lines.invoice',) + tuple(clause[1:])]
+        return [('lines.invoice_lines.invoice' + clause[0].lstrip(name),)
+            + tuple(clause[1:])]
 
     def get_invoice_state(self):
         '''
