@@ -116,7 +116,7 @@ setup(name=name,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    shipping = trytond.modules.stock_package_shipping
+    stock_package_shipping = trytond.modules.stock_package_shipping
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
