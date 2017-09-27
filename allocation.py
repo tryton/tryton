@@ -36,7 +36,7 @@ class Allocation(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('employee',) + tuple(clause[1:])]
+        return [('employee.rec_name',) + tuple(clause[1:])]
 
     @classmethod
     def write(cls, *args):
