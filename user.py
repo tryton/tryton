@@ -8,8 +8,6 @@ import time
 import urllib
 import urlparse
 from email.header import Header
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 try:
     import bcrypt
@@ -26,7 +24,7 @@ from trytond.config import config
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pool import Pool
 from trytond.pyson import Eval
-from trytond.report import Report
+from trytond.report import Report, get_email
 from trytond.transaction import Transaction
 from trytond.sendmail import sendmail_transactional
 
@@ -46,22 +44,6 @@ def _send_email(from_, users, email_func):
         msg['To'] = user.email
         msg['Subject'] = Header(title, 'utf-8')
         sendmail_transactional(from_, [user.email], msg)
-
-
-def _get_email_template(report, user):
-    pool = Pool()
-    Report = pool.get(report, type='report')
-    language = user.party.lang.code if user.party and user.party.lang else None
-    with Transaction().set_context(language=language):
-        ext, content, _, title = Report.execute([user.id], {})
-    if ext == 'html' and html2text:
-        h = html2text.HTML2Text()
-        msg = MIMEMultipart('alternative')
-        msg.attach(MIMEText(h.handle(content), 'plain', _charset='utf-8'))
-        msg.attach(MIMEText(content, ext, _charset='utf-8'))
-    else:
-        msg = MIMEText(content, ext, _charset='utf-8')
-    return msg, title
 
 
 def _add_params(url, **params):
@@ -257,7 +239,8 @@ class User(ModelSQL, ModelView):
         self.email_token = token_hex(nbytes)
 
     def get_email_validation(self):
-        return _get_email_template('web.user.email_validation', self)
+        return get_email(
+            'web.user.email_validation', self, self.languages)
 
     def get_email_validation_url(self, url=None):
         if url is None:
@@ -310,7 +293,8 @@ class User(ModelSQL, ModelView):
         self.reset_password_token_expire = None
 
     def get_email_reset_password(self):
-        return _get_email_template('web.user.email_reset_password', self)
+        return get_email(
+            'web.user.email_reset_password', self, self.languages)
 
     def get_email_reset_password_url(self, url=None):
         if url is None:
@@ -351,6 +335,18 @@ class User(ModelSQL, ModelView):
                     return True
         Attempt.add(email)
         return False
+
+    @property
+    def languages(self):
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        if self.party and self.party.lang:
+            languages = [self.party.lang]
+        else:
+            languages = Language.search([
+                    ('code', '=', Transaction().language),
+                    ])
+        return languages
 
 
 class UserAuthenticateAttempt(LoginAttempt):
