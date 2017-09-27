@@ -138,7 +138,7 @@ class Dunning(ModelSQL, ModelView):
 
     @classmethod
     def search_line_field(cls, name, clause):
-        return [('line.' + name,) + tuple(clause[1:])]
+        return [('line.' + clause[0],) + tuple(clause[1:])]
 
     def get_amount(self, name):
         return self.line.debit - self.line.credit
