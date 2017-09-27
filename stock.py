@@ -482,7 +482,8 @@ class Move:
     @classmethod
     def search_customer_drop(cls, name, clause):
         return ['OR',
-            ('origin.sale.party',) + tuple(clause[1:]) + ('sale.line',),
-            (('origin.purchase.customer',) + tuple(clause[1:])
-                + ('purchase.line',)),
+            ('origin.sale.party' + clause[0].lstrip(name),)
+            + tuple(clause[1:3]) + ('sale.line',) + tuple(clause[3:]),
+            ('origin.purchase.customer' + clause[0].lstrip(name),)
+            + tuple(clause[1:3]) + ('purchase.line',) + tuple(clause[3:]),
             ]
