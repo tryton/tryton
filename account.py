@@ -20,7 +20,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 
-__all__ = ['TypeTemplate', 'Type', 'OpenType',
+__all__ = ['TypeTemplate', 'Type',
     'AccountTemplate', 'AccountTemplateTaxTemplate',
     'Account', 'AccountDeferral', 'AccountTax',
     'OpenChartAccountStart', 'OpenChartAccount',
@@ -303,25 +303,6 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
         if values:
             self.write(*values)
-
-
-class OpenType(Wizard):
-    'Open Type'
-    __name__ = 'account.account.open_type'
-    start_state = 'open_'
-    open_ = StateAction('account.act_account_list2')
-
-    def do_open_(self, action):
-        action['pyson_domain'] = PYSONEncoder().encode([
-                ('type', '=', Transaction().context['active_id']),
-                ('kind', '!=', 'view'),
-                ])
-        action['pyson_context'] = PYSONEncoder().encode({
-                'date': Transaction().context.get('date'),
-                'posted': Transaction().context.get('posted'),
-                'cumulate': Transaction().context.get('cumulate'),
-                })
-        return action, {}
 
 
 class AccountTemplate(ModelSQL, ModelView):

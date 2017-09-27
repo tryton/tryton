@@ -80,7 +80,6 @@ def register():
         PartyAccount,
         module='account', type_='model')
     Pool.register(
-        OpenType,
         BalanceNonDeferral,
         OpenChartAccount,
         CreateChart,
