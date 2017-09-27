@@ -243,7 +243,8 @@ class Move:
 
     @classmethod
     def search_purchase(cls, name, clause):
-        return [('origin.' + name,) + tuple(clause[1:]) + ('purchase.line',)]
+        return [('origin.' + clause[0],) + tuple(clause[1:3])
+            + ('purchase.line',) + tuple(clause[3:])]
 
     def get_purchase_exception_state(self, name):
         PurchaseLine = Pool().get('purchase.line')
@@ -298,8 +299,8 @@ class Move:
 
     @classmethod
     def search_supplier(cls, name, clause):
-        return [('origin.purchase.party',) + tuple(clause[1:]) +
-            ('purchase.line',)]
+        return [('origin.purchase.party' + clause[0].lstrip(name),)
+            + tuple(clause[1:3]) + ('purchase.line',) + tuple(clause[3:])]
 
     @classmethod
     @ModelView.button
