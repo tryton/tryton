@@ -152,6 +152,9 @@
             }
             this.record_deleted = record_deleted;
             if (new_records.length && modified) {
+                new_records.forEach(function(record) {
+                    record._changed.id = true;
+                });
                 var root_group = this.root_group();
                 this.changed().then(function() {
                     root_group.screens.forEach(function(screen) {
@@ -1964,14 +1967,15 @@
                 }
                 var values;
                 if (record2.id >= 0) {
-                    values = record2.get();
-                    delete values[parent_name];
-                    if (record2.has_changed() &&
-                            !jQuery.isEmptyObject(values)) {
-                        to_write.push([record2.id]);
-                        to_write.push(values);
+                    if (record2.has_changed()) {
+                        values = record2.get();
+                        delete values[parent_name];
+                        if (!jQuery.isEmptyObject(values)) {
+                            to_write.push([record2.id]);
+                            to_write.push(values);
+                        }
+                        to_add.push(record2.id);
                     }
-                    to_add.push(record2.id);
                 } else {
                     values = record2.get();
                     delete values[parent_name];
@@ -2141,17 +2145,16 @@
             record._values[this.name] = group;
         },
         get_timestamp: function(record) {
-            var group = record._values[this.name];
-            if (group === undefined) {
-                return {};
-            }
-
             var timestamps = {};
+            var group = record._values[this.name] || [];
+            var records = group.filter(function(record) {
+                return record.has_changed();
+            });
             var record2;
-            for (var i = 0, len = group.length; i < len; i++) {
-                record2 = group[i];
-                jQuery.extend(timestamps, record2.get_timestamp());
-            }
+            jQuery.extend(records, group.record_removed, group.record_deleted)
+            .forEach(function(record) {
+                jQuery.extend(timestamps, record.get_timestamp());
+            });
             return timestamps;
         },
         get_eval: function(record) {

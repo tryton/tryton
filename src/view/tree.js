@@ -754,7 +754,7 @@
             expanded = expanded || [];
             var update_expander = function() {
                 if (jQuery.isEmptyObject(
-                            this.record.field_get(
+                            this.record.field_get_client(
                                 this.children_field))) {
                     this.expander.css('visibility', 'hidden');
                 }
