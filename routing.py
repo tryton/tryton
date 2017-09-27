@@ -43,7 +43,7 @@ class RoutingStep(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('operation',) + tuple(clause[1:])]
+        return [('operation.rec_name',) + tuple(clause[1:])]
 
 
 class Routing_BOM(ModelSQL):
