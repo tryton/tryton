@@ -530,11 +530,12 @@ class O2MField(Field):
             if record2 in record_removed or record2 in record_deleted:
                 continue
             if record2.id >= 0:
-                values = record2.get()
-                values.pop(parent_name, None)
-                if record2.modified and values:
-                    to_write.extend(([record2.id], values))
-                to_add.append(record2.id)
+                if record2.modified:
+                    values = record2.get()
+                    values.pop(parent_name, None)
+                    if values:
+                        to_write.extend(([record2.id], values))
+                    to_add.append(record2.id)
             else:
                 values = record2.get()
                 values.pop(parent_name, None)
@@ -555,9 +556,10 @@ class O2MField(Field):
         if record.value.get(self.name) is None:
             return {}
         result = {}
-        for record2 in (record.value[self.name]
-                + record.value[self.name].record_removed
-                + record.value[self.name].record_deleted):
+        record_modified = (r for r in record.value[self.name] if r.modified)
+        for record2 in chain(record_modified,
+                record.value[self.name].record_removed,
+                record.value[self.name].record_deleted):
             result.update(record2.get_timestamp())
         return result
 

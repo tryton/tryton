@@ -243,6 +243,8 @@ class Group(SignalEvent, list):
             self.signal('group-cleared')
 
         if new_records and modified:
+            for record in new_records:
+                record.modified_fields.setdefault('id')
             new_records[0].signal('record-modified')
             new_records[0].signal('record-changed')
 
