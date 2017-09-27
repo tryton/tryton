@@ -353,7 +353,8 @@ class Sale:
 
     @classmethod
     def search_advance_payment_invoices(cls, name, clause):
-        return [('advance_payment_conditions.invoice_lines.invoice',)
+        return [('advance_payment_conditions.invoice_lines.invoice'
+                + clause[0].lstrip(name),)
             + tuple(clause[1:])]
 
     def get_invoice_state(self):
