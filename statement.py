@@ -792,7 +792,7 @@ class LineGroup(ModelSQL, ModelView):
 
     @classmethod
     def search_journal(cls, name, clause):
-        return [('statement.journal',) + tuple(clause[1:])]
+        return [('statement.' + clause[0],) + tuple(clause[1:])]
 
     def get_currency(self, name):
         return self.statement.journal.currency.id
