@@ -53,7 +53,7 @@ class Company(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('party',) + tuple(clause[1:])]
+        return [('party.rec_name',) + tuple(clause[1:])]
 
     @classmethod
     def write(cls, companies, values, *args):
@@ -95,7 +95,8 @@ class Employee(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('party',) + tuple(clause[1:])]
+        return [('party.rec_name',) + tuple(clause[1:])]
+
 
 class UserEmployee(ModelSQL):
     'User - Employee'
