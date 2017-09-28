@@ -170,8 +170,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls._error_messages.update({
                 'warehouse_required': ('A warehouse must be defined for '
                     'quotation of purchase "%s".'),
-                'missing_account_payable': ('Missing "Account Payable" on '
-                    'party "%s".'),
                 'delete_cancel': ('Purchase "%s" must be cancelled before '
                     'deletion.'),
                 })
@@ -692,7 +690,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             party=self.party,
             invoice_address=self.invoice_address,
             currency=self.currency,
-            account=self.party.account_payable,
+            account=self.party.account_payable_used,
             payment_term=self.payment_term,
             )
 
@@ -703,10 +701,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         if self.invoice_method == 'manual':
             return
-
-        if not self.party.account_payable:
-            self.raise_user_error('missing_account_payable',
-                    error_args=(self.party.rec_name,))
 
         invoice_lines = []
         for line in self.lines:
