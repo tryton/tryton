@@ -128,5 +128,6 @@ setup(name=name,
         'tests/scenario_move_cancel.rst',
         'tests/scenario_move_template.rst',
         'tests/scenario_reports.rst',
+        'tests/scenario_renew_fiscalyear.rst',
         ],
     )

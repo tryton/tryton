@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from __future__ import division
+
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
@@ -9,7 +11,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 __all__ = ['FiscalYear', 'FiscalYearLine',
-    'BalanceNonDeferralStart', 'BalanceNonDeferral']
+    'BalanceNonDeferralStart', 'BalanceNonDeferral',
+    'RenewFiscalYearStart', 'RenewFiscalYear']
 
 STATES = {
     'readonly': Eval('state') != 'open',
@@ -477,4 +480,113 @@ class BalanceNonDeferral(Wizard):
         action['pyson_domain'] = PYSONEncoder().encode([
                 ('origin', '=', str(self.start.fiscalyear)),
                 ])
+        return action, {}
+
+
+def month_delta(d1, d2):
+    return (d1.year - d2.year) * 12 + d1.month - d2.month
+
+
+class RenewFiscalYearStart(ModelView):
+    "Renew Fiscal Year Start"
+    __name__ = 'account.fiscalyear.renew.start'
+    name = fields.Char("Name", required=True)
+    company = fields.Many2One('company.company', "Company", required=True)
+    previous_fiscalyear = fields.Many2One(
+        'account.fiscalyear', "Previous Fiscalyear", required=True,
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'],
+        help="Used as reference for fiscalyear configuration.")
+    start_date = fields.Date("Start Date", required=True)
+    end_date = fields.Date("End Date", required=True)
+    reset_sequences = fields.Boolean("Reset Sequences",
+        help="If checked, new sequences will be created.")
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @classmethod
+    def default_previous_fiscalyear(cls):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        fiscalyears = FiscalYear.search([
+                ('company', '=', cls.default_company() or -1),
+                ],
+            order=[('end_date', 'DESC')], limit=1)
+        if fiscalyears:
+            fiscalyear, = fiscalyears
+            return fiscalyear.id
+
+    @classmethod
+    def default_reset_sequences(cls):
+        return True
+
+    @fields.depends('previous_fiscalyear')
+    def on_change_previous_fiscalyear(self):
+        if self.previous_fiscalyear:
+            fiscalyear = self.previous_fiscalyear
+            months = month_delta(
+                fiscalyear.end_date, fiscalyear.start_date) + 1
+            self.start_date = fiscalyear.start_date + relativedelta(
+                months=months, day=fiscalyear.start_date.day)
+            self.end_date = fiscalyear.end_date + relativedelta(
+                months=months, day=fiscalyear.end_date.day)
+            self.name = fiscalyear.name.replace(
+                str(fiscalyear.end_date.year),
+                str(self.end_date.year)).replace(
+                str(fiscalyear.start_date.year),
+                str(self.start_date.year))
+
+
+class RenewFiscalYear(Wizard):
+    "Renew Fiscal Year"
+    __name__ = 'account.fiscalyear.renew'
+    start = StateView('account.fiscalyear.renew.start',
+        'account.fiscalyear_renew_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Create", 'create_', 'tryton-ok', default=True),
+            ])
+    create_ = StateAction('account.act_fiscalyear_form')
+
+    def fiscalyear_defaults(self):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        defaults = {
+            'name': self.start.name,
+            'start_date': self.start.start_date,
+            'end_date': self.start.end_date,
+            'periods': [],
+            }
+        previous_sequence = self.start.previous_fiscalyear.post_move_sequence
+        sequence, = Sequence.copy([previous_sequence])
+        if self.start.reset_sequences:
+            sequence.number_next = 1
+        else:
+            sequence.number_next = previous_sequence.number_next
+        sequence.save()
+        defaults['post_move_sequence'] = sequence.id
+        return defaults
+
+    def create_fiscalyear(self):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+        fiscalyear, = FiscalYear.copy(
+            [self.start.previous_fiscalyear],
+            default=self.fiscalyear_defaults())
+        periods = [p for p in self.start.previous_fiscalyear.periods
+            if p.type == 'standard']
+        months = month_delta(fiscalyear.end_date, fiscalyear.start_date) + 1
+        if len(periods) == months:
+            FiscalYear.create_period([fiscalyear])
+        elif len(periods) == months / 3:
+            FiscalYear.create_period_3([fiscalyear])
+        return fiscalyear
+
+    def do_create_(self, action):
+        fiscalyear = self.create_fiscalyear()
+        action['res_id'] = [fiscalyear.id]
+        action['views'].reverse()
         return action, {}

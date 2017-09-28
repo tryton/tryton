@@ -1,3 +1,4 @@
+* Ease creation of new fiscalyear
 * Drop required on party payable and receivable accounts
 * Make tax description translatable
 * Add searcher on General Ledger
