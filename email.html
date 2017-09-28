@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:py="http://genshi.edgewall.org/">
+    <head>
+        <title>Reminder Notice</title>
+    </head>
+    <body>
+        <py:for each="party, letter in letters.items()">
+        <header style="text-align: center">
+            <h3>${company.rec_name}</h3>
+            <py:if test="company.header">
+            <p py:for="line in company.header.splitlines()">${line}</p>
+            </py:if>
+        </header>
+        <h1 style="text-align: center">Reminder Notice</h1>
+        <p>Date: ${format_date(today, data.language)}</p>
+        <p py:if="letter.fees">Fees:
+        ${', '.join(format_currency(amount, data['language'], cur)
+        for cur, amount in letter.fees.iteritems())}
+        </p>
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th id="description">Description</th>
+                    <th id="reference">Reference</th>
+                    <th id="date">Date</th>
+                    <th id="amount">Amount</th>
+                    <th id="due-date">Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr py:for="dunning in letter.dunnings">
+                    <td headers="description">
+                        ${dunning.line.description if dunning.line else ''}
+                    </td>
+                    <td headers="reference">
+                        ${dunning.line.origin.rec_name if dunning.line and dunning.line.origin else ''}
+                    </td>
+                    <td headers="date">
+                        ${format_date(
+                        dunning.line.date, data['language']) if dunning.line else ''}
+                    </td>
+                    <td headers="amount">
+                        ${format_currency(
+                        dunning.amount_second_currency, data['language'],
+                        dunning.second_currency) if dunning.amount_second_currency else ''}
+                    </td>
+                    <td headers="due-date">
+                        ${format_date(
+                        dunning.maturity_date, data['language']) if dunning.maturity_date else ''}
+                    </td>
+                </tr>
+            </tbody>
+            <py:if test="letter.payments">
+            <thead>
+                <tr>
+                    <td colspan="2"></td>
+                    <th id="payments" colspan="2">Pending Payments Received</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr py:for="payment in letter.payments">
+                    <td colspan="2"></td>
+                    <td headers="date payments">
+                        ${format_date(payment.date, data['language'])}
+                    </td>
+                    <td headers="amount payments">
+                        ${format_currency(
+                        get_payment_amount(payment), data['language'],
+                        get_payment_currency(payment))}
+                    </td>
+                </tr>
+            </tbody>
+            </py:if>
+        </table>
+        <footer style="text-align: center">
+            <py:if test="company.footer">
+            <p py:for="line in company.footer.splitlines()">${line}</p>
+            </py:if>
+        </footer>
+        </py:for>
+    </body>
+</html>
