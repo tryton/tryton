@@ -160,7 +160,6 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
     @classmethod
     def write(cls, *args):
         actions = iter(args)
-        args = []
         for fiscalyears, values in zip(actions, actions):
             if values.get('post_move_sequence'):
                 for fiscalyear in fiscalyears:
