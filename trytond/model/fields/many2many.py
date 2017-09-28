@@ -233,14 +233,15 @@ class Many2Many(Field):
                 action = value[0]
                 args = value[1:]
                 actions[action](ids, *args)
-        if relation_to_create:
-            Relation.create(relation_to_create)
+        # Ordered operations to avoid uniqueness/overlapping constraints
         if relation_to_delete:
             Relation.delete(relation_to_delete)
-        if target_to_write:
-            Target.write(*target_to_write)
         if target_to_delete:
             Target.delete(target_to_delete)
+        if target_to_write:
+            Target.write(*target_to_write)
+        if relation_to_create:
+            Relation.create(relation_to_create)
 
     def get_target(self):
         'Return the target model'

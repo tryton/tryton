@@ -47,6 +47,7 @@ class One2One(Many2Many):
                             self.origin: record_id,
                             self.target: value,
                             })
+        # Ordered operations to avoid uniqueness/overlapping constraints
         if to_delete:
             Relation.delete(to_delete)
         if to_create:

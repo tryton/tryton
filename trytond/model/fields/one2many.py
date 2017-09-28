@@ -213,12 +213,13 @@ class One2Many(Field):
                 action = value[0]
                 args = value[1:]
                 actions[action](ids, *args)
-        if to_create:
-            Target.create(to_create)
-        if to_write:
-            Target.write(*to_write)
+        # Ordered operations to avoid uniqueness/overlapping constraints
         if to_delete:
             Target.delete(to_delete)
+        if to_write:
+            Target.write(*to_write)
+        if to_create:
+            Target.create(to_create)
 
     def get_target(self):
         'Return the target Model'
