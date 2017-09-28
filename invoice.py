@@ -442,11 +442,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         self.account = None
         if self.party:
             if self.type == 'out':
-                self.account = self.party.account_receivable
+                self.account = self.party.account_receivable_used
                 if self.party.customer_payment_term:
                     self.payment_term = self.party.customer_payment_term
             elif self.type == 'in':
-                self.account = self.party.account_payable
+                self.account = self.party.account_payable_used
                 if self.party.supplier_payment_term:
                     self.payment_term = self.party.supplier_payment_term
 
