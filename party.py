@@ -8,7 +8,7 @@ from sql.conditionals import Coalesce
 
 from trytond import backend
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
@@ -33,7 +33,6 @@ class Party(CompanyMultiValueMixin):
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
-                'required': Bool(Eval('context', {}).get('company')),
                 'invisible': ~Eval('context', {}).get('company'),
                 }))
     account_receivable = fields.MultiValue(fields.Many2One(
@@ -43,7 +42,6 @@ class Party(CompanyMultiValueMixin):
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
-                'required': Bool(Eval('context', {}).get('company')),
                 'invisible': ~Eval('context', {}).get('company'),
                 }))
     customer_tax_rule = fields.MultiValue(fields.Many2One(
@@ -84,29 +82,21 @@ class Party(CompanyMultiValueMixin):
             'get_receivable_payable', searcher='search_receivable_payable')
 
     @classmethod
+    def __setup__(cls):
+        super(Party, cls).__setup__()
+        cls._error_messages.update({
+            'missing_receivable_account': (
+                    'There is no receivable account on party "%(name)s".'),
+            'missing_payable_account': (
+                    'There is no payable account on party "%(name)s".'),
+            })
+
+    @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
         if field in account_names:
             return pool.get('party.party.account')
         return super(Party, cls).multivalue_model(field)
-
-    @classmethod
-    def default_account_payable(cls, **pattern):
-        pool = Pool()
-        Configuration = pool.get('account.configuration')
-        config = Configuration(1)
-        account = config.get_multivalue(
-            'default_account_payable', **pattern)
-        return account.id if account else None
-
-    @classmethod
-    def default_account_receivable(cls, **pattern):
-        pool = Pool()
-        Configuration = pool.get('account.configuration')
-        config = Configuration(1)
-        account = config.get_multivalue(
-            'default_account_receivable', **pattern)
-        return account.id if account else None
 
     @classmethod
     def get_currency_digits(cls, parties, name):
@@ -233,6 +223,34 @@ class Party(CompanyMultiValueMixin):
                     group_by=line.party,
                     having=Operator(amount, value))
         return [('id', 'in', query)]
+
+    @property
+    def account_payable_used(self):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        account = self.account_payable
+        if not account:
+            config = Configuration(1)
+            account = config.get_multivalue('default_account_payable')
+        if not account:
+            self.raise_user_error('missing_payable_account', {
+                    'name': self.rec_name,
+                    })
+        return account
+
+    @property
+    def account_receivable_used(self):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        account = self.account_receivable
+        if not account:
+            config = Configuration(1)
+            account = config.get_multivalue('default_account_receivable')
+        if not account:
+            self.raise_user_error('missing_receivable_account', {
+                    'name': self.rec_name,
+                    })
+        return account
 
 
 class PartyAccount(ModelSQL, CompanyValueMixin):

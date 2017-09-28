@@ -1,3 +1,4 @@
+* Drop required on party payable and receivable accounts
 * Make tax description translatable
 * Add searcher on General Ledger
 * Add from and to date to General Ledger and Income Statement

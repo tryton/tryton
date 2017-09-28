@@ -993,6 +993,34 @@ class AccountTestCase(ModuleTestCase):
         self.assertSequenceEqual(
             Tax.sort_taxes([tax3, tax2, tax1]), [tax1, tax2, tax3])
 
+    @with_transaction()
+    def test_configuration_accounts_on_party(self):
+        'Test configuration accounts are used as fallback on party'
+        pool = Pool()
+        Party = pool.get('party.party')
+        Account = pool.get('account.account')
+
+        party = Party(name='Party')
+        party.save()
+
+        self.assertIsNone(party.account_payable)
+        self.assertIsNone(party.account_receivable)
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+            receivable, = Account.search([
+                    ('kind', '=', 'receivable'),
+                    ])
+            payable, = Account.search([
+                    ('kind', '=', 'payable'),
+                    ])
+
+            party = Party(party.id)
+
+            self.assertEqual(party.account_payable_used, payable)
+            self.assertEqual(party.account_receivable_used, receivable)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
