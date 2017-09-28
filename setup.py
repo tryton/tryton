@@ -69,7 +69,7 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_be': (info.get('xml', [])
-            + ['tryton.cfg']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

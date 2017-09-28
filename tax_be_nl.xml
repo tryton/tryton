@@ -363,6 +363,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_II_D_46_nl"/>
             <field name="credit_note_base_code" ref="tax_code_II_F_48_nl"/>
+            <field name="ec_sales_list_code">L</field>
             <field name="account" ref="root_nl"/>
         </record>
 
@@ -467,6 +468,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="451_nl"/>
             <field name="invoice_base_code" ref="tax_code_II_44_nl"/>
             <field name="credit_note_base_code" ref="tax_code_II_F_48_nl"/>
+            <field name="ec_sales_list_code">S</field>
             <field name="account" ref="root_nl"/>
         </record>
 

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="vat_customer_view_list">
+            <field name="model">account.be.vat_customer</field>
+            <field name="type">tree</field>
+            <field name="name">vat_customer_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_vat_customer_form">
+            <field name="name">Belgium VAT Customer</field>
+            <field name="res_model">account.be.vat_customer</field>
+            <field name="context_model">account.be.vat_customer.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_vat_customer_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="vat_customer_view_list"/>
+            <field name="act_window" ref="act_vat_customer_form"/>
+        </record>
+        <menuitem parent="account.menu_reporting"
+            action="act_vat_customer_form" id="menu_vat_customer"/>
+
+        <record model="ir.ui.view" id="vat_customer_context_view_form">
+            <field name="model">account.be.vat_customer.context</field>
+            <field name="type">form</field>
+            <field name="name">vat_customer_context_form</field>
+        </record>
+
+    </data>
+</tryton>
