@@ -202,6 +202,11 @@ class Payment:
                         if line.account.reconcile:
                             to_reconcile[payment.party][line.account].append(
                                 line)
+
+        # Remove clearing_move before delete in case reconciliation triggers
+        # would use it.
+        cls.write(payments, {'clearing_move': None})
+
         if to_unreconcile:
             Reconciliation.delete(to_unreconcile)
         if to_delete:
@@ -209,8 +214,6 @@ class Payment:
         for party in to_reconcile:
             for lines in to_reconcile[party].itervalues():
                 Line.reconcile(lines)
-
-        cls.write(payments, {'clearing_move': None})
 
 
 class Succeed(Wizard):
