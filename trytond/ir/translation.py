@@ -692,33 +692,10 @@ class Translation(ModelSQL, ModelView):
         ModelView._fields_view_get_cache.clear()
         vlist = [x.copy() for x in vlist]
 
-        cursor = Transaction().connection.cursor()
-        table = cls.__table__()
         for vals in vlist:
             if not vals.get('module'):
                 if Transaction().context.get('module'):
                     vals['module'] = Transaction().context['module']
-                elif vals.get('type', '') in {
-                        'report', 'view', 'wizard_button', 'selection',
-                        'error'}:
-                    cursor.execute(*table.select(table.module,
-                            where=(table.name == vals.get('name') or '')
-                            & (table.res_id == vals.get('res_id') or -1)
-                            & (table.lang == 'en')
-                            & (table.type == vals.get('type') or '')
-                            & (table.src == vals.get('src') or '')))
-                    fetchone = cursor.fetchone()
-                    if fetchone:
-                        vals['module'] = fetchone[0]
-                else:
-                    cursor.execute(*table.select(table.module, table.src,
-                            where=(table.name == vals.get('name') or '')
-                            & (table.res_id == vals.get('res_id') or -1)
-                            & (table.lang == 'en')
-                            & (table.type == vals.get('type') or '')))
-                    fetchone = cursor.fetchone()
-                    if fetchone:
-                        vals['module'], vals['src'] = fetchone
             vals['src_md5'] = cls.get_src_md5(vals.get('src'))
         return super(Translation, cls).create(vlist)
 
