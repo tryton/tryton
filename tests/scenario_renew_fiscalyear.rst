@@ -49,7 +49,7 @@ Renew fiscalyear using the wizard::
     >>> new_fiscalyear, = renew_fiscalyear.actions[0]
     >>> len(new_fiscalyear.periods)
     12
-    >>> new_fiscalyear.post_move_sequence.number_next
+    >>> int(new_fiscalyear.post_move_sequence.number_next)
     10
 
 Renew fiscalyear resetting sequences::
@@ -58,5 +58,5 @@ Renew fiscalyear resetting sequences::
     >>> renew_fiscalyear.form.reset_sequences = True
     >>> renew_fiscalyear.execute('create_')
     >>> new_fiscalyear, = renew_fiscalyear.actions[0]
-    >>> new_fiscalyear.post_move_sequence.number_next
+    >>> int(new_fiscalyear.post_move_sequence.number_next)
     1
