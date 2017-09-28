@@ -665,7 +665,7 @@
                 td = jQuery('<td/>', {
                     // TODO RTL
                     'data-title': column.attributes.string + Sao.i18n.gettext(': ')
-                }).append(jQuery('<div/>', { // For responsive min-height
+                }).append(jQuery('<span/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
                 td.css('overflow', 'hidden');

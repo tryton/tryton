@@ -295,10 +295,11 @@ input.column-boolean {
         & > thead > tr,
         & > tbody > tr > td {
             text-align: left !important;
-        }
-        /* Force height to empty content */
-        & td > div:empty {
-            min-height: 20px;
+            /* Force height to empty content */
+            & > span:empty {
+                min-height: 20px;
+                display: block;
+            }
         }
     }
     table.responsive-noheader {
