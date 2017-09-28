@@ -9,7 +9,7 @@ from itertools import groupby
 
 from sql import Literal, Union, Column, Null, For
 from sql.aggregate import Sum
-from sql.conditionals import Coalesce
+from sql.conditionals import Coalesce, Case
 from sql.operators import Concat
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
@@ -1012,6 +1012,84 @@ class Move(Workflow, ModelSQL, ModelView):
         if PeriodCache:
             period_cache = PeriodCache.__table__()
 
+        if with_childs:
+            # Replace tables with union which replaces flat children locations
+            # by their parent location.
+            from_location = Location.__table__()
+            from_parent_location = Location.__table__()
+            to_location = Location.__table__()
+            to_parent_location = Location.__table__()
+            columns = ['id', 'state', 'effective_date', 'planned_date',
+                'internal_quantity'] + list(grouping)
+            columns = [Column(move, c).as_(c) for c in columns]
+
+            move_with_parent = (move
+                .join(from_location,
+                    condition=move.from_location == from_location.id)
+                .join(from_parent_location, type_='LEFT',
+                    condition=from_location.parent == from_parent_location.id)
+                .join(to_location,
+                    condition=move.to_location == to_location.id)
+                .join(to_parent_location, type_='LEFT',
+                    condition=to_location.parent == to_parent_location.id))
+
+            move = Union(
+                # Moves not linked to any flat location
+                move_with_parent.select(
+                    move.from_location.as_('from_location'),
+                    move.to_location.as_('to_location'),
+                    *columns,
+                    where=(Coalesce(from_parent_location.flat_childs, False)
+                        != True)
+                    & (Coalesce(to_parent_location.flat_childs, False)
+                        != True)),
+                # Append moves linked from/to flat locations to their parents
+                move_with_parent.select(
+                    Case(
+                        (from_parent_location.flat_childs,
+                            from_parent_location.id),
+                        else_=move.from_location).as_('from_location'),
+                    Case(
+                        (to_parent_location.flat_childs,
+                            to_parent_location.id),
+                        else_=move.to_location).as_('to_location'),
+                    *columns,
+                    where=(from_parent_location.flat_childs == True)
+                    | (to_parent_location.flat_childs == True)),
+                # Append moves linked to from/to flat locations only
+                move_with_parent.select(
+                    Case(
+                        (from_parent_location.flat_childs,
+                            from_location.id),
+                        else_=Null).as_('from_location'),
+                    Case(
+                        (to_parent_location.flat_childs,
+                            to_location.id),
+                        else_=Null).as_('to_location'),
+                    *columns,
+                    where=(from_parent_location.flat_childs == True)
+                    | (to_parent_location.flat_childs == True)),
+                all_=True)
+
+            if PeriodCache:
+                location = Location.__table__()
+                parent_location = Location.__table__()
+                columns = ['internal_quantity', 'period'] + list(grouping)
+                columns = [Column(period_cache, c).as_(c) for c in columns]
+                period_cache = Union(
+                    period_cache.select(
+                        period_cache.location.as_('location'),
+                        *columns),
+                    period_cache.join(location,
+                        condition=period_cache.location == location.id
+                        ).join(parent_location, type_='LEFT',
+                        condition=location.parent == parent_location.id
+                        ).select(
+                        parent_location.id.as_('location'),
+                        *columns,
+                        where=parent_location.flat_childs == True),
+                    all_=True)
+
         if not context.get('stock_date_end'):
             context['stock_date_end'] = datetime.date.max
 
@@ -1152,9 +1230,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 state_date_clause_out &= state_date_clause()
 
         if with_childs:
-            location_query = Location.search([
-                    ('parent', 'child_of', location_ids),
-                    ], query=True, order=[])
+            location_query = _location_children(location_ids, query=True)
         else:
             location_query = location_ids[:]
 
@@ -1251,7 +1327,6 @@ class Move(Workflow, ModelSQL, ModelView):
             and quantity as value.
         """
         pool = Pool()
-        Location = pool.get('stock.location')
         Product = pool.get('product.product')
 
         assert query is not None, (
@@ -1283,15 +1358,13 @@ class Move(Workflow, ModelSQL, ModelView):
         # Propagate quantities on from child locations to their parents
         if with_childs and len(location_ids) > 1:
             # Fetch all child locations
-            locations = Location.search([
-                    ('parent', 'child_of', location_ids),
-                    ])
+            locations = _location_children(location_ids)
             # Generate a set of locations without childs and a dict
             # giving the parent of each location.
             leafs = set([l.id for l in locations])
             parent = {}
             for location in locations:
-                if not location.parent:
+                if not location.parent or location.parent.flat_childs:
                     continue
                 if location.parent.id in leafs:
                     leafs.remove(location.parent.id)
@@ -1330,3 +1403,26 @@ class Move(Workflow, ModelSQL, ModelView):
             quantities[key] = uom.round(quantity)
 
         return quantities
+
+
+def _location_children(location_ids, query=False):
+    "Return children location without including flat children"
+    pool = Pool()
+    Location = pool.get('stock.location')
+    nested_location_ids = []
+    flat_location_ids = []
+    for location in Location.browse(location_ids):
+        if location.flat_childs:
+            flat_location_ids.append(location.id)
+        else:
+            nested_location_ids.append(location.id)
+    if nested_location_ids:
+        return Location.search(['OR',
+                ('parent', 'child_of', nested_location_ids),
+                ('id', 'in', flat_location_ids),
+                ], query=query, order=[])
+    else:
+        if query:
+            return flat_location_ids
+        else:
+            return Location.browse(flat_location_ids)

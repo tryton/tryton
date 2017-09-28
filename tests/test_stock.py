@@ -443,6 +443,115 @@ class StockTestCase(ModuleTestCase):
                     self.assertListEqual([product], found_products)
 
     @with_transaction()
+    def test_products_by_location_flat_childs(self, period_closed=False):
+        "Test products_by_location on flat_childs"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
+        Period = pool.get('stock.period')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': "Product",
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+
+        lost_found, = Location.search([('type', '=', 'lost_found')])
+        storage, = Location.search([('code', '=', 'STO')])
+        storage.flat_childs = True
+        storage.save()
+        storage1, = Location.create([{
+                    'name': 'Storage 1',
+                    'type': 'storage',
+                    'parent': storage.id,
+                    }])
+        storage2, = Location.create([{
+                    'name': 'Storage 2',
+                    'type': 'storage',
+                    'parent': storage.id,
+                    }])
+
+        company = create_company()
+        with set_company(company):
+            date = Date.today() - relativedelta(days=1)
+
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': lost_found.id,
+                        'to_location': storage.id,
+                        'planned_date': date,
+                        'effective_date': date,
+                        'company': company.id,
+                        }, {
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': lost_found.id,
+                        'to_location': storage1.id,
+                        'planned_date': date,
+                        'effective_date': date,
+                        'company': company.id,
+                        }, {
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 1,
+                        'from_location': storage1.id,
+                        'to_location': storage2.id,
+                        'planned_date': date,
+                        'effective_date': date,
+                        'company': company.id,
+                        }])
+            Move.do(moves)
+
+            if period_closed:
+                period, = Period.create([{
+                            'date': date,
+                            'company': company.id,
+                            }])
+                Period.close([period])
+
+            # Test flat location
+            products_by_location = Product.products_by_location(
+                [storage.id], [product.id], with_childs=True)
+            self.assertEqual(
+                products_by_location[(storage.id, product.id)], 2)
+
+            # Test mixed flat and nested location
+            products_by_location = Product.products_by_location(
+                [storage.parent.id, storage.id, storage1.id, storage2.id],
+                [product.id],
+                with_childs=True)
+            self.assertEqual(
+                products_by_location[(storage.parent.id, product.id)], 2)
+            self.assertEqual(
+                products_by_location[(storage.id, product.id)], 2)
+            self.assertEqual(
+                products_by_location[(storage1.id, product.id)], 0)
+            self.assertEqual(
+                products_by_location[(storage2.id, product.id)], 1)
+
+            # Test non flat
+            products_by_location = Product.products_by_location(
+                [lost_found.id], [product.id], with_childs=True)
+            self.assertEqual(
+                products_by_location[(lost_found.id, product.id)], -2)
+
+    def test_products_by_location_flat_childs_period_closed(self):
+        "Test products_by_location on flat_childs with period closed"
+        self.test_products_by_location_flat_childs(period_closed=True)
+
+    @with_transaction()
     def test_period(self):
         'Test period'
         pool = Pool()

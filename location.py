@@ -54,6 +54,9 @@ class Location(ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many("stock.location", "parent", "Children")
+    flat_childs = fields.Boolean(
+        "Flat Children",
+        help="Check to restrict to one level of children.")
     warehouse = fields.Function(fields.Many2One('stock.location', 'Warehouse'),
         'get_warehouse')
     input_location = fields.Many2One(
@@ -126,8 +129,17 @@ class Location(ModelSQL, ModelView):
                     "to be deactivated."),
                 })
 
-        parent_domain = []
-        childs_domain = []
+        parent_domain = [
+            ['OR',
+                ('parent.flat_childs', '=', False),
+                ('parent', '=', None),
+                ]
+            ]
+        childs_domain = [
+            If(Eval('flat_childs', False),
+                ('childs', '=', None),
+                ()),
+            ]
         childs_mapping = cls._childs_domain()
         for type_, allowed_parents in cls._parent_domain().iteritems():
             parent_domain.append(If(Eval('type') == type_,
@@ -136,7 +148,7 @@ class Location(ModelSQL, ModelView):
                     ('type', 'in', childs_mapping[type_]), ()))
         cls.parent.domain = parent_domain
         cls.childs.domain = childs_domain
-        cls.childs.depends.append('type')
+        cls.childs.depends.extend(['flat_childs', 'type'])
 
     @classmethod
     def _parent_domain(cls):
@@ -255,6 +267,10 @@ class Location(ModelSQL, ModelView):
     @staticmethod
     def default_right():
         return 0
+
+    @classmethod
+    def default_flat_childs(cls):
+        return False
 
     @staticmethod
     def default_type():

@@ -57,6 +57,8 @@ virtually stored. The following location types are defined:
 
 Locations are organised in tree structures, allowing to define
 fine grained structures.
+It is possible to restrict a location to have only one level of children, this
+allows to improve the performance of the stock quantity computation.
 
 Location Lead Time
 ------------------

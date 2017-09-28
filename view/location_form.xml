@@ -6,13 +6,14 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="code"/>
     <field name="code"/>
-    <label name="parent"/>
-    <field name="parent"/>
-    <newline/>
     <label name="type"/>
     <field name="type"/>
     <label name="active"/>
     <field name="active"/>
+    <label name="parent"/>
+    <field name="parent"/>
+    <label name="flat_childs"/>
+    <field name="flat_childs"/>
     <newline/>
     <label name="address"/>
     <field name="address"/>
