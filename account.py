@@ -114,7 +114,7 @@ class Dunning:
         msg['To'] = ', '.join(to)
         msg['Cc'] = ', '.join(cc)
         msg['Bcc'] = ', '.join(bcc)
-        msg['Subject'] = Header(title, 'utf-9')
+        msg['Subject'] = Header(title, 'utf-8')
         msg['Auto-Submitted'] = 'auto-generated'
         return msg
 
