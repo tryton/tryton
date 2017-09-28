@@ -412,7 +412,7 @@ class Work:
             party=self.party,
             invoice_address=self.party.address_get(type='invoice'),
             currency=self.company.currency,
-            account=self.party.account_receivable,
+            account=self.party.account_receivable_used,
             payment_term=self.party.customer_payment_term,
             description=self.name,
             )
