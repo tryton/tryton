@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import OrderedDict
+
 from sql import Literal
 from sql.conditionals import Coalesce
 
@@ -11,7 +13,7 @@ from trytond.transaction import Transaction
 from trytond import backend
 
 __all__ = ['FiscalYear',
-    'Period', 'Move', 'Reconciliation', 'InvoiceSequence']
+    'Period', 'Move', 'Reconciliation', 'InvoiceSequence', 'RenewFiscalYear']
 
 
 class FiscalYear:
@@ -223,3 +225,45 @@ class Reconciliation:
                 ])
         super(Reconciliation, cls).delete(reconciliations)
         Invoice.process(invoices)
+
+
+class RenewFiscalYear:
+    __name__ = 'account.fiscalyear.renew'
+    __metaclass__ = PoolMeta
+
+    @property
+    def invoice_sequence_fields(self):
+        return ['out_invoice_sequence', 'out_credit_note_sequence',
+            'in_invoice_sequence', 'in_credit_note_sequence']
+
+    def create_fiscalyear(self):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence.strict')
+        InvoiceSequence = pool.get('account.fiscalyear.invoice_sequence')
+        fiscalyear = super(RenewFiscalYear, self).create_fiscalyear()
+        if not self.start.reset_sequences:
+            return fiscalyear
+        sequences = OrderedDict()
+        for invoice_sequence in fiscalyear.invoice_sequences:
+            for field in self.invoice_sequence_fields:
+                sequence = getattr(invoice_sequence, field, None)
+                sequences[sequence.id] = sequence
+        copies = Sequence.copy(sequences.values(), default={
+                'next_number': 1,
+                })
+
+        mapping = {}
+        for previous_id, new_sequence in zip(sequences.keys(), copies):
+            mapping[previous_id] = new_sequence.id
+        to_write = []
+        for new_sequence, old_sequence in zip(
+                fiscalyear.invoice_sequences,
+                self.start.previous_fiscalyear.invoice_sequences):
+            values = {}
+            for field in self.invoice_sequence_fields:
+                sequence = getattr(old_sequence, field, None)
+                values[field] = mapping[sequence.id]
+            to_write.extend(([new_sequence], values))
+        if to_write:
+            InvoiceSequence.write(*to_write)
+        return fiscalyear
