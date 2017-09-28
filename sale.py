@@ -204,8 +204,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'defined for the quotation of sale "%s".'),
                 'warehouse_required': ('Warehouse must be defined for the '
                     'quotation of sale "%s".'),
-                'missing_account_receivable': ('It misses '
-                        'an "Account Receivable" on the party "%s".'),
                 'delete_cancel': ('Sale "%s" must be cancelled before '
                     'deletion.'),
                 })
@@ -755,7 +753,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             party=self.party,
             invoice_address=self.invoice_address,
             currency=self.currency,
-            account=self.party.account_receivable,
+            account=self.party.account_receivable_used,
             )
         invoice.on_change_type()
         invoice.payment_term = self.payment_term
@@ -767,10 +765,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         Invoice = pool.get('account.invoice')
         if self.invoice_method == 'manual':
             return
-
-        if not self.party.account_receivable:
-            self.raise_user_error('missing_account_receivable',
-                (self.party.rec_name,))
 
         invoice_lines = []
         for line in self.lines:
