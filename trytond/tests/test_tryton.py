@@ -17,7 +17,7 @@ from sql import Table
 
 from trytond.pool import Pool, isregisteredby
 from trytond import backend
-from trytond.model import Workflow, ModelStorage, ModelSQL, ModelSingleton
+from trytond.model import Workflow, ModelSQL, ModelSingleton, fields
 from trytond.model.fields import get_eval_fields, Function
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
