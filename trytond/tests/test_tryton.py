@@ -10,13 +10,14 @@ import subprocess
 from itertools import chain
 import operator
 from functools import wraps
+import inspect
 
 from lxml import etree
 from sql import Table
 
 from trytond.pool import Pool, isregisteredby
 from trytond import backend
-from trytond.model import Workflow, fields
+from trytond.model import Workflow, ModelStorage, ModelSQL, ModelSingleton
 from trytond.model.fields import get_eval_fields, Function
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
@@ -519,6 +520,22 @@ class ModuleTestCase(unittest.TestCase):
                 if not action_domain.domain:
                     continue
                 Model.search(decoder.decode(action_domain.domain))
+
+    @with_transaction()
+    def test_modelsingleton_inherit_order(self):
+        'Test ModelSingleton, ModelSQL, ModelStorage order in the MRO'
+        for mname, model in Pool().iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            if (not issubclass(model, ModelSingleton)
+                    or not issubclass(model, ModelSQL)):
+                continue
+            mro = inspect.getmro(model)
+            singleton_index = mro.index(ModelSingleton)
+            sql_index = mro.index(ModelSQL)
+            assert singleton_index < sql_index, (
+                "ModelSingleton must appear before ModelSQL in the parent "
+                "classes of '%s'." % mname)
 
 
 def db_exist(name=DB_NAME):
