@@ -690,9 +690,9 @@ class Line(
         if self.party:
             if self.amount:
                 if self.amount > Decimal("0.0"):
-                    self.account = self.party.account_receivable
+                    self.account = self.party.account_receivable_used
                 else:
-                    self.account = self.party.account_payable
+                    self.account = self.party.account_payable_used
 
         if self.invoice:
             if self.party:
@@ -707,14 +707,15 @@ class Line(
         Currency = Pool().get('currency.currency')
         if self.party:
             if self.account and self.account not in (
-                    self.party.account_receivable, self.party.account_payable):
+                    self.party.account_receivable_used,
+                    self.party.account_payable_used):
                 # The user has entered a non-default value, we keep it.
                 pass
             elif self.amount:
                 if self.amount > Decimal("0.0"):
-                    self.account = self.party.account_receivable
+                    self.account = self.party.account_receivable_used
                 else:
-                    self.account = self.party.account_payable
+                    self.account = self.party.account_payable_used
         if self.invoice:
             if self.amount and self.statement and self.statement.journal:
                 invoice = self.invoice
