@@ -433,7 +433,7 @@ var Sao = {};
         form.view_prm.done(function() {
             Sao.main_menu_screen = form.screen;
             var view = form.screen.current_view;
-            view.table.removeClass('table-bordered');
+            view.table.removeClass('table table-bordered table-striped');
             view.table.find('thead').hide();
             jQuery('#menu').children().remove();
 

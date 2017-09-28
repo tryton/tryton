@@ -70,7 +70,7 @@
             // Table of records
             this.rows = [];
             this.table = jQuery('<table/>', {
-                'class': 'tree table table-hover table-striped'
+                'class': 'tree table table-hover table-striped table-condensed'
             });
             if (this.editable) {
                 this.table.addClass('table-bordered');
