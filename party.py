@@ -21,6 +21,13 @@ class Party:
         'party.party.sale_invoice_grouping_method', 'party',
         "Sale Invoice Grouping Methods")
 
+    @classmethod
+    def default_sale_invoice_grouping_method(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
+        return Configuration(1).get_multivalue(
+            'sale_invoice_grouping_method', **pattern)
+
 
 class PartySaleInvoiceGroupingMethod(ModelSQL, ValueMixin):
     "Party Sale Invoice Grouping Method"

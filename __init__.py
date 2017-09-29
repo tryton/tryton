@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from .party import *
 from .sale import *
+from . import configuration
 
 
 def register():
@@ -11,4 +12,6 @@ def register():
         Sale,
         Party,
         PartySaleInvoiceGroupingMethod,
+        configuration.Configuration,
+        configuration.ConfigurationSaleMethod,
         module='sale_invoice_grouping', type_='model')
