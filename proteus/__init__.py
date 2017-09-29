@@ -3,8 +3,6 @@
 '''
 A library to access Tryton's models like a client.
 '''
-__version__ = "4.5.0"
-__all__ = ['Model', 'Wizard', 'Report']
 import sys
 try:
     import cdecimal
@@ -20,6 +18,9 @@ import functools
 from decimal import Decimal
 
 import proteus.config
+
+__version__ = "4.5.0"
+__all__ = ['Model', 'Wizard', 'Report']
 
 _MODELS = threading.local()
 
