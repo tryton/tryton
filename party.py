@@ -21,6 +21,13 @@ class Party:
         'party.party.sale_shipment_grouping_method', 'party',
         "Sale Shipment Grouping Methods")
 
+    @classmethod
+    def default_sale_shipment_grouping_method(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
+        return Configuration(1).get_multivalue(
+            'sale_shipment_grouping_method', **pattern)
+
 
 class PartySaleShipmentGroupingMethod(ModelSQL, ValueMixin):
     "Party Sale Shipment Grouping Method"
