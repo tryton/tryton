@@ -365,7 +365,7 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
-      <attribute name="toolbar" a:defaultValue="1">
+      <attribute name="toolbar" a:defaultValue="0">
         <choice>
           <value>0</value>
           <value>1</value>
