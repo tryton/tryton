@@ -546,6 +546,8 @@ class ModelList(list):
                 definition = record._fields[self.parent_name]
                 if definition['type'] in ('many2one', 'reference'):
                     setattr(record, self.parent_name, self.parent)
+        self.record_removed.difference_update(records)
+        self.record_deleted.difference_update(records)
 
     def append(self, record):
         self.__check([record])
