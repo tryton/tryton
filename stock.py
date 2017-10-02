@@ -152,8 +152,7 @@ class Move:
         pool = Pool()
         Uom = pool.get('product.uom')
 
-        for move in moves:
-            assert move.product == product, 'wrong product'
+        assert all(m.product == product for m in moves), 'wrong product'
         assert type_.startswith('in_') or type_.startswith('out_'), \
             'wrong type'
 

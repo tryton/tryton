@@ -11,6 +11,16 @@ class InvoiceLine:
     __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
+    @classmethod
+    def __setup__(cls):
+        super(InvoiceLine, cls).__setup__()
+        cls._error_messages.update({
+                'stock_move_different_product': (
+                    "The invoice line '%(line)s' is linked to stock moves "
+                    "for other products than '%(product)s'.\n"
+                    "This may compute a wrong COGS."),
+                })
+
     def _get_anglo_saxon_move_lines(self, amount, type_):
         '''
         Return account move for anglo-saxon stock accounting
@@ -73,7 +83,21 @@ class InvoiceLine:
             return result
 
         # an empty list means we'll use the current cost price
-        moves = [move for move in self.stock_moves if move.state == 'done']
+        moves = []
+        for move in self.stock_moves:
+            if move.state != 'done':
+                continue
+            # remove move for different product
+            if move.product != self.product:
+                warning_name = '%s.stock.different_product' % self
+                self.raise_user_warning(
+                    warning_name, 'stock_move_different_product', {
+                        'line': self.rec_name,
+                        'product': self.product.rec_name,
+                        })
+            else:
+                moves.append(move)
+
         if self.invoice.type == 'in':
             type_ = 'in_supplier'
         elif self.invoice.type == 'out':
