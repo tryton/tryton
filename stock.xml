@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="res.group" id="group_stock_location_movable">
+            <field name="name">Stock Location Movable</field>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_stock_location_movable">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_stock_location_movable"/>
+        </record>
+
+        <record model="ir.model.access" id="access_location">
+            <field name="model" search="[('model', '=', 'stock.location')]"/>
+            <field name="group" ref="group_stock_location_movable"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_location_movable">
+            <field name="model" search="[('model', '=', 'stock.location')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_location_movable">
+            <field name="domain" eval="[('movable', '=', True)]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_location_movable"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_location_movable_group_stock_location_movable">
+            <field name="rule_group" ref="rule_group_location_movable"/>
+            <field name="group" ref="group_stock_location_movable"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_location_movable_admin">
+            <field name="model" search="[('model', '=', 'stock.location')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group-res.group"
+            id="rule_group_location_movable_admin_group_stock_admin">
+            <field name="rule_group" ref="rule_group_location_movable_admin"/>
+            <field name="group" ref="stock.group_stock_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="location_view_form">
+            <field name="model">stock.location</field>
+            <field name="inherit" ref="stock.location_view_form"/>
+            <field name="name">location_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="shipment_internal_view_form">
+            <field name="model">stock.shipment.internal</field>
+            <field name="inherit" ref="stock.shipment_internal_view_form"/>
+            <field name="name">shipment_internal_form</field>
+        </record>
+    </data>
+</tryton>
