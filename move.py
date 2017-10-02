@@ -919,7 +919,7 @@ class Line(ModelSQL, ModelView):
         if self.amount_second_currency is not None:
             return self.amount_second_currency * sign
         else:
-            return self.debit - self.credit * sign
+            return (self.debit - self.credit) * sign
 
     def get_amount_currency(self, name):
         if self.second_currency:
