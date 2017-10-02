@@ -66,5 +66,8 @@ this repository contains the full copyright notices and license terms. -->
             <label name="credit_note_tax_sign"/>
             <field name="credit_note_tax_sign"/>
         </page>
+        <page name="legal_notice" col="1">
+            <field name="legal_notice"/>
+        </page>
     </notebook>
 </form>

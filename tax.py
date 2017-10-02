@@ -380,6 +380,7 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
         digits=(2, 0))
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
+    legal_notice = fields.Text("Legal Notice")
 
     @classmethod
     def __setup__(cls):
@@ -455,7 +456,8 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
         for field in ('name', 'description', 'sequence', 'amount',
                 'rate', 'type', 'invoice_base_sign', 'invoice_tax_sign',
                 'credit_note_base_sign', 'credit_note_tax_sign',
-                'start_date', 'end_date', 'update_unit_price'):
+                'start_date', 'end_date', 'update_unit_price',
+                'legal_notice'):
             if not tax or getattr(tax, field) != getattr(self, field):
                 res[field] = getattr(self, field)
         for field in ('group',):
@@ -680,6 +682,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             'required': Eval('type') != 'none',
             'readonly': Eval('type') == 'none',
             }, depends=['type'])
+    legal_notice = fields.Text("Legal Notice", translate=True)
     template = fields.Many2One('account.tax.template', 'Template')
 
     @classmethod
@@ -1046,6 +1049,7 @@ class TaxableMixin(object):
         line = {}
         line['manual'] = False
         line['description'] = tax.description
+        line['legal_notice'] = tax.legal_notice
         line['base'] = base
         line['amount'] = amount
         line['tax'] = tax.id if tax else None
