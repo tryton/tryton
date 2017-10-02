@@ -28,4 +28,6 @@ this repository contains the full copyright notices and license terms. -->
         <label name="tax_sign"/>
         <field name="tax_sign"/>
     </group>
+    <separator name="legal_notice" colspan="4"/>
+    <field name="legal_notice" colspan="4"/>
 </form>

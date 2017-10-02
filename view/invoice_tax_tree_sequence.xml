@@ -13,4 +13,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="tax_sign" tree_invisible="1"/>
     <field name="account" tree_invisible="1"/>
     <field name="tax" tree_invisible="1"/>
+    <field name="legal_notice" tree_invisible="1"/>
 </tree>

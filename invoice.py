@@ -2127,6 +2127,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             'readonly': ~Eval('manual', False) | _states['readonly'],
             },
         depends=['manual'] + _depends)
+    legal_notice = fields.Text("Legal Notice", states=_states,
+        depends=_depends)
 
     del _states, _depends
 
