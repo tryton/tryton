@@ -48,26 +48,6 @@ class TableHandlerInterface(object):
         '''
         raise NotImplementedError
 
-    @staticmethod
-    def sequence_exist(sequence_name):
-        '''
-        Sequence exist
-
-        :param sequence_name: the sequence name
-        :return: a boolean
-        '''
-        raise NotImplementedError
-
-    @staticmethod
-    def sequence_rename(old_name, new_name):
-        '''
-        Rename sequence
-
-        :param old_name: the old sequence name
-        :param new_name: the new sequence name
-        '''
-        raise NotImplementedError
-
     def column_exist(self, column_name):
         '''
         Column exist

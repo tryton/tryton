@@ -319,6 +319,10 @@ class Database(DatabaseInterface):
     def has_window_functions(self):
         return True
 
+    @classmethod
+    def has_sequence(cls):
+        return True
+
     def sql_type(self, type_):
         if type_ in self.TYPES_MAPPING:
             return self.TYPES_MAPPING[type_]
@@ -331,6 +335,60 @@ class Database(DatabaseInterface):
             if value is not None:
                 return Binary(value)
         return value
+
+    def sequence_exist(self, connection, name):
+        cursor = connection.cursor()
+        for schema in self.search_path:
+            cursor.execute('SELECT 1 '
+                'FROM information_schema.sequences '
+                'WHERE sequence_name = %s AND sequence_schema = %s',
+                (name, schema))
+            if cursor.rowcount:
+                return True
+        return False
+
+    def sequence_create(
+            self, connection, name, number_increment=1, start_value=1):
+        cursor = connection.cursor()
+
+        param = self.flavor.param
+        cursor.execute(
+            'CREATE SEQUENCE "%s" '
+            'INCREMENT BY %s '
+            'START WITH %s'
+            % (name, param, param),
+            (number_increment, start_value))
+
+    def sequence_update(
+            self, connection, name, number_increment=1, start_value=1):
+        cursor = connection.cursor()
+        param = self.flavor.param
+        cursor.execute(
+            'ALTER SEQUENCE "%s" '
+            'INCREMENT BY %s '
+            'RESTART WITH %s'
+            % (name, param, param),
+            (number_increment, start_value))
+
+    def sequence_rename(self, connection, old_name, new_name):
+        cursor = connection.cursor()
+        if (self.sequence_exist(connection, old_name)
+                and not self.sequence_exist(connection, new_name)):
+            cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
+                % (old_name, new_name))
+
+    def sequence_drop(self, connection, name):
+        cursor = connection.cursor()
+        cursor.execute('DROP SEQUENCE "%s"' % name)
+
+    def sequence_next_number(self, connection, name):
+        cursor = connection.cursor()
+        cursor.execute(
+            'SELECT CASE WHEN NOT is_called THEN last_value '
+                        'ELSE last_value + increment_by '
+                   'END '
+            'FROM "%s"' % name)
+        return cursor.fetchone()[0]
 
 register_type(UNICODE)
 if PYDATE:

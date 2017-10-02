@@ -729,10 +729,12 @@ class UserGroup(ModelSQL):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
+        transaction = Transaction()
+
         # Migration from 1.0 table name change
         TableHandler.table_rename('res_group_user_rel', cls._table)
-        TableHandler.sequence_rename('res_group_user_rel_id_seq',
-            cls._table + '_id_seq')
+        transaction.database.sequence_rename(transaction.connection,
+            'res_group_user_rel_id_seq', cls._table + '_id_seq')
         # Migration from 2.0 uid and gid rename into user and group
         table = TableHandler(cls, module_name)
         table.column_rename('uid', 'user')

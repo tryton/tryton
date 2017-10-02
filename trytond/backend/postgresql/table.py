@@ -26,8 +26,10 @@ class TableHandler(TableHandlerInterface):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         # Create sequence if necessary
-        if not self.sequence_exist(self.sequence_name):
-            cursor.execute('CREATE SEQUENCE "%s"' % self.sequence_name)
+        if not transaction.database.sequence_exist(
+                transaction.connection, self.sequence_name):
+            transaction.database.sequence_create(
+                transaction.connection, self.sequence_name)
 
         # Create new table if necessary
         if not self.table_exist(self.table_name):
@@ -85,7 +87,8 @@ class TableHandler(TableHandlerInterface):
 
     @staticmethod
     def table_rename(old_name, new_name):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         # Rename table
         if (TableHandler.table_exist(old_name)
                 and not TableHandler.table_exist(new_name)):
@@ -94,7 +97,8 @@ class TableHandler(TableHandlerInterface):
         # Rename sequence
         old_sequence = old_name + '_id_seq'
         new_sequence = new_name + '_id_seq'
-        TableHandler.sequence_rename(old_sequence, new_sequence)
+        transaction.database.sequence_rename(
+            transaction.connection, old_sequence, new_sequence)
         # Rename history table
         old_history = old_name + "__history"
         new_history = new_name + "__history"
@@ -102,30 +106,6 @@ class TableHandler(TableHandlerInterface):
                 and not TableHandler.table_exist(new_history)):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
                 % (old_history, new_history))
-
-    @classmethod
-    def sequence_schema(cls, sequence_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        for schema in transaction.database.search_path:
-            cursor.execute('SELECT 1 '
-                'FROM information_schema.sequences '
-                'WHERE sequence_name = %s AND sequence_schema = %s',
-                (sequence_name, schema))
-            if cursor.rowcount:
-                return schema
-
-    @classmethod
-    def sequence_exist(cls, sequence_name):
-        return bool(cls.sequence_schema(sequence_name))
-
-    @staticmethod
-    def sequence_rename(old_name, new_name):
-        cursor = Transaction().connection.cursor()
-        if (TableHandler.sequence_exist(old_name)
-                and not TableHandler.sequence_exist(new_name)):
-            cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
-                % (old_name, new_name))
 
     def column_exist(self, column_name):
         return column_name in self._columns

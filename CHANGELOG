@@ -1,3 +1,4 @@
+* Move handling of sequences to the Database object
 * Allow to add tests through entry points
 * Add translated descriptor for Reference field
 * Implement alter_type and alter_size for sqlite backend

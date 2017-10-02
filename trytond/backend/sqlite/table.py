@@ -86,14 +86,6 @@ class TableHandler(TableHandlerInterface):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
                 % (old_history, new_history))
 
-    @staticmethod
-    def sequence_exist(sequence_name):
-        return True
-
-    @staticmethod
-    def sequence_rename(old_name, new_name):
-        pass
-
     def column_exist(self, column_name):
         return column_name in self._columns
 

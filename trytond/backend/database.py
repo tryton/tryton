@@ -164,6 +164,49 @@ class DatabaseInterface(object):
         "Return if database supports window functions."
         return False
 
+    @classmethod
+    def has_sequence(cls):
+        "Return if database supports sequence querying and assignation"
+        return False
+
+    def sequence_exist(self, connection, name):
+        "Return if a sequence exists"
+        if not self.has_sequence():
+            return
+        raise NotImplementedError
+
+    def sequence_create(
+            self, connection, name, number_increment=1, start_value=1):
+        "Creates a sequence"
+        if not self.has_sequence():
+            return
+        raise NotImplementedError
+
+    def sequence_update(
+            self, connection, name, number_increment=1, start_value=1):
+        "Modifies a sequence"
+        if not self.has_sequence():
+            return
+        raise NotImplementedError
+
+    def sequence_rename(self, connection, old_name, new_name):
+        "Renames a sequence"
+        if not self.has_sequence():
+            return
+        raise NotImplementedError
+
+    def sequence_delete(self, connection, name):
+        "Removes a sequence"
+        if not self.has_sequence():
+            return
+        raise NotImplementedError
+
+    def sequence_next_number(self, connection, name):
+        "Gets the next number of a sequence"
+        if not self.has_sequence():
+            return
+        raise NotImplementedError
+
     def sql_type(self, type_):
         'Return the SQLType tuple corresponding to the SQL type'
         pass
