@@ -31,3 +31,4 @@ Introduction to all the key parts of trytond:
     user_application
     modules/index
     translation
+    testing
