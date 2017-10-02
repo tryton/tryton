@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
+from sql import Null
+
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Or, Bool
 from trytond import backend
@@ -15,7 +17,8 @@ __all__ = ['Category', 'CategoryAccount',
     'CategoryCustomerTax', 'CategorySupplierTax',
     'Template', 'TemplateAccount',
     'TemplateCustomerTax', 'TemplateSupplierTax',
-    'Product', 'account_used', 'template_property']
+    'Product', 'account_used', 'template_property',
+    'TemplateAccountCategory', 'TemplateCategoryAll']
 
 
 def account_used(field_name):
@@ -548,3 +551,35 @@ class Product:
             'Customer Taxes Used'), 'get_template')
     supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
             'Supplier Taxes Used'), 'get_template')
+
+
+class TemplateAccountCategory(ModelSQL):
+    "Template - Account Category"
+    __name__ = 'product.template-product.category.account'
+    template = fields.Many2One('product.template', 'Template')
+    category = fields.Many2One('product.category', 'Category')
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Template = pool.get('product.template')
+        template = Template.__table__()
+        return template.select(
+            template.id.as_('id'),
+            template.create_uid.as_('create_uid'),
+            template.create_date.as_('create_date'),
+            template.write_uid.as_('write_uid'),
+            template.write_date.as_('write_date'),
+            template.id.as_('template'),
+            template.account_category.as_('category'),
+            where=template.account_category != Null)
+
+
+class TemplateCategoryAll:
+    __metaclass__ = PoolMeta
+    __name__ = 'product.template-product.category.all'
+
+    @classmethod
+    def union_models(cls):
+        return super(TemplateCategoryAll, cls).union_models() + [
+            'product.template-product.category.account']

@@ -20,6 +20,8 @@ def register():
         TemplateCustomerTax,
         TemplateSupplierTax,
         Product,
+        TemplateAccountCategory,
+        TemplateCategoryAll,
         Configuration,
         ConfigurationDefaultAccount,
         module='account_product', type_='model')
