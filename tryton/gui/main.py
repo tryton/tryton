@@ -1276,6 +1276,7 @@ class Main(object):
                     object_hook=object_hook)
                 context = json.loads(params.get('context', '{}'),
                     object_hook=object_hook)
+                context_model = params.get('context_model')
             except ValueError:
                 return
             if path:
@@ -1290,6 +1291,7 @@ class Main(object):
                     res_id=res_id,
                     domain=domain,
                     context=context,
+                    context_model=context_model,
                     mode=mode,
                     name=name,
                     limit=limit,

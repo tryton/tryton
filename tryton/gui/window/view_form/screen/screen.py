@@ -1152,6 +1152,9 @@ class Screen(SignalEvent):
         if self.context:
             query_string.append(('context', json.dumps(
                         self.context, cls=JSONEncoder, separators=(',', ':'))))
+        if self.context_screen:
+            query_string.append(
+                ('context_model', self.context_screen.model_name))
         if name:
             query_string.append(
                 ('name', json.dumps(name, separators=(',', ':'))))
