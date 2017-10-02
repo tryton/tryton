@@ -556,7 +556,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 self.tax_amount += computed_taxes[key]['amount']
                 value = InvoiceTax.default_get(InvoiceTax._fields.keys())
                 value.update(computed_taxes[key])
-                taxes.append(InvoiceTax(**value))
+                invoice_tax = InvoiceTax(**value)
+                if invoice_tax.tax:
+                    invoice_tax.sequence = invoice_tax.tax.sequence
+                taxes.append(invoice_tax)
         self.taxes = taxes
         if self.currency:
             self.untaxed_amount = self.currency.round(self.untaxed_amount)
