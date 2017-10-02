@@ -32,11 +32,19 @@ class ProcessDunning:
         cls._actions.append('print_letter')
 
     def do_print_letter(self, action):
-        # TODO return None if nothing to print
-        return action, {
-            'id': Transaction().context['active_id'],
-            'ids': Transaction().context['active_ids'],
-            }
+        pool = Pool()
+        Dunning = pool.get('account.dunning')
+        dunnings = Dunning.browse(Transaction().context['active_ids'])
+        ids = [d.id for d in dunnings
+            if d.state == 'done'
+            and not d.blocked
+            and d.party
+            and d.level.print_on_letter]
+        if ids:
+            return action, {
+                'id': ids[0],
+                'ids': ids,
+                }
 
     def transition_print_letter(self):
         return self.next_state('print_letter')
@@ -61,8 +69,7 @@ class Letter(CompanyReport):
         dunnings = [d for d in records
             if d.state == 'done'
             and not d.blocked
-            and d.party
-            and d.level.print_on_letter]
+            and d.party]
         parties = list(set((d.party for d in dunnings)))
         payments = cls.get_pending_payments(parties)
         key = attrgetter('party')
