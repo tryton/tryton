@@ -6,7 +6,7 @@ from decimal import Decimal
 
 from sql import Null, Column
 
-from trytond.model import ModelView, ModelSQL, Model, fields
+from trytond.model import ModelView, ModelSQL, Model, UnionMixin, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -18,7 +18,7 @@ from trytond.modules.company.model import (
 
 __all__ = ['Template', 'Product', 'price_digits', 'TemplateFunction',
     'ProductListPrice', 'ProductCostPriceMethod', 'ProductCostPrice',
-    'TemplateCategory']
+    'TemplateCategory', 'TemplateCategoryAll']
 logger = logging.getLogger(__name__)
 
 STATES = {
@@ -72,6 +72,9 @@ class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
     active = fields.Boolean('Active', select=True)
     categories = fields.Many2Many('product.template-product.category',
         'template', 'category', 'Categories', states=STATES, depends=DEPENDS)
+    categories_all = fields.Many2Many(
+        'product.template-product.category.all',
+        'template', 'category', "Categories", readonly=True)
     products = fields.One2Many('product.product', 'template', 'Variants',
         states=STATES, depends=DEPENDS)
 
@@ -497,3 +500,14 @@ class TemplateCategory(ModelSQL):
         ondelete='CASCADE', required=True, select=True)
     category = fields.Many2One('product.category', 'Category',
         ondelete='CASCADE', required=True, select=True)
+
+
+class TemplateCategoryAll(UnionMixin, ModelSQL):
+    "Template - Category All"
+    __name__ = 'product.template-product.category.all'
+    template = fields.Many2One('product.template', "Template")
+    category = fields.Many2One('product.category', "Category")
+
+    @classmethod
+    def union_models(cls):
+        return ['product.template-product.category']

@@ -19,6 +19,7 @@ def register():
         ProductCostPriceMethod,  # before ProductCostPrice for migration
         ProductCostPrice,
         TemplateCategory,
+        TemplateCategoryAll,
         Configuration,
         ConfigurationDefaultCostPriceMethod,
         module='product', type_='model')

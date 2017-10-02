@@ -67,7 +67,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="context"
                 eval="{'categories': [Eval('active_id')]}" pyson="1"/>
             <field name="domain"
-                eval="[('categories','child_of', [Eval('active_id')], 'parent')]"
+                eval="[('categories_all','child_of', [Eval('active_id')], 'parent')]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_template_by_category_view1">
