@@ -100,7 +100,8 @@ Create payment term::
     >>> PaymentTerm = Model.get('account.invoice.payment_term')
     >>> payment_term = PaymentTerm(name='Term')
     >>> line = payment_term.lines.new(type='percent', ratio=Decimal('.5'))
-    >>> delta = line.relativedeltas.new(days=20)
+    >>> delta, = line.relativedeltas
+    >>> delta.days = 20
     >>> line = payment_term.lines.new(type='remainder')
     >>> delta = line.relativedeltas.new(days=40)
     >>> payment_term.save()
