@@ -106,6 +106,28 @@ The report is executed with a list of records and some extra data.
 
     >>> type_, data, print_, name = label.execute([party], {})
 
+Sorting addresses and register order
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Addresses are ordered by sequence which means they can be stored following a
+specific order. The `set_sequence` method stores the current order.
+
+    >>> address = party.addresses.new(zip='69')
+    >>> party.save()
+    >>> address = party.addresses.new(zip='23')
+    >>> party.save()
+
+Now changing the order.
+
+    >>> reversed_addresses = list(reversed(party.addresses))
+    >>> while party.addresses:
+    ...     _ = party.addresses.pop()
+    >>> party.addresses.extend(reversed_addresses)
+    >>> party.addresses.set_sequence()
+    >>> party.save()
+    >>> party.addresses == reversed_addresses
+    True
+
 Support
 -------
 

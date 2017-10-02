@@ -620,6 +620,36 @@ class ModelList(list):
         with Relation._config.set_context(self._get_context()):
             return Relation.find(new_domain, offset, limit, order)
 
+    def set_sequence(self, field='sequence'):
+        changed = False
+        prev = None
+        for record in self:
+            if prev:
+                index = getattr(prev, field)
+            else:
+                index = None
+            update = False
+            value = getattr(record, field)
+            if value is None:
+                if index:
+                    update = True
+                elif prev and record.id >= 0:
+                    update = record.id < prev.id
+            if value == index:
+                if prev and record.id >= 0:
+                    update = record.id < prev.id
+            elif value <= (index or 0):
+                update = True
+            if update:
+                if index is None:
+                    index = 0
+                index += 1
+                setattr(record, field, index)
+                changed = record
+            prev = record
+        if changed:
+            self._changed()
+
 
 class Model(object):
     'Model class for Tryton records'
