@@ -139,7 +139,7 @@ class Payment(Workflow, ModelSQL, ModelView):
                 ['OR', ('credit', '>', 0), ('debit', '<', 0)],
                 ),
             ('account.kind', 'in', ['receivable', 'payable']),
-            ('party', '=', Eval('party', None)),
+            ('party', 'in', [Eval('party', None), None]),
             If(Eval('state') == 'draft',
                 [
                     ('reconciliation', '=', None),
