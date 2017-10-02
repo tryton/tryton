@@ -233,6 +233,15 @@ If a code field is left empty, the corresponding amounts will be
 ignored by the tax reports.
 
 
+Tax Rule
+********
+
+The tax rule defines a set of rules that will be applied when computing taxes.
+It's composed by a name, it's kind and a list of lines. If a tax matches a tax
+rule line, it will be replaced by the *Substituion Tax*. The *Original Tax*
+will be included only if the *Keep Origin* check is checked.
+
+
 Templates
 *********
 

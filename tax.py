@@ -1244,7 +1244,7 @@ class TaxRule(ModelSQL, ModelView):
 
         for line in self.lines:
             if line.match(pattern):
-                return line.get_taxes()
+                return line.get_taxes(tax)
         return tax and [tax.id] or None
 
     @classmethod
@@ -1299,6 +1299,8 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
             'applied only for this tax template.'),
         depends=['group'],
         ondelete='RESTRICT')
+    keep_origin = fields.Boolean("Keep Origin",
+        help="Check to append the original tax to substituted tax.")
     tax = fields.Many2One('account.tax.template', 'Substitution Tax',
         domain=[
             ('parent', '=', None),
@@ -1341,6 +1343,8 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
             res['group'] = self.group.id if self.group else None
         if not rule_line or rule_line.sequence != self.sequence:
             res['sequence'] = self.sequence
+        if not rule_line or rule_line.keep_origin != self.keep_origin:
+            res['keep_origin'] = self.keep_origin
         if not rule_line or rule_line.template != self:
             res['template'] = self.id
         return res
@@ -1415,6 +1419,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             'only for this tax.'),
         depends=['group'],
         ondelete='RESTRICT')
+    keep_origin = fields.Boolean("Keep Origin",
+        help="Check to append the original tax to substituted tax.")
     tax = fields.Many2One('account.tax', 'Substitution Tax',
         domain=[
             ('parent', '=', None),
@@ -1464,12 +1470,15 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 return False
         return super(TaxRuleLine, self).match(pattern)
 
-    def get_taxes(self):
+    def get_taxes(self, origin_tax):
         '''
         Return list of taxes for a line
         '''
         if self.tax:
-            return [self.tax.id]
+            taxes = [self.tax.id]
+            if self.keep_origin and origin_tax:
+                taxes.append(origin_tax.id)
+            return taxes
         return None
 
     @classmethod

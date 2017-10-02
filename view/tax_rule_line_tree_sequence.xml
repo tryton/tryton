@@ -5,4 +5,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="group"/>
     <field name="origin_tax"/>
     <field name="tax"/>
+    <field name="keep_origin"/>
 </tree>

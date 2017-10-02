@@ -1021,6 +1021,54 @@ class AccountTestCase(ModuleTestCase):
             self.assertEqual(party.account_payable_used, payable)
             self.assertEqual(party.account_receivable_used, receivable)
 
+    @with_transaction()
+    def test_tax_rule(self):
+        "Test tax rule"
+        pool = Pool()
+        TaxRule = pool.get('account.tax.rule')
+        Tax = pool.get('account.tax')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, = Tax.search([])
+            target_tax, = Tax.copy([tax])
+
+            tax_rule, = TaxRule.create([{
+                        'name': 'Test',
+                        'kind': 'both',
+                        'lines': [('create', [{
+                                        'origin_tax': tax.id,
+                                        'tax': target_tax.id,
+                                        }])],
+                        }])
+            self.assertListEqual(tax_rule.apply(tax, {}), [target_tax.id])
+
+    @with_transaction()
+    def test_tax_rule_keep_origin(self):
+        "Test tax rule keeps origin"
+        pool = Pool()
+        TaxRule = pool.get('account.tax.rule')
+        Tax = pool.get('account.tax')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, = Tax.search([])
+            target_tax, = Tax.copy([tax])
+
+            tax_rule, = TaxRule.create([{
+                        'name': 'Test',
+                        'kind': 'both',
+                        'lines': [('create', [{
+                                        'origin_tax': tax.id,
+                                        'tax': target_tax.id,
+                                        'keep_origin': True,
+                                        }])],
+                        }])
+            self.assertListEqual(
+                tax_rule.apply(tax, {}),  [target_tax.id, tax.id])
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
