@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import time
 import logging
-import re
 import os
 import urllib
 import json
@@ -38,8 +37,6 @@ from trytond.protocols.jsonrpc import JSONDecoder
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 
 logger = logging.getLogger(__name__)
-
-RE_VERSION = re.compile(r'\S+ (\d+)\.(\d+)')
 
 os.environ['PGTZ'] = os.environ.get('TZ', '')
 
@@ -159,10 +156,11 @@ class Database(DatabaseInterface):
     def get_version(self, connection):
         if self.name not in self._version_cache:
             cursor = connection.cursor()
-            cursor.execute('SELECT version()')
+            cursor.execute('SHOW server_version_num')
             version, = cursor.fetchone()
-            self._version_cache[self.name] = tuple(map(int,
-                RE_VERSION.search(version).groups()))
+            major, rest = divmod(int(version), 10000)
+            minor, patch = divmod(rest, 100)
+            self._version_cache[self.name] = (major, minor, patch)
         return self._version_cache[self.name]
 
     def list(self):
@@ -377,17 +375,33 @@ class Database(DatabaseInterface):
             cursor.execute('ALTER TABLE "%s" RENAME TO "%s"'
                 % (old_name, new_name))
 
-    def sequence_drop(self, connection, name):
+    def sequence_delete(self, connection, name):
         cursor = connection.cursor()
         cursor.execute('DROP SEQUENCE "%s"' % name)
 
     def sequence_next_number(self, connection, name):
         cursor = connection.cursor()
-        cursor.execute(
-            'SELECT CASE WHEN NOT is_called THEN last_value '
-                        'ELSE last_value + increment_by '
-                   'END '
-            'FROM "%s"' % name)
+        version = self.get_version(connection)
+        if version >= (10, 0):
+            cursor.execute(
+                'SELECT increment_by '
+                'FROM pg_sequences '
+                'WHERE sequencename=%s '
+                % self.flavor.param,
+                (name,))
+            increment, = cursor.fetchone()
+            cursor.execute(
+                'SELECT CASE WHEN NOT is_called THEN last_value '
+                            'ELSE last_value + %s '
+                        'END '
+                'FROM "%s"' % (self.flavor.param, name),
+                (increment,))
+        else:
+            cursor.execute(
+                'SELECT CASE WHEN NOT is_called THEN last_value '
+                            'ELSE last_value + increment_by '
+                       'END '
+                'FROM "%s"' % name)
         return cursor.fetchone()[0]
 
 register_type(UNICODE)
