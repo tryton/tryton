@@ -753,9 +753,8 @@
             selected = selected || [];
             expanded = expanded || [];
             var update_expander = function() {
-                if (jQuery.isEmptyObject(
-                            this.record.field_get_client(
-                                this.children_field))) {
+                if (!this.record.field_get_client(
+                    this.children_field).length) {
                     this.expander.css('visibility', 'hidden');
                 }
             };
