@@ -519,6 +519,13 @@
             });
             this.screen.load_next_view().done(function() {
                 this.screen.switch_view().done(function() {
+                    if (!this.sel_multi) {
+                        this.screen.current_view.selection_mode = (
+                            Sao.common.SELECTION_SINGLE);
+                    } else {
+                        this.screen.current_view.selection_mode = (
+                            Sao.common.SELECTION_MULTIPLE);
+                    }
                     dialog.body.append(this.screen.screen_container.el);
                     this.el.modal('show');
                     this.screen.display();

@@ -54,7 +54,7 @@
             Sao.View.Tree._super.init.call(this, screen, xml);
             this.view_type = 'tree';
             this.selection_mode = (screen.attributes.selection_mode ||
-                Sao.common.SELECTION_SINGLE);
+                Sao.common.SELECTION_MULTIPLE);
             this.el = jQuery('<div/>', {
                 'class': 'treeview responsive'
             });
@@ -78,17 +78,15 @@
             this.el.append(this.table);
             this.thead = jQuery('<thead/>').appendTo(this.table);
             var tr = jQuery('<tr/>');
-            if (this.selection_mode != Sao.common.SELECTION_NONE) {
-                var th = jQuery('<th/>', {
-                    'class': 'selection'
-                });
-                this.selection = jQuery('<input/>', {
-                    'type': 'checkbox',
-                });
-                this.selection.change(this.selection_changed.bind(this));
-                th.append(this.selection);
-                tr.append(th);
-            }
+            var th = jQuery('<th/>', {
+                'class': 'selection'
+            });
+            this.selection = jQuery('<input/>', {
+                'type': 'checkbox',
+            });
+            this.selection.change(this.selection_changed.bind(this));
+            th.append(this.selection);
+            tr.append(th);
             this.thead.append(tr);
             this.columns.forEach(function(column) {
                 th = jQuery('<th/>', {
@@ -288,6 +286,12 @@
                 }
             }
             expanded = expanded || [];
+
+            if (this.selection_mode == Sao.common.SELECTION_MULTIPLE) {
+                this.selection.show();
+            } else {
+                this.selection.hide();
+            }
 
             var row_records = function() {
                 return this.rows.map(function(row) {
@@ -647,17 +651,17 @@
             }
 
             var td;
-            if (this.tree.selection_mode != Sao.common.SELECTION_NONE) {
-                td = jQuery('<td/>', {
-                    'class': 'selection',
-                });
-                this.el.append(td);
-                this.selection = jQuery('<input/>', {
-                    'type': 'checkbox',
-                });
-                this.selection.change(this.selection_changed.bind(this));
-                td.append(this.selection);
-            }
+            this.tree.el.uniqueId();
+            td = jQuery('<td/>', {
+                'class': 'selection',
+            });
+            this.el.append(td);
+            this.selection = jQuery('<input/>', {
+                'type': 'checkbox',
+                'name': 'tree-selection-' + this.tree.el.attr('id'),
+            });
+            this.selection.change(this.selection_changed.bind(this));
+            td.append(this.selection);
 
             var depth = this.path.split('.').length;
             for (var i = 0; i < this.tree.columns.length; i++) {
@@ -743,11 +747,7 @@
         },
         _get_column_td: function(column_index, row) {
             row = row || this.el;
-            var child_offset = 0;
-            if (this.tree.selection_mode != Sao.common.SELECTION_NONE) {
-                child_offset += 1;
-            }
-            return jQuery(row.children()[column_index + child_offset]);
+            return jQuery(row.children()[column_index + 1]);
         },
         redraw: function(selected, expanded) {
             selected = selected || [];
@@ -759,6 +759,21 @@
                 }
             };
             var thead_visible = this.tree.thead.is(':visible');
+
+            switch(this.tree.selection_mode) {
+                case Sao.common.SELECTION_NONE:
+                    this.selection.hide();
+                    break;
+                case Sao.common.SELECTION_SINGLE:
+                    this.selection.attr('type', 'radio');
+                    this.selection.show();
+                    break;
+                case Sao.common.SELECTION_MULTIPLE:
+                    this.selection.attr('type', 'checkbox');
+                    this.selection.show();
+                    break;
+            }
+
 
             for (var i = 0; i < this.tree.columns.length; i++) {
                 if ((i === 0) && this.children_field) {
