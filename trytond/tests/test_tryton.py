@@ -11,6 +11,10 @@ from itertools import chain
 import operator
 from functools import wraps
 import inspect
+try:
+    import pkg_resources
+except ImportError:
+    pkg_resources = None
 
 from lxml import etree
 from sql import Table
@@ -629,14 +633,26 @@ def all_suite(modules=None):
     Return all tests suite of current module
     '''
     suite_ = suite()
+
+    def add_tests(filename, module_prefix):
+        if not (filename.startswith('test_') and filename.endswith('.py')):
+            return
+        modname = module_prefix + '.' + filename[:-3]
+        __import__(modname)
+        module = sys.modules[modname]
+        suite_.addTest(module.suite())
+
     for fn in os.listdir(os.path.dirname(__file__)):
-        if fn.startswith('test_') and fn.endswith('.py'):
-            if modules and fn[:-3] not in modules:
-                continue
-            modname = 'trytond.tests.' + fn[:-3]
-            __import__(modname)
-            module = module = sys.modules[modname]
-            suite_.addTest(module.suite())
+        add_tests(fn, 'trytond.tests')
+    if pkg_resources is not None:
+        entry_points = pkg_resources.iter_entry_points('trytond.tests')
+        for test_entry_point in entry_points:
+            base_location = os.path.join(
+                test_entry_point.dist.location,
+                *test_entry_point.module_name.split('.'))
+            for fn in os.listdir(base_location):
+                add_tests(fn, test_entry_point.module_name)
+
     return suite_
 
 

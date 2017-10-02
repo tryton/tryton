@@ -1,6 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+try:
+    import pkg_resources
+except ImportError:
+    pkg_resources = None
+
+
 from ..pool import Pool
 from .test import *
 from .model import *
@@ -200,6 +206,13 @@ def register():
         module='tests', type_='wizard')
 
     multivalue.register('tests')
+
+    if pkg_resources is not None:
+        entry_points = pkg_resources.iter_entry_points('trytond.tests')
+        for test_ep in entry_points:
+            test_module = test_ep.load()
+            if hasattr(test_module, 'register'):
+                test_module.register('tests')
 
 
 def suite():
