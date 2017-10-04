@@ -1059,7 +1059,7 @@ class ImportStatement(Wizard):
         Statement = pool.get('account.statement')
         statements = list(getattr(self, 'parse_%s' % self.start.file_format)())
         for statement in statements:
-            statement.origin_file = self.start.file_
+            statement.origin_file = fields.Binary.cast(self.start.file_)
         Statement.save(statements)
 
         data = {'res_id': map(int, statements)}
