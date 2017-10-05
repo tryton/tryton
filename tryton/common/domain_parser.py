@@ -687,7 +687,7 @@ def complete_value(field, value):
     def complete_selection():
         test_value = value if value is not None else ''
         if isinstance(value, list):
-            test_value = value[-1]
+            test_value = value[-1] or ''
         test_value = test_value.strip('%')
         for svalue, test in field['selection']:
             if test.lower().startswith(test_value.lower()):
@@ -743,6 +743,7 @@ def test_complete_selection():
             ('', ['male', 'female']),
             (None, ['male', 'female']),
             (['male', 'f'], [['male', 'female']]),
+            (['male', None], [['male', 'male'], ['male', 'female']]),
             ):
         assert list(complete_value(field, value)) == result
 
