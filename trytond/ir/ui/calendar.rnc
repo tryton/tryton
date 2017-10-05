@@ -18,7 +18,7 @@ data = element data { attlist.data, xpath* }
 attlist.data &= empty
 
 xpath = element xpath {
-    attlist.xpath, ( field )*
+    attlist.xpath, (field | calendar)*
   }
 attlist.xpath &= attribute expr { text }
 attlist.xpath &=

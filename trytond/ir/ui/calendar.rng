@@ -60,7 +60,10 @@
     <element name="xpath">
       <ref name="attlist.xpath"/>
       <zeroOrMore>
-        <ref name="field"/>
+        <choice>
+          <ref name="field"/>
+          <ref name="calendar"/>
+        </choice>
       </zeroOrMore>
     </element>
   </define>
