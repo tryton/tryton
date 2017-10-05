@@ -1272,7 +1272,7 @@
                 var results = [];
                 var test_value = value !== null ? value : '';
                 if (value instanceof Array) {
-                    test_value = value[value.length - 1];
+                    test_value = value[value.length - 1] || '';
                 }
                 test_value = test_value.replace(/^%*|%*$/g, '');
                 var i, len, svalue, test;
