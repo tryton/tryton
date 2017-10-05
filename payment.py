@@ -203,6 +203,13 @@ class Payment:
         else:
             return False
 
+    @fields.depends('party')
+    def on_change_party(self):
+        super(Payment, self).on_change_party()
+        self.stripe_customer = None
+        self.stripe_customer_source = None
+        self.stripe_customer_source_selection = None
+
     @fields.depends('stripe_customer', 'stripe_customer_source')
     def get_stripe_customer_sources(self):
         sources = [('', '')]
