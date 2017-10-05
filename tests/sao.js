@@ -1691,6 +1691,7 @@
             ['', ['male', 'female']],
             [null, ['male', 'female']],
             [['male', 'f'], [['male', 'female']]],
+            [['male', null], [['male', 'male'], ['male', 'female']]],
         ].forEach(test_func, field);
 
         field = {
