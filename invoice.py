@@ -99,9 +99,9 @@ class Invoice:
         Commission.save(to_save)
 
     def _credit(self):
-        values = super(Invoice, self)._credit()
-        values['agent'] = self.agent.id if self.agent else None
-        return values
+        credit = super(Invoice, self)._credit()
+        credit.agent = self.agent
+        return credit
 
 
 class InvoiceLine:
