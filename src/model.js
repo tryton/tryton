@@ -926,6 +926,7 @@
                     continue;
                 value[key] = this.model.fields[key].get_eval(this);
             }
+            value.id = this.id;
             return value;
         },
         get_on_change_value: function(skip) {
