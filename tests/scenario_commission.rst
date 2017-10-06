@@ -176,3 +176,15 @@ Create commission invoices::
     >>> commissions = Commission.find([])
     >>> [c.invoice_state for c in commissions]
     [u'invoiced', u'invoiced']
+
+Credit invoice::
+
+    >>> invoice, = Invoice.find([
+    ...         ('type', '=', 'out'),
+    ...         ('agent', '=', agent.id),
+    ...         ])
+    >>> credit = Wizard('account.invoice.credit', [invoice])
+    >>> credit.execute('credit')
+    >>> credit_note, = credit.actions[0]
+    >>> credit_note.agent == agent
+    True
