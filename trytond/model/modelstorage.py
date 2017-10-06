@@ -285,7 +285,7 @@ class ModelStorage(Model):
 
                 if field_name in default:
                     data[field_name] = default[field_name]
-                elif (isinstance(cls._fields[field_name], fields.Function)
+                if (isinstance(cls._fields[field_name], fields.Function)
                         and not isinstance(
                             cls._fields[field_name], fields.MultiValue)):
                     del data[field_name]

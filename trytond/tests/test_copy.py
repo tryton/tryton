@@ -45,6 +45,24 @@ class CopyTestCase(unittest.TestCase):
                 [x.name for x in one2many_copy.one2many])
 
     @with_transaction()
+    def test_one2many_default(self):
+        "Test copy one2many with default"
+        pool = Pool()
+        One2many = pool.get('test.copy.one2many')
+        Target = pool.get('test.copy.one2many.target')
+
+        record = One2many(name="Test")
+        record.save()
+        target = Target(name="Target")
+        target.save()
+
+        record_copy, = One2many.copy(
+            [record], default={'one2many': [target.id]})
+
+        self.assertListEqual(
+            [x.name for x in record_copy.one2many], [target.name])
+
+    @with_transaction()
     def test_many2many(self):
         'Test copy many2many'
         pool = Pool()
@@ -73,6 +91,23 @@ class CopyTestCase(unittest.TestCase):
             self.assertEqual(many2many.many2many, many2many_copy.many2many)
             self.assertEqual([x.name for x in many2many.many2many],
                 [x.name for x in many2many_copy.many2many])
+
+    @with_transaction()
+    def test_many2many_default(self):
+        "Test copy many2many with default"
+        pool = Pool()
+        Many2many = pool.get('test.copy.many2many')
+        Target = pool.get('test.copy.many2many.target')
+
+        record = Many2many(name="Test")
+        record.save()
+        target = Target(name="Target")
+        target.save()
+
+        record_copy, = Many2many.copy(
+            [record], default={'many2many': [target.id]})
+
+        self.assertSequenceEqual(record_copy.many2many, [target])
 
 
 def suite():
