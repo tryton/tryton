@@ -637,6 +637,8 @@ def all_suite(modules=None):
     def add_tests(filename, module_prefix):
         if not (filename.startswith('test_') and filename.endswith('.py')):
             return
+        if modules and fn[:-3] not in modules:
+            return
         modname = module_prefix + '.' + filename[:-3]
         __import__(modname)
         module = sys.modules[modname]
