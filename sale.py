@@ -263,8 +263,8 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
         pool = Pool()
         Product = pool.get('product.product')
         if sale_line:
-            with Transaction().set_context(uom=sale_line.unit.id,
-                    currency=sale_line.sale.currency.id):
+            with Transaction().set_context(
+                    sale_line._get_context_sale_price()):
                 prices = Product.get_sale_price([sale_line.product])
             unit_price = prices[sale_line.product.id]
         else:
