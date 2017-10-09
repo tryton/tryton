@@ -618,7 +618,7 @@ def origin_mixin(_states, _depends):
 
         @classmethod
         def search_company(cls, name, clause):
-            return [('statement.company',) + tuple(clause[1:])]
+            return [('statement.' + clause[0],) + tuple(clause[1:])]
 
     return Mixin
 
