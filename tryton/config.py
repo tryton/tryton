@@ -18,7 +18,10 @@ _ = gettext.gettext
 
 def get_config_dir():
     if os.name == 'nt':
-        return os.path.join(os.environ['APPDATA'], '.config', 'tryton',
+        appdata = os.environ['APPDATA']
+        if not isinstance(appdata, unicode):
+            appdata = unicode(appdata, sys.getfilesystemencoding())
+        return os.path.join(appdata, '.config', 'tryton',
                 __version__.rsplit('.', 1)[0])
     return os.path.join(os.environ['HOME'], '.config', 'tryton',
             __version__.rsplit('.', 1)[0])
