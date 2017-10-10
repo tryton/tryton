@@ -18,7 +18,10 @@ _ = gettext.gettext
 
 def get_config_dir():
     if os.name == 'nt':
-        return os.path.join(os.environ['APPDATA'], '.config', 'tryton',
+        appdata = os.environ['APPDATA']
+        if not isinstance(appdata, unicode):
+            appdata = unicode(appdata, sys.getfilesystemencoding())
+        return os.path.join(appdata, '.config', 'tryton',
                 __version__.rsplit('.', 1)[0])
     return os.path.join(os.environ['HOME'], '.config', 'tryton',
             __version__.rsplit('.', 1)[0])
@@ -156,11 +159,11 @@ class ConfigManager(object):
             self.defaults.get(key)))
 
 CONFIG = ConfigManager()
-CURRENT_DIR = unicode(os.path.dirname(__file__),
-    sys.getfilesystemencoding())
+CURRENT_DIR = os.path.dirname(__file__)
 if hasattr(sys, 'frozen'):
-    CURRENT_DIR = os.path.dirname(unicode(sys.executable,
-        sys.getfilesystemencoding()))
+    CURRENT_DIR = sys.executable
+if not isinstance(CURRENT_DIR, unicode):
+    CURRENT_DIR = unicode(CURRENT_DIR, sys.getfilesystemencoding())
 
 PIXMAPS_DIR = os.path.join(CURRENT_DIR, 'data', 'pixmaps', 'tryton')
 if not os.path.isdir(PIXMAPS_DIR):
