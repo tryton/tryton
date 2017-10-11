@@ -771,6 +771,12 @@ class ReferenceField(Field):
 
     _default = None
 
+    def _is_empty(self, record):
+        result = super(ReferenceField, self)._is_empty(record)
+        if not result and record.value[self.name][1] < 0:
+            result = True
+        return result
+
     def get_client(self, record):
         if record.value.get(self.name):
             model, _ = record.value[self.name]
