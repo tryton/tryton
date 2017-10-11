@@ -308,7 +308,7 @@ class Payment:
                             ('stripe_token', '!=', None),
                             ('stripe_chargeable', '=', True),
                             ],
-                        ('stripe_customer', '!=', None),
+                        ('stripe_customer.stripe_customer_id', '!=', None),
                         ],
                     ('stripe_charge_id', '=', None),
                     ])
@@ -725,6 +725,8 @@ class Customer(ModelSQL, ModelView):
             Transaction().commit()
 
     def retrieve(self):
+        if not self.stripe_customer_id:
+            return
         try:
             return stripe.Customer.retrieve(
                 api_key=self.stripe_account.secret_key,
