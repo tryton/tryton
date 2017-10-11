@@ -875,6 +875,9 @@
                     column_index += this.tree.columns.length;
                 }
                 column = this.tree.columns[column_index];
+                if (!column.field) {
+                    continue;
+                }
                 state_attrs = column.field.get_state_attrs(this.record);
                 if (editable) {
                     readonly = (column.attributes.readonly ||
