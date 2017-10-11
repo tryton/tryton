@@ -2990,6 +2990,12 @@ class FieldsTestCase(unittest.TestCase):
                     }])
         transaction.rollback()
 
+        self.assertRaises(UserError, ReferenceRequired.create, [{
+                    'name': 'reference4',
+                    'reference': str(ReferenceTarget()),
+                    }])
+        transaction.rollback()
+
         target4, = ReferenceTarget.create([{
                     'name': 'target4_id',
                     }])
