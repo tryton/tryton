@@ -168,10 +168,15 @@ class Move:
 
             cost += move_cost_price * Decimal(str(move_qty))
 
-            move_qty = Uom.compute_qty(product.default_uom, move_qty, move.uom)
+            move_qty = Uom.compute_qty(
+                product.default_uom, move_qty, move.uom, round=False)
+
+            # Avoid float rounding issue but allow only rounding precision lost
+            new_qty = (getattr(move, as_qty_field) or 0.0) + move_qty
+            assert move.uom.round(new_qty) <= move.quantity
+            new_qty = min(new_qty, move.quantity)
             cls.write([move], {
-                    as_qty_field: (
-                        (getattr(move, as_qty_field) or 0.0) + move_qty),
+                    as_qty_field: new_qty,
                     })
 
         if consumed_qty < total_qty:
