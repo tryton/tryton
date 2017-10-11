@@ -980,10 +980,14 @@ class ModelStorage(Model):
 
                 validate_domain(field)
 
-                def required_test(value, field_name):
+                def required_test(value, field_name, field):
                     if (isinstance(value, (type(None), type(False), list,
                                     tuple, basestring, dict))
                             and not value):
+                        cls.raise_user_error('required_validation_record',
+                            error_args=cls._get_error_args(field_name))
+                    if (field._type == 'reference'
+                            and not isinstance(value, ModelStorage)):
                         cls.raise_user_error('required_validation_record',
                             error_args=cls._get_error_args(field_name))
                 # validate states required
@@ -1001,16 +1005,17 @@ class ModelStorage(Model):
                             required = PYSONDecoder(env).decode(pyson_required)
                             if required:
                                 required_test(getattr(record, field_name),
-                                    field_name)
+                                    field_name, field)
                     else:
                         if field.states['required']:
                             for record in records:
                                 required_test(getattr(record, field_name),
-                                    field_name)
+                                    field_name, field)
                 # validate required
                 if field.required:
                     for record in records:
-                        required_test(getattr(record, field_name), field_name)
+                        required_test(
+                            getattr(record, field_name), field_name, field)
                 # validate size
                 if hasattr(field, 'size') and field.size is not None:
                     for record in records:
