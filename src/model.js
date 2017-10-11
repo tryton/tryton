@@ -1474,10 +1474,13 @@
             }
             return record.state_attrs[this.name];
         },
+        _is_empty: function(record) {
+            return !this.get_eval(record);
+        },
         check_required: function(record) {
             var state_attrs = this.get_state_attrs(record);
             if (state_attrs.required == 1) {
-                if (!this.get(record) && (state_attrs.readonly != 1)) {
+                if (this._is_empty(record) && (state_attrs.readonly != 1)) {
                     return false;
                 }
             }
@@ -2366,7 +2369,15 @@
             return inversion.concat([inversion.localize_domain(
                         inversion.filter_leaf(screen_domain, this.name, model),
                         true), attr_domain]);
-        }
+        },
+        _is_empty: function(record) {
+            var result = Sao.field.Reference._super._is_empty.call(
+                this, record);
+            if (!result && record._values[this.name][1] < 0) {
+                result = true;
+            }
+            return result;
+        },
     });
 
     Sao.field.Binary = Sao.class_(Sao.field.Field, {
