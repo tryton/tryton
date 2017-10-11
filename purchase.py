@@ -1114,7 +1114,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         if self.unit:
             context['uom'] = self.unit.id
         else:
-            self.product.purchase_uom.id
+            context['uom'] = self.product.purchase_uom.id
         context['taxes'] = [t.id for t in self.taxes]
         return context
 
