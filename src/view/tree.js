@@ -924,7 +924,7 @@
                 this.tree.select_changed(this.record);
                 this.switch_row();
             } else {
-                if (!event_.ctrlKey &&
+                if (!event_.ctrlKey ||
                         this.tree.selection_mode ==
                         Sao.common.SELECTION_SINGLE) {
                     this.tree.rows.forEach(function(row) {
