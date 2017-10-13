@@ -320,3 +320,14 @@ class SaleLine:
                 and self.sale.shipment_cost_method == 'shipment'):
             return 0
         return quantity
+
+
+class Promotion:
+    __metaclass__ = PoolMeta
+    __name__ = 'sale.promotion'
+
+    def get_context_formula(self, sale_line):
+        context = super(Promotion, self).get_context_formula(sale_line)
+        if sale_line.shipment_cost:
+            context['names']['unit_price'] = sale_line.shipment_cost
+        return context
