@@ -259,10 +259,16 @@ class ModelStorage(Model):
             if 'state' in cls._defaults:
                 default['state'] = cls._defaults['state']()
 
+        def is_readonly(Model):
+            return (not issubclass(Model, ModelStorage)
+                or (hasattr(Model, 'table_query')
+                    and Model.table_query()))
+
         def convert_data(field_defs, data):
             data = data.copy()
             for field_name in field_defs:
                 ftype = field_defs[field_name]['type']
+                field = cls._fields[field_name]
 
                 if field_name in (
                         'create_date',
@@ -274,9 +280,8 @@ class ModelStorage(Model):
 
                 if field_name in default:
                     data[field_name] = default[field_name]
-                elif (isinstance(cls._fields[field_name], fields.Function)
-                        and not isinstance(cls._fields[field_name],
-                            fields.Property)):
+                elif (isinstance(field, fields.Function)
+                        and not isinstance(field, fields.Property)):
                     del data[field_name]
                 elif ftype in ('many2one', 'one2one'):
                     try:
@@ -285,10 +290,14 @@ class ModelStorage(Model):
                     except Exception:
                         pass
                 elif ftype in ('one2many',):
-                    if data[field_name]:
+                    if is_readonly(field.get_target()):
+                        del data[field_name]
+                    elif data[field_name]:
                         data[field_name] = [('copy', data[field_name])]
                 elif ftype == 'many2many':
-                    if data[field_name]:
+                    if is_readonly(pool.get(field.relation_name)):
+                        del data[field_name]
+                    elif data[field_name]:
                         data[field_name] = [('add', data[field_name])]
             if 'id' in data:
                 del data['id']
