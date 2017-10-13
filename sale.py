@@ -254,7 +254,8 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
         # Apply promotion only if all unit prices decrease
         if all(l.unit_price >= p for l, p in new_prices.iteritems()):
             for line, unit_price in new_prices.iteritems():
-                line.unit_price = unit_price
+                line.unit_price = unit_price.quantize(
+                    Decimal(1) / 10 ** line.__class__.unit_price.digits[1])
                 line.promotion = self
             sale.lines = sale.lines  # Trigger the change
 
