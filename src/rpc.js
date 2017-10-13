@@ -3,32 +3,19 @@
 (function() {
     'use strict';
 
-    Sao.rpc = function(args, session) {
-        var dfd = jQuery.Deferred();
+    Sao.rpc = function(args, session, async) {
+        var dfd = jQuery.Deferred(),
+            result;
         if (!session) {
             session = new Sao.Session();
+        }
+        if (async === undefined) {
+            async = true;
         }
         var params = jQuery.extend([], args.params);
         params.push(jQuery.extend({}, session.context, params.pop()));
 
         var timeoutID = Sao.common.processing.show();
-        var ajax_prm = jQuery.ajax({
-            'headers': {
-                'Authorization': 'Session ' + session.get_auth()
-            },
-            'contentType': 'application/json',
-            'data': JSON.stringify(Sao.rpc.prepareObject({
-                'id': Sao.rpc.id++,
-                'method': args.method,
-                'params': params
-            })),
-            'dataType': 'json',
-            'url': '/' + (session.database || '') + '/',
-            'type': 'post',
-            'complete': [function() {
-                Sao.common.processing.hide(timeoutID);
-            }]
-        });
 
         var ajax_success = function(data) {
             if (data === null) {
@@ -90,6 +77,7 @@
                 dfd.reject();
             } else {
                 dfd.resolve(data.result);
+                result = data.result;
             }
         };
 
@@ -105,10 +93,32 @@
                 dfd.reject();
             }
         };
-        ajax_prm.success(ajax_success);
-        ajax_prm.error(ajax_error);
 
-        return dfd.promise();
+        jQuery.ajax({
+            'async': async,
+            'headers': {
+                'Authorization': 'Session ' + session.get_auth()
+            },
+            'contentType': 'application/json',
+            'data': JSON.stringify(Sao.rpc.prepareObject({
+                'id': Sao.rpc.id++,
+                'method': args.method,
+                'params': params
+            })),
+            'dataType': 'json',
+            'url': '/' + (session.database || '') + '/',
+            'type': 'post',
+            'complete': [function() {
+                Sao.common.processing.hide(timeoutID);
+            }],
+            'success': ajax_success,
+            'error': ajax_error,
+        });
+        if (async) {
+            return dfd.promise();
+        } else {
+            return result;
+        }
     };
 
     Sao.rpc.id = 0;
