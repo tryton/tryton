@@ -129,5 +129,6 @@ CREATE TABLE ir_module_dependency (
 CREATE TABLE ir_cache (
     id BIGINT AUTO_INCREMENT NOT NULL,
     name VARCHAR(255),
-    "timestamp" TIMESTAMP
+    "timestamp" TIMESTAMP,
+    PRIMARY KEY(id)
 ) ENGINE=InnoDB;
