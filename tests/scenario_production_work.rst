@@ -226,6 +226,21 @@ Run works::
     >>> work2.state
     u'finished'
 
+Add an extra work::
+
+    >>> work2b = production.works.new()
+    >>> work2b.operation = operation2
+    >>> work2b.work_center = center2
+    >>> production.save()
+    >>> work2b = production.works[-1]
+
+    >>> work2b.state
+    u'draft'
+
+And delete the extra work::
+
+    >>> work2b.delete()
+
 Check production cost::
 
     >>> production.reload()
