@@ -157,8 +157,13 @@ class Move(Workflow, ModelSQL, ModelView):
     _order_name = 'product'
     product = fields.Many2One("product.product", "Product", required=True,
         select=True, states=STATES,
-        domain=[('type', '!=', 'service')],
-        depends=DEPENDS)
+        domain=[
+            ('type', '!=', 'service'),
+            If(Bool(Eval('product_uom_category')),
+                ('default_uom_category', '=', Eval('product_uom_category')),
+                ())
+            ],
+        depends=DEPENDS + ['product_uom_category'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
