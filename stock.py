@@ -287,6 +287,18 @@ class Move:
         if isinstance(self.origin, PurchaseLine):
             return self.origin.purchase.party.id
 
+    @fields.depends('origin')
+    def on_change_with_product_uom_category(self, name=None):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        category = super(Move, self).on_change_with_product_uom_category(
+            name=name)
+        # Enforce the same unit category as they are used to compute the
+        # remaining quantity to receive and the quantity to invoice.
+        if isinstance(self.origin, PurchaseLine):
+            category = self.origin.unit.category.id
+        return category
+
     @property
     def origin_name(self):
         pool = Pool()
