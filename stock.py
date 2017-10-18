@@ -178,6 +178,18 @@ class Move:
             return 'ignored'
         return ''
 
+    @fields.depends('origin')
+    def on_change_with_product_uom_category(self, name=None):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        category = super(Move, self).on_change_with_product_uom_category(
+            name=name)
+        # Enforce the same unit category as they are used to compute the
+        # remaining quantity to ship and the quantity to invoice.
+        if isinstance(self.origin, SaleLine):
+            category = self.origin.unit.category.id
+        return category
+
     @property
     def origin_name(self):
         pool = Pool()
