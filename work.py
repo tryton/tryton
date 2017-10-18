@@ -236,9 +236,15 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ]
 
     @classmethod
+    def create(cls, values):
+        works = super(Work, cls).create(values)
+        cls.set_state(works)
+        return works
+
+    @classmethod
     def delete(cls, works):
         for work in works:
-            if work.state != 'request':
+            if work.state not in {'request', 'draft'}:
                 cls.raise_user_error('delete_request', work.rec_name)
         super(Work, cls).delete(works)
 
