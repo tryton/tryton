@@ -8419,7 +8419,7 @@
             <field name="code">665</field>
             <field name="type" ref="interets_charges_assimilees"/>
             <field name="deferral" eval="False"/>
-            <field name="kind">expense</field>
+            <field name="kind">revenue</field>
             <field name="parent" ref="66"/>
         </record>
         <record model="account.account.template" id="666">
@@ -9433,7 +9433,7 @@
             <field name="code">765</field>
             <field name="type" ref="produits_autres_interets_produits_assimiles"/>
             <field name="deferral" eval="False"/>
-            <field name="kind">revenue</field>
+            <field name="kind">expense</field>
             <field name="parent" ref="76"/>
         </record>
         <record model="account.account.template" id="766">
