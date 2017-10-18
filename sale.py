@@ -15,6 +15,7 @@ class Sale:
     __name__ = 'sale.sale'
     agent = fields.Many2One('commission.agent', 'Commission Agent',
         domain=[
+            ('type_', '=', 'agent'),
             ('company', '=', Eval('company', -1)),
             ],
         states={

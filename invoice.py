@@ -17,6 +17,7 @@ class Invoice:
     __name__ = 'account.invoice'
     agent = fields.Many2One('commission.agent', 'Commission Agent',
         domain=[
+            ('type_', '=', 'agent'),
             ('company', '=', Eval('company', -1)),
             ],
         states={
