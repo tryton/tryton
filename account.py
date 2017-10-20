@@ -42,7 +42,10 @@ class DunningLevel:
     def default_email_template(cls):
         pool = Pool()
         Data = pool.get('ir.model.data')
-        return Data.get_id('account_dunning_email', 'report_email')
+        try:
+            return Data.get_id('account_dunning_email', 'report_email')
+        except KeyError:
+            return
 
 
 class ProcessDunning:
