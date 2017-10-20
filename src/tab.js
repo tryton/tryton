@@ -61,7 +61,8 @@
                     icon: 'glyphicon-time',
                     label: Sao.i18n.gettext('View Logs...'),
                 }, {
-                    id: Sao.common.MODELHISTORY.contains(this.screen.model_name) ?
+                    id: (this.screen &&
+                        Sao.common.MODELHISTORY.contains(this.screen.model_name)) ?
                         'revision': null,
                     icon: 'glyphicon-time',
                     label: Sao.i18n.gettext('Show revisions...'),
@@ -197,7 +198,7 @@
                     group = null;
                     return;
                 }
-                if (!item.id) {
+                if (!item.id || !this[item.id]) {
                     return;
                 }
                 if (!group) {
