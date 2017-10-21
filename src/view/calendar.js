@@ -115,7 +115,8 @@
             this.start = Sao.DateTime(start.utc());
             this.end = Sao.DateTime(end.utc());
             var prm = jQuery.when();
-            if (this.screen.current_view.view_type != 'form') {
+            if (this.screen.current_view &&
+                (this.screen.current_view.view_type != 'form')) {
                 var search_string = this.screen.screen_container.get_text();
                 prm = this.screen.search_filter(search_string);
             }
