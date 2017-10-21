@@ -237,7 +237,7 @@ class CreateShippingUPS(Wizard):
         return {
             'RequestOption': 'validate',
             'TransactionReference': {
-                'CustomerContext': shipment.number,
+                'CustomerContext': (shipment.number or '')[:512],
                 },
             }
 
@@ -246,9 +246,10 @@ class CreateShippingUPS(Wizard):
             'Name': party.name[:35],
             'AttentionName': address.party.name[:35],
             'Address': {
-                'AddressLine': (address.street or '').splitlines(),
-                'City': address.city,
-                'PostalCode': address.zip,
+                'AddressLine': [l[:35]
+                    for l in (address.street or '').splitlines()[:3]],
+                'City': address.city[:30],
+                'PostalCode': (address.zip or '')[:9],
                 'CountryCode': address.country.code if address.country else '',
                 },
             }
@@ -325,7 +326,7 @@ class CreateShippingUPS(Wizard):
             'ShipmentRequest': {
                 'Request': self.get_request_container(shipment),
                 'Shipment': {
-                    'Description': shipment.shipping_description,
+                    'Description': (shipment.shipping_description or '')[:50],
                     'Shipper': shipper,
                     'ShipTo': self.get_shipping_party(shipment.customer,
                         shipment.delivery_address),
