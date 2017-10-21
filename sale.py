@@ -135,13 +135,14 @@ class Sale:
     # XXX We must have the same depends than on_change_with_available_carriers,
     # for now it is maintain manually until we can specify cross-kind depends
     # on on_changes
-    @fields.depends('warehouse', 'shipment_address')
+    @fields.depends('carrier', 'warehouse', 'shipment_address')
     def on_change_party(self):
         super(Sale, self).on_change_party()
         self.available_carriers = self.on_change_with_available_carriers()
-        if self.available_carriers:
+        if self.available_carriers and (not self.carrier
+                or self.carrier not in self.available_carriers):
             self.carrier = self.available_carriers[0]
-        else:
+        elif not self.available_carriers:
             self.carrier = None
 
     @fields.depends('carrier', 'warehouse', 'shipment_address')
@@ -151,7 +152,7 @@ class Sale:
         if self.available_carriers and (not self.carrier
                 or self.carrier not in self.available_carriers):
             self.carrier = self.available_carriers[0]
-        else:
+        elif not self.available_carriers:
             self.carrier = None
 
     @fields.depends('carrier', 'warehouse', 'shipment_address')
@@ -167,7 +168,7 @@ class Sale:
         if self.available_carriers and (not self.carrier
                 or self.carrier not in self.available_carriers):
             self.carrier = self.available_carriers[0]
-        else:
+        elif not self.available_carriers:
             self.carrier = None
 
     @classmethod
