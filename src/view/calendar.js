@@ -31,6 +31,7 @@
                 events: this.get_events.bind(this),
                 locale: lang,
                 buttonIcons: false,
+                themeSystem: 'bootstrap3',
                 eventRender: this.event_render.bind(this),
                 eventResize: this.event_resize.bind(this),
                 eventDrop: this.event_drop.bind(this),
