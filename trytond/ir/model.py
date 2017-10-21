@@ -521,9 +521,9 @@ class ModelAccess(ModelSQL, ModelView):
             return cls.check(field.model_name, mode=mode,
                 raise_exception=False)
         elif field._type in ('many2many', 'one2one'):
-            if (field.target
-                    and not cls.check(field.target, mode=mode,
-                        raise_exception=False)):
+            if not cls.check(
+                    field.get_target().__name__, mode=mode,
+                    raise_exception=False):
                 return False
             elif (field.relation_name
                     and not cls.check(field.relation_name, mode=mode,
