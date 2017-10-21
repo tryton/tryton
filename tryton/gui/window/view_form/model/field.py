@@ -582,7 +582,7 @@ class O2MField(Field):
                         skip={self.attrs.get('relation_field', '')}))
         return result
 
-    def _set_value(self, record, value, default=False):
+    def _set_value(self, record, value, default=False, modified=False):
         self._set_default_value(record)
         group = record.value[self.name]
         if value is None:
@@ -608,7 +608,7 @@ class O2MField(Field):
             for old_record in group:
                 if old_record.id not in value:
                     group.remove(old_record, remove=True, signal=False)
-            group.load(value)
+            group.load(value, modified=modified)
         else:
             for vals in value:
                 new_record = record.value[self.name].new(default=False)
@@ -653,9 +653,10 @@ class O2MField(Field):
             value = [value]
 
         previous_ids = self.get_eval(record)
-        self._set_value(record, value)
         # The order of the ids is not significant
-        if set(previous_ids) != set(value):
+        modified = set(previous_ids) != set(value)
+        self._set_value(record, value, modified=modified)
+        if modified:
             record.modified_fields.setdefault(self.name)
             record.signal('record-modified')
             self.sig_changed(record)
@@ -674,7 +675,7 @@ class O2MField(Field):
         record.modified_fields.setdefault(self.name)
         self._set_default_value(record)
         if isinstance(value, (list, tuple)):
-            self._set_value(record, value)
+            self._set_value(record, value, modified=True)
             return
 
         if value and (value.get('add') or value.get('update')):
