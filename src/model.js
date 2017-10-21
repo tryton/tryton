@@ -1865,7 +1865,7 @@
             Sao.field.One2Many._super.init.call(this, description);
         },
         _default: null,
-        _set_value: function(record, value, default_) {
+        _set_value: function(record, value, default_, modified) {
             this._set_default_value(record);
             var group = record._values[this.name];
             var prm = jQuery.when();
@@ -1915,7 +1915,7 @@
                             group.remove(old_record, true);
                         }
                     }
-                    group.load(value);
+                    group.load(value, modified);
                 } else {
                     value.forEach(function(vals) {
                         var new_record = group.new_(false);
@@ -2018,8 +2018,10 @@
             }
 
             var previous_ids = this.get_eval(record);
-            this._set_value(record, value);
-            if (!Sao.common.compare(previous_ids.sort(), value.sort())) {
+            var modified = !Sao.common.compare(
+                previous_ids.sort(), value.sort());
+            this._set_value(record, value, false, modified);
+            if (modified) {
                 record._changed[this.name] = true;
                 this.changed(record).done(function() {
                     record.validate(null, true).then(function() {
@@ -2050,7 +2052,7 @@
             record._changed[this.name] = true;
             this._set_default_value(record);
             if (value instanceof Array) {
-                this._set_value(record, value);
+                this._set_value(record, value, false, true);
                 return;
             }
             var prm = jQuery.when();
