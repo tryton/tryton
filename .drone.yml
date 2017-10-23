@@ -15,9 +15,9 @@ matrix:
     include:
         - IMAGE: python:2.7
           TOXENV: py27
-        - IMAGE: python:3.3
-          TOXENV: py33
         - IMAGE: python:3.4
           TOXENV: py34
         - IMAGE: python:3.5
           TOXENV: py35
+        - IMAGE: python:3.6
+          TOXENV: py36
