@@ -31,12 +31,6 @@ matrix:
         - IMAGE: python:2.7
           TOXENV: py27
           DATABASE: postgresql
-        - IMAGE: python:3.3
-          TOXENV: py33
-          DATABASE: sqlite
-        - IMAGE: python:3.3
-          TOXENV: py33
-          DATABASE: postgresql
         - IMAGE: python:3.4
           TOXENV: py34
           DATABASE: sqlite
@@ -48,4 +42,10 @@ matrix:
           DATABASE: sqlite
         - IMAGE: python:3.5
           TOXENV: py35
+          DATABASE: postgresql
+        - IMAGE: python:3.6
+          TOXENV: py36
+          DATABASE: sqlite
+        - IMAGE: python:3.6
+          TOXENV: py36
           DATABASE: postgresql
