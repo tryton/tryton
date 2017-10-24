@@ -263,6 +263,9 @@ class One2Many(Field):
                     where &= history_where
                 if origin_where:
                     where &= origin_where
+                if self.filter:
+                    query = Target.search(self.filter, order=[], query=True)
+                    where &= origin.in_(query)
                 query = target.select(origin, where=where)
                 expression = ~table.id.in_(query)
                 if operator == '!=':
@@ -285,6 +288,8 @@ class One2Many(Field):
         rule_domain = Rule.domain_get(Target.__name__, mode='read')
         if rule_domain:
             target_domain = [target_domain, rule_domain]
+        if self.filter:
+            target_domain = [target_domain, self.filter]
         target_tables = {
             None: (target, None),
             }
