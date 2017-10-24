@@ -325,9 +325,12 @@ class Many2Many(Field):
                         target_operator = 'child_of'
                     else:
                         target_operator = 'parent_of'
-                    query = Target.search([
-                            (domain[3], target_operator, value),
-                            ], order=[], query=True)
+                    target_domain = [
+                        (domain[3], target_operator, value),
+                        ]
+                    if self.filter:
+                        target_domain.append(self.filter)
+                    query = Target.search(target_domain, order=[], query=True)
                     where = (target.in_(query) & (origin != Null))
                     if history_where:
                         where &= history_where
@@ -339,13 +342,20 @@ class Many2Many(Field):
                         return ~expression
                     return expression
                 if isinstance(value, basestring):
-                    targets = Target.search([('rec_name', 'ilike', value)],
-                        order=[])
+                    target_domain = [('rec_name', 'ilike', value)]
+                    if self.filter:
+                        target_domain.append(self.filter)
+                    targets = Target.search(target_domain, order=[])
                     ids = [t.id for t in targets]
-                elif not isinstance(value, (list, tuple)):
-                    ids = [value]
                 else:
-                    ids = value
+                    if not isinstance(value, (list, tuple)):
+                        ids = [value]
+                    else:
+                        ids = value
+                    if self.filter:
+                        targets = Target.search(
+                            [('id', 'in', ids), self.filter], order=[])
+                        ids = [t.id for t in targets]
                 if not ids:
                     expression = Literal(False)
                     if operator.startswith('not'):
@@ -361,6 +371,9 @@ class Many2Many(Field):
                     where &= history_where
                 if origin_where:
                     where &= origin_where
+                if self.filter:
+                    query = Target.search(self.filter, order=[], query=True)
+                    where &= target.in_(query)
                 query = relation.select(origin, where=where)
                 expression = ~table.id.in_(query)
                 if operator == '!=':
@@ -385,6 +398,11 @@ class Many2Many(Field):
         rule_domain = Rule.domain_get(Relation.__name__, mode='read')
         if rule_domain:
             relation_domain = [relation_domain, rule_domain]
+        if self.filter:
+            relation_domain = [
+                relation_domain,
+                (self.target, 'where', self.filter),
+                ]
         relation_tables = {
             None: (relation, None),
             }

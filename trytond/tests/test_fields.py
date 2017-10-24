@@ -2516,6 +2516,28 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(filtered_target.value, 3)
 
     @with_transaction()
+    def test_one2many_filter_search(self):
+        "Test search on one2many with filter"
+        pool = Pool()
+        One2ManyFilter = pool.get('test.one2many_filter')
+
+        One2ManyFilter.create([{
+                    'targets': [('create', [{'value': -1}])],
+                    }])
+
+        result = One2ManyFilter.search([('targets', '!=', None)])
+        self.assertEqual(len(result), 1)
+
+        result = One2ManyFilter.search([('filtered_targets', '!=', None)])
+        self.assertEqual(len(result), 0)
+
+        result = One2ManyFilter.search([('targets.value', '=', -1)])
+        self.assertEqual(len(result), 1)
+
+        result = One2ManyFilter.search([('filtered_targets.value', '=', -1)])
+        self.assertEqual(len(result), 0)
+
+    @with_transaction()
     def test_many2many(self):
         'Test Many2Many'
         pool = Pool()
@@ -2766,6 +2788,36 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(len(filtered.targets), 4)
         filtered_target, = filtered.filtered_targets
         self.assertEqual(filtered_target.value, 3)
+
+    @with_transaction()
+    def test_many2many_filter_search(self):
+        "Test search on many2many with filter"
+        pool = Pool()
+        Many2ManyFilter = pool.get('test.many2many_filter')
+
+        Many2ManyFilter.create([{
+                    'targets': [('create', [{'value': -1}])],
+                    }])
+
+        result = Many2ManyFilter.search([('targets', '!=', None)])
+        self.assertEqual(len(result), 1)
+
+        result = Many2ManyFilter.search([('filtered_targets', '!=', None)])
+        self.assertEqual(len(result), 0)
+
+        result = Many2ManyFilter.search(
+            [('or_filtered_targets', '!=', None)])
+        self.assertEqual(len(result), 1)
+
+        result = Many2ManyFilter.search([('targets.value', '=', -1)])
+        self.assertEqual(len(result), 1)
+
+        result = Many2ManyFilter.search([('filtered_targets.value', '=', -1)])
+        self.assertEqual(len(result), 0)
+
+        result = Many2ManyFilter.search(
+            [('or_filtered_targets.value', '=', -1)])
+        self.assertEqual(len(result), 1)
 
     @with_transaction()
     def test_many2many_add_to_list(self):
