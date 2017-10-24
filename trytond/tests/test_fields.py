@@ -2503,7 +2503,7 @@ class FieldsTestCase(unittest.TestCase):
         self.assertEqual(filtered_target.value, 3)
 
     @with_transaction()
-    def test_one2many_filter_fomain(self):
+    def test_one2many_filter_domain(self):
         'Test one2many with filter and domain'
         pool = Pool()
         One2ManyFilterDomain = pool.get('test.one2many_filter_domain')
