@@ -584,7 +584,12 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 return [('lines.moves.shipment' + nested,)
                     + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
             else:
-                return [('lines.moves.shipment',) + tuple(clause[1:3])]
+                if isinstance(clause[2], basestring):
+                    target = 'rec_name'
+                else:
+                    target = 'id'
+                return [('lines.moves.shipment.' + target,)
+                    + tuple(clause[1:3]) + (model_name,)]
         return classmethod(method)
 
     search_shipments = search_shipments_returns('stock.shipment.out')
