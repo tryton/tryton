@@ -13,7 +13,7 @@ class ProductionWorkTimesheetTestCase(ModuleTestCase):
     'Test Production Work Timesheet module'
     module = 'production_work_timesheet'
 
-    def create_work(self):
+    def create_work(self, production_state='draft'):
         pool = Pool()
         Work = pool.get('production.work')
         Operation = pool.get('production.routing.operation')
@@ -27,7 +27,7 @@ class ProductionWorkTimesheetTestCase(ModuleTestCase):
         operation.timesheet_available = True
         operation.save()
 
-        production = Production()
+        production = Production(state=production_state)
         production.save()
 
         work = Work(
@@ -68,8 +68,7 @@ class ProductionWorkTimesheetTestCase(ModuleTestCase):
                 TimesheetWork.search([('id', '=', timesheet_work_id)]))
 
             # Test create as done
-            work = self.create_work()
-            work.state = 'done'
+            work = self.create_work(production_state='done')
             work.save()
             timesheet_work, = work.timesheet_works
             self.assertEqual(timesheet_work.timesheet_end_date, Date.today())
