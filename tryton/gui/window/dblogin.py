@@ -605,18 +605,14 @@ class DBLogin(object):
             host = self.entry_host.get_text()
             hostname = common.get_hostname(host)
             port = common.get_port(host)
-            try:
-                test = DBListEditor.test_server_version(hostname, port)
-                if not test:
-                    if test is False:
-                        common.warning('',
-                            _(u'Incompatible version of the server'))
-                    else:
-                        common.warning('',
-                            _(u'Could not connect to the server'))
-                    continue
-            except Exception, exception:
-                common.process_exception(exception)
+            test = DBListEditor.test_server_version(hostname, port)
+            if not test:
+                if test is False:
+                    common.warning('',
+                        _(u'Incompatible version of the server'))
+                else:
+                    common.warning('',
+                        _(u'Could not connect to the server'))
                 continue
             database = self.entry_database.get_text()
             login = self.entry_login.get_text()

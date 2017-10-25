@@ -38,8 +38,7 @@ except ImportError:
 from threading import Lock
 import dateutil.tz
 
-from tryton.exceptions import (TrytonServerError, TrytonError,
-    TrytonServerUnavailable)
+from tryton.exceptions import TrytonServerError, TrytonError
 from tryton.pyson import PYSONEncoder
 
 _ = gettext.gettext
@@ -997,20 +996,7 @@ def process_exception(exception, *args, **kwargs):
 
     rpc_execute = kwargs.get('rpc_execute', rpc.execute)
 
-    if isinstance(exception, TrytonError):
-        if exception.faultCode == 'BadFingerprint':
-            warning(
-                _('The server fingerprint has changed since last connection.\n'
-                'The application will stop connecting to this server '
-                'until its fingerprint is fixed.'), _('Security risk.'))
-            from tryton.gui.main import Main
-            Main.sig_quit()
-        elif exception.faultCode.startswith('403'):
-            if rpc.CONNECTION is None:
-                message(_('Connection error.\n'
-                        'Unable to connect to the server.'))
-                return False
-    elif isinstance(exception, TrytonServerError):
+    if isinstance(exception, TrytonServerError):
         if exception.faultCode == 'UserWarning':
             name, msg, description = exception.args
             res = userwarning(description, msg)
@@ -1030,12 +1016,9 @@ def process_exception(exception, *args, **kwargs):
                     except TrytonServerError, exception:
                         return process_exception(exception, *args,
                             rpc_execute=rpc_execute)
-                return True
-            return False
         elif exception.faultCode == 'UserError':
             msg, description = exception.args
             warning(description, msg)
-            return False
         elif exception.faultCode == 'ConcurrencyException':
             if len(args) >= 6:
                 if concurrency(args[1], args[3][0], args[5]):
@@ -1046,15 +1029,13 @@ def process_exception(exception, *args, **kwargs):
                     except TrytonServerError, exception:
                         return process_exception(exception, *args,
                             rpc_execute=rpc_execute)
-                return False
             else:
                 message(_('Concurrency Exception'), msg_type=gtk.MESSAGE_ERROR)
-                return False
         elif (exception.faultCode.startswith('403')
                 or exception.faultCode.startswith('401')):
             from tryton.gui.main import Main
             if not PLOCK.acquire(False):
-                return False
+                return
             language = CONFIG['client.lang']
             func = lambda parameters: rpc.login(
                 rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME, parameters,
@@ -1073,17 +1054,7 @@ def process_exception(exception, *args, **kwargs):
                 except TrytonServerError, exception:
                     return process_exception(exception, *args,
                         rpc_execute=rpc_execute)
-    elif isinstance(exception, (socket.error, TrytonServerUnavailable)):
-        warning(str(exception), _('Network Error.'))
-        return False
-
-    if isinstance(exception, TrytonServerError):
-        error_title, error_detail = exception.faultCode, exception.faultString
-    else:
-        error_title = str(exception)
-        error_detail = traceback.format_exc()
-    error(error_title, error_detail)
-    return False
+    raise RPCException(exception)
 
 
 class Login(object):
@@ -1220,14 +1191,9 @@ class RPCProgress(object):
             if self.process_exception_p:
                 def rpc_execute(*args):
                     return RPCProgress('execute',
-                        args).run(self.process_exception_p)
-                result = process_exception(self.exception, *self.args,
+                        args).run(self.process_exception_p, self.callback)
+                return process_exception(self.exception, *self.args,
                     rpc_execute=rpc_execute)
-                if result is False:
-                    self.exception = RPCException(self.exception)
-                else:
-                    self.exception = None
-                    self.res = result
 
         def return_():
             if self.exception:

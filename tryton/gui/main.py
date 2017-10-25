@@ -874,15 +874,14 @@ class Main(object):
         self.set_title()  # Adds username/profile while password is asked
         try:
             common.Login(func)
-        except Exception, exception:
-            if (isinstance(exception, TrytonError)
-                    and exception.faultCode == 'QueryCanceled'):
+        except TrytonError, exception:
+            if exception.faultCode == 'QueryCanceled':
                 return
-            if (isinstance(exception, TrytonServerError)
-                    and exception.faultCode.startswith('404')):
+            raise
+        except TrytonServerError, exception:
+            if exception.faultCode.startswith('404'):
                 return self.sig_login()
-            common.process_exception(exception)
-            return
+            raise
         self.get_preferences()
         self.favorite_unset()
         self.menuitem_favorite.set_sensitive(True)
