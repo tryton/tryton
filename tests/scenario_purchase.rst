@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules, set_user
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -26,38 +26,6 @@ Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
-
-Create purchase user::
-
-    >>> User = Model.get('res.user')
-    >>> Group = Model.get('res.group')
-    >>> purchase_user = User()
-    >>> purchase_user.name = 'Purchase'
-    >>> purchase_user.login = 'purchase'
-    >>> purchase_user.main_company = company
-    >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
-    >>> purchase_user.groups.append(purchase_group)
-    >>> purchase_user.save()
-
-Create stock user::
-
-    >>> stock_user = User()
-    >>> stock_user.name = 'Stock'
-    >>> stock_user.login = 'stock'
-    >>> stock_user.main_company = company
-    >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
-    >>> stock_user.save()
-
-Create account user::
-
-    >>> account_user = User()
-    >>> account_user.name = 'Account'
-    >>> account_user.login = 'account'
-    >>> account_user.main_company = company
-    >>> account_group, = Group.find([('name', '=', 'Account')])
-    >>> account_user.groups.append(account_group)
-    >>> account_user.save()
 
 Create fiscal year::
 
@@ -135,7 +103,6 @@ Create payment term::
 
 Create an Inventory::
 
-    >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
     >>> Location = Model.get('stock.location')
     >>> storage, = Location.find([
@@ -152,7 +119,6 @@ Create an Inventory::
 
 Purchase 5 products::
 
-    >>> set_user(purchase_user)
     >>> Purchase = Model.get('purchase.purchase')
     >>> PurchaseLine = Model.get('purchase.line')
     >>> purchase = Purchase()
@@ -209,12 +175,8 @@ Invoice line must be linked to stock move::
 
 Post invoice and check no new invoices::
 
-    >>> set_user(account_user)
-    >>> Invoice = Model.get('account.invoice')
-    >>> invoice = Invoice(purchase.invoices[0].id)
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
-    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
     u'waiting'
@@ -225,7 +187,6 @@ Post invoice and check no new invoices::
 
 Purchase 5 products with an invoice method 'on shipment'::
 
-    >>> set_user(purchase_user)
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> purchase.payment_term = payment_term
@@ -265,7 +226,6 @@ Not yet linked to invoice lines::
 
 Validate Shipments::
 
-    >>> set_user(stock_user)
     >>> Move = Model.get('stock.move')
     >>> ShipmentIn = Model.get('stock.shipment.in')
     >>> shipment = ShipmentIn()
@@ -286,12 +246,9 @@ Validate Shipments::
 
 Open supplier invoice::
 
-    >>> set_user(purchase_user)
     >>> purchase.invoice_state
     u'waiting'
     >>> invoice, = purchase.invoices
-    >>> set_user(account_user)
-    >>> invoice = Invoice(invoice.id)
     >>> invoice.type
     u'in'
     >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
@@ -311,7 +268,6 @@ Invoice lines must be linked to each stock moves::
 
 Check second invoices::
 
-    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> len(purchase.invoices)
     2
@@ -329,7 +285,6 @@ Create the report::
 
 Create a Return::
 
-    >>> set_user(purchase_user)
     >>> return_ = Purchase()
     >>> return_.party = supplier
     >>> return_.payment_term = payment_term
@@ -357,7 +312,6 @@ Create a Return::
 
 Check Return Shipments::
 
-    >>> set_user(stock_user)
     >>> ShipmentReturn = Model.get('stock.shipment.in.return')
     >>> ship_return, = return_.shipment_returns
     >>> ship_return.state
@@ -372,7 +326,6 @@ Check Return Shipments::
     >>> ship_return.click('done')
     >>> ship_return.state
     u'done'
-    >>> set_user(purchase_user)
     >>> return_.reload()
     >>> return_.state
     u'processing'
@@ -383,10 +336,7 @@ Check Return Shipments::
 
 Open supplier credit note::
 
-    >>> set_user(purchase_user)
     >>> credit_note, = return_.invoices
-    >>> set_user(account_user)
-    >>> credit_note = Invoice(credit_note.id)
     >>> credit_note.type
     u'in'
     >>> len(credit_note.lines)
@@ -398,7 +348,6 @@ Open supplier credit note::
 
 Mixing return and purchase::
 
-    >>> set_user(purchase_user)
     >>> mix = Purchase()
     >>> mix.party = supplier
     >>> mix.payment_term = payment_term
@@ -430,7 +379,6 @@ Mixing return and purchase::
 Checking Shipments::
 
     >>> mix_return, = mix.shipment_returns
-    >>> set_user(stock_user)
     >>> mix_shipment = ShipmentIn()
     >>> mix_shipment.supplier = supplier
     >>> for move in mix.moves:
@@ -456,11 +404,8 @@ Checking Shipments::
 
 Checking the invoice::
 
-    >>> set_user(purchase_user)
     >>> mix.reload()
     >>> mix_invoice, = mix.invoices
-    >>> set_user(account_user)
-    >>> mix_invoice = Invoice(mix_invoice.id)
     >>> mix_invoice.type
     u'in'
     >>> len(mix_invoice.lines)
@@ -472,7 +417,6 @@ Checking the invoice::
 
 Mixing stuff with an invoice method 'on shipment'::
 
-    >>> set_user(purchase_user)
     >>> mix = Purchase()
     >>> mix.party = supplier
     >>> mix.payment_term = payment_term
@@ -503,7 +447,6 @@ Mixing stuff with an invoice method 'on shipment'::
 
 Checking Shipments::
 
-    >>> set_user(stock_user)
     >>> mix_return, = mix.shipment_returns
     >>> mix_shipment = ShipmentIn()
     >>> mix_shipment.supplier = supplier
@@ -530,7 +473,6 @@ Checking Shipments::
 
 Purchase services::
 
-    >>> set_user(purchase_user)
     >>> service_purchase = Purchase()
     >>> service_purchase.party = supplier
     >>> service_purchase.payment_term = payment_term
@@ -551,7 +493,6 @@ Purchase services::
 
 Pay the service invoice::
 
-    >>> set_user(account_user)
     >>> service_invoice.invoice_date = today
     >>> service_invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [service_invoice])
@@ -564,7 +505,6 @@ Pay the service invoice::
 
 Check service purchase states::
 
-    >>> set_user(purchase_user)
     >>> service_purchase.reload()
     >>> service_purchase.invoice_state
     u'paid'
@@ -586,7 +526,6 @@ linked to invoices::
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')
-    >>> set_user(stock_user)
     >>> shipment = ShipmentIn()
     >>> shipment.supplier = supplier
     >>> for move in purchase.moves:
@@ -598,7 +537,6 @@ linked to invoices::
     ...     move.quantity = 5.0
     >>> shipment.click('receive')
     >>> shipment.click('done')
-    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> invoice, = purchase.invoices
     >>> invoice_line, = invoice.lines
@@ -621,12 +559,10 @@ Deleting a line from a invoice should recreate it::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> invoice, = purchase.invoices
-    >>> set_user(account_user)
     >>> invoice_line, = invoice.lines
     >>> invoice.lines.remove(invoice_line)
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
-    >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> new_invoice, = purchase.invoices
     >>> new_invoice.number
