@@ -372,19 +372,7 @@ Class attributes are:
 
 .. attribute:: ModelSQL._order
 
-    A list of tuples defining the default order of the records:
-
-        [ ('field name', 'ASC'), ('other field name', 'DESC'), ... ]
-
-    where the first element of the tuple is a field name of the model and the
-    second is the sort ordering as `ASC` for ascending or `DESC` for
-    descending. This second element may contain 'NULLS FIRST' or 'NULLS LAST'
-    to sort null values before or after non-null values. If neither is
-    specified the default behavior of the backend is used.
-
-    In case the field used for the first element is a :class:`fields.Many2One`,
-    it is also possible to use the dotted notation to sort on a specific field
-    from the target record.
+    The default `order` parameter of :meth:`ModelStorage.search` method.
 
 .. attribute:: ModelSQL._order_name
 
@@ -455,8 +443,28 @@ Class methods:
 
 .. classmethod:: ModelStorage.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
-    Return a list of records that match the :ref:`domain <topics-domain>` or
-    the sql query if query is True.
+    Return a list of records that match the :ref:`domain <topics-domain>`.
+
+    If `offset` or `limit` are set, the result starts at the offset and has the
+    length of the limit.
+
+    The `order` is a list of tuples defining the order of the result:
+
+            [ ('field name', 'ASC'), ('other field name', 'DESC'), ... ]
+
+    The first element of the tuple is a field name of the model and the second
+    is the sort ordering as `ASC` for ascending or `DESC` for descending. This
+    second element may contain 'NULLS FIRST' or 'NULLS LAST' to sort null
+    values before or after non-null values. If neither is specified the default
+    behavior of the backend is used.
+
+    In case the field used is a :class:`fields.Many2One`, it is also possible
+    to use the dotted notation to sort on a specific field from the target
+    record.
+
+    If `count` is set to `True`, then the result is the number of records.
+
+    If `query` is set to `True`, the the result is the SQL query.
 
 .. classmethod:: ModelSQL.search_domain(domain[, active_test[, tables]])
 
