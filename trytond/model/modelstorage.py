@@ -1421,7 +1421,7 @@ class ModelStorage(Model):
                 to_write = []
                 for target in targets:
                     if target.id is None or target.id < 0:
-                        if field._type == 'one2many':
+                        if field._type == 'one2many' and field.field:
                             # Don't store old target link
                             setattr(target, field.field, None)
                         to_create.append(target._save_values)
