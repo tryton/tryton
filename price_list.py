@@ -59,7 +59,7 @@ class PriceList(ModelSQL, ModelView):
 
         pattern = pattern.copy()
         if product:
-            pattern['categories'] = [c.id for c in product.categories]
+            pattern['categories'] = [c.id for c in product.categories_all]
             pattern['product'] = product.id
         pattern['quantity'] = Uom.compute_qty(uom, quantity,
             product.default_uom, round=False) if product else quantity
