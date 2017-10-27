@@ -144,7 +144,7 @@ class Plan(ModelSQL, ModelView):
         if pattern is None:
             pattern = {}
         if product:
-            pattern['categories'] = [c.id for c in product.categories]
+            pattern['categories'] = [c.id for c in product.categories_all]
             pattern['product'] = product.id
         else:
             pattern['categories'] = []
