@@ -1,18 +1,21 @@
 @import "variables";
 @import "mixins";
 
-#tablist > li > a > span {
-    display: inline-block;
-    max-width: 9em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+#tablist > li > a {
+    border: 0;
+    & > span {
+        max-width: 9em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+#menu, #tabs {
+    padding-top: 5px;
 }
 
 .tab-form, .tab-board {
-    & nav.toolbar {
-        margin-bottom: 5px;
-    }
     & nav.toolbar.affix {
         top: @navbar-height + 1px;
         z-index: @zindex-navbar - 1;
@@ -200,6 +203,9 @@ button {
     }
     & label.editable {
         font-style: italic;
+    }
+    .nav-tabs {
+        margin-bottom: 15px;
     }
     .panel-heading {
         padding: 1px 1px;
