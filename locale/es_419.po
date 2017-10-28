@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -43,7 +43,7 @@ msgid "Price List"
 msgstr "Lista de precios"
 
 msgctxt "field:sale.extra,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.extra,sale_amount:"
@@ -95,7 +95,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:sale.extra.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.extra.line,sale_amount:"

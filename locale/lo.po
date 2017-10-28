@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -52,10 +52,9 @@ msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
 msgstr "ລາຍການລາຄາ"
 
-#, fuzzy
 msgctxt "field:sale.extra,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
@@ -114,10 +113,9 @@ msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"

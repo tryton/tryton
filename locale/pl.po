@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,43 +8,43 @@ msgstr ""
 
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Cyfry waluty"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data ukończenia"
 
 msgctxt "field:sale.extra,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Wiersze"
 
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Cennik"
 
 msgctxt "field:sale.extra,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
@@ -52,23 +52,23 @@ msgstr ""
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data rozpoczęcia"
 
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 #, fuzzy
 msgctxt "field:sale.extra.line,extra:"
@@ -81,23 +81,23 @@ msgstr ""
 
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "Kategoria jm produktu"
 
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Ilość"
 
 msgctxt "field:sale.extra.line,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
@@ -105,23 +105,23 @@ msgstr ""
 
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sekwencja"
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Jednostka"
 
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Cyfry jednostki"
 
 msgctxt "field:sale.extra.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 #, fuzzy
 msgctxt "field:sale.line,extra:"
@@ -130,15 +130,15 @@ msgstr "Extras"
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr "Extras"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr "Sale Extras"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr "Extras"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:sale.extra,name:"
@@ -151,4 +151,4 @@ msgstr ""
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Wiersz sprzedaży"
