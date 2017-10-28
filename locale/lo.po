@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -43,8 +43,8 @@ msgid "Party"
 msgstr "ພາກສ່ວນ"
 
 msgctxt "field:company.company,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -87,8 +87,8 @@ msgid "Party"
 msgstr "ພາກສ່ວນ"
 
 msgctxt "field:company.employee,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
@@ -127,8 +127,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
@@ -194,8 +194,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -43,8 +43,8 @@ msgid "Party"
 msgstr "Партньор"
 
 msgctxt "field:company.company,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:company.company,timezone:"
@@ -88,8 +88,8 @@ msgid "Party"
 msgstr "Партньор"
 
 msgctxt "field:company.employee,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
@@ -128,8 +128,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
@@ -196,8 +196,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Name"
-msgstr "Име на прикачен файл"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"

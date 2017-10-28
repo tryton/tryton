@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,10 +47,9 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:company.company,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -98,10 +97,9 @@ msgctxt "field:company.employee,party:"
 msgid "Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:company.employee,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
@@ -145,10 +143,9 @@ msgctxt "field:ir.cron-company.company,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.cron-company.company,write_date:"
@@ -215,10 +212,9 @@ msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:res.user-company.employee,user:"

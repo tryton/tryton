@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -46,8 +46,8 @@ msgid "Party"
 msgstr "Relatie"
 
 msgctxt "field:company.company,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -96,8 +96,8 @@ msgid "Party"
 msgstr "Relatie"
 
 msgctxt "field:company.employee,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
@@ -141,8 +141,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.cron-company.company,write_date:"
@@ -215,10 +215,9 @@ msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:res.user-company.employee,user:"
