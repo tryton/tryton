@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -46,10 +46,9 @@ msgctxt "field:company.employee_cost_price,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:company.employee_cost_price,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:company.employee_cost_price,write_date:"
