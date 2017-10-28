@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -68,8 +68,8 @@ msgid "Lines"
 msgstr "Строки"
 
 msgctxt "field:stock.forecast,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
@@ -156,8 +156,8 @@ msgid "Quantity Executed"
 msgstr "Кол-во выполнено"
 
 msgctxt "field:stock.forecast.line,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
@@ -196,8 +196,8 @@ msgid "Move"
 msgstr "Перемещение"
 
 msgctxt "field:stock.forecast.line-stock.move,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.forecast.line-stock.move,write_date:"
 msgid "Write Date"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -67,8 +67,8 @@ msgid "Lines"
 msgstr "Pozíció"
 
 msgctxt "field:stock.forecast,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
@@ -155,8 +155,8 @@ msgid "Quantity Executed"
 msgstr "Mennyiség kész"
 
 msgctxt "field:stock.forecast.line,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
@@ -195,10 +195,9 @@ msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
 msgstr "Lépések"
 
-#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,write_date:"

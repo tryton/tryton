@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -71,10 +71,9 @@ msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
 msgstr "ຮ່ວງ"
 
-#, fuzzy
 msgctxt "field:stock.forecast,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.forecast,state:"
@@ -176,10 +175,9 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.forecast.line,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.forecast.line,unit_digits:"
@@ -224,10 +222,9 @@ msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
 msgstr "ເຄື່ອນໄຫວ"
 
-#, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.forecast.line-stock.move,write_date:"
