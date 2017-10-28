@@ -2,49 +2,46 @@
 # Copyright (C) 2016 Tryton
 # This file is distributed under the same license as the tryton project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#: tryton/config.py:73
+#: tryton/config.py:70
 msgid "specify alternate config file"
 msgstr "ລະບຸ config file ທີ່ສະຫຼັບກັນ"
 
-#: tryton/config.py:76
+#: tryton/config.py:73
 msgid "development mode"
 msgstr "ຮູບແບບການພັດທະນາ"
 
-#: tryton/config.py:79
+#: tryton/config.py:76
 msgid "logging everything at INFO level"
 msgstr "ເຂົ້າໃຊ້ທຸກຢ່າງໃນລະດັບຂໍ້ມູນ"
 
-#: tryton/config.py:81
+#: tryton/config.py:78
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 msgstr ""
 "ລະບຸ ລະດັບ ການບັນທຶກ: ແກ້ໄຂຂໍ້ຜິດພາດ, ຂໍ້ມູນ, ຄຳເຕືອນ, ຂໍ້ຜິດພາດ, ທີ່ສຳຄັນ"
 
-#: tryton/config.py:84
+#: tryton/config.py:81
 msgid "specify the login user"
 msgstr "ລະບຸ ຜູ້ເຂົ້າໃຊ້ງານ"
 
-#: tryton/config.py:86
-msgid "specify the server port"
-msgstr "ລະບຸປະຕູເຊື່ອມຕໍ່ແມ່ຂ່າຍ"
-
-#: tryton/config.py:88
-msgid "specify the server hostname"
+#: tryton/config.py:83
+#, fuzzy
+msgid "specify the server hostname:port"
 msgstr "ລະບຸ ທີ່ຢູ່ ຂອງ ເຄື່ອງແມ່ຂ່າຍ"
 
-#: tryton/config.py:92
+#: tryton/config.py:87
 msgid "Too much arguments"
 msgstr "ມີຂໍ້ໂຕ້ແຍ່ງຫຼາຍເກີນໄປ"
 
-#: tryton/config.py:95
+#: tryton/config.py:90
 #, python-format
 msgid "File \"%s\" not found"
 msgstr "ບໍ່ພໍ້ ຟາຍລ໌ \"%s\" ນີ້"
 
-#: tryton/config.py:133
+#: tryton/config.py:128
 #, python-format, python-format, python-format
 msgid "Unable to write config file %s."
 msgstr "ບໍ່ສາມາດ ຂຽນ ຟາຍລ໌ ຕັ້ງຄ່າ (config file) %s ນີ້ໄດ້."
@@ -54,24 +51,24 @@ msgstr "ບໍ່ສາມາດ ຂຽນ ຟາຍລ໌ ຕັ້ງຄ່າ
 msgid "Unable to set locale %s"
 msgstr "ບໍ່ສາມາດຕັ້ງຄ່າ ທ້ອງຖິ່ນ %s ໄດ້."
 
-#: tryton/action/main.py:92 tryton/common/button.py:56
+#: tryton/action/main.py:93 tryton/common/button.py:56
 msgid ", "
 msgstr ","
 
-#: tryton/action/main.py:94
+#: tryton/action/main.py:95
 msgid ",…"
 msgstr ",..."
 
-#: tryton/action/main.py:95
+#: tryton/action/main.py:96
 #, python-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
-#: tryton/action/main.py:187
+#: tryton/action/main.py:191
 msgid "Select your action"
 msgstr "ເລືອກການດຳເນີນການຂອງທ່ານ"
 
-#: tryton/action/main.py:193
+#: tryton/action/main.py:197
 msgid "No action defined."
 msgstr "ບໍ່ມີ ການດຳເນີນການ ທີ່ລະບຸໄວ້!"
 
@@ -79,52 +76,52 @@ msgstr "ບໍ່ມີ ການດຳເນີນການ ທີ່ລະບ�
 msgid "By: "
 msgstr "ໂດຍ:"
 
-#: tryton/common/common.py:231
+#: tryton/common/common.py:240
 msgid "Tryton Connection"
 msgstr "ການເຊື່ອມຕໍ່ເຂົ້າ ໄຕຣຕັອນ"
 
-#: tryton/common/common.py:241
+#: tryton/common/common.py:250
 msgid "Server:"
 msgstr "ແມ່ຂ່າຍ:"
 
-#: tryton/common/common.py:259
+#: tryton/common/common.py:268
 msgid "Port:"
 msgstr "ປະຕູເຊື່ອມຕໍ່:"
 
-#: tryton/common/common.py:331 tryton/gui/window/shortcuts.py:56
+#: tryton/common/common.py:340 tryton/gui/window/shortcuts.py:56
 msgid "Selection"
 msgstr "ການເລືອກ"
 
-#: tryton/common/common.py:339
+#: tryton/common/common.py:348
 msgid "Your selection:"
 msgstr "ການເລືອກຂອງທ່ານ:"
 
-#: tryton/common/common.py:462
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:56
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:123
+#: tryton/common/common.py:471
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:35
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:121
 #: tryton/gui/window/view_form/view/graph.py:159
-#: tryton/gui/window/view_form/view/list_gtk/widget.py:500
-#: tryton/gui/window/win_export.py:300
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:497
+#: tryton/gui/window/win_export.py:305
 msgid "Save As..."
 msgstr "ບັນທຶກເປັນ..."
 
-#: tryton/common/common.py:609
+#: tryton/common/common.py:618
 msgid "Always ignore this warning."
 msgstr "ບໍ່ສົນກັບຄຳເຕືອນນີ້ເລີຍ."
 
-#: tryton/common/common.py:614
+#: tryton/common/common.py:623
 msgid "Do you want to proceed?"
 msgstr "ທ່ານຕ້ອງການດຳເນີນການຕໍ່ໄປບໍ່?"
 
-#: tryton/common/common.py:633
+#: tryton/common/common.py:642
 msgid "Confirmation"
 msgstr "ການຢືນຢັນ"
 
-#: tryton/common/common.py:735 tryton/common/common.py:1042
+#: tryton/common/common.py:744 tryton/common/common.py:1051
 msgid "Concurrency Exception"
 msgstr "ຍົກເວັ້ນການເຂົ້າເຖິງພ້ອມກັນ"
 
-#: tryton/common/common.py:748
+#: tryton/common/common.py:757
 msgid ""
 "<b>Write Concurrency Warning:</b>\n"
 "\n"
@@ -142,49 +139,49 @@ msgstr ""
 "    - \"ສົມທຽບ\" ເພື່ອເບິ່ງສະບັບທີ່ປ່ຽນແປງ;\n"
 "    - \"ຂຽນລົງເລີຍ\" ເພື່ອບັນທຶກ ສະບັບປັດຈຸບັນຂອງທ່ານ."
 
-#: tryton/common/common.py:757
+#: tryton/common/common.py:766
 msgid "Compare"
 msgstr "ສົມທຽບ"
 
-#: tryton/common/common.py:762
+#: tryton/common/common.py:771
 msgid "Write Anyway"
 msgstr "ຂຽນລົງເລີຍ"
 
-#: tryton/common/common.py:790 tryton/gui/window/win_export.py:332
+#: tryton/common/common.py:799 tryton/gui/window/win_export.py:337
 #: tryton/gui/window/win_import.py:113 tryton/gui/window/win_import.py:142
 msgid "Error"
 msgstr "ຜິດພາດ"
 
-#: tryton/common/common.py:793
+#: tryton/common/common.py:802
 msgid "Report Bug"
 msgstr "ລາຍງານຂໍ້ຜິດພາດ"
 
-#: tryton/common/common.py:800
+#: tryton/common/common.py:809
 msgid "Application Error."
 msgstr "ໂປຣແກຣມ ມີຂໍ້ຜິດພາດ!"
 
-#: tryton/common/common.py:823
+#: tryton/common/common.py:832
 msgid "Error: "
 msgstr "ຂໍ້ຜິດພາດ:"
 
-#: tryton/common/common.py:843
+#: tryton/common/common.py:852
 #, python-format
 msgid "To report bugs you must have an account on <u>%s</u>"
 msgstr "ທ່ານຕ້ອງມີບັນຊີໃຊ້ຈຶ່ງຈະສາມາດລາຍງານຂໍ້ຜິດພາດ <u>%s</u> ນີ້ໄດ້"
 
-#: tryton/common/common.py:873
+#: tryton/common/common.py:882
 msgid "Bug Tracker"
 msgstr "ໂຕຕິດຕາມ ຂໍ້ຜິດພາດ"
 
-#: tryton/common/common.py:890
+#: tryton/common/common.py:899
 msgid "User:"
 msgstr "ຜູ້ໃຊ້:"
 
-#: tryton/common/common.py:898
+#: tryton/common/common.py:907
 msgid "Password:"
 msgstr "ລະຫັດຜ່ານ:"
 
-#: tryton/common/common.py:953
+#: tryton/common/common.py:962
 msgid ""
 "The same bug was already reported by another user.\n"
 "To keep you informed your username is added to the nosy-list of this issue"
@@ -192,11 +189,11 @@ msgstr ""
 "ຂໍ້ຜິດພາດອັນດຽວກັນນີ້ ຖືກລາຍງານ ໂດຍຜູ້ໃຊ້ງານຄົນອື່ນແລ້ວ.\n"
 "ເພື່ອໃຫ້ທ່ານໄດ້ຮັບຂໍ້ມູນການແກ້ໄຂ ຊື່ເຂົ້າໃຊ້ງານຂອງທ່ານ ໄດ້ຖືກເພີ່ມ ເຂົ້າໃນ ບັນຊີລາຍຊື່ຂອງບັນຫານີ້້"
 
-#: tryton/common/common.py:964
+#: tryton/common/common.py:973
 msgid "Created new bug with ID "
 msgstr "ສ້າງ ລາຍການຂໍ້ຜິດພາດ ໃໝ່ ດ້ວຍ ເລກກຳກັບ "
 
-#: tryton/common/common.py:972
+#: tryton/common/common.py:981
 msgid ""
 "Connection error.\n"
 "Bad username or password."
@@ -204,11 +201,11 @@ msgstr ""
 "ການເຊື່ອມຕໍ່ ຜິດພາດ!\n"
 "ຊື່ຜູໃຊ້ ຫຼື ລະຫັດຜ່ານ ບໍ່ຖືກຕ້ອງ!"
 
-#: tryton/common/common.py:977
+#: tryton/common/common.py:986
 msgid "Exception:"
 msgstr "ຂໍ້ຍົກເວັ້ນ:"
 
-#: tryton/common/common.py:994
+#: tryton/common/common.py:1003
 msgid ""
 "The server fingerprint has changed since last connection.\n"
 "The application will stop connecting to this server until its fingerprint is fixed."
@@ -216,11 +213,11 @@ msgstr ""
 "ແມ່ຂ່າຍລາຍພິມນີ້ວມື ຖືກປ່ຽນແປງ ຕັ້ງແຕ່ ການເຊື່ອມຕໍ່ເຂົ້າໃຊ້ ຄັ້ງລ້າສຸດ!\n"
 "ໂປຣແກຣມ ຈະຢຸດ ການເຊື່ອມຕໍ່ເຂົ້າແມ່ຂ່າຍນີ້ ຈົນກວ່າ ການພິມລາຍນີ້ວມຶ ຈະຖືກແກ້ໄຂ."
 
-#: tryton/common/common.py:996
+#: tryton/common/common.py:1005
 msgid "Security risk."
 msgstr "ຄວາມປອດໄພ ມີຄວາມສ່ຽງ!"
 
-#: tryton/common/common.py:1001
+#: tryton/common/common.py:1010
 msgid ""
 "Connection error.\n"
 "Unable to connect to the server."
@@ -228,21 +225,26 @@ msgstr ""
 "ການເຊື່ອມຕໍ່ຜິດພາດ!\n"
 "ບໍ່ສາມາດ ເຊື່ອມຕໍ່ເຂົ້າຫາແມ່ຂ່າຍໄດ້!"
 
-#: tryton/common/common.py:1067
+#: tryton/common/common.py:1077
 msgid "Network Error."
 msgstr "ເຄືອຂ່າຍ ຜິດພາດ!"
 
-#: tryton/common/common.py:1401
+#: tryton/common/common.py:1410
 msgid "..."
 msgstr "..."
 
-#: tryton/common/completion.py:22
+#: tryton/common/completion.py:25
 msgid "<i>Search...</i>"
 msgstr "<i>ຊອກຫາ...</i>"
 
-#: tryton/common/completion.py:24
+#: tryton/common/completion.py:27
 msgid "<i>Create...</i>"
 msgstr "<i>ສ້າງ...</i>"
+
+#: tryton/common/completion.py:69
+#, python-format
+msgid "Unable to search for completion of %s"
+msgstr ""
 
 #: tryton/common/datetime_.py:35 tryton/common/datetime_.py:235
 #: tryton/common/datetime_.py:385
@@ -285,7 +287,7 @@ msgid "Yes"
 msgstr "ແມ່ນ"
 
 #: tryton/common/domain_parser.py:236 tryton/common/domain_parser.py:461
-#: tryton/gui/window/view_form/view/screen_container.py:543
+#: tryton/gui/window/view_form/view/screen_container.py:551
 msgid "True"
 msgstr "ຈິງ"
 
@@ -294,7 +296,7 @@ msgid "t"
 msgstr "ຈ"
 
 #: tryton/common/domain_parser.py:461
-#: tryton/gui/window/view_form/view/screen_container.py:543
+#: tryton/gui/window/view_form/view/screen_container.py:551
 msgid "False"
 msgstr "ຜິດ"
 
@@ -358,160 +360,160 @@ msgstr "ນ"
 msgid "s"
 msgstr "ວ"
 
-#: tryton/gui/main.py:208
+#: tryton/gui/main.py:214
 msgid "_Connection"
 msgstr "_ການເຊື່ອມຕໍ່"
 
-#: tryton/gui/main.py:216
+#: tryton/gui/main.py:222
 msgid "_User"
 msgstr "_ຜູ້ໃຊ້"
 
-#: tryton/gui/main.py:230
+#: tryton/gui/main.py:236
 msgid "_Options"
 msgstr "_ທາງເລືອກ"
 
-#: tryton/gui/main.py:238
+#: tryton/gui/main.py:244
 msgid "Fa_vorites"
 msgstr "ທີ່_ມັກຫຼາຍ"
 
-#: tryton/gui/main.py:254
+#: tryton/gui/main.py:260
 msgid "_Help"
 msgstr "_ຊ່ອຍເຫຼືອ"
 
-#: tryton/gui/main.py:276 tryton/gui/main.py:820
+#: tryton/gui/main.py:282 tryton/gui/main.py:844
 #: tryton/gui/window/view_form/view/form_gtk/dictionary.py:341
-#: tryton/gui/window/view_form/view/form_gtk/many2many.py:45
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:51
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:46
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:89
 #: tryton/gui/window/view_form/view/screen_container.py:144
-#: tryton/gui/window/win_search.py:28
+#: tryton/gui/window/win_search.py:32
 msgid "Search"
 msgstr "ຊອກຫາ"
 
-#: tryton/gui/main.py:366
+#: tryton/gui/main.py:372
 msgid "No result found."
 msgstr "ບໍ່ພົບຜົນຊອກຫາ"
 
-#: tryton/gui/main.py:388
+#: tryton/gui/main.py:412
 msgid "_Connect..."
 msgstr "_ເຊື່ອມຕໍ່..."
 
-#: tryton/gui/main.py:398
+#: tryton/gui/main.py:422
 msgid "_Disconnect"
 msgstr "_ຕັດການເຊື່ອມຕໍ່"
 
-#: tryton/gui/main.py:408
+#: tryton/gui/main.py:432
 msgid "_Quit..."
 msgstr "_ອອກ..."
 
-#: tryton/gui/main.py:424
+#: tryton/gui/main.py:448
 msgid "_Preferences..."
 msgstr "_ການຕັ້ງຄ່າຂອງ..."
 
-#: tryton/gui/main.py:436
+#: tryton/gui/main.py:460
 msgid "_Menu Reload"
 msgstr "_ໂຫຼດ ລາຍການຄຳສັ່ງໃໝ່"
 
-#: tryton/gui/main.py:446
+#: tryton/gui/main.py:470
 msgid "_Menu Toggle"
 msgstr "_ສະຫຼັບລາຍການຄຳສັ່ງ"
 
-#: tryton/gui/main.py:454
+#: tryton/gui/main.py:478
 msgid "_Global Search"
 msgstr "_ຊອກຫາໂດຍລວມ"
 
-#: tryton/gui/main.py:470
+#: tryton/gui/main.py:494
 msgid "_Toolbar"
 msgstr "_ແຖບເຄື່ອງມື"
 
-#: tryton/gui/main.py:478
+#: tryton/gui/main.py:502
 msgid "_Default"
 msgstr "_ຄ່າເດີມ"
 
-#: tryton/gui/main.py:489
+#: tryton/gui/main.py:513
 msgid "_Text and Icons"
 msgstr "_ຂໍ້ຄວາມ ແລະ ປຸ່ມລັດ"
 
-#: tryton/gui/main.py:499
+#: tryton/gui/main.py:523
 msgid "_Icons"
 msgstr "_ປຸ່ມລັດ"
 
-#: tryton/gui/main.py:508
+#: tryton/gui/main.py:532
 msgid "_Text"
 msgstr "_ຂໍ້ຄວາມ"
 
-#: tryton/gui/main.py:517
+#: tryton/gui/main.py:541
 msgid "_Menubar"
 msgstr "_ແຖບຄຳສັ່ງງານ"
 
-#: tryton/gui/main.py:525
+#: tryton/gui/main.py:549
 msgid "Change Accelerators"
 msgstr "ປ່ຽນໂຕເລັ່ງ"
 
-#: tryton/gui/main.py:534
+#: tryton/gui/main.py:558
 msgid "_Mode"
 msgstr "_ແບບສະແດງ"
 
-#: tryton/gui/main.py:542
+#: tryton/gui/main.py:566
 msgid "_Normal"
 msgstr "_ທຳມະດາ"
 
-#: tryton/gui/main.py:551
+#: tryton/gui/main.py:575
 msgid "_PDA"
 msgstr "_ພີດີເອ (PDA)"
 
-#: tryton/gui/main.py:558
+#: tryton/gui/main.py:582
 msgid "_Form"
 msgstr "_ແບບຟອມ"
 
-#: tryton/gui/main.py:567
+#: tryton/gui/main.py:591
 msgid "Save Width/Height"
 msgstr "ບັນທຶກ ຄວາມກວ້າງ/ຄວາມສູງ"
 
-#: tryton/gui/main.py:578
+#: tryton/gui/main.py:602
 msgid "Save Tree State"
 msgstr "ບັນທຶກ ສະຖານະ ໂຄງສ້າງ"
 
-#: tryton/gui/main.py:590
+#: tryton/gui/main.py:614
 msgid "Fast Tabbing"
 msgstr "ຍ້າຍແບບໄວ"
 
-#: tryton/gui/main.py:600
+#: tryton/gui/main.py:624
 msgid "Spell Checking"
 msgstr "ກວດສອບການສະກົດຄຳ"
 
-#: tryton/gui/main.py:611
+#: tryton/gui/main.py:635
 msgid "_Previous Tab"
 msgstr "_ແຖບງານກ່ອນໜ້າ"
 
-#: tryton/gui/main.py:618
+#: tryton/gui/main.py:642
 msgid "_Next Tab"
 msgstr "_ແຖບງານ ຕໍ່ໄປ"
 
-#: tryton/gui/main.py:625
+#: tryton/gui/main.py:649
 msgid "Search Limit..."
 msgstr "ຈຳກັດການຊອກຫາ..."
 
-#: tryton/gui/main.py:631
+#: tryton/gui/main.py:655
 msgid "_Email..."
 msgstr "_ອີເມວລ໌..."
 
-#: tryton/gui/main.py:639
+#: tryton/gui/main.py:663
 msgid "_Save Options"
 msgstr "_ບັນທຶກ ທາງເລືອກ"
 
-#: tryton/gui/main.py:653
+#: tryton/gui/main.py:677
 msgid "_Keyboard Shortcuts..."
 msgstr "_ປຸ່ມລັດທາງແປ້ນພິມ..."
 
-#: tryton/gui/main.py:663
+#: tryton/gui/main.py:687
 msgid "_About..."
 msgstr "_ກ່ຽວກັບ..."
 
-#: tryton/gui/main.py:699 tryton/gui/main.py:721
+#: tryton/gui/main.py:723 tryton/gui/main.py:745
 msgid "Manage Favorites"
 msgstr "ຈັດການລາຍການທີ່ມັກ"
 
-#: tryton/gui/main.py:873
+#: tryton/gui/main.py:898
 msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
@@ -519,7 +521,7 @@ msgstr ""
 "ການດຳເນີນການດັ່ງຕໍ່ໄປນີ້ ຕ້ອງການໃຫ້ ອັດແຖບງານທັງໝົດລົງ\n"
 "ທ່ານຕ້ອງການສືບຕໍ່ບໍ່?"
 
-#: tryton/gui/main.py:1116
+#: tryton/gui/main.py:1143
 msgid "Close Tab"
 msgstr "ອັດແຖບງານ"
 
@@ -527,66 +529,6 @@ msgstr "ອັດແຖບງານ"
 #, python-format, python-format, python-format
 msgid "Attachments (%s)"
 msgstr "ເອກະສານຄັດຕິດ (%s)"
-
-#: tryton/gui/window/board.py:21 tryton/gui/window/form.py:34
-msgid "New"
-msgstr "ສ້າງໃໝ່"
-
-#: tryton/gui/window/board.py:21 tryton/gui/window/form.py:34
-msgid "Create a new record"
-msgstr "ສ້າງແຖວຂໍ້ມູນໃໝ່"
-
-#: tryton/gui/window/board.py:22 tryton/gui/window/form.py:36
-#: tryton/gui/window/win_export.py:86
-msgid "Save"
-msgstr "ບັນທຶກ"
-
-#: tryton/gui/window/board.py:22 tryton/gui/window/form.py:36
-msgid "Save this record"
-msgstr "ບັນທຶກແຖວຂໍ້ມູນນີ້"
-
-#: tryton/gui/window/board.py:23 tryton/gui/window/form.py:38
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:163
-#: tryton/gui/window/win_form.py:221
-msgid "Switch"
-msgstr "ສະຫຼັບ"
-
-#: tryton/gui/window/board.py:23 tryton/gui/window/form.py:38
-msgid "Switch view"
-msgstr "ສະຫຼັບປ່ຽນການເບິ່ງ"
-
-#: tryton/gui/window/board.py:25 tryton/gui/window/form.py:40
-msgid "_Reload"
-msgstr "_ໂຫຼດຂຶ້ນໃໝ່"
-
-#: tryton/gui/window/board.py:25 tryton/gui/window/form.py:40
-msgid "Reload"
-msgstr "ໂຫຼດຂຶ້ນມາໃໝ່"
-
-#: tryton/gui/window/board.py:32 tryton/gui/window/form.py:57
-msgid "_New"
-msgstr "_ສ້າງໃໝ່"
-
-#: tryton/gui/window/board.py:33 tryton/gui/window/form.py:58
-#: tryton/gui/window/win_form.py:68
-msgid "_Save"
-msgstr "_ບັນທຶກ"
-
-#: tryton/gui/window/board.py:34 tryton/gui/window/form.py:59
-msgid "_Switch View"
-msgstr "_ສະຫຼັບໜ້າເບິ່ງ"
-
-#: tryton/gui/window/board.py:36 tryton/gui/window/form.py:61
-msgid "_Reload/Undo"
-msgstr "_ໂຫຼດຄືນໃໝ່/ຍົກເລີກ"
-
-#: tryton/gui/window/board.py:38 tryton/gui/window/form.py:65
-msgid "_Delete..."
-msgstr "_ລຶບ..."
-
-#: tryton/gui/window/board.py:40 tryton/gui/window/form.py:78
-msgid "_Close Tab"
-msgstr "_ອັດແຖບງານ"
 
 #: tryton/gui/window/dblogin.py:31
 msgid "Profile Editor"
@@ -700,230 +642,128 @@ msgstr "ເນື້ອຄວາມ:"
 msgid "Attachment:"
 msgstr "ເອກະສານຄັດຕິດ:"
 
-#: tryton/gui/window/form.py:43
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:137
-#: tryton/gui/window/view_form/view/screen_container.py:213
-#: tryton/gui/window/win_form.py:194
-msgid "Previous"
-msgstr "ກ່ອນໜ້າ"
-
-#: tryton/gui/window/form.py:44
-msgid "Previous Record"
-msgstr "ແຖວຂໍ້ມູນກ່ອນນີ້"
-
-#: tryton/gui/window/form.py:45
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:151
-#: tryton/gui/window/view_form/view/screen_container.py:225
-#: tryton/gui/window/win_form.py:208
-msgid "Next"
-msgstr "ຕໍ່ໄປ"
-
-#: tryton/gui/window/form.py:45
-msgid "Next Record"
-msgstr "ແຖວຂໍ້ມູນ ຕໍ່ໄປ"
-
-#: tryton/gui/window/form.py:48
-msgid "Attachment(0)"
-msgstr "ຄັດຕິດ(0)"
-
-#: tryton/gui/window/form.py:49
-msgid "Add an attachment to the record"
-msgstr "ເພີ່ມເອກະສານຄັດຕິດໃສ່ແຖວຂໍ້ມູນ"
-
-#: tryton/gui/window/form.py:50
-msgid "Note(0)"
-msgstr "ບັນທຶກ (0)"
-
-#: tryton/gui/window/form.py:51
-msgid "Add a note to the record"
-msgstr "ເພີ່ມບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນ"
-
-#: tryton/gui/window/form.py:63
-msgid "_Duplicate"
-msgstr "_ເຮັດຊໍ້າກັນ"
-
-#: tryton/gui/window/form.py:68
-msgid "_Previous"
-msgstr "_ກ່ອນໜ້າ"
-
-#: tryton/gui/window/form.py:70
-msgid "_Next"
-msgstr "_ຕໍ່ໄປ"
-
-#: tryton/gui/window/form.py:71
-msgid "_Search"
-msgstr "_ຊອກຫາ"
-
-#: tryton/gui/window/form.py:73
-msgid "View _Logs..."
-msgstr "ເບິ່ງ_ບັນທຶກ..."
-
-#: tryton/gui/window/form.py:74
-msgid "Show revisions..."
-msgstr "ສະແດງການກວດແກ້ຄືນ..."
-
-#: tryton/gui/window/form.py:81
-msgid "A_ttachments..."
-msgstr "ຄ_ັດຕິດ..."
-
-#: tryton/gui/window/form.py:83
-msgid "_Notes..."
-msgstr "_ຈົດບັນທຶກ..."
-
-#: tryton/gui/window/form.py:84
-msgid "_Actions..."
-msgstr "_ດຳເນີນການ..."
-
-#: tryton/gui/window/form.py:86
-msgid "_Relate..."
-msgstr "_ທີ່ກ່ຽວພັນ..."
-
-#: tryton/gui/window/form.py:89
-msgid "_Report..."
-msgstr "_ລາຍງານ..."
-
-#: tryton/gui/window/form.py:91
-msgid "_E-Mail..."
-msgstr "_ອີ-ແມວລ໌.."
-
-#: tryton/gui/window/form.py:93
-msgid "_Print..."
-msgstr "_ພິມອອກ..."
-
-#: tryton/gui/window/form.py:96
-msgid "Copy _URL..."
-msgstr "ກ່າຍ_URL..."
-
-#: tryton/gui/window/form.py:99
-msgid "_Export Data..."
-msgstr "_ສົ່ງອອກຂໍ້ມູນ..."
-
-#: tryton/gui/window/form.py:101
-msgid "_Import Data..."
-msgstr "_ນໍາເຂົ້າຂໍ້ມູນ..."
-
-#: tryton/gui/window/form.py:192
+#: tryton/gui/window/form.py:118
 #, python-format
 msgid "Attachment(%d)"
 msgstr "ຄັດຕິດ(%d)"
 
-#: tryton/gui/window/form.py:218
+#: tryton/gui/window/form.py:144
 #, python-format
 msgid "Note(%d)"
 msgstr "ບັນທຶກ (%d)"
 
-#: tryton/gui/window/form.py:240
+#: tryton/gui/window/form.py:166
 msgid "You have to select one record."
 msgstr "ທ່ານຕ້ອງໄດ້ເລືອກ ໜຶ່ງແຖວຂໍ້ມູນ."
 
-#: tryton/gui/window/form.py:244
+#: tryton/gui/window/form.py:170
 msgid "ID:"
 msgstr "ເລກລໍາດັບ:"
 
-#: tryton/gui/window/form.py:245
+#: tryton/gui/window/form.py:171
 msgid "Creation User:"
 msgstr "ຜູ້ສ້າງ:"
 
-#: tryton/gui/window/form.py:246
+#: tryton/gui/window/form.py:172
 msgid "Creation Date:"
 msgstr "ວັນທີສ້າງ:"
 
-#: tryton/gui/window/form.py:247
+#: tryton/gui/window/form.py:173
 msgid "Latest Modification by:"
 msgstr "ປັບປ່ຽນລ້າສຸດ ໂດຍ:"
 
-#: tryton/gui/window/form.py:248
+#: tryton/gui/window/form.py:174
 msgid "Latest Modification Date:"
 msgstr "ວັນທີປັບປ່ຽນລ້າສຸດ:"
 
-#: tryton/gui/window/form.py:267
+#: tryton/gui/window/form.py:193
 msgid "Model:"
 msgstr "ແບບ:"
 
-#: tryton/gui/window/form.py:328
+#: tryton/gui/window/form.py:265
 msgid "Are you sure to remove this record?"
 msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນນີ້?"
 
-#: tryton/gui/window/form.py:330
+#: tryton/gui/window/form.py:267
 msgid "Are you sure to remove those records?"
 msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ຈະລຶບແຖວຂໍ້ມູນເຫຼົ່ານີ້?"
 
-#: tryton/gui/window/form.py:333
+#: tryton/gui/window/form.py:270
 msgid "Records not removed."
 msgstr "ແຖວຂໍ້ມູນບໍ່ທັນຖືກເອົາອອກ."
 
-#: tryton/gui/window/form.py:335
+#: tryton/gui/window/form.py:272
 msgid "Records removed."
 msgstr "ແຖວຂໍ້ມູນຖືກເອົາອອກແລ້ວ."
 
-#: tryton/gui/window/form.py:364
+#: tryton/gui/window/form.py:301
 msgid "Working now on the duplicated record(s)."
 msgstr "ດຽວນີ້ກຳລັງເຮັດວຽກກັບແຖວຂໍ້ມູນທີ່ສ້າງຂຶ້ນຊ້ອນກັນ."
 
-#: tryton/gui/window/form.py:376
+#: tryton/gui/window/form.py:313
 msgid "Record saved."
 msgstr "ແຖວຂໍ້ມູນບັນທຶກແລ້ວ"
 
-#: tryton/gui/window/form.py:486
+#: tryton/gui/window/form.py:423
 msgid " of "
 msgstr "ຂອງ"
 
-#: tryton/gui/window/form.py:506
+#: tryton/gui/window/form.py:443
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr "ແຖວຂໍ້ມູນນີ້ ຖືກແກ້ໄຂແລ້ວ ທ່ານຕ້ອງການບັນທຶກໄວ້ບໍ່?"
 
-#: tryton/gui/window/form.py:560
+#: tryton/gui/window/form.py:497
 msgid "Action"
 msgstr "ການດຳເນີນການ"
 
-#: tryton/gui/window/form.py:560
+#: tryton/gui/window/form.py:497
 msgid "Launch action"
 msgstr "ເປີດການດຳເນີນການ"
 
-#: tryton/gui/window/form.py:561
+#: tryton/gui/window/form.py:498
 msgid "Relate"
 msgstr "ທີ່ກ່ຽວພັນ"
 
-#: tryton/gui/window/form.py:561
+#: tryton/gui/window/form.py:498
 msgid "Open related records"
 msgstr "ໄຂແຖວຂໍ້ມູນທີ່ກ່ຽວພັນ"
 
-#: tryton/gui/window/form.py:563
+#: tryton/gui/window/form.py:500
 msgid "Report"
 msgstr "ລາຍງານ..."
 
-#: tryton/gui/window/form.py:563
+#: tryton/gui/window/form.py:500
 msgid "Open report"
 msgstr "ໄຂບົດລາຍງານ"
 
-#: tryton/gui/window/form.py:564
+#: tryton/gui/window/form.py:501
 msgid "E-Mail"
 msgstr "ອີ-ເມວລ໌"
 
-#: tryton/gui/window/form.py:564
+#: tryton/gui/window/form.py:501
 msgid "E-Mail report"
 msgstr "ລາຍງານທາງອີເມວລ໌"
 
-#: tryton/gui/window/form.py:565
+#: tryton/gui/window/form.py:502
 msgid "Print"
 msgstr "ພິມອອກ"
 
-#: tryton/gui/window/form.py:565
+#: tryton/gui/window/form.py:502
 msgid "Print report"
 msgstr "ພິມລາຍງານອອກ"
 
-#: tryton/gui/window/form.py:585
+#: tryton/gui/window/form.py:522
 msgid "_Copy URL"
 msgstr "_ກ່າຍ URL"
 
-#: tryton/gui/window/form.py:588
+#: tryton/gui/window/form.py:525
 msgid "Copy URL into clipboard"
 msgstr "ກ່າຍເອົາ URL ໃສ່ ຄລິບບອດ"
 
-#: tryton/gui/window/form.py:648
-#: tryton/gui/window/view_form/view/list_gtk/widget.py:893
+#: tryton/gui/window/form.py:585
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:888
 msgid "Unknown"
 msgstr "ບໍ່ຮູ້"
 
@@ -1121,6 +961,128 @@ msgstr "ຂະຫຽາຍແຖວທັງໝົດ"
 msgid "Tree view"
 msgstr "ມູມມອງແບບຕົ້ນໄມ້"
 
+#: tryton/gui/window/tabcontent.py:41
+msgid "_Switch View"
+msgstr "_ສະຫຼັບໜ້າເບິ່ງ"
+
+#: tryton/gui/window/tabcontent.py:42
+#, fuzzy
+msgid "Switch View"
+msgstr "_ສະຫຼັບໜ້າເບິ່ງ"
+
+#: tryton/gui/window/tabcontent.py:47
+msgid "_Previous"
+msgstr "_ກ່ອນໜ້າ"
+
+#: tryton/gui/window/tabcontent.py:48
+msgid "Previous Record"
+msgstr "ແຖວຂໍ້ມູນກ່ອນນີ້"
+
+#: tryton/gui/window/tabcontent.py:53
+msgid "_Next"
+msgstr "_ຕໍ່ໄປ"
+
+#: tryton/gui/window/tabcontent.py:54
+msgid "Next Record"
+msgstr "ແຖວຂໍ້ມູນ ຕໍ່ໄປ"
+
+#: tryton/gui/window/tabcontent.py:59
+msgid "_Search"
+msgstr "_ຊອກຫາ"
+
+#: tryton/gui/window/tabcontent.py:65
+msgid "_New"
+msgstr "_ສ້າງໃໝ່"
+
+#: tryton/gui/window/tabcontent.py:66
+msgid "Create a new record"
+msgstr "ສ້າງແຖວຂໍ້ມູນໃໝ່"
+
+#: tryton/gui/window/tabcontent.py:71 tryton/gui/window/win_form.py:68
+msgid "_Save"
+msgstr "_ບັນທຶກ"
+
+#: tryton/gui/window/tabcontent.py:72
+msgid "Save this record"
+msgstr "ບັນທຶກແຖວຂໍ້ມູນນີ້"
+
+#: tryton/gui/window/tabcontent.py:77
+msgid "_Reload/Undo"
+msgstr "_ໂຫຼດຄືນໃໝ່/ຍົກເລີກ"
+
+#: tryton/gui/window/tabcontent.py:78
+#, fuzzy
+msgid "Reload/Undo"
+msgstr "_ໂຫຼດຄືນໃໝ່/ຍົກເລີກ"
+
+#: tryton/gui/window/tabcontent.py:83
+msgid "_Duplicate"
+msgstr "_ເຮັດຊໍ້າກັນ"
+
+#: tryton/gui/window/tabcontent.py:88
+msgid "_Delete..."
+msgstr "_ລຶບ..."
+
+#: tryton/gui/window/tabcontent.py:94
+msgid "View _Logs..."
+msgstr "ເບິ່ງ_ບັນທຶກ..."
+
+#: tryton/gui/window/tabcontent.py:97
+msgid "Show revisions..."
+msgstr "ສະແດງການກວດແກ້ຄືນ..."
+
+#: tryton/gui/window/tabcontent.py:102
+msgid "A_ttachments..."
+msgstr "ຄ_ັດຕິດ..."
+
+#: tryton/gui/window/tabcontent.py:103
+msgid "Add an attachment to the record"
+msgstr "ເພີ່ມເອກະສານຄັດຕິດໃສ່ແຖວຂໍ້ມູນ"
+
+#: tryton/gui/window/tabcontent.py:108
+msgid "_Notes..."
+msgstr "_ຈົດບັນທຶກ..."
+
+#: tryton/gui/window/tabcontent.py:109
+msgid "Add a note to the record"
+msgstr "ເພີ່ມບັນທຶກຂໍ້ຄວາມໃສ່ແຖວຂໍ້ມູນ"
+
+#: tryton/gui/window/tabcontent.py:114
+msgid "_Actions..."
+msgstr "_ດຳເນີນການ..."
+
+#: tryton/gui/window/tabcontent.py:119
+msgid "_Relate..."
+msgstr "_ທີ່ກ່ຽວພັນ..."
+
+#: tryton/gui/window/tabcontent.py:125
+msgid "_Report..."
+msgstr "_ລາຍງານ..."
+
+#: tryton/gui/window/tabcontent.py:130
+msgid "_E-Mail..."
+msgstr "_ອີ-ແມວລ໌.."
+
+#: tryton/gui/window/tabcontent.py:135
+msgid "_Print..."
+msgstr "_ພິມອອກ..."
+
+#: tryton/gui/window/tabcontent.py:141
+msgid "_Export Data..."
+msgstr "_ສົ່ງອອກຂໍ້ມູນ..."
+
+#: tryton/gui/window/tabcontent.py:146
+msgid "_Import Data..."
+msgstr "_ນໍາເຂົ້າຂໍ້ມູນ..."
+
+#: tryton/gui/window/tabcontent.py:150
+msgid "Copy _URL..."
+msgstr "ກ່າຍ_URL..."
+
+#: tryton/gui/window/tabcontent.py:156
+msgid "_Close Tab"
+msgstr "_ອັດແຖບງານ"
+
 #: tryton/gui/window/win_csv.py:59
 msgid "<b>All fields</b>"
 msgstr "<b>ຊ່ອງຂໍ້ມູນທັງໝົດ</b>"
@@ -1177,6 +1139,10 @@ msgstr "_ລຶບການສົ່ງອອກ"
 msgid "Open"
 msgstr "ໄຂ"
 
+#: tryton/gui/window/win_export.py:86
+msgid "Save"
+msgstr "ບັນທຶກ"
+
 #: tryton/gui/window/win_export.py:90
 msgid "Add _field names"
 msgstr "ເພີ່ມ_ຊ່ອງຂໍ້ມູນ"
@@ -1186,26 +1152,36 @@ msgstr "ເພີ່ມ_ຊ່ອງຂໍ້ມູນ"
 msgid "%s (string)"
 msgstr "%s (ສະຕຣິງ)"
 
-#: tryton/gui/window/win_export.py:203
+#: tryton/gui/window/win_export.py:107
+#, python-format
+msgid "%s (model name)"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:109
+#, python-format
+msgid "%s (record name)"
+msgstr ""
+
+#: tryton/gui/window/win_export.py:208
 msgid "What is the name of this export?"
 msgstr "ຊື່ຂອງການສົ່ງອອກນີ້ແມ່ນຫຍັງ?"
 
-#: tryton/gui/window/win_export.py:209
+#: tryton/gui/window/win_export.py:214
 #, python-format
 msgid "Override '%s' definition?"
 msgstr "ຂຽນທັບ ຄຳອະທິບາຍ '%s' ນີ້ບໍ່?"
 
-#: tryton/gui/window/win_export.py:326
+#: tryton/gui/window/win_export.py:331
 #, python-format, python-format, python-format
 msgid "%d record saved."
 msgstr "ແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
 
-#: tryton/gui/window/win_export.py:328
+#: tryton/gui/window/win_export.py:333
 #, python-format, python-format, python-format
 msgid "%d records saved."
 msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກບັນທຶກແລ້ວ!"
 
-#: tryton/gui/window/win_export.py:331
+#: tryton/gui/window/win_export.py:336
 #, python-format, python-format, python-format
 msgid ""
 "Operation failed.\n"
@@ -1228,20 +1204,37 @@ msgstr "ເພີ່ມ"
 msgid "Remove <Del>"
 msgstr "ເອົາອອກ"
 
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:95
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:133
 #: tryton/gui/window/win_form.py:153
 msgid "Create a new record <F3>"
 msgstr "ສ້າງແຖວຂໍ້ມູນໃໝ່ <F3>"
 
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:115
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:153
 #: tryton/gui/window/win_form.py:165
 msgid "Delete selected record <Del>"
 msgstr "ລຶບແຖວຂໍ້ມູນທີ່ເລືອກ <Del>"
 
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:125
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:163
 #: tryton/gui/window/win_form.py:179
 msgid "Undelete selected record <Ins>"
 msgstr "ຍົກເລີກການລຶບແຖວທີ່ເລືອກ"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:59
+#: tryton/gui/window/view_form/view/screen_container.py:213
+#: tryton/gui/window/win_form.py:194
+msgid "Previous"
+msgstr "ກ່ອນໜ້າ"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:73
+#: tryton/gui/window/view_form/view/screen_container.py:225
+#: tryton/gui/window/win_form.py:208
+msgid "Next"
+msgstr "ຕໍ່ໄປ"
+
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:48
+#: tryton/gui/window/win_form.py:221
+msgid "Switch"
+msgstr "ສະຫຼັບ"
 
 #: tryton/gui/window/win_import.py:25
 msgid "Import from CSV"
@@ -1255,8 +1248,8 @@ msgstr "_ກວດຫາ-ອັດຕະໂນມັດ"
 msgid "File to Import:"
 msgstr "ຟາຍລ໌ທີ່ຈະນໍາເຂົ້າ:"
 
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:44
-#: tryton/gui/window/view_form/view/list_gtk/widget.py:465
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:209
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:462
 #: tryton/gui/window/win_import.py:45
 msgid "Open..."
 msgstr "ໄຂ..."
@@ -1288,12 +1281,17 @@ msgstr "ແຖວຂໍ້ມູນ %d ຖືກນໍາເຂົ້າແລ�
 msgid "%d records imported."
 msgstr "ບັນດາແຖວຂໍ້ມູນ %d ຖືກນໍາເຂົ້າແລ້ວ!"
 
-#: tryton/gui/window/win_search.py:65
+#: tryton/gui/window/win_search.py:68
 #, python-format
 msgid "Search %s"
 msgstr "ຊອກຫາ %s"
 
-#: tryton/gui/window/wizard.py:288
+#: tryton/gui/window/wizard.py:143
+#, python-format
+msgid "Unable to delete wizard %s"
+msgstr ""
+
+#: tryton/gui/window/wizard.py:297
 msgid "Wizard"
 msgstr "ໂຕນໍາພາສ້າງ"
 
@@ -1317,30 +1315,31 @@ msgstr "ຜູ້ປັບປ່ຽນ"
 msgid "Modification Date"
 msgstr "ວັນທີປັບປ່ຽນ"
 
-#: tryton/gui/window/view_form/screen/screen.py:761
-msgid "Unable to get view tree state"
+#: tryton/gui/window/view_form/screen/screen.py:765
+#, python-format, fuzzy, python-format
+msgid "Unable to get view tree state for %s"
 msgstr "ບໍ່ສາມາດເອົາສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້"
 
-#: tryton/gui/window/view_form/screen/screen.py:821
+#: tryton/gui/window/view_form/screen/screen.py:826
 msgid "Unable to set view tree state"
 msgstr "ບໍ່ສາມາດຕັ້ງຄ່າສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້"
 
-#: tryton/gui/window/view_form/screen/screen.py:998
+#: tryton/gui/window/view_form/screen/screen.py:1003
 #, python-format
 msgid "\"%s\" is not valid according to its domain"
 msgstr "\"%s\" ບໍ່ຖືກຕ້ອງ ກັບ ໂດເມນຂອງມັນ"
 
-#: tryton/gui/window/view_form/screen/screen.py:1005
+#: tryton/gui/window/view_form/screen/screen.py:1010
 #, python-format
 msgid "\"%s\" is required"
 msgstr "ຕ້ອງໃຫ້ມີ \"%s\""
 
-#: tryton/gui/window/view_form/screen/screen.py:1009
+#: tryton/gui/window/view_form/screen/screen.py:1014
 #, python-format
 msgid "The values of \"%s\" are not valid"
 msgstr "ຄ່າຂອງ \"%s\" ນີ້ ບໍ່ຖືກຕ້ອງ"
 
-#: tryton/gui/window/view_form/screen/screen.py:1060
+#: tryton/gui/window/view_form/screen/screen.py:1063
 msgid "Pre-validation"
 msgstr "ກ່ອນ-ການກວດສອບ"
 
@@ -1348,10 +1347,10 @@ msgstr "ກ່ອນ-ການກວດສອບ"
 #: tryton/gui/window/view_form/view/form.py:209
 #: tryton/gui/window/view_form/view/form_gtk/dictionary.py:478
 #: tryton/gui/window/view_form/view/form_gtk/dictionary.py:480
-#: tryton/gui/window/view_form/view/form_gtk/widget.py:144
-#: tryton/gui/window/view_form/view/form_gtk/widget.py:146
-#: tryton/gui/window/view_form/view/list.py:535
-#: tryton/gui/window/view_form/view/list.py:537
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:150
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:152
+#: tryton/gui/window/view_form/view/list.py:534
+#: tryton/gui/window/view_form/view/list.py:536
 msgid ":"
 msgstr ":"
 
@@ -1403,7 +1402,7 @@ msgstr "ໝາຍໜ້າກັ່ນຕອງນີ້"
 msgid "Bookmark Name:"
 msgstr "ຊື່ໝາຍໜ້າ:"
 
-#: tryton/gui/window/view_form/view/screen_container.py:574
+#: tryton/gui/window/view_form/view/screen_container.py:582
 msgid "Find"
 msgstr "ຊອກພົບ"
 
@@ -1439,23 +1438,23 @@ msgstr "ເບິ່ງເປັນເດືອນ"
 msgid "Week"
 msgstr "ອາທິດ"
 
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:34
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:44
 msgid "Select..."
 msgstr "ເລືອກ..."
 
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:65
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:53
 msgid "Clear"
 msgstr "ໃຫ້ເປົ່າ"
 
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:78
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:66
 msgid "All files"
 msgstr "ຟາຍລ໌ ທັງໝົດ"
 
-#: tryton/gui/window/view_form/view/form_gtk/binary.py:91
+#: tryton/gui/window/view_form/view/form_gtk/binary.py:89
 msgid "Select"
 msgstr "ເລືອກ..."
 
-#: tryton/gui/window/view_form/view/form_gtk/char.py:164
+#: tryton/gui/window/view_form/view/form_gtk/char.py:165
 msgid "Show plain text"
 msgstr "ສະແດງເປັນຂໍ້ຄວາມທຳມະດາ"
 
@@ -1472,37 +1471,37 @@ msgstr "ເອົາ \"%s\" ອອກ"
 msgid "Images"
 msgstr "ຮູບ"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2many.py:65
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:70
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:66
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:108
 msgid "Add existing record"
 msgstr "ເພີ່ມແຖວຂໍ້ມູນທີ່ມີຢູ່"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2many.py:76
+#: tryton/gui/window/view_form/view/form_gtk/many2many.py:77
 msgid "Remove selected record <Del>"
 msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ <Del>"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:303
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:305
 msgid "Open the record <F2>"
 msgstr "ໄຂແຖວຂໍ້ມູນ <F2>"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:304
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:306
 msgid "Clear the record <Del>"
 msgstr "ອະນາໄມແຖວຂໍ້ມູນ <Del>"
 
-#: tryton/gui/window/view_form/view/form_gtk/many2one.py:307
+#: tryton/gui/window/view_form/view/form_gtk/many2one.py:309
 msgid "Search a record <F2>"
 msgstr "ຊອກຫາແຖວຂໍ້ມູນໜຶ່ງ <F2>"
 
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:82
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:120
 msgid "Remove selected record"
 msgstr "ເອົາແຖວຂໍ້ມູນທີ່ເລືອກນີ້ອອກ"
 
-#: tryton/gui/window/view_form/view/form_gtk/one2many.py:105
+#: tryton/gui/window/view_form/view/form_gtk/one2many.py:143
 msgid "Edit selected record <F2>"
 msgstr "ແກ້ໄຂ ແຖວຂໍ້ມູນ ທີ່ເລືອກ <F2>"
 
 #: tryton/gui/window/view_form/view/form_gtk/progressbar.py:35
-#: tryton/gui/window/view_form/view/list_gtk/widget.py:869
+#: tryton/gui/window/view_form/view/list_gtk/widget.py:864
 #, python-format
 msgid "%s%%"
 msgstr "%s%%"
@@ -1511,27 +1510,27 @@ msgstr "%s%%"
 msgid "Foreground"
 msgstr "ພື້ນໜ້າ"
 
-#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:296
+#: tryton/gui/window/view_form/view/form_gtk/richtextbox.py:304
 msgid "Select a color"
 msgstr "ເລືອກສີ"
 
-#: tryton/gui/window/view_form/view/form_gtk/widget.py:120
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:126
 msgid "Translation"
 msgstr "ການແປ"
 
-#: tryton/gui/window/view_form/view/form_gtk/widget.py:181
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:187
 msgid "Edit"
 msgstr "ແກ້ໄຂ"
 
-#: tryton/gui/window/view_form/view/form_gtk/widget.py:186
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:192
 msgid "Fuzzy"
 msgstr "ເລືອນລາງ"
 
-#: tryton/gui/window/view_form/view/form_gtk/widget.py:256
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:262
 msgid "You need to save the record before adding translations."
 msgstr "ທ່ານຕ້ອງບັນທຶກຂໍ້ມູນໄວ້ກ່ອນຈຶ່ງເພີ່ມການແປເຂົ້າໄປໄດ້."
 
-#: tryton/gui/window/view_form/view/form_gtk/widget.py:267
+#: tryton/gui/window/view_form/view/form_gtk/widget.py:273
 msgid "No other language available."
 msgstr "ບໍ່ມີພາສາອື່ນໃຫ້ໃຊ້."
 
