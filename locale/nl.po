@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,10 +27,9 @@ msgctxt "field:product.classification.dummy,name:"
 msgid "Name"
 msgstr "Naam bijlage"
 
-#, fuzzy
 msgctxt "field:product.classification.dummy,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.classification.dummy,selectable:"
 msgid "Selectable"
@@ -81,10 +80,9 @@ msgctxt "field:product.classification_tree.dummy,parent:"
 msgid "Parent"
 msgstr "Bovenliggend niveau"
 
-#, fuzzy
 msgctxt "field:product.classification_tree.dummy,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,selectable:"
 msgid "Selectable"

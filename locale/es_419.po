@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,7 +23,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:product.classification.dummy,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.classification.dummy,selectable:"
@@ -67,7 +67,7 @@ msgid "Parent"
 msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.classification_tree.dummy,selectable:"
