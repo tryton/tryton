@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -29,10 +29,9 @@ msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.template-stock.lot.type,template:"
@@ -93,10 +92,9 @@ msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:stock.lot,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.lot,write_date:"
@@ -133,10 +131,9 @@ msgctxt "field:stock.lot.type,name:"
 msgid "Name"
 msgstr "Naam bijlage"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.lot.type,write_date:"
@@ -208,10 +205,9 @@ msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
 msgstr "Producten"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.period.cache.lot,write_date:"

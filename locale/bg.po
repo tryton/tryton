@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,8 +28,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
@@ -83,8 +83,8 @@ msgid "Quantity"
 msgstr "Количество"
 
 msgctxt "field:stock.lot,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
@@ -115,8 +115,8 @@ msgid "Name"
 msgstr "Име"
 
 msgctxt "field:stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
@@ -187,10 +187,9 @@ msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
 msgstr "Продукт"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Name"
-msgstr "Име на прикачен файл"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.period.cache.lot,write_date:"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,7 +27,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,template:"
@@ -80,7 +80,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:stock.lot,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.lot,write_date:"
@@ -112,7 +112,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:stock.lot.type,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.lot.type,write_date:"
@@ -178,7 +178,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.period.cache.lot,write_date:"

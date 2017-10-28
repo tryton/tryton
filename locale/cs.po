@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -26,10 +26,9 @@ msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
@@ -80,10 +79,9 @@ msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.lot,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
@@ -114,10 +112,9 @@ msgctxt "field:stock.lot.type,name:"
 msgid "Name"
 msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
@@ -181,10 +178,9 @@ msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"

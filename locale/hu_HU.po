@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,8 +28,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
@@ -80,8 +80,8 @@ msgid "Quantity"
 msgstr "Mennyiség"
 
 msgctxt "field:stock.lot,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
@@ -112,8 +112,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:stock.lot.type,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
@@ -177,8 +177,8 @@ msgid "Product"
 msgstr "Termék"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
