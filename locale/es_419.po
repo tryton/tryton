@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -87,7 +87,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.address,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.address,sequence:"
@@ -143,7 +143,7 @@ msgid "Language"
 msgstr ""
 
 msgctxt "field:party.address.format,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.address.format,write_date:"
@@ -183,7 +183,7 @@ msgid "Parent"
 msgstr ""
 
 msgctxt "field:party.category,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.category,write_date:"
@@ -227,7 +227,7 @@ msgid "Party Sequence"
 msgstr ""
 
 msgctxt "field:party.configuration,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.configuration,write_date:"
@@ -256,7 +256,7 @@ msgid "Party Language"
 msgstr ""
 
 msgctxt "field:party.configuration.party_lang,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.configuration.party_lang,write_date:"
@@ -286,7 +286,7 @@ msgid "Party Sequence"
 msgstr ""
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.configuration.party_sequence,write_date:"
@@ -331,7 +331,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.contact_mechanism,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.contact_mechanism,sequence:"
@@ -395,7 +395,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.identifier,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.identifier,sequence:"
@@ -488,7 +488,7 @@ msgid "Phone"
 msgstr ""
 
 msgctxt "field:party.party,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.party,replaced_by:"
@@ -532,7 +532,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party-party.category,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.party-party.category,write_date:"
@@ -565,7 +565,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party.lang,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.party.lang,write_date:"

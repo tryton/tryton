@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -87,8 +87,8 @@ msgid "Party"
 msgstr "Partner"
 
 msgctxt "field:party.address,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
@@ -143,8 +143,8 @@ msgid "Language"
 msgstr "Jezik"
 
 msgctxt "field:party.address.format,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
@@ -183,8 +183,8 @@ msgid "Parent"
 msgstr "Matična kategorija"
 
 msgctxt "field:party.category,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
@@ -227,8 +227,8 @@ msgid "Party Sequence"
 msgstr "Štetje partnerjev"
 
 msgctxt "field:party.configuration,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
@@ -255,8 +255,8 @@ msgid "Party Language"
 msgstr "Jezik partnerja"
 
 msgctxt "field:party.configuration.party_lang,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.configuration.party_lang,write_date:"
 msgid "Write Date"
@@ -283,8 +283,8 @@ msgid "Party Sequence"
 msgstr "Štetje partnerjev"
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.configuration.party_sequence,write_date:"
 msgid "Write Date"
@@ -327,8 +327,8 @@ msgid "Party"
 msgstr "Partner"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
@@ -391,8 +391,8 @@ msgid "Party"
 msgstr "Partner"
 
 msgctxt "field:party.identifier,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.identifier,sequence:"
 msgid "Sequence"
@@ -483,8 +483,8 @@ msgid "Phone"
 msgstr "Telefon"
 
 msgctxt "field:party.party,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
@@ -527,8 +527,8 @@ msgid "Party"
 msgstr "Partner"
 
 msgctxt "field:party.party-party.category,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
@@ -559,8 +559,8 @@ msgid "Party"
 msgstr "Partner"
 
 msgctxt "field:party.party.lang,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.party.lang,write_date:"
 msgid "Write Date"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,11 +8,11 @@ msgstr "Niewłaściwy format \"%(format)s\". Wyjątek \"%(exception)s\"."
 
 msgctxt "error:party.address:"
 msgid "You can not modify the party of address \"%s\"."
-msgstr "Nie możesz modyfikować strony z adresem \"%s\"."
+msgstr "Nie można modyfikować strony z adresem \"%s\"."
 
 msgctxt "error:party.category:"
 msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr "Niewłaściwa nazwa kategorii \"%s\": Nie możesz użyć \" / \" w nazwie."
+msgstr "Niewłaściwa nazwa kategorii \"%s\": W nazwie nie można używać znaku \" / \"."
 
 msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
@@ -29,7 +29,7 @@ msgstr "Numer telefonu \"%(phone)s\" strony \"%(party)s\" jest niewłaściwy."
 
 msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "Nie możesz modyfikować strony, której kontakt to \"%s\"."
+msgstr "Nie można modyfikować strony, której kontakt to \"%s\"."
 
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
@@ -82,15 +82,15 @@ msgstr "ID"
 
 msgctxt "field:party.address,name:"
 msgid "Building Name"
-msgstr "Nazwa lokalizacji"
+msgstr "Nazwa budynku"
 
 msgctxt "field:party.address,party:"
 msgid "Party"
 msgstr "Strona"
 
 msgctxt "field:party.address,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
@@ -102,7 +102,7 @@ msgstr "Ulica"
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr "Jednostka podrzędna"
+msgstr "Region"
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
@@ -145,8 +145,8 @@ msgid "Language"
 msgstr "Język"
 
 msgctxt "field:party.address.format,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
@@ -162,7 +162,7 @@ msgstr "Aktywna"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr "Podkategorie"
+msgstr "Kategorie podrzędne"
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
@@ -185,8 +185,8 @@ msgid "Parent"
 msgstr "Kategoria nadrzędna"
 
 msgctxt "field:party.category,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
@@ -226,11 +226,11 @@ msgstr "Język strony"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Sekwencja strony"
+msgstr "Sekwencja kodu strony"
 
 msgctxt "field:party.configuration,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
@@ -257,8 +257,8 @@ msgid "Party Language"
 msgstr "Język strony"
 
 msgctxt "field:party.configuration.party_lang,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.configuration.party_lang,write_date:"
 msgid "Write Date"
@@ -282,11 +282,11 @@ msgstr "ID"
 
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
-msgstr "Sekwencja strony"
+msgstr "Sekwencja kodu strony"
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.configuration.party_sequence,write_date:"
 msgid "Write Date"
@@ -329,8 +329,8 @@ msgid "Party"
 msgstr "Strona"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
@@ -393,8 +393,8 @@ msgid "Party"
 msgstr "Strona"
 
 msgctxt "field:party.identifier,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.identifier,sequence:"
 msgid "Sequence"
@@ -485,8 +485,8 @@ msgid "Phone"
 msgstr "Telefon"
 
 msgctxt "field:party.party,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
@@ -529,8 +529,8 @@ msgid "Party"
 msgstr "Strona"
 
 msgctxt "field:party.party-party.category,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
@@ -561,8 +561,8 @@ msgid "Party"
 msgstr "Strona"
 
 msgctxt "field:party.party.lang,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.party.lang,write_date:"
 msgid "Write Date"
@@ -622,7 +622,7 @@ msgstr "Odznacz, aby nie używać kategorii w przyszłości."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
-msgstr "Dodaj podkategorie."
+msgstr "Dodaj kategorie podrzędne."
 
 msgctxt "help:party.category,name:"
 msgid "The main identifier of the category."

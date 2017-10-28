@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -88,8 +88,8 @@ msgid "Party"
 msgstr "Pessoa"
 
 msgctxt "field:party.address,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
@@ -144,8 +144,8 @@ msgid "Language"
 msgstr "Idioma"
 
 msgctxt "field:party.address.format,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
@@ -184,8 +184,8 @@ msgid "Parent"
 msgstr "Pai"
 
 msgctxt "field:party.category,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
@@ -228,8 +228,8 @@ msgid "Party Sequence"
 msgstr "Sequência da pessoa"
 
 msgctxt "field:party.configuration,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
@@ -256,8 +256,8 @@ msgid "Party Language"
 msgstr "Idioma da Pessoa"
 
 msgctxt "field:party.configuration.party_lang,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.configuration.party_lang,write_date:"
 msgid "Write Date"
@@ -284,8 +284,8 @@ msgid "Party Sequence"
 msgstr "Sequência da pessoa"
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.configuration.party_sequence,write_date:"
 msgid "Write Date"
@@ -328,8 +328,8 @@ msgid "Party"
 msgstr "Pessoa"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
@@ -392,8 +392,8 @@ msgid "Party"
 msgstr "Pessoa"
 
 msgctxt "field:party.identifier,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.identifier,sequence:"
 msgid "Sequence"
@@ -484,8 +484,8 @@ msgid "Phone"
 msgstr "Telefone"
 
 msgctxt "field:party.party,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
@@ -528,8 +528,8 @@ msgid "Party"
 msgstr "Pessoa"
 
 msgctxt "field:party.party-party.category,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
@@ -560,8 +560,8 @@ msgid "Party"
 msgstr "Pessoa"
 
 msgctxt "field:party.party.lang,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:party.party.lang,write_date:"
 msgid "Write Date"
