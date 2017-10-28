@@ -1,6 +1,10 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,account:"
+msgid "Account"
+msgstr ""
 
 msgctxt "field:account.payment,clearing_move:"
 msgid "Clearing Move"
@@ -29,6 +33,10 @@ msgstr "Оплата"
 
 msgctxt "field:account.statement.line,payment_group:"
 msgid "Payment Group"
+msgstr ""
+
+msgctxt "help:account.payment,account:"
+msgid "Define the account to use for clearing move."
 msgstr ""
 
 msgctxt "model:account.payment.succeed.start,name:"
