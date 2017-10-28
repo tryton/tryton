@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,7 +31,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:res.user.login.sms_code,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:res.user.login.sms_code,user:"
