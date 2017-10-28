@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -87,7 +87,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:account.asset,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
@@ -151,7 +151,7 @@ msgid "Move"
 msgstr ""
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.asset-update-account.move,write_date:"
@@ -215,7 +215,7 @@ msgid "Account Move"
 msgstr ""
 
 msgctxt "field:account.asset.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.asset.line,write_date:"
@@ -308,7 +308,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,write_date:"
@@ -331,17 +331,9 @@ msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
 msgstr "Cuenta de activo fijo"
 
-msgctxt "field:product.category,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Cuenta de activo fijo utilizada"
-
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Cuenta de depreciación"
-
-msgctxt "field:product.category,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Cuenta de depreciación utilizada"
 
 #, fuzzy
 msgctxt "field:product.category.account,account_asset:"
@@ -358,18 +350,9 @@ msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr "Cuenta de activo fijo"
 
-#, fuzzy
-msgctxt "field:product.product,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Cuenta de activo fijo utilizada"
-
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Cuenta de depreciación"
-
-msgctxt "field:product.product,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Cuenta de depreciación utilizada"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
@@ -383,17 +366,9 @@ msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr "Cuenta de activo fijo"
 
-msgctxt "field:product.template,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Cuenta de activo fijo"
-
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Cuenta de depreciación"
-
-msgctxt "field:product.template,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Cuenta de depreciación utilizada"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -87,8 +87,8 @@ msgid "Quantity"
 msgstr "Ilość"
 
 msgctxt "field:account.asset,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -152,8 +152,8 @@ msgid "Move"
 msgstr ""
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
@@ -217,8 +217,8 @@ msgid "Account Move"
 msgstr ""
 
 msgctxt "field:account.asset.line,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
@@ -292,37 +292,30 @@ msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
 msgstr "Firma"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,create_date:"
 msgid "Create Date"
 msgstr "Data utworzenia"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,create_uid:"
 msgid "Create User"
 msgstr "Utworzył"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,write_date:"
 msgid "Write Date"
 msgstr "Data zapisu"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
@@ -340,16 +333,8 @@ msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
 msgstr ""
 
-msgctxt "field:product.category,account_asset_used:"
-msgid "Account Asset Used"
-msgstr ""
-
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
-msgstr ""
-
-msgctxt "field:product.category,account_depreciation_used:"
-msgid "Account Depreciation Used"
 msgstr ""
 
 msgctxt "field:product.category.account,account_asset:"
@@ -364,16 +349,8 @@ msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr ""
 
-msgctxt "field:product.product,account_asset_used:"
-msgid "Account Asset Used"
-msgstr ""
-
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
-msgstr ""
-
-msgctxt "field:product.product,account_depreciation_used:"
-msgid "Account Depreciation Used"
 msgstr ""
 
 msgctxt "field:product.product,depreciable:"
@@ -388,16 +365,8 @@ msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr ""
 
-msgctxt "field:product.template,account_asset_used:"
-msgid "Account Asset Used"
-msgstr ""
-
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
-msgstr ""
-
-msgctxt "field:product.template,account_depreciation_used:"
-msgid "Account Depreciation Used"
 msgstr ""
 
 msgctxt "field:product.template,depreciable:"
@@ -509,27 +478,27 @@ msgstr "Wykonywane"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Assets"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Assets"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Print Depreciation Table"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Create Assets Moves"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -626,7 +595,7 @@ msgstr "Szkic"
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr "Wykonywane"
+msgstr "Uruchomione"
 
 #, fuzzy
 msgctxt "view:account.asset.create_moves.start:"
@@ -659,7 +628,7 @@ msgstr "Inne informacje"
 
 msgctxt "view:account.asset:"
 msgid "Run"
-msgstr "Wykonaj"
+msgstr "Uruchom"
 
 #, fuzzy
 msgctxt "view:account.asset:"

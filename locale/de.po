@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -88,8 +88,8 @@ msgid "Quantity"
 msgstr "Menge"
 
 msgctxt "field:account.asset,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -152,8 +152,8 @@ msgid "Move"
 msgstr "Buchungssatz"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
@@ -216,8 +216,8 @@ msgid "Account Move"
 msgstr "Buchungssatz"
 
 msgctxt "field:account.asset.line,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
@@ -308,8 +308,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,write_date:"
 msgid "Write Date"
@@ -331,17 +331,9 @@ msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
 msgstr "Anlagenkonto"
 
-msgctxt "field:product.category,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Verwendetes Anlagenkonto"
-
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Abschreibungskonto"
-
-msgctxt "field:product.category,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Verwendetes Abschreibungskonto"
 
 msgctxt "field:product.category.account,account_asset:"
 msgid "Account Asset"
@@ -355,17 +347,9 @@ msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr "Anlagenkonto"
 
-msgctxt "field:product.product,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Verwendetes Anlagenkonto"
-
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Abschreibungskonto"
-
-msgctxt "field:product.product,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Verwendetes Abschreibungskonto"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
@@ -379,17 +363,9 @@ msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr "Anlagenkonto"
 
-msgctxt "field:product.template,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Verwendetes Anlagenkonto"
-
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Abschreibungskonto"
-
-msgctxt "field:product.template,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Verwendetes Abschreibungskonto"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"

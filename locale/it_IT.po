@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -89,8 +89,8 @@ msgid "Quantity"
 msgstr "Quantita"
 
 msgctxt "field:account.asset,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -153,8 +153,8 @@ msgid "Move"
 msgstr "Movimento"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
@@ -217,8 +217,8 @@ msgid "Account Move"
 msgstr "Nome"
 
 msgctxt "field:account.asset.line,rec_name:"
-msgid "Name"
-msgstr "Data scrittura"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
@@ -313,10 +313,9 @@ msgctxt "field:account.configuration.asset_sequence,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.configuration.asset_sequence,write_date:"
@@ -340,17 +339,9 @@ msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
 msgstr "Conto immobilizzazione"
 
-msgctxt "field:product.category,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Conto immobilizzazione usato"
-
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Conto ammortamento"
-
-msgctxt "field:product.category,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Conto ammortamento usato"
 
 #, fuzzy
 msgctxt "field:product.category.account,account_asset:"
@@ -366,17 +357,9 @@ msgctxt "field:product.product,account_asset:"
 msgid "Account Asset"
 msgstr "Conto Immobilizzazione"
 
-msgctxt "field:product.product,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Conto immobilizzazione usato"
-
 msgctxt "field:product.product,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Conto ammortamento"
-
-msgctxt "field:product.product,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Conto ammortamento usato"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
@@ -390,17 +373,9 @@ msgctxt "field:product.template,account_asset:"
 msgid "Account Asset"
 msgstr "Conto immobilizzazione"
 
-msgctxt "field:product.template,account_asset_used:"
-msgid "Account Asset Used"
-msgstr "Conto Immobilizzazione usato"
-
 msgctxt "field:product.template,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Conto ammortamento"
-
-msgctxt "field:product.template,account_depreciation_used:"
-msgid "Account Depreciation Used"
-msgstr "Conto ammortamento usato"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
