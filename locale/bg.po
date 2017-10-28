@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,8 +27,8 @@ msgid "Party"
 msgstr "Партньор"
 
 msgctxt "field:carrier,rec_name:"
-msgid "Name"
-msgstr "Име на прикачен файл"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
@@ -67,10 +67,9 @@ msgctxt "field:carrier.selection,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:carrier.selection,sequence:"

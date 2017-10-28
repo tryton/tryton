@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,7 +27,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:carrier,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:carrier,write_date:"
@@ -63,7 +63,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:carrier.selection,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:carrier.selection,sequence:"

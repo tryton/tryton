@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -29,10 +29,9 @@ msgctxt "field:carrier,party:"
 msgid "Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:carrier,write_date:"
@@ -72,10 +71,9 @@ msgctxt "field:carrier.selection,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:carrier.selection,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:carrier.selection,sequence:"

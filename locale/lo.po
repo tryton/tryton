@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,8 +27,8 @@ msgid "Party"
 msgstr "ພາກສ່ວນ"
 
 msgctxt "field:carrier,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
@@ -63,8 +63,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:carrier.selection,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
