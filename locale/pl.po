@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -36,8 +36,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
@@ -88,8 +88,8 @@ msgid "Month"
 msgstr "Miesiąc"
 
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
@@ -124,8 +124,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
@@ -180,8 +180,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:timesheet.line,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
@@ -237,11 +237,11 @@ msgstr "Nazwa"
 
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
-msgstr "Pochodzenie"
+msgstr "Źródło"
 
 msgctxt "field:timesheet.work,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 #, fuzzy
 msgctxt "field:timesheet.work,timesheet_end_date:"
@@ -271,7 +271,7 @@ msgstr "Zapisał"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Od dnia"
 
 msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
@@ -279,7 +279,7 @@ msgstr "ID"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
-msgstr ""
+msgstr "Do dnia"
 
 msgctxt "help:timesheet.line,company:"
 msgid "The company on which the time is spent."
@@ -317,7 +317,6 @@ msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
 msgstr ""
 
-#, fuzzy
 msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work."
 msgstr "Całkowity czas pracy"
@@ -364,15 +363,15 @@ msgstr "Godziny wg pracownika na tydzień"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -400,19 +399,19 @@ msgstr "Godziny wg pracownika na tydzień"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Timesheet"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
@@ -424,7 +423,7 @@ msgstr "Prace"
 
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Timesheet Administration"
+msgstr ""
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -38,8 +38,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
@@ -90,8 +90,8 @@ msgid "Month"
 msgstr "Mes"
 
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
@@ -126,8 +126,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
@@ -182,8 +182,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:timesheet.line,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
@@ -242,8 +242,8 @@ msgid "Origin"
 msgstr "Origen"
 
 msgctxt "field:timesheet.work,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"

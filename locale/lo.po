@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -39,8 +39,8 @@ msgid "ID"
 msgstr "ບັດ"
 
 msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
@@ -91,8 +91,8 @@ msgid "Month"
 msgstr "ເດືອນ"
 
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
@@ -127,8 +127,8 @@ msgid "ID"
 msgstr "ບັດ"
 
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
@@ -183,8 +183,8 @@ msgid "ID"
 msgstr "ບັດ"
 
 msgctxt "field:timesheet.line,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
@@ -243,8 +243,8 @@ msgid "Origin"
 msgstr "ໜ້າວຽກເດີມ"
 
 msgctxt "field:timesheet.work,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"

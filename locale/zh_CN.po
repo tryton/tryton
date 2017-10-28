@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -38,10 +38,9 @@ msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee,write_date:"
@@ -97,10 +96,9 @@ msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
 msgid "Month"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
@@ -139,10 +137,9 @@ msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
@@ -203,10 +200,9 @@ msgctxt "field:timesheet.line,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:timesheet.line,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
@@ -273,10 +269,9 @@ msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:timesheet.work,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
