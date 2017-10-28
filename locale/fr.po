@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -87,8 +87,8 @@ msgid "Payment Term"
 msgstr "Conditions de paiement"
 
 msgctxt "field:sale.opportunity,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
@@ -143,8 +143,8 @@ msgid "Quantity"
 msgstr "Quantité"
 
 msgctxt "field:sale.opportunity.line,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
@@ -223,8 +223,8 @@ msgid "Number"
 msgstr "Nombre"
 
 msgctxt "field:sale.opportunity_employee,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -323,8 +323,8 @@ msgid "Number"
 msgstr "Nombre"
 
 msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -411,8 +411,8 @@ msgid "Number"
 msgstr "Nombre"
 
 msgctxt "field:sale.opportunity_monthly,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"

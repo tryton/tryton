@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -102,10 +102,9 @@ msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
 msgstr "Betalingstermijn"
 
-#, fuzzy
 msgctxt "field:sale.opportunity,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.opportunity,reference:"
@@ -170,10 +169,9 @@ msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:sale.opportunity.line,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.opportunity.line,sequence:"
@@ -265,10 +263,9 @@ msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
 msgstr "Nummer"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -382,10 +379,9 @@ msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Nummer"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -484,10 +480,9 @@ msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Nummer"
 
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
