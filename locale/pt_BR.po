@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -75,8 +75,8 @@ msgid "Product"
 msgstr "Produto"
 
 msgctxt "field:product.product-production.bom,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:product.product-production.bom,sequence:"
 msgid "Sequence"
@@ -159,8 +159,8 @@ msgid "Quantity"
 msgstr "Quantidade"
 
 msgctxt "field:production,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:production,reference:"
 msgid "Reference"
@@ -235,8 +235,8 @@ msgid "Outputs"
 msgstr "Produtos de saída"
 
 msgctxt "field:production.bom,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
@@ -271,8 +271,8 @@ msgid "Quantity"
 msgstr "Quantidade"
 
 msgctxt "field:production.bom.input,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
@@ -319,8 +319,8 @@ msgid "Quantity"
 msgstr "Quantidade"
 
 msgctxt "field:production.bom.output,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
@@ -419,8 +419,8 @@ msgid "Production Sequence"
 msgstr "Sequência de produção"
 
 msgctxt "field:production.configuration,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
@@ -452,8 +452,8 @@ msgid "Production Sequence"
 msgstr "Sequência de Produção"
 
 msgctxt "field:production.configuration.production_sequence,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:production.configuration.production_sequence,write_date:"
 msgid "Write Date"
@@ -488,8 +488,8 @@ msgid "Product"
 msgstr "Produto"
 
 msgctxt "field:production.lead_time,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:production.lead_time,sequence:"
 msgid "Sequence"

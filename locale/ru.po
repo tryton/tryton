@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -71,8 +71,8 @@ msgid "Product"
 msgstr "Продукт"
 
 msgctxt "field:product.product-production.bom,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.product-production.bom,sequence:"
 msgid "Sequence"
@@ -156,8 +156,8 @@ msgid "Quantity"
 msgstr "Кол-во"
 
 msgctxt "field:production,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production,reference:"
 msgid "Reference"
@@ -232,8 +232,8 @@ msgid "Outputs"
 msgstr "Продукция"
 
 msgctxt "field:production.bom,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
@@ -268,8 +268,8 @@ msgid "Quantity"
 msgstr "Кол-во"
 
 msgctxt "field:production.bom.input,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
@@ -316,8 +316,8 @@ msgid "Quantity"
 msgstr "Кол-во"
 
 msgctxt "field:production.bom.output,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
@@ -416,8 +416,8 @@ msgid "Production Sequence"
 msgstr "Нумерация производства"
 
 msgctxt "field:production.configuration,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
@@ -453,10 +453,9 @@ msgctxt ""
 msgid "Production Sequence"
 msgstr "Нумерация производства"
 
-#, fuzzy
 msgctxt "field:production.configuration.production_sequence,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.configuration.production_sequence,write_date:"
@@ -497,10 +496,9 @@ msgctxt "field:production.lead_time,product:"
 msgid "Product"
 msgstr "Товарно материальные ценности (ТМЦ)"
 
-#, fuzzy
 msgctxt "field:production.lead_time,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.lead_time,sequence:"

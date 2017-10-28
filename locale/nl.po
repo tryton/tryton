@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -74,10 +74,9 @@ msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
 msgstr "Producten"
 
-#, fuzzy
 msgctxt "field:product.product-production.bom,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.product-production.bom,sequence:"
@@ -170,10 +169,9 @@ msgctxt "field:production,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:production,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production,reference:"
@@ -260,10 +258,9 @@ msgctxt "field:production.bom,outputs:"
 msgid "Outputs"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.bom,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.bom,write_date:"
@@ -304,10 +301,9 @@ msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:production.bom.input,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.bom.input,unit_digits:"
@@ -361,10 +357,9 @@ msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:production.bom.output,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.bom.output,unit_digits:"
@@ -479,10 +474,9 @@ msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.configuration,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.configuration,write_date:"
@@ -519,10 +513,9 @@ msgctxt ""
 msgid "Production Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.configuration.production_sequence,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.configuration.production_sequence,write_date:"
@@ -562,10 +555,9 @@ msgctxt "field:production.lead_time,product:"
 msgid "Product"
 msgstr "Producten"
 
-#, fuzzy
 msgctxt "field:production.lead_time,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.lead_time,sequence:"

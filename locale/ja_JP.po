@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -73,7 +73,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:product.product-production.bom,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.product-production.bom,sequence:"
@@ -158,7 +158,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:production,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production,reference:"
@@ -234,7 +234,7 @@ msgid "Outputs"
 msgstr ""
 
 msgctxt "field:production.bom,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.bom,write_date:"
@@ -271,7 +271,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:production.bom.input,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.bom.input,unit_digits:"
@@ -320,7 +320,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:production.bom.output,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.bom.output,unit_digits:"
@@ -422,7 +422,7 @@ msgid "Production Sequence"
 msgstr ""
 
 msgctxt "field:production.configuration,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.configuration,write_date:"
@@ -455,7 +455,7 @@ msgid "Production Sequence"
 msgstr ""
 
 msgctxt "field:production.configuration.production_sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.configuration.production_sequence,write_date:"
@@ -492,7 +492,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:production.lead_time,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.lead_time,sequence:"
