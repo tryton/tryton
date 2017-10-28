@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,8 +27,8 @@ msgid "Party"
 msgstr "Tiers"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
@@ -43,9 +43,29 @@ msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Méthode de regroupement des expéditions de vente"
+
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "Méthode de regroupement des expéditions de vente"
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+"La méthode de regroupement d'expédition par défaut pour les nouveaux "
+"clients."
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+"La méthode de regroupement d'expédition par défaut pour les nouveaux "
+"clients."
+
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
-msgstr "Tiers Méthode de regroupement des expéditions de vente"
+msgstr "Méthode de regroupement des expéditions de vente du tiers"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"

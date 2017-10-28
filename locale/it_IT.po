@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,7 +28,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -43,6 +43,24 @@ msgstr ""
 
 msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
 msgid "Write User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "metodo di raggruppamento della spedizione "
+
+#, fuzzy
+msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "Sale Shipment Grouping Method"
+msgstr "metodo di raggruppamento della spedizione "
+
+msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
+msgstr ""
+
+msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
+msgid "The default shipment grouping method for new customers."
 msgstr ""
 
 #, fuzzy
