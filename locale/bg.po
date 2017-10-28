@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -33,8 +33,8 @@ msgid "Name"
 msgstr "Име"
 
 msgctxt "field:product.price_list,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
@@ -81,8 +81,8 @@ msgid "Quantity"
 msgstr "Количество"
 
 msgctxt "field:product.price_list.line,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.price_list.line,sequence:"
 msgid "Sequence"

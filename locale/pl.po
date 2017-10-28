@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -33,8 +33,8 @@ msgid "Name"
 msgstr "Nazwa"
 
 msgctxt "field:product.price_list,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
@@ -50,7 +50,7 @@ msgstr "Zapisał"
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategoria"
 
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
@@ -81,12 +81,12 @@ msgid "Quantity"
 msgstr "Ilość"
 
 msgctxt "field:product.price_list.line,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.price_list.line,sequence:"
 msgid "Sequence"
-msgstr "Kolejność"
+msgstr "Sekwencja"
 
 msgctxt "field:product.price_list.line,unit_digits:"
 msgid "Unit Digits"
@@ -112,7 +112,7 @@ msgstr ""
 
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
-msgstr ""
+msgstr "Główny identyfikator cennika."
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
@@ -154,4 +154,4 @@ msgstr "Cennik"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
-msgstr "Wiersz z cennikiem"
+msgstr "Wiersz cennika"
