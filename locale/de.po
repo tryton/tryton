@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,8 +23,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:party.relation,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -59,8 +59,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:party.relation.all,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
@@ -95,8 +95,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:party.relation.type,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
