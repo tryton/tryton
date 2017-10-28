@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -64,10 +64,9 @@ msgctxt "field:ir.action-res.group,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action-res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
@@ -101,10 +100,9 @@ msgctxt "field:ir.model.button-res.group,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.button-res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
@@ -142,10 +140,9 @@ msgctxt "field:ir.model.field-res.group,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
@@ -171,10 +168,9 @@ msgctxt "field:ir.rule.group-res.group,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.rule.group-res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
@@ -200,10 +196,9 @@ msgctxt "field:ir.rule.group-res.user,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.rule.group-res.user,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.user,rule_group:"
 msgid "Rule Group"
@@ -249,10 +244,9 @@ msgctxt "field:ir.sequence.type-res.group,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
@@ -286,10 +280,9 @@ msgctxt "field:ir.ui.menu-res.group,menu:"
 msgid "Menu"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.menu-res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
@@ -332,10 +325,9 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -418,10 +410,9 @@ msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
@@ -467,10 +458,9 @@ msgctxt "field:res.user-ir.action,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-ir.action,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
@@ -500,10 +490,9 @@ msgctxt "field:res.user-res.group,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-res.group,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
@@ -537,10 +526,9 @@ msgctxt "field:res.user.application,key:"
 msgid "Key"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.application,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
@@ -578,10 +566,9 @@ msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.login.attempt,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
@@ -612,10 +599,9 @@ msgctxt "field:res.user.warning,name:"
 msgid "Name"
 msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:res.user.warning,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.warning,user:"
 msgid "User"

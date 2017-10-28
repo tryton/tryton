@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -380,8 +380,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.action,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
@@ -488,8 +488,8 @@ msgid "PySON Search Criteria"
 msgstr "PySON Keresési feltételek"
 
 msgctxt "field:ir.action.act_window,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -552,8 +552,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.action.act_window.domain,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,sequence:"
 msgid "Sequence"
@@ -588,8 +588,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.action.act_window.view,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.view,sequence:"
 msgid "Sequence"
@@ -636,8 +636,8 @@ msgid "Model"
 msgstr "Minta"
 
 msgctxt "field:ir.action.keyword,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.keyword,write_date:"
 msgid "Write Date"
@@ -712,8 +712,8 @@ msgid "PySON Email"
 msgstr "PySON E-Mail"
 
 msgctxt "field:ir.action.report,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -734,6 +734,10 @@ msgstr "Név"
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
 msgstr "Belső név"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr ""
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
@@ -792,8 +796,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.action.url,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
@@ -860,8 +864,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.action.wizard,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
@@ -932,8 +936,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.attachment,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
@@ -972,8 +976,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.cache,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
@@ -1004,8 +1008,8 @@ msgid "language"
 msgstr "nyelv"
 
 msgctxt "field:ir.configuration,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.configuration,write_date:"
 msgid "Write Date"
@@ -1064,8 +1068,8 @@ msgid "Number of Calls"
 msgstr "Hívások száma"
 
 msgctxt "field:ir.cron,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cron,repeat_missed:"
 msgid "Repeat Missed"
@@ -1112,8 +1116,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.export,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
@@ -1148,8 +1152,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.export.line,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.export.line,write_date:"
 msgid "Write Date"
@@ -1200,8 +1204,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.lang,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
@@ -1256,8 +1260,8 @@ msgid "Model Description"
 msgstr "Minta leírás"
 
 msgctxt "field:ir.model,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model,write_date:"
 msgid "Write Date"
@@ -1308,8 +1312,8 @@ msgid "Write Access"
 msgstr "Írási hozzáférés"
 
 msgctxt "field:ir.model.access,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.access,write_date:"
 msgid "Write Date"
@@ -1348,8 +1352,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.model.button,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
@@ -1396,10 +1400,9 @@ msgctxt "field:ir.model.button-button.reset,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_date:"
@@ -1436,10 +1439,9 @@ msgctxt "field:ir.model.button.click,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button.click,record_id:"
@@ -1490,10 +1492,9 @@ msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button.rule,write_date:"
@@ -1546,8 +1547,8 @@ msgid "Out of Sync"
 msgstr "Nem szinkronizált"
 
 msgctxt "field:ir.model.data,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
@@ -1598,8 +1599,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.model.field,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
@@ -1658,8 +1659,8 @@ msgid "Write Access"
 msgstr "Írási hozzáférés:"
 
 msgctxt "field:ir.model.field.access,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field.access,write_date:"
 msgid "Write Date"
@@ -1710,8 +1711,8 @@ msgid "Parents"
 msgstr "Fölérendelt (modul)"
 
 msgctxt "field:ir.module,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module,state:"
 msgid "State"
@@ -1769,8 +1770,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
@@ -1817,8 +1818,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.module.dependency,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
@@ -1865,10 +1866,9 @@ msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.note,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.note,resource:"
@@ -1908,10 +1908,9 @@ msgctxt "field:ir.note.read,note:"
 msgid "Note"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.note.read,user:"
@@ -1945,8 +1944,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.rule,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule,rule_group:"
 msgid "Group"
@@ -2009,8 +2008,8 @@ msgid "Write Access"
 msgstr "Írás hozzáférés"
 
 msgctxt "field:ir.rule.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
@@ -2077,8 +2076,8 @@ msgid "Prefix"
 msgstr "Előtag"
 
 msgctxt "field:ir.sequence,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -2153,8 +2152,8 @@ msgid "Prefix"
 msgstr "Előtag"
 
 msgctxt "field:ir.sequence.strict,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
@@ -2201,8 +2200,8 @@ msgid "Sequence Name"
 msgstr "Számkör neve"
 
 msgctxt "field:ir.sequence.type,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.type,write_date:"
 msgid "Write Date"
@@ -2229,8 +2228,8 @@ msgid "Key"
 msgstr "Kulcs"
 
 msgctxt "field:ir.session,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.session,write_date:"
 msgid "Write Date"
@@ -2257,8 +2256,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.session.wizard,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.session.wizard,write_date:"
 msgid "Write Date"
@@ -2305,8 +2304,8 @@ msgid "Overriding Module"
 msgstr "Átírandó modul"
 
 msgctxt "field:ir.translation,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
@@ -2441,8 +2440,8 @@ msgid "On Write"
 msgstr "Írásnál"
 
 msgctxt "field:ir.trigger,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.trigger,write_date:"
 msgid "Write Date"
@@ -2465,8 +2464,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.trigger.log,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
@@ -2513,8 +2512,8 @@ msgid "SVG Path"
 msgstr "SVG útvonal"
 
 msgctxt "field:ir.ui.icon,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.icon,sequence:"
 msgid "Sequence"
@@ -2581,8 +2580,8 @@ msgid "Parent Menu"
 msgstr "Felülrendelt (Menü)"
 
 msgctxt "field:ir.ui.menu,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu,sequence:"
 msgid "Sequence"
@@ -2613,8 +2612,8 @@ msgid "Menu"
 msgstr "Menü"
 
 msgctxt "field:ir.ui.menu.favorite,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu.favorite,sequence:"
 msgid "Sequence"
@@ -2681,8 +2680,8 @@ msgid "Priority"
 msgstr "Prioritás"
 
 msgctxt "field:ir.ui.view,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
@@ -2725,8 +2724,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:ir.ui.view_search,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
@@ -2769,8 +2768,8 @@ msgid "Expanded Nodes"
 msgstr "Bővített konto"
 
 msgctxt "field:ir.ui.view_tree_state,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
@@ -2809,8 +2808,8 @@ msgid "Model"
 msgstr "Minta"
 
 msgctxt "field:ir.ui.view_tree_width,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
@@ -2855,6 +2854,10 @@ msgid ""
 msgstr ""
 "Üresen hagyni ugyan ahhoz a formátumhoz, mint a 'bővített javaslat', lásd "
 "unoconv-dokumentáció kompatibilis formátumokhoz."
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr ""
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"

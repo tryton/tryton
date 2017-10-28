@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -362,8 +362,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.action,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
@@ -470,8 +470,8 @@ msgid "PySON Search Criteria"
 msgstr "PySON условие поиска"
 
 msgctxt "field:ir.action.act_window,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -535,8 +535,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.action.act_window.domain,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,sequence:"
 msgid "Sequence"
@@ -572,8 +572,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.action.act_window.view,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.view,sequence:"
 msgid "Sequence"
@@ -620,8 +620,8 @@ msgid "Model"
 msgstr "Модель"
 
 msgctxt "field:ir.action.keyword,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.keyword,write_date:"
 msgid "Write Date"
@@ -696,8 +696,8 @@ msgid "PySON Email"
 msgstr "PySON Email"
 
 msgctxt "field:ir.action.report,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -718,6 +718,10 @@ msgstr ""
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
 msgstr "Внутреннее наименование"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr ""
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
@@ -776,8 +780,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.action.url,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
@@ -844,8 +848,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.action.wizard,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
@@ -916,8 +920,8 @@ msgid "Name"
 msgstr "Имя вложения"
 
 msgctxt "field:ir.attachment,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
@@ -956,8 +960,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.cache,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
@@ -988,8 +992,8 @@ msgid "language"
 msgstr "язык"
 
 msgctxt "field:ir.configuration,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.configuration,write_date:"
 msgid "Write Date"
@@ -1048,8 +1052,8 @@ msgid "Number of Calls"
 msgstr "Кол-во вызовов"
 
 msgctxt "field:ir.cron,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cron,repeat_missed:"
 msgid "Repeat Missed"
@@ -1096,8 +1100,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.export,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
@@ -1132,8 +1136,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.export.line,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.export.line,write_date:"
 msgid "Write Date"
@@ -1184,8 +1188,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.lang,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
@@ -1240,8 +1244,8 @@ msgid "Model Description"
 msgstr "Описание модели"
 
 msgctxt "field:ir.model,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model,write_date:"
 msgid "Write Date"
@@ -1292,8 +1296,8 @@ msgid "Write Access"
 msgstr "Запись"
 
 msgctxt "field:ir.model.access,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.access,write_date:"
 msgid "Write Date"
@@ -1332,8 +1336,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.model.button,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
@@ -1380,10 +1384,9 @@ msgctxt "field:ir.model.button-button.reset,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_date:"
@@ -1420,10 +1423,9 @@ msgctxt "field:ir.model.button.click,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button.click,record_id:"
@@ -1474,10 +1476,9 @@ msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button.rule,write_date:"
@@ -1530,8 +1531,8 @@ msgid "Out of Sync"
 msgstr ""
 
 msgctxt "field:ir.model.data,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
@@ -1582,8 +1583,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.model.field,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
@@ -1642,8 +1643,8 @@ msgid "Write Access"
 msgstr "Запись"
 
 msgctxt "field:ir.model.field.access,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field.access,write_date:"
 msgid "Write Date"
@@ -1694,8 +1695,8 @@ msgid "Parents"
 msgstr "Предки"
 
 msgctxt "field:ir.module,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module,state:"
 msgid "State"
@@ -1753,8 +1754,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
@@ -1801,8 +1802,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.module.dependency,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
@@ -1849,10 +1850,9 @@ msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.note,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.note,resource:"
@@ -1893,10 +1893,9 @@ msgctxt "field:ir.note.read,note:"
 msgid "Note"
 msgstr "Комментарий"
 
-#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.note.read,user:"
@@ -1930,8 +1929,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.rule,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule,rule_group:"
 msgid "Group"
@@ -1994,8 +1993,8 @@ msgid "Write Access"
 msgstr "Запись"
 
 msgctxt "field:ir.rule.group,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
@@ -2062,8 +2061,8 @@ msgid "Prefix"
 msgstr "Префикс"
 
 msgctxt "field:ir.sequence,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -2138,8 +2137,8 @@ msgid "Prefix"
 msgstr "Префикс"
 
 msgctxt "field:ir.sequence.strict,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
@@ -2186,8 +2185,8 @@ msgid "Sequence Name"
 msgstr "Наименование нумерации"
 
 msgctxt "field:ir.sequence.type,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.type,write_date:"
 msgid "Write Date"
@@ -2214,8 +2213,8 @@ msgid "Key"
 msgstr "Ключ"
 
 msgctxt "field:ir.session,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.session,write_date:"
 msgid "Write Date"
@@ -2242,8 +2241,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.session.wizard,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.session.wizard,write_date:"
 msgid "Write Date"
@@ -2290,8 +2289,8 @@ msgid "Overriding Module"
 msgstr ""
 
 msgctxt "field:ir.translation,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
@@ -2426,8 +2425,8 @@ msgid "On Write"
 msgstr "При записи"
 
 msgctxt "field:ir.trigger,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.trigger,write_date:"
 msgid "Write Date"
@@ -2450,8 +2449,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.trigger.log,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
@@ -2498,8 +2497,8 @@ msgid "SVG Path"
 msgstr "Путь к SVG"
 
 msgctxt "field:ir.ui.icon,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.icon,sequence:"
 msgid "Sequence"
@@ -2567,8 +2566,8 @@ msgid "Parent Menu"
 msgstr "Основное меню"
 
 msgctxt "field:ir.ui.menu,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu,sequence:"
 msgid "Sequence"
@@ -2599,8 +2598,8 @@ msgid "Menu"
 msgstr "Меню"
 
 msgctxt "field:ir.ui.menu.favorite,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu.favorite,sequence:"
 msgid "Sequence"
@@ -2667,8 +2666,8 @@ msgid "Priority"
 msgstr "Приоритет"
 
 msgctxt "field:ir.ui.view,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
@@ -2711,8 +2710,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:ir.ui.view_search,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
@@ -2759,10 +2758,9 @@ msgctxt "field:ir.ui.view_tree_state,nodes:"
 msgid "Expanded Nodes"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.view_tree_state,rec_name:"
-msgid "Name"
-msgstr "Полное наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
@@ -2804,8 +2802,8 @@ msgid "Model"
 msgstr "Модель"
 
 msgctxt "field:ir.ui.view_tree_width,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
@@ -2850,6 +2848,10 @@ msgid ""
 msgstr ""
 "Если оставить пустым - будет так же как в шаблоне. Допустимые форматы "
 "смотрите в документацие unuconv."
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr ""
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"

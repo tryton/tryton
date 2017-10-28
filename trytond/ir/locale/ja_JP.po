@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -362,7 +362,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.action,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.action,type:"
@@ -473,7 +473,7 @@ msgid "PySON Search Criteria"
 msgstr ""
 
 msgctxt "field:ir.action.act_window,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -540,7 +540,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -578,7 +578,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:ir.action.act_window.view,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -630,7 +630,7 @@ msgid "Model"
 msgstr "Models"
 
 msgctxt "field:ir.action.keyword,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.action.keyword,write_date:"
@@ -710,7 +710,7 @@ msgid "PySON Email"
 msgstr ""
 
 msgctxt "field:ir.action.report,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.action.report,report:"
@@ -731,6 +731,10 @@ msgstr ""
 
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
+msgstr ""
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
 msgstr ""
 
 msgctxt "field:ir.action.report,template_extension:"
@@ -792,7 +796,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.action.url,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.action.url,type:"
@@ -863,7 +867,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.action.wizard,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.action.wizard,type:"
@@ -936,7 +940,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.attachment,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.attachment,resource:"
@@ -976,7 +980,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.cache,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.cache,timestamp:"
@@ -1009,7 +1013,7 @@ msgid "language"
 msgstr "Languages"
 
 msgctxt "field:ir.configuration,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.configuration,write_date:"
@@ -1070,7 +1074,7 @@ msgid "Number of Calls"
 msgstr ""
 
 msgctxt "field:ir.cron,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.cron,repeat_missed:"
@@ -1119,7 +1123,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.export,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.export,resource:"
@@ -1156,7 +1160,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.export.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.export.line,write_date:"
@@ -1209,7 +1213,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.lang,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.lang,thousands_sep:"
@@ -1267,7 +1271,7 @@ msgid "Model Description"
 msgstr ""
 
 msgctxt "field:ir.model,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model,write_date:"
@@ -1320,7 +1324,7 @@ msgid "Write Access"
 msgstr ""
 
 msgctxt "field:ir.model.access,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.access,write_date:"
@@ -1361,7 +1365,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.model.button,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.button,reset:"
@@ -1406,7 +1410,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:ir.model.button-button.reset,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.button-button.reset,write_date:"
@@ -1439,7 +1443,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:ir.model.button.click,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.button.click,record_id:"
@@ -1484,7 +1488,7 @@ msgid "Number of User"
 msgstr ""
 
 msgctxt "field:ir.model.button.rule,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.button.rule,write_date:"
@@ -1539,7 +1543,7 @@ msgid "Out of Sync"
 msgstr "Out of Sync"
 
 msgctxt "field:ir.model.data,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.data,values:"
@@ -1593,7 +1597,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.model.field,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.field,relation:"
@@ -1654,7 +1658,7 @@ msgid "Write Access"
 msgstr ""
 
 msgctxt "field:ir.model.field.access,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.model.field.access,write_date:"
@@ -1706,7 +1710,7 @@ msgid "Parents"
 msgstr ""
 
 msgctxt "field:ir.module,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.module,state:"
@@ -1763,7 +1767,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -1813,7 +1817,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.module.dependency,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.module.dependency,state:"
@@ -1857,7 +1861,7 @@ msgid "Message"
 msgstr ""
 
 msgctxt "field:ir.note,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.note,resource:"
@@ -1894,7 +1898,7 @@ msgid "Note"
 msgstr "Notes"
 
 msgctxt "field:ir.note.read,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.note.read,user:"
@@ -1926,7 +1930,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:ir.rule,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.rule,rule_group:"
@@ -1991,7 +1995,7 @@ msgid "Write Access"
 msgstr ""
 
 msgctxt "field:ir.rule.group,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.rule.group,rules:"
@@ -2061,7 +2065,7 @@ msgid "Prefix"
 msgstr ""
 
 msgctxt "field:ir.sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.sequence,suffix:"
@@ -2139,7 +2143,7 @@ msgid "Prefix"
 msgstr ""
 
 msgctxt "field:ir.sequence.strict,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.sequence.strict,suffix:"
@@ -2189,7 +2193,7 @@ msgid "Sequence Name"
 msgstr "Sequence Types"
 
 msgctxt "field:ir.sequence.type,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.sequence.type,write_date:"
@@ -2217,7 +2221,7 @@ msgid "Key"
 msgstr ""
 
 msgctxt "field:ir.session,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.session,write_date:"
@@ -2246,7 +2250,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:ir.session.wizard,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.session.wizard,write_date:"
@@ -2297,7 +2301,7 @@ msgid "Overriding Module"
 msgstr ""
 
 msgctxt "field:ir.translation,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.translation,res_id:"
@@ -2437,7 +2441,7 @@ msgid "On Write"
 msgstr ""
 
 msgctxt "field:ir.trigger,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.trigger,write_date:"
@@ -2461,7 +2465,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:ir.trigger.log,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.trigger.log,record_id:"
@@ -2512,7 +2516,7 @@ msgid "SVG Path"
 msgstr ""
 
 msgctxt "field:ir.ui.icon,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -2584,7 +2588,7 @@ msgid "Parent Menu"
 msgstr ""
 
 msgctxt "field:ir.ui.menu,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -2618,7 +2622,7 @@ msgid "Menu"
 msgstr "Menu"
 
 msgctxt "field:ir.ui.menu.favorite,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -2690,7 +2694,7 @@ msgid "Priority"
 msgstr ""
 
 msgctxt "field:ir.ui.view,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.ui.view,type:"
@@ -2735,7 +2739,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:ir.ui.view_search,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.ui.view_search,user:"
@@ -2780,7 +2784,7 @@ msgid "Expanded Nodes"
 msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
@@ -2822,7 +2826,7 @@ msgid "Model"
 msgstr "Models"
 
 msgctxt "field:ir.ui.view_tree_width,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,user:"
@@ -2863,6 +2867,10 @@ msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see unoconv documentation for "
 "compatible format"
+msgstr ""
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
 msgstr ""
 
 msgctxt "help:ir.action.wizard,window:"

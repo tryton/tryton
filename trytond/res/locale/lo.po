@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,27 +8,27 @@ msgstr "ຊື່ຂອງກຸ່ມຕ້ອງບໍ່ຊໍ້າກັນ
 
 msgctxt "error:res.user:"
 msgid "The password can not be the same as user email."
-msgstr ""
+msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ຊິເປັນອັນດຽວກັນກັບຊື່ຜູ້ໃຊ້ ອີເມວລ໌"
 
 msgctxt "error:res.user:"
 msgid "The password can not be the same as user login."
-msgstr ""
+msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ເປັນອັນດຽວກັນກັບ ຊື່ ທີ່ໃຊ້ເຊື່ອມຕໍ່ເຂົ້າລະບົບ."
 
 msgctxt "error:res.user:"
 msgid "The password can not be the same as user name."
-msgstr ""
+msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ເປັນອັນດຽວກັນກັບ ຊື່ ຜູ້ໃຊ້ງານ."
 
 msgctxt "error:res.user:"
 msgid "The password contains too much times the same characters."
-msgstr ""
+msgstr "ລະຫັດຜ່ານ ປະກອບດ້ວຍອັກຂະລະຊໍ້າກັນຫຼາຍໆເທື່ອ."
 
 msgctxt "error:res.user:"
 msgid "The password is forbidden."
-msgstr ""
+msgstr "ລະຫັດຜ່ານນີ້ຖືກຫ້າມໃຊ້"
 
 msgctxt "error:res.user:"
 msgid "The password is too short."
-msgstr ""
+msgstr "ລະຫັດຜ່ານນີ້ສັ້ນໂພດ."
 
 msgctxt "error:res.user:"
 msgid ""
@@ -66,8 +66,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:ir.action-res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
@@ -102,8 +102,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:ir.model.button-res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
@@ -142,8 +142,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
@@ -170,8 +170,8 @@ msgid "ID"
 msgstr "ເລກປະຈຳໂຕ"
 
 msgctxt "field:ir.rule.group-res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
@@ -198,8 +198,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:ir.rule.group-res.user,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.user,rule_group:"
 msgid "Rule Group"
@@ -246,8 +246,8 @@ msgid "ID"
 msgstr "ເລກປະຈຳໂຕ"
 
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
@@ -282,8 +282,8 @@ msgid "Menu"
 msgstr "ລາຍການຄຳສັ່ງ"
 
 msgctxt "field:ir.ui.menu-res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
@@ -293,7 +293,6 @@ msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
-#, fuzzy
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
 msgstr "ປຸ່ມ"
@@ -327,8 +326,8 @@ msgid "Name"
 msgstr "ຊື່"
 
 msgctxt "field:res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -411,8 +410,8 @@ msgid "PySON Menu"
 msgstr "ລາຍການຄຳສັ່ງ PySON"
 
 msgctxt "field:res.user,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
@@ -459,8 +458,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:res.user-ir.action,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
@@ -491,8 +490,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:res.user-res.group,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
@@ -527,8 +526,8 @@ msgid "Key"
 msgstr "ຄຳທີ່ເປັນກຸນແຈ"
 
 msgctxt "field:res.user.application,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
@@ -567,8 +566,8 @@ msgid "Login"
 msgstr "ເຂົ້າສູ່ລະບົບ"
 
 msgctxt "field:res.user.login.attempt,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
@@ -599,8 +598,8 @@ msgid "Name"
 msgstr "ຊື່"
 
 msgctxt "field:res.user.warning,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.warning,user:"
 msgid "User"

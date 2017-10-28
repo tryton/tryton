@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -357,8 +357,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.action,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
@@ -465,8 +465,8 @@ msgid "PySON Search Criteria"
 msgstr "PySON查找表达式"
 
 msgctxt "field:ir.action.act_window,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -529,8 +529,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.action.act_window.domain,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.domain,sequence:"
 msgid "Sequence"
@@ -565,8 +565,8 @@ msgid "ID"
 msgstr "标识"
 
 msgctxt "field:ir.action.act_window.view,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.act_window.view,sequence:"
 msgid "Sequence"
@@ -613,8 +613,8 @@ msgid "Model"
 msgstr "模型"
 
 msgctxt "field:ir.action.keyword,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.keyword,write_date:"
 msgid "Write Date"
@@ -689,8 +689,8 @@ msgid "PySON Email"
 msgstr "PySON 邮箱"
 
 msgctxt "field:ir.action.report,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -711,6 +711,10 @@ msgstr "内容标识"
 msgctxt "field:ir.action.report,report_name:"
 msgid "Internal Name"
 msgstr "内部标识"
+
+msgctxt "field:ir.action.report,single:"
+msgid "Single"
+msgstr ""
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
@@ -769,8 +773,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.action.url,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
@@ -837,8 +841,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.action.wizard,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
@@ -909,8 +913,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.attachment,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
@@ -949,8 +953,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.cache,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
@@ -981,8 +985,8 @@ msgid "language"
 msgstr "语言"
 
 msgctxt "field:ir.configuration,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.configuration,write_date:"
 msgid "Write Date"
@@ -1041,8 +1045,8 @@ msgid "Number of Calls"
 msgstr "调用次数"
 
 msgctxt "field:ir.cron,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.cron,repeat_missed:"
 msgid "Repeat Missed"
@@ -1089,8 +1093,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.export,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
@@ -1125,8 +1129,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.export.line,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.export.line,write_date:"
 msgid "Write Date"
@@ -1177,8 +1181,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.lang,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
@@ -1233,8 +1237,8 @@ msgid "Model Description"
 msgstr "模型描述"
 
 msgctxt "field:ir.model,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model,write_date:"
 msgid "Write Date"
@@ -1285,8 +1289,8 @@ msgid "Write Access"
 msgstr "写入"
 
 msgctxt "field:ir.model.access,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.access,write_date:"
 msgid "Write Date"
@@ -1325,8 +1329,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.model.button,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
@@ -1373,10 +1377,9 @@ msgctxt "field:ir.model.button-button.reset,id:"
 msgid "ID"
 msgstr "标识"
 
-#, fuzzy
 msgctxt "field:ir.model.button-button.reset,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_date:"
@@ -1413,10 +1416,9 @@ msgctxt "field:ir.model.button.click,id:"
 msgid "ID"
 msgstr "标识"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button.click,record_id:"
@@ -1467,10 +1469,9 @@ msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.model.button.rule,write_date:"
@@ -1523,8 +1524,8 @@ msgid "Out of Sync"
 msgstr "未同步"
 
 msgctxt "field:ir.model.data,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
@@ -1575,8 +1576,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.model.field,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
@@ -1635,8 +1636,8 @@ msgid "Write Access"
 msgstr "写入"
 
 msgctxt "field:ir.model.field.access,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field.access,write_date:"
 msgid "Write Date"
@@ -1687,8 +1688,8 @@ msgid "Parents"
 msgstr "父级"
 
 msgctxt "field:ir.module,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module,state:"
 msgid "State"
@@ -1746,8 +1747,8 @@ msgid "ID"
 msgstr "标识"
 
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
@@ -1794,8 +1795,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.module.dependency,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
@@ -1842,10 +1843,9 @@ msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.note,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.note,resource:"
@@ -1886,10 +1886,9 @@ msgctxt "field:ir.note.read,note:"
 msgid "Note"
 msgstr "注释"
 
-#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:ir.note.read,user:"
@@ -1923,8 +1922,8 @@ msgid "ID"
 msgstr "标识"
 
 msgctxt "field:ir.rule,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule,rule_group:"
 msgid "Group"
@@ -1987,8 +1986,8 @@ msgid "Write Access"
 msgstr "写入"
 
 msgctxt "field:ir.rule.group,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
@@ -2055,8 +2054,8 @@ msgid "Prefix"
 msgstr "前缀"
 
 msgctxt "field:ir.sequence,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -2131,8 +2130,8 @@ msgid "Prefix"
 msgstr "前缀"
 
 msgctxt "field:ir.sequence.strict,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
@@ -2179,8 +2178,8 @@ msgid "Sequence Name"
 msgstr "序列名"
 
 msgctxt "field:ir.sequence.type,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.type,write_date:"
 msgid "Write Date"
@@ -2207,8 +2206,8 @@ msgid "Key"
 msgstr "密匙"
 
 msgctxt "field:ir.session,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.session,write_date:"
 msgid "Write Date"
@@ -2235,8 +2234,8 @@ msgid "ID"
 msgstr "标识"
 
 msgctxt "field:ir.session.wizard,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.session.wizard,write_date:"
 msgid "Write Date"
@@ -2283,8 +2282,8 @@ msgid "Overriding Module"
 msgstr "来源模块"
 
 msgctxt "field:ir.translation,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
@@ -2419,8 +2418,8 @@ msgid "On Write"
 msgstr "写入触发"
 
 msgctxt "field:ir.trigger,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.trigger,write_date:"
 msgid "Write Date"
@@ -2443,8 +2442,8 @@ msgid "ID"
 msgstr "标识"
 
 msgctxt "field:ir.trigger.log,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
@@ -2491,8 +2490,8 @@ msgid "SVG Path"
 msgstr "SVG Path"
 
 msgctxt "field:ir.ui.icon,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.icon,sequence:"
 msgid "Sequence"
@@ -2559,8 +2558,8 @@ msgid "Parent Menu"
 msgstr "上一级菜单"
 
 msgctxt "field:ir.ui.menu,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu,sequence:"
 msgid "Sequence"
@@ -2591,8 +2590,8 @@ msgid "Menu"
 msgstr "菜单"
 
 msgctxt "field:ir.ui.menu.favorite,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu.favorite,sequence:"
 msgid "Sequence"
@@ -2659,8 +2658,8 @@ msgid "Priority"
 msgstr "优先级"
 
 msgctxt "field:ir.ui.view,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
@@ -2703,8 +2702,8 @@ msgid "Name"
 msgstr "名称"
 
 msgctxt "field:ir.ui.view_search,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
@@ -2747,8 +2746,8 @@ msgid "Expanded Nodes"
 msgstr "展开节点"
 
 msgctxt "field:ir.ui.view_tree_state,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
@@ -2787,8 +2786,8 @@ msgid "Model"
 msgstr "模型"
 
 msgctxt "field:ir.ui.view_tree_width,rec_name:"
-msgid "Name"
-msgstr "名称"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
@@ -2831,6 +2830,10 @@ msgid ""
 "Leave empty for the same as template, see unoconv documentation for "
 "compatible format"
 msgstr "参考unoconv文档有关格式部分，模版空白不要改动"
+
+msgctxt "help:ir.action.report,single:"
+msgid "Check if the template works only for one record."
+msgstr ""
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"

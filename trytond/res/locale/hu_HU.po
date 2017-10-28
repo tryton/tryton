@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -65,8 +65,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.action-res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
@@ -101,8 +101,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.model.button-res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
@@ -143,8 +143,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
@@ -171,8 +171,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.rule.group-res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
@@ -199,8 +199,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.rule.group-res.user,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.user,rule_group:"
 msgid "Rule Group"
@@ -247,8 +247,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
@@ -283,8 +283,8 @@ msgid "Menu"
 msgstr "Menü"
 
 msgctxt "field:ir.ui.menu-res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
@@ -328,8 +328,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
@@ -412,8 +412,8 @@ msgid "PySON Menu"
 msgstr "PySON Menü"
 
 msgctxt "field:res.user,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user,rule_groups:"
 msgid "Rules"
@@ -460,8 +460,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:res.user-ir.action,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
@@ -492,8 +492,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:res.user-res.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
@@ -530,10 +530,9 @@ msgctxt "field:res.user.application,key:"
 msgid "Key"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.application,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
@@ -575,8 +574,8 @@ msgid "Login"
 msgstr "Bejelentkezés"
 
 msgctxt "field:res.user.login.attempt,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
@@ -607,8 +606,8 @@ msgid "Name"
 msgstr "Név"
 
 msgctxt "field:res.user.warning,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:res.user.warning,user:"
 msgid "User"
