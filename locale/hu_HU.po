@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -48,10 +48,9 @@ msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:carrier.weight_price_list,weight:"
