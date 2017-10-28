@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -230,7 +230,7 @@ msgid "Period"
 msgstr ""
 
 msgctxt "field:account.fiscalyear.invoice_sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.fiscalyear.invoice_sequence,sequence:"
@@ -358,6 +358,10 @@ msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
 msgstr ""
 
+msgctxt "field:account.invoice,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr ""
+
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
 msgstr ""
@@ -367,7 +371,7 @@ msgid "Payment Term"
 msgstr "Término de pago"
 
 msgctxt "field:account.invoice,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice,reconciled:"
@@ -439,7 +443,7 @@ msgid "Payment Line"
 msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,write_date:"
@@ -545,7 +549,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:account.invoice.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice.line,sequence:"
@@ -598,7 +602,7 @@ msgid "Invoice Line"
 msgstr "Fecha de factura"
 
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
@@ -730,7 +734,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice.payment_term,write_date:"
@@ -778,7 +782,7 @@ msgid "Ratio"
 msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
@@ -834,7 +838,7 @@ msgid "Number of Months"
 msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
@@ -901,10 +905,6 @@ msgctxt "field:account.invoice.payment_term.test.result,id:"
 msgid "ID"
 msgstr ""
 
-msgctxt "field:account.invoice.print.warning,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr ""
@@ -949,12 +949,16 @@ msgctxt "field:account.invoice.tax,invoice_state:"
 msgid "Invoice State"
 msgstr "Estado de la factura"
 
+msgctxt "field:account.invoice.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
 msgstr ""
 
 msgctxt "field:account.invoice.tax,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.invoice.tax,sequence:"
@@ -1025,7 +1029,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party.payment_term,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -1099,10 +1103,6 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Prueba de término de pago"
 
-msgctxt "model:account.invoice.print.warning,name:"
-msgid "Print Invoice Report Warning"
-msgstr "Advertencia al imprimir la factura"
-
 #, fuzzy
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
@@ -1131,10 +1131,6 @@ msgstr "Términos de pago"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Generar nota de crédito"
-
-msgctxt "model:ir.action,name:print"
-msgid "Invoice"
-msgstr ""
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1515,14 +1511,6 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr ""
 
-msgctxt "view:account.invoice.print.warning:"
-msgid "The invoices will be sent directly to the printer."
-msgstr ""
-
-msgctxt "view:account.invoice.print.warning:"
-msgid "You have selected more than one invoice to print."
-msgstr ""
-
 msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
 msgstr ""
@@ -1562,6 +1550,11 @@ msgstr ""
 msgctxt "view:account.invoice:"
 msgid "Post"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier"
+msgstr "Identificador de impuesto"
 
 msgctxt "view:account.invoice:"
 msgid "Validate"
@@ -1609,12 +1602,4 @@ msgstr ""
 
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
-msgstr ""
-
-msgctxt "wizard_button:account.invoice.print,warning,end:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "wizard_button:account.invoice.print,warning,print_:"
-msgid "Print"
 msgstr ""

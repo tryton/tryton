@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -210,10 +210,9 @@ msgctxt "field:account.fiscalyear.invoice_sequence,period:"
 msgid "Period"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.invoice_sequence,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.fiscalyear.invoice_sequence,sequence:"
@@ -344,6 +343,10 @@ msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
 msgstr "Език на партньор"
 
+msgctxt "field:account.invoice,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr ""
+
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
 msgstr "Редове от плащане"
@@ -353,8 +356,8 @@ msgid "Payment Term"
 msgstr "Условие за плащане"
 
 msgctxt "field:account.invoice,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
@@ -425,8 +428,8 @@ msgid "Payment Line"
 msgstr "Ред от плащане"
 
 msgctxt "field:account.invoice-account.move.line,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,write_date:"
 msgid "Write Date"
@@ -531,8 +534,8 @@ msgid "Quantity"
 msgstr "Количество"
 
 msgctxt "field:account.invoice.line,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.line,sequence:"
 msgid "Sequence"
@@ -583,8 +586,8 @@ msgid "Invoice Line"
 msgstr "Ред от фактура"
 
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
@@ -717,8 +720,8 @@ msgid "Name"
 msgstr "Условие за плащане"
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,write_date:"
 msgid "Write Date"
@@ -765,8 +768,8 @@ msgid "Ratio"
 msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
@@ -825,10 +828,9 @@ msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
@@ -907,10 +909,6 @@ msgctxt "field:account.invoice.payment_term.test.result,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.invoice.print.warning,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Сметка"
@@ -956,13 +954,17 @@ msgctxt "field:account.invoice.tax,invoice_state:"
 msgid "Invoice State"
 msgstr "Състояние на фактура"
 
+msgctxt "field:account.invoice.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
 msgstr "Ръчно"
 
 msgctxt "field:account.invoice.tax,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,sequence:"
 msgid "Sequence"
@@ -1034,10 +1036,9 @@ msgctxt "field:party.party.payment_term,party:"
 msgid "Party"
 msgstr "Партньор"
 
-#, fuzzy
 msgctxt "field:party.party.payment_term,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.party.payment_term,supplier_payment_term:"
@@ -1111,10 +1112,6 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr ""
 
-msgctxt "model:account.invoice.print.warning,name:"
-msgid "Print Invoice Report Warning"
-msgstr "Предупреждение при отпечатване на справка за фактура"
-
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Данък към фактура"
@@ -1144,10 +1141,6 @@ msgstr "Условия за плащане"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Кредит"
-
-msgctxt "model:ir.action,name:print"
-msgid "Invoice"
-msgstr "Фактура"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1560,14 +1553,6 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:account.invoice.print.warning:"
-msgid "The invoices will be sent directly to the printer."
-msgstr ""
-
-msgctxt "view:account.invoice.print.warning:"
-msgid "You have selected more than one invoice to print."
-msgstr "Избрали сте за печат повече от една фактура"
-
 msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
 msgstr "Код на данък"
@@ -1610,6 +1595,10 @@ msgstr "Плащане"
 msgctxt "view:account.invoice:"
 msgid "Post"
 msgstr "Публикуван"
+
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.invoice:"

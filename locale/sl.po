@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -244,8 +244,8 @@ msgid "Period"
 msgstr "Obdobje"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.fiscalyear.invoice_sequence,sequence:"
 msgid "Sequence"
@@ -371,6 +371,10 @@ msgctxt "field:account.invoice,party_lang:"
 msgid "Party Language"
 msgstr "Jezik partnerja"
 
+msgctxt "field:account.invoice,party_tax_identifier:"
+msgid "Party Tax Identifier"
+msgstr ""
+
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
 msgstr "Postavke plačila"
@@ -380,8 +384,8 @@ msgid "Payment Term"
 msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
@@ -452,8 +456,8 @@ msgid "Payment Line"
 msgstr "Postavka plačila"
 
 msgctxt "field:account.invoice-account.move.line,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice-account.move.line,write_date:"
 msgid "Write Date"
@@ -556,8 +560,8 @@ msgid "Quantity"
 msgstr "Količina"
 
 msgctxt "field:account.invoice.line,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.line,sequence:"
 msgid "Sequence"
@@ -608,8 +612,8 @@ msgid "Invoice Line"
 msgstr "Postavka računa"
 
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
@@ -740,8 +744,8 @@ msgid "Name"
 msgstr "Plačilni rok"
 
 msgctxt "field:account.invoice.payment_term,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term,write_date:"
 msgid "Write Date"
@@ -788,8 +792,8 @@ msgid "Ratio"
 msgstr "Delež"
 
 msgctxt "field:account.invoice.payment_term.line,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
@@ -844,8 +848,8 @@ msgid "Number of Months"
 msgstr "Število mesecev"
 
 msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
 msgid "Sequence"
@@ -911,10 +915,6 @@ msgctxt "field:account.invoice.payment_term.test.result,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.invoice.print.warning,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Konto"
@@ -959,13 +959,17 @@ msgctxt "field:account.invoice.tax,invoice_state:"
 msgid "Invoice State"
 msgstr "Stanje računa"
 
+msgctxt "field:account.invoice.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
 msgstr "Ročno"
 
 msgctxt "field:account.invoice.tax,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.tax,sequence:"
 msgid "Sequence"
@@ -1032,8 +1036,8 @@ msgid "Party"
 msgstr "Partner"
 
 msgctxt "field:party.party.payment_term,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
@@ -1103,10 +1107,6 @@ msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
 msgstr "Preizkus plačilnega roka"
 
-msgctxt "model:account.invoice.print.warning,name:"
-msgid "Print Invoice Report Warning"
-msgstr "Opozorilo pri izpisu računa"
-
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Davek računa"
@@ -1134,10 +1134,6 @@ msgstr "Plačilni roki"
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
 msgstr "Kredit"
-
-msgctxt "model:ir.action,name:print"
-msgid "Invoice"
-msgstr "Račun"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1517,14 +1513,6 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:account.invoice.print.warning:"
-msgid "The invoices will be sent directly to the printer."
-msgstr "Računi bodo direktno poslani na tiskalnik."
-
-msgctxt "view:account.invoice.print.warning:"
-msgid "You have selected more than one invoice to print."
-msgstr "Za tiskanje je izbranih več kot en račun."
-
 msgctxt "view:account.invoice.tax:"
 msgid "Tax Code"
 msgstr "Davčna šifra"
@@ -1564,6 +1552,11 @@ msgstr "Plačilo"
 msgctxt "view:account.invoice:"
 msgid "Post"
 msgstr "Vknjižba"
+
+#, fuzzy
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier"
+msgstr "Davčna identifikacija"
 
 msgctxt "view:account.invoice:"
 msgid "Validate"
