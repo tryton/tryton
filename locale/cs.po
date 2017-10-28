@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -58,10 +58,9 @@ msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
@@ -156,10 +155,9 @@ msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.account,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
@@ -205,10 +203,9 @@ msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
@@ -262,10 +259,9 @@ msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.line,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
@@ -327,10 +323,9 @@ msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.rule,sequence:"
 msgid "Sequence"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -62,8 +62,8 @@ msgid "Origin"
 msgstr "Origine"
 
 msgctxt "field:analytic.account.entry,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic.account.entry,required:"
 msgid "Required"
@@ -158,8 +158,8 @@ msgid "Parent"
 msgstr "Padre"
 
 msgctxt "field:analytic_account.account,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
@@ -206,8 +206,8 @@ msgid "Ratio"
 msgstr "Indice"
 
 msgctxt "field:analytic_account.account.distribution,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
@@ -262,8 +262,8 @@ msgid "Account Move Line"
 msgstr "Riga di movimento contabile"
 
 msgctxt "field:analytic_account.line,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
@@ -334,10 +334,9 @@ msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:analytic_account.rule,sequence:"
 msgid "Sequence"
