@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -26,10 +26,9 @@ msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
 msgstr "Factuurregel"
 
-#, fuzzy
 msgctxt "field:account.invoice.line-stock.move,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"

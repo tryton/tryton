@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,23 +8,23 @@ msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.invoice.line-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.invoice.line-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
 msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
@@ -32,11 +32,11 @@ msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.invoice.line-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
