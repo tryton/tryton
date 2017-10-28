@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -19,8 +19,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:dashboard.action,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"

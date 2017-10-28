@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -18,10 +18,9 @@ msgctxt "field:dashboard.action,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:dashboard.action,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
