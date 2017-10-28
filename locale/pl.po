@@ -1,6 +1,10 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.sale:"
+msgid "The carrier '%(carrier)s' on sale '%(sale)s' is not valid."
+msgstr ""
 
 msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."
@@ -16,7 +20,7 @@ msgstr ""
 
 msgctxt "field:sale.line,shipment_cost:"
 msgid "Shipment Cost"
-msgstr ""
+msgstr "Koszt wysyłki"
 
 msgctxt "field:sale.sale,available_carriers:"
 msgid "Available Carriers"
@@ -36,15 +40,11 @@ msgstr ""
 
 msgctxt "field:stock.shipment.out,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Koszt"
 
 msgctxt "field:stock.shipment.out,cost_currency:"
 msgid "Cost Currency"
-msgstr ""
-
-msgctxt "field:stock.shipment.out,cost_currency_digits:"
-msgid "Cost Currency Digits"
-msgstr ""
+msgstr "Koszt waluty"
 
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
