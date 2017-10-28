@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,10 +47,9 @@ msgctxt "field:account.dunning.fee,product:"
 msgid "Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.dunning.fee,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,write_date:"
 msgid "Write Date"
@@ -96,10 +95,9 @@ msgctxt "field:account.dunning.fee.dunning_level,moves:"
 msgid "Moves"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.dunning.fee.dunning_level,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,write_date:"
 msgid "Write Date"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -48,8 +48,8 @@ msgid "Product"
 msgstr "Variante"
 
 msgctxt "field:account.dunning.fee,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.fee,write_date:"
 msgid "Write Date"
@@ -96,8 +96,8 @@ msgid "Moves"
 msgstr "Buchungssätze"
 
 msgctxt "field:account.dunning.fee.dunning_level,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,write_date:"
 msgid "Write Date"

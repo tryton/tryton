@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,8 +47,8 @@ msgid "Product"
 msgstr "Produkt"
 
 msgctxt "field:account.dunning.fee,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.dunning.fee,write_date:"
 msgid "Write Date"
@@ -95,8 +95,8 @@ msgid "Moves"
 msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.dunning.fee.dunning_level,write_date:"
 msgid "Write Date"
@@ -124,15 +124,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgstr ""
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"
-msgstr "Cena katalogowa"
+msgstr "Cena sprzedaży"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "Percentage"
