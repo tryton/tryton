@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,7 +23,7 @@ msgstr "Un numéro de téléphone est requis pour le tiers « %(party)s »."
 msgctxt "error:stock.shipment.out:"
 msgid "A shipping description is required for shipment \"%(shipment)s\"."
 msgstr ""
-"Une description de livraison est requise pour la livraison « %(shipment)s »."
+"Une description de livraison est requise pour l’expédition « %(shipment)s »."
 
 msgctxt "field:carrier,ups_label_height:"
 msgid "Label Height"
@@ -66,8 +66,8 @@ msgid "Password"
 msgstr "Mot de passe"
 
 msgctxt "field:carrier.credential.ups,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"

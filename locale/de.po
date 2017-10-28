@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -67,8 +67,8 @@ msgid "Password"
 msgstr "Passwort"
 
 msgctxt "field:carrier.credential.ups,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
