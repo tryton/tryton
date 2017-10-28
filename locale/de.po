@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,8 +31,8 @@ msgid "Party"
 msgstr "Partei"
 
 msgctxt "field:party.party.sale_price_list,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
@@ -67,8 +67,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_price_list,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
@@ -85,6 +85,18 @@ msgstr "Letzte Änderung durch"
 msgctxt "field:sale.sale,price_list:"
 msgid "Price List"
 msgstr "Preisliste"
+
+msgctxt "help:party.party,sale_price_list:"
+msgid "The default price list for new sales."
+msgstr ""
+
+msgctxt "help:sale.configuration,sale_price_list:"
+msgid "The default price list for new parties."
+msgstr ""
+
+msgctxt "help:sale.sale,price_list:"
+msgid "Use to compute the unit price of lines."
+msgstr ""
 
 msgctxt "model:party.party.sale_price_list,name:"
 msgid "Party Sale Price List"
