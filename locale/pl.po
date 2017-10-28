@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -12,23 +12,23 @@ msgstr ""
 
 msgctxt "field:party.party.sale_invoice_grouping_method,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:party.party.sale_invoice_grouping_method,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:party.party.sale_invoice_grouping_method,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party.sale_invoice_grouping_method,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:party.party.sale_invoice_grouping_method,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt ""
 "field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
@@ -37,10 +37,26 @@ msgstr ""
 
 msgctxt "field:party.party.sale_invoice_grouping_method,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:party.party.sale_invoice_grouping_method,write_uid:"
 msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:sale.configuration,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr ""
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr ""
+
+msgctxt "help:sale.configuration,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr ""
+
+msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
 msgstr ""
 
 msgctxt "model:party.party.sale_invoice_grouping_method,name:"
@@ -49,11 +65,11 @@ msgstr ""
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "Standard"
-msgstr ""
+msgstr "Standardowy"
 
 msgctxt "view:party.party:"
 msgid "Invoicing"

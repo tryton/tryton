@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,8 +27,8 @@ msgid "Party"
 msgstr "Tercero"
 
 msgctxt "field:party.party.sale_invoice_grouping_method,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt ""
 "field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
@@ -42,6 +42,24 @@ msgstr "Fecha de modificación"
 msgctxt "field:party.party.sale_invoice_grouping_method,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
+
+msgctxt "field:sale.configuration,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Método agrupación facturas de venta"
+
+msgctxt "field:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "Sale Invoice Grouping Method"
+msgstr "Método agrupación facturas de venta"
+
+msgctxt "help:sale.configuration,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr ""
+"El método de agrupación de facturas por defecto para los nuevos clientes."
+
+msgctxt "help:sale.configuration.sale_method,sale_invoice_grouping_method:"
+msgid "The default invoice grouping method for new customers."
+msgstr ""
+"El método de agrupación de facturas por defecto para los nuevos clientes."
 
 msgctxt "model:party.party.sale_invoice_grouping_method,name:"
 msgid "Party Sale Invoice Grouping Method"
