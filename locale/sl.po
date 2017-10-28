@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -58,8 +58,8 @@ msgid "Invoice Lines"
 msgstr "Postavke računa"
 
 msgctxt "field:sale.advance_payment.condition,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
@@ -106,8 +106,8 @@ msgid "Name"
 msgstr "Naziv"
 
 msgctxt "field:sale.advance_payment_term,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.advance_payment_term,write_date:"
 msgid "Write Date"
@@ -162,8 +162,8 @@ msgid "Invoice Delay"
 msgstr "Zamik računa"
 
 msgctxt "field:sale.advance_payment_term.line,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line,write_date:"
 msgid "Write Date"
@@ -198,8 +198,8 @@ msgid "Line"
 msgstr "Postavka"
 
 msgctxt "field:sale.advance_payment_term.line.account,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line.account,write_date:"
 msgid "Write Date"
