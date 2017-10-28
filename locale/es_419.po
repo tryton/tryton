@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -51,7 +51,7 @@ msgid "Password Hash"
 msgstr ""
 
 msgctxt "field:web.user,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:web.user,reset_password_token:"
@@ -87,7 +87,7 @@ msgid "Login"
 msgstr ""
 
 msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:web.user.authenticate.attempt,write_date:"
@@ -115,7 +115,7 @@ msgid "Key"
 msgstr ""
 
 msgctxt "field:web.user.session,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:web.user.session,user:"
@@ -176,6 +176,10 @@ msgstr ""
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
 msgstr ""
 
 msgctxt "report:web.user.email_validation:"

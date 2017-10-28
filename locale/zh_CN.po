@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -56,10 +56,9 @@ msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
 msgstr "密码HASH"
 
-#, fuzzy
 msgctxt "field:web.user,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
@@ -99,10 +98,9 @@ msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
 msgstr "登录"
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:web.user.authenticate.attempt,write_date:"
@@ -134,10 +132,9 @@ msgctxt "field:web.user.session,key:"
 msgid "Key"
 msgstr "密匙"
 
-#, fuzzy
 msgctxt "field:web.user.session,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:web.user.session,user:"
@@ -200,6 +197,10 @@ msgstr ""
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
 msgstr ""
 
 msgctxt "report:web.user.email_validation:"

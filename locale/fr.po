@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -51,8 +51,8 @@ msgid "Password Hash"
 msgstr "Hachage de mot de passe"
 
 msgctxt "field:web.user,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
@@ -87,8 +87,8 @@ msgid "Login"
 msgstr "Identifiant"
 
 msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:web.user.authenticate.attempt,write_date:"
 msgid "Write Date"
@@ -115,8 +115,8 @@ msgid "Key"
 msgstr "Clé"
 
 msgctxt "field:web.user.session,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:web.user.session,user:"
 msgid "User"
@@ -180,6 +180,10 @@ msgstr ""
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
 msgstr "Le bouton ne fonctionne pas ? Copier ceci dans votre navigateur :"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "Validation d'E-mail"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."

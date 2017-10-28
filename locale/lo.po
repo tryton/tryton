@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -51,8 +51,8 @@ msgid "Password Hash"
 msgstr "ລະຫັດຜ່ານປະສົມ"
 
 msgctxt "field:web.user,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
@@ -87,8 +87,8 @@ msgid "Login"
 msgstr "ເຊື່ອມຕໍ່ເຂົ້າລະບົບ"
 
 msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:web.user.authenticate.attempt,write_date:"
 msgid "Write Date"
@@ -115,8 +115,8 @@ msgid "Key"
 msgstr "ຄຳສຳຄັນ"
 
 msgctxt "field:web.user.session,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:web.user.session,user:"
 msgid "User"
@@ -177,6 +177,11 @@ msgstr "ພວກເຮົາໄດ້ຮັບຄຳຮ້ອງຂໍໃຫ້
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
 msgstr "ປຸ່ມບໍ່ເຮັດວຽກບໍ? ໃຫ້ ວາງ ອັນນີ້ລົງໃສ່ ໂຕທ່ອງເວັບຂອງທ່ານ:"
+
+#, fuzzy
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "ການຢືນຢັນຄວາມຖືກຕ້ອງ ອີ-ເມວລ໌"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."

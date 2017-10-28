@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -51,8 +51,8 @@ msgid "Password Hash"
 msgstr "Hash de la contrasenya"
 
 msgctxt "field:web.user,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
@@ -87,8 +87,8 @@ msgid "Login"
 msgstr "Nom usuari"
 
 msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:web.user.authenticate.attempt,write_date:"
 msgid "Write Date"
@@ -115,8 +115,8 @@ msgid "Key"
 msgstr "Clau"
 
 msgctxt "field:web.user.session,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:web.user.session,user:"
 msgid "User"
@@ -177,6 +177,10 @@ msgstr "Hem rebut una petició per reiniciar la contrasenya del vostre compte."
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
 msgstr "El botó no funciona? Copia i enganxa això en el teu navegador web:"
+
+msgctxt "report:web.user.email_validation:"
+msgid "Email Validation"
+msgstr "Validació correu electrònic"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
