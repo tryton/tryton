@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -26,10 +26,9 @@ msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr "百分比"
 
-#, fuzzy
 msgctxt "field:project.allocation,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
@@ -64,10 +63,9 @@ msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"

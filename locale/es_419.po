@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,7 +23,7 @@ msgid "Percentage"
 msgstr ""
 
 msgctxt "field:project.allocation,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:project.allocation,work:"
@@ -55,7 +55,7 @@ msgid "Predecessor"
 msgstr ""
 
 msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:project.predecessor_successor,successor:"
