@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -44,9 +44,8 @@ msgstr "ID"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr ""
+msgstr "W lewo"
 
-#, fuzzy
 msgctxt "field:project.work,name:"
 msgid "Name"
 msgstr "Nazwa"
@@ -68,16 +67,16 @@ msgid "Progress"
 msgstr "Postęp"
 
 msgctxt "field:project.work,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr ""
+msgstr "W prawo"
 
 msgctxt "field:project.work,sequence:"
 msgid "Sequence"
-msgstr "Kolejność"
+msgstr "Sekwencja"
 
 msgctxt "field:project.work,state:"
 msgid "State"
@@ -165,35 +164,35 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Gotowe"
+msgstr "Wykonano"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Otworzone"
+msgstr "Otworzono"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Gotowe"
+msgstr "Wykonano"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Otworzone"
+msgstr "Otworzono"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Gotowe"
+msgstr "Wykonano"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Otworzone"
+msgstr "Otworzono"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -217,11 +216,11 @@ msgstr "Zadania"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:project.work,name:"
@@ -230,15 +229,15 @@ msgstr "Works Efforts"
 
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Administracja ustawieniami projektów"
+msgstr "Administracja projektem"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Gotowe"
+msgstr "Wykonano"
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Otworzone"
+msgstr "Otworzono"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
@@ -253,9 +252,9 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:project.work:"
-msgid "Children"
-msgstr "Elementy podrzędne"
-
-msgctxt "view:project.work:"
 msgid "General"
 msgstr "Ogólne"
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Elementy podrzędne"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -75,10 +75,9 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:project.work,right:"
 msgid "Right"
@@ -274,11 +273,11 @@ msgctxt "view:project.work:"
 msgid "%"
 msgstr "%"
 
+msgctxt "view:project.work:"
+msgid "General"
+msgstr ""
+
 #, fuzzy
 msgctxt "view:project.work:"
 msgid "Children"
 msgstr "Gyermek (csomag)"
-
-msgctxt "view:project.work:"
-msgid "General"
-msgstr ""

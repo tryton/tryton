@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -71,8 +71,8 @@ msgid "Progress"
 msgstr "Progrés"
 
 msgctxt "field:project.work,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
@@ -255,9 +255,9 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:project.work:"
-msgid "Children"
-msgstr "Fills"
-
-msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "Children"
+msgstr "Fills"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -72,10 +72,9 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:project.work,right:"
 msgid "Right"
@@ -270,10 +269,10 @@ msgstr "%"
 
 #, fuzzy
 msgctxt "view:project.work:"
-msgid "Children"
-msgstr "子项"
+msgid "General"
+msgstr "基本"
 
 #, fuzzy
 msgctxt "view:project.work:"
-msgid "General"
-msgstr "基本"
+msgid "Children"
+msgstr "子项"
