@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -36,10 +36,9 @@ msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
 msgid "Purchase"
 msgstr "ສັ່ງຊື້"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
