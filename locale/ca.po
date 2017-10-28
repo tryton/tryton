@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,8 +47,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.cost_price_counterpart_account,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt ""
 "field:account.configuration.cost_price_counterpart_account,write_date:"
@@ -73,8 +73,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.stock_journal,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.configuration.stock_journal,stock_journal:"
 msgid "Stock Journal"
@@ -100,15 +100,7 @@ msgctxt "field:product.category,account_stock_customer:"
 msgid "Account Stock Customer"
 msgstr "Compte d'existències de client"
 
-msgctxt "field:product.category,account_stock_customer_used:"
-msgid "Account Stock Customer Used"
-msgstr "Compte d'existències de client usat"
-
 msgctxt "field:product.category,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr "Compte d'existències de perdut-trobat"
-
-msgctxt "field:product.category,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Compte d'existències de perdut-trobat"
 
@@ -116,21 +108,9 @@ msgctxt "field:product.category,account_stock_production:"
 msgid "Account Stock Production"
 msgstr "Compte d'existències de producció"
 
-msgctxt "field:product.category,account_stock_production_used:"
-msgid "Account Stock Production Used"
-msgstr "Compte d'existències de producció usat"
-
 msgctxt "field:product.category,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Compte d'existències de proveïdor"
-
-msgctxt "field:product.category,account_stock_supplier_used:"
-msgid "Account Stock Supplier Used"
-msgstr "Compte d'existències de proveïdor usat"
-
-msgctxt "field:product.category,account_stock_used:"
-msgid "Account Stock Used"
-msgstr "Compte d'existències usat"
 
 msgctxt "field:product.category.account,account_stock:"
 msgid "Account Stock"
@@ -160,15 +140,7 @@ msgctxt "field:product.product,account_stock_customer:"
 msgid "Account Stock Customer"
 msgstr "Compte d'existències de client"
 
-msgctxt "field:product.product,account_stock_customer_used:"
-msgid "Account Stock Customer Used"
-msgstr "Compte d'existències de client usat"
-
 msgctxt "field:product.product,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr "Compte d'existències de perdut-trobat"
-
-msgctxt "field:product.product,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Compte d'existències de perdut-trobat"
 
@@ -176,21 +148,9 @@ msgctxt "field:product.product,account_stock_production:"
 msgid "Account Stock Production"
 msgstr "Compte d'existències de producció"
 
-msgctxt "field:product.product,account_stock_production_used:"
-msgid "Account Stock Production Used"
-msgstr "Compte d'existències de producció usat"
-
 msgctxt "field:product.product,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Compte d'existències de proveïdor"
-
-msgctxt "field:product.product,account_stock_supplier_used:"
-msgid "Account Stock Supplier Used"
-msgstr "Compte d'existències de proveïdor usat"
-
-msgctxt "field:product.product,account_stock_used:"
-msgid "Account Stock Used"
-msgstr "Compte d'existències usat"
 
 msgctxt "field:product.template,account_stock:"
 msgid "Account Stock"
@@ -200,15 +160,7 @@ msgctxt "field:product.template,account_stock_customer:"
 msgid "Account Stock Customer"
 msgstr "Compte d'existències de client"
 
-msgctxt "field:product.template,account_stock_customer_used:"
-msgid "Account Stock Customer Used"
-msgstr "Compte d'existències de client usat"
-
 msgctxt "field:product.template,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr "Compte d'existències de perdut-trobat"
-
-msgctxt "field:product.template,account_stock_lost_found_used:"
 msgid "Account Stock Lost and Found"
 msgstr "Compte d'existències de perdut-trobat"
 
@@ -216,21 +168,9 @@ msgctxt "field:product.template,account_stock_production:"
 msgid "Account Stock Production"
 msgstr "Compte d'existències de producció"
 
-msgctxt "field:product.template,account_stock_production_used:"
-msgid "Account Stock Production Used"
-msgstr "Compte d'existències de producció usat"
-
 msgctxt "field:product.template,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Compte d'existències de proveïdor"
-
-msgctxt "field:product.template,account_stock_supplier_used:"
-msgid "Account Stock Supplier Used"
-msgstr "Compte d'existències de proveïdor usat"
-
-msgctxt "field:product.template,account_stock_used:"
-msgid "Account Stock Used"
-msgstr "Compte d'existències usat"
 
 msgctxt "field:product.template.account,account_stock:"
 msgid "Account Stock"
