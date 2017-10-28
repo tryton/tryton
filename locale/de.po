@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -311,6 +311,14 @@ msgstr ""
 "\"Einzelpreis aktualisieren\" kann nicht für Steuer \"%(template)s\" gesetzt"
 " werden, weil sie eine untergeordnete Steuer ist"
 
+msgctxt "error:party.party:"
+msgid "There is no payable account on party \"%(name)s\"."
+msgstr ""
+
+msgctxt "error:party.party:"
+msgid "There is no receivable account on party \"%(name)s\"."
+msgstr ""
+
 msgctxt "field:account.account,active:"
 msgid "Active"
 msgstr "Aktiv"
@@ -400,8 +408,8 @@ msgid "Party Required"
 msgstr "Partei erforderlich"
 
 msgctxt "field:account.account,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
@@ -456,8 +464,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.account-account.tax,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
@@ -516,8 +524,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.account.deferral,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
@@ -580,8 +588,8 @@ msgid "Party Required"
 msgstr "Partei erforderlich"
 
 msgctxt "field:account.account.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
@@ -620,8 +628,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.account.template-account.tax.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.account.template-account.tax.template,tax:"
 msgid "Tax Template"
@@ -688,8 +696,8 @@ msgid "Parent"
 msgstr "Übergeordnet (Kontotyp)"
 
 msgctxt "field:account.account.type,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.account.type,sequence:"
 msgid "Sequence"
@@ -744,8 +752,8 @@ msgid "Parent"
 msgstr "Übergeordnet (Kontovorlagentyp)"
 
 msgctxt "field:account.account.type.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.account.type.template,sequence:"
 msgid "Sequence"
@@ -788,8 +796,8 @@ msgid "Party"
 msgstr "Partei"
 
 msgctxt "field:account.aged_balance,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.aged_balance,term0:"
 msgid "Now"
@@ -896,8 +904,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
@@ -937,8 +945,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.default_account,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.configuration.default_account,write_date:"
 msgid "Write Date"
@@ -969,8 +977,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.tax_rounding,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
 msgid "Method"
@@ -1057,8 +1065,8 @@ msgid "Post Move Sequence"
 msgstr "Nummernkreis Buchungsfestschreibungen"
 
 msgctxt "field:account.fiscalyear,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
@@ -1097,8 +1105,8 @@ msgid "Line"
 msgstr "Position"
 
 msgctxt "field:account.fiscalyear-account.move.line,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.fiscalyear-account.move.line,write_date:"
 msgid "Write Date"
@@ -1135,6 +1143,39 @@ msgstr "Journal"
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
 msgstr "Buchungszeitraum"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Previous Fiscalyear"
+msgstr ""
+
+msgctxt "field:account.fiscalyear.renew.start,reset_sequences:"
+msgid "Reset Sequences"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.renew.start,start_date:"
+msgid "Start Date"
+msgstr "Anfangsdatum"
 
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
@@ -1197,8 +1238,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.general_ledger.account,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
@@ -1232,6 +1273,11 @@ msgctxt "field:account.general_ledger.account.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Geschäftsjahr"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
 msgctxt "field:account.general_ledger.account.context,id:"
 msgid "ID"
 msgstr "ID"
@@ -1243,6 +1289,11 @@ msgstr "Nur festgeschriebene Buchungen"
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
 msgstr "Von Buchungszeitraum"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.context,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
 
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
@@ -1309,8 +1360,8 @@ msgid "Party Required"
 msgstr "Partei erforderlich"
 
 msgctxt "field:account.general_ledger.line,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
@@ -1336,6 +1387,11 @@ msgctxt "field:account.general_ledger.line.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Geschäftsjahr"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
 msgctxt "field:account.general_ledger.line.context,id:"
 msgid "ID"
 msgstr "ID"
@@ -1351,6 +1407,11 @@ msgstr "Nur festgeschriebene Buchungen"
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
 msgstr "Von Buchungszeitraum"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line.context,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
 
 msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
@@ -1376,6 +1437,16 @@ msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
 msgid "Fiscal Year"
 msgstr "Geschäftsjahr"
 
+#, fuzzy
+msgctxt "field:account.income_statement.context,from_date:"
+msgid "From Date"
+msgstr "Von Datum"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,from_date_cmp:"
+msgid "From Date"
+msgstr "Von Datum"
+
 msgctxt "field:account.income_statement.context,id:"
 msgid "ID"
 msgstr "ID"
@@ -1391,6 +1462,16 @@ msgstr "Von Buchungszeitraum"
 msgctxt "field:account.income_statement.context,start_period_cmp:"
 msgid "Start Period"
 msgstr "Von Buchungszeitraum"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,to_date:"
+msgid "To Date"
+msgstr "Bis Datum"
+
+#, fuzzy
+msgctxt "field:account.income_statement.context,to_date_cmp:"
+msgid "To Date"
+msgstr "Bis Datum"
 
 msgctxt "field:account.journal,accounts:"
 msgid "Accounts"
@@ -1445,8 +1526,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.journal,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.journal,sequence:"
 msgid "Sequence"
@@ -1497,8 +1578,8 @@ msgid "Journal"
 msgstr "Journal"
 
 msgctxt "field:account.journal.account,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.journal.account,write_date:"
 msgid "Write Date"
@@ -1549,8 +1630,8 @@ msgid "Period"
 msgstr "Buchungszeitraum"
 
 msgctxt "field:account.journal.period,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.journal.period,state:"
 msgid "State"
@@ -1585,8 +1666,8 @@ msgid "Journal"
 msgstr "Journal"
 
 msgctxt "field:account.journal.sequence,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.journal.sequence,sequence:"
 msgid "Sequence"
@@ -1621,8 +1702,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.journal.type,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.journal.type,write_date:"
 msgid "Write Date"
@@ -1685,8 +1766,8 @@ msgid "Post Number"
 msgstr "Festschreibungsnummer"
 
 msgctxt "field:account.move,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.move,state:"
 msgid "State"
@@ -1797,8 +1878,8 @@ msgid "Period"
 msgstr "Buchungszeitraum"
 
 msgctxt "field:account.move.line,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
@@ -1873,8 +1954,8 @@ msgid "Party Required"
 msgstr "Partei erforderlich"
 
 msgctxt "field:account.move.line.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
@@ -1969,8 +2050,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.move.reconciliation,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.move.reconciliation,write_date:"
 msgid "Write Date"
@@ -2025,8 +2106,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.move.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.move.template,write_date:"
 msgid "Write Date"
@@ -2077,8 +2158,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.move.template.keyword,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.move.template.keyword,required:"
 msgid "Required"
@@ -2153,8 +2234,8 @@ msgid "Post Move Sequence"
 msgstr "Nummernkreis Buchungsfestschreibungen"
 
 msgctxt "field:account.period,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
@@ -2264,10 +2345,6 @@ msgctxt "field:account.tax,credit_note_tax_sign:"
 msgid "Credit Note Tax Sign"
 msgstr "Vorzeichen für Steuern in Gutschriften"
 
-msgctxt "field:account.tax,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
 msgctxt "field:account.tax,description:"
 msgid "Description"
 msgstr "Beschreibung"
@@ -2304,6 +2381,10 @@ msgctxt "field:account.tax,invoice_tax_sign:"
 msgid "Invoice Tax Sign"
 msgstr "Vorzeichen für Steuern in Rechnungen"
 
+msgctxt "field:account.tax,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
 msgctxt "field:account.tax,name:"
 msgid "Name"
 msgstr "Name"
@@ -2317,8 +2398,8 @@ msgid "Rate"
 msgstr "Prozentsatz"
 
 msgctxt "field:account.tax,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax,sequence:"
 msgid "Sequence"
@@ -2393,8 +2474,8 @@ msgid "Parent"
 msgstr "Übergeordnet (Steuerkennziffern)"
 
 msgctxt "field:account.tax.code,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.code,sum:"
 msgid "Sum"
@@ -2465,8 +2546,8 @@ msgid "Parent"
 msgstr "Übergeordnet (Steuerkennziffernvorlage)"
 
 msgctxt "field:account.tax.code.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.code.template,write_date:"
 msgid "Write Date"
@@ -2501,8 +2582,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.tax.group,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.group,write_date:"
 msgid "Write Date"
@@ -2545,8 +2626,8 @@ msgid "Move Line"
 msgstr "Buchungszeile"
 
 msgctxt "field:account.tax.line,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
@@ -2585,8 +2666,8 @@ msgid "Line"
 msgstr "Zeile"
 
 msgctxt "field:account.tax.line.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.line.template,tax:"
 msgid "Tax"
@@ -2629,8 +2710,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.tax.rule,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.rule,template:"
 msgid "Template"
@@ -2660,13 +2741,17 @@ msgctxt "field:account.tax.rule.line,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:account.tax.rule.line,keep_origin:"
+msgid "Keep Origin"
+msgstr ""
+
 msgctxt "field:account.tax.rule.line,origin_tax:"
 msgid "Original Tax"
 msgstr "Ursprungssteuer"
 
 msgctxt "field:account.tax.rule.line,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
@@ -2708,13 +2793,17 @@ msgctxt "field:account.tax.rule.line.template,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:account.tax.rule.line.template,keep_origin:"
+msgid "Keep Origin"
+msgstr ""
+
 msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
 msgstr "Ursprungssteuer"
 
 msgctxt "field:account.tax.rule.line.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
@@ -2765,8 +2854,8 @@ msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.tax.rule.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.rule.template,write_date:"
 msgid "Write Date"
@@ -2852,6 +2941,10 @@ msgctxt "field:account.tax.template,invoice_tax_sign:"
 msgid "Invoice Tax Sign"
 msgstr "Vorzeichen für Steuern in Rechnungen"
 
+msgctxt "field:account.tax.template,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
 msgctxt "field:account.tax.template,name:"
 msgid "Name"
 msgstr "Name"
@@ -2865,8 +2958,8 @@ msgid "Rate"
 msgstr "Prozentsatz"
 
 msgctxt "field:account.tax.template,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.tax.template,sequence:"
 msgid "Sequence"
@@ -3045,8 +3138,8 @@ msgid "Party"
 msgstr "Partei"
 
 msgctxt "field:party.party.account,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.party.account,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
@@ -3099,6 +3192,14 @@ msgstr "Nur festgeschriebene Buchungen anzeigen"
 msgctxt "help:account.balance_sheet.context,posted:"
 msgid "Show only posted move"
 msgstr "Nur festgeschriebene Buchungen anzeigen"
+
+msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
+msgid "Used as reference for fiscalyear configuration."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
+msgid "If checked, new sequences will be created."
+msgstr ""
 
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
@@ -3218,12 +3319,20 @@ msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "Ein Python-Ausdruck der mit den Schlüsselwörtern ausgewertet wird."
 
+msgctxt "help:account.tax.rule.line,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr ""
+
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr ""
 "Wenn das Feld Ursprungssteuer ausgefüllt ist, wird die Steuerregel "
 "ausschließlich auf diese Steuer angewendet."
+
+msgctxt "help:account.tax.rule.line.template,keep_origin:"
+msgid "Check to append the original tax to substituted tax."
+msgstr ""
 
 msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid ""
@@ -3316,6 +3425,10 @@ msgstr "Geschäftsjahr - Buchungszeile"
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
 msgstr "Abgleich Saldenvortrag"
+
+msgctxt "model:account.fiscalyear.renew.start,name:"
+msgid "Renew Fiscal Year Start"
+msgstr ""
 
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
@@ -3669,10 +3782,6 @@ msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
 msgstr "Steuerkennziffern öffnen"
 
-msgctxt "model:ir.action,name:act_open_type"
-msgid "Open Type"
-msgstr "Typ"
-
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
 msgstr "Buchungszeiträume"
@@ -3688,6 +3797,11 @@ msgstr "Konten abstimmen"
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Buchungszeilen abstimmen"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "Geschäftsjahr wiedereröffnen"
 
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
@@ -3953,6 +4067,11 @@ msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Konten abstimmen"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
+msgid "Renew Fiscal Year"
+msgstr "Geschäftsjahr wiedereröffnen"
+
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Auswertungen"
@@ -4105,6 +4224,11 @@ msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
 msgstr "Geschäftsjahr:"
 
+#, fuzzy
+msgctxt "report:account.general_ledger:"
+msgid "From Date:"
+msgstr "Von Datum:"
+
 msgctxt "report:account.general_ledger:"
 msgid "From Period"
 msgstr "Von Buchungszeitraum"
@@ -4124,10 +4248,6 @@ msgstr "Name"
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
 msgstr "Herkunft"
-
-msgctxt "report:account.general_ledger:"
-msgid "Period:"
-msgstr "Buchungszeitraum:"
 
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
@@ -4249,6 +4369,11 @@ msgctxt "report:account.trial_balance:"
 msgid "Fiscal Year:"
 msgstr "Geschäftsjahr:"
 
+#, fuzzy
+msgctxt "report:account.trial_balance:"
+msgid "From Date:"
+msgstr "Von Datum:"
+
 msgctxt "report:account.trial_balance:"
 msgid "From Period:"
 msgstr "Von Buchungszeitraum:"
@@ -4261,9 +4386,10 @@ msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
 msgstr "Anfangssaldo"
 
+#, fuzzy
 msgctxt "report:account.trial_balance:"
-msgid "To Period:"
-msgstr "Bis Buchungszeitraum:"
+msgid "To"
+msgstr "Bis"
 
 msgctxt "report:account.trial_balance:"
 msgid "Total"
@@ -4798,6 +4924,16 @@ msgid "OK"
 msgstr "OK"
 
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.renew,start,create_:"
+msgid "Create"
+msgstr "Erstellen"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.renew,start,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
 
