@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -54,11 +54,11 @@ msgstr "Generate FEC"
 
 msgctxt "model:ir.action,name:act_fec"
 msgid "Generate FEC"
-msgstr "Generate FEC"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_fec"
 msgid "Generate FEC"
-msgstr "Generate FEC"
+msgstr ""
 
 msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
