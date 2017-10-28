@@ -1,6 +1,14 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"The invoice line '%(line)s' is linked to stock moves for other products than '%(product)s'.\n"
+"This may compute a wrong COGS."
+msgstr ""
+"A linha da fatura '%(line)s' está vinculada a movimentações de estoque de outros produtos que não '%(product)s'.\n"
+"Isso pode computar um COGS errado."
 
 msgctxt "error:stock.move:"
 msgid "Anglo-Saxon quantity can not be greater than quantity."
@@ -10,10 +18,6 @@ msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Conta de Custo de Mercadorias Vendidas"
 
-msgctxt "field:product.category,account_cogs_used:"
-msgid "Account Cost of Goods Sold Used"
-msgstr "Conta de Custo de Mercadorias Vendidas Utilizada"
-
 msgctxt "field:product.category.account,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Conta de Custo de Mercadorias Vendidas"
@@ -22,17 +26,9 @@ msgctxt "field:product.product,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Conta de Custo de Mercadorias Vendidas"
 
-msgctxt "field:product.product,account_cogs_used:"
-msgid "Account Cost of Goods Sold Used"
-msgstr "Conta de Custo de Mercadorias Vendidas Utilizada"
-
 msgctxt "field:product.template,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "Conta de Custo de Mercadorias Vendidas"
-
-msgctxt "field:product.template,account_cogs_used:"
-msgid "Account Cost of Goods Sold Used"
-msgstr "Conta de Custo de Mercadorias Vendidas Utilizada"
 
 msgctxt "field:product.template.account,account_cogs:"
 msgid "Account Cost of Goods Sold"

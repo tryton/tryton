@@ -1,6 +1,12 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.line:"
+msgid ""
+"The invoice line '%(line)s' is linked to stock moves for other products than '%(product)s'.\n"
+"This may compute a wrong COGS."
+msgstr ""
 
 msgctxt "error:stock.move:"
 msgid "Anglo-Saxon quantity can not be greater than quantity."
@@ -8,10 +14,6 @@ msgstr ""
 
 msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr ""
-
-msgctxt "field:product.category,account_cogs_used:"
-msgid "Account Cost of Goods Sold Used"
 msgstr ""
 
 msgctxt "field:product.category.account,account_cogs:"
@@ -22,16 +24,8 @@ msgctxt "field:product.product,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr ""
 
-msgctxt "field:product.product,account_cogs_used:"
-msgid "Account Cost of Goods Sold Used"
-msgstr ""
-
 msgctxt "field:product.template,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr ""
-
-msgctxt "field:product.template,account_cogs_used:"
-msgid "Account Cost of Goods Sold Used"
 msgstr ""
 
 msgctxt "field:product.template.account,account_cogs:"
