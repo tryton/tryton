@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
-msgstr "Recall Deposit"
+msgstr ""
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
