@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -26,39 +26,39 @@ msgstr ""
 
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
-msgstr ""
+msgstr "Wysokość"
 
 msgctxt "field:stock.package.type,height_digits:"
 msgid "Height Digits"
-msgstr ""
+msgstr "Cyfry wysokości"
 
 msgctxt "field:stock.package.type,height_uom:"
 msgid "Height Unit"
-msgstr ""
+msgstr "Jednostka wysokości"
 
 msgctxt "field:stock.package.type,length:"
 msgid "Length"
-msgstr ""
+msgstr "Długość"
 
 msgctxt "field:stock.package.type,length_digits:"
 msgid "Length Digits"
-msgstr ""
+msgstr "Cyfry długości"
 
 msgctxt "field:stock.package.type,length_uom:"
 msgid "Length Unit"
-msgstr ""
+msgstr "Jednostka długości"
 
 msgctxt "field:stock.package.type,width:"
 msgid "Width"
-msgstr ""
+msgstr "Szerokość"
 
 msgctxt "field:stock.package.type,width_digits:"
 msgid "Width Digits"
-msgstr ""
+msgstr "Cyfry szerokości"
 
 msgctxt "field:stock.package.type,width_uom:"
 msgid "Width Unit"
-msgstr ""
+msgstr "Jednostka szerokości"
 
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
@@ -66,11 +66,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
-msgstr "Create Shipping"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
-msgstr "Shipping"
+msgstr ""
 
 msgctxt "selection:carrier,shipping_service:"
 msgid ""
@@ -78,7 +78,7 @@ msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"
-msgstr ""
+msgstr "Wymiary"
 
 msgctxt "view:stock.shipment.out:"
 msgid "Create Shipping for Packages"

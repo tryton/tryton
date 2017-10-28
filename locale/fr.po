@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -11,7 +11,7 @@ msgid ""
 "The shipment \"%(shipment)s\" must be packed before creating the shipping "
 "labels"
 msgstr ""
-"L’expédition « %(shipment)s » doit être emballé avant de créer les "
+"L’expédition « %(shipment)s » doit être emballée avant de créer les "
 "étiquettes de livraison"
 
 msgctxt "field:carrier,shipping_service:"
