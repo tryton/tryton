@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -35,7 +35,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:customs.duty.rate,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:customs.duty.rate,start_date:"
@@ -105,7 +105,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:customs.tariff.code,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:customs.tariff.code,start_day:"
@@ -141,7 +141,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:product-customs.tariff.code,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product-customs.tariff.code,sequence:"

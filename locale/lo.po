@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -41,10 +41,9 @@ msgctxt "field:customs.duty.rate,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
-#, fuzzy
 msgctxt "field:customs.duty.rate,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:customs.duty.rate,start_date:"
@@ -123,10 +122,9 @@ msgctxt "field:customs.tariff.code,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
-#, fuzzy
 msgctxt "field:customs.tariff.code,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:customs.tariff.code,start_day:"
@@ -167,10 +165,9 @@ msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product-customs.tariff.code,sequence:"
