@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,8 +31,8 @@ msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:country.country,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
@@ -75,8 +75,8 @@ msgid "Parent"
 msgstr "Parent"
 
 msgctxt "field:country.subdivision,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
@@ -111,8 +111,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:country.zip,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"

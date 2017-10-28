@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -35,10 +35,9 @@ msgctxt "field:country.country,name:"
 msgid "Name"
 msgstr "纳木"
 
-#, fuzzy
 msgctxt "field:country.country,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
@@ -89,10 +88,9 @@ msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
 msgstr "上级"
 
-#, fuzzy
 msgctxt "field:country.subdivision,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:country.subdivision,type:"
@@ -133,10 +131,9 @@ msgctxt "field:country.zip,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:country.zip,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"

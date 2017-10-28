@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,10 +31,9 @@ msgctxt "field:country.country,name:"
 msgid "Name"
 msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:country.country,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:country.country,subdivisions:"
@@ -79,10 +78,9 @@ msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:country.subdivision,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
@@ -117,10 +115,9 @@ msgctxt "field:country.zip,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:country.zip,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:country.zip,subdivision:"

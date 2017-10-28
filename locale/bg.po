@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -32,8 +32,8 @@ msgid "Name"
 msgstr "Име"
 
 msgctxt "field:country.country,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
@@ -76,8 +76,8 @@ msgid "Parent"
 msgstr "Родител"
 
 msgctxt "field:country.subdivision,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
@@ -116,10 +116,9 @@ msgctxt "field:country.zip,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:country.zip,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:country.zip,subdivision:"
