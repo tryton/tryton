@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -107,8 +107,8 @@ msgid "Payment Term"
 msgstr "Condition de paiement"
 
 msgctxt "field:sale.subscription,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
@@ -183,8 +183,8 @@ msgid "Quantity"
 msgstr "Quantité"
 
 msgctxt "field:sale.subscription.line,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.subscription.line,sequence:"
 msgid "Sequence"
@@ -267,8 +267,8 @@ msgid "Quantity"
 msgstr "Quantité"
 
 msgctxt "field:sale.subscription.line.consumption,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.subscription.line.consumption,unit_digits:"
 msgid "Unit Digits"
@@ -339,8 +339,8 @@ msgid "Interval"
 msgstr "Intervalle"
 
 msgctxt "field:sale.subscription.recurrence.rule,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.subscription.recurrence.rule,set_:"
 msgid "Set"
@@ -375,8 +375,8 @@ msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,rules:"
 msgid "Rules"
@@ -415,8 +415,8 @@ msgid "Product"
 msgstr "Produit"
 
 msgctxt "field:sale.subscription.service,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.subscription.service,write_date:"
 msgid "Write Date"
