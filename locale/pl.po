@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,19 +8,19 @@ msgstr ""
 
 msgctxt "field:account.configuration.landed_cost_sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.configuration.landed_cost_sequence,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.configuration.landed_cost_sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.configuration.landed_cost_sequence,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt ""
 "field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
@@ -28,16 +28,16 @@ msgid "Landed Cost Sequence"
 msgstr ""
 
 msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 #, fuzzy
 msgctxt "field:account.invoice.line,landed_cost:"
@@ -50,19 +50,19 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.landed_cost,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.landed_cost,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.landed_cost,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
@@ -77,8 +77,8 @@ msgid "Posted Date"
 msgstr ""
 
 msgctxt "field:account.landed_cost,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
@@ -86,27 +86,27 @@ msgstr ""
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 msgctxt "field:account.landed_cost,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.landed_cost,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
@@ -114,8 +114,8 @@ msgid "Landed Cost"
 msgstr "Landed Cost"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
@@ -123,11 +123,11 @@ msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 #, fuzzy
 msgctxt "field:product.product,landed_cost:"
@@ -158,34 +158,34 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr "Landed Costs"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Landed Costs"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
@@ -212,17 +212,18 @@ msgstr "Landed Cost"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sekwencja"
 
 msgctxt "view:account.landed_cost:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 #, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Draft"
 msgstr "Draft"
 
+#, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Post"
-msgstr ""
+msgstr "Księgowanie"

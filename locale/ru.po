@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,10 +31,9 @@ msgctxt ""
 msgid "Landed Cost Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
@@ -88,10 +87,9 @@ msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.landed_cost,shipments:"
@@ -132,10 +130,9 @@ msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"

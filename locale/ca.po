@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,8 +28,8 @@ msgid "Landed Cost Sequence"
 msgstr "Seqüència de cost de recepció"
 
 msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
 msgid "Write Date"
@@ -76,8 +76,8 @@ msgid "Posted Date"
 msgstr "Data comptabilització"
 
 msgctxt "field:account.landed_cost,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
@@ -112,8 +112,8 @@ msgid "Landed Cost"
 msgstr "Cost de recepció"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"

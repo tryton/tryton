@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,7 +28,7 @@ msgid "Landed Cost Sequence"
 msgstr "Secuencia de costo final"
 
 msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
@@ -76,7 +76,7 @@ msgid "Posted Date"
 msgstr ""
 
 msgctxt "field:account.landed_cost,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.landed_cost,shipments:"
@@ -112,7 +112,7 @@ msgid "Landed Cost"
 msgstr "Costo final"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
