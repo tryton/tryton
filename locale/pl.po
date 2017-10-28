@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -39,19 +39,19 @@ msgstr ""
 
 msgctxt "field:purchase.configuration.supply_period,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:purchase.configuration.supply_period,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:purchase.configuration.supply_period,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
@@ -59,11 +59,11 @@ msgstr ""
 
 msgctxt "field:purchase.configuration.supply_period,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:purchase.configuration.supply_period,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:stock.location,overflowing_location:"
 msgid "Overflowing Location"
@@ -75,31 +75,31 @@ msgstr ""
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:stock.order_point,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
-msgstr ""
+msgstr "Lokalizacja"
 
 msgctxt "field:stock.order_point,max_quantity:"
 msgid "Maximal Quantity"
-msgstr ""
+msgstr "Maksymalna ilość"
 
 msgctxt "field:stock.order_point,min_quantity:"
 msgid "Minimal Quantity"
-msgstr ""
+msgstr "Minimalna ilość"
 
 msgctxt "field:stock.order_point,overflowing_location:"
 msgid "Overflowing Location"
@@ -107,15 +107,15 @@ msgstr ""
 
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr ""
 
 msgctxt "field:stock.order_point,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
@@ -123,35 +123,35 @@ msgstr ""
 
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
-msgstr ""
+msgstr "Docelowa ilość"
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Jednostka"
 
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Cyfry jednostki"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
-msgstr ""
+msgstr "Lokalizacja magazynu"
 
 msgctxt "field:stock.order_point,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:stock.supply.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing"
@@ -163,15 +163,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form_relate"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form_relate2"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_stock_supply"
 msgid "Supply Stock"
@@ -180,21 +180,21 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
-msgstr "Internal"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Zakup"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
@@ -218,10 +218,9 @@ msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
 msgstr "Internal"
 
-#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Zakup"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
@@ -229,7 +228,7 @@ msgstr ""
 
 msgctxt "view:stock.order_point:"
 msgid "Product Info"
-msgstr ""
+msgstr "Informacja o produkcie"
 
 msgctxt "view:stock.supply.start:"
 msgid "Supply Stock?"
@@ -237,27 +236,27 @@ msgstr ""
 
 msgctxt "wizard_button:stock.supply,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Utwórz"
 
 msgctxt "wizard_button:stock.supply,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Purchase Requests"
-msgstr "Generate Purchase Requests"
+msgstr ""
 
 msgctxt "model:ir.cron,name:cron_shipment_iternal"
 msgid "Generate Internal Shipments"
-msgstr "Generate Internal Shipments"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
 msgid "Create Purchase Requests"
-msgstr "Create Purchase Requests"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
 msgid "Create Internal Shipments"
-msgstr "Create Internal Shipments"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:purchase.request.create.start,name:"

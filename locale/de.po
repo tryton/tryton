@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -29,11 +29,11 @@ msgstr ""
 
 msgctxt "error:stock.supply:"
 msgid "There are some late customer moves."
-msgstr "Es existieren einige spätere Warenbewegungen von Lieferanten."
+msgstr "Es existieren überfällige Warenbewegungen von Lieferanten."
 
 msgctxt "error:stock.supply:"
 msgid "There are some late supplier moves."
-msgstr "Es existieren einige spätere Warenbewegungen von Lieferanten."
+msgstr "Es existieren überfällige Warenbewegungen von Lieferanten."
 
 msgctxt "field:product.product,order_points:"
 msgid "Order Points"
@@ -56,8 +56,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
@@ -120,8 +120,8 @@ msgid "Provisioning Location"
 msgstr "Bereitstellungsort"
 
 msgctxt "field:stock.order_point,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"

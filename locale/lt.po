@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -48,10 +48,9 @@ msgctxt "field:purchase.configuration.supply_period,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
@@ -113,10 +112,9 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.order_point,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"

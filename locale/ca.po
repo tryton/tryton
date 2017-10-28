@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -56,8 +56,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
@@ -120,8 +120,8 @@ msgid "Provisioning Location"
 msgstr "Ubicació de l'aprovisionament"
 
 msgctxt "field:stock.order_point,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
