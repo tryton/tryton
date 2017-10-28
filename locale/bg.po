@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -78,10 +78,9 @@ msgctxt "field:commission,product:"
 msgid "Product"
 msgstr "Продукт"
 
-#, fuzzy
 msgctxt "field:commission,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:commission,type_:"
@@ -137,10 +136,9 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "План"
 
-#, fuzzy
 msgctxt "field:commission.agent,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:commission.agent,type_:"
@@ -208,10 +206,9 @@ msgctxt "field:commission.plan,name:"
 msgid "Name"
 msgstr "Условие за плащане"
 
-#, fuzzy
 msgctxt "field:commission.plan,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:commission.plan,write_date:"
@@ -257,10 +254,9 @@ msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Продукт"
 
-#, fuzzy
 msgctxt "field:commission.plan.line,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:commission.plan.line,sequence:"
@@ -304,10 +300,9 @@ msgctxt "field:product.template-commission.agent,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template-commission.agent,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.template-commission.agent,template:"

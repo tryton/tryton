@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -68,10 +68,9 @@ msgctxt "field:commission,product:"
 msgid "Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission,type_:"
 msgid "Type"
@@ -117,10 +116,9 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.agent,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
@@ -179,10 +177,9 @@ msgctxt "field:commission.plan,name:"
 msgid "Name"
 msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:commission.plan,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
@@ -220,10 +217,9 @@ msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:commission.plan.line,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
@@ -261,10 +257,9 @@ msgctxt "field:product.template-commission.agent,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template-commission.agent,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"

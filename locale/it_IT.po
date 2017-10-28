@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -71,8 +71,8 @@ msgid "Product"
 msgstr "Prodotto"
 
 msgctxt "field:commission,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission,type_:"
 msgid "Type"
@@ -120,8 +120,8 @@ msgid "Plan"
 msgstr "Piano"
 
 msgctxt "field:commission.agent,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
@@ -180,8 +180,8 @@ msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:commission.plan,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
@@ -220,8 +220,8 @@ msgid "Product"
 msgstr "Prodotto"
 
 msgctxt "field:commission.plan.line,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
@@ -260,8 +260,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template-commission.agent,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
