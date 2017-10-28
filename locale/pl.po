@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -16,16 +16,16 @@ msgstr ""
 
 msgctxt "field:stock.shipment.in,cost:"
 msgid "Cost"
-msgstr ""
+msgstr "Koszt"
 
 msgctxt "field:stock.shipment.in,cost_currency:"
 msgid "Cost Currency"
-msgstr ""
+msgstr "Koszt waluty"
 
 msgctxt "field:stock.shipment.in,cost_currency_digits:"
 msgid "Cost Currency Digits"
-msgstr ""
+msgstr "Cyfry kosztu waluty"
 
 msgctxt "selection:carrier,carrier_cost_allocation_method:"
 msgid "By Value"
-msgstr ""
+msgstr "Wg wartości"
