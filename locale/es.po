@@ -1,0 +1,20 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.payment:"
+msgid "Payment cannot be approved because sale \"%(sale)s\" is cancelled."
+msgstr "El pago no se puede aprobar porqué la venta \"%(sale)s\" esta cancelada."
+
+msgctxt "error:sale.sale:"
+msgid "The sale \"%(sale)s\" can not be canceled because it has payments."
+msgstr "La venda \"%(sale)s\" no se puede cancelar porqué tiene pagos."
+
+msgctxt "error:sale.sale:"
+msgid "The sale \"%(sale)s\" can not be reset to draft because it has payments."
+msgstr ""
+"La venda \"%(sale)s\" no se puede restablecer a borrador porqué tiene pagos."
+
+msgctxt "field:sale.sale,payments:"
+msgid "Payments"
+msgstr "Cobros"
