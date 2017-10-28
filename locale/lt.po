@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -50,10 +50,9 @@ msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -88,10 +87,9 @@ msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Namu"
 
-#, fuzzy
 msgctxt "field:stock.package.type,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
