@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -71,8 +71,8 @@ msgid "Invoice Line"
 msgstr "Línea de factura"
 
 msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"

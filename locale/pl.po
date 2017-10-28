@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:project.work,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Wiersz faktury"
 
 msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
@@ -52,11 +52,11 @@ msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:project.work.invoiced_progress,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
@@ -64,31 +64,31 @@ msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Wiersz faktury"
 
 msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr ""
+msgstr "Praca"
 
 msgctxt "field:project.work.invoiced_progress,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:project.work.invoiced_progress,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Wiersz faktury"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
@@ -96,7 +96,7 @@ msgstr "Timesheet Lines"
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Faktury"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
@@ -104,7 +104,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
-msgstr "Project Invoice"
+msgstr ""
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "Manual"
@@ -138,7 +138,6 @@ msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:project.work:"
 msgid "Invoice"
-msgstr "Invoices"
+msgstr "Faktura"
