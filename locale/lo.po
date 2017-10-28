@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -47,8 +47,8 @@ msgid "Parent"
 msgstr "ບັນຊີແມ່"
 
 msgctxt "field:product.category,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
@@ -75,8 +75,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:product.configuration,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
@@ -107,10 +107,9 @@ msgctxt "field:product.configuration.default_cost_price_method,id:"
 msgid "ID"
 msgstr "ເລກທີ"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,write_date:"
@@ -132,11 +131,6 @@ msgid "Cost Price"
 msgstr "ລາຄາຄິດໄລ່"
 
 #, fuzzy
-msgctxt "field:product.cost_price,cost_price_method:"
-msgid "Cost Method"
-msgstr "ວິທີຄິດໄລ່"
-
-#, fuzzy
 msgctxt "field:product.cost_price,create_date:"
 msgid "Create Date"
 msgstr "ວັນທີສ້າງ"
@@ -152,14 +146,13 @@ msgid "ID"
 msgstr "ເລກທີ"
 
 #, fuzzy
-msgctxt "field:product.cost_price,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgctxt "field:product.cost_price,product:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
 
-#, fuzzy
-msgctxt "field:product.cost_price,template:"
-msgid "Template"
-msgstr "ຮ່າງແບບ"
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.cost_price,write_date:"
@@ -168,6 +161,48 @@ msgstr "ວັນທີບັນທຶກ"
 
 #, fuzzy
 msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:product.cost_price_method,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:product.cost_price_method,cost_price_method:"
+msgid "Cost Price Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,id:"
+msgid "ID"
+msgstr "ເລກທີ"
+
+msgctxt "field:product.cost_price_method,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
@@ -195,10 +230,9 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "ລາຄາຂາຍ"
 
-#, fuzzy
 msgctxt "field:product.list_price,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.list_price,template:"
@@ -223,6 +257,11 @@ msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr "ປະເພດ"
 
+#, fuzzy
+msgctxt "field:product.product,categories_all:"
+msgid "Categories"
+msgstr "ປະເພດ"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "ລະຫັດ"
@@ -236,8 +275,12 @@ msgid "Cost Price"
 msgstr "ລາຄາຄິດໄລ່"
 
 msgctxt "field:product.product,cost_price_method:"
-msgid "Cost Method"
-msgstr "ວິທີຄິດໄລ່"
+msgid "Cost Price Method"
+msgstr ""
+
+msgctxt "field:product.product,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr ""
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
@@ -290,8 +333,8 @@ msgid "Name"
 msgstr "ຊື່"
 
 msgctxt "field:product.product,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
@@ -317,6 +360,11 @@ msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "ປະເພດ"
 
+#, fuzzy
+msgctxt "field:product.template,categories_all:"
+msgid "Categories"
+msgstr "ປະເພດ"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "ວັດຖຸສິ້ນເປືອງ"
@@ -326,13 +374,12 @@ msgid "Cost Price"
 msgstr "ລາຄາຄິດໄລ່"
 
 msgctxt "field:product.template,cost_price_method:"
-msgid "Cost Method"
-msgstr "ວິທີຄິດໄລ່"
+msgid "Cost Price Method"
+msgstr ""
 
-#, fuzzy
-msgctxt "field:product.template,cost_prices:"
-msgid "Cost Prices"
-msgstr "ລາຄາຄິດໄລ່"
+msgctxt "field:product.template,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr ""
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
@@ -372,8 +419,8 @@ msgid "Variants"
 msgstr "ຜະລິດຕະພັນຍ່ອຍ"
 
 msgctxt "field:product.template,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template,type:"
 msgid "Type"
@@ -404,8 +451,8 @@ msgid "ID"
 msgstr "ເລກທີ"
 
 msgctxt "field:product.template-product.category,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
@@ -416,6 +463,45 @@ msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:product.template-product.category,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,category:"
+msgid "Category"
+msgstr "ປະເພດ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,id:"
+msgid "ID"
+msgstr "ເລກທີ"
+
+msgctxt "field:product.template-product.category.all,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,template:"
+msgid "Template"
+msgstr "ຮ່າງແບບ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
@@ -456,8 +542,8 @@ msgid "Rate"
 msgstr "ອັດຕາ"
 
 msgctxt "field:product.uom,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
@@ -492,8 +578,8 @@ msgid "Name"
 msgstr "ຊື່"
 
 msgctxt "field:product.uom.category,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
@@ -611,6 +697,10 @@ msgctxt "model:product.cost_price,name:"
 msgid "Product Cost Price"
 msgstr ""
 
+msgctxt "model:product.cost_price_method,name:"
+msgid "Product Cost Price Method"
+msgstr ""
+
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
 msgstr ""
@@ -625,6 +715,11 @@ msgstr "ຮ່າງຂໍ້ມູນຜະລິດຕະພັນ"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
+msgstr "ຮ່າງແບບ - ປະເພດ"
+
+#, fuzzy
+msgctxt "model:product.template-product.category.all,name:"
+msgid "Template - Category All"
 msgstr "ຮ່າງແບບ - ປະເພດ"
 
 msgctxt "model:product.uom,name:"

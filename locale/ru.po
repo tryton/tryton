@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -50,8 +50,8 @@ msgid "Parent"
 msgstr "Предок"
 
 msgctxt "field:product.category,rec_name:"
-msgid "Name"
-msgstr "Полное наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
@@ -80,10 +80,9 @@ msgctxt "field:product.configuration,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.configuration,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.configuration,write_date:"
@@ -115,10 +114,9 @@ msgctxt "field:product.configuration.default_cost_price_method,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,write_date:"
@@ -140,11 +138,6 @@ msgid "Cost Price"
 msgstr "Себестоимость"
 
 #, fuzzy
-msgctxt "field:product.cost_price,cost_price_method:"
-msgid "Cost Method"
-msgstr "Учет стоимости"
-
-#, fuzzy
 msgctxt "field:product.cost_price,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
@@ -160,14 +153,13 @@ msgid "ID"
 msgstr "ID"
 
 #, fuzzy
-msgctxt "field:product.cost_price,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgctxt "field:product.cost_price,product:"
+msgid "Product"
+msgstr "Продукция"
 
-#, fuzzy
-msgctxt "field:product.cost_price,template:"
-msgid "Template"
-msgstr "Шаблон"
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.cost_price,write_date:"
@@ -176,6 +168,48 @@ msgstr "Дата изменения"
 
 #, fuzzy
 msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:product.cost_price_method,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:product.cost_price_method,cost_price_method:"
+msgid "Cost Price Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cost_price_method,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
@@ -203,10 +237,9 @@ msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
 msgstr "Цена"
 
-#, fuzzy
 msgctxt "field:product.list_price,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.list_price,template:"
@@ -232,6 +265,11 @@ msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr "Категории"
 
+#, fuzzy
+msgctxt "field:product.product,categories_all:"
+msgid "Categories"
+msgstr "Категории"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Код"
@@ -246,10 +284,13 @@ msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
 msgstr "Себестоимость"
 
-#, fuzzy
 msgctxt "field:product.product,cost_price_method:"
-msgid "Cost Method"
-msgstr "Учет стоимости"
+msgid "Cost Price Method"
+msgstr ""
+
+msgctxt "field:product.product,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr ""
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
@@ -305,8 +346,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:product.product,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
@@ -333,6 +374,11 @@ msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Категории"
 
+#, fuzzy
+msgctxt "field:product.template,categories_all:"
+msgid "Categories"
+msgstr "Категории"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Потребляемый"
@@ -342,13 +388,12 @@ msgid "Cost Price"
 msgstr "Себестоимость"
 
 msgctxt "field:product.template,cost_price_method:"
-msgid "Cost Method"
-msgstr "Учет стоимости"
+msgid "Cost Price Method"
+msgstr ""
 
-#, fuzzy
-msgctxt "field:product.template,cost_prices:"
-msgid "Cost Prices"
-msgstr "Себестоимость"
+msgctxt "field:product.template,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr ""
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
@@ -388,8 +433,8 @@ msgid "Variants"
 msgstr "Разновидности"
 
 msgctxt "field:product.template,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template,type:"
 msgid "Type"
@@ -423,10 +468,9 @@ msgctxt "field:product.template-product.category,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.template-product.category,template:"
@@ -440,6 +484,45 @@ msgstr "Дата изменения"
 
 #, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,category:"
+msgid "Category"
+msgstr "Категория"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.category.all,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
@@ -481,8 +564,8 @@ msgid "Rate"
 msgstr "Коэфициент основной единицы"
 
 msgctxt "field:product.uom,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
@@ -517,8 +600,8 @@ msgid "Name"
 msgstr "Наименование"
 
 msgctxt "field:product.uom.category,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
@@ -638,6 +721,10 @@ msgctxt "model:product.cost_price,name:"
 msgid "Product Cost Price"
 msgstr ""
 
+msgctxt "model:product.cost_price_method,name:"
+msgid "Product Cost Price Method"
+msgstr ""
+
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
 msgstr ""
@@ -652,6 +739,10 @@ msgstr "Шаблон продукта"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
+msgstr ""
+
+msgctxt "model:product.template-product.category.all,name:"
+msgid "Template - Category All"
 msgstr ""
 
 msgctxt "model:product.uom,name:"

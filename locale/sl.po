@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -48,8 +48,8 @@ msgid "Parent"
 msgstr "Matična kategorija"
 
 msgctxt "field:product.category,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
@@ -76,8 +76,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.configuration,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
@@ -105,8 +105,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.configuration.default_cost_price_method,write_date:"
 msgid "Write Date"
@@ -124,10 +124,6 @@ msgctxt "field:product.cost_price,cost_price:"
 msgid "Cost Price"
 msgstr "Nabavna cena"
 
-msgctxt "field:product.cost_price,cost_price_method:"
-msgid "Cost Method"
-msgstr "Obračun"
-
 msgctxt "field:product.cost_price,create_date:"
 msgid "Create Date"
 msgstr "Izdelano"
@@ -140,19 +136,63 @@ msgctxt "field:product.cost_price,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:product.cost_price,rec_name:"
-msgid "Name"
-msgstr "Ime"
+#, fuzzy
+msgctxt "field:product.cost_price,product:"
+msgid "Product"
+msgstr "Izdelek"
 
-msgctxt "field:product.cost_price,template:"
-msgid "Template"
-msgstr "Predloga"
+msgctxt "field:product.cost_price,rec_name:"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.cost_price,write_date:"
 msgid "Write Date"
 msgstr "Zapisano"
 
 msgctxt "field:product.cost_price,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,company:"
+msgid "Company"
+msgstr "Družba"
+
+msgctxt "field:product.cost_price_method,cost_price_method:"
+msgid "Cost Price Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.cost_price_method,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,template:"
+msgid "Template"
+msgstr "Predloga"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:product.cost_price_method,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
@@ -177,8 +217,8 @@ msgid "List Price"
 msgstr "Prodajna cena"
 
 msgctxt "field:product.list_price,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.list_price,template:"
 msgid "Template"
@@ -200,6 +240,11 @@ msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr "Kategorije"
 
+#, fuzzy
+msgctxt "field:product.product,categories_all:"
+msgid "Categories"
+msgstr "Kategorije"
+
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Šifra"
@@ -213,8 +258,12 @@ msgid "Cost Price"
 msgstr "Nabavna cena"
 
 msgctxt "field:product.product,cost_price_method:"
-msgid "Cost Method"
-msgstr "Obračun"
+msgid "Cost Price Method"
+msgstr ""
+
+msgctxt "field:product.product,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr ""
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
@@ -265,8 +314,8 @@ msgid "Name"
 msgstr "Naziv"
 
 msgctxt "field:product.product,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
@@ -292,6 +341,11 @@ msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Kategorije"
 
+#, fuzzy
+msgctxt "field:product.template,categories_all:"
+msgid "Categories"
+msgstr "Kategorije"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Potrošni material"
@@ -301,12 +355,12 @@ msgid "Cost Price"
 msgstr "Nabavna cena"
 
 msgctxt "field:product.template,cost_price_method:"
-msgid "Cost Method"
-msgstr "Obračun"
+msgid "Cost Price Method"
+msgstr ""
 
-msgctxt "field:product.template,cost_prices:"
-msgid "Cost Prices"
-msgstr "Nabavne cene"
+msgctxt "field:product.template,cost_price_methods:"
+msgid "Cost Price Methods"
+msgstr ""
 
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
@@ -345,8 +399,8 @@ msgid "Variants"
 msgstr "Različice"
 
 msgctxt "field:product.template,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template,type:"
 msgid "Type"
@@ -377,8 +431,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template-product.category,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
@@ -389,6 +443,45 @@ msgid "Write Date"
 msgstr "Zapisano"
 
 msgctxt "field:product.template-product.category,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,category:"
+msgid "Category"
+msgstr "Kategorija"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.category.all,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,template:"
+msgid "Template"
+msgstr "Predloga"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.all,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
@@ -429,8 +522,8 @@ msgid "Rate"
 msgstr "Razmerje"
 
 msgctxt "field:product.uom,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
@@ -465,8 +558,8 @@ msgid "Name"
 msgstr "Naziv"
 
 msgctxt "field:product.uom.category,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
@@ -584,6 +677,10 @@ msgctxt "model:product.cost_price,name:"
 msgid "Product Cost Price"
 msgstr "Nabavna cena izdelka"
 
+msgctxt "model:product.cost_price_method,name:"
+msgid "Product Cost Price Method"
+msgstr ""
+
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
 msgstr "Prodajna cena izdelka"
@@ -598,6 +695,11 @@ msgstr "Predloga izdelka"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
+msgstr "Predloga - Kategorija"
+
+#, fuzzy
+msgctxt "model:product.template-product.category.all,name:"
+msgid "Template - Category All"
 msgstr "Predloga - Kategorija"
 
 msgctxt "model:product.uom,name:"
