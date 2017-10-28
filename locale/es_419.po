@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -40,4 +40,4 @@ msgstr ""
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Requested"
-msgstr ""
+msgstr "Solicitado"

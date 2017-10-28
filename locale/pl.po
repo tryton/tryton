@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,sale_lines:"
 msgid "Sale Lines"
-msgstr ""
+msgstr "Wiersze sprzedaży"
 
 #, fuzzy
 msgctxt "field:sale.line,purchase_request:"
@@ -25,7 +25,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr ""
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
@@ -33,11 +33,11 @@ msgstr ""
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Purchased"
-msgstr ""
+msgstr "Zakupiono"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Requested"
