@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -45,8 +45,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
 msgid "Write Date"
@@ -105,8 +105,8 @@ msgid "Party"
 msgstr "Tiers"
 
 msgctxt "field:party.party.credit_limit_amount,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:party.party.credit_limit_amount,write_date:"
 msgid "Write Date"

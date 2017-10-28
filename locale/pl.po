@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -20,15 +20,15 @@ msgstr ""
 
 msgctxt "field:account.configuration.default_credit_limit_amount,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt ""
 "field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
@@ -42,19 +42,19 @@ msgstr ""
 
 msgctxt "field:account.configuration.default_credit_limit_amount,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.dunning.level,credit_limit:"
 msgid "Credit Limit"
@@ -78,15 +78,15 @@ msgstr ""
 
 msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:party.party.credit_limit_amount,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:party.party.credit_limit_amount,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
@@ -98,23 +98,23 @@ msgstr ""
 
 msgctxt "field:party.party.credit_limit_amount,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party.credit_limit_amount,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:party.party.credit_limit_amount,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.party.credit_limit_amount,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:party.party.credit_limit_amount,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
@@ -130,7 +130,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "Account Credit Limit"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"
