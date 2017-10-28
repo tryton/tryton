@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -61,10 +61,9 @@ msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
@@ -110,10 +109,9 @@ msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
