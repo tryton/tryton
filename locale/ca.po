@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -71,8 +71,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:stock.location.lot.shelf_life,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"

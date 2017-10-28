@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -56,19 +56,19 @@ msgstr ""
 
 msgctxt "field:stock.location.lot.shelf_life,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:stock.location.lot.shelf_life,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:stock.location.lot.shelf_life,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.location.lot.shelf_life,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"
@@ -76,15 +76,15 @@ msgstr ""
 
 msgctxt "field:stock.location.lot.shelf_life,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:stock.location.lot.shelf_life,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
-msgstr ""
+msgstr "Termin ważności"
 
 msgctxt "field:stock.lot,expiration_state:"
 msgid "Expiration State"
@@ -124,7 +124,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Stock Force Expiration"
+msgstr ""
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"
@@ -132,75 +132,75 @@ msgstr ""
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Opcjonalny"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
-msgstr ""
+msgstr "Wymagany"
 
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Opcjonalny"
 
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
-msgstr ""
+msgstr "Wymagany"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Opcjonalny"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Required"
-msgstr ""
+msgstr "Wymagany"
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Opcjonalny"
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Required"
-msgstr ""
+msgstr "Wymagany"
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Opcjonalny"
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Required"
-msgstr ""
+msgstr "Wymagany"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Opcjonalny"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Required"
-msgstr ""
+msgstr "Wymagany"
 
 msgctxt "view:product.template:"
 msgid "Shelf Life"
