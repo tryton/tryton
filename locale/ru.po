@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -53,10 +53,9 @@ msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
 msgstr "Пароль"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:carrier.credential.dpd,server:"

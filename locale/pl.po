@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -26,15 +26,15 @@ msgstr ""
 
 msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:carrier.credential.dpd,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:carrier.credential.dpd,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
@@ -42,35 +42,35 @@ msgstr ""
 
 msgctxt "field:carrier.credential.dpd,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
-msgstr ""
+msgstr "Hasło"
 
 msgctxt "field:carrier.credential.dpd,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
-msgstr ""
+msgstr "Serwer"
 
 msgctxt "field:carrier.credential.dpd,token:"
 msgid "Token"
-msgstr ""
+msgstr "Token"
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
-msgstr ""
+msgstr "ID użytkownika"
 
 msgctxt "field:carrier.credential.dpd,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:carrier.credential.dpd,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 #, fuzzy
 msgctxt "model:carrier.credential.dpd,name:"
@@ -79,23 +79,23 @@ msgstr "DPD Credentials"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
-msgstr "Create DPD Shipping for Packages"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "DPD Credentials"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "DPD Credentials"
+msgstr ""
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"
-msgstr ""
+msgstr "DPD"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Production"
-msgstr ""
+msgstr "Produkcja"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Testing"
