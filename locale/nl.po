@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -113,10 +113,9 @@ msgctxt "field:currency.currency,rates:"
 msgid "Rates"
 msgstr "Verhouding"
 
-#, fuzzy
 msgctxt "field:currency.currency,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -167,10 +166,9 @@ msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
 msgstr "Verhouding"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,rec_name:"
-msgid "Name"
-msgstr "Naam bijlage"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:currency.currency.rate,write_date:"

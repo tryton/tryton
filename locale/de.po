@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -103,8 +103,8 @@ msgid "Rates"
 msgstr "Kurse"
 
 msgctxt "field:currency.currency,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -147,8 +147,8 @@ msgid "Rate"
 msgstr "Kurs"
 
 msgctxt "field:currency.currency.rate,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"

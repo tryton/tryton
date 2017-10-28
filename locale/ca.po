@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -105,8 +105,8 @@ msgid "Rates"
 msgstr "Taxes de canvi"
 
 msgctxt "field:currency.currency,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -149,8 +149,8 @@ msgid "Rate"
 msgstr "Taxa de canvi"
 
 msgctxt "field:currency.currency.rate,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
