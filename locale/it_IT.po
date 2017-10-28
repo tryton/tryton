@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -102,10 +102,9 @@ msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
 
-#, fuzzy
 msgctxt "field:purchase.request,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.request,state:"
