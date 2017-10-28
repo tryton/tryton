@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -43,10 +43,9 @@ msgctxt "field:production.routing,name:"
 msgid "Name"
 msgstr "纳木"
 
-#, fuzzy
 msgctxt "field:production.routing,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.routing,steps:"
 msgid "Steps"
@@ -81,10 +80,9 @@ msgctxt "field:production.routing-production.bom,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:production.routing-production.bom,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.routing-production.bom,routing:"
 msgid "Routing"
@@ -124,10 +122,9 @@ msgctxt "field:production.routing.operation,name:"
 msgid "Operation"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.routing.operation,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:production.routing.operation,write_date:"
@@ -158,10 +155,9 @@ msgctxt "field:production.routing.step,operation:"
 msgid "Operation"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.routing.step,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.routing.step,routing:"
 msgid "Routing"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -39,7 +39,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:production.routing,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.routing,steps:"
@@ -71,7 +71,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:production.routing-production.bom,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.routing-production.bom,routing:"
@@ -107,7 +107,7 @@ msgid "Operation"
 msgstr ""
 
 msgctxt "field:production.routing.operation,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.routing.operation,write_date:"
@@ -135,7 +135,7 @@ msgid "Operation"
 msgstr ""
 
 msgctxt "field:production.routing.step,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:production.routing.step,routing:"
