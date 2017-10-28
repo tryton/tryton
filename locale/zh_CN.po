@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -51,10 +51,9 @@ msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
 msgid "ID"
 msgstr "编号"
 
-#, fuzzy
 msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
@@ -162,10 +161,9 @@ msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.sepa.mandate,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -230,10 +228,9 @@ msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.sepa.message,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.payment.sepa.message,state:"

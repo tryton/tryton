@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -52,8 +52,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
@@ -157,8 +157,8 @@ msgid "Payments"
 msgstr "Paiements"
 
 msgctxt "field:account.payment.sepa.mandate,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -217,8 +217,8 @@ msgid "Origin"
 msgstr "Origine"
 
 msgctxt "field:account.payment.sepa.message,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"

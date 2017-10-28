@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -34,23 +34,23 @@ msgstr ""
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
@@ -59,11 +59,11 @@ msgstr ""
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -101,7 +101,7 @@ msgstr ""
 
 msgctxt "field:account.payment.journal,sepa_bank_account_number:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Numer konta bankowego"
 
 msgctxt "field:account.payment.journal,sepa_batch_booking:"
 msgid "Batch Booking"
@@ -121,23 +121,23 @@ msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
-msgstr ""
+msgstr "Numer konta"
 
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.payment.sepa.mandate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.payment.sepa.mandate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.payment.sepa.mandate,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
@@ -149,15 +149,15 @@ msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
 msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -173,67 +173,67 @@ msgstr ""
 
 msgctxt "field:account.payment.sepa.mandate,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 msgctxt "field:account.payment.sepa.mandate,type:"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgctxt "field:account.payment.sepa.mandate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.payment.sepa.mandate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.payment.sepa.message,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.payment.sepa.message,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.payment.sepa.message,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.payment.sepa.message,filename:"
 msgid "Filename"
-msgstr ""
+msgstr "Nazwa pliku"
 
 msgctxt "field:account.payment.sepa.message,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.sepa.message,message:"
 msgid "Message"
-msgstr ""
+msgstr "Wiadomość"
 
 msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
 msgstr ""
 
 msgctxt "field:account.payment.sepa.message,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 msgctxt "field:account.payment.sepa.message,type:"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgctxt "field:account.payment.sepa.message,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.payment.sepa.message,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:party.party,sepa_creditor_identifier_used:"
 msgid "SEPA Creditor Identifier Used"
@@ -260,19 +260,19 @@ msgstr "SEPA Messages"
 
 msgctxt "model:ir.action,name:act_mandate_form"
 msgid "SEPA Mandates"
-msgstr "SEPA Mandates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_mandate_form2"
 msgid "Mandates"
-msgstr "Mandates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_message_form"
 msgid "SEPA Messages"
-msgstr "SEPA Messages"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
-msgstr "Mandate"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
@@ -296,46 +296,46 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
 msgid "Canceled"
-msgstr "Canceled"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr "Done"
+msgstr "Wykonano"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
 msgid "Receivable with Mandate"
-msgstr "Receivable with Mandate"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
-msgstr "SEPA Mandate"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_mandate_form"
 msgid "SEPA Mandates"
-msgstr "SEPA Mandates"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_message_form"
 msgid "SEPA Messages"
-msgstr "SEPA Messages"
+msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "."
-msgstr ""
+msgstr "."
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Account number – IBAN"
@@ -351,7 +351,7 @@ msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "By signing this mandate form, you authorize"
@@ -359,11 +359,11 @@ msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "City"
-msgstr ""
+msgstr "Miejscowość"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Country"
-msgstr ""
+msgstr "Kraj"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Creditor identifier"
@@ -379,7 +379,7 @@ msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Direct Debit MANDATE"
@@ -411,7 +411,7 @@ msgstr ""
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
-msgstr ""
+msgstr "Podpis"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signed at"
@@ -445,7 +445,7 @@ msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
 msgid "Creditor"
@@ -502,10 +502,9 @@ msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Canceled"
 msgstr "Canceled"
 
-#, fuzzy
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Done"
-msgstr "Done"
+msgstr "Wykonano"
 
 #, fuzzy
 msgctxt "selection:account.payment.sepa.message,state:"
@@ -539,16 +538,15 @@ msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Are you sure to cancel the mandate?"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Cancel"
-msgstr "Canceled"
+msgstr "Anuluj"
 
 #, fuzzy
 msgctxt "view:account.payment.sepa.mandate:"
@@ -563,10 +561,9 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Validate"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.payment.sepa.message:"
 msgid "Cancel"
-msgstr "Canceled"
+msgstr "Anuluj"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
@@ -579,4 +576,4 @@ msgstr "Draft"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Wait"
-msgstr ""
+msgstr "Czekaj"
