@@ -1,9 +1,13 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.purchase:"
 msgid "A delivery address must be defined for quotation of purchase \"%s\"."
+msgstr ""
+
+msgctxt "error:stock.shipment.drop:"
+msgid "Drop Shipment \"%(shipment)s\" must be cancelled before deletion."
 msgstr ""
 
 msgctxt "error:stock.shipment.drop:"
@@ -18,15 +22,15 @@ msgstr ""
 
 msgctxt "field:purchase.configuration.purchase_drop_location,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt ""
 "field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
@@ -34,16 +38,16 @@ msgid "Purchase Drop Location"
 msgstr ""
 
 msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,drop_shipment:"
@@ -56,28 +60,27 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Odbiorca"
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
-msgstr ""
+msgstr "Adres dostawy"
 
 msgctxt "field:purchase.purchase,drop_location:"
 msgid "Drop Location"
-msgstr ""
+msgstr "Porzuć lokalizację"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr "Porzuć wysyłki"
 
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Odbiorca"
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
-msgstr ""
+msgstr "Adres dostawy"
 
 msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -85,19 +88,19 @@ msgstr ""
 
 msgctxt "field:sale.configuration.sale_drop_location,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.configuration.sale_drop_location,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.configuration.sale_drop_location,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -105,20 +108,19 @@ msgstr ""
 
 msgctxt "field:sale.configuration.sale_drop_location,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.configuration.sale_drop_location,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
-msgstr ""
+msgstr "Porzuć lokalizację"
 
-#, fuzzy
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr "Porzuć wysyłki"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
@@ -130,127 +132,127 @@ msgstr ""
 
 msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
-msgstr ""
+msgstr "Porzuć odbiorcę"
 
 msgctxt "field:stock.shipment.drop,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 msgctxt "field:stock.shipment.drop,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"
-msgstr ""
+msgstr "Adres kontaktowy"
 
 msgctxt "field:stock.shipment.drop,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:stock.shipment.drop,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Odbiorca"
 
 msgctxt "field:stock.shipment.drop,customer_moves:"
 msgid "Customer Moves"
-msgstr ""
+msgstr "Ruchy odbiorcy"
 
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
-msgstr ""
+msgstr "Adres dostawy"
 
 msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
-msgstr ""
+msgstr "Data rzeczywista"
 
 msgctxt "field:stock.shipment.drop,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Ruchy"
 
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
-msgstr ""
+msgstr "Data planowana"
 
 msgctxt "field:stock.shipment.drop,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
-msgstr ""
+msgstr "Referencja"
 
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Dostawca"
 
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
-msgstr ""
+msgstr "Ruchy dostawcy"
 
 msgctxt "field:stock.shipment.drop,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:stock.shipment.drop,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
-msgstr "Shipped"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Drop Shipment"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Drop Shipment"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Drop Shipments"
+msgstr ""
 
 msgctxt "model:purchase.configuration.purchase_drop_location,name:"
 msgid "Purchase Configuration Purchase Drop Location"
@@ -262,7 +264,7 @@ msgstr ""
 
 msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"
-msgstr "Drop"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:stock.shipment.drop,name:"
@@ -271,11 +273,11 @@ msgstr "Drop Shipment"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Anulowano"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"
-msgstr ""
+msgstr "Wykonano"
 
 #, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
@@ -294,11 +296,11 @@ msgstr "Waiting"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Done"
-msgstr ""
+msgstr "Wykonano"
 
 #, fuzzy
 msgctxt "view:stock.shipment.drop:"
@@ -311,4 +313,4 @@ msgstr ""
 
 msgctxt "view:stock.shipment.drop:"
 msgid "Wait"
-msgstr ""
+msgstr "Czekaj"

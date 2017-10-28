@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -7,6 +7,10 @@ msgid "A delivery address must be defined for quotation of purchase \"%s\"."
 msgstr ""
 "Se debe definir una dirección de envío para el presupuesto de la compra "
 "\"%s\"."
+
+msgctxt "error:stock.shipment.drop:"
+msgid "Drop Shipment \"%(shipment)s\" must be cancelled before deletion."
+msgstr "Debe cancelar el envío directo \"%(shipment)s\" antes de eliminarlo."
 
 msgctxt "error:stock.shipment.drop:"
 msgid ""
@@ -38,8 +42,8 @@ msgid "Purchase Drop Location"
 msgstr "Ubicación compra directa"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
 msgid "Write Date"
@@ -98,8 +102,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -182,8 +186,8 @@ msgid "Planned Date"
 msgstr "Fecha estimada"
 
 msgctxt "field:stock.shipment.drop,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -6,6 +6,11 @@ msgctxt "error:purchase.purchase:"
 msgid "A delivery address must be defined for quotation of purchase \"%s\"."
 msgstr ""
 "L'adresse de livraison doit être définie pour le devis de l'achat « %s »."
+
+msgctxt "error:stock.shipment.drop:"
+msgid "Drop Shipment \"%(shipment)s\" must be cancelled before deletion."
+msgstr ""
+"La livraison direct « %(shipment)s » doit être annulée avant suppression."
 
 msgctxt "error:stock.shipment.drop:"
 msgid ""
@@ -37,8 +42,8 @@ msgid "Purchase Drop Location"
 msgstr "Emplacement de livraison directe d'achat"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
 msgid "Write Date"
@@ -50,7 +55,7 @@ msgstr "Mis à jour par"
 
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
-msgstr "Drop shipment"
+msgstr "Livraison direct"
 
 msgctxt "field:purchase.product_supplier,drop_shipment_available:"
 msgid "Drop Shipment Available"
@@ -70,7 +75,7 @@ msgstr "Emplacement de livraison directe"
 
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Drop shipments"
+msgstr "Livraisons directes"
 
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
@@ -97,8 +102,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -118,11 +123,11 @@ msgstr "Emplacement de livraison directe"
 
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Drop shipments"
+msgstr "Livraisons directes"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
-msgstr "Séquence de drop shipment"
+msgstr "Séquence de livraison directe"
 
 msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
@@ -130,7 +135,7 @@ msgstr "Séquence de livraison directe"
 
 msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
-msgstr "Client drop shipment"
+msgstr "Livraison directe cliente"
 
 msgctxt "field:stock.shipment.drop,code:"
 msgid "Code"
@@ -181,8 +186,8 @@ msgid "Planned Date"
 msgstr "Date planifiée"
 
 msgctxt "field:stock.shipment.drop,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -210,15 +215,15 @@ msgstr "Mis à jour par"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Drop shipments"
+msgstr "Livraisons directes"
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Drop shipments"
+msgstr "Livraisons directes"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Drop shipments"
+msgstr "Livraisons directes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
@@ -242,15 +247,15 @@ msgstr "En attente"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Drop shipment"
+msgstr "Livraison directe"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Drop shipment"
+msgstr "Livraison directe"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Drop shipments"
+msgstr "Livraisons directes"
 
 msgctxt "model:purchase.configuration.purchase_drop_location,name:"
 msgid "Purchase Configuration Purchase Drop Location"
@@ -266,7 +271,7 @@ msgstr "Livraison directe"
 
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
-msgstr "Drop shipment"
+msgstr "Livraison directe"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Canceled"
