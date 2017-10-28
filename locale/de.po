@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -37,10 +37,6 @@ msgid ""
 msgstr ""
 "Rechnungs- und Lieferadresse müssen angegeben werden für Angebotserstellung "
 "von Verkauf \"%s\"."
-
-msgctxt "error:sale.sale:"
-msgid "It misses an \"Account Receivable\" on the party \"%s\"."
-msgstr "Fehlendes Forderungskonto für Partei \"%s\"."
 
 msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion."
@@ -113,8 +109,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:sale.configuration,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -149,8 +145,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_method,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -185,8 +181,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:sale.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
 msgid "Sale Sequence"
@@ -289,8 +285,8 @@ msgid "Quantity"
 msgstr "Anzahl"
 
 msgctxt "field:sale.line,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
@@ -361,8 +357,8 @@ msgid "Sale Line"
 msgstr "Verkaufsposition"
 
 msgctxt "field:sale.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line-account.tax,tax:"
 msgid "Tax"
@@ -393,8 +389,8 @@ msgid "Move"
 msgstr "Bewegung"
 
 msgctxt "field:sale.line-ignored-stock.move,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
@@ -425,8 +421,8 @@ msgid "Move"
 msgstr "Bewegung"
 
 msgctxt "field:sale.line-recreated-stock.move,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
@@ -529,8 +525,8 @@ msgid "Payment Term"
 msgstr "Zahlungsbedingung"
 
 msgctxt "field:sale.sale,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
@@ -621,8 +617,8 @@ msgid "Invoice"
 msgstr "Rechnung"
 
 msgctxt "field:sale.sale-ignored-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.sale-ignored-account.invoice,sale:"
 msgid "Sale"
@@ -653,8 +649,8 @@ msgid "Invoice"
 msgstr "Rechnung"
 
 msgctxt "field:sale.sale-recreated-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.sale-recreated-account.invoice,sale:"
 msgid "Sale"
@@ -757,6 +753,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
 msgid "Quotation"
 msgstr "Angebot"
+
+msgctxt "model:ir.cron,name:cron_process_sale"
+msgid "Process Confirmed Sales"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_sale"
 msgid "Sale"

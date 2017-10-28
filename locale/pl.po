@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -29,10 +29,6 @@ msgid ""
 msgstr ""
 
 msgctxt "error:sale.sale:"
-msgid "It misses an \"Account Receivable\" on the party \"%s\"."
-msgstr ""
-
-msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion."
 msgstr ""
 
@@ -52,10 +48,9 @@ msgctxt "field:account.invoice,sale_exception_state:"
 msgid "Exception State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice,sales:"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "field:product.product,lead_time:"
 msgid "Lead Time"
@@ -67,11 +62,11 @@ msgstr ""
 
 msgctxt "field:product.product,sale_price_uom:"
 msgid "Sale Price"
-msgstr ""
+msgstr "Cena sprzedaży"
 
 msgctxt "field:product.product,sale_uom:"
 msgid "Sale UOM"
-msgstr ""
+msgstr "Jm sprzedaży"
 
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
@@ -83,23 +78,23 @@ msgstr ""
 
 msgctxt "field:product.template,sale_uom:"
 msgid "Sale UOM"
-msgstr ""
+msgstr "Jm sprzedaży"
 
 msgctxt "field:sale.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.configuration,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.configuration,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -107,35 +102,35 @@ msgstr ""
 
 msgctxt "field:sale.configuration,sale_sequence:"
 msgid "Sale Sequence"
-msgstr ""
+msgstr "Sekwencja sprzedaży"
 
 msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
-msgstr ""
+msgstr "Metoda wysyłki sprzedaży"
 
 msgctxt "field:sale.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.configuration.sale_method,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.configuration.sale_method,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.configuration.sale_method,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_method,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -143,47 +138,47 @@ msgstr ""
 
 msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
-msgstr ""
+msgstr "Metoda wysyłki sprzedaży"
 
 msgctxt "field:sale.configuration.sale_method,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.configuration.sale_method,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:sale.configuration.sequence,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.configuration.sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.configuration.sequence,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
 msgid "Sale Sequence"
-msgstr ""
+msgstr "Sekwencja sprzedaży"
 
 msgctxt "field:sale.configuration.sequence,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.configuration.sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
@@ -191,7 +186,7 @@ msgstr ""
 
 msgctxt "field:sale.handle.invoice.exception.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -203,7 +198,7 @@ msgstr ""
 
 msgctxt "field:sale.handle.shipment.exception.ask,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
@@ -215,31 +210,31 @@ msgstr ""
 
 msgctxt "field:sale.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:sale.line,from_location:"
 msgid "From Location"
-msgstr ""
+msgstr "Z lokalizacji"
 
 msgctxt "field:sale.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Wiersze faktury"
 
 msgctxt "field:sale.line,move_done:"
 msgid "Moves Done"
-msgstr ""
+msgstr "Wykonane ruchy"
 
 msgctxt "field:sale.line,move_exception:"
 msgid "Moves Exception"
@@ -247,11 +242,11 @@ msgstr ""
 
 msgctxt "field:sale.line,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Ruchy"
 
 msgctxt "field:sale.line,moves_ignored:"
 msgid "Ignored Moves"
-msgstr ""
+msgstr "Zignorowane ruchy"
 
 msgctxt "field:sale.line,moves_recreated:"
 msgid "Recreated Moves"
@@ -259,229 +254,227 @@ msgstr ""
 
 msgctxt "field:sale.line,note:"
 msgid "Note"
-msgstr ""
+msgstr "Notatka"
 
 msgctxt "field:sale.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 msgctxt "field:sale.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Kategoria jm produktu"
 
 msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Ilość"
 
 msgctxt "field:sale.line,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
-#, fuzzy
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
-msgstr ""
+msgstr "Stan sprzedaży"
 
 msgctxt "field:sale.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sekwencja"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
-msgstr ""
+msgstr "Data wysyłki"
 
 msgctxt "field:sale.line,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Podatki"
 
 msgctxt "field:sale.line,to_location:"
 msgid "To Location"
-msgstr ""
+msgstr "Do lokalizacji"
 
 msgctxt "field:sale.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 msgctxt "field:sale.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Jednostka"
 
 msgctxt "field:sale.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Cyfry jednostki"
 
 msgctxt "field:sale.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Cena jednostkowa"
 
 msgctxt "field:sale.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazyn"
 
 msgctxt "field:sale.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.line-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.line-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.line-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.line-account.tax,line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Wiersz sprzedaży"
 
 msgctxt "field:sale.line-account.tax,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.line-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Podatek"
 
 msgctxt "field:sale.line-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.line-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.line-ignored-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.line-ignored-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.line-ignored-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.line-ignored-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Ruch"
 
 msgctxt "field:sale.line-ignored-stock.move,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Wiersz sprzedaży"
 
 msgctxt "field:sale.line-ignored-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.line-ignored-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.line-recreated-stock.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.line-recreated-stock.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.line-recreated-stock.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.line-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Ruch"
 
 msgctxt "field:sale.line-recreated-stock.move,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Wiersz sprzedaży"
 
 msgctxt "field:sale.line-recreated-stock.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.line-recreated-stock.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.return_sale.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Komentarz"
 
 msgctxt "field:sale.sale,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:sale.sale,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.sale,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:sale.sale,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Cyfry waluty"
 
 msgctxt "field:sale.sale,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:sale.sale,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:sale.sale,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Adres faktury"
 
 msgctxt "field:sale.sale,invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Metoda faktury"
 
 msgctxt "field:sale.sale,invoice_state:"
 msgid "Invoice State"
-msgstr ""
+msgstr "Stan faktury"
 
-#, fuzzy
 msgctxt "field:sale.sale,invoices:"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Faktury"
 
 msgctxt "field:sale.sale,invoices_ignored:"
 msgid "Ignored Invoices"
-msgstr ""
+msgstr "Zignorowane faktury"
 
 msgctxt "field:sale.sale,invoices_recreated:"
 msgid "Recreated Invoices"
@@ -489,76 +482,75 @@ msgstr ""
 
 msgctxt "field:sale.sale,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Wiersze"
 
 msgctxt "field:sale.sale,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Ruchy"
 
 msgctxt "field:sale.sale,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numer"
 
 msgctxt "field:sale.sale,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Źródło"
 
 msgctxt "field:sale.sale,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:sale.sale,party_lang:"
 msgid "Party Language"
-msgstr ""
+msgstr "Język strony"
 
 msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Termin płatności"
 
 msgctxt "field:sale.sale,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
-msgstr ""
+msgstr "Referencja"
 
 msgctxt "field:sale.sale,sale_date:"
 msgid "Sale Date"
-msgstr ""
+msgstr "Data sprzedaży"
 
 msgctxt "field:sale.sale,shipment_address:"
 msgid "Shipment Address"
-msgstr ""
+msgstr "Adres wysyłki"
 
 msgctxt "field:sale.sale,shipment_method:"
 msgid "Shipment Method"
-msgstr ""
+msgstr "Metoda wysyłki"
 
 msgctxt "field:sale.sale,shipment_party:"
 msgid "Shipment Party"
-msgstr ""
+msgstr "Strona wysyłki"
 
 msgctxt "field:sale.sale,shipment_returns:"
 msgid "Shipment Returns"
-msgstr ""
+msgstr "Zwroty wysyłki"
 
 msgctxt "field:sale.sale,shipment_state:"
 msgid "Shipment State"
-msgstr ""
+msgstr "Stan wysyłki"
 
-#, fuzzy
 msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr "Wysyłki"
 
 msgctxt "field:sale.sale,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 msgctxt "field:sale.sale,tax_amount:"
 msgid "Tax"
-msgstr ""
+msgstr "Podatek"
 
 msgctxt "field:sale.sale,tax_amount_cache:"
 msgid "Tax Cache"
@@ -566,11 +558,11 @@ msgstr ""
 
 msgctxt "field:sale.sale,total_amount:"
 msgid "Total"
-msgstr ""
+msgstr "Razem"
 
 msgctxt "field:sale.sale,total_amount_cache:"
 msgid "Total Tax"
-msgstr ""
+msgstr "Podatek razem"
 
 msgctxt "field:sale.sale,untaxed_amount:"
 msgid "Untaxed"
@@ -582,88 +574,83 @@ msgstr ""
 
 msgctxt "field:sale.sale,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazyn"
 
 msgctxt "field:sale.sale,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.sale,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.sale-ignored-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.sale-ignored-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.sale-ignored-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Invoices"
+msgstr "Faktura"
 
 msgctxt "field:sale.sale-ignored-account.invoice,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
-#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,sale:"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "field:sale.sale-ignored-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.sale-ignored-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:sale.sale-recreated-account.invoice,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:sale.sale-recreated-account.invoice,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:sale.sale-recreated-account.invoice,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Invoices"
+msgstr "Faktura"
 
 msgctxt "field:sale.sale-recreated-account.invoice,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
-#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,sale:"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "field:sale.sale-recreated-account.invoice,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:sale.sale-recreated-account.invoice,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
-#, fuzzy
 msgctxt "field:stock.move,sale:"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
@@ -676,7 +663,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "Faktury"
 
 msgctxt "model:ir.action,name:act_open_customer"
 msgid "Parties associated to Sales"
@@ -684,35 +671,35 @@ msgstr "Parties associated to Sales"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Returns"
+msgstr "Zwroty"
 
 msgctxt "model:ir.action,name:act_sale_configuration_form"
 msgid "Sales Configuration"
-msgstr "Sales Configuration"
+msgstr "Konfiguracja sprzedaży"
 
 msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.action,name:act_sale_form2"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.action,name:act_sale_invoice_relate"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr "Wysyłki"
 
 msgctxt "model:ir.action,name:report_sale"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
@@ -720,7 +707,7 @@ msgstr "Handle Invoice Exception"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
-msgstr "Return Sale"
+msgstr "Zwrot sprzedaży"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -728,67 +715,70 @@ msgstr "Handle Shipment Exception"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Wszystkie"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Confirmed"
+msgstr "Potwierdzono"
 
 msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr ""
+
+msgctxt "model:ir.cron,name:cron_process_sale"
+msgid "Process Confirmed Sales"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_sale"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_sale"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracja"
 
 msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Parties associated to Sales"
-msgstr "Parties associated to Sales"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_configuration"
 msgid "Sales Configuration"
-msgstr "Sales Configuration"
+msgstr "Konfiguracja sprzedaży"
 
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "model:res.group,name:group_sale"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Sprzedaż"
 
 msgctxt "model:res.group,name:group_sale_admin"
 msgid "Sales Administrator"
-msgstr "Sales Administrator"
+msgstr "Administrator sprzedażą"
 
-#, fuzzy
 msgctxt "model:sale.configuration,name:"
 msgid "Sale Configuration"
-msgstr "Sales Configuration"
+msgstr "Konfiguracja sprzedaży"
 
 msgctxt "model:sale.configuration.sale_method,name:"
 msgid "Sale Configuration Sale Method"
@@ -796,7 +786,7 @@ msgstr ""
 
 msgctxt "model:sale.configuration.sequence,name:"
 msgid "Sale Configuration Sequence"
-msgstr ""
+msgstr "Sekwencja konfiguracji sprzedaży"
 
 #, fuzzy
 msgctxt "model:sale.handle.invoice.exception.ask,name:"
@@ -810,39 +800,36 @@ msgstr "Handle Shipment Exception"
 
 msgctxt "model:sale.line,name:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Wiersz sprzedaży"
 
 msgctxt "model:sale.line-account.tax,name:"
 msgid "Sale Line - Tax"
-msgstr ""
+msgstr "Wiersz sprzedaży - Podatek"
 
 msgctxt "model:sale.line-ignored-stock.move,name:"
 msgid "Sale Line - Ignored Move"
-msgstr ""
+msgstr "Wiersz sprzedaży - Zignorowany ruch"
 
 msgctxt "model:sale.line-recreated-stock.move,name:"
 msgid "Sale Line - Recreated Move"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.return_sale.start,name:"
 msgid "Return Sale"
-msgstr "Return Sale"
+msgstr "Zwrot sprzedaży"
 
-#, fuzzy
 msgctxt "model:sale.sale,name:"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "model:sale.sale-ignored-account.invoice,name:"
 msgid "Sale - Ignored Invoice"
-msgstr ""
+msgstr "Sprzedaż - Zignorowana faktura"
 
 msgctxt "model:sale.sale-recreated-account.invoice,name:"
 msgid "Sale - Recreated Invoice"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:sale.sale:"
 msgid ":"
 msgstr ":"
@@ -853,15 +840,15 @@ msgstr ""
 
 msgctxt "report:sale.sale:"
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 msgctxt "report:sale.sale:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "report:sale.sale:"
 msgid "Description:"
-msgstr ""
+msgstr "Opis:"
 
 msgctxt "report:sale.sale:"
 msgid "Draft Sale Order"
@@ -869,7 +856,7 @@ msgstr ""
 
 msgctxt "report:sale.sale:"
 msgid "Quantity"
-msgstr ""
+msgstr "Ilość"
 
 msgctxt "report:sale.sale:"
 msgid "Quotation N°:"
@@ -877,7 +864,7 @@ msgstr ""
 
 msgctxt "report:sale.sale:"
 msgid "Reference:"
-msgstr ""
+msgstr "Referencja:"
 
 msgctxt "report:sale.sale:"
 msgid "Sale Order N°:"
@@ -885,11 +872,11 @@ msgstr ""
 
 msgctxt "report:sale.sale:"
 msgid "Taxes"
-msgstr ""
+msgstr "Podatki"
 
 msgctxt "report:sale.sale:"
 msgid "Taxes:"
-msgstr ""
+msgstr "Podatki:"
 
 msgctxt "report:sale.sale:"
 msgid "Total (excl. taxes):"
@@ -897,11 +884,11 @@ msgstr ""
 
 msgctxt "report:sale.sale:"
 msgid "Total:"
-msgstr ""
+msgstr "Razem:"
 
 msgctxt "report:sale.sale:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Cena jednostkowa"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid ""
@@ -909,7 +896,7 @@ msgstr ""
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Ignored"
-msgstr ""
+msgstr "Zignorowano"
 
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Recreated"
@@ -917,16 +904,15 @@ msgstr ""
 
 msgctxt "selection:sale.line,sale_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Anulowano"
 
-#, fuzzy
 msgctxt "selection:sale.line,sale_state:"
 msgid "Confirmed"
-msgstr "Confirmed"
+msgstr "Potwierdzono"
 
 msgctxt "selection:sale.line,sale_state:"
 msgid "Done"
-msgstr ""
+msgstr "Wykonano"
 
 #, fuzzy
 msgctxt "selection:sale.line,sale_state:"
@@ -945,11 +931,11 @@ msgstr "Quotation"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
-msgstr ""
+msgstr "Komentarz"
 
 msgctxt "selection:sale.line,type:"
 msgid "Line"
-msgstr ""
+msgstr "Wiersz"
 
 msgctxt "selection:sale.line,type:"
 msgid "Subtotal"
@@ -957,7 +943,7 @@ msgstr ""
 
 msgctxt "selection:sale.line,type:"
 msgid "Title"
-msgstr ""
+msgstr "Tytuł"
 
 msgctxt "selection:sale.sale,invoice_method:"
 msgid "Manual"
@@ -973,11 +959,11 @@ msgstr ""
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Exception"
-msgstr ""
+msgstr "Wyjątek"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:sale.sale,invoice_state:"
 msgid "Paid"
@@ -1001,15 +987,15 @@ msgstr ""
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Exception"
-msgstr ""
+msgstr "Wyjątek"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Sent"
-msgstr ""
+msgstr "Wysłano"
 
 msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
@@ -1017,16 +1003,15 @@ msgstr ""
 
 msgctxt "selection:sale.sale,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Anulowano"
 
-#, fuzzy
 msgctxt "selection:sale.sale,state:"
 msgid "Confirmed"
-msgstr "Confirmed"
+msgstr "Potwierdzono"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Done"
-msgstr ""
+msgstr "Wykonano"
 
 #, fuzzy
 msgctxt "selection:sale.sale,state:"
@@ -1049,20 +1034,19 @@ msgstr ""
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Ignored"
-msgstr ""
+msgstr "Zignorowano"
 
 msgctxt "selection:stock.move,sale_exception_state:"
 msgid "Recreated"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "view:product.template:"
 msgid "Customers"
-msgstr ""
+msgstr "Odbiorcy"
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
 msgid "Choose invoices to recreate"
@@ -1074,28 +1058,27 @@ msgstr ""
 
 msgctxt "view:sale.line:"
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 msgctxt "view:sale.line:"
 msgid "Notes"
-msgstr ""
+msgstr "Notatki"
 
 msgctxt "view:sale.line:"
 msgid "Taxes"
-msgstr ""
+msgstr "Podatki"
 
 msgctxt "view:sale.return_sale.start:"
 msgid "Are you sure to return those/this sale(s)?"
-msgstr ""
+msgstr "Czy na pewno zwrócić te/tę dostawę(y)?"
 
 msgctxt "view:sale.sale:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
-#, fuzzy
 msgctxt "view:sale.sale:"
 msgid "Confirm"
-msgstr "Confirmed"
+msgstr "Potwierdź"
 
 #, fuzzy
 msgctxt "view:sale.sale:"
@@ -1114,7 +1097,7 @@ msgstr "Handle Shipment Exception"
 
 msgctxt "view:sale.sale:"
 msgid "Other Info"
-msgstr ""
+msgstr "Inne informacje"
 
 msgctxt "view:sale.sale:"
 msgid "Process"
@@ -1124,14 +1107,13 @@ msgctxt "view:sale.sale:"
 msgid "Quote"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:sale.sale:"
 msgid "Sale"
-msgstr "Sale"
+msgstr "Sprzedaż"
 
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
@@ -1139,25 +1121,24 @@ msgstr ""
 
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "wizard_button:sale.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:sale.return_sale,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
-#, fuzzy
 msgctxt "wizard_button:sale.return_sale,start,return_:"
 msgid "Return"
-msgstr "Returns"
+msgstr "Zwrot"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -26,10 +26,6 @@ msgctxt "error:sale.sale:"
 msgid ""
 "Invoice and Shipment addresses must be defined for the quotation of sale "
 "\"%s\"."
-msgstr ""
-
-msgctxt "error:sale.sale:"
-msgid "It misses an \"Account Receivable\" on the party \"%s\"."
 msgstr ""
 
 msgctxt "error:sale.sale:"
@@ -98,7 +94,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.configuration,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
@@ -134,7 +130,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.configuration.sale_method,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
@@ -170,7 +166,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.configuration.sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
@@ -274,7 +270,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:sale.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -347,7 +343,7 @@ msgid "Sale Line"
 msgstr ""
 
 msgctxt "field:sale.line-account.tax,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.line-account.tax,tax:"
@@ -379,7 +375,7 @@ msgid "Move"
 msgstr ""
 
 msgctxt "field:sale.line-ignored-stock.move,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
@@ -411,7 +407,7 @@ msgid "Move"
 msgstr ""
 
 msgctxt "field:sale.line-recreated-stock.move,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
@@ -516,7 +512,7 @@ msgid "Payment Term"
 msgstr ""
 
 msgctxt "field:sale.sale,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.sale,reference:"
@@ -610,7 +606,7 @@ msgid "Invoice"
 msgstr "Invoices"
 
 msgctxt "field:sale.sale-ignored-account.invoice,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -644,7 +640,7 @@ msgid "Invoice"
 msgstr "Invoices"
 
 msgctxt "field:sale.sale-recreated-account.invoice,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -748,6 +744,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
 msgid "Quotation"
 msgstr "Quotation"
+
+msgctxt "model:ir.cron,name:cron_process_sale"
+msgid "Process Confirmed Sales"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_sale"
 msgid "Sale"

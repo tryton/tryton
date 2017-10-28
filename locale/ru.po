@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -33,10 +33,6 @@ msgid ""
 msgstr ""
 "Для котировки продажи \"%s\" должны быть определены адреса инвойса и "
 "доставки."
-
-msgctxt "error:sale.sale:"
-msgid "It misses an \"Account Receivable\" on the party \"%s\"."
-msgstr "Отсутствует \"Счет дебиторов\" у контрагента \"%s\"."
 
 msgctxt "error:sale.sale:"
 msgid "Sale \"%s\" must be cancelled before deletion."
@@ -105,8 +101,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:sale.configuration,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
@@ -143,10 +139,9 @@ msgctxt "field:sale.configuration.sale_method,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sale_method,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
@@ -188,10 +183,9 @@ msgctxt "field:sale.configuration.sequence,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
 msgid "Sale Sequence"
@@ -296,8 +290,8 @@ msgid "Quantity"
 msgstr "Кол-во"
 
 msgctxt "field:sale.line,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
@@ -369,8 +363,8 @@ msgid "Sale Line"
 msgstr "Строка продажи"
 
 msgctxt "field:sale.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line-account.tax,tax:"
 msgid "Tax"
@@ -401,8 +395,8 @@ msgid "Move"
 msgstr "Перемещение"
 
 msgctxt "field:sale.line-ignored-stock.move,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
@@ -433,8 +427,8 @@ msgid "Move"
 msgstr "Перемещение"
 
 msgctxt "field:sale.line-recreated-stock.move,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
@@ -540,8 +534,8 @@ msgid "Payment Term"
 msgstr "Правило оплаты"
 
 msgctxt "field:sale.sale,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
@@ -632,8 +626,8 @@ msgid "Invoice"
 msgstr "Инвойс"
 
 msgctxt "field:sale.sale-ignored-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.sale-ignored-account.invoice,sale:"
 msgid "Sale"
@@ -664,8 +658,8 @@ msgid "Invoice"
 msgstr "Инвойс"
 
 msgctxt "field:sale.sale-recreated-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Наименование"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.sale-recreated-account.invoice,sale:"
 msgid "Sale"
@@ -770,6 +764,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
 msgid "Quotation"
 msgstr "Котировка"
+
+msgctxt "model:ir.cron,name:cron_process_sale"
+msgid "Process Confirmed Sales"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_sale"
 msgid "Sale"
