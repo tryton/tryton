@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,8 +27,8 @@ msgid "Party"
 msgstr "Tercer"
 
 msgctxt "field:bank,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
@@ -71,8 +71,8 @@ msgid "Owners"
 msgstr "Titulars"
 
 msgctxt "field:bank.account,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
@@ -103,8 +103,8 @@ msgid "Owner"
 msgstr "Titular"
 
 msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
@@ -139,8 +139,8 @@ msgid "Number Compact"
 msgstr "Número compacte"
 
 msgctxt "field:bank.account.number,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:bank.account.number,sequence:"
 msgid "Sequence"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -30,10 +30,9 @@ msgctxt "field:bank,party:"
 msgid "Party"
 msgstr "Организации"
 
-#, fuzzy
 msgctxt "field:bank,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:bank,write_date:"
@@ -84,10 +83,9 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "Владелец"
 
-#, fuzzy
 msgctxt "field:bank.account,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:bank.account,write_date:"
@@ -124,10 +122,9 @@ msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr "Владелец"
 
-#, fuzzy
 msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:bank.account-party.party,write_date:"
@@ -168,10 +165,9 @@ msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:bank.account.number,rec_name:"
-msgid "Name"
-msgstr "Правило оплаты"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:bank.account.number,sequence:"
