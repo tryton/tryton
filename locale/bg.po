@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -13,11 +13,6 @@ msgstr ""
 msgctxt "field:stock.move,fifo_quantity:"
 msgid "FIFO Quantity"
 msgstr "FIFO количество"
-
-#, fuzzy
-msgctxt "selection:product.product,cost_price_method:"
-msgid "FIFO"
-msgstr "FIFO"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "FIFO"
