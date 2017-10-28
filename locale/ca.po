@@ -1,6 +1,10 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.journal:"
+msgid "Only one journal is allowed per bank account."
+msgstr "Només es permet un diari per compte bancari."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
@@ -17,6 +21,14 @@ msgstr "El saldo final ha de ser \"%s\"."
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
 msgstr "El nombre de línies ha de ser \"%s\"."
+
+msgctxt "error:account.statement:"
+msgid ""
+"Origin line \"%(origin)s\" of statement \"%(statement)s\" still has a "
+"pending amount of \"%(amount)s\"."
+msgstr ""
+"La línea d'origen \"%(origin)s\" del extracte \"%(statement)s\" té un import"
+" pendent de \"%(amount)s\"."
 
 msgctxt "error:account.statement:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
@@ -82,9 +94,21 @@ msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
 msgstr "Nombre de línies"
 
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr "Fitxer origen"
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr "Identificador fitxer origen"
+
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr "Orígens"
+
 msgctxt "field:account.statement,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
@@ -110,9 +134,33 @@ msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr "Fitxer"
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr "Format del fitxer"
+
+msgctxt "field:account.statement.import.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr "Compte bancari"
+
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
 msgstr "Empresa"
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
+msgstr "Tercer de l'empresa"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
@@ -139,8 +187,8 @@ msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:account.statement.journal,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
@@ -161,6 +209,10 @@ msgstr "Compte"
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr "Import"
+
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
@@ -194,13 +246,17 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr "Número"
 
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr "Origen"
+
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Tercer"
 
 msgctxt "field:account.statement.line,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.statement.line,sequence:"
 msgid "Sequence"
@@ -267,8 +323,8 @@ msgid "Party"
 msgstr "Tercer"
 
 msgctxt "field:account.statement.line.group,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -282,6 +338,142 @@ msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement.origin,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.statement.origin,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "Descripció"
+
+msgctxt "field:account.statement.origin,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.origin,informations:"
+msgid "Informations"
+msgstr "Informacions"
+
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr "Línies"
+
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr "Import pendent"
+
+msgctxt "field:account.statement.origin,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr "Extracte"
+
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr "ID del Extracte"
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr "Estat de l'extracte"
+
+msgctxt "field:account.statement.origin,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.statement.origin,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:account.statement.origin.information,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.statement.origin.information,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.statement.origin.information,digits:"
+msgid "Digits"
+msgstr "Dígits"
+
+msgctxt "field:account.statement.origin.information,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.origin.information,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.statement.origin.information,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.statement.origin.information,selection:"
+msgid "Selection"
+msgstr "Selecció"
+
+msgctxt "field:account.statement.origin.information,selection_json:"
+msgid "Selection JSON"
+msgstr "Selecció JSON"
+
+msgctxt "field:account.statement.origin.information,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Selecció ordenada"
+
+msgctxt "field:account.statement.origin.information,string:"
+msgid "String"
+msgstr "Etiqueta"
+
+msgctxt "field:account.statement.origin.information,type_:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:account.statement.origin.information,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.statement.origin.information,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "help:account.statement.origin.information,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr "Clau i valor separats per \":\" a cada línia."
+
+msgctxt "help:account.statement.origin.information,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Si cal ordenar la selecció a l'etiqueta."
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Extracte"
@@ -289,6 +481,10 @@ msgstr "Extracte"
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
 msgstr "Extracte bancari"
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
+msgstr "Inici importació extracte"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
@@ -301,6 +497,14 @@ msgstr "Línia d'extracte bancari"
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
 msgstr "Grup de línies d'extracte"
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr "Origen Extracte"
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
+msgstr "Informació origen extracte"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
@@ -334,9 +538,17 @@ msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
 msgstr "Línies extracte"
 
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr "Orígens"
+
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
 msgstr "Extracte"
+
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
+msgstr "Importa extracte"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
@@ -368,6 +580,10 @@ msgstr "Extractes"
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
 msgstr "Tots els extractes"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
+msgstr "Importa extracte"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
@@ -445,6 +661,10 @@ msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Validat"
 
+msgctxt "selection:account.statement.import.start,file_format:"
+msgid ""
+msgstr ""
+
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
 msgstr "Import"
@@ -457,23 +677,43 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Nombre de línies"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Canceled"
-msgstr "Cancel·lat"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Boolean"
+msgstr "Booleà"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Draft"
-msgstr "Esborrany"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Char"
+msgstr "Caràcter"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Posted"
-msgstr "Comptabilitzat"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Date"
+msgstr "Data"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Validated"
-msgstr "Validat"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "DateTime"
+msgstr "Data i hora"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Float"
+msgstr "Numèric coma flotant"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Integer"
+msgstr "Enter"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Numeric"
+msgstr "Numèric"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Selection"
+msgstr "Selecció"
 
 msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Import"
+
+msgctxt "view:account.statement.origin:"
 msgid "Amount"
 msgstr "Import"
 
@@ -500,3 +740,11 @@ msgstr "Línies extracte"
 msgctxt "view:account.statement:"
 msgid "Validate"
 msgstr "Valida"
+
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr "Importa"

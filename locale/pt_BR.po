@@ -1,6 +1,10 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.journal:"
+msgid "Only one journal is allowed per bank account."
+msgstr "Apenas um diário é permitido por conta bancária."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
@@ -17,6 +21,14 @@ msgstr "O saldo final deve ser \"%s\"."
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
 msgstr "O número de linhas deve ser \"%s\"."
+
+msgctxt "error:account.statement:"
+msgid ""
+"Origin line \"%(origin)s\" of statement \"%(statement)s\" still has a "
+"pending amount of \"%(amount)s\"."
+msgstr ""
+"A linha de origem \"%(origin)s\" do extrato \"%(statement)s\" ainda tem um "
+"montante pendente de \"%(amount)s\"."
 
 msgctxt "error:account.statement:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
@@ -82,9 +94,21 @@ msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
 msgstr "Número de linhas"
 
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr "Arquido de origem"
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr "ID do Arquivo de Origem"
+
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr "Origens"
+
 msgctxt "field:account.statement,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
@@ -110,9 +134,33 @@ msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr "Arquivo"
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr "Formato do arquivo"
+
+msgctxt "field:account.statement.import.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr "Conta Bancária"
+
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
 msgstr "Empresa"
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
+msgstr "Pessoa da Empresa"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
@@ -139,8 +187,8 @@ msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:account.statement.journal,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
@@ -161,6 +209,10 @@ msgstr "Contas"
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr "Quantidade"
+
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
@@ -184,7 +236,7 @@ msgstr "ID"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
-msgstr "Faturar"
+msgstr "Fatura"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
@@ -194,13 +246,17 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr "Número"
 
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr "Origem"
+
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Parceiro"
 
 msgctxt "field:account.statement.line,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:account.statement.line,sequence:"
 msgid "Sequence"
@@ -267,8 +323,8 @@ msgid "Party"
 msgstr "Parceiro"
 
 msgctxt "field:account.statement.line.group,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -282,6 +338,142 @@ msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr "Conta"
+
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.statement.origin,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.statement.origin,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "Descrição"
+
+msgctxt "field:account.statement.origin,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.origin,informations:"
+msgid "Informations"
+msgstr "Informações"
+
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr "Linhas"
+
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr "Pessoa"
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr "Montante Pendente"
+
+msgctxt "field:account.statement.origin,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr "Extrato"
+
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr "ID do Extrato"
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr "Estado do Extrato"
+
+msgctxt "field:account.statement.origin,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:account.statement.origin,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+msgctxt "field:account.statement.origin.information,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:account.statement.origin.information,create_uid:"
+msgid "Create User"
+msgstr "Criado pelo usuário"
+
+msgctxt "field:account.statement.origin.information,digits:"
+msgid "Digits"
+msgstr "Dígitos"
+
+msgctxt "field:account.statement.origin.information,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.statement.origin.information,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:account.statement.origin.information,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:account.statement.origin.information,selection:"
+msgid "Selection"
+msgstr "Seleção"
+
+msgctxt "field:account.statement.origin.information,selection_json:"
+msgid "Selection JSON"
+msgstr "Seleção JSON"
+
+msgctxt "field:account.statement.origin.information,selection_sorted:"
+msgid "Selection Sorted"
+msgstr "Seleção Ordenada"
+
+msgctxt "field:account.statement.origin.information,string:"
+msgid "String"
+msgstr "Texto"
+
+msgctxt "field:account.statement.origin.information,type_:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:account.statement.origin.information,write_date:"
+msgid "Write Date"
+msgstr "Data de gravação"
+
+msgctxt "field:account.statement.origin.information,write_uid:"
+msgid "Write User"
+msgstr "Gravado pelo usuário"
+
+msgctxt "help:account.statement.origin.information,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr "Um par de chave e nome separados por \":\" por linha"
+
+msgctxt "help:account.statement.origin.information,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr "Se a seleção de ser ordenada por nome"
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr "Extrato"
@@ -289,6 +481,10 @@ msgstr "Extrato"
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
 msgstr "Extrato Bancário"
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
+msgstr "Iniciar Importação do Extrato"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
@@ -301,6 +497,14 @@ msgstr "Linha de Extrato Bancário"
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
 msgstr "Grupo de Linhas do Extrato"
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr "Origem do Extrato Bancário"
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
+msgstr "Informação da Origem do Extrato"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
@@ -334,9 +538,17 @@ msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
 msgstr "Linhas de Extrato Bancário"
 
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr "Origens"
+
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
 msgstr "Extrato"
+
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
+msgstr "Importar Extrato"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
@@ -368,6 +580,10 @@ msgstr "Extratos"
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
 msgstr "Extratos"
+
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
+msgstr "Importar Extrato"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
@@ -445,6 +661,10 @@ msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Validado"
 
+msgctxt "selection:account.statement.import.start,file_format:"
+msgid ""
+msgstr ""
+
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
 msgstr "Quantidade"
@@ -457,23 +677,43 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Número de linhas"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Canceled"
-msgstr "Cancelado"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Boolean"
+msgstr "Booleano"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Draft"
-msgstr "Rascunho"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Char"
+msgstr "Caractere"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Posted"
-msgstr "Confirmado"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Date"
+msgstr "Data"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Validated"
-msgstr "Validado"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "DateTime"
+msgstr "DataHora"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Float"
+msgstr "Número real"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Integer"
+msgstr "Inteiro"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Numeric"
+msgstr "Numérico"
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Selection"
+msgstr "Seleção"
 
 msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr "Quantidade"
+
+msgctxt "view:account.statement.origin:"
 msgid "Amount"
 msgstr "Quantidade"
 
@@ -500,3 +740,11 @@ msgstr "Linhas do Extrato"
 msgctxt "view:account.statement:"
 msgid "Validate"
 msgstr "Validar"
+
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr "Importar"

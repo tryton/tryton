@@ -1,6 +1,10 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.journal:"
+msgid "Only one journal is allowed per bank account."
+msgstr ""
 
 msgctxt "error:account.statement.line:"
 msgid "Amount \"%s\" is greater than the amount to pay of invoice."
@@ -16,6 +20,12 @@ msgstr ""
 
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
+msgstr ""
+
+msgctxt "error:account.statement:"
+msgid ""
+"Origin line \"%(origin)s\" of statement \"%(statement)s\" still has a "
+"pending amount of \"%(amount)s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
@@ -87,10 +97,21 @@ msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
 msgstr ""
 
-#, fuzzy
+msgctxt "field:account.statement,origin_file:"
+msgid "Origin File"
+msgstr ""
+
+msgctxt "field:account.statement,origin_file_id:"
+msgid "Origin File ID"
+msgstr ""
+
+msgctxt "field:account.statement,origins:"
+msgid "Origins"
+msgstr ""
+
 msgctxt "field:account.statement,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
@@ -119,8 +140,33 @@ msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+msgctxt "field:account.statement.import.start,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.statement.import.start,file_:"
+msgid "File"
+msgstr ""
+
+msgctxt "field:account.statement.import.start,file_format:"
+msgid "File Format"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.import.start,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:account.statement.journal,bank_account:"
+msgid "Bank Account"
+msgstr ""
+
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
+msgstr ""
+
+msgctxt "field:account.statement.journal,company_party:"
+msgid "Company Party"
 msgstr ""
 
 #, fuzzy
@@ -151,10 +197,9 @@ msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "纳木"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
@@ -176,6 +221,10 @@ msgstr ""
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.statement.line,company:"
+msgid "Company"
 msgstr ""
 
 #, fuzzy
@@ -215,14 +264,17 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr ""
 
+msgctxt "field:account.statement.line,origin:"
+msgid "Origin"
+msgstr ""
+
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.line,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.statement.line,sequence:"
@@ -295,10 +347,9 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.statement.line.group,rec_name:"
-msgid "Name"
-msgstr "纳木"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -314,12 +365,165 @@ msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+msgctxt "field:account.statement.origin,account:"
+msgid "Account"
+msgstr ""
+
+msgctxt "field:account.statement.origin,amount:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.statement.origin,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.origin,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,date:"
+msgid "Date"
+msgstr "日期格式"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,id:"
+msgid "ID"
+msgstr "编号"
+
+msgctxt "field:account.statement.origin,informations:"
+msgid "Informations"
+msgstr ""
+
+msgctxt "field:account.statement.origin,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:account.statement.origin,number:"
+msgid "Number"
+msgstr ""
+
+msgctxt "field:account.statement.origin,party:"
+msgid "Party"
+msgstr ""
+
+msgctxt "field:account.statement.origin,pending_amount:"
+msgid "Pending Amount"
+msgstr ""
+
+msgctxt "field:account.statement.origin,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.statement.origin,statement:"
+msgid "Statement"
+msgstr ""
+
+msgctxt "field:account.statement.origin,statement_id:"
+msgid "Statement ID"
+msgstr ""
+
+msgctxt "field:account.statement.origin,statement_state:"
+msgid "Statement State"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.origin,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:account.statement.origin.information,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:account.statement.origin.information,create_uid:"
+msgid "Create User"
+msgstr "添加用户"
+
+msgctxt "field:account.statement.origin.information,digits:"
+msgid "Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.origin.information,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:account.statement.origin.information,name:"
+msgid "Name"
+msgstr "纳木"
+
+msgctxt "field:account.statement.origin.information,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.statement.origin.information,selection:"
+msgid "Selection"
+msgstr ""
+
+msgctxt "field:account.statement.origin.information,selection_json:"
+msgid "Selection JSON"
+msgstr ""
+
+msgctxt "field:account.statement.origin.information,selection_sorted:"
+msgid "Selection Sorted"
+msgstr ""
+
+msgctxt "field:account.statement.origin.information,string:"
+msgid "String"
+msgstr ""
+
+msgctxt "field:account.statement.origin.information,type_:"
+msgid "Type"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement.origin.information,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:account.statement.origin.information,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
+msgctxt "help:account.statement.origin.information,selection:"
+msgid "A couple of key and label separated by \":\" per line"
+msgstr ""
+
+msgctxt "help:account.statement.origin.information,selection_sorted:"
+msgid "If the selection must be sorted on label"
+msgstr ""
+
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
 msgstr ""
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
+msgstr ""
+
+msgctxt "model:account.statement.import.start,name:"
+msgid "Statement Import Start"
 msgstr ""
 
 msgctxt "model:account.statement.journal,name:"
@@ -332,6 +536,14 @@ msgstr ""
 
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
+msgstr ""
+
+msgctxt "model:account.statement.origin,name:"
+msgid "Account Statement Origin"
+msgstr ""
+
+msgctxt "model:account.statement.origin.information,name:"
+msgid "Statement Origin Information"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_line_group_form"
@@ -366,8 +578,16 @@ msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_statement_origin_form_statement"
+msgid "Origins"
+msgstr ""
+
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_statement_import"
+msgid "Import Statement"
 msgstr ""
 
 #, fuzzy
@@ -400,6 +620,10 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_statement_import"
+msgid "Import Statement"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
@@ -484,6 +708,10 @@ msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr ""
 
+msgctxt "selection:account.statement.import.start,file_format:"
+msgid ""
+msgstr ""
+
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
 msgstr ""
@@ -496,24 +724,44 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr ""
 
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Boolean"
+msgstr ""
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Char"
+msgstr ""
+
 #, fuzzy
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Canceled"
-msgstr "取消"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Date"
+msgstr "日期格式"
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Draft"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "DateTime"
 msgstr ""
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Posted"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Float"
 msgstr ""
 
-msgctxt "selection:account.statement.line,statement_state:"
-msgid "Validated"
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Integer"
+msgstr ""
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Numeric"
+msgstr ""
+
+msgctxt "selection:account.statement.origin.information,type_:"
+msgid "Selection"
 msgstr ""
 
 msgctxt "view:account.statement.line:"
+msgid "Amount"
+msgstr ""
+
+msgctxt "view:account.statement.origin:"
 msgid "Amount"
 msgstr ""
 
@@ -540,4 +788,13 @@ msgstr ""
 
 msgctxt "view:account.statement:"
 msgid "Validate"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
 msgstr ""
