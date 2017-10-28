@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,8 +28,8 @@ msgid "ID"
 msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
 msgid "Write Date"
@@ -96,8 +96,8 @@ msgid "Procedure"
 msgstr "ຂັ້ນຕອນ"
 
 msgctxt "field:account.dunning,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
@@ -148,8 +148,8 @@ msgid "Procedure"
 msgstr "ຂັ້ນຕອນ"
 
 msgctxt "field:account.dunning.level,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.level,sequence:"
 msgid "Sequence"
@@ -184,8 +184,8 @@ msgid "Name"
 msgstr "ຊື່"
 
 msgctxt "field:account.dunning.procedure,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
@@ -232,8 +232,8 @@ msgid "Party"
 msgstr "ພາກສ່ວນ"
 
 msgctxt "field:party.party.dunning_procedure,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:party.party.dunning_procedure,write_date:"
 msgid "Write Date"

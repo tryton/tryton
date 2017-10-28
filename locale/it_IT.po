@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,10 +31,9 @@ msgctxt "field:account.configuration.default_dunning_procedure,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
@@ -103,8 +102,8 @@ msgid "Procedure"
 msgstr "Procedura"
 
 msgctxt "field:account.dunning,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
@@ -155,8 +154,8 @@ msgid "Procedure"
 msgstr "Procedura"
 
 msgctxt "field:account.dunning.level,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.level,sequence:"
 msgid "Sequence"
@@ -191,8 +190,8 @@ msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:account.dunning.procedure,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
@@ -244,10 +243,9 @@ msgctxt "field:party.party.dunning_procedure,party:"
 msgid "Party"
 msgstr "Controparte"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.party.dunning_procedure,write_date:"

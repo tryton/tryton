@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -28,7 +28,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
@@ -96,7 +96,7 @@ msgid "Procedure"
 msgstr ""
 
 msgctxt "field:account.dunning,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.dunning,second_currency:"
@@ -148,7 +148,7 @@ msgid "Procedure"
 msgstr ""
 
 msgctxt "field:account.dunning.level,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.dunning.level,sequence:"
@@ -184,7 +184,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:account.dunning.procedure,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.dunning.procedure,write_date:"
@@ -236,7 +236,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party.dunning_procedure,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.party.dunning_procedure,write_date:"
