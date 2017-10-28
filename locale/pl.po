@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -20,59 +20,59 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:purchase.requisition,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:purchase.requisition,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:purchase.requisition,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Cyfry waluty"
 
 msgctxt "field:purchase.requisition,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:purchase.requisition,employee:"
 msgid "Employee"
-msgstr ""
+msgstr "Pracownik"
 
 msgctxt "field:purchase.requisition,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.requisition,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Wiersze"
 
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numer"
 
 msgctxt "field:purchase.requisition,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 msgctxt "field:purchase.requisition,supply_date:"
 msgid "Supply Date"
-msgstr ""
+msgstr "Data dostawy"
 
 msgctxt "field:purchase.requisition,total_amount:"
 msgid "Total"
-msgstr ""
+msgstr "Razem"
 
 msgctxt "field:purchase.requisition,total_amount_cache:"
 msgid "Total Cache"
@@ -80,15 +80,15 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazyn"
 
 msgctxt "field:purchase.requisition,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:purchase.requisition,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
@@ -96,27 +96,27 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:purchase.requisition.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:purchase.requisition.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.requisition.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
 
 msgctxt "field:purchase.requisition.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Kategoria jm produktu"
 
 msgctxt "field:purchase.requisition.line,purchase_requests:"
 msgid "Purchase Request"
@@ -128,11 +128,11 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Ilość"
 
 msgctxt "field:purchase.requisition.line,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:purchase.requisition.line,requisition:"
 msgid "Requisition"
@@ -140,31 +140,31 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sekwencja"
 
 msgctxt "field:purchase.requisition.line,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Dostawca"
 
 msgctxt "field:purchase.requisition.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Jednostka"
 
 msgctxt "field:purchase.requisition.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Cyfry jednostki"
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Cena jednostkowa"
 
 msgctxt "field:purchase.requisition.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:purchase.requisition.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
@@ -181,7 +181,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Wszystko"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_open"
@@ -228,15 +228,15 @@ msgstr ""
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Approved"
-msgstr ""
+msgstr "Zatwierdzono"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Anulowano"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Done"
-msgstr ""
+msgstr "Wykonano"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Draft"
@@ -248,7 +248,7 @@ msgstr ""
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Rejected"
-msgstr ""
+msgstr "Odrzucono"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Waiting"
@@ -256,15 +256,15 @@ msgstr ""
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Approved"
-msgstr ""
+msgstr "Zatwierdzono"
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Anulowano"
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Done"
-msgstr ""
+msgstr "Wykonano"
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Draft"
@@ -276,7 +276,7 @@ msgstr ""
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Rejected"
-msgstr ""
+msgstr "Odrzucono"
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
@@ -284,15 +284,15 @@ msgstr ""
 
 msgctxt "view:purchase.requisition.line:"
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 msgctxt "view:purchase.requisition:"
 msgid "Approve"
-msgstr ""
+msgstr "Zatwierdź"
 
 msgctxt "view:purchase.requisition:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "view:purchase.requisition:"
 msgid "Draft"
@@ -300,11 +300,11 @@ msgstr ""
 
 msgctxt "view:purchase.requisition:"
 msgid "Other Info"
-msgstr ""
+msgstr "Inne informacje"
 
 msgctxt "view:purchase.requisition:"
 msgid "Reject"
-msgstr ""
+msgstr "Odrzuć"
 
 msgctxt "view:purchase.requisition:"
 msgid "Requisition"
@@ -312,4 +312,4 @@ msgstr ""
 
 msgctxt "view:purchase.requisition:"
 msgid "Wait"
-msgstr ""
+msgstr "Czekaj"
