@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -8,11 +8,11 @@ msgstr ""
 
 msgctxt "field:production.split.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Ilość"
 
 msgctxt "field:production.split.start,unit_digits:"
 msgid "Unit Digits"
@@ -20,11 +20,11 @@ msgstr ""
 
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "Jm"
 
 msgctxt "field:production.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "Kategoria jednostki miary"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr "Split Production"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:production.split.start,name:"
@@ -45,7 +45,7 @@ msgstr ""
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "wizard_button:production.split,start,split:"
 msgid "Split"
