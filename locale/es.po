@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -30,10 +30,6 @@ msgstr ""
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
 msgstr "Se debe definir un almacén para el presupuesto de la compra \"%s\"."
-
-msgctxt "error:purchase.purchase:"
-msgid "Missing \"Account Payable\" on party \"%s\"."
-msgstr "Falta la \"Cuenta a pagar\" en el tercer \"%s\"."
 
 msgctxt "error:purchase.purchase:"
 msgid "Purchase \"%s\" must be cancelled before deletion."
@@ -108,8 +104,8 @@ msgid "Purchase Sequence"
 msgstr "Secuencia de compra"
 
 msgctxt "field:purchase.configuration,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
@@ -137,8 +133,8 @@ msgid "Invoice Method"
 msgstr "Método de facturación"
 
 msgctxt "field:purchase.configuration.purchase_method,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.configuration.purchase_method,write_date:"
 msgid "Write Date"
@@ -169,8 +165,8 @@ msgid "Purchase Sequence"
 msgstr "Secuencia de compra"
 
 msgctxt "field:purchase.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.configuration.sequence,write_date:"
 msgid "Write Date"
@@ -218,7 +214,7 @@ msgstr "Usuario de creación"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
-msgstr "Fecha entrega"
+msgstr "Fecha de entrega"
 
 msgctxt "field:purchase.line,delivery_date_edit:"
 msgid "Edit Delivery Date"
@@ -289,8 +285,8 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 msgctxt "field:purchase.line,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.line,sequence:"
 msgid "Sequence"
@@ -345,8 +341,8 @@ msgid "Purchase Line"
 msgstr "Línea de compra"
 
 msgctxt "field:purchase.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
@@ -381,8 +377,8 @@ msgid "Purchase Line"
 msgstr "Línea de compra"
 
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
@@ -413,8 +409,8 @@ msgid "Purchase Line"
 msgstr "Línea de compra"
 
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
@@ -469,8 +465,8 @@ msgid "Product"
 msgstr "Producto"
 
 msgctxt "field:purchase.product_supplier,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.product_supplier,sequence:"
 msgid "Sequence"
@@ -505,8 +501,8 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 msgctxt "field:purchase.product_supplier.price,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.product_supplier.price,sequence:"
 msgid "Sequence"
@@ -550,7 +546,7 @@ msgstr "Decimales de la moneda"
 
 msgctxt "field:purchase.purchase,delivery_date:"
 msgid "Delivery Date"
-msgstr "Fecha entrega"
+msgstr "Fecha de entrega"
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
@@ -570,7 +566,7 @@ msgstr "Método de facturación"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
-msgstr "Estado factura"
+msgstr "Estado de factura"
 
 msgctxt "field:purchase.purchase,invoices:"
 msgid "Invoices"
@@ -610,11 +606,11 @@ msgstr "Plazo de pago"
 
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
-msgstr "Fecha compra"
+msgstr "Fecha de compra"
 
 msgctxt "field:purchase.purchase,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -693,8 +689,8 @@ msgid "Purchase"
 msgstr "Compra"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
@@ -725,8 +721,8 @@ msgid "Purchase"
 msgstr "Compra"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
@@ -879,6 +875,10 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Presupuesto"
 
+msgctxt "model:ir.cron,name:cron_process_purchase"
+msgid "Process Confirmed Purchases"
+msgstr "Procesar compras confirmadas"
+
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
 msgstr "Compra"
@@ -990,6 +990,10 @@ msgstr "Importe"
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
 msgstr "Fecha:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Delivery Address:"
+msgstr "Dirección de envío:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Description"
@@ -1185,7 +1189,7 @@ msgstr "Seleccione los movimientos a recrear"
 
 msgctxt "view:purchase.line:"
 msgid "Delivery Date"
-msgstr "Fecha entrega"
+msgstr "Fecha de entrega"
 
 msgctxt "view:purchase.line:"
 msgid "General"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -32,10 +32,6 @@ msgstr ""
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
 msgstr "Skladišče mora biti navedeno za nabavno ponudbo \"%s\"."
-
-msgctxt "error:purchase.purchase:"
-msgid "Missing \"Account Payable\" on party \"%s\"."
-msgstr "Partnerju \"%s\" manjka terjatveni konto."
 
 msgctxt "error:purchase.purchase:"
 msgid "Purchase \"%s\" must be cancelled before deletion."
@@ -112,8 +108,8 @@ msgid "Purchase Sequence"
 msgstr "Štetje nabavnih nalogov"
 
 msgctxt "field:purchase.configuration,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
@@ -141,8 +137,8 @@ msgid "Invoice Method"
 msgstr "Način obračuna"
 
 msgctxt "field:purchase.configuration.purchase_method,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.configuration.purchase_method,write_date:"
 msgid "Write Date"
@@ -173,8 +169,8 @@ msgid "Purchase Sequence"
 msgstr "Štetje nabavnih nalogov"
 
 msgctxt "field:purchase.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.configuration.sequence,write_date:"
 msgid "Write Date"
@@ -293,8 +289,8 @@ msgid "Quantity"
 msgstr "Količina"
 
 msgctxt "field:purchase.line,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.line,sequence:"
 msgid "Sequence"
@@ -349,8 +345,8 @@ msgid "Purchase Line"
 msgstr "Nabavna postavka"
 
 msgctxt "field:purchase.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
@@ -385,8 +381,8 @@ msgid "Purchase Line"
 msgstr "Nabavna postavka"
 
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
@@ -417,8 +413,8 @@ msgid "Purchase Line"
 msgstr "Nabavna postavka"
 
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
@@ -473,8 +469,8 @@ msgid "Product"
 msgstr "Izdelek"
 
 msgctxt "field:purchase.product_supplier,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,sequence:"
 msgid "Sequence"
@@ -509,8 +505,8 @@ msgid "Quantity"
 msgstr "Količina"
 
 msgctxt "field:purchase.product_supplier.price,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.price,sequence:"
 msgid "Sequence"
@@ -617,8 +613,8 @@ msgid "Purchase Date"
 msgstr "Nabavljeno"
 
 msgctxt "field:purchase.purchase,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -697,8 +693,8 @@ msgid "Purchase"
 msgstr "Nabavni nalog"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
@@ -729,8 +725,8 @@ msgid "Purchase"
 msgstr "Nabavni nalog"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Ime"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
@@ -881,6 +877,10 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Ponudba"
 
+msgctxt "model:ir.cron,name:cron_process_purchase"
+msgid "Process Confirmed Purchases"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
 msgstr "Nabavni nalog"
@@ -992,6 +992,10 @@ msgstr "Znesek"
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
 msgstr "Datum:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Delivery Address:"
+msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Description"

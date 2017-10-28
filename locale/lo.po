@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -25,10 +25,6 @@ msgstr ""
 
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
-msgstr ""
-
-msgctxt "error:purchase.purchase:"
-msgid "Missing \"Account Payable\" on party \"%s\"."
 msgstr ""
 
 msgctxt "error:purchase.purchase:"
@@ -107,10 +103,9 @@ msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.configuration,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.configuration,write_date:"
@@ -142,10 +137,9 @@ msgctxt ""
 msgid "Invoice Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.configuration.purchase_method,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.configuration.purchase_method,write_date:"
@@ -181,10 +175,9 @@ msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.configuration.sequence,write_date:"
@@ -315,10 +308,9 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
-#, fuzzy
 msgctxt "field:purchase.line,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line,sequence:"
@@ -383,10 +375,9 @@ msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
 msgstr "ວັນທີຈັດຊື້"
 
-#, fuzzy
 msgctxt "field:purchase.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line-account.tax,tax:"
@@ -428,10 +419,9 @@ msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "ວັນທີຈັດຊື້"
 
-#, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
@@ -468,10 +458,9 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "ວັນທີຈັດຊື້"
 
-#, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
@@ -536,10 +525,9 @@ msgctxt "field:purchase.product_supplier,product:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,sequence:"
@@ -580,10 +568,9 @@ msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier.price,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier.price,sequence:"
@@ -706,10 +693,9 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "ວັນທີຈັດຊື້"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -794,8 +780,8 @@ msgid "Purchase"
 msgstr "ສັ່ງຊື້"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
@@ -826,8 +812,8 @@ msgid "Purchase"
 msgstr "ສັ່ງຊື້"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
@@ -989,6 +975,10 @@ msgctxt ""
 msgid "Quotation"
 msgstr ""
 
+msgctxt "model:ir.cron,name:cron_process_purchase"
+msgid "Process Confirmed Purchases"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
@@ -1111,6 +1101,10 @@ msgstr "ມູນຄ່າ"
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
 msgstr "ວັນທີ:"
+
+msgctxt "report:purchase.purchase:"
+msgid "Delivery Address:"
+msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Description"

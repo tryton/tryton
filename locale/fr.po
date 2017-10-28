@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -31,10 +31,6 @@ msgstr ""
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
 msgstr "Un entrepôt doit être défini pour le devis de l'achat « %s »."
-
-msgctxt "error:purchase.purchase:"
-msgid "Missing \"Account Payable\" on party \"%s\"."
-msgstr "Le « compte fournisseur » est manquant sur le tiers « %s »."
 
 msgctxt "error:purchase.purchase:"
 msgid "Purchase \"%s\" must be cancelled before deletion."
@@ -109,8 +105,8 @@ msgid "Purchase Sequence"
 msgstr "Séquence d'achat"
 
 msgctxt "field:purchase.configuration,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
@@ -138,8 +134,8 @@ msgid "Invoice Method"
 msgstr "Méthode de facturation"
 
 msgctxt "field:purchase.configuration.purchase_method,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.configuration.purchase_method,write_date:"
 msgid "Write Date"
@@ -170,8 +166,8 @@ msgid "Purchase Sequence"
 msgstr "Séquence d'achat"
 
 msgctxt "field:purchase.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.configuration.sequence,write_date:"
 msgid "Write Date"
@@ -290,8 +286,8 @@ msgid "Quantity"
 msgstr "Quantité"
 
 msgctxt "field:purchase.line,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.line,sequence:"
 msgid "Sequence"
@@ -346,8 +342,8 @@ msgid "Purchase Line"
 msgstr "Ligne d'achat"
 
 msgctxt "field:purchase.line-account.tax,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
@@ -382,8 +378,8 @@ msgid "Purchase Line"
 msgstr "Ligne d'achat"
 
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
@@ -414,8 +410,8 @@ msgid "Purchase Line"
 msgstr "Ligne d'achat"
 
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
@@ -470,8 +466,8 @@ msgid "Product"
 msgstr "Produit"
 
 msgctxt "field:purchase.product_supplier,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.product_supplier,sequence:"
 msgid "Sequence"
@@ -506,8 +502,8 @@ msgid "Quantity"
 msgstr "Quantité"
 
 msgctxt "field:purchase.product_supplier.price,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.product_supplier.price,sequence:"
 msgid "Sequence"
@@ -614,8 +610,8 @@ msgid "Purchase Date"
 msgstr "Date d'achat"
 
 msgctxt "field:purchase.purchase,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -694,8 +690,8 @@ msgid "Purchase"
 msgstr "Achat"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
@@ -726,8 +722,8 @@ msgid "Purchase"
 msgstr "Achat"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
@@ -880,6 +876,10 @@ msgctxt ""
 msgid "Quotation"
 msgstr "Devis"
 
+msgctxt "model:ir.cron,name:cron_process_purchase"
+msgid "Process Confirmed Purchases"
+msgstr "Traitement des achats confirmés"
+
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
 msgstr "Achat"
@@ -993,6 +993,10 @@ msgid "Date:"
 msgstr "Date :"
 
 msgctxt "report:purchase.purchase:"
+msgid "Delivery Address:"
+msgstr "Adresse de livraison :"
+
+msgctxt "report:purchase.purchase:"
 msgid "Description"
 msgstr "Description"
 
@@ -1098,7 +1102,7 @@ msgstr "Basé sur la commande"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Based On Shipment"
-msgstr "Basé sur la livraison"
+msgstr "Basé sur l'expédition"
 
 msgctxt "selection:purchase.purchase,invoice_method:"
 msgid "Manual"
