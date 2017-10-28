@@ -1,10 +1,10 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.supply:"
 msgid "There are some late productions."
-msgstr "Es gibt einige verspätete Produktionen."
+msgstr "Es exisieren überfällige Produktionen."
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
@@ -23,8 +23,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:production.configuration.supply_period,rec_name:"
-msgid "Name"
-msgstr "Name"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"

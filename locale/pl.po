@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -12,19 +12,19 @@ msgstr ""
 
 msgctxt "field:production.configuration.supply_period,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:production.configuration.supply_period,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:production.configuration.supply_period,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:production.configuration.supply_period,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"
@@ -32,41 +32,40 @@ msgstr ""
 
 msgctxt "field:production.configuration.supply_period,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:production.configuration.supply_period,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr "Request Productions"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
 msgid "Production"
-msgstr "Production"
+msgstr "Produkcja"
 
 msgctxt "model:production.configuration.supply_period,name:"
 msgid "Production Configuration Supply Period"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
-msgstr "Production"
+msgstr "Produkcja"
 
 msgctxt "model:ir.action,name:act_production_request_create"
 msgid "Create Production Requests"
-msgstr "Create Production Requests"
+msgstr ""
 
 msgctxt "model:ir.cron,name:cron_generate_request"
 msgid "Generate Production Requests"
-msgstr "Generate Production Requests"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_production_request_create"
 msgid "Create Production Requests"
-msgstr "Create Production Requests"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:production.create_request.start,name:"
