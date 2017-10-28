@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -20,19 +20,19 @@ msgstr ""
 
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.configuration.payment_group_sequence,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.configuration.payment_group_sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.configuration.payment_group_sequence,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt ""
 "field:account.configuration.payment_group_sequence,payment_group_sequence:"
@@ -40,16 +40,16 @@ msgid "Payment Group Sequence"
 msgstr ""
 
 msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.configuration.payment_group_sequence,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.configuration.payment_group_sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
@@ -78,15 +78,15 @@ msgstr "Payments"
 
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.move.line.pay.ask_journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
@@ -102,19 +102,19 @@ msgstr ""
 
 msgctxt "field:account.payment,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.payment,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.payment,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
@@ -122,19 +122,19 @@ msgstr ""
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.payment,description:"
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgctxt "field:account.payment,group:"
 msgid "Group"
-msgstr ""
+msgstr "Grupa"
 
 msgctxt "field:account.payment,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment,journal:"
 msgid "Journal"
@@ -148,41 +148,45 @@ msgctxt "field:account.payment,line:"
 msgid "Line"
 msgstr ""
 
-msgctxt "field:account.payment,party:"
-msgid "Party"
+msgctxt "field:account.payment,origin:"
+msgid "Origin"
 msgstr ""
 
+msgctxt "field:account.payment,party:"
+msgid "Party"
+msgstr "Strona"
+
 msgctxt "field:account.payment,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.payment,state:"
 msgid "State"
-msgstr ""
+msgstr "Stan"
 
 msgctxt "field:account.payment,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.payment,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.payment.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.payment.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.payment.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -202,60 +206,60 @@ msgid "Payments"
 msgstr "Payments"
 
 msgctxt "field:account.payment.group,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.payment.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:account.payment.journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:account.payment.journal,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Waluta"
 
 msgctxt "field:account.payment.journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.journal,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
 msgstr ""
 
 msgctxt "field:account.payment.journal,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:account.payment.journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:account.payment.journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party,payment_direct_debit:"
 msgid "Direct Debit"
@@ -267,39 +271,39 @@ msgstr ""
 
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:party.party.payment_direct_debit,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:party.party.payment_direct_debit,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:party.party.payment_direct_debit,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party.payment_direct_debit,party:"
 msgid "Party"
-msgstr ""
+msgstr "Strona"
 
 msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr ""
 
 msgctxt "field:party.party.payment_direct_debit,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:party.party.payment_direct_debit,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:party.party.payment_direct_debit,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
@@ -348,105 +352,105 @@ msgstr "Process Payments"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
-msgstr "Lines to Pay"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_pay_line"
 msgid "Pay Lines"
-msgstr "Pay Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr "Payments"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr "Payments"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
-msgstr "Payments"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
-msgstr "Payment Groups"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Payment Journals"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
-msgstr "Process Payments"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
 msgid "Payable"
-msgstr "Payable"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
 msgid "Approved"
-msgstr "Approved"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
 msgid "Failed"
-msgstr "Failed"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
-msgstr "Succeeded"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
-msgstr "Default Account Payment Group"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
-msgstr "Account Payment Group"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
-msgstr "Lines to Pay"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
-msgstr "Payments"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
-msgstr "Payments"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
-msgstr "Payment Groups"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Payment Journals"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr "Payments"
+msgstr ""
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
@@ -454,11 +458,11 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
-msgstr "Payment"
+msgstr ""
 
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
-msgstr "Payment Approval"
+msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
@@ -579,7 +583,7 @@ msgstr "Succeeded"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
 msgid "Pay"
@@ -587,7 +591,7 @@ msgstr ""
 
 msgctxt "wizard_button:account.payment.process,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"

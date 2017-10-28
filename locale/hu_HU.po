@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -43,10 +43,9 @@ msgctxt ""
 msgid "Payment Group Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.configuration.payment_group_sequence,write_date:"
@@ -165,15 +164,18 @@ msgctxt "field:account.payment,line:"
 msgid "Line"
 msgstr ""
 
+msgctxt "field:account.payment,origin:"
+msgid "Origin"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.payment,party:"
 msgid "Party"
 msgstr "Partner"
 
-#, fuzzy
 msgctxt "field:account.payment,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.payment,state:"
@@ -227,10 +229,9 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.group,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.payment.group,write_date:"
@@ -276,10 +277,9 @@ msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.payment.journal,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.payment.journal,write_date:"
@@ -333,10 +333,9 @@ msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.payment_direct_debit,rec_name:"
-msgid "Name"
-msgstr "Név"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.party.payment_direct_debit,write_date:"

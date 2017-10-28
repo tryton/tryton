@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -40,8 +40,8 @@ msgid "Payment Group Sequence"
 msgstr "Séquence de groupe de paiements"
 
 msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.configuration.payment_group_sequence,write_date:"
 msgid "Write Date"
@@ -147,13 +147,17 @@ msgctxt "field:account.payment,line:"
 msgid "Line"
 msgstr "Ligne"
 
+msgctxt "field:account.payment,origin:"
+msgid "Origin"
+msgstr "Origine"
+
 msgctxt "field:account.payment,party:"
 msgid "Party"
 msgstr "Tiers"
 
 msgctxt "field:account.payment,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.payment,state:"
 msgid "State"
@@ -200,8 +204,8 @@ msgid "Payments"
 msgstr "Paiements"
 
 msgctxt "field:account.payment.group,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
@@ -240,8 +244,8 @@ msgid "Process Method"
 msgstr "Méthode de traitement"
 
 msgctxt "field:account.payment.journal,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.payment.journal,write_date:"
 msgid "Write Date"
@@ -288,8 +292,8 @@ msgid "Direct Debit"
 msgstr "Débit direct"
 
 msgctxt "field:party.party.payment_direct_debit,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:party.party.payment_direct_debit,write_date:"
 msgid "Write Date"
