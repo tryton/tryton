@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -25,13 +25,14 @@ msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:product.product.cost_history,rec_name:"
-msgid "Name"
-msgstr "Наименование"
-
-msgctxt "field:product.product.cost_history,template:"
+#, fuzzy
+msgctxt "field:product.product.cost_history,product:"
 msgid "Product"
 msgstr "ТМЦ"
+
+msgctxt "field:product.product.cost_history,rec_name:"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.product.cost_history,write_date:"
