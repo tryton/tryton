@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -41,6 +41,10 @@ msgid ""
 "not support moves."
 msgstr ""
 
+msgctxt "error:stock.location:"
+msgid "The location '%(location)s' must be empty to be deactivated."
+msgstr ""
+
 msgctxt "error:stock.move:"
 msgid "Internal move quantity must be positive"
 msgstr "Количествата на движение трябва да са положително число"
@@ -54,13 +58,13 @@ msgid "Source and destination location must be different"
 msgstr "Източника и целта на местонахождението трябва да са различни"
 
 msgctxt "error:stock.move:"
-msgid "The stock move \"%s\" has no origin."
+msgid "The stock moves \"%s\" have no origin."
 msgstr ""
 
 msgctxt "error:stock.move:"
 msgid ""
-"You can not delete stock move \"%s\" because it is not in draft or cancelled"
-" state."
+"You can not delete stock move \"%s\" because it is not in staging, draft nor"
+" cancelled state."
 msgstr ""
 
 msgctxt "error:stock.move:"
@@ -169,10 +173,9 @@ msgctxt "field:party.party.location,party:"
 msgid "Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.location,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.party.location,supplier_location:"
@@ -243,8 +246,8 @@ msgid "Inventory Sequence"
 msgstr ""
 
 msgctxt "field:stock.configuration,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -293,10 +296,9 @@ msgctxt "field:stock.configuration.location,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:stock.configuration.location,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
@@ -336,10 +338,9 @@ msgctxt "field:stock.configuration.sequence,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.configuration.sequence,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
@@ -414,8 +415,8 @@ msgid "Number"
 msgstr "Номер"
 
 msgctxt "field:stock.inventory,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.inventory,state:"
 msgid "State"
@@ -467,8 +468,8 @@ msgid "Quantity"
 msgstr "Количество"
 
 msgctxt "field:stock.inventory.line,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
@@ -514,6 +515,10 @@ msgctxt "field:stock.location,create_uid:"
 msgid "Create User"
 msgstr "Създадено от"
 
+msgctxt "field:stock.location,flat_childs:"
+msgid "Flat Children"
+msgstr ""
+
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr "Планирани количества"
@@ -551,8 +556,8 @@ msgid "Quantity"
 msgstr "Количество"
 
 msgctxt "field:stock.location,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.location,right:"
 msgid "Right"
@@ -598,10 +603,9 @@ msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.location.lead_time,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.location.lead_time,sequence:"
@@ -690,8 +694,8 @@ msgid "Quantity"
 msgstr "Количество"
 
 msgctxt "field:stock.move,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.move,shipment:"
@@ -755,8 +759,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:stock.period,rec_name:"
-msgid "Name"
-msgstr "Име на прикачен файл"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.period,state:"
 msgid "State"
@@ -799,8 +803,8 @@ msgid "Product"
 msgstr "Продукт"
 
 msgctxt "field:stock.period.cache,rec_name:"
-msgid "Name"
-msgstr "Име на прикачен файл"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.period.cache,write_date:"
 msgid "Write Date"
@@ -835,10 +839,9 @@ msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "Количество"
 
-#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse,rec_name:"
-msgid "Name"
-msgstr "Име на прикачен файл"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.product_quantities_warehouse,write_date:"
@@ -928,8 +931,8 @@ msgid "Planned Date"
 msgstr "Планирана дата"
 
 msgctxt "field:stock.shipment.in,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.shipment.in,received_by:"
 msgid "Received By"
@@ -1027,8 +1030,8 @@ msgid "Planned Date"
 msgstr "Планирана дата"
 
 msgctxt "field:stock.shipment.in.return,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
@@ -1127,8 +1130,8 @@ msgid "Planned Start Date"
 msgstr ""
 
 msgctxt "field:stock.shipment.internal,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
@@ -1237,8 +1240,8 @@ msgid "Planned Date"
 msgstr "Планирана дата"
 
 msgctxt "field:stock.shipment.out,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
@@ -1339,8 +1342,8 @@ msgid "Planned Date"
 msgstr "Планирана дата"
 
 msgctxt "field:stock.shipment.out.return,rec_name:"
-msgid "Name"
-msgstr "Име"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:stock.shipment.out.return,received_by:"
 msgid "Received By"
@@ -1405,6 +1408,10 @@ msgid ""
 "Allow to compute expected stock quantities for this date.\n"
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "help:stock.location,flat_childs:"
+msgid "Check to restrict to one level of children."
 msgstr ""
 
 msgctxt "help:stock.location,picking_location:"

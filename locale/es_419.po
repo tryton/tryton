@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -37,6 +37,10 @@ msgid ""
 "not support moves."
 msgstr ""
 
+msgctxt "error:stock.location:"
+msgid "The location '%(location)s' must be empty to be deactivated."
+msgstr ""
+
 msgctxt "error:stock.move:"
 msgid "Internal move quantity must be positive"
 msgstr ""
@@ -50,13 +54,13 @@ msgid "Source and destination location must be different"
 msgstr ""
 
 msgctxt "error:stock.move:"
-msgid "The stock move \"%s\" has no origin."
+msgid "The stock moves \"%s\" have no origin."
 msgstr ""
 
 msgctxt "error:stock.move:"
 msgid ""
-"You can not delete stock move \"%s\" because it is not in draft or cancelled"
-" state."
+"You can not delete stock move \"%s\" because it is not in staging, draft nor"
+" cancelled state."
 msgstr ""
 
 msgctxt "error:stock.move:"
@@ -164,7 +168,7 @@ msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party.location,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.party.location,supplier_location:"
@@ -234,7 +238,7 @@ msgid "Inventory Sequence"
 msgstr ""
 
 msgctxt "field:stock.configuration,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
@@ -283,7 +287,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:stock.configuration.location,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
@@ -320,7 +324,7 @@ msgid "Inventory Sequence"
 msgstr ""
 
 msgctxt "field:stock.configuration.sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
@@ -390,7 +394,7 @@ msgid "Number"
 msgstr ""
 
 msgctxt "field:stock.inventory,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.inventory,state:"
@@ -443,7 +447,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:stock.inventory.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.inventory.line,unit_digits:"
@@ -491,6 +495,10 @@ msgctxt "field:stock.location,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
 
+msgctxt "field:stock.location,flat_childs:"
+msgid "Flat Children"
+msgstr ""
+
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr ""
@@ -528,7 +536,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:stock.location,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.location,right:"
@@ -573,7 +581,7 @@ msgid "Lead Time"
 msgstr ""
 
 msgctxt "field:stock.location.lead_time,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.location.lead_time,sequence:"
@@ -658,7 +666,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:stock.move,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.move,shipment:"
@@ -723,7 +731,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:stock.period,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.period,state:"
@@ -768,7 +776,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:stock.period.cache,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.period.cache,write_date:"
@@ -801,7 +809,7 @@ msgid "Quantity"
 msgstr ""
 
 msgctxt "field:stock.product_quantities_warehouse,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.product_quantities_warehouse,write_date:"
@@ -885,7 +893,7 @@ msgid "Planned Date"
 msgstr ""
 
 msgctxt "field:stock.shipment.in,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.shipment.in,received_by:"
@@ -983,7 +991,7 @@ msgid "Planned Date"
 msgstr ""
 
 msgctxt "field:stock.shipment.in.return,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -1080,7 +1088,7 @@ msgid "Planned Start Date"
 msgstr ""
 
 msgctxt "field:stock.shipment.internal,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -1191,7 +1199,7 @@ msgid "Planned Date"
 msgstr ""
 
 msgctxt "field:stock.shipment.out,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -1294,7 +1302,7 @@ msgid "Planned Date"
 msgstr ""
 
 msgctxt "field:stock.shipment.out.return,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.shipment.out.return,received_by:"
@@ -1351,6 +1359,10 @@ msgid ""
 "Allow to compute expected stock quantities for this date.\n"
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "help:stock.location,flat_childs:"
+msgid "Check to restrict to one level of children."
 msgstr ""
 
 msgctxt "help:stock.location,picking_location:"
