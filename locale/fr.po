@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,8 +23,8 @@ msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:product.attribute,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
@@ -79,8 +79,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
@@ -111,8 +111,8 @@ msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:product.attribute.set,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom de l'enregistrement"
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
@@ -141,7 +141,7 @@ msgstr ""
 
 msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
-msgstr "Si la selection doit être triée par label"
+msgstr "Si la sélection doit être triée par label"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
@@ -189,7 +189,7 @@ msgstr "Date et heure"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Float"
-msgstr "Flotant"
+msgstr "Flottant"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Integer"

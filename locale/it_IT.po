@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,10 +27,9 @@ msgctxt "field:product.attribute,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.attribute,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.attribute,selection:"
@@ -94,10 +93,9 @@ msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
 msgstr "Movimento contabile"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
@@ -133,10 +131,9 @@ msgctxt "field:product.attribute.set,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.attribute.set,write_date:"

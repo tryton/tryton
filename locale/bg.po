@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -26,10 +26,9 @@ msgctxt "field:product.attribute,name:"
 msgid "Name"
 msgstr "Условие за плащане"
 
-#, fuzzy
 msgctxt "field:product.attribute,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.attribute,selection:"
@@ -90,10 +89,9 @@ msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
@@ -129,10 +127,9 @@ msgctxt "field:product.attribute.set,name:"
 msgid "Name"
 msgstr "Условие за плащане"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,rec_name:"
-msgid "Name"
-msgstr "Условие за плащане"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.attribute.set,write_date:"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,8 +23,8 @@ msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:product.attribute,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
@@ -79,8 +79,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
@@ -111,8 +111,8 @@ msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:product.attribute.set,rec_name:"
-msgid "Name"
-msgstr "Nome"
+msgid "Record Name"
+msgstr "Nome do Registro"
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"

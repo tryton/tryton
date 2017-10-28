@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,8 +23,8 @@ msgid "Name"
 msgstr "Nazwa"
 
 msgctxt "field:product.attribute,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
@@ -32,11 +32,11 @@ msgstr "Wybór"
 
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
-msgstr ""
+msgstr "Wybór JSON"
 
 msgctxt "field:product.attribute,selection_sorted:"
 msgid "Selection Sorted"
-msgstr ""
+msgstr "Posortowany wybór"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
@@ -62,10 +62,9 @@ msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
 msgstr "Atrybuty"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr "Zestawy"
+msgstr "Zestaw"
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
@@ -80,8 +79,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
@@ -112,8 +111,8 @@ msgid "Name"
 msgstr "Nazwa"
 
 msgctxt "field:product.attribute.set,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
@@ -137,11 +136,11 @@ msgstr "Zestaw atrybutów"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
-msgstr ""
+msgstr "Para klucz i etykieta na wiersz oddzielonych przez \":\""
 
 msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
-msgstr ""
+msgstr "Jeśli wybór należy posortować na etykiecie"
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
@@ -201,7 +200,7 @@ msgstr "Numeric"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
-msgstr "Wybór"
+msgstr "Selection"
 
 msgctxt "view:product.template:"
 msgid "Attributes"
