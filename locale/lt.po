@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -66,10 +66,9 @@ msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
@@ -119,10 +118,9 @@ msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -172,10 +170,9 @@ msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
@@ -205,10 +202,9 @@ msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
@@ -239,10 +235,9 @@ msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"

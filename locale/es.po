@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -67,8 +67,8 @@ msgid "Origin Model"
 msgstr "Modelo del origen"
 
 msgctxt "field:sale.complaint,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
@@ -119,8 +119,8 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 msgctxt "field:sale.complaint.action,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -171,8 +171,8 @@ msgid "Invoice Line"
 msgstr "Línea de factura"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
@@ -203,8 +203,8 @@ msgid "Sale Line"
 msgstr "Línea de venta"
 
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
@@ -235,8 +235,8 @@ msgid "Origin"
 msgstr "Origen"
 
 msgctxt "field:sale.complaint.type,rec_name:"
-msgid "Name"
-msgstr "Nombre"
+msgid "Record Name"
+msgstr "Nombre del registro"
 
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
