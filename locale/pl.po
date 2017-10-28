@@ -1,9 +1,11 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
-msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
 msgstr ""
 
 msgctxt "error:product.template:"
@@ -46,12 +48,24 @@ msgctxt ""
 msgid "Default Account Revenue"
 msgstr ""
 
-msgctxt "field:product.category,account_expense:"
-msgid "Account Expense"
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
 msgstr ""
 
-msgctxt "field:product.category,account_expense_used:"
-msgid "Account Expense Used"
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
 msgstr ""
 
 msgctxt "field:product.category,account_parent:"
@@ -62,17 +76,13 @@ msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
 msgstr ""
 
-msgctxt "field:product.category,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr ""
-
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr ""
 
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
-msgstr ""
+msgstr "Konta"
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
@@ -96,67 +106,67 @@ msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategoria"
 
 msgctxt "field:product.category-customer-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:product.category-customer-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:product.category-customer-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Podatek"
 
 msgctxt "field:product.category-customer-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:product.category-customer-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategoria"
 
 msgctxt "field:product.category-supplier-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:product.category-supplier-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:product.category-supplier-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Podatek"
 
 msgctxt "field:product.category-supplier-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:product.category-supplier-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
@@ -168,35 +178,35 @@ msgstr ""
 
 msgctxt "field:product.category.account,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategoria"
 
 msgctxt "field:product.category.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:product.category.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:product.category.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:product.category.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.category.account,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.category.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:product.category.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:product.configuration,default_accounts_category:"
 msgid "Use Category's accounts by default"
@@ -214,21 +224,13 @@ msgctxt "field:product.product,account_expense:"
 msgid "Account Expense"
 msgstr ""
 
-msgctxt "field:product.product,account_expense_used:"
-msgid "Account Expense Used"
-msgstr ""
-
 msgctxt "field:product.product,account_revenue:"
 msgid "Account Revenue"
 msgstr ""
 
-msgctxt "field:product.product,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr ""
-
 msgctxt "field:product.product,accounts:"
 msgid "Accounts"
-msgstr ""
+msgstr "Konta"
 
 msgctxt "field:product.product,accounts_category:"
 msgid "Use Category's accounts"
@@ -262,21 +264,13 @@ msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
 msgstr ""
 
-msgctxt "field:product.template,account_expense_used:"
-msgid "Account Expense Used"
-msgstr ""
-
 msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
 msgstr ""
 
-msgctxt "field:product.template,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr ""
-
 msgctxt "field:product.template,accounts:"
 msgid "Accounts"
-msgstr ""
+msgstr "Konta"
 
 msgctxt "field:product.template,accounts_category:"
 msgid "Use Category's accounts"
@@ -304,67 +298,99 @@ msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:product.template-customer-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:product.template-customer-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.template-customer-account.tax,product:"
 msgid "Product Template"
-msgstr ""
+msgstr "Szablon produktu"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Podatek"
 
 msgctxt "field:product.template-customer-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:product.template-customer-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "Kategoria"
+
+msgctxt "field:product.template-product.category.account,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:product.template-product.category.account,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:product.template-product.category.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.category.account,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr "Szablon"
+
+msgctxt "field:product.template-product.category.account,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:product.template-product.category.account,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
 
 msgctxt "field:product.template-supplier-account.tax,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:product.template-supplier-account.tax,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:product.template-supplier-account.tax,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
-msgstr ""
+msgstr "Szablon produktu"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Podatek"
 
 msgctxt "field:product.template-supplier-account.tax,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:product.template-supplier-account.tax,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "field:product.template.account,account_expense:"
 msgid "Account Expense"
@@ -376,35 +402,35 @@ msgstr ""
 
 msgctxt "field:product.template.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 msgctxt "field:product.template.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Data utworzenia"
 
 msgctxt "field:product.template.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Utworzył"
 
 msgctxt "field:product.template.account,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.template.account,rec_name:"
-msgid "Name"
-msgstr ""
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.template.account,template:"
 msgid "Template"
-msgstr ""
+msgstr "Szablon"
 
 msgctxt "field:product.template.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Data zapisu"
 
 msgctxt "field:product.template.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Zapisał"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
@@ -490,6 +516,10 @@ msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
 msgstr ""
 
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr ""
@@ -500,11 +530,19 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Category"
-msgstr ""
+msgstr "Kategoria"
 
 msgctxt "view:account.configuration:"
 msgid "Product"
-msgstr ""
+msgstr "Produkt"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "Kategoria"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Product"
+msgstr "Produkt"
 
 msgctxt "view:product.category:"
 msgid "Accounting"
@@ -512,11 +550,11 @@ msgstr ""
 
 msgctxt "view:product.category:"
 msgid "Accounts"
-msgstr ""
+msgstr "Konta"
 
 msgctxt "view:product.category:"
 msgid "Taxes"
-msgstr ""
+msgstr "Podatki"
 
 msgctxt "view:product.template:"
 msgid "Accounting"
@@ -524,8 +562,8 @@ msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Accounts"
-msgstr ""
+msgstr "Konta"
 
 msgctxt "view:product.template:"
 msgid "Taxes"
-msgstr ""
+msgstr "Podatki"

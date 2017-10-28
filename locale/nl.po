@@ -1,10 +1,12 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 #, fuzzy
 msgctxt "error:product.category:"
-msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
 msgstr ""
 "Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
 
@@ -49,14 +51,25 @@ msgctxt ""
 msgid "Default Account Revenue"
 msgstr ""
 
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "Kostenrekening"
-
-#, fuzzy
-msgctxt "field:product.category,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "Gebruikte kostenrekening"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
@@ -65,11 +78,6 @@ msgstr ""
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
 msgstr "Opbrengstrekening"
-
-#, fuzzy
-msgctxt "field:product.category,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "Opbrengstrekening gebruikt"
 
 #, fuzzy
 msgctxt "field:product.category,accounting:"
@@ -123,8 +131,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -160,8 +168,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -211,10 +219,9 @@ msgctxt "field:product.category.account,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.category.account,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.category.account,write_date:"
@@ -244,19 +251,9 @@ msgid "Account Expense"
 msgstr "Kostenrekening"
 
 #, fuzzy
-msgctxt "field:product.product,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "Gebruikte kostenrekening"
-
-#, fuzzy
 msgctxt "field:product.product,account_revenue:"
 msgid "Account Revenue"
 msgstr "Opbrengstrekening"
-
-#, fuzzy
-msgctxt "field:product.product,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "Opbrengstrekening gebruikt"
 
 #, fuzzy
 msgctxt "field:product.product,accounts:"
@@ -301,17 +298,9 @@ msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
 msgstr "Kostenrekening"
 
-msgctxt "field:product.template,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "Gebruikte kostenrekening"
-
 msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
 msgstr "Opbrengstrekening"
-
-msgctxt "field:product.template,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "Opbrengstrekening gebruikt"
 
 #, fuzzy
 msgctxt "field:product.template,accounts:"
@@ -364,8 +353,8 @@ msgid "Product Template"
 msgstr "Productsjabloon"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
@@ -378,6 +367,44 @@ msgstr "Schrijfdatum"
 
 #, fuzzy
 msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "Categorie"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.category.account,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,write_uid:"
 msgid "Write User"
 msgstr "Gebruiker"
 
@@ -401,8 +428,8 @@ msgid "Product Template"
 msgstr "Productsjabloon"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
@@ -447,10 +474,9 @@ msgctxt "field:product.template.account,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template.account,rec_name:"
-msgid "Name"
-msgstr "Naam"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template.account,template:"
 msgid "Template"
@@ -552,6 +578,10 @@ msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
 msgstr "Productsjabloon - Belasting verkoop"
 
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "Productsjabloon - Belasting inkoop"
@@ -566,6 +596,16 @@ msgstr "Categorie"
 
 #, fuzzy
 msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Producten"
+
+#, fuzzy
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "Categorie"
+
+#, fuzzy
+msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr "Producten"
 

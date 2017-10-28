@@ -1,9 +1,11 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
-msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
 msgstr ""
 
 msgctxt "error:product.template:"
@@ -46,12 +48,24 @@ msgctxt ""
 msgid "Default Account Revenue"
 msgstr ""
 
-msgctxt "field:product.category,account_expense:"
-msgid "Account Expense"
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
 msgstr ""
 
-msgctxt "field:product.category,account_expense_used:"
-msgid "Account Expense Used"
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:product.category,account_expense:"
+msgid "Account Expense"
 msgstr ""
 
 msgctxt "field:product.category,account_parent:"
@@ -60,10 +74,6 @@ msgstr ""
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
-
-msgctxt "field:product.category,account_revenue_used:"
-msgid "Account Revenue Used"
 msgstr ""
 
 msgctxt "field:product.category,accounting:"
@@ -110,10 +120,9 @@ msgctxt "field:product.category-customer-account.tax,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -143,10 +152,9 @@ msgctxt "field:product.category-supplier-account.tax,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -188,10 +196,9 @@ msgctxt "field:product.category.account,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category.account,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category.account,write_date:"
 msgid "Write Date"
@@ -217,16 +224,8 @@ msgctxt "field:product.product,account_expense:"
 msgid "Account Expense"
 msgstr ""
 
-msgctxt "field:product.product,account_expense_used:"
-msgid "Account Expense Used"
-msgstr ""
-
 msgctxt "field:product.product,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
-
-msgctxt "field:product.product,account_revenue_used:"
-msgid "Account Revenue Used"
 msgstr ""
 
 msgctxt "field:product.product,accounts:"
@@ -265,16 +264,8 @@ msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
 msgstr ""
 
-msgctxt "field:product.template,account_expense_used:"
-msgid "Account Expense Used"
-msgstr ""
-
 msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
-msgstr ""
-
-msgctxt "field:product.template,account_revenue_used:"
-msgid "Account Revenue Used"
 msgstr ""
 
 msgctxt "field:product.template,accounts:"
@@ -321,10 +312,9 @@ msgctxt "field:product.template-customer-account.tax,product:"
 msgid "Product Template"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
@@ -335,6 +325,38 @@ msgid "Write Date"
 msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,create_uid:"
+msgid "Create User"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,write_uid:"
 msgid "Write User"
 msgstr ""
 
@@ -354,10 +376,9 @@ msgctxt "field:product.template-supplier-account.tax,product:"
 msgid "Product Template"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
@@ -395,10 +416,9 @@ msgctxt "field:product.template.account,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template.account,rec_name:"
-msgid "Name"
-msgstr "Namu"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template.account,template:"
 msgid "Template"
@@ -496,6 +516,10 @@ msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
 msgstr ""
 
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr ""
@@ -509,6 +533,14 @@ msgid "Category"
 msgstr ""
 
 msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr ""
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr ""
+
+msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr ""
 

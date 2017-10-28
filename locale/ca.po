@@ -1,10 +1,14 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
-msgid "There is no account expense/revenue defined on the category %s (%d)"
-msgstr "La categoria %s (%d) no té cap compte de despeses/ingressos definit."
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr ""
+"La categoria %(name)s (%(id)d) no té cap compte de despeses/ingressos "
+"definit."
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
@@ -46,13 +50,25 @@ msgctxt ""
 msgid "Default Account Revenue"
 msgstr "Compte d'ingressos per defecte"
 
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr "Compte de despeses per defecte"
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr "Compte de ingressos per defecte"
+
+msgctxt "field:account.create_chart.properties,product_account_expense:"
+msgid "Default Expense Account"
+msgstr "Compte de despeses per defecte"
+
+msgctxt "field:account.create_chart.properties,product_account_revenue:"
+msgid "Default Revenue Account"
+msgstr "Compte de ingressos per defecte"
+
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "Compte de despeses"
-
-msgctxt "field:product.category,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "Compte de despeses usada"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
@@ -61,10 +77,6 @@ msgstr "Usa comptes pare"
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
 msgstr "Compte d'ingressos"
-
-msgctxt "field:product.category,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "Compte d'ingressos usada"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
@@ -111,8 +123,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -143,8 +155,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -187,8 +199,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.category.account,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:product.category.account,write_date:"
 msgid "Write Date"
@@ -214,17 +226,9 @@ msgctxt "field:product.product,account_expense:"
 msgid "Account Expense"
 msgstr "Compte de despeses"
 
-msgctxt "field:product.product,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "Compte de despeses usada"
-
 msgctxt "field:product.product,account_revenue:"
 msgid "Account Revenue"
 msgstr "Compte d'ingressos"
-
-msgctxt "field:product.product,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "Compte d'ingressos usada"
 
 msgctxt "field:product.product,accounts:"
 msgid "Accounts"
@@ -262,17 +266,9 @@ msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
 msgstr "Compte de despeses"
 
-msgctxt "field:product.template,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "Compte de despeses usada"
-
 msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
 msgstr "Compte d'ingressos"
-
-msgctxt "field:product.template,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "Compte d'ingressos usada"
 
 msgctxt "field:product.template,accounts:"
 msgid "Accounts"
@@ -319,8 +315,8 @@ msgid "Product Template"
 msgstr "Plantilla de producte"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
@@ -331,6 +327,38 @@ msgid "Write Date"
 msgstr "Data de modificació"
 
 msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:product.template-product.category.account,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:product.template-product.category.account,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:product.template-product.category.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.template-product.category.account,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:product.template-product.category.account,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:product.template-product.category.account,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
@@ -351,8 +379,8 @@ msgid "Product Template"
 msgstr "Plantilla de producte"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
@@ -391,8 +419,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template.account,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:product.template.account,template:"
 msgid "Template"
@@ -498,6 +526,10 @@ msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
 msgstr "Plantilla de producte - Impost client"
 
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr "Plantilla - Categoria Comptable"
+
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "Plantilla de producte - Impost proveïdor"
@@ -511,6 +543,14 @@ msgid "Category"
 msgstr "Categoria"
 
 msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr "Producte"
 

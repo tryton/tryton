@@ -1,9 +1,12 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "error:product.category:"
-msgid "There is no account expense/revenue defined on the category %s (%d)"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
 msgstr "ບໍ່ມີ ບັນຊີລາຍຈ່າຍ - ລາຍຮັບ ທີ່ກຳນົດໄວ້ໃນ ໝວດ %s (%d)"
 
 msgctxt "error:product.template:"
@@ -50,13 +53,25 @@ msgctxt ""
 msgid "Default Account Revenue"
 msgstr "ບັນຊີພາກຮັບ"
 
+msgctxt "field:account.create_chart.properties,category_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,category_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_expense:"
+msgid "Default Expense Account"
+msgstr ""
+
+msgctxt "field:account.create_chart.properties,product_account_revenue:"
+msgid "Default Revenue Account"
+msgstr ""
+
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
 msgstr "ບັນຊີລາຍຈ່າຍ"
-
-msgctxt "field:product.category,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "ບັນຊີລາຍຈ່າຍທີ່ໃຊ້"
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
@@ -65,10 +80,6 @@ msgstr "ໃຊ້ຮ່ວງບັນຊີ"
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
 msgstr "ບັນຊີລາຍຮັບ"
-
-msgctxt "field:product.category,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "ບັນຊີລາຍຮັບທີ່ໃຊ້"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
@@ -116,8 +127,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -148,8 +159,8 @@ msgid "ID"
 msgstr "ເລກລຳດັບ"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -197,10 +208,9 @@ msgctxt "field:product.category.account,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:product.category.account,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:product.category.account,write_date:"
@@ -228,17 +238,9 @@ msgctxt "field:product.product,account_expense:"
 msgid "Account Expense"
 msgstr "ບັນຊີລາຍຈ່າຍ"
 
-msgctxt "field:product.product,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "ບັນຊີລາຍຈ່າຍທີ່ໃຊ້"
-
 msgctxt "field:product.product,account_revenue:"
 msgid "Account Revenue"
 msgstr "ບັນຊີລາຍຮັບ"
-
-msgctxt "field:product.product,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "ບັນຊີລາຍຮັບທີ່ໃຊ້"
 
 #, fuzzy
 msgctxt "field:product.product,accounts:"
@@ -277,17 +279,9 @@ msgctxt "field:product.template,account_expense:"
 msgid "Account Expense"
 msgstr "ບັນຊີລາຍຈ່າຍ"
 
-msgctxt "field:product.template,account_expense_used:"
-msgid "Account Expense Used"
-msgstr "ບັນຊີລາຍຈ່າຍທີ່ໃຊ້"
-
 msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
 msgstr "ບັນຊີລາຍຮັບ"
-
-msgctxt "field:product.template,account_revenue_used:"
-msgid "Account Revenue Used"
-msgstr "ບັນຊີລາຍຮັບທີ່ໃຊ້"
 
 #, fuzzy
 msgctxt "field:product.template,accounts:"
@@ -335,8 +329,8 @@ msgid "Product Template"
 msgstr "ຮ່າງແບບຜະລິດຕະພັນ"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
@@ -347,6 +341,44 @@ msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:product.template-customer-account.tax,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,category:"
+msgid "Category"
+msgstr "ໝວດ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+msgctxt "field:product.template-product.category.account,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:product.template-product.category.account,template:"
+msgid "Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:product.template-product.category.account,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
@@ -367,8 +399,8 @@ msgid "Product Template"
 msgstr "ຮ່າງແບບຜະລິດຕະພັນ"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
@@ -411,10 +443,9 @@ msgctxt "field:product.template.account,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
-#, fuzzy
 msgctxt "field:product.template.account,rec_name:"
-msgid "Name"
-msgstr "ຊື່"
+msgid "Record Name"
+msgstr ""
 
 msgctxt "field:product.template.account,template:"
 msgid "Template"
@@ -516,6 +547,10 @@ msgctxt "model:product.template-customer-account.tax,name:"
 msgid "Product Template - Customer Tax"
 msgstr "ຮ່າງແບບຜະລິດຕະພັນ - ພາສີລູກຄ້າ"
 
+msgctxt "model:product.template-product.category.account,name:"
+msgid "Template - Account Category"
+msgstr ""
+
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "ຮ່າງແບບຜະລິດຕະພັນ - ພາສີຜູ້ສະໜອງ"
@@ -529,6 +564,16 @@ msgid "Category"
 msgstr "ໝວດ"
 
 msgctxt "view:account.configuration:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+#, fuzzy
+msgctxt "view:account.create_chart.properties:"
+msgid "Category"
+msgstr "ໝວດ"
+
+#, fuzzy
+msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
