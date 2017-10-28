@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,7 +27,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:product.cultivar,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.cultivar,selectable:"
@@ -69,7 +69,7 @@ msgid "ID"
 msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
@@ -106,7 +106,7 @@ msgid "Name"
 msgstr ""
 
 msgctxt "field:product.cultivar.group,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.cultivar.group,write_date:"
@@ -150,7 +150,7 @@ msgid "Type"
 msgstr ""
 
 msgctxt "field:product.taxon,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:product.taxon,selectable:"

@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,8 +27,8 @@ msgid "Name"
 msgstr "Nazwa"
 
 msgctxt "field:product.cultivar,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -67,8 +67,8 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -103,8 +103,8 @@ msgid "Name"
 msgstr "Nazwa"
 
 msgctxt "field:product.cultivar.group,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -120,7 +120,7 @@ msgstr "Aktywny"
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr "Elementy podrzędne"
+msgstr "Taksony podrzędne"
 
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
@@ -140,15 +140,15 @@ msgstr "Nazwa"
 
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr "Element nadrzędny"
+msgstr "Takson nadrzędny"
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
 msgstr "Typ"
 
 msgctxt "field:product.taxon,rec_name:"
-msgid "Name"
-msgstr "Nazwa"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
