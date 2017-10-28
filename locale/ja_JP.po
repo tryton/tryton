@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -27,7 +27,7 @@ msgid "Product"
 msgstr ""
 
 msgctxt "field:stock.product.location,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr ""
 
 msgctxt "field:stock.product.location,sequence:"
