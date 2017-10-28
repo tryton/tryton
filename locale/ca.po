@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -23,8 +23,8 @@ msgid "Supplier"
 msgstr "Proveïdor"
 
 msgctxt "field:purchase.product_supplier.day,rec_name:"
-msgid "Name"
-msgstr "Nom"
+msgid "Record Name"
+msgstr "Nom del registre"
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
