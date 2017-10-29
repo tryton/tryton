@@ -87,6 +87,7 @@ class Database(DatabaseInterface):
         'INTEGER': SQLType('SIGNED INTEGER', 'BIGINT'),
         'BIGINTEGER': SQLType('SIGNED INTEGER', 'BIGINT'),
         'NUMERIC': SQLType('DECIMAL', 'DECIMAL(65, 30)'),
+        'INTERVAL': SQLType('DOUBLE', 'DOUBLE(255, 6)'),
         }
 
     def connect(self):
