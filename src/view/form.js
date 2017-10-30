@@ -381,7 +381,7 @@ function eval_pyson(value){
                 if (reset_view) {
                     for (i = 0; i < this.notebooks.length; i++) {
                         notebook = this.notebooks[i];
-                        notebook.set_current_page(0);
+                        notebook.set_current_page();
                     }
                 }
                 if (this.attributes.cursor in this.widgets) {
@@ -760,8 +760,13 @@ function eval_pyson(value){
             return page;
         },
         set_current_page: function(page_index) {
-            var tab = this.nav.find(
-                    'li[role="presentation"]:eq(' + page_index + ') a');
+            var selector;
+            if (page_index === undefined) {
+                selector = ':visible:first';
+            } else {
+                selector = ':eq(' + page_index + '):visible';
+            }
+            var tab = this.nav.find('li' + selector + ' a');
             tab.tab('show');
         },
         get_n_pages: function() {
@@ -776,6 +781,12 @@ function eval_pyson(value){
         init: function(el, attributes) {
             Sao.View.Form.Page._super.init.call(this, attributes);
             this.el = el;
+        },
+        hide: function() {
+            Sao.View.Form.Page._super.hide.call(this);
+            if (this.el.hasClass('active')) {
+                this.el.next(':visible').find('a').tab('show');
+            }
         }
     });
 
