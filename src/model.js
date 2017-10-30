@@ -24,7 +24,7 @@
             }
             return added;
         },
-        execute: function(method, params, context) {
+        execute: function(method, params, context, async) {
             if (context === undefined) {
                 context = {};
             }
@@ -32,7 +32,7 @@
                 'method': 'model.' + this.name + '.' + method,
                 'params': params.concat(context)
             };
-            return Sao.rpc(args, this.session);
+            return Sao.rpc(args, this.session, async);
         },
         find: function(condition, offset, limit, order, context) {
             if (!offset) offset = 0;
