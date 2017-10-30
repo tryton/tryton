@@ -87,7 +87,6 @@ class Database(DatabaseInterface):
             if name in cls._databases:
                 return cls._databases[name]
             inst = DatabaseInterface.__new__(cls, name=name)
-            cls._databases[name] = inst
 
             logger.info('connect to "%s"', name)
             minconn = config.getint('database', 'minconn', default=1)
@@ -96,6 +95,7 @@ class Database(DatabaseInterface):
                 minconn, maxconn, cls.dsn(name),
                 cursor_factory=LoggingCursor)
 
+            cls._databases[name] = inst
             return inst
 
     @classmethod

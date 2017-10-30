@@ -7,6 +7,7 @@ import unittest
 import doctest
 import re
 import subprocess
+import time
 from itertools import chain
 import operator
 from functools import wraps
@@ -614,7 +615,15 @@ doctest_checker = Py23DocChecker()
 
 class TestSuite(unittest.TestSuite):
     def run(self, *args, **kwargs):
-        exist = db_exist()
+        DatabaseOperationalError = backend.get('DatabaseOperationalError')
+        while True:
+            try:
+                exist = db_exist()
+                break
+            except DatabaseOperationalError, err:
+                # Retry on connection error
+                sys.stderr.write(str(err))
+                time.sleep(1)
         result = super(TestSuite, self).run(*args, **kwargs)
         if not exist:
             drop_db()
