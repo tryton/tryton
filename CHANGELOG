@@ -1,3 +1,5 @@
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
 * Show all products by category
 * Limit cost method to fixed for service
 * Move cost_price from Template to Product
