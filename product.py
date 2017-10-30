@@ -104,7 +104,7 @@ class Product:
 
     @classmethod
     def get_sale_price_uom(cls, products, name):
-        quantity = Transaction().context.get('quantity', 0)
+        quantity = Transaction().context.get('quantity') or 0
         return cls.get_sale_price(products, quantity=quantity)
 
     @staticmethod
