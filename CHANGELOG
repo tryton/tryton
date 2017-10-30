@@ -1,3 +1,5 @@
+Version 4.6.0 - 2017-10-30
+* Bug fixes (see mercurial logs for details)
 * Allow to export model and record name of Reference fields
 * Re-position buttons on Binary/Image widget
 * Set focus on first visible input when modal is shown
