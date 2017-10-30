@@ -34,7 +34,10 @@ class StatementImport:
                 })
 
     def parse_coda(self, encoding='windows-1252'):
-        file_ = StringIO(unicode(self.start.file_, encoding=encoding))
+        file_ = self.start.file_
+        if not isinstance(file_, unicode):
+            file_ = file_.decode(encoding)
+        file_ = StringIO(file_)
         coda = CODA(file_)
         for coda_statement in coda.statements:
             statement = self.coda_statement(coda_statement)
