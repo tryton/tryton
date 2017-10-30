@@ -13,13 +13,14 @@
         add_fields: function(descriptions) {
             var added = [];
             for (var name in descriptions) {
-                if (descriptions.hasOwnProperty(name) &&
-                    (!(name in this.fields))) {
-                        var desc = descriptions[name];
-                        var Field = Sao.field.get(desc.type);
-                        this.fields[name] = new Field(desc);
-                        added.push(name);
-                    }
+                var desc = descriptions[name];
+                if (!(name in this.fields)) {
+                    var Field = Sao.field.get(desc.type);
+                    this.fields[name] = new Field(desc);
+                    added.push(name);
+                } else {
+                    jQuery.extend(this.fields[name].description, desc);
+                }
             }
             return added;
         },
