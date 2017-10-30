@@ -313,6 +313,7 @@ function eval_pyson(value){
             };
             return jQuery.when.apply(jQuery,promesses)
                 .done(function() {
+                    var record = this.screen.current_record;
                     for (name in this.widgets) {
                         var widgets = this.widgets[name];
                         field = null;
@@ -326,6 +327,7 @@ function eval_pyson(value){
                     }
                 }.bind(this))
                 .done(function() {
+                    var record = this.screen.current_record;
                     var j;
                     for (j in this.state_widgets) {
                         var state_widget = this.state_widgets[j];
