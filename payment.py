@@ -471,6 +471,15 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def get_identification_readonly(self, name):
         return bool(self.identification)
 
+    def get_rec_name(self, name):
+        if self.identification:
+            return self.identification
+        return '(%s)' % self.id
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [tuple(('identification',)) + tuple(clause[1:])]
+
     @classmethod
     def create(cls, vlist):
         pool = Pool()
