@@ -1054,6 +1054,10 @@ def process_exception(exception, *args, **kwargs):
                 except TrytonServerError, exception:
                     return process_exception(exception, *args,
                         rpc_execute=rpc_execute)
+        else:
+            error(exception.faultCode, exception.faultString)
+    else:
+        error(str(exception), traceback.format_exc())
     raise RPCException(exception)
 
 
