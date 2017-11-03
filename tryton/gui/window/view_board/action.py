@@ -57,7 +57,7 @@ class Action(SignalEvent):
         search_context['context'] = self.context
         search_context['_user'] = rpc._USER
         search_value = PYSONDecoder(search_context).decode(
-            self.action['pyson_search_value'] or '{}')
+            self.action['pyson_search_value'] or '[]')
 
         self.widget = gtk.Frame()
         self.widget.set_border_width(0)
