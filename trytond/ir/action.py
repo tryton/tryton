@@ -902,7 +902,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
         defaults = {
             'domain': '[]',
             'context': '{}',
-            'search_value': '{}',
+            'search_value': '[]',
             }
         for window in windows:
             pysons[window.id] = (getattr(window, field)
