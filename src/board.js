@@ -230,7 +230,7 @@
                 search_context._user = Sao.Session.current_session.user_id;
                 decoder = new Sao.PYSON.Decoder(search_context);
                 search_value = decoder.decode(
-                        this.action.pyson_search_value || '{}');
+                        this.action.pyson_search_value || '[]');
 
                 screen_attributes = {
                     mode: this.action.mode,
