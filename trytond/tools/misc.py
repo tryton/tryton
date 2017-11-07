@@ -114,11 +114,11 @@ def get_smtp_server():
     :return: A SMTP instance. The quit() method must be call when all
     the calls to sendmail() have been made.
     """
-    from ..sendmail import _get_smtp_server
+    from ..sendmail import get_smtp_server
     warnings.warn(
         'get_smtp_server is deprecated use trytond.sendmail',
         DeprecationWarning)
-    return _get_smtp_server()
+    return get_smtp_server()
 
 
 def memoize(maxsize):
