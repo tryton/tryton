@@ -2,7 +2,7 @@
 # Automatically generated file, do not edit
 # Created by gtk-query-immodules-2.0 from gtk+-2.24.30
 #
-# ModulesPath = /Users/ced/.gtk-2.0/2.10.0/x86_64-apple-darwin15.5.0/immodules:/Users/ced/.gtk-2.0/2.10.0/immodules:/Users/ced/.gtk-2.0/x86_64-apple-darwin15.5.0/immodules:/Users/ced/.gtk-2.0/immodules:@executable_path/lib/gtk-2.0/2.10.0/x86_64-apple-darwin15.5.0/immodules:/Users/ced/gtk/inst/lib/gtk-2.0/2.10.0/immodules:/Users/ced/gtk/inst/lib/gtk-2.0/x86_64-apple-darwin15.5.0/immodules:/Users/ced/gtk/inst/lib/gtk-2.0/immodules
+# ModulesPath = @executable_path/lib/gtk-2.0/immodules
 #
 "@executable_path/lib/gtk-2.0/2.10.0/immodules/im-am-et.so" 
 "am_et" "Amharic (EZ+)" "gtk20" "@executable_path/share/locale" "am" 
