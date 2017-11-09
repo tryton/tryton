@@ -830,7 +830,7 @@ class ViewTree(View):
             return True
         if drop_info:
             path, position = drop_info
-            check_path = path
+            check_path = tuple(path)
             if position in (gtk.TREE_VIEW_DROP_BEFORE,
                     gtk.TREE_VIEW_DROP_AFTER):
                 check_path = path[:-1]
