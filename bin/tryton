@@ -28,6 +28,12 @@ if hasattr(sys, 'frozen'):
     os.environ.setdefault('SSL_CERT_DIR',
         os.path.join(etc, 'ssl', 'certs'))
 
+    # On first launch the MacOSX app launcher may append an extra unique
+    # argument starting with -psn_. This must be filtered to not crash the
+    # option parser.
+    if sys.platform == 'darwin':
+        sys.argv = [a for a in sys.argv if not a.startswith('-psn_')]
+
 
 # Disable dbusmenu to show second menu in tabs
 os.environ['UBUNTU_MENUPROXY'] = '0'
