@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -e
 version=`python setup.py --version`
 python setup-freeze.py bdist_mac
 rm -rf dist

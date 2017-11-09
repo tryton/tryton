@@ -1,5 +1,6 @@
 import os
 import sys
+import user
 from subprocess import Popen, PIPE
 
 from cx_Freeze import setup, Executable
@@ -52,12 +53,10 @@ setup(name='tryton',
     version=version,
     options={
         'build_exe': {
-            'compressed': False,
+            'no_compress': True,
             'include_files': include_files,
             'silent': True,
             'packages': ['gtk'],
-            'icon': os.path.join(
-                'tryton', 'data', 'pixmaps', 'tryton', 'tryton.ico'),
             'include_msvcr': True,
             },
         'bdist_mac': {
@@ -68,4 +67,7 @@ setup(name='tryton',
         },
     executables=[Executable(
             'bin/tryton',
-            base='Win32GUI' if sys.platform == 'win32' else None)])
+            base='Win32GUI' if sys.platform == 'win32' else None,
+            icon=os.path.join(
+                'tryton', 'data', 'pixmaps', 'tryton', 'tryton.ico'),
+            )])
