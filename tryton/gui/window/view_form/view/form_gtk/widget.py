@@ -177,7 +177,7 @@ class TranslateDialog(NoModal):
             label.set_mnemonic_widget(widget)
             self.widget.translate_widget_set(widget, fuzzy_value)
             self.widget.translate_widget_set_readonly(widget, True)
-            yopt = None
+            yopt = 0
             if self.widget.expand:
                 yopt = gtk.EXPAND | gtk.FILL
             table.attach(widget, 1, 2, i, i + 1, yoptions=yopt)
