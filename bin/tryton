@@ -23,10 +23,11 @@ if hasattr(sys, 'frozen'):
             etc, 'gtk-2.0', 'gdk-pixbuf.loaders')
     os.environ['GTK_IM_MODULE_FILE'] = os.path.join(
             etc, 'gtk-2.0', 'gtk.immodules')
-    os.environ.setdefault('SSL_CERT_FILE',
-        os.path.join(etc, 'ssl', 'cert.pem'))
-    os.environ.setdefault('SSL_CERT_DIR',
-        os.path.join(etc, 'ssl', 'certs'))
+    if sys.platform == 'win32':
+        os.environ.setdefault('SSL_CERT_FILE',
+            os.path.join(etc, 'ssl', 'cert.pem'))
+        os.environ.setdefault('SSL_CERT_DIR',
+            os.path.join(etc, 'ssl', 'certs'))
 
     # On first launch the MacOSX app launcher may append an extra unique
     # argument starting with -psn_. This must be filtered to not crash the
