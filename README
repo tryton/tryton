@@ -56,7 +56,7 @@ backends available. Here are some warnings about using other backends:
 
   * SQLite
 
-    * SQLite can not alter column definitions nor create foreign keys.
+    * SQLite can not create foreign keys.
 
     * SQL constraints are validated by Tryton instead of database.
 
