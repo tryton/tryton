@@ -1191,17 +1191,15 @@ class RPCProgress(object):
     def process(self):
         if self.parent and self.parent.get_window():
             self.parent.get_window().set_cursor(None)
-        if self.exception:
-            if self.process_exception_p:
-                def rpc_execute(*args):
-                    return RPCProgress('execute',
-                        args).run(self.process_exception_p, self.callback)
-                return process_exception(self.exception, *self.args,
-                    rpc_execute=rpc_execute)
 
         def return_():
             if self.exception:
-                raise self.exception
+                if self.process_exception_p:
+                    def rpc_execute(*args):
+                        return RPCProgress('execute',
+                            args).run(self.process_exception_p, self.callback)
+                    return process_exception(self.exception, *self.args,
+                        rpc_execute=rpc_execute)
             else:
                 return self.res
 
