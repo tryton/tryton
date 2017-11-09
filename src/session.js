@@ -130,7 +130,7 @@
         var dialog = Sao.Session.login_dialog();
 
         var empty_field = function() {
-            return dialog.modal.find('input,select').filter(':visible')
+            return dialog.modal.find('input,select').filter(':visible:not([readonly])')
                 .filter(function() {
                     return !jQuery(this).val();
                 });
@@ -188,7 +188,6 @@
             el.prop('readonly', databases.length == 1);
             el.show();
             el.val(database || '');
-            empty_field().first().focus();
         });
         return dfd.promise();
     };
