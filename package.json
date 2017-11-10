@@ -36,6 +36,7 @@
     "postinstall": "./node_modules/.bin/bower install --allow-root"
   },
   "devDependencies": {
+    "phantomjs-prebuilt": "2.1.15",
     "grunt": "^0.4",
     "grunt-cli": "^0.1",
     "grunt-contrib-concat": "^0.5",
