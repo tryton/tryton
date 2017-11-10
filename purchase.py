@@ -472,24 +472,13 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('product', 'unit', 'quantity', 'description', 'supplier')
     def on_change_product(self):
-        pool = Pool()
-        Product = pool.get('product.product')
-
         if not self.product:
             return
-
-        context = {}
-        if self.supplier and self.supplier.lang:
-            context['language'] = self.supplier.lang.code
 
         category = self.product.purchase_uom.category
         if not self.unit or self.unit.category != category:
             self.unit = self.product.purchase_uom
             self.unit_digits = self.product.purchase_uom.digits
-
-        if not self.description:
-            with Transaction().set_context(context):
-                self.description = Product(self.product.id).rec_name
 
     @fields.depends('quantity', 'unit_price', 'unit',
         '_parent_requisition.currency')
