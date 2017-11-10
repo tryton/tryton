@@ -10,7 +10,7 @@ from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['FiscalYear', 'FiscalYearLine',
+__all__ = ['FiscalYear',
     'BalanceNonDeferralStart', 'BalanceNonDeferral',
     'RenewFiscalYearStart', 'RenewFiscalYear']
 
@@ -53,8 +53,6 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ], select=True)
-    close_lines = fields.Many2Many('account.fiscalyear-account.move.line',
-            'fiscalyear', 'line', 'Close Lines')
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
 
     @classmethod
@@ -340,16 +338,6 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                 ('fiscalyear', 'in', [f.id for f in fiscalyears]),
                 ])
         Period.lock(periods)
-
-
-class FiscalYearLine(ModelSQL):
-    'Fiscal Year - Move Line'
-    __name__ = 'account.fiscalyear-account.move.line'
-    _table = 'account_fiscalyear_line_rel'
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            ondelete='CASCADE', select=True)
-    line = fields.Many2One('account.move.line', 'Line', ondelete='RESTRICT',
-            select=True, required=True)
 
 
 class BalanceNonDeferralStart(ModelView):

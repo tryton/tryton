@@ -16,7 +16,6 @@ from .party import *
 def register():
     Pool.register(
         FiscalYear,
-        FiscalYearLine,
         BalanceNonDeferralStart,
         TypeTemplate,
         Type,
