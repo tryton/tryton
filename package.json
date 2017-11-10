@@ -36,6 +36,7 @@
     "postinstall": "./node_modules/.bin/bower install"
   },
   "devDependencies": {
+    "phantomjs-prebuilt": "2.1.15",
     "grunt-contrib-nodeunit": "^0.4",
     "grunt-contrib-qunit": "^1.2",
     "grunt-contrib-watch": "^0.6",
