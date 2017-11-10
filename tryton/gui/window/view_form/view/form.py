@@ -39,14 +39,24 @@ _ = gettext.gettext
 
 
 class Container(object):
-    def __init__(self, col=4):
+
+    @staticmethod
+    def constructor(col=4, homogeneous=False):
         if CONFIG['client.modepda']:
             col = 1
+        if col <= 0:
+            return HContainer(col, homogeneous)
+        elif col == 1:
+            return VContainer(col, homogeneous)
+        else:
+            return Container(col, homogeneous)
+
+    def __init__(self, col=4, homogeneous=False):
         if col < 0:
             col = 0
         self.col = col
         self.table = gtk.Table(1, col)
-        self.table.set_homogeneous(False)
+        self.table.set_homogeneous(homogeneous)
         self.table.set_col_spacings(0)
         self.table.set_row_spacings(0)
         self.table.set_border_width(0)
@@ -111,6 +121,42 @@ class Container(object):
             ypadding=1, xpadding=2)
 
 
+class VContainer(Container):
+    def __init__(self, col=1, homogeneous=False):
+        self.col = 1
+        self.table = gtk.VBox()
+        self.table.set_homogeneous(homogeneous)
+
+    def add_row(self):
+        pass
+
+    def add_col(self):
+        pass
+
+    def add(self, widget, attributes):
+        expand = bool(int(attributes.get('yexpand', False)))
+        fill = bool(int(attributes.get('yfill', False)))
+        self.table.pack_start(widget, expand=expand, fill=fill, padding=2)
+
+
+class HContainer(Container):
+    def __init__(self, col=0, homogeneous=False):
+        self.col = 0
+        self.table = gtk.HBox()
+        self.table.set_homogeneous(homogeneous)
+
+    def add_row(self):
+        pass
+
+    def add_col(self):
+        pass
+
+    def add(self, widget, attributes):
+        expand = bool(int(attributes.get('xexpand', True)))
+        fill = bool(int(attributes.get('xfill', True)))
+        self.table.pack_start(widget, expand=expand, fill=fill, padding=1)
+
+
 class ViewForm(View):
     editable = True
 
@@ -142,7 +188,9 @@ class ViewForm(View):
     def parse(self, node, container=None):
         if not container:
             node_attrs = node_attributes(node)
-            container = Container(int(node_attrs.get('col', 4)))
+            container = Container.constructor(
+                int(node_attrs.get('col', 4)),
+                node_attrs.get('homogeneous', False))
         mnemonics = {}
         for node in node.childNodes:
             if node.nodeType != node.ELEMENT_NODE:
@@ -212,7 +260,7 @@ class ViewForm(View):
 
         label = Label(attributes.get('string', ''), attrs=attributes)
         label.set_alignment(float(attributes.get('xalign', 1.0)),
-            float(attributes.get('yalign', 0.0)))
+            float(attributes.get('yalign', 0.5)))
         label.set_angle(int(attributes.get('angle', 0)))
         attributes.setdefault('xexpand', 0)
         self.state_widgets.append(label)
@@ -327,7 +375,6 @@ class ViewForm(View):
 
     def _parse_group(self, node, container, attributes):
         group = self.parse(node)
-        group.table.set_homogeneous(attributes.get('homogeneous', False))
         if 'name' in attributes:
             field = self.screen.group.fields[attributes['name']]
             if attributes['name'] == self.screen.exclude_field:
