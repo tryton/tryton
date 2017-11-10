@@ -132,11 +132,16 @@ button {
 
 .form {
     width: 100%;
-    & table.form-container {
-        width: 100%;
-        & > tbody > tr > td {
-            padding: 1px;
-        }
+    & table.form-container > tbody > tr > td {
+        padding: 1px;
+    }
+    & table.form-hcontainer > tbody > tr > td {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    & table.form-vcontainer > tbody > tr > td {
+        padding-left: 0px;
+        padding-right: 0px;
     }
     & td.form-label {
         white-space: pre;

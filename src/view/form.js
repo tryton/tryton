@@ -449,6 +449,11 @@ function eval_pyson(value){
             this.el = jQuery('<table/>', {
                 'class': 'form-container responsive responsive-noheader'
             });
+            if (this.col <= 0) {
+                this.el.addClass('form-hcontainer');
+            } else if (this.col == 1) {
+                this.el.addClass('form-vcontainer');
+            }
             this.add_row();
         },
         add_row: function() {
