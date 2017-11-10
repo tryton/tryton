@@ -439,55 +439,21 @@ class CreatePurchase(Wizard):
         Request.update_state(requests)
         return 'end'
 
-    @staticmethod
-    def _get_tax_rule_pattern(line, purchase):
-        '''
-        Get tax rule pattern
-        '''
-        return {}
-
     @classmethod
     def compute_purchase_line(cls, key, requests, purchase):
         pool = Pool()
-        Product = pool.get('product.product')
         Line = pool.get('purchase.line')
 
         line = Line()
+        line.unit_price = Decimal(0).quantize(
+            Decimal(1) / 10 ** Line.unit_price.digits[1])
         for f, v in key:
             setattr(line, f, v)
         if not line.description:
             line.description = line.product.name
         line.quantity = sum(r.quantity for r in requests)
-
-        if not getattr(line, 'unit_price', None):
-            if line.product and line.unit:
-                with Transaction().set_context(uom=line.unit.id,
-                        supplier=purchase.party.id,
-                        currency=purchase.currency.id):
-                    product_price = Product.get_purchase_price(
-                        [line.product], line.quantity)[line.product.id]
-            else:
-                product_price = Decimal(0)
-            product_price = product_price.quantize(
-                Decimal(1) / 10 ** Line.unit_price.digits[1])
-            line.unit_price = product_price
-
-        taxes = []
-        pattern = cls._get_tax_rule_pattern(line, purchase)
-        if line.product:
-            for tax in line.product.supplier_taxes_used:
-                if purchase.party and purchase.party.supplier_tax_rule:
-                    tax_ids = purchase.party.supplier_tax_rule.apply(
-                        tax, pattern)
-                    if tax_ids:
-                        taxes.extend(tax_ids)
-                    continue
-                taxes.append(tax.id)
-        if purchase.party and purchase.party.supplier_tax_rule:
-            tax_ids = purchase.party.supplier_tax_rule.apply(None, pattern)
-            if tax_ids:
-                taxes.extend(tax_ids)
-            line.taxes = taxes
+        line.purchase = purchase
+        line.on_change_product()
         return line
 
 
