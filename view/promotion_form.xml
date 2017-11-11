@@ -21,5 +21,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="quantity"/>
     <label name="unit"/>
     <field name="unit"/>
-    <field name="products" colspan="4" view_ids="product.product_view_tree_simple"/>
+    <field name="categories" colspan="2"/>
+    <field name="products" colspan="2" view_ids="product.product_view_tree_simple"/>
 </form>

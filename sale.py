@@ -14,7 +14,7 @@ from trytond.tools import decistmt
 from trytond.modules.product import price_digits
 
 __all__ = ['Sale', 'SaleLine',
-    'SalePromotion', 'SalePromotion_Product']
+    'SalePromotion', 'SalePromotion_Product', 'SalePromotion_ProductCategory']
 
 
 class Sale:
@@ -124,14 +124,11 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
         depends=['quantity'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
-    unit_category = fields.Function(fields.Many2One('product.uom.category',
-            'Unit Category'), 'on_change_with_unit_category')
     products = fields.Many2Many('sale.promotion-product.product',
-        'promotion', 'product', 'Products',
-        domain=[
-            ('default_uom_category', '=', Eval('unit_category')),
-            ],
-        depends=['unit_category'])
+        'promotion', 'product', 'Products')
+    categories = fields.Many2Many(
+        'sale.promotion-product.category', 'promotion', 'category',
+        "Categories")
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
             '- unit_price: the original unit_price'))
@@ -158,11 +155,6 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
         if self.unit:
             return self.unit.digits
         return 2
-
-    @fields.depends('unit')
-    def on_change_with_unit_category(self, name=None):
-        if self.unit:
-            return self.unit.category.id
 
     @classmethod
     def validate(cls, promotions):
@@ -235,10 +227,21 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
         return super(SalePromotion, self).match(pattern)
 
     def is_valid_sale_line(self, line):
-        if self.products:
-            return line.product in self.products
-        elif self.unit:
-            return line.unit.category == self.unit.category
+
+        def parents(categories):
+            for category in categories:
+                while category:
+                    yield category
+                    category = category.parent
+
+        if self.unit and line.unit.category != self.unit.category:
+            return False
+        elif self.products and line.product not in self.products:
+            return False
+        elif (self.categories
+                and not set(parents(line.product.categories_all)).intersection(
+                    self.categories)):
+            return False
         else:
             return True
 
@@ -289,4 +292,16 @@ class SalePromotion_Product(ModelSQL):
     promotion = fields.Many2One('sale.promotion', 'Promotion',
         required=True, ondelete='CASCADE', select=True)
     product = fields.Many2One('product.product', 'Product',
+        required=True, ondelete='CASCADE')
+
+
+class SalePromotion_ProductCategory(ModelSQL):
+    "Sale Promotion - Product Category"
+    __name__ = 'sale.promotion-product.category'
+
+    promotion = fields.Many2One(
+        'sale.promotion', "Promotion",
+        required=True, ondelete='CASCADE', select=True)
+    category = fields.Many2One(
+        'product.category', "Category",
         required=True, ondelete='CASCADE')

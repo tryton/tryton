@@ -41,6 +41,16 @@ Create products::
     >>> ProductUom = Model.get('product.uom')
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
+    >>> Category = Model.get('product.category')
+
+    >>> category = Category(name="Root")
+    >>> category1 = category.childs.new(name="Child 1")
+    >>> category1b = category1.childs.new(name="Child 1b")
+    >>> category2 = category.childs.new(name="Child 2")
+    >>> category.save()
+    >>> category1, category2 = category.childs
+    >>> category1b, = category1.childs
+
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
@@ -50,6 +60,7 @@ Create products::
     >>> template.lead_time = datetime.timedelta(0)
     >>> template.list_price = Decimal('20')
     >>> template.account_revenue = revenue
+    >>> template.categories.append(Category(category1b.id))
     >>> template.save()
     >>> product1 = Product()
     >>> product1.template = template
@@ -60,6 +71,9 @@ Create products::
     >>> product3 = Product()
     >>> product3.template = template
     >>> product3.save()
+
+    >>> template4, = template.duplicate(default={'categories': [category2.id]})
+    >>> product4 = Product(template4.products[0].id)
 
 Create payment term::
 
@@ -72,7 +86,8 @@ Create Promotion::
     >>> promotion = Promotion(name='10% on 10 products 1 or 2')
     >>> promotion.quantity = 10
     >>> promotion.unit = unit
-    >>> promotion.products.extend([product1, product2])
+    >>> promotion.products.extend([product1, product2, product4])
+    >>> promotion.categories.append(Category(category1.id))
     >>> promotion.formula = '0.9 * unit_price'
     >>> promotion.save()
 
@@ -90,7 +105,10 @@ Sale enough products for promotion::
     >>> sale_line.quantity = 10
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product3
-    >>> sale_line.quantity = 10
+    >>> sale_line.quantity = 5
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product4
+    >>> sale_line.quantity = 5
     >>> sale.save()
     >>> sale.untaxed_amount
     Decimal('500.00')

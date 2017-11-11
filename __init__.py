@@ -9,6 +9,7 @@ def register():
     Pool.register(
         SalePromotion,
         SalePromotion_Product,
+        SalePromotion_ProductCategory,
         Sale,
         SaleLine,
         module='sale_promotion', type_='model')

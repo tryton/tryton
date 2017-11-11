@@ -18,6 +18,7 @@ The criteria are the fields:
 - *Price List*: The sale price list.
 - *Start Date*/*End Date*: The period for which the promotion is valid.
 - *Quantity*: The sum quantity of the sale lines which have the same *Unit*.
-- *Products*: The list of products to use to compute quantity.
+- *Products*: The list of products to apply the promotion.
+- *Categories*: The list of product categories to apply the promotion.
 
 The new unit price is computed by the field *Formula*.
