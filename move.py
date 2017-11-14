@@ -542,15 +542,9 @@ class Reconciliation(ModelSQL, ModelView):
                             'party2': party.rec_name,
                             })
             if not account.company.currency.is_zero(debit - credit):
-                language = Transaction().language
-                languages = Lang.search([('code', '=', language)])
-                if not languages:
-                    languages = Lang.search([('code', '=', 'en')])
-                language = languages[0]
-                debit = Lang.currency(
-                    language, debit, account.company.currency)
-                credit = Lang.currency(
-                    language, credit, account.company.currency)
+                lang = Lang.get()
+                debit = lang.currency(debit, account.company.currency)
+                credit = lang.currency(credit, account.company.currency)
                 cls.raise_user_error('reconciliation_unbalanced', {
                         'debit': debit,
                         'credit': credit,

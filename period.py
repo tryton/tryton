@@ -205,14 +205,8 @@ class Period(Workflow, ModelSQL, ModelView):
         periods = cls.search(clause, order=[('start_date', 'DESC')], limit=1)
         if not periods:
             if exception:
-                language = Transaction().language
-                languages = Lang.search([('code', '=', language)])
-                if not languages:
-                    languages = Lang.search([('code', '=', 'en')])
-                language = languages[0]
-                formatted = Lang.strftime(date, language.code,
-                    language.date)
-                cls.raise_user_error('no_period_date', (formatted,))
+                lang = Lang.get()
+                cls.raise_user_error('no_period_date', lang.strftime(date))
             else:
                 return None
         return periods[0].id

@@ -233,13 +233,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             ], order=[('start_date', 'DESC')], limit=1)
         if not fiscalyears:
             if exception:
-                language = Transaction().language
-                languages = Lang.search([('code', '=', language)])
-                if not languages:
-                    languages = Lang.search([('code', '=', 'en')])
-                language, = languages
-                formatted = Lang.strftime(date, language.code, language.date)
-                cls.raise_user_error('no_fiscalyear_date', (formatted,))
+                lang = Lang.get()
+                cls.raise_user_error('no_fiscalyear_date', lang.strftime(date))
             else:
                 return None
         return fiscalyears[0].id

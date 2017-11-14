@@ -103,7 +103,7 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
 
     def _format_numeric(self, lang, value):
         if value:
-            return lang.format(lang, '%.*f', (self.digits, value), True)
+            return lang.format('%.*f', (self.digits, value), True)
         else:
             return ''
 
@@ -112,7 +112,7 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
 
     def _format_date(self, lang, value):
         if value:
-            return lang.strftime(value, lang.code, lang.date)
+            return lang.strftime(value)
         else:
             return ''
 
