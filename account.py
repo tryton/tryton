@@ -144,7 +144,8 @@ class AccountFrFEC(Wizard):
     def get_format_date(self):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        return lambda value: Lang.strftime(value, 'fr_FR', '%Y%m%d')
+        fr = Lang(code='fr_FR')
+        return lambda value: fr.strftime(value, '%Y%m%d')
 
     def get_format_number(self):
         pool = Pool()
@@ -154,7 +155,7 @@ class AccountFrFEC(Wizard):
             thousands_sep='',
             grouping='[]',
             )
-        return lambda value: Lang.format(fr, '%.2f', value)
+        return lambda value: fr.format('%.2f', value)
 
     def get_header(self):
         return [
