@@ -69,8 +69,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                 ('id', If(In('company', Eval('context', {})), '=', '!='),
                     Eval('context', {}).get('company', -1)),
             ])
-    origin = fields.Reference('Origin', selection='get_origin', readonly=True,
-            required=True)
+    origin = fields.Reference('Origin', selection='get_origin', readonly=True)
     exception_ignored = fields.Boolean('Ignored Exception')
     state = fields.Function(fields.Selection([
         ('purchased', 'Purchased'),
