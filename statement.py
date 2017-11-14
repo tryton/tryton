@@ -382,12 +382,8 @@ class Statement(Workflow, ModelSQL, ModelView):
         end_balance = (self.start_balance
             + sum(l.amount for l in self.lines))
         if end_balance != self.end_balance:
-            lang, = Lang.search([
-                    ('code', '=', Transaction().language),
-                    ])
-            amount = Lang.format(lang,
-                '%.' + str(self.journal.currency.digits) + 'f',
-                end_balance, True)
+            lang = Lang.get()
+            amount = lang.currency(end_balance, self.journal.currency)
             self.raise_user_error('wrong_end_balance', amount)
 
     def validate_amount(self):
@@ -396,12 +392,8 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         amount = sum(l.amount for l in self.lines)
         if amount != self.total_amount:
-            lang, = Lang.search([
-                    ('code', '=', Transaction().language),
-                    ])
-            amount = Lang.format(lang,
-                '%.' + str(self.journal.currency.digits) + 'f',
-                amount, True)
+            lang = Lang.get()
+            amount = lang.currency(amount, self.journal.currency)
             self.raise_user_error('wrong_total_amount', amount)
 
     def validate_number_of_lines(self):
@@ -813,13 +805,8 @@ class Line(
                     self.invoice.amount_to_pay,
                     self.statement.journal.currency)
             if abs(amount_to_pay) < abs(self.amount):
-                lang, = Lang.search([
-                        ('code', '=', Transaction().language),
-                        ])
-
-                amount = Lang.format(lang,
-                    '%.' + str(self.statement.journal.currency.digits) + 'f',
-                    self.amount, True)
+                amount = Lang.get().format(
+                    self.amount, self.statement.journal.currency)
                 self.raise_user_error('amount_greater_invoice_amount_to_pay',
                         error_args=(amount,))
 
