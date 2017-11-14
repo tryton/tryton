@@ -340,12 +340,8 @@ class Period:
         if lot_id:
             lot_id, = lot_id
             lot = Lot(lot_id)
-            lang, = Lang.search([
-                    ('code', '=', Transaction().language),
-                    ])
-            date = Lang.strftime(
-                lot.shelf_life_expiration_date, lang.code, lang.date)
+            lang = Lang.get()
             cls.raise_user_error('close_period_sled', {
-                    'date': date,
+                    'date': lang.strftime(lot.shelf_life_expiration_date),
                     'lot': lot.rec_name,
                     })
