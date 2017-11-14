@@ -46,6 +46,7 @@ class Lang(ModelSQL, ModelView):
     thousands_sep = fields.Char('Thousands Separator')
 
     _lang_cache = Cache('ir.lang')
+    _code_cache = Cache('ir.lang.code', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -227,6 +228,7 @@ class Lang(ModelSQL, ModelView):
         Translation = pool.get('ir.translation')
         # Clear cache
         cls._lang_cache.clear()
+        cls._code_cache.clear()
         super(Lang, cls).write(langs, values, *args)
         Translation._get_language_cache.clear()
 
@@ -240,11 +242,27 @@ class Lang(ModelSQL, ModelView):
                 cls.raise_user_error('delete_default')
         # Clear cache
         cls._lang_cache.clear()
+        cls._code_cache.clear()
         super(Lang, cls).delete(langs)
         Translation._get_language_cache.clear()
 
-    @staticmethod
-    def _group(lang, s, monetary=None):
+    @classmethod
+    def get(cls, code=None):
+        "Return language instance for the code or the transaction language"
+        if code is None:
+            code = Transaction().language
+        lang_id = cls._code_cache.get(code)
+        if not lang_id:
+            with Transaction().set_context(active_test=False):
+                lang, = cls.search([
+                        ('code', '=', code),
+                        ])
+            cls._code_cache.set(code, lang.id)
+        else:
+            lang = cls(lang_id)
+        return lang
+
+    def _group(self, s, monetary=None):
         # Code from _group in locale.py
 
         # Iterate over grouping intervals
@@ -265,8 +283,8 @@ class Lang(ModelSQL, ModelView):
             thousands_sep = monetary.mon_thousands_sep
             grouping = literal_eval(monetary.mon_grouping)
         else:
-            thousands_sep = lang.thousands_sep
-            grouping = literal_eval(lang.grouping)
+            thousands_sep = self.thousands_sep
+            grouping = literal_eval(self.grouping)
         if not grouping:
             return (s, 0)
         if s[-1] == ' ':
@@ -293,8 +311,7 @@ class Lang(ModelSQL, ModelView):
             len(thousands_sep) * (len(groups) - 1)
         )
 
-    @classmethod
-    def format(cls, lang, percent, value, grouping=False, monetary=None,
+    def format(self, percent, value, grouping=False, monetary=None,
             *additional):
         '''
         Returns the lang-aware substitution of a %? specifier (percent).
@@ -313,13 +330,6 @@ class Lang(ModelSQL, ModelView):
                 amount -= 1
             return s[lpos:rpos + 1]
 
-        if not lang:
-            lang = cls(
-                decimal_point=cls.default_decimal_point(),
-                thousands_sep=cls.default_thousands_sep(),
-                grouping=cls.default_grouping(),
-                )
-
         # this is only for one-percent-specifier strings
         # and this should be checked
         if percent[0] != '%':
@@ -334,43 +344,34 @@ class Lang(ModelSQL, ModelView):
             seps = 0
             parts = formatted.split('.')
             if grouping:
-                parts[0], seps = cls._group(lang, parts[0], monetary=monetary)
+                parts[0], seps = self._group(parts[0], monetary=monetary)
             if monetary:
                 decimal_point = monetary.mon_decimal_point
             else:
-                decimal_point = lang.decimal_point
+                decimal_point = self.decimal_point
             formatted = decimal_point.join(parts)
             if seps:
                 formatted = _strip_padding(formatted, seps)
         elif percent[-1] in 'diu':
             if grouping:
-                formatted, seps = cls._group(lang, formatted,
-                    monetary=monetary)
+                formatted, seps = self._group(formatted, monetary=monetary)
             if seps:
                 formatted = _strip_padding(formatted, seps)
         return formatted
 
-    @classmethod
-    def currency(cls, lang, val, currency, symbol=True, grouping=False):
+    def currency(self, val, currency, symbol=True, grouping=False):
         """
         Formats val according to the currency settings in lang.
         """
         # Code from currency in locale.py
-        if not lang:
-            lang = cls(
-                decimal_point=cls.default_decimal_point(),
-                thousands_sep=cls.default_thousands_sep(),
-                grouping=cls.default_grouping(),
-                )
-
         # check for illegal values
         digits = currency.digits
         if digits == 127:
             raise ValueError("Currency formatting is not possible using "
                              "the 'C' locale.")
 
-        s = cls.format(lang, '%%.%if' % digits, abs(val), grouping,
-                monetary=currency)
+        s = self.format(
+            '%%.%if' % digits, abs(val), grouping, monetary=currency)
         # '<' and '>' are markers if the sign must be inserted
         # between symbol and value
         s = '<' + s + '>'
@@ -407,12 +408,13 @@ class Lang(ModelSQL, ModelView):
 
         return s.replace('<', '').replace('>', '')
 
-    @staticmethod
-    def strftime(datetime, code, format):
+    def strftime(self, datetime, format=None):
         '''
         Convert datetime to a string as specified by the format argument.
         '''
-        code = code[:2]
+        if format is None:
+            format = self.date
+        code = self.code[:2]
         if code in TIME_LOCALE:
             for f, i in (('%a', 6), ('%A', 6), ('%b', 1), ('%B', 1)):
                 format = format.replace(f,

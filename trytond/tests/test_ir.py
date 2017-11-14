@@ -59,8 +59,9 @@ class IrTestCase(ModuleTestCase):
             ((2016, 8, 3), 'fr', u'%d %B %Y', u"03 ao\xfbt 2016"),
             ]
         for date, code, format_, result in test_data:
+            lang = Lang.get(code)
             self.assertEqual(
-                Lang.strftime(datetime.date(*date), code, format_),
+                lang.strftime(datetime.date(*date), format_),
                 result)
 
 

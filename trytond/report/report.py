@@ -304,34 +304,30 @@ class Report(URLMixin, PoolBase):
             os.remove(path)
 
     @classmethod
-    def format_date(cls, value, lang):
+    def format_date(cls, value, lang=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        Config = pool.get('ir.configuration')
-
-        if lang:
-            locale_format = lang.date
-            code = lang.code
-        else:
-            locale_format = Lang.default_date()
-            code = Config.get_language()
-        return Lang.strftime(value, code, locale_format)
+        if lang is None:
+            lang = Lang.get()
+        return lang.strftime(value)
 
     @classmethod
     def format_currency(cls, value, lang, currency, symbol=True,
             grouping=True):
         pool = Pool()
         Lang = pool.get('ir.lang')
-
-        return Lang.currency(lang, value, currency, symbol, grouping)
+        if lang is None:
+            lang = Lang.get()
+        return lang.currency(value, currency, symbol, grouping)
 
     @classmethod
     def format_number(cls, value, lang, digits=2, grouping=True,
             monetary=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
-
-        return Lang.format(lang, '%.' + str(digits) + 'f', value,
+        if lang is None:
+            lang = Lang.get()
+        return lang.format('%.' + str(digits) + 'f', value,
             grouping=grouping, monetary=monetary)
 
 
