@@ -158,8 +158,23 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
         return substitutions
 
     def get_rec_name(self, name):
+        party = self.party.full_name
+        if self.street:
+            street = self.street.splitlines()[0]
+        else:
+            street = None
+        if self.country:
+            country = self.country.code
+        else:
+            country = None
         return ', '.join(
-            filter(None, [self.party.rec_name, self.zip, self.city]))
+            filter(None, [
+                    party,
+                    self.name,
+                    street,
+                    self.zip,
+                    self.city,
+                    country]))
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -168,9 +183,12 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
         else:
             bool_op = 'OR'
         return [bool_op,
+            ('party',) + tuple(clause[1:]),
+            ('name',) + tuple(clause[1:]),
+            ('street',) + tuple(clause[1:]),
             ('zip',) + tuple(clause[1:]),
             ('city',) + tuple(clause[1:]),
-            ('party',) + tuple(clause[1:]),
+            ('country',) + tuple(clause[1:]),
             ]
 
     @classmethod
