@@ -717,6 +717,7 @@ class ModelView(Model):
                     del value['remove']
                 if not value:
                     continue
+                value = dict(value)
             elif field._type == 'many2many':
                 value = [r.id for r in value]
             changed[fname] = value
