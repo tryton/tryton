@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import mimetypes
 from email.header import Header
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
+from email.mime.nonmultipart import MIMENonMultipart
 from email.utils import formataddr, getaddresses
 
 from trytond.config import config
@@ -265,7 +267,12 @@ class EmailAttachment(ModelSQL):
                     'action_id': report.id,
                     })
         name = '%s.%s' % (title, ext)
-        msg = MIMEApplication(content)
+        mimetype, _ = mimetypes.guess_type(name)
+        if mimetype:
+            msg = MIMENonMultipart(*mimetype.split('/'))
+            msg.set_payload(content)
+        else:
+            msg = MIMEApplication(content)
         if not isinstance(name, str):
             name = name.encode('utf-8')
         if not isinstance(language, str):
