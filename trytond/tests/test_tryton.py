@@ -519,12 +519,20 @@ class ModuleTestCase(unittest.TestCase):
             domain = decoder.decode(action_window.pyson_domain)
             order = decoder.decode(action_window.pyson_order)
             context = decoder.decode(action_window.pyson_context)
+            search_value = decoder.decode(action_window.pyson_search_value)
+            if action_window.context_domain:
+                domain = ['AND', domain,
+                    decoder.decode(action_window.context_domain)]
             with Transaction().set_context(context):
                 Model.search(domain, order=order, limit=action_window.limit)
+                if search_value:
+                    Model.search(search_value)
             for action_domain in action_window.act_window_domains:
                 if not action_domain.domain:
                     continue
                 Model.search(decoder.decode(action_domain.domain))
+            if action_window.context_model:
+                pool.get(action_window.context_model)
 
     @with_transaction()
     def test_modelsingleton_inherit_order(self):
