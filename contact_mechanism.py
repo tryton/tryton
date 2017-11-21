@@ -48,6 +48,7 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
         # Add all function fields to ensure to always fill them via on_change
         + ['email', 'website', 'skype', 'sip', 'other_value', 'value_compact'])
     value_compact = fields.Char('Value Compact', readonly=True)
+    name = fields.Char("Name", states=STATES, depends=DEPENDS)
     comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
