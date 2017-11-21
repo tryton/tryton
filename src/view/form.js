@@ -1001,11 +1001,10 @@ function eval_pyson(value){
     });
 
     Sao.View.Form.TranslateDialog = Sao.class_(Object,  {
+        class_: 'form',
         init: function(languages, widget) {
-            var dialog = new Sao.Dialog(Sao.i18n.gettext('Translate'),
-                    this.class_, this, languages);
-            dialog.modal.find('.modal-dialog')
-                .removeClass('modal-sm').addClass('modal-lg');
+            var dialog = new Sao.Dialog(
+                Sao.i18n.gettext('Translate'), this.class_, 'lg');
             this.languages = languages;
             this.read(widget, dialog);
             jQuery('<button/>', {
@@ -1087,19 +1086,22 @@ function eval_pyson(value){
                         value = fuzzy_value[0][widget.field_name];
                         widget.translate_widget_set(
                             input, value);
+                        widget.translate_widget_set_readonly(
+                            input, true);
                         fuzzy_box.attr('checked',
                                fuzzy_value[0].name != value);
                     }.bind(this));
                 }.bind(this));
                 checkbox.click(function() {
-                    widget.translate_widget_set_readonly(input);
+                    widget.translate_widget_set_readonly(
+                        input, !jQuery(this).prop('checked'));
                 });
                 dialog.body.append(row);
                 row.append(jQuery('<div/>', {
-                    'class':'col-sm-3'
+                    'class':'col-sm-2'
                 }).append(lang.name));
                 row.append(jQuery('<div/>', {
-                    'class':'col-sm-6'
+                    'class':'col-sm-8'
                 }).append(input));
                 row.append(jQuery('<div/>', {
                     'class':'col-sm-1'
@@ -1120,7 +1122,7 @@ function eval_pyson(value){
                     context.language = lang.code;
                     context.fuzzy_translation = false;
                     var values =  {};
-                    values[widget.field_name] = input.val();
+                    values[widget.field_name] = widget.translate_widget_get(input);
                     var params = [
                         [widget.record().id],
                         values,
@@ -1130,30 +1132,36 @@ function eval_pyson(value){
                         'method': 'model.' + widget.model.name  + '.write',
                         'params': params
                     };
-                    var prm = Sao.rpc(args, widget.model.session)
-                            .then(function() {
-                                if (lang.code == current_language) {
-                                    widget.view.display();
-                                }
-                    });
+                    var prm = Sao.rpc(args, widget.model.session);
                     promises.push(prm);
                 }
             }.bind(this));
             this.close(dialog);
             jQuery.when.apply(jQuery, promises).then(function() {
                 widget.record().cancel();
+                widget.view.display();
             });
         }
     });
 
     Sao.View.Form.TranslateMixin = {};
     Sao.View.Form.TranslateMixin.init = function() {
-        this.translate = Sao.View.Form.TranslateMixin.translate.bind(this);
-        this.translate_widget_set_readonly =
-            Sao.View.Form.TranslateMixin.translate_widget_set_readonly
-                .bind(this);
-        this.translate_widget_set =
-            Sao.View.Form.TranslateMixin.translate_widget_set.bind(this);
+        if (!this.translate) {
+            this.translate = Sao.View.Form.TranslateMixin.translate.bind(this);
+        }
+        if (!this.translate_widget_set_readonly) {
+            this.translate_widget_set_readonly =
+                Sao.View.Form.TranslateMixin.translate_widget_set_readonly
+                    .bind(this);
+        }
+        if (!this.translate_widget_set) {
+            this.translate_widget_set =
+                Sao.View.Form.TranslateMixin.translate_widget_set.bind(this);
+        }
+        if (!this.translate_widget_get) {
+            this.translate_widget_get =
+                Sao.View.Form.TranslateMixin.translate_widget_get.bind(this);
+        }
     };
     Sao.View.Form.TranslateMixin.translate = function() {
         if (this.record().id < 0 || this.record().has_changed()) {
@@ -1191,14 +1199,13 @@ function eval_pyson(value){
     };
     Sao.View.Form.TranslateMixin.translate_widget_set_readonly =
             function(el, value) {
-        if (el.attr('readonly')) {
-            el.removeAttr('readonly');
-        } else {
-            el.attr('readonly', true);
-        }
+        el.prop('readonly', value);
     };
     Sao.View.Form.TranslateMixin.translate_widget_set = function(el, value) {
         el.val(value || '');
+    };
+    Sao.View.Form.TranslateMixin.translate_widget_get = function(el) {
+        return el.val();
     };
 
     Sao.View.Form.Char = Sao.class_(Sao.View.Form.Widget, {
@@ -1679,6 +1686,7 @@ function eval_pyson(value){
         init: function(field_name, model, attributes) {
             Sao.View.Form.RichText._super.init.call(
                     this, field_name, model, attributes);
+            Sao.View.Form.TranslateMixin.init.call(this);
             this.el = jQuery('<div/>', {
                 'class': this.class_ + ' panel panel-default'
             });
@@ -1692,6 +1700,19 @@ function eval_pyson(value){
                 'class': 'panel-body'
             }).appendTo(this.el));
             this.el.focusout(this.focus_out.bind(this));
+            if (this.attributes.translate) {
+                var button = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm form-control',
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext("Translate"),
+                }).appendTo(jQuery('<span/>', {
+                    'class': 'input-group-btn',
+                }).appendTo(this.el));
+                button.append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-flag',
+                }));
+                button.click(this.translate.bind(this));
+            }
         },
         get_toolbar: function() {
             var i, properties, button;
@@ -1829,8 +1850,13 @@ function eval_pyson(value){
             this.input.focus();
         },
         set_value: function(record, field) {
+            this._normalize(this.input);
+            var value = this.input.html() || '';
+            field.set_client(record, value);
+        },
+        _normalize: function(el) {
             // TODO order attributes
-            this.input.find('div').each(function(i, el) {
+            el.find('div').each(function(i, el) {
                 el = jQuery(el);
                 // Not all browsers respect the styleWithCSS
                 if (el.css('text-align')) {
@@ -1844,14 +1870,42 @@ function eval_pyson(value){
                     el.attr('align', 'left');
                 }
             });
-            var value = this.input.html() || '';
-            field.set_client(record, value);
         },
         set_readonly: function(readonly) {
             this.input.prop('contenteditable', !readonly);
             if (this.toolbar) {
-                this.toolbar.find('button,select').prop('disabled', readonly);
+                this.toolbar.find('button,input,select')
+                    .prop('disabled', readonly);
             }
+        },
+        translate_widget: function() {
+            var widget = jQuery('<div/>', {
+                'class': this.class_ + ' panel panel-default',
+            });
+            if (parseInt(this.attributes.toolbar || '1', 10)) {
+                this.get_toolbar().appendTo(widget);
+            }
+            var input = jQuery('<div/>', {
+                'class': 'richtext mousetrap',
+                'contenteditable': true
+            }).appendTo(jQuery('<div/>', {
+                'class': 'panel-body'
+            }).appendTo(widget));
+            return widget;
+        },
+        translate_widget_set_readonly: function(el, value) {
+            Sao.View.Form.TranslateMixin.translate_widget_set_readonly.call(
+                this, el, value);
+            el.find('button,input,select').prop('disabled', value);
+            el.find('div[contenteditable]').prop('contenteditable', !value);
+        },
+        translate_widget_set: function(el, value) {
+            el.find('div[contenteditable]').html(value);
+        },
+        translate_widget_get: function(el) {
+            var input = el.find('div[contenteditable]');
+            this._normalize(input);
+            return input.html();
         }
     });
 
