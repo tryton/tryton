@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from gettext import gettext as _
+from weakref import WeakKeyDictionary
 
 import gtk
 
@@ -21,39 +22,28 @@ class RichTextBox(TextBox):
 
     def __init__(self, view, attrs):
         super(RichTextBox, self).__init__(view, attrs)
-        self.text_buffer = gtk.TextBuffer()
-        setup_tags(self.text_buffer)
-        self.text_buffer.register_serialize_format(
-            str(MIME), serialize, None)
-        self.text_buffer.register_deserialize_format(
-            str(MIME), deserialize, None)
-        self.text_buffer.connect_after('insert-text', self.insert_text_style)
-        self.textview.set_buffer(self.text_buffer)
-        self.textview.connect_after('move-cursor', self.detect_style)
-        self.textview.connect('button-release-event', self.detect_style)
-
         self.toolbar = None
-        self.tag_widgets = {}
+        self.tag_widgets = WeakKeyDictionary()
         self.tags = {}
         self.colors = {}
         if int(self.attrs.get('toolbar', 1)):
-            self.toolbar = self.get_toolbar()
+            self.toolbar = self.get_toolbar(self.textview)
+            self.widget.pack_start(self.toolbar, expand=False, fill=True)
 
-    def get_toolbar(self):
+    def get_toolbar(self, textview):
         toolbar = gtk.Toolbar()
         toolbar.set_style({
                 'default': False,
                 'both': gtk.TOOLBAR_BOTH,
                 'text': gtk.TOOLBAR_TEXT,
                 'icons': gtk.TOOLBAR_ICONS}[CONFIG['client.toolbar']])
-
-        self.widget.pack_start(toolbar, expand=False, fill=True)
+        tag_widgets = self.tag_widgets[textview] = {}
 
         for icon in ['bold', 'italic', 'underline']:
             button = gtk.ToggleToolButton('gtk-%s' % icon)
-            button.connect('toggled', self.toggle_props, icon)
+            button.connect('toggled', self.toggle_props, icon, textview)
             toolbar.insert(button, -1)
-            self.tag_widgets[icon] = button
+            tag_widgets[icon] = button
 
         toolbar.insert(gtk.SeparatorToolItem(), -1)
 
@@ -69,11 +59,11 @@ class RichTextBox(TextBox):
                 combobox.append_text(option)
             combobox.set_active(active)
             combobox.set_focus_on_click(False)
-            combobox.connect('changed', self.change_props, name)
+            combobox.connect('changed', self.change_props, name, textview)
             tool = gtk.ToolItem()
             tool.add(combobox)
             toolbar.insert(tool, -1)
-            self.tag_widgets[name] = combobox
+            tag_widgets[name] = combobox
 
         toolbar.insert(gtk.SeparatorToolItem(), -1)
 
@@ -89,9 +79,10 @@ class RichTextBox(TextBox):
             else:
                 button = gtk.RadioToolButton(button, stock_id)
             button.set_active(icon == 'left')
-            button.connect('toggled', self.toggle_justification, name)
+            button.connect(
+                'toggled', self.toggle_justification, name, textview)
             toolbar.insert(button, -1)
-            self.tag_widgets[name] = button
+            tag_widgets[name] = button
 
         toolbar.insert(gtk.SeparatorToolItem(), -1)
 
@@ -101,21 +92,39 @@ class RichTextBox(TextBox):
                 ]:
             button = gtk.ToolButton('tryton-text-%s' % icon)
             button.set_label(label)
-            button.connect('clicked', self.toggle_color, icon)
+            button.connect('clicked', self.toggle_color, icon, textview)
             toolbar.insert(button, -1)
-            self.tag_widgets[icon] = button
+            tag_widgets[icon] = button
 
         return toolbar
 
-    def get_value(self):
-        start = self.text_buffer.get_start_iter()
-        end = self.text_buffer.get_end_iter()
-        if _use_serialize_func:
-            return self.text_buffer.serialize(
-                self.text_buffer, MIME, start, end)
-        else:
-            return serialize(
-                self.text_buffer, self.text_buffer, start, end, None)
+    def _get_textview(self):
+        textview = super(RichTextBox, self)._get_textview()
+        text_buffer = textview.get_buffer()
+        setup_tags(text_buffer)
+        text_buffer.register_serialize_format(str(MIME), serialize, None)
+        text_buffer.register_deserialize_format(str(MIME), deserialize, None)
+        text_buffer.connect_after(
+            'insert-text', self.insert_text_style, textview)
+        textview.connect_after('move-cursor', self.detect_style)
+        textview.connect('button-release-event', self.detect_style)
+        return textview
+
+    def translate_widget(self):
+        widget = super(RichTextBox, self).translate_widget()
+        textview = widget.get_children()[-1].get_child()
+        if self.toolbar:
+            widget.pack_start(
+                self.get_toolbar(textview), expand=False, fill=True)
+        return widget
+
+    def translate_widget_set_readonly(self, widget, value):
+        super(RichTextBox, self).translate_widget_set_readonly(widget, value)
+        if self.toolbar:
+            toolbar = widget.get_children()[0]
+            for n in range(toolbar.get_n_items()):
+                tool = toolbar.get_nth_item(n)
+                tool.set_sensitive(not value)
 
     def set_value(self, record, field):
         # avoid modification of not normalized value
@@ -132,37 +141,49 @@ class RichTextBox(TextBox):
             return value != self.get_value()
         return False
 
-    def set_buffer(self, value):
-        self.text_buffer.handler_block_by_func(self.insert_text_style)
-        start = self.text_buffer.get_start_iter()
-        end = self.text_buffer.get_end_iter()
-        self.text_buffer.delete(start, end)
+    def set_buffer(self, value, textview):
+        text_buffer = textview.get_buffer()
+        text_buffer.handler_block_by_func(self.insert_text_style)
+        start = text_buffer.get_start_iter()
+        end = text_buffer.get_end_iter()
+        text_buffer.delete(start, end)
         if _use_serialize_func:
-            self.text_buffer.deserialize(self.text_buffer, MIME, start, value)
+            text_buffer.deserialize(text_buffer, MIME, start, value)
         else:
             deserialize(
-                self.text_buffer, self.text_buffer, start, value,
-                self.text_buffer.deserialize_get_can_create_tags(MIME), None)
-        self.text_buffer.handler_unblock_by_func(self.insert_text_style)
+                text_buffer, text_buffer, start, value,
+                text_buffer.deserialize_get_can_create_tags(MIME), None)
+        text_buffer.handler_unblock_by_func(self.insert_text_style)
+
+    def get_buffer(self, textview):
+        text_buffer = textview.get_buffer()
+        start = text_buffer.get_start_iter()
+        end = text_buffer.get_end_iter()
+        if _use_serialize_func:
+            return text_buffer.serialize(text_buffer, MIME, start, end)
+        else:
+            return serialize(text_buffer, text_buffer, start, end, None)
 
     def _readonly_set(self, value):
         super(RichTextBox, self)._readonly_set(value)
         if self.toolbar:
             self.toolbar.set_sensitive(not value)
 
-    def detect_style(self, *args):
+    def detect_style(self, textview, *args):
+        tag_widgets = self.tag_widgets[textview]
+        text_buffer = textview.get_buffer()
         try:
-            start, end = self.text_buffer.get_selection_bounds()
+            start, end = text_buffer.get_selection_bounds()
         except ValueError:
-            start = end = self.text_buffer.get_iter_at_mark(
-                self.text_buffer.get_insert())
+            start = end = text_buffer.get_iter_at_mark(
+                text_buffer.get_insert())
 
         def toggle_button(name, values):
             try:
                 value, = values
             except ValueError:
                 value = False
-            button = self.tag_widgets[name]
+            button = tag_widgets[name]
             button.handler_block_by_func(self.toggle_props)
             button.set_active(value)
             button.handler_unblock_by_func(self.toggle_props)
@@ -172,7 +193,7 @@ class RichTextBox(TextBox):
                 index, = indexes
             except ValueError:
                 index = -1
-            combobox = self.tag_widgets[name]
+            combobox = tag_widgets[name]
             combobox.handler_block_by_func(self.change_props)
             combobox.set_active(index)
             combobox.handler_unblock_by_func(self.change_props)
@@ -181,7 +202,7 @@ class RichTextBox(TextBox):
             if len(names) != 1:
                 value = False
             for name in names:
-                button = self.tag_widgets[name]
+                button = tag_widgets[name]
                 button.handler_block_by_func(self.toggle_justification)
                 button.set_active(value)
                 button.handler_unblock_by_func(self.toggle_justification)
@@ -235,65 +256,69 @@ class RichTextBox(TextBox):
         set_combobox('size', sizes)
         toggle_justification(justifications, True)
 
-    def insert_text_style(self, text_buffer, iter_, text, length):
+    def insert_text_style(self, text_buffer, iter_, text, length, textview):
         # Text is already inserted so iter_ point to the end
         start = iter_.copy()
         start.backward_chars(length)
         end = iter_.copy()
         # Apply tags activated from toolbar
-        for name, widget in self.tag_widgets.iteritems():
-            self._apply_tool(name, widget, start, end)
+        for name, widget in self.tag_widgets[textview].iteritems():
+            self._apply_tool(text_buffer, name, widget, start, end)
 
-    def _apply_tool(self, name, tool, start, end):
+    def _apply_tool(self, text_buffer, name, tool, start, end):
         # First test RadioToolButton as they inherit from ToggleToolButton
         if isinstance(tool, gtk.RadioToolButton):
             name = 'justification %s' % name
             if not tool.get_active():
-                remove_tags(self.text_buffer, start, end, name)
+                remove_tags(text_buffer, start, end, name)
             else:
-                remove_tags(self.text_buffer, start, end, 'justification')
-                self.text_buffer.apply_tag_by_name(name, start, end)
+                remove_tags(text_buffer, start, end, 'justification')
+                text_buffer.apply_tag_by_name(name, start, end)
         elif isinstance(tool, gtk.ToggleToolButton):
             if tool.get_active():
-                self.text_buffer.apply_tag_by_name(name, start, end)
+                text_buffer.apply_tag_by_name(name, start, end)
             else:
-                self.text_buffer.remove_tag_by_name(name, start, end)
+                text_buffer.remove_tag_by_name(name, start, end)
         elif isinstance(tool, gtk.ComboBox):
             value = tool.get_active_text()
-            remove_tags(self.text_buffer, start, end, name)
+            remove_tags(text_buffer, start, end, name)
             name = '%s %s' % (name, value)
-            self.text_buffer.apply_tag_by_name(name, start, end)
+            text_buffer.apply_tag_by_name(name, start, end)
 
-    def toggle_props(self, toggle, name):
+    def toggle_props(self, toggle, name, textview):
+        text_buffer = textview.get_buffer()
         try:
-            start, end = self.text_buffer.get_selection_bounds()
+            start, end = text_buffer.get_selection_bounds()
         except ValueError:
             return
-        self._apply_tool(name, toggle, start, end)
+        self._apply_tool(text_buffer, name, toggle, start, end)
 
-    def change_props(self, combobox, name):
+    def change_props(self, combobox, name, textview):
+        text_buffer = textview.get_buffer()
         try:
-            start, end = self.text_buffer.get_selection_bounds()
+            start, end = text_buffer.get_selection_bounds()
         except ValueError:
             return
-        self._apply_tool(name, combobox, start, end)
+        self._apply_tool(text_buffer, name, combobox, start, end)
 
-    def toggle_justification(self, button, name):
+    def toggle_justification(self, button, name, textview):
+        text_buffer = textview.get_buffer()
         try:
-            start, end = self.text_buffer.get_selection_bounds()
+            start, end = text_buffer.get_selection_bounds()
         except ValueError:
-            insert = self.text_buffer.get_insert()
-            start = self.text_buffer.get_iter_at_mark(insert)
+            insert = text_buffer.get_insert()
+            start = text_buffer.get_iter_at_mark(insert)
             end = start.copy()
         start.set_line_offset(0)
         if not end.ends_line():
             end.forward_to_line_end()
-        self._apply_tool(name, button, start, end)
+        self._apply_tool(text_buffer, name, button, start, end)
 
-    def toggle_color(self, button, name):
-        insert = self.text_buffer.get_insert()
+    def toggle_color(self, button, name, textview):
+        text_buffer = textview.get_buffer()
+        insert = text_buffer.get_insert()
         try:
-            start, end = self.text_buffer.get_selection_bounds()
+            start, end = text_buffer.get_selection_bounds()
         except ValueError:
             start = end = None
         else:
@@ -312,11 +337,10 @@ class RichTextBox(TextBox):
             color = colorsel.get_current_color()
             self.colors[name] = color
             if start is not None and end is not None:
-                start = self.text_buffer.get_iter_at_offset(start)
-                end = self.text_buffer.get_iter_at_offset(end)
-                tag = register_foreground(self.text_buffer, color)
-                remove_tags(self.text_buffer, start, end, name)
-                self.text_buffer.apply_tag(tag, start, end)
+                start = text_buffer.get_iter_at_offset(start)
+                end = text_buffer.get_iter_at_offset(end)
+                tag = register_foreground(text_buffer, color)
+                remove_tags(text_buffer, start, end, name)
+                text_buffer.apply_tag(tag, start, end)
         dialog.destroy()
-        self.text_buffer.place_cursor(
-            self.text_buffer.get_iter_at_mark(insert))
+        text_buffer.place_cursor(text_buffer.get_iter_at_mark(insert))

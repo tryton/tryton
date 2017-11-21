@@ -56,17 +56,14 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             entry.set_max_length(field_size or 0)
         return entry
 
-    @staticmethod
-    def translate_widget_set(widget, value):
+    def translate_widget_set(self, widget, value):
         widget.set_text(value or '')
         reset_position(widget)
 
-    @staticmethod
-    def translate_widget_get(widget):
+    def translate_widget_get(self, widget):
         return widget.get_text()
 
-    @staticmethod
-    def translate_widget_set_readonly(widget, value):
+    def translate_widget_set_readonly(self, widget, value):
         widget.set_editable(not value)
         widget.props.sensitive = not value
 

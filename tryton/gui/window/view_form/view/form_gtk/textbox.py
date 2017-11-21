@@ -31,15 +31,13 @@ class TextBox(Widget, TranslateMixin):
         self.scrolledwindow.add(self.textview)
         self.scrolledwindow.show_all()
 
-        hbox = gtk.HBox()
-        hbox.pack_start(self.scrolledwindow)
-        self.widget.pack_end(hbox)
-        self.lang = None
-
         self.button = None
         if attrs.get('translate'):
             self.button = self.translate_button()
-            hbox.pack_start(self.button, False, False)
+            self.widget.pack_end(self.button, False, False)
+
+        self.widget.pack_end(self.scrolledwindow)
+        self.lang = None
 
     def _get_textview(self):
         if self.attrs.get('size'):
@@ -54,6 +52,7 @@ class TextBox(Widget, TranslateMixin):
         return textview
 
     def translate_widget(self):
+        box = gtk.VBox()
         scrolledwindow = gtk.ScrolledWindow()
         scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC,
             gtk.POLICY_AUTOMATIC)
@@ -62,25 +61,19 @@ class TextBox(Widget, TranslateMixin):
 
         textview = self._get_textview()
         scrolledwindow.add(textview)
-        return scrolledwindow
+        box.pack_end(scrolledwindow)
+        return box
 
-    @staticmethod
-    def translate_widget_set(widget, value):
-        textview = widget.get_child()
-        buf = textview.get_buffer()
-        buf.delete(buf.get_start_iter(), buf.get_end_iter())
-        buf.insert(buf.get_start_iter(), value or '')
+    def translate_widget_set(self, widget, value):
+        textview = widget.get_children()[-1].get_child()
+        self.set_buffer(value, textview)
 
-    @staticmethod
-    def translate_widget_get(widget):
-        textview = widget.get_child()
-        buf = textview.get_buffer()
-        return buf.get_text(buf.get_start_iter(), buf.get_end_iter(),
-            False).decode('utf-8')
+    def translate_widget_get(self, widget):
+        textview = widget.get_children()[-1].get_child()
+        return self.get_buffer(textview)
 
-    @staticmethod
-    def translate_widget_set_readonly(widget, value):
-        textview = widget.get_child()
+    def translate_widget_set_readonly(self, widget, value):
+        textview = widget.get_children()[-1].get_child()
         textview.set_editable(not value)
         textview.props.sensitive = not value
 
@@ -128,28 +121,29 @@ class TextBox(Widget, TranslateMixin):
         return False
 
     def get_value(self):
-        buf = self.textview.get_buffer()
-        iter_start = buf.get_start_iter()
-        iter_end = buf.get_end_iter()
-        return buf.get_text(iter_start, iter_end, False).decode('utf-8')
+        return self.get_buffer(self.textview)
 
     def set_value(self, record, field):
         field.set_client(record, self.get_value())
 
-    def set_buffer(self, value):
-        if value == self.get_value():
-            return
-        buf = self.textview.get_buffer()
+    def set_buffer(self, value, textview):
+        buf = textview.get_buffer()
         buf.delete(buf.get_start_iter(), buf.get_end_iter())
         iter_start = buf.get_start_iter()
         buf.insert(iter_start, value)
+
+    def get_buffer(self, textview):
+        buf = textview.get_buffer()
+        iter_start = buf.get_start_iter()
+        iter_end = buf.get_end_iter()
+        return buf.get_text(iter_start, iter_end, False).decode('utf-8')
 
     def display(self, record, field):
         super(TextBox, self).display(record, field)
         value = field and field.get(record)
         if not value:
             value = ''
-        self.set_buffer(value)
+        self.set_buffer(value, self.textview)
         if gtkspell:
             spell = None
             try:

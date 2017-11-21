@@ -152,7 +152,7 @@ class TranslateDialog(NoModal):
                 label = language['name'] + _(':')
             label = gtk.Label(label)
             label.set_alignment(1.0, 0.0 if self.widget.expand else 0.5)
-            table.attach(label, 0, 1, i, i + 1, xoptions=gtk.FILL)
+            table.attach(label, 0, 1, i, i + 1, xoptions=gtk.FILL, xpadding=2)
 
             context = dict(
                 language=language['code'],
@@ -283,14 +283,11 @@ class TranslateMixin:
     def translate_widget(self):
         raise NotImplemented
 
-    @staticmethod
-    def translate_widget_set(widget, value):
+    def translate_widget_set(self, widget, value):
         raise NotImplemented
 
-    @staticmethod
-    def translate_widget_get(widget):
+    def translate_widget_get(self, widget):
         raise NotImplemented
 
-    @staticmethod
-    def translate_widget_set_readonly(widget, value):
+    def translate_widget_set_readonly(self, widget, value):
         raise NotImplemented
