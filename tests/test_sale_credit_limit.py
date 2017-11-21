@@ -28,6 +28,7 @@ class SaleCreditLimitTestCase(ModuleTestCase):
         PaymentTerm = pool.get('account.invoice.payment_term')
         Configuration = pool.get('account.configuration')
         FiscalYear = pool.get('account.fiscalyear')
+        Invoice = pool.get('account.invoice')
 
         company = create_company()
         with set_company(company):
@@ -113,6 +114,14 @@ class SaleCreditLimitTestCase(ModuleTestCase):
             party.save()
             # process should still work as sale is already processing
             Sale.process([sale])
+
+            # Increase quantity invoiced does not change the credit amount
+            invoice, = sale.invoices
+            invoice_line, = invoice.lines
+            invoice_line.quantity += 1
+            invoice_line.save()
+            Invoice.post([invoice])
+            self.assertEqual(party.credit_amount, Decimal('150'))
 
 
 def suite():
