@@ -124,6 +124,8 @@ class Product:
         today = Date.today()
         prices = {}
 
+        assert len(products) == len(set(products)), "Duplicate products"
+
         uom = None
         if Transaction().context.get('uom'):
             uom = Uom(Transaction().context.get('uom'))
