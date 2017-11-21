@@ -119,8 +119,12 @@ class Sale:
                 and self.warehouse.address
                 and self.warehouse.address.country):
             pattern['from_country'] = self.warehouse.address.country.id
+        else:
+            pattern['from_country'] = None
         if self.shipment_address and self.shipment_address.country:
             pattern['to_country'] = self.shipment_address.country.id
+        else:
+            pattern['to_country'] = None
         return pattern
 
     @fields.depends('warehouse', 'shipment_address')

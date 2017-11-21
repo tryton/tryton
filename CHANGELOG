@@ -1,3 +1,5 @@
+* Do not match carrier selection with countries if countries are unknown
+
 Version 4.6.0 - 2017-10-30
 * Bug fixes (see mercurial logs for details)
 * Invoice shipment cost when at least one shipment is done
