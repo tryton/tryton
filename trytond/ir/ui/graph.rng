@@ -3,9 +3,9 @@
   <define name="graph">
     <element name="graph">
       <ref name="attlist.graph"/>
-      <oneOrMore>
+      <zeroOrMore>
         <ref name="x"/>
-      </oneOrMore>
+      </zeroOrMore>
       <zeroOrMore>
         <ref name="y"/>
       </zeroOrMore>

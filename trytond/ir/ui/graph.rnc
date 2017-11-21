@@ -1,6 +1,6 @@
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 
-graph = element graph { attlist.graph, x+, y* }
+graph = element graph { attlist.graph, x*, y* }
 attlist.graph &=
   [ a:defaultValue = "vbar" ]
   attribute type { "vbar" | "hbar" | "line" | "pie" }?
