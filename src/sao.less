@@ -15,6 +15,18 @@
     padding-top: 5px;
 }
 
+#menu {
+    border-right: 2px solid @table-border-color;
+}
+@media screen and (max-width: 991px) {
+    #menu {
+        border-right: none;
+    }
+    .active #menu {
+        border-right: 2px solid @table-border-color;
+    }
+}
+
 .tab-form, .tab-board {
     & nav.toolbar.affix {
         top: @navbar-height + 1px;
