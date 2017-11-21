@@ -128,6 +128,8 @@ class Product:
         context = Transaction().context
         prices = {}
 
+        assert len(products) == len(set(products)), "Duplicate products"
+
         uom = None
         if context.get('uom'):
             uom = Uom(context['uom'])
