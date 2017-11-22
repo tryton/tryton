@@ -43,3 +43,11 @@ To activate a new language on an existing database, the command line is::
     trytond-admin -c <config file> -d <database name> --all -l <language code>
 
 Once activated, the language appears in the user preferences.
+
+When installing new modules, the list of modules must be updated with::
+
+    trytond-admin -c <config file> -d <database name> --update-modules-list
+
+Once updated, the new modules can be activated from the client or activated with::
+
+    trytond-admin -c <config file> -d <database name> -u <module name> --install-dependencies
