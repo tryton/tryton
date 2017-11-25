@@ -11,7 +11,7 @@ Prerequisites
  * python-dateutil (http://labix.org/python-dateutil)
  * chardet (http://pypi.python.org/pypi/chardet)
  * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)
- * Optional: GooCalendar (http://code.google.com/p/goocalendar/)
+ * Optional: GooCalendar (https://pypi.python.org/pypi/GooCalendar)
 
 Installation
 ------------
