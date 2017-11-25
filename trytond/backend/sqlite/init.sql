@@ -57,6 +57,7 @@ CREATE TABLE ir_lang (
     name VARCHAR,
     code VARCHAR,
     translatable BOOLEAN,
+    parent VARCHAR,
     active BOOLEAN,
     direction VARCHAR
 );

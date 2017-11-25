@@ -78,12 +78,6 @@ def file_open(name, mode="r", subdir='modules', encoding=None):
     raise IOError('File not found : %s ' % name)
 
 
-def get_parent_language(code):
-    for sep in ['@', '_']:
-        if sep in code:
-            return code.rsplit(sep, 1)[0]
-
-
 def get_smtp_server():
     """
     Instanciate, configure and return a SMTP or SMTP_SSL instance from

@@ -10,6 +10,8 @@ from locale import CHAR_MAX
 warnings.resetwarnings()
 from ast import literal_eval
 
+from sql import Table
+
 from ..model import ModelView, ModelSQL, fields, Check
 from ..cache import Cache
 from ..tools import datetime_strftime
@@ -31,6 +33,7 @@ class Lang(ModelSQL, ModelView):
     code = fields.Char('Code', required=True,
         help="RFC 4646 tag: http://tools.ietf.org/html/rfc4646")
     translatable = fields.Boolean('Translatable')
+    parent = fields.Char("Parent Code", help="Code of the exceptional parent")
     active = fields.Boolean('Active')
     direction = fields.Selection([
             ('ltr', 'Left-to-right'),
@@ -220,6 +223,7 @@ class Lang(ModelSQL, ModelView):
         cls._lang_cache.clear()
         languages = super(Lang, cls).create(vlist)
         Translation._get_language_cache.clear()
+        _parents.clear()
         return languages
 
     @classmethod
@@ -231,6 +235,7 @@ class Lang(ModelSQL, ModelView):
         cls._code_cache.clear()
         super(Lang, cls).write(langs, values, *args)
         Translation._get_language_cache.clear()
+        _parents.clear()
 
     @classmethod
     def delete(cls, langs):
@@ -245,6 +250,7 @@ class Lang(ModelSQL, ModelView):
         cls._code_cache.clear()
         super(Lang, cls).delete(langs)
         Translation._get_language_cache.clear()
+        _parents.clear()
 
     @classmethod
     def get(cls, code=None):
@@ -429,3 +435,18 @@ class Lang(ModelSQL, ModelView):
         if sys.version_info < (3,):
             result = result.decode('utf-8')
         return result
+
+
+def get_parent_language(code):
+    if code not in _parents:
+        # Use SQL because it is used by load_module_graph
+        cursor = Transaction().connection.cursor()
+        lang = Table('ir_lang')
+        cursor.execute(*lang.select(lang.code, lang.parent))
+        _parents.update(cursor.fetchall())
+    if _parents.get(code):
+        return _parents[code]
+    for sep in ['@', '_']:
+        if sep in code:
+            return code.rsplit(sep, 1)[0]
+_parents = {}

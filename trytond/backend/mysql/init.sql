@@ -64,6 +64,7 @@ CREATE TABLE ir_lang (
     name VARCHAR(255) NOT NULL,
     code TEXT NOT NULL,
     translatable BOOLEAN NOT NULL,
+    parent VARCHAR(255),
     active BOOLEAN NOT NULL,
     direction VARCHAR(255) NOT NULL,
     PRIMARY KEY(id)

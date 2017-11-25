@@ -22,14 +22,15 @@ from relatorio.templates.opendocument import get_zip_file
 from ..model import ModelView, ModelSQL, fields, Unique
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
-from ..tools import file_open, reduce_ids, grouped_slice, cursor_dict, \
-        get_parent_language as get_parent
+from ..tools import file_open, reduce_ids, grouped_slice, cursor_dict
 from .. import backend
 from ..pyson import PYSONEncoder, Eval
 from ..transaction import Transaction
 from ..pool import Pool
 from ..cache import Cache
 from ..config import config
+
+from trytond.ir.lang import get_parent_language as get_parent
 
 __all__ = ['Translation',
     'TranslationSetStart', 'TranslationSetSucceed', 'TranslationSet',

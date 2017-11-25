@@ -199,6 +199,8 @@ def is_module_to_install(module, update):
 
 
 def load_module_graph(graph, pool, update=None, lang=None):
+    from trytond.ir.lang import get_parent_language
+
     if lang is None:
         lang = [config.get('database', 'language')]
     if update is None:
@@ -211,7 +213,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
     for code in list(lang):
         while code:
             lang.add(code)
-            code = tools.get_parent_language(code)
+            code = get_parent_language(code)
 
     with Transaction().connection.cursor() as cursor:
         modules = [x.name for x in graph]

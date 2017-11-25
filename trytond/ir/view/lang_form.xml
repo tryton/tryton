@@ -12,6 +12,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="direction"/>
     <label name="translatable"/>
     <field name="translatable"/>
+    <label name="parent"/>
+    <field name="parent"/>
     <separator string="Date Formatting" colspan="6" id="date"/>
     <label name="date"/>
     <field name="date"/>

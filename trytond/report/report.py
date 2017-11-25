@@ -29,7 +29,7 @@ from trytond.transaction import Transaction
 from trytond.url import URLMixin
 from trytond.rpc import RPC
 from trytond.exceptions import UserError
-from trytond.tools import get_parent_language
+from trytond.ir.lang import get_parent_language
 
 MIMETYPES = {
     'odt': 'application/vnd.oasis.opendocument.text',

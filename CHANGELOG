@@ -1,3 +1,4 @@
+* Add exceptional parent language
 * Add get method on ir.lang
 * Convert format, currency and strftime of ir.lang into instance methods
 
