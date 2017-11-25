@@ -44,25 +44,6 @@ class CurrencyTestCase(ModuleTestCase):
         self.assert_(cu2)
 
     @with_transaction()
-    def test_mon_grouping(self):
-        'Check grouping'
-        pool = Pool()
-        Currency = pool.get('currency.currency')
-        cu1 = create_currency('cu1')
-
-        self.assertRaises(Exception, Currency.write, [cu1],
-            {'mon_grouping': ''})
-
-        self.assertRaises(Exception, Currency.write, [cu1],
-            {'mon_grouping': '[a]'})
-
-        self.assertRaises(Exception, Currency.write, [cu1],
-            {'mon_grouping': '[1,"a"]'})
-
-        self.assertRaises(Exception, Currency.write, [cu1],
-            {'mon_grouping': '[1,"1"]'})
-
-    @with_transaction()
     def test_rate(self):
         'Create rates'
         cu1 = create_currency('cu1')

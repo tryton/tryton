@@ -1,3 +1,5 @@
+* Remove monetary formatting from currency
+
 Version 4.6.0 - 2017-10-30
 * Bug fixes (see mercurial logs for details)
 

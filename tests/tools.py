@@ -31,8 +31,7 @@ def get_currency(code='USD', config=None):
     if not currencies:
         currency = Currency(name=_names.get(code, code),
             symbol=_symbols.get(code, code), code=code,
-            rounding=Decimal('0.01'), mon_grouping='[3, 3, 0]',
-            mon_decimal_point='.', mon_thousands_sep=',')
+            rounding=Decimal('0.01'))
         currency.save()
         rate = _rates.get(code)
         if rate is not None:

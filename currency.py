@@ -1,9 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-import json
 
 from decimal import Decimal, ROUND_HALF_EVEN
+
+from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields, Unique, Check
 from trytond.tools import datetime_strftime
 from trytond.transaction import Transaction
@@ -27,19 +28,6 @@ class Currency(ModelSQL, ModelView):
     digits = fields.Integer('Display Digits', required=True)
     active = fields.Boolean('Active')
 
-    # monetary formatting
-    mon_grouping = fields.Char('Grouping', required=True)
-    mon_decimal_point = fields.Char('Decimal Separator', required=True)
-    mon_thousands_sep = fields.Char('Thousands Separator')
-    p_sign_posn = fields.Integer('Positive Sign Position', required=True)
-    n_sign_posn = fields.Integer('Negative Sign Position', required=True)
-    positive_sign = fields.Char('Positive Sign')
-    negative_sign = fields.Char('Negative Sign')
-    p_cs_precedes = fields.Boolean('Positive Currency Symbol Precedes')
-    n_cs_precedes = fields.Boolean('Negative Currency Symbol Precedes')
-    p_sep_by_space = fields.Boolean('Positive Separate by Space')
-    n_sep_by_space = fields.Boolean('Negative Separate by Space')
-
     @classmethod
     def __setup__(cls):
         super(Currency, cls).__setup__()
@@ -47,12 +35,24 @@ class Currency(ModelSQL, ModelView):
         cls._error_messages.update({
                 'no_rate': ('No rate found for currency "%(currency)s" on '
                     '"%(date)s"'),
-                'invalid_mon_grouping': ('Invalid grouping "%(grouping)s" on '
-                    'currency "%(currency)s".'),
                 })
         cls.__rpc__.update({
                 'compute': RPC(),
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+
+        super(Currency, cls).__register__(module_name)
+
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 4.6: removal of monetary
+        for col in [
+                'mon_grouping', 'mon_decimal_point',
+                'p_sign_posn', 'n_sign_posn']:
+            table_h.not_null_action(col, 'remove')
 
     @staticmethod
     def default_active():
@@ -65,71 +65,6 @@ class Currency(ModelSQL, ModelView):
     @staticmethod
     def default_digits():
         return 2
-
-    @staticmethod
-    def default_mon_grouping():
-        return '[]'
-
-    @staticmethod
-    def default_mon_thousands_sep():
-        return ','
-
-    @staticmethod
-    def default_mon_decimal_point():
-        return '.'
-
-    @staticmethod
-    def default_p_sign_posn():
-        return 1
-
-    @staticmethod
-    def default_n_sign_posn():
-        return 1
-
-    @staticmethod
-    def default_negative_sign():
-        return '-'
-
-    @staticmethod
-    def default_positive_sign():
-        return ''
-
-    @staticmethod
-    def default_p_cs_precedes():
-        return True
-
-    @staticmethod
-    def default_n_cs_precedes():
-        return True
-
-    @staticmethod
-    def default_p_sep_by_space():
-        return False
-
-    @staticmethod
-    def default_n_sep_by_space():
-        return False
-
-    @classmethod
-    def validate(cls, currencies):
-        super(Currency, cls).validate(currencies)
-        for currency in currencies:
-            currency.check_mon_grouping()
-
-    def check_mon_grouping(self):
-        '''
-        Check if mon_grouping is list of numbers
-        '''
-        try:
-            grouping = json.loads(self.mon_grouping)
-            for i in grouping:
-                if not isinstance(i, int):
-                    raise ValueError
-        except Exception:
-            self.raise_user_error('invalid_mon_grouping', {
-                    'grouping': self.mon_grouping,
-                    'currency': self.rec_name,
-                    })
 
     @classmethod
     def check_xml_record(cls, records, values):

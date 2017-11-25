@@ -112,77 +112,22 @@ currencies = {
     'EUR': {
         'rounding': "Decimal('0.01')",
         'digits': '2',
-        'p_cs_precedes': 'False',
-        'n_cs_precedes': 'False',
-        'p_sep_by_space': 'True',
-        'n_sep_by_space': 'True',
-        'mon_grouping': '[3, 3, 0]',
-        'mon_decimal_point': ',',
-        'mon_thousands_sep': ' ',
-        'p_sign_posn': '1',
-        'n_sign_posn': '1',
-        'negative_sign': '-',
-        'positive_sign': '',
         },
     'GBP': {
         'rounding': "Decimal('0.01')",
         'digits': '2',
-        'p_cs_precedes': 'True',
-        'n_cs_precedes': 'True',
-        'p_sep_by_space': 'False',
-        'n_sep_by_space': 'False',
-        'mon_grouping': '[]',
-        'mon_decimal_point': '.',
-        'mon_thousands_sep': ',',
-        'p_sign_posn': '1',
-        'n_sign_posn': '1',
-        'negative_sign': '-',
-        'positive_sign': '',
         },
     'CHF': {
         'rounding': "Decimal('0.01')",
         'digits': '2',
-        'p_cs_precedes': 'False',
-        'n_cs_precedes': 'False',
-        'p_sep_by_space': 'True',
-        'n_sep_by_space': 'True',
-        'mon_grouping': '[3, 3, 0]',
-        'mon_decimal_point': ',',
-        'mon_thousands_sep': ' ',
-        'p_sign_posn': '1',
-        'n_sign_posn': '1',
-        'negative_sign': '-',
-        'positive_sign': '',
         },
     'USD': {
         'rounding': "Decimal('0.01')",
         'digits': '2',
-        'p_cs_precedes': 'True',
-        'n_cs_precedes': 'True',
-        'p_sep_by_space': 'False',
-        'n_sep_by_space': 'False',
-        'mon_grouping': '[3, 3, 0]',
-        'mon_decimal_point': '.',
-        'mon_thousands_sep': ',',
-        'p_sign_posn': '1',
-        'n_sign_posn': '1',
-        'negative_sign': '-',
-        'positive_sign': '',
         },
     'ARS': {
         'rounding': "Decimal('0.01')",
         'digits': '2',
-        'p_cs_precedes': 'True',
-        'n_cs_precedes': 'True',
-        'p_sep_by_space': 'True',
-        'n_sep_by_space': 'True',
-        'mon_grouping': '[3, 3, 0]',
-        'mon_decimal_point': ',',
-        'mon_thousands_sep': '.',
-        'p_sign_posn': '1',
-        'n_sign_posn': '1',
-        'negative_sign': '-',
-        'positive_sign': '',
         },
 }
 
@@ -195,18 +140,7 @@ for currency in pycountry.currencies:
     if currency.alpha_3 in currencies:
         extend = u'''
             <field name="rounding" eval="%(rounding)s"/>
-            <field name="digits" eval="%(digits)s"/>
-            <field name="p_cs_precedes" eval="%(p_cs_precedes)s"/>
-            <field name="n_cs_precedes" eval="%(n_cs_precedes)s"/>
-            <field name="p_sep_by_space" eval="%(p_sep_by_space)s"/>
-            <field name="n_sep_by_space" eval="%(n_sep_by_space)s"/>
-            <field name="mon_grouping">%(mon_grouping)s</field>
-            <field name="mon_decimal_point">%(mon_decimal_point)s</field>
-            <field name="mon_thousands_sep">%(mon_thousands_sep)s</field>
-            <field name="p_sign_posn" eval="%(p_sign_posn)s"/>
-            <field name="n_sign_posn" eval="%(n_sign_posn)s"/>
-            <field name="negative_sign">%(negative_sign)s</field>
-            <field name="positive_sign">%(positive_sign)s</field>''' % (
+            <field name="digits" eval="%(digits)s"/>''' % (
                 currencies[currency.alpha_3])
     record = u'''
         <record model="currency.currency" id="%s">
