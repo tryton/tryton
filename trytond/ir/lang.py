@@ -48,6 +48,19 @@ class Lang(ModelSQL, ModelView):
     decimal_point = fields.Char('Decimal Separator', required=True)
     thousands_sep = fields.Char('Thousands Separator')
 
+    # monetary formatting
+    mon_grouping = fields.Char('Grouping', required=True)
+    mon_decimal_point = fields.Char('Decimal Separator', required=True)
+    mon_thousands_sep = fields.Char('Thousands Separator')
+    p_sign_posn = fields.Integer('Positive Sign Position', required=True)
+    n_sign_posn = fields.Integer('Negative Sign Position', required=True)
+    positive_sign = fields.Char('Positive Sign')
+    negative_sign = fields.Char('Negative Sign')
+    p_cs_precedes = fields.Boolean('Positive Currency Symbol Precedes')
+    n_cs_precedes = fields.Boolean('Negative Currency Symbol Precedes')
+    p_sep_by_space = fields.Boolean('Positive Separate by Space')
+    n_sep_by_space = fields.Boolean('Negative Separate by Space')
+
     _lang_cache = Cache('ir.lang')
     _code_cache = Cache('ir.lang.code', context=False)
 
@@ -130,6 +143,50 @@ class Lang(ModelSQL, ModelView):
         return ','
 
     @classmethod
+    def default_mon_grouping(cls):
+        return '[]'
+
+    @classmethod
+    def default_mon_thousands_sep(cls):
+        return ','
+
+    @classmethod
+    def default_mon_decimal_point(cls):
+        return '.'
+
+    @classmethod
+    def default_p_sign_posn(cls):
+        return 1
+
+    @classmethod
+    def default_n_sign_posn(cls):
+        return 1
+
+    @classmethod
+    def default_negative_sign(cls):
+        return '-'
+
+    @classmethod
+    def default_positive_sign(cls):
+        return ''
+
+    @classmethod
+    def default_p_cs_precedes(cls):
+        return True
+
+    @classmethod
+    def default_n_cs_precedes(cls):
+        return True
+
+    @classmethod
+    def default_p_sep_by_space(cls):
+        return False
+
+    @classmethod
+    def default_n_sep_by_space(cls):
+        return False
+
+    @classmethod
     def validate(cls, languages):
         super(Lang, cls).validate(languages)
         cls.check_grouping(languages)
@@ -142,16 +199,17 @@ class Lang(ModelSQL, ModelView):
         Check if grouping is list of numbers
         '''
         for lang in langs:
-            try:
-                grouping = literal_eval(lang.grouping)
-                for i in grouping:
-                    if not isinstance(i, int):
-                        raise
-            except Exception:
-                cls.raise_user_error('invalid_grouping', {
-                        'grouping': lang.grouping,
-                        'language': lang.rec_name,
-                        })
+            for grouping in [lang.grouping, lang.mon_grouping]:
+                try:
+                    grouping = literal_eval(grouping)
+                    for i in grouping:
+                        if not isinstance(i, int):
+                            raise
+                except Exception:
+                    cls.raise_user_error('invalid_grouping', {
+                            'grouping': grouping,
+                            'language': lang.rec_name,
+                            })
 
     @classmethod
     def check_date(cls, langs):
@@ -268,7 +326,7 @@ class Lang(ModelSQL, ModelView):
             lang = cls(lang_id)
         return lang
 
-    def _group(self, s, monetary=None):
+    def _group(self, s, monetary=False):
         # Code from _group in locale.py
 
         # Iterate over grouping intervals
@@ -286,8 +344,8 @@ class Lang(ModelSQL, ModelView):
                 last_interval = interval
 
         if monetary:
-            thousands_sep = monetary.mon_thousands_sep
-            grouping = literal_eval(monetary.mon_grouping)
+            thousands_sep = self.mon_thousands_sep
+            grouping = literal_eval(self.mon_grouping)
         else:
             thousands_sep = self.thousands_sep
             grouping = literal_eval(self.grouping)
@@ -317,7 +375,7 @@ class Lang(ModelSQL, ModelView):
             len(thousands_sep) * (len(groups) - 1)
         )
 
-    def format(self, percent, value, grouping=False, monetary=None,
+    def format(self, percent, value, grouping=False, monetary=False,
             *additional):
         '''
         Returns the lang-aware substitution of a %? specifier (percent).
@@ -352,7 +410,7 @@ class Lang(ModelSQL, ModelView):
             if grouping:
                 parts[0], seps = self._group(parts[0], monetary=monetary)
             if monetary:
-                decimal_point = monetary.mon_decimal_point
+                decimal_point = self.mon_decimal_point
             else:
                 decimal_point = self.decimal_point
             formatted = decimal_point.join(parts)
@@ -370,6 +428,7 @@ class Lang(ModelSQL, ModelView):
         Formats val according to the currency settings in lang.
         """
         # Code from currency in locale.py
+
         # check for illegal values
         digits = currency.digits
         if digits == 127:
@@ -377,25 +436,25 @@ class Lang(ModelSQL, ModelView):
                              "the 'C' locale.")
 
         s = self.format(
-            '%%.%if' % digits, abs(val), grouping, monetary=currency)
+            '%%.%if' % digits, abs(val), grouping, monetary=True)
         # '<' and '>' are markers if the sign must be inserted
         # between symbol and value
         s = '<' + s + '>'
 
         if symbol:
             smb = currency.symbol
-            precedes = (val < 0 and currency.n_cs_precedes
-                or currency.p_cs_precedes)
-            separated = (val < 0 and currency.n_sep_by_space
-                or currency.p_sep_by_space)
+            precedes = (val < 0 and self.n_cs_precedes
+                or self.p_cs_precedes)
+            separated = (val < 0 and self.n_sep_by_space
+                or self.p_sep_by_space)
 
             if precedes:
                 s = smb + (separated and ' ' or '') + s
             else:
                 s = s + (separated and ' ' or '') + smb
 
-        sign_pos = val < 0 and currency.n_sign_posn or currency.p_sign_posn
-        sign = val < 0 and currency.negative_sign or currency.positive_sign
+        sign_pos = val < 0 and self.n_sign_posn or self.p_sign_posn
+        sign = val < 0 and self.negative_sign or self.positive_sign
 
         if sign_pos == 0:
             s = '(' + s + ')'
