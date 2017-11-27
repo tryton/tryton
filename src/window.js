@@ -1328,8 +1328,17 @@
             this.context = context;
             Sao.Window.Export._super.init.call(this,
                 Sao.i18n.gettext('Export to CSV')).then(function() {
+                    var fields = this.screen.model.fields;
                     names.forEach(function(name) {
-                        this.sel_field(name);
+                        var type = fields[name].description.type;
+                        if (type == 'selection') {
+                            this.sel_field(name + '.translated');
+                        } else if (type == 'reference') {
+                            this.sel_field(name + '.translated');
+                            this.sel_field(name + '/rec_name');
+                        } else {
+                            this.sel_field(name);
+                        }
                     }.bind(this));
                 }.bind(this));
 
