@@ -247,6 +247,18 @@ function eval_pyson(value){
             return widget;
         },
         _parse_group: function(model, node, container, attributes) {
+            if (attributes.name !== undefined) {
+                var field = model.fields[attributes.name];
+                if (attributes.name == this.screen.exclude_field) {
+                    container.add(attributes);
+                    return;
+                }
+                ['states', 'string'].forEach(function(attr) {
+                    if (!(attr in attributes) && (attr in field.description)) {
+                        attributes[attr] = field.description[attr];
+                    }
+                });
+            }
             var group = new Sao.View.Form.Group(attributes);
             group.add(this.parse(model, node));
             this.state_widgets.push(group);
