@@ -1710,12 +1710,13 @@
             }
             var value = this.get(record);
             if (value !== null) {
+                var options = {};
                 var digits = this.digits(record, factor);
                 if (digits) {
-                    return (value * factor).toFixed(digits[1]);
-                } else {
-                    return '' + (value * factor);
+                    options.minimumFractionDigits = digits[1];
+                    options.maximumFractionDigits = digits[1];
                 }
+                return (value * factor).toLocaleString(Sao.i18n.getlang(), options);
             } else {
                 return '';
             }

@@ -1,3 +1,4 @@
+* Use input number and toLocaleString for numeric fields
 * Show related record names for all windows
 * Allow to edit Many2One from tree view
 * Use translated values when exporting Reference and Selection fields

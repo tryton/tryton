@@ -1240,7 +1240,7 @@
                             }.bind(this), 0);
                         }.bind(this));
                 } else if (event_.which == Sao.common.ESC_KEYCODE) {
-                    this.get_static_el().show();
+                    this.get_static_el().show().find('[tabindex=0]').focus();
                     current_td = this.get_active_td();
                     current_td.on('click keypress',
                             {column: this.edited_column, td: current_td},

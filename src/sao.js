@@ -207,6 +207,7 @@ var Sao = {};
                  navigator.userLanguage ||
                  'en').replace('-', '_');
         }
+        jQuery('html').attr('lang', lang);
         Sao.i18n.setLocale(lang);
         moment.locale(lang.slice(0, 2));
         return jQuery.getJSON('locale/' + lang + '.json', function(data) {
@@ -230,6 +231,7 @@ var Sao = {};
         return Sao.i18n.getLocale();
     };
     Sao.i18n.setlang();
+    Sao.i18n.locale = {};
 
     Sao.get_preferences = function() {
         var session = Sao.Session.current_session;
@@ -256,6 +258,7 @@ var Sao = {};
                         }
                         prm.resolve(preferences);
                     });
+                    Sao.i18n.locale = preferences.locale;
                     return prm;
                 });
             });

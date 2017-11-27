@@ -1489,10 +1489,28 @@ function eval_pyson(value){
         init: function(field_name, model, attributes) {
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
-            this.input.attr('type', 'text');
             this.input.attr('width', 8);
+            this.input_text = this.input.clone().appendTo(this.group);
+            this.input_text.attr('type', 'text');
+            this.input.attr('type', 'number');
+            this.input.attr('step', 1);
+            this.input.attr('lang', Sao.i18n.getlang());
             this.group.css('width', '');
             this.factor = Number(attributes.factor || 1);
+
+            this.input.hide().on('focusout', function() {
+                this.input.hide();
+                this.input_text.show();
+            }.bind(this));
+            this.input_text.on('focusin', function() {
+                if (!this.input.prop('readonly')) {
+                    this.input_text.hide();
+                    this.input.show();
+                    window.setTimeout(function() {
+                        this.input.focus();
+                    }.bind(this));
+                }
+            }.bind(this));
         },
         set_value: function(record, field) {
             field.set_client(record, this.input.val(), undefined, this.factor);
@@ -1500,14 +1518,52 @@ function eval_pyson(value){
         get_client_value: function(record, field) {
             var value = '';
             if (field) {
-                value = field.get_client(record, this.factor);
+                value = field.get(record);
+                if (value !== null) {
+                    value *= this.factor;
+                }
             }
             return value;
+        },
+        display: function(record, field) {
+            Sao.View.Form.Integer._super.display.call(this, record, field);
+            var value = '';
+            if (field) {
+                value = field.get_client(record, this.factor);
+            }
+            this.input_text.val(value);
+            this.input_text.attr('maxlength', this.input.attr('maxlength'));
+            this.input_text.attr('size', this.input.attr('size'));
+        },
+        set_readonly: function(readonly) {
+            Sao.View.Form.Integer._super.set_readonly.call(this, readonly);
+            this.input_text.prop('readonly', readonly);
+        },
+        focus: function() {
+            if (!this.input.prop('readonly')) {
+                this.input_text.hide();
+                this.input.show().focus();
+            } else {
+                this.input_text.focus();
+            }
         }
     });
 
     Sao.View.Form.Float = Sao.class_(Sao.View.Form.Integer, {
-        class_: 'form-float'
+        class_: 'form-float',
+        display: function(record, field) {
+            var digits = 'any';
+            if (record) {
+                digits = field.digits(record, this.factor);
+                if (digits) {
+                    digits = digits[1];
+                } else {
+                    digits = 'any';
+                }
+            }
+            this.input.attr('step', Math.pow(10, -digits));
+            Sao.View.Form.Float._super.display.call(this, record, field);
+        }
     });
 
     Sao.View.Form.Selection = Sao.class_(Sao.View.Form.Widget, {
