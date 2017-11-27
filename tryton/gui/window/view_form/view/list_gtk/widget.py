@@ -570,6 +570,40 @@ class M2O(GenericText):
         else:
             win.show()
 
+    def editing_started(self, cell, editable, path):
+        super(M2O, self).editing_started(cell, editable, path)
+        record, field = self._get_record_field(path)
+
+        def changed(editable):
+            if field.get(record):
+                stock1, tooltip1 = 'tryton-open', _("Open the record <F2>")
+                stock2, tooltip2 = 'tryton-clear', _("Clear the record <Del>")
+            else:
+                stock1, tooltip1 = None, ''
+                stock2, tooltip2 = 'tryton-find', _("Search a record <F2>")
+            for pos, stock, tooltip in [
+                    (gtk.ENTRY_ICON_PRIMARY, stock1, tooltip1),
+                    (gtk.ENTRY_ICON_SECONDARY, stock2, tooltip2)]:
+                editable.set_icon_from_stock(pos, stock)
+                editable.set_icon_tooltip_text(pos, tooltip)
+
+        def icon_press(editable, icon_pos, event):
+            value = field.get(record)
+            if icon_pos == gtk.ENTRY_ICON_SECONDARY and value:
+                field.set_client(record, (None, ''))
+                editable.set_text('')
+            elif value:
+                self.open_remote(record, create=False, changed=False)
+            else:
+                self.open_remote(
+                    record, create=False, changed=True,
+                    text=editable.get_text())
+
+        editable.connect('icon-press', icon_press)
+        editable.connect('changed', changed)
+        changed(editable)
+        return False
+
     def open_remote(self, record, create=True, changed=False, text=None,
             callback=None):
         field = record.group.fields[self.attrs['name']]
