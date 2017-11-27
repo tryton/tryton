@@ -280,7 +280,14 @@ class Form(SignalEvent, TabContent):
             [r.id for r in self.screen.selected_records],
             context=self.screen.context)
         for name in self.screen.current_view.get_fields():
-            export.sel_field(name)
+            type = self.screen.group.fields[name].attrs['type']
+            if type == 'selection':
+                export.sel_field(name + '.translated')
+            elif type == 'reference':
+                export.sel_field(name + '.translated')
+                export.sel_field(name + '/rec_name')
+            else:
+                export.sel_field(name)
 
     def sig_new(self, widget=None, autosave=True):
         if not common.MODELACCESS[self.model]['create']:
