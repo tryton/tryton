@@ -1,49 +1,91 @@
 import os
+import re
 import sys
+import tempfile
 import user
-from subprocess import Popen, PIPE
+from subprocess import Popen, PIPE, check_call
 
 from cx_Freeze import setup, Executable
 
 include_files = [
-    ('tryton/data', 'data'),
-    ('tryton/plugins', 'plugins'),
-    (os.path.join(sys.prefix, 'lib/gtk-2.0'), 'lib/gtk-2.0'),
-    (os.path.join(sys.prefix, 'lib/gdk-pixbuf-2.0'), 'lib/gdk-pixbuf-2.0'),
-    (os.path.join(sys.prefix, 'share/locale'), 'share/locale'),
-    ('%s/gtk-2.0/gtkrc' % sys.platform, 'etc/gtk-2.0/gtkrc'),
-    ('%s/gtk-2.0/gtk.immodules' % sys.platform, 'etc/gtk-2.0/gtk.immodules'),
-    ('%s/gtk-2.0/gdk-pixbuf.loaders' % sys.platform,
-        'etc/gtk-2.0/gdk-pixbuf.loaders'),
+    (os.path.join('tryton', 'data'), 'data'),
+    (os.path.join('tryton', 'plugins'), 'plugins'),
+    (os.path.join(sys.prefix, 'lib', 'gtk-3.0'),
+        os.path.join('lib', 'gtk-3.0')),
+    (os.path.join(sys.prefix, 'lib', 'gdk-pixbuf-2.0'),
+        os.path.join('lib', 'gdk-pixbuf-2.0')),
+    (os.path.join(sys.prefix, 'share', 'locale'),
+        os.path.join('share', 'locale')),
+    (os.path.join(sys.prefix, 'share', 'icons', 'Adwaita'),
+        os.path.join('share', 'icons', 'Adwaita')),
+    (os.path.join(sys.platform, 'gtk-3.0', 'gtk.immodules'),
+        os.path.join('etc', 'gtk-3.0', 'gtk.immodules')),
+    (os.path.join(sys.platform, 'gtk-3.0', 'gdk-pixbuf.loaders'),
+        os.path.join('etc', 'gtk-3.0', 'gdk-pixbuf.loaders')),
     ]
 
-if sys.platform == 'win32':
-    include_files.extend([
-        (os.path.join(sys.prefix, 'share/themes/MS-Windows'),
-            'share/themes/MS-Windows'),
-        (os.path.join(sys.prefix, 'ssl'), 'etc/ssl'),
-        ])
-    dll_paths = os.getenv('PATH', os.defpath).split(os.pathsep)
-    required_dlls = [
-        'librsvg-2-2.dll',
-        'libcroco-0.6-3.dll',
-        ]
-    for dll in required_dlls:
-        for path in dll_paths:
-            path = os.path.join(path, dll)
-            if os.path.isfile(path):
-                break
-        else:
-            raise Exception('%s not found' % dll)
-        include_files.append((path, dll))
+required_gi_namespaces = [
+    'Atk-1.0',
+    'GLib-2.0',
+    'GModule-2.0',
+    'GObject-2.0',
+    'Gdk-3.0',
+    'GdkPixbuf-2.0',
+    'Gio-2.0',
+    'GooCanvas-2.0',
+    'Gtk-3.0',
+    'Pango-1.0',
+    'PangoCairo-1.0',
+    'PangoFT2-1.0',
+    'Rsvg-2.0',
+    'cairo-1.0',
+    'fontconfig-2.0',
+    'freetype2-2.0',
+    ]
 
-elif sys.platform == 'darwin':
-    include_files.extend([
-        (os.path.join(sys.prefix, 'share/themes/Clearlooks'),
-            'share/themes/Clearlooks'),
-        (os.path.join(sys.prefix, 'share/themes/Mac'),
-            'share/themes/Mac'),
+
+def replace_path(match):
+    libs = [os.path.basename(p) for p in match.group(1).split(',')]
+    required_libs.update(libs)
+    if sys.platform == 'darwin':
+        libs = [os.path.join('@executable_path', l) for l in libs]
+    return 'shared-library="%s"' % ','.join(libs)
+lib_re = re.compile(r'shared-library="([^\"]*)"')
+
+required_libs = set()
+temp = tempfile.mkdtemp()
+for ns in required_gi_namespaces:
+    gir_name = '%s.gir' % ns
+    gir_file = os.path.join(sys.prefix, 'share', 'gir-1.0', gir_name)
+    gir_tmp = os.path.join(temp, gir_name)
+    with open(gir_file, 'r') as src, open(gir_tmp, 'w') as dst:
+        for line in src:
+            dst.write(lib_re.sub(replace_path, line))
+    typefile_name = '%s.typelib' % ns
+    typefile_file = os.path.join('lib', 'girepository-1.0', typefile_name)
+    typefile_tmp = os.path.join(temp, typefile_name)
+    check_call(['g-ir-compiler', '--output=' + typefile_tmp, gir_tmp])
+
+    include_files.append((typefile_tmp, typefile_file))
+
+if sys.platform == 'win32':
+    required_libs.update([
+        'libcroco-0.6-3.dll',
+        'libepoxy-0.dll',
         ])
+    include_files.append(
+        (os.path.join(sys.prefix, 'ssl'), os.path.join('etc', 'ssl')))
+    lib_path = os.getenv('PATH', os.defpath).split(os.pathsep)
+else:
+    lib_path = [os.path.join(sys.prefix, 'lib')]
+for lib in required_libs:
+    for path in lib_path:
+        path = os.path.join(path, lib)
+        if os.path.isfile(path):
+            break
+    else:
+        raise Exception('%s not found' % lib)
+    include_files.append((path, lib))
 
 version = Popen(
     'python setup.py --version', stdout=PIPE, shell=True).stdout.read()
@@ -56,7 +98,7 @@ setup(name='tryton',
             'no_compress': True,
             'include_files': include_files,
             'silent': True,
-            'packages': ['gtk'],
+            'packages': ['gi'],
             'include_msvcr': True,
             },
         'bdist_mac': {

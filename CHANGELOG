@@ -1,3 +1,4 @@
+* Remove support of GTK+ 2.0
 * Add icons on Many2One in editable tree
 * Use translated values when exporting Reference and Selection fields
 

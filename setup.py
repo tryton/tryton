@@ -100,7 +100,7 @@ dist = setup(name=name,
     platforms='any',
     license='GPL-3',
     install_requires=[
-        # "pygtk >= 2.6",
+        # "py-gobject3",
         "python-dateutil",
         "chardet",
         ],

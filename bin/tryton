@@ -17,12 +17,14 @@ if hasattr(sys, 'frozen'):
     prefix = os.path.dirname(sys.executable)
     os.environ['GTK_EXE_PREFIX'] = prefix
     os.environ['GTK_DATA_PREFIX'] = prefix
+    os.environ['XDG_DATA_DIRS'] = os.path.join(prefix, 'share')
     etc = os.path.join(prefix, 'etc')
-    os.environ['GTK2_RC_FILES'] = os.path.join(etc, 'gtk-2.0', 'gtkrc')
     os.environ['GDK_PIXBUF_MODULE_FILE'] = os.path.join(
-            etc, 'gtk-2.0', 'gdk-pixbuf.loaders')
+            etc, 'gtk-3.0', 'gdk-pixbuf.loaders')
     os.environ['GTK_IM_MODULE_FILE'] = os.path.join(
-            etc, 'gtk-2.0', 'gtk.immodules')
+            etc, 'gtk-3.0', 'gtk.immodules')
+    os.environ['GI_TYPELIB_PATH'] = os.path.join(
+            prefix, 'lib', 'girepository-1.0')
     if sys.platform == 'win32':
         # cx_freeze >= 5 put python modules under lib directory
         sys.path.append(os.path.join(prefix, 'lib'))
