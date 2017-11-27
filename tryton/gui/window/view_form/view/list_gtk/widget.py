@@ -533,10 +533,10 @@ class Image(GenericText):
             else:
                 value = field.get_data(record)
         pixbuf = data2pixbuf(value)
-        if (self.attrs.get('width', -1) != -1 or
-                self.attrs.get('height', -1) != -1):
-            pixbuf = common.resize_pixbuf(pixbuf,
-                self.attrs['width'], self.attrs['height'])
+        width = self.attrs.get('width', -1)
+        height = self.attrs.get('height', -1)
+        if width != -1 or height != -1:
+            pixbuf = common.resize_pixbuf(pixbuf, width, height)
         cell.set_property('pixbuf', pixbuf)
 
     def get_textual_value(self, record):
