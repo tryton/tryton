@@ -1812,10 +1812,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         else:
             type_ = self.invoice_type
         if type_ == 'in':
-            try:
-                self.account = self.product.account_expense_used
-            except Exception:
-                pass
+            self.account = self.product.account_expense_used
             taxes = []
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.supplier_taxes_used:
@@ -1831,10 +1828,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                     taxes.extend(tax_ids)
             self.taxes = taxes
         else:
-            try:
-                self.account = self.product.account_revenue_used
-            except Exception:
-                pass
+            self.account = self.product.account_revenue_used
             taxes = []
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.customer_taxes_used:
