@@ -29,7 +29,6 @@ from trytond.transaction import Transaction
 from trytond.url import URLMixin
 from trytond.rpc import RPC
 from trytond.exceptions import UserError
-from trytond.ir.lang import get_parent_language
 
 MIMETYPES = {
     'odt': 'application/vnd.oasis.opendocument.text',
@@ -82,6 +81,7 @@ class TranslateFactory:
         self.cache = {}
 
     def __call__(self, text):
+        from trytond.ir.lang import get_parent_language
         if self.language not in self.cache:
             cache = self.cache[self.language] = {}
             code = self.language
