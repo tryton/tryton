@@ -298,10 +298,10 @@ class Main(object):
         def match_selected(completion, model, iter_):
             model, record_id, model_name = model.get(iter_, 2, 3, 4)
             if model == self.menu_screen.model_name:
+                # ids is not defined to prevent to add suffix
                 Action.exec_keyword('tree_open', {
                         'model': model,
                         'id': record_id,
-                        'ids': [record_id],
                         }, context=self.menu_screen.context.copy())
             else:
                 Window.create(model,
@@ -711,11 +711,11 @@ class Main(object):
             allow_similar = (event.state & gtk.gdk.MOD1_MASK or
                              event.state & gtk.gdk.SHIFT_MASK)
             with Window(allow_similar=allow_similar):
+                # ids is not defined to prevent to add suffix
                 Action.exec_keyword('tree_open', {
-                    'model': self.menu_screen.model_name,
-                    'id': id_,
-                    'ids': [id_],
-                })
+                        'model': self.menu_screen.model_name,
+                        'id': id_,
+                        })
 
         def _manage_favorites(widget):
             Window.create(self.menu_screen.model_name + '.favorite',
@@ -968,6 +968,16 @@ class Main(object):
             return not expander.get_expanded()
         return False
 
+    def menu_row_activate(self):
+        screen = self.menu_screen
+        record_id = (screen.current_record.id
+            if screen.current_record else None)
+        # ids is not defined to prevent to add suffix
+        return Action.exec_keyword('tree_open', {
+                'model': screen.model_name,
+                'id': record_id,
+                }, context=screen.context.copy(), warning=False)
+
     def sig_win_menu(self, prefs=None):
         from tryton.gui.window.view_form.screen import Screen
 
@@ -1001,7 +1011,8 @@ class Main(object):
         action_ctx = decoder.decode(action.get('pyson_context') or '{}')
         domain = decoder.decode(action['pyson_domain'])
         screen = Screen(action['res_model'], mode=['tree'], view_ids=view_ids,
-            domain=domain, context=action_ctx, readonly=True, limit=None)
+            domain=domain, context=action_ctx, readonly=True, limit=None,
+            row_activate=self.menu_row_activate)
         # Use alternate view to not show search box
         screen.screen_container.alternate_view = True
         screen.switch_view(view_type=screen.current_view.view_type)

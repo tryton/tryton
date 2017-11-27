@@ -129,7 +129,7 @@ class Action(object):
                 for n, d, c in action['domains']]
 
             name = action.get('name', '')
-            if action.get('keyword', '') == 'form_relate':
+            if action.get('keyword', ''):
                 name = add_name_suffix(name)
 
             res_model = action.get('res_model', data.get('res_model'))
