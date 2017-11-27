@@ -12,5 +12,5 @@ this repository contains the full copyright notices and license terms. -->
     <label name="group"/>
     <field name="group"/>
     <label name="condition"/>
-    <field name="condition" colspan="3"/>
+    <field name="condition" colspan="3" widget="pyson"/>
 </form>
