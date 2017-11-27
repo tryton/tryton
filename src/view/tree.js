@@ -1455,7 +1455,28 @@
     });
 
     Sao.View.Tree.Many2OneColumn = Sao.class_(Sao.View.Tree.CharColumn, {
-        class_: 'column-many2one'
+        class_: 'column-many2one',
+        get_cell: function() {
+            var cell = Sao.View.Tree.Many2OneColumn._super.get_cell.call(this);
+            cell.append(jQuery('<a/>', {
+                'href': '#',
+            }));
+            return cell;
+        },
+        update_text: function(cell, record) {
+            cell = cell.children('a');
+            cell.unbind('click');
+            Sao.View.Tree.Many2OneColumn._super.update_text.call(this, cell, record);
+            cell.click(function(event) {
+                event.stopPropagation();
+                var params = {};
+                params.model = this.attributes.relation;
+                params.res_id = this.field.get(record);
+                params.mode = ['form'];
+                params.name = this.attributes.string;
+                Sao.Tab.create(params);
+            }.bind(this));
+        }
     });
 
     Sao.View.Tree.One2OneColumn = Sao.class_(Sao.View.Tree.Many2OneColumn, {
