@@ -28,7 +28,8 @@ def account_used(field_name):
             account = func(self)
             if not account:
                 account = self.get_account(field_name + '_used')
-            if not account:
+            # Allow empty values on on_change
+            if not account and not Transaction().readonly:
                 self.raise_user_error('missing_account', {
                         'name': self.name,
                         'id': self.id,
