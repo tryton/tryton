@@ -232,7 +232,8 @@ class Party(CompanyMultiValueMixin):
         if not account:
             config = Configuration(1)
             account = config.get_multivalue('default_account_payable')
-        if not account:
+        # Allow empty values on on_change
+        if not account and not Transaction().readonly:
             self.raise_user_error('missing_payable_account', {
                     'name': self.rec_name,
                     })
@@ -246,7 +247,8 @@ class Party(CompanyMultiValueMixin):
         if not account:
             config = Configuration(1)
             account = config.get_multivalue('default_account_receivable')
-        if not account:
+        # Allow empty values on on_change
+        if not account and not Transaction().readonly:
             self.raise_user_error('missing_receivable_account', {
                     'name': self.rec_name,
                     })
