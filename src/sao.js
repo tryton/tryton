@@ -362,10 +362,10 @@ var Sao = {};
                     a.append(menu_item[1]);
                     a.click(function() {
                         clear_menu();
+                        // ids is not defined to prevent to add suffix
                         Sao.Action.exec_keyword('tree_open', {
                             'model': Sao.main_menu_screen.model_name,
                             'id': id,
-                            'ids': [id],
                         });
                     });
                     menu.append(li);
@@ -407,6 +407,15 @@ var Sao = {};
         }).click(Sao.favorites_menu).append(Sao.i18n.gettext('Favorites')));
     };
 
+    Sao.main_menu_row_activate = function() {
+        var screen = Sao.main_menu_screen;
+        // ids is not defined to prevent to add suffix
+        return Sao.Action.exec_keyword('tree_open', {
+            'model': screen.model_name,
+            'id': screen.get_id(),
+        }, jQuery.extend({}, screen.context), false);
+    };
+
     Sao.menu = function(preferences) {
         var decoder = new Sao.PYSON.Decoder();
         var action = decoder.decode(preferences.pyson_menu);
@@ -427,7 +436,8 @@ var Sao = {};
             'domain': domain,
             'context': action_ctx,
             'selection_mode': Sao.common.SELECTION_NONE,
-            'limit': null
+            'limit': null,
+            'row_activate': Sao.main_menu_row_activate,
         });
         Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
         form.view_prm.done(function() {
@@ -595,10 +605,10 @@ var Sao = {};
         },
         match_selected: function(item) {
             if (item.model == Sao.main_menu_screen.model_name) {
+                // ids is not defined to prevent to add suffix
                 Sao.Action.exec_keyword('tree_open', {
                     'model': item.model,
                     'id': item.record_id,
-                    'ids': [item.record_id]
                 }, Sao.main_menu_screen.context);
             } else {
                 var params = {

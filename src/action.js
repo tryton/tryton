@@ -102,7 +102,7 @@
                 }
                 params.icon = action['icon.rec_name'] || '';
 
-                if ((action.keyword || '') === 'form_relate') {
+                if (action.keyword) {
                     name_prm = add_name_suffix(action.name);
                 }
                 name_prm.then(function(name) {
