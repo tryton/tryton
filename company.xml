@@ -148,7 +148,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">company.employee</field>
             <field name="type">form</field>
             <field name="inherit" eval="None"/>
-            <field name="priority">10</field>
+            <field name="priority" eval="10"/>
             <field name="name">employee_form</field>
         </record>
 
