@@ -6,7 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="product_view_tree_qty">
             <field name="model">product.product</field>
             <field name="type">tree</field>
-            <field name="priority">20</field>
+            <field name="priority" eval="20"/>
             <field name="name">product_tree_qty</field>
         </record>
 
