@@ -121,7 +121,7 @@ Create purchase requisition without product and description::
     >>> requisition_line.product = None
     >>> requisition_line.description = None
     >>> requisition_line.supplier = supplier
-    >>> requisition_line.price = 10.0
+    >>> requisition_line.unit_price = Decimal('10')
     >>> requisition.click('wait')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
@@ -179,6 +179,8 @@ Approve workflow with user in approval_group::
     >>> requisition.click('approve')
     >>> requisition.state
     u'processing'
+    >>> requisition.total_amount
+    Decimal('20.00')
 
 Create Purchase order from Request::
 
