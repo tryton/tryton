@@ -538,7 +538,7 @@ msgstr "Chiudere la scheda"
 #: tryton/gui/window/attachment.py:22
 #, python-format, fuzzy, python-format
 msgid "Attachments (%s)"
-msgstr "Allegato(%d)"
+msgstr "Allegato(%s)"
 
 #: tryton/gui/window/dblogin.py:31
 msgid "Profile Editor"
@@ -1338,9 +1338,9 @@ msgid "Modification Date"
 msgstr "Data di modifica"
 
 #: tryton/gui/window/view_form/screen/screen.py:765
-#, python-format, fuzzy, python-format
+#, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "Impossibile ottenere la vista ad albero"
+msgstr ""
 
 #: tryton/gui/window/view_form/screen/screen.py:826
 msgid "Unable to set view tree state"

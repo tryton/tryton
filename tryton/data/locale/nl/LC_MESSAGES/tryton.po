@@ -549,7 +549,7 @@ msgstr "Tabblad sluiten"
 #: tryton/gui/window/attachment.py:22
 #, python-format, fuzzy, python-format
 msgid "Attachments (%s)"
-msgstr "Bijlage (%d)"
+msgstr "Bijlage (%s)"
 
 #: tryton/gui/window/dblogin.py:31
 msgid "Profile Editor"
