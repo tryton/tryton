@@ -1318,9 +1318,9 @@ msgid "Modification Date"
 msgstr "Zuletzt verändert am"
 
 #: tryton/gui/window/view_form/screen/screen.py:765
-#, python-format, fuzzy, python-format
+#, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "Kann Sicht für den Menübaum nicht finden."
+msgstr ""
 
 #: tryton/gui/window/view_form/screen/screen.py:826
 msgid "Unable to set view tree state"
