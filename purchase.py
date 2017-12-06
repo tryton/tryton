@@ -260,12 +260,9 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def store_cache(cls, requisitions):
-        to_write = []
         for requisition in requisitions:
-            to_write.extend([requisition], {
-                    'total_amount_cache': requisition.total_amount,
-                    })
-        cls.write(*to_write)
+            requisition.total_amount_cache = requisition.total_amount
+        cls.save(requisitions)
 
     @classmethod
     def get_amount(cls, requisitions, name):
@@ -330,7 +327,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('cancel')
     def cancel(cls, requisitions):
-        pass
+        cls.store_cache(requisitions)
 
     @classmethod
     @ModelView.button
@@ -365,6 +362,9 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                     new_requests.append(request)
         if new_requests:
             Request.save(new_requests)
+
+        cls.store_cache(requisitions)
+
         # Update the state to allow transition to processing
         cls.write(requisitions, {
                 'state': 'approved',
