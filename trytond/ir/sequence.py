@@ -232,9 +232,8 @@ class Sequence(ModelSQL, ModelView):
             for fix, error_message in ((sequence.prefix, 'invalid_prefix'),
                     (sequence.suffix, 'invalid_suffix')):
                 try:
-                    cls._process(sequence.prefix)
-                    cls._process(sequence.suffix)
-                except Exception:
+                    cls._process(fix)
+                except (TypeError, ValueError):
                     cls.raise_user_error(error_message, {
                             'prefix': fix,
                             'sequence': sequence.rec_name,
