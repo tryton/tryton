@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party"/>
     <label name="invoice_address"/>
     <field name="invoice_address"/>
-    <label name="party_tax_identifier" string="Tax Identifier"/>
+    <label name="party_tax_identifier" string="Tax Identifier:"/>
     <field name="party_tax_identifier"/>
     <label name="description"/>
     <field name="description" colspan="3"/>
