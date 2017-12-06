@@ -2552,8 +2552,11 @@ class PayInvoice(Wizard):
         with Transaction().set_context(date=self.start.date):
             amount = Currency.compute(self.start.currency,
                 self.start.amount, invoice.company.currency)
+            amount_invoice = Currency.compute(
+                self.start.currency, self.start.amount, invoice.currency)
         _, remainder = self.get_reconcile_lines_for_amount(invoice, amount)
-        if remainder == Decimal('0.0') and amount <= invoice.amount_to_pay:
+        if (remainder == Decimal('0.0')
+                and amount_invoice <= invoice.amount_to_pay):
             return 'pay'
         return 'ask'
 
@@ -2576,6 +2579,8 @@ class PayInvoice(Wizard):
         with Transaction().set_context(date=self.start.date):
             amount = Currency.compute(self.start.currency,
                 self.start.amount, invoice.company.currency)
+            amount_invoice = Currency.compute(
+                self.start.currency, self.start.amount, invoice.currency)
 
         if invoice.company.currency.is_zero(amount):
             lines = invoice.lines_to_pay
@@ -2594,7 +2599,7 @@ class PayInvoice(Wizard):
         default['currency_digits_writeoff'] = invoice.company.currency.digits
         default['invoice'] = invoice.id
 
-        if (amount > invoice.amount_to_pay
+        if (amount_invoice > invoice.amount_to_pay
                 or invoice.company.currency.is_zero(amount)):
             default['type'] = 'writeoff'
         return default
