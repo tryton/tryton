@@ -150,7 +150,13 @@ for the party of an invoice.
 Creating a simple report template for a model from client
 ---------------------------------------------------------
 
-TODO: Explain the steps necessary to do this.
+Once you have created a report template it has to be uploaded to trytond. This
+can be done by creating a new record in the
+``Administration > UI > Actions > Report`` menu. Just make sure to include the
+template file in the content field.
+
+In order to make the report printable from a model create a "Print form"
+keyword related to the model where the report should be available.
 
 Creating a simple report template for a model in XML
 ----------------------------------------------------
