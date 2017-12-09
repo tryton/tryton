@@ -663,7 +663,10 @@ class Customer(ModelSQL, ModelView):
         if not customers:
             customers = cls.search([
                     ('stripe_token', '!=', None),
-                    ('stripe_customer_id', '=', None),
+                    ['OR',
+                        ('stripe_customer_id', '=', None),
+                        ('stripe_customer_id', '=', ''),
+                        ],
                     ])
         for customer in customers:
             assert not customer.stripe_customer_id
