@@ -575,6 +575,10 @@ class M2O(GenericText):
         record, field = self._get_record_field(path)
 
         def changed(editable):
+            text = editable.get_text()
+            if field.get_client(record) != text:
+                field.set_client(record, (None, ''))
+
             if field.get(record):
                 stock1, tooltip1 = 'tryton-open', _("Open the record <F2>")
                 stock2, tooltip2 = 'tryton-clear', _("Clear the record <Del>")
