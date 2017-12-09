@@ -257,6 +257,9 @@ class Record(SignalEvent):
             if field.name not in self.modified_fields and self.id >= 0:
                 continue
             value[name] = field.get(self)
+            # Sending an empty x2MField breaks ModelFieldAccess.check
+            if isinstance(field, fields.O2MField) and not value[name]:
+                del value[name]
         return value
 
     def get_eval(self):
