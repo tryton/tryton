@@ -802,6 +802,11 @@
                     continue;
                 }
                 value[name] = field.get(this);
+                // Sending an empty x2MField breaks ModelFieldAccess.check
+                if ((field instanceof Sao.field.One2Many) &&
+                        (value[name].length === 0)) {
+                    delete value[name];
+                }
             }
             return value;
         },
