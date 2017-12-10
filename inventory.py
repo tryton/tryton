@@ -40,8 +40,12 @@ class Inventory(Workflow, ModelSQL, ModelView):
         'stock.location', 'Lost and Found', required=True,
         domain=[('type', '=', 'lost_found')], states=STATES, depends=DEPENDS)
     lines = fields.One2Many(
-        'stock.inventory.line', 'inventory', 'Lines', states=STATES,
-        depends=DEPENDS)
+        'stock.inventory.line', 'inventory', 'Lines',
+        states={
+            'readonly': (STATES['readonly'] | ~Eval('location')
+                | ~Eval('date')),
+            },
+        depends=['location', 'date'] + DEPENDS)
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
