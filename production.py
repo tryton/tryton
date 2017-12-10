@@ -49,7 +49,7 @@ class Production(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (~Eval('state').in_(['request', 'draft'])
-                | Eval('inputs', True) | Eval('outputs', True)),
+                | Eval('inputs', [-1]) | Eval('outputs', [-1])),
             },
         depends=['state'])
     location = fields.Many2One('stock.location', 'Location', required=True,
@@ -58,7 +58,7 @@ class Production(Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': (~Eval('state').in_(['request', 'draft'])
-                | Eval('inputs', True) | Eval('outputs', True)),
+                | Eval('inputs', [-1]) | Eval('outputs', [-1])),
             },
         depends=['state'])
     product = fields.Many2One('product.product', 'Product',
