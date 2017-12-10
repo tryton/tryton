@@ -32,6 +32,10 @@ class Purchase:
                 'delete_purchase_request': ('You can not delete the purchase'
                     ' "%(purchase)s" because it is linked to at least one'
                     ' purchase request.'),
+                'warehouse_request_purchase_mismatch': ('The warehouse'
+                    ' "%(purchase_warehouse)s" of purchase "%(purchase)s"'
+                    ' is different of the warehouse "%(request_warehouse)s"'
+                    ' of the linked purchase request.'),
                 })
 
     @classmethod
@@ -48,6 +52,27 @@ class Purchase:
                 if line.requests:
                     cls.raise_user_error('delete_purchase_request', {
                             'purchase': purchase.rec_name,
+                            })
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('confirmed')
+    def confirm(cls, purchases):
+        for purchase in purchases:
+            purchase.check_request_warehouse()
+        super(Purchase, cls).confirm(purchases)
+
+    def check_request_warehouse(self):
+        for line in self.lines:
+            for request in line.self_requests:
+                if request.warehouse != self.warehouse:
+                    w_name = 'check_request_warehouse_%s_%s_%s' % (
+                        self.id, self.warehouse.id, request.warehouse.id)
+                    self.raise_user_warning(
+                        w_name, 'warehouse_request_self_mismatch', {
+                            'purchase': self.rec_name,
+                            'purchase_warehouse': self.warehouse.rec_name,
+                            'request_warehouse': request.warehouse.rec_name,
                             })
 
     @classmethod
