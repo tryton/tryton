@@ -118,7 +118,7 @@ class Email(ModelSQL, ModelView):
 
     def _get_addresses(self, value):
         if isinstance(value, (list, tuple)):
-            addresses = [(self._get_address(v) for v in value)]
+            addresses = [self._get_address(v) for v in value]
         else:
             addresses = [self._get_address(value)]
         return filter(None, addresses)
