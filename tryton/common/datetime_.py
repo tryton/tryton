@@ -42,7 +42,8 @@ class Date(gtk.Entry):
             gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
     __gsignals__ = {
-        'date-changed': (gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.SIGNAL_ACTION,
+        'date-changed': (
+            gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.ACTION,
             gobject.TYPE_NONE, ()),
         }
 
@@ -242,7 +243,8 @@ class Time(gtk.ComboBoxEntry):
             gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
     __gsignals__ = {
-        'time-changed': (gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.SIGNAL_ACTION,
+        'time-changed': (
+            gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.ACTION,
             gobject.TYPE_NONE, ()),
         }
 
@@ -397,7 +399,8 @@ class DateTime(gtk.HBox):
             gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
     __gsignals__ = {
-        'datetime-changed': (gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.SIGNAL_ACTION,
+        'datetime-changed': (
+            gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.ACTION,
             gobject.TYPE_NONE, ()),
         }
 
