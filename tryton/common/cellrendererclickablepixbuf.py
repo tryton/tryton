@@ -6,7 +6,7 @@ import gobject
 
 class CellRendererClickablePixbuf(gtk.CellRendererPixbuf):
     __gsignals__ = {
-        'clicked': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+        'clicked': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
             (gobject.TYPE_STRING, )),
         }
 

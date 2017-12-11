@@ -11,15 +11,15 @@ class CellRendererButton(gtk.GenericCellRenderer):
     # TODO Add keyboard editing
     __gproperties__ = {
             "text": (gobject.TYPE_STRING, None, "Text",
-                "Displayed text", gobject.PARAM_READWRITE),
+                "Displayed text", gobject.ParamFlags.READWRITE),
             'visible': (gobject.TYPE_INT, 'Visible',
-                'Visible', 0, 10, 0, gobject.PARAM_READWRITE),
+                'Visible', 0, 10, 0, gobject.ParamFlags.READWRITE),
             'sensitive': (gobject.TYPE_INT, 'Sensitive',
-                'Sensitive', 0, 10, 0, gobject.PARAM_READWRITE),
+                'Sensitive', 0, 10, 0, gobject.ParamFlags.READWRITE),
     }
 
     __gsignals__ = {
-            'clicked': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+            'clicked': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
                 (gobject.TYPE_STRING, )),
     }
 

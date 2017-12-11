@@ -34,15 +34,15 @@ class Date(gtk.Entry):
         'value': (gobject.TYPE_PYOBJECT,
             _('Value'),
             _('Displayed value'),
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         'format': (gobject.TYPE_STRING,
             '%x',
             _('Format'),
             _('Display format'),
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
     __gsignals__ = {
-        'date-changed': (gobject.SIGNAL_RUN_LAST | gobject.SIGNAL_ACTION,
+        'date-changed': (gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.SIGNAL_ACTION,
             gobject.TYPE_NONE, ()),
         }
 
@@ -193,7 +193,7 @@ class CellRendererDate(gtk.CellRendererText):
             _('Format'),
             _('Display format'),
             '%x',
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
 
     def __init__(self):
@@ -234,15 +234,15 @@ class Time(gtk.ComboBoxEntry):
         'value': (gobject.TYPE_PYOBJECT,
             _('Value'),
             _('Displayed value'),
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         'format': (gobject.TYPE_STRING,
             _('Format'),
             _('Display format'),
             '%X',
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
     __gsignals__ = {
-        'time-changed': (gobject.SIGNAL_RUN_LAST | gobject.SIGNAL_ACTION,
+        'time-changed': (gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.SIGNAL_ACTION,
             gobject.TYPE_NONE, ()),
         }
 
@@ -341,7 +341,7 @@ class CellRendererTime(gtk.CellRendererText):
             '%X',
             _('Format'),
             _('Display format'),
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
 
     def __init__(self):
@@ -384,20 +384,20 @@ class DateTime(gtk.HBox):
         'value': (gobject.TYPE_PYOBJECT,
             _('Value'),
             _('Displayed value'),
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         'date-format': (gobject.TYPE_STRING,
             '%x',
             _('Date Format'),
             _('Displayed date format'),
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         'time-format': (gobject.TYPE_STRING,
             '%X',
             _('Date Format'),
             _('Displayed date format'),
-            gobject.PARAM_READABLE | gobject.PARAM_WRITABLE),
+            gobject.ParamFlags.READABLE | gobject.ParamFlags.WRITABLE),
         }
     __gsignals__ = {
-        'datetime-changed': (gobject.SIGNAL_RUN_LAST | gobject.SIGNAL_ACTION,
+        'datetime-changed': (gobject.SignalFlags.RUN_LAST | gobject.SignalFlags.SIGNAL_ACTION,
             gobject.TYPE_NONE, ()),
         }
 

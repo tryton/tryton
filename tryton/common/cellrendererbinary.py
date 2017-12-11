@@ -13,20 +13,20 @@ BUTTON_SPACING = 1
 class CellRendererBinary(gtk.GenericCellRenderer):
     __gproperties__ = {
         'visible': (gobject.TYPE_BOOLEAN, 'Visible', 'Visible', True,
-            gobject.PARAM_READWRITE),
+            gobject.ParamFlags.READWRITE),
         'editable': (gobject.TYPE_BOOLEAN, 'Editable', 'Editable', False,
-            gobject.PARAM_READWRITE),
+            gobject.ParamFlags.READWRITE),
         'size': (gobject.TYPE_STRING, 'Size', 'Size', '',
-            gobject.PARAM_READWRITE),
+            gobject.ParamFlags.READWRITE),
     }
     __gsignals__ = {
-        'select': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+        'select': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
             (gobject.TYPE_STRING,)),
-        'open': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+        'open': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
             (gobject.TYPE_STRING,)),
-        'save': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+        'save': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
             (gobject.TYPE_STRING,)),
-        'clear': (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE,
+        'clear': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
             (gobject.TYPE_STRING,)),
     }
 
