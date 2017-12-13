@@ -926,9 +926,8 @@ class ViewTree(View):
                 gobject.idle_add(pop, menu, group, record)
             return True  # Don't change the selection
         elif event.button == 2:
-            event.button = 1
-            event.state |= gtk.gdk.MOD1_MASK
-            treeview.emit('button-press-event', event)
+            with Window(allow_similar=True):
+                self.screen.row_activate()
             return True
         return False
 
