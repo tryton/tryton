@@ -34,6 +34,7 @@ class SaleLine:
         quantity = super(SaleLine, self)._move_remaining_quantity
         if self._test_under_shipment_tolerance(quantity):
             return 0
+        return quantity
 
     def get_move(self, shipment_type):
         pool = Pool()
