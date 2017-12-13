@@ -284,8 +284,11 @@ class InventoryLine(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
     expected_quantity = fields.Float('Expected Quantity', required=True,
-            digits=(16, Eval('unit_digits', 2)), readonly=True,
-            depends=['unit_digits'])
+        digits=(16, Eval('unit_digits', 2)), readonly=True,
+        states={
+            'invisible': Eval('id', -1) < 0,
+        },
+        depends=['unit_digits'])
     quantity = fields.Float('Quantity', required=True,
         digits=(16, Eval('unit_digits', 2)),
         states=_states, depends=['unit_digits'] + _depends)
