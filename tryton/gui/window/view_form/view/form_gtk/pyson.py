@@ -19,7 +19,7 @@ class PYSON(Char):
             return value
         try:
             return self.encoder.encode(eval(value, CONTEXT))
-        except (ValueError, TypeError, NameError, SyntaxError):
+        except Exception:
             return None
 
     def set_value(self, record, field):
