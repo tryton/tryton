@@ -743,11 +743,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def store_cache(cls, sales):
         for sale in sales:
-            cls.write([sale], {
-                    'untaxed_amount_cache': sale.untaxed_amount,
-                    'tax_amount_cache': sale.tax_amount,
-                    'total_amount_cache': sale.total_amount,
-                    })
+            sale.untaxed_amount_cache = sale.untaxed_amount
+            sale.tax_amount_cache = sale.tax_amount
+            sale.total_amount_cache = sale.total_amount
+        cls.save(sales)
 
     def _get_invoice_sale(self):
         'Return invoice'
