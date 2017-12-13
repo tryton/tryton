@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import mimetypes
+from email.encoders import encode_base64
 from email.header import Header
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
@@ -271,6 +272,7 @@ class EmailAttachment(ModelSQL):
         if mimetype:
             msg = MIMENonMultipart(*mimetype.split('/'))
             msg.set_payload(content)
+            encode_base64(msg)
         else:
             msg = MIMEApplication(content)
         if not isinstance(name, str):
