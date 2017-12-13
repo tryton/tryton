@@ -566,7 +566,7 @@ class Account(ModelSQL, ModelView):
     @ModelView.button
     def new_identifier(cls, accounts):
         for account in accounts:
-            account.webhook_identifier = uuid.uuid4().hex()
+            account.webhook_identifier = uuid.uuid4().hex
         cls.save(accounts)
 
 

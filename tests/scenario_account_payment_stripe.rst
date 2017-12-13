@@ -42,6 +42,12 @@ Create Stripe account::
     >>> stripe_account.publishable_key = os.getenv('STRIPE_PUBLISHABLE_KEY')
     >>> stripe_account.save()
 
+Create webhook identifier::
+
+    >>> stripe_account.click('new_identifier')
+    >>> len(stripe_account.webhook_identifier)
+    32
+
 Create payment journal::
 
     >>> PaymentJournal = Model.get('account.payment.journal')
