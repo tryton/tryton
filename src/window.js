@@ -927,8 +927,8 @@
             });
 
             var separator = ',';
-            if (navigator.platform == 'Win32' ||
-                navigator.platform == 'Windows') {
+            if (navigator.platform &&
+                    navigator.platform.slice(0, 3) == 'Win') {
                 separator = ';';
             }
             this.el_csv_delimiter = jQuery('<input/>', {
@@ -986,8 +986,8 @@
             }
 
             var enc = 'utf-8';
-            if (navigator.platform == 'Win32' ||
-                navigator.platform == 'Windows') {
+            if (navigator.platform &&
+                    navigator.platform.slice(0, 3) == 'Win') {
                 enc = 'cp1252';
             }
             this.el_csv_encoding.children('option[value="' + enc + '"]')
