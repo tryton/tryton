@@ -664,11 +664,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def store_cache(cls, purchases):
         for purchase in purchases:
-            cls.write([purchase], {
-                    'untaxed_amount_cache': purchase.untaxed_amount,
-                    'tax_amount_cache': purchase.tax_amount,
-                    'total_amount_cache': purchase.total_amount,
-                    })
+            purchase.untaxed_amount_cache = purchase.untaxed_amount
+            purchase.tax_amount_cache = purchase.tax_amount
+            purchase.total_amount_cache = purchase.total_amount
+        cls.save(purchases)
 
     def _get_invoice_purchase(self):
         'Return invoice'
