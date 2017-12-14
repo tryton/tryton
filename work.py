@@ -155,9 +155,14 @@ class Work:
 
     @classmethod
     def _get_revenue(cls, works):
-        return {w.id: (w.list_price * Decimal(str(w.effort_hours))
-                if w.list_price else Decimal(0))
-            for w in works}
+        revenues = {}
+        for work in works:
+            if work.list_price:
+                revenues[work.id] = work.company.currency.round(
+                    work.list_price * Decimal(str(work.effort_hours)))
+            else:
+                revenues[work.id] = Decimal(0)
+        return revenues
 
     @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
