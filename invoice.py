@@ -1438,7 +1438,6 @@ class InvoicePaymentLine(ModelSQL):
 class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     'Invoice Line'
     __name__ = 'account.invoice.line'
-    _rec_name = 'description'
     _states = {
         'readonly': Eval('invoice_state') != 'draft',
         }
@@ -1545,7 +1544,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
             depends=['type', 'currency_digits']), 'get_amount')
-    description = fields.Text('Description', size=None, required=True,
+    description = fields.Text('Description', size=None,
         states=_states, depends=_depends)
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
@@ -1658,6 +1657,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         for line_id, company_id in cursor.fetchall():
             cursor.execute(*sql_table.update([sql_table.company], [company_id],
                     where=sql_table.id == line_id))
+
+        # Migration from 4.6: drop required on description
+        table.not_null_action('description', action='remove')
 
     @staticmethod
     def default_currency():
@@ -1789,23 +1791,17 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         '''
         return {}
 
-    @fields.depends('product', 'unit', 'description', '_parent_invoice.type',
+    @fields.depends('product', 'unit', '_parent_invoice.type',
         '_parent_invoice.party', 'party', 'invoice', 'invoice_type')
     def on_change_product(self):
-        pool = Pool()
-        Product = pool.get('product.product')
-
         if not self.product:
             return
 
-        context = {}
         party = None
         if self.invoice and self.invoice.party:
             party = self.invoice.party
         elif self.party:
             party = self.party
-        if party and party.lang:
-            context['language'] = party.lang.code
 
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
@@ -1843,10 +1839,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 if tax_ids:
                     taxes.extend(tax_ids)
             self.taxes = taxes
-
-        if not self.description:
-            with Transaction().set_context(**context):
-                self.description = Product(self.product.id).rec_name
 
         category = self.product.default_uom.category
         if not self.unit or self.unit.category != category:
@@ -2007,7 +1999,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if self.type != 'line':
             return []
         line = MoveLine()
-        line.description = self.description
         if self.invoice.currency != self.invoice.company.currency:
             with Transaction().set_context(date=self.invoice.currency_date):
                 amount = Currency.compute(self.invoice.currency,

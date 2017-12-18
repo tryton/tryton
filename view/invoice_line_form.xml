@@ -14,9 +14,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="product"/>
             <label name="account"/>
             <field name="account"/>
-            <newline/>
-            <label name="description"/>
-            <field name="description" colspan="3" yexpand="0"/>
             <label name="quantity"/>
             <field name="quantity"/>
             <label name="unit"/>
@@ -26,6 +23,10 @@ this repository contains the full copyright notices and license terms. -->
             <label name="amount"/>
             <field name="amount"/>
             <field name="taxes" colspan="4"/>
+        </page>
+        <page name="description">
+            <separator name="description" colspan="4"/>
+            <field name="description"/>
         </page>
         <page string="Notes" id="notes">
             <separator name="note" colspan="4"/>

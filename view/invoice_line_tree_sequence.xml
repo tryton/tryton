@@ -5,8 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="invoice"/>
     <field name="type"/>
     <field name="product"/>
-    <field name="account" tree_invisible="1"/>
-    <field name="description"/>
+    <field name="account"/>
     <field name="quantity"/>
     <field name="unit"/>
     <field name="unit_price"/>

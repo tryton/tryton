@@ -1,3 +1,5 @@
+* Make description on invoice line optional
+
 Version 4.6.0 - 2017-10-30
 * Bug fixes (see mercurial logs for details)
 * Use tax sequence as default value for invoice taxes sequence
