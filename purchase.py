@@ -423,13 +423,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             ('purchasable', '=', True),
             ],
         states=_states, depends=_depends)
-    description = fields.Text(
-        'Description',
-        states={
-            'readonly': _states['readonly'],
-            'required': ~Eval('product')
-            },
-        depends=['product'] + _depends)
+    description = fields.Text("Description", states=_states, depends=_depends)
     quantity = fields.Float(
         'Quantity', digits=(16, Eval('unit_digits', 2)), required=True,
         states=_states, depends=['unit_digits'] + _depends)
@@ -470,7 +464,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         if self.requisition:
             return self.requisition.state
 
-    @fields.depends('product', 'unit', 'quantity', 'description', 'supplier')
+    @fields.depends('product', 'unit', 'quantity', 'supplier')
     def on_change_product(self):
         if not self.product:
             return

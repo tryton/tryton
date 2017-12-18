@@ -4,7 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="number"/>
     <field name="supply_date"/>
-    <field name="description"/>
     <field name="employee"/>
     <field name="warehouse"/>
     <field name="total_amount"/>
