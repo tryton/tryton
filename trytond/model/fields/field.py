@@ -365,10 +365,9 @@ class Field(object):
 class FieldTranslate(Field):
 
     def _get_translation_join(self, Model, name,
-            translation, model, table):
-        language = Transaction().language
+            translation, model, table, from_, language):
         if Model.__name__ == 'ir.model':
-            return table.join(translation, 'LEFT',
+            return from_.join(translation, 'LEFT',
                 condition=(translation.name == Concat(Concat(
                             table.model, ','), name))
                 & (translation.res_id == -1)
@@ -380,7 +379,7 @@ class FieldTranslate(Field):
                 type_ = 'field'
             else:
                 type_ = 'help'
-            return table.join(model, 'LEFT',
+            return from_.join(model, 'LEFT',
                 condition=model.id == table.model).join(
                     translation, 'LEFT',
                     condition=(translation.name == Concat(Concat(
@@ -390,7 +389,7 @@ class FieldTranslate(Field):
                     & (translation.type == type_)
                     & (translation.fuzzy == False))
         else:
-            return table.join(translation, 'LEFT',
+            return from_.join(translation, 'LEFT',
                 condition=(translation.res_id == table.id)
                 & (translation.name == '%s,%s' % (Model.__name__, name))
                 & (translation.lang == language)
@@ -398,6 +397,7 @@ class FieldTranslate(Field):
                 & (translation.fuzzy == False))
 
     def convert_domain(self, domain, tables, Model):
+        from trytond.ir.lang import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
         IrModel = pool.get('ir.model')
@@ -405,16 +405,20 @@ class FieldTranslate(Field):
             return super(FieldTranslate, self).convert_domain(
                 domain, tables, Model)
 
-        table = Model.__table__()
-        translation = Translation.__table__()
+        table = join = Model.__table__()
         model = IrModel.__table__()
         name, operator, value = domain
-        join = self._get_translation_join(Model, name,
-            translation, model, table)
+        language = Transaction().language
+        column = None
+        while language:
+            translation = Translation.__table__()
+            join = self._get_translation_join(
+                Model, name, translation, model, table, join, language)
+            column = Coalesce(NullIf(column, ''), translation.value)
+            language = get_parent_language(language)
+        column = Coalesce(NullIf(column, ''), self.sql_column(table))
         Operator = SQL_OPERATORS[operator]
         assert name == self.name
-        column = Coalesce(NullIf(translation.value, ''),
-            self.sql_column(table))
         where = Operator(column, self._domain_value(operator, value))
         if isinstance(where, operators.In) and not where.right:
             where = Literal(False)
@@ -424,6 +428,7 @@ class FieldTranslate(Field):
         return tables[None][0].id.in_(join.select(table.id, where=where))
 
     def convert_order(self, name, tables, Model):
+        from trytond.ir.lang import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
         IrModel = pool.get('ir.model')
@@ -433,28 +438,34 @@ class FieldTranslate(Field):
         assert name == self.name
 
         table, _ = tables[None]
-        key = name + '.translation'
-        if key not in tables:
-            translation = Translation.__table__()
-            model = IrModel.__table__()
-            join = self._get_translation_join(Model, name,
-                translation, model, table)
-            if join.left == table:
-                tables[key] = {
-                    None: (join.right, join.condition),
-                    }
-            else:
-                tables[key] = {
-                    None: (join.left.right, join.left.condition),
-                    'translation': {
-                        None: (join.right, join.condition),
-                        },
-                    }
-        else:
-            if 'translation' not in tables[key]:
-                translation, _ = tables[key][None]
-            else:
-                translation, _ = tables[key]['translation'][None]
 
-        return [Coalesce(NullIf(translation.value, ''),
-                self.sql_column(table))]
+        join = table
+        language = Transaction().language
+        column = None
+        while language:
+            key = name + '.translation-' + language
+            if key not in tables:
+                translation = Translation.__table__()
+                model = IrModel.__table__()
+                join = self._get_translation_join(
+                    Model, name, translation, model, table, table, language)
+                if join.left == table:
+                    tables[key] = {
+                        None: (join.right, join.condition),
+                        }
+                else:
+                    tables[key] = {
+                        None: (join.left.right, join.left.condition),
+                        'translation': {
+                            None: (join.right, join.condition),
+                            },
+                        }
+            else:
+                if 'translation' not in tables[key]:
+                    translation, _ = tables[key][None]
+                else:
+                    translation, _ = tables[key]['translation'][None]
+            column = Coalesce(NullIf(column, ''), translation.value)
+            language = get_parent_language(language)
+
+        return [Coalesce(column, self.sql_column(table))]
