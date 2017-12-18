@@ -879,7 +879,6 @@ class PurchaseRecreadtedInvoice(ModelSQL):
 class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     'Purchase Line'
     __name__ = 'purchase.line'
-    _rec_name = 'description'
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
         ondelete='CASCADE', select=True, required=True,
         states={
@@ -979,7 +978,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
             depends=['type']), 'get_amount')
-    description = fields.Text('Description', size=None, required=True,
+    description = fields.Text('Description', size=None,
         states={
             'readonly': Eval('purchase_state') != 'draft',
             },
@@ -1071,6 +1070,9 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
+        # Migration from 4.6: drop required on description
+        table.not_null_action('description', action='remove')
+
     @staticmethod
     def default_type():
         return 'line'
@@ -1141,23 +1143,19 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes]
         return context
 
-    @fields.depends('product', 'unit', 'quantity', 'description',
+    @fields.depends('product', 'unit', 'quantity',
         '_parent_purchase.party', '_parent_purchase.currency',
         '_parent_purchase.purchase_date', 'product_supplier')
     def on_change_product(self):
         pool = Pool()
         Product = pool.get('product.product')
-        ProductSupplier = pool.get('purchase.product_supplier')
 
         if not self.product:
             return
 
-        context = {}
         party = None
         if self.purchase and self.purchase.party:
             party = self.purchase.party
-            if party.lang:
-                context['language'] = party.lang.code
 
         # Set taxes before unit_price to have taxes in context of purchase
         # price
@@ -1197,13 +1195,6 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             if self.unit_price:
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
-
-        with Transaction().set_context(context):
-            if self.product_supplier:
-                self.description = ProductSupplier(
-                    self.product_supplier.id).rec_name
-            else:
-                self.description = Product(self.product.id).rec_name
 
         self.type = 'line'
         self.amount = self.on_change_with_amount()
@@ -1325,7 +1316,6 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         'Return a list of invoice line for purchase line'
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        Product = pool.get('product.product')
         Uom = pool.get('product.uom')
         AccountConfiguration = pool.get('account.configuration')
         account_config = AccountConfiguration(1)
@@ -1372,10 +1362,6 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
             if not invoice_line.quantity:
                 continue
-
-            if product != self.product:
-                with Transaction().set_context(context):
-                    invoice_line.description = Product(product.id).rec_name
 
             invoice_line.unit = self.unit
             invoice_line.product = product
