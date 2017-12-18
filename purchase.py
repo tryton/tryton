@@ -64,7 +64,7 @@ class Purchase:
 
     def check_request_warehouse(self):
         for line in self.lines:
-            for request in line.self_requests:
+            for request in line.requests:
                 if request.warehouse != self.warehouse:
                     w_name = 'check_request_warehouse_%s_%s_%s' % (
                         self.id, self.warehouse.id, request.warehouse.id)
