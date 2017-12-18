@@ -921,10 +921,17 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
-        ondelete='RESTRICT', domain=[('purchasable', '=', True)],
+        ondelete='RESTRICT',
+        domain=[
+            ('purchasable', '=', True),
+            If(Bool(Eval('product_supplier')),
+                ('product_suppliers', '=', Eval('product_supplier')),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('purchase_state') != 'draft',
+            'required': Bool(Eval('product_supplier')),
             },
         context={
             'locations': If(Bool(Eval('_parent_purchase', {}).get(
@@ -941,7 +948,21 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             'uom': Eval('unit'),
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
-            }, depends=['type', 'purchase_state'])
+            }, depends=['type', 'purchase_state', 'product_supplier'])
+    product_supplier = fields.Many2One(
+        'purchase.product_supplier', "Supplier's Product",
+        ondelete='RESTRICT',
+        domain=[
+            If(Bool(Eval('product')),
+                ('product.products', '=', Eval('product')),
+                ()),
+            ('party', '=', Eval('_parent_purchase', {}).get('party')),
+            ],
+        states={
+            'invisible': Eval('type') != 'line',
+            'readonly': Eval('purchase_state') != 'draft',
+            },
+        depends=['product', 'type', 'purchase_state'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -1115,14 +1136,18 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             context['uom'] = self.unit.id
         else:
             context['uom'] = self.product.purchase_uom.id
+        if self.product_supplier:
+            context['product_supplier'] = self.product_supplier.id
         context['taxes'] = [t.id for t in self.taxes]
         return context
 
     @fields.depends('product', 'unit', 'quantity', 'description',
         '_parent_purchase.party', '_parent_purchase.currency',
-        '_parent_purchase.purchase_date')
+        '_parent_purchase.purchase_date', 'product_supplier')
     def on_change_product(self):
-        Product = Pool().get('product.product')
+        pool = Pool()
+        Product = pool.get('product.product')
+        ProductSupplier = pool.get('purchase.product_supplier')
 
         if not self.product:
             return
@@ -1156,6 +1181,16 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             self.unit = self.product.purchase_uom
             self.unit_digits = self.product.purchase_uom.digits
 
+        if self.purchase and self.purchase.party:
+            product_suppliers = [ps for ps in self.product.product_suppliers
+                if ps.party == self.purchase.party]
+            if len(product_suppliers) == 1:
+                self.product_supplier, = product_suppliers
+        if (self.product_supplier
+                and (self.product_supplier
+                    not in self.product.product_suppliers)):
+            self.product_supplier = None
+
         with Transaction().set_context(self._get_context_purchase_price()):
             self.unit_price = Product.get_purchase_price([self.product],
                 abs(self.quantity or 0))[self.product.id]
@@ -1163,12 +1198,22 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
 
-        if not self.description:
-            with Transaction().set_context(context):
+        with Transaction().set_context(context):
+            if self.product_supplier:
+                self.description = ProductSupplier(
+                    self.product_supplier.id).rec_name
+            else:
                 self.description = Product(self.product.id).rec_name
 
         self.type = 'line'
         self.amount = self.on_change_with_amount()
+
+    @fields.depends('product', 'product_supplier', methods=['product'])
+    def on_change_product_supplier(self):
+        if not self.product and self.product_supplier:
+            if len(self.product_supplier.product.products) == 1:
+                self.product, = self.product_supplier.product.products
+        self.on_change_product()
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
@@ -1177,7 +1222,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('product', 'quantity', 'unit', 'taxes',
         '_parent_purchase.currency', '_parent_purchase.party',
-        '_parent_purchase.purchase_date')
+        '_parent_purchase.purchase_date', 'product_supplier')
     def on_change_quantity(self):
         Product = Pool().get('product.product')
 

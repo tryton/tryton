@@ -150,7 +150,13 @@ class Product:
             else:
                 product_uom = uom
             pattern = ProductSupplier.get_pattern()
-            for product_supplier in product.product_suppliers:
+            product_suppliers = product.product_suppliers
+            if context.get('product_supplier'):
+                for product_supplier in product.product_suppliers:
+                    if product_supplier.id == context['product_supplier']:
+                        product_suppliers = [product_supplier]
+                        break
+            for product_supplier in product_suppliers:
                 if product_supplier.match(pattern):
                     pattern = ProductSupplierPrice.get_pattern()
                     for price in product_supplier.prices:
@@ -268,7 +274,11 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 self.currency, = row
 
     def get_rec_name(self, name):
-        return '%s @ %s' % (self.product.rec_name, self.party.rec_name)
+        if self.code:
+            name = self.name or self.product.name
+            return '[' + self.code + '] ' + name
+        else:
+            return self.name or self.product.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -276,10 +286,13 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
-        return [bool_op,
+        domain = [bool_op,
             ('product',) + tuple(clause[1:]),
             ('party',) + tuple(clause[1:]),
+            ('code',) + tuple(clause[1:]),
+            ('name',) + tuple(clause[1:]),
             ]
+        return domain
 
     @property
     def uom(self):

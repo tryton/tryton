@@ -5,6 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="purchase"/>
     <field name="type"/>
     <field name="product"/>
+    <field name="product_supplier"/>
     <field name="description"/>
     <field name="quantity"/>
     <field name="unit"/>
