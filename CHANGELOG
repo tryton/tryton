@@ -1,3 +1,4 @@
+* Make description on purchase request optional
 * Warns when the warehouse of a purchase differs from its purchase requests
 
 Version 4.6.0 - 2017-10-30

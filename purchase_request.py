@@ -31,11 +31,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product',
         select=True, readonly=True, domain=[('purchasable', '=', True)])
     description = fields.Text('Description', readonly=True,
-        states={
-            'required': ~Eval('product'),
-            'readonly': STATES['readonly'],
-            },
-        depends=['product'] + DEPENDS)
+        states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', select=True, states=STATES,
         depends=DEPENDS)
     quantity = fields.Float('Quantity', required=True, states=STATES,
@@ -449,8 +445,6 @@ class CreatePurchase(Wizard):
             Decimal(1) / 10 ** Line.unit_price.digits[1])
         for f, v in key:
             setattr(line, f, v)
-        if not line.description:
-            line.description = line.product.name
         line.quantity = sum(r.quantity for r in requests)
         line.purchase = purchase
         line.on_change_product()
