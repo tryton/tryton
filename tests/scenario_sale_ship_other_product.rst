@@ -97,12 +97,8 @@ Check invoice has 2 products::
     3.0
     >>> line1.stock_moves == [outgoing_move1]
     True
-    >>> line1.description
-    u'[1] product'
 
     >>> line2.quantity
     2.0
     >>> line2.stock_moves == [outgoing_move2]
     True
-    >>> line2.description
-    u'[2] product'

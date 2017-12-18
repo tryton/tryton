@@ -974,7 +974,6 @@ class SaleRecreatedInvoice(ModelSQL):
 class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     'Sale Line'
     __name__ = 'sale.line'
-    _rec_name = 'description'
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
         select=True,
         states={
@@ -1048,7 +1047,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
             depends=['type', 'sale_state']), 'get_amount')
-    description = fields.Text('Description', size=None, required=True,
+    description = fields.Text('Description', size=None,
         states={
             'readonly': Eval('sale_state') != 'draft',
             },
@@ -1122,6 +1121,9 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
+        # Migration from 4.6: drop required on description
+        table.not_null_action('description', action='remove')
+
     @staticmethod
     def default_type():
         return 'line'
@@ -1190,7 +1192,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes]
         return context
 
-    @fields.depends('product', 'unit', 'quantity', 'description',
+    @fields.depends('product', 'unit', 'quantity',
         '_parent_sale.party', '_parent_sale.currency',
         '_parent_sale.sale_date')
     def on_change_product(self):
@@ -1200,11 +1202,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             return
 
         party = None
-        party_context = {}
         if self.sale and self.sale.party:
             party = self.sale.party
-            if party.lang:
-                party_context['language'] = party.lang.code
 
         # Set taxes before unit_price to have taxes in context of sale price
         taxes = []
@@ -1233,10 +1232,6 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             if self.unit_price:
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
-
-        if not self.description:
-            with Transaction().set_context(party_context):
-                self.description = Product(self.product.id).rec_name
 
         self.type = 'line'
         self.amount = self.on_change_with_amount()
@@ -1344,7 +1339,6 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         'Return a list of invoice lines for sale line'
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        Product = pool.get('product.product')
         Uom = pool.get('product.uom')
         AccountConfiguration = pool.get('account.configuration')
         account_config = AccountConfiguration(1)
@@ -1390,10 +1384,6 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
 
             if not invoice_line.quantity:
                 continue
-
-            if product != self.product:
-                with Transaction().set_context(context):
-                    invoice_line.description = Product(product.id).rec_name
 
             invoice_line.unit = self.unit
             invoice_line.product = product
