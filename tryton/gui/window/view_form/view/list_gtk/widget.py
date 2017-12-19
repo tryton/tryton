@@ -581,7 +581,7 @@ class M2O(GenericText):
 
             if field.get(record):
                 stock1, tooltip1 = 'tryton-open', _("Open the record <F2>")
-                stock2, tooltip2 = 'tryton-clear', _("Clear the record <Del>")
+                stock2, tooltip2 = 'tryton-clear', _("Clear the field <Del>")
             else:
                 stock1, tooltip1 = None, ''
                 stock2, tooltip2 = 'tryton-find', _("Search a record <F2>")
