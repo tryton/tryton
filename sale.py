@@ -7,6 +7,9 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools.multivalue import migrate_property
 
+from trytond.modules.sale.sale import (
+    get_shipments_returns, search_shipments_returns)
+
 __all__ = ['SaleConfig', 'SaleConfigSaleDropLocation', 'Sale', 'SaleLine']
 sale_drop_location = fields.Many2One(
     'stock.location', "Sale Drop Location", domain=[('type', '=', 'drop')])
@@ -68,7 +71,7 @@ class Sale:
             states={
                 'invisible': ~Eval('drop_shipments'),
                 }),
-        'get_drop_shipments')
+        'get_drop_shipments', searcher='search_drop_shipments')
     drop_location = fields.Many2One('stock.location', 'Drop Location',
         domain=[('type', '=', 'drop')])
 
@@ -81,10 +84,8 @@ class Sale:
         if config.sale_drop_location:
             return config.sale_drop_location.id
 
-    def get_drop_shipments(self, name):
-        DropShipment = Pool().get('stock.shipment.drop')
-        return list(set(m.shipment.id for l in self.lines for m in l.moves
-                if isinstance(m.shipment, DropShipment)))
+    get_drop_shipments = get_shipments_returns('stock.shipment.drop')
+    search_drop_shipments = search_shipments_returns('stock.shipment.drop')
 
     def create_shipment(self, shipment_type):
         shipments = super(Sale, self).create_shipment(shipment_type)

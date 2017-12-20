@@ -7,6 +7,9 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools.multivalue import migrate_property
 
+from trytond.modules.purchase.purchase import (
+    get_shipments_returns, search_shipments_returns)
+
 
 __all__ = ['PurchaseRequest', 'PurchaseConfig',
     'PurchaseConfigPurchaseDropLocation', 'Purchase', 'PurchaseLine',
@@ -100,7 +103,7 @@ class Purchase:
                 'invisible': ~Eval('customer'),
                 },
             depends=['customer']),
-        'get_drop_shipments')
+        'get_drop_shipments', searcher='search_drop_shipments')
     drop_location = fields.Many2One('stock.location', 'Drop Location',
         domain=[('type', '=', 'drop')],
         states={
@@ -139,10 +142,8 @@ class Purchase:
             address = self.delivery_address.full_address
         return address
 
-    def get_drop_shipments(self, name):
-        DropShipment = Pool().get('stock.shipment.drop')
-        return list(set(m.shipment.id for l in self.lines for m in l.moves
-                if isinstance(m.shipment, DropShipment)))
+    get_drop_shipments = get_shipments_returns('stock.shipment.drop')
+    search_drop_shipments = search_shipments_returns('stock.shipment.drop')
 
     def check_for_quotation(self):
         super(Purchase, self).check_for_quotation()
