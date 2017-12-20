@@ -224,6 +224,32 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_sale_shipments_relate"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_sale_shipment_returns_relate">
+            <field name="name">Sales</field>
+            <field name="res_model">sale.sale</field>
+            <field name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('shipment_returns', '=', Eval('active_id')), ('shipment_returns', 'in', Eval('active_ids')))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_shipment_returns_relate_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="sale_view_tree"/>
+            <field name="act_window" ref="act_sale_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_sale_shipment_returns_relate_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="sale_view_form"/>
+            <field name="act_window" ref="act_sale_shipment_returns_relate"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_sale_shipment_returns_relate_keyword">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.out.return,-1</field>
+            <field name="action" ref="act_sale_shipment_returns_relate"/>
+        </record>
+
         <record model="ir.model.access" id="access_sale">
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
             <field name="perm_read" eval="False"/>

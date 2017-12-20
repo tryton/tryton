@@ -28,7 +28,8 @@ __all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'SaleLineRecreatedMove', 'SaleReport', 'OpenCustomer',
     'HandleShipmentExceptionAsk', 'HandleShipmentException',
     'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
-    'ReturnSaleStart', 'ReturnSale']
+    'ReturnSaleStart', 'ReturnSale',
+    'get_shipments_returns', 'search_shipments_returns']
 
 _ZERO = Decimal(0)
 STATES = [
@@ -39,6 +40,36 @@ STATES = [
     ('done', 'Done'),
     ('cancel', 'Canceled'),
     ]
+
+
+def get_shipments_returns(model_name):
+    "Computes the returns or shipments"
+    def method(self, name):
+        Model = Pool().get(model_name)
+        shipments = set()
+        for line in self.lines:
+            for move in line.moves:
+                if isinstance(move.shipment, Model):
+                    shipments.add(move.shipment.id)
+        return list(shipments)
+    return method
+
+
+def search_shipments_returns(model_name):
+    "Search on shipments or returns"
+    def method(self, name, clause):
+        nested = clause[0].lstrip(name)
+        if nested:
+            return [('lines.moves.shipment' + nested,)
+                + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
+        else:
+            if isinstance(clause[2], basestring):
+                target = 'rec_name'
+            else:
+                target = 'id'
+            return [('lines.moves.shipment.' + target,)
+                + tuple(clause[1:3]) + (model_name,)]
+    return classmethod(method)
 
 
 class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
@@ -565,38 +596,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'invoice_state': state,
                     })
 
-    def get_shipments_returns(model_name):
-        "Computes the returns or shipments"
-        def method(self, name):
-            Model = Pool().get(model_name)
-            shipments = set()
-            for line in self.lines:
-                for move in line.moves:
-                    if isinstance(move.shipment, Model):
-                        shipments.add(move.shipment.id)
-            return list(shipments)
-        return method
-
     get_shipments = get_shipments_returns('stock.shipment.out')
     get_shipment_returns = get_shipments_returns('stock.shipment.out.return')
-
-    def search_shipments_returns(model_name):
-        '''
-        Search on shipments or returns
-        '''
-        def method(self, name, clause):
-            nested = clause[0].lstrip(name)
-            if nested:
-                return [('lines.moves.shipment' + nested,)
-                    + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
-            else:
-                if isinstance(clause[2], basestring):
-                    target = 'rec_name'
-                else:
-                    target = 'id'
-                return [('lines.moves.shipment.' + target,)
-                    + tuple(clause[1:3]) + (model_name,)]
-        return classmethod(method)
 
     search_shipments = search_shipments_returns('stock.shipment.out')
     search_shipment_returns = search_shipments_returns(
