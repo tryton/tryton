@@ -54,7 +54,7 @@ class Category(CompanyMultiValueMixin):
             'readonly': Bool(Eval('childs', [0])) | Bool(Eval('parent')),
             },
         depends=['parent'],
-        help="Check to convert into accouting category.")
+        help="Check to convert into accounting category.")
     account_parent = fields.Boolean('Use Parent\'s accounts',
         states={
             'invisible': ~Eval('accounting', False),
