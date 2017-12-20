@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="promotion"/>
+    <field name="promotion"/>
+    <label name="number_of_use"/>
+    <field name="number_of_use"/>
+    <label name="per_party"/>
+    <field name="per_party"/>
+    <field name="numbers" colspan="4"/>
+</form>
