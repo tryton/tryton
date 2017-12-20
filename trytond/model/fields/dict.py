@@ -37,7 +37,9 @@ class Dict(Field):
         if value is None:
             return None
         assert isinstance(value, dict)
-        return json.dumps(value, cls=JSONEncoder, separators=(',', ':'))
+        # Use canonical form
+        return json.dumps(
+            value, cls=JSONEncoder, separators=(',', ':'), sort_keys=True)
 
     def translated(self, name=None, type_='values'):
         "Return a descriptor for the translated value of the field"

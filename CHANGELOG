@@ -1,3 +1,4 @@
+* Use JSON canonical form for Dict value
 * Remove rules on user
 * Add monetary formatting to language
 * Add exceptional parent language
