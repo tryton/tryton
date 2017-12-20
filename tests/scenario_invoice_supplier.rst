@@ -195,7 +195,6 @@ Cancel draft invoice::
     u'cancel'
     >>> invoice_draft.move
     >>> invoice_draft.reconciled
-    False
 
 Cancel posted invoice::
 
@@ -204,5 +203,5 @@ Cancel posted invoice::
     u'cancel'
     >>> invoice.cancel_move is not None
     True
-    >>> invoice.reconciled
+    >>> invoice.reconciled == today
     True

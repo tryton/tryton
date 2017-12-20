@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
                 <group col="4" colspan="1" id="amount_state_buttons" yfill="1">
                     <group col="2" colspan="2" id="reconciled_state" yfill="1">
                         <label name="reconciled"/>
-                        <field name="reconciled" xexpand="0"/>
+                        <field name="reconciled"/>
                         <label name="state"/>
                         <field name="state"/>
                     </group>

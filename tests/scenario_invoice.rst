@@ -189,6 +189,8 @@ Credit invoice with refund::
     >>> invoice.reload()
     >>> invoice.state
     u'paid'
+    >>> invoice.reconciled == today
+    True
     >>> receivable.reload()
     >>> receivable.debit
     Decimal('240.00')

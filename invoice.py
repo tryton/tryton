@@ -179,7 +179,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     total_amount = fields.Function(fields.Numeric('Total', digits=(16,
                 Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_amount', searcher='search_total_amount')
-    reconciled = fields.Function(fields.Boolean('Reconciled'),
+    reconciled = fields.Function(fields.Date('Reconciled',
+            states={
+                'invisible': ~Eval('reconciled'),
+                }),
             'get_reconciled')
     lines_to_pay = fields.Function(fields.One2Many('account.move.line', None,
         'Lines to Pay'), 'get_lines_to_pay')
@@ -664,12 +667,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return result
 
     def get_reconciled(self, name):
-        if not self.lines_to_pay:
-            return False
-        for line in self.lines_to_pay:
-            if not line.reconciliation:
-                return False
-        return True
+        reconciliations = [l.reconciliation for l in self.lines_to_pay]
+        if not reconciliations:
+            return None
+        elif not all(reconciliations):
+            return None
+        else:
+            return max(r.date for r in reconciliations)
 
     @classmethod
     def get_lines_to_pay(cls, invoices, name):
