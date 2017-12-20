@@ -27,7 +27,6 @@ def register():
         ModelButtonRule,
         ModelButtonClick,
         RuleGroupGroup,
-        RuleGroupUser,
         Lang,
         SequenceType,
         SequenceTypeGroup,

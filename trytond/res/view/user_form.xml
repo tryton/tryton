@@ -24,7 +24,6 @@ this repository contains the full copyright notices and license terms. -->
         </page>
         <page string="Access Permissions" col="1" id="permissions">
             <field name="groups"/>
-            <field name="rule_groups"/>
         </page>
         <page name="applications" col="1">
             <field name="applications"/>

@@ -63,9 +63,6 @@ class User(ModelSQL, ModelView):
         'Actions', help='Actions that will be run at login')
     groups = fields.Many2Many('res.user-res.group',
        'user', 'group', 'Groups')
-    rule_groups = fields.Many2Many('ir.rule.group-res.user',
-       'user', 'rule_group', 'Rules',
-       domain=[('global_p', '!=', True), ('default_p', '!=', True)])
     applications = fields.One2Many(
         'res.user.application', 'user', "Applications")
     language = fields.Many2One('ir.lang', 'Language',
