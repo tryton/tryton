@@ -27,7 +27,8 @@ __all__ = ['Purchase', 'PurchaseIgnoredInvoice',
     'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
     'PurchaseLineIgnoredMove', 'PurchaseLineRecreatedMove', 'PurchaseReport',
     'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
-    'HandleInvoiceExceptionAsk', 'HandleInvoiceException']
+    'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
+    'get_shipments_returns', 'search_shipments_returns']
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -42,6 +43,36 @@ STATES = [
     ('done', 'Done'),
     ('cancel', 'Canceled'),
     ]
+
+
+def get_shipments_returns(model_name):
+    "Computes the returns or shipments"
+    def method(self, name):
+        Model = Pool().get(model_name)
+        shipments = set()
+        for line in self.lines:
+            for move in line.moves:
+                if isinstance(move.shipment, Model):
+                    shipments.add(move.shipment.id)
+        return list(shipments)
+    return method
+
+
+def search_shipments_returns(model_name):
+    "Search on shipments or returns"
+    def method(self, name, clause):
+        nested = clause[0].lstrip(name)
+        if nested:
+            return [('lines.moves.shipment' + nested,)
+                + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
+        else:
+            if isinstance(clause[2], basestring):
+                target = 'rec_name'
+            else:
+                target = 'id'
+            return [('lines.moves.shipment.' + target,)
+                + tuple(clause[1:3]) + (model_name,)]
+    return classmethod(method)
 
 
 class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
@@ -155,10 +186,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('exception', 'Exception'),
             ], 'Shipment State', readonly=True, required=True)
     shipments = fields.Function(fields.One2Many('stock.shipment.in', None,
-            'Shipments'), 'get_shipments')
+            'Shipments'), 'get_shipments', searcher='search_shipments')
     shipment_returns = fields.Function(
         fields.One2Many('stock.shipment.in.return', None, 'Shipment Returns'),
-        'get_shipment_returns')
+        'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.One2Many('stock.move', 'purchase', 'Moves', readonly=True)
 
     @classmethod
@@ -540,20 +571,12 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'invoice_state': state,
                     })
 
-    def get_shipments_returns(model_name):
-        "Computes the returns or shipments"
-        def method(self, name):
-            Model = Pool().get(model_name)
-            shipments = set()
-            for line in self.lines:
-                for move in line.moves:
-                    if isinstance(move.shipment, Model):
-                        shipments.add(move.shipment.id)
-            return list(shipments)
-        return method
-
     get_shipments = get_shipments_returns('stock.shipment.in')
     get_shipment_returns = get_shipments_returns('stock.shipment.in.return')
+
+    search_shipments = search_shipments_returns('stock.shipment.in')
+    search_shipment_returns = search_shipments_returns(
+        'stock.shipment.in.return')
 
     def get_shipment_state(self):
         '''
