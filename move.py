@@ -1486,11 +1486,15 @@ class Reconcile(Wizard):
                 account.id,
                 where=((line.reconciliation == Null) & account.reconcile
                     & account.id.in_(account_rule)),
-                group_by=account.id,
-                having=(
-                    Sum(Case((balance > 0, 1), else_=0)) > 0)
-                & (Sum(Case((balance < 0, 1), else_=0)) > 0)
-                ))
+                group_by=[account.id, account.kind],
+                having=((
+                        Sum(Case((balance > 0, 1), else_=0)) > 0)
+                    & (Sum(Case((balance < 0, 1), else_=0)) > 0)
+                    | (Case((account.kind == 'receivable', Sum(balance) < 0),
+                            else_=False))
+                    | (Case((account.kind == 'payable', Sum(balance) > 0),
+                            else_=False))
+                    )))
         return [a for a, in cursor.fetchall()]
 
     def get_parties(self, account):
@@ -1505,10 +1509,14 @@ class Reconcile(Wizard):
                 where=(line.reconciliation == Null)
                 & (line.account == account.id),
                 group_by=line.party,
-                having=(
-                    Sum(Case((balance > 0, 1), else_=0)) > 0)
-                & (Sum(Case((balance < 0, 1), else_=0)) > 0)
-                ))
+                having=((
+                        Sum(Case((balance > 0, 1), else_=0)) > 0)
+                    & (Sum(Case((balance < 0, 1), else_=0)) > 0)
+                    | (Case((account.kind == 'receivable', Sum(balance) < 0),
+                            else_=False))
+                    | (Case((account.kind == 'payable', Sum(balance) > 0),
+                            else_=False))
+                    )))
         return [p for p, in cursor.fetchall()]
 
     def transition_next_(self):
