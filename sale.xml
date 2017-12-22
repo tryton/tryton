@@ -13,7 +13,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Purchase Requests</field>
             <field name="res_model">purchase.request</field>
             <field name="domain"
-                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id', 'sale.sale')), ('origin.id', 'in', Eval('active_ids'), 'sale.sale'))]"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('origin.id', '=', Eval('active_id'), 'sale.sale'), ('origin.id', 'in', Eval('active_ids'), 'sale.sale'))]"
                 pyson="1"/>
         </record>
         <record model="ir.action.keyword"
