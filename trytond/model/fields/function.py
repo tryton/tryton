@@ -71,12 +71,12 @@ class Function(Field):
     def convert_domain(self, domain, tables, Model):
         name, operator, value = domain[:3]
         assert name.startswith(self.name)
-        method = getattr(Model, 'domain_%s' % name, None)
+        method = getattr(Model, 'domain_%s' % self.name, None)
         if method:
             return method(domain, tables)
         if self.searcher:
-            return getattr(Model, self.searcher)(name, domain)
-        Model.raise_user_error('search_function_missing', name)
+            return getattr(Model, self.searcher)(self.name, domain)
+        Model.raise_user_error('search_function_missing', self.name)
 
     def get(self, ids, Model, name, values=None):
         '''
