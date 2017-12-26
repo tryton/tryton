@@ -1532,6 +1532,19 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         'Return the invoice lines that should be shipped'
         return [l for l in self.invoice_lines if not l.stock_moves]
 
+    def get_rec_name(self, name):
+        if self.product:
+            return '%s @ %s' % (self.product.rec_name, self.purchase.rec_name)
+        else:
+            return self.purchase.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('purchase.rec_name',) + tuple(clause[1:]),
+            ('product.rec_name',) + tuple(clause[1:]),
+            ]
+
     @classmethod
     def view_attributes(cls):
         return [
