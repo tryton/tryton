@@ -1,3 +1,4 @@
+* Add SQL query for currency by date range
 * Remove monetary formatting from currency
 
 Version 4.6.0 - 2017-10-30

@@ -4,6 +4,9 @@ import datetime
 
 from decimal import Decimal, ROUND_HALF_EVEN
 
+from sql import Window
+from sql.functions import NthValue
+
 from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields, Unique, Check
 from trytond.tools import datetime_strftime
@@ -174,6 +177,40 @@ class Currency(ModelSQL, ModelView):
                 amount * to_currency.rate / from_currency.rate)
         else:
             return amount * to_currency.rate / from_currency.rate
+
+    @classmethod
+    def currency_rate_sql(cls):
+        "Return a SQL query with currency, rate, start_date and end_date"
+        pool = Pool()
+        Rate = pool.get('currency.currency.rate')
+        transaction = Transaction()
+        database = transaction.database
+
+        rate = Rate.__table__()
+        if database.has_window_functions():
+            window = Window(
+                [rate.currency],
+                order_by=[rate.date.asc],
+                frame='ROWS', start=0, end=1)
+            # Use NthValue instead of LastValue to get NULL for the last row
+            end_date = NthValue(rate.date, 2, window=window)
+        else:
+            next_rate = Rate.__table__()
+            end_date = next_rate.select(
+                next_rate.date,
+                where=(next_rate.currency == rate.currency)
+                & (next_rate.date > rate.date),
+                order_by=[next_rate.date.asc],
+                limit=1)
+
+        query = (rate
+            .select(
+                rate.currency.as_('currency'),
+                rate.rate.as_('rate'),
+                rate.date.as_('start_date'),
+                end_date.as_('end_date'),
+                ))
+        return query
 
 
 class Rate(ModelSQL, ModelView):
