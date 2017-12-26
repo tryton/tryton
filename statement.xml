@@ -466,6 +466,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_statement"/>
         </record>
 
+        <record model="ir.action.wizard" id="act_reconcile">
+            <field name="name">Reconcile Statements</field>
+            <field name="wiz_name">account.statement.reconcile</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_move_lines_form">
             <field name="name">Move Lines</field>
             <field name="res_model">account.move.line</field>

@@ -20,7 +20,9 @@ from trytond.modules.company import CompanyReport
 
 __all__ = ['Statement', 'Line', 'LineGroup',
     'Origin', 'OriginInformation',
-    'ImportStatementStart', 'ImportStatement', 'StatementReport']
+    'ImportStatementStart', 'ImportStatement',
+    'ReconcileStatement',
+    'StatementReport']
 
 _STATES = {'readonly': Eval('state') != 'draft'}
 _DEPENDS = ['state']
@@ -131,6 +133,8 @@ class Statement(Workflow, ModelSQL, ModelView):
     state = fields.Selection(STATES, 'State', readonly=True, select=True)
     validation = fields.Function(fields.Char('Validation'),
         'on_change_with_validation')
+    to_reconcile = fields.Function(
+        fields.Boolean("To Reconcile"), 'get_to_reconcile')
 
     @classmethod
     def __setup__(cls):
@@ -169,6 +173,10 @@ class Statement(Workflow, ModelSQL, ModelView):
                     },
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'validated']),
+                    },
+                'reconcile': {
+                    'invisible': Eval('state').in_(['draft', 'cancel']),
+                    'readonly': ~Eval('to_reconcile'),
                     },
                 })
 
@@ -320,6 +328,20 @@ class Statement(Workflow, ModelSQL, ModelView):
     def on_change_with_validation(self, name=None):
         if self.journal:
             return self.journal.validation
+
+    def get_to_reconcile(self, name=None):
+        return bool(self.lines_to_reconcile)
+
+    @property
+    def lines_to_reconcile(self):
+        lines = []
+        for line in self.lines:
+            if line.move:
+                for move_line in line.move.lines:
+                    if (move_line.account.reconcile
+                            and not move_line.reconciliation):
+                        lines.append(move_line)
+        return lines
 
     def _group_key(self, line):
         key = (
@@ -558,6 +580,11 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         lines = [l for s in statements for l in s.lines]
         StatementLine.delete_move(lines)
+
+    @classmethod
+    @ModelView.button_action('account_statement.act_reconcile')
+    def reconcile(cls, statements):
+        pass
 
 
 def origin_mixin(_states, _depends):
@@ -1053,6 +1080,22 @@ class ImportStatement(Wizard):
         if len(statements) == 1:
             action['views'].reverse()
         return action, data
+
+
+class ReconcileStatement(Wizard):
+    "Statement Reconcile"
+    __name__ = 'account.statement.reconcile'
+    start = StateAction('account.act_reconcile')
+
+    def do_start(self, action):
+        pool = Pool()
+        Statement = pool.get('account.statement')
+        statements = Statement.browse(Transaction().context['active_ids'])
+        lines = sum((map(int, s.lines_to_reconcile) for s in statements), [])
+        return action, {
+            'model': 'account.move.line',
+            'ids': lines,
+            }
 
 
 class StatementReport(CompanyReport):

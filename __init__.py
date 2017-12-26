@@ -22,6 +22,7 @@ def register():
     Pool.register(
         PartyReplace,
         ImportStatement,
+        ReconcileStatement,
         module='account_statement', type_='wizard')
     Pool.register(
         StatementReport,
