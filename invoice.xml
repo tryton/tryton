@@ -18,6 +18,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">invoice_line_tree</field>
         </record>
 
+        <record model="ir.ui.view" id="invoice_line_view_tree_sequence">
+            <field name="model">account.invoice.line</field>
+            <field name="inherit" ref="account_invoice.invoice_line_view_tree_sequence"/>
+            <field name="name">invoice_line_tree_sequence</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_invoice_line_out_form">
             <field name="name">Invoice Lines</field>
             <field name="res_model">account.invoice.line</field>
