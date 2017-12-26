@@ -1480,6 +1480,12 @@ class Reconcile(Wizard):
         cursor = Transaction().connection.cursor()
         account_rule = Rule.query_get(Account.__name__)
 
+        context = Transaction().context
+        if context['active_model'] == Line.__name__:
+            lines = [l for l in Line.browse(context['active_ids'])
+                if not l.reconciliation]
+            return list({l.account for l in lines if l.account.reconcile})
+
         balance = line.debit - line.credit
         cursor.execute(*line.join(account,
                 condition=line.account == account.id).select(
@@ -1503,6 +1509,12 @@ class Reconcile(Wizard):
         Line = pool.get('account.move.line')
         line = Line.__table__()
         cursor = Transaction().connection.cursor()
+
+        context = Transaction().context
+        if context['active_model'] == Line.__name__:
+            lines = [l for l in Line.browse(context['active_ids'])
+                if not l.reconciliation]
+            return list({l.party for l in lines if l.account == account})
 
         balance = line.debit - line.credit
         cursor.execute(*line.select(line.party,
@@ -1580,6 +1592,16 @@ class Reconcile(Wizard):
 
     def _default_lines(self):
         'Return the larger list of lines which can be reconciled'
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        context = Transaction().context
+        if context['active_model'] == Line.__name__:
+            requested = {l for l in Line.browse(context['active_ids'])
+                if l.account == self.show.account
+                and l.party == self.show.party}
+        else:
+            requested = None
+
         currency = self.show.account.company.currency
         chunk = config.getint('account', 'reconciliation_chunk', default=10)
         # Combination is exponential so it must be limited to small number
@@ -1589,6 +1611,8 @@ class Reconcile(Wizard):
             best = None
             for n in xrange(len(lines), 1, -1):
                 for comb_lines in combinations(lines, n):
+                    if requested and not requested.intersection(comb_lines):
+                        continue
                     amount = sum((l.debit - l.credit) for l in comb_lines)
                     if currency.is_zero(amount):
                         best = [l.id for l in comb_lines]
@@ -1597,6 +1621,8 @@ class Reconcile(Wizard):
                     break
             if best:
                 default.extend(best)
+        if not default and requested:
+            default = map(int, requested)
         return default
 
     def transition_reconcile(self):
