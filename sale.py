@@ -1556,6 +1556,19 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                         invoice_lines.append(invoice_line)
         return invoice_lines
 
+    def get_rec_name(self, name):
+        if self.product:
+            return '%s @ %s' % (self.product.rec_name, self.sale.rec_name)
+        else:
+            return self.sale.rec_name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('sale.rec_name',) + tuple(clause[1:]),
+            ('product.rec_name',) + tuple(clause[1:]),
+            ]
+
     @classmethod
     def view_attributes(cls):
         return [
