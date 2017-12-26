@@ -958,7 +958,7 @@ class ModelStorage(Model):
                 if len(domains) > len(records) * 0.5:
                     # Do not use IN_MAX to let spaces for the pyson domain
                     in_max = Transaction().database.IN_MAX
-                    count = in_max / 10
+                    count = in_max // 10
                     new_domains = {}
                     for sub_domains in grouped_slice(domains.keys(), count):
                         grouped_domain = ['OR']
