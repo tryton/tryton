@@ -75,7 +75,7 @@ class Preference(NoModal):
         self.win.set_title(_('Preference'))
 
         width, height = self.parent.get_size()
-        self.win.set_default_size(int(width * 0.9), int(height * 0.9))
+        self.win.set_default_size(width, height)
 
         self.register()
         self.win.show()

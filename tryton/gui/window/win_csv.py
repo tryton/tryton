@@ -209,8 +209,7 @@ class WinCSV(NoModal):
 
         sensible_allocation = self.sensible_widget.get_allocation()
         self.dialog.set_default_size(
-            int(sensible_allocation.width * 0.9),
-            int(sensible_allocation.height * 0.9))
+            sensible_allocation.width, sensible_allocation.height)
         self.dialog.show_all()
         center_window(self.dialog, self.parent, self.sensible_widget)
 

@@ -251,8 +251,8 @@ class WinForm(NoModal, InfoBar):
         self.win.vbox.pack_start(self.info_bar, False, True)
 
         sensible_allocation = self.sensible_widget.get_allocation()
-        self.win.set_default_size(int(sensible_allocation.width * 0.9),
-            int(sensible_allocation.height * 0.9))
+        self.win.set_default_size(
+            sensible_allocation.width, sensible_allocation.height)
 
         if view_type == 'tree':
             self.screen.signal_connect(self, 'record-message', self._sig_label)

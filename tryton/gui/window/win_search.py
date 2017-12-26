@@ -85,8 +85,8 @@ class WinSearch(NoModal):
 
         self.register()
         sensible_allocation = self.sensible_widget.get_allocation()
-        self.win.set_default_size(int(sensible_allocation.width * 0.9),
-            int(sensible_allocation.height * 0.9))
+        self.win.set_default_size(
+            sensible_allocation.width, sensible_allocation.height)
 
     def sig_activate(self, *args):
         self.view.treeview.emit_stop_by_name('row_activated')

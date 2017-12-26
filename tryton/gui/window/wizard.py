@@ -336,8 +336,8 @@ class WizardDialog(Wizard, NoModal):
         # Dialog must be shown before the screen is displayed
         # to get the treeview realized when displayed
         sensible_allocation = self.sensible_widget.get_allocation()
-        self.dia.set_default_size(int(sensible_allocation.width * 0.9),
-            int(sensible_allocation.height * 0.9))
+        self.dia.set_default_size(
+            sensible_allocation.width, sensible_allocation.height)
         self.dia.show()
         common.center_window(self.dia, self.parent, self.sensible_widget)
         super(WizardDialog, self).update(view, defaults, buttons)
