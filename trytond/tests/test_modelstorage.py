@@ -123,6 +123,42 @@ class ModelStorageTestCase(unittest.TestCase):
                 copied_record = Transalatable(copied_record.id)
                 self.assertEqual(copied_record.char, 'bar')
 
+    @with_transaction()
+    def test_pyson_domain_same(self):
+        "Test same pyson domain validation"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.pyson_domain')
+
+        Model.create([{'constraint': 'foo', 'value': 'foo'}] * 10)
+
+        with self.assertRaises(UserError):
+            Model.create([{'constraint': 'foo', 'value': 'bar'}] * 10)
+
+    @with_transaction()
+    def test_pyson_domain_unique(self):
+        "Test unique pyson domain validation"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.pyson_domain')
+
+        Model.create(
+            [{'constraint': str(i), 'value': str(i)} for i in range(10)])
+
+        with self.assertRaises(UserError):
+            Model.create(
+                [{'constraint': str(i), 'value': str(i + 1)}
+                    for i in range(10)])
+
+    @with_transaction()
+    def test_pyson_domain_single(self):
+        "Test pyson domain validation for 1 record"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.pyson_domain')
+
+        Model.create([{'constraint': 'foo', 'value': 'foo'}])
+
+        with self.assertRaises(UserError):
+            Model.create([{'constraint': 'foo', 'value': 'bar'}])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelStorageTestCase)

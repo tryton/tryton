@@ -128,6 +128,7 @@ def register():
         ModelStorage,
         ModelStorageRequired,
         ModelStorageContext,
+        ModelStoragePYSONDomain,
         ModelSQLRequiredField,
         ModelSQLTimestamp,
         ModelSQLFieldSet,

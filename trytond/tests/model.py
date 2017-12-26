@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import (ModelSingleton, ModelSQL, UnionMixin, fields,
     sequence_ordered)
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 __all__ = [
@@ -9,6 +10,7 @@ __all__ = [
     'ModelParent', 'ModelChild', 'ModelChildChild',
     'Singleton', 'URLObject',
     'ModelStorage', 'ModelStorageRequired', 'ModelStorageContext',
+    'ModelStoragePYSONDomain',
     'ModelSQLRequiredField', 'ModelSQLTimestamp', 'ModelSQLFieldSet',
     'Model4Union1', 'Model4Union2', 'Model4Union3', 'Model4Union4',
     'Union', 'UnionUnion',
@@ -79,6 +81,18 @@ class ModelStorageContext(ModelSQL):
 
     def get_context(self, name):
         return Transaction().context
+
+
+class ModelStoragePYSONDomain(ModelSQL):
+    "Model stored with PYSON domain"
+    __name__ = 'test.modelstorage.pyson_domain'
+    constraint = fields.Char("Constraint")
+    value = fields.Char(
+        "Value",
+        domain=[
+            ('value', '=', Eval('constraint')),
+            ],
+        depends=['constraint'])
 
 
 class ModelSQLRequiredField(ModelSQL):
