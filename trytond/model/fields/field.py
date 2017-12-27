@@ -369,7 +369,7 @@ class FieldTranslate(Field):
                 & (translation.fuzzy == False))
 
     def convert_domain(self, domain, tables, Model):
-        from trytond.ir.lang import get_parent_language
+        from trytond.tools import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
         IrModel = pool.get('ir.model')
@@ -400,7 +400,7 @@ class FieldTranslate(Field):
         return tables[None][0].id.in_(join.select(table.id, where=where))
 
     def convert_order(self, name, tables, Model):
-        from trytond.ir.lang import get_parent_language
+        from trytond.tools import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
         IrModel = pool.get('ir.model')
