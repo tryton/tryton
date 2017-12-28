@@ -11,9 +11,9 @@ The Pool store the instances of models, wizards and reports per database.
 
 Static methods:
 
-.. staticmethod:: Pool.register(klass[, type])
+.. staticmethod:: Pool.register(klass, ..., type_, module)
 
-    Register a class of type (default: `model`).
+    Register the classes of type (`model`, `report` or `wizard`) for the module.
 
 Class methods:
 
