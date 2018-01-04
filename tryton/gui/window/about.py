@@ -10,9 +10,9 @@ from tryton import __version__
 
 COPYRIGHT = '''\
 Copyright (C) 2010-2011 Nicolas Évrard.
-Copyright (C) 2007-2011 Cédric Krier.
+Copyright (C) 2007-2018 Cédric Krier.
 Copyright (C) 2007-2011 Bertrand Chenal.
-Copyright (C) 2008-2011 B2CK SPRL.
+Copyright (C) 2008-2018 B2CK SPRL.
 Copyright (C) 2008-2011 Udo Spallek.
 Copyright (C) 2008-2011 virtual things - Preisler & Spallek GbR.
 Copyright (C) 2007-2009 Lorenzo Gil Sanchez.
