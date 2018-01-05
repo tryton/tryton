@@ -40,7 +40,7 @@ if minor_version % 2:
     download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
         name, name, version)
 
-requires = ['geomet', get_require_version('trytond')]
+requires = ['geomet', get_require_version('trytond'), 'psycopg2 >= 2.0.14']
 
 tests_require = ['mock']
 dependency_links = []
