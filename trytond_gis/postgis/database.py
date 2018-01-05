@@ -3,7 +3,8 @@
 import binascii
 
 from geomet import wkb
-from psycopg2.extensions import register_adapter, new_type, register_type, AsIs
+from psycopg2.extensions import (register_adapter, new_type, register_type,
+    Binary)
 
 from trytond.backend.postgresql.database import Database as PGDatabase
 from trytond.backend.postgresql.database import (
@@ -57,5 +58,4 @@ class Database(PGDatabase):
 
         return conn
 
-register_adapter(_GeoJSON,
-    lambda value: AsIs("'%s'" % binascii.b2a_hex(wkb.dumps(value)).upper()))
+register_adapter(_GeoJSON, lambda value: Binary(wkb.dumps(value)))
