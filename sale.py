@@ -10,7 +10,7 @@ from sql import Table, Null
 from sql.functions import Overlay, Position
 from sql.operators import Concat
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields, \
+from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, \
     sequence_ordered
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
@@ -28,7 +28,7 @@ __all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'SaleLineRecreatedMove', 'SaleReport', 'OpenCustomer',
     'HandleShipmentExceptionAsk', 'HandleShipmentException',
     'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
-    'ReturnSaleStart', 'ReturnSale',
+    'ReturnSaleStart', 'ReturnSale', 'ModifyHeader',
     'get_shipments_returns', 'search_shipments_returns']
 
 _ZERO = Decimal(0)
@@ -281,6 +281,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                         | (Eval('state') == 'cancel')),
                     'readonly': ~Eval('groups', []).contains(
                         Id('sale', 'group_sale')),
+                    },
+                'modify_header': {
+                    'invisible': ((Eval('state') != 'draft')
+                        | ~Eval('lines', [-1])),
                     },
                 })
         # The states where amounts are cached
@@ -686,7 +690,19 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
+        attributes = [
+            ('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
+        if Transaction().context.get('modify_header'):
+            attributes.extend([
+                    ('//group[@id="states"]', 'states', {'invisible': True}),
+                    ('//group[@id="amount_buttons"]',
+                        'states', {'invisible': True}),
+                    ('//page[@name="invoices"]',
+                        'states', {'invisible': True}),
+                    ('//page[@name="shipments"]',
+                        'states', {'invisible': True}),
+                    ])
+        return attributes
 
     @classmethod
     def copy(cls, sales, default=None):
@@ -950,6 +966,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             cls.proceed(process)
         if done:
             cls.do(done)
+
+    @classmethod
+    @ModelView.button_action('sale.wizard_modify_header')
+    def modify_header(cls, sales):
+        pass
 
 
 class SaleIgnoredInvoice(ModelSQL):
@@ -1823,3 +1844,73 @@ class ReturnSale(Wizard):
         if len(return_sales) == 1:
             action['views'].reverse()
         return action, data
+
+
+class ModifyHeaderStateView(StateView):
+    def get_view(self, wizard, state_name):
+        with Transaction().set_context(modify_header=True):
+            return super(ModifyHeaderStateView, self).get_view(
+                wizard, state_name)
+
+
+class ModifyHeader(Wizard):
+    "Modify Header"
+    __name__ = 'sale.modify_header'
+    start = ModifyHeaderStateView('sale.sale',
+        'sale.modify_header_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Modify", 'modify', 'tryton-ok', default=True),
+            ])
+    modify = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super(ModifyHeader, cls).__setup__()
+        cls._error_messages.update({
+                'not_in_draft': (
+                    'The sale "%(sale)s" must be in draft to modify header.'),
+                })
+
+    def get_sale(self):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+
+        sale = Sale(Transaction().context['active_id'])
+        if sale.state != 'draft':
+            self.raise_user_error('not_in_draft', {
+                    'sale': sale.rec_name,
+                    })
+        return sale
+
+    def default_start(self, fields):
+        sale = self.get_sale()
+        defaults = {}
+        for fieldname in fields:
+            value = getattr(sale, fieldname)
+            if isinstance(value, Model):
+                if getattr(sale.__class__, fieldname)._type == 'reference':
+                    value = str(value)
+                else:
+                    value = value.id
+            elif isinstance(value, (list, tuple)):
+                value = [r.id for r in value]
+            defaults[fieldname] = value
+
+        # Mimic an empty sale in draft state to get the fields' states right
+        defaults['lines'] = []
+        return defaults
+
+    def transition_modify(self):
+        pool = Pool()
+        Line = pool.get('sale.line')
+
+        sale = self.get_sale()
+        sale.__class__.write([sale], self.start._save_values)
+
+        # Call on_change after the save to ensure parent sale
+        # has the modified values
+        for line in sale.lines:
+            line.on_change_product()
+        Line.save(sale.lines)
+
+        return 'end'

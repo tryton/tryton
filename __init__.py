@@ -38,6 +38,7 @@ def register():
         HandleShipmentException,
         HandleInvoiceException,
         ReturnSale,
+        ModifyHeader,
         PartyReplace,
         module='sale', type_='wizard')
     Pool.register(
