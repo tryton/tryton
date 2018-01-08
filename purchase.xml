@@ -538,6 +538,20 @@ this repository contains the full copyright notices and license terms. -->
             icon="tryton-list"
             id="menu_supplier"/>
 
+        <record model="ir.action.wizard" id="wizard_modify_header">
+            <field name="name">Modify Header</field>
+            <field name="wiz_name">purchase.modify_header</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+        <record model="ir.ui.view" id="modify_header_form">
+            <field name="model">purchase.purchase</field>
+            <field name="inherit" ref="purchase.purchase_view_form"/>
+            <field name="name">modify_header_form</field>
+            <field name="domain"
+                eval="Eval('context', {}).get('modify_header', False)"
+                pyson="1"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_purchase">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="global_p" eval="True"/>

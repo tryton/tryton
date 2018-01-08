@@ -1,3 +1,4 @@
+* Add wizard to modify purchase header after filling lines
 * Make description on purchase line optional
 * Add product supplier on purchase line
 * Invoice received product instead of purchased product

@@ -43,4 +43,5 @@ def register():
         HandleShipmentException,
         HandleInvoiceException,
         PartyReplace,
+        ModifyHeader,
         module='purchase', type_='wizard')

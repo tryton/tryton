@@ -42,6 +42,9 @@ this repository contains the full copyright notices and license terms. -->
                 <group col="-1" colspan="2" id="buttons">
                     <button name="cancel" string="Cancel"
                         icon="tryton-cancel"/>
+                    <button name="modify_header"
+                        string="Modify Header"
+                        icon="tryton-executable"/>
                     <button name="draft" string="Draft"/>
                     <button name="quote" string="Quote"
                         icon="tryton-go-next"/>

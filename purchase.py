@@ -10,7 +10,7 @@ from sql.functions import Overlay, Position
 from sql.aggregate import Count
 from sql.operators import Concat
 
-from trytond.model import Workflow, ModelView, ModelSQL, fields, \
+from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, \
     sequence_ordered
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
@@ -27,7 +27,7 @@ __all__ = ['Purchase', 'PurchaseIgnoredInvoice',
     'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
     'PurchaseLineIgnoredMove', 'PurchaseLineRecreatedMove', 'PurchaseReport',
     'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
-    'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
+    'HandleInvoiceExceptionAsk', 'HandleInvoiceException', 'ModifyHeader',
     'get_shipments_returns', 'search_shipments_returns']
 
 _STATES = {
@@ -251,6 +251,10 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'handle_shipment_exception': {
                     'invisible': ((Eval('shipment_state') != 'exception')
                         | (Eval('state') == 'cancel')),
+                    },
+                'modify_header': {
+                    'invisible': ((Eval('state') != 'draft')
+                        | ~Eval('lines', [-1])),
                     },
                 })
         # The states where amounts are cached
@@ -636,7 +640,19 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
+        attributes = [
+            ('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
+        if Transaction().context.get('modify_header'):
+            attributes.extend([
+                    ('//group[@id="states"]', 'states', {'invisible': True}),
+                    ('//group[@id="amount_buttons"]',
+                        'states', {'invisible': True}),
+                    ('//page[@name="invoices"]',
+                        'states', {'invisible': True}),
+                    ('//page[@name="shipments"]',
+                        'states', {'invisible': True}),
+                    ])
+        return attributes
 
     @classmethod
     def copy(cls, purchases, default=None):
@@ -877,6 +893,11 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             cls.proceed(process)
         if done:
             cls.do(done)
+
+    @classmethod
+    @ModelView.button_action('purchase.wizard_modify_header')
+    def modify_header(cls, purchases):
+        pass
 
 
 class PurchaseIgnoredInvoice(ModelSQL):
@@ -1773,4 +1794,75 @@ class HandleInvoiceException(Wizard):
             })
 
         Purchase.process([purchase])
+        return 'end'
+
+
+class ModifyHeaderStateView(StateView):
+    def get_view(self, wizard, state_name):
+        with Transaction().set_context(modify_header=True):
+            return super(ModifyHeaderStateView, self).get_view(
+                wizard, state_name)
+
+
+class ModifyHeader(Wizard):
+    "Modify Header"
+    __name__ = 'purchase.modify_header'
+    start = ModifyHeaderStateView('purchase.purchase',
+        'purchase.modify_header_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Modify", 'modify', 'tryton-ok', default=True),
+            ])
+    modify = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super(ModifyHeader, cls).__setup__()
+        cls._error_messages.update({
+                'not_in_draft': (
+                    'The purchase "%(purchase)s" must be in draft '
+                    'to modify header.'),
+                })
+
+    def get_purchase(self):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+
+        purchase = Purchase(Transaction().context['active_id'])
+        if purchase.state != 'draft':
+            self.raise_user_error('not_in_draft', {
+                    'purchase': purchase.rec_name,
+                    })
+        return purchase
+
+    def default_start(self, fields):
+        purchase = self.get_purchase()
+        defaults = {}
+        for fieldname in fields:
+            value = getattr(purchase, fieldname)
+            if isinstance(value, Model):
+                if getattr(purchase.__class__, fieldname)._type == 'reference':
+                    value = str(value)
+                else:
+                    value = value.id
+            elif isinstance(value, (list, tuple)):
+                value = [r.id for r in value]
+            defaults[fieldname] = value
+
+        # Mimic an empty sale in draft state to get the fields' states right
+        defaults['lines'] = []
+        return defaults
+
+    def transition_modify(self):
+        pool = Pool()
+        Line = pool.get('purchase.line')
+
+        purchase = self.get_purchase()
+        purchase.__class__.write([purchase], self.start._save_values)
+
+        # Call on_change after the save to ensure parent sale
+        # has the modified values
+        for line in purchase.lines:
+            line.on_change_product()
+        Line.save(purchase.lines)
+
         return 'end'
