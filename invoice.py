@@ -124,10 +124,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         required=True, states=_STATES, depends=['state', 'party'],
         domain=[('party', '=', Eval('party'))])
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
-        states={
-            'readonly': ((Eval('state') != 'draft')
-                | (Eval('lines', [0]) & Eval('currency'))),
-            }, depends=['state'])
+        states=_STATES, depends=_DEPENDS)
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     currency_date = fields.Function(fields.Date('Currency Date'),
