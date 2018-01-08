@@ -174,7 +174,9 @@
             var el;
             databases = databases || [];
             if (databases.length <= 1 ) {
-                database = databases[0];
+                if (databases.length == 1) {
+                    database = databases[0];
+                }
                 el = dialog.database_input;
             } else {
                 el = dialog.database_select;
