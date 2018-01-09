@@ -1140,8 +1140,7 @@ class ViewTree(View):
 
             if loaded:
                 if field.attrs['type'] == 'timedelta':
-                    converter = self.screen.context.get(
-                        field.attrs.get('converter'))
+                    converter = field.converter(self.screen.group)
                     selected_sum = common.timedelta.format(
                         selected_sum, converter)
                     sum_ = common.timedelta.format(sum_, converter)

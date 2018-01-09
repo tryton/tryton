@@ -276,19 +276,20 @@ class TimeDeltaField(Field):
     def _is_empty(self, record):
         return self.get(record) is None
 
-    def converter(self, record):
-        # TODO allow local context converter
-        return rpc.CONTEXT.get(self.attrs.get('converter'))
+    def converter(self, group):
+        ctx = rpc.CONTEXT.copy()
+        ctx.update(group.context)
+        return ctx.get(self.attrs.get('converter'))
 
     def set_client(self, record, value, force_change=False):
         if isinstance(value, basestring):
-            value = common.timedelta.parse(value, self.converter(record))
+            value = common.timedelta.parse(value, self.converter(record.group))
         super(TimeDeltaField, self).set_client(
             record, value, force_change=force_change)
 
     def get_client(self, record):
         value = super(TimeDeltaField, self).get_client(record)
-        return common.timedelta.format(value, self.converter(record))
+        return common.timedelta.format(value, self.converter(record.group))
 
 
 class FloatField(Field):
