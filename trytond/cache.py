@@ -135,7 +135,8 @@ class MemoryCache(BaseCache):
             Cache._resets.setdefault(dbname, set())
             for name in Cache._resets[dbname]:
                 cursor.execute(*table.select(table.name,
-                        where=table.name == name))
+                        where=table.name == name,
+                        limit=1))
                 if cursor.fetchone():
                     # It would be better to insert only
                     cursor.execute(*table.update([table.timestamp],

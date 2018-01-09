@@ -222,9 +222,10 @@ class ModelSQL(ModelStorage):
         if cls._history:
             cls._update_history_table()
             history_table = cls.__table_history__()
-            cursor.execute(*sql_table.select(sql_table.id))
+            cursor.execute(*sql_table.select(sql_table.id, limit=1))
             if cursor.fetchone():
-                cursor.execute(*history_table.select(history_table.id))
+                cursor.execute(
+                    *history_table.select(history_table.id, limit=1))
                 if not cursor.fetchone():
                     columns = [n for n, f in cls._fields.iteritems()
                         if f.sql_type()]
@@ -463,7 +464,7 @@ class ModelSQL(ModelStorage):
                             Coalesce(table.write_date, table.create_date)
                             ).cast(sql_type) > timestamp))
             if where:
-                cursor.execute(*table.select(table.id, where=where))
+                cursor.execute(*table.select(table.id, where=where, limit=1))
                 if cursor.fetchone():
                     raise ConcurrencyException(
                         'Records were modified in the meanwhile')
@@ -1346,7 +1347,8 @@ class ModelSQL(ModelStorage):
                         condition=Column(table, field_name) == parent.id
                         ).select(table.id,
                         where=(Column(parent, field.left) == 0)
-                        & (Column(parent, field.right) == 0)))
+                        & (Column(parent, field.right) == 0),
+                        limit=1))
                 nested_create = cursor.fetchone()
 
                 if not nested_create and len(ids) < 2:
@@ -1469,14 +1471,16 @@ class ModelSQL(ModelStorage):
                                 clause &= Literal(False)
                             clause &= Column(table, column.name) == value
                         where |= clause
-                    cursor.execute(*table.select(table.id, where=where))
+                    cursor.execute(
+                        *table.select(table.id, where=where, limit=1))
                     if cursor.fetchone():
                         cls.raise_user_error(error)
             elif isinstance(sql, Check):
                 for sub_ids in grouped_slice(ids):
                     red_sql = reduce_ids(table.id, sub_ids)
                     cursor.execute(*table.select(table.id,
-                            where=~sql.expression & red_sql))
+                            where=~sql.expression & red_sql,
+                            limit=1))
                     if cursor.fetchone():
                         cls.raise_user_error(error)
 
