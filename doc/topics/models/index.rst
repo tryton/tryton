@@ -28,7 +28,6 @@ This example defines a ``Party`` model which has a ``name`` and a ``code``
 fields::
 
     from trytond.model import ModelView, ModelSQL, fields
-    from trytond.pool import Pool
 
     class Party(ModelSQL, ModelView):
         "Party"
@@ -36,9 +35,8 @@ fields::
         name = fields.Char('Name')
         code = fields.Char('Code')
 
-    Pool.register(Party)
-
-The class must be registered in the :ref:`Pool <ref-pool>`.
+The class must be registered in the :ref:`Pool <ref-pool>` by the `register()`
+method of the :ref:`module <topics-modules>`.
 Model classes are essentially data mappers to records and Model instances are
 records.
 
