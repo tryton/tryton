@@ -1642,13 +1642,15 @@
 
     Sao.field.TimeDelta = Sao.class_(Sao.field.Field, {
         _default: null,
-        converter: function(record) {
-            // TODO allow local context converter
-            return record.model.session.context[this.description.converter];
+        converter: function(group) {
+            var ctx = jQuery.extend(
+                group.model.session.context, group.context());
+            return ctx[this.description.converter];
         },
         set_client: function(record, value, force_change) {
             if (typeof(value) == 'string') {
-                value = Sao.common.timedelta.parse(value, this.converter(record));
+                value = Sao.common.timedelta.parse(
+                    value, this.converter(record.group));
             }
             Sao.field.TimeDelta._super.set_client.call(
                 this, record, value, force_change);
@@ -1656,7 +1658,8 @@
         get_client: function(record) {
             var value = Sao.field.TimeDelta._super.get_client.call(
                 this, record);
-            return Sao.common.timedelta.format(value, this.converter(record));
+            return Sao.common.timedelta.format(
+                value, this.converter(record.group));
         }
     });
 
