@@ -184,6 +184,7 @@ class Report(URLMixin, PoolBase):
     def _get_records(cls, ids, model, data):
         pool = Pool()
         Model = pool.get(model)
+        context = Transaction().context
 
         class TranslateModel(object):
             _languages = {}
@@ -197,7 +198,8 @@ class Report(URLMixin, PoolBase):
 
             def __getattr__(self, name):
                 if self._language not in TranslateModel._languages:
-                    with Transaction().set_context(language=self._language):
+                    with Transaction().set_context(
+                            context=context, language=self._language):
                         records = Model.browse(ids)
                     id2record = dict((r.id, r) for r in records)
                     TranslateModel._languages[self._language] = id2record
