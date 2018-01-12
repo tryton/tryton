@@ -124,7 +124,7 @@ class Product(StockMixin, object):
             context['_datetime'] = datetime.datetime.combine(
                 trans_context['stock_date_end'], datetime.time.max)
         with Transaction().set_context(context):
-            for product in products:
+            for product in cls.browse(products):
                 # The date could be before the product creation
                 if not isinstance(product.cost_price, Decimal):
                     cost_values[product.id] = None
