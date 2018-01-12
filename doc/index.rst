@@ -43,3 +43,5 @@ A cron task runs every 15 minutes to charge each processing payment.
 
 The capture box can be unchecked to only authorize on processing and capture
 the amount in a second step.
+
+If the payment is disputed, it will be updated at the closure of the dispute.

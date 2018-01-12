@@ -34,5 +34,9 @@ this repository contains the full copyright notices and license terms. -->
         <field name="stripe_error_code"/>
         <label name="stripe_error_param"/>
         <field name="stripe_error_param"/>
+        <label name="stripe_dispute_status"/>
+        <field name="stripe_dispute_status"/>
+        <label name="stripe_dispute_reason"/>
+        <field name="stripe_dispute_reason"/>
     </xpath>
 </data>

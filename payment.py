@@ -3,6 +3,9 @@
 import uuid
 import logging
 import urllib
+from decimal import Decimal
+from itertools import groupby
+from operator import attrgetter
 
 import stripe
 
@@ -10,6 +13,7 @@ from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
 from trytond.report import Report
+from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.url import HOSTNAME
 from trytond.wizard import Wizard, StateAction
@@ -121,6 +125,14 @@ class Payment:
         states={
             'invisible': ~Eval('stripe_error_param'),
             })
+    stripe_dispute_reason = fields.Char("Stripe Dispute Reason", readonly=True,
+        states={
+            'invisible': ~Eval('stripe_dispute_reason'),
+            })
+    stripe_dispute_status = fields.Char("Stripe Dispute Status", readonly=True,
+        states={
+            'invisible': ~Eval('stripe_dispute_status'),
+            })
     stripe_customer = fields.Many2One(
         'account.payment.stripe.customer', "Stripe Customer",
         domain=[
@@ -158,13 +170,16 @@ class Payment:
             'account.payment.stripe.account', "Stripe Account"),
         'on_change_with_stripe_account')
     stripe_amount = fields.Function(
-        fields.Integer("Stripe Amount"), 'get_stripe_amount')
+        fields.Integer("Stripe Amount"),
+        'get_stripe_amount', setter='set_stripe_amount')
 
     @classmethod
     def __setup__(cls):
         super(Payment, cls).__setup__()
         cls.amount.states['readonly'] &= ~Eval('stripe_capture_needed')
         cls.amount.depends.append('stripe_capture_needed')
+        cls.stripe_amount.states.update(cls.amount.states)
+        cls.stripe_amount.depends.extend(cls.amount.depends)
         cls._error_messages.update({
                 'stripe_receivable': ('Stripe journal "%(journal)s" '
                     'can only be used for receivable payment "%(payment)s".'),
@@ -247,6 +262,17 @@ class Payment:
 
     def get_stripe_amount(self, name):
         return int(self.amount * 10 ** self.currency_digits)
+
+    @classmethod
+    def set_stripe_amount(cls, payments, name, value):
+        keyfunc = attrgetter('currency_digits')
+        payments = sorted(payments, key=keyfunc)
+        value = Decimal(value)
+        for digits, payments in groupby(payments, keyfunc):
+            digits = Decimal(digits)
+            cls.write(list(payments), {
+                    'amount': value * 10 ** -digits,
+                    })
 
     @classmethod
     def validate(cls, payments):
@@ -436,6 +462,8 @@ class Account(ModelSQL, ModelView):
                     'icon': 'tryton-refresh',
                     },
                 })
+        if Pool().test:
+            cls.__rpc__['webhook'] = RPC(readonly=False, instantiate=0)
 
     @classmethod
     def default_zip_code(cls):
@@ -470,6 +498,10 @@ class Account(ModelSQL, ModelView):
             return self.webhook_charge_succeeded(data)
         elif type_ == 'charge.failed':
             return self.webhook_charge_failed(data)
+        elif type_ == 'charge.dispute.created':
+            return self.webhook_charge_dispute_created(data)
+        elif type_ == 'charge.dispute.closed':
+            return self.webhook_charge_dispute_closed(data)
         elif type_ == 'source.chargeable':
             return self.webhook_source_chargeable(data)
         elif type_ == 'source.failed':
@@ -516,6 +548,50 @@ class Account(ModelSQL, ModelView):
                 payment.save()
                 if charge['status'] == 'failed':
                     Payment.fail([payment])
+        return bool(payments)
+
+    def webhook_charge_dispute_created(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        source = payload['object']
+        payments = Payment.search([
+                ('stripe_charge_id', '=', source['charge']),
+                ])
+        if not payments:
+            logger.error(
+                "charge.dispute.created: No payment '%s'", source['charge'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                payment.stripe_dispute_reason = source['reason']
+                payment.stripe_dispute_status = source['status']
+                payment.save()
+        return bool(payments)
+
+    def webhook_charge_dispute_closed(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        source = payload['object']
+        payments = Payment.search([
+                ('stripe_charge_id', '=', source['charge']),
+                ])
+        if not payments:
+            logger.error(
+                "charge.dispute.closed: No payment '%s'", source['charge'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                payment.stripe_dispute_reason = source['reason']
+                payment.stripe_dispute_status = source['status']
+                payment.save()
+                if source['status'] == 'lost':
+                    Payment.fail([payment])
+                    if payment.stripe_amount != source['amount']:
+                        payment.stripe_amount -= source['amount']
+                        payment.save()
+                        Payment.succeed([payment])
         return bool(payments)
 
     def webhook_source_chargeable(self, payload):
