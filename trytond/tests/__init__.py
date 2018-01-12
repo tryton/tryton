@@ -22,6 +22,7 @@ from .copy_ import *
 from history import *
 from .field_context import *
 from . import multivalue
+from . import mixin
 
 
 def register():
@@ -207,6 +208,7 @@ def register():
         module='tests', type_='wizard')
 
     multivalue.register('tests')
+    mixin.register('tests')
 
     if pkg_resources is not None:
         entry_points = pkg_resources.iter_entry_points('trytond.tests')

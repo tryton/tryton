@@ -1,3 +1,4 @@
+* Allow to include mixin to pool objects
 * Improve validation of PYSON domain
 * Use JSON canonical form for Dict value
 * Remove rules on user

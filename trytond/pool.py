@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from threading import RLock
 import logging
 from trytond.modules import load_modules, register_classes
@@ -46,6 +47,7 @@ class Pool(object):
         'wizard': {},
         'report': {},
     }
+    classes_mixin = defaultdict(list)
     _started = False
     _lock = RLock()
     _locks = {}
@@ -85,6 +87,10 @@ class Pool(object):
             assert cls not in mpool, cls
             assert issubclass(cls.__class__, PoolMeta), cls
             mpool.append(cls)
+
+    @staticmethod
+    def register_mixin(mixin, classinfo, module):
+        Pool.classes_mixin[module].append((classinfo, mixin))
 
     @classmethod
     def start(cls):
@@ -227,6 +233,20 @@ class Pool(object):
                 cls.__setup__()
             for cls in lst:
                 cls.__post_setup__()
+
+    def setup_mixin(self, modules):
+        logger.info('setup mixin for "%s"', self.database_name)
+        for module in modules:
+            if module not in self.classes_mixin:
+                continue
+            for type_ in self.classes.keys():
+                for _, cls in self.iterobject(type=type_):
+                    for parent, mixin in self.classes_mixin[module]:
+                        if (not issubclass(cls, parent)
+                                or issubclass(cls, mixin)):
+                            continue
+                        cls = type(cls.__name__, (mixin, cls), {})
+                        self.add(cls, type=type_)
 
 
 def isregisteredby(obj, module, type_='model'):

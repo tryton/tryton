@@ -15,6 +15,11 @@ Static methods:
 
     Register the classes of type (`model`, `report` or `wizard`) for the module.
 
+.. staticmethod:: Pool.register_mixin(mixin, classinfo, module)
+
+    Register the mixin for the module. The mixin will be included to all
+    subclasses of classinfo.
+
 Class methods:
 
 .. classmethod:: Pool.start()
@@ -48,6 +53,11 @@ Instance methods:
 
     Call all setup methods of the classes provided or for all the registered
     classes.
+
+.. method:: Pool.setup_mixin(modules)
+
+    Include all the mixin registered for the modules to the corresponding
+    registered classes.
 
 ========
 PoolMeta
