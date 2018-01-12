@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import os
+import logging
 import subprocess
 import tempfile
 import warnings
@@ -23,12 +24,13 @@ try:
 except ImportError:
     Manifest, MANIFEST = None, None
 from genshi.filters import Translator
-from trytond.config import config
 from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
 from trytond.rpc import RPC
 from trytond.exceptions import UserError
+
+logger = logging.getLogger(__name__)
 
 MIMETYPES = {
     'odt': 'application/vnd.oasis.opendocument.text',
@@ -289,21 +291,32 @@ class Report(URLMixin, PoolBase):
         if output_format in MIMETYPES:
             return output_format, data
 
-        fd, path = tempfile.mkstemp(suffix=(os.extsep + input_format),
-            prefix='trytond_')
+        dtemp = tempfile.mkdtemp(prefix='trytond_')
+        path = os.path.join(
+            dtemp, report.report_name + os.extsep + input_format)
         oext = FORMAT2EXT.get(output_format, output_format)
-        with os.fdopen(fd, 'wb+') as fp:
+        with open(path, 'wb+') as fp:
             fp.write(data)
-        cmd = ['unoconv', '--connection=%s' % config.get('report', 'unoconv'),
-            '-f', oext, '--stdout', path]
         try:
-            proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-            stdoutdata, stderrdata = proc.communicate()
-            if proc.wait() != 0:
-                raise Exception(stderrdata)
-            return oext, stdoutdata
+            cmd = ['soffice',
+                '--headless', '--nolockcheck', '--nodefault', '--norestore',
+                '--convert-to', oext, '--outdir', dtemp, path]
+            output = os.path.splitext(path)[0] + os.extsep + oext
+            subprocess.check_call(cmd)
+            if os.path.exists(output):
+                with open(output, 'rb') as fp:
+                    return oext, fp.read()
+            else:
+                logger.error(
+                    'fail to convert %s to %s', report.report_name, oext)
+                return input_format, data
         finally:
-            os.remove(path)
+            try:
+                os.remove(path)
+                os.remove(output)
+                os.rmdir(dtemp)
+            except OSError:
+                pass
 
     @classmethod
     def format_date(cls, value, lang=None):

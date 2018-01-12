@@ -10,7 +10,9 @@ format, explained later, is interpolated with dynamic data and placed into a
 document of the same file format. Tryton's ability to generate documents in
 this way allows documents to be generated for any editor that supports the Open
 Document Format which can be converted to third party formats, such as PDF.
-Extra libraries are required for this, see INSTALL for more information.
+`LibreOffice`_ must be installed on the server host for format conversion.
+
+.. _LibreOffice: https://www.libreoffice.org/
 
 Report Templates
 ================

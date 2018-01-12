@@ -69,9 +69,6 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
         self.add_section('password')
         self.set('password', 'length', 8)
         self.set('password', 'entropy', 0.75)
-        self.add_section('report')
-        self.set('report', 'unoconv',
-            'pipe,name=trytond;urp;StarOffice.ComponentContext')
         self.update_etc()
 
     def update_etc(self, configfile=os.environ.get('TRYTOND_CONFIG')):

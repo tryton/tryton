@@ -105,7 +105,6 @@ setup(name=name,
     extras_require={
         'PostgreSQL': pg_require,
         'MySQL': ['MySQL-python'],
-        'unoconv': ['unoconv'],
         'graphviz': ['pydot'],
         'cdecimal': ['cdecimal'],
         'Levenshtein': ['python-Levenshtein'],

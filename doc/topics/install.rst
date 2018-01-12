@@ -21,7 +21,6 @@ Prerequisites
       (http://github.com/chtd/psycopg2cffi)
     * Optional: MySQL-python (http://sourceforge.net/projects/mysql-python/)
     * Optional: pydot (http://code.google.com/p/pydot/)
-    * Optional: unoconv http://dag.wieers.com/home-made/unoconv/)
     * Optional: sphinx (http://sphinx.pocoo.org/)
     * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)
     * Optional: python-Levenshtein

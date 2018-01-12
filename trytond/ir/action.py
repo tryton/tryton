@@ -488,7 +488,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             ('xpm', 'X PixMap'),
             ], translate=False,
         string='Extension', help='Leave empty for the same as template, '
-        'see unoconv documentation for compatible format')
+        'see LibreOffice documentation for compatible format')
     module = fields.Char('Module', readonly=True, select=True)
     email = fields.Char('Email',
         help='Python dictonary where keys define "to" "cc" "subject"\n'

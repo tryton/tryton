@@ -277,16 +277,6 @@ The ratio of non repeated characters for the user password.
 
 Default: `0.75`
 
-report
-------
-
-unoconv
-~~~~~~~
-
-The parameters for `unoconv`.
-
-Default: `pipe,name=trytond;urp;StarOffice.ComponentContext`
-
 attachment
 ----------
 
