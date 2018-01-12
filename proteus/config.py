@@ -4,13 +4,14 @@
 Configuration functions for the proteus package for Tryton.
 """
 from __future__ import with_statement
-__all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
-import xmlrpclib
-import threading
-from decimal import Decimal
 import datetime
 import os
+import threading
 import urlparse
+import xmlrpclib
+from decimal import Decimal
+
+__all__ = ['set_trytond', 'set_xmlrpc', 'get_config']
 
 
 def dump_decimal(self, value, write):
