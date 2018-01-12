@@ -148,7 +148,9 @@ Update the inventory::
     >>> line_p2.expected_quantity
     3.8
     >>> line_p2.quantity
-    3.8
+    2.5
+    >>> line_p2.quantity = 3.8
+    >>> line_p2.save()
 
 Confirm the inventory::
 
@@ -169,32 +171,26 @@ Confirm the inventory::
 
 Empty storage::
 
-    >>> outgoing_move = StockMove()
-    >>> outgoing_move.product = product
-    >>> outgoing_move.uom = unit
-    >>> outgoing_move.quantity = 3
-    >>> outgoing_move.from_location = storage_loc
-    >>> outgoing_move.to_location = customer_loc
-    >>> outgoing_move.planned_date = today
-    >>> outgoing_move.effective_date = today
-    >>> outgoing_move.company = company
-    >>> outgoing_move.unit_price = Decimal('100')
-    >>> outgoing_move.currency = company.currency
-    >>> outgoing_moves = [outgoing_move]
-
-    >>> outgoing_move = StockMove()
-    >>> outgoing_move.product = product2
-    >>> outgoing_move.uom = kg
-    >>> outgoing_move.quantity = 3.8
-    >>> outgoing_move.from_location = storage_loc
-    >>> outgoing_move.to_location = customer_loc
-    >>> outgoing_move.planned_date = today
-    >>> outgoing_move.effective_date = today
-    >>> outgoing_move.company = company
-    >>> outgoing_move.unit_price = Decimal('140')
-    >>> outgoing_move.currency = company.currency
-    >>> outgoing_moves.append(outgoing_move)
-    >>> StockMove.click(outgoing_moves, 'do')
+    >>> Inventory = Model.get('stock.inventory')
+    >>> inventory = Inventory()
+    >>> inventory.location = storage_loc
+    >>> line = inventory.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 0
+    >>> line = inventory.lines.new()
+    >>> line.product = product2
+    >>> line.quantity = 0
+    >>> inventory.save()
+    >>> line_p1, line_p2 = inventory.lines
+    >>> line_p1.quantity
+    0.0
+    >>> line_p1.expected_quantity
+    3.0
+    >>> line_p2.quantity
+    0.0
+    >>> line_p2.expected_quantity
+    3.8
+    >>> inventory.click('confirm')
 
 Create an inventory that should be empty after completion::
 

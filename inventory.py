@@ -430,7 +430,8 @@ class InventoryLine(ModelSQL, ModelView):
             return values
         values['expected_quantity'] = quantity
         # update also quantity field if not edited
-        if self.quantity == self.expected_quantity:
+        if (not quantity and not self.quantity
+                and self.quantity == self.expected_quantity):
             values['quantity'] = max(quantity, 0.0)
         return values
 
