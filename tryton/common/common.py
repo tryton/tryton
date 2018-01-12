@@ -29,6 +29,8 @@ import tryton.rpc as rpc
 import socket
 import thread
 import urllib
+import urllib2
+import urlparse
 from string import Template
 import shlex
 try:
@@ -38,10 +40,14 @@ except ImportError:
 from threading import Lock
 import dateutil.tz
 
+from gi.repository import Gtk
+
+from tryton import __version__
 from tryton.exceptions import TrytonServerError, TrytonError
 from tryton.pyson import PYSONEncoder
 
 _ = gettext.gettext
+logger = logging.getLogger(__name__)
 
 
 class TrytonIconFactory(gtk.IconFactory):
@@ -981,6 +987,52 @@ def send_bugtracker(title, msg):
                     traceback.format_exception(sys.exc_type,
                         sys.exc_value, sys.exc_traceback))
             message(_('Exception:') + '\n' + tb_s, msg_type=gtk.MESSAGE_ERROR)
+
+
+def check_version(box, version=__version__):
+    def info_bar_response(info_bar, response, box, url):
+        if response == Gtk.ResponseType.ACCEPT:
+            webbrowser.open(url)
+        box.remove(info_bar)
+
+    class HeadRequest(urllib2.Request):
+        def get_method(self):
+            return 'HEAD'
+
+    version = version.split('.')
+    series = '.'.join(version[:2])
+    version[2] = str(int(version[2]) + 1)
+    version = '.'.join(version)
+    filename = 'tryton-%s.tar.gz' % version
+    if hasattr(sys, 'frozen'):
+        if sys.platform == 'win32':
+            filename = 'tryton-setup-%s.exe' % version
+        elif sys.platform == 'darwin':
+            filename = 'tryton-%s.dmg' % version
+    url = list(urlparse.urlparse(CONFIG['download.url']))
+    url[2] = '/%s/%s' % (series, filename)
+    url = urlparse.urlunparse(url)
+
+    logger.info(_("Check URL: %s"), url)
+    try:
+        urllib2.urlopen(HeadRequest(url), cafile=rpc._CA_CERTS)
+    except urllib2.HTTPError:
+        return True
+    except Exception:
+        logger.error(
+            _("Unable to check for new version"), exc_info=True)
+        return True
+    else:
+        if check_version(box, version):
+            info_bar = Gtk.InfoBar()
+            info_bar.get_content_area().pack_start(
+                gtk.Label(_("A new version is available!")))
+            info_bar.set_show_close_button(True)
+            info_bar.add_button(_("Download"), Gtk.ResponseType.ACCEPT)
+            info_bar.connect('response', info_bar_response, box, url)
+            box.pack_start(info_bar)
+            info_bar.show_all()
+        return False
 
 
 def to_xml(string):

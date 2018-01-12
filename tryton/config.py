@@ -57,8 +57,11 @@ class ConfigManager(object):
             'client.email': '',
             'client.can_change_accelerators': False,
             'client.limit': 1000,
+            'client.check_version': True,
             'roundup.url': 'http://bugs.tryton.org/',
             'roundup.xmlrpc': 'roundup-xmlrpc.tryton.org',
+            'download.url': 'https://downloads.tryton.org/',
+            'download.frequency': 60 * 60 * 8,
             'menu.pane': 200,
             'menu.expanded': True,
         }

@@ -11,6 +11,9 @@ import gtk
 import json
 import webbrowser
 import threading
+import logging
+
+from gi.repository import GLib
 
 import tryton.rpc as rpc
 from tryton.common import RPCExecute, RPCException, RPCContextReload
@@ -43,6 +46,7 @@ except ImportError:
     gtkspell = None
 
 _ = gettext.gettext
+logger = logging.getLogger(__name__)
 
 
 _MAIN = []
@@ -141,6 +145,14 @@ class Main(object):
         self.menuitem_favorite = None
 
         self.buttons = {}
+
+        self.info = gtk.VBox()
+        self.vbox.pack_start(self.info, expand=False)
+        if CONFIG['client.check_version']:
+            common.check_version(self.info)
+            GLib.timeout_add_seconds(
+                int(CONFIG['download.frequency']), common.check_version,
+                self.info)
 
         self.pane = gtk.HPaned()
         self.vbox.pack_start(self.pane, True, True)
@@ -657,6 +669,20 @@ class Main(object):
         menuitem_email.connect('activate', self.sig_email)
         menuitem_email.set_accel_path('<tryton>/Options/Email')
         menu_options.add(menuitem_email)
+
+        def activate_check_version(menuitem):
+            active = menuitem.get_active()
+            CONFIG['client.check_version'] = active
+            if active:
+                common.check_version(self.info)
+        checkmenu_check_version = gtk.CheckMenuItem(
+            _("Check Version"), use_underline=True)
+        checkmenu_check_version.set_active(
+            bool(CONFIG['client.check_version']))
+        checkmenu_check_version.connect('activate', activate_check_version)
+        checkmenu_check_version.set_accel_path(
+            '<tryton>/Options/Check Version')
+        menu_options.add(checkmenu_check_version)
 
         menu_options.add(gtk.SeparatorMenuItem())
 

@@ -376,6 +376,11 @@ Email...:
 
 .. note:: The path of *Program Files* may vary dependent on the localization of your Windows version.
 
+.. _Menu-Options-Check_Version:
+
+Check Version:
+  Check box to enable the check of new bug-fix version.
+
 .. _Menu-Options-Save_Options:
 
 Save Options:
