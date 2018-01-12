@@ -496,8 +496,14 @@ class Account(ModelSQL, ModelView):
         type_ = payload['type']
         if type_ == 'charge.succeeded':
             return self.webhook_charge_succeeded(data)
+        if type_ == 'charge.captured':
+            return self.webhook_charge_captured(data)
         elif type_ == 'charge.failed':
             return self.webhook_charge_failed(data)
+        elif type_ == 'charge.pending':
+            return self.webhook_charge_pending(data)
+        elif type_ == 'charge.refunded':
+            return self.webhook_charge_refunded(data)
         elif type_ == 'charge.dispute.created':
             return self.webhook_charge_dispute_created(data)
         elif type_ == 'charge.dispute.closed':
@@ -510,7 +516,7 @@ class Account(ModelSQL, ModelView):
             return self.webhook_source_canceled(data)
         return None
 
-    def webhook_charge_succeeded(self, payload):
+    def webhook_charge_succeeded(self, payload, _event='charge.succeeded'):
         pool = Pool()
         Payment = pool.get('account.payment')
 
@@ -519,15 +525,31 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', charge['id']),
                 ])
         if not payments:
-            logger.error("charge.succeeded: No payment '%s'", charge['id'])
+            logger.error(": No payment '%s'", _event, charge['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
+                if payment.state == 'succeeded':
+                    Payment.fail([payment])
                 payment.stripe_captured = charge['captured']
+                payment.stripe_amount = (
+                    charge['amount'] - charge['amount_refunded'])
                 payment.save()
-                if charge['status'] == 'succeeded' and charge['captured']:
-                    Payment.succeed([payment])
+                if payment.amount:
+                    if charge['status'] == 'succeeded' and charge['captured']:
+                        Payment.succeed([payment])
+                else:
+                    Payment.fail([payment])
         return bool(payments)
+
+    def webhook_charge_captured(self, payload):
+        return self.webhook_charge_succeeded(payload, _event='charge.captured')
+
+    def webhook_charge_pending(self, payload):
+        return self.webhook_charge_succeeded(payload, _event='charge.pending')
+
+    def webhook_charge_refunded(self, payload):
+        return self.webhook_charge_succeeded(payload, _event='charge.pending')
 
     def webhook_charge_failed(self, payload):
         pool = Pool()

@@ -277,3 +277,47 @@ Capture lower amount::
     u'succeeded'
     >>> bool(payment.stripe_captured)
     True
+
+Simulate charge.refunded event with partial amount::
+
+    >>> StripeAccount.webhook([stripe_account], {
+    ...         'type': 'charge.refunded',
+    ...         'data': {
+    ...             'object': {
+    ...                 'id': payment.stripe_charge_id,
+    ...                 'object': 'charge',
+    ...                 'amount': 4200,
+    ...                 'amount_refunded': 4000,
+    ...                 'captured': True,
+    ...                 'status': 'succeeded',
+    ...                 },
+    ...             },
+    ...         }, {})
+    [True]
+    >>> payment.reload()
+    >>> payment.amount
+    Decimal('2.00')
+    >>> payment.state
+    u'succeeded'
+
+Simulate charge.refunded event with full amount::
+
+    >>> StripeAccount.webhook([stripe_account], {
+    ...         'type': 'charge.refunded',
+    ...         'data': {
+    ...             'object': {
+    ...                 'id': payment.stripe_charge_id,
+    ...                 'object': 'charge',
+    ...                 'amount': 4200,
+    ...                 'amount_refunded': 4200,
+    ...                 'captured': True,
+    ...                 'status': 'succeeded',
+    ...                 },
+    ...             },
+    ...         }, {})
+    [True]
+    >>> payment.reload()
+    >>> payment.amount
+    Decimal('0.00')
+    >>> payment.state
+    u'failed'
