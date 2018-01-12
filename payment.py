@@ -25,6 +25,31 @@ class Journal:
             'required': Bool(Eval('clearing_account')),
             },
         depends=['clearing_account'])
+    clearing_posting_delay = fields.TimeDelta(
+        "Clearing Posting Delay",
+        help="Post automatically the clearing moves after the delay.\n"
+        "Leave empty for no posting.")
+
+    @classmethod
+    def cron_post_clearing_moves(cls, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Move = pool.get('account.move')
+        if date is None:
+            date = Date.today()
+        moves = []
+        journals = cls.search([
+                ('clearing_posting_delay', '!=', None),
+                ])
+        for journal in journals:
+            move_date = date - journal.clearing_posting_delay
+            moves.extend(Move.search([
+                        ('date', '<=', move_date),
+                        ('origin.journal.id', '=', journal.id,
+                            'account.payment'),
+                        ('state', '=', 'draft'),
+                        ]))
+        Move.post(moves)
 
 
 class Payment:

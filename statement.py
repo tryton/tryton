@@ -158,4 +158,6 @@ class StatementLine:
         Move = pool.get('account.move')
         super(StatementLine, cls).post_move(lines)
         Move.post([l.payment.clearing_move for l in lines
-                if l.payment and l.payment.clearing_move])
+                if l.payment
+                and l.payment.clearing_move
+                and l.payment.clearing_move.state == 'draft'])

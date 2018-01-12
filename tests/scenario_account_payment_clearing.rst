@@ -16,6 +16,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
     >>> today = datetime.date.today()
+    >>> yesterday = today - relativedelta(days=1)
     >>> first = today  + relativedelta(day=1)
 
 Install account_payment_clearing and account_statement::
@@ -60,7 +61,8 @@ Create payment journal::
     >>> PaymentJournal = Model.get('account.payment.journal')
     >>> payment_journal = PaymentJournal(name='Manual',
     ...     process_method='manual', clearing_journal=expense,
-    ...     clearing_account=bank_clearing)
+    ...     clearing_account=bank_clearing,
+    ...     clearing_posting_delay=datetime.timedelta(1))
     >>> payment_journal.save()
 
 Create parties::
@@ -183,11 +185,22 @@ Fail payment::
 Succeed payment and post clearing::
 
     >>> succeed = Wizard('account.payment.succeed', [payment])
+    >>> succeed.form.date = yesterday
     >>> succeed.execute('succeed')
     >>> payment.state
     u'succeeded'
+
+    >>> Cron = Model.get('ir.cron')
+    >>> Company = Model.get('company.company')
+    >>> cron_post_clearing_moves, = Cron.find([
+    ...     ('model', '=', 'account.payment.journal'),
+    ...     ('function', '=', 'cron_post_clearing_moves'),
+    ...     ])
+    >>> cron_post_clearing_moves.companies.append(Company(company.id))
+    >>> cron_post_clearing_moves.click('run_once')
+
+    >>> payment.reload()
     >>> clearing_move = payment.clearing_move
-    >>> clearing_move.click('post')
     >>> clearing_move.state
     u'posted'
 

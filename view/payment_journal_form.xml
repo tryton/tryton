@@ -8,5 +8,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="clearing_account"/>
         <label name="clearing_journal"/>
         <field name="clearing_journal"/>
+        <label name="clearing_posting_delay"/>
+        <field name="clearing_posting_delay"/>
     </xpath>
 </data>

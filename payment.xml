@@ -33,5 +33,33 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">succeed_start_form</field>
         </record>
+
+        <record model="res.user" id="user_post_clearing_moves">
+            <field name="login">user_cron_post_clearing_moves</field>
+            <field name="name">Cron Post Clearing Moves</field>
+            <field name="signature"></field>
+            <field name="active" eval="False"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_post_clearing_moves_group_account">
+            <field name="user" ref="user_post_clearing_moves"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_post_clearing_moves_group_payment">
+            <field name="user" ref="user_post_clearing_moves"/>
+            <field name="group" ref="account_payment.group_payment"/>
+        </record>
+
+        <record model="ir.cron" id="cron_post_clearing_moves">
+            <field name="name">Post Clearing Moves</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_post_clearing_moves"/>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">account.payment.journal</field>
+            <field name="function">cron_post_clearing_moves</field>
+        </record>
     </data>
 </tryton>

@@ -7,3 +7,6 @@ account defined on the payment journal.
 
 The clearing account will be used for statement lines which are linked to such
 payment.
+
+If a delay is configured on journal for posting, a scheduled task will post
+automatically clearing moves after this delay.

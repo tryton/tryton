@@ -1,3 +1,5 @@
+* Add cron task to post clearing move after journal delay
+
 Version 4.6.0 - 2017-10-30
 * Bug fixes (see mercurial logs for details)
 * Allow to use account instead of line for clearing
