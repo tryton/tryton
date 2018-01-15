@@ -154,8 +154,9 @@ class _TrytondMethod(object):
 
     def __call__(self, *args):
         from trytond.cache import Cache
-        from trytond.transaction import Transaction
         from trytond.rpc import RPC
+        from trytond.tools import is_instance_method
+        from trytond.transaction import Transaction
 
         if self._name in self._object.__rpc__:
             rpc = self._object.__rpc__[self._name]
@@ -170,7 +171,8 @@ class _TrytondMethod(object):
             args, kwargs, transaction.context, transaction.timestamp = \
                 rpc.convert(self._object, *args)
             meth = getattr(self._object, self._name)
-            if not hasattr(meth, 'im_self') or meth.im_self:
+            if (rpc.instantiate is None
+                    or not is_instance_method(self._object, meth)):
                 result = rpc.result(meth(*args, **kwargs))
             else:
                 assert rpc.instantiate == 0
