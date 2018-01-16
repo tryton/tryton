@@ -172,7 +172,7 @@ class _TrytondMethod(object):
                 rpc.convert(self._object, *args)
             meth = getattr(self._object, self._name)
             if (rpc.instantiate is None
-                    or not is_instance_method(self._object, meth)):
+                    or not is_instance_method(self._object, self._name)):
                 result = rpc.result(meth(*args, **kwargs))
             else:
                 assert rpc.instantiate == 0
