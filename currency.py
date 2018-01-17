@@ -13,6 +13,7 @@ from trytond.tools import datetime_strftime
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
+from trytond.pyson import Eval
 
 __all__ = ['Currency', 'Rate']
 
@@ -27,7 +28,8 @@ class Currency(ModelSQL, ModelView):
     rate = fields.Function(fields.Numeric('Current rate', digits=(12, 6)),
         'get_rate')
     rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
-    rounding = fields.Numeric('Rounding factor', digits=(12, 6), required=True)
+    rounding = fields.Numeric('Rounding factor', required=True,
+        digits=(12, Eval('digits', 6)), depends=['digits'])
     digits = fields.Integer('Display Digits', required=True)
     active = fields.Boolean('Active')
 
