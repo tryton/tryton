@@ -300,7 +300,7 @@ def request_server(server_widget):
 
 def get_toplevel_window():
     for window in gtk.window_list_toplevels():
-        if window.is_active():
+        if window.is_active() and window.props.type == gtk.WINDOW_TOPLEVEL:
             return window
     from tryton.gui.main import Main
     return Main.get_main().window
