@@ -60,6 +60,10 @@ try:
 except ImportError:
     tests_require.append('mock')
 
+dependency_links = []
+if minor_version % 2:
+    dependency_links.append('https://trydevpi.tryton.org/')
+
 setup(name=name,
     version=version,
     description='Tryton module for SEPA payment',
@@ -115,6 +119,7 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
