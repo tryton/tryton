@@ -61,7 +61,6 @@ except ImportError:
     tests_require.append('mock')
 dependency_links = []
 if minor_version % 2:
-    # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
