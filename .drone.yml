@@ -12,7 +12,7 @@ pipeline:
             - POSTGIS_URI=postgis://postgres@postgresql:5432/
         commands:
             - pip install tox
-            - tox -e "${TOXENV}-postgis"
+            - tox -e "${TOXENV}"
         volumes:
             - cache:/root/.cache
 
