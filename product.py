@@ -377,7 +377,8 @@ class Template(CompanyMultiValueMixin):
         super(Template, cls).__setup__()
         cls._error_messages.update({
                 'missing_account': ('There is no account '
-                    'expense/revenue defined on the product %s (%d)'),
+                    'expense/revenue defined on the product '
+                    '%(name)s (%(id)d)'),
                 })
 
     @classmethod
