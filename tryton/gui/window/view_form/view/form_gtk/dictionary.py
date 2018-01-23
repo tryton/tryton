@@ -21,6 +21,7 @@ from tryton.common.datetime_ import Date, DateTime
 from tryton.common.domain_parser import quote
 from tryton.common.entry_position import reset_position
 from tryton.common.widget_style import set_widget_style
+from tryton.common.underline import set_underline
 
 _ = gettext.gettext
 
@@ -323,7 +324,9 @@ class DictWidget(Widget):
         self.rows = {}
 
         self.widget = gtk.Frame()
-        self.widget.set_label(attrs.get('string', ''))
+        label = gtk.Label(set_underline(attrs.get('string', '')))
+        label.set_use_underline(True)
+        self.widget.set_label_widget(label)
         self.widget.set_shadow_type(gtk.SHADOW_OUT)
 
         vbox = gtk.VBox()
@@ -342,6 +345,7 @@ class DictWidget(Widget):
         self.wid_text.props.width_chars = 13
         self.wid_text.connect('activate', self._sig_activate)
         hbox.pack_start(self.wid_text, expand=True, fill=True)
+        label.set_mnemonic_widget(self.wid_text)
 
         if int(self.attrs.get('completion', 1)):
             self.wid_completion = get_completion(search=False, create=False)
@@ -478,7 +482,8 @@ class DictWidget(Widget):
             text = _(':') + self.keys[key]['string']
         else:
             text = self.keys[key]['string'] + _(':')
-        label = gtk.Label(text)
+        label = gtk.Label(set_underline(text))
+        label.set_use_underline(True)
         label.set_alignment(1., .5)
         self.table.attach(label, 0, 1, n_rows - 1, n_rows,
             xoptions=gtk.FILL, yoptions=False, xpadding=2)

@@ -24,7 +24,7 @@ class MultiSelection(Widget, SelectionMixin):
         self.widget.get_accessible().set_name(attrs.get('string', ''))
 
         self.model = gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING)
-        self.tree = TreeViewControl()
+        self.tree = self.mnemonic_widget = TreeViewControl()
         self.tree.set_model(self.model)
         self.tree.set_search_column(1)
         self.tree.connect('focus-out-event', lambda *a: self._focus_out())

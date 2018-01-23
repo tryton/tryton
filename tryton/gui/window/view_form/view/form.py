@@ -9,6 +9,7 @@ from . import View
 from tryton.common.focus import (get_invisible_ancestor, find_focused_child,
     next_focus_widget, find_focusable_child, find_first_focus_widget)
 from tryton.common import Tooltips, node_attributes, ICONFACTORY
+from tryton.common.underline import set_underline
 from tryton.common.button import Button
 from tryton.config import CONFIG
 from .form_gtk.calendar import Date, Time, DateTime
@@ -213,8 +214,10 @@ class ViewForm(View):
                 mnemonics[name] = widget
             if node.tagName == 'field':
                 if name in mnemonics and widget.mnemonic_widget:
-                    mnemonics.pop(name).set_mnemonic_widget(
-                        widget.mnemonic_widget)
+                    label = mnemonics.pop(name)
+                    label.set_label(set_underline(label.get_label()))
+                    label.set_use_underline(True)
+                    label.set_mnemonic_widget(widget.mnemonic_widget)
         return container
 
     def _parse_image(self, node, container, attributes):
@@ -307,7 +310,7 @@ class ViewForm(View):
             for attr in ('states', 'string'):
                 if attr not in attributes and attr in field.attrs:
                     attributes[attr] = field.attrs[attr]
-        label = gtk.Label('_' + attributes['string'].replace('_', '__'))
+        label = gtk.Label(set_underline(attributes['string']))
         label.set_use_underline(True)
         tab_box.pack_start(label)
 

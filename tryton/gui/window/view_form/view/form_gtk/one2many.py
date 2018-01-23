@@ -13,6 +13,7 @@ from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.domain_parser import quote
 from tryton.common.widget_style import widget_class
+from tryton.common.underline import set_underline
 
 _ = gettext.gettext
 
@@ -36,7 +37,8 @@ class One2Many(Widget):
         self.title_box = hbox = gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_border_width(2)
 
-        self.title = gtk.Label(attrs.get('string', ''))
+        self.title = gtk.Label(set_underline(attrs.get('string', '')))
+        self.title.set_use_underline(True)
         self.title.set_alignment(0.0, 0.5)
         hbox.pack_start(self.title, expand=True, fill=True)
 
@@ -193,6 +195,9 @@ class One2Many(Widget):
 
         vbox.pack_start(self.screen.widget, expand=True, fill=True)
 
+        self.title.set_mnemonic_widget(
+            self.screen.current_view.mnemonic_widget)
+
         self.screen.widget.connect('key_press_event', self.on_keypress)
         if self.attrs.get('add_remove'):
             self.wid_text.connect('key_press_event', self.on_keypress)
@@ -237,6 +242,12 @@ class One2Many(Widget):
 
     def switch_view(self, widget):
         self.screen.switch_view()
+        mnemonic_widget = self.screen.current_view.mnemonic_widget
+        string = self.attrs.get('string', '')
+        if mnemonic_widget:
+            string = set_underline(string)
+        self.title.set_mnemonic_widget(mnemonic_widget)
+        self.title.set_label(string)
 
     @property
     def modified(self):

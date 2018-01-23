@@ -279,6 +279,7 @@ class ViewTree(View):
         else:
             self.treeview = TreeView(self)
             grid_lines = gtk.TREE_VIEW_GRID_LINES_VERTICAL
+        self.mnemonic_widget = self.treeview
 
         self.parse(xml)
 

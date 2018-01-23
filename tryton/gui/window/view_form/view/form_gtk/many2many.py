@@ -12,6 +12,7 @@ from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.domain_parser import quote
 from tryton.common.widget_style import widget_class
+from tryton.common.underline import set_underline
 
 _ = gettext.gettext
 
@@ -34,7 +35,8 @@ class Many2Many(Widget):
         hbox = gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_border_width(2)
 
-        self.title = gtk.Label(attrs.get('string', ''))
+        self.title = gtk.Label(set_underline(attrs.get('string', '')))
+        self.title.set_use_underline(True)
         self.title.set_alignment(0.0, 0.5)
         hbox.pack_start(self.title, expand=True, fill=True)
 
@@ -101,6 +103,9 @@ class Many2Many(Widget):
         self.screen.signal_connect(self, 'record-message', self._sig_label)
 
         vbox.pack_start(self.screen.widget, expand=True, fill=True)
+
+        self.title.set_mnemonic_widget(
+            self.screen.current_view.mnemonic_widget)
 
         self.screen.widget.connect('key_press_event', self.on_keypress)
         self.wid_text.connect('key_press_event', self.on_keypress)

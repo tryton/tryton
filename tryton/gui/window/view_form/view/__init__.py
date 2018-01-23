@@ -6,6 +6,7 @@ from tryton.common import node_attributes
 class View(object):
     view_type = None
     widget = None
+    mnemonic_widget = None
     view_id = None
     modified = None
     editable = None
