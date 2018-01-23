@@ -56,7 +56,17 @@ class VBox(StateMixin, gtk.VBox):
 
 
 class Image(StateMixin, gtk.Image):
-    pass
+
+    def state_set(self, record):
+        super(Image, self).state_set(record)
+        if not record:
+            return
+        name = self.attrs['name']
+        if name in record.group.fields:
+            field = record.group.fields[name]
+            name = field.get(record)
+        common.ICONFACTORY.register_icon(name)
+        self.set_from_stock(name, gtk.ICON_SIZE_DIALOG)
 
 
 class Frame(StateMixin, gtk.Frame):

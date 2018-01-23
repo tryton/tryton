@@ -103,7 +103,10 @@ class TrytonIconFactory(gtk.IconFactory):
             return
         if iconname not in self._name2id:
             self.load_icons(refresh=True)
-        icon_ref = (self._name2id[iconname], iconname)
+        try:
+            icon_ref = (self._name2id[iconname], iconname)
+        except KeyError:
+            return
         idx = self._tryton_icons.index(icon_ref)
         to_load = slice(max(0, idx - self.batchnum // 2),
             idx + self.batchnum // 2)

@@ -218,9 +218,7 @@ class ViewForm(View):
         return container
 
     def _parse_image(self, node, container, attributes):
-        ICONFACTORY.register_icon(attributes['name'])
         image = Image(attrs=attributes)
-        image.set_from_stock(attributes['name'], gtk.ICON_SIZE_DIALOG)
         self.state_widgets.append(image)
         container.add(image, attributes)
 
