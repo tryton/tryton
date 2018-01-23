@@ -29,10 +29,15 @@ def account_used(field_name):
             if not account:
                 account = self.get_account(field_name + '_used')
             if not account:
-                self.raise_user_error('missing_account', {
-                        'name': self.name,
-                        'id': self.id,
-                        })
+                # Template message does not have keywords
+                if self.__class__.__name__ == 'product.template':
+                    self.raise_user_error('missing_account', (
+                        self.name, self.id))
+                else:
+                    self.raise_user_error('missing_account', {
+                            'name': self.name,
+                            'id': self.id,
+                            })
             return account
         return wrapper
     return decorator
