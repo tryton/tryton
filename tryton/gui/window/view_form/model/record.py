@@ -131,7 +131,7 @@ class Record(SignalEvent):
                     for key in record.modified_fields:
                         value.pop(key, None)
                     record.set(value, signal=False)
-        return self.group.fields.get(name, False)
+        return self.group.fields[name]
 
     def __repr__(self):
         return '<Record %s@%s at %s>' % (self.id, self.model_name, id(self))
