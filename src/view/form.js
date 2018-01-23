@@ -833,7 +833,18 @@ function eval_pyson(value){
             this.img = jQuery('<img/>', {
                 'class': 'center-block'
             }).appendTo(this.el);
-            Sao.common.ICONFACTORY.register_icon(attributes.name)
+        },
+        set_state: function(record) {
+            Sao.View.Form.Image_._super.set_state.call(this, record);
+            if (!record) {
+                return;
+            }
+            var name = this.attributes.name;
+            if (name in record.model.fields) {
+                var field = record.model.fields[name];
+                name = field.get(record);
+            }
+            Sao.common.ICONFACTORY.register_icon(name)
                 .done(function(url) {
                     this.img.attr('src', url);
                 }.bind(this));
