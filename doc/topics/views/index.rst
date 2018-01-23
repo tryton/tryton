@@ -279,8 +279,8 @@ image
 
 Display an image.
 
-    * ``name``: the name of the image. It must be the name of a record of
-      `ir.ui.icon`.
+    * ``name``: the image name or the field name which contains the image name.
+      The image name must be the name of a record of `ir.ui.icon`.
 
     * ``yexpand``: see in common-attributes-yexpand_.
 

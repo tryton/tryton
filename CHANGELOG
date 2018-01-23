@@ -1,3 +1,4 @@
+* Allow field name on image tag
 * Remove unoconv and call soffice directly
 * Allow to include mixin to pool objects
 * Improve validation of PYSON domain
