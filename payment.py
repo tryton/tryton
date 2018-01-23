@@ -220,8 +220,11 @@ class Group:
 
     @property
     def sepa_payments(self):
+        pool = Pool()
+        Payment = pool.get('account.payment')
         keyfunc = self.sepa_group_payment_key
-        payments = sorted(self.payments, key=keyfunc)
+        # re-browse to align cache
+        payments = Payment.browse(sorted(self.payments, key=keyfunc))
         for key, grouped_payments in groupby(payments, key=keyfunc):
             yield dict(key), list(grouped_payments)
 
