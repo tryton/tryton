@@ -309,9 +309,7 @@ class FieldsTestCase(unittest.TestCase):
                 'integer': 'test',
                 })
 
-        # We should catch UserError but mysql does not raise an
-        # IntegrityError but an OperationalError
-        self.assertRaises(Exception, IntegerRequired.create, [{}])
+        self.assertRaises(UserError, IntegerRequired.create, [{}])
         transaction.rollback()
 
         integer5, = IntegerRequired.create([{

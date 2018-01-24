@@ -62,7 +62,7 @@ class ModelSQLTestCase(unittest.TestCase):
         timestamp = ModelsqlTimestamp.read([record.id],
             ['_timestamp'])[0]['_timestamp']
 
-        if backend.name() in ('sqlite', 'mysql'):
+        if backend.name() == 'sqlite':
             # timestamp precision of sqlite is the second
             time.sleep(1)
 

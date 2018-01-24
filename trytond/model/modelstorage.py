@@ -22,7 +22,6 @@ from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict, LRUDictTransaction, freeze
-from trytond import backend
 from trytond.rpc import RPC
 from .modelview import ModelView
 from .descriptors import dualmethod
@@ -1097,7 +1096,7 @@ class ModelStorage(Model):
                         if (value.quantize(Decimal(str(10.0 ** -digits[1])))
                                 != value):
                             raise_user_error(value)
-                    elif backend.name() != 'mysql':
+                    else:
                         if not (round(value, digits[1]) == float(value)):
                             raise_user_error(value)
                 # validate digits

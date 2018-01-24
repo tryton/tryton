@@ -33,34 +33,14 @@ Package Contents
 Database Backends
 -----------------
 
-Tryton is mainly developed for PostgreSQL (8.2 or later) but there are other 
-backends available. Here are some warnings about using other backends:
+Tryton is mainly developed for PostgreSQL (8.2 or later) but there are other
+backends available. Here are some warnings about using SQLite backend:
 
-  * MySQL
+  * SQLite can not create foreign keys.
 
-    * The lock implementation of MySQL requires that Tryton locks all tables.
+  * SQL constraints are validated by Tryton instead of database.
 
-    * There are problems with floating-point comparisons.
-      See: http://dev.mysql.com/doc/refman/5.5/en/problems-with-float.html
-
-    * Tryton uses a VARCHAR(255) for Char, Selection and Reference fields.
-
-    * MySQL can not create indexes containing text or blob fields.
-
-    * Timestamp has a precision of second which is used for optimistic lock.
-
-    * Tryton uses a DECIMAL(65, 30) for Decimal fields and DOUBLE(255, 30) for
-      Float fields.
-
-    * MySQL version should be 5.0 or later.
-
-  * SQLite
-
-    * SQLite can not create foreign keys.
-
-    * SQL constraints are validated by Tryton instead of database.
-
-    * Timestamp has a precision of second which is used for optimistic lock.
+  * Timestamp has a precision of second which is used for optimistic lock.
 
 Support
 -------
