@@ -296,12 +296,13 @@
             <field name="name">Résultat de l'exercice [bénéfice ou perte]</field>
             <field name="sequence" eval="70"/>
             <field name="parent" ref="capitaux_propres"/>
-            <field name="income_statement" eval="True"/>
+            <field name="income_statement" eval="False"/>
         </record>
         <record model="account.account.type.template" id="compte_resultat">
             <field name="name">Compte de résultat</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="resultat"/>
+            <field name="income_statement" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges">
             <field name="name">Charges</field>
