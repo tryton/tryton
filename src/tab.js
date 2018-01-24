@@ -463,10 +463,6 @@
                 ['print', 'glyphicon-print',
                      Sao.i18n.gettext('Print report')]
                 ].forEach(function(menu_action) {
-                    var disabled = false;
-                    if (menu_action[0] != 'action') {
-                        disabled = !toolbars[menu_action[0]].length;
-                    }
                     var button = jQuery('<div/>', {
                         'class': 'btn-group',
                         'role': 'group'
@@ -479,7 +475,6 @@
                         'aria-haspopup': true,
                         'title': menu_action[2],
                         'id': menu_action[0],
-                        'disabled': disabled
                     })
                         .append(jQuery('<span/>', {
                             'class': 'glyphicon ' + menu_action[1],
@@ -507,29 +502,32 @@
                                     'hidden-xs');
                         });
                     var menu = button.find('ul[role*="menu"]');
-                    if (menu_action[0] == 'action') {
-                        button.click(function() {
-                            menu.find('.action_button').remove();
-                            var buttons = screen.get_buttons();
-                            buttons.forEach(function(button) {
-                                var item = jQuery('<li/>', {
-                                    'role': 'presentation',
-                                    'class': 'action_button'
-                                })
-                                .append(
-                                    jQuery('<a/>', {
-                                        'role': 'menuitem',
-                                        'href': '#',
-                                        'tabindex': -1
-                                    }).append(
-                                        button.attributes.string || ''))
-                                .click(function() {
-                                    screen.button(button.attributes);
-                                })
-                            .appendTo(menu);
-                            });
+                    button.click(function() {
+                        menu.find('.' + menu_action[0] + '_button').remove();
+                        var buttons = screen.get_buttons();
+                        buttons.forEach(function(button) {
+                            var button_kw = (button.attributes.keyword ||
+                                'action');
+                            if (button_kw != menu_action[0]) {
+                                return;
+                            }
+                            var item = jQuery('<li/>', {
+                                'role': 'presentation',
+                                'class': menu_action[0] + '_button'
+                            })
+                            .append(
+                                jQuery('<a/>', {
+                                    'role': 'menuitem',
+                                    'href': '#',
+                                    'tabindex': -1
+                                }).append(
+                                    button.attributes.string || ''))
+                            .click(function() {
+                                screen.button(button.attributes);
+                            })
+                        .appendTo(menu);
                         });
-                    }
+                    });
 
                     toolbars[menu_action[0]].forEach(function(action) {
                         var item = jQuery('<li/>', {
