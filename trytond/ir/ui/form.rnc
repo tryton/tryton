@@ -144,6 +144,9 @@ attlist.button &= attribute icon { text }?
 attlist.button &= attribute confirm { text }?
 attlist.button &= attribute name { text }
 attlist.button &= attribute states { text }?
+attlist.button &=
+    [ a:defaultValue="action" ]
+    attribute keyword { "relate" | "print" | "action" }?
 attlist.button &= [ a:defaultValue = "0" ] attribute rule { "0" | "1" }?
 attlist.button &= attribute change { text }?
 attlist.button &= attribute type { "class" | "instance" }?

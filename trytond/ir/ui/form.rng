@@ -564,6 +564,17 @@
   </define>
   <define name="attlist.button" combine="interleave">
     <optional>
+      <attribute name="keyword" a:defaultValue="action">
+        <choice>
+          <value>relate</value>
+          <value>print</value>
+          <value>action</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.button" combine="interleave">
+    <optional>
       <attribute name="rule" a:defaultValue="0">
         <choice>
           <value>0</value>

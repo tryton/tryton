@@ -365,6 +365,10 @@ Display a button.
 
     * ``help``: see in common-attributes-help_.
 
+    * ``keyword``: specify where will the button be displayed in the client
+      toolbar. The valid values are the keywords starting with `form_` from
+      topics-actions_ without the `form_` part.
+
 notebook
 ^^^^^^^^
 
