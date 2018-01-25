@@ -17,7 +17,8 @@ def process_purchase(func):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
         with Transaction().set_context(_check_access=False):
-            purchases = [p for i in cls.browse(invoices) for p in i.purchases]
+            purchases = Purchase.browse(
+                set(p for i in cls.browse(invoices) for p in i.purchases))
         func(cls, invoices)
         with Transaction().set_context(_check_access=False):
             Purchase.process(purchases)
