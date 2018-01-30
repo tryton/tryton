@@ -529,7 +529,6 @@ class Work:
                     'unit_price': self.list_price,
                     'origin': invoiced_progress,
                     'description': self.name,
-                    'description': self.name,
                     }]
         return []
 
