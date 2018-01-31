@@ -21,17 +21,25 @@ __all__ = ['Currency', 'Rate']
 class Currency(ModelSQL, ModelView):
     'Currency'
     __name__ = 'currency.currency'
-    name = fields.Char('Name', required=True, translate=True)
-    symbol = fields.Char('Symbol', size=10, required=True)
-    code = fields.Char('Code', size=3, required=True)
-    numeric_code = fields.Char('Numeric Code', size=3)
+    name = fields.Char('Name', required=True, translate=True,
+        help="The main identifier of the currency.")
+    symbol = fields.Char('Symbol', size=10, required=True,
+        help="The symbol used for currency formating.")
+    code = fields.Char('Code', size=3, required=True,
+        help="The 3 chars ISO currency code.")
+    numeric_code = fields.Char('Numeric Code', size=3,
+        help="The 3 digits ISO currency code.")
     rate = fields.Function(fields.Numeric('Current rate', digits=(12, 6)),
         'get_rate')
-    rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates')
+    rates = fields.One2Many('currency.currency.rate', 'currency', 'Rates',
+        help="Add floating exchange rates for the currency.")
     rounding = fields.Numeric('Rounding factor', required=True,
-        digits=(12, Eval('digits', 6)), depends=['digits'])
-    digits = fields.Integer('Display Digits', required=True)
-    active = fields.Boolean('Active')
+        digits=(12, Eval('digits', 6)), depends=['digits'],
+        help="The minimum amount which can be represented in this currency.")
+    digits = fields.Integer("Digits", required=True,
+        help="The number of digits to display after the decimal separator.")
+    active = fields.Boolean('Active',
+        help="Uncheck to exclude the currency from future use.")
 
     @classmethod
     def __setup__(cls):
@@ -218,10 +226,13 @@ class Currency(ModelSQL, ModelView):
 class Rate(ModelSQL, ModelView):
     'Rate'
     __name__ = 'currency.currency.rate'
-    date = fields.Date('Date', required=True, select=True)
-    rate = fields.Numeric('Rate', digits=(12, 6), required=1)
+    date = fields.Date('Date', required=True, select=True,
+        help="From when the rate applies.")
+    rate = fields.Numeric('Rate', digits=(12, 6), required=1,
+        help="The floating exchange rate used to convert the currency.")
     currency = fields.Many2One('currency.currency', 'Currency',
-            ondelete='CASCADE',)
+            ondelete='CASCADE',
+        help="The currency on which the rate applies.")
 
     @classmethod
     def __setup__(cls):
