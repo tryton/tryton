@@ -19,12 +19,14 @@ class Date(Field):
             year, month, day = map(int, value.split("-", 2))
             return datetime.date(year, month, day)
 
-        assert(isinstance(value, datetime.date))
-        # Allow datetime with min time for XML-RPC
-        # datetime must be tested separately because datetime is a
-        # subclass of date
-        assert(not isinstance(value, datetime.datetime)
-            or value.time() == datetime.time())
+        if (not isinstance(value, datetime.date)
+                # Allow datetime with min time for XML-RPC
+                # datetime must be tested separately because datetime is a
+                # subclass of date
+                or (isinstance(value, datetime.datetime)
+                    and value.time() != datetime.time())):
+            raise ValueError("invalid type '%s' for %s"
+                % (type(value), type(self)))
         return value
 
 
@@ -58,7 +60,9 @@ class DateTime(Field):
             year, month, day = map(int, datepart.split("-", 2))
             hours, minutes, seconds = map(int, timepart.split(":"))
             return datetime.datetime(year, month, day, hours, minutes, seconds)
-        assert(isinstance(value, datetime.datetime))
+        if not isinstance(value, datetime.datetime):
+            raise ValueError("invalid type '%s' for %s"
+                % (type(value), type(self)))
         return value.replace(microsecond=0)
 
 
@@ -83,7 +87,9 @@ class Timestamp(Field):
                 microseconds = 0
             return datetime.datetime(year, month, day, hours, minutes, seconds,
                     microseconds)
-        assert(isinstance(value, datetime.datetime))
+        if not isinstance(value, datetime.datetime):
+            raise ValueError("invalid type '%s' for %s"
+                % (type(value), type(self)))
         return value
 
 
@@ -100,7 +106,9 @@ class Time(DateTime):
         if isinstance(value, basestring):
             hours, minutes, seconds = map(int, value.split(":"))
             return datetime.time(hours, minutes, seconds)
-        assert(isinstance(value, datetime.time))
+        if not isinstance(value, datetime.time):
+            raise ValueError("invalid type '%s' for %s"
+                % (type(value), type(self)))
         return value.replace(microsecond=0)
 
 
@@ -128,7 +136,9 @@ class TimeDelta(Field):
     def sql_format(self, value):
         if value is None:
             return None
-        assert(isinstance(value, datetime.timedelta))
+        if not isinstance(value, datetime.timedelta):
+            raise ValueError("invalid type '%s' for %s"
+                % (type(value), type(self)))
         return super(TimeDelta, self).sql_format(value)
 
     @classmethod

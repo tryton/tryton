@@ -2,22 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import (ModelSingleton, ModelSQL, UnionMixin, fields,
     sequence_ordered)
-from trytond.pyson import Eval
-from trytond.transaction import Transaction
-
-__all__ = [
-    'Model',
-    'ModelParent', 'ModelChild', 'ModelChildChild',
-    'Singleton', 'URLObject',
-    'ModelStorage', 'ModelStorageRequired', 'ModelStorageContext',
-    'ModelStoragePYSONDomain',
-    'ModelSQLRequiredField', 'ModelSQLTimestamp', 'ModelSQLFieldSet',
-    'Model4Union1', 'Model4Union2', 'Model4Union3', 'Model4Union4',
-    'Union', 'UnionUnion',
-    'Model4UnionTree1', 'Model4UnionTree2', 'UnionTree',
-    'SequenceOrderedModel',
-    'NullOrder',
-    ]
+from trytond.pool import Pool
 
 
 class Model(ModelSQL):
@@ -60,67 +45,6 @@ class URLObject(ModelSQL):
     'URLObject'
     __name__ = 'test.urlobject'
     name = fields.Char('Name')
-
-
-class ModelStorage(ModelSQL):
-    'Model stored'
-    __name__ = 'test.modelstorage'
-    name = fields.Char('Name')
-
-
-class ModelStorageRequired(ModelSQL):
-    'Model stored'
-    __name__ = 'test.modelstorage.required'
-    name = fields.Char('Name', required=True)
-
-
-class ModelStorageContext(ModelSQL):
-    'Model Storage to test Context'
-    __name__ = 'test.modelstorage.context'
-    context = fields.Function(fields.Binary('Context'), 'get_context')
-
-    def get_context(self, name):
-        return Transaction().context
-
-
-class ModelStoragePYSONDomain(ModelSQL):
-    "Model stored with PYSON domain"
-    __name__ = 'test.modelstorage.pyson_domain'
-    constraint = fields.Char("Constraint")
-    value = fields.Char(
-        "Value",
-        domain=[
-            ('value', '=', Eval('constraint')),
-            ],
-        depends=['constraint'])
-
-
-class ModelSQLRequiredField(ModelSQL):
-    'model with a required field'
-    __name__ = 'test.modelsql'
-
-    integer = fields.Integer(string="integer", required=True)
-    desc = fields.Char(string="desc", required=True)
-
-
-class ModelSQLTimestamp(ModelSQL):
-    'Model to test timestamp'
-    __name__ = 'test.modelsql.timestamp'
-
-
-class ModelSQLFieldSet(ModelSQL):
-    'Model to test field set'
-    __name__ = 'test.modelsql.field_set'
-
-    field = fields.Function(fields.Integer('Field'),
-        'get_field', setter='set_field')
-
-    def get_field(self, name=None):
-        return
-
-    @classmethod
-    def set_field(cls, records, name, value):
-        pass
 
 
 class Model4Union1(ModelSQL):
@@ -199,7 +123,22 @@ class SequenceOrderedModel(sequence_ordered(), ModelSQL):
     __name__ = 'test.order.sequence'
 
 
-class NullOrder(ModelSQL):
-    "Null Order"
-    __name__ = 'test.null_order'
-    integer = fields.Integer('Integer')
+def register(module):
+    Pool.register(
+        Model,
+        ModelParent,
+        ModelChild,
+        ModelChildChild,
+        Singleton,
+        URLObject,
+        Model4Union1,
+        Model4Union2,
+        Model4Union3,
+        Model4Union4,
+        Union,
+        UnionUnion,
+        Model4UnionTree1,
+        Model4UnionTree2,
+        UnionTree,
+        SequenceOrderedModel,
+        module=module, type_='model')

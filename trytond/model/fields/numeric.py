@@ -26,7 +26,7 @@ class Numeric(Float):
             return None
         if isinstance(value, (int, long)):
             value = Decimal(str(value))
-        assert isinstance(value, Decimal)
+        value = Decimal(value)
         return value
 
     def sql_column(self, table):

@@ -9,7 +9,6 @@ except ImportError:
 
 from ..pool import Pool
 from .test import *
-from .model import *
 from .modelview import *
 from .mptt import *
 from .import_data import *
@@ -21,128 +20,33 @@ from .workflow import *
 from .copy_ import *
 from history import *
 from .field_context import *
+from . import model
+from . import modelstorage
+from . import modelsql
+from . import field_boolean
+from . import field_integer
+from . import field_float
+from . import field_numeric
+from . import field_char
+from . import field_text
+from . import field_date
+from . import field_datetime
+from . import field_time
+from . import field_timedelta
+from . import field_selection
+from . import field_dict
+from . import field_binary
+from . import field_many2one
+from . import field_reference
+from . import field_one2many
+from . import field_many2many
+from . import field_one2one
 from . import multivalue
 from . import mixin
 
 
 def register():
     Pool.register(
-        Boolean,
-        BooleanDefault,
-        Integer,
-        IntegerDefault,
-        IntegerRequired,
-        IntegerDomain,
-        Float,
-        FloatDefault,
-        FloatRequired,
-        FloatDigits,
-        Numeric,
-        NumericDefault,
-        NumericRequired,
-        NumericDigits,
-        Char,
-        CharDefault,
-        CharRequired,
-        CharSize,
-        CharTranslate,
-        Text,
-        TextDefault,
-        TextRequired,
-        TextSize,
-        TextTranslate,
-        Date,
-        DateDefault,
-        DateRequired,
-        DateTime,
-        DateTimeDefault,
-        DateTimeRequired,
-        DateTimeFormat,
-        Time,
-        TimeDefault,
-        TimeRequired,
-        TimeFormat,
-        TimeDelta,
-        TimeDeltaDefault,
-        TimeDeltaRequired,
-        One2One,
-        One2OneTarget,
-        One2OneRelation,
-        One2OneRequired,
-        One2OneRequiredRelation,
-        One2OneDomain,
-        One2OneDomainRelation,
-        One2Many,
-        One2ManyTarget,
-        One2ManyRequired,
-        One2ManyRequiredTarget,
-        One2ManyReference,
-        One2ManyReferenceTarget,
-        One2ManySize,
-        One2ManySizeTarget,
-        One2ManySizePYSON,
-        One2ManySizePYSONTarget,
-        One2ManyFilter,
-        One2ManyFilterTarget,
-        One2ManyFilterDomain,
-        One2ManyFilterDomainTarget,
-        Many2Many,
-        Many2ManyTarget,
-        Many2ManyRelation,
-        Many2ManyRequired,
-        Many2ManyRequiredTarget,
-        Many2ManyRequiredRelation,
-        Many2ManyReference,
-        Many2ManyReferenceTarget,
-        Many2ManyReferenceRelation,
-        Many2ManySize,
-        Many2ManySizeTarget,
-        Many2ManySizeRelation,
-        Many2ManyTree,
-        Many2ManyTreeRelation,
-        Many2ManyFilter,
-        Many2ManyFilterTarget,
-        Many2ManyFilterRelation,
-        Many2ManyFilterDomain,
-        Many2ManyFilterDomainTarget,
-        Many2ManyFilterDomainRelation,
-        Reference,
-        ReferenceTarget,
-        ReferenceRequired,
-        Selection,
-        SelectionRequired,
-        DictSchema,
-        Dict,
-        DictDefault,
-        DictRequired,
-        DictJSONB,
-        Binary,
-        BinaryDefault,
-        BinaryRequired,
-        BinaryFileStorage,
-        Model,
-        ModelParent,
-        ModelChild,
-        ModelChildChild,
-        Singleton,
-        URLObject,
-        ModelStorage,
-        ModelStorageRequired,
-        ModelStorageContext,
-        ModelStoragePYSONDomain,
-        ModelSQLRequiredField,
-        ModelSQLTimestamp,
-        ModelSQLFieldSet,
-        Model4Union1,
-        Model4Union2,
-        Model4Union3,
-        Model4Union4,
-        Union,
-        UnionUnion,
-        Model4UnionTree1,
-        Model4UnionTree2,
-        UnionTree,
-        SequenceOrderedModel,
         ModelViewChangedValues,
         ModelViewChangedValuesTarget,
         ModelViewButton,
@@ -189,24 +93,36 @@ def register():
         CopyMany2ManyReference,
         CopyMany2ManyReferenceTarget,
         CopyMany2ManyReferenceRelation,
-        Many2OneTarget,
-        Many2OneDomainValidation,
-        Many2OneOrderBy,
-        Many2OneSearch,
-        Many2OneTree,
-        Many2OneMPTT,
-        Many2OneNoForeignKey,
-        Many2OneTargetStorage,
         TestHistory,
         TestHistoryLine,
         FieldContextChild,
         FieldContextParent,
-        NullOrder,
         module='tests', type_='model')
     Pool.register(
         TestWizard,
         module='tests', type_='wizard')
 
+    model.register('tests')
+    modelstorage.register('tests')
+    modelsql.register('tests')
+    field_boolean.register('tests')
+    field_integer.register('tests')
+    field_float.register('tests')
+    field_numeric.register('tests')
+    field_char.register('tests')
+    field_text.register('tests')
+    field_date.register('tests')
+    field_datetime.register('tests')
+    field_time.register('tests')
+    field_timedelta.register('tests')
+    field_selection.register('tests')
+    field_dict.register('tests')
+    field_binary.register('tests')
+    field_many2one.register('tests')
+    field_reference.register('tests')
+    field_one2many.register('tests')
+    field_many2many.register('tests')
+    field_one2one.register('tests')
     multivalue.register('tests')
     mixin.register('tests')
 
