@@ -96,7 +96,7 @@ class Package:
     def search_rec_name(cls, name, clause):
         domain = super(Package, cls).search_rec_name(name, clause)
         return ['OR', domain,
-            ('shipping_reference',) + tuple(clause[:1]),
+            ('shipping_reference',) + tuple(clause[1:]),
             ]
 
     def get_weight(self, name):
@@ -165,7 +165,7 @@ class ShipmentOut:
     def search_rec_name(cls, name, clause):
         domain = super(ShipmentOut, cls).search_rec_name(name, clause)
         return ['OR', domain,
-            ('reference',) + tuple(clause[:1]),
+            ('reference',) + tuple(clause[1:]),
             ]
 
     @classmethod
