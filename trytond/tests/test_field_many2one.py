@@ -201,11 +201,11 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'child_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1,
-                self.first1, self.first2,
-                self.second1, self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1,
+                    self.first1, self.first2,
+                    self.second1, self.second2, self.second3, self.second4]))
 
     def test_search_tree_child_of_root1(self):
         "Test search many2one tree child of root1"
@@ -224,9 +224,9 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'not child_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root2, self.first3, self.first4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2, self.first3, self.first4]))
 
     def test_search_tree_not_child_of_root1(self):
         "Test search many2one tree not child of root1"
@@ -245,7 +245,7 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'child_of', [self.second1.id]),
                 ])
 
-        self.assertItemsEqual(result, [self.second1])
+        self.assertListEqual(result, [self.second1])
 
     def test_search_tree_child_of_second1(self):
         "Test search many2one tree child of second1"
@@ -264,11 +264,11 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'not child_of', [self.second1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1, self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second2, self.second3, self.second4]))
 
     def test_search_tree_not_child_of_second1(self):
         "Test search many2one tree not child of second1"
@@ -287,7 +287,7 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'child_of', []),
                 ])
 
-        self.assertItemsEqual(result, [])
+        self.assertListEqual(result, [])
 
     def test_search_tree_child_of_empty(self):
         "Test search many2one tree child of empty"
@@ -306,11 +306,11 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'not child_of', []),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1, self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second1, self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
 
     def test_search_tree_not_child_of_empty(self):
         "Test search many2one tree not child of empty"
@@ -329,7 +329,7 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'parent_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(result, [self.root1])
+        self.assertListEqual(result, [self.root1])
 
     def test_search_tree_parent_of_root1(self):
         "Test search many2one tree parent of root1"
@@ -348,11 +348,11 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'not parent_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second1, self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
 
     def test_search_tree_not_parent_of_root1(self):
         "Test search many2one tree not parent of root1"
@@ -371,7 +371,9 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'parent_of', [self.second4.id]),
                 ])
 
-        self.assertItemsEqual(result, [self.root1, self.first2, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.first2, self.second4]))
 
     def test_search_tree_parent_of_second4(self):
         "Test search many2one tree parent of second4"
@@ -390,11 +392,11 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'not parent_of', [self.second4.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root2,
-                self.first1, self.first3, self.first4,
-                self.second1, self.second2, self.second3])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2,
+                    self.first1, self.first3, self.first4,
+                    self.second1, self.second2, self.second3]))
 
     def test_search_tree_not_parent_of_second4(self):
         "Test search many2one tree not parent of second4"
@@ -413,7 +415,7 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'parent_of', []),
                 ])
 
-        self.assertItemsEqual(result, [])
+        self.assertListEqual(result, [])
 
     def test_search_tree_parent_of_empty(self):
         "Test search many2one tree parent of empty"
@@ -432,11 +434,11 @@ class FieldMany2OneTestCase(unittest.TestCase):
                 ('many2one', 'not parent_of', []),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1, self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second1, self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
 
     def test_search_tree_not_parent_of_empty(self):
         "Test search many2one tree not parent of empty"

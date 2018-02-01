@@ -245,7 +245,7 @@ class CommonTestCaseMixin:
                     ],
                 })
 
-        self.assertItemsEqual(one2many.targets, [target])
+        self.assertTupleEqual(one2many.targets, (target,))
 
     @with_transaction()
     def test_write_remove(self):
@@ -264,7 +264,7 @@ class CommonTestCaseMixin:
                 })
         targets = Target.search([('id', '=', target.id)])
 
-        self.assertItemsEqual(one2many.targets, [])
+        self.assertTupleEqual(one2many.targets, ())
         self.assertListEqual(targets, [target])
 
     @with_transaction()
@@ -284,7 +284,7 @@ class CommonTestCaseMixin:
                 })
         target2, = Target.search([('id', '!=', target1.id)])
 
-        self.assertItemsEqual(one2many.targets, [target1, target2])
+        self.assertTupleEqual(one2many.targets, (target1, target2))
 
     @with_transaction()
     def test_write_delete(self):
@@ -304,7 +304,7 @@ class CommonTestCaseMixin:
                 })
         targets = Target.search([])
 
-        self.assertItemsEqual(one2many.targets, [target2])
+        self.assertTupleEqual(one2many.targets, (target2,))
         self.assertListEqual(targets, [target2])
 
 

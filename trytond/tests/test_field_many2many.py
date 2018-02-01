@@ -245,7 +245,7 @@ class CommonTestCaseMixin:
                     ],
                 })
 
-        self.assertItemsEqual(many2many.targets, [target])
+        self.assertTupleEqual(many2many.targets, (target,))
 
     @with_transaction()
     def test_write_remove(self):
@@ -264,7 +264,7 @@ class CommonTestCaseMixin:
                 })
         targets = Target.search([('id', '=', target.id)])
 
-        self.assertItemsEqual(many2many.targets, [])
+        self.assertTupleEqual(many2many.targets, ())
         self.assertListEqual(targets, [target])
 
     @with_transaction()
@@ -284,7 +284,8 @@ class CommonTestCaseMixin:
                 })
         target2, = Target.search([('id', '!=', target1.id)])
 
-        self.assertItemsEqual(many2many.targets, [target1, target2])
+        self.assertListEqual(
+            sorted(many2many.targets), sorted((target1, target2)))
 
     @with_transaction()
     def test_write_delete(self):
@@ -304,7 +305,7 @@ class CommonTestCaseMixin:
                 })
         targets = Target.search([])
 
-        self.assertItemsEqual(many2many.targets, [target2])
+        self.assertTupleEqual(many2many.targets, (target2,))
         self.assertListEqual(targets, [target2])
 
 
@@ -459,9 +460,11 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'child_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1, self.first1, self.first2, self.second1, self.second2])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1,
+                    self.first1, self.first2,
+                    self.second1, self.second2]))
 
     @with_transaction()
     def test_search_not_child_of_root1(self):
@@ -473,9 +476,11 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'not child_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root2, self.first3, self.first4, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2,
+                    self.first3, self.first4,
+                    self.second3, self.second4]))
 
     @with_transaction()
     def test_search_child_of_second1(self):
@@ -487,7 +492,7 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'child_of', [self.second1.id]),
                 ])
 
-        self.assertItemsEqual(result, [self.second1])
+        self.assertListEqual(result, [self.second1])
 
     @with_transaction()
     def test_search_not_child_of_second1(self):
@@ -499,11 +504,11 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'not child_of', [self.second1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1, self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second2, self.second3, self.second4]))
 
     @with_transaction()
     def test_search_child_of_empty(self):
@@ -515,7 +520,7 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'child_of', []),
                 ])
 
-        self.assertItemsEqual(result, [])
+        self.assertListEqual(result, [])
 
     @with_transaction()
     def test_search_not_child_of_empty(self):
@@ -527,11 +532,11 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'not child_of', []),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1, self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second1, self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
 
     @with_transaction()
     def test_search_parent_of_root1(self):
@@ -543,7 +548,7 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'parent_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(result, [self.root1])
+        self.assertListEqual(result, [self.root1])
 
     @with_transaction()
     def test_search_not_parent_of_root1(self):
@@ -555,11 +560,11 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'not parent_of', [self.root1.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second1, self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
 
     @with_transaction()
     def test_search_parent_of_second4(self):
@@ -571,9 +576,9 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'parent_of', [self.second4.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root2, self.first3, self.first4, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root2, self.first3, self.first4, self.second4]))
 
     @with_transaction()
     def test_search_not_parent_of_second4(self):
@@ -585,11 +590,11 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'not parent_of', [self.second4.id]),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1,
-                self.first1, self.first2,
-                self.second1, self.second2, self.second3])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1,
+                    self.first1, self.first2,
+                    self.second1, self.second2, self.second3]))
 
     @with_transaction()
     def test_search_parent_of_empty(self):
@@ -601,7 +606,7 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'parent_of', []),
                 ])
 
-        self.assertItemsEqual(result, [])
+        self.assertListEqual(result, [])
 
     @with_transaction()
     def test_search_not_parent_of_empty(self):
@@ -613,11 +618,11 @@ class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                 ('parents', 'not parent_of', []),
                 ])
 
-        self.assertItemsEqual(
-            result,
-            [self.root1, self.root2,
-                self.first1, self.first2, self.first3, self.first4,
-                self.second1, self.second2, self.second3, self.second4])
+        self.assertListEqual(
+            sorted(result),
+            sorted([self.root1, self.root2,
+                    self.first1, self.first2, self.first3, self.first4,
+                    self.second1, self.second2, self.second3, self.second4]))
 
 
 class FieldMany2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):
