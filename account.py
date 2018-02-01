@@ -774,7 +774,7 @@ class Account(ModelSQL, ModelView):
         fiscalyear = None
         if youngest_fiscalyear:
             fiscalyears = FiscalYear.search([
-                    ('end_date', '<=', youngest_fiscalyear.start_date),
+                    ('end_date', '<', youngest_fiscalyear.start_date),
                     ('company', '=', youngest_fiscalyear.company),
                     ], order=[('end_date', 'DESC')], limit=1)
             if fiscalyears:
