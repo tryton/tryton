@@ -8,7 +8,6 @@ except ImportError:
 
 
 from ..pool import Pool
-from .test import *
 from .modelview import *
 from .mptt import *
 from .import_data import *
