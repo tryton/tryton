@@ -118,8 +118,8 @@ class ModelSQLTestCase(unittest.TestCase):
     def test_integrity_error_with_created_record(self):
         "Test integrity error with created record"
         pool = Pool()
-        ParentModel = pool.get('test.one2many')
-        TargetModel = pool.get('test.one2many.target')
+        ParentModel = pool.get('test.modelsql.one2many')
+        TargetModel = pool.get('test.modelsql.one2many.target')
 
         # Create target record without required name
         # to ensure create_records is filled to prevent raising
@@ -137,7 +137,7 @@ class ModelSQLTestCase(unittest.TestCase):
     def test_null_ordering(self):
         'Test NULL ordering'
         pool = Pool()
-        NullOrder = pool.get('test.null_order')
+        NullOrder = pool.get('test.modelsql.null_order')
 
         NullOrder.create([{
                     'integer': 1,
