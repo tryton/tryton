@@ -230,7 +230,7 @@ class DateTimeField(Field):
 
     def date_format(self, record):
         context = self.get_context(record)
-        return context.get('date_format', '%x')
+        return common.date_format(context.get('date_format'))
 
     def time_format(self, record):
         return record.expr_eval(self.attrs['format'])
@@ -249,7 +249,7 @@ class DateField(Field):
 
     def date_format(self, record):
         context = self.get_context(record)
-        return context.get('date_format', '%x')
+        return common.date_format(context.get('date_format'))
 
 
 class TimeField(Field):
@@ -956,7 +956,7 @@ class DictField(Field):
 
     def date_format(self, record):
         context = self.get_context(record)
-        return context.get('date_format', '%x')
+        return common.date_format(context.get('date_format'))
 
     def time_format(self, record):
         return '%X'

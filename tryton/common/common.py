@@ -1430,3 +1430,7 @@ def ellipsize(string, length):
         return string
     ellipsis = _('...')
     return string[:length - len(ellipsis)] + ellipsis
+
+
+def date_format(format_):
+    return format_ or rpc.CONTEXT.get('locale', {}).get('date', '%x')

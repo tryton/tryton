@@ -556,7 +556,8 @@ class ScreenContainer(object):
                     entry = Selection(selections)
                     yoptions = gtk.FILL | gtk.EXPAND
                 elif field['type'] in ('date', 'datetime', 'time'):
-                    date_format = self.screen.context.get('date_format', '%x')
+                    date_format = common.date_format(
+                        self.screen.context.get('date_format'))
                     if field['type'] == 'date':
                         entry = Dates(date_format)
                     elif field['type'] in ('datetime', 'time'):
