@@ -194,7 +194,8 @@
             var type = this.xfield.type;
             if ((type == 'date') || (type == 'datetime')) {
                 var format_func, date_format, time_format;
-                date_format = this.view.screen.context.date_format || '%x';
+                date_format = Sao.common.date_format(
+                    this.view.screen.context.date_format);
                 time_format = '%X';
                 if (type == 'datetime') {
                     format_func = function(dt) {
@@ -290,7 +291,8 @@
             var format_func;
             var type = this.xfield.type;
             if ((type == 'date') || (type == 'datetime')) {
-                var date_format = this.view.screen.context.date_format || '%x';
+                var date_format = Sao.common.date_format(
+                    this.view.screen.context.date_format);
                 var datetime_format = date_format + ' %X';
                 if (type == 'datetime') {
                     format_func = function(dt) {
@@ -319,7 +321,8 @@
         _add_id: function(key, id) {
             var type = this.xfield.type;
             if ((type == 'date') || (type == 'datetime')) {
-                var date_format = this.view.screen.context.date_format || '%x';
+                var date_format = Sao.common.date_format(
+                    this.view.screen.context.date_format);
                 var datetime_format = date_format + ' %X';
                 if (type == 'datetime') {
                     key = Sao.common.format_datetime(datetime_format, key);

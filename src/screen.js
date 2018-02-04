@@ -460,7 +460,8 @@
                         case 'datetime':
                         case 'time':
                             var format;
-                            var date_format = Sao.common.date_format();
+                            var date_format = Sao.common.date_format(
+                                this.screen.context.date_format);
                             if (field.type == 'date') {
                                 format = date_format;
                             } else {
