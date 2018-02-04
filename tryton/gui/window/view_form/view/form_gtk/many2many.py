@@ -220,6 +220,7 @@ class Many2Many(Widget):
         self._readonly = value
         self._set_button_sensitive()
         self.wid_text.set_sensitive(not value)
+        self.wid_text.set_editable(not value)
         self._set_label_state()
 
     def _required_set(self, value):
