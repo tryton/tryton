@@ -445,6 +445,7 @@ class DictWidget(Widget):
         for widget in self.fields.values():
             widget.set_readonly(readonly)
         self.wid_text.set_sensitive(not readonly)
+        self.wid_text.set_editable(not readonly)
 
     def _set_button_sensitive(self):
         self.but_add.set_sensitive(bool(
