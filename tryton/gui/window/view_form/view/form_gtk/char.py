@@ -28,6 +28,10 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             focus_entry = self.entry.get_child()
             self.set_popdown([], self.entry)
             self.entry.connect('changed', self.changed)
+            self.entry.connect('move-active', self._move_active)
+            self.entry.connect(
+                'scroll-event',
+                lambda c, e: c.emit_stop_by_name('scroll-event'))
         else:
             self.entry = gtk.Entry()
             focus_entry = self.entry
@@ -134,6 +138,10 @@ class Char(Widget, TranslateMixin, PopdownMixin):
                 child.set_text(value)
                 reset_position(child)
             self.entry.handler_unblock_by_func(self.changed)
+
+    def _move_active(self, combobox, scroll_type):
+        if not combobox.get_child().get_editable():
+            combobox.emit_stop_by_name('move-active')
 
     def _readonly_set(self, value):
         sensitivity = {True: gtk.SENSITIVITY_OFF, False: gtk.SENSITIVITY_AUTO}
