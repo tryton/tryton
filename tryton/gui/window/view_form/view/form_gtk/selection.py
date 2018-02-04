@@ -27,7 +27,8 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         child.connect('focus-out-event', lambda *a: self._focus_out())
         self.entry.connect('changed', self.changed)
         self.entry.connect('move-active', self._move_active)
-        self.entry.connect('scroll-event', self._scroll_event)
+        self.entry.connect(
+            'scroll-event', lambda c, e: c.emit_stop_by_name('scroll-event'))
         self.widget.pack_start(self.entry)
         self.widget.set_focus_chain([child])
 
@@ -46,10 +47,6 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
     def _move_active(self, combobox, scroll_type):
         if not combobox.get_child().get_editable():
             combobox.emit_stop_by_name('move-active')
-
-    def _scroll_event(self, combobox, event):
-        if not combobox.get_child().get_editable():
-            combobox.emit_stop_by_name('scroll-event')
 
     def _readonly_set(self, value):
         super(Selection, self)._readonly_set(value)
