@@ -302,6 +302,7 @@ class One2Many(Widget):
                     and access['write']
                     and access['read']))
             self.wid_text.set_sensitive(self.but_add.get_sensitive())
+            self.wid_text.set_editable(self.but_add.get_sensitive())
 
         # New button must be added to focus chain to allow keyboard only
         # creation when there is no existing record on form view.
