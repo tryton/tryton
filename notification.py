@@ -176,16 +176,15 @@ class Email(ModelSQL, ModelView):
         msg['From'] = from_
         msg['To'] = ', '.join(to)
         msg['Cc'] = ', '.join(cc)
-        msg['Bcc'] = ', '.join(bcc)
         msg['Subject'] = Header(title, 'utf-8')
         msg['Auto-Submitted'] = 'auto-generated'
         return msg
 
-    def get_log(self, record, trigger, msg):
+    def get_log(self, record, trigger, msg, bcc=None):
         return {
             'recipients': msg['To'],
             'recipients_secondary': msg['Cc'],
-            'recipients_hidden': msg['Bcc'],
+            'recipients_hidden': bcc,
             'trigger': trigger.id,
             }
 
@@ -234,7 +233,8 @@ class Email(ModelSQL, ModelView):
             if to_addrs:
                 sendmail_transactional(
                     from_, to_addrs, msg, datamanager=datamanager)
-                logs.append(self.get_log(record, trigger, msg))
+                logs.append(self.get_log(
+                        record, trigger, msg, bcc=', '.join(bcc)))
         if logs:
             Log.create(logs)
 
