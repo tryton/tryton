@@ -22,6 +22,9 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         child.connect('focus-out-event', lambda *a: self._focus_out())
         child.get_accessible().set_name(attrs.get('string', ''))
         self.widget_combo.connect('changed', self.sig_changed_combo)
+        self.widget_combo.connect('move-active', self._move_active)
+        self.widget_combo.connect(
+            'scroll-event', lambda c, e: c.emit_stop_by_name('scroll-event'))
         selection_shortcuts(self.widget_combo)
         self.widget_combo.set_focus_chain([child])
 
@@ -46,6 +49,10 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             if model in (None, ''):
                 return model, name
         return '', ''
+
+    def _move_active(self, combobox, scroll_type):
+        if not combobox.get_child().get_editable():
+            combobox.emit_stop_by_name('move-active')
 
     def _set_button_sensitive(self):
         super(Reference, self)._set_button_sensitive()
