@@ -221,6 +221,7 @@ class Many2Many(Widget):
         self._readonly = value
         self._set_button_sensitive()
         self.wid_text.set_sensitive(not value)
+        self.wid_text.set_editable(not value)
 
     def _set_button_sensitive(self):
         if self.record and self.field:
