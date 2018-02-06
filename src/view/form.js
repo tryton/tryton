@@ -203,7 +203,9 @@ function eval_pyson(value){
             }
             var page = this.parse(model, node);
             page = new Sao.View.Form.Page(
-                    container.add(page.el, attributes.string), attributes);
+                    container.add(
+                        page.el, attributes.string, attributes.icon),
+                attributes);
             this.state_widgets.push(page);
         },
         _parse_field: function(model, node, container, attributes) {
@@ -749,12 +751,15 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.selected = false;
         },
-        add: function(tab, text) {
+        add: function(tab, text, icon) {
             var pane = jQuery('<div/>', {
                 'role': 'tabpanel',
                 'class': 'tab-pane',
             }).uniqueId();
             var tab_id = pane.attr('id');
+            var img = jQuery('<img/>', {
+                'class': 'icon',
+            });
             var page = jQuery('<li/>', {
                 'role': 'presentation'
             }).append(
@@ -763,7 +768,9 @@ function eval_pyson(value){
                     'role': 'tab',
                     'data-toggle': 'tab',
                     'href': '#' + tab_id
-                }).append(text)
+                })
+                .append(img)
+                .append(text)
                 .on('shown.bs.tab', function() {
                     Sao.View.resize(tab);
                 })).appendTo(this.nav);
@@ -774,6 +781,10 @@ function eval_pyson(value){
                 pane.addClass('active');
                 this.selected = true;
             }
+            Sao.common.ICONFACTORY.register_icon(icon)
+                .done(function(url) {
+                    img.attr('src', url);
+                });
             return page;
         },
         set_current_page: function(page_index) {
