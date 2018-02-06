@@ -10,7 +10,8 @@ from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.product import price_digits
 
-__all__ = ['Configuration', 'ConfigurationSaleMethod', 'Sale', 'SaleLine']
+__all__ = ['Configuration', 'ConfigurationSaleMethod', 'Sale', 'SaleLine',
+    'Promotion']
 sale_shipment_cost_method = fields.Selection(
         'get_sale_shipment_cost_methods', "Sale Shipment Cost Method")
 
