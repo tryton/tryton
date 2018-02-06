@@ -95,6 +95,16 @@ class Package:
             ('shipping_reference',) + tuple(clause[1:]),
             ]
 
+    @classmethod
+    def copy(cls, packages, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('shipping_reference')
+        default.setdefault('shipping_label')
+        return super(Package, cls).copy(packages, default=default)
+
 
 class ShipmentOut:
     __metaclass__ = PoolMeta
