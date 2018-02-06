@@ -416,6 +416,15 @@ class UserSession(ModelSQL):
         timestamp = self.write_date or self.create_date
         return abs(timestamp - now) > self.timeout()
 
+    @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            # Ensure to get a different key for each record
+            # default methods are called only once
+            values.setdefault('key', cls.default_key())
+        return super(UserSession, cls).create(vlist)
+
 
 class EmailValidation(Report):
     __name__ = 'web.user.email_validation'
