@@ -312,15 +312,14 @@ class ViewForm(View):
                     attributes[attr] = field.attrs[attr]
         label = gtk.Label(set_underline(attributes['string']))
         label.set_use_underline(True)
-        tab_box.pack_start(label)
 
         if 'icon' in attributes:
             ICONFACTORY.register_icon(attributes['icon'])
-            pixbuf = tab_box.render_icon(attributes['icon'],
-                gtk.ICON_SIZE_SMALL_TOOLBAR)
             icon = gtk.Image()
-            icon.set_from_pixbuf(pixbuf)
+            icon.set_from_stock(
+                attributes['icon'], gtk.ICON_SIZE_SMALL_TOOLBAR)
             tab_box.pack_start(icon)
+        tab_box.pack_start(label)
         tab_box.show_all()
 
         viewport = gtk.Viewport()
