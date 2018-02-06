@@ -72,6 +72,15 @@ class Session(ModelSQL):
                 ])
         cls.write(sessions, {})
 
+    @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            # Ensure to get a different key for each record
+            # default methods are called only once
+            values.setdefault('key', cls.default_key())
+        return super(Session, cls).create(vlist)
+
 
 class SessionWizard(ModelSQL):
     "Session Wizard"
