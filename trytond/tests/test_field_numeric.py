@@ -123,6 +123,29 @@ class FieldNumericTestCase(unittest.TestCase):
         self.assertEqual(numeric.numeric, Decimal('0.123456789012345'))
 
     @with_transaction()
+    def test_create_10_digits(self):
+        "Test create a numeric with 10 digits"
+        Numeric = Pool().get('test.numeric_digits')
+
+        numeric, = Numeric.create([{
+                    'digits': 10,
+                    'numeric': Decimal('0.04'),
+                    }])
+
+        self.assertEqual(numeric.numeric, Decimal('0.04'))
+
+    @with_transaction()
+    def test_create_10_digits_invalid(self):
+        "Test create a numeric with 11 digits on with 10 limit"
+        Numeric = Pool().get('test.numeric_digits')
+
+        with self.assertRaises(UserError):
+            Numeric.create([{
+                        'digits': 10,
+                        'numeric': Decimal('1.11111111111'),
+                        }])
+
+    @with_transaction()
     def test_search_equals(self):
         "Test search numeric equals"
         Numeric = Pool().get('test.numeric')
