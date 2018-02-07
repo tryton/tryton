@@ -464,14 +464,17 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         depends=['subscription_start_date', 'subscription_state', 'consumed'])
     end_date = fields.Date(
         "End Date",
-        domain=['OR', [
+        domain=['OR', [(
+                If(Bool(Eval('start_date')),
+                    ('end_date', '>=', Eval('start_date')),
+                    ()),
                 If(Bool(Eval('subscription_end_date')),
                     ('end_date', '<=', Eval('subscription_end_date')),
-                    ('end_date', '>=', Eval('start_date'))),
+                    ()),
                 If(Bool(Eval('next_consumption_date')),
                     ('end_date', '>=', Eval('next_consumption_date')),
-                    ('end_date', '>=', Eval('start_date'))),
-                ],
+                    ()),
+                )],
             ('end_date', '=', None),
             ],
         states={
