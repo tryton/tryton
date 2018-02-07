@@ -17,10 +17,11 @@ def activate_modules(modules):
 
     cfg = _get_config()
     Module = Model.get('ir.module')
-    modules = Module.find([
+    records = Module.find([
             ('name', 'in', modules),
             ])
-    Module.click(modules, 'activate')
+    assert len(records) == len(modules)
+    Module.click(records, 'activate')
     Wizard('ir.module.activate_upgrade').execute('upgrade')
 
     backup_db_cache(cache_name)
