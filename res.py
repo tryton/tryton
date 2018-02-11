@@ -15,13 +15,17 @@ class User:
         res = super(User, cls)._get_preferences(user,
             context_only=context_only)
         if user.company:
-            res['company_work_time'] = {
-                'Y': user.company.hours_per_work_year * 60 * 60,
-                'M': user.company.hours_per_work_month * 60 * 60,
-                'w': user.company.hours_per_work_week * 60 * 60,
-                'd': user.company.hours_per_work_day * 60 * 60,
+            time = {
                 'h': 60 * 60,
                 'm': 60,
                 's': 1,
-            }
+                }
+            for k, v in [
+                    ('Y', user.company.hours_per_work_year),
+                    ('M', user.company.hours_per_work_month),
+                    ('w', user.company.hours_per_work_week),
+                    ('d', user.company.hours_per_work_day)]:
+                if v:
+                    time[k] = v * 60 * 60
+            res['company_work_time'] = time
         return res
