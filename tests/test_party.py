@@ -129,6 +129,78 @@ class PartyTestCase(ModuleTestCase):
             "COUNTRY")
 
     @with_transaction()
+    def test_address_get_no_type(self):
+        "Test address_get with no type"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Address = pool.get('party.address')
+        party, = Party.create([{}])
+        address1, address2 = Address.create([{
+                    'party': party.id,
+                    'sequence': 1,
+                    }, {
+                    'party': party.id,
+                    'sequence': 2,
+                    }])
+
+        address = party.address_get()
+
+        self.assertEqual(address, address1)
+
+    @with_transaction()
+    def test_address_get_no_address(self):
+        "Test address_get with no address"
+        pool = Pool()
+        Party = pool.get('party.party')
+        party, = Party.create([{}])
+
+        address = party.address_get()
+
+        self.assertEqual(address, None)
+
+    @with_transaction()
+    def test_address_get_inactive(self):
+        "Test address_get with inactive"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Address = pool.get('party.address')
+        party, = Party.create([{}])
+        address1, address2 = Address.create([{
+                    'party': party.id,
+                    'sequence': 1,
+                    'active': False,
+                    }, {
+                    'party': party.id,
+                    'sequence': 2,
+                    'active': True,
+                    }])
+
+        address = party.address_get()
+
+        self.assertEqual(address, address2)
+
+    @with_transaction()
+    def test_address_get_type(self):
+        "Test address_get with type"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Address = pool.get('party.address')
+        party, = Party.create([{}])
+        address1, address2 = Address.create([{
+                    'party': party.id,
+                    'sequence': 1,
+                    'zip': None,
+                    }, {
+                    'party': party.id,
+                    'sequence': 2,
+                    'zip': '1000',
+                    }])
+
+        address = party.address_get(type='zip')
+
+        self.assertEqual(address, address2)
+
+    @with_transaction()
     def test_party_label_report(self):
         'Test party label report'
         pool = Pool()

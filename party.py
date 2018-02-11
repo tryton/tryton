@@ -227,18 +227,13 @@ class Party(ModelSQL, ModelView, MultiValueMixin):
         Try to find an address for the given type, if no type matches
         the first address is returned.
         """
-        Address = Pool().get("party.address")
-        addresses = Address.search(
-            [("party", "=", self.id), ("active", "=", True)],
-            order=[('sequence', 'ASC'), ('id', 'ASC')])
-        if not addresses:
-            return None
-        default_address = addresses[0]
-        if not type:
-            return default_address
-        for address in addresses:
-            if getattr(address, type):
-                return address
+        default_address = None
+        if self.addresses:
+            default_address = self.addresses[0]
+            if type:
+                for address in self.addresses:
+                    if getattr(address, type):
+                        return address
         return default_address
 
 
