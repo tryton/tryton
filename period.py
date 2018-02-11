@@ -69,7 +69,7 @@ class Period(Workflow, ModelSQL, ModelView):
     @staticmethod
     def get_cache(grouping):
         pool = Pool()
-        if grouping == ('product',):
+        if all(g == 'product' or g.startswith('product.') for g in grouping):
             return pool.get('stock.period.cache')
 
     def get_rec_name(self, name):

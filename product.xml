@@ -44,8 +44,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Locations Quantity</field>
             <field name="res_model">stock.location</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
-            <field name="context" eval="{'product': Eval('active_id')}"
-                pyson="1"/>
+            <field name="context" pyson="1"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id')}, {'product': Eval('active_id')})"/>
             <field name="context_model">product.by_location.context</field>
         </record>
         <record model="ir.action.act_window.view" id="act_location_quantity_tree_view">
@@ -57,6 +57,12 @@ this repository contains the full copyright notices and license terms. -->
                 id="act_location_quantity_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">product.product,-1</field>
+            <field name="action" ref="act_location_quantity_tree"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_location_quantity_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
             <field name="action" ref="act_location_quantity_tree"/>
         </record>
         <record model="ir.action-res.group"
@@ -87,8 +93,8 @@ this repository contains the full copyright notices and license terms. -->
             id="act_product_quantities_warehouse">
             <field name="name">Product Quantities By Warehouse</field>
             <field name="res_model">stock.product_quantities_warehouse</field>
-            <field name="context" eval="{'product': Eval('active_id')}"
-                pyson="1"/>
+            <field name="context" pyson="1"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id')}, {'product': Eval('active_id')})"/>
             <field name="search_value" eval="[('date', '>=', Date())]"
                 pyson="1"/>
             <field name="context_model">stock.product_quantities_warehouse.context</field>
@@ -117,6 +123,12 @@ this repository contains the full copyright notices and license terms. -->
             id="act_product_quantities_warehouse_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_quantities_warehouse"/>
+        </record>
+        <record model="ir.action.keyword"
+            id="act_product_quantities_warehouse_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
             <field name="action" ref="act_product_quantities_warehouse"/>
         </record>
         <record model="ir.action-res.group"

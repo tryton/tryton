@@ -304,62 +304,84 @@ class Location(ModelSQL, ModelView):
         pool = Pool()
         Product = pool.get('product.product')
         Date_ = pool.get('ir.date')
+        trans_context = Transaction().context
 
-        if (not Transaction().context.get('product')) \
-                or not (isinstance(Transaction().context['product'],
-                    (int, long))):
-            return dict([(l.id, 0) for l in locations])
+        def valid_context(name):
+            return (trans_context.get(name) is not None
+                and isinstance(trans_context[name], (int, long)))
 
-        with Transaction().set_context(active_test=False):
-            if not Product.search([
-                        ('id', '=', Transaction().context['product']),
-                        ]):
-                return dict([(l.id, 0) for l in locations])
+        if not any(map(valid_context, ['product', 'product_template'])):
+            return {l.id: None for l in locations}
 
         context = {}
         if (name == 'quantity'
-                and Transaction().context.get('stock_date_end') >
-                Date_.today()):
+                and trans_context.get('stock_date_end') > Date_.today()):
             context['stock_date_end'] = Date_.today()
 
         if name == 'forecast_quantity':
             context['forecast'] = True
-            if not Transaction().context.get('stock_date_end'):
+            if not trans_context.get('stock_date_end'):
                 context['stock_date_end'] = datetime.date.max
 
-        product_id = Transaction().context['product']
+        if trans_context.get('product') is not None:
+            product_ids = [trans_context['product']]
+            grouping = None
+            grouping_filter = None
+            key = trans_context['product']
+        else:
+            product_ids = None
+            grouping = ('product.template',)
+            grouping_filter = ([trans_context['product_template']],)
+            key = trans_context['product_template']
         pbl = {}
         for sub_locations in grouped_slice(locations):
             location_ids = [l.id for l in sub_locations]
             with Transaction().set_context(context):
                 pbl.update(Product.products_by_location(
-                        location_ids=location_ids, product_ids=[product_id],
+                        location_ids=location_ids,
+                        product_ids=product_ids,
+                        grouping=grouping,
+                        grouping_filter=grouping_filter,
                         with_childs=True))
 
-        return dict((loc.id, pbl.get((loc.id, product_id), 0))
-            for loc in locations)
+        return dict((loc.id, pbl.get((loc.id, key), 0)) for loc in locations)
 
     @classmethod
     def get_cost_value(cls, locations, name):
-        Product = Pool().get('product.product')
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
         trans_context = Transaction().context
-        product_id = trans_context.get('product')
-        if not product_id:
-            return dict((l.id, None) for l in locations)
-        cost_values, context = {}, {}
+        cost_values = {l.id: None for l in locations}
+
+        def valid_context(name):
+            return (trans_context.get(name) is not None
+                and isinstance(trans_context[name], (int, long)))
+
+        if not any(map(valid_context, ['product', 'product_template'])):
+            return cost_values
+
+        context = {}
         if 'stock_date_end' in trans_context:
             # Use the last cost_price of the day
             context['_datetime'] = datetime.datetime.combine(
                 trans_context['stock_date_end'], datetime.time.max)
         with Transaction().set_context(context):
-            product = Product(product_id)
+
+            if trans_context.get('product') is not None:
+                product = Product(trans_context['product'])
+                cost_price = product.cost_price
+            else:
+                template = Template(trans_context['product_template'])
+                cost_price = template.cost_price
+            # The date could be before the product creation
+            # or the template may have more than one product
+            if not isinstance(cost_price, Decimal):
+                return cost_values
+
             for location in locations:
-                # The date could be before the product creation
-                if not isinstance(product.cost_price, Decimal):
-                    cost_values[location.id] = None
-                else:
-                    cost_values[location.id] = (Decimal(str(location.quantity))
-                        * product.cost_price)
+                cost_values[location.id] = (
+                    Decimal(str(location.quantity)) * cost_price)
         return cost_values
 
     @classmethod

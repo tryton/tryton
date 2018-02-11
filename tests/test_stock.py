@@ -552,6 +552,77 @@ class StockTestCase(ModuleTestCase):
         self.test_products_by_location_flat_childs(period_closed=True)
 
     @with_transaction()
+    def test_templates_by_location(self, period_closed=False):
+        "Test products_by_location grouped by template"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Period = pool.get('stock.period')
+        Date = pool.get('ir.date')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Template',
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'default_uom': unit.id,
+                    }])
+        product1, product2 = Product.create([{
+                    'template': template.id,
+                    }] * 2)
+
+        lost_found, = Location.search([('type', '=', 'lost_found')])
+        storage, = Location.search([('code', '=', 'STO')])
+        input_, = Location.search([('code', '=', 'IN')])
+        company = create_company()
+        with set_company(company):
+            date = Date.today() - relativedelta(days=1)
+
+            moves = Move.create([{
+                        'product': product1.id,
+                        'uom': unit.id,
+                        'quantity': 2,
+                        'from_location': lost_found.id,
+                        'to_location': storage.id,
+                        'planned_date': date,
+                        'effective_date': date,
+                        'company': company.id,
+                        }, {
+                        'product': product2.id,
+                        'uom': unit.id,
+                        'quantity': 3,
+                        'from_location': input_.id,
+                        'to_location': storage.id,
+                        'planned_date': date,
+                        'effective_date': date,
+                        'company': company.id,
+                        }])
+            Move.do(moves)
+
+            if period_closed:
+                period, = Period.create([{
+                            'date': date,
+                            'company': company.id,
+                            }])
+                Period.close([period])
+
+            templates_by_location = Product.products_by_location(
+                [storage.id],
+                grouping=('product.template',),
+                grouping_filter=([template.id],))
+
+            self.assertDictEqual(templates_by_location, {
+                    (storage.id, template.id): 5,
+                    })
+
+    def test_templates_by_location_period_closed(self):
+        "Test products_by_location grouped by template with period closed"
+        self.test_templates_by_location(period_closed=True)
+
+    @with_transaction()
     def test_period(self):
         'Test period'
         pool = Pool()

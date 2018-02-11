@@ -980,8 +980,8 @@ class Move(Workflow, ModelSQL, ModelView):
                 quantities of all child locations but quantities of the storage
                 zone.
         If with_childs, it computes also for child locations.
-        grouping is a tuple of Move field names and defines how stock moves are
-            grouped.
+        grouping is a tuple of Move (or Product if prefixed by 'product.')
+            field names and defines how stock moves are grouped.
         grouping_filter is a tuple of values, for the Move's field at the same
             position in grouping tuple, used to filter which moves are used to
             compute quantities. It must be None or have the same number of
@@ -997,6 +997,7 @@ class Move(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         Period = pool.get('stock.period')
         Move = pool.get('stock.move')
+        Product = pool.get('product.product')
 
         move = Move.__table__()
         today = Date.today()
@@ -1005,17 +1006,51 @@ class Move(Workflow, ModelSQL, ModelView):
             return None
         context = Transaction().context.copy()
 
+        use_product = False
         for field in grouping:
-            if field not in Move._fields:
-                raise ValueError('"%s" has no field "%s"' % (Move, field))
+            if field.startswith('product.'):
+                Model = Product
+                field = field[len('product.'):]
+                use_product = True
+            else:
+                Model = Move
+            if field not in Model._fields:
+                raise ValueError('"%s" has no field "%s"' % (Model, field))
         assert grouping_filter is None or len(grouping_filter) == len(grouping)
 
         move_rule_query = Rule.query_get('stock.move')
+
+        def get_column(name, table, product):
+            if name.startswith('product.'):
+                column = Column(product, name[len('product.'):])
+            else:
+                column = Column(table, name)
+            return column.as_(name)
+
+        if use_product:
+            product = Product.__table__()
+            columns = ['id', 'state', 'effective_date', 'planned_date',
+            'internal_quantity', 'from_location', 'to_location']
+            columns += list(grouping)
+            columns = [get_column(c, move, product) for c in columns]
+            move = (move
+                .join(product, condition=move.product == product.id)
+                .select(*columns))
 
         PeriodCache = Period.get_cache(grouping)
         period = None
         if PeriodCache:
             period_cache = PeriodCache.__table__()
+            if use_product:
+                product_cache = Product.__table__()
+                columns = ['internal_quantity', 'period', 'location']
+                columns += list(grouping)
+                columns = [get_column(c, period_cache, product_cache)
+                    for c in columns]
+                period_cache = (period_cache
+                    .join(product_cache,
+                        condition=period_cache.product == product_cache.id)
+                    .select(*columns))
 
         if with_childs:
             # Replace tables with union which replaces flat children locations
@@ -1333,17 +1368,24 @@ class Move(Workflow, ModelSQL, ModelView):
         """
         pool = Pool()
         Product = pool.get('product.product')
+        Template = pool.get('product.template')
 
         assert query is not None, (
             "Query in Move.compute_quantities() can't be None")
-        assert 'product' in grouping
+        assert 'product' in grouping or 'product.template' in grouping
 
         cursor = Transaction().connection.cursor()
         cursor.execute(*query)
         raw_lines = cursor.fetchall()
 
-        product_getter = operator.itemgetter(grouping.index('product') + 1)
-        res_product_ids = set()
+        if 'product' in grouping:
+            id_name = 'product'
+            Model = Product
+        else:
+            id_name = 'product.template'
+            Model = Template
+        id_getter = operator.itemgetter(grouping.index(id_name) + 1)
+        ids = set()
         quantities = defaultdict(lambda: 0)
         keys = set()
         # We can do a quick loop without propagation if the request is for a
@@ -1357,7 +1399,7 @@ class Move(Workflow, ModelSQL, ModelView):
             key = tuple(line[1:-1])
             quantity = line[-1]
             quantities[(location,) + key] += quantity
-            res_product_ids.add(product_getter(line))
+            ids.add(id_getter(line))
             keys.add(key)
 
         # Propagate quantities on from child locations to their parents
@@ -1400,11 +1442,10 @@ class Move(Workflow, ModelSQL, ModelView):
 
         # Round quantities
         default_uom = dict((p.id, p.default_uom) for p in
-            Product.browse(list(res_product_ids)))
+            Model.browse(list(ids)))
         for key, quantity in quantities.iteritems():
             location = key[0]
-            product = product_getter(key)
-            uom = default_uom[product]
+            uom = default_uom[id_getter(key)]
             quantities[key] = uom.round(quantity)
 
         return quantities

@@ -133,7 +133,7 @@ class Product(StockMixin, object):
 
     @classmethod
     def products_by_location(cls, location_ids, product_ids=None,
-            with_childs=False, grouping=('product',)):
+            with_childs=False, grouping=None, grouping_filter=None):
         """
         Compute for each location and product the stock quantity in the default
         uom of the product.
@@ -166,7 +166,12 @@ class Product(StockMixin, object):
                     wh_to_add[location.id] = location.storage_location.id
             location_ids = list(location_ids)
 
-        grouping_filter = (product_ids,) + tuple(None for k in grouping[1:])
+        if grouping is None or grouping == ('product',):
+            grouping = ('product',)
+            grouping_filter = (product_ids,)
+        elif product_ids:
+            grouping = ('product',) + tuple(grouping)
+            grouping_filter = (product_ids,) + tuple(grouping_filter)
         query = Move.compute_quantities_query(location_ids, with_childs,
             grouping=grouping, grouping_filter=grouping_filter)
         if query is None:
@@ -303,23 +308,32 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Location = pool.get('stock.location')
-        move = Move.__table__()
+        Product = pool.get('product.product')
+        move = from_ = Move.__table__()
+        context = Transaction().context
 
-        product_id = Transaction().context.get('product')
-        warehouse_id = Transaction().context.get('warehouse', -1)
+        if context.get('product_template') is not None:
+            product = Product.__table__()
+            from_ = move.join(product, condition=move.product == product.id)
+            product_clause = (
+                product.template == context['product_template'])
+        else:
+            product_clause = move.product == context.get('product', -1)
+
+        warehouse_id = context.get('warehouse', -1)
         warehouse_query = Location.search([
                 ('parent', 'child_of', [warehouse_id]),
                 ], query=True, order=[])
         date_column = Coalesce(move.effective_date, move.planned_date
             ).as_('date')
-        return move.select(
+        return from_.select(
             Max(move.id).as_('id'),
             Literal(0).as_('create_uid'),
             CurrentTimestamp().as_('create_date'),
             Literal(None).as_('write_uid'),
             Literal(None).as_('write_date'),
             date_column,
-            where=(move.product == product_id)
+            where=product_clause
             & (move.from_location.in_(warehouse_query)
                 | move.to_location.in_(warehouse_query))
             & (Coalesce(move.effective_date, move.planned_date) != Null),
@@ -328,9 +342,26 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
     @classmethod
     def get_quantity(cls, lines, name):
         Product = Pool().get('product.product')
+        trans_context = Transaction().context
 
-        product_id = Transaction().context.get('product')
-        warehouse_id = Transaction().context.get('warehouse')
+        def valid_context(name):
+            return (trans_context.get(name) is not None
+                and isinstance(trans_context[name], (int, long)))
+
+        if not any(map(valid_context, ['product', 'product_template'])):
+            return {l.id: None for l in lines}
+
+        if trans_context.get('product') is not None:
+            product_ids = [trans_context['product']]
+            grouping = None
+            grouping_filter = None
+            key = trans_context['product']
+        else:
+            product_ids = None
+            grouping = ('product.template',)
+            grouping_filter = ([trans_context.get('product_template')],)
+            key = trans_context['product_template']
+        warehouse_id = trans_context.get('warehouse')
 
         dates = sorted(l.date for l in lines)
         quantities = {}
@@ -343,8 +374,11 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 }
             with Transaction().set_context(**context):
                 quantities[date] = Product.products_by_location(
-                    [warehouse_id], [product_id],
-                    with_childs=True).get((warehouse_id, product_id), 0)
+                    location_ids=[warehouse_id],
+                    product_ids=product_ids,
+                    grouping=grouping,
+                    grouping_filter=grouping_filter,
+                    with_childs=True).get((warehouse_id, key), 0)
             try:
                 date_start = date + datetime.timedelta(1)
             except OverflowError:
