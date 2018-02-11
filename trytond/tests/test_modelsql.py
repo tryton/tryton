@@ -159,6 +159,20 @@ class ModelSQLTestCase(unittest.TestCase):
         integers = NullOrder.search([], order=[('integer', 'DESC NULLS LAST')])
         self.assertListEqual([i.integer for i in integers], [3, 1, None])
 
+    @with_transaction()
+    def test_delete_translations(self):
+        "Test delete record trigger delete of translations"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+        record, = Model.create([{'name': "Translation"}])
+
+        with patch.object(Translation, 'delete_ids') as delete_ids:
+            Model.delete([record])
+
+        delete_ids.assert_called_with(
+            'test.modelsql.translation', 'model', [record.id])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelSQLTestCase)

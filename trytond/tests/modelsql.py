@@ -52,6 +52,12 @@ class NullOrder(ModelSQL):
     integer = fields.Integer('Integer')
 
 
+class ModelTranslation(ModelSQL):
+    "ModelSQL with translated field"
+    __name__ = 'test.modelsql.translation'
+    name = fields.Char("Name", translate=True)
+
+
 def register(module):
     Pool.register(
         ModelSQLRequiredField,
@@ -60,4 +66,5 @@ def register(module):
         ModelSQLOne2Many,
         ModelSQLOne2ManyTarget,
         NullOrder,
+        ModelTranslation,
         module=module, type_='model')

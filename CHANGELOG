@@ -1,3 +1,4 @@
+* Delete translations on deletion only when model has translatable field
 * Remove MySQL backend
 * Add keyword attribute to button tag
 * Allow field name on image tag
