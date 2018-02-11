@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 
 
 __all__ = ['Company']
@@ -31,3 +31,10 @@ class Company:
     @staticmethod
     def default_hours_per_work_year():
         return 1920
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        User = pool.get('res.user')
+        super(Company, cls).write(*args)
+        User._get_preferences_cache.clear()
