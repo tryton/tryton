@@ -15,3 +15,6 @@ def register():
         sale.Promotion,
         ShipmentOut,
         module='sale_shipment_cost', type_='model')
+    Pool.register(
+        sale.ReturnSale,
+        module='sale_shipment_cost', type_='wizard')

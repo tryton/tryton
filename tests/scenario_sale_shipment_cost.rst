@@ -201,3 +201,19 @@ Check customer invoice::
     >>> invoice, = sale.invoices
     >>> invoice.untaxed_amount
     Decimal('63.00')
+
+Return the sale::
+
+    >>> return_sale = Wizard('sale.return_sale', [sale])
+    >>> return_sale.execute('return_')
+    >>> returned_sale, = Sale.find([
+    ...     ('state', '=', 'draft'),
+    ...     ])
+    >>> returned_sale.untaxed_amount
+    Decimal('-63.00')
+
+The quotation of the returned sale does not change the amount::
+
+    >>> returned_sale.click('quote')
+    >>> returned_sale.untaxed_amount
+    Decimal('-63.00')

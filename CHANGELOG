@@ -1,3 +1,5 @@
+* Do not compute shipment cost when not shipping goods
+* Do not recompute returned shipment cost
 * Do not match carrier selection with countries if countries are unknown
 
 Version 4.6.0 - 2017-10-30

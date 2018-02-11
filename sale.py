@@ -11,7 +11,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.product import price_digits
 
 __all__ = ['Configuration', 'ConfigurationSaleMethod', 'Sale', 'SaleLine',
-    'Promotion']
+    'ReturnSale', 'Promotion']
 sale_shipment_cost_method = fields.Selection(
         'get_sale_shipment_cost_methods', "Sale Shipment Cost Method")
 
@@ -211,7 +211,10 @@ class Sale:
         Currency = pool.get('currency.currency')
 
         cost, currency_id = 0, None
-        if self.carrier:
+        if (self.carrier
+                and any(l.quantity >= 0 for l in self.lines
+                    if l.type == 'line'
+                    and l.product and l.product.type != 'service')):
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_sale_price()
 
@@ -326,6 +329,28 @@ class SaleLine:
                 and self.sale.shipment_cost_method == 'shipment'):
             return 0
         return quantity
+
+
+class ReturnSale:
+    __metaclass__ = PoolMeta
+    __name__ = 'sale.return_sale'
+
+    def do_return_(self, action):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
+        action, data = super(ReturnSale, self).do_return_(action)
+
+        return_sales = Sale.browse(data['res_id'])
+        lines = []
+        for sale in return_sales:
+            for line in sale.lines:
+                # Do not consider return shipment cost as a shipment cost
+                if line.shipment_cost:
+                    line.shipment_cost = None
+                    lines.append(line)
+        SaleLine.save(lines)
+        return action, data
 
 
 class Promotion:
