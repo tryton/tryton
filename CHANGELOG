@@ -1,3 +1,4 @@
+* Use spellcheck and lang attributes for textbox widget
 * Support icon on page
 * Add keyword attribute to button tag
 * Support field name on image tag
@@ -42,7 +43,7 @@ Version 4.2.0 - 2016-11-28
 * Manage confirm attribute on buttons
 * Call autocompletion when setting record value
 * Limit readonly state for xxx2Many
-* Simplify login with single database 
+* Simplify login with single database
 * Show records names in relate window title
 * Add support for count on Action Window Domains
 * Manage custom login process

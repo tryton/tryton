@@ -1749,6 +1749,11 @@ function eval_pyson(value){
             if (record) {
                 var value = record.field_get_client(this.field_name);
                 this.input.val(value);
+                if(this.attributes.spell) {
+                    this.input.attr('lang',
+                        record.expr_eval(this.attributes.spell));
+                    this.input.attr('spellcheck', 'true');
+                }
             } else {
                 this.input.val('');
             }
@@ -1933,6 +1938,11 @@ function eval_pyson(value){
             var value = '';
             if (record) {
                 value = record.field_get_client(this.field_name);
+                if(this.attributes.spell) {
+                    this.input.attr('lang',
+                        record.expr_eval(this.attributes.spell));
+                    this.input.attr('spellcheck', 'true');
+                }
             }
             this.input.html(value);
         },
