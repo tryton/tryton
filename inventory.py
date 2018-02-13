@@ -214,8 +214,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
             # Update existing lines
             for line in inventory.lines:
-                if not (line.product.active and
-                        line.product.type == 'goods'
+                if not (line.product.type == 'goods'
                         and not line.product.consumable):
                     Line.delete([line])
                     continue
