@@ -18,12 +18,15 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party_address"/>
     <notebook colspan="8">
         <page string="General" id="general" col="6">
-            <label name="timesheet_available"/>
-            <field name="timesheet_available"/>
-            <label name="timesheet_start_date"/>
-            <field name="timesheet_start_date"/>
-            <label name="timesheet_end_date"/>
-            <field name="timesheet_end_date"/>
+            <label name="timesheet_available" string="Timesheet:"/>
+            <group col="-1">
+                <field name="timesheet_available" xexpand="0"/>
+                <label name="timesheet_start_date" string="Start:"/>
+                <field name="timesheet_start_date" xexpand="0"/>
+                <label name="timesheet_end_date" string="End:"/>
+                <field name="timesheet_end_date" xexpand="0"/>
+            </group>
+            <newline/>
             <label name="effort_duration"/>
             <field name="effort_duration"/>
             <label name="progress"/>
