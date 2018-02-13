@@ -107,10 +107,10 @@ class Move:
 
     def get_invoice_line_consignment(self):
         if (self.from_location.type == 'supplier'
-                and self.to_location.type == 'storage'
+                and self.to_location.type in {'storage', 'production'}
                 and self.from_location.consignment_party):
             return self._get_supplier_invoice_line_consignment()
-        elif (self.from_location.type == 'storage'
+        elif (self.from_location.type in {'storage', 'production'}
                 and self.to_location.type == 'customer'
                 and self.from_location.consignment_party):
             return self._get_customer_invoice_line_consignment()
