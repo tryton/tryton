@@ -9,6 +9,7 @@ from operator import attrgetter
 
 import stripe
 
+from trytond import backend
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
@@ -113,6 +114,8 @@ class Payment:
             'invisible': ~Eval('stripe_journal') | ~Eval('stripe_token'),
             },
         depends=['stripe_journal', 'stripe_token'])
+    stripe_idempotency_key = fields.Char(
+        "Stripe Idempotency_key", readonly=True)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
@@ -200,6 +203,21 @@ class Payment:
         cls.stripe_customer_source_selection._field.readonly = False
 
     @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+        table = TableHandler(cls, module_name)
+        idempotency_key_exist = table.column_exist('stripe_idempotency_key')
+
+        super(Payment, cls).__register__(module_name)
+
+        # Migration from 4.6: do not set the same key to all existing payments
+        if not idempotency_key_exist:
+            cursor.execute(*sql_table.update(
+                    [sql_table.stripe_idempotency_key], [None]))
+
+    @classmethod
     def default_stripe_capture(cls):
         return True
 
@@ -210,6 +228,10 @@ class Payment:
     @classmethod
     def default_stripe_chargeable(cls):
         return False
+
+    @classmethod
+    def default_stripe_idempotency_key(cls):
+        return uuid.uuid4().hex
 
     @fields.depends('journal')
     def on_change_with_stripe_journal(self, name=None):
@@ -289,6 +311,16 @@ class Payment:
                     })
 
     @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            # Ensure to get a different key for each record
+            # default methods are called only once
+            values.setdefault('stripe_idempotency_key',
+                cls.default_stripe_idempotency_key())
+        return super(Payment, cls).create(vlist)
+
+    @classmethod
     def copy(cls, payments, default=None):
         if default is None:
             default = {}
@@ -297,6 +329,7 @@ class Payment:
         default['stripe_checkout_id'] = None
         default['stripe_charge_id'] = None
         default['stripe_token'] = None
+        default.setdefault('stripe_idempotency_key')
         default.setdefault('stripe_error_message')
         default.setdefault('stripe_error_code')
         default.setdefault('stripe_error_param')
@@ -375,6 +408,9 @@ class Payment:
             source = self.stripe_customer_source
         if self.stripe_customer:
             customer = self.stripe_customer.stripe_customer_id
+        idempotency_key = None
+        if self.stripe_idempotency_key:
+            idempotency_key = 'charge-%s' % self.stripe_idempotency_key
         return {
             'api_key': self.journal.stripe_account.secret_key,
             'amount': self.stripe_amount,
@@ -383,7 +419,7 @@ class Payment:
             'description': self.description,
             'customer': customer,
             'source': source,
-            'idempotency_key': self.stripe_checkout_id,
+            'idempotency_key': idempotency_key,
             }
 
     @classmethod
@@ -427,8 +463,12 @@ class Payment:
             Transaction().commit()
 
     def _capture_parameters(self):
+        idempotency_key = None
+        if self.stripe_idempotency_key:
+            idempotency_key = 'capture-%s' % self.stripe_idempotency_key
         return {
             'amount': self.stripe_amount,
+            'idempotency_key': idempotency_key,
             }
 
 

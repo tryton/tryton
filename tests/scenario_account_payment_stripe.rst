@@ -119,7 +119,10 @@ Run cron::
 
 Create failing payment::
 
+    >>> previous_idempotency_key = payment.stripe_idempotency_key
     >>> payment, = payment.duplicate()
+    >>> payment.stripe_idempotency_key != previous_idempotency_key
+    True
     >>> payment.click('approve')
     >>> payment.state
     u'approved'
