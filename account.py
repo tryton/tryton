@@ -7,7 +7,7 @@ from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'ConfigurationAssetSequence', 'Move']
+__all__ = ['Configuration', 'ConfigurationAssetSequence', 'Move', 'Period']
 
 
 class Configuration:
@@ -76,3 +76,46 @@ class Move:
         origins.append('account.asset')
         origins.append('account.asset.line')
         return origins
+
+
+class Period:
+    __metaclass__ = PoolMeta
+    __name__ = 'account.period'
+
+    @classmethod
+    def __setup__(cls):
+        super(Period, cls).__setup__()
+        cls._error_messages.update({
+            'running_assets_close': ('Some asset lines "%(names)s" are still'
+                'running for this period "%(period)s".'),
+            })
+
+    def check_asset_line_running(self):
+        """
+        Check if it exist some asset lines without account move for the curent
+        period.
+        """
+        pool = Pool()
+        Asset = pool.get('account.asset')
+        assets = Asset.search([
+            ('state', '=', 'running'),
+            ('lines', 'where', [
+                ('date', '>=', self.start_date),
+                ('date', '<=', self.end_date),
+                ('move', '=', None),
+                ]),
+            ], limit=6)
+        if assets:
+            names = ', '.join(a.rec_name for a in assets[:5])
+            if len(assets) > 5:
+                names += '...'
+            self.raise_user_error('running_assets_close', {
+                    'period': self.rec_name,
+                    'names': names,
+                    })
+
+    @classmethod
+    def close(cls, periods):
+        for period in periods:
+            period.check_asset_line_running()
+        super(Period, cls).close(periods)

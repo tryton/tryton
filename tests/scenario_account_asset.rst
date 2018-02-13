@@ -136,6 +136,14 @@ Depreciate the asset::
     Decimal('900.00')
     >>> asset.click('run')
 
+Trying to close the period to check error::
+
+    >>> period = supplier_invoice.move.period
+    >>> period.click('close') # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    UserError: ...
+
 Create Moves for 3 months::
 
     >>> create_moves = Wizard('account.asset.create_moves')
@@ -249,3 +257,7 @@ Generate the asset report::
     >>> print_depreciation_table = Wizard(
     ...     'account.asset.print_depreciation_table')
     >>> print_depreciation_table.execute('print_')
+
+Close periods::
+
+    >>> period.click('close')
