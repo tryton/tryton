@@ -11,6 +11,7 @@ import datetime
 import logging
 import uuid
 import mmap
+import ipaddress
 from functools import wraps
 from itertools import groupby, ifilter
 from operator import attrgetter
@@ -540,6 +541,11 @@ class User(ModelSQL, ModelView):
         Return user id if password matches
         '''
         LoginAttempt = Pool().get('res.user.login.attempt')
+        count_ip = LoginAttempt.count_ip()
+        if count_ip > config.getint(
+                'session', 'max_attempt_ip_network', default=300):
+            # Do not add attempt as the goal is to prevent flooding
+            raise RateLimitException()
         count = LoginAttempt.count(login)
         if count > config.getint('session', 'max_attempt', default=5):
             LoginAttempt.add(login)
@@ -634,6 +640,8 @@ class LoginAttempt(ModelSQL):
     """
     __name__ = 'res.user.login.attempt'
     login = fields.Char('Login', size=512)
+    ip_address = fields.Char("IP Address")
+    ip_network = fields.Char("IP Network")
 
     @classmethod
     def __register__(cls, module_name):
@@ -649,6 +657,21 @@ class LoginAttempt(ModelSQL):
         return (datetime.datetime.now()
             - datetime.timedelta(seconds=config.getint('session', 'timeout')))
 
+    @classmethod
+    def ipaddress(cls):
+        context = Transaction().context
+        ip_address = ''
+        ip_network = ''
+        if context.get('_request') and context['_request'].get('remote_addr'):
+            ip_address = ipaddress.ip_address(
+                unicode(context['_request']['remote_addr']))
+            prefix = config.getint(
+                'session', 'ip_network_%s' % ip_address.version)
+            ip_network = ipaddress.ip_network(
+                unicode(context['_request']['remote_addr']))
+            ip_network = ip_network.supernet(new_prefix=prefix)
+        return ip_address, ip_network
+
     def _login_size(func):
         @wraps(func)
         def wrapper(cls, login, *args, **kwargs):
@@ -662,7 +685,12 @@ class LoginAttempt(ModelSQL):
         table = cls.__table__()
         cursor.execute(*table.delete(where=table.create_date < cls.delay()))
 
-        cls.create([{'login': login}])
+        ip_address, ip_network = cls.ipaddress()
+        cls.create([{
+                    'login': login,
+                    'ip_address': str(ip_address),
+                    'ip_network': str(ip_network),
+                    }])
 
     @classmethod
     @_login_size
@@ -676,8 +704,18 @@ class LoginAttempt(ModelSQL):
     def count(cls, login):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
-        cursor.execute(*table.select(Count(Literal(1)),
+        cursor.execute(*table.select(Count(Literal('*')),
                 where=(table.login == login)
+                & (table.create_date >= cls.delay())))
+        return cursor.fetchone()[0]
+
+    @classmethod
+    def count_ip(cls):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        _, ip_network = cls.ipaddress()
+        cursor.execute(*table.select(Count(Literal('*')),
+                where=(table.ip_network == str(ip_network))
                 & (table.create_date >= cls.delay())))
         return cursor.fetchone()[0]
 

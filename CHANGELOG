@@ -1,3 +1,4 @@
+* Limit authentication attempt per IP network
 * Manage 'X-Forwarded' headers from proxies
 * Add '_request' attribute to Transaction context
 * Delete translations on deletion only when model has translatable field

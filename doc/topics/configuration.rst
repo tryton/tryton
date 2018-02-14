@@ -262,6 +262,31 @@ attempts over a period of `timeout`.
 
 Default: `5`
 
+max_attempt_ip_network
+~~~~~~~~~~~~~~~~~~~~~~
+
+The maximum authentication attempt from the same network before the server
+answers unconditionally `Too Many Requests` for any other attempts. The
+counting is done on all attempts over a period of `timeout`.
+
+Default: `300`
+
+ip_network_4
+~~~~~~~~~~~~
+
+The network prefix to apply on IPv4 address for counting the authentication
+attempts.
+
+Default: `32`
+
+ip_network_6
+~~~~~~~~~~~~
+
+The network prefix to apply on IPv6 address for counting the authentication
+attempts.
+
+Default: `56`
+
 password
 --------
 

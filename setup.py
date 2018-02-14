@@ -100,6 +100,7 @@ setup(name=name,
         'python-sql >= 0.4',
         'werkzeug',
         'wrapt',
+        'ipaddress',
         ],
     extras_require={
         'PostgreSQL': pg_require,
