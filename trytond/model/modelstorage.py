@@ -793,7 +793,8 @@ class ModelStorage(Model):
         """
         ModelData = Pool().get('ir.model.data')
         # Allow root user to update/delete
-        if Transaction().user == 0:
+        if (Transaction().user == 0
+                or not ModelData.has_model(cls.__name__)):
             return True
         with Transaction().set_context(_check_access=False):
             models_data = ModelData.search([

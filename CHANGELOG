@@ -1,3 +1,4 @@
+* Add ModelData.has_model cache for ModelStorage.check_xml_record
 * Limit authentication attempt per IP network
 * Manage 'X-Forwarded' headers from proxies
 * Add '_request' attribute to Transaction context

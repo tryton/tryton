@@ -1021,6 +1021,7 @@ class ModelData(ModelSQL, ModelView):
     out_of_sync = fields.Function(fields.Boolean('Out of Sync'),
         'get_out_of_sync', searcher='search_out_of_sync')
     _get_id_cache = Cache('ir_model_data.get_id', context=False)
+    _has_model_cache = Cache('ir_model_data.has_model', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -1072,10 +1073,34 @@ class ModelData(ModelSQL, ModelView):
         return [('id', 'in', query)]
 
     @classmethod
+    def create(cls, *args):
+        records = super(ModelData, cls).create(*args)
+        cls._has_model_cache.clear()
+        return records
+
+    @classmethod
     def write(cls, data, values, *args):
         super(ModelData, cls).write(data, values, *args)
         # Restart the cache for get_id
         cls._get_id_cache.clear()
+        cls._has_model_cache.clear()
+
+    @classmethod
+    def delete(cls, records):
+        super(ModelData, cls).delete(records)
+        cls._has_model_cache.clear()
+
+    @classmethod
+    def has_model(cls, model):
+        models = cls._has_model_cache.get(None)
+        if models is None:
+            table = cls.__table__()
+            cursor = Transaction().connection.cursor()
+
+            cursor.execute(*table.select(table.model, group_by=[table.model]))
+            models = [m[0] for m in cursor.fetchall()]
+            cls._has_model_cache.set(None, models)
+        return model in models
 
     @classmethod
     def get_id(cls, module, fs_id):

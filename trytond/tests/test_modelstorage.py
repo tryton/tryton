@@ -159,6 +159,97 @@ class ModelStorageTestCase(unittest.TestCase):
         with self.assertRaises(UserError):
             Model.create([{'constraint': 'foo', 'value': 'bar'}])
 
+    @with_transaction()
+    def test_check_xml_record_without_record(self):
+        "Test check_xml_record without record"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        record, = Model.create([{}])
+
+        result = Model.check_xml_record([record], {'name': "Test"})
+
+        self.assertTrue(result)
+
+    @with_transaction()
+    def test_check_xml_record_with_record_no_matching_values(self):
+        "Test check_xml_record with record and no matching values"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{}])
+        ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': ModelData.dump_values({}),
+                    'noupdate': False,
+                    }])
+
+        result = Model.check_xml_record([record], {'name': "Test"})
+
+        self.assertTrue(result)
+
+    @with_transaction()
+    def test_check_xml_record_with_record_matching_values(self):
+        "Test check_xml_record with record and matching values"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{'name': "Foo"}])
+        ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': ModelData.dump_values({'name': "Foo"}),
+                    'noupdate': False,
+                    }])
+
+        result = Model.check_xml_record([record], {'name': "Bar"})
+
+        self.assertFalse(result)
+
+    @with_transaction()
+    def test_check_xml_record_with_record_matching_values_noupdate(self):
+        "Test check_xml_record with record and matching values but noupdate"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{'name': "Foo"}])
+        ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': ModelData.dump_values({'name': "Foo"}),
+                    'noupdate': True,
+                    }])
+
+        result = Model.check_xml_record([record], {'name': "Bar"})
+
+        self.assertTrue(result)
+
+    @with_transaction(user=0)
+    def test_check_xml_record_with_record_matching_values_root(self):
+        "Test check_xml_record with record with matching values as root"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{'name': "Foo"}])
+        ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': ModelData.dump_values({'name': "Foo"}),
+                    'noupdate': False,
+                    }])
+
+        result = Model.check_xml_record([record], {'name': "Bar"})
+
+        self.assertTrue(result)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelStorageTestCase)
