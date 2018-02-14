@@ -8,6 +8,7 @@ import traceback
 from werkzeug.wrappers import Response
 from werkzeug.routing import Map, Rule
 from werkzeug.exceptions import abort, HTTPException, InternalServerError
+from werkzeug.contrib.fixers import ProxyFix
 
 import wrapt
 
@@ -118,4 +119,7 @@ class TrytondWSGI(object):
         return self.wsgi_app(environ, start_response)
 
 app = TrytondWSGI()
+num_proxies = config.getint('web', 'num_proxies')
+if num_proxies:
+    app.wsgi_app = ProxyFix(app.wsgi_app, num_proxies=num_proxies)
 import trytond.protocols.dispatcher

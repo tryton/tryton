@@ -54,6 +54,13 @@ Defines the root path served by `GET` requests.
 
 Default: Under the `www` directory of user's home running `trytond`.
 
+num_proxies
+~~~~~~~~~~~
+
+The number of proxy servers in front of `trytond`.
+
+Default: 0
+
 database
 --------
 
