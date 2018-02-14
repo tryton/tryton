@@ -1,3 +1,5 @@
+* Add maximum authentication attempt
+
 Version 4.6.0 - 2017-10-30
 * Bug fixes (see mercurial logs for details)
 * Increase session randomness to 32 bytes

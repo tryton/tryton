@@ -21,6 +21,7 @@ from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
 
 from trytond.config import config
+from trytond.exceptions import RateLimitException
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.pool import Pool
 from trytond.pyson import Eval
@@ -149,8 +150,17 @@ class User(ModelSQL, ModelView):
         Attempt = pool.get('web.user.authenticate.attempt')
         email = email.lower()
 
+        count_ip = Attempt.count_ip()
+        if count_ip > config.getint(
+                'session', 'max_attempt_ip_network', default=300):
+            # Do not add attempt as the goal is to prevent flooding
+            raise RateLimitException()
+        count = Attempt.count(email)
+        if count > config.getint('session', 'max_attempt', default=5):
+            Attempt.add(email)
+            raise RateLimitException()
         # Prevent brute force attack
-        Transaction().atexit(time.sleep, 2 ** Attempt.count(email) - 1)
+        Transaction().atexit(time.sleep, 2 ** count - 1)
 
         users = cls.search([('email', '=', email)])
         if users:
