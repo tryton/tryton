@@ -19,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
     <notebook colspan="8">
         <page string="General" id="general" col="6">
             <label name="timesheet_available" string="Timesheet:"/>
-            <group col="-1">
+            <group col="-1" id="timesheet">
                 <field name="timesheet_available" xexpand="0"/>
                 <label name="timesheet_start_date" string="Start:"/>
                 <field name="timesheet_start_date" xexpand="0"/>
