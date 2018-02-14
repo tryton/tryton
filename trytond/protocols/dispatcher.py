@@ -49,9 +49,13 @@ def login(request, database_name, user, parameters, language=None):
     except DatabaseOperationalError:
         logger.error('fail to connect to %s', database_name, exc_info=True)
         abort(404)
+    context = {
+        'language': language,
+        '_request': request.context,
+        }
     try:
         session = security.login(
-            database_name, user, parameters, language=language)
+            database_name, user, parameters, context=context)
         code = 403
     except RateLimitException:
         session = None
@@ -68,7 +72,8 @@ def login(request, database_name, user, parameters, language=None):
 def logout(request, database_name):
     auth = request.authorization
     name = security.logout(
-        database_name, auth.get('userid'), auth.get('session'))
+        database_name, auth.get('userid'), auth.get('session'),
+        context={'_request': request.context})
     logger.info('logout \'%s\' from %s using %s on database \'%s\'',
         name, request.remote_addr, request.scheme, database_name)
     return True
@@ -97,11 +102,13 @@ def db_exist(request, database_name):
         return False
 
 
-def db_list(*args):
+def db_list(request, *args):
     if not config.getboolean('database', 'list'):
         raise Exception('AccessDenied')
+    context = {'_request': request.context}
     with Transaction().start(
-            None, 0, close=True, _nocache=True) as transaction:
+            None, 0, context=context, close=True, _nocache=True
+            ) as transaction:
         return transaction.database.list()
 
 
@@ -159,6 +166,7 @@ def _dispatch(request, pool, *args, **kwargs):
             try:
                 c_args, c_kwargs, transaction.context, transaction.timestamp \
                     = rpc.convert(obj, *args, **kwargs)
+                transaction.context['_request'] = request.context
                 meth = getattr(obj, method)
                 if (rpc.instantiate is None
                         or not is_instance_method(obj, method)):
@@ -187,8 +195,10 @@ def _dispatch(request, pool, *args, **kwargs):
             # Need to commit to unlock SQLite database
             transaction.commit()
         if request.authorization.type == 'session':
+            context = {'_request': request.context}
             try:
-                with Transaction().start(pool.database_name, 0) as transaction:
+                with Transaction().start(
+                        pool.database_name, 0, context=context) as transaction:
                     Session = pool.get('ir.session')
                     Session.reset(request.authorization.get('session'))
             except DatabaseOperationalError:

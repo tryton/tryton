@@ -15,9 +15,8 @@ def _get_pool(dbname):
     return pool
 
 
-def login(dbname, loginname, parameters, cache=True, language=None):
+def login(dbname, loginname, parameters, cache=True, context=None):
     DatabaseOperationalError = backend.get('DatabaseOperationalError')
-    context = {'language': language}
     for count in range(config.getint('database', 'retry'), -1, -1):
         with Transaction().start(dbname, 0, context=context) as transaction:
             pool = _get_pool(dbname)
@@ -43,10 +42,10 @@ def login(dbname, loginname, parameters, cache=True, language=None):
     return
 
 
-def logout(dbname, user, session):
+def logout(dbname, user, session, context=None):
     DatabaseOperationalError = backend.get('DatabaseOperationalError')
     for count in range(config.getint('database', 'retry'), -1, -1):
-        with Transaction().start(dbname, 0):
+        with Transaction().start(dbname, 0, context=context):
             pool = _get_pool(dbname)
             Session = pool.get('ir.session')
             try:
@@ -65,10 +64,10 @@ def logout(dbname, user, session):
         return name
 
 
-def check(dbname, user, session):
+def check(dbname, user, session, context=None):
     DatabaseOperationalError = backend.get('DatabaseOperationalError')
     for count in range(config.getint('database', 'retry'), -1, -1):
-        with Transaction().start(dbname, user) as transaction:
+        with Transaction().start(dbname, user, context=context) as transaction:
             pool = _get_pool(dbname)
             Session = pool.get('ir.session')
             try:

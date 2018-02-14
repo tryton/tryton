@@ -1,3 +1,4 @@
+* Add '_request' attribute to Transaction context
 * Delete translations on deletion only when model has translatable field
 * Remove MySQL backend
 * Add keyword attribute to button tag

@@ -62,11 +62,21 @@ class Request(_Request):
             return None
         if auth.type == 'session':
             user_id = security.check(
-                database_name, auth.get('userid'), auth.get('session'))
+                database_name, auth.get('userid'), auth.get('session'),
+                context={'_request': self.context})
         else:
             user_id = security.login(
                 database_name, auth.username, auth, cache=False)
         return user_id
+
+    @cached_property
+    def context(self):
+        return {
+            'remote_addr': self.remote_addr,
+            'http_host': self.environ.get('HTTP_HOST'),
+            'scheme': self.scheme,
+            'is_secure': self.is_secure,
+            }
 
 
 def parse_authorization_header(value):
