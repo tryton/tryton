@@ -336,10 +336,16 @@ class AccountTemplate(ModelSQL, ModelView):
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
     party_required = fields.Boolean('Party Required',
+        domain=[
+            If((Eval('kind') == 'view') | ~Eval('deferral', False),
+                ('party_required', '=', False),
+                (),
+                )
+            ],
         states={
-            'invisible': Eval('kind') == 'view',
+            'invisible': (Eval('kind') == 'view') | ~Eval('deferral', False),
             },
-        depends=['kind'])
+        depends=['kind', 'deferral'])
     general_ledger_balance = fields.Boolean('General Ledger Balance',
         states={
             'invisible': Eval('kind') == 'view',
@@ -603,10 +609,16 @@ class Account(ModelSQL, ModelView):
             'invisible': Eval('kind') == 'view',
             }, depends=['kind'])
     party_required = fields.Boolean('Party Required',
+        domain=[
+            If((Eval('kind') == 'view') | ~Eval('deferral', False),
+                ('party_required', '=', False),
+                (),
+                )
+            ],
         states={
-            'invisible': Eval('kind') == 'view',
+            'invisible': (Eval('kind') == 'view') | ~Eval('deferral', False),
             },
-        depends=['kind'])
+        depends=['kind', 'deferral'])
     general_ledger_balance = fields.Boolean('General Ledger Balance',
         states={
             'invisible': Eval('kind') == 'view',
