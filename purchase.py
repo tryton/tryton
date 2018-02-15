@@ -1551,7 +1551,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
     def _get_move_invoice_lines(self, move_type):
         'Return the invoice lines that should be shipped'
-        return [l for l in self.invoice_lines if not l.stock_moves]
+        if self.purchase.invoice_method == 'order':
+            return [l for l in self.invoice_lines]
+        else:
+            return [l for l in self.invoice_lines if not l.stock_moves]
 
     def get_rec_name(self, name):
         if self.product:

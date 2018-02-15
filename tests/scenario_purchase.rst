@@ -548,6 +548,46 @@ linked to invoices::
     >>> stock_move.state
     u'done'
 
+Create a purchase to be invoiced on order, partially send it and check
+correctly linked to invoices::
+
+    >>> purchase = Purchase()
+    >>> purchase.party = supplier
+    >>> purchase.payment_term = payment_term
+    >>> purchase.invoice_method = 'order'
+    >>> line = purchase.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 10.0
+    >>> purchase.click('quote')
+    >>> purchase.click('confirm')
+    >>> purchase.click('process')
+    >>> shipment = ShipmentIn()
+    >>> shipment.supplier = supplier
+    >>> for move in purchase.moves:
+    ...     incoming_move = Move(id=move.id)
+    ...     incoming_move.quantity = 8.0
+    ...     shipment.incoming_moves.append(incoming_move)
+    >>> shipment.save()
+    >>> for move in shipment.inventory_moves:
+    ...     move.quantity = 8.0
+    >>> shipment.click('receive')
+    >>> shipment.click('done')
+    >>> purchase.reload()
+    >>> invoice, = purchase.invoices
+    >>> invoice_line, = invoice.lines
+    >>> invoice_line.quantity
+    10.0
+    >>> draft_stock_move, stock_move = sorted(
+    ...     invoice_line.stock_moves, key=lambda m: m.quantity)
+    >>> draft_stock_move.quantity
+    2.0
+    >>> draft_stock_move.state
+    u'draft'
+    >>> stock_move.quantity
+    8.0
+    >>> stock_move.state
+    u'done'
+
 Deleting a line from a invoice should recreate it::
 
     >>> purchase = Purchase()
