@@ -76,6 +76,7 @@ class View(ModelSQL, ModelView):
         cls._buttons.update({
                 'show': {
                     'readonly': Eval('type') != 'form',
+                    'depends': ['type'],
                     },
                 })
 

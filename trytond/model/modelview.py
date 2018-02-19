@@ -560,6 +560,9 @@ class ModelView(Model):
             else:
                 element.set('type', 'instance')
 
+            for depend in states.get('depends', []):
+                fields_attrs.setdefault(depend, {})
+
         # translate view
         if Transaction().language != 'en':
             for attr in ('string', 'sum', 'confirm', 'help'):

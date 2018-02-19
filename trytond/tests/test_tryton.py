@@ -22,7 +22,7 @@ from sql import Table
 
 from trytond.pool import Pool, isregisteredby
 from trytond import backend
-from trytond.model import Workflow, ModelSQL, ModelSingleton, fields
+from trytond.model import Workflow, ModelSQL, ModelSingleton, ModelView, fields
 from trytond.model.fields import get_eval_fields, Function
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
@@ -308,6 +308,12 @@ class ModuleTestCase(unittest.TestCase):
                 assert depends <= set(model._fields), (
                     'Unknown depends %s in "%s"."%s"' % (
                         list(depends - set(model._fields)), mname, fname))
+            if issubclass(model, ModelView):
+                for bname, button in model._buttons.iteritems():
+                    depends = set(button.get('depends', []))
+                    assert depends <= set(model._fields), (
+                        'Unknown depends %s in button "%s"."%s"' % (
+                            list(depends - set(model._fields)), mname, bname))
 
     @with_transaction()
     def test_field_methods(self):

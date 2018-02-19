@@ -129,6 +129,9 @@ List of attributes shared by many form elements:
         * ``pre_validate``: Only for button, it contains a domain to apply
           on the record before calling the button.
 
+        * ``depends``: Only for button, it must return the list of field on
+          which the button depends.
+
     .. _common-attributes-help:
 
     * ``help``: The string that will be displayed when the cursor hovers over

@@ -76,21 +76,27 @@ class Module(ModelSQL, ModelView):
         cls._buttons.update({
                 'activate': {
                     'invisible': Eval('state') != 'not activated',
+                    'depends': ['state'],
                     },
                 'activate_cancel': {
                     'invisible': Eval('state') != 'to activate',
+                    'depends': ['state'],
                     },
                 'deactivate': {
                     'invisible': Eval('state') != 'activated',
+                    'depends': ['state'],
                     },
                 'deactivate_cancel': {
                     'invisible': Eval('state') != 'to remove',
+                    'depends': ['state'],
                     },
                 'upgrade': {
                     'invisible': Eval('state') != 'activated',
+                    'depends': ['state'],
                     },
                 'upgrade_cancel': {
                     'invisible': Eval('state') != 'to upgrade',
+                    'depends': ['state'],
                     },
                 })
 

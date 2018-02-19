@@ -1035,6 +1035,7 @@ class ModelData(ModelSQL, ModelView):
         cls._buttons.update({
                 'sync': {
                     'invisible': ~Eval('out_of_sync'),
+                    'depends': ['out_of_sync'],
                     },
                 })
 

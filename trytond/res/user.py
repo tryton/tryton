@@ -825,9 +825,11 @@ class UserApplication(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'validate_': {
                     'invisible': Eval('state') != 'requested',
+                    'depends': ['state'],
                     },
                 'cancel': {
                     'invisible': Eval('state') == 'cancelled',
+                    'depends': ['state'],
                     },
                 })
 
