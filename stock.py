@@ -252,21 +252,26 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state').in_(['cancel', 'done']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['cancel', 'draft',
                             'waiting']),
                     'icon': If(Eval('state') == 'cancel',
                         'tryton-clear', 'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'wait': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'ship': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'shipped',
+                    'depends': ['state'],
                     },
                 })
         cls._error_messages.update({
