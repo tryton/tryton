@@ -76,6 +76,8 @@ class Work:
                         | (Eval('project_invoice_method', 'manual')
                             == 'manual')),
                     'readonly': ~Eval('duration_to_invoice'),
+                    'depends': ['type', 'project_invoice_method',
+                        'duration_to_invoice']
                     },
                 })
         cls._error_messages.update({
