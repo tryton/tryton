@@ -21,6 +21,7 @@ class Move:
         cls._buttons.update({
                 'split_wizard': {
                     'readonly': ~Eval('state').in_(['draft', 'assigned']),
+                    'depends': ['state'],
                     },
                 })
 
@@ -136,6 +137,7 @@ class _ShipmentSplit(ModelView):
                 'split_wizard': {
                     'readonly': Eval('state') != 'draft',
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 })
 
