@@ -422,15 +422,19 @@ class Mandate(Workflow, ModelSQL, ModelView):
                 'cancel': {
                     'invisible': ~Eval('state').in_(
                         ['requested', 'validated']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': Eval('state') != 'requested',
+                    'depends': ['state'],
                     },
                 'request': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'validate_mandate': {
                     'invisible': Eval('state') != 'requested',
+                    'depends': ['state'],
                     },
                 })
         t = cls.__table__()
@@ -645,15 +649,19 @@ class Message(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'waiting']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 'wait': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'do': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 })
 
