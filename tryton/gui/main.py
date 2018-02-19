@@ -41,9 +41,9 @@ if os.environ.get('GTKOSXAPPLICATION'):
 else:
     gtkosx_application = None
 try:
-    import gtkspell
+    from gi.repository import GtkSpell
 except ImportError:
-    gtkspell = None
+    GtkSpell = None
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
@@ -632,7 +632,7 @@ class Main(object):
         menu_form.add(checkmenuitem_fast_tabbing)
         checkmenuitem_fast_tabbing.set_active(CONFIG['client.fast_tabbing'])
 
-        if gtkspell:
+        if GtkSpell:
             checkmenuitem_spellcheck = gtk.CheckMenuItem(_('Spell Checking'),
                 use_underline=True)
             checkmenuitem_spellcheck.connect('activate',

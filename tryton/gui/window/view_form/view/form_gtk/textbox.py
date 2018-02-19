@@ -1,14 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import logging
+
 import gtk
 from .widget import Widget, TranslateMixin
 from tryton.common.widget_style import set_widget_style
 from tryton.config import CONFIG
 
 try:
-    import gtkspell
+    from gi.repository import GtkSpell
 except ImportError:
-    gtkspell = None
+    GtkSpell = None
+
+logger = logging.getLogger(__name__)
 
 
 class TextBox(Widget, TranslateMixin):
@@ -37,7 +41,6 @@ class TextBox(Widget, TranslateMixin):
             self.widget.pack_end(self.button, False, False)
 
         self.widget.pack_end(self.scrolledwindow)
-        self.lang = None
 
     def _get_textview(self):
         if self.attrs.get('size'):
@@ -87,32 +90,6 @@ class TextBox(Widget, TranslateMixin):
             self.widget.set_focus_chain([])
         else:
             self.widget.unset_focus_chain()
-        if gtkspell:
-            spell = None
-            try:
-                spell = gtkspell.get_from_text_view(self.textview)
-            except Exception:
-                pass
-
-            if not value and self.attrs.get('spell') \
-                    and CONFIG['client.spellcheck'] \
-                    and self.record:
-                language = self.record.expr_eval(self.attrs['spell'])
-                try:
-                    if not spell:
-                        spell = gtkspell.Spell(self.textview)
-                    if self.lang != language:
-                        try:
-                            spell.set_language(language)
-                        except Exception:
-                            spell.detach()
-                            del spell
-                        self.lang = language
-                except Exception:
-                    pass
-            elif spell:
-                spell.detach()
-                del spell
 
     @property
     def modified(self):
@@ -144,31 +121,26 @@ class TextBox(Widget, TranslateMixin):
         if not value:
             value = ''
         self.set_buffer(value, self.textview)
-        if gtkspell:
-            spell = None
-            try:
-                spell = gtkspell.get_from_text_view(self.textview)
-            except Exception:
-                pass
+        if (GtkSpell
+                and self.textview.get_editable()
+                and self.attrs.get('spell')
+                and CONFIG['client.spellcheck']):
+            checker = GtkSpell.Checker.get_from_text_view(self.textview)
 
-            if self.attrs.get('spell') and CONFIG['client.spellcheck'] \
-                    and self.record:
+            if self.record:
                 language = self.record.expr_eval(self.attrs['spell'])
-                try:
-                    if not spell:
-                        spell = gtkspell.Spell(self.textview)
-                    if self.lang != language:
-                        try:
-                            spell.set_language(language)
-                        except Exception:
-                            spell.detach()
-                            del spell
-                        self.lang = language
-                except Exception:
-                    pass
-            elif spell:
-                spell.detach()
-                del spell
+                if not checker:
+                    checker = GtkSpell.Checker()
+                    checker.attach(self.textview)
+                if checker.get_language() != language:
+                    try:
+                        checker.set_language(language)
+                    except Exception:
+                        logger.debug(
+                            'Could not set spell checker to "%s"', language)
+                        checker.detach()
+            elif checker:
+                checker.detach()
 
 
 class TextBufferLimitSize(gtk.TextBuffer):
