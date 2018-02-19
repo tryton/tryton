@@ -88,15 +88,19 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': Eval('state') == 'draft',
+                    'depends': ['state'],
                     },
                 'confirm': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'complete': {
                     'readonly': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 })
 
