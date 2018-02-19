@@ -192,10 +192,12 @@ class Payment:
                     'invisible': (~Eval('state', 'draft').in_(
                             ['approved', 'processing'])
                         | ~Eval('stripe_checkout_needed', False)),
+                    'depends': ['state', 'stripe_checkout_needed'],
                     },
                 'stripe_capture_': {
                     'invisible': ((Eval('state', 'draft') != 'processing')
                         | ~Eval('stripe_capture_needed')),
+                    'depends': ['state', 'stripe_capture_needed'],
                     },
                 })
         # As there is not setter to avoid the cost of validation,
@@ -754,6 +756,7 @@ class Customer(ModelSQL, ModelView):
         cls._buttons.update({
                 'stripe_checkout': {
                     'invisible': ~Eval('stripe_checkout_needed', False),
+                    'depends': ['stripe_checkout_needed'],
                     },
                 })
 
