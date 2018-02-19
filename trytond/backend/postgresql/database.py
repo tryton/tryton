@@ -223,18 +223,20 @@ class Database(DatabaseInterface):
             return res
 
         connection = self.get_connection()
-        cursor = connection.cursor()
-        cursor.execute('SELECT datname FROM pg_database '
-            'WHERE datistemplate = false ORDER BY datname')
-        res = []
-        for db_name, in cursor:
-            try:
-                with connect(self.dsn(db_name)) as conn:
-                    if self._test(conn):
-                        res.append(db_name)
-            except Exception:
-                continue
-        self.put_connection(connection)
+        try:
+            cursor = connection.cursor()
+            cursor.execute('SELECT datname FROM pg_database '
+                'WHERE datistemplate = false ORDER BY datname')
+            res = []
+            for db_name, in cursor:
+                try:
+                    with connect(self.dsn(db_name)) as conn:
+                        if self._test(conn):
+                            res.append(db_name)
+                except Exception:
+                    continue
+        finally:
+            self.put_connection(connection)
 
         Database._list_cache = res
         Database._list_cache_timestamp = now
@@ -244,32 +246,34 @@ class Database(DatabaseInterface):
         from trytond.modules import get_module_info
 
         connection = self.get_connection()
-        cursor = connection.cursor()
-        sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
-        with open(sql_file) as fp:
-            for line in fp.read().split(';'):
-                if (len(line) > 0) and (not line.isspace()):
-                    cursor.execute(line)
+        try:
+            cursor = connection.cursor()
+            sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
+            with open(sql_file) as fp:
+                for line in fp.read().split(';'):
+                    if (len(line) > 0) and (not line.isspace()):
+                        cursor.execute(line)
 
-        for module in ('ir', 'res'):
-            state = 'uninstalled'
-            if module in ('ir', 'res'):
-                state = 'to install'
-            info = get_module_info(module)
-            cursor.execute('SELECT NEXTVAL(\'ir_module_id_seq\')')
-            module_id = cursor.fetchone()[0]
-            cursor.execute('INSERT INTO ir_module '
-                '(id, create_uid, create_date, name, state) '
-                'VALUES (%s, %s, now(), %s, %s)',
-                (module_id, 0, module, state))
-            for dependency in info.get('depends', []):
-                cursor.execute('INSERT INTO ir_module_dependency '
-                    '(create_uid, create_date, module, name) '
-                    'VALUES (%s, now(), %s, %s)',
-                    (0, module_id, dependency))
+            for module in ('ir', 'res'):
+                state = 'uninstalled'
+                if module in ('ir', 'res'):
+                    state = 'to install'
+                info = get_module_info(module)
+                cursor.execute('SELECT NEXTVAL(\'ir_module_id_seq\')')
+                module_id = cursor.fetchone()[0]
+                cursor.execute('INSERT INTO ir_module '
+                    '(id, create_uid, create_date, name, state) '
+                    'VALUES (%s, %s, now(), %s, %s)',
+                    (module_id, 0, module, state))
+                for dependency in info.get('depends', []):
+                    cursor.execute('INSERT INTO ir_module_dependency '
+                        '(create_uid, create_date, module, name) '
+                        'VALUES (%s, now(), %s, %s)',
+                        (0, module_id, dependency))
 
-        connection.commit()
-        self.put_connection(connection)
+            connection.commit()
+        finally:
+            self.put_connection(connection)
 
     def test(self):
         connection = self.get_connection()
