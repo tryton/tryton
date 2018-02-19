@@ -186,20 +186,25 @@ class Asset(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'run': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'close': {
                     'invisible': Eval('state') != 'running',
+                    'depends': ['state'],
                     },
                 'create_lines': {
                     'invisible': (Eval('lines', [])
                         | (Eval('state') != 'draft')),
+                    'depends': ['state'],
                     },
                 'clear_lines': {
                     'invisible': (~Eval('lines', [0])
                         | (Eval('state') != 'draft')),
+                    'depends': ['state'],
                     },
                 'update': {
                     'invisible': Eval('state') != 'running',
+                    'depends': ['state'],
                     },
                 })
 
