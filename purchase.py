@@ -182,6 +182,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
@@ -189,18 +190,22 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                     'icon': If(Eval('state').in_(['cancel', 'rejected']),
                         'tryton-clear',
                         'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'wait': {
                     'pre_validate': [('supply_date', '!=', None)],
                     'invisible': ((Eval('state') != 'draft')
                         | ~Eval('lines', [])),
                     'readonly': ~Eval('lines', []),
+                    'depends': ['state'],
                     },
                 'approve': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 'reject': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 })
         # The states where amounts are cached
