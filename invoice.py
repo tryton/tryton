@@ -22,6 +22,7 @@ class Invoice:
                     'invisible': (
                         (Eval('state') != 'posted')
                         | (Eval('type') != 'out')),
+                    'depends': ['state', 'type'],
                     },
                 })
 
