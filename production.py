@@ -178,6 +178,7 @@ class Production(Workflow, ModelSQL, ModelView):
                 'cancel': {
                     'invisible': ~Eval('state').in_(['request', 'draft',
                             'assigned']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['request', 'waiting',
@@ -187,10 +188,12 @@ class Production(Workflow, ModelSQL, ModelView):
                         If(Eval('state') == 'request',
                             'tryton-go-next',
                             'tryton-go-previous')),
+                    'depends': ['state'],
                     },
                 'reset_bom': {
                     'invisible': (~Eval('bom')
                         | ~Eval('state').in_(['request', 'draft', 'waiting'])),
+                    'depends': ['state', 'bom'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned',
@@ -200,15 +203,19 @@ class Production(Workflow, ModelSQL, ModelView):
                         If(Eval('state') == 'waiting',
                             'tryton-clear',
                             'tryton-go-next')),
+                    'depends': ['state'],
                     },
                 'run': {
                     'invisible': Eval('state') != 'assigned',
+                    'depends': ['state'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'running',
+                    'depends': ['state'],
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 'assign_try': {},
                 'assign_force': {},
