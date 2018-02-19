@@ -89,9 +89,11 @@ class User(ModelSQL, ModelView):
         cls._buttons.update({
                 'validate_email': {
                     'readonly': Eval('email_valid', False),
+                    'depends': ['email_valid'],
                     },
                 'reset_password': {
                     'readonly': ~Eval('email_valid', False),
+                    'depends': ['email_valid'],
                     },
                 })
 
