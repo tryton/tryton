@@ -164,19 +164,24 @@ class Statement(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
+                    'depends': ['state'],
                     },
                 'validate_statement': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'post': {
                     'invisible': Eval('state') != 'validated',
+                    'depends': ['state'],
                     },
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'validated']),
+                    'depends': ['state'],
                     },
                 'reconcile': {
                     'invisible': Eval('state').in_(['draft', 'cancel']),
                     'readonly': ~Eval('to_reconcile'),
+                    'depends': ['state', 'to_reconcile'],
                     },
                 })
 

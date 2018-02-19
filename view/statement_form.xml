@@ -48,5 +48,4 @@ this repository contains the full copyright notices and license terms. -->
             <field name="company"/>
         </page>
     </notebook>
-    <field name="to_reconcile" colspan="4" invisible="1"/>
 </form>
