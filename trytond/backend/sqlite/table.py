@@ -291,7 +291,9 @@ class TableHandler(TableHandlerInterface):
     def drop_column(self, column_name, exception=False):
         if not self.column_exist(column_name):
             return
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        database = transaction.database
+        cursor = transaction.connection.cursor()
         temp_table = '_temp_%s' % self.table_name
         try:
             TableHandler.table_rename(self.table_name, temp_table)
@@ -301,10 +303,12 @@ class TableHandler(TableHandlerInterface):
             logger.warning('Unable to drop column: Error renaming '
                 'table %s to temp!', self.table_name)
         new_table = TableHandler(self._model, history=self.history)
-        for name, (notnull, hasdef, size, typname) \
-                in self._columns.iteritems():
+        for name, values in self._columns.iteritems():
             if name != column_name:
-                new_table._add_raw_column(name, typname, field_size=size)
+                typname = values['typname']
+                size = values['size']
+                new_table._add_raw_column(
+                    name, database.sql_type(typname), field_size=size)
         columns_name = [x for x in new_table._columns.keys()]
         cursor.execute(('INSERT INTO "%s" (' +
                         ','.join('"%s"' % c for c in columns_name) +
