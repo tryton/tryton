@@ -220,6 +220,7 @@ class Party(ModelSQL, ModelView, MultiValueMixin):
             ('code',) + tuple(clause[1:]),
             ('identifiers.code',) + tuple(clause[1:]),
             ('name',) + tuple(clause[1:]),
+            ('contact_mechanisms.rec_name',) + tuple(clause[1:]),
             ]
 
     def address_get(self, type=None):
