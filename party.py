@@ -18,6 +18,19 @@ class Address:
     invoice = fields.Boolean('Invoice')
 
 
+class ContactMechanism:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.contact_mechanism'
+    invoice = fields.Boolean('Invoice')
+
+    @classmethod
+    def usages(cls, _fields=None):
+        if _fields is None:
+            _fields = []
+        _fields.append('invoice')
+        return super(ContactMechanism, cls).usages(_fields=_fields)
+
+
 class Party(ModelSQL, ModelView):
     __name__ = 'party.party'
     customer_payment_term = fields.MultiValue(customer_payment_term)

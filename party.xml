@@ -20,6 +20,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">address_tree_sequence</field>
         </record>
 
+        <record model="ir.ui.view" id="contact_mechanism_view_tree">
+            <field name="model">party.contact_mechanism</field>
+            <field name="inherit" ref="party.contact_mechanism_view_tree"/>
+            <field name="name">contact_mechanism_tree</field>
+        </record>
+        <record model="ir.ui.view" id="contact_mechanism_view_form">
+            <field name="model">party.contact_mechanism</field>
+            <field name="inherit" ref="party.contact_mechanism_view_form"/>
+            <field name="name">contact_mechanism_form</field>
+        </record>
+        <record model="ir.ui.view" id="contact_mechanism_view_tree_sequence">
+            <field name="model">party.contact_mechanism</field>
+            <field name="inherit" ref="party.contact_mechanism_view_tree_sequence"/>
+            <field name="name">contact_mechanism_tree_sequence</field>
+        </record>
 
         <record model="ir.ui.view" id="party_view_form">
             <field name="model">party.party</field>

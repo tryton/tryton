@@ -4,7 +4,7 @@
 from trytond.pool import Pool
 from .payment_term import *
 from .invoice import *
-from .party import *
+from . import party
 from .account import *
 
 
@@ -23,9 +23,10 @@ def register():
         PayInvoiceStart,
         PayInvoiceAsk,
         CreditInvoiceStart,
-        Address,
-        Party,
-        PartyPaymentTerm,
+        party.Address,
+        party.ContactMechanism,
+        party.Party,
+        party.PartyPaymentTerm,
         InvoiceSequence,
         # Match pattern migration fallbacks to Fiscalyear values so Period
         # must be registered before Fiscalyear
@@ -38,7 +39,7 @@ def register():
         TestPaymentTerm,
         PayInvoice,
         CreditInvoice,
-        PartyReplace,
+        party.PartyReplace,
         RenewFiscalYear,
         module='account_invoice', type_='wizard')
     Pool.register(
