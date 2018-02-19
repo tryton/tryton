@@ -83,19 +83,24 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                 'create_period': {
                     'invisible': ((Eval('state') != 'open')
                         | Eval('periods', [0])),
+                    'depends': ['state'],
                     },
                 'create_period_3': {
                     'invisible': ((Eval('state') != 'open')
                         | Eval('periods', [0])),
+                    'depends': ['state'],
                     },
                 'close': {
                     'invisible': Eval('state') != 'open',
+                    'depends': ['state'],
                     },
                 'reopen': {
                     'invisible': Eval('state') != 'close',
+                    'depends': ['state'],
                     },
                 'lock': {
                     'invisible': Eval('state') != 'close',
+                    'depends': ['state'],
                     },
                 })
 

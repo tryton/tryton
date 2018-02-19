@@ -100,6 +100,7 @@ class Move(ModelSQL, ModelView):
         cls._buttons.update({
                 'post': {
                     'invisible': Eval('state') == 'posted',
+                    'depends': ['state'],
                     },
                 })
 
