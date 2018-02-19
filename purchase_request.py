@@ -95,6 +95,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         cls._buttons.update({
                 'handle_purchase_cancellation_exception': {
                     'invisible': Eval('state') != 'exception',
+                    'depends': ['state'],
                     },
                 })
 
