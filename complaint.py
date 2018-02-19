@@ -98,24 +98,30 @@ class Complaint(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'waiting']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
                         ['waiting', 'done', 'cancelled']),
                     'icon': If(Eval('state').in_(['done', 'cancelled']),
                         'tryton-clear', 'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['draft']),
+                    'depends': ['state'],
                     },
                 'approve': {
                     'invisible': ~Eval('state').in_(['waiting']),
+                    'depends': ['state'],
                     },
                 'reject': {
                     'invisible': ~Eval('state').in_(['waiting']),
+                    'depends': ['state'],
                     },
                 'process': {
                     'invisible': ~Eval('state').in_(['approved']),
+                    'depends': ['state'],
                     },
                 })
 
