@@ -227,6 +227,7 @@ class Database(DatabaseInterface):
     TYPES_MAPPING = {
         'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP'),
         'BIGINT': SQLType('INTEGER', 'INTEGER'),
+        'BOOL': SQLType('BOOLEAN', 'BOOLEAN'),
         }
 
     def __new__(cls, name=':memory:'):
