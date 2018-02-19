@@ -35,5 +35,4 @@ this repository contains the full copyright notices and license terms. -->
     </group>
     <field name="unit_price_required" invisible="1" colspan="4"/>
     <field name="unit_digits" invisible="1" colspan="4"/>
-    <field name="assignation_required" invisible="1" colspan="4"/>
 </form>

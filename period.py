@@ -48,9 +48,11 @@ class Period(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') == 'draft',
+                    'depends': ['state'],
                     },
                 'close': {
                     'invisible': Eval('state') == 'closed',
+                    'depends': ['state'],
                     },
                 })
 

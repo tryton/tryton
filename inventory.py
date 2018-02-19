@@ -71,12 +71,15 @@ class Inventory(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'confirm': {
                     'invisible': Eval('state').in_(['done', 'cancel']),
+                    'depends': ['state'],
                     },
                 'cancel': {
                     'invisible': Eval('state').in_(['cancel', 'done']),
+                    'depends': ['state'],
                     },
                 'complete_lines': {
                     'readonly': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 })
 

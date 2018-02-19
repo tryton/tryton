@@ -188,15 +188,19 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state').in_(['cancel', 'done']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
+                    'depends': ['state'],
                     },
                 'receive': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'received',
+                    'depends': ['state'],
                     },
                 })
 
@@ -623,22 +627,27 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state').in_(['cancel', 'done']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['waiting', 'cancel']),
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['assigned', 'draft']),
                     'icon': If(Eval('state') == 'assigned',
                         'tryton-go-previous', 'tryton-go-next'),
+                    'depends': ['state'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'assigned',
+                    'depends': ['state'],
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 'assign_try': {},
                 'assign_force': {},
@@ -978,11 +987,13 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state').in_(['cancel', 'done']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['waiting', 'cancel']),
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['assigned', 'waiting',
@@ -992,12 +1003,15 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                         If(Eval('state') == 'waiting',
                             'tryton-clear',
                             'tryton-go-next')),
+                    'depends': ['state'],
                     },
                 'pack': {
                     'invisible': If(Eval('warehouse_storage')
                         == Eval('warehouse_output'),
                         ~Eval('state').in_(['assigned', 'waiting']),
                         Eval('state') != 'assigned'),
+                    'depends': ['state', 'warehouse_storage',
+                        'warehouse_output'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'packed',
@@ -1561,15 +1575,19 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state').in_(['cancel', 'done']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
+                    'depends': ['state'],
                     },
                 'receive': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'received',
+                    'depends': ['state'],
                     },
                 })
 
@@ -2076,6 +2094,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 'cancel': {
                     'invisible': Eval('state').in_(
                         ['cancel', 'shipped', 'done']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
@@ -2085,6 +2104,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                         If(Eval('state') == 'request',
                             'tryton-go-next',
                             'tryton-go-previous')),
+                    'depends': ['state'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['assigned', 'waiting',
@@ -2094,19 +2114,23 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                         If(Eval('state') == 'waiting',
                             'tryton-clear',
                             'tryton-go-next')),
+                    'depends': ['state'],
                     },
                 'ship': {
                     'invisible': ((Eval('state') != 'assigned') |
                         ~Eval('transit_location')),
+                    'depends': ['state', 'transit_location'],
                     },
                 'done': {
                     'invisible': If(
                         ~Eval('transit_location'),
                         Eval('state') != 'assigned',
                         Eval('state') != 'shipped'),
+                    'depends': ['state', 'transit_location'],
                     },
                 'assign_wizard': {
                     'invisible': Eval('state') != 'waiting',
+                    'depends': ['state'],
                     },
                 'assign_try': {},
                 'assign_force': {},

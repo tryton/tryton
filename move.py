@@ -294,19 +294,23 @@ class Move(Workflow, ModelSQL, ModelView):
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
                     'readonly': Eval('shipment'),
+                    'depends': ['state', 'shipment'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['assigned']),
                     'readonly': Eval('shipment'),
+                    'depends': ['state', 'shipment'],
                     },
                 'assign': {
                     'invisible': ~Eval('state').in_(['assigned']),
+                    'depends': ['state'],
                     },
                 'do': {
                     'invisible': ~Eval('state').in_(['draft', 'assigned']),
                     'readonly': (Eval('shipment')
                         | (Eval('assignation_required', True)
                             & (Eval('state') == 'draft'))),
+                    'depends': ['state', 'assignation_required', 'shipment'],
                     },
                 })
 
