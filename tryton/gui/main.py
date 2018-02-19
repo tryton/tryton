@@ -199,11 +199,6 @@ class Main(object):
             settings.set_property('gtk-button-images', True)
         except TypeError:
             pass
-        try:
-            settings.set_property('gtk-can-change-accels',
-                CONFIG['client.can_change_accelerators'])
-        except TypeError:
-            pass
 
         # Register plugins
         tryton.plugins.register()
@@ -549,24 +544,6 @@ class Main(object):
         if (CONFIG['client.toolbar'] or 'both') == 'text':
             radiomenuitem_text.set_active(True)
 
-        # Menubar accelerators
-        menuitem_menubar = gtk.MenuItem(_('_Menubar'), use_underline=True)
-        menu_options.add(menuitem_menubar)
-
-        menu_menubar = gtk.Menu()
-        menu_menubar.set_accel_group(self.accel_group)
-        menu_menubar.set_accel_path('<tryton>/Options/Menubar')
-        menuitem_menubar.set_submenu(menu_menubar)
-
-        checkmenuitem_accel = gtk.CheckMenuItem(_('Change Accelerators'),
-            use_underline=True)
-        checkmenuitem_accel.connect('activate',
-                lambda menuitem: self.sig_accel_change(menuitem.get_active()))
-        checkmenuitem_accel.set_accel_path('<tryton>/Options/Menubar/Accel')
-        menu_menubar.add(checkmenuitem_accel)
-        if CONFIG['client.can_change_accelerators']:
-            checkmenuitem_accel.set_active(True)
-
         menuitem_mode = gtk.MenuItem(_('_Mode'), use_underline=True)
         menu_options.add(menuitem_mode)
 
@@ -786,18 +763,6 @@ class Main(object):
             # As the select event is not managed by the mac menu,
             # it is done using a timeout
             gobject.timeout_add(1000, lambda: not self.favorite_set())
-
-    def sig_accel_change(self, value):
-        CONFIG['client.can_change_accelerators'] = value
-        return self.sig_accel()
-
-    def sig_accel(self):
-        menubar = CONFIG['client.can_change_accelerators']
-        settings = gtk.settings_get_default()
-        if menubar:
-            settings.set_property('gtk-can-change-accels', True)
-        else:
-            settings.set_property('gtk-can-change-accels', False)
 
     def sig_mode_change(self, pda_mode=False):
         CONFIG['client.modepda'] = pda_mode

@@ -55,7 +55,6 @@ class ConfigManager(object):
             'client.lang': locale.getdefaultlocale()[0],
             'client.language_direction': 'ltr',
             'client.email': '',
-            'client.can_change_accelerators': False,
             'client.limit': 1000,
             'client.check_version': True,
             'roundup.url': 'http://bugs.tryton.org/',
