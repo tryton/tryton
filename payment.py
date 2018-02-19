@@ -201,20 +201,24 @@ class Payment(Workflow, ModelSQL, ModelView):
                 'draft': {
                     'invisible': Eval('state') != 'approved',
                     'icon': 'tryton-go-previous',
+                    'depends': ['state'],
                     },
                 'approve': {
                     'invisible': Eval('state') != 'draft',
                     'icon': 'tryton-go-next',
+                    'depends': ['state'],
                     },
                 'succeed': {
                     'invisible': ~Eval('state').in_(
                         ['processing', 'failed']),
                     'icon': 'tryton-ok',
+                    'depends': ['state'],
                     },
                 'fail': {
                     'invisible': ~Eval('state').in_(
                         ['processing', 'succeeded']),
                     'icon': 'tryton-cancel',
+                    'depends': ['state'],
                     },
                 })
 

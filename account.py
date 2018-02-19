@@ -64,12 +64,15 @@ class MoveLine:
         cls._buttons.update({
                 'pay': {
                     'invisible': ~Eval('payment_kind').in_(dict(KINDS).keys()),
+                    'depends': ['payment_kind'],
                     },
                 'payment_block': {
                     'invisible': Eval('payment_blocked', False),
+                    'depends': ['payment_blocked'],
                     },
                 'payment_unblock': {
                     'invisible': ~Eval('payment_blocked', False),
+                    'depends': ['payment_blocked'],
                     },
                 })
         cls._check_modify_exclude.update(
