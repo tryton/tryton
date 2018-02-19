@@ -25,6 +25,7 @@ class Invoice:
         cls._buttons.update({
                 'recall_deposit': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 })
 
