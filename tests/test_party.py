@@ -273,6 +273,147 @@ class PartyTestCase(ModuleTestCase):
         # Test acceptance of a non-phone value when type is non-phone
         mechanism = create('email', 'name@example.com')
 
+    @with_transaction()
+    def test_contact_mechanism_get_no_usage(self):
+        "Test contact_mechanism_get with no usage"
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        party, = Party.create([{}])
+        contact1, contact2 = ContactMechanism.create([{
+                    'party': party.id,
+                    'sequence': 1,
+                    'type': 'email',
+                    'value': 'test1@example.com',
+                    }, {
+                    'party': party.id,
+                    'sequence': 2,
+                    'type': 'email',
+                    'value': 'test2@example.com',
+                    }])
+
+        contact = party.contact_mechanism_get('email')
+
+        self.assertEqual(contact, contact1)
+
+    @with_transaction()
+    def test_contact_mechanism_get_many_types(self):
+        "Test contact_mechanism_get with many types"
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        party, = Party.create([{}])
+        contact1, contact2 = ContactMechanism.create([{
+                    'party': party.id,
+                    'sequence': 1,
+                    'type': 'other',
+                    'value': 'test',
+                    }, {
+                    'party': party.id,
+                    'sequence': 2,
+                    'type': 'email',
+                    'value': 'test2@example.com',
+                    }])
+
+        contact = party.contact_mechanism_get({'email', 'phone'})
+
+        self.assertEqual(contact, contact2)
+
+    @with_transaction()
+    def test_contact_mechanism_get_no_contact_mechanism(self):
+        "Test contact_mechanism_get with no contact mechanism"
+        pool = Pool()
+        Party = pool.get('party.party')
+        party, = Party.create([{}])
+
+        contact = party.contact_mechanism_get()
+
+        self.assertEqual(contact, None)
+
+    @with_transaction()
+    def test_contact_mechanism_get_no_type(self):
+        "Test contact_mechanism_get with no type"
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        party, = Party.create([{}])
+        ContactMechanism.create([{
+                    'party': party.id,
+                    'type': 'email',
+                    'value': 'test1@example.com',
+                    }])
+
+        contact = party.contact_mechanism_get('phone')
+
+        self.assertEqual(contact, None)
+
+    @with_transaction()
+    def test_contact_mechanism_get_any_type(self):
+        "Test contact_mechanism_get with any type"
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        party, = Party.create([{}])
+        email1, = ContactMechanism.create([{
+                    'party': party.id,
+                    'type': 'email',
+                    'value': 'test1@example.com',
+                    }])
+
+        contact = party.contact_mechanism_get()
+
+        self.assertEqual(contact, email1)
+
+    @with_transaction()
+    def test_contact_mechanism_get_inactive(self):
+        "Test contact_mechanism_get with inactive"
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        party, = Party.create([{}])
+        contact1, contact2 = ContactMechanism.create([{
+                    'party': party.id,
+                    'sequence': 1,
+                    'type': 'email',
+                    'value': 'test1@example.com',
+                    'active': False,
+                    }, {
+                    'party': party.id,
+                    'sequence': 2,
+                    'type': 'email',
+                    'value': 'test2@example.com',
+                    'active': True,
+                    }])
+
+        contact = party.contact_mechanism_get()
+
+        self.assertEqual(contact, contact2)
+
+    @with_transaction()
+    def test_contact_mechanism_get_usage(self):
+        "Test contact_mechanism_get with usage"
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        party, = Party.create([{}])
+        contact1, contact2 = ContactMechanism.create([{
+                    'party': party.id,
+                    'sequence': 1,
+                    'type': 'email',
+                    'value': 'test1@example.com',
+                    'name': None,
+                    }, {
+                    'party': party.id,
+                    'sequence': 2,
+                    'type': 'email',
+                    'value': 'test2@example.com',
+                    'name': 'email',
+                    }])
+
+        contact = party.contact_mechanism_get(usage='name')
+
+        self.assertEqual(contact, contact2)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

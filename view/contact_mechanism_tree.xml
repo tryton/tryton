@@ -6,4 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="value"/>
     <field name="name"/>
     <field name="party"/>
+    <field name="active"/>
 </tree>

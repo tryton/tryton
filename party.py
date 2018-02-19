@@ -236,6 +236,27 @@ class Party(ModelSQL, ModelView, MultiValueMixin):
                         return address
         return default_address
 
+    def contact_mechanism_get(self, types=None, usage=None):
+        """
+        Try to find a contact mechanism for the given types and usage, if no
+        usage matches the first mechanism of the given types is returned.
+        """
+        default_mechanism = None
+        if types:
+            if isinstance(types, basestring):
+                types = {types}
+            mechanisms = [m for m in self.contact_mechanisms
+                if m.type in types]
+        else:
+            mechanisms = self.contact_mechanisms
+        if mechanisms:
+            default_mechanism = mechanisms[0]
+            if usage:
+                for mechanism in mechanisms:
+                    if getattr(mechanism, usage):
+                        return mechanism
+        return default_mechanism
+
 
 class PartyLang(ModelSQL, ValueMixin):
     "Party Lang"
