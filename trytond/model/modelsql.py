@@ -304,10 +304,10 @@ class ModelSQL(ModelStorage):
                     cls.raise_user_error('foreign_model_missing',
                         error_args=error_args)
         for name, _, error in cls._sql_constraints:
-            if name in str(exception):
+            if name in unicode(exception):
                 cls.raise_user_error(error)
         for name, error in cls._sql_error_messages.iteritems():
-            if name in str(exception):
+            if name in unicode(exception):
                 cls.raise_user_error(error)
 
     @classmethod
