@@ -8,7 +8,6 @@ Prerequisites
  * gtk+ 3.20 or later and py-gobject3 (http://www.gtk.org/)
  * librsvg (http://librsvg.sourceforge.net/)
  * python-dateutil (http://labix.org/python-dateutil)
- * chardet (http://pypi.python.org/pypi/chardet)
  * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)
  * Optional: GooCalendar (https://pypi.python.org/pypi/GooCalendar)
 

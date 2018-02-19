@@ -105,13 +105,6 @@ Gtk.ComboBox.get_active_text = get_active_text
 Gtk.GenericCellRenderer.__gobject_init__ = Gtk.GenericCellRenderer.__init__
 
 from gi.repository import Pango
-Pango.SCALE_XX_SMALL = 1 / (1.2 * 1.2 * 1.2)
-Pango.SCALE_X_SMALL = 1 / (1.2 * 1.2)
-Pango.SCALE_SMALL = 1 / 1.2
-Pango.SCALE_MEDIUM = 1
-Pango.SCALE_LARGE = 1.2
-Pango.SCALE_X_LARGE = 1.2 * 1.2
-Pango.SCALE_XX_LARGE = 1.2 * 1.2 * 1.2
 
 
 def make_attr_constructor(method):

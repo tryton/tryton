@@ -9,13 +9,10 @@ from .textbox import TextBox
 from tryton.common import get_toplevel_window
 from tryton.common.htmltextbuffer import (serialize, deserialize,
     setup_tags, normalize_markup, remove_tags, register_foreground,
-    FAMILIES, SIZE2SCALE, MIME)
+    FAMILIES, SIZE2SCALE, MIME, use_serialize_func)
 from tryton.config import CONFIG
 
 SIZES = sorted(SIZE2SCALE.keys())
-# Disable serialize/deserialize registration function because it does not work
-# on GTK-3, the "guint8 *data" is converted into a Gtk.TextIter
-_use_serialize_func = False
 
 
 class RichTextBox(TextBox):
@@ -147,7 +144,7 @@ class RichTextBox(TextBox):
         start = text_buffer.get_start_iter()
         end = text_buffer.get_end_iter()
         text_buffer.delete(start, end)
-        if _use_serialize_func:
+        if use_serialize_func:
             text_buffer.deserialize(text_buffer, MIME, start, value)
         else:
             deserialize(
@@ -159,7 +156,7 @@ class RichTextBox(TextBox):
         text_buffer = textview.get_buffer()
         start = text_buffer.get_start_iter()
         end = text_buffer.get_end_iter()
-        if _use_serialize_func:
+        if use_serialize_func:
             return text_buffer.serialize(text_buffer, MIME, start, end)
         else:
             return serialize(text_buffer, text_buffer, start, end, None)

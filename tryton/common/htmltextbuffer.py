@@ -1,38 +1,38 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from __future__ import division
+import sys
 from io import BytesIO
 import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape, unescape
 from HTMLParser import HTMLParser
 
-import pango
-import gtk
-import chardet
+from gi.repository import Gtk, Gdk, Pango
 
-MIME = 'text/html'
-if hasattr(gtk.gdk, 'Atom'):
-    MIME = gtk.gdk.Atom.intern(MIME, False)
+MIME = Gdk.Atom.intern('text/html', False)
+# Disable serialize/deserialize registration function because it does not work
+# on GTK-3, the "guint8 *data" is converted into a Gtk.TextIter
+use_serialize_func = False
 
 
 def _reverse_dict(dct):
     return {j: i for i, j in dct.iteritems()}
 
 SIZE2SCALE = {
-    '1': pango.SCALE_XX_SMALL,
-    '2': pango.SCALE_X_SMALL,
-    '3': pango.SCALE_SMALL,
-    '4': pango.SCALE_MEDIUM,
-    '5': pango.SCALE_LARGE,
-    '6': pango.SCALE_X_LARGE,
-    '7': pango.SCALE_XX_LARGE,
+    '1': 1 / (1.2 * 1.2 * 1.2),
+    '2': 1 / (1.2 * 1.2),
+    '3': 1 / 1.2,
+    '4': 1,
+    '5': 1.2,
+    '6': 1.2 * 1.2,
+    '7': 1.2 * 1.2 * 1.2,
     }
 SCALE2SIZE = _reverse_dict(SIZE2SCALE)
 ALIGN2JUSTIFICATION = {
-    'left': gtk.JUSTIFY_LEFT,
-    'center': gtk.JUSTIFY_CENTER,
-    'right': gtk.JUSTIFY_RIGHT,
-    'justify': gtk.JUSTIFY_FILL,
+    'left': Gtk.Justification.LEFT,
+    'center': Gtk.Justification.CENTER,
+    'right': Gtk.Justification.RIGHT,
+    'justify': Gtk.Justification.FILL,
     }
 JUSTIFICATION2ALIGN = _reverse_dict(ALIGN2JUSTIFICATION)
 FAMILIES = ['normal', 'sans', 'serif', 'monospace']
@@ -269,8 +269,15 @@ def serialize(register, content, start, end, data):
 
 def deserialize(register, content, iter_, text, create_tags, data):
     if not isinstance(text, unicode):
-        encoding = chardet.detect(text)['encoding'] or 'utf-8'
-        text = text.decode(encoding)
+        for encoding in [sys.getfilesystemencoding(),
+                'utf-8', 'utf-16', 'utf-32']:
+            try:
+                text = text.decode(encoding)
+            except UnicodeDecodeError:
+                continue
+            break
+        else:
+            text = text.decode('ascii', errors='replace')
     text = text.encode('utf-8')
     text, tags = parse_markup(normalize_markup(text, method='xml'))
     offset = iter_.get_offset()
@@ -292,9 +299,9 @@ def setup_tags(text_buffer):
     for name, props in reversed(_TAGS):
         text_buffer.create_tag(name, **props)
 _TAGS = [
-    ('bold', {'weight': pango.WEIGHT_BOLD}),
-    ('italic', {'style': pango.STYLE_ITALIC}),
-    ('underline', {'underline': pango.UNDERLINE_SINGLE}),
+    ('bold', {'weight': Pango.Weight.BOLD}),
+    ('italic', {'style': Pango.Style.ITALIC}),
+    ('underline', {'underline': Pango.Underline.SINGLE}),
     ]
 _TAGS.extend([('family %s' % family, {'family': family})
         for family in FAMILIES])
@@ -309,7 +316,7 @@ def register_foreground(text_buffer, color):
     tag_table = text_buffer.get_tag_table()
     tag = tag_table.lookup(name)
     if not tag:
-        tag = text_buffer.create_tag(name, foreground_gdk=color)
+        tag = text_buffer.create_tag(name, foreground_rgba=color)
     return tag
 
 
@@ -331,8 +338,9 @@ def _get_tags(content, element):
     if size in SIZE2SCALE:
         yield tag_table.lookup('size %s' % size)
     if 'color' in element.attrib:
-        yield register_foreground(
-            content, gtk.gdk.color_parse(element.attrib['color']))
+        color = Gdk.RGBA()
+        color.parse(element.attrib['color'])
+        yield register_foreground(content, color)
     align = element.attrib.get('align')
     if align in ALIGN2JUSTIFICATION:
         yield tag_table.lookup('justification %s' % align)
@@ -345,19 +353,19 @@ def _get_html(texttag, close=False, div_only=False):
     tags = []
     attrib = {}
     font = attrib['font'] = {}
-    if texttag.props.weight_set and texttag.props.weight == pango.WEIGHT_BOLD:
+    if texttag.props.weight_set and texttag.props.weight == Pango.Weight.BOLD:
         tags.append('b')
-    if texttag.props.style_set and texttag.props.style == pango.STYLE_ITALIC:
+    if texttag.props.style_set and texttag.props.style == Pango.Style.ITALIC:
         tags.append('i')
     if (texttag.props.underline_set
-            and texttag.props.underline == pango.UNDERLINE_SINGLE):
+            and texttag.props.underline == Pango.Underline.SINGLE):
         tags.append('u')
     if texttag.props.family_set and texttag.props.family:
         font['face'] = texttag.props.family
-    if texttag.props.scale_set and texttag.props.scale != pango.SCALE_MEDIUM:
+    if texttag.props.scale_set and texttag.props.scale != 1:
         font['size'] = SCALE2SIZE[texttag.props.scale]
     if (texttag.props.foreground_set
-            and texttag.props.foreground_gdk != gtk.gdk.Color(0, 0, 0)):
+            and texttag.props.foreground_gdk != Gdk.Color(0, 0, 0)):
         font['color'] = gdk_to_hex(texttag.props.foreground_gdk)
     # TODO style background-color
     if font:
@@ -403,34 +411,51 @@ if __name__ == '__main__':
 <div><font face="sans" size="6">Sans6<font color="#ff0000">red</font></font></div>
 <div align="center"> <b> <i><u>Title</u></i> </b></div>'''
 
-    win = gtk.Window()
+    win = Gtk.Window()
     win.set_title('HTMLTextBuffer')
 
     def cb(window, event):
-        print text_buffer.serialize(
-            text_buffer, MIME, text_buffer.get_start_iter(),
-            text_buffer.get_end_iter())
-        gtk.main_quit()
+        if use_serialize_func:
+            print text_buffer.serialize(
+                text_buffer, MIME, text_buffer.get_start_iter(),
+                text_buffer.get_end_iter())
+        else:
+            print serialize(
+                text_buffer, text_buffer, text_buffer.get_start_iter(),
+                text_buffer.get_end_iter(), None)
+        Gtk.main_quit()
     win.connect('delete-event', cb)
-    vbox = gtk.VBox()
+    vbox = Gtk.VBox()
     win.add(vbox)
 
-    text_buffer = gtk.TextBuffer()
-    text_view = gtk.TextView()
+    text_buffer = Gtk.TextBuffer()
+    text_view = Gtk.TextView()
     text_view.set_buffer(text_buffer)
-    vbox.pack_start(text_view)
+    vbox.pack_start(text_view, expand=True, fill=True, padding=0)
 
     setup_tags(text_buffer)
-    text_buffer.register_serialize_format(MIME, serialize, None)
-    text_buffer.register_deserialize_format(MIME, deserialize, None)
+    text_buffer.register_serialize_format(str(MIME), serialize, None)
+    text_buffer.register_deserialize_format(str(MIME), deserialize, None)
 
-    text_buffer.deserialize(
-        text_buffer, MIME, text_buffer.get_start_iter(), html)
+    if use_serialize_func:
+        text_buffer.deserialize(
+            text_buffer, MIME, text_buffer.get_start_iter(),
+            html.encode('utf-8'))
 
-    result = text_buffer.serialize(
-        text_buffer, MIME, text_buffer.get_start_iter(),
-        text_buffer.get_end_iter())
+        result = text_buffer.serialize(
+            text_buffer, MIME, text_buffer.get_start_iter(),
+            text_buffer.get_end_iter())
+    else:
+        deserialize(
+            text_buffer, text_buffer, text_buffer.get_start_iter(),
+            html, text_buffer.deserialize_get_can_create_tags(MIME),
+            None)
+
+        result = serialize(
+            text_buffer, text_buffer, text_buffer.get_start_iter(),
+            text_buffer.get_end_iter(), None)
+
     assert normalize_markup(html) == result
 
     win.show_all()
-    gtk.main()
+    Gtk.main()

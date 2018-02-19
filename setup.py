@@ -102,7 +102,6 @@ dist = setup(name=name,
     install_requires=[
         # "py-gobject3",
         "python-dateutil",
-        "chardet",
         ],
     extras_require={
         'cdecimal': ['cdecimal'],
