@@ -290,12 +290,15 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state').in_(['done', 'cancelled']),
+                    'depends': ['state'],
                     },
                 'run': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'do': {
                     'invisible': Eval('state') != 'running',
+                    'depends': ['state'],
                     },
                 })
 
