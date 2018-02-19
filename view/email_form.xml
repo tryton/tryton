@@ -12,6 +12,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="recipients_secondary"/>
     <label name="recipients_hidden"/>
     <field name="recipients_hidden"/>
+    <label name="contact_mechanism"/>
+    <field name="contact_mechanism"/>
     <field name="attachments" colspan="2"/>
     <field name="triggers" colspan="2"/>
 </form>

@@ -57,6 +57,10 @@ class Email(ModelSQL, ModelView):
         depends=['model'],
         help="The field that contains the hidden recipient(s).")
 
+    contact_mechanism = fields.Selection(
+        'get_contact_mechanisms', "Contact Mechanism",
+        help="Define which email to use from the party's contact mechanisms")
+
     content = fields.Many2One(
         'ir.action.report', "Content", required=True,
         domain=[('template_extension', 'in', ['txt', 'html', 'xhtml'])],
@@ -86,6 +90,15 @@ class Email(ModelSQL, ModelView):
     def search_rec_name(cls, name, clause):
         return [('content',) + tuple(clause[1:])]
 
+    @classmethod
+    def get_contact_mechanisms(cls):
+        pool = Pool()
+        try:
+            ContactMechanism = pool.get('party.contact_mechanism')
+        except KeyError:
+            return [(None, "")]
+        return ContactMechanism.usages()
+
     @fields.depends('content')
     def on_change_with_model(self, name=None):
         if self.content:
@@ -108,9 +121,11 @@ class Email(ModelSQL, ModelView):
             WebUser = None
         if isinstance(record, User) and record.email:
             return _formataddr(record.rec_name, record.email)
-        elif Party and isinstance(record, Party) and record.email:
-            # TODO similar to address_get for contact mechanism
-            return _formataddr(record.rec_name, record.email)
+        elif Party and isinstance(record, Party):
+            email = Party.contact_mechanism_get(
+                'email', usage=self.contact_mechanism)
+            if email:
+                return _formataddr(record.rec_name, email)
         elif WebUser and isinstance(record, WebUser):
             name = None
             if record.party:
