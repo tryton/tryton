@@ -253,6 +253,7 @@ class Commission(ModelSQL, ModelView):
         cls._buttons.update({
                 'invoice': {
                     'invisible': Bool(Eval('invoice_line')),
+                    'depends': ['invoice_line'],
                     },
                 })
 
