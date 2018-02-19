@@ -1054,21 +1054,13 @@ def process_exception(exception, *args, **kwargs):
             name, msg, description = exception.args
             res = userwarning(description, msg)
             if res in ('always', 'ok'):
-                args2 = ('model', 'res.user.warning', 'create', [{
+                RPCExecute('model', 'res.user.warning', 'create', [{
                             'user': rpc._USER,
                             'name': name,
                             'always': (res == 'always'),
-                            }], rpc.CONTEXT)
-                try:
-                    rpc_execute(*args2)
-                except TrytonServerError, exception:
-                    process_exception(exception, *args2)
-                if args:
-                    try:
-                        return rpc_execute(*args)
-                    except TrytonServerError, exception:
-                        return process_exception(exception, *args,
-                            rpc_execute=rpc_execute)
+                            }],
+                    process_exception=False)
+                return rpc_execute(*args)
         elif exception.faultCode == 'UserError':
             msg, description = exception.args
             warning(description, msg)
@@ -1077,11 +1069,7 @@ def process_exception(exception, *args, **kwargs):
                 if concurrency(args[1], args[3][0], args[5]):
                     if '_timestamp' in args[5]:
                         del args[5]['_timestamp']
-                    try:
-                        return rpc_execute(*args)
-                    except TrytonServerError, exception:
-                        return process_exception(exception, *args,
-                            rpc_execute=rpc_execute)
+                    return rpc_execute(*args)
             else:
                 message(_('Concurrency Exception'), msg_type=gtk.MESSAGE_ERROR)
         elif (exception.faultCode.startswith('403')
@@ -1102,11 +1090,7 @@ def process_exception(exception, *args, **kwargs):
             finally:
                 PLOCK.release()
             if args:
-                try:
-                    return rpc_execute(*args)
-                except TrytonServerError, exception:
-                    return process_exception(exception, *args,
-                        rpc_execute=rpc_execute)
+                return rpc_execute(*args)
         else:
             error(exception.faultCode, exception.faultString)
     else:
@@ -1245,14 +1229,19 @@ class RPCProgress(object):
         if self.parent and self.parent.get_window():
             self.parent.get_window().set_cursor(None)
 
+        if self.exception and self.process_exception_p:
+            def rpc_execute(*args):
+                return RPCProgress('execute', args).run(
+                    self.process_exception_p, self.callback)
+            try:
+                return process_exception(
+                    self.exception, *self.args, rpc_execute=rpc_execute)
+            except RPCException, exception:
+                self.exception = exception
+
         def return_():
             if self.exception:
-                if self.process_exception_p:
-                    def rpc_execute(*args):
-                        return RPCProgress('execute',
-                            args).run(self.process_exception_p, self.callback)
-                    return process_exception(self.exception, *self.args,
-                        rpc_execute=rpc_execute)
+                raise self.exception
             else:
                 return self.res
 
