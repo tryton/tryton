@@ -20,6 +20,7 @@ class Production:
                 'split_wizard': {
                     'invisible': (~Eval('state').in_(['request', 'draft'])
                         | ~Eval('bom') | ~Eval('quantity', 0)),
+                    'depends': ['state', 'bom', 'quantity'],
                     },
                 })
 
