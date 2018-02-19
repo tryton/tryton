@@ -254,37 +254,45 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls._buttons.update({
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'quotation']),
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['cancel', 'quotation']),
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'quote': {
                     'invisible': Eval('state') != 'draft',
                     'readonly': ~Eval('lines', []),
+                    'depends': ['state'],
                     },
                 'confirm': {
                     'invisible': Eval('state') != 'quotation',
+                    'depends': ['state'],
                     },
                 'process': {
                     'invisible': Eval('state') != 'confirmed',
+                    'depends': ['state'],
                     },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
                         | (Eval('state') == 'cancel')),
                     'readonly': ~Eval('groups', []).contains(
                         Id('sale', 'group_sale')),
+                    'depends': ['state', 'invoice_state'],
                     },
                 'handle_shipment_exception': {
                     'invisible': ((Eval('shipment_state') != 'exception')
                         | (Eval('state') == 'cancel')),
                     'readonly': ~Eval('groups', []).contains(
                         Id('sale', 'group_sale')),
+                    'depends': ['state', 'shipment_state'],
                     },
                 'modify_header': {
                     'invisible': ((Eval('state') != 'draft')
                         | ~Eval('lines', [-1])),
+                    'depends': ['state'],
                     },
                 })
         # The states where amounts are cached
