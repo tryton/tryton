@@ -138,12 +138,15 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': Eval('state') != 'cancel',
+                    'depends': ['state'],
                     },
                 'post': {
                     'invisible': Eval('state') != 'draft',
+                    'depends': ['state'],
                     },
                 })
 
