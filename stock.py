@@ -129,6 +129,8 @@ class ShipmentOut:
                         | ~Eval('root_packages', False)
                         | ~Eval('carrier', False)
                         | (Eval('state') != 'packed')),
+                    'depends': ['state', 'carrier', 'reference',
+                        'root_packages'],
                     },
                 })
         cls._error_messages.update({
