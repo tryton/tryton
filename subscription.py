@@ -160,20 +160,24 @@ class Subscription(Workflow, ModelSQL, ModelView):
                 'cancel': {
                     'invisible': ~Eval('state').in_(['draft', 'quotation']),
                     'icon': 'tryton-cancel',
+                    'depends': ['state'],
                     },
                 'draft': {
                     'invisible': Eval('state').in_(['draft', 'closed']),
                     'icon': If(Eval('state') == 'canceled',
                         'tryton-clear', 'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'quote': {
                     'invisible': Eval('state') != 'draft',
                     'readonly': ~Eval('lines', []),
                     'icon': 'tryton-go-next',
+                    'depends': ['state'],
                     },
                 'run': {
                     'invisible': Eval('state') != 'quotation',
                     'icon': 'tryton-go-next',
+                    'depends': ['state'],
                     },
                 })
 
