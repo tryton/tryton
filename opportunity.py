@@ -189,18 +189,23 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                         ['cancelled', 'lost', 'opportunity']),
                     'icon': If(Eval('state').in_(['cancelled', 'lost']),
                         'tryton-clear', 'tryton-go-previous'),
+                    'depends': ['state'],
                     },
                 'opportunity': {
                     'invisible': ~Eval('state').in_(['lead']),
+                    'depends': ['state'],
                     },
                 'convert': {
                     'invisible': ~Eval('state').in_(['opportunity']),
+                    'depends': ['state'],
                     },
                 'lost': {
                     'invisible': ~Eval('state').in_(['lead', 'opportunity']),
+                    'depends': ['state'],
                     },
                 'cancel': {
                     'invisible': ~Eval('state').in_(['lead', 'opportunity']),
+                    'depends': ['state'],
                     },
                 })
 
