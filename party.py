@@ -36,7 +36,7 @@ class Party:
         line = MoveLine.__table__()
         account = Account.__table__()
 
-        values = {p.id: 0 for p in parties}
+        values = {p.id: Decimal(0) for p in parties}
 
         user = User(Transaction().user)
         if not user.company:
