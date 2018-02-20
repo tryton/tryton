@@ -170,8 +170,9 @@ class Product(StockMixin, object):
             grouping = ('product',)
             grouping_filter = (product_ids,)
         elif product_ids:
+            grouping_filter = (product_ids,) + tuple(
+                grouping_filter or (None,) * len(grouping))
             grouping = ('product',) + tuple(grouping)
-            grouping_filter = (product_ids,) + tuple(grouping_filter)
         query = Move.compute_quantities_query(location_ids, with_childs,
             grouping=grouping, grouping_filter=grouping_filter)
         if query is None:
