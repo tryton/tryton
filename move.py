@@ -1021,6 +1021,7 @@ class Move(Workflow, ModelSQL, ModelView):
             if field not in Model._fields:
                 raise ValueError('"%s" has no field "%s"' % (Model, field))
         assert grouping_filter is None or len(grouping_filter) == len(grouping)
+        assert len(set(grouping)) == len(grouping)
 
         move_rule_query = Rule.query_get('stock.move')
 
