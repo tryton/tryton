@@ -14,9 +14,11 @@ class Email(object):
     def __init__(self):
         self.parent = get_toplevel_window()
         self.win = gtk.Dialog(_('Email'), self.parent,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK,
-                gtk.RESPONSE_OK))
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        cancel_button = self.win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+        cancel_button.set_always_show_image(True)
+        ok_button = self.win.add_button('gtk-ok', gtk.RESPONSE_OK)
+        ok_button.set_always_show_image(True)
         self.win.set_default_response(gtk.RESPONSE_OK)
         self.win.set_icon(TRYTON_ICON)
         self.win.vbox.set_spacing(3)

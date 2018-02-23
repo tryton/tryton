@@ -19,13 +19,14 @@ class Button(gtk.Button):
         self._set_icon(attrs.get('icon'))
 
     def _set_icon(self, stock):
+        self.set_always_show_image(bool(stock))
         image = self.get_image()
         if not image and not stock:
             return
         elif image and image.get_stock()[0] == stock:
             return
         if not stock:
-            self.set_image(gtk.Image())
+            self.set_image(None)
             return
         ICONFACTORY.register_icon(stock)
         icon = gtk.Image()

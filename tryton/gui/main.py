@@ -191,15 +191,6 @@ class Main(object):
         else:
             self.radiomenuitem_normal.set_active(True)
 
-        settings = gtk.settings_get_default()
-        # Due to a bug in old version of pyGTk gtk-button-images can
-        # not be set when there is no buttons
-        gtk.Button()
-        try:
-            settings.set_property('gtk-button-images', True)
-        except TypeError:
-            pass
-
         # Register plugins
         tryton.plugins.register()
 

@@ -278,8 +278,10 @@ def request_server(server_widget):
     label_port.set_padding(3, 3)
     table.attach(label_port, 0, 1, 1, 2, yoptions=False,
         xoptions=False)
-    dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-    dialog.add_button("gtk-ok", gtk.RESPONSE_OK)
+    cancel_button = dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
+    cancel_button.set_always_show_image(True)
+    ok_button = dialog.add_button("gtk-ok", gtk.RESPONSE_OK)
+    ok_button.set_always_show_image(True)
     dialog.vbox.pack_start(vbox)
     dialog.set_icon(TRYTON_ICON)
     dialog.show_all()
@@ -344,9 +346,11 @@ def selection(title, values, alwaysask=False):
 
     parent = get_toplevel_window()
     dialog = gtk.Dialog(_('Selection'), parent,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                gtk.STOCK_OK, gtk.RESPONSE_OK))
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+    cancel_button = dialog.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+    cancel_button.set_always_show_image(True)
+    ok_button = dialog.add_button('gtk-ok', gtk.RESPONSE_OK)
+    ok_button.set_always_show_image(True)
     dialog.set_icon(TRYTON_ICON)
     dialog.set_default_response(gtk.RESPONSE_OK)
     dialog.set_default_size(400, 400)
@@ -664,8 +668,11 @@ class SurDialog(ConfirmationDialog):
 
     def build_dialog(self, parent, message):
         dialog = super(SurDialog, self).build_dialog(parent, message)
-        dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-        dialog.set_default(dialog.add_button("gtk-ok", gtk.RESPONSE_OK))
+        cancel_button = dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
+        cancel_button.set_always_show_image(True)
+        ok_button = dialog.add_button("gtk-ok", gtk.RESPONSE_OK)
+        ok_button.set_always_show_image(True)
+        dialog.set_default(ok_button)
         dialog.set_default_response(gtk.RESPONSE_OK)
         return dialog
 
@@ -686,9 +693,13 @@ class Sur3BDialog(ConfirmationDialog):
 
     def build_dialog(self, parent, message):
         dialog = super(Sur3BDialog, self).build_dialog(parent, message)
-        dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-        dialog.add_button("gtk-no", gtk.RESPONSE_NO)
-        dialog.set_default(dialog.add_button("gtk-yes", gtk.RESPONSE_YES))
+        cancel_button = dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
+        cancel_button.set_always_show_image(True)
+        no_button = dialog.add_button("gtk-no", gtk.RESPONSE_NO)
+        no_button.set_always_show_image(True)
+        yes_button = dialog.add_button("gtk-yes", gtk.RESPONSE_YES)
+        yes_button.set_always_show_image(True)
+        dialog.set_default(yes_button)
         dialog.set_default_response(gtk.RESPONSE_YES)
         return dialog
 
@@ -703,9 +714,11 @@ class AskDialog(UniqueDialog):
 
     def build_dialog(self, parent, question, visibility):
         win = gtk.Dialog(CONFIG['client.title'], parent,
-                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-                (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                    gtk.STOCK_OK, gtk.RESPONSE_OK))
+                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        cancel_button = win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+        cancel_button.set_always_show_image(True)
+        ok_button = win.add_button('gtk-ok', gtk.RESPONSE_OK)
+        ok_button.set_always_show_image(True)
         win.set_default_response(gtk.RESPONSE_OK)
 
         hbox = gtk.HBox()
@@ -768,16 +781,19 @@ class ConcurrencyDialog(UniqueDialog):
             '    - "Write Anyway" to save your current version.'))
         hbox.pack_start(label, True, True)
         dialog.vbox.pack_start(hbox)
-        dialog.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+        cancel_button = dialog.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+        cancel_button.set_always_show_image(True)
         compare_button = gtk.Button(_('Compare'))
         image = gtk.Image()
         image.set_from_stock('tryton-find-replace', gtk.ICON_SIZE_BUTTON)
         compare_button.set_image(image)
+        compare_button.set_always_show_image(True)
         dialog.add_action_widget(compare_button, gtk.RESPONSE_APPLY)
         write_button = gtk.Button(_('Write Anyway'))
         image = gtk.Image()
         image.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
         write_button.set_image(image)
+        write_button.set_always_show_image(True)
         dialog.add_action_widget(write_button, gtk.RESPONSE_OK)
         return dialog
 
@@ -807,7 +823,8 @@ class ErrorDialog(UniqueDialog):
 
         but_send = gtk.Button(_('Report Bug'))
         dialog.add_action_widget(but_send, gtk.RESPONSE_OK)
-        dialog.add_button("gtk-close", gtk.RESPONSE_CANCEL)
+        close_button = dialog.add_button("gtk-close", gtk.RESPONSE_CANCEL)
+        close_button.set_always_show_image(True)
         dialog.set_default_response(gtk.RESPONSE_CANCEL)
 
         vbox = gtk.VBox()
@@ -886,9 +903,11 @@ def send_bugtracker(title, msg):
     from tryton import rpc
     parent = get_toplevel_window()
     win = gtk.Dialog(_('Bug Tracker'), parent,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                gtk.STOCK_OK, gtk.RESPONSE_OK))
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+    cancel_button = win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+    cancel_button.set_always_show_image(True)
+    ok_button = win.add_button('gtk-ok', gtk.RESPONSE_OK)
+    ok_button.set_always_show_image(True)
     win.set_icon(TRYTON_ICON)
     win.set_default_response(gtk.RESPONSE_OK)
 

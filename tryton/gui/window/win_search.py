@@ -40,13 +40,17 @@ class WinSearch(NoModal):
 
         self.but_cancel = self.win.add_button(gtk.STOCK_CANCEL,
             gtk.RESPONSE_CANCEL)
+        self.but_cancel.set_always_show_image(True)
         self.but_find = self.win.add_button(gtk.STOCK_FIND, gtk.RESPONSE_APPLY)
+        self.but_find.set_always_show_image(True)
         if new and common.MODELACCESS[model]['create']:
             self.but_new = self.win.add_button(gtk.STOCK_NEW,
                 gtk.RESPONSE_ACCEPT)
+            self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
         self.but_ok = self.win.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        self.but_ok.set_always_show_image(True)
         self.but_ok.add_accelerator('clicked', self.accel_group,
                 gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 

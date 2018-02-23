@@ -70,6 +70,7 @@ class WinCSV(NoModal):
         img_button = gtk.Image()
         img_button.set_from_stock('tryton-list-add', gtk.ICON_SIZE_BUTTON)
         button_add.set_image(img_button)
+        button_add.set_always_show_image(True)
         button_add.connect_after('clicked', self.sig_sel)
         vbox_buttons.pack_start(button_add, False, False, 0)
 
@@ -79,6 +80,7 @@ class WinCSV(NoModal):
         img_button = gtk.Image()
         img_button.set_from_stock('tryton-list-remove', gtk.ICON_SIZE_BUTTON)
         button_remove.set_image(img_button)
+        button_remove.set_always_show_image(True)
         button_remove.connect_after('clicked', self.sig_unsel)
         vbox_buttons.pack_start(button_remove, False, False, 0)
 
@@ -88,6 +90,7 @@ class WinCSV(NoModal):
         img_button = gtk.Image()
         img_button.set_from_stock('tryton-clear', gtk.ICON_SIZE_BUTTON)
         button_remove_all.set_image(img_button)
+        button_remove_all.set_always_show_image(True)
         button_remove_all.connect_after('clicked', self.sig_unsel_all)
         vbox_buttons.pack_start(button_remove_all, False, False, 0)
 

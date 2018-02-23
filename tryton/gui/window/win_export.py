@@ -62,6 +62,7 @@ class WinExport(WinCSV):
         img_button = gtk.Image()
         img_button.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
         button_save_export.set_image(img_button)
+        button_save_export.set_always_show_image(True)
         button_save_export.connect_after('clicked', self.addreplace_predef)
         box.pack_start(button_save_export, False, False, 0)
 
@@ -71,6 +72,7 @@ class WinExport(WinCSV):
         img_button = gtk.Image()
         img_button.set_from_stock('tryton-delete', gtk.ICON_SIZE_BUTTON)
         button_del_export.set_image(img_button)
+        button_del_export.set_always_show_image(True)
         button_del_export.connect_after('clicked', self.remove_predef)
         box.pack_start(button_del_export, False, False, 0)
 

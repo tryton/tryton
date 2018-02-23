@@ -16,8 +16,9 @@ class Shortcuts(object):
         self.parent = get_toplevel_window()
         self.dialog = gtk.Dialog(_('Keyboard Shortcuts'), self.parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT
-            | gtk.WIN_POS_CENTER_ON_PARENT | gtk.gdk.WINDOW_TYPE_HINT_DIALOG,
-            (gtk.STOCK_OK, gtk.RESPONSE_OK))
+            | gtk.WIN_POS_CENTER_ON_PARENT | gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        ok_button = self.dialog.add_button('gtk-ok', gtk.RESPONSE_OK)
+        ok_button.set_always_show_image(True)
         self.dialog.set_icon(TRYTON_ICON)
         self.dialog.set_default_response(gtk.RESPONSE_OK)
         notebook = gtk.Notebook()

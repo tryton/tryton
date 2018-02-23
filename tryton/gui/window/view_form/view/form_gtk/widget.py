@@ -132,8 +132,12 @@ class TranslateDialog(NoModal):
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
-        self.win.add_button(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
-        self.win.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK).add_accelerator(
+        cancel_button = self.win.add_button(
+            gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+        cancel_button.set_always_show_image(True)
+        ok_button = self.win.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        ok_button.set_always_show_image(True)
+        ok_button.add_accelerator(
             'clicked', self.accel_group, gtk.keysyms.Return,
             gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
 

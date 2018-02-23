@@ -12,7 +12,9 @@ class InfoBar(object):
         self.info_bar = gtk.InfoBar()
         self.info_bar.get_content_area().pack_start(
             self.info_label, False, False)
-        self.info_bar.add_button(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        close_button = self.info_bar.add_button(
+            gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE)
+        close_button.set_always_show_image(True)
         self.info_bar.connect('response', lambda i, r: i.hide())
 
     def message_info(self, message=None, type_=gtk.MESSAGE_ERROR):

@@ -58,10 +58,12 @@ class WinForm(NoModal, InfoBar):
                 stock_id = gtk.STOCK_CANCEL
             self.but_cancel = self.win.add_button(stock_id,
                 gtk.RESPONSE_CANCEL)
+            self.but_cancel.set_always_show_image(True)
 
         if new and self.many:
             self.but_new = self.win.add_button(gtk.STOCK_NEW,
                 gtk.RESPONSE_ACCEPT)
+            self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
         if self.save_current:
@@ -69,6 +71,7 @@ class WinForm(NoModal, InfoBar):
             img_save = gtk.Image()
             img_save.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
             self.but_ok.set_image(img_save)
+            self.but_ok.set_always_show_image(True)
             self.but_ok.set_accel_path('<tryton>/Form/Save', self.accel_group)
             self.but_ok.set_can_default(True)
             self.but_ok.show()
@@ -78,6 +81,7 @@ class WinForm(NoModal, InfoBar):
         else:
             self.but_ok = self.win.add_button(gtk.STOCK_OK,
                 gtk.RESPONSE_OK)
+            self.but_ok.set_always_show_image(True)
         self.but_ok.add_accelerator('clicked', self.accel_group,
             gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
         self.win.set_default_response(gtk.RESPONSE_OK)
