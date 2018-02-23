@@ -1,12 +1,22 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
+import datetime
 import os
 import unittest
+try:
+    from unittest.mock import patch, ANY
+except ImportError:
+    from mock import patch, ANY
+
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 from trytond.res.user import bcrypt
 from trytond.config import config
 from trytond.error import UserError
+from trytond.res import user as user_module
+from trytond.transaction import Transaction
+
+FROM = 'tryton@example.com'
 
 
 class UserTestCase(unittest.TestCase):
@@ -35,13 +45,18 @@ class UserTestCase(unittest.TestCase):
         config.set('password', 'entropy', 0.9)
         self.addCleanup(config.set, 'password', 'entropy', entropy)
 
-    def create_user(self, login, password, hash_method=None):
+        reset_from = config.get('email', 'from')
+        config.set('email', 'from', FROM)
+        self.addCleanup(lambda: config.set('email', 'from', reset_from))
+
+    def create_user(self, login, password, hash_method=None, email=None):
         pool = Pool()
         User = pool.get('res.user')
 
         user, = User.create([{
                     'name': login,
                     'login': login,
+                    'email': email,
                     }])
         if hash_method:
             hash = getattr(User, 'hash_' + hash_method)
@@ -151,6 +166,69 @@ class UserTestCase(unittest.TestCase):
 
         with self.assertRaises(UserError):
             User.validate_password('email', [user])
+
+    @with_transaction()
+    def test_reset_password(self):
+        "Test reset password"
+        pool = Pool()
+        User = pool.get('res.user')
+        user_table = User.__table__()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+
+        user = self.create_user('user', '12345', email='user@example.com')
+
+        with patch.object(user_module, 'sendmail_transactional') as sendmail:
+            User.reset_password([user], length=8)
+            sendmail.assert_called_once_with(FROM, ['user@example.com'], ANY)
+
+        cursor.execute(*user_table.select(
+                user_table.password_hash,
+                where=user_table.id == user.id))
+        password_hash, = cursor.fetchone()
+
+        self.assertEqual(len(user.password_reset), 8)
+        self.assertTrue(user.password_reset_expire)
+        self.assertIsNone(password_hash)
+        self.check_user('user', user.password_reset)
+
+    @with_transaction()
+    def test_reset_password_expired(self):
+        "Test reset password not working when expired"
+        pool = Pool()
+        User = pool.get('res.user')
+
+        user = User(login='user', email='user@example.com')
+        user.save()
+
+        with patch.object(user_module, 'sendmail_transactional'):
+            User.reset_password([user], length=8)
+
+        user.password_reset_expire = (
+            datetime.datetime.now() - datetime.timedelta(10))
+        user.save()
+        self.assertFalse(User.get_login('user', {
+                    'password': user.password_reset,
+                    }))
+
+    @with_transaction()
+    def test_reset_password_with_password(self):
+        "Test reset password not working when password is set"
+        pool = Pool()
+        User = pool.get('res.user')
+
+        user = User(login='user', email='user@example.com')
+        user.save()
+
+        with patch.object(user_module, 'sendmail_transactional'):
+            User.reset_password([user], length=8)
+
+        user.password = '12345'
+        user.save()
+        self.check_user('user', '12345')
+        self.assertFalse(User.get_login('user', {
+                    'password': user.password_reset,
+                    }))
 
 
 def suite():

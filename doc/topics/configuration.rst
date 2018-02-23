@@ -309,6 +309,13 @@ The ratio of non repeated characters for the user password.
 
 Default: `0.75`
 
+reset_timeout
+~~~~~~~~~~~~~
+
+The time in seconds until the reset password expires.
+
+Default: `86400` (24h)
+
 attachment
 ----------
 

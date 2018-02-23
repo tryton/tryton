@@ -37,3 +37,6 @@ def register():
     Pool.register(
         UserConfig,
         module="res", type_='wizard')
+    Pool.register(
+        EmailResetPassword,
+        module='res', type_='report')

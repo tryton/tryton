@@ -147,5 +147,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_admin"/>
         </record>
 
+        <record model="ir.action.report" id="report_email_reset_password">
+            <field name="name">Reset Password</field>
+            <field name="model">res.user</field>
+            <field name="report_name">res.user.email_reset_password</field>
+            <field name="report">res/email_reset_password.html</field>
+            <field name="template_extension">html</field>
+        </record>
     </data>
 </tryton>

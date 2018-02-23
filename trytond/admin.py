@@ -70,36 +70,43 @@ def run(options):
                         })
 
     for db_name in options.database_names:
-        if init[db_name] or options.password:
-            # try to read password from environment variable
-            # TRYTONPASSFILE, empty TRYTONPASSFILE ignored
-            passpath = os.getenv('TRYTONPASSFILE')
-            password = ''
-            if passpath:
-                try:
-                    with open(passpath) as passfile:
-                        password, = passfile.read().splitlines()
-                except Exception, err:
-                    sys.stderr.write('Can not read password '
-                        'from "%s": "%s"\n' % (passpath, err))
+        with Transaction().start(db_name, 0) as transaction:
+            pool = Pool()
+            User = pool.get('res.user')
+            admin, = User.search([('login', '=', 'admin')])
 
-            if not password:
-                while True:
-                    password = getpass('"admin" password for "%s": ' % db_name)
-                    password2 = getpass('"admin" password confirmation: ')
-                    if password != password2:
-                        sys.stderr.write('"admin" password confirmation '
-                            'doesn\'t match "admin" password.\n')
-                        continue
-                    if not password:
-                        sys.stderr.write('"admin" password is required.\n')
-                        continue
-                    break
+            if options.email is not None:
+                admin.email = options.email
+            elif init[db_name]:
+                admin.email = raw_input(
+                    '"admin" email for "%s": ' % db_name)
+            if init[db_name] or options.password:
+                # try to read password from environment variable
+                # TRYTONPASSFILE, empty TRYTONPASSFILE ignored
+                passpath = os.getenv('TRYTONPASSFILE')
+                password = ''
+                if passpath:
+                    try:
+                        with open(passpath) as passfile:
+                            password, = passfile.read().splitlines()
+                    except Exception, err:
+                        sys.stderr.write('Can not read password '
+                            'from "%s": "%s"\n' % (passpath, err))
 
-            with Transaction().start(db_name, 0) as transaction:
-                pool = Pool()
-                User = pool.get('res.user')
-                admin, = User.search([('login', '=', 'admin')])
-                User.write([admin], {
-                        'password': password,
-                        })
+                if not password and not options.reset_password:
+                    while True:
+                        password = getpass(
+                            '"admin" password for "%s": ' % db_name)
+                        password2 = getpass('"admin" password confirmation: ')
+                        if password != password2:
+                            sys.stderr.write('"admin" password confirmation '
+                                'doesn\'t match "admin" password.\n')
+                            continue
+                        if not password:
+                            sys.stderr.write('"admin" password is required.\n')
+                            continue
+                        admin.password = password
+                        break
+            admin.save()
+            if options.reset_password:
+                User.reset_password([admin])

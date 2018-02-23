@@ -50,8 +50,11 @@ def get_parser_admin():
     parser.add_argument("--install-dependencies", dest="installdeps",
         action="store_true",
         help="Install missing dependencies of updated modules")
+    parser.add_argument("--email", dest="email", help="set the admin email")
     parser.add_argument("-p", "--password", dest="password",
         action='store_true', help="set the admin password")
+    parser.add_argument("--reset-password", dest='reset_password',
+        action='store_true', help="reset the admin password")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
         dest="update_modules_list", help="Update list of tryton modules")
     parser.add_argument("-l", "--language", dest="languages", nargs='+',

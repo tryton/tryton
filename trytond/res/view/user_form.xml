@@ -10,10 +10,15 @@ this repository contains the full copyright notices and license terms. -->
         <page string="User" id="user">
             <label name="login"/>
             <field name="login"/>
-            <label name="password"/>
-            <field name="password" widget="password"/>
             <label name="email"/>
             <field name="email" widget="email"/>
+            <label name="password"/>
+            <field name="password" widget="password"/>
+            <button
+                name="reset_password"
+                colspan="2"
+                string="Reset Password"
+                help="Send by email a new temporary password to the user"/>
             <separator name="signature" colspan="4"/>
             <field name="signature" colspan="4"/>
         </page>

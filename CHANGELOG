@@ -1,3 +1,7 @@
+* Make trytond-admin ask for admin email
+* Add option to set admin email with trytond-admin
+* Add option to reset admin password with trytond-admin
+* Add reset password button
 * Add depends on Button
 * Add ModelData.has_model cache for ModelStorage.check_xml_record
 * Limit authentication attempt per IP network
