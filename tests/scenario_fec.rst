@@ -79,7 +79,6 @@ Generate FEC::
     >>> FEC.form.fiscalyear = fiscalyear
     >>> FEC.form.deferral_journal = deferral_journal
     >>> FEC.execute('generate')
-    >>> bool(FEC.form.filename)
-    True
+    >>> FEC.form.filename
     >>> bool(FEC.form.file)
     True

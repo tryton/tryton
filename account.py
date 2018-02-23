@@ -127,10 +127,13 @@ class AccountFrFEC(Wizard):
         file_ = self.result.file
         self.result.file = None  # No need to store it in session
         format_date = self.get_format_date()
-        filename = '%sFEC%s.csv' % (
-            self.start.fiscalyear.company.party.siren or '',
-            format_date(self.start.fiscalyear.end_date),
-            )
+        if self.start.fiscalyear.state == 'locked':
+            filename = '%sFEC%s.csv' % (
+                self.start.fiscalyear.company.party.siren or '',
+                format_date(self.start.fiscalyear.end_date),
+                )
+        else:
+            filename = None
         return {
             'file': file_,
             'filename': filename,
@@ -294,10 +297,8 @@ class AccountFrFECStart(ModelView):
     'Generate FEC'
     __name__ = 'account.fr.fec.start'
 
-    fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        required=True, domain=[
-            ('state', '=', 'close'),
-            ])
+    fiscalyear = fields.Many2One(
+        'account.fiscalyear', 'Fiscal Year', required=True)
     type = fields.Selection([
             ('is-bic', 'IS-BIC'),
             ], 'Type', required=True)
