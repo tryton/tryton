@@ -178,7 +178,7 @@ class User:
                     if (password and con.bind()):
                         # Use ldap uid so we always get the right case
                         login = attrs.get(uid, [login])[0]
-                        user_id, _ = cls._get_login(login)
+                        user_id = cls._get_login(login)[0]
                         if user_id:
                             return user_id
                         elif config.getboolean(section, 'create_user'):
