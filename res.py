@@ -62,7 +62,7 @@ class User:
     def _login_sms(cls, login, parameters):
         pool = Pool()
         SMSCode = pool.get('res.user.login.sms_code')
-        user_id, _ = cls._get_login(login)
+        user_id = cls._get_login(login)[0]
         if user_id:
             SMSCode.send(user_id)
         if 'sms_code' in parameters:
