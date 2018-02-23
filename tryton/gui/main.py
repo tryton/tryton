@@ -842,7 +842,7 @@ class Main(object):
             self.notebook.get_nth_page(self.notebook.get_current_page()))
 
     def sig_login(self, widget=None):
-        if not self.sig_logout(widget, disconnect=False):
+        if not self.sig_logout(widget):
             return
         language = CONFIG['client.lang']
         try:
@@ -895,7 +895,7 @@ class Main(object):
         self.menu_expander_clear()
         return True
 
-    def sig_logout(self, widget=None, disconnect=True):
+    def sig_logout(self, widget=None):
         try:
             if not self.close_pages():
                 return False
@@ -905,8 +905,7 @@ class Main(object):
         self.favorite_unset()
         self.menuitem_favorite.set_sensitive(False)
         self.menuitem_user.set_sensitive(False)
-        if disconnect:
-            rpc.logout()
+        rpc.logout()
         return True
 
     def sig_about(self, widget):
