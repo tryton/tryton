@@ -20,7 +20,8 @@ class Carrier:
             'required': Eval('carrier_cost_method') == 'weight',
             'readonly': Bool(Eval('weight_price_list', [])),
             },
-        depends=['carrier_cost_method', 'weight_price_list'])
+        depends=['carrier_cost_method', 'weight_price_list'],
+        help="The unit of weight criteria of the price list.")
     weight_uom_digits = fields.Function(fields.Integer('Weight Uom Digits'),
         'on_change_with_weight_uom_digits')
     weight_currency = fields.Many2One('currency.currency', 'Currency',
@@ -29,7 +30,8 @@ class Carrier:
             'required': Eval('carrier_cost_method') == 'weight',
             'readonly': Bool(Eval('weight_price_list', [])),
             },
-        depends=['carrier_cost_method', 'weight_price_list'])
+        depends=['carrier_cost_method', 'weight_price_list'],
+        help="The currency of the price.")
     weight_currency_digits = fields.Function(fields.Integer(
             'Weight Currency Digits'),
         'on_change_with_weight_currency_digits')
@@ -39,7 +41,8 @@ class Carrier:
             'invisible': Eval('carrier_cost_method') != 'weight',
             'readonly': ~(Eval('weight_uom', 0) & Eval('weight_currency', 0)),
             },
-        depends=['carrier_cost_method', 'weight_uom', 'weight_currency'])
+        depends=['carrier_cost_method', 'weight_uom', 'weight_currency'],
+        help="Add price to the carrier service.")
 
     @classmethod
     def __setup__(cls):
@@ -101,11 +104,14 @@ class Carrier:
 class WeightPriceList(ModelSQL, ModelView):
     'Carrier Weight Price List'
     __name__ = 'carrier.weight_price_list'
-    carrier = fields.Many2One('carrier', 'Carrier', required=True, select=True)
+    carrier = fields.Many2One('carrier', 'Carrier', required=True, select=True,
+        help="The carrier that the price list belongs to.")
     weight = fields.Float('Weight',
-        digits=(16, Eval('_parent_carrier.weight_uom_digits', 2)))
+        digits=(16, Eval('_parent_carrier.weight_uom_digits', 2)),
+        help="The upper limit for the price.")
     price = fields.Numeric('Price',
-        digits=(16, Eval('_parent_carrier.weight_currency_digits', 2)))
+        digits=(16, Eval('_parent_carrier.weight_currency_digits', 2)),
+        help="The price of the carrier service.")
 
     @classmethod
     def __setup__(cls):
