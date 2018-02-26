@@ -13,12 +13,12 @@ class Carrier(ModelSQL, ModelView):
     'Carrier'
     __name__ = 'carrier'
     party = fields.Many2One('party.party', 'Party', required=True,
-            ondelete='CASCADE')
+            ondelete='CASCADE', help="The party which represents the carrier.")
     carrier_product = fields.Many2One('product.product', 'Carrier Product',
             required=True, domain=[
                 ('type', '=', 'service'),
                 ('template.type', '=', 'service'),
-            ])
+            ], help="The product to invoice the carrier service.")
     carrier_cost_method = fields.Selection([
         ('product', 'Product Price'),
         ], 'Carrier Cost Method', required=True,
@@ -69,13 +69,18 @@ class CarrierSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     __name__ = 'carrier.selection'
     _get_carriers_cache = Cache('carrier.selection.get_carriers')
 
-    active = fields.Boolean('Active')
+    active = fields.Boolean('Active',
+        help="Uncheck to exclude the criteria from future use.")
     from_country = fields.Many2One('country.country', 'From Country',
-        ondelete='RESTRICT')
+        ondelete='RESTRICT',
+        help="Apply only when shipping from this country.\n"
+        "Leave empty for any countries.")
     to_country = fields.Many2One('country.country', 'To Country',
-        ondelete='RESTRICT')
+        ondelete='RESTRICT',
+        help="Apply only when shipping to this country.\n"
+        "Leave empty for any countries.")
     carrier = fields.Many2One('carrier', 'Carrier', required=True,
-        ondelete='CASCADE')
+        ondelete='CASCADE', help="The selected carrier.")
 
     @staticmethod
     def default_active():
