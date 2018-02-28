@@ -103,8 +103,10 @@ class Sale:
             with transaction.set_context(forecast=True,
                     stock_date_start=date,
                     stock_date_end=date):
-                pbl = Product.products_by_location([self.warehouse.id],
-                    product_ids=list(product_ids), with_childs=True)
+                pbl = Product.products_by_location(
+                    [self.warehouse.id],
+                    with_childs=True,
+                    grouping_filter=(product_ids,))
             delta = {}
             for key, qty in pbl.iteritems():
                 _, product_id = key
@@ -123,6 +125,7 @@ class Sale:
         today = Date.today()
         sale_date = self.sale_date or today
         product_ids = {l.product.id for l in ifilter(filter_line, self.lines)}
+        product_ids = list(product_ids)
 
         # The product must be available at least the day before
         # for sale in the future
