@@ -222,8 +222,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 product_ids = [l.product.id for l in inventory.lines]
             with Transaction().set_context(stock_date_end=inventory.date):
                 pbl = Product.products_by_location(
-                    [inventory.location.id], product_ids=product_ids,
-                    grouping=grouping)
+                    [inventory.location.id],
+                    grouping=grouping,
+                    grouping_filter=(product_ids,))
 
             # Index some data
             product2type = {}

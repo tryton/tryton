@@ -324,12 +324,10 @@ class Location(ModelSQL, ModelView):
                 context['stock_date_end'] = datetime.date.max
 
         if trans_context.get('product') is not None:
-            product_ids = [trans_context['product']]
-            grouping = None
-            grouping_filter = None
+            grouping = ('product',)
+            grouping_filter = ([trans_context['product']],)
             key = trans_context['product']
         else:
-            product_ids = None
             grouping = ('product.template',)
             grouping_filter = ([trans_context['product_template']],)
             key = trans_context['product_template']
@@ -338,8 +336,7 @@ class Location(ModelSQL, ModelView):
             location_ids = [l.id for l in sub_locations]
             with Transaction().set_context(context):
                 pbl.update(Product.products_by_location(
-                        location_ids=location_ids,
-                        product_ids=product_ids,
+                        location_ids,
                         grouping=grouping,
                         grouping_filter=grouping_filter,
                         with_childs=True))

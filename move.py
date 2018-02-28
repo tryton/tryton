@@ -59,18 +59,18 @@ class StockMixin(object):
         return new_context
 
     @classmethod
-    def _get_quantity(cls, records, name, location_ids, products=None,
-            grouping=('product',), position=-1):
+    def _get_quantity(cls, records, name, location_ids,
+            grouping=('product',), grouping_filter=None, position=-1):
         """
         Compute for each record the stock quantity in the default uom of the
         product.
 
         location_ids is the list of IDs of locations to take account to compute
             the stock.
-        products restrict the stock computation to the this products (more
-            efficient), so it should be the products related to records.
-            If it is None all products are used.
         grouping defines how stock moves are grouped.
+        grouping_filter is a tuple of values, for the Move's field at the same
+            position in grouping tuple, used to filter which moves are used to
+            compute quantities. If it is None all the products are used.
         position defines which field of grouping corresponds to the record
             whose quantity is computed.
 
@@ -84,14 +84,15 @@ class StockMixin(object):
         if not location_ids:
             return quantities
 
-        product_ids = products and [p.id for p in products] or None
         with_childs = Transaction().context.get(
             'with_childs', len(location_ids) == 1)
 
         with Transaction().set_context(cls._quantity_context(name)):
-            pbl = Product.products_by_location(location_ids=location_ids,
-                product_ids=product_ids, with_childs=with_childs,
-                grouping=grouping)
+            pbl = Product.products_by_location(
+                location_ids,
+                with_childs=with_childs,
+                grouping=grouping,
+                grouping_filter=grouping_filter)
 
         for key, quantity in pbl.iteritems():
             # pbl could return None in some keys
@@ -127,8 +128,7 @@ class StockMixin(object):
 
         with Transaction().set_context(cls._quantity_context(name)):
             pbl = Product.products_by_location(
-                location_ids=location_ids, with_childs=with_childs,
-                grouping=grouping)
+                location_ids, with_childs=with_childs, grouping=grouping)
 
         _, operator_, operand = domain
         operator_ = {
@@ -884,9 +884,9 @@ class Move(Workflow, ModelSQL, ModelView):
                 stock_date_end=stock_date_end,
                 stock_assign=True):
             pbl = Product.products_by_location(
-                location_ids=location_ids,
-                product_ids=product_ids,
-                grouping=grouping)
+                location_ids,
+                grouping=grouping,
+                grouping_filter=(product_ids,))
 
         def get_key(move, location):
             key = (location.id,)
@@ -1020,7 +1020,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 Model = Move
             if field not in Model._fields:
                 raise ValueError('"%s" has no field "%s"' % (Model, field))
-        assert grouping_filter is None or len(grouping_filter) == len(grouping)
+        assert grouping_filter is None or len(grouping_filter) <= len(grouping)
         assert len(set(grouping)) == len(grouping)
 
         move_rule_query = Rule.query_get('stock.move')

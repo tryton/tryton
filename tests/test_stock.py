@@ -175,7 +175,7 @@ class StockTestCase(ModuleTestCase):
             Move.do([moves[0], moves[2]])
 
             products_by_location = partial(Product.products_by_location,
-                    [storage.id], [product.id])
+                    [storage.id], grouping_filter=([product.id],))
 
             tests = [
                 ({'stock_date_end': today + relativedelta(days=-6),
@@ -411,11 +411,15 @@ class StockTestCase(ModuleTestCase):
             Move.do(moves)
 
             products_by_location = Product.products_by_location(
-                [warehouse.id], [product.id], with_childs=True)
+                [warehouse.id],
+                grouping_filter=([product.id],),
+                with_childs=True)
             self.assertEqual(products_by_location[(warehouse.id, product.id)],
                 1)
             products_by_location = Product.products_by_location(
-                [warehouse.id, storage.id], [product.id], with_childs=True)
+                [warehouse.id, storage.id],
+                grouping_filter=([product.id],),
+                with_childs=True)
             self.assertEqual(
                 products_by_location[(warehouse.id, product.id)], 1)
             self.assertEqual(products_by_location[(storage.id, product.id)], 2)
@@ -428,9 +432,11 @@ class StockTestCase(ModuleTestCase):
 
             with Transaction().set_context(stock_skip_warehouse=True):
                 products_by_location = Product.products_by_location(
-                    [warehouse.id], [product.id], with_childs=True)
+                    [warehouse.id],
+                    grouping_filter=([product.id],),
+                    with_childs=True)
                 products_by_location_all = Product.products_by_location(
-                    [warehouse.id], None, with_childs=True)
+                    [warehouse.id], with_childs=True)
                 self.assertEqual(
                     products_by_location[(warehouse.id, product.id)], 2)
                 self.assertEqual(
@@ -523,14 +529,16 @@ class StockTestCase(ModuleTestCase):
 
             # Test flat location
             products_by_location = Product.products_by_location(
-                [storage.id], [product.id], with_childs=True)
+                [storage.id],
+                grouping_filter=([product.id],),
+                with_childs=True)
             self.assertEqual(
                 products_by_location[(storage.id, product.id)], 2)
 
             # Test mixed flat and nested location
             products_by_location = Product.products_by_location(
                 [storage.parent.id, storage.id, storage1.id, storage2.id],
-                [product.id],
+                grouping_filter=([product.id],),
                 with_childs=True)
             self.assertEqual(
                 products_by_location[(storage.parent.id, product.id)], 2)
@@ -543,7 +551,9 @@ class StockTestCase(ModuleTestCase):
 
             # Test non flat
             products_by_location = Product.products_by_location(
-                [lost_found.id], [product.id], with_childs=True)
+                [lost_found.id],
+                grouping_filter=([product.id],),
+                with_childs=True)
             self.assertEqual(
                 products_by_location[(lost_found.id, product.id)], -2)
 
@@ -713,7 +723,7 @@ class StockTestCase(ModuleTestCase):
             ]
 
             products_by_location = partial(Product.products_by_location,
-                [storage.id], [product.id])
+                [storage.id], grouping_filter=([product.id],))
 
             tests_pbl = [
                 ({'stock_date_end': today + relativedelta(days=-6)}, 0),
@@ -1026,41 +1036,47 @@ class StockTestCase(ModuleTestCase):
             with Transaction().set_context(
                     stock_date_end=today,
                     stock_assign=True):
-                pbl = Product.products_by_location([storage.id], [product.id])
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
                 self.assertDictEqual(pbl, {})
 
             Move.assign([move_customer])
             with Transaction().set_context(
                     stock_date_end=today,
                     stock_assign=True):
-                pbl = Product.products_by_location([storage.id], [product.id])
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
                 self.assertDictEqual(pbl, {(storage.id, product.id): -5})
 
             Move.do([move_supplier])
             with Transaction().set_context(
                     stock_date_end=today,
                     stock_assign=True):
-                pbl = Product.products_by_location([storage.id], [product.id])
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
                 self.assertDictEqual(pbl, {(storage.id, product.id): 5})
 
             with Transaction().set_context(
                     stock_date_end=today + relativedelta(days=1),
                     stock_assign=True):
-                pbl = Product.products_by_location([storage.id], [product.id])
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
                 self.assertDictEqual(pbl, {(storage.id, product.id): 5})
 
             with Transaction().set_context(
                     stock_date_start=today,
                     stock_date_end=today,
                     stock_assign=True):
-                pbl = Product.products_by_location([storage.id], [product.id])
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
                 self.assertDictEqual(pbl, {(storage.id, product.id): 10})
 
             with Transaction().set_context(
                     stock_date_start=today + relativedelta(days=1),
                     stock_date_end=today + relativedelta(days=1),
                     stock_assign=True):
-                pbl = Product.products_by_location([storage.id], [product.id])
+                pbl = Product.products_by_location(
+                    [storage.id], grouping_filter=([product.id],))
                 self.assertDictEqual(pbl, {(storage.id, product.id): -5})
 
     @with_transaction()

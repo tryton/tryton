@@ -105,7 +105,9 @@ class Product(StockMixin, object):
     @classmethod
     def get_quantity(cls, products, name):
         location_ids = Transaction().context.get('locations')
-        return cls._get_quantity(products, name, location_ids, products)
+        product_ids = map(int, products)
+        return cls._get_quantity(
+            products, name, location_ids, grouping_filter=(product_ids,))
 
     @classmethod
     def search_quantity(cls, name, domain=None):
@@ -132,8 +134,8 @@ class Product(StockMixin, object):
         return cost_values
 
     @classmethod
-    def products_by_location(cls, location_ids, product_ids=None,
-            with_childs=False, grouping=None, grouping_filter=None):
+    def products_by_location(cls, location_ids,
+            with_childs=False, grouping=('product',), grouping_filter=None):
         """
         Compute for each location and product the stock quantity in the default
         uom of the product.
@@ -166,13 +168,6 @@ class Product(StockMixin, object):
                     wh_to_add[location.id] = location.storage_location.id
             location_ids = list(location_ids)
 
-        if grouping is None or grouping == ('product',):
-            grouping = ('product',)
-            grouping_filter = (product_ids,)
-        elif product_ids:
-            grouping_filter = (product_ids,) + tuple(
-                grouping_filter or (None,) * len(grouping))
-            grouping = ('product',) + tuple(grouping)
         query = Move.compute_quantities_query(location_ids, with_childs,
             grouping=grouping, grouping_filter=grouping_filter)
         if query is None:
@@ -353,12 +348,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             return {l.id: None for l in lines}
 
         if trans_context.get('product') is not None:
-            product_ids = [trans_context['product']]
-            grouping = None
-            grouping_filter = None
+            grouping = ('product',)
+            grouping_filter = ([trans_context['product']],)
             key = trans_context['product']
         else:
-            product_ids = None
             grouping = ('product.template',)
             grouping_filter = ([trans_context.get('product_template')],)
             key = trans_context['product_template']
@@ -375,8 +368,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 }
             with Transaction().set_context(**context):
                 quantities[date] = Product.products_by_location(
-                    location_ids=[warehouse_id],
-                    product_ids=product_ids,
+                    [warehouse_id],
                     grouping=grouping,
                     grouping_filter=grouping_filter,
                     with_childs=True).get((warehouse_id, key), 0)

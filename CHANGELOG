@@ -1,3 +1,4 @@
+* Remove product_ids from products_by_location for grouping_filter
 * Add quantities relates on Template
 * Allow grouping per product columns to compute quantities
 
