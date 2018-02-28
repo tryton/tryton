@@ -96,7 +96,7 @@ class ShipmentInternal(ModelSQL, ModelView):
 
         with Transaction().set_context(forecast=True, stock_date_end=today):
             pbl = Product.products_by_location(
-                location_ids, product_ids, with_childs=True)
+                location_ids, with_childs=True, grouping_filter=(product_ids,))
 
         shipments = []
         date = today
@@ -182,7 +182,9 @@ class ShipmentInternal(ModelSQL, ModelView):
                     stock_date_start=date,
                     stock_date_end=date):
                 pbl = Product.products_by_location(
-                    location_ids, product_ids, with_childs=True)
+                    location_ids,
+                    with_childs=True,
+                    grouping_filter=(product_ids,))
             for key, qty in pbl.iteritems():
                 current_qties[key] += qty
 

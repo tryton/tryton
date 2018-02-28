@@ -115,7 +115,7 @@ class PurchaseRequest:
                 with Transaction().set_context(forecast=True,
                         stock_date_end=min_date or datetime.date.max):
                     pbl = Product.products_by_location(warehouse_ids,
-                        product_ids, with_childs=True)
+                        with_childs=True, grouping_filter=(product_ids,))
                 for warehouse_id in warehouse_ids:
                     min_date_qties = defaultdict(lambda: 0,
                         ((x, pbl.pop((warehouse_id, x), 0))
@@ -345,7 +345,7 @@ class PurchaseRequest:
                     stock_date_start=current_date,
                     stock_date_end=current_date):
                 pbl = Product.products_by_location([location_id],
-                    product_ids, with_childs=True)
+                    with_childs=True, grouping_filter=(product_ids,))
             for key, qty in pbl.iteritems():
                 _, product_id = key
                 current_qties[product_id] += qty
