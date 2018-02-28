@@ -101,6 +101,8 @@ class PurchaseTestCase(ModuleTestCase):
                 self.assertEqual(prices, {product.id: Decimal(3000)})
                 prices = Product.get_purchase_price([product], quantity=3)
                 self.assertEqual(prices, {product.id: Decimal(2500)})
+                prices = Product.get_purchase_price([product], quantity=-4)
+                self.assertEqual(prices, {product.id: Decimal(2500)})
 
 
 def suite():

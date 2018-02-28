@@ -334,7 +334,11 @@ class ProductSupplierPrice(
     __name__ = 'purchase.product_supplier.price'
     product_supplier = fields.Many2One('purchase.product_supplier',
             'Supplier', required=True, ondelete='CASCADE')
-    quantity = fields.Float('Quantity', required=True, help='Minimal quantity')
+    quantity = fields.Float(
+        "Quantity",
+        required=True,
+        domain=[('quantity', '>=', 0)],
+        help='Minimal quantity')
     unit_price = fields.Numeric('Unit Price', required=True,
         digits=price_digits)
 
@@ -367,6 +371,6 @@ class ProductSupplierPrice(
         Uom = pool.get('product.uom')
         test_quantity = Uom.compute_qty(
             self.product_supplier.uom, self.quantity, uom)
-        if test_quantity > quantity:
+        if test_quantity > abs(quantity):
             return False
         return super(ProductSupplierPrice, self).match(pattern)
