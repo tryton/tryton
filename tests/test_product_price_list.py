@@ -67,6 +67,7 @@ class ProductPriceListTestCase(ModuleTestCase):
                 (product, 1000.0, gram, Decimal(10.0)),
                 (variant, 1.0, kilogram, Decimal(11.0)),
                 (product, 10.0, kilogram, Decimal(9.0)),
+                (product, -10.0, kilogram, Decimal(9.0)),
                 (product, 10000.0, gram, Decimal(9.0)),
                 (variant, 10.0, kilogram, Decimal(8.0)),
                 (variant, 10000.0, gram, Decimal(8.0)),

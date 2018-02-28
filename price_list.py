@@ -84,8 +84,11 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         help="Apply only to products of this category.")
     product = fields.Many2One('product.product', 'Product', ondelete='CASCADE',
         help="Apply only to this product.")
-    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-            depends=['unit_digits'],
+    quantity = fields.Float(
+        'Quantity',
+        digits=(16, Eval('unit_digits', 2)),
+        domain=['OR', ('quantity', '>=', 0), ('quantity', '=', None)],
+        depends=['unit_digits'],
         help="Apply only when quantity is greater.")
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
@@ -148,7 +151,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         if 'quantity' in pattern:
             pattern = pattern.copy()
             quantity = pattern.pop('quantity')
-            if self.quantity is not None and self.quantity > quantity:
+            if self.quantity is not None and self.quantity > abs(quantity):
                 return False
         if 'categories' in pattern:
             pattern = pattern.copy()
