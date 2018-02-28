@@ -92,7 +92,7 @@ class StockLotSLEDTestCase(ModuleTestCase):
                 with Transaction().set_context(context=context,
                         locations=[storage.id]):
                     quantity = Product.products_by_location(
-                        [storage.id], [product.id])
+                        [storage.id], grouping_filter=([product.id],))
                     self.assertEqual(quantity, result,
                         msg='context: %s' % repr(context))
 
