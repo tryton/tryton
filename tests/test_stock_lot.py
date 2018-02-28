@@ -100,11 +100,12 @@ class StockLotTestCase(ModuleTestCase):
             Move.do(moves)
 
             self.assertEqual(Product.products_by_location([storage.id],
-                    [product.id]), {
+                    grouping_filter=([product.id],)), {
                     (storage.id, product.id): 16,
                     })
             self.assertEqual(Product.products_by_location([storage.id],
-                    [product.id], grouping=('lot',)), {
+                    grouping=('product', 'lot',),
+                    grouping_filter=([product.id],)), {
                     (storage.id, product.id, lot1.id): 5,
                     (storage.id, product.id, lot2.id): 8,
                     (storage.id, product.id, None): 3,

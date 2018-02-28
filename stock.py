@@ -29,9 +29,9 @@ class Lot(ModelSQL, ModelView, StockMixin):
     @classmethod
     def get_quantity(cls, lots, name):
         location_ids = Transaction().context.get('locations')
-        products = list(set(l.product for l in lots))
-        return cls._get_quantity(lots, name, location_ids, products,
-            grouping=('lot',))
+        product_ids = list(set(l.product.id for l in lots))
+        return cls._get_quantity(lots, name, location_ids,
+            grouping=('product', 'lot',), grouping_filter=(product_ids,))
 
     @classmethod
     def search_quantity(cls, name, domain=None):
