@@ -29,7 +29,7 @@ class Sale:
         weights = []
         context['weights'] = weights
 
-        lines = self.lines or []
+        lines = [l for l in self.lines or [] if l.quantity > 0]
         keyfunc = partial(self._group_parcel_key, lines)
         lines = sorted(lines, key=keyfunc)
 
