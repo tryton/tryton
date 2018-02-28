@@ -234,7 +234,9 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
                     yield category
                     category = category.parent
 
-        if self.unit and line.unit.category != self.unit.category:
+        if line.quantity < 0:
+            return False
+        elif self.unit and line.unit.category != self.unit.category:
             return False
         elif self.products and line.product not in self.products:
             return False
