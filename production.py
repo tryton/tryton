@@ -90,8 +90,10 @@ class Production:
             product_ids = [p.id for p in sub_products]
             with Transaction().set_context(forecast=True,
                     stock_date_end=today):
-                pbl = Product.products_by_location(warehouse_ids,
-                    product_ids, with_childs=True)
+                pbl = Product.products_by_location(
+                    warehouse_ids,
+                    with_childs=True,
+                    grouping_filter=(product_ids,))
 
             # order product by supply period
             products_period = sorted((p.get_supply_period(), p)
@@ -202,8 +204,10 @@ class Production:
             with Transaction().set_context(forecast=True,
                     stock_date_start=current_date,
                     stock_date_end=current_date):
-                pbl = Product.products_by_location([location_id],
-                    product_ids, with_childs=True)
+                pbl = Product.products_by_location(
+                    [location_id],
+                    with_childs=True,
+                    grouping_filter=(product_ids,))
             for key, qty in pbl.iteritems():
                 _, product_id = key
                 current_qties[product_id] += qty
