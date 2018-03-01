@@ -278,6 +278,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="work_cycle_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'production.work.cycle')]"/>
+        </record>
+
+        <record model="ir.model.button" id="work_cycle_do_button">
+            <field name="name">do</field>
+            <field name="string">Do</field>
+            <field name="model"
+                search="[('model', '=', 'production.work.cycle')]"/>
+        </record>
+
+        <record model="ir.model.button" id="work_cycle_run_button">
+            <field name="name">run</field>
+            <field name="string">Run</field>
+            <field name="model"
+                search="[('model', '=', 'production.work.cycle')]"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_work_cycle">
             <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
             <field name="global_p" eval="True"/>

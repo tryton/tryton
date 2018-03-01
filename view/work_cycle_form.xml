@@ -10,8 +10,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="2" id="buttons">
-        <button name="cancel" string="Cancel" icon="tryton-cancel"/>
-        <button name="run" string="Run" icon="tryton-executable"/>
-        <button name="do" string="Do" icon="tryton-ok"/>
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="run" icon="tryton-executable"/>
+        <button name="do" icon="tryton-ok"/>
     </group>
 </form>
