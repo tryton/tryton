@@ -268,6 +268,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="sale_cancel_button">
             <field name="name">cancel</field>
+            <field name="string">Cancel</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
         <record model="ir.model.button-res.group" id="sale_cancel_button_group_sale">
@@ -277,6 +278,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="sale_draft_button">
             <field name="name">draft</field>
+            <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
         <record model="ir.model.button-res.group" id="sale_draft_button_group_sale">
@@ -286,6 +288,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="sale_quote_button">
             <field name="name">quote</field>
+            <field name="string">Quote</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
         <record model="ir.model.button-res.group" id="sale_quote_button_group_sale">
@@ -295,6 +298,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="sale_confirm_button">
             <field name="name">confirm</field>
+            <field name="string">Confirm</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
         <record model="ir.model.button-res.group" id="sale_confirm_button_group_sale">
@@ -304,11 +308,35 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="sale_process_button">
             <field name="name">process</field>
+            <field name="string">Process</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
         <record model="ir.model.button-res.group" id="sale_process_button_group_sale">
             <field name="button" ref="sale_process_button"/>
             <field name="group" ref="group_sale"/>
+        </record>
+        <record model="ir.model.button" id="sale_modify_header_button">
+            <field name="name">modify_header</field>
+            <field name="string">Modify Header</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_modify_header_button_group_sale">
+            <field name="button" ref="sale_modify_header_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="sale_handle_shipment_exception_button">
+            <field name="name">handle_shipment_exception</field>
+            <field name="string">Handle Shipment Exception</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+
+        <record model="ir.model.button"
+                id="sale_handle_invoice_exception_button">
+            <field name="name">handle_invoice_exception</field>
+            <field name="string">Handle Invoice Exception</field>
+            <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_sale">
