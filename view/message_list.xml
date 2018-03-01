@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type"/>
     <field name="message" widget="binary" filename="filename"/>
     <field name="state"/>
-    <button name="cancel" string="Cancel"/>
-    <button name="do" string="Do"/>
+    <button name="cancel"/>
+    <button name="do"/>
     <field name="filename" tree_invisible="1"/>
 </tree>

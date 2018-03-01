@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='kind']" position="after">
         <field name="sepa_messages" colspan="4"/>
-        <button name="generate_message" string="Generate Message" colspan="4"/>
+        <button name="generate_message" colspan="4"/>
     </xpath>
 </data>
