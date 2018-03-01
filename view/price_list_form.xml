@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='lines']" position="after">
-        <button name="open_lines" string="Open Lines" colspan="4"/>
+        <button name="open_lines" colspan="4"/>
     </xpath>
 </data>

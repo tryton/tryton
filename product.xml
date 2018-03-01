@@ -9,6 +9,12 @@ this repository contains the full copyright notices and license terms. -->
                 ref="product_price_list.price_list_view_form"/>
             <field name="name">price_list_form</field>
         </record>
+        <record model="ir.model.button" id="price_list_open_lines_button">
+            <field name="name">open_lines</field>
+            <field name="string">Open Lines</field>
+            <field name="model"
+                search="[('model', '=', 'product.price_list')]"/>
+        </record>
 
         <record model="ir.ui.view" id="price_list_line_view_form">
             <field name="model">product.price_list.line</field>
