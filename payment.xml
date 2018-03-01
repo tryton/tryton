@@ -33,6 +33,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">succeed_start_form</field>
         </record>
+        <record model="ir.model.button" id="payment_succeed_wizard_button">
+            <field name="name">succeed_wizard</field>
+            <field name="string">Succeed</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
 
         <record model="res.user" id="user_post_clearing_moves">
             <field name="login">user_cron_post_clearing_moves</field>
