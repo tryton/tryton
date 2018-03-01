@@ -28,13 +28,11 @@ this repository contains the full copyright notices and license terms. -->
                 <label name="state"/>
                 <field name="state"/>
                 <group col="-1" colspan="2" id="buttons">
-                    <button string="Cancel" name="cancel" icon="tryton-cancel"/>
-                    <button string="Draft" name="draft" icon="tryton-clear"/>
-                    <button string="Validate" name="validate_statement"
-                        icon="tryton-go-next"/>
-                    <button string="Reconcile" name="reconcile"
-                        icon="tryton-find-replace"/>
-                    <button string="Post" name="post" icon="tryton-ok"/>
+                    <button name="cancel" icon="tryton-cancel"/>
+                    <button name="draft" icon="tryton-clear"/>
+                    <button name="validate_statement" icon="tryton-go-next"/>
+                    <button name="reconcile" icon="tryton-find-replace"/>
+                    <button name="post" icon="tryton-ok"/>
                 </group>
             </group>
         </page>
