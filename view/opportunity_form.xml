@@ -44,17 +44,11 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="state"/>
             </group>
             <group col="-1" colspan="2" id="buttons">
-                <button name="cancel" string="Cancel"
-                    icon="tryton-cancel"/>
-                <button name="lost" string="Mark as Lost"
-                    icon="tryton-cancel"/>
-                <button name="lead" string="Set as Lead"
-                    icon="tryton-go-previous"/>
-                <button name="opportunity"
-                    string="Convert to Opportunity"
-                    icon="tryton-go-next"/>
-                <button name="convert" string="Convert to Sale"
-                    icon="tryton-go-next"/>
+                <button name="cancel" icon="tryton-cancel"/>
+                <button name="lost" icon="tryton-cancel"/>
+                <button name="lead" icon="tryton-go-previous"/>
+                <button name="opportunity" icon="tryton-go-next"/>
+                <button name="convert" icon="tryton-go-next"/>
             </group>
         </page>
         <page name="lines">

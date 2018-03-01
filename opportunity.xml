@@ -149,6 +149,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="opportunity_lead_button">
             <field name="name">lead</field>
+            <field name="string">Set as Lead</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -159,6 +160,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="opportunity_opportunity_button">
             <field name="name">opportunity</field>
+            <field name="string">Convert to Opportunity</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -169,6 +171,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="opportunity_convert_button">
             <field name="name">convert</field>
+            <field name="string">Convert to Sale</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -179,6 +182,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="opportunity_lost_button">
             <field name="name">lost</field>
+            <field name="string">Mark as Lost</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -189,6 +193,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="opportunity_cancel_button">
             <field name="name">cancel</field>
+            <field name="string">Cancel</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
         </record>
         <record model="ir.model.button-res.group"
