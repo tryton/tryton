@@ -122,7 +122,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_purchase_request"/>
         </record>
 
-        <record model="ir.action.keyword" 
+        <record model="ir.model.button"
+                id="purchase_hande_purchase_cancellation_exception_button">
+            <field name="name">handle_purchase_cancellation_exception</field>
+            <field name="string">Handle Purchase Cancellation</field>
+            <field name="model" search="[('model', '=', 'purchase.request')]"/>
+        </record>
+
+        <record model="ir.action.keyword"
             id="wizard_purchase_cancellation_handle_exception_keyword">
             <field name="action"
                 ref="wizard_purchase_cancellation_handle_exception"/>

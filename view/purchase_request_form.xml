@@ -42,7 +42,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="state"/>
     <group col="-1" colspan="2" id="buttons">
         <button name="handle_purchase_cancellation_exception"
-            string="Handle Purchase Cancellation"
             icon="tryton-go-next"/>
     </group>
 </form>
