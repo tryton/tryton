@@ -5,6 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/notebook/page[@id='invoice']/field[@name='lines']"
         position="before">
         <newline/>
-        <button name="recall_deposit" string="Recall Deposit" colspan="2"/>
+        <button name="recall_deposit" colspan="2"/>
     </xpath>
 </data>

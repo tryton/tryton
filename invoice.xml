@@ -22,6 +22,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.button" id="invoice_recall_deposit_button">
             <field name="name">recall_deposit</field>
+            <field name="string">Recall Deposit</field>
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
         <record model="ir.model.button-res.group"
