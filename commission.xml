@@ -227,6 +227,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.model.button" id="commission_invoice_button">
+            <field name="name">invoice</field>
+            <field name="string">Invoice</field>
+            <field name="model" search="[('model', '=', 'commission')]"/>
+        </record>
 
         <record model="ir.action.wizard" id="act_commission_create_invoice">
             <field name="name">Create Commission Invoices</field>

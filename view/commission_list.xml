@@ -8,5 +8,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount"/>
     <field name="currency"/>
     <field name="invoice_state"/>
-    <button name="invoice" string="Invoice" tree_invisible="1"/>
+    <button name="invoice" tree_invisible="1"/>
 </tree>
