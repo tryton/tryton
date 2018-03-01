@@ -178,24 +178,28 @@ this repository contains the full copyright notices and license terms.
 
         <record model="ir.model.button" id="requisition_cancel_button">
             <field name="name">cancel</field>
+            <field name="string">Cancel</field>
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
         </record>
 
         <record model="ir.model.button" id="requisition_draft_button">
             <field name="name">draft</field>
+            <field name="string">Draft</field>
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
         </record>
 
         <record model="ir.model.button" id="requisition_wait_button">
             <field name="name">wait</field>
+            <field name="string">Wait</field>
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
         </record>
 
         <record model="ir.model.button" id="requisition_approve_button">
             <field name="name">approve</field>
+            <field name="string">Approve</field>
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
         </record>
@@ -207,6 +211,7 @@ this repository contains the full copyright notices and license terms.
 
         <record model="ir.model.button" id="requisition_reject_button">
             <field name="name">reject</field>
+            <field name="string">Reject</field>
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
         </record>
