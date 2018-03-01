@@ -34,10 +34,10 @@ this repository contains the full copyright notices and license terms. -->
         <label name="state"/>
         <field name="state"/>
         <group col="-1" colspan="2" id="buttons">
-            <button string="Draft" name="draft"/>
-            <button string="Approve" name="approve"/>
-            <button string="Fail" name="fail"/>
-            <button string="Succeed" name="succeed"/>
+            <button name="draft"/>
+            <button name="approve"/>
+            <button name="fail"/>
+            <button name="succeed"/>
         </group>
     </group>
 </form>

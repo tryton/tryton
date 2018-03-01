@@ -9,8 +9,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="currency"/>
     <field name="date"/>
     <field name="state"/>
-    <button string="Draft" name="draft"/>
-    <button string="Approve" name="approve"/>
-    <button string="Fail" name="fail"/>
-    <button string="Succeed" name="succeed"/>
+    <button name="draft"/>
+    <button name="approve"/>
+    <button name="fail"/>
+    <button name="succeed"/>
 </tree>

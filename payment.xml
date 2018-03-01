@@ -350,6 +350,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="payment_draft_button">
             <field name="name">draft</field>
+            <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
         <record model="ir.model.button-res.group" id="payment_draft_button_group_payment">
@@ -359,6 +360,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="payment_approve_button">
             <field name="name">approve</field>
+            <field name="string">Approve</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
         <record model="ir.model.button-res.group" id="payment_approve_button_group_payment_approval">
@@ -368,6 +370,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="payment_succeed_button">
             <field name="name">succeed</field>
+            <field name="string">Succeed</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
         <record model="ir.model.button-res.group" id="payment_succeed_button_group_payment">
@@ -377,6 +380,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="payment_fail_button">
             <field name="name">fail</field>
+            <field name="string">Fail</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
         <record model="ir.model.button-res.group" id="payment_fail_button_group_payment">

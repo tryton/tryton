@@ -89,6 +89,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="move_line_pay_button">
             <field name="name">pay</field>
+            <field name="string">Pay Lines</field>
             <field name="model" search="[('model', '=', 'account.move.line')]"/>
         </record>
         <record model="ir.model.button-res.group" id="move_line_pay_button_group_payment">
@@ -98,6 +99,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="move_line_payment_block_button">
             <field name="name">payment_block</field>
+            <field name="string">Block</field>
             <field name="model" search="[('model', '=', 'account.move.line')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -108,6 +110,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="move_line_payment_unblock_button">
             <field name="name">payment_unblock</field>
+            <field name="string">Unblock</field>
             <field name="model" search="[('model', '=', 'account.move.line')]"/>
         </record>
         <record model="ir.model.button-res.group"
