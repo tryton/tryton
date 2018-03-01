@@ -11,6 +11,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="work_invoice_button">
             <field name="name">invoice</field>
+            <field name="string">Invoice</field>
             <field name="model" search="[('model', '=', 'project.work')]"/>
         </record>
         <record model="ir.model.button-res.group"

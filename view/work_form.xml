@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']/group/group[@id='buttons']"
         position="inside">
-        <button string="Invoice" name="invoice"/>
+        <button name="invoice"/>
     </xpath>
     <xpath expr="/form/notebook" position="inside">
         <page name="invoiced_progress">
