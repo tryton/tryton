@@ -10,8 +10,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="publishable_key" colspan="3"/>
     <label name="webhook_endpoint"/>
     <field name="webhook_endpoint" colspan="2"/>
-    <button name="new_identifier" string="New URL"
-        confirm="This action will make the previous URL unusable. Do you want to continue?"/>
+    <button name="new_identifier"/>
     <label name="webhook_signing_secret"/>
     <field name="webhook_signing_secret" colspan="3"/>
     <label name="zip_code"/>

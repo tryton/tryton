@@ -33,6 +33,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">account_list</field>
         </record>
 
+        <record model="ir.model.button" id="account_new_identifier_button">
+            <field name="name">new_identifier</field>
+            <field name="string">New URL</field>
+            <field name="confirm">This action will make the previous URL unusable. Do you want to continue?</field>
+            <field name="model" search="[('model', '=', 'account.payment.stripe.account')]"/>
+        </record>
+
         <record model="ir.action.act_window" id="act_account_form">
             <field name="name">Stripe Accounts</field>
             <field name="res_model">account.payment.stripe.account</field>
@@ -95,6 +102,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="payment_stripe_checkout_button">
+            <field name="name">stripe_checkout</field>
+            <field name="string">Stripe Checkout</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+
+        <record model="ir.model.button" id="payment_stripe_capture_button">
+            <field name="name">stripe_capture_</field>
+            <field name="string">Stripe Capture</field>
+            <field name="model" search="[('model', '=', 'account.payment')]"/>
+        </record>
+
         <record model="ir.ui.view" id="customer_view_form">
             <field name="model">account.payment.stripe.customer</field>
             <field name="type">form</field>
@@ -140,6 +159,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.model.button" id="customer_stripe_checkout_button">
+            <field name="name">stripe_checkout</field>
+            <field name="string">Stripe Checkout</field>
+            <field name="model"
+                search="[('model', '=', 'account.payment.stripe.customer')]"/>
         </record>
 
         <record model="ir.action.wizard" id="wizard_checkout">

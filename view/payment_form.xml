@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='buttons']" position="inside">
-        <button string="Stripe Checkout" name="stripe_checkout"/>
-        <button string="Stripe Capture" name="stripe_capture_"/>
+        <button name="stripe_checkout"/>
+        <button name="stripe_capture_"/>
     </xpath>
     <xpath expr="//field[@name='date']" position="after">
         <newline/>
