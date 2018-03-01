@@ -5,6 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <xpath
         expr="/form/group[@id='state_buttons']/group[@id='buttons']/button[@name='draft']"
         position="after">
-        <button name="split_wizard" string="Split" icon="tryton-production-split"/>
+        <button name="split_wizard" icon="tryton-production-split"/>
     </xpath>
 </data>

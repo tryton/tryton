@@ -25,5 +25,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">split_start_form</field>
         </record>
+        <record model="ir.model.button" id="production_split_wizard_button">
+            <field name="name">split_wizard</field>
+            <field name="string">Split</field>
+            <field name="model"
+                search="[('model', '=', 'production')]"/>
+        </record>
     </data>
 </tryton>
