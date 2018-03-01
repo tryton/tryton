@@ -93,6 +93,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="landed_cost_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'account.landed_cost')]"/>
+        </record>
+
+        <record model="ir.model.button" id="landed_cost_post_button">
+            <field name="name">post</field>
+            <field name="string">Post</field>
+            <field name="model"
+                search="[('model', '=', 'account.landed_cost')]"/>
+        </record>
+
+        <record model="ir.model.button" id="landed_cost_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model"
+                search="[('model', '=', 'account.landed_cost')]"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_landed_cost">
             <field name="model" search="[('model', '=', 'account.landed_cost')]"/>
             <field name="global_p" eval="True"/>
