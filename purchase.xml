@@ -235,6 +235,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="purchase_cancel_button">
             <field name="name">cancel</field>
+            <field name="string">Cancel</field>
             <field name="model"
                 search="[('model', '=', 'purchase.purchase')]"/>
         </record>
@@ -246,6 +247,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="purchase_draft_button">
             <field name="name">draft</field>
+            <field name="string">Draft</field>
             <field name="model"
                 search="[('model', '=', 'purchase.purchase')]"/>
         </record>
@@ -257,6 +259,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="purchase_quote_button">
             <field name="name">quote</field>
+            <field name="string">Quote</field>
             <field name="model"
                 search="[('model', '=', 'purchase.purchase')]"/>
         </record>
@@ -268,6 +271,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="purchase_confirm_button">
             <field name="name">confirm</field>
+            <field name="string">Confirm</field>
             <field name="model"
                 search="[('model', '=', 'purchase.purchase')]"/>
         </record>
@@ -277,9 +281,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_purchase"/>
         </record>
 
+        <record model="ir.model.button" id="purchase_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="purchase_process_button_group_purchase">
+            <field name="button" ref="purchase_process_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
+        <record model="ir.model.button" id="purchase_modify_header_button">
+            <field name="name">modify_header</field>
+            <field name="string">Modify Header</field>
+            <field name="model"
+                search="[('model', '=', 'purchase.purchase')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="purchase_modify_header_button_group_purchase">
+            <field name="button" ref="purchase_modify_header_button"/>
+            <field name="group" ref="group_purchase"/>
+        </record>
+
         <record model="ir.model.button"
                 id="purchase_hande_invoice_exception_button">
             <field name="name">handle_invoice_exception</field>
+            <field name="string">Handle Invoice Exception</field>
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -290,6 +319,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button"
                 id="purchase_hande_shipment_exception_button">
             <field name="name">handle_shipment_exception</field>
+            <field name="string">Handle Shipment Exception</field>
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
         </record>
         <record model="ir.model.button-res.group"
