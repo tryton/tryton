@@ -43,18 +43,13 @@ this repository contains the full copyright notices and license terms. -->
         <label name="state"/>
         <field name="state"/>
         <group col="-1" colspan="2" id="buttons">
-            <button name="cancel" string="Cancel"
-                icon="tryton-cancel"/>
-            <button name="draft" string="Draft"/>
-            <button name="reset_bom" string="Reset to BOM"
-                icon="tryton-clear"/>
-            <button name="wait" string="Wait"/>
-            <button name="assign_wizard" string="Assign"
-                icon="tryton-go-next"/>
-            <button name="run" string="Run"
-                icon="tryton-go-next"/>
-            <button name="done" string="Done"
-                icon="tryton-go-next"/>
+            <button name="cancel" icon="tryton-cancel"/>
+            <button name="draft"/>
+            <button name="reset_bom" icon="tryton-clear"/>
+            <button name="wait"/>
+            <button name="assign_wizard" icon="tryton-go-next"/>
+            <button name="run" icon="tryton-go-next"/>
+            <button name="done" icon="tryton-go-next"/>
         </group>
     </group>
 </form>
