@@ -57,6 +57,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="period_draft_button">
             <field name="name">draft</field>
+            <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'stock.period')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -67,6 +68,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="period_close_button">
             <field name="name">close</field>
+            <field name="string">Close</field>
             <field name="model" search="[('model', '=', 'stock.period')]"/>
         </record>
         <record model="ir.model.button-res.group"

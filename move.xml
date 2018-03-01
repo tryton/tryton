@@ -110,6 +110,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.model.button" id="move_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.model.button" id="move_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Reset to Draft</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.model.button" id="move_assign_button">
+            <field name="name">assign</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.model.button" id="move_do_button">
+            <field name="name">do</field>
+            <field name="string">Do</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
 
     </data>
 </tryton>

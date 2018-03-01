@@ -94,6 +94,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="inventory_confirm_button">
             <field name="name">confirm</field>
+            <field name="string">Confirm</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -104,12 +105,20 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="inventory_cancel_button">
             <field name="name">cancel</field>
+            <field name="string">Cancel</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="inventory_cancel_button_group_stock">
             <field name="button" ref="inventory_cancel_button"/>
             <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="inventory_complete_lines_button">
+            <field name="name">complete_lines</field>
+            <field name="string">Complete Inventory</field>
+            <field name="help">Add an inventory line for each missing products</field>
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_inventory">

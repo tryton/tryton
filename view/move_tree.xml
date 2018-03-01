@@ -11,9 +11,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="planned_date"/>
     <field name="effective_date"/>
     <field name="state"/>
-    <button name="cancel" string="Cancel"/>
-    <button name="draft" string="Reset to Draft"/>
-    <button name="do" string="Do"/>
+    <button name="cancel"/>
+    <button name="draft"/>
+    <button name="do"/>
     <field name="unit_digits" tree_invisible="1"/>
     <field name="assignation_required" tree_invisible="1"/>
 </tree>

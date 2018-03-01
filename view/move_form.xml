@@ -29,9 +29,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="2" id="buttons">
-        <button name="cancel" string="Cancel" icon="tryton-cancel"/>
-        <button name="draft" string="Reset to Draft" icon="tryton-clear"/>
-        <button name="do" string="Do" icon="tryton-go-next"/>
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-clear"/>
+        <button name="do" icon="tryton-go-next"/>
     </group>
     <field name="unit_price_required" invisible="1" colspan="4"/>
     <field name="unit_digits" invisible="1" colspan="4"/>

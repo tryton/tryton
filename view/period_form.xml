@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="2" id="buttons">
-        <button name="draft" string="Draft" icon="tryton-clear"/>
-        <button name="close" string="Close" icon="tryton-ok"/>
+        <button name="draft" icon="tryton-clear"/>
+        <button name="close" icon="tryton-ok"/>
     </group>
 </form>
