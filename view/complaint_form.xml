@@ -29,12 +29,12 @@ this repository contains the full copyright notices and license terms. -->
             <label name="state"/>
             <field name="state"/>
             <group col="-1" colspan="2" id="buttons">
-                <button name="cancel" string="Cancel" icon="tryton-cancel"/>
-                <button name="draft" string="Draft"/>
-                <button name="wait" string="Wait" icon="tryton-go-next"/>
-                <button name="approve" string="Approve" icon="tryton-go-next"/>
-                <button name="reject" string="Reject" icon="tryton-close"/>
-                <button name="process" string="Process" icon="tryton-executable"/>
+                <button name="cancel" icon="tryton-cancel"/>
+                <button name="draft"/>
+                <button name="wait" icon="tryton-go-next"/>
+                <button name="approve" icon="tryton-go-next"/>
+                <button name="reject" icon="tryton-close"/>
+                <button name="process" icon="tryton-executable"/>
             </group>
         </page>
     </notebook>
