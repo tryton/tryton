@@ -35,6 +35,37 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_modules"
             action="act_module_form" id="menu_module_form"/>
 
+        <record model="ir.model.button" id="module_activate_button">
+            <field name="name">activate</field>
+            <field name="string">Mark for Activation</field>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+        </record>
+        <record model="ir.model.button" id="module_activate_cancel_button">
+            <field name="name">activate_cancel</field>
+            <field name="string">Cancel Activation</field>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+        </record>
+        <record model="ir.model.button" id="module_deactivate_button">
+            <field name="name">deactivate</field>
+            <field name="string">Mark for Deactivation (beta)</field>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+        </record>
+        <record model="ir.model.button" id="module_deactivate_cancel_button">
+            <field name="name">deactivate_cancel</field>
+            <field name="string">Cancel Deactivation</field>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+        </record>
+        <record model="ir.model.button" id="module_upgrade_button">
+            <field name="name">upgrade</field>
+            <field name="string">Mark for Upgrade</field>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+        </record>
+        <record model="ir.model.button" id="module_upgrade_cancel_button">
+            <field name="name">upgrade_cancel</field>
+            <field name="string">Cancel Upgrade</field>
+            <field name="model" search="[('model', '=', 'ir.module')]"/>
+        </record>
+
         <record model="ir.ui.view" id="module_dependency_view_form">
             <field name="model">ir.module.dependency</field>
             <field name="type">form</field>

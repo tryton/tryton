@@ -138,8 +138,7 @@ attlist.newline &= empty
 button = element button { attlist.button, empty }
 attlist.button &= [ a:defaultValue = "1" ] attribute colspan { text }?
 attlist.button &= attribute help { text }?
-attlist.button &=
-  [ a:defaultValue = "Unknown" ] attribute string { text }?
+attlist.button &= attribute string { text }?
 attlist.button &= attribute icon { text }?
 attlist.button &= attribute confirm { text }?
 attlist.button &= attribute name { text }

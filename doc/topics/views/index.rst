@@ -333,8 +333,6 @@ button
 
 Display a button.
 
-    * ``string``: The string that will be displayed inside the button.
-
     * ``name``: The name of the function that will be called. The function must
       have this syntax:
 
@@ -342,6 +340,16 @@ Display a button.
 
       The function may return an `ir.action` id or one of those client side
       action keywords:
+
+    * ``string``: The string that will be displayed inside the button.
+
+    * ``confirm``: A string that will be shown in order to request
+      confirmation when clicking the button.
+
+    * ``help``: see in common-attributes-help_.
+
+The button should be registered on ``ir.model.button`` where the default value
+of the ``string``, ``confirm`` and ``help`` attributes can be can be defined.
 
 .. _topics-views-client-actions:
 

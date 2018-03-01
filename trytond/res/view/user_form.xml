@@ -14,11 +14,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="email" widget="email"/>
             <label name="password"/>
             <field name="password" widget="password"/>
-            <button
-                name="reset_password"
-                colspan="2"
-                string="Reset Password"
-                help="Send by email a new temporary password to the user"/>
+            <button name="reset_password" colspan="2" />
             <separator name="signature" colspan="4"/>
             <field name="signature" colspan="4"/>
         </page>

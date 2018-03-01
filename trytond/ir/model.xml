@@ -297,6 +297,11 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_model_form" action="act_model_data_form"
             id="menu_model_data_form"/>
+        <record model="ir.model.button" id="model_data_sync_button">
+            <field name="name">sync</field>
+            <field name="string">Sync</field>
+            <field name="model" search="[('model', '=', 'ir.model.data')]"/>
+        </record>
 
     </data>
 </tryton>

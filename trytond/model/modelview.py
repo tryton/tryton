@@ -539,6 +539,11 @@ class ModelView(Model):
             else:
                 states = {}
             groups = set(User.get_groups())
+            button_attr = Button.get_view_attributes(
+                cls.__name__, button_name)
+            for attr, value in button_attr.iteritems():
+                if not element.get(attr):
+                    element.set(attr, value or '')
             button_groups = Button.get_groups(cls.__name__, button_name)
             if ((button_groups and not groups & button_groups)
                     or (not button_groups

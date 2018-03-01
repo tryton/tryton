@@ -6,6 +6,13 @@ this repository contains the full copyright notices and license terms. -->
     <field name="model"/>
     <label name="name"/>
     <field name="name"/>
+    <label name="string"/>
+    <field name="string"/>
+    <newline/>
+    <separator name="help" colspan="4"/>
+    <field name="help" colspan="4"/>
+    <separator name="confirm" colspan="4"/>
+    <field name="confirm" colspan="4"/>
     <field name="groups" colspan="4"/>
     <field name="rules" colspan="2"/>
     <field name="reset_by" colspan="2"/>

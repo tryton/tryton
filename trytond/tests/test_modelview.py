@@ -90,6 +90,9 @@ class ModelView(unittest.TestCase):
         admin, = Group.search([('name', '=', 'Administration')])
         test = TestModel()
 
+        button = Button(name='test', model=model)
+        button.save()
+
         # Without model/button access
         TestModel.test([test])
 
@@ -105,7 +108,7 @@ class ModelView(unittest.TestCase):
         self.assertRaises(UserError, TestModel.test, [test])
 
         # Without write access but with button access
-        button = Button(name='test', model=model, groups=[admin])
+        button.groups = [admin]
         button.save()
         TestModel.test([test])
 

@@ -20,5 +20,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <separator name="arch" colspan="4"/>
     <field name="arch" colspan="4"/>
-    <button name="show" string="Show" colspan="4"/>
+    <button name="show" colspan="4"/>
 </form>

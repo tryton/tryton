@@ -708,6 +708,10 @@ class ModelButton(ModelSQL, ModelView):
     "Model Button"
     __name__ = 'ir.model.button'
     name = fields.Char('Name', required=True, readonly=True)
+    string = fields.Char("Label", translate=True)
+    help = fields.Text("Help", translate=True)
+    confirm = fields.Text("Confirm", translate=True,
+        help="Text to ask user confirmation when clicking the button.")
     model = fields.Many2One('ir.model', 'Model', required=True, readonly=True,
         ondelete='CASCADE', select=True)
     groups = fields.Many2Many('ir.model.button-res.group', 'button', 'group',
@@ -732,6 +736,8 @@ class ModelButton(ModelSQL, ModelView):
             ],
         depends=['model', 'id'])
     _reset_cache = Cache('ir.model.button.reset')
+    _view_attributes_cache = Cache(
+        'ir.model.button.view_attributes', context=False)
 
     @classmethod
     def __setup__(cls):
@@ -750,6 +756,7 @@ class ModelButton(ModelSQL, ModelView):
         cls._groups_cache.clear()
         cls._rules_cache.clear()
         cls._reset_cache.clear()
+        cls._view_attributes_cache.clear()
         return result
 
     @classmethod
@@ -759,6 +766,7 @@ class ModelButton(ModelSQL, ModelView):
         cls._groups_cache.clear()
         cls._rules_cache.clear()
         cls._reset_cache.clear()
+        cls._view_attributes_cache.clear()
 
     @classmethod
     def delete(cls, buttons):
@@ -767,6 +775,7 @@ class ModelButton(ModelSQL, ModelView):
         cls._groups_cache.clear()
         cls._rules_cache.clear()
         cls._reset_cache.clear()
+        cls._view_attributes_cache.clear()
 
     @classmethod
     def copy(cls, buttons, default=None):
@@ -837,6 +846,29 @@ class ModelButton(ModelSQL, ModelView):
             reset = [b.name for b in button.reset]
         cls._reset_cache.set(key, reset)
         return reset
+
+    @classmethod
+    def get_view_attributes(cls, model, name):
+        "Return the view attributes of the named button of the model"
+        key = (model, name, Transaction().language)
+        attributes = cls._view_attributes_cache.get(key)
+        if attributes is not None:
+            return attributes
+        buttons = cls.search([
+                ('model.model', '=', model),
+                ('name', '=', name),
+                ])
+        if not buttons:
+            attributes = {}
+        else:
+            button, = buttons
+            attributes = {
+                'string': button.string,
+                'help': button.help,
+                'confirm': button.confirm,
+                }
+        cls._view_attributes_cache.set(key, attributes)
+        return attributes
 
 
 class ModelButtonRule(ModelSQL, ModelView):

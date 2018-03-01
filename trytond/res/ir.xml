@@ -700,73 +700,49 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_admin"/>
         </record>
 
-        <record model="ir.model.button" id="module_activate_button">
-            <field name="name">activate</field>
-            <field name="model" search="[('model', '=', 'ir.module')]"/>
-        </record>
         <record model="ir.model.button-res.group"
             id="module_activate_button_group_admin">
-            <field name="button" ref="module_activate_button"/>
+            <field name="button" ref="ir.module_activate_button"/>
             <field name="group" ref="group_admin"/>
-        </record>
-
-        <record model="ir.model.button" id="module_activate_cancel_button">
-            <field name="name">activate_cancel</field>
-            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_activate_cancel_button_group_admin">
-            <field name="button" ref="module_activate_cancel_button"/>
+            <field name="button" ref="ir.module_activate_cancel_button"/>
             <field name="group" ref="group_admin"/>
-        </record>
-
-        <record model="ir.model.button" id="module_deactivate_button">
-            <field name="name">deactivate</field>
-            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_deactivate_button_group_admin">
-            <field name="button" ref="module_deactivate_button"/>
+            <field name="button" ref="ir.module_deactivate_button"/>
             <field name="group" ref="group_admin"/>
-        </record>
-
-        <record model="ir.model.button" id="module_deactivate_cancel_button">
-            <field name="name">deactivate_cancel</field>
-            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_deactivate_cancel_button_group_admin">
-            <field name="button" ref="module_deactivate_cancel_button"/>
+            <field name="button" ref="ir.module_deactivate_cancel_button"/>
             <field name="group" ref="group_admin"/>
-        </record>
-
-        <record model="ir.model.button" id="module_upgrade_button">
-            <field name="name">upgrade</field>
-            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_upgrade_button_group_admin">
-            <field name="button" ref="module_upgrade_button"/>
+            <field name="button" ref="ir.module_upgrade_button"/>
             <field name="group" ref="group_admin"/>
-        </record>
-
-        <record model="ir.model.button" id="module_upgrade_cancel_button">
-            <field name="name">upgrade_cancel</field>
-            <field name="model" search="[('model', '=', 'ir.module')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="module_upgrade_cancel_button_group_admin">
-            <field name="button" ref="module_upgrade_cancel_button"/>
+            <field name="button" ref="ir.module_upgrade_cancel_button"/>
             <field name="group" ref="group_admin"/>
         </record>
-
-        <record model="ir.model.button" id="model_data_sync_button">
-            <field name="name">sync</field>
-            <field name="model" search="[('model', '=', 'ir.model.data')]"/>
+        <record model="ir.model.button-res.group"
+            id="cron_run_once_button_group_admin">
+            <field name="button" ref="ir.cron_run_once_button"/>
+            <field name="group" ref="group_admin"/>
         </record>
         <record model="ir.model.button-res.group"
             id="model_data_sync_button_group_admin">
-            <field name="button" ref="model_data_sync_button"/>
+            <field name="button" ref="ir.model_data_sync_button"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="view_show_button_group_admin">
+            <field name="button" ref="ir.view_show_button"/>
             <field name="group" ref="group_admin"/>
         </record>
 

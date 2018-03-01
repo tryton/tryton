@@ -8,6 +8,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="db_id"/>
     <field name="noupdate"/>
     <field name="out_of_sync"/>
-    <button string="Sync" name="sync"/>
+    <button name="sync"/>
 </tree>
 

@@ -1,3 +1,4 @@
+* Ensure that all buttons are registered in ir.model.button
 * Make trytond-admin ask for admin email
 * Add option to set admin email with trytond-admin
 * Add option to reset admin password with trytond-admin

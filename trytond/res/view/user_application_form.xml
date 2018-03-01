@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="state"/>
     <field name="state"/>
     <group id="buttons" colspan="2" col="-1">
-        <button name="cancel" string="Cancel" icon="tryton-cancel"/>
-        <button name="validate_" string="Validate" icon="tryton-ok"/>
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="validate_" icon="tryton-ok"/>
     </group>
 </form>

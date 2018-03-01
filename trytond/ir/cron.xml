@@ -35,5 +35,11 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="ir.menu_scheduler"
             action="act_cron_form" id="menu_cron_form"/>
+
+        <record model="ir.model.button" id="cron_run_once_button">
+            <field name="name">run_once</field>
+            <field name="string">Run Once</field>
+            <field name="model" search="[('model', '=', 'ir.cron')]"/>
+        </record>
     </data>
 </tryton>

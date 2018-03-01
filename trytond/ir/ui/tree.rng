@@ -234,7 +234,7 @@
   </define>
   <define name="attlist.button" combine="interleave">
     <optional>
-      <attribute name="string" a:defaultValue="Unknown"/>
+      <attribute name="string"/>
     </optional>
   </define>
   <define name="attlist.button" combine="interleave">

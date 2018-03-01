@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="next_call"/>
     <label name="repeat_missed"/>
     <field name="repeat_missed"/>
-    <button name="run_once" colspan="2" string="Run Once"/>
+    <button name="run_once" colspan="2"/>
     <separator string="Action to trigger" colspan="4"
         id="action_trigger"/>
     <label name="model"/>

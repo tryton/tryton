@@ -562,6 +562,27 @@ class ModuleTestCase(unittest.TestCase):
                 "ModelSingleton must appear before ModelSQL in the parent "
                 "classes of '%s'." % mname)
 
+    @with_transaction()
+    def test_buttons_registered(self):
+        'Test all buttons are registered in ir.model.button'
+        pool = Pool()
+        Button = pool.get('ir.model.button')
+        for mname, model in Pool().iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            if not issubclass(model, ModelView):
+                continue
+            ir_buttons = {b.name for b in Button.search([
+                        ('model.model', '=', model.__name__),
+                        ])}
+            buttons = set(model._buttons)
+            assert ir_buttons >= buttons, (
+                'The buttons "%(buttons)s" of Model "%(model)s" are not '
+                'registered in ir.model.button.' % {
+                    'buttons': list(buttons - ir_buttons),
+                    'model': model.__name__,
+                    })
+
 
 def db_exist(name=DB_NAME):
     Database = backend.get('Database')

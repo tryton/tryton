@@ -6,6 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="key" expand="1"/>
     <field name="application" expand="1"/>
     <field name="state"/>
-    <button name="cancel" string="Cancel"/>
-    <button name="validate_" string="Validate"/>
+    <button name="cancel"/>
+    <button name="validate_"/>
 </tree>
