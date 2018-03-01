@@ -48,6 +48,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.model.button" id="user_validate_email_button">
+            <field name="name">validate_email</field>
+            <field name="string">Validate E-mail</field>
+            <field name="model" search="[('model', '=', 'web.user')]"/>
+        </record>
+
+        <record model="ir.model.button" id="user_reset_password_button">
+            <field name="name">reset_password</field>
+            <field name="string">Reset Password</field>
+            <field name="model" search="[('model', '=', 'web.user')]"/>
+        </record>
 
         <record model="ir.action.report" id="report_email_validation">
             <field name="name">Email Validation</field>
