@@ -246,6 +246,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.model.button" id="journal_period_open_button">
+            <field name="name">open</field>
+            <field name="model"
+                search="[('model', '=', 'account.journal.period')]"/>
+        </record>
+        <record model="ir.model.button" id="journal_period_close_button">
+            <field name="name">close</field>
+            <field name="model"
+                search="[('model', '=', 'account.journal.period')]"/>
+        </record>
+        <record model="ir.model.button" id="journal_period_reopen_button">
+            <field name="name">reopen</field>
+            <field name="model"
+                search="[('model', '=', 'account.journal.period')]"/>
+        </record>
     </data>
 
     <data noupdate="1">

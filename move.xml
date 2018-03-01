@@ -59,6 +59,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.model.button" id="move_post_button">
+            <field name="name">post</field>
+            <field name="string">Post</field>
+            <field name="model" search="[('model', '=', 'account.move')]"/>
+        </record>
         <record model="ir.sequence.type" id="sequence_type_account_move">
             <field name="name">Account Move</field>
             <field name="code">account.move</field>

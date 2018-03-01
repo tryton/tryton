@@ -25,5 +25,5 @@ this repository contains the full copyright notices and license terms. -->
         view_ids="account.move_line_view_tree_move,account.move_line_view_form_move"/>
     <label name="state"/>
     <field name="state"/>
-    <button string="Post" name="post" icon="tryton-ok" colspan="2"/>
+    <button name="post" icon="tryton-ok" colspan="2"/>
 </form>

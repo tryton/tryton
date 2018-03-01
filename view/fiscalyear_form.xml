@@ -16,10 +16,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Periods" id="periods">
             <field name="periods" colspan="4"/>
             <group col="-1" colspan="4" id="buttons">
-                <button name="create_period"
-                    string="Create Monthly Periods"/>
-                <button name="create_period_3"
-                    string="Create 3 Months Periods"/>
+                <button name="create_period"/>
+                <button name="create_period_3"/>
             </group>
         </page>
         <page string="Sequences" id="sequences">

@@ -54,6 +54,38 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="fiscalyear_create_period_button">
+            <field name="name">create_period</field>
+            <field name="string">Create Monthly Periods</field>
+            <field name="model"
+                search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+
+        <record model="ir.model.button" id="fiscalyear_create_period_3_button">
+            <field name="name">create_period_3</field>
+            <field name="string">Create 3 Monthly Periods</field>
+            <field name="model"
+                search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+
+        <record model="ir.model.button" id="fiscalyear_reopen_button">
+            <field name="name">reopen</field>
+            <field name="string">Re-Open</field>
+            <field name="model"
+                search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+        <record model="ir.model.button" id="fiscalyear_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+        <record model="ir.model.button" id="fiscalyear_lock_button">
+            <field name="name">lock</field>
+            <field name="string">Lock</field>
+            <field name="confirm">Are you sure to lock the fiscal year?</field>
+            <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_fiscalyear">
             <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
             <field name="global_p" eval="True"/>

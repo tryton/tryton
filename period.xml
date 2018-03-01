@@ -55,6 +55,32 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+        <record model="ir.model.button" id="period_close_button">
+            <field name="name">close</field>
+            <field name="string">Close</field>
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="period_close_button_group_account_admin">
+            <field name="button" ref="period_close_button"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+        <record model="ir.model.button" id="period_reopen_button">
+            <field name="name">reopen</field>
+            <field name="string">Re-Open</field>
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+                id="period_reopen_button_group_account_admin">
+            <field name="button" ref="period_reopen_button"/>
+            <field name="group" ref="group_account_admin"/>
+        </record>
+        <record model="ir.model.button" id="period_lock_button">
+            <field name="name">lock</field>
+            <field name="string">Lock</field>
+            <field name="confirm">Are you sure to lock the period?</field>
+            <field name="model" search="[('model', '=', 'account.period')]"/>
+        </record>
 
         <record model="ir.action.act_window" id="act_period_form_close">
             <field name="name">Close Periods</field>
