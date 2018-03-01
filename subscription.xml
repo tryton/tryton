@@ -107,6 +107,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="subscription_draft_button">
             <field name="name">draft</field>
+            <field name="string">Draft</field>
             <field name="model"
                 search="[('model', '=', 'sale.subscription')]"/>
         </record>
@@ -118,6 +119,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="subscription_run_button">
             <field name="name">run</field>
+            <field name="string">Run</field>
             <field name="model"
                 search="[('model', '=', 'sale.subscription')]"/>
         </record>
@@ -125,6 +127,20 @@ this repository contains the full copyright notices and license terms. -->
             id="subscription_run_button_group_sale">
             <field name="button" ref="subscription_run_button"/>
             <field name="group" ref="sale.group_sale"/>
+        </record>
+
+        <record model="ir.model.button" id="subscription_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model"
+                search="[('model', '=', 'sale.subscription')]"/>
+        </record>
+
+        <record model="ir.model.button" id="subscription_quote_button">
+            <field name="name">quote</field>
+            <field name="string">Quote</field>
+            <field name="model"
+                search="[('model', '=', 'sale.subscription')]"/>
         </record>
 
         <record model="ir.ui.view" id="subscription_line_view_form">

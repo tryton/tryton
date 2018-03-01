@@ -33,10 +33,10 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="state"/>
             </group>
             <group col="4" colspan="2" id="buttons" yfill="1">
-                <button name="cancel" string="Cancel"/>
-                <button name="draft" string="Draft"/>
-                <button name="quote" string="Quote"/>
-                <button name="run" string="Run"/>
+                <button name="cancel"/>
+                <button name="draft"/>
+                <button name="quote"/>
+                <button name="run"/>
             </group>
         </page>
         <page string="Other Info" id="other">
