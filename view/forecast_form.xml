@@ -20,9 +20,9 @@ this repository contains the full copyright notices and license terms. -->
         <label name="state"/>
         <field name="state"/>
         <group colspan="2" col="-1" id="buttons">
-            <button string="Reset to Draft" name="draft" icon="tryton-clear"/>
-            <button string="Cancel" name="cancel" icon="tryton-cancel"/>
-            <button string="Confirm" name="confirm" icon="tryton-ok"/>
+            <button name="draft" icon="tryton-clear"/>
+            <button name="cancel" icon="tryton-cancel"/>
+            <button name="confirm" icon="tryton-ok"/>
         </group>
     </group>
 </form>

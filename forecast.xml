@@ -127,6 +127,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="forecast_cancel_button">
             <field name="name">cancel</field>
+            <field name="string">Cancel</field>
             <field name="model" search="[('model', '=', 'stock.forecast')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -137,6 +138,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="forecast_draft_button">
             <field name="name">draft</field>
+            <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'stock.forecast')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -147,12 +149,18 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="forecast_confirm_button">
             <field name="name">confirm</field>
+            <field name="string">Confirm</field>
             <field name="model" search="[('model', '=', 'stock.forecast')]"/>
         </record>
         <record model="ir.model.button-res.group"
             id="forecaset_confirm_button_group_stock_forecast">
             <field name="button" ref="forecast_confirm_button"/>
             <field name="group" ref="group_stock_forecast"/>
+        </record>
+
+        <record model="ir.model.button" id="forecast_complete_button">
+            <field name="name">complete</field>
+            <field name="model" search="[('model', '=', 'stock.forecast')]"/>
         </record>
 
     </data>
