@@ -31,19 +31,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">shipment_out_form</field>
         </record>
 
+        <record model="ir.model.button"
+                id="shipment_out_create_shipping_button">
+            <field name="name">create_shipping</field>
+            <field name="string">Create Shipping for Packages</field>
+            <field name="model"
+                search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+
         <record model="ir.action.wizard" id="act_create_shipping_wizard">
             <field name="name">Create Shipping</field>
             <field name="wiz_name">stock.shipment.create_shipping</field>
-        </record>
-        <record model="ir.model.button" id="create_shipping_button">
-            <field name="name">create_shipping</field>
-            <field name="model" 
-                search="[('model', '=', 'stock.shipment.out')]"/>
-        </record>
-        <record model="ir.model.button-res.group"
-            id="create_shipping_button_group_stock">
-            <field name="button" ref="create_shipping_button"/>
-            <field name="group" ref="stock.group_stock"/>
         </record>
     </data>
 </tryton>

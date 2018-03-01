@@ -7,6 +7,6 @@ this repository contains the full copyright notices and license terms. -->
         position="after">
         <label name="shipping_description"/>
         <field name="shipping_description"/>
-        <button string="Create Shipping for Packages" name="create_shipping"/>
+        <button name="create_shipping"/>
     </xpath>
 </data>
