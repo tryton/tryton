@@ -14,9 +14,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="state"/>
     <field name="amount_to_pay_today"/>
     <field name="description"/>
-    <button name="cancel" string="Cancel" tree_invisible="1"
-        confirm="Are you sure to cancel the invoice?"/>
-    <button name="draft" string="Draft" tree_invisible="1"/>
-    <button name="validate_invoice" string="Validate" tree_invisible="1"/>
-    <button name="post" string="Post" tree_invisible="1"/>
+    <button name="cancel" tree_invisible="1"/>
+    <button name="draft" tree_invisible="1"/>
+    <button name="validate_invoice" tree_invisible="1"/>
+    <button name="post" tree_invisible="1"/>
 </tree>
