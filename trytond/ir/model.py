@@ -1087,6 +1087,12 @@ class ModelData(ModelSQL, ModelView):
                     where=model_data.inherit == True))
             table.drop_column('inherit', True)
 
+        # Migration from 4.6: register buttons on ir module
+        cursor.execute(*model_data.update(
+                [model_data.module], ['ir'],
+                where=((model_data.module == 'res')
+                    & (model_data.fs_id == 'model_data_sync_button'))))
+
     @staticmethod
     def default_noupdate():
         return False

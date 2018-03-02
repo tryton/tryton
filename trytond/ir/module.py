@@ -102,7 +102,12 @@ class Module(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
         TableHandler = backend.get('TableHandler')
+        sql_table = cls.__table__()
+        model_data_sql_table = ModelData.__table__()
+        cursor = Transaction().connection.cursor()
 
         # Migration from 3.6: remove double module
         old_table = 'ir_module_module'
@@ -112,14 +117,26 @@ class Module(ModelSQL, ModelView):
         super(Module, cls).__register__(module_name)
 
         # Migration from 4.0: rename installed to activated
-        sql_table = cls.__table__()
-        cursor = Transaction().connection.cursor()
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['activated'],
                 where=sql_table.state == 'installed'))
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['not activated'],
                 where=sql_table.state == 'uninstalled'))
+
+        # Migration from 4.6: register buttons on ir module
+        button_fs_ids = [
+            'module_activate_button',
+            'module_activate_cancel_button',
+            'module_deactivate_button',
+            'module_deactivate_cancel_button',
+            'module_upgrade_button',
+            'module_upgrade_cancel_button',
+            ]
+        cursor.execute(*model_data_sql_table.update(
+                [model_data_sql_table.module], ['ir'],
+                where=((model_data_sql_table.module == 'res')
+                    & (model_data_sql_table.fs_id.in_(button_fs_ids)))))
 
     @staticmethod
     def default_state():
