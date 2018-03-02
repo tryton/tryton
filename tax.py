@@ -1070,7 +1070,7 @@ class TaxableMixin(object):
             taxable_lines = [_TaxableLine(*params)
                 for params in self.taxable_lines]
             for line in taxable_lines:
-                l_taxes = Tax.compute(line.taxes, line.unit_price,
+                l_taxes = Tax.compute(Tax.browse(line.taxes), line.unit_price,
                     line.quantity, self.tax_date)
                 for tax in l_taxes:
                     taxline = self._compute_tax_line(self.tax_type, **tax)
