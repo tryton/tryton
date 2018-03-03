@@ -2198,7 +2198,7 @@
             for (var i = 0, len = record._values[this.name].length; i < len;
                     i++) {
                 var record2 = group[i];
-                if (!record2.deleted() || !record2.removed())
+                if (!record2.deleted() && !record2.removed())
                     result.push(record2.get_on_change_value(
                                 [this.description.relation_field || '']));
             }
