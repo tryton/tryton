@@ -70,6 +70,8 @@ def eval_leaf(part, context, boolop=operator.and_):
             context_field = datetime.datetime.min
         else:
             context_field = datetime.date.min
+    if isinstance(context_field, (list, tuple)) and value is None:
+        value = type(context_field)()
     if (isinstance(context_field, basestring)
             and isinstance(value, (list, tuple))):
         try:
@@ -583,6 +585,9 @@ def test_evaldomain():
     domain = [['x', '=', 1]]
     assert eval_domain(domain, {'x': [1, 2]})
     assert not eval_domain(domain, {'x': [2]})
+
+    domain = [['x', '=', None]]
+    assert eval_domain(domain, {'x': []})
 
 
 def test_localize():
