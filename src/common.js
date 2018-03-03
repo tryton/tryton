@@ -2063,6 +2063,9 @@
                     context_field = Sao.Date.min;
                 }
             }
+            if ((context_field instanceof Array) & (value === null)) {
+                value = [];
+            }
             if ((typeof context_field == 'string') &&
                     (value instanceof Array) && value.length == 2) {
                 value = value.join(',');
