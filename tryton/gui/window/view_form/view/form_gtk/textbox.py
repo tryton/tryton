@@ -4,7 +4,6 @@ import logging
 
 import gtk
 from .widget import Widget, TranslateMixin
-from tryton.common.widget_style import set_widget_style
 from tryton.config import CONFIG
 
 try:
@@ -83,7 +82,6 @@ class TextBox(Widget, TranslateMixin):
     def _readonly_set(self, value):
         super(TextBox, self)._readonly_set(value)
         self.textview.set_editable(not value)
-        set_widget_style(self.textview, not value)
         if self.button:
             self.button.set_sensitive(not value)
         if value and CONFIG['client.fast_tabbing']:

@@ -7,7 +7,6 @@ import tempfile
 from tryton.common import common
 from tryton.common import file_selection, Tooltips, file_open, slugify
 from tryton.common.entry_position import reset_position
-from tryton.common.widget_style import set_widget_style
 from tryton.config import CONFIG
 from .widget import Widget
 
@@ -165,7 +164,6 @@ class Binary(BinaryMixin, Widget):
         self.but_clear.set_sensitive(not value)
         if self.wid_text:
             self.wid_text.set_editable(not value)
-            set_widget_style(self.wid_text, not value)
         if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:

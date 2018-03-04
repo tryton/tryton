@@ -17,8 +17,6 @@ import cairo
 from tryton.action import Action
 from tryton.gui.window import Window
 
-gtk_version = getattr(gtk, 'get_major_version', lambda: 2)()
-
 
 class Popup(object):
 
@@ -72,10 +70,7 @@ class Popup(object):
 class Graph(gtk.DrawingArea):
     'Graph'
 
-    if gtk_version == 2:
-        __gsignals__ = {"expose-event": "override"}
-    else:
-        __gsignals__ = {"draw": "override"}
+    __gsignals__ = {"draw": "override"}
 
     def __init__(self, view, xfield, yfields):
         super(Graph, self).__init__()
@@ -110,36 +105,17 @@ class Graph(gtk.DrawingArea):
     def leave(self, widget, event):
         self.popup.hide()
 
-    if gtk_version == 2:
-        # Handle the expose-event by drawing
-        def do_expose_event(self, event):
+    def do_draw(self, cr):
+        cr = self.window.cairo_create()
+        width = self.get_allocated_width()
+        height = self.get_allocated_height()
 
-            # Create the cairo context
-            cr = self.window.cairo_create()
-
-            # Restrict Cairo to the exposed area; avoid extra work
-            cr.rectangle(event.area.x, event.area.y,
-                    event.area.width, event.area.height)
-            cr.clip()
-
-            self.updateArea(cr, *self.window.get_size())
-            self.drawBackground(cr, *self.window.get_size())
-            self.drawLines(cr, *self.window.get_size())
-            self.drawGraph(cr, *self.window.get_size())
-            self.drawAxis(cr, *self.window.get_size())
-            self.drawLegend(cr, *self.window.get_size())
-    else:
-        def do_draw(self, cr):
-            cr = self.window.cairo_create()
-            width = self.get_allocated_width()
-            height = self.get_allocated_height()
-
-            self.updateArea(cr, width, height)
-            self.drawBackground(cr, width, height)
-            self.drawLines(cr, width, height)
-            self.drawGraph(cr, width, height)
-            self.drawAxis(cr, width, height)
-            self.drawLegend(cr, width, height)
+        self.updateArea(cr, width, height)
+        self.drawBackground(cr, width, height)
+        self.drawLines(cr, width, height)
+        self.drawGraph(cr, width, height)
+        self.drawAxis(cr, width, height)
+        self.drawLegend(cr, width, height)
 
     def export_png(self, filename, width, height):
         surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)

@@ -20,7 +20,6 @@ from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime
 from tryton.common.domain_parser import quote
 from tryton.common.entry_position import reset_position
-from tryton.common.widget_style import set_widget_style
 from tryton.common.underline import set_underline
 
 _ = gettext.gettext
@@ -55,7 +54,6 @@ class DictEntry(object):
 
     def set_readonly(self, readonly):
         self.widget.set_editable(not readonly)
-        set_widget_style(self.widget, not readonly)
 
 
 class DictBooleanEntry(DictEntry):

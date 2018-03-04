@@ -11,7 +11,6 @@ from .widget import Widget
 from tryton import common
 from tryton.common.datetime_ import (Date as DateEntry, Time as TimeEntry,
     DateTime as DateTimeEntry, add_operators)
-from tryton.common.widget_style import set_widget_style
 from tryton.config import CONFIG
 
 _ = gettext.gettext
@@ -38,7 +37,6 @@ class Date(Widget):
 
     def _set_editable(self, value):
         self.entry.set_editable(value)
-        set_widget_style(self.entry, value)
         self.entry.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY, value)
 
     def _readonly_set(self, value):
@@ -153,7 +151,6 @@ class DateTime(Date):
         for child in self.entry.get_children():
             if isinstance(child, gtk.Entry):
                 child.set_editable(value)
-                set_widget_style(child, value)
                 child.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY, value)
             elif isinstance(child, gtk.ComboBoxEntry):
                 child.set_sensitive(value)
