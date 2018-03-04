@@ -1138,7 +1138,10 @@ class Line(ModelSQL, ModelView):
             for line in lines)
         for period, journal in period_and_journals:
             cls.check_journal_period_modify(period, journal)
-        Move.validate_move(list(set(line.move for line in lines)))
+        # Re-browse for cache alignment
+        moves = Move.browse(list(set(line.move for line in lines)))
+        Move.check_modify(moves)
+        Move.validate_move(moves)
         return lines
 
     @classmethod
