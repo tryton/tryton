@@ -1,3 +1,5 @@
+* Match also with parent categories
+
 Version 4.6.0 - 2017-10-30
 * Bug fixes (see mercurial logs for details)
 * Don't match product and category lines when product is empty

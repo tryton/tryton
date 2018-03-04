@@ -63,6 +63,8 @@ class CommissionTestCase(ModuleTestCase):
 
         category = Category(name="Category")
         category.save()
+        child_category = Category(name="Child Category", parent=category)
+        child_category.save()
 
         company = create_company()
         with set_company(company):
@@ -82,6 +84,11 @@ class CommissionTestCase(ModuleTestCase):
             template.save()
 
             self.assertEqual(plan.compute(Decimal(1), product), Decimal(1))
+
+            template.categories = [child_category]
+            template.save()
+
+            self.assertEqual(plan.compute(Decimal(1), product), Decimal('0.8'))
 
     @with_transaction()
     def test_plan_no_product(self):
