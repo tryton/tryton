@@ -90,6 +90,8 @@ class ProductPriceListTestCase(ModuleTestCase):
 
         category = Category(name="Category")
         category.save()
+        child_category = Category(name="Child Category", parent=category)
+        child_category.save()
 
         unit, = Uom.search([('name', '=', 'Unit')])
 
@@ -126,6 +128,13 @@ class ProductPriceListTestCase(ModuleTestCase):
             self.assertEqual(
                 price_list.compute(None, product, product.list_price, 1, unit),
                 Decimal(10))
+
+            template.categories = [child_category]
+            template.save()
+
+            self.assertEqual(
+                price_list.compute(None, product, product.list_price, 1, unit),
+                Decimal(8))
 
 
 def suite():

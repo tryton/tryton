@@ -54,12 +54,19 @@ class PriceList(ModelSQL, ModelView):
 
         Uom = Pool().get('product.uom')
 
+        def parents(categories):
+            for category in categories:
+                while category:
+                    yield category
+                    category = category.parent
+
         if pattern is None:
             pattern = {}
 
         pattern = pattern.copy()
         if product:
-            pattern['categories'] = [c.id for c in product.categories_all]
+            pattern['categories'] = [
+                c.id for c in parents(product.categories_all)]
             pattern['product'] = product.id
         pattern['quantity'] = Uom.compute_qty(uom, quantity,
             product.default_uom, round=False) if product else quantity
