@@ -7,6 +7,7 @@ from . import recurrence
 from . import service
 from . import subscription
 from . import invoice
+from . import party
 
 
 def register():
@@ -26,6 +27,7 @@ def register():
     Pool.register(
         subscription.CreateLineConsumption,
         subscription.CreateSubscriptionInvoice,
+        party.PartyReplace,
         module='sale_subscription', type_='wizard')
     Pool.register(
         module='sale_subscription', type_='report')
