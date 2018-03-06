@@ -1538,7 +1538,7 @@
                     return;
                 }
                 var prm = jQuery.when();
-                if (attributes.confirm !== undefined) {
+                if (attributes.confirm) {
                     prm = Sao.common.sur.run(attributes.confirm);
                 }
                 prm.then(function() {
