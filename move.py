@@ -1178,78 +1178,90 @@ class Line(ModelSQL, ModelView):
         return toolbar
 
     @classmethod
-    def reconcile(cls, lines, journal=None, date=None, account=None,
-            description=None):
+    def reconcile(cls, *lines_list, **writeoff):
+        """
+        Reconcile each list of lines together.
+        The writeoff keys are: journal, date, account and description.
+        """
         pool = Pool()
-        Move = pool.get('account.move')
         Reconciliation = pool.get('account.move.reconciliation')
-        Period = pool.get('account.period')
+
+        reconciliations = []
+        for lines in lines_list:
+            for line in lines:
+                if line.reconciliation:
+                    cls.raise_user_error('already_reconciled',
+                            error_args=(line.move.number, line.id,))
+
+            lines = list(lines)
+            reconcile_account = None
+            reconcile_party = None
+            amount = Decimal('0.0')
+            for line in lines:
+                amount += line.debit - line.credit
+                if not reconcile_account:
+                    reconcile_account = line.account
+                if not reconcile_party:
+                    reconcile_party = line.party
+            amount = reconcile_account.currency.round(amount)
+            if amount:
+                move = cls._get_writeoff_move(
+                    reconcile_account, reconcile_party, amount, **writeoff)
+                move.save()
+                lines += cls.search([
+                        ('move', '=', move.id),
+                        ('account', '=', reconcile_account.id),
+                        ('debit', '=', amount < Decimal('0.0') and - amount
+                            or Decimal('0.0')),
+                        ('credit', '=', amount > Decimal('0.0') and amount
+                            or Decimal('0.0')),
+                        ], limit=1)
+            reconciliations.append({
+                    'lines': [('add', [x.id for x in lines])],
+                    'date': max(l.date for l in lines),
+                    })
+        return Reconciliation.create(reconciliations)
+
+    @classmethod
+    def _get_writeoff_move(cls, reconcile_account, reconcile_party, amount,
+            journal=None, date=None, account=None, description=None):
+        pool = Pool()
         Date = pool.get('ir.date')
-
-        for line in lines:
-            if line.reconciliation:
-                cls.raise_user_error('already_reconciled',
-                        error_args=(line.move.number, line.id,))
-
-        lines = list(lines)
-        reconcile_account = None
-        reconcile_party = None
-        amount = Decimal('0.0')
-        for line in lines:
-            amount += line.debit - line.credit
-            if not reconcile_account:
-                reconcile_account = line.account
-            if not reconcile_party:
-                reconcile_party = line.party
-        amount = reconcile_account.currency.round(amount)
+        Period = pool.get('account.period')
+        Move = pool.get('account.move')
+        if not date:
+            date = Date.today()
+        period_id = Period.find(reconcile_account.company.id, date=date)
         if not account and journal:
             if amount >= 0:
                 account = journal.debit_account
             else:
                 account = journal.credit_account
-        if journal and account:
-            if not date:
-                date = Date.today()
-            period_id = Period.find(reconcile_account.company.id, date=date)
-            move, = Move.create([{
-                        'journal': journal.id,
-                        'period': period_id,
-                        'date': date,
-                        'description': description,
-                        'lines': [
-                            ('create', [{
-                                        'account': reconcile_account.id,
-                                        'party': (reconcile_party.id
-                                            if reconcile_party else None),
-                                        'debit': (amount < Decimal('0.0')
-                                            and - amount or Decimal('0.0')),
-                                        'credit': (amount > Decimal('0.0')
-                                            and amount or Decimal('0.0')),
-                                        }, {
-                                        'account': account.id,
-                                        'party': (reconcile_party.id
-                                            if (account.party_required and
-                                                reconcile_party)
-                                            else None),
-                                        'debit': (amount > Decimal('0.0')
-                                            and amount or Decimal('0.0')),
-                                        'credit': (amount < Decimal('0.0')
-                                            and - amount or Decimal('0.0')),
-                                        }]),
-                            ],
-                        }])
-            lines += cls.search([
-                    ('move', '=', move.id),
-                    ('account', '=', reconcile_account.id),
-                    ('debit', '=', amount < Decimal('0.0') and - amount
-                        or Decimal('0.0')),
-                    ('credit', '=', amount > Decimal('0.0') and amount
-                        or Decimal('0.0')),
-                    ], limit=1)
-        return Reconciliation.create([{
-                    'lines': [('add', [x.id for x in lines])],
-                    'date': max(l.date for l in lines),
-                    }])[0]
+
+        move = Move()
+        move.journal = journal
+        move.period = period_id
+        move.date = date
+        move.description = description
+
+        lines = []
+
+        line = cls()
+        lines.append(line)
+        line.account = reconcile_account
+        line.party = reconcile_party
+        line.debit = -amount if amount < 0 else 0
+        line.credit = amount if amount > 0 else 0
+
+        line = cls()
+        lines.append(line)
+        line.account = account
+        line.party = reconcile_party if account.party_required else None
+        line.debit = amount if amount > 0 else 0
+        line.credit = -amount if amount < 0 else 0
+
+        move.lines = lines
+        return move
 
 
 class OpenJournalAsk(ModelView):
