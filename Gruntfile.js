@@ -114,7 +114,7 @@ module.exports = function(grunt) {
     },
     watch: {
         scripts: {
-            files: ['src/*.js'],
+            files: ['src/**/*.js'],
             tasks: ['concat', 'jshint']
         },
         styles: {
@@ -127,18 +127,16 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-po2json');
+
   grunt.registerTask('default', 'Build for production.', function() {
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-po2json');
     grunt.task.run(['concat', 'jshint', 'uglify', 'less', 'po2json']);
     });
   grunt.registerTask('dev', 'Build for development.', function() {
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.task.run(['concat', 'jshint', 'less:dev']);
     });
   grunt.registerTask('devwatch', 'Watch development', function() {
@@ -154,9 +152,6 @@ module.exports = function(grunt) {
     grunt.task.run(['xgettext']);
   });
   grunt.registerTask('test', 'Run tests', function() {
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.task.run(['concat', 'jshint', 'less:dev', 'qunit']);
     });
