@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 from itertools import groupby
 
 from sql import Null
@@ -503,9 +503,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         MoveLine.save([l for l, _ in move_lines])
 
-        for move_line, line in move_lines:
-            if line:
-                line.reconcile(move_line)
+        Line.reconcile(move_lines)
         return moves
 
     def _get_move(self, key):
@@ -824,39 +822,60 @@ class Line(
         default.setdefault('invoice', None)
         return super(Line, cls).copy(lines, default=default)
 
-    def reconcile(self, move_line):
+    @classmethod
+    def reconcile(cls, move_lines):
         pool = Pool()
         Currency = pool.get('currency.currency')
         Lang = pool.get('ir.lang')
         Invoice = pool.get('account.invoice')
         MoveLine = pool.get('account.move.line')
 
-        if self.invoice:
-            with Transaction().set_context(date=self.invoice.currency_date):
-                amount_to_pay = Currency.compute(self.invoice.currency,
-                    self.invoice.amount_to_pay,
-                    self.statement.journal.currency)
-            if abs(amount_to_pay) < abs(self.amount):
+        # Try to group as much possible the write of payment lines on invoices
+        def write_invoice_payments(invoice_payments):
+            to_write = []
+            for invoice, lines in invoice_payments.iteritems():
+                to_write.append([invoice])
+                to_write.append({'payment_lines': [('add', lines)]})
+            Invoice.write(*to_write)
+            invoice_payments.clear()
+        invoice_payments = defaultdict(list)
+
+        to_reconcile = []
+        for move_line, line in move_lines:
+            if not line or not line.invoice:
+                continue
+
+            # Write previous invoice payments to have them when calling
+            # get_reconcile_lines_for_amount
+            if line.invoice in invoice_payments:
+                write_invoice_payments(invoice_payments)
+
+            with Transaction().set_context(date=line.invoice.currency_date):
+                amount_to_pay = Currency.compute(line.invoice.currency,
+                    line.invoice.amount_to_pay,
+                    line.statement.journal.currency)
+            if abs(amount_to_pay) < abs(line.amount):
                 amount = Lang.get().format(
-                    self.amount, self.statement.journal.currency)
-                self.raise_user_error('amount_greater_invoice_amount_to_pay',
+                    line.amount, line.statement.journal.currency)
+                cls.raise_user_error('amount_greater_invoice_amount_to_pay',
                         error_args=(amount,))
 
-            with Transaction().set_context(date=self.invoice.currency_date):
-                amount = Currency.compute(self.statement.journal.currency,
-                    self.amount, self.statement.company.currency)
+            with Transaction().set_context(date=line.invoice.currency_date):
+                amount = Currency.compute(line.statement.journal.currency,
+                    line.amount, line.statement.company.currency)
 
-            reconcile_lines = self.invoice.get_reconcile_lines_for_amount(
+            reconcile_lines = line.invoice.get_reconcile_lines_for_amount(
                 amount)
 
-            assert move_line.account == self.invoice.account
+            assert move_line.account == line.invoice.account
 
-            Invoice.write([self.invoice], {
-                    'payment_lines': [('add', [move_line.id])],
-                    })
-            if reconcile_lines[1] == Decimal('0.0'):
-                lines = reconcile_lines[0] + [move_line]
-                MoveLine.reconcile(lines)
+            invoice_payments[line.invoice].append(move_line.id)
+            if not reconcile_lines[1]:
+                to_reconcile.append(reconcile_lines[0] + [move_line])
+        if invoice_payments:
+            write_invoice_payments(invoice_payments)
+        if to_reconcile:
+            MoveLine.reconcile(*to_reconcile)
 
     @classmethod
     def post_move(cls, lines):
