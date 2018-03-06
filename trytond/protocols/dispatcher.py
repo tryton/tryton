@@ -60,9 +60,6 @@ def login(request, database_name, user, parameters, language=None):
     except RateLimitException:
         session = None
         code = 429
-    msg = 'successful login' if session else 'bad login or password'
-    logger.info('%s \'%s\' from %s using %s on database \'%s\'',
-        msg, user, request.remote_addr, request.scheme, database_name)
     if not session:
         abort(code)
     return session
@@ -71,12 +68,9 @@ def login(request, database_name, user, parameters, language=None):
 @app.auth_required
 def logout(request, database_name):
     auth = request.authorization
-    name = security.logout(
+    security.logout(
         database_name, auth.get('userid'), auth.get('session'),
         context={'_request': request.context})
-    logger.info('logout \'%s\' from %s using %s on database \'%s\'',
-        name, request.remote_addr, request.scheme, database_name)
-    return True
 
 
 @app.route('/', methods=['POST'])

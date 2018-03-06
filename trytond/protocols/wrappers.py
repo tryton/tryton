@@ -60,13 +60,15 @@ class Request(_Request):
         auth = self.authorization
         if not auth:
             return None
+        context = {'_request': self.context}
         if auth.type == 'session':
             user_id = security.check(
                 database_name, auth.get('userid'), auth.get('session'),
-                context={'_request': self.context})
+                context=context)
         else:
             user_id = security.login(
-                database_name, auth.username, auth, cache=False)
+                database_name, auth.username, auth, cache=False,
+                context=context)
         return user_id
 
     @cached_property

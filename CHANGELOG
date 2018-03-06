@@ -1,3 +1,4 @@
+* Simplify API for Session: new, remove, check and reset
 * Ensure that all buttons are registered in ir.model.button
 * Make trytond-admin ask for admin email
 * Add option to set admin email with trytond-admin

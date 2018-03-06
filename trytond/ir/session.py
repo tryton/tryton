@@ -46,29 +46,62 @@ class Session(ModelSQL):
         return token_hex(nbytes)
 
     @classmethod
-    def check(cls, user, key):
-        "Check user key and delete old one"
+    def new(cls, values=None):
+        "Create a new session for the transaction user and return the key."
+        if values is None:
+            values = {}
+        session, = cls.create([values])
+        return session.key
+
+    @classmethod
+    def remove(cls, key, domain=None):
+        "Delete the key session and return the login."
+        domain = [
+            ('key', '=', key),
+            domain or [],
+            ]
+        sessions = cls.search(domain)
+        if not sessions:
+            return
+        session, = sessions
+        name = session.create_uid.login
+        cls.delete(sessions)
+        return name
+
+    @classmethod
+    def check(cls, user, key, domain=None):
+        """
+        Check user key and delete old one.
+        Return True if key is still valid, False if the key is expired and None
+        if the key does not exist.
+        """
         now = datetime.datetime.now()
         timeout = datetime.timedelta(
             seconds=config.getint('session', 'timeout'))
         sessions = cls.search([
                 ('create_uid', '=', user),
+                domain or [],
                 ])
-        find = False
+        find = None
+        to_delete = []
         for session in sessions:
             timestamp = session.write_date or session.create_date
             if abs(timestamp - now) < timeout:
                 if session.key == key:
                     find = True
             else:
-                cls.delete([session])
+                if find is None and session.key == key:
+                    find = False
+                to_delete.append(session)
+        cls.delete(to_delete)
         return find
 
     @classmethod
-    def reset(cls, session):
-        "Reset session timestamp"
+    def reset(cls, key, domain=None):
+        "Reset key session timestamp"
         sessions = cls.search([
-                ('key', '=', session),
+                ('key', '=', key),
+                domain or [],
                 ])
         cls.write(sessions, {})
 

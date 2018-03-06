@@ -1,10 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import logging
+
 from trytond.pool import Pool
 from trytond.config import config
 from trytond.transaction import Transaction
 from trytond import backend
 from trytond.exceptions import LoginException, RateLimitException
+
+logger = logging.getLogger(__name__)
 
 
 def _get_pool(dbname):
@@ -13,6 +17,11 @@ def _get_pool(dbname):
     if dbname not in database_list:
         pool.init()
     return pool
+
+
+def _get_remote_addr(context):
+    if context and '_request' in context:
+        return context['_request'].get('remote_addr')
 
 
 def login(dbname, loginname, parameters, cache=True, context=None):
@@ -32,14 +41,20 @@ def login(dbname, loginname, parameters, cache=True, context=None):
                 transaction.commit()
                 raise
         break
+    session = None
     if user_id:
         if not cache:
-            return user_id
-        with Transaction().start(dbname, user_id):
-            Session = pool.get('ir.session')
-            session, = Session.create([{}])
-            return user_id, session.key
-    return
+            session = user_id
+        else:
+            with Transaction().start(dbname, user_id):
+                Session = pool.get('ir.session')
+                session = user_id, Session.new()
+        logger.info("login succeeded for '%s' from '%s' on database '%s'",
+            loginname, _get_remote_addr(context), dbname)
+    else:
+        logger.error("login failed for '%s' from '%s' on database '%s'",
+            loginname, _get_remote_addr(context), dbname)
+    return session
 
 
 def logout(dbname, user, session, context=None):
@@ -49,19 +64,13 @@ def logout(dbname, user, session, context=None):
             pool = _get_pool(dbname)
             Session = pool.get('ir.session')
             try:
-                sessions = Session.search([
-                        ('key', '=', session),
-                        ])
-                if not sessions:
-                    return
-                session, = sessions
-                name = session.create_uid.login
-                Session.delete(sessions)
+                name = Session.remove(session)
             except DatabaseOperationalError:
                 if count:
                     continue
                 raise
-        return name
+    logger.info("logout for '%s' from '%s' on database '%s'",
+        name, _get_remote_addr(context), dbname)
 
 
 def check(dbname, user, session, context=None):
@@ -71,13 +80,23 @@ def check(dbname, user, session, context=None):
             pool = _get_pool(dbname)
             Session = pool.get('ir.session')
             try:
-                if not Session.check(user, session):
-                    return
-                else:
-                    return user
+                find = Session.check(user, session)
+                break
             except DatabaseOperationalError:
                 if count:
                     continue
                 raise
             finally:
                 transaction.commit()
+    if find is None:
+        logger.error("session failed for '%s' from '%s' on database '%s'",
+            user, _get_remote_addr(context), dbname)
+        return
+    elif not find:
+        logger.info("session expired for '%s' from '%s' on database '%s'",
+            user, _get_remote_addr(context), dbname)
+        return
+    else:
+        logger.debug("session valid for '%s' from '%s' on database '%s'",
+            user, _get_remote_addr(context), dbname)
+        return user
