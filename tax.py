@@ -13,7 +13,7 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 
 __all__ = ['TaxGroup', 'TaxCodeTemplate', 'TaxCode',
     'OpenChartTaxCodeStart', 'OpenChartTaxCode',
