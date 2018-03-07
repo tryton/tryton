@@ -1067,7 +1067,7 @@ class AccountTestCase(ModuleTestCase):
                                         }])],
                         }])
             self.assertListEqual(
-                tax_rule.apply(tax, {}),  [target_tax.id, tax.id])
+                tax_rule.apply(tax, {}), [target_tax.id, tax.id])
 
 
 def suite():
