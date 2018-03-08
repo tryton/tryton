@@ -23,7 +23,7 @@ The drop shipment can be in one of this states:
 * Waiting
 
   All moves are in draft, the synchronization between the moves of the supplier
-  and the moves to the customer has occured.
+  and the moves to the customer has occurred.
 
 * Shipped
 
