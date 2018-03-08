@@ -41,6 +41,51 @@ class Invoice:
     def recall_deposit(cls, invoices):
         pass
 
+    def call_deposit(self, account, description):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        Currency = pool.get('currency.currency')
+
+        balance = self.party.get_deposit_balance(account)
+        balance = Currency.compute(
+            account.company.currency, balance, self.currency)
+
+        amount = 0
+        if self.type.startswith('in'):
+            if balance > 0 and self.total_amount > 0:
+                amount = -min(balance, self.total_amount)
+        else:
+            if balance < 0 and self.total_amount > 0:
+                amount = -min(-balance, self.total_amount)
+        to_delete = []
+        for line in self.lines:
+            if line.account == account:
+                to_delete.append(line)
+        if amount < 0:
+            line = self._get_deposit_recall_invoice_line(
+                amount, account, description)
+            line.sequence = max(l.sequence for l in self.lines)
+            line.save()
+        if to_delete:
+            InvoiceLine.delete(to_delete)
+
+    def _get_deposit_recall_invoice_line(self, amount, account, description):
+        pool = Pool()
+        Line = pool.get('account.invoice.line')
+
+        line = Line(
+            invoice=self,
+            company=self.company,
+            type='line',
+            quantity=1,
+            account=account,
+            unit_price=amount,
+            description=description,
+            )
+        # Set taxes
+        line.on_change_account()
+        return line
+
     @classmethod
     def check_deposit(cls, invoices):
         to_check = set()
@@ -96,49 +141,9 @@ class DepositRecall(Wizard):
     def transition_recall(self):
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        InvoiceLine = pool.get('account.invoice.line')
-        Currency = pool.get('currency.currency')
         invoice = Invoice(Transaction().context['active_id'])
-
-        amount = 0
-        account = self.start.account
-        balance = invoice.party.get_deposit_balance(account)
-        balance = Currency.compute(account.company.currency, balance,
-            invoice.currency)
-        if invoice.type.startswith('in'):
-            if balance > 0 and invoice.total_amount > 0:
-                amount = -min(balance, invoice.total_amount)
-        else:
-            if balance < 0 and invoice.total_amount > 0:
-                amount = -min(-balance, invoice.total_amount)
-        to_delete = []
-        for line in invoice.lines:
-            if line.account == self.start.account:
-                to_delete.append(line)
-        if amount < 0:
-            line = self._get_invoice_line(invoice, amount)
-            line.sequence = max(l.sequence for l in invoice.lines)
-            line.save()
-        if to_delete:
-            InvoiceLine.delete(to_delete)
+        invoice.call_deposit(self.start.account, self.start.description)
         return 'end'
-
-    def _get_invoice_line(self, invoice, amount):
-        pool = Pool()
-        Line = pool.get('account.invoice.line')
-
-        line = Line(
-            invoice=invoice,
-            company=invoice.company,
-            type='line',
-            quantity=1,
-            account=self.start.account,
-            unit_price=amount,
-            description=self.start.description,
-            )
-        # Set taxes
-        line.on_change_account()
-        return line
 
 
 class DepositRecallStart(ModelView):
