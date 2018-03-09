@@ -318,7 +318,8 @@ class Location(ModelSQL, ModelView):
 
         context = {}
         if (name == 'quantity'
-                and trans_context.get('stock_date_end') > Date_.today()):
+                and (trans_context.get('stock_date_end', datetime.date.max)
+                    > Date_.today())):
             context['stock_date_end'] = Date_.today()
 
         if name == 'forecast_quantity':
