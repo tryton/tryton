@@ -4,8 +4,12 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
     <field name="name"/>
-    <label name="active"/>
-    <field name="active" xexpand="0" width="100"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="100"/>
+        <label name="template_override"/>
+        <field name="template_override" xexpand="0" width="100"/>
+    </group>
     <label name="description"/>
     <field name="description" colspan="3"/>
     <notebook colspan="4">

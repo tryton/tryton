@@ -15,7 +15,7 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.report import Report
 from trytond.tools import reduce_ids, grouped_slice
-from trytond.pyson import Eval, If, PYSONEncoder
+from trytond.pyson import Eval, If, PYSONEncoder, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
@@ -149,15 +149,24 @@ class TypeTemplate(sequence_ordered(), ModelSQL, ModelView):
 class Type(sequence_ordered(), ModelSQL, ModelView):
     'Account Type'
     __name__ = 'account.account.type'
-    name = fields.Char('Name', size=None, required=True)
+
+    _states = {
+        'readonly': (Bool(Eval('template', -1)) &
+            ~Eval('template_override', False)),
+        }
+    name = fields.Char('Name', size=None, required=True, states=_states)
     parent = fields.Many2One('account.account.type', 'Parent',
-        ondelete="RESTRICT", domain=[
-            ('company', '=', Eval('company')),
-            ], depends=['company'])
-    childs = fields.One2Many('account.account.type', 'parent', 'Children',
+        ondelete="RESTRICT", states=_states,
         domain=[
             ('company', '=', Eval('company')),
-        ], depends=['company'])
+            ],
+        depends=['company'])
+    childs = fields.One2Many('account.account.type', 'parent', 'Children',
+        states=_states,
+        domain=[
+            ('company', '=', Eval('company')),
+        ],
+        depends=['company'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     amount = fields.Function(fields.Numeric('Amount',
@@ -166,15 +175,22 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
     amount_cmp = fields.Function(fields.Numeric('Amount',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_amount_cmp')
-    balance_sheet = fields.Boolean('Balance Sheet')
-    income_statement = fields.Boolean('Income Statement')
+    balance_sheet = fields.Boolean('Balance Sheet', states=_states)
+    income_statement = fields.Boolean('Income Statement', states=_states)
     display_balance = fields.Selection([
         ('debit-credit', 'Debit - Credit'),
         ('credit-debit', 'Credit - Debit'),
-        ], 'Display Balance', required=True)
+        ], 'Display Balance', required=True, states=_states)
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
     template = fields.Many2One('account.account.type.template', 'Template')
+    template_override = fields.Boolean('Override Template',
+        help="Check to override template definition",
+        states={
+            'invisible': ~Bool(Eval('template', -1)),
+            },
+        depends=['template'])
+    del _states
 
     @classmethod
     def __register__(cls, module_name):
@@ -202,6 +218,10 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_display_balance():
         return 'debit-credit'
+
+    @classmethod
+    def default_template_override(cls):
+        return False
 
     def get_currency_digits(self, name):
         return self.company.currency.digits
@@ -294,7 +314,7 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
         childs = [self]
         while childs:
             for child in childs:
-                if child.template:
+                if child.template and not child.template_override:
                     vals = child.template._get_type_value(type=child)
                     if vals:
                         values.append([child])
@@ -500,10 +520,10 @@ class AccountTemplate(ModelSQL, ModelView):
             to_write = []
             for template in templates:
                 if template.id not in template_done:
-                    if template.taxes:
+                    account = Account(template2account[template.id])
+                    if template.taxes and not account.template_override:
                         tax_ids = [template2tax[x.id] for x in template.taxes]
-                        to_write.append(
-                            [Account(template2account[template.id])])
+                        to_write.append([account])
                         to_write.append({
                                 'taxes': [
                                     ('add', tax_ids)],
@@ -531,8 +551,13 @@ class AccountTemplateTaxTemplate(ModelSQL):
 class Account(ModelSQL, ModelView):
     'Account'
     __name__ = 'account.account'
-    name = fields.Char('Name', size=None, required=True, select=True)
-    code = fields.Char('Code', size=None, select=True)
+
+    _states = {
+        'readonly': (Bool(Eval('template', -1)) &
+            ~Eval('template_override', False)),
+        }
+    name = fields.Char('Name', required=True, select=True, states=_states)
+    code = fields.Char('Code', select=True, states=_states)
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
@@ -547,6 +572,7 @@ class Account(ModelSQL, ModelView):
             ('id', '!=', Eval('currency', -1)),
             ],
         states={
+            'reaodnly': _states['readonly'],
             'invisible': (Eval('kind').in_(
                     ['payable', 'revenue', 'receivable', 'expense'])
                 | ~Eval('deferral', False)),
@@ -558,6 +584,7 @@ class Account(ModelSQL, ModelView):
         states={
             'invisible': Eval('kind') == 'view',
             'required': Eval('kind') != 'view',
+            'readonly': _states['readonly'],
             },
         domain=[
             ('company', '=', Eval('company')),
@@ -565,10 +592,11 @@ class Account(ModelSQL, ModelView):
     parent = fields.Many2One('account.account', 'Parent', select=True,
         left="left", right="right", ondelete="RESTRICT",
         domain=[('company', '=', Eval('company'))],
-        depends=['company'])
+        states=_states, depends=['company'])
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
-    childs = fields.One2Many('account.account', 'parent', 'Children')
+    childs = fields.One2Many(
+        'account.account', 'parent', 'Children', states=_states)
     balance = fields.Function(fields.Numeric('Balance',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_balance')
@@ -590,6 +618,7 @@ class Account(ModelSQL, ModelView):
         help='Allow move lines of this account \nto be reconciled.',
         states={
             'invisible': Eval('kind') == 'view',
+            'readonly': _states['readonly'],
             }, depends=['kind'])
     note = fields.Text('Note')
     kind = fields.Selection([
@@ -600,9 +629,10 @@ class Account(ModelSQL, ModelView):
             ('expense', 'Expense'),
             ('stock', 'Stock'),
             ('view', 'View'),
-            ], 'Kind', required=True)
+            ], 'Kind', required=True, states=_states)
     deferral = fields.Boolean('Deferral', states={
             'invisible': Eval('kind') == 'view',
+            'readonly': _states['readonly'],
             }, depends=['kind'])
     deferrals = fields.One2Many('account.account.deferral', 'account',
         'Deferrals', readonly=True, states={
@@ -617,6 +647,7 @@ class Account(ModelSQL, ModelView):
             ],
         states={
             'invisible': (Eval('kind') == 'view') | ~Eval('deferral', False),
+            'readonly': _states['readonly'],
             },
         depends=['kind', 'deferral'])
     general_ledger_balance = fields.Boolean('General Ledger Balance',
@@ -635,6 +666,13 @@ class Account(ModelSQL, ModelView):
                 'for journal types: "expense" and "revenue"'),
             depends=['company'])
     template = fields.Many2One('account.account.template', 'Template')
+    template_override = fields.Boolean('Override Template',
+        help="Check to override template definition",
+        states={
+            'invisible': ~Bool(Eval('template', -1)),
+            },
+        depends=['template'])
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -702,6 +740,10 @@ class Account(ModelSQL, ModelView):
     @staticmethod
     def default_kind():
         return 'view'
+
+    @classmethod
+    def default_template_override(cls):
+        return False
 
     def get_currency(self, name):
         return self.company.currency.id
@@ -997,7 +1039,7 @@ class Account(ModelSQL, ModelView):
         childs = [self]
         while childs:
             for child in childs:
-                if child.template:
+                if child.template and not child.template_override:
                     vals = child.template._get_account_value(account=child)
                     current_type = child.type.id if child.type else None
                     if child.template.type:

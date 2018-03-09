@@ -10,6 +10,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <label name="parent"/>
     <field name="parent"/>
+    <label name="template"/>
+    <field name="template"/>
+    <label name="template_override"/>
+    <field name="template_override"/>
     <label name="display_balance"/>
     <field name="display_balance"/>
     <newline/>

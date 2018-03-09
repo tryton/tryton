@@ -6,8 +6,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="code"/>
     <field name="code"/>
-    <label name="active"/>
-    <field name="active" xexpand="0" width="100"/>
+    <group col="-1" colspan="2" id="checkboxes">
+        <label name="active"/>
+        <field name="active" xexpand="0" width="100"/>
+        <label name="template_override"/>
+        <field name="template_override" xexpand="0" width="100"/>
+    </group>
     <notebook colspan="6">
         <page string="General Information" id="general">
             <label name="company"/>

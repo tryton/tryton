@@ -1,3 +1,4 @@
+* Manage chart update per record
 * Allow to reconcile many group of lines with Line.reconcile
 
 Version 4.6.0 - 2017-10-30

@@ -131,22 +131,35 @@ class TaxCodeTemplate(ModelSQL, ModelView):
 class TaxCode(ModelSQL, ModelView):
     'Tax Code'
     __name__ = 'account.tax.code'
-    name = fields.Char('Name', size=None, required=True, select=True)
-    code = fields.Char('Code', size=None, select=True)
+    _states = {
+        'readonly': (Bool(Eval('template', -1))
+            & ~Eval('template_override', False)),
+        }
+    name = fields.Char('Name', required=True, select=True,  states=_states)
+    code = fields.Char('Code', select=True, states=_states)
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=True,
-            domain=[('company', '=', Eval('company', 0))], depends=['company'])
+            domain=[('company', '=', Eval('company', 0))],
+        states=_states, depends=['company'])
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
-            domain=[('company', '=', Eval('company', 0))], depends=['company'])
+            domain=[('company', '=', Eval('company', 0))],
+        states=_states, depends=['company'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     sum = fields.Function(fields.Numeric('Sum',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_sum')
     template = fields.Many2One('account.tax.code.template', 'Template')
+    template_override = fields.Boolean('Override Template',
+        help="Check to override template definition",
+        states={
+            'invisible': ~Bool(Eval('template', -1)),
+            },
+        depends=['template'])
     description = fields.Text('Description')
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -165,6 +178,10 @@ class TaxCode(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @classmethod
+    def default_template_override(cls):
+        return False
 
     @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
@@ -264,7 +281,7 @@ class TaxCode(ModelSQL, ModelView):
                 ])
         while childs:
             for child in childs:
-                if child.template:
+                if child.template and not child.template_override:
                     vals = child.template._get_tax_code_value(code=child)
                     if vals:
                         values.append([child])
@@ -561,41 +578,51 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
         none: tax = none
     '''
     __name__ = 'account.tax'
-    name = fields.Char('Name', required=True)
+    _states = {
+        'readonly': (Bool(Eval('template', -1))
+            & ~Eval('template_override', False)),
+        }
+    name = fields.Char('Name', required=True, states=_states)
     description = fields.Char('Description', required=True, translate=True,
-            help="The name that will be used in reports")
+            help="The name that will be used in reports", states=_states)
     group = fields.Many2One('account.tax.group', 'Group',
             states={
                 'invisible': Bool(Eval('parent')),
+            'readonly': _states['readonly'],
             }, depends=['parent'])
     active = fields.Boolean('Active')
-    start_date = fields.Date('Starting Date')
-    end_date = fields.Date('Ending Date')
+    start_date = fields.Date('Starting Date', states=_states)
+    end_date = fields.Date('Ending Date', states=_states)
     amount = fields.Numeric('Amount', digits=(16, 8),
         states={
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
+            'readonly': _states['readonly'],
             }, help='In company\'s currency',
         depends=['type'])
     rate = fields.Numeric('Rate', digits=(14, 10),
         states={
             'required': Eval('type') == 'percentage',
             'invisible': Eval('type') != 'percentage',
+            'readonly': _states['readonly'],
             }, depends=['type'])
     type = fields.Selection([
         ('percentage', 'Percentage'),
         ('fixed', 'Fixed'),
         ('none', 'None'),
-        ], 'Type', required=True)
+        ], 'Type', required=True, states=_states)
     update_unit_price = fields.Boolean('Update Unit Price',
         states={
             'invisible': Bool(Eval('parent')),
+            'readonly': _states['readonly'],
             },
         depends=['parent'],
         help=('If checked then the unit price for further tax computation will'
             ' be modified by this tax'))
-    parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE')
-    childs = fields.One2Many('account.tax', 'parent', 'Children')
+    parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE',
+        states=_states)
+    childs = fields.One2Many('account.tax', 'parent', 'Children',
+        states=_states)
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
@@ -607,7 +634,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             ('kind', 'not in', ['view', 'receivable', 'payable']),
             ],
         states={
-            'readonly': (Eval('type') == 'none') | ~Eval('company'),
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             'required': (Eval('type') != 'none') & Eval('company'),
             },
         depends=['company', 'type'])
@@ -618,7 +646,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             ('kind', 'not in', ['view', 'receivable', 'payable']),
             ],
         states={
-            'readonly': (Eval('type') == 'none') | ~Eval('company'),
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             'required': (Eval('type') != 'none') & Eval('company'),
             },
         depends=['company', 'type'])
@@ -628,14 +657,16 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             },
         depends=['type', 'company'])
     invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
             'required': Eval('type') != 'none',
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             }, depends=['type'])
     invoice_tax_code = fields.Many2One('account.tax.code',
         'Invoice Tax Code',
@@ -643,14 +674,16 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             },
         depends=['type', 'company'])
     invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0),
         help='Usualy 1 or -1',
         states={
             'required': Eval('type') != 'none',
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_base_code = fields.Many2One('account.tax.code',
         'Credit Note Base Code',
@@ -658,14 +691,16 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             },
         depends=['type', 'company'])
     credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
         digits=(2, 0), help='Usualy 1 or -1',
         states={
             'required': Eval('type') != 'none',
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             }, depends=['type'])
     credit_note_tax_code = fields.Many2One('account.tax.code',
         'Credit Note Tax Code',
@@ -673,17 +708,27 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             },
         depends=['type', 'company'])
     credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign',
         digits=(2, 0), help='Usualy 1 or -1',
         states={
             'required': Eval('type') != 'none',
-            'readonly': Eval('type') == 'none',
+            'readonly': _states['readonly'],
+            'invisible': Eval('type') == 'none',
             }, depends=['type'])
-    legal_notice = fields.Text("Legal Notice", translate=True)
+    legal_notice = fields.Text("Legal Notice", translate=True,
+        states=_states)
     template = fields.Many2One('account.tax.template', 'Template')
+    template_override = fields.Boolean('Override Template',
+        help="Check to override template definition",
+        states={
+            'invisible': ~Bool(Eval('template', -1)),
+            },
+        depends=['template'])
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -757,6 +802,10 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @classmethod
+    def default_template_override(cls):
+        return False
 
     @classmethod
     def copy(cls, taxes, default=None):
@@ -918,7 +967,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
                 ])
         while childs:
             for child in childs:
-                if child.template:
+                if child.template and not child.template_override:
                     vals = child.template._get_tax_value(tax=child)
                     invoice_account_id = (child.invoice_account.id
                         if child.invoice_account else None)
