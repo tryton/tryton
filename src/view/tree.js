@@ -856,9 +856,14 @@
                 delete this.tree.expanded[this.path];
                 this.collapse_children();
             } else {
-                this.update_expander(true);
-                this.tree.expanded[this.path] = this;
-                this.expand_children();
+                if (this.tree.n_children(this) > Sao.config.limit) {
+                    this.tree.screen.set_current_record(this.record);
+                    this.tree.screen.switch_view('form');
+                } else {
+                    this.update_expander(true);
+                    this.tree.expanded[this.path] = this;
+                    this.expand_children();
+                }
             }
             return false;
         },
