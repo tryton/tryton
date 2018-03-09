@@ -331,12 +331,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Handle Shipment Exception</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
+        <record model="ir.model.button-res.group" id="sale_handle_shipment_exception_button_group_sale">
+            <field name="button" ref="sale_handle_shipment_exception_button"/>
+            <field name="group" ref="group_sale"/>
+        </record>
 
         <record model="ir.model.button"
                 id="sale_handle_invoice_exception_button">
             <field name="name">handle_invoice_exception</field>
             <field name="string">Handle Invoice Exception</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="sale_handle_invoice_exception_button_group_sale">
+            <field name="button" ref="sale_handle_invoice_exception_button"/>
+            <field name="group" ref="group_sale"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_sale">

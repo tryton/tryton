@@ -16,7 +16,7 @@ from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
 from trytond import backend
-from trytond.pyson import If, Eval, Bool, PYSONEncoder, Id
+from trytond.pyson import If, Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -278,15 +278,11 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
                         | (Eval('state') == 'cancel')),
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('sale', 'group_sale')),
                     'depends': ['state', 'invoice_state'],
                     },
                 'handle_shipment_exception': {
                     'invisible': ((Eval('shipment_state') != 'exception')
                         | (Eval('state') == 'cancel')),
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('sale', 'group_sale')),
                     'depends': ['state', 'shipment_state'],
                     },
                 'modify_header': {
