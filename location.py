@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import operator
 from decimal import Decimal
 
 from trytond.model import (ModelView, ModelSQL, MatchMixin, ValueMixin, fields,
@@ -108,9 +109,11 @@ class Location(ModelSQL, ModelView):
             ],
         depends=['type', 'active', 'storage_location'],
         help='If empty the Storage is used')
-    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
-    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
-            'get_quantity')
+    quantity = fields.Function(
+        fields.Float('Quantity'), 'get_quantity', searcher='search_quantity')
+    forecast_quantity = fields.Function(
+        fields.Float('Forecast Quantity'), 'get_quantity',
+        searcher='search_quantity')
     cost_value = fields.Function(fields.Numeric('Cost Value'),
         'get_cost_value')
 
@@ -339,9 +342,29 @@ class Location(ModelSQL, ModelView):
                         location_ids,
                         grouping=grouping,
                         grouping_filter=grouping_filter,
-                        with_childs=True))
+                        with_childs=trans_context.get('with_childs', True)))
 
         return dict((loc.id, pbl.get((loc.id, key), 0)) for loc in locations)
+
+    @classmethod
+    def search_quantity(cls, name, domain):
+        _, operator_, operand = domain
+        operator_ = {
+            '=': operator.eq,
+            '>=': operator.ge,
+            '>': operator.gt,
+            '<=': operator.le,
+            '<': operator.lt,
+            '!=': operator.ne,
+            'in': lambda v, l: v in l,
+            'not in': lambda v, l: v not in l,
+            }.get(operator_, lambda v, l: False)
+
+        ids = []
+        for location in cls.search([]):
+            if operator_(getattr(location, name), operand):
+                ids.append(location.id)
+        return [('id', 'in', ids)]
 
     @classmethod
     def get_cost_value(cls, locations, name):

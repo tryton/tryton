@@ -28,4 +28,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="storage_location"/>
     <label name="picking_location"/>
     <field name="picking_location"/>
+    <field name="childs" colspan="4"/>
 </form>

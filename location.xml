@@ -56,6 +56,8 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_configuration" sequence="10"
             action="act_location_form" id="menu_location_form"/>
+        <menuitem parent="menu_location_tree" sequence="10"
+            action="act_location_form" id="menu_location_form2"/>
 
         <record model="ir.ui.view"
                 id="products_by_locations_context_view_form">

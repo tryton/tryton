@@ -40,8 +40,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">location_quantity_tree</field>
         </record>
 
+        <record model="ir.ui.view" id="location_quantity_view_list">
+            <field name="model">stock.location</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">location_quantity_tree</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_location_quantity_tree">
-            <field name="name">Locations Quantity</field>
+            <field name="name">Locations Tree Quantity</field>
             <field name="res_model">stock.location</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
             <field name="context" pyson="1"
@@ -54,13 +61,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_location_quantity_tree"/>
         </record>
         <record model="ir.action.keyword"
-                id="act_location_quantity_keyword1">
+                id="act_location_quantity_tree_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">product.product,-1</field>
             <field name="action" ref="act_location_quantity_tree"/>
         </record>
         <record model="ir.action.keyword"
-                id="act_location_quantity_keyword2">
+                id="act_location_quantity_tree_keyword2">
             <field name="keyword">form_relate</field>
             <field name="model">product.template,-1</field>
             <field name="action" ref="act_location_quantity_tree"/>
@@ -68,6 +75,37 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action-res.group"
             id="act_location-quantity_tree-group_stock">
             <field name="action" ref="act_location_quantity_tree"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_location_quantity_list">
+            <field name="name">Locations List Quantity</field>
+            <field name="res_model">stock.location</field>
+            <field name="search_value" eval="[('quantity', '!=', 0), ('forecast_quantity', '!=', 0)]" pyson="1"/>
+            <field name="context" pyson="1"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id'), 'with_childs': False}, {'product': Eval('active_id'), 'with_childs': False})"/>
+            <field name="context_model">product.by_location.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_location_quantity_list_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="location_quantity_view_list"/>
+            <field name="act_window" ref="act_location_quantity_list"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_location_quantity_list_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_location_quantity_list"/>
+        </record>
+        <record model="ir.action.keyword"
+                id="act_location_quantity_list_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_location_quantity_list"/>
+        </record>
+        <record model="ir.action-res.group"
+            id="act_location-quantity_list-group_stock">
+            <field name="action" ref="act_location_quantity_list"/>
             <field name="group" ref="group_stock"/>
         </record>
 
