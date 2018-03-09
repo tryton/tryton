@@ -1,3 +1,4 @@
+* Use limit to expand tree
 * Add keyword attribute to button tag
 * Support field name on image tag
 * Add option to check new version
