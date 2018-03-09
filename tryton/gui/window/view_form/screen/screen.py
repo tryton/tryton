@@ -204,9 +204,7 @@ class Screen(SignalEvent):
                 if type_ == 'datetime':
                     fields[name]['format'] = '"%H:%M:%S"'
 
-        context = rpc.CONTEXT.copy()
-        context.update(self.context)
-        domain_parser = DomainParser(fields, context)
+        domain_parser = DomainParser(fields, self.context)
         self._domain_parser[view_id] = domain_parser
         return domain_parser
 
@@ -451,7 +449,7 @@ class Screen(SignalEvent):
                 'model': self.model_name,
                 'id': self.current_record.id if self.current_record else None,
                 'ids': [r.id for r in self.selected_records],
-                }, context=self.context.copy(), warning=False)
+                }, context=self.context, warning=False)
         else:
             if not self.modified():
                 self.switch_view(view_type='form')
@@ -1085,7 +1083,7 @@ class Screen(SignalEvent):
 
     def _button_class(self, button):
         ids = [r.id for r in self.selected_records]
-        context = self.context.copy()
+        context = self.context
         context['_timestamp'] = {}
         for record in self.selected_records:
             context['_timestamp'].update(record.get_timestamp())
@@ -1144,9 +1142,10 @@ class Screen(SignalEvent):
         if self.domain:
             query_string.append(('domain', json.dumps(
                         self.domain, cls=JSONEncoder, separators=(',', ':'))))
-        if self.context:
+        context = self.group._context  # Avoid rpc context
+        if context:
             query_string.append(('context', json.dumps(
-                        self.context, cls=JSONEncoder, separators=(',', ':'))))
+                        context, cls=JSONEncoder, separators=(',', ':'))))
         if self.context_screen:
             query_string.append(
                 ('context_model', self.context_screen.model_name))

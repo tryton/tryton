@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import tryton.rpc as rpc
 from tryton.signal_event import SignalEvent
 import tryton.common as common
 from tryton.pyson import PYSONDecoder
@@ -509,13 +508,10 @@ class Record(SignalEvent):
     def expr_eval(self, expr):
         if not isinstance(expr, basestring):
             return expr
-        ctx = rpc.CONTEXT.copy()
-        ctx['context'] = ctx.copy()
-        ctx['context'].update(self.get_context())
-        ctx.update(self.get_eval())
+        ctx = self.get_eval()
+        ctx['context'] = self.get_context()
         ctx['active_model'] = self.model_name
         ctx['active_id'] = self.id
-        ctx['_user'] = rpc._USER
         if self.parent and self.parent_name:
             ctx['_parent_' + self.parent_name] = \
                 common.EvalEnvironment(self.parent)

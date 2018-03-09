@@ -14,7 +14,6 @@ import decimal
 from decimal import Decimal
 import math
 from tryton.common import RPCExecute, RPCException
-import tryton.rpc as rpc
 
 
 class Field(object):
@@ -59,9 +58,7 @@ class Field(object):
         return concat(*self.domains_get(record, pre_validate))
 
     def get_context(self, record):
-        context = record.get_context().copy()
-        if record.parent:
-            context.update(record.parent.get_context())
+        context = record.get_context()
         context.update(record.expr_eval(self.attrs.get('context', {})))
         return context
 
@@ -277,9 +274,7 @@ class TimeDeltaField(Field):
         return self.get(record) is None
 
     def converter(self, group):
-        ctx = rpc.CONTEXT.copy()
-        ctx.update(group.context)
-        return ctx.get(self.attrs.get('converter'))
+        return self.get_context().get(self.attrs.get('converter'))
 
     def set_client(self, record, value, force_change=False):
         if isinstance(value, basestring):

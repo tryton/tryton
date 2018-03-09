@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from record import Record
 from field import Field, M2OField, ReferenceField
+from tryton import rpc
 from tryton.signal_event import SignalEvent
 from tryton.common.domain_inversion import is_leaf
 from tryton.common import RPCExecute, RPCException, MODELACCESS
@@ -253,7 +254,7 @@ class Group(SignalEvent, list):
 
     @property
     def context(self):
-        ctx = self._context.copy()
+        ctx = rpc.CONTEXT.copy()
         if self.parent:
             ctx.update(self.parent.get_context())
             if self.child_name in self.parent.group.fields:
