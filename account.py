@@ -6,7 +6,8 @@ from trytond.model import ModelSQL, ValueMixin, fields
 
 __all__ = ['Configuration', 'ConfigurationDefaultDunningProcedure', 'MoveLine']
 default_dunning_procedure = fields.Many2One(
-    'account.dunning.procedure', "Default Dunning Procedure")
+    'account.dunning.procedure', "Default Dunning Procedure",
+    help="The default dunning procedure for new customers.")
 
 
 class Configuration:

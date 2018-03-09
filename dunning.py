@@ -22,7 +22,8 @@ __all__ = ['Procedure', 'Level', 'Dunning',
 class Procedure(ModelSQL, ModelView):
     'Account Dunning Procedure'
     __name__ = 'account.dunning.procedure'
-    name = fields.Char('Name', required=True, translate=True)
+    name = fields.Char('Name', required=True, translate=True,
+        help="The main identifier of the Dunning Procedure.")
     levels = fields.One2Many('account.dunning.level', 'procedure', 'Levels')
 
 
@@ -31,7 +32,8 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'account.dunning.level'
     procedure = fields.Many2One('account.dunning.procedure', 'Procedure',
         required=True, select=True)
-    overdue = fields.TimeDelta('Overdue')
+    overdue = fields.TimeDelta('Overdue',
+        help="When the level should be applied.")
 
     @classmethod
     def __register__(cls, module_name):
@@ -72,12 +74,14 @@ class Dunning(ModelSQL, ModelView):
     'Account Dunning'
     __name__ = 'account.dunning'
     company = fields.Many2One('company.company', 'Company', required=True,
+        help="Make the dunning belong to the company.",
         select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
         states=_STATES, depends=_DEPENDS)
     line = fields.Many2One('account.move.line', 'Line', required=True,
+        help="The receivable line to dun for.",
         domain=[
             ('account.kind', '=', 'receivable'),
             ('account.company', '=', Eval('company', -1)),
@@ -94,7 +98,8 @@ class Dunning(ModelSQL, ModelView):
             ('procedure', '=', Eval('procedure', -1)),
             ],
         states=_STATES, depends=_DEPENDS + ['procedure'])
-    blocked = fields.Boolean('Blocked')
+    blocked = fields.Boolean('Blocked',
+        help="Check to block further levels of the procedure.")
     state = fields.Selection([
             ('draft', 'Draft'),
             ('done', 'Done'),
@@ -264,7 +269,8 @@ class Dunning(ModelSQL, ModelView):
 class CreateDunningStart(ModelView):
     'Create Account Dunning'
     __name__ = 'account.dunning.create.start'
-    date = fields.Date('Date', required=True)
+    date = fields.Date('Date', required=True,
+        help="Create dunning up to this date.")
 
     @staticmethod
     def default_date():
