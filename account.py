@@ -5,7 +5,7 @@ from sql.aggregate import Max, Min, Sum
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
 
@@ -25,7 +25,12 @@ class Tax:
     __metaclass__ = PoolMeta
     __name__ = 'account.tax'
 
-    ec_sales_list_code = fields.Char("EC Sales List Code")
+    ec_sales_list_code = fields.Char("EC Sales List Code",
+        states={
+            'readonly': (Bool(Eval('template', -1))
+                & ~Eval('template_override', False)),
+            },
+        depends=['template', 'template_override'])
 
 
 class ECSalesList(ModelSQL, ModelView):
