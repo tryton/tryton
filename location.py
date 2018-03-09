@@ -248,7 +248,7 @@ class Location(ModelSQL, ModelView):
 
         context = {}
         if (name == 'quantity'
-                and Transaction().context.get('stock_date_end') >
+                and Transaction().context.get('stock_date_end', datetime.date.max) >
                 Date_.today()):
             context['stock_date_end'] = Date_.today()
 
