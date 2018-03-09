@@ -9,6 +9,7 @@ from trytond.modules.company.model import CompanyValueMixin
 __all__ = ['Configuration', 'ConfigurationDefaultCreditLimitAmount', 'Level']
 default_credit_limit_amount = fields.Numeric(
     "Default Credit Limit Amount",
+    help="The default credit limit amount for new customers.",
     digits=(16, Eval('default_credit_limit_amount_digits', 2)),
     depends=['default_credit_limit_amount_digits'])
 
