@@ -2211,7 +2211,8 @@ function eval_pyson(value){
                 var screen = this.get_screen();
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
-                screen.new_group([m2o_id]);
+                screen.new_group();
+                screen.group.load([m2o_id]);
                 callback = function(result) {
                     if (result) {
                         var rec_name_prm = screen.current_record.rec_name();

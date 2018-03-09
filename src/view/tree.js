@@ -324,7 +324,7 @@
             }
             var inversion = new Sao.common.DomainInversion();
             domain = inversion.simplify(domain);
-            var decoder = new Sao.PYSON.Decoder(this.screen.context);
+            var decoder = new Sao.PYSON.Decoder(this.screen.context());
             this.columns.forEach(function(column) {
                 var name = column.attributes.name;
                 if (!name) {

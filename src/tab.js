@@ -453,7 +453,7 @@
             var screen = this.screen;
             var buttons = this.buttons;
             var prm = screen.model.execute('view_toolbar_get', [],
-                    screen.context);
+                screen.context());
             prm.done(function(toolbars) {
                 [
                 ['action', 'glyphicon-cog',
@@ -557,7 +557,7 @@
                                     ids: record_ids
                                 };
                                 Sao.Action.exec_action(exec_action, data,
-                                    screen.context);
+                                    screen.context());
                             });
                         })
                         .appendTo(menu);
@@ -727,7 +727,7 @@
             this.screen.model.execute('read', [[record.id],
                     fields.map(function(field) {
                         return field[0];
-                    })], this.screen.context)
+                    })], this.screen.context())
             .then(function(result) {
                 result = result[0];
                 var message = '';
@@ -763,17 +763,18 @@
                             (revision < revisions[revisions.length - 1][0])) {
                         revision = revisions[revisions.length - 1][0];
                     }
-                    if (revision != this.screen.context._datetime) {
-                        // Update screen context that will be propagated by
+                    if (revision != this.screen.context()._datetime) {
+                        // Update group context that will be propagated by
                         // recreating new group
-                        this.screen.context._datetime = revision;
+                        this.screen.group._context._datetime = revision;
                         if (this.screen.current_view.view_type != 'form') {
                             this.screen.search_filter(
                                     this.screen.screen_container
                                     .search_entry.val());
                         } else {
                             // Test if record exist in revisions
-                            this.screen.new_group([current_id]);
+                            this.screen.new_group();
+                            this.screen.group.load([current_id]);
                         }
                         this.screen.display(true);
                         this.update_revision();
@@ -786,14 +787,14 @@
                         return record.id;
                     });
                 this.screen.model.execute('history_revisions',
-                    [ids], this.screen.context)
+                    [ids], this.screen.context())
                     .then(function(revisions) {
                         new Sao.Window.Revision(revisions, set_revision(revisions));
                     });
             }.bind(this));
         },
         update_revision: function() {
-            var revision = this.screen.context._datetime;
+            var revision = this.screen.context()._datetime;
             var label;
             if (revision) {
                 var date_format = Sao.common.date_format();
@@ -922,7 +923,7 @@
                     return r.id;
                 }),
                 this.screen.current_view.get_fields(),
-                this.screen.context);
+                this.screen.context());
         },
         import: function(){
             new Sao.Window.Import(this.screen);

@@ -461,7 +461,7 @@
                         case 'time':
                             var format;
                             var date_format = Sao.common.date_format(
-                                this.screen.context.date_format);
+                                this.screen.context().date_format);
                             if (field.type == 'date') {
                                 format = date_format;
                             } else {
@@ -629,8 +629,7 @@
             this.views = [];
             this.views_preload = attributes.views_preload || {};
             this.exclude_field = attributes.exclude_field;
-            this.context = attributes.context || {};
-            this.new_group();
+            this.new_group(attributes.context || {});
             this.current_view = null;
             this.current_record = null;
             this.domain = attributes.domain || [];
@@ -706,7 +705,7 @@
                 view = this.views_preload[view_type];
             } else {
                 var prm = this.model.execute('fields_view_get',
-                        [view_id, view_type], this.context);
+                        [view_id, view_type], this.context());
                 return prm.pipe(this.add_view.bind(this));
             }
             this.add_view(view);
@@ -805,17 +804,17 @@
                 var context_record = this.context_screen.current_record;
                 if (context_record &&
                         !context_record.validate(null, false, null, true)) {
-                    this.new_group([]);
+                    this.new_group();
                     this.context_screen.display(true);
                     return jQuery.when();
                 }
-                this.context = jQuery.extend({}, this.context,
-                        this.context_screen.get_on_change_value());
+                this.new_group(jQuery.extend(this.context(),
+                    this.context_screen.get_on_change_value()));
             }
 
             var domain = this.search_domain(search_string, true);
             if (this.context_domain) {
-                var decoder = new Sao.PYSON.Decoder(this.context);
+                var decoder = new Sao.PYSON.Decoder(this.context());
                 domain = ['AND', domain, decoder.decode(this.context_domain)];
             }
             var tab_domain = this.screen_container.get_tab_domain();
@@ -824,11 +823,11 @@
             }
 
             var grp_prm = this.model.find(domain, this.offset, this.limit,
-                    this.order, this.context);
+                this.order, this.context());
             var count_prm = jQuery.when(this.search_count);
             if (!only_ids) {
                 count_prm = this.model.execute('search_count', [domain],
-                        this.context);
+                    this.context());
             }
             count_prm.done(function(count) {
                 this.search_count = count;
@@ -892,12 +891,16 @@
                 if (tab_domain[2]) {
                     var domain = ['AND', tab_domain[1], screen_domain];
                     this.screen_container.set_tab_counter(null, i);
-                    this.group.model.execute('search_count', [domain], this.context)
+                    this.group.model.execute(
+                        'search_count', [domain], this.context())
                         .then(function(count) {
                             this.screen_container.set_tab_counter(count, i);
                         }.bind(this));
                 }
             }.bind(this));
+        },
+        context: function() {
+            return this.group.context();
         },
         set_group: function(group) {
             var fields = {};
@@ -929,12 +932,12 @@
             }
             this.group.add_fields(fields);
         },
-        new_group: function(ids) {
-            var group = new Sao.Group(this.model, this.context, []);
-            group.set_readonly(this.attributes.readonly || false);
-            if (ids) {
-                group.load(ids);
+        new_group: function(context) {
+            if (!context) {
+                context = this.context();
             }
+            var group = new Sao.Group(this.model, context, []);
+            group.set_readonly(this.attributes.readonly || false);
             this.set_group(group);
         },
         set_current_record: function(record) {
@@ -1049,7 +1052,7 @@
                     'model': this.model_name,
                     'id': this.get_id(),
                     'ids': [this.get_id()]
-                    }, jQuery.extend({}, this.context), false);
+                    }, jQuery.extend({}, this.context()), false);
             } else {
                 if (!this.modified()) {
                     this.switch_view('form');
@@ -1267,7 +1270,8 @@
         copy: function() {
             var dfd = jQuery.Deferred();
             var records = this.current_view.selected_records();
-            this.model.copy(records, this.context).then(function(new_ids) {
+            this.model.copy(records, this.context())
+                .then(function(new_ids) {
                 this.group.load(new_ids);
                 if (!jQuery.isEmptyObject(new_ids)) {
                     this.set_current_record(this.group.get(new_ids[0]));
@@ -1297,7 +1301,7 @@
             }
             if (!(view_id in this.fields_view_tree)) {
                 view_tree = this.model.execute('fields_view_get', [false, 'tree'],
-                        this.context, false);
+                    this.context(), false);
                 this.fields_view_tree[view_id] = view_tree;
             } else {
                 view_tree = this.fields_view_tree[view_id];
@@ -1364,11 +1368,8 @@
                         }
                     });
 
-            var context = jQuery.extend({},
-                    this.model.session.context,
-                    this.context);
             domain_parser = new Sao.common.DomainParser(
-                    fields, context);
+                fields, this.context());
             this._domain_parser[view_id] = domain_parser;
             return domain_parser;
         },
@@ -1501,7 +1502,7 @@
                         model: this.model_name,
                         id: this.current_record.id,
                         ids: ids
-                    }, null, this.context, true);
+                    }, null, this.context(), true);
                 }
             };
 
@@ -1547,7 +1548,7 @@
                         var args = record.expr_eval(attributes.change || []);
                         var values = record._get_on_change_args(args);
                         record.model.execute(attributes.name, [values],
-                                this.context).then(function(changes) {
+                            this.context()).then(function(changes) {
                             record.set_on_change(changes);
                             record.group.root_group().screens.forEach(
                                 function(screen) {
@@ -1556,7 +1557,7 @@
                         });
                     } else {
                         record.save(false).done(function() {
-                            var context = jQuery.extend({}, this.context);
+                            var context = this.context();
                             context._timestamp = {};
                             ids = [];
                             for (i = 0; i < selected_records.length; i++) {

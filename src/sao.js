@@ -416,7 +416,7 @@ var Sao = {};
         return Sao.Action.exec_keyword('tree_open', {
             'model': screen.model_name,
             'id': screen.get_id(),
-        }, jQuery.extend({}, screen.context), false);
+        }, jQuery.extend({}, screen.context()), false);
     };
 
     Sao.menu = function(preferences) {
@@ -592,7 +592,8 @@ var Sao = {};
             var ir_model = new Sao.Model('ir.model');
             return ir_model.execute('global_search',
                     [text, Sao.config.limit, Sao.main_menu_screen.model_name],
-                    Sao.main_menu_screen.context).then(function(s_results) {
+                    Sao.main_menu_screen.context())
+                .then(function(s_results) {
                 var results = [];
                 for (var i=0, len=s_results.length; i < len; i++) {
                     results.push({
@@ -612,7 +613,7 @@ var Sao = {};
                 Sao.Action.exec_keyword('tree_open', {
                     'model': item.model,
                     'id': item.record_id,
-                }, Sao.main_menu_screen.context);
+                }, Sao.main_menu_screen.context());
             } else {
                 var params = {
                     'model': item.model,

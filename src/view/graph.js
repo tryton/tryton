@@ -195,7 +195,7 @@
             if ((type == 'date') || (type == 'datetime')) {
                 var format_func, date_format, time_format;
                 date_format = Sao.common.date_format(
-                    this.view.screen.context.date_format);
+                    this.view.screen.context().date_format);
                 time_format = '%X';
                 if (type == 'datetime') {
                     format_func = function(dt) {
@@ -238,7 +238,7 @@
         },
         action: function(data, element) {
             var ids = this.ids[this._action_key(data)];
-            var ctx = jQuery.extend({}, this.view.screen.context);
+            var ctx = jQuery.extend({}, this.view.screen.context());
             delete ctx.active_ids;
             delete ctx.active_id;
             Sao.Action.exec_keyword('graph_open', {
@@ -292,7 +292,7 @@
             var type = this.xfield.type;
             if ((type == 'date') || (type == 'datetime')) {
                 var date_format = Sao.common.date_format(
-                    this.view.screen.context.date_format);
+                    this.view.screen.context().date_format);
                 var datetime_format = date_format + ' %X';
                 if (type == 'datetime') {
                     format_func = function(dt) {
@@ -322,7 +322,7 @@
             var type = this.xfield.type;
             if ((type == 'date') || (type == 'datetime')) {
                 var date_format = Sao.common.date_format(
-                    this.view.screen.context.date_format);
+                    this.view.screen.context().date_format);
                 var datetime_format = date_format + ' %X';
                 if (type == 'datetime') {
                     key = Sao.common.format_datetime(datetime_format, key);

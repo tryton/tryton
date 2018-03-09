@@ -393,7 +393,7 @@
             }
         };
         array.context = function() {
-            var context = jQuery.extend({}, this._context);
+            var context = jQuery.extend({}, this.model.session.context);
             if (this.parent) {
                 jQuery.extend(context, this.parent.get_context());
                 if (this.child_name in this.parent.model.fields) {
@@ -1097,13 +1097,10 @@
         },
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
-            var ctx = jQuery.extend({}, this.model.session.context);
-            ctx.context = jQuery.extend({}, ctx);
-            jQuery.extend(ctx.context, this.get_context());
-            jQuery.extend(ctx, this.get_eval());
+            var ctx = this.get_eval();
+            ctx.context = this.get_context();
             ctx.active_model = this.model.name;
             ctx.active_id = this.id;
-            ctx._user = this.model.session.user_id;
             if (this.group.parent && this.group.parent_name) {
                 var parent_env = Sao.common.EvalEnvironment(this.group.parent);
                 ctx['_parent_' + this.group.parent_name] = parent_env;
@@ -1409,10 +1406,7 @@
             return {};
         },
         get_context: function(record) {
-            var context = jQuery.extend({}, record.get_context());
-            if (record.group.parent) {
-                jQuery.extend(context, record.group.parent.get_context());
-            }
+            var context = record.get_context();
             jQuery.extend(context,
                 record.expr_eval(this.description.context || {}));
             return context;
@@ -1643,9 +1637,7 @@
     Sao.field.TimeDelta = Sao.class_(Sao.field.Field, {
         _default: null,
         converter: function(group) {
-            var ctx = jQuery.extend(
-                group.model.session.context, group.context());
-            return ctx[this.description.converter];
+            return group.context()[this.description.converter];
         },
         set_client: function(record, value, force_change) {
             if (typeof(value) == 'string') {
