@@ -225,11 +225,14 @@ class Dunning(ModelSQL, ModelView):
                 level = dunning.level
             if level != dunning.level:
                 set_level[level].append(dunning)
+        to_write = []
         for level, dunnings in set_level.iteritems():
-            cls.write(dunnings, {
-                    'level': level.id,
-                    'state': 'draft',
-                    })
+            to_write.extend((dunnings, {
+                        'level': level.id,
+                        'state': 'draft',
+                        }))
+        if to_write:
+            cls.write(*to_write)
 
         lines = MoveLine.search(cls._overdue_line_domain(date))
         dunnings = (cls._get_dunning(line, date) for line in lines)
