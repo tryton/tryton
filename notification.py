@@ -40,6 +40,16 @@ class Email(ModelSQL, ModelView):
             ],
         depends=['model'],
         help="The field that contains the recipient(s).")
+    fallback_recipients = fields.Many2One(
+        'res.user', "Recipients Fallback User",
+        domain=[
+            ('email', '!=', None),
+            ],
+        states={
+            'invisible': ~Eval('recipients'),
+            },
+        depends=['recipients'],
+        help="User notified when no recipients e-mail is found")
     recipients_secondary = fields.Many2One(
         'ir.model.field', "Secondary Recipients",
         domain=[
@@ -48,6 +58,16 @@ class Email(ModelSQL, ModelView):
             ],
         depends=['model'],
         help="The field that contains the secondary recipient(s).")
+    fallback_recipients_secondary = fields.Many2One(
+        'res.user', "Secondary Recipients Fallback User",
+        domain=[
+            ('email', '!=', None),
+            ],
+        states={
+            'invisible': ~Eval('recipients_secondary'),
+            },
+        depends=['recipients'],
+        help="User notified when no secondary recipients e-mail is found")
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
         domain=[
@@ -56,6 +76,16 @@ class Email(ModelSQL, ModelView):
             ],
         depends=['model'],
         help="The field that contains the hidden recipient(s).")
+    fallback_recipients_hidden = fields.Many2One(
+        'res.user', "Hidden Recipients Fallback User",
+        domain=[
+            ('email', '!=', None),
+            ],
+        states={
+            'invisible': ~Eval('recipients_hidden'),
+            },
+        depends=['recipients_hidden'],
+        help="User notified when no hidden recipients e-mail is found")
 
     contact_mechanism = fields.Selection(
         'get_contact_mechanisms', "Contact Mechanism",
@@ -227,6 +257,11 @@ class Email(ModelSQL, ModelView):
                 if recipients:
                     languagues.update(self._get_languages(recipients))
                     to = self._get_addresses(recipients)
+            if not to and self.fallback_recipients:
+                languagues.update(
+                    self._get_languages(self.fallback_recipients))
+                to = self._get_addresses(self.fallback_recipients)
+
             cc = []
             if self.recipients_secondary:
                 recipients_secondary = getattr(
@@ -235,6 +270,11 @@ class Email(ModelSQL, ModelView):
                     languagues.update(
                         self._get_languages(recipients_secondary))
                     cc = self._get_addresses(recipients_secondary)
+            if not cc and self.fallback_recipients_secondary:
+                languagues.update(
+                    self._get_languages(self.fallback_recipients_secondary))
+                cc = self._get_addresses(self.fallback_recipients_secondary)
+
             bcc = []
             if self.recipients_hidden:
                 recipients_hidden = getattr(
@@ -242,6 +282,10 @@ class Email(ModelSQL, ModelView):
                 if recipients_hidden:
                     languagues.update(self._get_languages(recipients_hidden))
                     bcc = self._get_addresses(recipients_hidden)
+            if not bcc and self.fallback_recipients_hidden:
+                languagues.update(
+                    self._get_languages(self.fallback_recipients_hidden))
+                bcc = self._get_addresses(self.fallback_recipients_hidden)
 
             msg = self.get_email(record, from_, to, cc, bcc, languagues)
             to_addrs = [e for _, e in getaddresses(to + cc + bcc)]

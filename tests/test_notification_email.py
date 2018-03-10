@@ -29,20 +29,14 @@ class NotificationEmailTestCase(ModuleTestCase):
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
-    @unittest.skipIf(
-        (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
-    @with_transaction()
-    def test_notification_email(self):
-        "Test email notificiation is sent on trigger"
+    def _setup_notification(self):
         pool = Pool()
         Model = pool.get('ir.model')
         ModelField = pool.get('ir.model.field')
         Action = pool.get('ir.action')
         Report = pool.get('ir.action.report')
-        Trigger = pool.get('ir.trigger')
         User = pool.get('res.user')
         NotificationEmail = pool.get('notification.email')
-        Log = pool.get('notification.email.log')
 
         model, = Model.search([
                 ('model', '=', User.__name__),
@@ -73,6 +67,27 @@ class NotificationEmailTestCase(ModuleTestCase):
         notification_email.content = report
         notification_email.save()
 
+    @unittest.skipIf(
+        (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
+    @with_transaction()
+    def test_notification_email(self):
+        "Test email notificiation is sent on trigger"
+        pool = Pool()
+        User = pool.get('res.user')
+        Trigger = pool.get('ir.trigger')
+        Model = pool.get('ir.model')
+        NotificationEmail = pool.get('notification.email')
+        Log = pool.get('notification.email.log')
+
+        self._setup_notification()
+        notification_email, = NotificationEmail.search([])
+
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        action_model, = Model.search([
+                ('model', '=', 'notification.email'),
+                ])
         Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
@@ -110,13 +125,12 @@ class NotificationEmailTestCase(ModuleTestCase):
         "Test email notificiation with attachment"
         pool = Pool()
         Model = pool.get('ir.model')
-        ModelField = pool.get('ir.model.field')
-        Action = pool.get('ir.action')
         Report = pool.get('ir.action.report')
         User = pool.get('res.user')
         NotificationEmail = pool.get('notification.email')
         Language = pool.get('ir.lang')
 
+        self._setup_notification()
         model, = Model.search([
                 ('model', '=', User.__name__),
                 ])
@@ -124,16 +138,6 @@ class NotificationEmailTestCase(ModuleTestCase):
                 ('model', '=', 'notification.email'),
                 ])
         en, = Language.search([('code', '=', 'en')])
-
-        action = Action(name="Notification Email", type='ir.action.report')
-        action.save()
-        report = Report()
-        report.report_name = 'notification_notification.test.report'
-        report.action = action
-        report.template_extension = 'txt'
-        report.report_content = b'Hello ${records[0].name}'
-        report.model = model.model
-        report.save()
 
         attachment = Report()
         attachment.name = "Attachment"
@@ -143,16 +147,7 @@ class NotificationEmailTestCase(ModuleTestCase):
         attachment.model = model.model
         attachment.save()
 
-        user = User(Transaction().user)
-        user.email = 'user@example.com'
-        user.save()
-
-        notification_email = NotificationEmail()
-        notification_email.recipients, = ModelField.search([
-                ('model.model', '=', model.model),
-                ('name', '=', 'create_uid'),
-                ])
-        notification_email.content = report
+        notification_email, = NotificationEmail.search([])
         notification_email.attachments = [attachment]
         notification_email.save()
 
@@ -175,6 +170,56 @@ class NotificationEmailTestCase(ModuleTestCase):
         self.assertEqual(
             attachment.get_content_type(), 'text/plain')
         self.assertEqual(attachment.get_filename(), "Attachment.txt")
+
+    @unittest.skipIf(
+        (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
+    @with_transaction()
+    def test_notification_email_fallback(self):
+        "Test email notification fallback"
+        pool = Pool()
+        User = pool.get('res.user')
+        Trigger = pool.get('ir.trigger')
+        Model = pool.get('ir.model')
+        NotificationEmail = pool.get('notification.email')
+        User = pool.get('res.user')
+
+        fallback_user = User()
+        fallback_user.name = 'Fallback'
+        fallback_user.email = 'fallback@example.com'
+        fallback_user.login = 'fallback'
+        fallback_user.save()
+
+        self._setup_notification()
+        notification_email, = NotificationEmail.search([])
+        notification_email.recipients = None
+        notification_email.fallback_recipients = fallback_user
+        notification_email.save()
+
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        action_model, = Model.search([
+                ('model', '=', 'notification.email'),
+                ])
+        Trigger.create([{
+                    'name': 'Test creation',
+                    'model': model.id,
+                    'on_create': True,
+                    'condition': 'true',
+                    'notification_email': notification_email.id,
+                    'action_model': action_model.id,
+                    'action_function': 'trigger',
+                    }])
+
+        with patch.object(
+                notification_module, 'sendmail_transactional') as sendmail, \
+                patch.object(notification_module, 'SMTPDataManager'):
+            User.create([{'name': "Michael Scott", 'login': "msc"}])
+            sendmail.assert_called_once_with(
+                FROM, ['fallback@example.com'], ANY,
+                datamanager=ANY)
+            _, _, msg = sendmail.call_args[0]
+            self.assertEqual(msg['To'], 'Fallback <fallback@example.com>')
 
 
 def suite():
