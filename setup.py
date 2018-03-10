@@ -125,5 +125,6 @@ setup(name=name,
         'tests/scenario_project_invoice_timesheet.rst',
         'tests/scenario_project_invoice_progress.rst',
         'tests/scenario_project_invoice_effort.rst',
+        'tests/scenario_project_invoice_multiple_party.rst',
         ],
     )

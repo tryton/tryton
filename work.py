@@ -365,8 +365,11 @@ class Work:
         Invoice = pool.get('account.invoice')
 
         invoices = []
-        for work in works:
-            invoice_lines = work._get_lines_to_invoice()
+        uninvoiced = works[:]
+        while uninvoiced:
+            work = uninvoiced.pop(0)
+            invoice_lines, uninvoiced_children = work._get_lines_to_invoice()
+            uninvoiced.extend(uninvoiced_children)
             if not invoice_lines:
                 continue
             invoice = work._get_invoice()
@@ -563,14 +566,18 @@ class Work:
         lines = []
         if test is None:
             test = self._test_group_invoice()
+        uninvoiced_children = []
         lines += getattr(self, '_get_lines_to_invoice_%s' %
             self.invoice_method)()
         for children in self.children:
             if children.type == 'project':
                 if test != children._test_group_invoice():
+                    uninvoiced_children.append(children)
                     continue
-            lines += children._get_lines_to_invoice(test=test)
-        return lines
+            child_lines, uninvoiced = children._get_lines_to_invoice(test=test)
+            lines.extend(child_lines)
+            uninvoiced_children.extend(uninvoiced)
+        return lines, uninvoiced_children
 
 
 class WorkInvoicedProgress(ModelView, ModelSQL):
