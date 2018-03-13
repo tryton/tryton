@@ -445,36 +445,89 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         for shipment in shipments:
             product_qty = defaultdict(lambda: 0)
             product_cost = defaultdict(lambda: 0)
+
+            for c_move in shipment.customer_moves:
+                if c_move.state == 'cancel':
+                    continue
+                product_qty[c_move.product] += UoM.compute_qty(
+                    c_move.uom, c_move.quantity, c_move.product.default_uom,
+                    round=False)
+
             for s_move in shipment.supplier_moves:
                 if s_move.state == 'cancel':
                     continue
-                product_qty[s_move.product] += UoM.compute_qty(s_move.uom,
-                    s_move.quantity, s_move.product.default_uom, round=False)
                 if s_move.cost_price:
                     internal_quantity = Decimal(str(s_move.internal_quantity))
                     product_cost[s_move.product] += (
                         s_move.unit_price * internal_quantity)
+
+                quantity = UoM.compute_qty(
+                    s_move.uom, s_move.quantity, s_move.product.default_uom,
+                    round=False)
+                if product_qty[s_move.product]:
+                    if quantity <= product_qty[s_move.product]:
+                        product_qty[s_move.product] -= quantity
+                        continue
+                    else:
+                        out_quantity = (
+                            quantity - product_qty[s_move.product])
+                        out_quantity = UoM.compute_qty(
+                            s_move.product.default_uom, out_quantity,
+                            s_move.uom)
+                        product_qty[s_move.product] = 0
+                else:
+                    out_quantity = s_move.quantity
+
+                if not out_quantity:
+                    continue
+                unit_price = UoM.compute_price(
+                    s_move.product.default_uom, s_move.product.list_price,
+                    s_move.uom)
+                new_customer_move = shipment._get_customer_move(s_move)
+                new_customer_move.quantity = out_quantity
+                new_customer_move.unit_price = unit_price
+                to_save.append(new_customer_move)
+
             for product, cost in product_cost.iteritems():
                 qty = Decimal(str(product_qty[product]))
                 if qty:
                     product_cost[product] = (cost / qty).quantize(cost_exp)
-            for c_move in shipment.customer_moves:
-                if c_move.state == 'cancel':
+            for c_move in list(shipment.customer_moves) + to_save:
+                if c_move.id is not None and c_move.state == 'cancel':
                     continue
-                if product_qty[c_move.product] <= 0:
-                    c_move.shipment = None
-                else:
-                    move_qty = UoM.compute_qty(c_move.uom, c_move.quantity,
-                        c_move.product.default_uom, round=False)
-                    qty = min(product_qty[c_move.product], move_qty)
-                    c_move.quantity = UoM.compute_qty(
+                c_move.cost_price = product_cost[c_move.product]
+                if c_move.id is None:
+                    continue
+                if product_qty[c_move.product] > 0:
+                    exc_qty = UoM.compute_qty(
                         c_move.product.default_uom,
-                        qty, c_move.uom)
-                    product_qty[c_move.product] -= qty
-                    c_move.cost_price = product_cost[c_move.product]
-                to_save.append(c_move)
+                        product_qty[c_move.product], c_move.uom)
+                    removed_qty = UoM.compute_qty(
+                        c_move.uom, min(exc_qty, c_move.quantity),
+                        c_move.product.default_uom, round=False)
+                    c_move.quantity = max(
+                        0, c_move.uom.round(c_move.quantity - exc_qty))
+                    product_qty[c_move.product] -= removed_qty
+                    to_save.append(c_move)
+
         if to_save:
             Move.save(to_save)
+
+    def _get_customer_move(self, move):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move(
+            from_location=move.to_location,
+            to_location=self.customer.customer_location,
+            product=move.product,
+            uom=move.uom,
+            quantity=move.quantity,
+            shipment=self,
+            planned_date=self.planned_date,
+            company=move.company,
+            currency=move.company.currency,
+            unit_price=move.unit_price,
+            )
 
     @classmethod
     @ModelView.button
