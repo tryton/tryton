@@ -274,7 +274,7 @@ class TimeDeltaField(Field):
         return self.get(record) is None
 
     def converter(self, group):
-        return self.get_context().get(self.attrs.get('converter'))
+        return group.context.get(self.attrs.get('converter'))
 
     def set_client(self, record, value, force_change=False):
         if isinstance(value, basestring):
