@@ -146,7 +146,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                         columns=[sale.origin],
                         values=['%s,%s' % (cls.__name__, id_)],
                         where=sale.id == sale_id))
-            table.drop_column('sale', exception=True)
+            table.drop_column('sale')
 
         # Migration from 4.0: change probability into conversion probability
         if table.column_exist('probability'):
