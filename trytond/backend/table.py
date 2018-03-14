@@ -57,14 +57,12 @@ class TableHandlerInterface(object):
         '''
         raise NotImplementedError
 
-    def column_rename(self, old_name, new_name, exception=False):
+    def column_rename(self, old_name, new_name):
         '''
-        Rename column
+        Rename column if exists
 
         :param old_name: the name of the existing column
         :param new_name: the new name of the column
-        :param exception: a boolean to raise or not an exception
-            if it is not possible to rename the column.
         '''
         raise NotImplementedError
 
@@ -144,35 +142,29 @@ class TableHandlerInterface(object):
         '''
         raise NotImplementedError
 
-    def add_constraint(self, ident, constraint, exception=False):
+    def add_constraint(self, ident, constraint):
         '''
         Add a constraint
 
         :param ident: the name of the constraint
         :param constraint: the definition of the constraint
-        :param exception: a boolean to raise or not an exception
-            if it is not possible to add the constraint
         '''
         raise NotImplementedError
 
-    def drop_constraint(self, ident, exception=False, table=None):
+    def drop_constraint(self, ident, table=None):
         '''
         Remove a constraint
 
         :param ident: the name of the constraint
-        :param exception: a boolean to raise or not an exception
-            if it is not possible to remove the constraint
         :param table: optional table name
         '''
         raise NotImplementedError
 
-    def drop_column(self, column_name, exception=False):
+    def drop_column(self, column_name):
         '''
         Remove a column
 
         :param column_name: the column name
-        :param exception: a boolean to raise or not an exception
-            if it is not possible to remove the column
         '''
         raise NotImplementedError
 

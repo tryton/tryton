@@ -114,15 +114,14 @@ class TableHandler(TableHandlerInterface):
         cursor.execute('DROP TABLE "%s"' % temp_table)
         self._update_definitions()
 
-    def column_rename(self, old_name, new_name, exception=False):
-        if self.column_exist(old_name) and \
-                not self.column_exist(new_name):
-            self._recreate_table({old_name: {'name': new_name}})
-        elif exception and self.column_exist(new_name):
-            raise Exception('Unable to rename column %s.%s to %s.%s: '
-                '%s.%s already exist!'
-                % (self.table_name, old_name, self.table_name, new_name,
-                    self.table_name, new_name))
+    def column_rename(self, old_name, new_name):
+        if self.column_exist(old_name):
+            if self.column_exist(new_name):
+                self._recreate_table({old_name: {'name': new_name}})
+            else:
+                logger.warning(
+                    'Unable to rename column %s on table %s to %s.',
+                    old_name, self.table_name, new_name)
 
     def _update_definitions(self, columns=None, indexes=None):
         if columns is None and indexes is None:
@@ -282,26 +281,20 @@ class TableHandler(TableHandlerInterface):
         else:
             raise Exception('Not null action not supported!')
 
-    def add_constraint(self, ident, constraint, exception=False):
+    def add_constraint(self, ident, constraint):
         warnings.warn('Unable to add constraint with SQLite backend')
 
-    def drop_constraint(self, ident, exception=False, table=None):
+    def drop_constraint(self, ident, table=None):
         warnings.warn('Unable to drop constraint with SQLite backend')
 
-    def drop_column(self, column_name, exception=False):
+    def drop_column(self, column_name):
         if not self.column_exist(column_name):
             return
         transaction = Transaction()
         database = transaction.database
         cursor = transaction.connection.cursor()
         temp_table = '_temp_%s' % self.table_name
-        try:
-            TableHandler.table_rename(self.table_name, temp_table)
-        except Exception:
-            if exception:
-                raise
-            logger.warning('Unable to drop column: Error renaming '
-                'table %s to temp!', self.table_name)
+        TableHandler.table_rename(self.table_name, temp_table)
         new_table = TableHandler(self._model, history=self.history)
         for name, values in self._columns.iteritems():
             if name != column_name:
@@ -315,13 +308,7 @@ class TableHandler(TableHandlerInterface):
                         ') SELECT ' +
                         ','.join('"%s"' % c for c in columns_name) + ' ' +
                         'FROM "%s"') % (self.table_name, temp_table))
-        try:
-            cursor.execute('DROP TABLE "%s"' % temp_table)
-        except Exception:
-            if exception:
-                raise
-            logger.warning('Unable to drop temporary table %s',
-                self.temp_table)
+        cursor.execute('DROP TABLE "%s"' % temp_table)
         self._update_definitions()
 
     @staticmethod

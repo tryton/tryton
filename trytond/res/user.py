@@ -211,7 +211,7 @@ class User(ModelSQL, ModelView):
         table.not_null_action('menu', action='remove')
 
         # Migration from 2.6
-        table.drop_column('login_try', exception=True)
+        table.drop_column('login_try')
 
         # Migration from 3.0
         if table.column_exist('password') and table.column_exist('salt'):
@@ -221,8 +221,8 @@ class User(ModelSQL, ModelView):
             cursor.execute(*sqltable.update(
                 columns=[sqltable.password_hash],
                 values=[password_hash_new]))
-            table.drop_column('password', exception=True)
-            table.drop_column('salt', exception=True)
+            table.drop_column('password')
+            table.drop_column('salt')
 
         # Migration from 4.2: Remove required on name
         table.not_null_action('name', action='remove')

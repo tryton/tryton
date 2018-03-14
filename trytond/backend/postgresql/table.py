@@ -110,19 +110,18 @@ class TableHandler(TableHandlerInterface):
     def column_exist(self, column_name):
         return column_name in self._columns
 
-    def column_rename(self, old_name, new_name, exception=False):
+    def column_rename(self, old_name, new_name):
         cursor = Transaction().connection.cursor()
-        if (self.column_exist(old_name)
-                and not self.column_exist(new_name)):
-            cursor.execute('ALTER TABLE "%s" '
-                'RENAME COLUMN "%s" TO "%s"'
-                % (self.table_name, old_name, new_name))
-            self._update_definitions(columns=True)
-        elif exception and self.column_exist(new_name):
-            raise Exception('Unable to rename column %s.%s to %s.%s: '
-                '%s.%s already exist!'
-                % (self.table_name, old_name, self.table_name, new_name,
-                    self.table_name, new_name))
+        if self.column_exist(old_name):
+            if not self.column_exist(new_name):
+                cursor.execute('ALTER TABLE "%s" '
+                    'RENAME COLUMN "%s" TO "%s"'
+                    % (self.table_name, old_name, new_name))
+                self._update_definitions(columns=True)
+            else:
+                logger.warning(
+                    'Unable to rename column %s on table %s to %s.',
+                    old_name, self.table_name, self.table_name, new_name)
 
     def _update_definitions(self,
             columns=None, constraints=None, indexes=None):
@@ -381,60 +380,31 @@ class TableHandler(TableHandlerInterface):
             else:
                 raise Exception('Not null action not supported!')
 
-    def add_constraint(self, ident, constraint, exception=False):
+    def add_constraint(self, ident, constraint):
         ident = self.convert_name(self.table_name + "_" + ident)
         if ident in self._constraints:
             # This constrain already exist
             return
         cursor = Transaction().connection.cursor()
-        try:
-            cursor.execute('ALTER TABLE "%s" '
-                'ADD CONSTRAINT "%s" %s'
-                % (self.table_name, ident, constraint), constraint.params)
-        except Exception:
-            if exception:
-                raise
-            logger.warning(
-                'unable to add \'%s\' constraint on table %s !\n'
-                'If you want to have it, you should update the records '
-                'and execute manually:\n'
-                'ALTER table "%s" ADD CONSTRAINT "%s" %s',
-                constraint, self.table_name, self.table_name, ident,
-                constraint)
+        cursor.execute('ALTER TABLE "%s" ADD CONSTRAINT "%s" %s'
+            % (self.table_name, ident, constraint), constraint.params)
         self._update_definitions(constraints=True)
 
-    def drop_constraint(self, ident, exception=False, table=None):
+    def drop_constraint(self, ident, table=None):
         ident = self.convert_name((table or self.table_name) + "_" + ident)
         if ident not in self._constraints:
             return
         cursor = Transaction().connection.cursor()
-        try:
-            cursor.execute('ALTER TABLE "%s" '
-                'DROP CONSTRAINT "%s"'
-                % (self.table_name, ident))
-        except Exception:
-            if exception:
-                raise
-            logger.warning(
-                'unable to drop \'%s\' constraint on table %s!',
-                ident, self.table_name)
+        cursor.execute('ALTER TABLE "%s" DROP CONSTRAINT "%s"'
+            % (self.table_name, ident))
         self._update_definitions(constraints=True)
 
-    def drop_column(self, column_name, exception=False):
+    def drop_column(self, column_name):
         if not self.column_exist(column_name):
             return
         cursor = Transaction().connection.cursor()
-        try:
-            cursor.execute(
-                'ALTER TABLE "%s" DROP COLUMN "%s"' %
-                (self.table_name, column_name))
-
-        except Exception:
-            if exception:
-                raise
-            logger.warning(
-                'unable to drop \'%s\' column on table %s!',
-                column_name, self.table_name, exc_info=True)
+        cursor.execute('ALTER TABLE "%s" DROP COLUMN "%s"'
+            % (self.table_name, column_name))
         self._update_definitions(columns=True)
 
     @staticmethod
