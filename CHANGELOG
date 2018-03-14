@@ -1,3 +1,4 @@
+* Assign supplier return shipment using children when location is a view
 * Duplicate "Locations Quantity" into tree and list
 * Remove product_ids from products_by_location for grouping_filter
 * Add quantities relates on Template

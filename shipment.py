@@ -843,16 +843,28 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    def assign_try(cls, shipments):
+    def assign_try(cls, shipments, with_childs=None):
         pool = Pool()
         Move = pool.get('stock.move')
-        to_assign = [m for s in shipments for m in s.moves
-            if m.assignation_required]
-        if Move.assign_try(to_assign, with_childs=False):
+        to_assign = defaultdict(list)
+        for shipment in shipments:
+            location_type = shipment.from_location.type
+            for move in shipment.moves:
+                if move.assignation_required:
+                    to_assign[location_type].append(move)
+        success = True
+        for location_type, moves in to_assign.iteritems():
+            if with_childs is None:
+                _with_childs = location_type == 'view'
+            elif not with_childs and location_type == 'view':
+                _with_childs = True
+            else:
+                _with_childs = with_childs
+            if not Move.assign_try(moves, with_childs=_with_childs):
+                success = False
+        if success:
             cls.assign(shipments)
-            return True
-        else:
-            return False
+        return success
 
     @classmethod
     @ModelView.button
