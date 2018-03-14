@@ -129,6 +129,20 @@ class ModelSingletonTestCase(unittest.TestCase):
         singletons = Singleton.search([('name', '=', 'bar')])
         self.assertEqual(singletons, [])
 
+    @with_transaction()
+    def test_all_cache_cleared(self):
+        "Test all cache cleared"
+        pool = Pool()
+        Singleton = pool.get('test.singleton')
+
+        singleton, = Singleton.create([{'name': 'foo'}])
+        singleton2 = Singleton(singleton.id + 1)  # Use a different id
+        singleton2.name  # Fill the cache
+        Singleton.write([singleton], {'name': 'bar'})
+        singleton2 = Singleton(singleton2.id)  # Clear local cache
+
+        self.assertEqual(singleton2.name, 'bar')
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelSingletonTestCase)
