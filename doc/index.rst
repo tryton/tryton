@@ -23,8 +23,11 @@ Two reports are available:
   header, the address of the recipient, a date, a greeting, an ending
   and the signature of the current reader.
 
-The *Check VIES* wizard allow to check the European VAT number identifier of
+The *Check VIES* wizard allows to check the European VAT number identifier of
 parties with the VIES web service.
+
+The *Replace* wizard allows to replace duplicate record by the original and
+relink all the related documents.
 
 
 Address
