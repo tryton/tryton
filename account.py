@@ -596,7 +596,9 @@ class Account(ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many(
-        'account.account', 'parent', 'Children', states=_states)
+        'account.account', 'parent', 'Children', states=_states,
+        domain=[('company', '=', Eval('company'))],
+        depends=['company'])
     balance = fields.Function(fields.Numeric('Balance',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_balance')
