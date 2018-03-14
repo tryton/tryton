@@ -1136,7 +1136,7 @@ class TaxLine(ModelSQL, ModelView):
 
     @fields.depends('_parent_move_line.account', 'move_line')
     def on_change_with_company(self, name=None):
-        if self.move_line:
+        if self.move_line and self.move_line.account:
             return self.move_line.account.company.id
 
     def get_rec_name(self, name):
