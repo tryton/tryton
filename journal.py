@@ -122,7 +122,7 @@ class Journal(ModelSQL, ModelView, CompanyMultiValueMixin):
                 [journal_sequence.journal, journal_sequence.sequence],
                 sql_table.select(sql_table.id, sql_table.sequence))
             cursor.execute(*query)
-            table.drop_column('sequence', exception=True)
+            table.drop_column('sequence')
 
     @classmethod
     def multivalue_model(cls, field):
