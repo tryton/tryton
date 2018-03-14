@@ -100,8 +100,8 @@ class ProductConfiguration:
         # default_accounts_category
         table = TableHandler(cls, module_name)
         if table.column_exist('default_account_category'):
-            table.column_rename('default_account_category',
-                'default_accounts_category', exception=True)
+            table.column_rename(
+                'default_account_category', 'default_accounts_category')
 
         super(ProductConfiguration, cls).__register__(module_name)
 
