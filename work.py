@@ -213,7 +213,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
                         [timesheet.origin, timesheet.name],
                         ['%s,%s' % (cls.__name__, project_id), Null],
                         where=timesheet.id == work_id))
-            table_project_work.drop_column('work', exception=True)
+            table_project_work.drop_column('work')
 
     @classmethod
     def __setup__(cls):
