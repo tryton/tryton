@@ -1142,7 +1142,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             cursor.execute(*sql_table.update(
                     columns=[sql_table.note],
                     values=[sql_table.comment]))
-            table.drop_column('comment', exception=True)
+            table.drop_column('comment')
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
