@@ -155,7 +155,7 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             cursor.execute(*sql_table.update(
                     columns=[sql_table.percentage],
                     values=[sql_table.percent * 100]))
-            table.drop_column('percent', exception=True)
+            table.drop_column('percent')
 
         # Migration from 2.2
         if table.column_exist('delay'):
@@ -163,7 +163,7 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
                     columns=[sql_table.day],
                     values=[31],
                     where=sql_table.delay == 'end_month'))
-            table.drop_column('delay', exception=True)
+            table.drop_column('delay')
             lines = cls.search([])
             for line in lines:
                 if line.percentage:
@@ -357,7 +357,7 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
                     + [Column(sql_table, f) for f in fields],
                     values=line.select(*columns)))
             for field in fields:
-                line_table.drop_column(field, exception=True)
+                line_table.drop_column(field)
 
     @staticmethod
     def default_months():
