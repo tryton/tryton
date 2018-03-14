@@ -1822,7 +1822,7 @@
                 }
                 return jQuery.when.apply(jQuery, promises);
             };
-            return prm.then(set_value);
+            return prm.then(set_value.bind(this));
         },
         set: function(record, value, _default) {
             if (_default === undefined) {
