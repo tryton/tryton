@@ -2121,6 +2121,14 @@ class CreateChart(Wizard):
             ])
     create_properties = StateTransition()
 
+    @classmethod
+    def __setup__(cls):
+        super(CreateChart, cls).__setup__()
+        cls._error_messages.update({
+                'account_chart_exists': ('A chart of accounts already exists '
+                    'for the company "%(company)s".')
+                })
+
     def transition_create_account(self):
         pool = Pool()
         TaxCodeTemplate = pool.get('account.tax.code.template')
@@ -2129,11 +2137,22 @@ class CreateChart(Wizard):
         TaxRuleLineTemplate = \
             pool.get('account.tax.rule.line.template')
         Config = pool.get('ir.configuration')
+        Account = pool.get('account.account')
+        transaction = Transaction()
 
-        with Transaction().set_context(language=Config.get_language(),
-                company=self.account.company.id):
+        company = self.account.company
+        # Skip access rule
+        with transaction.set_user(0):
+            accounts = Account.search([('company', '=', company.id)], limit=1)
+        if accounts:
+            self.raise_user_warning('duplicated_chart.%d' % company.id,
+                'account_chart_exists', {
+                    'company': company.rec_name,
+                    })
+
+        with transaction.set_context(language=Config.get_language(),
+                company=company.id):
             account_template = self.account.account_template
-            company = self.account.company
 
             # Create account types
             template2type = {}
