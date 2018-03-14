@@ -1087,7 +1087,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
         # Migration from 1.0 customer_location is no more used
         table = TableHandler(cls, module_name)
-        table.drop_column('customer_location', exception=True)
+        table.drop_column('customer_location')
 
         # Add index on create_date
         table.index_action('create_date', action='add')
