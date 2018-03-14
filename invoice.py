@@ -1190,7 +1190,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     return result
                 if abs(remainder) < abs(best.remainder):
                     best = result
-        return result
+        return best
 
     def pay_invoice(self, amount, journal, date, description,
             amount_second_currency=None, second_currency=None):
