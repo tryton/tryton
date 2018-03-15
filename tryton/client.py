@@ -14,12 +14,17 @@ except ImportError:
     sys.modules['cdecimal'] = decimal
 import os
 
+import gi
 import pygtkcompat
 
 pygtkcompat.enable()
 pygtkcompat.enable_gtk(version='3.0')
 try:
     pygtkcompat.enable_goocanvas()
+except ValueError:
+    pass
+try:
+    gi.require_version('GtkSpell', '3.0')
 except ValueError:
     pass
 
