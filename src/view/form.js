@@ -1401,11 +1401,38 @@ function eval_pyson(value){
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-calendar'
             }))).appendTo(this.date);
+            var noop = function () {};
+            var reset_keyBinds = {};
+            var default_keyBinds = this.date.datetimepicker.defaults.keyBinds;
+            for (var key in default_keyBinds) {
+                if (default_keyBinds.hasOwnProperty(key)) {
+                    reset_keyBinds[key] = noop;
+                }
+            }
             this.date.datetimepicker({
-                'locale': moment.locale()
+                'locale': moment.locale(),
+                'keyBinds': reset_keyBinds,
             });
             this.date.css('width', this._width);
             this.date.on('dp.change', this.focus_out.bind(this));
+            var mousetrap = new Mousetrap(this.el[0]);
+
+            mousetrap.bind(['enter', '='], function(e, combo) {
+                if (e.which != Sao.common.RETURN_KEYCODE) {
+                    e.preventDefault();
+                }
+                this.date.data('DateTimePicker').date(moment());
+            }.bind(this));
+
+            Sao.common.DATE_OPERATORS.forEach(function(operator) {
+                mousetrap.bind(operator[0], function(e, combo) {
+                    e.preventDefault();
+                    var dp = this.date.data('DateTimePicker');
+                    var date = dp.date();
+                    date.add(operator[1]);
+                    dp.date(date);
+                }.bind(this));
+            }.bind(this));
         },
         get_format: function(record, field) {
             return field.date_format(record);

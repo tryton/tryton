@@ -185,6 +185,23 @@
             ;
     };
 
+    Sao.common.DATE_OPERATORS = [
+        ['S', moment.duration(-1, 'seconds')],
+        ['s', moment.duration(1, 'seconds')],
+        ['I', moment.duration(-1, 'minutes')],
+        ['i', moment.duration(1, 'minutes')],
+        ['H', moment.duration(-1, 'hours')],
+        ['h', moment.duration(1, 'hours')],
+        ['D', moment.duration(-1, 'days')],
+        ['d', moment.duration(1, 'days')],
+        ['W', moment.duration(-1, 'weeks')],
+        ['w', moment.duration(1, 'weeks')],
+        ['M', moment.duration(-1, 'months')],
+        ['m', moment.duration(1, 'months')],
+        ['Y', moment.duration(-1, 'years')],
+        ['y', moment.duration(1, 'years')],
+    ];
+
     Sao.common.date_format = function(format) {
         if (jQuery.isEmptyObject(format)) {
             format = '%Y-%m-%d';
