@@ -39,6 +39,29 @@ class CharTranslate(ModelSQL):
     char = fields.Char("Char", translate=True)
 
 
+class CharUnaccentedOn(ModelSQL):
+    'Char Unaccented'
+    __name__ = 'test.char_unaccented_on'
+    char = fields.Char("Char")
+
+
+class CharUnaccentedOff(ModelSQL):
+    'Char Unaccented'
+    __name__ = 'test.char_unaccented_off'
+    char = fields.Char("Char")
+
+    @classmethod
+    def __setup__(cls):
+        super(CharUnaccentedOff, cls).__setup__()
+        cls.char.search_unaccented = False
+
+
+class CharUnaccentedTranslate(ModelSQL):
+    'Char Unaccented Translate'
+    __name__ = 'test.char_unaccented_translate'
+    char = fields.Char("Char", translate=True)
+
+
 def register(module):
     Pool.register(
         Char,
@@ -46,4 +69,7 @@ def register(module):
         CharRequired,
         CharSize,
         CharTranslate,
+        CharUnaccentedOn,
+        CharUnaccentedOff,
+        CharUnaccentedTranslate,
         module=module, type_='model')

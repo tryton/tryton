@@ -3,6 +3,7 @@
 import sys
 import warnings
 
+from trytond.transaction import Transaction
 from .field import Field, FieldTranslate, size_validate
 from ...rpc import RPC
 
@@ -35,6 +36,7 @@ class Char(FieldTranslate):
         self.translate = translate
         self.__size = None
         self.size = size
+        self.search_unaccented = True
     __init__.__doc__ += Field.__init__.__doc__
 
     def _get_size(self):
@@ -65,3 +67,17 @@ class Char(FieldTranslate):
             assert hasattr(model, func_name), \
                 'Missing %s on model %s' % (func_name, model.__name__)
             model.__rpc__.setdefault(func_name, RPC(instantiate=0))
+
+    def _domain_column(self, operator, column):
+        column = super(Char, self)._domain_column(operator, column)
+        if self.search_unaccented and operator.endswith('ilike'):
+            database = Transaction().database
+            column = database.unaccent(column)
+        return column
+
+    def _domain_value(self, operator, value):
+        value = super(Char, self)._domain_value(operator, value)
+        if self.search_unaccented and operator.endswith('ilike'):
+            database = Transaction().database
+            value = database.unaccent(value)
+        return value

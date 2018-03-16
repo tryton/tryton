@@ -280,6 +280,15 @@ A single line string field.
     ComboboxEntry in the client.
     The set of field names could be filled by using the decorator :meth:`depends`.
 
+.. attribute:: Char.search_unaccented
+
+    If this attribute is set to True, ``ilike`` searches will be performed on
+    unaccented strings. The default value is True.
+
+.. warning::
+
+    The database backend must supports unaccented search.
+
 Text
 ----
 

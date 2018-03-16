@@ -3,9 +3,11 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from trytond import backend
 from trytond.exceptions import UserError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
 
 
 class CommonTestCaseMixin:
@@ -452,9 +454,118 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
         return Pool().get('test.char_translate')
 
 
+@unittest.skipUnless(backend.name() == 'postgresql',
+    "unaccent works only on postgresql")
+class FieldCharUnaccentedTestCase(unittest.TestCase):
+    "Test Field Char with unaccented searches"
+
+    @classmethod
+    def setUpClass(cls):
+        super(FieldCharUnaccentedTestCase, cls).setUpClass()
+        activate_module('tests')
+        cls._activate_extension()
+
+    @classmethod
+    def tearDownClass(cls):
+        super(FieldCharUnaccentedTestCase, cls).tearDownClass()
+        cls._deactivate_extension()
+
+    @classmethod
+    @with_transaction()
+    def _activate_extension(cls):
+        connection = Transaction().connection
+        cursor = connection.cursor()
+        cursor.execute('CREATE EXTENSION "unaccent"')
+        connection.commit()
+        cls._clear_unaccent_cache()
+
+    @classmethod
+    @with_transaction()
+    def _deactivate_extension(cls):
+        connection = Transaction().connection
+        cursor = connection.cursor()
+        cursor.execute('DROP EXTENSION "unaccent"')
+        connection.commit()
+        cls._clear_unaccent_cache()
+
+    @classmethod
+    def _clear_unaccent_cache(cls):
+        Database = backend.get('Database')
+        Database._has_unaccent.clear()
+
+    @with_transaction()
+    def test_normal_search(self):
+        "Test searches without the unaccented feature"
+        Char = Pool().get('test.char_unaccented_off')
+        char, = Char.create([{
+                    'char': u'Stéphanie',
+                    }])
+
+        chars_stephanie = Char.search([
+                ('char', 'ilike', 'Stephanie'),
+                ])
+
+        self.assertListEqual(chars_stephanie, [])
+
+    @with_transaction()
+    def test_accented_search(self):
+        "Test searches of accented value"
+        Char = Pool().get('test.char_unaccented_on')
+        char, = Char.create([{
+                    'char': u'Stéphanie',
+                    }])
+
+        chars_stephanie = Char.search([
+                ('char', 'ilike', 'Stephanie'),
+                ])
+
+        self.assertListEqual(chars_stephanie, [char])
+
+    @with_transaction()
+    def test_unaccented_search(self):
+        "Test searches of unaccented value"
+        Char = Pool().get('test.char_unaccented_on')
+        char, = Char.create([{
+                    'char': u'Stephanie',
+                    }])
+
+        chars_stephanie = Char.search([
+                ('char', 'ilike', 'Stéphanie'),
+                ])
+        self.assertListEqual(chars_stephanie, [char])
+
+    @with_transaction()
+    def test_unaccented_translated_search(self):
+        "Test unaccented translated search"
+        pool = Pool()
+        Char = pool.get('test.char_unaccented_translate')
+        Lang = pool.get('ir.lang')
+
+        lang, = Lang.search([
+                ('translatable', '=', False),
+                ('code', '!=', 'en'),
+                ], limit=1)
+        lang.translatable = True
+        lang.save()
+        char, = Char.create([{
+                    'char': u'School',
+                    }])
+
+        with Transaction().set_context(lang=lang.code):
+            trans_char = Char(char.id)
+            trans_char.char = u'École'
+            trans_char.save()
+
+            chars_ecole = Char.search([
+                    ('char', 'ilike', 'Ecole'),
+                    ])
+            self.assertListEqual(chars_ecole, [char])
+
+
 def suite():
     suite_ = unittest.TestSuite()
     loader = unittest.TestLoader()
     suite_.addTests(loader.loadTestsFromTestCase(FieldCharTestCase))
     suite_.addTests(loader.loadTestsFromTestCase(FieldCharTranslatedTestCase))
+    suite_.addTests(loader.loadTestsFromTestCase(FieldCharUnaccentedTestCase))
     return suite_

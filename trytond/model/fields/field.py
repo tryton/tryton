@@ -302,6 +302,9 @@ class Field(object):
     def sql_column(self, table):
         return Column(table, self.name)
 
+    def _domain_column(self, operator, column):
+        return column
+
     def _domain_value(self, operator, value):
         if isinstance(value, (Select, CombiningQuery)):
             return value
@@ -330,6 +333,7 @@ class Field(object):
             return method(domain, tables)
         Operator = SQL_OPERATORS[operator]
         column = self.sql_column(table)
+        column = self._domain_column(operator, column)
         expression = Operator(column, self._domain_value(operator, value))
         if isinstance(expression, operators.In) and not expression.right:
             expression = Literal(False)
@@ -417,6 +421,7 @@ class FieldTranslate(Field):
             column = Coalesce(NullIf(column, ''), translation.value)
             language = get_parent_language(language)
         column = Coalesce(NullIf(column, ''), self.sql_column(table))
+        column = self._domain_column(operator, column)
         Operator = SQL_OPERATORS[operator]
         assert name == self.name
         where = Operator(column, self._domain_value(operator, value))

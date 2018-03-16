@@ -164,6 +164,14 @@ class DatabaseInterface(object):
         "Return if database supports window functions."
         return False
 
+    def has_unaccent(self):
+        "Return if database supports unaccentuated searches"
+        return False
+
+    def unaccent(self, value):
+        "Return the expression to use for unaccentuated columns"
+        return value
+
     @classmethod
     def has_sequence(cls):
         "Return if database supports sequence querying and assignation"
