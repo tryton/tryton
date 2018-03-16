@@ -32,7 +32,11 @@
             this.id = attributes.data.id;
             this.ids = attributes.data.ids;
             this.model = attributes.data.model;
-            this.context = attributes.context;
+            this.context = jQuer.extend({}, attributes.context);
+            this.context.active_id = this.id;
+            this.context.active_ids = this.ids;
+            this.context.active_model = this.model;
+            this.context.action_id = this.action_id;
             Sao.rpc({
                 'method': 'wizard.' + this.action + '.create',
                 'params': [this.session.context]
@@ -55,10 +59,6 @@
                     return;
                 }
                 var ctx = jQuery.extend({}, this.context);
-                ctx.active_id = this.id;
-                ctx.active_ids = this.ids;
-                ctx.active_model = this.model;
-                ctx.action_id = this.action_id;
                 var data = {};
                 if (this.screen) {
                     data[this.screen_state] = this.screen.get_on_change_value();
@@ -81,8 +81,14 @@
                     var execute_actions = function execute_actions() {
                         if (result.actions) {
                             result.actions.forEach(function(action) {
+                                var context = jQuery.extend({}, this.context);
+                                // Remove wizard keys added by run
+                                delete context.active_id;
+                                delete context.active_ids;
+                                delete context.active_model;
+                                delete context.action_id;
                                 Sao.Action.exec_action(action[0], action[1],
-                                    jQuery.extend({}, this.context));
+                                    context);
                             }.bind(this));
                         }
                     }.bind(this);
