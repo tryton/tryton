@@ -464,6 +464,7 @@ var Sao = {};
         init: function(favorite) {
             this.field = favorite;
             this.header = jQuery('<th/>');
+            this.footers = [];
             this.attributes = jQuery.extend({}, this.field.description);
             this.attributes.name = this.field.name;
 

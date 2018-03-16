@@ -3353,4 +3353,14 @@
         var ellipsis = Sao.i18n.gettext('...');
         return string.slice(0, length - ellipsis.length) + ellipsis;
     };
+
+    Sao.common.debounce = function(func, wait) {
+        return function() {
+            var args = [].slice(arguments);
+            clearTimeout(func._debounceTimeout);
+            func._debounceTimeout = setTimeout(function() {
+                func.apply(this, args);
+            }.bind(this), wait);
+        }.bind(this);
+    };
 }());

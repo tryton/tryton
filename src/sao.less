@@ -120,6 +120,10 @@ img.icon {
             width: 1em;
             height: 1em;
         }
+
+        & tr.more-row {
+            text-align: center;
+        }
     }
     & .editabletree-char, .editabletree-date, .editabletree-datetime,
     .editabletree-integer, .editabletree-float, .editabletree-selection,
@@ -136,9 +140,6 @@ img.icon {
     }
     & .expander {
         cursor: pointer;
-    }
-    & .treefooter {
-        text-align: center;
     }
     & label {
         font-weight: normal;
@@ -324,7 +325,10 @@ input.column-boolean {
     table.responsive > thead > tr > th:not(.invisible),
     table.responsive > tbody,
     table.responsive > tbody > tr,
-    table.responsive > tbody > tr > td:not(.invisible) {
+    table.responsive > tbody > tr > td:not(.invisible),
+    table.responsive > tfoot,
+    table.responsive > tfoot > tr,
+    table.responsive > tfoot > tr > td:not(.invisible) {
         display: block !important;
     }
     table.responsive {
@@ -343,6 +347,13 @@ input.column-boolean {
                 display: block;
             }
         }
+
+        & tfoot {
+            > tr > td:empty,
+            > tr > td > label {
+                display: none !important;
+            }
+        }
     }
     table.responsive-noheader {
         & > tbody > tr > td {
@@ -353,13 +364,15 @@ input.column-boolean {
         > tbody > tr {
             border: 1px solid #ccc;
         }
-        & > tbody > tr > td {
+        & > tbody > tr > td,
+        & > tfoot > tr > td {
             /* Behave like a "row" */
             border: none;
             border-bottom: 1px solid #eee;
             position: relative;
         }
-        & > tbody > tr {
+        & > tbody > tr,
+        & > tfoot > tr {
             & > td:before {
                 /* Now like a table header */
                 position: absolute;
