@@ -105,8 +105,9 @@ def run(options):
                         if not password:
                             sys.stderr.write('"admin" password is required.\n')
                             continue
-                        admin.password = password
                         break
+                if not options.reset_password:
+                    admin.password = password
             admin.save()
             if options.reset_password:
                 User.reset_password([admin])
