@@ -58,7 +58,11 @@ class Wizard(InfoBar):
         self.direct_print = direct_print
         self.email_print = email_print
         self.email = email
-        self.context = context
+        self.context = context.copy() if context is not None else {}
+        self.context['active_id'] = self.id
+        self.context['active_ids'] = self.ids
+        self.context['active_model'] = self.model
+        self.context['action_id'] = self.action_id
 
         def callback(result):
             try:
@@ -78,10 +82,6 @@ class Wizard(InfoBar):
         self.__processing = True
 
         ctx = self.context.copy()
-        ctx['active_id'] = self.id
-        ctx['active_ids'] = self.ids
-        ctx['active_model'] = self.model
-        ctx['action_id'] = self.action_id
         if self.screen:
             data = {
                 self.screen_state: self.screen.get_on_change_value(),
@@ -119,7 +119,13 @@ class Wizard(InfoBar):
                             ('email', self.email),
                             ]:
                         action[0].setdefault(k, v)
-                    Action._exec_action(*action, context=self.context.copy())
+                    context = self.context.copy()
+                    # Remove wizard keys added by run
+                    del context['active_id']
+                    del context['active_ids']
+                    del context['active_model']
+                    del context['action_id']
+                    Action._exec_action(*action, context=context)
 
             if self.state == self.end_state:
                 self.end(lambda *a: execute_actions())
