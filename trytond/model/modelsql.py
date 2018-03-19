@@ -1520,7 +1520,7 @@ class ModelSQL(ModelStorage):
                 in_max = transaction.database.IN_MAX // (len(columns) + 1)
                 for sub_ids in grouped_slice(ids, in_max):
                     where = reduce_ids(table.id, sub_ids)
-                    if isinstance(sql, Exclude):
+                    if isinstance(sql, Exclude) and sql.where:
                         where &= sql.where
 
                     cursor.execute(*table.select(*columns, where=where))
