@@ -4,7 +4,7 @@ from .model import Model
 from .modelview import ModelView
 from .modelstorage import ModelStorage, EvalEnvironment
 from .modelsingleton import ModelSingleton
-from .modelsql import ModelSQL, Check, Unique
+from .modelsql import ModelSQL, Check, Unique, Exclude
 from .workflow import Workflow
 from .dictschema import DictSchemaMixin
 from .match import MatchMixin
@@ -14,7 +14,7 @@ from .descriptors import dualmethod
 from .order import sequence_ordered
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
-    'Check', 'Unique',
+    'Check', 'Unique', 'Exclude',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin',
     'EvalEnvironment', 'sequence_ordered']

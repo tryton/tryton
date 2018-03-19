@@ -527,6 +527,37 @@ Instance attributes:
 
     The tuple of SQL Column instances.
 
+.. attribute:: Unique.operators
+
+    The tuple of `Equal` operators.
+
+Exclude
+-------
+
+.. class:: Exclude(table[, (expression, operator), ...[, where]])
+
+It represents an exclude :class:`Constraint` which guarantees that if any two
+rows are compared on the specified expression using the specified operator not
+all of these comparisons will return `TRUE`.
+
+Instance attributes:
+
+.. attribute:: Exclude.excludes
+
+    The tuple of expression and operator.
+
+.. attribute:: Exclude.columns
+
+    The tuple of expressions.
+
+.. attribute:: Exclude.operators
+
+    The tuple of operators.
+
+.. attribute:: Exclude.where
+
+    The clause for which the exclusion applies.
+
 ========
 Workflow
 ========

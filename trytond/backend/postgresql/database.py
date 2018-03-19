@@ -265,7 +265,7 @@ class Database(DatabaseInterface):
         cursor = connection.cursor()
         cursor.execute('LOCK "%s" IN EXCLUSIVE MODE NOWAIT' % table)
 
-    def has_constraint(self):
+    def has_constraint(self, constraint):
         return True
 
     def has_multirow_insert(self):

@@ -135,7 +135,7 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    def has_constraint(self):
+    def has_constraint(self, constraint):
         '''
         Return True if database handle constraint.
 

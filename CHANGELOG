@@ -1,3 +1,4 @@
+* Add Exclude constraint
 * Allow to perform unaccented searches on Char fields
 * Always raise exception in table handler
 * Simplify API for Session: new, remove, check and reset

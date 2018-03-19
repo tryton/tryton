@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, fields
+from sql.operators import Equal
+
+from trytond.model import ModelSQL, fields, Check, Unique, Exclude
 from trytond.pool import Pool
 
 
@@ -58,6 +60,50 @@ class ModelTranslation(ModelSQL):
     name = fields.Char("Name", translate=True)
 
 
+class ModelCheck(ModelSQL):
+    "ModelSQL with check constraint"
+    __name__ = 'test.modelsql.check'
+    value = fields.Integer("Value")
+
+    @classmethod
+    def __setup__(cls):
+        super(ModelCheck, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('check', Check(t, (t.value > 42)),
+                "Value must be greater than 42."),
+            ]
+
+
+class ModelUnique(ModelSQL):
+    "ModelSQL with unique constraint"
+    __name__ = 'test.modelsql.unique'
+    value = fields.Integer("Value")
+
+    @classmethod
+    def __setup__(cls):
+        super(ModelUnique, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('unique', Unique(t, t.value), "Value must be unique."),
+            ]
+
+
+class ModelExclude(ModelSQL):
+    "ModelSQL with exclude constraint"
+    __name__ = 'test.modelsql.exclude'
+    value = fields.Integer("Value")
+
+    @classmethod
+    def __setup__(cls):
+        super(ModelExclude, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('exclude', Exclude(t, (t.value, Equal), where=t.value > 0),
+                "Value must be unique."),
+            ]
+
+
 def register(module):
     Pool.register(
         ModelSQLRequiredField,
@@ -67,4 +113,7 @@ def register(module):
         ModelSQLOne2ManyTarget,
         NullOrder,
         ModelTranslation,
+        ModelCheck,
+        ModelUnique,
+        ModelExclude,
         module=module, type_='model')

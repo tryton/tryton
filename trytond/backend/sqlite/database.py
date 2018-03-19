@@ -410,7 +410,7 @@ class Database(DatabaseInterface):
     def lock(self, connection, table):
         pass
 
-    def has_constraint(self):
+    def has_constraint(self, constraint):
         return False
 
     def has_multirow_insert(self):
