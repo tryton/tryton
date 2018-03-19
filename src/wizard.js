@@ -32,7 +32,7 @@
             this.id = attributes.data.id;
             this.ids = attributes.data.ids;
             this.model = attributes.data.model;
-            this.context = jQuer.extend({}, attributes.context);
+            this.context = jQuery.extend({}, attributes.context);
             this.context.active_id = this.id;
             this.context.active_ids = this.ids;
             this.context.active_model = this.model;
