@@ -19,11 +19,12 @@ except ImportError:
     html2text = None
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
+from sql.operators import Equal
 
 from trytond import backend
 from trytond.config import config
 from trytond.exceptions import RateLimitException
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, fields, Unique, Exclude
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
@@ -88,7 +89,9 @@ class User(ModelSQL, ModelView):
         super(User, cls).__setup__()
         table = cls.__table__()
         cls._sql_constraints += [
-            ('email_unique', Unique(table, table.email),
+            ('email_exclude',
+                Exclude(table, (table.email, Equal),
+                    where=table.active == True),
                 'E-mail must be unique'),
             ]
         cls._buttons.update({
@@ -112,6 +115,9 @@ class User(ModelSQL, ModelView):
 
         # Migration from 4.6
         table_h.not_null_action('email', 'remove')
+
+        # Migration from 4.6: replace unique by exclude
+        table_h.drop_constraint('email_unique')
 
     @staticmethod
     def default_active():
