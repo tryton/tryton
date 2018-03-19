@@ -1690,7 +1690,7 @@
             }
             return value;
         },
-        apply_factor: function(value, factor) {
+        apply_factor: function(record, value, factor) {
             if (value !== null) {
                 value /= factor;
             }
@@ -1700,7 +1700,7 @@
             if (factor === undefined) {
                 factor = 1;
             }
-            value = this.apply_factor(this.convert(value), factor);
+            value = this.apply_factor(record, this.convert(value), factor);
             Sao.field.Float._super.set_client.call(this, record, value,
                 force_change);
         },
@@ -1735,9 +1735,15 @@
             }
             return value;
         },
-        apply_factor: function(value, factor) {
-            value = Sao.field.Numeric._super.apply_factor(value, factor);
+        apply_factor: function(record, value, factor) {
+            value = Sao.field.Numeric._super.apply_factor(record, value, factor);
             if (value !== null) {
+                var digits = this.digits(record);
+                if (digits) {
+                    // Round to avoid float precision error
+                    // after the division by factor
+                    value = value.toFixed(digits[1]);
+                }
                 value = new Sao.Decimal(value);
             }
             return value;
