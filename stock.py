@@ -186,7 +186,7 @@ class Move:
             name=name)
         # Enforce the same unit category as they are used to compute the
         # remaining quantity to ship and the quantity to invoice.
-        if isinstance(self.origin, SaleLine):
+        if isinstance(self.origin, SaleLine) and self.origin.unit:
             category = self.origin.unit.category.id
         return category
 
