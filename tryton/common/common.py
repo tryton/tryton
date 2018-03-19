@@ -1094,22 +1094,21 @@ def process_exception(exception, *args, **kwargs):
         elif (exception.faultCode.startswith('403')
                 or exception.faultCode.startswith('401')):
             from tryton.gui.main import Main
-            if not PLOCK.acquire(False):
-                return
-            language = CONFIG['client.lang']
-            func = lambda parameters: rpc.login(
-                rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME, parameters,
-                language)
-            try:
-                Login(func)
-            except TrytonError, exception:
-                if exception.faultCode == 'QueryCanceled':
-                    Main.get_main().sig_quit()
-                raise
-            finally:
-                PLOCK.release()
-            if args:
-                return rpc_execute(*args)
+            if PLOCK.acquire(False):
+                language = CONFIG['client.lang']
+                func = lambda parameters: rpc.login(
+                    rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME,
+                    parameters, language)
+                try:
+                    Login(func)
+                except TrytonError, exception:
+                    if exception.faultCode == 'QueryCanceled':
+                        Main.get_main().sig_quit()
+                    raise
+                finally:
+                    PLOCK.release()
+                if args:
+                    return rpc_execute(*args)
         else:
             error(exception.faultCode, exception.faultString)
     else:
