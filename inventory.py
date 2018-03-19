@@ -322,7 +322,7 @@ class InventoryLine(ModelSQL, ModelView):
             ]
         cls._order.insert(0, ('product', 'ASC'))
         cls._error_messages.update({
-                'missing_empty_quantity': ('And option for empty quantity is '
+                'missing_empty_quantity': ('An option for empty quantity is '
                     'missing for inventory "%(inventory)s".'),
                 })
 
