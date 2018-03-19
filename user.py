@@ -20,6 +20,7 @@ except ImportError:
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
 
+from trytond import backend
 from trytond.config import config
 from trytond.exceptions import RateLimitException
 from trytond.model import ModelView, ModelSQL, fields, Unique
@@ -66,7 +67,11 @@ class User(ModelSQL, ModelView):
     __name__ = 'web.user'
     _rec_name = 'email'
 
-    email = fields.Char('E-mail', required=True, select=True)
+    email = fields.Char('E-mail', select=True,
+        states={
+            'required': Eval('active', True),
+            },
+        depends=['active'])
     email_valid = fields.Boolean('E-mail Valid')
     email_token = fields.Char('E-mail Token', select=True)
     password_hash = fields.Char('Password Hash')
@@ -96,6 +101,17 @@ class User(ModelSQL, ModelView):
                     'depends': ['email_valid'],
                     },
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+
+        super(User, cls).__register__(module_name)
+
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 4.6
+        table_h.not_null_action('email', 'remove')
 
     @staticmethod
     def default_active():
