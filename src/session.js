@@ -268,8 +268,8 @@
                     dfd.resolve(data.result);
                 }
             };
-            ajax_prm.success(ajax_success.bind(this));
-            ajax_prm.error(dfd.reject);
+            ajax_prm.done(ajax_success.bind(this));
+            ajax_prm.fail(dfd.reject);
             return dfd.promise();
         },
         get_char: function(message) {

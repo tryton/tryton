@@ -15,8 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^2.1",
-    "bootstrap": "^3.3",
+    "jquery": "^3",
+    "bootstrap": "^3.3.7",
     "moment": "^2.10",
     "eonasdan-bootstrap-datetimepicker": "^4.17",
     "gettext.js": "^0.5",
