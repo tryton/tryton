@@ -46,6 +46,12 @@ class Inventory(Workflow, ModelSQL, ModelView):
                 | ~Eval('date')),
             },
         depends=['location', 'date'] + DEPENDS)
+    empty_quantity = fields.Selection([
+            (None, ""),
+            ('keep', "Keep"),
+            ('empty', "Empty"),
+            ], "Empty Quantity", required=True, states=STATES, depends=DEPENDS,
+        help="How lines without quantity are handled.")
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
@@ -292,7 +298,7 @@ class InventoryLine(ModelSQL, ModelView):
             'invisible': Eval('id', -1) < 0,
         },
         depends=['unit_digits'])
-    quantity = fields.Float('Quantity', required=True,
+    quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states=_states, depends=['unit_digits'] + _depends)
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
@@ -315,6 +321,10 @@ class InventoryLine(ModelSQL, ModelView):
                 'Line quantity must be positive.'),
             ]
         cls._order.insert(0, ('product', 'ASC'))
+        cls._error_messages.update({
+                'missing_empty_quantity': ('And option for empty quantity is '
+                    'missing for inventory "%(inventory)s".'),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -341,6 +351,9 @@ class InventoryLine(ModelSQL, ModelView):
                         values=['%s,%s' % (cls.__name__, line_id)],
                         where=move_table.id == move_id))
             table.drop_column('move')
+
+        # Migration from 4.6: drop required on quantity
+        table.not_null_action('quantity', action='remove')
 
     @staticmethod
     def default_unit_digits():
@@ -401,8 +414,19 @@ class InventoryLine(ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
 
+        qty = self.quantity
+        if qty is None:
+            if self.inventory.empty_quantity is None:
+                self.raise_user_error('missing_empty_quantity', {
+                        'inventory': self.inventory.rec_name,
+                        })
+            if self.inventory.empty_quantity == 'keep':
+                return
+            else:
+                qty = 0.0
+
         delta_qty = Uom.compute_qty(self.uom,
-            self.expected_quantity - self.quantity,
+            self.expected_quantity - qty,
             self.uom)
         if delta_qty == 0.0:
             return
@@ -432,10 +456,6 @@ class InventoryLine(ModelSQL, ModelView):
         if self.quantity == self.expected_quantity == quantity:
             return values
         values['expected_quantity'] = quantity
-        # update also quantity field if not edited
-        if (not quantity and not self.quantity
-                and self.quantity == self.expected_quantity):
-            values['quantity'] = max(quantity, 0.0)
         return values
 
     @classmethod
@@ -446,5 +466,4 @@ class InventoryLine(ModelSQL, ModelView):
         return {
             'inventory': inventory.id,
             'expected_quantity': quantity,
-            'quantity': max(quantity, 0.0),
         }

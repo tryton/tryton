@@ -1203,6 +1203,11 @@ def suite():
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
+            'scenario_stock_inventory_empty_quantity.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite('scenario_stock_shipment_internal.rst',
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,

@@ -14,6 +14,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <newline/>
     <button name="complete_lines" colspan="2"/>
+    <label name="empty_quantity"/>
+    <field name="empty_quantity"/>
     <field name="lines" colspan="4"/>
     <group col="4" colspan="4" id="group_buttons">
         <label name="state"/>

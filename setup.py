@@ -125,6 +125,7 @@ setup(name=name,
     convert_2to3_doctests=[
         'tests/scenario_stock_average_cost_price.rst',
         'tests/scenario_stock_inventory.rst',
+        'tests/scenario_stock_inventory_empty_quantity.rst',
         'tests/scenario_stock_reporting.rst',
         'tests/scenario_stock_shipment_internal.rst',
         'tests/scenario_stock_shipment_out.rst',

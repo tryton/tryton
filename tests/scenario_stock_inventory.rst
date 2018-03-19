@@ -93,6 +93,7 @@ Create an inventory::
     >>> Inventory = Model.get('stock.inventory')
     >>> inventory = Inventory()
     >>> inventory.location = storage_loc
+    >>> inventory.empty_quantity = 'keep'
     >>> inventory.save()
     >>> inventory.click('complete_lines')
     >>> line_by_product = {l.product.id: l for l in inventory.lines}
@@ -102,8 +103,6 @@ Create an inventory::
     >>> line_p1.quantity = 3
     >>> line_p2 = line_by_product[product2.id]
     >>> line_p2.expected_quantity
-    2.5
-    >>> line_p2.quantity
     2.5
     >>> inventory.save()
 
@@ -147,8 +146,6 @@ Update the inventory::
     >>> line_p2.reload()
     >>> line_p2.expected_quantity
     3.8
-    >>> line_p2.quantity
-    2.5
     >>> line_p2.quantity = 3.8
     >>> line_p2.save()
 
@@ -169,11 +166,24 @@ Confirm the inventory::
     >>> len(line_p2.moves)
     0
 
+Creating an inventory with empty quantities::
+
+    >>> inventory = Inventory()
+    >>> inventory.location = storage_loc
+    >>> inventory.empty_quantity = 'keep'
+    >>> line = inventory.lines.new()
+    >>> line.product = product
+    >>> inventory.click('confirm')
+    >>> line, = inventory.lines
+    >>> len(line.moves)
+    0
+
 Empty storage::
 
     >>> Inventory = Model.get('stock.inventory')
     >>> inventory = Inventory()
     >>> inventory.location = storage_loc
+    >>> inventory.empty_quantity = 'keep'
     >>> line = inventory.lines.new()
     >>> line.product = product
     >>> line.quantity = 0
@@ -197,6 +207,7 @@ Create an inventory that should be empty after completion::
     >>> Inventory = Model.get('stock.inventory')
     >>> inventory = Inventory()
     >>> inventory.location = storage_loc
+    >>> inventory.empty_quantity = 'keep'
     >>> inventory.click('complete_lines')
     >>> len(inventory.lines)
     0
