@@ -50,7 +50,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             (None, ""),
             ('keep', "Keep"),
             ('empty', "Empty"),
-            ], "Empty Quantity", required=True, states=STATES, depends=DEPENDS,
+            ], "Empty Quantity", states=STATES, depends=DEPENDS,
         help="How lines without quantity are handled.")
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
