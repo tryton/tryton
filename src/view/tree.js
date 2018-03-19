@@ -137,10 +137,10 @@
                     });
                     if (field_name in this.sum_widgets) {
                         var sum_label = this.sum_widgets[field_name][0];
-                        var sum_div = this.sum_widgets[field_name][1];
-                        total_cell.append(label);
-                        total_cell.append(sum_div);
-                        total_cell.attr('data-title', label.text());
+                        var sum_value = this.sum_widgets[field_name][1];
+                        total_cell.append(sum_label);
+                        total_cell.append(sum_value);
+                        total_cell.attr('data-title', sum_label.text());
                     }
                     sum_row.append(total_cell);
                     column.footers.push(total_cell);
@@ -237,9 +237,10 @@
             if (!attributes.sum) {
                 return;
             }
+            // TODO RTL
+            var label = attributes.sum + Sao.i18n.gettext(': ');
             var sum = jQuery('<label/>', {
-                text: attributes.sum,
-                'data-title': attributes.sum + Sao.i18n.gettext(': ')
+                'text': label,
             });
             var aggregate = jQuery('<span/>', {
                 'class': 'value',
