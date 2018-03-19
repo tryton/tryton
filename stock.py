@@ -295,7 +295,7 @@ class Move:
             name=name)
         # Enforce the same unit category as they are used to compute the
         # remaining quantity to receive and the quantity to invoice.
-        if isinstance(self.origin, PurchaseLine):
+        if isinstance(self.origin, PurchaseLine) and self.origin.unit:
             category = self.origin.unit.category.id
         return category
 
