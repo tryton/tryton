@@ -1,6 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from sql.conditionals import Coalesce
+from sql.operators import Equal
+
+from trytond import backend
+from trytond.model import ModelView, ModelSQL, fields, Exclude
 from trytond.pyson import Eval
 
 __all__ = ['Category']
@@ -33,7 +37,8 @@ class Category(ModelSQL, ModelView):
         super(Category, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
-            ('name_parent_uniq', Unique(t, t.name, t.parent),
+            ('name_parent_exclude',
+                Exclude(t, (t.name, Equal), (Coalesce(t.parent, -1), Equal)),
                 'The name of a party category must be unique by parent.'),
             ]
         cls._error_messages.update({
@@ -41,6 +46,16 @@ class Category(ModelSQL, ModelView):
                     '"%s" in name field.' % SEPARATOR),
                 })
         cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        table_h = TableHandler(cls, module_name)
+
+        super(Category, cls).__register__(module_name)
+
+        # Migration from 4.6: replace unique by exclude
+        table_h.drop_constraint('name_parent_uniq')
 
     @staticmethod
     def default_active():
