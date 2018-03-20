@@ -2,13 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .invoice import *
+from . import invoice
 from . import asset
 
 
 def register():
     Pool.register(
-        InvoiceLine,
-        AnalyticAccountEntry,
-        asset.Asset,
+        invoice.InvoiceLine,
+        invoice.AnalyticAccountEntry,
         module='analytic_invoice', type_='model')
+    Pool.register(
+        asset.Asset,
+        module='analytic_invoice', type_='model',
+        depends=['account_asset'])
