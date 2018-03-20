@@ -2,12 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .work import *
-from .purchase import *
+from . import work
+from . import purchase
 
 
 def register():
     Pool.register(
-        Work,
-        PurchaseLine,
+        work.Work,
         module='project_revenue', type_='model')
+    Pool.register(
+        purchase.PurchaseLine,
+        module='project_revenue', type_='model',
+        depends=['purchase'])
