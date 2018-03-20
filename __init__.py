@@ -2,15 +2,21 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from carrier import *
-from stock import *
-from sale import *
+from . import carrier
+from . import stock
+from . import sale
 
 
 def register():
     Pool.register(
-        Carrier,
-        ShipmentIn,
-        ShipmentOut,
-        Sale,
+        carrier.Carrier,
         module='carrier_percentage', type_='model')
+    Pool.register(
+        stock.ShipmentIn,
+        module='carrier_percentage', type_='model',
+        depends=['purchase_shipment_cost'])
+    Pool.register(
+        stock.ShipmentOut,
+        sale.Sale,
+        module='carrier_percentage', type_='model',
+        depends=['sale_shipment_cost'])
