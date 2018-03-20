@@ -16,6 +16,9 @@ def register():
         stock.Move,
         stock.ShipmentInternal,
         stock.Inventory,
-        stock.OrderPoint,
         account.InvoiceLine,
         module='stock_consignment', type_='model')
+    Pool.register(
+        stock.OrderPoint,
+        module='stock_consignment', type_='model',
+        depends=['stock_supply'])
