@@ -13,5 +13,8 @@ def register():
         product.PriceList,
         product.PriceListLine,
         product.PriceListLineContext,
-        sale.Line,
         module='product_price_list_dates', type_='model')
+    Pool.register(
+        sale.Line,
+        module='product_price_list_dates', type_='model',
+        depends=['sale'])
