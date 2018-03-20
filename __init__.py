@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 from . import sale
-from .stock import *
+from . import stock
 
 
 def register():
@@ -12,9 +12,12 @@ def register():
         sale.ConfigurationSaleMethod,
         sale.Sale,
         sale.SaleLine,
-        sale.Promotion,
-        ShipmentOut,
+        stock.ShipmentOut,
         module='sale_shipment_cost', type_='model')
+    Pool.register(
+        sale.Promotion,
+        module='sale_shipment_cost', type_='model',
+        depends=['sale_promotion'])
     Pool.register(
         sale.ReturnSale,
         module='sale_shipment_cost', type_='wizard')
