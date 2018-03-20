@@ -2,19 +2,31 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .account import *
-from .sale import *
-from .purchase import *
+from . import account
+from . import sale
+from . import purchase
 from . import stock
 
 
 def register():
     Pool.register(
-        TaxRuleLineTemplate,
-        TaxRuleLine,
-        InvoiceLine,
-        Sale,
-        SaleLine,
-        PurchaseLine,
-        stock.Move,
+        account.TaxRuleLineTemplate,
+        account.TaxRuleLine,
         module='account_tax_rule_country', type_='model')
+    Pool.register(
+        account.InvoiceLine,
+        module='account_tax_rule_country', type_='model',
+        depends=['account_invoice'])
+    Pool.register(
+        sale.Sale,
+        sale.SaleLine,
+        module='account_tax_rule_country', type_='model',
+        depends=['sale'])
+    Pool.register(
+        purchase.PurchaseLine,
+        module='account_tax_rule_country', type_='model',
+        depends=['purchase'])
+    Pool.register(
+        stock.Move,
+        module='account_tax_rule_country', type_='model',
+        depends=['stock'])
