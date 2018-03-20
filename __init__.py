@@ -2,29 +2,32 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .commission import *
-from .invoice import *
-from .sale import *
-from .product import *
+from . import commission
+from . import invoice
+from . import sale
+from . import product
 from . import party
 
 
 def register():
     Pool.register(
-        Plan,
-        PlanLines,
-        Agent,
-        Commission,
-        CreateInvoiceAsk,
-        Invoice,
-        InvoiceLine,
-        Sale,
-        SaleLine,
-        Template,
-        Template_Agent,
-        Product,
+        commission.Plan,
+        commission.PlanLines,
+        commission.Agent,
+        commission.Commission,
+        commission.CreateInvoiceAsk,
+        invoice.Invoice,
+        invoice.InvoiceLine,
+        product.Template,
+        product.Template_Agent,
+        product.Product,
         module='commission', type_='model')
     Pool.register(
-        CreateInvoice,
+        sale.Sale,
+        sale.SaleLine,
+        module='commission', type_='model',
+        depends=['sale'])
+    Pool.register(
+        commission.CreateInvoice,
         party.PartyReplace,
         module='commission', type_='wizard')
