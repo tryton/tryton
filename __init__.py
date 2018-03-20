@@ -19,6 +19,7 @@ def register():
         module='stock_location_move', type_='model')
     Pool.register(
         stock.Supply,
-        module='stock_location_move', type_='wizard')
+        module='stock_location_move', type_='wizard',
+        depends=['stock_supply'])
     Pool.register(
         module='stock_location_move', type_='report')
