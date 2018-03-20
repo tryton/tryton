@@ -2,17 +2,20 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .product import *
-from .location import *
+from . import product
+from . import location
 from . import production
 
 
 def register():
     Pool.register(
-        Product,
-        ProductLocation,
-        production.Production,
-        Move,
-        ShipmentIn,
-        ShipmentOutReturn,
+        product.Product,
+        location.ProductLocation,
+        location.Move,
+        location.ShipmentIn,
+        location.ShipmentOutReturn,
         module='stock_product_location', type_='model')
+    Pool.register(
+        production.Production,
+        module='stock_product_location', type_='model',
+        depends=['production'])
