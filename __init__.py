@@ -2,18 +2,19 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .dunning import *
-from .account import *
+from . import dunning
+from . import account
 
 
 def register():
     Pool.register(
-        Fee,
-        Level,
-        Dunning,
-        FeeDunningLevel,
-        Move,
+        dunning.Fee,
+        dunning.Level,
+        dunning.Dunning,
+        dunning.FeeDunningLevel,
+        account.Move,
         module='account_dunning_fee', type_='model')
     Pool.register(
-        Letter,
-        module='account_dunning_fee', type_='report')
+        dunning.Letter,
+        module='account_dunning_fee', type_='report',
+        depends=['account_dunning_letter'])
