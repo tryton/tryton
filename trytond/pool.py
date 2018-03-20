@@ -81,12 +81,13 @@ class Pool(object):
         '''
         module = kwargs['module']
         type_ = kwargs['type_']
+        depends = set(kwargs.get('depends', []))
         assert type_ in ('model', 'report', 'wizard')
         for cls in classes:
             mpool = Pool.classes[type_].setdefault(module, [])
             assert cls not in mpool, cls
             assert issubclass(cls.__class__, PoolMeta), cls
-            mpool.append(cls)
+            mpool.append((cls, depends))
 
     @staticmethod
     def register_mixin(mixin, classinfo, module):
@@ -202,22 +203,24 @@ class Pool(object):
         '''
         return self._pool[self.database_name][type].iteritems()
 
-    def fill(self, module):
+    def fill(self, module, modules):
         '''
-        Fill the pool with the registered class from the module.
+        Fill the pool with the registered class from the module for the
+        activated modules.
         Return a list of classes for each type in a dictionary.
         '''
         classes = {}
         for type_ in self.classes.keys():
             classes[type_] = []
-            for cls in self.classes[type_].get(module, []):
+            for cls, depends in self.classes[type_].get(module, []):
+                if not depends.issubset(modules):
+                    continue
                 try:
                     previous_cls = self.get(cls.__name__, type=type_)
                     cls = type(cls.__name__, (cls, previous_cls), {})
                 except KeyError:
                     pass
-                if not issubclass(cls, PoolBase):
-                    continue
+                assert issubclass(cls, PoolBase), cls
                 self.add(cls, type=type_)
                 classes[type_].append(cls)
         return classes
@@ -252,4 +255,4 @@ class Pool(object):
 def isregisteredby(obj, module, type_='model'):
     pool = Pool()
     classes = pool.classes[type_]
-    return any(issubclass(obj, cls) for cls in classes.get(module, []))
+    return any(issubclass(obj, cls) for cls, _ in classes.get(module, []))

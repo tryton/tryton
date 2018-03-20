@@ -11,9 +11,11 @@ The Pool store the instances of models, wizards and reports per database.
 
 Static methods:
 
-.. staticmethod:: Pool.register(klass, ..., type_, module)
+.. staticmethod:: Pool.register(klass, ..., type_, module[, depends])
 
     Register the classes of type (`model`, `report` or `wizard`) for the module.
+    If ``depends`` is set, the registration happens only if all the modules are
+    activated.
 
 .. staticmethod:: Pool.register_mixin(mixin, classinfo, module)
 
@@ -44,10 +46,11 @@ Instance methods:
 
     Return an interator over instances names.
 
-.. method:: Pool.fill(module)
+.. method:: Pool.fill(module, modules)
 
-    Fill the pool with the registered class from the module and return a list
-    of classes for each type in a dictionary.
+    Fill the pool with the registered class from the module and for the
+    activated modules and return a list of classes for each type in a
+    dictionary.
 
 .. method:: Pool.setup([classes])
 

@@ -1,3 +1,4 @@
+* Add depends on Pool.register
 * Add Exclude constraint
 * Allow to perform unaccented searches on Char fields
 * Always raise exception in table handler

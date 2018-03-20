@@ -220,13 +220,14 @@ def load_module_graph(graph, pool, update=None, lang=None):
         cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
                 where=ir_module.name.in_(modules)))
         module2state = dict(cursor.fetchall())
+        modules = set(modules)
 
         for package in graph:
             module = package.name
             if module not in MODULES:
                 continue
             logger.info(module)
-            classes = pool.fill(module)
+            classes = pool.fill(module, modules)
             if update:
                 pool.setup(classes)
             package_state = module2state.get(module, 'not activated')
@@ -249,8 +250,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
                         models_to_update_history.add(model.__name__)
 
                 # Instanciate a new parser for the package:
-                tryton_parser = convert.TrytondXmlHandler(pool=pool,
-                    module=module, module_state=package_state)
+                tryton_parser = convert.TrytondXmlHandler(
+                    pool, module, package_state, modules)
 
                 for filename in package.info.get('xml', []):
                     filename = filename.replace('/', os.sep)
