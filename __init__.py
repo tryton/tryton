@@ -15,8 +15,11 @@ def register():
         stock.ShipmentInReturn,
         stock.ShipmentOut,
         stock.ShipmentOutReturn,
-        stock.Package,
         module='stock_shipment_measurements', type_='model')
+    Pool.register(
+        stock.Package,
+        module='stock_shipment_measurements', type_='model',
+        depends=['stock_package'])
     Pool.register(
         module='stock_shipment_measurements', type_='wizard')
     Pool.register(
