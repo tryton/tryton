@@ -2,15 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from account import *
-from party import *
+from . import account
+from . import party
 
 
 def register():
     Pool.register(
-        Configuration,
-        ConfigurationDefaultCreditLimitAmount,
-        Level,
-        Party,
-        PartyCreditLimitAmount,
+        account.Configuration,
+        account.ConfigurationDefaultCreditLimitAmount,
+        party.Party,
+        party.PartyCreditLimitAmount,
         module='account_credit_limit', type_='model')
+    Pool.register(
+        account.Level,
+        module='account_credit_limit', type_='model',
+        depends=['account_dunning'])
