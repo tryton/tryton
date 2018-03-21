@@ -6,7 +6,8 @@ from sql import Cast, Literal, Null
 from sql.functions import Substring, Position
 from sql.conditionals import Coalesce
 
-from .field import Field, size_validate, instanciate_values, domain_validate
+from .field import (Field, size_validate, instanciate_values, domain_validate,
+    search_order_validate, context_validate)
 from ...pool import Pool
 from ...tools import grouped_slice
 from ...transaction import Transaction
@@ -19,10 +20,10 @@ class Many2Many(Field):
     _type = 'many2many'
 
     def __init__(self, relation_name, origin, target, string='', order=None,
-            datetime_field=None, size=None, help='', required=False,
-            readonly=False, domain=None, filter=None, states=None,
-            on_change=None, on_change_with=None, depends=None, context=None,
-            loading='lazy'):
+            datetime_field=None, size=None, search_order=None,
+            search_context=None, help='', required=False, readonly=False,
+            domain=None, filter=None, states=None, on_change=None,
+            on_change_with=None, depends=None, context=None, loading='lazy'):
         '''
         :param relation_name: The name of the relation model
             or the name of the target model for ModelView only.
@@ -33,6 +34,8 @@ class Many2Many(Field):
             allowing to specify the order of result
         :param datetime_field: The name of the field that contains the datetime
             value to read the target records.
+        :param search_order: The order to use when searching for a record
+        :param search_context: The context to use when searching for a record
         :param filter: A domain to filter target records.
         '''
         if datetime_field:
@@ -51,6 +54,10 @@ class Many2Many(Field):
         self.datetime_field = datetime_field
         self.__size = None
         self.size = size
+        self.__search_order = None
+        self.search_order = search_order
+        self.__search_context = None
+        self.search_context = search_context or {}
         self.__filter = None
         self.filter = filter
 
@@ -64,6 +71,24 @@ class Many2Many(Field):
         self.__size = value
 
     size = property(_get_size, _set_size)
+
+    @property
+    def search_order(self):
+        return self.__search_order
+
+    @search_order.setter
+    def search_order(self, value):
+        search_order_validate(value)
+        self.__search_order = value
+
+    @property
+    def search_context(self):
+        return self.__search_context
+
+    @search_context.setter
+    def search_context(self, value):
+        context_validate(value)
+        self.__search_context = value
 
     @property
     def filter(self):

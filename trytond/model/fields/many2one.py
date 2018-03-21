@@ -5,7 +5,7 @@ from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
 
-from .field import Field
+from .field import Field, search_order_validate, context_validate
 from ...pool import Pool
 from ...tools import reduce_ids
 from ...transaction import Transaction
@@ -20,9 +20,10 @@ class Many2One(Field):
 
     def __init__(self, model_name, string='', left=None, right=None,
             ondelete='SET NULL', datetime_field=None, target_search='join',
-            help='', required=False, readonly=False, domain=None, states=None,
-            select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading='eager'):
+            search_order=None, search_context=None, help='', required=False,
+            readonly=False, domain=None, states=None, select=False,
+            on_change=None, on_change_with=None, depends=None, context=None,
+            loading='eager'):
         '''
         :param model_name: The name of the target model.
         :param left: The name of the field to store the left value for
@@ -35,6 +36,8 @@ class Many2One(Field):
         :param datetime_field: The name of the field that contains the datetime
             value to read the target record.
         :param target_search: The kind of target search 'subquery' or 'join'
+        :param search_order: The order to use when searching for a record
+        :param search_context: The context to use when searching for a record
         '''
         self.__required = required
         if ondelete not in ('CASCADE', 'RESTRICT', 'SET NULL'):
@@ -55,6 +58,10 @@ class Many2One(Field):
         self.datetime_field = datetime_field
         assert target_search in ['subquery', 'join']
         self.target_search = target_search
+        self.__search_order = None
+        self.search_order = search_order
+        self.__search_context = None
+        self.search_context = search_context or {}
     __init__.__doc__ += Field.__init__.__doc__
 
     def __get_required(self):
@@ -66,6 +73,24 @@ class Many2One(Field):
             self.ondelete = 'RESTRICT'
 
     required = property(__get_required, __set_required)
+
+    @property
+    def search_order(self):
+        return self.__search_order
+
+    @search_order.setter
+    def search_order(self, value):
+        search_order_validate(value)
+        self.__search_order = value
+
+    @property
+    def search_context(self):
+        return self.__search_context
+
+    @search_context.setter
+    def search_context(self, value):
+        context_validate(value)
+        self.__search_context = value
 
     def get_target(self):
         'Return the target Model'

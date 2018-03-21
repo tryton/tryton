@@ -70,6 +70,13 @@ def size_validate(value):
                 'size must return integer'
 
 
+def search_order_validate(value):
+    if value is not None:
+        assert isinstance(value, (list, PYSON)), 'search_order must be PYSON'
+        if hasattr(value, 'types'):
+            assert value.types() == set([list]), 'search_order must be PYSON'
+
+
 def _set_value(record, field):
     try:
         field, nested = field.split('.', 1)

@@ -215,6 +215,8 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                     'selection_change_with',
                     'domain',
                     'converter',
+                    'search_order',
+                    'search_context',
                     ):
                 if getattr(cls._fields[field], arg, None) is not None:
                     value = getattr(cls._fields[field], arg)
@@ -330,7 +332,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
 
             # convert attributes into pyson
             for attr in ('states', 'domain', 'context', 'digits', 'size',
-                    'add_remove', 'format'):
+                    'add_remove', 'format', 'search_order', 'search_context'):
                 if attr in res[field]:
                     res[field][attr] = encoder.encode(res[field][attr])
 

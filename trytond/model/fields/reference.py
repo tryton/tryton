@@ -5,7 +5,7 @@ import warnings
 from sql import Cast, Literal, Query, Expression
 from sql.functions import Substring, Position
 
-from .field import Field
+from .field import Field, search_order_validate, context_validate
 from .selection import SelectionMixin
 from ...transaction import Transaction
 from ...pool import Pool
@@ -20,15 +20,18 @@ class Reference(Field, SelectionMixin):
     _sql_type = 'VARCHAR'
 
     def __init__(self, string='', selection=None, selection_change_with=None,
-            help='', required=False, readonly=False, domain=None, states=None,
-            select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading='lazy', datetime_field=None):
+            search_order=None, search_context=None, help='', required=False,
+            readonly=False, domain=None, states=None, select=False,
+            on_change=None, on_change_with=None, depends=None, context=None,
+            loading='lazy', datetime_field=None):
         '''
         :param selection: A list or a function name that returns a list.
             The list must be a list of tuples. First member is an internal name
             of model and the second is the user name of model.
         :param datetime_field: The name of the field that contains the datetime
             value to read the target records.
+        :param search_order: The order to use when searching for a record
+        :param search_context: The context to use when searching for a record
         '''
         if datetime_field:
             if depends:
@@ -47,7 +50,30 @@ class Reference(Field, SelectionMixin):
                 'use the depends decorator',
                 DeprecationWarning, stacklevel=2)
             self.selection_change_with |= set(selection_change_with)
+        self.__search_order = None
+        self.search_order = search_order
+        self.__search_context = None
+        self.search_context = search_context or {}
+
     __init__.__doc__ += Field.__init__.__doc__
+
+    @property
+    def search_order(self):
+        return self.__search_order
+
+    @search_order.setter
+    def search_order(self, value):
+        search_order_validate(value)
+        self.__search_order = value
+
+    @property
+    def search_context(self):
+        return self.__search_context
+
+    @search_context.setter
+    def search_context(self, value):
+        context_validate(value)
+        self.__search_context = value
 
     def set_rpc(self, model):
         super(Reference, self).set_rpc(model)
