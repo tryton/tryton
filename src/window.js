@@ -470,6 +470,7 @@
             this.model_name = model;
             this.domain = kwargs.domain || [];
             this.context = kwargs.context || {};
+            this.order = kwargs.order || null;
             this.view_ids = kwargs.view_ids;
             this.views_preload = views_preload;
             this.sel_multi = kwargs.sel_multi;
@@ -512,6 +513,7 @@
                 mode: ['tree'],
                 context: this.context,
                 domain: this.domain,
+                order: this.order,
                 view_ids: kwargs.view_ids,
                 views_preload: views_preload,
                 row_activate: this.activate.bind(this),
@@ -558,6 +560,7 @@
                 var screen = new Sao.Screen(this.model_name, {
                     domain: this.domain,
                     context: this.context,
+                    order: this.order,
                     mode: ['form'],
                     view_ids: view_ids,
                     views_preload: this.views_preload,
@@ -1521,7 +1524,7 @@
                 }, this.session).done(function(exports) {
                     var arr = [];
                     exports.forEach(function(o) {
-                        for (var i = 0; i < o.export_fields.length; 
+                        for (var i = 0; i < o.export_fields.length;
                             arr.push(o.export_fields[i++]));
                     });
                     Sao.rpc({

@@ -1411,6 +1411,15 @@
                 record.expr_eval(this.description.context || {}));
             return context;
         },
+        get_search_context: function(record) {
+            var context = this.get_context(record);
+            jQuery.extend(context,
+                record.expr_eval(this.description.search_context || {}));
+            return context;
+        },
+        get_search_order: function(record) {
+            return record.expr_eval(this.description.search_order || null);
+        },
         get_domains: function(record, pre_validate) {
             var inversion = new Sao.common.DomainInversion();
             var screen_domain = inversion.domain_inversion(

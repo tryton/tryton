@@ -2261,7 +2261,8 @@ function eval_pyson(value){
             if (model) {
                 var dom;
                 var domain = this.field().get_domain(record);
-                var context = this.field().get_context(record);
+                var context = this.field().get_search_context(record);
+                var order = this.field().get_search_order(record);
                 var text = this.entry.val();
                 callback = function(result) {
                     if (!jQuery.isEmptyObject(result)) {
@@ -2277,6 +2278,7 @@ function eval_pyson(value){
                             sel_multi: false,
                             context: context,
                             domain: domain,
+                            order: order,
                             view_ids: (this.attributes.view_ids ||
                                 '').split(','),
                             views_preload: (this.attributes.views || {}),
@@ -2363,7 +2365,8 @@ function eval_pyson(value){
                             .required)) {
                     var dom;
                     var domain = this.field().get_domain(record);
-                    var context = this.field().get_context(record);
+                    var context = this.field().get_search_context(record);
+                    var order = this.field().get_search_order(record);
 
                     var callback = function(result) {
                         if (!jQuery.isEmptyObject(result)) {
@@ -2381,6 +2384,7 @@ function eval_pyson(value){
                                 sel_multi: false,
                                 context: context,
                                 domain: domain,
+                                order: order,
                                 view_ids: (this.attributes.view_ids ||
                                     '').split(','),
                                 views_preload: (this.attributes.views ||
@@ -2860,7 +2864,7 @@ function eval_pyson(value){
             }
             this.view.set_value();
             var domain = this.field().get_domain(this.record());
-            var context = this.field().get_context(this.record());
+            var context = this.field().get_search_context(this.record());
             domain = [domain,
                 this.record().expr_eval(this.attributes.add_remove)];
             var removed_ids = this.field().get_removed_ids(this.record());
@@ -2886,11 +2890,13 @@ function eval_pyson(value){
                 this.wid_text.val('');
             }.bind(this);
             var parser = new Sao.common.DomainParser();
+            var order = this.field().get_search_order(this.record());
             var win = new Sao.Window.Search(this.attributes.relation,
                     callback, {
                         sel_multi: true,
                         context: context,
                         domain: domain,
+                        order: order,
                         view_ids: (this.attributes.view_ids ||
                                 '').split(','),
                         views_preload: this.attributes.views || {},
@@ -2959,7 +2965,8 @@ function eval_pyson(value){
                         }
 
                         var domain = field.get_domain(first);
-                        var context = field.get_context(first);
+                        var context = field.get_search_context(first);
+                        var order = field.get_search_order(first);
 
                         var callback = function(result) {
                             if (!jQuery.isEmptyObject(result)) {
@@ -2972,6 +2979,7 @@ function eval_pyson(value){
                                     sel_multi: true,
                                     context: context,
                                     domain: domain,
+                                    order: order,
                                     search_filter: '',
                                     title: this.attributes.string
 
@@ -3224,7 +3232,8 @@ function eval_pyson(value){
         add: function() {
             var dom;
             var domain = this.field().get_domain(this.record());
-            var context = this.field().get_context(this.record());
+            var context = this.field().get_search_context(this.record());
+            var order = this.field().get_search_order(this.record());
             var value = this.entry.val();
 
             var callback = function(result) {
@@ -3245,6 +3254,7 @@ function eval_pyson(value){
                         sel_multi: true,
                         context: context,
                         domain: domain,
+                        order: order,
                         view_ids: (this.attributes.view_ids ||
                             '').split(','),
                         views_preload: this.attributes.views || {},
