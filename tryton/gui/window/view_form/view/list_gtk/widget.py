@@ -560,11 +560,8 @@ class M2O(GenericText):
                 callback()
             return
 
-        relation = record[self.attrs['name']].attrs['relation']
-        domain = record[self.attrs['name']].domain_get(record)
-        context = record[self.attrs['name']].get_context(record)
-        win = self.search_remote(record, relation, text, domain=domain,
-            context=context, callback=callback)
+        field = record[self.attrs['name']]
+        win = self.search_remote(record, field, text, callback=callback)
         if len(win.screen.group) == 1:
             win.response(None, gtk.RESPONSE_OK)
         else:
@@ -627,9 +624,9 @@ class M2O(GenericText):
         elif not changed:
             obj_id = field.get(record)
         else:
-            self.search_remote(record, relation, text, domain=domain,
-                context=context, callback=callback).show()
+            self.search_remote(record, field, text, callback=callback).show()
             return
+
         screen = Screen(relation, domain=domain, context=context,
             mode=['form'], view_ids=self.attrs.get('view_ids', '').split(','),
             exclude_field=field.attrs.get('relation_field'))
@@ -649,10 +646,11 @@ class M2O(GenericText):
             WinForm(screen, open_callback, new=True, save_current=True,
                 title=field.attrs.get('string'), rec_name=text)
 
-    def search_remote(self, record, relation, text, domain=None,
-            context=None, callback=None):
-        field = record.group.fields[self.attrs['name']]
+    def search_remote(self, record, field, text, callback=None):
         relation = field.attrs['relation']
+        domain = field.domain_get(record)
+        context = field.get_search_context(record)
+        order = field.get_search_order(record)
         access = common.MODELACCESS[relation]
         create_access = self.attrs.get('create', True) and access['create']
 
@@ -665,7 +663,7 @@ class M2O(GenericText):
                 callback()
         win = WinSearch(relation, search_callback, sel_multi=False,
             context=context, domain=domain,
-            view_ids=self.attrs.get('view_ids', '').split(','),
+            order=order, view_ids=self.attrs.get('view_ids', '').split(','),
             new=create_access, title=self.attrs.get('string'))
         win.screen.search_filter(quote(text.decode('utf-8')))
         return win

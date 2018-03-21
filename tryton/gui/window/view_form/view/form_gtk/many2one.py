@@ -119,7 +119,8 @@ class Many2One(Widget):
                         or self.field.get_state_attrs(
                             self.record)['required'])):
                 domain = self.field.domain_get(self.record)
-                context = self.field.get_context(self.record)
+                context = self.field.get_search_context(self.record)
+                order = self.field.get_search_order(self.record)
                 text = self.wid_text.get_text().decode('utf-8')
 
                 def callback(result):
@@ -132,7 +133,7 @@ class Many2One(Widget):
                     self.changed = True
 
                 win = WinSearch(model, callback, sel_multi=False,
-                    context=context, domain=domain,
+                    context=context, domain=domain, order=order,
                     view_ids=self.attrs.get('view_ids', '').split(','),
                     views_preload=self.attrs.get('views', {}),
                     new=self.create_access,
@@ -209,7 +210,8 @@ class Many2One(Widget):
             return
         if not self._readonly:
             domain = self.field.domain_get(self.record)
-            context = self.field.get_context(self.record)
+            context = self.field.get_search_context(self.record)
+            order = self.field.get_search_order(self.record)
             text = self.wid_text.get_text().decode('utf-8')
 
             def callback(result):
@@ -219,7 +221,7 @@ class Many2One(Widget):
                 self.focus_out = True
                 self.changed = True
             win = WinSearch(model, callback, sel_multi=False,
-                context=context, domain=domain,
+                context=context, domain=domain, order=order,
                 view_ids=self.attrs.get('view_ids', '').split(','),
                 views_preload=self.attrs.get('views', {}),
                 new=self.create_access, title=self.attrs.get('string'))

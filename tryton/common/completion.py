@@ -44,8 +44,9 @@ def update_completion(entry, record, field, model, domain=None):
             return False
         if domain is None:
             domain = field.domain_get(record)
-        context = field.get_context(record)
+        context = field.get_search_context(record)
         domain = [('rec_name', 'ilike', '%' + search_text + '%'), domain]
+        order = field.get_search_order(record)
 
         def callback(results):
             try:
@@ -62,7 +63,7 @@ def update_completion(entry, record, field, model, domain=None):
             entry.emit('changed')
         try:
             RPCExecute('model', model, 'search_read', domain, 0,
-                CONFIG['client.limit'], None, ['rec_name'], context=context,
+                CONFIG['client.limit'], order, ['rec_name'], context=context,
                 process_exception=False, callback=callback)
         except Exception:
             logging.warn(

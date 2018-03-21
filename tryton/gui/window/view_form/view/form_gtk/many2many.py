@@ -148,7 +148,8 @@ class Many2Many(Widget):
         add_remove = self.record.expr_eval(self.attrs.get('add_remove'))
         if add_remove:
             domain = [domain, add_remove]
-        context = self.field.get_context(self.record)
+        context = self.field.get_search_context(self.record)
+        order = self.field.get_search_order(self.record)
         value = self.wid_text.get_text().decode('utf-8')
 
         self.focus_out = False
@@ -162,7 +163,7 @@ class Many2Many(Widget):
             self.screen.set_cursor()
             self.wid_text.set_text('')
         win = WinSearch(self.attrs['relation'], callback, sel_multi=True,
-            context=context, domain=domain,
+            context=context, domain=domain, order=order,
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
             new=self.attrs.get('create', True),

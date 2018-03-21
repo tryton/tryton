@@ -14,8 +14,8 @@ _ = gettext.gettext
 class WinSearch(NoModal):
 
     def __init__(self, model, callback, sel_multi=True, context=None,
-            domain=None, view_ids=None, views_preload=None, new=True,
-            title=''):
+            domain=None, order=None, view_ids=None,
+            views_preload=None, new=True, title=''):
         NoModal.__init__(self)
         if view_ids is None:
             view_ids = []
@@ -23,6 +23,7 @@ class WinSearch(NoModal):
             views_preload = {}
         self.domain = domain or []
         self.context = context or {}
+        self.order = order
         self.view_ids = view_ids
         self.views_preload = views_preload
         self.sel_multi = sel_multi
@@ -62,7 +63,7 @@ class WinSearch(NoModal):
         scrollwindow.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.win.vbox.pack_start(scrollwindow, expand=True, fill=True)
 
-        self.screen = Screen(model, domain=domain, mode=['tree'],
+        self.screen = Screen(model, domain=domain, mode=['tree'], order=order,
             context=context, view_ids=view_ids, views_preload=views_preload,
             row_activate=self.sig_activate, readonly=True)
         self.view = self.screen.current_view
@@ -120,7 +121,7 @@ class WinSearch(NoModal):
             # Remove first tree view as mode if form only
             view_ids = self.view_ids[1:]
             screen = Screen(self.model_name, domain=self.domain,
-                context=self.context, mode=['form'],
+                context=self.context, order=self.order, mode=['form'],
                 view_ids=view_ids, views_preload=self.views_preload)
 
             def callback(result):

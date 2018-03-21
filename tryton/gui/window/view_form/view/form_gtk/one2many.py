@@ -393,14 +393,16 @@ class One2Many(Widget):
                 search_set()
 
             domain = field.domain_get(first)
-            context = field.get_context(first)
+            context = field.get_search_context(first)
+            order = field.get_search_order(first)
 
             def callback(result):
                 if result:
                     product[field.name] = result
 
             win_search = WinSearch(relation, callback, sel_multi=True,
-                context=context, domain=domain, title=self.attrs.get('string'))
+                context=context, domain=domain, order=order,
+                title=self.attrs.get('string'))
             win_search.win.connect('destroy', search_set)
             win_search.screen.search_filter()
             win_search.show()
@@ -471,7 +473,7 @@ class One2Many(Widget):
             return
         self.view.set_value()
         domain = self.field.domain_get(self.record)
-        context = self.field.get_context(self.record)
+        context = self.field.get_search_context(self.record)
         domain = [domain, self.record.expr_eval(self.attrs.get('add_remove'))]
         removed_ids = self.field.get_removed_ids(self.record)
         domain = ['OR', domain, ('id', 'in', removed_ids)]
@@ -492,8 +494,9 @@ class One2Many(Widget):
             self.screen.set_cursor()
             self.wid_text.set_text('')
 
+        order = self.field.get_search_order(self.record)
         win = WinSearch(self.attrs['relation'], callback, sel_multi=True,
-            context=context, domain=domain,
+            context=context, domain=domain, order=order,
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
             new=self.but_new.get_property('sensitive'),

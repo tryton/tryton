@@ -62,6 +62,15 @@ class Field(object):
         context.update(record.expr_eval(self.attrs.get('context', {})))
         return context
 
+    def get_search_context(self, record):
+        context = self.get_context(record)
+        context.update(record.expr_eval(self.attrs.get('search_context', {})))
+        return context
+
+    def get_search_order(self, record):
+        order = record.expr_eval(self.attrs.get('search_order', None))
+        return order
+
     def _is_empty(self, record):
         return not self.get_eval(record)
 
