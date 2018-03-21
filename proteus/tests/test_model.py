@@ -346,3 +346,13 @@ class TestModel(ProteusTestCase):
             'name': 'Foo',
             }]})
         self.assert_([x for x in test.groups if x.name == 'Foo'])
+
+    def test_model_list_find(self):
+        User = Model.get('res.user')
+        Group = Model.get('res.group')
+
+        test = User()
+        groups = test.groups.find(order=[('id', 'ASC')])
+        all_groups = Group.find([], order=[('id', 'ASC')])
+
+        self.assertListEqual(groups, all_groups)

@@ -498,6 +498,8 @@ class ModelList(list):
         self.domain = definition.get('domain', [])
         self.context = definition.get('context')
         self.add_remove = definition.get('add_remove')
+        self.search_order = definition.get('search_order', 'null')
+        self.search_context = definition.get('search_context', '{}')
         self.record_removed = set()
         self.record_deleted = set()
         result = super(ModelList, self).__init__(sequence)
@@ -617,7 +619,11 @@ class ModelList(list):
         add_remove_domain = (decoder.decode(self.add_remove)
             if self.add_remove else [])
         new_domain = [field_domain, add_remove_domain, condition]
-        with Relation._config.set_context(self._get_context()):
+
+        context = self._get_context()
+        context.update(decoder.decode(self.search_context))
+        order = order if order else decoder.decode(self.search_order)
+        with Relation._config.set_context(context):
             return Relation.find(new_domain, offset, limit, order)
 
     def set_sequence(self, field='sequence'):
