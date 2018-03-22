@@ -12,9 +12,11 @@ class ProductAttributeSet(ModelSQL, ModelView):
     "Product Attribute Set"
     __metaclass__ = PoolMeta
     __name__ = 'product.attribute.set'
-    name = fields.Char('Name', required=True, translate=True)
+    name = fields.Char('Name', required=True, translate=True,
+        help="The main identifier of product attribute set.")
     attributes = fields.Many2Many('product.attribute-product.attribute-set',
-        'attribute_set', 'attribute', 'Attributes')
+        'attribute_set', 'attribute', 'Attributes',
+        help="Add attributes to the set.")
 
 
 class ProductAttribute(DictSchemaMixin, ModelSQL, ModelView):
@@ -22,7 +24,8 @@ class ProductAttribute(DictSchemaMixin, ModelSQL, ModelView):
     __metaclass__ = PoolMeta
     __name__ = 'product.attribute'
     sets = fields.Many2Many('product.attribute-product.attribute-set',
-        'attribute', 'attribute_set', 'Sets')
+        'attribute', 'attribute_set', 'Sets',
+        help="Add sets to the attribute.")
 
 
 class ProductAttributeAttributeSet(ModelSQL):
@@ -38,7 +41,8 @@ class ProductAttributeAttributeSet(ModelSQL):
 class Template:
     __metaclass__ = PoolMeta
     __name__ = 'product.template'
-    attribute_set = fields.Many2One('product.attribute.set', 'Attribute Set')
+    attribute_set = fields.Many2One('product.attribute.set', 'Attribute Set',
+        help="Select a set of attributes to apply on the variants.")
 
 
 class Product:
@@ -53,4 +57,5 @@ class Product:
             'readonly': (~Eval('attribute_set')
                 & ~Eval('_parent_template', {}).get('attribute_set')),
             },
-        depends=['attribute_set'])
+        depends=['attribute_set'],
+        help="Add attributes to the variant.")
