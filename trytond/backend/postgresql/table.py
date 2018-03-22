@@ -154,6 +154,20 @@ class TableHandler(TableHandlerInterface):
                 (self.table_name, self.table_schema))
             self._constraints = [c for c, in cursor.fetchall()]
 
+            # add nonstandard exclude constraint
+            cursor.execute('SELECT c.conname '
+                'FROM pg_namespace nc, '
+                    'pg_namespace nr, '
+                    'pg_constraint c, '
+                    'pg_class r '
+                'WHERE nc.oid = c.connamespace AND nr.oid = r.relnamespace '
+                    'AND c.conrelid = r.oid '
+                    "AND c.contype = 'x' "  # exclude type
+                    "AND r.relkind IN ('r', 'p') "
+                    'AND r.relname = %s AND nr.nspname = %s',
+                    (self.table_name, self.table_schema))
+            self._constraints.extend((c for c, in cursor.fetchall()))
+
             cursor.execute('SELECT k.column_name, r.delete_rule '
                 'FROM information_schema.key_column_usage AS k '
                 'JOIN information_schema.referential_constraints AS r '
