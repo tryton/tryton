@@ -351,7 +351,6 @@ function eval_pyson(value){
                         var container = this.containers[j];
                         container.resize();
                     }
-                    Sao.View.resize(this.el);
                 }.bind(this));
         },
         set_value: function() {
@@ -769,10 +768,8 @@ function eval_pyson(value){
                     'href': '#' + tab_id
                 })
                 .append(img)
-                .append(text)
-                .on('shown.bs.tab', function() {
-                    Sao.View.resize(tab);
-                })).appendTo(this.nav);
+                .append(text))
+                .appendTo(this.nav);
             pane.html(tab).appendTo(this.panes);
             if (!this.selected) {
                 // Can not use .tab('show')

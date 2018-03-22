@@ -61,29 +61,4 @@
                 return new Sao.View.Calendar(screen, xml);
         }
     };
-
-    Sao.View.resize = function(el) {
-        // Let the browser compute the table size with the fixed layout
-        // then set this size to the treeview to allow scroll on overflow
-        // and set the table layout to auto to get the width from the content.
-        if (!el) {
-            el = jQuery(document);
-        }
-        el.find('.treeview').each(function() {
-            var treeview = jQuery(this);
-            treeview.css('width', '100%');
-            treeview.children('.tree').css('table-layout', 'fixed');
-        });
-        el.find('.treeview').each(function() {
-            var treeview = jQuery(this);
-            if (treeview.width()) {
-                treeview.css('width', treeview.width());
-                treeview.children('.tree').css('table-layout', 'auto');
-            }
-        });
-    };
-    jQuery(window).resize(function() {
-        Sao.View.resize();
-    });
-
 }());

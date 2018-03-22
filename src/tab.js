@@ -380,9 +380,6 @@
             id: tab.id
         }).html(tab.el)
         .appendTo(tabcontent);
-        tab_link.on('shown.bs.tab', function() {
-            Sao.View.resize(tab.el);
-        });
         tab_link.tab('show');
         tabs.trigger('ready');
     };

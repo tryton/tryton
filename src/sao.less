@@ -83,12 +83,16 @@ img.icon {
 
     & > table.tree {
         width: 100%;
+        table-layout: fixed;
 
-        & th.selection, td.selection {
+        & col.selection-state, col.favorite {
+            width: 30px;
+        }
+
+        & th.selection-state, td.selection-state {
             & > input {
                 .center-block();
             }
-            width: 30px;
         }
         & > thead > tr > th {
             & > label.sortable {
@@ -96,7 +100,6 @@ img.icon {
             }
             overflow: hidden;
             text-overflow: ellipsis;
-            min-width: 30px;
             text-align: center;
             &.char, &.text, &.many2one, &.one2one, &.date, &.time, &.selection,
             &.reference, &.url, &.email, &.callto, &.sip {
@@ -134,6 +137,13 @@ img.icon {
     & td {
         white-space: nowrap;
         text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    & td.edited {
+        /* We have to define an overflow:visible in order for the
+        completion widget to be shown */
+        overflow: visible;
+        padding: 0 0;
     }
     & td > .column-text {
         white-space: pre;
@@ -150,6 +160,13 @@ img.icon {
     }
     & label.editable {
         font-style: italic;
+    }
+
+    & .btn {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: -@table-condensed-cell-padding;
+        margin-bottom: -@table-condensed-cell-padding;
     }
 }
 
@@ -315,10 +332,6 @@ input.column-boolean {
 }
 
 @media screen and (max-width: @screen-xs-max) {
-    .treeview.responsive {
-        /* Override the width from Sao.View.resize */
-        width: 100% !important;
-    }
     table.responsive,
     table.responsive > thead,
     table.responsive > thead > tr,
