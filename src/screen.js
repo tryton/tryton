@@ -900,7 +900,11 @@
             }.bind(this));
         },
         context: function() {
-            return this.group.context();
+            var context = this.group.context();
+            if ( this.context_screen ){
+                context.context_model = this.context_screen.model_name;
+            }
+            return context;
         },
         set_group: function(group) {
             var fields = {};
