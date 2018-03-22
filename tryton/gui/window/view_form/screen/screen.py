@@ -329,7 +329,10 @@ class Screen(SignalEvent):
 
     @property
     def context(self):
-        return self.group.context
+        context = self.group.context
+        if self.context_screen:
+            context['context_model'] = self.context_screen.model_name
+        return context
 
     def __get_group(self):
         return self.__group
