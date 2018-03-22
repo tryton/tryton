@@ -2239,8 +2239,6 @@ function eval_pyson(value){
                 var screen = this.get_screen();
                 var m2o_id =
                     this.id_from_value(record.field_get(this.field_name));
-                screen.new_group();
-                screen.group.load([m2o_id]);
                 callback = function(result) {
                     if (result) {
                         var rec_name_prm = screen.current_record.rec_name();
@@ -2252,10 +2250,13 @@ function eval_pyson(value){
                         }.bind(this));
                     }
                 };
-                win = new Sao.Window.Form(screen, callback.bind(this), {
-                    save_current: true,
-                    title: this.attributes.string
-                });
+                screen.switch_view().done(function() {
+                    screen.load([m2o_id]);
+                    win = new Sao.Window.Form(screen, callback.bind(this), {
+                        save_current: true,
+                        title: this.attributes.string
+                    });
+                }.bind(this));
                 return;
             }
             if (model) {
@@ -2305,12 +2306,14 @@ function eval_pyson(value){
                     }.bind(this));
                 }
             };
-            var win = new Sao.Window.Form(screen, callback.bind(this), {
-                new_: true,
-                save_current: true,
-                title: this.attributes.string,
-                rec_name: this.entry.val()
-            });
+            screen.switch_view().done(function() {
+                var win = new Sao.Window.Form(screen, callback.bind(this), {
+                    new_: true,
+                    save_current: true,
+                    title: this.attributes.string,
+                    rec_name: this.entry.val()
+                });
+            }.bind(this));
         },
         key_press: function(event_) {
             var editable = !this.entry.prop('readonly');

@@ -956,6 +956,24 @@
                 this.tab.record_message();
             }
         },
+        load: function(ids, set_cursor, modified) {
+            if (set_cursor === undefined) {
+                set_cursor = true;
+            }
+            this.tree_states = {};
+            this.tree_states_done = [];
+            this.group.load(ids, modified);
+            if (ids.length && this.current_view.view_type != 'calendar') {
+                this.current_record = this.group.get(ids[0]);
+                this.display();
+            } else {
+                this.current_record = null;
+                this.display();
+            }
+            if (set_cursor) {
+                this.set_cursor();
+            }
+        },
         display: function(set_cursor) {
             var deferreds = [];
             if (this.current_record &&
@@ -1725,6 +1743,9 @@
             }
             state_prm.done(function(state) {
                 var expanded_nodes, selected_nodes, record;
+                if (!(parent_ in this.tree_states)) {
+                    this.tree_states[parent_] = {};
+                }
                 this.tree_states[parent_][view.children_field || null] = state;
                 expanded_nodes = state[1];
                 selected_nodes = state[2];
