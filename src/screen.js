@@ -45,7 +45,8 @@
             var but_submit = jQuery('<button/>', {
                 'type': 'submit',
                 'class': 'btn btn-default',
-                'aria-label': Sao.i18n.gettext('Search')
+                'aria-label': Sao.i18n.gettext("Search"),
+                'title': Sao.i18n.gettext("Search"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-search'
             }));
@@ -55,7 +56,8 @@
                 'class': 'btn btn-default dropdown-toggle',
                 'data-toggle': 'dropdown',
                 'aria-expanded': false,
-                'aria-label': Sao.i18n.gettext('Bookmarks'),
+                'aria-label': Sao.i18n.gettext("Bookmarks"),
+                'title': Sao.i18n.gettext("Bookmarks"),
                 'id': 'bookmarks'
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-bookmark',
@@ -115,7 +117,8 @@
             this.but_prev = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default',
-                'aria-label': Sao.i18n.gettext('Previous')
+                'aria-label': Sao.i18n.gettext("Previous"),
+                'title': Sao.i18n.gettext("Previous"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-menu-left',
                 'aria-hidden': true
@@ -124,7 +127,8 @@
             this.but_next = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default',
-                'aria-label': Sao.i18n.gettext('Next')
+                'aria-label': Sao.i18n.gettext("Next"),
+                'title': Sao.i18n.gettext("Next"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-menu-right',
                 'aria-hidden': true
@@ -201,17 +205,18 @@
         },
         set_star: function(star) {
             var glyphicon = this.but_star.children('span.glyphicon');
+            var title;
             if (star) {
                 glyphicon.removeClass('glyphicon-star-empty');
                 glyphicon.addClass('glyphicon-star');
-                this.but_star.attr('aria-label',
-                        Sao.i18n.gettext('Remove this bookmark'));
+                title = Sao.i18n.gettext("Remove this bookmark");
             } else {
                 glyphicon.removeClass('glyphicon-star');
                 glyphicon.addClass('glyphicon-star-empty');
-                this.but_star.attr('aria-label',
-                       Sao.i18n.gettext('Bookmark this filter'));
+                title = Sao.i18n.gettext('Bookmark this filter');
             }
+            this.but_star.attr('title', title);
+            this.but_star.attr('aria-label', title);
         },
         get_star: function() {
             var glyphicon = this.but_star.children('span.glyphicon');
@@ -307,7 +312,6 @@
                 return;
             }
             var counter = this.tab_counter[idx];
-            counter.data('toggle', 'tooltip');
             if (count === null) {
                 counter.attr('title', '');
                 counter.text('');
@@ -319,7 +323,6 @@
                 }
                 counter.text(text);
             }
-            counter.tooltip();
         },
         do_search: function() {
             return this.screen.search_filter(this.get_text());

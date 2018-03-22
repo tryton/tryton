@@ -217,10 +217,7 @@
                     'class': 'glyphicon ' + item.icon,
                     'aria-hidden': 'true'
                 }))
-                .appendTo(group)
-                .data('toggle', 'tooltip')
-                .data('placement', 'bottom')
-                .tooltip();
+                .appendTo(group);
                 this.buttons[item.id].click(this[item.id].bind(this));
             };
             this.menu_def().forEach(add_button.bind(this));
@@ -262,7 +259,7 @@
                 if (!next.length) {
                     next = tab.prevAll('li').first();
                 }
-                tab.tooltip('destroy').remove();
+                tab.remove();
                 content.remove();
                 Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(this), 1);
                 if (next) {
@@ -277,7 +274,7 @@
         set_name: function(name) {
             this.name = name;
             this.name_el.text(Sao.common.ellipsize(name, 20));
-            this.name_el.parents('li').first().attr('title', name).tooltip();
+            this.name_el.parents('li').first().attr('title', name);
         }
     });
 
@@ -373,7 +370,6 @@
         .append(tab.name_el);
         jQuery('<li/>', {
             'role': 'presentation',
-            'data-toggle': 'tooltip',
             'data-placement': 'bottom',
             id: 'nav-' + tab.id
         }).append(tab_link)
@@ -482,10 +478,7 @@
                         }))
                         .append(jQuery('<span/>', {
                             'class': 'caret'
-                        }))
-                        .data('toggle', 'tooltip')
-                        .data('placement', 'bottom')
-                        .tooltip())
+                        })))
                     .append(jQuery('<ul/>', {
                         'class': 'dropdown-menu',
                         'role': 'menu',

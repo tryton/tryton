@@ -533,9 +533,7 @@ function eval_pyson(value){
             }
 
             if (attributes.help) {
-                widget.el.data('toggle', 'tooltip');
                 widget.el.attr('title', attributes.help);
-                widget.el.tooltip();
             }
         },
         resize: function() {
@@ -1397,7 +1395,9 @@ function eval_pyson(value){
                 'class': 'input-group-btn'
             }).append(jQuery('<button/>', {
                 'class': 'datepickerbutton btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext("Open the calendar"),
+                'title': Sao.i18n.gettext("Open the calendar"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-calendar'
             }))).appendTo(this.date);
@@ -2148,24 +2148,29 @@ function eval_pyson(value){
                 return;
             }
             this.set_text(field.get_client(record));
-            var primary, secondary;
+            var primary, tooltip1, secondary, tooltip2;
             value = field.get(record);
             if (this.has_target(value)) {
                 primary = 'glyphicon-folder-open';
+                tooltip1 = Sao.i18n.gettext("Open the record <F2>");
                 secondary = 'glyphicon-erase';
+                tooltip2 = Sao.i18n.gettext("Clear the field <Del>");
             } else {
                 primary = null;
+                tooltip1 = '';
                 secondary = 'glyphicon-search';
+                tooltip2 = Sao.i18n.gettext("Search a record <F2>");
             }
             if (this.entry.prop('readonly')) {
                 secondary = null;
             }
             [
-                [primary, this.but_primary],
-                [secondary, this.but_secondary]
+                [primary, tooltip1, this.but_primary],
+                [secondary, tooltip2, this.but_secondary]
             ].forEach(function(items) {
                 var icon_name = items[0];
-                var button = items[1];
+                var tooltip = items[1];
+                var button = items[2];
                 var icon = button.find('.glyphicon');
                 icon.removeClass().addClass('glyphicon');
                 // don't use .hide/.show because the display value is not
@@ -2176,6 +2181,8 @@ function eval_pyson(value){
                     button.parent().css('display', 'table-cell');
                     icon.addClass(icon_name);
                 }
+                button.attr('aria-label', tooltip);
+                button.attr('title', tooltip);
             });
         },
         focus: function() {
@@ -2457,7 +2464,8 @@ function eval_pyson(value){
             this.el.addClass('form-inline');
             this.select = jQuery('<select/>', {
                 'class': 'form-control input-sm',
-                'aria-label': attributes.string
+                'aria-label': attributes.string,
+                'title': attributes.string,
             });
             this.el.prepend(jQuery('<span/>').text('-'));
             this.el.prepend(this.select);
@@ -2641,7 +2649,8 @@ function eval_pyson(value){
             this.but_switch = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Switch')
+                'aria-label': Sao.i18n.gettext("Switch"),
+                'title': Sao.i18n.gettext("Switch"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-list-alt'
             })).appendTo(buttons);
@@ -2650,7 +2659,8 @@ function eval_pyson(value){
             this.but_previous = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Previous')
+                'aria-label': Sao.i18n.gettext("Previous"),
+                'title': Sao.i18n.gettext("Previous"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-chevron-left'
             })).appendTo(buttons);
@@ -2664,7 +2674,8 @@ function eval_pyson(value){
             this.but_next = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Next')
+                'aria-label': Sao.i18n.gettext("Next"),
+                'title': Sao.i18n.gettext("Next"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-chevron-right'
             })).appendTo(buttons);
@@ -2677,7 +2688,8 @@ function eval_pyson(value){
                 this.but_add = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Add')
+                    'aria-label': Sao.i18n.gettext("Add"),
+                    'title': Sao.i18n.gettext("Add"),
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-plus'
                 })).appendTo(buttons);
@@ -2686,7 +2698,8 @@ function eval_pyson(value){
                 this.but_remove = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Remove')
+                    'aria-label': Sao.i18n.gettext("Remove"),
+                    'title': Sao.i18n.gettext("Remove"),
                 }).append(jQuery('<span/>', {
                     'class': 'glyphicon glyphicon-minus'
                 })).appendTo(buttons);
@@ -2696,7 +2709,8 @@ function eval_pyson(value){
             this.but_new = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('New')
+                'aria-label': Sao.i18n.gettext("New"),
+                'title': Sao.i18n.gettext("New"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-edit'
             })).appendTo(buttons);
@@ -2705,7 +2719,8 @@ function eval_pyson(value){
             this.but_open = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Open')
+                'aria-label': Sao.i18n.gettext("Open"),
+                'title': Sao.i18n.gettext("Open"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-folder-open'
             })).appendTo(buttons);
@@ -2714,7 +2729,8 @@ function eval_pyson(value){
             this.but_del = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Delete')
+                'aria-label': Sao.i18n.gettext("Delete"),
+                'title': Sao.i18n.gettext("Delete"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-trash'
             })).appendTo(buttons);
@@ -2723,7 +2739,8 @@ function eval_pyson(value){
             this.but_undel = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Undelete')
+                'aria-label': Sao.i18n.gettext("Undelete"),
+                'title': Sao.i18n.gettext("Undelete"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-repeat'
             })).appendTo(buttons);
@@ -3144,7 +3161,8 @@ function eval_pyson(value){
             this.but_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Add')
+                'aria-label': Sao.i18n.gettext("Add"),
+                'title': Sao.i18n.gettext("Add"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-plus'
             })).appendTo(buttons);
@@ -3153,7 +3171,8 @@ function eval_pyson(value){
             this.but_remove = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
-                'aria-label': Sao.i18n.gettext('Remove')
+                'aria-label': Sao.i18n.gettext("Remove"),
+                'title': Sao.i18n.gettext("Remove"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-minus'
             })).appendTo(buttons);
@@ -3361,7 +3380,9 @@ function eval_pyson(value){
 
             this.but_save_as = jQuery('<button/>', {
                 'class': 'btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext("Save As"),
+                'title': Sao.i18n.gettext("Save As..."),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-save'
             })).appendTo(group);
@@ -3369,7 +3390,9 @@ function eval_pyson(value){
 
             this.but_select = jQuery('<button/>', {
                 'class': 'btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext("Select"),
+                'title': Sao.i18n.gettext("Select..."),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-search'
             })).appendTo(group);
@@ -3377,7 +3400,9 @@ function eval_pyson(value){
 
             this.but_clear = jQuery('<button/>', {
                 'class': 'btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'aria-label': Sao.i18n.gettext("Clear"),
+                'title': Sao.i18n.gettext("Clear"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-erase'
             })).appendTo(group);

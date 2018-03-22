@@ -803,10 +803,8 @@
                         tip = Sao.i18n.gettext('By: ') +
                             users.join(Sao.i18n.gettext(', '));
                     }
-                    counter.data('toggle', 'tooltip');
                     counter.text(users.length || '');
                     counter.attr('title', tip);
-                    counter.tooltip();
                 }.bind(this));
             }
 

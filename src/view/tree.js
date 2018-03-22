@@ -115,9 +115,7 @@
                     }
                 }
                 if (column.attributes.help) {
-                    label.data('toggle', 'tooltip');
                     label.attr('title', column.attributes.help);
-                    label.tooltip();
                 }
                 if (column.sortable) {
                     var arrow = jQuery('<span/>');
