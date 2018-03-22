@@ -124,11 +124,23 @@ class SaleLine:
         if not self.supply_on_sale or self.purchase_request:
             return
 
+        # Ensure to create the request for the maximum paid
+        if self.sale.shipment_method == 'invoice':
+            invoice_skips = (set(self.sale.invoices_ignored)
+                | set(self.sale.invoices_recreated))
+            invoice_lines = [l for l in self.invoice_lines
+                if l.invoice not in invoice_skips]
+            if (not invoice_lines
+                    or any((not l.invoice) or l.invoice.state != 'paid'
+                        for l in invoice_lines)):
+                return
+
         product = self.product
         supplier, purchase_date = Request.find_best_supplier(product,
             self.shipping_date)
         uom = product.purchase_uom or product.default_uom
-        quantity = Uom.compute_qty(self.unit, self.quantity, uom)
+        quantity = self._get_move_quantity('out')
+        quantity = Uom.compute_qty(self.unit, quantity, uom)
         return Request(
             product=product,
             party=supplier,
