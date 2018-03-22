@@ -277,6 +277,23 @@ class ModelField(ModelSQL, ModelView):
     def default_field_description():
         return 'No description available'
 
+    def get_rec_name(self, name):
+        if self.field_description:
+            return '%s (%s)' % (self.field_description, self.name)
+        else:
+            return self.name
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('field_description',) + tuple(clause[1:]),
+            ('name',) + tuple(clause[1:]),
+            ]
+
     @classmethod
     def read(cls, ids, fields_names=None):
         pool = Pool()
