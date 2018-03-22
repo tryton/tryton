@@ -1393,6 +1393,7 @@ function eval_pyson(value){
             }).append(jQuery('<button/>', {
                 'class': 'datepickerbutton btn btn-default',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Open the calendar"),
                 'title': Sao.i18n.gettext("Open the calendar"),
             }).append(jQuery('<span/>', {
@@ -2063,7 +2064,8 @@ function eval_pyson(value){
             // Append buttons after the completion to not break layout
             this.but_primary = jQuery('<button/>', {
                 'class': 'btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'tabindex': -1,
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon'
             })).appendTo(jQuery('<span/>', {
@@ -2071,7 +2073,8 @@ function eval_pyson(value){
             }).prependTo(group));
             this.but_secondary = jQuery('<button/>', {
                 'class': 'btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'tabindex': -1,
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon'
             })).appendTo(jQuery('<span/>', {
@@ -2646,6 +2649,7 @@ function eval_pyson(value){
             this.but_switch = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Switch"),
                 'title': Sao.i18n.gettext("Switch"),
             }).append(jQuery('<span/>', {
@@ -2656,6 +2660,7 @@ function eval_pyson(value){
             this.but_previous = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Previous"),
                 'title': Sao.i18n.gettext("Previous"),
             }).append(jQuery('<span/>', {
@@ -2671,6 +2676,7 @@ function eval_pyson(value){
             this.but_next = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Next"),
                 'title': Sao.i18n.gettext("Next"),
             }).append(jQuery('<span/>', {
@@ -2685,6 +2691,7 @@ function eval_pyson(value){
                 this.but_add = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
+                    'tabindex': -1,
                     'aria-label': Sao.i18n.gettext("Add"),
                     'title': Sao.i18n.gettext("Add"),
                 }).append(jQuery('<span/>', {
@@ -2695,6 +2702,7 @@ function eval_pyson(value){
                 this.but_remove = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
+                    'tabindex': -1,
                     'aria-label': Sao.i18n.gettext("Remove"),
                     'title': Sao.i18n.gettext("Remove"),
                 }).append(jQuery('<span/>', {
@@ -2706,6 +2714,7 @@ function eval_pyson(value){
             this.but_new = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("New"),
                 'title': Sao.i18n.gettext("New"),
             }).append(jQuery('<span/>', {
@@ -2716,6 +2725,7 @@ function eval_pyson(value){
             this.but_open = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Open"),
                 'title': Sao.i18n.gettext("Open"),
             }).append(jQuery('<span/>', {
@@ -2726,6 +2736,7 @@ function eval_pyson(value){
             this.but_del = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Delete"),
                 'title': Sao.i18n.gettext("Delete"),
             }).append(jQuery('<span/>', {
@@ -2736,6 +2747,7 @@ function eval_pyson(value){
             this.but_undel = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Undelete"),
                 'title': Sao.i18n.gettext("Undelete"),
             }).append(jQuery('<span/>', {
@@ -3158,6 +3170,7 @@ function eval_pyson(value){
             this.but_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Add"),
                 'title': Sao.i18n.gettext("Add"),
             }).append(jQuery('<span/>', {
@@ -3168,6 +3181,7 @@ function eval_pyson(value){
             this.but_remove = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
+                'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Remove"),
                 'title': Sao.i18n.gettext("Remove"),
             }).append(jQuery('<span/>', {
@@ -4252,7 +4266,8 @@ function eval_pyson(value){
             var group = this.button.parent();
             jQuery('<button/>', {
                 'class': 'datepickerbutton btn btn-default',
-                'type': 'button'
+                'type': 'button',
+                'tabindex': -1,
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-calendar'
             })).prependTo(group);
@@ -4295,17 +4310,15 @@ function eval_pyson(value){
             this.encoder = new Sao.PYSON.Encoder({});
             this.decoder = new Sao.PYSON.Decoder({}, true);
             this.el.keyup(this.validate_pyson.bind(this));
-            var button = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button'
-            });
             this.icon = jQuery('<span/>', {
-                'class': 'glyphicon'
-            });
-            button.append(this.icon);
-            button.appendTo(jQuery('<span/>', {
-                'class': 'input-group-btn'
+                'class': 'glyphicon',
+            }).appendTo(jQuery('<span/>', {
+                'class': 'input-group-addon',
             }).appendTo(this.group));
+        },
+        display: function(record, field) {
+            Sao.View.Form.PYSON._super.display.call(this, record, field);
+            this.validate_pyson();
         },
         get_encoded_value: function() {
             var value = this.input.val();
