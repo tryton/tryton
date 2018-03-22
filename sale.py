@@ -120,13 +120,14 @@ class SaleLine:
         "Return True if the sale line can have drop move"
         if not self.supply_on_sale:
             return False
-        if not self.purchase_request or not self.purchase_request.customer:
+        if self.purchase_request and not self.purchase_request.customer:
             return False
         if self.purchase_request_state == 'cancel':
             return False
-        purchase_line = self.purchase_request.purchase_line
-        if purchase_line and purchase_line.move_done:
-            return False
+        if self.purchase_request:
+            purchase_line = self.purchase_request.purchase_line
+            if purchase_line and purchase_line.move_done:
+                return False
         return True
 
     def get_move(self, shipment_type):
