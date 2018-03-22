@@ -32,6 +32,14 @@
         top: @navbar-height + 1px;
         z-index: @zindex-navbar - 1;
     }
+
+    & .navbar-btn {
+        .badge {
+            /* remove padding to not increase size of navbar-btn */
+            margin-top: -3px;
+            margin-bottom: -3px;
+        }
+    }
 }
 
 @media screen and (max-width: @screen-xs-max) {
