@@ -1814,7 +1814,7 @@ function eval_pyson(value){
                 'class': this.class_ + ' panel panel-default'
             });
             if (parseInt(attributes.toolbar || '1', 10)) {
-                this.get_toolbar().appendTo(this.el);
+                this.toolbar = this.get_toolbar().appendTo(this.el);
             }
             this.input = this.labelled = jQuery('<div/>', {
                 'class': 'richtext mousetrap',
