@@ -148,10 +148,10 @@ var Sao = {};
         datetime.month(month);
         datetime.date(day);
         if (month !== undefined) {
-            datetime.hour(hour || 0);
-            datetime.minute(minute || 0);
-            datetime.second(second || 0);
-            datetime.milliseconds(millisecond || 0);
+            datetime.hour(hour);
+            datetime.minute(minute);
+            datetime.second(second);
+            datetime.milliseconds(millisecond);
         }
         datetime.isDateTime = true;
         datetime.local();
