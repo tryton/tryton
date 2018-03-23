@@ -419,6 +419,11 @@ Create a sub-table in a cell.
 
     * ``col``: see in common-attributes-col_.
 
+    * ``expandable``: If this attribute is present the content of the group
+      will be expandable by the user to reveal its content. A value of "1"
+      means that the group will start expanded, a value of "0" means
+      that the group will start unexpanded. There is no default value.
+
     * ``homogeneous``: If True all the tables cells are the same size.
 
     * ``id``: see in common-attributes-id_.

@@ -766,6 +766,16 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute name="expandable">
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
   <define name="hpaned">
     <element name="hpaned">
       <ref name="attlist.paned"/>
