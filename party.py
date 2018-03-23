@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
+from trytond.transaction import Transaction
 
 from .model import CompanyMultiValueMixin, CompanyValueMixin
 
 __all__ = ['Configuration', 'PartyConfigurationLang', 'Party', 'PartyLang',
-    'PartyReplace']
+    'PartyReplace', 'PartyErase']
 
 
 class Configuration(CompanyMultiValueMixin):
@@ -76,3 +77,25 @@ class PartyReplace:
             ('company.company', 'party'),
             ('company.employee', 'party'),
             ]
+
+
+class PartyErase:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.erase'
+
+    def check_erase(self, party):
+        pool = Pool()
+        Party = pool.get('party.party')
+        Company = pool.get('company.company')
+
+        super(PartyErase, self).check_erase(party)
+
+        with Transaction().set_user(0):
+            companies = Company.search([])
+            for company in companies:
+                with Transaction().set_context(company=company.id):
+                    party = Party(party.id)
+                    self.check_erase_company(party, company)
+
+    def check_erase_company(self, party, company):
+        pass

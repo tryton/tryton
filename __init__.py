@@ -4,7 +4,7 @@
 from trytond.pool import Pool
 from .company import *
 from .cron import *
-from .party import *
+from . import party
 
 
 def register():
@@ -19,15 +19,16 @@ def register():
         CompanyConfigStart,
         Cron,
         CronCompany,
-        Configuration,
-        PartyConfigurationLang,
-        Party,
-        PartyLang,
+        party.Configuration,
+        party.PartyConfigurationLang,
+        party.Party,
+        party.PartyLang,
         Rule,
         module='company', type_='model')
     Pool.register(
         CompanyConfig,
-        PartyReplace,
+        party.PartyReplace,
+        party.PartyErase,
         module='company', type_='wizard')
     Pool.register(
         LetterReport,
