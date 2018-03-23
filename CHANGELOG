@@ -1,3 +1,5 @@
+* Check pending deposit to erase party
+
 Version 4.6.0 - 2017-10-30
 * Bug fixes (see mercurial logs for details)
 * Use positive sign for deposit amount of party

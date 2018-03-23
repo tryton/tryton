@@ -13,7 +13,7 @@ from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, reduce_ids
 
 
-__all__ = ['Party']
+__all__ = ['Party', 'PartyErase']
 
 
 class Party:
@@ -132,3 +132,24 @@ class Party:
         assert sign in (1, -1)
         amount = self.get_deposit_balance(deposit_account)
         return not amount or ((amount < 0) == (sign < 0))
+
+
+class PartyErase:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.erase'
+
+    @classmethod
+    def __setup__(cls):
+        super(PartyErase, cls).__setup__()
+        cls._error_messages.update({
+                'deposit': (
+                    'The party "%(party)s" can not be erased '
+                    'because he has deposit for the company "%(company)s".'),
+                })
+
+    def check_erase_company(self, party, company):
+        if party.deposit:
+            self.raise_user_error('deposit', {
+                    'party': party.rec_name,
+                    'company': company.rec_name,
+                    })

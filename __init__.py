@@ -4,7 +4,7 @@
 from trytond.pool import Pool
 from .account import *
 from .invoice import *
-from .party import *
+from . import party
 
 
 def register():
@@ -14,8 +14,9 @@ def register():
         Invoice,
         InvoiceLine,
         DepositRecallStart,
-        Party,
+        party.Party,
         module='account_deposit', type_='model')
     Pool.register(
         DepositRecall,
+        party.PartyErase,
         module='account_deposit', type_='wizard')
