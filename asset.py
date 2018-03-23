@@ -633,15 +633,16 @@ class AssetLine(ModelSQL, ModelView):
     'Asset Line'
     __name__ = 'account.asset.line'
     asset = fields.Many2One('account.asset', 'Asset', required=True,
-        ondelete='CASCADE')
-    date = fields.Date('Date')
+        ondelete='CASCADE', readonly=True)
+    date = fields.Date('Date', readonly=True)
     depreciation = fields.Numeric('Depreciation',
         digits=(16, Eval('_parent_asset', {}).get('currency_digits', 2)),
-        required=True)
-    acquired_value = fields.Numeric('Acquired Value')
-    depreciable_basis = fields.Numeric('Depreciable Basis')
-    actual_value = fields.Numeric('Actual Value')
-    accumulated_depreciation = fields.Numeric('Accumulated Depreciation')
+        required=True, readonly=True)
+    acquired_value = fields.Numeric('Acquired Value', readonly=True)
+    depreciable_basis = fields.Numeric('Depreciable Basis', readonly=True)
+    actual_value = fields.Numeric('Actual Value', readonly=True)
+    accumulated_depreciation = fields.Numeric(
+        'Accumulated Depreciation', readonly=True)
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
 
     @classmethod
