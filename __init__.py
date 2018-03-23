@@ -7,7 +7,7 @@ from .product import *
 from .stock import *
 from .configuration import *
 from .invoice import *
-from .party import PartyReplace
+from . import party
 
 
 def register():
@@ -42,6 +42,7 @@ def register():
         OpenSupplier,
         HandleShipmentException,
         HandleInvoiceException,
-        PartyReplace,
+        party.PartyReplace,
+        party.PartyErase,
         ModifyHeader,
         module='purchase', type_='wizard')
