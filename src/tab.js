@@ -862,6 +862,8 @@
                 }).appendTo(this.buttons.attach);
             }
             badge.text(count);
+            this.buttons.attach.attr(
+                'title', Sao.i18n.gettext("Attachement(%1)", count));
             var record_id = this.screen.get_id();
             this.buttons.attach.prop('disabled',
                 record_id < 0 || record_id === null);
@@ -892,6 +894,8 @@
                 }).appendTo(this.buttons.note);
             }
             badge.text(unread);
+            this.buttons.note.attr(
+                'title', Sao.i18n.gettext("Note(%1)", unread));
             var record_id = this.screen.get_id();
             this.buttons.note.prop('disabled',
                     record_id < 0 || record_id === null);

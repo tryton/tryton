@@ -44,9 +44,19 @@
 
     & .navbar-btn {
         .badge {
+            max-width: 3em;
+            min-width: 3em;
+            overflow: hidden;
+            text-overflow: ellipsis;
             /* remove padding to not increase size of navbar-btn */
             margin-top: -3px;
             margin-bottom: -3px;
+        }
+    }
+
+    & .tab-domain {
+        & .badge {
+            min-width: 3em;
         }
     }
 }
