@@ -81,6 +81,9 @@
             var col = jQuery('<col/>', {
                 'class': 'selection-state',
             }).appendTo(colgroup);
+            if (this.selection_mode == Sao.common.SELECTION_NONE) {
+                col.css('width', 0);
+            }
             this.thead = jQuery('<thead/>').appendTo(this.table);
             var tr = jQuery('<tr/>');
             var th = jQuery('<th/>', {
