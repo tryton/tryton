@@ -16,7 +16,7 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Party', 'PartyAccount', 'PartyReplace']
+__all__ = ['Party', 'PartyAccount', 'PartyReplace', 'PartyErase']
 account_names = [
     'account_payable', 'account_receivable',
     'customer_tax_rule', 'supplier_tax_rule']
@@ -318,3 +318,26 @@ class PartyReplace:
         return super(PartyReplace, cls).fields_to_replace() + [
             ('account.move.line', 'party'),
             ]
+
+
+class PartyErase:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.erase'
+
+    @classmethod
+    def __setup__(cls):
+        super(PartyErase, cls).__setup__()
+        cls._error_messages.update({
+                'receivable_payable': (
+                    'The party "%(party)s" can not be erased '
+                    'because he has pending receivable/payable '
+                    'for the company "%(company)s".'),
+                })
+
+    def check_erase_company(self, party, company):
+        super(PartyErase, self).check_erase_company(party, company)
+        if party.receivable or party.payable:
+            self.raise_user_error('receivable_payable', {
+                    'party': party.rec_name,
+                    'company': company.rec_name,
+                    })

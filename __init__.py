@@ -10,7 +10,7 @@ from .journal import *
 from .move import *
 from .move_template import *
 from .tax import *
-from .party import *
+from . import party
 
 
 def register():
@@ -76,8 +76,8 @@ def register():
         TaxLineTemplate,
         CreateMoveTemplate,
         CreateMoveKeywords,
-        Party,
-        PartyAccount,
+        party.Party,
+        party.PartyAccount,
         RenewFiscalYearStart,
         module='account', type_='model')
     Pool.register(
@@ -97,7 +97,8 @@ def register():
         OpenChartTaxCode,
         OpenTaxCode,
         TestTax,
-        PartyReplace,
+        party.PartyReplace,
+        party.PartyErase,
         RenewFiscalYear,
         module='account', type_='wizard')
     Pool.register(
