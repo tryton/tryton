@@ -117,7 +117,7 @@ add another supplier::
     u'draft'
     >>> create_quotation = Wizard(
     ...     'purchase.request.quotation.create', [purchase_request])
-    >>> create_quotation.form.suppliers[0] == supplier
+    >>> [supplier] == create_quotation.form.suppliers
     True
     >>> create_quotation.form.suppliers.append(supplier2)
     >>> create_quotation.execute('create_quotations')
@@ -179,7 +179,8 @@ Duplication of the Purchase Request and set the preferred_quotation_line field
 with a quotation not having the minimum price unit::
 
     >>> prequest2, = prequest.duplicate()
-    >>> prequest2.preferred_quotation_line = prequest2.quotation_lines[0]
+    >>> prequest2.preferred_quotation_line = sorted(
+    ...     prequest2.quotation_lines, key=lambda q: q.unit_price)[-1]
     >>> prequest2.preferred_quotation_line.unit_price
     Decimal('11.000')
     >>> prequest2.save()
