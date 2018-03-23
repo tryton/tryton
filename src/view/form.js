@@ -26,6 +26,8 @@ function eval_pyson(value){
             this.state_widgets = [];
             this.containers = [];
             this.notebooks = [];
+            this.expandables = [];
+
             var root = xml.children()[0];
             var container = this.parse(screen.model, root);
             this.el.append(container.el);
@@ -261,10 +263,19 @@ function eval_pyson(value){
                     }
                 });
             }
-            var group = new Sao.View.Form.Group(attributes);
-            group.add(this.parse(model, node));
-            this.state_widgets.push(group);
-            container.add(attributes, group);
+
+            var widget;
+            if (attributes.expandable !== undefined) {
+                widget = new Sao.View.Form.Expander(attributes);
+                widget.set_expanded(attributes.expandable === '1');
+                this.expandables.push(widget);
+            } else {
+                widget = new Sao.View.Form.Group(attributes);
+            }
+            widget.add(this.parse(model, node));
+
+            this.state_widgets.push(widget);
+            container.add(attributes, widget);
         },
         _parse_paned: function(model, node, container, attributes,
                               orientation) {
@@ -385,7 +396,7 @@ function eval_pyson(value){
         },
         set_cursor: function(new_, reset_view) {
             var i, name, j;
-            var focus_el, notebook, child;
+            var focus_el, notebook, child, group;
             var widgets, error_el, pages, is_ancestor;
 
             var currently_focused = jQuery(document.activeElement);
@@ -446,6 +457,14 @@ function eval_pyson(value){
                             notebook.set_current_page(j);
                             break;
                         }
+                    }
+                }
+                for (i = 0; i < this.expandables.length; i++) {
+                    group = this.expandables[i];
+                    is_ancestor = (
+                            jQuery(focus_el).closest(group.el).length > 0);
+                    if (is_ancestor) {
+                        group.set_expanded(true);
                     }
                 }
                 jQuery(focus_el).find('input,select,textarea')
@@ -827,6 +846,59 @@ function eval_pyson(value){
         },
         add: function(widget) {
             this.el.append(widget.el);
+        }
+    });
+
+    Sao.View.Form.Expander = Sao.class_(Sao.View.Form.StateWidget, {
+        class_: 'form-group-expandable',
+        init: function(attributes) {
+            Sao.View.Form.Expander._super.init.call(this, attributes);
+            this.el = jQuery('<div/>', {
+                'class': 'panel panel-default ' + this.class_
+            });
+            var heading = jQuery('<div/>', {
+                'class': 'panel-heading',
+            }).appendTo(this.el);
+            heading.uniqueId();
+
+            this.collapsible = jQuery('<div/>', {
+                'class': 'panel-collapse collapse',
+                'aria-labelledby': heading.attr('id'),
+            }).appendTo(this.el);
+            this.collapsible.uniqueId();
+            this.body = jQuery('<div/>', {
+                'class': 'panel-body',
+            }).appendTo(this.collapsible);
+
+            var title = jQuery('<label/>', {
+                'class': 'panel-title',
+            }).appendTo(heading);
+            var link = jQuery('<a/>', {
+                'role': 'button',
+                'data-toggle': 'collapse',
+                'href': '#' + this.collapsible.attr('id'),
+                'aria-controls': this.collapsible.attr('id'),
+                'aria-expanded': attributes.expandable == '1',
+            }).appendTo(title);
+            link.append(jQuery('<div/>', {
+                'class': 'btn btn-sm',
+            }).append(jQuery('<span/>', {
+                'class': 'caret',
+            })));
+            if (attributes.string) {
+                link.append(attributes.string);
+            }
+        },
+        add: function(widget) {
+            this.body.empty();
+            this.body.append(widget.el);
+        },
+        set_expanded: function(expanded) {
+            if (expanded) {
+                this.collapsible.collapse('show');
+            } else {
+                this.collapsible.collapse('hide');
+            }
         }
     });
 
