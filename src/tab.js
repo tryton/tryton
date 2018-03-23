@@ -144,7 +144,7 @@
                 } else if (!item && previous) {
                     menuitem = jQuery('<li/>', {
                         'role': 'separator',
-                        'class': 'divider',
+                        'class': 'divider hidden-xs',
                     });
                 } else {
                     return;
