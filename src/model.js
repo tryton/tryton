@@ -1226,6 +1226,19 @@
             path.reverse();
             return path;
         },
+        get_index_path: function(group) {
+            var path = [],
+                record = this;
+            while (record) {
+                path.push(record.group.indexOf(record));
+                if (record.group === group) {
+                    break;
+                }
+                record = record.group.parent;
+            }
+            path.reverse();
+            return path;
+        },
         deleted: function() {
             return Boolean(~this.group.record_deleted.indexOf(this));
         },

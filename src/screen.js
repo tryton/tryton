@@ -687,6 +687,7 @@
             this._domain_parser = {};
             this.pre_validate = false;
             this.tab = null;
+            this.message_callback = null;
             this.count_tab_domain();
         },
         load_next_view: function() {
@@ -949,7 +950,22 @@
         },
         set_current_record: function(record) {
             this.current_record = record;
-            // TODO position
+            if (this.message_callback){
+                var pos = null;
+                var record_id = null;
+                if (record) {
+                    var i = this.group.indexOf(record);
+                    if (i >= 0) {
+                        pos = i + this.offset + 1;
+                    } else {
+                        pos = record.get_index_path();
+                    }
+                    record_id = record.id;
+                }
+                var data = [pos || 0, this.group.length + this.offset,
+                    this.search_count, record_id];
+                this.message_callback(data);
+            }
             if (this.tab) {
                 if (record) {
                     record.get_attachment_count().always(

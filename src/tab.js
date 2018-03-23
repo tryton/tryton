@@ -221,6 +221,11 @@
                 this.buttons[item.id].click(this[item.id].bind(this));
             };
             this.menu_def().forEach(add_button.bind(this));
+            this.status_label = jQuery('<span/>', {
+                'class': 'badge',
+            }).appendTo(jQuery('<div/>', {
+                'class': 'navbar-text hidden-xs',
+            }).insertAfter(this.buttons.previous));
             toolbar.find('.btn-toolbar > .btn-group').last().addClass(
                     'hidden-xs');
             var tabs = jQuery('#tabs');
@@ -415,6 +420,8 @@
 
             this.info_bar = new Sao.Window.InfoBar();
             this.create_tabcontent();
+
+            screen.message_callback = this.record_message.bind(this);
 
             this.set_buttons_sensitive();
 
@@ -889,8 +896,30 @@
             this.buttons.note.prop('disabled',
                     record_id < 0 || record_id === null);
         },
-        record_message: function() {
+        record_message: function(data) {
+            if (data) {
+                var name = "_";
+                if (data[0] !== 0) {
+                    name = data[0];
+                }
+                var buttons = ['print', 'relate', 'attach'];
+                buttons.forEach(function(button_id){
+                    var button = this.buttons[button_id];
+                    if (button) {
+                        var disabled = button.is(':disabled');
+                        button.prop('disabled', disabled || data[0] === 0);
+                    }
+                }.bind(this));
+                this.buttons.switch_.prop('disabled',
+                    this.attributes.view_ids > 1);
+                var msg = name + ' / ' + data[1];
+                if (data[1] < data[2]) {
+                    msg += Sao.i18n.gettext(' of ') + data[2];
+                }
+                this.status_label.text(msg).attr('title', msg);
+            }
             this.info_bar.message();
+            // TODO activate_save
         },
         action: function() {
             window.setTimeout(function() {
