@@ -14,6 +14,7 @@ def register():
         module='web_user', type_='model')
     Pool.register(
         party.PartyReplace,
+        party.PartyErase,
         module='web_user', type_='wizard')
     Pool.register(
         EmailValidation,

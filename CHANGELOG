@@ -1,3 +1,4 @@
+* Erase user email when party is erased
 * Require email only for active user
 * Add maximum authentication attempt
 
