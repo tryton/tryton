@@ -14,4 +14,5 @@ def register():
         module='project', type_='model')
     Pool.register(
         party.PartyReplace,
+        party.PartyErase,
         module='project', type_='wizard')
