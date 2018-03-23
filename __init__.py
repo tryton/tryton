@@ -28,6 +28,7 @@ def register():
         subscription.CreateLineConsumption,
         subscription.CreateSubscriptionInvoice,
         party.PartyReplace,
+        party.PartyErase,
         module='sale_subscription', type_='wizard')
     Pool.register(
         module='sale_subscription', type_='report')
