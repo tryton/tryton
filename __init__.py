@@ -7,7 +7,7 @@ from .product import *
 from .stock import *
 from .configuration import *
 from .invoice import *
-from .party import PartyReplace
+from . import party
 
 
 def register():
@@ -39,7 +39,8 @@ def register():
         HandleInvoiceException,
         ReturnSale,
         ModifyHeader,
-        PartyReplace,
+        party.PartyReplace,
+        party.PartyErase,
         module='sale', type_='wizard')
     Pool.register(
         SaleReport,

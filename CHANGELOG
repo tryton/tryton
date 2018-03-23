@@ -1,3 +1,4 @@
+* Check pending sale to erase party
 * Add wizard to modify sale header after filling lines
 * Make description on sale line optional
 * Invoice shipped product instead of sold product
