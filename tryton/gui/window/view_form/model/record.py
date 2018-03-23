@@ -505,6 +505,16 @@ class Record(SignalEvent):
                 self[field]
         self.validate(fields or [])
 
+    def reset(self, value):
+        self.cancel()
+        self.set(value, signal=False)
+
+        if self.parent:
+            self.parent.on_change([self.group.child_name])
+            self.parent.on_change_with([self.group.child_name])
+
+        self.signal('record-changed')
+
     def expr_eval(self, expr):
         if not isinstance(expr, basestring):
             return expr

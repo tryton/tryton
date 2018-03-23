@@ -576,11 +576,14 @@ class Screen(SignalEvent):
         if func_name:
             self.group.on_write.add(func_name)
 
-    def cancel_current(self):
+    def cancel_current(self, initial_value=None):
         if self.current_record:
             self.current_record.cancel()
             if self.current_record.id < 0:
-                self.remove(records=[self.current_record])
+                if initial_value is not None:
+                    self.current_record.reset(initial_value)
+                else:
+                    self.remove(records=[self.current_record])
 
     def save_current(self):
         if not self.current_record:

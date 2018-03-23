@@ -51,11 +51,11 @@ class WinForm(NoModal, InfoBar):
         self.but_ok = None
         self.but_new = None
 
+        self._initial_value = None
         if view_type == 'form':
-            if not new and self.screen.current_record.id < 0:
+            stock_id = gtk.STOCK_CANCEL
+            if new:
                 stock_id = gtk.STOCK_DELETE
-            else:
-                stock_id = gtk.STOCK_CANCEL
             self.but_cancel = self.win.add_button(stock_id,
                 gtk.RESPONSE_CANCEL)
             self.but_cancel.set_always_show_image(True)
@@ -277,6 +277,9 @@ class WinForm(NoModal, InfoBar):
         self.screen.display()
         self.screen.current_view.set_cursor()
 
+        if not new:
+            self._initial_value = self.screen.current_record.get_eval()
+
     def on_keypress(self, widget, event):
         if (event.keyval == gtk.keysyms.F3) \
                 and self.but_new.get_property('sensitive'):
@@ -414,7 +417,7 @@ class WinForm(NoModal, InfoBar):
                 and response_id in cancel_responses):
             if (self.screen.current_record.id < 0
                     or self.save_current):
-                self.screen.cancel_current()
+                self.screen.cancel_current(self._initial_value)
             elif self.screen.current_record.modified:
                 self.screen.current_record.cancel()
                 self.screen.current_record.reload()
@@ -427,6 +430,7 @@ class WinForm(NoModal, InfoBar):
 
     def new(self):
         self.screen.new()
+        self._initial_value = None
         self.screen.current_view.display()
         self.screen.set_cursor(new=True)
         self.many -= 1
