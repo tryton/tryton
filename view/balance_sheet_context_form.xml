@@ -8,9 +8,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <label name="posted"/>
     <field name="posted"/>
-    <label name="comparison"/>
-    <field name="comparison"/>
-    <separator id="comparison" colspan="6"/>
-    <label name="date_cmp"/>
-    <field name="date_cmp"/>
 </form>

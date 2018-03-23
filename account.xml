@@ -348,15 +348,16 @@ this repository contains the full copyright notices and license terms. -->
             action="act_account_list" id="menu_account_list"
             sequence="10"/>
 
-        <record model="ir.ui.view" id="account_view_list2">
+        <record model="ir.ui.view" id="account_view_list_balance_sheet">
             <field name="model">account.account</field>
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
-            <field name="name">account_list2</field>
+            <field name="name">account_list_balance_sheet</field>
         </record>
-        <record model="ir.action.act_window" id="act_account_list2">
+        <record model="ir.action.act_window" id="act_account_balance_sheet">
             <field name="name">Accounts</field>
             <field name="res_model">account.account</field>
+            <field name="context_model">account.balance_sheet.context</field>
             <field name="context_domain"
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
@@ -366,13 +367,19 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window.view" id="act_account_list2_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="account_view_list2"/>
-            <field name="act_window" ref="act_account_list2"/>
+            <field name="view" ref="account_view_list_balance_sheet"/>
+            <field name="act_window" ref="act_account_balance_sheet"/>
+        </record>
+
+        <record model="ir.action.wizard" id="act_open_type">
+            <field name="name">Open Type</field>
+            <field name="wiz_name">account.account.open_type</field>
+            <field name="model">account.account.type</field>
         </record>
         <record model="ir.action.keyword" id="act_open_type_keyword">
             <field name="keyword">tree_open</field>
             <field name="model">account.account.type,-1</field>
-            <field name="action" ref="act_account_list2"/>
+            <field name="action" ref="act_open_type"/>
         </record>
 
         <record model="ir.ui.view" id="account_view_tree2">
@@ -479,6 +486,25 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_reporting" action="act_general_ledger_account_form"
             id="menu_general_ledger" name="General Ledger" sequence="10"/>
 
+        <record model="ir.action.act_window" id="act_account_general_ledger">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.general_ledger.account</field>
+            <field name="context_model">account.general_ledger.account.context</field>
+            <field
+                name="context_domain"
+                eval="[('company', '=', Eval('company', -1))]"
+                pyson="1"/>
+            <field
+                name="domain"
+                eval="[('type', 'child_of', Eval('active_id'), 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_account_general_ledger_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_account_view_list"/>
+            <field name="act_window" ref="act_account_general_ledger"/>
+        </record>
+
         <record model="ir.model.access" id="access_general_ledger_account">
             <field name="model" search="[('model', '=', 'account.general_ledger.account')]"/>
             <field name="perm_read" eval="False"/>
@@ -582,7 +608,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_account_balance_sheet_tree">
             <field name="name">Balance Sheet</field>
             <field name="res_model">account.account.type</field>
-            <field name="context_model">account.balance_sheet.context</field>
+            <field name="context_model">account.balance_sheet.comparision.context</field>
             <field name="context_domain"
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
@@ -604,6 +630,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.balance_sheet.context</field>
             <field name="type">form</field>
             <field name="name">balance_sheet_context_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="balance_sheet_comparision_context_view_form">
+            <field name="model">account.balance_sheet.comparision.context</field>
+            <field name="inherit" ref="balance_sheet_context_view_form"/>
+            <field name="name">balance_sheet_context_comparision_form</field>
         </record>
 
         <record model="ir.ui.view" id="account_income_statement_view_tree">

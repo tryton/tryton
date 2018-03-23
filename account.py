@@ -20,14 +20,15 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 
-__all__ = ['TypeTemplate', 'Type',
+__all__ = ['TypeTemplate', 'Type', 'OpenType',
     'AccountTemplate', 'AccountTemplateTaxTemplate',
     'Account', 'AccountDeferral', 'AccountTax',
     'OpenChartAccountStart', 'OpenChartAccount',
     'GeneralLedgerAccount', 'GeneralLedgerAccountContext',
     'GeneralLedgerLine', 'GeneralLedgerLineContext',
     'GeneralLedger', 'TrialBalance',
-    'BalanceSheetContext', 'IncomeStatementContext',
+    'BalanceSheetContext', 'BalanceSheetComparisionContext',
+    'IncomeStatementContext',
     'AgedBalanceContext', 'AgedBalance', 'AgedBalanceReport',
     'CreateChartStart', 'CreateChartAccount', 'CreateChartProperties',
     'CreateChart', 'UpdateChartStart', 'UpdateChartSucceed', 'UpdateChart']
@@ -323,6 +324,46 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
         if values:
             self.write(*values)
+
+
+class OpenType(Wizard):
+    'Open Type'
+    __name__ = 'account.account.open_type'
+    start = StateTransition()
+    account = StateAction('account.act_account_balance_sheet')
+    ledger_account = StateAction('account.act_account_general_ledger')
+
+    def transition_start(self):
+        context_model = Transaction().context.get('context_model')
+        if context_model == 'account.balance_sheet.comparision.context':
+            return 'account'
+        elif context_model == 'account.income_statement.context':
+            return 'ledger_account'
+        return 'end'
+
+    def open_action(self, action):
+        pool = Pool()
+        Type = pool.get('account.account.type')
+        type = Type(Transaction().context['active_id'])
+        action['name'] = '%s (%s)' % (action['name'], type.rec_name)
+        trans_context = Transaction().context
+        context = {
+            'active_id': trans_context.get('active_id'),
+            'active_ids': trans_context.get('active_ids', []),
+            'active_model': trans_context.get('active_model'),
+            }
+        context_model = trans_context.get('context_model')
+        if context_model:
+            Model = pool.get(context_model)
+            for fname in Model._fields.keys():
+                if fname == 'id':
+                    continue
+                context[fname] = trans_context.get(fname)
+        action['pyson_context'] = PYSONEncoder().encode(context)
+        return action, {}
+
+    do_account = open_action
+    do_ledger_account = open_action
 
 
 class AccountTemplate(ModelSQL, ModelView):
@@ -1241,6 +1282,7 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
     code = fields.Char('Code')
     active = fields.Boolean('Active')
     company = fields.Many2One('company.company', 'Company')
+    type = fields.Many2One('account.account.type', 'Type')
     start_debit = fields.Function(fields.Numeric('Start Debit',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
@@ -1688,17 +1730,11 @@ class BalanceSheetContext(ModelView):
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help='Show only posted move')
-    comparison = fields.Boolean('Comparison')
-    date_cmp = fields.Date('Date', states={
-            'required': Eval('comparison', False),
-            'invisible': ~Eval('comparison', False),
-            },
-        depends=['comparison'])
 
     @staticmethod
     def default_date():
         Date_ = Pool().get('ir.date')
-        return Date_.today()
+        return Transaction().context.get('date', Date_.today())
 
     @staticmethod
     def default_company():
@@ -1706,7 +1742,18 @@ class BalanceSheetContext(ModelView):
 
     @staticmethod
     def default_posted():
-        return False
+        return Transaction().context.get('posted', False)
+
+
+class BalanceSheetComparisionContext(BalanceSheetContext):
+    'Balance Sheet Context'
+    __name__ = 'account.balance_sheet.comparision.context'
+    comparison = fields.Boolean('Comparison')
+    date_cmp = fields.Date('Date', states={
+            'required': Eval('comparison', False),
+            'invisible': ~Eval('comparison', False),
+            },
+        depends=['comparison'])
 
     @classmethod
     def default_comparison(cls):

@@ -1,3 +1,4 @@
+* Open general ledger accounts from Income Statement relate
 * Add warning when creating a second chart of account
 * Manage chart update per record
 * Allow to reconcile many group of lines with Line.reconcile

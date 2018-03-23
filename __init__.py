@@ -30,6 +30,7 @@ def register():
         GeneralLedgerLine,
         GeneralLedgerLineContext,
         BalanceSheetContext,
+        BalanceSheetComparisionContext,
         IncomeStatementContext,
         CreateChartStart,
         CreateChartAccount,
@@ -80,6 +81,7 @@ def register():
         RenewFiscalYearStart,
         module='account', type_='model')
     Pool.register(
+        OpenType,
         BalanceNonDeferral,
         OpenChartAccount,
         CreateChart,
