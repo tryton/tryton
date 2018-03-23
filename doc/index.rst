@@ -29,6 +29,9 @@ parties with the VIES web service.
 The *Replace* wizard allows to replace duplicate record by the original and
 relink all the related documents.
 
+The *Erase* wizard allows to erase all personal data of a party from the system
+included the historized data and the resources attached for all the parties
+which were replaced by this one.
 
 Address
 *******

@@ -2,30 +2,32 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .category import *
-from .party import *
-from .address import *
-from .contact_mechanism import *
-from .configuration import *
+from . import category
+from . import party
+from . import address
+from . import contact_mechanism
+from . import configuration
 
 
 def register():
     Pool.register(
-        Category,
-        Party,
-        PartyLang,
-        PartyCategory,
-        PartyIdentifier,
-        CheckVIESResult,
-        PartyReplaceAsk,
-        Address,
-        AddressFormat,
-        ContactMechanism,
-        Configuration,
-        ConfigurationSequence,
-        ConfigurationLang,
+        category.Category,
+        party.Party,
+        party.PartyLang,
+        party.PartyCategory,
+        party.PartyIdentifier,
+        party.CheckVIESResult,
+        party.PartyReplaceAsk,
+        party.PartyEraseAsk,
+        address.Address,
+        address.AddressFormat,
+        contact_mechanism.ContactMechanism,
+        configuration.Configuration,
+        configuration.ConfigurationSequence,
+        configuration.ConfigurationLang,
         module='party', type_='model')
     Pool.register(
-        CheckVIES,
-        PartyReplace,
+        party.CheckVIES,
+        party.PartyReplace,
+        party.PartyErase,
         module='party', type_='wizard')

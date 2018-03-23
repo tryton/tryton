@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import stdnum.eu.vat as vat
 import stdnum.exceptions
-from sql import Null, Column
-from sql.functions import CharLength
+from sql import Null, Column, Cast, Literal
+from sql.functions import CharLength, Substring, Position
 
 from trytond.model import (ModelView, ModelSQL, MultiValueMixin, ValueMixin,
     fields, Unique, sequence_ordered)
@@ -16,7 +16,8 @@ from trytond.tools.multivalue import migrate_property
 
 __all__ = ['Party', 'PartyLang', 'PartyCategory', 'PartyIdentifier',
     'CheckVIESResult', 'CheckVIES',
-    'PartyReplace', 'PartyReplaceAsk']
+    'PartyReplace', 'PartyReplaceAsk',
+    'PartyErase', 'PartyEraseAsk']
 
 VAT_COUNTRIES = [('', '')]
 STATES = {
@@ -576,3 +577,139 @@ class PartyReplaceAsk(ModelView):
     def on_change_source(self):
         if self.source and self.source.replaced_by:
             self.destination = self.source.replaced_by
+
+
+class PartyErase(Wizard):
+    "Erase Party"
+    __name__ = 'party.erase'
+    start_state = 'ask'
+    ask = StateView('party.erase.ask', 'party.erase_ask_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Erase", 'erase', 'tryton-clear', default=True),
+            ])
+    erase = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super(PartyErase, cls).__setup__()
+        cls._error_messages.update({
+                'active_party': (
+                    'The party "%(party)s" can not be erased '
+                    'because he is still active.'),
+                })
+
+    def transition_erase(self):
+        pool = Pool()
+        Party = pool.get('party.party')
+        cursor = Transaction().connection.cursor()
+
+        def convert_from(table, tables):
+            right, condition = tables[None]
+            if table:
+                table = table.join(right, condition=condition)
+            else:
+                table = right
+            for k, sub_tables in tables.iteritems():
+                if k is None:
+                    continue
+                table = convert_from(table, sub_tables)
+            return table
+
+        resources = self.get_resources()
+        parties = replacing = [self.ask.party]
+        with Transaction().set_context(active_test=False):
+            while replacing:
+                replacing = Party.search([
+                        ('replaced_by', 'in', map(int, replacing)),
+                        ])
+                parties += replacing
+        for party in parties:
+            self.check_erase(party)
+            to_erase = self.to_erase(party.id)
+            for Model, domain, resource, columns, values in to_erase:
+                assert issubclass(Model, ModelSQL)
+                assert len(columns) == len(values)
+                if 'active' in Model._fields:
+                    records = Model.search(domain)
+                    Model.write(records, {'active': False})
+
+                tables, where = Model.search_domain(domain, active_test=False)
+                from_ = convert_from(None, tables)
+                table, _ = tables[None]
+                query = from_.select(table.id, where=where)
+
+                model_tables = [Model.__table__()]
+                if Model._history:
+                    model_tables.append(Model.__table_history__())
+                for table in model_tables:
+                    sql_columns, sql_values = [], []
+                    for column, value in zip(columns, values):
+                        column = Column(table, column)
+                        sql_columns.append(column)
+                        sql_values.append(
+                            value(column) if callable(value) else value)
+                    cursor.execute(*table.update(
+                            sql_columns, sql_values,
+                            where=table.id.in_(query)))
+                if not resource:
+                    continue
+                for Resource in resources:
+                    model_tables = [Resource.__table__()]
+                    if Resource._history:
+                        model_tables.append(Resource.__table_history__())
+                    for table in model_tables:
+                        cursor.execute(*table.delete(
+                                where=table.resource.like(
+                                    Model.__name__ + ',%')
+                                & Cast(Substring(table.resource,
+                                        Position(',', table.resource) +
+                                        Literal(1)),
+                                    Model.id.sql_type().base).in_(query)))
+        return 'end'
+
+    def check_erase(self, party):
+        if party.active:
+            self.raise_user_error('active_party', {
+                    'party': party.rec_name,
+                    })
+
+    def to_erase(self, party_id):
+        pool = Pool()
+        Party = pool.get('party.party')
+        Identifier = pool.get('party.identifier')
+        Address = pool.get('party.address')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        return [
+            (Party, [('id', '=', party_id)], True,
+                ['name'],
+                [None]),
+            (Identifier, [('party', '=', party_id)], True,
+                ['type', 'code'],
+                [None, '****']),
+            (Address, [('party', '=', party_id)], True,
+                ['name', 'street', 'zip', 'city', 'country', 'subdivision'],
+                [None, None, None, None, None, None]),
+            (ContactMechanism, [('party', '=', party_id)], True,
+                ['value', 'name', 'comment'],
+                [None, None, None]),
+            ]
+
+    @classmethod
+    def get_resources(cls):
+        pool = Pool()
+        Attachment = pool.get('ir.attachment')
+        Note = pool.get('ir.note')
+        return [Attachment, Note]
+
+
+class PartyEraseAsk(ModelView):
+    "Erase Party"
+    __name__ = 'party.erase.ask'
+    party = fields.Many2One('party.party', "Party", required=True,
+        help="The party to be erased.")
+
+    @classmethod
+    def default_party(cls):
+        context = Transaction().context
+        if context.get('active_model') == 'party.party':
+            return context.get('active_id')

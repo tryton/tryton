@@ -161,5 +161,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">replace_ask_form</field>
         </record>
+
+        <record model="ir.action.wizard" id="wizard_erase">
+            <field name="name">Erase</field>
+            <field name="wiz_name">party.erase</field>
+            <field name="model">party.party</field>
+        </record>
+        <record model="ir.action-res.group" id="wizard_erase-group_party_admin">
+            <field name="action" ref="wizard_erase"/>
+            <field name="group" ref="group_party_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_erase_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="wizard_erase"/>
+        </record>
+
+        <record model="ir.ui.view" id="erase_ask_view_form">
+            <field name="model">party.erase.ask</field>
+            <field name="type">form</field>
+            <field name="name">erase_ask_form</field>
+        </record>
     </data>
 </tryton>
