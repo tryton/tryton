@@ -109,3 +109,11 @@ class Alignment(gtk.Alignment):
         self.add(widget)
         widget.connect('show', lambda *a: self.show())
         widget.connect('hide', lambda *a: self.hide())
+
+
+class Expander(StateMixin, gtk.Expander):
+
+    def __init__(self, label=None, attrs=None):
+        if not label:
+            label = None
+        super(Expander, self).__init__(label=label, attrs=attrs)

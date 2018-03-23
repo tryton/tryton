@@ -34,7 +34,7 @@ from .form_gtk.dictionary import DictWidget
 from .form_gtk.multiselection import MultiSelection
 from .form_gtk.pyson import PYSON
 from .form_gtk.state_widget import (Label, VBox, Image, Frame, ScrolledWindow,
-    Notebook, Alignment)
+    Notebook, Alignment, Expander)
 
 _ = gettext.gettext
 
@@ -167,6 +167,7 @@ class ViewForm(View):
         self.widgets = defaultdict(list)
         self.state_widgets = []
         self.notebooks = []
+        self.expandables = []
 
         container = self.parse(xml)
 
@@ -384,10 +385,18 @@ class ViewForm(View):
                 if attr not in attributes and attr in field.attrs:
                     attributes[attr] = field.attrs[attr]
 
-        frame = Frame(attributes.get('string'), attrs=attributes)
-        frame.add(group.table)
-        self.state_widgets.append(frame)
-        container.add(frame, attributes)
+        can_expand = attributes.get('expandable')
+        if can_expand:
+            widget = Expander(attributes.get('string'), attrs=attributes)
+            widget.add(group.table)
+            widget.set_expanded(can_expand == '1')
+            self.expandables.append(widget)
+        else:
+            widget = Frame(attributes.get('string'), attrs=attributes)
+            widget.add(group.table)
+
+        self.state_widgets.append(widget)
+        container.add(widget, attributes)
 
     def _parse_paned(self, node, container, attributes, Paned):
         attributes.setdefault('yexpand', True)
@@ -557,6 +566,9 @@ class ViewForm(View):
                     child = notebook.get_nth_page(i)
                     if focus_widget.is_ancestor(child):
                         notebook.set_current_page(i)
+            for group in self.expandables:
+                if focus_widget.is_ancestor(group):
+                    group.set_expanded(True)
             focus_widget.grab_focus()
 
     def button_clicked(self, widget):

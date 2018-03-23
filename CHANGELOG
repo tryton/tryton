@@ -1,3 +1,4 @@
+* Add support of expand attribute on group tag
 * Add the context model name in the screen context
 * Use limit to expand tree
 * Add keyword attribute to button tag
