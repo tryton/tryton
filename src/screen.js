@@ -1147,13 +1147,19 @@
                 }
             }
         },
-        cancel_current: function() {
+        cancel_current: function(initial_value) {
             var prms = [];
             if (this.current_record) {
                 this.current_record.cancel();
                 if (this.current_record.id < 0) {
-                    prms.push(this.remove(
-                                false, false, false, [this.current_record]));
+                    if (initial_value) {
+                        prms.push(
+                            this.current_record.reset(initial_value).then(
+                                this.display.bind(this)));
+                    } else {
+                        prms.push(this.remove(
+                            false, false, false, [this.current_record]));
+                    }
                 }
             }
             return jQuery.when.apply(jQuery, prms);

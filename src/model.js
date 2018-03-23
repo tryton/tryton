@@ -1095,6 +1095,19 @@
                 this.autocompletion[fieldname] = result;
             }.bind(this));
         },
+        reset: function(value) {
+            this.cancel();
+            return this.set(value, true).then(function() {
+                var promises = [];
+                if (this.group.parent) {
+                    promises.push(this.group.parent.on_change(
+                        [this.group.child_name]));
+                    promises.push(this.group.parent.on_change_with(
+                        [this.group.child_name]));
+                }
+                return jQuery.when.apply(jQuery, promises);
+            }.bind(this));
+        },
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
             var ctx = this.get_eval();

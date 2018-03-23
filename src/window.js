@@ -78,15 +78,19 @@
             var readonly = (this.screen.attributes.readonly ||
                     this.screen.group.get_readonly());
 
+            this._initial_value = null;
             if (view_type == 'form') {
+                var button_text = Sao.i18n.gettext('Cancel');
+                if (kwargs.new_) {
+                    button_text = Sao.i18n.gettext('Delete');
+                }
+
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-link',
                     'type': 'button'
-                }).append(!kwargs.new_ && this.screen.current_record.id < 0 ?
-                    Sao.i18n.gettext('Delete') : Sao.i18n.gettext('Cancel'))
-                        .click(function() {
-                            this.response('RESPONSE_CANCEL');
-                        }.bind(this)));
+                }).append(button_text).click(function() {
+                    this.response('RESPONSE_CANCEL');
+                }.bind(this)));
             }
 
             if (kwargs.new_ && this.many) {
@@ -236,6 +240,9 @@
                 jQuery(this).remove();
             });
 
+            if (!kwargs.new_) {
+                this._initial_value = this.screen.current_record.get_eval();
+            }
         },
         add: function() {
             var domain = jQuery.extend([], this.domain);
@@ -270,6 +277,7 @@
         },
         new_: function() {
             this.screen.new_();
+            this._initial_value = null;
         },
         delete_: function() {
             this.screen.remove(false, false, false);
@@ -355,25 +363,25 @@
                 return;
             }
 
+            var cancel_prm = null;
             if (response_id == 'RESPONSE_CANCEL' &&
                     !readonly &&
                     this.screen.current_record) {
                 result = false;
                 if ((this.screen.current_record.id < 0) || this.save_current) {
-                    this.screen.cancel_current();
+                    cancel_prm = this.screen.cancel_current(
+                        this._initial_value);
                 } else if (this.screen.current_record.has_changed()) {
                     this.screen.current_record.cancel();
-                    this.screen.current_record.reload().always(function() {
-                        this.callback(result);
-                        this.destroy();
-                    }.bind(this));
-                    return;
+                    cancel_prm = this.screen.current_record.reload();
                 }
             } else {
                 result = response_id != 'RESPONSE_CANCEL';
             }
-            this.callback(result);
-            this.destroy();
+            (cancel_prm || jQuery.when()).done(function() {
+                this.callback(result);
+                this.destroy();
+            }.bind(this));
         },
         destroy: function() {
             this.screen.screen_container.alternate_view = false;
