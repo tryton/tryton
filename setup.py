@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # This file is part purchase_request_quotation module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
-# the full copyright notices and license terms.
 
 from setuptools import setup, find_packages
 import re
@@ -41,33 +40,43 @@ major_version = int(major_version)
 minor_version = int(minor_version)
 name = 'trytond_purchase_request_quotation'
 
+download_url = 'http://downloads.tryton.org/%s.%s/' % (
+    major_version, minor_version)
+if minor_version % 2:
+    version = '%s.%s.dev0' % (major_version, minor_version)
+    download_url = (
+        'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
+            name[8:], name, version))
+
 requires = []
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
-        requires.append(get_require_version('%trytond_%s' % dep))
+        requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
+tests_require = [
+    get_require_version('proteus'),
+    get_require_version('trytond_purchase_requisition'),
+    ]
 dependency_links = []
 if minor_version % 2:
-    # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
-    description=('The quotation module for '
-        'the purchases of Tryton.'),
+    description='Tryton module for purchase request quotation',
     long_description=read('README'),
     author='Tryton',
     author_email='issue_tracker@tryton.org',
     url='http://www.tryton.org',
+    download_url=download_url,
     keywords='tryton purchase request for quotation',
     package_dir={'trytond.modules.purchase_request_quotation': '.'},
-    packages=[
-        'trytond.modules.purchase_request_quotation',
+    packages=(
+        ['trytond.modules.purchase_request_quotation'] +
         ['trytond.modules.purchase_request_quotation.%s' % p
-            for p in find_packages()],
-        ],
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.purchase_request_quotation': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
@@ -83,6 +92,7 @@ setup(name=name,
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
+        'Natural Language :: Chinese (Simplified)',
         'Natural Language :: Czech',
         'Natural Language :: Dutch',
         'Natural Language :: English',
@@ -90,6 +100,7 @@ setup(name=name,
         'Natural Language :: German',
         'Natural Language :: Hungarian',
         'Natural Language :: Italian',
+        'Natural Language :: Polish',
         'Natural Language :: Portuguese (Brazilian)',
         'Natural Language :: Russian',
         'Natural Language :: Slovenian',
@@ -109,7 +120,7 @@ setup(name=name,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    purchase_request_for_quotation = trytond.modules.purchase_request_quotation
+    purchase_request_quotation = trytond.modules.purchase_request_quotation
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
