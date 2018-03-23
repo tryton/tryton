@@ -5,7 +5,8 @@ from trytond.model import ModelView, ModelSQL, ValueMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Address', 'Party', 'PartyPaymentTerm', 'PartyReplace']
+__all__ = ['Address', 'Party', 'PartyPaymentTerm',
+    'PartyReplace', 'PartyErase']
 customer_payment_term = fields.Many2One(
     'account.invoice.payment_term', "Customer Payment Term")
 supplier_payment_term = fields.Many2One(
@@ -100,3 +101,33 @@ class PartyReplace:
             ('account.invoice', 'party'),
             ('account.invoice.line', 'party'),
             ]
+
+
+class PartyErase:
+    __metaclass__ = PoolMeta
+    __name__ = 'party.erase'
+
+    @classmethod
+    def __setup__(cls):
+        super(PartyErase, cls).__setup__()
+        cls._error_messages.update({
+                'pending_invoice': (
+                    'The party "%(party)s" can not be erased '
+                    'because he has pending invoices '
+                    'for the company "%(company)s".'),
+                })
+
+    def check_erase_company(self, party, company):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        super(PartyErase, self).check_erase_company(party, company)
+
+        invoices = Invoice.search([
+                ('party', '=', party.id),
+                ('state', 'not in', ['paid', 'cancel']),
+                ])
+        if invoices:
+            self.raise_user_error('pending_invoice', {
+                    'party': party.rec_name,
+                    'company': company.rec_name,
+                    })

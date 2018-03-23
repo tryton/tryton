@@ -1,3 +1,4 @@
+* Check pending invoice to erase party
 * Add invoice usage to party's contact mechanisms
 * Show reconciled date on invoice
 * Make description on invoice line optional
