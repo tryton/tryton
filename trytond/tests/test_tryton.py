@@ -316,6 +316,27 @@ class ModuleTestCase(unittest.TestCase):
                             list(depends - set(model._fields)), mname, bname))
 
     @with_transaction()
+    def test_depends_parent(self):
+        "Test depends on _parent_ contains also the parent relation"
+        for mname, model in Pool().iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            for fname, field in model._fields.iteritems():
+                for attribute in ['depends', 'on_change', 'on_change_with',
+                        'selection_change_with', 'autocomplete']:
+                    depends = getattr(field, attribute, [])
+                    for depend in depends:
+                        prefix = []
+                        for d in depend.split('.'):
+                            if d.startswith('_parent_'):
+                                relation = '.'.join(
+                                    prefix + [d[len('_parent_'):]])
+                                assert relation in depends, (
+                                    'Missing "%s" in "%s"."%s"."%s"' % (
+                                        relation, mname, fname, attribute))
+                            prefix.append(d)
+
+    @with_transaction()
     def test_field_methods(self):
         'Test field methods'
         for mname, model in Pool().iterobject():
