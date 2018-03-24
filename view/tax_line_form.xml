@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='amount']" position="after">
+        <newline/>
+        <label name="on_cash_basis"/>
+        <field name="on_cash_basis"/>
+        <label name="period"/>
+        <field name="period"/>
+    </xpath>
+</data>
