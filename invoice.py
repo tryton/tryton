@@ -1683,7 +1683,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return self.currency.digits
         return 2
 
-    @fields.depends('type', 'quantity', 'unit_price',
+    @fields.depends('type', 'quantity', 'unit_price', 'invoice',
         '_parent_invoice.currency', 'currency')
     def on_change_with_amount(self):
         if self.type == 'line':
@@ -1832,8 +1832,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('account', 'product', '_parent_invoice.party',
-        '_parent_invoice.type')
+    @fields.depends('account', 'product', 'invoice',
+        '_parent_invoice.party', '_parent_invoice.type')
     def on_change_account(self):
         if self.product:
             return
@@ -2154,7 +2154,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         if self.invoice:
             return self.invoice.state
 
-    @fields.depends('tax', '_parent_invoice.party', 'base')
+    @fields.depends('tax', 'invoice', '_parent_invoice.party', 'base')
     def on_change_tax(self):
         Tax = Pool().get('account.tax')
         if not self.tax:
@@ -2179,7 +2179,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             self.tax_sign = tax.credit_note_tax_sign
             self.account = tax.credit_note_account
 
-    @fields.depends('tax', 'base', 'amount', 'manual',
+    @fields.depends('tax', 'base', 'amount', 'manual', 'invoice',
         '_parent_invoice.currency')
     def on_change_with_amount(self):
         Tax = Pool().get('account.tax')
