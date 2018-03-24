@@ -534,12 +534,16 @@ var Sao = {};
     });
 
     Sao.Dialog = Sao.class_(Object, {
-        init: function(title, class_, size) {
+        init: function(title, class_, size, keyboard) {
             size = size || 'sm';
+            if (keyboard === undefined) {
+                keyboard = true;
+            }
             this.modal = jQuery('<div/>', {
                 'class': class_ + ' modal fade',
                 'role': 'dialog',
                 'data-backdrop': 'static',
+                'data-keyboard': keyboard,
             });
             this.content = jQuery('<form/>', {
                 'class': 'modal-content'

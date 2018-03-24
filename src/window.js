@@ -72,8 +72,14 @@
                     }
                 }.bind(this));
             }.bind(this));
-            var dialog = new Sao.Dialog('', 'window-form', 'lg');
+            var dialog = new Sao.Dialog('', 'window-form', 'lg', false);
             this.el = dialog.modal;
+            this.el.on('keydown', function(e) {
+                if (e.which == Sao.common.ESC_KEYCODE) {
+                    e.preventDefault();
+                    this.response('RESPONSE_CANCEL');
+                }
+            }.bind(this));
 
             var readonly = (this.screen.attributes.readonly ||
                     this.screen.group.get_readonly());
