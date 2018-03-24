@@ -1857,15 +1857,23 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return self.product.default_uom_category.id
 
     @fields.depends('account', 'product', '_parent_invoice.party',
-        '_parent_invoice.type')
+        '_parent_invoice.type', 'party', 'invoice', 'invoice_type')
     def on_change_account(self):
         if self.product:
             return
         taxes = []
-        if (self.invoice and self.invoice.party
-                and self.invoice.type):
+        party = None
+        if self.invoice and self.invoice.party:
             party = self.invoice.party
-            if self.invoice.type == 'in':
+        elif self.party:
+            party = self.party
+
+        if self.invoice and self.invoice.type:
+            type_ = self.invoice.type
+        else:
+            type_ = self.invoice_type
+        if party and type_:
+            if type_ == 'in':
                 tax_rule = party.supplier_tax_rule
             else:
                 tax_rule = party.customer_tax_rule
@@ -1881,6 +1889,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                         taxes.extend(tax_ids)
                     continue
                 taxes.append(tax)
+            if tax_rule:
+                tax_ids = tax_rule.apply(None, pattern)
+                if tax_ids:
+                    taxes.extend(tax_ids)
         self.taxes = taxes
 
     @classmethod
