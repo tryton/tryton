@@ -479,7 +479,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             self.unit = self.product.purchase_uom
             self.unit_digits = self.product.purchase_uom.digits
 
-    @fields.depends('quantity', 'unit_price', 'unit',
+    @fields.depends('quantity', 'unit_price', 'unit', 'requisition',
         '_parent_requisition.currency')
     def on_change_with_amount(self, name=None):
         if (self.unit_price is None) or (self.quantity is None):
