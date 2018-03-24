@@ -1195,7 +1195,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes]
         return context
 
-    @fields.depends('product', 'unit', 'quantity',
+    @fields.depends('product', 'unit', 'quantity', 'purchase',
         '_parent_purchase.party', '_parent_purchase.currency',
         '_parent_purchase.purchase_date', 'product_supplier')
     def on_change_product(self):
@@ -1263,7 +1263,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('product', 'quantity', 'unit', 'taxes',
+    @fields.depends('product', 'quantity', 'unit', 'taxes', 'purchase',
         '_parent_purchase.currency', '_parent_purchase.party',
         '_parent_purchase.purchase_date', 'product_supplier')
     def on_change_quantity(self):
@@ -1287,7 +1287,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_taxes(self):
         self.on_change_quantity()
 
-    @fields.depends('type', 'quantity', 'unit_price', 'unit',
+    @fields.depends('type', 'quantity', 'unit_price', 'unit', 'purchase',
         '_parent_purchase.currency')
     def on_change_with_amount(self):
         if self.type == 'line':
@@ -1328,7 +1328,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         else:
             return self.purchase.party.supplier_location.id
 
-    @fields.depends('product', 'quantity', 'moves',
+    @fields.depends('product', 'quantity', 'moves', 'purchase',
         '_parent_purchase.purchase_date', '_parent_purchase.party',
         'delivery_date_edit', 'delivery_date_store',
         '_parent_purchase.delivery_date')
