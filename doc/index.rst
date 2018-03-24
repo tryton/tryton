@@ -146,6 +146,9 @@ supplier. It is mainly composed of a party (the supplier), a location
   The inventory moves are between the input location and the storage
   location (or one of his child locations).
 
+If the storage location is configured as the same as the input location only
+incoming moves are created.
+
 
 The supplier shipment can be in one of this states:
 

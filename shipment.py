@@ -122,11 +122,17 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 ('shipment', '=', None),
                 ('from_location', '=', Eval('supplier_location')),
                 ('state', '=', 'draft'),
-                ('to_location', '=', Eval('warehouse_input')),
+                If(Eval('warehouse_input') == Eval('warehouse_storage'),
+                    ('to_location', 'child_of',
+                        [Eval('warehouse_input', -1)], 'parent'),
+                    ('to_location', '=', Eval('warehouse_input'))),
                 ],
             domain=[
                 ('from_location', '=', Eval('supplier_location')),
-                ('to_location', '=', Eval('warehouse_input')),
+                If(Eval('warehouse_input') == Eval('warehouse_storage'),
+                    ('to_location', 'child_of',
+                        [Eval('warehouse_input', -1)], 'parent'),
+                    ('to_location', '=', Eval('warehouse_input'))),
                 ('company', '=', Eval('company')),
                 ],
             states={
@@ -134,7 +140,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                     | ~Eval('warehouse') | ~Eval('supplier')),
                 },
             depends=['state', 'warehouse', 'supplier_location',
-                'warehouse_input', 'company']),
+                'warehouse_input', 'warehouse_storage', 'company']),
         'get_incoming_moves', setter='set_incoming_moves')
     inventory_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Inventory Moves',
@@ -148,6 +154,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 ],
             states={
                 'readonly': Eval('state').in_(['draft', 'done', 'cancel']),
+                'invisible': (
+                    Eval('warehouse_input') == Eval('warehouse_storage')),
                 },
             depends=['state', 'warehouse', 'warehouse_input',
                 'warehouse_storage', 'company']),
@@ -342,6 +350,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     def get_incoming_moves(self, name):
         moves = []
+        if self.warehouse_input == self.warehouse_storage:
+            return [m.id for m in self.moves]
         for move in self.moves:
             if move.to_location == self.warehouse_input:
                 moves.append(move.id)
@@ -459,6 +469,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     @classmethod
     def create_inventory_moves(cls, shipments):
         for shipment in shipments:
+            if shipment.warehouse_storage == shipment.warehouse_input:
+                # Do not create inventory moves
+                continue
             # Use moves instead of inventory_moves because save reset before
             # adding new records and as set_inventory_moves is just a proxy to
             # moves, it will reset also the incoming_moves
@@ -507,6 +520,12 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         Move.do([m for s in shipments for m in s.incoming_moves])
         cls.create_inventory_moves(shipments)
+        # Set received state to allow done transition
+        cls.write(shipments, {'state': 'received'})
+        to_do = [s for s in shipments
+            if s.warehouse_storage == s.warehouse_input]
+        if to_do:
+            cls.done(to_do)
 
     @classmethod
     @ModelView.button

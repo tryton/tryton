@@ -129,5 +129,7 @@ setup(name=name,
         'tests/scenario_stock_reporting.rst',
         'tests/scenario_stock_shipment_internal.rst',
         'tests/scenario_stock_shipment_out.rst',
+        'tests/scenario_stock_shipment_out_same_storage_output.rst',
+        'tests/scenario_stock_shipment_in_same_storage_input.rst',
         ],
     )
