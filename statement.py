@@ -830,14 +830,6 @@ class Line(
         Invoice = pool.get('account.invoice')
         MoveLine = pool.get('account.move.line')
 
-        # Try to group as much possible the write of payment lines on invoices
-        def write_invoice_payments(invoice_payments):
-            to_write = []
-            for invoice, lines in invoice_payments.iteritems():
-                to_write.append([invoice])
-                to_write.append({'payment_lines': [('add', lines)]})
-            Invoice.write(*to_write)
-            invoice_payments.clear()
         invoice_payments = defaultdict(list)
 
         to_reconcile = []
@@ -848,7 +840,8 @@ class Line(
             # Write previous invoice payments to have them when calling
             # get_reconcile_lines_for_amount
             if line.invoice in invoice_payments:
-                write_invoice_payments(invoice_payments)
+                Invoice.add_payment_lines(invoice_payments)
+                invoice_payments.clear()
 
             with Transaction().set_context(date=line.invoice.currency_date):
                 amount_to_pay = Currency.compute(line.invoice.currency,
@@ -873,7 +866,7 @@ class Line(
             if not reconcile_lines[1]:
                 to_reconcile.append(reconcile_lines[0] + [move_line])
         if invoice_payments:
-            write_invoice_payments(invoice_payments)
+            Invoice.add_payment_lines(invoice_payments)
         if to_reconcile:
             MoveLine.reconcile(*to_reconcile)
 
