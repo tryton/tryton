@@ -1190,7 +1190,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes]
         return context
 
-    @fields.depends('product', 'unit', 'quantity', 'description',
+    @fields.depends('product', 'unit', 'quantity', 'description', 'sale',
         '_parent_sale.party', '_parent_sale.currency',
         '_parent_sale.sale_date')
     def on_change_product(self):
@@ -1246,7 +1246,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('product', 'quantity', 'unit', 'taxes',
+    @fields.depends('product', 'quantity', 'unit', 'taxes', 'sale',
         '_parent_sale.currency', '_parent_sale.party',
         '_parent_sale.sale_date')
     def on_change_quantity(self):
@@ -1271,7 +1271,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_taxes(self):
         self.on_change_quantity()
 
-    @fields.depends('type', 'quantity', 'unit_price', 'unit',
+    @fields.depends('type', 'quantity', 'unit_price', 'unit', 'sale',
         '_parent_sale.currency')
     def on_change_with_amount(self):
         if self.type == 'line':
@@ -1318,7 +1318,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             if self.warehouse:
                 return self.warehouse.input_location.id
 
-    @fields.depends('product', 'quantity', 'moves', '_parent_sale.sale_date')
+    @fields.depends('product', 'quantity', 'moves', 'sale',
+        '_parent_sale.sale_date')
     def on_change_with_shipping_date(self, name=None):
         if self.moves:
             dates = filter(
