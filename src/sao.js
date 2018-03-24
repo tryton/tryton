@@ -139,6 +139,18 @@ var Sao = {};
             year = undefined;
         }
         else {
+            if (hour === undefined) {
+                hour = 0;
+            }
+            if (minute === undefined) {
+                minute = 0;
+            }
+            if (second === undefined) {
+                second = 0;
+            }
+            if (millisecond === undefined) {
+                millisecond = 0;
+            }
             datetime = moment();
         }
         if (utc) {
