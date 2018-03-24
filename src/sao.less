@@ -142,13 +142,17 @@ img.icon {
                 vertical-align: middle;
             }
         }
-        & img.column-affix {
-            width: 2em;
-            height: 2em;
+
+        & td.prefix {
+            padding-right: @table-cell-padding;
         }
-        & a.column-affix > img {
-            width: 1em;
-            height: 1em;
+        & td.suffix {
+            padding-left: @table-cell-padding;
+        }
+        & img.column-affix, a.column-affix > img {
+            width: unit(@line-height-base, em);
+            height: unit(@line-height-base, em);
+            display: block;
         }
 
         & tr.more-row {
