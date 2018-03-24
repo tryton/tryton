@@ -1471,17 +1471,9 @@ function eval_pyson(value){
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-calendar'
             }))).appendTo(this.date);
-            var noop = function () {};
-            var reset_keyBinds = {};
-            var default_keyBinds = this.date.datetimepicker.defaults.keyBinds;
-            for (var key in default_keyBinds) {
-                if (default_keyBinds.hasOwnProperty(key)) {
-                    reset_keyBinds[key] = noop;
-                }
-            }
             this.date.datetimepicker({
                 'locale': moment.locale(),
-                'keyBinds': reset_keyBinds,
+                'keyBinds': null,
             });
             this.date.css('width', this._width);
             this.date.on('dp.change', this.focus_out.bind(this));
