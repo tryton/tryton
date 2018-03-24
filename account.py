@@ -7,13 +7,15 @@ from sql.conditionals import Coalesce
 
 from trytond.model import (fields, ModelView, ModelSQL, MatchMixin,
     sequence_ordered)
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond import backend
 
 __all__ = ['FiscalYear',
-    'Period', 'Move', 'Reconciliation', 'InvoiceSequence', 'RenewFiscalYear']
+    'Period', 'Move', 'MoveLine', 'Reconciliation', 'InvoiceSequence',
+    'RenewFiscalYear']
 
 
 class FiscalYear:
@@ -193,6 +195,62 @@ class Move:
     @classmethod
     def _get_origin(cls):
         return super(Move, cls)._get_origin() + ['account.invoice']
+
+
+class MoveLine:
+    __metaclass__ = PoolMeta
+    __name__ = 'account.move.line'
+
+    invoice_payment = fields.Function(fields.Many2One(
+            'account.invoice', "Invoice Payment",
+            domain=[
+                ('account', '=', Eval('account', -1)),
+                If(Bool(Eval('party')),
+                    ('party', '=', Eval('party')),
+                    (),
+                    ),
+                ],
+            states={
+                'invisible': Bool(Eval('reconciliation')),
+                },
+            depends=['account', 'party', 'reconciliation']),
+        'get_invoice_payment',
+        setter='set_invoice_payment',
+        searcher='search_invoice_payment')
+    invoice_payments = fields.Many2Many(
+        'account.invoice-account.move.line', 'line', 'invoice',
+        "Invoice Payments", readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super(MoveLine, cls).__setup__()
+        cls._check_modify_exclude.add('invoice_payment')
+
+    @classmethod
+    def get_invoice_payment(cls, lines, name):
+        pool = Pool()
+        InvoicePaymentLine = pool.get('account.invoice-account.move.line')
+
+        ids = map(int, lines)
+        result = dict.fromkeys(ids, None)
+        for sub_ids in grouped_slice(ids):
+            payment_lines = InvoicePaymentLine.search([
+                    ('line', 'in', list(sub_ids)),
+                    ])
+            result.update({p.line.id: p.invoice.id for p in payment_lines})
+        return result
+
+    @classmethod
+    def set_invoice_payment(cls, lines, name, value):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        Invoice.remove_payment_lines(lines)
+        if value:
+            Invoice.add_payment_lines({Invoice(value): lines})
+
+    @classmethod
+    def search_invoice_payment(cls, name, domain):
+        return [('invoice_payments',) + tuple(domain[1:])]
 
 
 class Reconciliation:

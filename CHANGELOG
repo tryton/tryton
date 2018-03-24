@@ -1,3 +1,8 @@
+* Show invoice payment on Move Line
+* Remove payment lines which actually do not pay the Invoice
+* Ensure payment lines are linked to only one Invoice
+* Ensure payments on Invoice does not exceed invoice amount
+* Add methods to add and remove payments on Invoice
 * Check pending invoice to erase party
 * Add invoice usage to party's contact mechanisms
 * Show reconciled date on invoice

@@ -33,6 +33,7 @@ def register():
         Period,
         FiscalYear,
         Move,
+        MoveLine,
         Reconciliation,
         module='account_invoice', type_='model')
     Pool.register(

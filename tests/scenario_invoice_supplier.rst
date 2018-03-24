@@ -31,6 +31,7 @@ Create fiscal year::
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
     ...     create_fiscalyear(company))
     >>> fiscalyear.click('create_period')
+    >>> period_ids = [p.id for p in fiscalyear.periods]
 
 Create chart of accounts::
 
@@ -43,6 +44,7 @@ Create chart of accounts::
 
 Create tax::
 
+    >>> TaxCode = Model.get('account.tax.code')
     >>> tax = set_tax_code(create_tax(Decimal('.10')))
     >>> tax.save()
     >>> invoice_base_code = tax.invoice_base_code
@@ -145,17 +147,21 @@ Create invoice::
     Decimal('10.00')
     >>> account_tax.credit
     Decimal('0.00')
-    >>> invoice_base_code.reload()
-    >>> invoice_base_code.sum
+    >>> with config.set_context(periods=period_ids):
+    ...     invoice_base_code = TaxCode(invoice_base_code.id)
+    ...     invoice_base_code.sum
     Decimal('100.00')
-    >>> invoice_tax_code.reload()
-    >>> invoice_tax_code.sum
+    >>> with config.set_context(periods=period_ids):
+    ...     invoice_tax_code = TaxCode(invoice_tax_code.id)
+    ...     invoice_tax_code.sum
     Decimal('10.00')
-    >>> credit_note_base_code.reload()
-    >>> credit_note_base_code.sum
+    >>> with config.set_context(periods=period_ids):
+    ...     credit_note_base_code = TaxCode(credit_note_base_code.id)
+    ...     credit_note_base_code.sum
     Decimal('0.00')
-    >>> credit_note_tax_code.reload()
-    >>> credit_note_tax_code.sum
+    >>> with config.set_context(periods=period_ids):
+    ...     credit_note_tax_code = TaxCode(credit_note_tax_code.id)
+    ...     credit_note_tax_code.sum
     Decimal('0.00')
 
 Credit invoice::

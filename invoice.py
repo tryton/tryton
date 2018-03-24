@@ -12,7 +12,7 @@ from sql.conditionals import Coalesce, Case
 from sql.functions import Round
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
-    sequence_ordered
+    sequence_ordered, Unique
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -184,14 +184,27 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     lines_to_pay = fields.Function(fields.One2Many('account.move.line', None,
         'Lines to Pay'), 'get_lines_to_pay')
     payment_lines = fields.Many2Many('account.invoice-account.move.line',
-        'invoice', 'line', readonly=True, string='Payment Lines',
+        'invoice', 'line', string='Payment Lines',
         domain=[
-            ('move.company', '=', Eval('company', -1)),
+            ('account', '=', Eval('account', -1)),
+            ('party', 'in', [None, Eval('party', -1)]),
+            ['OR',
+                ('invoice_payment', '=', None),
+                ('invoice_payment', '=', Eval('id', -1)),
+                ],
+            If(Eval('type') == 'out',
+                If(Eval('total_amount', 0) >= 0,
+                    ('debit', '=', 0),
+                    ('credit', '=', 0)),
+                If(Eval('total_amount', 0) >= 0,
+                    ('credit', '=', 0),
+                    ('debit', '=', 0))),
             ],
         states={
-            'invisible': (Eval('state') == 'paid') | ~Eval('payment_lines'),
+            'invisible': Eval('state') == 'paid',
+            'readonly': Eval('state') != 'posted',
             },
-        depends=['state', 'company'])
+        depends=['state', 'account', 'party', 'id', 'type', 'total_amount'])
     amount_to_pay_today = fields.Function(fields.Numeric('Amount to Pay Today',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_amount_to_pay')
@@ -248,6 +261,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'customer_invoice_cancel_move': (
                     'Customer invoice/credit note '
                     '"%s" can not be cancelled once posted.'),
+                'payment_lines_greater_amount': (
+                    'The payment lines on invoice "%(invoice)s" can not be '
+                    'greater than the invoice amount.'),
+                'modify_payment_lines_invoice_paid': (
+                    'Payment lines can not be modified '
+                    'on a paid invoice "%(invoice)s"'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -1161,6 +1180,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for invoice in invoices:
             invoice.check_same_account()
             invoice.check_cancel_move()
+            invoice.check_payment_lines()
 
     def check_same_account(self):
         for line in self.lines:
@@ -1176,6 +1196,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if self.type == 'out' and self.cancel_move:
             self.raise_user_error('customer_invoice_cancel_move',
                 self.rec_name)
+
+    def check_payment_lines(self):
+        amount = sum(l.debit - l.credit for l in self.lines_to_pay)
+        payment_amount = sum(l.debit - l.credit for l in self.payment_lines)
+        if abs(amount) < abs(payment_amount):
+            self.raise_user_error('payment_lines_greater_amount', {
+                    'invoice': self.rec_name,
+                    })
 
     def get_reconcile_lines_for_amount(self, amount):
         '''
@@ -1257,11 +1285,49 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         for line in move.lines:
             if line.account == self.account:
-                self.write([self], {
-                        'payment_lines': [('add', [line.id])],
-                        })
+                self.add_payment_lines({self: [line]})
                 return line
         raise Exception('Missing account')
+
+    @classmethod
+    def add_payment_lines(cls, payments):
+        "Add value lines to the key invoice from the payment dictionary."
+        to_write = []
+        for invoice, lines in payments.iteritems():
+            if invoice.state == 'paid':
+                cls.raise_user_error('modify_payment_lines_invoice_paid', {
+                        'invoice': invoice.rec_name,
+                        })
+            to_write.append([invoice])
+            to_write.append({'payment_lines': [('add', lines)]})
+        if to_write:
+            cls.write(*to_write)
+
+    @classmethod
+    def remove_payment_lines(cls, lines):
+        "Remove payment lines from their invoices."
+        pool = Pool()
+        PaymentLine = pool.get('account.invoice-account.move.line')
+
+        payments = defaultdict(list)
+        ids = map(int, lines)
+        for sub_ids in grouped_slice(ids):
+            payment_lines = PaymentLine.search([
+                    ('line', 'in', list(sub_ids)),
+                    ])
+            for payment_line in payment_lines:
+                payments[payment_line.invoice].append(payment_line.line)
+
+        to_write = []
+        for invoice, lines in payments.iteritems():
+            if invoice.state == 'paid':
+                cls.raise_user_error('modify_payment_lines_invoice_paid', {
+                        'invoice': invoice.rec_name,
+                        })
+            to_write.append([invoice])
+            to_write.append({'payment_lines': [('remove', lines)]})
+        if to_write:
+            cls.write(*to_write)
 
     def print_invoice(self):
         '''
@@ -1385,7 +1451,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @Workflow.transition('paid')
     def paid(cls, invoices):
-        pass
+        # Remove links to lines which actually do not pay the invoice
+        to_write = []
+        for invoice in invoices:
+            to_remove = []
+            reconciliations = [l.reconciliation for l in invoice.lines_to_pay]
+            for payment_line in invoice.payment_lines:
+                if payment_line.reconciliation not in reconciliations:
+                    to_remove.append(payment_line)
+            if to_remove:
+                to_write.append([invoice])
+                to_write.append([('remove', to_remove)])
+        if to_write:
+            cls.write(*to_write)
 
     @classmethod
     @ModelView.button
@@ -1437,8 +1515,47 @@ class InvoicePaymentLine(ModelSQL):
     __name__ = 'account.invoice-account.move.line'
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
             select=True, required=True)
-    line = fields.Many2One('account.move.line', 'Payment Line',
-            ondelete='CASCADE', select=True, required=True)
+    invoice_account = fields.Function(
+        fields.Many2One('account.account', "Invoice Account"),
+        'get_invoice')
+    invoice_party = fields.Function(
+        fields.Many2One('party.party', "Invoice Party"), 'get_invoice')
+    line = fields.Many2One(
+        'account.move.line', 'Payment Line', ondelete='CASCADE',
+        select=True, required=True,
+        domain=[
+            ('account', '=', Eval('invoice_account')),
+            ('party', '=', Eval('invoice_party')),
+            ],
+        depends=['invoice_account', 'invoice_party'])
+
+    @classmethod
+    def __setup__(cls):
+        super(InvoicePaymentLine, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('line_unique', Unique(t, t.line),
+                "A payment line can be linked to only one invoice."),
+            ]
+
+    @classmethod
+    def get_invoice(cls, records, names):
+        result = {}
+        for name in names:
+            result[name] = {}
+        invoice_account = 'invoice_account' in result
+        invoice_party = 'invoice_party' in result
+        for record in records:
+            if invoice_account:
+                result['invoice_account'][record.id] = (
+                    record.invoice.account.id)
+            if invoice_party:
+                if record.invoice.account.party_required:
+                    party = record.invoice.party.id
+                else:
+                    party = None
+                result['invoice_party'][record.id] = party
+        return result
 
 
 class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
