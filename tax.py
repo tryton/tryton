@@ -5,6 +5,7 @@ from collections import namedtuple
 from decimal import Decimal
 from itertools import groupby
 
+from sql import Literal
 from sql.aggregate import Sum
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
@@ -194,23 +195,29 @@ class TaxCode(ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         res = {}
         pool = Pool()
+        Move = pool.get('account.move')
         MoveLine = pool.get('account.move.line')
         TaxLine = pool.get('account.tax.line')
 
         code = cls.__table__()
         tax_line = TaxLine.__table__()
         move_line = MoveLine.__table__()
+        move = Move.__table__()
 
         childs = cls.search([
                 ('parent', 'child_of', [c.id for c in codes]),
                 ])
         all_codes = list(set(codes) | set(childs))
-        line_query, _ = MoveLine.query_get(move_line)
-        cursor.execute(*code.join(tax_line, condition=tax_line.code == code.id
-                ).join(move_line, condition=tax_line.move_line == move_line.id
-                ).select(code.id, Sum(tax_line.amount),
+        where = cls._sum_where(tax_line, move_line, move)
+        cursor.execute(*code
+            .join(tax_line, condition=tax_line.code == code.id)
+            .join(move_line, condition=tax_line.move_line == move_line.id)
+            .join(move, condition=move_line.move == move.id)
+            .select(code.id, Sum(tax_line.amount),
                 where=code.id.in_([c.id for c in all_codes])
-                & (code.active == True) & line_query,
+                & (code.active == True)
+                & (move_line.state != 'draft')
+                & where,
                 group_by=code.id))
         code_sum = {}
         for code_id, sum in cursor.fetchall():
@@ -229,6 +236,21 @@ class TaxCode(ModelSQL, ModelView):
                     code_sum.get(child.id, Decimal('0.0')))
             res[code.id] = code.company.currency.round(res[code.id])
         return res
+
+    @classmethod
+    def _sum_where(cls, tax_line, move_line, move):
+        context = Transaction().context
+        periods = context.get('periods', [])
+        if periods:
+            return move.period.in_(periods)
+        else:
+            return Literal(False)
+
+    @classmethod
+    def _sum_domain(cls):
+        context = Transaction().context
+        periods = context.get('periods', [])
+        return [('move_line.move.period', 'in', periods)]
 
     def get_rec_name(self, name):
         if self.code:
@@ -303,12 +325,16 @@ class OpenChartTaxCodeStart(ModelView):
         help='Leave empty for all open fiscal year',
         states={
             'invisible': Eval('method') != 'fiscalyear',
-            }, depends=['method'])
+            'required': Eval('method') == 'fiscalyear',
+            },
+        depends=['method'])
     periods = fields.Many2Many('account.period', None, None, 'Periods',
         help='Leave empty for all periods of all open fiscal year',
         states={
             'invisible': Eval('method') != 'periods',
-            }, depends=['method'])
+            'required': Eval('method') == 'periods',
+            },
+        depends=['method'])
 
     @staticmethod
     def default_method():
@@ -326,20 +352,19 @@ class OpenChartTaxCode(Wizard):
     open_ = StateAction('account.act_tax_code_tree2')
 
     def do_open_(self, action):
+        periods = []
         if self.start.method == 'fiscalyear':
-            action['pyson_context'] = PYSONEncoder().encode({
-                    'fiscalyear': (self.start.fiscalyear.id
-                        if self.start.fiscalyear else None),
-                    })
             if self.start.fiscalyear:
+                periods = self.start.fiscalyear.periods
                 action['name'] += ' - %s' % self.start.fiscalyear.rec_name
-        else:
-            action['pyson_context'] = PYSONEncoder().encode({
-                    'periods': [x.id for x in self.start.periods],
-                    })
-            period_str = ', '.join(p.rec_name for p in self.start.periods)
-            if period_str:
-                action['name'] += ' (%s)' % period_str
+        elif self.start.method == 'periods':
+            if self.start.periods:
+                periods = self.start.periods
+                action['name'] += ' (%s)' % ', '.join(
+                    p.rec_name for p in self.start.periods)
+        action['pyson_context'] = PYSONEncoder().encode({
+                'periods': [p.id for p in periods],
+                })
         return action, {}
 
     def transition_open_(self):
@@ -1173,6 +1198,14 @@ class TaxLine(ModelSQL, ModelView):
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company')
 
+    @classmethod
+    def __setup__(cls):
+        super(TaxLine, cls).__setup__()
+        cls._error_messages.update({
+                'modify_closed_period': (
+                    'You can not add/modify tax lines in closed period "%s".'),
+                })
+
     @fields.depends('move_line')
     def on_change_with_currency_digits(self, name=None):
         if self.move_line:
@@ -1190,6 +1223,35 @@ class TaxLine(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         return [('code',) + tuple(clause[1:])]
+
+    @classmethod
+    def create(cls, vlist):
+        lines = super(TaxLine, cls).create(vlist)
+        cls.check_modify(lines)
+        return lines
+
+    @classmethod
+    def write(cls, *args):
+        lines = sum(args[0:None:2], [])
+        cls.check_modify(lines)
+        super(TaxLine, cls).write(*args)
+
+    @classmethod
+    def delete(cls, lines):
+        cls.check_modify(lines)
+        super(TaxLine, cls).delete(lines)
+
+    @property
+    def period_checked(self):
+        return self.move_line.period
+
+    @classmethod
+    def check_modify(cls, lines):
+        for line in lines:
+            period = line.period_checked
+            if period and period.state != 'open':
+                cls.raise_user_error(
+                    'modify_closed_period', (period.rec_name,))
 
 
 class TaxRuleTemplate(ModelSQL, ModelView):
@@ -1590,36 +1652,11 @@ class OpenTaxCode(Wizard):
 
     def do_open_(self, action):
         pool = Pool()
-        FiscalYear = pool.get('account.fiscalyear')
-        Period = pool.get('account.period')
-
-        if not Transaction().context.get('fiscalyear'):
-            fiscalyears = FiscalYear.search([
-                    ('state', '=', 'open'),
-                    ])
-        else:
-            fiscalyears = [FiscalYear(Transaction().context['fiscalyear'])]
-
-        periods = []
-        if not Transaction().context.get('periods'):
-            periods = Period.search([
-                    ('fiscalyear', 'in', [f.id for f in fiscalyears]),
-                    ])
-        else:
-            periods = Period.browse(Transaction().context['periods'])
-
+        TaxCode = pool.get('account.tax.code')
         action['pyson_domain'] = PYSONEncoder().encode([
-                ('move_line.period', 'in', [p.id for p in periods]),
+                TaxCode._sum_domain(),
                 ('code', '=', Transaction().context['active_id']),
                 ])
-        if Transaction().context.get('fiscalyear'):
-            action['pyson_context'] = PYSONEncoder().encode({
-                    'fiscalyear': Transaction().context['fiscalyear'],
-                    })
-        else:
-            action['pyson_context'] = PYSONEncoder().encode({
-                    'periods': [p.id for p in periods],
-                    })
         return action, {}
 
 

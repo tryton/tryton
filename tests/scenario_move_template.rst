@@ -25,7 +25,7 @@ Create fiscal year::
 
     >>> fiscalyear = create_fiscalyear(company)
     >>> fiscalyear.click('create_period')
-    >>> period = fiscalyear.periods[0]
+    >>> period_ids = [p.id for p in fiscalyear.periods]
 
 Create chart of accounts::
 
@@ -37,6 +37,7 @@ Create chart of accounts::
 
 Create tax with code::
 
+    >>> TaxCode = Model.get('account.tax.code')
     >>> tax = set_tax_code(create_tax(Decimal('0.1')))
     >>> tax.save()
 
@@ -112,7 +113,11 @@ Check the Move::
     [(Decimal('0'), Decimal('12.24')), (Decimal('1.11'), Decimal('0')), (Decimal('11.13'), Decimal('0'))]
     >>> move.description
     u'Supplier - Test'
-    >>> tax.invoice_base_code.sum
+    >>> with config.set_context(periods=period_ids):
+    ...     invoice_base_code = TaxCode(tax.invoice_base_code.id)
+    ...     tax.invoice_base_code.sum
     Decimal('11.13')
-    >>> tax.invoice_tax_code.sum
+    >>> with config.set_context(periods=period_ids):
+    ...     invoice_tax_code = TaxCode(tax.invoice_tax_code.id)
+    ...     tax.invoice_tax_code.sum
     Decimal('1.11')

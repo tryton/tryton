@@ -176,14 +176,15 @@ Tax Code
 
 The tax codes defines a tree structure and are used to create the tax
 reports. They are used to collect the tax amounts and the base amounts
-of the invoices. The Tax Code model contains the followong fields:
+of the invoices. The Tax Code model contains the following fields:
 
 - Name
 - Code
 - Active: A checkbox that allow to disable the tax code.
 - Company: The company for which the tax code is defined.
 - Parent, Children: Parent and children tax codes.
-- Sum: The sum of all amounts corresponding to this tax code.
+- Sum: The sum of all amounts corresponding to this tax code for the selected
+  periods.
 
 
 Tax
