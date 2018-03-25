@@ -861,7 +861,11 @@
                     'class': 'badge'
                 }).appendTo(this.buttons.attach);
             }
-            badge.text(count);
+            var text = count || '';
+            if (count > 99) {
+                text = '99+';
+            }
+            badge.text(text);
             this.buttons.attach.attr(
                 'title', Sao.i18n.gettext("Attachement(%1)", count));
             var record_id = this.screen.get_id();
@@ -893,7 +897,11 @@
                     'class': 'badge'
                 }).appendTo(this.buttons.note);
             }
-            badge.text(unread);
+            var text = unread || '';
+            if (unread > 99) {
+                text = '99+';
+            }
+            badge.text(text);
             this.buttons.note.attr(
                 'title', Sao.i18n.gettext("Note(%1)", unread));
             var record_id = this.screen.get_id();
