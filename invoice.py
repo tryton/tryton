@@ -560,10 +560,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if tax.manual:
                 self.tax_amount += tax.amount or Decimal('0.0')
                 continue
-            key = (tax.base_code.id if tax.base_code else None, tax.base_sign,
-                tax.tax_code.id if tax.tax_code else None, tax.tax_sign,
-                tax.account.id if tax.account else None,
-                tax.tax.id if tax.tax else None)
+            tax_id = tax.tax.id if tax.tax else None
+            key = (tax.account.id, tax_id)
             if (key not in computed_taxes) or (key in tax_keys):
                 taxes.remove(tax)
                 continue
@@ -903,12 +901,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 for tax in invoice.taxes:
                     if tax.manual:
                         continue
-                    base_code_id = tax.base_code.id if tax.base_code else None
-                    tax_code_id = tax.tax_code.id if tax.tax_code else None
                     tax_id = tax.tax.id if tax.tax else None
-                    key = (base_code_id, tax.base_sign,
-                        tax_code_id, tax.tax_sign,
-                        tax.account.id, tax_id)
+                    key = (tax.account.id, tax_id)
                     if (key not in computed_taxes) or (key in tax_keys):
                         if exception:
                             cls.raise_user_error('missing_tax_line',
@@ -1898,12 +1892,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         for tax in self.invoice.taxes:
             if tax.manual:
                 continue
-            base_code_id = tax.base_code.id if tax.base_code else None
-            tax_code_id = tax.tax_code.id if tax.tax_code else None
             tax_id = tax.tax.id if tax.tax else None
-            key = (base_code_id, tax.base_sign,
-                tax_code_id, tax.tax_sign,
-                tax.account.id, tax_id)
+            key = (tax.account.id, tax_id)
             if key in taxes_keys:
                 taxes.append(tax.id)
         return taxes
@@ -2107,22 +2097,17 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return tax_lines
         taxes = self._get_taxes().values()
         for tax in taxes:
-            if tax['base'] >= 0:
-                base_code = tax['base_code']
-                amount = tax['base'] * tax['base_sign']
-            else:
-                base_code = tax['base_code']
-                amount = tax['base'] * tax['base_sign']
-            if base_code:
-                with Transaction().set_context(
-                        date=self.invoice.currency_date):
-                    amount = Currency.compute(self.invoice.currency,
-                        amount, self.invoice.company.currency)
-                tax_line = TaxLine()
-                tax_line.code = base_code
-                tax_line.amount = amount
-                tax_line.tax = tax['tax']
-                tax_lines.append(tax_line)
+            amount = tax['base']
+            with Transaction().set_context(
+                    date=self.invoice.currency_date):
+                amount = Currency.compute(
+                    self.invoice.currency, amount,
+                    self.invoice.company.currency)
+            tax_line = TaxLine()
+            tax_line.amount = amount
+            tax_line.type = 'base'
+            tax_line.tax = tax['tax']
+            tax_lines.append(tax_line)
         return tax_lines
 
     def get_move_lines(self):
@@ -2228,20 +2213,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         states=_states,
         depends=['tax', 'base', 'manual'] + _depends)
     manual = fields.Boolean('Manual', states=_states, depends=_depends)
-    base_code = fields.Many2One('account.tax.code', 'Base Code',
-        domain=[
-            ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
-            ],
-        states=_states, depends=_depends)
-    base_sign = fields.Numeric('Base Sign', digits=(2, 0), required=True,
-        states=_states, depends=_depends)
-    tax_code = fields.Many2One('account.tax.code', 'Tax Code',
-        domain=[
-            ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
-            ],
-        states=_states, depends=_depends)
-    tax_sign = fields.Numeric('Tax Sign', digits=(2, 0), required=True,
-        states=_states, depends=_depends)
     tax = fields.Many2One('account.tax', 'Tax',
         ondelete='RESTRICT',
         domain=[
@@ -2264,14 +2235,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                     '"%(invoice)s" because it is posted or paid.'),
                 'create': ('You can not add tax to invoice '
                     '"%(invoice)s" because it is posted, paid or canceled.'),
-                'invalid_base_code_company': ('You can not create invoice '
-                    '"%(invoice)s" on company "%(invoice_company)s" '
-                    'using base tax code "%(base_code)s" from company '
-                    '"%(base_code_company)s".'),
-                'invalid_tax_code_company': ('You can not create invoice '
-                    '"%(invoice)s" on company "%(invoice_company)s" using tax '
-                    'code "%(tax_code)s" from company '
-                    '"%(tax_code_company)s".'),
                 })
 
     @classmethod
@@ -2284,6 +2247,10 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
+        # Migration from 4.6: drop base_sign and tax_sign
+        table.not_null_action('base_sign', action='remove')
+        table.not_null_action('tax_sign', action='remove')
+
     @staticmethod
     def default_base():
         return Decimal('0.0')
@@ -2295,14 +2262,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_manual():
         return True
-
-    @staticmethod
-    def default_base_sign():
-        return Decimal('1')
-
-    @staticmethod
-    def default_tax_sign():
-        return Decimal('1')
 
     @fields.depends('invoice', '_parent_invoice.state')
     def on_change_with_invoice_state(self, name=None):
@@ -2322,16 +2281,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             tax = Tax(self.tax.id)
         self.description = tax.description
         if self.base >= 0:
-            self.base_code = tax.invoice_base_code
-            self.base_sign = tax.invoice_base_sign
-            self.tax_code = tax.invoice_tax_code
-            self.tax_sign = tax.invoice_tax_sign
             self.account = tax.invoice_account
         else:
-            self.base_code = tax.credit_note_base_code
-            self.base_sign = tax.credit_note_base_sign
-            self.tax_code = tax.credit_note_tax_code
-            self.tax_sign = tax.credit_note_tax_sign
             self.account = tax.credit_note_account
 
     @fields.depends('tax', 'base', 'amount', 'manual', 'invoice',
@@ -2435,12 +2386,11 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         line.account = self.account
         if self.account.party_required:
             line.party = self.invoice.party
-        if self.tax_code:
-            tax_line = TaxLine()
-            tax_line.code = self.tax_code
-            tax_line.amount = amount * self.tax_sign
-            tax_line.tax = self.tax
-            line.tax_lines = [tax_line]
+        tax_line = TaxLine()
+        tax_line.amount = amount
+        tax_line.type = 'tax'
+        tax_line.tax = self.tax
+        line.tax_lines = [tax_line]
         return [line]
 
     def _credit(self):
@@ -2451,8 +2401,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         line.base = -self.base
         line.amount = -self.amount
 
-        for field in ('description', 'sequence', 'manual', 'base_sign',
-                'tax_sign', 'account', 'base_code', 'tax_code', 'tax'):
+        for field in ['description', 'sequence', 'manual', 'account', 'tax']:
             setattr(line, field, getattr(self, field))
         return line
 

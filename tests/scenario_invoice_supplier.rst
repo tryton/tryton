@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts, create_tax, set_tax_code
+    ...     create_chart, get_accounts, create_tax, create_tax_code
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
     >>> today = datetime.date.today()
@@ -45,12 +45,16 @@ Create chart of accounts::
 Create tax::
 
     >>> TaxCode = Model.get('account.tax.code')
-    >>> tax = set_tax_code(create_tax(Decimal('.10')))
+    >>> tax = create_tax(Decimal('.10'))
     >>> tax.save()
-    >>> invoice_base_code = tax.invoice_base_code
-    >>> invoice_tax_code = tax.invoice_tax_code
-    >>> credit_note_base_code = tax.credit_note_base_code
-    >>> credit_note_tax_code = tax.credit_note_tax_code
+    >>> invoice_base_code = create_tax_code(tax, 'base', 'invoice')
+    >>> invoice_base_code.save()
+    >>> invoice_tax_code = create_tax_code(tax, 'tax', 'invoice')
+    >>> invoice_tax_code.save()
+    >>> credit_note_base_code = create_tax_code(tax, 'base', 'credit')
+    >>> credit_note_base_code.save()
+    >>> credit_note_tax_code = create_tax_code(tax, 'tax', 'credit')
+    >>> credit_note_tax_code.save()
 
 Create party::
 
@@ -149,19 +153,19 @@ Create invoice::
     Decimal('0.00')
     >>> with config.set_context(periods=period_ids):
     ...     invoice_base_code = TaxCode(invoice_base_code.id)
-    ...     invoice_base_code.sum
+    ...     invoice_base_code.amount
     Decimal('100.00')
     >>> with config.set_context(periods=period_ids):
     ...     invoice_tax_code = TaxCode(invoice_tax_code.id)
-    ...     invoice_tax_code.sum
+    ...     invoice_tax_code.amount
     Decimal('10.00')
     >>> with config.set_context(periods=period_ids):
     ...     credit_note_base_code = TaxCode(credit_note_base_code.id)
-    ...     credit_note_base_code.sum
+    ...     credit_note_base_code.amount
     Decimal('0.00')
     >>> with config.set_context(periods=period_ids):
     ...     credit_note_tax_code = TaxCode(credit_note_tax_code.id)
-    ...     credit_note_tax_code.sum
+    ...     credit_note_tax_code.amount
     Decimal('0.00')
 
 Credit invoice::
