@@ -10,7 +10,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts, create_tax, set_tax_code
+    ...     create_chart, get_accounts, create_tax, create_tax_code
 
 Install account::
 
@@ -35,11 +35,15 @@ Create chart of accounts::
     >>> expense = accounts['expense']
     >>> tax = accounts['tax']
 
-Create tax with code::
+Create tax code::
 
     >>> TaxCode = Model.get('account.tax.code')
-    >>> tax = set_tax_code(create_tax(Decimal('0.1')))
+    >>> tax = create_tax(Decimal('0.1'))
     >>> tax.save()
+    >>> base_code = create_tax_code(tax, amount='base')
+    >>> base_code.save()
+    >>> tax_code = create_tax_code(tax)
+    >>> tax_code.save()
 
 Create parties::
 
@@ -74,16 +78,16 @@ Create Template::
     >>> line.amount = 'amount / 1.1'
     >>> ttax = line.taxes.new()
     >>> ttax.amount = line.amount
-    >>> ttax.code = tax.invoice_base_code
     >>> ttax.tax = tax
+    >>> ttax.type = 'base'
     >>> line = template.lines.new()
     >>> line.operation = 'debit'
     >>> line.account = tax.invoice_account
     >>> line.amount = 'amount * (1 - 1/1.1)'
     >>> ttax = line.taxes.new()
     >>> ttax.amount = line.amount
-    >>> ttax.code = tax.invoice_tax_code
     >>> ttax.tax = tax
+    >>> ttax.type = 'tax'
     >>> template.save()
 
 Create Move::
@@ -114,10 +118,10 @@ Check the Move::
     >>> move.description
     u'Supplier - Test'
     >>> with config.set_context(periods=period_ids):
-    ...     invoice_base_code = TaxCode(tax.invoice_base_code.id)
-    ...     tax.invoice_base_code.sum
+    ...     base_code = TaxCode(base_code.id)
+    ...     base_code.amount
     Decimal('11.13')
     >>> with config.set_context(periods=period_ids):
-    ...     invoice_tax_code = TaxCode(tax.invoice_tax_code.id)
-    ...     tax.invoice_tax_code.sum
+    ...     tax_code = TaxCode(tax_code.id)
+    ...     tax_code.amount
     Decimal('1.11')

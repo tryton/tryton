@@ -17,11 +17,14 @@ this repository contains the full copyright notices and license terms. -->
     <label name="parent"/>
     <field name="parent"/>
     <notebook colspan="6">
-        <page string="Children" id="children">
-            <field name="childs" colspan="6"/>
+        <page name="lines">
+            <field name="lines" colspan="4"/>
         </page>
-        <page string="Description" id="description">
-            <field name="description" colspan="6"/>
+        <page name="childs">
+            <field name="childs" colspan="4"/>
+        </page>
+        <page name="description">
+            <field name="description" colspan="4"/>
         </page>
     </notebook>
 </form>

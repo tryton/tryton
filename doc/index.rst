@@ -183,8 +183,12 @@ of the invoices. The Tax Code model contains the following fields:
 - Active: A checkbox that allow to disable the tax code.
 - Company: The company for which the tax code is defined.
 - Parent, Children: Parent and children tax codes.
-- Sum: The sum of all amounts corresponding to this tax code for the selected
-  periods.
+- Amount: The sum of lines for the selected periods:
+
+    - Operator: `+` or `-`
+    - Tax
+    - Amount: *Tax* or *Base*
+    - Type: *Invoice* or *Credit*
 
 
 Tax
@@ -213,22 +217,6 @@ the following fields:
 - Credit Note Account: The account to use when creating move lines for
   credit notes with this tax, for debit on revenue or for credit on
   expense
-- Invoice Base Code: The code to use for the base amount when this tax
-  is used on invoices.
-- Invoice Base Sign: The sign of the base amount when summed for the
-  above tax code.
-- Invoice Tax Code: The code to use for the tax amount when this tax
-  is used on invoices.
-- Invoice Tax Sign: The sign of the tax amount when summed for the
-  above tax code.
-- Credit Note Base Code: The code to use for the base amount when this tax
-  is used on credit notes.
-- Credit Note Base Sign: The sign of the base amount summed for the
-  above tax code.
-- Credit Note Tax Code: The code to use for the tax amount when this tax
-  is used on credit notes.
-- Credit Note Tax Sign: The sign of the tax amount when summed for the
-  above tax code.
 
 If a code field is left empty, the corresponding amounts will be
 ignored by the tax reports.

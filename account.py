@@ -2181,6 +2181,7 @@ class CreateChart(Wizard):
     def transition_create_account(self):
         pool = Pool()
         TaxCodeTemplate = pool.get('account.tax.code.template')
+        TaxCodeLineTemplate = pool.get('account.tax.code.line.template')
         TaxTemplate = pool.get('account.tax.template')
         TaxRuleTemplate = pool.get('account.tax.rule.template')
         TaxRuleLineTemplate = \
@@ -2216,19 +2217,26 @@ class CreateChart(Wizard):
                 template2account=template2account,
                 template2type=template2type)
 
+            # Create taxes
+            template2tax = {}
+            TaxTemplate.create_tax(
+                account_template.id, company.id,
+                template2account=template2account,
+                template2tax=template2tax)
+
             # Create tax codes
             template2tax_code = {}
             TaxCodeTemplate.create_tax_code(
                 account_template.id, company.id,
                 template2tax_code=template2tax_code)
 
-            # Create taxes
-            template2tax = {}
-            TaxTemplate.create_tax(
-                account_template.id, company.id,
+            # Create tax code lines
+            template2tax_code_line = {}
+            TaxCodeLineTemplate.create_tax_code_line(
+                account_template.id,
+                template2tax=template2tax,
                 template2tax_code=template2tax_code,
-                template2account=template2account,
-                template2tax=template2tax)
+                template2tax_code_line=template2tax_code_line)
 
             # Update taxes on accounts
             account_template.update_account_taxes(template2account,
@@ -2297,6 +2305,8 @@ class UpdateChart(Wizard):
         pool = Pool()
         TaxCode = pool.get('account.tax.code')
         TaxCodeTemplate = pool.get('account.tax.code.template')
+        TaxCodeLine = pool.get('account.tax.code.line')
+        TaxCodeLineTemplate = pool.get('account.tax.code.line.template')
         Tax = pool.get('account.tax')
         TaxTemplate = pool.get('account.tax.template')
         TaxRule = pool.get('account.tax.rule')
@@ -2328,6 +2338,19 @@ class UpdateChart(Wizard):
                 template2account=template2account,
                 template2type=template2type)
 
+        # Update taxes
+        template2tax = {}
+        Tax.update_tax(
+            company.id,
+            template2account=template2account,
+            template2tax=template2tax)
+        # Create missing taxes
+        if account.template:
+            TaxTemplate.create_tax(
+                account.template.id, account.company.id,
+                template2account=template2account,
+                template2tax=template2tax)
+
         # Update tax codes
         template2tax_code = {}
         TaxCode.update_tax_code(
@@ -2339,20 +2362,20 @@ class UpdateChart(Wizard):
                 account.template.id, company.id,
                 template2tax_code=template2tax_code)
 
-        # Update taxes
-        template2tax = {}
-        Tax.update_tax(
+        # Update tax code lines
+        template2tax_code_line = {}
+        TaxCodeLine.update_tax_code_line(
             company.id,
+            template2tax=template2tax,
             template2tax_code=template2tax_code,
-            template2account=template2account,
-            template2tax=template2tax)
-        # Create missing taxes
+            template2tax_code_line=template2tax_code_line)
+        # Create missing tax code lines
         if account.template:
-            TaxTemplate.create_tax(
-                account.template.id, account.company.id,
+            TaxCodeLineTemplate.create_tax_code_line(
+                account.template.id,
+                template2tax=template2tax,
                 template2tax_code=template2tax_code,
-                template2account=template2account,
-                template2tax=template2tax)
+                template2tax_code_line=template2tax_code_line)
 
         # Update taxes on accounts
         account.update_account_taxes(template2account, template2tax)

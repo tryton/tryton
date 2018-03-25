@@ -9,7 +9,7 @@ from .period import *
 from .journal import *
 from .move import *
 from .move_template import *
-from .tax import *
+from . import tax
 from . import party
 
 
@@ -57,19 +57,21 @@ def register():
         ReconcileShow,
         CancelMovesDefault,
         PrintGeneralJournalStart,
-        TaxGroup,
-        TaxCodeTemplate,
-        TaxCode,
-        OpenChartTaxCodeStart,
-        TaxTemplate,
-        Tax,
-        TaxLine,
-        TaxRuleTemplate,
-        TaxRule,
-        TaxRuleLineTemplate,
-        TaxRuleLine,
-        TestTaxView,
-        TestTaxViewResult,
+        tax.TaxGroup,
+        tax.TaxCodeTemplate,
+        tax.TaxCode,
+        tax.TaxCodeLineTemplate,
+        tax.TaxCodeLine,
+        tax.OpenChartTaxCodeStart,
+        tax.TaxTemplate,
+        tax.Tax,
+        tax.TaxLine,
+        tax.TaxRuleTemplate,
+        tax.TaxRule,
+        tax.TaxRuleLineTemplate,
+        tax.TaxRuleLine,
+        tax.TestTaxView,
+        tax.TestTaxViewResult,
         MoveTemplate,
         MoveTemplateKeyword,
         MoveLineTemplate,
@@ -94,9 +96,9 @@ def register():
         CancelMoves,
         PrintGeneralJournal,
         CreateMove,
-        OpenChartTaxCode,
-        OpenTaxCode,
-        TestTax,
+        tax.OpenChartTaxCode,
+        tax.OpenTaxCode,
+        tax.TestTax,
         party.PartyReplace,
         party.PartyErase,
         RenewFiscalYear,

@@ -5,6 +5,7 @@ from decimal import Decimal
 
 from simpleeval import simple_eval
 
+from trytond import backend
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pyson import Eval
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
@@ -216,16 +217,27 @@ class TaxLineTemplate(ModelSQL, ModelView):
     line = fields.Many2One('account.move.line.template', 'Line', required=True)
     amount = fields.Char('Amount', required=True,
         help="A python expression that will be evaluated with the keywords.")
-    code = fields.Many2One('account.tax.code', 'Code', required=True,
-        domain=[
-            ('company', '=', Eval('_parent_line', {}
-                    ).get('_parent_move', {}).get('company', -1)),
-            ])
+    type = fields.Selection([
+            ('tax', "Tax"),
+            ('base', "Base"),
+            ], "Type", required=True)
+
     tax = fields.Many2One('account.tax', 'Tax',
         domain=[
             ('company', '=', Eval('_parent_line', {}
                     ).get('_parent_move', {}).get('company', -1)),
             ])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+
+        super(TaxLineTemplate, cls).__register__(module_name)
+
+        table_h = TableHandler(cls, module_name)
+
+        # Migration from 4.6: remove code
+        table_h.drop_column('code')
 
     def get_line(self, values):
         'Return the tax line for the keyword values'
@@ -237,7 +249,7 @@ class TaxLineTemplate(ModelSQL, ModelView):
             functions={'Decimal': Decimal}, names=values)
         amount = self.line.move.company.currency.round(amount)
         line.amount = amount
-        line.code = self.code
+        line.type = self.type
         line.tax = self.tax
         return line
 

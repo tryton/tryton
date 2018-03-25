@@ -4,5 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree keyword_open="1">
     <field name="name"/>
     <field name="code"/>
-    <field name="sum"/>
+    <field name="amount"/>
 </tree>

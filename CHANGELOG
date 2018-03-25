@@ -1,3 +1,4 @@
+* Use tax code line for tax reporting
 * Use custom clause for Tax Code sum
 * Add check to modify Tax Lines
 * Check receivable/payable to erase party

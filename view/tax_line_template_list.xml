@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree editable="bottom">
     <field name="tax"/>
-    <field name="code"/>
     <field name="amount"/>
+    <field name="type"/>
     <field name="line"/>
 </tree>

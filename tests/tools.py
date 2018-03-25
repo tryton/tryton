@@ -9,7 +9,7 @@ from proteus import Model, Wizard
 from trytond.modules.company.tests.tools import get_company
 
 __all__ = ['create_fiscalyear', 'create_chart', 'get_accounts',
-    'create_tax', 'set_tax_code']
+    'create_tax', 'create_tax_code']
 
 
 def create_fiscalyear(company=None, today=None, config=None):
@@ -109,21 +109,16 @@ def create_tax(rate, company=None, config=None):
     return tax
 
 
-def set_tax_code(tax, config=None):
-    "Set code on tax"
+def create_tax_code(
+        tax, amount='tax', type='invoice', operator='+', config=None):
+    "Create a tax code for the tax"
     TaxCode = Model.get('account.tax.code', config=config)
-    invoice_base_code = TaxCode(name='Invoice Base')
-    invoice_base_code.save()
-    invoice_tax_code = TaxCode(name='Invoice Tax')
-    invoice_tax_code.save()
-    credit_note_base_code = TaxCode(name='Credit Note Base')
-    credit_note_base_code.save()
-    credit_note_tax_code = TaxCode(name='Credit Note Tax')
-    credit_note_tax_code.save()
 
-    tax.invoice_base_code = invoice_base_code
-    tax.invoice_tax_code = invoice_tax_code
-    tax.credit_note_base_code = credit_note_base_code
-    tax.credit_note_tax_code = credit_note_tax_code
-
-    return tax
+    tax_code = TaxCode(name="Tax Code %s" % tax.name)
+    tax_code.company = tax.company
+    line = tax_code.lines.new()
+    line.operator = '+'
+    line.tax = tax
+    line.amount = amount
+    line.type = type
+    return tax_code

@@ -193,6 +193,61 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_tax_code" />
         </record>
 
+        <record model="ir.ui.view" id="tax_code_line_template_view_form">
+            <field name="model">account.tax.code.line.template</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_line_template_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_line_template_view_list">
+            <field name="model">account.tax.code.line.template</field>
+            <field name="type">tree</field>
+            <field name="name">tax_code_line_template_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_tax_code_line_template">
+            <field name="model" search="[('model', '=', 'account.tax.code.line.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="tax_code_line_view_form">
+            <field name="model">account.tax.code.line</field>
+            <field name="type">form</field>
+            <field name="name">tax_code_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_code_line_view_list">
+            <field name="model">account.tax.code.line</field>
+            <field name="type">tree</field>
+            <field name="name">tax_code_line_list</field>
+        </record>
+
+        <record model="ir.model.access" id="access_tax_code_line">
+            <field name="model" search="[('model', '=', 'account.tax.code.line')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_tax_code_line_account_admin">
+            <field name="model" search="[('model', '=', 'account.tax.code.line')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule.group" id="rule_group_tax_code_line">
+            <field name="model" search="[('model', '=', 'account.tax.code.line')]" />
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_tax_code_line1">
+            <field name="domain"
+                eval="[('code.company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_tax_code_line" />
+        </record>
 
         <record model="ir.ui.view" id="tax_template_view_form">
             <field name="model">account.tax.template</field>

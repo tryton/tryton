@@ -5,8 +5,9 @@ from collections import namedtuple
 from decimal import Decimal
 from itertools import groupby
 
-from sql import Literal
+from sql import Literal, Cast
 from sql.aggregate import Sum
+from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
     sequence_ordered
@@ -14,9 +15,11 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.tools import cursor_dict
 from trytond.pool import Pool
 
 __all__ = ['TaxGroup', 'TaxCodeTemplate', 'TaxCode',
+    'TaxCodeLineTemplate', 'TaxCodeLine',
     'OpenChartTaxCodeStart', 'OpenChartTaxCode',
     'TaxTemplate', 'Tax', 'TaxLine', 'TaxRuleTemplate', 'TaxRule',
     'TaxRuleLineTemplate', 'TaxRuleLine',
@@ -57,6 +60,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     code = fields.Char('Code')
     parent = fields.Many2One('account.tax.code.template', 'Parent')
+    lines = fields.One2Many('account.tax.code.line.template', 'code', "Lines")
     childs = fields.One2Many('account.tax.code.template', 'parent', 'Children')
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
@@ -136,7 +140,7 @@ class TaxCode(ModelSQL, ModelView):
         'readonly': (Bool(Eval('template', -1))
             & ~Eval('template_override', False)),
         }
-    name = fields.Char('Name', required=True, select=True,  states=_states)
+    name = fields.Char('Name', required=True, select=True, states=_states)
     code = fields.Char('Code', select=True, states=_states)
     active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -144,14 +148,16 @@ class TaxCode(ModelSQL, ModelView):
     parent = fields.Many2One('account.tax.code', 'Parent', select=True,
             domain=[('company', '=', Eval('company', 0))],
         states=_states, depends=['company'])
+    lines = fields.One2Many('account.tax.code.line', 'code', "Lines")
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
             domain=[('company', '=', Eval('company', 0))],
         states=_states, depends=['company'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
-    sum = fields.Function(fields.Numeric('Sum',
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
-        'get_sum')
+    amount = fields.Function(fields.Numeric(
+            "Amount", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'get_amount')
     template = fields.Many2One('account.tax.code.template', 'Template')
     template_override = fields.Boolean('Override Template',
         help="Check to override template definition",
@@ -191,66 +197,35 @@ class TaxCode(ModelSQL, ModelView):
         return 2
 
     @classmethod
-    def get_sum(cls, codes, name):
-        cursor = Transaction().connection.cursor()
-        res = {}
-        pool = Pool()
-        Move = pool.get('account.move')
-        MoveLine = pool.get('account.move.line')
-        TaxLine = pool.get('account.tax.line')
+    def get_amount(cls, codes, name):
+        result = {}
 
-        code = cls.__table__()
-        tax_line = TaxLine.__table__()
-        move_line = MoveLine.__table__()
-        move = Move.__table__()
-
+        parents = {}
         childs = cls.search([
                 ('parent', 'child_of', [c.id for c in codes]),
                 ])
-        all_codes = list(set(codes) | set(childs))
-        where = cls._sum_where(tax_line, move_line, move)
-        cursor.execute(*code
-            .join(tax_line, condition=tax_line.code == code.id)
-            .join(move_line, condition=tax_line.move_line == move_line.id)
-            .join(move, condition=move_line.move == move.id)
-            .select(code.id, Sum(tax_line.amount),
-                where=code.id.in_([c.id for c in all_codes])
-                & (code.active == True)
-                & (move_line.state != 'draft')
-                & where,
-                group_by=code.id))
-        code_sum = {}
-        for code_id, sum in cursor.fetchall():
-            # SQLite uses float for SUM
-            if not isinstance(sum, Decimal):
-                sum = Decimal(str(sum))
-            code_sum[code_id] = sum
+        for code in childs:
+            result[code.id] = code.company.currency.round(
+                sum((l.value for l in code.lines), Decimal(0)))
+            parents[code.id] = code.parent.id if code.parent else None
 
-        for code in codes:
-            res.setdefault(code.id, Decimal('0.0'))
-            childs = cls.search([
-                    ('parent', 'child_of', [code.id]),
-                    ])
-            for child in childs:
-                res[code.id] += code.company.currency.round(
-                    code_sum.get(child.id, Decimal('0.0')))
-            res[code.id] = code.company.currency.round(res[code.id])
-        return res
-
-    @classmethod
-    def _sum_where(cls, tax_line, move_line, move):
-        context = Transaction().context
-        periods = context.get('periods', [])
-        if periods:
-            return move.period.in_(periods)
-        else:
-            return Literal(False)
-
-    @classmethod
-    def _sum_domain(cls):
-        context = Transaction().context
-        periods = context.get('periods', [])
-        return [('move_line.move.period', 'in', periods)]
+        ids = set(map(int, childs))
+        leafs = ids - set(parents.itervalues())
+        while leafs:
+            for code in leafs:
+                ids.remove(code)
+                parent = parents.get(code)
+                if parent in result:
+                    result[parent] += result[code]
+            next_leafs = set(ids)
+            for code in ids:
+                parent = parents.get(code)
+                if not parent:
+                    continue
+                if parent in next_leafs and parent in ids:
+                    next_leafs.remove(parent)
+            leafs = next_leafs
+        return result
 
     def get_rec_name(self, name):
         if self.code:
@@ -312,6 +287,141 @@ class TaxCode(ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
         if values:
             cls.write(*values)
+
+
+class TaxCodeLineTemplate(ModelSQL, ModelView):
+    "Tax Code Line Template"
+    __name__ = 'account.tax.code.line.template'
+
+    code = fields.Many2One('account.tax.code.template', "Code", required=True)
+    operator = fields.Selection([
+            ('+', "+"),
+            ('-', "-"),
+            ], "Operator", required=True)
+    tax = fields.Many2One('account.tax.template', "Tax", required=True)
+    amount = fields.Selection([
+            ('tax', "Tax"),
+            ('base', "Base"),
+            ], "Amount", required=True)
+    type = fields.Selection([
+            ('invoice', "Invoice"),
+            ('credit', "Credit"),
+            ], "Type", required=True)
+
+    def _get_tax_code_line_value(self, line=None):
+        value = {}
+        for name in ['code', 'operator', 'amount', 'type']:
+            if not line or getattr(line, name) != getattr(self, name):
+                value[name] = getattr(self, name)
+        if not line or line.template != self:
+            value['template'] = self.id
+        return value
+
+    @classmethod
+    def create_tax_code_line(cls, account_id, template2tax, template2tax_code,
+            template2tax_code_line=None):
+        "Create tax code lines based on template"
+        pool = Pool()
+        TaxCodeLine = pool.get('account.tax.code.line')
+
+        if template2tax_code_line is None:
+            template2tax_code_line = {}
+
+        values = []
+        created = []
+        for template in cls.search([('code.account', '=', account_id)]):
+            if template.id not in template2tax_code:
+                value = template._get_tax_code_line_value()
+                value['code'] = template2tax_code.get(template.code.id)
+                value['tax'] = template2tax.get(template.tax.id)
+                values.append(value)
+                created.append(template)
+
+        lines = TaxCodeLine.create(values)
+        for template, line in zip(created, lines):
+            template2tax_code_line[template.id] = line.id
+
+
+class TaxCodeLine(ModelSQL, ModelView):
+    "Tax Code Line"
+    __name__ = 'account.tax.code.line'
+    _states = {
+        'readonly': (Bool(Eval('template', -1))
+            & ~Eval('template_override', False)),
+        }
+
+    code = fields.Many2One('account.tax.code', "Code", required=True)
+    operator = fields.Selection([
+            ('+', "+"),
+            ('-', "-"),
+            ], "Operator", required=True, states=_states)
+    tax = fields.Many2One(
+        'account.tax', "Tax", required=True, states=_states,
+        domain=[
+            ('company', '=', Eval('_parent_code', {}).get('company')),
+            ])
+    amount = fields.Selection([
+            ('tax', "Tax"),
+            ('base', "Base"),
+            ], "Amount", required=True, states=_states)
+    type = fields.Selection([
+            ('invoice', "Invoice"),
+            ('credit', "Credit"),
+            ], "Type", required=True, states=_states)
+
+    template = fields.Many2One('account.tax.code.line.template', 'Template')
+    template_override = fields.Boolean('Override Template',
+        help="Check to override template definition",
+        states={
+            'invisible': ~Bool(Eval('template', -1)),
+            },
+        depends=['template'])
+
+    del _states
+
+    @classmethod
+    def default_operator(cls):
+        return '+'
+
+    @property
+    def value(self):
+        value = getattr(self.tax, '%s_%s_amount' % (self.type, self.amount))
+        value = abs(value)
+        if self.operator == '-':
+            value *= -1
+        return value
+
+    @property
+    def _line_domain(self):
+        domain = [
+            ('type', '=', self.amount),
+            ]
+        if self.type == 'invoice':
+            domain.append(('amount', '>', 0))
+        elif self.type == 'credit':
+            domain.append(('amount', '<', 0))
+        return domain
+
+    @classmethod
+    def update_tax_code_line(cls, company_id, template2tax, template2tax_code,
+            template2tax_code_line=None):
+        "Update tax code lines based on template."
+        if template2tax_code_line is None:
+            template2tax_code_line = {}
+
+        values = []
+        for line in cls.search([('tax.company', '=', company_id)]):
+            if line.template and not line.template_override:
+                template = line.template
+                value = template._get_tax_code_line_value(line=line)
+                if line.code.id != template2tax_code.get(template.code.id):
+                    value['code'] = template2tax_code.get(template.code.id)
+                if line.tax.id != template2tax.get(template.tax.id):
+                    value['tax'] = template2tax.get(template.tax.id)
+                if value:
+                    values.append([line])
+                    values.append(values)
+                template2tax_code_line[line.template.id] = line.id
 
 
 class OpenChartTaxCodeStart(ModelView):
@@ -406,20 +516,6 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
             'Invoice Account')
     credit_note_account = fields.Many2One('account.account.template',
             'Credit Note Account')
-    invoice_base_code = fields.Many2One('account.tax.code.template',
-            'Invoice Base Code')
-    invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0))
-    invoice_tax_code = fields.Many2One('account.tax.code.template',
-            'Invoice Tax Code')
-    invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0))
-    credit_note_base_code = fields.Many2One('account.tax.code.template',
-            'Credit Note Base Code')
-    credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
-        digits=(2, 0))
-    credit_note_tax_code = fields.Many2One('account.tax.code.template',
-            'Credit Note Tax Code')
-    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign',
-        digits=(2, 0))
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
     legal_notice = fields.Text("Legal Notice")
@@ -471,22 +567,6 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
         return 'percentage'
 
     @staticmethod
-    def default_invoice_base_sign():
-        return Decimal('1')
-
-    @staticmethod
-    def default_invoice_tax_sign():
-        return Decimal('1')
-
-    @staticmethod
-    def default_credit_note_base_sign():
-        return Decimal('-1')
-
-    @staticmethod
-    def default_credit_note_tax_sign():
-        return Decimal('-1')
-
-    @staticmethod
     def default_update_unit_price():
         return False
 
@@ -495,11 +575,9 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
         Set values for tax creation.
         '''
         res = {}
-        for field in ('name', 'description', 'sequence', 'amount',
-                'rate', 'type', 'invoice_base_sign', 'invoice_tax_sign',
-                'credit_note_base_sign', 'credit_note_tax_sign',
-                'start_date', 'end_date', 'update_unit_price',
-                'legal_notice'):
+        for field in ['name', 'description', 'sequence', 'amount', 'rate',
+                'type', 'start_date', 'end_date', 'update_unit_price',
+                'legal_notice']:
             if not tax or getattr(tax, field) != getattr(self, field):
                 res[field] = getattr(self, field)
         for field in ('group',):
@@ -514,13 +592,11 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
         return res
 
     @classmethod
-    def create_tax(cls, account_id, company_id, template2tax_code,
+    def create_tax(cls, account_id, company_id,
             template2account, template2tax=None):
         '''
         Create recursively taxes based on template.
 
-        template2tax_code is a dictionary with tax code template id as key and
-        tax code id as value, used to convert tax code template into tax code.
         template2account is a dictionary with account template id as key and
         account id as value, used to convert account template into account
         code.
@@ -555,28 +631,6 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
                             template2account[template.credit_note_account.id]
                     else:
                         vals['credit_note_account'] = None
-                    if template.invoice_base_code:
-                        vals['invoice_base_code'] = \
-                            template2tax_code[template.invoice_base_code.id]
-                    else:
-                        vals['invoice_base_code'] = None
-                    if template.invoice_tax_code:
-                        vals['invoice_tax_code'] = \
-                            template2tax_code[template.invoice_tax_code.id]
-                    else:
-                        vals['invoice_tax_code'] = None
-                    if template.credit_note_base_code:
-                        vals['credit_note_base_code'] = \
-                            template2tax_code[
-                                template.credit_note_base_code.id]
-                    else:
-                        vals['credit_note_base_code'] = None
-                    if template.credit_note_tax_code:
-                        vals['credit_note_tax_code'] = \
-                            template2tax_code[template.credit_note_tax_code.id]
-                    else:
-                        vals['credit_note_tax_code'] = None
-
                     values.append(vals)
                     created.append(template)
 
@@ -611,8 +665,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
     description = fields.Char('Description', required=True, translate=True,
             help="The name that will be used in reports", states=_states)
     group = fields.Many2One('account.tax.group', 'Group',
-            states={
-                'invisible': Bool(Eval('parent')),
+        states={
+            'invisible': Bool(Eval('parent')),
             'readonly': _states['readonly'],
             }, depends=['parent'])
     active = fields.Boolean('Active')
@@ -676,74 +730,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             'required': (Eval('type') != 'none') & Eval('company'),
             },
         depends=['company', 'type'])
-    invoice_base_code = fields.Many2One('account.tax.code',
-        'Invoice Base Code',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        states={
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            },
-        depends=['type', 'company'])
-    invoice_base_sign = fields.Numeric('Invoice Base Sign', digits=(2, 0),
-        help='Usualy 1 or -1',
-        states={
-            'required': Eval('type') != 'none',
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            }, depends=['type'])
-    invoice_tax_code = fields.Many2One('account.tax.code',
-        'Invoice Tax Code',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        states={
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            },
-        depends=['type', 'company'])
-    invoice_tax_sign = fields.Numeric('Invoice Tax Sign', digits=(2, 0),
-        help='Usualy 1 or -1',
-        states={
-            'required': Eval('type') != 'none',
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            }, depends=['type'])
-    credit_note_base_code = fields.Many2One('account.tax.code',
-        'Credit Note Base Code',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        states={
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            },
-        depends=['type', 'company'])
-    credit_note_base_sign = fields.Numeric('Credit Note Base Sign',
-        digits=(2, 0), help='Usualy 1 or -1',
-        states={
-            'required': Eval('type') != 'none',
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            }, depends=['type'])
-    credit_note_tax_code = fields.Many2One('account.tax.code',
-        'Credit Note Tax Code',
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        states={
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            },
-        depends=['type', 'company'])
-    credit_note_tax_sign = fields.Numeric('Credit Note Tax Sign',
-        digits=(2, 0), help='Usualy 1 or -1',
-        states={
-            'required': Eval('type') != 'none',
-            'readonly': _states['readonly'],
-            'invisible': Eval('type') == 'none',
-            }, depends=['type'])
     legal_notice = fields.Text("Legal Notice", translate=True,
         states=_states)
     template = fields.Many2One('account.tax.template', 'Template')
@@ -753,6 +739,27 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             'invisible': ~Bool(Eval('template', -1)),
             },
         depends=['template'])
+
+    invoice_base_amount = fields.Function(fields.Numeric(
+            "Invoice Base Amount", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'get_amount')
+    invoice_tax_amount = fields.Function(fields.Numeric(
+            "Invoice Tax Amount", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'get_amount')
+    credit_base_amount = fields.Function(fields.Numeric(
+            "Credit Base Amount", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'get_amount')
+    credit_tax_amount = fields.Function(fields.Numeric(
+            "Credit Tax Amount", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'get_amount')
+
+    currency_digits = fields.Function(fields.Integer("Currency Digits"),
+        'on_change_with_currency_digits')
+
     del _states
 
     @classmethod
@@ -805,22 +812,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
         return 'percentage'
 
     @staticmethod
-    def default_invoice_base_sign():
-        return Decimal('1')
-
-    @staticmethod
-    def default_invoice_tax_sign():
-        return Decimal('1')
-
-    @staticmethod
-    def default_credit_note_base_sign():
-        return Decimal('-1')
-
-    @staticmethod
-    def default_credit_note_tax_sign():
-        return Decimal('-1')
-
-    @staticmethod
     def default_update_unit_price():
         return False
 
@@ -831,6 +822,86 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def default_template_override(cls):
         return False
+
+    @classmethod
+    def get_amount(cls, taxes, names):
+        pool = Pool()
+        Move = pool.get('account.move')
+        MoveLine = pool.get('account.move.line')
+        TaxLine = pool.get('account.tax.line')
+        cursor = Transaction().connection.cursor()
+
+        move = Move.__table__()
+        move_line = MoveLine.__table__()
+        tax_line = TaxLine.__table__()
+
+        tax_ids = map(int, taxes)
+        result = {}
+        for name in names:
+            result[name] = dict.fromkeys(tax_ids, Decimal(0))
+
+        columns = []
+        amount = tax_line.amount
+        if backend.name() == 'sqlite':
+            amount = Cast(tax_line.amount, TaxLine.amount.sql_type()[0])
+        for name, clause in [
+                ('invoice_base_amount',
+                    (amount > 0) & (tax_line.type == 'base')),
+                ('invoice_tax_amount',
+                    (amount > 0) & (tax_line.type == 'tax')),
+                ('credit_base_amount',
+                    (amount < 0) & (tax_line.type == 'base')),
+                ('credit_tax_amount',
+                    (amount < 0) & (tax_line.type == 'tax')),
+                ]:
+            if name not in names:
+                continue
+            if backend.name() == 'postgresql':  # FIXME
+                columns.append(Sum(amount, filter_=clause).as_(name))
+            else:
+                columns.append(Sum(Case([clause, amount])).as_(name))
+
+        where = cls._amount_where(tax_line, move_line, move)
+        query = (tax_line
+            .join(move_line, condition=tax_line.move_line == move_line.id)
+            .join(move, condition=move_line.move == move.id)
+            .select(tax_line.tax.as_('tax'),
+                *columns,
+                where=tax_line.tax.in_(tax_ids)
+                & (move_line.state != 'draft')
+                & where,
+                group_by=tax_line.tax)
+            )
+
+        cursor.execute(*query)
+        for row in cursor_dict(cursor):
+            for name in names:
+                value = row[name] or 0
+                if not isinstance(value, Decimal):
+                    value = Decimal(str(value))
+                result[name][row['tax']] = value
+        return result
+
+    @classmethod
+    def _amount_where(cls, tax_line, move_line, move):
+        context = Transaction().context
+        periods = context.get('periods', [])
+        if periods:
+            return move.period.in_(periods)
+        else:
+            return Literal(False)
+
+    @classmethod
+    def _amount_domain(cls):
+        context = Transaction().context
+        periods = context.get('periods', [])
+        return [('move_line.move.period', 'in', periods)]
+
+    @fields.depends('company')
+    def on_change_with_currency_digits(self, name=None):
+        if self.company:
+            return self.company.currency.digits
+        return 2
 
     @classmethod
     def copy(cls, taxes, default=None):
@@ -969,12 +1040,9 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
         return cls._reverse_unit_compute(price_unit, taxes, date)
 
     @classmethod
-    def update_tax(cls, company_id, template2tax_code, template2account,
-            template2tax=None):
+    def update_tax(cls, company_id, template2account, template2tax=None):
         '''
         Update recursively taxes based on template.
-        template2tax_code is a dictionary with tax code template id as key and
-        tax code id as value, used to convert tax code template into tax code.
         template2account is a dictionary with account template id as key and
         account id as value, used to convert account template into account
         code.
@@ -1014,49 +1082,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
                     elif (not child.template.credit_note_account
                             and child.credit_note_account):
                         vals['credit_note_account'] = None
-                    invoice_base_code_id = (child.invoice_base_code.id
-                        if child.invoice_base_code else None)
-                    if (child.template.invoice_base_code and
-                            invoice_base_code_id != template2tax_code.get(
-                                    child.template.invoice_base_code.id)):
-                        vals['invoice_base_code'] = template2tax_code.get(
-                            child.template.invoice_base_code.id)
-                    elif (not child.template.invoice_base_code
-                            and child.invoice_base_code):
-                        vals['invoice_base_code'] = None
-                    invoice_tax_code_id = (child.invoice_tax_code.id
-                        if child.invoice_tax_code else None)
-                    if (child.template.invoice_tax_code
-                            and invoice_tax_code_id != template2tax_code.get(
-                                child.template.invoice_tax_code.id)):
-                        vals['invoice_tax_code'] = template2tax_code.get(
-                            child.template.invoice_tax_code.id)
-                    elif (not child.template.invoice_tax_code
-                            and child.invoice_tax_code):
-                        vals['invoice_tax_code'] = None
-                    credit_note_base_code_id = (child.credit_note_base_code.id
-                        if child.credit_note_base_code else None)
-                    if (child.template.credit_note_base_code
-                            and (credit_note_base_code_id
-                                != template2tax_code.get(
-                                    child.template.credit_note_base_code.id))):
-                        vals['credit_note_base_code'] = template2tax_code.get(
-                            child.template.credit_note_base_code.id)
-                    elif (not child.template.credit_note_base_code
-                            and child.credit_note_base_code):
-                        vals['credit_note_base_code'] = None
-                    credit_note_tax_code_id = (child.credit_note_tax_code.id
-                        if child.credit_note_tax_code else None)
-                    if (child.template.credit_note_tax_code
-                            and (credit_note_tax_code_id
-                                != template2tax_code.get(
-                                    child.template.credit_note_tax_code.id))):
-                        vals['credit_note_tax_code'] = template2tax_code.get(
-                            child.template.credit_note_tax_code.id)
-                    elif (not child.template.credit_note_tax_code
-                            and child.credit_note_tax_code):
-                        vals['credit_note_tax_code'] = None
-
                     if vals:
                         values.append([child])
                         values.append(vals)
@@ -1072,9 +1097,7 @@ class _TaxKey(dict):
         self.update(kwargs)
 
     def _key(self):
-        return (self['base_code'], self['base_sign'],
-            self['tax_code'], self['tax_sign'],
-            self['account'], self['tax'])
+        return (self['account'], self['tax'])
 
     def __eq__(self, other):
         if isinstance(other, _TaxKey):
@@ -1083,6 +1106,7 @@ class _TaxKey(dict):
 
     def __hash__(self):
         return hash(self._key())
+
 
 _TaxableLine = namedtuple('_TaxableLine', ('taxes', 'unit_price', 'quantity'))
 
@@ -1127,14 +1151,7 @@ class TaxableMixin(object):
         line['base'] = base
         line['amount'] = amount
         line['tax'] = tax.id if tax else None
-
-        for attribute in ['base_code', 'tax_code', 'account']:
-            value = getattr(tax, '%s_%s' % (type_, attribute), None)
-            line[attribute] = value.id if value else None
-
-        for attribute in ['base_sign', 'tax_sign']:
-            value = getattr(tax, '%s_%s' % (type_, attribute), None)
-            line[attribute] = value
+        line['account'] = getattr(tax, '%s_account' % type_).id
 
         return _TaxKey(**line)
 
@@ -1181,12 +1198,10 @@ class TaxLine(ModelSQL, ModelView):
         'on_change_with_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
-    code = fields.Many2One('account.tax.code', 'Code', select=True,
-        required=True,
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
+    type = fields.Selection([
+            ('tax', "Tax"),
+            ('base', "Base"),
+            ], "Type", required=True)
     tax = fields.Many2One('account.tax', 'Tax', select=True,
         ondelete='RESTRICT',
         domain=[
@@ -1206,6 +1221,48 @@ class TaxLine(ModelSQL, ModelView):
                     'You can not add/modify tax lines in closed period "%s".'),
                 })
 
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        TableHandler = backend.get('TableHandler')
+        transaction = Transaction()
+        table = cls.__table__()
+        tax = Tax.__table__()
+
+        migrate_type = False
+        if TableHandler.table_exist(cls._table):
+            table_h = TableHandler(cls, module_name)
+            migrate_type = not table_h.column_exist('type')
+
+        super(TaxLine, cls).__register__(module_name)
+
+        table_h = TableHandler(cls, module_name)
+
+        # Migrate from 4.6: remove code and fill type
+        table_h.not_null_action('code', action='remove')
+        if migrate_type:
+            # XXX base on no tax code is used for both tax and base
+            cursor = transaction.connection.cursor()
+            cursor.execute(*tax.select(
+                    tax.id, tax.company,
+                    tax.invoice_base_code, tax.invoice_tax_code,
+                    tax.credit_note_base_code, tax.credit_note_tax_code))
+            update = transaction.connection.cursor()
+            for (tax, company,
+                    invoice_base_code, invoice_tax_code,
+                    credit_note_base_code, credit_note_tax_code) in cursor:
+                update.execute(*table.update(
+                        [table.type], ['tax'],
+                        where=(table.tax == tax)
+                        & (table.code.in_(
+                                [invoice_tax_code, credit_note_tax_code]))))
+                update.execute(*table.update(
+                        [table.type], ['base'],
+                        where=(table.tax == tax)
+                        & (table.code.in_(
+                                [invoice_base_code, credit_note_base_code]))))
+
     @fields.depends('move_line')
     def on_change_with_currency_digits(self, name=None):
         if self.move_line:
@@ -1218,11 +1275,11 @@ class TaxLine(ModelSQL, ModelView):
             return self.move_line.account.company.id
 
     def get_rec_name(self, name):
-        return self.code.rec_name
+        return self.tax.rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('code',) + tuple(clause[1:])]
+        return [('tax',) + tuple(clause[1:])]
 
     @classmethod
     def create(cls, vlist):
@@ -1653,9 +1710,12 @@ class OpenTaxCode(Wizard):
     def do_open_(self, action):
         pool = Pool()
         TaxCode = pool.get('account.tax.code')
+        Tax = pool.get('account.tax')
+        tax_code = TaxCode(Transaction().context['active_id'])
+        domain = [l._line_domain for l in tax_code.lines]
         action['pyson_domain'] = PYSONEncoder().encode([
-                TaxCode._sum_domain(),
-                ('code', '=', Transaction().context['active_id']),
+                Tax._amount_domain(),
+                domain,
                 ])
         return action, {}
 

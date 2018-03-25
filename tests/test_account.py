@@ -32,6 +32,15 @@ def create_chart(company, tax=False):
         tax_account = AccountTemplate(ModelData.get_id(
                 'account', 'account_template_tax_en'))
         with Transaction().set_user(0):
+            tax = TaxTemplate()
+            tax.name = tax.description = '20% VAT'
+            tax.type = 'percentage'
+            tax.rate = Decimal('0.2')
+            tax.account = template
+            tax.invoice_account = tax_account
+            tax.credit_note_account = tax_account
+            tax.save()
+
             tax_code = TaxCodeTemplate()
             tax_code.name = 'Tax Code'
             tax_code.account = template
@@ -40,22 +49,6 @@ def create_chart(company, tax=False):
             base_code.name = 'Base Code'
             base_code.account = template
             base_code.save()
-            tax = TaxTemplate()
-            tax.name = tax.description = '20% VAT'
-            tax.type = 'percentage'
-            tax.rate = Decimal('0.2')
-            tax.account = template
-            tax.invoice_account = tax_account
-            tax.credit_note_account = tax_account
-            tax.invoice_base_code = base_code
-            tax.invoice_base_sign = Decimal(1)
-            tax.invoice_tax_code = tax_code
-            tax.invoice_tax_sign = Decimal(1)
-            tax.credit_note_base_code = base_code
-            tax.credit_note_base_sign = Decimal(-1)
-            tax.credit_note_tax_code = tax_code
-            tax.credit_note_tax_sign = Decimal(-1)
-            tax.save()
 
     session_id, _, _ = CreateChart.create()
     create_chart = CreateChart(session_id)
