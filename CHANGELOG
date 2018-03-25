@@ -1,4 +1,4 @@
-* Manage same input and storage location
+* Manage same input and storage location in supplier shipment
 * Check pending shipment to erase party
 * Define how inventory non filled lines are managed
 * Do not fill inventory quantity automatically
