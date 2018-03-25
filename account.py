@@ -94,15 +94,15 @@ class TaxGroupCash(ModelSQL):
         'account.tax.group', "Tax Group", ondelete='CASCADE', required=True)
 
 
-class TaxCode:
+class Tax:
     __metaclass__ = PoolMeta
-    __name__ = 'account.tax.code'
+    __name__ = 'account.tax'
 
     @classmethod
-    def _sum_where(cls, tax_line, move_line, move):
+    def _amount_where(cls, tax_line, move_line, move):
         context = Transaction().context
         periods = context.get('periods', [])
-        where = super(TaxCode, cls)._sum_where(tax_line, move_line, move)
+        where = super(Tax, cls)._amount_where(tax_line, move_line, move)
         return ((where
                 & (tax_line.on_cash_basis == False)
                 | (tax_line.on_cash_basis == Null))
@@ -110,10 +110,10 @@ class TaxCode:
                 & (tax_line.on_cash_basis == True)))
 
     @classmethod
-    def _sum_domain(cls):
+    def _amount_domain(cls):
         context = Transaction().context
         periods = context.get('periods', [])
-        domain = super(TaxCode, cls)._sum_domain()
+        domain = super(Tax, cls)._sum_domain()
         return ['OR',
             [domain,
                 ('on_cash_basis', '=', False),
@@ -151,8 +151,8 @@ class TaxLine:
     @classmethod
     def group_cash_basis_key(cls, line):
         return (
-            ('code', line.code),
             ('tax', line.tax),
+            ('type', line.type),
             ('move_line', line.move_line),
             ('on_cash_basis', line.on_cash_basis),
             )

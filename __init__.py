@@ -14,7 +14,7 @@ def register():
         account.Period,
         party.Party,
         account.TaxGroupCash,
-        account.TaxCode,
+        account.Tax,
         account.TaxLine,
         account.Move,
         account.Invoice,

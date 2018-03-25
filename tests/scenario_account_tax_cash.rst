@@ -10,7 +10,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
-    ...     create_chart, get_accounts, create_tax, set_tax_code
+    ...     create_chart, get_accounts, create_tax, create_tax_code
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
 
@@ -56,18 +56,26 @@ Create taxes::
 
     >>> group_cash_basis = TaxGroup(name="Cash Basis", code="CASH")
     >>> group_cash_basis.save()
-    >>> tax_cash_basis = set_tax_code(create_tax(Decimal('.10')))
+    >>> tax_cash_basis = create_tax(Decimal('.10'))
     >>> tax_cash_basis.group = group_cash_basis
     >>> tax_cash_basis.save()
+    >>> code_base_cash_basis = create_tax_code(tax_cash_basis, 'base', 'invoice')
+    >>> code_base_cash_basis.save()
+    >>> code_tax_cash_basis = create_tax_code(tax_cash_basis, 'tax', 'invoice')
+    >>> code_tax_cash_basis.save()
 
     >>> fiscalyear.tax_group_on_cash_basis.append(TaxGroup(group_cash_basis.id))
     >>> fiscalyear.save()
 
     >>> group_no_cash_basis = TaxGroup(name="No Cash Basis", code="NOCASH")
     >>> group_no_cash_basis.save()
-    >>> tax_no_cash_basis = set_tax_code(create_tax(Decimal('.05')))
+    >>> tax_no_cash_basis = create_tax(Decimal('.05'))
     >>> tax_no_cash_basis.group = group_no_cash_basis
     >>> tax_no_cash_basis.save()
+    >>> code_base_no_cash_basis = create_tax_code(tax_no_cash_basis, 'base', 'invoice')
+    >>> code_base_no_cash_basis.save()
+    >>> code_tax_no_cash_basis = create_tax_code(tax_no_cash_basis, 'tax', 'invoice')
+    >>> code_tax_no_cash_basis.save()
 
 Create party::
 
@@ -107,18 +115,14 @@ Check tax lines::
 Check tax codes::
 
     >>> with config.set_context(periods=[period.id]):
-    ...     invoice_base_code = TaxCode(tax_cash_basis.invoice_base_code.id)
-    ...     invoice_base_code.sum
-    ...     invoice_tax_code = TaxCode(tax_cash_basis.invoice_tax_code.id)
-    ...     invoice_tax_code.sum
+    ...     TaxCode(code_base_cash_basis.id).amount
+    ...     TaxCode(code_tax_cash_basis.id).amount
     Decimal('0.00')
     Decimal('0.00')
 
     >>> with config.set_context(periods=[period.id]):
-    ...     invoice_base_code = TaxCode(tax_no_cash_basis.invoice_base_code.id)
-    ...     invoice_base_code.sum
-    ...     invoice_tax_code = TaxCode(tax_no_cash_basis.invoice_tax_code.id)
-    ...     invoice_tax_code.sum
+    ...     TaxCode(code_base_no_cash_basis.id).amount
+    ...     TaxCode(code_tax_no_cash_basis.id).amount
     Decimal('100.00')
     Decimal('5.00')
 
@@ -136,17 +140,13 @@ Pay partially the invoice::
 Check tax codes::
 
     >>> with config.set_context(periods=[period.id]):
-    ...     invoice_base_code = TaxCode(tax_cash_basis.invoice_base_code.id)
-    ...     invoice_base_code.sum
-    ...     invoice_tax_code = TaxCode(tax_cash_basis.invoice_tax_code.id)
-    ...     invoice_tax_code.sum
+    ...     TaxCode(code_base_cash_basis.id).amount
+    ...     TaxCode(code_tax_cash_basis.id).amount
     Decimal('52.17')
     Decimal('5.22')
 
     >>> with config.set_context(periods=[period.id]):
-    ...     invoice_base_code = TaxCode(tax_no_cash_basis.invoice_base_code.id)
-    ...     invoice_base_code.sum
-    ...     invoice_tax_code = TaxCode(tax_no_cash_basis.invoice_tax_code.id)
-    ...     invoice_tax_code.sum
+    ...     TaxCode(code_base_no_cash_basis.id).amount
+    ...     TaxCode(code_tax_no_cash_basis.id).amount
     Decimal('100.00')
     Decimal('5.00')
