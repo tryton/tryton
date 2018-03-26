@@ -163,7 +163,6 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
             ],
         depends=['company'])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
-        states=_states,
         domain=[
             ('company', '=', Eval('company')),
         ],
@@ -637,7 +636,7 @@ class Account(ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many(
-        'account.account', 'parent', 'Children', states=_states,
+        'account.account', 'parent', 'Children',
         domain=[('company', '=', Eval('company'))],
         depends=['company'])
     balance = fields.Function(fields.Numeric('Balance',

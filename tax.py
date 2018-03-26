@@ -151,7 +151,7 @@ class TaxCode(ModelSQL, ModelView):
     lines = fields.One2Many('account.tax.code.line', 'code', "Lines")
     childs = fields.One2Many('account.tax.code', 'parent', 'Children',
             domain=[('company', '=', Eval('company', 0))],
-        states=_states, depends=['company'])
+        depends=['company'])
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     amount = fields.Function(fields.Numeric(
@@ -700,8 +700,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             ' be modified by this tax'))
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE',
         states=_states)
-    childs = fields.One2Many('account.tax', 'parent', 'Children',
-        states=_states)
+    childs = fields.One2Many('account.tax', 'parent', 'Children')
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
