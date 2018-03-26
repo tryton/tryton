@@ -5,7 +5,8 @@ from simpleeval import simple_eval
 from itertools import chain
 
 from trytond.pool import Pool, PoolMeta
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    ModelSQL, ModelView, Workflow, DeactivableMixin, fields)
 from trytond.pyson import Eval, Bool
 from trytond.tools import decistmt
 from trytond.transaction import Transaction
@@ -18,18 +19,14 @@ __all__ = [
     'HandleInvoiceException']
 
 
-class AdvancePaymentTerm(ModelSQL, ModelView):
+class AdvancePaymentTerm(
+        DeactivableMixin, ModelSQL, ModelView):
     "Advance Payment Term"
     __name__ = 'sale.advance_payment_term'
 
     name = fields.Char("Name", required=True, translate=True)
-    active = fields.Boolean("Active", select=True)
     lines = fields.One2Many(
         'sale.advance_payment_term.line', 'advance_payment_term', "Lines")
-
-    @staticmethod
-    def default_active():
-        return True
 
     def get_advance_payment_context(self, sale):
         return {
