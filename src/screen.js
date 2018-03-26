@@ -51,6 +51,17 @@
                 'class': 'glyphicon glyphicon-search'
             }));
 
+            this.but_active = jQuery('<button/>', {
+                type: 'button',
+                'class': 'btn btn-default hidden-xs',
+                'aria-expanded': false,
+            }).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-compressed',
+                'aria-hidden': true,
+            }));
+            this._set_active_tooltip();
+            this.but_active.click(this.search_active.bind(this));
+
             this.but_bookmark = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default dropdown-toggle',
@@ -107,6 +118,7 @@
                 'class': 'input-group-btn'
             }).append(but_submit)
                     .append(this.but_star)
+                    .append(this.but_active)
                     .append(this.but_bookmark)
                     .append(dropdown_bookmark))
             .appendTo(jQuery('<div/>', {
@@ -293,6 +305,21 @@
         },
         search_next: function() {
             this.screen.search_next(this.get_text());
+        },
+        search_active: function() {
+            this.but_active.toggleClass('active');
+            this._set_active_tooltip();
+            this.screen.search_filter(this.get_text());
+        },
+        _set_active_tooltip: function() {
+            var tooltip;
+            if (this.but_active.hasClass('active')) {
+                tooltip = Sao.i18n.gettext('Show active records');
+            } else {
+                tooltip = Sao.i18n.gettext('Show inactive records');
+            }
+            this.but_active.attr('aria-label', tooltip);
+            this.but_active.attr('title', tooltip);
         },
         get_tab_domain: function() {
             if (!this.tab) {
@@ -825,13 +852,16 @@
             if (!jQuery.isEmptyObject(tab_domain)) {
                 domain = ['AND', domain, tab_domain];
             }
-
+            var context = this.context();
+            if (this.screen_container.but_active.hasClass('active')) {
+                context.active_test = false;
+            }
             var grp_prm = this.model.find(domain, this.offset, this.limit,
-                this.order, this.context());
+                this.order, context);
             var count_prm = jQuery.when(this.search_count);
             if (!only_ids) {
                 count_prm = this.model.execute('search_count', [domain],
-                    this.context());
+                    context);
             }
             count_prm.done(function(count) {
                 this.search_count = count;
@@ -876,6 +906,13 @@
                 }
             } else {
                 domain = this.attributes.domain || [];
+            }
+            if (this.screen_container.but_active.hasClass('active')) {
+                if (!jQuery.isEmptyObject(domain)) {
+                    domain = [domain, ['active', '=', false]];
+                } else {
+                    domain = [['active', '=', false]];
+                }
             }
             if (this.current_view &&
                     this.current_view.view_type == 'calendar') {
@@ -1386,6 +1423,12 @@
                     dom_fields[name] = fields[name];
                 });
                 fields = dom_fields;
+            }
+
+            if ('active' in view_tree.fields) {
+                this.screen_container.but_active.show();
+            } else {
+                this.screen_container.but_active.hide();
             }
 
             // Add common fields
