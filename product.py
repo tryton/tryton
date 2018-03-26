@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, DeactivableMixin, fields
 from trytond.pool import PoolMeta
 
 from trytond.modules.product_classification.product import (
@@ -49,17 +49,12 @@ class Cultivar(ClassificationMixin, ModelSQL, ModelView):
         'cultivar', 'group', 'Groups')
 
 
-class CultivarGroup(ModelSQL, ModelView):
+class CultivarGroup(DeactivableMixin, ModelSQL, ModelView):
     'Cultivar Group'
     __name__ = 'product.cultivar.group'
     name = fields.Char('Name', translate=True)
-    active = fields.Boolean('Active')
     cultivars = fields.Many2Many('product.cultivar-product.cultivar.group',
         'group', 'cultivar', 'Cultivars')
-
-    @classmethod
-    def default_active(cls):
-        return True
 
 
 class Cultivar_CultivarGroup(ModelSQL):
