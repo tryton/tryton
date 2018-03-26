@@ -6,7 +6,8 @@ from decimal import Decimal
 from simpleeval import simple_eval
 
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelSQL, ModelView, MatchMixin, Workflow, fields
+from trytond.model import (
+    ModelSQL, ModelView, MatchMixin, Workflow, DeactivableMixin, fields)
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.tools import decistmt
@@ -78,7 +79,8 @@ class SaleLine:
             ])
 
 
-class SalePromotion(ModelSQL, ModelView, MatchMixin):
+class SalePromotion(
+        DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     'Sale Promotion'
     __name__ = 'sale.promotion'
 
@@ -92,7 +94,6 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
                 Eval('context', {}).get('company', -1)),
             ],
         select=True)
-    active = fields.Boolean('Active')
     start_date = fields.Date('Start Date',
         domain=['OR',
             ('start_date', '<=', If(~Eval('end_date', None),
@@ -145,10 +146,6 @@ class SalePromotion(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
