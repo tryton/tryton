@@ -5,5 +5,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="rec_name"/>
     <field name="bank"/>
     <field name="currency"/>
-    <field name="active" tree_invisible="1"/>
 </tree>

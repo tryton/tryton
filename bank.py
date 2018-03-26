@@ -3,7 +3,8 @@
 from stdnum import iban
 from sql import operators, Literal
 
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
 
 
 __all__ = ['Bank', 'BankAccount', 'BankAccountNumber', 'BankAccountParty']
@@ -24,7 +25,7 @@ class Bank(ModelSQL, ModelView):
         return [('party',) + tuple(clause[1:])]
 
 
-class BankAccount(ModelSQL, ModelView):
+class BankAccount(DeactivableMixin, ModelSQL, ModelView):
     'Bank Account'
     __name__ = 'bank.account'
     bank = fields.Many2One('bank', 'Bank', required=True,
@@ -35,12 +36,6 @@ class BankAccount(ModelSQL, ModelView):
     numbers = fields.One2Many('bank.account.number', 'account', 'Numbers',
         required=True,
         help="Add the numbers which identify the bank account.")
-    active = fields.Boolean('Active', select=True,
-        help="Uncheck to exclude the bank account from future use.")
-
-    @staticmethod
-    def default_active():
-        return True
 
     def get_rec_name(self, name):
         return self.numbers[0].number
