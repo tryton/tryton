@@ -133,6 +133,7 @@ class Dunning(ModelSQL, ModelView):
             ('line_unique', Unique(table, table.line),
                 'Line can be used only once on dunning.'),
             ]
+        cls._active_field = 'active'
 
     @staticmethod
     def default_company():

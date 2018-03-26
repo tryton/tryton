@@ -9,5 +9,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="level"/>
     <field name="blocked"/>
     <field name="state"/>
-    <field name="active" tree_invisible="1"/>
 </tree>
