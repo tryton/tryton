@@ -5,7 +5,8 @@ from decimal import Decimal
 from sql import Null
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, Workflow, fields, Unique
+from trytond.model import (
+    ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
 from trytond import backend
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -41,12 +42,12 @@ class JournalType(ModelSQL, ModelView):
         cls._order.insert(0, ('code', 'ASC'))
 
 
-class Journal(ModelSQL, ModelView, CompanyMultiValueMixin):
+class Journal(
+        DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
     'Journal'
     __name__ = 'account.journal'
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None)
-    active = fields.Boolean('Active', select=True)
     type = fields.Selection('get_types', 'Type', required=True)
     sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Sequence",
@@ -130,10 +131,6 @@ class Journal(ModelSQL, ModelView, CompanyMultiValueMixin):
         if field in {'credit_account', 'debit_account'}:
             return pool.get('account.journal.account')
         return super(Journal, cls).multivalue_model(field)
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def default_sequence(cls, **pattern):
@@ -306,7 +303,8 @@ class JournalCashContext(ModelView):
     default_end_date = default_start_date
 
 
-class JournalPeriod(Workflow, ModelSQL, ModelView):
+class JournalPeriod(
+        DeactivableMixin, Workflow, ModelSQL, ModelView):
     'Journal - Period'
     __name__ = 'account.journal.period'
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -314,8 +312,6 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
     period = fields.Many2One('account.period', 'Period', required=True,
             ondelete='CASCADE', states=STATES, depends=DEPENDS)
     icon = fields.Function(fields.Char('Icon'), 'get_icon')
-    active = fields.Boolean('Active', select=True, states=STATES,
-        depends=DEPENDS)
     state = fields.Selection([
         ('open', 'Open'),
         ('close', 'Close'),
@@ -353,6 +349,8 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+        cls.active.states = STATES
+        cls.active.depends = DEPENDS
 
     @classmethod
     def __register__(cls, module_name):
@@ -363,10 +361,6 @@ class JournalPeriod(Workflow, ModelSQL, ModelView):
         table = TableHandler(cls, module_name)
         # Migration from 4.2: remove name column
         table.drop_column('name')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_state():

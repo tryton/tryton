@@ -6,7 +6,8 @@ from decimal import Decimal
 from simpleeval import simple_eval
 
 from trytond import backend
-from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
+from trytond.model import (
+    ModelSQL, ModelView, DeactivableMixin, fields, sequence_ordered)
 from trytond.pyson import Eval
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
     Button)
@@ -19,7 +20,7 @@ __all__ = ['MoveTemplate', 'MoveTemplateKeyword',
     'CreateMove', 'CreateMoveTemplate', 'CreateMoveKeywords']
 
 
-class MoveTemplate(ModelSQL, ModelView):
+class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
     'Account Move Template'
     __name__ = 'account.move.template'
     name = fields.Char('Name', required=True, translate=True)
@@ -36,15 +37,10 @@ class MoveTemplate(ModelSQL, ModelView):
             ('account.company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    active = fields.Boolean('Active')
 
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
-
-    @staticmethod
-    def default_active():
-        return True
 
     def get_move(self, values):
         'Return the move for the keyword values'

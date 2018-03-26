@@ -10,7 +10,8 @@ from sql import Column, Null, Window, Literal
 from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
 
-from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, Unique, sequence_ordered)
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.report import Report
@@ -588,17 +589,15 @@ class AccountTemplateTaxTemplate(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class Account(ModelSQL, ModelView):
+class Account(DeactivableMixin, ModelSQL, ModelView):
     'Account'
     __name__ = 'account.account'
-
     _states = {
         'readonly': (Bool(Eval('template', -1)) &
             ~Eval('template_override', False)),
         }
     name = fields.Char('Name', required=True, select=True, states=_states)
     code = fields.Char('Code', select=True, states=_states)
-    active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
     currency = fields.Function(fields.Many2One('currency.currency',
@@ -1272,14 +1271,13 @@ class OpenChartAccount(Wizard):
         return 'end'
 
 
-class GeneralLedgerAccount(ModelSQL, ModelView):
+class GeneralLedgerAccount(DeactivableMixin, ModelSQL, ModelView):
     'General Ledger Account'
     __name__ = 'account.general_ledger.account'
 
     # TODO reuse rec_name of Account
     name = fields.Char('Name')
     code = fields.Char('Code')
-    active = fields.Boolean('Active')
     company = fields.Many2One('company.company', 'Company')
     type = fields.Many2One('account.account.type', 'Type')
     start_debit = fields.Function(fields.Numeric('Start Debit',

@@ -9,8 +9,9 @@ from sql import Literal, Cast
 from sql.aggregate import Sum
 from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
+    sequence_ordered)
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
@@ -133,7 +134,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class TaxCode(ModelSQL, ModelView):
+class TaxCode(DeactivableMixin, ModelSQL, ModelView):
     'Tax Code'
     __name__ = 'account.tax.code'
     _states = {
@@ -142,7 +143,6 @@ class TaxCode(ModelSQL, ModelView):
         }
     name = fields.Char('Name', required=True, select=True, states=_states)
     code = fields.Char('Code', select=True, states=_states)
-    active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     parent = fields.Many2One('account.tax.code', 'Parent', select=True,
@@ -177,10 +177,6 @@ class TaxCode(ModelSQL, ModelView):
     def validate(cls, codes):
         super(TaxCode, cls).validate(codes)
         cls.check_recursion(codes)
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_company():
@@ -647,7 +643,7 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class Tax(sequence_ordered(), ModelSQL, ModelView):
+class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     '''
     Account Tax
 
@@ -669,7 +665,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             'invisible': Bool(Eval('parent')),
             'readonly': _states['readonly'],
             }, depends=['parent'])
-    active = fields.Boolean('Active')
     start_date = fields.Date('Starting Date', states=_states)
     end_date = fields.Date('Ending Date', states=_states)
     amount = fields.Numeric('Amount', digits=(16, 8),
@@ -801,10 +796,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView):
             self.raise_user_error('update_unit_price_with_parent', {
                     'tax': self.rec_name,
                     })
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_type():
