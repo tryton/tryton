@@ -8,7 +8,7 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond import backend
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
 from trytond.transaction import Transaction
@@ -19,12 +19,11 @@ __all__ = ['Account', 'AccountDistribution',
     'AnalyticAccountEntry', 'AnalyticMixin']
 
 
-class Account(ModelSQL, ModelView):
+class Account(DeactivableMixin, ModelSQL, ModelView):
     'Analytic Account'
     __name__ = 'analytic_account.account'
     name = fields.Char('Name', required=True, translate=True, select=True)
     code = fields.Char('Code', select=True)
-    active = fields.Boolean('Active', select=True)
     company = fields.Many2One('company.company', 'Company', required=True)
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
@@ -121,10 +120,6 @@ class Account(ModelSQL, ModelView):
 
         # Migration from 4.0: remove currency
         table.not_null_action('currency', action='remove')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_company():
