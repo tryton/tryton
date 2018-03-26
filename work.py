@@ -7,7 +7,7 @@ import datetime
 from sql import Literal
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from trytond.pyson import Not, Bool, Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -17,7 +17,7 @@ from trytond import backend
 __all__ = ['Work', 'WorkContext']
 
 
-class Work(ModelSQL, ModelView):
+class Work(DeactivableMixin, ModelSQL, ModelView):
     'Work'
     __name__ = 'timesheet.work'
     name = fields.Char('Name',
@@ -34,8 +34,6 @@ class Work(ModelSQL, ModelView):
             },
         depends=['name'],
         help="Use to relate the time spent to other records.")
-    active = fields.Boolean('Active',
-        help="Uncheck to exclude the work from future use.")
     duration = fields.Function(fields.TimeDelta('Timesheet Duration',
             'company_work_time', help="Total time spent on this work."),
         'get_duration')
@@ -120,10 +118,6 @@ class Work(ModelSQL, ModelView):
             cursor.execute(*table.delete(
                     where=table.timesheet_available == False))
             table_h.drop_column('timesheet_available')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_company():

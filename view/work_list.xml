@@ -3,7 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="rec_name"/>
-    <field name="active" tree_invisible="1"/>
     <field name="origin" tree_invisible="1"/>
     <field name="timesheet_start_date" tree_invisible="1"/>
     <field name="timesheet_end_date" tree_invisible="1"/>
