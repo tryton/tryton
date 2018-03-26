@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import groupby
 
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 from trytond.pool import Pool
@@ -70,7 +71,7 @@ CLIENT_ICONS = [(x, x) for x in (
 SEPARATOR = ' / '
 
 
-class UIMenu(sequence_ordered(), ModelSQL, ModelView):
+class UIMenu(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     "UI menu"
     __name__ = 'ir.ui.menu'
 
@@ -93,7 +94,6 @@ class UIMenu(sequence_ordered(), ModelSQL, ModelView):
                 ]), 'get_action', setter='set_action')
     action_keywords = fields.One2Many('ir.action.keyword', 'model',
         'Action Keywords')
-    active = fields.Boolean('Active')
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
 
     @classmethod
@@ -115,10 +115,6 @@ class UIMenu(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_sequence():
         return 10
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def list_icons():

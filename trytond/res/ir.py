@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from ..model import ModelSQL, fields
+from ..model import ModelSQL, DeactivableMixin, fields
 from .. import backend
 from ..pool import Pool, PoolMeta
 from ..transaction import Transaction
@@ -135,18 +135,13 @@ class ModelFieldGroup(ModelSQL):
         super(ModelFieldGroup, cls).__register__(module_name)
 
 
-class ModelButtonGroup(ModelSQL):
+class ModelButtonGroup(DeactivableMixin, ModelSQL):
     "Model Button - Group"
     __name__ = 'ir.model.button-res.group'
     button = fields.Many2One('ir.model.button', 'Button',
         ondelete='CASCADE', select=True, required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
         select=True, required=True)
-    active = fields.Boolean('Active', select=True)
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def create(cls, vlist):

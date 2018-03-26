@@ -314,6 +314,19 @@ class ModelView(unittest.TestCase):
         self.assertEqual(len(pages), 1)
         self.assertEqual(pages[0].attrib['id'], 'non-empty')
 
+    @with_transaction()
+    def test_active_field(self):
+        "Testing active field is set and added to view fields"
+        pool = Pool()
+        Deactivable = pool.get('test.deactivable.modelview')
+        EmptyPage = pool.get('test.modelview.empty_page')
+
+        fields = Deactivable.fields_view_get(view_type='tree')['fields']
+        self.assertIn('active', fields)
+
+        fields = EmptyPage.fields_view_get(view_type='tree')['fields']
+        self.assertNotIn('active', fields)
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase

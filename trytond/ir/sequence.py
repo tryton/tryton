@@ -5,7 +5,7 @@ import time
 from itertools import izip
 from sql import Literal, For
 
-from ..model import ModelView, ModelSQL, fields, Check
+from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
 from ..tools import datetime_strftime
 from ..pyson import Eval, And
 from ..transaction import Transaction
@@ -27,7 +27,7 @@ class SequenceType(ModelSQL, ModelView):
     code = fields.Char('Sequence Code', required=True)
 
 
-class Sequence(ModelSQL, ModelView):
+class Sequence(DeactivableMixin, ModelSQL, ModelView):
     "Sequence"
     __name__ = 'ir.sequence'
 
@@ -37,7 +37,6 @@ class Sequence(ModelSQL, ModelView):
         states={
             'readonly': Eval('context', {}).contains('code'),
             })
-    active = fields.Boolean('Active')
     prefix = fields.Char('Prefix')
     suffix = fields.Char('Suffix')
     type = fields.Selection([
@@ -120,10 +119,6 @@ class Sequence(ModelSQL, ModelView):
                 if not transaction.database.sequence_exist(
                         transaction.connection, sequence._sql_sequence_name):
                     sequence.create_sql_sequence(sequence.number_next_internal)
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_type():

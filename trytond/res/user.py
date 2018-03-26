@@ -33,7 +33,8 @@ try:
 except ImportError:
     bcrypt = None
 
-from ..model import ModelView, ModelSQL, Workflow, fields, Unique
+from ..model import (
+    ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
 from ..wizard import Wizard, StateView, Button, StateTransition
 from ..tools import grouped_slice
 from .. import backend
@@ -82,7 +83,7 @@ def _send_email(from_, users, email_func):
         sendmail_transactional(from_, [user.email], msg)
 
 
-class User(ModelSQL, ModelView):
+class User(DeactivableMixin, ModelSQL, ModelView):
     "User"
     __name__ = "res.user"
     name = fields.Char('Name', select=True)
@@ -107,7 +108,6 @@ class User(ModelSQL, ModelView):
             },
         depends=['password_reset'])
     signature = fields.Text('Signature')
-    active = fields.Boolean('Active')
     menu = fields.Many2One('ir.action', 'Menu Action',
         domain=[('usage', '=', 'menu')], required=True)
     pyson_menu = fields.Function(fields.Char('PySON Menu'), 'get_pyson_menu')
@@ -226,10 +226,6 @@ class User(ModelSQL, ModelView):
 
         # Migration from 4.2: Remove required on name
         table.not_null_action('name', action='remove')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_menu():

@@ -5,7 +5,8 @@ import time
 from sql import Literal, Null
 from sql.aggregate import Count, Max
 
-from ..model import ModelView, ModelSQL, fields, EvalEnvironment, Check
+from ..model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, EvalEnvironment, Check)
 from ..pyson import Eval, PYSONDecoder
 from ..tools import grouped_slice
 from .. import backend
@@ -19,11 +20,10 @@ __all__ = [
     ]
 
 
-class Trigger(ModelSQL, ModelView):
+class Trigger(DeactivableMixin, ModelSQL, ModelView):
     "Trigger"
     __name__ = 'ir.trigger'
     name = fields.Char('Name', required=True, translate=True)
-    active = fields.Boolean('Active', select=True)
     model = fields.Many2One('ir.model', 'Model', required=True, select=True)
     on_time = fields.Boolean('On Time', select=True, states={
             'invisible': (Eval('on_create', False)
@@ -112,10 +112,6 @@ class Trigger(ModelSQL, ModelView):
                         'condition': trigger.condition,
                         'trigger': trigger.rec_name,
                         })
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_limit_number():

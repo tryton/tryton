@@ -9,7 +9,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 from ast import literal_eval
 
-from ..model import ModelView, ModelSQL, fields, dualmethod
+from ..model import ModelView, ModelSQL, DeactivableMixin, fields, dualmethod
 from ..transaction import Transaction
 from ..pool import Pool
 from .. import backend
@@ -31,7 +31,7 @@ _INTERVALTYPES = {
 }
 
 
-class Cron(ModelSQL, ModelView):
+class Cron(DeactivableMixin, ModelSQL, ModelView):
     "Cron"
     __name__ = "ir.cron"
     name = fields.Char('Name', required=True, translate=True)
@@ -41,7 +41,6 @@ class Cron(ModelSQL, ModelView):
     request_user = fields.Many2One(
         'res.user', 'Request User', required=True,
         help="The user who will receive requests in case of failure")
-    active = fields.Boolean('Active', select=True)
     interval_number = fields.Integer('Interval Number', required=True)
     interval_type = fields.Selection([
             ('minutes', 'Minutes'),
@@ -110,10 +109,6 @@ class Cron(ModelSQL, ModelView):
     @staticmethod
     def default_number_calls():
         return -1
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_repeat_missed():

@@ -12,7 +12,7 @@ from ast import literal_eval
 
 from sql import Table
 
-from ..model import ModelView, ModelSQL, fields, Check
+from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
 from ..cache import Cache
 from ..tools import datetime_strftime
 from ..transaction import Transaction
@@ -26,7 +26,7 @@ __all__ = [
     ]
 
 
-class Lang(ModelSQL, ModelView):
+class Lang(DeactivableMixin, ModelSQL, ModelView):
     "Language"
     __name__ = "ir.lang"
     name = fields.Char('Name', required=True, translate=True)
@@ -34,7 +34,6 @@ class Lang(ModelSQL, ModelView):
         help="RFC 4646 tag: http://tools.ietf.org/html/rfc4646")
     translatable = fields.Boolean('Translatable')
     parent = fields.Char("Parent Code", help="Code of the exceptional parent")
-    active = fields.Boolean('Active')
     direction = fields.Selection([
             ('ltr', 'Left-to-right'),
             ('rtl', 'Right-to-left'),
@@ -113,10 +112,6 @@ class Lang(ModelSQL, ModelView):
                 record['name'] = (res_trans.get(record2['id'], False)
                     or record2['name'])
         return res
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_translatable():

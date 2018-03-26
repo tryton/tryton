@@ -795,6 +795,22 @@ ValueMixin
 
 A mixin_ to store the values of :class:`MultiValueMixin`.
 
+================
+DeactivableMixin
+================
+
+.. class:: DeactivableMixin
+
+A mixin_ to add soft deletion to the model.
+
+Class attributes are:
+
+.. attribute:: DictSchemaMixin.active
+
+    The definition of the :class:`trytond.model.fields.Boolean` field to
+    store soft deletion state. False values will be consideres as soft
+    deletion.
+
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json
 .. _UNION: http://en.wikipedia.org/wiki/Union_(SQL)#UNION_operator

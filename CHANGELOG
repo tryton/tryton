@@ -1,3 +1,5 @@
+* Add deactivable mixin
+* Ensure active field is present on tree view
 * Manage depends xml attribute on field tag
 * Add expand attribute on group tag
 * Add depends on Pool.register

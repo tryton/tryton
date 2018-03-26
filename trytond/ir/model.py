@@ -10,8 +10,8 @@ from sql.conditionals import Case
 from collections import defaultdict
 from itertools import groupby
 
-from ..model import (ModelView, ModelSQL, Workflow, fields, Unique,
-    EvalEnvironment)
+from ..model import (ModelView, ModelSQL, Workflow, DeactivableMixin, fields,
+    Unique, EvalEnvironment)
 from ..report import Report
 from ..wizard import Wizard, StateView, StateAction, Button
 from ..transaction import Transaction
@@ -969,13 +969,12 @@ class ModelButtonRule(ModelSQL, ModelView):
         ModelButton._rules_cache.clear()
 
 
-class ModelButtonClick(ModelSQL, ModelView):
+class ModelButtonClick(DeactivableMixin, ModelSQL, ModelView):
     "Model Button Click"
     __name__ = 'ir.model.button.click'
     button = fields.Many2One(
         'ir.model.button', "Button", required=True, ondelete='CASCADE')
     record_id = fields.Integer("Record ID", required=True)
-    active = fields.Boolean("Active")
 
     @classmethod
     def __setup__(cls):
@@ -983,10 +982,6 @@ class ModelButtonClick(ModelSQL, ModelView):
         cls.__rpc__.update({
                 'get_click': RPC(),
                 })
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     @classmethod
     def register(cls, model, name, records):

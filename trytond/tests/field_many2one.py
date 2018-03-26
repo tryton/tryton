@@ -1,21 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.model import ModelSQL, ModelStorage, fields
+from trytond.model import ModelSQL, ModelStorage, DeactivableMixin, fields
 from trytond.pool import Pool
 
 
-class Many2OneTarget(ModelSQL):
+class Many2OneTarget(DeactivableMixin, ModelSQL):
     "Many2One Domain Validation Target"
     __name__ = 'test.many2one_target'
     _order_name = 'value'
 
-    active = fields.Boolean('Active')
     value = fields.Integer('Value')
-
-    @staticmethod
-    def default_active():
-        return True
 
 
 class Many2One(ModelSQL):

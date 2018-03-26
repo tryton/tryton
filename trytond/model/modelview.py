@@ -428,6 +428,9 @@ class ModelView(Model):
         fields_def = cls.__view_look_dom(tree_root, type,
                 fields_width=fields_width)
 
+        if hasattr(cls, 'active'):
+            fields_def.setdefault('active', {'name': 'active'})
+
         if field_children:
             fields_def.setdefault(field_children, {'name': field_children})
             if field_children in cls._fields:
@@ -442,9 +445,6 @@ class ModelView(Model):
                 continue
             for depend in field.depends:
                 fields_def.setdefault(depend, {'name': depend})
-
-        if 'active' in cls._fields:
-            fields_def.setdefault('active', {'name': 'active'})
 
         arch = etree.tostring(
             tree, encoding='utf-8', pretty_print=False).decode('utf-8')

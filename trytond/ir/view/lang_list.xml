@@ -6,5 +6,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="code"/>
     <field name="direction"/>
     <field name="translatable"/>
-    <field name="active"/>
 </tree>

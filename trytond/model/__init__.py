@@ -12,9 +12,10 @@ from .union import UnionMixin
 from .multivalue import MultiValueMixin, ValueMixin
 from .descriptors import dualmethod
 from .order import sequence_ordered
+from .active import DeactivableMixin
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Check', 'Unique', 'Exclude',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin',
-    'EvalEnvironment', 'sequence_ordered']
+    'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin']

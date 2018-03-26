@@ -9,7 +9,7 @@ from functools import partial
 from sql import Table, Null
 from sql.aggregate import Count
 
-from ..model import ModelView, ModelStorage, ModelSQL, fields
+from ..model import ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields
 from ..tools import file_open
 from .. import backend
 from ..pyson import PYSONDecoder, PYSON, Eval
@@ -27,7 +27,7 @@ __all__ = [
 EMAIL_REFKEYS = set(('cc', 'to', 'subject'))
 
 
-class Action(ModelSQL, ModelView):
+class Action(DeactivableMixin, ModelSQL, ModelView):
     "Action"
     __name__ = 'ir.action'
     name = fields.Char('Name', required=True, translate=True)
@@ -38,7 +38,6 @@ class Action(ModelSQL, ModelView):
     groups = fields.Many2Many('ir.action-res.group', 'action', 'group',
             'Groups')
     icon = fields.Many2One('ir.ui.icon', 'Icon')
-    active = fields.Boolean('Active', select=True)
 
     @classmethod
     def __setup__(cls):
@@ -50,10 +49,6 @@ class Action(ModelSQL, ModelView):
     @staticmethod
     def default_usage():
         return None
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def write(cls, actions, values, *args):
@@ -922,7 +917,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
         return Action.get_action_values(cls.__name__, [action_id])[0]
 
 
-class ActionActWindowView(ModelSQL, ModelView):
+class ActionActWindowView(DeactivableMixin, ModelSQL, ModelView):
     "Action act window view"
     __name__ = 'ir.action.act_window.view'
     sequence = fields.Integer('Sequence', required=True)
@@ -930,16 +925,11 @@ class ActionActWindowView(ModelSQL, ModelView):
             ondelete='CASCADE')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             ondelete='CASCADE')
-    active = fields.Boolean('Active', select=True)
 
     @classmethod
     def __setup__(cls):
         super(ActionActWindowView, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def __register__(cls, module_name):
@@ -970,7 +960,7 @@ class ActionActWindowView(ModelSQL, ModelView):
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
 
-class ActionActWindowDomain(ModelSQL, ModelView):
+class ActionActWindowDomain(DeactivableMixin, ModelSQL, ModelView):
     "Action act window domain"
     __name__ = 'ir.action.act_window.domain'
     name = fields.Char('Name', translate=True)
@@ -979,7 +969,6 @@ class ActionActWindowDomain(ModelSQL, ModelView):
     count = fields.Boolean('Count')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
         select=True, required=True, ondelete='CASCADE')
-    active = fields.Boolean('Active')
 
     @classmethod
     def __setup__(cls):
@@ -989,10 +978,6 @@ class ActionActWindowDomain(ModelSQL, ModelView):
                 'invalid_domain': ('Invalid domain or search criteria '
                     '"%(domain)s" on action "%(action)s".'),
                 })
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def default_count(cls):

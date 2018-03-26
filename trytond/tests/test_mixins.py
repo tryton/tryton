@@ -78,6 +78,42 @@ class MixinTestCase(unittest.TestCase):
             self.assertFalse(issubclass(model, NotMixin))
 
 
+class DeactivableMixinTestCase(unittest.TestCase):
+    "Test DeactivableMixin"
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    @with_transaction()
+    def test_deactivable_default_active(self):
+        pool = Pool()
+        Deactivable = pool.get('test.deactivable.modelsql')
+
+        deactivable = Deactivable()
+        deactivable.save()
+
+        self.assertEqual(deactivable.active, True)
+
+    @with_transaction()
+    def test_search_deactivable(self):
+        pool = Pool()
+        Deactivable = pool.get('test.deactivable.modelsql')
+
+        active = Deactivable()
+        active.save()
+        inactive = Deactivable()
+        inactive.active = False
+        inactive.save()
+
+        for domain, founds in [
+                ([], [active]),
+                ([('active', '=', False)], [inactive]),
+                ([('active', 'in', [True, False])], [active, inactive]),
+                ]:
+            self.assertListEqual(Deactivable.search(domain), founds)
+
+
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase
     suite = unittest.TestSuite()
