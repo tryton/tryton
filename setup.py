@@ -47,7 +47,7 @@ if minor_version % 2:
         'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
             name[8:], name, version))
 
-requires = ['python-sql >= 0.4']
+requires = ['python-sql >= 0.4', 'python-dateutil']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
@@ -112,6 +112,9 @@ setup(name=name,
         ],
     license='GPL-3',
     install_requires=requires,
+    extras_require={
+        'sparklines': ['pygal'],
+        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
@@ -126,5 +129,6 @@ setup(name=name,
         'tests/scenario_sale.rst',
         'tests/scenario_sale_empty.rst',
         'tests/scenario_sale_ship_other_product.rst',
+        'tests/scenario_sale_reporting.rst',
         ],
     )

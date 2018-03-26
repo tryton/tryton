@@ -6,6 +6,7 @@ Prerequisites
 
  * Python 2.7 or later (http://www.python.org/)
  * trytond (http://www.tryton.org/)
+ * python-dateutil (http://labix.org/python-dateutil)
  * python-sql 0.4 or later (http://code.google.com/p/python-sql/)
  * trytond_company (http://www.tryton.org/)
  * trytond_party (http://www.tryton.org/)
@@ -16,6 +17,7 @@ Prerequisites
  * trytond_account_invoice_stock (http://www.tryton.org/)
  * trytond_currency (http://www.tryton.org/)
  * trytond_account_product (http://www.tryton.org/)
+ * Optional: pygal (http://pygal.org/)
 
 Installation
 ------------

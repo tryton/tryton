@@ -1,0 +1,572 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <menuitem name="Reporting" parent="menu_sale"
+            id="menu_reporting" sequence="100"/>
+
+        <menuitem parent="menu_reporting" name="Sales"
+            id="menu_reporting_sale" icon="tryton-graph"/>
+
+        <record model="ir.ui.view" id="reporting_context_view_form">
+            <field name="model">sale.reporting.context</field>
+            <field name="type">form</field>
+            <field name="name">sale_reporting_context_form</field>
+        </record>
+
+        <!-- Customer -->
+
+        <record model="ir.ui.view" id="reporting_customer_view_list">
+            <field name="model">sale.reporting.customer</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_customer_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_customer_view_graph_revenue">
+            <field name="model">sale.reporting.customer</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_customer_graph_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_customer_view_graph_number">
+            <field name="model">sale.reporting.customer</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_customer_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_customer">
+            <field name="name">Sales per Customer</field>
+            <field name="res_model">sale.reporting.customer</field>
+            <field name="context_model">sale.reporting.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_customer_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_customer_view_list"/>
+            <field name="act_window" ref="act_reporting_customer"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_customer_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_customer_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_customer"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_customer_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_customer_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_customer"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_customer_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="action" ref="act_reporting_customer"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_customer">
+            <field name="model" search="[('model', '=', 'sale.reporting.customer')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_customer_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.customer')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_customer_time_series_view_list">
+            <field name="model">sale.reporting.customer.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_customer_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_customer_time_series_view_graph_revenue">
+            <field name="model">sale.reporting.customer.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_customer_time_series_graph_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_customer_time_series_view_graph_number">
+            <field name="model">sale.reporting.customer.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_customer_time_series_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_customer_time_series">
+            <field name="name">Sales per Customer</field>
+            <field name="res_model">sale.reporting.customer.time_series</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field
+                name="domain"
+                eval="[('customer', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_customer_time_series_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_customer_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_customer_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_customer_time_series_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_customer_time_series_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_customer_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_customer_time_series_list_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_customer_time_series_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_customer_time_series"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_customer_time_series_list_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">sale.reporting.customer,-1</field>
+            <field name="action" ref="act_reporting_customer_time_series"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_customer_time_series">
+            <field name="model" search="[('model', '=', 'sale.reporting.customer.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_customer_time_series_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.customer.time_series')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- Product -->
+
+        <record model="ir.ui.view" id="reporting_product_view_list">
+            <field name="model">sale.reporting.product</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_product_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_product_view_graph_revenue">
+            <field name="model">sale.reporting.product</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_product_graph_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_product_view_graph_number">
+            <field name="model">sale.reporting.product</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_product_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_product">
+            <field name="name">Sales per Product</field>
+            <field name="res_model">sale.reporting.product</field>
+            <field name="context_model">sale.reporting.context</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_product_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_product_view_list"/>
+            <field name="act_window" ref="act_reporting_product"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_product_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_product_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_product"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_product_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_product_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_product"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_product_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="action" ref="act_reporting_product"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_product">
+            <field name="model" search="[('model', '=', 'sale.reporting.product')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_product_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.product')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_product_time_series_view_list">
+            <field name="model">sale.reporting.product.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_product_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_product_time_series_view_graph_revenue">
+            <field name="model">sale.reporting.product.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_product_time_series_graph_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_product_time_series_view_graph_number">
+            <field name="model">sale.reporting.product.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_product_time_series_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_product_time_series">
+            <field name="name">Sales per Product</field>
+            <field name="res_model">sale.reporting.product.time_series</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field name="domain"
+                eval="[('product', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_product_time_series_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_product_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_product_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_product_time_series_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_product_time_series_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_product_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_product_time_series_list_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_product_time_series_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_product_time_series"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_product_time_series_list_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">sale.reporting.product,-1</field>
+            <field name="action" ref="act_reporting_product_time_series"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_product_time_series">
+            <field name="model" search="[('model', '=', 'sale.reporting.product.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_product_time_series_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.product.time_series')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- Category -->
+
+        <record model="ir.ui.view" id="reporting_category_view_tree">
+            <field name="model">sale.reporting.category.tree</field>
+            <field name="type">tree</field>
+            <field name="field_childs">children</field>
+            <field name="name">sale_reporting_category_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_category_tree">
+            <field name="name">Sales per Category</field>
+            <field name="res_model">sale.reporting.category.tree</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_category_tree_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_category_view_tree"/>
+            <field name="act_window" ref="act_reporting_category_tree"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_category_tree_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="action" ref="act_reporting_category_tree"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_category_view_list">
+            <field name="model">sale.reporting.category</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_category_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_category">
+            <field name="name">Sales per Category</field>
+            <field name="res_model">sale.reporting.category</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field
+                name="domain"
+                eval="[('category', 'child_of', Eval('active_ids', []), 'parent')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_category_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_category_view_list"/>
+            <field name="act_window" ref="act_reporting_category"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_category_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">sale.reporting.category.tree,-1</field>
+            <field name="action" ref="act_reporting_category"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_category">
+            <field name="model" search="[('model', '=', 'sale.reporting.category')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_category_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.category')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_category_time_series_view_list">
+            <field name="model">sale.reporting.category.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_category_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_category_time_series_view_graph_revenue">
+            <field name="model">sale.reporting.category.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_category_time_series_graph_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_category_time_series_view_graph_number">
+            <field name="model">sale.reporting.category.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_category_time_series_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_category_time_series">
+            <field name="name">Sales per Category</field>
+            <field name="res_model">sale.reporting.category.time_series</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field
+                name="domain"
+                eval="[('category', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_category_time_series_list_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_category_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_category_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_category_time_series_list_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_category_time_series_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_category_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_category_time_series_list_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_category_time_series_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_category_time_series"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_category_time_series_list_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">sale.reporting.category,-1</field>
+            <field name="action" ref="act_reporting_category_time_series"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_category_time_series">
+            <field name="model" search="[('model', '=', 'sale.reporting.category.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_category_time_series_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.category.time_series')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <!-- Region -->
+
+        <record model="ir.ui.view" id="reporting_region_view_tree">
+            <field name="model">sale.reporting.region</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_region_tree</field>
+            <field name="field_childs">children</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_region">
+            <field name="name">Sales per Region</field>
+            <field name="res_model">sale.reporting.region</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_region_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_region_view_tree"/>
+            <field name="act_window" ref="act_reporting_region"/>
+        </record>
+        <record model="ir.action.keyword" id="act_reporting_country_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model" eval="'ir.ui.menu,%s' % ref('menu_reporting_sale')"/>
+            <field name="action" ref="act_reporting_region"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_region">
+            <field name="model" search="[('model', '=', 'sale.reporting.region')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_region_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.region')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_country_time_series_view_list">
+            <field name="model">sale.reporting.country.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_country_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_country_time_series_view_graph_revenue">
+            <field name="model">sale.reporting.country.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_country_time_series_graph_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_country_time_series_view_graph_number">
+            <field name="model">sale.reporting.country.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_country_time_series_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_country_time_series">
+            <field name="name">Sales per Country</field>
+            <field name="res_model">sale.reporting.country.time_series</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field name="domain"
+                eval="[('country', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_country_time_series_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_country_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_country_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_country_time_series_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_country_time_series_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_country_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_country_time_series_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_country_time_series_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_country_time_series"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_country_time_series">
+            <field name="model" search="[('model', '=', 'sale.reporting.country.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_country_time_series_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.country.time_series')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_country_subdivision_time_series_view_list">
+            <field name="model">sale.reporting.country.subdivision.time_series</field>
+            <field name="type">tree</field>
+            <field name="name">sale_reporting_country_subdivision_time_series_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_country_subdivision_time_series_view_graph_revenue">
+            <field name="model">sale.reporting.country.subdivision.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_country_subdivision_time_series_graph_revenue</field>
+        </record>
+
+        <record model="ir.ui.view" id="reporting_country_subdivision_time_series_view_graph_number">
+            <field name="model">sale.reporting.country.subdivision.time_series</field>
+            <field name="type">graph</field>
+            <field name="name">sale_reporting_country_subdivision_time_series_graph_number</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_reporting_country_subdivision_time_series">
+            <field name="name">Sales per Subdivision</field>
+            <field name="res_model">sale.reporting.country.subdivision.time_series</field>
+            <field name="context_model">sale.reporting.context</field>
+            <field
+                name="domain"
+                eval="[('subdivision', '=', Eval('active_id', -1))]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_country_subdivision_time_series_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reporting_country_subdivision_time_series_view_list"/>
+            <field name="act_window" ref="act_reporting_country_subdivision_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_country_subdivision_time_series_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reporting_country_subdivision_time_series_view_graph_revenue"/>
+            <field name="act_window" ref="act_reporting_country_subdivision_time_series"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reporting_country_subdivision_time_series_view3">
+            <field name="sequence" eval="30"/>
+            <field name="view" ref="reporting_country_subdivision_time_series_view_graph_number"/>
+            <field name="act_window" ref="act_reporting_country_subdivision_time_series"/>
+        </record>
+
+        <record model="ir.model.access" id="access_reporting_country_subdivision_time_series">
+            <field name="model" search="[('model', '=', 'sale.reporting.country.subdivision.time_series')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reporting_country_subdivision_time_series_sale">
+            <field name="model" search="[('model', '=', 'sale.reporting.country.subdivision.time_series')]"/>
+            <field name="group" ref="group_sale"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_reporting_region_open">
+            <field name="name">Open Region</field>
+            <field name="wiz_name">sale.reporting.region.open</field>
+            <field name="model">sale.reporting.region</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_reporting_region_open_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">sale.reporting.region,-1</field>
+            <field name="action" ref="wizard_reporting_region_open"/>
+        </record>
+
+    </data>
+</tryton>
