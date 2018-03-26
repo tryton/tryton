@@ -1,3 +1,4 @@
+* Manage active field on search widget
 * Reset record to its original state when discarding the popup window
 * Add support of expand attribute on group tag
 * Add the context model name in the screen context

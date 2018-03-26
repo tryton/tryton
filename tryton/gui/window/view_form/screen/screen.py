@@ -187,6 +187,11 @@ class Screen(SignalEvent):
             fields = collections.OrderedDict(
                 (name, fields[name]) for name in xml_fields)
 
+        if 'active' in view_tree['fields']:
+            self.screen_container.but_active.show()
+        else:
+            self.screen_container.but_active.hide()
+
         # Add common fields
         for name, string, type_ in (
                 ('id', _('ID'), 'integer'),
@@ -254,16 +259,19 @@ class Screen(SignalEvent):
         if tab_domain:
             domain = ['AND', domain, tab_domain]
 
+        context = self.context
+        if self.screen_container.but_active.get_active():
+            context['active_test'] = False
         try:
             ids = RPCExecute('model', self.model_name, 'search', domain,
-                self.offset, self.limit, self.order, context=self.context)
+                self.offset, self.limit, self.order, context=context)
         except RPCException:
             ids = []
         if not only_ids:
             if self.limit is not None and len(ids) == self.limit:
                 try:
                     self.search_count = RPCExecute('model', self.model_name,
-                        'search_count', domain, context=self.context)
+                        'search_count', domain, context=context)
                 except RPCException:
                     self.search_count = 0
             else:
@@ -302,6 +310,11 @@ class Screen(SignalEvent):
         else:
             domain = self.domain
 
+        if self.screen_container.but_active.get_active():
+            if domain:
+                domain = [domain, ('active', '=', False)]
+            else:
+                domain = [('active', '=', False)]
         if self.current_view and self.current_view.view_type == 'calendar':
             if domain:
                 domain = ['AND', domain, self.current_view.current_domain()]

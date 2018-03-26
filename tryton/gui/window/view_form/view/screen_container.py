@@ -192,6 +192,18 @@ class ScreenContainer(object):
         def deactivate(menuitem, togglebutton):
             togglebutton.props.active = False
 
+        but_active = gtk.ToggleButton()
+        self.but_active = but_active
+        self._set_active_tooltip()
+        img_active = gtk.Image()
+        img_active.set_from_stock(
+            'tryton-archive', gtk.ICON_SIZE_SMALL_TOOLBAR)
+        img_active.set_alignment(0.5, 0.5)
+        but_active.add(img_active)
+        but_active.set_relief(gtk.RELIEF_NONE)
+        but_active.connect('toggled', self.search_active)
+        hbox.pack_start(but_active, expand=False, fill=False)
+
         but_bookmark = gtk.ToggleButton()
         self.but_bookmark = but_bookmark
         tooltips.set_tip(but_bookmark, _('Show bookmarks of filters'))
@@ -382,6 +394,18 @@ class ScreenContainer(object):
 
     def search_prev(self, widget=None):
         self.screen.search_prev(self.get_text())
+
+    def search_active(self, widget=None):
+        self._set_active_tooltip()
+        self.screen.search_filter(self.get_text())
+
+    def _set_active_tooltip(self):
+        if self.but_active.get_active():
+            tooltip = _('Show active records')
+        else:
+            tooltip = _('Show inactive records')
+        tooltips = common.Tooltips()
+        tooltips.set_tip(self.but_active, tooltip)
 
     def switch_page(self, notebook, page, page_num):
         current_page = notebook.get_nth_page(notebook.get_current_page())
