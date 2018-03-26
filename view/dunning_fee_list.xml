@@ -6,5 +6,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="product"/>
     <field name="journal"/>
     <field name="compute_method"/>
-    <field name="active" tree_invisible="1"/>
 </tree>

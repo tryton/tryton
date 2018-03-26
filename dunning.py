@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -10,11 +10,10 @@ from trytond.transaction import Transaction
 __all__ = ['Fee', 'Level', 'Dunning', 'FeeDunningLevel', 'Letter']
 
 
-class Fee(ModelSQL, ModelView):
+class Fee(DeactivableMixin, ModelSQL, ModelView):
     'Account Dunning Fee'
     __name__ = 'account.dunning.fee'
     name = fields.Char('Name', required=True, translate=True)
-    active = fields.Boolean('Active', select=True)
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[
             ('type', '=', 'service'),
@@ -32,10 +31,6 @@ class Fee(ModelSQL, ModelView):
             'required': Eval('compute_method') == 'percentage',
             },
         depends=['compute_method'])
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     def get_amount(self, dunning):
         'Return fee amount and currency'
