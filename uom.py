@@ -5,7 +5,7 @@ from decimal import Decimal
 from sql import Table
 from math import ceil, floor, log10
 
-from trytond.model import ModelView, ModelSQL, fields, Check
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
@@ -29,7 +29,7 @@ class UomCategory(ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
 
 
-class Uom(ModelSQL, ModelView):
+class Uom(DeactivableMixin, ModelSQL, ModelView):
     'Unit of measure'
     __name__ = 'product.uom'
     name = fields.Char('Name', size=None, required=True, states=STATES,
@@ -53,7 +53,6 @@ class Uom(ModelSQL, ModelView):
             ('rounding', '>', 0),
             ])
     digits = fields.Integer('Display Digits', required=True)
-    active = fields.Boolean('Active')
 
     @classmethod
     def __register__(cls, module_name):
@@ -97,10 +96,6 @@ class Uom(ModelSQL, ModelView):
     @staticmethod
     def default_factor():
         return 1.0
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_rounding():

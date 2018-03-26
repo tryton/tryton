@@ -6,7 +6,8 @@ from decimal import Decimal
 
 from sql import Null, Column
 
-from trytond.model import ModelView, ModelSQL, Model, UnionMixin, fields
+from trytond.model import (
+    ModelView, ModelSQL, Model, UnionMixin, DeactivableMixin, fields)
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -38,7 +39,8 @@ COST_PRICE_METHODS = [
 price_digits = (16, config.getint('product', 'price_decimal', default=4))
 
 
-class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
+class Template(
+        DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
     "Product Template"
     __name__ = "product.template"
     name = fields.Char('Name', size=None, required=True, translate=True,
@@ -69,7 +71,6 @@ class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
         fields.Many2One('product.uom.category', 'Default UOM Category'),
         'on_change_with_default_uom_category',
         searcher='search_default_uom_category')
-    active = fields.Boolean('Active', select=True)
     categories = fields.Many2Many('product.template-product.category',
         'template', 'category', 'Categories', states=STATES, depends=DEPENDS)
     categories_all = fields.Many2Many(
@@ -114,10 +115,6 @@ class Template(ModelSQL, ModelView, CompanyMultiValueMixin):
         elif field == 'cost_price_method':
             return pool.get('product.cost_price_method')
         return super(Template, cls).multivalue_model(field)
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_type():
@@ -208,7 +205,8 @@ class TemplateFunction(fields.Function):
         return order
 
 
-class Product(ModelSQL, ModelView, CompanyMultiValueMixin):
+class Product(
+        DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
     "Product Variant"
     __name__ = "product.product"
     _order_name = 'rec_name'
@@ -224,7 +222,6 @@ class Product(ModelSQL, ModelView, CompanyMultiValueMixin):
         'product.cost_price', 'product', "Cost Prices")
     description = fields.Text("Description", translate=True, states=STATES,
         depends=DEPENDS)
-    active = fields.Boolean('Active', select=True)
     list_price_uom = fields.Function(fields.Numeric('List Price',
         digits=price_digits), 'get_price_uom')
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',
@@ -308,10 +305,6 @@ class Product(ModelSQL, ModelView, CompanyMultiValueMixin):
             template = tables['template']
         return [product.code] + Template.name.convert_order('name',
             tables['template'], Template)
-
-    @staticmethod
-    def default_active():
-        return True
 
     def get_rec_name(self, name):
         if self.code:

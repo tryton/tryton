@@ -8,5 +8,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="factor"/>
     <field name="rate"/>
     <field name="rounding"/>
-    <field name="active" tree_invisible="1"/>
 </tree>

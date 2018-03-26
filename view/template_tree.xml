@@ -7,5 +7,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="cost_price"/>
     <field name="type"/>
     <field name="default_uom"/>
-    <field name="active" tree_invisible="1"/>
 </tree>
