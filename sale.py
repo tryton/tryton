@@ -4,7 +4,8 @@ from sql import Literal
 from sql.aggregate import Count
 from sql.conditionals import Case, Coalesce
 
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    ModelSQL, ModelView, Workflow, fields, DeactivableMixin)
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice, reduce_ids
@@ -58,7 +59,7 @@ class PromotionCoupon(ModelSQL, ModelView):
         return False
 
 
-class PromotionCouponNumber(ModelSQL, ModelView):
+class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
     "Promotion Coupon Number"
     __name__ = 'sale.promotion.coupon.number'
     _rec_name = 'number'
@@ -66,8 +67,6 @@ class PromotionCouponNumber(ModelSQL, ModelView):
     number = fields.Char("Number", required=True)
     coupon = fields.Many2One(
         'sale.promotion.coupon', "Coupon", select=True, required=True)
-    active = fields.Function(
-        fields.Boolean("Active"), 'get_active', searcher='search_active')
 
     @classmethod
     def __setup__(cls):
@@ -76,10 +75,8 @@ class PromotionCouponNumber(ModelSQL, ModelView):
                 'duplicate_numbers': (
                     "The coupon numbered '%(numbers)s' are duplicated."),
                 })
-
-    @classmethod
-    def default_active(cls):
-        return True
+        cls.active = fields.Function(
+            fields.Boolean("Active"), 'get_active', searcher='search_active')
 
     @classmethod
     def get_active(cls, numbers, name):
