@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from trytond.wizard import Wizard, StateView, Button
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
@@ -11,20 +11,15 @@ __all__ = ['BOM', 'BOMInput', 'BOMOutput', 'BOMTree', 'OpenBOMTreeStart',
     'OpenBOMTreeTree', 'OpenBOMTree']
 
 
-class BOM(ModelSQL, ModelView):
+class BOM(DeactivableMixin, ModelSQL, ModelView):
     "Bill of Material"
     __name__ = 'production.bom'
 
     name = fields.Char('Name', required=True, translate=True)
-    active = fields.Boolean('Active', select=1)
     inputs = fields.One2Many('production.bom.input', 'bom', 'Inputs')
     outputs = fields.One2Many('production.bom.output', 'bom', 'Outputs')
     output_products = fields.Many2Many('production.bom.output',
         'bom', 'product', 'Output Products')
-
-    @staticmethod
-    def default_active():
-        return True
 
     def compute_factor(self, product, quantity, uom):
         '''
