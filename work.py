@@ -5,8 +5,8 @@ import random
 from decimal import Decimal
 from functools import wraps
 
-from trytond.model import ModelSQL, ModelView, Workflow, fields, \
-    sequence_ordered
+from trytond.model import (
+    ModelSQL, ModelView, Workflow, DeactivableMixin, fields, sequence_ordered)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
@@ -24,7 +24,7 @@ class WorkCenterCategory(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
 
 
-class WorkCenter(ModelSQL, ModelView):
+class WorkCenter(DeactivableMixin, ModelSQL, ModelView):
     'Work Center'
     __name__ = 'production.work.center'
     name = fields.Char('Name', required=True, translate=True)
@@ -55,7 +55,6 @@ class WorkCenter(ModelSQL, ModelView):
             'required': Bool(Eval('cost_price')),
             },
         depends=['cost_price'])
-    active = fields.Boolean('Active')
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
@@ -73,10 +72,6 @@ class WorkCenter(ModelSQL, ModelView):
                     'of category "%(category)s" under "%(parent)s".'),
                 })
         cls._order.insert(0, ('name', 'ASC'))
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     @classmethod
     def default_company(cls):

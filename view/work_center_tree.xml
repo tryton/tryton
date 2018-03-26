@@ -4,6 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name"/>
     <field name="category"/>
-    <field name="active" tree_invisible="1"/>
     <field name="warehouse" tree_invisible="1"/>
 </tree>
