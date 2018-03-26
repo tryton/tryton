@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelStorage, ModelView, fields
+from trytond.model import ModelStorage, ModelView, DeactivableMixin, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
@@ -8,14 +8,9 @@ __all__ = ['ClassificationMixin', 'classification_tree',
     'Template', 'Product', 'ClassificationDummy', 'ClassificationTreeDummy']
 
 
-class ClassificationMixin(object):
+class ClassificationMixin(DeactivableMixin):
     name = fields.Char('Name', translate=True, required=True)
-    active = fields.Boolean('Active', select=True)
     selectable = fields.Boolean('Selectable', select=True)
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     @classmethod
     def default_selectable(cls):
