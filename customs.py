@@ -5,7 +5,8 @@ from decimal import Decimal
 
 from sql import Null
 
-from trytond.model import ModelSQL, ModelView, MatchMixin, fields
+from trytond.model import (
+    ModelSQL, ModelView, DeactivableMixin, MatchMixin, fields)
 from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool
 
@@ -31,14 +32,13 @@ MONTHS = [
     ]
 
 
-class TariffCode(ModelSQL, ModelView, MatchMixin):
+class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     'Tariff Code'
     __name__ = 'customs.tariff.code'
     _rec_name = 'code'
     code = fields.Char('Code', required=True,
         help='The code from Harmonized System of Nomenclature')
     description = fields.Char('Description', translate=True)
-    active = fields.Boolean('Active', select=True)
     country = fields.Many2One('country.country', 'Country')
     # TODO country group
     start_month = fields.Selection(MONTHS, 'Start Month', sort=False,
@@ -80,10 +80,6 @@ class TariffCode(ModelSQL, ModelView, MatchMixin):
     def __setup__(cls):
         super(TariffCode, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     def match(self, pattern):
         if 'date' in pattern:
