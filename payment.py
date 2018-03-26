@@ -10,7 +10,8 @@ from operator import attrgetter
 import stripe
 
 from trytond import backend
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import (
+    ModelSQL, ModelView, Workflow, DeactivableMixin, fields)
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
 from trytond.report import Report
@@ -710,7 +711,7 @@ class Account(ModelSQL, ModelView):
         cls.save(accounts)
 
 
-class Customer(ModelSQL, ModelView):
+class Customer(DeactivableMixin, ModelSQL, ModelView):
     "Stripe Customer"
     __name__ = 'account.payment.stripe.customer'
     _history = True
@@ -748,7 +749,6 @@ class Customer(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('stripe_error_param'),
             })
-    active = fields.Boolean("Active")
 
     @classmethod
     def __setup__(cls):
@@ -759,10 +759,6 @@ class Customer(ModelSQL, ModelView):
                     'depends': ['stripe_checkout_needed'],
                     },
                 })
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     def get_stripe_checkout_needed(self, name):
         return not self.stripe_customer_id and not self.stripe_token
