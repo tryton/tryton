@@ -8,7 +8,8 @@ from sql import Window
 from sql.functions import NthValue
 
 from trytond import backend
-from trytond.model import ModelView, ModelSQL, fields, Unique, Check
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check)
 from trytond.tools import datetime_strftime
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -18,7 +19,7 @@ from trytond.pyson import Eval
 __all__ = ['Currency', 'Rate']
 
 
-class Currency(ModelSQL, ModelView):
+class Currency(DeactivableMixin, ModelSQL, ModelView):
     'Currency'
     __name__ = 'currency.currency'
     name = fields.Char('Name', required=True, translate=True,
@@ -38,8 +39,6 @@ class Currency(ModelSQL, ModelView):
         help="The minimum amount which can be represented in this currency.")
     digits = fields.Integer("Digits", required=True,
         help="The number of digits to display after the decimal separator.")
-    active = fields.Boolean('Active',
-        help="Uncheck to exclude the currency from future use.")
 
     @classmethod
     def __setup__(cls):
@@ -66,10 +65,6 @@ class Currency(ModelSQL, ModelView):
                 'mon_grouping', 'mon_decimal_point',
                 'p_sign_posn', 'n_sign_posn']:
             table_h.not_null_action(col, 'remove')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_rounding():
