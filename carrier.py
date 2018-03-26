@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, MatchMixin, fields,
+    sequence_ordered)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import Cache
@@ -64,13 +65,12 @@ class Carrier(ModelSQL, ModelView):
         CarrierSelection._get_carriers_cache.clear()
 
 
-class CarrierSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
+class CarrierSelection(
+        DeactivableMixin, sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     'Carrier Selection'
     __name__ = 'carrier.selection'
     _get_carriers_cache = Cache('carrier.selection.get_carriers')
 
-    active = fields.Boolean('Active',
-        help="Uncheck to exclude the criteria from future use.")
     from_country = fields.Many2One('country.country', 'From Country',
         ondelete='RESTRICT',
         help="Apply only when shipping from this country.\n"
@@ -81,10 +81,6 @@ class CarrierSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
         "Leave empty for any countries.")
     carrier = fields.Many2One('carrier', 'Carrier', required=True,
         ondelete='CASCADE', help="The selected carrier.")
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def create(cls, *args, **kwargs):
