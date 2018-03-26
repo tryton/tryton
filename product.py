@@ -5,12 +5,9 @@ from sql.aggregate import Max
 from sql.conditionals import Coalesce
 
 from trytond.model import ModelView, ModelSQL, fields
-from trytond.wizard import Wizard, StateAction
-from trytond.pyson import PYSONEncoder
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 
-__all__ = ['ProductCostPrice', 'ProductCostHistory', 'OpenProductCostHistory']
+__all__ = ['ProductCostPrice', 'ProductCostHistory']
 
 
 class ProductCostPrice:
@@ -51,26 +48,3 @@ class ProductCostHistory(ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         return str(self.date)
-
-
-class OpenProductCostHistory(Wizard):
-    'Open Product Cost History'
-    __name__ = 'product.product.cost_history.open'
-    start_state = 'open'
-    open = StateAction('product_cost_history.act_product_cost_history_form')
-
-    def do_open(self, action):
-        pool = Pool()
-        Product = pool.get('product.product')
-
-        active_id = Transaction().context.get('active_id')
-        if not active_id or active_id < 0:
-            action['pyson_domain'] = PYSONEncoder().encode([
-                    ('product', '=', None),
-                    ])
-        else:
-            product = Product(active_id)
-            action['pyson_domain'] = PYSONEncoder().encode([
-                    ('product', '=', product.id),
-                    ])
-        return action, {}

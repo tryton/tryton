@@ -2,14 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .product import *
+from . import product
+
+__all__ = ['register']
 
 
 def register():
     Pool.register(
-        ProductCostPrice,
-        ProductCostHistory,
+        product.ProductCostPrice,
+        product.ProductCostHistory,
         module='product_cost_history', type_='model')
-    Pool.register(
-        OpenProductCostHistory,
-        module='product_cost_history', type_='wizard')
