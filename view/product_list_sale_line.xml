@@ -10,5 +10,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="quantity"/>
     <field name="forecast_quantity"/>
     <field name="default_uom"/>
-    <field name="active" tree_invisible="1"/>
 </tree>
