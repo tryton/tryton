@@ -3,9 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Reporting" parent="sale.menu_sale"
-            id="menu_reporting" sequence="100"/>
-
         <record model="res.group" id="group_opportunity">
             <field name="name">Sale Opportunity</field>
         </record>
@@ -320,7 +317,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_opportunity_employee"/>
         </record>
 
-        <menuitem parent="menu_reporting" action="act_opportunity_employee_form"
+        <menuitem parent="sale.menu_reporting" action="act_opportunity_employee_form"
             id="menu_opportunity_employee_open"/>
 
         <record model="ir.ui.view" id="opportunity_monthly_view_tree">
@@ -364,7 +361,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_opportunity_monthly_form"/>
         </record>
 
-        <menuitem parent="menu_reporting" action="act_opportunity_monthly_form"
+        <menuitem parent="sale.menu_reporting" action="act_opportunity_monthly_form"
             id="menu_opportunity_monthly_form"/>
 
         <record model="ir.rule.group" id="rule_group_opportunity_monthly">
@@ -395,7 +392,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_opportunity_employee_monthly_form"/>
         </record>
 
-        <menuitem parent="menu_reporting"
+        <menuitem parent="sale.menu_reporting"
             action="act_opportunity_employee_monthly_form"
             id="menu_opportunity_employee_monthly_form"/>
 
