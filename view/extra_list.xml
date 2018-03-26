@@ -8,5 +8,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="end_date"/>
     <field name="company"/>
     <field name="sale_amount"/>
-    <field name="active" tree_invisible="1"/>
 </tree>

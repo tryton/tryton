@@ -6,8 +6,9 @@ from decimal import Decimal
 from sql import Null
 
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelSQL, ModelView, MatchMixin, Workflow, fields, \
-    sequence_ordered
+from trytond.model import (
+    ModelSQL, ModelView, MatchMixin, Workflow, DeactivableMixin, fields,
+    sequence_ordered)
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond import backend
@@ -65,7 +66,7 @@ class SaleLine:
     extra = fields.Many2One('sale.extra.line', 'Extra', ondelete='RESTRICT')
 
 
-class SaleExtra(ModelSQL, ModelView, MatchMixin):
+class SaleExtra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     'Sale Extra'
     __name__ = 'sale.extra'
 
@@ -79,7 +80,6 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
                 Eval('context', {}).get('company', -1)),
             ],
         select=True)
-    active = fields.Boolean('Active')
     start_date = fields.Date('Start Date',
         domain=['OR',
             ('start_date', '<=', If(~Eval('end_date', None),
@@ -136,10 +136,6 @@ class SaleExtra(ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
