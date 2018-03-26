@@ -5,7 +5,8 @@ from dateutil.relativedelta import relativedelta
 
 from sql import Column
 
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
 from trytond import backend
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -17,11 +18,10 @@ __all__ = ['PaymentTerm', 'PaymentTermLine', 'PaymentTermLineRelativeDelta',
     'TestPaymentTerm', 'TestPaymentTermView', 'TestPaymentTermViewResult']
 
 
-class PaymentTerm(ModelSQL, ModelView):
+class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
     'Payment Term'
     __name__ = 'account.invoice.payment_term'
     name = fields.Char('Name', size=None, required=True, translate=True)
-    active = fields.Boolean('Active')
     description = fields.Text('Description', translate=True)
     lines = fields.One2Many('account.invoice.payment_term.line', 'payment',
             'Lines')
@@ -48,10 +48,6 @@ class PaymentTerm(ModelSQL, ModelView):
     def check_remainder(self):
         if not self.lines or not self.lines[-1].type == 'remainder':
             self.raise_user_error('last_remainder', self.rec_name)
-
-    @staticmethod
-    def default_active():
-        return True
 
     def compute(self, amount, currency, date=None):
         """Calculate payment terms and return a list of tuples
