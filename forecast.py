@@ -103,6 +103,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+        cls._active_field = 'active'
 
     @classmethod
     def __register__(cls, module_name):

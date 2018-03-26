@@ -7,5 +7,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="from_date"/>
     <field name="to_date"/>
     <field name="company"/>
-    <field name="active" tree_invisible="1"/>
 </tree>
