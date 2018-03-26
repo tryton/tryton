@@ -1,3 +1,4 @@
+* Manage depends xml attribute on field tag
 * Add expand attribute on group tag
 * Add depends on Pool.register
 * Add Exclude constraint

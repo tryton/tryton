@@ -201,10 +201,15 @@ class RecordTagHandler:
 
             field_name = attributes['name']
             field_type = attributes.get('type', '')
+            # Remind the current name and if we have to load (see characters)
+            self.current_field = field_name
+            depends = attributes.get('depends', '').split(',')
+            depends = {m.strip() for m in depends if m}
+            if not depends.issubset(self.mh.modules):
+                self.current_field = None
+                return
             # Create a new entry in the values
             self.values[field_name] = ""
-            # Remind the current name (see characters)
-            self.current_field = field_name
             # Put a flag to escape cdata tags
             if field_type == "xml":
                 self.cdata = "start"
@@ -245,7 +250,7 @@ class RecordTagHandler:
 
     def characters(self, data):
 
-        """If whe are in a field tag, consume all the content"""
+        """If we are in a field tag, consume all the content"""
 
         if not self.current_field:
             return
@@ -265,8 +270,7 @@ class RecordTagHandler:
 
         if name == "field":
             if not self.current_field:
-                raise Exception("Application error"
-                                "current_field expected to be set.")
+                return self
             # Escape end cdata tag :
             if self.cdata in ('inside', 'start'):
                 self.values[self.current_field] = \

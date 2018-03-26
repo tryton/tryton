@@ -149,6 +149,9 @@ Here is the list of the tags:
         * ``pyson``: convert the evaluated value into :ref:`PYSON <ref-pyson>`
           string.
 
+        * ``depends``: set value only if all modules in the comma separated
+          module list value are installed.
+
         .. note::
             Field content is considered as a string. So for fields that require
             other types, it is required to use the ``eval`` attribute.
