@@ -7,8 +7,9 @@ from sql import Null
 from sql.conditionals import Case, Coalesce
 from sql.operators import Concat
 
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
+    sequence_ordered)
 from trytond.pyson import Eval, If
 from trytond import backend
 from trytond.pool import Pool
@@ -23,7 +24,7 @@ STATES = {
 DEPENDS = ['active']
 
 
-class Address(sequence_ordered(), ModelSQL, ModelView):
+class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     "Address"
     __name__ = 'party.address'
     party = fields.Many2One('party.party', 'Party', required=True,
@@ -43,8 +44,6 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
             ('parent', '=', None),
             ],
         states=STATES, depends=['active', 'country'])
-    active = fields.Boolean('Active',
-        help="Uncheck to exclude the address from future use.")
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 
@@ -77,10 +76,6 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
                     [sql_table.street],
                     [value]))
             table.drop_column('streetbis')
-
-    @staticmethod
-    def default_active():
-        return True
 
     _autocomplete_limit = 100
 
@@ -209,13 +204,11 @@ class Address(sequence_ordered(), ModelSQL, ModelView):
             self.subdivision = None
 
 
-class AddressFormat(MatchMixin, ModelSQL, ModelView):
+class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
     "Address Format"
     __name__ = 'party.address.format'
     country = fields.Many2One('country.country', "Country")
     language = fields.Many2One('ir.lang', "Language")
-    active = fields.Boolean("Active",
-        help="Uncheck to exclude the format from future use.")
     format_ = fields.Text("Format", required=True,
         help="Available variables (also in upper case):\n"
         "- ${party_name}\n"
@@ -239,10 +232,6 @@ class AddressFormat(MatchMixin, ModelSQL, ModelView):
                 'invalid_format': ('Invalid format "%(format)s" '
                     'with exception "%(exception)s".'),
                 })
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     @classmethod
     def default_format_(cls):

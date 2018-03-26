@@ -6,7 +6,8 @@ try:
 except ImportError:
     phonenumbers = None
 
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
 from trytond.pyson import Eval
 from trytond import backend
 
@@ -37,7 +38,8 @@ _PHONE_TYPES = {
     }
 
 
-class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
+class ContactMechanism(
+        DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     "Contact Mechanism"
     __name__ = 'party.contact_mechanism'
     _rec_name = 'value'
@@ -52,8 +54,6 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
     comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
-    active = fields.Boolean('Active', select=True,
-        help="Uncheck to exclude the contact mechanism from future use.")
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
@@ -115,10 +115,6 @@ class ContactMechanism(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_type():
         return 'phone'
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def get_value(cls, mechanisms, names):

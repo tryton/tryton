@@ -6,7 +6,7 @@ from sql import Null, Column, Cast, Literal
 from sql.functions import CharLength, Substring, Position
 
 from trytond.model import (ModelView, ModelSQL, MultiValueMixin, ValueMixin,
-    fields, Unique, sequence_ordered)
+    DeactivableMixin, fields, Unique, sequence_ordered)
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
@@ -26,7 +26,7 @@ STATES = {
 DEPENDS = ['active']
 
 
-class Party(ModelSQL, ModelView, MultiValueMixin):
+class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     "Party"
     __name__ = 'party.party'
 
@@ -59,11 +59,6 @@ class Party(ModelSQL, ModelView, MultiValueMixin):
     categories = fields.Many2Many('party.party-party.category',
         'party', 'category', 'Categories', states=STATES, depends=DEPENDS,
         help="The categories the party belongs to.")
-    active = fields.Boolean('Active', select=True, states={
-            'readonly': Bool(Eval('replaced_by')),
-            },
-        depends=['replaced_by'],
-        help="Uncheck to exclude the party from future use.")
     replaced_by = fields.Many2One('party.party', "Replaced By", readonly=True,
         states={
             'invisible': ~Eval('replaced_by'),
@@ -85,6 +80,10 @@ class Party(ModelSQL, ModelView, MultiValueMixin):
              'The code of the party must be unique.')
         ]
         cls._order.insert(0, ('name', 'ASC'))
+        cls.active.states.update({
+                'readonly': Bool(Eval('replaced_by')),
+                })
+        cls.active.depends.append('replaced_by')
 
     @classmethod
     def __register__(cls, module_name):
@@ -101,10 +100,6 @@ class Party(ModelSQL, ModelView, MultiValueMixin):
     def order_code(tables):
         table, _ = tables[None]
         return [CharLength(table.code), table.code]
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_categories():

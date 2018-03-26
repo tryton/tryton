@@ -4,7 +4,8 @@ from sql.conditionals import Coalesce
 from sql.operators import Equal
 
 from trytond import backend
-from trytond.model import ModelView, ModelSQL, fields, Exclude
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, Exclude)
 from trytond.pyson import Eval
 
 __all__ = ['Category']
@@ -17,7 +18,7 @@ DEPENDS = ['active']
 SEPARATOR = ' / '
 
 
-class Category(ModelSQL, ModelView):
+class Category(DeactivableMixin, ModelSQL, ModelView):
     "Category"
     __name__ = 'party.category'
     name = fields.Char('Name', required=True, states=STATES, translate=True,
@@ -29,8 +30,6 @@ class Category(ModelSQL, ModelView):
     childs = fields.One2Many('party.category', 'parent',
        'Children', states=STATES, depends=DEPENDS,
         help="Add children below the category.")
-    active = fields.Boolean('Active',
-        help="Uncheck to exclude the category from future use.")
 
     @classmethod
     def __setup__(cls):
@@ -56,10 +55,6 @@ class Category(ModelSQL, ModelView):
 
         # Migration from 4.6: replace unique by exclude
         table_h.drop_constraint('name_parent_uniq')
-
-    @staticmethod
-    def default_active():
-        return True
 
     @classmethod
     def validate(cls, categories):
