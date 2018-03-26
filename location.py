@@ -4,7 +4,8 @@ import datetime
 import operator
 from decimal import Decimal
 
-from trytond.model import (ModelView, ModelSQL, MatchMixin, ValueMixin, fields,
+from trytond.model import (
+    ModelView, ModelSQL, MatchMixin, ValueMixin, DeactivableMixin, fields,
     sequence_ordered)
 from trytond import backend
 from trytond.pyson import Eval, If
@@ -22,14 +23,13 @@ STATES = {
 DEPENDS = ['active']
 
 
-class Location(ModelSQL, ModelView):
+class Location(DeactivableMixin, ModelSQL, ModelView):
     "Stock Location"
     __name__ = 'stock.location'
     name = fields.Char("Name", size=None, required=True, states=STATES,
         depends=DEPENDS, translate=True)
     code = fields.Char("Code", size=None, states=STATES, depends=DEPENDS,
         select=True)
-    active = fields.Boolean('Active', select=True)
     address = fields.Many2One("party.address", "Address",
         states={
             'invisible': Eval('type') != 'warehouse',
@@ -258,10 +258,6 @@ class Location(ModelSQL, ModelView):
                     for location in [move.from_location, move.to_location]:
                         empty.discard(location.id)
         return cls.browse(empty)
-
-    @staticmethod
-    def default_active():
-        return True
 
     @staticmethod
     def default_left():
