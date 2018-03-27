@@ -382,11 +382,9 @@ function eval_pyson(value){
         button_clicked: function(event) {
             var button = event.data;
             button.el.prop('disabled', true);
-            try {
-                this.screen.button(button.attributes);
-            } finally {
+            this.screen.button(button.attributes).always(function() {
                 button.el.prop('disabled', false);
-            }
+            });
         },
         selected_records: function() {
             if (this.screen.current_record) {

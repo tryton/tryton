@@ -1952,11 +1952,9 @@
                 return;
             }
             button.el.prop('disabled', true);
-            try {
-                this.screen.button(this.attributes);
-            } finally {
+            this.screen.button(this.attributes).always(function() {
                 button.el.prop('disabled', false);
-            }
+            });
         }
     });
 

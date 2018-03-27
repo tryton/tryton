@@ -1614,7 +1614,7 @@
                     (attributes.states || {})).pre_validate || [];
                 prms.push(record.validate(fields, false, domain));
             }
-            jQuery.when.apply(jQuery, prms).then(function() {
+            return jQuery.when.apply(jQuery, prms).then(function() {
                 var record;
                 for (var i = 0; i < selected_records.length; i++) {
                     record = selected_records[i];
@@ -1632,12 +1632,12 @@
                 if (attributes.confirm) {
                     prm = Sao.common.sur.run(attributes.confirm);
                 }
-                prm.then(function() {
+                return prm.then(function() {
                     var record = this.current_record;
                     if (attributes.type === 'instance') {
                         var args = record.expr_eval(attributes.change || []);
                         var values = record._get_on_change_args(args);
-                        record.model.execute(attributes.name, [values],
+                        return record.model.execute(attributes.name, [values],
                             this.context()).then(function(changes) {
                             record.set_on_change(changes);
                             record.group.root_group().screens.forEach(
@@ -1646,7 +1646,7 @@
                             });
                         });
                     } else {
-                        record.save(false).done(function() {
+                        return record.save(false).then(function() {
                             var context = this.context();
                             context._timestamp = {};
                             ids = [];
@@ -1656,7 +1656,7 @@
                                     record.get_timestamp());
                                 ids.push(record.id);
                             }
-                            record.model.execute(attributes.name,
+                            return record.model.execute(attributes.name,
                                 [ids], context).then(process_action.bind(this));
                         }.bind(this));
                     }
