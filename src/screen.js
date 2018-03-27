@@ -1696,11 +1696,12 @@
                     this.search_filter();
                 }
             } else if (action == 'reload menu') {
-                Sao.get_preferences().then(function(preferences) {
-                    Sao.menu(preferences);
-                });
+                Sao.Session.current_session.reload_context()
+                    .then(function() {
+                        Sao.menu();
+                    });
             } else if (action == 'reload context') {
-                Sao.get_preferences();
+                Sao.Session.current_session.reload_context();
             }
         },
         save_tree_state: function(store) {

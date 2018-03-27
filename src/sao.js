@@ -432,6 +432,14 @@ var Sao = {};
     };
 
     Sao.menu = function(preferences) {
+        if (!preferences) {
+            var session = Sao.Session.current_session;
+            Sao.rpc({
+                'method': 'model.res.user.get_preferences',
+                'params': [false, {}],
+            }, session).then(Sao.menu);
+            return;
+        }
         var decoder = new Sao.PYSON.Decoder();
         var action = decoder.decode(preferences.pyson_menu);
         var view_ids = false;
