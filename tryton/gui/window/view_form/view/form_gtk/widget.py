@@ -86,7 +86,7 @@ class Widget(object):
             self.visible = True
             widget.show()
 
-    def _focus_out(self):
+    def _focus_out(self, *args):
         if not self.field:
             return False
         if not self.visible:
