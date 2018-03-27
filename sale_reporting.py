@@ -11,7 +11,7 @@ from dateutil.relativedelta import relativedelta
 from sql import Null, Literal, Cast, Column
 from sql.aggregate import Sum, Min, Count
 from sql.conditionals import Case
-from sql.functions import CurrentTimestamp, DateTrunc
+from sql.functions import Function, CurrentTimestamp, DateTrunc
 
 from trytond import backend
 from trytond.pool import Pool
@@ -34,6 +34,11 @@ def pairwise(iterable):
     a, b = tee(iterable)
     b.next()
     return izip_longest(a, b)
+
+
+class SQLiteDate(Function):
+    __slots__ = ()
+    _function = 'DATE'
 
 
 class Abstract(ModelSQL):
@@ -200,6 +205,8 @@ class AbstractTimeseries(Abstract):
         date = DateTrunc(context.get('period'), sale.sale_date)
         if backend.name() != 'sqlite':
             date = Cast(date, cls.date.sql_type().base)
+        else:
+            date = SQLiteDate(date)
         return date
 
     @classmethod
