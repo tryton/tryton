@@ -516,11 +516,8 @@
             var values = this.get();
             if ((this.id < 0) || !jQuery.isEmptyObject(values)) {
                 if (this.id < 0) {
-                    prm = this.model.execute('create', [[values]], context);
-                    var created = function(ids) {
-                        this.id = ids[0];
-                    };
-                    prm.done(created.bind(this));
+                    // synchronous call to avoid multiple creation
+                    this.id = this.model.execute('create', [[values]], context,  false)[0];
                 } else {
                     if (!jQuery.isEmptyObject(values)) {
                         context._timestamp = this.get_timestamp();
