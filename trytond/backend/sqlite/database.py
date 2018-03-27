@@ -91,11 +91,16 @@ def date_trunc(_type, date):
             break
     else:
         return None
-    for attribute in [
-            'microsecond', 'second', 'minute', 'hour', 'day', 'month', 'year']:
+    for attribute, replace in [
+            ('microsecond', 0),
+            ('second', 0),
+            ('minute', 0),
+            ('hour', 0),
+            ('day', 1),
+            ('month', 1)]:
         if _type.startswith(attribute):
             break
-        value = value.replace(**{attribute: 0})
+        value = value.replace(**{attribute: replace})
     return str(value)
 
 
