@@ -129,51 +129,51 @@ Check sale reporting per customer::
 
     >>> Customer = Model.get('sale.reporting.customer')
     >>> CustomerTimeseries = Model.get('sale.reporting.customer.time_series')
-    >>> with config.set_context(
+    >>> context = dict(
     ...         from_date=fiscalyear.start_date,
     ...         to_date=fiscalyear.end_date,
-    ...         period='day',
-    ...         ):
+    ...         period='month')
+    >>> with config.set_context(context=context):
     ...     reports = Customer.find([])
     ...     time_series = CustomerTimeseries.find([])
     >>> len(reports)
     2
-    >>> sorted((r.customer.id, r.number, r.revenue) for r in reports) == \
-    ... sorted([(customer1.id, 1, Decimal('30')),
-    ...         (customer2.id, 1, Decimal('10'))])
+    >>> with config.set_context(context=context):
+    ...     sorted((r.customer.id, r.number, r.revenue) for r in reports) == \
+    ...     sorted([(customer1.id, 1, Decimal('30')),
+    ...             (customer2.id, 1, Decimal('10'))])
     True
     >>> len(time_series)
     2
-    >>> sorted((r.customer.id, str(r.date), r.number, r.revenue)
-    ...     for r in time_series) == sorted(
-    ... [(customer1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
-    ...  (customer2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    >>> with config.set_context(context=context):
+    ...     sorted((r.customer.id, str(r.date), r.number, r.revenue)
+    ...         for r in time_series) == sorted(
+    ...     [(customer1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
+    ...     (customer2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
     True
 
 Check sale reporting per product::
 
     >>> Product = Model.get('sale.reporting.product')
     >>> ProductTimeseries = Model.get('sale.reporting.product.time_series')
-    >>> with config.set_context(
-    ...         from_date=fiscalyear.start_date,
-    ...         to_date=fiscalyear.end_date,
-    ...         period='day',
-    ...         ):
+    >>> with config.set_context(context=context):
     ...     reports = Product.find([])
     ...     time_series = ProductTimeseries.find([])
     >>> len(reports)
     2
-    >>> sorted((r.product.id, r.number, r.revenue) for r in reports) == \
-    ... sorted([(product1.id, 2, Decimal('30')),
+    >>> with config.set_context(context=context):
+    ...     sorted((r.product.id, r.number, r.revenue) for r in reports) == \
+    ...     sorted([(product1.id, 2, Decimal('30')),
     ...         (product2.id, 1, Decimal('10'))])
     True
     >>> len(time_series)
     3
-    >>> sorted((r.product.id, str(r.date), r.number, r.revenue)
-    ...     for r in time_series) == sorted(
-    ... [(product1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
-    ...  (product2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...  (product1.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    >>> with config.set_context(context=context):
+    ...     sorted((r.product.id, str(r.date), r.number, r.revenue)
+    ...         for r in time_series) == sorted(
+    ...     [(product1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
+    ...     (product2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('10')),
+    ...     (product1.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
     True
 
 Check sale reporting per categories::
@@ -181,38 +181,37 @@ Check sale reporting per categories::
     >>> Category = Model.get('sale.reporting.category')
     >>> CategoryTimeseries = Model.get('sale.reporting.category.time_series')
     >>> CategoryTree = Model.get('sale.reporting.category.tree')
-    >>> with config.set_context(
-    ...         from_date=fiscalyear.start_date,
-    ...         to_date=fiscalyear.end_date,
-    ...         period='day',
-    ...         ):
+    >>> with config.set_context(context=context):
     ...     reports = Category.find([])
     ...     time_series = CategoryTimeseries.find([])
     ...     tree = CategoryTree.find([])
     >>> len(reports)
     3
-    >>> sorted((r.category.id, r.number, r.revenue) for r in reports) == \
-    ... sorted([(category_child1.id, 2, Decimal('30')),
+    >>> with config.set_context(context=context):
+    ...     sorted((r.category.id, r.number, r.revenue) for r in reports) == \
+    ...     sorted([(category_child1.id, 2, Decimal('30')),
     ...         (category_root2.id, 2, Decimal('30')),
     ...         (category_child2.id, 1, Decimal('10'))])
     True
     >>> len(time_series)
     5
-    >>> sorted((r.category.id, str(r.date), r.number, r.revenue)
-    ...     for r in time_series) == sorted(
-    ... [(category_child1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
-    ...  (category_root2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
-    ...  (category_child2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...  (category_child1.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...  (category_root2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    >>> with config.set_context(context=context):
+    ...     sorted((r.category.id, str(r.date), r.number, r.revenue)
+    ...         for r in time_series) == sorted(
+    ...     [(category_child1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
+    ...     (category_root2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
+    ...     (category_child2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('10')),
+    ...     (category_child1.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10')),
+    ...     (category_root2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
     True
     >>> len(tree)
     4
-    >>> sorted((r.name, r.revenue) for r in tree) == sorted([
-    ...     (u'Root1', Decimal('40')),
-    ...     (u'Child1', Decimal('30')),
-    ...     (u'Child2', Decimal('10')),
-    ...     (u'Root2', Decimal('30'))])
+    >>> with config.set_context(context=context):
+    ...     sorted((r.name, r.revenue) for r in tree) == sorted([
+    ...         (u'Root1', Decimal('40')),
+    ...         (u'Child1', Decimal('30')),
+    ...         (u'Child2', Decimal('10')),
+    ...         (u'Root2', Decimal('30'))])
     True
 
 Check sale reporting per regions::
@@ -221,32 +220,31 @@ Check sale reporting per regions::
     >>> CountryTimeseries = Model.get('sale.reporting.country.time_series')
     >>> SubdivisionTimeseries = Model.get(
     ...     'sale.reporting.country.subdivision.time_series')
-    >>> with config.set_context(
-    ...         from_date=fiscalyear.start_date,
-    ...         to_date=fiscalyear.end_date,
-    ...         period='day',
-    ...         ):
+    >>> with config.set_context(context=context):
     ...     reports = Region.find([])
     ...     country_time_series = CountryTimeseries.find([])
     ...     subdivision_time_series = SubdivisionTimeseries.find([])
     >>> len(reports)
     3
-    >>> sorted((r.region, r.number, r.revenue) for r in reports) == \
-    ... sorted([('United States', 2, Decimal('40')),
+    >>> with config.set_context(context=context):
+    ...     sorted((r.region, r.number, r.revenue) for r in reports) == \
+    ...     sorted([('United States', 2, Decimal('40')),
     ...         ('California', 1, Decimal('30')),
     ...         ('New York', 1, Decimal('10'))])
     True
     >>> len(country_time_series)
     2
-    >>> sorted((r.country.id, str(r.date), r.number, r.revenue)
-    ...     for r in country_time_series) == sorted(
-    ... [(country_us.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
-    ...  (country_us.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    >>> with config.set_context(context=context):
+    ...     sorted((r.country.id, str(r.date), r.number, r.revenue)
+    ...         for r in country_time_series) == sorted(
+    ...     [(country_us.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
+    ...     (country_us.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
     True
     >>> len(subdivision_time_series)
     2
-    >>> sorted((r.subdivision.id, str(r.date), r.number, r.revenue)
-    ...     for r in subdivision_time_series) == sorted(
-    ... [(california.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
-    ...  (new_york.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    >>> with config.set_context(context=context):
+    ...     sorted((r.subdivision.id, str(r.date), r.number, r.revenue)
+    ...         for r in subdivision_time_series) == sorted(
+    ...     [(california.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
+    ...     (new_york.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
     True
