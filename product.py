@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import functools
 from decimal import Decimal
 from collections import defaultdict
 
@@ -23,6 +24,43 @@ __all__ = ['Template', 'Product',
     'ProductByLocationContext',
     'ProductQuantitiesByWarehouse', 'ProductQuantitiesByWarehouseContext',
     'RecomputeCostPrice']
+
+
+def check_no_move(func):
+
+    def find_moves(cls, records):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        if cls.__name__ == 'product.template':
+            field = 'product.template'
+        else:
+            field = 'product'
+        for sub_records in grouped_slice(records):
+            moves = Move.search([
+                    (field, 'in', map(int, sub_records)),
+                    ],
+                limit=1, order=[])
+            if moves:
+                return True
+        return False
+
+    @functools.wraps(func)
+    def decorator(cls, *args):
+        pool = Pool()
+        Template = pool.get('product.template')
+        transaction = Transaction()
+        if (transaction.user != 0
+                and transaction.context.get('_check_access')):
+            actions = iter(args)
+            for records, values in zip(actions, actions):
+                for field, error in Template._modify_no_move:
+                    if field in values:
+                        if find_moves(cls, records):
+                            Template.raise_user_error(error)
+                        # No moves for those records
+                        break
+        func(cls, *args)
+    return decorator
 
 
 class Template:
@@ -61,26 +99,8 @@ class Template:
             ]
 
     @classmethod
-    def check_no_move(cls, templates, error):
-        Move = Pool().get('stock.move')
-        for sub_templates in grouped_slice(templates):
-            moves = Move.search([
-                    ('product.template', 'in', [t.id for t in sub_templates]),
-                    ],
-                limit=1, order=[])
-            if moves:
-                cls.raise_user_error(error)
-
-    @classmethod
+    @check_no_move
     def write(cls, *args):
-        if (Transaction().user != 0
-                and Transaction().context.get('_check_access')):
-            actions = iter(args)
-            for templates, values in zip(actions, actions):
-                for field, error in cls._modify_no_move:
-                    if field in values:
-                        cls.check_no_move(templates, error)
-                        break
         super(Template, cls).write(*args)
 
     @classmethod
@@ -132,6 +152,11 @@ class Product(StockMixin, object):
                     cost_values[product.id] = (Decimal(str(product.quantity))
                         * product.cost_price)
         return cost_values
+
+    @classmethod
+    @check_no_move
+    def write(cls, *args):
+        super(Product, cls).write(*args)
 
     @classmethod
     def products_by_location(cls, location_ids,
