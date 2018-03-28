@@ -527,7 +527,8 @@
 
                 var selected_records = this.selected_records();
                 var aggregate = '-';
-                var aggregate_el = this.sum_widgets[name][1];
+                var sum_label = this.sum_widgets[name][0];
+                var sum_value = this.sum_widgets[name][1];
                 var sum_ = null;
                 var selected_sum = null;
                 var loaded = true;
@@ -589,7 +590,9 @@
                     }
                     aggregate = selected_sum + ' / ' + sum_;
                 }
-                aggregate_el.text(aggregate);
+                sum_value.text(aggregate);
+                sum_value.parent().attr(
+                    'title', sum_label.text() + ' ' + sum_value.text());
             }
         },
         selected_records: function() {
