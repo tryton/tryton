@@ -574,7 +574,7 @@
                 }
                 if (loaded) {
                     if (field.description.type == 'timedelta'){
-                        var converter = field.converter(record.group);
+                        var converter = field.converter(this.screen.group);
                         selected_sum =  Sao.common.timedelta.format(
                             Sao.TimeDelta(null, selected_sum), converter);
                         sum_ = Sao.common.timedelta.format(
