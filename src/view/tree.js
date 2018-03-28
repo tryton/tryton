@@ -342,12 +342,14 @@
             if (this.children_field) {
                 this.construct(selected, expanded);
             } else if ((min_display_size > this.rows.length) &&
-                    (Sao.common.compare(
-                            this.screen.group.slice(0, this.rows.length),
-                            row_records()))) {
+                Sao.common.compare(
+                    this.screen.group.slice(0, this.rows.length),
+                    row_records())) {
                 this.construct(selected, expanded, true);
             } else if ((min_display_size != this.rows.length) ||
-                    !Sao.common.compare(this.screen.group, row_records())){
+                !Sao.common.compare(
+                    this.screen.group.slice(0, this.rows.length),
+                    row_records())){
                 this.construct(selected, expanded);
             }
 
