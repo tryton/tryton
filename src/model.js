@@ -1749,7 +1749,7 @@
                     options.maximumFractionDigits = digits[1];
                 }
                 return (value * factor).toLocaleString(
-                    Sao.i18n.getlang().replace('_', '-'), options);
+                    Sao.i18n.BC47(Sao.i18n.getlang()), options);
             } else {
                 return '';
             }

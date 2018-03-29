@@ -242,6 +242,9 @@ var Sao = {};
     Sao.i18n.getlang = function() {
         return Sao.i18n.getLocale();
     };
+    Sao.i18n.BC47 = function(lang) {
+        return lang.replace('_', '-');
+    };
     Sao.i18n.setlang();
     Sao.i18n.locale = {};
 

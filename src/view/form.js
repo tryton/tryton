@@ -1839,7 +1839,7 @@ function eval_pyson(value){
                 this.input.val(value);
                 if(this.attributes.spell) {
                     this.input.attr('lang',
-                        record.expr_eval(this.attributes.spell));
+                        Sao.i18n.BC47(record.expr_eval(this.attributes.spell)));
                     this.input.attr('spellcheck', 'true');
                 }
             } else {
@@ -2028,7 +2028,7 @@ function eval_pyson(value){
                 value = record.field_get_client(this.field_name);
                 if(this.attributes.spell) {
                     this.input.attr('lang',
-                        record.expr_eval(this.attributes.spell));
+                        Sao.i18n.BC47(record.expr_eval(this.attributes.spell)));
                     this.input.attr('spellcheck', 'true');
                 }
             }

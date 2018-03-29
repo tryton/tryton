@@ -584,9 +584,9 @@
                         options.minimumFractionDigits = digit;
                         options.maximumFractionDigits = digit;
                         selected_sum = (selected_sum || 0).toLocaleString(
-                            Sao.i18n.getlang(), options);
+                            Sao.i18n.BC47(Sao.i18n.getlang()), options);
                         sum_ = (sum_ || 0).toLocaleString(
-                            Sao.i18n.getlang(), options);
+                            Sao.i18n.BC47(Sao.i18n.getlang()), options);
                     }
                     aggregate = selected_sum + ' / ' + sum_;
                 }
