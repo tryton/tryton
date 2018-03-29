@@ -453,6 +453,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     c_move.uom, c_move.quantity, c_move.product.default_uom,
                     round=False)
 
+            s_product_qty = defaultdict(lambda: 0)
             for s_move in shipment.supplier_moves:
                 if s_move.state == 'cancel':
                     continue
@@ -464,6 +465,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 quantity = UoM.compute_qty(
                     s_move.uom, s_move.quantity, s_move.product.default_uom,
                     round=False)
+                s_product_qty[s_move.product] += quantity
                 if product_qty[s_move.product]:
                     if quantity <= product_qty[s_move.product]:
                         product_qty[s_move.product] -= quantity
@@ -489,7 +491,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 to_save.append(new_customer_move)
 
             for product, cost in product_cost.iteritems():
-                qty = Decimal(str(product_qty[product]))
+                qty = Decimal(str(s_product_qty[product]))
                 if qty:
                     product_cost[product] = (cost / qty).quantize(cost_exp)
             for c_move in list(shipment.customer_moves) + to_save:
@@ -508,7 +510,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     c_move.quantity = max(
                         0, c_move.uom.round(c_move.quantity - exc_qty))
                     product_qty[c_move.product] -= removed_qty
-                    to_save.append(c_move)
+                to_save.append(c_move)
 
         if to_save:
             Move.save(to_save)

@@ -109,6 +109,8 @@ Create product::
     >>> template.supply_on_sale = True
     >>> template.save()
     >>> product, = template.products
+    >>> product.cost_price = Decimal('4')
+    >>> product.save()
     >>> product_supplier = ProductSupplier()
     >>> product_supplier.product = template
     >>> product_supplier.party = supplier
@@ -157,6 +159,8 @@ Create Purchase from Request::
     >>> purchase.delivery_address == sale.shipment_address
     True
     >>> purchase.payment_term = payment_term
+    >>> purchase_line, = purchase.lines
+    >>> purchase_line.unit_price = Decimal('3.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.click('process')
@@ -174,7 +178,14 @@ Receiving only 100 products::
     >>> set_user(stock_user)
     >>> move, = shipment.supplier_moves
     >>> move.quantity = 100
+    >>> move.unit_price
+    Decimal('3.0000')
     >>> shipment.click('ship')
+    >>> move, = shipment.customer_moves
+    >>> move.unit_price
+    Decimal('10.0000')
+    >>> move.cost_price
+    Decimal('3.0000')
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
