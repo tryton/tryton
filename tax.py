@@ -326,7 +326,7 @@ class TaxCodeLineTemplate(ModelSQL, ModelView):
         values = []
         created = []
         for template in cls.search([('code.account', '=', account_id)]):
-            if template.id not in template2tax_code:
+            if template.id not in template2tax_code_line:
                 value = template._get_tax_code_line_value()
                 value['code'] = template2tax_code.get(template.code.id)
                 value['tax'] = template2tax.get(template.tax.id)
