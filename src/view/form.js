@@ -1473,7 +1473,7 @@ function eval_pyson(value){
                 'locale': moment.locale(),
                 'keyBinds': null,
             });
-            this.date.css('width', this._width);
+            this.date.css('max-width', this._width);
             this.date.on('dp.change', this.focus_out.bind(this));
             var mousetrap = new Mousetrap(this.el[0]);
 
