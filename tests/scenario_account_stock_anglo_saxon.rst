@@ -342,7 +342,7 @@ Now we will use a product with different unit of measure::
     >>> UomCategory = Model.get('product.uom.category')
     >>> unit_category, = UomCategory.find([('name', '=', 'Units')])
     >>> unit_5 = ProductUom(name='5', symbol='5', category=unit_category,
-    ...    factor=5, digits=0)
+    ...    factor=5, digits=0, rounding=1)
     >>> unit_5.save()
 
     >>> template_by5 = ProductTemplate()
