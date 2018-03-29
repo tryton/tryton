@@ -84,7 +84,7 @@ class AnalyticAccountEntry:
             name)
         if (isinstance(self.origin, InvoiceLine)
                 or (Asset and isinstance(self.origin, Asset))):
-            company = self.origin.company.id
+            company = self.origin.company.id if self.origin.company else None
         return company
 
     @classmethod
