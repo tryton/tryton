@@ -91,9 +91,10 @@ class AnalyticAccountEntry:
         PurchaseLine = pool.get('purchase.line')
         required = super(AnalyticAccountEntry, self).on_change_with_required(
             name)
-        if (self.origin and isinstance(self.origin, PurchaseLine)
-                and self.origin.purchase.state in ['cancel', 'draft']):
-            return False
+        if isinstance(self.origin, PurchaseLine):
+            if (not self.origin.purchase
+                    or self.origin.purchase.state in ['cancel', 'draft']):
+                return False
         return required
 
     @fields.depends('origin')

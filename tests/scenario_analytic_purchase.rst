@@ -112,11 +112,16 @@ Purchase with analytic accounts::
     >>> mandatory_entry.root == mandatory_root
     True
     >>> bool(mandatory_entry.required)
-    True
+    False
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5
     >>> mandatory_entry.account = mandatory_analytic_account
     >>> purchase.click('quote')
+    >>> purchase_line, = purchase.lines
+    >>> mandatory_entry, = [a for a in purchase_line.analytic_accounts
+    ...     if a.root == mandatory_root]
+    >>> bool(mandatory_entry.required)
+    True
     >>> purchase.click('confirm')
     >>> purchase.click('process')
 
