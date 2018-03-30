@@ -114,7 +114,7 @@ Create purchase requisition without product and description::
     >>> PurchaseRequisition = Model.get('purchase.requisition')
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
-    >>> requisition.employee = requisition_user.employee
+    >>> requisition.employee = employee
     >>> requisition.supply_date = today
     >>> requisition_line = requisition.lines.new()
     >>> requisition_line.product = None
@@ -263,7 +263,7 @@ Try to delete requisition done::
 Delete draft requisition::
 
     >>> requisition = PurchaseRequisition()
-    >>> requisition.employee = requisition_user.employee
+    >>> requisition.employee = employee
     >>> requisition.supply_date = today
     >>> requisition.save()
     >>> PurchaseRequisition.delete([requisition])
@@ -273,7 +273,7 @@ Create purchase requisition with two different suppliers::
     >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
-    >>> requisition.employee = requisition_user.employee
+    >>> requisition.employee = employee
     >>> requisition.supply_date = today
     >>> requisition_line = requisition.lines.new()
     >>> requisition_line.description = 'Description'
@@ -320,7 +320,7 @@ Create purchase requisition then cancel::
     >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
-    >>> requisition.employee = requisition_user.employee
+    >>> requisition.employee = employee
     >>> requisition.supply_date = today
     >>> requisition_line = requisition.lines.new()
     >>> requisition_line.description = 'Description'
@@ -334,7 +334,7 @@ Create purchase requisition, wait then reject::
     >>> set_user(requisition_user)
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
-    >>> requisition.employee = requisition_user.employee
+    >>> requisition.employee = employee
     >>> requisition.supply_date = today
     >>> requisition_line = requisition.lines.new()
     >>> requisition_line.description = 'Description'
