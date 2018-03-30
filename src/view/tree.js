@@ -1084,7 +1084,7 @@
                                         .fail(function() {
                                             next_row = null;
                                         });
-                                } else if (!this.tree.screen.model.parent) {
+                                } else if (!this.tree.screen.group.parent) {
                                     return this.record.save()
                                         .fail(function() {
                                             next_row = null;
