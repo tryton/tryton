@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import copy
+
 from trytond.transaction import Transaction
 
 __all__ = ['RPC']
@@ -34,6 +36,7 @@ class RPC(object):
             context = kwargs.pop('context')
         else:
             context = args.pop()
+        context = copy.deepcopy(context)
         timestamp = None
         for key in context.keys():
             if key == '_timestamp':
