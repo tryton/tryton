@@ -3565,6 +3565,10 @@
         },
         set_value: function(value) {
             this.input.val(JSON.stringify(value));
+        },
+        set_readonly: function(readonly) {
+            this._readonly = readonly;
+            this.input.prop('disabled', readonly);
         }
     });
 
