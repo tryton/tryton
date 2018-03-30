@@ -138,6 +138,11 @@ class Config(object):
         self._context.update(kwargs)
         return ctx_manager
 
+    def reset_context(self):
+        ctx_manager = ContextManager(self)
+        self._context = {}
+        return ctx_manager
+
     def get_proxy(self, name):
         raise NotImplementedError
 

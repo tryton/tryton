@@ -1,3 +1,4 @@
+* Always use the context and config of the instance
 * Add support for search_* attributes in ModelList
 
 Version 4.6.0 - 2017-10-30

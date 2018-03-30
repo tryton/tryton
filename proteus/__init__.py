@@ -186,8 +186,11 @@ class ReferenceDescriptor(FieldDescriptor):
         if isinstance(value, basestring):
             model_name, id = value.split(',', 1)
             if model_name:
-                relation = Model.get(model_name, instance._config)
-                value = relation(int(id))
+                Relation = Model.get(model_name, instance._config)
+                config = Relation._config
+                with config.reset_context(), \
+                        config.set_context(instance._context):
+                    value = Relation(int(id))
                 instance._values[self.name] = value
         return value
 
@@ -245,10 +248,12 @@ class DictDescriptor(FieldDescriptor):
 
 class Many2OneDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
-        relation = Model.get(self.definition['relation'], instance._config)
+        Relation = Model.get(self.definition['relation'], instance._config)
         value = super(Many2OneDescriptor, self).__get__(instance, owner)
         if isinstance(value, (int, long)):
-            value = relation(value)
+            config = Relation._config
+            with config.reset_context(), config.set_context(instance._context):
+                value = Relation(value)
         if self.name in instance._values:
             instance._values[self.name] = value
         return value
@@ -269,15 +274,16 @@ class One2ManyDescriptor(FieldDescriptor):
 
     def __get__(self, instance, owner):
         from .pyson import PYSONDecoder
-        relation = Model.get(self.definition['relation'], instance._config)
+        Relation = Model.get(self.definition['relation'], instance._config)
         value = super(One2ManyDescriptor, self).__get__(instance, owner)
         if not isinstance(value, ModelList):
             ctx = instance._context.copy() if instance._context else {}
             if self.definition.get('context'):
                 decoder = PYSONDecoder(_EvalEnvironment(instance))
                 ctx.update(decoder.decode(self.definition.get('context')))
-            with instance._config.set_context(ctx):
-                value = ModelList(self.definition, (relation(id)
+            config = Relation._config
+            with config.reset_context(), config.set_context(ctx):
+                value = ModelList(self.definition, (Relation(id)
                         for id in value or []), instance, self.name)
             instance._values[self.name] = value
         return value
@@ -503,10 +509,7 @@ class ModelList(list):
         self.record_removed = set()
         self.record_deleted = set()
         result = super(ModelList, self).__init__(sequence)
-        for record in self:
-            record._parent = parent
-            record._parent_field_name = parent_field_name
-            record._parent_name = self.parent_name
+        self.__check(self, on_change=False)
         return result
     __init__.__doc__ = list.__init__.__doc__
 
@@ -523,10 +526,13 @@ class ModelList(list):
         ctx.update(decoder.decode(self.context) if self.context else {})
         return ctx
 
-    def __check(self, records):
+    def __check(self, records, on_change=True):
         config = None
+        context = self._get_context()
         for record in records:
             assert isinstance(record, Model)
+            assert record.__class__.__name__ == self.model_name
+            assert record._context == context, (record._context, context)
             if self.parent:
                 assert record._config == self.parent._config
             elif self:
@@ -544,7 +550,9 @@ class ModelList(list):
             record._parent_name = self.parent_name
 
             # Set parent field to trigger on_change
-            if self.parent and self.parent_name in record._fields:
+            if (on_change
+                    and self.parent
+                    and self.parent_name in record._fields):
                 definition = record._fields[self.parent_name]
                 if definition['type'] in ('many2one', 'reference'):
                     setattr(record, self.parent_name, self.parent)
@@ -603,8 +611,18 @@ class ModelList(list):
     def new(self, **kwargs):
         'Adds a new record to the ModelList and returns it'
         Relation = Model.get(self.model_name, self.parent._config)
-        with Relation._config.set_context(self._get_context()):
-            new_record = Relation(**kwargs)
+        config = Relation._config
+        with config.reset_context(), config.set_context(self._get_context()):
+            # Set parent for on_change calls from default_get
+            new_record = Relation(
+                _parent=self.parent,
+                _parent_field_name=self.parent_field_name,
+                _parent_name=self.parent_name,
+                **kwargs)
+        # Remove parent to pass __check test
+        new_record._parent = None
+        new_record._parent_field_name = ''
+        new_record._parent_name = ''
         self.append(new_record)
         return new_record
 
@@ -619,11 +637,11 @@ class ModelList(list):
         add_remove_domain = (decoder.decode(self.add_remove)
             if self.add_remove else [])
         new_domain = [field_domain, add_remove_domain, condition]
-
         context = self._get_context()
         context.update(decoder.decode(self.search_context))
         order = order if order else decoder.decode(self.search_order)
-        with Relation._config.set_context(context):
+        config = Relation._config
+        with config.reset_context(), config.set_context(context):
             return Relation.find(new_domain, offset, limit, order)
 
     def set_sequence(self, field='sequence'):
@@ -665,7 +683,9 @@ class Model(object):
     _config = None
     _fields = None
 
-    def __init__(self, id=None, _default=True, **kwargs):
+    def __init__(self, id=None, _default=True,
+            _parent=None, _parent_field_name='', _parent_name='',
+            **kwargs):
         super(Model, self).__init__()
         if id:
             assert not kwargs
@@ -674,9 +694,11 @@ class Model(object):
             Model.__counter -= 1
         self._values = {}  # store the values of fields
         self._changed = set()  # store the changed fields
-        self._parent = None  # store the parent record
-        self._parent_field_name = ''  # store the field name in parent record
-        self._parent_name = ''  # store the field name to parent record
+        self._parent = _parent  # store the parent record
+        # store the field name in parent record
+        self._parent_field_name = _parent_field_name
+        # store the field name to parent record
+        self._parent_name = _parent_name
         self._context = self._config.context  # store the context
         if self.id < 0 and _default:
             self._default_get()
@@ -684,7 +706,7 @@ class Model(object):
         for field_name, value in kwargs.iteritems():
             definition = self._fields[field_name]
             if definition['type'] in ('one2many', 'many2many'):
-                relation = Model.get(definition['relation'])
+                relation = Model.get(definition['relation'], self._config)
 
                 def instantiate(v):
                     if isinstance(v, (int, long)):
@@ -698,7 +720,8 @@ class Model(object):
             else:
                 if definition['type'] == 'many2one':
                     if isinstance(value, (int, long)):
-                        relation = Model.get(definition['relation'])
+                        relation = Model.get(
+                            definition['relation'], self._config)
                         value = relation(value)
                 setattr(self, field_name, value)
     __init__.__doc__ = object.__init__.__doc__
@@ -768,7 +791,7 @@ class Model(object):
         if condition is None:
             condition = []
         ids = cls._proxy.search(condition, offset, limit, order,
-                cls._config.context)
+            cls._config.context)
         return [cls(id) for id in ids]
 
     @dualmethod
@@ -785,11 +808,12 @@ class Model(object):
             return
         proxy = records[0]._proxy
         config = records[0]._config
-        context = config.context
+        context = records[0]._context.copy()
         create, write = [], []
         for record in records:
             assert proxy == record._proxy
             assert config == record._config
+            assert context == record._context
             if record.id < 0:
                 create.append(record)
             elif record._changed:
@@ -819,15 +843,17 @@ class Model(object):
             return
         proxy = records[0]._proxy
         config = records[0]._config
-        context = config.context
-        context['_timestamp'] = {}
+        context = records[0]._context.copy()
+        timestamp = {}
         delete = []
         for record in records:
             assert proxy == record._proxy
             assert config == record._config
+            assert context == record._context
             if record.id > 0:
-                context['_timestamp'].update(record._get_timestamp())
+                timestamp.update(record._get_timestamp())
                 delete.append(record.id)
+        context['_timestamp'] = timestamp
         if delete:
             proxy.delete(delete, context)
         cls.reload(records)
@@ -846,7 +872,13 @@ class Model(object):
             return
 
         proxy = records[0]._proxy
-        context = records[0]._config.context
+        config = records[0]._config
+        context = records[0]._context.copy()
+        for record in records:
+            assert proxy == record._proxy
+            assert config == record._config
+            assert context == record._context
+
         if change is None:
             cls.save(records)
             cls.reload(records)  # Force reload because save doesn't always
@@ -892,8 +924,8 @@ class Model(object):
                     if y['loading'] == 'eager']
         if not self._fields:
             fields.append('_timestamp')
-        self._values.update(self._proxy.read([self.id], fields,
-            self._config.context)[0])
+        self._values.update(
+            self._proxy.read([self.id], fields, self._context)[0])
         for field in fields:
             if (field in self._fields
                     and self._fields[field]['type'] == 'float'
@@ -904,8 +936,8 @@ class Model(object):
     def _default_get(self):
         'Set default values'
         fields = self._fields.keys()
-        self._default_set(self._proxy.default_get(fields, False,
-            self._config.context))
+        self._default_set(
+            self._proxy.default_get(fields, False, self._context))
 
     def _default_set(self, values):
         fieldnames = []
@@ -917,14 +949,16 @@ class Model(object):
                 if value and len(value) and isinstance(value[0], (int, long)):
                     self._values[field] = value
                 else:
-                    relation = Model.get(definition['relation'], self._config)
-                    records = []
-                    for vals in (value or []):
-                        record = relation()
-                        record._default_set(vals)
-                        records.append(record)
-                    self._values[field] = ModelList(definition, records, self,
-                        field)
+                    Relation = Model.get(definition['relation'], self._config)
+                    self._values[field] = records = ModelList(
+                        definition, [], self, field)
+                    config = Relation._config
+                    with config.reset_context(), \
+                            config.set_context(self._context):
+                        for vals in (value or []):
+                            record = Relation()
+                            record._default_set(vals)
+                            records.append(record)
             else:
                 self._values[field] = value
             fieldnames.append(field)
@@ -994,9 +1028,12 @@ class Model(object):
                 getattr(self, field).remove(record, _changed=False)
             if value and (value.get('add') or value.get('update')):
                 for index, vals in value.get('add', []):
-                    relation = Model.get(self._fields[field]['relation'],
-                            self._config)
-                    record = relation(_default=False)
+                    Relation = Model.get(
+                        self._fields[field]['relation'], self._config)
+                    config = Relation._config
+                    with config.reset_context(), \
+                            config.set_context(self._context):
+                        record = Relation(_default=False)
                     record._set_on_change(vals)
                     # append without signal
                     if index == -1:
@@ -1013,9 +1050,11 @@ class Model(object):
                 and len(value) and not isinstance(value[0], (int, long))):
             self._values[field] = []
             for vals in value:
-                relation = Model.get(self._fields[field]['relation'],
-                        self._config)
-                record = relation(_default=False, **vals)
+                Relation = Model.get(
+                    self._fields[field]['relation'], self._config)
+                config = Relation._config
+                with config.reset_context(), config.set_context(self._context):
+                    record = Relation(_default=False, **vals)
                 getattr(self, field).append(record)
         else:
             self._values[field] = value
@@ -1049,7 +1088,7 @@ class Model(object):
                     on_change)
             values.update(self._on_change_args(on_change))
         if values:
-            context = self._config.context
+            context = self._context
             changes = getattr(self._proxy, 'on_change')(values, names, context)
             for change in changes:
                 self._set_on_change(change)
@@ -1070,14 +1109,14 @@ class Model(object):
             to_change.add(field)
             values.update(self._on_change_args(on_change_with))
         if to_change:
-            context = self._config.context
+            context = self._context
             changes = getattr(self._proxy, 'on_change_with')(values,
                 list(to_change), context)
             self._set_on_change(changes)
         for field in later:
             on_change_with = self._fields[field]['on_change_with']
             values = self._on_change_args(on_change_with)
-            context = self._config.context
+            context = self._context
             result = getattr(self._proxy, 'on_change_with_%s' % field)(values,
                     context)
             self._on_change_set(field, result)
@@ -1100,9 +1139,11 @@ class Wizard(object):
         self.form_state = None
         self.actions = []
         self._config = config or proteus.config.get_config()
-        self._context = context or {}
+        self._context = self._config.context
+        if context:
+            self._context.update(context)
         self._proxy = self._config.get_proxy(name, type='wizard')
-        result = self._proxy.create(self._config.context)
+        result = self._proxy.create(self._context)
         self.session_id, self.start_state, self.end_state = result
         self.states = [self.start_state]
         self.models = models
@@ -1115,7 +1156,6 @@ class Wizard(object):
         self.state = state
         while self.state != self.end_state:
             ctx = self._context.copy()
-            ctx.update(self._config.context)
             if self.models:
                 ctx['active_id'] = self.models[0].id
                 ctx['active_ids'] = [model.id for model in self.models]
@@ -1143,7 +1183,8 @@ class Wizard(object):
 
             if 'view' in result:
                 view = result['view']
-                self.form = Model.get(view['fields_view']['model'])()
+                self.form = Model.get(
+                    view['fields_view']['model'], self._config)()
                 self.form._default_set(view['defaults'])
                 self.states = [b['state'] for b in view['buttons']]
                 self.form_state = view['state']
@@ -1161,7 +1202,7 @@ class Wizard(object):
                 return
 
         if self.state == self.end_state:
-            self._proxy.delete(self.session_id, self._config.context)
+            self._proxy.delete(self.session_id, self._context)
             if self.models:
                 for record in self.models:
                     record.reload()
@@ -1174,7 +1215,9 @@ class Report(object):
         super(Report, self).__init__()
         self.name = name
         self._config = config or proteus.config.get_config()
-        self._context = context or {}
+        self._context = self._config.context
+        if context:
+            self._context.update(context)
         self._proxy = self._config.get_proxy(name, type='report')
 
     def execute(self, models=None, data=None):
@@ -1227,8 +1270,9 @@ def _convert_action(action, data=None, context=None, config=None):
 
         res_model = action.get('res_model', data.get('res_model'))
         res_id = action.get('res_id', data.get('res_id'))
-        Model_ = Model.get(res_model)
-        with config.set_context(action_ctx):
+        Model_ = Model.get(res_model, config)
+        config = Model_._config
+        with config.reset_context(), config.set_context(action_ctx):
             if res_id is None:
                 return Model_.find(domain)
             else:
@@ -1240,8 +1284,10 @@ def _convert_action(action, data=None, context=None, config=None):
             'context': context,
             }
         if 'model' in data:
-            Model_ = Model.get(data['model'])
-            kwargs['models'] = [Model_(id_) for id_ in data.get('ids', [])]
+            Model_ = Model.get(data['model'], config)
+            config = Model_._config
+            with config.reset_context(), config.set_context(context):
+                kwargs['models'] = [Model_(id_) for id_ in data.get('ids', [])]
         return Wizard(action['wiz_name'], **kwargs)
     elif action['type'] == 'ir.action.report':
         ActionReport = Report(action['report_name'], context=context)
