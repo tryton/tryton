@@ -70,6 +70,7 @@
 
             // Table of records
             this.rows = [];
+            this.edited_row = null;
             this.table = jQuery('<table/>', {
                 'class': 'tree table table-hover table-striped table-condensed'
             });
@@ -446,6 +447,7 @@
             if (!extend) {
                 this.rows = [];
                 this.tbody = jQuery('<tbody/>');
+                this.edited_row = null;
             } else {
                 this.tbody.find('tr.more-row').remove();
             }
@@ -492,31 +494,11 @@
             this.screen.row_activate();
         },
         select_changed: function(record) {
-            var previous_record = this.screen.current_record;
-            this.screen.set_current_record(record);
-            if (this.editable && previous_record) {
-                var go_previous = function() {
-                    this.screen.set_current_record(previous_record);
-                    this.set_cursor();
-                }.bind(this);
-                if (!this.screen.group.parent && previous_record !== record) {
-                    previous_record.validate(this.get_fields())
-                        .then(function(validate) {
-                            if (!validate) {
-                                go_previous();
-                            } else {
-                                previous_record.save().fail(go_previous);
-                            }
-                        });
-                } else if (previous_record !== record &&
-                        this.screen.attributes.pre_validate) {
-                    previous_record.pre_validate().then(function(validate) {
-                        if (!validate) {
-                            go_previous();
-                        }
-                    });
-                }
+            if (this.edited_row) {
+                record = this.edited_row.record;
+                this.edited_row.set_selection(true);
             }
+            this.screen.set_current_record(record);
             // TODO update_children
         },
         update_sum: function() {
@@ -719,40 +701,78 @@
             if (!this.screen.current_record) {
                 return;
             }
-
-            path = null;
-            for (i = 0; i < this.rows.length; i++) {
-                row_path = this.rows[i].record_to_path(
-                        this.screen.current_record);
-                if (row_path) {
-                    row_path.unshift(i);
-                    path = row_path;
-                    break;
-                }
+            path = this.screen.current_record.get_index_path(this.screen.group);
+            if (this.rows.length < path[0]) {
+                this.display_size = this.screen.group.length;
+                this.display();
             }
-
-            row = null;
-            if (path) {
-                row_idx = path[0];
-                rest = path.slice(1);
-                if (rest.length > 0) {
-                    this.rows[row_idx].expand_to_path(rest);
-                }
-                row = this.find_row(path);
-            } else if (this.rows.length > 0) {
-                row = this.rows[0];
+            row_idx = path[0];
+            rest = path.slice(1);
+            if (rest.length > 0) {
+                this.rows[row_idx].expand_to_path(rest);
             }
-
-            if (row) {
-                column = row.next_column(null, new_);
-                if (column !== null) {
-                    td = row._get_column_td(column);
-                    if (this.editable && new_) {
-                        td.triggerHandler('click');
+            row = this.find_row(path);
+            column = row.next_column(null, new_);
+            if (column !== null) {
+                td = row._get_column_td(column);
+                if (this.editable && new_) {
+                    td.trigger('click');
+                }
+                td.find(':input,[tabindex=0]').focus();
+            }
+        },
+        save_row: function() {
+            var i, prm, edited_row = this.edited_row;
+            if (!this.editable || !this.edited_row) {
+                return jQuery.when();
+            }
+            if (!this.edited_row.record.validate(
+                    this.get_fields(), false, false, true)) {
+                var focused = false;
+                var invalid_fields = this.edited_row.record.invalid_fields();
+                for (i = 0; i < this.columns.length; i++) {
+                    var col = this.columns[i];
+                    if (col.attributes.name in invalid_fields) {
+                        var td = this.edited_row._get_column_td(i);
+                        var editable_el = this.edited_row.get_editable_el(td);
+                        var widget = editable_el.data('widget');
+                        widget.display(this.edited_row.record, col.field);
+                        if (!focused) {
+                            widget.focus();
+                            focused = true;
+                        }
                     }
-                    td.find(':input,[tabindex=0]').focus();
                 }
+                return;
             }
+            if (!this.screen.group.parent) {
+                prm = this.edited_row.record.save();
+            } else if (this.screen.attributes.pre_validate) {
+                prm = this.record.pre_validate();
+            } else {
+                prm = jQuery.when();
+            }
+            prm.fail(function() {
+                if (this.edited_row != edited_row) {
+                    this.edit_row(null);
+                    edited_row.set_selection(true);
+                    edited_row.selection_changed();
+                    this.edit_row(edited_row);
+                }
+            }.bind(this));
+            return prm;
+        },
+        edit_row: function(row) {
+            if (!this.editable || this.edited_row == row) {
+                return;
+            }
+            if (this.edited_row) {
+                this.edited_row.unset_editable();
+            }
+            if (row) {
+                row.set_editable();
+            }
+            this.edited_row = row;
         }
     });
 
@@ -777,6 +797,7 @@
     Sao.View.Tree.Row = Sao.class_(Object, {
         init: function(tree, record, pos, parent) {
             this.tree = tree;
+            this.current_column = null;
             this.rows = [];
             this.record = record;
             this.parent_ = parent;
@@ -789,6 +810,7 @@
             path.push(pos);
             this.path = path.join('.');
             this.el = jQuery('<tr/>');
+            this.el.on('click', this.select_row.bind(this));
         },
         is_expanded: function() {
             return (this.path in this.tree.expanded);
@@ -832,6 +854,9 @@
                 'type': 'checkbox',
                 'name': 'tree-selection-' + this.tree.el.attr('id'),
             });
+            this.selection.click(function(event_) {
+                event_.stopPropagation();
+            });
             this.selection.change(this.selection_changed.bind(this));
             td.append(this.selection);
 
@@ -844,9 +869,8 @@
                 }).append(jQuery('<span/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
-                td.on('click keypress', {column: i, td: td},
-                        Sao.common.click_press(this.select_row.bind(this),
-                            true));
+                td.on('click keypress', {'index': i},
+                    this.select_column.bind(this));
                 if (!this.tree.editable) {
                     td.dblclick(this.switch_row.bind(this));
                 } else {
@@ -1095,6 +1119,8 @@
             }
             this.tree.switch_(this.path);
         },
+        select_column: function(event_) {
+        },
         select_row: function(event_) {
             if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
                 this.tree.select_changed(this.record);
@@ -1110,12 +1136,6 @@
                 this.set_selection(!this.is_selected());
                 this.selection_changed();
             }
-
-            // The 'click'-event must be handled next time the row is clicked
-            var td = event_.data.td;
-            var column = event_.data.column;
-            td.on('click keypress', {column: column, td: td},
-                    Sao.common.click_press(this.select_row.bind(this), true));
         },
         is_selected: function() {
             if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
@@ -1142,21 +1162,6 @@
                         this.tree.selected_records()[0] || null);
             }
             this.tree.update_selection();
-        },
-        record_to_path: function(record) {
-            // recursively get the path to the record
-            var i, path;
-            if (record == this.record) {
-                return [];
-            } else {
-                for (i = 0; i < this.rows.length; i++) {
-                    path = this.rows[i].record_to_path(record);
-                    if (path) {
-                        path.unshift(i);
-                        return path;
-                    }
-                }
-            }
         },
         expand_to_path: function(path) {
             var row_idx, rest;
@@ -1214,6 +1219,13 @@
             Sao.View.Tree.RowEditable._super.init.call(this, tree, record, pos,
                 parent);
             this.edited_column = null;
+            this.el.on('keypress', function(event_) {
+                if ((event_.which == Sao.common.RETURN_KEYCODE) &&
+                    (this.tree.edited_row != this)) {
+                    this.tree.edit_row(this);
+                    event_.preventDefault();
+                }
+            }.bind(this));
         },
         redraw: function(selected, expanded) {
             var i, tr, td, widget;
@@ -1233,93 +1245,101 @@
                 }
             }
         },
+        select_column: function(event_) {
+            this.edited_column = event_.data.index;
+        },
         select_row: function(event_) {
-            var previously_selected, previous_td;
-            var inner_rows, readonly_row, editable_row, current_td;
-            var field, widget;
-
-            function get_previously_selected(rows, selected) {
-                var i, r;
-                for (i = 0; i < rows.length; i++) {
-                    r = rows[i];
-                    if (r.is_selected()) {
-                        previously_selected = r;
-                    }
-                    if (r != selected) {
-                        r.set_selection(false);
-                    }
-                    get_previously_selected(r.rows, selected);
-                }
+            var body, listener;
+            event_.stopPropagation();
+            if (this.tree.edited_row &&
+                    (event_.currentTarget == this.tree.edited_row.el[0])) {
+                return;
             }
-            get_previously_selected(this.tree.rows, this);
+
+            body = listener = jQuery(document.body);
+            if (body.hasClass('modal-open')) {
+                listener = this.tree.el.parents('.modal').last();
+            }
+            var handler = function(event_) {
+                if ((event_.currentTarget == body[0]) &&
+                    body.hasClass('modal-open')) {
+                    return;
+                }
+
+                if (!this.tree.save_row()) {
+                    event_.preventDefault();
+                    event_.stopPropagation();
+                    return;
+                }
+                body.off('click.sao.editabletree');
+                this.tree.edit_row(null);
+                return true;
+            }.bind(this);
+            if (!handler(event_)) {
+                return;
+            }
+            listener.on('click.sao.editabletree', handler);
+
+            Sao.View.Tree.RowEditable._super.select_row.call(this, event_);
             this.selection_changed();
-
-            var save_prm;
-            if (previously_selected && previously_selected != this &&
-                    !this.tree.screen.group.parent) {
-                save_prm = previously_selected.record.save();
-            } else {
-                save_prm = jQuery.when();
-            }
-            save_prm.done(function () {
-                if (previously_selected &&
-                        previously_selected.edited_column !== null) {
-                    previous_td = previously_selected.get_active_td();
-                    previous_td.on('click keypress', {
-                        td: previous_td,
-                        column: previously_selected.edited_column
-                    }, Sao.common.click_press(
-                        previously_selected.select_row.bind(previously_selected),
-                        true));
-                    var previous_column = this.tree.columns[
-                        previously_selected.edited_column];
-                    previously_selected.get_static_el()
-                        .html(previous_column.render(previously_selected.record))
-                        .show();
-                    previously_selected.empty_editable_el();
-                }
-                var selected = this.is_selected();
-                var column_name = event_.data.column;
-                var column = this.tree.columns[column_name];
-                var state_attrs = column.field.get_state_attrs(this.record);
-                var readonly = (
-                        column.attributes.readonly || state_attrs.readonly);
-                if (selected && !readonly) {
-                    this.edited_column = column_name;
-                    current_td = this.get_active_td();
-                    var attributes = column.attributes;
-                    var EditableBuilder = Sao.View.editabletree_widget_get(
-                        attributes.widget);
-                    widget = new EditableBuilder(attributes.name,
-                            this.tree.screen.model, attributes);
-                    widget.view = this.tree;
-                    var editable_el = this.get_editable_el();
-                    editable_el.append(widget.el);
-                    editable_el.data('widget', widget);
-                    // We use keydown to be able to catch TAB events
-                    widget.el.on('keydown', this.key_press.bind(this));
-                    field = this.record.model.fields[widget.field_name];
-                    widget.display(this.record, field);
-                    this.get_static_el().hide();
-                    widget.el.parents('.treeview td').addClass('edited');
-                    editable_el.show();
-                    widget.focus();
-                } else if (!selected) {
-                    this.set_selection(true);
-                    this.selection_changed();
-                    var td = event_.data.td;
-                    td.on('click keypress', {column: column_name, td: td},
-                        Sao.common.click_press(this.select_row.bind(this),
-                            true));
-                }
+            this.tree.edit_row(this);
+        },
+        unset_editable: function() {
+            this.tree.columns.forEach(function(col, idx) {
+                var td = this._get_column_td(idx);
+                var static_el = this.get_static_el(td);
+                static_el.html(col.render(this.record)).show();
+                this.get_editable_el(td)
+                    .empty()
+                    .data('widget', null)
+                    .parents('.treeview td').addBack().removeClass('edited');
             }.bind(this));
         },
-        get_static_el: function() {
-            var td = this.get_active_td();
+        set_editable: function() {
+            var focus_widget = null;
+            for (var i = 0, len=this.tree.columns.length; i < len; i++) {
+                var td = this._get_column_td(i);
+                var col = this.tree.columns[i];
+                if (!col.field) {
+                    continue;
+                }
+                var state_attrs = col.field.get_state_attrs(this.record);
+                var readonly = col.attributes.readonly || state_attrs.readonly;
+
+                if (!readonly) {
+                    var EditableBuilder = Sao.View.editabletree_widget_get(
+                        col.attributes.widget);
+                    var widget = new EditableBuilder(col.attributes.name,
+                        this.tree.screen.model, col.attributes);
+                    widget.view = this.tree;
+                    widget.el.on('keydown', this.key_press.bind(this));
+
+                    var editable_el = this.get_editable_el(td);
+                    editable_el.append(widget.el);
+                    editable_el.data('widget', widget);
+                    widget.display(this.record, col.field);
+
+                    var static_el = this.get_static_el(td);
+                    static_el.hide();
+                    editable_el.show();
+                    editable_el.parents('.treeview td').addBack()
+                        .addClass('edited');
+
+                    if (this.edited_column == i) {
+                        focus_widget = widget;
+                    }
+                }
+            }
+            if (focus_widget) {
+                focus_widget.focus();
+            }
+        },
+        get_static_el: function(td) {
+            td = td || this.get_active_td();
             return td.find('.widget');
         },
-        get_editable_el: function() {
-            var td = this.get_active_td();
+        get_editable_el: function(td) {
+            td = td || this.get_active_td();
             var editable = td.find('.widget-editable');
             if (!editable.length) {
                 editable = jQuery('<td/>', {
@@ -1327,14 +1347,6 @@
                     }).insertAfter(td.find('.widget'));
             }
             return editable;
-        },
-        empty_editable_el: function() {
-            var editable;
-            editable = this.get_editable_el();
-            editable.empty();
-            editable.data('widget', null);
-            this.edited_column = null;
-            editable.parents('.treeview td').removeClass('edited');
         },
         get_active_td: function() {
             return this._get_column_td(this.edited_column);
@@ -1350,6 +1362,10 @@
                     (event_.which != Sao.common.RETURN_KEYCODE)) {
                 return;
             }
+            var td = this._get_column_td(this.edited_column);
+            var editable_el = this.get_editable_el(td);
+            var widget = editable_el.data('widget');
+            widget.focus_out();
             var column = this.tree.columns[this.edited_column];
             if (column.field.validate(this.record)) {
                 if (event_.which == Sao.common.TAB_KEYCODE) {
@@ -1360,13 +1376,11 @@
                     event_.preventDefault();
                     next_idx = this.next_column(this.edited_column, true, sign);
                     if (next_idx !== null) {
-                        window.setTimeout(function() {
-                            var td = this._get_column_td(next_idx);
-                            td.triggerHandler('click', {
-                                column: next_idx,
-                                td: td
-                            });
-                        }.bind(this), 0);
+                        this.edited_column = next_idx;
+                        td = this._get_column_td(next_idx);
+                        editable_el = this.get_editable_el(td);
+                        widget = editable_el.data('widget');
+                        widget.focus();
                     }
                 } else if (event_.which == Sao.common.UP_KEYCODE ||
                     event_.which == Sao.common.DOWN_KEYCODE) {
@@ -1386,40 +1400,35 @@
                                     var col = this.tree.columns[i];
                                     if (col.attributes.name in invalid_fields) {
                                         next_column = i;
+                                        break;
                                     }
                                 }
                             } else {
-                                if (this.tree.screen.attributes.pre_validate) {
-                                    return this.record.pre_validate()
-                                        .fail(function() {
-                                            next_row = null;
-                                        });
-                                } else if (!this.tree.screen.group.parent) {
-                                    return this.record.save()
-                                        .fail(function() {
-                                            next_row = null;
-                                        });
+                                var prm;
+                                if (!this.tree.screen.group.parent) {
+                                    prm = this.record.save();
+                                } else if (this.tree.screen.attributes.pre_validate) {
+                                    prm = this.record.pre_validate();
+                                }
+                                if (prm) {
+                                    return prm.fail(function() {
+                                        widget.focus();
+                                    });
                                 }
                             }
                         }.bind(this)).then(function() {
                             window.setTimeout(function() {
                                 this._get_column_td(next_column, next_row)
-                                .trigger('click').trigger('click');
+                                    .trigger('click');
                             }.bind(this), 0);
                         }.bind(this));
                 } else if (event_.which == Sao.common.ESC_KEYCODE) {
+                    this.tree.edit_row(null);
                     this.get_static_el().show().find('[tabindex=0]').focus();
-                    current_td = this.get_active_td();
-                    current_td.on('click keypress',
-                            {column: this.edited_column, td: current_td},
-                            Sao.common.click_press(this.select_row.bind(this),
-                                true));
-                    this.empty_editable_el();
                 } else if (event_.which == Sao.common.RETURN_KEYCODE) {
                     var focus_cell = function(row) {
-                        var td = this._get_column_td(this.edited_column, row);
-                        td.triggerHandler('click');
-                        td.triggerHandler('click');
+                        this._get_column_td(this.edited_column, row)
+                            .trigger('click');
                     }.bind(this);
                     if (this.tree.attributes.editable == 'bottom') {
                         next_row = this.el.next('tr');
@@ -1452,6 +1461,9 @@
                         }.bind(this));
                     }
                 }
+                event_.preventDefault();
+            } else {
+                widget.display(this.record, column.field);
             }
         }
     });
