@@ -289,7 +289,7 @@
             var search_string = this.screen.screen_container.get_text();
             if ((!jQuery.isEmptyObject(unsaved_records)) ||
                     (this.screen.search_count == this.screen.group.length) ||
-                    (this.screen.parent)) {
+                    (this.screen.group.parent)) {
                 this.screen.search_filter(search_string, true).then(
                 function(ids) {
                     this.screen.group.sort(ids);
@@ -1394,7 +1394,7 @@
                                         .fail(function() {
                                             next_row = null;
                                         });
-                                } else if (!this.tree.screen.model.parent) {
+                                } else if (!this.tree.screen.group.parent) {
                                     return this.record.save()
                                         .fail(function() {
                                             next_row = null;
