@@ -94,7 +94,7 @@ Create purchase requisition::
     >>> PurchaseRequisition = Model.get('purchase.requisition')
     >>> requisition = PurchaseRequisition()
     >>> requisition.description = 'Description'
-    >>> requisition.employee = purchase_user.employee
+    >>> requisition.employee = employee
     >>> requisition.supply_date = today
     >>> requisition_line = requisition.lines.new()
     >>> requisition_line.product = product
@@ -119,7 +119,7 @@ add another supplier::
     ...     'purchase.request.quotation.create', [purchase_request])
     >>> [supplier] == create_quotation.form.suppliers
     True
-    >>> create_quotation.form.suppliers.append(supplier2)
+    >>> create_quotation.form.suppliers.append(Party(supplier2.id))
     >>> create_quotation.execute('create_quotations')
     >>> create_quotation.execute('end')
     >>> purchase_request.state
