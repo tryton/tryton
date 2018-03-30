@@ -1135,6 +1135,7 @@
                 if ((this.current_view.view_type == 'tree') &&
                         this.group && this.group.length) {
                     this.set_current_record(this.group[0]);
+                    current_record = this.current_record;
                 } else {
                     return jQuery.when();
                 }
