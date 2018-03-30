@@ -582,17 +582,19 @@
                 entry.data('DateTimePicker').format(format);
                 return entry;
             };
-            this.from = build_entry('From').appendTo(jQuery('<div/>', {
-                'class': 'col-md-5'
-            }).appendTo(this.el));
+            this.from = build_entry(Sao.i18n.gettext("From"))
+                .appendTo(jQuery('<div/>', {
+                    'class': 'col-md-5'
+                }).appendTo(this.el));
             jQuery('<p/>', {
                 'class': 'text-center'
             }).append('..').appendTo(jQuery('<div/>', {
                 'class': 'col-md-1'
             }).appendTo(this.el));
-            this.to = build_entry('To').appendTo(jQuery('<div/>', {
-                'class': 'col-md-5'
-            }).appendTo(this.el));
+            this.to = build_entry(Sao.i18n.gettext("To"))
+                .appendTo(jQuery('<div/>', {
+                    'class': 'col-md-5'
+                }).appendTo(this.el));
         },
         _get_value: function(entry) {
             return entry.find('input').val();
