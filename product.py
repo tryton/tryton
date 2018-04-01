@@ -30,9 +30,11 @@ def account_used(field_name):
                 account = self.get_account(field_name + '_used')
             # Allow empty values on on_change
             if not account and not Transaction().readonly:
+                field_string = (
+                    self.fields_get([field_name])[field_name]['string'])
                 self.raise_user_error('missing_account', {
-                        'name': self.name,
-                        'id': self.id,
+                        'field': field_string,
+                        'name': self.rec_name,
                         })
             return account
         return wrapper
@@ -128,9 +130,8 @@ class Category(CompanyMultiValueMixin):
     def __setup__(cls):
         super(Category, cls).__setup__()
         cls._error_messages.update({
-            'missing_account': ('There is no account '
-                    'expense/revenue defined on the category '
-                    '%(name)s (%(id)d)'),
+            'missing_account': ('There is no '
+                    '"%(field)s" defined on the category "%(name)s"'),
             })
         cls.parent.domain = [
             ('accounting', '=', Eval('accounting', False)),
@@ -376,9 +377,8 @@ class Template(CompanyMultiValueMixin):
     def __setup__(cls):
         super(Template, cls).__setup__()
         cls._error_messages.update({
-                'missing_account': ('There is no account '
-                    'expense/revenue defined on the product '
-                    '%(name)s (%(id)d)'),
+                'missing_account': ('There is no '
+                    '"%(field)s" defined on the product "%(name)s"'),
                 })
 
     @classmethod
