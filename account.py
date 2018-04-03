@@ -86,7 +86,7 @@ class Period:
     def __setup__(cls):
         super(Period, cls).__setup__()
         cls._error_messages.update({
-            'running_assets_close': ('Some asset lines "%(names)s" are still'
+            'running_assets_close': ('Some asset lines "%(names)s" are still '
                 'running for this period "%(period)s".'),
             })
 
