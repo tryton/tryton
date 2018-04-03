@@ -215,7 +215,8 @@ class PurchaseRequest:
                         new_req.computed_quantity - old_req['quantity'])
                     new_req.quantity = Uom.compute_qty(
                         new_req.product.default_uom, new_req.computed_quantity,
-                        new_req.uom)
+                        new_req.uom, round=False)
+                    new_req.quantity = new_req.uom.ceil(new_req.quantity)
                     old_req['quantity'] = max(0.0,
                         old_req['quantity'] - new_req.computed_quantity)
                 else:
@@ -273,9 +274,10 @@ class PurchaseRequest:
         uom = product.purchase_uom or product.default_uom
         target_quantity = order_point.target_quantity if order_point else 0.0
         computed_quantity = target_quantity - product_quantity
-        product_quantity = uom.round(product_quantity)
+        product_quantity = uom.ceil(product_quantity)
         quantity = Uom.compute_qty(
-            product.default_uom, computed_quantity, uom)
+            product.default_uom, computed_quantity, uom, round=False)
+        quantity = uom.ceil(quantity)
 
         if order_point:
             origin = 'stock.order_point,%s' % order_point.id
