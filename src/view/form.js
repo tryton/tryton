@@ -5,7 +5,8 @@
 // Must be defined in non strict context otherwise is invalid
 function eval_pyson(value){
     with (Sao.PYSON.eval) {
-        return eval(value);
+        // Add parenthesis to parse as object instead of statement
+        return eval('(' + value + ')');
     }
 }
 /* jshint ignore:end */
@@ -4419,13 +4420,20 @@ function eval_pyson(value){
             }
         },
         set_value: function(record, field) {
-            field.set_client(record, this.get_encoded_value());
+            // avoid modification because different encoding
+            var value = this.get_encoded_value();
+            var previous = field.get_client(record);
+            if (previous && Sao.common.compare(
+                value, this.encoder.encode(this.decoder.decode(previous)))) {
+                value = previous;
+            }
+            field.set_client(record, value);
         },
         get_client_value: function(record, field) {
             var value = Sao.View.Form.PYSON._super.get_client_value.call(
                     this, record, field);
             if (value) {
-                value = this.decoder.decode(value).toString();
+                value = Sao.PYSON.toString(this.decoder.decode(value));
             }
             return value;
         },

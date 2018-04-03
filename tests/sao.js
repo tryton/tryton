@@ -568,7 +568,7 @@
                 "decode(Get({}, 'foo', 'default'))");
         QUnit.strictEqual(new Sao.PYSON.Get(
                 {'foo': 'bar'}, 'foo', 'default').toString(),
-            "Get({\"foo\":\"bar\"}, \"foo\", \"default\")");
+            'Get({"foo": "bar"}, "foo", "default")');
     });
 
     QUnit.test('PYSON In', function() {
@@ -631,7 +631,7 @@
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 "decode(In('test', []))");
         QUnit.strictEqual(new Sao.PYSON.In('foo', ['foo', 'bar']).toString(),
-                "In(\"foo\", [\"foo\",\"bar\"])");
+                'In("foo", ["foo", "bar"])');
     });
 
     QUnit.test('PYSON Date', function() {
@@ -898,7 +898,7 @@
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), 7,
             "decode(Len('foo bar'))");
         QUnit.strictEqual(new Sao.PYSON.Len([1, 2, 3]).toString(),
-            'Len([1,2,3])');
+            'Len([1, 2, 3])');
     });
     QUnit.test('PYSON Composite', function() {
         var expr = new Sao.PYSON.If(new Sao.PYSON.Not(
@@ -943,6 +943,15 @@
                 Sao.common.compare(decoder.decode(encoder.encode(instance)),
                     instance));
         });
+    });
+
+    QUnit.test('PYSON toString', function() {
+        var value = {
+            'test': ['foo', 'bar'],
+            'pyson': new Sao.PYSON.Eval('test'),
+        };
+        QUnit.strictEqual(Sao.PYSON.toString(value),
+            '{"test": ["foo", "bar"], "pyson": Eval("test", "")}');
     });
 
     QUnit.test('DomainParser.group_operator', function() {
