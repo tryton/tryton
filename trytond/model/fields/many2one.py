@@ -5,7 +5,8 @@ from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
 
-from .field import Field, search_order_validate, context_validate
+from .field import (Field, search_order_validate, context_validate,
+    with_intactive_records)
 from ...pool import Pool
 from ...tools import reduce_ids
 from ...transaction import Transaction
@@ -167,6 +168,7 @@ class Many2One(Field):
             return ~expression
         return expression
 
+    @with_intactive_records
     def convert_domain(self, domain, tables, Model):
         pool = Pool()
         Rule = pool.get('ir.rule')

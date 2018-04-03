@@ -5,7 +5,8 @@ import warnings
 from sql import Cast, Literal, Query, Expression
 from sql.functions import Substring, Position
 
-from .field import Field, search_order_validate, context_validate
+from .field import (Field, search_order_validate, context_validate,
+    with_intactive_records)
 from .selection import SelectionMixin
 from ...transaction import Transaction
 from ...pool import Pool
@@ -156,6 +157,7 @@ class Reference(Field, SelectionMixin):
                 pass
         return super(Reference, self).sql_format(value)
 
+    @with_intactive_records
     def convert_domain(self, domain, tables, Model):
         if '.' not in domain[0]:
             return super(Reference, self).convert_domain(domain, tables, Model)
