@@ -390,6 +390,7 @@ class TaxCodeLine(ModelSQL, ModelView):
     @property
     def _line_domain(self):
         domain = [
+            ('tax', '=', self.tax.id),
             ('type', '=', self.amount),
             ]
         if self.type == 'invoice':
@@ -1702,7 +1703,10 @@ class OpenTaxCode(Wizard):
         TaxCode = pool.get('account.tax.code')
         Tax = pool.get('account.tax')
         tax_code = TaxCode(Transaction().context['active_id'])
-        domain = [l._line_domain for l in tax_code.lines]
+        if tax_code.lines:
+            domain = ['OR'] + [l._line_domain for l in tax_code.lines]
+        else:
+            domain = ('id', '=', None)
         action['pyson_domain'] = PYSONEncoder().encode([
                 Tax._amount_domain(),
                 domain,
