@@ -1469,8 +1469,11 @@ def _location_children(location_ids, query=False):
             nested_location_ids.append(location.id)
     if nested_location_ids:
         return Location.search(['OR',
-                ('parent', 'child_of', nested_location_ids),
-                ('id', 'in', flat_location_ids),
+                [
+                    ('parent', 'child_of', nested_location_ids),
+                    ('parent.flat_childs', '!=', True),
+                    ],
+                ('id', 'in', location_ids),
                 ], query=query, order=[])
     else:
         if query:
