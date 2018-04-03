@@ -164,7 +164,7 @@ def on_change_result(record):
     return record._changed_values
 
 
-def with_intactive_records(func):
+def with_inactive_records(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         with Transaction().set_context(active_test=False):
