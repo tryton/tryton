@@ -562,6 +562,94 @@ class StockTestCase(ModuleTestCase):
         self.test_products_by_location_flat_childs(period_closed=True)
 
     @with_transaction()
+    def test_products_by_location_2nd_level_flat_childs(self):
+        "Test products_by_location on 2nd level flat_childs"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': "Product",
+                    'type': 'goods',
+                    'list_price': Decimal(0),
+                    'default_uom': unit.id,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        storage1, = Location.create([{
+                    'name': 'Storage 1',
+                    'type': 'storage',
+                    'flat_childs': True,
+                    'parent': storage.id,
+                    }])
+        storage2, = Location.create([{
+                    'name': 'Storage 2',
+                    'type': 'storage',
+                    'parent': storage1.id,
+                    }])
+
+        company = create_company()
+        with set_company(company):
+            date = Date.today() - relativedelta(days=1)
+
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 80,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'effective_date': date,
+                        'company': company.id,
+                        'unit_price': 10.0
+                        }, {
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 60,
+                        'from_location': storage.id,
+                        'to_location': storage2.id,
+                        'effective_date': date,
+                        'company': company.id,
+                        }])
+            Move.do(moves)
+
+            # Test 2nd level location
+            products_by_location = Product.products_by_location(
+                [storage.id],
+                grouping_filter=([product.id],),
+                with_childs=True)
+            self.assertEqual(
+                products_by_location[(storage.id, product.id)], 80)
+
+            # Test 1st level and 2nd level nested locations
+            products_by_location = Product.products_by_location(
+                [storage.id, storage1.id],
+                grouping_filter=([product.id],),
+                with_childs=True)
+            self.assertEqual(
+                products_by_location[(storage.id, product.id)], 80)
+            self.assertEqual(
+                products_by_location[(storage1.id, product.id)], 60)
+
+            # Test mixed flat and 2nd level nested locations
+            products_by_location = Product.products_by_location(
+                [storage.id, storage2.id],
+                grouping_filter=([product.id],),
+                with_childs=True)
+            self.assertEqual(
+                products_by_location[(storage.id, product.id)], 80)
+            self.assertEqual(
+                products_by_location[(storage2.id, product.id)], 60)
+
+    @with_transaction()
     def test_templates_by_location(self, period_closed=False):
         "Test products_by_location grouped by template"
         pool = Pool()
