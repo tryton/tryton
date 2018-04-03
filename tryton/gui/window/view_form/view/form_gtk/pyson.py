@@ -23,7 +23,14 @@ class PYSON(Char):
             return None
 
     def set_value(self, record, field):
-        field.set_client(record, self.get_encoded_value())
+        # avoid modification because different encoding
+        value = self.get_encoded_value()
+        previous = field.get_client(record)
+        if (previous
+                and value == self.encoder.encode(
+                    self.decoder.decode(previous))):
+            value = previous
+        field.set_client(record, value)
 
     def get_client_value(self, record, field):
         value = super(PYSON, self).get_client_value(record, field)
