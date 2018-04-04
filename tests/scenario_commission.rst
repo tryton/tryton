@@ -103,7 +103,6 @@ Create product sold::
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal(100)
-    >>> template.cost_price = Decimal(100)
     >>> template.account_expense = accounts['expense']
     >>> template.account_revenue = accounts['revenue']
     >>> template.principals.append(principal)
