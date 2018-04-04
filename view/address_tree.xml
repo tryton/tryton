@@ -8,5 +8,4 @@ this repository contains the full copyright notices and license terms. -->
     <field name="city"/>
     <field name="country"/>
     <field name="subdivision"/>
-    <field name="active"/>
 </tree>
