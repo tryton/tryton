@@ -129,5 +129,6 @@ setup(name=name,
     use_2to3=True,
     convert_2to3_doctests=[
         'tests/scenario_party_replace.rst',
+        'tests/scenario_party_erase.rst',
         ],
     )
