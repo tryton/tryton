@@ -755,14 +755,14 @@
             } else {
                 this.el.show();
             }
-            this.el.prop('disabled', states.readonly);
+            this.el.prop('disabled', Boolean(states.readonly));
             this.set_icon(states.icon || this.attributes.icon);
             if (((this.attributes.type === undefined) ||
                         (this.attributes.type === 'class')) && (record)) {
                 var parent = record.group.parent;
                 while (parent) {
                     if (parent.has_changed()) {
-                        this.el.prop('disabled', false);
+                        this.el.prop('disabled', true);
                         break;
                     }
                     parent = parent.group.parent;
