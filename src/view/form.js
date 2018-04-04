@@ -1610,7 +1610,7 @@ function eval_pyson(value){
         init: function(field_name, model, attributes) {
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
-            this.input.attr('width', 8);
+            this.input.css('max-width', 8);
             this.input_text = this.input.clone().appendTo(this.group);
             this.input_text.attr('type', 'text');
             this.input.attr('type', 'number');
