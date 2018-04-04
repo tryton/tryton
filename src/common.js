@@ -3063,12 +3063,22 @@
             this.input.keydown(function(evt) {
                 if (evt.which == Sao.common.ESC_KEYCODE) {
                     if (this.dropdown.hasClass('open')) {
+                        evt.preventDefault();
+                        evt.stopPropagation();
                         this.menu.dropdown('toggle');
                     }
-                } else if (evt.which == Sao.common.RETURN_KEYCODE) {
-                    if (!this.dropdown.hasClass('open')) {
-                        this.menu.dropdown('toggle');
+                } else if (evt.which == Sao.common.DOWN_KEYCODE) {
+                    if (this.dropdown.hasClass('open')) {
+                        evt.preventDefault();
+                        this.menu.find('li > a').first().focus();
                     }
+                }
+            }.bind(this));
+            this.menu.keydown(function(evt) {
+                if (evt.which == Sao.common.ESC_KEYCODE) {
+                    evt.preventDefault();
+                    evt.stopPropagation();
+                    this.menu.dropdown('toggle');
                 }
             }.bind(this));
             // We must set the overflow of the treeview containing the input to
