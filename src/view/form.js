@@ -1476,6 +1476,16 @@ function eval_pyson(value){
             });
             this.date.css('max-width', this._width);
             this.date.on('dp.change', this.focus_out.bind(this));
+            // We must set the overflow of the treeview containing the input to
+            // visible to prevent vertical scrollbar inherited from the auto
+            // overflow-x
+            // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
+            this.date.on('dp.hide', function() {
+                this.date.closest('.treeview').css('overflow', '');
+            }.bind(this));
+            this.date.on('dp.show', function() {
+                this.date.closest('.treeview').css('overflow', 'visible');
+            }.bind(this));
             var mousetrap = new Mousetrap(this.el[0]);
 
             mousetrap.bind(['enter', '='], function(e, combo) {
