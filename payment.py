@@ -116,7 +116,7 @@ class Payment:
             },
         depends=['stripe_journal', 'stripe_token'])
     stripe_idempotency_key = fields.Char(
-        "Stripe Idempotency_key", readonly=True)
+        "Stripe Idempotency Key", readonly=True)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
