@@ -237,7 +237,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         cost = self.cost
         currency = self.company.currency
         moves = [m for s in self.shipments for m in s.incoming_moves
-            if m.state != 'cancel']
+            if m.state != 'cancel' and m.quantity]
 
         costs = []
         digit = Move.unit_price.digits[1]
