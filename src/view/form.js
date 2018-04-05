@@ -3436,7 +3436,6 @@ function eval_pyson(value){
             // Create a new screen that is not linked to the parent otherwise
             // on the save of the record will trigger the save of the parent
             var screen = this._get_screen_form();
-            screen.new_group([this.screen.current_record.id]);
             var callback = function(result) {
                 if (result) {
                     screen.current_record.save().done(function() {
@@ -3446,6 +3445,7 @@ function eval_pyson(value){
                 }
             }.bind(this);
             screen.switch_view().done(function() {
+                screen.load([this.screen.current_record.id]);
                 new Sao.Window.Form(screen, callback,
                     {title: this.attributes.string});
             }.bind(this));
