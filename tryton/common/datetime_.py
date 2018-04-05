@@ -53,14 +53,14 @@ class Date(gtk.Entry):
 
         gtk.Entry.__init__(self)
 
-        self.set_width_chars(12)
+        self.set_width_chars(20)
 
         self.connect('focus-out-event', self.focus_out)
         self.connect('activate', self.activate)
 
         # Calendar Popup
-        self.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY, 'tryton-find')
-        self.set_icon_tooltip_text(gtk.ENTRY_ICON_SECONDARY,
+        self.set_icon_from_stock(gtk.ENTRY_ICON_PRIMARY, 'tryton-calendar')
+        self.set_icon_tooltip_text(gtk.ENTRY_ICON_PRIMARY,
             _('Open the calendar'))
         self.connect('icon-press', self.icon_press)
 
@@ -100,7 +100,7 @@ class Date(gtk.Entry):
         self.set_text(strftime(self.__date, self.__format))
 
     def icon_press(self, entry, icon_pos, event):
-        if icon_pos == gtk.ENTRY_ICON_SECONDARY:
+        if icon_pos == gtk.ENTRY_ICON_PRIMARY:
             self.cal_popup_open()
 
     def cal_popup_open(self):
@@ -467,7 +467,7 @@ def popup_position(widget, popup):
     else:
         x, y = widget.window.get_origin()
     width, height = popup.size_request()
-    popup.move(x + allocation.width - width, y + allocation.height)
+    popup.move(x, y + allocation.height)
 
 
 def popup_show(popup):
