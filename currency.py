@@ -49,7 +49,7 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
                     '"%(date)s"'),
                 })
         cls.__rpc__.update({
-                'compute': RPC(),
+                'compute': RPC(instantiate=slice(0, 3, 2)),
                 })
 
     @classmethod
@@ -155,8 +155,8 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
         '''
         Date = Pool().get('ir.date')
         Lang = Pool().get('ir.lang')
-        from_currency = cls(from_currency.id)
-        to_currency = cls(to_currency.id)
+        from_currency = cls(int(from_currency))
+        to_currency = cls(int(to_currency))
 
         if to_currency == from_currency:
             if round:
