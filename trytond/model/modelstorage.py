@@ -215,6 +215,11 @@ class ModelStorage(Model):
                 Trigger.trigger_action(triggered, trigger)
 
     @classmethod
+    def index_set_field(cls, name):
+        "Returns the index sort order of the field set calls."
+        return 0
+
+    @classmethod
     def delete(cls, records):
         '''
         Delete records.

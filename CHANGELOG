@@ -1,3 +1,4 @@
+* Add index method to order field set calls
 * Add deactivable mixin
 * Ensure active field is present on tree view
 * Manage depends xml attribute on field tag

@@ -642,7 +642,8 @@ class ModelSQL(ModelStorage):
                 Translation.set_ids(name, 'model', Transaction().language,
                     translations.keys(), translations.values())
 
-        for fname, fargs in fields_to_set.iteritems():
+        for fname in sorted(fields_to_set, key=cls.index_set_field):
+            fargs = fields_to_set[fname]
             field = cls._fields[fname]
             field.set(cls, fname, *fargs)
 
@@ -1015,7 +1016,8 @@ class ModelSQL(ModelStorage):
             cls._update_mptt(field_names, [ids] * len(field_names), values)
             all_field_names |= set(field_names)
 
-        for fname, fargs in fields_to_set.iteritems():
+        for fname in sorted(fields_to_set, key=cls.index_set_field):
+            fargs = fields_to_set[fname]
             field = cls._fields[fname]
             field.set(cls, fname, *fargs)
 

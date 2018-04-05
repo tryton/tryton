@@ -268,6 +268,10 @@ Class methods:
     ``on_write`` is set and ``condition`` was false before
     :meth:`~ModelStorage.write` and true after.
 
+.. classmethod:: ModelStorage.index_set_field(name)
+
+    Return the index sort order of the field set calls.
+
 .. classmethod:: ModelStorage.delete(records)
 
     Delete records.
