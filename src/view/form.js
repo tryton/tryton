@@ -1445,7 +1445,7 @@ function eval_pyson(value){
 
     Sao.View.Form.Date = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-date',
-        _width: '12em',
+        _width: '10em',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Date._super.init.call(this, field_name, model,
                 attributes);
@@ -1455,10 +1455,6 @@ function eval_pyson(value){
             this.date = this.labelled = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(this.el);
-            this.input = jQuery('<input/>', {
-                'type': 'text',
-                'class': 'form-control input-sm mousetrap'
-            }).appendTo(this.date);
             jQuery('<span/>', {
                 'class': 'input-group-btn'
             }).append(jQuery('<button/>', {
@@ -1470,6 +1466,10 @@ function eval_pyson(value){
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-calendar'
             }))).appendTo(this.date);
+            this.input = jQuery('<input/>', {
+                'type': 'text',
+                'class': 'form-control input-sm mousetrap'
+            }).appendTo(this.date);
             this.date.datetimepicker({
                 'locale': moment.locale(),
                 'keyBinds': null,
@@ -1543,7 +1543,7 @@ function eval_pyson(value){
 
     Sao.View.Form.DateTime = Sao.class_(Sao.View.Form.Date, {
         class_: 'form-datetime',
-        _width: '25em',
+        _width: '20em',
         get_format: function(record, field) {
             return field.date_format(record) + ' ' + field.time_format(record);
         },
