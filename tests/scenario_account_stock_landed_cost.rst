@@ -106,8 +106,16 @@ Receive 10 unit of the product @ 100::
     >>> move.from_location = supplier_loc
     >>> move.to_location = input_loc
     >>> move.unit_price = Decimal('100')
+
+    >>> move_empty = shipment.incoming_moves.new()
+    >>> move_empty.product = product
+    >>> move_empty.quantity = 0
+    >>> move_empty.from_location = supplier_loc
+    >>> move_empty.to_location = input_loc
+    >>> move_empty.unit_price = Decimal('100')
+
     >>> shipment.click('receive')
-    >>> move, = shipment.incoming_moves
+    >>> move, = [m for m in shipment.incoming_moves if m.quantity]
     >>> move.unit_price
     Decimal('100')
 
