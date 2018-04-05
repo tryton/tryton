@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/tree/field[@name='active']" position="after">
+    <xpath expr="/tree/field[@name='subdivision']" position="after">
         <field name="delivery"/>
     </xpath>
 </data>
