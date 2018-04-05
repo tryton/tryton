@@ -1563,7 +1563,7 @@
             if (this.group.parent) {
                 this.group.parent.root_parent().reload();
             }
-            this.display();
+            return this.display();
         },
         get_buttons: function() {
             var selected_records = this.current_view.selected_records();
@@ -1586,17 +1586,18 @@
         button: function(attributes) {
             var ids;
             var process_action = function(action) {
-                this.reload(ids, true);
-                if (typeof action == 'string') {
-                    this.client_action(action);
-                }
-                else if (action) {
-                    Sao.Action.execute(action, {
-                        model: this.model_name,
-                        id: this.current_record.id,
-                        ids: ids
-                    }, null, this.context(), true);
-                }
+                this.reload(ids, true).then(function() {
+                    if (typeof action == 'string') {
+                        this.client_action(action);
+                    }
+                    else if (action) {
+                        Sao.Action.execute(action, {
+                            model: this.model_name,
+                            id: this.current_record.id,
+                            ids: ids
+                        }, null, this.context(), true);
+                    }
+                }.bind(this));
             };
 
             var selected_records = this.current_view.selected_records();

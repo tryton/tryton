@@ -281,6 +281,7 @@
                     screen = dialog.screen;
                 }
                 if (screen) {
+                    var prm = jQuery.when();
                     if (screen.current_record && !is_menu) {
                         var ids;
                         if (screen.model_name == this.model) {
@@ -290,10 +291,12 @@
                             // parent record
                             ids = [screen.current_record.id];
                         }
-                        screen.reload(ids, true);
+                        prm = screen.reload(ids, true);
                     }
                     if (action) {
-                        screen.client_action(action);
+                        prm.then(function() {
+                            screen.client_action(action);
+                        });
                     }
                 }
             }.bind(this));
