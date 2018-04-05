@@ -227,6 +227,13 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
                 })
 
     @classmethod
+    def index_set_field(cls, name):
+        index = super(Work, cls).index_set_field(name)
+        if name in {'timesheet_start_date', 'timesheet_end_date'}:
+            index = cls.index_set_field('timesheet_available') + 1
+        return index
+
+    @classmethod
     def validate(cls, works):
         super(Work, cls).validate(works)
         cls.check_recursion(works, rec_name='name')
