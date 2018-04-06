@@ -876,7 +876,7 @@
             }
             badge.text(text);
             this.buttons.attach.attr(
-                'title', Sao.i18n.gettext("Attachement(%1)", count));
+                'title', Sao.i18n.gettext("Attachment(%1)", count));
             var record_id = this.screen.get_id();
             this.buttons.attach.prop('disabled',
                 record_id < 0 || record_id === null);
