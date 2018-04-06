@@ -165,11 +165,11 @@
             <field name="symbol">P</field>
         </record>
 
-        <record model="currency.currency" id="byr">
+        <record model="currency.currency" id="byn">
             <field name="name">Belarusian Ruble</field>
-            <field name="code">BYR</field>
-            <field name="numeric_code">974</field>
-            <field name="symbol">p.</field>
+            <field name="code">BYN</field>
+            <field name="numeric_code">933</field>
+            <field name="symbol">BYN</field>
         </record>
 
         <record model="currency.currency" id="bzd">
