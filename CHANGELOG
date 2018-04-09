@@ -1,3 +1,4 @@
+* Add _stock_move_split context keyword when copying move for split
 * Manage same input and storage location in supplier shipment
 * Check pending shipment to erase party
 * Define how inventory non filled lines are managed

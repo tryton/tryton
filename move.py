@@ -950,7 +950,8 @@ class Move(Workflow, ModelSQL, ModelView):
                     to_assign.append(move)
                     first = False
                 else:
-                    to_assign.extend(cls.copy([move], default=values))
+                    with Transaction().set_context(_stock_move_split=True):
+                        to_assign.extend(cls.copy([move], default=values))
 
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
