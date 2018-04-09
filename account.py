@@ -5,6 +5,8 @@ import sys
 from io import BytesIO, StringIO
 
 from sql import Table
+from sql.aggregate import Sum
+from sql.conditionals import Coalesce
 
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
@@ -185,33 +187,65 @@ class AccountFrFEC(Wizard):
     def get_start_balance(self):
         pool = Pool()
         Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        FiscalYear = pool.get('account.fiscalyear')
+        Period = pool.get('account.period')
+        Party = pool.get('party.party')
+        account = Account.__table__()
+        move = Move.__table__()
+        line = Line.__table__()
+        period = Period.__table__()
+        party = Party.__table__()
+        cursor = Transaction().connection.cursor()
         format_date = self.get_format_date()
         format_number = self.get_format_number()
 
-        with Transaction().set_context(
-                periods=[-1],
-                fiscalyear=self.start.fiscalyear.id,
-                posted=True,
-                cumulate=True):
-            accounts = Account.search([])
+        company = self.start.fiscalyear.company
+        fiscalyears = FiscalYear.search([
+                ('end_date', '<', self.start.fiscalyear.start_date),
+                ('company', '=', company.id),
+                ])
+        fiscalyear_ids = map(int, fiscalyears)
 
-        for account in accounts:
-            if account.credit == account.debit:
+        query = (account
+            .join(line, condition=line.account == account.id)
+            .join(move, condition=line.move == move.id)
+            .join(period, condition=move.period == period.id)
+            .join(party, 'LEFT', condition=line.party == party.id)
+            .select(
+                account.id,
+                account.code,
+                account.name,
+                party.code,
+                party.name,
+                Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                where=(account.company == company.id)
+                & (move.state == 'posted')
+                & (line.state != 'draft')
+                & period.fiscalyear.in_(fiscalyear_ids),
+                group_by=[
+                    account.id, account.code, account.name,
+                    party.code, party.name]))
+        cursor.execute(*query)
+        for row in cursor:
+            _, code, name, party_code, party_name, balance = row
+            if not balance:
                 continue
-            if account.debit > account.credit:
-                debit, credit = account.debit - account.credit, 0
+            if balance > 0:
+                debit, credit = balance, 0
             else:
-                debit, credit = 0, account.debit - account.credit
+                debit, credit = 0, balance
             yield [
                 self.start.deferral_journal.code
                 or self.start.deferral_journal.name,
                 self.start.deferral_journal.name,
                 self.start.deferral_post_number,
                 format_date(self.start.fiscalyear.start_date),
-                account.code,
-                account.name,
-                '',
-                '',
+                code,
+                name,
+                party_code or '',
+                party_name or '',
                 '-',
                 format_date(self.start.fiscalyear.start_date),
                 '-',

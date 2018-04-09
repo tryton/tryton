@@ -5,7 +5,10 @@ FEC Scenario
 Imports::
 
     >>> import datetime
+    >>> import os
+    >>> import io
     >>> from decimal import Decimal
+    >>> from dateutil.relativedelta import relativedelta
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
@@ -13,6 +16,8 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear
     >>> from trytond.modules.account_fr.tests.tools import create_chart, \
     ...     get_accounts
+
+    >>> today = datetime.date(2018, 1, 1)
 
 Install account_fr::
 
@@ -25,9 +30,16 @@ Create company::
     >>> company.party.siren = '820043784'
     >>> company.party.save()
 
+Create last year fiscal year::
+
+    >>> fiscalyear_previous = create_fiscalyear(
+    ...     company, today=today - relativedelta(years=1))
+    >>> fiscalyear_previous.click('create_period')
+    >>> period_previous = fiscalyear_previous.periods[0]
+
 Create fiscal year::
 
-    >>> fiscalyear = create_fiscalyear(company)
+    >>> fiscalyear = create_fiscalyear(company, today=today)
     >>> fiscalyear.click('create_period')
     >>> period = fiscalyear.periods[0]
 
@@ -46,7 +58,7 @@ Create parties::
     >>> party = Party(name='Party')
     >>> party.save()
 
-Create a moves::
+Create some moves::
 
     >>> Journal = Model.get('account.journal')
     >>> Move = Model.get('account.move')
@@ -56,6 +68,22 @@ Create a moves::
     >>> journal_cash, = Journal.find([
     ...         ('code', '=', 'CASH'),
     ...         ])
+
+    >>> move = Move()
+    >>> move.period = period_previous
+    >>> move.journal = journal_revenue
+    >>> move.date = period_previous.start_date
+    >>> line = move.lines.new()
+    >>> line.account = revenue
+    >>> line.credit = Decimal(5)
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.debit = Decimal(5)
+    >>> line.party = party
+    >>> move.post_date = period_previous.start_date
+    >>> move.post_number = '1'
+    >>> move.click('post')
+
     >>> move = Move()
     >>> move.period = period
     >>> move.journal = journal_revenue
@@ -67,6 +95,8 @@ Create a moves::
     >>> line.account = receivable
     >>> line.debit = Decimal(10)
     >>> line.party = party
+    >>> move.post_date = period.start_date
+    >>> move.post_number = '1'
     >>> move.click('post')
 
 Generate FEC::
@@ -80,5 +110,6 @@ Generate FEC::
     >>> FEC.form.deferral_journal = deferral_journal
     >>> FEC.execute('generate')
     >>> FEC.form.filename
-    >>> bool(FEC.form.file)
+    >>> file = os.path.join(os.path.dirname(__file__), 'FEC.csv')
+    >>> FEC.form.file.decode('utf-8') == io.open(file, mode='rb').read().decode('utf-8')
     True

@@ -53,7 +53,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
+tests_require = [get_require_version('proteus'), 'python-dateutil']
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('https://trydevpi.tryton.org/')
@@ -74,7 +74,8 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_fr': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst',
+                'tests/FEC.csv']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
