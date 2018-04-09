@@ -57,19 +57,21 @@ class Move:
             count -= 1
         while (remainder > quantity
                 and (count or count is None)):
-            moves.extend(self.copy([self], {
-                        'quantity': quantity,
-                        'uom': uom.id,
-                        }))
+            with Transaction().set_context(_stock_move_split=True):
+                moves.extend(self.copy([self], {
+                            'quantity': quantity,
+                            'uom': uom.id,
+                            }))
             remainder -= quantity
             remainder = uom.round(remainder)
             if count:
                 count -= 1
         assert remainder >= 0
         if remainder:
-            moves.extend(self.copy([self], {
-                        'quantity': remainder,
-                        'uom': uom.id,
+            with Transaction().set_context(_stock_move_split=True):
+                moves.extend(self.copy([self], {
+                            'quantity': remainder,
+                            'uom': uom.id,
                         }))
         self.write(moves, {
                 'state': state,
