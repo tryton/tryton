@@ -38,9 +38,10 @@ class MultiValueMixin(object):
             if v.match(pattern, match_none=match_none)]
 
     def get_multivalue(self, name, **pattern):
+        Value = self.multivalue_model(name)
+        pattern = filter_pattern(pattern, Value)
         values = self.__values(name, pattern, match_none=False)
         if not values:
-            Value = self.multivalue_model(name)
             value = Value(**pattern)
             func = getattr(self, 'default_%s' % name, lambda **kw: None)
             setattr(value, name, func(**pattern))
@@ -62,6 +63,7 @@ class MultiValueMixin(object):
 
     def set_multivalue(self, name, value, _save=True, **pattern):
         Value = self.multivalue_model(name)
+        pattern = filter_pattern(pattern, Value)
         values = self.__values(name, pattern, match_none=True)
         if not values:
             values = [self.multivalue_record(name, **pattern)]
@@ -85,3 +87,7 @@ class ValueMixin(MatchMixin):
 
     def match(self, pattern, match_none=True):
         return super(ValueMixin, self).match(pattern, match_none=match_none)
+
+
+def filter_pattern(pattern, Value):
+    return {f: v for f, v in pattern.iteritems() if f in Value._fields}
