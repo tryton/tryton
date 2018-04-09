@@ -3322,6 +3322,12 @@
         var type = Sao.common.guess_mimetype(
             name ? name.split('.').pop() : undefined);
         var blob = new Blob([data], {type: type});
+
+        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveOrOpenBlob(blob, name);
+            return;
+        }
+
         var blob_url = window.URL.createObjectURL(blob);
 
         var dialog = new Sao.Dialog(Sao.i18n.gettext('Download'));
