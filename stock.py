@@ -146,10 +146,12 @@ class ShipmentOut:
                         round=False)
                     values = {}
                     if quantity < out_quantity:
-                        outgoing_moves.extend(Move.copy([out_move], default={
-                                    'quantity': out_move.uom.round(
-                                        out_quantity - quantity),
-                                    }))
+                        with Transaction().set_context(_stock_move_split=True):
+                            outgoing_moves.extend(
+                                Move.copy([out_move], default={
+                                        'quantity': out_move.uom.round(
+                                            out_quantity - quantity),
+                                        }))
                         values['quantity'] = out_move.uom.round(quantity)
                     values['lot'] = move.lot.id
                     to_write.extend(([out_move], values))
