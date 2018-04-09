@@ -238,9 +238,10 @@ class TrytondConfig(Config):
         with Transaction().start(self.database_name, 0) as transaction:
             User = self.pool.get('res.user')
             transaction.context = self.context
-            self.user = User.search([
-                ('login', '=', user),
-                ], limit=1)[0].id
+            with transaction.set_context(active_test=False):
+                self.user = User.search([
+                    ('login', '=', user),
+                    ], limit=1)[0].id
             with transaction.set_user(self.user):
                 self._context = User.get_preferences(context_only=True)
     __init__.__doc__ = object.__init__.__doc__
