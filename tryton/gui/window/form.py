@@ -522,7 +522,7 @@ class Form(SignalEvent, TabContent):
         return True
 
     def sig_close(self, widget=None):
-        for dialog in self.dialogs[:]:
+        for dialog in reversed(self.dialogs[:]):
             dialog.destroy()
         return self.modified_save()
 
