@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 
 __all__ = ['StockMove']
@@ -30,5 +31,6 @@ class StockMove:
             default = {}
         else:
             default = default.copy()
-        default.setdefault('invoice_lines', None)
+        if not Transaction().context.get('_stock_move_split'):
+            default.setdefault('invoice_lines', None)
         return super(StockMove, cls).copy(moves, default=default)
