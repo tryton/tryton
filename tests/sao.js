@@ -372,6 +372,42 @@
                 "decode(Equal(['foo'], ['bar']))");
         QUnit.strictEqual(new Sao.PYSON.Equal('foo', 'bar').toString(),
                 "Equal(\"foo\", \"bar\")");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Equal(
+                new Sao.PYSON.Date(2017, 1, 1), new Sao.PYSON.Date(2017, 1, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            "decode(Equal(Date(2017, 1, 1), Date(2017, 1, 1)))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Equal(
+                new Sao.PYSON.Date(2017, 1, 1), new Sao.PYSON.Date(2017, 1, 2)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            "decode(Equal(Date(2017, 1, 1), Date(2017, 1, 2)))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Equal(
+                new Sao.PYSON.DateTime(2017, 1, 1, 12, 0, 0, 0),
+                new Sao.PYSON.DateTime(2017, 1, 1, 12, 0, 0, 0)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            "decode(Equal(DateTime(2017, 1, 1, 12, 0, 0, 0), " +
+            "DateTime(2017, 1, 1, 12, 0, 0, 0)))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Equal(
+                new Sao.PYSON.DateTime(2017, 1, 1, 12, 0, 0, 0),
+                new Sao.PYSON.DateTime(2017, 1, 1, 14, 0, 0, 0)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            "decode(Equal(DateTime(2017, 1, 1, 12, 0, 0, 0), " +
+            "DateTime(2017, 1, 1, 14, 0, 0, 0)))");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Equal(
+                new Sao.PYSON.DateTime(2017, 1, 1, 0, 0, 0, 0),
+                new Sao.PYSON.Date(2017, 1, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            "decode(Equal(DateTime(2017, 1, 1, 0, 0, 0, 0), " +
+            "Date(2017, 1, 1)))");
     });
 
     QUnit.test('PYSON Greater', function() {
