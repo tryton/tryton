@@ -1333,6 +1333,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         'delivery_date_edit', 'delivery_date_store',
         '_parent_purchase.delivery_date')
     def on_change_with_delivery_date(self, name=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
         if self.moves:
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in self.moves
@@ -1341,11 +1343,12 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 return min(dates)
             else:
                 return
+        delivery_date = None
         if self.delivery_date_edit:
-            return self.delivery_date_store
-        if self.purchase and self.purchase.delivery_date:
-            return self.purchase.delivery_date
-        if (self.product
+            delivery_date = self.delivery_date_store
+        elif self.purchase and self.purchase.delivery_date:
+            delivery_date = self.purchase.delivery_date
+        elif (self.product
                 and self.quantity is not None
                 and self.quantity > 0
                 and self.purchase and self.purchase.party
@@ -1356,8 +1359,11 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                     delivery_date = product_supplier.compute_supply_date(
                         date=date)
                     if delivery_date == datetime.date.max:
-                        return None
-                    return delivery_date
+                        delivery_date = None
+                    break
+        if delivery_date and delivery_date < Date.today():
+            delivery_date = None
+        return delivery_date
 
     @fields.depends('purchase', '_parent_purchase.state')
     def on_change_with_purchase_state(self, name=None):
