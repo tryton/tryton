@@ -69,6 +69,8 @@ class Party:
             Dunning = None
         User = pool.get('res.user')
         Group = pool.get('res.group')
+        Company = pool.get('company.company')
+        Lang = pool.get('ir.lang')
 
         if self.credit_limit_amount is None:
             return
@@ -89,12 +91,16 @@ class Party:
             Model = pool.get(model)
             Transaction().database.lock(Transaction().connection, Model._table)
         if self.credit_limit_amount < self.credit_amount + amount:
+            company = Company(Transaction().context.get('company'))
+            lang = Lang.get()
             if not in_group():
                 self.raise_user_error('credit_limit_amount',
-                    (self.rec_name, self.credit_limit_amount))
+                    (self.rec_name, lang.currency(
+                            self.credit_limit_amount, company.currency)))
             warning_name = 'credit_limit_amount_%s' % origin
             self.raise_user_warning(warning_name, 'credit_limit_amount',
-                (self.rec_name, self.credit_limit_amount))
+                (self.rec_name, lang.currency(
+                        self.credit_limit_amount, company.currency)))
 
         if Dunning:
             dunnings = Dunning.search([
