@@ -2049,8 +2049,15 @@ function eval_pyson(value){
             this.input.focus();
         },
         set_value: function(record, field) {
+            // avoid modification of not normalized value
             this._normalize(this.input);
             var value = this.input.html() || '';
+            var previous = field.get_client(record);
+            var previous_el = jQuery('<div/>').html(previous || '');
+            this._normalize(previous_el);
+            if (value == previous_el.html()) {
+                value = previous;
+            }
             field.set_client(record, value);
         },
         _normalize: function(el) {
