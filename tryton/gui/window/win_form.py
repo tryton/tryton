@@ -3,6 +3,7 @@
 from tryton.common import TRYTON_ICON
 import tryton.common as common
 import gtk
+import gobject
 import pango
 import gettext
 from tryton.gui.window.nomodal import NoModal
@@ -38,6 +39,7 @@ class WinForm(NoModal, InfoBar):
                 gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
+        self.win.set_decorated(False)
         self.win.set_deletable(False)
         self.win.connect('delete-event', lambda *a: True)
         self.win.connect('close', self.close)
@@ -254,10 +256,6 @@ class WinForm(NoModal, InfoBar):
         self.create_info_bar()
         self.win.vbox.pack_start(self.info_bar, False, True)
 
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.win.set_default_size(
-            sensible_allocation.width, sensible_allocation.height)
-
         if view_type == 'tree':
             self.screen.signal_connect(self, 'record-message', self._sig_label)
             self.screen.screen_container.alternate_viewport.connect(
@@ -270,9 +268,7 @@ class WinForm(NoModal, InfoBar):
                 self.activate_save)
 
         self.register()
-        self.win.show()
-
-        common.center_window(self.win, self.parent, self.sensible_widget)
+        self.show()
 
         self.screen.display()
         self.screen.current_view.set_cursor()
@@ -448,8 +444,12 @@ class WinForm(NoModal, InfoBar):
         NoModal.destroy(self)
 
     def show(self):
+        sensible_allocation = self.sensible_widget.get_allocation()
+        self.win.resize(
+            sensible_allocation.width, sensible_allocation.height)
         self.win.show()
-        common.center_window(self.win, self.parent, self.sensible_widget)
+        gobject.idle_add(
+            common.center_window, self.win, self.parent, self.sensible_widget)
 
     def hide(self):
         self.win.hide()

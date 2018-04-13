@@ -127,6 +127,7 @@ class TranslateDialog(NoModal):
             gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
+        self.win.set_decorated(False)
         self.win.connect('response', self.response)
 
         self.accel_group = gtk.AccelGroup()
@@ -208,14 +209,10 @@ class TranslateDialog(NoModal):
         scrolledwindow.set_shadow_type(gtk.SHADOW_NONE)
         scrolledwindow.add(viewport)
         self.win.vbox.pack_start(scrolledwindow, True, True)
-
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.win.set_default_size(
-            sensible_allocation.width, sensible_allocation.height)
+        self.win.show_all()
 
         self.register()
-        self.win.show_all()
-        common.center_window(self.win, self.parent, self.sensible_widget)
+        self.show()
 
     def editing_toggled(self, editing, widget):
         self.widget.translate_widget_set_readonly(widget,
@@ -246,6 +243,17 @@ class TranslateDialog(NoModal):
     def destroy(self):
         self.win.destroy()
         NoModal.destroy(self)
+
+    def show(self):
+        sensible_allocation = self.sensible_widget.get_allocation()
+        self.win.resize(
+            sensible_allocation.width, sensible_allocation.height)
+        self.win.show()
+        gobject.idle_add(
+            common.center_window, self.win, self.parent, self.sensible_widget)
+
+    def hide(self):
+        self.win.hide()
 
 
 class TranslateMixin:

@@ -4,6 +4,7 @@ import logging
 import gettext
 
 import gtk
+import gobject
 import pango
 
 from tryton.signal_event import SignalEvent
@@ -307,6 +308,7 @@ class WizardDialog(Wizard, NoModal):
             gtk.DIALOG_DESTROY_WITH_PARENT)
         self.dia.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.dia.set_icon(TRYTON_ICON)
+        self.dia.set_decorated(False)
         self.dia.set_deletable(False)
         self.dia.connect('delete-event', lambda *a: True)
         self.dia.connect('close', self.close)
@@ -341,11 +343,7 @@ class WizardDialog(Wizard, NoModal):
     def update(self, view, defaults, buttons):
         # Dialog must be shown before the screen is displayed
         # to get the treeview realized when displayed
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.dia.set_default_size(
-            sensible_allocation.width, sensible_allocation.height)
-        self.dia.show()
-        common.center_window(self.dia, self.parent, self.sensible_widget)
+        self.show()
         super(WizardDialog, self).update(view, defaults, buttons)
 
     def destroy(self, action=None):
@@ -391,7 +389,12 @@ class WizardDialog(Wizard, NoModal):
         return True
 
     def show(self):
+        sensible_allocation = self.sensible_widget.get_allocation()
+        self.dia.set_default_size(
+            sensible_allocation.width, sensible_allocation.height)
         self.dia.show()
+        gobject.idle_add(
+            common.center_window, self.dia, self.parent, self.sensible_widget)
 
     def hide(self):
         self.dia.hide()

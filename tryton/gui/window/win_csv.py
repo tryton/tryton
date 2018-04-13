@@ -39,6 +39,7 @@ class WinCSV(NoModal):
             parent=self.parent, flags=gtk.DIALOG_DESTROY_WITH_PARENT)
         self.dialog.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.dialog.set_icon(TRYTON_ICON)
+        self.dialog.set_decorated(False)
         self.dialog.connect('response', self.response)
 
         dialog_vbox = gtk.VBox()
@@ -210,11 +211,8 @@ class WinCSV(NoModal):
         self.view2.set_model(self.model2)
         self.view2.connect('row-activated', self.sig_unsel)
 
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.dialog.set_default_size(
-            sensible_allocation.width, sensible_allocation.height)
         self.dialog.show_all()
-        center_window(self.dialog, self.parent, self.sensible_widget)
+        self.show()
 
         self.register()
 
@@ -319,7 +317,12 @@ class WinCSV(NoModal):
         self.dialog.destroy()
 
     def show(self):
+        sensible_allocation = self.sensible_widget.get_allocation()
+        self.dialog.resize(
+            sensible_allocation.width, sensible_allocation.height)
         self.dialog.show()
+        gobject.idle_add(
+            center_window, self.dialog, self.parent, self.sensible_widget)
 
     def hide(self):
         self.dialog.hide()

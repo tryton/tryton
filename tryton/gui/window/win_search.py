@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gtk
+import gobject
 import gettext
 import tryton.common as common
 from tryton.gui.window.view_form.screen import Screen
@@ -33,6 +34,7 @@ class WinSearch(NoModal):
         self.win = gtk.Dialog(_('Search'), self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
         self.win.set_icon(TRYTON_ICON)
+        self.win.set_decorated(False)
         self.win.set_default_response(gtk.RESPONSE_APPLY)
         self.win.connect('response', self.response)
 
@@ -86,12 +88,7 @@ class WinSearch(NoModal):
 
         self.model_name = model
 
-        self.win.set_default_size(700, 500)
-
         self.register()
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.win.set_default_size(
-            sensible_allocation.width, sensible_allocation.height)
 
     def sig_activate(self, *args):
         self.view.treeview.emit_stop_by_name('row_activated')
@@ -104,8 +101,12 @@ class WinSearch(NoModal):
         NoModal.destroy(self)
 
     def show(self):
+        sensible_allocation = self.sensible_widget.get_allocation()
+        self.win.resize(
+            sensible_allocation.width, sensible_allocation.height)
         self.win.show()
-        common.center_window(self.win, self.parent, self.sensible_widget)
+        gobject.idle_add(
+            common.center_window, self.win, self.parent, self.sensible_widget)
 
     def hide(self):
         self.win.hide()
