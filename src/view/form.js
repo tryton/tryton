@@ -145,7 +145,6 @@ function eval_pyson(value){
         },
         _parse_label: function(model, node, container, attributes) {
             var name = attributes.name;
-            var text = attributes.string;
             if (attributes.xexpand === undefined) {
                 attributes.xexpand = 0;
             }
@@ -157,20 +156,17 @@ function eval_pyson(value){
                 if (!attributes.states && (name in model.fields)) {
                     attributes.states = model.fields[name].description.states;
                 }
-                if (!text) {
+                if (attributes.string === undefined) {
                     // TODO RTL and translation
-                    text = model.fields[name]
+                    attributes.string = model.fields[name]
                         .description.string + ': ';
                 }
-                if (attributes.xalign === undefined) {
-                    attributes.xalign = 1.0;
-                }
             }
-            var label;
-            if (text) {
-                label = new Sao.View.Form.Label(text, attributes);
-                this.state_widgets.push(label);
+            if (attributes.xalign === undefined) {
+                attributes.xalign = 1.0;
             }
+            var label = new Sao.View.Form.Label(attributes.string, attributes);
+            this.state_widgets.push(label);
             container.add(attributes, label);
             return label;
         },
@@ -700,12 +696,12 @@ function eval_pyson(value){
             if (this.attributes.name && record) {
                 field = record.model.fields[this.attributes.name];
             }
-            if ((this.attributes.string === undefined) && field) {
+            if (!this.attributes.string && field) {
                 var text = '';
                 if (record) {
                     text = field.get_client(record) || '';
                 }
-                this.label_el.val(text);
+                this.label_el.text(text);
             }
             var state_changes;
             if (record) {
