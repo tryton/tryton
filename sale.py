@@ -1342,6 +1342,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('product', 'quantity', 'moves', 'sale',
         '_parent_sale.sale_date')
     def on_change_with_shipping_date(self, name=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
         if self.moves:
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in self.moves
@@ -1354,7 +1356,9 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             date = self.sale.sale_date if self.sale else None
             shipping_date = self.product.compute_shipping_date(date=date)
             if shipping_date == datetime.date.max:
-                return None
+                shipping_date = None
+            if shipping_date:
+                shipping_date = max(shipping_date, Date.today())
             return shipping_date
 
     @fields.depends('sale', '_parent_sale.state')
