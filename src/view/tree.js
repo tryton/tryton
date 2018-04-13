@@ -1540,7 +1540,7 @@
                         } else {
                             img_tag = cell;
                         }
-                        img_tag.attr('src', url);
+                        img_tag.attr('src', url || '');
                     }.bind(this));
                 } else {
                     value = this.attributes.string || '';
