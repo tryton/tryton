@@ -222,7 +222,7 @@ var Sao = {};
         jQuery('html').attr('lang', lang);
         Sao.i18n.setLocale(lang);
         moment.locale(lang.slice(0, 2));
-        return jQuery.getJSON('locale/' + lang + '.json', function(data) {
+        return jQuery.getJSON('locale/' + lang + '.json').then(function(data) {
             if (!data[''].language) {
                 data[''].language = lang;
             }
@@ -237,6 +237,10 @@ var Sao = {};
                 data[key] = 2 == data[key].length ? data[key][1] : data[key].slice(1);
             }
             Sao.i18n.loadJSON(data);
+        }, function() {
+            if (~lang.indexOf('_')) {
+                return Sao.i18n.setlang(lang.split('_').slice(0, -1).join('_'));
+            }
         });
     };
     Sao.i18n.getlang = function() {
@@ -245,7 +249,6 @@ var Sao = {};
     Sao.i18n.BC47 = function(lang) {
         return lang.replace('_', '-');
     };
-    Sao.i18n.setlang();
     Sao.i18n.locale = {};
 
     Sao.get_preferences = function() {
@@ -302,14 +305,16 @@ var Sao = {};
     };
 
     Sao.login = function() {
-        Sao.Session.get_credentials()
-            .then(function(session) {
-                Sao.Session.current_session = session;
-                return session.reload_context();
-            }).then(Sao.get_preferences).then(function(preferences) {
-                Sao.menu(preferences);
-                Sao.user_menu(preferences);
-            });
+        Sao.i18n.setlang().always(function() {
+            Sao.Session.get_credentials()
+                .then(function(session) {
+                    Sao.Session.current_session = session;
+                    return session.reload_context();
+                }).then(Sao.get_preferences).then(function(preferences) {
+                    Sao.menu(preferences);
+                    Sao.user_menu(preferences);
+                });
+        });
     };
 
     Sao.logout = function() {
