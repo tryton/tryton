@@ -943,10 +943,11 @@ class Main(object):
             if expanded:
                 CONFIG['menu.pane'] = self.pane.get_position()
 
-    def on_paned_button_press_event(self, paned, event):
-        expander = self.pane.get_child1()
-        if expander:
-            return not expander.get_expanded()
+    def on_paned_button_press_event(self, widget, event):
+        if widget == self.pane:
+            expander = self.pane.get_child1()
+            if expander and not expander.get_expanded():
+                self.menu_toggle()
         return False
 
     def menu_row_activate(self):
