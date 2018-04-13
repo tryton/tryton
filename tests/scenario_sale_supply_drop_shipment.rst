@@ -180,6 +180,8 @@ Receiving only 100 products::
     >>> move.quantity = 100
     >>> move.unit_price
     Decimal('3.0000')
+    >>> move.cost_price
+    Decimal('3.0000')
     >>> shipment.click('ship')
     >>> move, = shipment.customer_moves
     >>> move.unit_price
