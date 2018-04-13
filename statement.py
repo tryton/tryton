@@ -277,57 +277,58 @@ class Statement(Workflow, ModelSQL, ModelView):
         return ((getattr(self, 'end_balance', 0) or 0)
             - (getattr(self, 'start_balance', 0) or 0))
 
-    @fields.depends('lines', 'journal')
+    @fields.depends('lines', 'journal', 'company')
     def on_change_lines(self):
         pool = Pool()
-        Currency = pool.get('currency.currency')
         Line = pool.get('account.statement.line')
-        if self.journal and self.lines:
-            invoices = set()
-            for line in self.lines:
-                if getattr(line, 'invoice', None):
-                    invoices.add(line.invoice)
-            invoice_id2amount_to_pay = {}
-            for invoice in invoices:
-                with Transaction().set_context(date=invoice.currency_date):
-                    if invoice.type == 'out':
-                        sign = -1
-                    else:
-                        sign = 1
-                    invoice_id2amount_to_pay[invoice.id] = sign * (
-                        Currency.compute(invoice.currency,
-                            invoice.amount_to_pay, self.journal.currency))
+        if not self.journal or not self.lines or not self.company:
+            return
+        if self.journal.currency != self.company.currency:
+            return
 
-            lines = list(self.lines)
-            line_offset = 0
-            for index, line in enumerate(self.lines or []):
-                if getattr(line, 'invoice', None) and line.id:
-                    amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
-                    if (not self.journal.currency.is_zero(amount_to_pay)
-                            and getattr(line, 'amount', None)
-                            and (line.amount >= 0) == (amount_to_pay <= 0)):
-                        if abs(line.amount) > abs(amount_to_pay):
-                            new_line = Line()
-                            for field_name, field in Line._fields.iteritems():
-                                if field_name == 'id':
-                                    continue
-                                try:
-                                    setattr(new_line, field_name,
-                                        getattr(line, field_name))
-                                except AttributeError:
-                                    pass
-                            new_line.amount = line.amount + amount_to_pay
-                            new_line.invoice = None
-                            line_offset += 1
-                            lines.insert(index + line_offset, new_line)
-                            invoice_id2amount_to_pay[line.invoice.id] = 0
-                            line.amount = amount_to_pay.copy_sign(line.amount)
-                        else:
-                            invoice_id2amount_to_pay[line.invoice.id] = (
-                                line.amount + amount_to_pay)
+        invoices = set()
+        for line in self.lines:
+            if (getattr(line, 'invoice', None)
+                    and line.invoice.currency == self.company.currency):
+                invoices.add(line.invoice)
+        invoice_id2amount_to_pay = {}
+        for invoice in invoices:
+            if invoice.type == 'out':
+                sign = -1
+            else:
+                sign = 1
+            invoice_id2amount_to_pay[invoice.id] = sign * invoice.amount_to_pay
+
+        lines = list(self.lines)
+        line_offset = 0
+        for index, line in enumerate(self.lines or []):
+            if getattr(line, 'invoice', None) and line.id:
+                amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
+                if (amount_to_pay
+                        and getattr(line, 'amount', None)
+                        and (line.amount >= 0) == (amount_to_pay <= 0)):
+                    if abs(line.amount) > abs(amount_to_pay):
+                        new_line = Line()
+                        for field_name, field in Line._fields.iteritems():
+                            if field_name == 'id':
+                                continue
+                            try:
+                                setattr(new_line, field_name,
+                                    getattr(line, field_name))
+                            except AttributeError:
+                                pass
+                        new_line.amount = line.amount + amount_to_pay
+                        new_line.invoice = None
+                        line_offset += 1
+                        lines.insert(index + line_offset, new_line)
+                        invoice_id2amount_to_pay[line.invoice.id] = 0
+                        line.amount = amount_to_pay.copy_sign(line.amount)
                     else:
-                        line.invoice = None
-            self.lines = lines
+                        invoice_id2amount_to_pay[line.invoice.id] = (
+                            line.amount + amount_to_pay)
+                else:
+                    line.invoice = None
+        self.lines = lines
 
     @fields.depends('journal')
     def on_change_with_validation(self, name=None):
@@ -693,10 +694,6 @@ class Line(
                     })
             cls.date.depends.append('origin')
         cls.account.required = True
-        cls._error_messages.update({
-                'amount_greater_invoice_amount_to_pay': ('Amount "%s" is '
-                    'greater than the amount to pay of invoice.'),
-                })
         t = cls.__table__()
         cls._sql_constraints += [
             ('check_statement_line_amount', Check(t, t.amount != 0),
@@ -825,8 +822,6 @@ class Line(
     @classmethod
     def reconcile(cls, move_lines):
         pool = Pool()
-        Currency = pool.get('currency.currency')
-        Lang = pool.get('ir.lang')
         Invoice = pool.get('account.invoice')
         MoveLine = pool.get('account.move.line')
 
@@ -843,22 +838,8 @@ class Line(
                 Invoice.add_payment_lines(invoice_payments)
                 invoice_payments.clear()
 
-            with Transaction().set_context(date=line.invoice.currency_date):
-                amount_to_pay = Currency.compute(line.invoice.currency,
-                    line.invoice.amount_to_pay,
-                    line.statement.journal.currency)
-            if abs(amount_to_pay) < abs(line.amount):
-                amount = Lang.get().format(
-                    line.amount, line.statement.journal.currency)
-                cls.raise_user_error('amount_greater_invoice_amount_to_pay',
-                        error_args=(amount,))
-
-            with Transaction().set_context(date=line.invoice.currency_date):
-                amount = Currency.compute(line.statement.journal.currency,
-                    line.amount, line.statement.company.currency)
-
             reconcile_lines = line.invoice.get_reconcile_lines_for_amount(
-                amount)
+                move_line.credit - move_line.debit)
 
             assert move_line.account == line.invoice.account
 

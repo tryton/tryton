@@ -1,3 +1,5 @@
+* Do not check amount to pay when reconcile move lines
+* Remove line split by invoice in non company currency
 * Use new API for Line.reconcile
 * Add button to reconcile statement
 
