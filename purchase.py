@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 from trytond.model import fields, ModelView, Workflow
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
@@ -152,9 +154,15 @@ class PurchaseLine:
         return result
 
     def get_move(self):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
         move = super(PurchaseLine, self).get_move()
         if move and self.purchase.customer:
-            move.cost_price = move.unit_price
+            digits = move.__class__.cost_price.digits
+            cost_price = Currency.compute(
+                move.currency, move.unit_price, move.company.currency)
+            move.cost_price = cost_price.quantize(
+                Decimal(str(10.0 ** -digits[1])))
         return move
 
 
