@@ -451,9 +451,10 @@ class Work:
         get_key = lambda w: (set(p.id for p in w.predecessors),
                              set(s.id for s in w.successors))
 
-        parent_id = self.parent and self.parent.id or None
+        if not self.parent:
+            return
         siblings = self.search([
-                ('parent', '=', parent_id)
+                ('parent', '=', self.parent.id)
                 ])
         to_clean = []
 
