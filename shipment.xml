@@ -129,7 +129,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.wizard" id="wizard_shipment_out_assign">
-            <field name="name">Assign Shipment Out</field>
+            <field name="name">Assign Customer Shipment</field>
             <field name="wiz_name">stock.shipment.out.assign</field>
             <field name="model">stock.shipment.out</field>
         </record>
