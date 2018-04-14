@@ -457,8 +457,6 @@ class CreatePurchaseRequestQuotation(Wizard):
         cls._error_messages.update({
                 'previous_quotation': ('A quotation was already made for '
                     'the request "%(request)s".'),
-                'no_request': ('No request selected or wrong state to '
-                    'proceed'),
                 })
 
     def transition_start(self):
