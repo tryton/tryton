@@ -63,6 +63,8 @@ Var STARTMENU_FOLDER
 !include "french.nsh"
 !insertmacro MUI_LANGUAGE "German"
 !include "german.nsh"
+!insertmacro MUI_LANGUAGE "Persian"
+!include "persian.nsh"
 !insertmacro MUI_LANGUAGE "Slovenian"
 !include "slovenian.nsh"
 !insertmacro MUI_LANGUAGE "Spanish"
