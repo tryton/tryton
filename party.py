@@ -29,7 +29,7 @@ class PartyErase:
         cls._error_messages.update({
                 'pending_shipment': (
                     'The party "%(party)s" can not be erased '
-                    'because he has pending shipments'
+                    'because he has pending shipments '
                     'for the company "%(company)s".'),
                 })
 
