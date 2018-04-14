@@ -30,6 +30,7 @@ Create product::
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
+    >>> Product = Model.get('product.product')
 
     >>> template = ProductTemplate()
     >>> template.name = 'product'
@@ -170,9 +171,8 @@ Do the production::
     u'done'
     >>> output.effective_date == production.effective_date
     True
-    >>> config._context['locations'] = [storage.id]
-    >>> product.reload()
-    >>> product.quantity == 2
+    >>> with config.set_context(locations=[storage.id]):
+    ...     Product(product.id).quantity == 2
     True
 
 Make a production with effective date yesterday and running the day before::
