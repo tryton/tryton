@@ -94,7 +94,7 @@ class Quotation(Workflow, ModelSQL, ModelView):
         depends=['state'],
         help="The unique identifier of the quotation.")
     revision = fields.Integer('Revision', readonly=True,
-        help="Number incremented each time you send the quotation.")
+        help="Number incremented each time the quotation is sent.")
     reference = fields.Char('Reference', select=True,
         help="The reference used by the supplier.")
     company = fields.Many2One('company.company', 'Company', required=True,
