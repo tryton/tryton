@@ -1901,7 +1901,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
 
 class AssignShipmentOutAssignFailed(ModelView):
-    'Assign Shipment Out'
+    'Assign Customer Shipment'
     __name__ = 'stock.shipment.out.assign.failed'
     inventory_moves = fields.Many2Many('stock.move', None, None,
         'Inventory Moves', readonly=True)
@@ -1917,7 +1917,7 @@ class AssignShipmentOutAssignFailed(ModelView):
 
 
 class AssignShipmentOut(Wizard):
-    'Assign Shipment Out'
+    'Assign Customer Shipment'
     __name__ = 'stock.shipment.out.assign'
     start = StateTransition()
     failed = StateView('stock.shipment.out.assign.failed',
