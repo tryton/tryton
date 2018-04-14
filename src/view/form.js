@@ -3527,6 +3527,10 @@
         get_value: function() {
             return this.input.prop('checked');
         },
+        set_readonly: function(readonly) {
+            this._readonly = readonly;
+            this.input.prop('disabled', readonly);
+        },
         set_value: function(value) {
             this.input.prop('checked', value);
         }
