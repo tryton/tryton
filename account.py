@@ -1783,7 +1783,10 @@ class AgedBalance(ModelSQL, ModelView):
 
         terms = cls.get_terms()
         factor = cls.get_unit_factor()
-        term_values = sorted(terms.values(), key=lambda x: x or 0)
+        # Ensure None are before 0 to get the next index pointing to the next
+        # value and not a None value
+        term_values = sorted(
+            terms.values(), key=lambda x: ((x is not None), x or 0))
 
         for name, value in terms.iteritems():
             if value is None or factor is None or date is None:
@@ -1793,7 +1796,7 @@ class AgedBalance(ModelSQL, ModelView):
             idx = term_values.index(value)
             if idx + 1 < len(terms):
                 cond &= line.maturity_date > (
-                    date - term_values[idx + 1] * factor)
+                    date - (term_values[idx + 1] or 0) * factor)
             else:
                 cond |= line.maturity_date == Null
             columns.append(
