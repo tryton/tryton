@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import json
+from decimal import Decimal
 from functools import reduce, wraps
 
 from dateutil.relativedelta import relativedelta
@@ -121,6 +122,8 @@ class PYSONEncoder(json.JSONEncoder):
                         ).pyson()
             else:
                 return Date(obj.year, obj.month, obj.day).pyson()
+        elif isinstance(obj, Decimal):
+            return float(obj)
         return super(PYSONEncoder, self).default(obj)
 
 
