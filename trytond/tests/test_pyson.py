@@ -4,11 +4,16 @@
 
 import unittest
 import datetime
+from decimal import Decimal
 from trytond import pyson
 
 
 class PYSONTestCase(unittest.TestCase):
     'Test PySON'
+
+    def test_Decimal(self):
+        "Test PYSONEncoder for Decimal"
+        self.assertEqual(pyson.PYSONEncoder().encode(Decimal('1.1')), '1.1')
 
     def test_Eval(self):
         'Test pyson.Eval'
