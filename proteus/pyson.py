@@ -1,11 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
+import json
+from decimal import Decimal
+from functools import reduce, wraps
+
+from dateutil.relativedelta import relativedelta
+
 __all__ = ['PYSONEncoder', 'PYSONDecoder', 'Eval', 'Not', 'Bool', 'And', 'Or',
     'Equal', 'Greater', 'Less', 'If', 'Get', 'In', 'Date', 'DateTime', 'Len']
-import json
-import datetime
-from dateutil.relativedelta import relativedelta
-from functools import reduce, wraps
 
 
 def reduced_type(types):
@@ -119,6 +122,8 @@ class PYSONEncoder(json.JSONEncoder):
                         ).pyson()
             else:
                 return Date(obj.year, obj.month, obj.day).pyson()
+        elif isinstance(obj, Decimal):
+            return float(obj)
         return super(PYSONEncoder, self).default(obj)
 
 
