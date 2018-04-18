@@ -58,6 +58,8 @@ class InvoiceLine:
             move_line.account = self.account
         else:
             move_line.account = self.product.account_cogs_used
+        if move_line.account.party_required:
+            move_line.party = self.invoice.party
         result.append(move_line)
         return result
 
