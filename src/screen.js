@@ -858,27 +858,38 @@
             if (this.screen_container.but_active.hasClass('active')) {
                 context.active_test = false;
             }
-            var grp_prm = this.model.find(domain, this.offset, this.limit,
-                this.order, context);
-            var count_prm = jQuery.when(this.search_count);
-            if (!only_ids) {
-                count_prm = this.model.execute('search_count', [domain],
-                    context);
-            }
-            count_prm.done(function(count) {
-                this.search_count = count;
-            }.bind(this));
-            grp_prm.done(this.set_group.bind(this));
-            grp_prm.done(this.display.bind(this));
-            jQuery.when(grp_prm, count_prm).done(function(group, count) {
-                this.screen_container.but_next.prop('disabled',
-                        !(this.limit !== undefined &&
-                            group.length == this.limit &&
-                            count > this.limit + this.offset));
-            }.bind(this));
-            this.screen_container.but_prev.prop('disabled', this.offset <= 0);
-            this.count_tab_domain();
-            return grp_prm;
+            return this.model.execute(
+                'search', [domain, this.offset, this.limit, this.order],
+                context).then(function(ids) {
+                    this.search_count = ids.length;
+                    var count_prm = jQuery.when(this.search_count);
+                    if ((!only_ids) &&
+                        ((this.limit !== null) &&
+                            (ids.length == this.limit))) {
+                        count_prm = this.model.execute(
+                            'search_count', [domain], context)
+                            .then(function(count) {
+                                this.search_count = count;
+                                return this.search_count;
+                            }.bind(this), function() {
+                                this.search_count = 0;
+                                return this.search_count;
+                            }.bind(this));
+                    }
+                    count_prm.done(function(count) {
+                        this.screen_container.but_next.prop('disabled',
+                            !(this.limit !== undefined &&
+                                ids.length == this.limit &&
+                                count > this.limit + this.offset));
+                        this.screen_container.but_prev.prop('disabled', this.offset <= 0);
+                        if (only_ids) {
+                            return ids;
+                        }
+                        this.clear();
+                        this.load(ids);
+                        this.count_tab_domain();
+                    }.bind(this));
+                }.bind(this));
         },
         search_domain: function(search_string, set_text) {
             set_text = set_text || false;
@@ -1124,6 +1135,10 @@
             }
             this.set_cursor(false, false);
             view.display();
+        },
+        clear: function() {
+            this.current_record = null;
+            this.group.clear();
         },
         default_row_activate: function() {
             if ((this.current_view.view_type == 'tree') &&

@@ -34,18 +34,6 @@
             };
             return Sao.rpc(args, this.session, async);
         },
-        find: function(condition, offset, limit, order, context) {
-            if (!offset) offset = 0;
-            var self = this;
-            var prm = this.execute('search',
-                    [condition, offset, limit, order], context);
-            var instanciate = function(ids) {
-                return Sao.Group(self, context, ids.map(function(id) {
-                    return new Sao.Record(self, id);
-                }));
-            };
-            return prm.pipe(instanciate);
-        },
         delete_: function(records) {
             if (jQuery.isEmptyObject(records)) {
                 return jQuery.when();
@@ -261,6 +249,11 @@
             this.record_removed.splice(this.record_removed.indexOf(record), 1);
             this.record_deleted.splice(this.record_deleted.indexOf(record), 1);
             record.group.changed();
+        };
+        array.clear = function() {
+            this.splice(0, this.length);
+            this.record_removed = [];
+            this.record_deleted = [];
         };
         array.changed = function() {
             if (!this.parent) {
