@@ -227,7 +227,8 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
                 balance += account_sum[child.id]
             if account.display_balance == 'credit-debit' and balance:
                 balance *= -1
-            balances[account.id] = account.currency.round(balance)
+            exp = Decimal(str(10.0 ** -account.currency_digits))
+            balances[account.id] = balance.quantize(exp)
         return balances
 
     @classmethod
@@ -275,8 +276,9 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
                 result[name][account_id] += value
         for account in accounts:
             for name in names:
-                result[name][account.id] = account.currency.round(
-                    result[name][account.id])
+                exp = Decimal(str(10.0 ** -account.currency_digits))
+                result[name][account.id] = (
+                    result[name][account.id].quantize(exp))
         return result
 
     def get_rec_name(self, name):
