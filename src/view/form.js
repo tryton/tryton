@@ -4368,30 +4368,53 @@ function eval_pyson(value){
         format: '%x',
         create_widget: function() {
             Sao.View.Form.Dict.Date._super.create_widget.call(this);
-            var group = this.button.parent();
-            jQuery('<button/>', {
+            this.date = this.input.parent();
+            jQuery('<span/>', {
+                'class': 'input-group-btn',
+            }).append(jQuery('<button/>', {
                 'class': 'datepickerbutton btn btn-default',
                 'type': 'button',
                 'tabindex': -1,
+                'aria-label': Sao.i18n.gettext("Open the calendar"),
+                'title': Sao.i18n.gettext("Open the calendar"),
             }).append(jQuery('<span/>', {
                 'class': 'glyphicon glyphicon-calendar'
-            })).prependTo(group);
-            this.input.datetimepicker({
+            }))).prependTo(this.date);
+            this.date.datetimepicker({
                 'format': Sao.common.moment_format(this.format),
-                'locale': moment.locale()
+                'locale': moment.locale(),
+                'keyBinds': null,
             });
-            this.input.on('dp.change',
+            this.date.on('dp.change',
                     this.parent_widget.focus_out.bind(this.parent_widget));
+            var mousetrap = new Mousetrap(this.el[0]);
+
+            mousetrap.bind(['enter', '='], function(e, combo) {
+                if (e.which != Sao.common.RETURN_KEYCODE) {
+                    e.preventDefault();
+                }
+                this.date.data('DateTimePicker').date(moment());
+            }.bind(this));
+
+            Sao.common.DATE_OPERATORS.forEach(function(operator) {
+                mousetrap.bind(operator[0], function(e, combo) {
+                    e.preventDefault();
+                    var dp = this.date.data('DateTimePicker');
+                    var date = dp.date();
+                    date.add(operator[1]);
+                    dp.date(date);
+                }.bind(this));
+            }.bind(this));
         },
         get_value: function() {
-            var value = this.input.data('DateTimePicker').date();
+            var value = this.date.data('DateTimePicker').date();
             if (value) {
                 value.isDate = true;
             }
             return value;
         },
         set_value: function(value) {
-            this.input.data('DateTimePicker').date(value);
+            this.date.data('DateTimePicker').date(value);
         }
     });
 
@@ -4399,7 +4422,7 @@ function eval_pyson(value){
         class_: 'dict-datetime',
         format: '%x %X',
         get_value: function() {
-            var value = this.input.data('DateTimePicker').date();
+            var value = this.date.data('DateTimePicker').date();
             if (value) {
                 value.isDateTime = true;
             }
