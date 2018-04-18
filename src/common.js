@@ -435,7 +435,6 @@
             this._access = {};
         },
         load_models: function(refresh) {
-            var prm = jQuery.Deferred();
             if (!refresh) {
                 this._access = {};
             }
