@@ -826,13 +826,10 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
             result = cursor.fetchall()
             balances.update(dict(result))
 
-        # SQLite uses float for SUM
-        for account_id, balance in balances.iteritems():
-            if isinstance(balance, Decimal):
-                break
-            balances[account_id] = Decimal(str(balance))
-
         for account in accounts:
+            # SQLite uses float for SUM
+            if not isinstance(balances[account.id], Decimal):
+                balances[account.id] = Decimal(str(balances[account.id]))
             exp = Decimal(str(10.0 ** -account.currency_digits))
             balances[account.id] = balances[account.id].quantize(exp)
 
