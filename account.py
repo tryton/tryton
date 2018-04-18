@@ -263,7 +263,8 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
                     ])
             for child in childs:
                 res[type_.id] += type_sum[child.id]
-            res[type_.id] = type_.company.currency.round(res[type_.id])
+            exp = Decimal(str(10.0 ** -type_.currency_digits))
+            res[type_.id] = res[type_.id].quantize(exp)
             if type_.display_balance == 'credit-debit':
                 res[type_.id] = - res[type_.id]
         return res
@@ -809,7 +810,7 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
         table_c = cls.__table__()
         line = MoveLine.__table__()
         ids = [a.id for a in accounts]
-        balances = dict((i, 0) for i in ids)
+        balances = dict((i, Decimal(0)) for i in ids)
         line_query, fiscalyear_ids = MoveLine.query_get(line)
         for sub_ids in grouped_slice(ids):
             red_sql = reduce_ids(table_a.id, sub_ids)
@@ -832,8 +833,8 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
             balances[account_id] = Decimal(str(balance))
 
         for account in accounts:
-            balances[account.id] = account.company.currency.round(
-                balances[account.id])
+            exp = Decimal(str(10.0 ** -account.currency_digits))
+            balances[account.id] = balances[account.id].quantize(exp)
 
         fiscalyears = FiscalYear.browse(fiscalyear_ids)
 
@@ -859,7 +860,7 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
         for name in names:
             if name not in {'credit', 'debit', 'amount_second_currency'}:
                 raise ValueError('Unknown name: %s' % name)
-            result[name] = dict((i, 0) for i in ids)
+            result[name] = dict((i, Decimal(0)) for i in ids)
 
         table = cls.__table__()
         line = MoveLine.__table__()
@@ -885,12 +886,11 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
         for account in accounts:
             for name in names:
                 if name == 'amount_second_currency':
-                    currency = account.second_currency
+                    exp = Decimal(str(10.0 ** -account.second_currency_digits))
                 else:
-                    currency = account.company.currency
-                if currency:
-                    result[name][account.id] = currency.round(
-                        result[name][account.id])
+                    exp = Decimal(str(10.0 ** -account.currency_digits))
+                result[name][account.id] = (
+                    result[name][account.id].quantize(exp))
 
         cumulate_names = []
         if Transaction().context.get('cumulate'):

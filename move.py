@@ -1203,7 +1203,6 @@ class Line(ModelSQL, ModelView):
                     reconcile_account = line.account
                 if not reconcile_party:
                     reconcile_party = line.party
-            amount = reconcile_account.currency.round(amount)
             if amount:
                 move = cls._get_writeoff_move(
                     reconcile_account, reconcile_party, amount, **writeoff)

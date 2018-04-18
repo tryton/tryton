@@ -201,8 +201,9 @@ class TaxCode(DeactivableMixin, ModelSQL, ModelView):
                 ('parent', 'child_of', [c.id for c in codes]),
                 ])
         for code in childs:
-            result[code.id] = code.company.currency.round(
-                sum((l.value for l in code.lines), Decimal(0)))
+            exp = Decimal(str(10.0 ** -code.currency_digits))
+            result[code.id] = sum(
+                (l.value for l in code.lines), Decimal(0)).quantize(exp)
             parents[code.id] = code.parent.id if code.parent else None
 
         ids = set(map(int, childs))
