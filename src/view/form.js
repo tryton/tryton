@@ -696,7 +696,7 @@ function eval_pyson(value){
             if (this.attributes.name && record) {
                 field = record.model.fields[this.attributes.name];
             }
-            if (!((this.attributes.string === undefined) |
+            if (!((this.attributes.string === undefined) ||
                 this.attributes.string) && field) {
                 var text = '';
                 if (record) {
