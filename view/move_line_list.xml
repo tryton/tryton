@@ -16,4 +16,5 @@ this repository contains the full copyright notices and license terms. -->
     <button name="payment_block"/>
     <button name="payment_unblock"/>
     <button name="pay" tree_invisible="1"/>
+    <field name="payment_blocked" tree_invisible="1"/>
 </tree>
