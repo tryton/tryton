@@ -451,7 +451,7 @@ Class methods:
         No access rights are verified and the records are not validated.
     ..
 
-.. classmethod:: ModelStorage.search(domain[, offset[, limit[, order[, count[, query]]]]])
+.. classmethod:: ModelSQL.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
     Return a list of records that match the :ref:`domain <topics-domain>` or
     the sql query if query is True.
