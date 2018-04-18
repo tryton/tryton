@@ -121,6 +121,9 @@ var Sao = {};
         date.date(day);
         date.set({hour: 0, minute: 0, second: 0, millisecond: 0});
         date.isDate = true;
+        date.toString = function() {
+            return this.format('YYYY-MM-DD');
+        };
         return date;
     };
 
@@ -166,6 +169,13 @@ var Sao = {};
             datetime.milliseconds(millisecond);
         }
         datetime.isDateTime = true;
+        datetime.toString = function() {
+            if (this.milliseconds()) {
+                return this.format('YYYY-MM-DD HH:mm:ss.SSSSSS');
+            } else {
+                return this.format('YYYY-MM-DD HH:mm:ss');
+            }
+        };
         datetime.local();
         return datetime;
     };
