@@ -17,6 +17,11 @@ class InfoBar(object):
 
     def message_info(self, message=None, type_=gtk.MESSAGE_ERROR):
         if message:
+            # Work around https://bugzilla.gnome.org/show_bug.cgi?id=710888
+            parent = self.info_bar.get_parent()
+            self.info_bar.unparent()
+            self.info_bar.set_parent(parent)
+
             self.info_label.set_label(message)
             self.info_bar.set_message_type(type_)
             self.info_bar.show_all()
