@@ -637,11 +637,13 @@
         },
         get_value: function(quote) {
             var value = this.el.val();
-            if (value) {
+            if (!jQuery.isEmptyObject(value)) {
                 value = jQuery.map(value, quote).reduce(function(a, b) {
                     if (a) {a += ';';}
                     return a + b;
                 });
+            } else {
+                value = null;
             }
             return value;
         },
