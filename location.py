@@ -378,24 +378,25 @@ class Location(DeactivableMixin, ModelSQL, ModelView):
         if not any(map(valid_context, ['product', 'product_template'])):
             return cost_values
 
+        def get_record():
+            if trans_context.get('product') is not None:
+                return Product(trans_context['product'])
+            else:
+                return Template(trans_context['product_template'])
+
         context = {}
         if 'stock_date_end' in trans_context:
             # Use the last cost_price of the day
             context['_datetime'] = datetime.datetime.combine(
                 trans_context['stock_date_end'], datetime.time.max)
-        with Transaction().set_context(context):
-
-            if trans_context.get('product') is not None:
-                product = Product(trans_context['product'])
-                cost_price = product.cost_price
-            else:
-                template = Template(trans_context['product_template'])
-                cost_price = template.cost_price
             # The date could be before the product creation
-            # or the template may have more than one product
-            if not isinstance(cost_price, Decimal):
+            record = get_record()
+            if record.create_date > context['_datetime']:
                 return cost_values
-
+        with Transaction().set_context(context):
+            cost_price = get_record().cost_price
+        # The template may have more than one product
+        if cost_price is not None:
             for location in locations:
                 cost_values[location.id] = (
                     Decimal(str(location.quantity)) * cost_price)

@@ -136,21 +136,22 @@ class Product(StockMixin, object):
 
     @classmethod
     def get_cost_value(cls, products, name):
-        cost_values = {}
+        cost_values = {p.id: None for p in products}
         context = {}
         trans_context = Transaction().context
         if trans_context.get('stock_date_end'):
             # Use the last cost_price of the day
             context['_datetime'] = datetime.datetime.combine(
                 trans_context['stock_date_end'], datetime.time.max)
+            # The date could be before the product creation
+            products = [p for p in products
+                if p.create_date <= context['_datetime']]
         with Transaction().set_context(context):
             for product in cls.browse(products):
-                # The date could be before the product creation
-                if not isinstance(product.cost_price, Decimal):
-                    cost_values[product.id] = None
-                else:
-                    cost_values[product.id] = (Decimal(str(product.quantity))
-                        * product.cost_price)
+                # The product may not have a cost price
+                if product.cost_price is not None:
+                    cost_values[product.id] = (
+                        Decimal(str(product.quantity)) * product.cost_price)
         return cost_values
 
     @classmethod
