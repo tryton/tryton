@@ -633,33 +633,33 @@ class PartyErase(Wizard):
                 table, _ = tables[None]
                 query = from_.select(table.id, where=where)
 
-                model_tables = [Model.__table__()]
-                if Model._history:
-                    model_tables.append(Model.__table_history__())
-                for table in model_tables:
-                    sql_columns, sql_values = [], []
-                    for column, value in zip(columns, values):
-                        column = Column(table, column)
-                        sql_columns.append(column)
-                        sql_values.append(
-                            value(column) if callable(value) else value)
-                    cursor.execute(*table.update(
-                            sql_columns, sql_values,
-                            where=table.id.in_(query)))
-                if not resource:
-                    continue
-                for Resource in resources:
-                    model_tables = [Resource.__table__()]
-                    if Resource._history:
-                        model_tables.append(Resource.__table_history__())
+                if columns:
+                    model_tables = [Model.__table__()]
+                    if Model._history:
+                        model_tables.append(Model.__table_history__())
                     for table in model_tables:
-                        cursor.execute(*table.delete(
-                                where=table.resource.like(
-                                    Model.__name__ + ',%')
-                                & Cast(Substring(table.resource,
-                                        Position(',', table.resource) +
-                                        Literal(1)),
-                                    Model.id.sql_type().base).in_(query)))
+                        sql_columns, sql_values = [], []
+                        for column, value in zip(columns, values):
+                            column = Column(table, column)
+                            sql_columns.append(column)
+                            sql_values.append(
+                                value(column) if callable(value) else value)
+                        cursor.execute(*table.update(
+                                sql_columns, sql_values,
+                                where=table.id.in_(query)))
+                if resource:
+                    for Resource in resources:
+                        model_tables = [Resource.__table__()]
+                        if Resource._history:
+                            model_tables.append(Resource.__table_history__())
+                        for table in model_tables:
+                            cursor.execute(*table.delete(
+                                    where=table.resource.like(
+                                        Model.__name__ + ',%')
+                                    & Cast(Substring(table.resource,
+                                            Position(',', table.resource) +
+                                            Literal(1)),
+                                        Model.id.sql_type().base).in_(query)))
         return 'end'
 
     def check_erase(self, party):
