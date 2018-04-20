@@ -137,7 +137,7 @@ class Graph(gtk.DrawingArea):
     def action_keyword(self, ids):
         if not ids:
             return
-        ctx = self.group.context.copy()
+        ctx = self.group._context.copy()
         if 'active_ids' in ctx:
             del ctx['active_ids']
         if 'active_id' in ctx:

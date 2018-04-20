@@ -465,7 +465,7 @@ class Screen(SignalEvent):
                 'model': self.model_name,
                 'id': self.current_record.id if self.current_record else None,
                 'ids': [r.id for r in self.selected_records],
-                }, context=self.context, warning=False)
+                }, context=self.group._context.copy(), warning=False)
         else:
             if not self.modified():
                 self.switch_view(view_type='form')

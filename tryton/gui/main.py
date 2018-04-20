@@ -300,7 +300,7 @@ class Main(object):
                 Action.exec_keyword('tree_open', {
                         'model': model,
                         'id': record_id,
-                        }, context=self.menu_screen.context.copy())
+                        })
             else:
                 Window.create(model,
                     res_id=record_id,
@@ -958,7 +958,7 @@ class Main(object):
         return Action.exec_keyword('tree_open', {
                 'model': screen.model_name,
                 'id': record_id,
-                }, context=screen.context.copy(), warning=False)
+                }, warning=False)
 
     def sig_win_menu(self, prefs=None):
         from tryton.gui.window.view_form.screen import Screen

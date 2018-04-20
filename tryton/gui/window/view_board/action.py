@@ -100,7 +100,8 @@ class Action(SignalEvent):
                     'id': (self.screen.current_record.id
                         if self.screen.current_record else None),
                     'ids': [r.id for r in self.screen.selected_records],
-                    }, context=self.screen.context.copy(), warning=False)
+                    }, context=self.screen.group._context.copy(),
+                warning=False)
         else:
             def callback(result):
                 if result:
