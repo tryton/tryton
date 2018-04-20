@@ -55,9 +55,11 @@ class WinForm(NoModal, InfoBar):
 
         self._initial_value = None
         if view_type == 'form':
-            stock_id = gtk.STOCK_CANCEL
             if new:
                 stock_id = gtk.STOCK_DELETE
+            else:
+                stock_id = gtk.STOCK_CANCEL
+                self._initial_value = self.screen.current_record.get_eval()
             self.but_cancel = self.win.add_button(stock_id,
                 gtk.RESPONSE_CANCEL)
             self.but_cancel.set_always_show_image(True)
@@ -272,9 +274,6 @@ class WinForm(NoModal, InfoBar):
 
         self.screen.display()
         self.screen.current_view.set_cursor()
-
-        if not new:
-            self._initial_value = self.screen.current_record.get_eval()
 
     def on_keypress(self, widget, event):
         if (event.keyval == gtk.keysyms.F3) \
