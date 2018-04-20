@@ -86,9 +86,12 @@
 
             this._initial_value = null;
             if (view_type == 'form') {
-                var button_text = Sao.i18n.gettext('Cancel');
+                var button_text;
                 if (kwargs.new_) {
                     button_text = Sao.i18n.gettext('Delete');
+                } else {
+                    button_text = Sao.i18n.gettext('Cancel');
+                    this._initial_value = this.screen.current_record.get_eval();
                 }
 
                 dialog.footer.append(jQuery('<button/>', {
@@ -245,10 +248,6 @@
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
-
-            if (!kwargs.new_) {
-                this._initial_value = this.screen.current_record.get_eval();
-            }
         },
         add: function() {
             var domain = jQuery.extend([], this.domain);
