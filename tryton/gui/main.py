@@ -1270,7 +1270,7 @@ class Main(object):
             res_id = False
             mode = None
             try:
-                view_ids = json.loads(params.get('views', 'false'))
+                view_ids = json.loads(params.get('views', '[]'))
                 limit = json.loads(params.get('limit', 'null'))
                 name = json.loads(params.get('name', '""'))
                 search_value = json.loads(params.get('search_value', '{}'),
