@@ -1686,7 +1686,7 @@
             return true;
         },
         convert: function(value) {
-            if (!value) {
+            if (!value && (value !== 0)) {
                 return null;
             }
             value = Number(value);
@@ -1729,7 +1729,7 @@
 
     Sao.field.Numeric = Sao.class_(Sao.field.Float, {
         convert: function(value) {
-            if (!value) {
+            if (!value && (value !== 0)) {
                 return null;
             }
             value = new Sao.Decimal(value);
