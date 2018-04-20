@@ -450,6 +450,7 @@
             var idx = this._models.indexOf(model);
             if (idx < 0) {
                 this.load_models(false);
+                idx = this._models.indexOf(model);
             }
             var to_load = this._models.slice(
                 Math.max(0, idx - Math.floor(this.batchnum / 2)),
