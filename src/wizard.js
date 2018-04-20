@@ -259,7 +259,7 @@
         },
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this);
-            this.dialog.on('hidden.bs.modal', function(event) {
+            var destroy = function() {
                 this.dialog.remove();
                 var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
                 var is_menu = false;
@@ -299,8 +299,13 @@
                         });
                     }
                 }
-            }.bind(this));
-            this.dialog.modal('hide');
+            }.bind(this);
+            if ((this.dialog.data('bs.modal') || {}).isShown) {
+                this.dialog.on('hidden.bs.modal', destroy);
+                this.dialog.modal('hide');
+            } else {
+                destroy();
+            }
         },
         end: function() {
             return Sao.Wizard.Dialog._super.end.call(this).then(
