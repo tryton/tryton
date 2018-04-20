@@ -1361,7 +1361,12 @@ function eval_pyson(value){
             } else {
                 value = null;
             }
-            this.date.data('DateTimePicker').date(value);
+            this.date.off('dp.change');
+            try {
+                this.date.data('DateTimePicker').date(value);
+            } finally {
+                this.date.on('dp.change', this.focus_out.bind(this));
+            }
         },
         focus: function() {
             this.input.focus();
@@ -4033,7 +4038,13 @@ function eval_pyson(value){
             return value;
         },
         set_value: function(value) {
-            this.input.data('DateTimePicker').date(value);
+            this.input.off('dp.change');
+            try {
+                this.input.data('DateTimePicker').date(value);
+            } finally {
+                this.input.on('dp.change',
+                    this.parent_widget.focus_out.bind(this.parent_widget));
+            }
         }
     });
 
