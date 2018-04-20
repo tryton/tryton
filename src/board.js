@@ -280,7 +280,7 @@
                     model: this.screen.model_name,
                     id: this.screen.current_record.id,
                     ids: record_ids
-                }, jQuery.extend({}, this.context), false);
+                }, jQuery.extend({}, this.screen.group._context), false);
             } else {
                 win = new Sao.Window.Form(this.screen, function(result) {
                     if (result) {

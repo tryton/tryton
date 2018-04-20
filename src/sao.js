@@ -446,7 +446,7 @@ var Sao = {};
         return Sao.Action.exec_keyword('tree_open', {
             'model': screen.model_name,
             'id': screen.get_id(),
-        }, jQuery.extend({}, screen.context()), false);
+        }, null, false);
     };
 
     Sao.menu = function(preferences) {
@@ -670,7 +670,7 @@ var Sao = {};
                 Sao.Action.exec_keyword('tree_open', {
                     'model': item.model,
                     'id': item.record_id,
-                }, Sao.main_menu_screen.context());
+                });
             } else {
                 var params = {
                     'model': item.model,

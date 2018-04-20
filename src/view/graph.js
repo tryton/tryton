@@ -238,7 +238,7 @@
         },
         action: function(data, element) {
             var ids = this.ids[this._action_key(data)];
-            var ctx = jQuery.extend({}, this.view.screen.context());
+            var ctx = jQuery.extend({}, this.view.screen.group._context);
             delete ctx.active_ids;
             delete ctx.active_id;
             Sao.Action.exec_keyword('graph_open', {

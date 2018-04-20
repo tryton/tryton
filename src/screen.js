@@ -1149,7 +1149,7 @@
                     'model': this.model_name,
                     'id': this.get_id(),
                     'ids': [this.get_id()]
-                    }, jQuery.extend({}, this.context()), false);
+                    }, jQuery.extend({}, this.group._context), false);
             } else {
                 if (!this.modified()) {
                     this.switch_view('form');
