@@ -1,0 +1,38 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.statement.import:"
+msgid "No journal found for the bank account \"%(account)s\"."
+msgstr "هیچ روزنامه ای برای حساب بانکی \"٪s\" یافت نشد."
+
+msgctxt "error:account.statement.import:"
+msgid "The OFX file is not a statement."
+msgstr "پرونده OFX بیانیه ای نیست."
+
+msgctxt "error:account.statement.import:"
+msgid ""
+"The journal \"%(journal)s\" must have the currency \"%(ofx_currency)s\" "
+"instead of \"%(currency)s\"."
+msgstr "روزنامه: \"%s\" باید ارز: \"%s\" را داشته باشد بجای : \"%s\"."
+
+msgctxt ""
+"model:account.statement.origin.information,string:information_checknum"
+msgid "Check Number"
+msgstr "بررسی شماره"
+
+msgctxt "model:account.statement.origin.information,string:information_mcc"
+msgid "Merchant Category Code (MCC)"
+msgstr "کد دسته بندی تاجر (MCC)"
+
+msgctxt "model:account.statement.origin.information,string:information_sic"
+msgid "Standard Industry Code (SIC)"
+msgstr "کد استاندارد صنعت (SIC)"
+
+msgctxt "model:account.statement.origin.information,string:information_type"
+msgid "Type"
+msgstr "نوع"
+
+msgctxt "selection:account.statement.import.start,file_format:"
+msgid "OFX"
+msgstr "OFX"
