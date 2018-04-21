@@ -310,8 +310,8 @@ msgid "The employee who spends the time."
 msgstr "L'empleat que ha realitzat els treballs."
 
 msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude the work from future use."
-msgstr "Desmarca per excloure el treball d'us en el futur."
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
@@ -476,6 +476,10 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Afegeix"
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "error:timesheet.work:"
 msgid ""

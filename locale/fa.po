@@ -4,525 +4,473 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
-msgstr "A \"%(line)s\" sor időtartama pozitívnak kell lenni."
+msgstr "مدت زمان سطر : \"%s\" باید مثبت باشد."
 
 msgctxt "error:timesheet.work:"
 msgid ""
 "The company of the work \"%(work)s\" is different than the origin's company"
-msgstr ""
+msgstr "شرکت کار : \"%s\" با شرکت مبداء متفاوت است"
 
 msgctxt "error:timesheet.work:"
 msgid "The origin must be unique per company."
-msgstr ""
+msgstr "منشا باید در هر شرکتی منحصر به فرد باشد."
 
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
-msgstr "Időtartam"
+msgstr "مدت زمان"
 
 msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
-msgstr "Alkalmazott"
+msgstr "کارمند"
 
 msgctxt "field:timesheet.hours_employee,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:timesheet.hours_employee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
-msgstr "Módosítás dátuma"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "نوشته کاربر"
 
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "تاریخ پایان"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "تاریخ شروع"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
-msgstr "Időtartam"
+msgstr "مدت زمان"
 
 msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
-msgstr "Alkalmazott"
+msgstr "کارمند"
 
 msgctxt "field:timesheet.hours_employee_monthly,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
-msgstr "Hónap"
+msgstr "ماه"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
 msgid "Month"
-msgstr "Hónap"
+msgstr "ماه"
 
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
-msgstr "Módosítás dátuma"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "نوشته کاربر"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
-msgstr "Év"
+msgstr "سال"
 
 msgctxt "field:timesheet.hours_employee_weekly,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátum"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
-msgstr "Időtartam"
+msgstr "مدت زمان"
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
-msgstr "Alkalmazott"
+msgstr "کارمند"
 
 msgctxt "field:timesheet.hours_employee_weekly,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
-msgstr "Hét"
+msgstr "هفته"
 
-#, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
-msgstr "Hét"
+msgstr "هفته"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_date:"
 msgid "Write Date"
-msgstr "Módosítás dátuma"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "نوشته کاربر"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
-msgstr "Év"
+msgstr "سال"
 
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "شرکت"
 
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:timesheet.line,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
-msgstr "Dátum"
+msgstr "تاریخ"
 
 msgctxt "field:timesheet.line,description:"
 msgid "Description"
-msgstr "Leírás"
+msgstr "شرح"
 
 msgctxt "field:timesheet.line,duration:"
 msgid "Duration"
-msgstr "Időtartam"
+msgstr "مدت زمان"
 
 msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
-msgstr "Alkalmazott"
+msgstr "کارمند"
 
 msgctxt "field:timesheet.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:timesheet.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
-msgstr "Tevékenység"
+msgstr "کار"
 
 msgctxt "field:timesheet.line,write_date:"
 msgid "Write Date"
-msgstr "Módosítás dátuma"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:timesheet.line,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "نوشته کاربر"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
-msgstr "Dátum"
+msgstr "تاریخ"
 
 msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
-msgstr "Alkalmazott"
+msgstr "کارمند"
 
 msgctxt "field:timesheet.line.enter.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:timesheet.work,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr "فعال"
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "شرکت"
 
 msgctxt "field:timesheet.work,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr "Időtartam"
+msgstr "طول مدت جدول زمانی"
 
 msgctxt "field:timesheet.work,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
-msgstr "Név"
+msgstr "نام"
 
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "مبداء"
 
 msgctxt "field:timesheet.work,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr "Időkövetés vége"
+msgstr "پایان جدول زمانی"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr "Időpozíció"
+msgstr "سطرهای جدول زمانی"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr "Időkövetés kezdete"
+msgstr "شروع جدول زمانی"
 
-#, fuzzy
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr "Tevékenység"
+msgstr "کار"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
-msgstr "Módosítás dátuma"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr "Dátumtól"
+msgstr "از تاریخ"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
-msgstr "Dátumig"
+msgstr "تا تاریخ"
 
 msgctxt "help:timesheet.line,company:"
 msgid "The company on which the time is spent."
-msgstr ""
+msgstr "شرکتی که مدت زمان در آن صرف شده است."
 
 msgctxt "help:timesheet.line,date:"
 msgid "When the time is spent."
-msgstr ""
+msgstr "هنگامی که زمان صرف شد."
 
 msgctxt "help:timesheet.line,description:"
 msgid "Additional description of the work done."
-msgstr ""
+msgstr "توضیحات اضافی کارانجام شده."
 
 msgctxt "help:timesheet.line,employee:"
 msgid "The employee who spends the time."
-msgstr ""
+msgstr "کارمندی که زمان را صرف می کند."
 
 msgctxt "help:timesheet.line,work:"
 msgid "The work on which the time is spent."
-msgstr ""
+msgstr "کاری که زمان صرف آن شده است."
 
 msgctxt "help:timesheet.line.enter.start,date:"
 msgid "When the time is spent."
-msgstr ""
+msgstr "هنگامی که زمان صرف شد."
 
 msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
-msgstr ""
+msgstr "کارمندی که زمان را صرف می کند."
 
 msgctxt "help:timesheet.work,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
-msgstr ""
+msgstr "کار متعلق به شرکت را بسازید."
 
-#, fuzzy
 msgctxt "help:timesheet.work,duration:"
 msgid "Total time spent on this work."
-msgstr "Az össz idő, ami erre a feladatra lett fordítva"
+msgstr "کل زمان صرف شده در این کار."
 
 msgctxt "help:timesheet.work,name:"
 msgid "The main identifier of the work."
-msgstr ""
+msgstr "شناسه اصلی کار."
 
 msgctxt "help:timesheet.work,origin:"
 msgid "Use to relate the time spent to other records."
-msgstr ""
+msgstr "استفاده از مرتبط کردن زمان صرف شده برای پرونده های دیگر."
 
 msgctxt "help:timesheet.work,timesheet_end_date:"
 msgid "Restrict adding lines after the date."
-msgstr ""
+msgstr "محدودیت افزودن سطرهای بعد از تاریخ."
 
 msgctxt "help:timesheet.work,timesheet_lines:"
 msgid "Spend time on this work."
-msgstr ""
+msgstr "زمان صرف شده روی این کار."
 
 msgctxt "help:timesheet.work,timesheet_start_date:"
 msgid "Restrict adding lines before the date."
-msgstr ""
+msgstr "محدودیت افزودن سطرهای قبل از تاریخ."
 
 msgctxt "help:timesheet.work.context,from_date:"
 msgid "Do not take into account lines before the date."
-msgstr ""
+msgstr "سطرهای قبل از تاریخ را حساب نکنید."
 
 msgctxt "help:timesheet.work.context,to_date:"
 msgid "Do not take into account lines after the date."
-msgstr ""
+msgstr "سطرهای بعد از تاریخ را حساب نکنید."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
-msgstr "Hours per Employee"
+msgstr "ساعات در هر کارمند"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Hours per Employee per Month"
+msgstr "ساعات در هر کارمند در هر ماه"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Hours per Employee per Week"
+msgstr "ساعات در هر کارمند در هر هفته"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr "جدول زمانی را وارد کنید"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "سطرهای جدول زمانی"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "سطرهای جدول زمانی"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "کارها"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "Tevékenység"
+msgstr "کارها"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "پیکربندی"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr "Óra per alkalmazott"
+msgstr "ساعات در هر کارمند"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr "Hours per Employee per Month"
+msgstr "ساعات در هر کارمند در هر ماه"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr "Hours per Employee per Week"
+msgstr "ساعات در هر کارمند در هر هفته"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr "جدول زمانی را وارد کنید"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "سطرهای جدول زمانی"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "گزارش گیری"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Timesheet"
+msgstr "جدول زمانی"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Works"
+msgstr "کارها"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Tevékenység"
+msgstr "کارها"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Timesheet Administration"
+msgstr "مدیریت جدول زمانی"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
-msgstr "Óra per alkalmazott"
+msgstr "ساعات در هر کارمند"
 
 msgctxt "model:timesheet.hours_employee.context,name:"
 msgid "Hours per Employee Context"
-msgstr ""
+msgstr "مفاد ساعات در هر کارمند"
 
 msgctxt "model:timesheet.hours_employee_monthly,name:"
 msgid "Hours per Employee per Month"
-msgstr "Óra per alkalmazott per hónap"
+msgstr "ساعات در هر کارمند در هر ماه"
 
 msgctxt "model:timesheet.hours_employee_weekly,name:"
 msgid "Hours per Employee per Week"
-msgstr "Óra per alkalmazott per hét"
+msgstr "ساعات در هر کارمند در هر هفته"
 
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
-msgstr "Időpozíció"
+msgstr "سطر جدول زمانی"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"
-msgstr "Sor hozzáadás"
+msgstr "واردکردن سطرها"
 
 msgctxt "model:timesheet.work,name:"
 msgid "Work"
-msgstr "Tevékenység"
+msgstr "کار"
 
 msgctxt "model:timesheet.work.context,name:"
 msgid "Work Context"
-msgstr ""
+msgstr "مفاد کار"
 
-#, fuzzy
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
-msgstr "Időtartam"
+msgstr "جدول زمانی"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"
-msgstr "Időtartam"
+msgstr "مدت زمان"
 
 msgctxt "view:timesheet.line:"
 msgid "Duration"
-msgstr "Időtartam"
+msgstr "مدت زمان"
 
 msgctxt "wizard_button:timesheet.line.enter,start,end:"
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "انصراف"
 
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
-msgstr "Bevitel"
-
-msgctxt "view:timesheet.hours_employee_monthly:"
-msgid "Hours per Employee per Month"
-msgstr "Óra per alkalmazott per hónap"
-
-msgctxt "view:timesheet.hours_employee_weekly:"
-msgid "Hours per Employee per Week"
-msgstr "Óra per alkalmazott per hét"
-
-msgctxt "view:timesheet.line.enter.start:"
-msgid "Enter Timesheet"
-msgstr "Időtartam"
-
-msgctxt "view:timesheet.work:"
-msgid "Hours per Work"
-msgstr "Óra per tevékenység"
-
-msgctxt "view:timesheet.work:"
-msgid "Work"
-msgstr "Tevékenység"
-
-msgctxt "view:timesheet.work:"
-msgid "Works"
-msgstr "Tevékenység"
+msgstr "وارد کردن"

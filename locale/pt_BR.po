@@ -307,8 +307,9 @@ msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
 msgstr "O empregado que gasta o tempo."
 
+#, fuzzy
 msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude the work from future use."
+msgid "Uncheck to exclude from future use."
 msgstr "Desmarque para não usar o trabalho futuramente."
 
 msgctxt "help:timesheet.work,company:"
@@ -347,81 +348,100 @@ msgctxt "help:timesheet.work.context,to_date:"
 msgid "Do not take into account lines after the date."
 msgstr "Não considere lançamentos após a data."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
-msgstr "Horas por Empregado"
+msgstr "Hours per Employee"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Horas por Empregado por Mês"
+msgstr "Hours per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Horas por empregado por semana"
+msgstr "Hours per Employee per Week"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Digite Quadro de Horários"
+msgstr "Enter Timesheet"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr "Linhas do Horário de Trabalho"
+msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Linhas do Horário de Trabalho"
+msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Trabalhos"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "Trabalhos"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuração"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr "Horas por Empregado"
+msgstr "Hours per Employee"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr "Horas por Empregado por Mês"
+msgstr "Hours per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr "Horas por empregado por semana"
+msgstr "Hours per Employee per Week"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Digite Quadro de Horários"
+msgstr "Enter Timesheet"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Linhas do Horário de Trabalho"
+msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Relatório"
+msgstr "Reporting"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Quadro de tempo"
+msgstr "Timesheet"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Trabalhos"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Trabalhos"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Administração dos Horários de Trabalho"
+msgstr "Timesheet Administration"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
@@ -474,6 +494,10 @@ msgstr "Cancelar"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Inserir"
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Desmarque para não usar o trabalho futuramente."
 
 msgctxt "error:timesheet.work:"
 msgid ""

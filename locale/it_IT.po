@@ -309,7 +309,7 @@ msgid "The employee who spends the time."
 msgstr ""
 
 msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude the work from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:timesheet.work,company:"
@@ -349,81 +349,99 @@ msgctxt "help:timesheet.work.context,to_date:"
 msgid "Do not take into account lines after the date."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
-msgstr "Ore per dipendente"
+msgstr "Hours per Employee"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Ore per dipendente per mese"
+msgstr "Hours per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Ore per dipendente per settimana"
+msgstr "Hours per Employee per Week"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Inserire timesheet"
+msgstr "Enter Timesheet"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr "righe timesheet"
+msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "righe timesheet"
+msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "lavori"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
-msgstr "lavori"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configurazione"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
-msgstr "Ore per impiegato"
+msgstr "Hours per Employee"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr "Ore per impiegato per mese"
+msgstr "Hours per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr "Ore per impiegato per settimana"
+msgstr "Hours per Employee per Week"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Inserisci timesheet"
+msgstr "Enter Timesheet"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Righe timesheet"
+msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Rapporti"
+msgstr "Reporting"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
 msgstr "Timesheet"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Lavori"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
-msgstr "Lavori"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Amministrazione timesheet"
+msgstr "Timesheet Administration"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"

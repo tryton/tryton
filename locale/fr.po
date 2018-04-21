@@ -309,8 +309,8 @@ msgid "The employee who spends the time."
 msgstr "L'employé qui a passé le temps."
 
 msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude the work from future use."
-msgstr "Décocher pour exclure le travail d'une utilisation future."
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
@@ -354,15 +354,15 @@ msgstr "Heures par employé"
 
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr "Nombre d'heures par employé par mois"
+msgstr "Heures par employé par mois"
 
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr "Nombre d'heures par employé par semaine"
+msgstr "Heures par employé par semaine"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Entrer feuille de présence"
+msgstr "Entrer une feuille de présence"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
@@ -398,7 +398,7 @@ msgstr "Heures par employé par semaine"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Entrer feuille de présence"
+msgstr "Entrer un feuille de présence"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
@@ -476,6 +476,10 @@ msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Entrer"
 
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Décocher pour exclure le travail d'une utilisation future."
+
 msgctxt "error:timesheet.work:"
 msgid ""
 "The company of the work \"%(work)s\" is different then the origin's company"
@@ -496,7 +500,7 @@ msgstr "Nombre d'heures par employé par semaine"
 
 msgctxt "view:timesheet.line.enter.start:"
 msgid "Enter Timesheet"
-msgstr "Entrer feuille de présence"
+msgstr "Entrer une feuille de présence"
 
 msgctxt "view:timesheet.work:"
 msgid "Hours per Work"

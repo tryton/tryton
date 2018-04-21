@@ -39,7 +39,7 @@ msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
@@ -91,7 +91,7 @@ msgstr "Monat"
 
 msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
@@ -127,7 +127,7 @@ msgstr "ID"
 
 msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
@@ -183,7 +183,7 @@ msgstr "ID"
 
 msgctxt "field:timesheet.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
@@ -243,7 +243,7 @@ msgstr "Herkunft"
 
 msgctxt "field:timesheet.work,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
@@ -310,8 +310,8 @@ msgid "The employee who spends the time."
 msgstr "Der Mitarbeiter der Zeit aufwendet."
 
 msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude the work from future use."
-msgstr "Deaktivieren um die Aufgabe für zukünftige Nutzung zu sperren."
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
@@ -367,11 +367,11 @@ msgstr "Zur Zeiterfassung"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
+msgstr "Zeiterfassung Positionen"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
+msgstr "Zeiterfassung Positionen"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -403,11 +403,11 @@ msgstr "Zur Zeiterfassung"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
+msgstr "Zeiterfassung Positionen"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Auswertungen"
+msgstr "Berichte"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
@@ -476,6 +476,10 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Zur Eingabe"
+
+msgctxt "help:timesheet.work,active:"
+msgid "Uncheck to exclude the work from future use."
+msgstr "Deaktivieren um die Aufgabe für zukünftige Nutzung zu sperren."
 
 msgctxt "error:timesheet.work:"
 msgid ""

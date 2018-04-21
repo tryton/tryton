@@ -312,7 +312,7 @@ msgid "The employee who spends the time."
 msgstr ""
 
 msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude the work from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:timesheet.work,company:"
