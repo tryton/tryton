@@ -24,11 +24,11 @@ msgstr "Pertes et surplus"
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Créer des inventaires"
+msgstr "Créer les inventaires"
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr "Créer des inventaires"
+msgstr "Créer les inventaires"
 
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"

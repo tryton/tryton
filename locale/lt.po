@@ -24,15 +24,16 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Create Inventories"
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Create Inventories"
 
+#, fuzzy
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
-msgstr ""
+msgstr "Create Inventories"
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"

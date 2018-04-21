@@ -22,13 +22,15 @@ msgctxt "field:stock.inventory.create.start,lost_found:"
 msgid "Lost and Found"
 msgstr "Загубени и намерени"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Създаване на инвентаризации"
+msgstr "Create Inventories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr "Създаване на инвентаризации"
+msgstr "Create Inventories"
 
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
