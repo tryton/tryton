@@ -14,6 +14,14 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr "Le paiement « %s » doit être en brouillon avant suppression."
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending payments "
+"for the company \"%(company)s\"."
+msgstr ""
+"Le tiers « %(party)s » ne peut pas être effacé car il a des paiements en "
+"attentes pour la société « %(company)s »."
+
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Séquence de groupe de paiements"
@@ -392,26 +400,54 @@ msgstr "Tous"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
 msgid "Approved"
-msgstr "Approuvé"
+msgstr "Approuvés"
 
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
 msgid "Failed"
-msgstr "Échoué"
+msgstr "Échoués"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
 msgid "Processing"
-msgstr "Traitement"
+msgstr "En cours"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
-msgstr "Réussi"
+msgstr "Réussis"
+
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay Lines"
+msgstr "Pay Lines"
+
+msgctxt "model:ir.model.button,string:move_line_payment_block_button"
+msgid "Block"
+msgstr "Block"
+
+msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
+msgid "Unblock"
+msgstr "Unblock"
+
+msgctxt "model:ir.model.button,string:payment_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:payment_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:payment_fail_button"
+msgid "Fail"
+msgstr "Fail"
+
+msgctxt "model:ir.model.button,string:payment_succeed_button"
+msgid "Succeed"
+msgstr "Succeed"
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
@@ -517,45 +553,17 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Paiement"
 
-msgctxt "view:account.move.line:"
-msgid "Block"
-msgstr "Bloquer"
-
-msgctxt "view:account.move.line:"
-msgid "Pay Lines"
-msgstr "Payer les lignes"
-
-msgctxt "view:account.move.line:"
-msgid "Unblock"
-msgstr "Débloquer"
-
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
 msgstr "Traiter les paiements ?"
-
-msgctxt "view:account.payment:"
-msgid "Approve"
-msgstr "Approuver"
 
 msgctxt "view:account.payment:"
 msgid "Description"
 msgstr "Description"
 
 msgctxt "view:account.payment:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:account.payment:"
-msgid "Fail"
-msgstr "Échouer"
-
-msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Autre information"
-
-msgctxt "view:account.payment:"
-msgid "Succeed"
-msgstr "Réussir"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
@@ -572,3 +580,31 @@ msgstr "Annuler"
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"
 msgstr "Traiter"
+
+msgctxt "view:account.move.line:"
+msgid "Block"
+msgstr "Bloquer"
+
+msgctxt "view:account.move.line:"
+msgid "Pay Lines"
+msgstr "Payer les lignes"
+
+msgctxt "view:account.move.line:"
+msgid "Unblock"
+msgstr "Débloquer"
+
+msgctxt "view:account.payment:"
+msgid "Approve"
+msgstr "Approuver"
+
+msgctxt "view:account.payment:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:account.payment:"
+msgid "Fail"
+msgstr "Échouer"
+
+msgctxt "view:account.payment:"
+msgid "Succeed"
+msgstr "Réussir"

@@ -14,6 +14,12 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr ""
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending payments "
+"for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr ""
@@ -420,6 +426,34 @@ msgctxt ""
 msgid "Succeeded"
 msgstr "Succeeded"
 
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay Lines"
+msgstr "Pay Lines"
+
+msgctxt "model:ir.model.button,string:move_line_payment_block_button"
+msgid "Block"
+msgstr "Block"
+
+msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
+msgid "Unblock"
+msgstr "Unblock"
+
+msgctxt "model:ir.model.button,string:payment_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:payment_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:payment_fail_button"
+msgid "Fail"
+msgstr "Fail"
+
+msgctxt "model:ir.model.button,string:payment_succeed_button"
+msgid "Succeed"
+msgstr "Succeed"
+
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
 msgstr "Default Account Payment Group"
@@ -536,50 +570,18 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Payment"
 
-msgctxt "view:account.move.line:"
-msgid "Block"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.move.line:"
-msgid "Pay Lines"
-msgstr "Pay Lines"
-
-msgctxt "view:account.move.line:"
-msgid "Unblock"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
 msgstr "Process Payments"
 
-#, fuzzy
-msgctxt "view:account.payment:"
-msgid "Approve"
-msgstr "Approved"
-
 msgctxt "view:account.payment:"
 msgid "Description"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.payment:"
-msgid "Draft"
-msgstr "Draft"
-
-msgctxt "view:account.payment:"
-msgid "Fail"
 msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:account.payment:"
-msgid "Succeed"
-msgstr "Succeeded"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
@@ -596,3 +598,23 @@ msgstr ""
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.move.line:"
+msgid "Pay Lines"
+msgstr "Pay Lines"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Approve"
+msgstr "Approved"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Succeed"
+msgstr "Succeeded"

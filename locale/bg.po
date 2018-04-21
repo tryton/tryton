@@ -14,6 +14,12 @@ msgctxt "error:account.payment:"
 msgid "Payment \"%s\" must be in draft before deletion."
 msgstr ""
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending payments "
+"for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr ""
@@ -379,26 +385,30 @@ msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
-msgstr ""
+msgstr "Pay Lines"
 
 #, fuzzy
 msgctxt "model:account.payment,name:"
 msgid "Payment"
 msgstr "Плащане"
 
+#, fuzzy
 msgctxt "model:account.payment.group,name:"
 msgid "Payment Group"
-msgstr ""
+msgstr "Payment Groups"
 
+#, fuzzy
 msgctxt "model:account.payment.journal,name:"
 msgid "Payment Journal"
-msgstr ""
+msgstr "Payment Journals"
 
+#, fuzzy
 msgctxt "model:account.payment.process.start,name:"
 msgid "Process Payment"
-msgstr ""
+msgstr "Process Payments"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form"
@@ -407,7 +417,7 @@ msgstr "Редове за плащане"
 
 msgctxt "model:ir.action,name:act_pay_line"
 msgid "Pay Lines"
-msgstr ""
+msgstr "Pay Lines"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_payment_form"
@@ -426,15 +436,15 @@ msgstr "Плащане"
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
-msgstr ""
+msgstr "Payment Groups"
 
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Payment Journals"
-msgstr ""
+msgstr "Payment Journals"
 
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
-msgstr ""
+msgstr "Process Payments"
 
 #, fuzzy
 msgctxt ""
@@ -450,12 +460,13 @@ msgstr "За получаване"
 
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
 msgid "Approved"
-msgstr ""
+msgstr "Approved"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
@@ -465,7 +476,7 @@ msgstr "Проект"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
 msgid "Failed"
-msgstr ""
+msgstr "Failed"
 
 #, fuzzy
 msgctxt ""
@@ -473,18 +484,47 @@ msgctxt ""
 msgid "Processing"
 msgstr "Обработване"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
-msgstr ""
+msgstr "Succeeded"
+
+msgctxt "model:ir.model.button,string:move_line_pay_button"
+msgid "Pay Lines"
+msgstr "Pay Lines"
+
+msgctxt "model:ir.model.button,string:move_line_payment_block_button"
+msgid "Block"
+msgstr "Block"
+
+msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
+msgid "Unblock"
+msgstr "Unblock"
+
+msgctxt "model:ir.model.button,string:payment_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:payment_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:payment_fail_button"
+msgid "Fail"
+msgstr "Fail"
+
+msgctxt "model:ir.model.button,string:payment_succeed_button"
+msgid "Succeed"
+msgstr "Succeed"
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
-msgstr ""
+msgstr "Default Account Payment Group"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
-msgstr ""
+msgstr "Account Payment Group"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
@@ -503,11 +543,11 @@ msgstr "Плащане"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
-msgstr ""
+msgstr "Payment Groups"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
-msgstr ""
+msgstr "Payment Journals"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"
@@ -525,7 +565,7 @@ msgstr "Плащане"
 
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
-msgstr ""
+msgstr "Payment Approval"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid ""
@@ -551,27 +591,30 @@ msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
 msgstr "За получаване"
 
+#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Approved"
-msgstr ""
+msgstr "Approve"
 
 #, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Draft"
 msgstr "Проект"
 
+#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Failed"
-msgstr ""
+msgstr "Failed"
 
 #, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
 msgstr "Обработване"
 
+#, fuzzy
 msgctxt "selection:account.payment,state:"
 msgid "Succeeded"
-msgstr ""
+msgstr "Succeed"
 
 #, fuzzy
 msgctxt "selection:account.payment.group,kind:"
@@ -597,25 +640,10 @@ msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Плащане"
 
-msgctxt "view:account.move.line:"
-msgid "Block"
-msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Pay Lines"
-msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Unblock"
-msgstr ""
-
+#, fuzzy
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
-msgstr ""
-
-msgctxt "view:account.payment:"
-msgid "Approve"
-msgstr ""
+msgstr "Process Payments"
 
 #, fuzzy
 msgctxt "view:account.payment:"
@@ -624,21 +652,8 @@ msgstr "Описание"
 
 #, fuzzy
 msgctxt "view:account.payment:"
-msgid "Draft"
-msgstr "Проект"
-
-msgctxt "view:account.payment:"
-msgid "Fail"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.payment:"
 msgid "Other Info"
 msgstr "Друга информация"
-
-msgctxt "view:account.payment:"
-msgid "Succeed"
-msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
@@ -659,3 +674,8 @@ msgstr "Отказване"
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"
 msgstr "Обработване"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Draft"
+msgstr "Проект"
