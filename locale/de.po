@@ -15,6 +15,14 @@ msgid "Asset can be used only once on invoice line!"
 msgstr ""
 "Eine Anlage kann nur mit einer einzigen Rechnungsposition verknüpft sein!"
 
+msgctxt "error:account.period:"
+msgid ""
+"Some asset lines \"%(names)s\" are still running for this period "
+"\"%(period)s\"."
+msgstr ""
+"Die Abschreibungen \"%(names)s\"  für die Buchungszeiträume \"%(period)s\" "
+"laufen noch."
+
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
 msgstr "Fehlendes Anlagenkonto für Artikel \"%s\"."
@@ -89,7 +97,7 @@ msgstr "Menge"
 
 msgctxt "field:account.asset,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -153,7 +161,7 @@ msgstr "Buchungssatz"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
@@ -217,7 +225,7 @@ msgstr "Buchungssatz"
 
 msgctxt "field:account.asset.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
@@ -309,7 +317,7 @@ msgstr "ID"
 
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.configuration.asset_sequence,write_date:"
 msgid "Write Date"
@@ -441,7 +449,7 @@ msgstr "Anlage"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Inventar"
+msgstr "Anlagen"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
@@ -449,7 +457,7 @@ msgstr "Abschreibungstabelle"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Erstellung Anlagen Buchungssätze"
+msgstr "Buchungssätze für Anlagen erstellen"
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
@@ -465,7 +473,7 @@ msgstr "Alle"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Geschlossen"
+msgstr "Abgeschlossen"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
@@ -474,6 +482,30 @@ msgstr "Entwurf"
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "In Ausführung"
+
+msgctxt "model:ir.model.button,confirm:asset_close_button"
+msgid "Are you sure to close the asset?"
+msgstr "Are you sure to close the asset?"
+
+msgctxt "model:ir.model.button,string:asset_clear_lines_button"
+msgid "Clear Lines"
+msgstr "Clear Lines"
+
+msgctxt "model:ir.model.button,string:asset_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:asset_create_lines_button"
+msgid "Create Lines"
+msgstr "Create Lines"
+
+msgctxt "model:ir.model.button,string:asset_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:asset_update_button"
+msgid "Update Asset"
+msgstr "Update Asset"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -485,7 +517,7 @@ msgstr "Anlage"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Anlagenverwaltung"
+msgstr "Anlagen"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
@@ -497,7 +529,7 @@ msgstr "Abschreibungstabelle drucken"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Buchungssätze für Anlagen erstellen"
+msgstr "Abschreibebuchungen erstellen"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -600,36 +632,12 @@ msgid "Create Assets Moves up to"
 msgstr "Erstellung Anlagen Buchungssätze bis"
 
 msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "Anlage wirklich schließen?"
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr "Zeilen löschen"
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Schließen"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr "Zeilen erstellen"
-
-msgctxt "view:account.asset:"
 msgid "Lines"
 msgstr "Zeilen"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
 msgstr "Sonstiges"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "Ausführen"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "Anlage aktualisieren"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
@@ -674,3 +682,27 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "OK"
+
+msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Anlage wirklich schließen?"
+
+msgctxt "view:account.asset:"
+msgid "Clear Lines"
+msgstr "Zeilen löschen"
+
+msgctxt "view:account.asset:"
+msgid "Close"
+msgstr "Schließen"
+
+msgctxt "view:account.asset:"
+msgid "Create Lines"
+msgstr "Zeilen erstellen"
+
+msgctxt "view:account.asset:"
+msgid "Run"
+msgstr "Ausführen"
+
+msgctxt "view:account.asset:"
+msgid "Update Asset"
+msgstr "Anlage aktualisieren"

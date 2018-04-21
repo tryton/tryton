@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "L'immobilizzazione \"%s\" per essere eliminata dev'essere in stato draft."
+msgstr "L'immobilizzazione \"%s\" per essere eliminata dev'essere in bozza."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset."
@@ -15,6 +15,12 @@ msgstr ""
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr "Un immobilizzazione si può usare solo una volta in riga fattura!"
+
+msgctxt "error:account.period:"
+msgid ""
+"Some asset lines \"%(names)s\" are still running for this period "
+"\"%(period)s\"."
+msgstr ""
 
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
@@ -90,7 +96,7 @@ msgstr "Quantita"
 
 msgctxt "field:account.asset,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome scheda"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -154,7 +160,7 @@ msgstr "Movimento"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome record"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
@@ -218,7 +224,7 @@ msgstr "Nome"
 
 msgctxt "field:account.asset.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome record"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
@@ -288,44 +294,37 @@ msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Sequenza riferimento immobilizzazione"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Sequenza riferimento immobilizzazione"
+msgstr "riferimento numero immobilizzazione"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,create_date:"
 msgid "Create Date"
 msgstr "Crea data"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,create_uid:"
 msgid "Create User"
-msgstr "Crea Utente"
+msgstr "creato da "
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome Record"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,write_date:"
 msgid "Write Date"
-msgstr "Data scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_sequence,write_uid:"
 msgid "Write User"
-msgstr "Utente scrittura"
+msgstr "Modificato da"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
@@ -343,12 +342,10 @@ msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Conto ammortamento"
 
-#, fuzzy
 msgctxt "field:product.category.account,account_asset:"
 msgid "Account Asset"
 msgstr "Conto immobilizzazione"
 
-#, fuzzy
 msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Conto ammortamento"
@@ -385,12 +382,10 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durata ammortamento"
 
-#, fuzzy
 msgctxt "field:product.template.account,account_asset:"
 msgid "Account Asset"
 msgstr "Conto immobilizzazione"
 
-#, fuzzy
 msgctxt "field:product.template.account,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Conto ammortamento"
@@ -443,73 +438,114 @@ msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Immobilizzazione"
+msgstr "Asset"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr "Immobilizzazione"
+msgstr "Asset"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Immobilizzazioni"
+msgstr "Assets"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Scheda immobilizzazione"
+msgstr "Depreciation Table"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Creazione movimenti immobilizzazione"
+msgstr "Create Assets Moves"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Stampa scheda immobilizzazione"
+msgstr "Print Depreciation Table"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Aggiornamento immobilizzazione"
+msgstr "Update Asset"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "Tutte"
+msgstr "All"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Chiuso"
+msgstr "Closed"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Bozza"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr "In funzione"
+msgstr "Running"
 
+msgctxt "model:ir.model.button,confirm:asset_close_button"
+msgid "Are you sure to close the asset?"
+msgstr "Are you sure to close the asset?"
+
+msgctxt "model:ir.model.button,string:asset_clear_lines_button"
+msgid "Clear Lines"
+msgstr "Clear Lines"
+
+msgctxt "model:ir.model.button,string:asset_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:asset_create_lines_button"
+msgid "Create Lines"
+msgstr "Create Lines"
+
+msgctxt "model:ir.model.button,string:asset_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:asset_update_button"
+msgid "Update Asset"
+msgstr "Update Asset"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Immobilizzazione"
+msgstr "Asset"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Immobilizzazione"
+msgstr "Asset"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Immobilizzazioni"
+msgstr "Assets"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Immobilizzazioni"
+msgstr "Assets"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Stampa scheda immobilizzazione"
+msgstr "Print Depreciation Table"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Crea movimenti immobilizzazione"
+msgstr "Create Assets Moves"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -612,36 +648,12 @@ msgid "Create Assets Moves up to"
 msgstr "Crea movimenti immobilizzazione fino a "
 
 msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "Sei sicuro di chiudere l'immobilizzazione"
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr "Cancella righe"
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Chiusura"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr "Crea righe"
-
-msgctxt "view:account.asset:"
 msgid "Lines"
 msgstr "Righe"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
 msgstr "Altre info"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "Calcolo"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "Aggiornamento immobilizzazione"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
@@ -686,3 +698,27 @@ msgstr "Annulla"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "OK"
+
+msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Sei sicuro di chiudere l'immobilizzazione"
+
+msgctxt "view:account.asset:"
+msgid "Clear Lines"
+msgstr "Cancella righe"
+
+msgctxt "view:account.asset:"
+msgid "Close"
+msgstr "Chiusura"
+
+msgctxt "view:account.asset:"
+msgid "Create Lines"
+msgstr "Crea righe"
+
+msgctxt "view:account.asset:"
+msgid "Run"
+msgstr "Calcolo"
+
+msgctxt "view:account.asset:"
+msgid "Update Asset"
+msgstr "Aggiornamento immobilizzazione"

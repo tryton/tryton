@@ -14,6 +14,12 @@ msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr ""
 
+msgctxt "error:account.period:"
+msgid ""
+"Some asset lines \"%(names)s\" are still running for this period "
+"\"%(period)s\"."
+msgstr ""
+
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
 msgstr ""
@@ -498,23 +504,23 @@ msgstr "Activa"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr ""
+msgstr "Depreciation Table"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr ""
+msgstr "Create Assets Moves"
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr ""
+msgstr "Print Depreciation Table"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr ""
+msgstr "Update Asset"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
@@ -528,7 +534,31 @@ msgstr "Concept"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr ""
+msgstr "Running"
+
+msgctxt "model:ir.model.button,confirm:asset_close_button"
+msgid "Are you sure to close the asset?"
+msgstr "Are you sure to close the asset?"
+
+msgctxt "model:ir.model.button,string:asset_clear_lines_button"
+msgid "Clear Lines"
+msgstr "Clear Lines"
+
+msgctxt "model:ir.model.button,string:asset_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:asset_create_lines_button"
+msgid "Create Lines"
+msgstr "Create Lines"
+
+msgctxt "model:ir.model.button,string:asset_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:asset_update_button"
+msgid "Update Asset"
+msgstr "Update Asset"
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_asset"
@@ -552,11 +582,11 @@ msgstr "Activa"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr ""
+msgstr "Print Depreciation Table"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr ""
+msgstr "Create Assets Moves"
 
 #, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
@@ -663,30 +693,15 @@ msgctxt "selection:account.asset,state:"
 msgid "Draft"
 msgstr "Concept"
 
+#, fuzzy
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr ""
-
-msgctxt "view:account.asset.create_moves.start:"
-msgid "Create Assets Moves up to"
-msgstr ""
-
-msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr ""
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr ""
+msgstr "Running"
 
 #, fuzzy
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Sluiten"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr ""
+msgctxt "view:account.asset.create_moves.start:"
+msgid "Create Assets Moves up to"
+msgstr "Create Assets Moves"
 
 #, fuzzy
 msgctxt "view:account.asset:"
@@ -697,14 +712,6 @@ msgstr "Transacties"
 msgctxt "view:account.asset:"
 msgid "Other Info"
 msgstr "Overige informatie"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr ""
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:account.configuration:"
@@ -759,3 +766,8 @@ msgstr "Annuleren"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "Oké"
+
+#, fuzzy
+msgctxt "view:account.asset:"
+msgid "Close"
+msgstr "Sluiten"

@@ -16,6 +16,14 @@ msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr "Un actif ne peut être utilisé qu'une seule fois par ligne !"
 
+msgctxt "error:account.period:"
+msgid ""
+"Some asset lines \"%(names)s\" are still running for this period "
+"\"%(period)s\"."
+msgstr ""
+"Certaines lignes d'actif « %(names)s » sont toujours en cours pour la "
+"période « %(period)s »."
+
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
 msgstr "Il manque un « Compte d'actif » sur le produit « %s »."
@@ -450,7 +458,7 @@ msgstr "Tableau d'amortissement"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actifs"
+msgstr "Créer les mouvements des actifs"
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
@@ -458,7 +466,7 @@ msgstr "Imprimer le tableau d'amortissement"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Mise à jour des actifs"
+msgstr "Mise à jour d'actifs"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
@@ -466,15 +474,39 @@ msgstr "Tous"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Clôturé"
+msgstr "Clôturés"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "En cours"
+
+msgctxt "model:ir.model.button,confirm:asset_close_button"
+msgid "Are you sure to close the asset?"
+msgstr "Are you sure to close the asset?"
+
+msgctxt "model:ir.model.button,string:asset_clear_lines_button"
+msgid "Clear Lines"
+msgstr "Clear Lines"
+
+msgctxt "model:ir.model.button,string:asset_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:asset_create_lines_button"
+msgid "Create Lines"
+msgstr "Create Lines"
+
+msgctxt "model:ir.model.button,string:asset_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:asset_update_button"
+msgid "Update Asset"
+msgstr "Update Asset"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -498,7 +530,7 @@ msgstr "Imprimer le tableau d'amortissement"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Créer les mouvements d'actifs"
+msgstr "Créer les mouvements des actifs"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -601,36 +633,12 @@ msgid "Create Assets Moves up to"
 msgstr "Créer les mouvements d'actifs jusqu'a"
 
 msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "Êtes-vous sûr de clôturer l'actif ?"
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr "Nettoyer les lignes"
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Clôturer"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr "Créer les lignes"
-
-msgctxt "view:account.asset:"
 msgid "Lines"
 msgstr "Lignes"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
 msgstr "Autre information"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "Lancer"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "Mise à jour des actifs"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
@@ -675,3 +683,27 @@ msgstr "Annuler"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "OK"
+
+msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Êtes-vous sûr de clôturer l'actif ?"
+
+msgctxt "view:account.asset:"
+msgid "Clear Lines"
+msgstr "Nettoyer les lignes"
+
+msgctxt "view:account.asset:"
+msgid "Close"
+msgstr "Clôturer"
+
+msgctxt "view:account.asset:"
+msgid "Create Lines"
+msgstr "Créer les lignes"
+
+msgctxt "view:account.asset:"
+msgid "Run"
+msgstr "Lancer"
+
+msgctxt "view:account.asset:"
+msgid "Update Asset"
+msgstr "Mise à jour des actifs"

@@ -15,6 +15,14 @@ msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr "L'actiu només es pot utilitzar un cop a la línia de factura."
 
+msgctxt "error:account.period:"
+msgid ""
+"Some asset lines \"%(names)s\" are still running for this period "
+"\"%(period)s\"."
+msgstr ""
+"Les línies d'actiu \"%(names)s\" encara estan en execució per al període "
+"\"%(period)s\"."
+
 msgctxt "error:purchase.line:"
 msgid "It misses an \"Account Asset\" on product \"%s\"."
 msgstr "Falta un \"Compte d'actiu\" en el producte \"%s\"."
@@ -437,7 +445,7 @@ msgstr "Actiu"
 
 msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
-msgstr "Actiu"
+msgstr "Actius"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
@@ -457,7 +465,7 @@ msgstr "Imprimeix taula d'amortització"
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Actualitza actius"
+msgstr "Actualitza l'actiu"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
@@ -474,6 +482,30 @@ msgstr "Esborrany"
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "En execució"
+
+msgctxt "model:ir.model.button,confirm:asset_close_button"
+msgid "Are you sure to close the asset?"
+msgstr "Are you sure to close the asset?"
+
+msgctxt "model:ir.model.button,string:asset_clear_lines_button"
+msgid "Clear Lines"
+msgstr "Clear Lines"
+
+msgctxt "model:ir.model.button,string:asset_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:asset_create_lines_button"
+msgid "Create Lines"
+msgstr "Create Lines"
+
+msgctxt "model:ir.model.button,string:asset_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:asset_update_button"
+msgid "Update Asset"
+msgstr "Update Asset"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -600,36 +632,12 @@ msgid "Create Assets Moves up to"
 msgstr "Crea assentaments d'actiu fins"
 
 msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "Esteu segur de tancar l'actiu?"
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr "Esborra línies"
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Tanca"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr "Crea línies"
-
-msgctxt "view:account.asset:"
 msgid "Lines"
 msgstr "Línies"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
 msgstr "Informació addicional"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "Executa"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "Actualitza actius"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
@@ -674,3 +682,27 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "Accepta"
+
+msgctxt "view:account.asset:"
+msgid "Are you sure to close the asset?"
+msgstr "Esteu segur de tancar l'actiu?"
+
+msgctxt "view:account.asset:"
+msgid "Clear Lines"
+msgstr "Esborra línies"
+
+msgctxt "view:account.asset:"
+msgid "Close"
+msgstr "Tanca"
+
+msgctxt "view:account.asset:"
+msgid "Create Lines"
+msgstr "Crea línies"
+
+msgctxt "view:account.asset:"
+msgid "Run"
+msgstr "Executa"
+
+msgctxt "view:account.asset:"
+msgid "Update Asset"
+msgstr "Actualitza actius"
