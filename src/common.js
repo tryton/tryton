@@ -1810,11 +1810,6 @@
                             Sao.common.date_format(),
                             this.time_format(field),
                             value);
-                    if (!result) {
-                        result = Sao.common.parse_date(
-                                Sao.common.date_format(),
-                                value);
-                    }
                     return result;
                 }.bind(this),
                 'date': function() {
