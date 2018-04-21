@@ -86,6 +86,34 @@ msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "ວິທີການຄິດໄລ່ຄ່າໃຊ້ຈ່າຍຂອງຜູ້ບໍລິການ"
 
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr ""
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr ""
+
+msgctxt "help:carrier.selection,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr ""
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+
 msgctxt "model:carrier,name:"
 msgid "Carrier"
 msgstr "ຜູ້ໃຫ້ບໍລິການ"
@@ -94,29 +122,35 @@ msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
 msgstr "ການເລືອກຜູ້ໃຫ້ບໍລິການ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
-msgstr "ຜູ້ໃຫ້ບໍລິການ"
+msgstr "Carriers"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr "ການເລຶອກຜູ້ໃຫ້ບໍລິການ"
+msgstr "Carrier Selection"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "ຜູ້ໃຫ້ບໍລິການ"
+msgstr "Carrier"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr "ຜູ້ໃຫ້ບໍລິການ"
+msgstr "Carriers"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr "ການເລືອກຜູ້ໃຫ້ບໍລິການ"
+msgstr "Carrier Selection"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "ການບໍລິການຜູ້ໃຫ້ບໍລິການ"
+msgstr "Carrier Administration"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"

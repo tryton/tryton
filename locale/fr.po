@@ -86,13 +86,45 @@ msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "Méthode de calcul de coût de transport"
 
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "Le produit à facturer le service du transporteur."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "Le tiers qui représente le transporteur."
+
+msgctxt "help:carrier.selection,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "Le transporteur sélectionné."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"À appliquer seulement pour les livraisons depuis ce pays.\n"
+"Laisser vide pour n'importe quel pays."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"À appliquer seulement pour les livraisons vers ce pays.\n"
+"Laisser vide pour n'importe quel pays. "
+
 msgctxt "model:carrier,name:"
 msgid "Carrier"
 msgstr "Transporteur"
 
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
-msgstr "Choix de transporteurs"
+msgstr "Sélection de transporteurs"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
@@ -100,11 +132,11 @@ msgstr "Transporteurs"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr "Choix de transporteurs"
+msgstr "Sélection de transporteurs"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Transporteurs"
+msgstr "Transporteur"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
@@ -112,7 +144,7 @@ msgstr "Transporteurs"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr "Choix de transporteurs"
+msgstr "Sélection de transporteurs"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"

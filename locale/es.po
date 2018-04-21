@@ -86,6 +86,38 @@ msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
 msgstr "Método para calcular el coste del transportista."
 
+msgctxt "help:carrier,carrier_product:"
+msgid "The product to invoice the carrier service."
+msgstr "El producto para facturar el servicio de transporte."
+
+msgctxt "help:carrier,party:"
+msgid "The party which represents the carrier."
+msgstr "El tercero que representa el transportista."
+
+msgctxt "help:carrier.selection,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:carrier.selection,carrier:"
+msgid "The selected carrier."
+msgstr "El transportista seleccionado."
+
+msgctxt "help:carrier.selection,from_country:"
+msgid ""
+"Apply only when shipping from this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica solo cuando el envío viene de este país.Dejar en blanco para todos "
+"los países."
+
+msgctxt "help:carrier.selection,to_country:"
+msgid ""
+"Apply only when shipping to this country.\n"
+"Leave empty for any countries."
+msgstr ""
+"Aplica solo cuando el envío va hacia este país.\n"
+"Dejar en blanco para todos los países."
+
 msgctxt "model:carrier,name:"
 msgid "Carrier"
 msgstr "Transportista"
