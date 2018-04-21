@@ -50,9 +50,10 @@ msgctxt "field:stock.shipment.internal-location,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
-msgstr "Localização de Estoques Móveis"
+msgstr "Stock Location Movable"
 
 msgctxt "model:stock.shipment.internal-location,name:"
 msgid "Shipment Internal - Location"

@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.internal-location,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.internal-location,shipment:"
 msgid "Shipment"
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
-msgstr ""
+msgstr "Stock Location Movable"
 
 msgctxt "model:stock.shipment.internal-location,name:"
 msgid "Shipment Internal - Location"

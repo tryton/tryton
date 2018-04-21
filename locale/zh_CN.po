@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
-msgstr ""
+msgstr "Stock Location Movable"
 
 msgctxt "model:stock.shipment.internal-location,name:"
 msgid "Shipment Internal - Location"

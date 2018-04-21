@@ -4,57 +4,56 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.internal:"
 msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
-msgstr ""
-"L'emplacement « %(location)s » est déjà assigné par « %(assigned_by)s »."
+msgstr "مکان : \"%s\" در حال حاضر توسط : \"%s\" اختصاص داده است."
 
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
-msgstr "Assigné par"
+msgstr "اختصاص داده شده توسط"
 
 msgctxt "field:stock.location,movable:"
 msgid "Movable"
-msgstr "Mobile"
+msgstr "قابل جابجایی"
 
 msgctxt "field:stock.shipment.internal,locations:"
 msgid "Locations"
-msgstr "Emplacements"
+msgstr "مکان ها"
 
 msgctxt "field:stock.shipment.internal-location,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:stock.shipment.internal-location,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:stock.shipment.internal-location,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:stock.shipment.internal-location,location:"
 msgid "Location"
-msgstr "Emplacement"
+msgstr "مکان"
 
 msgctxt "field:stock.shipment.internal-location,rec_name:"
 msgid "Record Name"
-msgstr "Nom de l'enregistrement"
+msgstr "نام پرونده"
 
 msgctxt "field:stock.shipment.internal-location,shipment:"
 msgid "Shipment"
-msgstr "Expédition"
+msgstr "محموله"
 
 msgctxt "field:stock.shipment.internal-location,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:stock.shipment.internal-location,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "نوشته کاربر"
 
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
-msgstr "Emplacement de stockage déplaçable"
+msgstr "مکان موجودی قابل جابجایی"
 
 msgctxt "model:stock.shipment.internal-location,name:"
 msgid "Shipment Internal - Location"
-msgstr "Expédition interne - Emplacement"
+msgstr "مکان - محموله داخلی"
