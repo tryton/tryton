@@ -8,6 +8,12 @@ msgid ""
 "exception \"%(exception)s\"."
 msgstr ""
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending commissions"
+" for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr ""
@@ -348,6 +354,10 @@ msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
 msgstr ""
@@ -438,10 +448,6 @@ msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
-msgstr ""
-
-msgctxt "view:commission:"
-msgid "Invoice"
 msgstr ""
 
 msgctxt "view:product.template:"

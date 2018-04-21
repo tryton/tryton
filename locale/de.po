@@ -10,6 +10,14 @@ msgstr ""
 "Ungültige Formel \"%(formula)s\" in Kommissionsplanzeile \"%(line)s\" mit "
 "Fehlermeldung \"%(exception)s\"."
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending commissions"
+" for the company \"%(company)s\"."
+msgstr ""
+"Die Partei \"%(party)s\" kann nicht gelöscht werden, da sie offene "
+"Kommissionen für das Unternehmen \"%(company)s\" hat."
+
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr "Kommissionsvertreter"
@@ -72,7 +80,7 @@ msgstr "Variante"
 
 msgctxt "field:commission,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:commission,type_:"
 msgid "Type"
@@ -120,7 +128,7 @@ msgstr "Plan"
 
 msgctxt "field:commission.agent,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
@@ -180,7 +188,7 @@ msgstr "Name"
 
 msgctxt "field:commission.plan,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
@@ -220,7 +228,7 @@ msgstr "Variante"
 
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
@@ -260,7 +268,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-commission.agent,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
@@ -349,6 +357,10 @@ msgstr "Kommissionen"
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
 msgstr "Kommissionspläne"
+
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
@@ -442,10 +454,6 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "Kommissionen"
 
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Rechnung"
-
 msgctxt "view:product.template:"
 msgid "Commissions"
 msgstr "Kommissionen"
@@ -461,6 +469,10 @@ msgstr "OK"
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
+
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Rechnung"
 
 msgctxt "view:commission.agent:"
 msgid "Agent"

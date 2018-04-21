@@ -10,6 +10,14 @@ msgstr ""
 "La fórmula \"%(formula)s\" a la línia de pla de comissions \"%(line)s\" no "
 "és correcte generant l'excepció \"%(exception)s\"."
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending commissions"
+" for the company \"%(company)s\"."
+msgstr ""
+"No es pot eliminar el tercer \"%(party)s\" perquè té comissions pendents per"
+" l'empresa \"%(company)s\"."
+
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr "Agent comissió"
@@ -296,7 +304,7 @@ msgstr ""
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr "Comissió"
+msgstr "Comissions"
 
 msgctxt "model:account.journal.type,name:journal_type_commission"
 msgid "Commission"
@@ -348,7 +356,11 @@ msgstr "Comissions"
 
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
-msgstr "Plans comissió"
+msgstr "Plans de comissió"
+
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
@@ -372,7 +384,7 @@ msgstr "Configuració"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
-msgstr "Plans comissió"
+msgstr "Plans de comissió"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
@@ -380,7 +392,7 @@ msgstr "Plantilla de producte - Agent comisionista"
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr "Comissions"
+msgstr "Comissió"
 
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
@@ -442,10 +454,6 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "Comissions"
 
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Factura"
-
 msgctxt "view:product.template:"
 msgid "Commissions"
 msgstr "Comissions"
@@ -461,6 +469,10 @@ msgstr "D'acord"
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
+
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Factura"
 
 msgctxt "view:commission.agent:"
 msgid "Agent"

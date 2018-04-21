@@ -10,6 +10,12 @@ msgstr ""
 "Neveljavna formula \"%(formula)s\" v postavki komisijskega načrta "
 "\"%(line)s\" z napako \"%(exception)s\"."
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending commissions"
+" for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr "Komisijski zastopnik"
@@ -72,7 +78,7 @@ msgstr "Izdelek"
 
 msgctxt "field:commission,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:commission,type_:"
 msgid "Type"
@@ -120,7 +126,7 @@ msgstr "Načrt"
 
 msgctxt "field:commission.agent,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
@@ -180,7 +186,7 @@ msgstr "Naziv"
 
 msgctxt "field:commission.plan,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
@@ -220,7 +226,7 @@ msgstr "Izdelek"
 
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
@@ -260,7 +266,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-commission.agent,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
@@ -294,13 +300,15 @@ msgstr ""
 "Pythonski izraz, preračunan z:\n"
 "- amount: izvorni znesek"
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr "Komisija"
+msgstr "Commission"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_commission"
 msgid "Commission"
-msgstr "Komisija"
+msgstr "Commission"
 
 msgctxt "model:commission,name:"
 msgid "Commission"
@@ -322,69 +330,88 @@ msgctxt "model:commission.plan.line,name:"
 msgid "Commission Plan Line"
 msgstr "Postavka komisijskega načrta"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
-msgstr "Zastopniki"
+msgstr "Agents"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "Izdelava komisijskih računov"
+msgstr "Create Commission Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
-msgstr "Komisije"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_form2"
 msgid "Commissions"
-msgstr "Komisije"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_from_relate"
 msgid "From Commissions"
-msgstr "Iz komisij"
+msgstr "From Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
-msgstr "Komisije"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
-msgstr "Komisijski načrti"
+msgstr "Commission Plans"
 
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
-msgstr "Zastopniki"
+msgstr "Agents"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr "Komisija"
+msgstr "Commission"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "Izdelava komisijskih računov"
+msgstr "Create Commission Invoices"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
-msgstr "Komisije"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Nastavitve"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
-msgstr "Komisijski načrti"
+msgstr "Commission Plans"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
 msgstr "Predloga izdelka - Komisija"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr "Komisija"
+msgstr "Commission"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
-msgstr "Komisija - vodenje"
+msgstr "Commission Administration"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""
@@ -442,10 +469,6 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "Komisije"
 
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Račun"
-
 msgctxt "view:product.template:"
 msgid "Commissions"
 msgstr "Komisije"
@@ -461,6 +484,10 @@ msgstr "V redu"
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
 msgstr "Prekliči"
+
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Račun"
 
 msgctxt "view:commission.agent:"
 msgid "Agent"

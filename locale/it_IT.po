@@ -10,6 +10,12 @@ msgstr ""
 "formula \"%(formula)s\" nella riga del piano provvigionale \"%(line)s\" con "
 "l'eccezione \"%(exception)s\""
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending commissions"
+" for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr "agente provvigioni"
@@ -295,13 +301,15 @@ msgstr ""
 "espressione python che verrà valutata con:\n"
 "- importo: l importo originario"
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr "provvigione"
+msgstr "Commission"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_commission"
 msgid "Commission"
-msgstr "provvigione"
+msgstr "Commission"
 
 msgctxt "model:commission,name:"
 msgid "Commission"
@@ -323,69 +331,88 @@ msgctxt "model:commission.plan.line,name:"
 msgid "Commission Plan Line"
 msgstr "riga piano provvigioni"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
-msgstr "Agenti"
+msgstr "Agents"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "creazione fatture provvigioni"
+msgstr "Create Commission Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
-msgstr "provvigioni"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_form2"
 msgid "Commissions"
-msgstr "provvigioni"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_from_relate"
 msgid "From Commissions"
-msgstr "da provvigioni"
+msgstr "From Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
-msgstr "provvigioni"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
-msgstr "piani provvigionali"
+msgstr "Commission Plans"
 
+msgctxt "model:ir.model.button,string:commission_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
-msgstr "Agenti"
+msgstr "Agents"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr "provvigione"
+msgstr "Commission"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "creazione fatture provvigioni"
+msgstr "Create Commission Invoices"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
-msgstr "provvigioni"
+msgstr "Commissions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configurazione"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
-msgstr "piani provvigionali"
+msgstr "Commission Plans"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
 msgstr "esempio prodotto -agente provvigioni"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr "provvigione"
+msgstr "Commission"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
-msgstr "amministrazione provvigioni"
+msgstr "Commission Administration"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""
@@ -443,10 +470,6 @@ msgctxt "view:account.invoice.line:"
 msgid "Commissions"
 msgstr "provvigioni"
 
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Fattura"
-
 msgctxt "view:product.template:"
 msgid "Commissions"
 msgstr "provvigioni"
@@ -462,3 +485,7 @@ msgstr "OK "
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
 msgstr "annulla"
+
+msgctxt "view:commission:"
+msgid "Invoice"
+msgstr "Fattura"
