@@ -70,10 +70,9 @@ msgctxt "model:sale.configuration.shipment_tolerance,name:"
 msgid "Sale Configuration Shipment Tolerance"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:sale.configuration:"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 msgctxt "view:sale.configuration:"
 msgid "Sale Shipment Tolerance"

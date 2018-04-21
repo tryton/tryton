@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:sale.configuration.shipment_tolerance,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt ""
 "field:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
