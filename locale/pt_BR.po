@@ -38,13 +38,10 @@ msgctxt "field:product.product.cost_history,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr "Histórico de Custo do Produto"
-
-msgctxt "model:ir.action,name:wizard_product_cost_history_open"
-msgid "Cost History"
-msgstr "Histórico de Custo"
+msgstr "Product Cost History"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
@@ -53,3 +50,7 @@ msgstr "Histórico do Custo do Produto"
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
 msgstr "Hora"
+
+msgctxt "model:ir.action,name:wizard_product_cost_history_open"
+msgid "Cost History"
+msgstr "Histórico de Custo"

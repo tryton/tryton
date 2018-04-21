@@ -42,10 +42,6 @@ msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
 msgstr "Product Cost History"
 
-msgctxt "model:ir.action,name:wizard_product_cost_history_open"
-msgid "Cost History"
-msgstr "Cost History"
-
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
 msgstr ""
@@ -53,3 +49,7 @@ msgstr ""
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
 msgstr ""
+
+msgctxt "model:ir.action,name:wizard_product_cost_history_open"
+msgid "Cost History"
+msgstr "Cost History"

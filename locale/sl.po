@@ -22,14 +22,13 @@ msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.product.cost_history,product:"
 msgid "Product"
 msgstr "Izdelek"
 
 msgctxt "field:product.product.cost_history,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.product.cost_history,write_date:"
 msgid "Write Date"
@@ -39,13 +38,10 @@ msgctxt "field:product.product.cost_history,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr "Zgodovina cen izdelka"
-
-msgctxt "model:ir.action,name:wizard_product_cost_history_open"
-msgid "Cost History"
-msgstr "Zgodovina cen"
+msgstr "Product Cost History"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
@@ -54,3 +50,7 @@ msgstr "Zgodovina cen izdelka"
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
 msgstr "Čas"
+
+msgctxt "model:ir.action,name:wizard_product_cost_history_open"
+msgid "Cost History"
+msgstr "Zgodovina cen"

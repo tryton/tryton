@@ -22,14 +22,13 @@ msgctxt "field:product.product.cost_history,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.product.cost_history,product:"
 msgid "Product"
 msgstr "Artikel"
 
 msgctxt "field:product.product.cost_history,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.product.cost_history,write_date:"
 msgid "Write Date"
@@ -43,10 +42,6 @@ msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
 msgstr "Historie Kostenpreis"
 
-msgctxt "model:ir.action,name:wizard_product_cost_history_open"
-msgid "Cost History"
-msgstr "Kostenhistorie"
-
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
 msgstr "Historie Kostenpreis Artikel"
@@ -54,3 +49,7 @@ msgstr "Historie Kostenpreis Artikel"
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
 msgstr "Zeit"
+
+msgctxt "model:ir.action,name:wizard_product_cost_history_open"
+msgid "Cost History"
+msgstr "Kostenhistorie"

@@ -48,11 +48,7 @@ msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr ""
-
-msgctxt "model:ir.action,name:wizard_product_cost_history_open"
-msgid "Cost History"
-msgstr ""
+msgstr "Product Cost History"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
