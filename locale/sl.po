@@ -24,7 +24,7 @@ msgstr "Dobavitelj"
 
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.product_supplier.day,weekday:"
 msgid "Week Day"
