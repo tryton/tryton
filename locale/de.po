@@ -32,7 +32,7 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.sms_code,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:res.user.login.sms_code,user:"
 msgid "User"
