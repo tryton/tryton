@@ -111,13 +111,17 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Verkoopfacturen"
 
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
 msgstr ""
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
-msgstr ""
+msgstr "Project Invoice"
 
 #, fuzzy
 msgctxt "selection:project.work,invoice_method:"

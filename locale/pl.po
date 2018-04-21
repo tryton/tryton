@@ -94,9 +94,14 @@ msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
 msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr "Faktury"
+msgstr "Invoices"
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
@@ -104,7 +109,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
-msgstr ""
+msgstr "Project Invoice"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "Manual"

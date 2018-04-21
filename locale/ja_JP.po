@@ -98,6 +98,10 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Invoices"
 
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
+
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
 msgstr ""

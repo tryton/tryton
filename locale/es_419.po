@@ -99,6 +99,10 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr ""
+
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
 msgstr "Progreso facturado de trabajo"
@@ -137,8 +141,4 @@ msgstr ""
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
-msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Invoice"
 msgstr ""

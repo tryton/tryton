@@ -72,7 +72,7 @@ msgstr "Rechnungsposition"
 
 msgctxt "field:project.work.invoiced_progress,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
@@ -92,11 +92,15 @@ msgstr "Rechnungsposition"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
+msgstr "Positionen der Zeiterfassung"
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr "Rechnungsausgang"
+msgstr "Rechnungen"
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"

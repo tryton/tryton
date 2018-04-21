@@ -92,11 +92,15 @@ msgstr "Línea de factura"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr "Líneas de parte de trabajo"
+msgstr "Líneas del parte de trabajo"
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Facturas"
+
+msgctxt "model:ir.model.button,string:work_invoice_button"
+msgid "Invoice"
+msgstr "Invoice"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
