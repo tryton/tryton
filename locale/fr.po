@@ -90,6 +90,14 @@ msgctxt "field:product.template,classification:"
 msgid "Classification"
 msgstr "Classification"
 
+msgctxt "help:product.classification.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:product.classification_tree.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
 msgstr "Classifications"

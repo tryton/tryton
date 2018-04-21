@@ -84,17 +84,27 @@ msgctxt "field:product.classification_tree.dummy,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,classification:"
 msgid "Classification"
-msgstr ""
+msgstr "Classifications"
 
+#, fuzzy
 msgctxt "field:product.template,classification:"
 msgid "Classification"
+msgstr "Classifications"
+
+msgctxt "help:product.classification.dummy,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.classification_tree.dummy,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
-msgstr ""
+msgstr "Classifications"
 
 msgctxt "model:product.classification.dummy,name:"
 msgid "Dummy Product Classification"
