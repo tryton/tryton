@@ -69,9 +69,10 @@ msgctxt "field:product.attribute,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
-msgstr ""
+msgstr "Attributes"
 
 #, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
@@ -107,9 +108,10 @@ msgctxt "field:product.attribute-product.attribute-set,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
-msgstr ""
+msgstr "Attributes"
 
 #, fuzzy
 msgctxt "field:product.attribute.set,create_date:"
@@ -145,17 +147,20 @@ msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
+#, fuzzy
 msgctxt "field:product.product,attribute_set:"
 msgid "Attribute Set"
-msgstr ""
+msgstr "Attribute Sets"
 
+#, fuzzy
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
-msgstr ""
+msgstr "Attributes"
 
+#, fuzzy
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
-msgstr ""
+msgstr "Attribute Sets"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -165,21 +170,45 @@ msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr ""
 
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr ""
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr ""
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr ""
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr ""
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr ""
+msgstr "Attributes"
 
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr ""
+msgstr "Attribute Sets"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr ""
+msgstr "Attributes"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr ""
+msgstr "Attribute Sets"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
@@ -229,6 +258,7 @@ msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
 msgstr "Selezione"
 
+#, fuzzy
 msgctxt "view:product.template:"
 msgid "Attributes"
-msgstr ""
+msgstr "Attributes"

@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:product.attribute,create_uid:"
 msgid "Create User"
-msgstr "Crear Usuario"
+msgstr ""
 
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
@@ -70,10 +70,9 @@ msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,create_uid:"
 msgid "Create User"
-msgstr "Crear Usuario"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
@@ -99,10 +98,9 @@ msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.attribute.set,create_uid:"
 msgid "Create User"
-msgstr "Crear Usuario"
+msgstr ""
 
 msgctxt "field:product.attribute.set,id:"
 msgid "ID"
@@ -142,6 +140,30 @@ msgstr ""
 
 msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
+msgstr ""
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr ""
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr ""
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr ""
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr ""
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_attribute_form"

@@ -2,258 +2,230 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.attribute,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
-msgstr "Karakters"
+msgstr "رقم‌ها"
 
-#, fuzzy
 msgctxt "field:product.attribute,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:product.attribute,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "نام"
 
 msgctxt "field:product.attribute,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
-msgstr "Selectie"
+msgstr "انتخاب"
 
 msgctxt "field:product.attribute,selection_json:"
 msgid "Selection JSON"
-msgstr ""
+msgstr "انتخاب JSON"
 
 msgctxt "field:product.attribute,selection_sorted:"
 msgid "Selection Sorted"
-msgstr ""
+msgstr "انتخاب مرتب شده"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
-msgstr ""
+msgstr "مجموعه ها"
 
 msgctxt "field:product.attribute,string:"
 msgid "String"
-msgstr ""
+msgstr "متنی"
 
-#, fuzzy
 msgctxt "field:product.attribute,type_:"
 msgid "Type"
-msgstr "Type"
+msgstr "نوع"
 
-#, fuzzy
 msgctxt "field:product.attribute,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.attribute,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
-msgstr "Attributes"
+msgstr "ویژگی"
 
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr ""
+msgstr "مجموعه"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "ویژگی ها"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "نام"
 
 msgctxt "field:product.attribute.set,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.product,attribute_set:"
 msgid "Attribute Set"
-msgstr "Attribute Sets"
+msgstr "مجموعه ویژگی"
 
-#, fuzzy
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "ویژگی ها"
 
-#, fuzzy
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
-msgstr "Attribute Sets"
+msgstr "مجموعه ویژگی"
 
 msgctxt "help:product.attribute,selection:"
 msgid "A couple of key and label separated by \":\" per line"
-msgstr ""
+msgstr "یک چند کلید و برچسب جدا شده توسط \":\" در هر خط"
 
 msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
-msgstr ""
+msgstr "اگر انتخاب باید بر روی برچسب مرتب شود"
 
 msgctxt "help:product.attribute,sets:"
 msgid "Add sets to the attribute."
-msgstr ""
+msgstr "اضافه کردن مجموعه ها به ویژگی."
 
 msgctxt "help:product.attribute.set,attributes:"
 msgid "Add attributes to the set."
-msgstr ""
+msgstr "اضافه کردن ویژگی ها به مجموعه."
 
 msgctxt "help:product.attribute.set,name:"
 msgid "The main identifier of product attribute set."
-msgstr ""
+msgstr "شناسه اصلی مجموعه ویژگی محصول."
 
 msgctxt "help:product.product,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
-msgstr ""
+msgstr "مجموعه ای از ویژگی هایی که برای انواع اعمال می شود را انتخاب کنید."
 
 msgctxt "help:product.product,attributes:"
 msgid "Add attributes to the variant."
-msgstr ""
+msgstr "اضافه کردن ویژگی ها به نوع."
 
 msgctxt "help:product.template,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
-msgstr ""
+msgstr "مجموعه ای از ویژگی هایی که برای انواع اعمال می شود را انتخاب کنید."
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "ویژگی ها"
 
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "مجموعه ویژگی"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "ویژگی ها"
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "مجموعه ویژگی"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
-msgstr ""
+msgstr "ویژگی محصول"
 
 msgctxt "model:product.attribute-product.attribute-set,name:"
 msgid "Product Attribute - Set"
-msgstr ""
+msgstr "ویژگی محصول - مجموعه"
 
 msgctxt "model:product.attribute.set,name:"
 msgid "Product Attribute Set"
-msgstr ""
+msgstr "مجموعه ویژگی محصول"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Boolean"
-msgstr ""
+msgstr "بولین"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Char"
-msgstr ""
+msgstr "کاراکتر"
 
-#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Date"
-msgstr "Vervaldatum"
+msgstr "تاریخ"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "DateTime"
-msgstr ""
+msgstr "تاریخ و زمان"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Float"
-msgstr ""
+msgstr "شناور"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Integer"
-msgstr ""
+msgstr "عدد صحیح"
 
 msgctxt "selection:product.attribute,type_:"
 msgid "Numeric"
-msgstr ""
+msgstr "عددی"
 
-#, fuzzy
 msgctxt "selection:product.attribute,type_:"
 msgid "Selection"
-msgstr "Selectie"
+msgstr "انتخاب"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "ویژگی ها"

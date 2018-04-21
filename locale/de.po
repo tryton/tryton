@@ -24,7 +24,7 @@ msgstr "Name"
 
 msgctxt "field:product.attribute,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.attribute,selection:"
 msgid "Selection"
@@ -80,7 +80,7 @@ msgstr "ID"
 
 msgctxt "field:product.attribute-product.attribute-set,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
@@ -112,7 +112,7 @@ msgstr "Name"
 
 msgctxt "field:product.attribute.set,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
@@ -141,6 +141,32 @@ msgstr "Zeilenweise Schlüssel und Bezeichner getrennt durch \":\""
 msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr "Ob die Auswahl nach Bezeichner sortiert werden soll"
+
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "Hinzufügen von Sätzen zum Attribut."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "Fügt das Attribut zum Satz."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "Die Hauptbezeichnung des Attributsatzes."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+"Auswahl eine Satzes von Attributen das auf die Variante angewandt wird."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "Der Variante Attribute hinzufügen."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr ""
+"Auswahl eines Satzes von Attributen das auf die Variante angewendet wird."
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"

@@ -142,6 +142,30 @@ msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr "Si cal ordenar la selecció a l'etiqueta."
 
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "Afegeix grups al atribut."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "Afegeix atributs al grup."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "El identificador principal del grup d'atribut de productes."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Selecciona un grup d'atributs per aplicar a les variants."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "Afegeix atributs a la variant."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Selecciona un grup d'atributs per aplicar a les variants."
+
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
 msgstr "Atributs"

@@ -143,6 +143,30 @@ msgctxt "help:product.attribute,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr "Si la sélection doit être triée par label"
 
+msgctxt "help:product.attribute,sets:"
+msgid "Add sets to the attribute."
+msgstr "Ajouter des ensembles à l'attribut."
+
+msgctxt "help:product.attribute.set,attributes:"
+msgid "Add attributes to the set."
+msgstr "Ajouter des attributs à l'ensemble."
+
+msgctxt "help:product.attribute.set,name:"
+msgid "The main identifier of product attribute set."
+msgstr "L'identifiant principal de l'ensemble d'attributs de produit."
+
+msgctxt "help:product.product,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Sélectionner un ensemble d'attributs à appliquer sur la variante."
+
+msgctxt "help:product.product,attributes:"
+msgid "Add attributes to the variant."
+msgstr "Ajouter des attributs à la variante."
+
+msgctxt "help:product.template,attribute_set:"
+msgid "Select a set of attributes to apply on the variants."
+msgstr "Sélectionner un ensemble d'attributs à appliquer sur les variantes."
+
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
 msgstr "Attributs"
