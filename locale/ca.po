@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending shipments "
+"for the company \"%(company)s\"."
+msgstr ""
+"No es pot eliminar el tercer \"%(party)s\" perquè té albarans pendents per "
+"l'empresa \"%(company)s\"."
+
 msgctxt "error:product.template:"
 msgid ""
 "You cannot change the default uom for a product which is associated to stock"
@@ -16,6 +24,12 @@ msgid ""
 msgstr ""
 "No podeu canviar el tipus d'un producte que està associat amb moviments "
 "d'existències."
+
+msgctxt "error:stock.inventory.line:"
+msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
+msgstr ""
+"Es requereix una opció per la quantitat en blanc per l'inventari "
+"\"%(inventory)s\"."
 
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
@@ -385,6 +399,10 @@ msgstr "Usuari de creació"
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
 msgstr "Data"
+
+msgctxt "field:stock.inventory,empty_quantity:"
+msgid "Empty Quantity"
+msgstr "Quantitat en blanc"
 
 msgctxt "field:stock.inventory,id:"
 msgid "ID"
@@ -1364,6 +1382,14 @@ msgstr ""
 "* Un valor buit és un data infinita en el futur.\n"
 "* Una data en el passat proporcionarà valors històrics."
 
+msgctxt "help:stock.inventory,empty_quantity:"
+msgid "How lines without quantity are handled."
+msgstr "Com es gestionen les línies sense quantitat."
+
+msgctxt "help:stock.location,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "help:stock.location,flat_childs:"
 msgid "Check to restrict to one level of children."
 msgstr "Marqueu per restringir a només un nivell de fills."
@@ -1392,11 +1418,15 @@ msgstr "Ubicacions"
 
 msgctxt "model:ir.action,name:act_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr "Ubicació temps d'espera"
+msgstr "Temps d'espera entre ubicacions"
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Locations List Quantity"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Quantity"
-msgstr "Quantitat per ubicacions"
+msgid "Locations Tree Quantity"
+msgstr "Locations Tree Quantity"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1412,7 +1442,7 @@ msgstr "Períodes"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr "Unitats de producte per magatzem"
+msgstr "Quantitats de producte per magatzem"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
@@ -1420,31 +1450,31 @@ msgstr "Productes"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Albarans proveïdors"
+msgstr "Albarans de proveïdor"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Albarans devolució proveïdor"
+msgstr "Albarans de devolució de proveïdor"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Albarans intern"
+msgstr "Albarans interns"
 
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Albarans client"
+msgstr "Albarans de client"
 
 msgctxt "model:ir.action,name:act_shipment_out_form2"
 msgid "Customer Shipments"
-msgstr "Albarans client"
+msgstr "Albarans de client"
 
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
-msgstr "Albarans proveïdors"
+msgstr "Albarans de proveïdors"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Albarans devolució client"
+msgstr "Albarans de devolució de client"
 
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
@@ -1483,8 +1513,8 @@ msgid "Assign Shipment Internal"
 msgstr "Reserva albarà intern"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
-msgid "Assign Shipment Out"
-msgstr "Reserva albarà de sortida"
+msgid "Assign Customer Shipment"
+msgstr "Assigna albarà de client"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
@@ -1502,17 +1532,17 @@ msgstr "Tot"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
 msgid "From Suppliers"
-msgstr "De proveïdor"
+msgstr "De proveïdors"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier_waiting"
 msgid "From Suppliers Waiting"
-msgstr "En espera des de proveïdor"
+msgstr "De proveïdors en espera"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_to_customer"
 msgid "To Customers"
-msgstr "A client"
+msgstr "A clients"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_all"
@@ -1567,7 +1597,7 @@ msgstr "Esborrany"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
 msgid "Requests"
-msgstr "Sol·licituds"
+msgstr "Sol·licitud"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_shipped"
@@ -1619,6 +1649,142 @@ msgctxt ""
 msgid "Received"
 msgstr "Rebut"
 
+msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
+msgid "Add an inventory line for each missing products"
+msgstr "Add an inventory line for each missing products"
+
+msgctxt "model:ir.model.button,string:inventory_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
+msgid "Complete Inventory"
+msgstr "Complete Inventory"
+
+msgctxt "model:ir.model.button,string:inventory_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:move_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:move_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:move_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_internal_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_pack_button"
+msgid "Make shipment"
+msgstr "Make shipment"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_out_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
 msgstr "Inventari"
@@ -1629,7 +1795,7 @@ msgstr "Albarà de proveïdor"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Albarà devolució proveïdor"
+msgstr "Albarà de devolució de proveïdor"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
@@ -1637,11 +1803,11 @@ msgstr "Albarà intern"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out"
 msgid "Customer Shipment"
-msgstr "Albarà client"
+msgstr "Albarà de client"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Albarà devolució client"
+msgstr "Albarà de devolució de client"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
@@ -1653,7 +1819,7 @@ msgstr "Albarà de proveïdor"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Albarà devolució proveïdor"
+msgstr "Albarà de devolució de proveïdor"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
@@ -1661,11 +1827,11 @@ msgstr "Albarà intern"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
 msgid "Customer Shipment"
-msgstr "Albarà client"
+msgstr "Albarà de client"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Albarà devolució client"
+msgstr "Albarà de devolució de client"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -1679,9 +1845,13 @@ msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
 msgstr "Ubicacions"
 
+msgctxt "model:ir.ui.menu,name:menu_location_form2"
+msgid "Locations"
+msgstr "Locations"
+
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr "Temps d'espera per ubicacions"
+msgstr "Temps d'espera entre ubicacions"
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
@@ -1701,23 +1871,23 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Albarans proveïdors"
+msgstr "Albarans de proveïdor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Devolució"
+msgstr "Albarans de devolució de proveïdor"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Albarans intern"
+msgstr "Albarans interns"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Albarans client"
+msgstr "Albarans de client"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Devolució"
+msgstr "Albarans de devolució de client"
 
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
@@ -1725,7 +1895,7 @@ msgstr "Logística"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
-msgstr "Existències"
+msgstr "Configuració de logística"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
@@ -1781,7 +1951,7 @@ msgstr "Zona d'entrada"
 
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
-msgstr "Perdut-trobat"
+msgstr "Perdut i trobat"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
@@ -1821,11 +1991,11 @@ msgstr "Període d'existències precalculat"
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Unitats de producte per magatzem"
+msgstr "Quantitats de producte per magatzem"
 
 msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Unitats de producte per magatzem"
+msgstr "Quantitats de producte per magatzem"
 
 msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
@@ -1856,8 +2026,8 @@ msgid "Customer Shipment"
 msgstr "Albarà client"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
-msgid "Assign Shipment Out"
-msgstr "Reserva albarà de sortida"
+msgid "Assign Customer Shipment"
+msgstr "Assigna albarà de client"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
@@ -2091,6 +2261,18 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Magatzem:"
 
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Empty"
+msgstr "Buit"
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Keep"
+msgstr "Manté"
+
 msgctxt "selection:stock.inventory,state:"
 msgid "Canceled"
 msgstr "Cancel·lat"
@@ -2121,7 +2303,7 @@ msgstr "Client"
 
 msgctxt "selection:stock.location,type:"
 msgid "Drop"
-msgstr "Rebuig"
+msgstr "Enviament directe"
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
@@ -2295,6 +2477,90 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Albarans"
 
+msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "view:stock.move:"
+msgid "Do"
+msgstr "Finalitza"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Restaura a esborrany"
+
+msgctxt "view:stock.shipment.in.return.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "No es poden reservar aquests productes:"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:stock.shipment.in:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:stock.shipment.internal.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "No es poden reservar aquests productes:"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:stock.shipment.out.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "No es poden reservar aquests productes:"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Incoming Moves"
+msgstr "Moviments d'entrada"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Inventory Moves"
+msgstr "Moviments interns"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Other Info"
+msgstr "Informació addicional"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Outgoing Moves"
+msgstr "Moviments de sortida"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Força reserva"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Força reserva"
+
+msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
+msgid "OK"
+msgstr "D'acord"
+
+msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Força reserva"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Quantity"
+msgstr "Quantitat per ubicacions"
+
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
 msgstr "Afegir una línia d'inventari per cada producte que falta"
@@ -2311,18 +2577,6 @@ msgctxt "view:stock.inventory:"
 msgid "Confirm"
 msgstr "Confirma"
 
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:stock.move:"
-msgid "Do"
-msgstr "Finalitza"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "Restaura a esborrany"
-
 msgctxt "view:stock.period:"
 msgid "Close"
 msgstr "Tancat"
@@ -2330,10 +2584,6 @@ msgstr "Tancat"
 msgctxt "view:stock.period:"
 msgid "Draft"
 msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.in.return.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "No es poden reservar aquests productes:"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Assign"
@@ -2350,10 +2600,6 @@ msgstr "Finalitza"
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
 msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Other Info"
-msgstr "Informació addicional"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
@@ -2374,10 +2620,6 @@ msgstr "Moviments d'entrada"
 msgctxt "view:stock.shipment.in:"
 msgid "Inventory Moves"
 msgstr "Moviments interns"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Other Info"
-msgstr "Informació addicional"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Receive"
@@ -2387,10 +2629,6 @@ msgctxt "view:stock.shipment.in:"
 msgid "Reset to Draft"
 msgstr "Restaura a esborrany"
 
-msgctxt "view:stock.shipment.internal.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "No es poden reservar aquests productes:"
-
 msgctxt "view:stock.shipment.internal:"
 msgid "Assign"
 msgstr "Reserva"
@@ -2408,20 +2646,12 @@ msgid "Draft"
 msgstr "Esborrany"
 
 msgctxt "view:stock.shipment.internal:"
-msgid "Other Info"
-msgstr "Informació addicional"
-
-msgctxt "view:stock.shipment.internal:"
 msgid "Ship"
 msgstr "Envia"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Wait"
 msgstr "En espera"
-
-msgctxt "view:stock.shipment.out.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "No es poden reservar aquests productes:"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Cancel"
@@ -2434,18 +2664,6 @@ msgstr "Finalitza"
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
 msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Incoming Moves"
-msgstr "Moviments d'entrada"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Inventory Moves"
-msgstr "Moviments interns"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Other Info"
-msgstr "Informació addicional"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Received"
@@ -2472,37 +2690,5 @@ msgid "Make shipment"
 msgstr "Empaqueta"
 
 msgctxt "view:stock.shipment.out:"
-msgid "Other Info"
-msgstr "Informació addicional"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Outgoing Moves"
-msgstr "Moviments de sortida"
-
-msgctxt "view:stock.shipment.out:"
 msgid "Wait"
 msgstr "En espera"
-
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "OK"
-msgstr "D'acord"
-
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Força reserva"
-
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "OK"
-msgstr "D'acord"
-
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Força reserva"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "OK"
-msgstr "D'acord"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Força reserva"

@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending shipments "
+"for the company \"%(company)s\"."
+msgstr ""
+"Le tiers « %party)s » ne peut pas être effacé car il a des expéditions en "
+"attentes pour la société « %(company)s »."
+
 msgctxt "error:product.template:"
 msgid ""
 "You cannot change the default uom for a product which is associated to stock"
@@ -16,6 +24,12 @@ msgid ""
 msgstr ""
 "Vous ne pouvez pas changer le type d'un produit qui a déjà fait l'objet de "
 "mouvements de stock"
+
+msgctxt "error:stock.inventory.line:"
+msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
+msgstr ""
+"Une option pour les quantités vides manque pour l'inventaire « %(inventory)s"
+" »."
 
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
@@ -389,6 +403,10 @@ msgstr "Créé par"
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
 msgstr "Date"
+
+msgctxt "field:stock.inventory,empty_quantity:"
+msgid "Empty Quantity"
+msgstr "Quantité vide"
 
 msgctxt "field:stock.inventory,id:"
 msgid "ID"
@@ -1372,6 +1390,14 @@ msgstr ""
 "* Une valeur vide est une date infinie dans le futur.\n"
 "* Une date dans le passé fournira des valeurs historiques."
 
+msgctxt "help:stock.inventory,empty_quantity:"
+msgid "How lines without quantity are handled."
+msgstr "Comment les lignes sans quantité sont traitées."
+
+msgctxt "help:stock.location,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:stock.location,flat_childs:"
 msgid "Check to restrict to one level of children."
 msgstr "Cocher pour restreindre à une niveau d'enfants."
@@ -1400,11 +1426,15 @@ msgstr "Emplacements"
 
 msgctxt "model:ir.action,name:act_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr "Délais de livraison d'emplacement"
+msgstr "Délais de livraison entre emplacements"
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Locations List Quantity"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Quantity"
-msgstr "Quantités par emplacements"
+msgid "Locations Tree Quantity"
+msgstr "Locations Tree Quantity"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1424,7 +1454,7 @@ msgstr "Quantités de produit par entrepôt"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
-msgstr "Produits par emplacements"
+msgstr "Produits"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
@@ -1440,11 +1470,11 @@ msgstr "Expéditions internes"
 
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Expéditions clientes"
+msgstr "Expéditions client"
 
 msgctxt "model:ir.action,name:act_shipment_out_form2"
 msgid "Customer Shipments"
-msgstr "Expéditions clientes"
+msgstr "Expéditions client"
 
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
@@ -1491,7 +1521,7 @@ msgid "Assign Shipment Internal"
 msgstr "Assigner l'expédition interne"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
-msgid "Assign Shipment Out"
+msgid "Assign Customer Shipment"
 msgstr "Assigner l'expédition cliente"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
@@ -1501,7 +1531,7 @@ msgstr "Tous"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_inventory_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt "model:ir.action.act_window.domain,name:act_move_form_domain_all"
 msgid "All"
@@ -1530,12 +1560,12 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_received"
 msgid "Received"
-msgstr "Reçu"
+msgstr "Reçues"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_all"
@@ -1545,12 +1575,12 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_assigned"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Assignées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_waiting"
@@ -1565,12 +1595,12 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_assigned"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Assignées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
@@ -1595,17 +1625,17 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_assigned"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Assignées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_packed"
 msgid "Packed"
-msgstr "Emballé"
+msgstr "Emballées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
@@ -1620,12 +1650,148 @@ msgstr "Tous"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_received"
 msgid "Received"
-msgstr "Reçu"
+msgstr "Reçus"
+
+msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
+msgid "Add an inventory line for each missing products"
+msgstr "Add an inventory line for each missing products"
+
+msgctxt "model:ir.model.button,string:inventory_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
+msgid "Complete Inventory"
+msgstr "Complete Inventory"
+
+msgctxt "model:ir.model.button,string:inventory_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:move_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:move_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:move_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_internal_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_pack_button"
+msgid "Make shipment"
+msgstr "Make shipment"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_out_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
@@ -1649,7 +1815,7 @@ msgstr "Expédition cliente"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Retours d'expédition cliente"
+msgstr "Retour d'expédition cliente"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
@@ -1687,9 +1853,13 @@ msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
 msgstr "Emplacements"
 
+msgctxt "model:ir.ui.menu,name:menu_location_form2"
+msgid "Locations"
+msgstr "Locations"
+
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr "Délais de livraison d'emplacement"
+msgstr "Délais de livraison entre emplacements"
 
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
@@ -1709,7 +1879,7 @@ msgstr "Rapports"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Expéditions fournisseur"
+msgstr "Expéditions fournisseurs"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
@@ -1753,7 +1923,7 @@ msgstr "Administration des stocks"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr "Stock forcer assignation"
+msgstr "Forcer l'assignation de stock"
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
@@ -1864,7 +2034,7 @@ msgid "Customer Shipment"
 msgstr "Expédition cliente"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
-msgid "Assign Shipment Out"
+msgid "Assign Customer Shipment"
 msgstr "Assigner l'expédition cliente"
 
 msgctxt "model:stock.shipment.out.return,name:"
@@ -2099,6 +2269,18 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Entrepôt :"
 
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Empty"
+msgstr "Vider"
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Keep"
+msgstr "Garder"
+
 msgctxt "selection:stock.inventory,state:"
 msgid "Canceled"
 msgstr "Annulé"
@@ -2303,6 +2485,90 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Expéditions"
 
+msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:stock.move:"
+msgid "Do"
+msgstr "Effectuer"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Remettre en brouillon"
+
+msgctxt "view:stock.shipment.in.return.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "Impossible d'assigner ces produits :"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Other Info"
+msgstr "Autres informations"
+
+msgctxt "view:stock.shipment.in:"
+msgid "Other Info"
+msgstr "Autres informations"
+
+msgctxt "view:stock.shipment.internal.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "Impossible d'assigner ces produits :"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Other Info"
+msgstr "Autres informations"
+
+msgctxt "view:stock.shipment.out.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "Impossible d'assigner ces produits :"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Incoming Moves"
+msgstr "Mouvements entrants"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Inventory Moves"
+msgstr "Mouvements internes"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Other Info"
+msgstr "Autres informations"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Other Info"
+msgstr "Autres informations"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Outgoing Moves"
+msgstr "Mouvements sortants"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Forcer l'assignation"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Forcer l'assignation"
+
+msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Forcer l'assignation"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Quantity"
+msgstr "Quantités par emplacements"
+
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
 msgstr "Ajouter une ligne d'inventaire pour chaque produit manquant"
@@ -2319,18 +2585,6 @@ msgctxt "view:stock.inventory:"
 msgid "Confirm"
 msgstr "Confirmer"
 
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.move:"
-msgid "Do"
-msgstr "Effectuer"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "Remettre en brouillon"
-
 msgctxt "view:stock.period:"
 msgid "Close"
 msgstr "Clôturer"
@@ -2338,10 +2592,6 @@ msgstr "Clôturer"
 msgctxt "view:stock.period:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.in.return.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Impossible d'assigner ces produits :"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Assign"
@@ -2358,10 +2608,6 @@ msgstr "Effectuée"
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Other Info"
-msgstr "Autres informations"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
@@ -2382,10 +2628,6 @@ msgstr "Mouvements entrants"
 msgctxt "view:stock.shipment.in:"
 msgid "Inventory Moves"
 msgstr "Mouvements internes"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Other Info"
-msgstr "Autres informations"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Receive"
@@ -2395,10 +2637,6 @@ msgctxt "view:stock.shipment.in:"
 msgid "Reset to Draft"
 msgstr "Remettre en brouillon"
 
-msgctxt "view:stock.shipment.internal.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Impossible d'assigner ces produits :"
-
 msgctxt "view:stock.shipment.internal:"
 msgid "Assign"
 msgstr "Assigner"
@@ -2416,20 +2654,12 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt "view:stock.shipment.internal:"
-msgid "Other Info"
-msgstr "Autres informations"
-
-msgctxt "view:stock.shipment.internal:"
 msgid "Ship"
 msgstr "Livrer"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Wait"
 msgstr "Attendre"
-
-msgctxt "view:stock.shipment.out.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Impossible d'assigner ces produits :"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Cancel"
@@ -2442,18 +2672,6 @@ msgstr "Effectuée"
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Incoming Moves"
-msgstr "Mouvements entrants"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Inventory Moves"
-msgstr "Mouvements internes"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Other Info"
-msgstr "Autres informations"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Received"
@@ -2480,37 +2698,5 @@ msgid "Make shipment"
 msgstr "Faire l'expédition"
 
 msgctxt "view:stock.shipment.out:"
-msgid "Other Info"
-msgstr "Autres informations"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Outgoing Moves"
-msgstr "Mouvements sortants"
-
-msgctxt "view:stock.shipment.out:"
 msgid "Wait"
 msgstr "Attendre"
-
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Forcer l'assignation"
-
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Forcer l'assignation"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Forcer l'assignation"

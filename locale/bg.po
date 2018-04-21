@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending shipments "
+"for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:product.template:"
 msgid ""
 "You cannot change the default uom for a product which is associated to stock"
@@ -17,6 +23,10 @@ msgid ""
 msgstr ""
 "Не може да променяте мер. ед. на продукт който е свързан с движения на "
 "наличност."
+
+msgctxt "error:stock.inventory.line:"
+msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "error:stock.inventory.line:"
@@ -392,6 +402,10 @@ msgstr "Създадено от"
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
 msgstr "Дата"
+
+msgctxt "field:stock.inventory,empty_quantity:"
+msgid "Empty Quantity"
+msgstr ""
 
 msgctxt "field:stock.inventory,id:"
 msgid "ID"
@@ -1410,6 +1424,14 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+msgctxt "help:stock.inventory,empty_quantity:"
+msgid "How lines without quantity are handled."
+msgstr ""
+
+msgctxt "help:stock.location,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:stock.location,flat_childs:"
 msgid "Check to restrict to one level of children."
 msgstr ""
@@ -1425,115 +1447,138 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
-msgstr "Инвентаризации"
+msgstr "Inventories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
-msgstr "Местонахождения"
+msgstr "Locations"
 
 msgctxt "model:ir.action,name:act_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr ""
+msgstr "Location Lead Times"
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Locations List Quantity"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "Locations Tree Quantity"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Quantity"
-msgstr "Количество в местонахождение & себестойност"
-
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
-msgstr "Местонахождения"
+msgstr "Locations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
-msgstr "Движения"
+msgstr "Moves"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Periods"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Product Quantities By Warehouse"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
 msgstr "Продукти по местонахождения"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Пратки на доставчик"
+msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Пратка върната на доставчик"
+msgstr "Supplier Return Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Вътрешни изпращания"
+msgstr "Internal Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Пратки за клиенти"
+msgstr "Customer Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_form2"
 msgid "Customer Shipments"
-msgstr "Пратки за клиенти"
+msgstr "Customer Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
-msgstr "Пратки на доставчик"
+msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Пратки върнати от клиент"
+msgstr "Customer Return Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
-msgstr "Конфигуриране на наличност"
+msgstr "Stock Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
-msgstr "Списък за увеличаване наличност на продукт"
+msgstr "Restocking List"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Вътрешно изпращане"
+msgstr "Internal Shipment"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
 msgid "Delivery Note"
-msgstr "Бележка към доставка"
+msgstr "Delivery Note"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_shipment_out_picking_list"
 msgid "Picking List"
-msgstr "Списък за опаковане"
+msgstr "Picking List"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
-msgstr "Списък за увеличаване наличност на продукт"
+msgstr "Restocking List"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
-msgstr ""
+msgstr "Recompute Cost Price"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
 msgid "Assign Purchase Return Shipment"
-msgstr "Назначаване за връщане на пратка от покупка"
+msgstr "Assign Purchase Return Shipment"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
 msgid "Assign Shipment Internal"
-msgstr "Назначаване на вътрешна пратка"
+msgstr "Assign Shipment Internal"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
-msgid "Assign Shipment Out"
-msgstr "Назначаване на пратка за навън"
+msgid "Assign Customer Shipment"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -1543,27 +1588,27 @@ msgstr "Проект"
 
 msgctxt "model:ir.action.act_window.domain,name:act_move_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
 msgid "From Suppliers"
-msgstr ""
+msgstr "From Suppliers"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier_waiting"
 msgid "From Suppliers Waiting"
-msgstr ""
+msgstr "From Suppliers Waiting"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_to_customer"
 msgid "To Customers"
-msgstr ""
+msgstr "To Customers"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -1580,7 +1625,7 @@ msgstr "Получен"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -1603,7 +1648,7 @@ msgstr "Очакване"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -1620,12 +1665,12 @@ msgstr "Проект"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
 msgid "Requests"
-msgstr ""
+msgstr "Requests"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_shipped"
 msgid "Shipped"
-msgstr ""
+msgstr "Shipped"
 
 #, fuzzy
 msgctxt ""
@@ -1636,7 +1681,7 @@ msgstr "Очакване"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -1665,7 +1710,7 @@ msgstr "Очакване"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -1679,115 +1724,279 @@ msgctxt ""
 msgid "Received"
 msgstr "Получен"
 
+msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
+msgid "Add an inventory line for each missing products"
+msgstr "Add an inventory line for each missing products"
+
+msgctxt "model:ir.model.button,string:inventory_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
+msgid "Complete Inventory"
+msgstr "Complete Inventory"
+
+msgctxt "model:ir.model.button,string:inventory_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:move_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:move_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:move_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_internal_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_pack_button"
+msgid "Make shipment"
+msgstr "Make shipment"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_out_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
 msgstr "Инвентаризация"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Изпращане на доставчик"
+msgstr "Supplier Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Пратка върната от доставчик"
+msgstr "Supplier Return Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Вътрешна пратка"
+msgstr "Internal Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_shipment_out"
 msgid "Customer Shipment"
-msgstr "Пратка за клиент"
+msgstr "Customer Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Пратка върната от клиент"
+msgstr "Customer Return Shipment"
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
 msgstr "Инвентаризация"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Пратка на доставчик"
+msgstr "Supplier Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Пратка върната от доставчик"
+msgstr "Supplier Return Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Вътрешна пратка"
+msgstr "Internal Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
 msgid "Customer Shipment"
-msgstr "Пратка за клиент"
+msgstr "Customer Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Пратка върната от клиент"
+msgstr "Customer Return Shipment"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
-msgstr "Инвентаризации"
+msgstr "Inventories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
-msgstr "Местонахождения"
+msgstr "Locations"
+
+msgctxt "model:ir.ui.menu,name:menu_location_form2"
+msgid "Locations"
+msgstr "Locations"
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr ""
+msgstr "Location Lead Times"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
-msgstr "Местонахождения"
+msgstr "Locations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
-msgstr "Движения"
+msgstr "Moves"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "Периоди"
+msgstr "Periods"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Справки"
+msgstr "Reporting"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Пратки на доставчик"
+msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Пратка върната на доставчик"
+msgstr "Supplier Return Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Вътрешни изпращания"
+msgstr "Internal Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Пратки за клиенти"
+msgstr "Customer Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "Пратки върнати от клиент"
+msgstr "Customer Return Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
-msgstr "Инвентаризация & наличност"
+msgstr "Inventory & Stock"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
-msgstr "Конфигуриране на наличност"
+msgstr "Stock Configuration"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
@@ -1798,17 +2007,20 @@ msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
 msgstr "Продукт по местонахождение"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
-msgstr "Наличност"
+msgstr "Stock"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
-msgstr "Управление на наличност"
+msgstr "Stock Administration"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr "Нарочно назначване на наличност"
+msgstr "Stock Force Assignment"
 
 msgctxt "model:stock.configuration,name:"
 msgid "Stock Configuration"
@@ -1834,41 +2046,49 @@ msgctxt "model:stock.location,name:"
 msgid "Stock Location"
 msgstr "Местонахождение на наличност"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
-msgstr "Клиент"
+msgstr "Customer"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
-msgstr "Зона вход"
+msgstr "Input Zone"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_lost_found"
 msgid "Lost and Found"
-msgstr "Загубени и намерени"
+msgstr "Lost and Found"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
-msgstr "Зона изход"
+msgstr "Output Zone"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
-msgstr "Зона за съхранение"
+msgstr "Storage Zone"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_supplier"
 msgid "Supplier"
-msgstr "Доставчик"
+msgstr "Supplier"
 
 msgctxt "model:stock.location,name:location_transit"
 msgid "Transit"
-msgstr ""
+msgstr "Transit"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
-msgstr "Склад"
+msgstr "Warehouse"
 
+#, fuzzy
 msgctxt "model:stock.location.lead_time,name:"
 msgid "Location Lead Time"
-msgstr ""
+msgstr "Location Lead Times"
 
 msgctxt "model:stock.move,name:"
 msgid "Stock Move"
@@ -1882,13 +2102,15 @@ msgctxt "model:stock.period.cache,name:"
 msgid "Stock Period Cache"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Product Quantities By Warehouse"
 
+#, fuzzy
 msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Product Quantities By Warehouse"
 
 #, fuzzy
 msgctxt "model:stock.products_by_locations.context,name:"
@@ -1920,8 +2142,8 @@ msgid "Customer Shipment"
 msgstr "Пратка за клиент"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
-msgid "Assign Shipment Out"
-msgstr "Назначаване на пратка за навън"
+msgid "Assign Customer Shipment"
+msgstr ""
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
@@ -2165,6 +2387,18 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Склад:"
 
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Empty"
+msgstr ""
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Keep"
+msgstr ""
+
 msgctxt "selection:stock.inventory,state:"
 msgid "Canceled"
 msgstr "Отказан"
@@ -2304,13 +2538,15 @@ msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
 msgstr "Проект"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Request"
-msgstr ""
+msgstr "Requests"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Shipped"
-msgstr ""
+msgstr "Shipped"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Waiting"
@@ -2375,6 +2611,92 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Изпращания"
 
+msgctxt "view:stock.move:"
+msgid "Cancel"
+msgstr "Отказ"
+
+#, fuzzy
+msgctxt "view:stock.move:"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Изпращане в проект"
+
+msgctxt "view:stock.shipment.in.return.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "Не могат да бъдат назначени следните продукти:"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:stock.shipment.in:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:stock.shipment.internal.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "Не могат да бъдат назначени следните продукти:"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:stock.shipment.out.assign.failed:"
+msgid "Unable to assign those products:"
+msgstr "Не могат да бъдат назначени следните продукти:"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Incoming Moves"
+msgstr "Входящи движения"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Inventory Moves"
+msgstr "Движения на инвентаризация"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:stock.shipment.out:"
+msgid "Other Info"
+msgstr ""
+
+msgctxt "view:stock.shipment.out:"
+msgid "Outgoing Moves"
+msgstr "Изходящи движения"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
+msgid "OK"
+msgstr "Добре"
+
+msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Създай изрично назначение"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
+msgid "OK"
+msgstr "Добре"
+
+msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Създай изрично назначение"
+
+msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
+msgid "OK"
+msgstr "Добре"
+
+msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
+msgid "Force Assign"
+msgstr "Създай изрично назначение"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Quantity"
+msgstr "Количество в местонахождение & себестойност"
+
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
 msgstr "Добавяне на ред от инвентаризация за всеки липсващ продукт"
@@ -2391,18 +2713,6 @@ msgctxt "view:stock.inventory:"
 msgid "Confirm"
 msgstr "Потвърждаване"
 
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "view:stock.move:"
-msgid "Do"
-msgstr ""
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "Изпращане в проект"
-
 msgctxt "view:stock.period:"
 msgid "Close"
 msgstr "Затваряне"
@@ -2410,10 +2720,6 @@ msgstr "Затваряне"
 msgctxt "view:stock.period:"
 msgid "Draft"
 msgstr "Проект"
-
-msgctxt "view:stock.shipment.in.return.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Не могат да бъдат назначени следните продукти:"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Assign"
@@ -2430,10 +2736,6 @@ msgstr "Приключен"
 msgctxt "view:stock.shipment.in.return:"
 msgid "Draft"
 msgstr "Проект"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Other Info"
-msgstr ""
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Wait"
@@ -2456,20 +2758,12 @@ msgid "Inventory Moves"
 msgstr "Движения на инвентаризация"
 
 msgctxt "view:stock.shipment.in:"
-msgid "Other Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.in:"
 msgid "Receive"
 msgstr "Получаване"
 
 msgctxt "view:stock.shipment.in:"
 msgid "Reset to Draft"
 msgstr "Изпращане в проект"
-
-msgctxt "view:stock.shipment.internal.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Не могат да бъдат назначени следните продукти:"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Assign"
@@ -2487,22 +2781,10 @@ msgctxt "view:stock.shipment.internal:"
 msgid "Draft"
 msgstr "Проект"
 
-msgctxt "view:stock.shipment.internal:"
-msgid "Other Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Ship"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:stock.shipment.internal:"
 msgid "Wait"
 msgstr "Очаквано"
-
-msgctxt "view:stock.shipment.out.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Не могат да бъдат назначени следните продукти:"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Cancel"
@@ -2515,18 +2797,6 @@ msgstr "Приключен"
 msgctxt "view:stock.shipment.out.return:"
 msgid "Draft"
 msgstr "Проект"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Incoming Moves"
-msgstr "Входящи движения"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Inventory Moves"
-msgstr "Движения на инвентаризация"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Other Info"
-msgstr ""
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Received"
@@ -2552,39 +2822,7 @@ msgctxt "view:stock.shipment.out:"
 msgid "Make shipment"
 msgstr "Създаване на изпращане"
 
-msgctxt "view:stock.shipment.out:"
-msgid "Other Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.out:"
-msgid "Outgoing Moves"
-msgstr "Изходящи движения"
-
 #, fuzzy
 msgctxt "view:stock.shipment.out:"
 msgid "Wait"
 msgstr "Очаквано"
-
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "OK"
-msgstr "Добре"
-
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Създай изрично назначение"
-
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "OK"
-msgstr "Добре"
-
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Създай изрично назначение"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "OK"
-msgstr "Добре"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Създай изрично назначение"

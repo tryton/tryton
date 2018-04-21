@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending shipments "
+"for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:product.template:"
 msgid ""
 "You cannot change the default uom for a product which is associated to stock"
@@ -11,6 +17,10 @@ msgstr ""
 msgctxt "error:product.template:"
 msgid ""
 "You cannot change the type for a product which is associated to stock moves."
+msgstr ""
+
+msgctxt "error:stock.inventory.line:"
+msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
 msgstr ""
 
 msgctxt "error:stock.inventory.line:"
@@ -391,6 +401,10 @@ msgctxt "field:stock.inventory,date:"
 msgid "Date"
 msgstr "ວັນທີ"
 
+msgctxt "field:stock.inventory,empty_quantity:"
+msgid "Empty Quantity"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.inventory,id:"
 msgid "ID"
@@ -454,9 +468,10 @@ msgctxt "field:stock.inventory.line,id:"
 msgid "ID"
 msgstr "ເລກປະຈຳໂຕ"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventory"
 
 msgctxt "field:stock.inventory.line,inventory_state:"
 msgid "Inventory State"
@@ -593,9 +608,10 @@ msgctxt "field:stock.location,type:"
 msgid "Location type"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 #, fuzzy
 msgctxt "field:stock.location,write_date:"
@@ -639,9 +655,10 @@ msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
-msgstr ""
+msgstr "Warehouse"
 
 #, fuzzy
 msgctxt "field:stock.location.lead_time,write_date:"
@@ -901,9 +918,10 @@ msgctxt "field:stock.product_quantities_warehouse.context,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
@@ -1004,9 +1022,10 @@ msgctxt "field:stock.shipment.in,supplier_location:"
 msgid "Supplier Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.shipment.in,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 msgctxt "field:stock.shipment.in,warehouse_input:"
 msgid "Warehouse Input"
@@ -1261,9 +1280,10 @@ msgctxt "field:stock.shipment.out,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:stock.shipment.out,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Customer"
 
 msgctxt "field:stock.shipment.out,customer_location:"
 msgid "Customer Location"
@@ -1332,9 +1352,10 @@ msgctxt "field:stock.shipment.out,state:"
 msgid "State"
 msgstr "ສະຖານະ"
 
+#, fuzzy
 msgctxt "field:stock.shipment.out,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 msgctxt "field:stock.shipment.out,warehouse_output:"
 msgid "Warehouse Output"
@@ -1378,9 +1399,10 @@ msgctxt "field:stock.shipment.out.return,create_uid:"
 msgid "Create User"
 msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
+#, fuzzy
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Customer"
 
 msgctxt "field:stock.shipment.out.return,customer_location:"
 msgid "Customer Location"
@@ -1449,9 +1471,10 @@ msgctxt "field:stock.shipment.out.return,state:"
 msgid "State"
 msgstr "ສະຖານະ"
 
+#, fuzzy
 msgctxt "field:stock.shipment.out.return,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
 msgctxt "field:stock.shipment.out.return,warehouse_input:"
 msgid "Warehouse Input"
@@ -1494,6 +1517,14 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+msgctxt "help:stock.inventory,empty_quantity:"
+msgid "How lines without quantity are handled."
+msgstr ""
+
+msgctxt "help:stock.location,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:stock.location,flat_childs:"
 msgid "Check to restrict to one level of children."
 msgstr ""
@@ -1509,39 +1540,46 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
-msgstr "ກວດນັບສາງ"
+msgstr "Inventories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
-msgstr "ບ່ອນຢູ່"
+msgstr "Locations"
 
 msgctxt "model:ir.action,name:act_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr ""
+msgstr "Location Lead Times"
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Locations List Quantity"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "Locations Tree Quantity"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Quantity"
-msgstr "ບ່ອນຢູ່"
-
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
-msgstr "ບ່ອນຢູ່"
+msgstr "Locations"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Moves"
 msgstr "ຕັດບັນຊີສາງ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
-msgstr "ງວດ"
+msgstr "Periods"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Product Quantities By Warehouse"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_products_by_locations"
@@ -1553,9 +1591,10 @@ msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
 msgstr "ການຈັດສົ່ງຂອງຜູ່ສະໜອງ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "ການຈັດສົ່ງຄືນໃຫ້ຜູ່ສະໜອງ"
+msgstr "Supplier Return Shipments"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_shipment_internal_form"
@@ -1582,13 +1621,14 @@ msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
 msgstr "ການຈັດສົ່ງຄືນຂອງລູກຄ້າ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_stock_configuration_form"
 msgid "Stock Configuration"
-msgstr "ການຕັ້ງຄ່າສາງ"
+msgstr "Stock Configuration"
 
 msgctxt "model:ir.action,name:report_shipment_in_restocking_list"
 msgid "Restocking List"
-msgstr ""
+msgstr "Restocking List"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_shipment_internal"
@@ -1597,19 +1637,19 @@ msgstr "ຈັດສົ່ງພາຍໃນ"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
 msgid "Delivery Note"
-msgstr ""
+msgstr "Delivery Note"
 
 msgctxt "model:ir.action,name:report_shipment_out_picking_list"
 msgid "Picking List"
-msgstr ""
+msgstr "Picking List"
 
 msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
-msgstr ""
+msgstr "Restocking List"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
-msgstr ""
+msgstr "Recompute Cost Price"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
@@ -1618,10 +1658,10 @@ msgstr "ການຈັດສົ່ງຄືນໃຫ້ຜູ່ສະໜອງ
 
 msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
 msgid "Assign Shipment Internal"
-msgstr ""
+msgstr "Assign Shipment Internal"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
-msgid "Assign Shipment Out"
+msgid "Assign Customer Shipment"
 msgstr ""
 
 #, fuzzy
@@ -1643,17 +1683,17 @@ msgstr "ທັງໝົດ"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier"
 msgid "From Suppliers"
-msgstr ""
+msgstr "From Suppliers"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_from_supplier_waiting"
 msgid "From Suppliers Waiting"
-msgstr ""
+msgstr "From Suppliers Waiting"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_form_domain_to_customer"
 msgid "To Customers"
-msgstr ""
+msgstr "To Customers"
 
 #, fuzzy
 msgctxt ""
@@ -1667,10 +1707,11 @@ msgctxt ""
 msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_form_domain_received"
 msgid "Received"
-msgstr ""
+msgstr "Received"
 
 #, fuzzy
 msgctxt ""
@@ -1678,10 +1719,11 @@ msgctxt ""
 msgid "All"
 msgstr "ທັງໝົດ"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_assigned"
 msgid "Assigned"
-msgstr ""
+msgstr "Assigned"
 
 #, fuzzy
 msgctxt ""
@@ -1692,7 +1734,7 @@ msgstr "ຊົ່ວຄາວ"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_in_return_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 #, fuzzy
 msgctxt ""
@@ -1700,10 +1742,11 @@ msgctxt ""
 msgid "All"
 msgstr "ທັງໝົດ"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_assigned"
 msgid "Assigned"
-msgstr ""
+msgstr "Assigned"
 
 #, fuzzy
 msgctxt ""
@@ -1714,17 +1757,17 @@ msgstr "ຊົ່ວຄາວ"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_requests"
 msgid "Requests"
-msgstr ""
+msgstr "Requests"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_shipped"
 msgid "Shipped"
-msgstr ""
+msgstr "Shipped"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_internal_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 #, fuzzy
 msgctxt ""
@@ -1732,10 +1775,11 @@ msgctxt ""
 msgid "All"
 msgstr "ທັງໝົດ"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_assigned"
 msgid "Assigned"
-msgstr ""
+msgstr "Assigned"
 
 #, fuzzy
 msgctxt ""
@@ -1746,12 +1790,12 @@ msgstr "ຊົ່ວຄາວ"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_packed"
 msgid "Packed"
-msgstr ""
+msgstr "Packed"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 #, fuzzy
 msgctxt ""
@@ -1765,14 +1809,151 @@ msgctxt ""
 msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_return_form_domain_received"
 msgid "Received"
-msgstr ""
+msgstr "Received"
+
+msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
+msgid "Add an inventory line for each missing products"
+msgstr "Add an inventory line for each missing products"
+
+msgctxt "model:ir.model.button,string:inventory_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
+msgid "Complete Inventory"
+msgstr "Complete Inventory"
+
+msgctxt "model:ir.model.button,string:inventory_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:move_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:move_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:move_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_draft_button"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_internal_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_pack_button"
+msgid "Make shipment"
+msgstr "Make shipment"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
+msgid "Receive"
+msgstr "Receive"
+
+msgctxt "model:ir.model.button,string:shipment_out_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventory"
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
@@ -1801,7 +1982,7 @@ msgstr "ການຈັດສົ່ງຄືນຂອງລູກຄ້າ"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventory"
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
@@ -1828,66 +2009,83 @@ msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
 msgstr "ການຈັດສົ່ງຄືນຂອງລູກຄ້າ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "ການຕັ້ງຄ່າ"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_inventory_form"
 msgid "Inventories"
-msgstr "ກວດນັບສາງ"
+msgstr "Inventories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_location_form"
 msgid "Locations"
-msgstr "ບ່ອນຢູ່"
+msgstr "Locations"
+
+msgctxt "model:ir.ui.menu,name:menu_location_form2"
+msgid "Locations"
+msgstr "Locations"
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
-msgstr ""
+msgstr "Location Lead Times"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_location_tree"
 msgid "Locations"
-msgstr "ບ່ອນຢູ່"
+msgstr "Locations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Moves"
-msgstr "ຕັດບັນຊີສາງ"
+msgstr "Moves"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_list"
 msgid "Periods"
-msgstr "ງວດ"
+msgstr "Periods"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "ກຳລັງລາຍງາຍ"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "ການຈັດສົ່ງຂອງຜູ່ສະໜອງ"
+msgstr "Supplier Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "ການຈັດສົ່ງຄືນໃຫ້ຜູ່ສະໜອງ"
+msgstr "Supplier Return Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "ຈັດສົ່ງພາຍໃນ"
+msgstr "Internal Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "ຈັດສົ່ງໃຫ້ລູກຄ້າ"
+msgstr "Customer Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
-msgstr "ການຈັດສົ່ງຄືນຂອງລູກຄ້າ"
+msgstr "Customer Return Shipments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock"
 msgid "Inventory & Stock"
-msgstr "ກວດນັບ & ຄຸ້ມຄອງສາງ"
+msgstr "Inventory & Stock"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock_configuration"
 msgid "Stock Configuration"
-msgstr "ການຕັ້ງຄ່າສາງ"
+msgstr "Stock Configuration"
 
 msgctxt "model:party.party.location,name:"
 msgid "Party Location"
@@ -1905,11 +2103,11 @@ msgstr "ສາງ"
 
 msgctxt "model:res.group,name:group_stock_admin"
 msgid "Stock Administration"
-msgstr ""
+msgstr "Stock Administration"
 
 msgctxt "model:res.group,name:group_stock_force_assignment"
 msgid "Stock Force Assignment"
-msgstr ""
+msgstr "Stock Force Assignment"
 
 #, fuzzy
 msgctxt "model:stock.configuration,name:"
@@ -1938,11 +2136,11 @@ msgstr ""
 
 msgctxt "model:stock.location,name:location_customer"
 msgid "Customer"
-msgstr ""
+msgstr "Customer"
 
 msgctxt "model:stock.location,name:location_input"
 msgid "Input Zone"
-msgstr ""
+msgstr "Input Zone"
 
 #, fuzzy
 msgctxt "model:stock.location,name:location_lost_found"
@@ -1951,11 +2149,11 @@ msgstr "ລໍຮັບຈ່າຍ"
 
 msgctxt "model:stock.location,name:location_output"
 msgid "Output Zone"
-msgstr ""
+msgstr "Output Zone"
 
 msgctxt "model:stock.location,name:location_storage"
 msgid "Storage Zone"
-msgstr ""
+msgstr "Storage Zone"
 
 #, fuzzy
 msgctxt "model:stock.location,name:location_supplier"
@@ -1964,15 +2162,16 @@ msgstr "ຜູ້ສະໜອງ"
 
 msgctxt "model:stock.location,name:location_transit"
 msgid "Transit"
-msgstr ""
+msgstr "Transit"
 
 msgctxt "model:stock.location,name:location_warehouse"
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
+#, fuzzy
 msgctxt "model:stock.location.lead_time,name:"
 msgid "Location Lead Time"
-msgstr ""
+msgstr "Location Lead Times"
 
 #, fuzzy
 msgctxt "model:stock.move,name:"
@@ -1987,13 +2186,15 @@ msgctxt "model:stock.period.cache,name:"
 msgid "Stock Period Cache"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Product Quantities By Warehouse"
 
+#, fuzzy
 msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
-msgstr ""
+msgstr "Product Quantities By Warehouse"
 
 #, fuzzy
 msgctxt "model:stock.products_by_locations.context,name:"
@@ -2020,9 +2221,10 @@ msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
 msgstr "ຈັດສົ່ງພາຍໃນ"
 
+#, fuzzy
 msgctxt "model:stock.shipment.internal.assign.failed,name:"
 msgid "Assign Shipment Internal"
-msgstr ""
+msgstr "Assign Shipment Internal"
 
 #, fuzzy
 msgctxt "model:stock.shipment.out,name:"
@@ -2030,7 +2232,7 @@ msgid "Customer Shipment"
 msgstr "ການຈັດສົ່ງຂອງຜູ້ສະໜອງ"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
-msgid "Assign Shipment Out"
+msgid "Assign Customer Shipment"
 msgstr ""
 
 #, fuzzy
@@ -2070,9 +2272,10 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Reference:"
 msgstr "ເອກະສານອ້າງອີງ"
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Restocking List"
-msgstr ""
+msgstr "Restocking List"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Shipment Number"
@@ -2087,9 +2290,10 @@ msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Warehouse"
 
 #, fuzzy
 msgctxt "report:stock.shipment.internal.report:"
@@ -2157,9 +2361,10 @@ msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Date:"
 msgstr "ວັນທີ"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Delivery Note"
-msgstr ""
+msgstr "Delivery Note"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
@@ -2188,17 +2393,19 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid ":"
 msgstr ":"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Customer:"
-msgstr ""
+msgstr "Customer"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "From Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Picking List"
-msgstr ""
+msgstr "Picking List"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Planned Date:"
@@ -2226,9 +2433,10 @@ msgctxt "report:stock.shipment.out.picking_list:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Warehouse:"
-msgstr ""
+msgstr "Warehouse"
 
 #, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
@@ -2240,9 +2448,10 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid ":"
 msgstr ":"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Customer"
-msgstr ""
+msgstr "Customer"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "From Location"
@@ -2270,9 +2479,10 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Reference:"
 msgstr "ເອກະສານອ້າງອີງ"
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Restocking List"
-msgstr ""
+msgstr "Restocking List"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Shipment"
@@ -2282,8 +2492,21 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "To Location"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
+msgstr "Warehouse"
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Empty"
+msgstr ""
+
+msgctxt "selection:stock.inventory,empty_quantity:"
+msgid "Keep"
 msgstr ""
 
 msgctxt "selection:stock.inventory,state:"
@@ -2315,9 +2538,10 @@ msgctxt "selection:stock.inventory.line,inventory_state:"
 msgid "Draft"
 msgstr "ຮ່າງກຽມ"
 
+#, fuzzy
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Customer"
 
 msgctxt "selection:stock.location,type:"
 msgid "Drop"
@@ -2345,13 +2569,15 @@ msgctxt "selection:stock.location,type:"
 msgid "View"
 msgstr "ເບິ່ງ"
 
+#, fuzzy
 msgctxt "selection:stock.location,type:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Warehouse"
 
+#, fuzzy
 msgctxt "selection:stock.move,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Assign"
 
 msgctxt "selection:stock.move,state:"
 msgid "Canceled"
@@ -2393,13 +2619,15 @@ msgctxt "selection:stock.shipment.in,state:"
 msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.in,state:"
 msgid "Received"
-msgstr ""
+msgstr "Receive"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Assign"
 
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Canceled"
@@ -2415,13 +2643,15 @@ msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Assign"
 
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Canceled"
@@ -2437,21 +2667,25 @@ msgctxt "selection:stock.shipment.internal,state:"
 msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Request"
-msgstr ""
+msgstr "Requests"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Shipped"
-msgstr ""
+msgstr "Shipped"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Assigned"
-msgstr ""
+msgstr "Assign"
 
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Canceled"
@@ -2467,13 +2701,15 @@ msgctxt "selection:stock.shipment.out,state:"
 msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Packed"
-msgstr ""
+msgstr "Packed"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Canceled"
@@ -2489,9 +2725,10 @@ msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.out.return,state:"
 msgid "Received"
-msgstr ""
+msgstr "Receive"
 
 #, fuzzy
 msgctxt "view:party.party:"
@@ -2502,109 +2739,40 @@ msgctxt "view:product.product:"
 msgid "Cost Value"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
-msgstr ""
+msgstr "Inventory"
 
 msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr ""
 
-msgctxt "view:stock.inventory:"
-msgid "Add an inventory line for each missing products"
-msgstr ""
-
-msgctxt "view:stock.inventory:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-msgctxt "view:stock.inventory:"
-msgid "Complete Inventory"
-msgstr ""
-
-msgctxt "view:stock.inventory:"
-msgid "Confirm"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:stock.move:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
+#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Do"
-msgstr ""
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr ""
+msgstr "Do"
 
 #, fuzzy
-msgctxt "view:stock.period:"
-msgid "Close"
-msgstr "ປິດແລ້ວ"
-
-msgctxt "view:stock.period:"
-msgid "Draft"
-msgstr "ຮ່າງກຽມ"
+msgctxt "view:stock.move:"
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr ""
 
 msgctxt "view:stock.shipment.in.return:"
-msgid "Assign"
-msgstr ""
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.in.return:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.in.return:"
-msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Other Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Wait"
-msgstr ""
-
-msgctxt "view:stock.shipment.in:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.in:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Incoming Moves"
-msgstr ""
-
-msgctxt "view:stock.shipment.in:"
-msgid "Inventory Moves"
-msgstr ""
-
-msgctxt "view:stock.shipment.in:"
 msgid "Other Info"
 msgstr ""
 
 msgctxt "view:stock.shipment.in:"
-msgid "Receive"
-msgstr ""
-
-msgctxt "view:stock.shipment.in:"
-msgid "Reset to Draft"
+msgid "Other Info"
 msgstr ""
 
 msgctxt "view:stock.shipment.internal.assign.failed:"
@@ -2612,52 +2780,12 @@ msgid "Unable to assign those products:"
 msgstr ""
 
 msgctxt "view:stock.shipment.internal:"
-msgid "Assign"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.internal:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.internal:"
-msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
-
-msgctxt "view:stock.shipment.internal:"
 msgid "Other Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Ship"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Wait"
 msgstr ""
 
 msgctxt "view:stock.shipment.out.assign.failed:"
 msgid "Unable to assign those products:"
 msgstr ""
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.out.return:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.out.return:"
-msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Incoming Moves"
@@ -2669,32 +2797,6 @@ msgstr ""
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
-msgstr ""
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Received"
-msgstr ""
-
-msgctxt "view:stock.shipment.out:"
-msgid "Assign"
-msgstr ""
-
-msgctxt "view:stock.shipment.out:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.out:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-#, fuzzy
-msgctxt "view:stock.shipment.out:"
-msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Make shipment"
 msgstr ""
 
 msgctxt "view:stock.shipment.out:"
@@ -2703,10 +2805,6 @@ msgstr ""
 
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
-msgstr ""
-
-msgctxt "view:stock.shipment.out:"
-msgid "Wait"
 msgstr ""
 
 #, fuzzy
@@ -2735,3 +2833,86 @@ msgstr "ຕົກລົງ"
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
 msgid "Force Assign"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Quantity"
+msgstr "ບ່ອນຢູ່"
+
+msgctxt "view:stock.inventory:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "view:stock.period:"
+msgid "Close"
+msgstr "ປິດແລ້ວ"
+
+msgctxt "view:stock.period:"
+msgid "Draft"
+msgstr "ຮ່າງກຽມ"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.in.return:"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.in.return:"
+msgid "Draft"
+msgstr "ຊົ່ວຄາວ"
+
+msgctxt "view:stock.shipment.in:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.in:"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.internal:"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.internal:"
+msgid "Draft"
+msgstr "ຊົ່ວຄາວ"
+
+msgctxt "view:stock.shipment.out.return:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.out.return:"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.out.return:"
+msgid "Draft"
+msgstr "ຊົ່ວຄາວ"
+
+msgctxt "view:stock.shipment.out:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.out:"
+msgid "Done"
+msgstr "ແລ້ວໆ"
+
+#, fuzzy
+msgctxt "view:stock.shipment.out:"
+msgid "Draft"
+msgstr "ຊົ່ວຄາວ"
