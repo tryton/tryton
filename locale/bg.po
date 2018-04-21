@@ -18,3 +18,7 @@ msgstr "Аналитични сметки"
 msgctxt "field:purchase.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
 msgstr "Аналитични сметки"
+
+msgctxt "view:purchase.line:"
+msgid "Analytic"
+msgstr ""

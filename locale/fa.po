@@ -4,20 +4,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.line:"
 msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "Erforderliches Wurzelkonto für \"%(name)s\" fehlt"
+msgstr "برخی از الزامات حساب ریشه مفقود شده است در: \"٪ s\""
 
 msgctxt "error:purchase.purchase:"
 msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
-msgstr "Kostenstelle ist erforderlich \"%(roots)s\" für Zeile \"%(line)s\""
+msgstr "حساب تحلیلی برای ریشه: \"٪ s\" در خط : \"٪ s\" مورد نیاز است."
 
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Kostenstellen"
+msgstr "تجزیه و تحلیل حساب ها"
 
 msgctxt "field:purchase.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Kostenstellengröße"
+msgstr "اندازه تجزیه و تحلیل حساب ها"
 
 msgctxt "view:purchase.line:"
 msgid "Analytic"
-msgstr "Kostenstelle"
+msgstr "تحلیلی"
