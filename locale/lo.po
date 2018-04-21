@@ -50,13 +50,15 @@ msgctxt "model:account.fr.fec.start,name:"
 msgid "Generate FEC"
 msgstr "ສ້າງ FEC"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_fec"
 msgid "Generate FEC"
-msgstr "ສ້າງ FEC"
+msgstr "Generate FEC"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_fec"
 msgid "Generate FEC"
-msgstr "ສ້າງ FEC"
+msgstr "Generate FEC"
 
 msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"

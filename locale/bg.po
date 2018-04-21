@@ -47,21 +47,23 @@ msgctxt "help:account.fr.fec.start,deferral_post_number:"
 msgid "Post number used for pseudo deferral move"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.fr.fec.result,name:"
 msgid "Generate FEC"
-msgstr ""
+msgstr "Generate FEC"
 
+#, fuzzy
 msgctxt "model:account.fr.fec.start,name:"
 msgid "Generate FEC"
-msgstr ""
+msgstr "Generate FEC"
 
 msgctxt "model:ir.action,name:act_fec"
 msgid "Generate FEC"
-msgstr ""
+msgstr "Generate FEC"
 
 msgctxt "model:ir.ui.menu,name:menu_fec"
 msgid "Generate FEC"
-msgstr ""
+msgstr "Generate FEC"
 
 msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
