@@ -13,3 +13,7 @@ msgstr "conti analitici"
 msgctxt "field:sale.line,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
 msgstr "dimensione conti analitici"
+
+msgctxt "view:sale.line:"
+msgid "Analytic"
+msgstr ""
