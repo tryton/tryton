@@ -41,14 +41,16 @@ msgctxt "field:production.configuration.supply_period,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr "Termelés igénylés"
+msgstr "Request Productions"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
 msgid "Production"
-msgstr "Termelés"
+msgstr "Production"
 
 msgctxt "model:production.configuration.supply_period,name:"
 msgid "Production Configuration Supply Period"

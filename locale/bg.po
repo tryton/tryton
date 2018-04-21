@@ -41,7 +41,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr ""
+msgstr "Request Productions"
 
 #, fuzzy
 msgctxt ""

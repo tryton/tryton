@@ -24,7 +24,7 @@ msgstr "ID"
 
 msgctxt "field:production.configuration.supply_period,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"
@@ -38,14 +38,16 @@ msgctxt "field:production.configuration.supply_period,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr "Proizvodni zahtevki"
+msgstr "Request Productions"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
 msgid "Production"
-msgstr "Proizvodnja"
+msgstr "Production"
 
 msgctxt "model:production.configuration.supply_period,name:"
 msgid "Production Configuration Supply Period"

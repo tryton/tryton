@@ -24,7 +24,7 @@ msgstr "ID"
 
 msgctxt "field:production.configuration.supply_period,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"
