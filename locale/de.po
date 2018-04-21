@@ -42,7 +42,7 @@ msgstr "ID"
 
 msgctxt "field:company.employee_cost_price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:company.employee_cost_price,write_date:"
 msgid "Write Date"
