@@ -247,6 +247,39 @@ msgctxt "field:party.party.dunning_procedure,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+msgctxt "help:account.configuration,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+
+msgctxt ""
+"help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+
+msgctxt "help:account.dunning,blocked:"
+msgid "Check to block further levels of the procedure."
+msgstr ""
+
+msgctxt "help:account.dunning,company:"
+msgid "Make the dunning belong to the company."
+msgstr ""
+
+msgctxt "help:account.dunning,line:"
+msgid "The receivable line to dun for."
+msgstr ""
+
+msgctxt "help:account.dunning.create.start,date:"
+msgid "Create dunning up to this date."
+msgstr ""
+
+msgctxt "help:account.dunning.level,overdue:"
+msgid "When the level should be applied."
+msgstr ""
+
+msgctxt "help:account.dunning.procedure,name:"
+msgid "The main identifier of the Dunning Procedure."
+msgstr ""
+
 msgctxt "model:account.configuration.default_dunning_procedure,name:"
 msgid "Account Configuration Default Dunning Procedure"
 msgstr ""
@@ -273,23 +306,23 @@ msgstr "Crear cobro contable"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de cobro"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr "Crear cobros"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr "Procesar cobro"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
@@ -297,7 +330,7 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -305,23 +338,23 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Cobranzas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr "Crear cobros"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr "Cobros"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Procedimientos de cobro"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Cobranzas"
+msgstr ""
 
 msgctxt "model:party.party.dunning_procedure,name:"
 msgid "Party Dunning Procedure"
@@ -329,7 +362,7 @@ msgstr "Procedimiento de cobro por defecto"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Cobranza"
+msgstr ""
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"

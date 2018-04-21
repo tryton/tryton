@@ -243,6 +243,39 @@ msgctxt "field:party.party.dunning_procedure,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:account.configuration,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr "El procediment de reclamació per defecte pels nous clients."
+
+msgctxt ""
+"help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr "El procediment de reclamació per defecte pels nous clients."
+
+msgctxt "help:account.dunning,blocked:"
+msgid "Check to block further levels of the procedure."
+msgstr "Marqueu per bloquejar els propers nivells del procediment."
+
+msgctxt "help:account.dunning,company:"
+msgid "Make the dunning belong to the company."
+msgstr "Feu que el procediment de reclamació pertanyi a l'empresa."
+
+msgctxt "help:account.dunning,line:"
+msgid "The receivable line to dun for."
+msgstr "El apunt a cobrar a reclamar."
+
+msgctxt "help:account.dunning.create.start,date:"
+msgid "Create dunning up to this date."
+msgstr "Crea reclamacions fins a aquesta data."
+
+msgctxt "help:account.dunning.level,overdue:"
+msgid "When the level should be applied."
+msgstr "Quan s'ha d'aplicar el nivell."
+
+msgctxt "help:account.dunning.procedure,name:"
+msgid "The main identifier of the Dunning Procedure."
+msgstr "L'identificador principal del procediment de reclamació."
+
 msgctxt "model:account.configuration.default_dunning_procedure,name:"
 msgid "Account Configuration Default Dunning Procedure"
 msgstr "Configuració del procediment de reclamació per defecte"
@@ -293,7 +326,7 @@ msgstr "Tot"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Finalitzada"
+msgstr "Finalitzat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
@@ -325,7 +358,7 @@ msgstr "Procediment de reclamació per defecte"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Reclamació"
+msgstr "Reclamacions"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Done"

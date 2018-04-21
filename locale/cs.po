@@ -200,17 +200,20 @@ msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
+#, fuzzy
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr ""
+msgstr "Dunning Procedures"
 
+#, fuzzy
 msgctxt "field:party.party,dunning_procedures:"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Dunning Procedures"
 
 msgctxt "field:party.party.dunning_procedure,create_date:"
 msgid "Create Date"
@@ -220,9 +223,10 @@ msgctxt "field:party.party.dunning_procedure,create_uid:"
 msgid "Create User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr ""
+msgstr "Dunning Procedures"
 
 msgctxt "field:party.party.dunning_procedure,id:"
 msgid "ID"
@@ -242,6 +246,39 @@ msgstr ""
 
 msgctxt "field:party.party.dunning_procedure,write_uid:"
 msgid "Write User"
+msgstr ""
+
+msgctxt "help:account.configuration,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+
+msgctxt ""
+"help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
+msgid "The default dunning procedure for new customers."
+msgstr ""
+
+msgctxt "help:account.dunning,blocked:"
+msgid "Check to block further levels of the procedure."
+msgstr ""
+
+msgctxt "help:account.dunning,company:"
+msgid "Make the dunning belong to the company."
+msgstr ""
+
+msgctxt "help:account.dunning,line:"
+msgid "The receivable line to dun for."
+msgstr ""
+
+msgctxt "help:account.dunning.create.start,date:"
+msgid "Create dunning up to this date."
+msgstr ""
+
+msgctxt "help:account.dunning.level,overdue:"
+msgid "When the level should be applied."
+msgstr ""
+
+msgctxt "help:account.dunning.procedure,name:"
+msgid "The main identifier of the Dunning Procedure."
 msgstr ""
 
 msgctxt "model:account.configuration.default_dunning_procedure,name:"
@@ -270,55 +307,55 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Dunning Procedures"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr ""
+msgstr "Create Dunnings"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr ""
+msgstr "Process Dunning"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "Done"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr ""
+msgstr "Create Dunnings"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Dunning Procedures"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr ""
+msgstr "Dunnings"
 
 msgctxt "model:party.party.dunning_procedure,name:"
 msgid "Party Dunning Procedure"
@@ -326,31 +363,36 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr ""
+msgstr "Dunning"
 
+#, fuzzy
 msgctxt "selection:account.dunning,state:"
 msgid "Done"
-msgstr ""
+msgstr "Done"
 
+#, fuzzy
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr ""
+msgstr "Dunning"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr ""
+msgstr "Process Dunning"
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr ""
+msgstr "Dunning"
 
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"
