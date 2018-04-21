@@ -28,7 +28,7 @@ msgstr "Izdelek"
 
 msgctxt "field:stock.product.location,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.product.location,sequence:"
 msgid "Sequence"
