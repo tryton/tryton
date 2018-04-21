@@ -268,8 +268,6 @@ def convert_value(field, value, context=None):
         format_ = context.get('date_format', '%x') + ' %X'
         try:
             dt = date_parse(value, format_)
-            if dt.time() == datetime.time.min:
-                return dt
             return untimezoned_date(dt)
         except ValueError:
             return
@@ -403,16 +401,17 @@ def test_convert_datetime():
         'format': '"%H:%M:%S"',
         }
     for value, result in (
-            ('12/04/2002', datetime.datetime(2002, 12, 4)),
+            ('12/04/2002', untimezoned_date(datetime.datetime(2002, 12, 4))),
             ('12/04/2002 12:30:00', untimezoned_date(
                     datetime.datetime(2002, 12, 4, 12, 30))),
-            ('02/03/04', datetime.datetime(2004, 2, 3)),
+            ('02/03/04', untimezoned_date(datetime.datetime(2004, 2, 3))),
             ('02/03/04 05:06:07', untimezoned_date(
                     datetime.datetime(2004, 2, 3, 5, 6, 7))),
             ('test', None),
             (None, None),
             ):
-        assert convert_value(field, value) == result
+        assert convert_value(field, value) == result, (value,
+            convert_value(field, value), result)
 
 
 def test_convert_date():
@@ -490,12 +489,12 @@ def format_value(field, value, target=None, context=None):
         if not value:
             return ''
         format_ = context.get('date_format', '%x') + ' ' + time_format(field)
-        if (not isinstance(value, datetime.datetime)
-                or value.time() == datetime.time.min):
-            format_ = '%x'
-            time = value
+        if not isinstance(value, datetime.datetime):
+            time = datetime.datetime.combine(value, datetime.time.min)
         else:
             time = timezoned_date(value)
+        if time.time() == datetime.time.min:
+            format_ = '%x'
         return datetime_strftime(time, format_)
 
     def format_date():
@@ -628,7 +627,7 @@ def test_format_datetime():
         }
     for value, result in (
             (datetime.date(2002, 12, 4), '12/04/2002'),
-            (datetime.datetime(2002, 12, 4), '12/04/2002'),
+            (untimezoned_date(datetime.datetime(2002, 12, 4)), '12/04/2002'),
             (untimezoned_date(datetime.datetime(2002, 12, 4, 12, 30)),
                 '"12/04/2002 12:30:00"'),
             (False, ''),
