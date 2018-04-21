@@ -74,9 +74,10 @@ msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.ec_sales_list,name:"
 msgid "EC Sales List"
-msgstr ""
+msgstr "EC Sales List"
 
 msgctxt "model:account.ec_sales_list.context,name:"
 msgid "EC Sales List Context"
@@ -84,16 +85,18 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_ec_sales_list_form"
 msgid "EC Sales List"
-msgstr ""
+msgstr "EC Sales List"
 
 msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
 msgid "EC Sales List"
-msgstr ""
+msgstr "EC Sales List"
 
+#, fuzzy
 msgctxt "view:account.tax.template:"
 msgid "EC Sales List"
-msgstr ""
+msgstr "EC Sales List"
 
+#, fuzzy
 msgctxt "view:account.tax:"
 msgid "EC Sales List"
-msgstr ""
+msgstr "EC Sales List"

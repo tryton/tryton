@@ -84,11 +84,11 @@ msgstr "Contexte de la liste des ventes CE"
 
 msgctxt "model:ir.action,name:act_ec_sales_list_form"
 msgid "EC Sales List"
-msgstr "Liste des ventes CE"
+msgstr "Liste EC des ventes"
 
 msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
 msgid "EC Sales List"
-msgstr "Liste des ventes CE"
+msgstr "Liste EC des ventes"
 
 msgctxt "view:account.tax.template:"
 msgid "EC Sales List"
