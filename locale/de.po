@@ -68,7 +68,7 @@ msgstr "Passwort"
 
 msgctxt "field:carrier.credential.ups,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
@@ -100,7 +100,7 @@ msgstr "UPS Anmeldedaten"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr "UPS Versand erstellen"
+msgstr "UPS Versand für Pakete erstellen"
 
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"

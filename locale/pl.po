@@ -96,15 +96,17 @@ msgstr "UPS Credentials"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr ""
+msgstr "Create UPS Shipping for Packages"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr ""
+msgstr "UPS Credentials"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr ""
+msgstr "UPS Credentials"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"

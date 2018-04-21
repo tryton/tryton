@@ -66,7 +66,7 @@ msgstr "Geslo"
 
 msgctxt "field:carrier.credential.ups,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
@@ -96,17 +96,20 @@ msgctxt "model:carrier.credential.ups,name:"
 msgid "UPS Credential"
 msgstr "UPS prijava"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr "Izdelava UPS paketne dostave"
+msgstr "Create UPS Shipping for Packages"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS prijava"
+msgstr "UPS Credentials"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS prijava"
+msgstr "UPS Credentials"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"

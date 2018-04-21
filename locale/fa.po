@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.create_shipping.ups:"
 msgid "Shipment \"%(shipment)s\" already has a reference number."
-msgstr ""
+msgstr "محموله : \"%s\" در حال حاضر شماره مرجع دارد."
 
 msgctxt "error:stock.shipment.create_shipping.ups:"
 msgid ""
@@ -12,127 +12,122 @@ msgid ""
 "\n"
 "%(message)s"
 msgstr ""
+"تماس با وب سرویس UPS با پیغام خطای زیر انجام نشد :\n"
+"\n"
+"\"%s\" : پیام"
 
 msgctxt "error:stock.shipment.out:"
 msgid "A phone number is required for party \"%(party)s\"."
-msgstr ""
+msgstr "ارائه یک شماره تلفن برای نهاد/سازمان : \"%s\" الزامی است."
 
 msgctxt "error:stock.shipment.out:"
 msgid "A shipping description is required for shipment \"%(shipment)s\"."
-msgstr ""
+msgstr "یک شرح حمل ونقل برای محموله: \"%s\" الزامی است."
 
 msgctxt "field:carrier,ups_label_height:"
 msgid "Label Height"
-msgstr ""
+msgstr "ارتفاع برچسب"
 
 msgctxt "field:carrier,ups_label_image_format:"
 msgid "Label Image Format"
-msgstr ""
+msgstr "فرمت تصویر برچسب"
 
 msgctxt "field:carrier,ups_service_type:"
 msgid "Service Type"
-msgstr ""
+msgstr "نوع خدمات"
 
 msgctxt "field:carrier.credential.ups,account_number:"
 msgid "Account Number"
-msgstr ""
+msgstr "شماره حساب"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
-msgstr "ຫ້ອງການ/ສຳນັກງານ"
+msgstr "شرکت"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "شناسه"
 
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
-msgstr ""
+msgstr "لایسنس"
 
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
-msgstr ""
+msgstr "کلمه عبور"
 
 msgctxt "field:carrier.credential.ups,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
-msgstr ""
+msgstr "سرور"
 
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
-msgstr ""
+msgstr "استفاده از متریک"
 
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
-msgstr ""
+msgstr "شناسه کاربر"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "نوشته کاربر"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
-msgstr ""
+msgstr "کد سرویس UPS"
 
-#, fuzzy
 msgctxt "model:carrier.credential.ups,name:"
 msgid "UPS Credential"
-msgstr "UPS Credentials"
+msgstr "گواهی نامه UPS"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr "Create UPS Shipping for Packages"
+msgstr "ایجاد حمل ونقل UPS برای بسته ها"
 
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr "گواهی نامه UPS"
 
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr "گواهی نامه های UPS"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"
-msgstr ""
+msgstr "UPS"
 
-#, fuzzy
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Production"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "تهیه کننده"
 
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
-msgstr ""
+msgstr "آزمایش"
 
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Informations"
-msgstr ""
+msgstr "اطلاعات گواهی نامه"
 
 msgctxt "view:carrier:"
 msgid "UPS"
-msgstr ""
+msgstr "UPS"
 
 msgctxt "view:stock.package.type:"
 msgid "UPS"
-msgstr ""
+msgstr "UPS"
