@@ -1486,6 +1486,8 @@ def test_parse_clause():
     assert rlist(dom.parse_clause([('Many2One', None, ['John', 'Jane'])])) == [
         ('many2one.rec_name', 'in', ['John', 'Jane']),
         ]
+    assert rlist(dom.parse_clause(iter([iter([['John']])]))) == [
+        [('rec_name', 'ilike', '%John%')]]
 
 
 def test_completion():
