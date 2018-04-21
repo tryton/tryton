@@ -529,13 +529,19 @@ msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Изход на производство"
 
+msgctxt "help:production.bom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
-msgstr "Спецификация"
+msgstr "BOM"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
-msgstr "Спецификации"
+msgstr "BOMs"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_in_bom"
@@ -547,36 +553,40 @@ msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
 msgstr "Производства"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
-msgstr "Настройки на Производство"
+msgstr "Production Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr "Производства"
+msgstr "Productions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
-msgstr "Назначаване на производство"
+msgstr "Assign Production"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
-msgstr "Дърво от Спецификация"
+msgstr "BOM Tree"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
 msgid "As Inputs"
-msgstr ""
+msgstr "As Inputs"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
 msgid "As Outputs"
-msgstr ""
+msgstr "As Outputs"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -608,38 +618,73 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Очакване"
 
+msgctxt "model:ir.model.button,string:production_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:production_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:production_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:production_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:production_reset_bom_button"
+msgid "Reset to BOM"
+msgstr "Reset to BOM"
+
+msgctxt "model:ir.model.button,string:production_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:production_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
-msgstr "Производство"
+msgstr "Production"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
-msgstr "Производство"
+msgstr "Production"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
-msgstr "Спецификации"
+msgstr "BOMs"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Настройки"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
-msgstr "Управление на производство"
+msgstr "Production"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
 msgstr "Производства"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
-msgstr "Настройки Производство"
+msgstr "Production Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr "Производства"
+msgstr "Productions"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
@@ -689,17 +734,20 @@ msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
-msgstr "Производство"
+msgstr "Production"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
-msgstr "Администрация Производство"
+msgstr "Production Administration"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
-msgstr "Производство"
+msgstr "Production"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -743,40 +791,12 @@ msgid "Lines"
 msgstr "Редове"
 
 msgctxt "view:production:"
-msgid "Assign"
-msgstr "Назначаване"
-
-msgctxt "view:production:"
-msgid "Cancel"
-msgstr "Отказване"
-
-msgctxt "view:production:"
-msgid "Done"
-msgstr "Приключено"
-
-msgctxt "view:production:"
-msgid "Draft"
-msgstr "Проект"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "Редове"
 
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Друга информация"
-
-msgctxt "view:production:"
-msgid "Reset to BOM"
-msgstr ""
-
-msgctxt "view:production:"
-msgid "Run"
-msgstr "Изпълнявано"
-
-msgctxt "view:production:"
-msgid "Wait"
-msgstr "Очаквано"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
@@ -801,3 +821,27 @@ msgstr "Затваряне"
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
 msgstr "Промяна"
+
+msgctxt "view:production:"
+msgid "Assign"
+msgstr "Назначаване"
+
+msgctxt "view:production:"
+msgid "Cancel"
+msgstr "Отказване"
+
+msgctxt "view:production:"
+msgid "Done"
+msgstr "Приключено"
+
+msgctxt "view:production:"
+msgid "Draft"
+msgstr "Проект"
+
+msgctxt "view:production:"
+msgid "Run"
+msgstr "Изпълнявано"
+
+msgctxt "view:production:"
+msgid "Wait"
+msgstr "Очаквано"

@@ -515,6 +515,10 @@ msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Sortie de production"
 
+msgctxt "help:production.bom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
 msgstr "Nomenclature"
@@ -541,7 +545,7 @@ msgstr "Productions"
 
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
-msgstr "Productions assignées"
+msgstr "Assigner la production"
 
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
@@ -565,17 +569,17 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
-msgstr "Assigné"
+msgstr "Assignées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "Demandes"
+msgstr "Demandées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
@@ -585,7 +589,35 @@ msgstr "En cours"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "En attentes"
+
+msgctxt "model:ir.model.button,string:production_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:production_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:production_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:production_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:production_reset_bom_button"
+msgid "Reset to BOM"
+msgstr "Reset to BOM"
+
+msgctxt "model:ir.model.button,string:production_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:production_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
@@ -720,40 +752,12 @@ msgid "Lines"
 msgstr "Lignes"
 
 msgctxt "view:production:"
-msgid "Assign"
-msgstr "Assigner"
-
-msgctxt "view:production:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:production:"
-msgid "Done"
-msgstr "Terminer"
-
-msgctxt "view:production:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "Lignes"
 
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Autre information"
-
-msgctxt "view:production:"
-msgid "Reset to BOM"
-msgstr "Réinitialiser à la nomenclature"
-
-msgctxt "view:production:"
-msgid "Run"
-msgstr "Lancer"
-
-msgctxt "view:production:"
-msgid "Wait"
-msgstr "Attendre"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
@@ -778,3 +782,31 @@ msgstr "Fermer"
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
 msgstr "Changer"
+
+msgctxt "view:production:"
+msgid "Assign"
+msgstr "Assigner"
+
+msgctxt "view:production:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:production:"
+msgid "Done"
+msgstr "Terminer"
+
+msgctxt "view:production:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Réinitialiser à la nomenclature"
+
+msgctxt "view:production:"
+msgid "Run"
+msgstr "Lancer"
+
+msgctxt "view:production:"
+msgid "Wait"
+msgstr "Attendre"

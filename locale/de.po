@@ -75,7 +75,7 @@ msgstr "Variante"
 
 msgctxt "field:product.product-production.bom,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.product-production.bom,sequence:"
 msgid "Sequence"
@@ -159,7 +159,7 @@ msgstr "Menge"
 
 msgctxt "field:production,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production,reference:"
 msgid "Reference"
@@ -235,7 +235,7 @@ msgstr "Ausgänge"
 
 msgctxt "field:production.bom,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.bom,write_date:"
 msgid "Write Date"
@@ -271,7 +271,7 @@ msgstr "Menge"
 
 msgctxt "field:production.bom.input,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
@@ -319,7 +319,7 @@ msgstr "Menge"
 
 msgctxt "field:production.bom.output,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
@@ -419,7 +419,7 @@ msgstr "Nummernkreis Produktion"
 
 msgctxt "field:production.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.configuration,write_date:"
 msgid "Write Date"
@@ -452,7 +452,7 @@ msgstr "Nummernkreis Produktion"
 
 msgctxt "field:production.configuration.production_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.configuration.production_sequence,write_date:"
 msgid "Write Date"
@@ -488,7 +488,7 @@ msgstr "Variante"
 
 msgctxt "field:production.lead_time,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.lead_time,sequence:"
 msgid "Sequence"
@@ -514,6 +514,10 @@ msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Produktion Ausgänge"
 
+msgctxt "help:production.bom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
 msgstr "Stückliste"
@@ -532,7 +536,7 @@ msgstr "Produktionen"
 
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
-msgstr "Produktion"
+msgstr "Einstellungen Produktion"
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
@@ -574,7 +578,7 @@ msgstr "Entwurf"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "Anforderungen"
+msgstr "Anfragen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
@@ -585,6 +589,34 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
 msgid "Waiting"
 msgstr "Wartend"
+
+msgctxt "model:ir.model.button,string:production_assign_wizard_button"
+msgid "Assign"
+msgstr "Assign"
+
+msgctxt "model:ir.model.button,string:production_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:production_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:production_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:production_reset_bom_button"
+msgid "Reset to BOM"
+msgstr "Reset to BOM"
+
+msgctxt "model:ir.model.button,string:production_run_button"
+msgid "Run"
+msgstr "Run"
+
+msgctxt "model:ir.model.button,string:production_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
@@ -612,7 +644,7 @@ msgstr "Produktionen"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
-msgstr "Produktion"
+msgstr "Einstellungen Produktion"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
@@ -719,40 +751,12 @@ msgid "Lines"
 msgstr "Zeilen"
 
 msgctxt "view:production:"
-msgid "Assign"
-msgstr "Zuweisen"
-
-msgctxt "view:production:"
-msgid "Cancel"
-msgstr "Annullieren"
-
-msgctxt "view:production:"
-msgid "Done"
-msgstr "Erledigt"
-
-msgctxt "view:production:"
-msgid "Draft"
-msgstr "Entwurf"
-
-msgctxt "view:production:"
 msgid "Lines"
 msgstr "Zeilen"
 
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Sonstiges"
-
-msgctxt "view:production:"
-msgid "Reset to BOM"
-msgstr "Auf Stückliste zurücksetzen"
-
-msgctxt "view:production:"
-msgid "Run"
-msgstr "Ausführen"
-
-msgctxt "view:production:"
-msgid "Wait"
-msgstr "Warten"
 
 msgctxt "wizard_button:production.assign,failed,end:"
 msgid "OK"
@@ -777,3 +781,31 @@ msgstr "Schließen"
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
 msgstr "Ändern"
+
+msgctxt "view:production:"
+msgid "Assign"
+msgstr "Zuweisen"
+
+msgctxt "view:production:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:production:"
+msgid "Done"
+msgstr "Erledigt"
+
+msgctxt "view:production:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "view:production:"
+msgid "Reset to BOM"
+msgstr "Auf Stückliste zurücksetzen"
+
+msgctxt "view:production:"
+msgid "Run"
+msgstr "Ausführen"
+
+msgctxt "view:production:"
+msgid "Wait"
+msgstr "Warten"
