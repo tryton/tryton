@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending "
+"subscriptions for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:sale.subscription.line.consumption:"
 msgid "Product \"%(product)s\" misses a revenue account."
 msgstr ""
@@ -484,105 +490,129 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_create_invoice"
 msgid "Create Subscription Invoices"
-msgstr ""
+msgstr "Create Subscription Invoices"
 
 msgctxt "model:ir.action,name:act_line_consumption_create"
 msgid "Create Line Consumptions"
-msgstr ""
+msgstr "Create Line Consumptions"
 
 msgctxt "model:ir.action,name:act_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
-msgstr ""
+msgstr "Subscription Recurrence Rule Sets"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_service_form"
 msgid "Subscription Services"
-msgstr ""
+msgstr "Sekwencja subskrypcji"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_subscription_form"
 msgid "Subscriptions"
-msgstr ""
+msgstr "Subskrypcje"
 
 msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
 msgid "Consumptions"
-msgstr ""
+msgstr "Consumptions"
 
 msgctxt ""
 "model:ir.action,name:act_subscription_line_consumption_subscription_line_relate"
 msgid "Consumptions"
-msgstr ""
+msgstr "Consumptions"
 
 msgctxt ""
 "model:ir.action,name:act_subscription_line_consumption_subscription_relate"
 msgid "Consumptions"
-msgstr ""
+msgstr "Consumptions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_subscription_party_relate"
 msgid "Subscriptions"
-msgstr ""
+msgstr "Subskrypcje"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_quotation"
 msgid "Quotation"
-msgstr ""
+msgstr "Quotation"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_running"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
 msgctxt "model:ir.cron,name:cron_generate_invoice"
 msgid "Generate Subscription Invoices"
-msgstr ""
+msgstr "Generate Subscription Invoices"
 
 msgctxt "model:ir.cron,name:cron_generate_line_consumption"
 msgid "Generate Subscription Line Consumptions"
-msgstr ""
+msgstr "Generate Subscription Line Consumptions"
 
+msgctxt "model:ir.model.button,string:subscription_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:subscription_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:subscription_quote_button"
+msgid "Quote"
+msgstr "Quote"
+
+msgctxt "model:ir.model.button,string:subscription_run_button"
+msgid "Run"
+msgstr "Run"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"
-msgstr "Subskrypcja"
+msgstr "Subscription"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_subscription"
 msgid "Subscription"
-msgstr "Subskrypcja"
+msgstr "Subscription"
 
 msgctxt "model:ir.ui.menu,name:menu_create_invoice"
 msgid "Create Subscription Invoices"
-msgstr ""
+msgstr "Create Subscription Invoices"
 
 msgctxt "model:ir.ui.menu,name:menu_line_consumption_create"
 msgid "Create Line Consumptions"
-msgstr ""
+msgstr "Create Line Consumptions"
 
 msgctxt "model:ir.ui.menu,name:menu_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
-msgstr ""
+msgstr "Subscription Recurrence Rule Sets"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_service_form"
 msgid "Subscription Services"
-msgstr ""
+msgstr "Sekwencja subskrypcji"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_subscription_form"
 msgid "Subscriptions"
-msgstr "Subskrypcje"
+msgstr "Subscriptions"
 
 msgctxt "model:sale.subscription,name:"
 msgid "Subscription"
 msgstr "Subskrypcja"
 
+#, fuzzy
 msgctxt "model:sale.subscription.create_invoice.start,name:"
 msgid "Create Subscription Invoice"
-msgstr ""
+msgstr "Create Subscription Invoices"
 
 msgctxt "model:sale.subscription.line,name:"
 msgid "Subscription Line"
@@ -592,21 +622,25 @@ msgctxt "model:sale.subscription.line.consumption,name:"
 msgid "Subscription Line Consumption"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:sale.subscription.line.consumption.create.start,name:"
 msgid "Create Subscription Line Consumption"
-msgstr ""
+msgstr "Generate Subscription Line Consumptions"
 
+#, fuzzy
 msgctxt "model:sale.subscription.recurrence.rule,name:"
 msgid "Subscription Recurrence Rule"
-msgstr ""
+msgstr "Subscription Recurrence Rule Sets"
 
+#, fuzzy
 msgctxt "model:sale.subscription.recurrence.rule.set,name:"
 msgid "Subscription Recurrence Rule Set"
-msgstr ""
+msgstr "Subscription Recurrence Rule Sets"
 
+#, fuzzy
 msgctxt "model:sale.subscription.service,name:"
 msgid "Subscription Service"
-msgstr ""
+msgstr "Sekwencja subskrypcji"
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Canceled"
@@ -616,17 +650,20 @@ msgctxt "selection:sale.subscription,state:"
 msgid "Closed"
 msgstr "Zamknięto"
 
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
 msgid "Quotation"
-msgstr ""
+msgstr "Quotation"
 
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Canceled"
@@ -636,17 +673,20 @@ msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Closed"
 msgstr "Zamknięto"
 
+#, fuzzy
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Quotation"
-msgstr ""
+msgstr "Quotation"
 
+#, fuzzy
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Daily"
@@ -696,9 +736,10 @@ msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
 msgid "Wednesday"
 msgstr "Środa"
 
+#, fuzzy
 msgctxt "view:sale.subscription.create_invoice.start:"
 msgid "Create Subscription Invoices for date"
-msgstr ""
+msgstr "Create Subscription Invoices"
 
 msgctxt "view:sale.subscription.line.consumption.create.start:"
 msgid "Create Subscription Line Consumptions for date"
@@ -709,24 +750,8 @@ msgid "General"
 msgstr "Ogólne"
 
 msgctxt "view:sale.subscription:"
-msgid "Cancel"
-msgstr "Anuluj"
-
-msgctxt "view:sale.subscription:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:sale.subscription:"
 msgid "Other Info"
 msgstr "Inne informacje"
-
-msgctxt "view:sale.subscription:"
-msgid "Quote"
-msgstr ""
-
-msgctxt "view:sale.subscription:"
-msgid "Run"
-msgstr "Uruchom"
 
 msgctxt "view:sale.subscription:"
 msgid "Subscription"
@@ -748,3 +773,11 @@ msgstr "Utwórz"
 msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
+
+msgctxt "view:sale.subscription:"
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgctxt "view:sale.subscription:"
+msgid "Run"
+msgstr "Uruchom"

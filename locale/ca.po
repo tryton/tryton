@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending "
+"subscriptions for the company \"%(company)s\"."
+msgstr ""
+"No es pot eliminar el tercer \"%(party)s\" perquè té subscripcions pendents "
+"per l'empresa \"%(company)s\"."
+
 msgctxt "error:sale.subscription.line.consumption:"
 msgid "Product \"%(product)s\" misses a revenue account."
 msgstr "Falta el compte d'ingressos per defecte pel producte \"%(product)s\"."
@@ -485,7 +493,7 @@ msgstr "El identificador principal del conjunt de regles."
 
 msgctxt "model:ir.action,name:act_create_invoice"
 msgid "Create Subscription Invoices"
-msgstr "Crea factures de subscripcions"
+msgstr "Crea factures de subscripció"
 
 msgctxt "model:ir.action,name:act_line_consumption_create"
 msgid "Create Line Consumptions"
@@ -493,11 +501,11 @@ msgstr "Crea consums de les línies"
 
 msgctxt "model:ir.action,name:act_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
-msgstr "Conjunts de regles de recurrència de les subscripcions"
+msgstr "Conjunts de regles de recurrència"
 
 msgctxt "model:ir.action,name:act_service_form"
 msgid "Subscription Services"
-msgstr "Serveis de subscripcions"
+msgstr "Serveis de subscripció"
 
 msgctxt "model:ir.action,name:act_subscription_form"
 msgid "Subscriptions"
@@ -524,7 +532,7 @@ msgstr "Subscripcions"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_all"
 msgid "All"
-msgstr "Tots"
+msgstr "Tot"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_draft"
@@ -543,11 +551,27 @@ msgstr "En execució"
 
 msgctxt "model:ir.cron,name:cron_generate_invoice"
 msgid "Generate Subscription Invoices"
-msgstr "Genera factures de les subscripcions"
+msgstr "Genera les factures de les subscripcions"
 
 msgctxt "model:ir.cron,name:cron_generate_line_consumption"
 msgid "Generate Subscription Line Consumptions"
 msgstr "Genera consums de les línies de subscripció"
+
+msgctxt "model:ir.model.button,string:subscription_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:subscription_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:subscription_quote_button"
+msgid "Quote"
+msgstr "Quote"
+
+msgctxt "model:ir.model.button,string:subscription_run_button"
+msgid "Run"
+msgstr "Run"
 
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"
@@ -563,7 +587,7 @@ msgstr "Crea factures de subscripció"
 
 msgctxt "model:ir.ui.menu,name:menu_line_consumption_create"
 msgid "Create Line Consumptions"
-msgstr "Crea línies de consum"
+msgstr "Crea consums de les línies"
 
 msgctxt "model:ir.ui.menu,name:menu_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
@@ -710,24 +734,8 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:sale.subscription:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:sale.subscription:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "view:sale.subscription:"
 msgid "Other Info"
 msgstr "Informació addicional"
-
-msgctxt "view:sale.subscription:"
-msgid "Quote"
-msgstr "Pressupost"
-
-msgctxt "view:sale.subscription:"
-msgid "Run"
-msgstr "Executa"
 
 msgctxt "view:sale.subscription:"
 msgid "Subscription"
@@ -749,3 +757,19 @@ msgstr "Crea"
 msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
+
+msgctxt "view:sale.subscription:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "view:sale.subscription:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "view:sale.subscription:"
+msgid "Quote"
+msgstr "Pressupost"
+
+msgctxt "view:sale.subscription:"
+msgid "Run"
+msgstr "Executa"

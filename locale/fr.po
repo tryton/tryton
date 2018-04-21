@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending "
+"subscriptions for the company \"%(company)s\"."
+msgstr ""
+"Le tiers « %(party)s » ne peut pas être effacé car il a un abonnement en "
+"cours pour la société « %(company)s »."
+
 msgctxt "error:sale.subscription.line.consumption:"
 msgid "Product \"%(product)s\" misses a revenue account."
 msgstr "Le produit « %(product)s » n'a pas de compte de revenu."
@@ -490,7 +498,7 @@ msgstr "Créer les factures d'abonnements"
 
 msgctxt "model:ir.action,name:act_line_consumption_create"
 msgid "Create Line Consumptions"
-msgstr "Créer les lignes de consommations."
+msgstr "Créer les lignes de consommations"
 
 msgctxt "model:ir.action,name:act_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
@@ -530,7 +538,7 @@ msgstr "Tous"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_quotation"
@@ -544,11 +552,27 @@ msgstr "En cours"
 
 msgctxt "model:ir.cron,name:cron_generate_invoice"
 msgid "Generate Subscription Invoices"
-msgstr "Générer les factures d'abonnement"
+msgstr "Générer les factures d'abonnements"
 
 msgctxt "model:ir.cron,name:cron_generate_line_consumption"
 msgid "Generate Subscription Line Consumptions"
-msgstr "Générer les lignes de consommation d'abonnement"
+msgstr "Générer les lignes de consommation d'abonnements"
+
+msgctxt "model:ir.model.button,string:subscription_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:subscription_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:subscription_quote_button"
+msgid "Quote"
+msgstr "Quote"
+
+msgctxt "model:ir.model.button,string:subscription_run_button"
+msgid "Run"
+msgstr "Run"
 
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"
@@ -560,15 +584,15 @@ msgstr "Abonnement"
 
 msgctxt "model:ir.ui.menu,name:menu_create_invoice"
 msgid "Create Subscription Invoices"
-msgstr "Créer les factures d'abonnement"
+msgstr "Créer les factures d'abonnements"
 
 msgctxt "model:ir.ui.menu,name:menu_line_consumption_create"
 msgid "Create Line Consumptions"
-msgstr "Créer les lignes de consommation"
+msgstr "Créer les lignes de consommations"
 
 msgctxt "model:ir.ui.menu,name:menu_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
-msgstr "Ensembles de règles de récurrence d'abonnement"
+msgstr "Ensemble de règles de récurrence d'abonnement"
 
 msgctxt "model:ir.ui.menu,name:menu_service_form"
 msgid "Subscription Services"
@@ -711,24 +735,8 @@ msgid "General"
 msgstr "Général"
 
 msgctxt "view:sale.subscription:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:sale.subscription:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:sale.subscription:"
 msgid "Other Info"
 msgstr "Autre information"
-
-msgctxt "view:sale.subscription:"
-msgid "Quote"
-msgstr "Devis"
-
-msgctxt "view:sale.subscription:"
-msgid "Run"
-msgstr "Exécuter"
 
 msgctxt "view:sale.subscription:"
 msgid "Subscription"
@@ -750,6 +758,22 @@ msgstr "Créer"
 msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
 msgid "Cancel"
 msgstr "Annuler"
+
+msgctxt "view:sale.subscription:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:sale.subscription:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:sale.subscription:"
+msgid "Quote"
+msgstr "Devis"
+
+msgctxt "view:sale.subscription:"
+msgid "Run"
+msgstr "Exécuter"
 
 msgctxt "error:sale.subscription.recurrence.rule:"
 msgid "\"By Position\" (%(bysetpos)s) is not valie."
