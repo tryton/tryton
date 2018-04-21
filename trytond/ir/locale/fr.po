@@ -16,11 +16,11 @@ msgstr "Vous n'êtes pas autorisé à supprimer cet enregistrement."
 
 msgctxt "error:digits_validation_record:"
 msgid ""
-"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
-"exceeds its limit."
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 msgstr ""
-"Le nombre de décimales « %(digits)s » du champ « %(field)s » pour « "
-"%(value)s » dépasse sa limite."
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 
 msgctxt "error:domain_validation_record:"
 msgid ""
@@ -1212,9 +1212,57 @@ msgctxt "field:ir.lang,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Séparateur de décimale"
+
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "Groupement"
+
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Séparateur des milliers"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Symbole négatif en premier"
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Négatif séparé par un espace"
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Position du signe négatif"
+
 msgctxt "field:ir.lang,name:"
 msgid "Name"
 msgstr "Nom"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr "Signe négatif"
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Symbole positif en premier"
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Positif séparé par un espace"
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Position du signe positif"
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr "Code parent"
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr "Signe positif"
 
 msgctxt "field:ir.lang,rec_name:"
 msgid "Record Name"
@@ -1340,6 +1388,10 @@ msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
 msgstr "Clics"
 
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
+msgstr "Confirmer"
+
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
 msgstr "Date de création"
@@ -1351,6 +1403,10 @@ msgstr "Créé par"
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "Groupes"
+
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "Aide"
 
 msgctxt "field:ir.model.button,id:"
 msgid "ID"
@@ -1379,6 +1435,10 @@ msgstr "Réinitialiser par"
 msgctxt "field:ir.model.button,rules:"
 msgid "Rules"
 msgstr "Règles"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr "Label"
 
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1987,10 +2047,6 @@ msgstr "Nom de l'enregistrement"
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "Tests"
-
-msgctxt "field:ir.rule.group,users:"
-msgid "Users"
-msgstr "Utilisateurs"
 
 msgctxt "field:ir.rule.group,write_date:"
 msgid "Write Date"
@@ -2800,6 +2856,14 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "help:ir.action,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.act_window,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh"
 msgstr "La partie du domaine qui sera évaluée à chaque rafraîchissement"
@@ -2812,6 +2876,18 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "Critères de recherche par défaut pour la vue liste"
 
+msgctxt "help:ir.action.act_window.domain,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.act_window.view,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.report,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2822,20 +2898,32 @@ msgstr ""
 
 msgctxt "help:ir.action.report,extension:"
 msgid ""
-"Leave empty for the same as template, see unoconv documentation for "
+"Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format"
 msgstr ""
-"Laisser vide pour la même que le modèle, voir la documentation d'unoconv "
-"pour la compatibilité de format."
+"Laisser vide pour la même que le modèle, voir la documentation de "
+"LibreOffice pour la compatibilité de format."
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr ""
 "Cocher si le modèle fonctionne uniquement avec un seul enregistrement."
 
+msgctxt "help:ir.action.url,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.action.wizard,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
 msgstr "Lancer l'assistant dans un nouvel onglet"
+
+msgctxt "help:ir.cron,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
 
 msgctxt "help:ir.cron,number_calls:"
 msgid ""
@@ -2853,17 +2941,35 @@ msgctxt "help:ir.cron,user:"
 msgid "The user used to execute this action"
 msgstr "L'utilisateur qui exécutera l'action."
 
+msgctxt "help:ir.lang,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
 msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr "Code du parent exceptionnel"
 
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "Le module dans lequel ce modèle est défini"
 
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr ""
+"Le texte pour demander confirmation à l'utilisateur quand il clique sur le "
+"bouton."
+
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules"
 msgstr "Les boutons qui doivent réinitialiser les règles"
+
+msgctxt "help:ir.model.button.click,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
 
 msgctxt "help:ir.model.button.rule,condition:"
 msgid ""
@@ -2917,6 +3023,18 @@ msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "La règle est satisfaite si au moins un test est vrai"
 
+msgctxt "help:ir.sequence,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.sequence.strict,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:ir.trigger,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
@@ -2940,6 +3058,10 @@ msgid ""
 msgstr ""
 "Défini un delai minimal entre l'appel à la « fonction de l'action » pour le même enregistrement.\n"
 "Vide pour aucun délai."
+
+msgctxt "help:ir.ui.menu,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
 
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain"
@@ -3023,7 +3145,7 @@ msgstr "Données"
 
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr "Droits d'accès"
+msgstr "Droits d'accès au champs"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
@@ -3039,7 +3161,7 @@ msgstr "Modèles"
 
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr "Lancer l'activation/mise à jours en attente"
+msgstr "Lancer l'activation/mise à jour en attente"
 
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
@@ -3119,7 +3241,7 @@ msgstr "État d'arbre"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
-msgstr "Largeur de la vue arbre"
+msgstr "Largeur des vues arbres"
 
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
@@ -3148,7 +3270,7 @@ msgstr "Action act window domain"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
 msgid "All"
-msgstr "Toutes"
+msgstr "Tous"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
@@ -3245,6 +3367,10 @@ msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
 msgstr "Espagnol (Amérique latine)"
 
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
+msgstr "Persan"
+
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Français"
@@ -3300,6 +3426,42 @@ msgstr "Accès au modèle"
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Bouton de modèle"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Run Once"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Sync"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Mark for Activation"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Cancel Activation"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Mark for Deactivation (beta)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Cancel Deactivation"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Mark for Upgrade"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Cancel Upgrade"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Show"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
@@ -3475,7 +3637,7 @@ msgstr "Administration"
 
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "Pièces jointes"
+msgstr "Attachements"
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -3551,7 +3713,7 @@ msgstr "Notes"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
-msgstr "Règles d'enregistrement"
+msgstr "Règles des enregistrements"
 
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
@@ -3567,7 +3729,7 @@ msgstr "Séquences strictes"
 
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
-msgstr "Séquence"
+msgstr "Séquences"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
@@ -3595,7 +3757,7 @@ msgstr "Déclencheurs"
 
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
-msgstr "UI"
+msgstr "Interface utilisateur"
 
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
@@ -3886,12 +4048,12 @@ msgid "Date Formatting"
 msgstr "Formatage des dates"
 
 msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr "Format monétaire"
+
+msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Formatage des nombres"
-
-msgctxt "view:ir.model.data:"
-msgid "Sync"
-msgstr "Synchroniser"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
@@ -4016,10 +4178,6 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Mise à jour réussie !"
 
-msgctxt "view:ir.ui.view:"
-msgid "Show"
-msgstr "Afficher"
-
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
 msgstr "Annuler"
@@ -4107,3 +4265,31 @@ msgstr "Mise à jour"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Fermer"
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
+"exceeds its limit."
+msgstr ""
+"Le nombre de décimales « %(digits)s » du champ « %(field)s » pour « "
+"%(value)s » dépasse sa limite."
+
+msgctxt "field:ir.rule.group,users:"
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see unoconv documentation for "
+"compatible format"
+msgstr ""
+"Laisser vide pour la même que le modèle, voir la documentation d'unoconv "
+"pour la compatibilité de format."
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "Synchroniser"
+
+msgctxt "view:ir.ui.view:"
+msgid "Show"
+msgstr "Afficher"

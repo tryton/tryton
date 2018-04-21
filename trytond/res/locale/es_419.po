@@ -74,10 +74,9 @@ msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.action-res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:ir.model.button-res.group,active:"
 msgid "Active"
@@ -111,15 +110,13 @@ msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
@@ -153,10 +150,9 @@ msgctxt "field:ir.model.field-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.model.field-res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
@@ -186,44 +182,9 @@ msgctxt "field:ir.rule.group-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
-
-msgctxt "field:ir.rule.group-res.user,create_date:"
-msgid "Create Date"
 msgstr ""
-
-msgctxt "field:ir.rule.group-res.user,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:ir.rule.group-res.user,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:ir.rule.group-res.user,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:ir.rule.group-res.user,rule_group:"
-msgid "Rule Group"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,user:"
-msgid "User"
-msgstr "Usuario"
-
-msgctxt "field:ir.rule.group-res.user,write_date:"
-msgid "Write Date"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,write_uid:"
-msgid "Write User"
-msgstr "Modi"
 
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
@@ -265,10 +226,9 @@ msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.sequence.type-res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:ir.ui.menu-res.group,create_date:"
 msgid "Create Date"
@@ -298,10 +258,9 @@ msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
@@ -343,19 +302,17 @@ msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.group,users:"
 msgid "Users"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:res.user,actions:"
 msgid "Actions"
@@ -417,16 +374,20 @@ msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
 msgstr ""
 
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr ""
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr ""
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr ""
 
 msgctxt "field:res.user,rec_name:"
 msgid "Record Name"
-msgstr ""
-
-msgctxt "field:res.user,rule_groups:"
-msgid "Rules"
 msgstr ""
 
 msgctxt "field:res.user,sessions:"
@@ -451,7 +412,7 @@ msgstr ""
 
 msgctxt "field:res.user,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:res.user-ir.action,action:"
 msgid "Action"
@@ -473,19 +434,17 @@ msgctxt "field:res.user-ir.action,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:res.user-ir.action,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-ir.action,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:res.user-res.group,create_date:"
 msgid "Create Date"
@@ -507,19 +466,17 @@ msgctxt "field:res.user-res.group,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:res.user-res.group,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user-res.group,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:res.user.application,application:"
 msgid "Application"
@@ -549,19 +506,17 @@ msgctxt "field:res.user.application,state:"
 msgid "State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.application,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:res.user.application,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:res.user.config.start,id:"
 msgid "ID"
@@ -579,6 +534,14 @@ msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
 msgstr ""
 
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
 msgstr ""
@@ -591,10 +554,9 @@ msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.login.attempt,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
 
 msgctxt "field:res.user.warning,always:"
 msgid "Always"
@@ -620,19 +582,21 @@ msgctxt "field:res.user.warning,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.warning,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "field:res.user.warning,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
-msgstr "Modi"
+msgstr ""
+
+msgctxt "help:ir.model.button-res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
@@ -642,6 +606,10 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
 msgstr "Las acciones que se ejecutarán al iniciar sesión"
 
+msgctxt "help:res.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr ""
@@ -650,10 +618,13 @@ msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr "Usuario"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr ""
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
@@ -661,6 +632,22 @@ msgstr ""
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
+msgstr ""
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
 msgstr ""
 
 msgctxt "model:ir.model.button-res.group,name:"
@@ -675,10 +662,6 @@ msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
 msgstr ""
 
-msgctxt "model:ir.rule.group-res.user,name:"
-msgid "Rule Group - User"
-msgstr ""
-
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
 msgstr ""
@@ -687,15 +670,13 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr "Usuario"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
@@ -709,10 +690,9 @@ msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:res.user,name:"
 msgid "User"
-msgstr "Usuario"
+msgstr ""
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
@@ -738,6 +718,46 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr ""
 
+msgctxt "report:res.user.email_reset_password:"
+msgid ", has been reset."
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password for your account,"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "UTC"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You can connect with this temporary password"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You must set a new one from the user's preferences."
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "https://"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "to"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "tryton://"
+msgstr ""
+
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
 msgstr ""
@@ -756,14 +776,6 @@ msgstr ""
 
 msgctxt "view:res.group:"
 msgid "Members"
-msgstr ""
-
-msgctxt "view:res.user.application:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:res.user.application:"
-msgid "Validate"
 msgstr ""
 
 msgctxt "view:res.user.config.start:"
@@ -808,4 +820,12 @@ msgstr ""
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,user:"
+msgid "User"
+msgstr ""
+
+msgctxt "field:ir.rule.group-res.user,write_uid:"
+msgid "Write User"
 msgstr ""

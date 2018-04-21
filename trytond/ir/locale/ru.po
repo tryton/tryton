@@ -2,39 +2,47 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "error:access_error:"
 msgid ""
 "You try to bypass an access rule.\n"
 "(Document type: %s)"
 msgstr ""
-"Вы пытаетесь нарушить правила доступа.\n"
-"(Тип документа: %s)"
+"You try to bypass an access rule.\n"
+"(Document type: %s)"
 
+#, fuzzy
 msgctxt "error:delete_xml_record:"
 msgid "You are not allowed to delete this record."
-msgstr "Вы не можете удалить эту запись."
+msgstr "You are not allowed to delete this record."
 
 msgctxt "error:digits_validation_record:"
 msgid ""
-"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
-"exceeds its limit."
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 msgstr ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 
 msgctxt "error:domain_validation_record:"
 msgid ""
 "The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
 " to its domain."
 msgstr ""
+"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
+" to its domain."
 
 msgctxt "error:foreign_model_exist:"
 msgid ""
 "Could not delete the records because they are used on field \"%(field)s\" of"
 " \"%(model)s\"."
 msgstr ""
+"Could not delete the records because they are used on field \"%(field)s\" of"
+" \"%(model)s\"."
 
 msgctxt "error:foreign_model_missing:"
 msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
-msgstr ""
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
 
 #, fuzzy
 msgctxt "error:ir.action.act_window.domain:"
@@ -253,81 +261,97 @@ msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
 msgstr "Некорректный XML для вида \"%s\"."
 
+#, fuzzy
 msgctxt "error:read_error:"
 msgid ""
 "You try to read records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"Вы пытаетесь прочитать записи, которые не существуют.\n"
-"(Тип документа:%s)"
+"You try to read records that don't exist anymore.\n"
+"(Document type: %s)"
 
 msgctxt "error:recursion_error:"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
 
+#, fuzzy
 msgctxt "error:reference_syntax_error:"
 msgid "Syntax error for reference %r in %s"
-msgstr "Синтаксическая ошибка для ссылки %r в %s"
+msgstr "Syntax error for reference %r in %s"
 
+#, fuzzy
 msgctxt "error:relation_not_found:"
 msgid "Relation not found: %r in %s"
-msgstr "Связь не найдена: %r в %s"
+msgstr "Relation not found: %r in %s"
 
 msgctxt "error:required_field:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr ""
+msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
 
 msgctxt "error:required_validation_record:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr ""
+msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
 
+#, fuzzy
 msgctxt "error:search_function_missing:"
 msgid "Missing search function on field \"%s\"."
-msgstr "Отсутствует функция поиска для поля \"%s\"."
+msgstr "Missing search function on field \"%s\"."
 
 msgctxt "error:selection_validation_record:"
 msgid ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
 "the selection."
 msgstr ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
+"the selection."
 
+#, fuzzy
 msgctxt "error:selection_value_notfound:"
 msgid "Value not in the selection for field \"%s\"."
-msgstr "Значение не выделено в поле \"%s\"."
+msgstr "Value not in the selection for field \"%s\"."
 
 msgctxt "error:size_validation_record:"
 msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
-msgstr ""
+msgstr "The size \"%(size)s\" of the field \"%(field)s\" on \"(model)%s\" is too long."
 
 msgctxt "error:time_format_validation_record:"
 msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
 msgstr ""
+"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
+"valid."
 
+#, fuzzy
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
-msgstr "Слишком много связей: %r в %s"
+msgstr "Too many relations found: %r in %s"
 
+#, fuzzy
 msgctxt "error:write_error:"
 msgid ""
 "You try to write on records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"Вы пытаетесь записать данные, которые больше не существуют.\n"
-"(Тип документа:%s)"
+"You try to write on records that don't exist anymore.\n"
+"(Document type: %s)"
 
+#, fuzzy
 msgctxt "error:write_xml_record:"
 msgid "You are not allowed to modify this record."
-msgstr "Вы не можете изменить эту запись."
+msgstr "You are not allowed to modify this record."
 
+#, fuzzy
 msgctxt "error:xml_id_syntax_error:"
 msgid "Syntax error for XML id %r in %s"
-msgstr "Синтаксическая ошибка для XML id %r в %s"
+msgstr "Syntax error for XML id %r in %s"
 
+#, fuzzy
 msgctxt "error:xml_record_desc:"
 msgid "This record is part of the base configuration."
-msgstr "Эта запись является частью базовой конфигурации."
+msgstr "This record is part of the base configuration."
 
 msgctxt "field:ir.action,active:"
 msgid "Active"
@@ -1183,9 +1207,60 @@ msgctxt "field:ir.lang,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Разделитель десятичных чисел"
+
+#, fuzzy
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "Группировка"
+
+#, fuzzy
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Разделитель тысяч"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr ""
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr ""
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr ""
+
 msgctxt "field:ir.lang,name:"
 msgid "Name"
 msgstr "Наименование"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr ""
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr ""
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr ""
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr ""
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr ""
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr ""
 
 msgctxt "field:ir.lang,rec_name:"
 msgid "Record Name"
@@ -1307,8 +1382,13 @@ msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
+msgstr "Clicks"
+
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
 msgstr ""
 
 msgctxt "field:ir.model.button,create_date:"
@@ -1322,6 +1402,11 @@ msgstr "Создано пользователем"
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "Группы"
+
+#, fuzzy
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "Помощь"
 
 msgctxt "field:ir.model.button,id:"
 msgid "ID"
@@ -1351,6 +1436,10 @@ msgstr ""
 msgctxt "field:ir.model.button,rules:"
 msgid "Rules"
 msgstr "Правило"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr ""
 
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1526,9 +1615,10 @@ msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
 msgstr "Нет обновлений"
 
+#, fuzzy
 msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
-msgstr ""
+msgstr "Out of Sync"
 
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Record Name"
@@ -1999,10 +2089,6 @@ msgstr ""
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "Тесты"
-
-msgctxt "field:ir.rule.group,users:"
-msgid "Users"
-msgstr "Пользователи"
 
 msgctxt "field:ir.rule.group,write_date:"
 msgid "Write Date"
@@ -2821,6 +2907,14 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+msgctxt "help:ir.action,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.act_window,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh"
 msgstr ""
@@ -2833,6 +2927,18 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "По умолчанию критерии поиска в списке"
 
+msgctxt "help:ir.action.act_window.domain,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.act_window.view,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.report,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2841,9 +2947,10 @@ msgstr ""
 "Словарь python, в котором определены ключи \"to\" \"cc\" \"subject\"\n"
 "Например: {'to': 'test@example.com', 'cc': 'user@example.com'}"
 
+#, fuzzy
 msgctxt "help:ir.action.report,extension:"
 msgid ""
-"Leave empty for the same as template, see unoconv documentation for "
+"Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format"
 msgstr ""
 "Если оставить пустым - будет так же как в шаблоне. Допустимые форматы "
@@ -2853,9 +2960,21 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr ""
 
+msgctxt "help:ir.action.url,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.wizard,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
 msgstr "Запустить мастера в новом окне"
+
+msgctxt "help:ir.cron,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:ir.cron,number_calls:"
 msgid ""
@@ -2873,16 +2992,32 @@ msgctxt "help:ir.cron,user:"
 msgid "The user used to execute this action"
 msgstr "Пользователь, для выполнения этого действия"
 
+msgctxt "help:ir.lang,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
 msgstr "RFC 4646 Ссылка: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr ""
 
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "Модуль, в котором эта модель определена"
 
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr ""
+
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules"
+msgstr ""
+
+msgctxt "help:ir.model.button.click,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 #, fuzzy
@@ -2937,6 +3072,18 @@ msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "Это правило выполняется, если по крайней мере одно правило истинно"
 
+msgctxt "help:ir.sequence,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.trigger,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -2960,6 +3107,10 @@ msgid ""
 "empty for no delay."
 msgstr ""
 
+msgctxt "help:ir.ui.menu,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain"
 msgstr "PYSON домен"
@@ -2968,144 +3119,172 @@ msgctxt "model:ir.action,name:"
 msgid "Action"
 msgstr "Действие"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
-msgstr "Действия окна"
+msgstr "Window Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr "Действия"
+msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
-msgstr "Отчеты"
+msgstr "Reports"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
-msgstr "Ссылки"
+msgstr "URLs"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
-msgstr "Мастера"
+msgstr "Wizards"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "Вложения"
+msgstr "Attachments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Мастер конфигурации"
+msgstr "Config Wizard Items"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
-msgstr "Запланированные действия"
+msgstr "Scheduled Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
-msgstr "Экспортировать"
+msgstr "Exports"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr "Иконки"
+msgstr "Icons"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
-msgstr "Языки"
+msgstr "Languages"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_menu_list"
 msgid "Menu"
-msgstr "Меню"
+msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
-msgstr "Меню"
+msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
-msgstr "Доступ к моделям"
+msgstr "Models Access"
 
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr ""
+msgstr "Access"
 
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
-msgstr ""
+msgstr "Clicks"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
-msgstr "Кнопки"
+msgstr "Buttons"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
 msgstr "Данные"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr "Доступ к полям"
+msgstr "Fields Access"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr ""
+msgstr "Access"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
-msgstr "Поля"
+msgstr "Fields"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
-msgstr "Модели"
+msgstr "Models"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "Установить / Обновить"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
-msgstr "Настройка модулей"
+msgstr "Configure Modules"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_config_wizard"
 msgid "Module Configuration"
-msgstr "Конфигурация модуля"
+msgstr "Module Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
-msgstr "Модули"
+msgstr "Modules"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr "Комментарии"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
-msgstr "Запись правил"
+msgstr "Record Rules"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
-msgstr "Нумерации"
+msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Строгая нумерация"
+msgstr "Sequences Strict"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
 msgid "Sequence Types"
-msgstr "Типы нумерации"
+msgstr "Sequence Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
-msgstr "Очистить переводы"
+msgstr "Clean Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
-msgstr "Экспорт переводов"
+msgstr "Export Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
-msgstr "Переводы"
+msgstr "Translations"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_translation_report"
@@ -3117,45 +3296,53 @@ msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
 msgstr "Применить переводы"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
-msgstr "Синхронизация переводов"
+msgstr "Synchronize Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
-msgstr "Триггеры"
+msgstr "Triggers"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
-msgstr "Виды"
+msgstr "Views"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
-msgstr "Просмотр поиска"
+msgstr "View Search"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
-msgstr "Просмотр"
+msgstr "Show View"
 
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
-msgstr ""
+msgstr "Tree State"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
-msgstr "Ширина просмотра списка"
+msgstr "View Tree Width"
 
+#, fuzzy
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
-msgstr "Графика"
+msgstr "Graph"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
-msgstr "Графика"
+msgstr "Graph"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr ""
+msgstr "Workflow Graph"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_translation_report"
@@ -3179,12 +3366,12 @@ msgstr "Все"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
-msgstr ""
+msgstr "Out of Sync"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_local"
 msgid "Local"
-msgstr ""
+msgstr "Local"
 
 #, fuzzy
 msgctxt ""
@@ -3244,25 +3431,30 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "Язык"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
-msgstr "Болгарский"
+msgstr "Bulgarian"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_ca"
 msgid "Català"
-msgstr "Каталанский"
+msgstr "Català"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_cs"
 msgid "Czech"
-msgstr "Чешский"
+msgstr "Czech"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
-msgstr "Немецкий"
+msgstr "German"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
-msgstr "Английский"
+msgstr "English"
 
 #, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
@@ -3271,11 +3463,16 @@ msgstr "Испанский (Испания)"
 
 msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
+msgstr "Spanish (Latin American)"
+
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
-msgstr "Французкий"
+msgstr "French"
 
 #, fuzzy
 msgctxt "model:ir.lang,name:lang_hu_HU"
@@ -3284,39 +3481,41 @@ msgstr "Болгарский"
 
 msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
-msgstr ""
+msgstr "Italian"
 
 msgctxt "model:ir.lang,name:lang_lo"
 msgid "Lao"
-msgstr ""
+msgstr "Lao"
 
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lithuanian"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
-msgstr "Голландский"
+msgstr "Dutch"
 
 msgctxt "model:ir.lang,name:lang_pl"
 msgid "Polish"
-msgstr ""
+msgstr "Polish"
 
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
-msgstr ""
+msgstr "Portuguese (Brazil)"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
-msgstr "Русский"
+msgstr "Russian"
 
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
-msgstr ""
+msgstr "Slovenian"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Chinese Simplified"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3329,6 +3528,42 @@ msgstr "Доступ модели"
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Кнопка модели"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Run Once"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Sync"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Mark for Activation"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Cancel Activation"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Mark for Deactivation (beta)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Cancel Deactivation"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Mark for Upgrade"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Cancel Upgrade"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Show"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
@@ -3479,180 +3714,219 @@ msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
 msgstr "Пользовательское меню"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
-msgstr "Действия"
+msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
-msgstr "Действия"
+msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
-msgstr "Действия окна"
+msgstr "Window Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
-msgstr "Отчеты"
+msgstr "Reports"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_url"
 msgid "URLs"
-msgstr "Ссылки"
+msgstr "URLs"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_wizard"
 msgid "Wizards"
-msgstr "Мастера"
+msgstr "Wizards"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
-msgstr "Администрирование"
+msgstr "Administration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "Вложения"
+msgstr "Attachments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Мастер конфигурации"
+msgstr "Config Wizard Items"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
-msgstr "Запланированные действия"
+msgstr "Scheduled Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
-msgstr "Экспортировать"
+msgstr "Exports"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr "Иконки"
+msgstr "Icons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Sequence Types"
-msgstr "Типы нумерации"
+msgstr "Sequence Types"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
-msgstr "Языки"
+msgstr "Languages"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
-msgstr "Переводы"
+msgstr "Localization"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
-msgstr "Меню"
+msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
-msgstr "Доступ к моделям"
+msgstr "Models Access"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
-msgstr "Кнопки"
+msgstr "Buttons"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
 msgstr "Данные"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr "Доступ к полям"
+msgstr "Fields Access"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
-msgstr "Модели"
+msgstr "Models"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
-msgstr "Модели"
+msgstr "Models"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "Установить / Обновить"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
-msgstr "Модули"
+msgstr "Modules"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
-msgstr "Модули"
+msgstr "Modules"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
 msgstr "Комментарии"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
-msgstr "Запись правил"
+msgstr "Record Rules"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
-msgstr "Планировщик"
+msgstr "Scheduler"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_form"
 msgid "Sequences"
-msgstr "Нумерации"
+msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "Строгая нумерация"
+msgstr "Sequences Strict"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
-msgstr "Нумерации"
+msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
-msgstr "Очистить переводы"
+msgstr "Clean Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
-msgstr "Экспорт переводов"
+msgstr "Export Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
-msgstr "Переводы"
+msgstr "Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "Применить переводы"
+msgstr "Set Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
-msgstr "Синхронизация переводов"
+msgstr "Synchronize Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
-msgstr "Триггеры"
+msgstr "Triggers"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
-msgstr "Пользовательский интерфейс"
+msgstr "User Interface"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
-msgstr "Виды"
+msgstr "Views"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
-msgstr "Просмотр поиска"
+msgstr "View Search"
 
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
-msgstr ""
+msgstr "Tree State"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
-msgstr "Ширина просмотра списка"
+msgstr "View Tree Width"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
-msgstr "Поля"
+msgstr "Fields"
 
 msgctxt "model:ir.ui.menu.favorite,name:"
 msgid "Menu Favorite"
@@ -3918,21 +4192,22 @@ msgctxt "view:ir.cron:"
 msgid "Action to trigger"
 msgstr "Действие триггера"
 
+#, fuzzy
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr ""
+msgstr "Run Once"
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Формат даты"
 
 msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr ""
+
+msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Формат числа"
-
-msgctxt "view:ir.model.data:"
-msgid "Sync"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:ir.module.activate_upgrade.done:"
@@ -3961,25 +4236,29 @@ msgid ""
 msgstr ""
 "Вы сможете настроить базу данных в зависимости от установленных модулей."
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Cancel Activation"
-msgstr ""
+msgstr "Cancel Activation"
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Cancel Deactivation"
-msgstr ""
+msgstr "Cancel Deactivation"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "Отмена обновления"
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Mark for Activation"
-msgstr ""
+msgstr "Mark for Activation"
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Mark for Deactivation (beta)"
-msgstr ""
+msgstr "Mark for Deactivation (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
@@ -4064,11 +4343,6 @@ msgstr "Применить переводы?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Применение завершено успешно!"
-
-#, fuzzy
-msgctxt "view:ir.ui.view:"
-msgid "Show"
-msgstr "Просмотр"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -4162,3 +4436,20 @@ msgstr "Обновить"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Закрыть"
+
+msgctxt "field:ir.rule.group,users:"
+msgid "Users"
+msgstr "Пользователи"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see unoconv documentation for "
+"compatible format"
+msgstr ""
+"Если оставить пустым - будет так же как в шаблоне. Допустимые форматы "
+"смотрите в документацие unuconv."
+
+#, fuzzy
+msgctxt "view:ir.ui.view:"
+msgid "Show"
+msgstr "Просмотр"

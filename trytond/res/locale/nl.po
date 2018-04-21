@@ -212,44 +212,6 @@ msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
 msgstr "Gebruiker"
 
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.rule.group-res.user,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:ir.rule.group-res.user,rule_group:"
-msgid "Rule Group"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,user:"
-msgid "User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:ir.rule.group-res.user,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
 msgstr ""
@@ -467,16 +429,21 @@ msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr ""
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr ""
 
 msgctxt "field:res.user,rec_name:"
 msgid "Record Name"
-msgstr ""
-
-msgctxt "field:res.user,rule_groups:"
-msgid "Rules"
 msgstr ""
 
 msgctxt "field:res.user,sessions:"
@@ -650,6 +617,14 @@ msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
 msgstr ""
@@ -711,12 +686,20 @@ msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
 msgstr "Gebruiker"
 
+msgctxt "help:ir.model.button-res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
 msgstr ""
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
+msgstr ""
+
+msgctxt "help:res.user,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 #, fuzzy
@@ -726,12 +709,16 @@ msgstr "Groepen"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
-msgstr ""
+msgstr "Configure Users"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
 msgstr "Gebruikers"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
@@ -739,7 +726,23 @@ msgstr ""
 
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr ""
+msgstr "Run On Time Triggers"
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "Send by email a new temporary password to the user"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
@@ -751,10 +754,6 @@ msgstr ""
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
-msgstr ""
-
-msgctxt "model:ir.rule.group-res.user,name:"
-msgid "Rule Group - User"
 msgstr ""
 
 msgctxt "model:ir.sequence.type-res.group,name:"
@@ -819,6 +818,47 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr ""
 
+msgctxt "report:res.user.email_reset_password:"
+msgid ", has been reset."
+msgstr ""
+
+#, fuzzy
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password for your account,"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "UTC"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You can connect with this temporary password"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You must set a new one from the user's preferences."
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "https://"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "to"
+msgstr ""
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "tryton://"
+msgstr ""
+
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
 msgstr ""
@@ -827,9 +867,10 @@ msgctxt "selection:res.user.application,state:"
 msgid "Requested"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:res.user.application,state:"
 msgid "Validated"
-msgstr ""
+msgstr "Validate"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
@@ -837,15 +878,6 @@ msgstr ""
 
 msgctxt "view:res.group:"
 msgid "Members"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:res.user.application:"
-msgid "Cancel"
-msgstr "Annuleren"
-
-msgctxt "view:res.user.application:"
-msgid "Validate"
 msgstr ""
 
 msgctxt "view:res.user.config.start:"
@@ -896,3 +928,38 @@ msgstr "Toevoegen"
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.user,create_date:"
+msgid "Create Date"
+msgstr "Datum"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.user,create_uid:"
+msgid "Create User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.user,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.user,user:"
+msgid "User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.user,write_date:"
+msgid "Write Date"
+msgstr "Schrijfdatum"
+
+#, fuzzy
+msgctxt "field:ir.rule.group-res.user,write_uid:"
+msgid "Write User"
+msgstr "Gebruiker"
+
+#, fuzzy
+msgctxt "view:res.user.application:"
+msgid "Cancel"
+msgstr "Annuleren"

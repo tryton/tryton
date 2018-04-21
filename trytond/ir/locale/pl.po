@@ -16,11 +16,11 @@ msgstr "Nie masz uprawnień do usunięcia tego rekordu."
 
 msgctxt "error:digits_validation_record:"
 msgid ""
-"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
-"exceeds its limit."
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 msgstr ""
-"Wartość \"%(value)s\" w polu \"%(field)s\" przekracza dopuszczalną liczbę "
-"cyfr \"%(digits)s\"."
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 
 msgctxt "error:domain_validation_record:"
 msgid ""
@@ -268,9 +268,7 @@ msgctxt "error:read_error:"
 msgid ""
 "You try to read records that don't exist anymore.\n"
 "(Document type: %s)"
-msgstr ""
-"Próbujesz czytać rekordy, które nie istnieją.\n"
-"(Typ dokumentu: %s)"
+msgstr "Próbujesz czytać rekordy, które nie istnieją.(Typ dokumentu: %s)"
 
 msgctxt "error:recursion_error:"
 msgid ""
@@ -321,7 +319,7 @@ msgctxt "error:time_format_validation_record:"
 msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
 msgstr ""
 "Niepoprawna wartość czasu \"%(value)s\" pola \"%(field)s\" w modelu "
-"\"%(model)s\". "
+"\"%(model)s\"."
 
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
@@ -332,7 +330,7 @@ msgid ""
 "You try to write on records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"Próbujesz zapisywać do rekordów, które już nie istnieją.\n"
+"Próbujesz zapisać rekordy, które już nie istnieją.\n"
 "(Typ dokumentu: %s)"
 
 msgctxt "error:write_xml_record:"
@@ -1199,9 +1197,57 @@ msgctxt "field:ir.lang,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Separator dziesiętny"
+
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "Grupowanie"
+
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Separator tysięcy"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Symbol waluty przed wartością ujemną"
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Oddzielenie symbolu waluty od wartości ujemnej"
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Pozycja znaku ujemnego"
+
 msgctxt "field:ir.lang,name:"
 msgid "Name"
 msgstr "Nazwa"
+
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr "Znak ujemny"
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Symbol waluty przed wartością dodatnią"
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Oddzielenie symbolu waluty od wartości dodatniej"
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Pozycja znaku dodatniego"
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr ""
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr "Znak dodatni"
 
 msgctxt "field:ir.lang,rec_name:"
 msgid "Record Name"
@@ -1327,6 +1373,10 @@ msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
 msgstr "Kliknięcia"
 
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
+msgstr "Potwierdź"
+
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
 msgstr "Data utworzenia"
@@ -1338,6 +1388,10 @@ msgstr "Utworzył"
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "Grupy"
+
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "Pomoc"
 
 msgctxt "field:ir.model.button,id:"
 msgid "ID"
@@ -1366,6 +1420,10 @@ msgstr "Przywróć według"
 msgctxt "field:ir.model.button,rules:"
 msgid "Rules"
 msgstr "Reguły"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr "Etykieta"
 
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1974,10 +2032,6 @@ msgstr "Nazwa rekordu"
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "Testy"
-
-msgctxt "field:ir.rule.group,users:"
-msgid "Users"
-msgstr "Użytkownicy"
 
 msgctxt "field:ir.rule.group,write_date:"
 msgid "Write Date"
@@ -2787,6 +2841,14 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
+msgctxt "help:ir.action,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
+msgctxt "help:ir.action.act_window,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh"
 msgstr "Część domany, która będzie ewaluowana przy każdym oświeżeniu"
@@ -2799,6 +2861,18 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "Domyślne kryteria wyszukiwania dla widoku listy"
 
+msgctxt "help:ir.action.act_window.domain,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
+msgctxt "help:ir.action.act_window.view,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
+msgctxt "help:ir.action.report,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2809,19 +2883,31 @@ msgstr ""
 
 msgctxt "help:ir.action.report,extension:"
 msgid ""
-"Leave empty for the same as template, see unoconv documentation for "
+"Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format"
 msgstr ""
-"Pozostaw puste jako szablon. Sprawdź dokumentację unoconv dla właściwego "
-"formatu."
+"Pozostaw puste jako szablon. Sprawdź dokumentację LibreOffice dla właściwego"
+" formatu."
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr "Sprawdź, czy szablon pracuje tylko dla jednego rekordu."
 
+msgctxt "help:ir.action.url,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
+msgctxt "help:ir.action.wizard,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
 msgstr "Uruchom kreatora w nowym oknie"
+
+msgctxt "help:ir.cron,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
 
 msgctxt "help:ir.cron,number_calls:"
 msgid ""
@@ -2839,17 +2925,34 @@ msgctxt "help:ir.cron,user:"
 msgid "The user used to execute this action"
 msgstr "Użytkownik uruchamiający tę akcję"
 
+msgctxt "help:ir.lang,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
 msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr ""
 
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "Moduł, w którym ten model jest zdefiniowany"
 
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr ""
+"Tekst umożliwiający użytkownikowi potwierdzenie po wciśnięciu przycisku."
+
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules"
 msgstr "Przycisk resetujący reguły"
+
+msgctxt "help:ir.model.button.click,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
 
 msgctxt "help:ir.model.button.rule,condition:"
 msgid ""
@@ -2904,6 +3007,18 @@ msgid "The rule is satisfied if at least one test is True"
 msgstr ""
 "Reguła spełnia wymagania jeśli wynik przynajmniej jednego testu jest True"
 
+msgctxt "help:ir.sequence,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
+msgctxt "help:ir.sequence.strict,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
+msgctxt "help:ir.trigger,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
@@ -2928,6 +3043,10 @@ msgstr ""
 "Ustaw minimalny czas opóźnienia pomiędzy wywołaniami \"Funkcji akcji\" dla tego samego rekordu.\n"
 "Puste oznacza brak opóźnień."
 
+msgctxt "help:ir.ui.menu,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
+
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain"
 msgstr "Domena PYSON"
@@ -2938,7 +3057,7 @@ msgstr "Akcja"
 
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
-msgstr "Akcje dla okna"
+msgstr "Okno akcji"
 
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
@@ -2998,7 +3117,7 @@ msgstr "Dostęp"
 
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
-msgstr "Kliknięcia"
+msgstr "Kliki"
 
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
@@ -3078,7 +3197,7 @@ msgstr "Tłumaczenia"
 
 msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
-msgstr "Dodaj tłumaczenia"
+msgstr "Ustaw tłumaczenia"
 
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
@@ -3094,7 +3213,7 @@ msgstr "Widoki"
 
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
-msgstr "Szukaj widoku"
+msgstr "Wyszukiwanie widoku"
 
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
@@ -3106,7 +3225,7 @@ msgstr "Stan drzewa"
 
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
-msgstr "Szerokość drzewa widoków"
+msgstr "Szerokość drzewa widoku"
 
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
@@ -3232,6 +3351,10 @@ msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
 msgstr "Hiszpański (Ameryka Łacińska)"
 
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
+msgstr "Perski"
+
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Francuski"
@@ -3287,6 +3410,42 @@ msgstr "Dostęp do modelu"
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Przycisk modelu"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Run Once"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Sync"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Mark for Activation"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Cancel Activation"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Mark for Deactivation (beta)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Cancel Deactivation"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Mark for Upgrade"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Cancel Upgrade"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Show"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
@@ -3570,7 +3729,7 @@ msgstr "Tłumaczenia"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "Dodaj tłumaczenia"
+msgstr "Ustaw tłumaczenia"
 
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
@@ -3873,12 +4032,12 @@ msgid "Date Formatting"
 msgstr "Formatowanie daty"
 
 msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr "Formatowanie pieniężne"
+
+msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "Formatowanie liczb"
-
-msgctxt "view:ir.model.data:"
-msgid "Sync"
-msgstr "Synchronizacja"
 
 msgctxt "view:ir.module.activate_upgrade.done:"
 msgid "The modules have been upgraded / activated."
@@ -4004,10 +4163,6 @@ msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Ustawienie udane!"
 
-msgctxt "view:ir.ui.view:"
-msgid "Show"
-msgstr "Wyświetl"
-
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
@@ -4095,3 +4250,31 @@ msgstr "Zaktualizuj"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Zamknij"
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
+"exceeds its limit."
+msgstr ""
+"Wartość \"%(value)s\" w polu \"%(field)s\" przekracza dopuszczalną liczbę "
+"cyfr \"%(digits)s\"."
+
+msgctxt "field:ir.rule.group,users:"
+msgid "Users"
+msgstr "Użytkownicy"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see unoconv documentation for "
+"compatible format"
+msgstr ""
+"Pozostaw puste jako szablon. Sprawdź dokumentację unoconv dla właściwego "
+"formatu."
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "Synchronizacja"
+
+msgctxt "view:ir.ui.view:"
+msgid "Show"
+msgstr "Wyświetl"

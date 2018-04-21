@@ -2,39 +2,50 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "error:access_error:"
 msgid ""
 "You try to bypass an access rule.\n"
 "(Document type: %s)"
 msgstr ""
-"试图绕过操作权限规则.\n"
-"(文档类型: %s)"
+"You try to bypass an access rule.\n"
+"(Document type: %s)"
 
+#, fuzzy
 msgctxt "error:delete_xml_record:"
 msgid "You are not allowed to delete this record."
-msgstr "不允许删除此条记录"
+msgstr "You are not allowed to delete this record."
 
 msgctxt "error:digits_validation_record:"
 msgid ""
-"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
-"exceeds its limit."
-msgstr " 数据\"%(field)s\"的值\"%(value)s\" 的位数\"%(digits)s\"超过限制."
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
+msgstr ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
 
+#, fuzzy
 msgctxt "error:domain_validation_record:"
 msgid ""
 "The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
 " to its domain."
-msgstr "域设置下模型\"%(model)s\" 的数据 \"%(field)s\"无效."
+msgstr ""
+"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
+" to its domain."
 
+#, fuzzy
 msgctxt "error:foreign_model_exist:"
 msgid ""
 "Could not delete the records because they are used on field \"%(field)s\" of"
 " \"%(model)s\"."
-msgstr "模型\"%(model)s\"的数据 \"%(field)s\" 正在使用，无法删除项目."
+msgstr ""
+"Could not delete the records because they are used on field \"%(field)s\" of"
+" \"%(model)s\"."
 
+#, fuzzy
 msgctxt "error:foreign_model_missing:"
 msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
-msgstr "模型\"%(model)s\"的数据 \"%(field)s\" 的值\"%(value)s\" 不存在."
+msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
 
 msgctxt "error:ir.action.act_window.domain:"
 msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
@@ -60,7 +71,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "报表\"%s\"的email定义无效."
 
-#, fuzzy
 msgctxt "error:ir.attachment:"
 msgid "The names of attachments must be unique by resource."
 msgstr "附件文档名必须唯一 !"
@@ -119,12 +129,11 @@ msgctxt "error:ir.model.access:"
 msgid "You can not write in this document! (%s)"
 msgstr "文件 (%s) 无写入权限!"
 
-#, fuzzy
 msgctxt "error:ir.model.button.rule:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
 "\"%(rule)s\"."
-msgstr "触发器\"%(trigger)s\"的条件\"%(condition)s\"配置不是合法的PYSON表达式."
+msgstr "按钮规则\"%(rule)s\"的条件\"%(condition)s\"配置不是合法的PYSON表达式."
 
 msgctxt "error:ir.model.button:"
 msgid "The button name in model must be unique!"
@@ -161,13 +170,12 @@ msgstr "模块\"%s\"的依赖 %s缺失"
 msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
-msgstr ""
+msgstr "有已安装模块依赖你准备卸载的模块:"
 
 msgctxt "error:ir.module:"
 msgid "The name of the module must be unique!"
 msgstr "模块名称必须唯一！"
 
-#, fuzzy
 msgctxt "error:ir.module:"
 msgid "You can not remove a module that is activated or will be activated"
 msgstr "无法移除未安装或者待装状态的模块"
@@ -248,81 +256,103 @@ msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
 msgstr "视图\"%s\"的XML表达不合法."
 
+#, fuzzy
 msgctxt "error:read_error:"
 msgid ""
 "You try to read records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"试图读取不存在的项目.\n"
-"(文件类型: %s)"
+"You try to read records that don't exist anymore.\n"
+"(Document type: %s)"
 
+#, fuzzy
 msgctxt "error:recursion_error:"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
-msgstr "递归错误：数据 \"%(rec_name)s不可同时为\"%(parent_rec_name)s\"的父级和子级."
+msgstr ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
 
+#, fuzzy
 msgctxt "error:reference_syntax_error:"
 msgid "Syntax error for reference %r in %s"
-msgstr "reference %r in %s 语法错误"
+msgstr "Syntax error for reference %r in %s"
 
+#, fuzzy
 msgctxt "error:relation_not_found:"
 msgid "Relation not found: %r in %s"
-msgstr "不是包含关系: %r in %s"
+msgstr "Relation not found: %r in %s"
 
+#, fuzzy
 msgctxt "error:required_field:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "模型 \"%(model)s\" 的 \"%(field)s\"为必填数据."
+msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
 
+#, fuzzy
 msgctxt "error:required_validation_record:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "模型 \"%(model)s\" 的 \"%(field)s\"为必填数据."
+msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
 
+#, fuzzy
 msgctxt "error:search_function_missing:"
 msgid "Missing search function on field \"%s\"."
-msgstr "数据 \"%s\" 缺少搜索方法."
+msgstr "Missing search function on field \"%s\"."
 
+#, fuzzy
 msgctxt "error:selection_validation_record:"
 msgid ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
 "the selection."
-msgstr "此段不含模型\"%(model)s\"的数据\"%(field)s\"的值\"%(value)s\" ."
+msgstr ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
+"the selection."
 
+#, fuzzy
 msgctxt "error:selection_value_notfound:"
 msgid "Value not in the selection for field \"%s\"."
-msgstr "此段含数据 \"%s\"的值."
+msgstr "Value not in the selection for field \"%s\"."
 
+#, fuzzy
 msgctxt "error:size_validation_record:"
 msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
-msgstr "模型\"%(model)s\"的数据 \"%(field)s\"的大小\"%(size)s\"位数太长."
+msgstr "The size \"%(size)s\" of the field \"%(field)s\" on \"(model)%s\" is too long."
 
+#, fuzzy
 msgctxt "error:time_format_validation_record:"
 msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
-msgstr "模型\"%(model)s\"的数据 \"%(field)s\" 的时间值\"%(value)s\" 不存在."
+msgstr ""
+"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
+"valid."
 
+#, fuzzy
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
-msgstr "关联太多: %r in %s"
+msgstr "Too many relations found: %r in %s"
 
+#, fuzzy
 msgctxt "error:write_error:"
 msgid ""
 "You try to write on records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"试图写入不存在的项目.\n"
-"(文件类型: %s)"
+"You try to write on records that don't exist anymore.\n"
+"(Document type: %s)"
 
+#, fuzzy
 msgctxt "error:write_xml_record:"
 msgid "You are not allowed to modify this record."
-msgstr "不允许修改此条记录."
+msgstr "You are not allowed to modify this record."
 
+#, fuzzy
 msgctxt "error:xml_id_syntax_error:"
 msgid "Syntax error for XML id %r in %s"
-msgstr " XML id %r in %s 语法错误"
+msgstr "Syntax error for XML id %r in %s"
 
+#, fuzzy
 msgctxt "error:xml_record_desc:"
 msgid "This record is part of the base configuration."
-msgstr "此项是基本设置."
+msgstr "This record is part of the base configuration."
 
 msgctxt "field:ir.action,active:"
 msgid "Active"
@@ -358,7 +388,7 @@ msgstr "名称"
 
 msgctxt "field:ir.action,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action,type:"
 msgid "Type"
@@ -398,11 +428,11 @@ msgstr "场景值"
 
 msgctxt "field:ir.action.act_window,context_domain:"
 msgid "Context Domain"
-msgstr ""
+msgstr "上下文域"
 
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
-msgstr ""
+msgstr "上下文模型"
 
 msgctxt "field:ir.action.act_window,create_date:"
 msgid "Create Date"
@@ -466,7 +496,7 @@ msgstr "PySON查找表达式"
 
 msgctxt "field:ir.action.act_window,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
@@ -530,7 +560,7 @@ msgstr "名称"
 
 msgctxt "field:ir.action.act_window.domain,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action.act_window.domain,sequence:"
 msgid "Sequence"
@@ -566,7 +596,7 @@ msgstr "标识"
 
 msgctxt "field:ir.action.act_window.view,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action.act_window.view,sequence:"
 msgid "Sequence"
@@ -612,9 +642,10 @@ msgctxt "field:ir.action.keyword,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
 msgctxt "field:ir.action.keyword,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action.keyword,write_date:"
 msgid "Write Date"
@@ -690,7 +721,7 @@ msgstr "PySON 邮箱"
 
 msgctxt "field:ir.action.report,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -774,7 +805,7 @@ msgstr "名称"
 
 msgctxt "field:ir.action.url,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
@@ -842,7 +873,7 @@ msgstr "名称"
 
 msgctxt "field:ir.action.wizard,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
@@ -914,7 +945,7 @@ msgstr "名称"
 
 msgctxt "field:ir.attachment,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
@@ -954,7 +985,7 @@ msgstr "名称"
 
 msgctxt "field:ir.cache,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
@@ -986,7 +1017,7 @@ msgstr "语言"
 
 msgctxt "field:ir.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.configuration,write_date:"
 msgid "Write Date"
@@ -1046,7 +1077,7 @@ msgstr "调用次数"
 
 msgctxt "field:ir.cron,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.cron,repeat_missed:"
 msgid "Repeat Missed"
@@ -1094,7 +1125,7 @@ msgstr "名称"
 
 msgctxt "field:ir.export,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
@@ -1130,7 +1161,7 @@ msgstr "名称"
 
 msgctxt "field:ir.export.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.export.line,write_date:"
 msgid "Write Date"
@@ -1176,13 +1207,64 @@ msgctxt "field:ir.lang,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
+msgctxt "field:ir.lang,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "小数点"
+
+#, fuzzy
+msgctxt "field:ir.lang,mon_grouping:"
+msgid "Grouping"
+msgstr "类别"
+
+#, fuzzy
+msgctxt "field:ir.lang,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "千位分隔符"
+
+msgctxt "field:ir.lang,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr ""
+
+msgctxt "field:ir.lang,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr ""
+
+msgctxt "field:ir.lang,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr ""
+
 msgctxt "field:ir.lang,name:"
 msgid "Name"
 msgstr "名称"
 
+msgctxt "field:ir.lang,negative_sign:"
+msgid "Negative Sign"
+msgstr ""
+
+msgctxt "field:ir.lang,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr ""
+
+msgctxt "field:ir.lang,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr ""
+
+msgctxt "field:ir.lang,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr ""
+
+msgctxt "field:ir.lang,parent:"
+msgid "Parent Code"
+msgstr ""
+
+msgctxt "field:ir.lang,positive_sign:"
+msgid "Positive Sign"
+msgstr ""
+
 msgctxt "field:ir.lang,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
@@ -1238,7 +1320,7 @@ msgstr "模型描述"
 
 msgctxt "field:ir.model,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.model,write_date:"
 msgid "Write Date"
@@ -1288,9 +1370,10 @@ msgctxt "field:ir.model.access,perm_write:"
 msgid "Write Access"
 msgstr "写入"
 
+#, fuzzy
 msgctxt "field:ir.model.access,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.model.access,write_date:"
 msgid "Write Date"
@@ -1300,8 +1383,13 @@ msgctxt "field:ir.model.access,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
+msgstr "Clicks"
+
+msgctxt "field:ir.model.button,confirm:"
+msgid "Confirm"
 msgstr ""
 
 msgctxt "field:ir.model.button,create_date:"
@@ -1315,6 +1403,11 @@ msgstr "创建者"
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "用户组"
+
+#, fuzzy
+msgctxt "field:ir.model.button,help:"
+msgid "Help"
+msgstr "帮助"
 
 msgctxt "field:ir.model.button,id:"
 msgid "ID"
@@ -1330,7 +1423,7 @@ msgstr "名称"
 
 msgctxt "field:ir.model.button,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
@@ -1344,6 +1437,10 @@ msgstr ""
 msgctxt "field:ir.model.button,rules:"
 msgid "Rules"
 msgstr "规则"
+
+msgctxt "field:ir.model.button,string:"
+msgid "Label"
+msgstr ""
 
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1377,9 +1474,10 @@ msgctxt "field:ir.model.button-button.reset,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
 msgctxt "field:ir.model.button-button.reset,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 #, fuzzy
 msgctxt "field:ir.model.button-button.reset,write_date:"
@@ -1416,9 +1514,10 @@ msgctxt "field:ir.model.button.click,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
 msgctxt "field:ir.model.button.click,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 #, fuzzy
 msgctxt "field:ir.model.button.click,record_id:"
@@ -1469,9 +1568,10 @@ msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.button.rule,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 #, fuzzy
 msgctxt "field:ir.model.button.rule,write_date:"
@@ -1523,9 +1623,10 @@ msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
 msgstr "未同步"
 
+#, fuzzy
 msgctxt "field:ir.model.data,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
@@ -1575,9 +1676,10 @@ msgctxt "field:ir.model.field,name:"
 msgid "Name"
 msgstr "名称"
 
+#, fuzzy
 msgctxt "field:ir.model.field,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
@@ -1635,9 +1737,10 @@ msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "写入"
 
+#, fuzzy
 msgctxt "field:ir.model.field.access,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.model.field.access,write_date:"
 msgid "Write Date"
@@ -1687,9 +1790,10 @@ msgctxt "field:ir.module,parents:"
 msgid "Parents"
 msgstr "父级"
 
+#, fuzzy
 msgctxt "field:ir.module,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.module,state:"
 msgid "State"
@@ -1746,9 +1850,10 @@ msgctxt "field:ir.module.config_wizard.item,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
 msgctxt "field:ir.module.config_wizard.item,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.module.config_wizard.item,sequence:"
 msgid "Sequence"
@@ -1794,9 +1899,10 @@ msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
 msgstr "名称"
 
+#, fuzzy
 msgctxt "field:ir.module.dependency,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
@@ -1843,9 +1949,10 @@ msgctxt "field:ir.note,message_wrapped:"
 msgid "Message"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.note,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 #, fuzzy
 msgctxt "field:ir.note,resource:"
@@ -1886,9 +1993,10 @@ msgctxt "field:ir.note.read,note:"
 msgid "Note"
 msgstr "注释"
 
+#, fuzzy
 msgctxt "field:ir.note.read,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 #, fuzzy
 msgctxt "field:ir.note.read,user:"
@@ -1921,9 +2029,10 @@ msgctxt "field:ir.rule,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
 msgctxt "field:ir.rule,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.rule,rule_group:"
 msgid "Group"
@@ -1985,17 +2094,14 @@ msgctxt "field:ir.rule.group,perm_write:"
 msgid "Write Access"
 msgstr "写入"
 
+#, fuzzy
 msgctxt "field:ir.rule.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "测试"
-
-msgctxt "field:ir.rule.group,users:"
-msgid "Users"
-msgstr "用户"
 
 msgctxt "field:ir.rule.group,write_date:"
 msgid "Write Date"
@@ -2053,9 +2159,10 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "前缀"
 
+#, fuzzy
 msgctxt "field:ir.sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
@@ -2129,9 +2236,10 @@ msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "前缀"
 
+#, fuzzy
 msgctxt "field:ir.sequence.strict,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
@@ -2177,9 +2285,10 @@ msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
 msgstr "序列名"
 
+#, fuzzy
 msgctxt "field:ir.sequence.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.sequence.type,write_date:"
 msgid "Write Date"
@@ -2205,9 +2314,10 @@ msgctxt "field:ir.session,key:"
 msgid "Key"
 msgstr "密匙"
 
+#, fuzzy
 msgctxt "field:ir.session,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.session,write_date:"
 msgid "Write Date"
@@ -2233,9 +2343,10 @@ msgctxt "field:ir.session.wizard,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
 msgctxt "field:ir.session.wizard,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.session.wizard,write_date:"
 msgid "Write Date"
@@ -2281,9 +2392,10 @@ msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
 msgstr "来源模块"
 
+#, fuzzy
 msgctxt "field:ir.translation,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
@@ -2417,9 +2529,10 @@ msgctxt "field:ir.trigger,on_write:"
 msgid "On Write"
 msgstr "写入触发"
 
+#, fuzzy
 msgctxt "field:ir.trigger,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.trigger,write_date:"
 msgid "Write Date"
@@ -2441,9 +2554,10 @@ msgctxt "field:ir.trigger.log,id:"
 msgid "ID"
 msgstr "标识"
 
+#, fuzzy
 msgctxt "field:ir.trigger.log,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
@@ -2489,9 +2603,10 @@ msgctxt "field:ir.ui.icon,path:"
 msgid "SVG Path"
 msgstr "SVG Path"
 
+#, fuzzy
 msgctxt "field:ir.ui.icon,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.ui.icon,sequence:"
 msgid "Sequence"
@@ -2557,9 +2672,10 @@ msgctxt "field:ir.ui.menu,parent:"
 msgid "Parent Menu"
 msgstr "上一级菜单"
 
+#, fuzzy
 msgctxt "field:ir.ui.menu,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.ui.menu,sequence:"
 msgid "Sequence"
@@ -2589,9 +2705,10 @@ msgctxt "field:ir.ui.menu.favorite,menu:"
 msgid "Menu"
 msgstr "菜单"
 
+#, fuzzy
 msgctxt "field:ir.ui.menu.favorite,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.ui.menu.favorite,sequence:"
 msgid "Sequence"
@@ -2657,9 +2774,10 @@ msgctxt "field:ir.ui.view,priority:"
 msgid "Priority"
 msgstr "优先级"
 
+#, fuzzy
 msgctxt "field:ir.ui.view,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
@@ -2701,9 +2819,10 @@ msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
 msgstr "名称"
 
+#, fuzzy
 msgctxt "field:ir.ui.view_search,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
@@ -2745,9 +2864,10 @@ msgctxt "field:ir.ui.view_tree_state,nodes:"
 msgid "Expanded Nodes"
 msgstr "展开节点"
 
+#, fuzzy
 msgctxt "field:ir.ui.view_tree_state,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
@@ -2785,9 +2905,10 @@ msgctxt "field:ir.ui.view_tree_width,model:"
 msgid "Model"
 msgstr "模型"
 
+#, fuzzy
 msgctxt "field:ir.ui.view_tree_width,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "记录名称"
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
@@ -2805,6 +2926,14 @@ msgctxt "field:ir.ui.view_tree_width,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+msgctxt "help:ir.action,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.act_window,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh"
 msgstr ""
@@ -2817,6 +2946,18 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view"
 msgstr "列表视图默认搜索表达式"
 
+msgctxt "help:ir.action.act_window.domain,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.act_window.view,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.report,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.action.report,email:"
 msgid ""
 "Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
@@ -2825,9 +2966,10 @@ msgstr ""
 "定义键 \"to\" \"cc\" \"subject\"的python dictionary\n"
 "如: {'to': 'test@example.com', 'cc': 'user@example.com'}"
 
+#, fuzzy
 msgctxt "help:ir.action.report,extension:"
 msgid ""
-"Leave empty for the same as template, see unoconv documentation for "
+"Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format"
 msgstr "参考unoconv文档有关格式部分，模版空白不要改动"
 
@@ -2835,9 +2977,21 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr ""
 
+msgctxt "help:ir.action.url,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.action.wizard,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
 msgstr "打开新窗口运行向导"
+
+msgctxt "help:ir.cron,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:ir.cron,number_calls:"
 msgid ""
@@ -2853,16 +3007,32 @@ msgctxt "help:ir.cron,user:"
 msgid "The user used to execute this action"
 msgstr "执行动作的用户"
 
+msgctxt "help:ir.lang,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
 msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
+
+msgctxt "help:ir.lang,parent:"
+msgid "Code of the exceptional parent"
+msgstr ""
 
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "定义该模型的模块"
 
+msgctxt "help:ir.model.button,confirm:"
+msgid "Text to ask user confirmation when clicking the button."
+msgstr ""
+
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules"
+msgstr ""
+
+msgctxt "help:ir.model.button.click,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 #, fuzzy
@@ -2914,6 +3084,18 @@ msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
 msgstr "任意一项测试结果为真，即判断符合规则."
 
+msgctxt "help:ir.sequence,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.sequence.strict,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:ir.trigger,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
@@ -2938,6 +3120,10 @@ msgstr ""
 "设置对相同数据调用\"动作方法\" 的最小间隔时间\n"
 " 留空表示不限制"
 
+msgctxt "help:ir.ui.menu,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain"
 msgstr "PYSON 域"
@@ -2946,143 +3132,172 @@ msgctxt "model:ir.action,name:"
 msgid "Action"
 msgstr "动作"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
-msgstr "窗口动作"
+msgstr "Window Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr "动作"
+msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
-msgstr "报表"
+msgstr "Reports"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
-msgstr "URL"
+msgstr "URLs"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
-msgstr "向导"
+msgstr "Wizards"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "附件文档"
+msgstr "Attachments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "设置向导项目"
+msgstr "Config Wizard Items"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
-msgstr "计划动作"
+msgstr "Scheduled Actions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
-msgstr "导出"
+msgstr "Exports"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr "图标"
+msgstr "Icons"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
-msgstr "语言"
+msgstr "Languages"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_menu_list"
 msgid "Menu"
-msgstr "菜单"
+msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
-msgstr "菜单"
+msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
-msgstr "模型权限"
+msgstr "Models Access"
 
 msgctxt "model:ir.action,name:act_model_access_form_relate_model"
 msgid "Access"
-msgstr ""
+msgstr "Access"
 
 msgctxt "model:ir.action,name:act_model_button_click_form_relate_model_button"
 msgid "Clicks"
-msgstr ""
+msgstr "Clicks"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_button_form"
 msgid "Buttons"
-msgstr "按钮"
+msgstr "Buttons"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_data_form"
 msgid "Data"
-msgstr "数据"
+msgstr "Data"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_field_access_form"
 msgid "Fields Access"
-msgstr "数据权限"
+msgstr "Fields Access"
 
 msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
-msgstr ""
+msgstr "Access"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
-msgstr "数据"
+msgstr "Fields"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
-msgstr "模型"
+msgstr "Models"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "执行未完成的”安装“ “升级”"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
-msgstr "设置模块"
+msgstr "Configure Modules"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_config_wizard"
 msgid "Module Configuration"
-msgstr "模块设置"
+msgstr "Module Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_form"
 msgid "Modules"
-msgstr "模块"
+msgstr "Modules"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_note_form"
 msgid "Notes"
 msgstr "注释"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_rule_group_form"
 msgid "Record Rules"
-msgstr "数据规则"
+msgstr "Record Rules"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_form"
 msgid "Sequences"
-msgstr "序列"
+msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "严格序列"
+msgstr "Sequences Strict"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_sequence_type_form"
 msgid "Sequence Types"
-msgstr "序列类型"
+msgstr "Sequence Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_clean"
 msgid "Clean Translations"
-msgstr "清理翻译"
+msgstr "Clean Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_export"
 msgid "Export Translations"
-msgstr "导出翻译条目"
+msgstr "Export Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_form"
 msgid "Translations"
-msgstr "翻译"
+msgstr "Translations"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_translation_report"
@@ -3094,45 +3309,54 @@ msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
 msgstr "保存翻译"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
-msgstr "使翻译生效"
+msgstr "Synchronize Translations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
-msgstr "触发器"
+msgstr "Triggers"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
-msgstr "视图"
+msgstr "Views"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
-msgstr "搜索视图"
+msgstr "View Search"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_show"
 msgid "Show View"
-msgstr "显示视图"
+msgstr "Show View"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_state"
 msgid "Tree State"
-msgstr "三态"
+msgstr "Tree State"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_tree_width_form"
 msgid "View Tree Width"
-msgstr "导航树宽度"
+msgstr "View Tree Width"
 
+#, fuzzy
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
-msgstr "图表"
+msgstr "Graph"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
-msgstr "图表"
+msgstr "Graph"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr ""
+msgstr "Workflow Graph"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_translation_report"
@@ -3147,20 +3371,22 @@ msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
 msgstr "动作窗体域设置"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
 msgid "All"
-msgstr "全部"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_out_of_sync"
 msgid "Out of Sync"
-msgstr "未同步"
+msgstr "Out of Sync"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_translation_form_domain_local"
 msgid "Local"
-msgstr ""
+msgstr "Local"
 
 #, fuzzy
 msgctxt ""
@@ -3220,25 +3446,30 @@ msgctxt "model:ir.lang,name:"
 msgid "Language"
 msgstr "语言"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_bg"
 msgid "Bulgarian"
-msgstr "保加利亚语"
+msgstr "Bulgarian"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_ca"
 msgid "Català"
-msgstr "加泰罗尼亚语"
+msgstr "Català"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_cs"
 msgid "Czech"
-msgstr "捷克语"
+msgstr "Czech"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_de"
 msgid "German"
-msgstr "德语"
+msgstr "German"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_en"
 msgid "English"
-msgstr "英语"
+msgstr "English"
 
 #, fuzzy
 msgctxt "model:ir.lang,name:lang_es"
@@ -3247,51 +3478,63 @@ msgstr "西班牙语（西班牙）"
 
 msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
+msgstr "Spanish (Latin American)"
+
+msgctxt "model:ir.lang,name:lang_fa"
+msgid "Persian"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
-msgstr "法语"
+msgstr "French"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_hu_HU"
 msgid "Hungarian"
-msgstr "匈牙利语"
+msgstr "Hungarian"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_it_IT"
 msgid "Italian"
-msgstr "意大利语"
+msgstr "Italian"
 
 msgctxt "model:ir.lang,name:lang_lo"
 msgid "Lao"
-msgstr ""
+msgstr "Lao"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_lt"
 msgid "Lithuanian"
-msgstr "立陶宛语"
+msgstr "Lithuanian"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_nl"
 msgid "Dutch"
-msgstr "荷兰语"
+msgstr "Dutch"
 
 msgctxt "model:ir.lang,name:lang_pl"
 msgid "Polish"
-msgstr ""
+msgstr "Polish"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_pt_BR"
 msgid "Portuguese (Brazil)"
-msgstr "葡萄牙语"
+msgstr "Portuguese (Brazil)"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
-msgstr "俄语"
+msgstr "Russian"
 
+#, fuzzy
 msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
-msgstr "斯洛维尼亚语"
+msgstr "Slovenian"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
-msgstr ""
+msgstr "Chinese Simplified"
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3304,6 +3547,42 @@ msgstr "模型权限"
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "按钮模型"
+
+msgctxt "model:ir.model.button,string:cron_run_once_button"
+msgid "Run Once"
+msgstr "Run Once"
+
+msgctxt "model:ir.model.button,string:model_data_sync_button"
+msgid "Sync"
+msgstr "Sync"
+
+msgctxt "model:ir.model.button,string:module_activate_button"
+msgid "Mark for Activation"
+msgstr "Mark for Activation"
+
+msgctxt "model:ir.model.button,string:module_activate_cancel_button"
+msgid "Cancel Activation"
+msgstr "Cancel Activation"
+
+msgctxt "model:ir.model.button,string:module_deactivate_button"
+msgid "Mark for Deactivation (beta)"
+msgstr "Mark for Deactivation (beta)"
+
+msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
+msgid "Cancel Deactivation"
+msgstr "Cancel Deactivation"
+
+msgctxt "model:ir.model.button,string:module_upgrade_button"
+msgid "Mark for Upgrade"
+msgstr "Mark for Upgrade"
+
+msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
+msgid "Cancel Upgrade"
+msgstr "Cancel Upgrade"
+
+msgctxt "model:ir.model.button,string:view_show_button"
+msgid "Show"
+msgstr "Show"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
@@ -3453,179 +3732,219 @@ msgctxt "model:ir.ui.menu,name:"
 msgid "UI menu"
 msgstr "UI 菜单"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
-msgstr "动作"
+msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
-msgstr "动作"
+msgstr "Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
-msgstr "窗口动作"
+msgstr "Window Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
-msgstr "报表"
+msgstr "Reports"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_url"
 msgid "URLs"
-msgstr "URL"
+msgstr "URLs"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_wizard"
 msgid "Wizards"
-msgstr "向导"
+msgstr "Wizards"
 
 msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
 msgstr "Administration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
-msgstr "附件文档"
+msgstr "Attachments"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "设置向导"
+msgstr "Config Wizard Items"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
-msgstr "计划动作"
+msgstr "Scheduled Actions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
-msgstr "导出项目"
+msgstr "Exports"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr "图标"
+msgstr "Icons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Sequence Types"
-msgstr "序列类型"
+msgstr "Sequence Types"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
-msgstr "语言"
+msgstr "Languages"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
-msgstr "地域"
+msgstr "Localization"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
-msgstr "菜单"
+msgstr "Menu"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
-msgstr "模型权限"
+msgstr "Models Access"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
-msgstr "按钮"
+msgstr "Buttons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
-msgstr "数据"
+msgstr "Data"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr "数据权限"
+msgstr "Fields Access"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
-msgstr "模型"
+msgstr "Models"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
-msgstr "模型"
+msgstr "Models"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
 msgstr "执行未完成的”安装“ “升级”"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
-msgstr "模块"
+msgstr "Modules"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_modules"
 msgid "Modules"
-msgstr "模块"
+msgstr "Modules"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_note_form"
 msgid "Notes"
 msgstr "注释"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_rule_group_form"
 msgid "Record Rules"
-msgstr "数据规则"
+msgstr "Record Rules"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_scheduler"
 msgid "Scheduler"
-msgstr "计划"
+msgstr "Scheduler"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_form"
 msgid "Sequences"
-msgstr "序列"
+msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequence_strict_form"
 msgid "Sequences Strict"
-msgstr "严格序列"
+msgstr "Sequences Strict"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_sequences"
 msgid "Sequences"
-msgstr "序列"
+msgstr "Sequences"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_clean"
 msgid "Clean Translations"
-msgstr "清理翻译"
+msgstr "Clean Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_export"
 msgid "Export Translations"
-msgstr "导出翻译条目"
+msgstr "Export Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_form"
 msgid "Translations"
-msgstr "翻译"
+msgstr "Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_set"
 msgid "Set Translations"
-msgstr "保存翻译"
+msgstr "Set Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
-msgstr "使翻译生效"
+msgstr "Synchronize Translations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
-msgstr "触发器"
+msgstr "Triggers"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
-msgstr "界面"
+msgstr "User Interface"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
-msgstr "视图"
+msgstr "Views"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
-msgstr "搜索视图"
+msgstr "View Search"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
-msgstr "导航树状态"
+msgstr "Tree State"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
-msgstr "导航树宽度"
+msgstr "View Tree Width"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
-msgstr "数据"
+msgstr "Fields"
 
 msgctxt "model:ir.ui.menu.favorite,name:"
 msgid "Menu Favorite"
@@ -3888,21 +4207,22 @@ msgctxt "view:ir.cron:"
 msgid "Action to trigger"
 msgstr "待执行"
 
+#, fuzzy
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr ""
+msgstr "Run Once"
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "日期格式"
 
 msgctxt "view:ir.lang:"
+msgid "Monetary Formatting"
+msgstr ""
+
+msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"
 msgstr "数字书写格式"
-
-msgctxt "view:ir.model.data:"
-msgid "Sync"
-msgstr "同步"
 
 #, fuzzy
 msgctxt "view:ir.module.activate_upgrade.done:"
@@ -3929,25 +4249,29 @@ msgid ""
 " have installed."
 msgstr "通过本向导可以对安装的模块进行设置."
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Cancel Activation"
-msgstr ""
+msgstr "Cancel Activation"
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Cancel Deactivation"
-msgstr ""
+msgstr "Cancel Deactivation"
 
 msgctxt "view:ir.module:"
 msgid "Cancel Upgrade"
 msgstr "取消“升级”"
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Mark for Activation"
-msgstr ""
+msgstr "Mark for Activation"
 
+#, fuzzy
 msgctxt "view:ir.module:"
 msgid "Mark for Deactivation (beta)"
-msgstr ""
+msgstr "Mark for Deactivation (beta)"
 
 msgctxt "view:ir.module:"
 msgid "Mark for Upgrade"
@@ -4027,10 +4351,6 @@ msgstr "使翻译生效？"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "保存成功！"
-
-msgctxt "view:ir.ui.view:"
-msgid "Show"
-msgstr "显示"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
@@ -4122,3 +4442,27 @@ msgstr "更新"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "关闭"
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
+"exceeds its limit."
+msgstr " 数据\"%(field)s\"的值\"%(value)s\" 的位数\"%(digits)s\"超过限制."
+
+msgctxt "field:ir.rule.group,users:"
+msgid "Users"
+msgstr "用户"
+
+msgctxt "help:ir.action.report,extension:"
+msgid ""
+"Leave empty for the same as template, see unoconv documentation for "
+"compatible format"
+msgstr "参考unoconv文档有关格式部分，模版空白不要改动"
+
+msgctxt "view:ir.model.data:"
+msgid "Sync"
+msgstr "同步"
+
+msgctxt "view:ir.ui.view:"
+msgid "Show"
+msgstr "显示"

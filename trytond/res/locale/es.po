@@ -187,38 +187,6 @@ msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
-msgctxt "field:ir.rule.group-res.user,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:ir.rule.group-res.user,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:ir.rule.group-res.user,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.rule.group-res.user,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:ir.rule.group-res.user,rule_group:"
-msgid "Rule Group"
-msgstr "Grupo de reglas"
-
-msgctxt "field:ir.rule.group-res.user,user:"
-msgid "User"
-msgstr "Usuario"
-
-msgctxt "field:ir.rule.group-res.user,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:ir.rule.group-res.user,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
 msgstr "Grupos de usuarios"
@@ -407,6 +375,14 @@ msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
 msgstr "Hash de la contraseña"
 
+msgctxt "field:res.user,password_reset:"
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+msgctxt "field:res.user,password_reset_expire:"
+msgid "Reset Password Expire"
+msgstr "Expiración restablecer contraseña"
+
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr "Menú PySON"
@@ -414,10 +390,6 @@ msgstr "Menú PySON"
 msgctxt "field:res.user,rec_name:"
 msgid "Record Name"
 msgstr "Nombre del registro"
-
-msgctxt "field:res.user,rule_groups:"
-msgid "Rules"
-msgstr "Reglas"
 
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
@@ -563,6 +535,14 @@ msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:res.user.login.attempt,ip_address:"
+msgid "IP Address"
+msgstr "Dirección IP"
+
+msgctxt "field:res.user.login.attempt,ip_network:"
+msgid "IP Network"
+msgstr "Red IP"
+
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
 msgstr "Nombre usuario"
@@ -615,6 +595,10 @@ msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "help:ir.model.button-res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
 msgstr "Los grupos permitidos para editar las secuencias de este tipo."
@@ -623,17 +607,25 @@ msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
 msgstr "Las acciones que se ejecutarán cuando se identifique."
 
+msgctxt "help:res.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
 msgstr "Grupos"
 
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
-msgstr "Configuración usuarios"
+msgstr "Configurar usuarios"
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
 msgstr "Usuarios"
+
+msgctxt "model:ir.action,name:report_email_reset_password"
+msgid "Reset Password"
+msgstr "Reset Password"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
@@ -642,6 +634,22 @@ msgstr "Acción - Grupo"
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
 msgstr "Ejecutar disparadores por tiempo"
+
+msgctxt "model:ir.model.button,help:user_reset_password_button"
+msgid "Send by email a new temporary password to the user"
+msgstr "Send by email a new temporary password to the user"
+
+msgctxt "model:ir.model.button,string:user_application_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:user_application_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
@@ -654,10 +662,6 @@ msgstr "Relación entre grupo y campo del modelo"
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
 msgstr "Grupo de reglas - Grupo"
-
-msgctxt "model:ir.rule.group-res.user,name:"
-msgid "Rule Group - User"
-msgstr "Grupo de reglas - Usuario"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
@@ -715,6 +719,48 @@ msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
 msgstr "Aviso usuario"
 
+msgctxt "report:res.user.email_reset_password:"
+msgid ", has been reset."
+msgstr ", ha sido restablecido"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "Reset Password"
+msgstr "Restablecer contraseña"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password for your account,"
+msgstr "La contraseña de su cuenta,"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "The password will expire at"
+msgstr "La contraseña caducará el"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "UTC"
+msgstr "UTC"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You can connect with this temporary password"
+msgstr "Podéis conectar con esta contraseña temporal"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "You must set a new one from the user's preferences."
+msgstr ""
+"Debéis establecer una nueva contraseña desde las preferencias de vuestro "
+"usuario."
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "https://"
+msgstr "https://"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "to"
+msgstr "a"
+
+msgctxt "report:res.user.email_reset_password:"
+msgid "tryton://"
+msgstr "tryton://"
+
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
 msgstr "Cancelado"
@@ -734,14 +780,6 @@ msgstr "Permisos de acceso"
 msgctxt "view:res.group:"
 msgid "Members"
 msgstr "Miembros"
-
-msgctxt "view:res.user.application:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:res.user.application:"
-msgid "Validate"
-msgstr "Validar"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
@@ -786,3 +824,51 @@ msgstr "Añadir"
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
 msgstr "Finalizar"
+
+msgctxt "field:ir.rule.group-res.user,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:ir.rule.group-res.user,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:ir.rule.group-res.user,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.rule.group-res.user,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:ir.rule.group-res.user,rule_group:"
+msgid "Rule Group"
+msgstr "Grupo de reglas"
+
+msgctxt "field:ir.rule.group-res.user,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:ir.rule.group-res.user,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:ir.rule.group-res.user,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:res.user,rule_groups:"
+msgid "Rules"
+msgstr "Reglas"
+
+msgctxt "model:ir.rule.group-res.user,name:"
+msgid "Rule Group - User"
+msgstr "Grupo de reglas - Usuario"
+
+msgctxt "view:res.user.application:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:res.user.application:"
+msgid "Validate"
+msgstr "Validar"
