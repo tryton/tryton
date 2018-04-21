@@ -6,9 +6,10 @@ msgctxt "field:account.dunning.level,print_on_letter:"
 msgid "Print on Letter"
 msgstr "Stampare su lettera"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr "Sollecito"
+msgstr "Dunning Letter"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"

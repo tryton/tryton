@@ -8,7 +8,7 @@ msgstr "Auf Mahnschreiben drucken"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr "Mahnung"
+msgstr "Mahnschreiben"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"

@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr ""
+msgstr "Dunning Letter"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
