@@ -28,16 +28,15 @@ msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
-msgstr ""
+msgstr "Wertebereich Bewegungen (Domain)"
 
-#, fuzzy
 msgctxt "field:stock.shipment.split.start,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Bewegungen"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
@@ -45,15 +44,31 @@ msgstr "Maximale Anzahl von Lagerbewegungen"
 
 msgctxt "help:stock.shipment.split.start,moves:"
 msgid "The selected moves will be sent in the new shipment."
-msgstr ""
+msgstr "Die gewählten Bewegungen werden in die neue Lieferung übernommen."
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Lagerbewegung Aufteilung"
+msgstr "Lagerbewegung aufteilen"
 
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
-msgstr ""
+msgstr "Split Shipment"
+
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr "Split"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
@@ -61,30 +76,15 @@ msgstr "Lagerbewegung Aufteilung"
 
 msgctxt "model:stock.shipment.split.start,name:"
 msgid "Split Shipment"
-msgstr ""
+msgstr "Lieferung aufteilen"
 
 msgctxt "view:stock.move:"
 msgid "Split"
 msgstr "Aufteilen"
 
-#, fuzzy
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr "Aufteilen"
-
-#, fuzzy
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr "Aufteilen"
-
-#, fuzzy
-msgctxt "view:stock.shipment.out:"
-msgid "Split"
-msgstr "Aufteilen"
-
 msgctxt "view:stock.shipment.split.start:"
 msgid "Choose move to send in new shipment"
-msgstr ""
+msgstr "Auswahl der Bewegungen die in die neue Lieferung übernommen werden"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
@@ -94,12 +94,22 @@ msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
 msgstr "Aufteilen"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,split:"
+msgid "Split"
+msgstr "Aufteilen"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Split"
+msgstr "Aufteilen"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Split"
+msgstr "Aufteilen"
+
+msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr "Aufteilen"

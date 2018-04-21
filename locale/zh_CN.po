@@ -50,35 +50,42 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr ""
+msgstr "Split Move"
 
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
-msgstr ""
+msgstr "Split Shipment"
 
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+#, fuzzy
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr ""
+msgstr "Split Move"
 
+#, fuzzy
 msgctxt "model:stock.shipment.split.start,name:"
 msgid "Split Shipment"
-msgstr ""
+msgstr "Split Shipment"
 
+#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr ""
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr ""
-
-msgctxt "view:stock.shipment.out:"
-msgid "Split"
-msgstr ""
+msgstr "Split"
 
 msgctxt "view:stock.shipment.split.start:"
 msgid "Choose move to send in new shipment"
@@ -89,15 +96,17 @@ msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
-msgstr ""
+msgstr "Split"
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,end:"
 msgid "Cancel"
 msgstr "取消"
 
+#, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,split:"
 msgid "Split"
-msgstr ""
+msgstr "Split"

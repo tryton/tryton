@@ -46,13 +46,31 @@ msgctxt "help:stock.shipment.split.start,moves:"
 msgid "The selected moves will be sent in the new shipment."
 msgstr "As movimentações selecionadas serão enviadas na próxima remessa."
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Dividir movimentação"
+msgstr "Split Move"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
-msgstr "Dividir Remessa"
+msgstr "Split Shipment"
+
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr "Split"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
@@ -63,18 +81,6 @@ msgid "Split Shipment"
 msgstr "Dividir Remessa"
 
 msgctxt "view:stock.move:"
-msgid "Split"
-msgstr "Dividir"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr "Dividir"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr "Dividir"
-
-msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr "Dividir"
 
@@ -95,5 +101,17 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:stock.shipment.split,start,split:"
+msgid "Split"
+msgstr "Dividir"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Split"
+msgstr "Dividir"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Split"
+msgstr "Dividir"
+
+msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr "Dividir"

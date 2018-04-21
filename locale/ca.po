@@ -48,11 +48,27 @@ msgstr "Els moviments seleccionats s'enviaran en un albarà nou."
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Divisió de moviments"
+msgstr "Divideix moviments"
 
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
 msgstr "Divideix albarà"
+
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr "Split"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
@@ -63,18 +79,6 @@ msgid "Split Shipment"
 msgstr "Divideix albarà"
 
 msgctxt "view:stock.move:"
-msgid "Split"
-msgstr "Divideix"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr "Divideix"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr "Divideix"
-
-msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr "Divideix"
 
@@ -95,5 +99,17 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "wizard_button:stock.shipment.split,start,split:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:stock.shipment.in.return:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:stock.shipment.internal:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr "Divideix"

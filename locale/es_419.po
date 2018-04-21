@@ -54,6 +54,22 @@ msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:move_split_wizard_button"
+msgid "Split"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
+msgid "Split"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
+msgid "Split"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
+msgid "Split"
+msgstr ""
+
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
 msgstr ""
@@ -63,18 +79,6 @@ msgid "Split Shipment"
 msgstr ""
 
 msgctxt "view:stock.move:"
-msgid "Split"
-msgstr ""
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr ""
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr ""
-
-msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr ""
 
