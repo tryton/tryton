@@ -14,6 +14,10 @@ msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
 msgstr ""
 
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr ""
+
 msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr ""
@@ -24,6 +28,18 @@ msgstr ""
 
 msgctxt "field:notification.email,create_uid:"
 msgid "Create User"
+msgstr ""
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr ""
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr ""
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
 msgstr ""
 
 msgctxt "field:notification.email,from_:"
@@ -150,8 +166,24 @@ msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
 msgstr ""
 
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr ""
+
 msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
+msgstr ""
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr ""
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr ""
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
 msgstr ""
 
 msgctxt "help:notification.email,from_:"

@@ -14,6 +14,10 @@ msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
 msgstr "Anexos"
 
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr ""
+
 msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Conteúdo"
@@ -25,6 +29,18 @@ msgstr "Data de criação"
 msgctxt "field:notification.email,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr ""
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr ""
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr ""
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
@@ -150,9 +166,25 @@ msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
 msgstr "Os relatórios usados como anexos."
 
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr ""
+
 msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
 msgstr "O relatório utilizado como modelo para o email."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr ""
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr ""
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr ""
 
 msgctxt "help:notification.email,from_:"
 msgid "Leave empty for the value defined in the configuration file."
@@ -174,17 +206,19 @@ msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
 msgstr "Adicionar um gatilho para a notificação."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
-msgstr "Emails de Notificação"
+msgstr "Notification Emails"
 
 msgctxt "model:ir.action,name:act_notification_email_log"
 msgid "Logs"
 msgstr "Logs"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
-msgstr "Emails de Notificação"
+msgstr "Notification Emails"
 
 msgctxt "model:notification.email,name:"
 msgid "Email Notitification"

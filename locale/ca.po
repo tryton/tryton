@@ -14,6 +14,10 @@ msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
 msgstr "Adjunts"
 
+msgctxt "field:notification.email,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Mitjà de contacte"
+
 msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Contingut"
@@ -25,6 +29,18 @@ msgstr "Data de creació"
 msgctxt "field:notification.email,create_uid:"
 msgid "Create User"
 msgstr "Usuari de creació"
+
+msgctxt "field:notification.email,fallback_recipients:"
+msgid "Recipients Fallback User"
+msgstr "Usuari enviament fallada destinataris"
+
+msgctxt "field:notification.email,fallback_recipients_hidden:"
+msgid "Hidden Recipients Fallback User"
+msgstr "Usuari enviament fallada destinataris ocults"
+
+msgctxt "field:notification.email,fallback_recipients_secondary:"
+msgid "Secondary Recipients Fallback User"
+msgstr "Usuari enviament fallada destinataris secundaris"
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
@@ -150,9 +166,33 @@ msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
 msgstr "El informes que s'utilitzaran com a adjunts."
 
+msgctxt "help:notification.email,contact_mechanism:"
+msgid "Define which email to use from the party's contact mechanisms"
+msgstr ""
+"Defineix quin correu electrònic dels mitjans de contacte del tercer "
+"s'utilitzarà"
+
 msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
 msgstr "El informes utilitzat com a plantilla del correu electrònic."
+
+msgctxt "help:notification.email,fallback_recipients:"
+msgid "User notified when no recipients e-mail is found"
+msgstr ""
+"El usuari que es notificarà quan no es trobi un correu electrònic pels "
+"destinataris"
+
+msgctxt "help:notification.email,fallback_recipients_hidden:"
+msgid "User notified when no hidden recipients e-mail is found"
+msgstr ""
+"El usuari que es notificarà quan no es trobi un correu electrònic pels "
+"destinataris ocults"
+
+msgctxt "help:notification.email,fallback_recipients_secondary:"
+msgid "User notified when no secondary recipients e-mail is found"
+msgstr ""
+"El usuari que es notificarà quan no es trobi un correu electrònic pels "
+"destinataris secundaris"
 
 msgctxt "help:notification.email,from_:"
 msgid "Leave empty for the value defined in the configuration file."
