@@ -22,9 +22,10 @@ msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
 msgstr "ສະຖານະຕ້ອງການສັ່ງຊື້"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "ຕ້ອງການສັ່ງຊື້"
+msgstr "Purchase Requests"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""

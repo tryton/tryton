@@ -14,9 +14,10 @@ msgctxt "field:purchase.request,sale_lines:"
 msgid "Sale Lines"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
-msgstr ""
+msgstr "Purchase Requests"
 
 msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
@@ -24,7 +25,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr ""
+msgstr "Purchase Requests"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid ""
