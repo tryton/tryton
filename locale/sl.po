@@ -18,9 +18,14 @@ msgctxt "field:product.price_list.line.context,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_price_list_line_form"
 msgid "Lines"
-msgstr "Postavke"
+msgstr "Lines"
+
+msgctxt "model:ir.model.button,string:price_list_open_lines_button"
+msgid "Open Lines"
+msgstr "Open Lines"
 
 msgctxt "model:product.price_list.line.context,name:"
 msgid "Price List Line Context"
