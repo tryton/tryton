@@ -5,6 +5,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 msgctxt "error:sale.sale:"
 msgid "The carrier '%(carrier)s' on sale '%(sale)s' is not valid."
 msgstr ""
+"Der Frachtführer '%(carrier)s' für den Verkauf '%(sale)s' ist nicht gültig."
 
 msgctxt "error:stock.shipment.out:"
 msgid "Missing \"Account Revenue\" on product \"%s\"."

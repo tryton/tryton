@@ -14,7 +14,6 @@ msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Método de costo de envío de venta"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sale_method,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Método de costo de envío de venta"
