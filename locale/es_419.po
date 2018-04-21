@@ -235,7 +235,7 @@ msgstr ""
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Perdido y encontrado"
+msgstr ""
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"

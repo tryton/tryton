@@ -28,7 +28,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-stock.lot.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
@@ -80,7 +80,7 @@ msgstr "Anzahl"
 
 msgctxt "field:stock.lot,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
@@ -112,7 +112,7 @@ msgstr "Name"
 
 msgctxt "field:stock.lot.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
@@ -176,7 +176,7 @@ msgstr "Variante"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
@@ -210,7 +210,7 @@ msgstr "Chargen"
 
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
-msgstr "Chargen"
+msgstr "Charge"
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
@@ -238,7 +238,7 @@ msgstr "Kunde"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Inventurdifferenz"
+msgstr "Differenzen allgemein"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"

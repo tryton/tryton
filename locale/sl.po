@@ -28,7 +28,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-stock.lot.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
@@ -80,7 +80,7 @@ msgstr "Količina"
 
 msgctxt "field:stock.lot,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
@@ -112,7 +112,7 @@ msgstr "Naziv"
 
 msgctxt "field:stock.lot.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
@@ -176,7 +176,7 @@ msgstr "Izdelek"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
@@ -204,21 +204,25 @@ msgstr ""
 "* Prazno polje pomeni neskončno v prihodnost.\n"
 "* Pretekli datum daje zgodovino zaloge."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Serije"
+msgstr "Lots"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
-msgstr "Serija"
+msgstr "Lot"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Promet"
+msgstr "Moves"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Serije"
+msgstr "Lots"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
@@ -232,25 +236,30 @@ msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
 msgstr "Tip serije"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Kupec"
+msgstr "Customer"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Izgubljeno/najdeno"
+msgstr "Lost and Found"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr "Proizvodnja"
+msgstr "Production"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Shramba"
+msgstr "Storage"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "Dobavitelj"
+msgstr "Supplier"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"

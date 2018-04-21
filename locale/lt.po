@@ -217,7 +217,7 @@ msgstr "Lo"
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr ""
+msgstr "Moves"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
@@ -238,23 +238,23 @@ msgstr ""
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr ""
+msgstr "Customer"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr ""
+msgstr "Lost and Found"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr ""
+msgstr "Production"
 
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr ""
+msgstr "Storage"
 
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr ""
+msgstr "Supplier"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"

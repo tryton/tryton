@@ -53,9 +53,10 @@ msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
-msgstr ""
+msgstr "Lot"
 
 #, fuzzy
 msgctxt "field:stock.lot,create_date:"
@@ -158,9 +159,10 @@ msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr ""
+msgstr "Lot"
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
@@ -191,9 +193,10 @@ msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
 msgstr "Местоположение"
 
+#, fuzzy
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr ""
+msgstr "Lot"
 
 #, fuzzy
 msgctxt "field:stock.period.cache.lot,period:"
@@ -236,11 +239,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr ""
+msgstr "Lots"
 
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
-msgstr ""
+msgstr "Lot"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
@@ -249,7 +252,7 @@ msgstr "Перемещения"
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr ""
+msgstr "Lots"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
@@ -296,6 +299,7 @@ msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr ""
+msgstr "Lots"

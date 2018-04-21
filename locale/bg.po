@@ -217,9 +217,10 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Партиди"
+msgstr "Lots"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
@@ -231,9 +232,10 @@ msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
 msgstr "Движения"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Партиди"
+msgstr "Lots"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
@@ -247,25 +249,30 @@ msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
 msgstr "Вид наличност на партида"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Клиент"
+msgstr "Customer"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Изгубени и намерени"
+msgstr "Lost and Found"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr "Производство"
+msgstr "Production"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Съхранение"
+msgstr "Storage"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "Доставчик"
+msgstr "Supplier"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"

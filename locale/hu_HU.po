@@ -204,22 +204,25 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Charge"
+msgstr "Lots"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
 msgstr "Lot"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Raktár mozgás"
+msgstr "Moves"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Chargen"
+msgstr "Lots"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
@@ -233,25 +236,30 @@ msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
 msgstr "Raktár Charge típus"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Vevő"
+msgstr "Customer"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Készlet különbség"
+msgstr "Lost and Found"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr "Termelés"
+msgstr "Production"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Raktár"
+msgstr "Storage"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "Beszállító"
+msgstr "Supplier"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"

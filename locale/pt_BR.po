@@ -204,21 +204,25 @@ msgstr ""
 "* Um valor vazio é uma data infinita no futuro.\n"
 "* Uma data no passado mostrará valores históricos."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Lotes"
+msgstr "Lots"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
-msgstr "Lote"
+msgstr "Lot"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Movimentações"
+msgstr "Moves"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Lotes"
+msgstr "Lots"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
@@ -232,25 +236,30 @@ msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
 msgstr "Tipo do lote de estoque"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Cliente"
+msgstr "Customer"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Achados e Perdidos"
+msgstr "Lost and Found"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr "Produção"
+msgstr "Production"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Armazenamento"
+msgstr "Storage"
 
+#, fuzzy
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "Fornecedor"
+msgstr "Supplier"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"

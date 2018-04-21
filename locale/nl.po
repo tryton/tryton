@@ -273,15 +273,15 @@ msgstr "Klant"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr ""
+msgstr "Lost and Found"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr ""
+msgstr "Production"
 
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr ""
+msgstr "Storage"
 
 #, fuzzy
 msgctxt "model:stock.lot.type,name:type_supplier"

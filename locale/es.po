@@ -238,7 +238,7 @@ msgstr "Cliente"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Perdido-encontrado"
+msgstr "Perdido y encontrado"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
@@ -246,7 +246,7 @@ msgstr "Producción"
 
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "Almacenamiento"
+msgstr "Interno"
 
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
