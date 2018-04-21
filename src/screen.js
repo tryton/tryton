@@ -558,32 +558,54 @@
                 'class': 'row',
                 id: id
             });
-            var build_entry = function(placeholder) {
+            var build_entry = function(placeholder, el) {
                 var entry = jQuery('<div/>', {
                     'class': 'input-group input-group-sm'
-                });
+                }).appendTo(el);
+                jQuery('<span/>', {
+                    'class': 'input-group-btn'
+                }).append(jQuery('<button/>', {
+                    'class': 'datepickerbutton btn btn-default',
+                    type: 'button',
+                    'tabindex': -1,
+                    'aria-label': Sao.i18n.gettext("Open the calendar"),
+                    'title': Sao.i18n.gettext("Open the calendar"),
+                }).append(jQuery('<span/>', {
+                    'class': 'glyphicon glyphicon-calendar'
+                }))).appendTo(entry);
                 jQuery('<input/>', {
                     'class': 'form-control input-sm',
                     type: 'text',
                     placeholder: placeholder,
                     id: id + '-from'
                 }).appendTo(entry);
-                jQuery('<span/>', {
-                    'class': 'input-group-btn'
-                }).append(jQuery('<button/>', {
-                    'class': 'datepickerbutton btn btn-default',
-                    type: 'button'
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-calendar'
-                }))).appendTo(entry);
                 entry.datetimepicker({
-                    'locale': moment.locale()
+                    'locale': moment.locale(),
+                    'keyBinds': null,
                 });
                 entry.data('DateTimePicker').format(format);
+                var mousetrap = new Mousetrap(el[0]);
+
+                mousetrap.bind(['enter', '='], function(e, combo) {
+                    if (e.which != Sao.common.RETURN_KEYCODE) {
+                        e.preventDefault();
+                    }
+                    entry.data('DateTimePicker').date(moment());
+                });
+
+                Sao.common.DATE_OPERATORS.forEach(function(operator) {
+                    mousetrap.bind(operator[0], function(e, combo) {
+                        e.preventDefault();
+                        var dp = entry.data('DateTimePicker');
+                        var date = dp.date();
+                        date.add(operator[1]);
+                        dp.date(date);
+                    });
+                });
                 return entry;
             };
-            this.from = build_entry(Sao.i18n.gettext("From"))
-                .appendTo(jQuery('<div/>', {
+            this.from = build_entry(Sao.i18n.gettext("From"),
+                jQuery('<div/>', {
                     'class': 'col-md-5'
                 }).appendTo(this.el));
             jQuery('<p/>', {
@@ -591,8 +613,8 @@
             }).append('..').appendTo(jQuery('<div/>', {
                 'class': 'col-md-1'
             }).appendTo(this.el));
-            this.to = build_entry(Sao.i18n.gettext("To"))
-                .appendTo(jQuery('<div/>', {
+            this.to = build_entry(Sao.i18n.gettext("To"),
+                jQuery('<div/>', {
                     'class': 'col-md-5'
                 }).appendTo(this.el));
         },
