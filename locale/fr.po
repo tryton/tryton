@@ -229,9 +229,13 @@ msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Catégories de Poste de charge"
+msgstr "Catégories de poste de charge"
 
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
@@ -251,7 +255,7 @@ msgstr "Tous"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
@@ -263,11 +267,23 @@ msgstr "En cours"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "En attentes"
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Catégories de Poste de charge"
+msgstr "Catégories de poste de charge"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"

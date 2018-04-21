@@ -22,17 +22,20 @@ msgid ""
 "not finished."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,work_center:"
 msgid "Work Center"
-msgstr ""
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "field:production,works:"
 msgid "Works"
-msgstr ""
+msgstr "Works"
 
+#, fuzzy
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Work Center Categories"
 
 #, fuzzy
 msgctxt "field:production.work,company:"
@@ -85,13 +88,15 @@ msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
-msgstr ""
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Work Center Categories"
 
 #, fuzzy
 msgctxt "field:production.work,write_date:"
@@ -240,9 +245,10 @@ msgctxt "field:production.work.cycle,state:"
 msgid "State"
 msgstr "Stato"
 
+#, fuzzy
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
-msgstr ""
+msgstr "Works"
 
 #, fuzzy
 msgctxt "field:production.work.cycle,write_date:"
@@ -254,21 +260,25 @@ msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr ""
+msgstr "Work Center Categories"
 
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr ""
+msgstr "Works"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
@@ -295,33 +305,47 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "In attesa"
 
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
+
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr ""
+msgstr "Work Center Categories"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr ""
+msgstr "Works"
 
 msgctxt "model:production.work,name:"
 msgid "Production Work"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:production.work.center,name:"
 msgid "Work Center"
-msgstr ""
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "model:production.work.center.category,name:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Work Center Categories"
 
 msgctxt "model:production.work.cycle,name:"
 msgid "Work Cycle"

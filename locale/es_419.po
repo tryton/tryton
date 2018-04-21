@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
-msgstr "Bodega"
+msgstr ""
 
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
@@ -144,7 +144,7 @@ msgstr ""
 
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
-msgstr "Bodega"
+msgstr ""
 
 msgctxt "field:production.work.center,write_date:"
 msgid "Write Date"
@@ -222,9 +222,13 @@ msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categorías de centro de trabajo"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
@@ -258,9 +262,21 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categorías de centro de trabajo"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
@@ -343,13 +359,5 @@ msgid "Running"
 msgstr ""
 
 msgctxt "view:production.work.cycle:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:production.work.cycle:"
 msgid "Do"
 msgstr "Realizar"
-
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr ""

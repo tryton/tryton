@@ -228,6 +228,10 @@ msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
 msgstr "Work Center Categories"
@@ -263,6 +267,18 @@ msgstr "Running"
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "Waiting"
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
@@ -355,15 +371,3 @@ msgstr "Draft"
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
 msgstr "Running"
-
-msgctxt "view:production.work.cycle:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:production.work.cycle:"
-msgid "Do"
-msgstr ""
-
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr ""

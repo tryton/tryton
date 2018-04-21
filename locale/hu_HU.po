@@ -22,18 +22,20 @@ msgid ""
 "not finished."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production,work_center:"
 msgid "Work Center"
-msgstr ""
+msgstr "Work Centers"
 
 #, fuzzy
 msgctxt "field:production,works:"
 msgid "Works"
 msgstr "Tevékenység"
 
+#, fuzzy
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Work Center Categories"
 
 #, fuzzy
 msgctxt "field:production.work,company:"
@@ -87,13 +89,15 @@ msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
 msgstr "Raktár"
 
+#, fuzzy
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
-msgstr ""
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Work Center Categories"
 
 #, fuzzy
 msgctxt "field:production.work,write_date:"
@@ -262,17 +266,21 @@ msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr ""
+msgstr "Work Center Categories"
 
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
@@ -286,31 +294,43 @@ msgstr "Összes"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
-msgstr ""
+msgstr "Request"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
+
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr ""
+msgstr "Work Center Categories"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
-msgstr ""
+msgstr "Work Centers"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
@@ -321,13 +341,15 @@ msgctxt "model:production.work,name:"
 msgid "Production Work"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:production.work.center,name:"
 msgid "Work Center"
-msgstr ""
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "model:production.work.center.category,name:"
 msgid "Work Center Category"
-msgstr ""
+msgstr "Work Center Categories"
 
 msgctxt "model:production.work.cycle,name:"
 msgid "Work Cycle"
@@ -338,25 +360,29 @@ msgctxt "selection:production.work,state:"
 msgid "Done"
 msgstr "Kész"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt "selection:production.work,state:"
 msgid "Finished"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Request"
-msgstr ""
+msgstr "Request"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
+#, fuzzy
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid ""
@@ -379,26 +405,20 @@ msgctxt "selection:production.work.cycle,state:"
 msgid "Done"
 msgstr "Kész"
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
-msgstr ""
+msgstr "Running"
 
 #, fuzzy
 msgctxt "view:production.work.cycle:"
 msgid "Cancel"
 msgstr "Mégse"
-
-msgctxt "view:production.work.cycle:"
-msgid "Do"
-msgstr ""
-
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:production.work:"

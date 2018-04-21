@@ -228,57 +228,86 @@ msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categorias de Centro de Trabalho"
+msgstr "Work Center Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
-msgstr "Centros de Trabalho"
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_tree"
 msgid "Work Centers"
-msgstr "Centros de Trabalho"
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Trabalhos"
+msgstr "Works"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "All"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_draft"
 msgid "Draft"
-msgstr "Rascunho"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_request"
 msgid "Request"
-msgstr "Solicitar"
+msgstr "Request"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_running"
 msgid "Running"
-msgstr "Em execução"
+msgstr "Running"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
-msgstr "Esperando"
+msgstr "Waiting"
 
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categorias de Centro de Trabalho"
+msgstr "Work Center Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
-msgstr "Centros de Trabalho"
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_tree"
 msgid "Work Centers"
-msgstr "Centros de Trabalho"
+msgstr "Work Centers"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Trabalhos"
+msgstr "Works"
 
 msgctxt "model:production.work,name:"
 msgid "Production Work"

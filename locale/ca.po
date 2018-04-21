@@ -228,9 +228,13 @@ msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:production.work.center,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categories centre de treball"
+msgstr "Categories de centre de treball"
 
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
@@ -264,9 +268,21 @@ msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "En espera"
 
+msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:work_cycle_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:work_cycle_run_button"
+msgid "Run"
+msgstr "Run"
+
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categories centre de treball"
+msgstr "Categories de centre de treball"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
