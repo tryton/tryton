@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:account.invoice-account.move.line:"
+msgid "A payment line can be linked to only one invoice."
+msgstr ""
+
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
@@ -93,26 +97,6 @@ msgstr ""
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using base tax code \"%(base_code)s\" from company "
-"\"%(base_code_company)s\"."
-msgstr ""
-"Você não pode criar a fatura  \"%(invoice)s\" na empresa "
-"\"%(invoice_company)s\" usando o código tributário base \"%(base_code)s\" da"
-" empresa \"%(base_code_company)s\"."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using tax code \"%(tax_code)s\" from company "
-"\"%(tax_code_company)s\"."
-msgstr ""
-"Você não pode criar a fatura \"%(invoice)s\" na empresa "
-"\"%(invoice_company)s\" usando o código tributário \"%(base_code)s\" da "
-"empresa \"%(base_code_company)s\"."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
 "You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
 "is posted or paid."
 msgstr ""
@@ -170,6 +154,10 @@ msgstr ""
 "\"%(fiscalyear)s\"."
 
 msgctxt "error:account.invoice:"
+msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
+msgstr ""
+
+msgctxt "error:account.invoice:"
 msgid ""
 "The credit account on journal \"%(journal)s\" is the same as invoice "
 "\"%(invoice)s\"'s account."
@@ -198,10 +186,22 @@ msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr "A fatura numerada \"%s\" não pode ser apagada."
 
 msgctxt "error:account.invoice:"
+msgid ""
+"The payment lines on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr ""
+
+msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
 msgstr ""
 "Você não pode modificar a fatura \"%s\" porque ela foi confirmada, paga ou "
 "cancelada."
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending invoices "
+"for the company \"%(company)s\"."
+msgstr ""
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
@@ -454,6 +454,15 @@ msgstr "ID"
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
+
+msgctxt "field:account.invoice-account.move.line,invoice_account:"
+msgid "Invoice Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice-account.move.line,invoice_party:"
+msgid "Invoice Party"
+msgstr "Data da Fatura"
 
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
@@ -931,14 +940,6 @@ msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr "Base"
 
-msgctxt "field:account.invoice.tax,base_code:"
-msgid "Base Code"
-msgstr "Código da Base"
-
-msgctxt "field:account.invoice.tax,base_sign:"
-msgid "Base Sign"
-msgstr "Sinal da Base"
-
 msgctxt "field:account.invoice.tax,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -987,14 +988,6 @@ msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
 msgstr "Impostos"
 
-msgctxt "field:account.invoice.tax,tax_code:"
-msgid "Tax Code"
-msgstr "Código do Tributo"
-
-msgctxt "field:account.invoice.tax,tax_sign:"
-msgid "Tax Sign"
-msgstr "Sinal do Tributo"
-
 msgctxt "field:account.invoice.tax,write_date:"
 msgid "Write Date"
 msgstr "Data de gravação"
@@ -1003,7 +996,20 @@ msgctxt "field:account.invoice.tax,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "field:account.move.line,invoice_payment:"
+msgid "Invoice Payment"
+msgstr ""
+
+msgctxt "field:account.move.line,invoice_payments:"
+msgid "Invoice Payments"
+msgstr ""
+
 msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "Fatura"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,invoice:"
 msgid "Invoice"
 msgstr "Fatura"
 
@@ -1058,6 +1064,10 @@ msgstr "Editado por"
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "Se verdadeiro, as faturas atuais serão pagas."
+
+msgctxt "help:account.invoice.payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
 msgid "Invoice Sequence"
@@ -1115,103 +1125,159 @@ msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Tributo da Fatura"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Faturas"
+msgstr "Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
-msgstr "Faturas"
+msgstr "Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Faturas do Fornecedor"
+msgstr "Supplier Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Faturas do Cliente"
+msgstr "Customer Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "Prazos de Pagamento"
+msgstr "Payment Terms"
 
+#, fuzzy
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Crédito"
+msgstr "Credit"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
-msgstr "Fatura"
+msgstr "Invoice"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
-msgstr "Pagar Fatura"
+msgstr "Pay Invoice"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Simulação do Prazo de Pagamento"
+msgstr "Test Payment Term"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "All"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
-msgstr "Rascunho"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Posted"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
 msgid "Validated"
-msgstr "Validado"
+msgstr "Validated"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "All"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
-msgstr "Rascunho"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Posted"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
 msgid "Validated"
-msgstr "Validado"
+msgstr "Validated"
 
+msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
+msgid "Are you sure to cancel the invoice?"
+msgstr "Are you sure to cancel the invoice?"
+
+msgctxt "model:ir.model.button,help:invoice_cancel_button"
+msgid "Cancel the invoice"
+msgstr "Cancel the invoice"
+
+msgctxt "model:ir.model.button,help:invoice_validate_button"
+msgid "Also known as Pro Forma"
+msgstr "Also known as Pro Forma"
+
+msgctxt "model:ir.model.button,string:invoice_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:invoice_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:invoice_pay_button"
+msgid "Pay"
+msgstr "Pay"
+
+msgctxt "model:ir.model.button,string:invoice_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:invoice_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
-msgstr "Fatura"
+msgstr "Invoice"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr "Faturas do Fornecedor"
+msgstr "Supplier Invoices"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Faturas do Cliente"
+msgstr "Customer Invoices"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "Faturas"
+msgstr "Invoices"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "Prazos de Pagamento"
+msgstr "Payment Terms"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Simulação do Prazo de Pagamento"
+msgstr "Test Payment Term"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "Prazos de Pagamento"
+msgstr "Payment Terms"
 
 msgctxt "model:party.party.payment_term,name:"
 msgid "Party Payment Term"
@@ -1517,26 +1583,6 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
-msgctxt "view:account.invoice.tax:"
-msgid "Tax Code"
-msgstr "Código Tributário"
-
-msgctxt "view:account.invoice:"
-msgid "Also known as Pro Forma"
-msgstr "Também conhecido como Pro Forma"
-
-msgctxt "view:account.invoice:"
-msgid "Are you sure to cancel the invoice?"
-msgstr "Você tem certeza que que cancelar a fatura?"
-
-msgctxt "view:account.invoice:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:account.invoice:"
-msgid "Draft"
-msgstr "Rascunho"
-
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "Fatura"
@@ -1546,24 +1592,13 @@ msgid "Other Info"
 msgstr "Outras informações"
 
 msgctxt "view:account.invoice:"
-msgid "Pay"
-msgstr "Pagar"
-
-msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "Pagamento"
 
+#, fuzzy
 msgctxt "view:account.invoice:"
-msgid "Post"
-msgstr "Confirmar"
-
-msgctxt "view:account.invoice:"
-msgid "Tax Identifier"
+msgid "Tax Identifier:"
 msgstr "Identificador de Tributos"
-
-msgctxt "view:account.invoice:"
-msgid "Validate"
-msgstr "Validar"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
@@ -1608,6 +1643,78 @@ msgstr "Cancelar"
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
 msgstr "Fechar"
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using base tax code \"%(base_code)s\" from company "
+"\"%(base_code_company)s\"."
+msgstr ""
+"Você não pode criar a fatura  \"%(invoice)s\" na empresa "
+"\"%(invoice_company)s\" usando o código tributário base \"%(base_code)s\" da"
+" empresa \"%(base_code_company)s\"."
+
+msgctxt "error:account.invoice.tax:"
+msgid ""
+"You can not create invoice \"%(invoice)s\" on company "
+"\"%(invoice_company)s\" using tax code \"%(tax_code)s\" from company "
+"\"%(tax_code_company)s\"."
+msgstr ""
+"Você não pode criar a fatura \"%(invoice)s\" na empresa "
+"\"%(invoice_company)s\" usando o código tributário \"%(base_code)s\" da "
+"empresa \"%(base_code_company)s\"."
+
+msgctxt "field:account.invoice.tax,base_code:"
+msgid "Base Code"
+msgstr "Código da Base"
+
+msgctxt "field:account.invoice.tax,base_sign:"
+msgid "Base Sign"
+msgstr "Sinal da Base"
+
+msgctxt "field:account.invoice.tax,tax_code:"
+msgid "Tax Code"
+msgstr "Código do Tributo"
+
+msgctxt "field:account.invoice.tax,tax_sign:"
+msgid "Tax Sign"
+msgstr "Sinal do Tributo"
+
+msgctxt "view:account.invoice.tax:"
+msgid "Tax Code"
+msgstr "Código Tributário"
+
+msgctxt "view:account.invoice:"
+msgid "Also known as Pro Forma"
+msgstr "Também conhecido como Pro Forma"
+
+msgctxt "view:account.invoice:"
+msgid "Are you sure to cancel the invoice?"
+msgstr "Você tem certeza que que cancelar a fatura?"
+
+msgctxt "view:account.invoice:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:account.invoice:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr "Pagar"
+
+msgctxt "view:account.invoice:"
+msgid "Post"
+msgstr "Confirmar"
+
+msgctxt "view:account.invoice:"
+msgid "Tax Identifier"
+msgstr "Identificador de Tributos"
+
+msgctxt "view:account.invoice:"
+msgid "Validate"
+msgstr "Validar"
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"

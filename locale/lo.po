@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:account.invoice-account.move.line:"
+msgid "A payment line can be linked to only one invoice."
+msgstr ""
+
 msgctxt "error:account.invoice.credit:"
 msgid "You can not credit with refund invoice \"%s\" because it has payments."
 msgstr ""
@@ -74,20 +78,6 @@ msgstr ""
 
 msgctxt "error:account.invoice.tax:"
 msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using base tax code \"%(base_code)s\" from company "
-"\"%(base_code_company)s\"."
-msgstr ""
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using tax code \"%(tax_code)s\" from company "
-"\"%(tax_code_company)s\"."
-msgstr ""
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
 "You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
 "is posted or paid."
 msgstr ""
@@ -131,6 +121,10 @@ msgid ""
 msgstr ""
 
 msgctxt "error:account.invoice:"
+msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
+msgstr ""
+
+msgctxt "error:account.invoice:"
 msgid ""
 "The credit account on journal \"%(journal)s\" is the same as invoice "
 "\"%(invoice)s\"'s account."
@@ -155,7 +149,19 @@ msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr ""
 
 msgctxt "error:account.invoice:"
+msgid ""
+"The payment lines on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr ""
+
+msgctxt "error:account.invoice:"
 msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
+msgstr ""
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending invoices "
+"for the company \"%(company)s\"."
 msgstr ""
 
 msgctxt "field:account.fiscalyear,invoice_sequences:"
@@ -420,6 +426,15 @@ msgstr "ລໍາດັບໃບເກັບເງິນ"
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
+
+msgctxt "field:account.invoice-account.move.line,invoice_account:"
+msgid "Invoice Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice-account.move.line,invoice_party:"
+msgid "Invoice Party"
+msgstr "ວັນທີໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice-account.move.line,line:"
@@ -954,14 +969,6 @@ msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr ""
 
-msgctxt "field:account.invoice.tax,base_code:"
-msgid "Base Code"
-msgstr ""
-
-msgctxt "field:account.invoice.tax,base_sign:"
-msgid "Base Sign"
-msgstr ""
-
 msgctxt "field:account.invoice.tax,create_date:"
 msgid "Create Date"
 msgstr "ສ້າງວັນທີ"
@@ -1013,15 +1020,6 @@ msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
 msgstr "ອາກອນ"
 
-#, fuzzy
-msgctxt "field:account.invoice.tax,tax_code:"
-msgid "Tax Code"
-msgstr "ລະຫັດພາສີ"
-
-msgctxt "field:account.invoice.tax,tax_sign:"
-msgid "Tax Sign"
-msgstr ""
-
 msgctxt "field:account.invoice.tax,write_date:"
 msgid "Write Date"
 msgstr "ຂຽນວັນທີ"
@@ -1030,7 +1028,20 @@ msgctxt "field:account.invoice.tax,write_uid:"
 msgid "Write User"
 msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
+msgctxt "field:account.move.line,invoice_payment:"
+msgid "Invoice Payment"
+msgstr ""
+
+msgctxt "field:account.move.line,invoice_payments:"
+msgid "Invoice Payments"
+msgstr ""
+
 msgctxt "field:party.address,invoice:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:party.contact_mechanism,invoice:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
 
@@ -1093,6 +1104,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr ""
 
+msgctxt "help:account.invoice.payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
 msgid "Invoice Sequence"
 msgstr ""
@@ -1142,21 +1157,24 @@ msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.invoice.payment_term.test,name:"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Test Payment Term"
 
+#, fuzzy
 msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Test Payment Term"
 
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "ອາກອນໃບເກັບເງິນ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Invoices"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form2"
@@ -1170,7 +1188,7 @@ msgstr "ໃບເກັບເງິນຂອງຜູ້ສະໜອງ"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Customer Invoices"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_payment_term_form"
@@ -1194,7 +1212,7 @@ msgstr "ຊໍາລະໃບເກັບເງິນ"
 
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Test Payment Term"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
@@ -1238,6 +1256,38 @@ msgctxt ""
 msgid "Validated"
 msgstr "ກວດສອບແລ້ວ"
 
+msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
+msgid "Are you sure to cancel the invoice?"
+msgstr "Are you sure to cancel the invoice?"
+
+msgctxt "model:ir.model.button,help:invoice_cancel_button"
+msgid "Cancel the invoice"
+msgstr "Cancel the invoice"
+
+msgctxt "model:ir.model.button,help:invoice_validate_button"
+msgid "Also known as Pro Forma"
+msgstr "Also known as Pro Forma"
+
+msgctxt "model:ir.model.button,string:invoice_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:invoice_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:invoice_pay_button"
+msgid "Pay"
+msgstr "Pay"
+
+msgctxt "model:ir.model.button,string:invoice_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:invoice_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
@@ -1250,28 +1300,31 @@ msgstr "ໃບເກັບເງິນຂອງຜູ້ສະໜອງ"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Customer Invoices"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr "ໃບເກັບເງິນ"
+msgstr "Invoices"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "ຮູບແບບການຈ່າຍ"
+msgstr "Payment Terms"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Test Payment Term"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
 msgstr "ຮູບແບບການຈ່າຍ"
 
+#, fuzzy
 msgctxt "model:party.party.payment_term,name:"
 msgid "Party Payment Term"
-msgstr ""
+msgstr "Test Payment Term"
 
 #, fuzzy
 msgctxt "report:account.invoice:"
@@ -1593,29 +1646,6 @@ msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
 
-#, fuzzy
-msgctxt "view:account.invoice.tax:"
-msgid "Tax Code"
-msgstr "ລະຫັດພາສີ"
-
-msgctxt "view:account.invoice:"
-msgid "Also known as Pro Forma"
-msgstr ""
-
-msgctxt "view:account.invoice:"
-msgid "Are you sure to cancel the invoice?"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
-
 msgctxt "view:account.invoice:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
@@ -1624,27 +1654,13 @@ msgctxt "view:account.invoice:"
 msgid "Other Info"
 msgstr "ຂໍ້ມູນອື່ນໆ"
 
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Pay"
-msgstr "ຈ່າຍ"
-
 msgctxt "view:account.invoice:"
 msgid "Payment"
 msgstr "ການຈ່າຍ"
 
-#, fuzzy
 msgctxt "view:account.invoice:"
-msgid "Post"
-msgstr "ປະກາດ"
-
-msgctxt "view:account.invoice:"
-msgid "Tax Identifier"
+msgid "Tax Identifier:"
 msgstr ""
-
-msgctxt "view:account.invoice:"
-msgid "Validate"
-msgstr "ກວດສອບ"
 
 #, fuzzy
 msgctxt "view:account.move.line:"
@@ -1696,6 +1712,40 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
 msgstr "ອັດ"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,tax_code:"
+msgid "Tax Code"
+msgstr "ລະຫັດພາສີ"
+
+#, fuzzy
+msgctxt "view:account.invoice.tax:"
+msgid "Tax Code"
+msgstr "ລະຫັດພາສີ"
+
+#, fuzzy
+msgctxt "view:account.invoice:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "view:account.invoice:"
+msgid "Draft"
+msgstr "ຊົ່ວຄາວ"
+
+#, fuzzy
+msgctxt "view:account.invoice:"
+msgid "Pay"
+msgstr "ຈ່າຍ"
+
+#, fuzzy
+msgctxt "view:account.invoice:"
+msgid "Post"
+msgstr "ປະກາດ"
+
+msgctxt "view:account.invoice:"
+msgid "Validate"
+msgstr "ກວດສອບ"
 
 msgctxt "wizard_button:account.invoice.print,warning,end:"
 msgid "Cancel"
