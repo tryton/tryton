@@ -220,6 +220,10 @@ msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Termini de pagament per avançat"
 
+msgctxt "help:sale.advance_payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
 msgstr "Utilitzat en la línia de la factura de pagament per avançat."
@@ -263,11 +267,11 @@ msgstr "Factures per avançat"
 
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
-msgstr "Formes de pagament per avançat"
+msgstr "Terminis de pagament per avançat"
 
 msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
-msgstr "Formes de pagament per avançat"
+msgstr "Terminis de pagament per avançat"
 
 msgctxt "model:sale.advance_payment.condition,name:"
 msgid "Advance Payment Condition"

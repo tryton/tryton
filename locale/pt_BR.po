@@ -222,6 +222,10 @@ msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Prazo de Pagamento Avançado"
 
+msgctxt "help:sale.advance_payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
 msgstr "Usado na linha de pagamento adiantado da fatura."
@@ -259,17 +263,20 @@ msgstr ""
 "Delta a ser aplicado na data da venda para a data do pagamento adiantado da "
 "fatura."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_advance_invoice_form"
 msgid "Advance Invoices"
-msgstr "Faturas Adiantadas"
+msgstr "Advance Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
-msgstr "Prazos de Pagamentos Adiantados"
+msgstr "Advance Payment Terms"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
-msgstr "Prazos de Pagamentos Adiantados"
+msgstr "Advance Payment Terms"
 
 msgctxt "model:sale.advance_payment.condition,name:"
 msgid "Advance Payment Condition"

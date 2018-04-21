@@ -223,6 +223,10 @@ msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Terme de l'acompte"
 
+msgctxt "help:sale.advance_payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
 msgstr "Utilisé sur la ligne de la facture d'acompte."
@@ -266,11 +270,11 @@ msgstr "Factures d'acompte"
 
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
-msgstr "Termes d'acompte"
+msgstr "Conditions de paiement d'acompte"
 
 msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
-msgstr "Termes d'acompte"
+msgstr "Conditions de paiement d'acompte"
 
 msgctxt "model:sale.advance_payment.condition,name:"
 msgid "Advance Payment Condition"

@@ -222,6 +222,10 @@ msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Plazo de pago adelantado"
 
+msgctxt "help:sale.advance_payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
 msgstr "Utilizado en la línea de factura por avanzado."

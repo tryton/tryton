@@ -59,7 +59,7 @@ msgstr "Postavke računa"
 
 msgctxt "field:sale.advance_payment.condition,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
@@ -107,7 +107,7 @@ msgstr "Naziv"
 
 msgctxt "field:sale.advance_payment_term,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.advance_payment_term,write_date:"
 msgid "Write Date"
@@ -163,7 +163,7 @@ msgstr "Zamik računa"
 
 msgctxt "field:sale.advance_payment_term.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.advance_payment_term.line,write_date:"
 msgid "Write Date"
@@ -199,7 +199,7 @@ msgstr "Postavka"
 
 msgctxt "field:sale.advance_payment_term.line.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.advance_payment_term.line.account,write_date:"
 msgid "Write Date"
@@ -220,6 +220,10 @@ msgstr "Avansni računi"
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Avansni pogoj"
+
+msgctxt "help:sale.advance_payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
@@ -253,17 +257,20 @@ msgid ""
 msgstr ""
 "Upoštevan zamik od datuma prodajnega naloga za datum avansnega računa."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_advance_invoice_form"
 msgid "Advance Invoices"
-msgstr "Avansni računi"
+msgstr "Advance Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
-msgstr "Avansni pogoji"
+msgstr "Advance Payment Terms"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
-msgstr "Avansni pogoji"
+msgstr "Advance Payment Terms"
 
 msgctxt "model:sale.advance_payment.condition,name:"
 msgid "Advance Payment Condition"

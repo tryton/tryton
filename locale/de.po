@@ -60,7 +60,7 @@ msgstr "Rechnungspositionen"
 
 msgctxt "field:sale.advance_payment.condition,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
@@ -108,7 +108,7 @@ msgstr "Name"
 
 msgctxt "field:sale.advance_payment_term,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.advance_payment_term,write_date:"
 msgid "Write Date"
@@ -164,7 +164,7 @@ msgstr "Rechnungsfrist"
 
 msgctxt "field:sale.advance_payment_term.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.advance_payment_term.line,write_date:"
 msgid "Write Date"
@@ -200,7 +200,7 @@ msgstr "Position"
 
 msgctxt "field:sale.advance_payment_term.line.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.advance_payment_term.line.account,write_date:"
 msgid "Write Date"
@@ -221,6 +221,10 @@ msgstr "Vorauszahlungsrechnungen"
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Zahlungsbedingungen der Vorauszahlung"
+
+msgctxt "help:sale.advance_payment_term,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
