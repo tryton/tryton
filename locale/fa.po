@@ -4,75 +4,73 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Način združevanja pošiljk"
+msgstr "متد گروهبندی حمل ونقل فروش"
 
 msgctxt "field:party.party,sale_shipment_grouping_methods:"
 msgid "Sale Shipment Grouping Methods"
-msgstr "Način združevanja pošiljk"
+msgstr "متدهای گروهبندی حمل ونقل فروش"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "نهاد/سازمان"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "نام پرونده"
 
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Način združevanja pošiljk"
+msgstr "متد گروهبندی حمل ونقل فروش"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Način združevanja pošiljk"
+msgstr "متد گروهبندی حمل ونقل فروش"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr "Način združevanja pošiljk"
+msgstr "متد گروهبندی حمل ونقل فروش"
 
 msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "متد گروهبندی حمل ونقل پیش فرض برای مشتریان جدید."
 
 msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "متد گروهبندی حمل ونقل پیش فرض برای مشتریان جدید."
 
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
-msgstr "Način združevanja pošiljk partnerja"
+msgstr "متد گروهبندی حمل ونقل فروش نهاد/سازمان"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
-msgstr "Brez"
+msgstr "هیجکدام"
 
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "Standard"
-msgstr "Standardno"
+msgstr "استاندارد"
 
 msgctxt "view:party.party:"
 msgid "Shipments"
-msgstr "Pošiljke"
+msgstr "محموله ها"

@@ -6,7 +6,6 @@ msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "Método de agrupación de guías de remisión de venta"
 
-#, fuzzy
 msgctxt "field:party.party,sale_shipment_grouping_methods:"
 msgid "Sale Shipment Grouping Methods"
 msgstr "Método de agrupación de guías de remisión de venta"
@@ -31,7 +30,6 @@ msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
@@ -45,12 +43,10 @@ msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
 msgid "Write User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "Método de agrupación de guías de remisión de venta"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "Método de agrupación de guías de remisión de venta"
@@ -63,7 +59,6 @@ msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
 msgstr "Método de agrupación de guías de remisión de venta"

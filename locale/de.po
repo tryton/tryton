@@ -28,7 +28,7 @@ msgstr "Partei"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
@@ -43,23 +43,21 @@ msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "Gruppierungsmethode Lieferposten (Verkauf)"
 
 msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "Die Standard-Gruppierungsmethode der Lieferposten für neue Kunden."
 
 msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "Die Standard-Gruppierungsmethode der Lieferposten für neue Kunden."
 
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
