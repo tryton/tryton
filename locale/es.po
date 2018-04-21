@@ -339,6 +339,10 @@ msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "help:analytic_account.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr "Hacer a esta cuenta obligatoria cuando se introduzcan documentos"
@@ -413,7 +417,7 @@ msgstr "Contabilidad analítica"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr "Líneas analíticas a completar"
+msgstr "Lineas analíticas a completar"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"

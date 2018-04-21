@@ -338,6 +338,10 @@ msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:analytic_account.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr "Força que aquest compte sigui obligatori quan s'omplin documents."
@@ -408,7 +412,7 @@ msgstr "Comptes analítics"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
-msgstr "Comptabilitat analítica"
+msgstr "Compte analític"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"

@@ -343,6 +343,10 @@ msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "help:analytic_account.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr "Rendre ce compte obligatoire quand les documents sont remplis"

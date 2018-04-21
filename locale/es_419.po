@@ -108,10 +108,9 @@ msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
-msgstr "Crédito"
+msgstr ""
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
@@ -341,6 +340,10 @@ msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:analytic_account.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr ""
@@ -395,7 +398,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir plan de cuentas analíticas"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
@@ -419,7 +422,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Abrir plan de cuentas analíticas"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Analytic Rules"

@@ -341,6 +341,10 @@ msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:analytic_account.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr ""
@@ -390,7 +394,7 @@ msgstr "Analytic Lines"
 
 msgctxt "model:ir.action,name:act_move_line_form_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Analytic Lines to Complete"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
@@ -419,7 +423,7 @@ msgstr "Analytic Account"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Analytic Lines to Complete"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"

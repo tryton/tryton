@@ -26,9 +26,10 @@ msgctxt "error:analytic_account.rule:"
 msgid "Some mandatory root account are missing on \"%(name)s\""
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Analytic Lines"
 
 msgctxt "field:account.move.line,analytic_state:"
 msgid "Analytic State"
@@ -325,13 +326,15 @@ msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
 msgstr "Számla"
 
+#, fuzzy
 msgctxt "field:analytic_account.rule,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analytic Accounts"
 
+#, fuzzy
 msgctxt "field:analytic_account.rule,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr ""
+msgstr "Analytic Accounts"
 
 #, fuzzy
 msgctxt "field:analytic_account.rule,company:"
@@ -384,6 +387,10 @@ msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+msgctxt "help:analytic_account.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:analytic_account.account,mandatory:"
 msgid "Make this account mandatory when filling documents"
 msgstr ""
@@ -392,85 +399,88 @@ msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
-msgstr ""
+msgstr "Analytic Account"
 
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
-msgstr ""
+msgstr "Analytic Lines"
 
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
-msgstr ""
+msgstr "Analytic Rules"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analytic Accounts"
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analytic Accounts"
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analytic Accounts"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Analytic Lines"
 
 msgctxt "model:ir.action,name:act_move_line_form_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Analytic Lines to Complete"
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr ""
+msgstr "Open Account"
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr ""
+msgstr "Open Chart of Analytic Accounts"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
-msgstr ""
+msgstr "Analytic Rules"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analytic Accounts"
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analytic Accounts"
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
-msgstr ""
+msgstr "Analytic Account"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr ""
+msgstr "Analytic Lines to Complete"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr ""
+msgstr "Open Chart of Analytic Accounts"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Analytic Rules"
-msgstr ""
+msgstr "Analytic Rules"
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr ""
+msgstr "Analytic Administration"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"
