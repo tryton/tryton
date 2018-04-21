@@ -225,6 +225,18 @@ msgctxt ""
 msgid "Draft"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
 msgstr ""
@@ -253,10 +265,9 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
@@ -266,10 +277,9 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Done"
@@ -283,21 +293,8 @@ msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr ""
 
-#, fuzzy
-msgctxt "view:stock.forecast:"
-msgid "Cancel"
-msgstr "Cancelar"
-
 msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
-msgstr ""
-
-msgctxt "view:stock.forecast:"
-msgid "Confirm"
-msgstr ""
-
-msgctxt "view:stock.forecast:"
-msgid "Reset to Draft"
 msgstr ""
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
@@ -322,5 +319,10 @@ msgid "Complete"
 msgstr ""
 
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#, fuzzy
+msgctxt "view:stock.forecast:"
 msgid "Cancel"
 msgstr "Cancelar"

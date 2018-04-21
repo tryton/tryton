@@ -71,7 +71,7 @@ msgstr "Positionen"
 
 msgctxt "field:stock.forecast,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
@@ -159,7 +159,7 @@ msgstr "Anzahl ausgeführt"
 
 msgctxt "field:stock.forecast.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
@@ -199,7 +199,7 @@ msgstr "Bewegung"
 
 msgctxt "field:stock.forecast.line-stock.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.forecast.line-stock.move,write_date:"
 msgid "Write Date"
@@ -215,7 +215,7 @@ msgstr "Bedarfsermittlung"
 
 msgctxt "model:ir.action,name:wizard_forecast_complete"
 msgid "Complete Forecast"
-msgstr "Nachfrage Bedarfsermittlung durchführen"
+msgstr "Bedarfsermittlung durchführen"
 
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_all"
 msgid "All"
@@ -229,6 +229,18 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
 msgstr "Entwurf"
+
+msgctxt "model:ir.model.button,string:forecast_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:forecast_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:forecast_draft_button"
+msgid "Draft"
+msgstr "Draft"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
@@ -288,20 +300,8 @@ msgstr ""
 "Erstelle Bedarfspositionen basierend auf den Werten aus der Vergangenheit"
 
 msgctxt "view:stock.forecast:"
-msgid "Cancel"
-msgstr "Annullieren"
-
-msgctxt "view:stock.forecast:"
 msgid "Complete Forecast"
 msgstr "Bedarfsermittlung durchführen"
-
-msgctxt "view:stock.forecast:"
-msgid "Confirm"
-msgstr "Bestätigen"
-
-msgctxt "view:stock.forecast:"
-msgid "Reset to Draft"
-msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,choose:"
 msgid "Choose Products"
@@ -326,3 +326,15 @@ msgstr "Durchführen"
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
+
+msgctxt "view:stock.forecast:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:stock.forecast:"
+msgid "Confirm"
+msgstr "Bestätigen"
+
+msgctxt "view:stock.forecast:"
+msgid "Reset to Draft"
+msgstr "Auf Entwurf zurücksetzen"
