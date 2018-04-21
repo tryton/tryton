@@ -50,13 +50,15 @@ msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
 msgstr "Панель действия"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "Информационная панель"
+msgstr "Dashboard"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "Информационная панель"
+msgstr "Dashboard"
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"

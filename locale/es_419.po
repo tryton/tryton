@@ -53,11 +53,11 @@ msgstr "Acción del panel de control"
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "Panel de control"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "Panel de control"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"

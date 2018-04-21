@@ -20,7 +20,7 @@ msgstr "ID"
 
 msgctxt "field:dashboard.action,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:dashboard.action,sequence:"
 msgid "Sequence"
