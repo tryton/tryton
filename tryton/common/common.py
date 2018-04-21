@@ -1344,11 +1344,16 @@ def timezoned_date(date, reverse=False):
     szone = dateutil.tz.tzutc()
     if reverse:
         lzone, szone = szone, lzone
-    return date.replace(tzinfo=szone).astimezone(lzone).replace(tzinfo=None)
+    try:
+        return (date.replace(tzinfo=szone).astimezone(lzone)
+            .replace(tzinfo=None))
+    except (ValueError, OSError):
+        # https://github.com/dateutil/dateutil/issues/434
+        return date.replace(tzinfo=None)
 
 
 def untimezoned_date(date):
-    return timezoned_date(date, reverse=True).replace(tzinfo=None)
+    return timezoned_date(date, reverse=True)
 
 
 def humanize(size):

@@ -593,6 +593,11 @@ increases if lower case or decreases if upper case:
     - `i`: by one minute
     - `s`: by one second
 
+.. warn::
+    Under Windows, the datetime before 1970 are shown in UTC instead of the
+    local timezone.
+..
+
 Search Widget
 ^^^^^^^^^^^^^
 
