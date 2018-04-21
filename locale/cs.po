@@ -4,6 +4,13 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.purchase:"
 msgid ""
+"The warehouse \"%(purchase_warehouse)s\" of purchase \"%(purchase)s\" is "
+"different of the warehouse \"%(request_warehouse)s\" of the linked purchase "
+"request."
+msgstr ""
+
+msgctxt "error:purchase.purchase:"
+msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
 "least one purchase request."
 msgstr ""
@@ -158,38 +165,44 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr ""
+msgstr "Purchase Requests"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
-msgstr ""
+msgstr "Create Purchase"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
-msgstr ""
+msgstr "Handle Purchase Cancellation"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
 msgid "Exception"
-msgstr ""
+msgstr "Exception"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "Handle Purchase Cancellation"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
-msgstr ""
+msgstr "Purchase Requests"
 
+#, fuzzy
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
-msgstr ""
+msgstr "Purchase Request"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
@@ -201,7 +214,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
-msgstr ""
+msgstr "Purchase Request"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
@@ -211,13 +224,15 @@ msgctxt "selection:purchase.request,state:"
 msgid "Done"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Exception"
-msgstr ""
+msgstr "Exception"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
@@ -225,10 +240,6 @@ msgstr ""
 
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
-msgstr ""
-
-msgctxt "view:purchase.request:"
-msgid "Handle Purchase Cancellation"
 msgstr ""
 
 msgctxt "view:purchase.request:"

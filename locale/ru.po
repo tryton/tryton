@@ -4,6 +4,13 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.purchase:"
 msgid ""
+"The warehouse \"%(purchase_warehouse)s\" of purchase \"%(purchase)s\" is "
+"different of the warehouse \"%(request_warehouse)s\" of the linked purchase "
+"request."
+msgstr ""
+
+msgctxt "error:purchase.purchase:"
+msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
 "least one purchase request."
 msgstr ""
@@ -185,11 +192,11 @@ msgstr "Запросы на покупку"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
-msgstr ""
+msgstr "Create Purchase"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
-msgstr ""
+msgstr "Handle Purchase Cancellation"
 
 #, fuzzy
 msgctxt ""
@@ -208,6 +215,11 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
 msgid "Exception"
 msgstr "Особая ситуация"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "Handle Purchase Cancellation"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
@@ -259,10 +271,6 @@ msgstr "Купленные"
 
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
-msgstr ""
-
-msgctxt "view:purchase.request:"
-msgid "Handle Purchase Cancellation"
 msgstr ""
 
 #, fuzzy

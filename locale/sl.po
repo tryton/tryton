@@ -4,6 +4,13 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:purchase.purchase:"
 msgid ""
+"The warehouse \"%(purchase_warehouse)s\" of purchase \"%(purchase)s\" is "
+"different of the warehouse \"%(request_warehouse)s\" of the linked purchase "
+"request."
+msgstr ""
+
+msgctxt "error:purchase.purchase:"
+msgid ""
 "You can not delete the purchase \"%(purchase)s\" because it is linked to at "
 "least one purchase request."
 msgstr ""
@@ -96,7 +103,7 @@ msgstr "Količina"
 
 msgctxt "field:purchase.request,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.request,state:"
 msgid "State"
@@ -158,36 +165,48 @@ msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Nabavni zahtevki"
+msgstr "Purchase Requests"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
-msgstr "Izdelava nabavnega naloga"
+msgstr "Create Purchase"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
-msgstr "Obravnava preklicanih nabav"
+msgstr "Handle Purchase Cancellation"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
-msgstr "Priprava"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
 msgid "Exception"
-msgstr "Pridržano"
+msgstr "Exception"
 
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
+msgid "Handle Purchase Cancellation"
+msgstr "Handle Purchase Cancellation"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Nabavni zahtevki"
+msgstr "Purchase Requests"
 
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
@@ -201,9 +220,10 @@ msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
 msgid "Handle Purchase Cancellation Exception - Start"
 msgstr "Obravnava preklicanih nabav"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
-msgstr "Nabava - zahtevki"
+msgstr "Purchase Request"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
@@ -228,10 +248,6 @@ msgstr "Nabavljeno"
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
 msgstr "Ali želite zahtevek preklicati ali ponastaviti?"
-
-msgctxt "view:purchase.request:"
-msgid "Handle Purchase Cancellation"
-msgstr "Obravnava preklicanih nabav"
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
@@ -263,3 +279,7 @@ msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
 msgid "Reset to draft"
 msgstr "Ponastavi"
+
+msgctxt "view:purchase.request:"
+msgid "Handle Purchase Cancellation"
+msgstr "Obravnava preklicanih nabav"
