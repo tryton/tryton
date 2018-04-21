@@ -11,10 +11,6 @@ msgid "The currency rate must greater than or equal to 0"
 msgstr "Валутния курс трябва да е по-голям или равен на 0"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
-msgstr ""
-
-msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
 
@@ -35,64 +31,20 @@ msgid "Create User"
 msgstr "Създадено от"
 
 msgctxt "field:currency.currency,digits:"
-msgid "Display Digits"
-msgstr "Цифри за показване"
+msgid "Digits"
+msgstr ""
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:currency.currency,mon_decimal_point:"
-msgid "Decimal Separator"
-msgstr "Десетичен разделител"
-
-msgctxt "field:currency.currency,mon_grouping:"
-msgid "Grouping"
-msgstr "Групиране"
-
-msgctxt "field:currency.currency,mon_thousands_sep:"
-msgid "Thousands Separator"
-msgstr "Разделител за хиляди"
-
-msgctxt "field:currency.currency,n_cs_precedes:"
-msgid "Negative Currency Symbol Precedes"
-msgstr "Предхожда отрицателен знак на валута"
-
-msgctxt "field:currency.currency,n_sep_by_space:"
-msgid "Negative Separate by Space"
-msgstr "Знак минус: разделен от празно поле"
-
-msgctxt "field:currency.currency,n_sign_posn:"
-msgid "Negative Sign Position"
-msgstr "Позиция на знака минус"
-
 msgctxt "field:currency.currency,name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:currency.currency,negative_sign:"
-msgid "Negative Sign"
-msgstr "Отрицателен знак"
-
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
 msgstr "Цифров код"
-
-msgctxt "field:currency.currency,p_cs_precedes:"
-msgid "Positive Currency Symbol Precedes"
-msgstr "Предхожда положителен знак на валута"
-
-msgctxt "field:currency.currency,p_sep_by_space:"
-msgid "Positive Separate by Space"
-msgstr "Знак плюс: разделен от празно поле"
-
-msgctxt "field:currency.currency,p_sign_posn:"
-msgid "Positive Sign Position"
-msgstr "Позиция на знака плюс"
-
-msgctxt "field:currency.currency,positive_sign:"
-msgid "Positive Sign"
-msgstr "Положителен знак"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
@@ -157,6 +109,50 @@ msgstr "Променено на"
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
+
+msgctxt "help:currency.currency,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr ""
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr ""
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr ""
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -258,7 +254,7 @@ msgid "Pula"
 msgstr "Пула"
 
 #, fuzzy
-msgctxt "model:currency.currency,name:byr"
+msgctxt "model:currency.currency,name:byn"
 msgid "Belarusian Ruble"
 msgstr "Беларуска рубла"
 
@@ -865,29 +861,81 @@ msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
 msgstr "Курс"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Валути"
+msgstr "Currencies"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Управление на валути"
+msgstr "Currency"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Валути"
+msgstr "Currencies"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Управление на валута"
-
-msgctxt "view:currency.currency:"
-msgid "Formatting"
-msgstr "Форматиране"
+msgstr "Currency Administration"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Курсове"
+
+msgctxt "field:currency.currency,digits:"
+msgid "Display Digits"
+msgstr "Цифри за показване"
+
+msgctxt "field:currency.currency,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Десетичен разделител"
+
+msgctxt "field:currency.currency,mon_grouping:"
+msgid "Grouping"
+msgstr "Групиране"
+
+msgctxt "field:currency.currency,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Разделител за хиляди"
+
+msgctxt "field:currency.currency,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Предхожда отрицателен знак на валута"
+
+msgctxt "field:currency.currency,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Знак минус: разделен от празно поле"
+
+msgctxt "field:currency.currency,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Позиция на знака минус"
+
+msgctxt "field:currency.currency,negative_sign:"
+msgid "Negative Sign"
+msgstr "Отрицателен знак"
+
+msgctxt "field:currency.currency,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Предхожда положителен знак на валута"
+
+msgctxt "field:currency.currency,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Знак плюс: разделен от празно поле"
+
+msgctxt "field:currency.currency,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Позиция на знака плюс"
+
+msgctxt "field:currency.currency,positive_sign:"
+msgid "Positive Sign"
+msgstr "Положителен знак"
+
+msgctxt "view:currency.currency:"
+msgid "Formatting"
+msgstr "Форматиране"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"

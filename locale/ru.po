@@ -10,11 +10,6 @@ msgctxt "error:currency.currency.rate:"
 msgid "The currency rate must greater than or equal to 0"
 msgstr "Курс валюты должен быть больше или равен 0"
 
-#, fuzzy
-msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
-msgstr "Некорректная группировка \"%(grouping)s\" по валюте \"%(currency)s\"."
-
 msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr "Не найдено курса для валюты \"%(currency)s\" на дату \"%(date)s\""
@@ -36,64 +31,20 @@ msgid "Create User"
 msgstr "Создано пользователем"
 
 msgctxt "field:currency.currency,digits:"
-msgid "Display Digits"
-msgstr "Кол-во знаков после запятой"
+msgid "Digits"
+msgstr ""
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:currency.currency,mon_decimal_point:"
-msgid "Decimal Separator"
-msgstr "Разделитель цифр"
-
-msgctxt "field:currency.currency,mon_grouping:"
-msgid "Grouping"
-msgstr "Группировка цифр"
-
-msgctxt "field:currency.currency,mon_thousands_sep:"
-msgid "Thousands Separator"
-msgstr "Разделитель тысяч"
-
-msgctxt "field:currency.currency,n_cs_precedes:"
-msgid "Negative Currency Symbol Precedes"
-msgstr "Добавлять символ отрицательного числа"
-
-msgctxt "field:currency.currency,n_sep_by_space:"
-msgid "Negative Separate by Space"
-msgstr "Символ отделять пробелом"
-
-msgctxt "field:currency.currency,n_sign_posn:"
-msgid "Negative Sign Position"
-msgstr "Позиция отрицательного символа"
-
 msgctxt "field:currency.currency,name:"
 msgid "Name"
 msgstr "Наименование"
 
-msgctxt "field:currency.currency,negative_sign:"
-msgid "Negative Sign"
-msgstr "Символ отрицательного числа"
-
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
 msgstr "Код валюты"
-
-msgctxt "field:currency.currency,p_cs_precedes:"
-msgid "Positive Currency Symbol Precedes"
-msgstr "Добавлять положит. символ в число"
-
-msgctxt "field:currency.currency,p_sep_by_space:"
-msgid "Positive Separate by Space"
-msgstr "Символ отделять пробелом"
-
-msgctxt "field:currency.currency,p_sign_posn:"
-msgid "Positive Sign Position"
-msgstr "Позиция положит. символа в числе"
-
-msgctxt "field:currency.currency,positive_sign:"
-msgid "Positive Sign"
-msgstr "Символ положительного числа"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
@@ -159,6 +110,50 @@ msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+msgctxt "help:currency.currency,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr ""
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr ""
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr ""
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr ""
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr ""
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr ""
+
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Валюты"
@@ -181,7 +176,7 @@ msgstr "Армянский драм"
 
 msgctxt "model:currency.currency,name:ang"
 msgid "Netherlands Antillean Guilder"
-msgstr "Netherlands Antillean Guilder"
+msgstr "Нидерландский антильский гульден"
 
 msgctxt "model:currency.currency,name:aoa"
 msgid "Kwanza"
@@ -197,7 +192,7 @@ msgstr "Австралийский доллар"
 
 msgctxt "model:currency.currency,name:awg"
 msgid "Aruban Florin"
-msgstr "Aruban Florin"
+msgstr "Арубанский флорин"
 
 msgctxt "model:currency.currency,name:azn"
 msgid "Azerbaijanian Manat"
@@ -205,7 +200,7 @@ msgstr "Азербайджанский манат"
 
 msgctxt "model:currency.currency,name:bam"
 msgid "Convertible Mark"
-msgstr "Convertible Mark"
+msgstr "Конвертируемая марка"
 
 msgctxt "model:currency.currency,name:bbd"
 msgid "Barbados Dollar"
@@ -255,9 +250,9 @@ msgctxt "model:currency.currency,name:bwp"
 msgid "Pula"
 msgstr "Пула"
 
-msgctxt "model:currency.currency,name:byr"
+msgctxt "model:currency.currency,name:byn"
 msgid "Belarusian Ruble"
-msgstr "Belarusian Ruble"
+msgstr "Белорусский рубль"
 
 msgctxt "model:currency.currency,name:bzd"
 msgid "Belize Dollar"
@@ -293,7 +288,7 @@ msgstr "Костариканский колон"
 
 msgctxt "model:currency.currency,name:cuc"
 msgid "Peso Convertible"
-msgstr "Peso Convertible"
+msgstr "Конвертируемое песо"
 
 msgctxt "model:currency.currency,name:cup"
 msgid "Cuban Peso"
@@ -301,7 +296,7 @@ msgstr "Кубинское песо"
 
 msgctxt "model:currency.currency,name:cve"
 msgid "Cabo Verde Escudo"
-msgstr "Cabo Verde Escudo"
+msgstr "Эскудо Кабо-Верде"
 
 msgctxt "model:currency.currency,name:czk"
 msgid "Czech Koruna"
@@ -389,7 +384,7 @@ msgstr "Лемпира"
 
 msgctxt "model:currency.currency,name:hrk"
 msgid "Kuna"
-msgstr "Kuna"
+msgstr "Куна"
 
 msgctxt "model:currency.currency,name:htg"
 msgid "Gourde"
@@ -537,7 +532,7 @@ msgstr "Руфия"
 
 msgctxt "model:currency.currency,name:mwk"
 msgid "Malawi Kwacha"
-msgstr "Malawi Kwacha"
+msgstr "Малавийская квача"
 
 msgctxt "model:currency.currency,name:mxn"
 msgid "Mexican Peso"
@@ -549,7 +544,7 @@ msgstr "Малайзийский ринггит"
 
 msgctxt "model:currency.currency,name:mzn"
 msgid "Mozambique Metical"
-msgstr "Mozambique Metical"
+msgstr "Мозамбикский метикал"
 
 msgctxt "model:currency.currency,name:nad"
 msgid "Namibia Dollar"
@@ -585,7 +580,7 @@ msgstr "Бальбоа"
 
 msgctxt "model:currency.currency,name:pen"
 msgid "Sol"
-msgstr "Sol"
+msgstr "Соль"
 
 msgctxt "model:currency.currency,name:pgk"
 msgid "Kina"
@@ -613,7 +608,7 @@ msgstr "Катарский риал"
 
 msgctxt "model:currency.currency,name:ron"
 msgid "Romanian Leu"
-msgstr "Romanian Leu"
+msgstr "Румынский лей"
 
 msgctxt "model:currency.currency,name:rsd"
 msgid "Serbian Dinar"
@@ -669,7 +664,7 @@ msgstr "Суринамский доллар"
 
 msgctxt "model:currency.currency,name:ssp"
 msgid "South Sudanese Pound"
-msgstr "South Sudanese Pound"
+msgstr "Фунт Южного Судана"
 
 msgctxt "model:currency.currency,name:std"
 msgid "Dobra"
@@ -697,7 +692,7 @@ msgstr "Сомони"
 
 msgctxt "model:currency.currency,name:tmt"
 msgid "Turkmenistan New Manat"
-msgstr "Turkmenistan New Manat"
+msgstr "Туркменский новый манат"
 
 msgctxt "model:currency.currency,name:tnd"
 msgid "Tunisian Dinar"
@@ -705,11 +700,11 @@ msgstr "Тунисский динар"
 
 msgctxt "model:currency.currency,name:top"
 msgid "Pa’anga"
-msgstr "Pa’anga"
+msgstr "Паанга"
 
 msgctxt "model:currency.currency,name:try"
 msgid "Turkish Lira"
-msgstr "Turkish Lira"
+msgstr "Турецкая лира"
 
 msgctxt "model:currency.currency,name:ttd"
 msgid "Trinidad and Tobago Dollar"
@@ -745,7 +740,7 @@ msgstr "Узбекский сум"
 
 msgctxt "model:currency.currency,name:vef"
 msgid "Bolívar"
-msgstr "Bolívar"
+msgstr "Боливар"
 
 msgctxt "model:currency.currency,name:vnd"
 msgid "Dong"
@@ -773,19 +768,22 @@ msgstr "Тройская унция золота"
 
 msgctxt "model:currency.currency,name:xba"
 msgid "Bond Markets Unit European Composite Unit (EURCO)"
-msgstr "Bond Markets Unit European Composite Unit (EURCO)"
+msgstr "Европейская составная единица рынка облигаций (EURCO)"
 
 msgctxt "model:currency.currency,name:xbb"
 msgid "Bond Markets Unit European Monetary Unit (E.M.U.-6)"
-msgstr "Bond Markets Unit European Monetary Unit (E.M.U.-6)"
+msgstr "Европейская валютная единица рынка облигаций (E.M.U.-6)"
 
 msgctxt "model:currency.currency,name:xbc"
 msgid "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)"
-msgstr "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)"
+msgstr ""
+"Расчётная единица 9 Европейского платежного союза рынка облигаций (E.U.A.-9)"
 
 msgctxt "model:currency.currency,name:xbd"
 msgid "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)"
-msgstr "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)"
+msgstr ""
+"Расчётная единица 17 Европейского платежного союза рынка облигаций "
+"(E.U.A.-17)"
 
 msgctxt "model:currency.currency,name:xcd"
 msgid "East Caribbean Dollar"
@@ -793,7 +791,7 @@ msgstr "Восточно-карибский доллар"
 
 msgctxt "model:currency.currency,name:xdr"
 msgid "SDR (Special Drawing Right)"
-msgstr "SDR (Special Drawing Right)"
+msgstr "Специальное право заимствования (SDR)"
 
 msgctxt "model:currency.currency,name:xof"
 msgid "CFA Franc BCEAO"
@@ -813,19 +811,19 @@ msgstr "Тройская унция платины"
 
 msgctxt "model:currency.currency,name:xsu"
 msgid "Sucre"
-msgstr "Sucre"
+msgstr "Сукре"
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Codes specifically reserved for testing purposes"
-msgstr "Codes specifically reserved for testing purposes"
+msgstr "Коды, зарезервированные для тестовых целей"
 
 msgctxt "model:currency.currency,name:xua"
 msgid "ADB Unit of Account"
-msgstr "ADB Unit of Account"
+msgstr "Расчётная единица ADB"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "The codes assigned for transactions where no currency is involved"
-msgstr "The codes assigned for transactions where no currency is involved"
+msgstr "Коды, назначаемые при неденежных переводах"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
@@ -849,29 +847,86 @@ msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
 msgstr "Курс"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Валюты"
+msgstr "Currencies"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Валюты"
+msgstr "Currency"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Валюты"
+msgstr "Currencies"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Администрирование валют"
-
-msgctxt "view:currency.currency:"
-msgid "Formatting"
-msgstr "Форматирование"
+msgstr "Currency Administration"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Курсы"
+
+#, fuzzy
+msgctxt "error:currency.currency:"
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
+msgstr "Некорректная группировка \"%(grouping)s\" по валюте \"%(currency)s\"."
+
+msgctxt "field:currency.currency,digits:"
+msgid "Display Digits"
+msgstr "Кол-во знаков после запятой"
+
+msgctxt "field:currency.currency,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Разделитель цифр"
+
+msgctxt "field:currency.currency,mon_grouping:"
+msgid "Grouping"
+msgstr "Группировка цифр"
+
+msgctxt "field:currency.currency,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Разделитель тысяч"
+
+msgctxt "field:currency.currency,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Добавлять символ отрицательного числа"
+
+msgctxt "field:currency.currency,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Символ отделять пробелом"
+
+msgctxt "field:currency.currency,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Позиция отрицательного символа"
+
+msgctxt "field:currency.currency,negative_sign:"
+msgid "Negative Sign"
+msgstr "Символ отрицательного числа"
+
+msgctxt "field:currency.currency,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Добавлять положит. символ в число"
+
+msgctxt "field:currency.currency,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Символ отделять пробелом"
+
+msgctxt "field:currency.currency,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Позиция положит. символа в числе"
+
+msgctxt "field:currency.currency,positive_sign:"
+msgid "Positive Sign"
+msgstr "Символ положительного числа"
+
+msgctxt "view:currency.currency:"
+msgid "Formatting"
+msgstr "Форматирование"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"

@@ -11,10 +11,6 @@ msgid "The currency rate must greater than or equal to 0"
 msgstr "La tasa de cambio de la moneda debe ser mayor o igual a 0."
 
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
-msgstr "La agrupación \"%(grouping)s\" de la moneda \"%(currency)s\" no es correcta."
-
-msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr ""
 "No se ha encontrado ninguna tasa de cambio para la moneda \"%(currency)s\" "
@@ -37,64 +33,20 @@ msgid "Create User"
 msgstr "Usuario de creación"
 
 msgctxt "field:currency.currency,digits:"
-msgid "Display Digits"
-msgstr "Decimales a mostrar"
+msgid "Digits"
+msgstr "Decimales"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:currency.currency,mon_decimal_point:"
-msgid "Decimal Separator"
-msgstr "Separador decimal"
-
-msgctxt "field:currency.currency,mon_grouping:"
-msgid "Grouping"
-msgstr "Agrupación"
-
-msgctxt "field:currency.currency,mon_thousands_sep:"
-msgid "Thousands Separator"
-msgstr "Separador de miles"
-
-msgctxt "field:currency.currency,n_cs_precedes:"
-msgid "Negative Currency Symbol Precedes"
-msgstr "El signo negativo va delante"
-
-msgctxt "field:currency.currency,n_sep_by_space:"
-msgid "Negative Separate by Space"
-msgstr "Signo negativo separado por espacio"
-
-msgctxt "field:currency.currency,n_sign_posn:"
-msgid "Negative Sign Position"
-msgstr "Posición del signo negativo"
-
 msgctxt "field:currency.currency,name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:currency.currency,negative_sign:"
-msgid "Negative Sign"
-msgstr "Signo negativo"
-
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
 msgstr "Código numérico"
-
-msgctxt "field:currency.currency,p_cs_precedes:"
-msgid "Positive Currency Symbol Precedes"
-msgstr "El signo positivo va delante"
-
-msgctxt "field:currency.currency,p_sep_by_space:"
-msgid "Positive Separate by Space"
-msgstr "Signo positivo separado por espacio"
-
-msgctxt "field:currency.currency,p_sign_posn:"
-msgid "Positive Sign Position"
-msgstr "Posición del signo positivo"
-
-msgctxt "field:currency.currency,positive_sign:"
-msgid "Positive Sign"
-msgstr "Signo positivo"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
@@ -159,6 +111,50 @@ msgstr "Fecha de modificación"
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
+
+msgctxt "help:currency.currency,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr "El código ISO de 3 dígitos de la moneda."
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "El número de dígitos a mostrar después del separador decimal."
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr "El identificador principal de la moneda."
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr "El código ISO de 3 dígitos de la moneda."
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr "Añadir tasas de cambio flotantes para la moneda."
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "El importe mínimo que se puede representar con esta moneda."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr "El símbolo utilizado para formatear esta moneda."
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr "La moneda a la que aplica la tasa de cambio."
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr "A partir de cuando aplica la tasa de cambio."
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr "La tasa de cambio flotante utilizada para convertir la moneda."
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -256,7 +252,7 @@ msgctxt "model:currency.currency,name:bwp"
 msgid "Pula"
 msgstr "Pula"
 
-msgctxt "model:currency.currency,name:byr"
+msgctxt "model:currency.currency,name:byn"
 msgid "Belarusian Ruble"
 msgstr "Belarusian Ruble"
 
@@ -865,12 +861,64 @@ msgid "Currency Administration"
 msgstr "Administración de monedas"
 
 msgctxt "view:currency.currency:"
-msgid "Formatting"
-msgstr "Formato"
-
-msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Tasas de cambio"
+
+msgctxt "error:currency.currency:"
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
+msgstr "La agrupación \"%(grouping)s\" de la moneda \"%(currency)s\" no es correcta."
+
+msgctxt "field:currency.currency,digits:"
+msgid "Display Digits"
+msgstr "Decimales a mostrar"
+
+msgctxt "field:currency.currency,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Separador decimal"
+
+msgctxt "field:currency.currency,mon_grouping:"
+msgid "Grouping"
+msgstr "Agrupación"
+
+msgctxt "field:currency.currency,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Separador de miles"
+
+msgctxt "field:currency.currency,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "El signo negativo va delante"
+
+msgctxt "field:currency.currency,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Signo negativo separado por espacio"
+
+msgctxt "field:currency.currency,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Posición del signo negativo"
+
+msgctxt "field:currency.currency,negative_sign:"
+msgid "Negative Sign"
+msgstr "Signo negativo"
+
+msgctxt "field:currency.currency,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "El signo positivo va delante"
+
+msgctxt "field:currency.currency,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Signo positivo separado por espacio"
+
+msgctxt "field:currency.currency,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Posición del signo positivo"
+
+msgctxt "field:currency.currency,positive_sign:"
+msgid "Positive Sign"
+msgstr "Signo positivo"
+
+msgctxt "view:currency.currency:"
+msgid "Formatting"
+msgstr "Formato"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"

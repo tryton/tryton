@@ -11,10 +11,6 @@ msgid "The currency rate must greater than or equal to 0"
 msgstr "Der Kurs muss größer oder gleich 0 sein"
 
 msgctxt "error:currency.currency:"
-msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
-msgstr "Ungültige Gruppierung \"%(grouping)s\" in Währung \"%(currency)s\"."
-
-msgctxt "error:currency.currency:"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
 msgstr "Fehlender Kurs für Währung \"%(currency)s\" am \"%(date)s\"."
 
@@ -35,64 +31,20 @@ msgid "Create User"
 msgstr "Erstellt durch"
 
 msgctxt "field:currency.currency,digits:"
-msgid "Display Digits"
-msgstr "Angezeigte Nachkommastellen"
+msgid "Digits"
+msgstr "Nachkommastellen"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:currency.currency,mon_decimal_point:"
-msgid "Decimal Separator"
-msgstr "Dezimalpunkt Währung"
-
-msgctxt "field:currency.currency,mon_grouping:"
-msgid "Grouping"
-msgstr "Gruppierung Währung"
-
-msgctxt "field:currency.currency,mon_thousands_sep:"
-msgid "Thousands Separator"
-msgstr "Tausendertrennzeichen Währung"
-
-msgctxt "field:currency.currency,n_cs_precedes:"
-msgid "Negative Currency Symbol Precedes"
-msgstr "Negativer Wert mit führendem Symbol"
-
-msgctxt "field:currency.currency,n_sep_by_space:"
-msgid "Negative Separate by Space"
-msgstr "Negativer Wert durch Leerzeichen getrennt"
-
-msgctxt "field:currency.currency,n_sign_posn:"
-msgid "Negative Sign Position"
-msgstr "Position negatives Vorzeichen"
-
 msgctxt "field:currency.currency,name:"
 msgid "Name"
 msgstr "Name"
 
-msgctxt "field:currency.currency,negative_sign:"
-msgid "Negative Sign"
-msgstr "Negatives Vorzeichen"
-
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
 msgstr "Numerischer Code"
-
-msgctxt "field:currency.currency,p_cs_precedes:"
-msgid "Positive Currency Symbol Precedes"
-msgstr "Positiver Wert mit führendem Symbol"
-
-msgctxt "field:currency.currency,p_sep_by_space:"
-msgid "Positive Separate by Space"
-msgstr "Positiver Wert durch Leerzeichen getrennt"
-
-msgctxt "field:currency.currency,p_sign_posn:"
-msgid "Positive Sign Position"
-msgstr "Position positives Vorzeichen"
-
-msgctxt "field:currency.currency,positive_sign:"
-msgid "Positive Sign"
-msgstr "Positives Vorzeichen"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
@@ -104,7 +56,7 @@ msgstr "Kurse"
 
 msgctxt "field:currency.currency,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -148,7 +100,7 @@ msgstr "Kurs"
 
 msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
@@ -157,6 +109,50 @@ msgstr "Zuletzt geändert"
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
+
+msgctxt "help:currency.currency,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
+msgctxt "help:currency.currency,code:"
+msgid "The 3 chars ISO currency code."
+msgstr "Der 3-stellige ISO-Währungscode."
+
+msgctxt "help:currency.currency,digits:"
+msgid "The number of digits to display after the decimal separator."
+msgstr "Die Anzahl der Nachkommastellen die angezeigt werden sollen."
+
+msgctxt "help:currency.currency,name:"
+msgid "The main identifier of the currency."
+msgstr "Die Hauptbezeichnung der Währung."
+
+msgctxt "help:currency.currency,numeric_code:"
+msgid "The 3 digits ISO currency code."
+msgstr "Der 3-stellige ISO-Währungscode."
+
+msgctxt "help:currency.currency,rates:"
+msgid "Add floating exchange rates for the currency."
+msgstr "Der Währung einen variablen Wechselkurs hinzufügen."
+
+msgctxt "help:currency.currency,rounding:"
+msgid "The minimum amount which can be represented in this currency."
+msgstr "Der kleinste Betrag der in dieser Währung dargestellt werden kann."
+
+msgctxt "help:currency.currency,symbol:"
+msgid "The symbol used for currency formating."
+msgstr "Das Symbol zu Darstellung der Währung. "
+
+msgctxt "help:currency.currency.rate,currency:"
+msgid "The currency on which the rate applies."
+msgstr "Die Währung auf die der Kurs angewendet wird. "
+
+msgctxt "help:currency.currency.rate,date:"
+msgid "From when the rate applies."
+msgstr "Ab wann der Kurs angewendet wird."
+
+msgctxt "help:currency.currency.rate,rate:"
+msgid "The floating exchange rate used to convert the currency."
+msgstr "Der variable Kurs der zur Umrechnung der Währung genutzt wird."
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -180,7 +176,7 @@ msgstr "Armenischer Dram"
 
 msgctxt "model:currency.currency,name:ang"
 msgid "Netherlands Antillean Guilder"
-msgstr "Niederländische Antillen Gulden"
+msgstr "Niederländische Antillen-Gulden"
 
 msgctxt "model:currency.currency,name:aoa"
 msgid "Kwanza"
@@ -254,7 +250,7 @@ msgctxt "model:currency.currency,name:bwp"
 msgid "Pula"
 msgstr "Pula"
 
-msgctxt "model:currency.currency,name:byr"
+msgctxt "model:currency.currency,name:byn"
 msgid "Belarusian Ruble"
 msgstr "Weißrussischer Rubel"
 
@@ -864,12 +860,64 @@ msgid "Currency Administration"
 msgstr "Währungen Administration"
 
 msgctxt "view:currency.currency:"
-msgid "Formatting"
-msgstr "Format"
-
-msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Kurse"
+
+msgctxt "error:currency.currency:"
+msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
+msgstr "Ungültige Gruppierung \"%(grouping)s\" in Währung \"%(currency)s\"."
+
+msgctxt "field:currency.currency,digits:"
+msgid "Display Digits"
+msgstr "Angezeigte Nachkommastellen"
+
+msgctxt "field:currency.currency,mon_decimal_point:"
+msgid "Decimal Separator"
+msgstr "Dezimalpunkt Währung"
+
+msgctxt "field:currency.currency,mon_grouping:"
+msgid "Grouping"
+msgstr "Gruppierung Währung"
+
+msgctxt "field:currency.currency,mon_thousands_sep:"
+msgid "Thousands Separator"
+msgstr "Tausendertrennzeichen Währung"
+
+msgctxt "field:currency.currency,n_cs_precedes:"
+msgid "Negative Currency Symbol Precedes"
+msgstr "Negativer Wert mit führendem Symbol"
+
+msgctxt "field:currency.currency,n_sep_by_space:"
+msgid "Negative Separate by Space"
+msgstr "Negativer Wert durch Leerzeichen getrennt"
+
+msgctxt "field:currency.currency,n_sign_posn:"
+msgid "Negative Sign Position"
+msgstr "Position negatives Vorzeichen"
+
+msgctxt "field:currency.currency,negative_sign:"
+msgid "Negative Sign"
+msgstr "Negatives Vorzeichen"
+
+msgctxt "field:currency.currency,p_cs_precedes:"
+msgid "Positive Currency Symbol Precedes"
+msgstr "Positiver Wert mit führendem Symbol"
+
+msgctxt "field:currency.currency,p_sep_by_space:"
+msgid "Positive Separate by Space"
+msgstr "Positiver Wert durch Leerzeichen getrennt"
+
+msgctxt "field:currency.currency,p_sign_posn:"
+msgid "Positive Sign Position"
+msgstr "Position positives Vorzeichen"
+
+msgctxt "field:currency.currency,positive_sign:"
+msgid "Positive Sign"
+msgstr "Positives Vorzeichen"
+
+msgctxt "view:currency.currency:"
+msgid "Formatting"
+msgstr "Format"
 
 msgctxt "view:currency.currency.rate:"
 msgid "Rate"
