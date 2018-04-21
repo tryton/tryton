@@ -154,6 +154,14 @@ msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "help:production.routing,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:production.routing.operation,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
 msgstr "Opérations"

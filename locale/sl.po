@@ -40,7 +40,7 @@ msgstr "Naziv"
 
 msgctxt "field:production.routing,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:production.routing,steps:"
 msgid "Steps"
@@ -72,7 +72,7 @@ msgstr "ID"
 
 msgctxt "field:production.routing-production.bom,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:production.routing-production.bom,routing:"
 msgid "Routing"
@@ -108,7 +108,7 @@ msgstr "Operacija"
 
 msgctxt "field:production.routing.operation,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:production.routing.operation,write_date:"
 msgid "Write Date"
@@ -136,7 +136,7 @@ msgstr "Operacija"
 
 msgctxt "field:production.routing.step,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:production.routing.step,routing:"
 msgid "Routing"
@@ -154,21 +154,33 @@ msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "help:production.routing,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:production.routing.operation,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
-msgstr "Operacije"
+msgstr "Operations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_routing_list"
 msgid "Routings"
-msgstr "Linije"
+msgstr "Routings"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_operation_list"
 msgid "Operations"
-msgstr "Operacije"
+msgstr "Operations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_routing_list"
 msgid "Routings"
-msgstr "Linije"
+msgstr "Routings"
 
 msgctxt "model:production.routing,name:"
 msgid "Routing"

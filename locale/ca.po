@@ -154,6 +154,14 @@ msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:production.routing,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
+msgctxt "help:production.routing.operation,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
 msgstr "Operacions"

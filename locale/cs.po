@@ -2,17 +2,20 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.product-production.bom,routing:"
 msgid "Routing"
-msgstr ""
+msgstr "Routings"
 
+#, fuzzy
 msgctxt "field:production,routing:"
 msgid "Routing"
-msgstr ""
+msgstr "Routings"
 
+#, fuzzy
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
-msgstr ""
+msgstr "Routings"
 
 msgctxt "field:production.routing,active:"
 msgid "Active"
@@ -75,9 +78,10 @@ msgctxt "field:production.routing-production.bom,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing-production.bom,routing:"
 msgid "Routing"
-msgstr ""
+msgstr "Routings"
 
 msgctxt "field:production.routing-production.bom,write_date:"
 msgid "Write Date"
@@ -103,9 +107,10 @@ msgctxt "field:production.routing.operation,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing.operation,name:"
 msgid "Operation"
-msgstr ""
+msgstr "Operations"
 
 msgctxt "field:production.routing.operation,rec_name:"
 msgid "Record Name"
@@ -131,17 +136,19 @@ msgctxt "field:production.routing.step,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing.step,operation:"
 msgid "Operation"
-msgstr ""
+msgstr "Operations"
 
 msgctxt "field:production.routing.step,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:production.routing.step,routing:"
 msgid "Routing"
-msgstr ""
+msgstr "Routings"
 
 msgctxt "field:production.routing.step,sequence:"
 msgid "Sequence"
@@ -155,33 +162,43 @@ msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:production.routing,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:production.routing.operation,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
-msgstr ""
+msgstr "Operations"
 
 msgctxt "model:ir.action,name:act_routing_list"
 msgid "Routings"
-msgstr ""
+msgstr "Routings"
 
 msgctxt "model:ir.ui.menu,name:menu_operation_list"
 msgid "Operations"
-msgstr ""
+msgstr "Operations"
 
 msgctxt "model:ir.ui.menu,name:menu_routing_list"
 msgid "Routings"
-msgstr ""
+msgstr "Routings"
 
+#, fuzzy
 msgctxt "model:production.routing,name:"
 msgid "Routing"
-msgstr ""
+msgstr "Routings"
 
 msgctxt "model:production.routing-production.bom,name:"
 msgid "Routing - BOM"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:production.routing.operation,name:"
 msgid "Operation"
-msgstr ""
+msgstr "Operations"
 
 msgctxt "model:production.routing.step,name:"
 msgid "Route"

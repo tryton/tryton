@@ -159,21 +159,32 @@ msgctxt "field:production.routing.step,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
+msgctxt "help:production.routing,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:production.routing.operation,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
-msgstr "Operacje"
+msgstr "Operations"
 
 msgctxt "model:ir.action,name:act_routing_list"
 msgid "Routings"
 msgstr "Routings"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_operation_list"
 msgid "Operations"
-msgstr "Operacje"
+msgstr "Operations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_routing_list"
 msgid "Routings"
-msgstr ""
+msgstr "Routings"
 
 #, fuzzy
 msgctxt "model:production.routing,name:"
