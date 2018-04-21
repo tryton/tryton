@@ -217,14 +217,22 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
@@ -249,6 +257,26 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
@@ -300,21 +328,5 @@ msgid "Waiting"
 msgstr ""
 
 msgctxt "view:stock.shipment.drop:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
 msgid "Done"
 msgstr "Realizar"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Ship"
-msgstr ""
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Wait"
-msgstr ""

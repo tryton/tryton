@@ -11,6 +11,8 @@ msgstr ""
 msgctxt "error:stock.shipment.drop:"
 msgid "Drop Shipment \"%(shipment)s\" must be cancelled before deletion."
 msgstr ""
+"Die direkte Lieferung \"%(shipment)s\" muss vor dem Löschen annulliert "
+"werden."
 
 msgctxt "error:stock.shipment.drop:"
 msgid ""
@@ -43,7 +45,7 @@ msgstr "Lagerort Direktlieferung Einkauf"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
 msgid "Write Date"
@@ -103,7 +105,7 @@ msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -187,7 +189,7 @@ msgstr "Geplantes Datum"
 
 msgctxt "field:stock.shipment.drop,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -217,9 +219,17 @@ msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
 msgstr "Direkte Lieferposten"
 
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
 msgstr "Direkte Lieferposten"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Sales"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
@@ -244,6 +254,26 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
 msgstr "Wartend"
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"

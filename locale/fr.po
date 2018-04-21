@@ -10,7 +10,7 @@ msgstr ""
 msgctxt "error:stock.shipment.drop:"
 msgid "Drop Shipment \"%(shipment)s\" must be cancelled before deletion."
 msgstr ""
-"La livraison direct « %(shipment)s » doit être annulée avant suppression."
+"La livraison directe « %(shipment)s » doit être annulée avant suppression."
 
 msgctxt "error:stock.shipment.drop:"
 msgid ""
@@ -55,7 +55,7 @@ msgstr "Mis à jour par"
 
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
-msgstr "Livraison direct"
+msgstr "Livraison directe"
 
 msgctxt "field:purchase.product_supplier,drop_shipment_available:"
 msgid "Drop Shipment Available"
@@ -217,9 +217,17 @@ msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
 msgstr "Livraisons directes"
 
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
 msgstr "Livraisons directes"
+
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Sales"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
@@ -233,17 +241,37 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
-msgstr "Livrés"
+msgstr "Livrées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "En attentes"
+
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
@@ -263,7 +291,7 @@ msgstr "Configuration d'achat Emplacement de livraison directe d'achat"
 
 msgctxt "model:sale.configuration.sale_drop_location,name:"
 msgid "Sale Configuration Sale Drop Location"
-msgstr "Configuration de vente Emplacement de livraison direct de vente"
+msgstr "Configuration de vente Emplacement de livraison directe de vente"
 
 msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"

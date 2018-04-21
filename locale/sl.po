@@ -8,7 +8,7 @@ msgstr "Naslov dostave mora biti naveden za nabavno ponudbo \"%s\"."
 
 msgctxt "error:stock.shipment.drop:"
 msgid "Drop Shipment \"%(shipment)s\" must be cancelled before deletion."
-msgstr ""
+msgstr "Dostave \"%(shipment)s\" ni možno zbrisati, če ni predhodno preklicana."
 
 msgctxt "error:stock.shipment.drop:"
 msgid ""
@@ -41,7 +41,7 @@ msgstr "Nabavna dostavna lokacija"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
 msgid "Write Date"
@@ -101,7 +101,7 @@ msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -185,7 +185,7 @@ msgstr "Načrtovan datum"
 
 msgctxt "field:stock.shipment.drop,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -211,49 +211,87 @@ msgctxt "field:stock.shipment.drop,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Dostave"
+msgstr "Drop Shipments"
 
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Dostave"
+msgstr "Drop Shipments"
 
+msgctxt "model:ir.action,name:act_sale_shipments_relate"
+msgid "Sales"
+msgstr "Sales"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Dostave"
+msgstr "Drop Shipments"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_draft"
 msgid "Draft"
-msgstr "Priprava"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_shipped"
 msgid "Shipped"
-msgstr "Odpremljeno"
+msgstr "Shipped"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_waiting"
 msgid "Waiting"
-msgstr "Čakajoče"
+msgstr "Waiting"
 
+msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:shipment_drop_done_button"
+msgid "Done"
+msgstr "Done"
+
+msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
+msgid "Ship"
+msgstr "Ship"
+
+msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Dostava"
+msgstr "Drop Shipment"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Dostava"
+msgstr "Drop Shipment"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Dostave"
+msgstr "Drop Shipments"
 
 msgctxt "model:purchase.configuration.purchase_drop_location,name:"
 msgid "Purchase Configuration Purchase Drop Location"
@@ -263,9 +301,10 @@ msgctxt "model:sale.configuration.sale_drop_location,name:"
 msgid "Sale Configuration Sale Drop Location"
 msgstr "Konfiguracija prodajne dostavne lokacije"
 
+#, fuzzy
 msgctxt "model:stock.location,name:location_drop"
 msgid "Drop"
-msgstr "Dostava"
+msgstr "Drop"
 
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
