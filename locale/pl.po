@@ -128,17 +128,24 @@ msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Extras"
 
+msgctxt "help:sale.extra,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr ""
+msgstr "Extras"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr ""
+msgstr "Sale Extras"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr ""
+msgstr "Extras"
 
 #, fuzzy
 msgctxt "model:sale.extra,name:"

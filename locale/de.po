@@ -44,7 +44,7 @@ msgstr "Preisliste"
 
 msgctxt "field:sale.extra,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
@@ -96,7 +96,7 @@ msgstr "Anzahl"
 
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
@@ -125,6 +125,10 @@ msgstr "Letzte Änderung durch"
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Extra"
+
+msgctxt "help:sale.extra,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"

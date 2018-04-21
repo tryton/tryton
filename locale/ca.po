@@ -126,6 +126,10 @@ msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Extra"
 
+msgctxt "help:sale.extra,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
 msgstr "Extres"

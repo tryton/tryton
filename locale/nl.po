@@ -84,9 +84,10 @@ msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
 msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr ""
+msgstr "Extras"
 
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
@@ -144,25 +145,31 @@ msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
 msgstr "Gebruiker"
 
+#, fuzzy
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
+msgstr "Extras"
+
+msgctxt "help:sale.extra,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr ""
+msgstr "Extras"
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr ""
+msgstr "Sale Extras"
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr ""
+msgstr "Extras"
 
+#, fuzzy
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr ""
+msgstr "Sale Extras"
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"

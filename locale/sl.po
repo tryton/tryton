@@ -44,7 +44,7 @@ msgstr "Cenik"
 
 msgctxt "field:sale.extra,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
@@ -96,7 +96,7 @@ msgstr "Količina"
 
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
@@ -126,17 +126,24 @@ msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Dodatno"
 
+msgctxt "help:sale.extra,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr "Dodatno"
+msgstr "Extras"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr "Dodatno"
+msgstr "Sale Extras"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr "Dodatno"
+msgstr "Extras"
 
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"

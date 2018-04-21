@@ -4,156 +4,152 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.extra,active:"
 msgid "Active"
-msgstr ""
+msgstr "فعال"
 
 msgctxt "field:sale.extra,company:"
 msgid "Company"
-msgstr ""
+msgstr "شرکت"
 
 msgctxt "field:sale.extra,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:sale.extra,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "رقم های واحد پول"
 
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "تاریخ پایان"
 
 msgctxt "field:sale.extra,id:"
 msgid "ID"
-msgstr ""
+msgstr "شناسه"
 
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "سطرها"
 
-#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "نام"
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "لیست قیمت"
 
 msgctxt "field:sale.extra,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "میزان فروش"
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "تاریخ شروع"
 
 msgctxt "field:sale.extra,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "تاریخ نوشته"
 
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "نوشته کاربر"
 
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:sale.extra.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
-msgstr "Extras"
+msgstr "اضافی"
 
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
-msgstr ""
+msgstr "رایگان"
 
 msgctxt "field:sale.extra.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "شناسه"
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "محصول"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
-msgstr ""
+msgstr "زیرمجموعه واحد اندازه گیری محصول"
 
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "مقدار/تعداد"
 
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
-msgstr ""
+msgstr "میزان فروش"
 
 msgctxt "field:sale.extra.line,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "ادامه"
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "واحد"
 
 msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "ارقام واحد"
 
 msgctxt "field:sale.extra.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "تاریخ نوشته"
 
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
-msgstr "Extras"
+msgstr "اضافی"
 
 msgctxt "help:sale.extra,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
-msgstr "Extras"
+msgstr "اضافات"
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
-msgstr "Sale Extras"
+msgstr "فروش اضافات"
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
-msgstr "Extras"
+msgstr "اضافات"
 
-#, fuzzy
 msgctxt "model:sale.extra,name:"
 msgid "Sale Extra"
-msgstr "Sale Extras"
+msgstr "فروش اضافی"
 
 msgctxt "model:sale.extra.line,name:"
 msgid "Sale Extra Line"
-msgstr ""
+msgstr "سطر فروش اضافی"
 
 msgctxt "view:sale.extra.line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "سطر فروش"
