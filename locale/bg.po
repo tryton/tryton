@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
@@ -149,93 +155,113 @@ msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
 msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Задачи"
+msgstr "Tasks"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Проекти"
+msgstr "Projects"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Проекти"
+msgstr "Projects"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Задачи"
+msgstr "Tasks"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Timesheet Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Задачи"
+msgstr "Works Efforts"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Задачи"
+msgstr "Works Efforts"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Приключен"
+msgstr "Done"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Отворен"
+msgstr "Opened"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Приключен"
+msgstr "Done"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Отворен"
+msgstr "Opened"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Приключен"
+msgstr "Done"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Отворен"
+msgstr "Opened"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Управление на проекти"
+msgstr "Project"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Проекти"
+msgstr "Projects"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Проекти"
+msgstr "Projects"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Задачи"
+msgstr "Tasks"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Задачи"
+msgstr "Works Efforts"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Задачи"
+msgstr "Works Efforts"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
 msgstr "Дейност"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Управление на проекти"
+msgstr "Project Administration"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
@@ -259,8 +285,20 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:project.work:"
+msgid "End:"
+msgstr ""
+
+msgctxt "view:project.work:"
 msgid "General"
 msgstr "Основен"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Children"

@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
@@ -147,15 +153,13 @@ msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
@@ -201,19 +205,17 @@ msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Proyectos"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
@@ -243,10 +245,9 @@ msgctxt "selection:project.work,state:"
 msgid "Opened"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr "Proyectos"
+msgstr ""
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
@@ -257,5 +258,17 @@ msgid "%"
 msgstr ""
 
 msgctxt "view:project.work:"
+msgid "End:"
+msgstr ""
+
+msgctxt "view:project.work:"
 msgid "General"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
 msgstr ""

@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+"Die Partei \"%(party)s\" kann nicht gelöscht werden, da sie offene Projekte "
+"für das Unternehmen \"%(company)s\" hat."
+
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
@@ -72,7 +80,7 @@ msgstr "Fortschritt"
 
 msgctxt "field:project.work,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:project.work,right:"
 msgid "Right"
@@ -168,7 +176,7 @@ msgstr "Aufgaben"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Zeilen der Zeiterfassung"
+msgstr "Positionen der Zeiterfassung"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
@@ -184,7 +192,7 @@ msgstr "Erledigt"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Offen"
+msgstr "Geöffnet"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
@@ -192,7 +200,7 @@ msgstr "Erledigt"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Offen"
+msgstr "Geöffnet"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
@@ -200,7 +208,7 @@ msgstr "Erledigt"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Offen"
+msgstr "Geöffnet"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -208,7 +216,7 @@ msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Projekte"
+msgstr "Projekt"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -259,8 +267,20 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Ende:"
+
+msgctxt "view:project.work:"
 msgid "General"
 msgstr "Allgemein"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Start:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Zeiterfassung:"
 
 msgctxt "view:project.work:"
 msgid "Children"

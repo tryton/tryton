@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+"No se puede eliminar el tercero \"%(party)s\" porqué tiene proyectos "
+"abiertos para la empresa \"%(company)s\"."
+
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
@@ -156,7 +164,7 @@ msgstr "Proyectos"
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Proyectos"
+msgstr "Árbol de proyectos"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
@@ -164,7 +172,7 @@ msgstr "Tareas"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Lineas de parte de trabajo"
+msgstr "Líneas del parte de trabajo"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
@@ -172,11 +180,11 @@ msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Proyectos y tareas"
+msgstr "Árbol de proyectos y tareas"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Realizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
@@ -184,7 +192,7 @@ msgstr "Abierto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Realizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
@@ -192,7 +200,7 @@ msgstr "Abierto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Finalizado"
+msgstr "Realizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
@@ -224,7 +232,7 @@ msgstr "Proyectos y tareas"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Proyectos y tareas"
+msgstr "Árbol de proyectos y tareas"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
@@ -255,8 +263,20 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Fin:"
+
+msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Inicio:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Hoja de trabajo:"
 
 msgctxt "view:project.work:"
 msgid "Children"

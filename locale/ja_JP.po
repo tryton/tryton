@@ -2,6 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
@@ -160,7 +166,7 @@ msgstr "Tasks"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr ""
+msgstr "Timesheet Lines"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
@@ -256,5 +262,17 @@ msgid "%"
 msgstr ""
 
 msgctxt "view:project.work:"
+msgid "End:"
+msgstr ""
+
+msgctxt "view:project.work:"
 msgid "General"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr ""
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
 msgstr ""

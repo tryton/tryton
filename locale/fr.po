@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+"Le tiers « %(party)s » ne peut pas être effacé car il a des projets ouverts "
+"pour la société « %(company)s »."
+
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
@@ -176,27 +184,27 @@ msgstr "Efforts de travail"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Terminé"
+msgstr "Terminés"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Ouvert"
+msgstr "Ouverts"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Terminé"
+msgstr "Terminés"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Ouvert"
+msgstr "Ouverts"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Terminé"
+msgstr "Terminées"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Ouvert"
+msgstr "Ouvertes"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -204,7 +212,7 @@ msgstr "Configuration"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Projets"
+msgstr "Projet"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
@@ -255,8 +263,20 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Fin :"
+
+msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Début :"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Feuilles de présence :"
 
 msgctxt "view:project.work:"
 msgid "Children"

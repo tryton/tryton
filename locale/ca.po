@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has opened projects for"
+" the company \"%(company)s\"."
+msgstr ""
+"No es pot eliminar el tercer \"%(party)s\" perquè té projectes oberts per "
+"l'empresa \"%(company)s\"."
+
 msgctxt "error:project.work:"
 msgid ""
 "Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
@@ -156,7 +164,7 @@ msgstr "Projectes"
 
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Projectes"
+msgstr "Arbre de projectes"
 
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
@@ -164,7 +172,7 @@ msgstr "Tasques"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Línies de full de treball"
+msgstr "Línies del full de treball"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
@@ -172,7 +180,7 @@ msgstr "Projectes i tasques"
 
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Projectes i tasques"
+msgstr "Arbre de projectes i tasques"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
@@ -224,7 +232,7 @@ msgstr "Projectes i tasques"
 
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Projectes i tasques"
+msgstr "Arbre de projectes i tasques"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
@@ -255,8 +263,20 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:project.work:"
+msgid "End:"
+msgstr "Fi:"
+
+msgctxt "view:project.work:"
 msgid "General"
 msgstr "General"
+
+msgctxt "view:project.work:"
+msgid "Start:"
+msgstr "Inici:"
+
+msgctxt "view:project.work:"
+msgid "Timesheet:"
+msgstr "Full de treball:"
 
 msgctxt "view:project.work:"
 msgid "Children"
