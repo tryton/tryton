@@ -175,7 +175,7 @@ msgstr "Order Points"
 
 msgctxt "model:ir.action,name:act_stock_supply"
 msgid "Supply Stock"
-msgstr ""
+msgstr "Supply Stock"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
@@ -198,7 +198,7 @@ msgstr "Order Points"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
-msgstr ""
+msgstr "Supply Stock"
 
 msgctxt "model:purchase.configuration.supply_period,name:"
 msgid "Purchase Configuration Supply Period"
@@ -209,9 +209,10 @@ msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
 msgstr "Order Points"
 
+#, fuzzy
 msgctxt "model:stock.supply.start,name:"
 msgid "Supply Stock"
-msgstr ""
+msgstr "Supply Stock"
 
 #, fuzzy
 msgctxt "selection:stock.order_point,type:"
@@ -231,9 +232,10 @@ msgctxt "view:stock.order_point:"
 msgid "Product Info"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:stock.supply.start:"
 msgid "Supply Stock?"
-msgstr ""
+msgstr "Supply Stock"
 
 msgctxt "wizard_button:stock.supply,start,create_:"
 msgid "Create"

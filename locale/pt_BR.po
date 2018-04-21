@@ -168,44 +168,53 @@ msgctxt "help:stock.location,provisioning_location:"
 msgid "Leave empty for no default provisioning"
 msgstr "Deixe vazio para nenhum abastecimento padrão"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
-msgstr "Regras de Abastecimento"
+msgstr "Order Points"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_order_point_form_relate"
 msgid "Order Points"
-msgstr "Regras de Abastecimento"
+msgstr "Order Points"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_order_point_form_relate2"
 msgid "Order Points"
-msgstr "Regras de Abastecimento"
+msgstr "Order Points"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_stock_supply"
 msgid "Supply Stock"
-msgstr "Abastecer Estoque"
+msgstr "Supply Stock"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
-msgstr "Interno"
+msgstr "Internal"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
 msgid "Purchase"
-msgstr "Compra"
+msgstr "Purchase"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
-msgstr "Regras de Abastecimento"
+msgstr "Order Points"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
-msgstr "Abastecer Estoque"
+msgstr "Supply Stock"
 
 msgctxt "model:purchase.configuration.supply_period,name:"
 msgid "Purchase Configuration Supply Period"

@@ -181,7 +181,7 @@ msgstr "Regles de proveïment"
 
 msgctxt "model:ir.action,name:act_stock_supply"
 msgid "Supply Stock"
-msgstr "Aprovisionament d'existències"
+msgstr "Aprovisiona existències"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
@@ -204,7 +204,7 @@ msgstr "Regles de proveïment"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
-msgstr "Aprovisionament d'existències"
+msgstr "Aprovisiona existències"
 
 msgctxt "model:purchase.configuration.supply_period,name:"
 msgid "Purchase Configuration Supply Period"

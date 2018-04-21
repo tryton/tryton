@@ -186,7 +186,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
-msgstr "Interna"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"

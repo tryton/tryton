@@ -57,7 +57,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.configuration.supply_period,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
@@ -121,7 +121,7 @@ msgstr "Bereitstellungsort"
 
 msgctxt "field:stock.order_point,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
@@ -198,7 +198,7 @@ msgstr "Intern"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
 msgid "Purchase"
-msgstr "Einkauf"
+msgstr "Einkäufe"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"

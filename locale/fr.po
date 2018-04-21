@@ -192,7 +192,7 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
-msgstr "Interne"
+msgstr "Internes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
