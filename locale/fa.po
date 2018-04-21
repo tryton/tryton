@@ -4,168 +4,148 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,relations:"
 msgid "Relations"
-msgstr "Razmerja"
+msgstr "روابط"
 
 msgctxt "field:party.relation,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr "Od"
+msgstr "از"
 
 msgctxt "field:party.relation,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:party.relation,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "نام پرونده"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
-msgstr "Do"
+msgstr "به"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "نوع"
 
 msgctxt "field:party.relation,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:party.relation,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "نوشته کاربر"
 
 msgctxt "field:party.relation.all,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:party.relation.all,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr "Od"
+msgstr "از"
 
 msgctxt "field:party.relation.all,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:party.relation.all,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "نام پرونده"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
-msgstr "Do"
+msgstr "به"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr "نوع"
 
 msgctxt "field:party.relation.all,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:party.relation.all,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "نوشته کاربر"
 
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "نام"
 
 msgctxt "field:party.relation.type,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "نام پرونده"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
-msgstr "Obratno razmerje"
+msgstr "رابطه معکوس"
 
 msgctxt "field:party.relation.type,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "نوشته کاربر"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."
-msgstr "Glavni identifikator za vrsto razmerjo."
+msgstr "شناسه اصلی از نوع ارتباط."
 
 msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."
-msgstr "Samodejno izdelava obratnega razmerja."
+msgstr "ایجاد خودکار رابطه معکوس."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "Party Relations"
+msgstr "روابط نهادی/سازمانی"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "انوع رابطه"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
-msgstr "Party Relations"
+msgstr "روابط نهادی/سازمانی"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "انوع رابطه"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
-msgstr "Partnersko razmerje"
+msgstr "رابطه نهاد/سازمان"
 
 msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
-msgstr "Partnersko razmerje"
+msgstr "رابطه نهاد/سازمان"
 
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
-msgstr "Vrste razmerja"
+msgstr "نوع رابطه"
 
 msgctxt "view:party.party:"
 msgid "Relations"
-msgstr "Razmerja"
-
-msgctxt "view:party.relation.all:"
-msgid "Relation"
-msgstr "Razmerje"
-
-msgctxt "view:party.relation.all:"
-msgid "Relations"
-msgstr "Razmerja"
-
-msgctxt "view:party.relation.type:"
-msgid "Party Relation Type"
-msgstr "Vrsta partnerskega razmerja"
-
-msgctxt "view:party.relation.type:"
-msgid "Party Relation Types"
-msgstr "Vrste partnerskega razmerja"
+msgstr "روابط"

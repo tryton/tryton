@@ -24,7 +24,7 @@ msgstr "ID"
 
 msgctxt "field:party.relation,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -60,7 +60,7 @@ msgstr "ID"
 
 msgctxt "field:party.relation.all,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
@@ -96,7 +96,7 @@ msgstr "Name"
 
 msgctxt "field:party.relation.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"

@@ -124,7 +124,7 @@ msgstr "Relacions entre tercers"
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Tipus de relacions"
+msgstr "Tipus de relació"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
@@ -132,7 +132,7 @@ msgstr "Relacions entre tercers"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Tipus de relacions"
+msgstr "Tipus de relació"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"

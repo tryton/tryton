@@ -118,21 +118,25 @@ msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "Partner kapcsolat"
+msgstr "Party Relations"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Kapcsolat típusa"
+msgstr "Relation Types"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
-msgstr "Partner kapcsolat"
+msgstr "Party Relations"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Kapcsolat típusa"
+msgstr "Relation Types"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
