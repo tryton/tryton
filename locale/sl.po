@@ -2,18 +2,22 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_line_in_form"
 msgid "Supplier Invoice Lines"
-msgstr "Postavke prejetih računov"
+msgstr "Supplier Invoice Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Postavke računov"
+msgstr "Invoice Lines"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_form"
 msgid "Supplier Invoice Lines"
-msgstr "Postavke prejetih računov"
+msgstr "Supplier Invoice Lines"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Postavke računov"
+msgstr "Invoice Lines"

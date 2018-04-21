@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "model:ir.action,name:act_invoice_line_in_form"
 msgid "Supplier Invoice Lines"
-msgstr "Rechnungspositionen Lieferanten"
+msgstr "Rechnungspositionen Lieferant"
 
 msgctxt "model:ir.action,name:act_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Rechnungspositionen Kunden"
+msgstr "Rechnungspositionen"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_form"
 msgid "Supplier Invoice Lines"
@@ -16,4 +16,4 @@ msgstr "Rechnungspositionen Lieferanten"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Rechnungspositionen Kunden"
+msgstr "Rechnungspositionen"

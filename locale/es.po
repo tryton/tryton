@@ -8,7 +8,7 @@ msgstr "Líneas de factura de proveedor"
 
 msgctxt "model:ir.action,name:act_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr "Lineas de factura"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_in_form"
 msgid "Supplier Invoice Lines"
@@ -16,4 +16,4 @@ msgstr "Líneas de factura de proveedor"
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_line_out_form"
 msgid "Invoice Lines"
-msgstr "Líneas de factura"
+msgstr "Lineas de factura"
