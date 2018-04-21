@@ -79,9 +79,10 @@ msgctxt "field:product.price_list.line,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:product.price_list.line,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Price Lists"
 
 #, fuzzy
 msgctxt "field:product.price_list.line,product:"
@@ -159,15 +160,16 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr ""
+msgstr "Price Lists"
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr ""
+msgstr "Price Lists"
 
+#, fuzzy
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
-msgstr ""
+msgstr "Price Lists"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"

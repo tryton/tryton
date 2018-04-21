@@ -36,7 +36,7 @@ msgstr "Name"
 
 msgctxt "field:product.price_list,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
@@ -84,7 +84,7 @@ msgstr "Anzahl"
 
 msgctxt "field:product.price_list.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.price_list.line,sequence:"
 msgid "Sequence"

@@ -146,11 +146,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
-msgstr "Listas de precios"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
-msgstr "Listas de precios"
+msgstr ""
 
 msgctxt "model:product.price_list,name:"
 msgid "Price List"
