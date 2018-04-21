@@ -1,0 +1,31 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:carrier,carrier_cost_allocation_method:"
+msgid "Carrier Cost Allocation Method"
+msgstr "روش تخصیص هزینه حمل"
+
+msgctxt "field:stock.move,unit_shipment_cost:"
+msgid "Unit Shipment Cost"
+msgstr "واحد هزینه حمل ونقل"
+
+msgctxt "field:stock.shipment.in,carrier:"
+msgid "Carrier"
+msgstr "حمل کننده"
+
+msgctxt "field:stock.shipment.in,cost:"
+msgid "Cost"
+msgstr "هزینه"
+
+msgctxt "field:stock.shipment.in,cost_currency:"
+msgid "Cost Currency"
+msgstr "واحد پول هزینه"
+
+msgctxt "field:stock.shipment.in,cost_currency_digits:"
+msgid "Cost Currency Digits"
+msgstr "ارقام پول هزینه"
+
+msgctxt "selection:carrier,carrier_cost_allocation_method:"
+msgid "By Value"
+msgstr "براساس مقدار"
