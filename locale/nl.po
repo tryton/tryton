@@ -7,10 +7,6 @@ msgid "Only one journal is allowed per bank account."
 msgstr ""
 
 msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr ""
 
@@ -107,9 +103,10 @@ msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Origins"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Record Name"
@@ -122,6 +119,11 @@ msgstr "Begin bedrag"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Status"
+
+#, fuzzy
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Reconcile"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -265,9 +267,10 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr "Nummer"
 
+#, fuzzy
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origins"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
@@ -531,9 +534,10 @@ msgctxt "help:account.statement.origin.information,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr "Bankafschrift"
+msgstr "Statement"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -567,29 +571,34 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Statement Line Groups"
 
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
-msgstr ""
+msgstr "Line Groups"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr ""
+msgstr "Move Lines"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr "Boekingen"
 
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Alle bankafschriften"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Dagboeken bankafschriften"
+msgstr "Statement Journals"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
@@ -603,7 +612,7 @@ msgstr "Bankafschriftregels"
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr ""
+msgstr "Origins"
 
 #, fuzzy
 msgctxt "model:ir.action,name:report_statement"
@@ -612,11 +621,11 @@ msgstr "Bankafschrift"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -636,13 +645,34 @@ msgctxt ""
 msgid "Validated"
 msgstr "Goedgekeurd"
 
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Statement Line Groups"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Bankafschriften"
+msgstr "Statements"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
@@ -651,19 +681,22 @@ msgstr "Alle bankafschriften"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Dagboeken bankafschriften"
+msgstr "Statement Journals"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Bankafschriften"
+msgstr "Statements"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Bankafschrift"
+msgstr "Statement"
 
 #, fuzzy
 msgctxt "report:account.statement:"
@@ -802,31 +835,14 @@ msgctxt "view:account.statement.origin:"
 msgid "Amount"
 msgstr "Bedrag"
 
-msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Annuleren"
-
-#, fuzzy
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "Concept"
-
 #, fuzzy
 msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Aanvullende informatie"
 
 msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Boeken"
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Bankafschriftregels"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Goedkeuren"
 
 #, fuzzy
 msgctxt "wizard_button:account.statement.import,start,end:"
@@ -836,3 +852,20 @@ msgstr "Annuleren"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr ""
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Boeken"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Goedkeuren"

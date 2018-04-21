@@ -7,10 +7,6 @@ msgid "Only one journal is allowed per bank account."
 msgstr "Solo se permite un diario por cuenta bancaria."
 
 msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr "El importe \"%s\" es mayor que el importe a pagar de la factura."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "El importe debería ser un valor positivo o negativo."
 
@@ -117,6 +113,10 @@ msgstr "Saldo inicial"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Estado"
+
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Por conciliar"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -522,9 +522,13 @@ msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr "Asientos"
 
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Todos los extractos"
+msgstr "Extractos"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
@@ -532,11 +536,11 @@ msgstr "Diarios de extracto"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr "Líneas de extracto bancario"
+msgstr "Líneas de extracto"
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr "Líneas de extracto bancario"
+msgstr "Líneas de extracto"
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
@@ -569,6 +573,26 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validado"
 
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
 msgstr "Grupos de líneas de extracto"
@@ -579,7 +603,7 @@ msgstr "Extractos"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr "Todos los extractos"
+msgstr "Extractos"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
@@ -718,28 +742,12 @@ msgid "Amount"
 msgstr "Importe"
 
 msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Información adicional"
 
 msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Contabilizar"
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Líneas de extracto"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Validar"
 
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
@@ -748,3 +756,19 @@ msgstr "Cancelar"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr "Importar"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Contabilizar"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Validar"

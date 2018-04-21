@@ -7,10 +7,6 @@ msgid "Only one journal is allowed per bank account."
 msgstr ""
 
 msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr ""
 
@@ -102,9 +98,10 @@ msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Origins"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Record Name"
@@ -117,6 +114,11 @@ msgstr "ຍອດຍົກມາ"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "ສະຖານະ"
+
+#, fuzzy
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Reconcile"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -257,9 +259,10 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr "ເລກທີ"
 
+#, fuzzy
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origins"
 
 #, fuzzy
 msgctxt "field:account.statement.line,party:"
@@ -275,9 +278,10 @@ msgctxt "field:account.statement.line,sequence:"
 msgid "Sequence"
 msgstr "ລໍາດັບ"
 
+#, fuzzy
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Statement"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
@@ -352,9 +356,10 @@ msgctxt "field:account.statement.line.group,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Statement"
 
 #, fuzzy
 msgctxt "field:account.statement.line.group,write_date:"
@@ -433,13 +438,15 @@ msgctxt "field:account.statement.origin,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Statement"
 
+#, fuzzy
 msgctxt "field:account.statement.origin,statement_id:"
 msgid "Statement ID"
-msgstr ""
+msgstr "Statement"
 
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
@@ -523,7 +530,7 @@ msgstr ""
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Statement"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -533,9 +540,10 @@ msgctxt "model:account.statement.import.start,name:"
 msgid "Statement Import Start"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
-msgstr ""
+msgstr "Statement Journals"
 
 msgctxt "model:account.statement.line,name:"
 msgid "Account Statement Line"
@@ -555,48 +563,52 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Statement Line Groups"
 
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
-msgstr ""
+msgstr "Line Groups"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr ""
+msgstr "Move Lines"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr "ຕັດບັນຊີສາງ"
 
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr ""
+msgstr "Statements"
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr ""
+msgstr "Statement Journals"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr ""
+msgstr "Statement Lines"
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr ""
+msgstr "Statement Lines"
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr ""
+msgstr "Origins"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Statement"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
@@ -621,33 +633,53 @@ msgctxt ""
 msgid "Validated"
 msgstr "ກວດສອບແລ້ວ"
 
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
-msgstr ""
+msgstr "Statement Line Groups"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr ""
+msgstr "Statements"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr ""
+msgstr "Statements"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr ""
+msgstr "Statement Journals"
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr ""
+msgstr "Statements"
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Statement"
 
 #, fuzzy
 msgctxt "report:account.statement:"
@@ -699,9 +731,10 @@ msgctxt "report:account.statement:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Statement"
 
 #, fuzzy
 msgctxt "report:account.statement:"
@@ -791,6 +824,25 @@ msgstr "ມູນຄ່າ"
 
 #, fuzzy
 msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "ຂໍ້ມູນອື່ນໆ"
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Statement Lines"
+
+#, fuzzy
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.statement:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
@@ -801,28 +853,10 @@ msgstr "ຮ່າງກຽມ"
 
 #, fuzzy
 msgctxt "view:account.statement:"
-msgid "Other Info"
-msgstr "ຂໍ້ມູນອື່ນໆ"
-
-#, fuzzy
-msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "ປະກາດ"
-
-msgctxt "view:account.statement:"
-msgid "Statement Lines"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:account.statement:"
 msgid "Validate"
 msgstr "ກວດສອບ"
-
-#, fuzzy
-msgctxt "wizard_button:account.statement.import,start,end:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-msgctxt "wizard_button:account.statement.import,start,import_:"
-msgid "Import"
-msgstr ""

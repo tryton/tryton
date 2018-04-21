@@ -4,11 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.journal:"
 msgid "Only one journal is allowed per bank account."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr "Betrag \"%s\" ist größer als der für die Rechnung zu zahlende Betrag."
+msgstr "Es ist nur ein Journal pro Bankkonto erlaubt."
 
 msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
@@ -27,6 +23,8 @@ msgid ""
 "Origin line \"%(origin)s\" of statement \"%(statement)s\" still has a "
 "pending amount of \"%(amount)s\"."
 msgstr ""
+"Die ursprüngliche Position \"%(origin)s\" des Auszugs \"%(statement)s\" hat "
+"noch offene Beträge im Wert von \"%(amount)s\"."
 
 msgctxt "error:account.statement:"
 msgid "Please provide debit and credit account on statement journal \"%s\"."
@@ -94,19 +92,19 @@ msgstr "Anzahl Zeilen"
 
 msgctxt "field:account.statement,origin_file:"
 msgid "Origin File"
-msgstr ""
+msgstr "Ursprungsdatei"
 
 msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
-msgstr ""
+msgstr "ID der Ursprungsdatei"
 
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Ursprünge"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
@@ -115,6 +113,10 @@ msgstr "Anfangssaldo"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Status"
+
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Abzustimmen"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -132,27 +134,25 @@ msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
-msgstr ""
+msgstr "Datei"
 
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
-msgstr ""
+msgstr "Dateiformat"
 
-#, fuzzy
 msgctxt "field:account.statement.import.start,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Bankkonto"
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
@@ -160,7 +160,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
-msgstr ""
+msgstr "Unternehmen"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
@@ -188,7 +188,7 @@ msgstr "Name"
 
 msgctxt "field:account.statement.journal,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
@@ -210,7 +210,6 @@ msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
 msgstr "Betrag"
 
-#, fuzzy
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Unternehmen"
@@ -249,7 +248,7 @@ msgstr "Nummer"
 
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Herkunft"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
@@ -257,7 +256,7 @@ msgstr "Partei"
 
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.statement.line,sequence:"
 msgid "Sequence"
@@ -325,7 +324,7 @@ msgstr "Partei"
 
 msgctxt "field:account.statement.line.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
@@ -339,163 +338,141 @@ msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,account:"
 msgid "Account"
 msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,amount:"
 msgid "Amount"
 msgstr "Betrag"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
 msgstr "Datum"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,description:"
 msgid "Description"
 msgstr "Beschreibung"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.statement.origin,informations:"
 msgid "Informations"
-msgstr ""
+msgstr "Informationen"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,number:"
 msgid "Number"
 msgstr "Nummer"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,party:"
 msgid "Party"
 msgstr "Partei"
 
 msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
-msgstr ""
+msgstr "Ausstehender Betrag"
 
 msgctxt "field:account.statement.origin,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
 msgstr "Auszug"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,statement_id:"
 msgid "Statement ID"
-msgstr "Auszug"
+msgstr "Auszug ID"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr "Auszugsstatus"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:account.statement.origin.information,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:account.statement.origin.information,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
 msgctxt "field:account.statement.origin.information,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Nachkommastellen"
 
-#, fuzzy
 msgctxt "field:account.statement.origin.information,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.statement.origin.information,name:"
 msgid "Name"
 msgstr "Name"
 
 msgctxt "field:account.statement.origin.information,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.statement.origin.information,selection:"
 msgid "Selection"
-msgstr ""
+msgstr "Auswahl"
 
 msgctxt "field:account.statement.origin.information,selection_json:"
 msgid "Selection JSON"
-msgstr ""
+msgstr "Auswahl JSON"
 
 msgctxt "field:account.statement.origin.information,selection_sorted:"
 msgid "Selection Sorted"
-msgstr ""
+msgstr "Sortierte Auswahl"
 
 msgctxt "field:account.statement.origin.information,string:"
 msgid "String"
-msgstr ""
+msgstr "Zeichenkette"
 
 msgctxt "field:account.statement.origin.information,type_:"
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
-#, fuzzy
 msgctxt "field:account.statement.origin.information,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:account.statement.origin.information,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
 msgctxt "help:account.statement.origin.information,selection:"
 msgid "A couple of key and label separated by \":\" per line"
-msgstr ""
+msgstr "Zeilenweise Schlüssel und Bezeichner getrennt durch \":\""
 
 msgctxt "help:account.statement.origin.information,selection_sorted:"
 msgid "If the selection must be sorted on label"
-msgstr ""
+msgstr "Ob die Auswahl nach Bezeichner sortiert werden soll"
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
@@ -507,7 +484,7 @@ msgstr "Auszug"
 
 msgctxt "model:account.statement.import.start,name:"
 msgid "Statement Import Start"
-msgstr ""
+msgstr "Auszug importieren"
 
 msgctxt "model:account.statement.journal,name:"
 msgid "Statement Journal"
@@ -521,22 +498,21 @@ msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
 msgstr "Auszugszeilengruppe"
 
-#, fuzzy
 msgctxt "model:account.statement.origin,name:"
 msgid "Account Statement Origin"
-msgstr "Auszugszeile"
+msgstr "Ursprung des Kontoauszugs"
 
 msgctxt "model:account.statement.origin.information,name:"
 msgid "Statement Origin Information"
-msgstr ""
+msgstr "Information des Ursprungsauszugs"
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
-msgstr "Auszugszeilengruppen"
+msgstr "Auszugspositionengruppen"
 
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
-msgstr "Zeilengruppen"
+msgstr "Positionengruppen"
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
@@ -545,6 +521,10 @@ msgstr "Buchungszeilen"
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr "Buchungssätze"
+
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -556,15 +536,15 @@ msgstr "Auszugsjournale"
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr "Auszugszeilen"
+msgstr "Auszugspositionen"
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr "Auszugszeilen"
+msgstr "Auszugspositionen"
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr ""
+msgstr "Ursprünge"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -572,7 +552,7 @@ msgstr "Auszug"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
@@ -593,9 +573,29 @@ msgctxt ""
 msgid "Validated"
 msgstr "Geprüft"
 
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
-msgstr "Auszugszeilengruppen"
+msgstr "Auszugspositionengruppen"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
@@ -607,7 +607,7 @@ msgstr "Auszüge"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
@@ -703,45 +703,59 @@ msgstr "Anzahl Zeilen"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Boolean"
-msgstr ""
+msgstr "Boolesch"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Char"
-msgstr ""
+msgstr "Zeichen"
 
-#, fuzzy
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Date"
 msgstr "Datum"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "DateTime"
-msgstr ""
+msgstr "Datum mit Zeit"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Float"
-msgstr ""
+msgstr "Fließkommazahl"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Integer"
-msgstr ""
+msgstr "Ganzzahl"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Numeric"
-msgstr ""
+msgstr "Numerisch"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Selection"
-msgstr ""
+msgstr "Auswahl"
 
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Betrag"
 
-#, fuzzy
 msgctxt "view:account.statement.origin:"
 msgid "Amount"
 msgstr "Betrag"
+
+msgctxt "view:account.statement:"
+msgid "Other Info"
+msgstr "Sonstiges"
+
+msgctxt "view:account.statement:"
+msgid "Statement Lines"
+msgstr "Auszugszeilen"
+
+msgctxt "wizard_button:account.statement.import,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.statement.import,start,import_:"
+msgid "Import"
+msgstr "Importieren"
 
 msgctxt "view:account.statement:"
 msgid "Cancel"
@@ -752,26 +766,9 @@ msgid "Draft"
 msgstr "Entwurf"
 
 msgctxt "view:account.statement:"
-msgid "Other Info"
-msgstr "Sonstiges"
-
-msgctxt "view:account.statement:"
 msgid "Post"
 msgstr "Festschreiben"
 
 msgctxt "view:account.statement:"
-msgid "Statement Lines"
-msgstr "Auszugszeilen"
-
-msgctxt "view:account.statement:"
 msgid "Validate"
 msgstr "Prüfen"
-
-#, fuzzy
-msgctxt "wizard_button:account.statement.import,start,end:"
-msgid "Cancel"
-msgstr "Annullieren"
-
-msgctxt "wizard_button:account.statement.import,start,import_:"
-msgid "Import"
-msgstr ""

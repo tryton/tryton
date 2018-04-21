@@ -7,12 +7,6 @@ msgid "Only one journal is allowed per bank account."
 msgstr "Seulement un journal est permis par compte bancaire."
 
 msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr ""
-"Le montant « %s » est plus grand que le montant restant à payer de la "
-"facture."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "Le montant doit être une valeur positive ou négative."
 
@@ -121,6 +115,10 @@ msgstr "Solde initial"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "État"
+
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "À réconcilier"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -527,6 +525,10 @@ msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr "Mouvements"
 
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Relevés"
@@ -562,17 +564,37 @@ msgstr "Tous"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
-msgstr "Posté"
+msgstr "Postés"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
-msgstr "Validé"
+msgstr "Validés"
+
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
@@ -723,28 +745,12 @@ msgid "Amount"
 msgstr "Montant"
 
 msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Autre information"
 
 msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Poster"
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Lignes de relevé"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Valider"
 
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
@@ -753,3 +759,19 @@ msgstr "Annuler"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr "Importer"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Poster"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Valider"

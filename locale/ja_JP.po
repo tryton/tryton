@@ -7,10 +7,6 @@ msgid "Only one journal is allowed per bank account."
 msgstr ""
 
 msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr ""
 
@@ -100,9 +96,10 @@ msgctxt "field:account.statement,origin_file_id:"
 msgid "Origin File ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Origins"
 
 msgctxt "field:account.statement,rec_name:"
 msgid "Record Name"
@@ -115,6 +112,11 @@ msgstr ""
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Reconcile"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -244,9 +246,10 @@ msgctxt "field:account.statement.line,number:"
 msgid "Number"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.statement.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Origins"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
@@ -526,6 +529,10 @@ msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr "Moves"
 
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
 msgstr "Statements"
@@ -544,7 +551,7 @@ msgstr "Statement Lines"
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr ""
+msgstr "Origins"
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
@@ -552,7 +559,7 @@ msgstr "Statement"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
@@ -573,6 +580,26 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validated"
 
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
 msgstr "Statement Line Groups"
@@ -587,7 +614,7 @@ msgstr "Statements"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr ""
+msgstr "Import Statement"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
@@ -609,9 +636,10 @@ msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.statement:"
 msgid "Canceled"
-msgstr ""
+msgstr "Cancel"
 
 msgctxt "report:account.statement:"
 msgid "Date"
@@ -651,9 +679,10 @@ msgctxt "report:account.statement:"
 msgid "Total"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Cancel"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
@@ -727,20 +756,7 @@ msgid "Amount"
 msgstr ""
 
 msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "Draft"
-
-msgctxt "view:account.statement:"
 msgid "Other Info"
-msgstr ""
-
-msgctxt "view:account.statement:"
-msgid "Post"
 msgstr ""
 
 #, fuzzy
@@ -749,14 +765,20 @@ msgid "Statement Lines"
 msgstr "Statement Lines"
 
 #, fuzzy
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Validated"
-
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancel"
 
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Draft"
+
+#, fuzzy
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Validated"

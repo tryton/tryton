@@ -7,10 +7,6 @@ msgid "Only one journal is allowed per bank account."
 msgstr "Apenas um diário é permitido por conta bancária."
 
 msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr "O montante \"%s\" é maior do que o montante a pagar da fatura."
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "O montante deve ser um valor positivo ou negativo."
 
@@ -117,6 +113,11 @@ msgstr "Saldo Inicial"
 msgctxt "field:account.statement,state:"
 msgid "State"
 msgstr "Estado"
+
+#, fuzzy
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
+msgstr "Reconcile"
 
 msgctxt "field:account.statement,total_amount:"
 msgid "Total Amount"
@@ -474,9 +475,10 @@ msgctxt "help:account.statement.origin.information,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr "Se a seleção de ser ordenada por nome"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr "Extrato"
+msgstr "Statement"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -506,96 +508,142 @@ msgctxt "model:account.statement.origin.information,name:"
 msgid "Statement Origin Information"
 msgstr "Informação da Origem do Extrato"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
-msgstr "Grupos de Linhas do Extrato"
+msgstr "Statement Line Groups"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
-msgstr "Grupos de Linha"
+msgstr "Line Groups"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr "Linhas de Lançamento"
+msgstr "Move Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
-msgstr "Lançamentos"
+msgstr "Moves"
 
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr "Reconcile Statements"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Todos os Extratos"
+msgstr "Statements"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Diários de Extrato"
+msgstr "Statement Journals"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr "Linhas de Extrato Bancário"
+msgstr "Statement Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr "Linhas de Extrato Bancário"
+msgstr "Statement Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
-msgstr "Origens"
+msgstr "Origins"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
-msgstr "Extrato"
+msgstr "Statement"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr "Importar Extrato"
+msgstr "Import Statement"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
-msgstr "Todos"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_draft"
 msgid "Draft"
-msgstr "Rascunho"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_posted"
 msgid "Posted"
-msgstr "Confirmado"
+msgstr "Posted"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_statement_form_domain_validated"
 msgid "Validated"
-msgstr "Validado"
+msgstr "Validated"
 
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr "Reconcile"
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr "Validate"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
-msgstr "Grupos de Linhas de Extrato"
+msgstr "Statement Line Groups"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Extratos"
+msgstr "Statements"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr "Extratos"
+msgstr "Statements"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr "Importar Extrato"
+msgstr "Import Statement"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Diários de Extrato"
+msgstr "Statement Journals"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Extratos"
+msgstr "Statements"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Extrato"
+msgstr "Statement"
 
 msgctxt "report:account.statement:"
 msgid "#"
@@ -718,28 +766,12 @@ msgid "Amount"
 msgstr "Quantidade"
 
 msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "Rascunho"
-
-msgctxt "view:account.statement:"
 msgid "Other Info"
 msgstr "Outras informações"
 
 msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Confirmar"
-
-msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Linhas do Extrato"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Validar"
 
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
@@ -748,3 +780,19 @@ msgstr "Cancelar"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr "Importar"
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:account.statement:"
+msgid "Draft"
+msgstr "Rascunho"
+
+msgctxt "view:account.statement:"
+msgid "Post"
+msgstr "Confirmar"
+
+msgctxt "view:account.statement:"
+msgid "Validate"
+msgstr "Validar"

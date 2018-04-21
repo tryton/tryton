@@ -7,10 +7,6 @@ msgid "Only one journal is allowed per bank account."
 msgstr ""
 
 msgctxt "error:account.statement.line:"
-msgid "Amount \"%s\" is greater than the amount to pay of invoice."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr ""
 
@@ -116,6 +112,10 @@ msgstr "Saldo Inicial"
 
 msgctxt "field:account.statement,state:"
 msgid "State"
+msgstr ""
+
+msgctxt "field:account.statement,to_reconcile:"
+msgid "To Reconcile"
 msgstr ""
 
 msgctxt "field:account.statement,total_amount:"
@@ -310,9 +310,10 @@ msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
 msgstr "Libro diario"
 
+#, fuzzy
 msgctxt "field:account.statement.line.group,move:"
 msgid "Move"
-msgstr ""
+msgstr "Moves"
 
 msgctxt "field:account.statement.line.group,number:"
 msgid "Number"
@@ -479,7 +480,7 @@ msgstr ""
 
 msgctxt "model:account.journal.type,name:journal_type_statement"
 msgid "Statement"
-msgstr "Estado de cuenta"
+msgstr ""
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -512,7 +513,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_line_group_form"
 msgid "Statement Line Groups"
-msgstr "Grupos de líneas de estado de cuenta"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_line_groups_form"
 msgid "Line Groups"
@@ -520,27 +521,31 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
-msgstr "Líneas de asiento"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_reconcile"
+msgid "Reconcile Statements"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
-msgstr "Estados de cuenta"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Libros diarios de estados de cuenta"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_line_move"
 msgid "Statement Lines"
-msgstr "Líneas de estado de cuenta"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_line_move_line"
 msgid "Statement Lines"
-msgstr "Líneas de estado de cuenta"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_statement_origin_form_statement"
 msgid "Origins"
@@ -548,7 +553,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
-msgstr "Estado de cuenta"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
@@ -573,17 +578,37 @@ msgctxt ""
 msgid "Validated"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:statement_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_post_button"
+msgid "Post"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_reconcile_button"
+msgid "Reconcile"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:statement_validate_button"
+msgid "Validate"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
-msgstr "Grupos de líneas de estado de cuenta"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_configuration"
 msgid "Statements"
-msgstr "Estados de cuenta"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_form"
 msgid "Statements"
-msgstr "Estados de cuenta"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
@@ -591,15 +616,15 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
-msgstr "Libros diarios de estados de cuenta"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_statements"
 msgid "Statements"
-msgstr "Estados de Cuenta"
+msgstr ""
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr "Estado de Cuenta"
+msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "#"
@@ -724,28 +749,12 @@ msgid "Amount"
 msgstr ""
 
 msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Anular"
-
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.statement:"
 msgid "Other Info"
-msgstr ""
-
-msgctxt "view:account.statement:"
-msgid "Post"
 msgstr ""
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Líneas de estado de cuenta"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:account.statement.import,start,end:"
@@ -755,3 +764,7 @@ msgstr "Anular"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr ""
+
+msgctxt "view:account.statement:"
+msgid "Cancel"
+msgstr "Anular"
