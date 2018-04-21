@@ -69,11 +69,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
-msgstr ""
+msgstr "Create Shipping"
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
 
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
-msgstr ""
+msgstr "Shipping"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid ""
@@ -81,8 +85,4 @@ msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"
-msgstr ""
-
-msgctxt "view:stock.shipment.out:"
-msgid "Create Shipping for Packages"
 msgstr ""

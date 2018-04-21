@@ -4,70 +4,69 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set"
-msgstr ""
+msgstr "هیچ حمل کننده ایی برای محموله : \"%s\" تنظیم نشده است"
 
 msgctxt "error:stock.shipment.out:"
 msgid ""
 "The shipment \"%(shipment)s\" must be packed before creating the shipping "
 "labels"
-msgstr ""
+msgstr "قبل از برچسب گذاری حمل ونقل محموله : \"%s\" باید بسته بندی شده باشد"
 
 msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
-msgstr ""
+msgstr "خدمات حمل ونقل"
 
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
-msgstr ""
+msgstr "برچسب حمل ونقل"
 
 msgctxt "field:stock.package,shipping_reference:"
 msgid "Shipping Reference"
-msgstr ""
+msgstr "مرجع حمل ونقل"
 
 msgctxt "field:stock.package.type,height:"
 msgid "Height"
-msgstr ""
+msgstr "ارتفاع"
 
 msgctxt "field:stock.package.type,height_digits:"
 msgid "Height Digits"
-msgstr ""
+msgstr "ارقام ارتفاع"
 
 msgctxt "field:stock.package.type,height_uom:"
 msgid "Height Unit"
-msgstr ""
+msgstr "واحد ارتفاع"
 
 msgctxt "field:stock.package.type,length:"
 msgid "Length"
-msgstr ""
+msgstr "طول"
 
 msgctxt "field:stock.package.type,length_digits:"
 msgid "Length Digits"
-msgstr ""
+msgstr "ارقام طول"
 
 msgctxt "field:stock.package.type,length_uom:"
 msgid "Length Unit"
-msgstr ""
+msgstr "واحد طول"
 
-#, fuzzy
 msgctxt "field:stock.package.type,width:"
 msgid "Width"
-msgstr "Larghezza"
+msgstr "عرض"
 
 msgctxt "field:stock.package.type,width_digits:"
 msgid "Width Digits"
-msgstr ""
+msgstr "ارقام عرض"
 
 msgctxt "field:stock.package.type,width_uom:"
 msgid "Width Unit"
-msgstr ""
+msgstr "واحد عرض"
 
 msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
-msgstr ""
+msgstr "شرح حمل ونقل"
 
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
-msgstr "Create Shipping"
+msgstr "ایجاد حمل ونقل"
 
 msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
 msgid "Create Shipping for Packages"
@@ -75,7 +74,7 @@ msgstr "Create Shipping for Packages"
 
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
-msgstr "Shipping"
+msgstr "حمل و نقل"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid ""
@@ -83,4 +82,4 @@ msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"
-msgstr ""
+msgstr "ابعاد"

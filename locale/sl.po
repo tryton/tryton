@@ -64,13 +64,19 @@ msgctxt "field:stock.shipment.out,shipping_description:"
 msgid "Shipping Description"
 msgstr "Opis pošiljke"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
-msgstr "Izdelava dostave"
+msgstr "Create Shipping"
 
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
-msgstr "Dostava"
+msgstr "Shipping"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid ""

@@ -70,6 +70,10 @@ msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Crear envío"
 
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
+
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
 msgstr "Envío"

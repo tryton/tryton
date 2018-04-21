@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set"
-msgstr "L'expédition « %(shipment)s » n'a pas de transporteur définit"
+msgstr "L'expédition « %(shipment)s » n'a pas de transporteur défini"
 
 msgctxt "error:stock.shipment.out:"
 msgid ""
@@ -69,6 +69,10 @@ msgstr "Description de la livraison"
 msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Créer la livraison"
+
+msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
+msgid "Create Shipping for Packages"
+msgstr "Create Shipping for Packages"
 
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
