@@ -28,7 +28,7 @@ msgstr "Partner"
 
 msgctxt "field:party.party.sale_invoice_grouping_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt ""
 "field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
