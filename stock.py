@@ -186,7 +186,9 @@ class Move:
             name=name)
         # Enforce the same unit category as they are used to compute the
         # remaining quantity to ship and the quantity to invoice.
-        if isinstance(self.origin, SaleLine) and self.origin.unit:
+        # Use getattr as reference field can have negative id
+        if (isinstance(self.origin, SaleLine)
+                and getattr(self.origin, 'unit', None)):
             category = self.origin.unit.category.id
         return category
 
