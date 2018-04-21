@@ -7,10 +7,9 @@ msgid ""
 "The forcast quantity %(forecast_quantity)s%(default_uom)s of \"%(line)s\" is"
 " lower than %(quantity)s%(unit)s."
 msgstr ""
-"Predvidena količina %(forecast_quantity)s%(default_uom)s postavke "
-"\"%(line)s\" je manjša kot %(quantity)s%(unit)s."
+"مقدار پیش بینی: \"%s\" با واحداندازه گیری پیش فرض: \"%s\" از سطر: \"%s\" ، "
+"کمتر از مقدار : \"%s\" با واحد : \"%s\" میباشد."
 
-#, fuzzy
 msgctxt "model:res.group,name:group_sale_stock_quantity"
 msgid "Sale Stock Quantity"
-msgstr "Sale Stock Quantity"
+msgstr "مقدار فروش موجودی"

@@ -10,6 +10,7 @@ msgstr ""
 "A quantidade prevista %(forecast_quantity)s%(default_uom)s da \"%(line)s\" é"
 " menor do que %(quantity)s%(unit)s."
 
+#, fuzzy
 msgctxt "model:res.group,name:group_sale_stock_quantity"
 msgid "Sale Stock Quantity"
-msgstr "Quantidade de estoque de venda"
+msgstr "Sale Stock Quantity"

@@ -12,4 +12,4 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_sale_stock_quantity"
 msgid "Sale Stock Quantity"
-msgstr "Cantidad existencias en venta"
+msgstr "Forzar cantidad de existencias en venta"
