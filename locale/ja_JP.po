@@ -165,6 +165,18 @@ msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:product.cultivar,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.cultivar.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.taxon,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
 msgstr "Cultivars"

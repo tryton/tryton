@@ -162,37 +162,57 @@ msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
+msgctxt "help:product.cultivar,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.cultivar.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.taxon,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Kultywary"
+msgstr "Cultivars"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr "Grupy kultywarów"
+msgstr "Cultivar Groups"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taksony"
+msgstr "Taxons"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taksony"
+msgstr "Taxons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Kultywary"
+msgstr "Cultivars"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr "Grupy kultywarów"
+msgstr "Cultivar Groups"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taksony"
+msgstr "Taxons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taksony"
+msgstr "Taxons"
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"

@@ -28,7 +28,7 @@ msgstr "Naziv"
 
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -68,7 +68,7 @@ msgstr "ID"
 
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -104,7 +104,7 @@ msgstr "Naziv"
 
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -148,7 +148,7 @@ msgstr "Tip"
 
 msgctxt "field:product.taxon,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
@@ -162,37 +162,57 @@ msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "help:product.cultivar,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.cultivar.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.taxon,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Kultivarji"
+msgstr "Cultivars"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr "Kultivarske skupine"
+msgstr "Cultivar Groups"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taksoni"
+msgstr "Taxons"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taksoni"
+msgstr "Taxons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Kultivarji"
+msgstr "Cultivars"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr "Kultivarske skupine"
+msgstr "Cultivar Groups"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taksoni"
+msgstr "Taxons"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taksoni"
+msgstr "Taxons"
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"

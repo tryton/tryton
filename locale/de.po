@@ -28,7 +28,7 @@ msgstr "Name"
 
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -68,7 +68,7 @@ msgstr "ID"
 
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -104,7 +104,7 @@ msgstr "Name"
 
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
@@ -148,7 +148,7 @@ msgstr "Typ"
 
 msgctxt "field:product.taxon,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
@@ -161,6 +161,18 @@ msgstr "Zuletzt geändert"
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
+
+msgctxt "help:product.cultivar,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
+msgctxt "help:product.cultivar.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
+msgctxt "help:product.taxon,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
