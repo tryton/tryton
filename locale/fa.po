@@ -4,116 +4,116 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.email.log,create_date:"
 msgid "Create Date"
-msgstr "Date de création"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:account.dunning.email.log,create_uid:"
 msgid "Create User"
-msgstr "Créé par"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.dunning.email.log,date:"
 msgid "Date"
-msgstr "Date"
+msgstr "تاریخ"
 
 msgctxt "field:account.dunning.email.log,dunning:"
 msgid "Dunning"
-msgstr "Relance"
+msgstr "دانینگ"
 
 msgctxt "field:account.dunning.email.log,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:account.dunning.email.log,level:"
 msgid "Level"
-msgstr "Niveau"
+msgstr "سطح"
 
 msgctxt "field:account.dunning.email.log,rec_name:"
 msgid "Record Name"
-msgstr "Nom de l'enregistrement"
+msgstr "نام پرونده"
 
 msgctxt "field:account.dunning.email.log,recipients:"
 msgid "Recipients"
-msgstr "Destinataires"
+msgstr "گیرندگان"
 
 msgctxt "field:account.dunning.email.log,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr "Destinataires cachés"
+msgstr "گیرنده گان پنهان"
 
 msgctxt "field:account.dunning.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr "Destinataires secondaire"
+msgstr "گیرندگان ثانویه"
 
 msgctxt "field:account.dunning.email.log,write_date:"
 msgid "Write Date"
-msgstr "Date de mise à jour"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:account.dunning.email.log,write_uid:"
 msgid "Write User"
-msgstr "Mis à jour par"
+msgstr "نوشته کاربر"
 
 msgctxt "field:account.dunning.level,email_from:"
 msgid "From"
-msgstr "De"
+msgstr "از"
 
 msgctxt "field:account.dunning.level,email_template:"
 msgid "Email Template"
-msgstr "Modèle d'e-mail"
+msgstr "ایمیل الگو"
 
 msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
-msgstr "Envoyer l'e-mail"
+msgstr "ارسال ایمیل"
 
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
-msgstr "Laisser vide pour la valeur définie dans le fichier de configuration."
+msgstr "برای مقدار تعریف شده در فایل پیکربندی خالی بگذارید."
 
 msgctxt "model:account.dunning.email.log,name:"
 msgid "Dunning Email Log"
-msgstr "Journal de relance d'e-mail"
+msgstr "گزارش ایمیل دانینگ"
 
 msgctxt "model:ir.action,name:act_log"
 msgid "Email Logs"
-msgstr "Logs e-mail"
+msgstr "گزارشات ایمیل"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
-msgstr "E-mail de relance"
+msgstr "ایمیل دانینگ"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr "Montant"
+msgstr "مقدار"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr "Date"
+msgstr "تاریخ"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Date :"
+msgstr "تاریخ :"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr "Description"
+msgstr "شرح"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Date d’échéance"
+msgstr "تاریخ تحویل"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr "Frais :"
+msgstr "هزینه ها:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr "Paiements en attentes reçus"
+msgstr "پرداخت های دریافت شده در انتظار"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Référence"
+msgstr "مرجع"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr "Avis de rappel"
+msgstr "متن یادآوری"
 
 msgctxt "view:account.dunning.email.log:"
 msgid "Time"
-msgstr "Heure"
+msgstr "زمان"

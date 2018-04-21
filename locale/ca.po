@@ -72,7 +72,7 @@ msgstr "Registres de correus electrònics de reclamació"
 
 msgctxt "model:ir.action,name:act_log"
 msgid "Email Logs"
-msgstr "Registre de correu electrònic"
+msgstr "Registre de correus electrònics"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"

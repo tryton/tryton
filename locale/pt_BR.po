@@ -70,13 +70,15 @@ msgctxt "model:account.dunning.email.log,name:"
 msgid "Dunning Email Log"
 msgstr "Log de Emails de Cobrança"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_log"
 msgid "Email Logs"
-msgstr "Logs de Emails"
+msgstr "Email Logs"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
-msgstr "Emails de Cobrança"
+msgstr "Dunning Email"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"

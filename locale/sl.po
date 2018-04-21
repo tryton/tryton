@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.email.log,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.dunning.email.log,recipients:"
 msgid "Recipients"
@@ -66,17 +66,18 @@ msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.dunning.email.log,name:"
 msgid "Dunning Email Log"
-msgstr ""
+msgstr "Dunning Email"
 
 msgctxt "model:ir.action,name:act_log"
 msgid "Email Logs"
-msgstr ""
+msgstr "Email Logs"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
-msgstr ""
+msgstr "Dunning Email"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"

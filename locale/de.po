@@ -4,116 +4,116 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.email.log,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 msgctxt "field:account.dunning.email.log,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Erstellt durch"
 
 msgctxt "field:account.dunning.email.log,date:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.dunning.email.log,dunning:"
 msgid "Dunning"
-msgstr ""
+msgstr "Mahnung"
 
 msgctxt "field:account.dunning.email.log,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.dunning.email.log,level:"
 msgid "Level"
-msgstr ""
+msgstr "Stufe"
 
 msgctxt "field:account.dunning.email.log,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.dunning.email.log,recipients:"
 msgid "Recipients"
-msgstr ""
+msgstr "Empfänger"
 
 msgctxt "field:account.dunning.email.log,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr ""
+msgstr "Versteckte Empfänger"
 
 msgctxt "field:account.dunning.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr ""
+msgstr "Sekundäre Empfänger"
 
 msgctxt "field:account.dunning.email.log,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Zuletzt geändert"
 
 msgctxt "field:account.dunning.email.log,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.dunning.level,email_from:"
 msgid "From"
-msgstr ""
+msgstr "Von"
 
 msgctxt "field:account.dunning.level,email_template:"
 msgid "Email Template"
-msgstr ""
+msgstr "E-Mail Vorlage"
 
 msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
-msgstr ""
+msgstr "E-Mail senden"
 
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
-msgstr ""
+msgstr "Leer lassen um den Wert aus der Konfiguration zu verwenden."
 
 msgctxt "model:account.dunning.email.log,name:"
 msgid "Dunning Email Log"
-msgstr ""
+msgstr "Mahnungs-Mail Log"
 
 msgctxt "model:ir.action,name:act_log"
 msgid "Email Logs"
-msgstr ""
+msgstr "E-Mail Logs"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
-msgstr ""
+msgstr "Mahnung E-Mail"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr ""
+msgstr "Betrag"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr ""
+msgstr "Datum:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr ""
+msgstr "Fälligkeitsdatum"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr ""
+msgstr "Gebühren:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr ""
+msgstr "Erhaltene Zahlungen"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr ""
+msgstr "Referenz"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr ""
+msgstr "Erinnerung"
 
 msgctxt "view:account.dunning.email.log:"
 msgid "Time"
-msgstr ""
+msgstr "Zeit"
