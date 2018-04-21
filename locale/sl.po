@@ -29,7 +29,7 @@ msgstr "Štetje raztovora"
 
 msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
 msgid "Write Date"
@@ -77,7 +77,7 @@ msgstr "Datum knjiženja"
 
 msgctxt "field:account.landed_cost,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
@@ -113,7 +113,7 @@ msgstr "Raztovor"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
@@ -151,36 +151,55 @@ msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
 msgstr "Raztovor - Pošiljka"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr "Raztovor"
+msgstr "Landed Costs"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Priprava"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Knjiženo"
+msgstr "Posted"
 
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Post"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Landed Cost"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr "Raztovor"
+msgstr "Landed Cost"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Raztovor"
+msgstr "Landed Costs"
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"

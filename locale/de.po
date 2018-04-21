@@ -29,7 +29,7 @@ msgstr "Nummernkreis Einstandskosten"
 
 msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
 msgid "Write Date"
@@ -77,7 +77,7 @@ msgstr "Festschreibungsdatum"
 
 msgctxt "field:account.landed_cost,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
@@ -113,7 +113,7 @@ msgstr "Einstandskosten"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
@@ -169,6 +169,18 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
 msgstr "Festgeschrieben"
+
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Post"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"

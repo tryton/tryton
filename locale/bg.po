@@ -45,9 +45,10 @@ msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
 msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
@@ -126,9 +127,10 @@ msgctxt "field:account.landed_cost-stock.shipment.in,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
 msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
 msgid "Record Name"
@@ -149,13 +151,15 @@ msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+#, fuzzy
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
+#, fuzzy
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
@@ -165,9 +169,10 @@ msgctxt "model:account.configuration.landed_cost_sequence,name:"
 msgid "Account Configuration Landed Cost Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
@@ -175,12 +180,12 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr ""
+msgstr "Landed Costs"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -194,17 +199,29 @@ msgctxt ""
 msgid "Posted"
 msgstr "Публикуван"
 
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Post"
+
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr ""
+msgstr "Landed Costs"
 
 #, fuzzy
 msgctxt "selection:account.landed_cost,allocation_method:"
@@ -226,9 +243,10 @@ msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
 msgstr "Публикуван"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
-msgstr ""
+msgstr "Landed Cost"
 
 #, fuzzy
 msgctxt "view:account.configuration:"

@@ -175,6 +175,18 @@ msgctxt ""
 msgid "Posted"
 msgstr "Posted"
 
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Post"
+
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
 msgstr "Landed Cost"
@@ -191,9 +203,10 @@ msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Cancel"
 
 #, fuzzy
 msgctxt "selection:account.landed_cost,state:"
@@ -214,15 +227,7 @@ msgctxt "view:account.configuration:"
 msgid "Sequence"
 msgstr ""
 
-msgctxt "view:account.landed_cost:"
-msgid "Cancel"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.landed_cost:"
 msgid "Draft"
 msgstr "Draft"
-
-msgctxt "view:account.landed_cost:"
-msgid "Post"
-msgstr ""

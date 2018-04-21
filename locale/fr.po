@@ -168,7 +168,19 @@ msgstr "Brouillon"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Postés"
+msgstr "Posté"
+
+msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:landed_cost_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:landed_cost_post_button"
+msgid "Post"
+msgstr "Post"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
@@ -180,7 +192,7 @@ msgstr "Coût de débarquement"
 
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Coûts de débarquement"
+msgstr "Coût de débarquement"
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
