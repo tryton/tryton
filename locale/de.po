@@ -33,6 +33,11 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Änderung der Partei von Kontakt \"%s\" nicht möglich."
 
+msgctxt "error:party.erase:"
+msgid "The party \"%(party)s\" can not be erased because he is still active."
+msgstr ""
+"Die Partei \"%(party)s\" kann nicht gelöscht werden weil sie noch aktiv ist."
+
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
 msgstr "Ungültige USt-ID-Nummer \"%(code)s\" für Partei \"%(party)s\"."
@@ -93,7 +98,7 @@ msgstr "Partei"
 
 msgctxt "field:party.address,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
@@ -149,7 +154,7 @@ msgstr "Sprache"
 
 msgctxt "field:party.address.format,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
@@ -189,7 +194,7 @@ msgstr "Übergeordnet (Kategorie)"
 
 msgctxt "field:party.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
@@ -233,7 +238,7 @@ msgstr "Nummernkreis Partei"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
@@ -261,7 +266,7 @@ msgstr "Sprache Partei"
 
 msgctxt "field:party.configuration.party_lang,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.configuration.party_lang,write_date:"
 msgid "Write Date"
@@ -289,7 +294,7 @@ msgstr "Nummernkreis Partei"
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.configuration.party_sequence,write_date:"
 msgid "Write Date"
@@ -323,6 +328,10 @@ msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Name"
+
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
 msgstr "Wert"
@@ -333,7 +342,7 @@ msgstr "Partei"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
@@ -375,6 +384,14 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:party.erase.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Partei"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Code"
@@ -397,7 +414,7 @@ msgstr "Partei"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.identifier,sequence:"
 msgid "Sequence"
@@ -489,7 +506,7 @@ msgstr "Telefon"
 
 msgctxt "field:party.party,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
@@ -533,7 +550,7 @@ msgstr "Partei"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
@@ -565,7 +582,7 @@ msgstr "Partei"
 
 msgctxt "field:party.party.lang,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:party.party.lang,write_date:"
 msgid "Write Date"
@@ -588,12 +605,12 @@ msgid "Source"
 msgstr "Quelle"
 
 msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude the address from future use."
-msgstr "Deaktivieren um die Adresse für zukünftige Nutzung zu sperren."
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude the format from future use."
-msgstr "Deaktivieren um das Format für zukünftige Nutzung zu sperren."
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -620,8 +637,8 @@ msgstr ""
 "- ${country_code}"
 
 msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude the category from future use."
-msgstr "Deaktivieren um die Kategorie für zukünftige Nutzung zu sperren."
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -652,17 +669,20 @@ msgid "Used to generate the party code."
 msgstr "Wird zum generieren des Partei-Codes verwendet."
 
 msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude the contact mechanism from future use."
-msgstr ""
-"Deaktivieren um die Kontaktmöglichkeit für zukünftige Nutzung zu sperren."
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "Die zu löschende Partei."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
 msgstr "Die Partei die durch diesen Datensatz identifiziert wird."
 
 msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude the party from future use."
-msgstr "Deaktivieren um die Partei für zukünftige Nutzung zu sperren."
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:party.party,categories:"
 msgid "The categories the party belongs to."
@@ -710,15 +730,15 @@ msgstr "Adressformate"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Parteikategorien"
+msgstr "Kategorien"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Parteikategorien"
+msgstr "Kategorien"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kontaktdaten"
+msgstr "Kontaktmöglichkeiten"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
@@ -726,7 +746,7 @@ msgstr "Parteien nach Kategorien"
 
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Partei"
+msgstr "Einstellungen Partei"
 
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
@@ -738,7 +758,11 @@ msgstr "Etiketten"
 
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
-msgstr "USt-ID-Nr. per VIES überprüfen"
+msgstr "Mit VIES überprüfen"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Erase"
 
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
@@ -766,7 +790,7 @@ msgstr "Kategorien"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Parteikategorien"
+msgstr "Kategorien"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -774,15 +798,15 @@ msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kontaktdaten"
+msgstr "Kontaktmöglichkeiten"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Parteien"
+msgstr "Partei"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Partei"
+msgstr "Einstellungen Partei"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -819,6 +843,10 @@ msgstr "Einstellungen Partei Nummernkreis"
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Kontaktmöglichkeit"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "Partei löschen"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
@@ -908,6 +936,14 @@ msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
 msgstr "OK"
 
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Löschen"
+
 msgctxt "wizard_button:party.replace,ask,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -915,6 +951,27 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:party.replace,ask,replace:"
 msgid "Replace"
 msgstr "Ersetzen"
+
+msgctxt "help:party.address,active:"
+msgid "Uncheck to exclude the address from future use."
+msgstr "Deaktivieren um die Adresse für zukünftige Nutzung zu sperren."
+
+msgctxt "help:party.address.format,active:"
+msgid "Uncheck to exclude the format from future use."
+msgstr "Deaktivieren um das Format für zukünftige Nutzung zu sperren."
+
+msgctxt "help:party.category,active:"
+msgid "Uncheck to exclude the category from future use."
+msgstr "Deaktivieren um die Kategorie für zukünftige Nutzung zu sperren."
+
+msgctxt "help:party.contact_mechanism,active:"
+msgid "Uncheck to exclude the contact mechanism from future use."
+msgstr ""
+"Deaktivieren um die Kontaktmöglichkeit für zukünftige Nutzung zu sperren."
+
+msgctxt "help:party.party,active:"
+msgid "Uncheck to exclude the party from future use."
+msgstr "Deaktivieren um die Partei für zukünftige Nutzung zu sperren."
 
 msgctxt "view:party.address:"
 msgid "Addresses"

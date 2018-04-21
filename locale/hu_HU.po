@@ -31,6 +31,10 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "A partner kapcsolati mechanizmus \"%s\" módosítása nem lehetséges"
 
+msgctxt "error:party.erase:"
+msgid "The party \"%(party)s\" can not be erased because he is still active."
+msgstr ""
+
 #, fuzzy
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
@@ -338,6 +342,11 @@ msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
 msgstr "Azonosító"
 
+#, fuzzy
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Név"
+
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
 msgstr "Érték"
@@ -389,6 +398,16 @@ msgstr "Utolsó módosítás dátuma"
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Utolsó módosítás a következő felhasználó által"
+
+#, fuzzy
+msgctxt "field:party.erase.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Partner"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
@@ -613,11 +632,11 @@ msgid "Source"
 msgstr ""
 
 msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude the address from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude the format from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:party.address.format,format_:"
@@ -635,7 +654,7 @@ msgid ""
 msgstr ""
 
 msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude the category from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:party.category,childs:"
@@ -667,7 +686,11 @@ msgid "Used to generate the party code."
 msgstr ""
 
 msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude the contact mechanism from future use."
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
 msgstr ""
 
 msgctxt "help:party.identifier,party:"
@@ -675,7 +698,7 @@ msgid "The party identified by this record."
 msgstr ""
 
 msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude the party from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:party.party,categories:"
@@ -714,101 +737,125 @@ msgctxt "help:party.replace.ask,source:"
 msgid "The party to be replaced."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
-msgstr "Címek"
+msgstr "Addresses"
 
 msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
-msgstr ""
+msgstr "Address Formats"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Partner kategóriák"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Partner kategóriák"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kapcsolat lehetőségek"
+msgstr "Contact Mechanisms"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Partnerek kategória szerint"
+msgstr "Parties by Category"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Partner"
+msgstr "Party Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr "Partnerek"
+msgstr "Parties"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
-msgstr "Címkék"
+msgstr "Labels"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
-msgstr "Adóazonosító szám vizsgálása VIES által"
+msgstr "Check VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Erase"
 
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
-msgstr ""
+msgstr "Replace"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
-msgstr "Címek"
+msgstr "Addresses"
 
 msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
-msgstr ""
+msgstr "Address Formats"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Kategóriák"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Partner kategóriák"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Beállítások"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kapcsolat lehetőségek"
+msgstr "Contact Mechanisms"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Partner beállítások"
+msgstr "Party Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr "Partnerek"
+msgstr "Parties"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
 msgstr "Cím"
 
+#, fuzzy
 msgctxt "model:party.address.format,name:"
 msgid "Address Format"
-msgstr ""
+msgstr "Address Formats"
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -836,6 +883,10 @@ msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Kapcsolat lehetőségek"
 
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr ""
+
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
 msgstr ""
@@ -856,9 +907,10 @@ msgctxt "model:party.replace.ask,name:"
 msgid "Replace Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
-msgstr "Partner adminisztráció"
+msgstr "Party Administration"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
@@ -925,13 +977,23 @@ msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
 msgstr "OK"
 
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Erase"
+
 msgctxt "wizard_button:party.replace,ask,end:"
 msgid "Cancel"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:party.replace,ask,replace:"
 msgid "Replace"
-msgstr ""
+msgstr "Replace"
 
 msgctxt "view:party.address:"
 msgid "Addresses"

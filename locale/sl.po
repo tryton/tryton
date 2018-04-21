@@ -30,6 +30,10 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "Partnerjevega kontakta \"%s\" ni možno popravljati."
 
+msgctxt "error:party.erase:"
+msgid "The party \"%(party)s\" can not be erased because he is still active."
+msgstr ""
+
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
 msgstr "Neveljavna DDV številka \"%(code)s\" pri partnerju \"%(party)s\"."
@@ -88,7 +92,7 @@ msgstr "Partner"
 
 msgctxt "field:party.address,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
@@ -144,7 +148,7 @@ msgstr "Jezik"
 
 msgctxt "field:party.address.format,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
@@ -184,7 +188,7 @@ msgstr "Matična kategorija"
 
 msgctxt "field:party.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
@@ -228,7 +232,7 @@ msgstr "Štetje partnerjev"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
@@ -256,7 +260,7 @@ msgstr "Jezik partnerja"
 
 msgctxt "field:party.configuration.party_lang,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.configuration.party_lang,write_date:"
 msgid "Write Date"
@@ -284,7 +288,7 @@ msgstr "Štetje partnerjev"
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.configuration.party_sequence,write_date:"
 msgid "Write Date"
@@ -318,6 +322,11 @@ msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Naziv"
+
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
 msgstr "Drugo"
@@ -328,7 +337,7 @@ msgstr "Partner"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
@@ -370,6 +379,16 @@ msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+#, fuzzy
+msgctxt "field:party.erase.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Partner"
+
 msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Šifra"
@@ -392,7 +411,7 @@ msgstr "Partner"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.identifier,sequence:"
 msgid "Sequence"
@@ -484,7 +503,7 @@ msgstr "Telefon"
 
 msgctxt "field:party.party,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
@@ -528,7 +547,7 @@ msgstr "Partner"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
@@ -560,7 +579,7 @@ msgstr "Partner"
 
 msgctxt "field:party.party.lang,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.party.lang,write_date:"
 msgid "Write Date"
@@ -582,13 +601,15 @@ msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Original"
 
+#, fuzzy
 msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude the address from future use."
-msgstr "Odznačite za Izklop nadaljne uporabe naslova."
+msgid "Uncheck to exclude from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
 
+#, fuzzy
 msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude the format from future use."
-msgstr "Odznačite za Izklop nadaljne uporabe formata."
+msgid "Uncheck to exclude from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -614,9 +635,10 @@ msgstr ""
 "- ${country}\n"
 "- ${country_code}"
 
+#, fuzzy
 msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude the category from future use."
-msgstr "Odznačite za Izklop nadaljne uporabe kategorije."
+msgid "Uncheck to exclude from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -646,16 +668,23 @@ msgctxt "help:party.configuration.party_sequence,party_sequence:"
 msgid "Used to generate the party code."
 msgstr "Upošteva se pri izdelavi šifre partnerja."
 
+#, fuzzy
 msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude the contact mechanism from future use."
-msgstr "Odznačite za Izklop nadaljne uporabe kontatka."
+msgid "Uncheck to exclude from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
+
+#, fuzzy
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "Prejšnji partner, ki bo zamenjan z novim."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
 msgstr "Partner, identificiran v tem zapisu."
 
+#, fuzzy
 msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude the party from future use."
+msgid "Uncheck to exclude from future use."
 msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
 
 msgctxt "help:party.party,categories:"
@@ -694,93 +723,119 @@ msgctxt "help:party.replace.ask,source:"
 msgid "The party to be replaced."
 msgstr "Prejšnji partner, ki bo zamenjan z novim."
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
-msgstr "Naslovi"
+msgstr "Addresses"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
-msgstr "Oblike naslovov"
+msgstr "Address Formats"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kontakti"
+msgstr "Contact Mechanisms"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
-msgstr "Partnerji po kategorijah"
+msgstr "Parties by Category"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
-msgstr "Konfiguracija partnerjev"
+msgstr "Party Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
-msgstr "Partnerji"
+msgstr "Parties"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
-msgstr "Nalepke"
+msgstr "Labels"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
-msgstr "Preveri z VIES sistemom"
+msgstr "Check VIES"
 
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Erase"
+
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
-msgstr "Zamenjava"
+msgstr "Replace"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
-msgstr "Naslovi"
+msgstr "Addresses"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
-msgstr "Oblike naslovov"
+msgstr "Address Formats"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Nastavitve"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Kontakti"
+msgstr "Contact Mechanisms"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Konfiguracija"
+msgstr "Party Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
-msgstr "Partnerji"
+msgstr "Parties"
 
 msgctxt "model:party.address,name:"
 msgid "Address"
@@ -814,6 +869,10 @@ msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
 msgstr "Kontakt"
 
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr ""
+
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
 msgstr "Identifikator partnerja"
@@ -834,9 +893,10 @@ msgctxt "model:party.replace.ask,name:"
 msgid "Replace Party"
 msgstr "Zamenjava partnerja"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
-msgstr "Partner - vodenje"
+msgstr "Party Administration"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
@@ -902,6 +962,16 @@ msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
 msgstr "V redu"
 
+#, fuzzy
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#, fuzzy
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Erase"
+
 msgctxt "wizard_button:party.replace,ask,end:"
 msgid "Cancel"
 msgstr "Prekliči"
@@ -909,6 +979,26 @@ msgstr "Prekliči"
 msgctxt "wizard_button:party.replace,ask,replace:"
 msgid "Replace"
 msgstr "Zamenjaj"
+
+msgctxt "help:party.address,active:"
+msgid "Uncheck to exclude the address from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe naslova."
+
+msgctxt "help:party.address.format,active:"
+msgid "Uncheck to exclude the format from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe formata."
+
+msgctxt "help:party.category,active:"
+msgid "Uncheck to exclude the category from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe kategorije."
+
+msgctxt "help:party.contact_mechanism,active:"
+msgid "Uncheck to exclude the contact mechanism from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe kontatka."
+
+msgctxt "help:party.party,active:"
+msgid "Uncheck to exclude the party from future use."
+msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
 
 msgctxt "view:party.address:"
 msgid "Addresses"

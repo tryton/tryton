@@ -32,6 +32,10 @@ msgctxt "error:party.contact_mechanism:"
 msgid "You can not modify the party of contact mechanism \"%s\"."
 msgstr "No puede modificar el tercero del contacto \"%s\"."
 
+msgctxt "error:party.erase:"
+msgid "The party \"%(party)s\" can not be erased because he is still active."
+msgstr "No se puede eliminar el tercero \"%(party)s\" porqué aún esta activo."
+
 msgctxt "error:party.identifier:"
 msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
 msgstr "El CIF/NIF \"%(code)s\" del tercero \"%(party)s\" no es correcto."
@@ -322,6 +326,10 @@ msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:party.contact_mechanism,name:"
+msgid "Name"
+msgstr "Nombre"
+
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
 msgstr "Valor"
@@ -373,6 +381,14 @@ msgstr "Fecha de modificación"
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
+
+msgctxt "field:party.erase.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party.erase.ask,party:"
+msgid "Party"
+msgstr "Tercero"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
@@ -436,7 +452,7 @@ msgstr "Código sólo lectura"
 
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Medios de contacto"
+msgstr "Métodos de contacto"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
@@ -587,12 +603,12 @@ msgid "Source"
 msgstr "Origen"
 
 msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude the address from future use."
-msgstr "Desmarcar para excluir la dirección de uso en el futuro."
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude the format from future use."
-msgstr "Desmarcar para excluir el formato de uso en el futuro."
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -619,8 +635,8 @@ msgstr ""
 "- ${country_code}"
 
 msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude the category from future use."
-msgstr "Desmarcar para excluir la categoría de uso en el futuro."
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -651,16 +667,20 @@ msgid "Used to generate the party code."
 msgstr "Utilizada para generar el código del tercero."
 
 msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude the contact mechanism from future use."
-msgstr "Desmarcar para excluir el método de contacto de uso en el futuro."
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:party.erase.ask,party:"
+msgid "The party to be erased."
+msgstr "El tercero que será eliminado."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
 msgstr "El tercero identificado por este registro."
 
 msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude the party from future use."
-msgstr "Desmarcar para excluir el tercero de uso en el futuro."
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "help:party.party,categories:"
 msgid "The categories the party belongs to."
@@ -708,15 +728,15 @@ msgstr "Formatos de las direcciones"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categorías de tercero"
+msgstr "Categorías"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categorías de tercero"
+msgstr "Árbol de categorías"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Medios de contacto"
+msgstr "Métodos de contacto"
 
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
@@ -732,11 +752,15 @@ msgstr "Terceros"
 
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
-msgstr "Etiquetas"
+msgstr "Etiqueta"
 
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
 msgstr "Comprobar VIES"
+
+msgctxt "model:ir.action,name:wizard_erase"
+msgid "Erase"
+msgstr "Erase"
 
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
@@ -772,7 +796,7 @@ msgstr "Configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
-msgstr "Medios de contacto"
+msgstr "Métodos de contacto"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
@@ -780,7 +804,7 @@ msgstr "Terceros"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Terceros"
+msgstr "Configuración de terceros"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -816,7 +840,11 @@ msgstr "Configuración de las secuencias de terceros"
 
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr "Medio de contacto"
+msgstr "Método de contacto"
+
+msgctxt "model:party.erase.ask,name:"
+msgid "Erase Party"
+msgstr "Eliminar tercero"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
@@ -906,6 +934,14 @@ msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
 msgstr "Aceptar"
 
+msgctxt "wizard_button:party.erase,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:party.erase,ask,erase:"
+msgid "Erase"
+msgstr "Eliminar"
+
 msgctxt "wizard_button:party.replace,ask,end:"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -913,6 +949,26 @@ msgstr "Cancelar"
 msgctxt "wizard_button:party.replace,ask,replace:"
 msgid "Replace"
 msgstr "Reemplazar"
+
+msgctxt "help:party.address,active:"
+msgid "Uncheck to exclude the address from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:party.address.format,active:"
+msgid "Uncheck to exclude the format from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:party.category,active:"
+msgid "Uncheck to exclude the category from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:party.contact_mechanism,active:"
+msgid "Uncheck to exclude the contact mechanism from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:party.party,active:"
+msgid "Uncheck to exclude the party from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "view:party.address:"
 msgid "Addresses"
@@ -936,11 +992,11 @@ msgstr "Configuración de terceros"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "Medio de contacto"
+msgstr "Método de contacto"
 
 msgctxt "view:party.contact_mechanism:"
 msgid "Contact Mechanisms"
-msgstr "Medios de contacto"
+msgstr "Método de contacto"
 
 msgctxt "view:party.identifier:"
 msgid "Party Identifier"
