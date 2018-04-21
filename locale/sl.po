@@ -32,7 +32,7 @@ msgstr "Nabavni nalogi"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
 msgid "Write Date"
