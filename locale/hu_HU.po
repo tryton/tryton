@@ -133,9 +133,10 @@ msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Raktár időbeni lefutása"
+msgstr "Stock Force Expiration"
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"

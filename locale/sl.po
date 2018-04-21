@@ -70,7 +70,7 @@ msgstr "ID"
 
 msgctxt "field:stock.location.lot.shelf_life,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"
@@ -124,9 +124,10 @@ msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
 msgstr "Zakasnitev pred odstranitvijo iz napovedi."
 
+#, fuzzy
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Zaloga - rok uporabe"
+msgstr "Stock Force Expiration"
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"

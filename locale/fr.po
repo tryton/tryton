@@ -128,7 +128,7 @@ msgstr "Le délai avant d'être retiré de la prévision."
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Stock forcer l'expiration"
+msgstr "Force l'expiration des stocks"
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"

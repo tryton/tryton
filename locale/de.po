@@ -73,7 +73,7 @@ msgstr "ID"
 
 msgctxt "field:stock.location.lot.shelf_life,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"

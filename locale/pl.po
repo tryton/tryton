@@ -18,13 +18,15 @@ msgid ""
 "\"%(date)s\" of Lot \"%(lot)s\""
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.product,expiration_state:"
 msgid "Expiration State"
-msgstr ""
+msgstr "Termin ważności"
 
+#, fuzzy
 msgctxt "field:product.product,expiration_time:"
 msgid "Expiration Time"
-msgstr ""
+msgstr "Termin ważności"
 
 msgctxt "field:product.product,shelf_life_state:"
 msgid "Shelf Life Time State"
@@ -34,13 +36,15 @@ msgctxt "field:product.product,shelf_life_time:"
 msgid "Shelf Life Time"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:product.template,expiration_state:"
 msgid "Expiration State"
-msgstr ""
+msgstr "Termin ważności"
 
+#, fuzzy
 msgctxt "field:product.template,expiration_time:"
 msgid "Expiration Time"
-msgstr ""
+msgstr "Termin ważności"
 
 msgctxt "field:product.template,shelf_life_state:"
 msgid "Shelf Life Time State"
@@ -86,9 +90,10 @@ msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
 msgstr "Termin ważności"
 
+#, fuzzy
 msgctxt "field:stock.lot,expiration_state:"
 msgid "Expiration State"
-msgstr ""
+msgstr "Termin ważności"
 
 msgctxt "field:stock.lot,shelf_life_expiration_date:"
 msgid "Shelf Life Expiration Date"
@@ -124,7 +129,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr ""
+msgstr "Stock Force Expiration"
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"

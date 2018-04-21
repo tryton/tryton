@@ -126,9 +126,10 @@ msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
 msgstr "O atraso antes da remoção da previsão."
 
+#, fuzzy
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Forçar a Expiração do Estoque"
+msgstr "Stock Force Expiration"
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"

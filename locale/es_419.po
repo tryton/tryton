@@ -124,7 +124,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Forzar caducidad de stock"
+msgstr ""
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"
