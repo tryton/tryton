@@ -8,6 +8,12 @@ msgstr ""
 "Računa, izdelanega iz nabavnega naloga, ni možno prestaviti v stanje "
 "priprave."
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending purchases "
+"for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:product.template:"
 msgid "Purchase prices are based on the purchase uom."
 msgstr "Nabavne cene temeljijo na nabavni merski enoti."
@@ -28,6 +34,10 @@ msgid "Purchase \"%(purchase)s\" misses the supplier location for line \"%(line)
 msgstr ""
 "Postavki \"%(line)s\" na nabavnem nalogu \"%(purchase)s\" manjka "
 "dobaviteljeva lokacija."
+
+msgctxt "error:purchase.modify_header:"
+msgid "The purchase \"%(purchase)s\" must be in draft to modify header."
+msgstr ""
 
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
@@ -109,7 +119,7 @@ msgstr "Štetje nabavnih nalogov"
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
@@ -138,7 +148,7 @@ msgstr "Način obračuna"
 
 msgctxt "field:purchase.configuration.purchase_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.configuration.purchase_method,write_date:"
 msgid "Write Date"
@@ -170,7 +180,7 @@ msgstr "Štetje nabavnih nalogov"
 
 msgctxt "field:purchase.configuration.sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.configuration.sequence,write_date:"
 msgid "Write Date"
@@ -272,6 +282,10 @@ msgctxt "field:purchase.line,product:"
 msgid "Product"
 msgstr "Izdelek"
 
+msgctxt "field:purchase.line,product_supplier:"
+msgid "Supplier's Product"
+msgstr ""
+
 msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr "Katerogija EM izdelka"
@@ -290,7 +304,7 @@ msgstr "Količina"
 
 msgctxt "field:purchase.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.line,sequence:"
 msgid "Sequence"
@@ -346,7 +360,7 @@ msgstr "Nabavna postavka"
 
 msgctxt "field:purchase.line-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
@@ -382,7 +396,7 @@ msgstr "Nabavna postavka"
 
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
@@ -414,7 +428,7 @@ msgstr "Nabavna postavka"
 
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
@@ -470,7 +484,7 @@ msgstr "Izdelek"
 
 msgctxt "field:purchase.product_supplier,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.product_supplier,sequence:"
 msgid "Sequence"
@@ -506,7 +520,7 @@ msgstr "Količina"
 
 msgctxt "field:purchase.product_supplier.price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.product_supplier.price,sequence:"
 msgid "Sequence"
@@ -614,7 +628,7 @@ msgstr "Nabavljeno"
 
 msgctxt "field:purchase.purchase,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -694,7 +708,7 @@ msgstr "Nabavni nalog"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
@@ -726,7 +740,7 @@ msgstr "Nabavni nalog"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
@@ -801,121 +815,194 @@ msgctxt "help:stock.location,supplier_return_location:"
 msgid "If empty the Storage location is used"
 msgstr "Če je prazno, se uporablja lokacija shrambe"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Računi"
+msgstr "Invoices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
-msgstr "Partnerji, povezani z nabavo"
+msgstr "Parties associated to Purchases"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Product Suppliers"
-msgstr "Dobavitelji izdelkov"
+msgstr "Product Suppliers"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
-msgstr "Cene"
+msgstr "Prices"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
-msgstr "Nabavna konfiguracija"
+msgstr "Purchase Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
-msgstr "Nabavni nalogi"
+msgstr "Purchases"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
-msgstr "Nabavni nalogi"
+msgstr "Purchases"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
-msgstr "Nabavni nalogi"
+msgstr "Purchases"
 
+msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Vrnjene prevzemnice"
+msgstr "Returns"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Pošiljke"
+msgstr "Shipments"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
-msgstr "Nabavni nalogi"
+msgstr "Purchase"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Obravnava pridržanih računov"
+msgstr "Handle Invoice Exception"
 
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Modify Header"
+
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Obravnava pridržanih prevzemnic"
+msgstr "Handle Shipment Exception"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Potrjeno"
+msgstr "Confirmed"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
-msgstr "Priprava"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
 msgid "Processing"
-msgstr "Obdelava"
+msgstr "Processing"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
-msgstr "Ponudba"
+msgstr "Quotation"
 
+#, fuzzy
 msgctxt "model:ir.cron,name:cron_process_purchase"
 msgid "Process Confirmed Purchases"
-msgstr ""
+msgstr "Process Confirmed Purchases"
 
+msgctxt "model:ir.model.button,string:purchase_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:purchase_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:purchase_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Handle Invoice Exception"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "Handle Shipment Exception"
+
+msgctxt "model:ir.model.button,string:purchase_modify_header_button"
+msgid "Modify Header"
+msgstr "Modify Header"
+
+msgctxt "model:ir.model.button,string:purchase_process_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:purchase_quote_button"
+msgid "Quote"
+msgstr "Quote"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
-msgstr "Nabavni nalog"
+msgstr "Purchase"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
 msgid "Purchase"
-msgstr "Nabavni nalog"
+msgstr "Purchase"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Nastavitve"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Product Suppliers"
-msgstr "Dobavitelji izdelkov"
+msgstr "Product Suppliers"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
-msgstr "Nabava"
+msgstr "Purchase"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
-msgstr "Konfiguracija"
+msgstr "Purchase Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr "Nabavni nalogi"
+msgstr "Purchases"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Poročila"
+msgstr "Reporting"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
-msgstr "Partnerji pri nabavi"
+msgstr "Parties associated to Purchases"
 
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
@@ -973,13 +1060,15 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Nabavni nalog - Ponovno izdelan račun"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr "Nabava"
+msgstr "Purchase"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
-msgstr "Nabava - vodenje"
+msgstr "Purchase Administrator"
 
 msgctxt "report:purchase.purchase:"
 msgid ":"
@@ -995,7 +1084,7 @@ msgstr "Datum:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Delivery Address:"
-msgstr ""
+msgstr "Prejemnik"
 
 msgctxt "report:purchase.purchase:"
 msgid "Description"
@@ -1206,40 +1295,12 @@ msgid "Taxes"
 msgstr "Davki"
 
 msgctxt "view:purchase.purchase:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "view:purchase.purchase:"
-msgid "Confirm"
-msgstr "Potrditev"
-
-msgctxt "view:purchase.purchase:"
-msgid "Draft"
-msgstr "Priprava"
-
-msgctxt "view:purchase.purchase:"
-msgid "Handle Invoice Exception"
-msgstr "Obravnava pridržanih računov"
-
-msgctxt "view:purchase.purchase:"
-msgid "Handle Shipment Exception"
-msgstr "Obravnava pridržanih prevzemnic"
-
-msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Drugo"
 
 msgctxt "view:purchase.purchase:"
-msgid "Process"
-msgstr "Obdelava"
-
-msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Nabavni nalog"
-
-msgctxt "view:purchase.purchase:"
-msgid "Quote"
-msgstr "Ponudba"
 
 msgctxt "view:stock.move:"
 msgid "Cancel"
@@ -1264,3 +1325,40 @@ msgstr "Prekliči"
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr "V redu"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:purchase.modify_header,start,modify:"
+msgid "Modify"
+msgstr ""
+
+msgctxt "view:purchase.purchase:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "view:purchase.purchase:"
+msgid "Confirm"
+msgstr "Potrditev"
+
+msgctxt "view:purchase.purchase:"
+msgid "Draft"
+msgstr "Priprava"
+
+msgctxt "view:purchase.purchase:"
+msgid "Handle Invoice Exception"
+msgstr "Obravnava pridržanih računov"
+
+msgctxt "view:purchase.purchase:"
+msgid "Handle Shipment Exception"
+msgstr "Obravnava pridržanih prevzemnic"
+
+msgctxt "view:purchase.purchase:"
+msgid "Process"
+msgstr "Obdelava"
+
+msgctxt "view:purchase.purchase:"
+msgid "Quote"
+msgstr "Ponudba"

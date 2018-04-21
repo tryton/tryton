@@ -8,6 +8,14 @@ msgstr ""
 "Eine durch einen Einkauf generierte Rechnung kann nicht auf Entwurf "
 "zurückgesetzt werden."
 
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending purchases "
+"for the company \"%(company)s\"."
+msgstr ""
+"Die Partei \"%(party)s\" kann nicht gelöscht werden, da sie offene Einkäufe "
+"für das Unternehmen \"%(company)s\" hat."
+
 msgctxt "error:product.template:"
 msgid "Purchase prices are based on the purchase uom."
 msgstr "Einkaufspreise werden auf Basis der Einkaufseinheit berechnet."
@@ -28,6 +36,12 @@ msgid "Purchase \"%(purchase)s\" misses the supplier location for line \"%(line)
 msgstr ""
 "Für Einkaufsposition \"%(line)s\" von Einkauf \"%(purchase)s\" ist kein "
 "Lagerort Lieferant eingetragen."
+
+msgctxt "error:purchase.modify_header:"
+msgid "The purchase \"%(purchase)s\" must be in draft to modify header."
+msgstr ""
+"Der Einkauf \"%(purchase)s\" muss im Entwurfsstatus sein um den Kopf zu "
+"verändern."
 
 msgctxt "error:purchase.purchase:"
 msgid "A warehouse must be defined for quotation of purchase \"%s\"."
@@ -109,7 +123,7 @@ msgstr "Nummernkreis Einkauf"
 
 msgctxt "field:purchase.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.configuration,write_date:"
 msgid "Write Date"
@@ -138,7 +152,7 @@ msgstr "Rechnungsstellung Einkauf"
 
 msgctxt "field:purchase.configuration.purchase_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.configuration.purchase_method,write_date:"
 msgid "Write Date"
@@ -170,7 +184,7 @@ msgstr "Nummernkreis Einkauf"
 
 msgctxt "field:purchase.configuration.sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.configuration.sequence,write_date:"
 msgid "Write Date"
@@ -272,6 +286,10 @@ msgctxt "field:purchase.line,product:"
 msgid "Product"
 msgstr "Variante"
 
+msgctxt "field:purchase.line,product_supplier:"
+msgid "Supplier's Product"
+msgstr "Variante des Lieferanten"
+
 msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr "Maßeinheitenkategorie"
@@ -290,7 +308,7 @@ msgstr "Anzahl"
 
 msgctxt "field:purchase.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.line,sequence:"
 msgid "Sequence"
@@ -346,7 +364,7 @@ msgstr "Einkaufsposition"
 
 msgctxt "field:purchase.line-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
@@ -382,7 +400,7 @@ msgstr "Einkaufsposition"
 
 msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.line-ignored-stock.move,write_date:"
 msgid "Write Date"
@@ -414,7 +432,7 @@ msgstr "Einkaufsposition"
 
 msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.line-recreated-stock.move,write_date:"
 msgid "Write Date"
@@ -470,7 +488,7 @@ msgstr "Artikel"
 
 msgctxt "field:purchase.product_supplier,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.product_supplier,sequence:"
 msgid "Sequence"
@@ -506,7 +524,7 @@ msgstr "Anzahl"
 
 msgctxt "field:purchase.product_supplier.price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.product_supplier.price,sequence:"
 msgid "Sequence"
@@ -614,7 +632,7 @@ msgstr "Kaufdatum"
 
 msgctxt "field:purchase.purchase,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -694,7 +712,7 @@ msgstr "Einkauf"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
 msgid "Write Date"
@@ -726,7 +744,7 @@ msgstr "Einkauf"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
 msgid "Write Date"
@@ -807,7 +825,7 @@ msgstr "Wenn kein Wert eingetragen ist, wird die Lagerzone verwendet."
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Rechnungseingang"
+msgstr "Rechnungen"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
@@ -815,7 +833,7 @@ msgstr "Parteien mit Einkäufen"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Product Suppliers"
-msgstr "Lieferanten"
+msgstr "Variantenlieferanten"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
@@ -837,13 +855,21 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Einkäufe"
 
+msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
+msgctxt "model:ir.action,name:act_purchase_shipments_relate"
+msgid "Purchases"
+msgstr "Purchases"
+
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
 msgstr "Rückgaben"
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Lieferposten"
+msgstr "Lieferungen"
 
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
@@ -853,9 +879,13 @@ msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
 msgstr "Rechnungsvorbehalt bearbeiten"
 
+msgctxt "model:ir.action,name:wizard_modify_header"
+msgid "Modify Header"
+msgstr "Modify Header"
+
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Nachfrage Liefervorbehalt"
+msgstr "Liefervorbehalt bearbeiten"
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
@@ -883,7 +913,40 @@ msgstr "Angebot"
 
 msgctxt "model:ir.cron,name:cron_process_purchase"
 msgid "Process Confirmed Purchases"
-msgstr ""
+msgstr "Process Confirmed Purchases"
+
+msgctxt "model:ir.model.button,string:purchase_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:purchase_confirm_button"
+msgid "Confirm"
+msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:purchase_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
+msgid "Handle Invoice Exception"
+msgstr "Handle Invoice Exception"
+
+msgctxt ""
+"model:ir.model.button,string:purchase_hande_shipment_exception_button"
+msgid "Handle Shipment Exception"
+msgstr "Handle Shipment Exception"
+
+msgctxt "model:ir.model.button,string:purchase_modify_header_button"
+msgid "Modify Header"
+msgstr "Modify Header"
+
+msgctxt "model:ir.model.button,string:purchase_process_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:purchase_quote_button"
+msgid "Quote"
+msgstr "Quote"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
@@ -899,15 +962,15 @@ msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Product Suppliers"
-msgstr "Lieferanten"
+msgstr "Variantenlieferanten"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
-msgstr "Einkauf"
+msgstr "Einkäufe"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
-msgstr "Einkauf"
+msgstr "Einstellungen Einkauf"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
@@ -979,7 +1042,7 @@ msgstr "Einkauf - Neu erstellte Rechnung"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr "Einkauf"
+msgstr "Einkäufe"
 
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
@@ -999,7 +1062,7 @@ msgstr "Datum:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Delivery Address:"
-msgstr ""
+msgstr "Lieferadresse:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Description"
@@ -1210,40 +1273,12 @@ msgid "Taxes"
 msgstr "Steuern"
 
 msgctxt "view:purchase.purchase:"
-msgid "Cancel"
-msgstr "Annullieren"
-
-msgctxt "view:purchase.purchase:"
-msgid "Confirm"
-msgstr "Beauftragen"
-
-msgctxt "view:purchase.purchase:"
-msgid "Draft"
-msgstr "Entwurf"
-
-msgctxt "view:purchase.purchase:"
-msgid "Handle Invoice Exception"
-msgstr "Rechnungsvorbehalt bearbeiten"
-
-msgctxt "view:purchase.purchase:"
-msgid "Handle Shipment Exception"
-msgstr "Liefervorbehalt bearbeiten"
-
-msgctxt "view:purchase.purchase:"
 msgid "Other Info"
 msgstr "Sonstiges"
 
 msgctxt "view:purchase.purchase:"
-msgid "Process"
-msgstr "Ausführen"
-
-msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Einkauf"
-
-msgctxt "view:purchase.purchase:"
-msgid "Quote"
-msgstr "Angebot"
 
 msgctxt "view:stock.move:"
 msgid "Cancel"
@@ -1268,3 +1303,39 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
 msgstr "OK"
+
+msgctxt "wizard_button:purchase.modify_header,start,end:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "wizard_button:purchase.modify_header,start,modify:"
+msgid "Modify"
+msgstr "Ändern"
+
+msgctxt "view:purchase.purchase:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:purchase.purchase:"
+msgid "Confirm"
+msgstr "Beauftragen"
+
+msgctxt "view:purchase.purchase:"
+msgid "Draft"
+msgstr "Entwurf"
+
+msgctxt "view:purchase.purchase:"
+msgid "Handle Invoice Exception"
+msgstr "Rechnungsvorbehalt bearbeiten"
+
+msgctxt "view:purchase.purchase:"
+msgid "Handle Shipment Exception"
+msgstr "Liefervorbehalt bearbeiten"
+
+msgctxt "view:purchase.purchase:"
+msgid "Process"
+msgstr "Ausführen"
+
+msgctxt "view:purchase.purchase:"
+msgid "Quote"
+msgstr "Angebot"
