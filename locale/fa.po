@@ -4,283 +4,273 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.payment.group:"
 msgid "No Stripe token found for payment \"%(payment)s\"."
-msgstr "O Token Stripe não foi encontrado para pagamento \"%(payment)s\"."
+msgstr "هیچ چوب خطی برای پرداخت : \"%s\" پیدا نشد."
 
 msgctxt "error:account.payment:"
 msgid ""
 "Stripe journal \"%(journal)s\" can only be used for receivable payment "
 "\"%(payment)s\"."
-msgstr ""
-"O Diário Stripe \"%(journal)s\" pode ser usado apenas para pagamento de "
-"recebível \"%(payment)s\"."
+msgstr "چوب خط روزنامه: \"%s\" تنها باید در پرداخت: \"%s\" قابل دریافت استفاده شود."
 
 msgctxt "field:account.payment,stripe_account:"
 msgid "Stripe Account"
-msgstr "Conta Stripe"
+msgstr "حساب چوب خط"
 
 msgctxt "field:account.payment,stripe_amount:"
 msgid "Stripe Amount"
-msgstr "Montante Stripe"
+msgstr "مقدار چوب خط"
 
 msgctxt "field:account.payment,stripe_capture:"
 msgid "Stripe Capture"
-msgstr "Captura Stripe"
+msgstr "گرفتن چوب خط"
 
 msgctxt "field:account.payment,stripe_capture_needed:"
 msgid "Stripe Capture Needed"
-msgstr "Captura Stripe Obrigatória"
+msgstr "گرفتن چوب خط مورد نیاز"
 
 msgctxt "field:account.payment,stripe_captured:"
 msgid "Stripe Captured"
-msgstr "Capturado com Stripe"
+msgstr "چوب خط گرفته شده"
 
 msgctxt "field:account.payment,stripe_charge_id:"
 msgid "Stripe Charge ID"
-msgstr "ID de Cobrança Stripe"
+msgstr "شناسه شارژ چوب خط"
 
 msgctxt "field:account.payment,stripe_chargeable:"
 msgid "Stripe Chargeable"
-msgstr "Cobrável com Stripe"
+msgstr "چوب خط قابل شارژ"
 
 msgctxt "field:account.payment,stripe_checkout_id:"
 msgid "Stripe Checkout ID"
-msgstr "ID de Checkout Stripe"
+msgstr "شناسه وارسی چوب خط"
 
 msgctxt "field:account.payment,stripe_checkout_needed:"
 msgid "Stripe Checkout Needed"
-msgstr "Checkout Stripe Necessário"
+msgstr "چوب خط مورد نیاز وارسی"
 
 msgctxt "field:account.payment,stripe_customer:"
 msgid "Stripe Customer"
-msgstr "Cliente Stripe"
+msgstr "چوب خط مشتری"
 
 msgctxt "field:account.payment,stripe_customer_source:"
 msgid "Stripe Customer Source"
-msgstr "Origem do Cliente Stripe"
+msgstr "منبع چوب خط مشتری"
 
 msgctxt "field:account.payment,stripe_customer_source_selection:"
 msgid "Stripe Customer Source"
-msgstr "Origem do Consumidor Stripe"
+msgstr "منبع چوب خط مشتری"
 
 msgctxt "field:account.payment,stripe_dispute_reason:"
 msgid "Stripe Dispute Reason"
-msgstr ""
+msgstr "دلیل اختلاف چوب خط"
 
 msgctxt "field:account.payment,stripe_dispute_status:"
 msgid "Stripe Dispute Status"
-msgstr ""
+msgstr "وضعیت اختلاف چوب خط"
 
 msgctxt "field:account.payment,stripe_error_code:"
 msgid "Stripe Error Code"
-msgstr "Código de Erro Stripe"
+msgstr "کد خطای چوب خط"
 
 msgctxt "field:account.payment,stripe_error_message:"
 msgid "Stripe Error Message"
-msgstr "Mensagem de Erro Stripe"
+msgstr "پیغام خطای چوب خط"
 
 msgctxt "field:account.payment,stripe_error_param:"
 msgid "Stripe Error Param"
-msgstr "Parâmetro de Erro Stripe"
+msgstr "پارامتر خطای چوب خط"
 
 msgctxt "field:account.payment,stripe_idempotency_key:"
 msgid "Stripe Idempotency Key"
-msgstr ""
+msgstr "کلید_هماهنگی چوب خط"
 
 msgctxt "field:account.payment,stripe_journal:"
 msgid "Stripe Journal"
-msgstr "Diário Stripe"
+msgstr "روزنامه چوب خط"
 
 msgctxt "field:account.payment,stripe_token:"
 msgid "Stripe Token"
-msgstr "Token Stripe"
+msgstr "نشان چوب خط"
 
 msgctxt "field:account.payment.journal,stripe_account:"
 msgid "Account"
-msgstr "Conta"
+msgstr "حساب"
 
 msgctxt "field:account.payment.stripe.account,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:account.payment.stripe.account,create_uid:"
 msgid "Create User"
-msgstr "Criado por"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.payment.stripe.account,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:account.payment.stripe.account,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
 msgctxt "field:account.payment.stripe.account,publishable_key:"
 msgid "Publishable Key"
-msgstr "Chave Publicável"
+msgstr "کلید قابل انتشار"
 
 msgctxt "field:account.payment.stripe.account,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "نام پرونده"
 
 msgctxt "field:account.payment.stripe.account,secret_key:"
 msgid "Secret Key"
-msgstr "Chave Secreta"
+msgstr "کلید مخفی"
 
 msgctxt "field:account.payment.stripe.account,webhook_endpoint:"
 msgid "Webhook Endpoint"
-msgstr "Webhook Endpoint"
+msgstr "نقطه پایانی Webhook"
 
 msgctxt "field:account.payment.stripe.account,webhook_identifier:"
 msgid "Webhook Identifier"
-msgstr "Identificador Webhook"
+msgstr "شناسه Webhook"
 
 msgctxt "field:account.payment.stripe.account,webhook_signing_secret:"
 msgid "Webhook Signing Secret"
-msgstr "Código de Assinatura do Webhook"
+msgstr "امضاء محرمانه Webhook"
 
 msgctxt "field:account.payment.stripe.account,write_date:"
 msgid "Write Date"
-msgstr "Data de edição"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:account.payment.stripe.account,write_uid:"
 msgid "Write User"
-msgstr "Editado por"
+msgstr "نوشته کاربر"
 
 msgctxt "field:account.payment.stripe.account,zip_code:"
 msgid "Zip Code"
-msgstr "Código Postal (CEP)"
+msgstr "کد پستی"
 
 msgctxt "field:account.payment.stripe.customer,active:"
 msgid "Active"
-msgstr "Ativo"
+msgstr "فعال"
 
 msgctxt "field:account.payment.stripe.customer,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:account.payment.stripe.customer,create_uid:"
 msgid "Create User"
-msgstr "Criado por"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.payment.stripe.customer,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
-msgstr "Pessoa"
+msgstr "نهاد/سازمان"
 
 msgctxt "field:account.payment.stripe.customer,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "نام پرونده"
 
 msgctxt "field:account.payment.stripe.customer,stripe_account:"
 msgid "Account"
-msgstr "Conta"
+msgstr "حساب"
 
 msgctxt "field:account.payment.stripe.customer,stripe_checkout_id:"
 msgid "Stripe Checkout ID"
-msgstr "ID de Checkout Stripe"
+msgstr "شناسه وارسی چوب خط"
 
 msgctxt "field:account.payment.stripe.customer,stripe_checkout_needed:"
 msgid "Stripe Checkout Needed"
-msgstr "Checkout Stripe Necessário"
+msgstr "چوب خط مورد نیاز وارسی"
 
 msgctxt "field:account.payment.stripe.customer,stripe_customer_id:"
 msgid "Stripe Customer ID"
-msgstr "ID do Cliente Stripe"
+msgstr "شناسه چوب خط مشتری"
 
 msgctxt "field:account.payment.stripe.customer,stripe_error_code:"
 msgid "Stripe Error Code"
-msgstr "Código do Erro Stripe"
+msgstr "کد خطای چوب خط"
 
 msgctxt "field:account.payment.stripe.customer,stripe_error_message:"
 msgid "Stripe Error Message"
-msgstr "Mensagem de Erro Stripe"
+msgstr "پیغام خطای چوب خط"
 
 msgctxt "field:account.payment.stripe.customer,stripe_error_param:"
 msgid "Stripe Error Param"
-msgstr "Parâmetro de Erro Stripe"
+msgstr "پارامتر خطای چوب خط"
 
 msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
-msgstr "Token Stripe"
+msgstr "نشان چوب خط"
 
 msgctxt "field:account.payment.stripe.customer,write_date:"
 msgid "Write Date"
-msgstr "Data de edição"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:account.payment.stripe.customer,write_uid:"
 msgid "Write User"
-msgstr "Editado por"
+msgstr "نوشته کاربر"
 
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
-msgstr "Clientes Stripe"
+msgstr "چوب خط مشتریان"
 
 msgctxt "help:account.payment.stripe.account,webhook_endpoint:"
 msgid "The URL to be called by Stripe."
-msgstr "A URL a ser chamada por Stripe"
+msgstr "نشانی اینترنتی که باید توسط چوب خط فراخوانی شود."
 
 msgctxt "help:account.payment.stripe.account,webhook_signing_secret:"
 msgid "The Stripe's signing secret of the webhook."
-msgstr "O código de assinatura do Stripe para o Webhook."
+msgstr "امضاء محرمانه چوب خط ازاین webhook."
 
 msgctxt "help:account.payment.stripe.account,zip_code:"
 msgid "Verification on checkout"
-msgstr "Verificação no checkout"
+msgstr "تأیید در پرداخت"
 
 msgctxt "help:account.payment.stripe.customer,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "model:account.payment.stripe.account,name:"
 msgid "Stripe Account"
-msgstr "Conta Stripe"
+msgstr "حساب چوب خط"
 
 msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
-msgstr "Cliente Stripe"
+msgstr "چوب خط مشتری"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
-msgstr "Stripe Accounts"
+msgstr "حساب های چوب خط"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_customer_form"
 msgid "Stripe Customers"
-msgstr "Stripe Customers"
+msgstr "چوب خط مشتریان"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_checkout"
 msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
+msgstr "وارسی چوب خط"
 
-#, fuzzy
 msgctxt "model:ir.action,name:url_checkout"
 msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
+msgstr "وارسی چوب خط"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
-msgstr "Stripe Checkout"
+msgstr "وارسی چوب خط"
 
-#, fuzzy
 msgctxt "model:ir.cron,name:cron_charge"
 msgid "Charge Stripe Payments"
-msgstr "Charge Stripe Payments"
+msgstr "شارژ پرداخت های چوب خط"
 
-#, fuzzy
 msgctxt "model:ir.cron,name:cron_create_customer"
 msgid "Create Stripe Customer"
-msgstr "Create Stripe Customer"
+msgstr "ایجاد چوب خط مشتری"
 
-#, fuzzy
 msgctxt "model:ir.cron,name:cron_delete_customer"
 msgid "Delete Stripe Customer"
-msgstr "Delete Stripe Customer"
+msgstr "حذف چوب خط مشتری"
 
 msgctxt "model:ir.model.button,confirm:account_new_identifier_button"
 msgid ""
@@ -304,58 +294,57 @@ msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
 msgid "Stripe Checkout"
 msgstr "Stripe Checkout"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Stripe Accounts"
-msgstr "Stripe Accounts"
+msgstr "حساب های چوب خط"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customer_form"
 msgid "Stripe Customers"
-msgstr "Stripe Customers"
+msgstr "چوب خط مشتریان"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Pay"
-msgstr "Pagar"
+msgstr "پرداخت"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Register"
-msgstr "Registrar"
+msgstr "ثبت نام"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
-msgstr "Checkout Stripe"
+msgstr "وارسی چوب خط"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout for"
-msgstr "Checkout Stripe para"
+msgstr "وارسی چوب خط برای"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Stripe"
-msgstr "Stripe"
+msgstr "چوب خط"
 
 msgctxt "view:account.payment.journal:"
 msgid "Stripe"
-msgstr "Stripe"
+msgstr "چوب خط"
 
 msgctxt "view:account.payment.stripe.account:"
 msgid "New URL"
-msgstr "Nova URL"
+msgstr "ادرس اینترنتی جدید"
 
 msgctxt "view:account.payment.stripe.account:"
 msgid ""
 "This action will make the previous URL unusable. Do you want to continue?"
 msgstr ""
-"Esta ação fará com que a URL anterior seja invalidada. Deseja continuar?"
+"این اقدام شما آدرس اینترنتی قبلی را غیرقابل استفاده میکند. آیا میخواهید "
+"ادامه دهید؟"
 
 msgctxt "view:account.payment.stripe.customer:"
 msgid "Stripe Checkout"
-msgstr "Checkout Stripe"
+msgstr "وارسی چوب خط"
 
 msgctxt "view:account.payment:"
 msgid "Stripe Capture"
-msgstr "Captura Stripe"
+msgstr "گرفتن چوب خط"
 
 msgctxt "view:account.payment:"
 msgid "Stripe Checkout"
-msgstr "Checkout Stripe"
+msgstr "وارسی چوب خط"
