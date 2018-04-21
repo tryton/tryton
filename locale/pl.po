@@ -116,6 +116,15 @@ msgctxt "field:party.party.credit_limit_amount,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
+msgctxt "help:account.configuration,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr ""
+
+msgctxt ""
+"help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr ""
+
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
 msgstr ""
@@ -130,7 +139,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr ""
+msgstr "Account Credit Limit"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"

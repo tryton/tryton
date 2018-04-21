@@ -4,148 +4,147 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:party.party:"
 msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "ໜີ້ \"%s\" ຮອດຂີດຈຳນວນຈຳກັດ (%s) ແລ້ວ"
+msgstr "\"%s\" به مقدار محدودیت اعتبار رسیده است(%s)"
 
 msgctxt "error:party.party:"
 msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" ໄດ້ຮອດກຳນົດວົງເງິນຈຳກັດຕິດໜີ້ແລ້ວ (%s)"
+msgstr "\"%s\" به محدودیت اعتبارگردآوری معوقه ها رسیده است(%s)"
 
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
-msgstr "ມູນຄ່າຈຳກັດລົງເງິນຕິດໜີ້ພື້ນຖານ"
+msgstr "مقدار محدودیت اعتباری پیش فرض"
 
 msgctxt "field:account.configuration,default_credit_limit_amount_digits:"
 msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
+msgstr "رقم های واحد پول"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,company:"
 msgid "Company"
-msgstr "ບໍລິສັດ"
+msgstr "شرکت"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
 msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,create_uid:"
 msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt ""
 "field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
-msgstr "ມູນຄ່າຈຳກັດວົງເງິນຕິດໜີ້ພື້ນຖານ"
+msgstr "مقدار محدودیت اعتباری پیش فرض"
 
 msgctxt ""
 "field:account.configuration.default_credit_limit_amount,default_credit_limit_amount_digits:"
 msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
+msgstr "رقم های واحد پول"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,id:"
 msgid "ID"
-msgstr "ເລກລຳດັບ"
+msgstr "شناسه"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,write_uid:"
 msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
+msgstr "نوشته کاربر"
 
 msgctxt "field:account.dunning.level,credit_limit:"
 msgid "Credit Limit"
-msgstr "ວົງໜີ້ຈຳກັດ"
+msgstr "اعتبار محدود"
 
 msgctxt "field:party.party,credit_amount:"
 msgid "Credit Amount"
-msgstr "ມູນຄ່າໜີ້"
+msgstr "مقدار اعتبار"
 
 msgctxt "field:party.party,credit_limit_amount:"
 msgid "Credit Limit Amount"
-msgstr "ມູນຄ່າວົງໜີ້ຈຳກັດ"
+msgstr "مقدار محدودیت اعتبار"
 
 msgctxt "field:party.party,credit_limit_amounts:"
 msgid "Credit Limit Amounts"
-msgstr "ມູນຄ່າຈຳກັດວົງໜີ້"
+msgstr "مقادیر محدودیت اعتبار"
 
 msgctxt "field:party.party,credit_limit_digits:"
 msgid "Currency Digits"
-msgstr "້ລກເສດສະກຸນເງິນ"
+msgstr "رقم های واحد پول"
 
 msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
-msgstr "ບໍລິສັດ"
+msgstr "شرکت"
 
 msgctxt "field:party.party.credit_limit_amount,create_date:"
 msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:party.party.credit_limit_amount,create_uid:"
 msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
-msgstr "ມູນຄ່າຈຳກັດວົງໜີ້"
+msgstr "مقدار محدودیت اعتبار"
 
 msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
 msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
+msgstr "رقم های واحد پول"
 
 msgctxt "field:party.party.credit_limit_amount,id:"
 msgid "ID"
-msgstr "ເລກລຳດັບ"
+msgstr "شناسه"
 
 msgctxt "field:party.party.credit_limit_amount,party:"
 msgid "Party"
-msgstr "ພາກສ່ວນ"
+msgstr "نهاد/سازمان"
 
 msgctxt "field:party.party.credit_limit_amount,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:party.party.credit_limit_amount,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:party.party.credit_limit_amount,write_uid:"
 msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
+msgstr "نوشته کاربر"
 
 msgctxt "help:account.configuration,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
-msgstr ""
+msgstr "مقدار محدودیت اعتباری پیش فرض برای مشتریان جدید."
 
 msgctxt ""
 "help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
-msgstr ""
+msgstr "مقدار محدودیت اعتباری پیش فرض برای مشتریان جدید."
 
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
-msgstr "ໄດ້ຮອດວົງຈຳກັດໜີ້ແລ້ວ"
+msgstr "به محدودیت اعتباری رسیده است"
 
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
-msgstr "ການກຳນົດຄ່າບັນຊີຕົ້ນມູນຄ່າຈຳກັດວົງໜີ້"
+msgstr "پیکره بندی حساب پیش فرض مقدار محدودیت اعتبار"
 
 msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"
-msgstr "ມູນຄ່າຈຳກັດລົງເງິນຕິດໜີ້ຂອງພາກສ່ວນ"
+msgstr "مقدار محدودیت اعتبار نهاد/سازمان"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "Account Credit Limit"
+msgstr "حساب اعتبارمحدود"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"
-msgstr "ວົງໜີ້ຈຳກັດ"
+msgstr "اعتبار محدود"
 
 msgctxt "view:party.party:"
 msgid "Credit Limit"
-msgstr "ວົງໜີ້ຈຳກັດ"
+msgstr "اعتبار محدود"

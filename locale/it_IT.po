@@ -121,6 +121,15 @@ msgctxt "field:party.party.credit_limit_amount,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "help:account.configuration,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr ""
+
+msgctxt ""
+"help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr ""
+
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
 msgstr "limite fido cliente raggiunto"
@@ -134,9 +143,10 @@ msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"
 msgstr "Importo predeterminato del fido cliente"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "conto fido cliente"
+msgstr "Account Credit Limit"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"

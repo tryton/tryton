@@ -46,7 +46,7 @@ msgstr "ID"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
 msgid "Write Date"
@@ -106,7 +106,7 @@ msgstr "Partner"
 
 msgctxt "field:party.party.credit_limit_amount,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.party.credit_limit_amount,write_date:"
 msgid "Write Date"
@@ -115,6 +115,15 @@ msgstr "Zapisano"
 msgctxt "field:party.party.credit_limit_amount,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
+
+msgctxt "help:account.configuration,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr ""
+
+msgctxt ""
+"help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr ""
 
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
@@ -128,9 +137,10 @@ msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"
 msgstr "Partnerjev odobreni limit"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "Računovodstvo - odobreni limit"
+msgstr "Account Credit Limit"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"

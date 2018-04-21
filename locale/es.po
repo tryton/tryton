@@ -116,6 +116,15 @@ msgctxt "field:party.party.credit_limit_amount,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "help:account.configuration,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr "El límite de crédito por defecto para nuevos clientes."
+
+msgctxt ""
+"help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr "El límite de crédito por defecto para nuevos clientes."
+
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
 msgstr "Ha alcanzado el límite de crédito."
@@ -130,7 +139,7 @@ msgstr "Importe límite de crédito por tercero"
 
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "Límite de crédito contable"
+msgstr "Límite de crédito"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"

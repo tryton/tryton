@@ -116,6 +116,15 @@ msgctxt "field:party.party.credit_limit_amount,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "help:account.configuration,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr "Le montant limite de crédit par défaut pour les nouveaux clients."
+
+msgctxt ""
+"help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
+msgid "The default credit limit amount for new customers."
+msgstr "Le montant limite de crédit par défaut pour les nouveaux clients."
+
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
 msgstr "A atteint la limite de crédit"
