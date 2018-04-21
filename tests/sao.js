@@ -1479,10 +1479,11 @@
         [[c(['Reference', null, ['foo', 'bar']])], [
             c(['reference', 'in', ['foo', 'bar']])
             ]],
-        [[['OR', c(['Name', null, 'John']), c(['Name', null, 'Jane'])]],
+        [['OR', c(['Name', null, 'John']), c(['Name', null, 'Jane'])],
             ['OR', c(['name', 'ilike', '%John%']),
                 c(['name', 'ilike', '%Jane%'])
-                ]]
+            ]],
+        [[[c(['John'])]], [[['rec_name', 'ilike', '%John%']]]],
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
