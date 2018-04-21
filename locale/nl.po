@@ -2,18 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
 msgstr ""
-"Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
 msgstr ""
-"Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -498,7 +493,7 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Gebruik de rekeningen van de categorie"
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"
@@ -634,6 +629,19 @@ msgstr "Rekeningen"
 msgctxt "view:product.template:"
 msgid "Taxes"
 msgstr "Belastingen"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr ""
+"Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
+
+#, fuzzy
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr ""
+"Er is geen kosten-/opbrengstenrekening gedefinieerd voor product %s (%d)"
 
 #, fuzzy
 msgctxt "help:product.product,account_expense:"

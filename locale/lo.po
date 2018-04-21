@@ -2,16 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
-msgstr "ບໍ່ມີ ບັນຊີລາຍຈ່າຍ - ລາຍຮັບ ທີ່ກຳນົດໄວ້ໃນ ໝວດ %s (%d)"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
+msgstr ""
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr "ບໍ່ມີ ບັນຊີລາຍຈ່າຍ - ລາຍຮັບ ທີ່ກຳນົດໄວ້ໃນ ໝວດ %s (%d)"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
+msgstr ""
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -467,7 +464,7 @@ msgid "Use the accounts defined on the parent category."
 msgstr "ໃຊ້ບັນດາບັນຊີທີ່ກຳນົດໄວ້ໃນໝວດຮ່ວງບັນຊີ"
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"
@@ -600,6 +597,17 @@ msgstr "ບັນຊີ"
 msgctxt "view:product.template:"
 msgid "Taxes"
 msgstr "ບັນດາພາສີ"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "ບໍ່ມີ ບັນຊີລາຍຈ່າຍ - ລາຍຮັບ ທີ່ກຳນົດໄວ້ໃນ ໝວດ %s (%d)"
+
+#, fuzzy
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr "ບໍ່ມີ ບັນຊີລາຍຈ່າຍ - ລາຍຮັບ ທີ່ກຳນົດໄວ້ໃນ ໝວດ %s (%d)"
 
 msgctxt "help:product.product,account_expense:"
 msgid "This account will be used instead of the one defined on the category."

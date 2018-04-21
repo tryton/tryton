@@ -2,18 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
 msgstr ""
-"Manca la definizione del conto di costo/ricavo per la categoria %s (%d)"
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
 msgstr ""
-"Manca la definizione del conto di costo/ricavo per la categoria %s (%d)"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -469,7 +464,7 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Usare i conti definiti per la categoria padre"
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"
@@ -602,6 +597,19 @@ msgstr "Conti"
 msgctxt "view:product.template:"
 msgid "Taxes"
 msgstr "Imposte"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr ""
+"Manca la definizione del conto di costo/ricavo per la categoria %s (%d)"
+
+#, fuzzy
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr ""
+"Manca la definizione del conto di costo/ricavo per la categoria %s (%d)"
 
 msgctxt "help:product.product,account_expense:"
 msgid "This account will be used instead of the one defined on the category."

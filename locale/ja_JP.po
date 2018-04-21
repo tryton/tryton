@@ -3,13 +3,11 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
 msgstr ""
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
 msgstr ""
 
 msgctxt "field:account.configuration,default_category_account_expense:"
@@ -437,7 +435,7 @@ msgid "Use the accounts defined on the parent category."
 msgstr ""
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"

@@ -2,16 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
-msgstr "Za kategorijo %s (%d) ni določenega konta odhodkov/prihodkov"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
+msgstr ""
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr "Za izdelek %s (%d) ni določenega konta prihodkov/odhodkov"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
+msgstr ""
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -123,7 +120,7 @@ msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -155,7 +152,7 @@ msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -199,7 +196,7 @@ msgstr "ID"
 
 msgctxt "field:product.category.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.category.account,write_date:"
 msgid "Write Date"
@@ -315,7 +312,7 @@ msgstr "Predloga izdelka"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
@@ -351,7 +348,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-product.category.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 #, fuzzy
 msgctxt "field:product.template-product.category.account,template:"
@@ -386,7 +383,7 @@ msgstr "Predloga izdelka"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
@@ -426,7 +423,7 @@ msgstr "ID"
 
 msgctxt "field:product.template.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.template.account,template:"
 msgid "Template"
@@ -444,8 +441,9 @@ msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
 msgstr "Uporabi konte, določene v matični kategoriji"
 
+#, fuzzy
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr "Označite v primeru pretvorbe v računovodsko kategorijo."
 
 msgctxt "help:product.category,customer_taxes:"
@@ -577,6 +575,21 @@ msgstr "Konti"
 msgctxt "view:product.template:"
 msgid "Taxes"
 msgstr "Davki"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "Za izdelek %s (%d) ni določenega konta prihodkov/odhodkov"
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accouting category."
+msgstr "Označite v primeru pretvorbe v računovodsko kategorijo."
+
+#, fuzzy
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr "Za kategorijo %s (%d) ni določenega konta odhodkov/prihodkov"
 
 msgctxt "help:product.product,account_expense:"
 msgid "This account will be used instead of the one defined on the category."

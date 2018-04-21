@@ -3,16 +3,12 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
 msgstr ""
-"Não existe conta de despesa/receita definida para categoria %(name)s "
-"(%(id)d)"
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr "Não existe conta de despesa/receita definida para o produto %s (%d)"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
+msgstr ""
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -20,7 +16,7 @@ msgstr "Conta de Despesas Padrão"
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr "Conta de Despesas Padrão"
+msgstr "Conta de Receitas Padrão"
 
 msgctxt "field:account.configuration,default_product_account_expense:"
 msgid "Default Account Expense"
@@ -28,7 +24,7 @@ msgstr "Conta de Despesas Padrão"
 
 msgctxt "field:account.configuration,default_product_account_revenue:"
 msgid "Default Account Revenue"
-msgstr "Conta de Despesas Padrão"
+msgstr "Conta de Receitas Padrão"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"
@@ -438,8 +434,9 @@ msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
 msgstr "Utilize as contas definidas na categoria pai."
 
+#, fuzzy
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr "Marque para converter em categoria de conta."
 
 msgctxt "help:product.category,customer_taxes:"
@@ -573,6 +570,22 @@ msgstr "Contas"
 msgctxt "view:product.template:"
 msgid "Taxes"
 msgstr "Tributos"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "Não existe conta de despesa/receita definida para o produto %s (%d)"
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accouting category."
+msgstr "Marque para converter em categoria de conta."
+
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr ""
+"Não existe conta de despesa/receita definida para categoria %(name)s "
+"(%(id)d)"
 
 msgctxt "help:product.product,account_expense:"
 msgid "This account will be used instead of the one defined on the category."

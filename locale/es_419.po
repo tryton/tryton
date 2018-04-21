@@ -2,18 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
 msgstr ""
-"No hay ninguna cuenta de gastos/ingresos definida en la categoría %s (%d)"
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
 msgstr ""
-"No hay ninguna cuenta de gastos/ingresos definida en el producto %s (%d)"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -191,7 +186,6 @@ msgctxt "field:product.category.account,create_date:"
 msgid "Create Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category.account,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
@@ -208,7 +202,6 @@ msgctxt "field:product.category.account,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.category.account,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
@@ -341,7 +334,6 @@ msgctxt "field:product.template-product.category.account,create_date:"
 msgid "Create Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
@@ -362,7 +354,6 @@ msgctxt "field:product.template-product.category.account,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
@@ -415,7 +406,6 @@ msgctxt "field:product.template.account,create_date:"
 msgid "Create Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template.account,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
@@ -436,7 +426,6 @@ msgctxt "field:product.template.account,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template.account,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
@@ -446,7 +435,7 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Utilizar las cuentas definidas en la categoria padre."
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"
@@ -575,6 +564,17 @@ msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Taxes"
+msgstr ""
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr ""
+"No hay ninguna cuenta de gastos/ingresos definida en el producto %s (%d)"
+
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
 msgstr ""
 
 msgctxt "help:product.product,account_expense:"

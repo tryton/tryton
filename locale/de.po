@@ -2,16 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:product.category:"
-msgid ""
-"There is no account expense/revenue defined on the category %(name)s "
-"(%(id)d)"
-msgstr "Es ist kein Aufwands-/Ertragskonto definiert für Kategorie %s (%d)."
+msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
+msgstr "Es wurde kein \"%(field)s\" in der Katergorie \"%(name)s\" definiert"
 
 msgctxt "error:product.template:"
-msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr "Es ist kein Aufwands-/Ertragskonto definiert für Artikel %s (%d)!"
+msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
+msgstr "Es wurde kein \"%(field)s\" für den Artikel \"%(name)s\" definiert "
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
@@ -51,19 +48,19 @@ msgstr "Standardertragskonto"
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
-msgstr ""
+msgstr "Standard Aufwandskonto"
 
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
-msgstr ""
+msgstr "Standard Ertragskonto"
 
 msgctxt "field:account.create_chart.properties,product_account_expense:"
 msgid "Default Expense Account"
-msgstr ""
+msgstr "Standard Aufwandskonto"
 
 msgctxt "field:account.create_chart.properties,product_account_revenue:"
 msgid "Default Revenue Account"
-msgstr ""
+msgstr "Standard Ertragskonto"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -123,7 +120,7 @@ msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -155,7 +152,7 @@ msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -199,7 +196,7 @@ msgstr "ID"
 
 msgctxt "field:product.category.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.category.account,write_date:"
 msgid "Write Date"
@@ -315,7 +312,7 @@ msgstr "Artikel"
 
 msgctxt "field:product.template-customer-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.template-customer-account.tax,tax:"
 msgid "Tax"
@@ -329,41 +326,34 @@ msgctxt "field:product.template-customer-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
 msgstr "Kategorie"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template-product.category.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
 msgstr "Vorlage"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
@@ -386,7 +376,7 @@ msgstr "Artikel"
 
 msgctxt "field:product.template-supplier-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.template-supplier-account.tax,tax:"
 msgid "Tax"
@@ -426,7 +416,7 @@ msgstr "ID"
 
 msgctxt "field:product.template.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.template.account,template:"
 msgid "Template"
@@ -445,7 +435,7 @@ msgid "Use the accounts defined on the parent category."
 msgstr "Konten der übergeordneten Kategorie anwenden."
 
 msgctxt "help:product.category,accounting:"
-msgid "Check to convert into accouting category."
+msgid "Check to convert into accounting category."
 msgstr "Aktivieren um in eine Buchunghaltungskategorie zu wandeln."
 
 msgctxt "help:product.category,customer_taxes:"
@@ -538,7 +528,7 @@ msgstr "Artikel - Steuer Kunde"
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
-msgstr ""
+msgstr "Modell - Buchungskategorie"
 
 msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
@@ -556,12 +546,10 @@ msgctxt "view:account.configuration:"
 msgid "Product"
 msgstr "Artikel"
 
-#, fuzzy
 msgctxt "view:account.create_chart.properties:"
 msgid "Category"
 msgstr "Kategorie"
 
-#, fuzzy
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr "Artikel"
@@ -589,6 +577,22 @@ msgstr "Konten"
 msgctxt "view:product.template:"
 msgid "Taxes"
 msgstr "Steuern"
+
+msgctxt "error:product.template:"
+msgid "There is no account expense/revenue defined on the product %s (%d)"
+msgstr "Es ist kein Aufwands-/Ertragskonto definiert für Artikel %s (%d)!"
+
+msgctxt "help:product.category,accounting:"
+msgid "Check to convert into accouting category."
+msgstr "Aktivieren um in eine Buchunghaltungskategorie zu wandeln."
+
+msgctxt "error:product.category:"
+msgid ""
+"There is no account expense/revenue defined on the category %(name)s "
+"(%(id)d)"
+msgstr ""
+"Es ist kein Aufwands-/Ertragskonto für die Kategorie %(name)s (%(id)d) "
+"definiert."
 
 msgctxt "help:product.product,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
