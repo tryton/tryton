@@ -201,6 +201,10 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr ""
 
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr ""

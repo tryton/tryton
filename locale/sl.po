@@ -36,7 +36,7 @@ msgstr "ID"
 
 msgctxt "field:customs.duty.rate,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
@@ -104,7 +104,7 @@ msgstr "ID"
 
 msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
@@ -140,7 +140,7 @@ msgstr "Izdelek"
 
 msgctxt "field:product-customs.tariff.code,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product-customs.tariff.code,sequence:"
 msgid "Sequence"
@@ -194,6 +194,10 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Uporabi tarifne številke iz kategorije"
 
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr "Številka iz nomenklature harmoniziranega sistema"
@@ -218,41 +222,49 @@ msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
 msgstr "Tarifna številka"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Stopnje dajatev"
+msgstr "Duty Rates"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tarifne številke"
+msgstr "Tariff Codes"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Izvoz"
+msgstr "Export"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Uvoz"
+msgstr "Import"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Carinjenje"
+msgstr "Customs"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Stopnje dajatev"
+msgstr "Duty Rates"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tarifne številke"
+msgstr "Tariff Codes"
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"
 msgstr "Izdelek - Tarifna številka"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
-msgstr "Carinjenje - vodenje"
+msgstr "Customs Administration"
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"

@@ -194,6 +194,10 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Usar los códigos arancelarios de la categoría"
 
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr "El código del sistema armonizado de nomenclatura."
@@ -228,11 +232,11 @@ msgstr "Códigos arancelarios"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Exportación"
+msgstr "Exportaciones"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Importación"
+msgstr "Importaciones"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"

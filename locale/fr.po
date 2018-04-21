@@ -194,6 +194,10 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Utiliser les codes de la catégorie"
 
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr "Le code de la Nomenclature du Système Harmonisé"
@@ -228,11 +232,11 @@ msgstr "Codes de douane"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Exporter"
+msgstr "Exportation"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Importer"
+msgstr "Importation"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
@@ -244,7 +248,7 @@ msgstr "Taux de douane"
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Codes de droit de douane"
+msgstr "Codes de douane"
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"

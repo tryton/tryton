@@ -92,9 +92,10 @@ msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
 msgstr "Duty Rates"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,end_day:"
 msgid "End Day"
-msgstr ""
+msgstr "Data ukończenia"
 
 msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
@@ -108,9 +109,10 @@ msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Record Name"
 msgstr "Nazwa rekordu"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
-msgstr ""
+msgstr "Data rozpoczęcia"
 
 msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
@@ -201,6 +203,10 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr ""
 
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr ""
@@ -227,33 +233,40 @@ msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
 msgstr "Tariff Codes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr ""
+msgstr "Duty Rates"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr ""
+msgstr "Tariff Codes"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr ""
+msgstr "Export"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr ""
+msgstr "Customs"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr ""
+msgstr "Duty Rates"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr ""
+msgstr "Tariff Codes"
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"
@@ -261,7 +274,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
-msgstr ""
+msgstr "Customs Administration"
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"

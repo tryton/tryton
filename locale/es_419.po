@@ -194,6 +194,10 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Utilizar los códigos arancelarios de la categoría"
 
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr ""
@@ -220,7 +224,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Tasas de aduana"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
@@ -228,11 +232,11 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Exportar"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Importar"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
@@ -240,7 +244,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Tasas de aduana"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"

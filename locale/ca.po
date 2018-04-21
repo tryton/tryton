@@ -194,6 +194,10 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Usa els codis aranzelaris de la categoria"
 
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr ""
@@ -226,15 +230,15 @@ msgstr "Taxes d'aranzel"
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Codis aranzelaris"
+msgstr "Codis d'aranzel"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Exportació"
+msgstr "Exportacions"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Importació"
+msgstr "Importacions"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
@@ -246,7 +250,7 @@ msgstr "Taxes d'aranzel"
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Codis aranzelaris"
+msgstr "Codis d'aranzel"
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"

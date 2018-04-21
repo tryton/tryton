@@ -36,7 +36,7 @@ msgstr "ID"
 
 msgctxt "field:customs.duty.rate,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
@@ -104,7 +104,7 @@ msgstr "ID"
 
 msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
@@ -140,7 +140,7 @@ msgstr "Artikel"
 
 msgctxt "field:product-customs.tariff.code,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product-customs.tariff.code,sequence:"
 msgid "Sequence"
@@ -193,6 +193,10 @@ msgstr "Tarifcodes"
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Tarifcodes der Kategorie anwenden"
+
+msgctxt "help:customs.tariff.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
