@@ -258,21 +258,25 @@ msgctxt "model:account.payment.sepa.message,name:"
 msgid "SEPA Message"
 msgstr "SEPA Messages"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_mandate_form"
 msgid "SEPA Mandates"
-msgstr ""
+msgstr "SEPA Mandates"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_mandate_form2"
 msgid "Mandates"
-msgstr ""
+msgstr "Mandate"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
 msgid "SEPA Messages"
-msgstr ""
+msgstr "SEPA Messages"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
-msgstr ""
+msgstr "Mandate"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
@@ -284,54 +288,104 @@ msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
 msgid "Draft"
 msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
 msgid "Requested"
-msgstr ""
+msgstr "Requested"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
 msgid "Validated"
-msgstr ""
+msgstr "Validated"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
 msgid "Canceled"
-msgstr ""
+msgstr "Canceled"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr "Wykonano"
+msgstr "Done"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
 msgid "Receivable with Mandate"
-msgstr ""
+msgstr "Receivable with Mandate"
 
+msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
+msgid "Are you sure to cancel the mandate?"
+msgstr "Are you sure to cancel the mandate?"
+
+msgctxt "model:ir.model.button,string:group_generate_message_button"
+msgid "Generate Message"
+msgstr "Generate Message"
+
+msgctxt "model:ir.model.button,string:mandate_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:mandate_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:mandate_request_button"
+msgid "Request"
+msgstr "Request"
+
+msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:message_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:message_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:message_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:message_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
-msgstr ""
+msgstr "SEPA Mandate"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_mandate_form"
 msgid "SEPA Mandates"
-msgstr ""
+msgstr "SEPA Mandates"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
 msgid "SEPA Messages"
-msgstr ""
+msgstr "SEPA Messages"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "."
@@ -405,9 +459,10 @@ msgctxt "report:account.payment.sepa.mandate:"
 msgid "Recurrent payment"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "SEPA"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Signature"
@@ -481,13 +536,15 @@ msgctxt "selection:account.payment.sepa.mandate,state:"
 msgid "Draft"
 msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.mandate,state:"
 msgid "Requested"
-msgstr ""
+msgstr "Request"
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.mandate,state:"
 msgid "Validated"
-msgstr ""
+msgstr "Validate"
 
 msgctxt "selection:account.payment.sepa.mandate,type:"
 msgid "One-off"
@@ -528,21 +585,14 @@ msgctxt "selection:party.identifier,type:"
 msgid "SEPA Creditor Identifier"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "SEPA"
-msgstr ""
-
-msgctxt "view:account.payment.group:"
-msgid "Generate Message"
-msgstr ""
+msgstr "SEPA"
 
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "SEPA"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Are you sure to cancel the mandate?"
-msgstr ""
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Cancel"
@@ -553,21 +603,9 @@ msgctxt "view:account.payment.sepa.mandate:"
 msgid "Draft"
 msgstr "Draft"
 
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Request"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Validate"
-msgstr ""
-
 msgctxt "view:account.payment.sepa.message:"
 msgid "Cancel"
 msgstr "Anuluj"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "Do"
-msgstr ""
 
 #, fuzzy
 msgctxt "view:account.payment.sepa.message:"

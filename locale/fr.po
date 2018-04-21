@@ -297,25 +297,65 @@ msgstr "Tous"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
 msgid "Canceled"
-msgstr "Annulé"
+msgstr "Annulés"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr "Effectué"
+msgstr "Effectués"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "En attentes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
 msgid "Receivable with Mandate"
 msgstr "À recevoir avec mandat"
+
+msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
+msgid "Are you sure to cancel the mandate?"
+msgstr "Are you sure to cancel the mandate?"
+
+msgctxt "model:ir.model.button,string:group_generate_message_button"
+msgid "Generate Message"
+msgstr "Generate Message"
+
+msgctxt "model:ir.model.button,string:mandate_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:mandate_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:mandate_request_button"
+msgid "Request"
+msgstr "Request"
+
+msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
+msgid "Validate"
+msgstr "Validate"
+
+msgctxt "model:ir.model.button,string:message_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:message_do_button"
+msgid "Do"
+msgstr "Do"
+
+msgctxt "model:ir.model.button,string:message_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:message_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
@@ -529,13 +569,13 @@ msgctxt "view:account.configuration:"
 msgid "SEPA"
 msgstr "SEPA"
 
-msgctxt "view:account.payment.group:"
-msgid "Generate Message"
-msgstr "Générer le message"
-
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "SEPA"
+
+msgctxt "view:account.payment.group:"
+msgid "Generate Message"
+msgstr "Générer le message"
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Are you sure to cancel the mandate?"
