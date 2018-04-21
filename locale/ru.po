@@ -80,21 +80,22 @@ msgctxt "field:carrier.credential.dpd,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
-msgstr ""
+msgstr "DPD Credentials"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
-msgstr ""
+msgstr "Create DPD Shipping for Packages"
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr ""
+msgstr "DPD Credentials"
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr ""
+msgstr "DPD Credentials"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"

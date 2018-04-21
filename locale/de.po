@@ -56,7 +56,7 @@ msgstr "Passwort"
 
 msgctxt "field:carrier.credential.dpd,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
@@ -84,7 +84,7 @@ msgstr "DPD Anmeldedaten"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
-msgstr "DPD Versand erstellen"
+msgstr "DPD Versand für Pakete erstellen"
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
