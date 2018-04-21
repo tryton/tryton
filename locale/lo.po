@@ -82,6 +82,14 @@ msgctxt "field:web.user.authenticate.attempt,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
 msgstr "ເຊື່ອມຕໍ່ເຂົ້າລະບົບ"
@@ -130,21 +138,37 @@ msgctxt "field:web.user.session,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
+msgctxt "help:web.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr "ຜູ້ໃຊ້ງານເວັບ"
+msgstr "Web Users"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "ປັບລະຫັດຜ່ານຄືນໃໝ່"
+msgstr "Reset Password"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr "ການຢືນຢັນຄວາມຖືກຕ້ອງ ອີ-ເມວລ໌"
+msgstr "Email Validation"
 
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr "ຜູ້ໃຊ້ງານເວັບ"
+msgstr "Web Users"
 
 msgctxt "model:web.user,name:"
 msgid "Web User"

@@ -92,6 +92,14 @@ msgctxt "field:web.user.authenticate.attempt,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr ""
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr ""
+
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
 msgstr ""
@@ -148,25 +156,38 @@ msgctxt "field:web.user.session,write_uid:"
 msgid "Write User"
 msgstr "Gebruiker"
 
+msgctxt "help:web.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Web Users"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr ""
+msgstr "Reset Password"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr ""
+msgstr "Email Validation"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr ""
+msgstr "Web Users"
 
+#, fuzzy
 msgctxt "model:web.user,name:"
 msgid "Web User"
-msgstr ""
+msgstr "Web Users"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
@@ -184,9 +205,10 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
 msgstr ""
 
+#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Reset Password"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
@@ -196,9 +218,10 @@ msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:web.user.email_validation:"
 msgid "Email Validation"
-msgstr ""
+msgstr "Email Validation"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
@@ -213,10 +236,12 @@ msgctxt "report:web.user.email_validation:"
 msgid "Validate"
 msgstr "Goedkeuren"
 
+#, fuzzy
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Reset Password"
 
+#, fuzzy
 msgctxt "view:web.user:"
 msgid "Validate E-mail"
-msgstr ""
+msgstr "Validate E-mail"

@@ -4,155 +4,155 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:web.user.session:"
 msgid "Key must be unique"
-msgstr "La clave debe ser única."
+msgstr "کلید باید منحصر به فرد باشد"
 
 msgctxt "error:web.user:"
 msgid "E-mail must be unique"
-msgstr "El correo electrónico debe ser único. "
+msgstr "ایمیل باید منحصر به فرد باشد"
 
 msgctxt "field:web.user,active:"
 msgid "Active"
-msgstr "Activo"
+msgstr "فعال"
 
 msgctxt "field:web.user,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:web.user,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:web.user,email:"
 msgid "E-mail"
-msgstr "Correo electrónico"
+msgstr "ایمیل"
 
 msgctxt "field:web.user,email_token:"
 msgid "E-mail Token"
-msgstr "Token del correo electrónico"
+msgstr "نشانه(Token) ایمیل"
 
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
-msgstr "Correo electrónico válido"
+msgstr "ایمیل معتبر است"
 
 msgctxt "field:web.user,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
-msgstr "Tercero"
+msgstr "نهاد/سازمان"
 
 msgctxt "field:web.user,password:"
 msgid "Password"
-msgstr "Contraseña"
+msgstr "کلمه عبور"
 
 msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
-msgstr "Hash de la contraseña"
+msgstr "کلمه عبور درهم"
 
 msgctxt "field:web.user,rec_name:"
 msgid "Record Name"
-msgstr "Nombre del registro"
+msgstr "نام پرونده"
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
-msgstr "Restablecer el token de la contraseña"
+msgstr "بازنشانی نشانه(Token) کلمه عبور"
 
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
-msgstr "Restablecer el token de expiración de la contraseña"
+msgstr "بازنشانی انقضای نشانه(Token) کلمه عبور"
 
 msgctxt "field:web.user,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:web.user,write_uid:"
 msgid "Write User"
-msgstr "Usuario de modificación"
+msgstr "نوشته کاربر"
 
 msgctxt "field:web.user.authenticate.attempt,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:web.user.authenticate.attempt,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:web.user.authenticate.attempt,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
-msgstr "Dirección IP"
+msgstr "آدرس آی پی"
 
 msgctxt "field:web.user.authenticate.attempt,ip_network:"
 msgid "IP Network"
-msgstr "Red IP"
+msgstr "آی پی شبکه"
 
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
-msgstr "Nombre usuario"
+msgstr "ورود به سیستم"
 
 msgctxt "field:web.user.authenticate.attempt,rec_name:"
 msgid "Record Name"
-msgstr "Nombre del registro"
+msgstr "نام پرونده"
 
 msgctxt "field:web.user.authenticate.attempt,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:web.user.authenticate.attempt,write_uid:"
 msgid "Write User"
-msgstr "Usuario de modificación"
+msgstr "نوشته کاربر"
 
 msgctxt "field:web.user.session,create_date:"
 msgid "Create Date"
-msgstr "Fecha de creación"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:web.user.session,create_uid:"
 msgid "Create User"
-msgstr "Usuario de creación"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:web.user.session,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:web.user.session,key:"
 msgid "Key"
-msgstr "Clave"
+msgstr "کلید"
 
 msgctxt "field:web.user.session,rec_name:"
 msgid "Record Name"
-msgstr "Nombre del registro"
+msgstr "نام پرونده"
 
 msgctxt "field:web.user.session,user:"
 msgid "User"
-msgstr "Usuario"
+msgstr "کاربر"
 
 msgctxt "field:web.user.session,write_date:"
 msgid "Write Date"
-msgstr "Fecha de modificación"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:web.user.session,write_uid:"
 msgid "Write User"
-msgstr "Usuario de modificación"
+msgstr "نوشته کاربر"
 
 msgctxt "help:web.user,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr "Usuarios web"
+msgstr "کاربران وب"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Restablecer contraseña"
+msgstr "بازنشانی رمز عبور"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr "Validación correo electrónico"
+msgstr "اعتبار سنجی ایمیل"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
@@ -164,63 +164,60 @@ msgstr "Validate E-mail"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr "Usuarios web"
+msgstr "کاربران وب"
 
 msgctxt "model:web.user,name:"
 msgid "Web User"
-msgstr "Usuario web"
+msgstr "کاربر وب"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
-msgstr "Intento de identificación usuario web"
+msgstr "تلاش برای هوّیت سنجی کاربر وب"
 
 msgctxt "model:web.user.session,name:"
 msgid "Web User Session"
-msgstr "Sesión usuario web"
+msgstr "جلسه کاری کاربر وب"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr "El botón no funciona? Copiar y pego esto en tu navegador web:"
+msgstr "دکمه کار نمی کند؟ این آدرس را در مرورگر خود مرور کنید:"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
-msgstr ""
-"Si no habéis realizado esta petición, podéis ignorar este correo "
-"electrónico."
+msgstr "اگراین درخواست را نکرده باشید، می توانید این ایمیل را نادیده بگیرید."
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr "Restablecer contraseña"
+msgstr "بازنشانی کلمه عبور"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
-msgstr ""
-"Hemos recibido una solicitud para reiniciar la contraseña de vuestra cuenta,"
+msgstr "مایک درخواست برای بازنشانی کلمه عبور حساب کاربری شما دریافت کردیم،"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr "El botón no funciona? Copiar y pego esto en tu navegador web:"
+msgstr "دکمه کار نمی کند؟ این آدرس را در مرورگر خود مرور کنید:"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Email Validation"
-msgstr "Validación correo electrónico"
+msgstr "اعتبار سنجی ایمیل"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr "Si habéis recibido este correo por error, ignórelo."
+msgstr "اگر این ایمیل را به اشتباه دریافت کردید، فقط آن را نادیده بگیرید."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Just one more step.."
-msgstr "Solo un paso mas..."
+msgstr "فقط یک گام دیگه.."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
-msgstr "Validar"
+msgstr "تایید اعتبار"
 
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr "Restablecer contraseña"
+msgstr "بازنشانی کلمه عبور"
 
 msgctxt "view:web.user:"
 msgid "Validate E-mail"
-msgstr "Validar correo electrónico"
+msgstr "ایمیل معتبر است"

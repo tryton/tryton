@@ -56,11 +56,11 @@ msgstr "Nom del registre"
 
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
-msgstr "Reinicia token de la contrasenya"
+msgstr "Token restableix la contrasenya"
 
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
-msgstr "Expira reinici token de la contrasenya"
+msgstr "Expiració token restableix contrasenya"
 
 msgctxt "field:web.user,write_date:"
 msgid "Write Date"
@@ -81,6 +81,14 @@ msgstr "Usuari de creació"
 msgctxt "field:web.user.authenticate.attempt,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:web.user.authenticate.attempt,ip_address:"
+msgid "IP Address"
+msgstr "Adreça IP"
+
+msgctxt "field:web.user.authenticate.attempt,ip_network:"
+msgid "IP Network"
+msgstr "Xarxa IP"
 
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
@@ -130,17 +138,29 @@ msgctxt "field:web.user.session,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:web.user,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
 msgstr "Usuaris web"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reinicia la contrasenya"
+msgstr "Restableix la contrasenya"
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "Validació correu electrònic"
+
+msgctxt "model:ir.model.button,string:user_reset_password_button"
+msgid "Reset Password"
+msgstr "Restableix la contrasenya"
+
+msgctxt "model:ir.model.button,string:user_validate_email_button"
+msgid "Validate E-mail"
+msgstr "Validate E-mail"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
@@ -168,11 +188,11 @@ msgstr "Si no heu fet aquesta petició, podeu ignorar aquest correu."
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr "Reinicia la contrasenya"
+msgstr "Restableix la contrasenya"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
-msgstr "Hem rebut una petició per reiniciar la contrasenya del vostre compte."
+msgstr "Hem rebut una petició per restablir la contrasenya del vostre compte."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
@@ -196,7 +216,7 @@ msgstr "Valida"
 
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr "Reinicia la contrasenya"
+msgstr "Restableix la contrasenya"
 
 msgctxt "view:web.user:"
 msgid "Validate E-mail"
