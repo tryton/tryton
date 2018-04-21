@@ -48,9 +48,10 @@ msgctxt "field:bank.account,active:"
 msgid "Active"
 msgstr "启用"
 
+#, fuzzy
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
-msgstr ""
+msgstr "Banks"
 
 #, fuzzy
 msgctxt "field:bank.account,create_date:"
@@ -93,9 +94,10 @@ msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr ""
+msgstr "Accounts"
 
 #, fuzzy
 msgctxt "field:bank.account-party.party,create_date:"
@@ -130,9 +132,10 @@ msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+#, fuzzy
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr ""
+msgstr "Accounts"
 
 #, fuzzy
 msgctxt "field:bank.account.number,create_date:"
@@ -190,7 +193,7 @@ msgid "Bank/Business Identifier Code."
 msgstr ""
 
 msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:bank.account,bank:"
@@ -205,9 +208,10 @@ msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:bank,name:"
 msgid "Bank"
-msgstr ""
+msgstr "Banks"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
@@ -223,27 +227,27 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr ""
+msgstr "Accounts"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "Banks"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr ""
+msgstr "Accounts"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "Banks"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr ""
+msgstr "Banking"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr ""
+msgstr "Bank Administration"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -253,6 +257,7 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr ""
+msgstr "Banking"

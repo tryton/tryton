@@ -168,7 +168,7 @@ msgid "Bank/Business Identifier Code."
 msgstr "Bank/BIC"
 
 msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:bank.account,bank:"
@@ -199,29 +199,35 @@ msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
 msgstr "Számlaszám"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Számla"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr "Bankok"
+msgstr "Banks"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Számlák"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "Bankok"
+msgstr "Banks"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Bankügylet"
+msgstr "Banking"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr "Bank adminisztráció"
+msgstr "Bank Administration"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"

@@ -49,9 +49,10 @@ msgctxt "field:bank.account,active:"
 msgid "Active"
 msgstr "Активен"
 
+#, fuzzy
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
-msgstr ""
+msgstr "Banks"
 
 #, fuzzy
 msgctxt "field:bank.account,create_date:"
@@ -198,7 +199,7 @@ msgid "Bank/Business Identifier Code."
 msgstr ""
 
 msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:bank.account,bank:"
@@ -213,9 +214,10 @@ msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:bank,name:"
 msgid "Bank"
-msgstr ""
+msgstr "Banks"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
@@ -236,7 +238,7 @@ msgstr "Сметки"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "Banks"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
@@ -245,15 +247,15 @@ msgstr "Сметки"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr ""
+msgstr "Banks"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr ""
+msgstr "Banking"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr ""
+msgstr "Bank Administration"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -264,6 +266,7 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Друг"
 
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr ""
+msgstr "Banking"

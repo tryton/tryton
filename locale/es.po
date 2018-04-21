@@ -167,8 +167,8 @@ msgid "Bank/Business Identifier Code."
 msgstr "Código Identificador de Banco/Negocio (BIC)."
 
 msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
-msgstr "Desmarcar para excluir la cuenta bancaria de uso en el futuro."
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -233,6 +233,10 @@ msgstr "Otro"
 msgctxt "view:party.party:"
 msgid "Banking"
 msgstr "Banca"
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "view:bank.account.number:"
 msgid "Bank Account Number"

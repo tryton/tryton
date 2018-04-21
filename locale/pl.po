@@ -167,8 +167,8 @@ msgid "Bank/Business Identifier Code."
 msgstr "Bankowy/biznesowy kod identyfikacyjny."
 
 msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
-msgstr "Odznacz, aby nie używać konta w przyszłości."
+msgid "Uncheck to exclude from future use."
+msgstr "Odznacz, aby nie używać w przyszłości."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -200,7 +200,7 @@ msgstr "Numer konta bankowego"
 
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "Konta bankowe"
+msgstr "Konta"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
@@ -208,7 +208,7 @@ msgstr "Banki"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "Konta bankowe"
+msgstr "Konta"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
@@ -233,3 +233,7 @@ msgstr "Inne"
 msgctxt "view:party.party:"
 msgid "Banking"
 msgstr "Bankowość"
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr "Odznacz, aby nie używać konta w przyszłości."

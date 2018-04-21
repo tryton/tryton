@@ -167,8 +167,8 @@ msgid "Bank/Business Identifier Code."
 msgstr "ທະນາຄານ/ລະຫັດລະບຸຕົວຕົນທຸລະກິດ"
 
 msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
-msgstr "ປົດໝາຍອອກເພື່ອບໍ່ລວມເອົາບັນຊີທະນາຄານຈາກການໃຊ້ງານໃນອະນາຄົດ"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -198,29 +198,35 @@ msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
 msgstr "ເລກບັນຊີທະນາຄານ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
-msgstr "ບັນຊີ"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr "ທະນາຄານ"
+msgstr "Banks"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
-msgstr "ບັນຊີ"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "ທະນາຄານ"
+msgstr "Banks"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "ການທະນາຄານ"
+msgstr "Banking"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
-msgstr "ການບໍລິຫານທະນາຄານ"
+msgstr "Bank Administration"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
@@ -233,3 +239,7 @@ msgstr "ອື່ນໆ"
 msgctxt "view:party.party:"
 msgid "Banking"
 msgstr "ການທະນາຄານ"
+
+msgctxt "help:bank.account,active:"
+msgid "Uncheck to exclude the bank account from future use."
+msgstr "ປົດໝາຍອອກເພື່ອບໍ່ລວມເອົາບັນຊີທະນາຄານຈາກການໃຊ້ງານໃນອະນາຄົດ"

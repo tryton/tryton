@@ -170,7 +170,7 @@ msgid "Bank/Business Identifier Code."
 msgstr ""
 
 msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:bank.account,bank:"
