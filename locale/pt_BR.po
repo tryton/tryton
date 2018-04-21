@@ -158,9 +158,10 @@ msgctxt "field:project.work,successors:"
 msgid "Successors"
 msgstr "Sucessores"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Nivelação das Tarefas"
+msgstr "Tasks Leveling"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"

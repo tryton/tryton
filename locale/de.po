@@ -24,7 +24,7 @@ msgstr "Prozentsatz"
 
 msgctxt "field:project.allocation,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
@@ -56,7 +56,7 @@ msgstr "Vorgänger"
 
 msgctxt "field:project.predecessor_successor,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"

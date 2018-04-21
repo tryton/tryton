@@ -24,7 +24,7 @@ msgstr "Delež"
 
 msgctxt "field:project.allocation,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
@@ -56,7 +56,7 @@ msgstr "Predhodnik"
 
 msgctxt "field:project.predecessor_successor,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
@@ -158,9 +158,10 @@ msgctxt "field:project.work,successors:"
 msgid "Successors"
 msgstr "Nasledniki"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Izravnava nalog"
+msgstr "Tasks Leveling"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"

@@ -172,7 +172,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr ""
+msgstr "Tasks Leveling"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"

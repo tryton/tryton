@@ -4,186 +4,176 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
-msgstr "Сотрудник"
+msgstr "کارمند"
 
 msgctxt "field:project.allocation,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
-msgstr "Процент"
+msgstr "درصد"
 
 msgctxt "field:project.allocation,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "Работа"
+msgstr "کار"
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "نوشته کاربر"
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
-msgstr "Предок"
+msgstr "کارمند اسبق"
 
 msgctxt "field:project.predecessor_successor,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
-msgstr "Потомок"
+msgstr "جانشین"
 
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "نوشته کاربر"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
-msgstr "Фактически завершен"
+msgstr "پایان واقعی"
 
 msgctxt "field:project.work,actual_finish_time:"
 msgid "Actual Finish Time"
-msgstr "Фактически завершен (время)"
+msgstr "زمان پایان واقعی"
 
 msgctxt "field:project.work,actual_start_date:"
 msgid "Actual Start"
-msgstr "Фактически начат"
+msgstr "شروع واقعی"
 
 msgctxt "field:project.work,actual_start_time:"
 msgid "Actual Start Time"
-msgstr "Фактически начат (время)"
+msgstr "زمان شروع واقعی"
 
 msgctxt "field:project.work,allocations:"
 msgid "Allocations"
-msgstr "Распределения"
+msgstr "تخصیص ها"
 
 msgctxt "field:project.work,back_leveling_delay:"
 msgid "Back Leveling Delay"
-msgstr "Обратная выравнивающая задержка"
+msgstr "سطح تاخیر به عقب"
 
 msgctxt "field:project.work,constraint_finish_date:"
 msgid "Constraint Finish"
-msgstr "Порог завершения"
+msgstr "پایان محدودیت"
 
-#, fuzzy
 msgctxt "field:project.work,constraint_finish_time:"
 msgid "Constraint Finish Time"
-msgstr "Порог завершения (время)"
+msgstr "زمان پایان محدودیت"
 
 msgctxt "field:project.work,constraint_start_date:"
 msgid "Constraint Start"
-msgstr "Порог начала"
+msgstr "شروع محدودیت"
 
 msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
-msgstr "Порог начала (время)"
+msgstr "زمان شروع محدودیت"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr "Продолжительность"
+msgstr "مدت زمان"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
-msgstr "Досрочное завершение"
+msgstr "پایان زودهنگام"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Досрочное завершение (время)"
+msgstr "زمان پایان زودهنگام"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Досрочное начало"
+msgstr "شروع زودهنگام"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Досрочное начало (время)"
+msgstr "زمان شروع زودهنگام"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
-msgstr "Позднее завершение"
+msgstr "پایان تأخییر افتاده"
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
-msgstr "Позднее завершение (время)"
+msgstr "زمان پایان تأخییر افتاده"
 
 msgctxt "field:project.work,late_start_date:"
 msgid "Late Start"
-msgstr "Позднее начало"
+msgstr "شروع با تأخییر"
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "Позднее начало (время)"
+msgstr "زمان شروع با تأخییر"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"
-msgstr "Выравнивающая задержка"
+msgstr "سطح تاخیر"
 
 msgctxt "field:project.work,predecessors:"
 msgid "Predecessors"
-msgstr "Предки"
+msgstr "پیشینیان"
 
 msgctxt "field:project.work,successors:"
 msgid "Successors"
-msgstr "Потомки"
+msgstr "جانشین ها"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Tasks Leveling"
+msgstr "سطح وظایف"
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"
-msgstr "Распределение"
+msgstr "تخصیص"
 
 msgctxt "model:project.predecessor_successor,name:"
 msgid "Predecessor - Successor"
-msgstr "Предок - Потомок"
+msgstr "کارمند اسبق - جانشین"
 
 msgctxt "view:project.work:"
 msgid "Allocations"
-msgstr "Распределения"
+msgstr "تخصیص ها"
 
 msgctxt "view:project.work:"
 msgid "Plan"
-msgstr "План"
-
-msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr "Распределение"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Распределения"
+msgstr "طرح"
