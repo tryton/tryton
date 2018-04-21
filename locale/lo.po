@@ -111,9 +111,10 @@ msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
 msgstr "ເອກະສານອ້າງອີງ"
 
+#, fuzzy
 msgctxt "field:sale.opportunity,sales:"
 msgid "Sales"
-msgstr ""
+msgstr "Sales"
 
 #, fuzzy
 msgctxt "field:sale.opportunity,start_date:"
@@ -150,9 +151,10 @@ msgctxt "field:sale.opportunity.line,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
-msgstr ""
+msgstr "Opportunities"
 
 msgctxt "field:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity State"
@@ -215,9 +217,10 @@ msgctxt "field:sale.opportunity_employee,conversion_rate:"
 msgid "Conversion Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.opportunity_employee,converted:"
 msgid "Converted"
-msgstr ""
+msgstr "Converted"
 
 msgctxt "field:sale.opportunity_employee,converted_amount:"
 msgid "Converted Amount"
@@ -253,9 +256,10 @@ msgctxt "field:sale.opportunity_employee,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
-msgstr ""
+msgstr "Lost"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_employee,number:"
@@ -326,9 +330,10 @@ msgctxt "field:sale.opportunity_employee_monthly,conversion_rate:"
 msgid "Conversion Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,converted:"
 msgid "Converted"
-msgstr ""
+msgstr "Converted"
 
 msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
 msgid "Converted Amount"
@@ -364,9 +369,10 @@ msgctxt "field:sale.opportunity_employee_monthly,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
-msgstr ""
+msgstr "Lost"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,month:"
@@ -432,9 +438,10 @@ msgctxt "field:sale.opportunity_monthly,conversion_rate:"
 msgid "Conversion Rate"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.opportunity_monthly,converted:"
 msgid "Converted"
-msgstr ""
+msgstr "Converted"
 
 msgctxt "field:sale.opportunity_monthly,converted_amount:"
 msgid "Converted Amount"
@@ -465,9 +472,10 @@ msgctxt "field:sale.opportunity_monthly,id:"
 msgid "ID"
 msgstr "ເລດລຳດັບ"
 
+#, fuzzy
 msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
-msgstr ""
+msgstr "Lost"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_monthly,month:"
@@ -529,27 +537,27 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
-msgstr ""
+msgstr "Sales"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
-msgstr ""
+msgstr "Opportunities per Employee"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr ""
+msgstr "Opportunities per Employee per Month"
 
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr ""
+msgstr "Leads and Opportunities"
 
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr ""
+msgstr "Sales Leads/Opportunities"
 
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
-msgstr ""
+msgstr "Opportunities per Month"
 
 #, fuzzy
 msgctxt ""
@@ -560,27 +568,27 @@ msgstr "ທັງໝົດ"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelled"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
 msgid "Converted"
-msgstr ""
+msgstr "Converted"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
 msgid "Leads"
-msgstr ""
+msgstr "Leads"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
 msgid "Lost"
-msgstr ""
+msgstr "Lost"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
 msgid "Opportunities"
-msgstr ""
+msgstr "Opportunities"
 
 #, fuzzy
 msgctxt ""
@@ -588,46 +596,63 @@ msgctxt ""
 msgid "Won"
 msgstr "ວອນ ເກົາຫຼີໃຕ້"
 
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
+
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Sale Opportunity"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Sale Opportunity"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr ""
+msgstr "Opportunities per Employee per Month"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
 msgid "Opportunities per Employee"
-msgstr ""
+msgstr "Opportunities per Employee"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr ""
+msgstr "Leads and Opportunities"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "ກຳລັງລາຍງາຍ"
+msgstr "Opportunities per Month"
 
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Sale Opportunity"
 
+#, fuzzy
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
-msgstr ""
+msgstr "Sale Opportunity"
 
+#, fuzzy
 msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
-msgstr ""
+msgstr "Sale Opportunity"
 
 msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
@@ -637,58 +662,69 @@ msgctxt "model:sale.opportunity_employee.context,name:"
 msgid "Sale Opportunity per Employee Context"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
-msgstr ""
+msgstr "Opportunities per Employee per Month"
 
 msgctxt "model:sale.opportunity_monthly,name:"
 msgid "Sale Opportunity per Month"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.opportunity,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelled"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity,state:"
 msgid "Converted"
-msgstr ""
+msgstr "Converted"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lead"
-msgstr ""
+msgstr "Leads"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity,state:"
 msgid "Lost"
-msgstr ""
+msgstr "Lost"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity,state:"
 msgid "Opportunity"
-msgstr ""
+msgstr "Opportunities"
 
 #, fuzzy
 msgctxt "selection:sale.opportunity,state:"
 msgid "Won"
 msgstr "ວອນ ເກົາຫຼີໃຕ້"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelled"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Converted"
-msgstr ""
+msgstr "Converted"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lead"
-msgstr ""
+msgstr "Leads"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Lost"
-msgstr ""
+msgstr "Lost"
 
+#, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Opportunity"
-msgstr ""
+msgstr "Opportunities"
 
 #, fuzzy
 msgctxt "selection:sale.opportunity.line,opportunity_state:"
@@ -700,29 +736,8 @@ msgctxt "view:sale.opportunity:"
 msgid "%"
 msgstr "%"
 
-#, fuzzy
-msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr ""
-
 msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
 msgstr ""
 
 #, fuzzy
@@ -739,3 +754,13 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "ກຳລັງລາຍງາຍ"
+
+#, fuzzy
+msgctxt "view:sale.opportunity:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"

@@ -90,7 +90,7 @@ msgstr "Zahlungsbedingung"
 
 msgctxt "field:sale.opportunity,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
@@ -146,7 +146,7 @@ msgstr "Anzahl"
 
 msgctxt "field:sale.opportunity.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.opportunity.line,sequence:"
 msgid "Sequence"
@@ -226,7 +226,7 @@ msgstr "Anzahl"
 
 msgctxt "field:sale.opportunity_employee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -326,7 +326,7 @@ msgstr "Anzahl"
 
 msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -414,7 +414,7 @@ msgstr "Anzahl"
 
 msgctxt "field:sale.opportunity_monthly,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -458,7 +458,7 @@ msgstr "Prozentsatz zwischen 0 und 100"
 
 msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
-msgstr "Verkäufe"
+msgstr "Verkauf"
 
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
@@ -503,7 +503,7 @@ msgstr "Interessenten"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
 msgid "Lost"
-msgstr "Verlust"
+msgstr "Verloren"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
@@ -514,6 +514,26 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
 msgid "Won"
 msgstr "Gewonnen"
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
@@ -538,10 +558,6 @@ msgstr "Interessenten und Verkaufschancen"
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
 msgstr "Verkaufschancen pro Monat"
-
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Auswertungen"
 
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
@@ -624,28 +640,8 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "Annullieren"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr "In Verkaufschance umwandeln"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr "In Verkauf umwandeln"
-
-msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
 msgstr "Interessent/Chance"
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr "Als Verlust markieren"
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
-msgstr "Auf Interessent setzen"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "%"
@@ -658,6 +654,30 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Auswertungen"
+
+msgctxt "view:sale.opportunity:"
+msgid "Cancel"
+msgstr "Annullieren"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Opportunity"
+msgstr "In Verkaufschance umwandeln"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Sale"
+msgstr "In Verkauf umwandeln"
+
+msgctxt "view:sale.opportunity:"
+msgid "Mark as Lost"
+msgstr "Als Verlust markieren"
+
+msgctxt "view:sale.opportunity:"
+msgid "Set as Lead"
+msgstr "Auf Interessent setzen"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "Opportunities per Employee"

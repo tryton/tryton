@@ -468,30 +468,35 @@ msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
 msgstr "Управление на продажби"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
-msgstr "Възможности по служител"
+msgstr "Opportunities per Employee"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr "Възможности по служител по месец"
+msgstr "Opportunities per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr "Инициативи и възможности"
+msgstr "Leads and Opportunities"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr "Инициативи/Възможности за продажба"
+msgstr "Sales Leads/Opportunities"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
-msgstr "Възможности по месец"
+msgstr "Opportunities per Month"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "All"
 
 #, fuzzy
 msgctxt ""
@@ -529,6 +534,26 @@ msgctxt ""
 msgid "Won"
 msgstr "Уон"
 
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
+
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
@@ -539,29 +564,30 @@ msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
 msgstr "Възможност за продажба"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr "Възможности по служител по месец"
+msgstr "Opportunities per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
 msgid "Opportunities per Employee"
-msgstr "Възможности по служител"
+msgstr "Opportunities per Employee"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr "Инициативи и възможности"
+msgstr "Leads and Opportunities"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
-msgstr "Възможности по месец"
+msgstr "Opportunities per Month"
 
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Справки"
-
+#, fuzzy
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr "Възможност за продажба"
+msgstr "Sale Opportunity"
 
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
@@ -649,28 +675,8 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr "Превръщане във възможност"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr "Прехвърлено в продажба"
-
-msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
 msgstr "Инициатива/Възможност"
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr "Отбелязване като загубен"
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
-msgstr "Прехвърляне в инициатива"
 
 #, fuzzy
 msgctxt "view:sale.opportunity_employee:"
@@ -686,6 +692,30 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Справки"
+
+msgctxt "view:sale.opportunity:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Opportunity"
+msgstr "Превръщане във възможност"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Sale"
+msgstr "Прехвърлено в продажба"
+
+msgctxt "view:sale.opportunity:"
+msgid "Mark as Lost"
+msgstr "Отбелязване като загубен"
+
+msgctxt "view:sale.opportunity:"
+msgid "Set as Lead"
+msgstr "Прехвърляне в инициатива"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "Opportunities per Employee"

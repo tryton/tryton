@@ -475,7 +475,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr "Iniciativas/Oportunidades de ventas"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
@@ -518,17 +518,37 @@ msgctxt ""
 msgid "Won"
 msgstr "Ganada"
 
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr "Oportunidad de venta"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr "Oportunidad de venta"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr "Oportunidades por empleado por mes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
 msgid "Opportunities per Employee"
@@ -542,13 +562,9 @@ msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
 msgstr ""
 
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr ""
-
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr "Oportunidad de venta"
+msgstr ""
 
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
@@ -631,27 +647,7 @@ msgid "%"
 msgstr ""
 
 msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr "Convertir a venta"
-
-msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr ""
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
 msgstr ""
 
 #, fuzzy
@@ -668,3 +664,7 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Sale"
+msgstr "Convertir a venta"

@@ -468,61 +468,92 @@ msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
 msgstr "Продажи"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_employee_form"
 msgid "Opportunities per Employee"
-msgstr "Возможные продажи по сотруднику"
+msgstr "Opportunities per Employee"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr "Возможные продажи по сотрудникам по месяцам"
+msgstr "Opportunities per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr "Неопределенные и Возможные"
+msgstr "Leads and Opportunities"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_form2"
 msgid "Sales Leads/Opportunities"
-msgstr "Продажи Неопределенных/Возможных"
+msgstr "Sales Leads/Opportunities"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_opportunity_monthly_form"
 msgid "Opportunities per Month"
-msgstr "Возможные продажи по месяцам"
+msgstr "Opportunities per Month"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_all"
 msgid "All"
-msgstr "Все"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_cancelled"
 msgid "Cancelled"
-msgstr "Отмененно"
+msgstr "Cancelled"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_converted"
 msgid "Converted"
-msgstr "Обращенные"
+msgstr "Converted"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
 msgid "Leads"
-msgstr "Неопределенные"
+msgstr "Leads"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
 msgid "Lost"
-msgstr "Утраченная"
+msgstr "Lost"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_opportunities"
 msgid "Opportunities"
-msgstr "Возможные продажи"
+msgstr "Opportunities"
 
 #, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_won"
 msgid "Won"
 msgstr "Вона"
+
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
@@ -534,29 +565,30 @@ msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
 msgstr "Продажа Возможной"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
-msgstr "Возможные продажи по сотрудникам по месяцам"
+msgstr "Opportunities per Employee per Month"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_open"
 msgid "Opportunities per Employee"
-msgstr "Возможные продажи по сотруднику"
+msgstr "Opportunities per Employee"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_form"
 msgid "Leads and Opportunities"
-msgstr "Неопределенные и Возможные"
+msgstr "Leads and Opportunities"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
-msgstr "Возможные продажи по месяцам"
+msgstr "Opportunities per Month"
 
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Отчетность"
-
+#, fuzzy
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr "Продажа Возможной"
+msgstr "Sale Opportunity"
 
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
@@ -644,28 +676,8 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "Отменить"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr "Обратить в Возможный"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr "Обратить в Продажу"
-
-msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
 msgstr "Неопределенная/Возможная"
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr "Отметить как утраченную"
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
-msgstr "Отметить как Неопределенную"
 
 #, fuzzy
 msgctxt "view:sale.opportunity_employee:"
@@ -681,6 +693,30 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Отчетность"
+
+msgctxt "view:sale.opportunity:"
+msgid "Cancel"
+msgstr "Отменить"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Opportunity"
+msgstr "Обратить в Возможный"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Sale"
+msgstr "Обратить в Продажу"
+
+msgctxt "view:sale.opportunity:"
+msgid "Mark as Lost"
+msgstr "Отметить как утраченную"
+
+msgctxt "view:sale.opportunity:"
+msgid "Set as Lead"
+msgstr "Отметить как Неопределенную"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "Opportunities per Employee"

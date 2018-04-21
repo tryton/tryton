@@ -496,7 +496,7 @@ msgstr "Convertida"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_leads"
 msgid "Leads"
-msgstr "Iniciativas"
+msgstr "Iniciativa"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_opportunity_form_domain_lost"
@@ -513,13 +513,33 @@ msgctxt ""
 msgid "Won"
 msgstr "Ganada"
 
+msgctxt "model:ir.model.button,string:opportunity_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:opportunity_convert_button"
+msgid "Convert to Sale"
+msgstr "Convert to Sale"
+
+msgctxt "model:ir.model.button,string:opportunity_lead_button"
+msgid "Set as Lead"
+msgstr "Set as Lead"
+
+msgctxt "model:ir.model.button,string:opportunity_lost_button"
+msgid "Mark as Lost"
+msgstr "Mark as Lost"
+
+msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
+msgid "Convert to Opportunity"
+msgstr "Convert to Opportunity"
+
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr "Oportunidades"
+msgstr "Oportunidad"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_sale_opportunity"
 msgid "Sale Opportunity"
-msgstr "Oportunidades"
+msgstr "Oportunidad"
 
 msgctxt "model:ir.ui.menu,name:menu_opportunity_employee_monthly_form"
 msgid "Opportunities per Employee per Month"
@@ -537,13 +557,9 @@ msgctxt "model:ir.ui.menu,name:menu_opportunity_monthly_form"
 msgid "Opportunities per Month"
 msgstr "Oportunidades por mes"
 
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Informes"
-
 msgctxt "model:res.group,name:group_opportunity"
 msgid "Sale Opportunity"
-msgstr "Oportunidades"
+msgstr "Iniciativas y oportunidades"
 
 msgctxt "model:sale.opportunity,name:"
 msgid "Sale Opportunity"
@@ -622,28 +638,8 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr "Convertir a oportunidad"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr "Convertir a pedido de venta"
-
-msgctxt "view:sale.opportunity:"
 msgid "Lead/Opportunity"
 msgstr "Iniciativa/Oportunidad"
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr "Marcar como perdida"
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
-msgstr "Convertir a iniciativa"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "%"
@@ -656,6 +652,30 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
+
+msgctxt "model:ir.ui.menu,name:menu_reporting"
+msgid "Reporting"
+msgstr "Informes"
+
+msgctxt "view:sale.opportunity:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Opportunity"
+msgstr "Convertir a oportunidad"
+
+msgctxt "view:sale.opportunity:"
+msgid "Convert to Sale"
+msgstr "Convertir a pedido de venta"
+
+msgctxt "view:sale.opportunity:"
+msgid "Mark as Lost"
+msgstr "Marcar como perdida"
+
+msgctxt "view:sale.opportunity:"
+msgid "Set as Lead"
+msgstr "Convertir a iniciativa"
 
 msgctxt "view:sale.opportunity_employee:"
 msgid "Opportunities per Employee"
