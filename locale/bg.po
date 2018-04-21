@@ -620,6 +620,18 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -636,17 +648,19 @@ msgstr ""
 "Коефициент в тази формула:\n"
 "1 (баз. единица) = коеф. (тази единица)"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Categories"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Product Configuration"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
@@ -668,30 +682,35 @@ msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
 msgstr "Продукти по местонахождения"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Категории мер. ед."
+msgstr "Categories of Unit of Measure"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "Мерни едниници"
+msgstr "Units of Measure"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Categories"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Настройки"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Продукт"
+msgstr "Product"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
@@ -700,28 +719,31 @@ msgstr "Продукти"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Product Configuration"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
 msgstr "Продукти по местонахождения"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "Категории"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "Мерни едниници"
+msgstr "Units of Measure"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
 msgstr "Категория на продукт"
 
+#, fuzzy
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
-msgstr ""
+msgstr "Product Configuration"
 
 msgctxt "model:product.configuration.default_cost_price_method,name:"
 msgid "Product Configuration Default Cost Price Method"
@@ -760,133 +782,165 @@ msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
 msgstr "Мерна единица"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "Хектар"
+msgstr "Are"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "Карат"
+msgstr "Carat"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "сантиметър"
+msgstr "centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "Кубичен сантиметър"
+msgstr "Cubic centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "Кубичен фут"
+msgstr "Cubic foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "Кубичен инч"
+msgstr "Cubic inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "Кубичен метър"
+msgstr "Cubic meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "Ден"
+msgstr "Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "Фут"
+msgstr "Foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
-msgstr "Галон"
+msgstr "Gallon"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "Грам"
+msgstr "Gram"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
-msgstr "Хектар"
+msgstr "Hectare"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "Час"
+msgstr "Hour"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "Инч"
+msgstr "Inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "Килограм"
+msgstr "Kilogram"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "Километър"
+msgstr "Kilometer"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
-msgstr "Литър"
+msgstr "Liter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "Метър"
+msgstr "Meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "Миля"
+msgstr "Mile"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "Милиметър"
+msgstr "Millimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "Минута"
+msgstr "Minute"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "Унция"
+msgstr "Ounce"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "Лира"
+msgstr "Pound"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "Секунда"
+msgstr "Second"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "Квадратен сантиметър"
+msgstr "Square centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "Квадратен фут"
+msgstr "Square foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "Квадратен инч"
+msgstr "Square inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "Квадратен метър"
+msgstr "Square meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "Квадратен ярд"
+msgstr "Square yard"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "Единица"
+msgstr "Unit"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Работен ден"
+msgstr "Work Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
-msgstr "Ярд"
+msgstr "Yard"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
@@ -1021,33 +1075,40 @@ msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
 msgstr "Категория мер. ед. на продукт"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Дължина"
+msgstr "Length"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "Повърхност"
+msgstr "Surface"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Време"
+msgstr "Time"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Единици"
+msgstr "Units"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
-msgstr "Обем"
+msgstr "Volume"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Тегло"
+msgstr "Weight"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Управление на продукти"
+msgstr "Product Administration"
 
 #, fuzzy
 msgctxt "selection:product.product,cost_price_method:"

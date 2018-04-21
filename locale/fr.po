@@ -557,6 +557,18 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Décocher pour exclure d'une utilisation future."
+
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -595,7 +607,7 @@ msgstr "Variantes"
 
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "Catégorie de produit"
+msgstr "Produit par catégorie"
 
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
@@ -959,7 +971,7 @@ msgstr "Surface"
 
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Temps"
+msgstr "Heure"
 
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"

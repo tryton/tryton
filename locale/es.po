@@ -557,6 +557,18 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -575,11 +587,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categorías de producto"
+msgstr "Categorías"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categorías de producto"
+msgstr "Árbol de categorías"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
@@ -587,7 +599,7 @@ msgstr "Configuración de productos"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Productos"
+msgstr "Variantes"
 
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
@@ -631,7 +643,7 @@ msgstr "Variantes"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Productos"
+msgstr "Configuración de productos"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -839,7 +851,7 @@ msgstr "pie³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_inch"
 msgid "in³"
-msgstr "pul³"
+msgstr "in³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_meter"
 msgid "m³"
@@ -871,7 +883,7 @@ msgstr "h"
 
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
-msgstr "pul"
+msgstr "in"
 
 msgctxt "model:product.uom,symbol:uom_kilogram"
 msgid "kg"
@@ -923,7 +935,7 @@ msgstr "pie²"
 
 msgctxt "model:product.uom,symbol:uom_square_inch"
 msgid "in²"
-msgstr "pul²"
+msgstr "in²"
 
 msgctxt "model:product.uom,symbol:uom_square_meter"
 msgid "m²"

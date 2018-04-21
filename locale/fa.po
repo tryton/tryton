@@ -7,921 +7,826 @@ msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
+"اگرواحد اندازه گیری هنوز استفاده نشده است، شما می توانید آن را حذف کنید "
+"همجنین می توانید آن را غیر فعال کرده و یا یک جدید ایجاد کنید."
 
 msgctxt "error:product.uom:"
 msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr ""
+msgstr "ضریب عامل و ارزش مقادیر نامعتبراست در واحد اندازه گیری : \"%s\"."
 
 msgctxt "error:product.uom:"
 msgid "Rate and factor can not be both equal to zero."
-msgstr ""
+msgstr "نرخ و عامل هر دو برابر صفر نمی توانند باشند."
 
 msgctxt "error:product.uom:"
 msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
 msgstr ""
+"شما نمیتوانید میزان، عامل یا زیرمجموعه واحد اندازه گیری را تغییر دهید."
 
-#, fuzzy
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr "Figlio"
+msgstr "زیر مجموعه"
 
-#, fuzzy
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.category,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:product.category,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
-#, fuzzy
 msgctxt "field:product.category,parent:"
 msgid "Parent"
-msgstr "Parte"
+msgstr "منبع"
 
 msgctxt "field:product.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "روش هزینه پیش فرض"
 
-#, fuzzy
 msgctxt "field:product.configuration,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "روش هزینه پیش فرض"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
 msgctxt "field:product.cost_price,company:"
 msgid "Company"
-msgstr ""
+msgstr "شرکت"
 
 msgctxt "field:product.cost_price,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "ارزش بها"
 
-#, fuzzy
 msgctxt "field:product.cost_price,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.cost_price,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.cost_price,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:product.cost_price,product:"
 msgid "Product"
-msgstr "Prodotto"
+msgstr "محصول"
 
 msgctxt "field:product.cost_price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.cost_price,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.cost_price,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
 msgctxt "field:product.cost_price_method,company:"
 msgid "Company"
-msgstr ""
+msgstr "شرکت"
 
 msgctxt "field:product.cost_price_method,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "روش ارزش بها"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.cost_price_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:product.cost_price_method,template:"
 msgid "Template"
-msgstr ""
+msgstr "الگو"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
 msgctxt "field:product.list_price,company:"
 msgid "Company"
-msgstr ""
+msgstr "شرکت"
 
-#, fuzzy
 msgctxt "field:product.list_price,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.list_price,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.list_price,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "لیست قیمت"
 
 msgctxt "field:product.list_price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:product.list_price,template:"
 msgid "Template"
-msgstr ""
+msgstr "الگو"
 
-#, fuzzy
 msgctxt "field:product.list_price,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.list_price,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.product,active:"
 msgid "Active"
-msgstr "Attivo"
+msgstr "فعال"
 
-#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
-#, fuzzy
 msgctxt "field:product.product,categories_all:"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
-#, fuzzy
 msgctxt "field:product.product,code:"
 msgid "Code"
-msgstr "Codice"
+msgstr "کد"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "مصرفی"
 
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "ارزش بها"
 
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "روش ارزش بها"
 
 msgctxt "field:product.product,cost_price_methods:"
 msgid "Cost Price Methods"
-msgstr ""
+msgstr "روش های ارزش بها"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr ""
+msgstr "ارزش بها"
 
 msgctxt "field:product.product,cost_prices:"
 msgid "Cost Prices"
-msgstr ""
+msgstr "قیمت های هزینه"
 
-#, fuzzy
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "واحد اندازه گیری پیش فرض"
 
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
-msgstr ""
+msgstr "زیرمجموعه واحد اندازه گیری پیش فرض"
 
-#, fuzzy
 msgctxt "field:product.product,description:"
 msgid "Description"
-msgstr "Descrizione"
+msgstr "شرح"
 
-#, fuzzy
 msgctxt "field:product.product,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "لیست قیمت"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
-msgstr ""
+msgstr "لیست قیمت"
 
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr ""
+msgstr "لیست قیمت ها"
 
-#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Modello prodotto/articolo"
+msgstr "الگوی محصول"
 
-#, fuzzy
 msgctxt "field:product.product,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr "نوع"
 
-#, fuzzy
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.template,active:"
 msgid "Active"
-msgstr "Attivo"
+msgstr "فعال"
 
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
-#, fuzzy
 msgctxt "field:product.template,categories_all:"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "مصرفی"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "ارزش بها"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "روش ارزش بها"
 
 msgctxt "field:product.template,cost_price_methods:"
 msgid "Cost Price Methods"
-msgstr ""
+msgstr "روش های ارزش بها"
 
-#, fuzzy
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "واحد اندازه گیری پیش فرض"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr ""
+msgstr "زیرمجموعه واحد اندازه گیری پیش فرض"
 
-#, fuzzy
 msgctxt "field:product.template,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "لیست قیمت"
 
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr ""
+msgstr "لیست قیمت ها"
 
-#, fuzzy
 msgctxt "field:product.template,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
-#, fuzzy
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "Variants"
+msgstr "متغیرها"
 
 msgctxt "field:product.template,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.template,type:"
 msgid "Type"
-msgstr "Tipo"
+msgstr "نوع"
 
-#, fuzzy
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "دسته‌بندی‌"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
+msgstr "الگو"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "دسته‌بندی‌"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
 msgctxt "field:product.template-product.category.all,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:product.template-product.category.all,template:"
 msgid "Template"
-msgstr ""
+msgstr "الگو"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.uom,active:"
 msgid "Active"
-msgstr "Attivo"
+msgstr "فعال"
 
-#, fuzzy
 msgctxt "field:product.uom,category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "دسته‌بندی‌"
 
-#, fuzzy
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
-msgstr "Posizioni"
+msgstr "نمایش ارقام"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
-msgstr ""
+msgstr "عامل"
 
-#, fuzzy
 msgctxt "field:product.uom,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:product.uom,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
-#, fuzzy
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
-msgstr "Cambio"
+msgstr "نرخ"
 
 msgctxt "field:product.uom,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
-msgstr ""
+msgstr "گرد کردن دقیق"
 
-#, fuzzy
 msgctxt "field:product.uom,symbol:"
 msgid "Symbol"
-msgstr "Simbolo"
+msgstr "نماد"
 
-#, fuzzy
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
 msgctxt "field:product.uom.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
-msgstr "Units of Measure"
+msgstr "واحد اندازه گیری"
 
-#, fuzzy
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
 msgctxt "help:product.product,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:product.template,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:product.uom,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
 "coef (base unit) = 1 (this unit)"
 msgstr ""
+"ضریب برای فرمول: \n"
+"coef (واحد پایه) = 1 (این واحد)"
 
 msgctxt "help:product.uom,rate:"
 msgid ""
 "The coefficient for the formula:\n"
 "1 (base unit) = coef (this unit)"
 msgstr ""
+"ضریب برای فرمول:\n"
+"1 (واحد پایه) = coef (این واحد)"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr "Product Configuration"
+msgstr "پیکربندی محصول"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Variants"
+msgstr "متغیرها"
 
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "Variants"
+msgstr "متغیرها"
 
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "Product by Category"
+msgstr "محصول بوسیله زیرمجموعه"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Prodotto"
+msgstr "محصولات"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Categories of Unit of Measure"
+msgstr "زیرمجموعه های واحد اندازه گیری"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "Units of Measure"
+msgstr "واحدهای اندازه گیری"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configurazione"
+msgstr "پیکربندی"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Prodotto"
+msgstr "محصول"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "Variants"
+msgstr "متغیرها"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Product Configuration"
+msgstr "پیکربندی محصول"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Prodotto"
+msgstr "محصولات"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "Categorie"
+msgstr "دسته بندی ها"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "Units of Measure"
+msgstr "واحدهای اندازه گیری"
 
-#, fuzzy
 msgctxt "model:product.category,name:"
 msgid "Product Category"
-msgstr "Product by Category"
+msgstr "زیرمجموعه محصولات"
 
-#, fuzzy
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
-msgstr "Product Configuration"
+msgstr "پیکربندی محصول"
 
 msgctxt "model:product.configuration.default_cost_price_method,name:"
 msgid "Product Configuration Default Cost Price Method"
-msgstr ""
+msgstr "پیکربندی محصول روش ارزش بها پیش فرض"
 
 msgctxt "model:product.cost_price,name:"
 msgid "Product Cost Price"
-msgstr ""
+msgstr "ارزش بها محصول"
 
 msgctxt "model:product.cost_price_method,name:"
 msgid "Product Cost Price Method"
-msgstr ""
+msgstr "روش ارزش بها محصول"
 
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
-msgstr ""
+msgstr "لیست قیمت محصول"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
-msgstr ""
+msgstr "تنوع محصول"
 
-#, fuzzy
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr "Modello prodotto/articolo"
+msgstr "الگوی محصول"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr ""
+msgstr "الگوی - زیرمجموعه"
 
 msgctxt "model:product.template-product.category.all,name:"
 msgid "Template - Category All"
-msgstr ""
+msgstr "الگوی - تمام زیرمجموعه"
 
-#, fuzzy
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
-msgstr "Units of Measure"
+msgstr "واحد اندازه گیری"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "Are"
+msgstr "هست"
 
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "Carat"
+msgstr "عیار"
 
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "centimeter"
+msgstr "سانتی متر"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "Cubic centimeter"
+msgstr "سانتی متر مکعب"
 
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "Cubic foot"
+msgstr "فوت مکعب"
 
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "Cubic inch"
+msgstr "اینچ مکعب"
 
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "Cubic meter"
+msgstr "متر مکعب"
 
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "Day"
+msgstr "روز"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "Foot"
+msgstr "فوت"
 
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
-msgstr "Gallon"
+msgstr "گالن"
 
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "Gram"
+msgstr "گرم"
 
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
-msgstr "Hectare"
+msgstr "هکتار"
 
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "Hour"
+msgstr "ساعت"
 
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "Inch"
+msgstr "اینچ"
 
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "Kilogram"
+msgstr "کیلوگرم"
 
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "Kilometer"
+msgstr "کیلومتر"
 
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
-msgstr "Liter"
+msgstr "لیتر"
 
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "Meter"
+msgstr "متر"
 
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "Mile"
+msgstr "مایل"
 
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "Millimeter"
+msgstr "میلیمتر"
 
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "Minute"
+msgstr "دقیقه"
 
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "Ounce"
+msgstr "اونس"
 
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "Pound"
+msgstr "پوند"
 
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "Second"
+msgstr "ثانیه"
 
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "Square centimeter"
+msgstr "سانتی متر مربع"
 
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "Square foot"
+msgstr "فوت مربع"
 
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "Square inch"
+msgstr "اینچ مربع"
 
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "Square meter"
+msgstr "متر مربع"
 
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "Square yard"
+msgstr "یارد مربع"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "Unità"
+msgstr "واحد"
 
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Work Day"
+msgstr "روز کاری"
 
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
-msgstr "Yard"
+msgstr "یارد"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
@@ -1051,100 +956,82 @@ msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
-msgstr "Product by Category"
+msgstr "زیرمجموعه واحد اندازه گیری محصول"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Length"
+msgstr "طول"
 
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "Surface"
+msgstr "سطح"
 
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Time"
+msgstr "زمان"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Unità"
+msgstr "واحدها"
 
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
-msgstr "Volume"
+msgstr "حجم/اندازه"
 
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Weight"
+msgstr "وزن"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Product Administration"
+msgstr "مدیریت محصول"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
-msgstr ""
+msgstr "متوسط"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
-msgstr "Fisso"
+msgstr "درست شد"
 
-#, fuzzy
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "Immobilizzazioni"
+msgstr "دارایی های"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
-msgstr ""
+msgstr "کالاها"
 
 msgctxt "selection:product.product,type:"
 msgid "Service"
-msgstr ""
+msgstr "خدمات"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
-msgstr ""
+msgstr "متوسط"
 
-#, fuzzy
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Fixed"
-msgstr "Fisso"
+msgstr "درست شد"
 
-#, fuzzy
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Immobilizzazioni"
+msgstr "دارایی های"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr ""
+msgstr "کالاها"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
-msgstr ""
+msgstr "خدمات"
 
-#, fuzzy
 msgctxt "view:product.category:"
 msgid "Children"
-msgstr "Figlio"
+msgstr "زیر مجموعه"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "General"
-msgstr "Generale"
-
-#, fuzzy
-msgctxt "view:product.configuration:"
-msgid "Party Configuration"
-msgstr "Connfigurazione Controparte"
-
-#, fuzzy
-msgctxt "view:product.product:"
-msgid "Product"
-msgstr "Prodotto"
+msgstr "عمومی"

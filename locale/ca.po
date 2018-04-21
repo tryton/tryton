@@ -557,6 +557,18 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -575,11 +587,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categories de producte"
+msgstr "Categories"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categories de producte"
+msgstr "Arbre de categories"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
@@ -587,7 +599,7 @@ msgstr "Configuració de productes"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Productes"
+msgstr "Variants"
 
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
@@ -631,7 +643,7 @@ msgstr "Variants"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Productes"
+msgstr "Configuració de productes"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -699,7 +711,7 @@ msgstr "Quirat"
 
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "centímetre"
+msgstr "Centímetre"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
@@ -923,7 +935,7 @@ msgstr "peu²"
 
 msgctxt "model:product.uom,symbol:uom_square_inch"
 msgid "in²"
-msgstr "pul²"
+msgstr "in²"
 
 msgctxt "model:product.uom,symbol:uom_square_meter"
 msgid "m²"

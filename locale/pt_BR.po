@@ -556,6 +556,18 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "Gravado pelo usuário"
 
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -572,77 +584,95 @@ msgstr ""
 "Coeficiente para a fórmula:\n"
 "1 (unidade de base) = coef (esta unidade)"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categorias"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categorias"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr "Configuração do Produto"
+msgstr "Product Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Variantes"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "Variantes"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "Produto por Categoria"
+msgstr "Product by Category"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Produtos"
+msgstr "Products"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Categorias de unidade de medida"
+msgstr "Categories of Unit of Measure"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "Unidades de medida (UDM)"
+msgstr "Units of Measure"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Categorias"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Categorias"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuração"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Produto"
+msgstr "Product"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "Variantes"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Configuração do Produto"
+msgstr "Product Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Produtos"
+msgstr "Products"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "Categorias"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "Unidades de medida (UDM)"
+msgstr "Units of Measure"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
@@ -692,129 +722,159 @@ msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
 msgstr "Are"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "Quilate"
+msgstr "Carat"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "centímetro"
+msgstr "centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "Centímetro cúbico"
+msgstr "Cubic centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "Pé cúbico"
+msgstr "Cubic foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "Polegada cúbica"
+msgstr "Cubic inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "Metro cúbico"
+msgstr "Cubic meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "Dia"
+msgstr "Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "Pé"
+msgstr "Foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
-msgstr "Galão"
+msgstr "Gallon"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "Grama"
+msgstr "Gram"
 
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
 msgstr "Hectare"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "Hora"
+msgstr "Hour"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "Polegada"
+msgstr "Inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "Quilograma"
+msgstr "Kilogram"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "Quilômetro"
+msgstr "Kilometer"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
-msgstr "Litro"
+msgstr "Liter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "Metro"
+msgstr "Meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "Milha"
+msgstr "Mile"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "Milímetro"
+msgstr "Millimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "Minuto"
+msgstr "Minute"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "Onça"
+msgstr "Ounce"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "Libra"
+msgstr "Pound"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "Segundo"
+msgstr "Second"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "Centímetro quadrado"
+msgstr "Square centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "Pé quadrado"
+msgstr "Square foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "Polegada quadrada"
+msgstr "Square inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "Metro quadrado"
+msgstr "Square meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "Jarda quadrada"
+msgstr "Square yard"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "Unidade"
+msgstr "Unit"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Dia de trabalho"
+msgstr "Work Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
-msgstr "Jarda"
+msgstr "Yard"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
@@ -836,9 +896,10 @@ msgctxt "model:product.uom,symbol:uom_cubic_foot"
 msgid "ft³"
 msgstr "ft³"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_cubic_inch"
 msgid "in³"
-msgstr "pol³"
+msgstr "in³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_meter"
 msgid "m³"
@@ -868,9 +929,10 @@ msgctxt "model:product.uom,symbol:uom_hour"
 msgid "h"
 msgstr "h"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
-msgstr "pol"
+msgstr "in"
 
 msgctxt "model:product.uom,symbol:uom_kilogram"
 msgid "kg"
@@ -936,9 +998,10 @@ msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
 msgstr "u"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr "dt"
+msgstr "wd"
 
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
@@ -948,33 +1011,39 @@ msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
 msgstr "Categoria da UDM do produto"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Comprimento"
+msgstr "Length"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "Superfície"
+msgstr "Surface"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Tempo"
+msgstr "Time"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Unidades"
+msgstr "Units"
 
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
 msgstr "Volume"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Peso"
+msgstr "Weight"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Administração de produtos"
+msgstr "Product Administration"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"

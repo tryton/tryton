@@ -578,6 +578,18 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -607,7 +619,7 @@ msgstr "Configuración de producto"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Variantes"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
@@ -637,7 +649,7 @@ msgstr "Categorías"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Categorías"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -654,7 +666,7 @@ msgstr "Variantes"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Configuración de producto"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
@@ -846,129 +858,130 @@ msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr "a"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_carat"
 msgid "c"
-msgstr "ct"
+msgstr "c"
 
 msgctxt "model:product.uom,symbol:uom_centimeter"
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
 msgid "cm³"
-msgstr ""
+msgstr "cm³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_foot"
 msgid "ft³"
-msgstr ""
+msgstr "ft³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_inch"
 msgid "in³"
-msgstr ""
+msgstr "in³"
 
 msgctxt "model:product.uom,symbol:uom_cubic_meter"
 msgid "m³"
-msgstr ""
+msgstr "m³"
 
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
-msgstr ""
+msgstr "d"
 
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
-msgstr ""
+msgstr "ft"
 
 msgctxt "model:product.uom,symbol:uom_gallon"
 msgid "gal"
-msgstr ""
+msgstr "gal"
 
 msgctxt "model:product.uom,symbol:uom_gram"
 msgid "g"
-msgstr ""
+msgstr "g"
 
 msgctxt "model:product.uom,symbol:uom_hectare"
 msgid "ha"
-msgstr ""
+msgstr "ha"
 
 msgctxt "model:product.uom,symbol:uom_hour"
 msgid "h"
-msgstr ""
+msgstr "h"
 
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
-msgstr ""
+msgstr "in"
 
 msgctxt "model:product.uom,symbol:uom_kilogram"
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 msgctxt "model:product.uom,symbol:uom_kilometer"
 msgid "km"
-msgstr ""
+msgstr "km"
 
 msgctxt "model:product.uom,symbol:uom_liter"
 msgid "l"
-msgstr ""
+msgstr "l"
 
 msgctxt "model:product.uom,symbol:uom_meter"
 msgid "m"
-msgstr ""
+msgstr "m"
 
 msgctxt "model:product.uom,symbol:uom_mile"
 msgid "mi"
-msgstr ""
+msgstr "mi"
 
 msgctxt "model:product.uom,symbol:uom_millimeter"
 msgid "mm"
-msgstr ""
+msgstr "mm"
 
 msgctxt "model:product.uom,symbol:uom_minute"
 msgid "min"
-msgstr ""
+msgstr "min"
 
 msgctxt "model:product.uom,symbol:uom_ounce"
 msgid "oz"
-msgstr ""
+msgstr "oz"
 
 msgctxt "model:product.uom,symbol:uom_pound"
 msgid "lb"
-msgstr ""
+msgstr "lb"
 
 msgctxt "model:product.uom,symbol:uom_second"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "model:product.uom,symbol:uom_square_centimeter"
 msgid "cm²"
-msgstr ""
+msgstr "cm²"
 
 msgctxt "model:product.uom,symbol:uom_square_foot"
 msgid "ft²"
-msgstr ""
+msgstr "ft²"
 
 msgctxt "model:product.uom,symbol:uom_square_inch"
 msgid "in²"
-msgstr ""
+msgstr "in²"
 
 msgctxt "model:product.uom,symbol:uom_square_meter"
 msgid "m²"
-msgstr ""
+msgstr "m²"
 
 msgctxt "model:product.uom,symbol:uom_square_yard"
 msgid "yd²"
-msgstr ""
+msgstr "yd²"
 
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr ""
+msgstr "u"
 
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr ""
+msgstr "wd"
 
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
-msgstr ""
+msgstr "yd"
 
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"

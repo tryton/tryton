@@ -49,7 +49,7 @@ msgstr "Matična kategorija"
 
 msgctxt "field:product.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
@@ -77,7 +77,7 @@ msgstr "ID"
 
 msgctxt "field:product.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
@@ -106,7 +106,7 @@ msgstr "ID"
 
 msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.configuration.default_cost_price_method,write_date:"
 msgid "Write Date"
@@ -143,7 +143,7 @@ msgstr "Izdelek"
 
 msgctxt "field:product.cost_price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.cost_price,write_date:"
 msgid "Write Date"
@@ -179,7 +179,7 @@ msgstr "ID"
 
 msgctxt "field:product.cost_price_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 #, fuzzy
 msgctxt "field:product.cost_price_method,template:"
@@ -218,7 +218,7 @@ msgstr "Prodajna cena"
 
 msgctxt "field:product.list_price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.list_price,template:"
 msgid "Template"
@@ -315,7 +315,7 @@ msgstr "Naziv"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
@@ -400,7 +400,7 @@ msgstr "Različice"
 
 msgctxt "field:product.template,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.template,type:"
 msgid "Type"
@@ -432,7 +432,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
@@ -468,7 +468,7 @@ msgstr "ID"
 
 msgctxt "field:product.template-product.category.all,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 #, fuzzy
 msgctxt "field:product.template-product.category.all,template:"
@@ -523,7 +523,7 @@ msgstr "Razmerje"
 
 msgctxt "field:product.uom,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
@@ -559,7 +559,7 @@ msgstr "Naziv"
 
 msgctxt "field:product.uom.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
@@ -572,6 +572,18 @@ msgstr "Zapisano"
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
+
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:product.uom,factor:"
 msgid ""
@@ -589,77 +601,95 @@ msgstr ""
 "Koeficient za formulo:\n"
 "1 (osnovna enota) = koef * (ta enota)"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr "Konfiguracija izdelkov"
+msgstr "Product Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Različice"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "Različice"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "Izdelki po kategorijah"
+msgstr "Product by Category"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Izdelki"
+msgstr "Products"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Kategorije merskih enot"
+msgstr "Categories of Unit of Measure"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "Merske enote"
+msgstr "Units of Measure"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Nastavitve"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Izdelek"
+msgstr "Product"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "Različice"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Konfiguracija"
+msgstr "Product Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Izdelki"
+msgstr "Products"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "Kategorije"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "Merske enote"
+msgstr "Units of Measure"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
@@ -706,133 +736,164 @@ msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
 msgstr "Merska enota"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "ar"
+msgstr "Are"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "karat"
+msgstr "Carat"
 
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
 msgstr "centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "kubični centimeter"
+msgstr "Cubic centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "kubični čevelj"
+msgstr "Cubic foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "kubični palec"
+msgstr "Cubic inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "kubični meter"
+msgstr "Cubic meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "dan"
+msgstr "Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "čevelj"
+msgstr "Foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
-msgstr "galona"
+msgstr "Gallon"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "gram"
+msgstr "Gram"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
-msgstr "hektar"
+msgstr "Hectare"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "ura"
+msgstr "Hour"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "palec"
+msgstr "Inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "kilogram"
+msgstr "Kilogram"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "kilometer"
+msgstr "Kilometer"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
-msgstr "liter"
+msgstr "Liter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "meter"
+msgstr "Meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "milja"
+msgstr "Mile"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "milimeter"
+msgstr "Millimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "minuta"
+msgstr "Minute"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "unča"
+msgstr "Ounce"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "funt"
+msgstr "Pound"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "sekunda"
+msgstr "Second"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "kvadratni centimeter"
+msgstr "Square centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "kvadratni čevelj"
+msgstr "Square foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "kvadratni palec"
+msgstr "Square inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "kvadratni meter"
+msgstr "Square meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "kvadratni jard"
+msgstr "Square yard"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "enota"
+msgstr "Unit"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Delovni dan"
+msgstr "Work Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
-msgstr "jard"
+msgstr "Yard"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
@@ -950,13 +1011,15 @@ msgctxt "model:product.uom,symbol:uom_square_yard"
 msgid "yd²"
 msgstr "yd²"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "e"
+msgstr "u"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr "dd"
+msgstr "wd"
 
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
@@ -966,33 +1029,40 @@ msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
 msgstr "Kategorija ME izdelkov"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Dolžina"
+msgstr "Length"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "Površina"
+msgstr "Surface"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Čas"
+msgstr "Time"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Enote"
+msgstr "Units"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
-msgstr "Prostornina"
+msgstr "Volume"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Teža"
+msgstr "Weight"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Izdelek - vodenje"
+msgstr "Product Administration"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"

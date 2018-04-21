@@ -593,6 +593,18 @@ msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
+msgctxt "help:product.product,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:product.uom,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
@@ -609,77 +621,95 @@ msgstr ""
 "ຄ່າສຳປະສິດຂອງສູດ:\n"
 "1 (ໜ່ວຍພຶ້ນຖານ)= coef (ໜ່ວຍນີ້)"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "ປະເພດ"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "ປະເພດ"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr "ກຳນົດຄ່າຜະລິດຕະພັນ"
+msgstr "Product Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "ຜະລິດຕະພັນຍ່ອຍ"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "ຜະລິດຕະພັນໃນກຸ່ມດຽວກັນ"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "ຜະລິດຕະພັນຕາມປະເພດ"
+msgstr "Product by Category"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Products"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "ປະເພດໜ່ວຍວັດແທກ"
+msgstr "Categories of Unit of Measure"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "ໜ່ວຍວັດແທກ"
+msgstr "Units of Measure"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "ປະເພດ"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "ປະເພດ"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "ການກຳນົດຄ່າ"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Product"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "ຜະລິດຕະພັນຍ່ອຍ"
+msgstr "Variants"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "ກຳນົດຄ່າຜະລິດຕະພັນ"
+msgstr "Product Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Products"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "ປະເພດ"
+msgstr "Categories"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "ໜ່ວຍວັດແທກ"
+msgstr "Units of Measure"
 
 msgctxt "model:product.category,name:"
 msgid "Product Category"
@@ -726,293 +756,363 @@ msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
 msgstr "ໜ່ວຍວັດແທກ"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "ອາຣ໌"
+msgstr "Are"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "ກາຣັດ"
+msgstr "Carat"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "ຊັງຕີເແມັດ"
+msgstr "centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "ຊັງຕີແມັດກ້ອນ"
+msgstr "Cubic centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "ກຸບບິກຟຸດ"
+msgstr "Cubic foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "ກຸບບິກນິ້ວ"
+msgstr "Cubic inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "ແມັດກ້ອນ"
+msgstr "Cubic meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "ມື້"
+msgstr "Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "ຟຸດຕ໌"
+msgstr "Foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
-msgstr "ແກນລອນ"
+msgstr "Gallon"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "ກຣາມ"
+msgstr "Gram"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
-msgstr "ເຮັກຕາ"
+msgstr "Hectare"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "ຊົ່ວໂມງ"
+msgstr "Hour"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "ນິ້ວ"
+msgstr "Inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "ກິໂລກຣາມ"
+msgstr "Kilogram"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "ກິໂລແມດ"
+msgstr "Kilometer"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
-msgstr "ລິດ"
+msgstr "Liter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "ແມດ"
+msgstr "Meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "ໄມລ໌"
+msgstr "Mile"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "ມີນລິແມດ"
+msgstr "Millimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "ນາທີ"
+msgstr "Minute"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "ອອນ"
+msgstr "Ounce"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "ພາວດ໌"
+msgstr "Pound"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "ວິນາທີ"
+msgstr "Second"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "ຕາຊັງຕີແມັດ"
+msgstr "Square centimeter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "ມົນທົນຟຸດ"
+msgstr "Square foot"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "ມົນທົນນິ້ວ"
+msgstr "Square inch"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "ຕາແມັດ"
+msgstr "Square meter"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "ຢາດມົນທົນ"
+msgstr "Square yard"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "ໜ່ວຍ"
+msgstr "Unit"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "ມື້ວຽກ"
+msgstr "Work Day"
 
+#, fuzzy
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
-msgstr "ຫລາ"
+msgstr "Yard"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
 msgstr "a"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_carat"
 msgid "c"
-msgstr "ຊີ"
+msgstr "c"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_centimeter"
 msgid "cm"
-msgstr "ຊມ"
+msgstr "cm"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_cubic_centimeter"
 msgid "cm³"
-msgstr "ຊມ3"
+msgstr "cm³"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_cubic_foot"
 msgid "ft³"
-msgstr "ກຸບບິກຟຸດ"
+msgstr "ft³"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_cubic_inch"
 msgid "in³"
-msgstr "ກຸບບິກນິ້ວ"
+msgstr "in³"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_cubic_meter"
 msgid "m³"
-msgstr "ມ3"
+msgstr "m³"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_day"
 msgid "d"
-msgstr "ມື້"
+msgstr "d"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_foot"
 msgid "ft"
-msgstr "ຟິດ"
+msgstr "ft"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_gallon"
 msgid "gal"
-msgstr "ແກນລອນ"
+msgstr "gal"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_gram"
 msgid "g"
-msgstr "ກຣ"
+msgstr "g"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_hectare"
 msgid "ha"
-msgstr "ຮຕ"
+msgstr "ha"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_hour"
 msgid "h"
-msgstr "ໂມງ"
+msgstr "h"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
-msgstr "ນິ້ວ"
+msgstr "in"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_kilogram"
 msgid "kg"
-msgstr "ກກ"
+msgstr "kg"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_kilometer"
 msgid "km"
-msgstr "ກມ"
+msgstr "km"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_liter"
 msgid "l"
-msgstr "ລ"
+msgstr "l"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_meter"
 msgid "m"
-msgstr "ມ"
+msgstr "m"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_mile"
 msgid "mi"
-msgstr "ໄມ"
+msgstr "mi"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_millimeter"
 msgid "mm"
-msgstr "ມມ"
+msgstr "mm"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_minute"
 msgid "min"
-msgstr "ນາທີ"
+msgstr "min"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_ounce"
 msgid "oz"
-msgstr "ອອນ"
+msgstr "oz"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_pound"
 msgid "lb"
-msgstr "ພາວ"
+msgstr "lb"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_second"
 msgid "s"
-msgstr "ວິນາທີ"
+msgstr "s"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_square_centimeter"
 msgid "cm²"
-msgstr "ຊມ2"
+msgstr "cm²"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_square_foot"
 msgid "ft²"
-msgstr "ຟິດມົນທົນ"
+msgstr "ft²"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_square_inch"
 msgid "in²"
-msgstr "ນິ້ວມົນທົນ"
+msgstr "in²"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_square_meter"
 msgid "m²"
-msgstr "ແມດມົນທົນ"
+msgstr "m²"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_square_yard"
 msgid "yd²"
-msgstr "ຢາດມົນທົນ"
+msgstr "yd²"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "ໜ່ວຍ"
+msgstr "u"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr "ຄວາມກ້ວາງ"
+msgstr "wd"
 
+#, fuzzy
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
-msgstr "ຫລາ"
+msgstr "yd"
 
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
 msgstr "ປະເພດໜ່ວຍວັດແທກຜະລິດຕະພັນ"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "ຄວາມຍາວ"
+msgstr "Length"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "ເນື້ອທີ່"
+msgstr "Surface"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "ເວລາ"
+msgstr "Time"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "ໜ່ວຍ"
+msgstr "Units"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
-msgstr "ບໍລິມາດ"
+msgstr "Volume"
 
+#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "ນໍ້າໜັກ"
+msgstr "Weight"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "ບໍລິຫານຜະລິດຕະພັນ"
+msgstr "Product Administration"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
