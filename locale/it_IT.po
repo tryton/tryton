@@ -320,41 +320,49 @@ msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Dipendente"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configura Azienda"
+msgstr "Configure Company"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Aziende"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Aziende"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Dipendenti"
+msgstr "Employees"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Lettera"
+msgstr "Letter"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Cron - Azienda"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Aziende"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Aziende"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Dipendenti"
+msgstr "Employees"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"

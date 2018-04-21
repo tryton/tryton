@@ -44,7 +44,7 @@ msgstr "Partei"
 
 msgctxt "field:company.company,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -88,7 +88,7 @@ msgstr "Partei"
 
 msgctxt "field:company.employee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
@@ -128,7 +128,7 @@ msgstr "ID"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
@@ -192,7 +192,7 @@ msgstr "ID"
 
 msgctxt "field:res.user-company.employee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"

@@ -44,7 +44,7 @@ msgstr "Partner"
 
 msgctxt "field:company.company,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -88,7 +88,7 @@ msgstr "Partner"
 
 msgctxt "field:company.employee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
@@ -128,7 +128,7 @@ msgstr "ID"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
@@ -192,7 +192,7 @@ msgstr "ID"
 
 msgctxt "field:res.user-company.employee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
@@ -290,41 +290,49 @@ msgctxt "model:company.employee,name:"
 msgid "Employee"
 msgstr "Zaposlenec"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Konfiguracija družbe"
+msgstr "Configure Company"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Zaposlenci"
+msgstr "Employees"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Pismo"
+msgstr "Letter"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Razporejevalnik - Družba"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Družbe"
+msgstr "Companies"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Zaposlenci"
+msgstr "Employees"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"

@@ -292,7 +292,7 @@ msgstr "Empleado"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configura su empresa"
+msgstr "Configurar la empresa"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
