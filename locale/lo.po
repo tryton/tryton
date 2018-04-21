@@ -30,22 +30,27 @@ msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
 msgstr "ຈຳນວນຈຳກັດຂອງການຜະລິດ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr "ແຍກການຜະລິດ"
+msgstr "Split Production"
+
+msgctxt "model:ir.model.button,string:production_split_wizard_button"
+msgid "Split"
+msgstr "Split"
 
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
 msgstr "ແຍກການຜະລິດ"
-
-msgctxt "view:production:"
-msgid "Split"
-msgstr "ແຍກ"
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:production.split,start,split:"
+msgid "Split"
+msgstr "ແຍກ"
+
+msgctxt "view:production:"
 msgid "Split"
 msgstr "ແຍກ"

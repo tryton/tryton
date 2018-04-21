@@ -34,18 +34,22 @@ msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
 msgstr "Divideix producció"
 
+msgctxt "model:ir.model.button,string:production_split_wizard_button"
+msgid "Split"
+msgstr "Split"
+
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
 msgstr "Divideix producció"
-
-msgctxt "view:production:"
-msgid "Split"
-msgstr "Divideix"
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "wizard_button:production.split,start,split:"
+msgid "Split"
+msgstr "Divideix"
+
+msgctxt "view:production:"
 msgid "Split"
 msgstr "Divideix"

@@ -30,22 +30,27 @@ msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
 msgstr "Limite para o número de produções"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr "Dividir Produção"
+msgstr "Split Production"
+
+msgctxt "model:ir.model.button,string:production_split_wizard_button"
+msgid "Split"
+msgstr "Split"
 
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
 msgstr "Dividir Produção"
-
-msgctxt "view:production:"
-msgid "Split"
-msgstr "Dividir"
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:production.split,start,split:"
+msgid "Split"
+msgstr "Dividir"
+
+msgctxt "view:production:"
 msgid "Split"
 msgstr "Dividir"

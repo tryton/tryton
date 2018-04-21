@@ -32,20 +32,24 @@ msgstr "Die maximale Zahl der zu erzeugenden Produktionen"
 
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr "Produktionsaufteilung"
+msgstr "Produktion aufteilen"
+
+msgctxt "model:ir.model.button,string:production_split_wizard_button"
+msgid "Split"
+msgstr "Split"
 
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
 msgstr "Produktionsaufteilung"
-
-msgctxt "view:production:"
-msgid "Split"
-msgstr "Aufteilen"
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
 
 msgctxt "wizard_button:production.split,start,split:"
+msgid "Split"
+msgstr "Aufteilen"
+
+msgctxt "view:production:"
 msgid "Split"
 msgstr "Aufteilen"
