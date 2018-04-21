@@ -4,145 +4,143 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.dunning.fee.dunning_level:"
 msgid "Fee must be unique per dunning and level."
-msgstr "L'addebito di spesa dev'essere unico per ogni sollecito e livello"
+msgstr "قیمت باید منحصربفرد باشد در هر دانینگ و هر سطح."
 
 msgctxt "field:account.dunning,fees:"
 msgid "Fees"
-msgstr "Spese"
+msgstr "قیمت ها"
 
 msgctxt "field:account.dunning.fee,active:"
 msgid "Active"
-msgstr "Attivo"
+msgstr "فعال"
 
 msgctxt "field:account.dunning.fee,compute_method:"
 msgid "Compute Method"
-msgstr "Metodo di calcolo"
+msgstr "روش محاسبه"
 
 msgctxt "field:account.dunning.fee,create_date:"
 msgid "Create Date"
-msgstr "Creato il "
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:account.dunning.fee,create_uid:"
 msgid "Create User"
-msgstr "Creato da"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.dunning.fee,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:account.dunning.fee,journal:"
 msgid "Journal"
-msgstr "Registro"
+msgstr "روزنامه"
 
 msgctxt "field:account.dunning.fee,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "نام"
 
 msgctxt "field:account.dunning.fee,percentage:"
 msgid "Percentage"
-msgstr "Percentuale"
+msgstr "درصد"
 
 msgctxt "field:account.dunning.fee,product:"
 msgid "Product"
-msgstr "Prodotto"
+msgstr "محصول"
 
 msgctxt "field:account.dunning.fee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:account.dunning.fee,write_date:"
 msgid "Write Date"
-msgstr "Modificato il"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:account.dunning.fee,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
 msgctxt "field:account.dunning.fee.dunning_level,amount:"
 msgid "Amount"
-msgstr "Importo"
+msgstr "مقدار"
 
 msgctxt "field:account.dunning.fee.dunning_level,create_date:"
 msgid "Create Date"
-msgstr "Creato il"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:account.dunning.fee.dunning_level,create_uid:"
 msgid "Create User"
-msgstr "Creato da"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.dunning.fee.dunning_level,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "واحد پول"
 
 msgctxt "field:account.dunning.fee.dunning_level,currency_digits:"
 msgid "Currency Digits"
-msgstr "Posizioni valuta"
+msgstr "رقم های واحد پول"
 
 msgctxt "field:account.dunning.fee.dunning_level,dunning:"
 msgid "Dunning"
-msgstr "Sollecito"
+msgstr "دانینگ"
 
 msgctxt "field:account.dunning.fee.dunning_level,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:account.dunning.fee.dunning_level,level:"
 msgid "Level"
-msgstr "Livello"
+msgstr "سطح"
 
 msgctxt "field:account.dunning.fee.dunning_level,moves:"
 msgid "Moves"
-msgstr "Movimenti"
+msgstr "جابجایی ها"
 
 msgctxt "field:account.dunning.fee.dunning_level,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:account.dunning.fee.dunning_level,write_date:"
 msgid "Write Date"
-msgstr "Modificato il"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:account.dunning.fee.dunning_level,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "نوشته کاربر"
 
 msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
-msgstr "Spesa"
+msgstr "قیمت"
 
 msgctxt "help:account.dunning.fee,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
-msgstr "Metodo di calcolo delle spese"
+msgstr "روش محاسبه میزان قیمت"
 
 msgctxt "model:account.dunning.fee,name:"
 msgid "Account Dunning Fee"
-msgstr "Conto di imputazione della spesa"
+msgstr "حساب دانینگ قیمت"
 
 msgctxt "model:account.dunning.fee.dunning_level,name:"
 msgid "Account Dunning Fee Dunning-Level"
-msgstr "Conto di imputazione della spesa per livello di sollecito"
+msgstr "حساب دانینگ قیمت سطح - دانینگ"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgstr "بهای دانینگ"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Dunning Fees"
+msgstr "بهای دانینگ"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"
-msgstr "Listino prezzi"
+msgstr "لیست قیمت"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "Percentage"
-msgstr "Percentuale"
+msgstr "درصد"
 
 msgctxt "view:account.dunning.fee:"
 msgid "%"

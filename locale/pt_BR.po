@@ -110,6 +110,10 @@ msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
 msgstr "Taxa"
 
+msgctxt "help:account.dunning.fee,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr "Método para calcular o montante das taxas"
@@ -122,13 +126,15 @@ msgctxt "model:account.dunning.fee.dunning_level,name:"
 msgid "Account Dunning Fee Dunning-Level"
 msgstr "Contabilidade Taxas das Cobranças Cobrança-Nível"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Taxas das Cobranças"
+msgstr "Dunning Fees"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Taxas das Cobranças"
+msgstr "Dunning Fees"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

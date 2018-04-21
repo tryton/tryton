@@ -124,6 +124,10 @@ msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
 msgstr ""
 
+msgctxt "help:account.dunning.fee,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr ""
@@ -138,11 +142,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr ""
+msgstr "Dunning Fees"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr ""
+msgstr "Dunning Fees"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"

@@ -49,7 +49,7 @@ msgstr "Variante"
 
 msgctxt "field:account.dunning.fee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.dunning.fee,write_date:"
 msgid "Write Date"
@@ -97,7 +97,7 @@ msgstr "Buchungssätze"
 
 msgctxt "field:account.dunning.fee.dunning_level,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.dunning.fee.dunning_level,write_date:"
 msgid "Write Date"
@@ -110,6 +110,10 @@ msgstr "Letzte Änderung durch"
 msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
 msgstr "Gebühr"
+
+msgctxt "help:account.dunning.fee,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"

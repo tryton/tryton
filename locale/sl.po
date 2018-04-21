@@ -48,7 +48,7 @@ msgstr "Izdelek"
 
 msgctxt "field:account.dunning.fee,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.dunning.fee,write_date:"
 msgid "Write Date"
@@ -96,7 +96,7 @@ msgstr "Promet"
 
 msgctxt "field:account.dunning.fee.dunning_level,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.dunning.fee.dunning_level,write_date:"
 msgid "Write Date"
@@ -110,6 +110,10 @@ msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
 msgstr "Plačilo"
 
+msgctxt "help:account.dunning.fee,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.dunning.fee,compute_method:"
 msgid "Method to compute the fee amount"
 msgstr "Načina izračuna višine stroška"
@@ -122,13 +126,15 @@ msgctxt "model:account.dunning.fee.dunning_level,name:"
 msgid "Account Dunning Fee Dunning-Level"
 msgstr "Stopnja stroškov izterjave"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Stroški izterjave"
+msgstr "Dunning Fees"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Dunning Fees"
-msgstr "Stroški izterjave"
+msgstr "Dunning Fees"
 
 msgctxt "selection:account.dunning.fee,compute_method:"
 msgid "List Price"
