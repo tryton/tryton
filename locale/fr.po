@@ -58,6 +58,30 @@ msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
 
+msgctxt "help:carrier,weight_currency:"
+msgid "The currency of the price."
+msgstr "La devise du prix."
+
+msgctxt "help:carrier,weight_price_list:"
+msgid "Add price to the carrier service."
+msgstr "Ajouter un prix au service du transporteur."
+
+msgctxt "help:carrier,weight_uom:"
+msgid "The unit of weight criteria of the price list."
+msgstr "L'unit de poids des critères de la liste de prix."
+
+msgctxt "help:carrier.weight_price_list,carrier:"
+msgid "The carrier that the price list belongs to."
+msgstr "Le transporteur à qui la liste de prix appartient."
+
+msgctxt "help:carrier.weight_price_list,price:"
+msgid "The price of the carrier service."
+msgstr "Le prix du service du transporteur."
+
+msgctxt "help:carrier.weight_price_list,weight:"
+msgid "The upper limit for the price."
+msgstr "La limite supérieur pour le prix."
+
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
 msgstr "Liste de prix par poids"
