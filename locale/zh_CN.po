@@ -105,9 +105,10 @@ msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
 msgstr "操作"
 
+#, fuzzy
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
-msgstr ""
+msgstr "Complaints"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action,create_date:"
@@ -306,15 +307,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
-msgstr ""
+msgstr "Complaints"
 
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr ""
+msgstr "Customer Complaints"
 
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
-msgstr ""
+msgstr "Complaints"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_type_form"
@@ -326,45 +327,71 @@ msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
 msgstr "全部"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr ""
+msgstr "Approved"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
+
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Customer Complaint"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Customer Complaint"
 
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
-msgstr ""
+msgstr "Complaints"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Customer Complaint"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
 msgstr "类型"
 
+#, fuzzy
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
-msgstr ""
+msgstr "Customer Complaint"
 
 msgctxt "model:sale.complaint.action,name:"
 msgid "Customer Complaint Action"
@@ -378,13 +405,15 @@ msgctxt "model:sale.complaint.action-sale.line,name:"
 msgid "Customer Complaint Action - Sale Line"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:sale.complaint.type,name:"
 msgid "Customer Complaint Type"
-msgstr ""
+msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Approved"
-msgstr ""
+msgstr "Approve"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Cancelled"
@@ -395,17 +424,20 @@ msgctxt "selection:sale.complaint,state:"
 msgid "Done"
 msgstr "完成"
 
+#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
-msgstr ""
+msgstr "Reject"
 
+#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Credit Note"
@@ -415,31 +447,17 @@ msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:sale.complaint:"
-msgid "Approve"
-msgstr ""
+msgid "Complaint"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Process"
 
 #, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Cancel"
 msgstr "取消"
-
-msgctxt "view:sale.complaint:"
-msgid "Complaint"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Reject"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Wait"
-msgstr ""

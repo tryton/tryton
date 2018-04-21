@@ -271,60 +271,97 @@ msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price"
 msgstr "Üresen hagyni az azonos árnak"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
-msgstr "Reklamáció"
+msgstr "Complaints"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr "Reklamáció művelet"
+msgstr "Customer Complaints"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
-msgstr "Reklamáció"
+msgstr "Complaints"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr "Típusok"
+msgstr "Types"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr "Összes"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr "Jóváhagyva"
+msgstr "Approved"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "Piszkozat"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr "Várakozás"
+msgstr "Waiting"
 
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr "Reklamáció"
+msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr "Reklamáció"
+msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
-msgstr "Reklamáció"
+msgstr "Complaints"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr "Reklamáció"
+msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr "Típusok"
+msgstr "Types"
 
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
@@ -379,6 +416,14 @@ msgid "Create Sale Return"
 msgstr "Visszavonás kiállítása"
 
 msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reklamáció"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Kivitelez"
+
+msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Jóváhagyás"
 
@@ -387,16 +432,8 @@ msgid "Cancel"
 msgstr "Mégse"
 
 msgctxt "view:sale.complaint:"
-msgid "Complaint"
-msgstr "Reklamáció"
-
-msgctxt "view:sale.complaint:"
 msgid "Draft"
 msgstr "Piszkozat"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Kivitelez"
 
 msgctxt "view:sale.complaint:"
 msgid "Reject"

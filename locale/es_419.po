@@ -244,7 +244,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -303,6 +303,30 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
@@ -378,29 +402,9 @@ msgid "Create Sale Return"
 msgstr "Crear devolución de venta"
 
 msgctxt "view:sale.complaint:"
-msgid "Approve"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr ""
 
 msgctxt "view:sale.complaint:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
 msgid "Process"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Reject"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Wait"
 msgstr ""

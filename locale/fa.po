@@ -4,361 +4,306 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:sale.complaint.action:"
 msgid "Action \"%s\" must not have result to be deleted."
-msgstr ""
+msgstr "اقدام : \"٪ s\" نباید منجر به حذف نتیجه شود."
 
 msgctxt "error:sale.complaint:"
 msgid "Complaint \"%s\" must be in draft to be deleted."
-msgstr ""
+msgstr "برای حذف شکایت: \"%s\" باید آنرا به پیش نویس تغییر حالت دهید."
 
-#, fuzzy
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
-msgstr "Acties"
+msgstr "اقدامات"
 
-#, fuzzy
 msgctxt "field:sale.complaint,address:"
 msgid "Address"
-msgstr "Adres"
+msgstr "آدرس"
 
-#, fuzzy
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "شرکت"
 
-#, fuzzy
 msgctxt "field:sale.complaint,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.complaint,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
-msgstr "Klant"
+msgstr "مشتری"
 
-#, fuzzy
 msgctxt "field:sale.complaint,date:"
 msgid "Date"
-msgstr "Vervaldatum"
+msgstr "تاریخ"
 
-#, fuzzy
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "شرح"
 
-#, fuzzy
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
-msgstr "Werknemer"
+msgstr "کارمند"
 
-#, fuzzy
 msgctxt "field:sale.complaint,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "شماره"
 
-#, fuzzy
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
-msgstr "Oorsprong"
+msgstr "اصل"
 
 msgctxt "field:sale.complaint,origin_id:"
 msgid "Origin ID"
-msgstr ""
+msgstr "شناسه اصلی"
 
 msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
-msgstr ""
+msgstr "مدل اصلی"
 
 msgctxt "field:sale.complaint,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
-msgstr "Referentie"
+msgstr "مرجع"
 
-#, fuzzy
 msgctxt "field:sale.complaint,state:"
 msgid "State"
-msgstr "Status"
+msgstr "وضعیت"
 
-#, fuzzy
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
-msgstr "Type"
+msgstr "نوع"
 
-#, fuzzy
 msgctxt "field:sale.complaint,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.complaint,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
-msgstr "Actie"
+msgstr "اقدام"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
-msgstr "Complaints"
+msgstr "شکایت"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Factuurregels"
+msgstr "سطرهای صورتحساب"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr "مقدار/تعداد"
 
 msgctxt "field:sale.complaint.action,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
-msgstr ""
+msgstr "نتیجه"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,sale_lines:"
 msgid "Sale Lines"
-msgstr "Offerteregel"
+msgstr "سطرهای فروش"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
-msgstr "Eenheid"
+msgstr "واحد"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr "ارقام واحد"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
-msgstr "Eenheidsprijs"
+msgstr "قیمت واحد"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
-msgstr "Actie"
+msgstr "اقدام"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
-msgstr "Factuurregel"
+msgstr "سطر صورتحساب"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
-msgstr "Actie"
+msgstr "اقدام"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
-msgstr "Offerteregel"
+msgstr "سطر فروش"
 
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "نام"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
-msgstr "Oorsprong"
+msgstr "مبداء"
 
 msgctxt "field:sale.complaint.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "نوشته کاربر"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
-msgstr ""
+msgstr "ادامه شکایت"
 
 msgctxt "field:sale.configuration.sequence,complaint_sequence:"
 msgid "Complaint Sequence"
-msgstr ""
+msgstr "ادامه شکایت"
 
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines"
-msgstr ""
+msgstr "تمام سطرها را خالی بگذارید"
 
 msgctxt "help:sale.complaint.action,quantity:"
 msgid "Leave empty for the same quantity"
-msgstr ""
+msgstr "برای همان مقدار خالی بگذارید"
 
 msgctxt "help:sale.complaint.action,sale_lines:"
 msgid "Leave empty for all lines"
-msgstr ""
+msgstr "تمام سطرها را خالی بگذارید"
 
 msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price"
-msgstr ""
+msgstr "برای همان مبلغ خالی بگذارید"
 
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr "شکایات"
 
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr "Customer Complaints"
+msgstr "شکایات مشتری"
 
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr "شکایات"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr "Type"
+msgstr "انواع"
 
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "همه"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr "Approved"
+msgstr "تصویب شده"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "Concept"
+msgstr "پیش‌نویس"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr "در انتظار"
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
@@ -386,100 +331,80 @@ msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "شکایت مشتری"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "شکایت مشتری"
 
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr "شکایات"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "شکایت مشتری"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr "Type"
+msgstr "انواع"
 
-#, fuzzy
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "شکایت مشتری"
 
 msgctxt "model:sale.complaint.action,name:"
 msgid "Customer Complaint Action"
-msgstr ""
+msgstr "اقدام شکایت مشتری"
 
 msgctxt "model:sale.complaint.action-account.invoice.line,name:"
 msgid "Customer Complaint Action - Invoice Line"
-msgstr ""
+msgstr "سطر صورتحساب - اقدام شکایت مشتری"
 
 msgctxt "model:sale.complaint.action-sale.line,name:"
 msgid "Customer Complaint Action - Sale Line"
-msgstr ""
+msgstr "سطر فروش - اقدام شکایت مشتری"
 
-#, fuzzy
 msgctxt "model:sale.complaint.type,name:"
 msgid "Customer Complaint Type"
-msgstr "Customer Complaint"
+msgstr "نوع شکایت مشتری"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Approved"
-msgstr "Approve"
+msgstr "تصویب شده"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "لغو شده"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Done"
-msgstr "Klaar"
+msgstr "انجام شد"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "پیش‌نویس"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
-msgstr "Reject"
+msgstr "رد شده"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Waiting"
-msgstr "In afwachting"
+msgstr "در انتظار"
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Credit Note"
-msgstr ""
+msgstr "ایجاد ملاحظات خرید"
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
-msgstr ""
+msgstr "ایجاد فروش برگشتی"
 
-#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
-msgstr "Complaints"
+msgstr "شکایت"
 
-#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Process"
-msgstr "Process"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Cancel"
-msgstr "Geannuleerd"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Draft"
-msgstr "Concept"
+msgstr "پردازش"

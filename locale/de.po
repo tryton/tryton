@@ -68,7 +68,7 @@ msgstr "Herkunftsmodell"
 
 msgctxt "field:sale.complaint,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
@@ -120,7 +120,7 @@ msgstr "Anzahl"
 
 msgctxt "field:sale.complaint.action,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -172,7 +172,7 @@ msgstr "Rechnungsposition"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
@@ -204,7 +204,7 @@ msgstr "Verkaufsposition"
 
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
@@ -236,7 +236,7 @@ msgstr "Herkunft"
 
 msgctxt "field:sale.complaint.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
@@ -276,7 +276,7 @@ msgstr "Reklamationen"
 
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr "Reklamationsaktionen"
+msgstr "Kundenreklamationen"
 
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
@@ -305,13 +305,37 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Wartend"
 
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr "Reklamation"
+msgstr "Kundenreklamation"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr "Reklamation"
+msgstr "Kundenreklamation"
 
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
@@ -319,7 +343,7 @@ msgstr "Reklamationen"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr "Reklamation"
+msgstr "Kundenreklamation"
 
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
@@ -378,6 +402,14 @@ msgid "Create Sale Return"
 msgstr "Rücknahme erstellen"
 
 msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reklamation"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Ausführen"
+
+msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Bestätigen"
 
@@ -386,16 +418,8 @@ msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "view:sale.complaint:"
-msgid "Complaint"
-msgstr "Reklamation"
-
-msgctxt "view:sale.complaint:"
 msgid "Draft"
 msgstr "Entwurf"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Ausführen"
 
 msgctxt "view:sale.complaint:"
 msgid "Reject"

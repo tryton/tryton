@@ -305,6 +305,30 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En espera"
 
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
 msgstr "Reclamació de client"
@@ -378,6 +402,14 @@ msgid "Create Sale Return"
 msgstr "Crea venda de devolució"
 
 msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reclamació"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Processa"
+
+msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Aprova"
 
@@ -386,16 +418,8 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "view:sale.complaint:"
-msgid "Complaint"
-msgstr "Reclamació"
-
-msgctxt "view:sale.complaint:"
 msgid "Draft"
 msgstr "Esborrany"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Processa"
 
 msgctxt "view:sale.complaint:"
 msgid "Reject"

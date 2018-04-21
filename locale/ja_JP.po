@@ -307,6 +307,30 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Waiting"
 
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
 msgstr "Customer Complaint"
@@ -368,9 +392,10 @@ msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
 msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
-msgstr ""
+msgstr "Reject"
 
 #, fuzzy
 msgctxt "selection:sale.complaint,state:"
@@ -387,31 +412,20 @@ msgstr ""
 
 #, fuzzy
 msgctxt "view:sale.complaint:"
-msgid "Approve"
-msgstr "Approved"
-
-msgctxt "view:sale.complaint:"
-msgid "Cancel"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
 msgid "Complaint"
 msgstr "Complaints"
 
 #, fuzzy
 msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Process"
+
+#, fuzzy
+msgctxt "view:sale.complaint:"
+msgid "Approve"
+msgstr "Approved"
+
+#, fuzzy
+msgctxt "view:sale.complaint:"
 msgid "Draft"
 msgstr "Draft"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Reject"
-msgstr ""
-
-msgctxt "view:sale.complaint:"
-msgid "Wait"
-msgstr ""

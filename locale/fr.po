@@ -294,17 +294,41 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr "Approuvée"
+msgstr "Approuvées"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "En attentes"
+
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
@@ -379,6 +403,14 @@ msgid "Create Sale Return"
 msgstr "Créer un retour de vente"
 
 msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Plainte"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Traiter"
+
+msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Approuver"
 
@@ -387,16 +419,8 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "view:sale.complaint:"
-msgid "Complaint"
-msgstr "Plainte"
-
-msgctxt "view:sale.complaint:"
 msgid "Draft"
 msgstr "Brouillon"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Traiter"
 
 msgctxt "view:sale.complaint:"
 msgid "Reject"

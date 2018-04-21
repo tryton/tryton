@@ -68,7 +68,7 @@ msgstr "Model porekla"
 
 msgctxt "field:sale.complaint,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
@@ -120,7 +120,7 @@ msgstr "Količina"
 
 msgctxt "field:sale.complaint.action,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -172,7 +172,7 @@ msgstr "Postavka računa"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
@@ -204,7 +204,7 @@ msgstr "Prodajna postavka"
 
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
@@ -236,7 +236,7 @@ msgstr "Poreklo"
 
 msgctxt "field:sale.complaint.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
@@ -270,60 +270,97 @@ msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price"
 msgstr "Pusti prazno za isto ceno"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
-msgstr "Reklamacija"
+msgstr "Complaints"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr "Reklamacije kupcev"
+msgstr "Customer Complaints"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
-msgstr "Reklamacije"
+msgstr "Complaints"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr "Vrste"
+msgstr "Types"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr "Vse"
+msgstr "All"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr "Odobreno"
+msgstr "Approved"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "Priprava"
+msgstr "Draft"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr "Čakajoče"
+msgstr "Waiting"
 
+msgctxt "model:ir.model.button,string:complaint_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:complaint_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:complaint_do_button"
+msgid "Process"
+msgstr "Process"
+
+msgctxt "model:ir.model.button,string:complaint_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:complaint_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:complaint_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr "Reklamacija kupca"
+msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr "Reklamacija kupca"
+msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
-msgstr "Reklamacije"
+msgstr "Complaints"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr "Reklamacija kupca"
+msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr "Vrste"
+msgstr "Types"
 
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
@@ -378,6 +415,14 @@ msgid "Create Sale Return"
 msgstr "Izdelava vračilnega naloga"
 
 msgctxt "view:sale.complaint:"
+msgid "Complaint"
+msgstr "Reklamacija"
+
+msgctxt "view:sale.complaint:"
+msgid "Process"
+msgstr "Obdelava"
+
+msgctxt "view:sale.complaint:"
 msgid "Approve"
 msgstr "Odobritev"
 
@@ -386,16 +431,8 @@ msgid "Cancel"
 msgstr "Preklic"
 
 msgctxt "view:sale.complaint:"
-msgid "Complaint"
-msgstr "Reklamacija"
-
-msgctxt "view:sale.complaint:"
 msgid "Draft"
 msgstr "Priprava"
-
-msgctxt "view:sale.complaint:"
-msgid "Process"
-msgstr "Obdelava"
 
 msgctxt "view:sale.complaint:"
 msgid "Reject"
