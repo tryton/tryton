@@ -72,8 +72,8 @@ msgstr "Contexto IVA Clientes Bélgica"
 
 msgctxt "model:ir.action,name:act_vat_customer_form"
 msgid "Belgium VAT Customer"
-msgstr "IVA Clientes Bélgica"
+msgstr "IVA clientes Bélgica"
 
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgium VAT Customer"
-msgstr "IVA Clientes Bélgica"
+msgstr "IVA clientes Bélgica"

@@ -4,77 +4,76 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.be.vat_customer,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr ""
+msgstr "شناسه مالیات شرکت"
 
 msgctxt "field:account.be.vat_customer,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:account.be.vat_customer,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.be.vat_customer,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "واحد پول"
 
 msgctxt "field:account.be.vat_customer,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "رقم های واحد پول"
 
 msgctxt "field:account.be.vat_customer,id:"
 msgid "ID"
-msgstr ""
+msgstr "شناسه"
 
 msgctxt "field:account.be.vat_customer,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr ""
+msgstr "شناسه مالیاتی نهاد/سازمان"
 
 msgctxt "field:account.be.vat_customer,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"
-msgstr ""
+msgstr "حجم معاملات"
 
 msgctxt "field:account.be.vat_customer,vat:"
 msgid "VAT"
-msgstr ""
+msgstr "VAT"
 
 msgctxt "field:account.be.vat_customer,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "تاریخ نوشته"
 
 msgctxt "field:account.be.vat_customer,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "نوشته کاربر"
 
 msgctxt "field:account.be.vat_customer.context,company:"
 msgid "Company"
-msgstr ""
+msgstr "شرکت"
 
 msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "سال مالی"
 
 msgctxt "field:account.be.vat_customer.context,id:"
 msgid "ID"
-msgstr ""
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "model:account.be.vat_customer,name:"
 msgid "Belgium VAT Customer"
-msgstr "Belgium VAT Customer"
+msgstr "کد دسترسی محلی بلژیک کاربر"
 
 msgctxt "model:account.be.vat_customer.context,name:"
 msgid "Belgium VAT Customer Context"
-msgstr ""
+msgstr "متن کد دسترسی محلی بلژیک کاربر"
 
 msgctxt "model:ir.action,name:act_vat_customer_form"
 msgid "Belgium VAT Customer"
-msgstr "Belgium VAT Customer"
+msgstr "کد محلی تماس مشتری بلژیک"
 
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgium VAT Customer"
-msgstr "Belgium VAT Customer"
+msgstr "کد محلی تماس مشتری بلژیک"

@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:account.be.vat_customer,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"
@@ -62,9 +62,10 @@ msgctxt "field:account.be.vat_customer.context,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.be.vat_customer,name:"
 msgid "Belgium VAT Customer"
-msgstr ""
+msgstr "Belgium VAT Customer"
 
 msgctxt "model:account.be.vat_customer.context,name:"
 msgid "Belgium VAT Customer Context"
@@ -72,8 +73,8 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_vat_customer_form"
 msgid "Belgium VAT Customer"
-msgstr ""
+msgstr "Belgium VAT Customer"
 
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgium VAT Customer"
-msgstr ""
+msgstr "Belgium VAT Customer"
