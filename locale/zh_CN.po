@@ -292,11 +292,12 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
-msgstr ""
+msgstr "Update Cost Price"
 
+#, fuzzy
 msgctxt "model:product.update_cost_price.ask,name:"
 msgid "Update Cost Price Ask"
-msgstr ""
+msgstr "Update Cost Price"
 
 msgctxt "model:product.update_cost_price.show_move,name:"
 msgid "Update Cost Price Show Move"

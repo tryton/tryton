@@ -290,7 +290,7 @@ msgstr "Configuración del diario de existencias"
 
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
-msgstr "Actualizar precio de costo"
+msgstr ""
 
 msgctxt "model:product.update_cost_price.ask,name:"
 msgid "Update Cost Price Ask"
