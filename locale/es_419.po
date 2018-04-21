@@ -6,10 +6,9 @@ msgctxt "field:party.party,sale_price_list:"
 msgid "Sale Price List"
 msgstr "Lista de precio de venta"
 
-#, fuzzy
 msgctxt "field:party.party,sale_price_lists:"
 msgid "Sale Price Lists"
-msgstr "Lista de precio de venta"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,company:"
 msgid "Company"

@@ -4,104 +4,104 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Preisliste Verkauf"
+msgstr "لیست قیمت فروش"
 
 msgctxt "field:party.party,sale_price_lists:"
 msgid "Sale Price Lists"
-msgstr "Preisliste Verkauf"
+msgstr "لیست های قیمت فروش"
 
 msgctxt "field:party.party.sale_price_list,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "شرکت"
 
 msgctxt "field:party.party.sale_price_list,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:party.party.sale_price_list,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:party.party.sale_price_list,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:party.party.sale_price_list,party:"
 msgid "Party"
-msgstr "Partei"
+msgstr "نهاد/سازمان"
 
 msgctxt "field:party.party.sale_price_list,rec_name:"
 msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
+msgstr "نام پرونده"
 
 msgctxt "field:party.party.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Preisliste Verkauf"
+msgstr "لیست قیمت فروش"
 
 msgctxt "field:party.party.sale_price_list,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:party.party.sale_price_list,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "نوشته کاربر"
 
 msgctxt "field:sale.configuration,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Preisliste Verkauf"
+msgstr "لیست قیمت فروش"
 
 msgctxt "field:sale.configuration.sale_price_list,company:"
 msgid "Company"
-msgstr "Unternehmen"
+msgstr "شرکت"
 
 msgctxt "field:sale.configuration.sale_price_list,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr "تاریخ ایجاد"
 
 msgctxt "field:sale.configuration.sale_price_list,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:sale.configuration.sale_price_list,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:sale.configuration.sale_price_list,rec_name:"
 msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
+msgstr "نام پرونده"
 
 msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Preisliste Verkauf"
+msgstr "لیست قیمت فروش"
 
 msgctxt "field:sale.configuration.sale_price_list,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr "تاریخ نوشته"
 
 msgctxt "field:sale.configuration.sale_price_list,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr "نوشته کاربر"
 
 msgctxt "field:sale.sale,price_list:"
 msgid "Price List"
-msgstr "Preisliste"
+msgstr "لیست قیمت"
 
 msgctxt "help:party.party,sale_price_list:"
 msgid "The default price list for new sales."
-msgstr "Die Standard-Preisliste für neue Verkäufe."
+msgstr "لیست قیمت پیش فرض برای فروش های جدید."
 
 msgctxt "help:sale.configuration,sale_price_list:"
 msgid "The default price list for new parties."
-msgstr "Die Standard-Preisliste für neue Parteien."
+msgstr "لیست قیمت پیش فرض برای نهادها/سازمان های جدید."
 
 msgctxt "help:sale.sale,price_list:"
 msgid "Use to compute the unit price of lines."
-msgstr "Wird für die Berechnung des Einheits-Preises für Positionen genutzt."
+msgstr "برای محاسبه واحد قیمت سطرها استفاده کنید."
 
 msgctxt "model:party.party.sale_price_list,name:"
 msgid "Party Sale Price List"
-msgstr "Preisliste Verkauf für Partei"
+msgstr "لیست قیمت فروش نهاد/سازمان"
 
 msgctxt "model:sale.configuration.sale_price_list,name:"
 msgid "Sale Configuration Sale PriceList"
-msgstr "Einstellungen Verkauf Preisliste"
+msgstr "پیکربندی فروش ؛ لیست قیمت فروش"

@@ -32,7 +32,7 @@ msgstr "Partner"
 
 msgctxt "field:party.party.sale_price_list,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:party.party.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
@@ -68,7 +68,7 @@ msgstr "ID"
 
 msgctxt "field:sale.configuration.sale_price_list,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
