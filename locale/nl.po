@@ -132,27 +132,28 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr ""
+msgstr "Package Types"
 
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
-msgstr ""
+msgstr "Package Labels"
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr ""
+msgstr "Stock Package"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr ""
+msgstr "Stock Package"
 
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
-msgstr ""
+msgstr "Package Types"
 
+#, fuzzy
 msgctxt "model:stock.package,name:"
 msgid "Stock Package"
-msgstr ""
+msgstr "Stock Package"
 
 msgctxt "model:stock.package.type,name:"
 msgid "Stock Package Type"

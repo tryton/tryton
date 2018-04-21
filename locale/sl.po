@@ -52,7 +52,7 @@ msgstr "Matični paket"
 
 msgctxt "field:stock.package,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -88,7 +88,7 @@ msgstr "Naziv"
 
 msgctxt "field:stock.package.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
@@ -114,25 +114,30 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Paketi"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr "Vrste paketov"
+msgstr "Package Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
-msgstr "Nalepke paketov"
+msgstr "Package Labels"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr "Paket"
+msgstr "Stock Package"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr "Paket"
+msgstr "Stock Package"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
-msgstr "Vrste paketov"
+msgstr "Package Types"
 
 msgctxt "model:stock.package,name:"
 msgid "Stock Package"

@@ -56,7 +56,7 @@ msgstr "Übergeordnet (Paket)"
 
 msgctxt "field:stock.package,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -92,7 +92,7 @@ msgstr "Name"
 
 msgctxt "field:stock.package.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
@@ -128,11 +128,11 @@ msgstr "Paketetiketten"
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr "Paket"
+msgstr "Lager Paket"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr "Paket"
+msgstr "Lager Paket"
 
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"

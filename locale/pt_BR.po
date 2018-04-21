@@ -118,25 +118,30 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Pacotes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr "Tipos de Pacotes"
+msgstr "Package Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
-msgstr "Etiquetas de Pacotes"
+msgstr "Package Labels"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr "Estoque de Pacote"
+msgstr "Stock Package"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr "Estoque de Pacote"
+msgstr "Stock Package"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
-msgstr "Tipos de Pacote"
+msgstr "Package Types"
 
 msgctxt "model:stock.package,name:"
 msgid "Stock Package"

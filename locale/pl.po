@@ -114,25 +114,30 @@ msgctxt "field:stock.shipment.out,root_packages:"
 msgid "Packages"
 msgstr "Paczki"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_package_type_form"
 msgid "Package Types"
-msgstr "Typy paczek"
+msgstr "Package Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
-msgstr "Etykiety paczek"
+msgstr "Package Labels"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr ""
+msgstr "Stock Package"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr ""
+msgstr "Stock Package"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
-msgstr "Typy paczek"
+msgstr "Package Types"
 
 #, fuzzy
 msgctxt "model:stock.package,name:"
