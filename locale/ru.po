@@ -36,6 +36,10 @@ msgctxt "error:account.account:"
 msgid "You can not delete accounts that have children."
 msgstr "Вы не можете изменить счет у которого есть подчиненные."
 
+msgctxt "error:account.create_chart:"
+msgid "A chart of accounts already exists for the company \"%(company)s\"."
+msgstr ""
+
 msgctxt "error:account.fiscalyear:"
 msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
 msgstr ""
@@ -264,6 +268,11 @@ msgstr ""
 "Вы не можете открыть период \"%(period)s\" так как финансовый год "
 "\"%(fiscalyear)s\" уже закрыт."
 
+#, fuzzy
+msgctxt "error:account.tax.line:"
+msgid "You can not add/modify tax lines in closed period \"%s\"."
+msgstr "Вы не можете добавить/изменить строки в закрытом периоде \"%s\"."
+
 msgctxt "error:account.tax.template:"
 msgid ""
 "\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
@@ -274,6 +283,12 @@ msgctxt "error:account.tax:"
 msgid ""
 "\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
 "parent."
+msgstr ""
+
+msgctxt "error:party.erase:"
+msgid ""
+"The party \"%(party)s\" can not be erased because he has pending "
+"receivable/payable for the company \"%(company)s\"."
 msgstr ""
 
 msgctxt "error:party.party:"
@@ -401,6 +416,10 @@ msgstr "Налоги по умолчанию"
 msgctxt "field:account.account,template:"
 msgid "Template"
 msgstr "Шаблон"
+
+msgctxt "field:account.account,template_override:"
+msgid "Override Template"
+msgstr ""
 
 msgctxt "field:account.account,type:"
 msgid "Type"
@@ -680,6 +699,10 @@ msgctxt "field:account.account.type,template:"
 msgid "Template"
 msgstr "Шаблон"
 
+msgctxt "field:account.account.type,template_override:"
+msgid "Override Template"
+msgstr ""
+
 msgctxt "field:account.account.type,write_date:"
 msgid "Write Date"
 msgstr "Дата изменения"
@@ -854,21 +877,41 @@ msgid "Unit"
 msgstr "Единица измерения"
 
 #, fuzzy
-msgctxt "field:account.balance_sheet.context,company:"
+msgctxt "field:account.balance_sheet.comparision.context,company:"
 msgid "Company"
 msgstr "Организация"
 
-msgctxt "field:account.balance_sheet.context,comparison:"
+msgctxt "field:account.balance_sheet.comparision.context,comparison:"
 msgid "Comparison"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.balance_sheet.context,date:"
+msgctxt "field:account.balance_sheet.comparision.context,date:"
 msgid "Date"
 msgstr "Дата"
 
 #, fuzzy
-msgctxt "field:account.balance_sheet.context,date_cmp:"
+msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
+msgid "Date"
+msgstr "Дата"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparision.context,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.comparision.context,posted:"
+msgid "Posted Move"
+msgstr "Проведенная операция"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,company:"
+msgid "Company"
+msgstr "Организация"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
 msgstr "Дата"
 
@@ -1039,10 +1082,6 @@ msgctxt "field:account.create_chart.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.fiscalyear,close_lines:"
-msgid "Close Lines"
-msgstr "Закрыть линии"
-
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
 msgstr "Организация"
@@ -1097,38 +1136,6 @@ msgid "Write Date"
 msgstr "Дата изменения"
 
 msgctxt "field:account.fiscalyear,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-msgctxt "field:account.fiscalyear-account.move.line,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:account.fiscalyear-account.move.line,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-msgctxt "field:account.fiscalyear-account.move.line,fiscalyear:"
-msgid "Fiscal Year"
-msgstr "Финансовый год"
-
-msgctxt "field:account.fiscalyear-account.move.line,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.fiscalyear-account.move.line,line:"
-msgid "Line"
-msgstr "Строка"
-
-msgctxt "field:account.fiscalyear-account.move.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.fiscalyear-account.move.line,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
@@ -1286,6 +1293,11 @@ msgstr ""
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,type:"
+msgid "Type"
+msgstr "Тип"
 
 #, fuzzy
 msgctxt "field:account.general_ledger.account,write_date:"
@@ -2481,25 +2493,21 @@ msgctxt "field:account.tax,create_uid:"
 msgid "Create User"
 msgstr "Создано пользователем"
 
+msgctxt "field:account.tax,credit_base_amount:"
+msgid "Credit Base Amount"
+msgstr ""
+
 msgctxt "field:account.tax,credit_note_account:"
 msgid "Credit Note Account"
 msgstr "Счет сторно"
 
-msgctxt "field:account.tax,credit_note_base_code:"
-msgid "Credit Note Base Code"
-msgstr "Основной код сторно"
+msgctxt "field:account.tax,credit_tax_amount:"
+msgid "Credit Tax Amount"
+msgstr ""
 
-msgctxt "field:account.tax,credit_note_base_sign:"
-msgid "Credit Note Base Sign"
-msgstr "Основной знак сторно"
-
-msgctxt "field:account.tax,credit_note_tax_code:"
-msgid "Credit Note Tax Code"
-msgstr "Код налога сторно"
-
-msgctxt "field:account.tax,credit_note_tax_sign:"
-msgid "Credit Note Tax Sign"
-msgstr "Знак налога сторно"
+msgctxt "field:account.tax,currency_digits:"
+msgid "Currency Digits"
+msgstr "Кол-во цифр валюты"
 
 msgctxt "field:account.tax,description:"
 msgid "Description"
@@ -2522,21 +2530,13 @@ msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
 msgstr "Счет для инвойса"
 
-msgctxt "field:account.tax,invoice_base_code:"
-msgid "Invoice Base Code"
-msgstr "Основной код инвойса"
+msgctxt "field:account.tax,invoice_base_amount:"
+msgid "Invoice Base Amount"
+msgstr ""
 
-msgctxt "field:account.tax,invoice_base_sign:"
-msgid "Invoice Base Sign"
-msgstr "Основной знак инвойса"
-
-msgctxt "field:account.tax,invoice_tax_code:"
-msgid "Invoice Tax Code"
-msgstr "Код налога по инвойсу"
-
-msgctxt "field:account.tax,invoice_tax_sign:"
-msgid "Invoice Tax Sign"
-msgstr "Знак налога по инвойсу"
+msgctxt "field:account.tax,invoice_tax_amount:"
+msgid "Invoice Tax Amount"
+msgstr ""
 
 msgctxt "field:account.tax,legal_notice:"
 msgid "Legal Notice"
@@ -2572,6 +2572,10 @@ msgctxt "field:account.tax,template:"
 msgid "Template"
 msgstr "Шаблон"
 
+msgctxt "field:account.tax,template_override:"
+msgid "Override Template"
+msgstr ""
+
 msgctxt "field:account.tax,type:"
 msgid "Type"
 msgstr "Тип"
@@ -2591,6 +2595,11 @@ msgstr "Изменено пользователем"
 msgctxt "field:account.tax.code,active:"
 msgid "Active"
 msgstr "Действующий"
+
+#, fuzzy
+msgctxt "field:account.tax.code,amount:"
+msgid "Amount"
+msgstr "Сумма"
 
 msgctxt "field:account.tax.code,childs:"
 msgid "Children"
@@ -2624,6 +2633,11 @@ msgctxt "field:account.tax.code,id:"
 msgid "ID"
 msgstr "ID"
 
+#, fuzzy
+msgctxt "field:account.tax.code,lines:"
+msgid "Lines"
+msgstr "Строки"
+
 msgctxt "field:account.tax.code,name:"
 msgid "Name"
 msgstr "Наименование"
@@ -2636,19 +2650,134 @@ msgctxt "field:account.tax.code,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-msgctxt "field:account.tax.code,sum:"
-msgid "Sum"
-msgstr "Сумма"
-
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
 msgstr "Шаблон"
+
+msgctxt "field:account.tax.code,template_override:"
+msgid "Override Template"
+msgstr ""
 
 msgctxt "field:account.tax.code,write_date:"
 msgid "Write Date"
 msgstr "Дата изменения"
 
 msgctxt "field:account.tax.code,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,amount:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,code:"
+msgid "Code"
+msgstr "Код"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.code.line,operator:"
+msgid "Operator"
+msgstr ""
+
+msgctxt "field:account.tax.code.line,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,template:"
+msgid "Template"
+msgstr "Шаблон"
+
+msgctxt "field:account.tax.code.line,template_override:"
+msgid "Override Template"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,type:"
+msgid "Type"
+msgstr "Тип"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,amount:"
+msgid "Amount"
+msgstr "Сумма"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,code:"
+msgid "Code"
+msgstr "Код"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.tax.code.line.template,operator:"
+msgid "Operator"
+msgstr ""
+
+msgctxt "field:account.tax.code.line.template,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,tax:"
+msgid "Tax"
+msgstr "Налог"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,type:"
+msgid "Type"
+msgstr "Тип"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:account.tax.code.line.template,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
@@ -2695,6 +2824,11 @@ msgstr "Описание"
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
 msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.tax.code.template,lines:"
+msgid "Lines"
+msgstr "Строки"
 
 msgctxt "field:account.tax.code.template,name:"
 msgid "Name"
@@ -2756,10 +2890,6 @@ msgctxt "field:account.tax.line,amount:"
 msgid "Amount"
 msgstr "Сумма"
 
-msgctxt "field:account.tax.line,code:"
-msgid "Code"
-msgstr "Код"
-
 #, fuzzy
 msgctxt "field:account.tax.line,company:"
 msgid "Company"
@@ -2793,6 +2923,11 @@ msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
 msgstr "Налог"
 
+#, fuzzy
+msgctxt "field:account.tax.line,type:"
+msgid "Type"
+msgstr "Тип"
+
 msgctxt "field:account.tax.line,write_date:"
 msgid "Write Date"
 msgstr "Дата изменения"
@@ -2805,11 +2940,6 @@ msgstr "Изменено пользователем"
 msgctxt "field:account.tax.line.template,amount:"
 msgid "Amount"
 msgstr "Сумма"
-
-#, fuzzy
-msgctxt "field:account.tax.line.template,code:"
-msgid "Code"
-msgstr "Код языка"
 
 #, fuzzy
 msgctxt "field:account.tax.line.template,create_date:"
@@ -2839,6 +2969,11 @@ msgstr ""
 msgctxt "field:account.tax.line.template,tax:"
 msgid "Tax"
 msgstr "Налоги"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,type:"
+msgid "Type"
+msgstr "Тип"
 
 #, fuzzy
 msgctxt "field:account.tax.line.template,write_date:"
@@ -3058,22 +3193,6 @@ msgctxt "field:account.tax.template,credit_note_account:"
 msgid "Credit Note Account"
 msgstr "Счет сторно"
 
-msgctxt "field:account.tax.template,credit_note_base_code:"
-msgid "Credit Note Base Code"
-msgstr "Основной код сторно"
-
-msgctxt "field:account.tax.template,credit_note_base_sign:"
-msgid "Credit Note Base Sign"
-msgstr "Основной знак сторно"
-
-msgctxt "field:account.tax.template,credit_note_tax_code:"
-msgid "Credit Note Tax Code"
-msgstr "Код налога сторно"
-
-msgctxt "field:account.tax.template,credit_note_tax_sign:"
-msgid "Credit Note Tax Sign"
-msgstr "Знак налога сторно"
-
 msgctxt "field:account.tax.template,description:"
 msgid "Description"
 msgstr "Описание"
@@ -3094,22 +3213,6 @@ msgstr "ID"
 msgctxt "field:account.tax.template,invoice_account:"
 msgid "Invoice Account"
 msgstr "Счет для инвойса"
-
-msgctxt "field:account.tax.template,invoice_base_code:"
-msgid "Invoice Base Code"
-msgstr "Основной код инвойса"
-
-msgctxt "field:account.tax.template,invoice_base_sign:"
-msgid "Invoice Base Sign"
-msgstr "Основной знак инвойса"
-
-msgctxt "field:account.tax.template,invoice_tax_code:"
-msgid "Invoice Tax Code"
-msgstr "Код налога по инвойсу"
-
-msgctxt "field:account.tax.template,invoice_tax_sign:"
-msgid "Invoice Tax Sign"
-msgstr "Знак налога по инвойсу"
 
 msgctxt "field:account.tax.template,legal_notice:"
 msgid "Legal Notice"
@@ -3348,6 +3451,10 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+msgctxt "help:account.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr ""
@@ -3372,12 +3479,25 @@ msgstr ""
 "Налоги по умолчанию для ручного расчета проводок для типов журналов: "
 "\"расходы\" и \"доходы\"."
 
+msgctxt "help:account.account,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr ""
 
+msgctxt "help:account.account.type,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
 #, fuzzy
 msgctxt "help:account.aged_balance.context,posted:"
+msgid "Show only posted move"
+msgstr "Показать только завершенные проводки"
+
+#, fuzzy
+msgctxt "help:account.balance_sheet.comparision.context,posted:"
 msgid "Show only posted move"
 msgstr "Показать только завершенные проводки"
 
@@ -3394,6 +3514,10 @@ msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
 msgstr ""
 
+msgctxt "help:account.general_ledger.account,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
@@ -3408,6 +3532,14 @@ msgstr "Показать только завершенные проводки"
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Show only posted move"
 msgstr "Показать только завершенные проводки"
+
+msgctxt "help:account.journal,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:account.journal.period,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number"
@@ -3449,6 +3581,10 @@ msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr ""
 
+msgctxt "help:account.move.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today."
 msgstr ""
@@ -3466,34 +3602,38 @@ msgctxt "help:account.open_chart.start,posted:"
 msgid "Show posted moves only"
 msgstr "Показать только завершенные проводки"
 
+msgctxt "help:account.tax,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency"
 msgstr "В валюте организации"
-
-msgctxt "help:account.tax,credit_note_base_sign:"
-msgid "Usualy 1 or -1"
-msgstr "Обычно 1 или -1"
-
-msgctxt "help:account.tax,credit_note_tax_sign:"
-msgid "Usualy 1 or -1"
-msgstr "Обычно 1 или -1"
 
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports"
 msgstr "Имя которое будет использоваться в отчетах"
 
-msgctxt "help:account.tax,invoice_base_sign:"
-msgid "Usualy 1 or -1"
-msgstr "Обычно 1 или -1"
-
-msgctxt "help:account.tax,invoice_tax_sign:"
-msgid "Usualy 1 or -1"
-msgstr "Обычно 1 или -1"
+msgctxt "help:account.tax,template_override:"
+msgid "Check to override template definition"
+msgstr ""
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
 "If checked then the unit price for further tax computation will be modified "
 "by this tax"
+msgstr ""
+
+msgctxt "help:account.tax.code,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+msgctxt "help:account.tax.code,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
+msgctxt "help:account.tax.code.line,template_override:"
+msgid "Check to override template definition"
 msgstr ""
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
@@ -3576,6 +3716,10 @@ msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
 msgstr ""
 
+msgctxt "model:account.balance_sheet.comparision.context,name:"
+msgid "Balance Sheet Context"
+msgstr ""
+
 msgctxt "model:account.balance_sheet.context,name:"
 msgid "Balance Sheet Context"
 msgstr ""
@@ -3608,29 +3752,28 @@ msgctxt "model:account.fiscalyear,name:"
 msgid "Fiscal Year"
 msgstr "Финансовый год"
 
-msgctxt "model:account.fiscalyear-account.move.line,name:"
-msgid "Fiscal Year - Move Line"
-msgstr "Финансовый год - Проводки"
-
+#, fuzzy
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
-msgstr ""
+msgstr "Balance Non-Deferral"
 
 msgctxt "model:account.fiscalyear.renew.start,name:"
 msgid "Renew Fiscal Year Start"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
-msgstr ""
+msgstr "General Ledger - Accounts"
 
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
-msgstr ""
+msgstr "General Ledger - Lines"
 
 msgctxt "model:account.general_ledger.line.context,name:"
 msgid "General Ledger Line Context"
@@ -3644,21 +3787,25 @@ msgctxt "model:account.journal,name:"
 msgid "Journal"
 msgstr "Журнал"
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
-msgstr "Наличные"
+msgstr "Cash"
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
-msgstr "Расходы"
+msgstr "Expense"
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
-msgstr "Доходы"
+msgstr "Revenue"
 
+#, fuzzy
 msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
-msgstr "Хранилище"
+msgstr "Stock"
 
 msgctxt "model:account.journal.account,name:"
 msgid "Journal Account"
@@ -3680,25 +3827,30 @@ msgctxt "model:account.journal.type,name:"
 msgid "Journal Type"
 msgstr "Тип журнала"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_cash"
 msgid "Cash"
-msgstr "Наличные"
+msgstr "Cash"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_expense"
 msgid "Expense"
-msgstr "Расходы"
+msgstr "Expense"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_general"
 msgid "General"
-msgstr "Основной"
+msgstr "General"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_revenue"
 msgid "Revenue"
-msgstr "Доходы"
+msgstr "Revenue"
 
+#, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_situation"
 msgid "Situation"
-msgstr "Ситуационный"
+msgstr "Situation"
 
 #, fuzzy
 msgctxt "model:account.journal.type,name:journal_type_write_off"
@@ -3709,9 +3861,10 @@ msgctxt "model:account.move,name:"
 msgid "Account Move"
 msgstr "Проводка"
 
+#, fuzzy
 msgctxt "model:account.move.cancel.default,name:"
 msgid "Cancel Moves"
-msgstr ""
+msgstr "Cancel Moves"
 
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
@@ -3743,13 +3896,15 @@ msgctxt "model:account.move.template,name:"
 msgid "Account Move Template"
 msgstr "Шаблон типа счета"
 
+#, fuzzy
 msgctxt "model:account.move.template.create.keywords,name:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Create Move from Template"
 
+#, fuzzy
 msgctxt "model:account.move.template.create.template,name:"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Create Move from Template"
 
 msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
@@ -3775,6 +3930,16 @@ msgstr "Налоги счета"
 msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
 msgstr "Код налога"
+
+#, fuzzy
+msgctxt "model:account.tax.code.line,name:"
+msgid "Tax Code Line"
+msgstr "Строка правила налога"
+
+#, fuzzy
+msgctxt "model:account.tax.code.line.template,name:"
+msgid "Tax Code Line Template"
+msgstr "Шаблон строки правила налога"
 
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
@@ -3817,13 +3982,15 @@ msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
 msgstr "Шаблон налогов счета"
 
+#, fuzzy
 msgctxt "model:account.tax.test,name:"
 msgid "Test Tax"
-msgstr ""
+msgstr "Test Tax"
 
+#, fuzzy
 msgctxt "model:account.tax.test.result,name:"
 msgid "Test Tax"
-msgstr ""
+msgstr "Test Tax"
 
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
@@ -3833,45 +4000,58 @@ msgctxt "model:account.update_chart.succeed,name:"
 msgid "Update Chart"
 msgstr "Обновить схему"
 
+msgctxt "model:ir.action,name:act_account_balance_sheet"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr "Балансовый отчет"
+msgstr "Balance Sheet"
 
+msgctxt "model:ir.action,name:act_account_general_ledger"
+msgid "Accounts"
+msgstr "Accounts"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
-msgstr "Отчет о доходах"
+msgstr "Income Statement"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Счета"
+msgstr "Accounts"
 
-msgctxt "model:ir.action,name:act_account_list2"
-msgid "Accounts"
-msgstr "Счета"
-
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
-msgstr "Шаблоны счетов"
+msgstr "Account Templates"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Счета"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
-msgstr "Счета"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
-msgstr "Типы счетов"
+msgstr "Account Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Шаблоны типов счетов"
+msgstr "Account Type Templates"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
-msgstr "Типы счетов"
+msgstr "Account Types"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_aged_balance_list"
@@ -3880,23 +4060,26 @@ msgstr "Сальдовый отчет"
 
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr ""
+msgstr "Balance Non-Deferral"
 
 msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
-msgstr ""
+msgstr "Cancel Moves"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Открыть схему кодов налогов"
+msgstr "Open Chart of Tax Codes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
-msgstr "Конфигурация бухгалтерии"
+msgstr "Account Configuration"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "Финансовые года"
+msgstr "Fiscal Years"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
@@ -3905,53 +4088,59 @@ msgstr "Закрыть финансовый год"
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
-msgstr ""
+msgstr "General Ledger - Accounts"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
-msgstr ""
+msgstr "General Ledger - Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr "Журналы"
+msgstr "Journals"
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
-msgstr ""
+msgstr "Journals Cash"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
 msgstr "Закрыть Журналы - Периоды"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Журналы - Периоды"
+msgstr "Journals - Periods"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Журналы - Периоды"
+msgstr "Journals - Periods"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_journal_type_form"
 msgid "Journal Types"
-msgstr "Типы журналов"
+msgstr "Journal Types"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
-msgstr "Проводки"
+msgstr "Account Moves"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
 msgstr "Проводка"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
-msgstr "Строчки проводки"
+msgstr "Account Move Lines"
 
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
-msgstr ""
+msgstr "Payable/Receivable Lines"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
@@ -3960,32 +4149,41 @@ msgstr "Сверки"
 
 msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Create Move from Template"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_template_form"
 msgid "Account Move Template"
 msgstr "Шаблон типа счета"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr "Открыть счет проводок"
+msgstr "Open Move Account"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Открыть схему счетов"
+msgstr "Open Chart of Accounts"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
-msgstr "Открыть журнал"
+msgstr "Open Journal"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
-msgstr "Открыть код налога"
+msgstr "Open Tax Code"
 
+msgctxt "model:ir.action,name:act_open_type"
+msgid "Open Type"
+msgstr "Open Type"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr "Периоды"
+msgstr "Periods"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_period_form_close"
@@ -3994,93 +4192,111 @@ msgstr "Закрыть Периоды"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
-msgstr ""
+msgstr "Reconcile Accounts"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
-msgstr "Строки сверки"
+msgstr "Reconcile Lines"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "Открыть заново Финансовый год"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
-msgstr "Коды налогов"
+msgstr "Tax Codes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr "Шаблоны кодов налогов"
+msgstr "Tax Codes Templates"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Коды налогов"
+msgstr "Tax Codes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_code_tree2"
 msgid "Tax Codes"
-msgstr "Коды налогов"
+msgstr "Tax Codes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Tax Groups"
-msgstr "Группы налогов"
+msgstr "Tax Groups"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
-msgstr "Строки налога"
+msgstr "Tax Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
-msgstr "Налоги"
+msgstr "Taxes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Правила налогов"
+msgstr "Tax Rules"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr "Шаблоны правил налогов"
+msgstr "Tax Rule Templates"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes Templates"
 msgstr "Шаблоны налогов"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr "Несверенные строки"
+msgstr "Unreconcile Lines"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
-msgstr "Сальдовый отчет"
+msgstr "Aged Balance"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_general_journal"
 msgid "General Journal"
-msgstr "Основной журнал"
+msgstr "General Journal"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
-msgstr "Основная приходно-расходная книга"
+msgstr "General Ledger"
 
+#, fuzzy
 msgctxt "model:ir.action,name:report_trial_balance"
 msgid "Trial Balance"
-msgstr "Проверочный баланс"
+msgstr "Trial Balance"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Создать схему счетов из шаблона"
+msgstr "Create Chart of Accounts from Template"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
-msgstr "Распечатать основной журнал"
+msgstr "Print General Journal"
 
 msgctxt "model:ir.action,name:wizard_tax_test"
 msgid "Test Tax"
-msgstr ""
+msgstr "Test Tax"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Обновить схему счетов из шаблона"
+msgstr "Update Chart of Accounts from Template"
 
 #, fuzzy
 msgctxt ""
@@ -4100,70 +4316,129 @@ msgctxt ""
 msgid "Receivable"
 msgstr "Подлежащий получению"
 
+msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
+msgid "Are you sure to lock the fiscal year?"
+msgstr "Are you sure to lock the fiscal year?"
+
+msgctxt "model:ir.model.button,confirm:period_lock_button"
+msgid "Are you sure to lock the period?"
+msgstr "Are you sure to lock the period?"
+
+msgctxt "model:ir.model.button,string:fiscalyear_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:fiscalyear_create_period_3_button"
+msgid "Create 3 Monthly Periods"
+msgstr "Create 3 Monthly Periods"
+
+msgctxt "model:ir.model.button,string:fiscalyear_create_period_button"
+msgid "Create Monthly Periods"
+msgstr "Create Monthly Periods"
+
+msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
+msgid "Lock"
+msgstr "Lock"
+
+msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
+msgid "Re-Open"
+msgstr "Re-Open"
+
+msgctxt "model:ir.model.button,string:move_post_button"
+msgid "Post"
+msgstr "Post"
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Close"
+
+msgctxt "model:ir.model.button,string:period_lock_button"
+msgid "Lock"
+msgstr "Lock"
+
+msgctxt "model:ir.model.button,string:period_reopen_button"
+msgid "Re-Open"
+msgstr "Re-Open"
+
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
-msgstr "Журнал счета по умолчанию"
+msgstr "Default Account Journal"
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
-msgstr "Сверка проводок по умолчанию"
+msgstr "Default Account Move Reconciliation"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
 msgid "Account Journal"
-msgstr "Журнал счетов"
+msgstr "Account Journal"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
 msgid "Account Move"
-msgstr "Проводка"
+msgstr "Account Move"
 
+#, fuzzy
 msgctxt ""
 "model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
 msgid "Account Move Reconciliation"
-msgstr "Сверка проводок"
+msgstr "Account Move Reconciliation"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account"
 msgid "Financial"
-msgstr "Бухгалтерия"
+msgstr "Financial"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
-msgstr "Конфигурация"
+msgstr "Configuration"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Счета"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Account Templates"
-msgstr "Шаблоны счетов"
+msgstr "Account Templates"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Счета в виде дерева"
+msgstr "Accounts"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
-msgstr "Типы счетов"
+msgstr "Account Types"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Шаблоны типов счетов"
+msgstr "Account Type Templates"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
-msgstr "Типы счетов в виде дерева"
+msgstr "Account Types"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
-msgstr "Сальдовый отчет"
+msgstr "Aged Balance"
 
 msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr ""
+msgstr "Balance Non-Deferral"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
-msgstr "Схемы счетов"
+msgstr "Charts"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
@@ -4180,140 +4455,167 @@ msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
 msgstr "Закрыть Периоды"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Открыть схему кодов налогов"
+msgstr "Open Chart of Tax Codes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Создать схему счетов из шаблона"
+msgstr "Create Chart of Accounts from Template"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
-msgstr "Движение активов"
+msgstr "Entries"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
-msgstr "Финансовые года"
+msgstr "Fiscal Years"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "Финансовые года"
+msgstr "Fiscal Years"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr "Счета"
+msgstr "General Account"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_general_ledger"
 msgid "General Ledger"
 msgstr "Основная приходно-расходная книга"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr "Журналы"
+msgstr "Journals"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr "Журналы"
+msgstr "Journals"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
-msgstr ""
+msgstr "Journals Cash"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Журналы - Периоды"
+msgstr "Journals - Periods"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Журналы - Периоды"
+msgstr "Journals - Periods"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
 msgid "Journal Types"
-msgstr "Типы журналов"
+msgstr "Journal Types"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
-msgstr "Проводки"
+msgstr "Account Moves"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
-msgstr ""
+msgstr "Create Move from Template"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
 msgid "Account Move Template"
 msgstr "Шаблон типа счета"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr "Балансовый отчет"
+msgstr "Balance Sheet"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Открыть схему счетов"
+msgstr "Open Chart of Accounts"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
-msgstr "Отчет о доходах"
+msgstr "Income Statement"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr "Открыть журнал"
+msgstr "Open Journal"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
-msgstr "Периоды"
+msgstr "Periods"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
-msgstr "Распечатать основной журнал"
+msgstr "Print General Journal"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "Обслуживание"
+msgstr "Processing"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
-msgstr ""
+msgstr "Reconcile Accounts"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
 msgid "Renew Fiscal Year"
 msgstr "Открыть заново Финансовый год"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Отчетность"
+msgstr "Reporting"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
-msgstr "Коды налогов"
+msgstr "Tax Codes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr "Шаблоны кодов налогов"
+msgstr "Tax Codes Templates"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Коды налогов"
+msgstr "Tax Codes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
-msgstr "Группы налогов"
+msgstr "Tax Groups"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
-msgstr "Налоги"
+msgstr "Taxes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Правила налогов"
+msgstr "Tax Rules"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr "Шаблоны правил налогов"
+msgstr "Tax Rule Templates"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
@@ -4322,36 +4624,41 @@ msgstr "Шаблоны налогов"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_test"
 msgid "Test Tax"
-msgstr ""
+msgstr "Test Tax"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
-msgstr "Налоги"
+msgstr "Taxes"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_templates"
 msgid "Templates"
 msgstr "Шаблон"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Обновить схему счетов из шаблона"
+msgstr "Update Chart of Accounts from Template"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
-msgstr "Конфигурация бухгалтерии"
+msgstr "Account Configuration"
 
 msgctxt "model:party.party.account,name:"
 msgid "Party Account"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
-msgstr "Счет"
+msgstr "Account"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
-msgstr "Администрирование бухгалтерии"
+msgstr "Account Administration"
 
 msgctxt "report:account.aged_balance:"
 msgid "+"
@@ -4852,6 +5159,62 @@ msgctxt "selection:account.tax,type:"
 msgid "Percentage"
 msgstr "Процент"
 
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Base"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,amount:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "+"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,operator:"
+msgid "-"
+msgstr "-"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Credit"
+msgstr "Кредит"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line,type:"
+msgid "Invoice"
+msgstr "Инвойс"
+
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Base"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,amount:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "+"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,operator:"
+msgid "-"
+msgstr "-"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Credit"
+msgstr "Кредит"
+
+#, fuzzy
+msgctxt "selection:account.tax.code.line.template,type:"
+msgid "Invoice"
+msgstr "Инвойс"
+
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Fiscal Year"
 msgstr "По финансовому году"
@@ -4871,6 +5234,24 @@ msgstr "Покупки"
 msgctxt "selection:account.tax.group,kind:"
 msgid "Sale"
 msgstr "Продажа"
+
+msgctxt "selection:account.tax.line,type:"
+msgid "Base"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.line,type:"
+msgid "Tax"
+msgstr "Налог"
+
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Base"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.tax.line.template,type:"
+msgid "Tax"
+msgstr "Налог"
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Both"
@@ -4943,35 +5324,9 @@ msgstr ""
 "Теперь вы можете создать схему счетов для вашей организации выбрав один из "
 "шаблонов схемы счетов."
 
-#, fuzzy
-msgctxt "view:account.fiscalyear:"
-msgid "Are you sure to lock the fiscal year?"
-msgstr "Закрыть финансовый год?"
-
-#, fuzzy
-msgctxt "view:account.fiscalyear:"
-msgid "Close"
-msgstr "Закрыть"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Create 3 Months Periods"
-msgstr "Создать периоды по 3 месяца"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Create Monthly Periods"
-msgstr "Создать периоды по месяцу"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Lock"
-msgstr ""
-
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
 msgstr "Периоды"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Re-Open"
-msgstr ""
 
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
@@ -5012,9 +5367,10 @@ msgctxt "view:account.journal.period:"
 msgid "Close"
 msgstr "Закрыть"
 
+#, fuzzy
 msgctxt "view:account.journal.period:"
 msgid "Re-Open"
-msgstr ""
+msgstr "Re-Open"
 
 msgctxt "view:account.journal:"
 msgid "General Information"
@@ -5040,68 +5396,19 @@ msgctxt "view:account.move.template:"
 msgid "Template"
 msgstr "Шаблон"
 
-msgctxt "view:account.move:"
-msgid "Post"
-msgstr "Проводка"
-
-msgctxt "view:account.period:"
-msgid "Are you sure to lock the period?"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:account.period:"
-msgid "Close"
-msgstr "Закрыть"
-
-msgctxt "view:account.period:"
-msgid "Lock"
-msgstr ""
-
-msgctxt "view:account.period:"
-msgid "Re-Open"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:account.reconcile.show:"
 msgid "Amount"
 msgstr "Сумма"
 
-msgctxt "view:account.tax.code.template:"
-msgid "Children"
-msgstr "Подчиненый"
-
-msgctxt "view:account.tax.code.template:"
-msgid "Description"
-msgstr "Описание"
-
-msgctxt "view:account.tax.code:"
-msgid "Children"
-msgstr "Подчиненый"
-
-msgctxt "view:account.tax.code:"
-msgid "Description"
-msgstr "Описание"
-
 #, fuzzy
 msgctxt "view:account.tax.template:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:account.tax.template:"
-msgid "Code"
-msgstr "Код"
-
-msgctxt "view:account.tax.template:"
-msgid "Credit Note"
-msgstr "Сторно"
-
-msgctxt "view:account.tax.template:"
 msgid "General Information"
 msgstr "Основная информация"
-
-msgctxt "view:account.tax.template:"
-msgid "Invoice"
-msgstr "Инвойс"
 
 #, fuzzy
 msgctxt "view:account.tax:"
@@ -5109,20 +5416,8 @@ msgid "%"
 msgstr "%"
 
 msgctxt "view:account.tax:"
-msgid "Code"
-msgstr "Код"
-
-msgctxt "view:account.tax:"
-msgid "Credit Note"
-msgstr "Сторно"
-
-msgctxt "view:account.tax:"
 msgid "General Information"
 msgstr "Основная информация"
-
-msgctxt "view:account.tax:"
-msgid "Invoice"
-msgstr "Инвойс"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Update Chart of Accounts Succeed!"
@@ -5285,3 +5580,208 @@ msgstr "Обновить"
 msgctxt "wizard_button:account.update_chart,succeed,end:"
 msgid "OK"
 msgstr "Ок"
+
+#, fuzzy
+msgctxt "field:account.balance_sheet.context,date_cmp:"
+msgid "Date"
+msgstr "Дата"
+
+msgctxt "field:account.fiscalyear,close_lines:"
+msgid "Close Lines"
+msgstr "Закрыть линии"
+
+msgctxt "field:account.fiscalyear-account.move.line,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgctxt "field:account.fiscalyear-account.move.line,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+msgctxt "field:account.fiscalyear-account.move.line,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Финансовый год"
+
+msgctxt "field:account.fiscalyear-account.move.line,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.fiscalyear-account.move.line,line:"
+msgid "Line"
+msgstr "Строка"
+
+msgctxt "field:account.fiscalyear-account.move.line,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+msgctxt "field:account.fiscalyear-account.move.line,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
+msgctxt "field:account.tax,credit_note_base_code:"
+msgid "Credit Note Base Code"
+msgstr "Основной код сторно"
+
+msgctxt "field:account.tax,credit_note_base_sign:"
+msgid "Credit Note Base Sign"
+msgstr "Основной знак сторно"
+
+msgctxt "field:account.tax,credit_note_tax_code:"
+msgid "Credit Note Tax Code"
+msgstr "Код налога сторно"
+
+msgctxt "field:account.tax,credit_note_tax_sign:"
+msgid "Credit Note Tax Sign"
+msgstr "Знак налога сторно"
+
+msgctxt "field:account.tax,invoice_base_code:"
+msgid "Invoice Base Code"
+msgstr "Основной код инвойса"
+
+msgctxt "field:account.tax,invoice_base_sign:"
+msgid "Invoice Base Sign"
+msgstr "Основной знак инвойса"
+
+msgctxt "field:account.tax,invoice_tax_code:"
+msgid "Invoice Tax Code"
+msgstr "Код налога по инвойсу"
+
+msgctxt "field:account.tax,invoice_tax_sign:"
+msgid "Invoice Tax Sign"
+msgstr "Знак налога по инвойсу"
+
+msgctxt "field:account.tax.code,sum:"
+msgid "Sum"
+msgstr "Сумма"
+
+msgctxt "field:account.tax.line,code:"
+msgid "Code"
+msgstr "Код"
+
+#, fuzzy
+msgctxt "field:account.tax.line.template,code:"
+msgid "Code"
+msgstr "Код языка"
+
+msgctxt "field:account.tax.template,credit_note_base_code:"
+msgid "Credit Note Base Code"
+msgstr "Основной код сторно"
+
+msgctxt "field:account.tax.template,credit_note_base_sign:"
+msgid "Credit Note Base Sign"
+msgstr "Основной знак сторно"
+
+msgctxt "field:account.tax.template,credit_note_tax_code:"
+msgid "Credit Note Tax Code"
+msgstr "Код налога сторно"
+
+msgctxt "field:account.tax.template,credit_note_tax_sign:"
+msgid "Credit Note Tax Sign"
+msgstr "Знак налога сторно"
+
+msgctxt "field:account.tax.template,invoice_base_code:"
+msgid "Invoice Base Code"
+msgstr "Основной код инвойса"
+
+msgctxt "field:account.tax.template,invoice_base_sign:"
+msgid "Invoice Base Sign"
+msgstr "Основной знак инвойса"
+
+msgctxt "field:account.tax.template,invoice_tax_code:"
+msgid "Invoice Tax Code"
+msgstr "Код налога по инвойсу"
+
+msgctxt "field:account.tax.template,invoice_tax_sign:"
+msgid "Invoice Tax Sign"
+msgstr "Знак налога по инвойсу"
+
+msgctxt "help:account.tax,credit_note_base_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обычно 1 или -1"
+
+msgctxt "help:account.tax,credit_note_tax_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обычно 1 или -1"
+
+msgctxt "help:account.tax,invoice_base_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обычно 1 или -1"
+
+msgctxt "help:account.tax,invoice_tax_sign:"
+msgid "Usualy 1 or -1"
+msgstr "Обычно 1 или -1"
+
+msgctxt "model:account.fiscalyear-account.move.line,name:"
+msgid "Fiscal Year - Move Line"
+msgstr "Финансовый год - Проводки"
+
+msgctxt "model:ir.action,name:act_account_list2"
+msgid "Accounts"
+msgstr "Счета"
+
+#, fuzzy
+msgctxt "view:account.fiscalyear:"
+msgid "Are you sure to lock the fiscal year?"
+msgstr "Закрыть финансовый год?"
+
+#, fuzzy
+msgctxt "view:account.fiscalyear:"
+msgid "Close"
+msgstr "Закрыть"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Create 3 Months Periods"
+msgstr "Создать периоды по 3 месяца"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Create Monthly Periods"
+msgstr "Создать периоды по месяцу"
+
+msgctxt "view:account.move:"
+msgid "Post"
+msgstr "Проводка"
+
+#, fuzzy
+msgctxt "view:account.period:"
+msgid "Close"
+msgstr "Закрыть"
+
+msgctxt "view:account.tax.code.template:"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "view:account.tax.code.template:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "view:account.tax.code:"
+msgid "Children"
+msgstr "Подчиненый"
+
+msgctxt "view:account.tax.code:"
+msgid "Description"
+msgstr "Описание"
+
+msgctxt "view:account.tax.template:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "view:account.tax.template:"
+msgid "Credit Note"
+msgstr "Сторно"
+
+msgctxt "view:account.tax.template:"
+msgid "Invoice"
+msgstr "Инвойс"
+
+msgctxt "view:account.tax:"
+msgid "Code"
+msgstr "Код"
+
+msgctxt "view:account.tax:"
+msgid "Credit Note"
+msgstr "Сторно"
+
+msgctxt "view:account.tax:"
+msgid "Invoice"
+msgstr "Инвойс"
