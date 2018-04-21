@@ -18,17 +18,18 @@ msgctxt "model:account.invoice.correct.start,name:"
 msgid "Correct Invoice"
 msgstr "ກວດແກ້ໃບເກັບເງິນ"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
-msgstr "ກວດແກ້"
+msgstr "Correct"
+
+msgctxt "model:ir.model.button,string:invoice_correct_button"
+msgid "Correct"
+msgstr "Correct"
 
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct"
 msgstr "ເລືອກລາຍການທີ່ຈະກວດແກ້"
-
-msgctxt "view:account.invoice:"
-msgid "Correct"
-msgstr "ກວດແກ້"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"
@@ -37,3 +38,7 @@ msgstr "ກວດແກ້"
 msgctxt "wizard_button:account.invoice.correct,start,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
+
+msgctxt "view:account.invoice:"
+msgid "Correct"
+msgstr "ກວດແກ້"

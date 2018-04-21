@@ -22,13 +22,13 @@ msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
 msgstr "Corregir"
 
+msgctxt "model:ir.model.button,string:invoice_correct_button"
+msgid "Correct"
+msgstr "Correct"
+
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct"
 msgstr "Elije las lineas a corregir"
-
-msgctxt "view:account.invoice:"
-msgid "Correct"
-msgstr "Corregir"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"
@@ -37,3 +37,7 @@ msgstr "Corregir"
 msgctxt "wizard_button:account.invoice.correct,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgctxt "view:account.invoice:"
+msgid "Correct"
+msgstr "Corregir"

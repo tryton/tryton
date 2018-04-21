@@ -4,23 +4,23 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice.correct.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
 msgctxt "field:account.invoice.correct.start,invoice:"
 msgid "Invoice"
-msgstr "Rechnung"
+msgstr "صورت حساب"
 
 msgctxt "field:account.invoice.correct.start,lines:"
 msgid "Invoice Lines"
-msgstr "Rechnungspositionen"
+msgstr "خطوط صورتحساب"
 
 msgctxt "model:account.invoice.correct.start,name:"
 msgid "Correct Invoice"
-msgstr "Rechnung korrigieren"
+msgstr "اصلاح صورتحساب"
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
-msgstr "Korrigieren"
+msgstr "صحیح"
 
 msgctxt "model:ir.model.button,string:invoice_correct_button"
 msgid "Correct"
@@ -28,16 +28,16 @@ msgstr "Correct"
 
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct"
-msgstr "Positionen zur Korrektur auswählen"
+msgstr "انتخاب خطوط برای اصلاح"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"
-msgstr "Korrigieren"
+msgstr "اصلاح"
 
 msgctxt "wizard_button:account.invoice.correct,start,end:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "انصراف"
 
 msgctxt "view:account.invoice:"
 msgid "Correct"
-msgstr "Korrigieren"
+msgstr "اصلاح"

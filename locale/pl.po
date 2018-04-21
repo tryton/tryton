@@ -20,19 +20,20 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
-msgstr ""
+msgstr "Correct"
+
+msgctxt "model:ir.model.button,string:invoice_correct_button"
+msgid "Correct"
+msgstr "Correct"
 
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct"
 msgstr ""
 
-msgctxt "view:account.invoice:"
-msgid "Correct"
-msgstr ""
-
+#, fuzzy
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"
-msgstr ""
+msgstr "Correct"
 
 msgctxt "wizard_button:account.invoice.correct,start,end:"
 msgid "Cancel"
