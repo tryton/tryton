@@ -22,6 +22,10 @@ msgctxt "field:sale.promotion,active:"
 msgid "Active"
 msgstr "Activo"
 
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr "Categorías"
+
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -74,10 +78,6 @@ msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Unidad"
 
-msgctxt "field:sale.promotion,unit_category:"
-msgid "Unit Category"
-msgstr "Categoría de la unidad"
-
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimales de la unidad"
@@ -87,6 +87,38 @@ msgid "Write Date"
 msgstr "Fecha de modificación"
 
 msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "field:sale.promotion-product.category,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:sale.promotion-product.category,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:sale.promotion-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "Promoción"
+
+msgctxt "field:sale.promotion-product.category,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:sale.promotion-product.category,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
@@ -122,6 +154,10 @@ msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
+msgctxt "help:sale.promotion,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -146,9 +182,17 @@ msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
 msgstr "Promoción de venta"
 
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
+msgstr "Promoción de venta - Categoría de producto"
+
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Promoción de venta - Producto"
+
+msgctxt "field:sale.promotion,unit_category:"
+msgid "Unit Category"
+msgstr "Categoría de la unidad"
 
 msgctxt "view:sale.promotion:"
 msgid "Sale Promotion"

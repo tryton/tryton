@@ -22,6 +22,10 @@ msgctxt "field:sale.promotion,active:"
 msgid "Active"
 msgstr ""
 
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr ""
+
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr ""
@@ -74,10 +78,6 @@ msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr ""
 
-msgctxt "field:sale.promotion,unit_category:"
-msgid "Unit Category"
-msgstr ""
-
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr ""
@@ -87,6 +87,40 @@ msgid "Write Date"
 msgstr ""
 
 msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.category,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:sale.promotion-product.category,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.category,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:sale.promotion-product.category,write_date:"
+msgid "Write Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
@@ -122,6 +156,10 @@ msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+msgctxt "help:sale.promotion,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -144,6 +182,10 @@ msgstr ""
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
+msgstr ""
+
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
 msgstr ""
 
 msgctxt "model:sale.promotion-product.product,name:"

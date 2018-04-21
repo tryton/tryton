@@ -6,211 +6,184 @@ msgctxt "error:sale.promotion:"
 msgid ""
 "Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
 "exception \"%(exception)s\"."
-msgstr ""
+msgstr "فرمول: \"%s\" در ترویج وتبلیع : \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
 
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
-msgstr ""
+msgstr "پیش نویس واحد قیمت"
 
-#, fuzzy
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
-msgstr "Promotions"
+msgstr "تبلیغ و ترویج"
 
-#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr "Действующий"
+msgstr "فعال"
 
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
-msgstr ""
+msgstr "دسته بندی ها"
 
-#, fuzzy
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr "Учет.орг."
+msgstr "شرکت"
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr "Дата окончания"
+msgstr "تاریخ پایان"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr ""
+msgstr "فرمول"
 
-#, fuzzy
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr "نام"
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "لیست قیمت"
 
-#, fuzzy
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr "Продукция"
+msgstr "محصولات"
 
-#, fuzzy
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr "Кол-во"
+msgstr "مقدار/تعداد"
 
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr "Дата начала"
+msgstr "تاریخ شروع"
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr "Штука"
+msgstr "واحد"
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
-msgstr "Кол-во цифр после запятой"
+msgstr "ارقام واحد"
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "نوشته کاربر"
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "دسته‌بندی‌"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
-msgstr "Promotions"
+msgstr "تبلیغ و ترویج"
 
 msgctxt "field:sale.promotion-product.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "نوشته کاربر"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr "ID"
+msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr "Товарно материальные ценности (ТМЦ)"
+msgstr "محصول"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr "Promotions"
+msgstr "تبلیغ و ترویج"
 
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr "نوشته کاربر"
 
 msgctxt "help:sale.promotion,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- unit_price: the original unit_price"
 msgstr ""
+"عبارت پایتون که با آن ارزیابی می شود:\n"
+"- واحد_قیمت: واحد_قیمت اصلی"
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr "Promotions"
+msgstr "ترویج ها و تبلیغات"
 
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr "Sale Promotions"
+msgstr "ترویج ها و تبلیغات فروش"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr "Promotions"
+msgstr "ترویج ها و تبلیغات"
 
-#, fuzzy
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
-msgstr "Sale Promotions"
+msgstr "تبلیغ و ترویج فروش"
 
 msgctxt "model:sale.promotion-product.category,name:"
 msgid "Sale Promotion - Product Category"
-msgstr ""
+msgstr "دسته بندی محصولات - تبلیغ و ترویج فروش"
 
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
-msgstr ""
+msgstr "محصولات - تبلیغ و ترویج فروش"

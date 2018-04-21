@@ -22,6 +22,10 @@ msgctxt "field:sale.promotion,active:"
 msgid "Active"
 msgstr "Aktivno"
 
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr ""
+
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Družba"
@@ -64,7 +68,7 @@ msgstr "Količina"
 
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
@@ -73,10 +77,6 @@ msgstr "Začetni datum"
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "enota"
-
-msgctxt "field:sale.promotion,unit_category:"
-msgid "Unit Category"
-msgstr "Kategorija enote"
 
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
@@ -87,6 +87,45 @@ msgid "Write Date"
 msgstr "Zapisano"
 
 msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr "Zapisal"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,create_date:"
+msgid "Create Date"
+msgstr "Izdelano"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,create_uid:"
+msgid "Create User"
+msgstr "Izdelal"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "Spodbuda"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,rec_name:"
+msgid "Record Name"
+msgstr "Ime"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,write_date:"
+msgid "Write Date"
+msgstr "Zapisano"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
@@ -112,7 +151,7 @@ msgstr "Spodbuda"
 
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Ime"
 
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
@@ -122,6 +161,10 @@ msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
 msgstr "Zapisal"
 
+msgctxt "help:sale.promotion,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -130,25 +173,36 @@ msgstr ""
 "Pythonski izraz, preračunan z:\n"
 "- unit_price: izvorna cena"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr "Spodbude"
+msgstr "Promotions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr "Spodbude prodaje"
+msgstr "Sale Promotions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr "Spodbude"
+msgstr "Promotions"
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
 msgstr "Spodbuda prodaje"
 
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
+msgstr ""
+
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Spodbuda prodaje - Izdelek"
+
+msgctxt "field:sale.promotion,unit_category:"
+msgid "Unit Category"
+msgstr "Kategorija enote"
 
 msgctxt "view:sale.promotion:"
 msgid "Sale Promotion"

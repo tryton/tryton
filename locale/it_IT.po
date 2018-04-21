@@ -22,6 +22,10 @@ msgctxt "field:sale.promotion,active:"
 msgid "Active"
 msgstr "Attivo"
 
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr ""
+
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Azienda"
@@ -74,10 +78,6 @@ msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Unità"
 
-msgctxt "field:sale.promotion,unit_category:"
-msgid "Unit Category"
-msgstr "categoria unitaria"
-
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Posizioni Unità"
@@ -87,6 +87,44 @@ msgid "Write Date"
 msgstr "modificato il"
 
 msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr "modificato da"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,create_date:"
+msgid "Create Date"
+msgstr "creato il"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,create_uid:"
+msgid "Create User"
+msgstr "creato da"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "Promozione"
+
+msgctxt "field:sale.promotion-product.category,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,write_date:"
+msgid "Write Date"
+msgstr "modificato il"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
@@ -122,6 +160,10 @@ msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
 msgstr "modificato da"
 
+msgctxt "help:sale.promotion,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:sale.promotion,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
@@ -130,22 +172,33 @@ msgstr ""
 "Espressione python che verrà valorizzata con:\n"
 "- unit_price: l'unit_price originario"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr "Promozioni"
+msgstr "Promotions"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr "Promozioni su vendite"
+msgstr "Sale Promotions"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr "Promozioni"
+msgstr "Promotions"
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
 msgstr "Promozione su vendite"
 
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
+msgstr ""
+
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Promozione su vendita - prodotto"
+
+msgctxt "field:sale.promotion,unit_category:"
+msgid "Unit Category"
+msgstr "categoria unitaria"

@@ -12,14 +12,19 @@ msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
-msgstr ""
+msgstr "Promotions"
 
 #, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
 msgstr "Активен"
+
+msgctxt "field:sale.promotion,categories:"
+msgid "Categories"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.promotion,company:"
@@ -85,10 +90,6 @@ msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
 msgstr "Единица"
 
-msgctxt "field:sale.promotion,unit_category:"
-msgid "Unit Category"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
@@ -101,6 +102,44 @@ msgstr "Променено на"
 
 #, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
+msgid "Write User"
+msgstr "Променено от"
+
+msgctxt "field:sale.promotion-product.category,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,create_date:"
+msgid "Create Date"
+msgstr "Създадено на"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,create_uid:"
+msgid "Create User"
+msgstr "Създадено от"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,promotion:"
+msgid "Promotion"
+msgstr "Promotions"
+
+msgctxt "field:sale.promotion-product.category,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,write_date:"
+msgid "Write Date"
+msgstr "Променено на"
+
+#, fuzzy
+msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
@@ -124,9 +163,10 @@ msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
 msgstr "Продукт"
 
+#, fuzzy
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr ""
+msgstr "Promotions"
 
 msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Record Name"
@@ -142,6 +182,10 @@ msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
 
+msgctxt "help:sale.promotion,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 #, fuzzy
 msgctxt "help:sale.promotion,formula:"
 msgid ""
@@ -153,18 +197,23 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr ""
+msgstr "Promotions"
 
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr ""
+msgstr "Sale Promotions"
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr ""
+msgstr "Promotions"
 
+#, fuzzy
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
+msgstr "Sale Promotions"
+
+msgctxt "model:sale.promotion-product.category,name:"
+msgid "Sale Promotion - Product Category"
 msgstr ""
 
 msgctxt "model:sale.promotion-product.product,name:"
