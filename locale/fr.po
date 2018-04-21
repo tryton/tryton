@@ -188,17 +188,37 @@ msgstr "Toutes"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_open"
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_sent"
 msgid "Processing"
-msgstr "Traitement"
+msgstr "En traitements"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_validated"
 msgid "Waiting"
-msgstr "En attente"
+msgstr "En attentes"
+
+msgctxt "model:ir.model.button,string:requisition_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:requisition_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:requisition_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:requisition_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:requisition_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
@@ -289,6 +309,14 @@ msgid "General"
 msgstr "Général"
 
 msgctxt "view:purchase.requisition:"
+msgid "Other Info"
+msgstr "Autre information"
+
+msgctxt "view:purchase.requisition:"
+msgid "Requisition"
+msgstr "Demande d'employé"
+
+msgctxt "view:purchase.requisition:"
 msgid "Approve"
 msgstr "Approuver"
 
@@ -301,16 +329,8 @@ msgid "Draft"
 msgstr "Brouillon"
 
 msgctxt "view:purchase.requisition:"
-msgid "Other Info"
-msgstr "Autre information"
-
-msgctxt "view:purchase.requisition:"
 msgid "Reject"
 msgstr "Rejeter"
-
-msgctxt "view:purchase.requisition:"
-msgid "Requisition"
-msgstr "Demande d'employé"
 
 msgctxt "view:purchase.requisition:"
 msgid "Wait"

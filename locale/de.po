@@ -62,7 +62,7 @@ msgstr "Nummer"
 
 msgctxt "field:purchase.requisition,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -134,7 +134,7 @@ msgstr "Anzahl"
 
 msgctxt "field:purchase.requisition.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.requisition.line,requisition:"
 msgid "Requisition"
@@ -170,11 +170,11 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
-msgstr "Anforderungen"
+msgstr "Anfragen"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form2"
 msgid "Requests"
-msgstr "Anforderungen"
+msgstr "Anfragen"
 
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
 msgid "Purchase Requisitions"
@@ -199,6 +199,26 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_validated"
 msgid "Waiting"
 msgstr "Wartend"
+
+msgctxt "model:ir.model.button,string:requisition_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:requisition_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:requisition_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:requisition_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:requisition_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
@@ -289,6 +309,14 @@ msgid "General"
 msgstr "Allgemein"
 
 msgctxt "view:purchase.requisition:"
+msgid "Other Info"
+msgstr "Sonstiges"
+
+msgctxt "view:purchase.requisition:"
+msgid "Requisition"
+msgstr "Bestellanforderung"
+
+msgctxt "view:purchase.requisition:"
 msgid "Approve"
 msgstr "Bestätigen"
 
@@ -301,16 +329,8 @@ msgid "Draft"
 msgstr "Entwurf"
 
 msgctxt "view:purchase.requisition:"
-msgid "Other Info"
-msgstr "Sonstiges"
-
-msgctxt "view:purchase.requisition:"
 msgid "Reject"
 msgstr "Ablehnen"
-
-msgctxt "view:purchase.requisition:"
-msgid "Requisition"
-msgstr "Bestellanforderung"
 
 msgctxt "view:purchase.requisition:"
 msgid "Wait"

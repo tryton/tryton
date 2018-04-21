@@ -198,6 +198,26 @@ msgctxt ""
 msgid "Waiting"
 msgstr ""
 
+msgctxt "model:ir.model.button,string:requisition_approve_button"
+msgid "Approve"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:requisition_cancel_button"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:requisition_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:requisition_reject_button"
+msgid "Reject"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:requisition_wait_button"
+msgid "Wait"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
 msgstr ""
@@ -287,29 +307,9 @@ msgid "General"
 msgstr ""
 
 msgctxt "view:purchase.requisition:"
-msgid "Approve"
-msgstr ""
-
-msgctxt "view:purchase.requisition:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:purchase.requisition:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:purchase.requisition:"
 msgid "Other Info"
 msgstr "Información adicional"
 
 msgctxt "view:purchase.requisition:"
-msgid "Reject"
-msgstr ""
-
-msgctxt "view:purchase.requisition:"
 msgid "Requisition"
-msgstr ""
-
-msgctxt "view:purchase.requisition:"
-msgid "Wait"
 msgstr ""

@@ -168,11 +168,11 @@ msgstr "Usuario de modificación"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
-msgstr "Peticiones"
+msgstr "Solicitudes"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form2"
 msgid "Requests"
-msgstr "Peticiones"
+msgstr "Solicitudes"
 
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
 msgid "Purchase Requisitions"
@@ -198,6 +198,26 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En espera"
 
+msgctxt "model:ir.model.button,string:requisition_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:requisition_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:requisition_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:requisition_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:requisition_wait_button"
+msgid "Wait"
+msgstr "Wait"
+
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
 msgstr "Petición de compra"
@@ -220,7 +240,7 @@ msgstr "Línea de petición de compra"
 
 msgctxt "model:res.group,name:group_purchase_requisition"
 msgid "Purchase Requisition"
-msgstr "Petición de compra"
+msgstr "Peticiones de compra"
 
 msgctxt "model:res.group,name:group_purchase_requisition_approval"
 msgid "Purchase Requisition Approval"
@@ -287,6 +307,14 @@ msgid "General"
 msgstr "General"
 
 msgctxt "view:purchase.requisition:"
+msgid "Other Info"
+msgstr "Otra información"
+
+msgctxt "view:purchase.requisition:"
+msgid "Requisition"
+msgstr "Petición"
+
+msgctxt "view:purchase.requisition:"
 msgid "Approve"
 msgstr "Aprobar"
 
@@ -299,16 +327,8 @@ msgid "Draft"
 msgstr "Borrador"
 
 msgctxt "view:purchase.requisition:"
-msgid "Other Info"
-msgstr "Otra información"
-
-msgctxt "view:purchase.requisition:"
 msgid "Reject"
 msgstr "Rechazar"
-
-msgctxt "view:purchase.requisition:"
-msgid "Requisition"
-msgstr "Petición"
 
 msgctxt "view:purchase.requisition:"
 msgid "Wait"

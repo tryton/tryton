@@ -118,13 +118,15 @@ msgctxt "field:purchase.requisition.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr "Kategoria jm produktu"
 
+#, fuzzy
 msgctxt "field:purchase.requisition.line,purchase_requests:"
 msgid "Purchase Request"
-msgstr ""
+msgstr "Purchase Requisition"
 
+#, fuzzy
 msgctxt "field:purchase.requisition.line,purchase_requisition_state:"
 msgid "Purchase Requisition State"
-msgstr ""
+msgstr "Purchase Requisition"
 
 msgctxt "field:purchase.requisition.line,quantity:"
 msgid "Quantity"
@@ -168,63 +170,86 @@ msgstr "Zapisał"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
-msgstr ""
+msgstr "Requests"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form2"
 msgid "Requests"
-msgstr ""
+msgstr "Requests"
 
 msgctxt "model:ir.action,name:act_purchase_requisition_form"
 msgid "Purchase Requisitions"
-msgstr ""
+msgstr "Purchase Requisitions"
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_all"
 msgid "All"
-msgstr "Wszystko"
+msgstr "All"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_open"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_sent"
 msgid "Processing"
-msgstr ""
+msgstr "Processing"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_requisition_form_view1_domain_validated"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
+
+msgctxt "model:ir.model.button,string:requisition_approve_button"
+msgid "Approve"
+msgstr "Approve"
+
+msgctxt "model:ir.model.button,string:requisition_cancel_button"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "model:ir.model.button,string:requisition_draft_button"
+msgid "Draft"
+msgstr "Draft"
+
+msgctxt "model:ir.model.button,string:requisition_reject_button"
+msgid "Reject"
+msgstr "Reject"
+
+msgctxt "model:ir.model.button,string:requisition_wait_button"
+msgid "Wait"
+msgstr "Wait"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Purchase Requisition"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase_requisition"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Purchase Requisition"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_requisition_form"
 msgid "Purchase Requisitions"
-msgstr ""
+msgstr "Purchase Requisitions"
 
+#, fuzzy
 msgctxt "model:purchase.requisition,name:"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Purchase Requisition"
 
+#, fuzzy
 msgctxt "model:purchase.requisition.line,name:"
 msgid "Purchase Requisition Line"
-msgstr ""
+msgstr "Purchase Requisition"
 
 msgctxt "model:res.group,name:group_purchase_requisition"
 msgid "Purchase Requisition"
-msgstr ""
+msgstr "Purchase Requisition"
 
 msgctxt "model:res.group,name:group_purchase_requisition_approval"
 msgid "Purchase Requisition Approval"
-msgstr ""
+msgstr "Purchase Requisition Approval"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Approved"
@@ -238,21 +263,24 @@ msgctxt "selection:purchase.requisition,state:"
 msgid "Done"
 msgstr "Wykonano"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition,state:"
 msgid "Processing"
-msgstr ""
+msgstr "Processing"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Rejected"
 msgstr "Odrzucono"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Approved"
@@ -266,25 +294,36 @@ msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Done"
 msgstr "Wykonano"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Draft"
-msgstr ""
+msgstr "Draft"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Processing"
-msgstr ""
+msgstr "Processing"
 
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Rejected"
 msgstr "Odrzucono"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Waiting"
 
 msgctxt "view:purchase.requisition.line:"
 msgid "General"
 msgstr "Ogólne"
+
+msgctxt "view:purchase.requisition:"
+msgid "Other Info"
+msgstr "Inne informacje"
+
+msgctxt "view:purchase.requisition:"
+msgid "Requisition"
+msgstr ""
 
 msgctxt "view:purchase.requisition:"
 msgid "Approve"
@@ -295,20 +334,8 @@ msgid "Cancel"
 msgstr "Anuluj"
 
 msgctxt "view:purchase.requisition:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:purchase.requisition:"
-msgid "Other Info"
-msgstr "Inne informacje"
-
-msgctxt "view:purchase.requisition:"
 msgid "Reject"
 msgstr "Odrzuć"
-
-msgctxt "view:purchase.requisition:"
-msgid "Requisition"
-msgstr ""
 
 msgctxt "view:purchase.requisition:"
 msgid "Wait"
