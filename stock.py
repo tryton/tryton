@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from sql import Union, Join, Select, Table, Null
+from sql import Union, Join, Select, Table, Null, As
 from sql.conditionals import Greatest
 
 from trytond.pool import PoolMeta, Pool
@@ -243,8 +243,9 @@ class Move:
         today = Date.today()
 
         stock_date_end = context.get('stock_date_end') or datetime.date.max
-        if query and ((stock_date_end == today and context.get('forecast'))
-                or stock_date_end > today):
+        if (query and not context.get('skip_lot_sled')
+                and ((stock_date_end == today and context.get('forecast'))
+                    or stock_date_end > today)):
             lot = Lot.__table__()
 
             config = Config(1)
@@ -277,10 +278,9 @@ class Move:
                 elif isinstance(query, Select):
                     yield query
 
-            union, = query.from_
-            for sub_query in find_queries(union):
+            def add_join(from_):
                 # Find move table
-                for i, table in enumerate(sub_query.from_):
+                for i, table in enumerate(from_):
                     if isinstance(table, Table) and table._name == cls._table:
                         sub_query.from_[i] = join(table)
                         break
@@ -291,9 +291,39 @@ class Move:
                         break
                 else:
                     # Not query on move table
-                    continue
-                sub_query.where &= ((lot.shelf_life_expiration_date == Null)
-                    | (lot.shelf_life_expiration_date >= expiration_date))
+                    return False
+                return True
+
+            union, = query.from_
+            for sub_query in find_queries(union):
+                if add_join(sub_query.from_):
+                    sub_query.where &= (
+                        (lot.shelf_life_expiration_date == Null)
+                        | (lot.shelf_life_expiration_date >= expiration_date))
+
+            stock_date_start = context.get('stock_date_start')
+            if stock_date_start:
+                with Transaction().set_context(
+                        stock_date_start=None,
+                        skip_lot_sled=True):
+                    query_expired = cls.compute_quantities_query(
+                        location_ids, with_childs=with_childs,
+                        grouping=grouping, grouping_filter=grouping_filter)
+                    union_expired, = query_expired.from_
+                    for sub_query in find_queries(union_expired):
+                        if add_join(sub_query.from_):
+                            # only lot expiring during the period
+                            sub_query.where &= (
+                                (lot.shelf_life_expiration_date >=
+                                    stock_date_start)
+                                & (lot.shelf_life_expiration_date <
+                                    stock_date_end))
+                        # Inverse quantity
+                        for column in sub_query._columns:
+                            if (isinstance(column, As)
+                                    and column.output_name == 'quantity'):
+                                column.expression = -column.expression
+                    union.queries += union_expired.queries
         return query
 
 

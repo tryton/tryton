@@ -76,6 +76,7 @@ class StockLotSLEDTestCase(ModuleTestCase):
 
             empty = {}
             computed = {(storage.id, product.id): 5}
+            delta = {(storage.id, product.id): -5}
             for context, result in [
                     ({'stock_date_end': today + datetime.timedelta(days=-1)},
                         empty),
@@ -88,6 +89,26 @@ class StockLotSLEDTestCase(ModuleTestCase):
                     ({'stock_date_end': today + datetime.timedelta(days=6)},
                         empty),
                     ({}, empty),
+                    ({'stock_date_start': today, 'stock_date_end': today},
+                        empty),
+                    ({'stock_date_start': today + datetime.timedelta(days=1),
+                      'stock_date_end': today + datetime.timedelta(days=7)},
+                        delta),
+                    ({'stock_date_start': today + datetime.timedelta(days=1),
+                      'stock_date_end': today + datetime.timedelta(days=2)},
+                        empty),
+                    ({'stock_date_start': today + datetime.timedelta(days=1),
+                      'stock_date_end': today + datetime.timedelta(days=5)},
+                        empty),
+                    ({'stock_date_start': today + datetime.timedelta(days=5),
+                      'stock_date_end': today + datetime.timedelta(days=6)},
+                        delta),
+                    ({'stock_date_start': today + datetime.timedelta(days=5),
+                      'stock_date_end': today + datetime.timedelta(days=7)},
+                        delta),
+                    ({'stock_date_start': today + datetime.timedelta(days=6),
+                      'stock_date_end': today + datetime.timedelta(days=7)},
+                        empty),
                     ]:
                 with Transaction().set_context(context=context,
                         locations=[storage.id]):
