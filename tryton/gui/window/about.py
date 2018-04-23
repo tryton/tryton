@@ -10,7 +10,7 @@ from tryton.common import get_toplevel_window
 from tryton import __version__
 
 COPYRIGHT = '''\
-Copyright (C) 2004-2017 Tryton.
+Copyright (C) 2004-2018 Tryton.
 '''
 AUTHORS = [
         'Bertrand Chenal <bertrand.chenal@b2ck.com>',
