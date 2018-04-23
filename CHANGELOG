@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Do not check amount to pay when reconcile move lines
 * Remove line split by invoice in non company currency
 * Use new API for Line.reconcile
