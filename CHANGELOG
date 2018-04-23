@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Make description on purchase request optional
 * Warns when the warehouse of a purchase differs from its purchase requests
 
