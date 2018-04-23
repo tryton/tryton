@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Check pending purchase to erase party
 * Add wizard to modify purchase header after filling lines
 * Make description on purchase line optional
