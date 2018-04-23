@@ -954,7 +954,7 @@ class Model(object):
                         definition, [], self, field)
                     config = Relation._config
                     with config.reset_context(), \
-                            config.set_context(self._context):
+                            config.set_context(records._get_context()):
                         for vals in (value or []):
                             record = Relation()
                             record._default_set(vals)
@@ -1053,9 +1053,11 @@ class Model(object):
                 Relation = Model.get(
                     self._fields[field]['relation'], self._config)
                 config = Relation._config
-                with config.reset_context(), config.set_context(self._context):
+                records = getattr(self, field)
+                with config.reset_context(), \
+                        config.set_context(records._get_context()):
                     record = Relation(_default=False, **vals)
-                getattr(self, field).append(record)
+                records.append(record)
         else:
             self._values[field] = value
         self._changed.add(field)
