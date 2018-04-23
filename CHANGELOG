@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Set CompAux in starting balance of FEC
 * Update chart to new tax code definition
 * Allow to export FEC on draft fiscalyear
