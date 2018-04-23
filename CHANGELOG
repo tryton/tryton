@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Add list of categories on promotion
 * Remove unit constraint on list of products from promotion
 
