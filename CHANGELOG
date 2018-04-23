@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Enforce digits length on Rounding Factor
 * Add SQL query for currency by date range
 * Remove monetary formatting from currency
