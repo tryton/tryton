@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Add reporting
 * Check pending sale to erase party
 * Add wizard to modify sale header after filling lines
