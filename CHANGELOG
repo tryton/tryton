@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-04-23
+* Bug fixes (see mercurial logs for details)
 * Manage active field on search widget
 * Add position and length on list view
 * Reset record to its original state when discarding the popup window
