@@ -22,7 +22,7 @@ class Attachment(WinForm):
         title = _('Attachments (%s)') % (record.rec_name())
         screen = Screen('ir.attachment', domain=[
             ('resource', '=', self.resource),
-            ], mode=['tree', 'form'], exclude_field='resource')
+            ], mode=['tree', 'form'])
         super(Attachment, self).__init__(screen, self.callback,
             view_type='tree', title=title)
         screen.search_filter()
@@ -33,9 +33,6 @@ class Attachment(WinForm):
 
     def callback(self, result):
         if result:
-            resource = self.screen.group.fields['resource']
-            for record in self.screen.group:
-                resource.set_client(record, self.resource)
             self.screen.save_current()
         if self.attachment_callback:
             self.attachment_callback()
