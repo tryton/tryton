@@ -5,7 +5,7 @@ from collections import namedtuple
 from decimal import Decimal
 from itertools import groupby
 
-from sql import Literal, Cast
+from sql import Literal
 from sql.aggregate import Sum
 from sql.conditionals import Case
 
@@ -835,7 +835,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         columns = []
         amount = tax_line.amount
         if backend.name() == 'sqlite':
-            amount = Cast(tax_line.amount, TaxLine.amount.sql_type()[0])
+            amount = TaxLine.amount.sql_cast(tax_line.amount)
         for name, clause in [
                 ('invoice_base_amount',
                     (amount > 0) & (tax_line.type == 'base')),

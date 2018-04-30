@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from sql import Literal, Null, Cast
+from sql import Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -197,14 +197,12 @@ class Party(CompanyMultiValueMixin):
         Operator = fields.SQL_OPERATORS[operator]
 
         # Need to cast numeric for sqlite
-        type_ = MoveLine.debit.sql_type().base
-        amount = Cast(
-            Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
-            type_)
+        cast_ = MoveLine.debit.sql_cast
+        amount = cast_(Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)))
         if operator in {'in', 'not in'}:
-            value = [Cast(Literal(Decimal(v or 0)), type_) for v in value]
+            value = [cast_(Literal(Decimal(v or 0))) for v in value]
         else:
-            value = Cast(Literal(Decimal(value or 0)), type_)
+            value = cast_(Literal(Decimal(value or 0)))
         query = line.join(account, condition=account.id == line.account
                 ).select(line.party,
                     where=account.active
