@@ -630,6 +630,12 @@ var Sao = {};
                     }
                 }
             });
+            completion.dropdown.on('hide.bs.dropdown', function() {
+                jQuery('#menu').css('overflow-y', '');
+            });
+            completion.dropdown.on('show.bs.dropdown', function() {
+                jQuery('#menu').css('overflow-y', 'visible');
+            });
         },
         format: function(content) {
             var el = jQuery('<div/>');
