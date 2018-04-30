@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import stdnum.eu.vat as vat
 import stdnum.exceptions
-from sql import Null, Column, Cast, Literal
+from sql import Null, Column, Literal
 from sql.functions import CharLength, Substring, Position
 
 from trytond.model import (ModelView, ModelSQL, MultiValueMixin, ValueMixin,
@@ -656,10 +656,10 @@ class PartyErase(Wizard):
                             cursor.execute(*table.delete(
                                     where=table.resource.like(
                                         Model.__name__ + ',%')
-                                    & Cast(Substring(table.resource,
+                                    & Model.id.sql_cast(
+                                        Substring(table.resource,
                                             Position(',', table.resource) +
-                                            Literal(1)),
-                                        Model.id.sql_type().base).in_(query)))
+                                            Literal(1))).in_(query)))
         return 'end'
 
     def check_erase(self, party):
