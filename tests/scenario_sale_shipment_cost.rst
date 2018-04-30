@@ -217,3 +217,41 @@ The quotation of the returned sale does not change the amount::
     >>> returned_sale.click('quote')
     >>> returned_sale.untaxed_amount
     Decimal('-63.00')
+
+Sale products with cost on order and invoice method on shipment::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.carrier = carrier
+    >>> sale.payment_term = payment_term
+    >>> sale.invoice_method = 'shipment'
+    >>> sale.shipment_cost_method = 'order'
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 1.0
+    >>> sale.click('quote')
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    u'processing'
+
+Check no customer invoice::
+
+    >>> len(sale.invoices)
+    0
+
+Send products::
+
+    >>> shipment, = sale.shipments
+    >>> shipment.click('assign_force')
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+    >>> shipment.state
+    u'done'
+
+Check customer invoice::
+
+    >>> sale.reload()
+    >>> invoice, = sale.invoices
+    >>> len(invoice.lines)
+    2

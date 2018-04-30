@@ -325,9 +325,15 @@ class SaleLine:
 
     def _get_invoice_line_quantity(self):
         quantity = super(SaleLine, self)._get_invoice_line_quantity()
-        if (self.shipment_cost
-                and self.sale.shipment_cost_method == 'shipment'):
-            return 0
+        if self.shipment_cost:
+            if self.sale.shipment_cost_method == 'shipment':
+                return 0
+            elif (self.sale.shipment_cost_method == 'order'
+                    and self.sale.invoice_method == 'shipment'):
+                shipments = self.sale.shipments
+                if (not shipments
+                        or all(s.state != 'done' for s in shipments)):
+                    return 0
         return quantity
 
 
