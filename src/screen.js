@@ -900,7 +900,7 @@
                                 return this.search_count;
                             }.bind(this));
                     }
-                    count_prm.done(function(count) {
+                    return count_prm.then(function(count) {
                         this.screen_container.but_next.prop('disabled',
                             !(this.limit !== undefined &&
                                 ids.length == this.limit &&

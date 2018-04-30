@@ -294,6 +294,7 @@
                 this.screen.search_filter(search_string, true).then(
                 function(ids) {
                     this.screen.group.sort(ids);
+                    this.screen.display();
                 }.bind(this));
             } else {
                 this.screen.search_filter(search_string);
