@@ -409,7 +409,6 @@
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
                 context: context,
-                exclude_field: 'resource'
             });
             screen.switch_view().done(function() {
                 screen.search_filter();
@@ -423,10 +422,6 @@
         callback: function(result) {
             var prm = jQuery.when();
             if (result) {
-                var resource = this.screen.group.model.fields.resource;
-                this.screen.group.forEach(function(record) {
-                    resource.set_client(record, this.resource);
-                }.bind(this));
                 prm = this.screen.save_current();
             }
             if (this.attachment_callback) {
@@ -444,7 +439,6 @@
                 domain: [['resource', '=', this.resource]],
                 mode: ['tree', 'form'],
                 context: context,
-                exclude_field: 'resource'
             });
             screen.switch_view().done(function() {
                 screen.search_filter();
@@ -458,11 +452,9 @@
         callback: function(result) {
             var prm = jQuery.when();
             if (result) {
-                var resource = this.screen.group.model.fields.resource;
                 var unread = this.screen.group.model.fields.unread;
                 this.screen.group.forEach(function(record) {
                     if (record.get_loaded() || record.id < 0) {
-                        resource.set_client(record, this.resource);
                         if (!record._changed.unread) {
                             unread.set_client(record, false);
                         }
