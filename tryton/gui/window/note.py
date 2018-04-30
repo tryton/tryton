@@ -17,7 +17,7 @@ class Note(WinForm):
         title = _('Notes (%s)') % (record.rec_name())
         screen = Screen('ir.note', domain=[
                 ('resource', '=', self.resource),
-                ], mode=['tree', 'form'], exclude_field='resource')
+                ], mode=['tree', 'form'])
         super(Note, self).__init__(screen, self.callback, view_type='tree',
             title=title)
         screen.search_filter()
@@ -28,11 +28,9 @@ class Note(WinForm):
 
     def callback(self, result):
         if result:
-            resource = self.screen.group.fields['resource']
             unread = self.screen.group.fields['unread']
             for record in self.screen.group:
                 if record.loaded or record.id < 0:
-                    resource.set_client(record, self.resource)
                     if 'unread' not in record.modified_fields:
                         unread.set_client(record, False)
             self.screen.save_current()
