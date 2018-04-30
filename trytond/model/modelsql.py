@@ -3,6 +3,7 @@
 import datetime
 from itertools import islice, izip, chain, ifilter
 from collections import OrderedDict
+from functools import wraps
 
 from sql import (Table, Column, Literal, Desc, Asc, Expression, Null,
     NullsFirst, NullsLast)
@@ -139,6 +140,15 @@ class Exclude(Constraint):
         return tuple(p)
 
 
+def no_table_query(func):
+    @wraps(func)
+    def wrapper(cls, *args, **kwargs):
+        if callable(cls.table_query):
+            raise NotImplementedError("On table_query")
+        return func(cls, *args, **kwargs)
+    return wrapper
+
+
 class ModelSQL(ModelStorage):
     """
     Define a model with storage in database.
@@ -147,6 +157,7 @@ class ModelSQL(ModelStorage):
     _order = None
     _order_name = None  # Use to force order field when sorting on Many2One
     _history = False
+    table_query = None
 
     @classmethod
     def __setup__(cls):
@@ -168,7 +179,10 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def __table__(cls):
-        return cls.table_query() or Table(cls._table)
+        if callable(cls.table_query):
+            return cls.table_query()
+        else:
+            return Table(cls._table)
 
     @classmethod
     def __table_history__(cls):
@@ -183,7 +197,7 @@ class ModelSQL(ModelStorage):
         TableHandler = backend.get('TableHandler')
         super(ModelSQL, cls).__register__(module_name)
 
-        if cls.table_query():
+        if callable(cls.table_query):
             return
 
         pool = Pool()
@@ -227,7 +241,7 @@ class ModelSQL(ModelStorage):
                 else:
                     ref_model = pool.get(field.model_name)
                     if (issubclass(ref_model, ModelSQL)
-                            and not ref_model.table_query()):
+                            and not callable(ref_model.table_query)):
                         ref = ref_model._table
                         # Create foreign key table if missing
                         if not TableHandler.table_exist(ref):
@@ -304,10 +318,6 @@ class ModelSQL(ModelStorage):
         for _, _, error in cls._sql_constraints:
             res.append(error)
         return res
-
-    @staticmethod
-    def table_query():
-        return None
 
     @classmethod
     def __raise_integrity_error(
@@ -521,6 +531,7 @@ class ModelSQL(ModelStorage):
                         'Records were modified in the meanwhile')
 
     @classmethod
+    @no_table_query
     def create(cls, vlist):
         DatabaseIntegrityError = backend.get('DatabaseIntegrityError')
         transaction = Transaction()
@@ -530,9 +541,6 @@ class ModelSQL(ModelStorage):
         Rule = pool.get('ir.rule')
 
         super(ModelSQL, cls).create(vlist)
-
-        if cls.table_query():
-            raise NotImplementedError('Can not create model with table_query')
 
         table = cls.__table__()
         modified_fields = set()
@@ -697,7 +705,6 @@ class ModelSQL(ModelStorage):
 
         result = []
         table = cls.__table__()
-        table_query = cls.table_query()
 
         in_max = transaction.database.IN_MAX
         history_order = None
@@ -705,7 +712,7 @@ class ModelSQL(ModelStorage):
         history_limit = None
         if (cls._history
                 and transaction.context.get('_datetime')
-                and not table_query):
+                and not callable(cls.table_query)):
             in_max = 1
             table = cls.__table_history__()
             column = Coalesce(table.write_date, table.create_date)
@@ -718,7 +725,7 @@ class ModelSQL(ModelStorage):
             field = cls._fields.get(f)
             if field and field.sql_type():
                 columns.append(field.sql_column(table).as_(f))
-            elif f == '_timestamp' and not table_query:
+            elif f == '_timestamp' and not callable(cls.table_query):
                 sql_type = fields.Char('timestamp').sql_type().base
                 columns.append(Extract('EPOCH',
                         Coalesce(table.write_date, table.create_date)
@@ -914,6 +921,7 @@ class ModelSQL(ModelStorage):
         return result
 
     @classmethod
+    @no_table_query
     def write(cls, records, values, *args):
         DatabaseIntegrityError = backend.get('DatabaseIntegrityError')
         transaction = Transaction()
@@ -935,9 +943,6 @@ class ModelSQL(ModelStorage):
 
         super(ModelSQL, cls).write(records, values, *args)
 
-        if cls.table_query():
-            raise NotImplementedError(
-                'Can not write on model with table_query')
         table = cls.__table__()
 
         cls.__check_timestamp(all_ids)
@@ -1027,6 +1032,7 @@ class ModelSQL(ModelStorage):
         cls.trigger_write(trigger_eligibles)
 
     @classmethod
+    @no_table_query
     def delete(cls, records):
         DatabaseIntegrityError = backend.get('DatabaseIntegrityError')
         transaction = Transaction()
@@ -1039,8 +1045,6 @@ class ModelSQL(ModelStorage):
         if not ids:
             return
 
-        if cls.table_query():
-            raise NotImplementedError('Can not delete model with table_query')
         table = cls.__table__()
 
         if transaction.delete and transaction.delete.get(cls.__name__):
@@ -1070,7 +1074,7 @@ class ModelSQL(ModelStorage):
         foreign_keys_toupdate = []
         foreign_keys_todelete = []
         for _, model in pool.iterobject():
-            if hasattr(model, 'table_query') and model.table_query():
+            if callable(getattr(model, 'table_query', None)):
                 continue
             if not issubclass(model, ModelStorage):
                 continue
@@ -1241,7 +1245,7 @@ class ModelSQL(ModelStorage):
                 and n != 'id'
                 and not getattr(f, 'translate', False)
                 and f.loading == 'eager']
-            if not cls.table_query():
+            if not callable(cls.table_query):
                 sql_type = fields.Char('timestamp').sql_type().base
                 columns += [Extract('EPOCH',
                         Coalesce(main_table.write_date, main_table.create_date)

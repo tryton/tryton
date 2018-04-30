@@ -413,7 +413,7 @@ Class methods:
 
 .. classmethod:: ModelSQL.table_query()
 
-    Could be overrided to use a custom SQL query instead of a table of the
+    Could be defined to use a custom SQL query instead of a table of the
     database. It should return a SQL FromItem.
 
     .. warning::

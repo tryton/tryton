@@ -276,8 +276,7 @@ class ModelStorage(Model):
 
         def is_readonly(Model):
             return (not issubclass(Model, ModelStorage)
-                or (hasattr(Model, 'table_query')
-                    and Model.table_query()))
+                or callable(getattr(Model, 'table_query', None)))
 
         def convert_data(field_defs, data):
             data = data.copy()
