@@ -783,13 +783,15 @@ class ConcurrencyDialog(UniqueDialog):
         dialog.vbox.pack_start(hbox)
         cancel_button = dialog.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
         cancel_button.set_always_show_image(True)
-        compare_button = gtk.Button(_('Compare'))
+        compare_button = gtk.Button(
+            '_' + _('Compare').replace('_', '__'), use_underline=True)
         image = gtk.Image()
         image.set_from_stock('tryton-find-replace', gtk.ICON_SIZE_BUTTON)
         compare_button.set_image(image)
         compare_button.set_always_show_image(True)
         dialog.add_action_widget(compare_button, gtk.RESPONSE_APPLY)
-        write_button = gtk.Button(_('Write Anyway'))
+        write_button = gtk.Button(
+            '_' + _('Write Anyway').replace('_', '__'), use_underline=True)
         image = gtk.Image()
         image.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
         write_button.set_image(image)
