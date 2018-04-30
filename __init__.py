@@ -17,4 +17,4 @@ def register():
     Pool.register(
         sale.Line,
         module='product_price_list_dates', type_='model',
-        depends=['sale'])
+        depends=['sale_price_list'])
