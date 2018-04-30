@@ -8,12 +8,11 @@ try:
 except ImportError:
     pygal = None
 from dateutil.relativedelta import relativedelta
-from sql import Null, Literal, Cast, Column
+from sql import Null, Literal, Column
 from sql.aggregate import Sum, Min, Count
 from sql.conditionals import Case
-from sql.functions import Function, CurrentTimestamp, DateTrunc
+from sql.functions import CurrentTimestamp, DateTrunc
 
-from trytond import backend
 from trytond.pool import Pool
 from trytond.model import ModelSQL, ModelView, UnionMixin, fields
 from trytond.tools import grouped_slice, reduce_ids
@@ -34,11 +33,6 @@ def pairwise(iterable):
     a, b = tee(iterable)
     b.next()
     return izip_longest(a, b)
-
-
-class SQLiteDate(Function):
-    __slots__ = ()
-    _function = 'DATE'
 
 
 class Abstract(ModelSQL):
@@ -103,18 +97,15 @@ class Abstract(ModelSQL):
         currency_company = tables['currency_company']
         currency_sale = tables['currency_sale']
 
-        revenue = Cast(
+        revenue = cls.revenue.sql_cast(
             Sum(line.quantity * line.unit_price
-                * currency_company.rate / currency_sale.rate),
-            cls.revenue.sql_type().base)
+                * currency_company.rate / currency_sale.rate))
         return [
             cls._column_id(tables).as_('id'),
             Literal(0).as_('create_uid'),
             CurrentTimestamp().as_('create_date'),
-            Cast(Literal(Null), cls.write_uid.sql_type().base
-                ).as_('write_uid'),
-            Cast(Literal(Null), cls.write_date.sql_type().base
-                ).as_('write_date'),
+            cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
+            cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
             sale.company.as_('company'),
             revenue.as_('revenue'),
             Count(sale.id, distinct=True).as_('number'),
@@ -203,10 +194,7 @@ class AbstractTimeseries(Abstract):
         context = Transaction().context
         sale = tables['line.sale']
         date = DateTrunc(context.get('period'), sale.sale_date)
-        if backend.name() != 'sqlite':
-            date = Cast(date, cls.date.sql_type().base)
-        else:
-            date = SQLiteDate(date)
+        date = cls.date.sql_cast(date)
         return date
 
     @classmethod
