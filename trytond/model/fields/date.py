@@ -1,8 +1,25 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from sql.functions import Function
 
+from ... import backend
 from .field import Field
+
+
+class SQLite_Date(Function):
+    __slots__ = ()
+    _function = 'DATE'
+
+
+class SQLite_DateTime(Function):
+    __slots__ = ()
+    _function = 'DATETIME'
+
+
+class SQLite_Time(Function):
+    __slots__ = ()
+    _function = 'TIME'
 
 
 class Date(Field):
@@ -28,6 +45,11 @@ class Date(Field):
             raise ValueError("invalid type '%s' for %s"
                 % (type(value), type(self)))
         return value
+
+    def sql_cast(self, expression):
+        if backend.name() == 'sqlite':
+            return SQLite_Date(expression)
+        return super(Date, self).sql_cast(expression)
 
 
 class DateTime(Field):
@@ -64,6 +86,11 @@ class DateTime(Field):
             raise ValueError("invalid type '%s' for %s"
                 % (type(value), type(self)))
         return value.replace(microsecond=0)
+
+    def sql_cast(self, expression):
+        if backend.name() == 'sqlite':
+            return SQLite_DateTime(expression)
+        return super(DateTime, self).sql_cast(expression)
 
 
 class Timestamp(Field):
@@ -110,6 +137,11 @@ class Time(DateTime):
             raise ValueError("invalid type '%s' for %s"
                 % (type(value), type(self)))
         return value.replace(microsecond=0)
+
+    def sql_cast(self, expression):
+        if backend.name() == 'sqlite':
+            return SQLite_Time(expression)
+        return super(Time, self).sql_cast(expression)
 
 
 class TimeDelta(Field):

@@ -180,6 +180,10 @@ Instance methods:
     For the list of supported types by Tryton see 
     :ref:`backend types <topics-backend_types>`.
 
+.. method:: Field.sql_cast(expression)
+
+    Return the SQL expression with cast with the type of the field.
+
 .. method:: Field.sql_column(table)
 
     Return the Column instance based on table.

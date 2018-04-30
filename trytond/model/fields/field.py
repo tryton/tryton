@@ -4,7 +4,7 @@ import warnings
 from functools import wraps
 
 from sql import (operators, Column, Literal, Select, CombiningQuery, Null,
-    Query, Expression)
+    Query, Expression, Cast)
 from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
 
@@ -313,6 +313,9 @@ class Field(object):
     def sql_type(self):
         database = Transaction().database
         return database.sql_type(self._sql_type)
+
+    def sql_cast(self, expression):
+        return Cast(expression, self.sql_type().base)
 
     def sql_column(self, table):
         return Column(table, self.name)
