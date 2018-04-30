@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Literal, Column
+from sql import Literal, Column, With
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
@@ -135,35 +135,28 @@ class Many2One(Field):
 
     def convert_domain_tree(self, domain, tables):
         Target = self.get_target()
+        target = Target.__table__()
         table, _ = tables[None]
         name, operator, ids = domain
         ids = set(ids)  # Ensure it is a set for concatenation
-
-        def get_child(ids):
-            if not ids:
-                return set()
-            children = Target.search([
-                    (name, 'in', ids),
-                    (name, '!=', None),
-                    ], order=[])
-            child_ids = get_child(set(c.id for c in children))
-            return ids | child_ids
-
-        def get_parent(ids):
-            if not ids:
-                return set()
-            parent_ids = set(getattr(p, name).id
-                for p in Target.browse(ids) if getattr(p, name))
-            return ids | get_parent(parent_ids)
+        red_sql = reduce_ids(target.id, ids)
 
         if operator.endswith('child_of'):
-            ids = list(get_child(ids))
+            tree = With('id', recursive=True)
+            tree.query = target.select(target.id, where=red_sql)
+            tree.query |= (target
+                .join(tree, condition=Column(target, name) == tree.id)
+                .select(target.id))
         else:
-            ids = list(get_parent(ids))
-        if not ids:
-            expression = Literal(False)
-        else:
-            expression = table.id.in_(ids)
+            tree = With('id', name, recursive=True)
+            tree.query = target.select(
+                target.id, Column(target, name), where=red_sql)
+            tree.query |= (target
+                .join(tree, condition=target.id == Column(tree, name))
+                .select(target.id, Column(target, name)))
+
+        expression = table.id.in_(tree.select(tree.id, with_=[tree]))
+
         if operator.startswith('not'):
             return ~expression
         return expression
