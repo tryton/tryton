@@ -635,7 +635,6 @@ class Line(ModelSQL, ModelView):
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
     maturity_date = fields.Date('Maturity Date',
-        states=_states, depends=_depends,
         help='This field is used for payable and receivable lines. \n'
         'You can put the limit date for the payment.')
     state = fields.Selection([
@@ -668,7 +667,8 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
-        cls._check_modify_exclude = {'reconciliation'}
+        cls._check_modify_exclude = {
+            'maturity_date', 'reconciliation', 'tax_lines'}
         cls._reconciliation_modify_disallow = {
             'account', 'debit', 'credit', 'party',
             }
