@@ -116,7 +116,7 @@ class Many2One(Field):
         cursor = Transaction().connection.cursor()
         table, _ = tables[None]
         name, operator, ids = domain
-        red_sql = reduce_ids(table.id, ids)
+        red_sql = reduce_ids(table.id, (i for i in ids if i is not None))
         Target = self.get_target()
         left = getattr(Target, self.left).sql_column(table)
         right = getattr(Target, self.right).sql_column(table)
@@ -138,8 +138,7 @@ class Many2One(Field):
         target = Target.__table__()
         table, _ = tables[None]
         name, operator, ids = domain
-        ids = set(ids)  # Ensure it is a set for concatenation
-        red_sql = reduce_ids(target.id, ids)
+        red_sql = reduce_ids(target.id, (i for i in ids if i is not None))
 
         if operator.endswith('child_of'):
             tree = With('id', recursive=True)

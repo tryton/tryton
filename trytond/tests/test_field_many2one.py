@@ -321,6 +321,25 @@ class FieldMany2OneTestCase(unittest.TestCase):
         self._test_search_not_child_of_empty('test.many2one_mptt')
 
     @with_transaction()
+    def _test_search_child_of_none(self, model_name):
+        Many2One = Pool().get(model_name)
+        self.create_tree(Many2One)
+
+        result = Many2One.search([
+                ('many2one', 'child_of', [None]),
+                ])
+
+        self.assertListEqual(result, [])
+
+    def test_search_tree_child_of_none(self):
+        "Test search many2one tree child of None"
+        self._test_search_child_of_none('test.many2one_tree')
+
+    def test_search_mptt_child_of_none(self):
+        "Test search many2one mptt child of None"
+        self._test_search_child_of_none('test.many2one_mptt')
+
+    @with_transaction()
     def _test_search_parent_of_root1(self, model_name):
         Many2One = Pool().get(model_name)
         self.create_tree(Many2One)
