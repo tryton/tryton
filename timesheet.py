@@ -31,8 +31,11 @@ class TimesheetLine:
 
     @classmethod
     def write(cls, *args):
-        if any(l.invoice_line for lines in args[::2] for l in lines):
-            cls.raise_user_error('modify_invoiced_line')
+        actions = iter(args)
+        for lines, values in zip(actions, actions):
+            if (('duration' in values or 'work' in values)
+                    and any(l.invoice_line for l in lines)):
+                cls.raise_user_error('modify_invoiced_line')
         super(TimesheetLine, cls).write(*args)
 
     @classmethod
