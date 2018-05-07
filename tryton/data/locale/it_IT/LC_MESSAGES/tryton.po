@@ -1333,7 +1333,7 @@ msgstr "Data di modifica"
 #: tryton/gui/window/view_form/screen/screen.py:777
 #, python-format, python-format, fuzzy, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "Impossibile configurare la vista ad albero"
+msgstr "Impossibile configurare la vista ad albero %s"
 
 #: tryton/gui/window/view_form/screen/screen.py:838
 msgid "Unable to set view tree state"

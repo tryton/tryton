@@ -1315,7 +1315,7 @@ msgstr "ວັນທີປັບປ່ຽນ"
 #: tryton/gui/window/view_form/screen/screen.py:777
 #, python-format, python-format, fuzzy, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "ບໍ່ສາມາດຕັ້ງຄ່າສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້"
+msgstr "ບໍ່ສາມາດຕັ້ງຄ່າສະຖານະມູມມອງແບບຕົ້ນໄມ້ໄດ້ %s"
 
 #: tryton/gui/window/view_form/screen/screen.py:838
 msgid "Unable to set view tree state"

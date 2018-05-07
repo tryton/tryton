@@ -1151,7 +1151,7 @@ msgstr "%s (niz)"
 #: tryton/gui/window/win_export.py:109
 #, python-format
 msgid "%s (model name)"
-msgstr "% (ime modela)"
+msgstr "%s (ime modela)"
 
 #: tryton/gui/window/win_export.py:111
 #, python-format
@@ -1314,7 +1314,7 @@ msgstr "Popravljeno"
 #: tryton/gui/window/view_form/screen/screen.py:777
 #, python-format, python-format, fuzzy, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "Ni možno nastaviti stanja obrazca"
+msgstr "Ni možno nastaviti stanja obrazca %s"
 
 #: tryton/gui/window/view_form/screen/screen.py:838
 msgid "Unable to set view tree state"
