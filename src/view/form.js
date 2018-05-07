@@ -2394,12 +2394,13 @@ function eval_pyson(value){
                     }.bind(this));
                 }
             };
+            var rec_name = this.entry.val();
             screen.switch_view().done(function() {
                 var win = new Sao.Window.Form(screen, callback.bind(this), {
                     new_: true,
                     save_current: true,
                     title: this.attributes.string,
-                    rec_name: this.entry.val()
+                    rec_name: rec_name
                 });
             }.bind(this));
         },
