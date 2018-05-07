@@ -81,6 +81,7 @@ class TrytonConfigParser(ConfigParser.RawConfigParser):
             configfile = [configfile]
         if not configfile or not filter(None, configfile):
             return
+        configfile = [os.path.expanduser(filename) for filename in configfile]
         read_files = self.read(configfile)
         logger.info('using %s as configuration files', ', '.join(read_files))
 
