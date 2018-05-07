@@ -209,12 +209,12 @@ pattern, unless otherwise noted::
 ``child_of``
 ------------
 
-    Is a parent child comparison operator. In case ``<field name>`` is a
-    :class:`~trytond.model.fields.one2many` returns true, if
-    ``<field name>`` is a child of ``<operand>``. ``<field name>``
-    and ``<operand>`` are represented each by an ``id``.
-    In case ``<field name>`` is a :class:`~trytond.model.fields.many2many`
-    not linked to itself, the clause pattern extends to::
+    Is a parent child comparison operator. Returns true for records that are
+    a child of ``<operand>``. ``<operand>`` is a list of ``ids`` and ``<field
+    name>`` must be a :class:`~trytond.model.fields.many2one` or a
+    :class:`~trytond.model.fields.many2many`.
+    In case ``<field name>`` is not linked to itself, the clause pattern
+    extends to::
 
         (<field name>, ['child_of'|'not_child_of'], <operand>, <parent field>)
 
@@ -236,7 +236,7 @@ pattern, unless otherwise noted::
 ``not parent_of``
 -----------------
 
-    Is a parent child comparison operator. it is the negation of this
+    Is a parent child comparison operator. It is the negation of this
     `parent_of`_ operator.
 
 ``where``
