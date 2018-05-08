@@ -874,7 +874,9 @@ class Screen(SignalEvent):
             self.search_active(self.current_view.view_type
                 in ('tree', 'graph', 'calendar'))
             for view in self.views:
-                view.display()
+                if (view == self.current_view
+                        or view.widget.get_parent()):
+                    view.display()
             self.current_view.widget.set_sensitive(
                 bool(self.group
                     or (self.current_view.view_type != 'form')
