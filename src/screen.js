@@ -1087,7 +1087,9 @@
                             this.current_view.view_type));
                 deferreds.push(search_prm);
                 for (var i = 0; i < this.views.length; i++) {
-                    if (this.views[i]) {
+                    if (this.views[i] &&
+                        ((this.views[i] == this.current_view) ||
+                            this.views[i].el.parent().length)) {
                         deferreds.push(this.views[i].display());
                     }
                 }
