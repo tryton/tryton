@@ -47,9 +47,9 @@ def get_parser_admin():
         metavar='MODULE', help="update a module")
     parser.add_argument("--all", dest="update", action="append_const",
         const="ir", help="update all installed modules")
-    parser.add_argument("--install-dependencies", dest="installdeps",
+    parser.add_argument("--activate-dependencies", dest="activatedeps",
         action="store_true",
-        help="Install missing dependencies of updated modules")
+        help="Activate missing dependencies of updated modules")
     parser.add_argument("--email", dest="email", help="set the admin email")
     parser.add_argument("-p", "--password", dest="password",
         action='store_true', help="set the admin password")

@@ -385,7 +385,7 @@ def register_classes():
 
 
 def load_modules(
-        database_name, pool, update=None, lang=None, installdeps=False):
+        database_name, pool, update=None, lang=None, activatedeps=False):
     res = True
     if update:
         update = update[:]
@@ -430,7 +430,7 @@ def load_modules(
                 try:
                     graph = create_graph(module_list)[0]
                 except MissingDependenciesException as e:
-                    if not installdeps:
+                    if not activatedeps:
                         raise
                     update += e.missings
 
