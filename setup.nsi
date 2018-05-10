@@ -11,7 +11,7 @@
 
 ;General
 Name "Tryton ${VERSION}"
-OutFile "tryton-setup-${VERSION}.exe"
+OutFile "tryton-${VERSION}.exe"
 SetCompressor lzma
 SetCompress auto
 
