@@ -2234,6 +2234,9 @@
         [[['x', '=', 1]], {'x': [1, 2]}, true],
         [[['x', '=', 1]], {'x': [2]}, false],
         [[['x', '=', null]], {'x': []}, true],
+        [[['x', '=', ['foo', 1]]], {'x': 'foo,1'}, true],
+        [[['x', '=', ['foo', 1]]], {'x': ['foo', 1]}, true],
+        [[['x', '=', 'foo,1']], {'x': ['foo', 1]}, true],
         ].forEach(function(test) {
             var domain = test[0];
             var context = test[1];
