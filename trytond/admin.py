@@ -73,7 +73,8 @@ def run(options):
         with Transaction().start(db_name, 0) as transaction:
             pool = Pool()
             User = pool.get('res.user')
-            admin, = User.search([('login', '=', 'admin')])
+            with transaction.set_context(active_test=False):
+                admin, = User.search([('login', '=', 'admin')])
 
             if options.email is not None:
                 admin.email = options.email
