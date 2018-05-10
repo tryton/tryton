@@ -75,15 +75,19 @@ def eval_leaf(part, context, boolop=operator.and_):
     if (isinstance(context_field, basestring)
             and isinstance(value, (list, tuple))):
         try:
-            value = '%s,%s' % value
+            value = '%s,%s' % tuple(value)
         except TypeError:
             pass
     elif (isinstance(context_field, (list, tuple))
             and isinstance(value, basestring)):
         try:
-            context_field = '%s,%s' % context_field
+            context_field = '%s,%s' % tuple(context_field)
         except TypeError:
             pass
+    elif ((isinstance(context_field, list) and isinstance(value, tuple))
+            or (isinstance(context_field, tuple) and isinstance(value, list))):
+        context_field = list(context_field)
+        value = list(value)
     if (operand in ('=', '!=')
             and isinstance(context_field, (list, tuple))
             and isinstance(value, (int, long))):
@@ -588,6 +592,19 @@ def test_evaldomain():
 
     domain = [['x', '=', None]]
     assert eval_domain(domain, {'x': []})
+
+    domain = [['x', '=', ['foo', 1]]]
+    assert eval_domain(domain, {'x': 'foo,1'})
+    assert eval_domain(domain, {'x': ('foo', 1)})
+    assert eval_domain(domain, {'x': ['foo', 1]})
+    domain = [['x', '=', ('foo', 1)]]
+    assert eval_domain(domain, {'x': 'foo,1'})
+    assert eval_domain(domain, {'x': ('foo', 1)})
+    assert eval_domain(domain, {'x': ['foo', 1]})
+
+    domain = [['x', '=', 'foo,1']]
+    assert eval_domain(domain, {'x': ['foo', 1]})
+    assert eval_domain(domain, {'x': ('foo', 1)})
 
 
 def test_localize():
