@@ -10,15 +10,8 @@
     Sao.Action.exec_action = function(action, data, context) {
         if (context === undefined) {
             context = {};
-        } else {
-            context = jQuery.extend({}, context);
         }
         var session = Sao.Session.current_session;
-        if (!('date_format' in context)) {
-            if (session.context.locale && session.context.locale.date) {
-                context.date_format = session.context.locale.date;
-            }
-        }
         if (data === undefined) {
             data = {};
         } else {
