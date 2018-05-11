@@ -531,8 +531,9 @@ var Sao = {};
                 'method': 'model.' + name + '.get',
             };
             var menu = jQuery('<ul/>', {
-                'class': 'dropdown-menu',
-                'aria-expanded': 'false'
+                'class': 'dropdown-menu dropdown-menu-right',
+                'aria-expanded': 'false',
+                'aria-labelledby': 'user-favorites',
             });
             jQuery('#user-favorites').append(menu);
             Sao.rpc(args, session).then(function(fav) {
@@ -588,15 +589,20 @@ var Sao = {};
         jQuery('#user-favorites').children().remove();
         jQuery('#user-logout').children().remove();
         jQuery('#user-preferences').append(jQuery('<a/>', {
-            'href': '#'
-        }).click(Sao.preferences).append(preferences.status_bar));
-        jQuery('#user-logout').append(jQuery('<a/>', {
-            'href': '#'
-        }).click(Sao.logout).append(Sao.i18n.gettext('Logout')));
-        jQuery('#user-favorites').append(jQuery('<a/>', {
             'href': '#',
-            'data-toggle': 'dropdown'
-        }).click(Sao.favorites_menu).append(Sao.i18n.gettext('Favorites')));
+            'title': preferences.status_bar,
+        }).click(Sao.preferences).append(preferences.status_bar));
+        var title = Sao.i18n.gettext("Logout");
+        jQuery('#user-logout').append(jQuery('<a/>', {
+            'href': '#',
+            'title': title,
+            'aria-label': title,
+        }).click(Sao.logout).append(jQuery('<span/>', {
+            'class': 'glyphicon glyphicon-log-out hidden-xs',
+            'aria-hidden': true,
+        })).append(jQuery('<span/>', {
+            'class': 'visible-xs',
+        }).text(title)));
     };
 
     Sao.main_menu_row_activate = function() {
@@ -769,16 +775,35 @@ var Sao = {};
     Sao.GlobalSearch = Sao.class_(Object, {
         init: function() {
             this.el = jQuery('<div/>', {
-                'class': 'global-search-container'
+                'class': 'global-search-container',
             });
+            var group = jQuery('<div/>', {
+                'class': 'input-group',
+            }).appendTo(this.el);
+
             this.search_entry = jQuery('<input>', {
                 'id': 'global-search-entry',
                 'class': 'form-control mousetrap',
                 'placeholder': Sao.i18n.gettext('Search...')
-            });
-            this.el.append(this.search_entry);
+            }).appendTo(group);
+
+            jQuery('<div/>', {
+                'id': 'user-favorites',
+                'class': 'input-group-btn',
+            }).append(jQuery('<button/>', {
+                'class': 'btn btn-default dropdown-toggle',
+                'data-toggle': 'dropdown',
+                'aria-haspopup': true,
+                'aria-expanded': false,
+                'title': Sao.i18n.gettext("Favorites"),
+                'aria-label': Sao.i18n.gettext("Favorites"),
+            }).click(Sao.favorites_menu).append(jQuery('<span/>', {
+                'class': 'glyphicon glyphicon-bookmark',
+                'aria-hidden': true,
+            }))).appendTo(group);
+
             var completion = new Sao.common.InputCompletion(
-                    this.search_entry,
+                    this.el,
                     this.update.bind(this),
                     this.match_selected.bind(this),
                     this.format.bind(this));

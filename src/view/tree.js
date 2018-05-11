@@ -898,7 +898,6 @@
                     });
                     this.expander.html('&nbsp;');
                     this.expander.css('margin-left', (depth - 1) + 'em');
-                    this.expander.css('float', 'left');
                     this.expander.on('click keypress',
                             Sao.common.click_press(this.toggle_row.bind(this)));
                     row.append(jQuery('<td/>', {

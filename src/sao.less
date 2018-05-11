@@ -21,13 +21,20 @@
 #menu {
     border-right: 2px solid @table-border-color;
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: @screen-sm-max) {
     #menu {
         border-right: none;
     }
     .active #menu {
         border-right: 2px solid @table-border-color;
     }
+}
+
+#user-preferences > a {
+    max-width: 20em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tab-form, .tab-board {
@@ -192,6 +199,11 @@ img.icon {
     }
     & .expander {
         cursor: pointer;
+        & > .glyphicon {
+            float: left;
+            margin-right: 5px;
+            width: 1em;
+        }
     }
     & label {
         font-weight: normal;

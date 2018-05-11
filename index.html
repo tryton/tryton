@@ -26,7 +26,6 @@ this repository contains the full copyright notices and license terms. -->
         <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" href="bower_components/c3/c3.min.css">
         <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
-        <link rel="stylesheet" href="offcanvas.css">
 
         <script type="text/javascript" src="dist/tryton-sao.min.js"></script>
         <link rel="stylesheet" type="text/css" href="dist/tryton-sao.min.css"
@@ -48,20 +47,14 @@ this repository contains the full copyright notices and license terms. -->
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Tryton</a>
-                    <p class="pull-left visible-xs visible-sm navbar-text">
-                        <button type="button" class="btn btn-primary btn-xs"
-                            data-toggle="offcanvas">
-                            Toggle menu
-                        </button>
-                    </p>
+                    <a class="navbar-brand" href="#" data-toggle="offcanvas">
+                        <span class="glyphicon glyphicon-menu-hamburger"></span>
+                        Tryton
+                    </a>
                 </div>
                 <div class="collapse navbar-collapse" id="main_navbar">
-                    <ul class="nav navbar-nav">
-                        <li id="user-preferences"></li>
-                        <li id="user-favorites"></li>
-                    </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li id="user-preferences"></li>
                         <li id="user-logout"></li>
                     </ul>
                     <ul id="tablist" class="nav navbar-nav nav-tabs nav-tabs-justified" role="tablist">
@@ -69,12 +62,12 @@ this repository contains the full copyright notices and license terms. -->
                 </div>
             </div>
         </nav>
-        <div id="main" class="container-fluid">
+        <div id="main" class="container-fluid" style="padding: 0px;">
             <div class="row row-offcanvas row-offcanvas-left active"
-                style="height: calc(100vh - 50px - 1px - 20px);">
-                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="menu" role="navigation"
+                style="height: calc(100vh - 50px - 1px - 20px); margin: 0px;">
+                <div class="col-xs-6 col-sm-3 col-lg-2 sidebar-offcanvas" id="menu" role="navigation"
                     style="overflow-y: auto; height: 100%;"></div>
-                <div class="col-xs-12 col-md-9" style="overflow-y: auto; height: 100%;">
+                <div class="col-xs-12 col-md-9 col-lg-10 main-offcanvas" style="overflow-y: auto; height: 100%;">
                     <div id="tabs" role="tabpanel">
                         <div id="tabcontent" class="tab-content">
                         </div>
@@ -88,10 +81,13 @@ this repository contains the full copyright notices and license terms. -->
                         jQuery('.row-offcanvas').toggleClass('active');
                         });
                     jQuery('#tabs').on('ready', function() {
-                        if (jQuery('#tablist').children().length) {
-                            jQuery('.row-offcanvas').removeClass('active');
-                        } else {
-                            jQuery('.row-offcanvas').addClass('active');
+                        var mq = window.matchMedia('(max-width: 991px)');
+                        if (mq.matches) {
+                            if (jQuery('#tablist').children().length) {
+                                jQuery('.row-offcanvas').removeClass('active');
+                            } else {
+                                jQuery('.row-offcanvas').addClass('active');
+                            }
                         }
                     });
                     Sao.login();
