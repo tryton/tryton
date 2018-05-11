@@ -6,7 +6,7 @@ import datetime
 
 from sql import Null
 
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered, tree
 from trytond.pyson import Eval
 from trytond import backend
 from trytond.transaction import Transaction
@@ -16,7 +16,7 @@ from trytond.tools import reduce_ids, grouped_slice
 __all__ = ['Work']
 
 
-class Work(sequence_ordered(), ModelSQL, ModelView):
+class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     'Work Effort'
     __name__ = 'project.work'
     name = fields.Char('Name', required=True, select=True)
@@ -236,7 +236,6 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def validate(cls, works):
         super(Work, cls).validate(works)
-        cls.check_recursion(works, rec_name='name')
         for work in works:
             work.check_state()
 
@@ -272,27 +271,6 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
         if not self.timesheet_duration:
             return 0
         return self.timesheet_duration.total_seconds() / 60 / 60
-
-    def get_rec_name(self, name):
-        if self.parent:
-            return self.parent.get_rec_name(name) + '\\' + self.name
-        else:
-            return self.name
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if isinstance(clause[2], basestring):
-            values = clause[2].split('\\')
-            values.reverse()
-            domain = []
-            field = 'name'
-            for name in values:
-                domain.append((field, clause[1], name.strip()))
-                field = 'parent.' + field
-        else:
-            domain = [('name',) + tuple(clause[1:])]
-        ids = [w.id for w in cls.search(domain, order=[])]
-        return [('parent', 'child_of', ids)]
 
     @classmethod
     def default_timesheet_available(cls):
