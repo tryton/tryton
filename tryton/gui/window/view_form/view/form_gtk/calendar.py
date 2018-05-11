@@ -37,7 +37,7 @@ class Date(Widget):
 
     def _set_editable(self, value):
         self.entry.set_editable(value)
-        self.entry.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY, value)
+        self.entry.set_icon_sensitive(gtk.ENTRY_ICON_PRIMARY, value)
 
     def _readonly_set(self, value):
         self._set_editable(not value)
@@ -151,7 +151,7 @@ class DateTime(Date):
         for child in self.entry.get_children():
             if isinstance(child, gtk.Entry):
                 child.set_editable(value)
-                child.set_icon_sensitive(gtk.ENTRY_ICON_SECONDARY, value)
+                child.set_icon_sensitive(gtk.ENTRY_ICON_PRIMARY, value)
             elif isinstance(child, gtk.ComboBoxEntry):
                 child.set_sensitive(value)
 
