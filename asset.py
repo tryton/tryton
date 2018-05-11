@@ -299,7 +299,8 @@ class Asset(Workflow, ModelSQL, ModelView):
 
     @fields.depends('end_date', 'product', 'start_date')
     def on_change_with_end_date(self):
-        if all(getattr(self, k, None) for k in ('product', 'start_date')):
+        if (all(getattr(self, k, None) for k in ('product', 'start_date'))
+                and not self.end_date):
             if self.product.depreciation_duration:
                 duration = relativedelta.relativedelta(
                     months=int(self.product.depreciation_duration), days=-1)
