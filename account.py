@@ -11,7 +11,8 @@ from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
 
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Unique, sequence_ordered)
+    ModelView, ModelSQL, DeactivableMixin, fields, Unique, sequence_ordered,
+    tree)
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.report import Report
@@ -43,7 +44,8 @@ def inactive_records(func):
     return wrapper
 
 
-class TypeTemplate(sequence_ordered(), ModelSQL, ModelView):
+class TypeTemplate(
+        sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     'Account Type Template'
     __name__ = 'account.account.type.template'
     name = fields.Char('Name', required=True)
@@ -68,11 +70,6 @@ class TypeTemplate(sequence_ordered(), ModelSQL, ModelView):
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
 
-    @classmethod
-    def validate(cls, records):
-        super(TypeTemplate, cls).validate(records)
-        cls.check_recursion(records, rec_name='name')
-
     @staticmethod
     def default_balance_sheet():
         return False
@@ -84,12 +81,6 @@ class TypeTemplate(sequence_ordered(), ModelSQL, ModelView):
     @staticmethod
     def default_display_balance():
         return 'debit-credit'
-
-    def get_rec_name(self, name):
-        if self.parent:
-            return self.parent.get_rec_name(name) + '\\' + self.name
-        else:
-            return self.name
 
     def _get_type_value(self, type=None):
         '''
@@ -148,7 +139,7 @@ class TypeTemplate(sequence_ordered(), ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class Type(sequence_ordered(), ModelSQL, ModelView):
+class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     'Account Type'
     __name__ = 'account.account.type'
 
@@ -202,11 +193,6 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
-
-    @classmethod
-    def validate(cls, types):
-        super(Type, cls).validate(types)
-        cls.check_recursion(types, rec_name='name')
 
     @staticmethod
     def default_balance_sheet():
@@ -289,12 +275,6 @@ class Type(sequence_ordered(), ModelSQL, ModelView):
                 ~Eval('comparison', False)),
             ]
 
-    def get_rec_name(self, name):
-        if self.parent:
-            return self.parent.get_rec_name(name) + '\\' + self.name
-        else:
-            return self.name
-
     @classmethod
     def delete(cls, types):
         types = cls.search([
@@ -367,7 +347,7 @@ class OpenType(Wizard):
     do_ledger_account = open_action
 
 
-class AccountTemplate(ModelSQL, ModelView):
+class AccountTemplate(tree(), ModelSQL, ModelView):
     'Account Template'
     __name__ = 'account.account.template'
     name = fields.Char('Name', size=None, required=True, select=True)
@@ -423,11 +403,6 @@ class AccountTemplate(ModelSQL, ModelView):
         super(AccountTemplate, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
-
-    @classmethod
-    def validate(cls, templates):
-        super(AccountTemplate, cls).validate(templates)
-        cls.check_recursion(templates)
 
     @staticmethod
     def default_kind():
@@ -590,7 +565,7 @@ class AccountTemplateTaxTemplate(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class Account(DeactivableMixin, ModelSQL, ModelView):
+class Account(DeactivableMixin, tree(), ModelSQL, ModelView):
     'Account'
     __name__ = 'account.account'
     _states = {
@@ -744,7 +719,6 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def validate(cls, accounts):
         super(Account, cls).validate(accounts)
-        cls.check_recursion(accounts)
         cls.check_second_currency(accounts)
 
     @staticmethod

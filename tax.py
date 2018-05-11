@@ -11,7 +11,7 @@ from sql.conditionals import Case
 
 from trytond.model import (
     ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
-    sequence_ordered)
+    sequence_ordered, tree)
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
@@ -55,7 +55,7 @@ class TaxGroup(ModelSQL, ModelView):
         return 'both'
 
 
-class TaxCodeTemplate(ModelSQL, ModelView):
+class TaxCodeTemplate(tree(), ModelSQL, ModelView):
     'Tax Code Template'
     __name__ = 'account.tax.code.template'
     name = fields.Char('Name', required=True)
@@ -72,11 +72,6 @@ class TaxCodeTemplate(ModelSQL, ModelView):
         super(TaxCodeTemplate, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(0, ('account', 'ASC'))
-
-    @classmethod
-    def validate(cls, templates):
-        super(TaxCodeTemplate, cls).validate(templates)
-        cls.check_recursion(templates)
 
     def _get_tax_code_value(self, code=None):
         '''
@@ -134,7 +129,7 @@ class TaxCodeTemplate(ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class TaxCode(DeactivableMixin, ModelSQL, ModelView):
+class TaxCode(DeactivableMixin, tree(), ModelSQL, ModelView):
     'Tax Code'
     __name__ = 'account.tax.code'
     _states = {
@@ -172,11 +167,6 @@ class TaxCode(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(TaxCode, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
-
-    @classmethod
-    def validate(cls, codes):
-        super(TaxCode, cls).validate(codes)
-        cls.check_recursion(codes)
 
     @staticmethod
     def default_company():
