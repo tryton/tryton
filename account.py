@@ -8,7 +8,8 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond import backend
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
+from trytond.model import (ModelView, ModelSQL, DeactivableMixin, fields,
+    Unique, tree)
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
 from trytond.transaction import Transaction
@@ -19,7 +20,9 @@ __all__ = ['Account', 'AccountDistribution',
     'AnalyticAccountEntry', 'AnalyticMixin']
 
 
-class Account(DeactivableMixin, ModelSQL, ModelView):
+class Account(
+        DeactivableMixin, tree('distribution_parents'), tree(),
+        ModelSQL, ModelView):
     'Analytic Account'
     __name__ = 'analytic_account.account'
     name = fields.Char('Name', required=True, translate=True, select=True)
@@ -144,8 +147,6 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def validate(cls, accounts):
         super(Account, cls).validate(accounts)
-        cls.check_recursion(accounts)
-        cls.check_recursion(accounts, parent='distribution_parents')
         for account in accounts:
             account.check_distribution()
 
