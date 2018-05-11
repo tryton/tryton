@@ -6,7 +6,8 @@ from decimal import Decimal
 from functools import wraps
 
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, DeactivableMixin, fields, sequence_ordered)
+    ModelSQL, ModelView, Workflow, DeactivableMixin, fields, sequence_ordered,
+    tree)
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
@@ -15,8 +16,6 @@ from trytond.modules.product import price_digits
 
 __all__ = ['WorkCenterCategory', 'WorkCenter', 'Work', 'WorkCycle']
 
-SEPARATOR = ' / '
-
 
 class WorkCenterCategory(ModelSQL, ModelView):
     'Work Center Category'
@@ -24,7 +23,7 @@ class WorkCenterCategory(ModelSQL, ModelView):
     name = fields.Char('Name', required=True, translate=True)
 
 
-class WorkCenter(DeactivableMixin, ModelSQL, ModelView):
+class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
     'Work Center'
     __name__ = 'production.work.center'
     name = fields.Char('Name', required=True, translate=True)
@@ -66,8 +65,6 @@ class WorkCenter(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(WorkCenter, cls).__setup__()
         cls._error_messages.update({
-                'wrong_name': ('Invalid work center name "%%s": '
-                    'You can not use "%s" in name field.' % SEPARATOR),
                 'missing_work_center': ('Could not find a work center '
                     'of category "%(category)s" under "%(parent)s".'),
                 })
@@ -83,25 +80,6 @@ class WorkCenter(DeactivableMixin, ModelSQL, ModelView):
         locations = Location.search(cls.warehouse.domain)
         if len(locations) == 1:
             return locations[0].id
-
-    @classmethod
-    def validate(cls, centers):
-        super(WorkCenter, cls).validate(centers)
-        for center in centers:
-            center.check_name()
-
-    def check_name(self):
-        if SEPARATOR in self.name:
-            self.raise_user_error('wrong_name', (self.name,))
-
-    def get_rec_name(self, name):
-        if self.parent:
-            return self.parent.get_rec_name(name) + SEPARATOR + self.name
-        return self.name
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        return [('name',) + tuple(clause[1:])]
 
     @classmethod
     def get_picker(cls):
