@@ -6,7 +6,7 @@ from decimal import Decimal
 
 from trytond.model import (
     ModelView, ModelSQL, MatchMixin, ValueMixin, DeactivableMixin, fields,
-    sequence_ordered)
+    sequence_ordered, tree)
 from trytond import backend
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -23,7 +23,7 @@ STATES = {
 DEPENDS = ['active']
 
 
-class Location(DeactivableMixin, ModelSQL, ModelView):
+class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     "Stock Location"
     __name__ = 'stock.location'
     name = fields.Char("Name", size=None, required=True, states=STATES,
@@ -187,7 +187,6 @@ class Location(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def validate(cls, locations):
         super(Location, cls).validate(locations)
-        cls.check_recursion(locations)
         inactives = []
         for location in locations:
             location.check_type_for_moves()
