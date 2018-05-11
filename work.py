@@ -4,7 +4,7 @@ import datetime
 from collections import deque, defaultdict
 from heapq import heappop, heappush
 
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, fields, tree
 from trytond.wizard import Wizard, StateTransition
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -17,7 +17,7 @@ def intfloor(x):
     return int(round(x, 4))
 
 
-class Work:
+class Work(tree(parent='successors')):
     __metaclass__ = PoolMeta
     __name__ = 'project.work'
     predecessors = fields.Many2Many('project.predecessor_successor',
@@ -73,11 +73,6 @@ class Work:
     @classmethod
     def __setup__(cls):
         super(Work, cls).__setup__()
-
-    @classmethod
-    def validate(cls, works):
-        super(Work, cls).validate(works)
-        cls.check_recursion(works, parent='successors')
 
     @staticmethod
     def default_leveling_delay():
