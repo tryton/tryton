@@ -5,7 +5,7 @@ from sql.operators import Equal
 
 from trytond import backend
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Exclude)
+    ModelView, ModelSQL, DeactivableMixin, fields, Exclude, tree)
 from trytond.pyson import Eval
 
 __all__ = ['Category']
@@ -15,10 +15,8 @@ STATES = {
 }
 DEPENDS = ['active']
 
-SEPARATOR = ' / '
 
-
-class Category(DeactivableMixin, ModelSQL, ModelView):
+class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
     "Category"
     __name__ = 'party.category'
     name = fields.Char('Name', required=True, states=STATES, translate=True,
@@ -40,10 +38,6 @@ class Category(DeactivableMixin, ModelSQL, ModelView):
                 Exclude(t, (t.name, Equal), (Coalesce(t.parent, -1), Equal)),
                 'The name of a party category must be unique by parent.'),
             ]
-        cls._error_messages.update({
-                'wrong_name': ('Invalid category name "%%s": You can not use '
-                    '"%s" in name field.' % SEPARATOR),
-                })
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -55,33 +49,3 @@ class Category(DeactivableMixin, ModelSQL, ModelView):
 
         # Migration from 4.6: replace unique by exclude
         table_h.drop_constraint('name_parent_uniq')
-
-    @classmethod
-    def validate(cls, categories):
-        super(Category, cls).validate(categories)
-        cls.check_recursion(categories, rec_name='name')
-        for category in categories:
-            category.check_name()
-
-    def check_name(self):
-        if SEPARATOR in self.name:
-            self.raise_user_error('wrong_name', (self.name,))
-
-    def get_rec_name(self, name):
-        if self.parent:
-            return self.parent.get_rec_name(name) + SEPARATOR + self.name
-        return self.name
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if isinstance(clause[2], basestring):
-            values = clause[2].split(SEPARATOR)
-            values.reverse()
-            domain = []
-            field = 'name'
-            for name in values:
-                domain.append((field, clause[1], name))
-                field = 'parent.' + field
-            return domain
-        # TODO Handle list
-        return [('name',) + tuple(clause[1:])]
