@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import copy
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, tree
 from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.report import Report
 from trytond.pyson import Eval, If
@@ -23,7 +23,7 @@ __all__ = ['Company', 'Employee', 'UserEmployee', 'User',
     'CompanyConfig', 'CompanyReport', 'LetterReport', 'Rule']
 
 
-class Company(ModelSQL, ModelView):
+class Company(tree(), ModelSQL, ModelView):
     'Company'
     __name__ = 'company.company'
     party = fields.Many2One('party.party', 'Party', required=True,
@@ -42,11 +42,6 @@ class Company(ModelSQL, ModelView):
         help="Used to compute the today date.")
     employees = fields.One2Many('company.employee', 'company', 'Employees',
         help="Add employees to the company.")
-
-    @classmethod
-    def validate(cls, companies):
-        super(Company, cls).validate(companies)
-        cls.check_recursion(companies)
 
     def get_rec_name(self, name):
         return self.party.rec_name
