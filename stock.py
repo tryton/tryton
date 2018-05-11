@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.report import Report
@@ -74,7 +74,7 @@ class ConfigurationSequence:
             return None
 
 
-class Package(ModelSQL, ModelView):
+class Package(tree(), ModelSQL, ModelView):
     'Stock Package'
     __name__ = 'stock.package'
     _rec_name = 'code'
@@ -128,11 +128,6 @@ class Package(ModelSQL, ModelView):
         for values in vlist:
             values['code'] = Sequence.get_id(config.package_sequence)
         return super(Package, cls).create(vlist)
-
-    @classmethod
-    def validate(cls, packages):
-        super(Package, cls).validate(packages)
-        cls.check_recursion(packages)
 
 
 class Type(ModelSQL, ModelView):
