@@ -3,7 +3,7 @@
 from itertools import groupby
 
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
+    ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered, tree)
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 from trytond.pool import Pool
@@ -68,10 +68,10 @@ CLIENT_ICONS = [(x, x) for x in (
     'tryton-system',
     'tryton-undo',
     'tryton-web-browser')]
-SEPARATOR = ' / '
 
 
-class UIMenu(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
+class UIMenu(DeactivableMixin, sequence_ordered(), tree(separator=' / '),
+        ModelSQL, ModelView):
     "UI menu"
     __name__ = 'ir.ui.menu'
 
@@ -97,14 +97,6 @@ class UIMenu(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')
 
     @classmethod
-    def __setup__(cls):
-        super(UIMenu, cls).__setup__()
-        cls._error_messages.update({
-                'wrong_name': ('"%%s" is not a valid menu name because it is '
-                    'not allowed to contain "%s".' % SEPARATOR),
-                })
-
-    @classmethod
     def order_complete_name(cls, tables):
         return cls.name.convert_order('name', tables, cls)
 
@@ -122,40 +114,6 @@ class UIMenu(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         Icon = pool.get('ir.ui.icon')
         return sorted(CLIENT_ICONS
             + [(name, name) for _, name in Icon.list_icons()])
-
-    @classmethod
-    def validate(cls, menus):
-        super(UIMenu, cls).validate(menus)
-        cls.check_recursion(menus)
-        for menu in menus:
-            menu.check_name()
-
-    def check_name(self):
-        if SEPARATOR in self.name:
-            self.raise_user_error('wrong_name', (self.name,))
-
-    def get_rec_name(self, name):
-        parent = self.parent
-        name = self.name
-        while parent:
-            name = parent.name + SEPARATOR + name
-            parent = parent.parent
-        return name
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if isinstance(clause[2], basestring):
-            values = clause[2].split(SEPARATOR.strip())
-            values.reverse()
-            domain = []
-            field = 'name'
-            for name in values:
-                domain.append((field, clause[1], name.strip()))
-                field = 'parent.' + field
-        else:
-            domain = [('name',) + tuple(clause[1:])]
-        ids = [m.id for m in cls.search(domain, order=[])]
-        return [('parent', 'child_of', ids)]
 
     @classmethod
     def search_global(cls, text):

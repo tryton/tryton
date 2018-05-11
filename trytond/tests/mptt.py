@@ -4,14 +4,14 @@
 from sql import Null
 from sql.conditionals import Case
 
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, tree, fields
 
 __all__ = [
     'MPTT',
     ]
 
 
-class MPTT(DeactivableMixin, ModelSQL, ModelView):
+class MPTT(DeactivableMixin, tree(), ModelSQL, ModelView):
     'Modified Preorder Tree Traversal'
     __name__ = 'test.mptt'
     name = fields.Char('Name', required=True)
@@ -20,11 +20,6 @@ class MPTT(DeactivableMixin, ModelSQL, ModelView):
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many('test.mptt', 'parent', 'Children')
-
-    @classmethod
-    def validate(cls, record):
-        super(MPTT, cls).validate(record)
-        cls.check_recursion(record)
 
     @staticmethod
     def order_sequence(tables):

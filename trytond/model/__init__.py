@@ -13,9 +13,10 @@ from .multivalue import MultiValueMixin, ValueMixin
 from .descriptors import dualmethod
 from .order import sequence_ordered
 from .active import DeactivableMixin
+from .tree import tree
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Check', 'Unique', 'Exclude',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin',
-    'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin']
+    'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin', 'tree']

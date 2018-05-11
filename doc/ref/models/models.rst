@@ -334,11 +334,6 @@ Class methods:
     modification of data coming from XML files. This method must be overiden to
     change this behavior.
 
-.. classmethod:: ModelStorage.check_recursion(records[, parent])
-
-    Helper method that checks if there is no recursion in the tree composed
-    with ``parent`` as parent field name.
-
 .. classmethod:: ModelStorage.validate(records)
 
     Validate the integrity of records after creation and modification. This
@@ -818,3 +813,25 @@ Class attributes are:
 .. _mixin: http://en.wikipedia.org/wiki/Mixin
 .. _JSON: http://en.wikipedia.org/wiki/Json
 .. _UNION: http://en.wikipedia.org/wiki/Union_(SQL)#UNION_operator
+
+====
+tree
+====
+
+.. method:: tree([parent[, name[, separator]]])
+
+Returns a mixin_ class :class:`TreeMixin`. `parent` indicates the name of the
+field that defines the parent of the tree and its default value is `parent`.
+`name` indicates the name of the field that defines the name of the record and
+its default value is `name`. If `separator` is set, the
+:meth:`ModelStorage.get_rec_name` constructs the name by concatenating each
+parent names using it as separator and :meth:`ModelStorage.search_rec_name` is
+adapted to search across the tree.
+
+
+.. class:: TreeMixin
+
+.. classmethod:: TreeMixin.check_recursion(records)
+
+    Helper method that checks if there is no recursion in the tree defined by
+    :meth:`tree`.

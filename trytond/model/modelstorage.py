@@ -819,49 +819,6 @@ class ModelStorage(Model):
         return True
 
     @classmethod
-    def check_recursion(cls, records, parent='parent', rec_name='rec_name'):
-        '''
-        Function that checks if there is no recursion in the tree
-        composed with parent as parent field name.
-        '''
-        parent_type = cls._fields[parent]._type
-
-        if parent_type not in ('many2one', 'many2many', 'one2one'):
-            raise Exception(
-                'Unsupported field type "%s" for field "%s" on "%s"'
-                % (parent_type, parent, cls.__name__))
-
-        visited = set()
-
-        for record in records:
-            walked = set()
-            walker = getattr(record, parent)
-            while walker:
-                if parent_type == 'many2many':
-                    for walk in walker:
-                        walked.add(walk.id)
-                        if walk.id == record.id:
-                            parent_rec_name = ', '.join(getattr(r, rec_name)
-                                for r in getattr(record, parent))
-                            cls.raise_user_error('recursion_error', {
-                                    'rec_name': getattr(record, rec_name),
-                                    'parent_rec_name': parent_rec_name,
-                                    })
-                    walker = list(chain(*(getattr(walk, parent)
-                                for walk in walker if walk.id not in visited)))
-                else:
-                    walked.add(walker.id)
-                    if walker.id == record.id:
-                        cls.raise_user_error('recursion_error', {
-                                'rec_name': getattr(record, rec_name),
-                                'parent_rec_name': getattr(getattr(record,
-                                        parent), rec_name)
-                                })
-                    walker = (getattr(walker, parent) not in visited
-                        and getattr(walker, parent))
-            visited.update(walked)
-
-    @classmethod
     def _get_error_args(cls, field_name):
         pool = Pool()
         ModelField = pool.get('ir.model.field')
