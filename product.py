@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelStorage, ModelView, DeactivableMixin, fields
+from trytond.model import (ModelStorage, ModelView, DeactivableMixin, fields,
+    tree)
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
@@ -20,20 +21,9 @@ class ClassificationMixin(DeactivableMixin):
 def classification_tree(name):
     'Return a ClassificationMixin with tree structure'
 
-    class ClassificationTreeMixin(ClassificationMixin):
+    class ClassificationTreeMixin(tree(separator=' / '), ClassificationMixin):
         parent = fields.Many2One(name, 'Parent', select=True)
         childs = fields.One2Many(name, 'parent', 'Children')
-
-        @classmethod
-        def validate(cls, records):
-            super(ClassificationMixin, cls).validate(records)
-            cls.check_recursion(records, rec_name='name')
-
-        def get_rec_name(self, name):
-            if self.parent:
-                return self.parent.get_rec_name(name) + ' / ' + self.name
-            else:
-                return self.name
 
     return ClassificationTreeMixin
 
