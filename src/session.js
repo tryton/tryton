@@ -124,9 +124,12 @@
     };
 
     Sao.Session.get_credentials = function() {
+        var database_url = function() {
+            return window.location.hash.replace(
+                /^(#(!|))/, '').split('/', 1)[0] || null;
+        };
         var dfd = jQuery.Deferred();
-        var database = window.location.hash.replace(
-                /^(#(!|))/, '') || null;
+        var database = database_url();
         var dialog = Sao.Session.login_dialog();
 
         var empty_field = function() {
@@ -153,6 +156,9 @@
                 .then(function() {
                     dfd.resolve(session);
                     dialog.modal.remove();
+                    if (database_url() != database) {
+                        window.location = '#' + database;
+                    }
                 }, function() {
                     dialog.button.prop('disabled', false);
                     dialog.modal.modal('show');
@@ -168,6 +174,9 @@
         dialog.modal.find('form').unbind().submit(function(e) {
             ok_func();
             e.preventDefault();
+        });
+        dialog.modal.on('shown.bs.modal', function() {
+            empty_field().first().focus();
         });
 
         jQuery.when(Sao.DB.list()).then(function(databases) {

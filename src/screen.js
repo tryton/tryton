@@ -691,7 +691,8 @@
             this.domain = attributes.domain || [];
             this.context_domain = attributes.context_domain;
             this.size_limit = null;
-            if (this.attributes.limit === undefined) {
+            if ((this.attributes.limit === undefined) ||
+                (this.attributes.limit === null)) {
                 this.limit = Sao.config.limit;
             } else {
                 this.limit = attributes.limit;
@@ -741,6 +742,7 @@
             this.pre_validate = false;
             this.tab = null;
             this.message_callback = null;
+            this.switch_callback = null;
             this.count_tab_domain();
         },
         load_next_view: function() {
@@ -846,6 +848,9 @@
                 this.screen_container.set(this.current_view.el);
                 return this.display().done(function() {
                     this.set_cursor();
+                    if (this.switch_callback) {
+                        this.switch_callback();
+                    }
                 }.bind(this));
             }.bind(this);
             return _switch();
@@ -1748,6 +1753,51 @@
             } else if (action == 'reload context') {
                 Sao.Session.current_session.reload_context();
             }
+        },
+        get_url: function(name) {
+            function dumps(value) {
+                return JSON.stringify(Sao.rpc.prepareObject(value));
+            }
+            var query_string = [];
+            if (!jQuery.isEmptyObject(this.domain)) {
+                query_string.push(['domain', dumps(this.domain)]);
+            }
+            var context = this.group._context;  // Avoid rpc context
+            if (!jQuery.isEmptyObject(context)) {
+                query_string.push(['context', dumps(context)]);
+            }
+            if (this.context_screen) {
+                query_string.push(
+                    ['context_model', this.context_screen.model_name]);
+            }
+            if (name) {
+                query_string.push(['name', dumps(name)]);
+            }
+            var path = ['model', this.model_name];
+            var view_ids = this.views.map(
+                function(v) {return v.view_id;}).concat(this.view_ids);
+            if (this.current_view.view_type != 'form') {
+                var search_string = this.screen_container.get_text();
+                var search_value = this.domain_parser().parse(search_string);
+                if (!jQuery.isEmptyObject(search_value)) {
+                    query_string.push(['search_value', dumps(search_value)]);
+                }
+            } else if (this.current_record && (this.current_record.id > -1)) {
+                path.push(this.current_record.id);
+                var i = view_ids.indexOf(this.current_view.view_id);
+                view_ids = view_ids.slice(i).concat(view_ids.slice(0, i));
+            }
+            if (!jQuery.isEmptyObject(view_ids)) {
+                query_string.push(['views', dumps(view_ids)]);
+            }
+            query_string = query_string.map(function(e) {
+                return e.map(encodeURIComponent).join('=');
+            }).join('&');
+            path = path.join('/');
+            if (query_string) {
+                path += ';' + query_string;
+            }
+            return path;
         },
         save_tree_state: function(store) {
             var prms = [];

@@ -11,6 +11,7 @@
             this.id = 'tab-' + Sao.Tab.counter++;
             this.name = '';
             this.name_el = jQuery('<span/>');
+            this.view_prm = jQuery.when();
         },
         menu_def: function() {
             return [
@@ -261,12 +262,15 @@
                     });
             return wrapper;
         },
+        show: function() {
+            jQuery('#tablist').find('a[href="#' + this.id + '"]').tab('show');
+        },
         close: function() {
             var tabs = jQuery('#tabs');
             var tablist = jQuery('#tablist');
             var tab = tablist.find('#nav-' + this.id);
             var content = tabs.find('#' + this.id);
-            tablist.find('a[href="#' + this.id + '"]').tab('show');
+            this.show();
             return this._close_allowed().then(function() {
                 var next = tab.nextAll('li').first();
                 if (!next.length) {
@@ -275,8 +279,10 @@
                 tab.remove();
                 content.remove();
                 Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(this), 1);
-                if (next) {
+                if (next.length) {
                     next.find('a').tab('show');
+                } else {
+                    Sao.set_url();
                 }
                 tabs.trigger('ready');
             }.bind(this));
@@ -288,7 +294,9 @@
             this.name = name;
             this.name_el.text(Sao.common.ellipsize(name, 20));
             this.name_el.parents('li').first().attr('title', name);
-        }
+        },
+        get_url: function() {
+        },
     });
 
     Sao.Tab.affix_set_with = function(toolbar) {
@@ -358,7 +366,9 @@
         } else {
             tab = new Sao.Tab.Board(attributes);
         }
-        Sao.Tab.add(tab);
+        tab.view_prm.done(function() {
+            Sao.Tab.add(tab);
+        });
     };
 
     Sao.Tab.add = function(tab) {
@@ -370,6 +380,8 @@
             'role': 'tab',
             'data-toggle': 'tab',
             'href': '#' + tab.id
+        }).on('show.bs.tab', function() {
+            Sao.set_url(tab.get_url(), tab.name);
         })
         .append(jQuery('<button/>', {
             'class': 'close'
@@ -430,6 +442,9 @@
             this.create_tabcontent();
 
             screen.message_callback = this.record_message.bind(this);
+            screen.switch_callback = function() {
+                Sao.set_url(this.get_url(), this.name);
+            }.bind(this);
 
             this.set_buttons_sensitive();
 
@@ -967,7 +982,10 @@
         },
         import: function(){
             new Sao.Window.Import(this.screen);
-        }
+        },
+        get_url: function() {
+            return this.screen.get_url(this.attributes.name);
+        },
     });
 
     Sao.Tab.Board = Sao.class_(Sao.Tab, {
@@ -983,9 +1001,9 @@
             this.dialogs = [];
             this.board = null;
             UIView = new Sao.Model('ir.ui.view');
-            view_prm = UIView.execute('read', [[this.view_id], ['arch']],
+            this.view_prm = UIView.execute('read', [[this.view_id], ['arch']],
                     this.context);
-            view_prm.done(function(views) {
+            this.view_prm.done(function(views) {
                 var view, board;
                 view = jQuery(jQuery.parseXML(views[0].arch));
                 this.board = new Sao.View.Board(view, this.context);

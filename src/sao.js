@@ -277,7 +277,7 @@ var Sao = {};
                     (preferences.actions || []).forEach(function(action_id) {
                         Sao.Action.execute(action_id, {}, null, {});
                     });
-                    Sao.set_title(preferences.status_bar);
+                    Sao.set_title();
                     var new_lang = preferences.language != Sao.i18n.getLocale();
                     var prm = jQuery.Deferred();
                     Sao.i18n.setlang(preferences.language).always(function() {
@@ -293,25 +293,183 @@ var Sao = {};
         });
     };
 
-    Sao.set_title = function(value) {
-        var title = [Sao.config.title];
+    Sao.set_title = function(name) {
+        var title = [name, Sao.config.title];
+        document.title = title.filter(function(e) {return e;}).join(' - ');
+    };
+
+    Sao.set_url = function(path, name) {
         var session = Sao.Session.current_session;
-        var login_info = '';
         if (session) {
-            if (session.login) {
-                login_info = session.login + '@' + document.location.host;
+            var url = '#' + session.database;
+            if (path) {
+                url += '/' + path;
             }
-            if (session.database) {
-                login_info += '/' + session.database;
-            }
-            title = title.concat(login_info);
+            window.location = url;
+        }
+        Sao.set_title(name);
+    };
+
+    window.onhashchange = function() {
+        var session = Sao.Session.current_session;
+        if (!session) {
+            return;
+        }
+        var url,
+            database = '#' + session.database;
+        if (window.location.hash == database) {
+            url = '';
+        } else if (window.location.hash.startsWith(database + '/')) {
+            url = window.location.hash.substr(database.length + 1);
         } else {
-            title = title.concat(document.location.host);
+            return;
         }
-        if (value) {
-            title = title.concat(value);
+        var tab;
+        if (!url) {
+            tab = Sao.Tab.tabs.get_current();
+            if (tab) {
+                Sao.set_url(tab.get_url(), tab.name);
+            }
+        } else {
+            for (var i = 0; i < Sao.Tab.tabs.length; i++) {
+                tab = Sao.Tab.tabs[i];
+                if (tab.get_url() == url) {
+                    tab.show();
+                    return;
+                }
+            }
+            Sao.open_url();
         }
-        document.title = title.join(' - ');
+    };
+
+    Sao.open_url = function(url) {
+        function loads(value) {
+            return Sao.rpc.convertJSONObject(jQuery.parseJSON(value));
+        }
+        if (url === undefined) {
+            url = window.location.hash.substr(1);
+        }
+        var i = url.indexOf(';');
+        var path, params = {};
+        if (i >= 0) {
+            path = url.substring(0, i);
+            url.substring(i + 1).split('&').forEach(function(part) {
+                if (part) {
+                    var item = part.split('=').map(decodeURIComponent);
+                    params[item[0]] = item[1];
+                }
+            });
+        } else {
+            path = url;
+        }
+        path = path.split('/').slice(1);
+        var type = path.shift();
+
+        function open_model(path) {
+            var attributes = {};
+            attributes.model = path.shift();
+            if (!attributes.model) {
+                return;
+            }
+            try {
+                attributes.view_ids = loads(params.views || '[]');
+                attributes.limit = loads(params.limi || 'null');
+                attributes.name = loads(params.name || '""');
+                attributes.search_value = loads(params.search_value || '[]');
+                attributes.domain = loads(params.domain || '[]');
+                attributes.context = loads(params.context || '{}');
+                attributes.context_model = params.context_model;
+            } catch (e) {
+                return;
+            }
+            var res_id = path.shift();
+            if (res_id) {
+                res_id = Number(res_id);
+                if (isNaN(res_id)) {
+                    return;
+                }
+                attributes.res_id = res_id;
+                attributes.mode = ['form', 'tree'];
+            }
+            try {
+                Sao.Tab.create(attributes);
+            } catch (e) {
+                // Prevent crashing the client
+                return;
+            }
+        }
+        function open_wizard(path) {
+            var attributes = {};
+            attributes.name = path[0];
+            if (!attributes.name) {
+                return;
+            }
+            try {
+                attributes.data = loads(params.data || '{}');
+                attributes.direct_print = loads(params.direct_print || 'false');
+                attributes.email_print = loads(params.email_print || 'false');
+                attributes.email = loads(params.email || 'null');
+                attributes.name = loads(params.name || '""');
+                attributes.window = loads(params.window || 'false');
+                attributes.context = loads(params.context || '{}');
+            } catch (e) {
+                return;
+            }
+            try {
+                Sao.Wizard.create(attributes);
+            } catch (e) {
+                // Prevent crashing the client
+                return;
+            }
+        }
+        function open_report(path) {
+            var attributes = {};
+            attributes.name = path[0];
+            if (!attributes.name) {
+                return;
+            }
+            try {
+                attributes.data = loads(params.data || '{}');
+                attributes.direct_print = loads(params.direct_print || 'false');
+                attributes.email_print = loads(params.email_print || 'false');
+                attributes.email = loads(params.email || 'null');
+                attributes.context = loads(params.context || '{}');
+            } catch (e) {
+                return;
+            }
+            try {
+                Sao.Action.exec_report(attributes);
+            } catch (e) {
+                // Prevent crashing the client
+                return;
+            }
+        }
+        function open_url() {
+            var url;
+            try {
+                url = loads(params.url || 'false');
+            } catch (e) {
+                return;
+            }
+            if (url) {
+                window.open(url, '_blank');
+            }
+        }
+
+        switch (type) {
+            case 'model':
+                open_model(path);
+                break;
+            case 'wizard':
+                open_wizard(path);
+                break;
+            case 'report':
+                open_report(path);
+                break;
+            case 'url':
+                open_url();
+                break;
+        }
     };
 
     Sao.login = function() {
@@ -323,6 +481,7 @@ var Sao = {};
                 }).then(Sao.get_preferences).then(function(preferences) {
                     Sao.menu(preferences);
                     Sao.user_menu(preferences);
+                    Sao.open_url();
                 });
         });
     };
@@ -480,9 +639,10 @@ var Sao = {};
             'limit': null,
             'row_activate': Sao.main_menu_row_activate,
         });
+        Sao.main_menu_screen = form.screen;
+        Sao.main_menu_screen.switch_callback = null;
         Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(form), 1);
         form.view_prm.done(function() {
-            Sao.main_menu_screen = form.screen;
             var view = form.screen.current_view;
             view.table.removeClass('table table-bordered table-striped');
             view.table.find('thead').hide();
