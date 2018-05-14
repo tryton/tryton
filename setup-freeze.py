@@ -10,6 +10,8 @@ from cx_Freeze import setup, Executable
 include_files = [
     (os.path.join('tryton', 'data'), 'data'),
     (os.path.join('tryton', 'plugins'), 'plugins'),
+    (os.path.join(sys.prefix, 'share', 'glib-2.0', 'schemas'),
+        os.path.join('share', 'glib-2.0', 'schemas')),
     (os.path.join(sys.prefix, 'lib', 'gtk-3.0'),
         os.path.join('lib', 'gtk-3.0')),
     (os.path.join(sys.prefix, 'lib', 'gdk-pixbuf-2.0'),
