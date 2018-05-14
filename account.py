@@ -9,7 +9,7 @@ from sql import Table
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
-from trytond.model import ModelView, fields
+from trytond.model import ModelView, ModelStorage, fields
 
 
 __all__ = ['TaxTemplate', 'TaxRuleTemplate',
@@ -272,11 +272,11 @@ class AccountFrFEC(Wizard):
             Invoice = pool.get('account.invoice')
         except KeyError:
             Invoice = None
-        if not line.move.origin:
-            return ''
         if Invoice and isinstance(line.move.origin, Invoice):
             return line.move.origin.number
-        return line.move.origin.rec_name
+        if isinstance(line.move.origin, ModelStorage):
+            return line.move.origin.rec_name
+        return line.move.origin
 
     def get_reference_date(self, line):
         pool = Pool()
