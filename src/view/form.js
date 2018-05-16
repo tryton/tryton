@@ -4343,18 +4343,44 @@ function eval_pyson(value){
                 return null;
             }
             return value;
-        }
+        },
+        set_value: function(value) {
+            if (value !== null) {
+                this.input.val(value);
+            } else {
+                this.input.val('');
+            }
+        },
     });
 
     Sao.View.Form.Dict.Float = Sao.class_(Sao.View.Form.Dict.Integer, {
         class_: 'dict-float',
+        digits: function() {
+            var default_ = [16, 2];
+            var record = this.parent_widget.record();
+            if (!record) {
+                return default_;
+            }
+            var digits = record.expr_eval(this.definition.digits || default_);
+            digits.forEach(function(v, i, digits) {
+                if (v === null) {
+                    digits[i] = default_[i];
+                }
+            });
+            return digits;
+        },
         get_value: function() {
             var value = Number(this.input.val());
             if (isNaN(value)) {
                 return null;
             }
             return value;
-        }
+        },
+        set_value: function(value) {
+            var digits = this.digits();
+            value = value.toFixed(digits[1]);
+            Sao.View.Form.Dict.Float._super.set_value.call(this, value);
+        },
     });
 
     Sao.View.Form.Dict.Numeric = Sao.class_(Sao.View.Form.Dict.Float, {
