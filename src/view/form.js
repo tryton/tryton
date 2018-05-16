@@ -4337,6 +4337,12 @@ function eval_pyson(value){
 
     Sao.View.Form.Dict.Integer = Sao.class_(Sao.View.Form.Dict.Entry, {
         class_: 'dict-integer',
+        create_widget: function() {
+            Sao.View.Form.Dict.Integer._super.create_widget.call(this);
+            this.input.attr('type', 'number');
+            this.input.attr('step', 1);
+            this.input.attr('lang', Sao.i18n.getlang());
+        },
         get_value: function() {
             var value = parseInt(this.input.val(), 10);
             if (isNaN(value)) {
@@ -4380,6 +4386,7 @@ function eval_pyson(value){
             var digits = this.digits();
             value = value.toFixed(digits[1]);
             Sao.View.Form.Dict.Float._super.set_value.call(this, value);
+            this.input.attr('step', Math.pow(10, -digits[1]));
         },
     });
 
