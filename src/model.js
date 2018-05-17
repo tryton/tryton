@@ -1411,12 +1411,13 @@
             record._changed[this.name] = true;
         },
         changed: function(record) {
-            var prms = [];
-            prms.push(record.on_change([this.name]));
-            prms.push(record.on_change_with([this.name]));
-            prms.push(record.autocomplete_with(this.name));
-            record.set_field_context();
-            return jQuery.when.apply(jQuery, prms);
+            return record.on_change([this.name]).then(function() {
+                return record.on_change_with([this.name]).then(function() {
+                    return record.autocomplete_with(this.name).then(function() {
+                        record.set_field_context();
+                    });
+                }.bind(this));
+            }.bind(this));
         },
         get_timestamp: function(record) {
             return {};
