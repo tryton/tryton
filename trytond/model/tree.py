@@ -11,10 +11,15 @@ def tree(parent='parent', name='name', separator=None):
             def __setup__(cls):
                 super(TreeMixin, cls).__setup__()
                 field = getattr(cls, name)
-                field.domain = [
-                    field.domain,
-                    (name, 'not like', '%' + separator + '%'),
-                    ]
+                clause = (name, 'not like', '%' + separator + '%')
+                # If TreeMixin is after the class where name is defined in
+                # __mro__, it modifies the base field copied so it must ensure
+                # to add only once the domain
+                if clause not in field.domain:
+                    domain = [clause]
+                    if field.domain:
+                        domain.append(field.domain)
+                    field.domain = domain
 
             def get_rec_name(self, _):
                 record, names = self, []
