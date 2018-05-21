@@ -592,31 +592,31 @@ msgstr "Wartend"
 
 msgctxt "model:ir.model.button,string:production_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Zuweisen"
 
 msgctxt "model:ir.model.button,string:production_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:production_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Erledigt"
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:production_reset_bom_button"
 msgid "Reset to BOM"
-msgstr "Reset to BOM"
+msgstr "Auf Stückliste zurücksetzen"
 
 msgctxt "model:ir.model.button,string:production_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Ausführen"
 
 msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Warten"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
@@ -748,11 +748,11 @@ msgstr "Folgende Varianten können nicht zugewiesen werden:"
 
 msgctxt "view:production.bom:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "view:production:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "view:production:"
 msgid "Other Info"
