@@ -64,7 +64,7 @@ msgstr "Contabilizar asientos de liquidación"
 
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"
-msgstr "Succeed"
+msgstr "Con éxito"
 
 msgctxt "view:account.payment.journal:"
 msgid "Clearing"
