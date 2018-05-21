@@ -272,15 +272,15 @@ msgstr "En espera"
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:work_cycle_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Finalizar"
 
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Ejecutar"
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
