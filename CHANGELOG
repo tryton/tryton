@@ -1,3 +1,5 @@
+Version 4.8.0 - 2018-05-21
+* Bug fixes (see mercurial logs for details)
 * Remove unnecesary account and account types
 * Simplify tax and tax code definition
 
