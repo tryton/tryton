@@ -16,7 +16,7 @@ msgstr "Endsaldo muss \"%s\" sein."
 
 msgctxt "error:account.statement:"
 msgid "Number of Lines must be \"%s\"."
-msgstr "Anzahl der Zeilen muss \"%s\" sein."
+msgstr "Anzahl der Positionen muss \"%s\" sein."
 
 msgctxt "error:account.statement:"
 msgid ""
@@ -80,7 +80,7 @@ msgstr "Journal"
 
 msgctxt "field:account.statement,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.statement,name:"
 msgid "Name"
@@ -88,7 +88,7 @@ msgstr "Name"
 
 msgctxt "field:account.statement,number_of_lines:"
 msgid "Number of Lines"
-msgstr "Anzahl Zeilen"
+msgstr "Anzahl der Positionen"
 
 msgctxt "field:account.statement,origin_file:"
 msgid "Origin File"
@@ -496,7 +496,7 @@ msgstr "Auszugszeile"
 
 msgctxt "model:account.statement.line.group,name:"
 msgid "Account Statement Line Group"
-msgstr "Auszugszeilengruppe"
+msgstr "Auszugspositionengruppe"
 
 msgctxt "model:account.statement.origin,name:"
 msgid "Account Statement Origin"
@@ -524,7 +524,7 @@ msgstr "Buchungssätze"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Statements"
-msgstr "Reconcile Statements"
+msgstr "Auszüge Abstimmen"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -552,7 +552,7 @@ msgstr "Auszug"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
-msgstr "Import Statement"
+msgstr "Import Auszug"
 
 msgctxt "model:ir.action.act_window.domain,name:act_statement_form_domain_all"
 msgid "All"
@@ -575,23 +575,23 @@ msgstr "Geprüft"
 
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:statement_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:statement_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Festschreiben"
 
 msgctxt "model:ir.model.button,string:statement_reconcile_button"
 msgid "Reconcile"
-msgstr "Reconcile"
+msgstr "Abstimmen"
 
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Prüfen"
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
@@ -607,7 +607,7 @@ msgstr "Auszüge"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_import"
 msgid "Import Statement"
-msgstr "Import Statement"
+msgstr "Import Auszug"
 
 msgctxt "model:ir.ui.menu,name:menu_statement_journal_form"
 msgid "Statement Journals"
@@ -623,7 +623,7 @@ msgstr "Auszug"
 
 msgctxt "report:account.statement:"
 msgid "#"
-msgstr "Zeilen"
+msgstr "#"
 
 msgctxt "report:account.statement:"
 msgid "Amount"
@@ -699,7 +699,7 @@ msgstr "Saldo"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
-msgstr "Anzahl Zeilen"
+msgstr "Anzahl der Positionen"
 
 msgctxt "selection:account.statement.origin.information,type_:"
 msgid "Boolean"
@@ -747,7 +747,7 @@ msgstr "Sonstiges"
 
 msgctxt "view:account.statement:"
 msgid "Statement Lines"
-msgstr "Auszugszeilen"
+msgstr "Auszugspositionen"
 
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
