@@ -275,7 +275,7 @@ msgstr "SEPA Nachrichten"
 
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
-msgstr "Mandate"
+msgstr "Mandat"
 
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
 msgid "All"
@@ -324,39 +324,39 @@ msgstr "Forderungen per Mandat (Lastschrift)"
 
 msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
 msgid "Are you sure to cancel the mandate?"
-msgstr "Are you sure to cancel the mandate?"
+msgstr "Mandat wirklich annullieren?"
 
 msgctxt "model:ir.model.button,string:group_generate_message_button"
 msgid "Generate Message"
-msgstr "Generate Message"
+msgstr "Nachricht erzeugen"
 
 msgctxt "model:ir.model.button,string:mandate_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:mandate_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:mandate_request_button"
 msgid "Request"
-msgstr "Request"
+msgstr "Anfordern"
 
 msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Prüfen"
 
 msgctxt "model:ir.model.button,string:message_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:message_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Durchführen"
 
 msgctxt "model:ir.model.button,string:message_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"
