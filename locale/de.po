@@ -28,7 +28,7 @@ msgstr "Erforderliches Wurzelkonto für \"%(name)s\" fehlt"
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
-msgstr "Kostenstelle Zeilen"
+msgstr "Kostenstelle Positionen"
 
 msgctxt "field:account.move.line,analytic_state:"
 msgid "Analytic State"
