@@ -2,7 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:party.erase:"
 msgid ""
 "The party \"%(party)s\" can not be erased because he has pending shipments "
@@ -1504,7 +1503,7 @@ msgstr "تخصیص حمل محموله داخلی"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Customer Shipment"
-msgstr ""
+msgstr "تخصیص حمل و نقل مشتری"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
@@ -2017,7 +2016,7 @@ msgstr "محموله مشتری"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
 msgid "Assign Customer Shipment"
-msgstr ""
+msgstr "تخصیص حمل و نقل مشتری"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"

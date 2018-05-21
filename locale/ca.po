@@ -882,7 +882,7 @@ msgstr "Usuari de creació"
 
 msgctxt "field:stock.shipment.in,done_by:"
 msgid "Done By"
-msgstr "Realitzat per"
+msgstr "Finalitzat per"
 
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
@@ -962,7 +962,7 @@ msgstr "Usuari de modificació"
 
 msgctxt "field:stock.shipment.in.return,assigned_by:"
 msgid "Assigned By"
-msgstr "Assignat per"
+msgstr "Reservat per"
 
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
@@ -982,7 +982,7 @@ msgstr "Adreça d'enviament"
 
 msgctxt "field:stock.shipment.in.return,done_by:"
 msgid "Done By"
-msgstr "Realitzat per"
+msgstr "Finalitzat per"
 
 msgctxt "field:stock.shipment.in.return,effective_date:"
 msgid "Effective Date"
@@ -1066,7 +1066,7 @@ msgstr "Usuari de creació"
 
 msgctxt "field:stock.shipment.internal,done_by:"
 msgid "Done By"
-msgstr "Realitzat per"
+msgstr "Finalitzat per"
 
 msgctxt "field:stock.shipment.internal,effective_date:"
 msgid "Effective Date"
@@ -1150,7 +1150,7 @@ msgstr "Moviments"
 
 msgctxt "field:stock.shipment.out,assigned_by:"
 msgid "Assigned By"
-msgstr "Assignat per"
+msgstr "Reservat per"
 
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
@@ -1178,7 +1178,7 @@ msgstr "Adreça d'enviament"
 
 msgctxt "field:stock.shipment.out,done_by:"
 msgid "Done By"
-msgstr "Realitzat per"
+msgstr "Finalitzat per"
 
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
@@ -1282,7 +1282,7 @@ msgstr "Adreça d'enviament"
 
 msgctxt "field:stock.shipment.out.return,done_by:"
 msgid "Done By"
-msgstr "Realitzat per"
+msgstr "Finalitzat per"
 
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
@@ -1422,11 +1422,11 @@ msgstr "Temps d'espera entre ubicacions"
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Locations List Quantity"
-msgstr "Locations List Quantity"
+msgstr "Quantitat per ubicacions (llistat)"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations Tree Quantity"
-msgstr "Locations Tree Quantity"
+msgstr "Quantitat per ubicacions"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1514,7 +1514,7 @@ msgstr "Reserva albarà intern"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Customer Shipment"
-msgstr "Assigna albarà de client"
+msgstr "Reserva albarà de client"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
@@ -1651,139 +1651,139 @@ msgstr "Rebut"
 
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
-msgstr "Add an inventory line for each missing products"
+msgstr "Afegeix una línia d'inventari per cada producte que falta"
 
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
 msgid "Complete Inventory"
-msgstr "Complete Inventory"
+msgstr "Inventari complet"
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confirma"
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:move_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:move_draft_button"
 msgid "Reset to Draft"
-msgstr "Reset to Draft"
+msgstr "Restaura a esborrany"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Tanca"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
-msgstr "Reset to Draft"
+msgstr "Restaura a esborrany"
 
 msgctxt "model:ir.model.button,string:shipment_in_receive_button"
 msgid "Receive"
-msgstr "Receive"
+msgstr "Rebre"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Reserva"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Reserva"
 
 msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
-msgstr "Ship"
+msgstr "Envia"
 
 msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Reserva"
 
 msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:shipment_out_pack_button"
 msgid "Make shipment"
-msgstr "Make shipment"
+msgstr "Empaqueta"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
 msgid "Receive"
-msgstr "Receive"
+msgstr "Rebre"
 
 msgctxt "model:ir.model.button,string:shipment_out_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
@@ -1847,7 +1847,7 @@ msgstr "Ubicacions"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form2"
 msgid "Locations"
-msgstr "Locations"
+msgstr "Ubicacions"
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
@@ -2027,7 +2027,7 @@ msgstr "Albarà client"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
 msgid "Assign Customer Shipment"
-msgstr "Assigna albarà de client"
+msgstr "Reserva albarà de client"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
@@ -2047,7 +2047,7 @@ msgstr "Des de la ubicació"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Planned Date:"
-msgstr "Data planejada:"
+msgstr "Data estimada:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"

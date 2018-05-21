@@ -1428,11 +1428,11 @@ msgstr "Beschaffungszeiten zwischen Lagerorten"
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Locations List Quantity"
-msgstr "Locations List Quantity"
+msgstr "Bestandsliste nach Lagerorten"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations Tree Quantity"
-msgstr "Locations Tree Quantity"
+msgstr "Bestandsbaum nach Lagerorten"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1657,139 +1657,139 @@ msgstr "Erhalten"
 
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
-msgstr "Add an inventory line for each missing products"
+msgstr "Inventurpositionen für fehlende Varianten erstellen"
 
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
 msgid "Complete Inventory"
-msgstr "Complete Inventory"
+msgstr "Lagerbestandspositionen komplettieren"
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Bestätigen"
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:move_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Durchführen"
 
 msgctxt "model:ir.model.button,string:move_draft_button"
 msgid "Reset to Draft"
-msgstr "Reset to Draft"
+msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Schließen"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Erledigt"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
-msgstr "Reset to Draft"
+msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "model:ir.model.button,string:shipment_in_receive_button"
 msgid "Receive"
-msgstr "Receive"
+msgstr "Einlagern"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Zuweisen"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Erledigt"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Warten"
 
 msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Zuweisen"
 
 msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Erledigt"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
-msgstr "Ship"
+msgstr "Versenden"
 
 msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Warten"
 
 msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Zuweisen"
 
 msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Erledigt"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:shipment_out_pack_button"
 msgid "Make shipment"
-msgstr "Make shipment"
+msgstr "Packen"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Erledigt"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
 msgid "Receive"
-msgstr "Receive"
+msgstr "Einlagern"
 
 msgctxt "model:ir.model.button,string:shipment_out_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Warten"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"

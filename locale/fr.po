@@ -1430,11 +1430,11 @@ msgstr "Délais de livraison entre emplacements"
 
 msgctxt "model:ir.action,name:act_location_quantity_list"
 msgid "Locations List Quantity"
-msgstr "Locations List Quantity"
+msgstr "Liste des quantités par emplacements"
 
 msgctxt "model:ir.action,name:act_location_quantity_tree"
 msgid "Locations Tree Quantity"
-msgstr "Locations Tree Quantity"
+msgstr "Arbre des quantité par emplacements"
 
 msgctxt "model:ir.action,name:act_location_tree"
 msgid "Locations"
@@ -1659,139 +1659,139 @@ msgstr "Reçus"
 
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
-msgstr "Add an inventory line for each missing products"
+msgstr "Ajouter une ligne d'inventaire pour chaque produit manquant"
 
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
 msgid "Complete Inventory"
-msgstr "Complete Inventory"
+msgstr "Compléter l'inventaire"
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confirmer"
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:move_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Effectuer"
 
 msgctxt "model:ir.model.button,string:move_draft_button"
 msgid "Reset to Draft"
-msgstr "Reset to Draft"
+msgstr "Remettre en brouillon"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Clôturer"
 
 msgctxt "model:ir.model.button,string:period_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:shipment_in_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:shipment_in_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Effectuée"
 
 msgctxt "model:ir.model.button,string:shipment_in_draft_button"
 msgid "Reset to Draft"
-msgstr "Reset to Draft"
+msgstr "Remettre en brouillon"
 
 msgctxt "model:ir.model.button,string:shipment_in_receive_button"
 msgid "Receive"
-msgstr "Receive"
+msgstr "Recevoir"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Assigner"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Effectuée"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Attendre"
 
 msgctxt "model:ir.model.button,string:shipment_internal_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Assigner"
 
 msgctxt "model:ir.model.button,string:shipment_internal_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:shipment_internal_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Effectuée"
 
 msgctxt "model:ir.model.button,string:shipment_internal_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:shipment_internal_ship_button"
 msgid "Ship"
-msgstr "Ship"
+msgstr "Livrer"
 
 msgctxt "model:ir.model.button,string:shipment_internal_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Attendre"
 
 msgctxt "model:ir.model.button,string:shipment_out_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Assigner"
 
 msgctxt "model:ir.model.button,string:shipment_out_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:shipment_out_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Effectuée"
 
 msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:shipment_out_pack_button"
 msgid "Make shipment"
-msgstr "Make shipment"
+msgstr "Faire l'expédition"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Effectuée"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_receive_button"
 msgid "Receive"
-msgstr "Receive"
+msgstr "Recevoir"
 
 msgctxt "model:ir.model.button,string:shipment_out_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Attendre"
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
@@ -1855,7 +1855,7 @@ msgstr "Emplacements"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form2"
 msgid "Locations"
-msgstr "Locations"
+msgstr "Emplacements"
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
