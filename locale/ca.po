@@ -57,7 +57,7 @@ msgstr "Genera FEC"
 
 msgctxt "model:ir.ui.menu,name:menu_fec"
 msgid "Generate FEC"
-msgstr "Generate FEC"
+msgstr "Genera FEC"
 
 msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
