@@ -262,7 +262,8 @@ class Move(ModelSQL, ModelView):
                         or Transaction().context.get('journal'))
                 if journal_id:
                     journal = Journal(journal_id)
-                    vals['number'] = Sequence.get_id(journal.sequence.id)
+                    if journal.sequence:
+                        vals['number'] = Sequence.get_id(journal.sequence.id)
 
         moves = super(Move, cls).create(vlist)
         cls.validate_move(moves)
