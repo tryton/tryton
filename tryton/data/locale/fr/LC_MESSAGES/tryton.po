@@ -316,7 +316,7 @@ msgstr "Rapport..."
 
 #: tryton/common/popup_menu.py:112
 msgid "E-Mail..."
-msgstr "Email..."
+msgstr "E-mail..."
 
 #: tryton/common/popup_menu.py:113
 msgid "Print..."
@@ -477,7 +477,7 @@ msgstr "Limite la recherche à..."
 
 #: tryton/gui/main.py:635
 msgid "_Email..."
-msgstr "_Email..."
+msgstr "_E-mail..."
 
 #: tryton/gui/main.py:647
 msgid "Check Version"
@@ -604,11 +604,11 @@ msgstr "Nom d'utilisateur :"
 
 #: tryton/gui/window/email.py:16
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 #: tryton/gui/window/email.py:26
 msgid "Email Program Settings"
-msgstr "Paramètres d'email"
+msgstr "Paramètres d'e-mail"
 
 #: tryton/gui/window/email.py:29
 msgid "Command Line:"
@@ -738,7 +738,7 @@ msgstr "Ouvrir un rapport"
 
 #: tryton/gui/window/form.py:515
 msgid "E-Mail"
-msgstr "Email"
+msgstr "E-mail"
 
 #: tryton/gui/window/form.py:515
 msgid "E-Mail report"
@@ -1057,7 +1057,7 @@ msgstr "_Rapport..."
 
 #: tryton/gui/window/tabcontent.py:130
 msgid "_E-Mail..."
-msgstr "_Email..."
+msgstr "_E-mail..."
 
 #: tryton/gui/window/tabcontent.py:135
 msgid "_Print..."

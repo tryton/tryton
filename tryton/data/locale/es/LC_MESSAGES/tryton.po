@@ -254,7 +254,7 @@ msgstr "Valor a mostrar"
 #: tryton/common/datetime_.py:40 tryton/common/datetime_.py:194
 #: tryton/common/datetime_.py:240 tryton/common/datetime_.py:344
 msgid "Format"
-msgstr "Format"
+msgstr "Formato"
 
 #: tryton/common/datetime_.py:41 tryton/common/datetime_.py:195
 #: tryton/common/datetime_.py:241 tryton/common/datetime_.py:345
