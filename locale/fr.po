@@ -202,23 +202,23 @@ msgstr "En attentes"
 
 msgctxt "model:ir.model.button,string:requisition_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr "Approuver"
 
 msgctxt "model:ir.model.button,string:requisition_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:requisition_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:requisition_reject_button"
 msgid "Reject"
-msgstr "Reject"
+msgstr "Rejeter"
 
 msgctxt "model:ir.model.button,string:requisition_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Attendre"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"
