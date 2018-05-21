@@ -21,7 +21,7 @@ msgstr ""
 msgctxt ""
 "model:account.statement.origin.information,string:information_checknum"
 msgid "Check Number"
-msgstr "Check Number"
+msgstr "Número verificació"
 
 msgctxt "model:account.statement.origin.information,string:information_mcc"
 msgid "Merchant Category Code (MCC)"
@@ -29,11 +29,11 @@ msgstr "Merchant Category Code (MCC)"
 
 msgctxt "model:account.statement.origin.information,string:information_sic"
 msgid "Standard Industry Code (SIC)"
-msgstr "Standard Industry Code (SIC)"
+msgstr "Codi estàndard industria (SIC)"
 
 msgctxt "model:account.statement.origin.information,string:information_type"
 msgid "Type"
-msgstr "Type"
+msgstr "Tipus"
 
 msgctxt "selection:account.statement.import.start,file_format:"
 msgid "OFX"

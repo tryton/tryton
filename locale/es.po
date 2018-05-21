@@ -9,7 +9,7 @@ msgstr ""
 
 msgctxt "error:account.statement.import:"
 msgid "The OFX file is not a statement."
-msgstr "El fichero OFX no es un extracto. "
+msgstr "El fichero OFX no es un extracto."
 
 msgctxt "error:account.statement.import:"
 msgid ""
@@ -22,7 +22,7 @@ msgstr ""
 msgctxt ""
 "model:account.statement.origin.information,string:information_checknum"
 msgid "Check Number"
-msgstr "Check Number"
+msgstr "Numero verificación"
 
 msgctxt "model:account.statement.origin.information,string:information_mcc"
 msgid "Merchant Category Code (MCC)"
@@ -30,11 +30,11 @@ msgstr "Merchant Category Code (MCC)"
 
 msgctxt "model:account.statement.origin.information,string:information_sic"
 msgid "Standard Industry Code (SIC)"
-msgstr "Standard Industry Code (SIC)"
+msgstr "Código estándar Industria (SIC)"
 
 msgctxt "model:account.statement.origin.information,string:information_type"
 msgid "Type"
-msgstr "Type"
+msgstr "Tipo"
 
 msgctxt "selection:account.statement.import.start,file_format:"
 msgid "OFX"

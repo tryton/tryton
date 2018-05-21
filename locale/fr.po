@@ -22,7 +22,7 @@ msgstr ""
 msgctxt ""
 "model:account.statement.origin.information,string:information_checknum"
 msgid "Check Number"
-msgstr "Check Number"
+msgstr "Numéro de chèque"
 
 msgctxt "model:account.statement.origin.information,string:information_mcc"
 msgid "Merchant Category Code (MCC)"
