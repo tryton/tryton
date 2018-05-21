@@ -24,7 +24,7 @@ msgstr "Lignes"
 
 msgctxt "model:ir.model.button,string:price_list_open_lines_button"
 msgid "Open Lines"
-msgstr "Open Lines"
+msgstr "Ouvrir les lignes"
 
 msgctxt "model:product.price_list.line.context,name:"
 msgid "Price List Line Context"
