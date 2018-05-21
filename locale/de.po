@@ -217,19 +217,19 @@ msgstr "Das Datum an dem geliefert werden soll."
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Quotations"
-msgstr "Quotations"
+msgstr "Angebote"
 
 msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
 msgid "Purchase Request Quotations"
-msgstr "Purchase Request Quotations"
+msgstr "Angebotsanfragen"
 
 msgctxt "model:ir.action,name:report_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr "Angebotsanfrage"
 
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
-msgstr "Create Quotation"
+msgstr "Angebot erzeugen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
@@ -239,7 +239,7 @@ msgstr "All"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
@@ -248,15 +248,15 @@ msgstr "Sent"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr "Angebotsanfrage"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr "Angebotsanfrage"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
 msgid "Purchase Request Quotations"
-msgstr "Purchase Request Quotations"
+msgstr "Angebotsanfragen"
 
 msgctxt "model:purchase.request.quotation,name:"
 msgid "Purchase Request For Quotation"
@@ -393,7 +393,7 @@ msgstr "Ausführen"
 
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
-msgstr "Annullieren"
+msgstr "Abbrechen"
 
 msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
 msgid "Close"

@@ -217,46 +217,46 @@ msgstr "Quand elle doit être livrée."
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Quotations"
-msgstr "Quotations"
+msgstr "Devis"
 
 msgctxt "model:ir.action,name:act_purchase_request_quotation_form"
 msgid "Purchase Request Quotations"
-msgstr "Purchase Request Quotations"
+msgstr "Devis de demande d'achat"
 
 msgctxt "model:ir.action,name:report_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr "Devis de demande d'achat"
 
 msgctxt "model:ir.action,name:wizard_create_quotation"
 msgid "Create Quotation"
-msgstr "Create Quotation"
+msgstr "Créer les devis"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Toutes"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
 msgid "Sent"
-msgstr "Sent"
+msgstr "Envoyé"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr "Devis de demande d'achat"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase_request_quotation"
 msgid "Purchase Request Quotation"
-msgstr "Purchase Request Quotation"
+msgstr "Devis de demande d'achat"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_quotation_form"
 msgid "Purchase Request Quotations"
-msgstr "Purchase Request Quotations"
+msgstr "Devis de demande d'achat"
 
 msgctxt "model:purchase.request.quotation,name:"
 msgid "Purchase Request For Quotation"
