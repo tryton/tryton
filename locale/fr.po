@@ -360,7 +360,7 @@ msgstr "Plans de commission"
 
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Facturer"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
