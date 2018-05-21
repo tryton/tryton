@@ -24,7 +24,7 @@ msgstr "Corregir"
 
 msgctxt "model:ir.model.button,string:invoice_correct_button"
 msgid "Correct"
-msgstr "Correct"
+msgstr "Corregir"
 
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct"
