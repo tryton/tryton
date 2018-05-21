@@ -180,7 +180,7 @@ msgstr "ID"
 
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:commission.plan,name:"
 msgid "Name"
@@ -360,7 +360,7 @@ msgstr "Kommissionspläne"
 
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Rechnung erstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
@@ -492,7 +492,7 @@ msgstr "Kommissionsplan Zeile"
 
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Lines"
-msgstr "Kommissionsplan Zeilen"
+msgstr "Kommissionsplan Positionen"
 
 msgctxt "view:commission.plan:"
 msgid "Commission Plan"
