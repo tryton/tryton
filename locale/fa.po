@@ -14,7 +14,6 @@ msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr "دارایی را می توان تنها یک بار در سطرصورتحساب استفاده کرد!"
 
-#, fuzzy
 msgctxt "error:account.period:"
 msgid ""
 "Some asset lines \"%(names)s\" are still running for this period "

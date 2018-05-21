@@ -485,27 +485,27 @@ msgstr "In Ausführung"
 
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure to close the asset?"
-msgstr "Are you sure to close the asset?"
+msgstr "Anlage wirklich schließen?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
 msgid "Clear Lines"
-msgstr "Clear Lines"
+msgstr "Positionen löschen"
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Abschließen"
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
-msgstr "Create Lines"
+msgstr "Positionen erstellen"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Ausführen"
 
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
-msgstr "Update Asset"
+msgstr "Anlage aktualisieren"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -633,7 +633,7 @@ msgstr "Erstellung Anlagen Buchungssätze bis"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
@@ -689,7 +689,7 @@ msgstr "Anlage wirklich schließen?"
 
 msgctxt "view:account.asset:"
 msgid "Clear Lines"
-msgstr "Zeilen löschen"
+msgstr "Positionen löschen"
 
 msgctxt "view:account.asset:"
 msgid "Close"
@@ -697,7 +697,7 @@ msgstr "Schließen"
 
 msgctxt "view:account.asset:"
 msgid "Create Lines"
-msgstr "Zeilen erstellen"
+msgstr "Positionen erstellen"
 
 msgctxt "view:account.asset:"
 msgid "Run"
