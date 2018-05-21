@@ -24,12 +24,12 @@ msgstr ""
 
 msgctxt "error:party.identifier:"
 msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
-msgstr "El tercero \"%(party)s\" teine mas de un identificador de creditor SEPA."
+msgstr "El tercero \"%(party)s\" teine mas de un identificador de acreedor SEPA."
 
 msgctxt "error:party.identifier:"
 msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
 msgstr ""
-"El identificador de creditor SEPA \"%(code)s\" en el tercero \"%(party)s\" "
+"El identificador de acreedor SEPA \"%(code)s\" en el tercero \"%(party)s\" "
 "no es válido."
 
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
@@ -302,7 +302,7 @@ msgstr "Cancelado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
@@ -320,43 +320,43 @@ msgstr "A cobrar con mandato"
 
 msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
 msgid "Are you sure to cancel the mandate?"
-msgstr "Are you sure to cancel the mandate?"
+msgstr "¿Está seguro que quiere cancelar el mandato?"
 
 msgctxt "model:ir.model.button,string:group_generate_message_button"
 msgid "Generate Message"
-msgstr "Generate Message"
+msgstr "Generar mensaje"
 
 msgctxt "model:ir.model.button,string:mandate_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:mandate_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.model.button,string:mandate_request_button"
 msgid "Request"
-msgstr "Request"
+msgstr "Solicitud"
 
 msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Validar"
 
 msgctxt "model:ir.model.button,string:message_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:message_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Finalizar"
 
 msgctxt "model:ir.model.button,string:message_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
@@ -606,7 +606,7 @@ msgstr "Cancelar"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
-msgstr "Ejecuta"
+msgstr "Finalizar"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"

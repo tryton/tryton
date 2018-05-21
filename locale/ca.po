@@ -320,43 +320,43 @@ msgstr "A cobrar amb mandat"
 
 msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
 msgid "Are you sure to cancel the mandate?"
-msgstr "Are you sure to cancel the mandate?"
+msgstr "Esteu segur de cancel·lar el mandat?"
 
 msgctxt "model:ir.model.button,string:group_generate_message_button"
 msgid "Generate Message"
-msgstr "Generate Message"
+msgstr "Genera missatge"
 
 msgctxt "model:ir.model.button,string:mandate_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:mandate_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:mandate_request_button"
 msgid "Request"
-msgstr "Request"
+msgstr "Sol·licitud"
 
 msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Valida"
 
 msgctxt "model:ir.model.button,string:message_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:message_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:message_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
@@ -389,7 +389,7 @@ msgstr ""
 "d’acord amb els termes i condicions del contracte subscrit amb la vostra "
 "entitat financera. En tot cas aquest reemborsament haurà de ser instat per "
 "part vostre en el termini màxim de 8 setmanes a partir de la data en que es "
-"va carregar en el vostre compte. "
+"va carregar en el vostre compte."
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "BIC"
@@ -608,7 +608,7 @@ msgstr "Cancel·la"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Do"
-msgstr "Executa"
+msgstr "Finalitza"
 
 msgctxt "view:account.payment.sepa.message:"
 msgid "Draft"

@@ -319,43 +319,43 @@ msgstr "À recevoir avec mandat"
 
 msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
 msgid "Are you sure to cancel the mandate?"
-msgstr "Are you sure to cancel the mandate?"
+msgstr "Êtes-vous sûr d'annuler le mandat ?"
 
 msgctxt "model:ir.model.button,string:group_generate_message_button"
 msgid "Generate Message"
-msgstr "Generate Message"
+msgstr "Générer le message"
 
 msgctxt "model:ir.model.button,string:mandate_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:mandate_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:mandate_request_button"
 msgid "Request"
-msgstr "Request"
+msgstr "Demander"
 
 msgctxt "model:ir.model.button,string:mandate_validate_mandate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Valider"
 
 msgctxt "model:ir.model.button,string:message_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:message_do_button"
 msgid "Do"
-msgstr "Do"
+msgstr "Effectuer"
 
 msgctxt "model:ir.model.button,string:message_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Attendre"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
@@ -507,7 +507,7 @@ msgstr "Partagé"
 
 msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Business to Business"
-msgstr "Business to Business"
+msgstr "Entreprise à entreprise"
 
 msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Core"
