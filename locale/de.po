@@ -213,7 +213,7 @@ msgstr "Einen Auslöser für die Benachrichtigung hinzufügen."
 
 msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
-msgstr "Notification Emails"
+msgstr "E-Mail Benachrichtigungen"
 
 msgctxt "model:ir.action,name:act_notification_email_log"
 msgid "Logs"
@@ -221,7 +221,7 @@ msgstr "Logs"
 
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
-msgstr "Notification Emails"
+msgstr "E-Mail Benachrichtigungen"
 
 msgctxt "model:notification.email,name:"
 msgid "Email Notitification"
