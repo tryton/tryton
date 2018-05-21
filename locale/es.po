@@ -220,7 +220,7 @@ msgstr "Todo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_forecast_form_domain_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
@@ -229,15 +229,15 @@ msgstr "Borrador"
 
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:forecast_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confirmar"
 
 msgctxt "model:ir.model.button,string:forecast_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"

@@ -230,15 +230,15 @@ msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:forecast_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confirmer"
 
 msgctxt "model:ir.model.button,string:forecast_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.ui.menu,name:menu_forecast_form"
 msgid "Forecasts"
