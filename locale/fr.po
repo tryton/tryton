@@ -414,7 +414,7 @@ msgstr "Actif"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Asset - Update - Move"
+msgstr "Actif - Mise à jour - Mouvement"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
@@ -486,27 +486,27 @@ msgstr "En cours"
 
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure to close the asset?"
-msgstr "Are you sure to close the asset?"
+msgstr "Êtes-vous sûr de clôturer l'actif ?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
 msgid "Clear Lines"
-msgstr "Clear Lines"
+msgstr "Effacer les lignes"
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Clôturer"
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
-msgstr "Create Lines"
+msgstr "Créer les lignes"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Lancer"
 
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
-msgstr "Update Asset"
+msgstr "Mise à jour des actifs"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"

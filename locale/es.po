@@ -486,27 +486,27 @@ msgstr "En ejecución"
 
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure to close the asset?"
-msgstr "Are you sure to close the asset?"
+msgstr "¿Está seguro que quiere cerrar el activo?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
 msgid "Clear Lines"
-msgstr "Clear Lines"
+msgstr "Borrar líneas"
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Cerrar"
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
-msgstr "Create Lines"
+msgstr "Crear líneas"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Ejecutar"
 
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
-msgstr "Update Asset"
+msgstr "Actualizar activo"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
