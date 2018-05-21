@@ -202,7 +202,7 @@ msgstr "Manat de Azerbayán"
 
 msgctxt "model:currency.currency,name:bam"
 msgid "Convertible Mark"
-msgstr "Convertible Mark"
+msgstr "Marco convertible"
 
 msgctxt "model:currency.currency,name:bbd"
 msgid "Barbados Dollar"
@@ -814,7 +814,7 @@ msgstr "Sucre"
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Codes specifically reserved for testing purposes"
-msgstr "Codes specifically reserved for testing purposes"
+msgstr "Códigos reservados específicamente para pruebas"
 
 msgctxt "model:currency.currency,name:xua"
 msgid "ADB Unit of Account"
@@ -822,7 +822,8 @@ msgstr "ADB Unit of Account"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "The codes assigned for transactions where no currency is involved"
-msgstr "The codes assigned for transactions where no currency is involved"
+msgstr ""
+"Los códigos asignados para transacciones dónde no hay moneda involucrada"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
