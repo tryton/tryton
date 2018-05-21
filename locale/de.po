@@ -28,7 +28,7 @@ msgstr "ID"
 
 msgctxt "field:product.price_list,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:product.price_list,name:"
 msgid "Name"
@@ -168,7 +168,7 @@ msgstr "Preisliste Zeile"
 
 msgctxt "view:product.price_list.line:"
 msgid "Price List Lines"
-msgstr "Preisliste Zeilen"
+msgstr "Preisliste Positionen"
 
 msgctxt "view:product.price_list:"
 msgid "Price List"
