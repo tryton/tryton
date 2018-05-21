@@ -338,7 +338,7 @@ msgstr "Créé par"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 msgctxt "field:res.user,groups:"
 msgid "Groups"
@@ -626,7 +626,7 @@ msgstr "Utilisateurs"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Réinitialiser le mot de passe"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
@@ -638,19 +638,19 @@ msgstr "Lancer les déclencheurs « À temps »"
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
-msgstr "Send by email a new temporary password to the user"
+msgstr "Envoie par e-mail un nouveau mot de passe temporaire à l'utilisateur"
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:user_application_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Valider"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Réinitialiser le mot de passe"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
