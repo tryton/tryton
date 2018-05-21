@@ -147,10 +147,9 @@ msgctxt "field:purchase.request.quotation.line,quotation:"
 msgid "Quotation"
 msgstr "نقل قول"
 
-#, fuzzy
 msgctxt "field:purchase.request.quotation.line,quotation_state:"
 msgid "Request for Quotation State"
-msgstr "درخواست نقل قول N°:"
+msgstr "درخواست برای وضعیت نقل قول"
 
 msgctxt "field:purchase.request.quotation.line,rec_name:"
 msgid "Record Name"
@@ -206,7 +205,7 @@ msgstr "مرجع استفاده شده توسط تامین کننده."
 
 msgctxt "help:purchase.request.quotation,revision:"
 msgid "Number incremented each time the quotation is sent."
-msgstr ""
+msgstr "تعداد افزایش در هر زمان که نقل قول ارسال می شود."
 
 msgctxt "help:purchase.request.quotation.line,request:"
 msgid "The request which this line belongs to."
@@ -293,7 +292,7 @@ msgstr "پیش‌نویس"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Expected Supply Date"
-msgstr ""
+msgstr "تاریخ عرضه مورد انتظار"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Purchase"
