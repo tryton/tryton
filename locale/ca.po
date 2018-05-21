@@ -849,11 +849,11 @@ msgstr "Compres"
 
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Compres"
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Compres"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -873,7 +873,7 @@ msgstr "Gestiona l'excepció de factura"
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Modificar capçalera"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -909,36 +909,36 @@ msgstr "Processa compres confirmades"
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:purchase_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confirma"
 
 msgctxt "model:ir.model.button,string:purchase_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr "Gestiona excepció de factura"
 
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr "Gestiona excepció d'enviament"
 
 msgctxt "model:ir.model.button,string:purchase_modify_header_button"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Modificar capçalera"
 
 msgctxt "model:ir.model.button,string:purchase_process_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Processa"
 
 msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Pressupost"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"

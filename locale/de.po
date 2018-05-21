@@ -857,11 +857,11 @@ msgstr "Einkäufe"
 
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Einkäufe"
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Einkäufe"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -881,7 +881,7 @@ msgstr "Rechnungsvorbehalt bearbeiten"
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Kopfdaten bearbeiten"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -917,36 +917,36 @@ msgstr "Process Confirmed Purchases"
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:purchase_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Beauftragen"
 
 msgctxt "model:ir.model.button,string:purchase_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr "Rechnungsvorbehalt bearbeiten"
 
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr "Liefervorbehalt bearbeiten"
 
 msgctxt "model:ir.model.button,string:purchase_modify_header_button"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Kopfdaten bearbeiten"
 
 msgctxt "model:ir.model.button,string:purchase_process_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Ausführen"
 
 msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Angebot"
 
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
@@ -1306,7 +1306,7 @@ msgstr "OK"
 
 msgctxt "wizard_button:purchase.modify_header,start,end:"
 msgid "Cancel"
-msgstr "Annullieren"
+msgstr "Abbrechen"
 
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
