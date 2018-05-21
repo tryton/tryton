@@ -32,7 +32,7 @@ msgstr "ID"
 
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:sale.extra,name:"
 msgid "Name"
