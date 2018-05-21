@@ -64,7 +64,7 @@ msgstr "Post Clearing Moves"
 
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"
-msgstr "Succeed"
+msgstr "Erfolgreich markieren"
 
 msgctxt "view:account.payment.journal:"
 msgid "Clearing"

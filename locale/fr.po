@@ -60,11 +60,11 @@ msgstr "Réussir les paiements"
 
 msgctxt "model:ir.cron,name:cron_post_clearing_moves"
 msgid "Post Clearing Moves"
-msgstr "Post Clearing Moves"
+msgstr "Poster les mouvements de compensation"
 
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"
-msgstr "Succeed"
+msgstr "Réussir"
 
 msgctxt "view:account.payment.journal:"
 msgid "Clearing"
