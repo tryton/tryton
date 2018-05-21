@@ -57,19 +57,19 @@ msgstr "Diviser l'expédition"
 
 msgctxt "model:ir.model.button,string:move_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "Diviser"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "Diviser"
 
 msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "Diviser"
 
 msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "Diviser"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
