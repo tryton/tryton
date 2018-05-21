@@ -1400,31 +1400,31 @@ msgstr "Parteien mit Verkäufen"
 
 msgctxt "model:ir.action,name:act_reporting_category"
 msgid "Sales per Category"
-msgstr "Sales per Category"
+msgstr "Verkäufe nach Kategorie"
 
 msgctxt "model:ir.action,name:act_reporting_category_time_series"
 msgid "Sales per Category"
-msgstr "Sales per Category"
+msgstr "Verkäufe nach Kategorie"
 
 msgctxt "model:ir.action,name:act_reporting_category_tree"
 msgid "Sales per Category"
-msgstr "Sales per Category"
+msgstr "Verkäufe nach Kategorie"
 
 msgctxt "model:ir.action,name:act_reporting_country_subdivision_time_series"
 msgid "Sales per Subdivision"
-msgstr "Sales per Subdivision"
+msgstr "Verkäufe nach subnationalen Einheiten"
 
 msgctxt "model:ir.action,name:act_reporting_country_time_series"
 msgid "Sales per Country"
-msgstr "Sales per Country"
+msgstr "Verkäufe nach Land"
 
 msgctxt "model:ir.action,name:act_reporting_customer"
 msgid "Sales per Customer"
-msgstr "Sales per Customer"
+msgstr "Verkäufe nach Kunde"
 
 msgctxt "model:ir.action,name:act_reporting_customer_time_series"
 msgid "Sales per Customer"
-msgstr "Sales per Customer"
+msgstr "Verkäufe nach Kunde"
 
 msgctxt "model:ir.action,name:act_reporting_product"
 msgid "Sales per Product"
@@ -1432,11 +1432,11 @@ msgstr "Sales per Product"
 
 msgctxt "model:ir.action,name:act_reporting_product_time_series"
 msgid "Sales per Product"
-msgstr "Sales per Product"
+msgstr "Verkäufe nach Produkt"
 
 msgctxt "model:ir.action,name:act_reporting_region"
 msgid "Sales per Region"
-msgstr "Sales per Region"
+msgstr "Verkäufe nach Region"
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
@@ -1460,7 +1460,7 @@ msgstr "Verkauf"
 
 msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Verkäufe"
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
@@ -1480,11 +1480,11 @@ msgstr "Rechnungsvorbehalt bearbeiten"
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Kopfdaten bearbeiten"
 
 msgctxt "model:ir.action,name:wizard_reporting_region_open"
 msgid "Open Region"
-msgstr "Open Region"
+msgstr "Region öffnen"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
@@ -1523,35 +1523,35 @@ msgstr "Process Confirmed Sales"
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:sale_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Bestätigen"
 
 msgctxt "model:ir.model.button,string:sale_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr "Rechnungsvorbehalt bearbeiten"
 
 msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr "Liefervorbehalt bearbeiten"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Kopfdaten bearbeiten"
 
 msgctxt "model:ir.model.button,string:sale_process_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Ausführen"
 
 msgctxt "model:ir.model.button,string:sale_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Angebot"
 
 msgctxt "model:ir.sequence,name:sequence_sale"
 msgid "Sale"
@@ -1575,7 +1575,7 @@ msgstr "Reporting"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Verkäufe"
 
 msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
@@ -1960,7 +1960,7 @@ msgstr "Verkauf"
 
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr "Annulliert"
+msgstr "Annullieren"
 
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
