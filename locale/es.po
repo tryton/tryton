@@ -184,7 +184,7 @@ msgstr "Árbol de proyectos y tareas"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
@@ -192,7 +192,7 @@ msgstr "Abierto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
@@ -200,7 +200,7 @@ msgstr "Abierto"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"

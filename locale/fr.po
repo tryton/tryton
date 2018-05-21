@@ -268,7 +268,7 @@ msgstr "Fin :"
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr "General"
+msgstr "Général"
 
 msgctxt "view:project.work:"
 msgid "Start:"
