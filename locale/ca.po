@@ -198,7 +198,7 @@ msgstr "En excepció"
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
 msgid "Handle Purchase Cancellation"
-msgstr "Handle Purchase Cancellation"
+msgstr "Gestiona cancel·lació de la compra"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
