@@ -762,7 +762,7 @@ msgstr "Mit VIES überprüfen"
 
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
-msgstr "Erase"
+msgstr "Löschen"
 
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
@@ -938,7 +938,7 @@ msgstr "OK"
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"
-msgstr "Annullieren"
+msgstr "Abbrechen"
 
 msgctxt "wizard_button:party.erase,ask,erase:"
 msgid "Erase"

@@ -760,7 +760,7 @@ msgstr "Comprobar VIES"
 
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
-msgstr "Erase"
+msgstr "Borrar"
 
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
