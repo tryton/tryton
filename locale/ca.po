@@ -44,7 +44,7 @@ msgstr "Recupera bestreta"
 
 msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
 msgid "Recall Deposit"
-msgstr "Recall Deposit"
+msgstr "Recupera bestreta"
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
