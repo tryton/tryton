@@ -160,7 +160,7 @@ msgstr "Restableix la contrasenya"
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate E-mail"
-msgstr "Validate E-mail"
+msgstr "Valida correu electrònic"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
