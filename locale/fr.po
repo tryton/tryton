@@ -271,7 +271,7 @@ msgstr "BPM Parcel"
 
 msgctxt "selection:stock.package.type,ups_code:"
 msgid "Customer Supplied Package"
-msgstr "Customer Supplied Package"
+msgstr "Paquet fourni par le client"
 
 msgctxt "selection:stock.package.type,ups_code:"
 msgid "First Class"

@@ -306,7 +306,7 @@ msgstr "PAK"
 
 msgctxt "selection:stock.package.type,ups_code:"
 msgid "Pallet"
-msgstr "Pallet"
+msgstr "Palet"
 
 msgctxt "selection:stock.package.type,ups_code:"
 msgid "Parcel Post"
