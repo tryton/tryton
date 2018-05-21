@@ -3334,7 +3334,7 @@ msgstr "اسپانیایی (آمریکای لاتین)"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
-msgstr ""
+msgstr "پارسی"
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"

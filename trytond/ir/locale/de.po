@@ -18,8 +18,8 @@ msgid ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
 "digits limit of \"%(digits)s\"."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
-"digits limit of \"%(digits)s\"."
+"Die Anzahl der Nachkommastellen \"%(value)s\" in Feld \"%(field)s\" in "
+"\"%(model)s\" überschreitet die erlaubte Größe von \"%(digits)s\"."
 
 msgctxt "error:domain_validation_record:"
 msgid ""
@@ -2298,7 +2298,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
-msgstr "Fuzzy"
+msgstr "Unscharf"
 
 msgctxt "field:ir.translation,id:"
 msgid "ID"
@@ -2989,7 +2989,7 @@ msgid ""
 "graph."
 msgstr ""
 "Die Eingabe eines Python Regulären Ausdrucks wird passende Modelle vom "
-"Graphen ausschließen."
+"Diagramm ausschließen."
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -3238,15 +3238,15 @@ msgstr "Spaltenbreiten der Baumansichten"
 
 msgctxt "model:ir.action,name:print_model_graph"
 msgid "Graph"
-msgstr "Graph"
+msgstr "Diagramm"
 
 msgctxt "model:ir.action,name:report_model_graph"
 msgid "Graph"
-msgstr "Graph"
+msgstr "Diagramm"
 
 msgctxt "model:ir.action,name:report_model_workflow_graph"
 msgid "Workflow Graph"
-msgstr "Workflow Graph"
+msgstr "Workflow Diagramm"
 
 msgctxt "model:ir.action,name:wizard_translation_report"
 msgid "Translations"
@@ -3422,43 +3422,43 @@ msgstr "Modell Knopf"
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
-msgstr "Run Once"
+msgstr "Einmalig ausführen"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
-msgstr "Sync"
+msgstr "Synchronisation"
 
 msgctxt "model:ir.model.button,string:module_activate_button"
 msgid "Mark for Activation"
-msgstr "Mark for Activation"
+msgstr "Für Aktivierung vormerken"
 
 msgctxt "model:ir.model.button,string:module_activate_cancel_button"
 msgid "Cancel Activation"
-msgstr "Cancel Activation"
+msgstr "Aktivierung abbrechen"
 
 msgctxt "model:ir.model.button,string:module_deactivate_button"
 msgid "Mark for Deactivation (beta)"
-msgstr "Mark for Deactivation (beta)"
+msgstr "Für Deaktivierung vormerken (beta)"
 
 msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
 msgid "Cancel Deactivation"
-msgstr "Cancel Deactivation"
+msgstr "Deaktivierung abbrechen"
 
 msgctxt "model:ir.model.button,string:module_upgrade_button"
 msgid "Mark for Upgrade"
-msgstr "Mark for Upgrade"
+msgstr "Für die Aktualisierung vormerken"
 
 msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
 msgid "Cancel Upgrade"
-msgstr "Cancel Upgrade"
+msgstr "Vormerkung für Aktualisierung aufheben"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
-msgstr "Show"
+msgstr "Anzeigen"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
-msgstr "Knopfmodell Rücksetzung"
+msgstr "Knopf Zurücksetzen"
 
 msgctxt "model:ir.model.button.click,name:"
 msgid "Model Button Click"
@@ -3482,7 +3482,7 @@ msgstr "Modell Feld Zugriffsberechtigung"
 
 msgctxt "model:ir.model.print_model_graph.start,name:"
 msgid "Print Model Graph"
-msgstr "Modellgraph drucken"
+msgstr "Modelldiagramm drucken"
 
 msgctxt "model:ir.module,name:"
 msgid "Module"
@@ -3806,7 +3806,7 @@ msgstr "Bezugsformular"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Open Graph"
-msgstr "Graph öffnen"
+msgstr "Diagramm öffnen"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Open tree"
@@ -4034,7 +4034,7 @@ msgstr "Auszuführende Aktion"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
-msgstr "Einmalig durchführen"
+msgstr "Einmalig ausführen"
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"

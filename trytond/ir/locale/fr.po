@@ -19,8 +19,8 @@ msgid ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
 "digits limit of \"%(digits)s\"."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
-"digits limit of \"%(digits)s\"."
+"La valeur « %(value)s » du champ « %(field)s » sur « %(model)s » dépasse la "
+"limite de « %(digits)s » décimales."
 
 msgctxt "error:domain_validation_record:"
 msgid ""
@@ -682,7 +682,7 @@ msgstr "Imprimer directement"
 
 msgctxt "field:ir.action.report,email:"
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
@@ -722,7 +722,7 @@ msgstr "Nom"
 
 msgctxt "field:ir.action.report,pyson_email:"
 msgid "PySON Email"
-msgstr "Email PySON"
+msgstr "E-mail PySON"
 
 msgctxt "field:ir.action.report,rec_name:"
 msgid "Record Name"
@@ -850,7 +850,7 @@ msgstr "Créé par"
 
 msgctxt "field:ir.action.wizard,email:"
 msgid "Email"
-msgstr "Email"
+msgstr "E-mail"
 
 msgctxt "field:ir.action.wizard,groups:"
 msgid "Groups"
@@ -1722,7 +1722,7 @@ msgstr "Mis à jour par"
 
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
-msgstr "Filter"
+msgstr "Filtre"
 
 msgctxt "field:ir.model.print_model_graph.start,id:"
 msgid "ID"
@@ -3265,7 +3265,7 @@ msgstr "Action ouvrir fenêtre"
 
 msgctxt "model:ir.action.act_window.domain,name:"
 msgid "Action act window domain"
-msgstr "Action act window domain"
+msgstr "Action domaine de fenêtre"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_model_data_form_domain_all"
@@ -3429,39 +3429,39 @@ msgstr "Bouton de modèle"
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
-msgstr "Run Once"
+msgstr "Lancer une fois"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
-msgstr "Sync"
+msgstr "Synchroniser"
 
 msgctxt "model:ir.model.button,string:module_activate_button"
 msgid "Mark for Activation"
-msgstr "Mark for Activation"
+msgstr "Marquer pour activation"
 
 msgctxt "model:ir.model.button,string:module_activate_cancel_button"
 msgid "Cancel Activation"
-msgstr "Cancel Activation"
+msgstr "Annuler l'activation"
 
 msgctxt "model:ir.model.button,string:module_deactivate_button"
 msgid "Mark for Deactivation (beta)"
-msgstr "Mark for Deactivation (beta)"
+msgstr "Marquer pour inactivation (beta)"
 
 msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
 msgid "Cancel Deactivation"
-msgstr "Cancel Deactivation"
+msgstr "Annuler l'inactivation"
 
 msgctxt "model:ir.model.button,string:module_upgrade_button"
 msgid "Mark for Upgrade"
-msgstr "Mark for Upgrade"
+msgstr "Marquer pour mise à niveau"
 
 msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
 msgid "Cancel Upgrade"
-msgstr "Cancel Upgrade"
+msgstr "Annuler la mise à jour"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
-msgstr "Show"
+msgstr "Afficher"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
