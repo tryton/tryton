@@ -84,11 +84,11 @@ msgstr "Kontext der EU-Verkaufsliste"
 
 msgctxt "model:ir.action,name:act_ec_sales_list_form"
 msgid "EC Sales List"
-msgstr "EC Sales List"
+msgstr "Zusammenfassende Meldung"
 
 msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
 msgid "EC Sales List"
-msgstr "EC Sales List"
+msgstr "Zusammenfassende Meldung"
 
 msgctxt "view:account.tax.template:"
 msgid "EC Sales List"
