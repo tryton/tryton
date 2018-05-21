@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.internal:"
 msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
-msgstr "La ubicación '%(location)s' ya está asignada por '%(assigned_by)s'."
+msgstr "La ubicación '%(location)s' ya está reservada por '%(assigned_by)s'."
 
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
