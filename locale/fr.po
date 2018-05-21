@@ -762,7 +762,7 @@ msgstr "Valider avec VIES"
 
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
-msgstr "Erase"
+msgstr "Effacer"
 
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"

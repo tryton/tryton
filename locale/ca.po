@@ -759,7 +759,7 @@ msgstr "Comprova VIES"
 
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
-msgstr "Erase"
+msgstr "Esborra"
 
 msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
