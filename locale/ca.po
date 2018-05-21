@@ -593,31 +593,31 @@ msgstr "En espera"
 
 msgctxt "model:ir.model.button,string:production_assign_wizard_button"
 msgid "Assign"
-msgstr "Assign"
+msgstr "Reserva"
 
 msgctxt "model:ir.model.button,string:production_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:production_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Finalitza"
 
 msgctxt "model:ir.model.button,string:production_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:production_reset_bom_button"
 msgid "Reset to BOM"
-msgstr "Reset to BOM"
+msgstr "Restaura amb la LdM"
 
 msgctxt "model:ir.model.button,string:production_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Executa"
 
 msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
