@@ -1439,7 +1439,7 @@ msgstr "Configuración de ventas"
 
 msgctxt "model:ir.action,name:act_sale_form"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Ventas"
 
 msgctxt "model:ir.action,name:act_sale_form2"
 msgid "Sales"
@@ -1451,7 +1451,7 @@ msgstr "Ventas"
 
 msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Ventas"
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
@@ -1471,11 +1471,11 @@ msgstr "Gestionar excepción de factura"
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Modificar cabecera"
 
 msgctxt "model:ir.action,name:wizard_reporting_region_open"
 msgid "Open Region"
-msgstr "Open Region"
+msgstr "Abrir región"
 
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
@@ -1514,35 +1514,35 @@ msgstr "Procesar ventas confirmadas"
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:sale_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confirmar"
 
 msgctxt "model:ir.model.button,string:sale_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.model.button,string:sale_handle_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr "Gestionar excepción de factura"
 
 msgctxt "model:ir.model.button,string:sale_handle_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr "Gestionar excepción de envío"
 
 msgctxt "model:ir.model.button,string:sale_modify_header_button"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr "Modificar cabecera"
 
 msgctxt "model:ir.model.button,string:sale_process_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Procesar"
 
 msgctxt "model:ir.model.button,string:sale_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Presupuesto"
 
 msgctxt "model:ir.sequence,name:sequence_sale"
 msgid "Sale"
@@ -1566,7 +1566,7 @@ msgstr "Informes"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting_sale"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Ventas"
 
 msgctxt "model:ir.ui.menu,name:menu_sale"
 msgid "Sales"
