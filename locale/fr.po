@@ -423,31 +423,31 @@ msgstr "Réussis"
 
 msgctxt "model:ir.model.button,string:move_line_pay_button"
 msgid "Pay Lines"
-msgstr "Pay Lines"
+msgstr "Payer les lignes"
 
 msgctxt "model:ir.model.button,string:move_line_payment_block_button"
 msgid "Block"
-msgstr "Block"
+msgstr "Bloquer"
 
 msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
 msgid "Unblock"
-msgstr "Unblock"
+msgstr "Débloquer"
 
 msgctxt "model:ir.model.button,string:payment_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr "Approuver"
 
 msgctxt "model:ir.model.button,string:payment_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
-msgstr "Fail"
+msgstr "Échouer"
 
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
-msgstr "Succeed"
+msgstr "Réussir"
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
