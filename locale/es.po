@@ -326,7 +326,7 @@ msgstr "Todo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
 msgid "Done"
-msgstr "Realizado"
+msgstr "Finalizado"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
