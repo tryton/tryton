@@ -3539,7 +3539,7 @@ msgstr "Efectivo"
 
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Gastos"
 
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
@@ -3727,7 +3727,7 @@ msgstr "Actualizar plan contable"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Cuentas"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
@@ -3735,7 +3735,7 @@ msgstr "Balance de situación"
 
 msgctxt "model:ir.action,name:act_account_general_ledger"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Cuentas"
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
@@ -3875,7 +3875,7 @@ msgstr "Abrir código de impuesto"
 
 msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
-msgstr "Open Type"
+msgstr "Abrir tipo"
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
@@ -3990,47 +3990,47 @@ msgstr "A cobrar"
 
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
 msgid "Are you sure to lock the fiscal year?"
-msgstr "Are you sure to lock the fiscal year?"
+msgstr "¿Está seguro que quiere bloquear el ejercicio fiscal?"
 
 msgctxt "model:ir.model.button,confirm:period_lock_button"
 msgid "Are you sure to lock the period?"
-msgstr "Are you sure to lock the period?"
+msgstr "¿Está seguro que desea bloquear el periodo?"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Cerrar"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_3_button"
 msgid "Create 3 Monthly Periods"
-msgstr "Create 3 Monthly Periods"
+msgstr "Crear períodos trimestrales"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_button"
 msgid "Create Monthly Periods"
-msgstr "Create Monthly Periods"
+msgstr "Crear períodos mensuales"
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Bloquear"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr "Volver a abrir"
 
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Contabilizar"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Cerrar"
 
 msgctxt "model:ir.model.button,string:period_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Bloquear"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr "Volver a abrir"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -4199,7 +4199,7 @@ msgstr "Imprimir libro diario"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "En proceso"
+msgstr "Procesos"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
@@ -5315,7 +5315,7 @@ msgstr "Contabilizar"
 
 msgctxt "view:account.period:"
 msgid "Are you sure to lock the period?"
-msgstr "¿Estáis seguros de bloquear el período?"
+msgstr "¿Está seguro de bloquear el período?"
 
 msgctxt "view:account.period:"
 msgid "Close"

@@ -24,7 +24,7 @@ msgid ""
 "with existing lines."
 msgstr ""
 "Die Währung \"%(currency)s\" von Konto \"%(account)s\" passt nicht zu den "
-"bestehenden Zeilen."
+"bestehenden Positionen."
 
 msgctxt "error:account.account:"
 msgid ""
@@ -144,7 +144,7 @@ msgstr "Falsches Vorzeichen für Fremdwährung"
 msgctxt "error:account.move.line:"
 msgid "You can not add/modify lines in closed journal period \"%s\"."
 msgstr ""
-"In dem geschlossenen Buchungszeitraum \"%s\" können keine Zeilen mehr "
+"In dem geschlossenen Buchungszeitraum \"%s\" können keine Positionen mehr "
 "hinzugefügt oder verändert werden."
 
 msgctxt "error:account.move.line:"
@@ -1233,7 +1233,7 @@ msgstr "ID"
 
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.general_ledger.account,name:"
 msgid "Name"
@@ -1741,7 +1741,7 @@ msgstr "Journal"
 
 msgctxt "field:account.move,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.move,number:"
 msgid "Number"
@@ -2041,7 +2041,7 @@ msgstr "ID"
 
 msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.move.reconciliation,name:"
 msgid "Name"
@@ -2097,7 +2097,7 @@ msgstr "Schlüsselwörter"
 
 msgctxt "field:account.move.template,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.move.template,name:"
 msgid "Name"
@@ -2285,7 +2285,7 @@ msgstr "Journal"
 
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.reconcile.show,parties:"
 msgid "Parties"
@@ -2801,7 +2801,7 @@ msgstr "Art"
 
 msgctxt "field:account.tax.rule,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.tax.rule,name:"
 msgid "Name"
@@ -2945,7 +2945,7 @@ msgstr "Art"
 
 msgctxt "field:account.tax.rule.template,lines:"
 msgid "Lines"
-msgstr "Zeilen"
+msgstr "Positionen"
 
 msgctxt "field:account.tax.rule.template,name:"
 msgid "Name"
@@ -3232,7 +3232,7 @@ msgid ""
 "Allow move lines of this account \n"
 "to be reconciled."
 msgstr ""
-"Buchungszeilen dieses Kontos \n"
+"Buchungspositionen dieses Kontos \n"
 "können abgestimmt werden."
 
 msgctxt "help:account.account,second_currency:"
@@ -3348,7 +3348,7 @@ msgstr "Nur festgeschriebene Buchungen anzeigen"
 
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
-msgstr "Letztes Datum der abgestimmten Zeilen"
+msgstr "Letztes Datum der abgestimmten Position"
 
 msgctxt "help:account.move.template,active:"
 msgid "Uncheck to exclude from future use."
@@ -3548,7 +3548,7 @@ msgstr "Kontenblätter Zeile"
 
 msgctxt "model:account.general_ledger.line.context,name:"
 msgid "General Ledger Line Context"
-msgstr "Kontenblätter Zeilen Kontext"
+msgstr "Kontenblätter Positionen Kontext"
 
 msgctxt "model:account.income_statement.context,name:"
 msgid "Income Statement Context"
@@ -3648,7 +3648,7 @@ msgstr "Abstimmung Buchungszeilen Ausbuchung"
 
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
-msgstr "Buchungssatz Abstimmung Zeilen"
+msgstr "Buchungssatz Abstimmung Positionen"
 
 msgctxt "model:account.move.template,name:"
 msgid "Account Move Template"
@@ -3712,7 +3712,7 @@ msgstr "Steuer Zeile"
 
 msgctxt "model:account.tax.line.template,name:"
 msgid "Account Tax Line Template"
-msgstr "Steuerkontozeilenvorlage"
+msgstr "Steuerkontopositionenvorlage"
 
 msgctxt "model:account.tax.rule,name:"
 msgid "Tax Rule"
@@ -3752,7 +3752,7 @@ msgstr "Kontenplan aktualisieren"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Konten"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
@@ -3760,7 +3760,7 @@ msgstr "Bilanzbogen"
 
 msgctxt "model:ir.action,name:act_account_general_ledger"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Konten"
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
@@ -3872,7 +3872,7 @@ msgstr "Verbindlichkeiten/Forderungen"
 
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
-msgstr "Abstimmungszeilen"
+msgstr "Abstimmungspositionen"
 
 msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
@@ -3900,7 +3900,7 @@ msgstr "Steuerkennziffern öffnen"
 
 msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
-msgstr "Open Type"
+msgstr "Kontentyp öffnen"
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
@@ -3964,7 +3964,7 @@ msgstr "Steuervorlagen"
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr "Abstimmung von Buchungszeilen rückgängig machen"
+msgstr "Abstimmung von Buchungspositionen rückgängig machen"
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
@@ -4015,47 +4015,47 @@ msgstr "Forderungen"
 
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
 msgid "Are you sure to lock the fiscal year?"
-msgstr "Are you sure to lock the fiscal year?"
+msgstr "Wollen Sie das Geschäftsjahr wirklich sperren?"
 
 msgctxt "model:ir.model.button,confirm:period_lock_button"
 msgid "Are you sure to lock the period?"
-msgstr "Are you sure to lock the period?"
+msgstr "Wollen Sie den Buchungszeitraum wirklich sperren?"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Abschließen"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_3_button"
 msgid "Create 3 Monthly Periods"
-msgstr "Create 3 Monthly Periods"
+msgstr "Quartale erstellen"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_button"
 msgid "Create Monthly Periods"
-msgstr "Create Monthly Periods"
+msgstr "Monatliche Buchungszeiträume erstellen"
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Sperren"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr "Wieder öffnen"
 
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Festschreiben"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Abschließen"
 
 msgctxt "model:ir.model.button,string:period_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Sperren"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr "Wieder öffnen"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"

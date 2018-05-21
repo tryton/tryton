@@ -3551,7 +3551,7 @@ msgstr "Journal"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
-msgstr "Cash"
+msgstr "Espèces"
 
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
@@ -3571,7 +3571,7 @@ msgstr "Journal comptable"
 
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
-msgstr "Contexte du journal de cash"
+msgstr "Contexte du journal d'espèces"
 
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
@@ -3587,7 +3587,7 @@ msgstr "Type de journal"
 
 msgctxt "model:account.journal.type,name:journal_type_cash"
 msgid "Cash"
-msgstr "Cash"
+msgstr "Espèces"
 
 msgctxt "model:account.journal.type,name:journal_type_expense"
 msgid "Expense"
@@ -3743,7 +3743,7 @@ msgstr "Mise à jour d'un plan"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Comptes"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
@@ -3751,7 +3751,7 @@ msgstr "Bilan"
 
 msgctxt "model:ir.action,name:act_account_general_ledger"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Comptes"
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
@@ -3827,7 +3827,7 @@ msgstr "Journaux"
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
-msgstr "Journaux de cash"
+msgstr "Journaux d'espèces"
 
 msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
@@ -3891,7 +3891,7 @@ msgstr "Ouvrir le code de taxe"
 
 msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
-msgstr "Open Type"
+msgstr "Ouvrir le type"
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
@@ -4006,47 +4006,47 @@ msgstr "À recevoir"
 
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
 msgid "Are you sure to lock the fiscal year?"
-msgstr "Are you sure to lock the fiscal year?"
+msgstr "Êtes-vous sûr de verrouiller l'année fiscale ?"
 
 msgctxt "model:ir.model.button,confirm:period_lock_button"
 msgid "Are you sure to lock the period?"
-msgstr "Are you sure to lock the period?"
+msgstr "Êtes-vous sure de verrouiller la période ?"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Clôturer"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_3_button"
 msgid "Create 3 Monthly Periods"
-msgstr "Create 3 Monthly Periods"
+msgstr "Créer des périodes de 3 mois"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_button"
 msgid "Create Monthly Periods"
-msgstr "Create Monthly Periods"
+msgstr "Créer des périodes mensuelles"
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Verrouiller"
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr "Ré-ouvrir"
 
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Poster"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Clôturer"
 
 msgctxt "model:ir.model.button,string:period_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr "Verrouiller"
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr "Ré-ouvrir"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -4163,7 +4163,7 @@ msgstr "Journaux"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
-msgstr "Journaux de cash"
+msgstr "Journaux d'espèces"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
