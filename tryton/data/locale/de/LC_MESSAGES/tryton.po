@@ -519,7 +519,9 @@ msgstr "Modularität, Skalierbarkeit und Sicherheit"
 
 #: tryton/gui/window/about.py:43
 msgid "translator-credits"
-msgstr "Mathias Behrle"
+msgstr ""
+"Mathias Behrle\n"
+"Clemens Hupka"
 
 #: tryton/gui/window/attachment.py:22
 #, python-format, python-format, python-format, python-format
