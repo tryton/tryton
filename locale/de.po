@@ -256,7 +256,7 @@ msgstr "Nummernkreis Reklamation"
 
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines"
-msgstr "Leer lassen für alle Zeilen"
+msgstr "Leer lassen für alle Positionen"
 
 msgctxt "help:sale.complaint.action,quantity:"
 msgid "Leave empty for the same quantity"
@@ -264,7 +264,7 @@ msgstr "Leer lassen für gleiche Anzahl"
 
 msgctxt "help:sale.complaint.action,sale_lines:"
 msgid "Leave empty for all lines"
-msgstr "Leer lassen für alle Zeilen"
+msgstr "Leer lassen für alle Positionen"
 
 msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price"
@@ -307,27 +307,27 @@ msgstr "Wartend"
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr "Bestätigen"
 
 msgctxt "model:ir.model.button,string:complaint_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:complaint_do_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Ausführen"
 
 msgctxt "model:ir.model.button,string:complaint_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:complaint_reject_button"
 msgid "Reject"
-msgstr "Reject"
+msgstr "Ablehnen"
 
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Warten"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
