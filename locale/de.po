@@ -1209,7 +1209,7 @@ msgstr "Geprüft"
 
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure to cancel the invoice?"
-msgstr "Are you sure to cancel the invoice?"
+msgstr "Wollen Sie die Rechnung wirklich stornieren?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
 msgid "Cancel the invoice"
@@ -1217,27 +1217,27 @@ msgstr "Cancel the invoice"
 
 msgctxt "model:ir.model.button,help:invoice_validate_button"
 msgid "Also known as Pro Forma"
-msgstr "Also known as Pro Forma"
+msgstr "Auch bekannt als Proforma"
 
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:invoice_pay_button"
 msgid "Pay"
-msgstr "Pay"
+msgstr "Bezahlen"
 
 msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Festschreiben"
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Prüfen"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"

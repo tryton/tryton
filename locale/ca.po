@@ -1199,35 +1199,35 @@ msgstr "Validada"
 
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure to cancel the invoice?"
-msgstr "Are you sure to cancel the invoice?"
+msgstr "Esteu segur de cancel·lar la factura?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
 msgid "Cancel the invoice"
-msgstr "Cancel the invoice"
+msgstr "Cancel·la la factura"
 
 msgctxt "model:ir.model.button,help:invoice_validate_button"
 msgid "Also known as Pro Forma"
-msgstr "Also known as Pro Forma"
+msgstr "També coneguda com a proforma"
 
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:invoice_pay_button"
 msgid "Pay"
-msgstr "Pay"
+msgstr "Paga"
 
 msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Comptabilitza"
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Valida"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
