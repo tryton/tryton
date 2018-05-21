@@ -36,7 +36,7 @@ msgstr "Produktion aufteilen"
 
 msgctxt "model:ir.model.button,string:production_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "Aufteilen"
 
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
