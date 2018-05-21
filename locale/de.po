@@ -156,11 +156,11 @@ msgstr "E-Mail-Validierung"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Passwort zurücksetzen"
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate E-mail"
-msgstr "Validate E-mail"
+msgstr "E-Mail validieren"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
