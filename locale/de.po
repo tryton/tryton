@@ -559,19 +559,19 @@ msgstr "Verbrauchspositionen für Abonnements erstellen"
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:subscription_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Entwurf"
 
 msgctxt "model:ir.model.button,string:subscription_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Angebot"
 
 msgctxt "model:ir.model.button,string:subscription_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Ausführen"
 
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"
@@ -760,7 +760,7 @@ msgstr "Abbrechen"
 
 msgctxt "view:sale.subscription:"
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Annullieren"
 
 msgctxt "view:sale.subscription:"
 msgid "Draft"

@@ -559,19 +559,19 @@ msgstr "Genera consums de les línies de subscripció"
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:subscription_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:subscription_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Pressupost"
 
 msgctxt "model:ir.model.button,string:subscription_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Executa"
 
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"

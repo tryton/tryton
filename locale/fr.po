@@ -560,19 +560,19 @@ msgstr "Générer les lignes de consommation d'abonnements"
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:subscription_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:subscription_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr "Devis"
 
 msgctxt "model:ir.model.button,string:subscription_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Lancer"
 
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"
