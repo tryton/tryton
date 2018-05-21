@@ -46,7 +46,7 @@ msgstr "Recuperar anticipo"
 
 msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
 msgid "Recall Deposit"
-msgstr "Recall Deposit"
+msgstr "Recuperar anticipo"
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
