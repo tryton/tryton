@@ -16,7 +16,7 @@ msgstr "Fehlende Variante für Aufgabe \"%s\"."
 
 msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
-msgstr "Abgrechnete Zeilen können nicht gelöscht werden."
+msgstr "Abgerechnete Positionen können nicht gelöscht werden."
 
 msgctxt "error:timesheet.line:"
 msgid "You can not modify invoiced line."
@@ -100,7 +100,7 @@ msgstr "Rechnungen"
 
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Rechnung erstellen"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"

@@ -100,7 +100,7 @@ msgstr "Factures"
 
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Facturer"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
