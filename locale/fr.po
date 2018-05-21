@@ -515,23 +515,23 @@ msgstr "Gagnés"
 
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:opportunity_convert_button"
 msgid "Convert to Sale"
-msgstr "Convert to Sale"
+msgstr "Convertir en vente"
 
 msgctxt "model:ir.model.button,string:opportunity_lead_button"
 msgid "Set as Lead"
-msgstr "Set as Lead"
+msgstr "Reconvertir en contact"
 
 msgctxt "model:ir.model.button,string:opportunity_lost_button"
 msgid "Mark as Lost"
-msgstr "Mark as Lost"
+msgstr "Marquer comme perdue"
 
 msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
-msgstr "Convert to Opportunity"
+msgstr "Convertir en opportunité"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
