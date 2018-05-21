@@ -524,7 +524,7 @@ msgstr "Asientos"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Statements"
-msgstr "Reconcile Statements"
+msgstr "Conciliar extractos"
 
 msgctxt "model:ir.action,name:act_statement_form"
 msgid "Statements"
@@ -575,23 +575,23 @@ msgstr "Validado"
 
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:statement_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.model.button,string:statement_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Contabilizar"
 
 msgctxt "model:ir.model.button,string:statement_reconcile_button"
 msgid "Reconcile"
-msgstr "Reconcile"
+msgstr "Conciliar"
 
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Validar"
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
