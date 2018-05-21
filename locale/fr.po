@@ -72,7 +72,7 @@ msgstr "Créer la livraison"
 
 msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
 msgid "Create Shipping for Packages"
-msgstr "Create Shipping for Packages"
+msgstr "Créer la livraison pour les emballages"
 
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
