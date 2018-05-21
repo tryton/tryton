@@ -307,27 +307,27 @@ msgstr "En espera"
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr "Aprova"
 
 msgctxt "model:ir.model.button,string:complaint_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancel·la"
 
 msgctxt "model:ir.model.button,string:complaint_do_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Processa"
 
 msgctxt "model:ir.model.button,string:complaint_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Esborrany"
 
 msgctxt "model:ir.model.button,string:complaint_reject_button"
 msgid "Reject"
-msgstr "Reject"
+msgstr "Rebutja"
 
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
