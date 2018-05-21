@@ -19656,11 +19656,11 @@ msgstr "New Hampshire"
 
 msgctxt "model:country.subdivision,name:us-nj"
 msgid "New Jersey"
-msgstr "New Jersey"
+msgstr "Nueva Jersey"
 
 msgctxt "model:country.subdivision,name:us-nm"
 msgid "New Mexico"
-msgstr "New Mexico"
+msgstr "Nuevo México"
 
 msgctxt "model:country.subdivision,name:us-nv"
 msgid "Nevada"
@@ -19668,7 +19668,7 @@ msgstr "Nevada"
 
 msgctxt "model:country.subdivision,name:us-ny"
 msgid "New York"
-msgstr "New York"
+msgstr "Nueva York"
 
 msgctxt "model:country.subdivision,name:us-oh"
 msgid "Ohio"
