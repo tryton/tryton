@@ -219,7 +219,7 @@ msgstr "Envíos directos"
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Compras"
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
@@ -227,7 +227,7 @@ msgstr "Envíos directos"
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
-msgstr "Sales"
+msgstr "Ventas"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
@@ -255,23 +255,23 @@ msgstr "En espera"
 
 msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:shipment_drop_done_button"
 msgid "Done"
-msgstr "Done"
+msgstr "Realizar"
 
 msgctxt "model:ir.model.button,string:shipment_drop_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 msgctxt "model:ir.model.button,string:shipment_drop_ship_button"
 msgid "Ship"
-msgstr "Ship"
+msgstr "Enviar"
 
 msgctxt "model:ir.model.button,string:shipment_drop_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "En espera"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
