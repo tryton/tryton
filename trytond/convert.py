@@ -157,7 +157,7 @@ class MenuitemTagHandler:
             return None
 
     def current_state(self):
-        return "Tag menuitem with id: %s" % self.xml_id
+        return "Tag menuitem with id %s.%s" % (self.mh.module, self.xml_id)
 
 
 class RecordTagHandler:
@@ -298,8 +298,9 @@ class RecordTagHandler:
             raise Exception("Unexpected closing tag '%s'" % (name,))
 
     def current_state(self):
-        return "In tag record: model %s with id %s." % \
-               (self.model and self.model.__name__ or "?", self.xml_id)
+        return "In tag record model %s with id %s.%s." % \
+               (self.model and self.model.__name__ or "?",
+                   self.mh.module, self.xml_id)
 
 
 # Custom exception:
