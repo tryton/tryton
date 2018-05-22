@@ -20,8 +20,7 @@
     "moment": "^2.10",
     "eonasdan-bootstrap-datetimepicker": "^4.17",
     "gettext.js": "^0.5",
-    "d3": "^3.5",
-    "c3": "^0.4",
+    "c3": "^0.6",
     "papaparse": "^4.1",
     "fullcalendar": "^3.0",
     "mousetrap": "^1.6"
