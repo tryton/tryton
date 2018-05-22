@@ -134,10 +134,11 @@ def with_transaction(readonly=None):
                     readonly_ = False
                 else:
                     readonly_ = True
+            context = {'_request': request.context}
             for count in range(config.getint('database', 'retry'), -1, -1):
                 with Transaction().start(
-                        pool.database_name, 0, readonly=readonly_
-                        ) as transaction:
+                        pool.database_name, 0, readonly=readonly_,
+                        context=context) as transaction:
                     try:
                         result = func(request, pool, *args, **kwargs)
                     except DatabaseOperationalError:
