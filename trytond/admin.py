@@ -73,6 +73,7 @@ def run(options):
         with Transaction().start(db_name, 0) as transaction:
             pool = Pool()
             User = pool.get('res.user')
+            Configuration = pool.get('ir.configuration')
             with transaction.set_context(active_test=False):
                 admin, = User.search([('login', '=', 'admin')])
 
@@ -112,3 +113,7 @@ def run(options):
             admin.save()
             if options.reset_password:
                 User.reset_password([admin])
+            if options.hostname is not None:
+                configuration = Configuration(1)
+                configuration.hostname = options.hostname or None
+                configuration.save()

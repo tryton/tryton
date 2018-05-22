@@ -10,7 +10,7 @@ from sql import Table
 
 from trytond import security
 from trytond import backend
-from trytond.config import config
+from trytond.config import config, get_hostname
 from trytond import __version__
 from trytond.transaction import Transaction
 from trytond.exceptions import (
@@ -100,10 +100,11 @@ def db_list(request, *args):
     if not config.getboolean('database', 'list'):
         raise Exception('AccessDenied')
     context = {'_request': request.context}
+    hostname = get_hostname(request.host)
     with Transaction().start(
             None, 0, context=context, close=True, _nocache=True
             ) as transaction:
-        return transaction.database.list()
+        return transaction.database.list(hostname=hostname)
 
 
 @app.auth_required

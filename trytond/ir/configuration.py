@@ -11,6 +11,7 @@ class Configuration(ModelSingleton, ModelSQL):
     'Configuration'
     __name__ = 'ir.configuration'
     language = fields.Char('language')
+    hostname = fields.Char("Hostname")
     _get_language_cache = Cache('ir_configuration.get_language')
 
     @staticmethod

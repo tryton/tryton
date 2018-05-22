@@ -1,3 +1,4 @@
+* Add hostname configuration to list database
 * Add tree mixin
 * Rename "install-dependences" into "activate-dependencies"
 * Use recursive common table expression for child_of/parent_of operators

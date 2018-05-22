@@ -69,7 +69,7 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    def list(self):
+    def list(self, hostname=None):
         '''
         Get the list of database
 
@@ -83,7 +83,7 @@ class DatabaseInterface(object):
         '''
         raise NotImplementedError
 
-    def test(self):
+    def test(self, hostname=None):
         '''
         Test if it is a Tryton database.
         '''

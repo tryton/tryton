@@ -3,6 +3,7 @@ CREATE SEQUENCE ir_configuration_id_seq;
 CREATE TABLE ir_configuration (
     id INTEGER DEFAULT NEXTVAL('ir_configuration_id_seq') NOT NULL,
     language VARCHAR,
+    hostname VARCHAR,
     PRIMARY KEY(id)
 );
 

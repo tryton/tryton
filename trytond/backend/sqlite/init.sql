@@ -1,6 +1,7 @@
 CREATE TABLE ir_configuration (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    language VARCHAR
+    language VARCHAR,
+    hostname VARCHAR
 );
 
 CREATE TABLE ir_model (

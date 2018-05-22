@@ -71,8 +71,8 @@ class Database(DatabaseInterface):
     _lock = RLock()
     _databases = {}
     _connpool = None
-    _list_cache = None
-    _list_cache_timestamp = None
+    _list_cache = {}
+    _list_cache_timestamp = {}
     _version_cache = {}
     _search_path = None
     _current_user = None
@@ -153,12 +153,12 @@ class Database(DatabaseInterface):
         cursor.execute('CREATE DATABASE "' + database_name + '" '
             'TEMPLATE "' + template + '" ENCODING \'unicode\'')
         connection.commit()
-        cls._list_cache = None
+        cls._list_cache.clear()
 
     def drop(self, connection, database_name):
         cursor = connection.cursor()
         cursor.execute('DROP DATABASE "' + database_name + '"')
-        self.__class__._list_cache = None
+        self.__class__._list_cache.clear()
 
     def get_version(self, connection):
         if self.name not in self._version_cache:
@@ -170,11 +170,12 @@ class Database(DatabaseInterface):
             self._version_cache[self.name] = (major, minor, patch)
         return self._version_cache[self.name]
 
-    def list(self):
+    def list(self, hostname=None):
         now = time.time()
         timeout = config.getint('session', 'timeout')
-        res = self.__class__._list_cache
-        if res and abs(self.__class__._list_cache_timestamp - now) < timeout:
+        res = self.__class__._list_cache.get(hostname)
+        timestamp = self.__class__._list_cache_timestamp.get(hostname, now)
+        if res and abs(timestamp - now) < timeout:
             return res
 
         connection = self.get_connection()
@@ -186,15 +187,15 @@ class Database(DatabaseInterface):
             for db_name, in cursor:
                 try:
                     with connect(self.dsn(db_name)) as conn:
-                        if self._test(conn):
+                        if self._test(conn, hostname=hostname):
                             res.append(db_name)
                 except Exception:
                     continue
         finally:
             self.put_connection(connection)
 
-        self.__class__._list_cache = res
-        self.__class__._list_cache_timestamp = now
+        self.__class__._list_cache[hostname] = res
+        self.__class__._list_cache_timestamp[hostname] = now
         return res
 
     def init(self):
@@ -230,22 +231,33 @@ class Database(DatabaseInterface):
         finally:
             self.put_connection(connection)
 
-    def test(self):
+    def test(self, hostname=None):
         connection = self.get_connection()
-        is_tryton_database = self._test(connection)
-        self.put_connection(connection)
+        try:
+            is_tryton_database = self._test(connection, hostname=hostname)
+        except Exception:
+            is_tryton_database = False
+        finally:
+            self.put_connection(connection)
         return is_tryton_database
 
     @classmethod
-    def _test(cls, connection):
+    def _test(cls, connection, hostname=None):
         cursor = connection.cursor()
-        cursor.execute('SELECT 1 FROM information_schema.tables '
-            'WHERE table_name IN %s',
-            (('ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
-                    'res_user', 'res_group', 'ir_module',
-                    'ir_module_dependency', 'ir_translation',
-                    'ir_lang'),))
-        return len(cursor.fetchall()) != 0
+        tables = ('ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
+            'res_user', 'res_group', 'ir_module', 'ir_module_dependency',
+            'ir_translation', 'ir_lang', 'ir_configuration')
+        cursor.execute('SELECT table_name FROM information_schema.tables '
+            'WHERE table_name IN %s', (tables,))
+        if len(cursor.fetchall()) != len(tables):
+            return False
+        if hostname:
+            cursor.execute(
+                'SELECT hostname FROM ir_configuration')
+            hostnames = {h for h, in cursor.fetchall() if h}
+            if hostnames and hostname not in hostnames:
+                return False
+        return True
 
     def nextid(self, connection, table):
         cursor = connection.cursor()

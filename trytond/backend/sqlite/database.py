@@ -327,7 +327,7 @@ class Database(DatabaseInterface):
         os.remove(os.path.join(config.get('database', 'path'),
             database_name + '.sqlite'))
 
-    def list(self):
+    def list(self, hostname=None):
         res = []
         listdir = [':memory:']
         try:
@@ -344,7 +344,7 @@ class Database(DatabaseInterface):
                     database = Database(db_name).connect()
                 except Exception:
                     continue
-                if database.test():
+                if database.test(hostname=hostname):
                     res.append(db_name)
                 database.close()
         return res
@@ -384,29 +384,33 @@ class Database(DatabaseInterface):
                     cursor.execute(*insert)
             conn.commit()
 
-    def test(self):
+    def test(self, hostname=None):
+        tables = ['ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
+            'res_user', 'res_group', 'ir_module', 'ir_module_dependency',
+            'ir_translation', 'ir_lang', 'ir_configuration']
         sqlite_master = Table('sqlite_master')
         select = sqlite_master.select(sqlite_master.name)
         select.where = sqlite_master.type == 'table'
-        select.where &= sqlite_master.name.in_([
-                'ir_model',
-                'ir_model_field',
-                'ir_ui_view',
-                'ir_ui_menu',
-                'res_user',
-                'res_group',
-                'ir_module',
-                'ir_module_dependency',
-                'ir_translation',
-                'ir_lang',
-                ])
+        select.where &= sqlite_master.name.in_(tables)
         with self._conn as conn:
             cursor = conn.cursor()
             try:
                 cursor.execute(*select)
             except Exception:
                 return False
-            return len(cursor.fetchall()) != 0
+            if len(cursor.fetchall()) != len(tables):
+                return False
+            if hostname:
+                configuration = Table('ir_configuration')
+                try:
+                    cursor.execute(*configuration.select(
+                            configuration.hostname))
+                except Exception:
+                    return False
+                hostnames = {h for h, in cursor.fetchall() if h}
+                if hostnames and hostname not in hostnames:
+                    return False
+        return True
 
     def lastid(self, cursor):
         # This call is not thread safe

@@ -59,6 +59,8 @@ def get_parser_admin():
         dest="update_modules_list", help="Update list of tryton modules")
     parser.add_argument("-l", "--language", dest="languages", nargs='+',
         default=[], metavar='CODE', help="Load language translations")
+    parser.add_argument("--hostname", dest="hostname", default=None,
+        help="Limit database listing to the hostname")
 
     parser.epilog = ('The first time a database is initialized '
         'or when the password is set, the admin password is read '
