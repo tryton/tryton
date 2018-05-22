@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import httplib
 import logging
+import os
 import sys
 import traceback
 
@@ -9,6 +10,7 @@ from werkzeug.wrappers import Response
 from werkzeug.routing import Map, Rule
 from werkzeug.exceptions import abort, HTTPException, InternalServerError
 from werkzeug.contrib.fixers import ProxyFix
+from werkzeug.wsgi import SharedDataMiddleware
 
 import wrapt
 
@@ -118,7 +120,34 @@ class TrytondWSGI(object):
     def __call__(self, environ, start_response):
         return self.wsgi_app(environ, start_response)
 
+
+class SharedDataMiddlewareIndex(SharedDataMiddleware):
+    def __call__(self, environ, start_response):
+        if environ['REQUEST_METHOD'] not in {'GET', 'HEAD'}:
+            return self.app(environ, start_response)
+        return super(SharedDataMiddlewareIndex, self).__call__(
+            environ, start_response)
+
+    def get_directory_loader(self, directory):
+        def loader(path):
+            if path is not None:
+                path = os.path.join(directory, path)
+            else:
+                path = directory
+            if os.path.isdir(path):
+                path = os.path.join(path, 'index.html')
+            if os.path.isfile(path):
+                return os.path.basename(path), self._opener(path)
+            return None, None
+        return loader
+
+
 app = TrytondWSGI()
+if config.get('web', 'root'):
+    static_files = {
+        '/': config.get('web', 'root'),
+        }
+    app.wsgi_app = SharedDataMiddlewareIndex(app.wsgi_app, static_files)
 num_proxies = config.getint('web', 'num_proxies')
 if num_proxies:
     app.wsgi_app = ProxyFix(app.wsgi_app, num_proxies=num_proxies)

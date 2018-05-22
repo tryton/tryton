@@ -30,9 +30,6 @@ with commandline.pidfile(options):
     for name in options.database_names:
         Pool(name).init()
     hostname, port = split_netloc(config.get('web', 'listen'))
-    static_files = {
-        '/': config.get('web', 'root'),
-        }
     certificate = config.get('ssl', 'certificate')
     privatekey = config.get('ssl', 'privatekey')
     if certificate or privatekey:
@@ -47,6 +44,5 @@ with commandline.pidfile(options):
     run_simple(hostname, port, app,
         threaded=True,
         extra_files=extra_files,
-        static_files=static_files,
         ssl_context=ssl_context,
         use_reloader=options.dev)

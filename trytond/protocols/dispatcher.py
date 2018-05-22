@@ -4,7 +4,6 @@
 import logging
 import pydoc
 
-from werkzeug.utils import redirect
 from werkzeug.exceptions import abort
 from sql import Table
 
@@ -80,11 +79,6 @@ def root(request, *args):
         'common.db.list': db_list,
         }
     return methods[request.rpc_method](request, *request.rpc_params)
-
-
-@app.route('/', methods=['GET'])
-def home(request):
-    return redirect('/index.html')  # XXX find a better way
 
 
 def db_exist(request, database_name):
