@@ -5,6 +5,10 @@
 !ifndef VERSION
     !error "Missing VERSION! Specify it with '/DVERSION=<VERSION>'"
 !endif
+;Check series
+!ifndef SERIES
+    !error "Missing SERIES! Specify if with '/DSERIES=<SERIES>'"
+!endif
 
 ;Include Modern UI
 !include "MUI.nsh"
@@ -14,14 +18,15 @@ Name "Tryton ${VERSION}"
 OutFile "tryton-${VERSION}.exe"
 SetCompressor lzma
 SetCompress auto
+Unicode true
 
 ;Default installation folder
-InstallDir "$PROGRAMFILES\tryton-${VERSION}"
+InstallDir "$PROGRAMFILES\Tryton-${SERIES}"
 
 ;Get installation folder from registry if available
-InstallDirRegKey HKCU "Software\tryton-${VERSION}" ""
+InstallDirRegKey HKCU "Software\Tryton-${SERIES}" ""
 
-BrandingText "Tryton ${VERSION}"
+BrandingText "Tryton ${SERIES}"
 
 ;Vista redirects $SMPROGRAMS to all users without this
 RequestExecutionLevel admin
@@ -69,8 +74,6 @@ Var STARTMENU_FOLDER
 !include "slovenian.nsh"
 !insertmacro MUI_LANGUAGE "Spanish"
 !include "spanish.nsh"
-!insertmacro MUI_LANGUAGE "Russian"
-!include "russian.nsh"
 
 ;Reserve Files
 
@@ -82,9 +85,20 @@ Var STARTMENU_FOLDER
 ;Installer Sections
 Function .onInit
     ClearErrors
-    ReadRegStr $0 HKCU "Software\tryton-${VERSION}" ""
-    IfErrors DoInstall 0
-        MessageBox MB_OK "$(PreviousInstall)"
+    ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${SERIES}" "UninstallString"
+    StrCmp $0 "" DoInstall
+
+    MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(PreviousInstall)" /SD IDOK IDOK Uninstall
+    Quit
+
+    Uninstall:
+        ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${SERIES}" "InstallLocation"
+        ClearErrors
+        StrCpy $2 "/S"
+        IfSilent +2
+        StrCpy $2 ""
+        ExecWait '$0 $2 _?=$1'
+        IfErrors 0 DoInstall
         Quit
     DoInstall:
 FunctionEnd
@@ -112,12 +126,12 @@ SectionIn 1 2 RO
     WriteRegStr HKCR "tryton\shell\open\command" "" '$INSTDIR\tryton.exe "%1"'
 
     ;Write the installation path into the registry
-    WriteRegStr HKCU "Software\tryton-${VERSION}" "" $INSTDIR
-    WriteRegStr HKLM "Software\tryton-${VERSION}" "" $INSTDIR
+    WriteRegStr HKLM "Software\Tryton-${SERIES}" "" $INSTDIR
 
     ;Write the uninstall keys for Windows
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${VERSION}" "DisplayName" "Tryton ${VERSION} (remove only)"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${VERSION}" "UninstallString" "$INSTDIR\uninstall.exe"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${SERIES}" "DisplayName" "Tryton ${VERSION} (remove only)"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${SERIES}" "UninstallString" "$INSTDIR\uninstall.exe"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${SERIES}" "InstallLocation" "$INSTDIR"
 
     ;Create the uninstaller
     WriteUninstaller uninstall.exe
@@ -131,8 +145,8 @@ SectionIn 1 2
 
         CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
         CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
-        CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Tryton-${VERSION}.lnk" "$INSTDIR\tryton.exe" "" "$INSTDIR\tryton.exe" 0
-        CreateShortCut "$DESKTOP\Tryton-${VERSION}.lnk" "$INSTDIR\tryton.exe" "" "$INSTDIR\tryton.exe" 0
+        CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Tryton-${SERIES}.lnk" "$INSTDIR\tryton.exe" "" "$INSTDIR\tryton.exe" 0
+        CreateShortCut "$DESKTOP\Tryton-${SERIES}.lnk" "$INSTDIR\tryton.exe" "" "$INSTDIR\tryton.exe" 0
 
     !insertmacro MUI_STARTMENU_WRITE_END
 
@@ -149,18 +163,17 @@ Section "Uninstall"
     RMDIR /r "$INSTDIR"
 
     ;remove registry keys
-    DeleteRegKey HKCU "Software\tryton-${VERSION}"
-    DeleteRegKey HKLM "Software\tryton-${VERSION}"
-    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${VERSION}"
+    DeleteRegKey HKLM "Software\Tryton-${SERIES}"
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${SERIES}"
 
     SetShellVarContext all
-    Delete "$DESKTOP\Tryton-${VERSION}.lnk"
+    Delete "$DESKTOP\Tryton-${SERIES}.lnk"
 
     !insertmacro MUI_STARTMENU_GETFOLDER Application $MUI_TEMP
 
     StrCmp $MUI_TEMP "" noshortcuts
         Delete "$SMPROGRAMS\$MUI_TEMP\Uninstall.lnk"
-        Delete "$SMPROGRAMS\$MUI_TEMP\Tryton-${VERSION}.lnk"
+        Delete "$SMPROGRAMS\$MUI_TEMP\Tryton-${SERIES}.lnk"
         RMDir "$SMPROGRAMS\$MUI_TEMP"
     noshortcuts:
 

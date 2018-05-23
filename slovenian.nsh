@@ -8,10 +8,10 @@
 !endif
 !define CURLANG ${LANG_SLOVENIAN}
 
-LangString LicenseText ${CURLANG} "Tryton je izdan pod licenco GNU General Public License, kot jo je objavila Free Software Foundation, bodisi pod razli�ico 3 ali (po va�i izbiri) katerokoli poznej�o razli�ico. Licenco pozorno preberite. Kliknite Naprej za nadaljevanje."
+LangString LicenseText ${CURLANG} "Tryton je izdan pod licenco GNU General Public License, kot jo je objavila Free Software Foundation, bodisi pod razlièico 3 ali (po va¹i izbiri) katerokoli poznej¹o razlièico. Licenco pozorno preberite. Kliknite Naprej za nadaljevanje."
 LangString LicenseNext ${CURLANG} "&Naprej"
-LangString PreviousInstall ${CURLANG} "Prosimo, da odstranite prej�njo namestitev Trytona"
+LangString PreviousInstall ${CURLANG} "Tryton je že nameščen.$\n$\nKliknite »V redu«, da odstranite prejšnjo različico ali »Prekliči«, da prekličete to nadgradnjo."
 LangString SecTrytonName ${CURLANG} "Tryton"
 LangString SecTrytonDesc ${CURLANG} "Namestitev tryton.exe in ostalih potrebnih datotek"
-LangString SecStartMenuName ${CURLANG} "Bli�njici v za�etnem meniju in na namizju"
-LangString SecStartMenuDesc ${CURLANG} "Ustvari bli�njici v za�etnem meniju in na namizju"
+LangString SecStartMenuName ${CURLANG} "Bli¾njici v zaèetnem meniju in na namizju"
+LangString SecStartMenuDesc ${CURLANG} "Ustvari bli¾njici v zaèetnem meniju in na namizju"

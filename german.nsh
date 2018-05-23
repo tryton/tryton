@@ -8,10 +8,10 @@
 !endif
 !define CURLANG ${LANG_GERMAN}
 
-LangString LicenseText ${CURLANG} "Tryton wird unter der GNU General Public License wie von der Free Software Foundation veröffentlicht freigegeben, entweder Version 3 der Lizenz oder (nach Ihrer Wahl) jeder späteren Version. Bitte lesen Sie die Lizenz aufmerksam. Klicken Sie auf Weiter, um fortzufahren."
+LangString LicenseText ${CURLANG} "Tryton wird unter der GNU General Public License wie von der Free Software Foundation verÃ¶ffentlicht freigegeben, entweder Version 3 der Lizenz oder (nach Ihrer Wahl) jeder spÃ¤teren Version. Bitte lesen Sie die Lizenz aufmerksam. Klicken Sie auf Weiter, um fortzufahren."
 LangString LicenseNext ${CURLANG} "&Weiter"
-LangString PreviousInstall ${CURLANG} "Bitte deinstallieren Sie die vorherige Installation des Tryton Clients"
+LangString PreviousInstall ${CURLANG} "Tryton ist bereits installiert.$\n$\nWÃ¤hlen Sie `OK`, um die bisherige Version zu entfernen oder `Abbrechen` um die Aktualisierung abzubrechen."
 LangString SecTrytonName ${CURLANG} "Tryton"
-LangString SecTrytonDesc ${CURLANG} "tryton.exe und andere benötigte Dateien installieren"
-LangString SecStartMenuName ${CURLANG} "Startmenü und Desktop-Verknüpfungen"
-LangString SecStartMenuDesc ${CURLANG} "Verknüpfungen im Startmenü und auf dem Desktop erstellen"
+LangString SecTrytonDesc ${CURLANG} "tryton.exe und andere benÃ¶tigte Dateien installieren"
+LangString SecStartMenuName ${CURLANG} "StartmenÃ¼ und Desktop-VerknÃ¼pfungen"
+LangString SecStartMenuDesc ${CURLANG} "VerknÃ¼pfungen im StartmenÃ¼ und auf dem Desktop erstellen"
