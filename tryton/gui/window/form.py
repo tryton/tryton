@@ -470,7 +470,7 @@ class Form(SignalEvent, TabContent):
 
     def _action(self, action, atype):
         action = action.copy()
-        if not self.screen.save_current():
+        if self.screen.modified() and not self.sig_save():
             return
         record_id = (self.screen.current_record.id
             if self.screen.current_record else None)
