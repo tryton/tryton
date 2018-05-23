@@ -857,7 +857,7 @@
         },
         search_filter: function(search_string, only_ids) {
             only_ids = only_ids || false;
-            if (this.context_screen) {
+            if (this.context_screen && !only_ids) {
                 if (this.context_screen_prm.state() == 'pending') {
                     return this.context_screen_prm.then(function() {
                         return this.search_filter(search_string);
