@@ -15,6 +15,18 @@
             this.prm = jQuery.when();  // renew promise
             this.database = database;
             this.login = login;
+            if (this.database) {
+                var session_data = localStorage.getItem(
+                    'sao_session_' + database);
+                if (session_data !== null) {
+                    session_data = JSON.parse(session_data);
+                    if (!this.login || this.login == session_data.login) {
+                        this.login = session_data.login;
+                        this.user_id = session_data.user_id;
+                        this.session = session_data.session;
+                    }
+                }
+            }
             this.context = {};
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
@@ -32,8 +44,10 @@
                 };
             };
             new Sao.Login(func, this).run().then(function(result) {
+                this.login = login;
                 this.user_id = result[0];
                 this.session = result[1];
+                this.store();
                 dfd.resolve();
             }.bind(this), function() {
                 this.user_id = null;
@@ -61,6 +75,7 @@
                 'url': '/' + this.database + '/',
                 'type': 'post',
             });
+            this.unstore();
             this.database = null;
             this.login = null;
             this.user_id = null;
@@ -82,7 +97,19 @@
             return prm.then(function(context) {
                 this.context = context;
             }.bind(this));
-        }
+        },
+        store: function() {
+            var session = {
+                'login': this.login,
+                'user_id': this.user_id,
+                'session': this.session,
+            };
+            session = JSON.stringify(session);
+            localStorage.setItem('sao_session_' + this.database, session);
+        },
+        unstore: function() {
+            localStorage.removeItem('sao_session_' + this.database);
+        },
     });
 
     Sao.Session.login_dialog = function() {
@@ -133,6 +160,12 @@
         };
         var dfd = jQuery.Deferred();
         var database = database_url();
+
+        var session = new Sao.Session(database, null);
+        if (session.session) {
+            dfd.resolve(session);
+            return dfd;
+        }
         var dialog = Sao.Session.login_dialog();
 
         var empty_field = function() {
@@ -154,7 +187,7 @@
             dialog.button.focus();
             dialog.button.prop('disabled', true);
             dialog.modal.modal('hide');
-            var session = new Sao.Session(database, login);
+            session.database = database;
             session.do_login(login)
                 .then(function() {
                     dfd.resolve(session);

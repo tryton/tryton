@@ -1,3 +1,4 @@
+* Store session in browser storage
 * Increase the space available for tab list
 * Allow to toggle menu on large screen
 * Manage URL and history
