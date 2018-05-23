@@ -242,7 +242,7 @@ class Screen(SignalEvent):
         return list(self.domain_parser.completion(search_string))
 
     def search_filter(self, search_string=None, only_ids=False):
-        if self.context_screen:
+        if self.context_screen and not only_ids:
             context_record = self.context_screen.current_record
             if not context_record.validate():
                 self.clear()
