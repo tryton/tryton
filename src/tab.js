@@ -559,7 +559,11 @@
                             'tabindex': -1
                         }).append(action.name))
                         .click(function() {
-                            screen.save_current().then(function() {
+                            var prm = jQuery.when();
+                            if (this.screen.modified()) {
+                                prm = this.save();
+                            }
+                            prm.then(function() {
                                 var exec_action = jQuery.extend({}, action);
                                 var record_id = null;
                                 if (screen.current_record) {
@@ -579,11 +583,11 @@
                                 Sao.Action.exec_action(exec_action, data,
                                     screen.context());
                             });
-                        })
+                        }.bind(this))
                         .appendTo(menu);
-                    });
-                });
-            });
+                    }.bind(this));
+                }.bind(this));
+            }.bind(this));
             return toolbar;
         },
         _close_allowed: function() {
@@ -623,7 +627,7 @@
         save: function() {
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
             if (!(access.write || access.create)) {
-                return jQuery.when();
+                return jQuery.Deferred().reject();
             }
             return this.screen.save_current().then(
                     function() {
@@ -634,6 +638,7 @@
                     function() {
                         this.info_bar.message(
                             this.screen.invalid_message(), 'danger');
+                        return jQuery.Deferred().reject();
                     }.bind(this));
         },
         switch_: function() {
