@@ -465,7 +465,9 @@
                 this.forEach(function(record) {
                     id2record[record.id] = record;
                 });
-                ids.forEach(function(id, i){
+                ids.filter(function(id) {
+                    return id in id2record;
+                }).forEach(function(id, i){
                     this[i] = id2record[id];
                 }.bind(this));
         };
