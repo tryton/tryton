@@ -1987,6 +1987,8 @@
             '=': function(a, b) {
                 if ((a instanceof Array) && (b instanceof Array)) {
                     return Sao.common.compare(a, b);
+                } else if ((a instanceof Number) || (b instanceof Number)) {
+                    return (Number(a) === Number(b));
                 } else {
                     return (a === b);
                 }
@@ -1998,6 +2000,8 @@
             '!=': function(a, b) {
                 if ((a instanceof Array) && (b instanceof Array)) {
                     return !Sao.common.compare(a, b);
+                } else if ((a instanceof Number) || (b instanceof Number)) {
+                    return (Number(a) !== Number(b));
                 } else {
                     return (a !== b);
                 }
