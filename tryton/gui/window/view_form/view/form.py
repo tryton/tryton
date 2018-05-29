@@ -285,6 +285,10 @@ class ViewForm(View):
         notebook = Notebook(attrs=attributes)
         notebook.set_scrollable(True)
         notebook.set_border_width(3)
+        if attributes.get('height') or attributes.get('width'):
+            notebook.set_size_request(
+                int(attributes.get('width', -1)),
+                int(attributes.get('height', -1)))
 
         # Force to display the first time it switches on a page
         # This avoids glitch in position of widgets
