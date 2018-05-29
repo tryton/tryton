@@ -112,7 +112,7 @@ class Account(
         cls._error_messages.update({
                 'invalid_distribution': (
                     'The distribution sum of account "%(account)s" '
-                    'is not 100%.'),
+                    'is not 100%%.'),
                 })
 
     @classmethod
