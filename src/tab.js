@@ -139,7 +139,8 @@
                         'aria-hidden': 'true'
                     })).append(' ' + item.label).appendTo(menuitem);
                     this.menu_buttons[item.id] = menuitem;
-                    link.click(function() {
+                    link.click(function(evt) {
+                        evt.preventDefault();
                         this[item.id]();
                     }.bind(this));
                 } else if (!item && previous) {
