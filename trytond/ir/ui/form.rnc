@@ -152,6 +152,8 @@ attlist.button &= attribute type { "class" | "instance" }?
 notebook = element notebook { attlist.notebook, page* }
 attlist.notebook &= [ a:defaultValue = "4" ] attribute colspan { text }?
 attlist.notebook &= attribute states { text }?
+attlist.notebook &= attribute width { text }?
+attlist.notebook &= attribute height { text }?
 page =
   element page {
     attlist.page,
