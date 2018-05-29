@@ -422,6 +422,13 @@ class UserSession(ModelSQL):
         return session.key
 
     @classmethod
+    def remove(cls, key):
+        sessions = cls.search([
+                ('key', '=', key),
+                ])
+        cls.delete(sessions)
+
+    @classmethod
     def get_user(cls, session):
         transaction = Transaction()
         sessions = cls.search([
@@ -445,6 +452,13 @@ class UserSession(ModelSQL):
         now = datetime.datetime.now()
         timestamp = self.write_date or self.create_date
         return abs(timestamp - now) > self.timeout()
+
+    @classmethod
+    def reset(cls, session):
+        sessions = cls.search([
+                ('key', '=', session),
+                ])
+        cls.write(sessions, {})
 
     @classmethod
     def create(cls, vlist):

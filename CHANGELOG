@@ -1,3 +1,5 @@
+* Add remove and reset session methods
+
 Version 4.8.0 - 2018-04-23
 * Bug fixes (see mercurial logs for details)
 * Erase user email when party is erased
