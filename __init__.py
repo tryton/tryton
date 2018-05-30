@@ -42,7 +42,6 @@ def register():
         Configuration,
         ConfigurationDefaultAccount,
         Period,
-        JournalType,
         Journal,
         JournalSequence,
         JournalAccount,

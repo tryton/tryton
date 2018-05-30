@@ -16,7 +16,7 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['JournalType', 'Journal', 'JournalSequence', 'JournalAccount',
+__all__ = ['Journal', 'JournalSequence', 'JournalAccount',
     'JournalCashContext',
     'JournalPeriod']
 
@@ -26,29 +26,20 @@ STATES = {
 DEPENDS = ['state']
 
 
-class JournalType(ModelSQL, ModelView):
-    'Journal Type'
-    __name__ = 'account.journal.type'
-    name = fields.Char('Name', size=None, required=True, translate=True)
-    code = fields.Char('Code', size=None, required=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(JournalType, cls).__setup__()
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('code_uniq', Unique(t, t.code), 'The code must be unique.'),
-            ]
-        cls._order.insert(0, ('code', 'ASC'))
-
-
 class Journal(
         DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
     'Journal'
     __name__ = 'account.journal'
     name = fields.Char('Name', size=None, required=True, translate=True)
     code = fields.Char('Code', size=None)
-    type = fields.Selection('get_types', 'Type', required=True)
+    type = fields.Selection([
+            ('general', "General"),
+            ('revenue', "Revenue"),
+            ('expense', "Expense"),
+            ('cash', "Cash"),
+            ('situation', "Situation"),
+            ('write-off', "Write-Off"),
+            ], 'Type', required=True)
     sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Sequence",
             domain=[
