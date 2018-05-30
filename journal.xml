@@ -13,10 +13,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">statement_journal_tree</field>
         </record>
-        <record model="account.journal.type" id="journal_type_statement">
-            <field name="name">Statement</field>
-            <field name="code">statement</field>
-        </record>
 
         <record model="ir.action.act_window" id="act_statement_journal_form">
             <field name="name">Statement Journals</field>

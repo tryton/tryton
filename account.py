@@ -9,7 +9,17 @@ from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, reduce_ids
 
-__all__ = ['Move']
+__all__ = ['Journal', 'Move']
+
+
+class Journal:
+    __metaclass__ = PoolMeta
+    __name__ = 'account.journal'
+
+    @classmethod
+    def __setup__(cls):
+        super(Journal, cls).__setup__()
+        cls.type.selection.append(('statement', "Statement"))
 
 
 class Move:

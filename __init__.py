@@ -2,28 +2,29 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .journal import *
-from .statement import *
-from .account import *
-from .party import PartyReplace
+from . import journal
+from . import statement
+from . import account
+from . import party
 
 
 def register():
     Pool.register(
-        Journal,
-        Statement,
-        Line,
-        LineGroup,
-        Move,
-        Origin,
-        OriginInformation,
-        ImportStatementStart,
+        journal.Journal,
+        statement.Statement,
+        statement.Line,
+        statement.LineGroup,
+        account.Journal,
+        account.Move,
+        statement.Origin,
+        statement.OriginInformation,
+        statement.ImportStatementStart,
         module='account_statement', type_='model')
     Pool.register(
-        PartyReplace,
-        ImportStatement,
-        ReconcileStatement,
+        party.PartyReplace,
+        statement.ImportStatement,
+        statement.ReconcileStatement,
         module='account_statement', type_='wizard')
     Pool.register(
-        StatementReport,
+        statement.StatementReport,
         module='account_statement', type_='report')
