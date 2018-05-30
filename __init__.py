@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
+from . import account
 from . import commission
 from . import invoice
 from . import sale
@@ -21,6 +22,7 @@ def register():
         product.Template,
         product.Template_Agent,
         product.Product,
+        account.Journal,
         module='commission', type_='model')
     Pool.register(
         sale.Sale,
