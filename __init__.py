@@ -27,6 +27,7 @@ def register():
         account.ConfigurationAssetSequence,
         account.Move,
         account.Period,
+        account.Journal,
         module='account_asset', type_='model')
     Pool.register(
         purchase.PurchaseLine,

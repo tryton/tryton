@@ -7,7 +7,8 @@ from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'ConfigurationAssetSequence', 'Move', 'Period']
+__all__ = ['Configuration', 'ConfigurationAssetSequence', 'Move', 'Period',
+    'Journal']
 
 
 class Configuration:
@@ -119,3 +120,13 @@ class Period:
         for period in periods:
             period.check_asset_line_running()
         super(Period, cls).close(periods)
+
+
+class Journal:
+    __metaclass__ = PoolMeta
+    __name__ = 'account.journal'
+
+    @classmethod
+    def __setup__(cls):
+        super(Journal, cls).__setup__()
+        cls.type.selection.append(('asset', "Asset"))

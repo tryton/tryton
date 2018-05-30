@@ -7,11 +7,6 @@
         <menuitem name="Assets" parent="account.menu_account"
             id="menu_asset" sequence="48"/>
 
-        <record model="account.journal.type" id="journal_type_asset">
-            <field name="name">Asset</field>
-            <field name="code">asset</field>
-        </record>
-
         <record model="ir.action.wizard" id="wizard_update">
             <field name="name">Update Asset</field>
             <field name="wiz_name">account.asset.update</field>
