@@ -148,18 +148,20 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 ],
             ],
         depends=['company'], readonly=True)
-    supplier_moves = fields.Function(fields.One2Many('stock.move', None,
-            'Supplier Moves',
-            states={
-                'readonly': Eval('state').in_(['shipped', 'done', 'cancel']),
-                },
-            depends=['state', 'supplier']), 'get_moves', 'set_moves')
-    customer_moves = fields.Function(fields.One2Many('stock.move', None,
-            'Customer Moves',
-            states={
-                'readonly': Eval('state') != 'shipped',
-                },
-            depends=['state', 'customer']), 'get_moves', 'set_moves')
+    supplier_moves = fields.One2Many('stock.move', 'shipment',
+        'Supplier Moves',
+        filter=[('to_location.type', '=', 'drop')],
+        states={
+            'readonly': Eval('state').in_(['shipped', 'done', 'cancel']),
+            },
+        depends=['state', 'supplier'])
+    customer_moves = fields.One2Many('stock.move', 'shipment',
+        'Customer Moves',
+        filter=[('from_location.type', '=', 'drop')],
+        states={
+            'readonly': Eval('state') != 'shipped',
+            },
+        depends=['state', 'customer'])
     code = fields.Char('Code', select=1, readonly=True)
     state = fields.Selection([
             ('draft', 'Draft'),
@@ -324,18 +326,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                         }))
         if to_write:
             Move.write(*to_write)
-
-    def get_moves(self, name):
-        if name == 'supplier_moves':
-            return [m.id for m in self.moves if m.to_location.type == 'drop']
-        elif name == 'customer_moves':
-            return [m.id for m in self.moves if m.from_location.type == 'drop']
-
-    @classmethod
-    def set_moves(cls, shipments, name, values):
-        if not values:
-            return
-        cls.write(shipments, {'moves': values})
 
     @classmethod
     def create(cls, vlist):
