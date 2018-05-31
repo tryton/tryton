@@ -1905,7 +1905,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         return {}
 
     @fields.depends('product', 'unit', '_parent_invoice.type',
-        '_parent_invoice.party', 'party', 'invoice', 'invoice_type')
+        '_parent_invoice.party', 'party', 'invoice', 'invoice_type',
+        methods=['_get_tax_rule_pattern'])
     def on_change_product(self):
         if not self.product:
             return
@@ -1965,7 +1966,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('account', 'product', 'invoice',
         '_parent_invoice.party', '_parent_invoice.type',
-        'party', 'invoice', 'invoice_type')
+        'party', 'invoice', 'invoice_type',
+        methods=['_get_tax_rule_pattern'])
     def on_change_account(self):
         if self.product:
             return
