@@ -769,7 +769,7 @@ class Line(
         '_parent_origin.party', '_parent_origin.account',
         '_parent_origin.number', '_parent_origin.description',
         '_parent_origin.statement',
-        methods=['party'])
+        methods=['on_change_party'])
     def on_change_origin(self):
         if self.origin:
             self.amount = self.origin.pending_amount
