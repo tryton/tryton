@@ -47,12 +47,10 @@ class SaleLine:
     @classmethod
     def __setup__(cls):
         super(SaleLine, cls).__setup__()
-        cls.quantity.on_change.add('_parent_sale.price_list')
-        cls.unit.on_change.add('_parent_sale.price_list')
-        cls.product.on_change.add('_parent_sale.price_list')
         cls.product.context['price_list'] = Eval(
             '_parent_sale', {}).get('price_list')
 
+    @fields.depends('sale', '_parent_sale.price_list')
     def _get_context_sale_price(self):
         context = super(SaleLine, self)._get_context_sale_price()
         if self.sale and getattr(self.sale, 'price_list', None):
