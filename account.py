@@ -40,6 +40,7 @@ class InvoiceLine:
     __metaclass__ = PoolMeta
     __name__ = 'account.invoice.line'
 
+    @fields.depends('origin')
     def _get_tax_rule_pattern(self):
         pool = Pool()
         SaleLine = pool.get('sale.line')
@@ -60,11 +61,3 @@ class InvoiceLine:
         pattern['from_country'] = from_country.id if from_country else None
         pattern['to_country'] = to_country.id if to_country else None
         return pattern
-
-    @fields.depends('origin')
-    def on_change_product(self):
-        super(InvoiceLine, self).on_change_product()
-
-    @fields.depends('origin')
-    def on_change_account(self):
-        super(InvoiceLine, self).on_change_account()

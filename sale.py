@@ -25,6 +25,8 @@ class SaleLine:
     __metaclass__ = PoolMeta
     __name__ = 'sale.line'
 
+    @fields.depends('sale', '_parent_sale.warehouse',
+        '_parent_sale.shipment_address')
     def _get_tax_rule_pattern(self):
         pool = Pool()
         Location = pool.get('stock.location')
@@ -46,7 +48,3 @@ class SaleLine:
         pattern['from_country'] = from_country.id if from_country else None
         pattern['to_country'] = to_country.id if to_country else None
         return pattern
-
-    @fields.depends('_parent_sale.warehouse', '_parent_sale.shipment_address')
-    def on_change_product(self):
-        super(SaleLine, self).on_change_product()

@@ -25,6 +25,8 @@ class PurchaseLine:
     __metaclass__ = PoolMeta
     __name__ = 'purchase.line'
 
+    @fields.depends('purchase', '_parent_purchase.warehouse',
+        '_parent_purchase.invoice_address')
     def _get_tax_rule_pattern(self):
         pattern = super(PurchaseLine, self)._get_tax_rule_pattern()
 
@@ -39,8 +41,3 @@ class PurchaseLine:
         pattern['from_country'] = from_country.id if from_country else None
         pattern['to_country'] = to_country.id if to_country else None
         return pattern
-
-    @fields.depends('_parent_purchase.warehouse',
-        '_parent_purchase.invoice_address')
-    def on_change_product(self):
-        super(PurchaseLine, self).on_change_product()
