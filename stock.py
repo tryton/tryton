@@ -55,7 +55,7 @@ class ShipmentOut:
         self.on_change_inventory_moves()
 
     @fields.depends('carrier', 'customer', 'inventory_moves',
-        methods='_get_carrier_context')
+        methods=['_get_carrier_context'])
     def on_change_inventory_moves(self):
         try:
             super(ShipmentOut, self).on_change_inventory_moves()
