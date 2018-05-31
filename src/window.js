@@ -1350,23 +1350,6 @@
                     }.bind(this));
                 }.bind(this));
 
-            var row_header = jQuery('<div/>', {
-                'class': 'row'
-            }).prependTo(this.dialog.body);
-
-            var predefined_exports_column = jQuery('<div/>', {
-                'class': 'col-md-12'
-            }).append(jQuery('<label/>', {
-                'text': Sao.i18n.gettext('Predefined Exports')
-            })).appendTo(row_header);
-
-            this.predef_exports_list = jQuery('<ul/>', {
-                'class': 'list-unstyled predef-exports'
-            }).css('cursor', 'pointer')
-            .appendTo(predefined_exports_column);
-
-            predefined_exports_column.append('<hr/>');
-
             this.predef_exports = {};
             this.fill_predefwin();
 
@@ -1389,6 +1372,17 @@
                 this.remove_predef();
             }.bind(this)).append(' '+Sao.i18n.gettext('Delete Export'))
             .appendTo(this.column_buttons);
+
+            var predefined_exports_column = jQuery('<div/>', {
+                'class': 'col-md-12'
+            }).append(jQuery('<label/>', {
+                'text': Sao.i18n.gettext('Predefined Exports')
+            })).appendTo(this.column_buttons);
+
+            this.predef_exports_list = jQuery('<ul/>', {
+                'class': 'list-unstyled predef-exports'
+            }).css('cursor', 'pointer')
+            .appendTo(predefined_exports_column);
 
             this.el_add_field_names = jQuery('<input/>', {
                 'type': 'checkbox',
