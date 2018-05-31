@@ -1656,6 +1656,14 @@ class SaleReport(CompanyReport):
         with Transaction().set_context(address_with_party=True):
             return super(SaleReport, cls).execute(ids, data)
 
+    @classmethod
+    def get_context(cls, records, data):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = super(SaleReport, cls).get_context(records, data)
+        context['today'] = Date.today()
+        return context
+
 
 class OpenCustomer(Wizard):
     'Open Customers'
