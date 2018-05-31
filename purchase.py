@@ -1646,6 +1646,14 @@ class PurchaseReport(CompanyReport):
         with Transaction().set_context(address_with_party=True):
             return super(PurchaseReport, cls).execute(ids, data)
 
+    @classmethod
+    def get_context(cls, records, data):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = super(PurchaseReport, cls).get_context(records, data)
+        context['today'] = Date.today()
+        return context
+
 
 class OpenSupplier(Wizard):
     'Open Suppliers'
