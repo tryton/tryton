@@ -44,8 +44,6 @@ class WinCSV(NoModal):
 
         dialog_vbox = gtk.VBox()
 
-        self.add_header(dialog_vbox)
-
         hbox_mapping = gtk.HBox(True)
         dialog_vbox.pack_start(hbox_mapping, True, True, 0)
 

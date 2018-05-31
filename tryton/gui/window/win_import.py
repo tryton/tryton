@@ -24,9 +24,6 @@ class WinImport(WinCSV):
         super(WinImport, self).__init__()
         self.dialog.set_title(_('Import from CSV'))
 
-    def add_header(self, box):
-        pass
-
     def add_buttons(self, box):
         button_autodetect = gtk.Button(
             _('_Auto-Detect'), stock=None, use_underline=True)
