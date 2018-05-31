@@ -414,6 +414,15 @@ class PurchaseRequestQuotationReport(CompanyReport):
             return super(
                 PurchaseRequestQuotationReport, cls).execute(ids, data)
 
+    @classmethod
+    def get_context(cls, records, data):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        context = super(PurchaseRequestQuotationReport, cls).get_context(
+            records, data)
+        context['today'] = Date.today()
+        return context
+
 
 class CreatePurchaseRequestQuotationAskSuppliers(ModelView):
     'Create Purchase Request Quotation Ask Suppliers'
