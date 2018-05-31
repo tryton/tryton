@@ -519,8 +519,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return self.service.product.default_uom_category.id
 
     @fields.depends('service', 'quantity', 'unit', 'description',
-        'subscription', '_parent_subscription.currency',
-        '_parent_subscription.party', '_parent_subscription.start_date')
+        'subscription', '_parent_subscription.party',
+        methods=['_get_context_sale_price'])
     def on_change_service(self):
         pool = Pool()
         Product = pool.get('product.product')
@@ -557,14 +557,17 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         self.consumption_recurrence = self.service.consumption_recurrence
         self.consumption_delay = self.service.consumption_delay
 
+    @fields.depends('subscription', '_parent_subscription.currency',
+        '_parent_subscription.party', '_parent_subscription.start_date',
+        'unit', 'service')
     def _get_context_sale_price(self):
         context = {}
-        if getattr(self, 'subscription', None):
-            if getattr(self.subscription, 'currency', None):
+        if self.subscription:
+            if self.subscription.currency:
                 context['currency'] = self.subscription.currency.id
-            if getattr(self.subscription, 'party', None):
+            if self.subscription.party:
                 context['customer'] = self.subscription.party.id
-            if getattr(self.subscription, 'start_date', None):
+            if self.subscription.start_date:
                 context['sale_date'] = self.subscription.start_date
         if self.unit:
             context['uom'] = self.unit.id
