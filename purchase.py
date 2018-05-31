@@ -1177,27 +1177,29 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         '''
         return {}
 
+    @fields.depends('purchase', '_parent_purchase.currency',
+        '_parent_purchase.party', '_parent_purchase.purchase_date',
+        'unit', 'product', 'product_supplier', 'taxes')
     def _get_context_purchase_price(self):
         context = {}
-        if getattr(self, 'purchase', None):
-            if getattr(self.purchase, 'currency', None):
+        if self.purchase:
+            if self.purchase.currency:
                 context['currency'] = self.purchase.currency.id
-            if getattr(self.purchase, 'party', None):
+            if self.purchase.party:
                 context['supplier'] = self.purchase.party.id
-            if getattr(self.purchase, 'purchase_date', None):
-                context['purchase_date'] = self.purchase.purchase_date
+            context['purchase_date'] = self.purchase.purchase_date
         if self.unit:
             context['uom'] = self.unit.id
-        else:
+        elif self.product:
             context['uom'] = self.product.purchase_uom.id
         if self.product_supplier:
             context['product_supplier'] = self.product_supplier.id
-        context['taxes'] = [t.id for t in self.taxes]
+        context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
     @fields.depends('product', 'unit', 'quantity', 'purchase',
-        '_parent_purchase.party', '_parent_purchase.currency',
-        '_parent_purchase.purchase_date', 'product_supplier')
+        '_parent_purchase.party', 'product_supplier',
+        methods=['_get_tax_rule_pattern', '_get_context_purchase_price'])
     def on_change_product(self):
         pool = Pool()
         Product = pool.get('product.product')
@@ -1251,7 +1253,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         self.type = 'line'
         self.amount = self.on_change_with_amount()
 
-    @fields.depends('product', 'product_supplier', methods=['product'])
+    @fields.depends('product', 'product_supplier',
+        methods=['on_change_product'])
     def on_change_product_supplier(self):
         if not self.product and self.product_supplier:
             if len(self.product_supplier.product.products) == 1:
@@ -1263,9 +1266,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('product', 'quantity', 'unit', 'taxes', 'purchase',
-        '_parent_purchase.currency', '_parent_purchase.party',
-        '_parent_purchase.purchase_date', 'product_supplier')
+    @fields.depends('product', 'quantity', 'unit',
+        methods=['_get_context_purchase_price'])
     def on_change_quantity(self):
         Product = Pool().get('product.product')
 
@@ -1279,11 +1281,11 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
 
-    @fields.depends(methods=['quantity'])
+    @fields.depends(methods=['on_change_quantity'])
     def on_change_unit(self):
         self.on_change_quantity()
 
-    @fields.depends(methods=['quantity'])
+    @fields.depends(methods=['on_change_quantity'])
     def on_change_taxes(self):
         self.on_change_quantity()
 
