@@ -119,57 +119,79 @@ class ModelView(Model):
         cls.__rpc__['on_change_with'] = RPC(instantiate=0)
         cls._buttons = {}
 
-        if hasattr(cls, '__depend_methods'):
-            cls.__depend_methods = cls.__depend_methods.copy()
-        else:
-            cls.__depend_methods = collections.defaultdict(set)
-
-        if hasattr(cls, '__change_buttons'):
-            cls.__change_buttons = cls.__change_buttons.copy()
-        else:
-            cls.__change_buttons = collections.defaultdict(set)
-
-        def setup_field(field, field_name):
-            for attribute in ('on_change', 'on_change_with', 'autocomplete',
-                    'selection_change_with'):
-                if attribute == 'selection_change_with':
-                    if isinstance(
-                            getattr(field, 'selection', None), basestring):
-                        function_name = field.selection
-                    else:
-                        continue
-                else:
-                    function_name = '%s_%s' % (attribute, field_name)
-                if not getattr(cls, function_name, None):
-                    continue
-                # Search depends on all parent class because field has been
-                # copied with the original definition
-                for parent_cls in cls.__mro__:
-                    function = getattr(parent_cls, function_name, None)
-                    if not function:
-                        continue
-                    if getattr(function, 'depends', None):
-                        setattr(field, attribute,
-                            getattr(field, attribute) | function.depends)
-                    if getattr(function, 'depend_methods', None):
-                        cls.__depend_methods[(field_name, attribute)] |= \
-                            function.depend_methods
-                function = getattr(cls, function_name, None)
-                if (attribute == 'on_change'
-                        and not getattr(function, 'on_change', None)):
-                    # Decorate on_change to always return self
-                    setattr(cls, function_name, on_change(function))
-
-        def setup_callable(function, name):
-            if hasattr(function, 'change'):
-                cls.__change_buttons[name] |= function.change
-
+        fields_ = {}
+        callables = {}
         for name in dir(cls):
+            if name.startswith('__'):
+                continue
             attr = getattr(cls, name)
             if isinstance(attr, fields.Field):
-                setup_field(attr, name)
+                fields_[name] = attr
             elif isinstance(attr, collections.Callable):
-                setup_callable(attr, name)
+                callables[name] = attr
+
+        methods = {
+            'depends': collections.defaultdict(set),
+            'depend_methods': collections.defaultdict(set),
+            'change': collections.defaultdict(set),
+            }
+        cls.__change_buttons = methods['change']
+
+        def get_callable_attributes(name, method):
+            for parent_cls in cls.__mro__:
+                parent_meth = getattr(parent_cls, name, None)
+                if not parent_meth:
+                    continue
+                for attr in ['depends', 'depend_methods', 'change']:
+                    parent_value = getattr(parent_meth, attr, None)
+                    if parent_value:
+                        methods[attr][name] |= parent_value
+
+        for name, method in callables.iteritems():
+            get_callable_attributes(name, method)
+
+        def setup_field(field_name, field, attribute):
+            if attribute == 'selection_change_with':
+                if isinstance(
+                        getattr(field, 'selection', None), basestring):
+                    function_name = field.selection
+                else:
+                    return
+            else:
+                function_name = '%s_%s' % (attribute, field_name)
+            if not getattr(cls, function_name, None):
+                return
+
+            function = getattr(cls, function_name, None)
+            setattr(field, attribute,
+                getattr(field, attribute) | methods['depends'][function_name])
+
+            meth_names = list(methods['depend_methods'][function_name])
+            meth_done = set()
+            while meth_names:
+                meth_name = meth_names.pop()
+                assert isinstance(
+                    getattr(cls, meth_name), collections.Callable), \
+                    "%s.%s not callable" % (cls, meth_name)
+                setattr(field, attribute,
+                    getattr(field, attribute) | methods['depends'][meth_name])
+                meth_names += list(
+                    methods['depend_methods'][meth_name] - meth_done)
+                meth_done.add(meth_name)
+
+            if (attribute == 'on_change'
+                    and not getattr(function, 'on_change', None)):
+                # Decorate on_change to always return self
+                setattr(cls, function_name, on_change(function))
+
+        for name, field in fields_.iteritems():
+            for attribute in [
+                    'on_change',
+                    'on_change_with',
+                    'autocomplete',
+                    'selection_change_with',
+                    ]:
+                setup_field(name, field, attribute)
 
     @classmethod
     def __post_setup__(cls):
@@ -186,16 +208,6 @@ class ModelView(Model):
             else:
                 cls.__rpc__.setdefault(button,
                     RPC(instantiate=0, result=on_change_result))
-
-        # Update depend on methods
-        for (field_name, attribute), others in (
-                cls.__depend_methods.iteritems()):
-            field = getattr(cls, field_name)
-            for other in others:
-                other_field = getattr(cls, other)
-                setattr(field, attribute,
-                    getattr(field, attribute)
-                    | getattr(other_field, attribute))
 
     @classmethod
     def fields_view_get(cls, view_id=None, view_type='form'):

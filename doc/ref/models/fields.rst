@@ -227,7 +227,7 @@ Depends
 
 A decorator to define the field names on which the decorated method depends.
 The `methods` argument can be used to duplicate the field names from other
-fields. This is usefull if the decorated method calls another method.
+decorated methods. This is useful if the decorated method calls another method.
 
 Field types
 ===========

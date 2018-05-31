@@ -2,7 +2,7 @@
 # repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.model import fields
+from trytond.model import ModelView, fields
 
 
 class FieldDependsTestCase(unittest.TestCase):
@@ -76,6 +76,72 @@ class FieldDependsTestCase(unittest.TestCase):
         self.assertIsNone(record.parent.description)
         self.assertIsNone(record.parent.parent.name)
         self.assertEqual(record.parent.parent.description, "Description")
+
+    def test_inherit(self):
+        "Tests inherited depends"
+
+        class Parent(ModelView):
+            name = fields.Char("Name")
+            foo = fields.Char("Foo")
+
+            @fields.depends('foo')
+            def on_change_name(self):
+                pass
+
+        class Model(Parent):
+            bar = fields.Char("Bar")
+
+            @fields.depends('bar')
+            def on_change_name(self):
+                super(Model, self).on_change_name()
+
+        Model.__setup__()
+
+        self.assertEqual(Model.name.on_change, {'foo', 'bar'})
+
+    def test_methods(self):
+        "Tests depends on method"
+
+        class Model(ModelView):
+            name = fields.Char("Name")
+            foo = fields.Char("Foo")
+            bar = fields.Char("Bar")
+
+            @fields.depends('foo', methods=['other_method'])
+            def on_change_name(self):
+                self.other_method()
+
+            @fields.depends('bar')
+            def other_method(self):
+                pass
+
+        Model.__setup__()
+
+        self.assertEqual(Model.name.on_change, {'foo', 'bar'})
+
+    def test_methods_2(self):
+        "Tests depends on method on method"
+
+        class Model(ModelView):
+            name = fields.Char("Name")
+            foo = fields.Char("Foo")
+            bar = fields.Char("Bar")
+
+            @fields.depends('foo', methods=['other_method'])
+            def on_change_name(self):
+                self.other_method()
+
+            @fields.depends(methods=['another_method'])
+            def other_method(self):
+                self.another_method()
+
+            @fields.depends('bar')
+            def another_method(self):
+                pass
+
+        Model.__setup__()
+
+        self.assertEqual(Model.name.on_change, {'foo', 'bar'})
 
 
 def suite():
