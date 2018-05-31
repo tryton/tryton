@@ -1202,25 +1202,27 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         '''
         return {}
 
+    @fields.depends('sale', '_parent_sale.currency', '_parent_sale.party',
+        '_parent_sale.sale_date', 'unit', 'product', 'taxes')
     def _get_context_sale_price(self):
         context = {}
-        if getattr(self, 'sale', None):
-            if getattr(self.sale, 'currency', None):
+        if self.sale:
+            if self.sale.currency:
                 context['currency'] = self.sale.currency.id
-            if getattr(self.sale, 'party', None):
+            if self.sale.party:
                 context['customer'] = self.sale.party.id
-            if getattr(self.sale, 'sale_date', None):
-                context['sale_date'] = self.sale.sale_date
+            context['sale_date'] = self.sale.sale_date
         if self.unit:
             context['uom'] = self.unit.id
-        else:
+        elif self.product:
             context['uom'] = self.product.sale_uom.id
-        context['taxes'] = [t.id for t in self.taxes]
+        context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
     @fields.depends('product', 'unit', 'quantity', 'sale',
-        '_parent_sale.party', '_parent_sale.currency',
-        '_parent_sale.sale_date')
+        '_parent_sale.party',
+        methods=['_get_tax_rule_pattern', '_get_context_sale_price',
+        'on_change_with_amount'])
     def on_change_product(self):
         Product = Pool().get('product.product')
 
@@ -1267,9 +1269,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
-    @fields.depends('product', 'quantity', 'unit', 'taxes', 'sale',
-        '_parent_sale.currency', '_parent_sale.party',
-        '_parent_sale.sale_date')
+    @fields.depends('product', 'quantity',
+        methods=['_get_context_sale_price'])
     def on_change_quantity(self):
         Product = Pool().get('product.product')
 
@@ -1284,11 +1285,11 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
 
-    @fields.depends(methods=['quantity'])
+    @fields.depends(methods=['on_change_quantity'])
     def on_change_unit(self):
         self.on_change_quantity()
 
-    @fields.depends(methods=['quantity'])
+    @fields.depends(methods=['on_change_quantity'])
     def on_change_taxes(self):
         self.on_change_quantity()
 
