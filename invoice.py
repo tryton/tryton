@@ -2455,8 +2455,11 @@ class InvoiceReport(Report):
 
     @classmethod
     def get_context(cls, records, data):
+        pool = Pool()
+        Date = pool.get('ir.date')
         context = super(InvoiceReport, cls).get_context(records, data)
         context['invoice'] = context['record']
+        context['today'] = Date.today()
         return context
 
 
