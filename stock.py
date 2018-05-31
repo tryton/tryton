@@ -50,11 +50,12 @@ class ShipmentOut:
     def get_carrier_context(self):
         return self._get_carrier_context()
 
-    @fields.depends(methods=['inventory_moves'])
+    @fields.depends(methods=['on_change_inventory_moves'])
     def on_change_carrier(self):
         self.on_change_inventory_moves()
 
-    @fields.depends('carrier', 'customer', 'inventory_moves')
+    @fields.depends('carrier', 'customer', 'inventory_moves',
+        methods='_get_carrier_context')
     def on_change_inventory_moves(self):
         try:
             super(ShipmentOut, self).on_change_inventory_moves()
