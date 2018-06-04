@@ -73,7 +73,6 @@ class Database(DatabaseInterface):
     _connpool = None
     _list_cache = {}
     _list_cache_timestamp = {}
-    _version_cache = {}
     _search_path = None
     _current_user = None
     _has_returning = None
@@ -161,14 +160,10 @@ class Database(DatabaseInterface):
         self.__class__._list_cache.clear()
 
     def get_version(self, connection):
-        if self.name not in self._version_cache:
-            cursor = connection.cursor()
-            cursor.execute('SHOW server_version_num')
-            version, = cursor.fetchone()
-            major, rest = divmod(int(version), 10000)
-            minor, patch = divmod(rest, 100)
-            self._version_cache[self.name] = (major, minor, patch)
-        return self._version_cache[self.name]
+        version = connection.server_version
+        major, rest = divmod(int(version), 10000)
+        minor, patch = divmod(rest, 100)
+        return (major, minor, patch)
 
     def list(self, hostname=None):
         now = time.time()
