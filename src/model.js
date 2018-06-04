@@ -560,11 +560,9 @@
                 return jQuery.when();
             }
             if (this.group.prm.state() == 'pending') {
-                prm = jQuery.Deferred();
-                this.group.prm.then(function() {
-                    this.load(name).then(prm.resolve, prm.reject);
+                return this.group.prm.then(function() {
+                    return this.load(name);
                 }.bind(this));
-                return prm;
             }
             var id2record = {};
             id2record[this.id] = this;
@@ -731,6 +729,7 @@
                 validate = true;
             }
             var name, value;
+            var promises = [];
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
             var later = {};
             var fieldnames = [];
@@ -765,19 +764,22 @@
                         delete this._values[field_rec_name];
                     }
                 }
-                this.model.fields[name].set(this, value);
-                this._loaded[name] = true;
+                promises.push(this.model.fields[name].set(this, value));
                 fieldnames.push(name);
             }
             for (name in later) {
                 value = later[name];
-                this.model.fields[name].set(this, value);
-                this._loaded[name] = true;
+                promises.push(this.model.fields[name].set(this, value));
             }
-            if (validate) {
-                return this.validate(fieldnames, true);
-            }
-            return jQuery.when();
+            return jQuery.when.apply(jQuery, promises.filter(Boolean))
+                .then(function() {
+                    for (name in values) {
+                        this._loaded[name] = true;
+                    }
+                    if (validate) {
+                        return this.validate(fieldnames, true);
+                    }
+                }.bind(this));
         },
         get: function() {
             var value = {};
@@ -1944,7 +1946,6 @@
                 if (!jQuery.isEmptyObject(fields)) {
                     group.add_fields(fields);
                 }
-                record._values[this.name] = group;
                 if (mode == 'list ids') {
                     for (var i = 0, len = group.length; i < len; i++) {
                         var old_record = group[i];
