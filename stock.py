@@ -42,7 +42,7 @@ class ShipmentIn:
     def _get_carrier_context(self):
         return {}
 
-    @fields.depends(methods=['incoming_moves'])
+    @fields.depends(methods=['on_change_incoming_moves'])
     def on_change_carrier(self):
         self.on_change_incoming_moves()
 
