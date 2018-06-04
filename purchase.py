@@ -1102,6 +1102,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                     'purchase %(purchase)s misses an expense account.'),
                 'missing_default_account_expense': ('Purchase "%(purchase)s" '
                     'misses a default "account expense".'),
+                'delete_cancel_draft': ('The line "%(line)s" must be on '
+                    'canceled or draft purchase to be deleted.'),
                 })
 
     @classmethod
@@ -1594,6 +1596,15 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                     'invisible': Eval('type') != 'line',
                     }),
             ]
+
+    @classmethod
+    def delete(cls, lines):
+        for line in lines:
+            if line.purchase_state not in {'cancel', 'draft'}:
+                cls.raise_user_error('delete_cancel_draft', {
+                        'line': line.rec_name,
+                        })
+        super(PurchaseLine, cls).delete(lines)
 
     @classmethod
     def copy(cls, lines, default=None):
