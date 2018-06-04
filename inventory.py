@@ -65,7 +65,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         super(Inventory, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
         cls._error_messages.update({
-                'delete_cancel': ('Inventory "%s" must be cancelled before '
+                'delete_cancel': ('Inventory "%s" must be canceled before '
                     'deletion.'),
                 'unique_line': ('Line "%s" is not unique '
                     'on Inventory "%s".'),
@@ -324,6 +324,8 @@ class InventoryLine(ModelSQL, ModelView):
         cls._error_messages.update({
                 'missing_empty_quantity': ('An option for empty quantity is '
                     'missing for inventory "%(inventory)s".'),
+                'delete_cancel_draft': ('The line "%(line)s" must be on '
+                    'canceled or draft inventory to be deleted.'),
                 })
 
     @classmethod
@@ -467,3 +469,12 @@ class InventoryLine(ModelSQL, ModelView):
             'inventory': inventory.id,
             'expected_quantity': quantity,
         }
+
+    @classmethod
+    def delete(cls, lines):
+        for line in lines:
+            if line.inventory_state not in {'cancel', 'draft'}:
+                cls.raise_user_error('delete_cancel_draft', {
+                        'line': line.rec_name,
+                        })
+        super(InventoryLine, cls).delete(lines)

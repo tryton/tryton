@@ -1,3 +1,4 @@
+* Prevent delete lines if inventory is not draft or canceled
 * Manage same input and storage location in customer return shipment
 
 Version 4.8.0 - 2018-04-23
