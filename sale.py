@@ -1127,6 +1127,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                     '%(sale)s misses a revenue account.'),
                 'missing_default_account_revenue': ('Sale "%(sale)s" '
                     'misses a default "account revenue".'),
+                'delete_cancel_draft': ('The line "%(line)s" must be on '
+                    'canceled or draft sale to be deleted.'),
                 })
 
     @classmethod
@@ -1605,6 +1607,15 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         return [
             ('/form//field[@name="note"]|/form//field[@name="description"]',
                 'spell', Eval('_parent_sale', {}).get('party_lang'))]
+
+    @classmethod
+    def delete(cls, lines):
+        for line in lines:
+            if line.sale_state not in {'cancel', 'draft'}:
+                cls.raise_user_error('delete_cancel_draft', {
+                        'line': line.rec_name,
+                        })
+        super(SaleLine, cls).delete(lines)
 
     @classmethod
     def copy(cls, lines, default=None):

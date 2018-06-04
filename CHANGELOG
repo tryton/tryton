@@ -1,3 +1,4 @@
+* Prevent delete lines if sale is not draft or canceled
 * Use today as fallback for sale date report
 
 Version 4.8.0 - 2018-04-23
