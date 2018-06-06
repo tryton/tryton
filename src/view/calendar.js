@@ -266,7 +266,13 @@
         },
         set_default_date: function(record, selected_date){
             var dtstart = this.attributes.dtstart;
-            record.field_set(dtstart, selected_date);
+            var field = record.model.fields[dtstart];
+            if (field instanceof Sao.field.DateTime) {
+                selected_date = Sao.DateTime(selected_date);
+            } else if (field instanceof Sao.field.Date) {
+                selected_date = Sao.Date(selected_date);
+            }
+            field.set(record, selected_date);
         },
         get_selected_date: function(){
             return this.el.fullCalendar('getDate');

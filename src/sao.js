@@ -115,7 +115,14 @@ var Sao = {};
     Sao.Decimal = Number;
 
     Sao.Date = function(year, month, day) {
-        var date = moment();
+        var date;
+        if (month === undefined) {
+            date = moment(year);
+            year = undefined;
+        }
+        else {
+            date = moment();
+        }
         date.year(year);
         date.month(month);
         date.date(day);
