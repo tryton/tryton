@@ -22,6 +22,8 @@ class Calendar_(goocalendar.Calendar):
         dtstart = self.attrs['dtstart']
         record[dtstart].set(record, datetime.datetime.combine(selected_date,
             datetime.time(0)))
+        record.on_change([dtstart])
+        record.on_change_with([dtstart])
 
     def get_displayed_period(self):
         cal = calendar.Calendar(self.firstweekday)
