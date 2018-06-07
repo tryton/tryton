@@ -1223,11 +1223,15 @@
                 return prm.then(function() {
                     group.add(record, this.new_model_position());
                     this.set_current_record(record);
+                    var prm = jQuery.when();
                     if (previous_view.view_type == 'calendar') {
-                       previous_view.set_default_date(record, selected_date);
+                        prm = previous_view.set_default_date(
+                            record, selected_date);
                     }
-                    this.display().done(function() {
-                        this.set_cursor(true, true);
+                    prm.then(function() {
+                        this.display().done(function() {
+                            this.set_cursor(true, true);
+                        }.bind(this));
                     }.bind(this));
                     return record;
                 }.bind(this));

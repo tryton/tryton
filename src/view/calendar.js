@@ -273,6 +273,9 @@
                 selected_date = Sao.Date(selected_date);
             }
             field.set(record, selected_date);
+            return record.on_change([dtstart]).then(function() {
+                return record.on_change_with([dtstart]);
+            });
         },
         get_selected_date: function(){
             return this.el.fullCalendar('getDate');
