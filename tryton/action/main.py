@@ -84,12 +84,13 @@ class Action(object):
         if 'type' not in (action or {}):
             return
 
-        def add_name_suffix(name):
+        def add_name_suffix(name, context=None):
             if not data.get('ids') or not data.get('model'):
                 return name
             max_records = 5
             rec_names = RPCExecute('model', data['model'],
-                'read', data['ids'][:max_records], ['rec_name'])
+                'read', data['ids'][:max_records], ['rec_name'],
+                context=context)
             name_suffix = _(', ').join([x['rec_name'] for x in rec_names])
             if len(data['ids']) > max_records:
                 name_suffix += _(u',\u2026')
@@ -130,7 +131,7 @@ class Action(object):
 
             name = action.get('name', '')
             if action.get('keyword', ''):
-                name = add_name_suffix(name)
+                name = add_name_suffix(name, action_ctx)
 
             res_model = action.get('res_model', data.get('res_model'))
             res_id = action.get('res_id', data.get('res_id'))
@@ -155,7 +156,7 @@ class Action(object):
         elif action['type'] == 'ir.action.wizard':
             name = action.get('name', '')
             if action.get('keyword', 'form_action') == 'form_action':
-                name = add_name_suffix(name)
+                name = add_name_suffix(name, context)
             Window.create_wizard(action['wiz_name'], data,
                 direct_print=action.get('direct_print', False),
                 email_print=action.get('email_print', False),

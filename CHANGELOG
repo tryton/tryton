@@ -1,3 +1,4 @@
+* Use the context to get the suffix of window name
 * Call on_change methods after setting default dtstart on calendar view
 
 Version 4.8.0 - 2018-04-23
