@@ -1,3 +1,4 @@
+* Use the context to get the suffix of window name
 * Call on_change methods after setting default dtstart on calendar view
 * Allow to open in new tab Many2One and Reference with CTRL key
 * Store session in browser storage
