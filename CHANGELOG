@@ -1,3 +1,4 @@
+* Invoice sold product instead of shipped product
 * Prevent delete lines if sale is not draft or canceled
 * Use today as fallback for sale date report
 

@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from collections import defaultdict
 from decimal import Decimal
 from itertools import groupby, chain
 from functools import partial
@@ -1373,78 +1372,54 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         'Return a list of invoice lines for sale line'
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        Uom = pool.get('product.uom')
         AccountConfiguration = pool.get('account.configuration')
         account_config = AccountConfiguration(1)
 
-        def _invoice_line():
-            invoice_line = InvoiceLine()
-            invoice_line.type = self.type
-            invoice_line.description = self.description
-            invoice_line.note = self.note
-            invoice_line.origin = self
-            return invoice_line
+        invoice_line = InvoiceLine()
+        invoice_line.type = self.type
+        invoice_line.description = self.description
+        invoice_line.note = self.note
+        invoice_line.origin = self
         if self.type != 'line':
             if self._get_invoice_not_line():
-                return [_invoice_line()]
+                return [invoice_line]
             else:
                 return []
 
         quantity = (self._get_invoice_line_quantity()
             - self._get_invoiced_quantity())
 
-        stock_moves = self._get_invoice_line_moves()
+        if self.unit:
+            quantity = self.unit.round(quantity)
+        invoice_line.quantity = quantity
 
-        products_quantity = defaultdict(lambda: 0)
-        if stock_moves and any(m.product != self.product for m in stock_moves):
-            for move in stock_moves:
-                move_quantity = move.quantity - move.invoiced_quantity
-                products_quantity[move.product] += (
-                    Uom.compute_qty(move.uom, move_quantity, self.unit))
-            assert sum(products_quantity.itervalues()) == quantity
+        if not invoice_line.quantity:
+            return []
+
+        invoice_line.unit = self.unit
+        invoice_line.product = self.product
+        invoice_line.unit_price = self.unit_price
+        invoice_line.taxes = self.taxes
+        invoice_line.invoice_type = 'out'
+        if self.product:
+            invoice_line.account = self.product.account_revenue_used
+            if not invoice_line.account:
+                self.raise_user_error('missing_account_revenue', {
+                        'sale': self.sale.rec_name,
+                        'product': self.product.rec_name,
+                        })
         else:
-            products_quantity[self.product] = quantity
-
-        context = {}
-        if self.sale.party.lang:
-            context['language'] = self.sale.party.lang.code
-
-        lines = []
-        for product, quantity in products_quantity.iteritems():
-            invoice_line = _invoice_line()
-            if self.unit:
-                quantity = self.unit.round(quantity)
-            invoice_line.quantity = quantity
-
-            if not invoice_line.quantity:
-                continue
-
-            invoice_line.unit = self.unit
-            invoice_line.product = product
-            invoice_line.unit_price = self.unit_price
-            invoice_line.taxes = self.taxes
-            invoice_line.invoice_type = 'out'
-            if product:
-                invoice_line.account = product.account_revenue_used
-                if not invoice_line.account:
-                    self.raise_user_error('missing_account_revenue', {
-                            'sale': self.sale.rec_name,
-                            'product': product.rec_name,
-                            })
-            else:
-                for name in ['default_product_account_revenue',
-                        'default_category_account_revenue']:
-                    invoice_line.account = account_config.get_multivalue(name)
-                    if invoice_line.account:
-                        break
-                if not invoice_line.account:
-                    self.raise_user_error('missing_default_account_revenue', {
-                            'sale': self.sale.rec_name,
-                            })
-            invoice_line.stock_moves = [
-                m for m in stock_moves if m.product == product]
-            lines.append(invoice_line)
-        return lines
+            for name in ['default_product_account_revenue',
+                    'default_category_account_revenue']:
+                invoice_line.account = account_config.get_multivalue(name)
+                if invoice_line.account:
+                    break
+            if not invoice_line.account:
+                self.raise_user_error('missing_default_account_revenue', {
+                        'sale': self.sale.rec_name,
+                        })
+        invoice_line.stock_moves = self._get_invoice_line_moves()
+        return [invoice_line]
 
     def _get_invoice_not_line(self):
         'Return if the not line should be invoiced'
