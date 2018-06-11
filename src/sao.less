@@ -78,14 +78,16 @@
 }
 
 .modal-lg {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-
     & .modal-content {
         height: auto;
         border-radius: 0;
+    }
+}
+
+@media screen and (min-width: @screen-sm-min) {
+    .modal-dialog.modal-lg {
+        width: auto;
+        margin: 30px;
     }
 }
 
