@@ -170,7 +170,10 @@ class Many2Many(Widget):
             new=self.attrs.get('create', True),
             title=self.attrs.get('string'))
         win.screen.search_filter(quote(value))
-        win.show()
+        if len(win.screen.group) == 1:
+            win.response(None, gtk.RESPONSE_OK)
+        else:
+            win.show()
 
     def _sig_remove(self, *args):
         self.screen.remove(remove=True)
