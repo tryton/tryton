@@ -129,7 +129,6 @@ setup(name=name,
     convert_2to3_doctests=[
         'tests/scenario_sale.rst',
         'tests/scenario_sale_empty.rst',
-        'tests/scenario_sale_ship_other_product.rst',
         'tests/scenario_sale_reporting.rst',
         ],
     )
