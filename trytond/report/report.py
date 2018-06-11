@@ -361,6 +361,7 @@ def get_email(report, record, languages):
             report_name = report
         Report_ = pool.get(report_name, type='report')
     converter = None
+    title = None
     msg = MIMEMultipart('alternative')
     msg.add_header('Content-Language', ', '.join(l.code for l in languages))
     for language in languages:
