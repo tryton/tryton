@@ -215,7 +215,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
             lang.add(code)
             code = get_parent_language(code)
 
-    with Transaction().connection.cursor() as cursor:
+    transaction = Transaction()
+    with transaction.connection.cursor() as cursor:
         modules = [x.name for x in graph]
         cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
                 where=ir_module.name.in_(modules)))
@@ -296,10 +297,17 @@ def load_module_graph(graph, pool, update=None, lang=None):
                                 ]))
                 module2state[package.name] = 'activated'
 
-            Transaction().connection.commit()
+            transaction.commit()
 
         if not update:
             pool.setup()
+        else:
+            # Remove unknown models and fields
+            Model = pool.get('ir.model')
+            Model.clean()
+            ModelField = pool.get('ir.model.field')
+            ModelField.clean()
+            transaction.commit()
 
         pool.setup_mixin(modules)
 
