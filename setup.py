@@ -125,7 +125,6 @@ setup(name=name,
     convert_2to3_doctests=[
         'tests/scenario_purchase.rst',
         'tests/scenario_purchase_empty.rst',
-        'tests/scenario_purchase_receive_other_product.rst',
         ],
     tests_require=tests_require,
     )
