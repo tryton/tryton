@@ -287,15 +287,6 @@ class ModelField(ModelSQL, ModelView):
                         where=ir_model_field.id ==
                         model_fields[field_name]['id']))
 
-        # Clean ir_model_field from field that are no more existing.
-        for field_name in model_fields:
-            if model_fields[field_name]['module'] == module_name \
-                    and field_name not in model._fields:
-                # XXX This delete field even when it is defined later
-                # in the module
-                cursor.execute(*ir_model_field.delete(
-                        where=ir_model_field.id ==
-                        model_fields[field_name]['id']))
 
     @staticmethod
     def default_name():
