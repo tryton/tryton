@@ -31,9 +31,10 @@ def domain_validate(value):
             elif (isinstance(arg, tuple)
                 or (isinstance(arg, list)
                     and len(arg) > 2
-                    and ((arg[1] in OPERATORS)
+                    and ((isinstance(arg[1], basestring)
+                                and arg[1] in OPERATORS)
                         or (isinstance(arg[1], PYSON)
-                            and arg[1].types() == set([str]))))):
+                                and arg[1].types() == set([str]))))):
                 pass
             elif isinstance(arg, list):
                 if not test_domain(arg):
