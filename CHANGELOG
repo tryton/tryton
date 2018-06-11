@@ -1,3 +1,4 @@
+* Simplify the creation of dependencies graph
 * Make depends on methods generic to any method
 * Add width/height attribute to notebook
 * Allow to call set_lang with None and language instance

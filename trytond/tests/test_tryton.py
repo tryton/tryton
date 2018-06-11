@@ -739,9 +739,9 @@ def modules_suite(modules=None, doc=True):
         suite_ = all_suite()
     from trytond.modules import create_graph, get_module_list, \
         MODULES_PATH, EGG_MODULES
-    graph = create_graph(get_module_list())[0]
-    for package in graph:
-        module = package.name
+    graph = create_graph(get_module_list())
+    for node in graph:
+        module = node.name
         if modules and module not in modules:
             continue
         test_module = 'trytond.modules.%s.tests' % module

@@ -106,7 +106,7 @@ class ModelView(Model):
         from trytond.modules import create_graph, get_module_list
         if ModelView.__modules_list:
             return ModelView.__modules_list
-        graph = create_graph(get_module_list())[0]
+        graph = create_graph(get_module_list())
         ModelView.__modules_list = [x.name for x in graph] + [None]
         return ModelView.__modules_list
 

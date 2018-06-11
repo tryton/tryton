@@ -4,9 +4,7 @@ import os
 import sys
 import itertools
 import logging
-from functools import reduce
 import imp
-import operator
 import ConfigParser
 from glob import iglob
 from collections import defaultdict
@@ -42,98 +40,9 @@ def update_egg_modules():
             EGG_MODULES[ep.name] = ep
     except ImportError:
         pass
+
+
 update_egg_modules()
-
-
-class Graph(dict):
-
-    def add_node(self, name, deps):
-        for i in [Node(x, self) for x in deps]:
-            i.add_child(name)
-        if not deps:
-            Node(name, self)
-
-    def __iter__(self):
-        level = 0
-        done = set(self.keys())
-        while done:
-            level_modules = [(name, module) for name, module in self.items()
-                if module.depth == level]
-            for name, module in level_modules:
-                done.remove(name)
-                yield module
-            level += 1
-
-    def __str__(self):
-        res = ''
-        for i in self:
-            res += str(i)
-            res += '\n'
-        return res
-
-
-class Singleton(object):
-
-    def __new__(cls, name, graph):
-        if name in graph:
-            inst = graph[name]
-        else:
-            inst = object.__new__(cls)
-            graph[name] = inst
-        return inst
-
-
-class Node(Singleton):
-
-    def __init__(self, name, graph):
-        super(Node, self).__init__()
-        self.name = name
-        self.graph = graph
-
-        # __init__ is called even if Node already exists
-        if not hasattr(self, 'info'):
-            self.info = None
-        if not hasattr(self, 'childs'):
-            self.childs = []
-        if not hasattr(self, 'depth'):
-            self.depth = 0
-
-    def add_child(self, name):
-        node = Node(name, self.graph)
-        node.depth = max(self.depth + 1, node.depth)
-        if node not in self.all_childs():
-            self.childs.append(node)
-        self.childs.sort(key=operator.attrgetter('name'))
-
-    def all_childs(self):
-        res = []
-        for child in self.childs:
-            res.append(child)
-            res += child.all_childs()
-        return res
-
-    def has_child(self, name):
-        return Node(name, self.graph) in self.childs or \
-            bool([c for c in self.childs if c.has_child(name)])
-
-    def __setattr__(self, name, value):
-        super(Node, self).__setattr__(name, value)
-        if name == 'depth':
-            for child in self.childs:
-                setattr(child, name, value + 1)
-
-    def __iter__(self):
-        return itertools.chain(iter(self.childs),
-                *[iter(x) for x in self.childs])
-
-    def __str__(self):
-        return self.pprint()
-
-    def pprint(self, depth=0):
-        res = '%s\n' % self.name
-        for child in self.childs:
-            res += '%s`-> %s' % ('    ' * depth, child.pprint(depth + 1))
-        return res
 
 
 def get_module_info(name):
@@ -150,46 +59,69 @@ def get_module_info(name):
     return info
 
 
-def create_graph(module_list):
-    graph = Graph()
-    packages = []
+class Graph(dict):
+    def get(self, name):
+        if name in self:
+            node = self[name]
+        else:
+            node = self[name] = Node(name)
+        return node
 
+    def add(self, name, deps):
+        node = self.get(name)
+        for dep in deps:
+            self.get(dep).append(node)
+        return node
+
+    def __iter__(self):
+        for node in sorted(self.itervalues(), key=lambda n: (n.depth, n.name)):
+            yield node
+
+
+class Node(list):
+    def __init__(self, name):
+        super(Node, self).__init__()
+        self.name = name
+        self.info = None
+        self.__depth = 0
+
+    def __repr__(self):
+        return str((self.name, self.depth, tuple(self)))
+
+    @property
+    def depth(self):
+        return self.__depth
+
+    @depth.setter
+    def depth(self, value):
+        if value > self.__depth:
+            self.__depth = value
+            for child in self:
+                child.depth = value + 1
+
+    def append(self, node):
+        assert isinstance(node, Node)
+        node.depth = self.depth + 1
+        super(Node, self).append(node)
+
+
+def create_graph(module_list):
+    module_list = set(module_list)
+    all_deps = set()
+    graph = Graph()
     for module in module_list:
         info = get_module_info(module)
-        packages.append((module, info.get('depends', []),
-                info.get('extras_depend', []), info))
+        deps = info.get('depends', []) + [
+            d for d in info.get('extras_depend', []) if d in module_list]
+        node = graph.add(module, deps)
+        assert node.info is None
+        node.info = info
+        all_deps.update(deps)
 
-    current, later = set([x[0] for x in packages]), set()
-    all_packages = set(current)
-    while packages and current > later:
-        package, deps, xdep, info = packages[0]
-
-        # if all dependencies of 'package' are already in the graph,
-        # add 'package' in the graph
-        all_deps = deps + [x for x in xdep if x in all_packages]
-        if reduce(lambda x, y: x and y in graph, all_deps, True):
-            if package not in current:
-                packages.pop(0)
-                continue
-            later.clear()
-            current.remove(package)
-            graph.add_node(package, all_deps)
-            node = Node(package, graph)
-            node.info = info
-        else:
-            later.add(package)
-            packages.append((package, deps, xdep, info))
-        packages.pop(0)
-
-    missings = set()
-    for package, deps, _, _ in packages:
-        if package not in later:
-            continue
-        missings |= set((x for x in deps if x not in graph))
-    if missings:
-        raise MissingDependenciesException(list(missings
-                - set((p[0] for p in packages))))
-    return graph, packages, later
+    missing = all_deps - module_list
+    if missing:
+        raise MissingDependenciesException(list(missing))
+    return graph
 
 
 def is_module_to_install(module, update):
@@ -223,8 +155,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
         module2state = dict(cursor.fetchall())
         modules = set(modules)
 
-        for package in graph:
-            module = package.name
+        for node in graph:
+            module = node.name
             if module not in MODULES:
                 continue
             logger.info(module)
@@ -240,7 +172,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                         package_state = 'to upgrade'
                     elif package_state != 'to remove':
                         package_state = 'to activate'
-                for child in package.childs:
+                for child in node:
                     module2state[child.name] = package_state
                 for type in classes.keys():
                     for cls in classes[type]:
@@ -250,11 +182,11 @@ def load_module_graph(graph, pool, update=None, lang=None):
                     if hasattr(model, '_history'):
                         models_to_update_history.add(model.__name__)
 
-                # Instanciate a new parser for the package:
+                # Instanciate a new parser for the module
                 tryton_parser = convert.TrytondXmlHandler(
                     pool, module, package_state, modules)
 
-                for filename in package.info.get('xml', []):
+                for filename in node.info.get('xml', []):
                     filename = filename.replace('/', os.sep)
                     logger.info('%s:loading %s', module, filename)
                     # Feed the parser with xml content:
@@ -263,7 +195,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
                 modules_todo.append((module, list(tryton_parser.to_delete)))
 
-                localedir = '%s/%s' % (package.info['directory'], 'locale')
+                localedir = '%s/%s' % (node.info['directory'], 'locale')
                 lang2filenames = defaultdict(list)
                 for filename in itertools.chain(
                         iglob('%s/*.po' % localedir),
@@ -273,7 +205,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                     if lang2 not in lang:
                         continue
                     lang2filenames[lang2].append(filename)
-                base_path_position = len(package.info['directory']) + 1
+                base_path_position = len(node.info['directory']) + 1
                 for language, files in lang2filenames.iteritems():
                     filenames = [f[base_path_position:] for f in files]
                     logger.info('%s:loading %s', module, ','.join(filenames))
@@ -283,7 +215,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                 if package_state == 'to remove':
                     continue
                 cursor.execute(*ir_module.select(ir_module.id,
-                        where=(ir_module.name == package.name)))
+                        where=(ir_module.name == module)))
                 try:
                     module_id, = cursor.fetchone()
                     cursor.execute(*ir_module.update([ir_module.state],
@@ -292,10 +224,9 @@ def load_module_graph(graph, pool, update=None, lang=None):
                     cursor.execute(*ir_module.insert(
                             [ir_module.create_uid, ir_module.create_date,
                                 ir_module.name, ir_module.state],
-                            [[0, CurrentTimestamp(), package.name,
-                                    'activated'],
+                            [[0, CurrentTimestamp(), module, 'activated'],
                                 ]))
-                module2state[package.name] = 'activated'
+                module2state[module] = 'activated'
 
             transaction.commit()
 
@@ -353,8 +284,8 @@ def register_classes():
     import trytond.tests
     trytond.tests.register()
 
-    for package in create_graph(get_module_list())[0]:
-        module = package.name
+    for node in create_graph(get_module_list()):
+        module = node.name
         logger.info('%s:registering classes', module)
 
         if module in ('ir', 'res', 'tests'):
@@ -436,7 +367,7 @@ def load_modules(
             while graph is None:
                 module_list += update
                 try:
-                    graph = create_graph(module_list)[0]
+                    graph = create_graph(module_list)
                 except MissingDependenciesException as e:
                     if not activatedeps:
                         raise

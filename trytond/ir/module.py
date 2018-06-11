@@ -7,7 +7,7 @@ from functools import wraps
 from sql.operators import NotIn
 
 from trytond.model import ModelView, ModelSQL, fields, Unique
-from trytond.modules import create_graph, get_module_list, get_module_info
+from trytond.modules import get_module_list, get_module_info
 from trytond.wizard import Wizard, StateView, Button, StateTransition, \
     StateAction
 from trytond import backend
@@ -69,7 +69,6 @@ class Module(ModelSQL, ModelView):
         cls._error_messages.update({
             'delete_state': ('You can not remove a module that is activated '
                     'or will be activated'),
-            'missing_dep': 'Missing dependencies %s for module "%s"',
             'deactivate_dep': ('Some activated modules depend on the ones '
                     'you are trying to deactivate:'),
             })
@@ -207,7 +206,6 @@ class Module(ModelSQL, ModelView):
     @filter_state('not activated')
     def activate(cls, modules):
         modules_activated = set(modules)
-        graph, packages, later = create_graph(get_module_list())
 
         def get_parents(module):
             parents = set(p for p in module.parents)
@@ -216,13 +214,6 @@ class Module(ModelSQL, ModelView):
             return parents
 
         for module in modules:
-            if module.name not in graph:
-                missings = []
-                for package, deps, xdep, info in packages:
-                    if package == module.name:
-                        missings = [x for x in deps if x not in graph]
-                cls.raise_user_error('missing_dep', (missings, module.name))
-
             modules_activated.update((m for m in get_parents(module)
                     if m.state == 'not activated'))
         cls.write(list(modules_activated), {
@@ -234,7 +225,6 @@ class Module(ModelSQL, ModelView):
     @filter_state('activated')
     def upgrade(cls, modules):
         modules_activated = set(modules)
-        graph, packages, later = create_graph(get_module_list())
 
         def get_childs(module):
             childs = set(c for c in module.childs)
@@ -243,13 +233,6 @@ class Module(ModelSQL, ModelView):
             return childs
 
         for module in modules:
-            if module.name not in graph:
-                missings = []
-                for package, deps, xdep, info in packages:
-                    if package == module.name:
-                        missings = [x for x in deps if x not in graph]
-                cls.raise_user_error('missing_dep', (missings, module.name))
-
             modules_activated.update((m for m in get_childs(module)
                     if m.state == 'activated'))
         cls.write(list(modules_activated), {
