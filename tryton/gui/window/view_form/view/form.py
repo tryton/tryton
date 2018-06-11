@@ -135,6 +135,8 @@ class VContainer(Container):
         pass
 
     def add(self, widget, attributes):
+        if not widget:
+            return
         expand = bool(int(attributes.get('yexpand', False)))
         fill = bool(int(attributes.get('yfill', False)))
         self.table.pack_start(widget, expand=expand, fill=fill, padding=2)
@@ -153,6 +155,8 @@ class HContainer(Container):
         pass
 
     def add(self, widget, attributes):
+        if not widget:
+            return
         expand = bool(int(attributes.get('xexpand', True)))
         fill = bool(int(attributes.get('xfill', True)))
         self.table.pack_start(widget, expand=expand, fill=fill, padding=1)
