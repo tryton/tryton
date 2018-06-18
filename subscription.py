@@ -7,6 +7,7 @@ from itertools import groupby
 from sql import operators, Literal
 from sql.conditionals import Coalesce
 
+from trytond import backend
 from trytond.model import ModelSQL, ModelView, Workflow, fields, \
         sequence_ordered
 from trytond.pool import Pool
@@ -372,7 +373,6 @@ class Subscription(Workflow, ModelSQL, ModelView):
 class Line(sequence_ordered(), ModelSQL, ModelView):
     "Subscription Line"
     __name__ = 'sale.subscription.line'
-    _rec_name = 'description'
 
     subscription = fields.Many2One(
         'sale.subscription', "Subscription", required=True, select=True,
@@ -399,7 +399,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('subscription_state') != 'draft',
             },
         depends=['subscription_state'])
-    description = fields.Text("Description", required=True,
+    description = fields.Text("Description",
         states={
             'readonly': Eval('subscription_state') != 'draft',
             },
@@ -488,6 +488,16 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         depends=['subscription_end_date', 'start_date',
             'next_consumption_date', 'subscription_state', 'consumed'])
 
+    @classmethod
+    def __register__(cls, module):
+        TableHandler = backend.get('TableHandler')
+
+        super(Line, cls).__register__(module)
+        table_h = TableHandler(cls, module)
+
+        # Migration from 4.8: drop required on description
+        table_h.not_null_action('description', action='remove')
+
     @fields.depends('subscription', '_parent_subscription.state')
     def on_change_with_subscription_state(self, name=None):
         if self.subscription:
@@ -518,7 +528,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.service:
             return self.service.product.default_uom_category.id
 
-    @fields.depends('service', 'quantity', 'unit', 'description',
+    @fields.depends('service', 'quantity', 'unit',
         'subscription', '_parent_subscription.party',
         methods=['_get_context_sale_price'])
     def on_change_service(self):
@@ -550,10 +560,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 self.unit_price = self.unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
 
-        if not self.description:
-            with Transaction().set_context(party_context):
-                self.description = Product(product.id).rec_name
-
         self.consumption_recurrence = self.service.consumption_recurrence
         self.consumption_delay = self.service.consumption_delay
 
@@ -584,6 +590,16 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def default_consumed(cls):
         return False
+
+    def get_rec_name(self, name):
+        return '%s @ %s' % (self.service.rec_name, self.subscription.rec_name)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('subscription.rec_name',) + tuple(clause[1:]),
+            ('service.rec_name',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def domain_next_consumption_date_delayed(cls, domain, tables):
