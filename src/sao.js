@@ -887,7 +887,7 @@ var Sao = {};
         // {shortcut, label, id of tab button or callback method}
         return [
             {
-                shortcut: 'ctrl+a',
+                shortcut: 'ctrl+i',
                 label: Sao.i18n.gettext('New'),
                 id: 'new_',
             }, {
@@ -923,7 +923,7 @@ var Sao = {};
                 label: Sao.i18n.gettext('Search'),
                 id: 'search',
             }, {
-                shortcut: 'ctrl+x',
+                shortcut: 'ctrl+shift+w',
                 label: Sao.i18n.gettext('Close Tab'),
                 id: 'close',
             }, {
