@@ -247,11 +247,6 @@ Check production cost::
     >>> production.cost
     Decimal('17.0000')
 
-Add new cost to output::
-
-    >>> output, = production.outputs
-    >>> output.unit_price += Decimal(15)
-
 Do the production::
 
     >>> production.click('done')
