@@ -1,3 +1,4 @@
+* Do not validate Function fields even with setter
 * Simplify the creation of dependencies graph
 * Make depends on methods generic to any method
 * Add width/height attribute to notebook

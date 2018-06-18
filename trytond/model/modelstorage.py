@@ -980,8 +980,7 @@ class ModelStorage(Model):
                         and not (depends & field_names)
                         and not (depends & function_fields)):
                     continue
-                if isinstance(field, fields.Function) and \
-                        not field.setter:
+                if isinstance(field, fields.Function):
                     continue
 
                 validate_domain(field)
