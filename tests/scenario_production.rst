@@ -137,6 +137,7 @@ Make a production::
     >>> output, = production.outputs
     >>> output.quantity == 2
     True
+    >>> production.save()
     >>> production.cost
     Decimal('25.0000')
     >>> production.click('wait')

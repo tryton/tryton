@@ -305,10 +305,8 @@ class Production(Workflow, ModelSQL, ModelView):
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
-        Move = pool.get('stock.move')
         if not (self.bom and self.product and self.uom):
             return
-        self.cost = Decimal(0)
 
         if self.warehouse:
             storage_location = self.warehouse.storage_location
@@ -326,14 +324,8 @@ class Production(Workflow, ModelSQL, ModelView):
                 inputs.append(move)
                 quantity = Uom.compute_qty(input_.uom, quantity,
                     input_.product.default_uom, round=False)
-                self.cost += (Decimal(str(quantity)) *
-                    input_.product.cost_price)
         self.inputs = inputs
-        digits = self.__class__.cost.digits
-        self.cost = self.cost.quantize(Decimal(str(10 ** -digits[1])))
 
-        digits = Move.unit_price.digits
-        digit = Decimal(str(10 ** -digits[1]))
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
@@ -341,9 +333,6 @@ class Production(Workflow, ModelSQL, ModelView):
                 self.company, output, quantity)
             if move:
                 move.unit_price = Decimal(0)
-                if output.product == move.product and quantity:
-                    move.unit_price = Decimal(
-                        self.cost / Decimal(str(quantity))).quantize(digit)
                 outputs.append(move)
         self.outputs = outputs
 
@@ -425,9 +414,6 @@ class Production(Workflow, ModelSQL, ModelView):
         return cost
 
     def set_moves(self):
-        pool = Pool()
-        Move = pool.get('stock.move')
-
         storage_location = self.warehouse.storage_location
         location = self.location
         company = self.company
@@ -444,7 +430,6 @@ class Production(Workflow, ModelSQL, ModelView):
             return
 
         factor = self.bom.compute_factor(self.product, self.quantity, self.uom)
-        cost = Decimal(0)
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
             product = input_.product
@@ -453,13 +438,7 @@ class Production(Workflow, ModelSQL, ModelView):
             if move:
                 move.production_input = self
                 move.save()
-                cost += (Decimal(str(move.internal_quantity)) *
-                    product.cost_price)
-        digits = self.__class__.cost.digits
-        cost = cost.quantize(Decimal(str(10 ** -digits[1])))
 
-        digits = Move.unit_price.digits
-        digit = Decimal(str(10 ** -digits[1]))
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
             product = output.product
@@ -467,13 +446,32 @@ class Production(Workflow, ModelSQL, ModelView):
                 product, output.uom, quantity)
             if move:
                 move.production_output = self
-                if product == self.product:
-                    move.unit_price = Decimal(
-                        cost / Decimal(str(quantity))).quantize(digit)
-                else:
-                    move.unit_price = Decimal(0)
+                move.unit_price = Decimal(0)
                 move.save()
         self._set_move_planned_date()
+
+    @classmethod
+    def set_cost(cls, productions):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Move = pool.get('stock.move')
+
+        digits = Move.unit_price.digits
+        digit = Decimal(str(10 ** -digits[1]))
+        moves = []
+        for production in productions:
+            if not production.quantity or not production.uom:
+                continue
+            if production.company.currency.is_zero(
+                    production.cost - production.output_cost):
+                continue
+            unit_price = production.cost / Decimal(str(production.quantity))
+            for output in production.outputs:
+                if output.product == production.product:
+                    output.unit_price = Uom.compute_price(
+                        production.uom, unit_price, output.uom).quantize(digit)
+                    moves.append(output)
+        Move.save(moves)
 
     @classmethod
     def validate(cls, productions):
@@ -481,13 +479,17 @@ class Production(Workflow, ModelSQL, ModelView):
         for production in productions:
             production.check_cost()
 
+    @property
+    def output_cost(self):
+        cost_price = Decimal(0)
+        for output in self.outputs:
+            cost_price += (Decimal(str(output.quantity)) * output.unit_price)
+        return cost_price
+
     def check_cost(self):
         if self.state != 'done':
             return
-        cost_price = Decimal(0)
-        for output in self.outputs:
-            cost_price += (Decimal(str(output.quantity))
-                * output.unit_price)
+        cost_price = self.output_cost
         if not self.company.currency.is_zero(self.cost - cost_price):
             self.raise_user_error('uneven_costs', {
                     'production': self.rec_name,
@@ -595,6 +597,7 @@ class Production(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
+        cls.set_cost(productions)
         Move.do([m for p in productions for m in p.outputs])
         cls.write([p for p in productions if not p.effective_date], {
                 'effective_date': Date.today(),
