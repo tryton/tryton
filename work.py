@@ -50,6 +50,7 @@ class Work:
             cls.purchase_lines = fields.One2Many('purchase.line', 'work',
                 'Purchase Lines', domain=[
                     ('purchase.company', '=', Eval('company', -1)),
+                    ('type', '=', 'line'),
                     ],
                 depends=['company'])
 

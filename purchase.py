@@ -14,4 +14,9 @@ class PurchaseLine:
     work = fields.Many2One('project.work', 'Work Effort', select=True,
         domain=[
             ('company', '=', Eval('_parent_purchase', {}).get('company', -1)),
-            ])
+            ],
+        states={
+            'invisible': Eval('type') != 'line',
+            },
+        depends=['type'],
+        help="Add to the cost of the work effort.")
