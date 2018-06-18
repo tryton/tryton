@@ -87,17 +87,14 @@ class Main(object):
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Connection/Quit', gtk.keysyms.Q,
                 gtk.gdk.CONTROL_MASK)
-        if sys.platform != 'darwin':
-            gtk.accel_map_add_entry('<tryton>/User/Reload Menu', gtk.keysyms.T,
-                    gtk.gdk.MOD1_MASK)
-        gtk.accel_map_add_entry('<tryton>/User/Toggle Menu', gtk.keysyms.T,
+        gtk.accel_map_add_entry('<tryton>/User/Toggle Menu', gtk.keysyms.M,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/User/Global Search', gtk.keysyms.K,
             gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/User/Home', gtk.keysyms.H,
                 gtk.gdk.CONTROL_MASK)
 
-        gtk.accel_map_add_entry('<tryton>/Form/New', gtk.keysyms.N,
+        gtk.accel_map_add_entry('<tryton>/Form/New', gtk.keysyms.I,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Save', gtk.keysyms.S,
                 gtk.gdk.CONTROL_MASK)
@@ -112,7 +109,7 @@ class Main(object):
         gtk.accel_map_add_entry('<tryton>/Form/Switch View', gtk.keysyms.L,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Close', gtk.keysyms.W,
-                gtk.gdk.CONTROL_MASK)
+                gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Previous Tab',
             gtk.keysyms.Left, gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Next Tab',
@@ -454,16 +451,6 @@ class Main(object):
         menu_user.add(imagemenuitem_preference)
 
         menu_user.add(gtk.SeparatorMenuItem())
-
-        imagemenuitem_menu = gtk.ImageMenuItem(_('_Menu Reload'),
-            self.accel_group)
-        imagemenuitem_menu.set_use_underline(True)
-        image = gtk.Image()
-        image.set_from_stock('tryton-start-here', gtk.ICON_SIZE_MENU)
-        imagemenuitem_menu.set_image(image)
-        imagemenuitem_menu.connect('activate', lambda *a: self.sig_win_menu())
-        imagemenuitem_menu.set_accel_path('<tryton>/User/Reload Menu')
-        menu_user.add(imagemenuitem_menu)
 
         imagemenuitem_menu_toggle = gtk.ImageMenuItem(_('_Menu Toggle'),
                 self.accel_group)
