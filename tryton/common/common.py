@@ -1037,8 +1037,8 @@ def check_version(box, version=__version__):
 
     logger.info(_("Check URL: %s"), url)
     try:
-        urllib2.urlopen(HeadRequest(url), cafile=rpc._CA_CERTS)
-    except urllib2.HTTPError:
+        urllib2.urlopen(HeadRequest(url), timeout=5, cafile=rpc._CA_CERTS)
+    except (urllib2.HTTPError, socket.timeout):
         return True
     except Exception:
         logger.error(
