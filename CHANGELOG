@@ -1,3 +1,4 @@
+* Add support of width attribute on tree view
 * Use non conflicting keyboard shortcuts
 * Use the context to get the suffix of window name
 * Call on_change methods after setting default dtstart on calendar view

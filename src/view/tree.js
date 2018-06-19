@@ -424,7 +424,12 @@
                         'boolean': 2,
                         'binary': 20,
                     }[column.attributes.widget] || 10;
-                    column.col.css('width', width * 100 + '%');
+                    if (column.attributes.width !== undefined){
+                        width = column.attributes.width + 'px';
+                    } else {
+                        width = width * 100 + '%';
+                    }
+                    column.col.css('width', width);
                 }
             }.bind(this));
             this.tbody.find('tr.more-row > td').attr(
