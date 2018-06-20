@@ -75,6 +75,14 @@ Create subscription recurrence rule sets::
     >>> rule.interval = 1
     >>> daily.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create subscription service::
 
     >>> Service = Model.get('sale.subscription.service')
@@ -88,7 +96,7 @@ Create subscription service::
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal('10')
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
 
