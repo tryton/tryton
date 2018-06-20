@@ -352,10 +352,12 @@ class Screen(SignalEvent):
 
     def __set_group(self, group):
         fields = {}
+        fields_views = {}
         if self.group is not None:
             self.group.signal_unconnect(self)
             for name, field in self.group.fields.iteritems():
                 fields[name] = field.attrs
+                fields_views[name] = field.views
         self.tree_states_done.clear()
         self.__group = group
         self.parent = group.parent
@@ -373,6 +375,8 @@ class Screen(SignalEvent):
             self._record_modified)
         self.__group.signal_connect(self, 'group-changed', self._group_changed)
         self.__group.add_fields(fields)
+        for name, views in fields_views.iteritems():
+            self.__group.fields[name].views.update(views)
         self.__group.exclude_field = self.exclude_field
 
     group = property(__get_group, __set_group)
@@ -564,6 +568,8 @@ class Screen(SignalEvent):
                 fields[field]['loading'] = \
                     self.group.fields[field].attrs['loading']
         self.group.add_fields(fields)
+        for field in fields:
+            self.group.fields[field].views.add(view_id)
         view = View.parse(self, xml_dom, view.get('field_childs'))
         view.view_id = view_id
         self.views.append(view)

@@ -32,6 +32,7 @@ class Field(object):
     def __init__(self, attrs):
         self.attrs = attrs
         self.name = attrs['name']
+        self.views = set()
 
     def sig_changed(self, record):
         record.on_change([self.name])

@@ -4,7 +4,6 @@ from tryton.signal_event import SignalEvent
 import tryton.common as common
 from tryton.pyson import PYSONDecoder
 import field as fields
-from functools import reduce
 from tryton.common import RPCExecute, RPCException
 from tryton.config import CONFIG
 
@@ -44,11 +43,12 @@ class Record(SignalEvent):
                 self.id: self,
                 }
             if name == '*':
-                loading = reduce(
-                        lambda x, y: 'eager' if x == y == 'eager' else 'lazy',
-                        (field.attrs.get('loading', 'eager')
-                            for field in self.group.fields.itervalues()),
-                        'eager')
+                loading = 'eager'
+                views = set()
+                for field in self.group.fields.itervalues():
+                    if field.attrs.get('loading', 'eager') == 'lazy':
+                        loading = 'lazy'
+                    views |= field.views
                 # Set a valid name for next loaded check
                 for fname, field in self.group.fields.iteritems():
                     if field.attrs.get('loading', 'eager') == loading:
@@ -56,14 +56,18 @@ class Record(SignalEvent):
                         break
             else:
                 loading = self.group.fields[name].attrs.get('loading', 'eager')
+                views = self.group.fields[name].views
 
             if loading == 'eager':
-                fnames = [fname
+                fields = ((fname, field)
                     for fname, field in self.group.fields.iteritems()
-                    if field.attrs.get('loading', 'eager') == 'eager']
+                    if field.attrs.get('loading', 'eager') == 'eager')
             else:
-                fnames = self.group.fields.keys()
-            fnames = [fname for fname in fnames if fname not in self._loaded]
+                fields = self.group.fields.iteritems()
+
+            fnames = [fname for fname, field in fields
+                if fname not in self._loaded
+                and (not views or (views & field.views))]
             fnames.extend(('%s.rec_name' % fname for fname in fnames[:]
                     if self.group.fields[fname].attrs['type']
                     in ('many2one', 'one2one', 'reference')))

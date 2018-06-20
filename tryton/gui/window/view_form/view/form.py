@@ -518,11 +518,15 @@ class ViewForm(View):
         record = self.screen.current_record
         if record:
             # Force to set fields in record
-            # Get first the lazy one to reduce number of requests
-            fields = [(name, field.attrs.get('loading', 'eager'))
-                    for name, field in record.group.fields.iteritems()]
-            fields.sort(key=operator.itemgetter(1), reverse=True)
-            for field, _ in fields:
+            # Get first the lazy one from the view to reduce number of requests
+            fields = (
+                (name,
+                    field.attrs.get('loading', 'eager') == 'eager',
+                    len(field.views))
+                for name, field in record.group.fields.iteritems()
+                if self.view_id in field.views)
+            fields = sorted(fields, key=operator.itemgetter(1, 2))
+            for field, _, _ in fields:
                 record[field].get(record)
         focused_widget = find_focused_child(self.widget)
         for name, widgets in self.widgets.iteritems():
