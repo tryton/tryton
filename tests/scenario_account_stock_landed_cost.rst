@@ -47,6 +47,15 @@ Create supplier::
     >>> supplier = Party(name='Supplier')
     >>> supplier.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create products::
 
     >>> ProductUom = Model.get('product.uom')
@@ -58,8 +67,7 @@ Create products::
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('300')
     >>> template.cost_price_method = 'average'
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('80')
     >>> template.save()
@@ -71,8 +79,7 @@ Create products::
     >>> template.type = 'service'
     >>> template.landed_cost = True
     >>> template.list_price = Decimal('10')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> product_landed_cost, = template.products
     >>> product_landed_cost.cost_price = Decimal('10')
     >>> template.save()
