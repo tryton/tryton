@@ -475,7 +475,9 @@ class Screen(SignalEvent):
     def number_of_views(self):
         return len(self.views) + len(self.view_to_load)
 
-    def switch_view(self, view_type=None):
+    def switch_view(self, view_type=None, view_id=None):
+        if view_id is not None:
+            view_id = int(view_id)
         if self.current_view:
             self.current_view.set_value()
             if (self.current_record and
@@ -488,18 +490,30 @@ class Screen(SignalEvent):
                 self.set_cursor()
                 self.current_view.display()
                 return
-        if not view_type or self.current_view.view_type != view_type:
-            for i in xrange(self.number_of_views):
-                if len(self.view_to_load):
-                    self.load_view_to_load()
-                    self.__current_view = len(self.views) - 1
-                else:
-                    self.__current_view = ((self.__current_view + 1)
-                            % len(self.views))
-                if not view_type:
-                    break
-                elif self.current_view.view_type == view_type:
-                    break
+
+        def found():
+            if not self.current_view:
+                return False
+            elif not view_type and view_id is None:
+                return False
+            elif view_id is not None:
+                return self.current_view.view_id == view_id
+            else:
+                return self.current_view.view_type == view_type
+        while not found():
+            if len(self.view_to_load):
+                self.load_view_to_load()
+                self.__current_view = len(self.views) - 1
+            elif (view_id is not None
+                    and view_id not in {v.view_id for v in self.views}):
+                self.add_view_id(view_id, view_type)
+                self.__current_view = len(self.views) - 1
+                break
+            else:
+                self.__current_view = ((self.__current_view + 1)
+                        % len(self.views))
+            if not view_type and view_id is None:
+                break
         self.screen_container.set(self.current_view.widget)
         self.display()
         # Postpone set of the cursor to ensure widgets are allocated
@@ -1146,8 +1160,7 @@ class Screen(SignalEvent):
             from tryton.gui import Main
             Main.get_main().sig_win_close()
         elif action.startswith('switch'):
-            _, view_type = action.split(None, 1)
-            self.switch_view(view_type=view_type)
+            self.switch_view(*action.split(None, 2)[1:])
         elif action == 'reload':
             if (self.current_view.view_type in ['tree', 'graph', 'calendar']
                     and not self.parent):
