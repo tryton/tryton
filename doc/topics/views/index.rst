@@ -360,7 +360,7 @@ of the ``string``, ``confirm`` and ``help`` attributes can be can be defined.
         * ``next``: to go to the next record
         * ``previous``: to go to the previous record
         * ``close``: to close the current tab
-        * ``switch <view type>``: to switch the view to the defined type
+        * ``switch <view type> [<view id>]``: to switch the view
         * ``reload``: to reload the current tab
         * ``reload context``: to reload user context
         * ``reload menu``: to reload menu
