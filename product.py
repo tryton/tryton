@@ -34,20 +34,6 @@ class Template:
         depends=['active', 'salable'])
 
     @classmethod
-    def __setup__(cls):
-        super(Template, cls).__setup__()
-        required = ~Eval('account_category', False) & Eval('salable', False)
-        if not cls.account_revenue.states.get('required'):
-            cls.account_revenue.states['required'] = required
-        else:
-            cls.account_revenue.states['required'] = (
-                    cls.account_revenue.states['required'] | required)
-        if 'account_category' not in cls.account_revenue.depends:
-            cls.account_revenue.depends.append('account_category')
-        if 'salable' not in cls.account_revenue.depends:
-            cls.account_revenue.depends.append('salable')
-
-    @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()

@@ -65,12 +65,19 @@ Create parties::
     >>> address.subdivision = new_york
     >>> customer2.save()
 
+Create account categories::
+
+    >>> Category = Model.get('product.category')
+    >>> account_category = Category(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create products::
 
     >>> ProductUom = Model.get('product.uom')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
-    >>> Category = Model.get('product.category')
 
     >>> template1 = ProductTemplate()
     >>> template1.name = "Product1"
@@ -78,7 +85,7 @@ Create products::
     >>> template1.type = 'service'
     >>> template1.salable = True
     >>> template1.list_price = Decimal('10')
-    >>> template1.account_revenue = revenue
+    >>> template1.account_category = account_category
     >>> template1.save()
     >>> product1, = template1.products
 
@@ -186,15 +193,16 @@ Check sale reporting per categories::
     ...     time_series = CategoryTimeseries.find([])
     ...     tree = CategoryTree.find([])
     >>> len(reports)
-    3
+    4
     >>> with config.set_context(context=context):
     ...     sorted((r.category.id, r.number, r.revenue) for r in reports) == \
     ...     sorted([(category_child1.id, 2, Decimal('30')),
     ...         (category_root2.id, 2, Decimal('30')),
-    ...         (category_child2.id, 1, Decimal('10'))])
+    ...         (category_child2.id, 1, Decimal('10')),
+    ...         (account_category.id, 2, Decimal('40'))])
     True
     >>> len(time_series)
-    5
+    7
     >>> with config.set_context(context=context):
     ...     sorted((r.category.id, str(r.date), r.number, r.revenue)
     ...         for r in time_series) == sorted(
@@ -202,16 +210,19 @@ Check sale reporting per categories::
     ...     (category_root2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
     ...     (category_child2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('10')),
     ...     (category_child1.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...     (category_root2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    ...     (category_root2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10')),
+    ...     (account_category.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
+    ...     (account_category.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
     True
     >>> len(tree)
-    4
+    5
     >>> with config.set_context(context=context):
     ...     sorted((r.name, r.revenue) for r in tree) == sorted([
     ...         (u'Root1', Decimal('40')),
     ...         (u'Child1', Decimal('30')),
     ...         (u'Child2', Decimal('10')),
-    ...         (u'Root2', Decimal('30'))])
+    ...         (u'Root2', Decimal('30')),
+    ...         (u'Account Category', Decimal('40'))])
     True
 
 Check sale reporting per regions::

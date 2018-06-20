@@ -1409,11 +1409,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                         'product': self.product.rec_name,
                         })
         else:
-            for name in ['default_product_account_revenue',
-                    'default_category_account_revenue']:
-                invoice_line.account = account_config.get_multivalue(name)
-                if invoice_line.account:
-                    break
+            invoice_line.account = account_config.get_multivalue(
+                'default_category_account_revenue')
             if not invoice_line.account:
                 self.raise_user_error('missing_default_account_revenue', {
                         'sale': self.sale.rec_name,
