@@ -2,27 +2,26 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .stock import *
-from .product import *
-from .account import *
+from . import stock
+from . import product
+from . import account
 
 
 def register():
     Pool.register(
-        Move,
-        Category,
-        CategoryAccount,
-        Template,
-        TemplateAccount,
-        Product,
-        Configuration,
-        ConfigurationStockJournal,
-        ConfigurationCostPriceCounterpartAccount,
-        FiscalYear,
-        AccountMove,
-        UpdateCostPriceAsk,
-        UpdateCostPriceShowMove,
+        stock.Move,
+        product.Category,
+        product.CategoryAccount,
+        product.Template,
+        product.Product,
+        account.Configuration,
+        account.ConfigurationStockJournal,
+        account.ConfigurationCostPriceCounterpartAccount,
+        account.FiscalYear,
+        account.AccountMove,
+        product.UpdateCostPriceAsk,
+        product.UpdateCostPriceShowMove,
         module='account_stock_continental', type_='model')
     Pool.register(
-        UpdateCostPrice,
+        product.UpdateCostPrice,
         module='account_stock_continental', type_='wizard')
