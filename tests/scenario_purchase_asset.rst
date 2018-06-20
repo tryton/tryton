@@ -43,6 +43,17 @@ Create chart of accounts::
     >>> expense = accounts['expense']
     >>> depreciation_account = accounts['depreciation']
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.account_asset = asset_account
+    >>> account_category.account_depreciation = depreciation_account
+    >>> account_category.save()
+
 Create products::
 
     >>> ProductUom = Model.get('product.uom')
@@ -55,10 +66,7 @@ Create products::
     >>> asset_template.list_price = Decimal('1000')
     >>> asset_template.depreciable = True
     >>> asset_template.purchasable = True
-    >>> asset_template.account_expense = expense
-    >>> asset_template.account_revenue = revenue
-    >>> asset_template.account_asset = asset_account
-    >>> asset_template.account_depreciation = depreciation_account
+    >>> asset_template.account_category = account_category
     >>> asset_template.depreciation_duration = 24
     >>> asset_template.save()
     >>> service_product, = asset_template.products
@@ -69,8 +77,7 @@ Create products::
     >>> service_template.default_uom = unit
     >>> service_template.list_price = Decimal('10')
     >>> service_template.purchasable = True
-    >>> service_template.account_expense = expense
-    >>> service_template.account_revenue = revenue
+    >>> service_template.account_category = account_category
     >>> service_template.save()
     >>> service_product, = service_template.products
 

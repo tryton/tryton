@@ -20,7 +20,6 @@ def register():
         product.Category,
         product.CategoryAccount,
         product.Template,
-        product.TemplateAccount,
         product.Product,
         invoice.InvoiceLine,
         account.Configuration,
