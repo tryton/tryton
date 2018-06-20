@@ -89,9 +89,6 @@ Create chart of accounts::
     >>> stock_supplier = accounts['stock_supplier']
     >>> cogs = accounts['cogs']
 
-    >>> AccountJournal = Model.get('account.journal')
-    >>> stock_journal, = AccountJournal.find([('code', '=', 'STO')])
-
 Create parties::
 
     >>> Party = Model.get('party.party')
@@ -99,6 +96,21 @@ Create parties::
     >>> supplier.save()
     >>> customer = Party(name='Customer')
     >>> customer.save()
+
+Create product category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.account_stock = stock
+    >>> account_category.account_cogs = cogs
+    >>> account_category.account_stock_supplier = stock_supplier
+    >>> account_category.account_stock_customer = stock_customer
+    >>> account_category.account_stock_production = stock_production
+    >>> account_category.account_stock_lost_found = stock_lost_found
+    >>> account_category.save()
 
 Create product::
 
@@ -114,17 +126,7 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.lead_time = datetime.timedelta(0)
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
-    >>> template.account_stock = stock
-    >>> template.account_cogs = cogs
-    >>> template.account_stock_supplier = stock_supplier
-    >>> template.account_stock_customer = stock_customer
-    >>> template.account_stock_production = stock_production
-    >>> template.account_stock_lost_found = stock_lost_found
-    >>> template.account_journal_stock_supplier = stock_journal
-    >>> template.account_journal_stock_customer = stock_journal
-    >>> template.account_journal_stock_lost_found = stock_journal
+    >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('5')
     >>> template.save()
@@ -356,17 +358,7 @@ Now we will use a product with different unit of measure::
     >>> template_by5.list_price = Decimal('10')
     >>> template_by5.cost_price_method = 'fixed'
     >>> template_by5.lead_time = datetime.timedelta(0)
-    >>> template_by5.account_expense = expense
-    >>> template_by5.account_revenue = revenue
-    >>> template_by5.account_stock = stock
-    >>> template_by5.account_cogs = cogs
-    >>> template_by5.account_stock_supplier = stock_supplier
-    >>> template_by5.account_stock_customer = stock_customer
-    >>> template_by5.account_stock_production = stock_production
-    >>> template_by5.account_stock_lost_found = stock_lost_found
-    >>> template_by5.account_journal_stock_supplier = stock_journal
-    >>> template_by5.account_journal_stock_customer = stock_journal
-    >>> template_by5.account_journal_stock_lost_found = stock_journal
+    >>> template_by5.account_category = account_category
     >>> product_by5, = template_by5.products
     >>> product_by5.cost_price = Decimal('5')
     >>> template_by5.save()

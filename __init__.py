@@ -2,20 +2,19 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .product import *
-from .stock import *
-from .invoice import *
-from .account import *
+from . import product
+from . import stock
+from . import invoice
+from . import account
 
 
 def register():
     Pool.register(
-        Category,
-        CategoryAccount,
-        Template,
-        TemplateAccount,
-        Product,
-        Move,
-        InvoiceLine,
-        FiscalYear,
+        product.Category,
+        product.CategoryAccount,
+        product.Template,
+        product.Product,
+        stock.Move,
+        invoice.InvoiceLine,
+        account.FiscalYear,
         module='account_stock_anglo_saxon', type_='model')

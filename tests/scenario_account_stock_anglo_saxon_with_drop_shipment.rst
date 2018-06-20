@@ -103,9 +103,6 @@ Create chart of accounts::
     >>> stock_supplier = accounts['stock_supplier']
     >>> cogs = accounts['cogs']
 
-    >>> AccountJournal = Model.get('account.journal')
-    >>> stock_journal, = AccountJournal.find([('code', '=', 'STO')])
-
 Create parties::
 
     >>> Party = Model.get('party.party')
@@ -113,6 +110,21 @@ Create parties::
     >>> supplier.save()
     >>> customer = Party(name='Customer')
     >>> customer.save()
+
+Create product category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.account_stock = stock
+    >>> account_category.account_cogs = cogs
+    >>> account_category.account_stock_supplier = stock_supplier
+    >>> account_category.account_stock_customer = stock_customer
+    >>> account_category.account_stock_production = stock_production
+    >>> account_category.account_stock_lost_found = stock_lost_found
+    >>> account_category.save()
 
 Create product::
 
@@ -129,18 +141,8 @@ Create product::
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'fixed'
     >>> template.lead_time = datetime.timedelta(0)
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
-    >>> template.account_stock = stock
-    >>> template.account_cogs = cogs
-    >>> template.account_stock_supplier = stock_supplier
-    >>> template.account_stock_customer = stock_customer
-    >>> template.account_stock_production = stock_production
-    >>> template.account_stock_lost_found = stock_lost_found
-    >>> template.account_journal_stock_supplier = stock_journal
-    >>> template.account_journal_stock_customer = stock_journal
-    >>> template.account_journal_stock_lost_found = stock_journal
     >>> template.supply_on_sale = True
+    >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('5')
     >>> template.save()
