@@ -566,42 +566,46 @@
             }
             var id2record = {};
             id2record[this.id] = this;
-            var loading;
+            var loading, views, field;
             if (name == '*') {
                 loading = 'eager';
+                views = new Set();
+                var views_add = function(view) {
+                    views.add(view);
+                };
                 for (fname in this.model.fields) {
-                    if (!this.model.fields.hasOwnProperty(fname)) {
-                        continue;
-                    }
-                    var field_loading = (
-                            this.model.fields[fname].description.loading ||
-                            'eager');
-                    if (field_loading != 'eager') {
+                    field = this.model.fields[fname];
+                    if ((field.description.loading || 'eager') == 'lazy') {
                         loading = 'lazy';
-                        break;
                     }
+                    field.views.forEach(views_add);
                 }
             } else {
-                loading = (this.model.fields[name].description.loading ||
-                        'eager');
+                loading = this.model.fields[name].description.loading || 'eager';
+                views = this.model.fields[name].views;
             }
-            var fnames = [];
+            var fields = {};
             if (loading == 'eager') {
                 for (fname in this.model.fields) {
-                    if (!this.model.fields.hasOwnProperty(fname)) {
-                        continue;
-                    }
-                    if ((this.model.fields[fname].description.loading ||
-                                'eager') == 'eager') {
-                        fnames.push(fname);
+                    field = this.model.fields[fname];
+                    if ((field.description.loading || 'eager') == 'eager') {
+                        fields[fname] = field;
                     }
                 }
             } else {
-                fnames = Object.keys(this.model.fields);
+                fields = this.model.fields;
             }
-            fnames = fnames.filter(function(e, i, a) {
-                return !(e in this._loaded);
-            }.bind(this));
+            var fnames = [];
+            for (fname in fields) {
+                field = fields[fname];
+                if (!(fname in this._loaded) &&
+                    (!views.size ||
+                        Sao.common.intersect(
+                            Array.from(views).sort(),
+                            Array.from(field.views).sort()))) {
+                    fnames.push(fname);
+                }
+            }
             var fnames_to_fetch = fnames.slice();
             var rec_named_fields = ['many2one', 'one2one', 'reference'];
             for (var i in fnames) {
@@ -1368,6 +1372,7 @@
         init: function(description) {
             this.description = description;
             this.name = description.name;
+            this.views = new Set();
         },
         set: function(record, value) {
             record._values[this.name] = value;

@@ -793,6 +793,9 @@
                 }
             }
             this.group.add_fields(fields);
+            for (field in fields) {
+                this.group.model.fields[field].views.add(view_id);
+            }
             var view_widget = Sao.View.parse(this, xml_view, view.field_childs);
             view_widget.view_id = view_id;
             this.views.push(view_widget);
@@ -1009,13 +1012,14 @@
             return context;
         },
         set_group: function(group) {
-            var fields = {};
+            var fields = {},
+                fields_views = {},
+                name;
             if (this.group) {
-                for (var name in this.group.model.fields) {
-                    if (!this.group.model.fields.hasOwnProperty(name)) {
-                        continue;
-                    }
-                    fields[name] = this.group.model.fields[name].description;
+                for (name in this.group.model.fields) {
+                    var field = this.group.model.fields[name];
+                    fields[name] = field.description;
+                    fields_views[name] = field.views;
                 }
                 this.group.screens.splice(
                         this.group.screens.indexOf(this), 1);
@@ -1037,6 +1041,13 @@
                 this.set_current_record(null);
             }
             this.group.add_fields(fields);
+            var views_add = function(view) {
+                this.group.model.fields[name].views.add(view);
+            }.bind(this);
+            for (name in fields_views) {
+                var views = fields_views[name];
+                views.forEach(views_add);
+            }
         },
         new_group: function(context) {
             if (!context) {

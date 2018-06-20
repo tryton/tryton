@@ -1,3 +1,4 @@
+* Improve loading strategy by using views
 * Add support of width attribute on tree view
 * Use non conflicting keyboard shortcuts
 * Use the context to get the suffix of window name

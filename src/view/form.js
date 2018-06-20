@@ -314,14 +314,26 @@ function eval_pyson(value){
             var promesses = [];
             if (record) {
                 // Force to set fields in record
-                // Get first the lazy one to reduce number of requests
+                // Get first the lazy one from the view to reduce number of requests
                 var fields = [];
                 for (name in record.model.fields) {
                     field = record.model.fields[name];
-                    fields.push([name, field.description.loading || 'eager']);
+                    if (field.views.has(this.view_id)) {
+                        fields.push([
+                            name,
+                            field.description.loading || 'eager' == 'eager',
+                            field.views.size,
+                        ]);
+                    }
                 }
                 fields.sort(function(a, b) {
-                    return a[1].localeCompare(b[1]);
+                    if (!a[1] && b[1]) {
+                        return -1;
+                    } else if (a[1] && !b[1]) {
+                        return 1;
+                    } else {
+                        return a[2] - b[2];
+                    }
                 });
                 fields.forEach(function(e) {
                     var name = e[0];
