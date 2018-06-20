@@ -802,7 +802,12 @@
         number_of_views: function() {
             return this.views.length + this.view_to_load.length;
         },
-        switch_view: function(view_type) {
+        switch_view: function(view_type, view_id) {
+            if ((view_id !== undefined) && (view_id !== null)) {
+                view_id = Number(view_id);
+            } else {
+                view_id = null;
+            }
             if (this.current_view) {
                 this.current_view.set_value();
                 if (this.current_record &&
@@ -820,29 +825,43 @@
                     }.bind(this));
                 }
             }
+            var found = function() {
+                if (!this.current_view) {
+                    return false;
+                }
+                else if (!view_type && (view_id === null)) {
+                    return false;
+                }
+                else if (view_id !== null) {
+                    return this.current_view.view_id == view_id;
+                } else {
+                    return this.current_view.view_type == view_type;
+                }
+            }.bind(this);
             var _switch = function() {
-                if ((!view_type) || (!this.current_view) ||
-                        (this.current_view.view_type != view_type)) {
-                    var switch_current_view = (function() {
-                        this.current_view = this.views[this.views.length - 1];
-                        return _switch();
-                    }.bind(this));
-                    for (var i = 0; i < this.number_of_views(); i++) {
-                        if (this.view_to_load.length) {
-                            if (!view_type) {
-                                view_type = this.view_to_load[0];
-                            }
-                            return this.load_next_view().then(
-                                    switch_current_view);
-                        }
+                var switch_current_view = (function() {
+                    this.current_view = this.views[this.views.length - 1];
+                    return _switch();
+                }.bind(this));
+
+                var is_view_id = function(view) {
+                    return view.view_id == view_id;
+                };
+
+                while (!found()) {
+                    if (this.view_to_load.length) {
+                        return this.load_next_view().then(switch_current_view);
+                    } else if ((view_id !== null) &&
+                        !this.views.find(is_view_id)) {
+                        return this.add_view_id(view_id, view_type).then(
+                            switch_current_view);
+                    } else {
+                        var i = this.views.indexOf(this.current_view);
                         this.current_view = this.views[
-                            (this.views.indexOf(this.current_view) + 1) %
-                            this.views.length];
-                        if (!view_type) {
-                            break;
-                        } else if (this.current_view.view_type == view_type) {
-                            break;
-                        }
+                            (i + 1) % this.views.length];
+                    }
+                    if (!view_id && (view_id === null)) {
+                        break;
                     }
                 }
                 this.screen_container.set(this.current_view.el);
@@ -1742,8 +1761,7 @@
             } else if (action == 'close') {
                 Sao.Tab.close_current();
             } else if (action.startsWith('switch')) {
-                var view_type = action.split(' ')[1];
-                this.switch_view(view_type);
+                this.switch_view.apply(this, action.split(' ', 3).slice(1));
             } else if (action == 'reload') {
                 if (~['tree', 'graph', 'calendar'].indexOf(this.current_view.view_type) &&
                         !this.group.parent) {
