@@ -2,28 +2,24 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .product import *
-from .configuration import *
+from . import product
+from . import configuration
 from . import account
 
 
 def register():
     Pool.register(
-        ProductConfiguration,
-        Category,
-        CategoryAccount,
-        CategoryCustomerTax,
-        CategorySupplierTax,
+        product.Category,
+        product.CategoryAccount,
+        product.CategoryCustomerTax,
+        product.CategorySupplierTax,
         account.CreateChartProperties,
-        Template,
-        TemplateAccount,
-        TemplateCustomerTax,
-        TemplateSupplierTax,
-        Product,
-        TemplateAccountCategory,
-        TemplateCategoryAll,
-        Configuration,
-        ConfigurationDefaultAccount,
+        product.Template,
+        product.Product,
+        product.TemplateAccountCategory,
+        product.TemplateCategoryAll,
+        configuration.Configuration,
+        configuration.ConfigurationDefaultAccount,
         module='account_product', type_='model')
     Pool.register(
         account.CreateChart,

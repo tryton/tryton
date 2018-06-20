@@ -45,34 +45,16 @@ class AccountProductTestCase(ModuleTestCase):
                 )
             template.save()
 
-            self.assertIsNone(template.account_expense)
-
             with self.assertRaises(UserError):
                 template.account_expense_used
-
-            # with account
-            template = ProductTemplate(
-                name='test account used',
-                list_price=Decimal(10),
-                default_uom=unit.id,
-                account_expense=account_expense.id,
-                products=[],
-                )
-            template.save()
-
-            self.assertEqual(template.account_expense, account_expense)
-            self.assertEqual(template.account_expense_used, account_expense)
 
             # with account on category
             category = ProductCategory(name='test account used',
                 account_expense=account_expense, accounting=True)
             category.save()
-            template.account_expense = None
-            template.accounts_category = True
             template.account_category = category
             template.save()
 
-            self.assertIsNone(template.account_expense)
             self.assertEqual(template.account_expense_used, account_expense)
 
             # with account on grant category
@@ -84,30 +66,25 @@ class AccountProductTestCase(ModuleTestCase):
             category.parent = parent_category
             category.save()
 
-            self.assertIsNone(category.account_expense)
             self.assertEqual(template.account_expense_used, account_expense)
             self.assertEqual(category.account_expense_used, account_expense)
 
             # raise only at direct usage
-            templates = ProductTemplate.create([{
+            categories = ProductCategory.create([{
                         'name': 'test with account',
-                        'list_price': Decimal(10),
-                        'default_uom': unit.id,
+                        'accounting': True,
                         'account_expense': account_expense.id,
-                        'products': [],
                         }, {
                         'name': 'test without account',
-                        'list_price': Decimal(10),
-                        'default_uom': unit.id,
+                        'accounting': True,
                         'account_expense': None,
-                        'products': [],
                         }])
 
-            self.assertEqual(templates[0].account_expense_used.id,
+            self.assertEqual(categories[0].account_expense_used.id,
                 account_expense.id)
 
             with self.assertRaises(UserError):
-                templates[1].account_expense_used
+                categories[1].account_expense_used
 
 
 def suite():
