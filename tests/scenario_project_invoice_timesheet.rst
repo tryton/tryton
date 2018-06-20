@@ -79,6 +79,14 @@ Create employee::
     >>> employee.company = company
     >>> employee.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -90,7 +98,7 @@ Create product::
     >>> template.default_uom = hour
     >>> template.type = 'service'
     >>> template.list_price = Decimal('20')
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
 
