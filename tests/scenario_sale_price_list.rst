@@ -68,6 +68,15 @@ Create parties::
     >>> customer_without_price_list = Party(name='Customer without price list')
     >>> customer_without_price_list.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -81,8 +90,7 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
 
@@ -92,8 +100,7 @@ Create product::
     >>> template.type = 'service'
     >>> template.salable = True
     >>> template.list_price = Decimal('30')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.save()
     >>> service, = template.products
 
