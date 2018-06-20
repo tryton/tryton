@@ -76,7 +76,7 @@ class SaleCreditLimitTestCase(ModuleTestCase):
                             ],
                         }])
             config = Configuration(1)
-            config.default_product_account_revenue = revenue
+            config.default_category_account_revenue = revenue
             config.save()
             sale, = Sale.create([{
                         'party': party.id,
