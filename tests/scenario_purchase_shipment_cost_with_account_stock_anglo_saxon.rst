@@ -66,6 +66,21 @@ Create parties::
     >>> supplier = Party(name='Supplier')
     >>> supplier.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.account_stock = stock
+    >>> account_category.account_cogs = cogs
+    >>> account_category.account_stock_supplier = stock_supplier
+    >>> account_category.account_stock_customer = stock_customer
+    >>> account_category.account_stock_production = stock_production
+    >>> account_category.account_stock_lost_found = stock_lost_found
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -79,17 +94,7 @@ Create product::
     >>> template.purchasable = True
     >>> template.list_price = Decimal('10')
     >>> template.cost_price_method = 'average'
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
-    >>> template.account_stock = stock
-    >>> template.account_cogs = cogs
-    >>> template.account_stock_supplier = stock_supplier
-    >>> template.account_stock_customer = stock_customer
-    >>> template.account_stock_production = stock_production
-    >>> template.account_stock_lost_found = stock_lost_found
-    >>> template.account_journal_stock_supplier = stock_journal
-    >>> template.account_journal_stock_customer = stock_journal
-    >>> template.account_journal_stock_lost_found = stock_journal
+    >>> template.account_category = account_category
     >>> product, = template.products
     >>> product.cost_price = Decimal('5')
     >>> template.save()
@@ -100,8 +105,7 @@ Create product::
     >>> carrier_template.default_uom = unit
     >>> carrier_template.type = 'service'
     >>> carrier_template.list_price = Decimal('5')
-    >>> carrier_template.account_expense = expense
-    >>> carrier_template.account_revenue = revenue
+    >>> carrier_template.account_category = account_category
     >>> carrier_product, = carrier_template.products
     >>> carrier_product.cost_price = Decimal('3')
     >>> carrier_template.save()
