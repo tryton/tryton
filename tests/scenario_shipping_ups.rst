@@ -166,8 +166,7 @@ Create a UPS Carrier and the related credential::
     >>> carrier_product_template.type = 'service'
     >>> carrier_product_template.salable = True
     >>> carrier_product_template.list_price = Decimal(20)
-    >>> carrier_product_template.account_expense = expense
-    >>> carrier_product_template.account_revenue = revenue
+    >>> carrier_product_template.account_category = account_category
     >>> carrier_product_template.save()
     >>> carrier_product, = carrier_product_template.products
 
