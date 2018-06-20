@@ -93,6 +93,15 @@ Get some units::
     >>> cm, = UoM.find([('symbol', '=', 'cm')])
     >>> g, = UoM.find([('symbol', '=', 'g')])
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -107,8 +116,7 @@ Create product::
     >>> template.weight = 100
     >>> template.weight_uom = g
     >>> template.list_price = Decimal('10')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
 
