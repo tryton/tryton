@@ -38,6 +38,15 @@ Create tax and tax rule::
     >>> no_tax.origin_tax = tax
     >>> foreign.save()
 
+Create account categories::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.supplier_taxes.append(tax)
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -50,8 +59,7 @@ Create product::
     >>> template.type = 'goods'
     >>> template.purchasable = True
     >>> template.list_price = Decimal('10')
-    >>> template.account_expense = expense
-    >>> template.supplier_taxes.append(tax)
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
     >>> product.cost_price = Decimal('5')

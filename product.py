@@ -44,16 +44,6 @@ class Template:
                 'change_purchase_uom': ('Purchase prices are based '
                     'on the purchase uom.'),
                 })
-        required = ~Eval('account_category') & Eval('purchasable', False)
-        if not cls.account_expense.states.get('required'):
-            cls.account_expense.states['required'] = required
-        else:
-            cls.account_expense.states['required'] = (
-                cls.account_expense.states['required'] | required)
-        if 'account_category' not in cls.account_expense.depends:
-            cls.account_expense.depends.append('account_category')
-        if 'purchasable' not in cls.account_expense.depends:
-            cls.account_expense.depends.append('purchasable')
 
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_default_uom(self):

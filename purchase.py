@@ -1414,11 +1414,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                         'purchase': self.purchase.rec_name,
                         })
         else:
-            for name in ['default_product_account_expense',
-                    'default_category_account_expense']:
-                invoice_line.account = account_config.get_multivalue(name)
-                if invoice_line.account:
-                    break
+            invoice_line.account = account_config.get_multivalue(
+                'default_category_account_expense')
             if not invoice_line.account:
                 self.raise_user_error('missing_default_account_expense',
                     {'purchase': self.purchase.rec_name})
