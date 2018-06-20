@@ -66,7 +66,7 @@ Default account product::
 
     >>> AccountConfiguration = Model.get('account.configuration')
     >>> account_configuration = AccountConfiguration(1)
-    >>> account_configuration.default_product_account_revenue = revenue
+    >>> account_configuration.default_category_account_revenue = revenue
     >>> account_configuration.save()
 
 Create a sale quotation::
