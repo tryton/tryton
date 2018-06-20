@@ -47,6 +47,14 @@ Create chart of accounts::
     ...         ])
     >>> journal_revenue.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create fees::
 
     >>> Fee = Model.get('account.dunning.fee')
@@ -57,7 +65,7 @@ Create fees::
     >>> template_fee.default_uom = unit
     >>> template_fee.type = 'service'
     >>> template_fee.list_price = Decimal('10')
-    >>> template_fee.account_revenue = revenue
+    >>> template_fee.account_category = account_category
     >>> template_fee.save()
     >>> product_fee, = template_fee.products
 
