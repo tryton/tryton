@@ -83,6 +83,15 @@ Create parties::
     >>> customer = Party(name='Customer')
     >>> customer.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_expense = expense
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -96,9 +105,8 @@ Create product::
     >>> template.purchasable = True
     >>> template.salable = True
     >>> template.list_price = Decimal('10')
-    >>> template.account_expense = expense
-    >>> template.account_revenue = revenue
     >>> template.supply_on_sale = True
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
 
@@ -207,8 +215,7 @@ not create a new purchase request::
     >>> changing_template.purchasable = True
     >>> changing_template.salable = True
     >>> changing_template.list_price = Decimal('10')
-    >>> changing_template.account_expense = expense
-    >>> changing_template.account_revenue = revenue
+    >>> changing_template.account_category = account_category
     >>> changing_template.supply_on_sale = False
     >>> changing_template.save()
     >>> changing_product, = changing_template.products
