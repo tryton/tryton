@@ -35,7 +35,6 @@ Create chart of accounts::
 
     >>> _ = create_chart(company)
     >>> accounts = get_accounts(company)
-    >>> expense = accounts['expense']
     >>> revenue = accounts['revenue']
     >>> payable = accounts['payable']
     >>> cash = accounts['cash']
@@ -63,6 +62,14 @@ Create customer::
     >>> customer = Party(name='Customer')
     >>> customer.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -76,7 +83,7 @@ Create product::
     >>> template.salable = True
     >>> template.delivery_time = 0
     >>> template.list_price = Decimal('20')
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
 
@@ -272,8 +279,7 @@ Create the product::
     >>> sos_template.purchasable = True
     >>> sos_template.salable = True
     >>> sos_template.list_price = Decimal('10')
-    >>> sos_template.account_expense = expense
-    >>> sos_template.account_revenue = revenue
+    >>> sos_template.account_category = account_category
     >>> sos_template.supply_on_sale = True
     >>> sos_template.save()
     >>> sos_product, = sos_template.products
