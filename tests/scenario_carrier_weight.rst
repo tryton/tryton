@@ -54,6 +54,14 @@ Create customer::
     >>> customer = Party(name='Customer')
     >>> customer.save()
 
+Create account category::
+
+    >>> ProductCategory = Model.get('product.category')
+    >>> account_category = ProductCategory(name="Account Category")
+    >>> account_category.accounting = True
+    >>> account_category.account_revenue = revenue
+    >>> account_category.save()
+
 Create product::
 
     >>> ProductUom = Model.get('product.uom')
@@ -67,7 +75,7 @@ Create product::
     >>> template.type = 'goods'
     >>> template.salable = True
     >>> template.list_price = Decimal('20')
-    >>> template.account_revenue = revenue
+    >>> template.account_category = account_category
     >>> template.weight = 250
     >>> template.weight_uom = gram
     >>> template.save()
@@ -81,7 +89,7 @@ Create product::
     >>> carrier_template.type = 'service'
     >>> carrier_template.salable = True
     >>> carrier_template.list_price = Decimal('3')
-    >>> carrier_template.account_revenue = revenue
+    >>> carrier_template.account_category = account_category
     >>> carrier_template.save()
     >>> carrier_product, = carrier_template.products
     >>> carrier_product.cost_price = Decimal('3')
