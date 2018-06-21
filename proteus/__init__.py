@@ -1172,11 +1172,7 @@ class Wizard(object):
                 ctx['action_id'] = None
 
             if self.form:
-                # Filter only modified values
-                data = {self.form_state:
-                    dict((k, v) for k, v in
-                        self.form._get_on_change_values().iteritems()
-                        if k in self.form._values)}
+                data = {self.form_state: self.form._get_on_change_values()}
             else:
                 data = {}
 
