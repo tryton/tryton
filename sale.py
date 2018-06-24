@@ -18,7 +18,7 @@ class Sale:
         """
         The key to group lines by parcel
         """
-        return None
+        return ()
 
     def _get_carrier_context(self):
         context = super(Sale, self)._get_carrier_context()
