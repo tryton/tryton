@@ -117,6 +117,8 @@ Subscribe::
     >>> line = subscription.lines.new()
     >>> line.service = service
     >>> line.quantity = 10
+    >>> line.start_date == subscription.start_date
+    True
 
     >>> subscription.click('quote')
     >>> subscription.state

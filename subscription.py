@@ -4,7 +4,7 @@ import datetime
 from decimal import Decimal
 from itertools import groupby
 
-from sql import operators, Literal
+from sql import operators, Literal, Null
 from sql.conditionals import Coalesce
 
 from trytond import backend
@@ -132,7 +132,8 @@ class Subscription(Workflow, ModelSQL, ModelView):
     lines = fields.One2Many(
         'sale.subscription.line', 'subscription', "Lines",
         states={
-            'readonly': Eval('state') != 'draft',
+            'readonly': ((Eval('state') != 'draft')
+                | ~Eval('start_date')),
             },
         depends=['state'])
 
@@ -456,10 +457,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         'get_next_consumption_date_delayed')
     consumed = fields.Boolean("Consumed")
     start_date = fields.Date(
-        "Start Date",
-        domain=['OR',
+        "Start Date", required=True,
+        domain=[
             ('start_date', '>=', Eval('subscription_start_date')),
-            ('start_date', '=', None),
             ],
         states={
             'readonly': ((Eval('subscription_state') != 'draft')
@@ -468,17 +468,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         depends=['subscription_start_date', 'subscription_state', 'consumed'])
     end_date = fields.Date(
         "End Date",
-        domain=['OR', [(
-                If(Bool(Eval('start_date')),
-                    ('end_date', '>=', Eval('start_date')),
-                    ()),
+        domain=['OR', [
+                ('end_date', '>=', Eval('start_date')),
                 If(Bool(Eval('subscription_end_date')),
                     ('end_date', '<=', Eval('subscription_end_date')),
                     ()),
                 If(Bool(Eval('next_consumption_date')),
                     ('end_date', '>=', Eval('next_consumption_date')),
                     ()),
-                )],
+                ],
             ('end_date', '=', None),
             ],
         states={
@@ -490,7 +488,24 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module):
+        pool = Pool()
+        Subscription = pool.get('sale.subscription')
         TableHandler = backend.get('TableHandler')
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        table = cls.__table__()
+        subscription = Subscription.__table__()
+
+        # Migration from 4.8: start_date required
+        if TableHandler.table_exist(cls._table):
+            table_h = TableHandler(cls, module)
+            if table_h.column_exist('start_date'):
+                cursor.execute(*table.update(
+                        [table.start_date],
+                        subscription.select(
+                            subscription.start_date,
+                            where=subscription.id == table.subscription),
+                        where=table.start_date == Null))
 
         super(Line, cls).__register__(module)
         table_h = TableHandler(cls, module)
@@ -512,6 +527,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_subscription_end_date(self, name=None):
         if self.subscription:
             return self.subscription.end_date
+
+    @fields.depends('subscription', 'start_date', 'end_date',
+        '_parent_subscription.start_date', '_parent_subscription.end_date')
+    def on_change_subscription(self):
+        if self.subscription:
+            if not self.start_date:
+                self.start_date = self.subscription.start_date
+            if not self.end_date:
+                self.end_date = self.subscription.end_date
 
     @classmethod
     def default_quantity(cls):
@@ -564,8 +588,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         self.consumption_delay = self.service.consumption_delay
 
     @fields.depends('subscription', '_parent_subscription.currency',
-        '_parent_subscription.party', '_parent_subscription.start_date',
-        'unit', 'service')
+        '_parent_subscription.party', 'start_date', 'unit', 'service')
     def _get_context_sale_price(self):
         context = {}
         if self.subscription:
@@ -573,8 +596,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 context['currency'] = self.subscription.currency.id
             if self.subscription.party:
                 context['customer'] = self.subscription.party.id
-            if self.subscription.start_date:
-                context['sale_date'] = self.subscription.start_date
+            if self.start_date:
+                context['sale_date'] = self.start_date
         if self.unit:
             context['uom'] = self.unit.id
         elif self.service:
@@ -662,11 +685,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def compute_next_consumption_date(self):
         if not self.consumption_recurrence:
             return None
-        start_date = self.start_date or self.subscription.start_date
-        date = self.next_consumption_date or start_date
-        rruleset = self.consumption_recurrence.rruleset(start_date)
+        date = self.next_consumption_date or self.start_date
+        rruleset = self.consumption_recurrence.rruleset(self.start_date)
         dt = datetime.datetime.combine(date, datetime.time())
-        inc = (start_date == date) and not self.next_consumption_date
+        inc = (self.start_date == date) and not self.next_consumption_date
         next_date = rruleset.after(dt, inc=inc).date()
         for end_date in [self.end_date, self.subscription.end_date]:
             if end_date:
