@@ -43,6 +43,7 @@ from . import field_one2one
 from . import multivalue
 from . import mixin
 from . import tree
+from . import rule
 
 
 def register():
@@ -126,6 +127,7 @@ def register():
     multivalue.register('tests')
     mixin.register('tests')
     tree.register('tests')
+    rule.register('tests')
 
     if pkg_resources is not None:
         entry_points = pkg_resources.iter_entry_points('trytond.tests')

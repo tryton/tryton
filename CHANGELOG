@@ -1,3 +1,5 @@
+* Check Rule also after modification
+* Check Rule after indirect fields
 * Allow to define view id in switch client action
 * Do not validate Function fields even with setter
 * Simplify the creation of dependencies graph
