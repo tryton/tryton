@@ -338,7 +338,7 @@ class ModelStorage(Model):
             data = convert_data(field_defs, datas[id])
             to_create.append(data)
         new_records = cls.create(to_create)
-        new_ids = dict(izip(ids, map(int, new_records)))
+        id2new_record = dict(izip(ids, new_records))
 
         fields_translate = {}
         for field_name, field in field_defs.iteritems():
@@ -358,11 +358,13 @@ class ModelStorage(Model):
                             fuzzy_translation=False):
                         datas = cls.read(ids,
                                 fields_names=fields_translate.keys() + ['id'])
+                        to_write = []
                         for data in datas:
-                            data_id = data['id']
-                            data = convert_data(fields_translate, data)
-                            cls.write([cls(new_ids[data_id])], data)
-        return cls.browse(new_ids.values())
+                            to_write.append([id2new_record[data['id']]])
+                            to_write.append(
+                                convert_data(fields_translate, data))
+                        cls.write(*to_write)
+        return new_records
 
     @classmethod
     def search(cls, domain, offset=0, limit=None, order=None, count=False):
