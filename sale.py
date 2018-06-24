@@ -16,7 +16,7 @@ class Sale:
         """
         The key to group lines by parcel
         """
-        return None
+        return ()
 
     def _get_carrier_context(self):
         Uom = Pool().get('product.uom')

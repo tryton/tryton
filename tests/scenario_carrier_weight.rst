@@ -166,7 +166,10 @@ Sale products with cost on shipment::
     >>> sale.shipment_cost_method = 'shipment'
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
-    >>> sale_line.quantity = 5.0
+    >>> sale_line.quantity = 3.0
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
@@ -192,8 +195,8 @@ Send products::
     Decimal('40')
     >>> shipment.cost_currency == company.currency
     True
-    >>> move, = shipment.inventory_moves
-    >>> move.quantity = 4
+    >>> move = shipment.inventory_moves[0]
+    >>> move.quantity -= 1
     >>> shipment.cost
     Decimal('25')
     >>> shipment.cost_currency == company.currency
