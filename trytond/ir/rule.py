@@ -17,7 +17,7 @@ class RuleGroup(ModelSQL, ModelView):
     __name__ = 'ir.rule.group'
     name = fields.Char('Name', select=True)
     model = fields.Many2One('ir.model', 'Model', select=True,
-        required=True)
+        required=True, ondelete='CASCADE')
     global_p = fields.Boolean('Global', select=True,
         help="Make the rule global \nso every users must follow this rule")
     default_p = fields.Boolean('Default', select=True,
