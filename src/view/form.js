@@ -2203,7 +2203,7 @@
                 o2m_size = field.get_eval(record).length;
                 size_limit = (((field_size !== undefined) &&
                             (field_size !== null)) &&
-                        (o2m_size >= field_size >= 0));
+                        (o2m_size >= field_size) && (field_size >= 0));
             } else {
                 o2m_size = null;
                 size_limit = false;
