@@ -34,6 +34,26 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(
             all(x['name'] >= y['name'] for x, y in zip(rows, rows[1:])))
 
+    @with_transaction()
+    def test_copy_order(self):
+        "Test copy order"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage')
+
+        # Use both order to avoid false positive by chance
+        records = ModelStorage.create(
+            [{'name': n} for n in ['foo', 'bar', 'test']])
+        new_records = ModelStorage.copy(records)
+        reversed_records = list(reversed(records))
+        new_reversed_records = ModelStorage.copy(reversed_records)
+
+        self.assertListEqual(
+            [r.name for r in records],
+            [r.name for r in new_records])
+        self.assertListEqual(
+            [r.name for r in reversed_records],
+            [r.name for r in new_reversed_records])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelStorageTestCase)
