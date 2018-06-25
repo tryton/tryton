@@ -2,10 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from collections import defaultdict
+from functools import wraps
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.modules.stock import StockMixin
 
@@ -13,6 +15,38 @@ __all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
     'LotByLocationContext', 'ShipmentOutReturn',
     'Period', 'PeriodCacheLot',
     'Inventory', 'InventoryLine', 'LotByLocationContext']
+
+
+def check_no_move(func):
+    def find_moves(cls, records, state=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        for sub_records in grouped_slice(records):
+            domain = [
+                ('lot', 'in', [r.id for r in sub_records])
+                ]
+            if state:
+                domain.append(('state', '=', state))
+            moves = Move.search(domain, limit=1, order=[])
+            if moves:
+                return True
+        return False
+
+    @wraps(func)
+    def decorator(cls, *args):
+        transaction = Transaction()
+        if (transaction.user != 0
+                and transaction.context.get('_check_access')):
+            actions = iter(args)
+            for records, values in zip(actions, actions):
+                for field, state, error in cls._modify_no_move:
+                    if field in values:
+                        if find_moves(cls, records, state):
+                            cls.raise_user_error(error)
+                        # No moves for those records
+                        break
+        func(*args)
+    return decorator
 
 
 class Lot(ModelSQL, ModelView, StockMixin):
@@ -27,6 +61,17 @@ class Lot(ModelSQL, ModelView, StockMixin):
         'get_quantity', searcher='search_quantity')
 
     @classmethod
+    def __setup__(cls):
+        super(Lot, cls).__setup__()
+        cls._error_messages.update({
+                'change_product': ("You cannot change the product of a lot "
+                    "which is associated to stock moves."),
+                })
+        cls._modify_no_move = [
+            ('product', None, 'change_product'),
+            ]
+
+    @classmethod
     def get_quantity(cls, lots, name):
         location_ids = Transaction().context.get('locations')
         product_ids = list(set(l.product.id for l in lots))
@@ -38,6 +83,11 @@ class Lot(ModelSQL, ModelView, StockMixin):
         location_ids = Transaction().context.get('locations')
         return cls._search_quantity(name, location_ids, domain,
             grouping=('product', 'lot'))
+
+    @classmethod
+    @check_no_move
+    def write(cls, *args):
+        super(Lot, cls).write(*args)
 
 
 class LotByLocationContext(ModelView):
