@@ -265,24 +265,25 @@ class ServerProxy(xmlrpclib.ServerProxy):
                 }, cls=JSONEncoder, separators=(',', ':'))
 
         try:
-            response = self.__transport.request(
-                self.__host,
-                self.__handler,
-                request,
-                verbose=self.__verbose
-                )
-        except (socket.error, httplib.HTTPException), v:
-            if (isinstance(v, socket.error)
-                    and v.args[0] == errno.EPIPE):
-                raise
-            # try one more time
-            self.__transport.close()
-            response = self.__transport.request(
-                self.__host,
-                self.__handler,
-                request,
-                verbose=self.__verbose
-                )
+            try:
+                response = self.__transport.request(
+                    self.__host,
+                    self.__handler,
+                    request,
+                    verbose=self.__verbose
+                    )
+            except (socket.error, httplib.HTTPException), v:
+                if (isinstance(v, socket.error)
+                        and v.args[0] == errno.EPIPE):
+                    raise
+                # try one more time
+                self.__transport.close()
+                response = self.__transport.request(
+                    self.__host,
+                    self.__handler,
+                    request,
+                    verbose=self.__verbose
+                    )
         except xmlrpclib.ProtocolError, e:
             raise Fault(str(e.errcode), e.errmsg)
         except:
