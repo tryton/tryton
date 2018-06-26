@@ -6,8 +6,7 @@ from trytond.pool import PoolMeta, Pool
 __all__ = ['TimesheetWork']
 
 
-class TimesheetWork:
-    __metaclass__ = PoolMeta
+class TimesheetWork(metaclass=PoolMeta):
     __name__ = 'timesheet.work'
 
     @classmethod

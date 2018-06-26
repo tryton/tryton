@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import division
 
 import datetime
 
@@ -322,7 +321,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     def sum_tree(cls, works, values, parents):
         result = values.copy()
         works = set((w.id for w in works))
-        leafs = works - set(parents.itervalues())
+        leafs = works - set(parents.values())
         while leafs:
             for work in leafs:
                 works.remove(work)
@@ -402,7 +401,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             default = {}
 
         timesheet_default = default.copy()
-        for key in timesheet_default.keys():
+        for key in list(timesheet_default.keys()):
             if key in cls._fields:
                 del timesheet_default[key]
         timesheet_default['children'] = None
