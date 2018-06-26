@@ -28,8 +28,7 @@ def classification_tree(name):
     return ClassificationTreeMixin
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     classification = fields.Reference('Classification',
@@ -58,8 +57,7 @@ class Template:
         return [(None, '')] + [(m.model, m.name) for m in models]
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
     @classmethod
