@@ -418,7 +418,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             if residual_value > 0 and asset_line is not None:
                 asset_line.depreciation += residual_value
                 asset_line.accumulated_depreciation += residual_value
-        for asset_line in amounts.itervalues():
+        for asset_line in amounts.values():
             asset_line.actual_value = (self.value -
                 asset_line.accumulated_depreciation)
         return amounts
@@ -432,7 +432,7 @@ class Asset(Workflow, ModelSQL, ModelView):
 
         lines = []
         for asset in assets:
-            for date, line in asset.depreciate().iteritems():
+            for date, line in asset.depreciate().items():
                 line.asset = asset.id
                 line.date = date
                 lines.append(line)
@@ -903,16 +903,14 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def asset_lines(self):
-                return filter(
-                    lambda l: self.start_date < l.date <= self.end_date,
-                    self.asset.lines)
+                return [l for l in self.asset.lines if self.start_date < l.date <= self.end_date]
 
             @cached_property
             def update_lines(self):
                 filter_ = lambda l: (l.account.kind == 'other'
                     and self.start_date < l.move.date <= self.end_date)
-                return filter(filter_,
-                    (l for m in self.asset.update_moves for l in m.lines))
+                return list(filter(filter_,
+                    (l for m in self.asset.update_moves for l in m.lines)))
 
             @cached_property
             def start_fixed_value(self):

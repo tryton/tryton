@@ -4,7 +4,7 @@ Installing trytond_account_asset
 Prerequisites
 -------------
 
- * Python 2.7 or later (http://www.python.org/)
+ * Python 3.4 or later (http://www.python.org/)
  * python-dateutil (http://labix.org/python-dateutil)
  * cached-property (https://github.com/pydanny/cached-property)
  * trytond (http://www.tryton.org/)

@@ -11,8 +11,7 @@ __all__ = ['Configuration', 'ConfigurationAssetSequence', 'Move', 'Period',
     'Journal']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
     asset_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Asset Reference Sequence", required=True,
@@ -67,8 +66,7 @@ class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
             return None
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
     @classmethod
@@ -79,8 +77,7 @@ class Move:
         return origins
 
 
-class Period:
-    __metaclass__ = PoolMeta
+class Period(metaclass=PoolMeta):
     __name__ = 'account.period'
 
     @classmethod
@@ -122,8 +119,7 @@ class Period:
         super(Period, cls).close(periods)
 
 
-class Journal:
-    __metaclass__ = PoolMeta
+class Journal(metaclass=PoolMeta):
     __name__ = 'account.journal'
 
     @classmethod

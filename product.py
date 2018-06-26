@@ -10,8 +10,7 @@ from trytond.modules.account_product.product import (
 __all__ = ['Category', 'CategoryAccount', 'Template', 'Product']
 
 
-class Category:
-    __metaclass__ = PoolMeta
+class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     account_depreciation = fields.MultiValue(fields.Many2One('account.account',
             'Account Depreciation', domain=[
@@ -55,8 +54,7 @@ class Category:
         pass
 
 
-class CategoryAccount:
-    __metaclass__ = PoolMeta
+class CategoryAccount(metaclass=PoolMeta):
     __name__ = 'product.category.account'
     account_depreciation = fields.Many2One(
         'account.account', "Account Depreciation",
@@ -96,8 +94,7 @@ class CategoryAccount:
             field_names, value_names, fields)
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     depreciable = fields.Boolean('Depreciable', states={
             'readonly': ~Eval('active', True),
@@ -124,8 +121,7 @@ class Template:
         pass
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
     account_depreciation_used = template_property('account_depreciation_used')
