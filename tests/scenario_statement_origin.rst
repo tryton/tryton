@@ -107,4 +107,4 @@ Statement can not be posted until all origins are finished::
     >>> line.description = "Bank Fees"
     >>> statement.click('post')
     >>> statement.state
-    u'posted'
+    'posted'

@@ -5,8 +5,7 @@ from trytond.pool import PoolMeta
 __all__ = ['PartyReplace']
 
 
-class PartyReplace:
-    __metaclass__ = PoolMeta
+class PartyReplace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod

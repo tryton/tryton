@@ -309,7 +309,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                         and (line.amount >= 0) == (amount_to_pay <= 0)):
                     if abs(line.amount) > abs(amount_to_pay):
                         new_line = Line()
-                        for field_name, field in Line._fields.iteritems():
+                        for field_name, field in Line._fields.items():
                             if field_name == 'id':
                                 continue
                             try:
@@ -520,7 +520,7 @@ class Statement(Workflow, ModelSQL, ModelView):
             date=key['date'],
             origin=self,
             company=self.company,
-            description=unicode(key['number']),
+            description=str(key['number']),
             )
 
     def _get_move_line(self, amount, amount_second_currency, lines):
@@ -1074,7 +1074,7 @@ class ImportStatement(Wizard):
             statement.origin_file = fields.Binary.cast(self.start.file_)
         Statement.save(statements)
 
-        data = {'res_id': map(int, statements)}
+        data = {'res_id': list(map(int, statements))}
         if len(statements) == 1:
             action['views'].reverse()
         return action, data

@@ -12,8 +12,7 @@ from trytond.tools import grouped_slice, reduce_ids
 __all__ = ['Journal', 'Move']
 
 
-class Journal:
-    __metaclass__ = PoolMeta
+class Journal(metaclass=PoolMeta):
     __name__ = 'account.journal'
 
     @classmethod
@@ -22,8 +21,7 @@ class Journal:
         cls.type.selection.append(('statement', "Statement"))
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
     @classmethod

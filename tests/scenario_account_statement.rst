@@ -68,7 +68,7 @@ Create 2 customer invoices::
     >>> invoice_line.description = 'Test'
     >>> customer_invoice1.click('post')
     >>> customer_invoice1.state
-    u'posted'
+    'posted'
 
     >>> customer_invoice2 = Invoice(type='out')
     >>> customer_invoice2.party = customer
@@ -80,7 +80,7 @@ Create 2 customer invoices::
     >>> invoice_line.description = 'Test'
     >>> customer_invoice2.click('post')
     >>> customer_invoice2.state
-    u'posted'
+    'posted'
 
 Create 1 customer credit note::
 
@@ -94,7 +94,7 @@ Create 1 customer credit note::
     >>> invoice_line.description = 'Test'
     >>> customer_credit_note.click('post')
     >>> customer_credit_note.state
-    u'posted'
+    'posted'
 
 Create 1 supplier invoices::
 
@@ -109,7 +109,7 @@ Create 1 supplier invoices::
     >>> supplier_invoice.invoice_date = today
     >>> supplier_invoice.click('post')
     >>> supplier_invoice.state
-    u'posted'
+    'posted'
 
 Create statement::
 
@@ -208,60 +208,60 @@ Validate statement::
 
     >>> statement.click('validate_statement')
     >>> statement.state
-    u'validated'
+    'validated'
 
 Cancel statement::
 
     >>> statement.click('cancel')
     >>> statement.state
-    u'cancel'
-    >>> filter(None, [l.move for l in statement.lines])
+    'cancel'
+    >>> [l.move for l in statement.lines if l.move]
     []
 
 Reset to draft, validate and post statement::
 
     >>> statement.click('draft')
     >>> statement.state
-    u'draft'
+    'draft'
     >>> statement.click('validate_statement')
     >>> statement.state
-    u'validated'
+    'validated'
     >>> statement.click('post')
     >>> statement.state
-    u'posted'
+    'posted'
 
 Test posted moves::
 
     >>> statement_line = statement.lines[0]
     >>> move = statement_line.move
     >>> move.description
-    u'0001'
+    '0001'
     >>> sorted((l.description for l in move.lines))
-    [u'', u'description', u'other description']
+    ['', 'description', 'other description']
 
     >>> statement_line = statement.lines[2]
     >>> move = statement_line.move
     >>> move.description
-    u'0002'
+    '0002'
     >>> sorted((l.description for l in move.lines))
-    [u'description', u'description']
+    ['description', 'description']
 
 Test invoice state::
 
     >>> customer_invoice1.reload()
     >>> customer_invoice1.state
-    u'paid'
+    'paid'
     >>> customer_invoice2.reload()
     >>> customer_invoice2.state
-    u'posted'
+    'posted'
     >>> customer_invoice2.amount_to_pay
     Decimal('70.00')
     >>> customer_credit_note.reload()
     >>> customer_credit_note.state
-    u'paid'
+    'paid'
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
-    u'paid'
+    'paid'
 
 Test statement report::
 
@@ -280,7 +280,7 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> invoice_line.description = 'Test'
     >>> customer_invoice3.click('post')
     >>> customer_invoice3.state
-    u'posted'
+    'posted'
 
     >>> supplier_invoice2 = Invoice(type='in')
     >>> supplier_invoice2.party = supplier
@@ -293,7 +293,7 @@ Let's test the negative amount version of the supplier/customer invoices::
     >>> supplier_invoice2.invoice_date = today
     >>> supplier_invoice2.click('post')
     >>> supplier_invoice2.state
-    u'posted'
+    'posted'
 
     >>> statement = Statement(name='test negative',
     ...     journal=statement_journal,
@@ -336,7 +336,7 @@ Testing the use of an invoice in multiple statements::
     >>> invoice_line.description = 'Test'
     >>> customer_invoice4.click('post')
     >>> customer_invoice4.state
-    u'posted'
+    'posted'
 
     >>> statement1 = Statement(name='1', journal=statement_journal)
     >>> statement1.end_balance = Decimal(380)
@@ -367,7 +367,7 @@ Testing the use of an invoice in multiple statements::
     ...     name=str(statement2.lines[0].id), always=True).save()
     >>> statement1.click('validate_statement')
     >>> statement1.state
-    u'validated'
+    'validated'
 
     >>> statement1.reload()
     >>> bool(statement1.lines[0].invoice)
@@ -466,3 +466,4 @@ Validate empty statement::
     >>> statement = Statement(name='empty', journal=statement_journal)
     >>> statement.end_balance = statement.start_balance
     >>> statement.click('validate_statement')
+
