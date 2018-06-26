@@ -31,8 +31,7 @@ STATES = [
     ]
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'purchase.configuration'
     purchase_requisition_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Purchase Requisition Sequence", required=True,
@@ -55,8 +54,7 @@ class Configuration:
             ).default_purchase_requisition_sequence()
 
 
-class ConfigurationSequence:
-    __metaclass__ = PoolMeta
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'purchase.configuration.sequence'
     purchase_requisition_sequence = fields.Many2One(
         'ir.sequence', "Purchase Requisition Sequence", required=True,
@@ -545,8 +543,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             )
 
 
-class PurchaseRequest:
-    __metaclass__ = PoolMeta
+class PurchaseRequest(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     @classmethod
@@ -565,8 +562,7 @@ class PurchaseRequest:
         return currency
 
 
-class HandlePurchaseCancellationException:
-    __metaclass__ = PoolMeta
+class HandlePurchaseCancellationException(metaclass=PoolMeta):
     __name__ = 'purchase.request.handle.purchase.cancellation'
 
     def transition_reset(self):
@@ -600,8 +596,7 @@ class CreatePurchase(Wizard):
         return key
 
 
-class Purchase:
-    __metaclass__ = PoolMeta
+class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
     @classmethod

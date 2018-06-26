@@ -160,7 +160,7 @@ Create purchase requisition with supplier and price::
     >>> requisition.warehouse = warehouse_loc
     >>> requisition.click('wait')
     >>> requisition.state
-    u'waiting'
+    'waiting'
 
 Approve workflow by requisition user raise an exception because he's not in
 approval_group::
@@ -185,7 +185,7 @@ Approve workflow with user in approval_group::
     >>> set_user(requisition_approval_user)
     >>> requisition.click('approve')
     >>> requisition.state
-    u'processing'
+    'processing'
     >>> requisition.total_amount
     Decimal('20.00')
 
@@ -195,7 +195,7 @@ Create Purchase order from Request::
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> pr.state
-    u'draft'
+    'draft'
     >>> pr.product == product
     True
     >>> pr.party == supplier
@@ -210,9 +210,9 @@ Create Purchase order from Request::
     True
     >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
     >>> pr.state
-    u'purchased'
+    'purchased'
     >>> requisition.state
-    u'processing'
+    'processing'
 
 Cancel the purchase order::
 
@@ -220,13 +220,13 @@ Cancel the purchase order::
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
     >>> purchase.click('cancel')
     >>> purchase.state
-    u'cancel'
+    'cancel'
     >>> pr.reload()
     >>> pr.state
-    u'exception'
+    'exception'
     >>> requisition.reload()
     >>> requisition.state
-    u'done'
+    'done'
 
 Handle request exception::
 
@@ -234,16 +234,16 @@ Handle request exception::
     ...     'purchase.request.handle.purchase.cancellation', [pr])
     >>> handle_exception.execute('reset')
     >>> pr.state
-    u'draft'
+    'draft'
     >>> requisition.reload()
     >>> requisition.state
-    u'processing'
+    'processing'
     >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
     >>> pr.state
-    u'purchased'
+    'purchased'
     >>> requisition.reload()
     >>> requisition.state
-    u'processing'
+    'processing'
 
 Confirm the purchase order::
 
@@ -251,14 +251,14 @@ Confirm the purchase order::
     >>> purchase.click('quote')
     >>> requisition.reload()
     >>> requisition.state
-    u'processing'
+    'processing'
     >>> purchase.click('confirm')
     >>> purchase.reload()
     >>> purchase.state
-    u'confirmed'
+    'confirmed'
     >>> requisition.reload()
     >>> requisition.state
-    u'done'
+    'done'
 
 Try to delete requisition done::
 
@@ -312,7 +312,7 @@ Create purchase requisition with two different suppliers::
     >>> purchase.click('cancel')
     >>> requisition.reload()
     >>> requisition.state
-    u'processing'
+    'processing'
     >>> purchase, = Purchase.find([
     ...         ('state', '=', 'draft'),
     ...         ('party', '=', supplier2.id),
@@ -321,7 +321,7 @@ Create purchase requisition with two different suppliers::
     >>> purchase.click('confirm')
     >>> requisition.reload()
     >>> requisition.state
-    u'done'
+    'done'
 
 Create purchase requisition then cancel::
 
@@ -335,7 +335,7 @@ Create purchase requisition then cancel::
     >>> requisition_line.quantity = 4.0
     >>> requisition.click('cancel')
     >>> requisition.state
-    u'cancel'
+    'cancel'
 
 Create purchase requisition, wait then reject::
 
@@ -349,9 +349,9 @@ Create purchase requisition, wait then reject::
     >>> requisition_line.quantity = 4.0
     >>> requisition.click('wait')
     >>> requisition.state
-    u'waiting'
+    'waiting'
 
     >>> set_user(requisition_approval_user)
     >>> requisition.click('reject')
     >>> requisition.state
-    u'rejected'
+    'rejected'
