@@ -8,9 +8,8 @@ __all__ = ['ProductAttributeSet', 'ProductAttribute',
     'ProductAttributeAttributeSet', 'Template', 'Product']
 
 
-class ProductAttributeSet(ModelSQL, ModelView):
+class ProductAttributeSet(ModelSQL, ModelView, metaclass=PoolMeta):
     "Product Attribute Set"
-    __metaclass__ = PoolMeta
     __name__ = 'product.attribute.set'
     name = fields.Char('Name', required=True, translate=True,
         help="The main identifier of product attribute set.")
@@ -19,18 +18,16 @@ class ProductAttributeSet(ModelSQL, ModelView):
         help="Add attributes to the set.")
 
 
-class ProductAttribute(DictSchemaMixin, ModelSQL, ModelView):
+class ProductAttribute(DictSchemaMixin, ModelSQL, ModelView, metaclass=PoolMeta):
     "Product Attribute"
-    __metaclass__ = PoolMeta
     __name__ = 'product.attribute'
     sets = fields.Many2Many('product.attribute-product.attribute-set',
         'attribute', 'attribute_set', 'Sets',
         help="Add sets to the attribute.")
 
 
-class ProductAttributeAttributeSet(ModelSQL):
+class ProductAttributeAttributeSet(ModelSQL, metaclass=PoolMeta):
     "Product Attribute - Set"
-    __metaclass__ = PoolMeta
     __name__ = 'product.attribute-product.attribute-set'
     attribute = fields.Many2One('product.attribute', 'Attribute',
         ondelete='CASCADE', select=True, required=True)
@@ -38,15 +35,13 @@ class ProductAttributeAttributeSet(ModelSQL):
         ondelete='CASCADE', select=True, required=True)
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     attribute_set = fields.Many2One('product.attribute.set', 'Attribute Set',
         help="Select a set of attributes to apply on the variants.")
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     attributes = fields.Dict('product.attribute', 'Attributes',
         domain=[
