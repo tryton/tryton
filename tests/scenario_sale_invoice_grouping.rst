@@ -117,7 +117,7 @@ Sale some products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -126,7 +126,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the invoices::
 
@@ -137,10 +137,10 @@ Check the invoices::
     2
     >>> invoice = invoices[0]
     >>> invoice.type
-    u'out'
+    'out'
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
 
 Now we'll use the same scenario with the grouped customer::
 
@@ -156,7 +156,7 @@ Now we'll use the same scenario with the grouped customer::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -171,7 +171,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the invoices::
 
@@ -191,7 +191,7 @@ Check the invoices::
     2.0
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
 
 Create a manual invoice::
 
@@ -214,7 +214,7 @@ Check that a new sale won't be grouped with the manual invoice::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the invoices::
 
