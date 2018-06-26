@@ -8,8 +8,7 @@ from trytond.pyson import Eval
 __all__ = ['Configuration', 'ConfigurationDefaultAccount']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
 
     default_category_account_expense = fields.MultiValue(fields.Many2One(
@@ -34,8 +33,7 @@ class Configuration:
         return super(Configuration, cls).multivalue_model(field)
 
 
-class ConfigurationDefaultAccount:
-    __metaclass__ = PoolMeta
+class ConfigurationDefaultAccount(metaclass=PoolMeta):
     __name__ = 'account.configuration.default_account'
     default_category_account_expense = fields.Many2One(
         'account.account', "Default Account Expense",

@@ -49,8 +49,7 @@ def template_property(field_name):
     return prop
 
 
-class Category(CompanyMultiValueMixin):
-    __metaclass__ = PoolMeta
+class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'product.category'
     accounting = fields.Boolean('Accounting', select=True,
         states={
@@ -305,8 +304,7 @@ class CategorySupplierTax(ModelSQL):
         super(CategorySupplierTax, cls).__register__(module_name)
 
 
-class Template(CompanyMultiValueMixin):
-    __metaclass__ = PoolMeta
+class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'product.template'
     account_category = fields.Many2One('product.category', 'Account Category',
         domain=[
@@ -368,8 +366,7 @@ class Template(CompanyMultiValueMixin):
         return taxes
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     account_expense_used = template_property('account_expense_used')
     account_revenue_used = template_property('account_revenue_used')
@@ -399,8 +396,7 @@ class TemplateAccountCategory(ModelSQL):
             where=template.account_category != Null)
 
 
-class TemplateCategoryAll:
-    __metaclass__ = PoolMeta
+class TemplateCategoryAll(metaclass=PoolMeta):
     __name__ = 'product.template-product.category.all'
 
     @classmethod

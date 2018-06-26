@@ -8,8 +8,7 @@ from trytond.transaction import Transaction
 __all__ = ['CreateChart', 'CreateChartProperties']
 
 
-class CreateChartProperties:
-    __metaclass__ = PoolMeta
+class CreateChartProperties(metaclass=PoolMeta):
     __name__ = 'account.create_chart.properties'
 
     category_account_expense = fields.Many2One(
@@ -28,8 +27,7 @@ class CreateChartProperties:
         depends=['company'])
 
 
-class CreateChart:
-    __metaclass__ = PoolMeta
+class CreateChart(metaclass=PoolMeta):
     __name__ = 'account.create_chart'
 
     def transition_create_properties(self):
