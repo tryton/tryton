@@ -25,8 +25,7 @@ def get_sale_methods(field_name):
     return func
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
     sale_shipment_cost_method = fields.MultiValue(sale_shipment_cost_method)
     get_sale_shipment_cost_methods = get_sale_methods('shipment_cost_method')
@@ -44,8 +43,7 @@ class Configuration:
             'sale_shipment_cost_method').default_sale_shipment_cost_method()
 
 
-class ConfigurationSaleMethod:
-    __metaclass__ = PoolMeta
+class ConfigurationSaleMethod(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sale_method'
     sale_shipment_cost_method = sale_shipment_cost_method
     get_sale_shipment_cost_methods = get_sale_methods('shipment_cost_method')
@@ -75,8 +73,7 @@ class ConfigurationSaleMethod:
         return 'order'
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     carrier = fields.Many2One('carrier', 'Carrier',
         domain=[
@@ -318,8 +315,7 @@ class Sale:
         return invoice
 
 
-class SaleLine:
-    __metaclass__ = PoolMeta
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
     shipment_cost = fields.Numeric('Shipment Cost', digits=price_digits)
 
@@ -337,8 +333,7 @@ class SaleLine:
         return quantity
 
 
-class ReturnSale:
-    __metaclass__ = PoolMeta
+class ReturnSale(metaclass=PoolMeta):
     __name__ = 'sale.return_sale'
 
     def do_return_(self, action):
@@ -359,8 +354,7 @@ class ReturnSale:
         return action, data
 
 
-class Promotion:
-    __metaclass__ = PoolMeta
+class Promotion(metaclass=PoolMeta):
     __name__ = 'sale.promotion'
 
     def get_context_formula(self, sale_line):

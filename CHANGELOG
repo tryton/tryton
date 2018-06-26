@@ -1,3 +1,4 @@
+* Remove support for Python 2.7
 * Invoice shipment cost with cost method on order and invoice method on
   shipment when at least one shipment is done.
 

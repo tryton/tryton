@@ -129,7 +129,7 @@ Sale products with cost on shipment::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.untaxed_amount
     Decimal('103.00')
 
@@ -150,16 +150,16 @@ Send products::
     >>> shipment.cost_currency == company.currency
     True
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_force')
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('pack')
     >>> shipment.state
-    u'packed'
+    'packed'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 Check customer invoice::
 
@@ -193,7 +193,7 @@ Sale products with cost on order::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.untaxed_amount
     Decimal('63.00')
 
@@ -241,7 +241,7 @@ Sale products with cost on order and invoice method on shipment::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check no customer invoice::
 
@@ -255,7 +255,7 @@ Send products::
     >>> shipment.click('pack')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 Check customer invoice::
 
