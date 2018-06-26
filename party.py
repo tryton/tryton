@@ -7,8 +7,7 @@ from trytond.model import fields
 __all__ = ['Party', 'PartyReplace']
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     bank_accounts = fields.Many2Many('bank.account-party.party', 'owner',
         'account', 'Bank Accounts')
@@ -26,8 +25,7 @@ class Party:
             ]
 
 
-class PartyReplace:
-    __metaclass__ = PoolMeta
+class PartyReplace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
