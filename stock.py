@@ -8,9 +8,8 @@ from trytond.pool import PoolMeta
 __all__ = ['Location']
 
 
-class Location(sequence_ordered()):
+class Location(sequence_ordered(), metaclass=PoolMeta):
     "Stock Location"
-    __metaclass__ = PoolMeta
     __name__ = 'stock.location'
 
     @classmethod
