@@ -50,14 +50,12 @@ class Fee(DeactivableMixin, ModelSQL, ModelView):
         return amount, currency
 
 
-class Level:
-    __metaclass__ = PoolMeta
+class Level(metaclass=PoolMeta):
     __name__ = 'account.dunning.level'
     fee = fields.Many2One('account.dunning.fee', 'Fee')
 
 
-class Dunning:
-    __metaclass__ = PoolMeta
+class Dunning(metaclass=PoolMeta):
     __name__ = 'account.dunning'
 
     fees = fields.One2Many(
@@ -174,8 +172,7 @@ class FeeDunningLevel(ModelSQL, ModelView):
     # TODO create move with taxes on reconcile of process move line
 
 
-class Letter:
-    __metaclass__ = PoolMeta
+class Letter(metaclass=PoolMeta):
     __name__ = 'account.dunning.letter'
 
     @classmethod
