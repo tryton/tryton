@@ -122,10 +122,10 @@ Subscribe::
 
     >>> subscription.click('quote')
     >>> subscription.state
-    u'quotation'
+    'quotation'
     >>> subscription.click('run')
     >>> subscription.state
-    u'running'
+    'running'
 
 Create line consumption::
 
@@ -167,12 +167,12 @@ Close subscription::
 
     >>> subscription.click('draft')
     >>> subscription.state
-    u'draft'
+    'draft'
     >>> subscription.end_date = datetime.date(2016, 1, 31)
     >>> subscription.click('quote')
     >>> subscription.click('run')
     >>> subscription.state
-    u'running'
+    'running'
 
     >>> line_consumption_create = Wizard(
     ...     'sale.subscription.line.consumption.create')
@@ -186,7 +186,7 @@ Close subscription::
     >>> line, = subscription.lines
     >>> line.next_consumption_date
     >>> subscription.state
-    u'closed'
+    'closed'
 
 Create final subscription invoice::
 

@@ -321,11 +321,11 @@ class Subscription(Workflow, ModelSQL, ModelView):
             lines[subscription] = Consumption.get_invoice_lines(
                 consumptions, invoice)
 
-        all_invoices = invoices.values()
+        all_invoices = list(invoices.values())
         Invoice.save(all_invoices)
 
         all_invoice_lines = []
-        for subscription, invoice in invoices.iteritems():
+        for subscription, invoice in invoices.items():
             invoice_lines, _ = lines[subscription]
             for line in invoice_lines:
                 line.invoice = invoice
@@ -333,7 +333,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
         InvoiceLine.save(all_invoice_lines)
 
         all_consumptions = []
-        for values in lines.itervalues():
+        for values in lines.values():
             for invoice_line, consumptions in zip(*values):
                 for consumption in consumptions:
                     assert not consumption.invoice_line

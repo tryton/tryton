@@ -7,8 +7,7 @@ from trytond.pyson import Eval
 __all__ = ['Configuration', 'ConfigurationSequence']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     subscription_sequence = fields.MultiValue(fields.Many2One(
@@ -32,8 +31,7 @@ class Configuration:
             'subscription_sequence').default_subscription_sequence()
 
 
-class ConfigurationSequence:
-    __metaclass__ = PoolMeta
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sequence'
     subscription_sequence = fields.Many2One(
         'ir.sequence', "Subscription Sequence", required=True,
