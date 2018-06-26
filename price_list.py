@@ -147,7 +147,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         try:
             if not isinstance(self.get_unit_price(**context), Decimal):
                 raise ValueError
-        except Exception, exception:
+        except Exception as exception:
             self.raise_user_error('invalid_formula', {
                     'formula': self.formula,
                     'line': self.rec_name,
