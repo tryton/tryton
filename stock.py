@@ -24,8 +24,7 @@ shelf_life_delay = fields.TimeDelta(
     help="The delay before removal from the forecast.")
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'stock.configuration'
 
     shelf_life_delay = fields.MultiValue(shelf_life_delay)
@@ -44,8 +43,7 @@ class ConfigurationLotShelfLife(ModelSQL, ValueMixin):
     shelf_life_delay = shelf_life_delay
 
 
-class Lot:
-    __metaclass__ = PoolMeta
+class Lot(metaclass=PoolMeta):
     __name__ = 'stock.lot'
 
     shelf_life_expiration_date = fields.Date('Shelf Life Expiration Date',
@@ -146,8 +144,7 @@ class Lot:
                         })
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     @classmethod
@@ -327,8 +324,7 @@ class Move:
         return query
 
 
-class Period:
-    __metaclass__ = PoolMeta
+class Period(metaclass=PoolMeta):
     __name__ = 'stock.period'
 
     @classmethod

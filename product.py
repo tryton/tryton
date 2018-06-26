@@ -9,8 +9,7 @@ from .stock import DATE_STATE
 __all__ = ['Template', 'Product']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     shelf_life_state = fields.Selection(
@@ -39,6 +38,5 @@ class Template:
         return 'none'
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
