@@ -10,8 +10,7 @@ __all__ = ['Configuration', 'ConfigurationSequence', 'Package', 'Type', 'Move',
     'ShipmentOut', 'ShipmentInReturn', 'PackageLabel']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'stock.configuration'
     package_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Package Sequence", required=True,
@@ -33,8 +32,7 @@ class Configuration:
             'package_sequence').default_package_sequence()
 
 
-class ConfigurationSequence:
-    __metaclass__ = PoolMeta
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'stock.configuration.sequence'
     package_sequence = fields.Many2One(
         'ir.sequence', "Package Sequence", required=True,
@@ -136,8 +134,7 @@ class Type(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     package = fields.Many2One('stock.package', 'Package', select=True)
 
@@ -179,8 +176,7 @@ class PackageMixin(object):
         raise NotImplementedError
 
 
-class ShipmentOut(PackageMixin, object):
-    __metaclass__ = PoolMeta
+class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -210,8 +206,7 @@ class ShipmentOut(PackageMixin, object):
         return (m for m in self.outgoing_moves if m.state != 'cancel')
 
 
-class ShipmentInReturn(PackageMixin, object):
-    __metaclass__ = PoolMeta
+class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
 
     @classmethod
