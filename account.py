@@ -18,8 +18,7 @@ __all__ = ['TaxTemplate', 'TaxRuleTemplate',
     'AccountFrFEC', 'AccountFrFECStart', 'AccountFrFECResult']
 
 
-class TaxTemplate:
-    __metaclass__ = PoolMeta
+class TaxTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.template'
 
     @classmethod
@@ -55,8 +54,7 @@ class TaxTemplate:
         super(TaxTemplate, cls).__register__(module_name)
 
 
-class TaxRuleTemplate:
-    __metaclass__ = PoolMeta
+class TaxRuleTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.rule.template'
 
     @classmethod
@@ -96,10 +94,7 @@ class AccountFrFEC(Wizard):
             ])
 
     def transition_generate(self):
-        if sys.version_info < (3,):
-            fec = BytesIO()
-        else:
-            fec = StringIO()
+        fec = StringIO()
         writer = self.get_writer(fec)
         writer.writerow(self.get_header())
         format_date = self.get_format_date()
@@ -108,17 +103,13 @@ class AccountFrFEC(Wizard):
         def replace_delimiter(c):
             delimiter = writer.dialect.delimiter
             return (c or '').replace(delimiter, ' ')
-        if sys.version_info < (3,):
-            def convert(c):
-                return replace_delimiter(c).encode('utf-8')
-        else:
-            convert = replace_delimiter
+        convert = replace_delimiter
 
         for row in self.get_start_balance():
-            writer.writerow(map(convert, row))
+            writer.writerow(list(map(convert, row)))
         for line in self.get_lines():
             row = self.get_row(line, format_date, format_number)
-            writer.writerow(map(convert, row))
+            writer.writerow(list(map(convert, row)))
         value = fec.getvalue()
         if not isinstance(value, bytes):
             value = value.encode('utf-8')
@@ -206,7 +197,7 @@ class AccountFrFEC(Wizard):
                 ('end_date', '<', self.start.fiscalyear.start_date),
                 ('company', '=', company.id),
                 ])
-        fiscalyear_ids = map(int, fiscalyears)
+        fiscalyear_ids = list(map(int, fiscalyears))
 
         query = (account
             .join(line, condition=line.account == account.id)

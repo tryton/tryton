@@ -111,5 +111,6 @@ Generate FEC::
     >>> FEC.execute('generate')
     >>> FEC.form.filename
     >>> file = os.path.join(os.path.dirname(__file__), 'FEC.csv')
-    >>> FEC.form.file.decode('utf-8') == io.open(file, mode='rb').read().decode('utf-8')
+    >>> with io.open(file, mode='rb') as fp:
+    ...     FEC.form.file.decode('utf-8') == fp.read().decode('utf-8')
     True

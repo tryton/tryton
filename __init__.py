@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from account import *
+from .account import *
 
 
 def register():
