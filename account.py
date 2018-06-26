@@ -9,8 +9,7 @@ from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
 
-class TaxTemplate:
-    __metaclass__ = PoolMeta
+class TaxTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.template'
 
     ec_sales_list_code = fields.Char("EC Sales List Code")
@@ -21,8 +20,7 @@ class TaxTemplate:
         return value
 
 
-class Tax:
-    __metaclass__ = PoolMeta
+class Tax(metaclass=PoolMeta):
     __name__ = 'account.tax'
 
     ec_sales_list_code = fields.Char("EC Sales List Code",
