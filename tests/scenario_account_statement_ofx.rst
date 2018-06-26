@@ -85,7 +85,8 @@ Create Statement Journal::
 Import OFX file::
 
     >>> statement_import = Wizard('account.statement.import')
-    >>> ofx = file_open('account_statement_ofx/tests/OFX.txt', mode='rb').read()
+    >>> with file_open('account_statement_ofx/tests/OFX.txt', mode='rb') as fp:
+    ...     ofx = fp.read()
     >>> statement_import.form.file_ = ofx
     >>> statement_import.form.file_format = 'ofx'
     >>> statement_import.execute('import_')
@@ -95,7 +96,7 @@ Check Statement::
     >>> Statement = Model.get('account.statement')
     >>> statement, = Statement.find([])
     >>> statement.name
-    u'01234567890'
+    '01234567890'
     >>> statement.date
     datetime.date(2018, 2, 22)
     >>> statement.total_amount
@@ -106,7 +107,7 @@ Check Statement::
     1
     >>> origin, = statement.origins
     >>> origin.number
-    u'0001'
+    '0001'
     >>> origin.date
     datetime.date(2018, 2, 21)
     >>> origin.amount
@@ -114,6 +115,6 @@ Check Statement::
     >>> origin.party == michael_scott_paper
     True
     >>> origin.description
-    u'COMMUNICATION'
+    'COMMUNICATION'
     >>> origin.informations['ofx_type']
-    u'credit'
+    'credit'

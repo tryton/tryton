@@ -7,8 +7,7 @@ import ofxparse
 from trytond.pool import PoolMeta, Pool
 
 
-class StatementImportStart:
-    __metaclass__ = PoolMeta
+class StatementImportStart(metaclass=PoolMeta):
     __name__ = 'account.statement.import.start'
 
     @classmethod
@@ -17,8 +16,7 @@ class StatementImportStart:
         cls.file_format.selection.append(('ofx', "OFX"))
 
 
-class StatementImport:
-    __metaclass__ = PoolMeta
+class StatementImport(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
 
     @classmethod
