@@ -11,8 +11,7 @@ from trytond.wizard import Wizard, StateView, StateTransition, Button
 __all__ = ['Journal', 'Payment', 'Succeed', 'SucceedStart']
 
 
-class Journal:
-    __metaclass__ = PoolMeta
+class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
     clearing_account = fields.Many2One('account.account', 'Clearing Account',
         domain=[('party_required', '=', False)],
@@ -52,8 +51,7 @@ class Journal:
         Move.post(moves)
 
 
-class Payment:
-    __metaclass__ = PoolMeta
+class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
     account = fields.Many2One(
         'account.account', "Account", ondelete='RESTRICT',
@@ -237,7 +235,7 @@ class Payment:
         if to_delete:
             Move.delete(to_delete)
         for party in to_reconcile:
-            for lines in to_reconcile[party].itervalues():
+            for lines in to_reconcile[party].values():
                 Line.reconcile(lines)
 
 

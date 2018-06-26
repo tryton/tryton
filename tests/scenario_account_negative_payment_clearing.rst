@@ -90,21 +90,21 @@ Pay the line::
     Decimal('50.00')
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.reload()
     >>> payment.state
-    u'processing'
+    'processing'
 
 Succeed payment::
 
     >>> succeed = Wizard('account.payment.succeed', [payment])
     >>> succeed.execute('succeed')
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> payment.clearing_move.state
-    u'draft'
+    'draft'
     >>> payable.reload()
     >>> payable.balance
     Decimal('0.00')

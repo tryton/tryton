@@ -8,8 +8,7 @@ from trytond.transaction import Transaction
 __all__ = ['Statement', 'StatementLine']
 
 
-class Statement:
-    __metaclass__ = PoolMeta
+class Statement(metaclass=PoolMeta):
     __name__ = 'account.statement'
 
     @classmethod
@@ -63,8 +62,7 @@ class Statement:
         return key + (('payment', line.payment),)
 
 
-class StatementLine:
-    __metaclass__ = PoolMeta
+class StatementLine(metaclass=PoolMeta):
     __name__ = 'account.statement.line'
     payment = fields.Many2One('account.payment', 'Payment',
         domain=[

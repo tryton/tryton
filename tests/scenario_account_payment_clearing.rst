@@ -97,12 +97,12 @@ Partially pay the line::
     >>> payment.amount = Decimal('30.0')
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.reload()
     >>> payment.state
-    u'processing'
+    'processing'
 
 Succeed payment::
 
@@ -112,11 +112,11 @@ Succeed payment::
     >>> succeed.form.date = first
     >>> succeed.execute('succeed')
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> payment.clearing_move.date == first
     True
     >>> payment.clearing_move.state
-    u'draft'
+    'draft'
     >>> payable.reload()
     >>> payable.balance
     Decimal('-20.00')
@@ -129,7 +129,7 @@ Fail payment::
 
     >>> payment.click('fail')
     >>> payment.state
-    u'failed'
+    'failed'
     >>> payment.clearing_move
     >>> payment.line.reconciliation
     >>> payable.reload()
@@ -150,21 +150,21 @@ Pay the line::
     Decimal('50.00')
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.reload()
     >>> payment.state
-    u'processing'
+    'processing'
 
 Succeed payment::
 
     >>> succeed = Wizard('account.payment.succeed', [payment])
     >>> succeed.execute('succeed')
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> payment.clearing_move.state
-    u'draft'
+    'draft'
     >>> payable.reload()
     >>> payable.balance
     Decimal('0.00')
@@ -178,7 +178,7 @@ Fail payment::
 
     >>> payment.click('fail')
     >>> payment.state
-    u'failed'
+    'failed'
     >>> payment.clearing_move
     >>> payment.line.reconciliation
 
@@ -188,7 +188,7 @@ Succeed payment and post clearing::
     >>> succeed.form.date = yesterday
     >>> succeed.execute('succeed')
     >>> payment.state
-    u'succeeded'
+    'succeeded'
 
     >>> Cron = Model.get('ir.cron')
     >>> Company = Model.get('company.company')
@@ -202,13 +202,13 @@ Succeed payment and post clearing::
     >>> payment.reload()
     >>> clearing_move = payment.clearing_move
     >>> clearing_move.state
-    u'posted'
+    'posted'
 
 Fail payment with posted clearing::
 
     >>> payment.click('fail')
     >>> payment.state
-    u'failed'
+    'failed'
     >>> payment.clearing_move
     >>> payment.line.reconciliation
     >>> clearing_move.reload()
@@ -222,7 +222,7 @@ Succeed payment to use on statement::
     >>> succeed = Wizard('account.payment.succeed', [payment])
     >>> succeed.execute('succeed')
     >>> payment.state
-    u'succeeded'
+    'succeeded'
 
 Create statement::
 
@@ -284,7 +284,7 @@ Validate statement::
 
     >>> statement.click('validate_statement')
     >>> statement.state
-    u'validated'
+    'validated'
     >>> line, = statement.lines
     >>> move_line, = [l for l in line.move.lines
     ...     if l.account == bank_clearing]
@@ -309,13 +309,13 @@ Create a statement that reimburse the payment group::
 
     >>> statement.click('validate_statement')
     >>> statement.state
-    u'validated'
+    'validated'
 
 Payment must be failed::
 
     >>> payment.reload()
     >>> payment.state
-    u'failed'
+    'failed'
 
 
 Payment in a foreign currency
@@ -355,7 +355,7 @@ Pay the line::
     >>> process_payment.execute('process')
     >>> payment.reload()
     >>> payment.state
-    u'processing'
+    'processing'
 
 Succeed payment::
 
@@ -395,7 +395,7 @@ Pay the line::
     >>> process_payment.execute('process')
     >>> payment.reload()
     >>> payment.state
-    u'processing'
+    'processing'
 
 Succeed payment::
 
@@ -429,12 +429,12 @@ Create a processing payment for the move::
     >>> payment, = Payment.find([('line', '=', line.id)])
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.reload()
     >>> payment.state
-    u'processing'
+    'processing'
 
 Create statement for the payment::
 
@@ -456,7 +456,7 @@ Validate statement and check the payment is confirmed::
 
     >>> statement.click('validate_statement')
     >>> statement.state
-    u'validated'
+    'validated'
     >>> line, = statement.lines
     >>> move_line, = [l for l in line.move.lines
     ...     if l.account == bank_clearing]
@@ -464,7 +464,7 @@ Validate statement and check the payment is confirmed::
     True
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> debit_line, = [l for l in payment.clearing_move.lines if l.debit > 0]
     >>> debit_line.debit
     Decimal('50.00')
