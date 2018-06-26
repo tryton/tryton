@@ -8,8 +8,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Invoice']
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
     open_date = fields.DateTime('Open Date')
 

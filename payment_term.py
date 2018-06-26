@@ -5,13 +5,11 @@ from trytond.pool import PoolMeta
 __all__ = ['PaymentTerm', 'PaymentTermLine']
 
 
-class PaymentTerm:
-    __metaclass__ = PoolMeta
+class PaymentTerm(metaclass=PoolMeta):
     __name__ = 'account.invoice.payment_term'
     _history = True
 
 
-class PaymentTermLine:
-    __metaclass__ = PoolMeta
+class PaymentTermLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.payment_term.line'
     _history = True
