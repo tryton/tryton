@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import division
+
 
 from itertools import groupby
 from collections import defaultdict
@@ -30,8 +30,7 @@ INVOICE_METHODS = [
     ]
 
 
-class Work:
-    __metaclass__ = PoolMeta
+class Work(metaclass=PoolMeta):
     __name__ = 'project.work'
     project_invoice_method = fields.Selection(INVOICE_METHODS,
         'Invoice Method',
@@ -245,7 +244,7 @@ class Work:
                     where=where))
             work2currency.update(cursor.fetchall())
 
-        currencies = Currency.browse(set(work2currency.itervalues()))
+        currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}
 
         for work in works:
@@ -294,7 +293,7 @@ class Work:
                     where=where))
             work2currency.update(cursor.fetchall())
 
-        currencies = Currency.browse(set(work2currency.itervalues()))
+        currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}
 
         for work in works:
@@ -315,8 +314,7 @@ class Work:
 
         durations = defaultdict(datetime.timedelta)
         twork2work = {tw.id: w.id for w in works for tw in w.timesheet_works}
-        ids = twork2work.keys()
-        for sub_ids in grouped_slice(ids):
+        for sub_ids in grouped_slice(twork2work.keys()):
             red_sql = reduce_ids(line.work, sub_ids)
             if invoiced:
                 where = line.invoice_line != Null
@@ -340,7 +338,7 @@ class Work:
         method2works = defaultdict(list)
         for work in works:
             method2works[work.invoice_method].append(work)
-        for method, m_works in method2works.iteritems():
+        for method, m_works in method2works.items():
             method = getattr(cls, '_get_%s_%s' % (name, method))
             # Re-browse for cache alignment
             durations.update(method(cls.browse(m_works)))
@@ -386,7 +384,7 @@ class Work:
                 for line in lines:
                     origin = line['origin']
                     origins.setdefault(origin.__class__, []).append(origin)
-                for klass, records in origins.iteritems():
+                for klass, records in origins.items():
                     klass.save(records)  # Store first new origins
                     klass.write(records, {
                             'invoice_line': invoice_line.id,

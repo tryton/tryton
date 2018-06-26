@@ -125,4 +125,4 @@ Invoice project::
     >>> len(invoices)
     2
     >>> sorted([i.party.name for i in invoices])
-    [u'Customer 1', u'Customer 2']
+    ['Customer 1', 'Customer 2']
