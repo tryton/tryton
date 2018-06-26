@@ -91,7 +91,7 @@ Cancel Move::
     >>> cancel_move.origin == move
     True
     >>> cancel_move.description
-    u'Cancel'
+    'Cancel'
     >>> revenue.reload()
     >>> revenue.credit
     Decimal('0.00')

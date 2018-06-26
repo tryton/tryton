@@ -116,7 +116,7 @@ Check the Move::
     >>> sorted((l.debit, l.credit) for l in move.lines)
     [(Decimal('0'), Decimal('12.24')), (Decimal('1.11'), Decimal('0')), (Decimal('11.13'), Decimal('0'))]
     >>> move.description
-    u'Supplier - Test'
+    'Supplier - Test'
     >>> with config.set_context(periods=period_ids):
     ...     base_code = TaxCode(base_code.id)
     ...     base_code.amount

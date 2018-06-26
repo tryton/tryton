@@ -138,7 +138,7 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
                 ])
         keywords = {k.name: k for k in template.keywords}
 
-        for k, v in values.iteritems():
+        for k, v in values.items():
             keyword = keywords[k]
             func = getattr(keyword, '_format_%s' % keyword.type_, None)
             if func:

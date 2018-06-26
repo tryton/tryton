@@ -22,8 +22,7 @@ account_names = [
     'customer_tax_rule', 'supplier_tax_rule']
 
 
-class Party(CompanyMultiValueMixin):
-    __metaclass__ = PoolMeta
+class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'party.party'
     accounts = fields.One2Many('party.party.account', 'party', "Accounts")
     account_payable = fields.MultiValue(fields.Many2One(
@@ -300,8 +299,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
             parent='party', fields=fields)
 
 
-class PartyReplace:
-    __metaclass__ = PoolMeta
+class PartyReplace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
@@ -311,8 +309,7 @@ class PartyReplace:
             ]
 
 
-class PartyErase:
-    __metaclass__ = PoolMeta
+class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     @classmethod

@@ -197,7 +197,7 @@ class TaxCode(DeactivableMixin, tree(), ModelSQL, ModelView):
             parents[code.id] = code.parent.id if code.parent else None
 
         ids = set(map(int, childs))
-        leafs = ids - set(parents.itervalues())
+        leafs = ids - set(parents.values())
         while leafs:
             for code in leafs:
                 ids.remove(code)
@@ -817,7 +817,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         move_line = MoveLine.__table__()
         tax_line = TaxLine.__table__()
 
-        tax_ids = map(int, taxes)
+        tax_ids = list(map(int, taxes))
         result = {}
         for name in names:
             result[name] = dict.fromkeys(tax_ids, Decimal(0))
@@ -1140,7 +1140,7 @@ class TaxableMixin(object):
     def _round_taxes(self, taxes):
         if not self.currency:
             return
-        for taxline in taxes.itervalues():
+        for taxline in taxes.values():
             taxline['amount'] = self.currency.round(taxline['amount'])
 
     def _get_taxes(self):

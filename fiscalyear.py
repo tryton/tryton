@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import division
 
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, Workflow, fields
@@ -302,8 +301,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                 accounts = Account.search([
                         ('company', '=', fiscalyear.company.id),
                         ])
-                deferrals += filter(None, (fiscalyear.get_deferral(a)
-                        for a in accounts))
+                deferrals += [_f for _f in (fiscalyear.get_deferral(a)
+                        for a in accounts) if _f]
         Deferral.save(deferrals)
 
     @classmethod

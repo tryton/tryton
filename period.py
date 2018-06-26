@@ -272,14 +272,14 @@ class Period(Workflow, ModelSQL, ModelView):
         actions = iter(args)
         args = []
         for periods, values in zip(actions, actions):
-            for key, value in values.iteritems():
+            for key, value in values.items():
                 if key in ('start_date', 'end_date', 'fiscalyear'):
                     def modified(period):
                         if key in ['start_date', 'end_date']:
                             return getattr(period, key) != value
                         else:
                             return period.fiscalyear .id != value
-                    cls._check(filter(modified, periods))
+                    cls._check(list(filter(modified, periods)))
                     break
             if values.get('state') == 'open':
                 for period in periods:
