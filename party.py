@@ -14,8 +14,7 @@ from trytond import backend
 __all__ = ['Party', 'PartyIdentifier']
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     sepa_creditor_identifier_used = fields.Function(fields.Char(
             'SEPA Creditor Identifier Used'),
@@ -52,8 +51,7 @@ class Party:
                 return identifier.code
 
 
-class PartyIdentifier:
-    __metaclass__ = PoolMeta
+class PartyIdentifier(metaclass=PoolMeta):
     __name__ = 'party.identifier'
 
     @classmethod

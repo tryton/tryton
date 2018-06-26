@@ -10,8 +10,7 @@ from trytond.modules.company.model import CompanyValueMixin
 __all__ = ['Configuration', 'ConfigurationSepaMandateSequence']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
     sepa_mandate_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "SEPA Mandate Sequence",

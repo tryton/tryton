@@ -43,8 +43,7 @@ if not hasattr(ASTTransformer, 'visit_NameConstant'):
     ASTTransformer.visit_NameConstant = ASTTransformer.visit_Name
 
 
-class Journal:
-    __metaclass__ = PoolMeta
+class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
     company_party = fields.Function(fields.Many2One('party.party',
             'Company Party'), 'on_change_with_company_party')
@@ -132,8 +131,7 @@ loader = genshi.template.TemplateLoader(
     auto_reload=True)
 
 
-class Group:
-    __metaclass__ = PoolMeta
+class Group(metaclass=PoolMeta):
     __name__ = 'account.payment.group'
     sepa_messages = fields.One2Many('account.payment.sepa.message', 'origin',
         'SEPA Messages', readonly=True,
@@ -229,8 +227,7 @@ class Group:
             yield dict(key), list(grouped_payments)
 
 
-class Payment:
-    __metaclass__ = PoolMeta
+class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
 
     sepa_mandate = fields.Many2One('account.payment.sepa.mandate', 'Mandate',

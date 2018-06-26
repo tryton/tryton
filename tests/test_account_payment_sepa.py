@@ -2,14 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import os
 import unittest
-from lxml import etree
 from decimal import Decimal
 from io import BytesIO, open
-
-try:
-    from unittest.mock import Mock, patch
-except ImportError:
-    from mock import Mock, patch
+from lxml import etree
+from unittest.mock import Mock, patch
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
@@ -406,7 +402,8 @@ class AccountPaymentSepaTestCase(ModuleTestCase):
 
         message_file = os.path.join(os.path.dirname(__file__),
             '%s.xml' % flavor)
-        message = open(message_file, 'rb').read()
+        with open(message_file, 'rb') as fp:
+            message = fp.read()
         namespace = Message.get_namespace(message)
         self.assertEqual(namespace,
             'urn:iso:std:iso:20022:tech:xsd:%s' % flavor)
