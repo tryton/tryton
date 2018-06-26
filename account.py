@@ -6,9 +6,8 @@ from trytond.pool import Pool, PoolMeta
 __all__ = ['Invoice', 'InvoiceLine']
 
 
-class Invoice:
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
-    __metaclass__ = PoolMeta
 
     def get_sales(self, name):
         pool = Pool()
@@ -21,9 +20,8 @@ class Invoice:
         return list(sales)
 
 
-class InvoiceLine:
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
-    __metaclass__ = PoolMeta
 
     @classmethod
     def _get_origin(cls):

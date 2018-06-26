@@ -7,9 +7,8 @@ from trytond.pool import Pool, PoolMeta
 __all__ = ['ShipmentOut']
 
 
-class ShipmentOut:
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
-    __metaclass__ = PoolMeta
 
     @classmethod
     def __setup__(cls):

@@ -108,7 +108,7 @@ Create an inventory::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Create advance payment term preventing the creation of shipment::
 
@@ -131,7 +131,7 @@ Create a normal sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 As usual an invoice and a shipment has been created::
 
@@ -160,7 +160,7 @@ Create a sale with advance payment::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 The advance payment invoice has been created::
 
@@ -186,7 +186,7 @@ Let's pay the advance payment invoice::
 
     >>> sale.reload()
     >>> sale.state
-    u'processing'
+    'processing'
     >>> len(sale.invoices)
     1
     >>> len(sale.shipments)
@@ -233,7 +233,7 @@ Create a sale with advance payment::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 The shipment has been created::
 
@@ -258,14 +258,14 @@ Let's pay the advance payment invoice::
     >>> pay.execute('choice')
     >>> sale.reload()
     >>> sale.state
-    u'processing'
+    'processing'
 
 Packing the shipment is now allowed::
 
     >>> shipment.click('pack')
     >>> shipment.reload()
     >>> shipment.state
-    u'packed'
+    'packed'
 
 In case the product is to be supplied on sale
 ---------------------------------------------
@@ -298,7 +298,7 @@ Sell 10 of those products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 There is no purchase request created yet::
 
@@ -315,7 +315,7 @@ The advance payment invoice has been created, now pay it::
     >>> pay.execute('choice')
     >>> sale.reload()
     >>> sale.state
-    u'processing'
+    'processing'
 
 There is now a purchase request of the desired quantity::
 
@@ -342,7 +342,7 @@ Create a sale with this term::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Let's cancel the advance invoice::
 
@@ -350,7 +350,7 @@ Let's cancel the advance invoice::
     >>> inv.click('cancel')
     >>> sale.reload()
     >>> sale.invoice_state
-    u'exception'
+    'exception'
 
 Handle the exception on the sale level, not recreating the invoice will create
 the final invoice with the remaining total::
@@ -381,12 +381,12 @@ it::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> inv, = sale.advance_payment_invoices
     >>> inv.click('cancel')
     >>> sale.reload()
     >>> sale.invoice_state
-    u'exception'
+    'exception'
 
     >>> handle_exception = Wizard('sale.handle.invoice.exception', [sale])
     >>> handle_exception.execute('handle')

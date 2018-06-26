@@ -95,7 +95,7 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
         try:
             if not isinstance(self.compute_amount(**names), Decimal):
                 raise Exception('The formula does not return a Decimal')
-        except Exception, exception:
+        except Exception as exception:
             self.raise_user_error('invalid_formula', {
                     'formula': self.formula,
                     'exception': exception,
@@ -280,9 +280,8 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         return advance_amount >= self.amount
 
 
-class Sale:
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
-    __metaclass__ = PoolMeta
 
     advance_payment_term = fields.Many2One('sale.advance_payment_term',
         'Advance Payment Term',
@@ -451,9 +450,8 @@ class Sale:
         return False
 
 
-class SaleLine:
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
-    __metaclass__ = PoolMeta
 
     def get_move(self, shipment_type):
         move = super(SaleLine, self).get_move(shipment_type)
@@ -477,8 +475,7 @@ class SaleLine:
         return lines
 
 
-class HandleInvoiceException:
-    __metaclass__ = PoolMeta
+class HandleInvoiceException(metaclass=PoolMeta):
     __name__ = 'sale.handle.invoice.exception'
 
     def default_ask(self, fields):
