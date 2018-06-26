@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
+from unittest.mock import patch, ANY
 
-from mock import patch, ANY
 import ldap3
 
 import trytond.tests.test_tryton

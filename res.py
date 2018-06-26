@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import logging
-import urlparse
+import urllib.parse
 
 import ldap3
 from ldap3.core.exceptions import LDAPException
@@ -18,19 +18,19 @@ section = 'ldap_authentication'
 
 # Old version of urlparse doesn't parse query for ldap
 # see http://bugs.python.org/issue9374
-if 'ldap' not in urlparse.uses_query:
-    urlparse.uses_query.append('ldap')
+if 'ldap' not in urllib.parse.uses_query:
+    urllib.parse.uses_query.append('ldap')
 
 
 def parse_ldap_url(uri):
-    unquote = urlparse.unquote
+    unquote = urllib.parse.unquote
     uri = parse_uri(uri)
     dn = unquote(uri.path)[1:]
     attributes, scope, filter_, extensions = (
         uri.query.split('?') + [''] * 4)[:4]
     if not scope:
         scope = 'base'
-    extensions = urlparse.parse_qs(extensions)
+    extensions = urllib.parse.parse_qs(extensions)
     return (uri, dn, unquote(attributes), unquote(scope), unquote(filter_),
         extensions)
 
@@ -48,8 +48,7 @@ def ldap_server():
             scheme, uri.hostname, uri.port or port))
 
 
-class User:
-    __metaclass__ = PoolMeta
+class User(metaclass=PoolMeta):
     __name__ = 'res.user'
 
     @classmethod
