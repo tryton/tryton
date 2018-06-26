@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta, Pool
 __all__ = ['Sale', 'SaleLine']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     price_list = fields.Many2One('product.price_list', 'Price List',
         help="Use to compute the unit price of lines.",
@@ -40,8 +39,7 @@ class Sale:
             self.price_list = config.sale_price_list
 
 
-class SaleLine:
-    __metaclass__ = PoolMeta
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod

@@ -11,8 +11,7 @@ from trytond.modules.company.model import (
 __all__ = ['Party', 'PartySalePriceList']
 
 
-class Party(CompanyMultiValueMixin):
-    __metaclass__ = PoolMeta
+class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'party.party'
     sale_price_list = fields.MultiValue(fields.Many2One(
             'product.price_list', "Sale Price List",

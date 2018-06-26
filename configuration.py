@@ -9,8 +9,7 @@ from trytond.modules.company.model import (
 __all__ = ['Configuration', 'ConfigurationSalePriceList']
 
 
-class Configuration(CompanyMultiValueMixin):
-    __metaclass__ = PoolMeta
+class Configuration(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'sale.configuration'
     sale_price_list = fields.MultiValue(fields.Many2One(
             'product.price_list', "Sale Price List",
