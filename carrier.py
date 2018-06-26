@@ -6,8 +6,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Carrier']
 
 
-class Carrier:
-    __metaclass__ = PoolMeta
+class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
     carrier_cost_allocation_method = fields.Selection([
             ('value', 'By Value'),

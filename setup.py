@@ -1,15 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from setuptools import setup
-import re
-import os
 import io
-try:
-    from configparser import ConfigParser
-except ImportError:
-    from ConfigParser import ConfigParser
+import os
+import re
+from configparser import ConfigParser
+from setuptools import setup
 
 
 def read(fname):
@@ -26,6 +23,7 @@ def get_require_version(name):
     require %= (name, major_version, minor_version,
         major_version, minor_version + 1)
     return require
+
 
 config = ConfigParser()
 config.readfp(open('tryton.cfg'))
@@ -59,7 +57,6 @@ for dep in info.get('extras_depend', []):
         extras_require[dep] = get_require_version('trytond_%s' % dep)
 
 tests_require = [get_require_version('proteus'),
-    'mock',  # For account_stock_anglo_saxon tests tools
     get_require_version('trytond_account_stock_continental'),
     get_require_version('trytond_account_stock_anglo_saxon'),
     get_require_version('trytond_purchase')]
@@ -111,7 +108,6 @@ setup(name=name,
         'Natural Language :: Slovenian',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -120,6 +116,7 @@ setup(name=name,
         'Topic :: Office/Business',
         ],
     license='GPL-3',
+    python_requires='>=3.4',
     install_requires=requires,
     extras_require=extras_require,
     dependency_links=dependency_links,
@@ -131,10 +128,4 @@ setup(name=name,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
-    use_2to3=True,
-    convert_2to3_doctests=[
-        'tests/scenario_purchase_shipment_cost.rst',
-        'tests/scenario_purchase_shipment_cost_with_account_stock.rst',
-        'tests/scenario_purchase_shipment_cost_with_account_stock_anglo_saxon.rst',
-        ],
     )

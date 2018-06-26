@@ -142,7 +142,7 @@ Purchase 5 products::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
 Receive 4 products::
 
@@ -159,13 +159,13 @@ Receive 4 products::
     True
     >>> shipment.click('receive')
     >>> shipment.state
-    u'received'
+    'received'
     >>> move, = shipment.incoming_moves
     >>> move.unit_price
     Decimal('5.7500')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> stock_supplier.reload()
     >>> stock.reload()
     >>> stock_supplier.debit
@@ -192,7 +192,7 @@ Open supplier invoice::
     >>> invoice.save()
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> payable.reload()
     >>> payable.debit
     Decimal('0.00')
