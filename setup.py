@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # This file is part of trytond_gis.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import io
@@ -27,6 +27,7 @@ def get_version():
     init = read(os.path.join('trytond_gis', '__init__.py'))
     return re.search('__version__ = "([0-9.]*)"', init).group(1)
 
+
 version = get_version()
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
@@ -42,7 +43,7 @@ if minor_version % 2:
 
 requires = ['geomet', get_require_version('trytond'), 'psycopg2 >= 2.0.14']
 
-tests_require = ['mock']
+tests_require = []
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('https://trydevpi.tryton.org/')
@@ -63,7 +64,6 @@ setup(name=name,
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -71,6 +71,7 @@ setup(name=name,
         ],
     platforms='any',
     license='GPL-3',
+    python_requires='>=3.4',
     install_requires=requires,
     entry_points={
         'trytond.backend': [
