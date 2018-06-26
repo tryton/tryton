@@ -103,7 +103,7 @@ class CarrierSelection(
         pool = Pool()
         Carrier = pool.get('carrier')
 
-        key = tuple(sorted(pattern.iteritems()))
+        key = tuple(sorted(pattern.items()))
         carriers = cls._get_carriers_cache.get(key)
         if carriers is not None:
             return Carrier.browse(carriers)
@@ -118,5 +118,5 @@ class CarrierSelection(
                 if selection.match(pattern):
                     carriers.append(selection.carrier)
 
-        cls._get_carriers_cache.set(key, map(int, carriers))
+        cls._get_carriers_cache.set(key, list(map(int, carriers)))
         return carriers
