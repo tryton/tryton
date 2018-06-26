@@ -18,8 +18,7 @@ def _tax_group(tax):
     return tax.group
 
 
-class FiscalYear:
-    __metaclass__ = PoolMeta
+class FiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear'
 
     tax_group_on_cash_basis = fields.Many2Many(
@@ -28,8 +27,7 @@ class FiscalYear:
         help="The tax group reported on cash basis for this fiscal year.")
 
 
-class Period:
-    __metaclass__ = PoolMeta
+class Period(metaclass=PoolMeta):
     __name__ = 'account.period'
 
     tax_group_on_cash_basis = fields.Many2Many(
@@ -94,8 +92,7 @@ class TaxGroupCash(ModelSQL):
         'account.tax.group', "Tax Group", ondelete='CASCADE', required=True)
 
 
-class Tax:
-    __metaclass__ = PoolMeta
+class Tax(metaclass=PoolMeta):
     __name__ = 'account.tax'
 
     @classmethod
@@ -123,8 +120,7 @@ class Tax:
                 ]]
 
 
-class TaxLine:
-    __metaclass__ = PoolMeta
+class TaxLine(metaclass=PoolMeta):
     __name__ = 'account.tax.line'
 
     on_cash_basis = fields.Boolean("On Cash Basis")
@@ -192,8 +188,7 @@ class TaxLine:
         cls.save(to_save)
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
     @classmethod
@@ -216,8 +211,7 @@ class Move:
                 })
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     tax_group_on_cash_basis = fields.Many2Many(
@@ -296,12 +290,11 @@ class Invoice:
             ratio = invoice.cash_paid_ratio
             for line in invoice.move.lines:
                 to_update[(period, ratio)].extend(line.tax_lines)
-        for (period, ratio), tax_lines in to_update.iteritems():
+        for (period, ratio), tax_lines in to_update.items():
             TaxLine.update_cash_basis(tax_lines, ratio, period)
 
 
-class InvoiceTax:
-    __metaclass__ = PoolMeta
+class InvoiceTax(metaclass=PoolMeta):
     __name__ = 'account.invoice.tax'
 
     @property

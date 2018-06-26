@@ -4,8 +4,7 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     supplier_tax_group_on_cash_basis = fields.Many2Many(

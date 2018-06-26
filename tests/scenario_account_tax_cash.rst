@@ -98,7 +98,7 @@ Create invoice::
     >>> invoice.total_amount
     Decimal('115.00')
     >>> invoice.move.state
-    u'posted'
+    'posted'
 
 Check tax lines::
 
