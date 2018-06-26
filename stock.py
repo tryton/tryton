@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import absolute_import
 
 import locale
 from io import BytesIO
@@ -18,8 +17,7 @@ from .configuration import get_client, SHIPMENT_SERVICE
 __all__ = ['ShipmentOut', 'CreateShipping', 'CreateDPDShipping']
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -38,9 +36,8 @@ class ShipmentOut:
                     })
 
 
-class CreateShipping:
+class CreateShipping(metaclass=PoolMeta):
     __name__ = 'stock.shipment.create_shipping'
-    __metaclass__ = PoolMeta
 
     dpd = StateAction(
         'stock_package_shipping_dpd.act_create_shipping_dpd_wizard')

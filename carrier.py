@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import absolute_import
 
 import locale
 
@@ -60,8 +59,7 @@ class CredentialDPD(ModelSQL, ModelView, MatchMixin):
         self.save()
 
 
-class Carrier:
-    __metaclass__ = PoolMeta
+class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
 
     @classmethod
