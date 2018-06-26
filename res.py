@@ -25,8 +25,7 @@ def send_sms(text, to):
     logger.error('Could not send SMS to %s: "%s"', to, text)
 
 
-class User:
-    __metaclass__ = PoolMeta
+class User(metaclass=PoolMeta):
     __name__ = 'res.user'
     mobile = fields.Char('Mobile',
         help='Phone number that supports receiving SMS')
