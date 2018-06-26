@@ -34,7 +34,7 @@ class PartySiretTestCase(ModuleTestCase):
             (object(), False),
             )
         for value, test in values:
-            self.assert_(luhn.validate(value) == test)
+            self.assertTrue(luhn.validate(value) == test)
 
 
 def suite():

@@ -8,8 +8,7 @@ from . import luhn
 __all__ = ['Address']
 
 
-class Address:
-    __metaclass__ = PoolMeta
+class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
 
     siret_nic = fields.Char('SIRET NIC', select=True, states={

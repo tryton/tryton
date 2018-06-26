@@ -8,7 +8,7 @@ def validate(value):
     :param value: the value
     :return: a boolean
     """
-    if not isinstance(value, basestring):
+    if not isinstance(value, str):
         value = str(value)
     try:
         evens = sum(int(x) for x in value[-1::-2])
