@@ -16,8 +16,7 @@ __all__ = ['Move',
     'Package']
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     internal_weight = fields.Float(
@@ -201,8 +200,7 @@ class MeasurementsMixin(object):
         raise NotImplementedError
 
 
-class ShipmentIn(MeasurementsMixin, object):
-    __metaclass__ = PoolMeta
+class ShipmentIn(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
     @classmethod
@@ -212,8 +210,7 @@ class ShipmentIn(MeasurementsMixin, object):
             & (location.type == 'supplier'))
 
 
-class ShipmentInReturn(MeasurementsMixin, object):
-    __metaclass__ = PoolMeta
+class ShipmentInReturn(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
 
     @classmethod
@@ -221,8 +218,7 @@ class ShipmentInReturn(MeasurementsMixin, object):
         return move.from_location == location.id
 
 
-class ShipmentOut(MeasurementsMixin, object):
-    __metaclass__ = PoolMeta
+class ShipmentOut(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -232,8 +228,7 @@ class ShipmentOut(MeasurementsMixin, object):
             & (location.type == 'customer'))
 
 
-class ShipmentOutReturn(MeasurementsMixin, object):
-    __metaclass__ = PoolMeta
+class ShipmentOutReturn(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
     @classmethod
@@ -245,8 +240,7 @@ class ShipmentOutReturn(MeasurementsMixin, object):
 # TODO ShipmentInternal
 
 
-class Package(MeasurementsMixin, object):
-    __metaclass__ = PoolMeta
+class Package(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.package'
 
     additional_weight = fields.Float(
