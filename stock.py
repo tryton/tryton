@@ -8,8 +8,7 @@ from trytond.transaction import Transaction
 __all__ = ['StockMove']
 
 
-class StockMove:
-    __metaclass__ = PoolMeta
+class StockMove(metaclass=PoolMeta):
     __name__ = 'stock.move'
     invoice_lines = fields.Many2Many('account.invoice.line-stock.move',
         'stock_move', 'invoice_line', 'Invoice Lines')

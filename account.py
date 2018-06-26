@@ -18,8 +18,7 @@ class InvoiceLineStockMove(ModelSQL):
         select=True, ondelete='CASCADE')
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     stock_moves = fields.Many2Many('account.invoice.line-stock.move',
         'invoice_line', 'stock_move', 'Stock Moves',
