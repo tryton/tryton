@@ -11,8 +11,7 @@ __all__ = ['Purchase', 'PurchaseIgnoredInvoiceLine',
     'HandleInvoiceException']
 
 
-class Purchase:
-    __metaclass__ = PoolMeta
+class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
     invoice_lines = fields.Function(fields.One2Many('account.invoice.line',
             None, 'Invoice Lines'), 'get_invoice_lines',
@@ -101,8 +100,7 @@ class PurchaseIgnoredInvoiceLine(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class HandleInvoiceException:
-    __metaclass__ = PoolMeta
+class HandleInvoiceException(metaclass=PoolMeta):
     __name__ = 'purchase.handle.invoice.exception'
 
     def transition_handle(self):
