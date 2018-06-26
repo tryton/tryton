@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import division
+
 import datetime
 from dateutil.relativedelta import relativedelta
 import itertools
@@ -496,7 +496,7 @@ class ForecastLine(ModelSQL, ModelView):
                 unit_price, self.uom)
 
         moves = []
-        for day, qty in distribution.iteritems():
+        for day, qty in distribution.items():
             if qty == 0.0:
                 continue
             move = Move()
@@ -521,7 +521,7 @@ class ForecastLine(ModelSQL, ModelView):
 
     def distribute(self, delta, qty):
         'Distribute qty over delta'
-        range_delta = range(delta)
+        range_delta = list(range(delta))
         a = {}.fromkeys(range_delta, 0)
         while qty > 0:
             if qty > delta:
@@ -632,7 +632,7 @@ class ForecastComplete(Wizard):
             return {'products': [x.id for x in self.choose.products]}
         pbl = self._get_product_quantity()
         products = []
-        for (_, product), qty in pbl.iteritems():
+        for (_, product), qty in pbl.items():
             if qty < 0:
                 products.append(product)
         return {'products': products}
@@ -663,7 +663,7 @@ class ForecastComplete(Wizard):
             products = None
 
         to_save = []
-        for key, qty in pbl.iteritems():
+        for key, qty in pbl.items():
             _, product = key
             if products and product not in products:
                 continue
