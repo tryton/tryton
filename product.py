@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
 
 from trytond.pool import PoolMeta
 from trytond.model import ModelSQL, fields
@@ -9,8 +8,7 @@ from trytond.model import ModelSQL, fields
 __all__ = ['Template', 'Template_Agent', 'Product']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     principals = fields.Many2Many('product.template-commission.agent',
         'template', 'agent', 'Commission Principals',
@@ -36,8 +34,7 @@ class Template_Agent(ModelSQL):
             ])
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
     @property

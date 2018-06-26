@@ -4,7 +4,7 @@ Installing trytond_commission
 Prerequisites
 -------------
 
- * Python 2.7 or later (http://www.python.org/)
+ * Python 3.4 or later (http://www.python.org/)
  * simpleeval (https://github.com/danthedeckie/simpleeval)
  * trytond (http://www.tryton.org/)
  * trytond_account_invoice (http://www.tryton.org/)

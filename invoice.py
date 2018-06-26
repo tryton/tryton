@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
+
 from decimal import Decimal
 
 from trytond.pool import PoolMeta, Pool
@@ -12,8 +12,7 @@ from trytond.tools import grouped_slice
 __all__ = ['Invoice', 'InvoiceLine']
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
     agent = fields.Many2One('commission.agent', 'Commission Agent',
         domain=[
@@ -105,8 +104,7 @@ class Invoice:
         return credit
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
     principal = fields.Many2One('commission.agent', 'Commission Principal',
         domain=[

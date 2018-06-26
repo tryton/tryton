@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
+
 
 from trytond.pool import PoolMeta
 from trytond.model import fields
@@ -10,8 +10,7 @@ from trytond.pyson import Eval
 __all__ = ['Sale', 'SaleLine']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     agent = fields.Many2One('commission.agent', 'Commission Agent',
         domain=[
@@ -31,8 +30,7 @@ class Sale:
         return invoice
 
 
-class SaleLine:
-    __metaclass__ = PoolMeta
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
     principal = fields.Many2One('commission.agent', 'Commission Principal',
         domain=[

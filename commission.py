@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
+
 from decimal import Decimal
 from itertools import groupby
 
@@ -93,7 +93,7 @@ class Agent(ModelSQL, ModelView):
             amounts.update(dict(cursor.fetchall()))
         digits = cls.pending_amount.digits
         exp = Decimal(str(10.0 ** -digits[1]))
-        for agent_id, amount in amounts.iteritems():
+        for agent_id, amount in amounts.items():
             if amount:
                 # SQLite uses float for SUM
                 if not isinstance(amount, Decimal):
@@ -199,7 +199,7 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         try:
             if not isinstance(self.get_amount(**context), Decimal):
                 raise ValueError
-        except ValueError, exception:
+        except ValueError as exception:
             self.raise_user_error('invalid_formula', {
                     'formula': self.formula,
                     'line': self.rec_name,

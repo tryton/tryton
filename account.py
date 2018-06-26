@@ -5,8 +5,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Journal']
 
 
-class Journal:
-    __metaclass__ = PoolMeta
+class Journal(metaclass=PoolMeta):
     __name__ = 'account.journal'
 
     @classmethod
