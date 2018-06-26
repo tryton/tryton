@@ -11,8 +11,7 @@ from trytond.modules.account_product.product import (
 __all__ = ['Category', 'CategoryAccount', 'Template', 'Product']
 
 
-class Category:
-    __metaclass__ = PoolMeta
+class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     account_cogs = fields.MultiValue(fields.Many2One('account.account',
             'Account Cost of Goods Sold', domain=[
@@ -39,8 +38,7 @@ class Category:
         pass
 
 
-class CategoryAccount:
-    __metaclass__ = PoolMeta
+class CategoryAccount(metaclass=PoolMeta):
     __name__ = 'product.category.account'
     account_cogs = fields.Many2One(
         'account.account', "Account Cost of Goods Sold",
@@ -72,8 +70,7 @@ class CategoryAccount:
             field_names, value_names, fields)
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     @property
@@ -82,7 +79,6 @@ class Template:
         pass
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     account_cogs_used = template_property('account_cogs_used')

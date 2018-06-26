@@ -16,8 +16,7 @@ def _get_field(type_):
         return 'out_anglo_saxon_quantity'
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     in_anglo_saxon_quantity = fields.Float('Input Anglo-Saxon Quantity',
         required=True)

@@ -173,7 +173,7 @@ Sale 50 products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Create Purchase from Request::
 
@@ -191,7 +191,7 @@ Create Purchase from Request::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
@@ -204,7 +204,7 @@ Receive 50 products::
     >>> shipment.click('ship')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> stock_supplier.reload()
     >>> stock_supplier.debit
     Decimal('0.00')
@@ -230,7 +230,7 @@ Open supplier invoice::
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> payable.reload()
     >>> payable.debit
     Decimal('0.00')
@@ -255,7 +255,7 @@ Open customer invoice::
     >>> set_user(account_user)
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> receivable.reload()
     >>> receivable.debit
     Decimal('500.00')

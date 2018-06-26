@@ -3,7 +3,7 @@
 import unittest
 import doctest
 
-from mock import Mock, patch
+from unittest.mock import Mock, patch
 
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction

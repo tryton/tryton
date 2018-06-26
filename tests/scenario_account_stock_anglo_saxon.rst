@@ -158,7 +158,7 @@ Purchase 12 products::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
 Receive 9 products::
 
@@ -176,7 +176,7 @@ Receive 9 products::
     >>> shipment.click('receive')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> stock_supplier.reload()
     >>> stock.reload()
     >>> stock_supplier.debit
@@ -207,7 +207,7 @@ Open supplier invoice::
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> payable.reload()
     >>> payable.debit
     Decimal('0.00')
@@ -241,7 +241,7 @@ Sale 5 products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Send 5 products::
 
@@ -250,13 +250,13 @@ Send 5 products::
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('pack')
     >>> shipment.state
-    u'packed'
+    'packed'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> stock_customer.reload()
     >>> stock_customer.debit
     Decimal('28.00')
@@ -274,7 +274,7 @@ Open customer invoice::
     >>> invoice, = sale.invoices
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> receivable.reload()
     >>> receivable.debit
     Decimal('50.00')
@@ -310,7 +310,7 @@ Now create a supplier invoice with an accountant::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
     >>> set_user(accountant)
     >>> for invoice in purchase.invoices:
@@ -329,7 +329,7 @@ Create customer invoice with negative quantity::
     >>> invoice_line.unit_price = Decimal('10')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> move = invoice.move
     >>> line_cogs, = (l for l in move.lines if l.account == cogs)
     >>> line_cogs.credit
@@ -391,7 +391,7 @@ Now we will use a product with different unit of measure::
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
 
     >>> set_user(stock_user)
     >>> move = Move(purchase.moves[0].id)

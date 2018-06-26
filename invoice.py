@@ -7,8 +7,7 @@ from trytond.pool import Pool, PoolMeta
 __all__ = ['InvoiceLine']
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     @classmethod
