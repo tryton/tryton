@@ -48,7 +48,7 @@ Save the instance into the server:
 
     >>> party.save()
     >>> party.name
-    u'ham'
+    'ham'
     >>> party.id > 0
     True
 
@@ -63,7 +63,7 @@ The language on party is a `Many2One` relation field. So it requires to get a
     >>> party.lang = en
     >>> party.save()
     >>> party.lang.code
-    u'en'
+    'en'
 
 Creating an address for the party
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
