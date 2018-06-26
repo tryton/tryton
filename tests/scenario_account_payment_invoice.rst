@@ -65,7 +65,7 @@ Create invoice::
     >>> line.unit_price = Decimal('100')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> invoice.amount_to_pay
     Decimal('100.00')
     >>> line_to_pay, = invoice.lines_to_pay
@@ -145,7 +145,7 @@ Create invoice::
     >>> line.unit_price = Decimal('50')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> line_to_pay, = invoice.lines_to_pay
     >>> bool(line_to_pay.payment_direct_debit)
     True

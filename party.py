@@ -9,8 +9,7 @@ payment_direct_debit = fields.Boolean(
     "Direct Debit", help="Check if supplier does direct debit.")
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     payment_direct_debit = fields.MultiValue(payment_direct_debit)
@@ -30,8 +29,7 @@ class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
     payment_direct_debit = payment_direct_debit
 
 
-class PartyReplace:
-    __metaclass__ = PoolMeta
+class PartyReplace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
@@ -41,8 +39,7 @@ class PartyReplace:
             ]
 
 
-class PartyErase:
-    __metaclass__ = PoolMeta
+class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     @classmethod

@@ -24,8 +24,7 @@ __all__ = ['MoveLine', 'PayLine', 'PayLineAskJournal',
     'Invoice']
 
 
-class MoveLine:
-    __metaclass__ = PoolMeta
+class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
     payment_amount = fields.Function(fields.Numeric('Payment Amount',
             digits=(16,
@@ -63,7 +62,7 @@ class MoveLine:
         super(MoveLine, cls).__setup__()
         cls._buttons.update({
                 'pay': {
-                    'invisible': ~Eval('payment_kind').in_(dict(KINDS).keys()),
+                    'invisible': ~Eval('payment_kind').in_(list(dict(KINDS).keys())),
                     'depends': ['payment_kind'],
                     },
                 'payment_block': {
@@ -262,7 +261,7 @@ class PayLine(Wizard):
             values['journal'] = journal.id
         values['company'] = company.id
         values['currency'] = currency.id
-        values['journals'] = [j.id for j in self._get_journals().itervalues()]
+        values['journals'] = [j.id for j in self._get_journals().values()]
         return values
 
     def get_payment(self, line, journals):
@@ -306,8 +305,7 @@ class PayLine(Wizard):
             }
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
     payment_group_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', 'Payment Group Sequence', required=True,
@@ -364,8 +362,7 @@ class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
             return None
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     payment_direct_debit = fields.Boolean("Direct Debit",
