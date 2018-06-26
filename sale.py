@@ -14,8 +14,7 @@ from trytond.transaction import Transaction
 __all__ = ['Promotion', 'PromotionCoupon', 'PromotionCouponNumber']
 
 
-class Promotion:
-    __metaclass__ = PoolMeta
+class Promotion(metaclass=PoolMeta):
     __name__ = 'sale.promotion'
 
     coupons = fields.One2Many('sale.promotion.coupon', 'promotion', "Coupons")
@@ -195,8 +194,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
                     })
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     coupons = fields.Many2Many(
