@@ -185,4 +185,4 @@ Process dunning::
     >>> process_dunning.execute('process')
     >>> dunning.reload()
     >>> dunning.state
-    u'done'
+    'done'
