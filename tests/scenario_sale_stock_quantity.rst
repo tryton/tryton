@@ -98,7 +98,7 @@ Create an Inventory of 5 products::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Sale 3 products with enough stock::
 
@@ -162,7 +162,7 @@ Make an inventory of 3 products in 2 days::
     >>> inventory_line.expected_quantity = 5.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Sale 4 products with not enough forecast::
 

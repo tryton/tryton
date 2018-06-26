@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import ifilter
+
 import datetime
 
 from trytond.pool import PoolMeta, Pool
@@ -12,8 +12,7 @@ from trytond.tools import grouped_slice
 __all__ = ['Sale']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     @classmethod
@@ -108,7 +107,7 @@ class Sale:
                     with_childs=True,
                     grouping_filter=(product_ids,))
             delta = {}
-            for key, qty in pbl.iteritems():
+            for key, qty in pbl.items():
                 _, product_id = key
                 delta[product_id] = qty
             date2delta[date] = delta
@@ -124,7 +123,7 @@ class Sale:
 
         today = Date.today()
         sale_date = self.sale_date or today
-        product_ids = {l.product.id for l in ifilter(filter_line, self.lines)}
+        product_ids = {l.product.id for l in filter(filter_line, self.lines)}
         product_ids = list(product_ids)
 
         # The product must be available at least the day before
@@ -162,7 +161,7 @@ class Sale:
                     product.default_uom, round=False)
                 quantities[product] -= quantity
 
-        for line in ifilter(filter_line, self.lines):
+        for line in filter(filter_line, self.lines):
             product = line.product
             quantity = Uom.compute_qty(line.unit, line.quantity,
                 product.default_uom, round=False)
