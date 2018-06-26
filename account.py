@@ -7,8 +7,7 @@ from coda import CODA
 from trytond.pool import PoolMeta, Pool
 
 
-class StatementImportStart:
-    __metaclass__ = PoolMeta
+class StatementImportStart(metaclass=PoolMeta):
     __name__ = 'account.statement.import.start'
 
     @classmethod
@@ -17,8 +16,7 @@ class StatementImportStart:
         cls.file_format.selection.append(('coda', "CODA"))
 
 
-class StatementImport:
-    __metaclass__ = PoolMeta
+class StatementImport(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
 
     @classmethod
@@ -35,7 +33,7 @@ class StatementImport:
 
     def parse_coda(self, encoding='windows-1252'):
         file_ = self.start.file_
-        if not isinstance(file_, unicode):
+        if not isinstance(file_, str):
             file_ = file_.decode(encoding)
         file_ = StringIO(file_)
         coda = CODA(file_)

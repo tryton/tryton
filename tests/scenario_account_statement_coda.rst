@@ -84,7 +84,8 @@ Create Statement Journal::
 Import CODA file::
 
     >>> statement_import = Wizard('account.statement.import')
-    >>> coda = file_open('account_statement_coda/tests/CODA.txt', mode='rb').read()
+    >>> with file_open('account_statement_coda/tests/CODA.txt', mode='rb') as fp:
+    ...     coda = fp.read()
     >>> statement_import.form.file_ = coda
     >>> statement_import.form.file_format = 'coda'
     >>> statement_import.execute('import_')
@@ -94,7 +95,7 @@ Check Statement::
     >>> Statement = Model.get('account.statement')
     >>> statement, = Statement.find([])
     >>> statement.name
-    u'001'
+    '001'
     >>> statement.date
     datetime.date(2017, 8, 1)
     >>> statement.start_balance
@@ -109,12 +110,12 @@ Check Statement::
     1
     >>> origin, = statement.origins
     >>> origin.number
-    u'0001'
+    '0001'
     >>> origin.date
     datetime.date(2017, 7, 19)
     >>> origin.amount
     Decimal('100')
     >>> origin.description
-    u'COMMUNICATION'
+    'COMMUNICATION'
     >>> origin.informations['coda_bank_reference']
-    u'REF BANK             '
+    'REF BANK             '
