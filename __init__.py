@@ -2,32 +2,32 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from stock import *
-from sale import *
-from purchase import *
+from . import stock
+from . import sale
+from . import purchase
 from . import party
 
 
 def register():
     Pool.register(
-        Configuration,
-        ConfigurationSequence,
-        ShipmentDrop,
-        Move,
-        SaleConfig,
-        SaleConfigSaleDropLocation,
-        Sale,
-        SaleLine,
-        PurchaseRequest,
-        PurchaseConfig,
-        PurchaseConfigPurchaseDropLocation,
-        Purchase,
-        PurchaseLine,
-        ProductSupplier,
+        stock.Configuration,
+        stock.ConfigurationSequence,
+        stock.ShipmentDrop,
+        stock.Move,
+        sale.SaleConfig,
+        sale.SaleConfigSaleDropLocation,
+        sale.Sale,
+        sale.SaleLine,
+        purchase.PurchaseRequest,
+        purchase.PurchaseConfig,
+        purchase.PurchaseConfigPurchaseDropLocation,
+        purchase.Purchase,
+        purchase.PurchaseLine,
+        purchase.ProductSupplier,
         module='sale_supply_drop_shipment', type_='model')
     Pool.register(
-        CreatePurchase,
-        PurchaseHandleShipmentException,
+        purchase.CreatePurchase,
+        purchase.PurchaseHandleShipmentException,
         party.PartyReplace,
         party.PartyErase,
         module='sale_supply_drop_shipment', type_='wizard')

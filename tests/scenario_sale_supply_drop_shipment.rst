@@ -145,7 +145,7 @@ Sale 250 products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.shipments
     []
     >>> sale.drop_shipments
@@ -173,7 +173,7 @@ Create Purchase from Request::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
     >>> set_user(sale_user)
     >>> sale.reload()
@@ -205,7 +205,7 @@ Receiving only 100 products::
     >>> set_user(stock_user)
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipments
@@ -216,7 +216,7 @@ The purchase is now waiting for his new drop shipment::
     >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
-    u'waiting'
+    'waiting'
     >>> shipment, = [s for s in purchase.drop_shipments
     ...     if s.state == 'waiting']
     >>> move, = shipment.customer_moves
@@ -235,19 +235,19 @@ As a consequence the sale order is now in exception::
     >>> set_user(purchase_user)
     >>> purchase.reload()
     >>> purchase.shipment_state
-    u'exception'
+    'exception'
     >>> handle_exception = Wizard('purchase.handle.shipment.exception',
     ...     [purchase])
     >>> _ = handle_exception.form.recreate_moves.pop()
     >>> handle_exception.execute('handle')
     >>> purchase.reload()
     >>> purchase.shipment_state
-    u'received'
+    'received'
 
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
-    u'exception'
+    'exception'
 
 Cancelling the workflow on the purchase step::
 
@@ -262,7 +262,7 @@ Cancelling the workflow on the purchase step::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.shipments
     []
     >>> sale.drop_shipments
@@ -277,7 +277,7 @@ Cancelling the workflow on the purchase step::
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
     >>> purchase.click('cancel')
     >>> purchase_request.state
-    u'exception'
+    'exception'
 
 Let's reset the purchase request and create a new purchase::
 
@@ -286,13 +286,13 @@ Let's reset the purchase request and create a new purchase::
     ...     [purchase_request])
     >>> handle_exception.execute('reset')
     >>> purchase_request.state
-    u'draft'
+    'draft'
 
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [purchase_request])
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
     >>> purchase_request.state
-    u'purchased'
+    'purchased'
 
 Let's cancel it again and cancel the request in order to manage the process on
 the sale::
@@ -300,25 +300,25 @@ the sale::
     >>> purchase.click('cancel')
     >>> purchase_request.reload()
     >>> purchase_request.state
-    u'exception'
+    'exception'
     >>> handle_exception = Wizard(
     ...     'purchase.request.handle.purchase.cancellation',
     ...     [purchase_request])
     >>> handle_exception.execute('cancel_request')
     >>> purchase_request.state
-    u'cancel'
+    'cancel'
 
 The sale is then in exception::
 
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
-    u'exception'
+    'exception'
     >>> handle_exception = Wizard('sale.handle.shipment.exception', [sale])
     >>> handle_exception.execute('handle')
     >>> sale.reload()
     >>> sale.shipment_state
-    u'waiting'
+    'waiting'
 
 The sale just created a new outgoing shipment for the sale and we can deliver
 from stock::
@@ -333,4 +333,4 @@ from stock::
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> sale.shipment_state
-    u'sent'
+    'sent'

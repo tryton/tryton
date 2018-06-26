@@ -15,8 +15,7 @@ sale_drop_location = fields.Many2One(
     'stock.location', "Sale Drop Location", domain=[('type', '=', 'drop')])
 
 
-class SaleConfig:
-    __metaclass__ = PoolMeta
+class SaleConfig(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     sale_drop_location = fields.MultiValue(sale_drop_location)
@@ -62,8 +61,7 @@ class SaleConfigSaleDropLocation(ModelSQL, ValueMixin):
             return None
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     drop_shipments = fields.Function(fields.One2Many('stock.shipment.drop',
@@ -104,8 +102,7 @@ class Sale:
         Move.save(moves)
 
 
-class SaleLine:
-    __metaclass__ = PoolMeta
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @property

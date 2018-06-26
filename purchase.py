@@ -20,8 +20,7 @@ purchase_drop_location = fields.Many2One(
     'stock.location', "Purchase Drop Location", domain=[('type', '=', 'drop')])
 
 
-class PurchaseRequest:
-    __metaclass__ = PoolMeta
+class PurchaseRequest(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
@@ -37,8 +36,7 @@ class PurchaseRequest:
         depends=['customer', 'state'])
 
 
-class PurchaseConfig:
-    __metaclass__ = PoolMeta
+class PurchaseConfig(metaclass=PoolMeta):
     __name__ = 'purchase.configuration'
 
     purchase_drop_location = fields.MultiValue(purchase_drop_location)
@@ -84,8 +82,7 @@ class PurchaseConfigPurchaseDropLocation(ModelSQL, ValueMixin):
             return None
 
 
-class Purchase:
-    __metaclass__ = PoolMeta
+class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
@@ -178,8 +175,7 @@ class Purchase:
             )
 
 
-class PurchaseLine:
-    __metaclass__ = PoolMeta
+class PurchaseLine(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     def get_to_location(self, name):
@@ -201,8 +197,7 @@ class PurchaseLine:
         return move
 
 
-class ProductSupplier:
-    __metaclass__ = PoolMeta
+class ProductSupplier(metaclass=PoolMeta):
     __name__ = 'purchase.product_supplier'
 
     drop_shipment = fields.Boolean('Drop Shipment',
@@ -221,8 +216,7 @@ class ProductSupplier:
             return self.product.supply_on_sale
 
 
-class CreatePurchase:
-    __metaclass__ = PoolMeta
+class CreatePurchase(metaclass=PoolMeta):
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
@@ -237,8 +231,7 @@ class CreatePurchase:
         return result
 
 
-class PurchaseHandleShipmentException:
-    __metaclass__ = PoolMeta
+class PurchaseHandleShipmentException(metaclass=PoolMeta):
     __name__ = 'purchase.handle.shipment.exception'
 
     def transition_handle(self):

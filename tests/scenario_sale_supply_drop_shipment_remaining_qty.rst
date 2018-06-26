@@ -118,7 +118,7 @@ Create Purchase from Request::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
     >>> sale.reload()
     >>> shipment, = sale.drop_shipments

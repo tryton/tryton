@@ -18,8 +18,7 @@ from trytond.tools import grouped_slice, cursor_dict
 __all__ = ['Configuration', 'ConfigurationSequence', 'ShipmentDrop', 'Move']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'stock.configuration'
 
     shipment_drop_sequence = fields.MultiValue(fields.Many2One(
@@ -43,8 +42,7 @@ class Configuration:
             'shipment_drop_sequence').default_shipment_drop_sequence()
 
 
-class ConfigurationSequence:
-    __metaclass__ = PoolMeta
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'stock.configuration.sequence'
     shipment_drop_sequence = fields.Many2One(
         'ir.sequence', "Drop Shipment Sequence", required=True,
@@ -480,7 +478,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 new_customer_move.unit_price = unit_price
                 to_save.append(new_customer_move)
 
-            for product, cost in product_cost.iteritems():
+            for product, cost in product_cost.items():
                 qty = Decimal(str(s_product_qty[product]))
                 if qty:
                     product_cost[product] = (cost / qty).quantize(cost_exp)
@@ -579,8 +577,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 })
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     customer_drop = fields.Function(fields.Many2One('party.party',
