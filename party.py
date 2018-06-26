@@ -16,8 +16,7 @@ from trytond.tools import grouped_slice, reduce_ids
 __all__ = ['Party', 'PartyErase']
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     deposit = fields.Function(fields.Numeric('Deposit',
@@ -134,8 +133,7 @@ class Party:
         return not amount or ((amount < 0) == (sign < 0))
 
 
-class PartyErase:
-    __metaclass__ = PoolMeta
+class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     @classmethod

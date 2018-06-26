@@ -5,8 +5,7 @@ from trytond.pool import PoolMeta
 __all__ = ['AccountTemplate', 'Account']
 
 
-class AccountTemplate:
-    __metaclass__ = PoolMeta
+class AccountTemplate(metaclass=PoolMeta):
     __name__ = 'account.account.template'
 
     @classmethod
@@ -15,8 +14,7 @@ class AccountTemplate:
         cls.kind.selection.append(('deposit', 'Deposit'))
 
 
-class Account:
-    __metaclass__ = PoolMeta
+class Account(metaclass=PoolMeta):
     __name__ = 'account.account'
 
     @classmethod
