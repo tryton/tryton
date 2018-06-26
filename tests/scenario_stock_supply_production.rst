@@ -59,7 +59,7 @@ Create a need for product::
     >>> move.to_location = lost_loc
     >>> move.click('do')
     >>> move.state
-    u'done'
+    'done'
 
 The is no production request::
 
@@ -76,7 +76,7 @@ There is now a production request::
 
     >>> production, = Production.find([])
     >>> production.state
-    u'request'
+    'request'
     >>> production.product == product
     True
     >>> production.quantity
@@ -118,7 +118,7 @@ There is now a production request::
 
     >>> production, = Production.find([])
     >>> production.state
-    u'request'
+    'request'
     >>> production.product == product
     True
     >>> production.quantity

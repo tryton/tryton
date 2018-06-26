@@ -9,8 +9,7 @@ from trytond.wizard import StateAction
 __all__ = ['OrderPoint', 'LocationLeadTime', 'StockSupply']
 
 
-class OrderPoint:
-    __metaclass__ = PoolMeta
+class OrderPoint(metaclass=PoolMeta):
     __name__ = 'stock.order_point'
 
     @classmethod
@@ -51,8 +50,7 @@ class OrderPoint:
         return location
 
 
-class LocationLeadTime:
-    __metaclass__ = PoolMeta
+class LocationLeadTime(metaclass=PoolMeta):
     __name__ = 'stock.location.lead_time'
 
     @classmethod
@@ -66,8 +64,7 @@ class LocationLeadTime:
         return extra
 
 
-class StockSupply:
-    __metaclass__ = PoolMeta
+class StockSupply(metaclass=PoolMeta):
     __name__ = 'stock.supply'
 
     production = StateAction('stock_supply_production.act_production_request')

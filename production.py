@@ -12,8 +12,7 @@ __all__ = ['Configuration', 'ConfigurationSupplyPeriod', 'Production']
 supply_period = fields.TimeDelta("Supply Period")
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'production.configuration'
     supply_period = fields.MultiValue(supply_period)
 
@@ -24,8 +23,7 @@ class ConfigurationSupplyPeriod(ModelSQL, ValueMixin):
     supply_period = supply_period
 
 
-class Production:
-    __metaclass__ = PoolMeta
+class Production(metaclass=PoolMeta):
     __name__ = 'production'
 
     @classmethod
@@ -208,7 +206,7 @@ class Production:
                     [location_id],
                     with_childs=True,
                     grouping_filter=(product_ids,))
-            for key, qty in pbl.iteritems():
+            for key, qty in pbl.items():
                 _, product_id = key
                 current_qties[product_id] += qty
 
