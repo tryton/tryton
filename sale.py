@@ -18,8 +18,7 @@ __all__ = ['Sale', 'SaleLine',
     'SalePromotion', 'SalePromotion_Product', 'SalePromotion_ProductCategory']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     @classmethod
@@ -66,8 +65,7 @@ class Sale:
             promotion.apply(self)
 
 
-class SaleLine:
-    __metaclass__ = PoolMeta
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     draft_unit_price = fields.Numeric('Draft Unit Price',
@@ -164,7 +162,7 @@ class SalePromotion(
         try:
             if not isinstance(self.get_unit_price(**context), Decimal):
                 raise ValueError('Not a Decimal')
-        except Exception, exception:
+        except Exception as exception:
             self.raise_user_error('invalid_formula', {
                     'formula': self.formula,
                     'promotion': self.rec_name,
@@ -255,8 +253,8 @@ class SalePromotion(
             new_prices[line] = self.get_unit_price(**context)
 
         # Apply promotion only if all unit prices decrease
-        if all(l.unit_price >= p for l, p in new_prices.iteritems()):
-            for line, unit_price in new_prices.iteritems():
+        if all(l.unit_price >= p for l, p in new_prices.items()):
+            for line, unit_price in new_prices.items():
                 line.unit_price = unit_price.quantize(
                     Decimal(1) / 10 ** line.__class__.unit_price.digits[1])
                 line.promotion = self
