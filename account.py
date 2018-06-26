@@ -15,9 +15,8 @@ __all__ = ['Configuration', 'ConfigurationLandedCostSequence',
     'LandedCost', 'LandedCost_Shipment', 'InvoiceLine']
 
 
-class Configuration:
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
-    __metaclass__ = PoolMeta
     landed_cost_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Landed Cost Sequence", required=True,
             domain=[
@@ -315,9 +314,8 @@ class LandedCost_Shipment(ModelSQL):
         required=True)
 
 
-class InvoiceLine:
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
-    __metaclass__ = PoolMeta
     landed_cost = fields.Many2One('account.landed_cost', 'Landed Cost',
         readonly=True, select=True,
         states={

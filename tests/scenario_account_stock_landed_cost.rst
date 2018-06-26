@@ -151,10 +151,10 @@ Add landed cost::
     >>> landed_cost.allocation_method = 'value'
     >>> landed_cost.save()
     >>> landed_cost.state
-    u'draft'
+    'draft'
     >>> landed_cost.click('post')
     >>> landed_cost.state
-    u'posted'
+    'posted'
 
 Check move unit price is 101::
 

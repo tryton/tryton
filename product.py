@@ -8,8 +8,7 @@ from trytond.pyson import Eval
 __all__ = ['Template', 'Product']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     landed_cost = fields.Boolean('Landed Cost', states={
             'readonly': ~Eval('active', True),
@@ -17,6 +16,5 @@ class Template:
             }, depends=['active', 'type'])
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'

@@ -8,8 +8,7 @@ from trytond.modules.product import price_digits
 __all__ = ['Move']
 
 
-class Move:
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    __metaclass__ = PoolMeta
     unit_landed_cost = fields.Numeric('Unit Landed Cost',
         digits=price_digits, readonly=True)
