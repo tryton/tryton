@@ -9,8 +9,7 @@ from trytond.transaction import Transaction
 __all__ = ['Move']
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     def _get_account_stock_move_lines(self, type_):

@@ -124,7 +124,7 @@ Purchase 12 products::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
 Receive 9 products::
 
@@ -142,7 +142,7 @@ Receive 9 products::
     >>> shipment.click('receive')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> stock_supplier.reload()
     >>> stock_supplier.debit
     Decimal('0.00')
@@ -167,7 +167,7 @@ Open supplier invoice::
     >>> invoice.invoice_date = today
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> payable.reload()
     >>> payable.debit
     Decimal('0.00')
@@ -196,7 +196,7 @@ Sale 5 products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Send 5 products::
 
@@ -204,13 +204,13 @@ Send 5 products::
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('pack')
     >>> shipment.state
-    u'packed'
+    'packed'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> stock_customer.reload()
     >>> stock_customer.debit
     Decimal('28.00')
@@ -228,7 +228,7 @@ Open customer invoice::
     >>> invoice, = sale.invoices
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> receivable.reload()
     >>> receivable.debit
     Decimal('50.00')
@@ -257,7 +257,7 @@ Create an Inventory::
     >>> inventory_line.quantity = 1.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
     >>> stock_lost_found.reload()
     >>> stock_lost_found.debit
     Decimal('11.00')
@@ -291,7 +291,7 @@ Create Drop Shipment Move::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find()
@@ -305,13 +305,13 @@ Create Drop Shipment Move::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
     >>> shipment, = sale.drop_shipments
     >>> shipment.click('ship')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
     >>> stock_supplier.reload()
     >>> stock_supplier.debit
@@ -343,7 +343,7 @@ Create Drop Shipment Move::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
     >>> purchase_request, = [p for p in PurchaseRequest.find()
     ...     if p.state == 'draft']
@@ -357,13 +357,13 @@ Create Drop Shipment Move::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
 
     >>> shipment, = sale.drop_shipments
     >>> shipment.click('ship')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
     >>> stock_supplier.reload()
     >>> stock_supplier.debit

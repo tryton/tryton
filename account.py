@@ -12,8 +12,7 @@ stock_journal = fields.Many2One(
     'account.journal', "Stock Journal", required=True)
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
     stock_journal = fields.MultiValue(stock_journal)
     cost_price_counterpart_account = fields.MultiValue(fields.Many2One(
@@ -53,8 +52,7 @@ class ConfigurationCostPriceCounterpartAccount(ModelSQL, CompanyValueMixin):
         depends=['company'])
 
 
-class FiscalYear:
-    __metaclass__ = PoolMeta
+class FiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear'
     account_stock_method = fields.Selection([
             (None, 'None'),
@@ -62,8 +60,7 @@ class FiscalYear:
             ], 'Account Stock Method')
 
 
-class AccountMove:
-    __metaclass__ = PoolMeta
+class AccountMove(metaclass=PoolMeta):
     __name__ = 'account.move'
 
     @classmethod

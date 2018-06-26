@@ -21,8 +21,7 @@ account_names = [
     'account_stock_production', 'account_stock_lost_found']
 
 
-class Category:
-    __metaclass__ = PoolMeta
+class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     account_stock = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock",
@@ -118,8 +117,7 @@ class Category:
         pass
 
 
-class CategoryAccount:
-    __metaclass__ = PoolMeta
+class CategoryAccount(metaclass=PoolMeta):
     __name__ = 'product.category.account'
     account_stock = fields.Many2One(
         'account.account', "Account Stock",
@@ -179,8 +177,7 @@ class CategoryAccount:
             field_names, value_names, fields)
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     @classmethod
@@ -219,8 +216,7 @@ class Template:
         pass
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     account_stock_used = template_property('account_stock_used')
     account_stock_supplier_used = template_property(
