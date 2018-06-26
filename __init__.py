@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from customs import *
-from product import *
+from .customs import *
+from .product import *
 
 
 def register():

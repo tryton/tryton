@@ -10,8 +10,7 @@ from trytond import backend
 __all__ = ['Category', 'Template', 'Product_TariffCode', 'Product']
 
 
-class Category:
-    __metaclass__ = PoolMeta
+class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     customs = fields.Boolean('Customs', select=True,
         states={
@@ -89,8 +88,7 @@ class Category:
             Product_TariffCode.delete(product_tariffcodes)
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     customs_category = fields.Many2One('product.category', 'Customs Category',
         domain=[
@@ -185,6 +183,5 @@ class Product_TariffCode(sequence_ordered(), ModelSQL, ModelView):
         return [('tariff_code.rec_name',) + tuple(clause[1:])]
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
