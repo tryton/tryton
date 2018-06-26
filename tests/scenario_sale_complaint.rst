@@ -124,16 +124,16 @@ Create a complaint to return the sale::
     >>> action.action = 'sale_return'
     >>> complaint.save()
     >>> complaint.state
-    u'draft'
+    'draft'
     >>> complaint.click('wait')
     >>> complaint.state
-    u'waiting'
+    'waiting'
     >>> complaint.click('approve')
     >>> complaint.state
-    u'approved'
+    'approved'
     >>> complaint.click('process')
     >>> complaint.state
-    u'done'
+    'done'
     >>> action, = complaint.actions
     >>> return_sale = action.result
     >>> len(return_sale.lines)
@@ -154,7 +154,7 @@ Create a complaint to return a sale line::
     >>> complaint.click('approve')
     >>> complaint.click('process')
     >>> complaint.state
-    u'done'
+    'done'
     >>> action, = complaint.actions
     >>> return_sale = action.result
     >>> return_line, = return_sale.lines
@@ -173,11 +173,11 @@ Create a complaint to credit the invoice::
     >>> complaint.click('approve')
     >>> complaint.click('process')
     >>> complaint.state
-    u'done'
+    'done'
     >>> action, = complaint.actions
     >>> credit_note = action.result
     >>> credit_note.type
-    u'out'
+    'out'
     >>> len(credit_note.lines)
     2
     >>> sum(l.quantity for l in credit_note.lines)
@@ -196,11 +196,11 @@ Create a complaint to credit a invoice line::
     >>> complaint.click('approve')
     >>> complaint.click('process')
     >>> complaint.state
-    u'done'
+    'done'
     >>> action, = complaint.actions
     >>> credit_note = action.result
     >>> credit_note.type
-    u'out'
+    'out'
     >>> credit_note_line, = credit_note.lines
     >>> credit_note_line.quantity
     -1.0

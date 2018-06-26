@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
+
 from collections import defaultdict
 
 from trytond.model import ModelSQL, ModelView, Workflow, fields
@@ -126,14 +126,14 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 })
 
         origin_domain = []
-        for model, domain in cls._origin_domains().iteritems():
+        for model, domain in cls._origin_domains().items():
             origin_domain = If(Eval('origin_model') == model,
                 domain, origin_domain)
         cls.origin.domain = [origin_domain]
 
         actions_domains = cls._actions_domains()
         actions_domain = [('action', 'in', actions_domains.pop(None))]
-        for model, actions in actions_domains.iteritems():
+        for model, actions in actions_domains.items():
             actions_domain = If(Eval('origin_model') == model,
                 [('action', 'in', actions)], actions_domain)
         cls.actions.domain = [actions_domain]
@@ -291,11 +291,11 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 result = action.do()
                 results[result.__class__].append(result)
                 actions[result.__class__].append(action)
-        for kls, records in results.iteritems():
+        for kls, records in results.items():
             kls.save(records)
             for action, record in zip(actions[kls], records):
                 action.result = record
-        Action.save(sum(actions.values(), []))
+        Action.save(sum(list(actions.values()), []))
 
 
 class Action(ModelSQL, ModelView):

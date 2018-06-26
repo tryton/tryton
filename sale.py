@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
 
 from trytond import backend
 from trytond.pool import PoolMeta, Pool
@@ -10,8 +9,7 @@ from trytond.pyson import Eval
 __all__ = ['Configuration', 'ConfigurationSequence', 'Sale']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     complaint_sequence = fields.MultiValue(fields.Many2One(
@@ -35,8 +33,7 @@ class Configuration:
             'complaint_sequence').default_complaint_sequence()
 
 
-class ConfigurationSequence:
-    __metaclass__ = PoolMeta
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sequence'
     complaint_sequence = fields.Many2One(
         'ir.sequence', "Complaint Sequence",
@@ -76,8 +73,7 @@ class ConfigurationSequence:
             return None
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     @classmethod
