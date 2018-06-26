@@ -23,8 +23,7 @@ def default_func(field_name):
     return default
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     sale_under_shipment_tolerance = fields.MultiValue(

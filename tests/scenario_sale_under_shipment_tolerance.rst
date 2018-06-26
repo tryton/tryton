@@ -100,4 +100,4 @@ No new shipment as shipped inside tolerance::
     >>> len(sale.shipments)
     2
     >>> sale.shipment_state
-    u'sent'
+    'sent'
