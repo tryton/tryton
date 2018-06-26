@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta
 __all__ = ['LandedCost']
 
 
-class LandedCost:
-    __metaclass__ = PoolMeta
+class LandedCost(metaclass=PoolMeta):
     __name__ = 'account.landed_cost'
 
     @classmethod
