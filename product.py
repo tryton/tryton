@@ -10,8 +10,7 @@ from trytond.pool import Pool, PoolMeta
 __all__ = ['ProductCostPrice', 'ProductCostHistory']
 
 
-class ProductCostPrice:
-    __metaclass__ = PoolMeta
+class ProductCostPrice(metaclass=PoolMeta):
     __name__ = 'product.cost_price'
     _history = True
 
