@@ -7,8 +7,7 @@ from trytond.pyson import Eval
 __all__ = ['Template', 'Product']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     supply_on_sale = fields.Boolean('Supply On Sale',
@@ -18,6 +17,5 @@ class Template:
         depends=['purchasable', 'salable'])
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'

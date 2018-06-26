@@ -129,14 +129,14 @@ Sale 250 products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> shipment, = sale.shipments
     >>> move, = shipment.outgoing_moves
     >>> move.state
-    u'staging'
+    'staging'
     >>> move, = shipment.inventory_moves
     >>> move.state
-    u'staging'
+    'staging'
 
 Delete Purchase Request::
 
@@ -167,16 +167,16 @@ Create Purchase from Request::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> shipment, = sale.shipments
     >>> move, = shipment.outgoing_moves
     >>> move.state
-    u'draft'
+    'draft'
     >>> move, = shipment.inventory_moves
     >>> move.state
-    u'draft'
+    'draft'
 
 Receive 100 products::
 
@@ -190,7 +190,7 @@ Receive 100 products::
     >>> shipment.click('receive')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> set_user(sale_user)
     >>> sale.reload()
     >>> shipment, = sale.shipments
@@ -232,7 +232,7 @@ not create a new purchase request::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> shipment, = sale.shipments
     >>> set_user(stock_user)
     >>> Inventory = Model.get('stock.inventory')
@@ -250,7 +250,7 @@ not create a new purchase request::
     >>> inventory.save()
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
     >>> shipment.click('assign_try')
     True
     >>> shipment.click('pack')

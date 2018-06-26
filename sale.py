@@ -7,8 +7,7 @@ from trytond.pyson import Eval
 __all__ = ['Sale', 'SaleLine']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     def is_done(self):
@@ -58,8 +57,7 @@ class Sale:
         ShipmentOut.wait(shipments)
 
 
-class SaleLine:
-    __metaclass__ = PoolMeta
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     purchase_request = fields.Many2One('purchase.request', 'Purchase Request',
@@ -177,8 +175,7 @@ class SaleLine:
             if move.state != 'draft':
                 continue
             location_qties_converted = {}
-            for location_id, quantity in (
-                    location_quantities.iteritems()):
+            for location_id, quantity in location_quantities.items():
                 location_qties_converted[location_id] = (
                     Uom.compute_qty(move.product.default_uom,
                         quantity, move.uom, round=False))

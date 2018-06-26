@@ -86,7 +86,7 @@ Sale 5 products with shipment method on invoice::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> len(sale.shipments)
     0
     >>> invoice, = sale.invoices

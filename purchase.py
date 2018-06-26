@@ -11,8 +11,7 @@ __all__ = ['PurchaseRequest', 'Purchase',
     'HandlePurchaseCancellationException']
 
 
-class PurchaseRequest:
-    __metaclass__ = PoolMeta
+class PurchaseRequest(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     sale_lines = fields.One2Many(
@@ -45,8 +44,7 @@ class PurchaseRequest:
                 Sale.process(Sale.browse(sale_ids))
 
 
-class Purchase:
-    __metaclass__ = PoolMeta
+class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
     @classmethod
@@ -82,8 +80,7 @@ class Purchase:
         cls._sale_supply_process(purchases)
 
 
-class HandlePurchaseCancellationException:
-    __metaclass__ = PoolMeta
+class HandlePurchaseCancellationException(metaclass=PoolMeta):
     __name__ = 'purchase.request.handle.purchase.cancellation'
 
     def transition_cancel_request(self):
