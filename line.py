@@ -164,8 +164,7 @@ class Line(ModelSQL, ModelView):
                 (self.account.rec_name,))
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
     @classmethod
@@ -289,11 +288,11 @@ class MoveLine(ModelSQL, ModelView):
             for analytic_line in line.analytic_lines:
                 amount = analytic_line.debit - analytic_line.credit
                 amounts[analytic_line.account.root] += amount
-            if not roots <= set(amounts.iterkeys()):
+            if not roots <= set(amounts.keys()):
                 line.analytic_state = 'draft'
                 continue
             amount = line.debit - line.credit
-            for analytic_amount in amounts.itervalues():
+            for analytic_amount in amounts.values():
                 if analytic_amount != amount:
                     line.analytic_state = 'draft'
                     break
