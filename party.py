@@ -10,8 +10,7 @@ dunning_procedure = fields.Many2One(
     'account.dunning.procedure', "Dunning Procedure")
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     dunning_procedure = fields.MultiValue(dunning_procedure)
     dunning_procedures = fields.One2Many(

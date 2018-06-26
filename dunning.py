@@ -232,7 +232,7 @@ class Dunning(ModelSQL, ModelView):
             if level != dunning.level:
                 set_level[level].append(dunning)
         to_write = []
-        for level, dunnings in set_level.iteritems():
+        for level, dunnings in set_level.items():
             to_write.extend((dunnings, {
                         'level': level.id,
                         'state': 'draft',

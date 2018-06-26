@@ -170,7 +170,7 @@ Create dunnings on 5 days::
     >>> dunning.level == procedure.levels[0]
     True
     >>> dunning.state
-    u'draft'
+    'draft'
     >>> dunning.line == dunning_line
     True
 
@@ -185,7 +185,7 @@ Create dunnings on 30 days with draft dunning::
     >>> dunning.level == procedure.levels[0]
     True
     >>> dunning.state
-    u'draft'
+    'draft'
     >>> dunning.line == dunning_line
     True
 
@@ -196,7 +196,7 @@ Process dunning::
     >>> process_dunning.execute('process')
     >>> dunning.reload()
     >>> dunning.state
-    u'done'
+    'done'
 
 Create dunnings on 30 days with blocked dunning::
 
@@ -211,7 +211,7 @@ Create dunnings on 30 days with blocked dunning::
     >>> dunning.level == procedure.levels[0]
     True
     >>> dunning.state
-    u'done'
+    'done'
     >>> dunning.line == dunning_line
     True
     >>> bool(dunning.blocked)
@@ -230,7 +230,7 @@ Create dunnings on 30 days::
     >>> dunning.level == procedure.levels[1]
     True
     >>> dunning.state
-    u'draft'
+    'draft'
     >>> dunning.line == dunning_line
     True
 

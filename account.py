@@ -10,8 +10,7 @@ default_dunning_procedure = fields.Many2One(
     help="The default dunning procedure for new customers.")
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
     default_dunning_procedure = fields.MultiValue(default_dunning_procedure)
 
@@ -22,8 +21,7 @@ class ConfigurationDefaultDunningProcedure(ModelSQL, ValueMixin):
     default_dunning_procedure = default_dunning_procedure
 
 
-class MoveLine:
-    __metaclass__ = PoolMeta
+class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
 
     dunnings = fields.One2Many('account.dunning', 'line', 'Dunnings')
