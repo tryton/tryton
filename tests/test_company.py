@@ -63,7 +63,7 @@ class CompanyTestCase(ModuleTestCase):
     def test_company(self):
         'Create company'
         company = create_company()
-        self.assert_(company)
+        self.assertTrue(company)
 
     @with_transaction()
     def test_company_recursion(self):
@@ -75,7 +75,7 @@ class CompanyTestCase(ModuleTestCase):
         company2 = create_company('Michael Scott Paper Company')
         company2.parent = company1
         company2.save()
-        self.assert_(company2)
+        self.assertTrue(company2)
 
         self.assertRaises(Exception, Company.write,
             [company1], {
@@ -97,7 +97,7 @@ class CompanyTestCase(ModuleTestCase):
                     'party': party.id,
                     'company': company1.id,
                     }])
-        self.assert_(employee)
+        self.assertTrue(employee)
 
     @with_transaction()
     def test_user_company(self):
@@ -124,7 +124,7 @@ class CompanyTestCase(ModuleTestCase):
                     'main_company': company2.id,
                     'company': company2.id,
                     }])
-        self.assert_(user1)
+        self.assertTrue(user1)
 
         with transaction.set_user(user1.id):
             user1, user2 = User.browse([user1.id, user2.id])

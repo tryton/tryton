@@ -102,8 +102,7 @@ class UserEmployee(ModelSQL):
         ondelete='CASCADE', select=True, required=True)
 
 
-class User:
-    __metaclass__ = PoolMeta
+class User(metaclass=PoolMeta):
     __name__ = 'res.user'
     main_company = fields.Many2One('company.company', 'Main Company',
         help="Grant access to the company and its children.")
@@ -154,9 +153,9 @@ class User:
                 if company in company_childs:
                     company_ids = company_childs[company]
                 else:
-                    company_ids = map(int, Company.search([
+                    company_ids = list(map(int, Company.search([
                                 ('parent', 'child_of', [company.id]),
-                                ]))
+                                ])))
                     company_childs[company] = company_ids
                 if company_ids:
                     companies[user.id].extend(company_ids)
@@ -287,8 +286,7 @@ class User:
         Rule._domain_get_cache.clear()
 
 
-class Sequence:
-    __metaclass__ = PoolMeta
+class Sequence(metaclass=PoolMeta):
     __name__ = 'ir.sequence'
     company = fields.Many2One('company.company', 'Company',
         domain=[
@@ -310,8 +308,7 @@ class SequenceStrict(Sequence):
     __name__ = 'ir.sequence.strict'
 
 
-class Date:
-    __metaclass__ = PoolMeta
+class Date(metaclass=PoolMeta):
     __name__ = 'ir.date'
 
     @classmethod
@@ -378,8 +375,7 @@ class LetterReport(CompanyReport):
             return super(LetterReport, cls).execute(ids, data)
 
 
-class Rule:
-    __metaclass__ = PoolMeta
+class Rule(metaclass=PoolMeta):
     __name__ = 'ir.rule'
 
     @classmethod

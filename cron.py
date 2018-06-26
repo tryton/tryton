@@ -8,8 +8,7 @@ from trytond.transaction import Transaction
 __all__ = ['Cron', 'CronCompany']
 
 
-class Cron:
-    __metaclass__ = PoolMeta
+class Cron(metaclass=PoolMeta):
     __name__ = "ir.cron"
     companies = fields.Many2Many('ir.cron-company.company', 'cron', 'company',
             'Companies', help='Companies registered for this cron')
@@ -38,7 +37,7 @@ class Cron:
     @staticmethod
     def default_companies():
         Company = Pool().get('company.company')
-        return map(int, Company.search([]))
+        return list(map(int, Company.search([])))
 
 
 class CronCompany(ModelSQL):

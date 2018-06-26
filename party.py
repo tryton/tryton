@@ -11,13 +11,11 @@ __all__ = ['Configuration', 'PartyConfigurationLang', 'Party', 'PartyLang',
     'PartyReplace', 'PartyErase']
 
 
-class Configuration(CompanyMultiValueMixin):
-    __metaclass__ = PoolMeta
+class Configuration(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'party.configuration'
 
 
-class PartyConfigurationLang(CompanyValueMixin):
-    __metaclass__ = PoolMeta
+class PartyConfigurationLang(CompanyValueMixin, metaclass=PoolMeta):
     __name__ = 'party.configuration.party_lang'
 
     @classmethod
@@ -37,13 +35,11 @@ class PartyConfigurationLang(CompanyValueMixin):
                 cls, cls._configuration_value_field, fields=['company'])
 
 
-class Party(CompanyMultiValueMixin):
-    __metaclass__ = PoolMeta
+class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'party.party'
 
 
-class PartyLang(CompanyValueMixin):
-    __metaclass__ = PoolMeta
+class PartyLang(CompanyValueMixin, metaclass=PoolMeta):
     __name__ = 'party.party.lang'
 
     @classmethod
@@ -67,8 +63,7 @@ class PartyLang(CompanyValueMixin):
             field_names, value_names, fields)
 
 
-class PartyReplace:
-    __metaclass__ = PoolMeta
+class PartyReplace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
@@ -79,8 +74,7 @@ class PartyReplace:
             ]
 
 
-class PartyErase:
-    __metaclass__ = PoolMeta
+class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     def check_erase(self, party):
