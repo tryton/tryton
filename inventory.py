@@ -258,7 +258,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             if not fill:
                 continue
             # Create lines if needed
-            for key, quantity in pbl.iteritems():
+            for key, quantity in pbl.items():
                 product_id = key[grouping.index('product') + 1]
                 if (product2type[product_id] != 'goods'
                         or product2consumable[product_id]):

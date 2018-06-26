@@ -72,7 +72,7 @@ Set the shipment state to waiting::
 
     >>> shipment_out.click('wait')
     >>> shipment_out.state
-    u'waiting'
+    'waiting'
     >>> len(shipment_out.outgoing_moves)
     1
     >>> len(shipment_out.inventory_moves)
@@ -82,7 +82,7 @@ Assign the shipment::
 
     >>> shipment_out.click('pack')
     >>> shipment_out.state
-    u'packed'
+    'packed'
     >>> len(shipment_out.outgoing_moves)
     1
     >>> len(shipment_out.inventory_moves)

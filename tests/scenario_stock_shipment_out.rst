@@ -136,7 +136,7 @@ Assign the shipment now::
     >>> states = [m.state for m in shipment_out.inventory_moves]
     >>> states.sort()
     >>> states
-    [u'assigned', u'draft']
+    ['assigned', 'draft']
     >>> effective_dates = [m.effective_date for m in
     ...     shipment_out.inventory_moves]
     >>> len(set(effective_dates))
@@ -170,7 +170,7 @@ Delete the draft move, assign and pack shipment::
     >>> len(shipment_out.inventory_moves)
     1
     >>> shipment_out.inventory_moves[0].state
-    u'done'
+    'done'
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
     ...     sum([m.quantity for m in shipment_out.outgoing_moves])
     True
@@ -195,7 +195,7 @@ Set the state as Done::
     >>> len(shipment_out.inventory_moves)
     1
     >>> shipment_out.inventory_moves[0].state
-    u'done'
+    'done'
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
     ...     sum([m.quantity for m in shipment_out.outgoing_moves])
     True
@@ -242,7 +242,7 @@ Finish the shipment::
     >>> shipment_out.click('pack')
     >>> shipment_out.click('done')
     >>> shipment_out.state
-    u'done'
+    'done'
     >>> outgoing_move, = shipment_out.outgoing_moves
     >>> outgoing_move.effective_date == yesterday
     True

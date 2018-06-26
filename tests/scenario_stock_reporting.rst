@@ -85,9 +85,9 @@ Testing the report::
     >>> supplier_restocking_list = Report('stock.shipment.in.restocking_list')
     >>> ext, _, _, name = supplier_restocking_list.execute([shipment_in], {})
     >>> ext
-    u'odt'
+    'odt'
     >>> name
-    u'Restocking List'
+    'Restocking List'
 
 Create Shipment Out::
 
@@ -121,16 +121,16 @@ Testing the reports::
     >>> delivery_note = Report('stock.shipment.out.delivery_note')
     >>> ext, _, _, name = delivery_note.execute([shipment_out], {})
     >>> ext
-    u'odt'
+    'odt'
     >>> name
-    u'Delivery Note'
+    'Delivery Note'
 
     >>> picking_list = Report('stock.shipment.out.picking_list')
     >>> ext, _, _, name = picking_list.execute([shipment_out], {})
     >>> ext
-    u'odt'
+    'odt'
     >>> name
-    u'Picking List'
+    'Picking List'
 
 Create an internal shipment::
 
@@ -160,7 +160,7 @@ Testing the report::
     >>> internal_report = Report('stock.shipment.internal.report')
     >>> ext, _, _, name = internal_report.execute([shipment_internal], {})
     >>> ext
-    u'odt'
+    'odt'
     >>> name
-    u'Internal Shipment'
+    'Internal Shipment'
 

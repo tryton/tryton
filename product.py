@@ -37,7 +37,7 @@ def check_no_move(func):
             field = 'product'
         for sub_records in grouped_slice(records):
             moves = Move.search([
-                    (field, 'in', map(int, sub_records)),
+                    (field, 'in', list(map(int, sub_records))),
                     ],
                 limit=1, order=[])
             if moves:
@@ -63,8 +63,7 @@ def check_no_move(func):
     return decorator
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = "product.template"
     quantity = fields.Function(fields.Float('Quantity'), 'sum_product')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
@@ -112,8 +111,7 @@ class Template:
         Product.recompute_cost_price(products)
 
 
-class Product(StockMixin, object):
-    __metaclass__ = PoolMeta
+class Product(StockMixin, object, metaclass=PoolMeta):
     __name__ = "product.product"
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',
             searcher='search_quantity')
@@ -125,7 +123,7 @@ class Product(StockMixin, object):
     @classmethod
     def get_quantity(cls, products, name):
         location_ids = Transaction().context.get('locations')
-        product_ids = map(int, products)
+        product_ids = list(map(int, products))
         return cls._get_quantity(
             products, name, location_ids, grouping_filter=(product_ids,))
 
@@ -202,7 +200,7 @@ class Product(StockMixin, object):
             grouping=grouping, grouping_filter=grouping_filter)
 
         if wh_to_add:
-            for wh, storage in wh_to_add.iteritems():
+            for wh, storage in wh_to_add.items():
                 for key in quantities:
                     if key[0] == storage:
                         quantities[(wh,) + key[1:]] = quantities[key]
@@ -226,7 +224,7 @@ class Product(StockMixin, object):
             return
 
         to_write = []
-        for cost, records in costs.iteritems():
+        for cost, records in costs.items():
             to_write.append(records)
             to_write.append({'cost_price': cost})
 
@@ -368,7 +366,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 
         def valid_context(name):
             return (trans_context.get(name) is not None
-                and isinstance(trans_context[name], (int, long)))
+                and isinstance(trans_context[name], int))
 
         if not any(map(valid_context, ['product', 'product_template'])):
             return {l.id: None for l in lines}

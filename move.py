@@ -94,7 +94,7 @@ class StockMixin(object):
                 grouping=grouping,
                 grouping_filter=grouping_filter)
 
-        for key, quantity in pbl.iteritems():
+        for key, quantity in pbl.items():
             # pbl could return None in some keys
             if (key[position] is not None and
                     key[position] in quantities):
@@ -142,7 +142,7 @@ class StockMixin(object):
             'not in': lambda v, l: v not in l,
             }.get(operator_, lambda v, l: False)
         record_ids = []
-        for key, quantity in pbl.iteritems():
+        for key, quantity in pbl.items():
             if operator_(quantity, operand):
                 # pbl could return None in some keys
                 if key[position] is not None:
@@ -368,7 +368,7 @@ class Move(Workflow, ModelSQL, ModelView):
             'shipment_in_return': 'stock.shipment.in.return',
             'shipment_internal': 'stock.shipment.internal',
             }
-        for column, model in shipments.iteritems():
+        for column, model in shipments.items():
             if table.column_exist(column):
                 cursor.execute(*sql_table.update(
                         columns=[sql_table.shipment],
@@ -790,7 +790,7 @@ class Move(Workflow, ModelSQL, ModelView):
             return ((move.from_location.type in types) ^
                 (move.to_location.type in types)
                 and not move.origin)
-        moves = filter(no_origin, moves)
+        moves = list(filter(no_origin, moves))
         if moves:
             names = ', '.join(m.rec_name for m in moves[:5])
             if len(moves) > 5:
@@ -807,7 +807,7 @@ class Move(Workflow, ModelSQL, ModelView):
         """
         to_pick = []
         needed_qty = self.quantity
-        for location, available_qty in location_quantities.iteritems():
+        for location, available_qty in location_quantities.items():
             # Ignore available_qty when too small
             if available_qty < self.uom.rounding:
                 continue
@@ -1290,7 +1290,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 column = Column(move, fieldname)
                 if PeriodCache:
                     cache_column = Column(period_cache, fieldname)
-                if isinstance(grouping_ids[0], (int, long, float, Decimal)):
+                if isinstance(grouping_ids[0], (int, float, Decimal)):
                     where &= reduce_ids(column, grouping_ids)
                     if PeriodCache:
                         where_period &= reduce_ids(cache_column, grouping_ids)
@@ -1441,7 +1441,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 leafs = next_leafs
 
             # clean result
-            for key in quantities.keys():
+            for key in list(quantities.keys()):
                 location = key[0]
                 if location not in location_ids:
                     del quantities[key]
@@ -1449,7 +1449,7 @@ class Move(Workflow, ModelSQL, ModelView):
         # Round quantities
         default_uom = dict((p.id, p.default_uom) for p in
             Model.browse(list(ids)))
-        for key, quantity in quantities.iteritems():
+        for key, quantity in quantities.items():
             location = key[0]
             uom = default_uom[id_getter(key)]
             quantities[key] = uom.round(quantity)

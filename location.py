@@ -144,7 +144,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 ()),
             ]
         childs_mapping = cls._childs_domain()
-        for type_, allowed_parents in cls._parent_domain().iteritems():
+        for type_, allowed_parents in cls._parent_domain().items():
             parent_domain.append(If(Eval('type') == type_,
                     ('type', 'in', allowed_parents), ()))
             childs_domain.append(If(Eval('type') == type_,
@@ -170,7 +170,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     @classmethod
     def _childs_domain(cls):
         childs_domain = {}
-        for type_, allowed_parents in cls._parent_domain().iteritems():
+        for type_, allowed_parents in cls._parent_domain().items():
             for parent in allowed_parents:
                 childs_domain.setdefault(parent, [])
                 childs_domain[parent].append(type_)
@@ -231,7 +231,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             locations = cls.search([])
         if not locations:
             return []
-        location_ids = map(int, locations)
+        location_ids = list(map(int, locations))
         # Use root to compute for all companies
         # and ensures inactive locations are in the query
         with Transaction().set_user(0), \
@@ -241,7 +241,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             quantities = Move.compute_quantities(
                 query, location_ids, with_childs=True)
             empty = set(location_ids)
-            for (location_id, product), quantity in quantities.iteritems():
+            for (location_id, product), quantity in quantities.items():
                 if quantity:
                     empty.discard(location_id)
             for sub_ids in grouped_slice(list(empty)):
@@ -306,7 +306,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
         def valid_context(name):
             return (trans_context.get(name) is not None
-                and isinstance(trans_context[name], (int, long)))
+                and isinstance(trans_context[name], int))
 
         if not any(map(valid_context, ['product', 'product_template'])):
             return {l.id: None for l in locations}
@@ -372,7 +372,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
         def valid_context(name):
             return (trans_context.get(name) is not None
-                and isinstance(trans_context[name], (int, long)))
+                and isinstance(trans_context[name], int))
 
         if not any(map(valid_context, ['product', 'product_template'])):
             return cost_values
@@ -499,7 +499,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 if location.id in warehouse_locations.values():
                     cp_warehouse = cls(
                         Transaction().context['cp_warehouse_id'])
-                    for field, loc_id in warehouse_locations.iteritems():
+                    for field, loc_id in warehouse_locations.items():
                         if loc_id == location.id:
                             cls.write([cp_warehouse], {
                                     field: new_location.id,
@@ -518,8 +518,7 @@ customer_location = fields.Many2One(
     )
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
     supplier_location = fields.MultiValue(supplier_location)
     customer_location = fields.MultiValue(customer_location)

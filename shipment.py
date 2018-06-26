@@ -412,7 +412,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                     })
 
     def get_origins(self, name):
-        return ', '.join(set(itertools.ifilter(None,
+        return ', '.join(set(filter(None,
                     (m.origin_name for m in self.moves))))
 
     @classmethod
@@ -758,7 +758,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                     })
 
     def get_origins(self, name):
-        return ', '.join(set(itertools.ifilter(None,
+        return ', '.join(set(filter(None,
                     (m.origin_name for m in self.moves))))
 
     @classmethod
@@ -872,7 +872,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                 if move.assignation_required:
                     to_assign[location_type].append(move)
         success = True
-        for location_type, moves in to_assign.iteritems():
+        for location_type, moves in to_assign.items():
             if with_childs is None:
                 _with_childs = location_type == 'view'
             elif not with_childs and location_type == 'view':
@@ -1194,7 +1194,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                 })
 
     def get_origins(self, name):
-        return ', '.join(set(itertools.ifilter(None,
+        return ', '.join(set(filter(None,
                     (m.origin_name for m in self.moves))))
 
     @classmethod
@@ -1786,7 +1786,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
                     })
 
     def get_origins(self, name):
-        return ', '.join(set(itertools.ifilter(None,
+        return ', '.join(set(filter(None,
                     (m.origin_name for m in self.moves))))
 
     @classmethod
@@ -2523,8 +2523,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         cls.assign(shipments)
 
 
-class Address:
-    __metaclass__ = PoolMeta
+class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
     delivery = fields.Boolean('Delivery')
 

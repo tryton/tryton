@@ -146,7 +146,7 @@ class Period(Workflow, ModelSQL, ModelView):
                         ):
                     pbl = Product.products_by_location(
                         [l.id for l in locations], grouping=grouping)
-                for key, quantity in pbl.iteritems():
+                for key, quantity in pbl.items():
                     values = {
                         'location': key[0],
                         'period': period.id,

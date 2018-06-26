@@ -87,7 +87,7 @@ Create Internal Shipment::
 
     >>> shipment.click('wait')
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_try')
     False
     >>> shipment.assigned_by
@@ -112,10 +112,10 @@ Create Internal Shipment from lost_found location::
     >>> lost_found_shipment.click('assign_try')
     True
     >>> lost_found_shipment.state
-    u'assigned'
+    'assigned'
     >>> lost_found_shipment.click('done')
     >>> lost_found_shipment.state
-    u'done'
+    'done'
 
 Check that now whe can finish the older shipment::
 
@@ -127,7 +127,7 @@ Check that now whe can finish the older shipment::
 
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> shipment.done_by == employee
     True
 
@@ -177,7 +177,7 @@ Create Internal Shipment with lead time::
     True
     >>> shipment.click('ship')
     >>> shipment.outgoing_moves[0].state
-    u'done'
+    'done'
     >>> shipment.click('done')
     >>> shipment.incoming_moves[0].state
-    u'done'
+    'done'

@@ -77,9 +77,9 @@ Shipment is done when receiving::
 
     >>> shipment.click('receive')
     >>> shipment.state
-    u'done'
+    'done'
     >>> move, = shipment.incoming_moves
     >>> move.state
-    u'done'
+    'done'
     >>> len(shipment.inventory_moves)
     0
