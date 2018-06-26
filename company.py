@@ -14,8 +14,7 @@ price_digits = (16, config.getint(
         'timesheet_cost', 'price_decimal', default=4))
 
 
-class Employee:
-    __metaclass__ = PoolMeta
+class Employee(metaclass=PoolMeta):
     __name__ = 'company.employee'
     cost_price = fields.Function(fields.Numeric('Cost Price',
             digits=price_digits,

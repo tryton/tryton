@@ -12,8 +12,7 @@ from .company import price_digits
 __all__ = ['TimesheetLine']
 
 
-class TimesheetLine:
-    __metaclass__ = PoolMeta
+class TimesheetLine(metaclass=PoolMeta):
     __name__ = 'timesheet.line'
 
     cost_price = fields.Numeric('Cost Price',

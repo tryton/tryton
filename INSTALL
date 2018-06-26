@@ -4,7 +4,7 @@ Installing trytond_timesheet_cost
 Prerequisites
 -------------
 
- * Python 2.7 or later (http://www.python.org/)
+ * Python 3.4 or later (http://www.python.org/)
  * python-sql 0.4 or later (http://pypi.python.org/pypi/python-sql)
  * trytond (http://www.tryton.org/)
  * trytond_timesheet (http://www.tryton.org/)
