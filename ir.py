@@ -9,8 +9,7 @@ from trytond.pool import Pool, PoolMeta
 __all__ = ['View']
 
 
-class View:
-    __metaclass__ = PoolMeta
+class View(metaclass=PoolMeta):
     __name__ = 'ir.ui.view'
     _dashboard_cache = Cache('ir.ui.view.dashboard_id')
 

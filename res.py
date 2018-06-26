@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta
 __all__ = ['User']
 
 
-class User:
-    __metaclass__ = PoolMeta
+class User(metaclass=PoolMeta):
     __name__ = "res.user"
     dashboard_layout = fields.Selection([
         ('square', 'Square'),
