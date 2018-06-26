@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta, Pool
 __all__ = ['Company']
 
 
-class Company:
-    __metaclass__ = PoolMeta
+class Company(metaclass=PoolMeta):
     __name__ = 'company.company'
 
     hours_per_work_day = fields.Float("Hours per Work Day", required=True)
