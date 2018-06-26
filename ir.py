@@ -7,9 +7,8 @@ from trytond.pyson import Eval
 __all__ = ['Trigger']
 
 
-class Trigger:
+class Trigger(metaclass=PoolMeta):
     __name__ = 'ir.trigger'
-    __metaclass__ = PoolMeta
 
     _required = ((Eval('action_function') == 'trigger')
         & (Eval('action_model_name' == 'notification.email')))

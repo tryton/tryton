@@ -2,10 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import sys
 import unittest
-try:
-    from unittest.mock import patch, ANY
-except ImportError:
-    from mock import patch, ANY
+from unittest.mock import patch, ANY
 
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite

@@ -164,10 +164,10 @@ class Email(ModelSQL, ModelView):
 
     def _get_addresses(self, value):
         if isinstance(value, (list, tuple)):
-            addresses = [self._get_address(v) for v in value]
+            addresses = (self._get_address(v) for v in value)
         else:
             addresses = [self._get_address(value)]
-        return filter(None, addresses)
+        return [a for a in addresses if a]
 
     def _get_language(self, record):
         pool = Pool()
