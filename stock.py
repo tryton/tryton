@@ -20,8 +20,7 @@ SERVER_URLS = {
     }
 
 
-class PackageType:
-    __metaclass__ = PoolMeta
+class PackageType(metaclass=PoolMeta):
     __name__ = 'stock.package.type'
 
     ups_code = fields.Selection([
@@ -56,8 +55,7 @@ class PackageType:
         return None
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -96,9 +94,8 @@ class ShipmentOut:
                             })
 
 
-class CreateShipping:
+class CreateShipping(metaclass=PoolMeta):
     __name__ = 'stock.shipment.create_shipping'
-    __metaclass__ = PoolMeta
 
     ups = StateAction(
         'stock_package_shipping_ups.act_create_shipping_ups_wizard')

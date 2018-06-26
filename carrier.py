@@ -31,8 +31,7 @@ class CredentialUPS(ModelSQL, ModelView, MatchMixin):
         return 'testing'
 
 
-class Carrier:
-    __metaclass__ = PoolMeta
+class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
 
     ups_service_type = fields.Selection([
