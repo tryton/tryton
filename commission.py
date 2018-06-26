@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
+
 
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, fields
@@ -10,8 +10,7 @@ from trytond.pyson import Eval, Bool
 __all__ = ['Agent', 'Commission']
 
 
-class Agent:
-    __metaclass__ = PoolMeta
+class Agent(metaclass=PoolMeta):
     __name__ = 'commission.agent'
     waiting_account = fields.Many2One('account.account', 'Waiting Account',
         domain=[
@@ -21,8 +20,7 @@ class Agent:
         depends=['company'])
 
 
-class Commission:
-    __metaclass__ = PoolMeta
+class Commission(metaclass=PoolMeta):
     __name__ = 'commission'
     waiting_move = fields.Many2One('account.move', 'Move', readonly=True)
 

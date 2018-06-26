@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import unicode_literals
+
 from collections import defaultdict
 
 from trytond.pool import PoolMeta, Pool
@@ -10,8 +10,7 @@ from trytond.model import ModelView, Workflow
 __all__ = ['Invoice', 'InvoiceLine']
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
@@ -47,8 +46,7 @@ class Invoice:
             Move.post(moves)
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     def get_move_lines(self):
@@ -64,7 +62,7 @@ class InvoiceLine:
                 for line in commission.waiting_move.lines:
                     amounts[(line.account, line.party)] += (
                         line.debit - line.credit)
-            for (account, party), amount in amounts.iteritems():
+            for (account, party), amount in amounts.items():
                 line = MoveLine()
                 line.debit = -amount if amount < 0 else 0
                 line.credit = amount if amount > 0 else 0
