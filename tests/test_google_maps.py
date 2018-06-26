@@ -33,7 +33,7 @@ class GoogleMapsTestCase(ModuleTestCase):
 
         address = Address()
         address.party = party
-        address.street = u"Dépôt Street"
+        address.street = "Dépôt Street"
         address.zip = "18503"
         address.city = "Scranton"
         address.save()
