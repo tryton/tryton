@@ -143,7 +143,7 @@ Create an Inventory::
     >>> inventory_line2.quantity = 10
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Make a production::
 
@@ -156,7 +156,7 @@ Make a production::
     >>> production.quantity = 1
     >>> production.click('wait')
     >>> production.state
-    u'waiting'
+    'waiting'
     >>> production.cost
     Decimal('2.0000')
 
@@ -168,13 +168,13 @@ Test works::
     >>> work1.work_center == center1
     True
     >>> work1.state
-    u'request'
+    'request'
     >>> work2.operation == operation2
     True
     >>> work2.work_center == center2
     True
     >>> work2.state
-    u'request'
+    'request'
 
 Run the production::
 
@@ -182,49 +182,49 @@ Run the production::
     True
     >>> production.click('run')
     >>> production.state
-    u'running'
+    'running'
 
 Test works::
 
     >>> work1, work2 = production.works
     >>> work1.state
-    u'draft'
+    'draft'
     >>> work2.state
-    u'draft'
+    'draft'
 
 Run works::
 
     >>> cycle1 = work1.cycles.new()
     >>> cycle1.click('run')
     >>> cycle1.state
-    u'running'
+    'running'
     >>> work1.reload()
     >>> work1.state
-    u'running'
+    'running'
     >>> cycle1.click('do')
     >>> cycle1.state
-    u'done'
+    'done'
     >>> work1.reload()
     >>> work1.state
-    u'finished'
+    'finished'
     >>> cycle2 = work2.cycles.new()
     >>> cycle2.click('cancel')
     >>> cycle2.state
-    u'cancelled'
+    'cancelled'
     >>> work2.reload()
     >>> work2.state
-    u'draft'
+    'draft'
     >>> cycle2 = work2.cycles.new()
     >>> cycle2.click('run')
     >>> cycle2.state
-    u'running'
+    'running'
     >>> cycle2.duration = datetime.timedelta(hours=1)
     >>> cycle2.click('do')
     >>> cycle2.state
-    u'done'
+    'done'
     >>> work2.reload()
     >>> work2.state
-    u'finished'
+    'finished'
 
 Add an extra work::
 
@@ -235,7 +235,7 @@ Add an extra work::
     >>> work2b = production.works[-1]
 
     >>> work2b.state
-    u'draft'
+    'draft'
 
 And delete the extra work::
 
@@ -251,5 +251,5 @@ Do the production::
 
     >>> production.click('done')
     >>> production.state
-    u'done'
+    'done'
 

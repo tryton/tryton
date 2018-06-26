@@ -12,8 +12,7 @@ from trytond.transaction import Transaction
 __all__ = ['Production']
 
 
-class Production:
-    __metaclass__ = PoolMeta
+class Production(metaclass=PoolMeta):
     __name__ = 'production'
     work_center = fields.Many2One('production.work.center', 'Work Center',
         states={

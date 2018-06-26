@@ -6,15 +6,13 @@ from trytond.model import fields
 __all__ = ['Operation', 'RoutingStep']
 
 
-class Operation:
-    __metaclass__ = PoolMeta
+class Operation(metaclass=PoolMeta):
     __name__ = 'production.routing.operation'
     work_center_category = fields.Many2One('production.work.center.category',
         'Work Center Category')
 
 
-class RoutingStep:
-    __metaclass__ = PoolMeta
+class RoutingStep(metaclass=PoolMeta):
     __name__ = 'production.routing.step'
 
     def get_work(self, production, work_center_picker):
