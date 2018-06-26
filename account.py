@@ -15,8 +15,7 @@ from trytond.wizard import StateTransition
 __all__ = ['DunningLevel', 'ProcessDunning', 'Dunning', 'DunningEmailLog']
 
 
-class DunningLevel:
-    __metaclass__ = PoolMeta
+class DunningLevel(metaclass=PoolMeta):
     __name__ = 'account.dunning.level'
     send_email = fields.Boolean("Send Email")
     email_template = fields.Many2One(
@@ -48,8 +47,7 @@ class DunningLevel:
             return
 
 
-class ProcessDunning:
-    __metaclass__ = PoolMeta
+class ProcessDunning(metaclass=PoolMeta):
     __name__ = 'account.dunning.process'
     send_email = StateTransition()
 
@@ -77,8 +75,7 @@ class ProcessDunning:
         return self.next_state('send_email')
 
 
-class Dunning:
-    __metaclass__ = PoolMeta
+class Dunning(metaclass=PoolMeta):
     __name__ = 'account.dunning'
 
     def send_email(self, datamanager=None):
