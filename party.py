@@ -11,8 +11,7 @@ from trytond.modules.company.model import CompanyValueMixin
 __all__ = ['Party', 'PartyCreditLimitAmount']
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     credit_amount = fields.Function(fields.Numeric('Credit Amount',

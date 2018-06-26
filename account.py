@@ -14,8 +14,7 @@ default_credit_limit_amount = fields.Numeric(
     depends=['default_credit_limit_amount_digits'])
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
 
     default_credit_limit_amount = fields.MultiValue(
@@ -47,8 +46,7 @@ class ConfigurationDefaultCreditLimitAmount(ModelSQL, CompanyValueMixin):
             return self.company.currency.digits
 
 
-class Level:
-    __metaclass__ = PoolMeta
+class Level(metaclass=PoolMeta):
     __name__ = 'account.dunning.level'
     credit_limit = fields.Boolean('Credit Limit',
         help='Has reached the credit limit')
