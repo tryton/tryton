@@ -9,8 +9,7 @@ from trytond.wizard import Wizard, StateTransition
 __all__ = ['PackageType', 'Package', 'ShipmentOut', 'CreateShipping']
 
 
-class PackageType:
-    __metaclass__ = PoolMeta
+class PackageType(metaclass=PoolMeta):
     __name__ = 'stock.package.type'
 
     length = fields.Float('Length', digits=(16, Eval('length_digits', 2)),
@@ -78,8 +77,7 @@ class PackageType:
         return 2
 
 
-class Package:
-    __metaclass__ = PoolMeta
+class Package(metaclass=PoolMeta):
     __name__ = 'stock.package'
 
     shipping_reference = fields.Char('Shipping Reference',
@@ -106,8 +104,7 @@ class Package:
         return super(Package, cls).copy(packages, default=default)
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     shipping_description = fields.Char('Shipping Description',
