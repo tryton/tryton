@@ -19,8 +19,7 @@ def get_sale_shipment_grouping_methods(cls):
     return Party.fields_get([field_name])[field_name]['selection']
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     sale_shipment_grouping_method = fields.MultiValue(
@@ -42,8 +41,7 @@ class Configuration:
         return Party.fields_get([field_name])[field_name]['selection']
 
 
-class ConfigurationSaleMethod():
-    __metaclass__ = PoolMeta
+class ConfigurationSaleMethod(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sale_method'
 
     sale_shipment_grouping_method = sale_shipment_grouping_method

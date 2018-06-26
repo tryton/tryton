@@ -119,7 +119,7 @@ Create an inventory::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Sell some products::
 
@@ -136,7 +136,7 @@ Sell some products::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -145,7 +145,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the shipments::
 
@@ -173,7 +173,7 @@ Now we'll use the same scenario with the grouped customer::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Make another sale::
 
@@ -188,7 +188,7 @@ Make another sale::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
 
 Check the shipments::
 

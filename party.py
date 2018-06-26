@@ -8,8 +8,7 @@ from trytond.tools.multivalue import migrate_property
 __all__ = ['Party', 'PartySaleShipmentGroupingMethod']
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     sale_shipment_grouping_method = fields.MultiValue(fields.Selection([

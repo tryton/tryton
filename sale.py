@@ -7,8 +7,7 @@ from trytond.transaction import Transaction
 __all__ = ['Sale']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     @property
