@@ -59,7 +59,7 @@ Create invoice::
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
 
 Correct invoice::
 
