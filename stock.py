@@ -11,8 +11,7 @@ __all__ = ['Move', 'SplitMoveStart', 'SplitMove',
     'SplitShipment', 'SplitShipmentStart']
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     @classmethod
@@ -149,18 +148,15 @@ class _ShipmentSplit(ModelView):
         pass
 
 
-class ShipmentInReturn(_ShipmentSplit):
-    __metaclass__ = PoolMeta
+class ShipmentInReturn(_ShipmentSplit, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
 
 
-class ShipmentOut(_ShipmentSplit):
-    __metaclass__ = PoolMeta
+class ShipmentOut(_ShipmentSplit, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
 
-class ShipmentInternal(_ShipmentSplit):
-    __metaclass__ = PoolMeta
+class ShipmentInternal(_ShipmentSplit, metaclass=PoolMeta):
     __name__ = 'stock.shipment.internal'
 
 
@@ -197,9 +193,9 @@ class SplitShipment(Wizard):
     def default_start(self, fields):
         shipment = self.get_shipment()
         moves = self.get_moves(shipment)
-        moves = filter(lambda m: m.state == 'draft', moves)
+        move_ids = [m.id for m in moves if m.state == 'draft']
         return {
-            'domain_moves': map(int, moves),
+            'domain_moves': move_ids,
             }
 
     def transition_split(self):
@@ -216,7 +212,7 @@ class SplitShipment(Wizard):
         if Shipment.__name__ == 'stock.shipment.out':
             Move.draft(shipment.inventory_moves)
             Move.delete(
-                filter(lambda m: m.state == 'draft', shipment.inventory_moves))
+                [m for m in shipment.inventory_moves if m.state == 'draft'])
 
         shipment, = Shipment.copy([shipment.id], default={'moves': None})
         Move.write(list(self.start.moves), {'shipment': str(shipment)})
