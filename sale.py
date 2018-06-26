@@ -10,8 +10,7 @@ from .common import parcel_weight
 __all__ = ['Sale']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     def _group_parcel_key(self, lines, line):

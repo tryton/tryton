@@ -53,7 +53,7 @@ class CarrierWeightTestCase(ModuleTestCase):
                     'weight_uom': weight_uom.id,
                     'weight_currency': currency.id,
                     }])
-        for i, weight in enumerate(xrange(0, 100, 20)):
+        for i, weight in enumerate(range(0, 100, 20)):
             WeightPriceList.create([{
                         'carrier': carrier.id,
                         'weight': weight,

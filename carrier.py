@@ -10,8 +10,7 @@ from trytond.transaction import Transaction
 __all__ = ['Carrier', 'WeightPriceList']
 
 
-class Carrier:
-    __metaclass__ = PoolMeta
+class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
     weight_uom = fields.Many2One('product.uom', 'Weight Uom',
         domain=[('category', '=', Id('product', 'uom_cat_weight'))],

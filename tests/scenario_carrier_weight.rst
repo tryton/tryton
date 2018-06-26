@@ -140,7 +140,7 @@ Receive a single product line::
     True
     >>> shipment.click('receive')
     >>> shipment.state
-    u'received'
+    'received'
     >>> move, = shipment.incoming_moves
     >>> move.unit_price
     Decimal('14.2500')
@@ -176,7 +176,7 @@ Sale products with cost on shipment::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.untaxed_amount
     Decimal('140.00')
 
@@ -197,16 +197,16 @@ Send products::
     >>> shipment.cost_currency == company.currency
     True
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_force')
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('pack')
     >>> shipment.state
-    u'packed'
+    'packed'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 Check customer invoice::
 
@@ -237,7 +237,7 @@ Sale products with cost on order::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.untaxed_amount
     Decimal('85.00')
 

@@ -10,8 +10,7 @@ from .common import parcel_weight
 __all__ = ['ShipmentIn', 'ShipmentOut']
 
 
-class ShipmentIn:
-    __metaclass__ = PoolMeta
+class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
     def _group_parcel_key(self, lines, line):
@@ -39,8 +38,7 @@ class ShipmentIn:
         return context
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     def _group_parcel_key(self, lines, line):
