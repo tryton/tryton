@@ -8,8 +8,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Template', 'Product', 'ProductBom', 'ProductionLeadTime']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     producible = fields.Boolean(
         "Producible", states={
@@ -19,8 +18,7 @@ class Template:
         depends=['active', 'type'])
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
     boms = fields.One2Many('product.product-production.bom', 'product',

@@ -120,7 +120,7 @@ Create an Inventory::
     >>> inventory_line2.quantity = 6
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Make a production::
 
@@ -142,7 +142,7 @@ Make a production::
     Decimal('25.0000')
     >>> production.click('wait')
     >>> production.state
-    u'waiting'
+    'waiting'
 
 Test reset bom button::
 
@@ -169,7 +169,7 @@ Do the production::
     >>> production.click('done')
     >>> output, = production.outputs
     >>> output.state
-    u'done'
+    'done'
     >>> output.effective_date == production.effective_date
     True
     >>> with config.set_context(locations=[storage.id]):

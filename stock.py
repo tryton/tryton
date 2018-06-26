@@ -8,8 +8,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Location', 'Move']
 
 
-class Location:
-    __metaclass__ = PoolMeta
+class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
     production_location = fields.Many2One('stock.location', 'Production',
         states={
@@ -23,8 +22,7 @@ class Location:
         depends=['type', 'active'])
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     production_input = fields.Many2One('production', 'Production Input',
         readonly=True, select=True, ondelete='CASCADE',
