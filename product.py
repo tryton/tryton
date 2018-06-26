@@ -7,8 +7,7 @@ from trytond.pyson import Eval
 __all__ = ['ProductBom', 'ProductionLeadTime']
 
 
-class ProductBom:
-    __metaclass__ = PoolMeta
+class ProductBom(metaclass=PoolMeta):
     __name__ = 'product.product-production.bom'
     routing = fields.Many2One('production.routing', 'Routing',
         ondelete='CASCADE', select=True,
@@ -18,8 +17,7 @@ class ProductBom:
         depends=['bom'])
 
 
-class ProductionLeadTime:
-    __metaclass__ = PoolMeta
+class ProductionLeadTime(metaclass=PoolMeta):
     __name__ = 'production.lead_time'
     routing = fields.Many2One('production.routing', 'Routing',
         ondelete='CASCADE',
