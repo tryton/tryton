@@ -9,8 +9,7 @@ from trytond.modules.analytic_account import AnalyticMixin
 __all__ = ['SaleLine', 'AnalyticAccountEntry']
 
 
-class SaleLine(AnalyticMixin):
-    __metaclass__ = PoolMeta
+class SaleLine(AnalyticMixin, metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
@@ -41,8 +40,7 @@ class SaleLine(AnalyticMixin):
         return invoice_lines
 
 
-class AnalyticAccountEntry:
-    __metaclass__ = PoolMeta
+class AnalyticAccountEntry(metaclass=PoolMeta):
     __name__ = 'analytic.account.entry'
 
     @classmethod
