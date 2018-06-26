@@ -344,7 +344,7 @@ class ScreenContainer(object):
             model.append([r.strip()])
 
     def get_text(self):
-        return self.search_entry.get_text().decode('utf-8')
+        return self.search_entry.get_text()
 
     def set_text(self, value):
         self.search_entry.set_text(value)
@@ -370,7 +370,7 @@ class ScreenContainer(object):
                 bool(current_text))
             for id_, name, domain in self.bookmarks():
                 text = self.screen.domain_parser.string(domain)
-                domain = self.screen.domain_parser.parse(text.decode('utf-8'))
+                domain = self.screen.domain_parser.parse(text)
                 if (text == current_text
                         or domain == current_domain):
                     if icon_stock != 'tryton-star':
@@ -549,7 +549,7 @@ class ScreenContainer(object):
                     self.search_window.handler_unblock_by_func(window_hide)
 
             vbox = gtk.VBox()
-            fields = [f for f in self.screen.domain_parser.fields.itervalues()
+            fields = [f for f in self.screen.domain_parser.fields.values()
                 if f.get('searchable', True)]
             self.search_table = gtk.Table(rows=len(fields), columns=2)
             self.search_table.set_homogeneous(False)
@@ -617,8 +617,8 @@ class ScreenContainer(object):
             self.search_window.add(vbox)
             vbox.show_all()
 
-            new_size = map(sum, zip(self.search_table.size_request(),
-                    scrolled.size_request()))
+            new_size = list(map(sum, list(zip(self.search_table.size_request(),
+                    scrolled.size_request()))))
             self.search_window.set_default_size(*new_size)
 
         parent = widget.get_toplevel()

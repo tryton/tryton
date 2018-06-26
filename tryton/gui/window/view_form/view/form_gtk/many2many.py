@@ -151,7 +151,7 @@ class Many2Many(Widget):
             domain = [domain, add_remove]
         context = self.field.get_search_context(self.record)
         order = self.field.get_search_order(self.record)
-        value = self.wid_text.get_text().decode('utf-8')
+        value = self.wid_text.get_text()
 
         self.focus_out = False
 

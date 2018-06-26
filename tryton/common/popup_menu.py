@@ -19,21 +19,21 @@ def populate(menu, model, record, title='', field=None, context=None):
     '''
     if record is None:
         return
-    elif isinstance(record, (int, long)):
+    elif isinstance(record, int):
         if record < 0:
             return
     elif record.id < 0:
         return
 
     def load(record):
-        if isinstance(record, (int, long)):
+        if isinstance(record, int):
             screen = Screen(model, context=context)
             screen.load([record])
             record = screen.current_record
         return record
 
     def id_(record):
-        if not isinstance(record, (int, long)):
+        if not isinstance(record, int):
             return record.id
         return record
 

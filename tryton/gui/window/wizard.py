@@ -93,7 +93,7 @@ class Wizard(InfoBar):
         def callback(result):
             try:
                 result = result()
-            except RPCException, rpc_exception:
+            except RPCException as rpc_exception:
                 if (not isinstance(rpc_exception.exception,
                         TrytonServerError)
                         or not self.screen):
@@ -180,7 +180,7 @@ class Wizard(InfoBar):
         self.update_buttons(record)
 
     def update_buttons(self, record):
-        for button in self.states.itervalues():
+        for button in self.states.values():
             button.state_set(record)
 
     def update(self, view, defaults, buttons):

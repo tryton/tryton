@@ -4,15 +4,14 @@
 import os
 import sys
 import gettext
-from urlparse import urlparse, parse_qsl
-import urllib
-import gobject
-import gtk
+from urllib.parse import urlparse, parse_qsl, unquote
 import json
 import webbrowser
 import threading
 import logging
 
+import gobject
+import gtk
 from gi.repository import GLib
 
 import tryton.rpc as rpc
@@ -313,7 +312,7 @@ class Main(object):
                 if callback:
                     callback()
                 return False
-            if search_text != widget.get_text().decode('utf-8'):
+            if search_text != widget.get_text():
                 return end()
             gmodel = global_search_completion.get_model()
             if not search_text or not gmodel:
@@ -328,7 +327,7 @@ class Main(object):
                     result = result()
                 except RPCException:
                     result = []
-                if search_text != widget.get_text().decode('utf-8'):
+                if search_text != widget.get_text():
                     if callback:
                         callback()
                     return False
@@ -357,7 +356,7 @@ class Main(object):
             return False
 
         def changed(widget):
-            search_text = widget.get_text().decode('utf-8')
+            search_text = widget.get_text()
             gobject.timeout_add(300, update, widget, search_text)
 
         def activate(widget):
@@ -367,7 +366,7 @@ class Main(object):
                     common.message(_('No result found.'))
                 else:
                     widget.emit('changed')
-            search_text = widget.get_text().decode('utf-8')
+            search_text = widget.get_text()
             update(widget, search_text, message)
 
         self.global_search_entry.connect('changed', changed)
@@ -834,20 +833,22 @@ class Main(object):
         language = CONFIG['client.lang']
         try:
             host, port, database, username = DBLogin().run()
-        except TrytonError, exception:
+        except TrytonError as exception:
             if exception.faultCode == 'QueryCanceled':
                 return
             raise
-        func = lambda parameters: rpc.login(
-            host, port, database, username, parameters, language)
+
+        def login(parameters):
+            return rpc.login(
+                host, port, database, username, parameters, language)
         self.set_title()  # Adds username/profile while password is asked
         try:
-            common.Login(func)
-        except TrytonError, exception:
+            common.Login(login)
+        except TrytonError as exception:
             if exception.faultCode == 'QueryCanceled':
                 return
             raise
-        except TrytonServerError, exception:
+        except TrytonServerError as exception:
             if exception.faultCode.startswith('404'):
                 return self.sig_login()
             raise
@@ -1223,8 +1224,8 @@ class Main(object):
         urlp = urlparse('http' + url[6:])
         hostname = common.get_hostname(urlp.netloc)
         port = common.get_port(urlp.netloc)
-        database, path = map(urllib.unquote,
-            (urlp.path[1:].split('/', 1) + [''])[:2])
+        database, path = list(map(unquote,
+            (urlp.path[1:].split('/', 1) + [''])[:2]))
         if (not path or
                 hostname != rpc._HOST or
                 int(port) != rpc._PORT or

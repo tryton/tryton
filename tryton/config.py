@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "Options"
-import ConfigParser
+import configparser
 import optparse
 import os
 import gettext
@@ -19,14 +19,14 @@ _ = gettext.gettext
 def get_config_dir():
     if os.name == 'nt':
         appdata = os.environ['APPDATA']
-        if not isinstance(appdata, unicode):
-            appdata = unicode(appdata, sys.getfilesystemencoding())
+        if not isinstance(appdata, str):
+            appdata = str(appdata, sys.getfilesystemencoding())
         return os.path.join(appdata, '.config', 'tryton',
                 __version__.rsplit('.', 1)[0])
     return os.path.join(os.environ['HOME'], '.config', 'tryton',
             __version__.rsplit('.', 1)[0])
 if not os.path.isdir(get_config_dir()):
-    os.makedirs(get_config_dir(), 0700)
+    os.makedirs(get_config_dir(), 0o700)
 
 
 class ConfigManager(object):
@@ -119,15 +119,15 @@ class ConfigManager(object):
 
     def save(self):
         try:
-            configparser = ConfigParser.ConfigParser()
-            for entry in self.config.keys():
+            parser = configparser.ConfigParser()
+            for entry in list(self.config.keys()):
                 if not len(entry.split('.')) == 2:
                     continue
                 section, name = entry.split('.')
-                if not configparser.has_section(section):
-                    configparser.add_section(section)
-                configparser.set(section, name, self.config[entry])
-            configparser.write(open(self.rcfile, 'wb'))
+                if not parser.has_section(section):
+                    parser.add_section(section)
+                parser.set(section, name, str(self.config[entry]))
+            parser.write(open(self.rcfile, 'w'))
         except IOError:
             logging.getLogger(__name__).warn(
                 _('Unable to write config file %s.')
@@ -136,10 +136,10 @@ class ConfigManager(object):
         return True
 
     def load(self):
-        configparser = ConfigParser.ConfigParser()
-        configparser.read([self.rcfile])
-        for section in configparser.sections():
-            for (name, value) in configparser.items(section):
+        parser = configparser.ConfigParser()
+        parser.read([self.rcfile])
+        for section in parser.sections():
+            for (name, value) in parser.items(section):
                 if value.lower() == 'true':
                     value = True
                 elif value.lower() == 'false':
@@ -164,8 +164,8 @@ CONFIG = ConfigManager()
 CURRENT_DIR = os.path.dirname(__file__)
 if hasattr(sys, 'frozen'):
     CURRENT_DIR = os.path.dirname(sys.executable)
-if not isinstance(CURRENT_DIR, unicode):
-    CURRENT_DIR = unicode(CURRENT_DIR, sys.getfilesystemencoding())
+if not isinstance(CURRENT_DIR, str):
+    CURRENT_DIR = str(CURRENT_DIR, sys.getfilesystemencoding())
 
 PIXMAPS_DIR = os.path.join(CURRENT_DIR, 'data', 'pixmaps', 'tryton')
 if not os.path.isdir(PIXMAPS_DIR):
@@ -175,4 +175,4 @@ if not os.path.isdir(PIXMAPS_DIR):
         'tryton', 'data/pixmaps/tryton')
 
 TRYTON_ICON = gtk.gdk.pixbuf_new_from_file(
-    os.path.join(PIXMAPS_DIR, 'tryton-icon.png').encode('utf-8'))
+    os.path.join(PIXMAPS_DIR, 'tryton-icon.png'))

@@ -42,8 +42,8 @@ class udlex(shlex):
         class DummyWordchars(object):
             "Simulate str that contains all chars except somes"
             def __contains__(self, item):
-                return item not in (u':', u'>', u'<', u'=', u'!', u'"', u';',
-                    u'(', u')')
+                return item not in (':', '>', '<', '=', '!', '"', ';',
+                    '(', ')')
 
         self.wordchars = DummyWordchars()
 
@@ -116,7 +116,7 @@ def likify(value):
 
 def quote(value):
     "Quote string if needed"
-    if not isinstance(value, basestring):
+    if not isinstance(value, str):
         return value
     if '\\' in value:
         value = value.replace('\\', '\\\\')
@@ -196,7 +196,7 @@ def split_target_value(field, value):
     "Split the reference value into target and value"
     assert field['type'] == 'reference'
     target = None
-    if isinstance(value, basestring):
+    if isinstance(value, str):
         for key, text in field['selection']:
             if value.lower().startswith(text.lower() + ','):
                 target = key
@@ -230,8 +230,8 @@ def convert_value(field, value, context=None):
         context = {}
 
     def convert_boolean():
-        if isinstance(value, basestring):
-            return any(test.decode('utf-8').lower().startswith(value.lower())
+        if isinstance(value, str):
+            return any(test.lower().startswith(value.lower())
                 for test in (
                     _('y'), _('Yes'), _('True'), _('t'), '1'))
         else:
@@ -256,7 +256,7 @@ def convert_value(field, value, context=None):
             return
 
     def convert_selection():
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             for key, text in field['selection']:
                 if value.lower() == text.lower():
                     return key
@@ -883,10 +883,10 @@ class DomainParser(object):
 
     def __init__(self, fields, context=None):
         self.fields = OrderedDict((name, f)
-            for name, f in fields.iteritems()
+            for name, f in fields.items()
             if f.get('searchable', True))
         self.strings = dict((f['string'].lower(), f)
-            for f in fields.itervalues()
+            for f in fields.values()
             if f.get('searchable', True))
         self.context = context
 
@@ -901,8 +901,8 @@ class DomainParser(object):
             tokens = operatorize(tokens, 'and')
             tokens = self.parse_clause(tokens)
             return simplify(rlist(tokens))
-        except ValueError, exception:
-            if exception.message == 'No closing quotation':
+        except ValueError as exception:
+            if str(exception) == 'No closing quotation':
                 return self.parse(input_ + '"')
 
     def stringable(self, domain):
@@ -930,7 +930,7 @@ class DomainParser(object):
         def string_(clause):
             if not clause:
                 return ''
-            if (not isinstance(clause[0], basestring)
+            if (not isinstance(clause[0], str)
                     or clause[0] in ('AND', 'OR')):
                 return '(%s)' % self.string(clause)
             name, operator, value = clause[:3]
@@ -995,7 +995,7 @@ class DomainParser(object):
         "Return completion for the input string"
         domain = self.parse(input_)
         closing = 0
-        for i in xrange(1, len(input_)):
+        for i in range(1, len(input_)):
             if input_[-i] not in (')', ' '):
                 break
             if input_[-i] == ')':
@@ -1018,7 +1018,7 @@ class DomainParser(object):
                 return
             if len(input_) >= 2 and input_[-2] == ':':
                 return
-        for field in self.strings.itervalues():
+        for field in self.strings.values():
             operator = default_operator(field)
             value = ''
             if 'ilike' in operator:
@@ -1052,7 +1052,7 @@ class DomainParser(object):
             name = ''
         if (name.lower() not in self.strings
                 and name not in self.fields):
-            for field in self.strings.itervalues():
+            for field in self.strings.values():
                 if field['string'].lower().startswith(name.lower()):
                     operator = default_operator(field)
                     value = ''
@@ -1310,81 +1310,81 @@ def test_group():
                 'string': '(Sur)Name',
                 },
             })
-    assert rlist(dom.group(udlex(u'Name: Doe'))) == [('Name', None, 'Doe')]
-    assert rlist(dom.group(udlex(u'"(Sur)Name": Doe'))) == [
+    assert rlist(dom.group(udlex('Name: Doe'))) == [('Name', None, 'Doe')]
+    assert rlist(dom.group(udlex('"(Sur)Name": Doe'))) == [
         ('(Sur)Name', None, 'Doe'),
         ]
-    assert rlist(dom.group(udlex(u'Name: Doe Name: John'))) == [
+    assert rlist(dom.group(udlex('Name: Doe Name: John'))) == [
         ('Name', None, 'Doe'),
         ('Name', None, 'John')]
-    assert rlist(dom.group(udlex(u'Name: Name: John'))) == [
+    assert rlist(dom.group(udlex('Name: Name: John'))) == [
         ('Name', None, None),
         ('Name', None, 'John')]
-    assert rlist(dom.group(udlex(u'First Name: John'))) == [
+    assert rlist(dom.group(udlex('First Name: John'))) == [
         ('First Name', None, 'John'),
         ]
-    assert rlist(dom.group(udlex(u'Name: Doe First Name: John'))) == [
+    assert rlist(dom.group(udlex('Name: Doe First Name: John'))) == [
         ('Name', None, 'Doe'),
         ('First Name', None, 'John'),
         ]
-    assert rlist(dom.group(udlex(u'First Name: John Name: Doe'))) == [
+    assert rlist(dom.group(udlex('First Name: John Name: Doe'))) == [
         ('First Name', None, 'John'),
         ('Name', None, 'Doe'),
         ]
-    assert rlist(dom.group(udlex(u'First Name: John First Name: Jane'))) == [
+    assert rlist(dom.group(udlex('First Name: John First Name: Jane'))) == [
         ('First Name', None, 'John'),
         ('First Name', None, 'Jane'),
         ]
-    assert rlist(dom.group(udlex(u'Name: John Doe'))) == [
+    assert rlist(dom.group(udlex('Name: John Doe'))) == [
         ('Name', None, 'John'),
         ('Doe',),
         ]
-    assert rlist(dom.group(udlex(u'Name: "John Doe"'))) == [
+    assert rlist(dom.group(udlex('Name: "John Doe"'))) == [
         ('Name', None, 'John Doe'),
         ]
-    assert rlist(dom.group(udlex(u'Name: =Doe'))) == [('Name', '=', 'Doe')]
-    assert rlist(dom.group(udlex(u'Name: =Doe Name: >John'))) == [
+    assert rlist(dom.group(udlex('Name: =Doe'))) == [('Name', '=', 'Doe')]
+    assert rlist(dom.group(udlex('Name: =Doe Name: >John'))) == [
         ('Name', '=', 'Doe'),
         ('Name', '>', 'John'),
         ]
-    assert rlist(dom.group(udlex(u'First Name: =John First Name: =Jane'))) == [
+    assert rlist(dom.group(udlex('First Name: =John First Name: =Jane'))) == [
         ('First Name', '=', 'John'),
         ('First Name', '=', 'Jane'),
         ]
-    assert rlist(dom.group(udlex(u'Name: John;Jane'))) == [
+    assert rlist(dom.group(udlex('Name: John;Jane'))) == [
         ('Name', None, ['John', 'Jane'])
         ]
-    assert rlist(dom.group(udlex(u'Name: John;'))) == [
+    assert rlist(dom.group(udlex('Name: John;'))) == [
         ('Name', None, ['John'])
         ]
-    assert rlist(dom.group(udlex(u'Name: John;Jane Name: Doe'))) == [
+    assert rlist(dom.group(udlex('Name: John;Jane Name: Doe'))) == [
         ('Name', None, ['John', 'Jane']),
         ('Name', None, 'Doe'),
         ]
-    assert rlist(dom.group(udlex(u'Name: John; Name: Doe'))) == [
+    assert rlist(dom.group(udlex('Name: John; Name: Doe'))) == [
         ('Name', None, ['John']),
         ('Name', None, 'Doe'),
         ]
-    assert rlist(dom.group(udlex(u'Name:'))) == [
+    assert rlist(dom.group(udlex('Name:'))) == [
         ('Name', None, None),
         ]
-    assert rlist(dom.group(udlex(u'Name: ='))) == [
+    assert rlist(dom.group(udlex('Name: ='))) == [
         ('Name', '=', None),
         ]
-    assert rlist(dom.group(udlex(u'Name: =""'))) == [
+    assert rlist(dom.group(udlex('Name: =""'))) == [
         ('Name', '=', ''),
         ]
-    assert rlist(dom.group(udlex(u'Name: = ""'))) == [
+    assert rlist(dom.group(udlex('Name: = ""'))) == [
         ('Name', '=', ''),
         ]
-    assert rlist(dom.group(udlex(u'Name: = Name: Doe'))) == [
+    assert rlist(dom.group(udlex('Name: = Name: Doe'))) == [
         ('Name', '=', None),
         ('Name', None, 'Doe'),
         ]
-    assert rlist(dom.group(udlex(u'Name: \\"foo\\"'))) == [
+    assert rlist(dom.group(udlex('Name: \\"foo\\"'))) == [
         ('Name', None, '"foo"'),
         ]
-    assert rlist(dom.group(udlex(u'Name: "" <'))) == [
+    assert rlist(dom.group(udlex('Name: "" <'))) == [
         ('Name', '', '<'),
         ]
 
@@ -1497,10 +1497,10 @@ def test_completion():
                 'type': 'char',
                 },
             })
-    assert list(dom.completion(u'Nam')) == ['Name: ']
-    assert list(dom.completion(u'Name:')) == ['Name: ']
-    assert list(dom.completion(u'Name: foo')) == []
-    assert list(dom.completion(u'Name: !=')) == []
-    assert list(dom.completion(u'Name: !=foo')) == []
-    assert list(dom.completion(u'')) == ['Name: ']
-    assert list(dom.completion(u' ')) == ['', 'Name: ']
+    assert list(dom.completion('Nam')) == ['Name: ']
+    assert list(dom.completion('Name:')) == ['Name: ']
+    assert list(dom.completion('Name: foo')) == []
+    assert list(dom.completion('Name: !=')) == []
+    assert list(dom.completion('Name: !=foo')) == []
+    assert list(dom.completion('')) == ['Name: ']
+    assert list(dom.completion(' ')) == ['', 'Name: ']

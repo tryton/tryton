@@ -93,7 +93,7 @@ class Action(object):
                 context=context)
             name_suffix = _(', ').join([x['rec_name'] for x in rec_names])
             if len(data['ids']) > max_records:
-                name_suffix += _(u',\u2026')
+                name_suffix += _(',\u2026')
             return _('%s (%s)') % (name, name_suffix)
 
         data['action_id'] = action['id']

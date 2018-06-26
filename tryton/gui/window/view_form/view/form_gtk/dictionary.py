@@ -126,7 +126,7 @@ class DictSelectionEntry(DictEntry):
         text = child.get_text()
         value = None
         if text:
-            for txt, val in self._selection.items():
+            for txt, val in list(self._selection.items()):
                 if not val:
                     continue
                 if txt[:len(text)].lower() == text.lower():
@@ -390,7 +390,7 @@ class DictWidget(Widget):
 
     def _sig_add(self, *args):
         context = self.field.get_context(self.record)
-        value = self.wid_text.get_text().decode('utf-8')
+        value = self.wid_text.get_text()
         domain = self.field.domain_get(self.record)
 
         def callback(result):
@@ -439,20 +439,20 @@ class DictWidget(Widget):
 
     def get_value(self):
         return dict((key, widget.get_value())
-            for key, widget in self.fields.items())
+            for key, widget in list(self.fields.items()))
 
     @property
     def modified(self):
         if self.record and self.field:
             value = self.field.get_client(self.record)
             return any(widget.modified(value)
-                for widget in self.fields.itervalues())
+                for widget in self.fields.values())
         return False
 
     def _readonly_set(self, readonly):
         self._readonly = readonly
         self._set_button_sensitive()
-        for widget in self.fields.values():
+        for widget in list(self.fields.values()):
             widget.set_readonly(readonly)
         self.wid_text.set_sensitive(not readonly)
         self.wid_text.set_editable(not readonly)
@@ -461,7 +461,7 @@ class DictWidget(Widget):
         self.but_add.set_sensitive(bool(
                 not self._readonly
                 and self.attrs.get('create', True)))
-        for button in self.buttons.itervalues():
+        for button in self.buttons.values():
             button.set_sensitive(bool(
                     not self._readonly
                     and self.attrs.get('delete', True)))
@@ -507,7 +507,7 @@ class DictWidget(Widget):
         context = self.field.get_context(self.record)
         domain = self.field.domain_get(self.record)
         batchlen = min(10, CONFIG['client.limit'])
-        for i in xrange(0, len(keys), batchlen):
+        for i in range(0, len(keys), batchlen):
             sub_keys = keys[i:i + batchlen]
             try:
                 key_ids = RPCExecute('model', self.schema_model, 'search',
@@ -534,15 +534,15 @@ class DictWidget(Widget):
 
         record_id = record.id if record else None
         if record_id != self._record_id:
-            for key in self.fields.keys():
+            for key in list(self.fields.keys()):
                 self._sig_remove(None, key, modified=False)
             self._record_id = record_id
 
         value = field.get_client(record) if field else {}
-        new_key_names = set(value.iterkeys()) - set(self.keys)
+        new_key_names = set(value.keys()) - set(self.keys)
         if new_key_names:
             self.add_keys(list(new_key_names))
-        for key, val in sorted(value.iteritems()):
+        for key, val in sorted(value.items()):
             if key not in self.keys:
                 continue
             if key not in self.fields:

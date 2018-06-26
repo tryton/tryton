@@ -22,10 +22,10 @@ class Window(object):
     def create(model, **attributes):
         from tryton.gui import Main
         if model:
-            from form import Form
+            from .form import Form
             win = Form(model, **attributes)
         else:
-            from board import Board
+            from .board import Board
             win = Board(model, **attributes)
         win.icon = attributes.get('icon')
         Main.get_main().win_add(win, hide_current=Window.hide_current,
@@ -35,7 +35,7 @@ class Window(object):
     def create_wizard(action, data, direct_print=False, email_print=False,
             email=None, name='', context=None, icon=None, window=False):
         from tryton.gui import Main
-        from wizard import WizardForm, WizardDialog
+        from .wizard import WizardForm, WizardDialog
         if window:
             win = WizardForm(name=name)
             win.icon = icon

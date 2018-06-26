@@ -2,9 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 import operator
-import types
 import datetime
 from collections import defaultdict
+from functools import reduce
 
 
 def in_(a, b):
@@ -15,6 +15,7 @@ def in_(a, b):
             return operator.contains(a, b)
     else:
         return operator.contains(b, a)
+
 
 OPERATORS = defaultdict(lambda: lambda a, b: True)
 OPERATORS.update({
@@ -41,7 +42,7 @@ def locale_part(expression, field_name, locale_name='id'):
 def is_leaf(expression):
     return (isinstance(expression, (list, tuple))
         and len(expression) > 2
-        and isinstance(expression[1], basestring))
+        and isinstance(expression[1], str))
 
 
 def constrained_leaf(part, boolop=operator.and_):
@@ -72,14 +73,14 @@ def eval_leaf(part, context, boolop=operator.and_):
             context_field = datetime.date.min
     if isinstance(context_field, (list, tuple)) and value is None:
         value = type(context_field)()
-    if (isinstance(context_field, basestring)
+    if (isinstance(context_field, str)
             and isinstance(value, (list, tuple))):
         try:
             value = '%s,%s' % tuple(value)
         except TypeError:
             pass
     elif (isinstance(context_field, (list, tuple))
-            and isinstance(value, basestring)):
+            and isinstance(value, str)):
         try:
             context_field = '%s,%s' % tuple(context_field)
         except TypeError:
@@ -90,7 +91,7 @@ def eval_leaf(part, context, boolop=operator.and_):
         value = list(value)
     if (operand in ('=', '!=')
             and isinstance(context_field, (list, tuple))
-            and isinstance(value, (int, long))):
+            and isinstance(value, int)):
         operand = {
             '=': 'in',
             '!=': 'not in',
@@ -112,7 +113,7 @@ def inverse_leaf(domain):
                 return [domain[3]] + list(domain[1:])
         return domain
     else:
-        return map(inverse_leaf, domain)
+        return list(map(inverse_leaf, domain))
 
 
 def filter_leaf(domain, field, model):
@@ -155,7 +156,7 @@ def localize_domain(domain, field_name=None, strip_target=False):
             else:
                 return [domain[3]] + list(domain[1:-1])
         locale_name = 'id'
-        if isinstance(domain[2], basestring):
+        if isinstance(domain[2], str):
             locale_name = 'rec_name'
         n = 3 if strip_target else 4
         return [locale_part(domain[0], field_name, locale_name)] \
@@ -246,7 +247,7 @@ def domain_inversion(domain, symbol, context=None):
 class And(object):
 
     def __init__(self, expressions):
-        self.branches = map(parse, expressions)
+        self.branches = list(map(parse, expressions))
         self.variables = set()
         for expression in self.branches:
             if is_leaf(expression):
@@ -265,7 +266,7 @@ class And(object):
         for part in self.branches:
             if isinstance(part, And):
                 part_inversion = part.inverse(symbol, context)
-                evaluated = isinstance(part_inversion, types.BooleanType)
+                evaluated = isinstance(part_inversion, bool)
                 if not evaluated:
                     result.append(part_inversion)
                 elif part_inversion:
@@ -284,7 +285,7 @@ class And(object):
                 else:
                     return False
 
-        result = filter(lambda e: e is not True, result)
+        result = [e for e in result if e is not True]
         if result == []:
             return True
         else:
@@ -305,7 +306,7 @@ class Or(And):
         for part in self.branches:
             if isinstance(part, And):
                 part_inversion = part.inverse(symbol, context)
-                evaluated = isinstance(part_inversion, types.BooleanType)
+                evaluated = isinstance(part_inversion, bool)
                 if symbol not in part.variables:
                     if evaluated and part_inversion:
                         return True
@@ -329,7 +330,7 @@ class Or(And):
                         and not eval_leaf(part, context, operator.or_)):
                     result.append(False)
 
-        result = filter(lambda e: e is not False, result)
+        result = [e for e in result if e is not False]
         if result == []:
             return False
         else:
@@ -390,7 +391,7 @@ def test_or_inversion():
     assert domain_inversion(domain, 'y', {'z': 4}) == [['y', '<', 3]]
     assert domain_inversion(domain, 'y', {'x': 3}) is True
 
-    domain = [u'OR', [u'length', u'>', 5], [u'language.code', u'=', u'de_DE']]
+    domain = ['OR', ['length', '>', 5], ['language.code', '=', 'de_DE']]
     assert domain_inversion(domain, 'length', {'length': 0, 'name': 'n'}) ==\
         [['length', '>', 5]]
 
@@ -635,6 +636,7 @@ def test_localize():
     domain = [['a.b.c', '=', 1, 'y', 'z']]
     assert localize_domain(domain, 'x', False) == [['b.c', '=', 1, 'y', 'z']]
     assert localize_domain(domain, 'x', True) == [['b.c', '=', 1, 'z']]
+
 
 if __name__ == '__main__':
     test_simple_inversion()

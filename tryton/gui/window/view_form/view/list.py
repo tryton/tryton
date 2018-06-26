@@ -158,8 +158,7 @@ class AdaptModelGroup(gtk.GenericTreeModel):
                 pos += 1
             except KeyError:
                 continue
-        self.group.sort(lambda x, y:
-            cmp(new_order[ids2pos[x.id]], new_order[ids2pos[y.id]]))
+        self.group.sort(key=lambda x: new_order[ids2pos[x.id]])
         prev = None
         for record in self.group:
             if prev:
@@ -561,7 +560,7 @@ class ViewTree(View):
                 column.arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
         model = self.treeview.get_model()
         unsaved_records = [x for x in model.group if x.id < 0]
-        search_string = self.screen.screen_container.get_text() or u''
+        search_string = self.screen.screen_container.get_text() or ''
         if (self.screen.search_count == len(model)
                 or unsaved_records
                 or self.screen.parent):
@@ -969,7 +968,7 @@ class ViewTree(View):
         if last_col and last_col.name in fields:
             del fields[last_col.name]
 
-        if fields and any(fields.itervalues()):
+        if fields and any(fields.values()):
             model_name = self.screen.model_name
             try:
                 RPCExecute('model', 'ir.ui.view_tree_width', 'set_width',

@@ -17,7 +17,8 @@ from functools import partial
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
 import sys
-import xmlrpclib
+import xmlrpc.client
+from functools import reduce
 try:
     import hashlib
 except ImportError:
@@ -27,10 +28,10 @@ import webbrowser
 import traceback
 import tryton.rpc as rpc
 import socket
-import thread
-import urllib
-import urllib2
-import urlparse
+import _thread
+import urllib.request
+import urllib.parse
+import urllib.error
 from string import Template
 import shlex
 try:
@@ -67,7 +68,7 @@ class TrytonIconFactory(gtk.IconFactory):
                 continue
             try:
                 pixbuf = gtk.gdk.pixbuf_new_from_file(
-                        os.path.join(PIXMAPS_DIR, fname).decode('utf-8'))
+                        os.path.join(PIXMAPS_DIR, fname))
             except (IOError, glib.GError):
                 continue
             finally:
@@ -117,12 +118,13 @@ class TrytonIconFactory(gtk.IconFactory):
         except TrytonServerError:
             icons = []
         for icon in icons:
-            pixbuf = _data2pixbuf(icon['icon'])
+            pixbuf = _data2pixbuf(icon['icon'].encode('utf-8'))
             self._tryton_icons.remove((icon['id'], icon['name']))
             del self._name2id[icon['name']]
             self._loaded_icons.add(icon['name'])
             iconset = gtk.IconSet(pixbuf)
             self.add(icon['name'], iconset)
+
 
 ICONFACTORY = TrytonIconFactory()
 ICONFACTORY.add_default()
@@ -161,6 +163,7 @@ class ModelAccess(object):
         self._access.update(access)
         return self._access[model]
 
+
 MODELACCESS = ModelAccess()
 
 
@@ -177,6 +180,7 @@ class ModelHistory(object):
 
     def __contains__(self, model):
         return model in self._models
+
 
 MODELHISTORY = ModelHistory()
 
@@ -223,6 +227,7 @@ class ViewSearch(object):
             if domain[0] == id_:
                 del self.searches[model][i]
                 break
+
 
 VIEW_SEARCH = ViewSearch()
 
@@ -341,7 +346,7 @@ def selection(title, values, alwaysask=False):
     if not values or len(values) == 0:
         return None
     elif len(values) == 1 and (not alwaysask):
-        key = values.keys()[0]
+        key = list(values.keys())[0]
         return (key, values[key])
 
     parent = get_toplevel_window()
@@ -373,7 +378,7 @@ def selection(title, values, alwaysask=False):
     treeview.set_search_column(0)
 
     model = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_INT)
-    keys = values.keys()
+    keys = list(values.keys())
     keys.sort()
     i = 0
     for val in keys:
@@ -446,19 +451,13 @@ def file_selection(title, filename='',
         win.set_preview_widget(img_preview)
         win.connect('update-preview', update_preview_cb, img_preview)
 
-    if os.name == 'nt':
-        encoding = 'utf-8'
-    else:
-        encoding = sys.getfilesystemencoding()
     button = win.run()
     if button != gtk.RESPONSE_OK:
         result = None
     elif not multi:
         result = win.get_filename()
-        if result:
-            result = unicode(result, encoding)
     else:
-        result = [unicode(path, encoding) for path in win.get_filenames()]
+        result = win.get_filenames()
     parent.present()
     win.destroy()
     return result
@@ -469,10 +468,10 @@ _slugify_hyphenate_re = re.compile(r'[-\s]+')
 
 
 def slugify(value):
-    if not isinstance(value, unicode):
-        value = unicode(value)
-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
-    value = unicode(_slugify_strip_re.sub('', value).strip())
+    if not isinstance(value, str):
+        value = str(value)
+    value = unicodedata.normalize('NFKD', value)
+    value = str(_slugify_strip_re.sub('', value).strip())
     return _slugify_hyphenate_re.sub('-', value)
 
 
@@ -539,27 +538,17 @@ def mailto(to=None, cc=None, subject=None, body=None, attachment=None):
     # http://www.faqs.org/rfcs/rfc2368.html
     url = "mailto:"
     if to:
-        if isinstance(to, unicode):
-            to = to.encode('utf-8')
-        url += urllib.quote(to.strip(), "@,")
+        url += urllib.parse.quote(to.strip(), "@,")
     url += '?'
     if cc:
-        if isinstance(cc, unicode):
-            cc = cc.encode('utf-8')
-        url += "&cc=" + urllib.quote(cc, "@,")
+        url += "&cc=" + urllib.parse.quote(cc, "@,")
     if subject:
-        if isinstance(subject, unicode):
-            subject = subject.encode('utf-8')
-        url += "&subject=" + urllib.quote(subject, "")
+        url += "&subject=" + urllib.parse.quote(subject, "")
     if body:
-        if isinstance(body, unicode):
-            body = body.encode('utf-8')
         body = "\r\n".join(body.splitlines())
-        url += "&body=" + urllib.quote(body, "")
+        url += "&body=" + urllib.parse.quote(body, "")
     if attachment:
-        if isinstance(attachment, unicode):
-            attachment = attachment.encode('utf-8')
-        url += "&attachment=" + urllib.quote(attachment, "")
+        url += "&attachment=" + urllib.parse.quote(attachment, "")
     webbrowser.open(url, new=1)
 
 
@@ -598,6 +587,7 @@ class MessageDialog(UniqueDialog):
     def __call__(self, message, msg_type=gtk.MESSAGE_INFO):
         super(MessageDialog, self).__call__(message, msg_type)
 
+
 message = MessageDialog()
 
 
@@ -609,6 +599,7 @@ class WarningDialog(UniqueDialog):
         dialog.set_markup('<b>%s</b>' % (to_xml(title)))
         dialog.format_secondary_markup(to_xml(message))
         return dialog
+
 
 warning = WarningDialog()
 
@@ -642,6 +633,7 @@ class UserWarningDialog(WarningDialog):
                 return 'always'
             return 'ok'
         return 'cancel'
+
 
 userwarning = UserWarningDialog()
 
@@ -680,6 +672,7 @@ class SurDialog(ConfirmationDialog):
         response = super(SurDialog, self).__call__(message)
         return response == gtk.RESPONSE_OK
 
+
 sur = SurDialog()
 
 
@@ -706,6 +699,7 @@ class Sur3BDialog(ConfirmationDialog):
     def __call__(self, message):
         response = super(Sur3BDialog, self).__call__(message)
         return self.response_mapping.get(response, 'cancel')
+
 
 sur_3b = Sur3BDialog()
 
@@ -753,6 +747,7 @@ class AskDialog(UniqueDialog):
         dialog.destroy()
         self.running = False
         return result
+
 
 ask = AskDialog()
 
@@ -813,6 +808,7 @@ class ConcurrencyDialog(UniqueDialog):
                 context=context,
                 mode=['form', 'tree'])
         return False
+
 
 concurrency = ConcurrencyDialog()
 
@@ -898,6 +894,7 @@ class ErrorDialog(UniqueDialog):
         if response == gtk.RESPONSE_OK:
             send_bugtracker(title, details)
 
+
 error = ErrorDialog()
 
 
@@ -958,17 +955,18 @@ def send_bugtracker(title, msg):
     if response == gtk.RESPONSE_OK:
         try:
             msg = msg.encode('ascii', 'replace')
+            title = title.encode('ascii', 'replace')
             protocol = 'http'
             if ssl or hasattr(socket, 'ssl'):
                 protocol = 'https'
-            quote = partial(urllib.quote, safe="!$&'()*+,;=:")
-            server = xmlrpclib.Server(
+            quote = partial(urllib.parse.quote, safe="!$&'()*+,;=:")
+            server = xmlrpc.client.Server(
                 ('%s://%s:%s@' + CONFIG['roundup.xmlrpc'])
                 % (protocol, quote(user), quote(password)), allow_none=True)
             if hashlib:
-                msg_md5 = hashlib.md5(msg + '\n' + title).hexdigest()
+                msg_md5 = hashlib.md5(msg + b'\n' + title).hexdigest()
             else:
-                msg_md5 = md5.new(msg + '\n' + title).hexdigest()
+                msg_md5 = md5.new(msg + b'\n' + title).hexdigest()
             if not title:
                 title = '[no title]'
             issue_id = None
@@ -1001,15 +999,15 @@ def send_bugtracker(title, msg):
                     + 'issue%s' % issue_id)
             webbrowser.open(CONFIG['roundup.url'] + 'issue%s' % issue_id,
                 new=2)
-        except (socket.error, xmlrpclib.Fault), exception:
-            if (isinstance(exception, xmlrpclib.Fault)
+        except (socket.error, xmlrpc.client.Fault) as exception:
+            if (isinstance(exception, xmlrpc.client.Fault)
                     and 'roundup.cgi.exceptions.Unauthorised' in
                     exception.faultString):
                 message(_('Connection error.\nBad username or password.'))
                 return send_bugtracker(title, msg)
             tb_s = reduce(lambda x, y: x + y,
-                    traceback.format_exception(sys.exc_type,
-                        sys.exc_value, sys.exc_traceback))
+                    traceback.format_exception(sys.exc_info()[0],
+                        sys.exc_info()[1], sys.exc_info()[2]))
             message(_('Exception:') + '\n' + tb_s, msg_type=gtk.MESSAGE_ERROR)
 
 
@@ -1019,7 +1017,7 @@ def check_version(box, version=__version__):
             webbrowser.open(url)
         box.remove(info_bar)
 
-    class HeadRequest(urllib2.Request):
+    class HeadRequest(urllib.request.Request):
         def get_method(self):
             return 'HEAD'
 
@@ -1033,14 +1031,15 @@ def check_version(box, version=__version__):
             filename = 'tryton-setup-%s.exe' % version
         elif sys.platform == 'darwin':
             filename = 'tryton-%s.dmg' % version
-    url = list(urlparse.urlparse(CONFIG['download.url']))
+    url = list(urllib.parse.urlparse(CONFIG['download.url']))
     url[2] = '/%s/%s' % (series, filename)
-    url = urlparse.urlunparse(url)
+    url = urllib.parse.urlunparse(url)
 
     logger.info(_("Check URL: %s"), url)
     try:
-        urllib2.urlopen(HeadRequest(url), timeout=5, cafile=rpc._CA_CERTS)
-    except (urllib2.HTTPError, socket.timeout):
+        urllib.request.urlopen(
+            HeadRequest(url), timeout=5, cafile=rpc._CA_CERTS)
+    except (urllib.error.HTTPError, socket.timeout):
         return True
     except Exception:
         logger.error(
@@ -1062,6 +1061,7 @@ def check_version(box, version=__version__):
 def to_xml(string):
     return string.replace('&', '&amp;'
         ).replace('<', '&lt;').replace('>', '&gt;')
+
 
 PLOCK = Lock()
 
@@ -1098,12 +1098,14 @@ def process_exception(exception, *args, **kwargs):
             from tryton.gui.main import Main
             if PLOCK.acquire(False):
                 language = CONFIG['client.lang']
-                func = lambda parameters: rpc.login(
-                    rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME,
-                    parameters, language)
+
+                def login(parameters):
+                    return rpc.login(
+                        rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME,
+                        parameters, language)
                 try:
-                    Login(func)
-                except TrytonError, exception:
+                    Login(login)
+                except TrytonError as exception:
                     if exception.faultCode == 'QueryCanceled':
                         Main.get_main().sig_quit()
                     raise
@@ -1124,7 +1126,7 @@ class Login(object):
         while True:
             try:
                 func(parameters)
-            except TrytonServerError, exception:
+            except TrytonServerError as exception:
                 if exception.faultCode.startswith('403'):
                     parameters.clear()
                     continue
@@ -1216,7 +1218,7 @@ class RPCProgress(object):
     def start(self):
         try:
             self.res = getattr(rpc, self.method)(*self.args)
-        except Exception, exception:
+        except Exception as exception:
             self.error = True
             self.res = False
             self.exception = exception
@@ -1239,7 +1241,7 @@ class RPCProgress(object):
             if self.parent.get_window():
                 watch = gtk.gdk.Cursor(gtk.gdk.WATCH)
                 self.parent.get_window().set_cursor(watch)
-            thread.start_new_thread(self.start, ())
+            _thread.start_new_thread(self.start, ())
             return
         else:
             self.start()
@@ -1256,7 +1258,7 @@ class RPCProgress(object):
             try:
                 return process_exception(
                     self.exception, *self.args, rpc_execute=rpc_execute)
-            except RPCException, exception:
+            except RPCException as exception:
                 self.exception = exception
 
         def return_():
@@ -1313,6 +1315,7 @@ class Tooltips(object):
         if self._tooltips:
             self._tooltips.disable()
 
+
 COLOR_SCHEMES = {
     'red': '#cf1d1d',
     'green': '#3fb41b',
@@ -1329,7 +1332,7 @@ def filter_domain(domain):
     '''
     res = []
     for arg in domain:
-        if isinstance(arg, basestring):
+        if isinstance(arg, str):
             if arg == 'OR':
                 res = []
                 break
@@ -1401,9 +1404,10 @@ def resize_pixbuf(pixbuf, width, height):
 
 def _data2pixbuf(data):
     loader = gtk.gdk.PixbufLoader()
-    loader.write(bytes(data))
+    loader.write(data)
     loader.close()
     return loader.get_pixbuf()
+
 
 BIG_IMAGE_SIZE = 10 ** 6
 with open(os.path.join(PIXMAPS_DIR, 'tryton-noimage.png'), 'rb') as no_image:

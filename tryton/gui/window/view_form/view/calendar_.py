@@ -11,7 +11,7 @@ from . import View
 try:
     from .calendar_gtk.calendar_ import Calendar_
     from .calendar_gtk.toolbar import Toolbar
-except ImportError, e:
+except ImportError as e:
     Calendar_ = None
     Toolbar = None
 

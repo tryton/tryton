@@ -3,7 +3,6 @@
 import csv
 import os
 import tempfile
-import types
 
 import gtk
 import gobject
@@ -94,8 +93,10 @@ class WinExport(WinCSV):
 
     def model_populate(self, fields, parent_node=None, prefix_field='',
             prefix_name=''):
-        key = lambda (n, f): f.get('string') or n
-        for name, field in sorted(fields.items(), key=key, reverse=True):
+
+        def key(n_f):
+            return n_f[1].get('string') or n_f[0]
+        for name, field in sorted(list(fields.items()), key=key, reverse=True):
 
             string_ = field['string'] or name
 
@@ -314,7 +315,7 @@ class WinExport(WinCSV):
 
         try:
             writer = csv.writer(
-                open(fname, 'wb+'),
+                open(fname, 'w+', encoding=encoding),
                 quotechar=self.get_quotechar(),
                 delimiter=self.get_delimiter())
             if self.add_field_names.get_active():
@@ -322,9 +323,6 @@ class WinExport(WinCSV):
             for line in data:
                 row = []
                 for val in line:
-                    if isinstance(type(val), types.StringType):
-                        val = val.replace('\n', ' ').replace('\t', ' ')
-                        val = val.encode(encoding)
                     row.append(val)
                 writer.writerow(row)
             if popup:
@@ -333,7 +331,7 @@ class WinExport(WinCSV):
                 else:
                     common.message(_('%d records saved.') % len(data))
             return True
-        except IOError, exception:
+        except IOError as exception:
             common.warning(_("Operation failed.\nError message:\n%s")
                 % exception, _('Error'))
             return False

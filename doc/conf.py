@@ -38,7 +38,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'tryton'
-copyright = u'2008-2011,  Anne Krings, Bertrand Chenal, Cédric Krier, \
+copyright = '2008-2011,  Anne Krings, Bertrand Chenal, Cédric Krier, \
              Mathias Behrle, Tobias Paepke, Udo Spallek'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -174,7 +174,7 @@ htmlhelp_basename = 'trytonddoc'
 # (source start file, target name, title, author, documentclass [howto/manual])
 latex_documents = [
     ('index', 'tryton.tex', 'tryton Documentation',
-        u'Anne Krings, Bertrand Chenal, Cédric Krier, Mathias Behrle, '
+        'Anne Krings, Bertrand Chenal, Cédric Krier, Mathias Behrle, '
         'Tobias Paepke, Udo Spallek', 'manual'),
     ]
 

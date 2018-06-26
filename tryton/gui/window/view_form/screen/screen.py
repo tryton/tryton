@@ -8,11 +8,11 @@ import datetime
 import calendar
 import json
 import collections
-import urllib
-import urlparse
+import urllib.parse
 import xml.dom.minidom
 import gettext
 import logging
+from operator import itemgetter
 
 import gtk
 
@@ -170,7 +170,7 @@ class Screen(SignalEvent):
             view_tree = self.fields_view_tree[view_id]
 
         fields = copy.deepcopy(view_tree['fields'])
-        for name, props in fields.iteritems():
+        for name, props in fields.items():
             if props['type'] not in ('selection', 'reference'):
                 continue
             if isinstance(props['selection'], (tuple, list)):
@@ -202,7 +202,7 @@ class Screen(SignalEvent):
                 ):
             if name not in fields:
                 fields[name] = {
-                    'string': string.decode('utf-8'),
+                    'string': string,
                     'name': name,
                     'type': type_,
                     }
@@ -224,7 +224,7 @@ class Screen(SignalEvent):
                     props['selection'])
         except RPCException:
             selection = []
-        selection.sort(lambda x, y: cmp(x[1], y[1]))
+        selection.sort(key=itemgetter(1))
         return selection
 
     def search_prev(self, search_string):
@@ -355,7 +355,7 @@ class Screen(SignalEvent):
         fields_views = {}
         if self.group is not None:
             self.group.signal_unconnect(self)
-            for name, field in self.group.fields.iteritems():
+            for name, field in self.group.fields.items():
                 fields[name] = field.attrs
                 fields_views[name] = field.views
         self.tree_states_done.clear()
@@ -375,7 +375,7 @@ class Screen(SignalEvent):
             self._record_modified)
         self.__group.signal_connect(self, 'group-changed', self._group_changed)
         self.__group.add_fields(fields)
-        for name, views in fields_views.iteritems():
+        for name, views in fields_views.items():
             self.__group.fields[name].views.update(views)
         self.__group.exclude_field = self.exclude_field
 
@@ -827,7 +827,7 @@ class Screen(SignalEvent):
         timestamp = self.parent._timestamp if self.parent else None
         for view in self.views:
             if view.view_type == 'form':
-                for widgets in view.widgets.itervalues():
+                for widgets in view.widgets.values():
                     for widget in widgets:
                         if hasattr(widget, 'screen'):
                             widget.screen.save_tree_state(store)
@@ -1036,7 +1036,7 @@ class Screen(SignalEvent):
             record = self.current_record
         domain_string = _('"%s" is not valid according to its domain')
         domain_parser = DomainParser(
-            {n: f.attrs for n, f in record.group.fields.iteritems()})
+            {n: f.attrs for n, f in record.group.fields.items()})
         fields = []
         for field, invalid in sorted(record.invalid_fields.items()):
             string = record.group.fields[field].attrs['string']
@@ -1134,7 +1134,7 @@ class Screen(SignalEvent):
         except RPCException:
             action = None
         self.reload(ids, written=True)
-        if isinstance(action, basestring):
+        if isinstance(action, str):
             self.client_action(action)
         elif action:
             Action.execute(action, {
@@ -1208,7 +1208,7 @@ class Screen(SignalEvent):
         if view_ids:
             query_string.append(('views', json.dumps(
                         view_ids, separators=(',', ':'))))
-        query_string = urllib.urlencode(query_string)
-        return urlparse.urlunparse(('tryton',
+        query_string = urllib.parse.urlencode(query_string)
+        return urllib.parse.urlunparse(('tryton',
                 '%s:%s' % (rpc._HOST, rpc._PORT),
                 '/'.join(path), query_string, '', ''))

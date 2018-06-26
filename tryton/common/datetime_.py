@@ -3,17 +3,13 @@
 import gettext
 import datetime
 
-import pygtk
-
-pygtk.require('2.0')
-
 import gobject
 import gtk
 
 from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 
-from datetime_strftime import datetime_strftime as strftime
+from .datetime_strftime import datetime_strftime as strftime
 
 __all__ = ['Date', 'CellRendererDate', 'Time', 'CellRendererTime', 'DateTime']
 
@@ -165,7 +161,7 @@ class Date(gtk.Entry):
 
     def do_set_property(self, prop, value):
         if prop.name == 'value':
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 self.set_text(value)
                 self.parse()
                 value = self.__date
@@ -184,6 +180,7 @@ class Date(gtk.Entry):
             return self.__date
         elif prop.name == 'format':
             return self.__format
+
 
 gobject.type_register(Date)
 
@@ -225,6 +222,7 @@ class CellRendererDate(gtk.CellRendererText):
         widget.grab_focus()
         widget.show()
         return widget
+
 
 gobject.type_register(CellRendererDate)
 
@@ -314,7 +312,7 @@ class Time(gtk.ComboBoxEntry):
 
     def do_set_property(self, prop, value):
         if prop.name == 'value':
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 self.__entry.set_text(value)
                 self.parse()
                 value = self.__time
@@ -333,6 +331,7 @@ class Time(gtk.ComboBoxEntry):
             return self.__time
         elif prop.name == 'format':
             return self.__format
+
 
 gobject.type_register(Time)
 
@@ -376,6 +375,7 @@ class CellRendererTime(gtk.CellRendererText):
         widget.grab_focus()
         widget.show()
         return widget
+
 
 gobject.type_register(CellRendererTime)
 
@@ -457,6 +457,7 @@ class DateTime(gtk.HBox):
         self.__date.modify_text(state, color)
         self.__time.child.modify_text(state, color)
 
+
 gobject.type_register(DateTime)
 
 
@@ -480,13 +481,13 @@ def popup_show(popup):
         (gtk.gdk.BUTTON_PRESS_MASK
             | gtk.gdk.BUTTON_RELEASE_MASK
             | gtk.gdk.POINTER_MOTION_MASK),
-        None, cursor, 0L)
+        None, cursor, 0)
 
 
 def popup_hide(popup):
     popup.hide()
     popup.grab_remove()
-    gtk.gdk.pointer_ungrab(0L)
+    gtk.gdk.pointer_ungrab(0)
 
 
 def timelist_set_list(model, min_, max_, format_):
@@ -496,10 +497,10 @@ def timelist_set_list(model, min_, max_, format_):
         model.append((time.strftime(format_), time))
         hour = time.hour
         minute = time.minute + delta
-        hour += minute / 60
+        hour, minute = divmod(minute, 60)
+        hour += time.hour
         if hour >= 24:
             break
-        minute = minute % 60
         time = datetime.time(hour, minute)
 
 
@@ -533,6 +534,7 @@ def add_operators(widget):
         editable = widget
     editable.connect('key-press-event', key_press)
     return widget
+
 
 OPERATORS = {
     gtk.keysyms.S: relativedelta(seconds=-1),

@@ -189,7 +189,7 @@ try:
 except ImportError:
     pass
 gobject.threads_init()
-from urlparse import urlparse
+from urllib.parse import urlparse
 import threading
 
 import tryton.common as common
@@ -217,7 +217,7 @@ if sys.platform == 'win32':
                 return super(Dialog, self).run()
     gtk.Dialog = Dialog
 
-CSS = """
+CSS = b"""
 .readonly entry {
     background-color: @insensitive_bg_color;
 }
@@ -284,7 +284,7 @@ class TrytonClient(object):
                 lambda signum, frame: main.sig_quit())
 
         def excepthook(*args):
-            import common
+            from . import common
             import traceback
             detail = ''.join(traceback.format_exception(*args))
             common.error(str(args[1]), detail)

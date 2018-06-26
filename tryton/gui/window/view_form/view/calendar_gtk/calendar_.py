@@ -3,7 +3,7 @@
 import calendar
 import datetime
 import goocalendar
-from dates_period import DatesPeriod
+from .dates_period import DatesPeriod
 
 
 class Calendar_(goocalendar.Calendar):

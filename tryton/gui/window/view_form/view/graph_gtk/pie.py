@@ -8,7 +8,7 @@ import datetime
 
 import cairo
 
-from graph import Graph, Area
+from .graph import Graph, Area
 import tryton.common as common
 import tryton.rpc as rpc
 
@@ -16,7 +16,7 @@ import tryton.rpc as rpc
 class Pie(Graph):
 
     def _getDatasKeys(self):
-        return self.datas.keys()
+        return list(self.datas.keys())
 
     def drawLegend(self, cr, width, height):
         pass
@@ -71,7 +71,7 @@ class Pie(Graph):
     def updateGraph(self):
 
         self.sum = 0.0
-        for xkey in self.datas.iterkeys():
+        for xkey in self.datas.keys():
             key = self.yfields[0].get('key', self.yfields[0]['name'])
             if self.datas[xkey][key] > 0:
                 self.sum += self.datas[xkey][key]
@@ -79,7 +79,7 @@ class Pie(Graph):
         fraction = angle = 0.0
 
         self.slices = []
-        for xkey in self.datas.iterkeys():
+        for xkey in self.datas.keys():
             key = self.yfields[0].get('key', self.yfields[0]['name'])
             value = self.datas[xkey][key]
             if value > 0:

@@ -20,7 +20,7 @@ from tryton.common import RPCExecute, RPCException
 from tryton.common.datetime_strftime import datetime_strftime
 from tryton import plugins
 
-from tabcontent import TabContent
+from .tabcontent import TabContent
 
 _ = gettext.gettext
 
@@ -57,7 +57,7 @@ class Form(SignalEvent, TabContent):
         self.screen.signal_connect(self, 'unread-note', self._unread_note)
 
         if res_id not in (None, False):
-            if isinstance(res_id, (int, long)):
+            if isinstance(res_id, int):
                 res_id = [res_id]
             self.screen.load(res_id)
         else:
@@ -93,6 +93,9 @@ class Form(SignalEvent, TabContent):
             and self.name == value.name
             and self.screen.limit == value.screen.limit
             and self.screen.search_value == value.screen.search_value)
+
+    def __hash__(self):
+        return id(self)
 
     def destroy(self):
         super(Form, self).destroy()

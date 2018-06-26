@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import division
+
 import datetime
 import gettext
 import locale
@@ -46,7 +46,7 @@ def format(value, converter=None):
     if value < 0:
         sign = '-'
     value = abs(value)
-    converter = sorted(converter.items(), key=operator.itemgetter(1),
+    converter = sorted(list(converter.items()), key=operator.itemgetter(1),
         reverse=True)
     values = []
     for k, v in converter:
@@ -77,7 +77,7 @@ def parse(text, converter=None):
     if not converter:
         converter = DEFAULT_CONVERTER
 
-    for separator in _get_separators().values():
+    for separator in list(_get_separators().values()):
         text = text.replace(separator, separator + ' ')
 
     seconds = 0
@@ -90,7 +90,7 @@ def parse(text, converter=None):
                 except ValueError:
                     pass
         else:
-            for key, separator in _get_separators().items():
+            for key, separator in list(_get_separators().items()):
                 if part.endswith(separator):
                     part = part[:-len(separator)]
                     try:

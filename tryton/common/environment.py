@@ -35,7 +35,7 @@ class EvalEnvironment(dict):
             pass
         return super(EvalEnvironment, self).get(item, default)
 
-    def __nonzero__(self):
+    def __bool__(self):
         return True
 
     def __str__(self):

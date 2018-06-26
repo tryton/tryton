@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import httplib
+import http.client
 import logging
 import socket
 import ssl
@@ -41,7 +41,7 @@ def db_list(host, port):
         result = connection.common.db.list()
         logging.getLogger(__name__).debug(repr(result))
         return result
-    except Fault, exception:
+    except Fault as exception:
         if exception.faultCode == 'AccessDenied':
             logging.getLogger(__name__).debug('AccessDenied')
             return []
@@ -58,7 +58,7 @@ def server_version(host, port):
         result = connection.common.server.version()
         logging.getLogger(__name__).debug(repr(result))
         return result
-    except (Fault, socket.error, ssl.SSLError, ssl.CertificateError), e:
+    except (Fault, socket.error, ssl.SSLError, ssl.CertificateError) as e:
         logging.getLogger(__name__).error(e)
         return None
 
@@ -96,7 +96,7 @@ def logout():
             logging.getLogger(__name__).info('common.db.logout()')
             with CONNECTION() as conn:
                 conn.common.db.logout()
-        except (Fault, socket.error, httplib.CannotSendRequest):
+        except (Fault, socket.error, http.client.CannotSendRequest):
             pass
         CONNECTION.close()
         CONNECTION = None
@@ -136,7 +136,7 @@ def _execute(blocking, *args):
         logging.getLogger(__name__).info('%s%s' % (name, args))
         with CONNECTION() as conn:
             result = getattr(conn, name)(*args)
-    except (httplib.CannotSendRequest, socket.error), exception:
+    except (http.client.CannotSendRequest, socket.error) as exception:
         raise TrytonServerUnavailable(*exception.args)
     if not CONFIG['dev']:
         if key and method == 'fields_view_get':

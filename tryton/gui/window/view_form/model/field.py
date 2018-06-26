@@ -287,7 +287,7 @@ class TimeDeltaField(Field):
         return group.context.get(self.attrs.get('converter'))
 
     def set_client(self, record, value, force_change=False):
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             value = common.timedelta.parse(value, self.converter(record.group))
         super(TimeDeltaField, self).set_client(
             record, value, force_change=force_change)
@@ -320,10 +320,14 @@ class FloatField(Field):
             return self._default
 
     def set_client(self, record, value, force_change=False, factor=1):
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             value = self.convert(value)
         if value is not None:
-            value /= factor
+            # Keep the same type
+            if isinstance(value, int):
+                value //= factor
+            else:
+                value /= factor
         super(FloatField, self).set_client(record, value,
             force_change=force_change)
 
@@ -332,7 +336,7 @@ class FloatField(Field):
         if value is not None:
             digits = self.digits(record, factor=factor)
             if digits:
-                p = digits[1]
+                p = int(digits[1])
             else:
                 d = value * factor
                 if not isinstance(d, Decimal):
@@ -423,7 +427,7 @@ class M2OField(Field):
 
     def set(self, record, value):
         rec_name = record.value.get(self.name + '.rec_name') or ''
-        if not rec_name and value >= 0:
+        if not rec_name and value is not None and value >= 0:
             try:
                 result, = RPCExecute('model', self.attrs['relation'], 'read',
                     [value], ['rec_name'])
@@ -496,7 +500,7 @@ class O2MField(Field):
     def _set_default_value(self, record, fields=None):
         if record.value.get(self.name) is not None:
             return
-        from group import Group
+        from .group import Group
         parent_name = self.attrs.get('relation_field', '')
         fields = fields or {}
         context = record.expr_eval(self.attrs.get('context', {}))
@@ -593,7 +597,7 @@ class O2MField(Field):
         group = record.value[self.name]
         if value is None:
             value = []
-        if not value or isinstance(value[0], (int, long)):
+        if not value or isinstance(value[0], int):
             mode = 'list ids'
         else:
             mode = 'list values'
@@ -640,7 +644,7 @@ class O2MField(Field):
             fields = record.group.fields
         if fields:
             fields = dict((fname, field.attrs)
-                for fname, field in fields.iteritems())
+                for fname, field in fields.items())
 
         record.value[self.name] = None
         self._set_default_value(record, fields=fields)
@@ -655,7 +659,7 @@ class O2MField(Field):
         if value is None:
             value = []
         # domain inversion could try to set id as value
-        if isinstance(value, (int, long)):
+        if isinstance(value, int):
             value = [value]
 
         previous_ids = self.get_eval(record)
@@ -801,7 +805,7 @@ class ReferenceField(Field):
 
     def set_client(self, record, value, force_change=False):
         if value:
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 value = value.split(',')
             ref_model, ref_id = value
             if isinstance(ref_id, (tuple, list)):
@@ -825,7 +829,7 @@ class ReferenceField(Field):
         if not value:
             record.value[self.name] = self._default
             return
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             ref_model, ref_id = value.split(',')
             if not ref_id:
                 ref_id = None
@@ -888,14 +892,13 @@ class _FileCache(object):
 class BinaryField(Field):
 
     _default = None
-    cast = bytearray if bytes == str else bytes
 
     def get(self, record):
         result = record.value.get(self.name, self._default)
         if isinstance(result, _FileCache):
             try:
                 with open(result.path, 'rb') as fp:
-                    result = self.cast(fp.read())
+                    result = fp.read()
             except IOError:
                 result = self.get_data(record)
         return result
@@ -905,8 +908,11 @@ class BinaryField(Field):
 
     def set_client(self, record, value, force_change=False):
         _, filename = tempfile.mkstemp(prefix='tryton_')
+        data = value or b''
+        if isinstance(data, str):
+            data = data.encode('utf-8')
         with open(filename, 'wb') as fp:
-            fp.write(value or '')
+            fp.write(data)
         self.set(record, _FileCache(filename))
         record.modified_fields.setdefault(self.name)
         record.signal('record-modified')
@@ -918,24 +924,27 @@ class BinaryField(Field):
         result = record.value.get(self.name) or 0
         if isinstance(result, _FileCache):
             result = os.stat(result.path).st_size
-        elif isinstance(result, (basestring, bytes, bytearray)):
+        elif isinstance(result, (str, bytes)):
             result = len(result)
         return result
 
     def get_data(self, record):
         if not isinstance(record.value.get(self.name),
-                (basestring, bytes, bytearray, _FileCache)):
+                (str, bytes, _FileCache)):
             if record.id < 0:
-                return ''
+                return b''
             context = record.get_context()
             try:
                 values, = RPCExecute('model', record.model_name, 'read',
                     [record.id], [self.name], context=context)
             except RPCException:
-                return ''
+                return b''
             _, filename = tempfile.mkstemp(prefix='tryton_')
+            data = values[self.name] or b''
+            if isinstance(data, str):
+                data = data.encode('utf-8')
             with open(filename, 'wb') as fp:
-                fp.write(values[self.name] or '')
+                fp.write(data)
             self.set(record, _FileCache(filename))
         return self.get(record)
 

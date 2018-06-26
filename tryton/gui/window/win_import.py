@@ -56,9 +56,9 @@ class WinImport(WinCSV):
 
     def model_populate(self, fields, parent_node=None, prefix_field='',
             prefix_name=''):
-        fields_order = fields.keys()
-        fields_order.sort(lambda x, y: -cmp(fields[x].get('string', ''),
-                fields[y].get('string', '')))
+        fields_order = list(fields.keys())
+        fields_order.sort(
+            key=lambda x: fields[x].get('string', ''), reverse=True)
         for field in fields_order:
             if not fields[field].get('readonly', False):
                 self.fields_data[prefix_field + field] = fields[field]
@@ -101,21 +101,20 @@ class WinImport(WinCSV):
             common.message(_('You must select an import file first.'))
             return True
 
+        encoding = self.get_encoding()
         self.csv_skip.set_value(1)
         try:
             data = csv.reader(
-                open(fname, 'rb'),
+                open(fname, 'r', encoding=encoding),
                 quotechar=self.get_quotechar(),
                 delimiter=self.get_delimiter())
         except IOError:
             common.warning(_('Error opening CSV file'), _('Error'))
             return True
         self.sig_unsel_all()
-        encoding = self.get_encoding()
         word = ''
         for line in data:
             for word in line:
-                word = word.decode(encoding)
                 if word not in self.fields_invert and word not in self.fields:
                     iter = self.model1.get_iter_first()
                     prefix = ''
@@ -181,14 +180,14 @@ class WinImport(WinCSV):
         skip = self.csv_skip.get_value_as_int()
         encoding = self.get_encoding()
         reader = csv.reader(
-            open(fname, 'rb'),
+            open(fname, 'r', encoding=encoding),
             quotechar=self.get_quotechar(),
             delimiter=self.get_delimiter())
         data = []
         for i, line in enumerate(reader):
             if i < skip or not line:
                 continue
-            data.append([x.decode(encoding).encode('utf-8') for x in line])
+            data.append([x for x in line])
         try:
             count = RPCExecute(
                 'model', self.model, 'import_data', fields, data,

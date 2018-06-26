@@ -190,7 +190,7 @@ def setlang(lang=None, locale_dict=None):
 
     if locale_dict:
         conv = locale.localeconv()
-        for field in locale_dict.keys():
+        for field in list(locale_dict.keys()):
             if field == 'date':
                 continue
             conv[field] = locale_dict[field]

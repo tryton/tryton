@@ -111,7 +111,7 @@ class ViewGraph(View):
 
         hbox.pack_start(gtk.Label(_('Width:')), False, True)
         spinwidth = gtk.SpinButton()
-        spinwidth.configure(gtk.Adjustment(400.0, 0.0, sys.maxint, 1.0, 10.0),
+        spinwidth.configure(gtk.Adjustment(400.0, 0.0, sys.maxsize, 1.0, 10.0),
             climb_rate=1, digits=0)
         spinwidth.set_numeric(True)
         spinwidth.set_activates_default(True)
@@ -119,7 +119,8 @@ class ViewGraph(View):
 
         hbox.pack_start(gtk.Label(_('Height:')), False, True)
         spinheight = gtk.SpinButton()
-        spinheight.configure(gtk.Adjustment(200.0, 0.0, sys.maxint, 1.0, 10.0),
+        spinheight.configure(gtk.Adjustment(
+                200.0, 0.0, sys.maxsize, 1.0, 10.0),
             climb_rate=1, digits=0)
         spinheight.set_numeric(True)
         spinheight.set_activates_default(True)

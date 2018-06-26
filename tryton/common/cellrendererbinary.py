@@ -70,7 +70,7 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         return getattr(self, pspec.name)
 
     def button_width(self):
-        return (sum(width for n, (_, _, width, _) in self.images.iteritems()
+        return (sum(width for n, (_, _, width, _) in self.images.items()
                 if n in self.buttons)
             + (2 * (BUTTON_BORDER + BUTTON_SPACING) * len(self.buttons))
             - 2 * BUTTON_SPACING)

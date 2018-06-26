@@ -480,9 +480,12 @@ class Binary(GenericText):
         file_path = os.path.join(dtemp, filename)
         with open(file_path, 'wb') as fp:
             if hasattr(field, 'get_data'):
-                fp.write(field.get_data(record))
+                data = field.get_data(record)
             else:
-                fp.write(field.get(record))
+                data = field.get(record)
+            if isinstance(data, str):
+                data = data.encode('utf-8')
+            fp.write(data)
         root, type_ = os.path.splitext(filename)
         if type_:
             type_ = type_[1:]
@@ -527,7 +530,7 @@ class Image(GenericText):
         record = store.get_value(iter_, 0)
         field = record[self.field_name]
         value = field.get_client(record)
-        if isinstance(value, (int, long)):
+        if isinstance(value, int):
             if value > common.BIG_IMAGE_SIZE:
                 value = None
             else:
@@ -665,7 +668,7 @@ class M2O(GenericText):
             context=context, domain=domain,
             order=order, view_ids=self.attrs.get('view_ids', '').split(','),
             new=create_access, title=self.attrs.get('string'))
-        win.screen.search_filter(quote(text.decode('utf-8')))
+        win.screen.search_filter(quote(text))
         return win
 
     def set_completion(self, entry, path):
@@ -819,7 +822,8 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         record = store.get_value(store.get_iter(path), 0)
         field = record[self.attrs['name']]
 
-        set_value = lambda *a: self.set_value(editable, record, field)
+        def set_value(*a):
+            return self.set_value(editable, record, field)
         editable.get_child().connect('activate', set_value)
         editable.get_child().connect('focus-out-event', set_value)
         editable.connect('changed', set_value)

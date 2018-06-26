@@ -1,3 +1,4 @@
+* Use Python 3
 * Improve loading strategy by using views
 * Use non conflicting keyboard shortcuts in sync with sao
 * Use the context to get the suffix of window name

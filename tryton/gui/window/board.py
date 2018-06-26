@@ -7,7 +7,7 @@ from tryton.gui import Main
 from tryton.gui.window.view_board import ViewBoard
 from tryton.common import RPCExecute, RPCException
 
-from tabcontent import TabContent
+from .tabcontent import TabContent
 
 _ = gettext.gettext
 
@@ -59,6 +59,9 @@ class Board(SignalEvent, TabContent):
             and self.view_ids == value.view_ids
             and self.board.context == value.board.context
             and self.name == value.name)
+
+    def __hash__(self):
+        return id(self)
 
     def sig_win_close(self, widget):
         Main.get_main().sig_win_close(widget)

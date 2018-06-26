@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from record import Record
-from field import Field, M2OField, ReferenceField
+from .record import Record
+from .field import Field, M2OField, ReferenceField
 from tryton import rpc
 from tryton.signal_event import SignalEvent
 from tryton.common.domain_inversion import is_leaf
@@ -154,7 +154,7 @@ class Group(SignalEvent, list):
         return '<Group %s at %s>' % (self.model_name, id(self))
 
     def load_fields(self, fields):
-        for name, attr in fields.iteritems():
+        for name, attr in fields.items():
             field = Field.get_field(attr['type'])
             attr['name'] = name
             self.fields[name] = field(attr)
@@ -184,7 +184,7 @@ class Group(SignalEvent, list):
         return root
 
     def written(self, ids):
-        if isinstance(ids, (int, long)):
+        if isinstance(ids, int):
             ids = [ids]
         ids = [x for x in self.on_write_ids(ids) or [] if x not in ids]
         if not ids:
@@ -400,7 +400,7 @@ class Group(SignalEvent, list):
             return None
         return self[self.current_idx]
 
-    def next(self):
+    def __next__(self):
         if len(self) and self.current_idx is not None:
             self.current_idx = (self.current_idx + 1) % len(self)
         elif len(self):
@@ -411,7 +411,7 @@ class Group(SignalEvent, list):
 
     def add_fields(self, fields):
         to_add = {}
-        for name, attr in fields.iteritems():
+        for name, attr in fields.items():
             if name not in self.fields:
                 to_add[name] = attr
             else:
@@ -429,7 +429,7 @@ class Group(SignalEvent, list):
         if len(new) and len(to_add):
             try:
                 values = RPCExecute('model', self.model_name, 'default_get',
-                    to_add.keys(), context=self.context)
+                    list(to_add.keys()), context=self.context)
             except RPCException:
                 return False
             for record in new:

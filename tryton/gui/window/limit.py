@@ -30,7 +30,7 @@ class Limit(object):
         label = gtk.Label(_('Limit:'))
         hbox.pack_start(label, expand=True, fill=True)
         adjustment = gtk.Adjustment(value=CONFIG['client.limit'],
-            lower=1, upper=sys.maxint, step_incr=10, page_incr=100)
+            lower=1, upper=sys.maxsize, step_incr=10, page_incr=100)
         self.spin_limit = gtk.SpinButton()
         self.spin_limit.configure(adjustment, climb_rate=1, digits=0)
         self.spin_limit.set_numeric(False)

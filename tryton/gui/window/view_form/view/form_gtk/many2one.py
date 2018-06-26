@@ -121,7 +121,7 @@ class Many2One(Widget):
                 domain = self.field.domain_get(self.record)
                 context = self.field.get_search_context(self.record)
                 order = self.field.get_search_order(self.record)
-                text = self.wid_text.get_text().decode('utf-8')
+                text = self.wid_text.get_text()
 
                 def callback(result):
                     if result:
@@ -212,7 +212,7 @@ class Many2One(Widget):
             domain = self.field.domain_get(self.record)
             context = self.field.get_search_context(self.record)
             order = self.field.get_search_order(self.record)
-            text = self.wid_text.get_text().decode('utf-8')
+            text = self.wid_text.get_text()
 
             def callback(result):
                 if result:

@@ -33,7 +33,7 @@ def update_completion(entry, record, field, model, domain=None):
     def update(search_text, domain):
         if not entry.props.window:
             return False
-        if search_text != entry.get_text().decode('utf-8'):
+        if search_text != entry.get_text():
             return False
         completion_model = entry.get_completion().get_model()
         if not search_text or not model:
@@ -53,7 +53,7 @@ def update_completion(entry, record, field, model, domain=None):
                 results = results()
             except (TrytonError, TrytonServerError):
                 results = []
-            if search_text != entry.get_text().decode('utf-8'):
+            if search_text != entry.get_text():
                 return False
             completion_model.clear()
             for result in results:
@@ -70,5 +70,5 @@ def update_completion(entry, record, field, model, domain=None):
                 _("Unable to search for completion of %s") % model,
                 exc_info=True)
         return False
-    search_text = entry.get_text().decode('utf-8')
+    search_text = entry.get_text()
     gobject.timeout_add(300, update, search_text, domain)

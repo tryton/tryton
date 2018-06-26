@@ -87,12 +87,14 @@ class Preference(NoModal):
             if self.screen.current_record.validate():
                 vals = copy.copy(self.screen.get())
                 context = rpc.CONTEXT.copy()
-                func = lambda parameters: rpc.execute(
-                    'model', 'res.user', 'set_preferences', vals, parameters,
-                    context)
+
+                def login(parameters):
+                    return rpc.execute(
+                        'model', 'res.user', 'set_preferences',
+                        vals, parameters, context)
                 try:
-                    Login(func)
-                except TrytonError, exception:
+                    Login(login)
+                except TrytonError as exception:
                     if exception.faultCode == 'QueryCanceled':
                         return
                     raise

@@ -413,8 +413,8 @@ class One2Many(Widget):
                 self.screen.group.remove(first, remove=True)
                 return
 
-            fields = product.keys()
-            for values in itertools.product(*product.values()):
+            fields = list(product.keys())
+            for values in itertools.product(*list(product.values())):
                 if first:
                     record = first
                     first = None
@@ -478,7 +478,7 @@ class One2Many(Widget):
         domain = [domain, self.record.expr_eval(self.attrs.get('add_remove'))]
         removed_ids = self.field.get_removed_ids(self.record)
         domain = ['OR', domain, ('id', 'in', removed_ids)]
-        text = self.wid_text.get_text().decode('utf-8')
+        text = self.wid_text.get_text()
 
         self.focus_out = False
 

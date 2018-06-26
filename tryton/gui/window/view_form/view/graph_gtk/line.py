@@ -8,7 +8,7 @@ import datetime
 
 import cairo
 
-from graph import Graph
+from .graph import Graph
 import tryton.common as common
 import tryton.rpc as rpc
 
@@ -23,7 +23,7 @@ class Line(Graph):
 
         self.points = []
         i = 0
-        keys = self.datas.keys()
+        keys = list(self.datas.keys())
         keys.sort()
         for xfield in keys:
             j = 0

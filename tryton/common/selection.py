@@ -90,10 +90,12 @@ class SelectionMixin(object):
     def filter_selection(self, domain, record, field):
         if not domain:
             return
-        test = lambda value: eval_domain(domain, {
-                self.field_name: value[0],
-                })
-        self.selection = filter(test, self.selection)
+
+        def test(value):
+            return eval_domain(domain, {
+                    self.field_name: value[0],
+                    })
+        self.selection = list(filter(test, self.selection))
 
     def get_inactive_selection(self, value):
         if 'relation' not in self.attrs:
@@ -125,7 +127,7 @@ def selection_shortcuts(entry):
 def freeze_value(value):
     if isinstance(value, dict):
         return tuple(sorted((k, freeze_value(v))
-                for k, v in value.iteritems()))
+                for k, v in value.items()))
     elif isinstance(value, (list, set)):
         return tuple(freeze_value(v) for v in value)
     else:

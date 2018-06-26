@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gtk
 import gettext
-import urllib
+import urllib.request
 
 from tryton.common import resize_pixbuf, data2pixbuf, BIG_IMAGE_SIZE
 from .widget import Widget
@@ -76,12 +76,14 @@ class Image(BinaryMixin, Widget):
         if info == 0:
             uri = selection.get_text().split('\n')[0]
             if uri:
-                self.field.set_client(self.record, urllib.urlopen(uri).read())
+                self.field.set_client(
+                    self.record, urllib.request.urlopen(uri).read())
             self.update_img()
         elif info == 1:
             uri = selection.data.split('\r\n')[0]
             if uri:
-                self.field.set_client(self.record, urllib.urlopen(uri).read())
+                self.field.set_client(
+                    self.record, urllib.request.urlopen(uri).read())
             self.update_img()
         elif info == 2:
             data = selection.get_pixbuf()
@@ -93,7 +95,7 @@ class Image(BinaryMixin, Widget):
         value = None
         if self.field:
             value = self.field.get_client(self.record)
-        if isinstance(value, (int, long)):
+        if isinstance(value, int):
             if value > BIG_IMAGE_SIZE:
                 value = False
             else:

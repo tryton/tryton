@@ -3,7 +3,7 @@
 import gtk
 import gobject
 import locale
-from cellrendererinteger import CellRendererInteger
+from .cellrendererinteger import CellRendererInteger
 
 
 class CellRendererFloat(CellRendererInteger):

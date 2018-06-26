@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-import ConfigParser
+import configparser
 import gtk
 import gobject
 import os
@@ -29,7 +29,7 @@ class DBListEditor(object):
 
         # GTK Stuffs
         self.parent = parent
-        self.dialog = gtk.Dialog(title=_(u'Profile Editor'), parent=parent,
+        self.dialog = gtk.Dialog(title=_('Profile Editor'), parent=parent,
             flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         self.ok_button = self.dialog.add_button(gtk.STOCK_OK,
             gtk.RESPONSE_ACCEPT)
@@ -44,19 +44,19 @@ class DBListEditor(object):
         self.cell.connect('editing-started', self.edit_started)
         self.profile_tree = gtk.TreeView()
         self.profile_tree.set_model(profile_store)
-        self.profile_tree.insert_column_with_attributes(-1, _(u'Profile'),
+        self.profile_tree.insert_column_with_attributes(-1, _('Profile'),
             self.cell, text=0)
         self.profile_tree.connect('cursor-changed', self.profile_selected)
         scroll = gtk.ScrolledWindow()
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scroll.add(self.profile_tree)
-        self.add_button = gtk.Button(_(u'_Add'), use_underline=True)
+        self.add_button = gtk.Button(_('_Add'), use_underline=True)
         self.add_button.connect('clicked', self.profile_create)
         add_image = gtk.Image()
         add_image.set_from_stock('gtk-add', gtk.ICON_SIZE_BUTTON)
         self.add_button.set_image(add_image)
         self.add_button.set_always_show_image(True)
-        self.remove_button = gtk.Button(_(u'_Remove'), use_underline=True)
+        self.remove_button = gtk.Button(_('_Remove'), use_underline=True)
         self.remove_button.connect('clicked', self.profile_delete)
         remove_image = gtk.Image()
         remove_image.set_from_stock('gtk-remove', gtk.ICON_SIZE_BUTTON)
@@ -70,7 +70,7 @@ class DBListEditor(object):
         table = gtk.Table(4, 2, homogeneous=False)
         table.set_row_spacings(3)
         table.set_col_spacings(3)
-        host = gtk.Label(set_underline(_(u'Host:')))
+        host = gtk.Label(set_underline(_('Host:')))
         host.set_use_underline(True)
         host.set_alignment(1, 0.5)
         host.set_padding(3, 3)
@@ -81,7 +81,7 @@ class DBListEditor(object):
         host.set_mnemonic_widget(self.host_entry)
         table.attach(host, 0, 1, 1, 2, yoptions=False, xoptions=gtk.FILL)
         table.attach(self.host_entry, 1, 2, 1, 2, yoptions=False)
-        database = gtk.Label(set_underline(_(u'Database:')))
+        database = gtk.Label(set_underline(_('Database:')))
         database.set_use_underline(True)
         database.set_alignment(1, 0.5)
         database.set_padding(3, 3)
@@ -101,7 +101,7 @@ class DBListEditor(object):
         self.database_combo.set_model(dbstore)
         self.database_combo.connect('changed', self.dbcombo_changed)
         self.database_progressbar = gtk.ProgressBar()
-        self.database_progressbar.set_text(_(u'Fetching databases list'))
+        self.database_progressbar.set_text(_('Fetching databases list'))
         image = gtk.Image()
         image.set_from_stock('tryton-new', gtk.ICON_SIZE_BUTTON)
         db_box = gtk.VBox(homogeneous=True)
@@ -117,7 +117,7 @@ class DBListEditor(object):
         db_box.set_size_request(width, height)
         table.attach(database, 0, 1, 2, 3, yoptions=False, xoptions=gtk.FILL)
         table.attach(db_box, 1, 2, 2, 3, yoptions=False)
-        username = gtk.Label(set_underline(_(u'Username:')))
+        username = gtk.Label(set_underline(_('Username:')))
         username.set_use_underline(True)
         username.set_alignment(1, 0.5)
         username.set_padding(3, 3)
@@ -214,7 +214,7 @@ class DBListEditor(object):
             try:
                 entry_value = self.profiles.get(self.current_profile['name'],
                     field)
-            except ConfigParser.NoOptionError:
+            except configparser.NoOptionError:
                 entry_value = ''
             entry.set_text(entry_value)
             if field == 'database':
@@ -304,9 +304,9 @@ class DBListEditor(object):
 
         label = None
         if self.test_server_version(host, port) is False:
-            label = _(u'Incompatible version of the server')
+            label = _('Incompatible version of the server')
         elif dbs is None:
-            label = _(u'Could not connect to the server')
+            label = _('Could not connect to the server')
         if label:
             self.database_label.set_label('<b>%s</b>' % label)
             self.database_label.show()
@@ -433,7 +433,7 @@ class DBLogin(object):
         self.combo_profile.add_attribute(cell, 'sensitive', 1)
         self.combo_profile.set_model(self.profile_store)
         self.combo_profile.connect('changed', self.profile_changed)
-        self.profile_label = gtk.Label(set_underline(_(u'Profile:')))
+        self.profile_label = gtk.Label(set_underline(_('Profile:')))
         self.profile_label.set_use_underline(True)
         self.profile_label.set_justify(gtk.JUSTIFY_RIGHT)
         self.profile_label.set_alignment(1, 0.5)
@@ -492,7 +492,7 @@ class DBLogin(object):
 
         # Profile informations
         self.profile_cfg = os.path.join(get_config_dir(), 'profiles.cfg')
-        self.profiles = ConfigParser.SafeConfigParser()
+        self.profiles = configparser.SafeConfigParser()
         if not os.path.exists(self.profile_cfg):
             short_version = '.'.join(__version__.split('.', 2)[:2])
             name = 'demo%s.tryton.org' % short_version
@@ -533,7 +533,7 @@ class DBLogin(object):
         profile = self.profile_store[position][0]
         try:
             username = self.profiles.get(profile, 'username')
-        except ConfigParser.NoOptionError:
+        except configparser.NoOptionError:
             username = ''
         host = self.profiles.get(profile, 'host')
         self.entry_host.set_text('%s' % host)
@@ -624,10 +624,10 @@ class DBLogin(object):
             if not test:
                 if test is False:
                     common.warning('',
-                        _(u'Incompatible version of the server'))
+                        _('Incompatible version of the server'))
                 else:
                     common.warning('',
-                        _(u'Could not connect to the server'))
+                        _('Could not connect to the server'))
                 continue
             database = self.entry_database.get_text()
             login = self.entry_login.get_text()

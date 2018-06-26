@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 "Attachment"
 import os
-import urllib
-import urlparse
+import urllib.request
+import urllib.parse
 import sys
 import gettext
 
@@ -42,9 +42,9 @@ class Attachment(WinForm):
         data_field = self.screen.group.fields['data']
         name_field = self.screen.group.fields[data_field.attrs['filename']]
         new_record = self.screen.new()
-        file_name = os.path.basename(urlparse.urlparse(uri).path)
+        file_name = os.path.basename(urllib.parse.urlparse(uri).path)
         name_field.set_client(new_record, file_name)
-        uri = urllib.unquote(uri)
+        uri = urllib.parse.unquote(uri)
         uri = uri.decode('utf-8').encode(sys.getfilesystemencoding())
-        data_field.set_client(new_record, urllib.urlopen(uri).read())
+        data_field.set_client(new_record, urllib.request.urlopen(uri).read())
         self.screen.display()

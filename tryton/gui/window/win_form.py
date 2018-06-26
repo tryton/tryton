@@ -316,7 +316,7 @@ class WinForm(NoModal, InfoBar):
         from tryton.gui.window.win_search import WinSearch
         domain = self.domain[:]
         model_name = self.screen.model_name
-        value = self.wid_text.get_text().decode('utf-8')
+        value = self.wid_text.get_text()
 
         def callback(result):
             if result:
@@ -390,7 +390,7 @@ class WinForm(NoModal, InfoBar):
                     validate = False
             elif validate and self.screen.current_view.view_type == 'form':
                 view = self.screen.current_view
-                for widgets in view.widgets.itervalues():
+                for widgets in view.widgets.values():
                     for widget in widgets:
                         if (hasattr(widget, 'screen')
                                 and widget.screen.pre_validate):

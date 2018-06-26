@@ -93,7 +93,7 @@ class Notebook(StateMixin, gtk.Notebook):
         else:
             state_changes = {}
         if state_changes.get('readonly', self.attrs.get('readonly')):
-            for widgets in self.widgets.itervalues():
+            for widgets in self.widgets.values():
                 for widget in widgets:
                     widget._readonly_set(True)
 

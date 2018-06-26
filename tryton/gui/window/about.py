@@ -42,7 +42,7 @@ class About(object):
         self.win.set_authors(AUTHORS)
         self.win.set_translator_credits(_('translator-credits'))
         self.win.set_logo(GdkPixbuf.Pixbuf.new_from_file(
-                os.path.join(PIXMAPS_DIR, 'tryton.png').encode('utf-8')))
+                os.path.join(PIXMAPS_DIR, 'tryton.png')))
         self.win.run()
         parent.present()
         self.win.destroy()

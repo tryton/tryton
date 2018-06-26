@@ -54,7 +54,7 @@ class Button(gtk.Button):
                     label += ' (%s)' % len(clicks)
                     if tip:
                         tip += '\n'
-                    tip += _('By: ') + _(', ').join(clicks.itervalues())
+                    tip += _('By: ') + _(', ').join(iter(clicks.values()))
             self.set_label(label)
             self.set_tooltip_text(tip)
 

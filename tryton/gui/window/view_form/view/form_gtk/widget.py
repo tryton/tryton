@@ -220,7 +220,7 @@ class TranslateDialog(NoModal):
 
     def response(self, win, response):
         if response == gtk.RESPONSE_OK:
-            for code, widget in self.widgets.iteritems():
+            for code, widget in self.widgets.items():
                 widget, editing, fuzzy = widget
                 if not editing.get_active():
                     continue

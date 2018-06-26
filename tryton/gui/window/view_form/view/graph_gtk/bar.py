@@ -8,7 +8,7 @@ import datetime
 
 import cairo
 
-from graph import Graph
+from .graph import Graph
 import tryton.common as common
 import tryton.rpc as rpc
 
@@ -142,7 +142,7 @@ class VerticalBar(Bar):
 
         self.bars = []
         i = 0
-        keys = self.datas.keys()
+        keys = list(self.datas.keys())
         keys.sort()
         for xfield in keys:
             j = 0
@@ -198,7 +198,7 @@ class HorizontalBar(Bar):
 
         self.bars = []
         i = 0
-        keys = self.datas.keys()
+        keys = list(self.datas.keys())
         keys.sort()
         for xfield in keys:
             j = 0

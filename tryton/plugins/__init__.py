@@ -19,7 +19,7 @@ def register():
         os.path.join(get_config_dir(), 'plugins'),
         os.path.join(CURRENT_DIR, 'plugins'),
         ]
-    paths = filter(os.path.isdir, paths)
+    paths = list(filter(os.path.isdir, paths))
 
     imported = set()
     for path in paths:

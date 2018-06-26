@@ -259,7 +259,7 @@ class RichTextBox(TextBox):
         start.backward_chars(length)
         end = iter_.copy()
         # Apply tags activated from toolbar
-        for name, widget in self.tag_widgets[textview].iteritems():
+        for name, widget in self.tag_widgets[textview].items():
             self._apply_tool(text_buffer, name, widget, start, end)
 
     def _apply_tool(self, text_buffer, name, tool, start, end):

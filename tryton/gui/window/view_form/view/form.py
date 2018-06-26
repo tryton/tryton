@@ -466,13 +466,13 @@ class ViewForm(View):
         return cls.WIDGETS[name]
 
     def get_fields(self):
-        return self.widgets.keys()
+        return list(self.widgets.keys())
 
     def __getitem__(self, name):
         return self.widgets[name][0]
 
     def destroy(self):
-        for widget_name in self.widgets.keys():
+        for widget_name in list(self.widgets.keys()):
             for widget in self.widgets[widget_name]:
                 widget.destroy()
         self.widget.destroy()
@@ -480,7 +480,7 @@ class ViewForm(View):
     def set_value(self, focused_widget=False):
         record = self.screen.current_record
         if record:
-            for name, widgets in self.widgets.iteritems():
+            for name, widgets in self.widgets.items():
                 if name in record.group.fields:
                     field = record.group.fields[name]
                     for widget in widgets:
@@ -498,7 +498,7 @@ class ViewForm(View):
 
     @property
     def modified(self):
-        return any(w.modified for widgets in self.widgets.itervalues()
+        return any(w.modified for widgets in self.widgets.values()
             for w in widgets)
 
     def get_buttons(self):
@@ -507,7 +507,7 @@ class ViewForm(View):
     def reset(self):
         record = self.screen.current_record
         if record:
-            for name, widgets in self.widgets.iteritems():
+            for name, widgets in self.widgets.items():
                 field = record.group.fields.get(name)
                 if field and 'invalid' in field.get_state_attrs(record):
                     for widget in widgets:
@@ -523,13 +523,13 @@ class ViewForm(View):
                 (name,
                     field.attrs.get('loading', 'eager') == 'eager',
                     len(field.views))
-                for name, field in record.group.fields.iteritems()
+                for name, field in record.group.fields.items()
                 if self.view_id in field.views)
             fields = sorted(fields, key=operator.itemgetter(1, 2))
             for field, _, _ in fields:
                 record[field].get(record)
         focused_widget = find_focused_child(self.widget)
-        for name, widgets in self.widgets.iteritems():
+        for name, widgets in self.widgets.items():
             field = None
             if record:
                 field = record.group.fields.get(name)

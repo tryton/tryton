@@ -58,7 +58,7 @@ class FileServer(IPCServer):
 
     def setup(self):
         config = open(self.config, 'w')
-        print >> config, self.tmpdir
+        print(self.tmpdir, file=config)
 
     def clean(self):
         try:
@@ -101,7 +101,7 @@ class FIFOServer(IPCServer):
 
     def setup(self):
         self.filename = os.path.join(self.tmpdir, 'Socket')
-        os.mkfifo(self.filename, 0600)
+        os.mkfifo(self.filename, 0o600)
         if os.path.lexists(self.config):
             os.remove(self.config)
         os.symlink(self.filename, self.config)
@@ -160,7 +160,7 @@ class FileClient(IPCClient):
         tmpdir = open(self.filename, 'r').readline().strip()
         _, tmpfile = tempfile.mkstemp(dir=tmpdir, text=True)
         with open(tmpfile, 'w') as tmpfile:
-            print >> tmpfile, message
+            print(message, file=tmpfile)
         return True
 
 
@@ -173,8 +173,9 @@ class FIFOClient(IPCClient):
         if not os.path.lexists(self.filename):
             return False
         fifo = open(self.filename, 'w')
-        print >> fifo, message
+        print(message, file=fifo)
         return True
+
 
 if hasattr(os, 'mkfifo'):
     Server = FIFOServer
