@@ -11,18 +11,18 @@ class TestConfig(ProteusTestCase):
         user_proxy = config.get_proxy('res.user')
         user_id = user_proxy.search([('login', '=', 'admin')], 0, 1, None,
                 config.context)[0]
-        self.assert_(user_id == config.user)
+        self.assertTrue(user_id == config.user)
 
     def test_proxy_keyword(self):
         config = proteus.config.get_config()
         user_proxy = config.get_proxy('res.user')
         user_id, = user_proxy.search(
             [('login', '=', 'admin')], limit=1, context=config.context)
-        self.assert_(user_id == config.user)
+        self.assertTrue(user_id == config.user)
 
     def test_proxy_methods(self):
         config = proteus.config.get_config()
-        self.assert_('search' in config.get_proxy_methods('res.user'))
+        self.assertTrue('search' in config.get_proxy_methods('res.user'))
 
     def test_trytond_config_eq(self):
         config1 = proteus.config.get_config()

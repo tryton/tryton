@@ -21,7 +21,7 @@ class TestWizard(ProteusTestCase):
         translation_export.form.language, = Lang.find([('code', '=', 'en')])
         translation_export.form.module, = Module.find([('name', '=', 'ir')])
         translation_export.execute('export')
-        self.assert_(translation_export.form.file)
+        self.assertTrue(translation_export.form.file)
         translation_export.execute('end')
 
     def test_user_config(self):
@@ -38,7 +38,7 @@ class TestWizard(ProteusTestCase):
         user_config.form.login = 'bar'
         user_config.execute('end')
 
-        self.assert_(User.find([('name', '=', 'Foo')]))
+        self.assertTrue(User.find([('name', '=', 'Foo')]))
         self.assertFalse(User.find([('name', '=', 'Bar')]))
 
     def test_translation_update(self):

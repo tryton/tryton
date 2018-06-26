@@ -4,7 +4,7 @@ Installing proteus
 Prerequisites
 -------------
 
- * Python 2.7 or later (http://www.python.org/)
+ * Python 3.4 or later (http://www.python.org/)
  * python-dateutil (http://labix.org/python-dateutil)
  * Optional: trytond (http://www.tryton.org/)
  * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)

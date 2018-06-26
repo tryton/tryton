@@ -13,8 +13,6 @@ pipeline:
 
 matrix:
     include:
-        - IMAGE: python:2.7
-          TOXENV: py27
         - IMAGE: python:3.4
           TOXENV: py34
         - IMAGE: python:3.5

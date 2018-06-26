@@ -17,7 +17,7 @@ class TestModel(ProteusTestCase):
 
     def test_class_method(self):
         User = Model.get('res.user')
-        self.assert_(len(User.search([('login', '=', 'admin')], {})))
+        self.assertTrue(len(User.search([('login', '=', 'admin')], {})))
 
     def test_int(self):
         User = Model.get('res.user')
@@ -32,7 +32,7 @@ class TestModel(ProteusTestCase):
     def test_many2one(self):
         User = Model.get('res.user')
         admin = User.find([('login', '=', 'admin')])[0]
-        self.assert_(isinstance(admin.create_uid, User))
+        self.assertTrue(isinstance(admin.create_uid, User))
         try:
             admin.create_uid = 'test'
             self.fail()
@@ -46,8 +46,8 @@ class TestModel(ProteusTestCase):
     def test_one2many(self):
         Group = Model.get('res.group')
         administration = Group.find([('name', '=', 'Administration')])[0]
-        self.assert_(isinstance(administration.model_access, list))
-        self.assert_(isinstance(administration.model_access[0],
+        self.assertTrue(isinstance(administration.model_access, list))
+        self.assertTrue(isinstance(administration.model_access[0],
             Model.get('ir.model.access')))
         try:
             administration.model_access = []
@@ -58,8 +58,8 @@ class TestModel(ProteusTestCase):
     def test_many2many(self):
         User = Model.get('res.user')
         admin = User.find([('login', '=', 'admin')])[0]
-        self.assert_(isinstance(admin.groups, list))
-        self.assert_(isinstance(admin.groups[0],
+        self.assertTrue(isinstance(admin.groups, list))
+        self.assertTrue(isinstance(admin.groups[0],
             Model.get('res.group')))
         try:
             admin.groups = []
@@ -82,9 +82,9 @@ class TestModel(ProteusTestCase):
     def test_id_counter(self):
         User = Model.get('res.user')
         test1 = User()
-        self.assert_(test1.id < 0)
+        self.assertTrue(test1.id < 0)
         test2 = User()
-        self.assert_(test2.id < 0)
+        self.assertTrue(test2.id < 0)
         self.assertNotEqual(test1.id, test2.id)
 
     def test_init(self):
@@ -109,12 +109,12 @@ class TestModel(ProteusTestCase):
         test.name = 'Test'
         test.login = 'test'
         test.save()
-        self.assert_(test.id > 0)
+        self.assertTrue(test.id > 0)
 
         test = User(test.id)
         self.assertEqual(test.name, 'Test')
         self.assertEqual(test.login, 'test')
-        self.assert_(test.active)
+        self.assertTrue(test.active)
 
         test.signature = 'Test signature'
         self.assertEqual(test.signature, 'Test signature')
@@ -127,7 +127,7 @@ class TestModel(ProteusTestCase):
         test2 = User(name='Test 2', login='test2',
                 groups=[Group(name='Test 2')])
         test2.save()
-        self.assert_(test2.id > 0)
+        self.assertTrue(test2.id > 0)
         self.assertEqual(test2.name, 'Test 2')
         self.assertEqual(test2.login, 'test2')
 
@@ -137,7 +137,7 @@ class TestModel(ProteusTestCase):
         User.save([test, test2, test3])
         self.assertEqual(test.signature, 'classmethod save')
         self.assertEqual(test2.name, 'Test 2 classmethod')
-        self.assert_(test3.id > 0)
+        self.assertTrue(test3.id > 0)
         self.assertEqual(test3.name, 'Test 3')
 
     def test_save_many2one(self):
@@ -337,7 +337,7 @@ class TestModel(ProteusTestCase):
         test._on_change_set('groups', {'add': [(-1, {
                             'name': 'Bar',
                             })]})
-        self.assert_([x for x in test.groups if x.name == 'Bar'])
+        self.assertTrue([x for x in test.groups if x.name == 'Bar'])
 
         test.groups.extend(Group.find())
         group = test.groups[0]
@@ -345,7 +345,7 @@ class TestModel(ProteusTestCase):
             'id': group.id,
             'name': 'Foo',
             }]})
-        self.assert_([x for x in test.groups if x.name == 'Foo'])
+        self.assertTrue([x for x in test.groups if x.name == 'Foo'])
 
     def test_model_list_find(self):
         User = Model.get('res.user')
