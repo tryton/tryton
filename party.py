@@ -69,7 +69,7 @@ class PartyRelationAll(PartyRelation, ModelView):
 
         columns = []
         reverse_columns = []
-        for name, field in Relation._fields.iteritems():
+        for name, field in Relation._fields.items():
             if hasattr(field, 'get'):
                 continue
             column, reverse_column = cls._get_column(tables, reverse_tables,
@@ -83,7 +83,7 @@ class PartyRelationAll(PartyRelation, ModelView):
                 table = table.join(right, condition=condition)
             else:
                 table = right
-            for k, sub_tables in tables.iteritems():
+            for k, sub_tables in tables.items():
                 if k is None:
                     continue
                 table = convert_from(table, sub_tables)
@@ -150,7 +150,7 @@ class PartyRelationAll(PartyRelation, ModelView):
                     local_cache.clear()
 
         # Clean cursor cache
-        for cache in Transaction().cache.itervalues():
+        for cache in Transaction().cache.values():
             if cls.__name__ in cache:
                 for record in all_records:
                     for record_id in (record.id, record.reverse_id):
@@ -191,8 +191,8 @@ class PartyRelationAll(PartyRelation, ModelView):
         Transaction().counter += 1
 
         # Clean cursor cache
-        for cache in Transaction().cache.values():
-            for cache in (cache, cache.get('_language_cache', {}).values()):
+        for cache in list(Transaction().cache.values()):
+            for cache in (cache, list(cache.get('_language_cache', {}).values())):
                 if cls.__name__ in cache:
                     for record in relations:
                         for record_id in (record.id, record.reverse_id):
@@ -202,8 +202,7 @@ class PartyRelationAll(PartyRelation, ModelView):
         Relation.delete(cls.convert_instances(relations))
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     relations = fields.One2Many('party.relation.all', 'from_', 'Relations')
