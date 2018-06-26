@@ -14,7 +14,7 @@ _names = {
     }
 _symbols = {
     'USD': '$',
-    'EUR': u'€',
+    'EUR': '€',
     }
 _rates = {
     'USD': Decimal('1.0'),

@@ -48,8 +48,8 @@ class CurrencyTestCase(ModuleTestCase):
         'Create currencies'
         cu1 = create_currency('cu1')
         cu2 = create_currency('cu2')
-        self.assert_(cu1)
-        self.assert_(cu2)
+        self.assertTrue(cu1)
+        self.assertTrue(cu2)
 
     @with_transaction()
     def test_rate(self):
@@ -59,8 +59,8 @@ class CurrencyTestCase(ModuleTestCase):
 
         rate1 = add_currency_rate(cu1, Decimal("1.3"))
         rate2 = add_currency_rate(cu2, Decimal("1"))
-        self.assert_(rate1)
-        self.assert_(rate2)
+        self.assertTrue(rate1)
+        self.assertTrue(rate2)
 
         self.assertEqual(cu1.rate, Decimal("1.3"))
 
@@ -217,7 +217,7 @@ class CurrencyTestCase(ModuleTestCase):
         Currency.delete(currencies)
 
         rates = Rate.search([(
-                    'currency', 'in', map(int, currencies),
+                    'currency', 'in', list(map(int, currencies)),
                     )], 0, None, None)
         self.assertFalse(rates)
 
