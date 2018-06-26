@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta
 __all__ = ['ProductSupplier', 'ProductSupplierDay']
 
 
-class ProductSupplier:
-    __metaclass__ = PoolMeta
+class ProductSupplier(metaclass=PoolMeta):
     __name__ = 'purchase.product_supplier'
     weekdays = fields.One2Many('purchase.product_supplier.day',
         'product_supplier', 'Week Days')
