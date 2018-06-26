@@ -351,7 +351,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     def won(cls, opportunities):
         pool = Pool()
         Date = pool.get('ir.date')
-        cls.write(filter(lambda o: o.is_forecast, opportunities), {
+        cls.write([o for o in opportunities if o.is_forecast], {
                 'end_date': Date.today(),
                 'state': 'won',
                 })
@@ -361,7 +361,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     @Workflow.transition('lost')
     def lost(cls, opportunities):
         Date = Pool().get('ir.date')
-        cls.write(filter(lambda o: o.is_forecast, opportunities), {
+        cls.write([o for o in opportunities if o.is_forecast], {
                 'end_date': Date.today(),
                 'state': 'lost',
                 })
@@ -371,7 +371,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     @Workflow.transition('cancelled')
     def cancel(cls, opportunities):
         Date = Pool().get('ir.date')
-        cls.write(filter(lambda o: o.is_forecast, opportunities), {
+        cls.write([o for o in opportunities if o.is_forecast], {
                 'end_date': Date.today(),
                 })
 

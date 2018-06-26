@@ -105,7 +105,7 @@ Create an lead::
     >>> opportunity.description = 'Opportunity'
     >>> opportunity.save()
     >>> opportunity.state
-    u'lead'
+    'lead'
 
 Convert to opportunity::
 
@@ -116,7 +116,7 @@ Convert to opportunity::
     >>> opportunity.employee = employee
     >>> opportunity.click('opportunity')
     >>> opportunity.state
-    u'opportunity'
+    'opportunity'
 
 Add a line::
 
@@ -129,7 +129,7 @@ Convert to sale::
 
     >>> opportunity.click('convert')
     >>> opportunity.state
-    u'converted'
+    'converted'
 
 Find the sale::
 
@@ -155,7 +155,7 @@ Check opportunity amount updated::
     >>> opportunity.amount
     Decimal('90.00')
     >>> opportunity.state
-    u'converted'
+    'converted'
 
 Add a second quotation::
 
@@ -176,14 +176,14 @@ Check opportunity amount updated::
     >>> opportunity.amount
     Decimal('100.00')
     >>> opportunity.state
-    u'converted'
+    'converted'
 
 Cancel second quotation::
 
     >>> set_user(sale_user)
     >>> second_sale.click('cancel')
     >>> second_sale.state
-    u'cancel'
+    'cancel'
 
 Check opportunity amount updated::
 
@@ -192,7 +192,7 @@ Check opportunity amount updated::
     >>> opportunity.amount
     Decimal('90.00')
     >>> opportunity.state
-    u'converted'
+    'converted'
 
 Won opportunity::
 
@@ -201,11 +201,11 @@ Won opportunity::
     >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.state
-    u'won'
+    'won'
 
 Check opportunity state updated::
 
     >>> set_user(sale_opportunity_user)
     >>> opportunity.reload()
     >>> opportunity.state
-    u'won'
+    'won'

@@ -5,13 +5,11 @@ from trytond.pool import PoolMeta
 __all__ = ['Company', 'Employee']
 
 
-class Company:
-    __metaclass__ = PoolMeta
+class Company(metaclass=PoolMeta):
     __name__ = 'company.company'
     _history = True
 
 
-class Employee:
-    __metaclass__ = PoolMeta
+class Employee(metaclass=PoolMeta):
     __name__ = 'company.employee'
     _history = True

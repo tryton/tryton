@@ -22,8 +22,7 @@ def process_opportunity(func):
     return wrapper
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     @classmethod

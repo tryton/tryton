@@ -8,9 +8,8 @@ from trytond.pool import PoolMeta, Pool
 __all__ = ['Configuration', 'ConfigurationSequence']
 
 
-class Configuration:
+class Configuration(metaclass=PoolMeta):
     'Sale Configuration'
-    __metaclass__ = PoolMeta
     __name__ = 'sale.configuration'
     sale_opportunity_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Opportunity Sequence", required=True,
@@ -33,8 +32,7 @@ class Configuration:
             'sale_opportunity_sequence').default_sale_opportunity_sequence()
 
 
-class ConfigurationSequence:
-    __metaclass__ = PoolMeta
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sequence'
     sale_opportunity_sequence = fields.Many2One(
         'ir.sequence', "Opportunity Sequence", required=True,
