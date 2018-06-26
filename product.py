@@ -7,8 +7,7 @@ from trytond.pyson import Eval, If
 __all__ = ['PriceList', 'PriceListLine', 'PriceListLineContext']
 
 
-class PriceList:
-    __metaclass__ = PoolMeta
+class PriceList(metaclass=PoolMeta):
     __name__ = 'product.price_list'
 
     @classmethod
@@ -25,8 +24,7 @@ class PriceList:
         pass
 
 
-class PriceListLine:
-    __metaclass__ = PoolMeta
+class PriceListLine(metaclass=PoolMeta):
     __name__ = 'product.price_list.line'
 
     start_date = fields.Date(

@@ -7,8 +7,7 @@ from trytond.pyson import Eval
 __all__ = ['Line']
 
 
-class Line:
-    __metaclass__ = PoolMeta
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
