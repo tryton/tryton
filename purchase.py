@@ -21,9 +21,8 @@ def process_request(func):
     return wrapper
 
 
-class Purchase:
+class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
-    __metaclass__ = PoolMeta
 
     @classmethod
     def __setup__(cls):
@@ -89,8 +88,7 @@ class Purchase:
         super(Purchase, cls).do(purchases)
 
 
-class PurchaseLine:
-    __metaclass__ = PoolMeta
+class PurchaseLine(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     requests = fields.One2Many(

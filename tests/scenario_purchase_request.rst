@@ -169,14 +169,14 @@ Create the purchase then cancel it::
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> pr.state
-    u'purchased'
+    'purchased'
 
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase, = Purchase.find()
     >>> purchase.click('cancel')
     >>> pr.reload()
     >>> pr.state
-    u'exception'
+    'exception'
 
 Handle the exception::
 
@@ -184,20 +184,20 @@ Handle the exception::
     ...     'purchase.request.handle.purchase.cancellation', [pr])
     >>> handle_exception.execute('reset')
     >>> pr.state
-    u'draft'
+    'draft'
 
 Recreate a purchase and cancel it again::
 
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [pr])
     >>> pr.state
-    u'purchased'
+    'purchased'
 
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
     >>> purchase.click('cancel')
     >>> pr.reload()
     >>> pr.state
-    u'exception'
+    'exception'
 
 Handle again the exception::
 
@@ -205,7 +205,7 @@ Handle again the exception::
     ...     'purchase.request.handle.purchase.cancellation', [pr])
     >>> handle_exception.execute('cancel_request')
     >>> pr.state
-    u'cancel'
+    'cancel'
 
 Re-create the purchase request::
 
@@ -236,7 +236,7 @@ Create the purchase with a unique line::
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> pr.state
-    u'purchased'
+    'purchased'
 
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
@@ -265,11 +265,11 @@ Create the purchase without product::
     >>> create_purchase.form.party = supplier
     >>> create_purchase.execute('start')
     >>> pr.state
-    u'purchased'
+    'purchased'
 
     >>> pr.purchase_line.product
     >>> pr.purchase_line.description
-    u'Custom product'
+    'Custom product'
     >>> pr.purchase_line.quantity
     1.0
     >>> pr.purchase_line.unit

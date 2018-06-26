@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from decimal import Decimal
-from itertools import groupby, ifilter
+from itertools import groupby
 from functools import partial
 
 from trytond import backend
@@ -384,7 +384,7 @@ class CreatePurchase(Wizard):
                     and request.product == self.ask_party.product
                     and compare_string(
                         request.description, self.ask_party.description))
-            reqs = filter(to_write, requests)
+            reqs = list(filter(to_write, requests))
             if reqs:
                 Request.write(reqs, {
                         'party': self.ask_party.party.id,
@@ -396,7 +396,7 @@ class CreatePurchase(Wizard):
 
         def to_ask_party(request):
             return not request.purchase_line and not request.party
-        reqs = ifilter(to_ask_party, requests)
+        reqs = filter(to_ask_party, requests)
         if any(reqs):
             return 'ask_party'
 
