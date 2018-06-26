@@ -8,8 +8,7 @@ from trytond.pyson import Eval
 __all__ = ['Purchase', 'PurchaseLine']
 
 
-class Purchase:
-    __metaclass__ = PoolMeta
+class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
     @classmethod
@@ -21,8 +20,7 @@ class Purchase:
             field.depends.extend(['invoice_address'])
 
 
-class PurchaseLine:
-    __metaclass__ = PoolMeta
+class PurchaseLine(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     @fields.depends('purchase', '_parent_purchase.warehouse',

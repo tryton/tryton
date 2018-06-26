@@ -4,8 +4,7 @@
 from trytond.pool import PoolMeta, Pool
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     def _get_tax_rule_pattern(self):

@@ -7,8 +7,7 @@ from trytond.model import fields
 __all__ = ['TaxRuleLineTemplate', 'TaxRuleLine', 'InvoiceLine']
 
 
-class TaxRuleLineTemplate:
-    __metaclass__ = PoolMeta
+class TaxRuleLineTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.rule.line.template'
     from_country = fields.Many2One('country.country', 'From Country',
         ondelete='RESTRICT')
@@ -27,8 +26,7 @@ class TaxRuleLineTemplate:
         return value
 
 
-class TaxRuleLine:
-    __metaclass__ = PoolMeta
+class TaxRuleLine(metaclass=PoolMeta):
     __name__ = 'account.tax.rule.line'
     from_country = fields.Many2One('country.country', 'From Country',
         ondelete='RESTRICT')
@@ -36,8 +34,7 @@ class TaxRuleLine:
         ondelete='RESTRICT')
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     @fields.depends('origin')
