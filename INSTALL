@@ -4,7 +4,7 @@ Installing trytond_stock_supply_forecast
 Prerequisites
 -------------
 
- * Python 2.7 or later (http://www.python.org/)
+ * Python 3.4 or later (http://www.python.org/)
  * trytond (http://www.tryton.org/)
  * trytond_stock_supply (http://www.tryton.org/)
  * trytond_stock_forecast (http://www.tryton.org/)
