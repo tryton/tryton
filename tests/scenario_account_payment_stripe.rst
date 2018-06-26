@@ -72,7 +72,7 @@ Create approved payment::
     >>> payment.description = 'Testing'
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
 
 Checkout the payment::
 
@@ -99,7 +99,7 @@ Process the payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    u'processing'
+    'processing'
 
 Run cron::
 
@@ -113,7 +113,7 @@ Run cron::
 
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> bool(payment.stripe_captured)
     True
 
@@ -125,7 +125,7 @@ Create failing payment::
     True
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
     >>> action_id = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
     >>> bool(payment.stripe_checkout_id)
@@ -144,13 +144,13 @@ Create failing payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    u'processing'
+    'processing'
     >>> cron_charge.click('run_once')
     >>> payment.reload()
     >>> payment.state
-    u'failed'
+    'failed'
     >>> payment.stripe_error_code
-    u'card_declined'
+    'card_declined'
 
 Create a customer::
 
@@ -203,15 +203,15 @@ Make payment with customer::
     >>> payment.stripe_customer_source = source_id
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    u'processing'
+    'processing'
     >>> cron_charge.click('run_once')
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
 
 Delete customer::
 
@@ -238,7 +238,7 @@ Create capture payment::
     >>> payment.stripe_capture = False
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
 
 Checkout the capture payment::
 
@@ -259,7 +259,7 @@ Process the capture payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    u'processing'
+    'processing'
 
 Run cron::
 
@@ -268,7 +268,7 @@ Run cron::
 
     >>> payment.reload()
     >>> payment.state
-    u'processing'
+    'processing'
     >>> bool(payment.stripe_captured)
     False
 
@@ -277,7 +277,7 @@ Capture lower amount::
     >>> payment.amount = Decimal('40')
     >>> payment.click('stripe_capture_')
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> bool(payment.stripe_captured)
     True
 
@@ -301,7 +301,7 @@ Simulate charge.refunded event with partial amount::
     >>> payment.amount
     Decimal('2.00')
     >>> payment.state
-    u'succeeded'
+    'succeeded'
 
 Simulate charge.refunded event with full amount::
 
@@ -323,4 +323,4 @@ Simulate charge.refunded event with full amount::
     >>> payment.amount
     Decimal('0.00')
     >>> payment.state
-    u'failed'
+    'failed'

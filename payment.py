@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import uuid
 import logging
-import urllib
+import urllib.request, urllib.parse, urllib.error
 from decimal import Decimal
 from itertools import groupby
 from operator import attrgetter
@@ -25,8 +25,7 @@ __all__ = ['Journal', 'Group', 'Payment', 'Account', 'Customer',
 logger = logging.getLogger(__name__)
 
 
-class Journal:
-    __metaclass__ = PoolMeta
+class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
 
     stripe_account = fields.Many2One(
@@ -45,8 +44,7 @@ class Journal:
             cls.process_method.selection.append(stripe_method)
 
 
-class Group:
-    __metaclass__ = PoolMeta
+class Group(metaclass=PoolMeta):
     __name__ = 'account.payment.group'
 
     @classmethod
@@ -75,8 +73,7 @@ class Group:
         Payment.save(self.payments)
 
 
-class Payment:
-    __metaclass__ = PoolMeta
+class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
 
     stripe_journal = fields.Function(
@@ -382,7 +379,7 @@ class Payment:
                 logger.warning(str(e))
                 continue
             except stripe.error.StripeError as e:
-                payment.stripe_error_message = unicode(e)
+                payment.stripe_error_message = str(e)
                 if isinstance(e, stripe.error.CardError):
                     payment.stripe_error_code = e.code
                     payment.stripe_error_param = e.param
@@ -447,7 +444,7 @@ class Payment:
                 logger.warning(str(e))
                 continue
             except stripe.error.StripeError as e:
-                payment.stripe_error_message = unicode(e)
+                payment.stripe_error_message = str(e)
                 payment.save()
                 cls.fail([payment])
             except Exception:
@@ -522,7 +519,7 @@ class Account(ModelSQL, ModelView):
             'database_name': Transaction().database.name,
             }
         return 'https://' + HOSTNAME + (
-            urllib.quote(
+            urllib.parse.quote(
                 '/%(database_name)s/account_payment_stripe'
                 '/webhook/%(identifier)s'
                 % url_part))
@@ -817,7 +814,7 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                 logger.warning("Rate limit error")
                 continue
             except stripe.error.StripeError as e:
-                customer.stripe_error_message = unicode(e)
+                customer.stripe_error_message = str(e)
                 if isinstance(e, stripe.error.CardError):
                     customer.stripe_error_code = e.code
                     customer.stripe_error_param = e.param

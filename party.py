@@ -6,8 +6,7 @@ from trytond.model import fields
 __all__ = ['Party']
 
 
-class Party:
-    __metaclass__ = PoolMeta
+class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     stripe_customers = fields.One2Many(

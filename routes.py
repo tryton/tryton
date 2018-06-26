@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import json
 import logging
-import httplib
+import http.client
 
 import stripe
 from werkzeug.exceptions import abort
@@ -79,9 +79,9 @@ def webhooks_endpoint(request, pool, account):
             stripe.Webhook.construct_event(
                 request_body, sig_header, account.webhook_signing_secret)
         except ValueError:  # Invalid payload
-            abort(httplib.BAD_REQUEST)
+            abort(http.client.BAD_REQUEST)
         except stripe.error.SignatureVerificationError:
-            abort(httplib.BAD_REQUEST)
+            abort(http.client.BAD_REQUEST)
     else:
         logger.warn("Stripe signature ignored")
 
@@ -90,5 +90,5 @@ def webhooks_endpoint(request, pool, account):
     if result is None:
         logger.info("No callback for payload type '%s'", payload['type'])
     elif not result:
-        return Response(status=httplib.NOT_FOUND)
-    return Response(status=httplib.NO_CONTENT)
+        return Response(status=http.client.NOT_FOUND)
+    return Response(status=http.client.NO_CONTENT)

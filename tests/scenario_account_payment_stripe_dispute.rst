@@ -66,7 +66,7 @@ Create fully disputed payment::
     >>> payment.description = 'Testing'
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
 
     >>> _ = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
@@ -89,7 +89,7 @@ Create fully disputed payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    u'processing'
+    'processing'
 
     >>> Cron = Model.get('ir.cron')
     >>> cron_charge, = Cron.find([
@@ -101,7 +101,7 @@ Create fully disputed payment::
 
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> bool(payment.stripe_captured)
     True
 
@@ -123,11 +123,11 @@ Simulate charge.dispute.created event::
     [True]
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> payment.stripe_dispute_reason
-    u'customer_initiated'
+    'customer_initiated'
     >>> payment.stripe_dispute_status
-    u'needs_response'
+    'needs_response'
 
 Simulate charge.dispute.closed event::
 
@@ -147,11 +147,11 @@ Simulate charge.dispute.closed event::
     [True]
     >>> payment.reload()
     >>> payment.state
-    u'failed'
+    'failed'
     >>> payment.stripe_dispute_reason
-    u'customer_initiated'
+    'customer_initiated'
     >>> payment.stripe_dispute_status
-    u'lost'
+    'lost'
 
 Create partial disputed payment::
 
@@ -164,7 +164,7 @@ Create partial disputed payment::
     >>> payment.description = 'Testing'
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
 
     >>> _ = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
@@ -187,7 +187,7 @@ Create partial disputed payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    u'processing'
+    'processing'
 
     >>> Cron = Model.get('ir.cron')
     >>> cron_charge, = Cron.find([
@@ -199,7 +199,7 @@ Create partial disputed payment::
 
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> bool(payment.stripe_captured)
     True
 
@@ -221,13 +221,13 @@ Simulate charge.dispute.closed event::
     [True]
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> payment.amount
     Decimal('30.00')
     >>> payment.stripe_dispute_reason
-    u'general'
+    'general'
     >>> payment.stripe_dispute_status
-    u'lost'
+    'lost'
 
 Create won disputed payment::
 
@@ -240,7 +240,7 @@ Create won disputed payment::
     >>> payment.description = 'Testing'
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
 
     >>> _ = payment.click('stripe_checkout')
     >>> checkout = Wizard('account.payment.stripe.checkout', [payment])
@@ -263,7 +263,7 @@ Create won disputed payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    u'processing'
+    'processing'
 
     >>> Cron = Model.get('ir.cron')
     >>> cron_charge, = Cron.find([
@@ -275,7 +275,7 @@ Create won disputed payment::
 
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> bool(payment.stripe_captured)
     True
 
@@ -297,10 +297,10 @@ Simulate charge.dispute.closed event::
     [True]
     >>> payment.reload()
     >>> payment.state
-    u'succeeded'
+    'succeeded'
     >>> payment.amount
     Decimal('42')
     >>> payment.stripe_dispute_reason
-    u'general'
+    'general'
     >>> payment.stripe_dispute_status
-    u'won'
+    'won'
