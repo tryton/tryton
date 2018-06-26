@@ -3,7 +3,7 @@
 
 import unittest
 
-from mock import patch
+from unittest.mock import patch
 
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite

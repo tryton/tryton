@@ -9,8 +9,7 @@ from trytond.wizard import Wizard, StateView, StateTransition, Button
 __all__ = ['Production', 'SplitProduction', 'SplitProductionStart']
 
 
-class Production:
-    __metaclass__ = PoolMeta
+class Production(metaclass=PoolMeta):
     __name__ = 'production'
 
     @classmethod
