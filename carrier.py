@@ -9,8 +9,7 @@ from trytond.pyson import Eval
 __all__ = ['Carrier']
 
 
-class Carrier:
-    __metaclass__ = PoolMeta
+class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
     percentage = fields.Numeric('Percentage', digits=(16, 8),
         states={

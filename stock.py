@@ -28,8 +28,7 @@ def _percentage_amount(lines, company):
     return amount
 
 
-class ShipmentIn:
-    __metaclass__ = PoolMeta
+class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
     def _get_carrier_context(self):
@@ -46,8 +45,7 @@ class ShipmentIn:
         return context
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     def _get_carrier_context(self):
