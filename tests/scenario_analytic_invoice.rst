@@ -111,7 +111,7 @@ Create invoice with analytic accounts::
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> analytic_account.reload()
     >>> analytic_account.credit
     Decimal('200.00')
@@ -137,7 +137,7 @@ Create invoice with an empty analytic account::
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> analytic_account.reload()
     >>> analytic_account.credit
     Decimal('200.00')
@@ -156,7 +156,7 @@ Credit invoice with refund::
     >>> credit.execute('credit')
     >>> invoice.reload()
     >>> invoice.state
-    u'paid'
+    'paid'
     >>> mandatory_analytic_account.reload()
     >>> mandatory_analytic_account.credit
     Decimal('240.00')

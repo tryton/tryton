@@ -8,8 +8,7 @@ from trytond.modules.analytic_account import AnalyticMixin
 __all__ = ['Asset']
 
 
-class Asset(AnalyticMixin):
-    __metaclass__ = PoolMeta
+class Asset(AnalyticMixin, metaclass=PoolMeta):
     __name__ = 'account.asset'
 
     @fields.depends('supplier_invoice_line', 'analytic_accounts')
