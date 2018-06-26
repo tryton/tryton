@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Invoice', 'InvoiceLine']
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
@@ -33,8 +32,7 @@ class Invoice:
         cls.lines.depends = list(set(cls.lines.depends) | add_remove_depends)
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     @classmethod
