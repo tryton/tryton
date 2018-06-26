@@ -253,7 +253,7 @@ class OrderPoint(ModelSQL, ModelView):
     @classmethod
     def search_location(cls, name, domain=None):
         ids = []
-        for type, field in cls._type2field().iteritems():
+        for type, field in cls._type2field().items():
             args = [('type', '=', type)]
             for _, operator, operand in domain:
                 args.append((field, operator, operand))

@@ -4,7 +4,7 @@ Installing trytond_stock_supply
 Prerequisites
 -------------
 
- * Python 2.7 or later (http://www.python.org/)
+ * Python 3.4 or later (http://www.python.org/)
  * python-sql (http://code.google.com/p/python-sql/)
  * trytond (http://www.tryton.org/)
  * trytond_party (http://www.tryton.org/)

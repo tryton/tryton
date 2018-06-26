@@ -82,7 +82,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                 ('overflowing_location', '!=', None),
                 ])
         id2location.update({l.id: l for l in implicit_locations})
-        location_ids = id2location.keys()
+        location_ids = list(id2location.keys())
 
         # ordered by ids to speedup reduce_ids in products_by_location
         if implicit_locations:
@@ -91,7 +91,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                     ], order=[('id', 'ASC')])
             product_ids = [p.id for p in products]
         else:
-            product_ids = id2product.keys()
+            product_ids = list(id2product.keys())
             product_ids.sort()
 
         with Transaction().set_context(forecast=True, stock_date_end=today):
@@ -105,7 +105,7 @@ class ShipmentInternal(ModelSQL, ModelView):
         while date <= end_date:
             # Create a list of moves to create
             moves = {}
-            for location in id2location.itervalues():
+            for location in id2location.values():
                 for product_id in product_ids:
                     qty = current_qties.get((location.id, product_id), 0)
                     op = product2op.get((location.id, product_id))
@@ -143,12 +143,12 @@ class ShipmentInternal(ModelSQL, ModelView):
 
             # Group moves by {from,to}_location
             to_create = {}
-            for key, qty in moves.iteritems():
+            for key, qty in moves.items():
                 from_location, to_location, product = key
                 to_create.setdefault(
                     (from_location, to_location), []).append((product, qty))
             # Create shipments and moves
-            for locations, moves in to_create.iteritems():
+            for locations, moves in to_create.items():
                 from_location, to_location = locations
                 shipment = cls(
                     from_location=from_location,
@@ -185,7 +185,7 @@ class ShipmentInternal(ModelSQL, ModelView):
                     location_ids,
                     with_childs=True,
                     grouping_filter=(product_ids,))
-            for key, qty in pbl.iteritems():
+            for key, qty in pbl.items():
                 current_qties[key] += qty
 
         if shipments:

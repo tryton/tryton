@@ -14,8 +14,7 @@ __all__ = ['PurchaseRequest', 'PurchaseConfiguration',
 supply_period = fields.TimeDelta("Supply Period")
 
 
-class PurchaseConfiguration:
-    __metaclass__ = PoolMeta
+class PurchaseConfiguration(metaclass=PoolMeta):
     __name__ = 'purchase.configuration'
     supply_period = fields.MultiValue(supply_period)
 
@@ -26,10 +25,9 @@ class PurchaseConfigurationSupplyPeriod(ModelSQL, ValueMixin):
     supply_period = supply_period
 
 
-class PurchaseRequest:
+class PurchaseRequest(metaclass=PoolMeta):
     'Purchase Request'
     __name__ = 'purchase.request'
-    __metaclass__ = PoolMeta
 
     @classmethod
     def __register__(cls, module_name):
@@ -107,7 +105,7 @@ class PurchaseRequest:
 
         # compute requests
         new_requests = []
-        for dates, dates_products in date2products.iteritems():
+        for dates, dates_products in date2products.items():
             min_date, max_date = dates
             for sub_products in grouped_slice(dates_products):
                 sub_products = list(sub_products)
@@ -202,7 +200,7 @@ class PurchaseRequest:
                         'quantity': quantity,
                         })
 
-        for i in existing_req.itervalues():
+        for i in existing_req.values():
             i.sort(lambda r, s: cmp(r['supply_date'], s['supply_date']))
 
         # Update new requests to take existing requests into account
@@ -348,7 +346,7 @@ class PurchaseRequest:
                     stock_date_end=current_date):
                 pbl = Product.products_by_location([location_id],
                     with_childs=True, grouping_filter=(product_ids,))
-            for key, qty in pbl.iteritems():
+            for key, qty in pbl.items():
                 _, product_id = key
                 current_qties[product_id] += qty
 

@@ -123,7 +123,7 @@ Create inventory to add enough quantity in Provisioning Location::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Execute internal supply::
 
@@ -131,18 +131,18 @@ Execute internal supply::
     >>> Wizard('stock.supply').execute('create_')
     >>> shipment, = ShipmentInternal.find([])
     >>> shipment.state
-    u'request'
+    'request'
     >>> len(shipment.moves)
     1
     >>> move, = shipment.moves
     >>> move.product.template.name
-    u'Product'
+    'Product'
     >>> move.quantity
     15.0
     >>> move.from_location.name
-    u'Provisioning Location'
+    'Provisioning Location'
     >>> move.to_location.code
-    u'STO'
+    'STO'
 
 Create negative quantity in Second Storage::
 
@@ -154,7 +154,7 @@ Create negative quantity in Second Storage::
     >>> move.to_location = lost_loc
     >>> move.click('do')
     >>> move.state
-    u'done'
+    'done'
 
 Execute internal supply::
 
@@ -162,15 +162,15 @@ Execute internal supply::
     >>> shipment, = ShipmentInternal.find(
     ...     [('to_location', '=', sec_storage_loc.id)])
     >>> shipment.state
-    u'request'
+    'request'
     >>> len(shipment.moves)
     1
     >>> move, = shipment.moves
     >>> move.product.template.name
-    u'Product'
+    'Product'
     >>> move.quantity
     10.0
     >>> move.from_location.name
-    u'Provisioning Location'
+    'Provisioning Location'
     >>> move.to_location.name
-    u'Second Storage'
+    'Second Storage'

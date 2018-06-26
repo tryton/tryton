@@ -10,8 +10,7 @@ from trytond.pyson import Eval
 __all__ = ['Location', 'LocationLeadTime']
 
 
-class Location:
-    __metaclass__ = PoolMeta
+class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 
     provisioning_location = fields.Many2One('stock.location',
@@ -38,8 +37,7 @@ class Location:
         help='Leave empty for no default overflowing')
 
 
-class LocationLeadTime:
-    __metaclass__ = PoolMeta
+class LocationLeadTime(metaclass=PoolMeta):
     __name__ = 'stock.location.lead_time'
 
     @classmethod

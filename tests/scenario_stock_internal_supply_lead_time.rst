@@ -86,7 +86,7 @@ Create inventory to add enough quantity in first warehouse::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Create needs for tomorrow in second warehouse::
 
@@ -102,7 +102,7 @@ Create needs for tomorrow in second warehouse::
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')
     >>> shipment.state
-    u'waiting'
+    'waiting'
 
 Execute internal supply::
 
@@ -116,7 +116,7 @@ Execute internal supply::
     >>> first.planned_date == today
     True
     >>> first.state
-    u'request'
+    'request'
     >>> len(first.moves)
     1
     >>> move, = first.moves
@@ -130,7 +130,7 @@ Execute internal supply::
     >>> second.planned_date == tomorrow
     True
     >>> second.state
-    u'request'
+    'request'
     >>> len(second.moves)
     1
     >>> move, = second.moves

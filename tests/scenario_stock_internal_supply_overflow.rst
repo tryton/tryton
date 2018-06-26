@@ -95,7 +95,7 @@ Execute internal supply::
     ...         ('to_location', '=', overflow_loc.id),
     ...         ])
     >>> shipment.state
-    u'request'
+    'request'
     >>> move, = shipment.moves
     >>> move.product.id == product.id
     True
@@ -133,7 +133,7 @@ Execute internal supply::
     >>> shipment, = ShipmentInternal.find(
     ...     [('from_location', '=', sec_overflowed_storage_loc.id)])
     >>> shipment.state
-    u'request'
+    'request'
     >>> move, = shipment.moves
     >>> move.product.id == product.id
     True
