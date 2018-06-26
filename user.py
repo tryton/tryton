@@ -5,8 +5,7 @@ import hashlib
 import random
 import string
 import time
-import urllib
-import urlparse
+import urllib.parse
 from email.header import Header
 
 try:
@@ -51,17 +50,17 @@ def _send_email(from_, users, email_func):
 
 
 def _add_params(url, **params):
-    parts = urlparse.urlsplit(url)
-    query = urlparse.parse_qsl(parts.query)
+    parts = urllib.parse.urlsplit(url)
+    query = urllib.parse.parse_qsl(parts.query)
     for key, value in sorted(params.items()):
         query.append((key, value))
     parts = list(parts)
-    parts[3] = urllib.urlencode(query)
-    return urlparse.urlunsplit(parts)
+    parts[3] = urllib.parse.urlencode(query)
+    return urllib.parse.urlunsplit(parts)
 
 
 def _extract_params(url):
-    return urlparse.parse_qsl(urlparse.urlsplit(url).query)
+    return urllib.parse.parse_qsl(urllib.parse.urlsplit(url).query)
 
 
 class User(DeactivableMixin, ModelSQL, ModelView):
@@ -213,35 +212,35 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     def hash_sha1(cls, password):
         salt = ''.join(random.sample(string.ascii_letters + string.digits, 8))
         salted_password = password + salt
-        if isinstance(salted_password, unicode):
+        if isinstance(salted_password, str):
             salted_password = salted_password.encode('utf-8')
         hash_ = hashlib.sha1(salted_password).hexdigest()
         return '$'.join(['sha1', hash_, salt])
 
     @classmethod
     def check_sha1(cls, password, hash_):
-        if isinstance(password, unicode):
+        if isinstance(password, str):
             password = password.encode('utf-8')
         hash_method, hash_, salt = hash_.split('$', 2)
         salt = salt or ''
-        if isinstance(salt, unicode):
+        if isinstance(salt, str):
             salt = salt.encode('utf-8')
         assert hash_method == 'sha1'
         return hash_ == hashlib.sha1(password + salt).hexdigest()
 
     @classmethod
     def hash_bcrypt(cls, password):
-        if isinstance(password, unicode):
+        if isinstance(password, str):
             password = password.encode('utf-8')
         hash_ = bcrypt.hashpw(password, bcrypt.gensalt()).decode('utf-8')
         return '$'.join(['bcrypt', hash_])
 
     @classmethod
     def check_bcrypt(cls, password, hash_):
-        if isinstance(password, unicode):
+        if isinstance(password, str):
             password = password.encode('utf-8')
         hash_method, hash_ = hash_.split('$', 1)
-        if isinstance(hash_, unicode):
+        if isinstance(hash_, str):
             hash_ = hash_.encode('utf-8')
         assert hash_method == 'bcrypt'
         return hash_ == bcrypt.hashpw(password, hash_)
@@ -279,10 +278,10 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def validate_email_url(cls, url):
-        parts = urlparse.urlsplit(url)
+        parts = urllib.parse.urlsplit(url)
         tokens = filter(
-            None, urlparse.parse_qs(parts.query).get('token', [None]))
-        return cls.validate_email_token(tokens)
+            None, urllib.parse.parse_qs(parts.query).get('token', [None]))
+        return cls.validate_email_token(list(tokens))
 
     @classmethod
     def validate_email_token(cls, tokens):
@@ -304,7 +303,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         def reset(user):
             return not (user.reset_password_token_expire
                 and user.reset_password_token_expire > now)
-        users = filter(reset, users)
+        users = list(filter(reset, users))
 
         for user in users:
             user.set_reset_password_token()
@@ -334,8 +333,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def set_password_url(cls, url, password):
-        parts = urlparse.urlsplit(url)
-        query = urlparse.parse_qs(parts.query)
+        parts = urllib.parse.urlsplit(url)
+        query = urllib.parse.parse_qs(parts.query)
         email = query.get('email', [None])[0]
         token = query.get('token', [None])[0]
         return cls.set_password_token(email, token, password)
