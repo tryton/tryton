@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import division
 
 import datetime
 
@@ -101,7 +100,7 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
                 id2name[id_] = name
                 id2parent[id_] = parent
 
-            for id_, name in id2name.iteritems():
+            for id_, name in id2name.items():
                 parent = id2parent[id_]
                 while parent:
                     name = '%s\\%s' % (id2name[parent], name)

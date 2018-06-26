@@ -5,8 +5,7 @@ from trytond.pool import PoolMeta
 __all__ = ['UserApplication']
 
 
-class UserApplication:
-    __metaclass__ = PoolMeta
+class UserApplication(metaclass=PoolMeta):
     __name__ = 'res.user.application'
 
     @classmethod
