@@ -119,14 +119,14 @@ Fill supplier consignment location::
     >>> move.to_location = supplier_consignment_loc
     >>> shipment.click('wait')
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 Use supplier consignment stock::
 
@@ -140,14 +140,14 @@ Use supplier consignment stock::
     >>> move.to_location = storage_loc
     >>> shipment.click('wait')
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 Check supplier invoice line::
 
@@ -199,14 +199,14 @@ Fill customer consignment location::
     >>> move.to_location = customer_consignment_loc
     >>> shipment.click('wait')
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 Use customer consignment stock::
 
@@ -220,14 +220,14 @@ Use customer consignment stock::
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 Check customer invoice line::
 
@@ -258,17 +258,17 @@ Cancel supplier consignment stock::
     >>> move.to_location = storage_loc
     >>> shipment.click('wait')
     >>> shipment.state
-    u'waiting'
+    'waiting'
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> move, = shipment.moves
     >>> bool(move.origin)
     True
     >>> shipment.click('cancel')
     >>> shipment.state
-    u'cancel'
+    'cancel'
     >>> move, = shipment.moves
     >>> bool(move.origin)
     False

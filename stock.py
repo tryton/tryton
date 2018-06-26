@@ -12,8 +12,7 @@ __all__ = ['Location', 'LocationLeadTime',
     'Move', 'ShipmentInternal', 'Inventory', 'OrderPoint']
 
 
-class Location:
-    __metaclass__ = PoolMeta
+class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 
     consignment_party = fields.Many2One(
@@ -32,8 +31,7 @@ class Location:
         return domain
 
 
-class LocationLeadTime:
-    __metaclass__ = PoolMeta
+class LocationLeadTime(metaclass=PoolMeta):
     __name__ = 'stock.location.lead_time'
 
     @classmethod
@@ -57,10 +55,10 @@ def set_origin_consignment(func):
                 if line:
                     lines[move] = line
         if lines:
-            InvoiceLine.save(lines.values())
-            for move, line in lines.iteritems():
+            InvoiceLine.save(list(lines.values()))
+            for move, line in lines.items():
                 move.origin = line
-            cls.save(lines.keys())
+            cls.save(list(lines.keys()))
         return func(cls, moves)
     return wrapper
 
@@ -84,8 +82,7 @@ def unset_origin_consignment(func):
     return wrapper
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     @classmethod
@@ -245,8 +242,7 @@ class Move:
         super(Move, cls).cancel(moves)
 
 
-class ShipmentInternal:
-    __metaclass__ = PoolMeta
+class ShipmentInternal(metaclass=PoolMeta):
     __name__ = 'stock.shipment.internal'
 
     @classmethod
@@ -271,8 +267,7 @@ class ShipmentInternal:
             pattern=pattern)
 
 
-class Inventory:
-    __metaclass__ = PoolMeta
+class Inventory(metaclass=PoolMeta):
     __name__ = 'stock.inventory'
 
     @classmethod
@@ -284,8 +279,7 @@ class Inventory:
             ]
 
 
-class OrderPoint:
-    __metaclass__ = PoolMeta
+class OrderPoint(metaclass=PoolMeta):
     __name__ = 'stock.order_point'
 
     @classmethod
