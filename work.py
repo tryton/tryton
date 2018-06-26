@@ -17,8 +17,7 @@ from trytond.modules.product import price_digits
 __all__ = ['Work']
 
 
-class Work:
-    __metaclass__ = PoolMeta
+class Work(metaclass=PoolMeta):
     __name__ = 'project.work'
     product = fields.Many2One('product.product', 'Product',
         domain=[
@@ -89,7 +88,7 @@ class Work:
 
         # Purchase cost
         if hasattr(cls, 'purchase_lines'):
-            for work_id, cost in cls._purchase_cost(works).iteritems():
+            for work_id, cost in cls._purchase_cost(works).items():
                 costs[work_id] += cost
 
         for work in works:
@@ -136,10 +135,10 @@ class Work:
                     where=where))
             work2currency.update(cursor.fetchall())
 
-        currencies = Currency.browse(set(work2currency.itervalues()))
+        currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}
 
-        invoice_lines = InvoiceLine.browse(iline2work.keys())
+        invoice_lines = InvoiceLine.browse(list(iline2work.keys()))
         for invoice_line in invoice_lines:
             invoice = invoice_line.invoice
             work_id = iline2work[invoice_line.id]
