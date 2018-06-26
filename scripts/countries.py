@@ -5,12 +5,12 @@
 import sys
 import pycountry
 
-sys.stdout.write(u'<?xml version="1.0"?>\n')
-sys.stdout.write(u'<tryton>\n')
-sys.stdout.write(u'    <data skiptest="1" grouped="1">\n')
+sys.stdout.write('<?xml version="1.0"?>\n')
+sys.stdout.write('<tryton>\n')
+sys.stdout.write('    <data skiptest="1" grouped="1">\n')
 
 for country in pycountry.countries:
-    record = u'''
+    record = '''
         <record model="country.country" id="%s">
             <field name="name">%s</field>
             <field name="code">%s</field>
@@ -19,12 +19,12 @@ for country in pycountry.countries:
         </record>\n''' % (country.alpha_2.lower(), country.name,
                 country.alpha_2, country.alpha_3, country.numeric)
     sys.stdout.write(record.encode('utf-8'))
-sys.stdout.write(u'    </data>\n')
+sys.stdout.write('    </data>\n')
 
 subdivision_codes = {s.code.lower() for s in pycountry.subdivisions}
 existing_parents = set()
 while existing_parents < subdivision_codes:
-    sys.stdout.write(u'    <data skiptest="1" grouped="1">\n')
+    sys.stdout.write('    <data skiptest="1" grouped="1">\n')
     new_parents = set()
     for subdivision in pycountry.subdivisions:
         if (subdivision.code.lower() in existing_parents
@@ -33,7 +33,7 @@ while existing_parents < subdivision_codes:
                     existing_parents)):
             continue
         new_parents.add(subdivision.code.lower())
-        record = u'''
+        record = '''
         <record model="country.subdivision" id="%s">
             <field name="name">%s</field>
             <field name="code">%s</field>
@@ -41,15 +41,15 @@ while existing_parents < subdivision_codes:
                     subdivision.name, subdivision.code,
                     subdivision.type.lower())
         if subdivision.parent_code:
-            record += u'''\
+            record += '''\
             <field name="parent" ref="%s"/>\n''' % \
                 subdivision.parent.code.lower()
-        record += u'''\
+        record += '''\
             <field name="country" ref="%s"/>
         </record>\n''' % subdivision.country.alpha_2.lower()
 
         sys.stdout.write(record.encode('utf-8'))
-    sys.stdout.write(u'    </data>\n')
+    sys.stdout.write('    </data>\n')
     existing_parents |= new_parents
 
-sys.stdout.write(u'</tryton>\n')
+sys.stdout.write('</tryton>\n')

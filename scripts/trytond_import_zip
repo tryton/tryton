@@ -76,16 +76,14 @@ def import_(data):
             widgets=[SimpleProgress(), Bar(), ETA()])
     else:
         pbar = iter
-    if sys.version_info < (3,):
-        f = BytesIO(data)
-    else:
-        f = StringIO(data.decode('utf-8'))
+    f = StringIO(data.decode('utf-8'))
     for row in pbar(list(csv.DictReader(
                     f, fieldnames=_fieldnames, delimiter='\t'))):
         country = get_country(row['country'])
         subdivision = get_subdivision(row['country'], row['code1'])
         Zip(country=country, subdivision=subdivision, zip=row['postal'],
             city=row['place']).save()
+
 
 _fieldnames = ['country', 'postal', 'place', 'name1', 'code1',
     'name2', 'code2', 'name3', 'code3', 'latitude', 'longitude', 'accuracy']
@@ -99,6 +97,7 @@ def main(database, codes, config_file=None):
         code = code.upper()
         clean(code)
         import_(fetch(code))
+
 
 if __name__ == '__main__':
     parser = ArgumentParser()
