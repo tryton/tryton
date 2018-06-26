@@ -15,8 +15,7 @@ from trytond.modules.product import price_digits
 __all__ = ['ShipmentIn', 'ShipmentInReturn', 'Move', 'Location']
 
 
-class ShipmentIn:
-    __metaclass__ = PoolMeta
+class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
     @classmethod
@@ -83,8 +82,7 @@ class ShipmentIn:
         return super(ShipmentIn, cls).draft(shipments)
 
 
-class ShipmentInReturn:
-    __metaclass__ = PoolMeta
+class ShipmentInReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
 
     @classmethod
@@ -166,8 +164,7 @@ class ShipmentInReturn:
         return super(ShipmentInReturn, cls).draft(shipments)
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     purchase = fields.Function(fields.Many2One('purchase.purchase', 'Purchase',
             states={
@@ -355,8 +352,7 @@ class Move:
                     Purchase.process(purchases)
 
 
-class Location:
-    __metaclass__ = PoolMeta
+class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 
     supplier_return_location = fields.Many2One(

@@ -92,6 +92,6 @@ Change the party::
     >>> modify_header.execute('modify')
 
     >>> purchase.party.name
-    u'Another Supplier'
+    'Another Supplier'
     >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
     (Decimal('15.00'), Decimal('0'), Decimal('15.00'))

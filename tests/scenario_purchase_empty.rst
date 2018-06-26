@@ -37,7 +37,7 @@ Create empty purchase::
     >>> purchase.party = supplier
     >>> purchase.click('quote')
     >>> purchase.state
-    u'quotation'
+    'quotation'
     >>> purchase.untaxed_amount
     Decimal('0')
     >>> purchase.tax_amount
@@ -46,17 +46,17 @@ Create empty purchase::
     Decimal('0')
     >>> purchase.click('confirm')
     >>> purchase.state
-    u'confirmed'
+    'confirmed'
     >>> purchase.click('process')
     >>> purchase.state
-    u'done'
+    'done'
     >>> purchase.shipment_state
-    u'none'
+    'none'
     >>> len(purchase.moves)
     0
     >>> len(purchase.shipment_returns)
     0
     >>> purchase.invoice_state
-    u'none'
+    'none'
     >>> len(purchase.invoices)
     0

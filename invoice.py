@@ -26,8 +26,7 @@ def process_purchase(func):
     return wrapper
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
     purchase_exception_state = fields.Function(fields.Selection([
         ('', ''),
@@ -110,8 +109,7 @@ class Invoice:
         super(Invoice, cls).cancel(invoices)
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     @classmethod

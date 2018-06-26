@@ -65,7 +65,7 @@ def search_shipments_returns(model_name):
             return [('lines.moves.shipment' + nested,)
                 + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
         else:
-            if isinstance(clause[2], basestring):
+            if isinstance(clause[2], str):
                 target = 'rec_name'
             else:
                 target = 'id'
@@ -471,7 +471,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             for line in self.lines:
                 self.untaxed_amount += getattr(line, 'amount', None) or 0
             taxes = self._get_taxes()
-            self.tax_amount = sum(t['amount'] for t in taxes.itervalues())
+            self.tax_amount = sum(t['amount'] for t in taxes.values())
         if self.currency:
             self.untaxed_amount = self.currency.round(self.untaxed_amount)
             self.tax_amount = self.currency.round(self.tax_amount)
@@ -498,7 +498,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         return taxable_lines
 
     def get_tax_amount(self):
-        taxes = self._get_taxes().itervalues()
+        taxes = iter(self._get_taxes().values())
         return sum((tax['amount'] for tax in taxes), Decimal(0))
 
     @classmethod
@@ -538,7 +538,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             'tax_amount': tax_amount,
             'total_amount': total_amount,
             }
-        for key in result.keys():
+        for key in list(result.keys()):
             if key not in names:
                 del result[key]
         return result
@@ -1342,10 +1342,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in self.moves
                     if m.state != 'cancel'))
-            if dates:
-                return min(dates)
-            else:
-                return
+            return min(dates, default=None)
         delivery_date = None
         if self.delivery_date_edit:
             delivery_date = self.delivery_date_store

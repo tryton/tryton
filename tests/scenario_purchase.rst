@@ -125,7 +125,7 @@ Create an Inventory::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Purchase 5 products::
 
@@ -157,11 +157,11 @@ Purchase 5 products::
     >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
     (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
     >>> purchase.state
-    u'processing'
+    'processing'
     >>> purchase.shipment_state
-    u'waiting'
+    'waiting'
     >>> purchase.invoice_state
-    u'waiting'
+    'waiting'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
     >>> invoice, = purchase.invoices
@@ -189,9 +189,9 @@ Post invoice and check no new invoices::
     >>> invoice.click('post')
     >>> purchase.reload()
     >>> purchase.shipment_state
-    u'waiting'
+    'waiting'
     >>> purchase.invoice_state
-    u'waiting'
+    'waiting'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 1)
 
@@ -217,11 +217,11 @@ Purchase 5 products with an invoice method 'on shipment'::
     >>> purchase.click('confirm')
     >>> purchase.click('process')
     >>> purchase.state
-    u'processing'
+    'processing'
     >>> purchase.shipment_state
-    u'waiting'
+    'waiting'
     >>> purchase.invoice_state
-    u'none'
+    'none'
     >>> len(purchase.moves), len(purchase.shipment_returns), len(purchase.invoices)
     (2, 0, 0)
 
@@ -250,17 +250,17 @@ Validate Shipments::
     >>> shipment.click('done')
     >>> purchase.reload()
     >>> purchase.shipment_state
-    u'received'
+    'received'
     >>> len(purchase.shipments), len(purchase.shipment_returns)
     (1, 0)
 
 Open supplier invoice::
 
     >>> purchase.invoice_state
-    u'waiting'
+    'waiting'
     >>> invoice, = purchase.invoices
     >>> invoice.type
-    u'in'
+    'in'
     >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
     ...     key=lambda l: l.quantity or 0)
     >>> for line in invoice.lines:
@@ -289,9 +289,9 @@ Create the report::
     >>> purchase_report = Report('purchase.purchase')
     >>> ext, _, _, name = purchase_report.execute([purchase], {})
     >>> ext
-    u'odt'
+    'odt'
     >>> name
-    u'Purchase'
+    'Purchase'
 
 Create a Return::
 
@@ -311,11 +311,11 @@ Create a Return::
     >>> return_.click('confirm')
     >>> return_.click('process')
     >>> return_.state
-    u'processing'
+    'processing'
     >>> return_.shipment_state
-    u'waiting'
+    'waiting'
     >>> return_.invoice_state
-    u'none'
+    'none'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 1, 0)
@@ -325,30 +325,30 @@ Check Return Shipments::
     >>> ShipmentReturn = Model.get('stock.shipment.in.return')
     >>> ship_return, = return_.shipment_returns
     >>> ship_return.state
-    u'waiting'
+    'waiting'
     >>> move_return, = ship_return.moves
     >>> move_return.product.rec_name
-    u'product'
+    'product'
     >>> move_return.quantity
     4.0
     >>> ship_return.click('assign_try')
     True
     >>> ship_return.click('done')
     >>> ship_return.state
-    u'done'
+    'done'
     >>> return_.reload()
     >>> return_.state
-    u'processing'
+    'processing'
     >>> return_.shipment_state
-    u'received'
+    'received'
     >>> return_.invoice_state
-    u'waiting'
+    'waiting'
 
 Open supplier credit note::
 
     >>> credit_note, = return_.invoices
     >>> credit_note.type
-    u'in'
+    'in'
     >>> len(credit_note.lines)
     1
     >>> sum(l.quantity for l in credit_note.lines)
@@ -378,11 +378,11 @@ Mixing return and purchase::
     >>> mix.click('confirm')
     >>> mix.click('process')
     >>> mix.state
-    u'processing'
+    'processing'
     >>> mix.shipment_state
-    u'waiting'
+    'waiting'
     >>> mix.invoice_state
-    u'waiting'
+    'waiting'
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
     (2, 1, 1)
 
@@ -408,7 +408,7 @@ Checking Shipments::
     >>> mix_return.click('done')
     >>> move_return, = mix_return.moves
     >>> move_return.product.rec_name
-    u'product'
+    'product'
     >>> move_return.quantity
     2.0
 
@@ -417,7 +417,7 @@ Checking the invoice::
     >>> mix.reload()
     >>> mix_invoice, = mix.invoices
     >>> mix_invoice.type
-    u'in'
+    'in'
     >>> len(mix_invoice.lines)
     3
     >>> sorted(l.quantity for l in mix_invoice.lines if l.quantity)
@@ -447,11 +447,11 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix.click('confirm')
     >>> mix.click('process')
     >>> mix.state
-    u'processing'
+    'processing'
     >>> mix.shipment_state
-    u'waiting'
+    'waiting'
     >>> mix.invoice_state
-    u'none'
+    'none'
     >>> len(mix.moves), len(mix.shipment_returns), len(mix.invoices)
     (2, 1, 0)
 
@@ -477,7 +477,7 @@ Checking Shipments::
     >>> mix_return.click('done')
     >>> move_return, = mix_return.moves
     >>> move_return.product.rec_name
-    u'product'
+    'product'
     >>> move_return.quantity
     3.0
 
@@ -494,11 +494,11 @@ Purchase services::
     >>> service_purchase.click('confirm')
     >>> service_purchase.click('process')
     >>> service_purchase.state
-    u'processing'
+    'processing'
     >>> service_purchase.shipment_state
-    u'none'
+    'none'
     >>> service_purchase.invoice_state
-    u'waiting'
+    'waiting'
     >>> service_invoice, = service_purchase.invoices
 
 Pay the service invoice::
@@ -511,17 +511,17 @@ Pay the service invoice::
     >>> pay.execute('choice')
     >>> service_invoice.reload()
     >>> service_invoice.state
-    u'paid'
+    'paid'
 
 Check service purchase states::
 
     >>> service_purchase.reload()
     >>> service_purchase.invoice_state
-    u'paid'
+    'paid'
     >>> service_purchase.shipment_state
-    u'none'
+    'none'
     >>> service_purchase.state
-    u'done'
+    'done'
 
 Create a purchase to be invoiced on shipment partially and check correctly
 linked to invoices::
@@ -556,7 +556,7 @@ linked to invoices::
     >>> stock_move.quantity
     5.0
     >>> stock_move.state
-    u'done'
+    'done'
 
 Create a purchase to be invoiced on order, partially send it and check
 correctly linked to invoices::
@@ -592,11 +592,11 @@ correctly linked to invoices::
     >>> draft_stock_move.quantity
     2.0
     >>> draft_stock_move.state
-    u'draft'
+    'draft'
     >>> stock_move.quantity
     8.0
     >>> stock_move.state
-    u'done'
+    'done'
 
 Deleting a line from a invoice should recreate it::
 
