@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 from collections import deque, defaultdict
+from functools import reduce
 from heapq import heappop, heappush
 
 from trytond.model import ModelSQL, fields, tree
@@ -17,8 +18,7 @@ def intfloor(x):
     return int(round(x, 4))
 
 
-class Work(tree(parent='successors')):
-    __metaclass__ = PoolMeta
+class Work(tree(parent='successors'), metaclass=PoolMeta):
     __name__ = 'project.work'
     predecessors = fields.Many2Many('project.predecessor_successor',
         'successor', 'predecessor', 'Predecessors',
@@ -430,7 +430,7 @@ class Work(tree(parent='successors')):
         write_fields = ('early_start_time', 'early_finish_time',
                         'late_start_time', 'late_finish_time')
         to_write = []
-        for work, val in values.iteritems():
+        for work, val in values.items():
             write_cond = False
             for field in write_fields:
                 if field in val and getattr(work, field) != val[field]:
@@ -592,7 +592,7 @@ class PredecessorSuccessor(ModelSQL):
         super(PredecessorSuccessor, cls).write(*args)
 
         work_ids = [v for values in args[1::2]
-            for k, v in values.itervalues()
+            for k, v in values.values()
             if k in ('predecessor', 'successor')]
         works = Work.browse(work_ids)
         for work in works:
