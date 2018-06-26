@@ -258,7 +258,7 @@ class Product(
 
     @fields.depends('template')
     def on_change_template(self):
-        for name, field in self._fields.iteritems():
+        for name, field in self._fields.items():
             if isinstance(field, TemplateFunction):
                 if self.template:
                     value = getattr(self.template, name, None)
