@@ -6,8 +6,7 @@ from trytond.model import fields
 __all__ = ['Operation']
 
 
-class Operation:
-    __metaclass__ = PoolMeta
+class Operation(metaclass=PoolMeta):
     __name__ = 'production.routing.operation'
 
     timesheet_available = fields.Boolean('Available on timesheets')

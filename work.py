@@ -9,8 +9,7 @@ from trytond.pyson import Eval
 __all__ = ['Work']
 
 
-class Work:
-    __metaclass__ = PoolMeta
+class Work(metaclass=PoolMeta):
     __name__ = 'production.work'
 
     timesheet_works = fields.One2Many(
@@ -108,7 +107,7 @@ class Work:
             Timesheet.create(to_create)
         if to_delete:
             Timesheet.delete(to_delete)
-        for date, timesheets in to_write.iteritems():
+        for date, timesheets in list(to_write.items()):
             Timesheet.write(timesheets, {
                     'timesheet_end_date': date,
                     })
