@@ -38,8 +38,7 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         table.not_null_action('sequence', action='remove')
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     def set_product_location(self, field='to_location', **pattern):
@@ -53,8 +52,7 @@ class Move:
                 break
 
 
-class ShipmentIn:
-    __metaclass__ = PoolMeta
+class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
     @classmethod
@@ -66,8 +64,7 @@ class ShipmentIn:
         return move
 
 
-class ShipmentOutReturn:
-    __metaclass__ = PoolMeta
+class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
     @classmethod

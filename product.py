@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Product']
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     locations = fields.One2Many('stock.product.location', 'product',
         'Default Locations', states={

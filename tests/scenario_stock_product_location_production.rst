@@ -114,7 +114,7 @@ Create an Inventory::
     >>> inventory_line2.quantity = 6
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Make a production::
 
