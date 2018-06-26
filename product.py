@@ -9,8 +9,7 @@ __all__ = ['Template', 'Product']
 NON_MEASURABLE = ['service']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     length = fields.Float('Length',
@@ -172,6 +171,5 @@ class Template:
                     })]
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
