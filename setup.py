@@ -116,5 +116,4 @@ setup(name=name,
     zip_safe=False,
     test_suite='trytond.tests',
     test_loader='trytond.test_loader:Loader',
-    tests_require=['mock'],
     )

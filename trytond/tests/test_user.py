@@ -3,10 +3,7 @@
 import datetime
 import os
 import unittest
-try:
-    from unittest.mock import patch, ANY
-except ImportError:
-    from mock import patch, ANY
+from unittest.mock import patch, ANY
 
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
