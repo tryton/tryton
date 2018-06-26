@@ -120,8 +120,7 @@ class LotType(ModelSQL, ModelView):
     code = fields.Char('Code', required=True)
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     lot = fields.Many2One('stock.lot', 'Lot',
         domain=[
@@ -155,8 +154,7 @@ class Move:
             move.check_lot()
 
 
-class ShipmentIn:
-    __metaclass__ = PoolMeta
+class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
     @classmethod
@@ -167,8 +165,7 @@ class ShipmentIn:
         return move
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -211,8 +208,7 @@ class ShipmentOut:
             Move.write(*to_write)
 
 
-class ShipmentOutReturn:
-    __metaclass__ = PoolMeta
+class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
     @classmethod
@@ -224,8 +220,7 @@ class ShipmentOutReturn:
         return move
 
 
-class Period:
-    __metaclass__ = PoolMeta
+class Period(metaclass=PoolMeta):
     __name__ = 'stock.period'
     lot_caches = fields.One2Many('stock.period.cache.lot', 'period',
         'Lot Caches', readonly=True)
@@ -261,8 +256,7 @@ class PeriodCacheLot(ModelSQL, ModelView):
     internal_quantity = fields.Float('Internal Quantity', readonly=True)
 
 
-class Inventory:
-    __metaclass__ = PoolMeta
+class Inventory(metaclass=PoolMeta):
     __name__ = 'stock.inventory'
 
     @classmethod
@@ -270,8 +264,7 @@ class Inventory:
         return super(Inventory, cls).grouping() + ('lot', )
 
 
-class InventoryLine:
-    __metaclass__ = PoolMeta
+class InventoryLine(metaclass=PoolMeta):
     __name__ = 'stock.inventory.line'
     lot = fields.Many2One('stock.lot', 'Lot',
         domain=[

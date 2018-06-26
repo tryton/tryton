@@ -99,7 +99,7 @@ Assign the shipment with 2 lines of 7 products::
     ...     move.quantity = 7
     >>> shipment_out.click('assign_force')
     >>> shipment_out.state
-    u'assigned'
+    'assigned'
 
 Set 2 lots::
 
@@ -114,7 +114,7 @@ Pack the shipment::
 
     >>> shipment_out.click('pack')
     >>> shipment_out.state
-    u'packed'
+    'packed'
     >>> len(shipment_out.outgoing_moves)
     3
     >>> sorted([m.quantity for m in shipment_out.outgoing_moves])
@@ -124,4 +124,4 @@ Pack the shipment::
     ...     quantity = lot_quantities.setdefault(move.lot.number, 0)
     ...     lot_quantities[move.lot.number] += move.quantity
     >>> sorted(lot_quantities.items())
-    [(u'00001', 7.0), (u'00002', 7.0)]
+    [('00001', 7.0), ('00002', 7.0)]

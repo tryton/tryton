@@ -7,8 +7,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Template', 'Product', 'TemplateLotType']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
 
     # TODO to replace with a Multiple Selection
@@ -21,8 +20,7 @@ class Template:
         depends=['type'])
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
     def lot_is_required(self, from_, to):
