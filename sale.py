@@ -17,8 +17,7 @@ __all__ = ['Sale', 'SaleLine',
     'SaleExtra', 'SaleExtraLine']
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
     @classmethod
@@ -59,8 +58,7 @@ class Sale:
         self.lines = lines
 
 
-class SaleLine:
-    __metaclass__ = PoolMeta
+class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     extra = fields.Many2One('sale.extra.line', 'Extra', ondelete='RESTRICT')
