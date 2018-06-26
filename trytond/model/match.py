@@ -8,7 +8,7 @@ class MatchMixin(object):
         '''Match on pattern
         pattern is a dictionary with model field as key
         and matching value as value'''
-        for field, pattern_value in pattern.iteritems():
+        for field, pattern_value in pattern.items():
             value = getattr(self, field)
             if not match_none and value is None:
                 continue

@@ -46,7 +46,7 @@ class Icon(ModelSQL, ModelView):
                 order=[('sequence', 'ASC'), ('id', 'ASC')])):
             if icon.name not in icons:
                 icons[icon.name] = icon.id
-        return sorted((icon_id, name) for name, icon_id in icons.iteritems())
+        return sorted((icon_id, name) for name, icon_id in icons.items())
 
     def get_icon(self, name):
         path = os.path.join(self.module, self.path.replace('/', os.sep))

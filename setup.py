@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
@@ -18,6 +18,7 @@ def read(fname):
 def get_version():
     init = read(os.path.join('trytond', '__init__.py'))
     return re.search('__version__ = "([0-9.]*)"', init).group(1)
+
 
 version = get_version()
 major_version, minor_version, _ = version.split('.', 2)
@@ -83,7 +84,6 @@ setup(name=name,
         'Natural Language :: Slovenian',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -93,6 +93,7 @@ setup(name=name,
         ],
     platforms='any',
     license='GPL-3',
+    python_requires='>=3.4',
     install_requires=[
         'lxml >= 2.0',
         'relatorio[fodt] >= 0.7.0',
@@ -116,5 +117,4 @@ setup(name=name,
     test_suite='trytond.tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=['mock'],
-    use_2to3=True,
     )

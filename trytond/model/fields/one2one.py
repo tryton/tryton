@@ -23,7 +23,7 @@ class One2One(Many2Many):
         :return: a dictionary with ids as key and target id as value
         '''
         res = super(One2One, self).get(ids, model, name, values=values)
-        for i, vals in res.iteritems():
+        for i, vals in res.items():
             res[i] = vals[0] if vals else None
         return res
 
@@ -57,7 +57,7 @@ class One2One(Many2Many):
         Target = self.get_target()
         if isinstance(value, dict):
             value = Target(*value)
-        elif isinstance(value, (int, long)):
+        elif isinstance(value, int):
             value = Target(value)
         assert isinstance(value, (Target, type(None)))
         Field.__set__(self, inst, value)

@@ -87,6 +87,8 @@ class Function(Field):
         with Transaction().set_context(_check_access=False):
             method = getattr(Model, self.getter)
             instance_method = is_instance_method(Model, self.getter)
+            signature = inspect.signature(method)
+            uses_names = 'names' in signature.parameters
 
             def call(name):
                 records = Model.browse(ids)
@@ -96,13 +98,11 @@ class Function(Field):
                     return dict((r.id, method(r, name)) for r in records)
             if isinstance(name, list):
                 names = name
-                # Test is the function works with a list of names
-                if 'names' in inspect.getargspec(method)[0]:
+                if uses_names:
                     return call(names)
                 return dict((name, call(name)) for name in names)
             else:
-                # Test is the function works with a list of names
-                if 'names' in inspect.getargspec(method)[0]:
+                if uses_names:
                     name = [name]
                 return call(name)
 

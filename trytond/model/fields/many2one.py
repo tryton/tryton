@@ -101,7 +101,7 @@ class Many2One(Field):
         Target = self.get_target()
         if isinstance(value, dict):
             value = Target(**value)
-        elif isinstance(value, (int, long)):
+        elif isinstance(value, int):
             value = Target(value)
         assert isinstance(value, (Target, type(None)))
         super(Many2One, self).__set__(inst, value)
@@ -184,7 +184,7 @@ class Many2One(Field):
                         return ~expression
                     return expression
 
-                if isinstance(value, basestring):
+                if isinstance(value, str):
                     targets = Target.search([('rec_name', 'ilike', value)],
                         order=[])
                     ids = [t.id for t in targets]
@@ -212,7 +212,7 @@ class Many2One(Field):
                     return ~expression
                 return expression
 
-            if not isinstance(value, basestring):
+            if not isinstance(value, str):
                 return super(Many2One, self).convert_domain(domain, tables,
                     Model)
             else:

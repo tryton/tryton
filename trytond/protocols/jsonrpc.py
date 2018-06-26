@@ -41,7 +41,7 @@ JSONDecoder.register('timedelta',
 
 def _bytes_decoder(dct):
     cast = bytearray if bytes == str else bytes
-    return cast(base64.decodestring(dct['base64'].encode('utf-8')))
+    return cast(base64.decodebytes(dct['base64'].encode('utf-8')))
 JSONDecoder.register('bytes', _bytes_decoder)
 JSONDecoder.register('Decimal', lambda dct: Decimal(dct['decimal']))
 
@@ -93,7 +93,7 @@ JSONEncoder.register(datetime.timedelta,
         })
 _bytes_encoder = lambda o: {
     '__class__': 'bytes',
-    'base64': base64.encodestring(o).decode('utf-8'),
+    'base64': base64.encodebytes(o).decode('utf-8'),
     }
 JSONEncoder.register(bytes, _bytes_encoder)
 JSONEncoder.register(bytearray, _bytes_encoder)

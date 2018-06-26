@@ -28,7 +28,7 @@ class Dict(Field):
             data = value[name]
             if data:
                 # If stored as JSON conversion is done on backend
-                if isinstance(data, basestring):
+                if isinstance(data, str):
                     data = json.loads(data, object_hook=JSONDecoder())
                 dicts[value['id']] = data
         return dicts
@@ -86,4 +86,4 @@ class TranslatedDict(object):
         elif self.type_ == 'values':
             trans = {k['name']: dict(k['selection']) for k in keys}
             return {k: v if k not in trans else trans[k].get(v, v)
-                for k, v in value.iteritems()}
+                for k, v in value.items()}

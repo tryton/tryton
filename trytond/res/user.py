@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "User"
-from __future__ import division
+
 import copy
 import string
 import random
@@ -18,7 +18,7 @@ except ImportError:
 import ipaddress
 from email.header import Header
 from functools import wraps
-from itertools import groupby, ifilter
+from itertools import groupby
 from operator import attrgetter
 from ast import literal_eval
 
@@ -277,7 +277,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def validate_password(cls, password, users):
         password_b = password
-        if isinstance(password, unicode):
+        if isinstance(password, str):
             password_b = password.encode('utf-8')
         length = config.getint('password', 'length', default=0)
         if length > 0:
@@ -349,7 +349,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                     timestamp = session.write_date or session.create_date
                     return abs(timestamp - now) < timeout
                 result.update(dict((i, len(list(g)))
-                        for i, g in groupby(ifilter(filter_, sessions),
+                        for i, g in groupby(filter(filter_, sessions),
                             attrgetter('create_uid.id'))))
         return result
 
@@ -388,7 +388,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             args.extend((users, cls._convert_vals(values)))
         super(User, cls).write(*args)
         # Clean cursor cache as it could be filled by domain_get
-        for cache in Transaction().cache.itervalues():
+        for cache in Transaction().cache.values():
             if cls.__name__ in cache:
                 for user in all_users:
                     if user.id in cache[cls.__name__]:
@@ -685,35 +685,35 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     def hash_sha1(cls, password):
         salt = gen_password()
         salted_password = password + salt
-        if isinstance(salted_password, unicode):
+        if isinstance(salted_password, str):
             salted_password = salted_password.encode('utf-8')
         hash_ = hashlib.sha1(salted_password).hexdigest()
         return '$'.join(['sha1', hash_, salt])
 
     @classmethod
     def check_sha1(cls, password, hash_):
-        if isinstance(password, unicode):
+        if isinstance(password, str):
             password = password.encode('utf-8')
         hash_method, hash_, salt = hash_.split('$', 2)
         salt = salt or ''
-        if isinstance(salt, unicode):
+        if isinstance(salt, str):
             salt = salt.encode('utf-8')
         assert hash_method == 'sha1'
         return hash_ == hashlib.sha1(password + salt).hexdigest()
 
     @classmethod
     def hash_bcrypt(cls, password):
-        if isinstance(password, unicode):
+        if isinstance(password, str):
             password = password.encode('utf-8')
         hash_ = bcrypt.hashpw(password, bcrypt.gensalt()).decode('utf-8')
         return '$'.join(['bcrypt', hash_])
 
     @classmethod
     def check_bcrypt(cls, password, hash_):
-        if isinstance(password, unicode):
+        if isinstance(password, str):
             password = password.encode('utf-8')
         hash_method, hash_ = hash_.split('$', 1)
-        if isinstance(hash_, unicode):
+        if isinstance(hash_, str):
             hash_ = hash_.encode('utf-8')
         assert hash_method == 'bcrypt'
         return hash_ == bcrypt.hashpw(password, hash_)
@@ -751,11 +751,11 @@ class LoginAttempt(ModelSQL):
         ip_network = ''
         if context.get('_request') and context['_request'].get('remote_addr'):
             ip_address = ipaddress.ip_address(
-                unicode(context['_request']['remote_addr']))
+                str(context['_request']['remote_addr']))
             prefix = config.getint(
                 'session', 'ip_network_%s' % ip_address.version)
             ip_network = ipaddress.ip_network(
-                unicode(context['_request']['remote_addr']))
+                str(context['_request']['remote_addr']))
             ip_network = ip_network.supernet(new_prefix=prefix)
         return ip_address, ip_network
 
@@ -922,7 +922,7 @@ class UserApplication(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def default_key(cls):
-        return ''.join(uuid.uuid4().hex for _ in xrange(4))
+        return ''.join(uuid.uuid4().hex for _ in range(4))
 
     @classmethod
     def default_state(cls):

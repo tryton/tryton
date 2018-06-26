@@ -22,26 +22,26 @@ class ToolsTestCase(unittest.TestCase):
 
     def test_reduce_ids_continue(self):
         'Test reduce_ids continue list'
-        self.assertEqual(reduce_ids(self.table.id, range(10)),
+        self.assertEqual(reduce_ids(self.table.id, list(range(10))),
             sql.operators.Or(((self.table.id >= 0) & (self.table.id <= 9),)))
 
     def test_reduce_ids_one_hole(self):
         'Test reduce_ids continue list with one hole'
-        self.assertEqual(reduce_ids(self.table.id, range(10) + range(20, 30)),
+        self.assertEqual(reduce_ids(self.table.id, list(range(10)) + list(range(20, 30))),
             ((self.table.id >= 0) & (self.table.id <= 9))
             | ((self.table.id >= 20) & (self.table.id <= 29)))
 
     def test_reduce_ids_short_continue(self):
         'Test reduce_ids short continue list'
-        self.assertEqual(reduce_ids(self.table.id, range(4)),
-            sql.operators.Or((self.table.id.in_(range(4)),)))
+        self.assertEqual(reduce_ids(self.table.id, list(range(4))),
+            sql.operators.Or((self.table.id.in_(list(range(4))),)))
 
     def test_reduce_ids_complex(self):
         'Test reduce_ids complex list'
         self.assertEqual(reduce_ids(self.table.id,
-                range(10) + range(25, 30) + range(15, 20)),
+                list(range(10)) + list(range(25, 30)) + list(range(15, 20))),
             (((self.table.id >= 0) & (self.table.id <= 14))
-                | (self.table.id.in_(range(25, 30)))))
+                | (self.table.id.in_(list(range(25, 30))))))
 
     def test_reduce_ids_complex_small_continue(self):
         'Test reduce_ids complex list with small continue'
@@ -61,11 +61,11 @@ class ToolsTestCase(unittest.TestCase):
 
     def test_datetime_strftime(self):
         'Test datetime_strftime'
-        self.assert_(datetime_strftime(datetime.date(2005, 3, 2),
+        self.assertTrue(datetime_strftime(datetime.date(2005, 3, 2),
             '%Y-%m-%d'), '2005-03-02')
-        self.assert_(datetime_strftime(datetime.date(1805, 3, 2),
+        self.assertTrue(datetime_strftime(datetime.date(1805, 3, 2),
             '%Y-%m-%d'), '1805-03-02')
-        self.assert_(datetime_strftime(datetime.datetime(2005, 3, 2, 0, 0, 0),
+        self.assertTrue(datetime_strftime(datetime.datetime(2005, 3, 2, 0, 0, 0),
             '%Y-%m-%d'), '2005-03-02')
         with self.assertRaises(TypeError):
             datetime_strftime(None, '%Y-%m-%d')
@@ -122,21 +122,27 @@ class ToolsTestCase(unittest.TestCase):
 
     def test_file_open(self):
         "Test file_open"
-        self.assertTrue(file_open('__init__.py', subdir=None))
-        self.assertTrue(file_open('ir/__init__.py'))
+        with file_open('__init__.py', subdir=None) as fp:
+            self.assertTrue(fp)
 
-        with self.assertRaisesRegexp(IOError, "File not found :"):
-            file_open('ir/noexist')
+        with file_open('ir/__init__.py') as fp:
+            self.assertTrue(fp)
 
-        with self.assertRaisesRegexp(IOError, "Permission denied:"):
-            file_open('/etc/passwd')
+        with self.assertRaisesRegex(IOError, "File not found :"):
+            with file_open('ir/noexist'):
+                pass
 
-        with self.assertRaisesRegexp(IOError, "Permission denied:"):
-            file_open('../../foo')
+        with self.assertRaisesRegex(IOError, "Permission denied:"):
+            with file_open('/etc/passwd'):
+                pass
+
+        with self.assertRaisesRegex(IOError, "Permission denied:"):
+            with file_open('../../foo'):
+                pass
 
     def test_file_open_suffix(self):
         "Test file_open from same root name but with a suffix"
-        with self.assertRaisesRegexp(IOError, "Permission denied:"):
+        with self.assertRaisesRegex(IOError, "Permission denied:"):
             file_open('../trytond_suffix', subdir=None)
 
 

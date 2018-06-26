@@ -1,11 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import time
-import locale
 import os
 import pprint
+import time
 
 from lxml import etree
+
+from . import locale
 
 
 def locale_strftime(lang):
@@ -33,6 +34,7 @@ def locale_strftime(lang):
     t[3] = 23
     time_locale['%p'].append(time.strftime('%p', t).decode('utf-8'))
     return time_locale
+
 
 if __name__ == '__main__':
     base = os.path.dirname(__file__)

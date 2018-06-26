@@ -27,9 +27,9 @@ def migrate_property(
 
     if fields is None:
         fields = []
-    if isinstance(field_names, basestring):
+    if isinstance(field_names, str):
         field_names = [field_names]
-    if isinstance(value_names, basestring):
+    if isinstance(value_names, str):
         value_names = [value_names]
 
     def split_value(value):

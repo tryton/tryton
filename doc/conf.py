@@ -39,8 +39,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'trytond'
-copyright = (u'2008-2011, Bertrand Chenal, Cédric Krier, Ian Wilson, '
+project = 'trytond'
+copyright = ('2008-2011, Bertrand Chenal, Cédric Krier, Ian Wilson, '
     'Udo Spallek')
 
 # The version info for the project you're documenting, acts as replacement for
@@ -175,8 +175,8 @@ htmlhelp_basename = 'trytonddoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual])
 latex_documents = [
-    ('index', 'trytond.tex', u'trytond Documentation',
-        u'Bertrand Chenal, Cédric Krier, Ian Wilson, Udo Spallek', 'manual'),
+    ('index', 'trytond.tex', 'trytond Documentation',
+        'Bertrand Chenal, Cédric Krier, Ian Wilson, Udo Spallek', 'manual'),
     ]
 
 # The name of an image file (relative to this directory) to place at the top of

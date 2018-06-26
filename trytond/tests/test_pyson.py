@@ -28,7 +28,7 @@ class PYSONTestCase(unittest.TestCase):
             'd': 'foo',
             })
 
-        self.assertEqual(pyson.Eval('test', 'foo').types(), set([basestring]))
+        self.assertEqual(pyson.Eval('test', 'foo').types(), set([str]))
         self.assertEqual(pyson.Eval('test', 1).types(), set([int]))
 
         eval = pyson.PYSONEncoder().encode(pyson.Eval('test', 0))
@@ -310,7 +310,7 @@ class PYSONTestCase(unittest.TestCase):
         self.assertRaises(AssertionError, pyson.If, True, 'foo', False)
 
         self.assertEqual(pyson.If(True, 'foo', 'bar').types(),
-            set([basestring]))
+            set([str]))
         self.assertEqual(pyson.If(True, False, True).types(), set([bool]))
 
         eval = pyson.PYSONEncoder().encode(pyson.If(True, 'foo', 'bar'))
@@ -335,7 +335,7 @@ class PYSONTestCase(unittest.TestCase):
         self.assertRaises(AssertionError, pyson.Get, {}, 1, 'default')
 
         self.assertEqual(pyson.Get({}, 'foo', 'default').types(),
-            set([basestring]))
+            set([str]))
         self.assertEqual(pyson.Get({}, 'foo', True).types(), set([bool]))
 
         eval = pyson.PYSONEncoder().encode(pyson.Get(

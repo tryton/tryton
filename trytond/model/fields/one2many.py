@@ -140,7 +140,7 @@ class One2Many(Field):
         for target in targets:
             origin_id = getattr(target, self.field).id
             res[origin_id].append(target.id)
-        return dict((key, tuple(value)) for key, value in res.iteritems())
+        return dict((key, tuple(value)) for key, value in res.items())
 
     def set(self, Model, name, ids, values, *args):
         '''
@@ -189,7 +189,7 @@ class One2Many(Field):
             to_delete.extend(Target.browse(target_ids))
 
         def add(ids, target_ids):
-            target_ids = map(int, target_ids)
+            target_ids = list(map(int, target_ids))
             if not target_ids:
                 return
             targets = Target.browse(target_ids)
@@ -199,7 +199,7 @@ class One2Many(Field):
                             }))
 
         def remove(ids, target_ids):
-            target_ids = map(int, target_ids)
+            target_ids = list(map(int, target_ids))
             if not target_ids:
                 return
             for sub_ids in grouped_slice(target_ids):
@@ -212,7 +212,7 @@ class One2Many(Field):
                             }))
 
         def copy(ids, copy_ids, default=None):
-            copy_ids = map(int, copy_ids)
+            copy_ids = list(map(int, copy_ids))
 
             if default is None:
                 default = {}
@@ -297,7 +297,7 @@ class One2Many(Field):
                     return ~expression
                 return expression
             else:
-                if isinstance(value, basestring):
+                if isinstance(value, str):
                     target_name = 'rec_name'
                 else:
                     target_name = 'id'

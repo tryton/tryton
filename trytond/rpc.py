@@ -38,7 +38,7 @@ class RPC(object):
             context = args.pop()
         context = copy.deepcopy(context)
         timestamp = None
-        for key in context.keys():
+        for key in list(context.keys()):
             if key == '_timestamp':
                 timestamp = context[key]
             # Remove all private keyword but _datetime for history
@@ -48,7 +48,7 @@ class RPC(object):
 
             def instance(data):
                 with Transaction().set_context(context):
-                    if isinstance(data, (int, long)):
+                    if isinstance(data, int):
                         return obj(data)
                     elif isinstance(data, dict):
                         return obj(**data)

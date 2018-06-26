@@ -166,14 +166,12 @@ class ModelButtonGroup(DeactivableMixin, ModelSQL):
         pool.get('ir.model.button')._groups_cache.clear()
 
 
-class ModelButtonRule:
-    __metaclass__ = PoolMeta
+class ModelButtonRule(metaclass=PoolMeta):
     __name__ = 'ir.model.button.rule'
     group = fields.Many2One('res.group', "Group", ondelete='CASCADE')
 
 
-class ModelButtonClick:
-    __metaclass__ = PoolMeta
+class ModelButtonClick(metaclass=PoolMeta):
     __name__ = 'ir.model.button.click'
     user = fields.Many2One('res.user', "User", ondelete='CASCADE')
 
@@ -202,8 +200,7 @@ class RuleGroupGroup(ModelSQL):
         super(RuleGroupGroup, cls).__register__(module_name)
 
 
-class Lang:
-    __metaclass__ = PoolMeta
+class Lang(metaclass=PoolMeta):
     __name__ = 'ir.lang'
 
     @classmethod
@@ -213,8 +210,7 @@ class Lang:
         Pool().get('res.user')._get_preferences_cache.clear()
 
 
-class SequenceType:
-    __metaclass__ = PoolMeta
+class SequenceType(metaclass=PoolMeta):
     __name__ = 'ir.sequence.type'
     groups = fields.Many2Many('ir.sequence.type-res.group', 'sequence_type',
             'group', 'User Groups',
@@ -252,8 +248,7 @@ class SequenceTypeGroup(ModelSQL):
         Rule._domain_get_cache.clear()
 
 
-class Sequence:
-    __metaclass__ = PoolMeta
+class Sequence(metaclass=PoolMeta):
     __name__ = 'ir.sequence'
     groups = fields.Function(fields.Many2Many('res.group', None, None,
         'User Groups'), 'get_groups', searcher='search_groups')
@@ -266,7 +261,7 @@ class Sequence:
             code2seq.setdefault(sequence.code, []).append(sequence.id)
 
         sequence_types = SequenceType.search([
-                ('code', 'in', code2seq.keys()),
+                ('code', 'in', list(code2seq.keys())),
                 ])
 
         groups = {}
@@ -291,8 +286,7 @@ class SequenceStrict(Sequence):
     __name__ = 'ir.sequence.strict'
 
 
-class ModuleConfigWizardItem:
-    __metaclass__ = PoolMeta
+class ModuleConfigWizardItem(metaclass=PoolMeta):
     __name__ = 'ir.module.config_wizard.item'
 
     @classmethod

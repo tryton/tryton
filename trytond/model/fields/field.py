@@ -25,13 +25,13 @@ def domain_validate(value):
 
     def test_domain(dom):
         for arg in dom:
-            if isinstance(arg, basestring):
+            if isinstance(arg, str):
                 if arg not in ('AND', 'OR'):
                     return False
             elif (isinstance(arg, tuple)
                 or (isinstance(arg, list)
                     and len(arg) > 2
-                    and ((isinstance(arg[1], basestring)
+                    and ((isinstance(arg[1], str)
                                 and arg[1] in OPERATORS)
                         or (isinstance(arg[1], PYSON)
                                 and arg[1].types() == set([str]))))):

@@ -87,7 +87,7 @@ class ModelStorageTestCase(unittest.TestCase):
             self.assertDictEqual(record.context, record_context)
 
             record = ModelStorageContext(record.id)
-            self.assertDictContainsSubset({'foo': 'bar'}, record.context)
+            self.assertEqual(record.context.get('foo'), 'bar')
 
     @with_transaction()
     def test_save_mixed_context(self):

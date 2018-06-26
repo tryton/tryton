@@ -180,7 +180,7 @@ class Report(URLMixin, PoolBase):
             oext = 'zip'
         else:
             oext, content = cls._execute(records, data, action_report)
-        if not isinstance(content, unicode):
+        if not isinstance(content, str):
             content = bytearray(content) if bytes == str else bytes(content)
         return (oext, content, action_report.direct_print, action_report.name)
 
@@ -230,7 +230,7 @@ class Report(URLMixin, PoolBase):
                 return '%s,%s' % (Model.__name__, self.id)
 
             def __unicode__(self):
-                return u'%s,%s' % (Model.__name__, self.id)
+                return '%s,%s' % (Model.__name__, self.id)
         return [TranslateModel(id) for id in ids]
 
     @classmethod

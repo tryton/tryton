@@ -4,8 +4,7 @@
 
 import unittest
 import time
-
-from mock import patch, call
+from unittest.mock import patch, call
 
 from trytond import backend
 from trytond.exceptions import UserError, ConcurrencyException
@@ -36,10 +35,10 @@ class ModelSQLTestCase(unittest.TestCase):
             'desc': '',
             'integer': 0,
             }
-        for key, value in fields.iteritems():
+        for key, value in fields.items():
             try:
                 Modelsql.create([{key: value}])
-            except UserError, err:
+            except UserError as err:
                 # message must not quote key
                 msg = "'%s' not missing but quoted in error: '%s'" % (key,
                         err.message)

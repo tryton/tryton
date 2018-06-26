@@ -1,8 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
-
-from mock import Mock, DEFAULT, call
+from unittest.mock import Mock, DEFAULT, call
 
 from trytond.tests.test_tryton import with_transaction, activate_module
 from trytond.rpc import RPC

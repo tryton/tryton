@@ -119,7 +119,7 @@ class Reference(Field, SelectionMixin):
         # Check if reference ids still exist
         with Transaction().set_context(active_test=False), \
                 Transaction().set_context(_check_access=False):
-            for ref_model, (ref_ids, ids) in ref_to_check.iteritems():
+            for ref_model, (ref_ids, ids) in ref_to_check.items():
                 try:
                     pool.get(ref_model)
                 except KeyError:
@@ -129,7 +129,7 @@ class Reference(Field, SelectionMixin):
                 refs = Ref.search([
                     ('id', 'in', list(ref_ids)),
                     ], order=[])
-                refs = map(str, refs)
+                refs = list(map(str, refs))
                 for i in ids:
                     if res[i] not in refs:
                         res[i] = None
@@ -138,7 +138,7 @@ class Reference(Field, SelectionMixin):
     def __set__(self, inst, value):
         from ..model import Model
         if not isinstance(value, (Model, type(None))):
-            if isinstance(value, basestring):
+            if isinstance(value, str):
                 target, value = value.split(',')
             else:
                 target, value = value
@@ -150,7 +150,7 @@ class Reference(Field, SelectionMixin):
         super(Reference, self).__set__(inst, value)
 
     def sql_format(self, value):
-        if not isinstance(value, (basestring, Query, Expression)):
+        if not isinstance(value, (str, Query, Expression)):
             try:
                 value = '%s,%s' % tuple(value)
             except TypeError:

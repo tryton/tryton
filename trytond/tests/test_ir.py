@@ -54,9 +54,9 @@ class IrTestCase(ModuleTestCase):
         pool = Pool()
         Lang = pool.get('ir.lang')
         test_data = [
-            ((2016, 8, 3), 'en', '%d %B %Y', u"03 August 2016"),
-            ((2016, 8, 3), 'fr', '%d %B %Y', u"03 ao\xfbt 2016"),
-            ((2016, 8, 3), 'fr', u'%d %B %Y', u"03 ao\xfbt 2016"),
+            ((2016, 8, 3), 'en', '%d %B %Y', "03 August 2016"),
+            ((2016, 8, 3), 'fr', '%d %B %Y', "03 ao\xfbt 2016"),
+            ((2016, 8, 3), 'fr', '%d %B %Y', "03 ao\xfbt 2016"),
             ]
         for date, code, format_, result in test_data:
             lang = Lang.get(code)

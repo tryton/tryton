@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
 import warnings
 
 from trytond.transaction import Transaction
@@ -51,9 +50,7 @@ class Char(FieldTranslate):
     def sql_format(self, value):
         if value is None:
             return None
-        elif isinstance(value, str) and sys.version_info < (3,):
-            return unicode(value, 'utf-8')
-        assert isinstance(value, unicode)
+        assert isinstance(value, str)
         return value
 
     @property

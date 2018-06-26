@@ -20,7 +20,7 @@ class SequenceOrderedMixinTestCase(unittest.TestCase):
         Order = pool.get('test.order.sequence')
 
         models = []
-        for i in reversed(range(1, 4)):
+        for i in reversed(list(range(1, 4))):
             models.append(Order(sequence=i))
         Order.save(models)
         models.reverse()

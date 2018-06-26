@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import httplib
+import http.client
 import logging
 import os
 import sys
@@ -43,7 +43,7 @@ class TrytondWSGI(object):
         if request.user_id:
             return wrapped(*args, **kwargs)
         else:
-            abort(httplib.UNAUTHORIZED)
+            abort(http.client.UNAUTHORIZED)
 
     def check_request_size(self, request, size=None):
         if request.method not in {'POST', 'PUT', 'PATCH'}:
@@ -60,9 +60,9 @@ class TrytondWSGI(object):
         if max_size:
             content_length = request.content_length
             if content_length is None:
-                abort(httplib.LENGTH_REQUIRED)
+                abort(http.client.LENGTH_REQUIRED)
             elif content_length > max_size:
-                abort(httplib.REQUEST_ENTITY_TOO_LARGE)
+                abort(http.client.REQUEST_ENTITY_TOO_LARGE)
 
     def dispatch_request(self, request):
         adapter = self.url_map.bind_to_environ(request.environ)
@@ -71,9 +71,9 @@ class TrytondWSGI(object):
             max_request_size = getattr(endpoint, 'max_request_size', None)
             self.check_request_size(request, max_request_size)
             return endpoint(request, **request.view_args)
-        except HTTPException, e:
+        except HTTPException as e:
             return e
-        except Exception, e:
+        except Exception as e:
             tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
             for path in sys.path:
                 tb_s = tb_s.replace(path, '')

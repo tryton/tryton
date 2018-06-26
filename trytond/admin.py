@@ -80,7 +80,7 @@ def run(options):
             if options.email is not None:
                 admin.email = options.email
             elif init[db_name]:
-                admin.email = raw_input(
+                admin.email = input(
                     '"admin" email for "%s": ' % db_name)
             if init[db_name] or options.password:
                 # try to read password from environment variable
@@ -91,7 +91,7 @@ def run(options):
                     try:
                         with open(passpath) as passfile:
                             password, = passfile.read().splitlines()
-                    except Exception, err:
+                    except Exception as err:
                         sys.stderr.write('Can not read password '
                             'from "%s": "%s"\n' % (passpath, err))
 

@@ -1,14 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import polib
+import os
 import xml.dom.minidom
 from difflib import SequenceMatcher
-import os
 from hashlib import md5
-from lxml import etree
-from itertools import izip
 from io import BytesIO
+from lxml import etree
 
+import polib
 from sql import Column, Null, Literal
 from sql.functions import Substring, Position
 from sql.conditionals import Case
@@ -259,7 +258,7 @@ class Translation(ModelSQL, ModelView):
                             [[trans_name, 'en', 'selection', val, val_md5,
                                     '', module_name, False, -1]]))
 
-        for field_name, field in model._fields.iteritems():
+        for field_name, field in model._fields.items():
             trans_name = model.__name__ + ',' + field_name
             update_insert_field(field, trans_name)
             update_insert_help(field, trans_name)
@@ -326,7 +325,7 @@ class Translation(ModelSQL, ModelView):
                         where=ir_translation.id ==
                         trans_buttons[trans_name]['id']))
 
-        for state_name, state in wizard.states.iteritems():
+        for state_name, state in wizard.states.items():
             if not isinstance(state, StateView):
                 continue
             for button in state.buttons:
@@ -395,20 +394,20 @@ class Translation(ModelSQL, ModelView):
         Model = pool.get('ir.model')
 
         translations, to_fetch = {}, []
-        name = unicode(name)
-        ttype = unicode(ttype)
-        lang = unicode(lang)
+        name = str(name)
+        ttype = str(ttype)
+        lang = str(lang)
         if name.split(',')[0] in ('ir.model.field', 'ir.model'):
             field_name = name.split(',')[1]
             with Transaction().set_context(_check_access=False):
                 if name.split(',')[0] == 'ir.model.field':
                     if field_name == 'field_description':
-                        ttype = u'field'
+                        ttype = 'field'
                     else:
-                        ttype = u'help'
+                        ttype = 'help'
                     records = ModelFields.browse(ids)
                 else:
-                    ttype = u'model'
+                    ttype = 'model'
                     records = Model.browse(ids)
 
             trans_args = []
@@ -524,7 +523,7 @@ class Translation(ModelSQL, ModelView):
                     translations[translation.name] = translation
 
                 to_save = []
-                for record, value in izip(records, values):
+                for record, value in zip(records, values):
                     translation = translations.get(get_name(record))
                     if not translation:
                         translation = cls()
@@ -565,7 +564,7 @@ class Translation(ModelSQL, ModelView):
                         ).append(translation)
 
             to_save = []
-            for record, value in izip(records, values):
+            for record, value in zip(records, values):
                 translation = translations.get(record.id)
                 if not translation:
                     translation = cls()
@@ -632,11 +631,11 @@ class Translation(ModelSQL, ModelView):
 
         to_cache = []
         for name, ttype, lang, source in args:
-            name = unicode(name)
-            ttype = unicode(ttype)
-            lang = unicode(lang)
+            name = str(name)
+            ttype = str(ttype)
+            lang = str(lang)
             if source is not None:
-                source = unicode(source)
+                source = str(source)
             trans = cls._translation_cache.get((name, ttype, lang, source), -1)
             if trans != -1:
                 res[(name, ttype, lang, source)] = trans
@@ -749,7 +748,7 @@ class Translation(ModelSQL, ModelView):
     def translation_import(cls, lang, module, po_path):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        if isinstance(po_path, basestring):
+        if isinstance(po_path, str):
             po_path = [po_path]
         models_data = ModelData.search([
                 ('module', '=', module),
@@ -873,7 +872,7 @@ class Translation(ModelSQL, ModelView):
                                 to_save.append(old_translation)
                             else:
                                 translations.add(old_translation)
-        cls.save(filter(None, to_save))
+        cls.save([_f for _f in to_save if _f])
         translations |= set(to_save)
 
         if translations:
@@ -939,7 +938,7 @@ class Translation(ModelSQL, ModelView):
 
         if pofile:
             pofile.sort()
-            return unicode(pofile).encode('utf-8')
+            return str(pofile).encode('utf-8')
         else:
             return
 
@@ -1392,15 +1391,15 @@ class TranslationClean(Wizard):
             except KeyError:
                 pass
         if Model:
-            errors = Model._error_messages.values()
+            errors = list(Model._error_messages.values())
             if issubclass(Model, ModelSQL):
-                errors += Model._sql_error_messages.values()
+                errors += list(Model._sql_error_messages.values())
                 for _, _, error in Model._sql_constraints:
                     errors.append(error)
             if translation.src not in errors:
                 return True
         elif Wizard:
-            errors = Wizard._error_messages.values()
+            errors = list(Wizard._error_messages.values())
             if translation.src not in errors:
                 return True
         else:

@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import unittest
 import smtplib
-import sys
+import unittest
 from email.message import Message
-from mock import Mock, patch, call
+from unittest.mock import Mock, patch, call
 
 from trytond.sendmail import (
     sendmail_transactional, sendmail, SMTPDataManager, get_smtp_server)
@@ -68,7 +67,6 @@ class SendmailTestCase(unittest.TestCase):
             SMTP.assert_called_once_with('localhost', 25)
             server.starttls.assert_called_once_with()
 
-    @unittest.skipIf(sys.version_info < (2, 7, 4), "python bug #9374")
     def test_get_smtp_server_extra_parameters(self):
         'Test get_smtp_server uri extra parameters'
         with patch.object(smtplib, 'SMTP') as SMTP:

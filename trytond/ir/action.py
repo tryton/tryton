@@ -225,7 +225,7 @@ class ActionKeyword(ModelSQL, ModelView):
         for action_keyword in action_keywords:
             type_ = action_keyword.action.type
             types[type_].append(action_keyword.action.id)
-        for type_, action_ids in types.iteritems():
+        for type_, action_ids in types.items():
             for value in Action.get_action_values(type_, action_ids):
                 value['keyword'] = keyword
                 keywords.append(value)

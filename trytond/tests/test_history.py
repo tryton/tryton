@@ -142,9 +142,9 @@ class HistoryTestCase(unittest.TestCase):
 
         revisions = History.history_revisions([history_id])
         self.assertEqual(revisions, [
-                (third, history_id, u'Administrator'),
-                (second, history_id, u'Administrator'),
-                (first, history_id, u'Administrator'),
+                (third, history_id, 'Administrator'),
+                (second, history_id, 'Administrator'),
+                (first, history_id, 'Administrator'),
                 ])
 
     @with_transaction()
@@ -465,7 +465,7 @@ class HistoryTestCase(unittest.TestCase):
         transaction = Transaction()
         database = transaction.database
 
-        for i in xrange(0, 2):
+        for i in range(0, 2):
             history = History(value=-1)
             history.save()
 

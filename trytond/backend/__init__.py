@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import sys
-import urlparse
+import urllib.parse
 import os
 import imp
 try:
@@ -15,7 +15,7 @@ __all__ = ['name', 'get']
 
 
 def name():
-    return urlparse.urlparse(config.get('database', 'uri', default='')).scheme
+    return urllib.parse.urlparse(config.get('database', 'uri', default='')).scheme
 
 
 def get(prop):
@@ -24,7 +24,7 @@ def get(prop):
     if modname not in sys.modules:
         try:
             __import__(modname)
-        except ImportError, exception:
+        except ImportError as exception:
             if not pkg_resources:
                 raise exception
             try:

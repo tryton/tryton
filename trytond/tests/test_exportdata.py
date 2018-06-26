@@ -168,7 +168,7 @@ class ExportDataTestCase(unittest.TestCase):
         export1, = ExportData.create([{
                     'date': datetime.date(2010, 1, 1),
                     }])
-        self.assert_(ExportData.export_data([export1],
+        self.assertTrue(ExportData.export_data([export1],
             ['date']) == [[datetime.date(2010, 1, 1)]])
 
         export2, = ExportData.create([{

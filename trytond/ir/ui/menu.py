@@ -165,7 +165,7 @@ class UIMenu(DeactivableMixin, sequence_ordered(), tree(separator=' / '),
             action2keyword = {k.action.id: k for k in action_keywords}
             with Transaction().set_context(active_test=False):
                 factions = Action.search([
-                        ('action', 'in', action2keyword.keys()),
+                        ('action', 'in', list(action2keyword.keys())),
                         ])
             for action in factions:
                 model = action2keyword[action.id].model
@@ -189,7 +189,7 @@ class UIMenu(DeactivableMixin, sequence_ordered(), tree(separator=' / '),
                 ActionKeyword.delete(action_keywords)
         if not value:
             return
-        if isinstance(value, basestring):
+        if isinstance(value, str):
             action_type, action_id = value.split(',')
         else:
             action_type, action_id = value

@@ -1,8 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from __future__ import absolute_import
 
-import sys
 import datetime
 import warnings
 warnings.filterwarnings('ignore', "", ImportWarning)
@@ -213,8 +211,6 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         '''
         for lang in langs:
             date = lang.date
-            if sys.version_info < (3,):
-                date = date.encode('utf-8')
             try:
                 datetime_strftime(datetime.datetime.now(), date)
             except Exception:
@@ -482,13 +478,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             format = format.replace('%p',
                 TIME_LOCALE[code]['%p'][datetime.timetuple()[3] < 12 and 0
                     or 1])
-        # Encode and decode under Python2 because strftime use bytes/str.
-        if sys.version_info < (3,):
-            format = format.encode('utf-8')
-        result = datetime_strftime(datetime, format)
-        if sys.version_info < (3,):
-            result = result.decode('utf-8')
-        return result
+        return datetime_strftime(datetime, format)
 
 
 def get_parent_language(code):

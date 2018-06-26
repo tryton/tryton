@@ -184,7 +184,7 @@ def user_application(name, json=True):
                     transaction.set_context(_check_access=True):
                 try:
                     response = func(request, *args, **kwargs)
-                except Exception, e:
+                except Exception as e:
                     if isinstance(e, HTTPException):
                         raise
                     logger.error('%s', request, exc_info=True)

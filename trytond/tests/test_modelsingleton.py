@@ -22,12 +22,12 @@ class ModelSingletonTestCase(unittest.TestCase):
         Singleton = pool.get('test.singleton')
 
         singleton, = Singleton.read([1], ['name'])
-        self.assert_(singleton['name'] == 'test')
-        self.assert_(singleton['id'] == 1)
+        self.assertTrue(singleton['name'] == 'test')
+        self.assertTrue(singleton['id'] == 1)
 
         singleton, = Singleton.read([1], ['name'])
-        self.assert_(singleton['name'] == 'test')
-        self.assert_(singleton['id'] == 1)
+        self.assertTrue(singleton['name'] == 'test')
+        self.assertTrue(singleton['id'] == 1)
 
         singleton, = Singleton.read([1], [
             'create_uid',
@@ -38,7 +38,7 @@ class ModelSingletonTestCase(unittest.TestCase):
             ])
         self.assertEqual(singleton['create_uid'], Transaction().user)
         self.assertEqual(singleton['create_uid.rec_name'], 'Administrator')
-        self.assert_(isinstance(singleton['create_date'], datetime))
+        self.assertTrue(isinstance(singleton['create_date'], datetime))
         self.assertEqual(singleton['write_uid'], None)
         self.assertEqual(singleton['write_date'], None)
 
@@ -49,7 +49,7 @@ class ModelSingletonTestCase(unittest.TestCase):
         Singleton = pool.get('test.singleton')
 
         singleton, = Singleton.create([{'name': 'bar'}])
-        self.assert_(singleton)
+        self.assertTrue(singleton)
         self.assertEqual(singleton.name, 'bar')
 
         singleton2, = Singleton.create([{'name': 'foo'}])
@@ -115,10 +115,10 @@ class ModelSingletonTestCase(unittest.TestCase):
         Singleton = pool.get('test.singleton')
 
         singletons = Singleton.search([])
-        self.assertEqual(map(int, singletons), [1])
+        self.assertEqual(list(map(int, singletons)), [1])
 
         singletons = Singleton.search([])
-        self.assertEqual(map(int, singletons), [1])
+        self.assertEqual(list(map(int, singletons)), [1])
 
         count = Singleton.search([], count=True)
         self.assertEqual(count, 1)

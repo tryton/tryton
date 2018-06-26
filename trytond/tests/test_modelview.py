@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 import unittest
-from mock import patch
+from unittest.mock import patch
+
 from lxml import etree
 
 from trytond.tests.test_tryton import activate_module, with_transaction

@@ -1,3 +1,4 @@
+* Remove support for Python 2.7
 * Check Rule also after modification
 * Check Rule after indirect fields
 * Allow to define view id in switch client action

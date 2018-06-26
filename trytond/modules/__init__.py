@@ -5,7 +5,7 @@ import sys
 import itertools
 import logging
 import imp
-import ConfigParser
+import configparser
 from glob import iglob
 from collections import defaultdict
 
@@ -47,9 +47,9 @@ update_egg_modules()
 
 def get_module_info(name):
     "Return the content of the tryton.cfg"
-    module_config = ConfigParser.ConfigParser()
+    module_config = configparser.ConfigParser()
     with tools.file_open(os.path.join(name, 'tryton.cfg')) as fp:
-        module_config.readfp(fp)
+        module_config.read_file(fp)
         directory = os.path.dirname(fp.name)
     info = dict(module_config.items('tryton'))
     info['directory'] = directory
@@ -74,7 +74,7 @@ class Graph(dict):
         return node
 
     def __iter__(self):
-        for node in sorted(self.itervalues(), key=lambda n: (n.depth, n.name)):
+        for node in sorted(self.values(), key=lambda n: (n.depth, n.name)):
             yield node
 
 
@@ -174,7 +174,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                         package_state = 'to activate'
                 for child in node:
                     module2state[child.name] = package_state
-                for type in classes.keys():
+                for type in list(classes.keys()):
                     for cls in classes[type]:
                         logger.info('%s:register %s', module, cls.__name__)
                         cls.__register__(module)
@@ -206,7 +206,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
                         continue
                     lang2filenames[lang2].append(filename)
                 base_path_position = len(node.info['directory']) + 1
-                for language, files in lang2filenames.iteritems():
+                for language, files in lang2filenames.items():
                     filenames = [f[base_path_position:] for f in files]
                     logger.info('%s:loading %s', module, ','.join(filenames))
                     Translation = pool.get('ir.translation')

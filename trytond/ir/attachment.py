@@ -17,7 +17,7 @@ __all__ = [
 
 def firstline(description):
     try:
-        return (x for x in description.splitlines() if x.strip()).next()
+        return next((x for x in description.splitlines() if x.strip()))
     except StopIteration:
         return ''
 

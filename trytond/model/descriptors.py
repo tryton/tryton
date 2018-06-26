@@ -13,7 +13,7 @@ class dualmethod(object):
     >>> class Example(object):
     ...     @dualmethod
     ...     def method(cls, instances):
-    ...         print len(instances)
+    ...         print(len(instances))
     ...
     >>> Example.method([Example()])
     1

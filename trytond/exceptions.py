@@ -1,13 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
 
 
 class TrytonException(Exception):
-
-    if sys.version_info < (3, ):
-        def __str__(self):
-            return unicode(self).encode('utf-8')
+    pass
 
 
 class UserError(TrytonException):
@@ -19,7 +15,7 @@ class UserError(TrytonException):
         self.code = 1
 
     def __unicode__(self):
-        return u'%s - %s' % (self.message, self.description)
+        return '%s - %s' % (self.message, self.description)
 
 
 class UserWarning(TrytonException):
@@ -33,7 +29,7 @@ class UserWarning(TrytonException):
         self.code = 2
 
     def __unicode__(self):
-        return u'%s - %s' % (self.message, self.description)
+        return '%s - %s' % (self.message, self.description)
 
 
 class LoginException(TrytonException):

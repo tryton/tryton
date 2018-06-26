@@ -30,7 +30,7 @@ def tree(parent='parent', name='name', separator=None):
 
             @classmethod
             def search_rec_name(cls, _, clause):
-                if isinstance(clause[2], basestring):
+                if isinstance(clause[2], str):
                     values = list(reversed(clause[2].split(separator)))
                 else:
                     values = [[]]
@@ -60,7 +60,7 @@ def tree(parent='parent', name='name', separator=None):
                     domain.append((top_parent, operator, None))
                 if (clause[1].endswith('like')
                         and clause[2].replace('%%', '__').endswith('%')):
-                        ids = map(int, cls.search(domain, order=[]))
+                        ids = list(map(int, cls.search(domain, order=[])))
                         domain = [(parent, 'child_of', ids)]
                 return domain
 

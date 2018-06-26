@@ -32,7 +32,7 @@ class FileStore(object):
         filename = self._filename(id, prefix)
         dirname = os.path.dirname(filename)
         if not os.path.exists(dirname):
-            os.makedirs(dirname, 0770)
+            os.makedirs(dirname, 0o770)
 
         collision = 0
         while True:

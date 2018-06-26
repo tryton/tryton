@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from string import Template
 import time
-from itertools import izip
+
 from sql import Literal, For
 
 from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
@@ -184,7 +184,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         sequences = super(Sequence, cls).create(vlist)
-        for sequence, values in izip(sequences, vlist):
+        for sequence, values in zip(sequences, vlist):
             if sql_sequence and not cls._strict:
                 sequence.update_sql_sequence(values.get('number_next',
                         cls.default_number_next()))
@@ -351,7 +351,7 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
         '''
         if isinstance(domain, cls):
             domain = domain.id
-        if isinstance(domain, (int, long)):
+        if isinstance(domain, int):
             domain = [('id', '=', domain)]
 
         # bypass rules on sequences

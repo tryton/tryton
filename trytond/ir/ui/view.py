@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-import sys
 import logging
 import json
 
@@ -118,11 +117,7 @@ class View(ModelSQL, ModelView):
         key = (cls.__name__, type_)
         rng = cls._get_rng_cache.get(key)
         if rng is None:
-            if sys.version_info < (3,):
-                filename = __file__.decode(sys.getfilesystemencoding())
-            else:
-                filename = __file__
-            rng_name = os.path.join(os.path.dirname(filename), type_ + '.rng')
+            rng_name = os.path.join(os.path.dirname(__file__), type_ + '.rng')
             with open(rng_name, 'rb') as fp:
                 rng = etree.fromstring(fp.read())
             cls._get_rng_cache.set(key, rng)
@@ -173,7 +168,7 @@ class View(ModelSQL, ModelView):
                     try:
                         value = PYSONDecoder().decode(element.get(attr))
                         validates.get(attr, lambda a: True)(value)
-                    except Exception, e:
+                    except Exception as e:
                         error_log = '%s: <%s %s="%s"/>' % (
                             e, element.get('id') or element.get('name'), attr,
                             element.get(attr))
@@ -298,12 +293,12 @@ class ViewTreeWidth(ModelSQL, ModelView):
         records = cls.search([
             ('user', '=', Transaction().user),
             ('model', '=', model),
-            ('field', 'in', fields.keys()),
+            ('field', 'in', list(fields.keys())),
             ])
         cls.delete(records)
 
         to_create = []
-        for field in fields.keys():
+        for field in list(fields.keys()):
             to_create.append({
                     'model': model,
                     'field': field,

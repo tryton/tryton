@@ -20,6 +20,6 @@ Pool.start()
 db_names = os.environ.get('TRYTOND_DATABASE_NAMES')
 if db_names:
     # Read with csv so database name can include special chars
-    reader = csv.reader(StringIO(unicode(db_names)))
+    reader = csv.reader(StringIO(db_names))
     for db_name in next(reader):
         Pool(db_name).init()

@@ -21,7 +21,7 @@ class WizardTestCase(unittest.TestCase):
         session_id, start_state, end_state = Wizard.create()
         self.assertEqual(start_state, 'start')
         self.assertEqual(end_state, 'end')
-        self.assert_(session_id)
+        self.assertTrue(session_id)
 
     @with_transaction()
     def test_delete(self):
@@ -78,7 +78,7 @@ class WizardTestCase(unittest.TestCase):
 
         session_id, start_state, end_state = Wizard.create()
         result = Wizard.execute(session_id, {}, start_state)
-        self.assertEqual(result.keys(), ['view'])
+        self.assertEqual(list(result.keys()), ['view'])
         self.assertEqual(result['view']['defaults'], {
                 'name': 'Test wizard',
                 })

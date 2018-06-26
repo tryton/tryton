@@ -18,11 +18,11 @@ class MenuMany2Many(fields.Many2Many):
         menu_ids = list(set(chain(*res.values())))
         test_ids = []
         for sub_ids in grouped_slice(menu_ids):
-            test_ids.append(map(int, Menu.search([
+            test_ids.append(list(map(int, Menu.search([
                             ('id', 'in', sub_ids),
-                            ])))
+                            ]))))
         menu_ids = set(chain(*test_ids))
-        for group_id, ids in res.iteritems():
+        for group_id, ids in res.items():
             res[group_id] = tuple(id_ for id_ in ids if id_ in menu_ids)
         return res
 

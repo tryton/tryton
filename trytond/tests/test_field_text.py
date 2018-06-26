@@ -30,10 +30,10 @@ class CommonTestCaseMixin:
         Text = self.Text()
 
         text, = Text.create([{
-                    'text': u"é",
+                    'text': "é",
                     }])
 
-        self.assertEqual(text.text, u"é")
+        self.assertEqual(text.text, "é")
 
     @with_transaction()
     def test_create_multiline(self):
@@ -83,11 +83,11 @@ class CommonTestCaseMixin:
         "Test search text equals unicode"
         Text = self.Text()
         text, = Text.create([{
-                    'text': u"é",
+                    'text': "é",
                     }])
 
         texts = Text.search([
-                ('text', '=', u"é"),
+                ('text', '=', "é"),
                 ])
 
         self.assertListEqual(texts, [text])
@@ -97,7 +97,7 @@ class CommonTestCaseMixin:
         "Test search text equals non unicode"
         Text = self.Text()
         text, = Text.create([{
-                    'text': u"é",
+                    'text': "é",
                     }])
 
         texts = Text.search([
@@ -323,10 +323,10 @@ class CommonTestCaseMixin:
                     }])
 
         Text.write([text], {
-                'text': u"é",
+                'text': "é",
                 })
 
-        self.assertEqual(text.text, u"é")
+        self.assertEqual(text.text, "é")
 
 
 class FieldTextTestCase(unittest.TestCase, CommonTestCaseMixin):

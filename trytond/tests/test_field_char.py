@@ -32,10 +32,10 @@ class CommonTestCaseMixin:
         Char = self.Char()
 
         char, = Char.create([{
-                    'char': u"é",
+                    'char': "é",
                     }])
 
-        self.assertEqual(char.char, u"é")
+        self.assertEqual(char.char, "é")
 
     @with_transaction()
     def test_search_equals(self):
@@ -74,11 +74,11 @@ class CommonTestCaseMixin:
         "Test search char equals unicode"
         Char = self.Char()
         char, = Char.create([{
-                    'char': u"é",
+                    'char': "é",
                     }])
 
         chars = Char.search([
-                ('char', '=', u"é"),
+                ('char', '=', "é"),
                 ])
 
         self.assertListEqual(chars, [char])
@@ -88,7 +88,7 @@ class CommonTestCaseMixin:
         "Test search char equals non unicode"
         Char = self.Char()
         char, = Char.create([{
-                    'char': u"é",
+                    'char': "é",
                     }])
 
         chars = Char.search([
@@ -314,10 +314,10 @@ class CommonTestCaseMixin:
                     }])
 
         Char.write([char], {
-                'char': u"é",
+                'char': "é",
                 })
 
-        self.assertEqual(char.char, u"é")
+        self.assertEqual(char.char, "é")
 
 
 class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
@@ -498,7 +498,7 @@ class FieldCharUnaccentedTestCase(unittest.TestCase):
         "Test searches without the unaccented feature"
         Char = Pool().get('test.char_unaccented_off')
         char, = Char.create([{
-                    'char': u'Stéphanie',
+                    'char': 'Stéphanie',
                     }])
 
         chars_stephanie = Char.search([
@@ -512,7 +512,7 @@ class FieldCharUnaccentedTestCase(unittest.TestCase):
         "Test searches of accented value"
         Char = Pool().get('test.char_unaccented_on')
         char, = Char.create([{
-                    'char': u'Stéphanie',
+                    'char': 'Stéphanie',
                     }])
 
         chars_stephanie = Char.search([
@@ -526,7 +526,7 @@ class FieldCharUnaccentedTestCase(unittest.TestCase):
         "Test searches of unaccented value"
         Char = Pool().get('test.char_unaccented_on')
         char, = Char.create([{
-                    'char': u'Stephanie',
+                    'char': 'Stephanie',
                     }])
 
         chars_stephanie = Char.search([
@@ -548,12 +548,12 @@ class FieldCharUnaccentedTestCase(unittest.TestCase):
         lang.translatable = True
         lang.save()
         char, = Char.create([{
-                    'char': u'School',
+                    'char': 'School',
                     }])
 
         with Transaction().set_context(lang=lang.code):
             trans_char = Char(char.id)
-            trans_char.char = u'École'
+            trans_char.char = 'École'
             trans_char.save()
 
             chars_ecole = Char.search([

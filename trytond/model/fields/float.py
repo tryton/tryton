@@ -8,10 +8,10 @@ def digits_validate(value):
     if value:
         assert isinstance(value, tuple), 'digits must be a tuple'
         for i in value:
-            assert isinstance(i, (int, long, PYSON)), \
+            assert isinstance(i, (int, PYSON)), \
                 'digits must be tuple of integers or PYSON'
             if isinstance(i, PYSON):
-                assert i.types().issubset(set([int, long])), \
+                assert i.types().issubset(set([int, int])), \
                     'PYSON digits must return an integer'
 
 

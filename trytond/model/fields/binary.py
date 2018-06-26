@@ -86,7 +86,7 @@ class Binary(Field):
                 continue
             value = i[name]
             if value:
-                if isinstance(value, unicode):
+                if isinstance(value, str):
                     value = value.encode('utf-8')
                 value = converter(value)
             else:

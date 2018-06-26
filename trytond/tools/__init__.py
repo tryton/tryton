@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import izip
+
 
 from .misc import *
 from .datetime_strftime import *
@@ -19,4 +19,4 @@ def cursor_dict(cursor, size=None):
         if not rows:
             break
         for row in rows:
-            yield {d[0]: v for d, v in izip(cursor.description, row)}
+            yield {d[0]: v for d, v in zip(cursor.description, row)}

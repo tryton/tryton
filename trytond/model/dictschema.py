@@ -80,7 +80,7 @@ class DictSchemaMixin(object):
                     selection = OrderedDict(json.loads(
                             english_key.selection_json))
                 selection.update(dict(json.loads(record.selection_json)))
-                new_key['selection'] = selection.items()
+                new_key['selection'] = list(selection.items())
                 new_key['sorted'] = record.selection_sorted
             elif record.type_ in ('float', 'numeric'):
                 new_key['digits'] = (16, record.digits)

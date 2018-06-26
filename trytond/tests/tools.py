@@ -8,7 +8,7 @@ __all__ = ['activate_modules', 'set_user']
 
 
 def activate_modules(modules):
-    if isinstance(modules, basestring):
+    if isinstance(modules, str):
         modules = [modules]
     cache_name = '-'.join(modules)
     if restore_db_cache(cache_name):

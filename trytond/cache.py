@@ -17,7 +17,7 @@ def freeze(o):
     if isinstance(o, (set, tuple, list)):
         return tuple(freeze(x) for x in o)
     elif isinstance(o, dict):
-        return frozenset((x, freeze(y)) for x, y in o.iteritems())
+        return frozenset((x, freeze(y)) for x, y in o.items())
     else:
         return o
 

@@ -44,7 +44,7 @@ class TriggerTestCase(unittest.TestCase):
             'action_model': action_model.id,
             'action_function': 'test',
             }
-        self.assert_(Trigger.create([values]))
+        self.assertTrue(Trigger.create([values]))
 
         transaction.rollback()
 
@@ -387,7 +387,7 @@ class TriggerTestCase(unittest.TestCase):
                     'name': 'Test',
                     }])
         Trigger.trigger_time()
-        self.assert_(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
         # Trigger with condition
@@ -402,7 +402,7 @@ class TriggerTestCase(unittest.TestCase):
                 'name': 'Bar',
                 })
         Trigger.trigger_time()
-        self.assert_(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
         # Non matching condition
@@ -410,7 +410,7 @@ class TriggerTestCase(unittest.TestCase):
                 'name': 'Foo',
                 })
         Trigger.trigger_time()
-        self.assert_(TRIGGER_LOGS == [])
+        self.assertTrue(TRIGGER_LOGS == [])
 
         # With limit number
         Trigger.write([trigger], {
@@ -419,7 +419,7 @@ class TriggerTestCase(unittest.TestCase):
                 })
         Trigger.trigger_time()
         Trigger.trigger_time()
-        self.assert_(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
         # Delete trigger logs of limit number test
@@ -434,7 +434,7 @@ class TriggerTestCase(unittest.TestCase):
                 })
         Trigger.trigger_time()
         Trigger.trigger_time()
-        self.assert_(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
         TRIGGER_LOGS.pop()
         Transaction().delete = {}
 
@@ -449,7 +449,7 @@ class TriggerTestCase(unittest.TestCase):
         Trigger.trigger_time()
         time.sleep(1.2)
         Trigger.trigger_time()
-        self.assert_(TRIGGER_LOGS == [([triggered], trigger),
+        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger),
                 ([triggered], trigger)])
         TRIGGER_LOGS.pop()
         TRIGGER_LOGS.pop()

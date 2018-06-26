@@ -97,7 +97,7 @@ class TableHandler(TableHandlerInterface):
         TableHandler.table_rename(self.table_name, temp_table)
         new_table = TableHandler(self._model, history=self.history)
         columns, old_columns = [], []
-        for column, values in self._columns.iteritems():
+        for column, values in self._columns.items():
             typname = new_columns.get(column, {}).get(
                 'typname', values['typname'])
             size = new_columns.get(column, {}).get('size', values['size'])
@@ -244,7 +244,7 @@ class TableHandler(TableHandlerInterface):
         warnings.warn('Unable to drop foreign key with SQLite backend')
 
     def index_action(self, column_name, action='add', table=None):
-        if isinstance(column_name, basestring):
+        if isinstance(column_name, str):
             column_name = [column_name]
         index_name = self.convert_name(
             self.table_name + "_" + '_'.join(column_name) + "_index")
@@ -296,13 +296,13 @@ class TableHandler(TableHandlerInterface):
         temp_table = '_temp_%s' % self.table_name
         TableHandler.table_rename(self.table_name, temp_table)
         new_table = TableHandler(self._model, history=self.history)
-        for name, values in self._columns.iteritems():
+        for name, values in self._columns.items():
             if name != column_name:
                 typname = values['typname']
                 size = values['size']
                 new_table._add_raw_column(
                     name, database.sql_type(typname), field_size=size)
-        columns_name = [x for x in new_table._columns.keys()]
+        columns_name = list(new_table._columns.keys())
         cursor.execute(('INSERT INTO "%s" (' +
                         ','.join('"%s"' % c for c in columns_name) +
                         ') SELECT ' +

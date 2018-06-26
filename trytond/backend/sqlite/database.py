@@ -1,14 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.backend.database import DatabaseInterface, SQLType
-from trytond.config import config
-import os
-from decimal import Decimal
 import datetime
-import time
-import sys
-import threading
 import logging
+import os
+import threading
+import time
+from decimal import Decimal
 
 _FIX_ROWCOUNT = False
 try:
@@ -24,6 +21,9 @@ except ImportError:
 from sql import Flavor, Table, Query, Expression
 from sql.functions import (Function, Extract, Position, Substring,
     Overlay, CharLength, CurrentTimestamp, Trim)
+
+from trytond.backend.database import DatabaseInterface, SQLType
+from trytond.config import config
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 logger = logging.getLogger(__name__)
@@ -171,7 +171,7 @@ class SQLiteTrim(Trim):
             }[self.position]
 
         def format(arg):
-            if isinstance(arg, basestring):
+            if isinstance(arg, str):
                 return param
             else:
                 return str(arg)
@@ -189,7 +189,7 @@ def sign(value):
 
 
 def greatest(*args):
-    args = filter(lambda a: a is not None, args)
+    args = [a for a in args if a is not None]
     if args:
         return max(args)
     else:
@@ -197,7 +197,7 @@ def greatest(*args):
 
 
 def least(*args):
-    args = filter(lambda a: a is not None, args)
+    args = [a for a in args if a is not None]
     if args:
         return min(args)
     else:
@@ -440,19 +440,15 @@ class Database(DatabaseInterface):
         return value
 
 sqlite.register_converter('NUMERIC', lambda val: Decimal(val.decode('utf-8')))
-if sys.version_info[0] == 2:
-    sqlite.register_adapter(Decimal, lambda val: buffer(str(val)))
-    sqlite.register_adapter(bytearray, lambda val: buffer(val))
-else:
-    sqlite.register_adapter(Decimal, lambda val: str(val).encode('utf-8'))
+sqlite.register_adapter(Decimal, lambda val: str(val).encode('utf-8'))
 
 
 def adapt_datetime(val):
     return val.replace(tzinfo=None).isoformat(" ")
 sqlite.register_adapter(datetime.datetime, adapt_datetime)
 sqlite.register_adapter(datetime.time, lambda val: val.isoformat())
-sqlite.register_converter('TIME', lambda val: datetime.time(*map(int,
-            val.decode('utf-8').split(':'))))
+sqlite.register_converter('TIME',
+    lambda val: datetime.time(*map(int, val.decode('utf-8').split(':'))))
 sqlite.register_adapter(datetime.timedelta, lambda val: val.total_seconds())
 
 

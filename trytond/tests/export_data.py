@@ -43,9 +43,8 @@ class ExportData(ModelSQL):
             ])
 
 
-class ExportDataTarget2:
+class ExportDataTarget2(metaclass=PoolMeta):
     'Export Date Target'
-    __metaclass__ = PoolMeta
     __name__ = 'test.export_data.target'
     one2many = fields.Many2One('test.export_data', 'Export Data')
 

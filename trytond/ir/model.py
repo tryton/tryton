@@ -253,7 +253,7 @@ class ModelField(ModelSQL, ModelView):
                 where=ir_model.model == model.__name__))
         model_fields = {f['name']: f for f in cursor_dict(cursor)}
 
-        for field_name, field in model._fields.iteritems():
+        for field_name, field in model._fields.items():
             if hasattr(field, 'model_name'):
                 relation = field.model_name
             elif hasattr(field, 'relation_name'):
@@ -339,7 +339,7 @@ class ModelField(ModelSQL, ModelView):
         to_delete = []
         if Transaction().context.get('language'):
             if fields_names is None:
-                fields_names = cls._fields.keys()
+                fields_names = list(cls._fields.keys())
 
             if 'field_description' in fields_names \
                     or 'help' in fields_names:
@@ -514,7 +514,7 @@ class ModelAccess(ModelSQL, ModelView):
         access.update(dict(
                 (m, {'read': r, 'write': w, 'create': c, 'delete': d})
                 for m, r, w, c, d in cursor.fetchall()))
-        for model, maccess in access.iteritems():
+        for model, maccess in access.items():
             cls._get_access_cache.set((user, model), maccess)
         return access
 
@@ -558,7 +558,7 @@ class ModelAccess(ModelSQL, ModelView):
                 return True
         elif field._type == 'reference':
             selection = field.selection
-            if isinstance(selection, basestring):
+            if isinstance(selection, str):
                 sel_func = getattr(Model, field.selection)
                 if not is_instance_method(Model, field.selection):
                     selection = sel_func()
@@ -703,7 +703,7 @@ class ModelFieldAccess(ModelSQL, ModelView):
                 group_by=[ir_model.model, model_field.name]))
         for m, f, r, w, c, d in cursor.fetchall():
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
-        for model, maccesses in accesses.iteritems():
+        for model, maccesses in accesses.items():
             cls._get_access_cache.set((user, model), maccesses)
         return accesses
 
@@ -723,7 +723,7 @@ class ModelFieldAccess(ModelSQL, ModelView):
             return True
 
         accesses = dict((f, a[mode])
-            for f, a in cls.get_access([model_name])[model_name].iteritems())
+            for f, a in cls.get_access([model_name])[model_name].items())
         if access:
             return accesses
         for field in fields:
@@ -1212,7 +1212,7 @@ class ModelData(ModelSQL, ModelView):
     @classmethod
     def dump_values(cls, values):
         return json.dumps(
-            sorted(values.iteritems()), cls=JSONEncoder, separators=(',', ':'))
+            sorted(values.items()), cls=JSONEncoder, separators=(',', ':'))
 
     @classmethod
     def load_values(cls, values):
@@ -1245,7 +1245,7 @@ class ModelData(ModelSQL, ModelView):
             to_write.extend([[data], {
                         'values': cls.dump_values(fs_values),
                         }])
-        for Model, values_to_write in models_to_write.iteritems():
+        for Model, values_to_write in models_to_write.items():
             Model.write(*values_to_write)
         if to_write:
             cls.write(*to_write)

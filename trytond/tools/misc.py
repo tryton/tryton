@@ -22,11 +22,7 @@ from trytond.const import OPERATORS
 def file_open(name, mode="r", subdir='modules', encoding=None):
     """Open a file from the root dir, using a subdir folder."""
     from trytond.modules import EGG_MODULES
-    if sys.version_info < (3,):
-        filename = __file__.decode(sys.getfilesystemencoding())
-    else:
-        filename = __file__
-    root_path = os.path.dirname(os.path.dirname(os.path.abspath(filename)))
+    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     def secure_join(root, *paths):
         "Join paths and ensure it still below root"
@@ -116,11 +112,11 @@ def memoize(maxsize):
 
     def wrap(fct):
         cache = {}
-        keys = [None for i in xrange(maxsize)]
+        keys = [None for i in range(maxsize)]
         seg_size = maxsize // 4
 
-        pointers = [i * seg_size for i in xrange(4)]
-        max_pointers = [(i + 1) * seg_size for i in xrange(3)] + [maxsize]
+        pointers = [i * seg_size for i in range(4)]
+        max_pointers = [(i + 1) * seg_size for i in range(3)] + [maxsize]
 
         def wrapper(*args):
             key = repr(args)
@@ -164,7 +160,7 @@ def reduce_ids(field, ids):
         return Literal(False)
     assert all(x.is_integer() for x in ids if isinstance(x, float)), \
         'ids must be integer'
-    ids = map(int, ids)
+    ids = list(map(int, ids))
     ids.sort()
     prev = ids.pop(0)
     continue_list = [prev, prev]
@@ -200,7 +196,7 @@ def reduce_domain(domain):
     if not domain:
         return []
     operator = 'AND'
-    if isinstance(domain[0], basestring):
+    if isinstance(domain[0], str):
         operator = domain[0]
         domain = domain[1:]
     result = [operator]
@@ -229,7 +225,7 @@ def grouped_slice(records, count=None):
     from trytond.transaction import Transaction
     if count is None:
         count = Transaction().database.IN_MAX
-    for i in xrange(0, len(records), count):
+    for i in range(0, len(records), count):
         yield islice(records, i, i + count)
 
 

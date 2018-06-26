@@ -3,7 +3,7 @@
 import time
 import logging
 import os
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import json
 from decimal import Decimal
 from threading import RLock
@@ -49,7 +49,7 @@ def unescape_quote(s):
 
 
 def replace_special_values(s, **mapping):
-    for name, value in mapping.iteritems():
+    for name, value in mapping.items():
         s = s.replace('$' + name, value)
     return s
 
@@ -111,7 +111,7 @@ class Database(DatabaseInterface):
         port = uri.port and "port=%s" % uri.port or ''
         name = "dbname=%s" % name
         user = uri.username and "user=%s" % uri.username or ''
-        password = ("password=%s" % urllib.unquote_plus(uri.password)
+        password = ("password=%s" % urllib.parse.unquote_plus(uri.password)
             if uri.password else '')
         return '%s %s %s %s %s' % (host, port, name, user, password)
 

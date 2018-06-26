@@ -116,8 +116,8 @@ class UserTestCase(unittest.TestCase):
         User = pool.get('res.user')
 
         with self.assertRaises(UserError):
-            User.validate_password(u'123', [])
-        User.validate_password(u'1234', [])
+            User.validate_password('123', [])
+        User.validate_password('1234', [])
 
     @with_transaction()
     def test_validate_password_forbidden(self):
@@ -126,7 +126,7 @@ class UserTestCase(unittest.TestCase):
         User = pool.get('res.user')
 
         with self.assertRaises(UserError):
-            User.validate_password(u'password', [])
+            User.validate_password('password', [])
 
     @with_transaction()
     def test_validate_password_entropy(self):

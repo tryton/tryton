@@ -329,7 +329,7 @@ class TableHandler(TableHandlerInterface):
         self.drop_constraint(column_name + '_fkey', table=table)
 
     def index_action(self, column_name, action='add', table=None):
-        if isinstance(column_name, basestring):
+        if isinstance(column_name, str):
             column_name = [column_name]
         index_name = self.convert_name(
             ((table or self.table_name) + "_" + '_'.join(column_name) +

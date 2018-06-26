@@ -24,7 +24,7 @@ class Numeric(Float):
     def sql_format(self, value):
         if value is None:
             return None
-        if isinstance(value, (int, long)):
+        if isinstance(value, int):
             value = Decimal(str(value))
         value = Decimal(value)
         return value

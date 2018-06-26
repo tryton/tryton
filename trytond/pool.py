@@ -5,7 +5,7 @@ from threading import RLock
 import logging
 from trytond.modules import load_modules, register_classes
 from trytond.transaction import Transaction
-import __builtin__
+import builtins
 
 __all__ = ['Pool', 'PoolMeta', 'PoolBase', 'isregisteredby']
 
@@ -24,9 +24,7 @@ class PoolMeta(type):
         return new
 
 
-class PoolBase(object):
-    __metaclass__ = PoolMeta
-
+class PoolBase(object, metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         pass
@@ -99,7 +97,7 @@ class Pool(object):
         Start/restart the Pool
         '''
         with cls._lock:
-            for classes in Pool.classes.itervalues():
+            for classes in Pool.classes.values():
                 classes.clear()
             register_classes()
             cls._started = True
@@ -181,7 +179,7 @@ class Pool(object):
             if type == 'report':
                 from trytond.report import Report
                 # Keyword argument 'type' conflicts with builtin function
-                cls = __builtin__.type(str(name), (Report,), {})
+                cls = builtins.type(str(name), (Report,), {})
                 cls.__setup__()
                 self.add(cls, type)
                 return cls
@@ -201,7 +199,7 @@ class Pool(object):
         :param type: the type
         :return: an iterator
         '''
-        return self._pool[self.database_name][type].iteritems()
+        return self._pool[self.database_name][type].items()
 
     def fill(self, module, modules):
         '''
@@ -230,8 +228,8 @@ class Pool(object):
         if classes is None:
             classes = {}
             for type_ in self._pool[self.database_name]:
-                classes[type_] = self._pool[self.database_name][type_].values()
-        for type_, lst in classes.iteritems():
+                classes[type_] = list(self._pool[self.database_name][type_].values())
+        for type_, lst in classes.items():
             for cls in lst:
                 cls.__setup__()
             for cls in lst:

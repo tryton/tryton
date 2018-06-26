@@ -17,7 +17,7 @@ from .access import *
 from .wizard import *
 from .workflow import *
 from .copy_ import *
-from history import *
+from .history import *
 from .field_context import *
 from . import model
 from . import modelstorage

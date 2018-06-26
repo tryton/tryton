@@ -237,11 +237,11 @@ class Rule(ModelSQL, ModelView):
         if fetchone:
             group_id = fetchone[0]
             clause[group_id] = []
-        clause = clause.values()
+        clause = list(clause.values())
         if clause:
             clause.insert(0, 'OR')
 
-        clause_global = clause_global.values()
+        clause_global = list(clause_global.values())
 
         if clause_global:
             clause_global.insert(0, 'AND')
