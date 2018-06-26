@@ -26,8 +26,7 @@ def process_sale(func):
     return wrapper
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
     sale_exception_state = fields.Function(fields.Selection([
         ('', ''),
@@ -110,8 +109,7 @@ class Invoice:
         return super(Invoice, cls).draft(invoices)
 
 
-class InvoiceLine:
-    __metaclass__ = PoolMeta
+class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     @classmethod

@@ -11,8 +11,7 @@ from trytond import backend
 __all__ = ['ShipmentOut', 'ShipmentOutReturn', 'Move']
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -62,8 +61,7 @@ class ShipmentOut:
         return super(ShipmentOut, cls).draft(shipments)
 
 
-class ShipmentOutReturn:
-    __metaclass__ = PoolMeta
+class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
     @classmethod
@@ -117,8 +115,7 @@ class ShipmentOutReturn:
         return super(ShipmentOutReturn, cls).draft(shipments)
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     sale = fields.Function(fields.Many2One('sale.sale', 'Sale', select=True),
         'get_sale', searcher='search_sale')

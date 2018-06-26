@@ -62,7 +62,7 @@ def search_shipments_returns(model_name):
             return [('lines.moves.shipment' + nested,)
                 + tuple(clause[1:3]) + (model_name,) + tuple(clause[3:])]
         else:
-            if isinstance(clause[2], basestring):
+            if isinstance(clause[2], str):
                 target = 'rec_name'
             else:
                 target = 'id'
@@ -492,7 +492,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             for line in self.lines:
                 self.untaxed_amount += getattr(line, 'amount', None) or 0
             taxes = self._get_taxes()
-            self.tax_amount = sum(v['amount'] for v in taxes.itervalues())
+            self.tax_amount = sum(v['amount'] for v in taxes.values())
         if self.currency:
             self.untaxed_amount = self.currency.round(self.untaxed_amount)
             self.tax_amount = self.currency.round(self.tax_amount)
@@ -520,7 +520,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     def get_tax_amount(self):
         return sum(
-            (v['amount'] for v in self._get_taxes().itervalues()), Decimal(0))
+            (v['amount'] for v in self._get_taxes().values()), Decimal(0))
 
     @classmethod
     def get_amount(cls, sales, names):
@@ -559,7 +559,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'tax_amount': tax_amount,
             'total_amount': total_amount,
             }
-        for key in result.keys():
+        for key in list(result.keys()):
             if key not in names:
                 del result[key]
         return result
@@ -855,10 +855,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         if not moves:
             return
         if shipment_type == 'out':
-            keyfunc = partial(self._group_shipment_key, moves.values())
+            keyfunc = partial(self._group_shipment_key, list(moves.values()))
             Shipment = pool.get('stock.shipment.out')
         elif shipment_type == 'return':
-            keyfunc = partial(self._group_return_key, moves.values())
+            keyfunc = partial(self._group_return_key, list(moves.values()))
             Shipment = pool.get('stock.shipment.out.return')
         moves = moves.items()
         moves = sorted(moves, key=keyfunc)
@@ -1350,10 +1350,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in self.moves
                     if m.state != 'cancel'))
-            if dates:
-                return min(dates)
-            else:
-                return
+            return min(dates, default=None)
         if self.product and self.quantity is not None and self.quantity > 0:
             date = self.sale.sale_date if self.sale else None
             shipping_date = self.product.compute_shipping_date(date=date)

@@ -37,7 +37,7 @@ Create empty sale::
     >>> sale.party = customer
     >>> sale.click('quote')
     >>> sale.state
-    u'quotation'
+    'quotation'
     >>> sale.untaxed_amount
     Decimal('0')
     >>> sale.tax_amount
@@ -46,17 +46,17 @@ Create empty sale::
     Decimal('0')
     >>> sale.click('confirm')
     >>> sale.state
-    u'confirmed'
+    'confirmed'
     >>> sale.click('process')
     >>> sale.state
-    u'done'
+    'done'
     >>> sale.shipment_state
-    u'none'
+    'none'
     >>> len(sale.shipments)
     0
     >>> len(sale.shipment_returns)
     0
     >>> sale.invoice_state
-    u'none'
+    'none'
     >>> len(sale.invoices)
     0

@@ -12,8 +12,7 @@ from trytond.modules.product import price_digits
 __all__ = ['Template', 'Product']
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     salable = fields.Boolean('Salable', states={
             'readonly': ~Eval('active', True),
@@ -81,8 +80,7 @@ class Template:
                     })]
 
 
-class Product:
-    __metaclass__ = PoolMeta
+class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
     sale_price_uom = fields.Function(fields.Numeric(

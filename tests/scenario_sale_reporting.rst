@@ -218,11 +218,11 @@ Check sale reporting per categories::
     5
     >>> with config.set_context(context=context):
     ...     sorted((r.name, r.revenue) for r in tree) == sorted([
-    ...         (u'Root1', Decimal('40')),
-    ...         (u'Child1', Decimal('30')),
-    ...         (u'Child2', Decimal('10')),
-    ...         (u'Root2', Decimal('30')),
-    ...         (u'Account Category', Decimal('40'))])
+    ...         ('Root1', Decimal('40')),
+    ...         ('Child1', Decimal('30')),
+    ...         ('Child2', Decimal('10')),
+    ...         ('Root2', Decimal('30')),
+    ...         ('Account Category', Decimal('40'))])
     True
 
 Check sale reporting per regions::

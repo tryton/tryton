@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
-from itertools import tee, izip_longest
+from itertools import tee, zip_longest
 
 try:
     import pygal
@@ -31,8 +31,8 @@ __all__ = ['Context',
 
 def pairwise(iterable):
     a, b = tee(iterable)
-    b.next()
-    return izip_longest(a, b)
+    next(b)
+    return zip_longest(a, b)
 
 
 class Abstract(ModelSQL):
@@ -487,7 +487,7 @@ class CategoryTree(ModelSQL, ModelView):
     def _sum_tree(cls, categories, values, parents):
         result = values.copy()
         categories = set((c.id for c in categories))
-        leafs = categories - set(parents.itervalues())
+        leafs = categories - set(parents.values())
         while leafs:
             for category in leafs:
                 categories.remove(category)
@@ -644,7 +644,7 @@ class Region(UnionMixin, Abstract, ModelView):
         for record in records:
             record = cls.union_unshard(record.id)
             classes[record.__class__].append(record)
-        for klass, records in classes.iteritems():
+        for klass, records in classes.items():
             for record in klass.browse(records):
                 names[cls.union_shard(record.id, klass.__name__)] = (
                     record.rec_name)

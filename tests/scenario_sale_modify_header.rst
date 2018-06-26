@@ -90,6 +90,6 @@ Change the party::
     >>> modify_header.execute('modify')
 
     >>> sale.party.name
-    u'Another Customer'
+    'Another Customer'
     >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
     (Decimal('30.00'), Decimal('0'), Decimal('30.00'))

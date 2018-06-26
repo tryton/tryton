@@ -119,7 +119,7 @@ Create an Inventory::
     >>> inventory_line.expected_quantity = 0.0
     >>> inventory.click('confirm')
     >>> inventory.state
-    u'done'
+    'done'
 
 Sale 5 products::
 
@@ -151,11 +151,11 @@ Sale 5 products::
     >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
     (Decimal('50.00'), Decimal('5.00'), Decimal('55.00'))
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.shipment_state
-    u'waiting'
+    'waiting'
     >>> sale.invoice_state
-    u'waiting'
+    'waiting'
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 1)
     >>> invoice, = sale.invoices
@@ -194,9 +194,9 @@ Testing the report::
     >>> sale_report = Report('sale.sale')
     >>> ext, _, _, name = sale_report.execute([sale], {})
     >>> ext
-    u'odt'
+    'odt'
     >>> name
-    u'Sale'
+    'Sale'
 
 Sale 5 products with an invoice method 'on shipment'::
 
@@ -222,11 +222,11 @@ Sale 5 products with an invoice method 'on shipment'::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.shipment_state
-    u'waiting'
+    'waiting'
     >>> sale.invoice_state
-    u'none'
+    'none'
     >>> sale.reload()
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (1, 0, 0)
@@ -252,10 +252,10 @@ Open customer invoice::
 
     >>> sale.reload()
     >>> sale.invoice_state
-    u'waiting'
+    'waiting'
     >>> invoice, = sale.invoices
     >>> invoice.type
-    u'out'
+    'out'
     >>> invoice_line1, invoice_line2 = sorted(invoice.lines,
     ...     key=lambda l: l.quantity or 0)
     >>> for line in invoice.lines:
@@ -291,11 +291,11 @@ Sale 5 products with shipment method 'on invoice'::
     >>> sale.click('confirm')
     >>> sale.click('process')
     >>> sale.state
-    u'processing'
+    'processing'
     >>> sale.shipment_state
-    u'none'
+    'none'
     >>> sale.invoice_state
-    u'waiting'
+    'waiting'
     >>> len(sale.shipments), len(sale.shipment_returns), len(sale.invoices)
     (0, 0, 1)
 
@@ -318,7 +318,7 @@ Post and Pay Invoice for 4 products::
     >>> pay.execute('choice')
     >>> invoice.reload()
     >>> invoice.state
-    u'paid'
+    'paid'
 
 Invoice lines linked to 1 move::
 
@@ -348,7 +348,7 @@ Ship 3 products::
     >>> shipment.click('pack')
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
 
 New shipments created::
 
@@ -381,11 +381,11 @@ Create a Return::
     >>> return_.click('confirm')
     >>> return_.click('process')
     >>> return_.state
-    u'processing'
+    'processing'
     >>> return_.shipment_state
-    u'waiting'
+    'waiting'
     >>> return_.invoice_state
-    u'none'
+    'none'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 1, 0)
@@ -395,7 +395,7 @@ Receive Return Shipment for 3 products::
     >>> ship_return, = return_.shipment_returns
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.rec_name
-    u'product'
+    'product'
     >>> move_return.quantity
     4.0
     >>> move_return.quantity = 3
@@ -405,9 +405,9 @@ Check Return::
 
     >>> return_.reload()
     >>> return_.shipment_state
-    u'waiting'
+    'waiting'
     >>> return_.invoice_state
-    u'waiting'
+    'waiting'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 2, 1)
@@ -416,7 +416,7 @@ Open customer credit note::
 
     >>> credit_note, = return_.invoices
     >>> credit_note.type
-    u'out'
+    'out'
     >>> len(credit_note.lines)
     1
     >>> sum(l.quantity for l in credit_note.lines)
@@ -429,7 +429,7 @@ Receive Remaining Return Shipment::
     >>> _, ship_return = return_.shipment_returns
     >>> move_return, = ship_return.incoming_moves
     >>> move_return.product.rec_name
-    u'product'
+    'product'
     >>> move_return.quantity
     1.0
     >>> ship_return.click('receive')
@@ -438,9 +438,9 @@ Check Return::
 
     >>> return_.reload()
     >>> return_.shipment_state
-    u'sent'
+    'sent'
     >>> return_.invoice_state
-    u'waiting'
+    'waiting'
     >>> (len(return_.shipments), len(return_.shipment_returns),
     ...     len(return_.invoices))
     (0, 2, 2)
@@ -467,11 +467,11 @@ Mixing return and sale::
     >>> mix.click('confirm')
     >>> mix.click('process')
     >>> mix.state
-    u'processing'
+    'processing'
     >>> mix.shipment_state
-    u'waiting'
+    'waiting'
     >>> mix.invoice_state
-    u'waiting'
+    'waiting'
     >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
     (1, 1, 1)
 
@@ -482,7 +482,7 @@ Checking Shipments::
     >>> mix_return.click('receive')
     >>> move_return, = mix_return.incoming_moves
     >>> move_return.product.rec_name
-    u'product'
+    'product'
     >>> move_return.quantity
     2.0
     >>> mix_shipment.click('assign_try')
@@ -491,7 +491,7 @@ Checking Shipments::
     >>> mix_shipment.click('done')
     >>> move_shipment, = mix_shipment.outgoing_moves
     >>> move_shipment.product.rec_name
-    u'product'
+    'product'
     >>> move_shipment.quantity
     7.0
 
@@ -500,7 +500,7 @@ Checking the invoice::
     >>> mix.reload()
     >>> mix_invoice, = mix.invoices
     >>> mix_invoice.type
-    u'out'
+    'out'
     >>> len(mix_invoice.lines)
     3
     >>> sorted(l.quantity for l in mix_invoice.lines if l.quantity)
@@ -529,11 +529,11 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mix.click('confirm')
     >>> mix.click('process')
     >>> mix.state
-    u'processing'
+    'processing'
     >>> mix.shipment_state
-    u'waiting'
+    'waiting'
     >>> mix.invoice_state
-    u'none'
+    'none'
     >>> len(mix.shipments), len(mix.shipment_returns), len(mix.invoices)
     (1, 1, 0)
 
@@ -544,7 +544,7 @@ Checking Shipments::
     >>> mix_return.click('receive')
     >>> move_return, = mix_return.incoming_moves
     >>> move_return.product.rec_name
-    u'product'
+    'product'
     >>> move_return.quantity
     3.0
     >>> mix_shipment.click('assign_try')
@@ -552,7 +552,7 @@ Checking Shipments::
     >>> mix_shipment.click('pack')
     >>> move_shipment, = mix_shipment.outgoing_moves
     >>> move_shipment.product.rec_name
-    u'product'
+    'product'
     >>> move_shipment.quantity
     6.0
 
@@ -569,11 +569,11 @@ Sale services::
     >>> service_sale.click('confirm')
     >>> service_sale.click('process')
     >>> service_sale.state
-    u'processing'
+    'processing'
     >>> service_sale.shipment_state
-    u'none'
+    'none'
     >>> service_sale.invoice_state
-    u'waiting'
+    'waiting'
     >>> service_invoice, = service_sale.invoices
 
 Pay the service invoice::
@@ -584,17 +584,17 @@ Pay the service invoice::
     >>> pay.execute('choice')
     >>> service_invoice.reload()
     >>> service_invoice.state
-    u'paid'
+    'paid'
 
 Check service sale states::
 
     >>> service_sale.reload()
     >>> service_sale.invoice_state
-    u'paid'
+    'paid'
     >>> service_sale.shipment_state
-    u'none'
+    'none'
     >>> service_sale.state
-    u'done'
+    'done'
 
 Return sales using the wizard::
 
@@ -611,7 +611,7 @@ Return sales using the wizard::
     >>> sale_to_return.click('confirm')
     >>> sale_to_return.click('process')
     >>> sale_to_return.state
-    u'processing'
+    'processing'
     >>> return_sale = Wizard('sale.return_sale', [sale_to_return])
     >>> return_sale.execute('return_')
     >>> returned_sale, = Sale.find([
@@ -651,7 +651,7 @@ to invoices::
     >>> stock_move.quantity
     5.0
     >>> stock_move.state
-    u'done'
+    'done'
 
 Create a sale to be sent on invoice partially and check correctly linked to
 invoices::
@@ -677,13 +677,13 @@ invoices::
     >>> pay.execute('choice')
     >>> invoice.reload()
     >>> invoice.state
-    u'paid'
+    'paid'
     >>> invoice_line.reload()
     >>> stock_move, = invoice_line.stock_moves
     >>> stock_move.quantity
     5.0
     >>> stock_move.state
-    u'draft'
+    'draft'
 
 Deleting a line from a invoice should recreate it::
 
