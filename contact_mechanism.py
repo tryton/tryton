@@ -271,6 +271,6 @@ class ContactMechanism(
         "Returns the selection list of usage"
         usages = [(None, "")]
         if _fields:
-            for name, desc in cls.fields_get(_fields).iteritems():
+            for name, desc in cls.fields_get(_fields).items():
                 usages.append((name, desc['string']))
         return usages

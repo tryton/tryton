@@ -148,7 +148,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         if context.get('address_with_party', False):
             substitutions['party_name'] = (self.party.full_name
                 if getattr(self, 'party', None) else '')
-        for key, value in substitutions.items():
+        for key, value in list(substitutions.items()):
             substitutions[key.upper()] = value.upper()
         return substitutions
 
@@ -276,7 +276,7 @@ ${COUNTRY}"""
         try:
             Template(self.format_).substitute(
                 **address._get_address_substitutions())
-        except Exception, exception:
+        except Exception as exception:
             self.raise_user_error('invalid_format', {
                     'format': self.format_,
                     'exception': exception,
@@ -303,7 +303,7 @@ ${COUNTRY}"""
             language = None
         pattern.setdefault('language', language.id if language else None)
 
-        key = tuple(sorted(pattern.iteritems()))
+        key = tuple(sorted(pattern.items()))
         format_ = cls._get_format_cache.get(key)
         if format_ is not None:
             return format_

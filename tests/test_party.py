@@ -28,7 +28,7 @@ class PartyTestCase(ModuleTestCase):
         category1, = Category.create([{
                     'name': 'Category 1',
                     }])
-        self.assert_(category1.id)
+        self.assertTrue(category1.id)
 
     @with_transaction()
     def test_category_recursion(self):
@@ -42,7 +42,7 @@ class PartyTestCase(ModuleTestCase):
                     'name': 'Category 2',
                     'parent': category1.id,
                     }])
-        self.assert_(category2.id)
+        self.assertTrue(category2.id)
 
         self.assertRaises(Exception, Category.write, [category1], {
                 'parent': category2.id,
@@ -56,7 +56,7 @@ class PartyTestCase(ModuleTestCase):
         party1, = Party.create([{
                     'name': 'Party 1',
                     }])
-        self.assert_(party1.id)
+        self.assertTrue(party1.id)
 
     @with_transaction()
     def test_party_code(self):
@@ -92,7 +92,7 @@ class PartyTestCase(ModuleTestCase):
                     'street': 'St sample, 15',
                     'city': 'City',
                     }])
-        self.assert_(address.id)
+        self.assertTrue(address.id)
         self.assertMultiLineEqual(address.full_address,
             "St sample, 15\n"
             "City")
@@ -219,7 +219,7 @@ class PartyTestCase(ModuleTestCase):
         pool = Pool()
         Party = pool.get('party.party')
         party2, = Party.create([{}])
-        self.assert_(party2.id)
+        self.assertTrue(party2.id)
         code = party2.code
         self.assertEqual(party2.rec_name, '[' + code + ']')
 

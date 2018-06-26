@@ -240,7 +240,7 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         """
         default_mechanism = None
         if types:
-            if isinstance(types, basestring):
+            if isinstance(types, str):
                 types = {types}
             mechanisms = [m for m in self.contact_mechanisms
                 if m.type in types]
@@ -431,7 +431,7 @@ class CheckVIES(Wizard):
                         parties_failed.append(party.id)
                     else:
                         parties_succeed.append(party.id)
-                except Exception, e:
+                except Exception as e:
                     if hasattr(e, 'faultstring') \
                             and hasattr(e.faultstring, 'find'):
                         if e.faultstring.find('INVALID_INPUT'):
@@ -604,7 +604,7 @@ class PartyErase(Wizard):
                 table = table.join(right, condition=condition)
             else:
                 table = right
-            for k, sub_tables in tables.iteritems():
+            for k, sub_tables in tables.items():
                 if k is None:
                     continue
                 table = convert_from(table, sub_tables)
@@ -615,7 +615,7 @@ class PartyErase(Wizard):
         with Transaction().set_context(active_test=False):
             while replacing:
                 replacing = Party.search([
-                        ('replaced_by', 'in', map(int, replacing)),
+                        ('replaced_by', 'in', list(map(int, replacing))),
                         ])
                 parties += replacing
         for party in parties:

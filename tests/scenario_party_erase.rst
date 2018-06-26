@@ -55,7 +55,7 @@ Check fields have been erased::
     >>> party.name
     >>> identifier.reload()
     >>> identifier.code
-    u'****'
+    '****'
     >>> address.reload()
     >>> address.street
     >>> address.city
