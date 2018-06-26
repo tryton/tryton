@@ -13,8 +13,7 @@ from trytond.transaction import Transaction
 __all__ = ['AccountTemplate']
 
 
-class AccountTemplate:
-    __metaclass__ = PoolMeta
+class AccountTemplate(metaclass=PoolMeta):
     __name__ = 'account.account.template'
 
     @classmethod
