@@ -121,23 +121,23 @@ Create invoice::
     Decimal('120.00')
     >>> invoice.save()
     >>> invoice.state
-    u'draft'
+    'draft'
     >>> bool(invoice.move)
     False
     >>> invoice.click('validate_invoice')
     >>> invoice.state
-    u'validated'
+    'validated'
     >>> bool(invoice.move)
     True
     >>> invoice.move.state
-    u'draft'
+    'draft'
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> bool(invoice.move)
     True
     >>> invoice.move.state
-    u'posted'
+    'posted'
     >>> invoice.untaxed_amount
     Decimal('110.00')
     >>> invoice.tax_amount
@@ -184,7 +184,7 @@ Credit invoice::
     >>> credit_note, = Invoice.find(
     ...     [('type', '=', 'in'), ('id', '!=', invoice.id)])
     >>> credit_note.state
-    u'draft'
+    'draft'
     >>> credit_note.untaxed_amount == -invoice.untaxed_amount
     True
     >>> credit_note.tax_amount == -invoice.tax_amount
@@ -210,7 +210,7 @@ Cancel draft invoice::
 
     >>> invoice_draft.click('cancel')
     >>> invoice_draft.state
-    u'cancel'
+    'cancel'
     >>> invoice_draft.move
     >>> invoice_draft.reconciled
 
@@ -218,7 +218,7 @@ Cancel posted invoice::
 
     >>> invoice.click('cancel')
     >>> invoice.state
-    u'cancel'
+    'cancel'
     >>> invoice.cancel_move is not None
     True
     >>> invoice.reconciled == today

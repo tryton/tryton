@@ -576,7 +576,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for key in computed_taxes:
             if key not in tax_keys:
                 self.tax_amount += computed_taxes[key]['amount']
-                value = InvoiceTax.default_get(InvoiceTax._fields.keys())
+                value = InvoiceTax.default_get(list(InvoiceTax._fields.keys()))
                 value.update(computed_taxes[key])
                 invoice_tax = InvoiceTax(**value)
                 if invoice_tax.tax:
@@ -680,7 +680,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             'tax_amount': tax_amount,
             'total_amount': total_amount,
             }
-        for key in result.keys():
+        for key in list(result.keys()):
             if key not in names:
                 del result[key]
         return result
@@ -880,7 +880,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     def _compute_taxes(self):
         taxes = self._get_taxes()
-        for tax in taxes.itervalues():
+        for tax in taxes.values():
             tax['invoice'] = self.id
         return taxes
 
@@ -895,7 +895,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 continue
             computed_taxes = invoice._compute_taxes()
             if not invoice.taxes:
-                to_create.extend([tax for tax in computed_taxes.values()])
+                to_create.extend(computed_taxes.values())
             else:
                 tax_keys = []
                 for tax in invoice.taxes:
@@ -1119,7 +1119,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ]
 
     def get_origins(self, name):
-        return ', '.join(set(itertools.ifilter(None,
+        return ', '.join(set(filter(None,
                     (l.origin_name for l in self.lines))))
 
     @classmethod
@@ -1209,7 +1209,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if not l.reconciliation]
 
         best = Result([], self.total_amount)
-        for n in xrange(len(lines), 0, -1):
+        for n in range(len(lines), 0, -1):
             for comb_lines in combinations(lines, n):
                 remainder = sum((l.debit - l.credit) for l in comb_lines)
                 remainder -= amount
@@ -1287,7 +1287,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def add_payment_lines(cls, payments):
         "Add value lines to the key invoice from the payment dictionary."
         to_write = []
-        for invoice, lines in payments.iteritems():
+        for invoice, lines in payments.items():
             if invoice.state == 'paid':
                 cls.raise_user_error('modify_payment_lines_invoice_paid', {
                         'invoice': invoice.rec_name,
@@ -1304,7 +1304,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         PaymentLine = pool.get('account.invoice-account.move.line')
 
         payments = defaultdict(list)
-        ids = map(int, lines)
+        ids = list(map(int, lines))
         for sub_ids in grouped_slice(ids):
             payment_lines = PaymentLine.search([
                     ('line', 'in', list(sub_ids)),
@@ -1313,7 +1313,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 payments[payment_line.invoice].append(payment_line.line)
 
         to_write = []
-        for invoice, lines in payments.iteritems():
+        for invoice, lines in payments.items():
             if invoice.state == 'paid':
                 cls.raise_user_error('modify_payment_lines_invoice_paid', {
                         'invoice': invoice.rec_name,
@@ -1360,7 +1360,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls.update_taxes(new_invoices)
         if refund:
             cls.post(new_invoices)
-            for invoice, new_invoice in itertools.izip(invoices, new_invoices):
+            for invoice, new_invoice in zip(invoices, new_invoices):
                 if new_invoice.state == 'posted':
                     MoveLine.reconcile([l for l in invoice.lines_to_pay
                             if not l.reconciliation] +
@@ -1887,7 +1887,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def get_invoice_taxes(self, name):
         if not self.invoice:
             return
-        taxes_keys = self._get_taxes().keys()
+        taxes_keys = list(self._get_taxes().keys())
         taxes = []
         for tax in self.invoice.taxes:
             if tax.manual:

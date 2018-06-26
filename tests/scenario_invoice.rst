@@ -158,9 +158,9 @@ Post invoice::
 
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> invoice.tax_identifier.code
-    u'BE0897290877'
+    'BE0897290877'
     >>> invoice.untaxed_amount
     Decimal('220.00')
     >>> invoice.tax_amount
@@ -206,7 +206,7 @@ Credit invoice with refund::
     >>> credit.execute('credit')
     >>> invoice.reload()
     >>> invoice.state
-    u'paid'
+    'paid'
     >>> invoice.reconciled == today
     True
     >>> receivable.reload()
@@ -295,7 +295,7 @@ Pay invoice::
     >>> pay.execute('pay')
 
     >>> invoice.state
-    u'paid'
+    'paid'
 
 Create empty invoice::
 
@@ -304,7 +304,7 @@ Create empty invoice::
     >>> invoice.payment_term = payment_term
     >>> invoice.click('post')
     >>> invoice.state
-    u'paid'
+    'paid'
 
 Create some complex invoice and test its taxes base rounding::
 
@@ -355,14 +355,14 @@ Create a paid invoice::
     'end'
     >>> invoice.tax_identifier
     >>> invoice.state
-    u'paid'
+    'paid'
 
 The invoice is posted when the reconciliation is deleted::
 
     >>> invoice.payment_lines[0].reconciliation.delete()
     >>> invoice.reload()
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> invoice.tax_identifier
 
 Credit invoice with non line lines::

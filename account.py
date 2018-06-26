@@ -18,8 +18,7 @@ __all__ = ['FiscalYear',
     'RenewFiscalYear']
 
 
-class FiscalYear:
-    __metaclass__ = PoolMeta
+class FiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear'
     invoice_sequences = fields.One2Many(
         'account.fiscalyear.invoice_sequence', 'fiscalyear',
@@ -72,8 +71,7 @@ class FiscalYear:
         return [{}]
 
 
-class Period:
-    __metaclass__ = PoolMeta
+class Period(metaclass=PoolMeta):
     __name__ = 'account.period'
 
     @classmethod
@@ -188,8 +186,7 @@ class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         return Transaction().context.get('company')
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'account.move'
 
     @classmethod
@@ -197,8 +194,7 @@ class Move:
         return super(Move, cls)._get_origin() + ['account.invoice']
 
 
-class MoveLine:
-    __metaclass__ = PoolMeta
+class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
 
     invoice_payment = fields.Function(fields.Many2One(
@@ -231,7 +227,7 @@ class MoveLine:
         pool = Pool()
         InvoicePaymentLine = pool.get('account.invoice-account.move.line')
 
-        ids = map(int, lines)
+        ids = list(map(int, lines))
         result = dict.fromkeys(ids, None)
         for sub_ids in grouped_slice(ids):
             payment_lines = InvoicePaymentLine.search([
@@ -253,8 +249,7 @@ class MoveLine:
         return [('invoice_payments',) + tuple(domain[1:])]
 
 
-class Reconciliation:
-    __metaclass__ = PoolMeta
+class Reconciliation(metaclass=PoolMeta):
     __name__ = 'account.move.reconciliation'
 
     @classmethod
@@ -285,9 +280,8 @@ class Reconciliation:
         Invoice.process(invoices)
 
 
-class RenewFiscalYear:
+class RenewFiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear.renew'
-    __metaclass__ = PoolMeta
 
     @property
     def invoice_sequence_fields(self):
@@ -306,7 +300,7 @@ class RenewFiscalYear:
             for field in self.invoice_sequence_fields:
                 sequence = getattr(invoice_sequence, field, None)
                 sequences[sequence.id] = sequence
-        copies = Sequence.copy(sequences.values(), default={
+        copies = Sequence.copy(list(sequences.values()), default={
                 'next_number': 1,
                 })
 

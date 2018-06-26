@@ -135,7 +135,7 @@ Create invoice with alternate currency::
     Decimal('460.00')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> invoice.untaxed_amount
     Decimal('420.00')
     >>> invoice.tax_amount
@@ -163,7 +163,7 @@ Pay the invoice with rate change::
     True
     >>> pay.execute('pay')
     >>> invoice.state
-    u'paid'
+    'paid'
 
 Create negative tax::
 
@@ -191,7 +191,7 @@ Create invoice with alternate currency and negative taxes::
     Decimal('360.00')
     >>> invoice.click('post')
     >>> invoice.state
-    u'posted'
+    'posted'
     >>> invoice.untaxed_amount
     Decimal('400.00')
     >>> invoice.tax_amount

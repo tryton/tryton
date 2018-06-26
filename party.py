@@ -13,14 +13,12 @@ supplier_payment_term = fields.Many2One(
     'account.invoice.payment_term', "Supplier Payment Term")
 
 
-class Address:
-    __metaclass__ = PoolMeta
+class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
     invoice = fields.Boolean('Invoice')
 
 
-class ContactMechanism:
-    __metaclass__ = PoolMeta
+class ContactMechanism(metaclass=PoolMeta):
     __name__ = 'party.contact_mechanism'
     invoice = fields.Boolean('Invoice')
 
@@ -91,8 +89,7 @@ class PartyPaymentTerm(ModelSQL, ValueMixin):
             parent='party', fields=fields)
 
 
-class PartyReplace:
-    __metaclass__ = PoolMeta
+class PartyReplace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
@@ -103,8 +100,7 @@ class PartyReplace:
             ]
 
 
-class PartyErase:
-    __metaclass__ = PoolMeta
+class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     @classmethod

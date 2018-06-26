@@ -135,14 +135,14 @@ class AccountInvoiceTestCase(ModuleTestCase):
                                     }])]
                     }])
         terms = remainder_term.compute(Decimal('0.0'), cu1,
-            date=datetime.date(2016, 05, 17))
+            date=datetime.date(2016, 5, 17))
         self.assertEqual(terms, [
-                (datetime.date(2016, 05, 17), Decimal('0.0')),
+                (datetime.date(2016, 5, 17), Decimal('0.0')),
                 ])
         terms = percent_term.compute(Decimal('0.0'), cu1,
-            date=datetime.date(2016, 05, 17))
+            date=datetime.date(2016, 5, 17))
         self.assertEqual(terms, [
-                (datetime.date(2016, 05, 17), Decimal('0.0')),
+                (datetime.date(2016, 5, 17), Decimal('0.0')),
                 ])
 
     @with_transaction()
