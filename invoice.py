@@ -4,7 +4,6 @@ from decimal import Decimal
 from collections import defaultdict, namedtuple
 from itertools import combinations
 import base64
-import itertools
 
 from sql import Literal, Null
 from sql.aggregate import Count, Sum
