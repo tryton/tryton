@@ -1,15 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # This file is part purchase_request_quotation module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 
-from setuptools import setup, find_packages
-import re
-import os
 import io
-try:
-    from configparser import ConfigParser
-except ImportError:
-    from ConfigParser import ConfigParser
+import os
+import re
+from configparser import ConfigParser
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -107,7 +104,6 @@ setup(name=name,
         'Natural Language :: Slovenian',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
@@ -116,6 +112,7 @@ setup(name=name,
         'Topic :: Office/Business',
         ],
     license='GPL-3',
+    python_requires='>=3.4',
     install_requires=requires,
     dependency_links=dependency_links,
     zip_safe=False,
@@ -126,8 +123,4 @@ setup(name=name,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
-    use_2to3=True,
-    convert_2to3_doctests=[
-        'tests/scenario_purchase_request_quotation.rst',
-        ],
     )

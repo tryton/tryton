@@ -32,8 +32,7 @@ def process_request(func):
     return wrapper
 
 
-class Configuration:
-    __metaclass__ = PoolMeta
+class Configuration(metaclass=PoolMeta):
     __name__ = 'purchase.configuration'
     purchase_request_quotation_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', 'Purchase Request Quotation Sequence',
@@ -57,8 +56,7 @@ class Configuration:
             ).default_purchase_request_quotation_sequence()
 
 
-class ConfigurationSequence:
-    __metaclass__ = PoolMeta
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'purchase.configuration.sequence'
     purchase_request_quotation_sequence = fields.Many2One(
             'ir.sequence', 'Purchase Request Quotation Sequence',
@@ -474,7 +472,7 @@ class CreatePurchaseRequestQuotation(Wizard):
 
         requests = Request.browse(Transaction().context['active_ids'])
 
-        reqs = filter(lambda r: r.state in {'draft', 'quotation'}, requests)
+        reqs = [r for r in requests if r.state in {'draft', 'quotation'}]
         if reqs:
             for r in reqs:
                 if r.state == 'quotation':
@@ -490,8 +488,8 @@ class CreatePurchaseRequestQuotation(Wizard):
 
         requests = Request.browse(Transaction().context['active_ids'])
 
-        reqs = filter(
-            lambda r: r.party and r.state in ['draft', 'quotation'], requests)
+        reqs = [r for r in requests
+            if r.party and r.state in ['draft', 'quotation']]
         return {
             'suppliers': [r.party.id for r in reqs],
             }
@@ -517,7 +515,7 @@ class CreatePurchaseRequestQuotation(Wizard):
 
         requests = Request.browse(Transaction().context['active_ids'])
 
-        reqs = filter(lambda r: r.state in ['draft', 'quotation'], requests)
+        reqs = [r for r in requests if r.state in ['draft', 'quotation']]
         for supplier in self.ask_suppliers.suppliers:
             quotation = Quotation()
             quotation.supplier = supplier
@@ -553,8 +551,7 @@ class CreatePurchaseRequestQuotation(Wizard):
         return quotation_line
 
 
-class PurchaseRequest:
-    __metaclass__ = PoolMeta
+class PurchaseRequest(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     quotation_lines = fields.One2Many(
@@ -628,8 +625,7 @@ class CreatePurchase(Wizard):
         to_save = []
         requests = Request.browse(Transaction().context['active_ids'])
 
-        reqs = filter(lambda r: not r.purchase_line and r.quotation_lines,
-            requests)
+        reqs = [r for r in requests if not r.purchase_line and r.quotation_lines]
         to_save = []
         for req in reqs:
             if req.best_quotation_line:

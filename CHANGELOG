@@ -1,3 +1,4 @@
+* Remove support for Python 2.7
 * Add request date on report
 
 Version 4.8.0 - 2018-04-23

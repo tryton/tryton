@@ -114,7 +114,7 @@ Create purchase requisition::
     >>> requisition.click('wait')
     >>> requisition.click('approve')
     >>> requisition.state
-    u'processing'
+    'processing'
 
 Create Purchase Request Quotation from Purchase Request and
 add another supplier::
@@ -122,7 +122,7 @@ add another supplier::
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> purchase_request, = PurchaseRequest.find([('state', '=', 'draft')])
     >>> purchase_request.state
-    u'draft'
+    'draft'
     >>> create_quotation = Wizard(
     ...     'purchase.request.quotation.create', [purchase_request])
     >>> [supplier] == create_quotation.form.suppliers
@@ -131,7 +131,7 @@ add another supplier::
     >>> create_quotation.execute('create_quotations')
     >>> create_quotation.execute('end')
     >>> purchase_request.state
-    u'quotation'
+    'quotation'
 
 Check Quotation Lines (1 Request with 2 Suppliers = 2 Quotation Lines)::
 
@@ -159,9 +159,9 @@ Create the report::
     >>> quotation_report = Report('purchase.request.quotation')
     >>> ext, _, _, name = quotation_report.execute(quotations[:1], {})
     >>> ext
-    u'odt'
+    'odt'
     >>> name
-    u'Purchase Request Quotation'
+    'Purchase Request Quotation'
 
 Suppliers will answer to quotation with their best unit price::
 
@@ -198,7 +198,7 @@ best price from quotations was selected (supplier2 price)::
 
     >>> create_purchase = Wizard('purchase.request.create_purchase', [prequest])
     >>> prequest.state
-    u'purchased'
+    'purchased'
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase, = Purchase.find([
     ...         ('state', '=', 'draft'),
@@ -214,7 +214,7 @@ and check if supplier from this quotation was selected::
     >>> create_purchase = Wizard('purchase.request.create_purchase',
     ...     [prequest2])
     >>> prequest2.state
-    u'purchased'
+    'purchased'
     >>> Purchase = Model.get('purchase.purchase')
     >>> purchase, = Purchase.find([
     ...         ('state', '=', 'draft'),
