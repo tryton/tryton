@@ -45,7 +45,7 @@ Move pallet from storage1 to storage2::
     >>> shipment.click('assign_try')
     True
     >>> shipment.state
-    u'assigned'
+    'assigned'
     >>> pallet.reload()
     >>> pallet.assigned_by == shipment
     True
@@ -54,7 +54,7 @@ Move pallet from storage1 to storage2::
 
     >>> shipment.click('done')
     >>> shipment.state
-    u'done'
+    'done'
     >>> pallet.reload()
     >>> pallet.assigned_by
     >>> pallet.parent == storage2

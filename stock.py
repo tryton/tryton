@@ -11,8 +11,7 @@ __all__ = ['Location', 'ShipmentInternal', 'ShipmentInternal_Location',
     'ShipmentOut', 'ShipmentInReturn', 'Supply']
 
 
-class Location:
-    __metaclass__ = PoolMeta
+class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 
     movable = fields.Boolean(
@@ -85,7 +84,7 @@ class Location:
 
         def restore():
             locations = []
-            for location, parent in location_parents.iteritems():
+            for location, parent in location_parents.items():
                 location.parent = parent
                 locations.append(location)
             Location.save(locations)
@@ -107,8 +106,7 @@ def clear_location_assignation(func):
     return wrapper
 
 
-class ShipmentInternal:
-    __metaclass__ = PoolMeta
+class ShipmentInternal(metaclass=PoolMeta):
     __name__ = 'stock.shipment.internal'
 
     locations = fields.Many2Many(
@@ -251,8 +249,7 @@ def deactivate_empty_location(func):
     return wrapper
 
 
-class ShipmentOut:
-    __metaclass__ = PoolMeta
+class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
@@ -263,8 +260,7 @@ class ShipmentOut:
         super(ShipmentOut, cls).done(shipments)
 
 
-class ShipmentInReturn:
-    __metaclass__ = PoolMeta
+class ShipmentInReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
 
     @classmethod
@@ -275,8 +271,7 @@ class ShipmentInReturn:
         super(ShipmentInReturn, cls).done(shipments)
 
 
-class Supply:
-    __metaclass__ = PoolMeta
+class Supply(metaclass=PoolMeta):
     __name__ = 'stock.supply'
 
     def transition_create_(self):

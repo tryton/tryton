@@ -99,7 +99,7 @@ Only 1 product is requested::
     ...         ('id', '!=', shipment.id),
     ...         ])
     >>> shipment.state
-    u'request'
+    'request'
     >>> move, = shipment.moves
     >>> move.quantity
     1.0
@@ -108,4 +108,4 @@ Pallet did not moved::
 
     >>> pallet.reload()
     >>> pallet.parent.name
-    u'Provisioning Location'
+    'Provisioning Location'
