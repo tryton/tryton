@@ -83,7 +83,7 @@ Create a sale quotation::
     >>> sale.total_amount
     Decimal('100.00')
     >>> sale.state
-    u'quotation'
+    'quotation'
 
 Create a partial payment::
 
@@ -96,7 +96,7 @@ Create a partial payment::
     >>> payment.amount = Decimal('40.00')
     >>> payment.click('approve')
     >>> payment.state
-    u'approved'
+    'approved'
 
 Attempt to put sale back to draft::
 
@@ -105,7 +105,7 @@ Attempt to put sale back to draft::
         ...
     UserError: ...
     >>> sale.state
-    u'quotation'
+    'quotation'
 
 Attempt to cancel sale::
 
@@ -114,7 +114,7 @@ Attempt to cancel sale::
         ...
     UserError: ...
     >>> sale.state
-    u'quotation'
+    'quotation'
 
 Revert sale to draft after failed payment::
 
@@ -122,10 +122,10 @@ Revert sale to draft after failed payment::
     >>> process_payment.execute('process')
     >>> payment.click('fail')
     >>> payment.state
-    u'failed'
+    'failed'
     >>> sale.click('draft')
     >>> sale.state
-    u'draft'
+    'draft'
 
 Attempt to add a second payment to draft sale::
 
@@ -144,7 +144,7 @@ Cancel the sale::
 
     >>> sale.click('cancel')
     >>> sale.state
-    u'cancel'
+    'cancel'
 
 Attempt to add a second payment to the cancelled sale::
 
@@ -164,14 +164,14 @@ Revive the sale::
     >>> sale.click('draft')
     >>> sale.click('quote')
     >>> sale.state
-    u'quotation'
+    'quotation'
 
 Change the first payment to succeed::
 
     >>> payment, = sale.payments
     >>> payment.click('succeed')
     >>> sale.state
-    u'quotation'
+    'quotation'
 
 Create and process a final payment::
 
@@ -190,7 +190,7 @@ The sale should be confirmed::
 
     >>> sale.reload()
     >>> sale.state
-    u'confirmed'
+    'confirmed'
 
 Post the invoice and check amount to pay::
 
@@ -202,11 +202,11 @@ Post the invoice and check amount to pay::
     >>> invoice.amount_to_pay == Decimal(0)
     True
     >>> invoice.state
-    u'paid'
+    'paid'
 
 Fail one payment and check invoice is no more paid::
 
     >>> payment.click('fail')
     >>> invoice.reload()
     >>> invoice.state
-    u'posted'
+    'posted'

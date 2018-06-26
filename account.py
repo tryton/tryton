@@ -24,8 +24,7 @@ def sale_payment_confirm(func):
     return wrapper
 
 
-class Payment:
-    __metaclass__ = PoolMeta
+class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
 
     @classmethod
@@ -90,8 +89,7 @@ class Payment:
         pass
 
 
-class Invoice:
-    __metaclass__ = PoolMeta
+class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     def add_payments(self, payments=None):

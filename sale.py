@@ -23,8 +23,7 @@ def no_payment(error):
     return decorator
 
 
-class Sale:
-    __metaclass__ = PoolMeta
+class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     payments = fields.One2Many(
         'account.payment', 'origin', "Payments",
