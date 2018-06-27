@@ -86,5 +86,4 @@ setup(name=name,
     test_suite='trytond.tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
-    use_2to3=True,
     )
