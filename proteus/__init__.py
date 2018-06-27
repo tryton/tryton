@@ -4,14 +4,6 @@
 A library to access Tryton's models like a client.
 '''
 import sys
-try:
-    import cdecimal
-    # Use cdecimal globally
-    if 'decimal' not in sys.modules:
-        sys.modules['decimal'] = cdecimal
-except ImportError:
-    import decimal
-    sys.modules['cdecimal'] = decimal
 import threading
 import datetime
 import functools
