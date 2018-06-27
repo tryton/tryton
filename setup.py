@@ -112,7 +112,6 @@ dist = setup(name=name,
         "python-dateutil",
         ],
     extras_require={
-        'cdecimal': ['cdecimal'],
         'calendar': ['GooCalendar>=0.4'],
         },
     zip_safe=False,

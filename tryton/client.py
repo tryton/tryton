@@ -4,14 +4,6 @@
 %prog [options]
 """
 import sys
-try:
-    import cdecimal
-    # Use cdecimal globally
-    if 'decimal' not in sys.modules:
-        sys.modules['decimal'] = cdecimal
-except ImportError:
-    import decimal
-    sys.modules['cdecimal'] = decimal
 import os
 
 import gi
