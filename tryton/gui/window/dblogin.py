@@ -509,7 +509,7 @@ class DBLogin(object):
 
     def profile_manage(self, widget):
         def callback(profile_name):
-            with open(self.profile_cfg, 'wb') as configfile:
+            with open(self.profile_cfg, 'w') as configfile:
                 self.profiles.write(configfile)
 
             for idx, row in enumerate(self.profile_store):
