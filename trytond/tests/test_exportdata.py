@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
-try:
-    import cdecimal
-    if 'decimal' not in sys.modules:
-        sys.modules['decimal'] = cdecimal
-except ImportError:
-    import decimal
-    sys.modules['cdecimal'] = decimal
 import unittest
 from decimal import Decimal
 import datetime

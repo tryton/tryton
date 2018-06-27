@@ -108,7 +108,6 @@ setup(name=name,
     extras_require={
         'PostgreSQL': pg_require,
         'graphviz': ['pydot'],
-        'cdecimal': ['cdecimal'],
         'Levenshtein': ['python-Levenshtein'],
         'BCrypt': ['bcrypt'],
         'html2text': ['html2text'],

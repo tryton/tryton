@@ -22,7 +22,6 @@ Prerequisites
       (http://github.com/chtd/psycopg2cffi)
     * Optional: pydot (http://code.google.com/p/pydot/)
     * Optional: sphinx (http://sphinx.pocoo.org/)
-    * Optional: cdecimal (http://www.bytereef.org/mpdecimal/index.html)
     * Optional: python-Levenshtein
       (http://github.com/miohtama/python-Levenshtein)
     * Optional: bcrypt (https://github.com/pyca/bcrypt)
