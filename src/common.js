@@ -2021,11 +2021,19 @@
             'not in': function(a, b) {
                 return !Sao.common.DomainInversion.in_(a, b);
             },
+            'like': function(a, b) {
+                return Sao.common.DomainInversion.sql_like(a, b, false);
+            },
+            'ilike': function(a, b) {
+                return Sao.common.DomainInversion.sql_like(a, b, true);
+            },
+            'not like': function(a, b) {
+                return !Sao.common.DomainInversion.sql_like(a, b, false);
+            },
+            'not ilike': function(a, b) {
+                return !Sao.common.DomainInversion.sql_like(a, b, true);
+            },
             // Those operators are not supported (yet ?)
-            'like': function() {return true;},
-            'ilike': function() {return true;},
-            'not like': function() {return true;},
-            'not ilike': function() {return true;},
             'child_of': function() {return true;},
             'not child_of': function() {return true;}
         },
@@ -2284,6 +2292,43 @@
         } else {
             return Boolean(~b.indexOf(a));
         }
+    };
+    Sao.common.DomainInversion.sql_like = function(value, pattern, ignore_case)
+    {
+        var escape = false;
+        var chars = [];
+        var splitted = pattern.split(/(.|\\)/);
+        var char;
+        for (var i=1, len=splitted.length; i < len; i = i+2) {
+            char = splitted[i];
+            if (escape) {
+                if ((char == '%') || (char == '_')) {
+                    chars.push(char);
+                } else {
+                    chars.push('\\', char);
+                }
+                escape = false;
+            } else if (char == '\\') {
+                escape = true;
+            } else if (char == '_') {
+                chars.push('.');
+            } else if (char == '%') {
+                chars.push('.*');
+            } else {
+                chars.push(char);
+            }
+        }
+
+        if (!pattern.startsWith('%')) {
+            chars.splice(0, 0, '^');
+        }
+        if (!pattern.endsWith('%')) {
+            chars.push('$');
+        }
+
+        var flags = ignore_case ? 'i' : '';
+        var regexp = new RegExp(chars.join(''), flags);
+        return regexp.test(value);
     };
     Sao.common.DomainInversion.And = Sao.class_(Object, {
         init: function(expressions) {
