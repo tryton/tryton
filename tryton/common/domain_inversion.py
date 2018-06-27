@@ -1,10 +1,40 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import re
 import operator
 import datetime
 from collections import defaultdict
-from functools import reduce
+from functools import reduce, partial
+
+
+def sql_like(value, pattern, ignore_case=True):
+    flag = re.IGNORECASE if ignore_case else 0
+
+    escape = False
+    chars = []
+    for char in re.split(r'(\\|.)', pattern)[1::2]:
+        if escape:
+            if char in ('%', '_'):
+                chars.append(char)
+            else:
+                chars.extend(['\\', char])
+            escape = False
+        elif char == '\\':
+            escape = True
+        elif char == '_':
+            chars.append('.')
+        elif char == '%':
+            chars.append('.*')
+        else:
+            chars.append(re.escape(char))
+
+    regexp = re.compile(''.join(chars), flag)
+    return bool(regexp.fullmatch(value))
+
+
+like = partial(sql_like, ignore_case=False)
+ilike = partial(sql_like, ignore_case=True)
 
 
 def in_(a, b):
@@ -27,6 +57,10 @@ OPERATORS.update({
         '!=': operator.ne,
         'in': in_,
         'not in': lambda a, b: not in_(a, b),
+        'ilike': ilike,
+        'not ilike': lambda a, b: not ilike(a, b),
+        'like': like,
+        'not like': lambda a, b: not like(a, b),
         })
 
 
@@ -548,6 +582,59 @@ def test_evaldomain():
     assert not eval_domain(domain, {'x': [3]})
     assert not eval_domain(domain, {'x': [3, 4]})
     assert eval_domain(domain, {'x': [1, 2]})
+
+    domain = [['x', 'like', 'abc']]
+    assert eval_domain(domain, {'x': 'abc'})
+    assert not eval_domain(domain, {'x': ''})
+    assert not eval_domain(domain, {'x': 'xyz'})
+    assert not eval_domain(domain, {'x': 'abcd'})
+
+    domain = [['x', 'not like', 'abc']]
+    assert eval_domain(domain, {'x': 'xyz'})
+    assert eval_domain(domain, {'x': 'ABC'})
+    assert not eval_domain(domain, {'x': 'abc'})
+
+    domain = [['x', 'not ilike', 'abc']]
+    assert eval_domain(domain, {'x': 'xyz'})
+    assert not eval_domain(domain, {'x': 'ABC'})
+    assert not eval_domain(domain, {'x': 'abc'})
+
+    domain = [['x', 'like', 'a%']]
+    assert eval_domain(domain, {'x': 'a'})
+    assert eval_domain(domain, {'x': 'abcde'})
+    assert not eval_domain(domain, {'x': ''})
+    assert not eval_domain(domain, {'x': 'ABCDE'})
+    assert not eval_domain(domain, {'x': 'xyz'})
+
+    domain = [['x', 'ilike', 'a%']]
+    assert eval_domain(domain, {'x': 'a'})
+    assert eval_domain(domain, {'x': 'A'})
+    assert not eval_domain(domain, {'x': ''})
+    assert not eval_domain(domain, {'x': 'xyz'})
+
+    domain = [['x', 'like', 'a_']]
+    assert eval_domain(domain, {'x': 'ab'})
+    assert not eval_domain(domain, {'x': 'a'})
+    assert not eval_domain(domain, {'x': 'abc'})
+
+    domain = [['x', 'like', 'a\\%b']]
+    assert eval_domain(domain, {'x': 'a%b'})
+    assert not eval_domain(domain, {'x': 'ab'})
+    assert not eval_domain(domain, {'x': 'a123b'})
+
+    domain = [['x', 'like', '\\%b']]
+    assert eval_domain(domain, {'x': '%b'})
+    assert not eval_domain(domain, {'x': 'b'})
+    assert not eval_domain(domain, {'x': '123b'})
+
+    domain = [['x', 'like', 'a\\_c']]
+    assert eval_domain(domain, {'x': 'a_c'})
+    assert not eval_domain(domain, {'x': 'abc'})
+    assert not eval_domain(domain, {'x': 'ac'})
+
+    domain = [['x', 'like', 'a\\\\_c']]
+    assert eval_domain(domain, {'x': 'a\\bc'})
+    assert not eval_domain(domain, {'x': 'abc'})
 
     domain = ['OR', ['x', '>', 10], ['x', '<', 0]]
     assert eval_domain(domain, {'x': 11})

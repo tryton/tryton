@@ -1,3 +1,4 @@
+* Add (i)like support to domain inversion
 * Use Python 3
 * Improve loading strategy by using views
 * Use non conflicting keyboard shortcuts in sync with sao
