@@ -320,7 +320,7 @@ class Group(SignalEvent, list):
                         update = True
                     elif prev and record.id >= 0:
                         update = record.id < prev.id
-                if value == index:
+                elif value == index:
                     if prev and record.id >= 0:
                         update = record.id < prev.id
                 elif value <= (index or 0):
