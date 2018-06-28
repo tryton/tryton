@@ -1,11 +1,23 @@
+#!/usr/bin/env python3
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+
 import os
 import re
 import sys
 import tempfile
-import user
 from subprocess import Popen, PIPE, check_call
 
 from cx_Freeze import setup, Executable
+
+home = os.path.expanduser('~/')
+pythonrc = os.path.join(home, '.pythonrc.py')
+try:
+    with open(pythonrc) as fp:
+        exec(fp.read())
+except IOError:
+    pass
+
 
 include_files = [
     (os.path.join('tryton', 'data'), 'data'),
@@ -60,9 +72,10 @@ for ns in required_gi_namespaces:
     gir_name = '%s.gir' % ns
     gir_file = os.path.join(sys.prefix, 'share', 'gir-1.0', gir_name)
     gir_tmp = os.path.join(temp, gir_name)
-    with open(gir_file, 'r') as src, open(gir_tmp, 'w') as dst:
-        for line in src:
-            dst.write(lib_re.sub(replace_path, line))
+    with open(gir_file, 'r', encoding='utf-8') as src:
+        with open(gir_tmp, 'w', encoding='utf-8') as dst:
+            for line in src:
+                dst.write(lib_re.sub(replace_path, line))
     typefile_name = '%s.typelib' % ns
     typefile_file = os.path.join('lib', 'girepository-1.0', typefile_name)
     typefile_tmp = os.path.join(temp, typefile_name)

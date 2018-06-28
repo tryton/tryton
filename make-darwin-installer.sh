@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
-version=`python setup.py --version`
-python setup.py compile_catalog
-python setup-freeze.py bdist_mac
+version=`./setup.py --version`
+./setup.py compile_catalog
+./setup-freeze.py bdist_mac
 rm -rf dist
 mkdir dist
 mv build/Tryton.app dist/
