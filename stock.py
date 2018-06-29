@@ -45,7 +45,7 @@ def check_no_move(func):
                             cls.raise_user_error(error)
                         # No moves for those records
                         break
-        func(*args)
+        func(cls, *args)
     return decorator
 
 
