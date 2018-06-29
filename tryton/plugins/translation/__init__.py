@@ -13,7 +13,8 @@ def translate_view(datas):
     Window.create('ir.translation',
         res_id=False,
         domain=[('model', '=', model)],
-        mode=['tree', 'form'])
+        mode=['tree', 'form'],
+        name=_('Translate view'))
 
 
 def get_plugins(model):
