@@ -6,6 +6,10 @@ this repository contains the full copyright notices and license terms. -->
         <separator id="asset" string="Asset" colspan="4"/>
         <label name="asset_sequence" string="Sequence"/>
         <field name="asset_sequence"/>
-        <newline/>
+        <separator id="asset_move" string="Asset Move" colspan="4"/>
+        <label name="asset_bymonthday"/>
+        <field name="asset_bymonthday"/>
+        <label name="asset_bymonth"/>
+        <field name="asset_bymonth"/>
     </xpath>
 </data>

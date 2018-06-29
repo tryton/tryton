@@ -332,6 +332,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         Returns all the remaining dates at which asset depreciation movement
         will be issued.
         """
+        pool = Pool()
+        Config = pool.get('account.configuration')
+        config = Config(1)
+
         start_date = max([self.start_date] + [l.date for l in self.lines])
         delta = relativedelta.relativedelta(self.end_date, start_date)
         # dateutil >= 2.0 has replace __nonzero__ by __bool__ which doesn't
@@ -340,10 +344,11 @@ class Asset(Workflow, ModelSQL, ModelView):
             return [self.end_date]
         if self.frequency == 'monthly':
             rule = rrule.rrule(rrule.MONTHLY, dtstart=self.start_date,
-                bymonthday=-1)
+                bymonthday=int(config.asset_bymonthday))
         elif self.frequency == 'yearly':
             rule = rrule.rrule(rrule.YEARLY, dtstart=self.start_date,
-                bymonth=12, bymonthday=-1)
+                bymonth=int(config.asset_bymonth),
+                bymonthday=int(config.asset_bymonthday))
         dates = [d.date()
             for d in rule.between(date2datetime(start_date),
                 date2datetime(self.end_date))]

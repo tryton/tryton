@@ -7,8 +7,29 @@ from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'ConfigurationAssetSequence', 'Move', 'Period',
-    'Journal']
+__all__ = ['Configuration', 'ConfigurationAssetSequence',
+    'ConfigurationAssetDate', 'Move', 'Period', 'Journal']
+
+asset_bymonthday = fields.Selection([
+        ('1', "First"),
+        ('-1', "Last"),
+        ], "Day of the Month",
+    help="The day of the month to create the depreciation moves.")
+asset_bymonth = fields.Selection([
+        ('1', "January"),
+        ('2', "February"),
+        ('3', "March"),
+        ('4', "April"),
+        ('5', "May"),
+        ('6', "June"),
+        ('7', "July"),
+        ('8', "August"),
+        ('9', "September"),
+        ('10', "October"),
+        ('11', "November"),
+        ('12', "December"),
+        ], "Month", sort=False,
+    help="The month to create the depreciation moves.")
 
 
 class Configuration(metaclass=PoolMeta):
@@ -20,10 +41,28 @@ class Configuration(metaclass=PoolMeta):
                         Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'account.asset'),
                 ]))
+    asset_bymonthday = fields.MultiValue(asset_bymonthday)
+    asset_bymonth = fields.MultiValue(asset_bymonth)
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field in {'asset_bymonthday', 'asset_bymonth'}:
+            return pool.get('account.configuration.asset_date')
+        return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
     def default_asset_sequence(cls, **pattern):
         return cls.multivalue_model('asset_sequence').default_asset_sequence()
+
+    @classmethod
+    def default_asset_bymonthday(cls, **pattern):
+        return cls.multivalue_model(
+            'asset_bymonthday').default_asset_bymonthday()
+
+    @classmethod
+    def default_asset_bymonth(cls, **pattern):
+        return cls.multivalue_model('asset_bymonth').default_asset_bymonth()
 
 
 class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
@@ -64,6 +103,21 @@ class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
             return ModelData.get_id('account_asset', 'sequence_asset')
         except KeyError:
             return None
+
+
+class ConfigurationAssetDate(ModelSQL, CompanyValueMixin):
+    "Account Configuration Asset Date"
+    __name__ = 'account.configuration.asset_date'
+    asset_bymonthday = asset_bymonthday
+    asset_bymonth = asset_bymonth
+
+    @classmethod
+    def default_asset_bymonthday(cls):
+        return "-1"
+
+    @classmethod
+    def default_asset_bymonth(cls):
+        return "12"
 
 
 class Move(metaclass=PoolMeta):

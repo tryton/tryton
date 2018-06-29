@@ -24,6 +24,7 @@ def register():
         invoice.InvoiceLine,
         account.Configuration,
         account.ConfigurationAssetSequence,
+        account.ConfigurationAssetDate,
         account.Move,
         account.Period,
         account.Journal,

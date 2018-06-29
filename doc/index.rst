@@ -35,6 +35,9 @@ The asset can be in one of this states:
 
 A wizard "Create Assets Moves" allows to post all accounting move up to a date.
 
+The day and the month when the move will posted are defined on the accounting
+configuration.
+
 Asset Line
 **********
 

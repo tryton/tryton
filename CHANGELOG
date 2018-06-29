@@ -1,3 +1,4 @@
+* Allow to set when the depreciation move should be created
 * Remove support for Python 2.7
 
 Version 4.8.0 - 2018-04-23
