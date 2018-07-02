@@ -2118,7 +2118,8 @@
                         l.forEach(function(v) {
                             Object.keys(v).forEach(function(f) {
                                 if (!(f in fields) &&
-                                    (f != 'id')) {
+                                    (f != 'id') &&
+                                    (!~f.indexOf('.'))) {
                                         field_names[f] = true;
                                     }
                             });
