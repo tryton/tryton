@@ -51,6 +51,13 @@ commited.
     transaction will be committed when exiting the `with` statement without
     exception. The other cases will be rollbacked.
 
+.. method:: Transaction.stop([commit])
+
+    Stop the transaction. If commit is True, the transaction will be committed
+    otherwise it will be rollbacked.
+    The `context manager`_ returned by :meth:`Transaction.start` should be used
+    instead of calling this method.
+
 .. method:: Transaction.set_context(context, \**kwargs)
 
     Update the transaction context and return a `context manager`_. The context
