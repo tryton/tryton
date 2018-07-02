@@ -1018,7 +1018,7 @@ class TranslationSet(Wizard):
             raise ValueError('a template class is required')
         return method
     factories = MIMETemplateLoader().factories
-    extract_report_plain = extract_report_genshi(factories['text'])
+    extract_report_txt = extract_report_genshi(factories['text'])
     extract_report_xml = extract_report_genshi(
         factories.get('markup', factories.get('xml')))
     extract_report_html = extract_report_genshi(
