@@ -157,7 +157,7 @@ def user_application(name, json=True):
             if auth_type != b'bearer':
                 abort(403)
 
-            application = UserApplication.check(auth_info, name)
+            application = UserApplication.check(bytes_to_wsgi(auth_info), name)
             if not application:
                 abort(403)
             transaction = Transaction()
