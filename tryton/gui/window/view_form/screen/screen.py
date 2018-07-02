@@ -928,25 +928,29 @@ class Screen(SignalEvent):
             self.current_record = record
         elif view.view_type == 'calendar':
             record = self.current_record
-            goocalendar = view.widgets['goocalendar']
-            date = goocalendar.selected_date
-            year = date.year
-            month = date.month
-            start = datetime.datetime(year, month, 1)
-            nb_days = calendar.monthrange(year, month)[1]
-            delta = datetime.timedelta(days=nb_days)
-            end = start + delta
-            events = goocalendar.event_store.get_events(start, end)
-            events.sort()
-            if not record:
-                self.current_record = len(events) and events[0].record
-            else:
-                for idx, event in enumerate(events):
-                    if event.record == record:
-                        next_id = idx + 1
-                        if next_id < len(events):
-                            self.current_record = events[next_id].record
-                        break
+            goocalendar = view.widgets.get('goocalendar')
+            if goocalendar:
+                date = goocalendar.selected_date
+                year = date.year
+                month = date.month
+                start = datetime.datetime(year, month, 1)
+                nb_days = calendar.monthrange(year, month)[1]
+                delta = datetime.timedelta(days=nb_days)
+                end = start + delta
+                events = goocalendar.event_store.get_events(start, end)
+                events.sort()
+                if not record:
+                    if events:
+                        self.current_record = events[0].record
+                    else:
+                        self.current_record = None
+                else:
+                    for idx, event in enumerate(events):
+                        if event.record == record:
+                            next_id = idx + 1
+                            if next_id < len(events):
+                                self.current_record = events[next_id].record
+                            break
         else:
             self.current_record = self.group[0] if len(self.group) else None
         self.set_cursor(reset_view=False)
@@ -985,25 +989,29 @@ class Screen(SignalEvent):
             self.current_record = record
         elif view.view_type == 'calendar':
             record = self.current_record
-            goocalendar = view.widgets['goocalendar']
-            date = goocalendar.selected_date
-            year = date.year
-            month = date.month
-            start = datetime.datetime(year, month, 1)
-            nb_days = calendar.monthrange(year, month)[1]
-            delta = datetime.timedelta(days=nb_days)
-            end = start + delta
-            events = goocalendar.event_store.get_events(start, end)
-            events.sort()
-            if not record:
-                self.current_record = len(events) and events[0].record
-            else:
-                for idx, event in enumerate(events):
-                    if event.record == record:
-                        prev_id = idx - 1
-                        if prev_id >= 0:
-                            self.current_record = events[prev_id].record
-                        break
+            goocalendar = view.widgets.get('goocalendar')
+            if goocalendar:
+                date = goocalendar.selected_date
+                year = date.year
+                month = date.month
+                start = datetime.datetime(year, month, 1)
+                nb_days = calendar.monthrange(year, month)[1]
+                delta = datetime.timedelta(days=nb_days)
+                end = start + delta
+                events = goocalendar.event_store.get_events(start, end)
+                events.sort()
+                if not record:
+                    if events:
+                        self.current_record = events[0].record
+                    else:
+                        self.current_record = None
+                else:
+                    for idx, event in enumerate(events):
+                        if event.record == record:
+                            prev_id = idx - 1
+                            if prev_id >= 0:
+                                self.current_record = events[prev_id].record
+                            break
         else:
             self.current_record = self.group[-1] if len(self.group) else None
         self.set_cursor(reset_view=False)
