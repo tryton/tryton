@@ -694,7 +694,7 @@ class O2MField(Field):
             values = chain(value.get('update', []),
                 (d for _, d in value.get('add', [])))
             field_names = set(f for v in values
-                for f in v if f not in fields and f != 'id')
+                for f in v if f not in fields and f != 'id' and '.' not in f)
             if field_names:
                 try:
                     fields = RPCExecute('model', self.attrs['relation'],
