@@ -1,3 +1,4 @@
+* Fill main language in ir.configuration at database initialization
 * Remove support for Python 2.7
 * Check Rule also after modification
 * Check Rule after indirect fields

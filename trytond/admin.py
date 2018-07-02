@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 def run(options):
     Database = backend.get('Database')
+    main_lang = config.get('database', 'language')
     init = {}
     for db_name in options.database_names:
         init[db_name] = False
@@ -44,7 +45,6 @@ def run(options):
                 cursor.execute(*lang.select(lang.code,
                         where=lang.translatable == True))
                 lang = set([x[0] for x in cursor.fetchall()])
-            main_lang = config.get('database', 'language')
             lang.add(main_lang)
         else:
             lang = set()
@@ -74,6 +74,7 @@ def run(options):
             pool = Pool()
             User = pool.get('res.user')
             Configuration = pool.get('ir.configuration')
+            configuration = Configuration(1)
             with transaction.set_context(active_test=False):
                 admin, = User.search([('login', '=', 'admin')])
 
@@ -83,6 +84,7 @@ def run(options):
                 admin.email = input(
                     '"admin" email for "%s": ' % db_name)
             if init[db_name] or options.password:
+                configuration.language = main_lang
                 # try to read password from environment variable
                 # TRYTONPASSFILE, empty TRYTONPASSFILE ignored
                 passpath = os.getenv('TRYTONPASSFILE')
@@ -114,6 +116,5 @@ def run(options):
             if options.reset_password:
                 User.reset_password([admin])
             if options.hostname is not None:
-                configuration = Configuration(1)
                 configuration.hostname = options.hostname or None
-                configuration.save()
+            configuration.save()
