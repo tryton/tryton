@@ -87,11 +87,11 @@ class Transaction(object):
         else:
             database = Database(database_name).connect()
         Flavor.set(Database.flavor)
+        self.connection = database.get_connection(readonly=readonly,
+            autocommit=autocommit)
         self.user = user
         self.database = database
         self.readonly = readonly
-        self.connection = database.get_connection(readonly=readonly,
-            autocommit=autocommit)
         self.close = close
         self.context = context or {}
         self.create_records = {}
@@ -103,19 +103,26 @@ class Transaction(object):
         self._nocache = _nocache
         if not _nocache:
             from trytond.cache import Cache
-            Cache.clean(database.name)
+            try:
+                Cache.clean(database.name)
+            except BaseException:
+                self.stop(False)
+                raise
         return self
 
     def __enter__(self):
         return self
 
     def __exit__(self, type, value, traceback):
+        self.stop(type is None)
+
+    def stop(self, commit=False):
         transactions = self._local.transactions
         try:
             if transactions.count(self) == 1:
                 try:
                     try:
-                        if type is None and not self.readonly:
+                        if commit and not self.readonly:
                             self.commit()
                         else:
                             self.rollback()
