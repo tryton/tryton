@@ -852,7 +852,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record id="vat_code_iva_deducible_base_importacion_normal" model="account.tax.code.template">
             <field name="name">Importaciones de bienes corrientes</field>
-            <field name="code">30</field>
+            <field name="code">32</field>
             <field name="parent" ref="vat_code_iva_deducible_base_normal"/>
             <field name="account" ref="pgc_0_normal"/>
         </record>
@@ -939,7 +939,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record id="vat_code_iva_deducible_tax_normal" model="account.tax.code.template">
             <field name="name">Total a deducir</field>
-            <field name="code">46</field>
+            <field name="code">45</field>
             <field name="parent" ref="vat_code_iva_deducible_normal"/>
             <field name="account" ref="pgc_0_normal"/>
         </record>
