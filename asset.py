@@ -932,7 +932,8 @@ class AssetDepreciationTable(CompanyReport):
             def value_increase(self):
                 value = sum(l.debit - l.credit for l in self.update_lines
                     if l.debit > l.credit)
-                if self.start_date < self.asset.start_date:
+                if (self.asset_lines
+                        and self.start_date < self.asset.start_date):
                     value += self.asset_lines[0].acquired_value
                 return value
 
@@ -943,6 +944,8 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def end_fixed_value(self):
+                if not self.asset_lines:
+                    return 0
                 value = self.asset_lines[-1].acquired_value
                 date = self.asset_lines[-1].date
                 for line in self.update_lines:
@@ -952,6 +955,8 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def start_value(self):
+                if not self.asset_lines:
+                    return self.asset.value
                 return (self.asset_lines[0].actual_value
                     + self.asset_lines[0].depreciation)
 
@@ -967,14 +972,17 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def end_value(self):
+                if not self.asset_lines:
+                    return self.asset.value
                 return self.asset_lines[-1].actual_value
 
             @cached_property
             def actual_value(self):
                 value = self.end_value
-                date = self.asset_lines[-1].date
-                value += sum(l.debit - l.credit for l in self.update_lines
-                    if l.move.date > date)
+                if self.asset_lines:
+                    date = self.asset_lines[-1].date
+                    value += sum(l.debit - l.credit for l in self.update_lines
+                        if l.move.date > date)
                 return value
 
             @cached_property
