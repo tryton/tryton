@@ -962,10 +962,12 @@ class ModelStorage(Model):
             if relations:
                 for sub_relations in grouped_slice(relations):
                     sub_relations = set(sub_relations)
-                    finds = Relation.search(['AND',
-                            [('id', 'in', [r.id for r in sub_relations])],
-                            domain,
-                            ])
+                    # Use root user to skip access rules
+                    with Transaction().set_user(0):
+                        finds = Relation.search(['AND',
+                                [('id', 'in', [r.id for r in sub_relations])],
+                                domain,
+                                ])
                     if sub_relations != set(finds):
                         cls.raise_user_error('domain_validation_record',
                             error_args=cls._get_error_args(field.name))
