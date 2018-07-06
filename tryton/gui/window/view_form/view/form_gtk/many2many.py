@@ -8,7 +8,6 @@ from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
 import tryton.common as common
 import gettext
-from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.domain_parser import quote
 from tryton.common.widget_style import widget_class
@@ -44,7 +43,7 @@ class Many2Many(Widget):
 
         tooltips = common.Tooltips()
 
-        self.wid_text = PlaceholderEntry()
+        self.wid_text = gtk.Entry()
         self.wid_text.set_placeholder_text(_('Search'))
         self.wid_text.set_property('width_chars', 13)
         self.wid_text.connect('focus-out-event', self._focus_out)

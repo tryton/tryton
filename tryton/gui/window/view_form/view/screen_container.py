@@ -6,7 +6,6 @@ import gobject
 
 import tryton.common as common
 from tryton.common.domain_parser import quote
-from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.datetime_ import Date, Time, DateTime, add_operators
 from tryton.pyson import PYSONDecoder
@@ -140,7 +139,7 @@ class ScreenContainer(object):
         self.filter_vbox.set_border_width(0)
         hbox = gtk.HBox(homogeneous=False, spacing=0)
 
-        self.search_entry = PlaceholderEntry()
+        self.search_entry = gtk.Entry()
         self.search_entry.set_placeholder_text(_('Search'))
         self.search_entry.set_alignment(0.0)
         self.search_entry.set_icon_from_stock(

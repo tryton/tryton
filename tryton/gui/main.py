@@ -34,7 +34,6 @@ from tryton.common.cellrendererclickablepixbuf import \
     CellRendererClickablePixbuf
 import tryton.translate as translate
 import tryton.plugins
-from tryton.common.placeholder_entry import PlaceholderEntry
 if os.environ.get('GTKOSXAPPLICATION'):
     import gtkosx_application
 else:
@@ -272,7 +271,7 @@ class Main(object):
             self.menubar.show_all()
 
     def set_global_search(self):
-        self.global_search_entry = PlaceholderEntry()
+        self.global_search_entry = gtk.Entry()
         self.global_search_entry.set_placeholder_text(_('Search'))
         global_search_completion = gtk.EntryCompletion()
         global_search_completion.set_match_func(lambda *a: True)

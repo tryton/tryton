@@ -14,7 +14,6 @@ from tryton.config import CONFIG
 from tryton.gui.window.win_search import WinSearch
 from tryton.common import RPCExecute, RPCException, Tooltips, \
     timezoned_date, untimezoned_date
-from tryton.common.placeholder_entry import PlaceholderEntry
 from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime
@@ -340,7 +339,7 @@ class DictWidget(Widget):
 
         hbox = gtk.HBox()
         hbox.set_border_width(2)
-        self.wid_text = PlaceholderEntry()
+        self.wid_text = gtk.Entry()
         self.wid_text.set_placeholder_text(_('Search'))
         self.wid_text.props.width_chars = 13
         self.wid_text.connect('activate', self._sig_activate)
