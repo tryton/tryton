@@ -246,68 +246,6 @@ def find_in_path(name):
     return name
 
 
-def request_server(server_widget):
-    result = False
-    parent = get_toplevel_window()
-    dialog = gtk.Dialog(
-        title=_('Tryton Connection'),
-        parent=parent,
-        flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT |
-        gtk.WIN_POS_CENTER_ON_PARENT |
-        gtk.gdk.WINDOW_TYPE_HINT_DIALOG,)
-    vbox = gtk.VBox()
-    table = gtk.Table(2, 2, False)
-    table.set_border_width(12)
-    table.set_row_spacings(6)
-    vbox.pack_start(table, False, True, 0)
-    label_server = gtk.Label(_("Server:"))
-    label_server.set_alignment(1, 0)
-    label_server.set_padding(3, 0)
-    table.attach(label_server, 0, 1, 0, 1, yoptions=False,
-        xoptions=gtk.FILL)
-    entry_port = gtk.Entry()
-    entry_port.set_max_length(5)
-    entry_port.set_text("8000")
-    entry_port.set_activates_default(True)
-    entry_port.set_width_chars(16)
-    table.attach(entry_port, 1, 2, 1, 2, yoptions=False,
-        xoptions=gtk.FILL)
-    entry_server = gtk.Entry()
-    entry_server.set_text("localhost")
-    entry_server.set_activates_default(True)
-    entry_server.set_width_chars(16)
-    table.attach(entry_server, 1, 2, 0, 1, yoptions=False,
-        xoptions=gtk.FILL | gtk.EXPAND)
-    label_port = gtk.Label(_("Port:"))
-    label_port.set_alignment(1, 0.5)
-    label_port.set_padding(3, 3)
-    table.attach(label_port, 0, 1, 1, 2, yoptions=False,
-        xoptions=False)
-    cancel_button = dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-    cancel_button.set_always_show_image(True)
-    ok_button = dialog.add_button("gtk-ok", gtk.RESPONSE_OK)
-    ok_button.set_always_show_image(True)
-    dialog.vbox.pack_start(vbox)
-    dialog.set_icon(TRYTON_ICON)
-    dialog.show_all()
-    dialog.set_default_response(gtk.RESPONSE_OK)
-
-    netloc = server_widget.get_text()
-    entry_server.set_text(get_hostname(netloc))
-    entry_port.set_text(str(get_port(netloc)))
-
-    res = dialog.run()
-    if res == gtk.RESPONSE_OK:
-        host = entry_server.get_text()
-        port = entry_port.get_text()
-        url = '%s:%s' % (host, port)
-        server_widget.set_text(url)
-        result = (get_hostname(url), get_port(url))
-    parent.present()
-    dialog.destroy()
-    return result
-
-
 def get_toplevel_window():
     for window in gtk.window_list_toplevels():
         if window.is_active() and window.props.type == gtk.WINDOW_TOPLEVEL:
