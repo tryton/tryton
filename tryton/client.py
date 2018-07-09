@@ -216,7 +216,7 @@ CSS = b"""
 .required entry {
     border-color: darker(@unfocused_borders);
 }
-.invalid entry {
+.invalid entry, entry.invalid {
     border-color: @error_color;
 }
 """

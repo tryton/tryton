@@ -10,16 +10,23 @@ import gettext
 from decimal import Decimal
 
 from .widget import Widget
-from tryton.config import CONFIG
 from tryton.gui.window.win_search import WinSearch
+<<<<<<< working copy
+from tryton.common import Tooltips, timezoned_date, untimezoned_date
+from tryton.common.placeholder_entry import PlaceholderEntry
+=======
 from tryton.common import RPCExecute, RPCException, Tooltips, \
     timezoned_date, untimezoned_date
+>>>>>>> destination
 from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime
 from tryton.common.domain_parser import quote
 from tryton.common.entry_position import reset_position
 from tryton.common.underline import set_underline
+from tryton.common.domain_inversion import eval_domain
+from tryton.common.widget_style import widget_class
+from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
 
@@ -30,7 +37,7 @@ class DictEntry(object):
 
     def __init__(self, name, parent_widget):
         self.name = name
-        self.definition = parent_widget.keys[name]
+        self.definition = parent_widget.field.keys[name]
         self.parent_widget = parent_widget
         self.widget = self.create_widget()
 
@@ -317,7 +324,6 @@ class DictWidget(Widget):
     def __init__(self, view, attrs):
         super(DictWidget, self).__init__(view, attrs)
         self.schema_model = attrs['schema_model']
-        self.keys = {}
         self.fields = {}
         self.buttons = {}
         self.rows = {}
@@ -373,6 +379,10 @@ class DictWidget(Widget):
         self._readonly = False
         self._record_id = None
 
+    @property
+    def _invalid_widget(self):
+        return self.wid_text
+
     def _new_remove_btn(self):
         but_remove = gtk.Button()
         img_remove = gtk.Image()
@@ -403,23 +413,16 @@ class DictWidget(Widget):
         win.show()
 
     def add_new_keys(self, ids):
-        context = self.field.get_context(self.record)
+        new_keys = self.field.add_new_keys(ids, self.record)
         self.send_modified()
-        try:
-            new_fields = RPCExecute('model', self.schema_model,
-                'get_keys', ids, context=context)
-        except RPCException:
-            new_fields = []
         focus = False
-        for new_field in new_fields:
-            if new_field['name'] not in self.fields:
-                self.keys[new_field['name']] = new_field
-                self.add_line(new_field['name'])
+        for key_name in new_keys:
+            if key_name not in self.fields:
+                self.add_line(key_name)
                 if not focus:
                     # Use idle add because it can be called from the callback
                     # of WinSearch while the popup is still there
-                    gobject.idle_add(
-                        self.fields[new_field['name']].widget.grab_focus)
+                    gobject.idle_add(self.fields[key_name].widget.grab_focus)
                     focus = True
 
     def _sig_remove(self, button, key, modified=True):
@@ -466,7 +469,8 @@ class DictWidget(Widget):
                     and self.attrs.get('delete', True)))
 
     def add_line(self, key):
-        self.fields[key] = DICT_ENTRIES[self.keys[key]['type_']](key, self)
+        key_schema = self.field.keys[key]
+        self.fields[key] = DICT_ENTRIES[key_schema['type_']](key, self)
         field = self.fields[key]
         alignment = gtk.Alignment(
             float(self.attrs.get('xalign', 0.0)),
@@ -479,9 +483,9 @@ class DictWidget(Widget):
         n_rows = self.table.props.n_rows
         self.table.resize(n_rows + 1, 3)
         if gtk.widget_get_default_direction() == gtk.TEXT_DIR_RTL:
-            text = _(':') + self.keys[key]['string']
+            text = _(':') + key_schema['string']
         else:
-            text = self.keys[key]['string'] + _(':')
+            text = key_schema['string'] + _(':')
         label = gtk.Label(set_underline(text))
         label.set_use_underline(True)
         label.set_alignment(1., .5)
@@ -494,36 +498,13 @@ class DictWidget(Widget):
         alignment.show_all()
         remove_but = self._new_remove_btn()
         self.tooltips.set_tip(remove_but, _('Remove "%s"') %
-            self.keys[key]['string'])
+            key_schema['string'])
         self.table.attach(remove_but, 2, 3, n_rows - 1, n_rows,
             xoptions=gtk.FILL, yoptions=False, xpadding=2)
         remove_but.connect('clicked', self._sig_remove, key)
         remove_but.show_all()
         self.rows[key] = [label, alignment, remove_but]
         self.buttons[key] = remove_but
-
-    def add_keys(self, keys):
-        context = self.field.get_context(self.record)
-        domain = self.field.domain_get(self.record)
-        batchlen = min(10, CONFIG['client.limit'])
-        for i in range(0, len(keys), batchlen):
-            sub_keys = keys[i:i + batchlen]
-            try:
-                key_ids = RPCExecute('model', self.schema_model, 'search',
-                    [('name', 'in', sub_keys), domain], 0,
-                    CONFIG['client.limit'], None, context=context)
-            except RPCException:
-                key_ids = []
-            if not key_ids:
-                continue
-            try:
-                values = RPCExecute('model', self.schema_model,
-                    'get_keys', key_ids, context=context)
-            except RPCException:
-                values = []
-            if not values:
-                continue
-            self.keys.update({k['name']: k for k in values})
 
     def display(self, record, field):
         super(DictWidget, self).display(record, field)
@@ -540,15 +521,19 @@ class DictWidget(Widget):
         value = field.get_client(record) if field else {}
         new_key_names = set(value.keys()) - set(self.keys)
         if new_key_names:
-            self.add_keys(list(new_key_names))
+            field.add_keys(list(new_key_names), self.record)
+        decoder = PYSONDecoder()
         for key, val in sorted(value.items()):
-            if key not in self.keys:
+            if key not in field.keys:
                 continue
             if key not in self.fields:
                 self.add_line(key)
             widget = self.fields[key]
             widget.set_value(val)
             widget.set_readonly(self._readonly)
+            key_domain = decoder.decode(self.field.keys[key].get('domain'))
+            widget_class(
+                widget.widget, 'invalid', not eval_domain(key_domain, value))
         for key in set(self.fields.keys()) - set(value.keys()):
             self._sig_remove(None, key, modified=False)
 

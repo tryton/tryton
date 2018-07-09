@@ -14,6 +14,8 @@ import decimal
 from decimal import Decimal
 import math
 from tryton.common import RPCExecute, RPCException
+from tryton.pyson import PYSONDecoder
+from tryton.config import CONFIG
 
 
 class Field(object):
@@ -953,6 +955,10 @@ class DictField(Field):
 
     _default = {}
 
+    def __init__(self, attrs):
+        super(DictField, self).__init__(attrs)
+        self.keys = {}
+
     def get(self, record):
         return super(DictField, self).get(record) or self._default
 
@@ -974,6 +980,71 @@ class DictField(Field):
 
     def time_format(self, record):
         return '%X'
+
+    def add_keys(self, keys, record):
+        schema_model = self.attrs['schema_model']
+        context = self.get_context(record)
+        domain = self.domain_get(record)
+        batchlen = min(10, CONFIG['client.limit'])
+        for i in xrange(0, len(keys), batchlen):
+            sub_keys = keys[i:i + batchlen]
+            try:
+                key_ids = RPCExecute('model', schema_model, 'search',
+                    [('name', 'in', sub_keys), domain], 0,
+                    CONFIG['client.limit'], None, context=context)
+            except RPCException:
+                key_ids = []
+            if not key_ids:
+                continue
+            try:
+                values = RPCExecute('model', schema_model,
+                    'get_keys', key_ids, context=context)
+            except RPCException:
+                values = []
+            if not values:
+                continue
+            self.keys.update({k['name']: k for k in values})
+
+    def add_new_keys(self, key_ids, record):
+        schema_model = self.attrs['schema_model']
+        context = self.get_context(record)
+        try:
+            new_fields = RPCExecute('model', schema_model,
+                'get_keys', key_ids, context=context)
+        except RPCException:
+            new_fields = []
+
+        new_keys = []
+        for new_field in new_fields:
+            name = new_field['name']
+            new_keys.append(name)
+            self.keys[name] = new_field
+
+        return new_keys
+
+    def validate(self, record, softvalidation=False, pre_validate=None):
+        valid = super(DictField, self).validate(
+            record, softvalidation, pre_validate)
+
+        if self.attrs.get('readonly'):
+            return valid
+
+        decoder = PYSONDecoder()
+        field_value = self.get_eval(record)
+        domain = []
+        for key in field_value:
+            if key not in self.keys:
+                continue
+            key_domain = self.keys[key].get('domain')
+            if key_domain:
+                domain.append(decoder.decode(key_domain))
+
+        valid_value = eval_domain(domain, field_value)
+        if not valid_value:
+            self.get_state_attrs(record)['invalid'] = 'domain'
+
+        return valid and valid_value
+
 
 TYPES = {
     'char': CharField,

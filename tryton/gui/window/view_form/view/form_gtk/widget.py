@@ -59,6 +59,14 @@ class Widget(object):
         return self.widget
 
     @property
+    def _invalid_widget(self):
+        return self.widget
+
+    @property
+    def _required_widget(self):
+        return self.widget
+
+    @property
     def modified(self):
         return False
 
@@ -107,10 +115,10 @@ class Widget(object):
         widget_class(self.widget, 'readonly', readonly)
         self._required_set(not readonly and states.get('required', False))
         widget_class(
-            self.widget, 'required',
+            self._required_widget, 'required',
             not readonly and states.get('required', False))
         invalid = states.get('invalid', False)
-        widget_class(self.widget, 'invalid', not readonly and invalid)
+        widget_class(self._invalid_widget, 'invalid', not readonly and invalid)
         self.invisible_set(self.attrs.get(
                 'invisible', states.get('invisible', False)))
 
