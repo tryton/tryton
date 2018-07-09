@@ -1,3 +1,4 @@
+* Validate dictionary items
 * Add (i)like support to domain inversion
 * Improve loading strategy by using views
 * Add support of width attribute on tree view

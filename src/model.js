@@ -2461,6 +2461,11 @@
 
     Sao.field.Dict = Sao.class_(Sao.field.Field, {
         _default: {},
+        init: function(description) {
+            Sao.field.Dict._super.init.call(this, description);
+            this.schema_model = new Sao.Model(description.schema_model);
+            this.keys = {};
+        },
         set: function(record, value) {
             if (value) {
                 // Order keys to allow comparison with stringify
@@ -2504,6 +2509,75 @@
         },
         time_format: function(record) {
             return '%X';
+        },
+        add_keys: function(keys, record) {
+            var schema_model = this.description.schema_model;
+            var context = this.get_context(record);
+            var domain = this.get_domain(record);
+            var batchlen = Math.min(10, Sao.config.limit);
+
+            keys = jQuery.extend([], keys);
+            var get_keys = function(key_ids) {
+                return this.schema_model.execute('get_keys',
+                        [key_ids], context).then(update_keys);
+            }.bind(this);
+            var update_keys = function(values) {
+                for (var i = 0, len = values.length; i < len; i++) {
+                    var k = values[i];
+                    this.keys[k.name] = k;
+                }
+            }.bind(this);
+
+            var prms = [];
+            while (keys.length > 0) {
+                var sub_keys = keys.splice(0, batchlen);
+                prms.push(this.schema_model.execute('search',
+                            [[['name', 'in', sub_keys], domain],
+                            0, Sao.config.limit, null], context)
+                        .then(get_keys));
+            }
+            return jQuery.when.apply(jQuery, prms);
+        },
+        add_new_keys: function(ids, record) {
+            var context = this.get_context(record);
+            return this.schema_model.execute('get_keys', [ids], context)
+                .then(function(new_fields) {
+                    var names = [];
+                    new_fields.forEach(function(new_field) {
+                        this.keys[new_field.name] = new_field;
+                        names.push(new_field.name);
+                    }.bind(this));
+                    return names;
+                }.bind(this));
+        },
+        validate: function(record, softvalidation, pre_validate) {
+            var valid = Sao.field.Dict._super.validate.call(
+                this, record, softvalidation, pre_validate);
+
+            if (this.description.readonly) {
+                return valid;
+            }
+
+            var decoder = new Sao.PYSON.Decoder();
+            var field_value = this.get_eval(record);
+            var domain = [];
+            for (var key in field_value) {
+                if (!(key in this.keys)) {
+                    continue;
+                }
+                var key_domain = this.keys[key].domain;
+                if (key_domain) {
+                    domain.push(decoder.decode(key_domain));
+                }
+            }
+
+            var inversion = new Sao.common.DomainInversion();
+            var valid_value = inversion.eval_domain(domain, field_value);
+            if (!valid_value) {
+                this.get_state_attrs(record).invalid = 'domain';
+            }
+
+            return valid && valid_value;
         }
     });
 }());

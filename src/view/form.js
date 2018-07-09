@@ -1052,17 +1052,19 @@ function eval_pyson(value){
             } else {
                 this.el.removeClass('readonly');
             }
+            var required_el = this._required_el();
             this.set_required(required);
             if (!readonly && required) {
-                this.el.addClass('required');
+                required_el.addClass('required');
             } else {
-                this.el.removeClass('required');
+                required_el.removeClass('required');
             }
             var invalid = state_attrs.invalid;
+            var invalid_el = this._invalid_el();
             if (!readonly && invalid) {
-                this.el.addClass('has-error');
+                invalid_el.addClass('has-error');
             } else {
-                this.el.removeClass('has-error');
+                invalid_el.removeClass('has-error');
             }
             if (invisible === undefined) {
                 invisible = field.get_state_attrs(record).invisible;
@@ -1071,6 +1073,12 @@ function eval_pyson(value){
                 }
             }
             this.set_invisible(invisible);
+        },
+        _required_el: function () {
+            return this.el;
+        },
+        _invalid_el: function() {
+            return this.el;
         },
         record: function() {
             if (this.view && this.view.screen) {
@@ -3980,8 +3988,7 @@ function eval_pyson(value){
             Sao.View.Form.Dict._super.init.call(
                     this, field_name, model, attributes);
 
-            this.schema_model = new Sao.Model(attributes.schema_model);
-            this.keys = {};
+            this.schema_model = attributes.schema_model;
             this.fields = {};
             this.rows = {};
 
@@ -4038,6 +4045,12 @@ function eval_pyson(value){
             this._readonly = false;
             this._record_id = null;
         },
+        _required_el: function() {
+            return this.wid_text;
+        },
+        _invalid_el: function() {
+            return this.wid_text;
+        },
         add: function() {
             var context = this.field().get_context(this.record());
             var value = this.wid_text.val();
@@ -4054,7 +4067,7 @@ function eval_pyson(value){
             }.bind(this);
 
             var parser = new Sao.common.DomainParser();
-            var win = new Sao.Window.Search(this.schema_model.name,
+            var win = new Sao.Window.Search(this.schema_model,
                     callback, {
                         sel_multi: true,
                         context: context,
@@ -4065,19 +4078,17 @@ function eval_pyson(value){
                     });
         },
         add_new_keys: function(ids) {
-            var context = this.field().get_context(this.record());
-            this.schema_model.execute('get_keys', [ids], context)
-                .then(function(new_fields) {
+            var field = this.field();
+            field.add_new_keys(ids, this.record())
+                .then(function(new_names) {
                     var focus = false;
-                    new_fields.forEach(function(new_field) {
-                        if (this.fields[new_field.name]) {
-                            return;
-                        }
-                        this.keys[new_field.name] = new_field;
-                        this.add_line(new_field.name);
-                        if (!focus) {
-                            this.fields[new_field.name].input.focus();
-                            focus = true;
+                    new_names.forEach(function(name) {
+                        if (!(name in this.fields)) {
+                            this.add_line(name);
+                            if (!focus) {
+                                this.fields[name].input.focus();
+                                focus = true;
+                            }
                         }
                     }.bind(this));
                 }.bind(this));
@@ -4130,13 +4141,14 @@ function eval_pyson(value){
         },
         add_line: function(key) {
             var field, row;
-            this.fields[key] = field = new (this.get_entries(
-                        this.keys[key].type_))(key, this);
+            var key_schema = this.field().keys[key];
+            this.fields[key] = field = new (
+                this.get_entries(key_schema.type_))(key, this);
             this.rows[key] = row = jQuery('<div/>', {
                 'class': 'row'
             });
             // TODO RTL
-            var text = this.keys[key].string + Sao.i18n.gettext(':');
+            var text = key_schema.string + Sao.i18n.gettext(':');
             var label = jQuery('<label/>', {
                 'text': text
             }).appendTo(jQuery('<div/>', {
@@ -4155,33 +4167,6 @@ function eval_pyson(value){
             }.bind(this));
 
             row.appendTo(this.container);
-        },
-        add_keys: function(keys) {
-            var context = this.field().get_context(this.record());
-            var domain = this.field().get_domain(this.record());
-            var batchlen = Math.min(10, Sao.config.limit);
-            keys = jQuery.extend([], keys);
-
-            var get_keys = function(key_ids) {
-                return this.schema_model.execute('get_keys',
-                        [key_ids], context).then(update_keys);
-            }.bind(this);
-            var update_keys = function(values) {
-                for (var i = 0, len = values.length; i < len; i++) {
-                    var k = values[i];
-                    this.keys[k.name] = k;
-                }
-            }.bind(this);
-
-            var prms = [];
-            while (keys.length > 0) {
-                var sub_keys = keys.splice(0, batchlen);
-                prms.push(this.schema_model.execute('search',
-                            [[['name', 'in', sub_keys], domain],
-                            0, Sao.config.limit, null], context)
-                        .then(get_keys));
-            }
-            return jQuery.when.apply(jQuery, prms);
         },
         display: function(record, field) {
             Sao.View.Form.Dict._super.display.call(this, record, field);
@@ -4202,22 +4187,24 @@ function eval_pyson(value){
 
             var value = field.get_client(record);
             var new_key_names = Object.keys(value).filter(function(e) {
-                return !this.keys[e];
+                return !this.fields[e];
             }.bind(this));
 
             var prm;
             if (!jQuery.isEmptyObject(new_key_names)) {
-                prm = this.add_keys(new_key_names);
+                prm = field.add_keys(new_key_names, record);
             } else {
                 prm = jQuery.when();
             }
             prm.then(function() {
                 var i, len, key;
                 var keys = Object.keys(value).sort();
+                var decoder = new Sao.PYSON.Decoder();
+                var inversion = new Sao.common.DomainInversion();
                 for (i = 0, len = keys.length; i < len; i++) {
                     key = keys[i];
                     var val = value[key];
-                    if (!this.keys[key]) {
+                    if (!field.keys[key]) {
                         continue;
                     }
                     if (!this.fields[key]) {
@@ -4226,6 +4213,15 @@ function eval_pyson(value){
                     var widget = this.fields[key];
                     widget.set_value(val);
                     widget.set_readonly(this._readonly);
+                    var key_domain = (decoder.decode(field.keys[key].domain ||
+                        'null'));
+                    if (key_domain !== null) {
+                        if (!inversion.eval_domain(key_domain, value)) {
+                            widget.el.addClass('has-error');
+                        } else {
+                            widget.el.removeClass('has-error');
+                        }
+                    }
                 }
                 var removed_key_names = Object.keys(this.fields).filter(
                         function(e) {
@@ -4264,7 +4260,7 @@ function eval_pyson(value){
         class_: 'dict-char',
         init: function(name, parent_widget) {
             this.name = name;
-            this.definition = parent_widget.keys[name];
+            this.definition = parent_widget.field().keys[name];
             this.parent_widget = parent_widget;
             this.create_widget();
         },
