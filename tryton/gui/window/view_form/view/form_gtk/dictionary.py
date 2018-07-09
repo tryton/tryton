@@ -11,13 +11,7 @@ from decimal import Decimal
 
 from .widget import Widget
 from tryton.gui.window.win_search import WinSearch
-<<<<<<< working copy
 from tryton.common import Tooltips, timezoned_date, untimezoned_date
-from tryton.common.placeholder_entry import PlaceholderEntry
-=======
-from tryton.common import RPCExecute, RPCException, Tooltips, \
-    timezoned_date, untimezoned_date
->>>>>>> destination
 from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime
