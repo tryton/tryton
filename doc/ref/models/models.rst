@@ -640,6 +640,16 @@ Class attributes are:
     The definition of the :class:`trytond.model.fields.Integer` field for the
     digits number when the type is `float` or `numeric`.
 
+.. attribute:: DictSchemaMixin.domain
+
+   A :ref:`domain <topics-domain>` constraint on the dictionary key that will
+   be enforced only on the client side.
+
+   The key must be referenced by its name in the left operator of the domain.
+   The :ref:`PYSON <ref-pyson>` evaluation context used to compute the domain
+   is the dictionary value. Likewise the domain is tested using the dictionary
+   value.
+
 .. attribute:: DictSchemaMixin.selection
 
     The definition of the :class:`trytond.model.fields.Text` field to store the
