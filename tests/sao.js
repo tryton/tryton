@@ -95,10 +95,6 @@
         QUnit.strictEqual(value.__class__, 'Not', 'Not(true).pyson()');
         QUnit.strictEqual(value.v, true, 'Not(true).pyson()');
 
-        QUnit.throws(function() {
-            new Sao.PYSON.Not('foo');
-        }, 'value must be boolean', "Not('foo')");
-
         QUnit.ok(Sao.common.compare(new Sao.PYSON.Not(true).types(),
                 ['boolean']), 'Not(true).types()');
 
@@ -189,15 +185,6 @@
             'And([true, false]).pyson()');
 
         QUnit.throws(function() {
-            new Sao.PYSON.And(['test', false]);
-        }, 'statement must be boolean', "And(['test', false])");
-        QUnit.throws(function() {
-            new Sao.PYSON.And([true, 'test']);
-        }, 'statement must be boolean', "And([true, 'test'])");
-        QUnit.throws(function() {
-            new Sao.PYSON.And([true, false, 'test']);
-        }, 'statement must be boolean', "And([true, false, 'test'])");
-        QUnit.throws(function() {
             new Sao.PYSON.And([true]);
         }, 'must have at least 2 statements', 'And([true])');
         QUnit.throws(function() {
@@ -265,15 +252,6 @@
         QUnit.ok(Sao.common.compare(value.s, [true, false]),
             'Or([true, false]).pyson()');
 
-        QUnit.throws(function() {
-            new Sao.PYSON.Or(['test', false]);
-        }, 'statement must be boolean', "Or(['test', false])");
-        QUnit.throws(function() {
-            new Sao.PYSON.Or([true, 'test']);
-        }, 'statement must be boolean', "Or([true, 'test'])");
-        QUnit.throws(function() {
-            new Sao.PYSON.Or([true, false, 'test']);
-        }, 'statement must be boolean', "Or([true, false, 'test'])");
         QUnit.throws(function() {
             new Sao.PYSON.Or([true]);
         }, 'must have at least 2 statements', 'Or([true])');
@@ -423,9 +401,6 @@
         QUnit.throws(function() {
             new Sao.PYSON.Greater(1, 'test');
         }, 'statement must be an integer or a float');
-        QUnit.throws(function() {
-            new Sao.PYSON.Greater(1, 0, 'test');
-        }, 'equal must be boolean');
 
         QUnit.ok(Sao.common.compare(new Sao.PYSON.Greater(1, 0).types(),
                 ['boolean']), 'Greater(1, 0).types()');
@@ -482,9 +457,6 @@
         QUnit.throws(function() {
             new Sao.PYSON.Less(1, 'test');
         }, 'statement must be an integer or a float');
-        QUnit.throws(function() {
-            new Sao.PYSON.Less(1, 0, 'test');
-        }, 'equal must be boolean');
 
         QUnit.ok(Sao.common.compare(new Sao.PYSON.Less(1, 0).types(),
                 ['boolean']), 'Less(1, 0).types()');
@@ -535,9 +507,6 @@
         QUnit.strictEqual(value.t, 'foo', "If(true, 'foo', 'bar')");
         QUnit.strictEqual(value.e, 'bar', "If(true, 'foo', 'bar')");
 
-        QUnit.throws(function() {
-            new Sao.PYSON.If('test', 'foo', 'bar');
-        }, 'condition must be boolean');
         QUnit.throws(function() {
             new Sao.PYSON.If(true, 'foo', false);
         }, 'then and else statements must be the same type');

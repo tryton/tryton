@@ -168,12 +168,10 @@
             if (value instanceof Sao.PYSON.PYSON) {
                 if (jQuery(value.types()).not(['boolean', 'object']).length ||
                     jQuery(['boolean']).not(value.types()).length) {
-                    throw 'value must be boolean';
+                    value = new Sao.PYSON.Bool(value);
                     }
-            } else {
-                if (typeof value != 'boolean') {
-                    throw 'value must be boolean';
-                }
+            } else if (typeof value != 'boolean') {
+                value = Sao.PYSON.Bool(value);
             }
             this._value = value;
         },
@@ -253,12 +251,10 @@
                 if (statement instanceof Sao.PYSON.PYSON) {
                     if (jQuery(statement.types()).not(['boolean']).length ||
                         jQuery(['boolean']).not(statement.types()).length) {
-                        throw 'statement must be boolean';
+                        statements[i] = new Sao.PYSON.Bool(statement);
                         }
-                } else {
-                    if (typeof statement != 'boolean') {
-                        throw 'statement must be boolean';
-                    }
+                } else if (typeof statement != 'boolean') {
+                    statements[i] = new Sao.PYSON.Bool(statement);
                 }
             }
             if (statements.length < 2) {
@@ -395,12 +391,10 @@
             if (equal instanceof Sao.PYSON.PYSON) {
                 if (jQuery(equal.types()).not(['boolean']).length ||
                     jQuery(['boolean']).not(equal.types()).length) {
-                    throw 'equal must be boolean';
+                    equal = new Sao.PYSON.Bool(equal);
                     }
-            } else {
-                if (typeof equal != 'boolean') {
-                    throw 'equal must be boolean';
-                }
+            } else if (typeof equal != 'boolean') {
+                equal = new Sao.PYSON.Bool(equal);
             }
             this._statement1 = statement1;
             this._statement2 = statement2;
@@ -475,12 +469,10 @@
             if (condition instanceof Sao.PYSON.PYSON) {
                 if (jQuery(condition.types()).not(['boolean']).length ||
                     jQuery(['boolean']).not(condition.types()).length) {
-                    throw 'condition must be boolean';
+                    condition = new Sao.PYSON.Bool(condition);
                 }
-            } else {
-                if (typeof condition != 'boolean') {
-                    throw 'condition must be boolean';
-                }
+            } else if (typeof condition != 'boolean') {
+                condition = new Sao.PYSON.Bool(condition);
             }
             var then_types, else_types;
             if (then_statement instanceof Sao.PYSON.PYSON) {
