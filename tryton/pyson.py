@@ -4,23 +4,7 @@ import json
 import datetime
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
-from functools import reduce, wraps
-
-
-def reduced_type(types):
-    types = types.copy()
-    for k, r in [(int, int), (str, str), (str, str)]:
-        if k in types:
-            types.remove(k)
-            types.add(r)
-    return types
-
-
-def reduce_type(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        return reduced_type(func(*args, **kwargs))
-    return wrapper
+from functools import reduce
 
 
 class PYSON(object):
@@ -36,20 +20,20 @@ class PYSON(object):
         raise NotImplementedError
 
     def __invert__(self):
-        if self.types() != set([bool]):
+        if self.types() != {bool}:
             return Not(Bool(self))
         else:
             return Not(self)
 
     def __and__(self, other):
         if (isinstance(other, PYSON)
-                and other.types() != set([bool])):
+                and other.types() != {bool}):
             other = Bool(other)
         if (isinstance(self, And)
                 and not isinstance(self, Or)):
             self._statements.append(other)
             return self
-        if self.types() != set([bool]):
+        if self.types() != {bool}:
             return And(Bool(self), other)
         else:
             return And(self, other)
@@ -58,12 +42,12 @@ class PYSON(object):
 
     def __or__(self, other):
         if (isinstance(other, PYSON)
-                and other.types() != set([bool])):
+                and other.types() != {bool}):
             other = Bool(other)
         if isinstance(self, Or):
             self._statements.append(other)
             return self
-        if self.types() != set([bool]):
+        if self.types() != {bool}:
             return Or(Bool(self), other)
         else:
             return Or(self, other)
@@ -161,12 +145,11 @@ class Eval(PYSON):
             'd': self._default,
             }
 
-    @reduce_type
     def types(self):
         if isinstance(self._default, PYSON):
             return self._default.types()
         else:
-            return set([type(self._default)])
+            return {type(self._default)}
 
     @staticmethod
     def eval(dct, context):
@@ -178,9 +161,10 @@ class Not(PYSON):
     def __init__(self, v):
         super(Not, self).__init__()
         if isinstance(v, PYSON):
-            assert v.types() == set([bool]), 'value must be boolean'
-        else:
-            assert isinstance(v, bool), 'value must be boolean'
+            if v.types() != {bool}:
+                v = Bool(v)
+        elif not isinstance(v, bool):
+            v = bool(v)
         self._value = v
 
     @property
@@ -194,7 +178,7 @@ class Not(PYSON):
             }
 
     def types(self):
-        return set([bool])
+        return {bool}
 
     @staticmethod
     def eval(dct, context):
@@ -218,7 +202,7 @@ class Bool(PYSON):
             }
 
     def types(self):
-        return set([bool])
+        return {bool}
 
     @staticmethod
     def eval(dct, context):
@@ -230,13 +214,12 @@ class And(PYSON):
     def __init__(self, *statements, **kwargs):
         super(And, self).__init__()
         statements = list(statements) + kwargs.get('s', [])
-        for statement in statements:
+        for i, statement in enumerate(list(statements)):
             if isinstance(statement, PYSON):
-                assert statement.types() == set([bool]), \
-                    'statement must be boolean'
-            else:
-                assert isinstance(statement, bool), \
-                    'statement must be boolean'
+                if statement.types() != {bool}:
+                    statements[i] = Bool(statement)
+            elif not isinstance(statement, bool):
+                statements[i] = bool(statement)
         assert len(statements) >= 2, 'must have at least 2 statements'
         self._statements = statements
 
@@ -251,7 +234,7 @@ class And(PYSON):
             }
 
     def types(self):
-        return set([bool])
+        return {bool}
 
     @staticmethod
     def eval(dct, context):
@@ -278,11 +261,11 @@ class Equal(PYSON):
         if isinstance(statement1, PYSON):
             types1 = statement1.types()
         else:
-            types1 = reduced_type(set([type(s1)]))
+            types1 = {type(s1)}
         if isinstance(statement2, PYSON):
             types2 = statement2.types()
         else:
-            types2 = reduced_type(set([type(s2)]))
+            types2 = {type(s2)}
         assert types1 == types2, 'statements must have the same type'
         self._statement1 = statement1
         self._statement2 = statement2
@@ -299,7 +282,7 @@ class Equal(PYSON):
             }
 
     def types(self):
-        return set([bool])
+        return {bool}
 
     @staticmethod
     def eval(dct, context):
@@ -313,15 +296,16 @@ class Greater(PYSON):
         super(Greater, self).__init__()
         for i in (statement1, statement2):
             if isinstance(i, PYSON):
-                assert i.types().issubset({int, int, float, type(None)}), \
+                assert i.types().issubset({int, float, type(None)}), \
                     'statement must be an integer or a float'
             else:
                 assert isinstance(i, (int, float, type(None))), \
                     'statement must be an integer or a float'
         if isinstance(equal, PYSON):
-            assert equal.types() == set([bool])
-        else:
-            assert isinstance(equal, bool)
+            if equal.types() != {bool}:
+                equal = Bool(equal)
+        elif not isinstance(equal, bool):
+            equal = bool(equal)
         self._statement1 = statement1
         self._statement2 = statement2
         self._equal = equal
@@ -339,7 +323,7 @@ class Greater(PYSON):
             }
 
     def types(self):
-        return set([bool])
+        return {bool}
 
     @staticmethod
     def _convert(dct):
@@ -382,18 +366,18 @@ class If(PYSON):
         condition, then_statement, else_statement = c, t, e
         super(If, self).__init__()
         if isinstance(condition, PYSON):
-            assert condition.types() == set([bool]), \
-                'condition must be boolean'
-        else:
-            assert isinstance(condition, bool), 'condition must be boolean'
+            if condition.types() != {bool}:
+                condition = Bool(condition)
+        elif not isinstance(condition, bool):
+            condition = bool(condition)
         if isinstance(then_statement, PYSON):
             then_types = then_statement.types()
         else:
-            then_types = reduced_type(set([type(then_statement)]))
+            then_types = {type(then_statement)}
         if isinstance(else_statement, PYSON):
             else_types = else_statement.types()
         else:
-            else_types = reduced_type(set([type(else_statement)]))
+            else_types = {type(else_statement)}
         assert then_types == else_types, \
             'then and else statements must be the same type'
         self._condition = condition
@@ -412,12 +396,11 @@ class If(PYSON):
             'e': self._else_statement,
             }
 
-    @reduce_type
     def types(self):
         if isinstance(self._then_statement, PYSON):
             return self._then_statement.types()
         else:
-            return set([type(self._then_statement)])
+            return {type(self._then_statement)}
 
     @staticmethod
     def eval(dct, context):
@@ -433,12 +416,12 @@ class Get(PYSON):
         obj, key, default = v, k, d
         super(Get, self).__init__()
         if isinstance(obj, PYSON):
-            assert obj.types() == set([dict]), 'obj must be a dict'
+            assert obj.types() == {dict}, 'obj must be a dict'
         else:
             assert isinstance(obj, dict), 'obj must be a dict'
         self._obj = obj
         if isinstance(key, PYSON):
-            assert key.types() == set([str]), 'key must be a string'
+            assert key.types() == {str}, 'key must be a string'
         else:
             assert isinstance(key, str), 'key must be a string'
         self._key = key
@@ -456,12 +439,11 @@ class Get(PYSON):
             'd': self._default,
             }
 
-    @reduce_type
     def types(self):
         if isinstance(self._default, PYSON):
             return self._default.types()
         else:
-            return set([type(self._default)])
+            return {type(self._default)}
 
     @staticmethod
     def eval(dct, context):
@@ -474,15 +456,15 @@ class In(PYSON):
         key, obj = k, v
         super(In, self).__init__()
         if isinstance(key, PYSON):
-            assert key.types().issubset(set([str, int])), \
+            assert key.types().issubset({str, int}), \
                 'key must be a string or an integer or a long'
         else:
             assert isinstance(key, (str, int)), \
                 'key must be a string or an integer or a long'
         if isinstance(obj, PYSON):
-            assert obj.types().issubset(set([dict, list])), \
+            assert obj.types().issubset({dict, list}), \
                 'obj must be a dict or a list'
-            if obj.types() == set([dict]):
+            if obj.types() == {dict}:
                 assert isinstance(key, str), 'key must be a string'
         else:
             assert isinstance(obj, (dict, list))
@@ -503,7 +485,7 @@ class In(PYSON):
             }
 
     def types(self):
-        return set([bool])
+        return {bool}
 
     @staticmethod
     def eval(dct, context):
@@ -523,7 +505,7 @@ class Date(PYSON):
         super(Date, self).__init__()
         for i in (year, month, day, delta_years, delta_months, delta_days):
             if isinstance(i, PYSON):
-                assert i.types().issubset(set([int, int, type(None)])), \
+                assert i.types().issubset({int, type(None)}), \
                     '%s must be an integer or None' % (i,)
             else:
                 assert isinstance(i, (int, type(None))), \
@@ -552,7 +534,7 @@ class Date(PYSON):
             }
 
     def types(self):
-        return set([datetime.date])
+        return {datetime.date}
 
     @staticmethod
     def eval(dct, context):
@@ -587,7 +569,7 @@ class DateTime(Date):
         for i in (hour, minute, second, microsecond,
                 delta_hours, delta_minutes, delta_seconds, delta_microseconds):
             if isinstance(i, PYSON):
-                assert i.types() == set([int, type(None)]), \
+                assert i.types() == {int, type(None)}, \
                     '%s must be an integer or None' % (i,)
             else:
                 assert isinstance(i, (int, type(None))), \
@@ -624,7 +606,7 @@ class DateTime(Date):
         return res
 
     def types(self):
-        return set([datetime.datetime])
+        return {datetime.datetime}
 
     @staticmethod
     def eval(dct, context):
@@ -651,7 +633,7 @@ class Len(PYSON):
     def __init__(self, v):
         super(Len, self).__init__()
         if isinstance(v, PYSON):
-            assert v.types().issubset(set([dict, list, str])), \
+            assert v.types().issubset({dict, list, str}), \
                 'value must be a dict or a list or a string'
         else:
             assert isinstance(v, (dict, list, str)), \
@@ -669,11 +651,12 @@ class Len(PYSON):
             }
 
     def types(self):
-        return set([int])
+        return {int}
 
     @staticmethod
     def eval(dct, context):
         return len(dct['v'])
+
 
 CONTEXT = {
     'Eval': Eval,
@@ -690,4 +673,4 @@ CONTEXT = {
     'Date': Date,
     'DateTime': DateTime,
     'Len': Len,
-    }
+}
