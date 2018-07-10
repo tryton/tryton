@@ -5,6 +5,7 @@ import logging
 import os
 import urllib.request, urllib.parse, urllib.error
 import json
+from datetime import datetime
 from decimal import Decimal
 from threading import RLock
 
@@ -40,6 +41,9 @@ __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 logger = logging.getLogger(__name__)
 
 os.environ['PGTZ'] = os.environ.get('TZ', '')
+_timeout = config.getint('database', 'timeout', default=30 * 60)
+_minconn = config.getint('database', 'minconn', default=1)
+_maxconn = config.getint('database', 'maxconn', default=64)
 
 
 def unescape_quote(s):
@@ -90,19 +94,30 @@ class Database(DatabaseInterface):
 
     def __new__(cls, name='template1'):
         with cls._lock:
+            now = datetime.now()
+            for database in cls._databases.values():
+                if ((now - database._last_use).total_seconds() > _timeout
+                        and database.name != name
+                        and not database._connpool._used):
+                    database.close()
             if name in cls._databases:
-                return cls._databases[name]
-            inst = DatabaseInterface.__new__(cls, name=name)
-
-            logger.info('connect to "%s"', name)
-            minconn = config.getint('database', 'minconn', default=1)
-            maxconn = config.getint('database', 'maxconn', default=64)
-            inst._connpool = ThreadedConnectionPool(
-                minconn, maxconn, cls.dsn(name),
-                cursor_factory=LoggingCursor)
-
-            cls._databases[name] = inst
+                inst = cls._databases[name]
+            else:
+                if name == 'template1':
+                    minconn = 0
+                else:
+                    minconn = _minconn
+                inst = DatabaseInterface.__new__(cls, name=name)
+                logger.info('connect to "%s"', name)
+                inst._connpool = ThreadedConnectionPool(
+                    minconn, _maxconn, cls.dsn(name),
+                    cursor_factory=LoggingCursor)
+                cls._databases[name] = inst
+            inst._last_use = datetime.now()
             return inst
+
+    def __init__(self, name='template1'):
+        super(Database, self).__init__(name)
 
     @classmethod
     def dsn(cls, name):
@@ -143,6 +158,7 @@ class Database(DatabaseInterface):
 
     def close(self):
         with self._lock:
+            logger.info('disconnect from "%s"', self.name)
             self._connpool.closeall()
             self._databases.pop(self.name)
 
