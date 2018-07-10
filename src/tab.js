@@ -822,17 +822,21 @@
         },
         update_revision: function() {
             var revision = this.screen.context()._datetime;
-            var label;
+            var label, title;
             if (revision) {
                 var date_format = Sao.common.date_format();
                 var time_format = '%H:%M:%S.%f';
-                revision = Sao.common.format_datetime(date_format, time_format,
-                        revision);
-                label = this.name + ' @ '+ revision;
+                var revision_label = ' @ ' + Sao.common.format_datetime(
+                    date_format, time_format, revision);
+                label = Sao.common.ellipsize(
+                    this.name, 80 - revision_label.length) + revision_label;
+                title = this.name + revision_label;
             } else {
-                label = this.name;
+                label = Sao.common.ellipsize(this.name, 80);
+                title = this.name;
             }
-            this.title.html(label);
+            this.title.text(label);
+            this.title.attr('title', title);
             this.set_buttons_sensitive(revision);
         },
         set_buttons_sensitive: function(revision) {
