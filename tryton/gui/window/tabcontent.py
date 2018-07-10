@@ -193,10 +193,12 @@ class TabContent(InfoBar):
     def make_title_bar(self):
         self.title = title = gtk.Label()
         title.modify_font(pango.FontDescription("bold 14"))
-        title.set_label(self.name)
+        title.set_label(common.ellipsize(self.name, 80))
         title.set_padding(10, 4)
         title.set_alignment(0.0, 0.5)
         title.set_size_request(0, -1)  # Allow overflow
+        title.set_max_width_chars(1)
+        title.set_ellipsize(pango.ELLIPSIZE_END)
         title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 

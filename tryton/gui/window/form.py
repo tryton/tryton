@@ -230,14 +230,20 @@ class Form(SignalEvent, TabContent):
             self.update_revision()
 
     def update_revision(self):
+        tooltips = common.Tooltips()
         revision = self.screen.context.get('_datetime')
         if revision:
             format_ = self.screen.context.get('date_format', '%x')
             format_ += ' %H:%M:%S.%f'
-            revision = datetime_strftime(revision, format_)
-            self.title.set_label('%s @ %s' % (self.name, revision))
+            revision_label = ' @ %s' % datetime_strftime(revision, format_)
+            label = common.ellipsize(
+                self.name, 80 - len(revision_label)) + revision_label
+            tooltip = self.name + revision_label
         else:
-            self.title.set_label(self.name)
+            label = common.ellipsize(self.name, 80)
+            tooltip = self.name
+        self.title.set_label(label)
+        tooltips.set_tip(self.title, tooltip)
         self.set_buttons_sensitive(revision)
 
     def set_buttons_sensitive(self, revision=None):

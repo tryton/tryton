@@ -19,6 +19,7 @@ class WinForm(NoModal, InfoBar):
     def __init__(self, screen, callback, view_type='form',
             new=False, many=0, domain=None, context=None,
             save_current=False, title='', rec_name=None):
+        tooltips = common.Tooltips()
         NoModal.__init__(self)
         self.screen = screen
         self.callback = callback
@@ -94,10 +95,13 @@ class WinForm(NoModal, InfoBar):
 
         title = gtk.Label()
         title.modify_font(pango.FontDescription("bold 12"))
-        title.set_label(self.title)
+        title.set_label(common.ellipsize(self.title, 80))
+        tooltips.set_tip(title, self.title)
         title.set_padding(20, 3)
         title.set_alignment(0.0, 0.5)
         title.set_size_request(0, -1)  # Allow overflow
+        title.set_max_width_chars(1)
+        title.set_ellipsize(pango.ELLIPSIZE_END)
         title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 
@@ -119,7 +123,6 @@ class WinForm(NoModal, InfoBar):
 
         if view_type == 'tree':
             hbox = gtk.HBox(homogeneous=False, spacing=0)
-            tooltips = common.Tooltips()
             access = common.MODELACCESS[screen.model_name]
 
             if domain is not None:
