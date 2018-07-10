@@ -172,6 +172,13 @@ The number of field to load with an `eager` :attr:`Field.loading`.
 
 Default: `100`
 
+clean_timeout
+~~~~~~~~~~~~~
+
+The minimum number of seconds between two cleanings of the cache.
+
+Default: `300`
+
 table
 -----
 
