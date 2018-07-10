@@ -161,9 +161,10 @@ class Not(PYSON):
     def __init__(self, v):
         super(Not, self).__init__()
         if isinstance(v, PYSON):
-            assert v.types() == {bool}, 'value must be boolean'
-        else:
-            assert isinstance(v, bool), 'value must be boolean'
+            if v.types() != {bool}:
+                v = Bool(v)
+        elif not isinstance(v, bool):
+            v = bool(v)
         self._value = v
 
     @property
@@ -213,13 +214,12 @@ class And(PYSON):
     def __init__(self, *statements, **kwargs):
         super(And, self).__init__()
         statements = list(statements) + kwargs.get('s', [])
-        for statement in statements:
+        for i, statement in enumerate(list(statements)):
             if isinstance(statement, PYSON):
-                assert statement.types() == {bool}, \
-                    'statement must be boolean'
-            else:
-                assert isinstance(statement, bool), \
-                    'statement must be boolean'
+                if statement.types() != {bool}:
+                    statements[i] = Bool(statement)
+            elif not isinstance(statement, bool):
+                statements[i] = bool(statement)
         assert len(statements) >= 2, 'must have at least 2 statements'
         self._statements = statements
 
@@ -302,9 +302,10 @@ class Greater(PYSON):
                 assert isinstance(i, (int, float, type(None))), \
                     'statement must be an integer or a float'
         if isinstance(equal, PYSON):
-            assert equal.types() == {bool}
-        else:
-            assert isinstance(equal, bool)
+            if equal.types() != {bool}:
+                equal = Bool(equal)
+        elif not isinstance(equal, bool):
+            equal = bool(equal)
         self._statement1 = statement1
         self._statement2 = statement2
         self._equal = equal
@@ -365,10 +366,10 @@ class If(PYSON):
         condition, then_statement, else_statement = c, t, e
         super(If, self).__init__()
         if isinstance(condition, PYSON):
-            assert condition.types() == {bool}, \
-                'condition must be boolean'
-        else:
-            assert isinstance(condition, bool), 'condition must be boolean'
+            if condition.types() != {bool}:
+                condition = Bool(condition)
+        elif not isinstance(condition, bool):
+            condition = bool(condition)
         if isinstance(then_statement, PYSON):
             then_types = then_statement.types()
         else:
@@ -676,6 +677,7 @@ class Id(PYSON):
 
     def types(self):
         return {int}
+
 
 
 CONTEXT = {

@@ -1,3 +1,4 @@
+* Implicit conversion to boolean in PYSON statement
 * Add domain to dictionary schema
 * Fill main language in ir.configuration at database initialization
 * Remove support for Python 2.7
