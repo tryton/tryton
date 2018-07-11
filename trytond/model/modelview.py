@@ -380,18 +380,22 @@ class ModelView(Model):
         # Find field without read access
         fread_accesses = FieldAccess.check(cls.__name__,
                 cls._fields.keys(), 'read', access=True)
-        fields_to_remove = list(x for x, y in fread_accesses.iteritems()
-                if not y)
+        fields_to_remove = set(
+            x for x, y in fread_accesses.items() if not y)
 
         # Find relation field without read access
         for name, field in cls._fields.iteritems():
             if not ModelAccess.check_relation(cls.__name__, name, mode='read'):
-                fields_to_remove.append(name)
+                fields_to_remove.add(name)
 
-        for name, field in cls._fields.iteritems():
-            for field_to_remove in fields_to_remove:
-                if field_to_remove in field.depends:
-                    fields_to_remove.append(name)
+        checked = set()
+        while checked < fields_to_remove:
+            to_check = fields_to_remove - checked
+            for name, field in cls._fields.items():
+                for field_to_remove in to_check:
+                    if field_to_remove in field.depends:
+                        fields_to_remove.add(name)
+            checked |= to_check
 
         # Remove field without read access
         for field in fields_to_remove:
@@ -443,7 +447,11 @@ class ModelView(Model):
 
         arch = etree.tostring(
             tree, encoding='utf-8', pretty_print=False).decode('utf-8')
-        fields2 = cls.fields_get(fields_def.keys())
+        # Do not call fields_def without fields as it returns all fields
+        if fields_def:
+            fields2 = cls.fields_get(list(fields_def.keys()))
+        else:
+            fields2 = {}
         for field in fields_def:
             if field in fields2:
                 fields2[field].update(fields_def[field])
