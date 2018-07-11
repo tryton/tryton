@@ -1,3 +1,4 @@
+* Show number and reference in purchase rec_name
 * Remove support for Python 2.7
 * Invoice purchased product instead of received product
 * Prevent delete lines if purchase is not draft or canceled

@@ -626,11 +626,14 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         return ''
 
     def get_rec_name(self, name):
+        items = []
         if self.number:
-            return self.number
-        elif self.reference:
-            return '[%s]' % self.reference
-        return '(%s)' % self.id
+            items.append(self.number)
+        if self.reference:
+            items.append('[%s]' % self.reference)
+        if not items:
+            items.append('(%s)' % self.id)
+        return ' '.join(items)
 
     @classmethod
     def search_rec_name(cls, name, clause):
