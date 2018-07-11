@@ -328,6 +328,28 @@ class ModelView(unittest.TestCase):
         fields = EmptyPage.fields_view_get(view_type='tree')['fields']
         self.assertNotIn('active', fields)
 
+    @with_transaction(context={'_check_access': True})
+    def test_circular_depends_removed(self):
+        "Testing circular depends are removed when user has no access"
+        pool = Pool()
+        CircularDepends = pool.get('test.modelview.circular_depends')
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+
+        foo_field, = Field.search([
+                ('model.model', '=', 'test.modelview.circular_depends'),
+                ('name', '=', 'foo'),
+                ])
+        FieldAccess.create([{
+            'field': foo_field.id,
+            'group': None,
+            'perm_read': False,
+            }])
+
+        fields = CircularDepends.fields_view_get(view_type='form')['fields']
+
+        self.assertEqual(fields, {})
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase

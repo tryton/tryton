@@ -53,6 +53,7 @@ def register():
         ModelViewButton,
         ModelViewRPC,
         ModelViewEmptyPage,
+        ModelViewCircularDepends,
         MPTT,
         ImportDataBoolean,
         ImportDataInteger,

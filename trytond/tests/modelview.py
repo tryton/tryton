@@ -11,6 +11,7 @@ __all__ = [
     'ModelViewButton',
     'ModelViewRPC',
     'ModelViewEmptyPage',
+    'ModelViewCircularDepends',
     ]
 
 
@@ -112,3 +113,12 @@ class ModelViewRPC(ModelView):
 class ModelViewEmptyPage(ModelView):
     'ModelView Empty Page'
     __name__ = 'test.modelview.empty_page'
+
+
+class ModelViewCircularDepends(ModelView):
+    'ModelView Circular Depends'
+    __name__ = 'test.modelview.circular_depends'
+
+    foo = fields.Char("Char", depends=['bar'])
+    bar = fields.Char("Char", depends=['foobar'])
+    foobar = fields.Char("Char", depends=['foo'])
