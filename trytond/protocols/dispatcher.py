@@ -3,6 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import pydoc
+from http import HTTPStatus
 
 from werkzeug.exceptions import abort
 from sql import Table
@@ -47,7 +48,7 @@ def login(request, database_name, user, parameters, language=None):
         Database(database_name).connect()
     except DatabaseOperationalError:
         logger.error('fail to connect to %s', database_name, exc_info=True)
-        abort(404)
+        abort(HTTPStatus.NOT_FOUND)
     context = {
         'language': language,
         '_request': request.context,
@@ -55,10 +56,10 @@ def login(request, database_name, user, parameters, language=None):
     try:
         session = security.login(
             database_name, user, parameters, context=context)
-        code = 403
+        code = HTTPStatus.UNAUTHORIZED
     except RateLimitException:
         session = None
-        code = 429
+        code = HTTPStatus.TOO_MANY_REQUESTS
     if not session:
         abort(code)
     return session
@@ -92,7 +93,7 @@ def db_exist(request, database_name):
 
 def db_list(request, *args):
     if not config.getboolean('database', 'list'):
-        raise Exception('AccessDenied')
+        abort(HTTPStatus.FORBIDDEN)
     context = {'_request': request.context}
     hostname = get_hostname(request.host)
     with Transaction().start(
@@ -136,8 +137,7 @@ def _dispatch(request, pool, *args, **kwargs):
     if method in obj.__rpc__:
         rpc = obj.__rpc__[method]
     else:
-        raise UserError('Calling method %s on %s is not allowed'
-            % (method, obj))
+        abort(HTTPStatus.FORBIDDEN)
 
     log_message = '%s.%s(*%s, **%s) from %s@%s/%s'
     username = request.authorization.username
