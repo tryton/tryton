@@ -3,7 +3,10 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import pydoc
-from http import HTTPStatus
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
 
 from werkzeug.exceptions import abort
 from sql import Table
