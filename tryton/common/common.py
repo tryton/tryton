@@ -13,6 +13,7 @@ import logging
 import unicodedata
 import colorsys
 from decimal import Decimal
+from http import HTTPStatus
 from functools import partial
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
@@ -1031,8 +1032,7 @@ def process_exception(exception, *args, **kwargs):
                     return rpc_execute(*args)
             else:
                 message(_('Concurrency Exception'), msg_type=gtk.MESSAGE_ERROR)
-        elif (exception.faultCode.startswith('403')
-                or exception.faultCode.startswith('401')):
+        elif exception.faultCode == str(HTTPStatus.UNAUTHORIZED.value):
             from tryton.gui.main import Main
             if PLOCK.acquire(False):
                 language = CONFIG['client.lang']
@@ -1065,7 +1065,7 @@ class Login(object):
             try:
                 func(parameters)
             except TrytonServerError as exception:
-                if exception.faultCode.startswith('403'):
+                if exception.faultCode == str(HTTPStatus.UNAUTHORIZED.value):
                     parameters.clear()
                     continue
                 if exception.faultCode != 'LoginException':

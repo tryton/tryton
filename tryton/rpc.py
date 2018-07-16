@@ -5,6 +5,8 @@ import logging
 import socket
 import ssl
 import os
+from http import HTTPStatus
+
 from functools import partial
 from tryton.jsonrpc import ServerProxy, ServerPool, Fault
 from tryton.fingerprints import Fingerprints
@@ -42,11 +44,10 @@ def db_list(host, port):
         logging.getLogger(__name__).debug(repr(result))
         return result
     except Fault as exception:
-        if exception.faultCode == 'AccessDenied':
-            logging.getLogger(__name__).debug('AccessDenied')
+        logging.getLogger(__name__).debug(exception.faultCode)
+        if exception.faultCode == str(HTTPStatus.FORBIDDEN.value):
             return []
         else:
-            logging.getLogger(__name__).debug(repr(None))
             return None
 
 
