@@ -218,10 +218,8 @@
         jQuery.when(Sao.DB.list()).then(function(databases) {
             var el;
             databases = databases || [];
-            if (databases.length <= 1 ) {
-                if (databases.length == 1) {
-                    database = databases[0];
-                }
+            if (databases.length == 1 ) {
+                database = databases[0];
                 el = dialog.database_input;
             } else {
                 el = dialog.database_select;
@@ -235,6 +233,8 @@
             el.prop('readonly', databases.length == 1);
             el.show();
             el.val(database || '');
+        }, function() {
+            dialog.database_input.show();
         });
         return dfd.promise();
     };
@@ -291,7 +291,7 @@
                            Sao.i18n.gettext('Unable to reach the server.'));
                     dfd.reject();
                 } else if (data.error) {
-                    if (data.error[0].startsWith('403')) {
+                    if (data.error[0].startsWith('401')) {
                         return this.run({}).then(dfd.resolve, dfd.reject);
                     } else if (data.error[0].startsWith('404')) {
                         dfd.reject();
