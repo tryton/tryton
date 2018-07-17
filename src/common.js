@@ -3126,16 +3126,18 @@
                     this.menu.dropdown('toggle');
                 }
             }.bind(this));
-            // We must set the overflow of the treeview containing the input to
-            // visible to prevent vertical scrollbar inherited from the auto
-            // overflow-x
+            // We must set the overflow of the treeview and modal-body
+            // containing the input to visible to prevent vertical scrollbar
+            // inherited from the auto overflow-x
             // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
             this.dropdown.on('hide.bs.dropdown', function() {
                 this.input.focus();
                 this.input.closest('.treeview').css('overflow', '');
+                this.input.closest('.modal-body').css('overflow', '');
             }.bind(this));
             this.dropdown.on('show.bs.dropdown', function() {
                 this.input.closest('.treeview').css('overflow', 'visible');
+                this.input.closest('.modal-body').css('overflow', 'visible');
             }.bind(this));
         },
         set_actions: function(actions, action_activated) {
