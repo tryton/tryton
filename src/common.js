@@ -1994,26 +1994,14 @@
         or: function(a, b) {return a || b;},
         OPERATORS: {
             '=': function(a, b) {
-                if ((a instanceof Array) && (b instanceof Array)) {
-                    return Sao.common.compare(a, b);
-                } else if ((a instanceof Number) || (b instanceof Number)) {
-                    return (Number(a) === Number(b));
-                } else {
-                    return (a === b);
-                }
+                return Sao.common.DomainInversion.equals(a, b);
             },
             '>': function(a, b) {return (a > b);},
             '<': function(a, b) {return (a < b);},
             '<=': function(a, b) {return (a <= b);},
             '>=': function(a, b) {return (a >= b);},
             '!=': function(a, b) {
-                if ((a instanceof Array) && (b instanceof Array)) {
-                    return !Sao.common.compare(a, b);
-                } else if ((a instanceof Number) || (b instanceof Number)) {
-                    return (Number(a) !== Number(b));
-                } else {
-                    return (a !== b);
-                }
+                return !Sao.common.DomainInversion.equals(a, b);
             },
             'in': function(a, b) {
                 return Sao.common.DomainInversion.in_(a, b);
@@ -2277,6 +2265,19 @@
             return expression.inverse(symbol, context);
         }
     });
+    Sao.common.DomainInversion.equals = function(a, b) {
+        if ((a instanceof Array) && (b instanceof Array)) {
+            return Sao.common.compare(a, b);
+        } else if (moment.isMoment(a) && moment.isMoment(b)) {
+            return ((a.isDate == b.isDate) &&
+                (a.isDateTime == b.isDateTime) &&
+                (a.valueOf() == b.valueOf()));
+        } else if ((a instanceof Number) || (b instanceof Number)) {
+            return (Number(a) === Number(b));
+        } else {
+            return (a === b);
+        }
+    };
     Sao.common.DomainInversion.in_ = function(a, b) {
         if (a instanceof Array) {
             if (b instanceof Array) {
