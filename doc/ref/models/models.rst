@@ -407,6 +407,10 @@ Class methods:
 
     Return a SQL Table instance for the Model.
 
+.. classmethod:: ModelSQL.__table_history__()
+
+    Return a SQL Table instance for the history of Model.
+
 .. classmethod:: ModelSQL.table_query()
 
     Could be defined to use a custom SQL query instead of a table of the
