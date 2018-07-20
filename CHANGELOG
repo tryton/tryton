@@ -1,3 +1,4 @@
+* Pass pattern to get_context_formula
 * Remove support for Python 2.7
 
 Version 4.8.0 - 2018-04-23

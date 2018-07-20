@@ -41,7 +41,8 @@ class PriceList(ModelSQL, ModelView):
     def default_tax_included():
         return False
 
-    def get_context_formula(self, party, product, unit_price, quantity, uom):
+    def get_context_formula(self, party, product, unit_price, quantity, uom,
+            pattern=None):
         return {
             'names': {
                 'unit_price': unit_price,
@@ -72,7 +73,7 @@ class PriceList(ModelSQL, ModelView):
             product.default_uom, round=False) if product else quantity
 
         context = self.get_context_formula(
-            party, product, unit_price, quantity, uom)
+            party, product, unit_price, quantity, uom, pattern=pattern)
         for line in self.lines:
             if line.match(pattern):
                 return line.get_unit_price(**context)
