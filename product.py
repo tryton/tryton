@@ -5,8 +5,7 @@ from trytond.pool import PoolMeta
 from trytond.model import tree, fields
 
 
-class PriceList(tree()):
-    __metaclass__ = PoolMeta
+class PriceList(tree(), metaclass=PoolMeta):
     __name__ = 'product.price_list'
 
     parent = fields.Many2One('product.price_list', "Parent")
@@ -22,8 +21,7 @@ class PriceList(tree()):
         return context
 
 
-class PriceListLine:
-    __metaclass__ = PoolMeta
+class PriceListLine(metaclass=PoolMeta):
     __name__ = 'product.price_list.line'
 
     @classmethod
