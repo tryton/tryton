@@ -36,6 +36,9 @@ class Sale(metaclass=PoolMeta):
                     line.unit_price = line.draft_unit_price
                     line.draft_unit_price = None
                     changed = True
+                if line.promotion:
+                    line.promotion = None
+                    changed = True
             if changed:
                 sale.lines = sale.lines  # Trigger changes
         cls.save(sales)
