@@ -986,7 +986,7 @@ class DictField(Field):
         context = self.get_context(record)
         domain = self.domain_get(record)
         batchlen = min(10, CONFIG['client.limit'])
-        for i in xrange(0, len(keys), batchlen):
+        for i in range(0, len(keys), batchlen):
             sub_keys = keys[i:i + batchlen]
             try:
                 key_ids = RPCExecute('model', schema_model, 'search',
