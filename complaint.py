@@ -7,7 +7,6 @@ from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond import backend
 
 from trytond.modules.product import price_digits
 
@@ -140,8 +139,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 3.8: rename reference into number
         if (table_h.column_exist('reference')

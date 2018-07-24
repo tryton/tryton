@@ -48,7 +48,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
         TableHandler = backend.get('TableHandler')
         exist = TableHandler.table_exist(cls._table)
         if exist:
-            table = TableHandler(cls, module_name)
+            table = cls.__table_handler__(module_name)
             exist &= table.column_exist('complaint_sequence')
 
         super(ConfigurationSequence, cls).__register__(module_name)
