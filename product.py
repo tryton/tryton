@@ -273,9 +273,8 @@ class CategoryCustomerTax(ModelSQL):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         # Migration from 1.6 product renamed into category
-        table = TableHandler(cls)
+        table = cls.__table_handler__(module_name)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
@@ -294,9 +293,8 @@ class CategorySupplierTax(ModelSQL):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         # Migration from 1.6 product renamed into category
-        table = TableHandler(cls)
+        table = cls.__table_handler__(module_name)
         if table.column_exist('product'):
             table.index_action('product', action='remove')
             table.drop_fk('product')
