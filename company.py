@@ -5,7 +5,6 @@ from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.cache import Cache
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-from trytond import backend
 from trytond.config import config
 
 __all__ = ['Employee', 'EmployeeCostPrice', 'price_digits']
@@ -79,9 +78,8 @@ class EmployeeCostPrice(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(EmployeeCostPrice, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.8 drop date_cost_price_uniq
         table.drop_constraint('date_cost_price_uniq')

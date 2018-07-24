@@ -5,7 +5,6 @@ from sql import Null
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
-from trytond import backend
 
 from .company import price_digits
 
@@ -22,11 +21,10 @@ class TimesheetLine(metaclass=PoolMeta):
     def __register__(cls, module_name):
         pool = Pool()
         Employee = pool.get('company.employee')
-        TableHandler = backend.get('TableHandler')
 
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         migrate_cost_price = not table_h.column_exist('cost_price')
 
