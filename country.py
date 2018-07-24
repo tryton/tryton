@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
-from trytond import backend
 
 __all__ = ['Country', 'Subdivision', 'Zip']
 
@@ -28,10 +27,9 @@ class Country(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(Country, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 3.4: drop unique constraints from name and code
         table.drop_constraint('name_uniq')
