@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
-from trytond import backend
 from trytond.pyson import Eval
 
 __all__ = ['DashboardAction']
@@ -26,10 +25,9 @@ class DashboardAction(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(DashboardAction, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')

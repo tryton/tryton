@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
-from trytond import backend
 from trytond.pool import PoolMeta
 
 __all__ = ['User']
@@ -29,11 +28,9 @@ class User(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(User, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.6
         table.not_null_action('dashboard_layout', action='remove')
