@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import sequence_ordered
 from trytond.pyson import Eval, Bool
-from trytond import backend
 from trytond.pool import PoolMeta
 
 __all__ = ['Location']
@@ -21,10 +20,9 @@ class Location(sequence_ordered(), metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(Location, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
