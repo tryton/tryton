@@ -9,7 +9,6 @@ from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
-from trytond import backend
 
 from trytond.modules.product import price_digits
 
@@ -223,8 +222,7 @@ class Production(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
         table = cls.__table__()
 
         # Migration from 3.8: rename code into number
