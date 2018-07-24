@@ -10,7 +10,6 @@ from sql.functions import Extract
 
 from trytond.model import ModelView, ModelSQL, Workflow, fields, \
     sequence_ordered
-from trytond import backend
 from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -111,11 +110,10 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Sale = pool.get('sale.sale')
         cursor = Transaction().connection.cursor()
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         sale = Sale.__table__()
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         number_exists = table.column_exist('number')
 
         # Migration from 3.8: rename reference into number
@@ -124,7 +122,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             number_exists = True
 
         super(SaleOpportunity, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.8: make party not required and add number as
         # required
@@ -469,10 +467,9 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(SaleOpportunityLine, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
