@@ -10,7 +10,6 @@ from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond import backend
 
 from trytond.modules.product import price_digits
 
@@ -186,10 +185,9 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
         # Migration from 2.2 new field currency
@@ -332,9 +330,8 @@ class ProductSupplierPrice(
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
         fill_sequence = not table.column_exist('sequence')

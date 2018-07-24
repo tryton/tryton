@@ -301,7 +301,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                         len('packing'))],
                 where=model_field.name.like('%packing%')
                 & (model_field.module == module_name)))
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.column_rename('packing_state', 'shipment_state')
 
         # Migration from 3.8:
@@ -318,7 +318,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 values=['shipment'],
                 where=sql_table.invoice_method == 'packing'))
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 2.2: warehouse is no more required
         table.not_null_action('warehouse', 'remove')
 
@@ -354,7 +354,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Add index on create_date
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
     @classmethod
@@ -1110,11 +1110,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         super(PurchaseLine, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):

@@ -8,7 +8,6 @@ from trytond.model import Workflow, ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond import backend
 
 from trytond.modules.product import price_digits
 
@@ -205,13 +204,12 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
         super(Move, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.6: remove purchase_line
         if table.column_exist('purchase_line'):
