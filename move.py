@@ -13,7 +13,6 @@ from sql.conditionals import Coalesce, Case
 from sql.operators import Concat
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
-from trytond import backend
 from trytond.pyson import Eval, If, Bool
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
@@ -316,13 +315,12 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         sql_table = cls.__table__()
 
         # Migration from 1.2: packing renamed into shipment
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.drop_constraint('check_packing')
         for suffix in ('in', 'out', 'in_return', 'out_return', 'internal'):
             old_column = 'packing_%s' % suffix
@@ -352,11 +350,11 @@ class Move(Workflow, ModelSQL, ModelView):
                             columns=[sql_table.internal_quantity],
                             values=[internal_quantity],
                             where=sql_table.id == move.id))
-            table = TableHandler(cls, module_name)
+            table = cls.__table_handler__(module_name)
             table.not_null_action('internal_quantity', action='add')
 
         # Migration from 1.0 check_packing_in_out has been removed
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.drop_constraint('check_packing_in_out')
 
         # Migration from 2.6: merge all shipments

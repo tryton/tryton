@@ -178,10 +178,9 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(Location, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action(['left', 'right'], 'add')
 
     @classmethod

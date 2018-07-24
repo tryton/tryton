@@ -4,7 +4,6 @@ from sql import Null
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
 from trytond.pyson import Eval, Bool
-from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -91,11 +90,11 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(Inventory, cls).__register__(module_name)
 
+        table = cls.__table_handler__(module_name)
+
         # Add index on create_date
-        table = TableHandler(cls, module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -330,7 +329,6 @@ class InventoryLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         pool = Pool()
         Move = pool.get('stock.move')
@@ -339,7 +337,7 @@ class InventoryLine(ModelSQL, ModelView):
 
         super(InventoryLine, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 2.8: Remove constraint inventory_product_uniq
         table.drop_constraint('inventory_product_uniq')
 

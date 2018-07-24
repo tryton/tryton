@@ -254,7 +254,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         old_table = 'stock_packing_in'
         if TableHandler.table_exist(old_table):
             TableHandler.table_rename(old_table, cls._table)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         for field in ('create_uid', 'write_uid', 'contact_address',
                 'warehouse', 'supplier'):
             table.drop_fk(field, table=old_table)
@@ -293,7 +293,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Add index on create_date
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -681,7 +681,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         old_table = 'stock_packing_in_return'
         if TableHandler.table_exist(old_table):
             TableHandler.table_rename(old_table, cls._table)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         for field in ('create_uid', 'write_uid', 'from_location',
                 'to_location'):
             table.drop_fk(field, table=old_table)
@@ -720,7 +720,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Add index on create_date
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -1066,7 +1066,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         if TableHandler.table_exist(old_table):
             TableHandler.table_rename(old_table, cls._table)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         for field in ('create_uid', 'write_uid', 'delivery_address',
                 'warehouse', 'customer'):
             table.drop_fk(field, table=old_table)
@@ -1105,7 +1105,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Migration from 1.0 customer_location is no more used
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.drop_column('customer_location')
 
         # Add index on create_date
@@ -1637,7 +1637,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         if TableHandler.table_exist(old_table):
             TableHandler.table_rename(old_table, cls._table)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         for field in ('create_uid', 'write_uid', 'delivery_address',
                 'warehouse', 'customer'):
             table.drop_fk(field, table=old_table)
@@ -1676,7 +1676,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             table.not_null_action('company', action='add')
 
         # Add index on create_date
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
@@ -2192,7 +2192,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         old_table = 'stock_packing_internal'
         if TableHandler.table_exist(old_table):
             TableHandler.table_rename(old_table, cls._table)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         for field in ('create_uid', 'write_uid', 'from_location',
                 'to_location'):
             table.drop_fk(field, table=old_table)
@@ -2239,7 +2239,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 & (sql_table.planned_date != Null)))
 
         # Add index on create_date
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
     @staticmethod
