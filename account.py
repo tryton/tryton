@@ -11,7 +11,6 @@ from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
-from trytond import backend
 
 __all__ = ['FiscalYear',
     'Period', 'Move', 'MoveLine', 'Reconciliation', 'InvoiceSequence',
@@ -30,7 +29,6 @@ class FiscalYear(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         pool = Pool()
         Sequence = pool.get('account.fiscalyear.invoice_sequence')
         sequence = Sequence.__table__()
@@ -38,7 +36,7 @@ class FiscalYear(metaclass=PoolMeta):
 
         super(FiscalYear, cls).__register__(module_name)
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 4.2: Use Match pattern for sequences
         if (table.column_exist('in_invoice_sequence')
@@ -76,7 +74,6 @@ class Period(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         pool = Pool()
         Sequence = pool.get('account.fiscalyear.invoice_sequence')
         FiscalYear = pool.get('account.fiscalyear')
@@ -86,7 +83,7 @@ class Period(metaclass=PoolMeta):
 
         super(Period, cls).__register__(module_name)
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 4.2: Use Match pattern for sequences
         if (table.column_exist('in_invoice_sequence')

@@ -323,7 +323,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pool = Pool()
         Line = pool.get('account.invoice.line')
         Tax = pool.get('account.invoice.tax')
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         line = Line.__table__()
         tax = Tax.__table__()
@@ -331,7 +330,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         super(Invoice, cls).__register__(module_name)
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.2 invoice_date is no more required
         table.not_null_action('invoice_date', action='remove')
@@ -1756,11 +1755,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         invoice = Invoice.__table__()
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         super(InvoiceLine, cls).__register__(module_name)
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 invoice is no more required
         table.not_null_action('invoice', action='remove')
@@ -2243,10 +2241,9 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(InvoiceTax, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')

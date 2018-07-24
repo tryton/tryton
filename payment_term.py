@@ -140,11 +140,10 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         super(PaymentTermLine, cls).__register__(module_name)
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 percent change into percentage
         if table.column_exist('percent'):
@@ -341,7 +340,7 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
 
         super(PaymentTermLineRelativeDelta, cls).__register__(module_name)
 
-        line_table = TableHandler(Line, module_name)
+        line_table = Line.__table_handler__(module_name)
 
         # Migration from 3.4
         fields = ['day', 'month', 'weekday', 'months', 'weeks', 'days']
