@@ -7,7 +7,6 @@ from decimal import Decimal, ROUND_HALF_EVEN
 from sql import Window
 from sql.functions import NthValue
 
-from trytond import backend
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check)
 from trytond.tools import datetime_strftime
@@ -54,11 +53,9 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(Currency, cls).__register__(module_name)
 
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 4.6: removal of monetary
         for col in [
