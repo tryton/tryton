@@ -673,7 +673,7 @@ class Message(Workflow, ModelSQL, ModelView):
 
         # Migration from 3.2
         if TableHandler.table_exist(Group._table):
-            group_table = TableHandler(Group, module_name)
+            group_table = Group.__table_handler__(module_name)
             if group_table.column_exist('sepa_message'):
                 group = Group.__table__()
                 table = cls.__table__()

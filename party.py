@@ -9,7 +9,6 @@ import stdnum.exceptions
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 from trytond.transaction import Transaction
-from trytond import backend
 
 __all__ = ['Party', 'PartyIdentifier']
 
@@ -26,11 +25,10 @@ class Party(metaclass=PoolMeta):
     def __register__(cls, module_name):
         Identifier = Pool().get('party.identifier')
         cursor = Transaction().connection.cursor()
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         identifier = Identifier.__table__()
         super(Party, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 4.0: Move sepa_creditor_identifier to identifier
         if table.column_exist('sepa_creditor_identifier'):
