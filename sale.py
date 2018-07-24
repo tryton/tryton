@@ -327,7 +327,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                         len('packing'))],
                 where=model_field.name.like('%packing%')
                 & (model_field.module == module_name)))
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.column_rename('packing_state', 'shipment_state')
         table.column_rename('packing_method', 'shipment_method')
         table.column_rename('packing_address', 'shipment_address')
@@ -345,7 +345,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 values=['shipment'],
                 where=sql_table.invoice_method == 'packing'))
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 2.2
         table.not_null_action('sale_date', 'remove')
 
@@ -378,7 +378,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Add index on create_date
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
         # Migration from 4.0: Drop not null on payment_term
@@ -1135,11 +1135,10 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         super(SaleLine, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 comment change into note
         if table.column_exist('comment'):

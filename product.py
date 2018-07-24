@@ -6,7 +6,6 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond import backend
 from trytond.modules.product import price_digits
 
 __all__ = ['Template', 'Product']
@@ -34,9 +33,8 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
         super(Template, cls).__register__(module_name)
