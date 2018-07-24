@@ -11,7 +11,6 @@ from trytond.model import (
     sequence_ordered)
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-from trytond import backend
 
 __all__ = ['Sale', 'SaleLine',
     'SaleExtra', 'SaleExtraLine']
@@ -111,14 +110,13 @@ class SaleExtra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     def __register__(cls, module_name):
         pool = Pool()
         PriceList = pool.get('product.price_list')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
         price_list = PriceList.__table__()
 
         super(SaleExtra, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 3.6: price_list not required and new company
         table.not_null_action('price_list', 'remove')
         query = sql_table.join(price_list,
