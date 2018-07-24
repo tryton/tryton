@@ -151,8 +151,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 3.8: rename code into number
         if table_h.column_exist('code'):
