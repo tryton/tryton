@@ -19,10 +19,7 @@ Synopsis
 
   tryton [options] [url]
 
-After startup the `login dialog`__ is displayed.
-
-__ Menu-Connection_
-
+On startup the login dialog is displayed.
 
 Options
 *******
@@ -44,11 +41,6 @@ Options
 -u LOGIN, --user=LOGIN               Specify the login user
 
 -s SERVER, --server=SERVER           Specify the server hostname:port
-
-Environment
-***********
-
-`GTKOSXAPPLICATION`                  Activate with native Mac desktop
 
 URL
 ***
@@ -77,19 +69,21 @@ where `parameters` are the corresponding fields of actions encoded in
 
 Overview
 ********
+
+On startup the login dialog is displayed. It allows to select a existing
+profile (or to manage them) or to enter the host and database information.
+
 The following schematic illustration of the Tryton client shows the names of
 all important visual parts.
 
 Figure: Tryton client application::
 
   Client Window       ________________________________________________________________
-                     |                      Tryton                               _ o x|
+                     |T| Search  | Favorites    Tryton                           _ o x|
                      |----------------------------------------------------------------|
-  Menu bar           | Connection User Options Favorites Help                         |
-                     |________________________________________________________________|
-                     |             |          ______                                  |
-  Tabs               | Menu        |  [Tab1] |[Tab2]| [Tab3]...                       |
-                     |-------------| +-------+      +--------------------------------+|
+                     | +           |          ______                                  |
+  Tabs               | |-+         |  [Tab1] |[Tab2]| [Tab3]...                       |
+                     | | |-        | +-------+      +--------------------------------+|
                      | +           | | Menu Tab2                                     ||
                      | |-+         | |-----------------------------------------------||
   Tool bar           | | |-        | | New Save Switch Reload | Prev Next | Attach v ||
@@ -108,44 +102,6 @@ Figure: Tryton client application::
                      |             | |                                               ||
                      |_____________| |_______________________________________________||
                      |________________________________________________________________|
-
-
-Menu Bar
-^^^^^^^^
-The menu bar is the main control unit. It provides most of the functionalities
-of the client application. The menu bar is grouped into categories. It is
-controlled with mouse or keyboard. The `menu bar items`_ are explained later.
-
-
-Mouse and Keyboard Use
-++++++++++++++++++++++
-Most functions of the Tryton client can be accessed with mouse or keyboard.
-`Key bindings`__ for all menu items are preset. Furthermore all key bindings
-are manually configurable. To change the binding of a menu item the user needs
-to put the cursor onto it and simply press the user defined key combination.
-For this purpose it is needed to activate the configuration of the key bindings
-with Options > Menubar > Change Accelerators. After the configuration it is
-preferable to disable Change Accelerators, to avoid accidental changes of key
-bindings while navigating the Menu bar with the keyboard.
-
-To remove a key binding simply press the delete button while pointing the
-cursor on the menu item to change.
-
-.. Note:: Usually key bindings are composed with modifier keys.
-
-__ Menu-Help-Keyboard_Shortcuts_
-
-Additionally the menu bar items are accessible with the *Alt* or *Option* key.
-The user needs to hold the *Alt* or *Option* key followed by the underlined
-character of the menu bar item to choose. To dive into deeper menu levels,
-he needs to release the *Alt* or *Option* key and to simply press the
-underlined letter of the sub menu item. If there exist several menu items with
-the same shortcut, repeated activation of the shortcut key will jump to the
-next one.
-
-The second mouse button (usually right mouse button) provides an additional
-contextual menu for some views and fields. In this context menu the user finds
-:term:`actions` to copy and paste contents or selections for several fields.
 
 
 Tabbed Main Frame
@@ -180,71 +136,17 @@ A search field allows to quickly filter the menu items by name and to search in
 models for which the global search is enabled.
 
 
-Menu Bar Items
-**************
-The following section describes the function of each menu bar entry in detail.
+Application Menu
+****************
+The following section describes the action of the application menu.
 A rule of thumb: All items of the menu bar that are suffixed by three dots
 (...) will open an intermediate :term:`dialog` for setting up the provided
-menu action. Most dialogs provide a *Cancel* button, used to stop the
+menu action. Most dialog provide a *Cancel* button, used to stop the
 complete dialog process.
 
+.. _Menu-Preferences:
 
-Connection
-^^^^^^^^^^
-The connection menu level provides functions about Tryton server login,
-logout and closing the client application.
-
-.. _Menu-Connection:
-
-Connect...
-  By choosing this menu entry the client will be connected to an available
-  Tryton server. A :term:`dialog` opens to request credentials:
-
-  * `Server`__
-  * Database: Database to connect server side
-  * User name: Tryton user name to login
-  * Password: Tryton password to login
-  * Actions:
-
-    - Connect: Connects to the server with the given credentials.
-    - Cancel
-
-.. note:: Depending on server configuration for session timeout, the actual
-   user may be logged out of the current session, and need to login again.
-   Default timeout for inactivity logout is six minutes.
-
-.. _Menu-Connection-Disconnect:
-
-Disconnect...
-  Disconnects the client from an active server connection. In case of unsaved
-  changes in an open tab, the Tryton client will request for saving the
-  changes.
-
-__ Connection-Server-Connection_
-
-.. _Connection-Server-Connection:
-
-Server (connection) dialog:
-  This :term:`dialog` is widely used to setup a Tryton server connection.
-  This dialog shows the actual state of the client/server communication.
-  It also shows when there is no connection to a Tryton server at all.
-  The *Change* button opens a dialog for connection details:
-
-  * Server: Network address or IP number of the Tryton server (protocols
-    are not supported)
-  * Port: Port where the Tryton server listens.
-
-.. note:: If there is no connection to a Tryton server, many items in menu bar
-   and tool bar are deactivated.
-
-
-User
-^^^^
-This menu bar item controls the preferences of the actual user.
-
-.. _Menu-User-Preferences:
-
-Preferences...
+Preferences:
   A preference dialog opens, where the actual user can show and edit his
   personal settings. All user preferences are stored server side.
   I.e. logging in with the same credentials from different computers
@@ -262,99 +164,58 @@ Preferences...
   * Applications: A list of applications along with their access
     key and the authorization state.
 
-.. _Menu-User-Menu-Reload:
-
-Menu Reload:
-  Reload the menu.
-
-.. _Menu-User-Menu-Toggle:
-
-Menu Toggle:
-  Toggle the menu visibility
-
-
 Options
 ^^^^^^^
 The Options menu sets up several visual and context depending preferences.
 
 
-Toolbar
-+++++++
-
-.. _Menu-Options-Toolbar-Default:
-
-Default:
-  Shows labels and icons as defaulted in the GTK configuration.
-
-.. _Menu-Options-Toolbar-Text_and_Icons:
-
-Text and Icons:
-  Shows labels and icons in the tool bar.
-
-.. _Menu-Options-Toolbar-Icons:
-
-Icons:
-  Shows icons only in the tool bar.
-
-.. _Menu-Options-Toolbar-Text:
-
-Text:
-  Shows labels only in the tool bar.
-
-Menubar
-+++++++
-
-.. _Menu-Options-Menubar-Accelerators:
-
-Change Accelerators:
-  If checked, keyboard shortcuts can be defined. S. a. `mouse and keyboard use`_
-
-Mode
-++++
-
-.. _Menu-Options-Mode-Normal:
-
-Normal:
-  Shows the client in full feature mode.
-
-.. _Menu-Options-Mode_PDA:
-
-PDA:
-  Shows the client in a condensed mode.
-
-Form
-++++
-
-.. _Menu-Options-Form-Toolbar:
+.. _Menu-Options-Toolbar:
 
 Toolbar:
-  Checkbox to disable/enable the tool bar.
 
-.. _Menu-Options-Form-Save_Columns_Width:
+  * Default:
+    Shows labels and icons as defaulted in the GTK configuration.
 
-Save Width/Height:
-  Check box to enable saving of manually adjusted widths of columns in lists
-  and trees. Additionally saving of manually adjusted widths and heights of
-  dialog and popup windows.
+  * Text and Icons:
+    Shows labels and icons in the tool bar.
 
-.. _Menu-Options-Form-Save_Tree_State:
+  * Icons:
+    Shows icons only in the tool bar.
 
-Save Tree Expanded State:
-  Check box to enable saving of expanded and selected nodes in trees/lists.
+  * Text:
+    Shows labels only in the tool bar.
 
-.. _Menu-Options-Form-Fast_Tabbing:
+.. _Menu-Options-Form:
 
-Fast Tabbing:
-  Check box to enable fast tabbing navigation by skipping readonly entries.
+Form:
 
-.. _Menu-Options-Form-Spell_Checking:
+  * Save Width/Height:
+    Check box to enable saving of manually adjusted widths of columns in lists
+    and trees. Additionally saving of manually adjusted widths and heights of
+    dialog and popup windows.
 
-Spell Checking:
-  Check box to enable spell checking in fields.
+  * Save Tree Expanded State:
+    Check box to enable saving of expanded and selected nodes in trees/lists.
+
+  * Fast Tabbing:
+    Check box to enable fast tabbing navigation by skipping readonly entries.
+
+  * Spell Checking:
+    Check box to enable spell checking in fields.
+
+.. _Menu-Options-PDA-Mode:
+
+PDA Mode:
+  When activated, the client display in a condensed mode.
+
+.. _Menu-Options-Search-Limit:
+
+Search Limit:
+  Open a dialog to set up the maximum number of records displayed on a list.
 
 .. _Menu-Options-Email:
 
-Email...:
+Email:
   Open a dialog to set up an email reader.
 
   * Command Line: The command line calling the email reader.
@@ -380,17 +241,6 @@ Email...:
 
 Check Version:
   Check box to enable the check of new bug-fix version.
-
-.. _Menu-Options-Save_Options:
-
-Save Options:
-  Saves all the options.
-
-
-Favorites
-^^^^^^^^^
-A collection of user defined menu favorites.
-
 
 Help
 ^^^^
@@ -742,7 +592,7 @@ Here are the list of custom selectors:
 
     * `.invalid`: widget for which the field value is not valid
 
-    * `window.profile-<name>`: the name of the connection profile is set on the
+    * `headerbar.profile-<name>`: the name of the connection profile is set on the
       main window
 
 For more information about style option see `GTK+ CSS`_

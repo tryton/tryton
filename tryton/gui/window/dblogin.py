@@ -12,7 +12,6 @@ from tryton import __version__
 import tryton.common as common
 from tryton.config import CONFIG, TRYTON_ICON, PIXMAPS_DIR, get_config_dir
 import tryton.rpc as rpc
-from tryton.exceptions import TrytonError
 from tryton.common.underline import set_underline
 
 _ = gettext.gettext
@@ -383,12 +382,12 @@ class DBListEditor(object):
 
 class DBLogin(object):
     def __init__(self):
-        # GTK Stuffs
-        self.parent = common.get_toplevel_window()
-        self.dialog = gtk.Dialog(title=_('Login'), parent=self.parent,
-            flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
-        self.dialog.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+        # Fake windows to avoid warning about Dialog without transient
+        self._window = gtk.Window()
+        self.dialog = gtk.Dialog(title=_('Login'), flags=gtk.DIALOG_MODAL)
+        self.dialog.set_transient_for(self._window)
         self.dialog.set_icon(TRYTON_ICON)
+        self.dialog.set_position(gtk.WIN_POS_CENTER_ALWAYS)
 
         tooltips = common.Tooltips()
         button_cancel = gtk.Button(_('_Cancel'), use_underline=True)
@@ -624,10 +623,12 @@ class DBLogin(object):
             if not test:
                 if test is False:
                     common.warning('',
-                        _('Incompatible version of the server'))
+                        _('Incompatible version of the server'),
+                        parent=self.dialog)
                 else:
                     common.warning('',
-                        _('Could not connect to the server'))
+                        _('Could not connect to the server'),
+                        parent=self.dialog)
                 continue
             database = self.entry_database.get_text()
             login = self.entry_login.get_text()
@@ -639,9 +640,6 @@ class DBLogin(object):
             result = (
                 hostname, port, database, self.entry_login.get_text())
 
-        self.parent.present()
         self.dialog.destroy()
-        if response != gtk.RESPONSE_OK:
-            rpc.logout()
-            raise TrytonError('QueryCanceled')
-        return result
+        self._window.destroy()
+        return response == gtk.RESPONSE_OK

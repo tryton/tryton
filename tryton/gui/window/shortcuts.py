@@ -3,8 +3,10 @@
 
 import gtk
 import gettext
-from tryton.config import TRYTON_ICON
+
 from tryton.common import get_toplevel_window
+from tryton.config import TRYTON_ICON
+from tryton.gui import Main
 
 _ = gettext.gettext
 
@@ -17,6 +19,7 @@ class Shortcuts(object):
         self.dialog = gtk.Dialog(_('Keyboard Shortcuts'), self.parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT
             | gtk.WIN_POS_CENTER_ON_PARENT | gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        Main().add_window(self.dialog)
         ok_button = self.dialog.add_button('gtk-ok', gtk.RESPONSE_OK)
         ok_button.set_always_show_image(True)
         self.dialog.set_icon(TRYTON_ICON)

@@ -19,7 +19,7 @@ class NoModal(object):
 
     def register(self):
         from tryton.gui.main import Main
-        main = Main.get_main()
+        main = Main()
         self.page = main.get_page()
         if not self.page:
             self.page = main

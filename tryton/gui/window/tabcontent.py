@@ -4,6 +4,7 @@
 import gettext
 import gtk
 import pango
+from gi.repository import Gtk
 
 import tryton.common as common
 from tryton.config import CONFIG
@@ -162,7 +163,7 @@ class TabContent(InfoBar):
         self.buttons = {}
         self.menu_buttons = {}
         self.tooltips = common.Tooltips()
-        self.accel_group = Main.get_main().accel_group
+        self.accel_group = Main().accel_group
 
         self.widget = gtk.VBox(spacing=3)
         self.widget.show()
@@ -202,16 +203,10 @@ class TabContent(InfoBar):
         title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 
-        title_menu = gtk.MenuBar()
-        title_item = gtk.MenuItem('')
-        title_item.remove(title_item.get_children()[0])
-        menu_image = gtk.Image()
-        menu_image.set_from_stock('tryton-preferences-system',
-            gtk.ICON_SIZE_BUTTON)
-        title_item.add(menu_image)
-        title_item.set_submenu(self.set_menu_form())
-        title_menu.append(title_item)
-        title_menu.show_all()
+        menu = Gtk.MenuButton.new()
+        menu.set_relief(Gtk.ReliefStyle.NONE)
+        menu.set_popup(self.set_menu_form())
+        menu.show()
 
         self.status_label = gtk.Label()
         self.status_label.set_padding(5, 4)
@@ -235,7 +230,7 @@ class TabContent(InfoBar):
 
         frame_menu = gtk.Frame()
         frame_menu.set_shadow_type(gtk.SHADOW_ETCHED_IN)
-        frame_menu.add(title_menu)
+        frame_menu.add(menu)
         frame_menu.show()
 
         title_box = gtk.HBox()

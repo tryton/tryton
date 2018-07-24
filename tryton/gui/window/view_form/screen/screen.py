@@ -27,7 +27,6 @@ from tryton.common import RPCExecute, RPCException, MODELACCESS, \
     node_attributes, sur, RPCContextReload, warning
 from tryton.action import Action
 from tryton.pyson import PYSONDecoder
-import tryton.rpc as rpc
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
@@ -1172,7 +1171,7 @@ class Screen(SignalEvent):
             self.display_prev()
         elif action == 'close':
             from tryton.gui import Main
-            Main.get_main().sig_win_close()
+            Main().sig_win_close()
         elif action.startswith('switch'):
             self.switch_view(*action.split(None, 2)[1:])
         elif action == 'reload':
@@ -1181,7 +1180,7 @@ class Screen(SignalEvent):
                 self.search_filter()
         elif action == 'reload menu':
             from tryton.gui import Main
-            RPCContextReload(Main.get_main().sig_win_menu)
+            RPCContextReload(Main().sig_win_menu)
         elif action == 'reload context':
             RPCContextReload()
 
@@ -1200,7 +1199,7 @@ class Screen(SignalEvent):
         if name:
             query_string.append(
                 ('name', json.dumps(name, separators=(',', ':'))))
-        path = [rpc._DATABASE, 'model', self.model_name]
+        path = [CONFIG['login.db'], 'model', self.model_name]
         view_ids = [v.view_id for v in self.views] + self.view_ids
         if self.current_view.view_type != 'form':
             search_string = self.screen_container.get_text()
@@ -1218,5 +1217,5 @@ class Screen(SignalEvent):
                         view_ids, separators=(',', ':'))))
         query_string = urllib.parse.urlencode(query_string)
         return urllib.parse.urlunparse(('tryton',
-                '%s:%s' % (rpc._HOST, rpc._PORT),
+                CONFIG['login.host'],
                 '/'.join(path), query_string, '', ''))

@@ -10,6 +10,7 @@ import gettext
 
 from tryton.common import center_window
 from tryton.config import TRYTON_ICON
+from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
 
 _ = gettext.gettext
@@ -37,6 +38,7 @@ class WinCSV(NoModal):
 
         self.dialog = gtk.Dialog(
             parent=self.parent, flags=gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.dialog)
         self.dialog.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.dialog.set_icon(TRYTON_ICON)
         self.dialog.set_decorated(False)

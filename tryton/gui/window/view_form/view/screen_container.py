@@ -5,6 +5,7 @@ import gettext
 import gobject
 
 import tryton.common as common
+from tryton.gui import Main
 from tryton.common.domain_parser import quote
 from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.datetime_ import Date, Time, DateTime, add_operators
@@ -531,6 +532,7 @@ class ScreenContainer(object):
 
         if not self.search_window:
             self.search_window = gtk.Window()
+            Main().add_window(self.search_window)
             self.search_window.set_transient_for(widget.get_toplevel())
             self.search_window.set_type_hint(
                 gtk.gdk.WINDOW_TYPE_HINT_POPUP_MENU)

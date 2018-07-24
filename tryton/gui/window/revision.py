@@ -3,10 +3,11 @@
 import gtk
 import gettext
 
-from tryton.config import TRYTON_ICON
 from tryton.common import get_toplevel_window
-from tryton.common.datetime_strftime import datetime_strftime
 from tryton.common.datetime_ import date_parse
+from tryton.common.datetime_strftime import datetime_strftime
+from tryton.config import TRYTON_ICON
+from tryton.gui import Main
 
 _ = gettext.gettext
 
@@ -18,6 +19,7 @@ class Revision(object):
         self.parent = get_toplevel_window()
         self.win = gtk.Dialog(_('Revision'), self.parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.win)
         cancel_button = self.win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
         cancel_button.set_always_show_image(True)
         ok_button = self.win.add_button('gtk-ok', gtk.RESPONSE_OK)

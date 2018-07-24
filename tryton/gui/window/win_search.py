@@ -3,11 +3,13 @@
 import gtk
 import gobject
 import gettext
+
 import tryton.common as common
-from tryton.gui.window.view_form.screen import Screen
 from tryton.config import TRYTON_ICON
-from tryton.gui.window.win_form import WinForm
+from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
+from tryton.gui.window.view_form.screen import Screen
+from tryton.gui.window.win_form import WinForm
 
 _ = gettext.gettext
 
@@ -33,6 +35,7 @@ class WinSearch(NoModal):
 
         self.win = gtk.Dialog(_('Search'), self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.win)
         self.win.set_icon(TRYTON_ICON)
         self.win.set_decorated(False)
         self.win.set_default_response(gtk.RESPONSE_APPLY)

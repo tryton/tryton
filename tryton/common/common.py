@@ -248,16 +248,13 @@ def find_in_path(name):
 
 
 def get_toplevel_window():
-    for window in gtk.window_list_toplevels():
-        if window.is_active() and window.props.type == gtk.WINDOW_TOPLEVEL:
-            return window
     from tryton.gui.main import Main
-    return Main.get_main().window
+    return Main().get_active_window()
 
 
 def get_sensible_widget(window):
     from tryton.gui.main import Main
-    main = Main.get_main()
+    main = Main()
     if main and window == main.window:
         focus_widget = window.get_focus()
         page = main.get_page()
@@ -499,17 +496,20 @@ class UniqueDialog(object):
     def build_dialog(self, *args):
         raise NotImplementedError
 
-    def __call__(self, *args):
+    def __call__(self, *args, **kwargs):
         if self.running:
             return
 
-        parent = get_toplevel_window()
+        parent = kwargs.get('parent')
+        if not parent:
+            parent = get_toplevel_window()
         dialog = self.build_dialog(parent, *args)
         dialog.set_icon(TRYTON_ICON)
         self.running = True
         dialog.show_all()
         response = dialog.run()
-        parent.present()
+        if parent:
+            parent.present()
         dialog.destroy()
         self.running = False
         return response
@@ -647,7 +647,8 @@ class AskDialog(UniqueDialog):
 
     def build_dialog(self, parent, question, visibility):
         win = gtk.Dialog(CONFIG['client.title'], parent,
-                gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT |
+            gtk.WIN_POS_CENTER_ON_PARENT)
         cancel_button = win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
         cancel_button.set_always_show_image(True)
         ok_button = win.add_button('gtk-ok', gtk.RESPONSE_OK)
@@ -1035,17 +1036,11 @@ def process_exception(exception, *args, **kwargs):
         elif exception.faultCode == str(HTTPStatus.UNAUTHORIZED.value):
             from tryton.gui.main import Main
             if PLOCK.acquire(False):
-                language = CONFIG['client.lang']
-
-                def login(parameters):
-                    return rpc.login(
-                        rpc._HOST, rpc._PORT, rpc._DATABASE, rpc._USERNAME,
-                        parameters, language)
                 try:
-                    Login(login)
+                    Login()
                 except TrytonError as exception:
                     if exception.faultCode == 'QueryCanceled':
-                        Main.get_main().sig_quit()
+                        Main().sig_quit()
                     raise
                 finally:
                     PLOCK.release()
@@ -1059,7 +1054,7 @@ def process_exception(exception, *args, **kwargs):
 
 
 class Login(object):
-    def __init__(self, func):
+    def __init__(self, func=rpc.login):
         parameters = {}
         while True:
             try:
@@ -1086,6 +1081,14 @@ class Login(object):
     @classmethod
     def get_password(self, message):
         return ask(message, visibility=False)
+
+
+class Logout:
+    def __init__(self):
+        try:
+            rpc.logout()
+        except TrytonServerError:
+            pass
 
 
 def node_attributes(node):

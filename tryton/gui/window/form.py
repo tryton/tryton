@@ -496,7 +496,7 @@ class Form(SignalEvent, TabContent):
         self.buttons['save'].props.sensitive = self.screen.modified()
 
     def sig_win_close(self, widget):
-        Main.get_main().sig_win_close(widget)
+        Main().sig_win_close(widget)
 
     def create_toolbar(self, toolbars):
         gtktoolbar = super(Form, self).create_toolbar(toolbars)

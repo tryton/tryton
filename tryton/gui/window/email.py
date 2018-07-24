@@ -3,8 +3,10 @@
 
 import gtk
 import gettext
-from tryton.config import TRYTON_ICON, CONFIG
+
 from tryton.common import get_toplevel_window
+from tryton.config import TRYTON_ICON, CONFIG
+from tryton.gui import Main
 
 _ = gettext.gettext
 
@@ -15,6 +17,7 @@ class Email(object):
         self.parent = get_toplevel_window()
         self.win = gtk.Dialog(_('Email'), self.parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.win)
         cancel_button = self.win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
         cancel_button.set_always_show_image(True)
         ok_button = self.win.add_button('gtk-ok', gtk.RESPONSE_OK)

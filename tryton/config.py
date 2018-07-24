@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-"Options"
 import configparser
 import optparse
 import os
@@ -10,7 +9,6 @@ import sys
 import locale
 import gtk
 
-from tryton.exceptions import TrytonError
 from tryton import __version__
 
 _ = gettext.gettext
@@ -25,6 +23,8 @@ def get_config_dir():
                 __version__.rsplit('.', 1)[0])
     return os.path.join(os.environ['HOME'], '.config', 'tryton',
             __version__.rsplit('.', 1)[0])
+
+
 if not os.path.isdir(get_config_dir()):
     os.makedirs(get_config_dir(), 0o700)
 
@@ -43,11 +43,8 @@ class ConfigManager(object):
             'login.db': demo_database,
             'login.expanded': False,
             'client.title': 'Tryton',
-            'client.default_width': 900,
-            'client.default_height': 750,
             'client.modepda': False,
             'client.toolbar': 'default',
-            'client.maximize': False,
             'client.save_width_height': True,
             'client.save_tree_state': True,
             'client.fast_tabbing': True,
@@ -62,7 +59,6 @@ class ConfigManager(object):
             'download.url': 'https://downloads.tryton.org/',
             'download.frequency': 60 * 60 * 8,
             'menu.pane': 200,
-            'menu.expanded': True,
         }
         self.config = {}
         self.options = {}
@@ -87,12 +83,6 @@ class ConfigManager(object):
         parser.add_option("-s", "--server", dest="host",
                 help=_("specify the server hostname:port"))
         opt, self.arguments = parser.parse_args()
-
-        if len(self.arguments) > 1:
-            raise TrytonError(_('Too much arguments'))
-
-        if opt.config and not os.path.isfile(opt.config):
-            raise TrytonError(_('File "%s" not found') % (opt.config,))
         self.rcfile = opt.config or os.path.join(
             get_config_dir(), 'tryton.conf')
         self.load()
@@ -159,6 +149,7 @@ class ConfigManager(object):
     def __getitem__(self, key):
         return self.options.get(key, self.config.get(key,
             self.defaults.get(key)))
+
 
 CONFIG = ConfigManager()
 CURRENT_DIR = os.path.dirname(__file__)

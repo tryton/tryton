@@ -294,7 +294,7 @@ class WizardForm(Wizard, SignalEvent):
 
     def end(self, callback=None):
         super(WizardForm, self).end(callback=callback)
-        Main.get_main()._win_del(self.widget)
+        Main()._win_del(self.widget)
 
     def set_cursor(self):
         if self.screen:
@@ -310,6 +310,7 @@ class WizardDialog(Wizard, NoModal):
         NoModal.__init__(self)
         self.dia = gtk.Dialog(self.name, self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.dia)
         self.dia.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.dia.set_icon(TRYTON_ICON)
         self.dia.set_decorated(False)
@@ -354,7 +355,7 @@ class WizardDialog(Wizard, NoModal):
         super(WizardDialog, self).destroy()
         self.dia.destroy()
         NoModal.destroy(self)
-        main = Main.get_main()
+        main = Main()
         if self.parent == main.window:
             current_form = main.get_page()
             if current_form:

@@ -28,7 +28,7 @@ class Window(object):
             from .board import Board
             win = Board(model, **attributes)
         win.icon = attributes.get('icon')
-        Main.get_main().win_add(win, hide_current=Window.hide_current,
+        Main().win_add(win, hide_current=Window.hide_current,
             allow_similar=Window.allow_similar)
 
     @staticmethod
@@ -39,7 +39,7 @@ class Window(object):
         if window:
             win = WizardForm(name=name)
             win.icon = icon
-            Main.get_main().win_add(win, Window.hide_current)
+            Main().win_add(win, Window.hide_current)
         else:
             win = WizardDialog(name=name)
         win.run(action, data, direct_print=direct_print,

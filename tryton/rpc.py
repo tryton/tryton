@@ -8,19 +8,15 @@ import os
 from http import HTTPStatus
 
 from functools import partial
+
 from tryton.jsonrpc import ServerProxy, ServerPool, Fault
 from tryton.fingerprints import Fingerprints
 from tryton.config import get_config_dir
-from tryton.ipc import Server as IPCServer
 from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
 from tryton.config import CONFIG
 
 CONNECTION = None
 _USER = None
-_USERNAME = ''
-_HOST = ''
-_PORT = None
-_DATABASE = ''
 CONTEXT = {}
 _VIEW_CACHE = {}
 _TOOLBAR_CACHE = {}
@@ -64,34 +60,34 @@ def server_version(host, port):
         return None
 
 
-def login(host, port, database, username, parameters, language=None):
-    global CONNECTION, _USER, _USERNAME, _HOST, _PORT, _DATABASE
+def login(parameters):
+    from tryton import common
+    global CONNECTION, _USER
     global _VIEW_CACHE, _TOOLBAR_CACHE, _KEYWORD_CACHE
-    connection = ServerProxy(host, port, database)
+    host = CONFIG['login.host']
+    hostname = common.get_hostname(host)
+    port = common.get_port(host)
+    database = CONFIG['login.db']
+    username = CONFIG['login.login']
+    language = CONFIG['client.lang']
+    connection = ServerProxy(hostname, port, database)
     logging.getLogger(__name__).info('common.db.login(%s, %s, %s)'
         % (username, 'x' * 10, language))
     result = connection.common.db.login(username, parameters, language)
     logging.getLogger(__name__).debug(repr(result))
     _USER = result[0]
-    _USERNAME = username
     session = ':'.join(map(str, [username] + result))
     if CONNECTION is not None:
         CONNECTION.close()
-    CONNECTION = ServerPool(host, port, database, session=session)
-    _HOST = host
-    _PORT = port
-    _DATABASE = database
+    CONNECTION = ServerPool(hostname, port, database, session=session)
     _VIEW_CACHE = {}
     _TOOLBAR_CACHE = {}
     _KEYWORD_CACHE = {}
-    IPCServer(host, port, database).run()
 
 
 def logout():
-    global CONNECTION, _USER, _USERNAME, _HOST, _PORT, _DATABASE
+    global CONNECTION, _USER
     global _VIEW_CACHE, _TOOLBAR_CACHE, _KEYWORD_CACHE
-    if IPCServer.instance:
-        IPCServer.instance.stop()
     if CONNECTION is not None:
         try:
             logging.getLogger(__name__).info('common.db.logout()')
@@ -102,10 +98,6 @@ def logout():
         CONNECTION.close()
         CONNECTION = None
     _USER = None
-    _USERNAME = ''
-    _HOST = ''
-    _PORT = None
-    _DATABASE = ''
     _VIEW_CACHE = {}
     _TOOLBAR_CACHE = {}
     _KEYWORD_CACHE = {}

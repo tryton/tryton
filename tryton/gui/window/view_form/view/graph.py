@@ -6,12 +6,13 @@ import gtk
 import gettext
 
 from . import View
-from tryton.common import node_attributes, get_toplevel_window, message
-from tryton.common import file_selection
-from tryton.config import TRYTON_ICON
 from .graph_gtk.bar import VerticalBar, HorizontalBar
 from .graph_gtk.line import Line
 from .graph_gtk.pie import Pie
+from tryton.common import file_selection
+from tryton.common import node_attributes, get_toplevel_window, message
+from tryton.config import TRYTON_ICON
+from tryton.gui import Main
 
 _ = gettext.gettext
 
@@ -99,6 +100,7 @@ class ViewGraph(View):
         parent = get_toplevel_window()
         dia = gtk.Dialog(_('Image Size'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(dia)
         cancel_button = dia.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
         cancel_button.set_always_show_image(True)
         ok_button = dia.add_button('gtk-ok', gtk.RESPONSE_OK)

@@ -64,7 +64,7 @@ class Board(SignalEvent, TabContent):
         return id(self)
 
     def sig_win_close(self, widget):
-        Main.get_main().sig_win_close(widget)
+        Main().sig_win_close(widget)
 
     def set_cursor(self):
         if not self.board.actions:

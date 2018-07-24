@@ -1,15 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import tryton.rpc as rpc
-from tryton.common import message, selection, file_open, mailto
-from tryton.gui.window import Window
-from tryton.pyson import PYSONDecoder
 import gettext
 import tempfile
 import os
 import webbrowser
+
+import tryton.rpc as rpc
 from tryton.common import RPCProgress, RPCExecute, RPCException, slugify
+from tryton.common import message, selection, file_open, mailto
 from tryton.config import CONFIG
+from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
 
@@ -75,6 +75,7 @@ class Action(object):
 
     @staticmethod
     def _exec_action(action, data=None, context=None):
+        from tryton.gui.window import Window
         if context is None:
             context = {}
         if data is None:

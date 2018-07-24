@@ -5,10 +5,11 @@ import gobject
 import gettext
 
 import tryton.common as common
-from tryton.gui.window.nomodal import NoModal
-from tryton.common import TRYTON_ICON
 from tryton.common import RPCExecute, RPCException
+from tryton.common import TRYTON_ICON
 from tryton.common.widget_style import widget_class
+from tryton.gui import Main
+from tryton.gui.window.nomodal import NoModal
 
 _ = gettext.gettext
 
@@ -133,6 +134,7 @@ class TranslateDialog(NoModal):
         self.widget = widget
         self.win = gtk.Dialog(_('Translation'), self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.win)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
         self.win.set_decorated(False)

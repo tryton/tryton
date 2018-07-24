@@ -4,12 +4,14 @@
 import gettext
 import gtk
 import copy
-from tryton.gui.window.view_form.screen import Screen
-from tryton.config import TRYTON_ICON
-from tryton.common import RPCExecute, RPCException, Login
-from tryton.gui.window.nomodal import NoModal
-from tryton.exceptions import TrytonError
+
 import tryton.rpc as rpc
+from tryton.common import RPCExecute, RPCException, Login
+from tryton.config import TRYTON_ICON
+from tryton.exceptions import TrytonError
+from tryton.gui import Main
+from tryton.gui.window.nomodal import NoModal
+from tryton.gui.window.view_form.screen import Screen
 
 _ = gettext.gettext
 
@@ -22,6 +24,7 @@ class Preference(NoModal):
         self.callback = callback
         self.win = gtk.Dialog(_('Preferences'), self.parent,
             gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.win)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
 

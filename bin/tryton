@@ -45,25 +45,5 @@ os.environ['UBUNTU_MENUPROXY'] = '0'
 # overlay-scrollbar breaks treeview height
 os.environ['LIBOVERLAY_SCROLLBAR'] = '0'
 
-from tryton import client
-if '--profile' in sys.argv:
-    import profile
-    import pstats
-    import tempfile
-    import os
-    sys.argv.remove('--profile')
-
-    statfile = tempfile.mkstemp(".stat", "tryton-")[1]
-    profile.run('client.TrytonClient().run()', statfile)
-    s = pstats.Stats(statfile)
-    s.sort_stats('cumulative').print_stats()
-    s.sort_stats('call').print_stats()
-    s.sort_stats('time').print_stats()
-    s.sort_stats('time')
-    s.print_callers()
-    s.print_callees()
-
-    os.remove(statfile)
-
-else:
-    client.TrytonClient().run()
+from tryton.client import main
+main()

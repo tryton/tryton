@@ -6,9 +6,11 @@ import gtk
 import gobject
 import pango
 import gettext
-from tryton.gui.window.nomodal import NoModal
-from tryton.common.domain_parser import quote
+
 from .infobar import InfoBar
+from tryton.common.domain_parser import quote
+from tryton.gui import Main
+from tryton.gui.window.nomodal import NoModal
 
 _ = gettext.gettext
 
@@ -38,6 +40,7 @@ class WinForm(NoModal, InfoBar):
             self.screen.new(rec_name=rec_name)
         self.win = gtk.Dialog(_('Link'), self.parent,
                 gtk.DIALOG_DESTROY_WITH_PARENT)
+        Main().add_window(self.win)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
         self.win.set_decorated(False)
