@@ -20,7 +20,6 @@ from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
 from sql.operators import Equal
 
-from trytond import backend
 from trytond.config import config
 from trytond.exceptions import RateLimitException
 from trytond.model import (
@@ -106,11 +105,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(User, cls).__register__(module_name)
 
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 4.6
         table_h.not_null_action('email', 'remove')
