@@ -107,6 +107,8 @@ class Selection(gtk.ScrolledWindow):
         self.add(self.treeview)
         self.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         self.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        self.set_min_content_height(min(20 * len(selections), 200))
+        self.set_max_content_height(200)
 
     def get_value(self):
         values = []
