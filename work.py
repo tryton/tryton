@@ -11,7 +11,6 @@ from trytond.pyson import Not, Bool, Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
-from trytond import backend
 
 __all__ = ['Work', 'WorkContext']
 
@@ -80,8 +79,7 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
         table = cls.__table__()
         cursor = Transaction().connection.cursor()
 

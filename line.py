@@ -12,7 +12,6 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond import backend
 
 __all__ = ['Line', 'EnterLinesStart', 'EnterLines',
     'HoursEmployee', 'HoursEmployeeContext',
@@ -69,9 +68,8 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         pool = Pool()
         Work = pool.get('timesheet.work')
