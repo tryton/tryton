@@ -5,7 +5,6 @@ from decimal import Decimal
 
 from simpleeval import simple_eval
 
-from trytond import backend
 from trytond.model import (
     ModelSQL, ModelView, DeactivableMixin, fields, sequence_ordered)
 from trytond.pyson import Eval
@@ -226,11 +225,9 @@ class TaxLineTemplate(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(TaxLineTemplate, cls).__register__(module_name)
 
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 4.6: remove code
         table_h.drop_column('code')

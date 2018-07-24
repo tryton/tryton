@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.pool import Pool
 from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
 from trytond.transaction import Transaction
@@ -75,13 +74,12 @@ class ConfigurationTaxRounding(ModelSQL, CompanyValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         cursor = Transaction().connection.cursor()
 
         super(ConfigurationTaxRounding, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 4.2: rename method into tax_rounding
         if table.column_exist('method'):

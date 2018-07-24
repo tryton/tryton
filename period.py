@@ -5,7 +5,6 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.const import OPERATORS
-from trytond import backend
 
 __all__ = ['Period']
 
@@ -52,11 +51,9 @@ class Period(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(Period, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 2.6: post_move_sequence is no longer required
         table.not_null_action('post_move_sequence', 'remove')
 

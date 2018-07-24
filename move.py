@@ -106,9 +106,8 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         pool = Pool()
         Period = pool.get('account.period')
@@ -137,7 +136,7 @@ class Move(ModelSQL, ModelView):
                     where=period.id == sql_table.period)
             cursor.execute(*sql_table.update([sql_table.company], [value]))
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action(['journal', 'period'], 'add')
 
         # Add index on create_date
@@ -464,7 +463,7 @@ class Reconciliation(ModelSQL, ModelView):
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         pool = Pool()
         Move = pool.get('account.move')
@@ -479,7 +478,7 @@ class Reconciliation(ModelSQL, ModelView):
         # Migration from 3.8: new date field
         if (not date_exist
                 and TableHandler.table_exist(Line._table)
-                and TableHandler(Line).column_exist('move')):
+                and Line.__table_handler__().column_exist('move')):
             cursor.execute(*sql_table.update(
                     [sql_table.date],
                     line.join(move,
@@ -707,8 +706,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: reference renamed into description
         if table.column_exist('reference'):
@@ -716,7 +714,7 @@ class Line(ModelSQL, ModelView):
 
         super(Line, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Index for General Ledger
         table.index_action(['move', 'account'], 'add')
 

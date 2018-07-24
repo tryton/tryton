@@ -99,14 +99,13 @@ class Journal(
     def __register__(cls, module_name):
         pool = Pool()
         JournalSequence = pool.get('account.journal.sequence')
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         journal_sequence = JournalSequence.__table__()
 
         super(Journal, cls).__register__(module_name)
 
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 sequence Many2One change into MultiValue
         if table.column_exist('sequence'):
@@ -345,11 +344,9 @@ class JournalPeriod(
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(JournalPeriod, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(cls, module_name)
         # Migration from 4.2: remove name column
         table.drop_column('name')
 

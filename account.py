@@ -20,7 +20,6 @@ from trytond.tools import reduce_ids, grouped_slice
 from trytond.pyson import Eval, If, PYSONEncoder, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond import backend
 
 __all__ = ['TypeTemplate', 'Type', 'OpenType',
     'AccountTemplate', 'AccountTemplateTaxTemplate',
@@ -62,10 +61,9 @@ class TypeTemplate(
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(TypeTemplate, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
@@ -186,10 +184,9 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(Type, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')

@@ -43,9 +43,8 @@ class TaxGroup(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(TaxGroup, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.4 drop code_uniq constraint
         table.drop_constraint('code_uniq')
@@ -519,10 +518,9 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(TaxTemplate, cls).__register__(module_name)
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
@@ -758,10 +756,9 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(Tax, cls).__register__(module_name)
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 group is no more required
         table.not_null_action('group', action='remove')
@@ -1214,12 +1211,12 @@ class TaxLine(ModelSQL, ModelView):
 
         migrate_type = False
         if TableHandler.table_exist(cls._table):
-            table_h = TableHandler(cls, module_name)
+            table_h = cls.__table_handler__(module_name)
             migrate_type = not table_h.column_exist('type')
 
         super(TaxLine, cls).__register__(module_name)
 
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migrate from 4.6: remove code and fill type
         table_h.not_null_action('code', action='remove')
@@ -1476,10 +1473,10 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
 
         super(TaxRuleLineTemplate, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
@@ -1597,10 +1594,9 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
-
         super(TaxRuleLine, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')
