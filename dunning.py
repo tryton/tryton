@@ -8,7 +8,6 @@ from sql import Null
 from trytond.model import Model, ModelView, ModelSQL, fields, Unique, \
     sequence_ordered
 from trytond.pyson import If, Eval
-from trytond import backend
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
@@ -37,9 +36,8 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
         super(Level, cls).__register__(module_name)
