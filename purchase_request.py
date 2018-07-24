@@ -5,7 +5,6 @@ from decimal import Decimal
 from itertools import groupby
 from functools import partial
 
-from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import If, In, Eval, Bool
@@ -105,19 +104,18 @@ class PurchaseRequest(ModelSQL, ModelView):
         ModelData = pool.get('ir.model.data')
         Purchase = pool.get('purchase.purchase')
         PurchaseLine = pool.get('purchase.line')
-        TableHandler = backend.get('TableHandler')
         model_data = ModelData.__table__()
         purchase = Purchase.__table__()
         purchase_line = PurchaseLine.__table__()
         request = cls.__table__()
 
-        tablehandler = TableHandler(cls, module_name)
+        tablehandler = cls.__table_handler__(module_name)
         state_exist = tablehandler.column_exist('state')
 
         super(PurchaseRequest, cls).__register__(module_name)
 
         # Migration from 3.6: removing the constraint on the quantity
-        tablehandler = TableHandler(cls, module_name)
+        tablehandler = cls.__table_handler__(module_name)
         tablehandler.drop_constraint('check_purchase_request_quantity')
 
         # Migration from 3.8: renaming module of Purchase Request group entry
