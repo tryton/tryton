@@ -498,7 +498,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
         # Migration from 4.8: start_date required
         if TableHandler.table_exist(cls._table):
-            table_h = TableHandler(cls, module)
+            table_h = cls.__table_handler__(module)
             if table_h.column_exist('start_date'):
                 cursor.execute(*table.update(
                         [table.start_date],
@@ -508,7 +508,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                         where=table.start_date == Null))
 
         super(Line, cls).__register__(module)
-        table_h = TableHandler(cls, module)
+        table_h = cls.__table_handler__(module)
 
         # Migration from 4.8: drop required on description
         table_h.not_null_action('description', action='remove')
