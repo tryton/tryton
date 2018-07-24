@@ -9,7 +9,6 @@ from operator import attrgetter
 
 import stripe
 
-from trytond import backend
 from trytond.model import (
     ModelSQL, ModelView, Workflow, DeactivableMixin, fields)
 from trytond.pool import PoolMeta, Pool
@@ -204,10 +203,9 @@ class Payment(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         idempotency_key_exist = table.column_exist('stripe_idempotency_key')
 
         super(Payment, cls).__register__(module_name)
