@@ -12,7 +12,6 @@ from sql.conditionals import Coalesce
 from trytond.model import ModelView, Workflow, ModelSQL, fields, Check, Unique
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Not, Equal, Eval, Or, Bool, If
-from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
@@ -108,18 +107,17 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         Location = Pool().get('stock.location')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         migrate_warehouse = (not table.column_exist('warehouse')
             and table.column_exist('location'))
 
         super(Forecast, cls).__register__(module_name)
 
         # Add index on create_date
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
         if migrate_warehouse:
