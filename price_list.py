@@ -10,7 +10,6 @@ from trytond.tools import decistmt
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond import backend
 
 __all__ = ['PriceList', 'PriceListLine']
 
@@ -115,8 +114,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         super(PriceListLine, cls).__register__(module_name)
 
