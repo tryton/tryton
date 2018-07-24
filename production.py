@@ -11,7 +11,7 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond import backend
 
-from trytond.modules.product import price_digits, TemplateFunction
+from trytond.modules.product import price_digits
 
 __all__ = ['Production', 'AssignFailed', 'Assign']
 
