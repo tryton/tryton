@@ -13,7 +13,6 @@ from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
     sequence_ordered, DictSchemaMixin
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
-from trytond import backend
 from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.modules.company import CompanyReport
@@ -187,13 +186,12 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         sql_table = cls.__table__()
 
         # Migration from 1.8: new field company
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         company_exist = table.column_exist('company')
 
         super(Statement, cls).__register__(module_name)
@@ -210,7 +208,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                     cls.write([statement], {
                             'company': statement.journal.company.id,
                             })
-            table = TableHandler(cls, module_name)
+            table = cls.__table_handler__(module_name)
             table.not_null_action('company', action='add')
 
         # Migration from 3.2: remove required on start/end balance
