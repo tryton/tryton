@@ -16,7 +16,6 @@ from trytond.wizard import (Wizard, StateView, StateTransition, StateReport,
     Button)
 from trytond.tools import grouped_slice
 from trytond.modules.company import CompanyReport
-from trytond import backend
 
 __all__ = ['Asset', 'AssetLine', 'AssetUpdateMove',
     'CreateMovesStart', 'CreateMoves',
@@ -210,8 +209,7 @@ class Asset(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 3.8: rename reference into number
         if table_h.column_exist('reference'):
