@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond import backend
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
 
@@ -19,12 +18,11 @@ class Allocation(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(Allocation, cls).__register__(module_name)
 
+        table = cls.__table_handler__(module_name)
+
         # Migration from 3.2:
-        table = TableHandler(cls, module_name)
         table.drop_constraint('percentage_positive')
 
     @staticmethod
