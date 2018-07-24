@@ -300,5 +300,5 @@ class TriggerLog(ModelSQL):
     def __register__(cls, module_name):
         super(TriggerLog, cls).__register__(module_name)
 
-        table = cls.__table_handler__(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action(['trigger', 'record_id'], 'add')
