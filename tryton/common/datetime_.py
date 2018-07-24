@@ -100,6 +100,7 @@ class Date(gtk.Entry):
         self.set_text(strftime(self.__date, self.__format))
 
     def icon_press(self, entry, icon_pos, event):
+        self.grab_focus()
         if icon_pos == gtk.ENTRY_ICON_PRIMARY:
             self.cal_popup_open()
 
