@@ -7,7 +7,6 @@ from sql import Null
 
 from trytond.model import ModelView, ModelSQL, fields, sequence_ordered, tree
 from trytond.pyson import Eval
-from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
@@ -120,10 +119,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TimesheetWork = Pool().get('timesheet.work')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table_project_work = TableHandler(cls, module_name)
-        table_timesheet_work = TableHandler(TimesheetWork, module_name)
+        table_project_work = cls.__table_handler__(module_name)
+        table_timesheet_work = TimesheetWork.__table_handler__(module_name)
         project = cls.__table__()
         timesheet = TimesheetWork.__table__()
 
