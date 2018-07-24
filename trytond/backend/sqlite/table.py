@@ -243,24 +243,53 @@ class TableHandler(TableHandlerInterface):
     def drop_fk(self, column_name, table=None):
         warnings.warn('Unable to drop foreign key with SQLite backend')
 
-    def index_action(self, column_name, action='add', table=None):
-        if isinstance(column_name, str):
-            column_name = [column_name]
-        index_name = self.convert_name(
-            self.table_name + "_" + '_'.join(column_name) + "_index")
+    def index_action(self, columns, action='add', where='', table=None):
+        if isinstance(columns, str):
+            columns = [columns]
+
+        def stringify(column):
+            if isinstance(column, str):
+                return column
+            else:
+                return ('_'.join(
+                        map(str, (column,) + column.params))
+                    .replace('"', '')
+                    .replace('?', '__'))
+
+        name = [table or self.table_name]
+        name.append('_'.join(map(stringify, columns)))
+        if where:
+            name.append('+where')
+            name.append(stringify(where))
+        name.append('index')
+        index_name = self.convert_name('_'.join(name))
 
         cursor = Transaction().connection.cursor()
         if action == 'add':
             if index_name in self._indexes:
                 return
+            columns_quoted = []
+            for column in columns:
+                if isinstance(column, str):
+                    columns_quoted.append('"%s"' % column)
+                else:
+                    columns_quoted.append(str(column))
+            params = sum(
+                (c.params for c in columns if hasattr(c, 'params')), ())
+            if where:
+                params += where.params
+                where = ' WHERE %s' % where
+            if params:
+                warnings.warn('Unable to create index with parameters')
+                return
             cursor.execute('CREATE INDEX "' + index_name + '" '
-                'ON "' + self.table_name + '" ( ' +
-                ','.join('"' + x + '"' for x in column_name) +
-                ')')
+                'ON "' + self.table_name + '" '
+                + '(' + ','.join(columns_quoted) + ')' + where,
+                params)
             self._update_definitions(indexes=True)
         elif action == 'remove':
-            if len(column_name) == 1:
-                if self._field2module.get(column_name[0],
+            if len(columns) == 1 and isinstance(columns[0], str):
+                if self._field2module.get(columns[0],
                         self.module_name) != self.module_name:
                     return
 
