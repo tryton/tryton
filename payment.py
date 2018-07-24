@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import uuid
 import logging
-import urllib.request, urllib.parse, urllib.error
+import urllib.parse
 from decimal import Decimal
 from itertools import groupby
 from operator import attrgetter
