@@ -908,7 +908,8 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def asset_lines(self):
-                return [l for l in self.asset.lines if self.start_date < l.date <= self.end_date]
+                return [l for l in self.asset.lines
+                    if self.start_date < l.date <= self.end_date]
 
             @cached_property
             def update_lines(self):
