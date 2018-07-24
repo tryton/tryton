@@ -7,7 +7,6 @@ from sql import Literal
 
 from trytond.model import ModelView, ModelSQL, fields, Check
 from trytond.wizard import Wizard, StateAction
-from trytond import backend
 from trytond.pyson import Eval, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -60,9 +59,8 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(Line, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.2 currency has been changed in function field
         table.not_null_action('currency', action='remove')
@@ -209,8 +207,7 @@ class MoveLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 

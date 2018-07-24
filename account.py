@@ -117,9 +117,8 @@ class Account(
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(Account, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 4.0: remove currency
         table.not_null_action('currency', action='remove')
@@ -424,7 +423,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             migration_3_4 = True
 
         # Don't create table before renaming
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         super(AnalyticAccountEntry, cls).__register__(module_name)
 
@@ -515,12 +514,11 @@ class AnalyticMixin(object):
     def __register__(cls, module_name):
         pool = Pool()
         AccountEntry = pool.get('analytic.account.entry')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
 
         super(AnalyticMixin, cls).__register__(module_name)
 
-        handler = TableHandler(cls, module_name)
+        handler = cls.__table_handler__(module_name)
         # Migration from 3.4: analytic accounting changed to reference field
         if handler.column_exist('analytic_accounts'):
             entry = AccountEntry.__table__()
