@@ -23,7 +23,7 @@ class PartyConfigurationLang(CompanyValueMixin, metaclass=PoolMeta):
         TableHandler = backend.get('TableHandler')
         exist = TableHandler.table_exist(cls._table)
         if exist:
-            table = TableHandler(cls, module_name)
+            table = cls.__table_handler__(module_name)
             exist &= table.column_exist('company')
 
         super(PartyConfigurationLang, cls).__register__(module_name)
@@ -47,7 +47,7 @@ class PartyLang(CompanyValueMixin, metaclass=PoolMeta):
         TableHandler = backend.get('TableHandler')
         exist = TableHandler.table_exist(cls._table)
         if exist:
-            table = TableHandler(cls, module_name)
+            table = cls.__table_handler__(module_name)
             exist &= table.column_exist('company')
 
         super(PartyLang, cls).__register__(module_name)
