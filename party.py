@@ -87,11 +87,9 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(Party, cls).__register__(module_name)
 
-        table_h = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 3.8
         table_h.not_null_action('name', 'remove')
@@ -275,7 +273,7 @@ class PartyLang(ModelSQL, ValueMixin):
         super(PartyLang, cls).__register__(module_name)
 
         if not exist:
-            party_h = TableHandler(Party, module_name)
+            party_h = Party.__table_handler__(module_name)
             if party_h.column_exist('lang'):
                 query = table.insert(
                     [table.party, table.lang],
@@ -330,13 +328,12 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         Party = pool.get('party.party')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         party = Party.__table__()
 
         super(PartyIdentifier, cls).__register__(module_name)
 
-        party_h = TableHandler(Party, module_name)
+        party_h = Party.__table_handler__(module_name)
         if (party_h.column_exist('vat_number')
                 and party_h.column_exist('vat_country')):
             identifiers = []

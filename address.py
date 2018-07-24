@@ -11,7 +11,6 @@ from trytond.model import (
     ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
     sequence_ordered)
 from trytond.pyson import Eval, If
-from trytond import backend
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.cache import Cache
@@ -57,12 +56,12 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
         sql_table = cls.__table__()
 
         super(Address, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4: drop required on sequence
         table.not_null_action('sequence', action='remove')

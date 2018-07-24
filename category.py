@@ -3,7 +3,6 @@
 from sql.conditionals import Coalesce
 from sql.operators import Equal
 
-from trytond import backend
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, Exclude, tree)
 from trytond.pyson import Eval
@@ -42,10 +41,9 @@ class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table_h = TableHandler(cls, module_name)
-
         super(Category, cls).__register__(module_name)
+
+        table_h = cls.__table_handler__(module_name)
 
         # Migration from 4.6: replace unique by exclude
         table_h.drop_constraint('name_parent_uniq')
