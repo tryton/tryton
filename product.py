@@ -81,13 +81,12 @@ class Template(
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
         super(Template, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 2.2: category is no more required
         table.not_null_action('category', 'remove')
 
@@ -451,7 +450,7 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
 
         super(ProductCostPrice, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         if not exist:
             # Create template column for property migration
             table.add_column('template', 'INTEGER')
