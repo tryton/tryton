@@ -3,7 +3,6 @@
 from trytond.model import (ModelView, ModelSQL, MatchMixin, fields,
     sequence_ordered)
 from trytond.pyson import If, Eval, Bool
-from trytond import backend
 from trytond.pool import PoolMeta
 
 __all__ = ['ProductLocation', 'Move', 'ShipmentIn', 'ShipmentOutReturn']
@@ -29,8 +28,7 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         super(ProductLocation, cls).__register__(module_name)
 
