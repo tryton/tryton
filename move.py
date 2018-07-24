@@ -380,6 +380,12 @@ class Move(Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table.index_action('create_date', action='add')
 
+        # Index for period join in compute_quantities_query
+        table.index_action([
+                Coalesce(sql_table.effective_date,
+                    sql_table.planned_date,
+                    datetime.date.max)], action='add')
+
     @staticmethod
     def default_planned_date():
         return Transaction().context.get('planned_date')
