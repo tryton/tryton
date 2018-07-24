@@ -5,7 +5,6 @@ from sql import Null
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Equal, Eval, Not, In
 from trytond.transaction import Transaction
-from trytond import backend
 
 __all__ = ['OrderPoint']
 
@@ -124,12 +123,11 @@ class OrderPoint(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
         # Migration from 2.2
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.drop_constraint('check_min_max_quantity')
         # Migration from 4.2
         table.drop_constraint('check_max_qty_greater_min_qty')
