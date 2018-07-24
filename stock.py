@@ -4,7 +4,6 @@ from decimal import Decimal
 from trytond.model import fields, Check
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond import backend
 
 __all__ = ['Move']
 
@@ -42,10 +41,9 @@ class Move(metaclass=PoolMeta):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        TableHandler = backend.get('TableHandler')
 
         super(Move, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.8: split anglo_saxon_quantity
         if table.column_exist('anglo_saxon_quantity'):
