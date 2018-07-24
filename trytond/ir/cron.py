@@ -12,7 +12,6 @@ from ast import literal_eval
 from ..model import ModelView, ModelSQL, DeactivableMixin, fields, dualmethod
 from ..transaction import Transaction
 from ..pool import Pool
-from .. import backend
 from ..config import config
 from ..sendmail import sendmail
 
@@ -76,12 +75,11 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         cron = cls.__table__()
 
         # Migration from 2.0: rename numbercall, doall and nextcall
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.column_rename('numbercall', 'number_calls')
         table.column_rename('doall', 'repeat_missed')
         table.column_rename('nextcall', 'next_call')

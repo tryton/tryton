@@ -20,7 +20,6 @@ from ..cache import Cache
 from ..pool import Pool
 from ..pyson import Bool, Eval, PYSONDecoder
 from ..rpc import RPC
-from .. import backend
 from ..protocols.jsonrpc import JSONDecoder, JSONEncoder
 from ..tools import is_instance_method, cursor_dict, grouped_slice
 try:
@@ -435,11 +434,9 @@ class ModelAccess(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(ModelAccess, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.6 (model, group) no more unique
         table.drop_constraint('model_group_uniq')
@@ -619,11 +616,9 @@ class ModelFieldAccess(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         super(ModelFieldAccess, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.6 (field, group) no more unique
         table.drop_constraint('field_group_uniq')
@@ -1121,13 +1116,12 @@ class ModelData(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         model_data = cls.__table__()
 
         super(ModelData, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.6: remove inherit
         if table.column_exist('inherit'):

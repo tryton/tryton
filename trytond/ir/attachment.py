@@ -4,7 +4,6 @@ from sql import Null
 from sql.operators import Concat
 
 from ..model import ModelView, ModelSQL, fields, Unique
-from .. import backend
 from ..transaction import Transaction
 from ..pyson import Eval
 from .resource import ResourceMixin
@@ -64,12 +63,11 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
 
         super(Attachment, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         attachment = cls.__table__()
 
         # Migration from 1.4 res_model and res_id merged into resource

@@ -1,3 +1,4 @@
+* Add __table_handler__ to ModelSQL
 * Support partial index
 * Allow to use SQL expression for index action
 * Add cache clean timeout configuration

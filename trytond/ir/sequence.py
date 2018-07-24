@@ -101,12 +101,11 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
+        table_h = cls.__table_handler__(module_name)
         transaction = Transaction()
 
         # Migration from 2.0 rename number_next into number_next_internal
-        table.column_rename('number_next', 'number_next_internal')
+        table_h.column_rename('number_next', 'number_next_internal')
 
         super(Sequence, cls).__register__(module_name)
 

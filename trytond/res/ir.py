@@ -31,7 +31,7 @@ class UIMenuGroup(ModelSQL):
         transaction.database.sequence_rename(transaction.connection,
             'ir_ui_menu_group_rel_id_seq', cls._table + '_id_seq')
         # Migration from 2.0 menu_id and gid renamed into menu group
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.column_rename('menu_id', 'menu')
         table.column_rename('gid', 'group')
         super(UIMenuGroup, cls).__register__(module_name)
@@ -73,7 +73,7 @@ class ActionGroup(ModelSQL):
         transaction.database.sequence_rename(transaction.connection,
             'ir_action_group_rel_id_seq', cls._table + '_id_seq')
         # Migration from 2.0 action_id and gid renamed into action and group
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.column_rename('action_id', 'action')
         table.column_rename('gid', 'group')
         super(ActionGroup, cls).__register__(module_name)
@@ -122,13 +122,12 @@ class ModelFieldGroup(ModelSQL):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        database = Transaction().database
         transaction = Transaction()
         # Migration from 1.0 table name change
         TableHandler.table_rename('ir_model_field_group_rel', cls._table)
         transaction.database.sequence_rename(transaction.connection,
             'ir_model_field_group_rel_id_seq', cls._table + '_id_seq')
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 2.6: field_id and group_id renamed to field and group
         table.column_rename('field_id', 'field')
         table.column_rename('group_id', 'group')
@@ -194,7 +193,7 @@ class RuleGroupGroup(ModelSQL):
             'group_rule_group_rel_id_seq', cls._table + '_id_seq')
         # Migration from 2.0 rule_group_id and group_id renamed into rule_group
         # and group
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(cls, module_name)
         table.column_rename('rule_group_id', 'rule_group')
         table.column_rename('group_id', 'group')
         super(RuleGroupGroup, cls).__register__(module_name)

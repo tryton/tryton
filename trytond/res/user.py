@@ -187,10 +187,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         super(User, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.6
 
@@ -732,9 +731,8 @@ class LoginAttempt(ModelSQL):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(LoginAttempt, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.8: remove user
         table.drop_column('user')
@@ -858,7 +856,7 @@ class UserGroup(ModelSQL):
         transaction.database.sequence_rename(transaction.connection,
             'res_group_user_rel_id_seq', cls._table + '_id_seq')
         # Migration from 2.0 uid and gid rename into user and group
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.column_rename('uid', 'user')
         table.column_rename('gid', 'group')
         super(UserGroup, cls).__register__(module_name)

@@ -120,10 +120,9 @@ class ActionKeyword(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(ActionKeyword, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action(['keyword', 'model'], 'add')
 
     def get_groups(self, name):
@@ -504,7 +503,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
         transaction = Transaction()
         cursor = transaction.connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         action_report = cls.__table__()
 
         # Migration from 1.0 report_name_uniq has been removed
@@ -743,11 +742,10 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        TableHandler = backend.get('TableHandler')
         act_window = cls.__table__()
         super(ActionActWindow, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.0: new search_value format
         cursor.execute(*act_window.update(
@@ -933,9 +931,8 @@ class ActionActWindowView(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(ActionActWindowView, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 remove multi
         table.drop_column('multi')

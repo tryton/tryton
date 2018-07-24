@@ -22,7 +22,6 @@ from ..model import ModelView, ModelSQL, fields, Unique
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from ..tools import file_open, reduce_ids, grouped_slice, cursor_dict
-from .. import backend
 from ..pyson import PYSONEncoder, Eval
 from ..transaction import Transaction
 from ..pool import Pool
@@ -97,11 +96,10 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         ir_translation = cls.__table__()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         # Migration from 1.8: new field src_md5
         src_md5_exist = table.column_exist('src_md5')
         if not src_md5_exist:
@@ -124,7 +122,7 @@ class Translation(ModelSQL, ModelView):
                     cls.write([translation], {
                         'src_md5': src_md5,
                     })
-            table = TableHandler(cls, module_name)
+            table = cls.__table_handler__(module_name)
             table.not_null_action('src_md5', action='add')
 
         # Migration from 2.2 and 2.8
@@ -138,7 +136,7 @@ class Translation(ModelSQL, ModelView):
                 ['report'],
                 where=ir_translation.type == 'odt'))
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action(['lang', 'type', 'name'], 'add')
 
     @classmethod

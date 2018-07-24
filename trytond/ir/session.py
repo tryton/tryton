@@ -14,7 +14,6 @@ except ImportError:
 
 from trytond.model import ModelSQL, fields
 from trytond.config import config
-from .. import backend
 
 __all__ = [
     'Session', 'SessionWizard',
@@ -35,10 +34,9 @@ class Session(ModelSQL):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(Session, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action('create_uid', 'add')
 
     @classmethod

@@ -9,7 +9,6 @@ from ..model import (
     ModelView, ModelSQL, DeactivableMixin, fields, EvalEnvironment, Check)
 from ..pyson import Eval, PYSONDecoder
 from ..tools import grouped_slice
-from .. import backend
 from ..tools import reduce_ids
 from ..transaction import Transaction
 from ..cache import Cache
@@ -73,9 +72,8 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(cls, module_name)
         sql_table = cls.__table__()
 
         super(Trigger, cls).__register__(module_name)
@@ -300,8 +298,7 @@ class TriggerLog(ModelSQL):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(TriggerLog, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(cls, module_name)
         table.index_action(['trigger', 'record_id'], 'add')

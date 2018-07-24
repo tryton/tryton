@@ -191,6 +191,11 @@ class ModelSQL(ModelStorage):
         return Table(cls._table + '__history')
 
     @classmethod
+    def __table_handler__(cls, module_name=None, history=False):
+        TableHandler = backend.get('TableHandler')
+        return TableHandler(cls, module_name, history=history)
+
+    @classmethod
     def __register__(cls, module_name):
         sql_table = cls.__table__()
         cursor = Transaction().connection.cursor()
@@ -203,9 +208,9 @@ class ModelSQL(ModelStorage):
         pool = Pool()
 
         # create/update table in the database
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         if cls._history:
-            history_table = TableHandler(cls, module_name, history=True)
+            history_table = cls.__table_handler__(module_name, history=True)
             history_table.index_action('id', action='add')
 
         for field_name, field in cls._fields.items():
@@ -303,9 +308,8 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def _update_history_table(cls):
-        TableHandler = backend.get('TableHandler')
         if cls._history:
-            history_table = TableHandler(cls, history=True)
+            history_table = cls.__table_handler__(history=True)
             for field_name, field in cls._fields.items():
                 if not field.sql_type():
                     continue

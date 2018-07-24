@@ -6,7 +6,6 @@ import json
 
 from lxml import etree
 from trytond.model import ModelView, ModelSQL, fields
-from trytond import backend
 from trytond.pyson import Eval, Bool, PYSONDecoder, If
 from trytond.tools import file_open
 from trytond.transaction import Transaction
@@ -81,8 +80,7 @@ class View(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.4 arch moved into data
         if table.column_exist('arch'):
@@ -91,7 +89,7 @@ class View(ModelSQL, ModelView):
         super(View, cls).__register__(module_name)
 
         # New instance to refresh definition
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 1.0 arch no more required
         table.not_null_action('arch', action='remove')
@@ -331,15 +329,14 @@ class ViewTreeState(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.8: table name changed
         table.table_rename('ir_ui_view_tree_expanded_state', cls._table)
 
         super(ViewTreeState, cls).__register__(module_name)
 
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
         table.index_action(['model', 'domain', 'user', 'child_name'], 'add')
 
     @staticmethod

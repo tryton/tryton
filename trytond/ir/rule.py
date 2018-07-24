@@ -4,7 +4,6 @@ from ..model import ModelView, ModelSQL, fields, EvalEnvironment, Check
 from ..transaction import Transaction
 from ..cache import Cache
 from ..pool import Pool
-from .. import backend
 from ..pyson import PYSONDecoder
 
 __all__ = [
@@ -108,9 +107,8 @@ class Rule(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(Rule, cls).__register__(module_name)
-        table = TableHandler(cls, module_name)
+        table = cls.__table_handler__(module_name)
 
         # Migration from 2.6: replace field, operator and operand by domain
         table.not_null_action('field', action='remove')
