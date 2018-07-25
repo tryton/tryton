@@ -594,7 +594,10 @@ var Sao = {};
         jQuery('#user-preferences').append(jQuery('<a/>', {
             'href': '#',
             'title': preferences.status_bar,
-        }).click(Sao.preferences).append(preferences.status_bar));
+        }).click(function(evt) {
+            evt.preventDefault();
+            Sao.preferences();
+        }).append(preferences.status_bar));
         var title = Sao.i18n.gettext("Logout");
         jQuery('#user-logout').append(jQuery('<a/>', {
             'href': '#',
