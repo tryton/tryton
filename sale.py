@@ -282,7 +282,7 @@ class SalePromotion(
     def get_unit_price(self, **context):
         'Return unit price (as Decimal)'
         context.setdefault('functions', {})['Decimal'] = Decimal
-        return simple_eval(decistmt(self.formula), **context)
+        return max(simple_eval(decistmt(self.formula), **context), Decimal(0))
 
 
 class SalePromotion_Product(ModelSQL):
