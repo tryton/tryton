@@ -229,6 +229,20 @@ this repository contains the full copyright notices and license terms. -->
                 ref="act_subscription_line_consumption_subscription_relate"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_subscription_invoice_relate">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.invoice</field>
+            <field
+                name="domain"
+                eval="[('lines.origin.subscription.id', 'in', Eval('active_ids'), 'sale.subscription.line')]"
+                pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_subscription_invoice_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">sale.subscription,-1</field>
+            <field name="action" ref="act_subscription_invoice_relate"/>
+        </record>
+
         <record model="ir.action.act_window"
             id="act_subscription_line_consumption_subscription_line_relate">
             <field name="name">Consumptions</field>
