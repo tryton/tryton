@@ -232,7 +232,7 @@ class SalePromotion(
                     yield category
                     category = category.parent
 
-        if line.quantity < 0:
+        if line.quantity <= 0 or line.unit_price <= 0:
             return False
         elif self.unit and line.unit.category != self.unit.category:
             return False
