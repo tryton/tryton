@@ -499,6 +499,7 @@ var Sao = {};
             jQuery('#user-preferences').children().remove();
             jQuery('#user-logout').children().remove();
             jQuery('#user-favorites').children().remove();
+            jQuery('#global-search').children().remove();
             jQuery('#menu').children().remove();
             session.do_logout().always(Sao.login);
             Sao.set_title();
@@ -520,25 +521,17 @@ var Sao = {};
         });
     };
     Sao.favorites_menu = function() {
-        var clear_menu = function() {
-            if (menu) {
-                menu.remove();
-            }
-        };
         jQuery(window).click(function() {
-            clear_menu();
+            Sao.favorites_menu_clear();
         });
-        if (jQuery('#user-favorites').children('.dropdown-menu')
-                .length !== 0 ) {
-            clear_menu();
-        } else {
+        if (!jQuery('#user-favorites').children('.dropdown-menu').length) {
             var name = Sao.main_menu_screen.model_name + '.favorite';
             var session = Sao.Session.current_session;
             var args = {
                 'method': 'model.' + name + '.get',
             };
             var menu = jQuery('<ul/>', {
-                'class': 'dropdown-menu dropdown-menu-right',
+                'class': 'dropdown-menu',
                 'aria-expanded': 'false',
                 'aria-labelledby': 'user-favorites',
             });
@@ -561,7 +554,7 @@ var Sao = {};
                          Sao.common.ICONFACTORY.get_icon_url(menu_item[2]));
                     a.append(menu_item[1]);
                     a.click(function() {
-                        clear_menu();
+                        Sao.favorites_menu_clear();
                         // ids is not defined to prevent to add suffix
                         Sao.Action.exec_keyword('tree_open', {
                             'model': Sao.main_menu_screen.model_name,
@@ -578,7 +571,7 @@ var Sao = {};
                 }).append(jQuery('<a/>', {
                         'href': '#'
                     }).click(function() {
-                        clear_menu();
+                        Sao.favorites_menu_clear();
                         Sao.Tab.create({
                             'model': Sao.main_menu_screen.model_name +
                             '.favorite',
@@ -589,6 +582,9 @@ var Sao = {};
                        menu);
             });
         }
+    };
+    Sao.favorites_menu_clear = function() {
+        jQuery('#user-favorites').children('.dropdown-menu').remove();
     };
 
     Sao.user_menu = function(preferences) {
@@ -659,10 +655,10 @@ var Sao = {};
             var view = form.screen.current_view;
             view.table.removeClass('table table-bordered table-striped');
             view.table.find('thead').hide();
-            jQuery('#menu').children().remove();
-
             var gs = new Sao.GlobalSearch();
-            jQuery('#menu').append(gs.el);
+            jQuery('#global-search').children().remove();
+            jQuery('#global-search').append(gs.el);
+            jQuery('#menu').children().remove();
             jQuery('#menu').append(
                 form.screen.screen_container.content_box.detach());
             var column = new FavoriteColumn(form.screen.model.fields.favorite);
@@ -729,6 +725,7 @@ var Sao = {};
                 'params': [e.data.record.id, session.context]
             };
             Sao.rpc(args, session);
+            Sao.favorites_menu_clear();
         }
     });
 
@@ -788,12 +785,6 @@ var Sao = {};
                 'class': 'input-group',
             }).appendTo(this.el);
 
-            this.search_entry = jQuery('<input>', {
-                'id': 'global-search-entry',
-                'class': 'form-control mousetrap',
-                'placeholder': Sao.i18n.gettext('Search...')
-            }).appendTo(group);
-
             jQuery('<div/>', {
                 'id': 'user-favorites',
                 'class': 'input-group-btn',
@@ -809,6 +800,12 @@ var Sao = {};
                 'aria-hidden': true,
             }))).appendTo(group);
 
+            this.search_entry = jQuery('<input>', {
+                'id': 'global-search-entry',
+                'class': 'form-control mousetrap',
+                'placeholder': Sao.i18n.gettext('Action')
+            }).appendTo(group);
+
             var completion = new Sao.common.InputCompletion(
                     this.el,
                     this.update.bind(this),
@@ -821,12 +818,6 @@ var Sao = {};
                         completion.menu.dropdown('toggle');
                     }
                 }
-            });
-            completion.dropdown.on('hide.bs.dropdown', function() {
-                jQuery('#menu').css('overflow-y', 'auto');
-            });
-            completion.dropdown.on('show.bs.dropdown', function() {
-                jQuery('#menu').css('overflow-y', 'visible');
             });
         },
         format: function(content) {
