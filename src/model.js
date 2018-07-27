@@ -357,9 +357,12 @@
                 this.model.execute('default_get', [added, this.context()])
                     .then(function(values) {
                         new_.forEach(function(record) {
-                            record.set_default(values);
+                            record.set_default(values, true, false);
                         });
-                    });
+                        this.root_group().screens.forEach(function(screen) {
+                            return screen.display();
+                        });
+                    }.bind(this));
             }
         };
         array.destroy = function() {
@@ -862,9 +865,12 @@
             }
             return jQuery.when();
         },
-        set_default: function(values, validate) {
+        set_default: function(values, validate, display) {
             if (validate === undefined) {
                 validate = true;
+            }
+            if (display === undefined) {
+                display = true;
             }
             var promises = [];
             var fieldnames = [];
@@ -893,10 +899,12 @@
                 return this.on_change(fieldnames).then(function() {
                     return this.on_change_with(fieldnames).then(function() {
                         var callback = function() {
-                            return this.group.root_group().screens
-                                .forEach(function(screen) {
-                                    return screen.display();
-                                });
+                            if (display) {
+                                return this.group.root_group().screens
+                                    .forEach(function(screen) {
+                                        return screen.display();
+                                    });
+                            }
                         }.bind(this);
                         if (validate) {
                             return this.validate(null, true)
@@ -1969,8 +1977,9 @@
                         var new_record = group.new_(false);
                         if (default_) {
                             // Don't validate as parent will validate
-                            promises.push(new_record.set_default(vals, false));
-                            group.add(new_record);
+                            promises.push(new_record.set_default(
+                                vals, false, false));
+                            group.add(new_record, -1, false);
                         } else {
                             promises.push(new_record.set(vals));
                             group.push(new_record);
