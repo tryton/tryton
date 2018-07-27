@@ -9,4 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="sale_invoice_method" />
     <label name="sale_shipment_method" />
     <field name="sale_shipment_method" />
+    <newline/>
+    <label name="sale_process_after"/>
+    <field name="sale_process_after"/>
 </form>

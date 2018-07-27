@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from functools import wraps
+
 from sql import Null
 from sql.operators import Concat
 
@@ -8,6 +10,22 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 __all__ = ['ShipmentOut', 'ShipmentOutReturn', 'Move']
+
+
+def process_sale(moves_field):
+    def _process_sale(func):
+        @wraps(func)
+        def wrapper(cls, shipments):
+            pool = Pool()
+            Sale = pool.get('sale.sale')
+            with Transaction().set_context(_check_access=False):
+                sales = set(m.sale for s in cls.browse(shipments)
+                    for m in getattr(s, moves_field) if m.sale)
+            func(cls, shipments)
+            if sales:
+                Sale.__queue__.process(sales)
+        return wrapper
+    return _process_sale
 
 
 class ShipmentOut(metaclass=PoolMeta):
@@ -22,31 +40,6 @@ class ShipmentOut(metaclass=PoolMeta):
                 })
 
     @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-        SaleLine = pool.get('sale.line')
-
-        super(ShipmentOut, cls).write(*args)
-
-        actions = iter(args)
-        for shipments, values in zip(actions, actions):
-            if values.get('state') not in ('done', 'cancel'):
-                continue
-            sales = []
-            move_ids = []
-            for shipment in shipments:
-                move_ids.extend([x.id for x in shipment.outgoing_moves])
-
-            with Transaction().set_context(_check_access=False):
-                sale_lines = SaleLine.search([
-                        ('moves', 'in', move_ids),
-                        ])
-                if sale_lines:
-                    sales = list(set(l.sale for l in sale_lines))
-                    Sale.process(sales)
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
@@ -58,6 +51,20 @@ class ShipmentOut(metaclass=PoolMeta):
                     cls.raise_user_error('reset_move')
 
         return super(ShipmentOut, cls).draft(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    @process_sale('outgoing_moves')
+    def done(cls, shipments):
+        super(ShipmentOut, cls).done(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    @process_sale('outgoing_moves')
+    def cancel(cls, shipments):
+        super(ShipmentOut, cls).cancel(shipments)
 
 
 class ShipmentOutReturn(metaclass=PoolMeta):
@@ -72,35 +79,6 @@ class ShipmentOutReturn(metaclass=PoolMeta):
                 })
 
     @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-        SaleLine = pool.get('sale.line')
-
-        super(ShipmentOutReturn, cls).write(*args)
-
-        actions = iter(args)
-        for shipments, values in zip(actions, actions):
-            if values.get('state') != 'received':
-                continue
-            sales = []
-            move_ids = []
-            for shipment in shipments:
-                move_ids.extend([x.id for x in shipment.incoming_moves])
-
-            with Transaction().set_context(_check_access=False):
-                sale_lines = SaleLine.search([
-                        ('moves', 'in', move_ids),
-                        ])
-                if sale_lines:
-                    for sale_line in sale_lines:
-                        if sale_line.sale not in sales:
-                            sales.append(sale_line.sale)
-
-                    sales = Sale.browse([s.id for s in sales])
-                    Sale.process(sales)
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
@@ -112,6 +90,26 @@ class ShipmentOutReturn(metaclass=PoolMeta):
                     cls.raise_user_error('reset_move')
 
         return super(ShipmentOutReturn, cls).draft(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('received')
+    @process_sale('incoming_moves')
+    def receive(cls, shipments):
+        super(ShipmentOutReturn, cls).receive(shipments)
+
+
+def process_sale_move(func):
+    @wraps(func)
+    def wrapper(cls, moves):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        with Transaction().set_context(_check_access=False):
+            sales = set(m.sale for m in cls.browse(moves) if m.sale)
+        func(cls, moves)
+        if sales:
+            Sale.__queue__.process(sales)
+    return wrapper
 
 
 class Move(metaclass=PoolMeta):
@@ -199,35 +197,11 @@ class Move(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
+    @process_sale_move
     def cancel(cls, moves):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-        SaleLine = pool.get('sale.line')
-
         super(Move, cls).cancel(moves)
 
-        sale_lines = SaleLine.search([
-                ('moves', 'in', [m.id for m in moves]),
-                ])
-        if sale_lines:
-            sale_ids = list(set(l.sale.id for l in sale_lines))
-            sales = Sale.browse(sale_ids)
-            Sale.process(sales)
-
     @classmethod
+    @process_sale_move
     def delete(cls, moves):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-        SaleLine = pool.get('sale.line')
-
-        with Transaction().set_context(_check_access=False):
-            sale_lines = SaleLine.search([
-                    ('moves', 'in', [m.id for m in moves]),
-                    ])
-
         super(Move, cls).delete(moves)
-
-        if sale_lines:
-            sales = list(set(l.sale for l in sale_lines))
-            with Transaction().set_context(_check_access=False):
-                Sale.process(sales)

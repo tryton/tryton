@@ -242,6 +242,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
                 ('confirmed', 'processing'),
+                ('confirmed', 'draft'),
                 ('processing', 'processing'),
                 ('processing', 'done'),
                 ('done', 'processing'),
@@ -256,7 +257,8 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': ~Eval('state').in_(['cancel', 'quotation']),
+                    'invisible': ~Eval('state').in_(
+                        ['cancel', 'quotation', 'confirmed']),
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
                     'depends': ['state'],
@@ -918,8 +920,15 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @ModelView.button
     @Workflow.transition('confirmed')
     def confirm(cls, sales):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
         cls.set_sale_date(sales)
         cls.store_cache(sales)
+        config = Configuration(1)
+        with Transaction().set_context(
+                queue_name='sale',
+                queue_scheduled_at=config.sale_process_after):
+            cls.__queue__.process(sales)
 
     @classmethod
     @ModelView.button_action('sale.wizard_invoice_handle_exception')
@@ -940,13 +949,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @Workflow.transition('done')
     def do(cls, sales):
         pass
-
-    @classmethod
-    def cron_process(cls):
-        sales = cls.search([
-                ('state', '=', 'confirmed'),
-                ])
-        cls.process(sales)
 
     @classmethod
     @ModelView.button
@@ -1748,7 +1750,7 @@ class HandleShipmentException(Wizard):
                     'moves_ignored': [('add', moves_ignored)],
                     'moves_recreated': [('add', moves_recreated)],
                     })
-        Sale.process([sale])
+        Sale.__queue__.process([sale])
         return 'end'
 
 
@@ -1808,7 +1810,7 @@ class HandleInvoiceException(Wizard):
                 'invoices_ignored': [('add', invoices_ignored)],
                 'invoices_recreated': [('add', invoices_recreated)],
                 })
-        Sale.process([sale])
+        Sale.__queue__.process([sale])
         return 'end'
 
 

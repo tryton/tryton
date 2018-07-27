@@ -46,9 +46,6 @@ Create empty sale::
     Decimal('0')
     >>> sale.click('confirm')
     >>> sale.state
-    'confirmed'
-    >>> sale.click('process')
-    >>> sale.state
     'done'
     >>> sale.shipment_state
     'none'

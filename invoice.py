@@ -18,11 +18,10 @@ def process_sale(func):
         pool = Pool()
         Sale = pool.get('sale.sale')
         with Transaction().set_context(_check_access=False):
-            sales = Sale.browse(
-                set(s for i in cls.browse(invoices) for s in i.sales))
+            sales = set(s for i in cls.browse(invoices) for s in i.sales)
         func(cls, invoices)
-        with Transaction().set_context(_check_access=False):
-            Sale.process(sales)
+        if sales:
+            Sale.__queue__.process(sales)
     return wrapper
 
 
@@ -154,10 +153,9 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         Sale = pool.get('sale.sale')
         with Transaction().set_context(_check_access=False):
-            lines = cls.browse(lines)
-            invoices = (l.invoice for l in lines
+            invoices = (l.invoice for l in cls.browse(lines)
                 if l.type == 'line' and l.invoice)
-            sales = Sale.browse(set(s for i in invoices for s in i.sales))
+            sales = set(s for i in invoices for s in i.sales)
         super(InvoiceLine, cls).delete(lines)
-        with Transaction().set_context(_check_access=False):
-            Sale.process(sales)
+        if sales:
+            Sale.__queue__.process(sales)

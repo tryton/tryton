@@ -147,9 +147,6 @@ Sale 5 products::
     >>> sale.click('confirm')
     >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
     (Decimal('50.00'), Decimal('5.00'), Decimal('55.00'))
-    >>> sale.click('process')
-    >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
-    (Decimal('50.00'), Decimal('5.00'), Decimal('55.00'))
     >>> sale.state
     'processing'
     >>> sale.shipment_state
@@ -220,7 +217,6 @@ Sale 5 products with an invoice method 'on shipment'::
     >>> sale_line.quantity = 3.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
     >>> sale.shipment_state
@@ -289,7 +285,6 @@ Sale 5 products with shipment method 'on invoice'::
     >>> sale_line.quantity = 5.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
     >>> sale.shipment_state
@@ -379,7 +374,6 @@ Create a Return::
     >>> return_line.description = 'Comment'
     >>> return_.click('quote')
     >>> return_.click('confirm')
-    >>> return_.click('process')
     >>> return_.state
     'processing'
     >>> return_.shipment_state
@@ -465,7 +459,6 @@ Mixing return and sale::
     >>> mixline2.quantity = -2.
     >>> mix.click('quote')
     >>> mix.click('confirm')
-    >>> mix.click('process')
     >>> mix.state
     'processing'
     >>> mix.shipment_state
@@ -527,7 +520,6 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mixline2.quantity = -3.
     >>> mix.click('quote')
     >>> mix.click('confirm')
-    >>> mix.click('process')
     >>> mix.state
     'processing'
     >>> mix.shipment_state
@@ -567,7 +559,6 @@ Sale services::
     >>> service_sale.save()
     >>> service_sale.click('quote')
     >>> service_sale.click('confirm')
-    >>> service_sale.click('process')
     >>> service_sale.state
     'processing'
     >>> service_sale.shipment_state
@@ -609,7 +600,6 @@ Return sales using the wizard::
     >>> sale_line.description = 'Test comment'
     >>> sale_to_return.click('quote')
     >>> sale_to_return.click('confirm')
-    >>> sale_to_return.click('process')
     >>> sale_to_return.state
     'processing'
     >>> return_sale = Wizard('sale.return_sale', [sale_to_return])
@@ -634,7 +624,6 @@ to invoices::
     >>> line.quantity = 10.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> shipment, = sale.shipments
     >>> for move in shipment.inventory_moves:
     ...     move.quantity = 5.0
@@ -665,7 +654,6 @@ invoices::
     >>> line.quantity = 10.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> invoice, = sale.invoices
     >>> invoice_line, = invoice.lines
     >>> invoice_line.stock_moves == []
@@ -694,7 +682,6 @@ Deleting a line from a invoice should recreate it::
     >>> line.quantity = 10.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> invoice, = sale.invoices
     >>> invoice_line, = invoice.lines
     >>> invoice.lines.remove(invoice_line)

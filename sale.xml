@@ -379,28 +379,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="report_sale"/>
         </record>
 
-        <record model="res.user" id="user_process_sale">
-            <field name="login">user_cron_process_sale</field>
-            <field name="name">Cron Process Sale</field>
-            <field name="signature"></field>
-            <field name="active" eval="False"/>
-        </record>
-        <record model="res.user-res.group" id="user_process_sale_group_sale">
-            <field name="user" ref="user_process_sale"/>
-            <field name="group" ref="group_sale"/>
-        </record>
-
-        <record model="ir.cron" id="cron_process_sale">
-            <field name="name">Process Confirmed Sales</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_process_sale"/>
-            <field name="interval_number" eval="1"/>
-            <field name="interval_type">hours</field>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">sale.sale</field>
-            <field name="function">cron_process</field>
-        </record>
-
         <record model="ir.ui.view" id="sale_line_view_form">
             <field name="model">sale.line</field>
             <field name="type">form</field>
