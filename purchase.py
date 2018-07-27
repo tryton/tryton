@@ -260,7 +260,7 @@ class PurchaseHandleShipmentException(metaclass=PoolMeta):
                         sales.add(sale_line.sale)
 
         if moves:
-            Move.cancel(list(moves))
+            Move.cancel(moves)
         if sales:
-            Sale.process(list(sales))
+            Sale.__queue__.process(sales)
         return 'end'

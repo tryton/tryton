@@ -14,6 +14,9 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, cursor_dict
 
+from trytond.modules.sale.stock import process_sale
+from trytond.modules.purchase.stock import process_purchase
+
 
 __all__ = ['Configuration', 'ConfigurationSequence', 'ShipmentDrop', 'Move']
 
@@ -341,37 +344,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def write(cls, *args):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        PurchaseLine = pool.get('purchase.line')
-        Sale = pool.get('sale.sale')
-        SaleLine = pool.get('sale.line')
-
         super(ShipmentDrop, cls).write(*args)
         cls._set_move_planned_date(sum(args[::2], []))
-
-        actions = iter(args)
-        for shipments, values in zip(actions, actions):
-            if values.get('state', '') not in ('done', 'cancel'):
-                continue
-            with Transaction().set_context(_check_access=False):
-                move_ids = [m.id for s in shipments for m in s.customer_moves]
-                sale_lines = []
-                for sub_moves in grouped_slice(move_ids):
-                    sale_lines += SaleLine.search([
-                            ('moves', 'in', list(sub_moves)),
-                            ])
-                sales = list(set(l.sale for l in sale_lines or []))
-                Sale.process(sales)
-
-                move_ids = [m.id for s in shipments for m in s.supplier_moves]
-                purchase_lines = []
-                for sub_moves in grouped_slice(move_ids):
-                    purchase_lines += PurchaseLine.search([
-                            ('moves', 'in', move_ids),
-                            ])
-                purchases = list(set(l.purchase for l in purchase_lines or []))
-                Purchase.process(purchases)
 
     @classmethod
     def copy(cls, shipments, default=None):
@@ -398,6 +372,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
+    @process_sale('customer_moves')
+    @process_purchase('supplier_moves')
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
         Move.cancel([m for s in shipments for m in s.supplier_moves])
@@ -558,6 +534,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('shipped')
+    @process_purchase('supplier_moves')
     def ship(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -567,6 +544,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
+    @process_sale('customer_moves')
     def done(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
