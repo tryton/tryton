@@ -342,17 +342,17 @@
                     this.screen.group.length, this.display_size);
             // XXX find better check to keep focus
             if (this.children_field) {
-                this.construct(selected, expanded);
+                this.construct();
             } else if ((min_display_size > this.rows.length) &&
                 Sao.common.compare(
                     this.screen.group.slice(0, this.rows.length),
                     row_records())) {
-                this.construct(selected, expanded, true);
+                this.construct(true);
             } else if ((min_display_size != this.rows.length) ||
                 !Sao.common.compare(
                     this.screen.group.slice(0, this.rows.length),
                     row_records())){
-                this.construct(selected, expanded);
+                this.construct();
             }
 
             // Set column visibility depending on attributes and domain
@@ -448,7 +448,7 @@
             return this.redraw(selected, expanded).done(
                 Sao.common.debounce(this.update_sum.bind(this), 250));
         },
-        construct: function(selected, expanded, extend) {
+        construct: function(extend) {
             var tbody = this.tbody;
             if (!extend) {
                 this.rows = [];
@@ -467,7 +467,7 @@
                 }
                 var tree_row = new RowBuilder(this, record, this.rows.length);
                 this.rows.push(tree_row);
-                tree_row.construct(selected, expanded);
+                tree_row.construct();
             };
             this.screen.group.slice(start, this.display_size).forEach(
                     add_row.bind(this));
@@ -841,10 +841,7 @@
             table.append(row);
             return [table, row];
         },
-        construct: function(selected, expanded) {
-            selected = selected || [];
-            expanded = expanded || [];
-
+        construct: function() {
             var el_node = this.el[0];
             while (el_node.firstChild) {
                 el_node.removeChild(el_node.firstChild);
@@ -892,13 +889,8 @@
                 var row = widgets[1];
                 td.append(table);
                 if ((i === 0) && this.children_field) {
-                    var expanded_icon = 'glyphicon-plus';
-                    if (this.is_expanded() ||
-                            ~expanded.indexOf(this.record.id)) {
-                        expanded_icon = 'glyphicon-minus';
-                    }
                     this.expander = jQuery('<span/>', {
-                        'class': 'glyphicon ' + expanded_icon,
+                        'class': 'glyphicon',
                         'tabindex': 0
                     });
                     this.expander.html('&nbsp;');
@@ -938,12 +930,6 @@
             } else {
                 this.tree.tbody.append(this.el);
             }
-            var row_id_path = this.get_id_path();
-            if (this.is_expanded() ||
-                    Sao.common.contains(expanded, row_id_path)) {
-                this.tree.expanded[this.path] = this;
-                this.expand_children(selected, expanded);
-            }
         },
         _get_column_td: function(column_index, row) {
             row = row || this.el;
@@ -952,12 +938,6 @@
         redraw: function(selected, expanded) {
             selected = selected || [];
             expanded = expanded || [];
-            var update_expander = function() {
-                if (!this.record.field_get_client(
-                    this.children_field).length) {
-                    this.expander.css('visibility', 'hidden');
-                }
-            };
             var thead_visible = this.tree.thead.is(':visible');
 
             switch(this.tree.selection_mode) {
@@ -976,10 +956,6 @@
 
 
             for (var i = 0; i < this.tree.columns.length; i++) {
-                if ((i === 0) && this.children_field) {
-                    this.record.load(this.children_field).done(
-                        update_expander.bind(this));
-                }
                 var column = this.tree.columns[i];
                 var td = this._get_column_td(i);
                 var tr = td.find('tr');
@@ -1026,23 +1002,22 @@
             }
             var row_id_path = this.get_id_path();
             this.set_selection(Sao.common.contains(selected, row_id_path));
-            if (this.is_expanded() ||
-                    Sao.common.contains(expanded, row_id_path)) {
-                this.tree.expanded[this.path] = this;
-                if (!this.record._values[this.children_field] ||
-                        (this.record._values[this.children_field].length > 0 &&
-                         this.rows.length === 0)) {
-                    this.expand_children(selected, expanded);
-                } else {
-                    redraw_async(this.rows, selected, expanded);
-                }
-                if (this.expander) {
-                    this.update_expander(true);
-                }
-            } else {
-                if (this.expander) {
-                    this.update_expander(false);
-                }
+            if (this.children_field) {
+                this.record.load(this.children_field).done(function() {
+                    if (this.is_expanded() ||
+                        Sao.common.contains(expanded, row_id_path)) {
+                        this.expander.css('visibility', 'visible');
+                        this.tree.expanded[this.path] = this;
+                        this.expand_children(selected, expanded);
+                        this.update_expander(true);
+                    } else {
+                        var length = this.record.field_get_client(
+                            this.children_field).length;
+                        this.expander.css('visibility',
+                            length ? 'visible' : 'hidden');
+                        this.update_expander(false);
+                    }
+                }.bind(this));
             }
             if (this.record.deleted() || this.record.removed()) {
                 this.el.css('text-decoration', 'line-through');
@@ -1085,25 +1060,19 @@
             this.rows = [];
         },
         expand_children: function(selected, expanded) {
-            var add_children = function() {
-                if (!jQuery.isEmptyObject(this.rows)) {
-                    return;
-                }
-                var new_rows = [];
-                var add_row = function(record, pos, group) {
-                    var tree_row = new this.Class(
-                            this.tree, record, pos, this);
-                    tree_row.construct(selected, expanded);
-                    this.rows.push(tree_row);
-                    new_rows.push(tree_row);
-                };
-                var children = this.record.field_get_client(
+            return this.record.load(this.children_field).done(function() {
+                if (this.rows.length === 0) {
+                    var children = this.record.field_get_client(
                         this.children_field);
-                children.forEach(add_row.bind(this));
-                redraw_async(new_rows, selected, expanded);
-            };
-            return this.record.load(this.children_field).done(
-                    add_children.bind(this));
+                    children.forEach(function(record, pos, group) {
+                        var tree_row = new this.Class(
+                            this.tree, record, pos, this);
+                        tree_row.construct(selected, expanded);
+                        this.rows.push(tree_row);
+                    }.bind(this));
+                }
+                redraw_async(this.rows, selected, expanded);
+            }.bind(this));
         },
         switch_row: function() {
             if (window.getSelection) {
