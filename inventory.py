@@ -3,11 +3,13 @@
 from sql import Null
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Bool, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.wizard import Wizard, StateView, StateTransition, Button
 
-__all__ = ['Inventory', 'InventoryLine']
+__all__ = ['Inventory', 'InventoryLine',
+    'Count', 'CountSearch', 'CountQuantity']
 
 STATES = {
     'readonly': Eval('state') != 'draft',
@@ -83,6 +85,10 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'complete_lines': {
+                    'readonly': Eval('state') != 'draft',
+                    'depends': ['state'],
+                    },
+                'count': {
                     'readonly': Eval('state') != 'draft',
                     'depends': ['state'],
                     },
@@ -273,6 +279,11 @@ class Inventory(Workflow, ModelSQL, ModelView):
             Line.create(to_create)
         if to_write:
             Line.write(*to_write)
+
+    @classmethod
+    @ModelView.button_action('stock.wizard_inventory_count')
+    def count(cls, inventories):
+        cls.complete_lines(inventories)
 
 
 class InventoryLine(ModelSQL, ModelView):
@@ -476,3 +487,143 @@ class InventoryLine(ModelSQL, ModelView):
                         'line': line.rec_name,
                         })
         super(InventoryLine, cls).delete(lines)
+
+
+class Count(Wizard):
+    "Stock Inventory Count"
+    __name__ = 'stock.inventory.count'
+    start_state = 'search'
+
+    search = StateView(
+        'stock.inventory.count.search',
+        'stock.inventory_count_search_view_form', [
+            Button("End", 'end', 'tryton-cancel'),
+            Button("Select", 'quantity', 'tryton-go-next', default=True),
+            ])
+    quantity = StateView(
+        'stock.inventory.count.quantity',
+        'stock.inventory_count_quantity_view_form', [
+            Button("Cancel", 'search', 'tryton-cancel'),
+            Button("Add", 'add', 'tryton-ok', default=True),
+            ])
+    add = StateTransition()
+
+    @classmethod
+    def __setup__(cls):
+        super(Count, cls).__setup__()
+        cls._error_messages.update({
+                'create_line': "No existing line found for %(search)s.",
+                })
+
+    def default_quantity(self, fields):
+        pool = Pool()
+        Inventory = pool.get('stock.inventory')
+        InventoryLine = pool.get('stock.inventory.line')
+        context = Transaction().context
+        inventory = Inventory(context['active_id'])
+        values = {}
+        lines = InventoryLine.search(self.get_line_domain(inventory), limit=1)
+        if not lines:
+            warning_name = '%s.%s.count_create' % (
+                inventory, self.search.search)
+            self.raise_user_warning(warning_name, 'create_line', {
+                    'search': self.search.search.rec_name,
+                    })
+            line, = InventoryLine.create([self.get_line_values(inventory)])
+        else:
+            line, = lines
+        values['line'] = line.id
+        values['product'] = line.product.id
+        values['uom'] = line.uom.id
+        values['unit_digits'] = line.unit_digits
+        if line.uom.rounding == 1:
+            values['quantity_added'] = 1
+        return values
+
+    def get_line_domain(self, inventory):
+        pool = Pool()
+        Product = pool.get('product.product')
+        domain = [
+            ('inventory', '=', inventory.id),
+            ]
+        if isinstance(self.search.search, Product):
+            domain.append(('product', '=', self.search.search.id))
+        return domain
+
+    def get_line_values(self, inventory):
+        pool = Pool()
+        Product = pool.get('product.product')
+        InventoryLine = pool.get('stock.inventory.line')
+        values = InventoryLine.create_values4complete(inventory, 0)
+        if isinstance(self.search.search, Product):
+            values['product'] = self.search.search.id
+        return values
+
+    def transition_add(self):
+        if self.quantity.line and self.quantity.quantity_added:
+            line = self.quantity.line
+            if line.quantity:
+                line.quantity += self.quantity.quantity_added
+            else:
+                line.quantity = self.quantity.quantity_added
+            line.save()
+        return 'search'
+
+
+class CountSearch(ModelView):
+    "Stock Inventory Count"
+    __name__ = 'stock.inventory.count.search'
+
+    search = fields.Reference(
+        "Search", [
+            ('product.product', "Product"),
+            ],
+        required=True,
+        domain=[If(Eval('search_model') == 'product.product',
+                [
+                    ('type', '=', 'goods'),
+                    ('consumable', '=', False),
+                    ],
+                [])],
+        depends=['search_model'])
+    search_model = fields.Function(fields.Selection(
+        'get_search_models', "Search Model"),
+        'on_change_with_search_model')
+
+    @classmethod
+    def default_search(cls):
+        return 'product.product,-1'
+
+    @classmethod
+    def get_search_models(cls):
+        return cls.fields_get(['search'])['search']['selection']
+
+    @fields.depends('search')
+    def on_change_with_search_model(self, name=None):
+        if self.search:
+            return self.search.__name__
+
+
+class CountQuantity(ModelView):
+    "Stock Inventory Count"
+    __name__ = 'stock.inventory.count.quantity'
+
+    line = fields.Many2One(
+        'stock.inventory.line', "Line", readonly=True, required=True)
+    product = fields.Many2One('product.product', "Product", readonly=True)
+    uom = fields.Many2One('product.uom', "UOM", readonly=True)
+    quantity_resulting = fields.Float(
+        "Resulting Quantity", digits=(16, Eval('unit_digits', 2)),
+        readonly=True, depends=['unit_digits'])
+
+    quantity_added = fields.Float(
+        "Added Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
+        depends=['unit_digits'])
+
+    unit_digits = fields.Integer("Unit Digits", readonly=True)
+
+    @fields.depends('quantity_added', 'line')
+    def on_change_quantity_added(self):
+        if self.line:
+            self.quantity_resulting = (
+                (self.line.quantity or 0) + (self.quantity_added or 0))

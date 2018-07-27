@@ -116,9 +116,34 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="inventory_complete_lines_button">
             <field name="name">complete_lines</field>
-            <field name="string">Complete Inventory</field>
+            <field name="string">Complete</field>
             <field name="help">Add an inventory line for each missing products</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+        </record>
+
+        <record model="ir.model.button" id="inventory_count_button">
+            <field name="name">count</field>
+            <field name="string">Count</field>
+            <field name="help">Launch the wizard to count products</field>
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_inventory_count">
+            <field name="name">Count</field>
+            <field name="wiz_name">stock.inventory.count</field>
+            <field name="model">stock.inventory</field>
+        </record>
+
+        <record model="ir.ui.view" id="inventory_count_search_view_form">
+            <field name="model">stock.inventory.count.search</field>
+            <field name="type">form</field>
+            <field name="name">inventory_count_search_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="inventory_count_quantity_view_form">
+            <field name="model">stock.inventory.count.quantity</field>
+            <field name="type">form</field>
+            <field name="name">inventory_count_quantity_form</field>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_inventory">

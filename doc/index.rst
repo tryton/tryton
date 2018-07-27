@@ -261,11 +261,14 @@ Inventory
 
 Inventories allow to control and update stock levels. They are mainly
 composed of two locations (a Storage location and a Lost And Found
-location), and a list of inventory lines. A button allow to
-auto-complete inventory lines with respect to the expected quantities
-for each product in the location. Inventory lines consist of: a
-product and it's default unit of measure, an expected quantity and the
-real quantity (the real products on the shelves).
+location), and a list of inventory lines.
+Inventory lines consist of a product and it's default unit of measure, an
+expected quantity and the real quantity (the real products on the shelves).
+
+A button allows to auto-complete inventory lines with respect to the expected
+quantities for each product in the location.
+Another button allows to launch a wizard to count products by adding the
+quantity to the existing matching line.
 
 When the inventory is confirmed, moves are created to balance expected
 quantities and real ones.

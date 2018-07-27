@@ -7,7 +7,7 @@ from .shipment import *
 from .period import *
 from .move import *
 from .product import *
-from .inventory import *
+from . import inventory
 from .configuration import *
 from . import party
 
@@ -36,8 +36,10 @@ def register():
         ProductByLocationContext,
         ProductQuantitiesByWarehouse,
         ProductQuantitiesByWarehouseContext,
-        Inventory,
-        InventoryLine,
+        inventory.Inventory,
+        inventory.InventoryLine,
+        inventory.CountSearch,
+        inventory.CountQuantity,
         Configuration,
         ConfigurationSequence,
         ConfigurationLocation,
@@ -47,6 +49,7 @@ def register():
         AssignShipmentInternal,
         AssignShipmentInReturn,
         RecomputeCostPrice,
+        inventory.Count,
         party.PartyReplace,
         party.PartyErase,
         module='stock', type_='wizard')
