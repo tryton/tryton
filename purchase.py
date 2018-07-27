@@ -118,5 +118,5 @@ class HandleInvoiceException(metaclass=PoolMeta):
             Purchase.write([purchase], {
                     'invoice_lines_ignored': [('add', invoice_lines)],
                     })
-        Purchase.process([purchase])
+        Purchase.__queue__.process([purchase])
         return state
