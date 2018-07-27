@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from itertools import chain
+from functools import wraps
 
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
@@ -29,8 +29,7 @@ class PurchaseRequest(metaclass=PoolMeta):
 
         with Transaction().set_context(_check_access=False):
             reqs = cls.browse(requests)
-            sale_ids = list(set(r.origin.id for r in reqs
-                    if isinstance(r.origin, Sale)))
+            sales = set(r.origin for r in reqs if isinstance(r.origin, Sale))
             sale_lines = [l for r in reqs for l in r.sale_lines]
             if sale_lines:
                 SaleLine.write(sale_lines, {
@@ -39,45 +38,47 @@ class PurchaseRequest(metaclass=PoolMeta):
 
         super(PurchaseRequest, cls).delete(requests)
 
-        if sale_ids:
-            with Transaction().set_context(_check_access=False):
-                Sale.process(Sale.browse(sale_ids))
+        if sales:
+            Sale.__queue__.process(sales)
+
+
+def process_sale_supply(func):
+    @wraps(func)
+    def wrapper(cls, purchases):
+        pool = Pool()
+        Request = pool.get('purchase.request')
+        Sale = pool.get('sale.sale')
+
+        sales = set()
+        with Transaction().set_context(_check_access=False):
+            for sub_purchases in grouped_slice(purchases):
+                ids = [x.id for x in sub_purchases]
+                requests = Request.search([
+                        ('purchase_line.purchase.id', 'in', ids),
+                        ('origin', 'like', 'sale.sale,%'),
+                        ])
+                sales.update(r.origin.id for r in requests)
+        func(cls, purchases)
+        if sales:
+            Sale.__queue__.process(sales)
+    return wrapper
 
 
 class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
 
     @classmethod
-    def _sale_supply_process(cls, purchases):
-        pool = Pool()
-        Request = pool.get('purchase.request')
-        Sale = pool.get('sale.sale')
-
-        requests = []
-        for sub_purchases in grouped_slice(purchases):
-            requests.append(Request.search([
-                        ('purchase_line.purchase.id', 'in',
-                            [x.id for x in sub_purchases]),
-                        ('origin', 'like', 'sale.sale,%'),
-                        ]))
-        requests = list(chain(*requests))
-
-        if requests:
-            sale_ids = list(set(req.origin.id for req in requests))
-            Sale.process(Sale.browse(sale_ids))
-
-    @classmethod
     @ModelView.button
+    @process_sale_supply
     def process(cls, purchases):
         super(Purchase, cls).process(purchases)
-        cls._sale_supply_process(purchases)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
+    @process_sale_supply
     def cancel(cls, purchases):
         super(Purchase, cls).cancel(purchases)
-        cls._sale_supply_process(purchases)
 
 
 class HandlePurchaseCancellationException(metaclass=PoolMeta):
