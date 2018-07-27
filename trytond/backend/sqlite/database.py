@@ -18,7 +18,7 @@ except ImportError:
     import sqlite3 as sqlite
     from sqlite3 import IntegrityError as DatabaseIntegrityError
     from sqlite3 import OperationalError as DatabaseOperationalError
-from sql import Flavor, Table, Query, Expression
+from sql import Flavor, Table, Query, Expression, Literal
 from sql.functions import (Function, Extract, Position, Substring,
     Overlay, CharLength, CurrentTimestamp, Trim)
 
@@ -418,6 +418,9 @@ class Database(DatabaseInterface):
 
     def lock(self, connection, table):
         pass
+
+    def lock_id(self, id, timeout=None):
+        return Literal(True)
 
     def has_constraint(self, constraint):
         return False

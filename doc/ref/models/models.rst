@@ -41,6 +41,11 @@ Class attributes are:
 
     The definition of the field ``id`` of records.
 
+.. attribute:: Model.__queue__
+
+    It returns a queue caller for the model. The called method will be pushed
+    into the queue.
+
 Class methods:
 
 .. classmethod:: Model.__setup__()

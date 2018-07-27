@@ -60,7 +60,12 @@ setup(name=name,
             'tryton.cfg', '*.xml', '*.html', 'view/*.xml', 'locale/*.po'],
         'trytond.tests': ['tryton.cfg', '*.xml', 'forbidden.txt'],
         },
-    scripts=['bin/trytond', 'bin/trytond-admin', 'bin/trytond-cron'],
+    scripts=[
+        'bin/trytond',
+        'bin/trytond-admin',
+        'bin/trytond-cron',
+        'bin/trytond-worker',
+        ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: No Input/Output (Daemon)',

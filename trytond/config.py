@@ -60,6 +60,8 @@ class TrytonConfigParser(configparser.RawConfigParser):
         self.set('cache', 'model', 200)
         self.set('cache', 'record', 2000)
         self.set('cache', 'field', 100)
+        self.add_section('queue')
+        self.set('queue', 'worker', False)
         self.add_section('ssl')
         self.add_section('email')
         self.set('email', 'uri', 'smtp://localhost:25')

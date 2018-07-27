@@ -40,6 +40,19 @@ def get_parser_daemon():
     return parser
 
 
+def get_parser_worker():
+    parser = get_parser_daemon()
+    parser.add_argument("--name", dest='name',
+        help="work only on the named queue")
+    parser.add_argument("-n", dest='processes', type=int,
+        help="number of processes to use")
+    parser.add_argument("--max", dest='maxtasksperchild', type=int,
+        help="number of tasks a worker process before being replaced")
+    parser.add_argument("-t", "--timeout", dest='timeout', default=60,
+        type=int, help="maximum timeout when waiting notification")
+    return parser
+
+
 def get_parser_admin():
     parser = get_parser()
 

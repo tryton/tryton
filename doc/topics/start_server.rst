@@ -42,6 +42,18 @@ with this command line::
 The server will wake up every minutes and preform the scheduled actions defined
 in the `database`.
 
+Worker service
+==============
+
+If you want to use a pool of workers to run :ref:`asynchronously some tasks
+<topics-task-queue>`, you must activate the worker in the `queue` section of
+the :ref:`configuration <topics-configuration>` and run the worker manager with
+this command line::
+
+    trytond-worker -c <config file> -d <database>
+
+The manager will dispatch tasks from the queue to a pool of worker processes.
+
 Services options
 ================
 

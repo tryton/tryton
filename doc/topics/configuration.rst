@@ -179,6 +179,17 @@ The minimum number of seconds between two cleanings of the cache.
 
 Default: `300`
 
+queue
+-----
+
+worker
+~~~~~~
+
+Activate asynchronous processing of the tasks. Otherwise they are performed at
+the end of the requests.
+
+Default: `False`
+
 table
 -----
 

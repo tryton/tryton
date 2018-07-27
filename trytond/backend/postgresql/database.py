@@ -70,6 +70,14 @@ class Unaccent(Function):
     _function = 'unaccent'
 
 
+class AdvisoryLock(Function):
+    _function = 'pg_advisory_xact_lock'
+
+
+class TryAdvisoryLock(Function):
+    _function = 'pg_try_advisory_xact_lock'
+
+
 class Database(DatabaseInterface):
 
     _lock = RLock()
@@ -288,6 +296,12 @@ class Database(DatabaseInterface):
         cursor = connection.cursor()
         cursor.execute('LOCK "%s" IN EXCLUSIVE MODE NOWAIT' % table)
 
+    def lock_id(self, id, timeout=None):
+        if not timeout:
+            return TryAdvisoryLock(id)
+        else:
+            return AdvisoryLock(id)
+
     def has_constraint(self, constraint):
         return True
 
@@ -458,6 +472,10 @@ class Database(DatabaseInterface):
                        'END '
                 'FROM "%s"' % name)
         return cursor.fetchone()[0]
+
+    def has_channel(self):
+        return True
+
 
 register_type(UNICODE)
 if PYDATE:

@@ -31,6 +31,7 @@ class _Local(local):
     def __init__(self):
         # Transaction stack control
         self.transactions = []
+        self.tasks = []
 
 
 class Transaction(object):
@@ -63,6 +64,10 @@ class Transaction(object):
         else:
             instance = transactions[-1]
         return instance
+
+    @property
+    def tasks(self):
+        return self._local.tasks
 
     def get_cache(self):
         from trytond.cache import LRUDict

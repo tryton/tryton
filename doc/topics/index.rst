@@ -28,6 +28,7 @@ Introduction to all the key parts of trytond:
     wizard
     reports/index
     rpc
+    task_queue
     user_application
     modules/index
     translation

@@ -7,7 +7,7 @@ from functools import total_ordering
 
 from trytond.model import fields
 from trytond.error import WarningErrorMixin
-from trytond.pool import Pool, PoolBase
+from trytond.pool import Pool, PoolBase, PoolMeta
 from trytond.pyson import PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
@@ -16,8 +16,16 @@ from trytond.rpc import RPC
 __all__ = ['Model']
 
 
+class ModelMeta(PoolMeta):
+    @property
+    def __queue__(self):
+        pool = Pool()
+        Queue = pool.get('ir.queue')
+        return Queue.caller(self)
+
+
 @total_ordering
-class Model(WarningErrorMixin, URLMixin, PoolBase):
+class Model(WarningErrorMixin, URLMixin, PoolBase, metaclass=ModelMeta):
     """
     Define a model in Tryton.
     """

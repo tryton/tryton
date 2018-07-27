@@ -21,6 +21,7 @@ from trytond.exceptions import (
     RateLimitException)
 from trytond.tools import is_instance_method
 from trytond.wsgi import app
+from trytond.worker import run_task
 from .wrappers import with_pool
 
 logger = logging.getLogger(__name__)
@@ -186,6 +187,9 @@ def _dispatch(request, pool, *args, **kwargs):
                 raise
             # Need to commit to unlock SQLite database
             transaction.commit()
+        while transaction.tasks:
+            task_id = transaction.tasks.pop()
+            run_task(pool, task_id)
         if request.authorization.type == 'session':
             context = {'_request': request.context}
             try:
