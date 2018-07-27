@@ -208,6 +208,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
                 ('confirmed', 'processing'),
+                ('confirmed', 'draft'),
                 ('processing', 'processing'),
                 ('processing', 'done'),
                 ('done', 'processing'),
@@ -222,7 +223,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': ~Eval('state').in_(['cancel', 'quotation']),
+                    'invisible': ~Eval('state').in_(
+                        ['cancel', 'quotation', 'confirmed']),
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
                     'depends': ['state'],
@@ -850,8 +852,15 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @ModelView.button
     @Workflow.transition('confirmed')
     def confirm(cls, purchases):
+        pool = Pool()
+        Configuration = pool.get('purchase.configuration')
         cls.set_purchase_date(purchases)
         cls.store_cache(purchases)
+        config = Configuration(1)
+        with Transaction().set_context(
+                queue_name='purchase',
+                queue_scheduled_at=config.purchase_process_after):
+            cls.__queue__.process(purchases)
 
     @classmethod
     @Workflow.transition('processing')
@@ -872,13 +881,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @ModelView.button_action('purchase.wizard_shipment_handle_exception')
     def handle_shipment_exception(cls, purchases):
         pass
-
-    @classmethod
-    def cron_process(cls):
-        purchases = cls.search([
-                ('state', '=', 'confirmed'),
-                ])
-        cls.process(purchases)
 
     @classmethod
     @ModelView.button
@@ -1740,7 +1742,7 @@ class HandleShipmentException(Wizard):
                 'moves_recreated': [('add', moves_recreated)],
                 })
 
-        Purchase.process([purchase])
+        Purchase.__queue__.process([purchase])
         return 'end'
 
 
@@ -1801,7 +1803,7 @@ class HandleInvoiceException(Wizard):
             'invoices_recreated': [('add', invoices_recreated)],
             })
 
-        Purchase.process([purchase])
+        Purchase.__queue__.process([purchase])
         return 'end'
 
 

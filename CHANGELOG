@@ -1,3 +1,5 @@
+* Add configured delay for processing purchase
+* Allow to reset to draft confirmed but not processed purchase
 * Show number and reference in purchase rec_name
 * Remove support for Python 2.7
 * Invoice purchased product instead of received product

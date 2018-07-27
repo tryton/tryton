@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from functools import wraps
+
 from sql import Null
 from sql.aggregate import Max
 from sql.operators import Concat
@@ -12,6 +14,22 @@ from trytond.transaction import Transaction
 from trytond.modules.product import price_digits
 
 __all__ = ['ShipmentIn', 'ShipmentInReturn', 'Move', 'Location']
+
+
+def process_purchase(moves_field):
+    def _process_purchase(func):
+        @wraps(func)
+        def wrapper(cls, shipments):
+            pool = Pool()
+            Purchase = pool.get('purchase.purchase')
+            with Transaction().set_context(_check_access=False):
+                purchases = set(m.purchase for s in cls.browse(shipments)
+                    for m in getattr(s, moves_field) if m.purchase)
+            func(cls, shipments)
+            if purchases:
+                Purchase.__queue__.process(purchases)
+        return wrapper
+    return _process_purchase
 
 
 class ShipmentIn(metaclass=PoolMeta):
@@ -39,35 +57,6 @@ class ShipmentIn(metaclass=PoolMeta):
                 })
 
     @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        PurchaseLine = pool.get('purchase.line')
-
-        super(ShipmentIn, cls).write(*args)
-
-        actions = iter(args)
-        for shipments, values in zip(actions, actions):
-            if values.get('state') not in ('received', 'cancel'):
-                continue
-            purchases = []
-            move_ids = []
-            for shipment in shipments:
-                move_ids.extend([x.id for x in shipment.incoming_moves])
-
-            purchase_lines = PurchaseLine.search([
-                    ('moves', 'in', move_ids),
-                    ])
-            if purchase_lines:
-                for purchase_line in purchase_lines:
-                    if purchase_line.purchase not in purchases:
-                        purchases.append(purchase_line.purchase)
-
-            with Transaction().set_context(_check_access=False):
-                purchases = Purchase.browse([p.id for p in purchases])
-                Purchase.process(purchases)
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
@@ -79,6 +68,20 @@ class ShipmentIn(metaclass=PoolMeta):
                     cls.raise_user_error('reset_move', (move.rec_name,))
 
         return super(ShipmentIn, cls).draft(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('received')
+    @process_purchase('incoming_moves')
+    def receive(cls, shipments):
+        super(ShipmentIn, cls).receive(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancel')
+    @process_purchase('incoming_moves')
+    def cancel(cls, shipments):
+        super(ShipmentIn, cls).cancel(shipments)
 
 
 class ShipmentInReturn(metaclass=PoolMeta):
@@ -122,34 +125,6 @@ class ShipmentInReturn(metaclass=PoolMeta):
         super(ShipmentInReturn, cls).__register__(module_name)
 
     @classmethod
-    def write(cls, *args):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        PurchaseLine = pool.get('purchase.line')
-
-        super(ShipmentInReturn, cls).write(*args)
-
-        actions = iter(args)
-        for shipments, values in zip(actions, actions):
-            if values.get('state') != 'done':
-                continue
-            move_ids = []
-            for shipment in shipments:
-                move_ids.extend([x.id for x in shipment.moves])
-
-            purchase_lines = PurchaseLine.search([
-                    ('moves', 'in', move_ids),
-                    ])
-            purchases = set()
-            if purchase_lines:
-                for purchase_line in purchase_lines:
-                    purchases.add(purchase_line.purchase)
-
-            with Transaction().set_context(_check_access=False):
-                purchases = Purchase.browse([p.id for p in purchases])
-                Purchase.process(purchases)
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
@@ -161,6 +136,27 @@ class ShipmentInReturn(metaclass=PoolMeta):
                     cls.raise_user_error('reset_move')
 
         return super(ShipmentInReturn, cls).draft(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    @process_purchase('moves')
+    def done(cls, shipments):
+        super(ShipmentInReturn, cls).done(shipments)
+
+
+def process_purchase_move(func):
+    @wraps(func)
+    def wrapper(cls, moves):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        with Transaction().set_context(_check_access=False):
+            purchases = set(
+                m.purchase for m in cls.browse(moves) if m.purchase)
+        func(cls, moves)
+        if purchases:
+            Purchase.__queue__.process(purchases)
+    return wrapper
 
 
 class Move(metaclass=PoolMeta):
@@ -314,40 +310,14 @@ class Move(metaclass=PoolMeta):
     @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
+    @process_purchase_move
     def cancel(cls, moves):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        PurchaseLine = pool.get('purchase.line')
-
         super(Move, cls).cancel(moves)
-        purchase_lines = PurchaseLine.search([
-                ('moves', 'in', [m.id for m in moves]),
-                ])
-        if purchase_lines:
-            purchase_ids = list(set(l.purchase.id for l in purchase_lines))
-            purchases = Purchase.browse(purchase_ids)
-            Purchase.process(purchases)
 
     @classmethod
+    @process_purchase_move
     def delete(cls, moves):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-        PurchaseLine = pool.get('purchase.line')
-
-        purchases = set()
-        purchase_lines = PurchaseLine.search([
-                ('moves', 'in', [m.id for m in moves]),
-                ])
-
         super(Move, cls).delete(moves)
-
-        if purchase_lines:
-            for purchase_line in purchase_lines:
-                purchases.add(purchase_line.purchase)
-            if purchases:
-                with Transaction().set_context(_check_access=False):
-                    purchases = Purchase.browse([p.id for p in purchases])
-                    Purchase.process(purchases)
 
 
 class Location(metaclass=PoolMeta):

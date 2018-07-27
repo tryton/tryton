@@ -37,6 +37,10 @@ class Configuration(
                 ]))
     purchase_invoice_method = fields.MultiValue(purchase_invoice_method)
     get_purchase_invoice_method = get_purchase_methods('invoice_method')
+    purchase_process_after = fields.TimeDelta("Process Purchase after",
+        help="The grace period during which confirmed purchase "
+        "can still be reset to draft.\n"
+        "Applied only if a worker queue is activated.")
 
     @classmethod
     def multivalue_model(cls, field):

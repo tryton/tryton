@@ -46,9 +46,6 @@ Create empty purchase::
     Decimal('0')
     >>> purchase.click('confirm')
     >>> purchase.state
-    'confirmed'
-    >>> purchase.click('process')
-    >>> purchase.state
     'done'
     >>> purchase.shipment_state
     'none'

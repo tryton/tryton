@@ -153,9 +153,6 @@ Purchase 5 products::
     >>> purchase.click('confirm')
     >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
     (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
-    >>> purchase.click('process')
-    >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
-    (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
     >>> purchase.state
     'processing'
     >>> purchase.shipment_state
@@ -215,7 +212,6 @@ Purchase 5 products with an invoice method 'on shipment'::
     >>> purchase_line.quantity = 3.0
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> purchase.state
     'processing'
     >>> purchase.shipment_state
@@ -309,7 +305,6 @@ Create a Return::
     >>> return_line.description = 'Comment'
     >>> return_.click('quote')
     >>> return_.click('confirm')
-    >>> return_.click('process')
     >>> return_.state
     'processing'
     >>> return_.shipment_state
@@ -376,7 +371,6 @@ Mixing return and purchase::
     >>> mixline2.quantity = -2.
     >>> mix.click('quote')
     >>> mix.click('confirm')
-    >>> mix.click('process')
     >>> mix.state
     'processing'
     >>> mix.shipment_state
@@ -445,7 +439,6 @@ Mixing stuff with an invoice method 'on shipment'::
     >>> mixline2.quantity = -3.
     >>> mix.click('quote')
     >>> mix.click('confirm')
-    >>> mix.click('process')
     >>> mix.state
     'processing'
     >>> mix.shipment_state
@@ -492,7 +485,6 @@ Purchase services::
     >>> service_purchase.save()
     >>> service_purchase.click('quote')
     >>> service_purchase.click('confirm')
-    >>> service_purchase.click('process')
     >>> service_purchase.state
     'processing'
     >>> service_purchase.shipment_state
@@ -535,7 +527,6 @@ linked to invoices::
     >>> line.quantity = 10.0
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> shipment = ShipmentIn()
     >>> shipment.supplier = supplier
     >>> for move in purchase.moves:
@@ -570,7 +561,6 @@ correctly linked to invoices::
     >>> line.quantity = 10.0
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> shipment = ShipmentIn()
     >>> shipment.supplier = supplier
     >>> for move in purchase.moves:
@@ -607,7 +597,6 @@ Deleting a line from a invoice should recreate it::
     >>> line.quantity = 10.0
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> invoice, = purchase.invoices
     >>> invoice_line, = invoice.lines
     >>> invoice.lines.remove(invoice_line)

@@ -6,4 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="purchase_sequence"/>
     <label name="purchase_invoice_method" />
     <field name="purchase_invoice_method" />
+    <newline/>
+    <label name="purchase_process_after"/>
+    <field name="purchase_process_after"/>
 </form>
