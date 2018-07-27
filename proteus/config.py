@@ -162,6 +162,7 @@ class _TrytondMethod(object):
         from trytond.rpc import RPC
         from trytond.tools import is_instance_method
         from trytond.transaction import Transaction
+        from trytond.worker import run_task
 
         if self._name in self._object.__rpc__:
             rpc = self._object.__rpc__[self._name]
@@ -186,8 +187,10 @@ class _TrytondMethod(object):
                 else:
                     result = [rpc.result(meth(i, *args, **kwargs))
                         for i in inst]
-            if not rpc.readonly:
-                transaction.commit()
+            transaction.commit()
+        while transaction.tasks:
+            task_id = transaction.tasks.pop()
+            run_task(self._config.database_name, task_id)
         return result
 
 
