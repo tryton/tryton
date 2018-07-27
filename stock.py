@@ -14,7 +14,8 @@ from trytond.modules.stock import StockMixin
 __all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
     'LotByLocationContext', 'ShipmentOutReturn',
     'Period', 'PeriodCacheLot',
-    'Inventory', 'InventoryLine', 'LotByLocationContext']
+    'Inventory', 'InventoryLine', 'InventoryCount', 'InventoryCountSearch',
+    'LotByLocationContext']
 
 
 def check_no_move(func):
@@ -291,3 +292,56 @@ class InventoryLine(metaclass=PoolMeta):
         if move:
             move.lot = self.lot
         return move
+
+
+class InventoryCount(metaclass=PoolMeta):
+    __name__ = 'stock.inventory.count'
+
+    @classmethod
+    def __setup__(cls):
+        super(InventoryCount, cls).__setup__()
+        cls._error_messages.update({
+                'lot_required': 'Only lot can be selected for "%(product)s".',
+                })
+
+    def default_quantity(self, fields):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Inventory = pool.get('stock.inventory')
+        context = Transaction().context
+        inventory = Inventory(context['active_id'])
+        if isinstance(self.search.search, Product):
+            product = self.search.search
+            if product.lot_is_required(
+                    inventory.location, inventory.lost_found):
+                self.raise_user_error('lot_required', {
+                        'product': product.rec_name,
+                        })
+        return super(InventoryCount, self).default_quantity(fields)
+
+    def get_line_domain(self, inventory):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        domain = super(InventoryCount, self).get_line_domain(inventory)
+        if isinstance(self.search.search, Lot):
+            domain.append(('lot', '=', self.search.search.id))
+        return domain
+
+    def get_line_values(self, inventory):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        values = super(InventoryCount, self).get_line_values(inventory)
+        if isinstance(self.search.search, Lot):
+            lot = self.search.search
+            values['product'] = lot.product.id
+            values['lot'] = lot.id
+        return values
+
+
+class InventoryCountSearch(metaclass=PoolMeta):
+    __name__ = 'stock.inventory.count.search'
+
+    @classmethod
+    def __setup__(cls):
+        super(InventoryCountSearch, cls).__setup__()
+        cls.search.selection.append(('stock.lot', "Lot"))

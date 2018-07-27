@@ -1,3 +1,4 @@
+* Allow to count inventory by lot
 * Remove support for Python 2.7
 * Check no move when modify product of lot
 

@@ -2,24 +2,28 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .stock import *
-from .product import *
+from . import stock
+from . import product
 
 
 def register():
     Pool.register(
-        Lot,
-        LotByLocationContext,
-        LotType,
-        Move,
-        ShipmentIn,
-        ShipmentOut,
-        ShipmentOutReturn,
-        Period,
-        PeriodCacheLot,
-        Inventory,
-        InventoryLine,
-        Template,
-        Product,
-        TemplateLotType,
+        stock.Lot,
+        stock.LotByLocationContext,
+        stock.LotType,
+        stock.Move,
+        stock.ShipmentIn,
+        stock.ShipmentOut,
+        stock.ShipmentOutReturn,
+        stock.Period,
+        stock.PeriodCacheLot,
+        stock.Inventory,
+        stock.InventoryLine,
+        stock.InventoryCountSearch,
+        product.Template,
+        product.Product,
+        product.TemplateLotType,
         module='stock_lot', type_='model')
+    Pool.register(
+        stock.InventoryCount,
+        module='stock_lot', type_='wizard')
