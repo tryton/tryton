@@ -1,3 +1,4 @@
+* Add support for Python 3.7
 * Add transactional queue and workers
 * Add __table_handler__ to ModelSQL
 * Support partial index
