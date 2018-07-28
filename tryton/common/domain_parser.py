@@ -81,7 +81,10 @@ def simplify(value):
 
 def group_operator(tokens):
     "Group token of operators"
-    cur = next(tokens)
+    try:
+        cur = next(tokens)
+    except StopIteration:
+        return
     nex = None
     for nex in tokens:
         if nex == '=' and cur and cur + nex in OPERATORS:
@@ -158,7 +161,7 @@ def append_ending_clause(domain, clause, deep):
     "Append clause after the ending clause"
     if not domain:
         yield clause
-        raise StopIteration
+        return
     for dom in domain[:-1]:
         yield dom
     if isinstance(domain[-1], list):
@@ -808,9 +811,12 @@ def test_parenthesize():
 def operatorize(tokens, operator='or'):
     "Convert operators"
     test = (operator, (operator,))
-    cur = next(tokens)
-    while cur in test:
+    try:
         cur = next(tokens)
+        while cur in test:
+            cur = next(tokens)
+    except StopIteration:
+        return
     if isgenerator(cur):
         cur = operatorize(cur, operator)
     nex = None
@@ -1083,7 +1089,7 @@ class DomainParser(object):
             except ValueError:
                 for part in parts:
                     yield (part,)
-                raise StopIteration
+                return
             for j in range(i):
                 name = ' '.join(parts[j:i])
                 if name.lower() in self.strings:
