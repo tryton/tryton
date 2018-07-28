@@ -145,8 +145,8 @@ Check project duration::
     >>> project.reload()
     >>> project.invoiced_duration
     datetime.timedelta(0)
-    >>> project.duration_to_invoice
-    datetime.timedelta(0, 18000)
+    >>> project.duration_to_invoice == datetime.timedelta(0, 18000)
+    True
     >>> project.invoiced_amount
     Decimal('0')
 
@@ -154,8 +154,8 @@ Invoice project::
 
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
-    >>> project.invoiced_duration
-    datetime.timedelta(0, 18000)
+    >>> project.invoiced_duration == datetime.timedelta(0, 18000)
+    True
     >>> project.duration_to_invoice
     datetime.timedelta(0)
     >>> project.invoiced_amount
@@ -172,10 +172,10 @@ Do project::
 Check project duration::
 
     >>> project.reload()
-    >>> project.invoiced_duration
-    datetime.timedelta(0, 18000)
-    >>> project.duration_to_invoice
-    datetime.timedelta(0, 3600)
+    >>> project.invoiced_duration == datetime.timedelta(0, 18000)
+    True
+    >>> project.duration_to_invoice == datetime.timedelta(0, 3600)
+    True
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -183,8 +183,8 @@ Invoice again project::
 
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
-    >>> project.invoiced_duration
-    datetime.timedelta(0, 21600)
+    >>> project.invoiced_duration == datetime.timedelta(0, 21600)
+    True
     >>> project.duration_to_invoice
     datetime.timedelta(0)
     >>> project.invoiced_amount

@@ -105,16 +105,16 @@ Check project duration::
     >>> project.reload()
     >>> project.invoiced_duration
     datetime.timedelta(0)
-    >>> project.duration_to_invoice
-    datetime.timedelta(0, 21600)
+    >>> project.duration_to_invoice == datetime.timedelta(0, 21600)
+    True
     >>> project.invoiced_amount
     Decimal('0')
 
 Invoice project::
 
     >>> project.click('invoice')
-    >>> project.invoiced_duration
-    datetime.timedelta(0, 21600)
+    >>> project.invoiced_duration == datetime.timedelta(0, 21600)
+    True
     >>> project.duration_to_invoice
     datetime.timedelta(0)
     >>> project.invoiced_amount
