@@ -1,3 +1,4 @@
+* Add support for Python 3.7
 * Remove support for Python 2.7
 
 Version 4.8.0 - 2018-06-01
