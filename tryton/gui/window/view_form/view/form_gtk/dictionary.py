@@ -513,7 +513,7 @@ class DictWidget(Widget):
             self._record_id = record_id
 
         value = field.get_client(record) if field else {}
-        new_key_names = set(value.keys()) - set(self.keys)
+        new_key_names = set(value.keys()) - set(field.keys)
         if new_key_names:
             field.add_keys(list(new_key_names), self.record)
         decoder = PYSONDecoder()
