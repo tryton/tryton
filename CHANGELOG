@@ -1,3 +1,4 @@
+* Add support for Python 3.7
 * Use GtkApplication
 * Validate dictionary items
 * Add (i)like support to domain inversion
