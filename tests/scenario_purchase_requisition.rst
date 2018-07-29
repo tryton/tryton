@@ -90,6 +90,13 @@ Create supplier::
     >>> supplier2 = Party(name='Supplier2')
     >>> supplier2.save()
 
+Set default account::
+
+    >>> Configuration = Model.get('account.configuration')
+    >>> config = Configuration(1)
+    >>> config.default_category_account_expense = expense
+    >>> config.save()
+
 Create account category::
 
     >>> ProductCategory = Model.get('product.category')
@@ -255,7 +262,7 @@ Confirm the purchase order::
     >>> purchase.click('confirm')
     >>> purchase.reload()
     >>> purchase.state
-    'confirmed'
+    'processing'
     >>> requisition.reload()
     >>> requisition.state
     'done'
