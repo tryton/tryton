@@ -186,11 +186,11 @@ Create and process a final payment::
     >>> process_payment.execute('process')
     >>> payment.click('succeed')
 
-The sale should be confirmed::
+The sale should be processing::
 
     >>> sale.reload()
     >>> sale.state
-    'confirmed'
+    'processing'
 
 Post the invoice and check amount to pay::
 
