@@ -8,7 +8,6 @@ import gtk
 import gobject
 import gettext
 
-from tryton.common import center_window
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
@@ -41,7 +40,6 @@ class WinCSV(NoModal):
         Main().add_window(self.dialog)
         self.dialog.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.dialog.set_icon(TRYTON_ICON)
-        self.dialog.set_decorated(False)
         self.dialog.connect('response', self.response)
 
         dialog_vbox = gtk.VBox()
@@ -317,12 +315,7 @@ class WinCSV(NoModal):
         self.dialog.destroy()
 
     def show(self):
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.dialog.resize(
-            sensible_allocation.width, sensible_allocation.height)
         self.dialog.show()
-        gobject.idle_add(
-            center_window, self.dialog, self.parent, self.sensible_widget)
 
     def hide(self):
         self.dialog.hide()

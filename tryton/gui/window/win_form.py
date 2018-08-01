@@ -3,7 +3,6 @@
 from tryton.common import TRYTON_ICON
 import tryton.common as common
 import gtk
-import gobject
 import pango
 import gettext
 
@@ -43,11 +42,17 @@ class WinForm(NoModal, InfoBar):
         Main().add_window(self.win)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_decorated(False)
         self.win.set_deletable(False)
         self.win.connect('delete-event', lambda *a: True)
         self.win.connect('close', self.close)
         self.win.connect('response', self.response)
+
+        allocation = self.parent.get_allocation()
+        width, height, = allocation.width, allocation.height
+        if self.parent != self.sensible_widget:
+            width = max(width - 150, 0)
+            height = max(height - 150, 0)
+        self.win.set_default_size(width, height)
 
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
@@ -449,12 +454,7 @@ class WinForm(NoModal, InfoBar):
         NoModal.destroy(self)
 
     def show(self):
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.win.resize(
-            sensible_allocation.width, sensible_allocation.height)
         self.win.show()
-        gobject.idle_add(
-            common.center_window, self.win, self.parent, self.sensible_widget)
 
     def hide(self):
         self.win.hide()

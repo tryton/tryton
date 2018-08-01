@@ -4,7 +4,6 @@ import logging
 import gettext
 
 import gtk
-import gobject
 import pango
 
 from gi.repository import Gtk
@@ -107,8 +106,13 @@ class Wizard(InfoBar):
             if 'view' in result:
                 self.clean()
                 view = result['view']
-                self.update(view['fields_view'], view['defaults'],
-                    view['buttons'])
+                self.update(view['fields_view'], view['buttons'])
+
+                self.screen.new(default=False)
+                self.screen.current_record.set_default(view['defaults'])
+                self.update_buttons(self.screen.current_record)
+                self.screen.set_cursor()
+
                 self.screen_state = view['state']
                 self.__waiting_response = True
             else:
@@ -185,7 +189,7 @@ class Wizard(InfoBar):
         for button in self.states.values():
             button.state_set(record)
 
-    def update(self, view, defaults, buttons):
+    def update(self, view, buttons):
         tooltips = common.Tooltips()
         for button in buttons:
             self._get_button(button)
@@ -244,11 +248,6 @@ class Wizard(InfoBar):
         self.create_info_bar()
         self.widget.pack_start(self.info_bar, False, True)
 
-        self.screen.new(default=False)
-        self.screen.current_record.set_default(defaults)
-        self.update_buttons(self.screen.current_record)
-        self.screen.set_cursor()
-
 
 class WizardForm(Wizard, SignalEvent):
     "Wizard"
@@ -279,8 +278,8 @@ class WizardForm(Wizard, SignalEvent):
         self.hbuttonbox.pack_start(button)
         return button
 
-    def update(self, view, defaults, buttons):
-        super(WizardForm, self).update(view, defaults, buttons)
+    def update(self, view, buttons):
+        super(WizardForm, self).update(view, buttons)
         self.widget.pack_start(self.hbuttonbox, expand=False, fill=True)
 
     def sig_close(self):
@@ -315,7 +314,6 @@ class WizardDialog(Wizard, NoModal):
         Main().add_window(self.dia)
         self.dia.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.dia.set_icon(TRYTON_ICON)
-        self.dia.set_decorated(False)
         self.dia.set_deletable(False)
         self.dia.connect('delete-event', lambda *a: True)
         self.dia.connect('close', self.close)
@@ -349,11 +347,14 @@ class WizardDialog(Wizard, NoModal):
             self.dia.set_default_response(response)
         return button
 
-    def update(self, view, defaults, buttons):
-        # Dialog must be shown before the screen is displayed
-        # to get the treeview realized when displayed
+    def update(self, view, buttons):
+        super(WizardDialog, self).update(view, buttons)
+        current_view = self.screen.current_view
+        self.scrolledwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
+        if current_view.scroll:
+            current_view.scroll.set_policy(
+                gtk.POLICY_NEVER, gtk.POLICY_NEVER)
         self.show()
-        super(WizardDialog, self).update(view, defaults, buttons)
 
     def destroy(self, action=None):
         super(WizardDialog, self).destroy()
@@ -398,12 +399,8 @@ class WizardDialog(Wizard, NoModal):
         return True
 
     def show(self):
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.dia.set_default_size(
-            sensible_allocation.width, sensible_allocation.height)
+        self.dia.set_default_size(200, -1)
         self.dia.show()
-        gobject.idle_add(
-            common.center_window, self.dia, self.parent, self.sensible_widget)
 
     def hide(self):
         self.dia.hide()

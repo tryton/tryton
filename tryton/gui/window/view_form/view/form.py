@@ -179,7 +179,7 @@ class ViewForm(View):
         vp = gtk.Viewport()
         vp.set_shadow_type(gtk.SHADOW_NONE)
         vp.add(container.table)
-        scroll = gtk.ScrolledWindow()
+        self.scroll = scroll = gtk.ScrolledWindow()
         scroll.add(vp)
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scroll.set_placement(gtk.CORNER_TOP_LEFT)

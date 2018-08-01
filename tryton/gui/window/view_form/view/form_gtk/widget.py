@@ -137,8 +137,9 @@ class TranslateDialog(NoModal):
         Main().add_window(self.win)
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_decorated(False)
         self.win.connect('response', self.response)
+        parent_allocation = self.parent.get_allocation()
+        self.win.set_default_size(-1, min(400, parent_allocation.height))
 
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
@@ -215,7 +216,7 @@ class TranslateDialog(NoModal):
         viewport.set_shadow_type(gtk.SHADOW_NONE)
         viewport.add(vbox)
         scrolledwindow = gtk.ScrolledWindow()
-        scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolledwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrolledwindow.set_shadow_type(gtk.SHADOW_NONE)
         scrolledwindow.add(viewport)
         self.win.vbox.pack_start(scrolledwindow, True, True)
@@ -255,12 +256,7 @@ class TranslateDialog(NoModal):
         NoModal.destroy(self)
 
     def show(self):
-        sensible_allocation = self.sensible_widget.get_allocation()
-        self.win.resize(
-            sensible_allocation.width, sensible_allocation.height)
         self.win.show()
-        gobject.idle_add(
-            common.center_window, self.win, self.parent, self.sensible_widget)
 
     def hide(self):
         self.win.hide()

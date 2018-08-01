@@ -302,7 +302,7 @@ class ViewTree(View):
         self.set_drag_and_drop()
 
         self.widget = gtk.VBox()
-        scroll = gtk.ScrolledWindow()
+        self.scroll = scroll = gtk.ScrolledWindow()
         scroll.add(self.treeview)
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scroll.set_placement(gtk.CORNER_TOP_LEFT)
