@@ -56,6 +56,18 @@ var Sao = {};
         };
     }
 
+    if (!Array.from) {
+        Array.from = function (value) {
+            // Implementation is not strictly equivalent but works for most
+            // cases
+            var result = [];
+            value.forEach(function(e) {
+                result.push(e);
+            });
+            return result;
+        };
+    }
+
     // Ensure RichText doesn't use style with css
     try {
         document.execCommand('styleWithCSS', false, false);
