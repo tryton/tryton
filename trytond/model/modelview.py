@@ -409,22 +409,33 @@ class ModelView(Model):
                         fields_to_remove.add(name)
             checked |= to_check
 
-        # Remove field without read access
-        for field in fields_to_remove:
-            xpath = ('//field[@name="%(field)s"] | //label[@name="%(field)s"]'
-                ' | //page[@name="%(field)s"] | //group[@name="%(field)s"]'
-                ' | //separator[@name="%(field)s"]') % {'field': field}
-            for i, element in enumerate(tree.xpath(xpath)):
-                if type == 'tree' or element.tag == 'page':
-                    parent = element.getparent()
-                    parent.remove(element)
-                elif type == 'form':
-                    element.tag = 'label'
-                    colspan = element.attrib.get('colspan')
-                    element.attrib.clear()
-                    element.attrib['id'] = 'hidden %s-%s' % (field, i)
-                    if colspan is not None:
-                        element.attrib['colspan'] = colspan
+        buttons_to_remove = set()
+        for name, definition in cls._buttons.items():
+            if fields_to_remove & set(definition.get('depends', [])):
+                buttons_to_remove.add(name)
+
+        field_xpath = ('//field[@name="%(name)s"]'
+            '| //label[@name="%(name)s"] | //page[@name="%(name)s"]'
+            '| //group[@name="%(name)s"] | //separator[@name="%(name)s"]')
+        button_xpath = '//button[@name="%(name)s"]'
+        # Remove field and button without read acces
+        for xpath, names in (
+                (field_xpath, fields_to_remove),
+                (button_xpath, buttons_to_remove),
+                ):
+            for name in names:
+                path = xpath % {'name': name}
+                for i, element in enumerate(tree.xpath(path)):
+                    if type == 'tree' or element.tag == 'page':
+                        parent = element.getparent()
+                        parent.remove(element)
+                    elif type == 'form':
+                        element.tag = 'label'
+                        colspan = element.attrib.get('colspan')
+                        element.attrib.clear()
+                        element.attrib['id'] = 'hidden %s-%s' % (name, i)
+                        if colspan is not None:
+                            element.attrib['colspan'] = colspan
 
         # Remove empty pages
         if type == 'form':

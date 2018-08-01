@@ -9,6 +9,7 @@ __all__ = [
     'ModelViewChangedValues',
     'ModelViewChangedValuesTarget',
     'ModelViewButton',
+    'ModelViewButtonDepends',
     'ModelViewRPC',
     'ModelViewEmptyPage',
     'ModelViewCircularDepends',
@@ -55,6 +56,26 @@ class ModelViewButton(ModelView):
 
     @classmethod
     def test_non_decorated(cls, records):
+        pass
+
+
+class ModelViewButtonDepends(ModelView):
+    'ModelView Button Depends'
+    __name__ = 'test.modelview.button_depends'
+    value = fields.Integer("Value")
+
+    @classmethod
+    def __setup__(cls):
+        super(ModelViewButtonDepends, cls).__setup__()
+        cls._buttons = {
+            'test': {
+                'depends': ['value'],
+                },
+            }
+
+    @classmethod
+    @ModelView.button
+    def test(cls, records):
         pass
 
 

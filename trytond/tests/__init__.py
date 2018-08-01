@@ -51,6 +51,7 @@ def register():
         ModelViewChangedValues,
         ModelViewChangedValuesTarget,
         ModelViewButton,
+        ModelViewButtonDepends,
         ModelViewRPC,
         ModelViewEmptyPage,
         ModelViewCircularDepends,

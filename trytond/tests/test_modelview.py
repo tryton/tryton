@@ -350,6 +350,44 @@ class ModelView(unittest.TestCase):
 
         self.assertEqual(fields, {})
 
+    @with_transaction(context={'_check_access': True})
+    def test_button_depends_access(self):
+        "Testing buttons are not removed when dependant fields are accesible"
+        pool = Pool()
+        Button = pool.get('test.modelview.button_depends')
+
+        arch = Button.fields_view_get(view_type='form')['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        buttons = tree.xpath('//button')
+
+        self.assertEqual(len(buttons), 1)
+
+    @with_transaction(context={'_check_access': True})
+    def test_button_depends_no_access(self):
+        "Testing buttons are removed when dependant fields are not accesible"
+        pool = Pool()
+        Button = pool.get('test.modelview.button_depends')
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+
+        field, = Field.search([
+                ('model.model', '=', Button.__name__),
+                ('name', '=', 'value'),
+                ])
+        FieldAccess.create([{
+            'field': field.id,
+            'group': None,
+            'perm_read': False,
+            }])
+
+        arch = Button.fields_view_get(view_type='form')['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        buttons = tree.xpath('//button')
+
+        self.assertEqual(len(buttons), 0)
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase
