@@ -10,7 +10,7 @@ __all__ = ['Invoice']
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
-    open_date = fields.DateTime('Open Date')
+    open_date = fields.Timestamp('Open Date')
 
     @classmethod
     def __setup__(cls):
