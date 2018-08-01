@@ -137,6 +137,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_company_config">
             <field name="name">Configure Company</field>
             <field name="wiz_name">company.company.config</field>
+            <field name="window" eval="True"/>
         </record>
 
         <record model="ir.module.config_wizard.item"
