@@ -99,6 +99,7 @@ class Timestamp(Field):
     '''
     _type = 'timestamp'
     _sql_type = 'TIMESTAMP'
+    format = '%H:%M:%S.%f'
 
     def sql_format(self, value):
         if value is None:

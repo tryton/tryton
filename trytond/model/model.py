@@ -322,7 +322,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase, metaclass=ModelMeta):
                 # Set relation_field only if there is no ambiguity
                 if len(relation_fields) == 1:
                     res[field]['relation_field'], = relation_fields
-            if res[field]['type'] in ('datetime', 'time'):
+            if res[field]['type'] in ('datetime', 'time', 'timestamp'):
                 res[field]['format'] = copy.copy(cls._fields[field].format)
             if res[field]['type'] == 'selection':
                 res[field]['context'] = copy.copy(cls._fields[field].context)
