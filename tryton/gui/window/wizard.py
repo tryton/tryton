@@ -7,6 +7,8 @@ import gtk
 import gobject
 import pango
 
+from gi.repository import Gtk
+
 from tryton.signal_event import SignalEvent
 import tryton.common as common
 from tryton.gui.window.view_form.screen import Screen
@@ -340,6 +342,8 @@ class WizardDialog(Wizard, NoModal):
             button.add_accelerator('clicked', self.accel_group,
                 gtk.keysyms.Return, gtk.gdk.CONTROL_MASK,
                 gtk.ACCEL_VISIBLE)
+            button.get_style_context().add_class(
+                Gtk.STYLE_CLASS_SUGGESTED_ACTION)
             button.set_can_default(True)
             button.grab_default()
             self.dia.set_default_response(response)
