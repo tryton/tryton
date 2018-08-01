@@ -70,8 +70,13 @@
                     if (result.view) {
                         this.clean();
                         var view = result.view;
-                        this.update(view.fields_view, view.defaults,
-                            view.buttons);
+                        this.update(view.fields_view, view.buttons);
+
+                        this.screen.new_(false).then(function() {
+                            this.screen.current_record.set_default(view.defaults);
+                            this.screen.set_cursor();
+                        }.bind(this));
+
                         this.screen_state = view.state;
                         this.__waiting_response = true;
                     } else {
@@ -144,7 +149,7 @@
             }
             return button;
         },
-        update: function(view, defaults, buttons) {
+        update: function(view, buttons) {
             buttons.forEach(function(button) {
                 this._get_button(button);
             }.bind(this));
@@ -156,11 +161,6 @@
             // TODO title
             // TODO toolbar
             this.widget.append(this.screen.screen_container.el);
-
-            this.screen.new_(false).then(function() {
-                this.screen.current_record.set_default(defaults);
-                this.screen.set_cursor();
-            }.bind(this));
         }
     });
 
@@ -215,7 +215,7 @@
                 name = Sao.i18n.gettext('Wizard');
             }
             Sao.Wizard.Dialog._super.init.call(this);
-            var dialog = new Sao.Dialog(name, 'wizard-dialog', 'lg', false);
+            var dialog = new Sao.Dialog(name, 'wizard-dialog', 'md', false);
             this.dialog = dialog.modal;
             this.content = dialog.content;
             this.footer = dialog.footer;
@@ -243,10 +243,9 @@
             }
             return button;
         },
-        update: function(view, defaults, buttons) {
+        update: function(view, buttons) {
             this.content.unbind('submit');
-            Sao.Wizard.Dialog._super.update.call(this, view, defaults,
-                    buttons);
+            Sao.Wizard.Dialog._super.update.call(this, view, buttons);
             this.dialog.modal('show');
             this.dialog.on('keydown', function(e) {
                 if (e.which == Sao.common.ESC_KEYCODE) {

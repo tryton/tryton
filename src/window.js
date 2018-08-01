@@ -805,7 +805,7 @@
             "x-cp1255", "x-cp1256", "x-cp1257", "x-cp1258", "x-euc-jp", "x-gbk",
             "x-mac-cyrillic", "x-mac-roman", "x-mac-ukrainian", "x-sjis",
             "x-user-defined", "x-x-big5"];
-            this.dialog = new Sao.Dialog(title, 'csv', 'lg');
+            this.dialog = new Sao.Dialog(title, 'csv', 'md');
             this.el = this.dialog.modal;
 
             this.fields = {};
