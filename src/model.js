@@ -1346,6 +1346,7 @@
             case 'selection':
                 return Sao.field.Selection;
             case 'datetime':
+            case 'timestamp':
                 return Sao.field.DateTime;
             case 'date':
                 return Sao.field.Date;

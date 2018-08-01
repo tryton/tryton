@@ -947,6 +947,7 @@ function eval_pyson(value){
             case 'date':
                 return Sao.View.Form.Date;
             case 'datetime':
+            case 'timestamp':
                 return Sao.View.Form.DateTime;
             case 'time':
                 return Sao.View.Form.Time;
