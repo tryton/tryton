@@ -433,6 +433,7 @@ class ViewForm(View):
         'date': Date,
         'datetime': DateTime,
         'time': Time,
+        'timestamp': DateTime,
         'float': Float,
         'numeric': Float,
         'integer': Integer,

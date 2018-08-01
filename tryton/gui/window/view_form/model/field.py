@@ -1061,6 +1061,7 @@ TYPES = {
     'datetime': DateTimeField,
     'date': DateField,
     'time': TimeField,
+    'timestamp': DateTimeField,
     'timedelta': TimeDeltaField,
     'one2one': O2OField,
     'binary': BinaryField,
