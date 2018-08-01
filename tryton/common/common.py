@@ -48,6 +48,8 @@ from tryton import __version__
 from tryton.exceptions import TrytonServerError, TrytonError
 from tryton.pyson import PYSONEncoder
 
+from .underline import set_underline
+
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
 
@@ -496,6 +498,9 @@ class UniqueDialog(object):
     def build_dialog(self, *args):
         raise NotImplementedError
 
+    def process_response(self, response):
+        return response
+
     def __call__(self, *args, **kwargs):
         if self.running:
             return
@@ -503,11 +508,12 @@ class UniqueDialog(object):
         parent = kwargs.get('parent')
         if not parent:
             parent = get_toplevel_window()
-        dialog = self.build_dialog(parent, *args)
+        dialog = self.build_dialog(parent, *args, **kwargs)
         dialog.set_icon(TRYTON_ICON)
         self.running = True
         dialog.show_all()
         response = dialog.run()
+        response = self.process_response(response)
         if parent:
             parent.present()
         dialog.destroy()
@@ -517,27 +523,26 @@ class UniqueDialog(object):
 
 class MessageDialog(UniqueDialog):
 
-    def build_dialog(self, parent, message, msg_type):
+    def build_dialog(self, parent, message, msg_type, buttons=gtk.BUTTONS_OK,
+            secondary=None):
         dialog = gtk.MessageDialog(parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, msg_type,
-            gtk.BUTTONS_OK, message)
+            buttons, message)
+        if secondary:
+            dialog.format_secondary_text(secondary)
         return dialog
 
-    def __call__(self, message, msg_type=gtk.MESSAGE_INFO):
-        super(MessageDialog, self).__call__(message, msg_type)
+    def __call__(self, message, *args, **kwargs):
+        return super(MessageDialog, self).__call__(message, *args, **kwargs)
 
 
 message = MessageDialog()
 
 
-class WarningDialog(UniqueDialog):
+class WarningDialog(MessageDialog):
 
-    def build_dialog(self, parent, message, title, buttons=gtk.BUTTONS_OK):
-        dialog = gtk.MessageDialog(parent, gtk.DIALOG_DESTROY_WITH_PARENT,
-            gtk.MESSAGE_WARNING, buttons)
-        dialog.set_markup('<b>%s</b>' % (to_xml(title)))
-        dialog.format_secondary_markup(to_xml(message))
-        return dialog
+    def __call__(self, message, title, buttons=gtk.BUTTONS_OK):
+        return super().__call__(title, gtk.MESSAGE_WARNING, buttons, message)
 
 
 warning = WarningDialog()
@@ -552,9 +557,8 @@ class UserWarningDialog(WarningDialog):
     def _set_always(self, toggle):
         self.always = toggle.get_active()
 
-    def build_dialog(self, parent, message, title):
-        dialog = super(UserWarningDialog, self).build_dialog(parent, message,
-            title, gtk.BUTTONS_YES_NO)
+    def build_dialog(self, *args, **kwargs):
+        dialog = super().build_dialog(*args, **kwargs)
         check = gtk.CheckButton(_('Always ignore this warning.'))
         check.connect_after('toggled', self._set_always)
         alignment = gtk.Alignment(0, 0.5)
@@ -565,51 +569,31 @@ class UserWarningDialog(WarningDialog):
         dialog.vbox.pack_start(label, True, True)
         return dialog
 
-    def __call__(self, message, title):
-        response = super(UserWarningDialog, self).__call__(message, title)
+    def process_response(self, response):
         if response == gtk.RESPONSE_YES:
             if self.always:
                 return 'always'
             return 'ok'
         return 'cancel'
 
+    def __call__(self, message, title):
+        return super().__call__(message, title, gtk.BUTTONS_YES_NO)
+
 
 userwarning = UserWarningDialog()
 
 
-class ConfirmationDialog(UniqueDialog):
+class ConfirmationDialog(MessageDialog):
 
-    def build_dialog(self, parent, message):
-        dialog = gtk.Dialog(_('Confirmation'), parent, gtk.DIALOG_MODAL
-                | gtk.DIALOG_DESTROY_WITH_PARENT | gtk.WIN_POS_CENTER_ON_PARENT
-                | gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
-        hbox = gtk.HBox()
-        image = gtk.Image()
-        image.set_from_stock('tryton-dialog-information',
-                gtk.ICON_SIZE_DIALOG)
-        image.set_padding(15, 15)
-        hbox.pack_start(image, False, False)
-        label = gtk.Label('%s' % (to_xml(message)))
-        hbox.pack_start(label, True, True)
-        dialog.vbox.pack_start(hbox)
-        return dialog
+    def __call__(self, message, *args, **kwargs):
+        return super().__call__(message, gtk.MESSAGE_QUESTION, *args, **kwargs)
 
 
 class SurDialog(ConfirmationDialog):
 
-    def build_dialog(self, parent, message):
-        dialog = super(SurDialog, self).build_dialog(parent, message)
-        cancel_button = dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-        cancel_button.set_always_show_image(True)
-        ok_button = dialog.add_button("gtk-ok", gtk.RESPONSE_OK)
-        ok_button.set_always_show_image(True)
-        dialog.set_default(ok_button)
-        dialog.set_default_response(gtk.RESPONSE_OK)
-        return dialog
-
     def __call__(self, message):
-        response = super(SurDialog, self).__call__(message)
-        return response == gtk.RESPONSE_OK
+        response = super().__call__(message, buttons=gtk.BUTTONS_YES_NO)
+        return response == gtk.RESPONSE_YES
 
 
 sur = SurDialog()
@@ -623,70 +607,43 @@ class Sur3BDialog(ConfirmationDialog):
         gtk.RESPONSE_CANCEL: 'cancel'
     }
 
-    def build_dialog(self, parent, message):
-        dialog = super(Sur3BDialog, self).build_dialog(parent, message)
-        cancel_button = dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-        cancel_button.set_always_show_image(True)
-        no_button = dialog.add_button("gtk-no", gtk.RESPONSE_NO)
-        no_button.set_always_show_image(True)
-        yes_button = dialog.add_button("gtk-yes", gtk.RESPONSE_YES)
-        yes_button.set_always_show_image(True)
-        dialog.set_default(yes_button)
+    def build_dialog(self, *args, **kwargs):
+        dialog = super().build_dialog(*args, **kwargs)
+        dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
+        dialog.add_button("gtk-no", gtk.RESPONSE_NO)
+        dialog.add_button("gtk-yes", gtk.RESPONSE_YES)
         dialog.set_default_response(gtk.RESPONSE_YES)
         return dialog
 
     def __call__(self, message):
-        response = super(Sur3BDialog, self).__call__(message)
+        response = super().__call__(message, buttons=gtk.BUTTONS_NONE)
         return self.response_mapping.get(response, 'cancel')
 
 
 sur_3b = Sur3BDialog()
 
 
-class AskDialog(UniqueDialog):
+class AskDialog(MessageDialog):
 
-    def build_dialog(self, parent, question, visibility):
-        win = gtk.Dialog(CONFIG['client.title'], parent,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT |
-            gtk.WIN_POS_CENTER_ON_PARENT)
-        cancel_button = win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
-        cancel_button.set_always_show_image(True)
-        ok_button = win.add_button('gtk-ok', gtk.RESPONSE_OK)
-        ok_button.set_always_show_image(True)
-        win.set_default_response(gtk.RESPONSE_OK)
-
-        hbox = gtk.HBox()
-        image = gtk.Image()
-        image.set_from_stock('tryton-dialog-information',
-                gtk.ICON_SIZE_DIALOG)
-        hbox.pack_start(image)
-        vbox = gtk.VBox()
-        vbox.pack_start(gtk.Label(question))
+    def build_dialog(self, *args, **kwargs):
+        visibility = kwargs.pop('visibility')
+        dialog = super().build_dialog(*args, **kwargs)
+        dialog.set_default_response(gtk.RESPONSE_OK)
+        box = dialog.get_message_area()
         self.entry = gtk.Entry()
         self.entry.set_activates_default(True)
         self.entry.set_visibility(visibility)
-        vbox.pack_start(self.entry)
-        hbox.pack_start(vbox)
-        win.vbox.pack_start(hbox)
-        return win
+        box.pack_start(self.entry)
+        return dialog
+
+    def process_response(self, response):
+        if response == gtk.RESPONSE_OK:
+            return self.entry.get_text()
 
     def __call__(self, question, visibility=True):
-        if self.running:
-            return
-
-        parent = get_toplevel_window()
-        dialog = self.build_dialog(parent, question, visibility=visibility)
-        dialog.set_icon(TRYTON_ICON)
-        self.running = True
-        dialog.show_all()
-        response = dialog.run()
-        result = None
-        if response == gtk.RESPONSE_OK:
-            result = self.entry.get_text()
-        parent.present()
-        dialog.destroy()
-        self.running = False
-        return result
+        return super().__call__(
+            question, gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_OK_CANCEL,
+            visibility=visibility)
 
 
 ask = AskDialog()
@@ -695,42 +652,29 @@ ask = AskDialog()
 class ConcurrencyDialog(UniqueDialog):
 
     def build_dialog(self, parent, resource, obj_id, context):
-        dialog = gtk.Dialog(_('Concurrency Exception'), parent,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT |
-            gtk.WIN_POS_CENTER_ON_PARENT | gtk.gdk.WINDOW_TYPE_HINT_DIALOG)
+        tooltips = Tooltips()
+        dialog = gtk.MessageDialog(parent,
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+            gtk.MESSAGE_QUESTION, gtk.BUTTONS_NONE,
+            _('Concurrency Exception'))
         dialog.set_default_response(gtk.RESPONSE_CANCEL)
-        hbox = gtk.HBox()
-        image = gtk.Image()
-        image.set_from_stock('tryton-dialog-information',
-                gtk.ICON_SIZE_DIALOG)
-        image.set_padding(15, 15)
-        hbox.pack_start(image, False, False)
-        label = gtk.Label()
-        label.set_padding(15, 15)
-        label.set_use_markup(True)
-        label.set_markup(_('<b>Write Concurrency Warning:</b>\n\n'
-            'This record has been modified while you were editing it.\n'
-            ' Choose:\n'
-            '    - "Cancel" to cancel saving;\n'
-            '    - "Compare" to see the modified version;\n'
-            '    - "Write Anyway" to save your current version.'))
-        hbox.pack_start(label, True, True)
-        dialog.vbox.pack_start(hbox)
+        dialog.format_secondary_text(
+            _('This record has been modified while you were editing it.'))
         cancel_button = dialog.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
-        cancel_button.set_always_show_image(True)
+        tooltips.set_tip(cancel_button, _('Cancel saving'))
         compare_button = gtk.Button(
-            '_' + _('Compare').replace('_', '__'), use_underline=True)
+            set_underline(_('Compare')), use_underline=True)
+        tooltips.set_tip(compare_button, _('See the modified version'))
         image = gtk.Image()
         image.set_from_stock('tryton-find-replace', gtk.ICON_SIZE_BUTTON)
         compare_button.set_image(image)
-        compare_button.set_always_show_image(True)
         dialog.add_action_widget(compare_button, gtk.RESPONSE_APPLY)
         write_button = gtk.Button(
-            '_' + _('Write Anyway').replace('_', '__'), use_underline=True)
+            set_underline(_('Write Anyway')), use_underline=True)
+        tooltips.set_tip(write_button, _('Save your current version'))
         image = gtk.Image()
         image.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
         write_button.set_image(image)
-        write_button.set_always_show_image(True)
         dialog.add_action_widget(write_button, gtk.RESPONSE_OK)
         return dialog
 
@@ -756,8 +700,11 @@ concurrency = ConcurrencyDialog()
 class ErrorDialog(UniqueDialog):
 
     def build_dialog(self, parent, title, details):
-        dialog = gtk.Dialog(_('Error'), parent,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        dialog = gtk.MessageDialog(parent,
+            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
+            gtk.MESSAGE_ERROR, gtk.BUTTONS_NONE,
+            _('Application Error'))
+        dialog.set_default_size(600, 400)
 
         but_send = gtk.Button(_('Report Bug'))
         dialog.add_action_widget(but_send, gtk.RESPONSE_OK)
@@ -765,17 +712,7 @@ class ErrorDialog(UniqueDialog):
         close_button.set_always_show_image(True)
         dialog.set_default_response(gtk.RESPONSE_CANCEL)
 
-        vbox = gtk.VBox()
-        label_title = gtk.Label()
-        label_title.set_markup('<b>' + _('Application Error.') + '</b>')
-        label_title.set_padding(-1, 5)
-        vbox.pack_start(label_title, False, False)
-        vbox.pack_start(gtk.HSeparator(), False, False)
-
-        hbox = gtk.HBox()
-        image = gtk.Image()
-        image.set_from_stock('tryton-dialog-error', gtk.ICON_SIZE_DIALOG)
-        hbox.pack_start(image, False, False)
+        vbox = dialog.vbox
 
         scrolledwindow = gtk.ScrolledWindow()
         scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
@@ -799,13 +736,11 @@ class ErrorDialog(UniqueDialog):
         textview.set_editable(False)
         textview.set_sensitive(True)
         textview.modify_font(pango.FontDescription("monospace"))
-        box.pack_start(textview, False, False)
+        box.pack_start(textview, True, True)
 
         viewport.add(box)
         scrolledwindow.add(viewport)
-        hbox.pack_start(scrolledwindow)
-
-        vbox.pack_start(hbox)
+        vbox.pack_start(scrolledwindow, expand=True, fill=True)
 
         button_roundup = Gtk.LinkButton.new_with_label(
             CONFIG['roundup.url'],
@@ -816,8 +751,6 @@ class ErrorDialog(UniqueDialog):
                 lambda widget: webbrowser.open(CONFIG['roundup.url'], new=2))
         vbox.pack_start(button_roundup, False, False)
 
-        dialog.vbox.pack_start(vbox)
-        dialog.set_default_size(600, 400)
         return dialog
 
     def __call__(self, title, details):
