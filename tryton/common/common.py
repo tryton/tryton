@@ -490,7 +490,7 @@ class UniqueDialog(object):
         if self.running:
             return
 
-        parent = kwargs.get('parent')
+        parent = kwargs.pop('parent', None)
         if not parent:
             parent = get_toplevel_window()
         dialog = self.build_dialog(parent, *args, **kwargs)
@@ -526,8 +526,9 @@ message = MessageDialog()
 
 class WarningDialog(MessageDialog):
 
-    def __call__(self, message, title, buttons=gtk.BUTTONS_OK):
-        return super().__call__(title, gtk.MESSAGE_WARNING, buttons, message)
+    def __call__(self, message, title, buttons=gtk.BUTTONS_OK, **kwargs):
+        return super().__call__(
+            title, gtk.MESSAGE_WARNING, buttons, message, **kwargs)
 
 
 warning = WarningDialog()
