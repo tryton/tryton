@@ -85,6 +85,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_user_config">
             <field name="name">Configure Users</field>
             <field name="wiz_name">res.user.config</field>
+            <field name="window" eval="True"/>
         </record>
 
         <record model="ir.module.config_wizard.item"

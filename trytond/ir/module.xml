@@ -100,6 +100,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.wizard" id="act_module_config_wizard">
             <field name="name">Module Configuration</field>
             <field name="wiz_name">ir.module.config_wizard</field>
+            <field name="window" eval="True"/>
         </record>
         <record model="ir.action.keyword" id="act_module_config_wizard_keyword">
             <field name="action" ref="act_module_config_wizard"/>
