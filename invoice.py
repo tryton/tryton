@@ -289,10 +289,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     },
                 'draft': {
                     'invisible': (~Eval('state').in_(['cancel', 'validated'])
-                        | ((Eval('state') == 'cancel') & Eval('cancel_move'))),
+                        | ((Eval('state') == 'cancel')
+                            & Eval('cancel_move', -1))),
                     'icon': If(Eval('state') == 'cancel', 'tryton-clear',
                         'tryton-go-previous'),
-                    'depends': ['state', 'cancel_move'],
+                    'depends': ['state'],
                     },
                 'validate_invoice': {
                     'pre_validate':
