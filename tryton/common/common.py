@@ -807,17 +807,13 @@ class ErrorDialog(UniqueDialog):
 
         vbox.pack_start(hbox)
 
-        button_roundup = gtk.Button()
-        button_roundup.set_relief(gtk.RELIEF_NONE)
-        label_roundup = gtk.Label()
-        label_roundup.set_markup(_('To report bugs you must have an account'
-            ' on <u>%s</u>') % CONFIG['roundup.url'])
-        label_roundup.set_alignment(1, 0.5)
-        label_roundup.set_padding(20, 5)
-
-        button_roundup.connect('clicked',
+        button_roundup = Gtk.LinkButton.new_with_label(
+            CONFIG['roundup.url'],
+            _('To report bugs you must have an account on %s') %
+            CONFIG['roundup.url'])
+        button_roundup.set_alignment(0, 0.5)
+        button_roundup.connect('activate-link',
                 lambda widget: webbrowser.open(CONFIG['roundup.url'], new=2))
-        button_roundup.add(label_roundup)
         vbox.pack_start(button_roundup, False, False)
 
         dialog.vbox.pack_start(vbox)
