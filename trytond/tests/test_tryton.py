@@ -112,10 +112,6 @@ def _db_cache_file(path, name, backend_name):
 
 
 def _sqlite_copy(file_, restore=False):
-    try:
-        import sqlitebck
-    except ImportError:
-        return False
     import sqlite3 as sqlite
 
     with Transaction().start(DB_NAME, 0, _nocache=True) as transaction, \
@@ -126,7 +122,14 @@ def _sqlite_copy(file_, restore=False):
             return False
         if restore:
             conn2, conn1 = conn1, conn2
-        sqlitebck.copy(conn1, conn2)
+        if hasattr(conn1, 'backup'):
+            conn1.backup(conn2)
+        else:
+            try:
+                import sqlitebck
+            except ImportError:
+                return False
+            sqlitebck.copy(conn1, conn2)
     return True
 
 
