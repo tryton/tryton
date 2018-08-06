@@ -390,7 +390,8 @@
             'aria-hidden': true
         }).append('&times;')).append(jQuery('<span/>', {
             'class': 'sr-only'
-        }).append(Sao.i18n.gettext('Close'))).click(function() {
+        }).append(Sao.i18n.gettext('Close'))).click(function(evt) {
+            evt.preventDefault();
             tab.close();
         }))
         .append(tab.name_el);
@@ -543,7 +544,8 @@
                                     'tabindex': -1
                                 }).append(
                                     button.attributes.string || ''))
-                            .click(function() {
+                            .click(function(evt) {
+                                evt.preventDefault();
                                 screen.button(button.attributes);
                             })
                         .appendTo(menu);
@@ -559,7 +561,8 @@
                             'href': '#',
                             'tabindex': -1
                         }).append(action.name))
-                        .click(function() {
+                        .click(function(evt) {
+                            evt.preventDefault();
                             var prm = jQuery.when();
                             if (this.screen.modified()) {
                                 prm = this.save();

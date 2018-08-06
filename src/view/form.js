@@ -1986,7 +1986,8 @@ function eval_pyson(value){
                 return function(option) {
                     dropdown.append(jQuery('<li/>').append(jQuery('<a/>', {
                         'href': '#'
-                    }).append(option).click(function() {
+                    }).append(option).click(function(evt) {
+                        evt.preventDefault();
                         document.execCommand(properties.command, false, option);
                     })));
                 };

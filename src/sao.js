@@ -565,7 +565,8 @@ var Sao = {};
                     icon.attr('src',
                          Sao.common.ICONFACTORY.get_icon_url(menu_item[2]));
                     a.append(menu_item[1]);
-                    a.click(function() {
+                    a.click(function(evt) {
+                        evt.preventDefault();
                         Sao.favorites_menu_clear();
                         // ids is not defined to prevent to add suffix
                         Sao.Action.exec_keyword('tree_open', {
@@ -582,7 +583,8 @@ var Sao = {};
                     'role': 'presentation'
                 }).append(jQuery('<a/>', {
                         'href': '#'
-                    }).click(function() {
+                    }).click(function(evt) {
+                        evt.preventDefault();
                         Sao.favorites_menu_clear();
                         Sao.Tab.create({
                             'model': Sao.main_menu_screen.model_name +

@@ -274,6 +274,7 @@
             }.bind(this));
         },
         bookmark_activate: function(e) {
+            e.preventDefault();
             var domain = e.data;
             this.set_text(this.screen.domain_parser().string(domain));
             this.do_search();

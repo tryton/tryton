@@ -3158,7 +3158,8 @@
                 }).append(jQuery('<a/>', {
                     'href': '#'
                 }).append(this._format_action(content)))
-                .click(function() {
+                .click(function(evt) {
+                    evt.preventDefault();
                     if (this.action_activated) {
                         this.action_activated(action_id);
                     }
@@ -3209,7 +3210,8 @@
                 }).append(jQuery('<a/>', {
                     'href': '#'
                 }).append(this._format(value)))
-                .click(function() {
+                .click(function(evt) {
+                    evt.preventDefault();
                     if (this.match_selected) {
                         this.match_selected(value);
                     }
