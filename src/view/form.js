@@ -2720,12 +2720,6 @@ function eval_pyson(value){
                 'class': 'input-group input-group-sm'
             }).appendTo(toolbar);
 
-            this.wid_text = jQuery('<input/>', {
-                type: 'text',
-                'class': 'form-control input-sm'
-            }).appendTo(group);
-            this.wid_text.hide();
-
             var buttons = jQuery('<div/>', {
                 'class': 'input-group-btn'
             }).appendTo(group);
@@ -2770,9 +2764,17 @@ function eval_pyson(value){
             this.but_next.click(this.next.bind(this));
 
             if (attributes.add_remove) {
-                this.wid_text.show();
+                this.wid_text = jQuery('<input/>', {
+                    type: 'text',
+                    'class': 'form-control input-sm'
+                }).appendTo(group);
                 // TODO add completion
                 //
+                //
+                buttons =  jQuery('<div/>', {
+                    'class': 'input-group-btn',
+                }).appendTo(group);
+
                 this.but_add = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
@@ -2968,7 +2970,7 @@ function eval_pyson(value){
             }.bind(this));
         },
         focus: function() {
-            if (this.wid_text.is(':visible')) {
+            if (this.attributes.add_remove) {
                 this.wid_text.focus();
             }
         },
