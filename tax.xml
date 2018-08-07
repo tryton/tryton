@@ -959,7 +959,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_21-credit">
             <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
             <field name="tax" ref="iva_sop_21"/>
-            <field name="operator">+</field>
+            <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
@@ -973,7 +973,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_10-credit">
             <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
             <field name="tax" ref="iva_sop_10"/>
-            <field name="operator">+</field>
+            <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
@@ -987,7 +987,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_4-credit">
             <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
             <field name="tax" ref="iva_sop_4"/>
-            <field name="operator">+</field>
+            <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
@@ -1008,7 +1008,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_21_inv-credit">
             <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
             <field name="tax" ref="iva_sop_21_inv"/>
-            <field name="operator">+</field>
+            <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
@@ -1022,7 +1022,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_inversion-iva_sop_10_inv-credit">
             <field name="code" ref="vat_code_iva_deducible_tax_inversion"/>
             <field name="tax" ref="iva_sop_10_inv"/>
-            <field name="operator">+</field>
+            <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
