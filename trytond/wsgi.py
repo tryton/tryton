@@ -69,7 +69,7 @@ class TrytondWSGI(object):
         data = self.dispatch_request(request)
         if not isinstance(data, (Response, HTTPException)):
             for cls in self.protocols:
-                for mimetype in request.accept_mimetypes:
+                for mimetype, _ in request.accept_mimetypes:
                     if cls.content_type in mimetype:
                         response = cls.response(data, request)
                         break
