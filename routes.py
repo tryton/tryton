@@ -88,7 +88,7 @@ def timesheet(request, pool, line=None):
     User = pool.get('res.user')
     Employee = pool.get('company.employee')
     if request.method in {'POST', 'PUT'}:
-        data = request.parsed_data
+        data = request.parsed_data.copy()
         if 'employee' in data:
             employee = Employee(data['employee'])
             data['company'] = employee.company.id
@@ -100,16 +100,20 @@ def timesheet(request, pool, line=None):
         if 'duration' in data:
             data['duration'] = datetime.timedelta(
                 seconds=data['duration'])
+
+        for extra in set(data) - set(Line._fields):
+            del data[extra]
+
         with Transaction().set_context(
                 company=employee.company.id, employee=employee.id):
             if not line:
-                line, = Line.create([request.parsed_data])
+                line, = Line.create([data])
             else:
                 lines = Line.search([('id', '=', line)])
                 if not lines:
                     return Response(None, 204)
                 line, = lines
-                Line.write(lines, request.parsed_data)
+                Line.write(lines, data)
         return {
             'id': line.id,
             'work': line.work.id,
