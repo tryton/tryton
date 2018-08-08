@@ -3483,7 +3483,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="party_required" eval="False"/>
         </record>
         <record id="pgc_1765_normal" model="account.account.template">
-            <field name="name">Pasivos por derivados financieros, carter de negociación</field>
+            <field name="name">Pasivos por derivados financieros, cartera de negociación</field>
             <field name="parent" ref="pgc_176_normal"/>
             <field name="code">1765</field>
             <field name="kind">other</field>
