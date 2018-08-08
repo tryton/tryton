@@ -43,6 +43,8 @@ class Action(object):
 
         fp_name = os.path.join(dtemp,
             slugify(name) + os.extsep + slugify(type))
+        if isinstance(data, str):
+            data = data.encode('utf-8')
         with open(fp_name, 'wb') as file_d:
             file_d.write(data)
         if email_print:
