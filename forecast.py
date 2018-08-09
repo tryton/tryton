@@ -106,48 +106,11 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        Location = Pool().get('stock.location')
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        table = cls.__table_handler__(module_name)
-        migrate_warehouse = (not table.column_exist('warehouse')
-            and table.column_exist('location'))
-
         super(Forecast, cls).__register__(module_name)
 
         # Add index on create_date
         table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
-
-        if migrate_warehouse:
-            location2warehouse = {}
-
-            def find_warehouse(location):
-                if location.type == 'warehouse':
-                    return location.id
-                elif location.parent:
-                    return find_warehouse(location.parent)
-            cursor.execute(*sql_table.select(sql_table.id, sql_table.location))
-            for forecast_id, location_id in cursor.fetchall():
-                warehouse_id = location_id  # default fallback
-                if location_id in location2warehouse:
-                    warehouse_id = location2warehouse[location_id]
-                else:
-                    location = Location(location_id)
-                    warehouse_id = find_warehouse(location) or location_id
-                    location2warehouse[location_id] = warehouse_id
-                cursor.execute(*sql_table.update(
-                        columns=[sql_table.warehouse],
-                        values=[warehouse_id],
-                        where=sql_table.id == forecast_id))
-            table.not_null_action('warehouse',
-                action=cls.warehouse.required and 'add' or 'remove')
-            table.drop_column('location', True)
-
-        # Migration from 2.0 delete stock moves
-        forecasts = cls.search([])
-        cls.delete_moves(forecasts)
 
     @staticmethod
     def default_state():
