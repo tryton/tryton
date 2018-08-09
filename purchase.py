@@ -1,8 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Table
-from sql.functions import Overlay, Position
-
 from trytond.model import ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -19,21 +16,6 @@ class Purchase(metaclass=PoolMeta):
     invoice_lines_ignored = fields.Many2Many(
             'purchase.purchase-ignored-account.invoice.line',
             'purchase', 'invoice', 'Invoice Lines Ignored', readonly=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        model_data = Table('ir_model_data')
-        # Migration from 1.2: packing renamed into shipment
-        cursor.execute(*model_data.update(
-                columns=[model_data.fs_id],
-                values=[Overlay(model_data.fs_id, 'shipment',
-                        Position('packing', model_data.fs_id),
-                        len('packing'))],
-                where=model_data.fs_id.like('%packing%')
-                & (model_data.module == module_name)))
-
-        super(Purchase, cls).__register__(module_name)
 
     def get_invoice_lines(self, name):
         return list({il.id for l in self.lines for il in l.invoice_lines})
