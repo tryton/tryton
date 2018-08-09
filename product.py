@@ -271,16 +271,6 @@ class CategoryCustomerTax(ModelSQL):
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
-    @classmethod
-    def __register__(cls, module_name):
-        # Migration from 1.6 product renamed into category
-        table = cls.__table_handler__(module_name)
-        if table.column_exist('product'):
-            table.index_action('product', action='remove')
-            table.drop_fk('product')
-            table.column_rename('product', 'category')
-        super(CategoryCustomerTax, cls).__register__(module_name)
-
 
 class CategorySupplierTax(ModelSQL):
     'Category - Supplier Tax'
@@ -290,16 +280,6 @@ class CategorySupplierTax(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        # Migration from 1.6 product renamed into category
-        table = cls.__table_handler__(module_name)
-        if table.column_exist('product'):
-            table.index_action('product', action='remove')
-            table.drop_fk('product')
-            table.column_rename('product', 'category')
-        super(CategorySupplierTax, cls).__register__(module_name)
 
 
 class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
