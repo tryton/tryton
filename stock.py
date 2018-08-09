@@ -2,9 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
-from sql import Null
-from sql.operators import Concat
-
 from trytond.model import Workflow, ModelView, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -121,23 +118,6 @@ class Move(metaclass=PoolMeta):
         ('ignored', 'Ignored'),
         ('recreated', 'Recreated'),
         ], 'Exception State'), 'get_sale_exception_state')
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        super(Move, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.6: remove sale_line
-        if table.column_exist('sale_line'):
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.origin],
-                    values=[Concat('sale.line,', sql_table.sale_line)],
-                    where=sql_table.sale_line != Null))
-            table.drop_column('sale_line')
 
     @classmethod
     def _get_origin(cls):
