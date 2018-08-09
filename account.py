@@ -1,8 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import csv
-import sys
-from io import BytesIO, StringIO
+from io import StringIO
 
 from sql import Table
 from sql.aggregate import Sum
