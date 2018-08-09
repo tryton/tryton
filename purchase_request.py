@@ -201,7 +201,7 @@ class PurchaseRequest(metaclass=PoolMeta):
                         })
 
         for i in existing_req.values():
-            i.sort(lambda r, s: cmp(r['supply_date'], s['supply_date']))
+            i.sort(key=lambda r: r['supply_date'])
 
         # Update new requests to take existing requests into account
         new_requests.sort(key=operator.attrgetter('supply_date'))
