@@ -124,16 +124,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         super(SaleOpportunity, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
 
-        # Migration from 2.8: make party not required and add number as
-        # required
-        table.not_null_action('party', action='remove')
-        if not number_exists:
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.number],
-                    values=[sql_table.id],
-                    where=sql_table.number == Null))
-            table.not_null_action('number', action='add')
-
         # Migration from 3.4: replace sale by origin
         if table.column_exist('sale'):
             cursor.execute(*sql_table.select(
@@ -464,15 +454,6 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_unit_digits')
 
     del _states, _depends
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(SaleOpportunityLine, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
 
     @fields.depends('opportunity', '_parent_opportunity.state')
     def on_change_with_opportunity_state(self, name=None):
