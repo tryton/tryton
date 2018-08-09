@@ -62,9 +62,6 @@ class Line(ModelSQL, ModelView):
         super(Line, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
 
-        # Migration from 1.2 currency has been changed in function field
-        table.not_null_action('currency', action='remove')
-
         # Migration from 4.0: remove name and journal
         for field_name in ['name', 'journal']:
             table.not_null_action(field_name, action='remove')
