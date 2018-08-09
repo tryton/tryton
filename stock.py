@@ -17,12 +17,3 @@ class Location(sequence_ordered(), metaclass=PoolMeta):
         previous_readonly = cls.sequence.states.get('readonly', Bool(False))
         cls.sequence.states['readonly'] = previous_readonly | ~Eval('active')
         cls.sequence.depends = ['active']
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Location, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
