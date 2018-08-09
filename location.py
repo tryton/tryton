@@ -26,15 +26,6 @@ class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                     [Eval('warehouse')], [])),
             ], depends=['warehouse'])
 
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        super(ProductLocation, cls).__register__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
