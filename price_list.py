@@ -112,15 +112,6 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                     'list line "%(line)s" with exception "%(exception)s".'),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        super(PriceListLine, cls).__register__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
     @staticmethod
     def default_formula():
         return 'unit_price'
