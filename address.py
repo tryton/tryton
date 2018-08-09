@@ -63,9 +63,6 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
         table = cls.__table_handler__(module_name)
 
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
         # Migration from 4.0: remove streetbis
         if table.column_exist('streetbis'):
             value = Concat(

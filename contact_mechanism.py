@@ -101,15 +101,6 @@ class ContactMechanism(
                     'party "%(party)s" is not valid .'),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(ContactMechanism, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
     @staticmethod
     def default_type():
         return 'phone'
