@@ -1,24 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import operator
-import itertools
 import functools
 import datetime
 from collections import defaultdict
 
-from sql import Table, Null
-from sql.functions import Overlay, Position
-from sql.aggregate import Max
-from sql.operators import Concat
+from sql import Null
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, Button
-from trytond import backend
 from trytond.pyson import Eval, If, Id, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
-from trytond.tools import reduce_ids, grouped_slice
 
 __all__ = ['ShipmentIn', 'ShipmentInReturn',
     'ShipmentOut', 'ShipmentOutReturn',
@@ -214,83 +207,13 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        cursor = Transaction().connection.cursor()
-        model_data = Table('ir_model_data')
-        model = Table('ir_model')
-        model_field = Table('ir_model_field')
-        sql_table = cls.__table__()
-
-        # Migration from 1.2: packing renamed into shipment
-        cursor.execute(*model_data.update(
-                columns=[model_data.fs_id],
-                values=[Overlay(model_data.fs_id, 'shipment',
-                        Position('packing', model_data.fs_id),
-                        len('packing'))],
-                where=model_data.fs_id.like('%packing%')
-                & (model_data.module == module_name)))
-        cursor.execute(*model.update(
-                columns=[model.model],
-                values=[Overlay(model.model, 'shipment',
-                        Position('packing', model.model),
-                        len('packing'))],
-                where=model.model.like('%packing%')
-                & (model.module == module_name)))
-        cursor.execute(*model_field.update(
-                columns=[model_field.relation],
-                values=[Overlay(model_field.relation, 'shipment',
-                        Position('packing', model_field.relation),
-                        len('packing'))],
-                where=model_field.relation.like('%packing%')
-                & (model_field.module == module_name)))
-        cursor.execute(*model_field.update(
-                columns=[model_field.name],
-                values=[Overlay(model_field.name, 'shipment',
-                        Position('packing', model_field.name),
-                        len('packing'))],
-                where=model_field.name.like('%packing%')
-                & (model_field.module == module_name)))
-
-        old_table = 'stock_packing_in'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
         table = cls.__table_handler__(module_name)
-        for field in ('create_uid', 'write_uid', 'contact_address',
-                'warehouse', 'supplier'):
-            table.drop_fk(field, table=old_table)
-        for field in ('code', 'reference'):
-            table.index_action(field, action='remove', table=old_table)
-
-        # Migration from 2.0:
-        created_company = table.column_exist('company')
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
             table.column_rename('code', 'number')
 
         super(ShipmentIn, cls).__register__(module_name)
-
-        # Migration from 2.0:
-        Move = Pool().get('stock.move')
-        if (not created_company
-                and TableHandler.table_exist(Move._table)):
-            move = Move.__table__()
-            cursor.execute(*sql_table.join(move,
-                    condition=(Concat(cls.__name__ + ',', sql_table.id)
-                        == move.shipment)
-                    ).select(sql_table.id, Max(move.company),
-                    group_by=sql_table.id,
-                    order_by=Max(move.company)))
-            for company_id, values in itertools.groupby(cursor.fetchall(),
-                    operator.itemgetter(1)):
-                shipment_ids = [x[0] for x in values]
-                for sub_ids in grouped_slice(shipment_ids):
-                    red_sql = reduce_ids(sql_table.id, sub_ids)
-                    cursor.execute(*sql_table.update(
-                            columns=[sql_table.company],
-                            values=[company_id],
-                            where=red_sql))
-            table.not_null_action('company', action='add')
 
         # Add index on create_date
         table = cls.__table_handler__(module_name)
@@ -674,50 +597,13 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        # Migration from 1.2: packing renamed into shipment
-        old_table = 'stock_packing_in_return'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
         table = cls.__table_handler__(module_name)
-        for field in ('create_uid', 'write_uid', 'from_location',
-                'to_location'):
-            table.drop_fk(field, table=old_table)
-        for field in ('code', 'reference'):
-            table.index_action(field, action='remove', table=old_table)
-
-        # Migration from 2.0:
-        created_company = table.column_exist('company')
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
             table.column_rename('code', 'number')
 
         super(ShipmentInReturn, cls).__register__(module_name)
-
-        # Migration from 2.0:
-        Move = Pool().get('stock.move')
-        if (not created_company
-                and TableHandler.table_exist(Move._table)):
-            move = Move.__table__()
-            cursor.execute(*sql_table.join(move,
-                    condition=(Concat(cls.__name__ + ',', sql_table.id)
-                        == move.shipment)
-                    ).select(sql_table.id, Max(move.company),
-                    group_by=sql_table.id,
-                    order_by=Max(move.company)))
-            for company_id, values in itertools.groupby(cursor.fetchall(),
-                    operator.itemgetter(1)):
-                shipment_ids = [x[0] for x in values]
-                for sub_ids in grouped_slice(shipment_ids):
-                    red_sql = reduce_ids(sql_table.id, sub_ids)
-                    cursor.execute(*sql_table.update(
-                            columns=[sql_table.company],
-                            values=[company_id],
-                            where=red_sql))
-            table.not_null_action('company', action='add')
 
         # Add index on create_date
         table = cls.__table_handler__(module_name)
@@ -1058,55 +944,13 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        # Migration from 1.2: packing renamed into shipment
-        old_table = 'stock_packing_out'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
-
         table = cls.__table_handler__(module_name)
-        for field in ('create_uid', 'write_uid', 'delivery_address',
-                'warehouse', 'customer'):
-            table.drop_fk(field, table=old_table)
-        for field in ('code', 'reference'):
-            table.index_action(field, action='remove', table=old_table)
-
-        # Migration from 2.0:
-        created_company = table.column_exist('company')
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
             table.column_rename('code', 'number')
 
         super(ShipmentOut, cls).__register__(module_name)
-
-        # Migration from 2.0:
-        Move = Pool().get('stock.move')
-        if (not created_company
-                and TableHandler.table_exist(Move._table)):
-            move = Move.__table__()
-            cursor.execute(*sql_table.join(move,
-                    condition=(Concat(cls.__name__ + ',', sql_table.id)
-                        == move.shipment)
-                    ).select(sql_table.id, Max(move.company),
-                    group_by=sql_table.id,
-                    order_by=Max(move.company)))
-            for company_id, values in itertools.groupby(cursor.fetchall(),
-                    operator.itemgetter(1)):
-                shipment_ids = [x[0] for x in values]
-                for sub_ids in grouped_slice(shipment_ids):
-                    red_sql = reduce_ids(sql_table.id, sub_ids)
-                    cursor.execute(*sql_table.update(
-                            columns=[sql_table.company],
-                            values=[company_id],
-                            where=red_sql))
-            table.not_null_action('company', action='add')
-
-        # Migration from 1.0 customer_location is no more used
-        table = cls.__table_handler__(module_name)
-        table.drop_column('customer_location')
 
         # Add index on create_date
         table.index_action('create_date', action='add')
@@ -1629,51 +1473,13 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        # Migration from 1.2: packing renamed into shipment
-        old_table = 'stock_packing_out_return'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
-
         table = cls.__table_handler__(module_name)
-        for field in ('create_uid', 'write_uid', 'delivery_address',
-                'warehouse', 'customer'):
-            table.drop_fk(field, table=old_table)
-        for field in ('code', 'reference'):
-            table.index_action(field, action='remove', table=old_table)
-
-        # Migration from 2.0:
-        created_company = table.column_exist('company')
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
             table.column_rename('code', 'number')
 
         super(ShipmentOutReturn, cls).__register__(module_name)
-
-        # Migration from 2.0:
-        Move = Pool().get('stock.move')
-        if (not created_company
-                and TableHandler.table_exist(Move._table)):
-            move = Move.__table__()
-            cursor.execute(*sql_table.join(move,
-                    condition=(Concat(cls.__name__ + ',', sql_table.id)
-                        == move.shipment)
-                    ).select(sql_table.id, Max(move.company),
-                    group_by=sql_table.id,
-                    order_by=Max(move.company)))
-            for company_id, values in itertools.groupby(cursor.fetchall(),
-                    operator.itemgetter(1)):
-                shipment_ids = [x[0] for x in values]
-                for sub_ids in grouped_slice(shipment_ids):
-                    red_sql = reduce_ids(sql_table.id, sub_ids)
-                    cursor.execute(*sql_table.update(
-                            columns=[sql_table.company],
-                            values=[company_id],
-                            where=red_sql))
-            table.not_null_action('company', action='add')
 
         # Add index on create_date
         table = cls.__table_handler__(module_name)
@@ -2185,50 +1991,15 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
-        # Migration from 1.2: packing renamed into shipment
-        old_table = 'stock_packing_internal'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
         table = cls.__table_handler__(module_name)
-        for field in ('create_uid', 'write_uid', 'from_location',
-                'to_location'):
-            table.drop_fk(field, table=old_table)
-        for field in ('code', 'reference'):
-            table.index_action(field, action='remove', table=old_table)
-
-        # Migration from 2.0:
-        created_company = table.column_exist('company')
 
         # Migration from 3.8:
         if table.column_exist('code'):
             table.column_rename('code', 'number')
 
         super(ShipmentInternal, cls).__register__(module_name)
-
-        # Migration from 2.0:
-        Move = Pool().get('stock.move')
-        if (not created_company
-                and TableHandler.table_exist(Move._table)):
-            move = Move.__table__()
-            cursor.execute(*sql_table.join(move,
-                    condition=(Concat(cls.__name__ + ',', sql_table.id)
-                        == move.shipment)
-                    ).select(sql_table.id, Max(move.company),
-                    group_by=sql_table.id,
-                    order_by=Max(move.company)))
-            for company_id, values in itertools.groupby(cursor.fetchall(),
-                    operator.itemgetter(1)):
-                shipment_ids = [x[0] for x in values]
-                for sub_ids in grouped_slice(shipment_ids):
-                    red_sql = reduce_ids(sql_table.id, sub_ids)
-                    cursor.execute(*sql_table.update(
-                            columns=[sql_table.company],
-                            values=[company_id],
-                            where=red_sql))
-            table.not_null_action('company', action='add')
 
         # Migration from 4.0: fill planned_start_date
         cursor = Transaction().connection.cursor()

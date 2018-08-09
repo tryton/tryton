@@ -349,8 +349,6 @@ class InventoryLine(ModelSQL, ModelView):
         super(InventoryLine, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)
-        # Migration from 2.8: Remove constraint inventory_product_uniq
-        table.drop_constraint('inventory_product_uniq')
 
         # Migration from 3.0: use Move origin
         if table.column_exist('move'):

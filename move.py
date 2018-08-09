@@ -10,7 +10,6 @@ from itertools import groupby
 from sql import Literal, Union, Column, Null, For
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce, Case
-from sql.operators import Concat
 
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
 from trytond.pyson import Eval, If, Bool
@@ -315,65 +314,10 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        transaction = Transaction()
-        cursor = transaction.connection.cursor()
         sql_table = cls.__table__()
 
-        # Migration from 1.2: packing renamed into shipment
-        table = cls.__table_handler__(module_name)
-        table.drop_constraint('check_packing')
-        for suffix in ('in', 'out', 'in_return', 'out_return', 'internal'):
-            old_column = 'packing_%s' % suffix
-            new_column = 'shipment_%s' % suffix
-            if table.column_exist(old_column):
-                table.index_action(old_column, action='remove')
-            table.drop_fk(old_column)
-            table.column_rename(old_column, new_column)
-
-        # Migration from 1.8: new field internal_quantity
-        internal_quantity_exist = table.column_exist('internal_quantity')
-
         super(Move, cls).__register__(module_name)
-
-        # Migration from 1.8: fill new field internal_quantity
-        if not internal_quantity_exist:
-            offset = 0
-            limit = transaction.database.IN_MAX
-            moves = True
-            while moves:
-                moves = cls.search([], offset=offset, limit=limit)
-                offset += limit
-                for move in moves:
-                    internal_quantity = cls._get_internal_quantity(
-                            move.quantity, move.uom, move.product)
-                    cursor.execute(*sql_table.update(
-                            columns=[sql_table.internal_quantity],
-                            values=[internal_quantity],
-                            where=sql_table.id == move.id))
-            table = cls.__table_handler__(module_name)
-            table.not_null_action('internal_quantity', action='add')
-
-        # Migration from 1.0 check_packing_in_out has been removed
         table = cls.__table_handler__(module_name)
-        table.drop_constraint('check_packing_in_out')
-
-        # Migration from 2.6: merge all shipments
-        table.drop_constraint('check_shipment')
-        shipments = {
-            'shipment_in': 'stock.shipment.in',
-            'shipment_out': 'stock.shipment.out',
-            'shipment_out_return': 'stock.shipment.out.return',
-            'shipment_in_return': 'stock.shipment.in.return',
-            'shipment_internal': 'stock.shipment.internal',
-            }
-        for column, model in shipments.items():
-            if table.column_exist(column):
-                cursor.execute(*sql_table.update(
-                        columns=[sql_table.shipment],
-                        values=[Concat(model + ',',
-                                Column(sql_table, column))],
-                        where=Column(sql_table, column) != Null))
-                table.drop_column(column)
 
         # Add index on create_date
         table.index_action('create_date', action='add')
