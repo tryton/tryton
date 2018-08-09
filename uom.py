@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 
 from decimal import Decimal
-from sql import Table
 from math import ceil, floor, log10
 
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
@@ -53,18 +52,6 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
             ('rounding', '>', 0),
             ])
     digits = fields.Integer('Display Digits', required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        model_data = Table('ir_model_data')
-        # Migration from 1.6: corrected misspelling of ounce (was once)
-        cursor.execute(*model_data.update(
-                columns=[model_data.fs_id],
-                values=['uom_ounce'],
-                where=(model_data.fs_id == 'uom_once')
-                & (model_data.module == 'product')))
-        super(Uom, cls).__register__(module_name)
 
     @classmethod
     def __setup__(cls):

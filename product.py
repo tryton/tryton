@@ -81,24 +81,9 @@ class Template(
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
         super(Template, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)
-        # Migration from 2.2: category is no more required
-        table.not_null_action('category', 'remove')
-
-        # Migration from 2.2: new types
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.consumable],
-                values=[True],
-                where=sql_table.type == 'consumable'))
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.type],
-                values=['goods'],
-                where=sql_table.type.in_(['stockable', 'consumable'])))
 
         # Migration from 3.8: rename category into categories
         if table.column_exist('category'):
