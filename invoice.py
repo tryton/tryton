@@ -3,10 +3,9 @@
 from decimal import Decimal
 from collections import defaultdict, namedtuple
 from itertools import combinations
-import base64
 
-from sql import Literal, Null
-from sql.aggregate import Count, Sum
+from sql import Null
+from sql.aggregate import Sum
 from sql.conditionals import Coalesce, Case
 from sql.functions import Round
 
@@ -333,44 +332,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cursor = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
 
-        # Migration from 1.2 invoice_date is no more required
-        table.not_null_action('invoice_date', action='remove')
-
-        # Migration from 2.0 invoice_report renamed into invoice_report_cache
-        # to remove base64 encoding
-
-        if (table.column_exist('invoice_report')
-                and table.column_exist('invoice_report_cache')):
-            limit = transaction.database.IN_MAX
-            cursor.execute(*sql_table.select(Count(Literal(1))))
-            invoice_count, = cursor.fetchone()
-            for offset in range(0, invoice_count, limit):
-                cursor.execute(*sql_table.select(
-                        sql_table.id, sql_table.invoice_report,
-                        order_by=sql_table.id,
-                        limit=limit, offset=offset))
-                for invoice_id, report in cursor.fetchall():
-                    if report:
-                        report = fields.Binary.cast(
-                            base64.decodestring(bytes(report)))
-                        cursor.execute(*sql_table.update(
-                                columns=[sql_table.invoice_report_cache],
-                                values=[report],
-                                where=sql_table.id == invoice_id))
-            table.drop_column('invoice_report')
-
-        # Migration from 2.6:
-        # - proforma renamed into validated
-        # - open renamed into posted
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.state],
-                values=['validated'],
-                where=sql_table.state == 'proforma'))
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.state],
-                values=['posted'],
-                where=sql_table.state == 'open'))
-
         # Migration from 3.8: remove invoice/credit note type
         cursor.execute(*sql_table.select(sql_table.id,
                 where=sql_table.type.like('%_invoice')
@@ -413,11 +374,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         values=[type_],
                         where=sql_table.type == '%s_credit_note' % type_))
 
-        # Add index on create_date
-        table.index_action('create_date', action='add')
-
         # Migration from 4.0: Drop not null on payment_term
         table.not_null_action('payment_term', 'remove')
+
+        # Add index on create_date
+        table.index_action('create_date', action='add')
 
     @staticmethod
     def default_type():
@@ -1761,12 +1722,6 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
 
-        # Migration from 1.0 invoice is no more required
-        table.not_null_action('invoice', action='remove')
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
         # Migration from 3.4: company is required
         cursor.execute(*sql_table.join(invoice,
                 condition=sql_table.invoice == invoice.id
@@ -2245,9 +2200,6 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         super(InvoiceTax, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
 
         # Migration from 4.6: drop base_sign and tax_sign
         table.not_null_action('base_sign', action='remove')

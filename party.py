@@ -38,23 +38,6 @@ class Party(ModelSQL, ModelView):
         'party.party.payment_term', 'party', "Payment Terms")
 
     @classmethod
-    def __register__(cls, module_name):
-        ModelField = Pool().get('ir.model.field')
-
-        # Migration from 2.2: property field payment_term renamed
-        # to customer_payment_term
-        fields = ModelField.search([
-                ('name', '=', 'payment_term'),
-                ('model.model', '=', 'party.party')
-                ])
-        if fields:
-            ModelField.write(fields, {
-                    'name': 'customer_payment_term',
-                    })
-
-        super(Party, cls).__register__(module_name)
-
-    @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
         if field in {'customer_payment_term', 'supplier_payment_term'}:

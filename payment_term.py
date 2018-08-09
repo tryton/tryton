@@ -145,31 +145,6 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
 
-        # Migration from 1.0 percent change into percentage
-        if table.column_exist('percent'):
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.percentage],
-                    values=[sql_table.percent * 100]))
-            table.drop_column('percent')
-
-        # Migration from 2.2
-        if table.column_exist('delay'):
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.day],
-                    values=[31],
-                    where=sql_table.delay == 'end_month'))
-            table.drop_column('delay')
-            lines = cls.search([])
-            for line in lines:
-                if line.percentage:
-                    cls.write([line], {
-                            'divisor': cls.round(Decimal('100.0') /
-                                line.percentage, cls.divisor.digits[1]),
-                            })
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
         # Migration from 3.8: rename percentage into ratio
         if table.column_exist('percentage'):
             cursor.execute(*sql_table.update(
