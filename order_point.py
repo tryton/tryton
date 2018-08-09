@@ -125,10 +125,8 @@ class OrderPoint(ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
-
-        # Migration from 2.2
         table = cls.__table_handler__(module_name)
-        table.drop_constraint('check_min_max_quantity')
+
         # Migration from 4.2
         table.drop_constraint('check_max_qty_greater_min_qty')
         table.not_null_action('min_quantity', 'remove')

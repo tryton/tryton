@@ -30,18 +30,6 @@ class PurchaseRequest(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        super(PurchaseRequest, cls).__register__(module_name)
-
-        # Migration from 2.0: empty order point origin is -1 instead of 0
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.origin],
-                values=['stock.order_point,-1'],
-                where=sql_table.origin == 'stock.order_point,0'))
-
-    @classmethod
     def _get_origin(cls):
         origins = super(PurchaseRequest, cls)._get_origin()
         return origins | {'stock.order_point'}

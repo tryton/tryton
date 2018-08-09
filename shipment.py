@@ -2,9 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from sql import Table
-from sql.functions import Overlay, Position
-
 from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -14,28 +11,6 @@ __all__ = ['ShipmentInternal']
 
 class ShipmentInternal(ModelSQL, ModelView):
     __name__ = 'stock.shipment.internal'
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        model_data = Table('ir_model_data')
-        model = Table('ir_model')
-        # Migration from 1.2: packing renamed into shipment
-        cursor.execute(*model_data.update(
-                columns=[model_data.fs_id],
-                values=[Overlay(model_data.fs_id, 'shipment',
-                        Position('packing', model_data.fs_id),
-                        len('packing'))],
-                where=model_data.fs_id.like('%packing%')
-                & (model_data.module == module_name)))
-        cursor.execute(*model.update(
-                columns=[model.model],
-                values=[Overlay(model.model, 'shipment',
-                        Position('packing', model.model),
-                        len('packing'))],
-                where=model.model.like('%packing%')
-                & (model.module == module_name)))
-        super(ShipmentInternal, cls).__register__(module_name)
 
     @classmethod
     def generate_internal_shipment(cls, clean=True):
