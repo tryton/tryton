@@ -37,7 +37,6 @@ from ..model import (
     ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
 from ..wizard import Wizard, StateView, Button, StateTransition
 from ..tools import grouped_slice
-from .. import backend
 from ..transaction import Transaction
 from ..cache import Cache
 from ..pool import Pool
@@ -190,27 +189,6 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         super(User, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
-
-        # Migration from 1.6
-
-        # For module dashboard
-        table.module_name = 'dashboard'
-        table.not_null_action('dashboard_layout', action='remove')
-
-        # For module calendar_scheduling
-        table.module_name = 'calendar_scheduling'
-        for field in ('calendar_email_notification_new',
-                'calendar_email_notification_update',
-                'calendar_email_notification_cancel',
-                'calendar_email_notification_partstat',
-                ):
-            table.not_null_action(field, action='remove')
-
-        # Migration from 2.2
-        table.not_null_action('menu', action='remove')
-
-        # Migration from 2.6
-        table.drop_column('login_try')
 
         # Migration from 3.0
         if table.column_exist('password') and table.column_exist('salt'):
@@ -729,14 +707,6 @@ class LoginAttempt(ModelSQL):
     ip_address = fields.Char("IP Address")
     ip_network = fields.Char("IP Network")
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(LoginAttempt, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.8: remove user
-        table.drop_column('user')
-
     @staticmethod
     def delay():
         return (datetime.datetime.now()
@@ -845,21 +815,6 @@ class UserGroup(ModelSQL):
             required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
             select=True, required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        transaction = Transaction()
-
-        # Migration from 1.0 table name change
-        TableHandler.table_rename('res_group_user_rel', cls._table)
-        transaction.database.sequence_rename(transaction.connection,
-            'res_group_user_rel_id_seq', cls._table + '_id_seq')
-        # Migration from 2.0 uid and gid rename into user and group
-        table = cls.__table_handler__(module_name)
-        table.column_rename('uid', 'user')
-        table.column_rename('gid', 'group')
-        super(UserGroup, cls).__register__(module_name)
 
 
 class Warning_(ModelSQL, ModelView):

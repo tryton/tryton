@@ -99,26 +99,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                     'future on sequence "%s".'),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        table_h = cls.__table_handler__(module_name)
-        transaction = Transaction()
-
-        # Migration from 2.0 rename number_next into number_next_internal
-        table_h.column_rename('number_next', 'number_next_internal')
-
-        super(Sequence, cls).__register__(module_name)
-
-        # Migration from 2.0 create sql_sequence
-        if sql_sequence and not cls._strict:
-            sequences = cls.search([])
-            for sequence in sequences:
-                if sequence.type != 'incremental':
-                    continue
-                if not transaction.database.sequence_exist(
-                        transaction.connection, sequence._sql_sequence_name):
-                    sequence.create_sql_sequence(sequence.number_next_internal)
-
     @staticmethod
     def default_type():
         return 'incremental'

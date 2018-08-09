@@ -432,15 +432,6 @@ class ModelAccess(ModelSQL, ModelView):
                 'get_access': RPC(),
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(ModelAccess, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.6 (model, group) no more unique
-        table.drop_constraint('model_group_uniq')
-
     @staticmethod
     def check_xml_record(accesses, values):
         return True
@@ -613,15 +604,6 @@ class ModelFieldAccess(ModelSQL, ModelView):
             'read': 'You can not read the field! (%s.%s)',
             'write': 'You can not write on the field! (%s.%s)',
             })
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(ModelFieldAccess, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.6 (field, group) no more unique
-        table.drop_constraint('field_group_uniq')
 
     @staticmethod
     def check_xml_record(field_accesses, values):
@@ -1120,14 +1102,6 @@ class ModelData(ModelSQL, ModelView):
         model_data = cls.__table__()
 
         super(ModelData, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.6: remove inherit
-        if table.column_exist('inherit'):
-            cursor.execute(*model_data.delete(
-                    where=model_data.inherit == True))
-            table.drop_column('inherit', True)
 
         # Migration from 4.6: register buttons on ir module
         cursor.execute(*model_data.update(

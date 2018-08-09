@@ -415,11 +415,6 @@ class ModuleConfigWizardItem(ModelSQL, ModelView):
                 where=(model_data.model ==
                     'ir.module.module.config_wizard.item')))
 
-        table_h = cls.__table_handler__(module_name)
-
-        # Migrate from 2.2 remove name
-        table_h.drop_column('name')
-
         super(ModuleConfigWizardItem, cls).__register__(module_name)
 
     @staticmethod

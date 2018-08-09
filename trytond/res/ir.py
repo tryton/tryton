@@ -1,9 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from ..model import ModelSQL, DeactivableMixin, fields
-from .. import backend
 from ..pool import Pool, PoolMeta
-from ..transaction import Transaction
 
 __all__ = [
     'UIMenuGroup', 'ActionGroup', 'ModelFieldGroup', 'ModelButtonGroup',
@@ -21,20 +19,6 @@ class UIMenuGroup(ModelSQL):
             select=True, required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
             select=True, required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        transaction = Transaction()
-        # Migration from 1.0 table name change
-        TableHandler.table_rename('ir_ui_menu_group_rel', cls._table)
-        transaction.database.sequence_rename(transaction.connection,
-            'ir_ui_menu_group_rel_id_seq', cls._table + '_id_seq')
-        # Migration from 2.0 menu_id and gid renamed into menu group
-        table = cls.__table_handler__(module_name)
-        table.column_rename('menu_id', 'menu')
-        table.column_rename('gid', 'group')
-        super(UIMenuGroup, cls).__register__(module_name)
 
     @classmethod
     def create(cls, vlist):
@@ -63,20 +47,6 @@ class ActionGroup(ModelSQL):
             select=True, required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
             select=True, required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        transaction = Transaction()
-        # Migration from 1.0 table name change
-        TableHandler.table_rename('ir_action_group_rel', cls._table)
-        transaction.database.sequence_rename(transaction.connection,
-            'ir_action_group_rel_id_seq', cls._table + '_id_seq')
-        # Migration from 2.0 action_id and gid renamed into action and group
-        table = cls.__table_handler__(module_name)
-        table.column_rename('action_id', 'action')
-        table.column_rename('gid', 'group')
-        super(ActionGroup, cls).__register__(module_name)
 
     @classmethod
     def create(cls, vlist):
@@ -118,20 +88,6 @@ class ModelFieldGroup(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
             select=True, required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        transaction = Transaction()
-        # Migration from 1.0 table name change
-        TableHandler.table_rename('ir_model_field_group_rel', cls._table)
-        transaction.database.sequence_rename(transaction.connection,
-            'ir_model_field_group_rel_id_seq', cls._table + '_id_seq')
-        table = cls.__table_handler__(module_name)
-        # Migration from 2.6: field_id and group_id renamed to field and group
-        table.column_rename('field_id', 'field')
-        table.column_rename('group_id', 'group')
-        super(ModelFieldGroup, cls).__register__(module_name)
 
 
 class ModelButtonGroup(DeactivableMixin, ModelSQL):
@@ -182,21 +138,6 @@ class RuleGroupGroup(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
             select=True, required=True)
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        transaction = Transaction()
-        # Migration from 1.0 table name change
-        TableHandler.table_rename('group_rule_group_rel', cls._table)
-        transaction.database.sequence_rename(transaction.connection,
-            'group_rule_group_rel_id_seq', cls._table + '_id_seq')
-        # Migration from 2.0 rule_group_id and group_id renamed into rule_group
-        # and group
-        table = cls.__table_handler__(cls, module_name)
-        table.column_rename('rule_group_id', 'rule_group')
-        table.column_rename('group_id', 'group')
-        super(RuleGroupGroup, cls).__register__(module_name)
 
 
 class Lang(metaclass=PoolMeta):

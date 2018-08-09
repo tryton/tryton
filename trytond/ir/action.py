@@ -1,17 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import base64
 import os
 from operator import itemgetter
 from collections import defaultdict
 from functools import partial
 
-from sql import Table, Null
-from sql.aggregate import Count
+from sql import Null
 
 from ..model import ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields
 from ..tools import file_open
-from .. import backend
 from ..pyson import PYSONDecoder, PYSON, Eval
 from ..transaction import Transaction
 from ..pool import Pool
@@ -498,64 +495,12 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         super(ActionReport, cls).__register__(module_name)
 
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
         action_report = cls.__table__()
-
-        # Migration from 1.0 report_name_uniq has been removed
-        table.drop_constraint('report_name_uniq')
-
-        # Migration from 1.0 output_format (m2o) is now extension (selection)
-        if table.column_exist('output_format'):
-            outputformat = Table('ir_action_report_outputformat')
-            cursor.execute(*action_report.join(
-                    outputformat,
-                    condition=action_report.output_format == outputformat.id)
-                .select(action_report.id,
-                    where=outputformat.format == 'pdf'))
-
-            ids = [x[0] for x in cursor.fetchall()]
-            cls.write(cls.browse(ids), {'extension': 'pdf'})
-            ids = cls.search([('id', 'not in', ids)])
-            cls.write(cls.browse(ids), {'extension': 'odt'})
-
-            table.drop_column("output_format")
-            TableHandler.dropTable('ir.action.report.outputformat',
-                'ir_action_report_outputformat')
-
-        # Migrate from 2.0 remove required on extension
-        table.not_null_action('extension', action='remove')
-        cursor.execute(*action_report.update(
-                [action_report.extension],
-                [''],
-                where=action_report.extension == 'odt'))
-
-        # Migration from 2.0 report_content_data renamed into
-        # report_content_custom to remove base64 encoding
-        if (table.column_exist('report_content_data')
-                and table.column_exist('report_content_custom')):
-            limit = transaction.database.IN_MAX
-            cursor.execute(*action_report.select(
-                    Count(action_report.id)))
-            report_count, = cursor.fetchone()
-            for offset in range(0, report_count, limit):
-                cursor.execute(*action_report.select(
-                        action_report.id, action_report.report_content_data,
-                        order_by=action_report.id,
-                        limit=limit, offset=offset))
-                for report_id, report in cursor.fetchall():
-                    if report:
-                        report = fields.Binary.cast(
-                            base64.decodestring(bytes(report)))
-                        cursor.execute(*action_report.update(
-                                [action_report.report_content_custom],
-                                [report],
-                                where=action_report.id == report_id))
-            table.drop_column('report_content_data')
 
         # Migration from 3.4 remove report_name_module_uniq constraint
         table.drop_constraint('report_name_module_uniq')
@@ -747,11 +692,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
 
         table = cls.__table_handler__(module_name)
 
-        # Migration from 2.0: new search_value format
-        cursor.execute(*act_window.update(
-                [act_window.search_value], ['[]'],
-                where=act_window.search_value == '{}'))
-
         # Migration from 3.0: auto_refresh removed
         table.drop_column('auto_refresh')
 
@@ -928,14 +868,6 @@ class ActionActWindowView(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(ActionActWindowView, cls).__setup__()
         cls._order.insert(0, ('sequence', 'ASC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(ActionActWindowView, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 1.0 remove multi
-        table.drop_column('multi')
 
     @classmethod
     def create(cls, vlist):

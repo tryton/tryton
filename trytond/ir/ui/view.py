@@ -78,25 +78,6 @@ class View(ModelSQL, ModelView):
                     },
                 })
 
-    @classmethod
-    def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4 arch moved into data
-        if table.column_exist('arch'):
-            table.column_rename('arch', 'data')
-
-        super(View, cls).__register__(module_name)
-
-        # New instance to refresh definition
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 1.0 arch no more required
-        table.not_null_action('arch', action='remove')
-
-        # Migration from 2.4 model no more required
-        table.not_null_action('model', action='remove')
-
     @staticmethod
     def default_priority():
         return 16
@@ -329,11 +310,6 @@ class ViewTreeState(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.8: table name changed
-        table.table_rename('ir_ui_view_tree_expanded_state', cls._table)
-
         super(ViewTreeState, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)

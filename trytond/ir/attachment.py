@@ -70,18 +70,6 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
         table = cls.__table_handler__(module_name)
         attachment = cls.__table__()
 
-        # Migration from 1.4 res_model and res_id merged into resource
-        # Reference
-        if table.column_exist('res_model') and \
-                table.column_exist('res_id'):
-            table.drop_constraint('res_model_res_id_name')
-            cursor.execute(*attachment.update(
-                    [attachment.resource],
-                    [Concat(Concat(attachment.resource, ','),
-                            attachment.res_id)]))
-            table.drop_column('res_model')
-            table.drop_column('res_id')
-
         # Migration from 4.0: merge digest and collision into file_id
         if table.column_exist('digest') and table.column_exist('collision'):
             cursor.execute(*attachment.update(
