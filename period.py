@@ -50,14 +50,6 @@ class Period(Workflow, ModelSQL, ModelView):
     icon = fields.Function(fields.Char("Icon"), 'get_icon')
 
     @classmethod
-    def __register__(cls, module_name):
-        super(Period, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-        # Migration from 2.6: post_move_sequence is no longer required
-        table.not_null_action('post_move_sequence', 'remove')
-
-    @classmethod
     def __setup__(cls):
         super(Period, cls).__setup__()
         cls._order.insert(0, ('start_date', 'ASC'))

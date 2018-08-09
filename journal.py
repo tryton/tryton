@@ -96,26 +96,6 @@ class Journal(
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
-    def __register__(cls, module_name):
-        pool = Pool()
-        JournalSequence = pool.get('account.journal.sequence')
-        sql_table = cls.__table__()
-        journal_sequence = JournalSequence.__table__()
-
-        super(Journal, cls).__register__(module_name)
-
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 1.0 sequence Many2One change into MultiValue
-        if table.column_exist('sequence'):
-            query = journal_sequence.insert(
-                [journal_sequence.journal, journal_sequence.sequence],
-                sql_table.select(sql_table.id, sql_table.sequence))
-            cursor.execute(*query)
-            table.drop_column('sequence')
-
-    @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
         if field in {'credit_account', 'debit_account'}:

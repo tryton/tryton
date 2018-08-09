@@ -59,15 +59,6 @@ class TypeTemplate(
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(TypeTemplate, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
     @staticmethod
     def default_balance_sheet():
         return False
@@ -181,15 +172,6 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             },
         depends=['template'])
     del _states
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Type, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
 
     @staticmethod
     def default_balance_sheet():

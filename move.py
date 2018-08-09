@@ -115,14 +115,6 @@ class Move(ModelSQL, ModelView):
         FiscalYear = pool.get('account.fiscalyear')
         fiscalyear = FiscalYear.__table__()
 
-        # Migration from 2.4:
-        #   - name renamed into number
-        #   - reference renamed into post_number
-        if table.column_exist('name'):
-            table.column_rename('name', 'number')
-        if table.column_exist('reference'):
-            table.column_rename('reference', 'post_number')
-
         created_company = not table.column_exist('company')
 
         super(Move, cls).__register__(module_name)
@@ -706,25 +698,11 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: reference renamed into description
-        if table.column_exist('reference'):
-            table.column_rename('reference', 'description')
-
         super(Line, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)
         # Index for General Ledger
         table.index_action(['move', 'account'], 'add')
-
-        # Migration from 1.2
-        table.not_null_action('blocked', action='remove')
-
-        # Migration from 2.4: remove name, active
-        table.not_null_action('name', action='remove')
-        table.not_null_action('active', action='remove')
-        table.index_action('active', action='remove')
 
     @classmethod
     def default_date(cls):

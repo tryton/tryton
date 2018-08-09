@@ -41,14 +41,6 @@ class TaxGroup(ModelSQL, ModelView):
     code = fields.Char('Code', size=None, required=True)
     kind = fields.Selection(KINDS, 'Kind', required=True)
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(TaxGroup, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 1.4 drop code_uniq constraint
-        table.drop_constraint('code_uniq')
-
     @staticmethod
     def default_kind():
         return 'both'
@@ -517,26 +509,6 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
                 })
 
     @classmethod
-    def __register__(cls, module_name):
-        super(TaxTemplate, cls).__register__(module_name)
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 1.0 group is no more required
-        table.not_null_action('group', action='remove')
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
-        # Migration from 2.8: rename percentage into rate
-        if table.column_exist('percentage'):
-            sql_table = cls.__table__()
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.rate],
-                    values=[sql_table.percentage / 100]))
-            table.drop_column('percentage')
-
-    @classmethod
     def validate(cls, tax_templates):
         super(TaxTemplate, cls).validate(tax_templates)
         for tax_template in tax_templates:
@@ -753,26 +725,6 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
                 'update_unit_price_with_parent': ('"Update Unit Price" can '
                     'not be set on tax "%(template)s" which has a parent.'),
                 })
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(Tax, cls).__register__(module_name)
-        cursor = Transaction().connection.cursor()
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 1.0 group is no more required
-        table.not_null_action('group', action='remove')
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
-        # Migration from 2.8: rename percentage into rate
-        if table.column_exist('percentage'):
-            sql_table = cls.__table__()
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.rate],
-                    values=[sql_table.percentage / 100]))
-            table.drop_column('percentage')
 
     @classmethod
     def validate(cls, taxes):
@@ -1471,16 +1423,6 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
         super(TaxRuleLineTemplate, cls).__setup__()
         cls._order.insert(1, ('rule', 'ASC'))
 
-    @classmethod
-    def __register__(cls, module_name):
-
-        super(TaxRuleLineTemplate, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
     def _get_tax_rule_line_value(self, rule_line=None):
         '''
         Set values for tax rule line creation.
@@ -1591,15 +1533,6 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def __setup__(cls):
         super(TaxRuleLine, cls).__setup__()
         cls._order.insert(1, ('rule', 'ASC'))
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(TaxRuleLine, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
 
     @classmethod
     def copy(cls, lines, default=None):
