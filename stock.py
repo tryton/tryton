@@ -38,21 +38,6 @@ class Move(metaclass=PoolMeta):
                 'Anglo-Saxon quantity can not be greater than quantity.'),
             ]
 
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-
-        super(Move, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.8: split anglo_saxon_quantity
-        if table.column_exist('anglo_saxon_quantity'):
-            cursor.execute('UPDATE "' + cls._table + '" '
-                'SET in_anglo_saxon_quantity = anglo_saxon_quantity, '
-                'out_anglo_saxon_quantity = anglo_saxon_quantity')
-            table.drop_constraint('check_anglo_saxon_quantity')
-            table.drop_column('anglo_saxon_quantity')
-
     @staticmethod
     def default_in_anglo_saxon_quantity():
         return 0.0
