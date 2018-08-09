@@ -22,12 +22,3 @@ class DashboardAction(sequence_ordered(), ModelSQL, ModelView):
                     ('groups', '=', None),
                 ],
             ])
-
-    @classmethod
-    def __register__(cls, module_name):
-        super(DashboardAction, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')

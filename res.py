@@ -26,15 +26,6 @@ class User(metaclass=PoolMeta):
             'dashboard_actions',
             ]
 
-    @classmethod
-    def __register__(cls, module_name):
-        super(User, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 1.6
-        table.not_null_action('dashboard_layout', action='remove')
-
     @staticmethod
     def default_dashboard_layout():
         return 'square'
