@@ -159,3 +159,19 @@ There is now a draft purchase request::
     True
     >>> pr.quantity
     1.0
+
+Re-run with purchased request::
+
+    >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
+    >>> create_purchase.form.party = supplier
+    >>> create_purchase.execute('start')
+    >>> pr.state
+    'purchased'
+
+    >>> set_user(stock_user)
+    >>> create_pr = Wizard('stock.supply')
+    >>> create_pr.execute('create_')
+
+    >>> set_user(purchase_user)
+    >>> len(PurchaseRequest.find([('state', '=', 'draft')]))
+    0
