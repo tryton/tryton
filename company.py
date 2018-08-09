@@ -77,14 +77,6 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     employee = fields.Many2One('company.employee', 'Employee')
 
     @classmethod
-    def __register__(cls, module_name):
-        super(EmployeeCostPrice, cls).__register__(module_name)
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.8 drop date_cost_price_uniq
-        table.drop_constraint('date_cost_price_uniq')
-
-    @classmethod
     def __setup__(cls):
         super(EmployeeCostPrice, cls).__setup__()
         t = cls.__table__()
