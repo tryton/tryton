@@ -190,35 +190,7 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
-        # Migration from 2.2 new field currency
-        created_currency = table.column_exist('currency')
-
         super(ProductSupplier, cls).__register__(module_name)
-
-        # Migration from 2.2 fill currency
-        if not created_currency:
-            Company = Pool().get('company.company')
-            company = Company.__table__()
-            limit = transaction.database.IN_MAX
-            cursor.execute(*sql_table.select(Count(sql_table.id)))
-            product_supplier_count, = cursor.fetchone()
-            for offset in range(0, product_supplier_count, limit):
-                cursor.execute(*sql_table.join(company,
-                        condition=sql_table.company == company.id
-                        ).select(sql_table.id, company.currency,
-                        order_by=sql_table.id,
-                        limit=limit, offset=offset))
-                for product_supplier_id, currency_id in cursor.fetchall():
-                    cursor.execute(*sql_table.update(
-                            columns=[sql_table.currency],
-                            values=[currency_id],
-                            where=sql_table.id == product_supplier_id))
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
-
-        # Migration from 2.6: drop required on delivery_time
-        table.not_null_action('delivery_time', action='remove')
 
         # Migration from 3.8: change delivery_time inte timedelta lead_time
         if table.column_exist('delivery_time'):

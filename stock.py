@@ -199,23 +199,6 @@ class Move(metaclass=PoolMeta):
         ], 'Exception State'), 'get_purchase_exception_state')
 
     @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        super(Move, cls).__register__(module_name)
-
-        table = cls.__table_handler__(module_name)
-
-        # Migration from 2.6: remove purchase_line
-        if table.column_exist('purchase_line'):
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.origin],
-                    values=[Concat('purchase.line,', sql_table.purchase_line)],
-                    where=sql_table.purchase_line != Null))
-            table.drop_column('purchase_line')
-
-    @classmethod
     def _get_origin(cls):
         models = super(Move, cls)._get_origin()
         models.append('purchase.line')

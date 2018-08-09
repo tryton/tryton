@@ -2,12 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
 from functools import wraps
-from sql import Table
 
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
-from trytond import backend
 
 __all__ = ['Invoice', 'InvoiceLine']
 
@@ -111,28 +109,6 @@ class Invoice(metaclass=PoolMeta):
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-
-        super(InvoiceLine, cls).__register__(module_name)
-
-        # Migration from 2.6: remove purchase_lines
-        rel_table_name = 'purchase_line_invoice_lines_rel'
-        if TableHandler.table_exist(rel_table_name):
-            rel_table = Table(rel_table_name)
-            cursor.execute(*rel_table.select(
-                    rel_table.purchase_line, rel_table.invoice_line))
-            for purchase_line, invoice_line in cursor.fetchall():
-                cursor.execute(*sql_table.update(
-                        columns=[sql_table.origin],
-                        values=['purchase.line,%s' % purchase_line],
-                        where=sql_table.id == invoice_line))
-            TableHandler.drop_table(
-                'purchase.line-account.invoice.line', rel_table_name)
 
     @property
     def origin_name(self):

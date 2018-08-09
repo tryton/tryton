@@ -4,8 +4,7 @@ import datetime
 from itertools import chain
 from decimal import Decimal
 
-from sql import Table, Literal, Null
-from sql.functions import Overlay, Position
+from sql import Literal, Null
 from sql.aggregate import Count
 from sql.operators import Concat
 
@@ -277,34 +276,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         InvoiceLine = pool.get('account.invoice.line')
         TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        model_data = Table('ir_model_data')
-        model_field = Table('ir_model_field')
         sql_table = cls.__table__()
 
-        # Migration from 1.2: packing renamed into shipment
-        cursor.execute(*model_data.update(
-                columns=[model_data.fs_id],
-                values=[Overlay(model_data.fs_id, 'shipment',
-                        Position('packing', model_data.fs_id),
-                        len('packing'))],
-                where=model_data.fs_id.like('%packing%')
-                & (model_data.module == module_name)))
-        cursor.execute(*model_field.update(
-                columns=[model_field.relation],
-                values=[Overlay(model_field.relation, 'shipment',
-                        Position('packing', model_field.relation),
-                        len('packing'))],
-                where=model_field.relation.like('%packing%')
-                & (model_field.module == module_name)))
-        cursor.execute(*model_field.update(
-                columns=[model_field.name],
-                values=[Overlay(model_field.name, 'shipment',
-                        Position('packing', model_field.name),
-                        len('packing'))],
-                where=model_field.name.like('%packing%')
-                & (model_field.module == module_name)))
         table = cls.__table_handler__(module_name)
-        table.column_rename('packing_state', 'shipment_state')
 
         # Migration from 3.8:
         if table.column_exist('supplier_reference'):
@@ -312,20 +286,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             table.column_rename('supplier_reference', 'reference')
 
         super(Purchase, cls).__register__(module_name)
-
-        # Migration from 1.2: rename packing to shipment in
-        # invoice_method values
-        cursor.execute(*sql_table.update(
-                columns=[sql_table.invoice_method],
-                values=['shipment'],
-                where=sql_table.invoice_method == 'packing'))
-
         table = cls.__table_handler__(module_name)
-        # Migration from 2.2: warehouse is no more required
-        table.not_null_action('warehouse', 'remove')
-
-        # Migration from 2.2: purchase_date is no more required
-        table.not_null_action('purchase_date', 'remove')
 
         # Migration from 3.2
         # state confirmed splitted into confirmed and processing
@@ -356,7 +317,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     where=sql_table.id.in_(sub_query.select(sub_query.id))))
 
         # Add index on create_date
-        table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
 
     @classmethod
@@ -1112,20 +1072,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
         super(PurchaseLine, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
-
-        # Migration from 1.0 comment change into note
-        if table.column_exist('comment'):
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.note],
-                    values=[sql_table.comment]))
-            table.drop_column('comment')
-
-        # Migration from 2.4: drop required on sequence
-        table.not_null_action('sequence', action='remove')
 
         # Migration from 4.6: drop required on description
         table.not_null_action('description', action='remove')
@@ -1672,20 +1620,6 @@ class HandleShipmentExceptionAsk(ModelView):
             'The other ones will be ignored.'))
     domain_moves = fields.Many2Many(
         'stock.move', None, None, 'Domain Moves')
-
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        model = Table('ir_model')
-        # Migration from 1.2: packing renamed into shipment
-        cursor.execute(*model.update(
-                columns=[model.model],
-                values=[Overlay(model.model, 'shipment',
-                        Position('packing', model.model),
-                        len('packing'))],
-                where=model.model.like('%packing%')
-                & (model.module == module_name)))
-        super(HandleShipmentExceptionAsk, cls).__register__(module_name)
 
 
 class HandleShipmentException(Wizard):
