@@ -121,12 +121,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         TimesheetWork = Pool().get('timesheet.work')
         cursor = Transaction().connection.cursor()
         table_project_work = cls.__table_handler__(module_name)
-        table_timesheet_work = TimesheetWork.__table_handler__(module_name)
         project = cls.__table__()
         timesheet = TimesheetWork.__table__()
 
-        migrate_sequence = (not table_project_work.column_exist('sequence')
-            and table_timesheet_work.column_exist('sequence'))
         work_exist = table_project_work.column_exist('work')
         add_parent = (not table_project_work.column_exist('parent')
             and work_exist)
@@ -136,20 +133,6 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             and work_exist)
 
         super(Work, cls).__register__(module_name)
-
-        # Migration from 2.0: copy sequence from timesheet to project
-        if migrate_sequence:
-            cursor.execute(*timesheet.join(project,
-                    condition=project.work == timesheet.id
-                    ).select(timesheet.sequence, timesheet.id))
-            for sequence, id_ in cursor.fetchall():
-                cursor.execute(*project.update(
-                        columns=[project.sequence],
-                        values=[sequence],
-                        where=project.work == id_))
-
-        # Migration from 2.4: drop required on sequence
-        table_project_work.not_null_action('sequence', action='remove')
 
         # Migration from 3.4: change effort into timedelta effort_duration
         if table_project_work.column_exist('effort'):
