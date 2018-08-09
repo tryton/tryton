@@ -190,26 +190,8 @@ class Statement(Workflow, ModelSQL, ModelView):
         cursor = transaction.connection.cursor()
         sql_table = cls.__table__()
 
-        # Migration from 1.8: new field company
-        table = cls.__table_handler__(module_name)
-        company_exist = table.column_exist('company')
-
         super(Statement, cls).__register__(module_name)
-
-        # Migration from 1.8: fill new field company
-        if not company_exist:
-            offset = 0
-            limit = transaction.database.IN_MAX
-            statements = True
-            while statements:
-                statements = cls.search([], offset=offset, limit=limit)
-                offset += limit
-                for statement in statements:
-                    cls.write([statement], {
-                            'company': statement.journal.company.id,
-                            })
-            table = cls.__table_handler__(module_name)
-            table.not_null_action('company', action='add')
+        table = cls.__table_handler__(module_name)
 
         # Migration from 3.2: remove required on start/end balance
         table.not_null_action('start_balance', action='remove')
