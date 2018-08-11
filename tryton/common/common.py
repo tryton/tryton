@@ -508,8 +508,8 @@ class UniqueDialog(object):
 
 class MessageDialog(UniqueDialog):
 
-    def build_dialog(self, parent, message, msg_type, buttons=gtk.BUTTONS_OK,
-            secondary=None):
+    def build_dialog(self, parent, message, msg_type=gtk.MESSAGE_INFO,
+            buttons=gtk.BUTTONS_OK, secondary=None):
         dialog = gtk.MessageDialog(parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, msg_type,
             buttons, message)
