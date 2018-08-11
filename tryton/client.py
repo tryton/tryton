@@ -17,13 +17,13 @@ from tryton.gui.window.dblogin import DBLogin
 
 def main():
     CSS = b"""
-    .readonly entry {
+    .readonly entry, .readonly text {
         background-color: @insensitive_bg_color;
     }
-    .required entry {
+    .required entry, .required text {
         border-color: darker(@unfocused_borders);
     }
-    .invalid entry, entry.invalid {
+    .invalid entry, entry.invalid, .invalid text, text.invalid {
         border-color: @error_color;
     }
     """
