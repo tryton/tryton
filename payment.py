@@ -568,7 +568,7 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', charge['id']),
                 ])
         if not payments:
-            logger.error(": No payment '%s'", _event, charge['id'])
+            logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
