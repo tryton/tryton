@@ -1076,6 +1076,9 @@
                     this.search_count, record_id];
                 this.message_callback(data);
             }
+            if (this.switch_callback) {
+                this.switch_callback();
+            }
             if (this.tab) {
                 if (record) {
                     record.get_attachment_count().always(
