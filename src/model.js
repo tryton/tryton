@@ -2209,6 +2209,7 @@
             group.set_parent(record);
             group.parent_name = this.description.relation_field;
             group.child_name = this.name;
+            group.parent_datetime_field = this.description.datetime_field;
             record._values[this.name] = group;
         },
         get_timestamp: function(record) {
