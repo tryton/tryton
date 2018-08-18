@@ -2042,6 +2042,20 @@
                 (expression.length > 2) &&
                 (typeof expression[1] == 'string'));
         },
+        constrained_leaf: function(part, boolop) {
+            if (boolop === undefined) {
+                boolop = this.and;
+            }
+            var field = part[0];
+            var operand = part[1];
+            var value = part[2];
+            if ((operand === '=') & (boolop === this.and)) {
+                // We should consider that other domain inversion will set a
+                // correct value to this field
+                return true;
+            }
+            return false;
+        },
         eval_leaf: function(part, context, boolop) {
             if (boolop === undefined) {
                 boolop = this.and;
@@ -2053,13 +2067,6 @@
                 // In the case where the leaf concerns a m2o then having a
                 // value in the evaluation context is deemed suffisant
                 return Boolean(context[field.split('.')[0]]);
-            }
-            if ((operand == '=') &&
-                    (context[field] === null || context[field] === undefined) &&
-                    (boolop === this.and)) {
-                // We should consider that other domain inversion will set a
-                // correct value to this field
-                return true;
             }
             var context_field = context[field];
             if ((context_field && context_field._isAMomentObject) && !value) {
@@ -2376,9 +2383,11 @@
                 } else {
                     var field = part[0];
                     if ((!(field in context)) ||
-                            ((field in context) &&
-                             this.domain_inversion.eval_leaf(part, context,
-                                 this.domain_inversion.and))) {
+                        ((field in context) &&
+                            (this.domain_inversion.eval_leaf(
+                                part, context, this.domain_inversion.and) ||
+                                this.domain_inversion.constrained_leaf(
+                                    part, this.domain_inversion.and)))) {
                         result.push(true);
                     } else {
                         return false;
@@ -2433,8 +2442,10 @@
                     var field = part[0];
                     field = this.base(field);
                     if ((field in context) &&
-                            this.domain_inversion.eval_leaf(part, context,
-                                this.domain_inversion.or)) {
+                        (this.domain_inversion.eval_leaf(
+                            part, context, this.domain_inversion.or)) ||
+                        this.domain_inversion.constrained_leaf(
+                            part, this.domain_inversion.or)) {
                         return true;
                     } else if ((field in context) &&
                             !this.domain_inversion.eval_leaf(part, context,

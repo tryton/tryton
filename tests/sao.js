@@ -1985,7 +1985,7 @@
         QUnit.ok(compare(domain_inversion(domain, 'z'), [['z', '=', 3]]),
             'domain_inversion(' + JSON.stringify(domain) + ', \'z\')');
         context = {x: 5};
-        QUnit.strictEqual(domain_inversion(domain, 'z', context), false,
+        QUnit.ok(compare(domain_inversion(domain, 'z', context), [['z', '=', 3]]),
             'domain_inversion(' + JSON.stringify(domain) + ', \'z\', ' +
                 JSON.stringify(context) + ')');
         context = {y: 5};
