@@ -52,8 +52,9 @@
             }.bind(this), function() {
                 this.user_id = null;
                 this.session = null;
+                this.store();
                 dfd.reject();
-            });
+            }.bind(this));
             return dfd.promise();
         },
         do_logout: function() {
@@ -90,10 +91,8 @@
                 'method': 'model.res.user.get_preferences',
                 'params': [true, {}]
             };
-            // Call with custom session to not send context
-            var session = jQuery.extend({}, this);
-            session.context = {};
-            var prm = Sao.rpc(args, session);
+            this.context = {};
+            var prm = Sao.rpc(args, this);
             return prm.then(function(context) {
                 this.context = context;
             }.bind(this));
@@ -245,11 +244,10 @@
         }
         var dfd = jQuery.Deferred();
         session.prm = dfd.promise();
-        if (!session.login) {
+        session.do_login(session.login).then(dfd.resolve, function() {
+            Sao.logout();
             dfd.reject();
-            return session.prm;
-        }
-        session.do_login(session.login).then(dfd.resolve, dfd.reject);
+        });
         return session.prm;
     };
 
@@ -313,8 +311,17 @@
                     dfd.resolve(data.result);
                 }
             };
+            var ajax_error = function(query, status_, error) {
+                if (query.status == 401) {
+                    // Retry
+                    this.run({}).then(dfd.resolve, dfd.reject);
+                } else {
+                    Sao.common.error.run(status_, error);
+                    dfd.reject();
+                }
+            };
             ajax_prm.done(ajax_success.bind(this));
-            ajax_prm.fail(dfd.reject);
+            ajax_prm.fail(ajax_error.bind(this));
             return dfd.promise();
         },
         get_char: function(message) {
