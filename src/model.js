@@ -99,7 +99,7 @@
         array.get_readonly = function() {
             // Must skip res.user for Preference windows
             var access = Sao.common.MODELACCESS.get(this.model.name);
-            if (this.context._datetime ||
+            if (this.context()._datetime ||
                     (!(access.write || access.create) &&
                      !this.skip_model_access)) {
                 return true;
