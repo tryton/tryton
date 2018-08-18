@@ -567,6 +567,37 @@ class PYSONTestCase(unittest.TestCase):
 
         self.assertEqual(repr(pyson.Len([1, 2, 3])), 'Len([1, 2, 3])')
 
+    def test_TimeDelta_pyson(self):
+        "Test pyson.TimeDelta.pyson"
+        self.assertEqual(pyson.TimeDelta(1, 2, 3).pyson(), {
+                '__class__': 'TimeDelta',
+                'd': 1,
+                's': 2,
+                'm': 3,
+                })
+
+    def test_TimeDelta_types(self):
+        "Test pyson.TimeDelta.types"
+        self.assertEqual(
+            pyson.TimeDelta(seconds=10).types(), {datetime.timedelta})
+
+    def test_TimeDelta_invalid_type(self):
+        "Test pyson.TimeDelta invalid type"
+        with self.assertRaises(AssertionError):
+            pyson.TimeDelta('foo')
+
+    def test_TimeDelta_eval(self):
+        "Test pyson.TimeDelta.eval"
+        eval = pyson.PYSONEncoder().encode(pyson.TimeDelta(1, 2, 3))
+
+        self.assertEqual(
+            pyson.PYSONDecoder().decode(eval), datetime.timedelta(1, 2, 3))
+
+    def test_TimeDelta_repr(self):
+        "Test pyson.TimeDelta.repr"
+        self.assertEqual(
+            repr(pyson.TimeDelta(1, 2, 3)), 'TimeDelta(1, 2, 3)')
+
     def test_Composite(self):
         'Test Composite'
         expr = pyson.If(pyson.Not(
