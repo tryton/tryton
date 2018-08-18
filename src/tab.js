@@ -810,6 +810,7 @@
                         revision = revisions[revisions.length - 1][0];
                     }
                     if (revision != this.screen.context()._datetime) {
+                        this.screen.clear();
                         // Update group context that will be propagated by
                         // recreating new group
                         this.screen.group._context._datetime = revision;
@@ -818,8 +819,6 @@
                                     this.screen.screen_container
                                     .search_entry.val());
                         } else {
-                            // Test if record exist in revisions
-                            this.screen.new_group();
                             this.screen.group.load([current_id]);
                         }
                         this.screen.display(true);
