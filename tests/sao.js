@@ -877,6 +877,36 @@
             'DateTime(2010, 1, 12, 10, 30, 20, 0, -1, 12, -7, 2, 15, 30, 1)');
     });
 
+    QUnit.test('PYSON TimeDelta', function() {
+        var value = new Sao.PYSON.TimeDelta(1, 2, 3).pyson();
+        QUnit.strictEqual(value.__class__, 'TimeDelta',
+            'TimeDelta(1, 2, 3).pyson()');
+        QUnit.strictEqual(value.d, 1,
+            'TimeDelta(1, 2, 3).pyson()');
+        QUnit.strictEqual(value.s, 2,
+            'TimeDelta(1, 2, 3).pyson()');
+        QUnit.strictEqual(value.m, 3,
+            'TimeDelta(1, 2, 3).pyson()');
+
+        QUnit.throws(function() {
+            new Sao.PYSON.TimeDelta('test');
+        }, 'days must be integer');
+
+        QUnit.ok(Sao.common.compare(
+            new Sao.PYSON.TimeDelta(1, 2, 3).types(), ['object']),
+            'TimeDelta(1, 2, 3).types()');
+
+        var eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.TimeDelta(1, 2, 3));
+        QUnit.strictEqual(
+            new Sao.PYSON.Decoder().decode(eval_).valueOf(),
+            Sao.TimeDelta(1, 2, 3 / 1000).valueOf());
+
+        QUnit.strictEqual(
+            new Sao.PYSON.TimeDelta(1, 2, 3).toString(),
+            'TimeDelta(1, 2, 3)');
+    });
+
     QUnit.test('PYSON Len', function() {
         var value = new Sao.PYSON.Len([1, 2, 3]).pyson();
         QUnit.strictEqual(value.__class__, 'Len', 'Len([1, 2, 3]).pyson()');

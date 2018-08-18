@@ -799,6 +799,55 @@
             obj.ms, obj.dy, obj.dM, obj.dd, obj.dh, obj.dm, obj.ds, obj.dms);
     };
 
+    Sao.PYSON.eval.TimeDelta = function(days, seconds, microseconds) {
+        return new Sao.PYSON.TimeDelta(days, seconds, microseconds);
+    };
+    Sao.PYSON.TimeDelta = Sao.class_(Sao.PYSON.PYSON, {
+        init: function(days, seconds, microseconds) {
+            Sao.PYSON.TimeDelta._super.init.call(this);
+            if (days === undefined) days = 0;
+            if (seconds === undefined) seconds = 0;
+            if (microseconds === undefined) microseconds = 0;
+
+            function test(value, name) {
+                if (value instanceof Sao.PYSON.TimeDelta) {
+                    if (jQuery(value.types()).not(['number']).length)
+                    {
+                        throw name + ' must be an integer';
+                    }
+                } else {
+                    if (typeof value != 'number') {
+                        throw name + ' must be an integer';
+                    }
+                }
+                return value;
+            }
+            this._days = test(days, 'days');
+            this._seconds = test(seconds, 'seconds');
+            this._microseconds = test(microseconds, 'microseconds');
+        },
+        pyson: function() {
+            return {
+                '__class__': 'TimeDelta',
+                'd': this._days,
+                's': this._seconds,
+                'm': this._microseconds,
+            };
+        },
+        types: function() {
+            return ['object'];
+        },
+        __string_params__: function() {
+            return [this._days, this._seconds, this._microseconds];
+        },
+    });
+    Sao.PYSON.TimeDelta.eval_ = function(value, context) {
+        return Sao.TimeDelta(value.d, value.s, value.m / 1000);
+    };
+    Sao.PYSON.TimeDelta.init_from_object = function(obj) {
+        return new Sao.PYSON.TimeDelta(obj.d, obj.s, obj.microseconds);
+    };
+
     Sao.PYSON.eval.Len = function(value) {
         return new Sao.PYSON.Len(value);
     };
