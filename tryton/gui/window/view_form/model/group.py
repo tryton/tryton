@@ -43,7 +43,7 @@ class Group(SignalEvent, list):
     @property
     def readonly(self):
         # Must skip res.user for Preference windows
-        if (self._context.get('_datetime')
+        if (self.context.get('_datetime')
                 or (not (MODELACCESS[self.model_name]['write']
                         or MODELACCESS[self.model_name]['create'])
                     and not self.skip_model_access)):
