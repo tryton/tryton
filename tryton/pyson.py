@@ -628,6 +628,44 @@ class DateTime(Date):
             )
 
 
+class TimeDelta(PYSON):
+
+    def __init__(self, days=0, seconds=0, microseconds=0):
+        for i in [days, seconds, microseconds]:
+            if isinstance(i, PYSON):
+                assert i.types().issubset({int, float}), \
+                        '%s must be an integer' % (i,)
+            else:
+                assert isinstance(i, (int, float)), \
+                        '%s must be an integer' % (i,)
+        self._days = days
+        self._seconds = seconds
+        self._microseconds = microseconds
+
+    @property
+    def __repr_params__(self):
+        return self._days, self._seconds, self._microseconds
+
+    def pyson(self):
+        return {
+            '__class__': 'TimeDelta',
+            'd': self._days,
+            's': self._seconds,
+            'm': self._microseconds,
+            }
+
+    def types(self):
+        return {datetime.timedelta}
+
+    @staticmethod
+    def eval(dct, context):
+        return datetime.timedelta(
+            days=dct['d'],
+            seconds=dct['s'],
+            microseconds=dct['m'],
+            )
+
+
 class Len(PYSON):
 
     def __init__(self, v):
@@ -672,5 +710,6 @@ CONTEXT = {
     'In': In,
     'Date': Date,
     'DateTime': DateTime,
+    'TimeDelta': TimeDelta,
     'Len': Len,
 }
