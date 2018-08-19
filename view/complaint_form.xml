@@ -31,10 +31,10 @@ this repository contains the full copyright notices and license terms. -->
             <group col="-1" colspan="2" id="buttons">
                 <button name="cancel" icon="tryton-cancel"/>
                 <button name="draft"/>
-                <button name="wait" icon="tryton-go-next"/>
-                <button name="approve" icon="tryton-go-next"/>
+                <button name="wait" icon="tryton-forward"/>
+                <button name="approve" icon="tryton-forward"/>
                 <button name="reject" icon="tryton-close"/>
-                <button name="process" icon="tryton-executable"/>
+                <button name="process" icon="tryton-launch"/>
             </group>
         </page>
     </notebook>

@@ -103,7 +103,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(
                         ['waiting', 'done', 'cancelled']),
                     'icon': If(Eval('state').in_(['done', 'cancelled']),
-                        'tryton-clear', 'tryton-go-previous'),
+                        'tryton-undo', 'tryton-back'),
                     'depends': ['state'],
                     },
                 'wait': {
