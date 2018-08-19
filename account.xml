@@ -27,12 +27,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_account_admin"/>
         </record>
 
-        <record model="ir.ui.icon" id="financial_icon">
-            <field name="name">tryton-financial</field>
-            <field name="path">icons/tryton-financial.svg</field>
+        <record model="ir.ui.icon" id="account_icon">
+            <field name="name">tryton-account</field>
+            <field name="path">icons/tryton-account.svg</field>
         </record>
-        <menuitem name="Financial" id="menu_account" sequence="2"
-            icon="tryton-financial"/>
+        <menuitem name="Financial" id="menu_account" sequence="2" icon="tryton-account"/>
         <record model="ir.ui.menu-res.group" id="menu_account_group_account">
             <field name="menu" ref="menu_account"/>
             <field name="group" ref="group_account"/>
@@ -42,9 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_account_admin"/>
         </record>
 
-        <menuitem name="Configuration" parent="menu_account"
-            id="menu_account_configuration" sequence="10"
-            icon="tryton-preferences"/>
+        <menuitem name="Configuration" parent="menu_account" id="menu_account_configuration" sequence="10" icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_account_configuration_group_account_admin">
             <field name="menu" ref="menu_account_configuration"/>

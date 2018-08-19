@@ -282,7 +282,7 @@ class CreateMove(Wizard):
     template = StateView('account.move.template.create.template',
         'account.move_template_create_template_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Next', 'keywords', 'tryton-go-next', default=True),
+            Button('Next', 'keywords', 'tryton-forward', default=True),
             ])
     keywords = KeywordStateView('account.move.template.create.keywords',
         None, [
