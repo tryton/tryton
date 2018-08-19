@@ -3,6 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="country_icon">
+            <field name="name">tryton-country</field>
+            <field name="path">icons/tryton-country.svg</field>
+        </record>
+
         <record model="ir.ui.view" id="country_view_form">
             <field name="model">country.country</field>
             <field name="type">form</field>
@@ -27,8 +32,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="country_view_form"/>
             <field name="act_window" ref="act_country_form"/>
         </record>
-        <menuitem parent="ir.menu_administration" action="act_country_form"
-            id="menu_country_form"/>
+        <menuitem parent="ir.menu_administration" action="act_country_form" icon="tryton-country" id="menu_country_form"/>
         <record model="ir.ui.menu-res.group"
             id="menu_country_form_group_admin">
             <field name="menu" ref="menu_country_form"/>

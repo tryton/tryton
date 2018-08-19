@@ -71,7 +71,7 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.country': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg']),
         },
     scripts=['scripts/trytond_import_zip'],
     classifiers=[
