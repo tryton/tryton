@@ -30,7 +30,7 @@ this repository contains the full copyright notices and license terms. -->
                     <button name="cancel" icon="tryton-cancel"/>
                     <button name="reject" icon="tryton-close"/>
                     <button name="draft"/>
-                    <button name="wait" icon="tryton-go-next"/>
+                    <button name="wait" icon="tryton-forward"/>
                     <button name="approve" icon="tryton-ok"/>
                 </group>
             </group>

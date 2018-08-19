@@ -186,8 +186,8 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(
                         ['cancel', 'waiting', 'rejected']),
                     'icon': If(Eval('state').in_(['cancel', 'rejected']),
-                        'tryton-clear',
-                        'tryton-go-previous'),
+                        'tryton-undo',
+                        'tryton-back'),
                     'depends': ['state'],
                     },
                 'wait': {
