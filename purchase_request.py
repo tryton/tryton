@@ -310,7 +310,7 @@ class CreatePurchase(Wizard):
     ask_party = StateView('purchase.request.create_purchase.ask_party',
         'purchase_request.purchase_request_create_purchase_ask_party', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Continue', 'start', 'tryton-go-next', default=True),
+            Button('Continue', 'start', 'tryton-forward', default=True),
             ])
 
     @classmethod
