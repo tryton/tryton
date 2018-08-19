@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='buttons']" position="inside">
-        <button name="correct" icon="tryton-find-replace"/>
+        <button name="correct" icon="tryton-launch"/>
     </xpath>
 </data>
