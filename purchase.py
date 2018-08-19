@@ -143,8 +143,9 @@ class Quotation(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['cancelled', 'sent']),
-                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
-                        'tryton-go-previous'),
+                    'icon': If(Eval('state') == 'cancel',
+                        'tryton-undo',
+                        'tryton-back'),
                     },
                 'send': {
                     'invisible': ((Eval('state') != 'draft')
