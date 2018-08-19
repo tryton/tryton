@@ -26,9 +26,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="False"/>
             <field name="n_sep_by_space" eval="False"/>
         </record>
-
-        <menuitem name="Administration" id="menu_administration"
-            icon="tryton-preferences-system"
-            sequence="9999"/>
     </data>
 </tryton>

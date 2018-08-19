@@ -486,7 +486,7 @@ class ModuleConfigWizard(Wizard):
     other = StateView('ir.module.config_wizard.other',
         'ir.module_config_wizard_other_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Next', 'action', 'tryton-go-next', default=True),
+            Button('Next', 'action', 'tryton-forward', default=True),
             ])
     action = ConfigStateAction()
     done = StateView('ir.module.config_wizard.done',

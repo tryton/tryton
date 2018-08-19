@@ -50,9 +50,10 @@ class MenuitemTagHandler:
 
         self.xml_id = attributes['id']
 
-        for attr in ('name', 'icon', 'sequence', 'parent', 'action', 'groups'):
-            if attributes.get(attr):
+        for attr in ('name', 'sequence', 'parent', 'action', 'groups'):
+            if attr in attributes:
                 values[attr] = attributes.get(attr)
+        values['icon'] = attributes.get('icon', 'tryton-folder')
 
         if attributes.get('active'):
             values['active'] = bool(eval(attributes['active']))
@@ -110,7 +111,7 @@ class MenuitemTagHandler:
             elif icon_name:
                 values['icon'] = icon_name
             elif action_type == 'ir.action.wizard':
-                values['icon'] = 'tryton-executable'
+                values['icon'] = 'tryton-launch'
             elif action_type == 'ir.action.report':
                 values['icon'] = 'tryton-print'
             elif action_type == 'ir.action.act_window':
@@ -120,15 +121,15 @@ class MenuitemTagHandler:
                     else:
                         values['icon'] = 'tryton-list'
                 elif view_type == 'form':
-                    values['icon'] = 'tryton-new'
+                    values['icon'] = 'tryton-form'
                 elif view_type == 'graph':
                     values['icon'] = 'tryton-graph'
                 elif view_type == 'calendar':
                     values['icon'] = 'tryton-calendar'
             elif action_type == 'ir.action.url':
-                values['icon'] = 'tryton-web-browser'
+                values['icon'] = 'tryton-public'
             else:
-                values['icon'] = 'tryton-new'
+                values['icon'] = None
 
         if values.get('groups'):
             raise Exception("Please use separate records for groups")
