@@ -272,7 +272,7 @@ class UpdateCostPrice(Wizard):
     ask_price = StateView('product.update_cost_price.ask',
         'account_stock_continental.update_cost_price_ask_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('OK', 'should_show_move', 'tryton-go-next', default=True),
+            Button('OK', 'should_show_move', 'tryton-forward', default=True),
             ])
     should_show_move = StateTransition()
     show_move = StateView('product.update_cost_price.show_move',
