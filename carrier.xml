@@ -15,7 +15,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_carrier_admin"/>
         </record>
 
-        <menuitem name="Carrier" sequence="2" id="menu_carrier"/>
+        <record model="ir.ui.icon" id="carrier_icon">
+            <field name="name">tryton-carrier</field>
+            <field name="path">icons/tryton-carrier.svg</field>
+        </record>
+
+        <menuitem name="Carrier" sequence="2" id="menu_carrier" icon="tryton-carrier"/>
 
         <record model="ir.ui.view" id="carrier_view_form">
             <field name="model">carrier</field>
