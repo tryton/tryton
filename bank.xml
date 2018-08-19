@@ -15,7 +15,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_bank_admin"/>
         </record>
 
-        <menuitem name="Banking" sequence="3" id="menu_banking"/>
+        <record model="ir.ui.icon" id="bank_icon">
+            <field name="name">tryton-bank</field>
+            <field name="path">icons/tryton-bank.svg</field>
+        </record>
+
+        <menuitem name="Banking" sequence="3" id="menu_banking" icon="tryton-bank"/>
 
         <record model="ir.ui.view" id="bank_view_form">
             <field name="model">bank</field>
