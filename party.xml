@@ -24,8 +24,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Party" sequence="0" id="menu_party"
             icon="tryton-party"/>
 
-        <menuitem name="Configuration" parent="menu_party"
-            id="menu_configuration" sequence="0" icon="tryton-preferences"/>
+        <menuitem name="Configuration" parent="menu_party" id="menu_configuration" sequence="0" icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_party_group_party_admin">
             <field name="menu" ref="menu_configuration"/>
