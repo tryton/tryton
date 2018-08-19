@@ -31,16 +31,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_production"/>
         </record>
 
-        <menuitem name="Production" id="menu_production" sequence="10"/>
+        <record model="ir.ui.icon" id="production_icon">
+            <field name="name">tryton-production</field>
+            <field name="path">icons/tryton-production.svg</field>
+        </record>
+
+        <menuitem name="Production" id="menu_production" sequence="10" icon="tryton-production"/>
         <record model="ir.ui.menu-res.group"
             id="menu_production_group_production">
             <field name="menu" ref="menu_production"/>
             <field name="group" ref="group_production"/>
         </record>
 
-        <menuitem name="Configuration" parent="menu_production"
-            id="menu_configuration"
-            sequence="0" icon="tryton-preferences"/>
+        <menuitem name="Configuration" parent="menu_production" id="menu_configuration" sequence="0" icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_production_admin">
             <field name="menu" ref="menu_configuration"/>

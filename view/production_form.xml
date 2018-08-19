@@ -47,9 +47,9 @@ this repository contains the full copyright notices and license terms. -->
             <button name="draft"/>
             <button name="reset_bom" icon="tryton-clear"/>
             <button name="wait"/>
-            <button name="assign_wizard" icon="tryton-go-next"/>
-            <button name="run" icon="tryton-go-next"/>
-            <button name="done" icon="tryton-go-next"/>
+            <button name="assign_wizard" icon="tryton-forward"/>
+            <button name="run" icon="tryton-forward"/>
+            <button name="done" icon="tryton-forward"/>
         </group>
     </group>
 </form>

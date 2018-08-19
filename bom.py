@@ -248,7 +248,7 @@ class OpenBOMTree(Wizard):
             ])
     tree = StateView('production.bom.tree.open.tree',
         'production.bom_tree_open_tree_view_form', [
-            Button('Change', 'start', 'tryton-go-previous'),
+            Button('Change', 'start', 'tryton-back'),
             Button('Close', 'end', 'tryton-close'),
             ])
 

@@ -185,8 +185,8 @@ class Production(Workflow, ModelSQL, ModelView):
                     'icon': If(Eval('state') == 'cancel',
                         'tryton-clear',
                         If(Eval('state') == 'request',
-                            'tryton-go-next',
-                            'tryton-go-previous')),
+                            'tryton-forward',
+                            'tryton-back')),
                     'depends': ['state'],
                     },
                 'reset_bom': {
@@ -198,10 +198,10 @@ class Production(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(['draft', 'assigned',
                             'waiting', 'running']),
                     'icon': If(Eval('state').in_(['assigned', 'running']),
-                        'tryton-go-previous',
+                        'tryton-back',
                         If(Eval('state') == 'waiting',
                             'tryton-clear',
-                            'tryton-go-next')),
+                            'tryton-forward')),
                     'depends': ['state'],
                     },
                 'run': {
@@ -651,7 +651,7 @@ class Assign(Wizard):
     start = StateTransition()
     failed = StateView('production.assign.failed',
         'production.assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-go-next',
+            Button('Force Assign', 'force', 'tryton-forward',
                 states={
                     'invisible': ~Id('stock',
                         'group_stock_force_assignment').in_(
