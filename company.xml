@@ -3,6 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="company_icon">
+            <field name="name">tryton-company</field>
+            <field name="path">icons/tryton-company.svg</field>
+        </record>
+
         <record model="ir.ui.view" id="company_view_form">
             <field name="model">company.company</field>
             <field name="type">form</field>
@@ -38,8 +43,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="company_view_form"/>
             <field name="act_window" ref="act_company_tree"/>
         </record>
-        <menuitem parent="party.menu_configuration" action="act_company_tree"
-            id="menu_company_tree"/>
+
+        <menuitem parent="party.menu_configuration" action="act_company_tree" icon="tryton-company" id="menu_company_tree"/>
 
         <record model="ir.action.act_window" id="act_company_list">
             <field name="name">Companies</field>
