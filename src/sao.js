@@ -239,6 +239,7 @@ var Sao = {};
     Sao.config.roundup = {};
     Sao.config.roundup.url = 'http://bugs.tryton.org/roundup/';
     Sao.config.title = 'Tryton';
+    Sao.config.icon_color = '#3465a4';
 
     Sao.i18n = i18n();
     Sao.i18n.setlang = function(lang) {
@@ -297,6 +298,10 @@ var Sao = {};
                         Sao.Action.execute(action_id, {}, null, {});
                     });
                     Sao.set_title();
+                    Sao.common.ICONFACTORY.get_icon_url('tryton-menu')
+                        .then(function(url) {
+                            jQuery('.navbar-brand > img').attr('src', url);
+                        });
                     var new_lang = preferences.language != Sao.i18n.getLocale();
                     var prm = jQuery.Deferred();
                     Sao.i18n.setlang(preferences.language).always(function() {
@@ -557,13 +562,10 @@ var Sao = {};
                     var li = jQuery('<li/>', {
                         'role': 'presentation'
                     });
-                    var icon = jQuery('<img/>', {
-                        'class': 'favorite-icon'
-                    });
+                    var icon = Sao.common.ICONFACTORY.get_icon_img(
+                        menu_item[2], {'class': 'favorite-icon'});
                     a.append(icon);
                     li.append(a);
-                    icon.attr('src',
-                         Sao.common.ICONFACTORY.get_icon_url(menu_item[2]));
                     a.append(menu_item[1]);
                     a.click(function(evt) {
                         evt.preventDefault();
@@ -617,8 +619,9 @@ var Sao = {};
             'href': '#',
             'title': title,
             'aria-label': title,
-        }).click(Sao.logout).append(jQuery('<span/>', {
-            'class': 'glyphicon glyphicon-log-out hidden-xs',
+        }).click(Sao.logout).append(
+            Sao.common.ICONFACTORY.get_icon_img('tryton-exit', {
+            'class': 'icon hidden-xs',
             'aria-hidden': true,
         })).append(jQuery('<span/>', {
             'class': 'visible-xs',
@@ -699,8 +702,9 @@ var Sao = {};
 
         },
         get_cell: function() {
-            var cell = jQuery('<span/>', {
-                'tabindex': 0
+            var cell = jQuery('<img/>', {
+                'class': 'column-affix',
+                'tabindex': 0,
             });
             return cell;
         },
@@ -710,11 +714,15 @@ var Sao = {};
             }
             record.load(this.field.name).done(function() {
                 if (record._values.favorite !== null) {
-                    var star = 'glyphicon glyphicon-star';
+                    var icon = 'tryton-star';
                     if (!record._values.favorite) {
-                        star += '-empty';
+                        icon += '-border';
                     }
-                    cell.addClass(star);
+                    cell.data('star', Boolean(record._values.favorite));
+                    Sao.common.ICONFACTORY.get_icon_url(icon)
+                        .then(function(url) {
+                            cell.attr('src', url);
+                        });
                     cell.click({'record': record, 'button': cell},
                         this.favorite_click);
                     }
@@ -725,16 +733,20 @@ var Sao = {};
             // Prevent activate the action of the row
             e.stopImmediatePropagation();
             var button = e.data.button;
-            var method;
-            if (button.hasClass('glyphicon-star-empty')) {
-                button.removeClass('glyphicon-star-empty');
-                button.addClass('glyphicon-star');
+            var method, icon;
+            var star = button.data('star');
+            if (!star) {
+                icon = 'tryton-star';
                 method = 'set';
             } else {
-                button.removeClass('glyphicon-star');
-                button.addClass('glyphicon-star-empty');
+                icon = 'tryton-star-border';
                 method = 'unset';
             }
+            button.data('star', !star);
+            Sao.common.ICONFACTORY.get_icon_url(icon)
+                .then(function(url) {
+                    button.attr('src', url);
+                });
             var name = Sao.main_menu_screen.model_name + '.favorite';
             var session = Sao.Session.current_session;
             var args = {
@@ -799,7 +811,7 @@ var Sao = {};
                 'class': 'global-search-container',
             });
             var group = jQuery('<div/>', {
-                'class': 'input-group',
+                'class': 'input-group input-group-sm',
             }).appendTo(this.el);
 
             jQuery('<div/>', {
@@ -812,10 +824,9 @@ var Sao = {};
                 'aria-expanded': false,
                 'title': Sao.i18n.gettext("Favorites"),
                 'aria-label': Sao.i18n.gettext("Favorites"),
-            }).click(Sao.favorites_menu).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-bookmark',
-                'aria-hidden': true,
-            }))).appendTo(group);
+            }).click(Sao.favorites_menu).append(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-bookmarks')))
+                .appendTo(group);
 
             this.search_entry = jQuery('<input>', {
                 'id': 'global-search-entry',
@@ -839,13 +850,9 @@ var Sao = {};
         },
         format: function(content) {
             var el = jQuery('<div/>');
-            var img = jQuery('<img/>', {
-                'class': 'global-search-icon'
-            }).appendTo(el);
-            Sao.common.ICONFACTORY.register_icon(content.icon).then(
-                    function(icon_url) {
-                        img.attr('src', icon_url);
-                    });
+            Sao.common.ICONFACTORY.get_icon_img(
+                content.icon, {'class': 'global_search-icon'})
+                .appendTo(el);
             jQuery('<span/>', {
                 'class': 'global-search-text'
             }).text(content.record_name).appendTo(el);

@@ -47,16 +47,13 @@
                 'class': 'btn btn-default',
                 'aria-label': Sao.i18n.gettext("Search"),
                 'title': Sao.i18n.gettext("Search"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-search'
-            }));
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-search'));
 
             this.but_active = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default hidden-xs',
                 'aria-expanded': false,
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-compressed',
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-archive', {
                 'aria-hidden': true,
             }));
             this._set_active_tooltip();
@@ -70,9 +67,8 @@
                 'aria-label': Sao.i18n.gettext("Bookmarks"),
                 'title': Sao.i18n.gettext("Bookmarks"),
                 'id': 'bookmarks'
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-bookmark',
-                'aria-hidden': true
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-bookmark', {
+                'aria-hidden': true,
             }));
             var dropdown_bookmark = jQuery('<ul/>', {
                 'class': 'dropdown-menu',
@@ -100,14 +96,14 @@
             this.but_star = jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button'
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon',
+            }).append(jQuery('<img/>', {
+                'class': 'icon',
                 'aria-hidden': true
-            })).click(this.star_click.bind(this));
+            }).data('star', false)).click(this.star_click.bind(this));
             this.set_star();
 
             jQuery('<div/>', {
-                'class': 'input-group'
+                'class': 'input-group input-group-sm'
             })
             .append(jQuery('<span/>', {
                 'class': 'input-group-btn'
@@ -131,9 +127,8 @@
                 'class': 'btn btn-default',
                 'aria-label': Sao.i18n.gettext("Previous"),
                 'title': Sao.i18n.gettext("Previous"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-menu-left',
-                'aria-hidden': true
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back', {
+                'aria-hidden': true,
             }));
             this.but_prev.click(this.search_prev.bind(this));
             this.but_next = jQuery('<button/>', {
@@ -141,9 +136,8 @@
                 'class': 'btn btn-default',
                 'aria-label': Sao.i18n.gettext("Next"),
                 'title': Sao.i18n.gettext("Next"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-menu-right',
-                'aria-hidden': true
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward', {
+                'aria-hidden': true,
             }));
             this.but_next.click(this.search_next.bind(this));
 
@@ -216,23 +210,24 @@
             }, this);
         },
         set_star: function(star) {
-            var glyphicon = this.but_star.children('span.glyphicon');
-            var title;
+            var img = this.but_star.children('img');
+            var title, icon;
             if (star) {
-                glyphicon.removeClass('glyphicon-star-empty');
-                glyphicon.addClass('glyphicon-star');
+                icon = 'tryton-star';
                 title = Sao.i18n.gettext("Remove this bookmark");
             } else {
-                glyphicon.removeClass('glyphicon-star');
-                glyphicon.addClass('glyphicon-star-empty');
+                icon = 'tryton-star-border';
                 title = Sao.i18n.gettext('Bookmark this filter');
             }
+            this.but_star.data('star', Boolean(star));
             this.but_star.attr('title', title);
             this.but_star.attr('aria-label', title);
+            Sao.common.ICONFACTORY.get_icon_url(icon).then(function(url) {
+                img.attr('src', url);
+            });
         },
         get_star: function() {
-            var glyphicon = this.but_star.children('span.glyphicon');
-            return glyphicon.hasClass('glyphicon-star');
+            return this.but_star.data('star');
         },
         star_click: function() {
             var star = this.get_star();
@@ -571,9 +566,8 @@
                     'tabindex': -1,
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-calendar'
-                }))).appendTo(entry);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date')
+                )).appendTo(entry);
                 jQuery('<input/>', {
                     'class': 'form-control input-sm',
                     type: 'text',

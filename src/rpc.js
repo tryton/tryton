@@ -68,7 +68,7 @@
                         return;
                     } else {
                         Sao.common.message.run('Concurrency Exception',
-                                'glyphicon-alert').always(dfd.reject);
+                                'tryton-warning').always(dfd.reject);
                         return;
                     }
                 } else {

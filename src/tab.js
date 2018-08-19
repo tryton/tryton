@@ -17,89 +17,89 @@
             return [
                 {
                     id: 'switch_',
-                    icon: 'glyphicon-list-alt',
+                    icon: 'tryton-switch',
                     label: Sao.i18n.gettext('Switch'),
                     tooltip: Sao.i18n.gettext('Switch view'),
                 }, {
                     id: 'previous',
-                    icon: 'glyphicon-chevron-left',
+                    icon: 'tryton-back',
                     label: Sao.i18n.gettext('Previous'),
                     tooltip: Sao.i18n.gettext('Previous Record')
                 }, {
                     id: 'next',
-                    icon: 'glyphicon-chevron-right',
+                    icon: 'tryton-forward',
                     label: Sao.i18n.gettext('Next'),
                     tooltip: Sao.i18n.gettext('Next Record'),
                 }, {
                     id: 'search',
-                    icon: 'glyphicon-search',
+                    icon: 'tryton-search',
                     label: Sao.i18n.gettext('Search'),
                 }, null, {
                     id: 'new_',
-                    icon: 'glyphicon-edit',
+                    icon: 'tryton-create',
                     label: Sao.i18n.gettext('New'),
                     tooltip: Sao.i18n.gettext('Create a new record'),
                 }, {
                     id: 'save',
-                    icon: 'glyphicon-save',
+                    icon: 'tryton-save',
                     label: Sao.i18n.gettext('Save'),
                     tooltip: Sao.i18n.gettext('Save this record'),
                 }, {
                     id: 'reload',
-                    icon: 'glyphicon-refresh',
+                    icon: 'tryton-refresh',
                     label: Sao.i18n.gettext('Reload/Undo'),
                     tooltip: Sao.i18n.gettext('Reload'),
                 }, {
                     id: 'copy',
-                    icon: 'glyphicon-duplicate',
+                    icon: 'tryton-copy',
                     label: Sao.i18n.gettext('Duplicate'),
                 }, {
                     id: 'delete_',
-                    icon: 'glyphicon-trash',
+                    icon: 'tryton-delete',
                     label: Sao.i18n.gettext('Delete'),
                 }, null, {
                     id: 'logs',
-                    icon: 'glyphicon-time',
+                    icon: 'tryton-log',
                     label: Sao.i18n.gettext('View Logs...'),
                 }, {
                     id: (this.screen &&
                         Sao.common.MODELHISTORY.contains(this.screen.model_name)) ?
                         'revision': null,
-                    icon: 'glyphicon-time',
+                    icon: 'tryton-history',
                     label: Sao.i18n.gettext('Show revisions...'),
                 }, null, {
                     id: 'attach',
-                    icon: 'glyphicon-paperclip',
+                    icon: 'tryton-attach',
                     label: Sao.i18n.gettext('Attachment'),
                     tooltip: Sao.i18n.gettext('Add an attachment to the record'),
                 }, {
                     id: 'note',
-                    icon: 'glyphicon-comment',
+                    icon: 'tryton-note',
                     label: Sao.i18n.gettext('Note'),
                     tooltip: Sao.i18n.gettext('Add a note to the record'),
                 }, {
                     id: 'action',
-                    icon: 'glyphicon-cog',
+                    icon: 'tryton-launch',
                     label: Sao.i18n.gettext('Action'),
                 }, null, {
                     id: 'relate',
-                    icon: 'glyphicon-share-alt',
+                    icon: 'tryton-link',
                     label: Sao.i18n.gettext('Relate'),
                 }, {
                     id: 'print',
-                    icon: 'glyphicon-print',
+                    icon: 'tryton-print',
                     label: Sao.i18n.gettext('Print'),
                 }, null, {
                     id: 'export',
-                    icon: 'glyphicon-export',
+                    icon: 'tryton-export',
                     label: Sao.i18n.gettext('Export'),
                 }, {
                     id: 'import',
-                    icon: 'glyphicon-import',
+                    icon: 'tryton-import',
                     label: Sao.i18n.gettext('Import'),
                 }, null, {
                     id: 'close',
-                    icon: 'glyphicon-remove',
+                    icon: 'tryton-close',
                     label: Sao.i18n.gettext('Close Tab'),
                 },
             ];
@@ -134,9 +134,8 @@
                         'role': 'menuitem',
                         'href': '#',
                         'tabindex': -1
-                    }).append(jQuery('<span/>', {
-                        'class': 'glyphicon ' + item.icon,
-                        'aria-hidden': 'true'
+                    }).append(Sao.common.ICONFACTORY.get_icon_img(item.icon, {
+                        'aria-hidden': 'true',
                     })).append(' ' + item.label).appendTo(menuitem);
                     this.menu_buttons[item.id] = menuitem;
                     link.click(function(evt) {
@@ -215,9 +214,8 @@
                     'title': item.label,
                     'id': item.id
                 })
-                .append(jQuery('<span/>', {
-                    'class': 'glyphicon ' + item.icon,
-                    'aria-hidden': 'true'
+                .append(Sao.common.ICONFACTORY.get_icon_img(item.icon, {
+                    'aria-hidden': 'true',
                 }))
                 .appendTo(group);
                 this.buttons[item.id].click(item, function(event) {
@@ -481,11 +479,11 @@
                 screen.context());
             prm.done(function(toolbars) {
                 [
-                ['action', 'glyphicon-cog',
+                ['action', 'tryton-launch',
                     Sao.i18n.gettext('Launch action')],
-                ['relate', 'glyphicon-share-alt',
+                ['relate', 'tryton-link',
                      Sao.i18n.gettext('Open related records')],
-                ['print', 'glyphicon-print',
+                ['print', 'tryton-print',
                      Sao.i18n.gettext('Print report')]
                 ].forEach(function(menu_action) {
                     var button = jQuery('<div/>', {
@@ -501,10 +499,10 @@
                         'title': menu_action[2],
                         'id': menu_action[0],
                     })
-                        .append(jQuery('<span/>', {
-                            'class': 'glyphicon ' + menu_action[1],
-                            'aria-hidden': 'true'
-                        }))
+                        .append(Sao.common.ICONFACTORY.get_icon_img(
+                            menu_action[1], {
+                                'aria-hidden': 'true',
+                            }))
                         .append(jQuery('<span/>', {
                             'class': 'caret'
                         })))

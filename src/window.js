@@ -151,9 +151,8 @@
                         'class': 'btn btn-default btn-sm',
                         'type': 'button',
                         'aria-label': Sao.i18n.gettext('Add')
-                    }).append(jQuery('<span/>', {
-                        'class': 'glyphicon glyphicon-plus'
-                    })).appendTo(buttons);
+                    }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
+                    ).appendTo(buttons);
                     this.but_add.click(this.add.bind(this));
                     this.but_add.prop('disabled', !access.read || readonly);
 
@@ -161,9 +160,8 @@
                         'class': 'btn btn-default btn-sm',
                         'type': 'button',
                         'aria-label': Sao.i18n.gettext('Remove')
-                    }).append(jQuery('<span/>', {
-                        'class': 'glyphicon glyphicon-minus'
-                    })).appendTo(buttons);
+                    }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
+                    ).appendTo(buttons);
                     this.but_remove.click(this.remove.bind(this));
                     this.but_remove.prop('disabled', !access.read || readonly);
                 }
@@ -172,9 +170,8 @@
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('New')
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-edit'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-create')
+                ).appendTo(buttons);
                 this.but_new.click(this.new_.bind(this));
                 this.but_new.prop('disabled', !access.create || readonly);
 
@@ -182,9 +179,8 @@
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Delete')
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-trash'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
+                ).appendTo(buttons);
                 this.but_del.click(this.delete_.bind(this));
                 this.but_del.prop('disabled', !access['delete'] || readonly);
 
@@ -192,9 +188,8 @@
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Undelete')
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-repeat'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-undo')
+                ).appendTo(buttons);
                 this.but_undel.click(this.undelete.bind(this));
                 this.but_undel.prop('disabled', !access['delete'] || readonly);
 
@@ -202,9 +197,8 @@
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Previous')
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-chevron-left'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
+                ).appendTo(buttons);
                 this.but_previous.click(this.previous.bind(this));
 
                 this.label = jQuery('<span/>', {
@@ -216,18 +210,16 @@
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Next')
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-chevron-right'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
+                ).appendTo(buttons);
                 this.but_next.click(this.next.bind(this));
 
                 this.but_switch = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Switch')
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-list-alt'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-switch')
+                ).appendTo(buttons);
                 this.but_switch.click(this.switch_.bind(this));
             }
 
@@ -855,9 +847,8 @@
             var button_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(jQuery('<i/>', {
-                    'class': 'glyphicon glyphicon-plus'
-            })).click(function(){
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
+            ).click(function(){
                 this.fields_all.find('.bg-primary').each(function(i, el_field) {
                     this.sig_sel_add(el_field);
                 }.bind(this));
@@ -867,9 +858,8 @@
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(jQuery('<i/>', {
-                    'class': 'glyphicon glyphicon-minus'
-            })).click(function(){
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
+            ).click(function(){
                 // sig_unsel
                 this.fields_selected.children('li.bg-primary').remove();
             }.bind(this)).append(' '+Sao.i18n.gettext('Remove'))
@@ -878,9 +868,8 @@
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(jQuery('<i/>', {
-                    'class': 'glyphicon glyphicon-remove'
-            })).click(function(){
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-clear')
+            ).click(function(){
                 this.fields_selected.empty();
             }.bind(this)).append(' '+Sao.i18n.gettext('Clear'))
             .appendTo(this.column_buttons);
@@ -907,7 +896,7 @@
             }).appendTo(this.dialog.body);
 
             var expander_icon = jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-plus',
+                'class': 'caret',
             }).css('cursor', 'pointer').html('&nbsp;');
 
             var csv_param_label = jQuery('<label/>', {
@@ -916,10 +905,8 @@
 
             jQuery('<div/>', {
                 'class': 'col-md-12'
-            }).append(expander_icon).append(csv_param_label)
+            }).append(csv_param_label).append(expander_icon)
             .on('click', function(){
-                expander_icon.toggleClass('glyphicon-plus')
-                .toggleClass('glyphicon-minus');
                 this.expander_csv.collapse('toggle');
             }.bind(this)).appendTo(row_csv_param);
 
@@ -1043,9 +1030,8 @@
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(jQuery('<i/>', {
-                    'class': 'glyphicon glyphicon-search'
-            })).click(function(){
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-search')
+            ).click(function(){
                 this.autodetect();
             }.bind(this)).append(' '+Sao.i18n.gettext('Auto-Detect'))
             .appendTo(this.column_buttons);
@@ -1131,19 +1117,25 @@
 
                 if (parent_node[field].relation) {
                     node.prepend(' ');
-                    var expander_icon = jQuery('<i/>', {
-                        'class': 'glyphicon glyphicon-plus'
-                    }).click(function(e) {
-                        e.stopPropagation();
-                        expander_icon.toggleClass('glyphicon-plus')
-                        .toggleClass('glyphicon-minus');
-                        if(expander_icon.hasClass('glyphicon-minus')) {
-                            this.on_row_expanded(parent_node[field]);
-                        }
-                        else {
-                            node.next('ul').remove();
-                        }
-                    }.bind(this)).prependTo(node);
+                    var expander_icon = Sao.common.ICONFACTORY
+                        .get_icon_img('tryton-arrow-right')
+                        .data('expanded', false)
+                        .click(function(e) {
+                            e.stopPropagation();
+                            var icon;
+                            var expanded = expander_icon.data('expanded');
+                            expander_icon.data('expanded', !expanded);
+                            if (expanded) {
+                                icon = 'tryton-arrow-right';
+                                node.next('ul').remove();
+                            } else {
+                                icon = 'tryton-arrow-down';
+                                this.on_row_expanded(parent_node[field]);
+                            }
+                            Sao.common.ICONFACTORY.get_icon_url(icon).then(function(url) {
+                                expander_icon.attr('src', url);
+                            });
+                        }.bind(this)).prependTo(node);
                 }
             }.bind(this));
         },
@@ -1356,9 +1348,8 @@
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(jQuery('<i/>', {
-                    'class': 'glyphicon glyphicon-floppy-save'
-            })).click(function(){
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-save')
+            ).click(function(){
                 this.addreplace_predef();
             }.bind(this)).append(' '+Sao.i18n.gettext('Save Export'))
             .appendTo(this.column_buttons);
@@ -1366,9 +1357,8 @@
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(jQuery('<i/>', {
-                    'class': 'glyphicon glyphicon-floppy-remove'
-            })).click(function(){
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
+            ).click(function(){
                 this.remove_predef();
             }.bind(this)).append(' '+Sao.i18n.gettext('Delete Export'))
             .appendTo(this.column_buttons);
@@ -1424,19 +1414,25 @@
 
                 if (parent_node[name].children) {
                     node.prepend(' ');
-                    var expander_icon = jQuery('<i/>', {
-                        'class': 'glyphicon glyphicon-plus'
-                    }).click(function(e){
-                        e.stopPropagation();
-                        expander_icon.toggleClass('glyphicon-plus')
-                        .toggleClass('glyphicon-minus');
-                        if(expander_icon.hasClass('glyphicon-minus')) {
-                            this.on_row_expanded(parent_node[name]);
-                        }
-                        else {
-                            node.next('ul').remove();
-                        }
-                    }.bind(this)).prependTo(node);
+                    var expander_icon = Sao.common.ICONFACTORY
+                        .get_icon_img('tryton-arrow-right')
+                        .data('expanded', false)
+                        .click(function(e) {
+                            e.stopPropagation();
+                            var icon;
+                            var expanded = expander_icon.data('expanded');
+                            expander_icon.data('expanded', !expanded);
+                            if (expanded) {
+                                icon = 'tryton-arrow-right';
+                                node.next('ul').remove();
+                            } else {
+                                icon = 'tryton-arrow-down';
+                                this.on_row_expanded(parent_node[name]);
+                            }
+                            Sao.common.ICONFACTORY.get_icon_url(icon).then(function(url) {
+                                expander_icon.attr('src', url);
+                            });
+                        }.bind(this)).prependTo(node);
                 }
             }.bind(this));
         },

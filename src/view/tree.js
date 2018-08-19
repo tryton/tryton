@@ -130,7 +130,9 @@
                     label.attr('title', column.attributes.help);
                 }
                 if (column.sortable) {
-                    var arrow = jQuery('<span/>');
+                    var arrow = jQuery('<img/>', {
+                        'class': 'icon',
+                    });
                     label.append(arrow);
                     column.arrow = arrow;
                     th.click(column, this.sort_model.bind(this));
@@ -261,24 +263,30 @@
         sort_model: function(e){
             var column = e.data;
             var arrow = column.arrow;
-            var arrow_top = 'glyphicon glyphicon-triangle-top';
-            var arrow_bottom = 'glyphicon glyphicon-triangle-bottom';
             this.columns.forEach(function(col) {
                 if (col.arrow){
-                    if (col != column && col.arrow.hasClass('glyphicon')) {
-                        col.arrow.removeClass(arrow_top + ' ' + arrow_bottom);
+                    if (col != column && col.arrow.attr('src')) {
+                        col.arrow.attr('src', '');
                     }
                 }
             });
             this.screen.order = this.screen.default_order;
-            if (arrow.hasClass(arrow_bottom)) {
-                arrow.removeClass(arrow_bottom);
-                arrow.addClass(arrow_top);
+            if (arrow.data('order') == 'ASC') {
+                arrow.data('order', 'DESC');
+                Sao.common.ICONFACTORY.get_icon_url('tryton-arrow-up')
+                    .then(function(url) {
+                        arrow.attr('src', url);
+                    });
                 this.screen.order = [[column.attributes.name, 'DESC']];
-            } else if (arrow.hasClass(arrow_top)) {
-                arrow.removeClass(arrow_top);
+            } else if (arrow.data('order') == 'DESC') {
+                arrow.data('order', '');
+                arrow.attr('src', '');
             } else {
-                arrow.addClass(arrow_bottom);
+                arrow.data('order', 'ASC');
+                Sao.common.ICONFACTORY.get_icon_url('tryton-arrow-down')
+                    .then(function(url) {
+                        arrow.attr('src', url);
+                    });
                 this.screen.order = [[column.attributes.name, 'ASC']];
             }
             var unsaved_records = [];
@@ -889,8 +897,7 @@
                 var row = widgets[1];
                 td.append(table);
                 if ((i === 0) && this.children_field) {
-                    this.expander = jQuery('<span/>', {
-                        'class': 'glyphicon',
+                    this.expander = jQuery('<img/>', {
                         'tabindex': 0
                     });
                     this.expander.html('&nbsp;');
@@ -1043,13 +1050,16 @@
             return false;
         },
         update_expander: function(expanded) {
+            var icon;
             if (expanded) {
-                this.expander.removeClass('glyphicon-plus');
-                this.expander.addClass('glyphicon-minus');
+                icon = 'tryton-arrow-down';
             } else {
-                this.expander.removeClass('glyphicon-minus');
-                this.expander.addClass('glyphicon-plus');
+                icon = 'tryton-arrow-right';
             }
+            Sao.common.ICONFACTORY.get_icon_url(icon)
+                .then(function(url) {
+                    this.expander.attr('src', url);
+                }.bind(this));
         },
         collapse_children: function() {
             this.rows.forEach(function(row, pos, rows) {
@@ -1448,7 +1458,7 @@
             this.protocol = protocol || null;
             this.icon = attributes.icon;
             if (this.protocol && !this.icon) {
-                this.icon = 'tryton-web-browser';
+                this.icon = 'tryton-public';
             }
         },
         get_cell: function() {
@@ -1473,7 +1483,7 @@
                 cell = this.get_cell();
             }
             record.load(this.attributes.name).done(function() {
-                var value, icon_prm;
+                var value;
                 var field = record.model.fields[this.attributes.name];
                 var invisible = field.get_state_attrs(record).invisible;
                 if (invisible) {
@@ -1506,16 +1516,16 @@
                     else {
                         value = this.icon;
                     }
-                    icon_prm = Sao.common.ICONFACTORY.register_icon(value);
-                    icon_prm.done(function(url) {
-                        var img_tag;
-                        if (cell.children('img').length) {
-                            img_tag = cell.children('img');
-                        } else {
-                            img_tag = cell;
-                        }
-                        img_tag.attr('src', url || '');
-                    }.bind(this));
+                    Sao.common.ICONFACTORY.get_icon_url(value)
+                        .done(function(url) {
+                            var img_tag;
+                            if (cell.children('img').length) {
+                                img_tag = cell.children('img');
+                            } else {
+                                img_tag = cell;
+                            }
+                            img_tag.attr('src', url || '');
+                        }.bind(this));
                 } else {
                     value = this.attributes.string || '';
                     if (!value) {
@@ -1784,9 +1794,8 @@
                 button = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-save',
-                })).appendTo(cell)
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-save')
+                ).appendTo(cell)
                     .click(record, function(event) {
                         // Prevent editable tree to start edition
                         event.stopPropagation();

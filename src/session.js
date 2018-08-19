@@ -145,10 +145,7 @@
         dialog.button = jQuery('<button/>', {
             'class': 'btn btn-primary',
             'type': 'submit'
-        }).append(jQuery('<span/>', {
-            'class': 'glyphicon glyphicon-log-in',
-            'aria-hidden': true,
-        })).append(' ' + Sao.i18n.gettext("Login")).appendTo(dialog.footer);
+        }).append(' ' + Sao.i18n.gettext("Login")).appendTo(dialog.footer);
         return dialog;
     };
 

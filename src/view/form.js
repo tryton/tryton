@@ -782,9 +782,7 @@ function eval_pyson(value){
                 'class': 'tab-pane',
             }).uniqueId();
             var tab_id = pane.attr('id');
-            var img = jQuery('<img/>', {
-                'class': 'icon',
-            });
+            var img = Sao.common.ICONFACTORY.get_icon_img(icon);
             var page = jQuery('<li/>', {
                 'role': 'presentation'
             }).append(
@@ -804,10 +802,6 @@ function eval_pyson(value){
                 pane.addClass('active');
                 this.selected = true;
             }
-            Sao.common.ICONFACTORY.register_icon(icon)
-                .done(function(url) {
-                    img.attr('src', url);
-                });
             return page;
         },
         set_current_page: function(page_index) {
@@ -931,7 +925,7 @@ function eval_pyson(value){
                 var field = record.model.fields[name];
                 name = field.get(record);
             }
-            Sao.common.ICONFACTORY.register_icon(name)
+            Sao.common.ICONFACTORY.get_icon_url(name)
                 .done(function(url) {
                     this.img.attr('src', url);
                 }.bind(this));
@@ -1358,9 +1352,8 @@ function eval_pyson(value){
                     'class': 'btn btn-default btn-sm form-control',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Translate')
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-flag'
-                })).appendTo(jQuery('<span/>', {
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-translate')
+                ).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn'
                 }).appendTo(this.group));
                 button.click(this.translate.bind(this));
@@ -1481,9 +1474,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Open the calendar"),
                 'title': Sao.i18n.gettext("Open the calendar"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-calendar'
-            }))).appendTo(this.date);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date')
+            )).appendTo(this.date);
             this.input = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm mousetrap'
@@ -1859,9 +1851,8 @@ function eval_pyson(value){
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn'
                 }).appendTo(this.el));
-                button.append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-flag'
-                }));
+                button.append(
+                    Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
                 button.click(this.translate.bind(this));
             }
         },
@@ -1924,9 +1915,8 @@ function eval_pyson(value){
                 }).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn',
                 }).appendTo(this.el));
-                button.append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-flag',
-                }));
+                button.append(
+                    Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
                 button.click(this.translate.bind(this));
             }
         },
@@ -1953,9 +1943,9 @@ function eval_pyson(value){
                     button = jQuery('<button/>', {
                         'class': 'btn btn-default',
                         'type': 'button'
-                    }).append(jQuery('<span/>', {
-                        'class': 'glyphicon glyphicon-' + properties.icon
-                    })).appendTo(group);
+                    }).append(Sao.common.ICONFACTORY.get_icon_img(
+                        'tryton-format-' + properties.icon)
+                    ).appendTo(group);
                     button.click(properties.command, button_apply_command);
                 }
             };
@@ -1968,7 +1958,7 @@ function eval_pyson(value){
                         'icon': 'italic',
                         'command': 'italic'
                     }, {
-                        'icon': 'text-color',  // XXX
+                        'icon': 'underline',
                         'command': 'underline'
                     }]);
 
@@ -2169,8 +2159,8 @@ function eval_pyson(value){
                 'class': 'btn btn-default',
                 'type': 'button',
                 'tabindex': -1,
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon'
+            }).append(jQuery('<img/>', {
+                'class': 'icon'
             })).appendTo(jQuery('<span/>', {
                 'class': 'input-group-btn'
             }).prependTo(group));
@@ -2178,8 +2168,8 @@ function eval_pyson(value){
                 'class': 'btn btn-default',
                 'type': 'button',
                 'tabindex': -1,
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon'
+            }).append(jQuery('<img/>', {
+                'class': 'icon'
             })).appendTo(jQuery('<span/>', {
                 'class': 'input-group-btn'
             }).appendTo(group));
@@ -2254,14 +2244,14 @@ function eval_pyson(value){
             var primary, tooltip1, secondary, tooltip2;
             value = field.get(record);
             if (this.has_target(value)) {
-                primary = 'glyphicon-folder-open';
+                primary = 'tryton-open';
                 tooltip1 = Sao.i18n.gettext("Open the record <F2>");
-                secondary = 'glyphicon-erase';
+                secondary = 'tryton-clear';
                 tooltip2 = Sao.i18n.gettext("Clear the field <Del>");
             } else {
                 primary = null;
                 tooltip1 = '';
-                secondary = 'glyphicon-search';
+                secondary = 'tryton-search';
                 tooltip2 = Sao.i18n.gettext("Search a record <F2>");
             }
             if (this.entry.prop('readonly')) {
@@ -2274,15 +2264,16 @@ function eval_pyson(value){
                 var icon_name = items[0];
                 var tooltip = items[1];
                 var button = items[2];
-                var icon = button.find('.glyphicon');
-                icon.removeClass().addClass('glyphicon');
+                var img = button.find('img');
                 // don't use .hide/.show because the display value is not
                 // correctly restored on modal.
                 if (!icon_name) {
                     button.parent().css('display', 'none');
                 } else {
                     button.parent().css('display', 'table-cell');
-                    icon.addClass(icon_name);
+                    Sao.common.ICONFACTORY.get_icon_url(icon_name).then(function(url) {
+                        img.attr('src', url);
+                    });
                 }
                 button.attr('aria-label', tooltip);
                 button.attr('title', tooltip);
@@ -2761,9 +2752,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Switch"),
                 'title': Sao.i18n.gettext("Switch"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-list-alt'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-switch')
+            ).appendTo(buttons);
             this.but_switch.click(this.switch_.bind(this));
 
             this.but_previous = jQuery('<button/>', {
@@ -2772,9 +2762,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Previous"),
                 'title': Sao.i18n.gettext("Previous"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-chevron-left'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
+            ).appendTo(buttons);
             this.but_previous.click(this.previous.bind(this));
 
             this.label = jQuery('<span/>', {
@@ -2789,9 +2778,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Next"),
                 'title': Sao.i18n.gettext("Next"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-chevron-right'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
+            ).appendTo(buttons);
             this.but_next.click(this.next.bind(this));
 
             if (attributes.add_remove) {
@@ -2812,9 +2800,8 @@ function eval_pyson(value){
                     'tabindex': -1,
                     'aria-label': Sao.i18n.gettext("Add"),
                     'title': Sao.i18n.gettext("Add"),
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-plus'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
+                ).appendTo(buttons);
                 this.but_add.click(this.add.bind(this));
 
                 this.but_remove = jQuery('<button/>', {
@@ -2823,9 +2810,8 @@ function eval_pyson(value){
                     'tabindex': -1,
                     'aria-label': Sao.i18n.gettext("Remove"),
                     'title': Sao.i18n.gettext("Remove"),
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-minus'
-                })).appendTo(buttons);
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
+                ).appendTo(buttons);
                 this.but_remove.click(this.remove.bind(this));
             }
 
@@ -2835,9 +2821,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("New"),
                 'title': Sao.i18n.gettext("New"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-edit'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-create')
+            ).appendTo(buttons);
             this.but_new.click(this.new_.bind(this));
 
             this.but_open = jQuery('<button/>', {
@@ -2846,9 +2831,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Open"),
                 'title': Sao.i18n.gettext("Open"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-folder-open'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-open')
+            ).appendTo(buttons);
             this.but_open.click(this.open.bind(this));
 
             this.but_del = jQuery('<button/>', {
@@ -2857,9 +2841,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Delete"),
                 'title': Sao.i18n.gettext("Delete"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-trash'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
+            ).appendTo(buttons);
             this.but_del.click(this.delete_.bind(this));
 
             this.but_undel = jQuery('<button/>', {
@@ -2868,9 +2851,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Undelete"),
                 'title': Sao.i18n.gettext("Undelete"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-repeat'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-undo')
+            ).appendTo(buttons);
             this.but_undel.click(this.undelete.bind(this));
 
             this.content = jQuery('<div/>', {
@@ -3303,9 +3285,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Add"),
                 'title': Sao.i18n.gettext("Add"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-plus'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
+            ).appendTo(buttons);
             this.but_add.click(this.add.bind(this));
 
             this.but_remove = jQuery('<button/>', {
@@ -3314,9 +3295,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Remove"),
                 'title': Sao.i18n.gettext("Remove"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-minus'
-            })).appendTo(buttons);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
+            ).appendTo(buttons);
             this.but_remove.click(this.remove.bind(this));
 
             this.content = jQuery('<div/>', {
@@ -3529,9 +3509,8 @@ function eval_pyson(value){
                 'type': 'button',
                 'aria-label': Sao.i18n.gettext("Save As"),
                 'title': Sao.i18n.gettext("Save As..."),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-save'
-            })).appendTo(group);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-save')
+            ).appendTo(group);
             this.but_save_as.click(this.save_as.bind(this));
 
             this.but_select = jQuery('<button/>', {
@@ -3539,9 +3518,8 @@ function eval_pyson(value){
                 'type': 'button',
                 'aria-label': Sao.i18n.gettext("Select"),
                 'title': Sao.i18n.gettext("Select..."),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-search'
-            })).appendTo(group);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-search')
+            ).appendTo(group);
             this.but_select.click(this.select.bind(this));
 
             this.but_clear = jQuery('<button/>', {
@@ -3549,9 +3527,8 @@ function eval_pyson(value){
                 'type': 'button',
                 'aria-label': Sao.i18n.gettext("Clear"),
                 'title': Sao.i18n.gettext("Clear"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-erase'
-            })).appendTo(group);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-clear')
+            ).appendTo(group);
             this.but_clear.click(this.clear.bind(this));
 
             return group;
@@ -3699,9 +3676,8 @@ function eval_pyson(value){
                 this.but_open = jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button'
-                }).append(jQuery('<span/>', {
-                    'class': 'glyphicon glyphicon-folder-open'
-                })).appendTo(jQuery('<span/>', {
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-open')
+                ).appendTo(jQuery('<span/>', {
                     'class': 'input-group-btn',
                 }).prependTo(group));
                 this.but_open.click(this.open.bind(this));
@@ -3907,8 +3883,8 @@ function eval_pyson(value){
             }
         },
         set_icon: function(value) {
-            value = value || 'tryton-web-browser';
-            Sao.common.ICONFACTORY.register_icon(value).done(function(url) {
+            value = value || 'tryton-public';
+            Sao.common.ICONFACTORY.get_icon_url(value).done(function(url) {
                 this.icon.attr('src', url);
             }.bind(this));
         },
@@ -4039,9 +4015,8 @@ function eval_pyson(value){
                 'class': 'btn btn-default btn-sm',
                 'type': 'button',
                 'aria-label': Sao.i18n.gettext('Add')
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-plus'
-            })).appendTo(jQuery('<div/>', {
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
+            ).appendTo(jQuery('<div/>', {
                 'class': 'input-group-btn'
             }).appendTo(group));
             this.but_add.click(this.add.bind(this));
@@ -4283,9 +4258,8 @@ function eval_pyson(value){
                 'class': 'btn btn-default',
                 'type': 'button',
                 'arial-label': Sao.i18n.gettext('Remove')
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-minus'
-            })).appendTo(jQuery('<div/>', {
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
+            ).appendTo(jQuery('<div/>', {
                 'class': 'input-group-btn'
             }).appendTo(group));
 
@@ -4436,9 +4410,8 @@ function eval_pyson(value){
                 'tabindex': -1,
                 'aria-label': Sao.i18n.gettext("Open the calendar"),
                 'title': Sao.i18n.gettext("Open the calendar"),
-            }).append(jQuery('<span/>', {
-                'class': 'glyphicon glyphicon-calendar'
-            }))).prependTo(this.date);
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date')
+            )).prependTo(this.date);
             this.date.datetimepicker({
                 'format': Sao.common.moment_format(this.format),
                 'locale': moment.locale(),
@@ -4503,8 +4476,8 @@ function eval_pyson(value){
             this.encoder = new Sao.PYSON.Encoder({});
             this.decoder = new Sao.PYSON.Decoder({}, true);
             this.el.keyup(this.validate_pyson.bind(this));
-            this.icon = jQuery('<span/>', {
-                'class': 'glyphicon',
+            this.icon = jQuery('<img/>', {
+                'class': 'icon',
             }).appendTo(jQuery('<span/>', {
                 'class': 'input-group-addon',
             }).appendTo(this.group));
@@ -4546,10 +4519,12 @@ function eval_pyson(value){
         validate_pyson: function() {
             var icon = 'ok';
             if (this.get_encoded_value() === null) {
-                icon = 'remove';
+                icon = 'error';
             }
-            this.icon.removeClass().addClass('glyphicon').addClass(
-                ' glyphicon-' + icon + '-sign');
+            Sao.common.ICONFACTORY.get_icon_img('tryton-' + icon)
+                .then(function(url) {
+                    this.icon.attr('src', url);
+                }.bind(this));
         },
         focus_out: function() {
             this.validate_pyson();
