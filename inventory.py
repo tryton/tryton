@@ -496,7 +496,7 @@ class Count(Wizard):
         'stock.inventory.count.search',
         'stock.inventory_count_search_view_form', [
             Button("End", 'end', 'tryton-cancel'),
-            Button("Select", 'quantity', 'tryton-go-next', default=True),
+            Button("Select", 'quantity', 'tryton-forward', default=True),
             ])
     quantity = StateView(
         'stock.inventory.count.quantity',

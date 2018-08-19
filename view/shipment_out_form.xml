@@ -41,8 +41,8 @@ this repository contains the full copyright notices and license terms. -->
             <button name="cancel" icon="tryton-cancel"/>
             <button name="draft"/>
             <button name="wait"/>
-            <button name="assign_wizard" icon="tryton-go-next"/>
-            <button name="pack" icon="tryton-go-next"/>
+            <button name="assign_wizard" icon="tryton-forward"/>
+            <button name="pack" icon="tryton-forward"/>
             <button name="done" icon="tryton-ok"/>
         </group>
     </group>

@@ -573,14 +573,15 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['waiting', 'cancel']),
-                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
-                        'tryton-go-previous'),
+                    'icon': If(Eval('state') == 'cancel',
+                        'tryton-undo',
+                        'tryton-forward'),
                     'depends': ['state'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['assigned', 'draft']),
                     'icon': If(Eval('state') == 'assigned',
-                        'tryton-go-previous', 'tryton-go-next'),
+                        'tryton-back', 'tryton-forward'),
                     'depends': ['state'],
                     },
                 'done': {
@@ -908,18 +909,19 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['waiting', 'cancel']),
-                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
-                        'tryton-go-previous'),
+                    'icon': If(Eval('state') == 'cancel',
+                        'tryton-undo',
+                        'tryton-forward'),
                     'depends': ['state'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['assigned', 'waiting',
                             'draft']),
                     'icon': If(Eval('state') == 'assigned',
-                        'tryton-go-previous',
+                        'tryton-back',
                         If(Eval('state') == 'waiting',
                             'tryton-clear',
-                            'tryton-go-next')),
+                            'tryton-forward')),
                     'depends': ['state'],
                     },
                 'pack': {
@@ -1744,7 +1746,7 @@ class AssignShipmentOut(Wizard):
     start = StateTransition()
     failed = StateView('stock.shipment.out.assign.failed',
         'stock.shipment_out_assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-go-next',
+            Button('Force Assign', 'force', 'tryton-forward',
                 states={
                     'invisible': ~Id('stock',
                         'group_stock_force_assignment').in_(
@@ -1953,20 +1955,20 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(
                         ['cancel', 'request', 'waiting']),
                     'icon': If(Eval('state') == 'cancel',
-                        'tryton-clear',
+                        'tryton-undo',
                         If(Eval('state') == 'request',
-                            'tryton-go-next',
-                            'tryton-go-previous')),
+                            'tryton-forward',
+                            'tryton-back')),
                     'depends': ['state'],
                     },
                 'wait': {
                     'invisible': ~Eval('state').in_(['assigned', 'waiting',
                             'draft']),
                     'icon': If(Eval('state') == 'assigned',
-                        'tryton-go-previous',
+                        'tryton-back',
                         If(Eval('state') == 'waiting',
                             'tryton-clear',
-                            'tryton-go-next')),
+                            'tryton-forward')),
                     'depends': ['state'],
                     },
                 'ship': {
@@ -2321,7 +2323,7 @@ class AssignShipmentInternal(Wizard):
     start = StateTransition()
     failed = StateView('stock.shipment.internal.assign.failed',
         'stock.shipment_internal_assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-go-next',
+            Button('Force Assign', 'force', 'tryton-forward',
                 states={
                     'invisible': ~Id('stock',
                         'group_stock_force_assignment').in_(
@@ -2369,7 +2371,7 @@ class AssignShipmentInReturn(Wizard):
     start = StateTransition()
     failed = StateView('stock.shipment.in.return.assign.failed',
         'stock.shipment_in_return_assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-go-next',
+            Button('Force Assign', 'force', 'tryton-forward',
                 states={
                     'invisible': ~Id('stock',
                         'group_stock_force_assignment').in_(

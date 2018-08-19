@@ -38,7 +38,7 @@ this repository contains the full copyright notices and license terms. -->
         <group col="-1" colspan="2" id="buttons">
             <button name="cancel" icon="tryton-cancel"/>
             <button name="draft" icon="tryton-clear"/>
-            <button name="receive" icon="tryton-go-next"/>
+            <button name="receive" icon="tryton-forward"/>
             <button name="done" icon="tryton-ok"/>
         </group>
     </group>
