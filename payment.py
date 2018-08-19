@@ -198,12 +198,12 @@ class Payment(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') != 'approved',
-                    'icon': 'tryton-go-previous',
+                    'icon': 'tryton-back',
                     'depends': ['state'],
                     },
                 'approve': {
                     'invisible': Eval('state') != 'draft',
-                    'icon': 'tryton-go-next',
+                    'icon': 'tryton-forward',
                     'depends': ['state'],
                     },
                 'succeed': {
