@@ -29,9 +29,9 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="state"/>
                 <group col="-1" colspan="2" id="buttons">
                     <button name="cancel" icon="tryton-cancel"/>
-                    <button name="draft" icon="tryton-clear"/>
-                    <button name="validate_statement" icon="tryton-go-next"/>
-                    <button name="reconcile" icon="tryton-find-replace"/>
+                    <button name="draft" icon="tryton-undo"/>
+                    <button name="validate_statement" icon="tryton-forward"/>
+                    <button name="reconcile" icon="tryton-search"/>
                     <button name="post" icon="tryton-ok"/>
                 </group>
             </group>
