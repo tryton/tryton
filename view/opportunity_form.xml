@@ -46,9 +46,9 @@ this repository contains the full copyright notices and license terms. -->
             <group col="-1" colspan="2" id="buttons">
                 <button name="cancel" icon="tryton-cancel"/>
                 <button name="lost" icon="tryton-cancel"/>
-                <button name="lead" icon="tryton-go-previous"/>
-                <button name="opportunity" icon="tryton-go-next"/>
-                <button name="convert" icon="tryton-go-next"/>
+                <button name="lead" icon="tryton-back"/>
+                <button name="opportunity" icon="tryton-forward"/>
+                <button name="convert" icon="tryton-forward"/>
             </group>
         </page>
         <page name="lines">

@@ -176,7 +176,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(
                         ['cancelled', 'lost', 'opportunity']),
                     'icon': If(Eval('state').in_(['cancelled', 'lost']),
-                        'tryton-clear', 'tryton-go-previous'),
+                        'tryton-undo', 'tryton-back'),
                     'depends': ['state'],
                     },
                 'opportunity': {
