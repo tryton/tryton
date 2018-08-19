@@ -254,8 +254,9 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'draft': {
                     'invisible': ~Eval('state').in_(
                         ['cancel', 'quotation', 'confirmed']),
-                    'icon': If(Eval('state') == 'cancel', 'tryton-clear',
-                        'tryton-go-previous'),
+                    'icon': If(Eval('state') == 'cancel',
+                        'tryton-undo',
+                        'tryton-back'),
                     'depends': ['state'],
                     },
                 'quote': {

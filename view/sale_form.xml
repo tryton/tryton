@@ -46,15 +46,13 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="total_amount" xalign="1.0" xexpand="0"/>
                 <group col="-1" colspan="2" id="buttons">
                     <button name="cancel" icon="tryton-cancel"/>
-                    <button name="modify_header" icon="tryton-executable"/>
+                    <button name="modify_header" icon="tryton-launch"/>
                     <button name="draft"/>
-                    <button name="quote" icon="tryton-go-next"/>
-                    <button name="handle_invoice_exception"
-                        icon="tryton-go-next"/>
-                    <button name="handle_shipment_exception"
-                        icon="tryton-go-next"/>
-                    <button name="confirm" icon="tryton-go-next"/>
-                    <button name="process" icon="tryton-go-next"/>
+                    <button name="quote" icon="tryton-forward"/>
+                    <button name="handle_invoice_exception" icon="tryton-forward"/>
+                    <button name="handle_shipment_exception" icon="tryton-forward"/>
+                    <button name="confirm" icon="tryton-forward"/>
+                    <button name="process" icon="tryton-forward"/>
                 </group>
             </group>
         </page>

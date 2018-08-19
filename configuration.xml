@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Configuration" parent="menu_sale"
-            id="menu_configuration" sequence="0" icon="tryton-preferences"/>
+        <menuitem name="Configuration" parent="menu_sale" id="menu_configuration" sequence="0" icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_sale_admin">
             <field name="menu" ref="menu_configuration"/>

@@ -27,7 +27,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_sale_admin"/>
         </record>
 
-        <menuitem name="Sales" id="menu_sale" sequence="5"/>
+        <record model="ir.ui.icon" id="sale_icon">
+            <field name="name">tryton-sale</field>
+            <field name="path">icons/tryton-sale.svg</field>
+        </record>
+
+        <menuitem name="Sales" id="menu_sale" sequence="5" icon="tryton-sale"/>
         <record model="ir.ui.menu-res.group" id="menu_sale_group_sale">
             <field name="menu" ref="menu_sale"/>
             <field name="group" ref="group_sale"/>
