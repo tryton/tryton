@@ -457,7 +457,7 @@ class PartyReplace(Wizard):
     start_state = 'ask'
     ask = StateView('party.replace.ask', 'party.replace_ask_view_form', [
             Button("Cancel", 'end', 'tryton-cancel'),
-            Button("Replace", 'replace', 'tryton-find-replace', default=True),
+            Button("Replace", 'replace', 'tryton-launch', default=True),
             ])
     replace = StateTransition()
 
