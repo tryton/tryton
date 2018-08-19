@@ -28,9 +28,8 @@ class WinImport(WinCSV):
         button_autodetect = gtk.Button(
             _('_Auto-Detect'), stock=None, use_underline=True)
         button_autodetect.set_alignment(0.0, 0.0)
-        img_button = gtk.Image()
-        img_button.set_from_stock('tryton-find', gtk.ICON_SIZE_BUTTON)
-        button_autodetect.set_image(img_button)
+        button_autodetect.set_image(common.IconFactory.get_image(
+                'tryton-search', gtk.ICON_SIZE_BUTTON))
         button_autodetect.set_always_show_image(True)
         button_autodetect.connect_after('clicked', self.sig_autodetect)
         box.pack_start(button_autodetect, False, False, 0)

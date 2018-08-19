@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import gtk
 import gettext
-from tryton.common import RPCExecute, RPCException
+from tryton.common import RPCExecute, RPCException, IconFactory
 from tryton.gui.window.view_form.screen import Screen
 from tryton.action import Action
 from tryton.gui.window import Window
@@ -87,16 +87,14 @@ def populate(menu, model, record, title='', field=None, context=None):
         action_menu.append(gtk.SeparatorMenuItem())
     attachment_item = gtk.ImageMenuItem()
     attachment_item.set_label(_('Attachments...'))
-    attachment_icon = gtk.Image()
-    attachment_icon.set_from_stock('tryton-attachment', gtk.ICON_SIZE_MENU)
-    attachment_item.set_image(attachment_icon)
+    attachment_item.set_image(IconFactory.get_image(
+            'tryton-attachment', gtk.ICON_SIZE_MENU))
     action_menu.append(attachment_item)
     attachment_item.connect('activate', attachment)
     note_item = gtk.ImageMenuItem()
     note_item.set_label(_('Notes...'))
-    note_icon = gtk.Image()
-    note_icon.set_from_stock('tryton-note', gtk.ICON_SIZE_MENU)
-    note_item.set_image(note_icon)
+    note_item.set_image(IconFactory.get_image(
+            'tryton-note', gtk.ICON_SIZE_MENU))
     action_menu.append(note_item)
     note_item.connect('activate', note)
 
@@ -106,19 +104,18 @@ def populate(menu, model, record, title='', field=None, context=None):
         except RPCException:
             return
         for atype, icon, label, flavor in (
-                ('action', 'tryton-executable', _('Actions...'), None),
-                ('relate', 'tryton-go-jump', _('Relate...'), None),
-                ('print', 'tryton-print-open', _('Report...'), 'open'),
-                ('print', 'tryton-print-email', _('E-Mail...'), 'email'),
+                ('action', 'tryton-launch', _('Actions...'), None),
+                ('relate', 'tryton-link', _('Relate...'), None),
+                ('print', 'tryton-open', _('Report...'), 'open'),
+                ('print', 'tryton-email', _('E-Mail...'), 'email'),
                 ('print', 'tryton-print', _('Print...'), 'print'),
                 ):
             if len(action_menu):
                 action_menu.append(gtk.SeparatorMenuItem())
             title_item = gtk.ImageMenuItem()
             title_item.set_label(label)
-            title_icon = gtk.Image()
-            title_icon.set_from_stock(icon, gtk.ICON_SIZE_MENU)
-            title_item.set_image(title_icon)
+            title_item.set_image(IconFactory.get_image(
+                    icon, gtk.ICON_SIZE_MENU))
             action_menu.append(title_item)
             if not toolbar[atype]:
                 title_item.set_sensitive(False)

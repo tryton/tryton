@@ -4,6 +4,9 @@
 import gettext
 import gtk
 import gobject
+
+from gi.repository import Gtk
+
 from tryton.gui.window.view_form.screen import Screen
 from tryton.action import Action
 from tryton.gui import Main
@@ -121,9 +124,13 @@ class Form(SignalEvent, TabContent):
         label = _('Attachment(%d)') % signal_data
         self.buttons['attach'].set_label(label)
         if signal_data:
-            self.buttons['attach'].set_stock_id('tryton-attachment-hi')
+            # FIXME
+            icon = 'tryton-attach'
         else:
-            self.buttons['attach'].set_stock_id('tryton-attachment')
+            icon = 'tryton-attach'
+        image = common.IconFactory.get_image(icon, gtk.ICON_SIZE_LARGE_TOOLBAR)
+        image.show()
+        self.buttons['attach'].set_icon_widget(image)
         record = self.screen.current_record
         self.buttons['attach'].props.sensitive = bool(
             record.id >= 0 if record else False)
@@ -511,10 +518,10 @@ class Form(SignalEvent, TabContent):
 
         iconstock = {
             'print': 'tryton-print',
-            'action': 'tryton-executable',
-            'relate': 'tryton-go-jump',
-            'email': 'tryton-print-email',
-            'open': 'tryton-print-open',
+            'action': 'tryton-launch',
+            'relate': 'tryton-link',
+            'email': 'tryton-email',
+            'open': 'tryton-open',
         }
         for action_type, special_action, action_name, tooltip in (
                 ('action', 'action', _('Action'), _('Launch action')),
@@ -525,7 +532,10 @@ class Form(SignalEvent, TabContent):
                 ('print', 'print', _('Print'), _('Print report')),
         ):
             if action_type is not None:
-                tbutton = gtk.ToggleToolButton(iconstock.get(special_action))
+                tbutton = gtk.ToggleToolButton()
+                tbutton.set_icon_widget(common.IconFactory.get_image(
+                        iconstock.get(special_action),
+                        gtk.ICON_SIZE_LARGE_TOOLBAR))
                 tbutton.set_label(action_name)
                 tbutton._menu = self._create_popup_menu(tbutton,
                     action_type, toolbars[action_type], special_action)
@@ -541,7 +551,10 @@ class Form(SignalEvent, TabContent):
 
         gtktoolbar.insert(gtk.SeparatorToolItem(), -1)
 
-        url_button = gtk.ToggleToolButton('tryton-web-browser')
+        url_button = gtk.ToggleToolButton()
+        url_button.set_icon_widget(
+            common.IconFactory.get_image(
+                'tryton-public', gtk.ICON_SIZE_LARGE_TOOLBAR))
         url_button.set_label(_('_Copy URL'))
         url_button.set_use_underline(True)
         self.tooltips.set_tip(
@@ -607,9 +620,8 @@ class Form(SignalEvent, TabContent):
             menuitem.set_label('_' + button.attrs.get('string', _('Unknown')))
             menuitem.set_use_underline(True)
             if button.attrs.get('icon'):
-                icon = gtk.Image()
-                icon.set_from_stock(button.attrs['icon'], gtk.ICON_SIZE_MENU)
-                menuitem.set_image(icon)
+                menuitem.set_image(common.IconFactory.get_image(
+                        button.attrs['icon'], gtk.ICON_SIZE_MENU))
             menuitem.connect('activate',
                 lambda m, attrs: self.screen.button(attrs), button.attrs)
             menuitem._update_action = True

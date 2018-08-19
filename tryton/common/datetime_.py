@@ -9,6 +9,7 @@ import gtk
 from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 
+from .common import IconFactory
 from .datetime_strftime import datetime_strftime as strftime
 
 __all__ = ['Date', 'CellRendererDate', 'Time', 'CellRendererTime', 'DateTime']
@@ -55,7 +56,9 @@ class Date(gtk.Entry):
         self.connect('activate', self.activate)
 
         # Calendar Popup
-        self.set_icon_from_stock(gtk.ENTRY_ICON_PRIMARY, 'tryton-calendar')
+        self.set_icon_from_pixbuf(
+            gtk.ENTRY_ICON_PRIMARY,
+            IconFactory.get_pixbuf('tryton-date', gtk.ICON_SIZE_MENU))
         self.set_icon_tooltip_text(gtk.ENTRY_ICON_PRIMARY,
             _('Open the calendar'))
         self.connect('icon-press', self.icon_press)

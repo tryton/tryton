@@ -32,12 +32,12 @@ class DBListEditor(object):
         self.parent = parent
         self.dialog = gtk.Dialog(title=_('Profile Editor'), parent=parent,
             flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
-        self.ok_button = self.dialog.add_button(gtk.STOCK_OK,
-            gtk.RESPONSE_ACCEPT)
-        self.ok_button.get_style_context().add_class(
-            Gtk.STYLE_CLASS_SUGGESTED_ACTION)
+        self.ok_button = self.dialog.add_button(
+            set_underline(_("Close")), gtk.RESPONSE_CLOSE)
         self.dialog.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.dialog.set_icon(TRYTON_ICON)
+
+        tooltips = common.Tooltips()
 
         hpaned = gtk.HPaned()
         vbox_profiles = gtk.VBox(homogeneous=False, spacing=6)
@@ -52,21 +52,23 @@ class DBListEditor(object):
         scroll = gtk.ScrolledWindow()
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scroll.add(self.profile_tree)
-        self.add_button = gtk.Button(_('_Add'), use_underline=True)
+        self.add_button = gtk.Button()
+        self.add_button.set_image(common.IconFactory.get_image(
+                'tryton-add', gtk.ICON_SIZE_BUTTON))
+        tooltips.set_tip(self.add_button, _("Add new profile"))
         self.add_button.connect('clicked', self.profile_create)
-        add_image = gtk.Image()
-        add_image.set_from_stock('gtk-add', gtk.ICON_SIZE_BUTTON)
-        self.add_button.set_image(add_image)
-        self.remove_button = gtk.Button(_('_Remove'), use_underline=True)
+        self.remove_button = gtk.Button()
+        self.remove_button.set_image(common.IconFactory.get_image(
+                'tryton-remove', gtk.ICON_SIZE_BUTTON))
+        tooltips.set_tip(self.remove_button, _("Remove selected profile"))
         self.remove_button.get_style_context().add_class(
             Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION)
         self.remove_button.connect('clicked', self.profile_delete)
-        remove_image = gtk.Image()
-        remove_image.set_from_stock('gtk-remove', gtk.ICON_SIZE_BUTTON)
-        self.remove_button.set_image(remove_image)
+        bbox = Gtk.ButtonBox()
+        bbox.pack_start(self.remove_button)
+        bbox.pack_start(self.add_button)
         vbox_profiles.pack_start(scroll, expand=True, fill=True)
-        vbox_profiles.pack_start(self.add_button, expand=False, fill=True)
-        vbox_profiles.pack_start(self.remove_button, expand=False, fill=True)
+        vbox_profiles.pack_start(bbox, expand=False, fill=True)
         hpaned.add1(vbox_profiles)
 
         table = gtk.Table(4, 2, homogeneous=False)
@@ -104,8 +106,6 @@ class DBListEditor(object):
         self.database_combo.connect('changed', self.dbcombo_changed)
         self.database_progressbar = gtk.ProgressBar()
         self.database_progressbar.set_text(_('Fetching databases list'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-new', gtk.ICON_SIZE_BUTTON)
         db_box = gtk.VBox(homogeneous=True)
         db_box.pack_start(self.database_entry)
         db_box.pack_start(self.database_combo)
@@ -135,7 +135,7 @@ class DBListEditor(object):
 
         self.dialog.vbox.pack_start(hpaned)
         self.dialog.set_default_size(640, 350)
-        self.dialog.set_default_response(gtk.RESPONSE_ACCEPT)
+        self.dialog.set_default_response(gtk.RESPONSE_CLOSE)
 
         self.dialog.connect('close', lambda *a: False)
         self.dialog.connect('response', self.response)
@@ -394,18 +394,12 @@ class DBLogin(object):
 
         tooltips = common.Tooltips()
         button_cancel = gtk.Button(_('_Cancel'), use_underline=True)
-        img_cancel = gtk.Image()
-        img_cancel.set_from_stock('gtk-cancel', gtk.ICON_SIZE_BUTTON)
-        button_cancel.set_image(img_cancel)
         tooltips.set_tip(button_cancel,
             _('Cancel connection to the Tryton server'))
         self.dialog.add_action_widget(button_cancel, gtk.RESPONSE_CANCEL)
         self.button_connect = gtk.Button(_('C_onnect'), use_underline=True)
         self.button_connect.get_style_context().add_class(
             Gtk.STYLE_CLASS_SUGGESTED_ACTION)
-        img_connect = gtk.Image()
-        img_connect.set_from_stock('tryton-connect', gtk.ICON_SIZE_BUTTON)
-        self.button_connect.set_image(img_connect)
         self.button_connect.set_can_default(True)
         tooltips.set_tip(self.button_connect, _('Connect the Tryton server'))
         self.dialog.add_action_widget(self.button_connect, gtk.RESPONSE_OK)
@@ -449,9 +443,6 @@ class DBLogin(object):
         self.table_main.attach(self.combo_profile, 1, 2, 1, 2)
         self.table_main.attach(self.profile_button, 2, 3, 1, 2,
             xoptions=gtk.FILL)
-        image = gtk.Image()
-        image.set_from_stock('gtk-edit', gtk.ICON_SIZE_BUTTON)
-        self.profile_button.set_image(image)
         self.expander = gtk.Expander()
         self.expander.set_label(_('Host / Database information'))
         self.expander.connect('notify::expanded', self.expand_hostspec)

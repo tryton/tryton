@@ -15,9 +15,8 @@ class URL(Char):
 
         self.tooltips = common.Tooltips()
         self.button = gtk.Button()
-        img = gtk.Image()
-        img.set_from_stock('tryton-web-browser', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.button.set_image(img)
+        self.button.set_image(common.IconFactory.get_image(
+                'tryton-public', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.button.set_relief(gtk.RELIEF_NONE)
         self.button.connect('clicked', self.button_clicked)
         self.button.set_alignment(0.5, 0.5)
@@ -30,13 +29,11 @@ class URL(Char):
         if record and 'icon' in self.attrs:
             icon = self.attrs['icon']
             if icon in record.group.fields:
-                value = record[icon].get_client(record) or 'tryton-web-browser'
+                value = record[icon].get_client(record) or 'tryton-public'
             else:
                 value = icon
-            common.ICONFACTORY.register_icon(value)
-            img = gtk.Image()
-            img.set_from_stock(value, gtk.ICON_SIZE_SMALL_TOOLBAR)
-            self.button.set_image(img)
+            self.button.set_image(common.IconFactory.get_image(
+                    value, gtk.ICON_SIZE_SMALL_TOOLBAR))
 
     def set_tooltips(self):
         value = self.entry.get_text()

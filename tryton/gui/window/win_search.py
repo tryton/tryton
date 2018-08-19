@@ -4,6 +4,7 @@ import gtk
 import gettext
 
 import tryton.common as common
+from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
@@ -49,18 +50,28 @@ class WinSearch(NoModal):
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
-        self.but_cancel = self.win.add_button(gtk.STOCK_CANCEL,
-            gtk.RESPONSE_CANCEL)
+        self.but_cancel = self.win.add_button(
+            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+        self.but_cancel.set_image(common.IconFactory.get_image(
+                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
         self.but_cancel.set_always_show_image(True)
-        self.but_find = self.win.add_button(gtk.STOCK_FIND, gtk.RESPONSE_APPLY)
+        self.but_find = self.win.add_button(
+            set_underline(_("Search")), gtk.RESPONSE_APPLY)
+        self.but_find.set_image(common.IconFactory.get_image(
+                'tryton-search', gtk.ICON_SIZE_BUTTON))
         self.but_find.set_always_show_image(True)
         if new and common.MODELACCESS[model]['create']:
-            self.but_new = self.win.add_button(gtk.STOCK_NEW,
-                gtk.RESPONSE_ACCEPT)
+            self.but_new = self.win.add_button(
+                set_underline(_("New")), gtk.RESPONSE_ACCEPT)
+            self.but_new.set_image(common.IconFactory.get_image(
+                    'tryton-create', gtk.ICON_SIZE_BUTTON))
             self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
-        self.but_ok = self.win.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        self.but_ok = self.win.add_button(
+            set_underline(_("OK")), gtk.RESPONSE_OK)
+        self.but_ok.set_image(common.IconFactory.get_image(
+                'tryton-ok', gtk.ICON_SIZE_BUTTON))
         self.but_ok.set_always_show_image(True)
         self.but_ok.add_accelerator('clicked', self.accel_group,
                 gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)

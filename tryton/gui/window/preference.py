@@ -6,7 +6,8 @@ import gtk
 import copy
 
 import tryton.rpc as rpc
-from tryton.common import RPCExecute, RPCException, Login
+from tryton.common import RPCExecute, RPCException, Login, IconFactory
+from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.exceptions import TrytonError
 from tryton.gui import Main
@@ -31,10 +32,15 @@ class Preference(NoModal):
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
-        self.but_cancel = self.win.add_button(gtk.STOCK_CANCEL,
-                gtk.RESPONSE_CANCEL)
+        self.but_cancel = self.win.add_button(
+            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+        self.but_cancel.set_image(IconFactory.get_image(
+                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
         self.but_cancel.set_always_show_image(True)
-        self.but_ok = self.win.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        self.but_ok = self.win.add_button(
+            set_underline(_("OK")), gtk.RESPONSE_OK)
+        self.but_ok.set_image(IconFactory.get_image(
+                'tryton-ok', gtk.ICON_SIZE_BUTTON))
         self.but_ok.set_always_show_image(True)
         self.but_ok.add_accelerator('clicked', self.accel_group,
                 gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)

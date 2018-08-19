@@ -30,6 +30,7 @@ from tryton.common.selection import SelectionMixin, PopdownMixin
 from tryton.common.datetime_ import CellRendererDate, CellRendererTime
 from tryton.common.datetime_strftime import datetime_strftime
 from tryton.common.domain_parser import quote
+from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -127,7 +128,7 @@ class Affix(Cell):
             self.renderer = CellRendererClickablePixbuf()
             self.renderer.connect('clicked', self.clicked)
             if not self.icon:
-                self.icon = 'tryton-web-browser'
+                self.icon = 'tryton-public'
         elif self.icon:
             self.renderer = gtk.CellRendererPixbuf()
         else:
@@ -147,9 +148,7 @@ class Affix(Cell):
                 value = record[self.icon].get_client(record) or ''
             else:
                 value = self.icon
-            common.ICONFACTORY.register_icon(value)
-            pixbuf = self.view.treeview.render_icon(stock_id=value,
-                size=gtk.ICON_SIZE_BUTTON, detail=None)
+            pixbuf = common.IconFactory.get_pixbuf(value, gtk.ICON_SIZE_BUTTON)
             cell.set_property('pixbuf', pixbuf)
         else:
             text = self.attrs.get('string', '')
@@ -531,14 +530,14 @@ class Image(GenericText):
         field = record[self.field_name]
         value = field.get_client(record)
         if isinstance(value, int):
-            if value > common.BIG_IMAGE_SIZE:
+            if value > CONFIG.get('image.max_size'):
                 value = None
             else:
                 value = field.get_data(record)
         pixbuf = data2pixbuf(value)
         width = self.attrs.get('width', -1)
         height = self.attrs.get('height', -1)
-        if width != -1 or height != -1:
+        if pixbuf and width != -1 or height != -1:
             pixbuf = common.resize_pixbuf(pixbuf, width, height)
         cell.set_property('pixbuf', pixbuf)
 
@@ -584,7 +583,7 @@ class M2O(GenericText):
                 stock2, tooltip2 = 'tryton-clear', _("Clear the field <Del>")
             else:
                 stock1, tooltip1 = None, ''
-                stock2, tooltip2 = 'tryton-find', _("Search a record <F2>")
+                stock2, tooltip2 = 'tryton-search', _("Search a record <F2>")
             for pos, stock, tooltip in [
                     (gtk.ENTRY_ICON_PRIMARY, stock1, tooltip1),
                     (gtk.ENTRY_ICON_SECONDARY, stock2, tooltip2)]:

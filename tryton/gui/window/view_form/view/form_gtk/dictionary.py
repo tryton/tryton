@@ -11,7 +11,8 @@ from decimal import Decimal
 
 from .widget import Widget
 from tryton.gui.window.win_search import WinSearch
-from tryton.common import Tooltips, timezoned_date, untimezoned_date
+from tryton.common import Tooltips, timezoned_date, untimezoned_date, \
+        IconFactory
 from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime
@@ -357,10 +358,8 @@ class DictWidget(Widget):
 
         self.but_add = gtk.Button()
         self.but_add.connect('clicked', self._sig_add)
-        img_add = gtk.Image()
-        img_add.set_from_stock('tryton-list-add', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        img_add.set_alignment(0.5, 0.5)
-        self.but_add.add(img_add)
+        self.but_add.add(IconFactory.get_image(
+                'tryton-add', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.but_add.set_relief(gtk.RELIEF_NONE)
         hbox.pack_start(self.but_add, expand=False, fill=False)
         hbox.set_focus_chain([self.wid_text])
@@ -379,11 +378,8 @@ class DictWidget(Widget):
 
     def _new_remove_btn(self):
         but_remove = gtk.Button()
-        img_remove = gtk.Image()
-        img_remove.set_from_stock('tryton-list-remove',
-            gtk.ICON_SIZE_SMALL_TOOLBAR)
-        img_remove.set_alignment(0.5, 0.5)
-        but_remove.add(img_remove)
+        but_remove.add(IconFactory.get_image(
+                'tryton-remove', gtk.ICON_SIZE_SMALL_TOOLBAR))
         but_remove.set_relief(gtk.RELIEF_NONE)
         return but_remove
 

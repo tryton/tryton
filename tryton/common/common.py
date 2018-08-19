@@ -12,6 +12,8 @@ import re
 import logging
 import unicodedata
 import colorsys
+import xml.etree.ElementTree as ET
+from collections import defaultdict
 from decimal import Decimal
 from http import HTTPStatus
 from functools import partial
@@ -47,47 +49,34 @@ from gi.repository import Gtk
 from tryton import __version__
 from tryton.exceptions import TrytonServerError, TrytonError
 from tryton.pyson import PYSONEncoder
-
 from .underline import set_underline
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
 
 
-class TrytonIconFactory(gtk.IconFactory):
+class IconFactory:
 
     batchnum = 10
     _tryton_icons = []
     _name2id = {}
-    _locale_icons = set()
-    _loaded_icons = set()
+    _icons = {}
+    _local_icons = {}
+    _pixbufs = defaultdict(dict)
 
-    def load_client_icons(self):
+    @classmethod
+    def load_local_icons(cls):
         for fname in os.listdir(PIXMAPS_DIR):
             name = os.path.splitext(fname)[0]
-            if not name.startswith('tryton-'):
-                continue
-            if not os.path.isfile(os.path.join(PIXMAPS_DIR, fname)):
-                continue
-            try:
-                pixbuf = gtk.gdk.pixbuf_new_from_file(
-                        os.path.join(PIXMAPS_DIR, fname))
-            except (IOError, glib.GError):
-                continue
-            finally:
-                self._locale_icons.add(name)
-            icon_set = gtk.IconSet(pixbuf)
-            self.add(name, icon_set)
-        for name in ('ok', 'cancel'):
-            icon_set = gtk.Style().lookup_icon_set('gtk-%s' % name)
-            self.add('tryton-%s' % name, icon_set)
-            self._locale_icons.add('tryton-%s' % name)
+            path = os.path.join(PIXMAPS_DIR, fname)
+            cls._local_icons[name] = path
 
-    def load_icons(self, refresh=False):
+    @classmethod
+    def load_icons(cls, refresh=False):
         if not refresh:
-            self._name2id.clear()
-            self._loaded_icons.clear()
-        del self._tryton_icons[:]
+            cls._name2id.clear()
+            cls._icons.clear()
+        del cls._tryton_icons[:]
 
         try:
             icons = rpc.execute('model', 'ir.ui.icon', 'list_icons',
@@ -95,42 +84,82 @@ class TrytonIconFactory(gtk.IconFactory):
         except TrytonServerError:
             icons = []
         for icon_id, icon_name in icons:
-            if refresh and icon_name in self._loaded_icons:
+            if refresh and icon_name in cls._icons:
                 continue
-            self._tryton_icons.append((icon_id, icon_name))
-            self._name2id[icon_name] = icon_id
+            cls._tryton_icons.append((icon_id, icon_name))
+            cls._name2id[icon_name] = icon_id
 
-    def register_icon(self, iconname):
+    @classmethod
+    def register_icon(cls, iconname):
         # iconname might be '' when page do not define icon
         if (not iconname
-                or iconname in (self._loaded_icons | self._locale_icons)):
+                or iconname in cls._icons
+                or iconname in cls._local_icons):
             return
-        if iconname not in self._name2id:
-            self.load_icons(refresh=True)
+        if iconname not in cls._name2id:
+            cls.load_icons(refresh=True)
         try:
-            icon_ref = (self._name2id[iconname], iconname)
+            icon_ref = (cls._name2id[iconname], iconname)
         except KeyError:
             return
-        idx = self._tryton_icons.index(icon_ref)
-        to_load = slice(max(0, idx - self.batchnum // 2),
-            idx + self.batchnum // 2)
-        ids = [e[0] for e in self._tryton_icons[to_load]]
+        idx = cls._tryton_icons.index(icon_ref)
+        to_load = slice(max(0, idx - cls.batchnum // 2),
+            idx + cls.batchnum // 2)
+        ids = [e[0] for e in cls._tryton_icons[to_load]]
         try:
             icons = rpc.execute('model', 'ir.ui.icon', 'read', ids,
                 ['name', 'icon'], rpc.CONTEXT)
         except TrytonServerError:
             icons = []
         for icon in icons:
-            pixbuf = _data2pixbuf(icon['icon'].encode('utf-8'))
-            self._tryton_icons.remove((icon['id'], icon['name']))
-            del self._name2id[icon['name']]
-            self._loaded_icons.add(icon['name'])
-            iconset = gtk.IconSet(pixbuf)
-            self.add(icon['name'], iconset)
+            name = icon['name']
+            data = icon['icon'].encode('utf-8')
+            cls._icons[name] = data
+            cls._tryton_icons.remove((icon['id'], icon['name']))
+            del cls._name2id[icon['name']]
+
+    @classmethod
+    def get_pixbuf(cls, iconname, size=Gtk.IconSize.MENU, color=None):
+        cls.register_icon(iconname)
+        if iconname not in cls._pixbufs[size]:
+            if iconname in cls._icons:
+                data = cls._icons[iconname]
+            elif iconname in cls._local_icons:
+                path = cls._local_icons[iconname]
+                with open(path, 'rb') as fp:
+                    data = fp.read()
+            else:
+                logger.error("Unknown icon %s" % iconname)
+                return
+            if color is None:
+                color = CONFIG['icon.color']
+            try:
+                ET.register_namespace('', 'http://www.w3.org/2000/svg')
+                root = ET.fromstring(data)
+                root.attrib['fill'] = color
+                data = ET.tostring(root)
+            except ET.ParseError:
+                pass
+            width = height = {
+                Gtk.IconSize.MENU: 16,
+                Gtk.IconSize.SMALL_TOOLBAR: 16,
+                Gtk.IconSize.LARGE_TOOLBAR: 24,
+                Gtk.IconSize.BUTTON: 16,
+                Gtk.IconSize.DND: 12,
+                Gtk.IconSize.DIALOG: 48,
+                }.get(size)
+            cls._pixbufs[size][iconname] = data2pixbuf(data, width, height)
+        return cls._pixbufs[size][iconname]
+
+    @classmethod
+    def get_image(cls, iconname, size=Gtk.IconSize.BUTTON, color=None):
+        pixbuf = cls.get_pixbuf(iconname, size, color)
+        image = Gtk.Image()
+        image.set_from_pixbuf(pixbuf)
+        return image
 
 
-ICONFACTORY = TrytonIconFactory()
-ICONFACTORY.add_default()
+IconFactory.load_local_icons()
 
 
 class ModelAccess(object):
@@ -275,10 +304,8 @@ def selection(title, values, alwaysask=False):
     parent = get_toplevel_window()
     dialog = gtk.Dialog(_('Selection'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
-    cancel_button = dialog.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
-    cancel_button.set_always_show_image(True)
-    ok_button = dialog.add_button('gtk-ok', gtk.RESPONSE_OK)
-    ok_button.set_always_show_image(True)
+    dialog.add_button(set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+    dialog.add_button(set_underline(_("OK")), gtk.RESPONSE_OK)
     dialog.set_icon(TRYTON_ICON)
     dialog.set_default_response(gtk.RESPONSE_OK)
     dialog.set_default_size(400, 400)
@@ -333,11 +360,11 @@ def file_selection(title, filename='',
         filters=None):
     parent = get_toplevel_window()
     if action == gtk.FILE_CHOOSER_ACTION_OPEN:
-        buttons = (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-            gtk.STOCK_OPEN, gtk.RESPONSE_OK)
+        buttons = (set_underline(_("Cancel")), gtk.RESPONSE_CANCEL,
+            set_underline(_("Select")), gtk.RESPONSE_OK)
     else:
-        buttons = (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-            gtk.STOCK_SAVE, gtk.RESPONSE_OK)
+        buttons = (set_underline(_("Cancel")), gtk.RESPONSE_CANCEL,
+            set_underline(_("Save")), gtk.RESPONSE_OK)
     win = gtk.FileChooserDialog(title, None, action, buttons)
     win.set_transient_for(parent)
     win.set_icon(TRYTON_ICON)
@@ -595,9 +622,9 @@ class Sur3BDialog(ConfirmationDialog):
 
     def build_dialog(self, *args, **kwargs):
         dialog = super().build_dialog(*args, **kwargs)
-        dialog.add_button("gtk-cancel", gtk.RESPONSE_CANCEL)
-        dialog.add_button("gtk-no", gtk.RESPONSE_NO)
-        dialog.add_button("gtk-yes", gtk.RESPONSE_YES)
+        dialog.add_button(set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+        dialog.add_button(set_underline(_("No")), gtk.RESPONSE_NO)
+        dialog.add_button(set_underline(_("Yes")), gtk.RESPONSE_YES)
         dialog.set_default_response(gtk.RESPONSE_YES)
         return dialog
 
@@ -643,25 +670,18 @@ class ConcurrencyDialog(UniqueDialog):
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
             gtk.MESSAGE_QUESTION, gtk.BUTTONS_NONE,
             _('Concurrency Exception'))
-        dialog.set_default_response(gtk.RESPONSE_CANCEL)
         dialog.format_secondary_text(
             _('This record has been modified while you were editing it.'))
-        cancel_button = dialog.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+        cancel_button = dialog.add_button(
+            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
         tooltips.set_tip(cancel_button, _('Cancel saving'))
-        compare_button = gtk.Button(
-            set_underline(_('Compare')), use_underline=True)
+        compare_button = dialog.add_button(
+            set_underline(_("Compare")), gtk.RESPONSE_APPLY)
         tooltips.set_tip(compare_button, _('See the modified version'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-find-replace', gtk.ICON_SIZE_BUTTON)
-        compare_button.set_image(image)
-        dialog.add_action_widget(compare_button, gtk.RESPONSE_APPLY)
-        write_button = gtk.Button(
-            set_underline(_('Write Anyway')), use_underline=True)
+        write_button = dialog.add_button(
+            set_underline(_("Write Anyway")), gtk.RESPONSE_OK)
         tooltips.set_tip(write_button, _('Save your current version'))
-        image = gtk.Image()
-        image.set_from_stock('tryton-save', gtk.ICON_SIZE_BUTTON)
-        write_button.set_image(image)
-        dialog.add_action_widget(write_button, gtk.RESPONSE_OK)
+        dialog.set_default_response(gtk.RESPONSE_CANCEL)
         return dialog
 
     def __call__(self, resource, obj_id, context):
@@ -692,10 +712,8 @@ class ErrorDialog(UniqueDialog):
             _('Application Error'))
         dialog.set_default_size(600, 400)
 
-        but_send = gtk.Button(_('Report Bug'))
-        dialog.add_action_widget(but_send, gtk.RESPONSE_OK)
-        close_button = dialog.add_button("gtk-close", gtk.RESPONSE_CANCEL)
-        close_button.set_always_show_image(True)
+        dialog.add_button(set_underline(_("Report Bug")), gtk.RESPONSE_OK)
+        dialog.add_button(set_underline(_("Close")), gtk.RESPONSE_CANCEL)
         dialog.set_default_response(gtk.RESPONSE_CANCEL)
 
         vbox = dialog.vbox
@@ -758,18 +776,16 @@ def send_bugtracker(title, msg):
     parent = get_toplevel_window()
     win = gtk.Dialog(_('Bug Tracker'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
-    cancel_button = win.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
-    cancel_button.set_always_show_image(True)
-    ok_button = win.add_button('gtk-ok', gtk.RESPONSE_OK)
-    ok_button.set_always_show_image(True)
+    win.add_button(set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+    win.add_button(set_underline(_("OK")), gtk.RESPONSE_OK)
     win.set_icon(TRYTON_ICON)
     win.set_default_response(gtk.RESPONSE_OK)
 
     hbox = gtk.HBox()
-    image = gtk.Image()
-    image.set_from_stock('tryton-dialog-information',
-            gtk.ICON_SIZE_DIALOG)
-    hbox.pack_start(image, False, False)
+    hbox.pack_start(
+        IconFactory.get_image(
+            'tryton-info', gtk.ICON_SIZE_DIALOG),
+        False, False)
 
     table = gtk.Table(2, 2)
     table.set_col_spacings(3)
@@ -1258,26 +1274,21 @@ def resize_pixbuf(pixbuf, width, height):
         gtk.gdk.INTERP_BILINEAR)
 
 
-def _data2pixbuf(data):
+def _data2pixbuf(data, width=None, height=None):
     loader = gtk.gdk.PixbufLoader()
+    if width and height:
+        loader.set_size(width, height)
     loader.write(data)
     loader.close()
     return loader.get_pixbuf()
 
 
-BIG_IMAGE_SIZE = 10 ** 6
-with open(os.path.join(PIXMAPS_DIR, 'tryton-noimage.png'), 'rb') as no_image:
-    NO_IMG_PIXBUF = _data2pixbuf(no_image.read())
-
-
-def data2pixbuf(data):
-    pixbuf = NO_IMG_PIXBUF
+def data2pixbuf(data, width=None, height=None):
     if data:
         try:
-            pixbuf = _data2pixbuf(data)
+            return _data2pixbuf(data, width, height)
         except glib.GError:
             pass
-    return pixbuf
 
 
 def get_label_attributes(readonly, required):

@@ -9,8 +9,9 @@ from . import View
 from .graph_gtk.bar import VerticalBar, HorizontalBar
 from .graph_gtk.line import Line
 from .graph_gtk.pie import Pie
-from tryton.common import file_selection
+from tryton.common import file_selection, IconFactory
 from tryton.common import node_attributes, get_toplevel_window, message
+from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
 
@@ -101,9 +102,15 @@ class ViewGraph(View):
         dia = gtk.Dialog(_('Image Size'), parent,
             gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
         Main().add_window(dia)
-        cancel_button = dia.add_button('gtk-cancel', gtk.RESPONSE_CANCEL)
+        cancel_button = dia.add_button(
+            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+        cancel_button.set_image(IconFactory.get_image(
+                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
         cancel_button.set_always_show_image(True)
-        ok_button = dia.add_button('gtk-ok', gtk.RESPONSE_OK)
+        ok_button = dia.add_button(
+            set_underline(_("OK")), gtk.RESPONSE_OK)
+        ok_button.set_image(IconFactory.get_image(
+                'tryton-ok', gtk.ICON_SIZE_BUTTON))
         ok_button.set_always_show_image(True)
         dia.set_icon(TRYTON_ICON)
         dia.set_default_response(gtk.RESPONSE_OK)
@@ -162,9 +169,8 @@ class ViewGraph(View):
         if event.button == 3:
             menu = gtk.Menu()
             item = gtk.ImageMenuItem(_('Save As...'))
-            img = gtk.Image()
-            img.set_from_stock('tryton-save-as', gtk.ICON_SIZE_MENU)
-            item.set_image(img)
+            item.set_image(IconFactory.get_image(
+                    'tryton-save-as', gtk.ICON_SIZE_MENU))
             item.connect('activate', self.save)
             item.show()
             menu.append(item)

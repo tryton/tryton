@@ -66,22 +66,16 @@ class Many2Many(Widget):
         self.but_add = gtk.Button()
         tooltips.set_tip(self.but_add, _('Add existing record'))
         self.but_add.connect('clicked', self._sig_add)
-        img_add = gtk.Image()
-        img_add.set_from_stock('tryton-list-add',
-            gtk.ICON_SIZE_SMALL_TOOLBAR)
-        img_add.set_alignment(0.5, 0.5)
-        self.but_add.add(img_add)
+        self.but_add.add(common.IconFactory.get_image(
+                'tryton-add', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.but_add.set_relief(gtk.RELIEF_NONE)
         hbox.pack_start(self.but_add, expand=False, fill=False)
 
         self.but_remove = gtk.Button()
         tooltips.set_tip(self.but_remove, _('Remove selected record <Del>'))
         self.but_remove.connect('clicked', self._sig_remove)
-        img_remove = gtk.Image()
-        img_remove.set_from_stock('tryton-list-remove',
-            gtk.ICON_SIZE_SMALL_TOOLBAR)
-        img_remove.set_alignment(0.5, 0.5)
-        self.but_remove.add(img_remove)
+        self.but_remove.add(common.IconFactory.get_image(
+                'tryton-remove', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.but_remove.set_relief(gtk.RELIEF_NONE)
         hbox.pack_start(self.but_remove, expand=False, fill=False)
 

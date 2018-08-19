@@ -59,7 +59,6 @@ def main():
             CONFIG.arguments = []
     translate.set_language_direction(CONFIG['client.language_direction'])
     translate.setlang(CONFIG['client.lang'])
-    common.ICONFACTORY.load_client_icons()
     if CONFIG.arguments or DBLogin().run():
         server = '%(hostname)s:%(port)s/%(database)s' % {
             'hostname': common.get_hostname(CONFIG['login.host']),

@@ -15,3 +15,4 @@ include doc/*
 recursive-include doc *.rst
 recursive-include doc *.po
 recursive-include doc *.pot
+include tryton/data/pixmaps/tryton/LICENSE

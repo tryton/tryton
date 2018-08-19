@@ -8,7 +8,7 @@ from collections import defaultdict
 from . import View
 from tryton.common.focus import (get_invisible_ancestor, find_focused_child,
     next_focus_widget, find_focusable_child, find_first_focus_widget)
-from tryton.common import Tooltips, node_attributes, ICONFACTORY
+from tryton.common import Tooltips, node_attributes, IconFactory
 from tryton.common.underline import set_underline
 from tryton.common.button import Button
 from tryton.config import CONFIG
@@ -323,11 +323,8 @@ class ViewForm(View):
         label.set_use_underline(True)
 
         if 'icon' in attributes:
-            ICONFACTORY.register_icon(attributes['icon'])
-            icon = gtk.Image()
-            icon.set_from_stock(
-                attributes['icon'], gtk.ICON_SIZE_SMALL_TOOLBAR)
-            tab_box.pack_start(icon)
+            tab_box.pack_start(IconFactory.get_image(
+                    attributes['icon'], gtk.ICON_SIZE_SMALL_TOOLBAR))
         tab_box.pack_start(label)
         tab_box.show_all()
 

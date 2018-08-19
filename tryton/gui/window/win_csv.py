@@ -8,6 +8,8 @@ import gtk
 import gobject
 import gettext
 
+from tryton.common import IconFactory
+from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
@@ -65,30 +67,24 @@ class WinCSV(NoModal):
         hbox_mapping.pack_start(vbox_buttons, False, True, 0)
 
         button_add = gtk.Button(_('_Add'), stock=None, use_underline=True)
-        button_add.set_alignment(0.0, 0.0)
-        img_button = gtk.Image()
-        img_button.set_from_stock('tryton-list-add', gtk.ICON_SIZE_BUTTON)
-        button_add.set_image(img_button)
+        button_add.set_image(IconFactory.get_image(
+                'tryton-add', gtk.ICON_SIZE_BUTTON))
         button_add.set_always_show_image(True)
         button_add.connect_after('clicked', self.sig_sel)
         vbox_buttons.pack_start(button_add, False, False, 0)
 
         button_remove = gtk.Button(
             _('_Remove'), stock=None, use_underline=True)
-        button_remove.set_alignment(0.0, 0.0)
-        img_button = gtk.Image()
-        img_button.set_from_stock('tryton-list-remove', gtk.ICON_SIZE_BUTTON)
-        button_remove.set_image(img_button)
+        button_remove.set_image(IconFactory.get_image(
+                'tryton-remove', gtk.ICON_SIZE_BUTTON))
         button_remove.set_always_show_image(True)
         button_remove.connect_after('clicked', self.sig_unsel)
         vbox_buttons.pack_start(button_remove, False, False, 0)
 
         button_remove_all = gtk.Button(
             _('_Clear'), stock=None, use_underline=True)
-        button_remove_all.set_alignment(0.0, 0.0)
-        img_button = gtk.Image()
-        img_button.set_from_stock('tryton-clear', gtk.ICON_SIZE_BUTTON)
-        button_remove_all.set_image(img_button)
+        button_remove_all.set_image(IconFactory.get_image(
+                'tryton-clear', gtk.ICON_SIZE_BUTTON))
         button_remove_all.set_always_show_image(True)
         button_remove_all.connect_after('clicked', self.sig_unsel_all)
         vbox_buttons.pack_start(button_remove_all, False, False, 0)
@@ -173,11 +169,15 @@ class WinCSV(NoModal):
 
         self.add_csv_header_param(table)
 
-        button_cancel = gtk.Button("gtk-cancel", stock="gtk-cancel")
-        self.dialog.add_action_widget(button_cancel, gtk.RESPONSE_CANCEL)
+        button_cancel = self.dialog.add_button(
+            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+        button_cancel.set_image(IconFactory.get_image(
+                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
 
-        button_ok = gtk.Button("gtk-ok", stock="gtk-ok")
-        self.dialog.add_action_widget(button_ok, gtk.RESPONSE_OK)
+        button_ok = self.dialog.add_button(
+            set_underline(_("OK")), gtk.RESPONSE_OK)
+        button_ok.set_image(IconFactory.get_image(
+                'tryton-ok', gtk.ICON_SIZE_BUTTON))
 
         self.dialog.vbox.pack_start(dialog_vbox)
 

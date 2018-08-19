@@ -16,11 +16,11 @@ _ = gettext.gettext
 
 class ToolbarItem(object):
     def __init__(self, id, label,
-            tooltip=None, stock_id=None, accel_path=None):
+            tooltip=None, icon_name=None, accel_path=None):
         self.id = id
         self.label = label
         self.tooltip = tooltip
-        self.stock_id = stock_id
+        self.icon_name = icon_name
         self.accel_path = accel_path
 
     @property
@@ -41,121 +41,123 @@ class TabContent(InfoBar):
                 id='switch',
                 label=_("_Switch View"),
                 tooltip=_("Switch View"),
-                stock_id='tryton-fullscreen',
+                icon_name='tryton-switch',
                 accel_path='<tryton>/Form/Switch View'),
             ToolbarItem(
                 id='previous',
                 label=_("_Previous"),
                 tooltip=_("Previous Record"),
-                stock_id='tryton-go-previous',
+                icon_name='tryton-back',
                 accel_path='<tryton>/Form/Previous'),
             ToolbarItem(
                 id='next',
                 label=_("_Next"),
                 tooltip=_("Next Record"),
-                stock_id='tryton-go-next',
+                icon_name='tryton-forward',
                 accel_path='<tryton>/Form/Next'),
             ToolbarItem(
                 id='search',
                 label=_("_Search"),
-                stock_id='tryton-find',
+                icon_name='tryton-search',
                 accel_path='<tryton>/Form/Search'),
             None,
             ToolbarItem(
                 id='new',
                 label=_("_New"),
                 tooltip=_("Create a new record"),
-                stock_id='tryton-new',
+                icon_name='tryton-create',
                 accel_path='<tryton>/Form/New'),
             ToolbarItem(
                 id='save',
                 label=_("_Save"),
                 tooltip=_("Save this record"),
-                stock_id='tryton-save',
+                icon_name='tryton-save',
                 accel_path='<tryton>/Form/Save'),
             ToolbarItem(
                 id='reload',
                 label=_("_Reload/Undo"),
                 tooltip=_("Reload/Undo"),
-                stock_id='tryton-refresh',
+                icon_name='tryton-refresh',
                 accel_path='<tryton>/Form/Reload'),
             ToolbarItem(
                 id='copy',
                 label=_("_Duplicate"),
-                stock_id='tryton-copy',
+                icon_name='tryton-copy',
                 accel_path='<tryton>/Form/Duplicate'),
             ToolbarItem(
                 id='remove',
                 label=_("_Delete..."),
-                stock_id='tryton-delete',
+                icon_name='tryton-delete',
                 accel_path='<tryton>/Form/Delete'),
             None,
             ToolbarItem(
                 id='logs',
-                label=_("View _Logs...")),
+                label=_("View _Logs..."),
+                icon_name='tryton-log'),
             ToolbarItem(
                 id='revision' if self.model in common.MODELHISTORY else None,
                 label=_("Show revisions..."),
-                stock_id='tryton-clock'),
+                icon_name='tryton-history'),
             None,
             ToolbarItem(
                 id='attach',
                 label=_("A_ttachments..."),
                 tooltip=_("Add an attachment to the record"),
-                stock_id='tryton-attachment',
+                icon_name='tryton-attach',
                 accel_path='<tryton>/Form/Attachments'),
             ToolbarItem(
                 id='note',
                 label=_("_Notes..."),
                 tooltip=_("Add a note to the record"),
-                stock_id='tryton-note',
+                icon_name='tryton-note',
                 accel_path='<tryton>/Form/Notes'),
             ToolbarItem(
                 id='action',
                 label=_("_Actions..."),
-                stock_id='tryton-executable',
+                icon_name='tryton-launch',
                 accel_path='<tryton>/Form/Actions'),
             ToolbarItem(
                 id='relate',
                 label=_("_Relate..."),
-                stock_id='tryton-go-jump',
+                icon_name='tryton-link',
                 accel_path='<tryton>/Form/Relate'),
             None,
             ToolbarItem(
                 id='print_open',
                 label=_("_Report..."),
-                stock_id='tryton-print-open',
+                icon_name='tryton-open',
                 accel_path='<tryton>/Form/Report'),
             ToolbarItem(
                 id='print_email',
                 label=_("_E-Mail..."),
-                stock_id='tryton-print-email',
+                icon_name='tryton-email',
                 accel_path='<tryton>/Form/Email'),
             ToolbarItem(
                 id='print',
                 label=_("_Print..."),
-                stock_id='tryton-print',
+                icon_name='tryton-print',
                 accel_path='<tryton>/Form/Print'),
             None,
             ToolbarItem(
                 id='export',
                 label=_("_Export Data..."),
-                stock_id='tryton-save-as',
+                icon_name='tryton-export',
                 accel_path='<tryton>/Form/Export Data'),
             ToolbarItem(
                 id='import',
                 label=_("_Import Data..."),
+                icon_name='tryton-import',
                 accel_path='<tryton>/Form/Import Data'),
             ToolbarItem(
                 id='copy_url',
                 label=_("Copy _URL..."),
-                stock_id='tryton-web-browser',
+                icon_name='tryton-public',
                 accel_path='<tryton>/Form/Copy URL'),
             None,
             ToolbarItem(
                 id='win_close',
                 label=_("_Close Tab"),
-                stock_id='tryton-close',
+                icon_name='tryton-close',
                 accel_path='<tryton>/Form/Close'),
             ]
 
@@ -246,7 +248,10 @@ class TabContent(InfoBar):
                 callback = getattr(self, 'sig_%s' % item.id, None)
                 if not callback:
                     continue
-                toolitem = gtk.ToolButton(item.stock_id)
+                toolitem = gtk.ToolButton()
+                toolitem.set_icon_widget(
+                    common.IconFactory.get_image(
+                        item.icon_name, gtk.ICON_SIZE_LARGE_TOOLBAR))
                 toolitem.set_label(item.label)
                 toolitem.set_use_underline(True)
                 toolitem.connect('clicked', callback)
@@ -273,10 +278,10 @@ class TabContent(InfoBar):
                 menuitem.set_use_underline(True)
                 menuitem.connect('activate', callback)
 
-                if item.stock_id:
-                    image = gtk.Image()
-                    image.set_from_stock(item.stock_id, gtk.ICON_SIZE_MENU)
-                    menuitem.set_image(image)
+                if item.icon_name:
+                    menuitem.set_image(
+                        common.IconFactory.get_image(
+                            item.icon_name, gtk.ICON_SIZE_MENU))
                 if item.accel_path:
                     menuitem.set_accel_path(item.accel_path)
                 self.menu_buttons[item.id] = menuitem

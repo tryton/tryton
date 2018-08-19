@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
+from gi.repository import Gtk
+
 from .char import Char
+from tryton.common import IconFactory
 from tryton.pyson import CONTEXT, PYSONEncoder, PYSONDecoder
 
 
@@ -39,10 +41,12 @@ class PYSON(Char):
         return value
 
     def validate_pyson(self, *args):
-        icon = gtk.STOCK_OK
+        icon = 'tryton-ok'
         if self.get_encoded_value() is None:
-            icon = gtk.STOCK_CANCEL
-        self.entry.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY, icon)
+            icon = 'tryton-error'
+        pixbuf = IconFactory.get_pixbuf(icon, Gtk.IconSize.MENU)
+        self.entry.set_icon_from_pixbuf(
+            Gtk.EntryIconPosition.SECONDARY, pixbuf)
 
     def _focus_out(self):
         self.validate_pyson()

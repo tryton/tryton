@@ -2,14 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 
-import gtk
+from gi.repository import Gtk
 
-from tryton.common import ICONFACTORY
+from tryton.common import IconFactory
 
 _ = gettext.gettext
 
 
-class Button(gtk.Button):
+class Button(Gtk.Button):
 
     def __init__(self, attrs=None):
         self.attrs = attrs or {}
@@ -28,10 +28,7 @@ class Button(gtk.Button):
         if not stock:
             self.set_image(None)
             return
-        ICONFACTORY.register_icon(stock)
-        icon = gtk.Image()
-        icon.set_from_stock(stock, gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.set_image(icon)
+        self.set_image(IconFactory.get_image(stock, Gtk.IconSize.BUTTON))
 
     def state_set(self, record):
         if record:

@@ -25,28 +25,24 @@ class BinaryMixin(Widget):
         tooltips = Tooltips()
 
         self.but_save_as = gtk.Button()
-        img_save_as = gtk.Image()
-        img_save_as.set_from_stock('tryton-save-as',
-            gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.but_save_as.set_image(img_save_as)
+        self.but_save_as.set_image(common.IconFactory.get_image(
+                'tryton-save', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.but_save_as.set_relief(gtk.RELIEF_NONE)
         self.but_save_as.connect('clicked', self.save_as)
         tooltips.set_tip(self.but_save_as, _('Save As...'))
         hbox.pack_start(self.but_save_as, expand=False, fill=False)
 
         self.but_select = gtk.Button()
-        img_select = gtk.Image()
-        img_select.set_from_stock('tryton-find', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.but_select.set_image(img_select)
+        self.but_select.set_image(common.IconFactory.get_image(
+                'tryton-search', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.but_select.set_relief(gtk.RELIEF_NONE)
         self.but_select.connect('clicked', self.select)
         tooltips.set_tip(self.but_select, _('Select...'))
         hbox.pack_start(self.but_select, expand=False, fill=False)
 
         self.but_clear = gtk.Button()
-        img_clear = gtk.Image()
-        img_clear.set_from_stock('tryton-clear', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        self.but_clear.set_image(img_clear)
+        self.but_clear.set_image(common.IconFactory.get_image(
+                'tryton-clear', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.but_clear.set_relief(gtk.RELIEF_NONE)
         self.but_clear.connect('clicked', self.clear)
         tooltips.set_tip(self.but_clear, _('Clear'))

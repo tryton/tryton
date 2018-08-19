@@ -173,17 +173,15 @@ class Main(Gtk.Application):
 
         menu = Gtk.Button.new()
         menu .set_relief(Gtk.ReliefStyle.NONE)
-        icon = Gtk.Image.new()
-        icon.set_from_stock('gtk-home', Gtk.IconSize.BUTTON)
-        menu.set_image(icon)
+        menu.set_image(
+            common.IconFactory.get_image('tryton-menu', Gtk.IconSize.BUTTON))
         menu.connect('clicked', self.menu_toggle)
         self.header.pack_start(menu)
 
         favorite = Gtk.MenuButton.new()
         favorite.set_relief(Gtk.ReliefStyle.NONE)
-        icon = Gtk.Image.new()
-        icon.set_from_stock('tryton-bookmark', Gtk.IconSize.BUTTON)
-        favorite.set_image(icon)
+        favorite.set_image(common.IconFactory.get_image(
+                'tryton-bookmarks', Gtk.IconSize.BUTTON))
         self.menu_favorite = Gtk.Menu.new()
         favorite.set_popup(self.menu_favorite)
         favorite.connect('clicked', self.favorite_set)
@@ -365,9 +363,8 @@ class Main(Gtk.Application):
                     _, model, model_name, record_id, record_name, icon = r
                     if icon:
                         text = common.to_xml(record_name)
-                        common.ICONFACTORY.register_icon(icon)
-                        pixbuf = widget.render_icon(stock_id=icon,
-                            size=gtk.ICON_SIZE_BUTTON, detail=None)
+                        pixbuf = common.IconFactory.get_pixbuf(
+                            icon, gtk.ICON_SIZE_BUTTON)
                     else:
                         text = '<b>%s:</b>\n %s' % (
                             common.to_xml(model_name),
@@ -453,11 +450,9 @@ class Main(Gtk.Application):
             return False
         for id_, name, icon in favorites:
             if icon:
-                common.ICONFACTORY.register_icon(icon)
                 menuitem = gtk.ImageMenuItem(name)
-                image = gtk.Image()
-                image.set_from_stock(icon, gtk.ICON_SIZE_MENU)
-                menuitem.set_image(image)
+                menuitem.set_image(
+                    common.IconFactory.get_image(name, gtk.ICON_SIZE_MENU))
             else:
                 menuitem = gtk.MenuItem(name)
             menuitem.connect('activate', _action_favorite, id_)
@@ -516,7 +511,7 @@ class Main(Gtk.Application):
                 prefs = {}
             threads = []
             for target in (
-                    common.ICONFACTORY.load_icons,
+                    common.IconFactory.load_icons,
                     common.MODELACCESS.load_models,
                     common.MODELHISTORY.load_history,
                     common.VIEW_SEARCH.load_searches,
@@ -658,13 +653,16 @@ class Main(Gtk.Application):
             menu = store.get_value(iter_, 0)
             favorite = menu.value.get('favorite')
             if favorite:
-                stock_id = 'tryton-star'
+                icon = 'tryton-star'
             elif favorite is False:
-                stock_id = 'tryton-unstar'
+                icon = 'tryton-star-border'
             else:
-                stock_id = ''
-            pixbuf = treeview.render_icon(stock_id=stock_id,
-                size=gtk.ICON_SIZE_MENU, detail=None)
+                icon = None
+            if icon:
+                pixbuf = common.IconFactory.get_pixbuf(
+                    icon, gtk.ICON_SIZE_MENU)
+            else:
+                pixbuf = None
             cell.set_property('pixbuf', pixbuf)
         column.set_cell_data_func(favorite_renderer, favorite_setter)
 
@@ -726,12 +724,11 @@ class Main(Gtk.Application):
         self.previous_pages[page] = previous_widget
         self.pages.append(page)
         hbox = gtk.HBox(spacing=3)
-        icon_w, icon_h = gtk.icon_size_lookup(gtk.ICON_SIZE_SMALL_TOOLBAR)[-2:]
-        if page.icon is not None:
-            common.ICONFACTORY.register_icon(page.icon)
-            image = gtk.Image()
-            image.set_from_stock(page.icon, gtk.ICON_SIZE_SMALL_TOOLBAR)
-            hbox.pack_start(image, expand=False, fill=False)
+        if page.icon:
+            hbox.pack_start(
+                common.IconFactory.get_image(
+                    page.icon, gtk.ICON_SIZE_SMALL_TOOLBAR),
+                expand=False, fill=False)
         name = page.name
         label = gtk.Label(common.ellipsize(name, 20))
         self.tooltips.set_tip(label, page.name)
@@ -740,12 +737,10 @@ class Main(Gtk.Application):
         hbox.pack_start(label, expand=True, fill=True)
 
         button = gtk.Button()
-        img = gtk.Image()
-        img.set_from_stock('tryton-close', gtk.ICON_SIZE_MENU)
-        width, height = img.size_request()
         button.set_relief(gtk.RELIEF_NONE)
         button.set_can_focus(False)
-        button.add(img)
+        button.add(common.IconFactory.get_image(
+                'tryton-close', gtk.ICON_SIZE_MENU))
         self.tooltips.set_tip(button, _('Close Tab'))
         button.connect('clicked', self._sig_remove_book, page.widget)
         hbox.pack_start(button, expand=False, fill=False)

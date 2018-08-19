@@ -65,8 +65,8 @@ class Image(StateMixin, gtk.Image):
         if name in record.group.fields:
             field = record.group.fields[name]
             name = field.get(record)
-        common.ICONFACTORY.register_icon(name)
-        self.set_from_stock(name, gtk.ICON_SIZE_DIALOG)
+        self.set_from_pixbuf(common.IconFactory.get_pixbuf(
+                name, gtk.ICON_SIZE_DIALOG))
 
 
 class Frame(StateMixin, gtk.Frame):

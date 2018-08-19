@@ -7,6 +7,7 @@ import gettext
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
 from tryton.common import TRYTON_ICON
+from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
@@ -145,9 +146,14 @@ class TranslateDialog(NoModal):
         self.win.add_accel_group(self.accel_group)
 
         cancel_button = self.win.add_button(
-            gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL)
+            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+        cancel_button.set_image(common.IconFactory.get_image(
+                    'tryton-cancel', gtk.ICON_SIZE_BUTTON))
         cancel_button.set_always_show_image(True)
-        ok_button = self.win.add_button(gtk.STOCK_OK, gtk.RESPONSE_OK)
+        ok_button = self.win.add_button(
+            set_underline(_("OK")), gtk.RESPONSE_OK)
+        ok_button.set_image(common.IconFactory.get_image(
+                'tryton-ok', gtk.ICON_SIZE_BUTTON))
         ok_button.set_always_show_image(True)
         ok_button.add_accelerator(
             'clicked', self.accel_group, gtk.keysyms.Return,
@@ -266,9 +272,8 @@ class TranslateMixin:
 
     def translate_button(self):
         button = gtk.Button()
-        img = gtk.Image()
-        img.set_from_stock('tryton-locale', gtk.ICON_SIZE_SMALL_TOOLBAR)
-        button.set_image(img)
+        button.set_image(common.IconFactory.get_image(
+                'tryton-translate', gtk.ICON_SIZE_SMALL_TOOLBAR))
         button.set_relief(gtk.RELIEF_NONE)
         button.connect('clicked', self.translate)
         return button

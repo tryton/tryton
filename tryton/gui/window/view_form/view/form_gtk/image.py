@@ -4,7 +4,8 @@ import gtk
 import gettext
 import urllib.request
 
-from tryton.common import resize_pixbuf, data2pixbuf, BIG_IMAGE_SIZE
+from tryton.common import resize_pixbuf, data2pixbuf
+from tryton.config import CONFIG
 from .widget import Widget
 from .binary import BinaryMixin
 
@@ -96,11 +97,13 @@ class Image(BinaryMixin, Widget):
         if self.field:
             value = self.field.get_client(self.record)
         if isinstance(value, int):
-            if value > BIG_IMAGE_SIZE:
+            if value > CONFIG.get('image.max_size'):
                 value = False
             else:
                 value = self.field.get_data(self.record)
-        pixbuf = resize_pixbuf(data2pixbuf(value), self.width, self.height)
+        pixbuf = data2pixbuf(value)
+        if pixbuf:
+            pixbuf = resize_pixbuf(pixbuf, self.width, self.height)
         self.image.set_from_pixbuf(pixbuf)
         return bool(value)
 

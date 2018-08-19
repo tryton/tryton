@@ -5,7 +5,7 @@ import gettext
 
 import xml.dom.minidom
 from tryton.gui.window.view_form.view.form import Container
-from tryton.common import node_attributes, ICONFACTORY
+from tryton.common import node_attributes, IconFactory
 from .action import Action
 
 _ = gettext.gettext
@@ -47,10 +47,9 @@ class ViewBoard(object):
         return container
 
     def _parse_image(self, node, container, attributes):
-        ICONFACTORY.register_icon(attributes['name'])
-        image = gtk.Image()
-        image.set_from_stock(attributes['name'], gtk.ICON_SIZE_DIALOG)
-        container.add(image, attributes)
+        container.add(
+            IconFactory.get_image(attributes['name'], gtk.ICON_SIZE_DIALOG),
+            attributes)
 
     def _parse_separator(self, node, container, attributes):
         vbox = gtk.VBox()
@@ -93,12 +92,8 @@ class ViewBoard(object):
         tab_box.pack_start(label)
 
         if 'icon' in attributes:
-            ICONFACTORY.register_icon(attributes['icon'])
-            pixbuf = tab_box.render_icon(attributes['icon'],
-                gtk.ICON_SIZE_SMALL_TOOLBAR)
-            icon = gtk.Image()
-            icon.set_from_pixbuf(pixbuf)
-            tab_box.pack_start(icon)
+            tab_box.pack_start(IconFactory.get_image(
+                    attributes['icon'], gtk.ICON_SIZE_SMALL_TOOLBAR))
         tab_box.show_all()
 
         viewport = gtk.Viewport()

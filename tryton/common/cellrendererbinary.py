@@ -4,6 +4,8 @@ import gtk
 import gobject
 import pango
 
+from .common import IconFactory
+
 BUTTON_BORDER = 2
 BUTTON_SPACING = 1
 
@@ -36,15 +38,14 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         self.use_filename = use_filename
         self.clicking = ''
         self.images = {}
-        widget = gtk.Button()
-        for key, stock_name in (
-                ('select', 'tryton-find'),
+        for key, icon in (
+                ('select', 'tryton-search'),
                 ('open', 'tryton-open'),
-                ('save', 'tryton-save-as'),
+                ('save', 'tryton-save'),
                 ('clear', 'tryton-clear')):
             # hack to get gtk.gdk.Image from stock icon
-            img_sensitive = widget.render_icon(stock_name,
-                gtk.ICON_SIZE_SMALL_TOOLBAR)
+            img_sensitive = IconFactory.get_pixbuf(
+                icon, gtk.ICON_SIZE_SMALL_TOOLBAR)
             img_insensitive = img_sensitive.copy()
             img_sensitive.saturate_and_pixelate(img_insensitive, 0, False)
             width = img_sensitive.get_width()

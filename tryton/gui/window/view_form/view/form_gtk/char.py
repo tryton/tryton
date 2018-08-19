@@ -5,7 +5,7 @@ import gettext
 import gobject
 import gtk
 from .widget import Widget, TranslateMixin
-from tryton.common import Tooltips
+from tryton.common import Tooltips, IconFactory
 from tryton.common.entry_position import reset_position
 from tryton.common.selection import PopdownMixin, selection_shortcuts
 from tryton.config import CONFIG
@@ -46,8 +46,9 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         self.widget.pack_start(self.entry, expand=expand, fill=fill)
 
         if attrs.get('translate'):
-            self.entry.set_icon_from_stock(gtk.ENTRY_ICON_SECONDARY,
-                'tryton-locale')
+            self.entry.set_icon_from_pixbuf(
+                gtk.ENTRY_ICON_SECONDARY,
+                IconFactory.get_pixbuf('tryton-translate', gtk.ICON_SIZE_MENU))
             self.entry.connect('icon-press', self.translate)
 
     def translate_widget(self):

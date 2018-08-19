@@ -54,6 +54,8 @@ class ConfigManager(object):
             'client.email': '',
             'client.limit': 1000,
             'client.check_version': True,
+            'icon.color': '#3465a4',
+            'image.max_size': 10 ** 6,
             'roundup.url': 'http://bugs.tryton.org/',
             'roundup.xmlrpc': 'roundup-xmlrpc.tryton.org',
             'download.url': 'https://downloads.tryton.org/',
