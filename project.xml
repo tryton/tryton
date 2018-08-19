@@ -21,8 +21,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem name="Project" sequence="7" id="menu_project"
             icon="tryton-project"/>
-        <menuitem name="Configuration" parent="menu_project"
-            id="menu_configuration" sequence="10" icon="tryton-preferences"/>
+        <menuitem name="Configuration" parent="menu_project" id="menu_configuration" sequence="10" icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_project_admin">
             <field name="menu" ref="menu_configuration"/>
