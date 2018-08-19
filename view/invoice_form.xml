@@ -48,10 +48,10 @@ this repository contains the full copyright notices and license terms. -->
                     </group>
                     <group col="-1" colspan="4" id="buttons">
                         <button name="cancel" icon="tryton-cancel"/>
-                        <button name="draft" icon="tryton-go-previous"/>
-                        <button name="validate_invoice" icon="tryton-go-next"/>
+                        <button name="draft" icon="tryton-back"/>
+                        <button name="validate_invoice" icon="tryton-forward"/>
                         <button name="post" icon="tryton-ok"/>
-                        <button name="pay" icon="tryton-go-next"/>
+                        <button name="pay" icon="tryton-forward"/>
                     </group>
                 </group>
             </group>
