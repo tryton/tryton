@@ -28,9 +28,9 @@
                 <field name="state"/>
                 <group col="-1" colspan="2" id="buttons">
                     <button name="clear_lines" icon="tryton-clear"/>
-                    <button name="create_lines" icon="tryton-executable"/>
-                    <button name="update" icon="tryton-text-markup"/>
-                    <button name="run" icon="tryton-go-next"/>
+                    <button name="create_lines" icon="tryton-launch"/>
+                    <button name="update" icon="tryton-create"/>
+                    <button name="run" icon="tryton-forward"/>
                     <button name="close" icon="tryton-close"/>
                 </group>
             </group>
