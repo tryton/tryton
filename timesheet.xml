@@ -17,10 +17,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_timesheet_admin"/>
         </record>
 
-        <menuitem name="Timesheet" sequence="6" id="menu_timesheet"
-            icon="tryton-clock"/>
-        <menuitem name="Configuration" parent="menu_timesheet"
-            id="menu_configuration" sequence="10" icon="tryton-preferences"/>
+        <record model="ir.ui.icon" id="timesheet_icon">
+            <field name="name">tryton-timesheet</field>
+            <field name="path">icons/tryton-timesheet.svg</field>
+        </record>
+
+        <menuitem name="Timesheet" sequence="6" id="menu_timesheet" icon="tryton-timesheet"/>
+        <menuitem name="Configuration" parent="menu_timesheet" id="menu_configuration" sequence="10" icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_timesheet_admin">
             <field name="menu" ref="menu_configuration"/>
