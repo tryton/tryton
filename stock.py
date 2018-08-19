@@ -261,7 +261,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(['cancel', 'draft',
                             'waiting']),
                     'icon': If(Eval('state') == 'cancel',
-                        'tryton-clear', 'tryton-go-previous'),
+                        'tryton-undo', 'tryton-back'),
                     'depends': ['state'],
                     },
                 'wait': {
