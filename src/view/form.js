@@ -1674,16 +1674,17 @@ function eval_pyson(value){
     Sao.View.Form.Float = Sao.class_(Sao.View.Form.Integer, {
         class_: 'form-float',
         display: function(record, field) {
-            var digits = 'any';
+            var step = 'any';
             if (record) {
-                digits = field.digits(record, this.factor);
+                var digits = field.digits(record, this.factor);
                 if (digits) {
-                    digits = digits[1];
-                } else {
-                    digits = 'any';
+                    step = digits[1];
                 }
             }
-            this.input.attr('step', Math.pow(10, -digits));
+            if (step !== 'any') {
+                step = Math.pow(10, -step);
+            }
+            this.input.attr('step', step);
             Sao.View.Form.Float._super.display.call(this, record, field);
         }
     });
