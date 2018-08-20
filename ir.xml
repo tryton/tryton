@@ -21,7 +21,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <menuitem id="menu_dashboard" action="act_dashboard"
-            sequence="9" icon="tryton-presentation"/>
+            sequence="9" icon="tryton-board"/>
 
     </data>
 </tryton>
