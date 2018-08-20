@@ -152,10 +152,11 @@ class Email(ModelSQL, ModelView):
         if isinstance(record, User) and record.email:
             return _formataddr(record.rec_name, record.email)
         elif Party and isinstance(record, Party):
-            email = record.contact_mechanism_get(
+            contact = record.contact_mechanism_get(
                 'email', usage=self.contact_mechanism)
-            if email:
-                return _formataddr(record.rec_name, email)
+            if contact and contact.email:
+                return _formataddr(
+                    contact.name or record.rec_name, contact.email)
         elif WebUser and isinstance(record, WebUser):
             name = None
             if record.party:
