@@ -3,7 +3,7 @@
 from sql import Null
 from sql.operators import Concat
 
-from ..model import ModelView, ModelSQL, fields, Unique
+from ..model import ModelView, ModelSQL, fields
 from ..transaction import Transaction
 from ..pyson import Eval
 from .resource import ResourceMixin
@@ -52,16 +52,6 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
                 }, depends=['type']), 'get_size')
 
     @classmethod
-    def __setup__(cls):
-        super(Attachment, cls).__setup__()
-        table = cls.__table__()
-        cls._sql_constraints += [
-            ('resource_name',
-                Unique(table, table.resource, table.name),
-                'The names of attachments must be unique by resource.'),
-        ]
-
-    @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
 
@@ -85,6 +75,9 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
                     & (attachment.collision != Null)))
             table.drop_column('digest')
             table.drop_column('collision')
+
+        # Migration from 4.8: remove unique constraint
+        table.drop_constraint('resource_name')
 
     @staticmethod
     def default_type():

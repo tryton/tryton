@@ -1,3 +1,4 @@
+* Remove unique constraint on attachment name
 * New icons
 * Add pyson TimeDelta
 * Remove button if it is not allowed to access some of its dependant fields
