@@ -240,8 +240,8 @@ class CreateShippingUPS(Wizard):
 
     def get_shipping_party(self, party, address):
         shipping_party = {
-            'Name': party.name[:35],
-            'AttentionName': address.party.name[:35],
+            'Name': address.party_full_name[:35],
+            'AttentionName': party.full_name[:35],
             'Address': {
                 'AddressLine': [l[:35]
                     for l in (address.street or '').splitlines()[:3]],
