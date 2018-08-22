@@ -43,6 +43,8 @@ Create parties::
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> customer.save()
+    >>> party = Party(name='Party')
+    >>> party.save()
 
 Create Move to cancel::
 
@@ -63,10 +65,14 @@ Create Move to cancel::
     >>> line.credit = Decimal(42)
     >>> line = move.lines.new()
     >>> line.account = receivable
-    >>> line.debit = Decimal(42)
+    >>> line.debit = Decimal(32)
     >>> line.party = customer
     >>> line.second_currency = get_currency('EUR')
-    >>> line.amount_second_currency = Decimal(40)
+    >>> line.amount_second_currency = Decimal(30)
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.debit = Decimal(10)
+    >>> line.party = party
     >>> move.save()
     >>> revenue.reload()
     >>> revenue.credit
@@ -83,9 +89,9 @@ Cancel Move::
     >>> cancel_move.state
     'end'
     >>> move.reload()
-    >>> line, = [l for l in move.lines if l.account == receivable]
-    >>> bool(line.reconciliation)
-    True
+    >>> [bool(l.reconciliation) for l in move.lines if l.account == receivable]
+    [True, True]
+    >>> line, _ = [l for l in move.lines if l.account == receivable]
     >>> cancel_move, = [l.move for l in line.reconciliation.lines
     ...     if l.move != move]
     >>> cancel_move.origin == move
