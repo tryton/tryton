@@ -7,7 +7,7 @@ from sql import Literal
 from sql.aggregate import Max, Sum
 from sql.functions import Extract, CharLength
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
@@ -56,10 +56,16 @@ class Line(ModelSQL, ModelView):
         help="The work on which the time is spent.")
     description = fields.Char('Description',
         help="Additional description of the work done.")
+    uuid = fields.Char("UUID", readonly=True)
 
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('uuid_unique', Unique(t, t.uuid),
+                "The UUID of timesheet line must be unique."),
+            ]
         cls._order.insert(0, ('date', 'DESC'))
         cls._error_messages.update({
                 'duration_positive': (
@@ -135,6 +141,16 @@ class Line(ModelSQL, ModelView):
     @property
     def hours(self):
         return self.duration.total_seconds() / 60 / 60
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'work': self.work.id,
+            'work.name': self.work.rec_name,
+            'duration': self.duration.total_seconds(),
+            'description': self.description,
+            'uuid': self.uuid,
+            }
 
 
 class EnterLinesStart(ModelView):

@@ -15,11 +15,13 @@ The timesheet module defines some routes for user applications:
     - `GET` `/<database_name>/timesheet/employee/<int:employee>/lines/<date>`:
       return the list of timesheet lines for the employee at the date
       (`%Y-%m-%d'). The lines are dictionary with keys: `id`, `work`,
-      `work.name`, `duration` and `description`. The duration is in seconds.
+      `work.name`, `duration`, `description` and `uuid`. The duration is in
+      seconds.
 
     - `POST` `/<database_name>/timesheet/line`:
       Create a line using the data as dictionary of value. The date must be in
-      the format `%Y-%m-%d` and the `duration` in seconds.
+      the format `%Y-%m-%d` and the `duration` in seconds. If a `uuid` value is
+      provided, it will update the record if found instead of create a new one.
 
     - `PUT` `/<database_name>/timesheet/line/<int:line>`:
       Update the line using the data like for the `POST`.

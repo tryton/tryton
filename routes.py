@@ -69,13 +69,7 @@ def timesheet_lines(request, pool, employee, date):
                 ('employee', '=', employee.id),
                 ('date', '=', date),
                 ])
-    return [{
-            'id': l.id,
-            'work': l.work.id,
-            'work.name': l.work.rec_name,
-            'duration': l.duration.total_seconds(),
-            'description': l.description,
-            } for l in lines]
+    return [l.to_json() for l in lines]
 
 
 @app.route('/<database_name>/timesheet/line/<int:line>',
@@ -90,6 +84,14 @@ def timesheet(request, pool, line=None):
     Employee = pool.get('company.employee')
     if request.method in {'POST', 'PUT'}:
         data = request.parsed_data.copy()
+
+        if not line and data.get('uuid'):
+            lines = Line.search([
+                    ('uuid', '=', data['uuid']),
+                    ])
+            if lines:
+                line, = lines
+
         if 'employee' in data:
             employee = Employee(data['employee'])
             data['company'] = employee.company.id
@@ -115,13 +117,7 @@ def timesheet(request, pool, line=None):
                     return Response(None, 204)
                 line, = lines
                 Line.write(lines, data)
-        return {
-            'id': line.id,
-            'work': line.work.id,
-            'work.name': line.work.rec_name,
-            'duration': line.duration.total_seconds(),
-            'description': line.description,
-            }
+        return line.to_json()
     else:
         with Transaction().set_user(0):
             lines = Line.search([('id', '=', line)])
