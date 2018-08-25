@@ -17,6 +17,7 @@ Prerequisites
     * polib (https://bitbucket.org/izi/polib/wiki/Home)
     * python-sql 0.4 or later (http://code.google.com/p/python-sql/)
     * ipaddress (https://github.com/phihag/ipaddress)
+    * passlib (https://bitbucket.org/ecollins/passlib)
     * Optional: psycopg 2.5.0 or later (http://www.initd.org/)
     * Optional: psycopg2cffi 2.5.0 or later
       (http://github.com/chtd/psycopg2cffi)

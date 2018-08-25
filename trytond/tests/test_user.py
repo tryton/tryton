@@ -7,7 +7,6 @@ from unittest.mock import patch, ANY
 
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
-from trytond.res.user import bcrypt
 from trytond.config import config
 from trytond.error import UserError
 from trytond.res import user as user_module
@@ -46,7 +45,7 @@ class UserTestCase(unittest.TestCase):
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
-    def create_user(self, login, password, hash_method=None, email=None):
+    def create_user(self, login, password, email=None):
         pool = Pool()
         User = pool.get('res.user')
 
@@ -54,16 +53,8 @@ class UserTestCase(unittest.TestCase):
                     'name': login,
                     'login': login,
                     'email': email,
-                    }])
-        if hash_method:
-            hash = getattr(User, 'hash_' + hash_method)
-            User.write([user], {
-                    'password_hash': hash(password),
-                    })
-        else:
-            User.write([user], {
                     'password': password,
-                    })
+                    }])
         return user
 
     def check_user(self, login, password):
@@ -85,19 +76,6 @@ class UserTestCase(unittest.TestCase):
     def test_test_hash(self):
         'Test default hash password'
         self.create_user('user', '12345')
-        self.check_user('user', '12345')
-
-    @with_transaction()
-    def test_test_sha1(self):
-        'Test sha1 password'
-        self.create_user('user', '12345', 'sha1')
-        self.check_user('user', '12345')
-
-    @unittest.skipIf(bcrypt is None, 'requires bcrypt')
-    @with_transaction()
-    def test_test_bcrypt(self):
-        'Test bcrypt password'
-        self.create_user('user', '12345', 'bcrypt')
         self.check_user('user', '12345')
 
     @with_transaction()

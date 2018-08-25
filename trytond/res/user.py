@@ -16,6 +16,7 @@ try:
 except ImportError:
     secrets = None
 import ipaddress
+import warnings
 from email.header import Header
 from functools import wraps
 from itertools import groupby
@@ -27,6 +28,8 @@ from sql.functions import CurrentTimestamp
 from sql.conditionals import Coalesce, Case
 from sql.aggregate import Count
 from sql.operators import Concat
+
+from passlib.context import CryptContext
 
 try:
     import bcrypt
@@ -56,6 +59,15 @@ __all__ = [
 logger = logging.getLogger(__name__)
 _has_password = 'password' in config.get(
     'session', 'authentications', default='password').split(',')
+
+passlib_path = config.get('password', 'passlib')
+if passlib_path:
+    CRYPT_CONTEXT = CryptContext.from_path(passlib_path)
+else:
+    schemes = ['pbkdf2_sha512']
+    if bcrypt:
+        schemes.insert(0, 'bcrypt')
+    CRYPT_CONTEXT = CryptContext(schemes=schemes)
 
 
 def gen_password(length=8):
@@ -633,15 +645,19 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         user_id, password_hash, password_reset = cls._get_login(login)
         if user_id and password_hash:
             password = parameters['password']
-            if cls.check_password(password, password_hash):
+            valid, new_hash = cls.check_password(password, password_hash)
+            if valid:
+                if new_hash:
+                    logger.info("Update password hash for %s", user_id)
+                    with Transaction().new_transaction() as transaction:
+                        with transaction.set_user(0):
+                            cls.write([cls(user_id)], {
+                                    'password_hash': new_hash,
+                                    })
                 return user_id
         elif user_id and password_reset:
             if password_reset == parameters['password']:
                 return user_id
-
-    @staticmethod
-    def hash_method():
-        return 'bcrypt' if bcrypt else 'sha1'
 
     @classmethod
     def hash_password(cls, password):
@@ -649,14 +665,25 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         <hash_method>$<password>$<salt>...'''
         if not password:
             return None
-        return getattr(cls, 'hash_' + cls.hash_method())(password)
+        return CRYPT_CONTEXT.hash(password)
 
     @classmethod
     def check_password(cls, password, hash_):
         if not hash_:
             return False
-        hash_method = hash_.split('$', 1)[0]
-        return getattr(cls, 'check_' + hash_method)(password, hash_)
+        try:
+            return CRYPT_CONTEXT.verify_and_update(password, hash_)
+        except ValueError:
+            hash_method = hash_.split('$', 1)[0]
+            warnings.warn(
+                "Use deprecated hash method %s" % hash_method,
+                DeprecationWarning)
+            valid = getattr(cls, 'check_' + hash_method)(password, hash_)
+            if valid:
+                new_hash = CRYPT_CONTEXT.hash(password)
+            else:
+                new_hash = None
+            return valid, new_hash
 
     @classmethod
     def hash_sha1(cls, password):

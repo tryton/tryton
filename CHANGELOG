@@ -1,3 +1,4 @@
+* Use passlib to hash and update password
 * Remove unique constraint on attachment name
 * New icons
 * Add pyson TimeDelta
