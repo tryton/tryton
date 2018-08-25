@@ -2,10 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import hashlib
+import logging
 import random
 import string
 import time
 import urllib.parse
+import warnings
 from email.header import Header
 
 try:
@@ -31,10 +33,11 @@ from trytond.transaction import Transaction
 from trytond.sendmail import sendmail_transactional
 
 from trytond.ir.session import token_hex
-from trytond.res.user import LoginAttempt
+from trytond.res.user import LoginAttempt, CRYPT_CONTEXT
 
 __all__ = ['User', 'UserAuthenticateAttempt', 'UserSession',
     'EmailValidation', 'EmailResetPassword']
+logger = logging.getLogger(__name__)
 
 
 def _send_email(from_, users, email_func):
@@ -181,14 +184,18 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         users = cls.search([('email', '=', email)])
         if users:
             user, = users
-            if cls.check_password(password, user.password_hash):
+            valid, new_hash = cls.check_password(password, user.password_hash)
+            if valid:
+                if new_hash:
+                    logger.info("Update password hash for %s", user.id)
+                    with Transaction().new_transaction() as transaction:
+                        with transaction.set_user(0):
+                            cls.write([cls(user.id)], {
+                                    'password_hash': new_hash,
+                                    })
                 Attempt.remove(email)
                 return user
         Attempt.add(email)
-
-    @staticmethod
-    def hash_method():
-        return 'bcrypt' if bcrypt else 'sha1'
 
     @classmethod
     def hash_password(cls, password):
@@ -196,14 +203,25 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         <hash_method>$<password>$<salt>...'''
         if not password:
             return ''
-        return getattr(cls, 'hash_' + cls.hash_method())(password)
+        return CRYPT_CONTEXT.hash(password)
 
     @classmethod
     def check_password(cls, password, hash_):
         if not hash_:
             return False
-        hash_method = hash_.split('$', 1)[0]
-        return getattr(cls, 'check_' + hash_method)(password, hash_)
+        try:
+            return CRYPT_CONTEXT.verify_and_update(password, hash_)
+        except ValueError:
+            hash_method = hash_.split('$', 1)[0]
+            warnings.warn(
+                "Use deprecated hash method %s" % hash_method,
+                DeprecationWarning)
+            valid = getattr(cls, 'check_' + hash_method)(password, hash_)
+            if valid:
+                new_hash = CRYPT_CONTEXT.hash(password)
+            else:
+                new_hash = None
+            return valid, new_hash
 
     @classmethod
     def hash_sha1(cls, password):

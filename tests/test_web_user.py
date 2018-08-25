@@ -43,17 +43,12 @@ class WebUserTestCase(ModuleTestCase):
         config.set('password', 'entropy', 0.8)
         self.addCleanup(config.set, 'password', 'entropy', entropy)
 
-    def create_user(self, email, password, hash_method=None):
+    def create_user(self, email, password):
         pool = Pool()
         User = pool.get('web.user')
 
         user = User(email=email)
-
-        if hash_method:
-            hash_ = getattr(User, 'hash_%s' % hash_method)
-            user.password_hash = hash_(password)
-        else:
-            user.password = password
+        user.password = password
         user.save()
 
         self.assertEqual(user.password, 'x' * 10)
@@ -77,19 +72,6 @@ class WebUserTestCase(ModuleTestCase):
     def test_default_hash(self):
         'Test default hash'
         self.create_user('user@example.com', 'secret')
-        self.check_user('user@example.com', 'secret')
-
-    @with_transaction()
-    def test_default_sha1(self):
-        'Test sha1 hash'
-        self.create_user('user@example.com', 'secret', 'sha1')
-        self.check_user('user@example.com', 'secret')
-
-    @unittest.skipIf(user_module.bcrypt is None, 'requires bcrypt')
-    @with_transaction()
-    def test_default_bcrypt(self):
-        'Test bcrypt hash'
-        self.create_user('user@example.com', 'secret', 'bcrypt')
         self.check_user('user@example.com', 'secret')
 
     @with_transaction()
