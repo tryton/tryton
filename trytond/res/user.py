@@ -148,7 +148,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         super(User, cls).__setup__()
         cls.__rpc__.update({
                 'get_preferences': RPC(check_access=False),
-                'set_preferences': RPC(readonly=False, check_access=False),
+                'set_preferences': RPC(
+                    readonly=False, check_access=False, fresh_session=True),
                 'get_preferences_fields_view': RPC(check_access=False),
                 })
         table = cls.__table__()
@@ -182,7 +183,6 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                 'delete_forbidden': ('Users can not be deleted '
                     'for logging purpose.\n'
                     'Instead you must inactivate them.'),
-                'wrong_password': 'Wrong password!',
                 'password_length': "The password is too short.",
                 'password_forbidden': "The password is forbidden.",
                 'password_name': (
@@ -369,13 +369,24 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def write(cls, users, values, *args):
+        pool = Pool()
+        Session = pool.get('ir.session')
+
         actions = iter((users, values) + args)
         all_users = []
+        session_to_clear = []
         args = []
         for users, values in zip(actions, actions):
             all_users += users
             args.extend((users, cls._convert_vals(values)))
+
+            if 'password' in values:
+                session_to_clear += users
+
         super(User, cls).write(*args)
+
+        Session.clear(session_to_clear)
+
         # Clean cursor cache as it could be filled by domain_get
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:
@@ -500,9 +511,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         return preferences.copy()
 
     @classmethod
-    def set_preferences(cls, values, parameters):
+    def set_preferences(cls, values):
         '''
-        Set user preferences using login parameters
+        Set user preferences
         '''
         pool = Pool()
         Lang = pool.get('ir.lang')
@@ -513,9 +524,6 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         for field in values:
             if field not in fields or field == 'groups':
                 del values_clean[field]
-            if field == 'password':
-                if not cls._login_password(user.login, parameters):
-                    cls.raise_user_error('wrong_password')
             if field == 'language':
                 langs = Lang.search([
                     ('code', '=', values['language']),

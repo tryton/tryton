@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import http.client
 import logging
 import pydoc
 try:
@@ -143,6 +144,17 @@ def _dispatch(request, pool, *args, **kwargs):
     else:
         abort(HTTPStatus.FORBIDDEN)
 
+    user = request.user_id
+    session = None
+    if request.authorization.type == 'session':
+        session = request.authorization.get('session')
+
+    if rpc.fresh_session and session:
+        context = {'_request': request.context}
+        if not security.check_timeout(
+                pool.database_name, user, session, context=context):
+            abort(http.client.UNAUTHORIZED)
+
     log_message = '%s.%s(*%s, **%s) from %s@%s/%s'
     username = request.authorization.username
     if isinstance(username, bytes):
@@ -150,8 +162,6 @@ def _dispatch(request, pool, *args, **kwargs):
     log_args = (
         obj, method, args, kwargs, username, request.remote_addr, request.path)
     logger.info(log_message, *log_args)
-
-    user = request.user_id
 
     for count in range(config.getint('database', 'retry'), -1, -1):
         with Transaction().start(pool.database_name, user,
@@ -190,14 +200,8 @@ def _dispatch(request, pool, *args, **kwargs):
         while transaction.tasks:
             task_id = transaction.tasks.pop()
             run_task(pool, task_id)
-        if request.authorization.type == 'session':
+        if session:
             context = {'_request': request.context}
-            try:
-                with Transaction().start(
-                        pool.database_name, 0, context=context) as transaction:
-                    Session = pool.get('ir.session')
-                    Session.reset(request.authorization.get('session'))
-            except DatabaseOperationalError:
-                logger.debug('Reset session failed', exc_info=True)
+            security.reset(pool.database_name, session, context=context)
         logger.debug('Result: %s', result)
         return result

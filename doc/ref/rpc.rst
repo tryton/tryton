@@ -5,7 +5,7 @@
 RPC
 ===
 
-.. class:: RPC([readonly[, instantiate[, result[, check_access[, unique]]]]])
+.. class:: RPC([readonly[, instantiate[, result[, check_access[, unique[, fresh_session]]]]]])
 
 RPC is an object to define the behavior of Remote Procedur Call.
 
@@ -31,3 +31,7 @@ Instance attributes are:
 .. attribute:: RPC.unique
 
     If set, it ensures the instantiated records are unique. Default is `True`.
+
+.. attribute:: RPC.fresh_session
+
+    If set, it requires a fresh session. Default is `False`.

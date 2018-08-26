@@ -14,19 +14,22 @@ class RPC(object):
     instantiate: The position or the slice of the arguments to be instanciated
     result: The function to transform the result
     check_access: If access right must be checked
+    fresh_session: If a fresh session is required
     unique: Check instances are unique
     '''
 
-    __slots__ = ('readonly', 'instantiate', 'result', 'check_access', 'unique')
+    __slots__ = ('readonly', 'instantiate', 'result', 'check_access',
+        'fresh_session', 'unique')
 
     def __init__(self, readonly=True, instantiate=None, result=None,
-            check_access=True, unique=True):
+            check_access=True, fresh_session=False, unique=True):
         self.readonly = readonly
         self.instantiate = instantiate
         if result is None:
             result = lambda r: r
         self.result = result
         self.check_access = check_access
+        self.fresh_session = fresh_session
         self.unique = unique
 
     def convert(self, obj, *args, **kwargs):

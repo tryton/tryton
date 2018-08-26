@@ -264,12 +264,19 @@ The methods are tested following the order of the list.
 
 Default: `password`
 
+max_age
+~~~~~~~
+
+The time in seconds that a session stay valid.
+
+Default: `2592000` (30 days)
+
 timeout
 ~~~~~~~
 
-The time in seconds until a session expires.
+The time in seconds without activity before the session is no more fresh.
 
-Default: `600`
+Default: `300` (5 minutes)
 
 max_attempt
 ~~~~~~~~~~~
