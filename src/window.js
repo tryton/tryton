@@ -662,16 +662,8 @@
                     .then(function(validate) {
                         if (validate) {
                             var values = jQuery.extend({}, this.screen.get());
-                            var context = jQuery.extend({},
-                                    Sao.Session.current_session.context);
-                            var func = function(parameters) {
-                                return {
-                                    'id': 0,
-                                    'method': 'model.res.user.set_preferences',
-                                    'params': [values, parameters, context]
-                                };
-                            };
-                            return new Sao.Login(func).run();
+                            return this.screen.model.execute(
+                                'set_preferences', [values], {});
                         }
                     }.bind(this));
             }
