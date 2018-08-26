@@ -132,35 +132,6 @@ class User(metaclass=PoolMeta):
         super(User, cls).write(*args)
 
     @classmethod
-    def set_preferences(cls, values, parameters):
-        if 'password' in values:
-            if 'password' not in parameters:
-                msg = cls.fields_get(['password'])['password']['string']
-                raise LoginException('password', msg, type='password')
-            old_password = parameters['password']
-            try:
-                server = ldap_server()
-                if server:
-                    user = cls(Transaction().user)
-                    uid = config.get(section, 'uid', default='uid')
-                    users = cls.ldap_search_user(
-                        user.login, server, attrs=[uid])
-                    if users and len(users) == 1:
-                        [(dn, attrs)] = users
-                        con = ldap3.Connection(server, dn, old_password)
-                        if con.bind():
-                            con.extend.standard.modify_password(
-                                dn, old_password, values['password'])
-                            values = values.copy()
-                            del values['password']
-                        else:
-                            cls.raise_user_error('wrong_password')
-            except LDAPException:
-                logger.error('LDAPError when setting preferences',
-                    exc_info=True)
-        super(User, cls).set_preferences(values, parameters)
-
-    @classmethod
     def _login_ldap(cls, login, parameters):
         if 'password' not in parameters:
             msg = cls.fields_get(['password'])['password']['string']
