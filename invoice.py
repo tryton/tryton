@@ -317,6 +317,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'depends': ['state'],
                     },
                 })
+        cls.__rpc__.update({
+                'post': RPC(
+                    readonly=False, instantiate=0, fresh_session=True),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -2548,6 +2552,7 @@ class PayInvoice(Wizard):
                     'create a partial payment with an amount greater than the '
                     'amount to pay.'),
                 })
+        cls.__rpc__['create'].fresh_session = True
 
     def get_reconcile_lines_for_amount(self, invoice, amount):
         if invoice.type == 'in':
