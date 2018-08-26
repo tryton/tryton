@@ -103,6 +103,10 @@ class Move(ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+        cls.__rpc__.update({
+                'post': RPC(
+                    readonly=False, instantiate=0, fresh_session=True),
+                })
 
     @classmethod
     def __register__(cls, module_name):
