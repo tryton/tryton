@@ -4,6 +4,7 @@ from itertools import groupby
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
+from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool
@@ -218,6 +219,10 @@ class Payment(Workflow, ModelSQL, ModelView):
                     'icon': 'tryton-cancel',
                     'depends': ['state'],
                     },
+                })
+        cls.__rpc__.update({
+                'approve': RPC(
+                    readonly=False, instantiate=0, fresh_session=True),
                 })
 
     @staticmethod
