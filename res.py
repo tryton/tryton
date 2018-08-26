@@ -8,7 +8,6 @@ from trytond.config import config
 from trytond.exceptions import LoginException
 from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
-from trytond.transaction import Transaction
 from trytond.tools import resolve
 
 __all__ = ['User', 'SMSCode']
@@ -34,28 +33,6 @@ class User(metaclass=PoolMeta):
     def __setup__(cls):
         super(User, cls).__setup__()
         cls._preferences_fields.append('mobile')
-        cls._error_messages.update({
-                'wrong_mobile': 'Wrong mobile.',
-                })
-
-    @classmethod
-    def set_preferences(cls, values, parameters):
-        super(User, cls).set_preferences(values, parameters)
-        user_id = Transaction().user
-        user = cls(user_id)
-        # Check new mobile
-        if 'mobile' in values:
-            # Use a new transaction to store the SMS code
-            with Transaction().new_transaction() as transaction:
-                # Force sending code to new mobile
-                SMSCode.send(user_id, mobile=values['mobile'])
-                try:
-                    user_id = cls._login_sms(user.login, parameters)
-                except LoginException:
-                    transaction.commit()
-                    raise
-            if not user_id:
-                cls.raise_user_error('wrong_mobile')
 
     @classmethod
     def _login_sms(cls, login, parameters):
