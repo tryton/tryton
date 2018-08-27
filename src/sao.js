@@ -320,6 +320,7 @@ var Sao = {};
     Sao.set_title = function(name) {
         var title = [name, Sao.config.title];
         document.title = title.filter(function(e) {return e;}).join(' - ');
+        jQuery('#title').text(Sao.config.title);
     };
 
     Sao.set_url = function(path, name) {
@@ -497,6 +498,7 @@ var Sao = {};
     };
 
     Sao.login = function() {
+        Sao.set_title();
         Sao.i18n.setlang().always(function() {
             Sao.Session.get_credentials()
                 .then(function(session) {
