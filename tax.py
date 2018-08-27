@@ -347,7 +347,8 @@ class TaxCodeLine(ModelSQL, ModelView):
             ('credit', "Credit"),
             ], "Type", required=True, states=_states)
 
-    template = fields.Many2One('account.tax.code.line.template', 'Template')
+    template = fields.Many2One(
+        'account.tax.code.line.template', 'Template', ondelete='CASCADE')
     template_override = fields.Boolean('Override Template',
         help="Check to override template definition",
         states={
@@ -1527,7 +1528,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ],
         depends=['group'],
         ondelete='RESTRICT')
-    template = fields.Many2One('account.tax.rule.line.template', 'Template')
+    template = fields.Many2One(
+        'account.tax.rule.line.template', 'Template', ondelete='CASCADE')
 
     @classmethod
     def __setup__(cls):
