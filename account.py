@@ -113,7 +113,7 @@ class Tax:
     def _amount_domain(cls):
         context = Transaction().context
         periods = context.get('periods', [])
-        domain = super(Tax, cls)._sum_domain()
+        domain = super(Tax, cls)._amount_domain()
         return ['OR',
             [domain,
                 ('on_cash_basis', '=', False),
