@@ -1,3 +1,5 @@
+* Add contact mechanism usage
+* Add fall-back user
 * Remove support for Python 2.7
 
 Version 4.8.0 - 2018-04-23

@@ -9,6 +9,7 @@ __all__ = ['register']
 
 def register():
     Pool.register(
+        account.Configuration,
         account.DunningLevel,
         account.Dunning,
         account.DunningEmailLog,

@@ -12,7 +12,19 @@ from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 from trytond.wizard import StateTransition
 
-__all__ = ['DunningLevel', 'ProcessDunning', 'Dunning', 'DunningEmailLog']
+__all__ = ['Configuration', 'DunningLevel', 'ProcessDunning', 'Dunning',
+    'DunningEmailLog']
+
+
+class Configuration(metaclass=PoolMeta):
+    __name__ = 'account.configuration'
+
+    dunning_email_fallback = fields.Many2One(
+        'res.user', "Fall-back User",
+        domain=[
+            ('email', '!=', None),
+            ],
+        help="User notified when no e-mail is found to send the dunning")
 
 
 class DunningLevel(metaclass=PoolMeta):
@@ -36,6 +48,13 @@ class DunningLevel(metaclass=PoolMeta):
             },
         depends=['send_email'],
         help="Leave empty for the value defined in the configuration file.")
+    email_contact_mechanism = fields.Selection(
+        'get_contact_mechanisms', "Contact Mechanism",
+        states={
+            'invisible': ~Eval('send_email'),
+            },
+        depends=['send_email'],
+        help="Define which e-mail to use from the party's contact mechanisms")
 
     @classmethod
     def default_email_template(cls):
@@ -45,6 +64,20 @@ class DunningLevel(metaclass=PoolMeta):
             return Data.get_id('account_dunning_email', 'report_email')
         except KeyError:
             return
+
+    @classmethod
+    def get_contact_mechanisms(cls):
+        pool = Pool()
+        ContactMechanism = pool.get('party.contact_mechanism')
+        return ContactMechanism.usages()
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('//separator[@id="email"]', 'states', {
+                    'invisible': ~Eval('send_email'),
+                    }),
+            ]
 
 
 class ProcessDunning(metaclass=PoolMeta):
@@ -81,13 +114,21 @@ class Dunning(metaclass=PoolMeta):
     def send_email(self, datamanager=None):
         pool = Pool()
         Configuration = pool.get('ir.configuration')
+        AccountConfig = pool.get('account.configuration')
         Lang = pool.get('ir.lang')
+
+        account_config = AccountConfig(1)
 
         from_ = self.level.email_from or config.get('email', 'from')
         to = []
-        if self.party.email:
-            name = str(Header(self.party.rec_name))
-            to.append(formataddr((name, self.party.email)))
+        contact = self.party.contact_mechanism_get(
+            'email', usage=self.level.email_contact_mechanism)
+        if contact and contact.email:
+            name = str(Header(contact.name or self.party.rec_name))
+            to.append(formataddr((name, contact.email)))
+        elif account_config.dunning_email_fallback:
+            user = account_config.dunning_email_fallback
+            to.append(formataddr((self.party.rec_name, user.email)))
         cc = []
         bcc = []
         languages = set()

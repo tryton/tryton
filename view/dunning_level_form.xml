@@ -5,10 +5,14 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/field[@name='print_on_letter']" position="after">
         <label name="send_email"/>
         <field name="send_email"/>
-        <newline/>
+        <separator string="E-mail" id="email" colspan="4"/>
         <label name="email_template"/>
         <field name="email_template"/>
+        <newline/>
         <label name="email_from"/>
         <field name="email_from"/>
+        <label name="email_contact_mechanism"/>
+        <field name="email_contact_mechanism"/>
+        <newline/>
     </xpath>
 </data>
