@@ -103,7 +103,7 @@ class Database(DatabaseInterface):
     def __new__(cls, name='template1'):
         with cls._lock:
             now = datetime.now()
-            for database in cls._databases.values():
+            for database in list(cls._databases.values()):
                 if ((now - database._last_use).total_seconds() > _timeout
                         and database.name != name
                         and not database._connpool._used):
