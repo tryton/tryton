@@ -97,7 +97,7 @@ class Image(BinaryMixin, Widget):
         if self.field:
             value = self.field.get_client(self.record)
         if isinstance(value, int):
-            if value > CONFIG.get('image.max_size'):
+            if value > CONFIG['image.max_size']:
                 value = False
             else:
                 value = self.field.get_data(self.record)

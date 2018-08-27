@@ -530,7 +530,7 @@ class Image(GenericText):
         field = record[self.field_name]
         value = field.get_client(record)
         if isinstance(value, int):
-            if value > CONFIG.get('image.max_size'):
+            if value > CONFIG['image.max_size']:
                 value = None
             else:
                 value = field.get_data(record)
