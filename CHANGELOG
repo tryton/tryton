@@ -1,3 +1,4 @@
+* Allow to set any default configuration value from environment
 * Clear existing session when password is changed
 * Manage session with max_age and timeout
 * Use passlib to hash and update password

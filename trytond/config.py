@@ -77,7 +77,20 @@ class TrytonConfigParser(configparser.RawConfigParser):
         self.set('password', 'length', 8)
         self.set('password', 'entropy', 0.75)
         self.set('password', 'reset_timeout', 24 * 60 * 60)
+        self.update_environ()
         self.update_etc()
+
+    def update_environ(self):
+        for key, value in os.environ.items():
+            if not key.startswith('TRYTOND_'):
+                continue
+            try:
+                section, option = key[len('TRYTOND_'):].lower().split('__', 1)
+            except ValueError:
+                continue
+            if not self.has_section(section):
+                self.add_section(section)
+            self.set(section, option, value)
 
     def update_etc(self, configfile=os.environ.get('TRYTOND_CONFIG')):
         if isinstance(configfile, str):

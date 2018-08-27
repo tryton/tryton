@@ -20,6 +20,9 @@ For more information see ConfigParser_.
 
 .. _ConfigParser: http://docs.python.org/2/library/configparser.html
 
+The default value of any option can be changed using environment variables
+with names using this syntax: `TRYTOND_<SECTION>__<NAME>`.
+
 Sections
 ========
 
