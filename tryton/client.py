@@ -26,6 +26,12 @@ def main():
     .invalid entry, entry.invalid, .invalid text, text.invalid {
         border-color: @error_color;
     }
+    label.required {
+        font-weight: bold;
+    }
+    label.editable {
+        font-style: italic;
+    }
     """
 
     screen = Gdk.Screen.get_default()

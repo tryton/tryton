@@ -15,7 +15,6 @@ from tryton.gui.window import Window
 from tryton.common.popup_menu import populate
 from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
 from tryton.common import domain_inversion, simplify, unique_value
-from tryton.common.widget_style import widget_class
 from tryton.pyson import PYSONDecoder
 import tryton.common as common
 from . import View
@@ -457,10 +456,7 @@ class ViewTree(View):
         if field and self.editable:
             required = field.attrs.get('required')
             readonly = field.attrs.get('readonly')
-            attrlist = common.get_label_attributes(readonly, required)
-            label.set_attributes(attrlist)
-            widget_class(label, 'readonly', readonly)
-            widget_class(label, 'required', required)
+            common.apply_label_attributes(label, readonly, required)
         label.show()
         help = None
         if field and field.attrs.get('help'):

@@ -50,6 +50,7 @@ from tryton import __version__
 from tryton.exceptions import TrytonServerError, TrytonError
 from tryton.pyson import PYSONEncoder
 from .underline import set_underline
+from .widget_style import widget_class
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
@@ -1291,23 +1292,13 @@ def data2pixbuf(data, width=None, height=None):
             pass
 
 
-def get_label_attributes(readonly, required):
-    "Return the pango attributes applied to a label according to its state"
-    if readonly:
-        style = pango.STYLE_NORMAL
-        weight = pango.WEIGHT_NORMAL
+def apply_label_attributes(label, readonly, required):
+    if not readonly:
+        widget_class(label, 'editable', True)
+        widget_class(label, 'required', required)
     else:
-        style = pango.STYLE_ITALIC
-        if required:
-            weight = pango.WEIGHT_BOLD
-        else:
-            weight = pango.WEIGHT_NORMAL
-    attrlist = pango.AttrList()
-    if hasattr(pango, 'AttrWeight'):
-        attrlist.change(pango.AttrWeight(weight, 0, -1))
-    if hasattr(pango, 'AttrStyle'):
-        attrlist.change(pango.AttrStyle(style, 0, -1))
-    return attrlist
+        widget_class(label, 'editable', False)
+        widget_class(label, 'required', False)
 
 
 def ellipsize(string, length):

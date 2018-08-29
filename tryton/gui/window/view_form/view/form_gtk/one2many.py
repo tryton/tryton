@@ -11,7 +11,6 @@ from tryton.gui.window.win_form import WinForm
 import tryton.common as common
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.domain_parser import quote
-from tryton.common.widget_style import widget_class
 from tryton.common.underline import set_underline
 
 _ = gettext.gettext
@@ -241,10 +240,8 @@ class One2Many(Widget):
         self._set_label_state()
 
     def _set_label_state(self):
-        attrlist = common.get_label_attributes(self._readonly, self._required)
-        self.title.set_attributes(attrlist)
-        widget_class(self.title, 'readonly', self._readonly)
-        widget_class(self.title, 'required', self._required)
+        common.apply_label_attributes(
+            self.title, self._readonly, self._required)
 
     def _set_button_sensitive(self):
         access = common.MODELACCESS[self.screen.model_name]
