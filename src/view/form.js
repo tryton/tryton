@@ -722,8 +722,8 @@ function eval_pyson(value){
             } else {
                 state_changes = {};
             }
-            if ((field && field.description.readonly) ||
-                    state_changes.readonly) {
+            if (state_changes.readonly === undefined) {
+                state_changes.readonly = !field;
             }
             Sao.common.apply_label_attributes(
                     this.label_el,
