@@ -594,9 +594,9 @@ var Sao = {};
                             'model': Sao.main_menu_screen.model_name +
                             '.favorite',
                             'mode': ['tree', 'form'],
-                            'name': Sao.i18n.gettext('Manage favorites')
+                            'name': Sao.i18n.gettext('Favorites')
                         });
-                    }).text(Sao.i18n.gettext('Manage favorites'))).appendTo(
+                    }).text(Sao.i18n.gettext('Manage...'))).appendTo(
                        menu);
             });
         }
