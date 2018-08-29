@@ -452,7 +452,7 @@ class Main(Gtk.Application):
             if icon:
                 menuitem = gtk.ImageMenuItem(name)
                 menuitem.set_image(
-                    common.IconFactory.get_image(name, gtk.ICON_SIZE_MENU))
+                    common.IconFactory.get_image(icon, gtk.ICON_SIZE_MENU))
             else:
                 menuitem = gtk.MenuItem(name)
             menuitem.connect('activate', _action_favorite, id_)
