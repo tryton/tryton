@@ -441,7 +441,7 @@ class Main(Gtk.Application):
         def _manage_favorites(widget):
             Window.create(self.menu_screen.model_name + '.favorite',
                 mode=['tree', 'form'],
-                name=_('Manage Favorites'))
+                name=_("Favorites"))
         try:
             favorites = RPCExecute('model',
                 self.menu_screen.model_name + '.favorite', 'get',
@@ -458,7 +458,7 @@ class Main(Gtk.Application):
             menuitem.connect('activate', _action_favorite, id_)
             self.menu_favorite.add(menuitem)
         self.menu_favorite.add(gtk.SeparatorMenuItem())
-        manage_favorites = gtk.MenuItem(_('Manage Favorites'),
+        manage_favorites = gtk.MenuItem(_("Manage..."),
             use_underline=True)
         manage_favorites.connect('activate', _manage_favorites)
         self.menu_favorite.add(manage_favorites)
