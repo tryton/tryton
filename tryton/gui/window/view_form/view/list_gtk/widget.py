@@ -579,15 +579,20 @@ class M2O(GenericText):
                 field.set_client(record, (None, ''))
 
             if field.get(record):
-                stock1, tooltip1 = 'tryton-open', _("Open the record <F2>")
-                stock2, tooltip2 = 'tryton-clear', _("Clear the field <Del>")
+                icon1, tooltip1 = 'tryton-open', _("Open the record <F2>")
+                icon2, tooltip2 = 'tryton-clear', _("Clear the field <Del>")
             else:
-                stock1, tooltip1 = None, ''
-                stock2, tooltip2 = 'tryton-search', _("Search a record <F2>")
-            for pos, stock, tooltip in [
-                    (gtk.ENTRY_ICON_PRIMARY, stock1, tooltip1),
-                    (gtk.ENTRY_ICON_SECONDARY, stock2, tooltip2)]:
-                editable.set_icon_from_stock(pos, stock)
+                icon1, tooltip1 = None, ''
+                icon2, tooltip2 = 'tryton-search', _("Search a record <F2>")
+            for pos, icon, tooltip in [
+                    (gtk.ENTRY_ICON_PRIMARY, icon1, tooltip1),
+                    (gtk.ENTRY_ICON_SECONDARY, icon2, tooltip2)]:
+                if icon:
+                    pixbuf = common.IconFactory.get_pixbuf(
+                        icon, gtk.ICON_SIZE_MENU)
+                else:
+                    pixbuf = None
+                editable.set_icon_from_pixbuf(pos, pixbuf)
                 editable.set_icon_tooltip_text(pos, tooltip)
 
         def icon_press(editable, icon_pos, event):
