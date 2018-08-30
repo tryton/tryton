@@ -20,7 +20,8 @@ module.exports = function(grunt) {
       'src/common.js',
       'src/window.js',
       'src/wizard.js',
-      'src/board.js'
+      'src/board.js',
+      'src/bus.js'
   ];
 
   // Project configuration.

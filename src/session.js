@@ -27,7 +27,9 @@
                     }
                 }
             }
-            this.context = {};
+            this.context = {
+                client: Sao.Bus.id,
+            };
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
             }
@@ -91,10 +93,12 @@
                 'method': 'model.res.user.get_preferences',
                 'params': [true, {}]
             };
-            this.context = {};
+            this.context = {
+                client: Sao.Bus.id,
+            };
             var prm = Sao.rpc(args, this);
             return prm.then(function(context) {
-                this.context = context;
+                jQuery.extend(this.context, context);
             }.bind(this));
         },
         store: function() {
@@ -244,6 +248,8 @@
         session.do_login(session.login).then(dfd.resolve, function() {
             Sao.logout();
             dfd.reject();
+        }).done(function () {
+            Sao.Bus.listen();
         });
         return session.prm;
     };

@@ -240,6 +240,7 @@ var Sao = {};
     Sao.config.roundup.url = 'http://bugs.tryton.org/roundup/';
     Sao.config.title = 'Tryton';
     Sao.config.icon_color = '#3465a4';
+    Sao.config.bus_timeout = 10 * 60;
 
     Sao.i18n = i18n();
     Sao.i18n.setlang = function(lang) {
@@ -508,6 +509,7 @@ var Sao = {};
                     Sao.menu(preferences);
                     Sao.user_menu(preferences);
                     Sao.open_url();
+                    Sao.Bus.listen();
                 });
         });
     };
