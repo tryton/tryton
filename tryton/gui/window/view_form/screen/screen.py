@@ -180,11 +180,21 @@ class Screen(SignalEvent):
             # Filter only fields in XML view
             xml_dom = xml.dom.minidom.parseString(view_tree['arch'])
             root_node, = xml_dom.childNodes
-            xml_fields = [node_attributes(node).get('name')
-                for node in root_node.childNodes
-                if node.nodeName == 'field']
-            fields = collections.OrderedDict(
-                (name, fields[name]) for name in xml_fields)
+            ofields = collections.OrderedDict()
+            for node in root_node.childNodes:
+                if node.nodeName != 'field':
+                    continue
+                attributes = node_attributes(node)
+                name = attributes['name']
+                # If a field is defined multiple times in the XML,
+                # take only the first definition
+                if name in ofields:
+                    continue
+                ofields[name] = fields[name]
+                for attr in ['string', 'factor']:
+                    if attributes.get(attr):
+                        ofields[name][attr] = attributes[attr]
+            fields = ofields
 
         if 'active' in view_tree['fields']:
             self.screen_container.but_active.show()
