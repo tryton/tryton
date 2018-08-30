@@ -1493,15 +1493,21 @@
             if ('arch' in view_tree) {
                 // Filter only fields in XML view
                 var xml_view = jQuery(jQuery.parseXML(view_tree.arch));
-                var xml_fields = xml_view.find('tree').children()
-                    .filter(function(i, node) {
-                        return node.tagName == 'field';
-                    }).map(function(i, node) {
-                        return node.getAttribute('name');
-                    });
                 var dom_fields = {};
-                xml_fields.each(function(k, name) {
-                    dom_fields[name] = fields[name];
+                xml_view.find('tree').children().each(function(i, node) {
+                    if (node.tagName == 'field') {
+                        var name = node.getAttribute('name');
+                        // If a field is defined multiple times in the XML,
+                        // take only the first definition
+                        if (!(name in dom_fields)) {
+                            dom_fields[name] = fields[name];
+                            ['string', 'factor'].forEach(function(attr) {
+                                if (node.getAttribute(attr)) {
+                                    dom_fields[name][attr] = node.getAttribute(attr);
+                                }
+                            });
+                        }
+                    }
                 });
                 fields = dom_fields;
             }

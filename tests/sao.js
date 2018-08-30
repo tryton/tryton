@@ -1309,6 +1309,8 @@
         [null, null]
         ].forEach(test_func, field);
 
+        test_func.call({'type': 'float', 'factor': '100'}, ['42', 0.42]);
+
         field = {
             'type': 'integer'
         };
@@ -1320,6 +1322,23 @@
         [null, null]
         ].forEach(test_func, field);
 
+        test_func.call({'type': 'integer', 'factor': '2'}, ['6', 3]);
+
+        var test_func_numeric = function(test) {
+            var value = test[0];
+            var result = test[1];
+            value = parser.convert_value(this, value);
+            if (value !== null) {
+                value = value.toString();
+            }
+            if (result !== null) {
+                result = result.toString();
+            }
+            QUnit.strictEqual(value, result,
+                'convert_value(' + JSON.stringify(this) + ', ' +
+                    JSON.stringify(test[0]) + ')');
+        };
+
         field = {
             'type': 'numeric'
         };
@@ -1329,20 +1348,11 @@
         ['', null],
         ['test', null],
         [null, null]
-        ].forEach(function(test) {
-            var value = test[0];
-            var result = test[1];
-            value = parser.convert_value(field, value);
-            if (value !== null) {
-                value = value.toString();
-            }
-            if (result !== null) {
-                result = result.toString();
-            }
-            QUnit.strictEqual(value, result,
-                'convert_value(' + JSON.stringify(field) + ', ' +
-                    JSON.stringify(test[0]) + ')');
-        });
+        ].forEach(test_func_numeric, field);
+
+        test_func_numeric.call(
+            {'type': 'numeric', 'factor': '5'},
+            ['1', new Sao.Decimal('0.2')]);
 
         field = {
             'type': 'selection',
@@ -1523,6 +1533,8 @@
         [null, '']
         ].forEach(test_func, field);
 
+        test_func.call({'type': 'integer', 'factor': '2'}, [3, '6']);
+
         field = {
             'type': 'float'
         };
@@ -1537,6 +1549,8 @@
         [null, '']
         ].forEach(test_func, field);
 
+        test_func.call({'type': 'float', 'factor': '100'}, [0.42, '42']);
+
         field = {
             'type': 'numeric'
         };
@@ -1550,6 +1564,10 @@
         [false, ''],
         [null, '']
         ].forEach(test_func, field);
+
+        test_func.call(
+            {'type': 'numeric', 'factor': '5'},
+            [new Sao.Decimal('0.2'), '1']);
 
         field = {
             'type': 'selection',

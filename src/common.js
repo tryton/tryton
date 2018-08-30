@@ -1779,28 +1779,31 @@
                     }
                 },
                 'float': function() {
+                    var factor = Number(field.factor || 1);
                     var result = Number(value);
                     if (isNaN(result) || value === '' || value === null) {
                         return null;
                     } else {
-                        return result;
+                        return result / factor;
                     }
                 },
                 'integer': function() {
+                    var factor = Number(field.factor || 1, 10);
                     var result = parseInt(value, 10);
                     if (isNaN(result)) {
                         return null;
                     } else {
-                        return result;
+                        return result / factor;
                     }
                 },
                 'numeric': function() {
-                    var result = new Sao.Decimal(value);
+                    var factor = Number(field.factor || 1);
+                    var result = Number(value);
                     if (isNaN(result.valueOf()) ||
                             value === '' || value === null) {
                         return null;
                     } else {
-                        return result;
+                        return new Sao.Decimal(result / factor);
                     }
                 },
                 'selection': convert_selection,
@@ -1855,13 +1858,15 @@
                 if (!value && value !== 0 && value !== new Sao.Decimal(0)) {
                     return '';
                 }
-                var digit = String(value).split('.')[1];
+                var factor = Number(field.factor || 1);
+                var digit = String(value * factor)
+                    .replace(/0+$/, '').split('.')[1];
                 if (digit) {
                     digit = digit.length;
                 } else {
                     digit = 0;
                 }
-                return value.toFixed(digit);
+                return (value * factor).toFixed(digit);
             };
             var format_selection = function() {
                 for (var i = 0; i < field.selection.length; i++) {
@@ -1894,8 +1899,9 @@
                     }
                 },
                 'integer': function() {
+                    var factor = Number(field.factor || 1);
                     if (value || value === 0) {
-                        return '' + parseInt(value, 10);
+                        return '' + parseInt(parseInt(value, 10) * factor, 10);
                     } else {
                         return '';
                     }
