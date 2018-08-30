@@ -15,14 +15,15 @@ _ = gettext.gettext
 class WinImport(WinCSV):
     "Window import"
 
-    def __init__(self, model, context):
+    def __init__(self, name, model, context):
+        self.name = name
         self.model = model
         self.context = context
         self.fields_data = {}
         self.fields = {}
         self.fields_invert = {}
         super(WinImport, self).__init__()
-        self.dialog.set_title(_('Import from CSV'))
+        self.dialog.set_title(_('CSV Import: %s') % name)
 
     def add_buttons(self, box):
         button_autodetect = gtk.Button(

@@ -289,10 +289,11 @@ class Form(SignalEvent, TabContent):
                 self.screen.count_tab_domain()
 
     def sig_import(self, widget=None):
-        WinImport(self.model, self.screen.context)
+        WinImport(self.title.get_text(), self.model, self.screen.context)
 
     def sig_export(self, widget=None):
-        export = WinExport(self.model,
+        export = WinExport(
+            self.title.get_text(), self.model,
             [r.id for r in self.screen.selected_records],
             context=self.screen.context)
         for name in self.screen.current_view.get_fields():

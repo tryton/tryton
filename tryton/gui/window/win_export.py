@@ -18,13 +18,14 @@ _ = gettext.gettext
 class WinExport(WinCSV):
     "Window export"
 
-    def __init__(self, model, ids, context=None):
+    def __init__(self, name, model, ids, context=None):
+        self.name = name
         self.ids = ids
         self.model = model
         self.context = context
         self.fields = {}
         super(WinExport, self).__init__()
-        self.dialog.set_title(_('Export to CSV'))
+        self.dialog.set_title(_('CSV Export: %s') % name)
 
     def add_buttons(self, box):
         button_save_export = gtk.Button(
@@ -295,7 +296,8 @@ class WinExport(WinCSV):
                 data = []
 
             if action == 0:
-                fileno, fname = tempfile.mkstemp('.csv', 'tryton_')
+                fileno, fname = tempfile.mkstemp(
+                    '.csv', common.slugify(self.name) + '_')
                 self.export_csv(fname, fields2, data, popup=False)
                 os.close(fileno)
                 common.file_open(fname, 'csv')
