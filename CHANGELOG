@@ -1,3 +1,4 @@
+* Add template override mechanism to tax rules and tax rule lines
 * Remove support for Python 2.7
 * Remove journal type
 

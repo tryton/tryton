@@ -4,7 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="rule"/>
     <field name="rule"/>
-    <newline/>
+    <label name="template_override"/>
+    <field name="template_override"/>
     <label name="group"/>
     <field name="group"/>
     <label name="origin_tax"/>

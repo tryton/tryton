@@ -1304,8 +1304,12 @@ class TaxRuleTemplate(ModelSQL, ModelView):
 class TaxRule(ModelSQL, ModelView):
     'Tax Rule'
     __name__ = 'account.tax.rule'
-    name = fields.Char('Name', required=True)
-    kind = fields.Selection(KINDS, 'Kind', required=True)
+    _states = {
+        'readonly': (Bool(Eval('template', -1))
+            & ~Eval('template_override', False)),
+        }
+    name = fields.Char('Name', required=True, states=_states)
+    kind = fields.Selection(KINDS, 'Kind', required=True, states=_states)
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
@@ -1313,6 +1317,13 @@ class TaxRule(ModelSQL, ModelView):
             ])
     lines = fields.One2Many('account.tax.rule.line', 'rule', 'Lines')
     template = fields.Many2One('account.tax.rule.template', 'Template')
+    template_override = fields.Boolean("Override Template",
+        help="Check to override template definition",
+        states={
+            'invisible': ~Bool(Eval('template', -1)),
+            },
+        depends=['template'])
+    del _states
 
     @staticmethod
     def default_kind():
@@ -1364,11 +1375,13 @@ class TaxRule(ModelSQL, ModelView):
                 ])
         for rule in rules:
             if rule.template:
+                template2rule[rule.template.id] = rule.id
+                if rule.template_override:
+                    continue
                 vals = rule.template._get_tax_rule_value(rule=rule)
                 if vals:
                     values.append([rule])
                     values.append(vals)
-                template2rule[rule.template.id] = rule.id
         if values:
             cls.write(*values)
 
@@ -1486,10 +1499,14 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
 class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Tax Rule Line'
     __name__ = 'account.tax.rule.line'
+    _states = {
+        'readonly': (Bool(Eval('template', -1))
+            & ~Eval('template_override', False)),
+        }
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
-            select=True, ondelete='CASCADE')
+            select=True, ondelete='CASCADE', states=_states)
     group = fields.Many2One('account.tax.group', 'Tax Group',
-        ondelete='RESTRICT')
+        ondelete='RESTRICT', states=_states)
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
         domain=[
             ('parent', '=', None),
@@ -1508,8 +1525,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         help=('If the original tax is filled, the rule will be applied '
             'only for this tax.'),
         depends=['group'],
-        ondelete='RESTRICT')
-    keep_origin = fields.Boolean("Keep Origin",
+        ondelete='RESTRICT', states=_states)
+    keep_origin = fields.Boolean("Keep Origin", states=_states,
         help="Check to append the original tax to substituted tax.")
     tax = fields.Many2One('account.tax', 'Substitution Tax',
         domain=[
@@ -1527,9 +1544,16 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 ],
             ],
         depends=['group'],
-        ondelete='RESTRICT')
+        ondelete='RESTRICT', states=_states)
     template = fields.Many2One(
         'account.tax.rule.line.template', 'Template', ondelete='CASCADE')
+    template_override = fields.Boolean("Override Template",
+        help="Check to override template definition",
+        states={
+            'invisible': ~Bool(Eval('template', -1)),
+            },
+        depends=['template'])
+    del _states
 
     @classmethod
     def __setup__(cls):
@@ -1584,6 +1608,9 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 ])
         for line in lines:
             if line.template:
+                template2rule_line[line.template.id] = line.id
+                if line.template_override:
+                    continue
                 vals = line.template._get_tax_rule_line_value(rule_line=line)
                 if line.rule.id != template2rule[line.template.rule.id]:
                     vals['rule'] = template2rule[line.template.rule.id]
@@ -1609,7 +1636,6 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 if vals:
                     values.append([line])
                     values.append(vals)
-                template2rule_line[line.template.id] = line.id
         if values:
             cls.write(*values)
 

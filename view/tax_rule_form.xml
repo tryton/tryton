@@ -4,10 +4,12 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
     <field name="name"/>
-    <label name="company"/>
-    <field name="company"/>
+    <label name="template_override"/>
+    <field name="template_override"/>
     <label name="kind"/>
     <field name="kind"/>
+    <label name="company"/>
+    <field name="company"/>
     <field name="lines" colspan="4"
         view_ids="account.tax_rule_line_view_tree_sequence"/>
 </form>
