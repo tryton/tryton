@@ -23,7 +23,8 @@
     "c3": "^0.6",
     "papaparse": "^4.1",
     "fullcalendar": "^3.0",
-    "mousetrap": "^1.6"
+    "mousetrap": "^1.6",
+    "bootstrap-rtl-ondemand": "^3.3.4-ondemand"
   },
   "devDependencies": {
     "qunit": "^1.18"

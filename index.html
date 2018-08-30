@@ -23,6 +23,7 @@ this repository contains the full copyright notices and license terms. -->
         <script type="text/javascript" src="bower_components/mousetrap/mousetrap.min.js"></script>
 
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/bootstrap-rtl-ondemand/dist/css/bootstrap-rtl-ondemand.min.css">
         <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" href="bower_components/c3/c3.min.css">
         <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
@@ -53,9 +54,9 @@ this repository contains the full copyright notices and license terms. -->
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="main_navbar">
-                    <form class="navbar-form navbar-left" role="search" id="global-search">
+                    <form class="navbar-form navbar-left flip" role="search" id="global-search">
                     </form>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right flip">
                         <li id="user-preferences"></li>
                         <li id="user-logout"></li>
                     </ul>
@@ -67,7 +68,7 @@ this repository contains the full copyright notices and license terms. -->
         <div id="main" class="container-fluid" style="padding: 0px;">
             <div class="row row-offcanvas row-offcanvas-left active"
                 style="height: calc(100vh - 50px - 1px - 20px); margin: 0px;">
-                <div class="col-xs-6 col-sm-3 col-lg-2 sidebar-offcanvas" id="menu" role="navigation"
+                <div class="col-xs-12 col-sm-3 col-lg-2 sidebar-offcanvas" id="menu" role="navigation"
                     style="overflow-y: auto; height: 100%;"></div>
                 <div class="col-xs-12 col-md-9 col-lg-10 main-offcanvas" style="overflow-y: auto; height: 100%;">
                     <div id="tabs" role="tabpanel">

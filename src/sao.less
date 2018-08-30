@@ -12,6 +12,10 @@
         display: block;
         margin-right: 15px;
     }
+    [dir="rtl"] & > span {
+        margin-right: 0;
+        margin-left: 15px;
+    }
 }
 
 #menu, #tabs {
@@ -21,12 +25,21 @@
 #menu {
     border-right: 2px solid @table-border-color;
 }
+[dir="rtl"] #menu {
+    border-right: none;
+    border-left: 2px solid @table-border-color;
+}
 @media screen and (max-width: @screen-sm-max) {
     #menu {
         border-right: none;
+        border-left: none;
     }
     .active #menu {
         border-right: 2px solid @table-border-color;
+    }
+    [dir="rtl"] .active #menu {
+        border-right: none;
+        border-left: 2px solid @table-border-color;
     }
 }
 
@@ -118,6 +131,9 @@ input[type='color'] {
 img.icon {
     height: unit(@line-height-base, em);
 }
+[dir="rtl"] img.icon {
+    transform: scaleX(-1);
+}
 
 .filter-box {
     margin: 5px 5px;
@@ -149,9 +165,11 @@ img.icon {
             &.char, &.text, &.many2one, &.one2one, &.date, &.time, &.selection,
             &.reference, &.url, &.email, &.callto, &.sip {
                 text-align: left;
+                text-align: start;
             }
             &.timedelta, &.float, &.numeric, &.integer, &.biginteger {
                 text-align: right;
+                text-align: end;
             }
         }
         & > tbody > tr > td {
@@ -164,8 +182,16 @@ img.icon {
         & td.prefix {
             padding-right: @table-cell-padding;
         }
+        [dir="rtl"] & td.prefix {
+            padding-right: 0;
+            padding-left: @table-cell-padding;
+        }
         & td.suffix {
             padding-left: @table-cell-padding;
+        }
+        [dir="rtl"] & td.suffix {
+            padding-left: 0;
+            padding-right: @table-cell-padding;
         }
         & img.column-affix, a.column-affix > img {
             width: unit(@line-height-base, em);
@@ -209,6 +235,10 @@ img.icon {
             float: left;
             margin-right: 5px;
             width: 1em;
+        }
+        [dir="rtl"] & > img {
+            float: right;
+            margin-left: 5px;
         }
     }
     & label {
@@ -279,6 +309,9 @@ img.icon {
             float: left;
             margin: 5px;
         }
+        [dir="rtl"] & .form-one2many-string, .form-many2many-string {
+            float: right;
+        }
         & .form-one2many-toolbar, .form-many2many-toolbar {
             display: inline-table;
             float: right;
@@ -289,6 +322,9 @@ img.icon {
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+        }
+        [dir="rtl"] & .form-one2many-toolbar, .form-many2many-toolbar {
+            float: left;
         }
     }
     & .form-one2many-content, .form-many2many-content {
@@ -351,10 +387,12 @@ img.icon {
 .editabletree-integer, .editabletree-float, .editabletree-timedelta {
     & input {
         text-align: right;
+        text-align: end;
     }
 }
 .column-integer, .column-float, .column-timedelta {
     text-align: right;
+    text-align: end;
 }
 .column-many2many, .column-one2many {
     text-align: center;
@@ -371,6 +409,7 @@ input.column-boolean {
 
 .dict-label {
     text-align: right;
+    text-align: end;
 }
 
 .calendar {
@@ -385,6 +424,7 @@ input.column-boolean {
 .window-form {
     & .window-form-toolbar {
         text-align: right;
+        text-align: end;
     }
 }
 
@@ -400,6 +440,7 @@ input.column-boolean {
 @media screen and (max-width: @screen-xs-max) {
     .dict-label {
         text-align: left;
+        text-align: start;
     }
 }
 
@@ -426,6 +467,7 @@ input.column-boolean {
         & > thead > tr,
         & > tbody > tr > td {
             text-align: left !important;
+            text-align: start !important;
             /* Force height to empty content */
             & > span:empty {
                 min-height: 20px;
@@ -466,10 +508,17 @@ input.column-boolean {
                 left: 6px;
                 padding-right: 10px;
                 text-align: left;
+                text-align: start;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 /* Label */
                 content: attr(data-title);
+            }
+            [dir="rtl"] & > td:before {
+                padding-right: 0;
+                padding-left: 10px;
+                left: unset;
+                right: 6px;
             }
             & > td.required:before {
                 font-weight: bold;

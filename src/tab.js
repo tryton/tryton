@@ -161,7 +161,7 @@
             }).append(jQuery('<div/>', {
                 'class': 'container-fluid'
             }).append(jQuery('<div/>', {
-                'class': 'dropdown navbar-header navbar-left'
+                'class': 'dropdown navbar-header navbar-left flip'
             }).append(jQuery('<a/>', {
                 'href': "#",
                 'class': "navbar-brand dropdown-toggle",
@@ -185,7 +185,7 @@
             }).append('&times;')).click(function() {
                 this.close();
             }.bind(this)))).append(jQuery('<div/>', {
-                'class': 'btn-toolbar navbar-right',
+                'class': 'btn-toolbar navbar-right flip',
                 'role': 'toolbar'
             })));
             var wrapper = jQuery('<div/>', {

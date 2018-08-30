@@ -20,18 +20,34 @@
             if (this.attributes.mode == 'week') {
                 defaultview = this.get_week_view();
             }
+            var header = {
+                left: 'today prev,next',
+                center: 'title',
+                right: 'month,' + this.get_week_view(),
+            };
+            if (Sao.i18n.rtl) {
+                var header_rtl = jQuery.extend({}, header);
+                header_rtl.left = header.right;
+                header_rtl.right = header.left;
+                header = header_rtl;
+            }
             this.el.fullCalendar({
                 defaultView: defaultview,
-                header: {
-                    left:   'prev,next',
-                    center: 'title',
-                    right: ' month,' + this.get_week_view()
-                },
+                header: header,
                 timeFormat: 'H:mm',
                 events: this.get_events.bind(this),
                 locale: lang,
-                buttonIcons: false,
+                isRTL: Sao.i18n.rtl,
                 themeSystem: 'bootstrap3',
+                bootstrapGlyphicons: {
+                    'prev': 'chevron-' + (Sao.i18n.rtl? 'right' : 'left'),
+                    'next': 'chevron-' + (Sao.i18n.rtl? 'left' : 'right'),
+                },
+                buttonTextOverride: {
+                    'today': Sao.i18n.gettext("Today"),
+                    'month': Sao.i18n.gettext("Month"),
+                    'week': Sao.i18n.gettext("Week"),
+                },
                 eventRender: this.event_render.bind(this),
                 eventResize: this.event_resize.bind(this),
                 eventDrop: this.event_drop.bind(this),

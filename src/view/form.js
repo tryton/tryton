@@ -157,7 +157,6 @@ function eval_pyson(value){
                     attributes.states = model.fields[name].description.states;
                 }
                 if (attributes.string === undefined) {
-                    // TODO RTL and translation
                     attributes.string = model.fields[name]
                         .description.string + ': ';
                 }
@@ -544,7 +543,13 @@ function eval_pyson(value){
 
             if (attributes.xalign !== undefined) {
                 // TODO replace by start/end when supported
-                cell.css('text-align', attributes.xalign >= 0.5? 'right': 'left');
+                var align;
+                if (Sao.i18n.rtl) {
+                    align = attributes.xalign >= 0.5? 'left': 'right';
+                } else {
+                    align = attributes.xalign >= 0.5? 'right': 'left';
+                }
+                cell.css('text-align', align);
             }
             if (xexpand) {
                 cell.addClass('xexpand');
@@ -2008,13 +2013,13 @@ function eval_pyson(value){
             add_buttons([
                     {
                         'icon': 'align-left',
-                        'command': 'justifyLeft'
+                        'command': Sao.i18n.rtl? 'justifyRight' : 'justifyLeft',
                     }, {
                         'icon': 'align-center',
                         'command': 'justifyCenter'
                     }, {
                         'icon': 'align-right',
-                        'command': 'justifyRight'
+                        'command': Sao.i18n.rtl? 'justifyLeft': 'justifyRight',
                     }, {
                         'icon': 'align-justify',
                         'command': 'justifyFull'
@@ -2087,7 +2092,11 @@ function eval_pyson(value){
                 }
                 // Some browsers set start as default align
                 if (el.attr('align') == 'start') {
-                    el.attr('align', 'left');
+                    if (Sao.i18n.rtl) {
+                        el.attr('align', 'right');
+                    } else {
+                        el.attr('align', 'left');
+                    }
                 }
             });
         },
@@ -4127,7 +4136,6 @@ function eval_pyson(value){
             this.rows[key] = row = jQuery('<div/>', {
                 'class': 'row'
             });
-            // TODO RTL
             var text = key_schema.string + Sao.i18n.gettext(':');
             var label = jQuery('<label/>', {
                 'text': text

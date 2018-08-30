@@ -250,7 +250,6 @@
             if (!attributes.sum) {
                 return;
             }
-            // TODO RTL
             var label = attributes.sum + Sao.i18n.gettext(': ');
             var sum = jQuery('<label/>', {
                 'text': label,
@@ -875,7 +874,6 @@
             for (var i = 0; i < this.tree.columns.length; i++) {
                 var column = this.tree.columns[i];
                 td = jQuery('<td/>', {
-                    // TODO RTL
                     'data-title': column.attributes.string + Sao.i18n.gettext(': ')
                 }).append(jQuery('<span/>', { // For responsive min-height
                     'aria-hidden': true
@@ -898,10 +896,15 @@
                 td.append(table);
                 if ((i === 0) && this.children_field) {
                     this.expander = jQuery('<img/>', {
-                        'tabindex': 0
+                        'tabindex': 0,
+                        'class': 'icon',
                     });
                     this.expander.html('&nbsp;');
-                    this.expander.css('margin-left', (depth - 1) + 'em');
+                    var margin = 'margin-left';
+                    if (Sao.i18n.rtl) {
+                        margin = 'margin-right';
+                    }
+                    this.expander.css(margin, (depth - 1) + 'em');
                     this.expander.on('click keypress',
                             Sao.common.click_press(this.toggle_row.bind(this)));
                     row.append(jQuery('<td/>', {

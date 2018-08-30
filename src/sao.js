@@ -280,6 +280,13 @@ var Sao = {};
     Sao.i18n.BC47 = function(lang) {
         return lang.replace('_', '-');
     };
+    Sao.i18n.set_direction = function(direction) {
+        Sao.i18n.rtl = (direction === 'rtl');
+        jQuery('html').attr('dir', direction);
+        jQuery('.row-offcanvas')
+            .removeClass('row-offcanvas-left row-offcanvas-right')
+            .addClass(Sao.i18n.rtl ? 'row-offcanvas-right' : 'row-offcanvas-left');
+    };
     Sao.i18n.locale = {};
 
     Sao.get_preferences = function() {
@@ -311,6 +318,7 @@ var Sao = {};
                         }
                         prm.resolve(preferences);
                     });
+                    Sao.i18n.set_direction(preferences.language_direction);
                     Sao.i18n.locale = preferences.locale;
                     return prm;
                 });
