@@ -3,7 +3,6 @@
 '''
 A library to access Tryton's models like a client.
 '''
-import sys
 import threading
 import datetime
 import functools
