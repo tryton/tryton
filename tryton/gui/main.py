@@ -5,6 +5,7 @@ import gettext
 import json
 import logging
 import os
+import sys
 import threading
 import traceback
 import webbrowser
@@ -30,6 +31,8 @@ from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
+_PRIORITIES = [getattr(Gio.NotificationPriority, p)
+    for p in ('LOW', 'NORMAL', 'HIGH', 'URGENT')]
 
 
 class Main(Gtk.Application):
@@ -963,3 +966,10 @@ class Main(Gtk.Application):
                 self._open_url(url)
                 return False
         gobject.idle_add(idle_open_url)
+
+    def show_notification(self, title, msg, priority=1):
+        notification = Gio.Notification.new(title)
+        notification.set_body(msg)
+        notification.set_priority(_PRIORITIES[priority])
+        if sys.platform != 'win32' or GLib.glib_version >= (2, 57, 0):
+            self.send_notification(None, notification)

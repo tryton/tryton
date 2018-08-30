@@ -1158,7 +1158,7 @@ def RPCExecute(*args, **kwargs):
 
 def RPCContextReload(callback=None):
     def update(context):
-        rpc.CONTEXT.clear()
+        rpc.context_reset()
         try:
             rpc.CONTEXT.update(context())
         except RPCException:

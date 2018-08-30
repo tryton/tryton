@@ -54,6 +54,7 @@ class ConfigManager(object):
             'client.email': '',
             'client.limit': 1000,
             'client.check_version': True,
+            'client.bus_timeout': 10 * 60,
             'icon.color': '#3465a4',
             'image.max_size': 10 ** 6,
             'roundup.url': 'http://bugs.tryton.org/',

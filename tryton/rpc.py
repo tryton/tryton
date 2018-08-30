@@ -9,6 +9,7 @@ from http import HTTPStatus
 
 from functools import partial
 
+from tryton import bus
 from tryton.jsonrpc import ServerProxy, ServerPool, Fault
 from tryton.fingerprints import Fingerprints
 from tryton.config import get_config_dir
@@ -30,6 +31,14 @@ ServerProxy = partial(ServerProxy, fingerprints=_FINGERPRINTS,
     ca_certs=_CA_CERTS)
 ServerPool = partial(ServerPool, fingerprints=_FINGERPRINTS,
     ca_certs=_CA_CERTS)
+
+
+def context_reset():
+    CONTEXT.clear()
+    CONTEXT['client'] = bus.ID
+
+
+context_reset()
 
 
 def db_list(host, port):
@@ -83,6 +92,8 @@ def login(parameters):
     _VIEW_CACHE = {}
     _TOOLBAR_CACHE = {}
     _KEYWORD_CACHE = {}
+
+    bus.listen(CONNECTION)
 
 
 def logout():

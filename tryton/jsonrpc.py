@@ -16,6 +16,7 @@ import errno
 from functools import partial
 from contextlib import contextmanager
 from functools import reduce
+from urllib.parse import urljoin
 
 __all__ = ["ResponseError", "Fault", "ProtocolError", "Transport",
     "ServerProxy", "ServerPool"]
@@ -309,12 +310,18 @@ class ServerProxy(xmlrpc.client.ServerProxy):
 class ServerPool(object):
     keep_max = 4
 
-    def __init__(self, *args, **kwargs):
-        self.ServerProxy = partial(ServerProxy, *args, **kwargs)
+    def __init__(self, host, port, database, *args, **kwargs):
+        self.ServerProxy = partial(
+            ServerProxy, host, port, database, *args, **kwargs)
+
+        self._host = host
+        self._port = port
+        self._database = database
+
         self._lock = threading.Lock()
         self._pool = []
         self._used = {}
-        self.session = None
+        self.session = kwargs.get('session')
 
     def getconn(self):
         with self._lock:
@@ -347,6 +354,13 @@ class ServerPool(object):
         for conn in self._pool + list(self._used.values()):
             return conn.ssl
         return False
+
+    @property
+    def url(self):
+        scheme = 'https' if self.ssl else 'http'
+        return urljoin(
+            scheme + '://' + self._host + ':' + str(self._port),
+            self._database)
 
     @contextmanager
     def __call__(self):
