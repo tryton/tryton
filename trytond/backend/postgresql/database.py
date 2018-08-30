@@ -41,7 +41,7 @@ __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 logger = logging.getLogger(__name__)
 
 os.environ['PGTZ'] = os.environ.get('TZ', '')
-_timeout = config.getint('database', 'timeout', default=30 * 60)
+_timeout = config.getint('database', 'timeout')
 _minconn = config.getint('database', 'minconn', default=1)
 _maxconn = config.getint('database', 'maxconn', default=64)
 

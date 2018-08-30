@@ -53,6 +53,7 @@ class TrytonConfigParser(configparser.RawConfigParser):
         self.set('database', 'list', 'True')
         self.set('database', 'retry', 5)
         self.set('database', 'language', 'en')
+        self.set('database', 'timeout', 30 * 60)
         self.add_section('request')
         self.set('request', 'max_size', 2 * 1024 * 1024)
         self.set('request', 'max_size_authenticated', 2 * 1024 * 1024 * 1024)
@@ -77,6 +78,10 @@ class TrytonConfigParser(configparser.RawConfigParser):
         self.set('password', 'length', 8)
         self.set('password', 'entropy', 0.75)
         self.set('password', 'reset_timeout', 24 * 60 * 60)
+        self.add_section('bus')
+        self.set('bus', 'long_polling_timeout', 5 * 60)
+        self.set('bus', 'cache_timeout', 5)
+        self.set('bus', 'select_timeout', 5)
         self.update_environ()
         self.update_etc()
 

@@ -152,3 +152,4 @@ num_proxies = config.getint('web', 'num_proxies')
 if num_proxies:
     app.wsgi_app = ProxyFix(app.wsgi_app, num_proxies=num_proxies)
 import trytond.protocols.dispatcher
+import trytond.bus

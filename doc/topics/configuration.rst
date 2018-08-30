@@ -372,6 +372,32 @@ The prefix to use with the `FileStore`.
 
 Default: `None`
 
+bus
+---
+
+long_polling_timeout
+~~~~~~~~~~~~~~~~~~~~
+
+The time in seconds to keep the connection to the client opened when using long
+polling for bus messages
+
+Default: `300`
+
+cache_timeout
+~~~~~~~~~~~~~
+
+The number of seconds a message should be kept by the queue before being
+discarded.
+
+Default: `300`
+
+select_timeout
+~~~~~~~~~~~~~~
+
+The timeout duration of the select call when listening on a channel.
+
+Default: `5`
+
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
 .. _RFC-3986: http://tools.ietf.org/html/rfc3986
