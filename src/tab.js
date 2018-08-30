@@ -999,7 +999,8 @@
             }.bind(this));
         },
         export: function(){
-            new Sao.Window.Export(this.screen,
+            new Sao.Window.Export(
+                this.title.text(), this.screen,
                 this.screen.current_view.selected_records().map(function(r) {
                     return r.id;
                 }),
@@ -1007,7 +1008,7 @@
                 this.screen.context());
         },
         import: function(){
-            new Sao.Window.Import(this.screen);
+            new Sao.Window.Import(this.title.text(), this.screen);
         },
         get_url: function() {
             return this.screen.get_url(this.attributes.name);

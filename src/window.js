@@ -1011,13 +1011,14 @@
     });
 
     Sao.Window.Import = Sao.class_(Sao.Window.CSV, {
-        init: function(screen) {
+        init: function(name, screen) {
+            this.name = name;
             this.screen = screen;
             this.session = Sao.Session.current_session;
             this.fields_data = {}; // Ask before Removing this.
             this.fields_invert = {};
             Sao.Window.Import._super.init.call(this,
-                Sao.i18n.gettext('Import from CSV'));
+                Sao.i18n.gettext('CSV Import: %1', name));
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
@@ -1313,13 +1314,14 @@
     });
 
     Sao.Window.Export = Sao.class_(Sao.Window.CSV, {
-        init: function(screen, ids, names, context) {
+        init: function(name, screen, ids, names, context) {
+            this.name = name;
             this.ids = ids;
             this.screen = screen;
             this.session = Sao.Session.current_session;
             this.context = context;
             Sao.Window.Export._super.init.call(this,
-                Sao.i18n.gettext('Export to CSV')).then(function() {
+                Sao.i18n.gettext('CSV Export: %1',name)).then(function() {
                     var fields = this.screen.model.fields;
                     names.forEach(function(name) {
                         var type = fields[name].description.type;
@@ -1716,14 +1718,8 @@
                 quoteChar: this.el_csv_quotechar.val(),
                 delimiter: this.el_csv_delimiter.val()
             });
-            var blob = new Blob([csv], {type: 'text/csv;charset=' + encoding});
-            var blob_url = window.URL.createObjectURL(blob);
-            if (this.blob_url) {
-                window.URL.revokeObjectURL(this.blob_url);
-            }
-            this.blob_url = blob_url;
-            window.open(blob_url);
-
+            Sao.common.download_file(
+                csv, this.name + '.csv', {type: 'text/csv;charset=' + encoding});
             return Sao.common.message.run(
                 Sao.i18n.ngettext('%1 record saved', '%1 records saved',
                     data.length));

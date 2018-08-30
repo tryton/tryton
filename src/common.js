@@ -3362,10 +3362,13 @@
         }
     };
 
-    Sao.common.download_file = function(data, name) {
-        var type = Sao.common.guess_mimetype(
-            name ? name.split('.').pop() : undefined);
-        var blob = new Blob([data], {type: type});
+    Sao.common.download_file = function(data, name, options) {
+        if (options === undefined) {
+            var type = Sao.common.guess_mimetype(
+                name ? name.split('.').pop() : undefined);
+            options = {type: type};
+        }
+        var blob = new Blob([data], options);
 
         if (window.navigator && window.navigator.msSaveOrOpenBlob) {
             window.navigator.msSaveOrOpenBlob(blob, name);
