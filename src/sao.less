@@ -23,7 +23,9 @@
 }
 
 #menu {
-    border-right: 2px solid @table-border-color;
+    border-width: 1px;
+    border-style: solid;
+    border-top: none;
 }
 [dir="rtl"] #menu {
     border-right: none;
@@ -33,9 +35,10 @@
     #menu {
         border-right: none;
         border-left: none;
+        border-width: none;
     }
     .active #menu {
-        border-right: 2px solid @table-border-color;
+        border-width: 1px;
     }
     [dir="rtl"] .active #menu {
         border-right: none;
