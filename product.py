@@ -37,7 +37,8 @@ def account_used(field_name, field_string=None):
                         'field': field,
                         'name': self.rec_name,
                         })
-            return account
+            if account:
+                return account.current()
         return wrapper
     return decorator
 
