@@ -3,6 +3,7 @@
 from trytond.model import fields, Unique
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['InvoiceLine']
 
@@ -32,7 +33,8 @@ class InvoiceLine(metaclass=PoolMeta):
                 'Asset can be used only once on invoice line!'),
             ]
 
-    @fields.depends('product', 'invoice', 'invoice_type')
+    @fields.depends('product', 'invoice', 'invoice_type',
+        '_parent_invoice.invoice_date', '_parent_invoice.accounting_date')
     def on_change_product(self):
         super(InvoiceLine, self).on_change_product()
         if self.invoice and self.invoice.type:
@@ -43,7 +45,10 @@ class InvoiceLine(metaclass=PoolMeta):
         if (self.product and type_ == 'in'
                 and self.product.type == 'assets'
                 and self.product.depreciable):
-            self.account = self.product.account_asset_used
+            date = (self.invoice.accounting_date or self.invoice.invoice_date
+                if self.invoice else None)
+            with Transaction().set_context(date=date):
+                self.account = self.product.account_asset_used
 
     @fields.depends('asset', 'unit')
     def on_change_asset(self):

@@ -468,16 +468,17 @@ class Asset(Workflow, ModelSQL, ModelView):
         MoveLine = pool.get('account.move.line')
 
         period_id = Period.find(self.company.id, line.date)
-        expense_line = MoveLine(
-            credit=0,
-            debit=line.depreciation,
-            account=self.product.account_expense_used,
-            )
-        depreciation_line = MoveLine(
-            debit=0,
-            credit=line.depreciation,
-            account=self.product.account_depreciation_used,
-            )
+        with Transaction().set_context(date=line.date):
+            expense_line = MoveLine(
+                credit=0,
+                debit=line.depreciation,
+                account=self.product.account_expense_used,
+                )
+            depreciation_line = MoveLine(
+                debit=0,
+                credit=line.depreciation,
+                account=self.product.account_depreciation_used,
+                )
 
         return Move(
             company=self.company,
@@ -526,7 +527,7 @@ class Asset(Workflow, ModelSQL, ModelView):
         date = Date.today()
         period_id = Period.find(self.company.id, date)
         if self.supplier_invoice_line:
-            account_asset = self.supplier_invoice_line.account
+            account_asset = self.supplier_invoice_line.account.current()
         else:
             account_asset = self.product.account_asset_used
 
