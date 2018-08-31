@@ -599,7 +599,10 @@ def origin_mixin(_states, _depends):
                 ('company', '=', Eval('company', 0)),
                 ('kind', '!=', 'view'),
                 ],
-            states=_states, depends=_depends + ['company'])
+            context={
+                'date': Eval('date'),
+                },
+            states=_states, depends=_depends + ['company', 'date'])
         description = fields.Char(
             "Description", states=_states, depends=_depends)
 
@@ -684,14 +687,15 @@ class Line(
     def default_amount():
         return Decimal(0)
 
-    @fields.depends('amount', 'party', 'invoice')
+    @fields.depends('amount', 'party', 'invoice', 'date')
     def on_change_party(self):
         if self.party:
             if self.amount:
-                if self.amount > Decimal("0.0"):
-                    self.account = self.party.account_receivable_used
-                else:
-                    self.account = self.party.account_payable_used
+                with Transaction().set_context(date=self.date):
+                    if self.amount > Decimal("0.0"):
+                        self.account = self.party.account_receivable_used
+                    else:
+                        self.account = self.party.account_payable_used
 
         if self.invoice:
             if self.party:
@@ -701,20 +705,21 @@ class Line(
                 self.invoice = None
 
     @fields.depends('amount', 'party', 'account', 'invoice', 'statement',
-        '_parent_statement.journal')
+        'date', '_parent_statement.journal')
     def on_change_amount(self):
         Currency = Pool().get('currency.currency')
         if self.party:
-            if self.account and self.account not in (
-                    self.party.account_receivable_used,
-                    self.party.account_payable_used):
-                # The user has entered a non-default value, we keep it.
-                pass
-            elif self.amount:
-                if self.amount > Decimal("0.0"):
-                    self.account = self.party.account_receivable_used
-                else:
-                    self.account = self.party.account_payable_used
+            with Transaction().set_context(date=self.date):
+                if self.account and self.account not in (
+                        self.party.account_receivable_used,
+                        self.party.account_payable_used):
+                    # The user has entered a non-default value, we keep it.
+                    pass
+                elif self.amount:
+                    if self.amount > Decimal("0.0"):
+                        self.account = self.party.account_receivable_used
+                    else:
+                        self.account = self.party.account_payable_used
         if self.invoice:
             if self.amount and self.statement and self.statement.journal:
                 invoice = self.invoice
