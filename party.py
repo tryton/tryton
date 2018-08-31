@@ -151,8 +151,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
                 cursor.execute(*line.join(account,
                         condition=account.id == line.account
                         ).select(line.party, amount,
-                        where=(account.active
-                            & (account.kind == code)
+                        where=((account.kind == code)
                             & (line.reconciliation == Null)
                             & (account.company == company_id)
                             & party_where
@@ -204,8 +203,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             value = cast_(Literal(Decimal(value or 0)))
         query = line.join(account, condition=account.id == line.account
                 ).select(line.party,
-                    where=account.active
-                    & (account.kind == code)
+                    where=(account.kind == code)
                     & (line.party != Null)
                     & (line.reconciliation == Null)
                     & (account.company == company_id)
@@ -227,7 +225,8 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             self.raise_user_error('missing_payable_account', {
                     'name': self.rec_name,
                     })
-        return account
+        if account:
+            return account.current()
 
     @property
     def account_receivable_used(self):
@@ -242,7 +241,8 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             self.raise_user_error('missing_receivable_account', {
                     'name': self.rec_name,
                     })
-        return account
+        if account:
+            return account.current()
 
 
 class PartyAccount(ModelSQL, CompanyValueMixin):

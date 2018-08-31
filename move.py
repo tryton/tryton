@@ -566,8 +566,18 @@ class Line(ModelSQL, ModelView):
         depends=['currency_digits', 'debit', 'tax_lines', 'journal'] +
         _depends)
     account = fields.Many2One('account.account', 'Account', required=True,
-            domain=[('kind', '!=', 'view')],
-            select=True, states=_states, depends=_depends)
+        domain=[
+            ('kind', '!=', 'view'),
+            ['OR',
+                ('start_date', '=', None),
+                ('start_date', '<=', Eval('date', None)),
+                ],
+            ['OR',
+                ('end_date', '=', None),
+                ('end_date', '>=', Eval('date', None)),
+                ],
+            ],
+        select=True, states=_states, depends=_depends + ['date'])
     move = fields.Many2One('account.move', 'Move', select=True, required=True,
         ondelete='CASCADE',
         states={
@@ -586,7 +596,7 @@ class Line(ModelSQL, ModelView):
             searcher='search_move_field')
     date = fields.Function(fields.Date('Effective Date', required=True,
             states=_states, depends=_depends),
-            'get_move_field', setter='set_move_field',
+            'on_change_with_date', setter='set_move_field',
             searcher='search_move_field')
     origin = fields.Function(fields.Reference('Origin',
             selection='get_origin'),
@@ -693,8 +703,6 @@ class Line(ModelSQL, ModelView):
                     'no journal defined.'),
                 'move_view_account': ('You can not create a move line with '
                     'account "%s" because it is a view account.'),
-                'move_inactive_account': ('You can not create a move line '
-                    'with account "%s" because it is inactive.'),
                 'already_reconciled': 'Line "%s" (%d) already reconciled.',
                 'party_required': 'Party is required on line "%s"',
                 'party_set': 'Party must not be set on line "%s"',
@@ -845,6 +853,11 @@ class Line(ModelSQL, ModelView):
                 return str(value)
             return value.id
         return value
+
+    @fields.depends('move', '_parent_move.date')
+    def on_change_with_date(self, name=None):
+        if self.move:
+            return self.move.date
 
     @classmethod
     def set_move_field(cls, lines, name, value):
@@ -999,9 +1012,6 @@ class Line(ModelSQL, ModelView):
     def check_account(self):
         if self.account.kind in ('view',):
             self.raise_user_error('move_view_account', (
-                    self.account.rec_name,))
-        if not self.account.active:
-            self.raise_user_error('move_inactive_account', (
                     self.account.rec_name,))
         if bool(self.party) != bool(self.account.party_required):
             error = 'party_set' if self.party else 'party_required'

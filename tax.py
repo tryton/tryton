@@ -19,6 +19,8 @@ from trytond.transaction import Transaction
 from trytond.tools import cursor_dict
 from trytond.pool import Pool
 
+from .common import PeriodMixin, ActivePeriodMixin
+
 __all__ = ['TaxGroup', 'TaxCodeTemplate', 'TaxCode',
     'TaxCodeLineTemplate', 'TaxCodeLine',
     'OpenChartTaxCodeStart', 'OpenChartTaxCode',
@@ -46,7 +48,7 @@ class TaxGroup(ModelSQL, ModelView):
         return 'both'
 
 
-class TaxCodeTemplate(tree(), ModelSQL, ModelView):
+class TaxCodeTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
     'Tax Code Template'
     __name__ = 'account.tax.code.template'
     name = fields.Char('Name', required=True)
@@ -73,6 +75,10 @@ class TaxCodeTemplate(tree(), ModelSQL, ModelView):
             res['name'] = self.name
         if not code or code.code != self.code:
             res['code'] = self.code
+        if not code or code.start_date != self.start_date:
+            res['start_date'] = self.start_date
+        if not code or code.end_date != self.end_date:
+            res['end_date'] = self.end_date
         if not code or code.description != self.description:
             res['description'] = self.description
         if not code or code.template.id != self.id:
@@ -120,7 +126,7 @@ class TaxCodeTemplate(tree(), ModelSQL, ModelView):
             childs = sum((c.childs for c in childs), ())
 
 
-class TaxCode(DeactivableMixin, tree(), ModelSQL, ModelView):
+class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
     'Tax Code'
     __name__ = 'account.tax.code'
     _states = {
@@ -157,6 +163,11 @@ class TaxCode(DeactivableMixin, tree(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TaxCode, cls).__setup__()
+        for date in [cls.start_date, cls.end_date]:
+            date.states = {
+                'readonly': (Bool(Eval('template', -1))
+                    & ~Eval('template_override', False)),
+                }
         cls._order.insert(0, ('code', 'ASC'))
 
     @staticmethod

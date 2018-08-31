@@ -22,6 +22,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind"/>
             <label name="type"/>
             <field name="type"/>
+            <newline/>
+            <label name="start_date"/>
+            <group col="3" colspan="1" id="dates">
+                <field name="start_date"/>
+                <label name="end_date"/>
+                <field name="end_date"/>
+            </group>
+            <label name="replaced_by"/>
+            <field name="replaced_by"/>
             <label name="deferral"/>
             <field name="deferral"/>
             <label name="reconcile"/>

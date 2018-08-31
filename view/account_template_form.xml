@@ -13,6 +13,12 @@ this repository contains the full copyright notices and license terms. -->
     <label name="type"/>
     <field name="type"/>
     <newline/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
+    <label name="replaced_by"/>
+    <field name="replaced_by"/>
     <label name="deferral"/>
     <field name="deferral"/>
     <label name="reconcile"/>

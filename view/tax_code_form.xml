@@ -16,6 +16,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <label name="parent"/>
     <field name="parent"/>
+    <newline/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
     <notebook colspan="6">
         <page name="lines">
             <field name="lines" colspan="4"/>

@@ -10,6 +10,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="account"/>
     <label name="parent"/>
     <field name="parent"/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
     <notebook colspan="4">
         <page name="lines">
             <field name="lines" colspan="4"/>

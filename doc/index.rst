@@ -79,6 +79,8 @@ An Account is defined by these fields:
   - Other: For other accounts.
 
 - Type: The Account Type of the account.
+- Start and End Date: The period for which the account can be used.
+- Replaced By: the account to use after end date.
 - Deferral: A checkbox. If set to true, credit and debit are carried
   over form fiscal year to fiscal year.
 - Second currency: Force all moves for the account to have this
@@ -183,6 +185,7 @@ of the invoices. The Tax Code model contains the following fields:
 - Active: A checkbox that allow to disable the tax code.
 - Company: The company for which the tax code is defined.
 - Parent, Children: Parent and children tax codes.
+- Start and End date: The period for which the tax code is reported.
 - Amount: The sum of lines for the selected periods:
 
     - Operator: `+` or `-`
