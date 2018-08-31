@@ -35,6 +35,8 @@ class Commission(metaclass=PoolMeta):
     def copy(cls, commissions, default=None):
         if default is None:
             default = {}
+        else:
+            default = default.copy()
         default.setdefault('waiting_move', None)
         return super(Commission, cls).copy(commissions, default=default)
 
