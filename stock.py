@@ -351,8 +351,9 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     def copy(cls, shipments, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['moves'] = None
+        else:
+            default = default.copy()
+        default.setdefault('moves', None)
         return super(ShipmentDrop, cls).copy(shipments, default=default)
 
     @classmethod
