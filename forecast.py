@@ -245,26 +245,6 @@ class Forecast(Workflow, ModelSQL, ModelView):
         Line = Pool().get('stock.forecast.line')
         Line.delete_moves([l for f in forecasts for l in f.lines])
 
-    @classmethod
-    def copy(cls, forecasts, default=None):
-        Line = Pool().get('stock.forecast.line')
-
-        if default is None:
-            default = {}
-        default = default.copy()
-        default['lines'] = None
-
-        new_forecasts = []
-        for forecast in forecasts:
-            new_forecast, = super(Forecast, cls).copy([forecast],
-                default=default)
-            Line.copy([x for x in forecast.lines],
-                default={
-                    'forecast': new_forecast.id,
-                    })
-            new_forecasts.append(new_forecast)
-        return new_forecasts
-
 
 class ForecastLine(ModelSQL, ModelView):
     'Stock Forecast Line'
@@ -424,8 +404,9 @@ class ForecastLine(ModelSQL, ModelView):
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['moves'] = None
+        else:
+            default = default.copy()
+        default.setdefault('moves', None)
         return super(ForecastLine, cls).copy(lines, default=default)
 
     def get_moves(self):
