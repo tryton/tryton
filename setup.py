@@ -76,7 +76,7 @@ setup(name=name,
     package_data={
         'trytond.modules.edocument_uncefact': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
-                'icons/*.svg', 'template/**/*.xml', 'tests/**/*.xsd',
+                'icons/*.svg', 'template/*/*.xml', 'tests/*/*/*/*.xsd',
                 'tests/*.rst']),
         },
     classifiers=[
