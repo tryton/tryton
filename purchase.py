@@ -67,8 +67,9 @@ class Purchase(metaclass=PoolMeta):
     def copy(cls, purchases, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['invoice_lines_ignored'] = None
+        else:
+            default = default.copy()
+        default.setdefault('invoice_lines_ignored', None)
         return super(Purchase, cls).copy(purchases, default=default)
 
 
