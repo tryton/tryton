@@ -194,9 +194,9 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
     def copy(cls, works, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        if 'timesheet_lines' not in default:
-            default['timesheet_lines'] = None
+        else:
+            default = default.copy()
+        default.setdefault('timesheet_lines', None)
         return super(Work, cls).copy(works, default=default)
 
     @classmethod
