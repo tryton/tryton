@@ -380,19 +380,10 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     def copy(cls, project_works, default=None):
         if default is None:
             default = {}
-
-        timesheet_default = default.copy()
-        for key in list(timesheet_default.keys()):
-            if key in cls._fields:
-                del timesheet_default[key]
-        timesheet_default['children'] = None
-        new_project_works = []
-        for project_work in project_works:
-            pwdefault = default.copy()
-            pwdefault['children'] = None
-            new_project_works.extend(super(Work, cls).copy([project_work],
-                    default=pwdefault))
-        return new_project_works
+        else:
+            default = default.copy()
+        default.setdefault('children', None)
+        return super().copy(project_works, default=default)
 
     @classmethod
     def delete(cls, project_works):
