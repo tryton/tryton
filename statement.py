@@ -799,7 +799,8 @@ class Line(
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         default.setdefault('move', None)
         default.setdefault('invoice', None)
         return super(Line, cls).copy(lines, default=default)
