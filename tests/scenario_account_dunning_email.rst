@@ -115,4 +115,4 @@ Process dunning::
     >>> process_dunning.execute('process')
     >>> dunning.reload()
     >>> dunning.state
-    'done'
+    'waiting'
