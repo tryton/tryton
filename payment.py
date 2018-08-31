@@ -324,13 +324,13 @@ class Payment(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default['stripe_checkout_id'] = None
-        default['stripe_charge_id'] = None
-        default['stripe_token'] = None
-        default.setdefault('stripe_idempotency_key')
-        default.setdefault('stripe_error_message')
-        default.setdefault('stripe_error_code')
-        default.setdefault('stripe_error_param')
+        default.setdefault('stripe_checkout_id', None)
+        default.setdefault('stripe_charge_id', None)
+        default.setdefault('stripe_token', None)
+        default.setdefault('stripe_idempotency_key', None)
+        default.setdefault('stripe_error_message', None)
+        default.setdefault('stripe_error_code', None)
+        default.setdefault('stripe_error_param', None)
         return super(Payment, cls).copy(payments, default=default)
 
     @classmethod
@@ -774,9 +774,9 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default['stripe_checkout_id'] = None
-        default['stripe_token'] = None
-        default['stripe_customer_id'] = None
+        default.setdefault('stripe_checkout_id', None)
+        default.setdefault('stripe_token', None)
+        default.setdefault('stripe_customer_id', None)
         return super(Customer, cls).copy(customers, default=default)
 
     @classmethod
