@@ -37,5 +37,5 @@ class MoveLine(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('dunnings')
+        default.setdefault('dunnings', None)
         return super(MoveLine, cls).copy(lines, default=default)
