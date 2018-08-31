@@ -996,7 +996,7 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('template')
+        default.setdefault('template', None)
         default.setdefault('deferrals', [])
         new_accounts = super(Account, cls).copy(accounts, default=default)
         cls._rebuild_tree('parent', None, 0)

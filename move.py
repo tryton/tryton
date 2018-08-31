@@ -273,25 +273,15 @@ class Move(ModelSQL, ModelView):
 
     @classmethod
     def copy(cls, moves, default=None):
-        Line = Pool().get('account.move.line')
-
         if default is None:
             default = {}
-        default = default.copy()
-        default['number'] = None
-        default['post_number'] = None
-        default['state'] = cls.default_state()
-        default['post_date'] = None
-        default['lines'] = None
-
-        new_moves = []
-        for move in moves:
-            new_move, = super(Move, cls).copy([move], default=default)
-            Line.copy(move.lines, default={
-                    'move': new_move.id,
-                    })
-            new_moves.append(new_move)
-        return new_moves
+        else:
+            default = default.copy()
+        default.setdefault('number', None)
+        default.setdefault('post_number', None)
+        default.setdefault('state', cls.default_state())
+        default.setdefault('post_date', None)
+        return super().copy(moves, default=default)
 
     @classmethod
     def validate_move(cls, moves):
@@ -368,24 +358,23 @@ class Move(ModelSQL, ModelView):
                     'date': date,
                     'period': period_id,
                     })
+        default['lines.debit'] = lambda data: data['debit'] * -1
+        default['lines.credit'] = lambda data: data['credit'] * -1
+        default['lines.amount_second_currency'] = (
+            lambda data: data['amount_second_currency'] * -1
+            if data['amount_second_currency']
+            else data['amount_second_currency'])
+        default['lines.tax_lines.amount'] = lambda data: data['amount'] * -1
         return default
 
     def cancel(self, default=None):
         'Return a cancel move'
         if default is None:
             default = {}
+        else:
+            default = default.copy()
         default.update(self._cancel_default())
         cancel_move, = self.copy([self], default=default)
-        for line in cancel_move.lines:
-            line.debit *= -1
-            line.credit *= -1
-            if line.second_currency:
-                line.amount_second_currency *= -1
-            for tax_line in line.tax_lines:
-                tax_line.amount *= -1
-            line.tax_lines = line.tax_lines  # Force tax_lines changing
-        cancel_move.lines = cancel_move.lines  # Force lines changing
-        cancel_move.save()
         return cancel_move
 
     @classmethod
@@ -1134,10 +1123,10 @@ class Line(ModelSQL, ModelView):
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
-        if 'move' not in default:
-            default['move'] = None
-        if 'reconciliation' not in default:
-            default['reconciliation'] = None
+        else:
+            default = default.copy()
+        default.setdefault('move', None)
+        default.setdefault('reconciliation', None)
         return super(Line, cls).copy(lines, default=default)
 
     @classmethod

@@ -239,7 +239,7 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('template')
+        default.setdefault('template', None)
         return super(TaxCode, cls).copy(codes, default=default)
 
     @classmethod
@@ -852,7 +852,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('template')
+        default.setdefault('template', None)
         return super(Tax, cls).copy(taxes, default=default)
 
     def _process_tax(self, price_unit):
@@ -1350,7 +1350,7 @@ class TaxRule(ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('template')
+        default.setdefault('template', None)
         return super(TaxRule, cls).copy(rules, default=default)
 
     def apply(self, tax, pattern):
@@ -1577,7 +1577,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('template')
+        default.setdefault('template', None)
         return super(TaxRuleLine, cls).copy(lines, default=default)
 
     def match(self, pattern):
