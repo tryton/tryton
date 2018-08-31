@@ -47,6 +47,7 @@ class Invoice(metaclass=PoolMeta):
     def copy(cls, invoices, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['open_date'] = None
+        else:
+            default = default.copy()
+        default.setdefault('open_date', None)
         return super(Invoice, cls).copy(invoices, default=default)
