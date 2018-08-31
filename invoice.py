@@ -423,22 +423,25 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if len(payment_terms) == 1:
             return payment_terms[0].id
 
-    def __get_account_payment_term(self):
+    @fields.depends('party', 'type', 'accounting_date', 'invoice_date')
+    def _get_account_payment_term(self):
         '''
         Return default account and payment term
         '''
         self.account = None
         if self.party:
-            if self.type == 'out':
-                self.account = self.party.account_receivable_used
-                if self.party.customer_payment_term:
-                    self.payment_term = self.party.customer_payment_term
-            elif self.type == 'in':
-                self.account = self.party.account_payable_used
-                if self.party.supplier_payment_term:
-                    self.payment_term = self.party.supplier_payment_term
+            with Transaction().set_context(
+                    date=self.accounting_date or self.invoice_date):
+                if self.type == 'out':
+                    self.account = self.party.account_receivable_used
+                    if self.party.customer_payment_term:
+                        self.payment_term = self.party.customer_payment_term
+                elif self.type == 'in':
+                    self.account = self.party.account_payable_used
+                    if self.party.supplier_payment_term:
+                        self.payment_term = self.party.supplier_payment_term
 
-    @fields.depends('type', 'party', 'company')
+    @fields.depends('type', methods=['_get_account_payment_term'])
     def on_change_type(self):
         Journal = Pool().get('account.journal')
         journals = Journal.search([
@@ -447,12 +450,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ], limit=1)
         if journals:
             self.journal, = journals
-        self.__get_account_payment_term()
+        self._get_account_payment_term()
 
-    @fields.depends('party', 'payment_term', 'type', 'company')
+    @fields.depends('party', methods=['_get_account_payment_term'])
     def on_change_party(self):
         self.invoice_address = None
-        self.__get_account_payment_term()
+        self._get_account_payment_term()
 
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
@@ -1613,6 +1616,11 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'required': Eval('type') == 'line',
             'readonly': _states['readonly'],
             },
+        context={
+            'date': If(Bool(Eval('_parent_invoice.accounting_date')),
+                Eval('_parent_invoice.accounting_date'),
+                Eval('_parent_invoice.invoice_date')),
+            },
         depends=['type', 'invoice_type', 'company'] + _depends)
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states={
@@ -1866,6 +1874,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @fields.depends('product', 'unit', '_parent_invoice.type',
         '_parent_invoice.party', 'party', 'invoice', 'invoice_type',
+        '_parent_invoice.invoice_date', '_parent_invoice.accounting_date',
         methods=['_get_tax_rule_pattern'])
     def on_change_product(self):
         if not self.product:
@@ -1877,12 +1886,15 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         elif self.party:
             party = self.party
 
+        date = (self.invoice.accounting_date or self.invoice.invoice_date
+            if self.invoice else None)
         if self.invoice and self.invoice.type:
             type_ = self.invoice.type
         else:
             type_ = self.invoice_type
         if type_ == 'in':
-            self.account = self.product.account_expense_used
+            with Transaction().set_context(date=date):
+                self.account = self.product.account_expense_used
             taxes = []
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.supplier_taxes_used:
@@ -1898,7 +1910,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                     taxes.extend(tax_ids)
             self.taxes = taxes
         else:
-            self.account = self.product.account_revenue_used
+            with Transaction().set_context(date=date):
+                self.account = self.product.account_revenue_used
             taxes = []
             pattern = self._get_tax_rule_pattern()
             for tax in self.product.customer_taxes_used:
