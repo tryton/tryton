@@ -3,6 +3,7 @@
 import functools
 import datetime
 from collections import defaultdict
+from functools import partial
 
 from sql import Null
 
@@ -362,12 +363,13 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def copy(cls, shipments, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['inventory_moves'] = None
-        default['incoming_moves'] = None
-        default.setdefault('number')
-        default.setdefault('received_by')
-        default.setdefault('done_by')
+        else:
+            default = default.copy()
+        default.setdefault('inventory_moves', None)
+        default.setdefault('incoming_moves', None)
+        default.setdefault('number', None)
+        default.setdefault('received_by', None)
+        default.setdefault('done_by', None)
         return super(ShipmentIn, cls).copy(shipments, default=default)
 
     @classmethod
@@ -684,10 +686,11 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     def copy(cls, shipments, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default.setdefault('number')
-        default.setdefault('assigned_by')
-        default.setdefault('done_by')
+        else:
+            default = default.copy()
+        default.setdefault('number', None)
+        default.setdefault('assigned_by', None)
+        default.setdefault('done_by', None)
         return super(ShipmentInReturn, cls).copy(shipments, default=default)
 
     @classmethod
@@ -1281,13 +1284,14 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def copy(cls, shipments, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['inventory_moves'] = None
-        default['outgoing_moves'] = None
-        default.setdefault('number')
-        default.setdefault('assigned_by')
-        default.setdefault('packed_by')
-        default.setdefault('done_by')
+        else:
+            default = default.copy()
+        default.setdefault('inventory_moves', None)
+        default.setdefault('outgoing_moves', None)
+        default.setdefault('number', None)
+        default.setdefault('assigned_by', None)
+        default.setdefault('packed_by', None)
+        default.setdefault('done_by', None)
         return super(ShipmentOut, cls).copy(shipments, default=default)
 
     @classmethod
@@ -1623,11 +1627,11 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         if default is None:
             default = {}
         default = default.copy()
-        default['inventory_moves'] = None
-        default['incoming_moves'] = None
-        default.setdefault('number')
-        default.setdefault('received_by')
-        default.setdefault('done_by')
+        default.setdefault('inventory_moves', None)
+        default.setdefault('incoming_moves', None)
+        default.setdefault('number', None)
+        default.setdefault('received_by', None)
+        default.setdefault('done_by', None)
         return super(ShipmentOutReturn, cls).copy(shipments, default=default)
 
     @classmethod
@@ -2103,29 +2107,34 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def copy(cls, shipments, default=None):
-        pool = Pool()
-        Move = pool.get('stock.move')
+        def shipment_field(data, name):
+            model, shipment_id = data['shipment'].split(',', 1)
+            assert model == cls.__name__
+            shipment_id = int(shipment_id)
+            shipment = id2shipments[shipment_id]
+            return getattr(shipment, name)
+
+        def outgoing_moves(data):
+            shipment = id2shipments[data['id']]
+            return shipment.outgoing_moves
+        id2shipments = {s.id: s for s in shipments}
 
         if default is None:
             default = {}
         else:
             default = default.copy()
-        default['outgoing_moves'] = None
-        default['incoming_moves'] = None
-        default['moves'] = None
-        default.setdefault('number')
-        default.setdefault('assigned_by')
-        default.setdefault('shipped_by')
-        default.setdefault('done_by')
-        copies = super(ShipmentInternal, cls).copy(shipments, default=default)
-        for shipment, copy in zip(shipments, copies):
-            Move.copy(shipment.outgoing_moves, default={
-                    'shipment': str(copy),
-                    'from_location': shipment.from_location.id,
-                    'to_location': shipment.to_location.id,
-                    'planned_date': shipment.planned_date,
-                    })
-        return copies
+        default.setdefault('moves', outgoing_moves)
+        default.setdefault('moves.from_location', partial(
+                shipment_field, name='from_location'))
+        default.setdefault('moves.to_location', partial(
+                shipment_field, name='to_location'))
+        default.setdefault('moves.planned_date', partial(
+                shipment_field, name='planned_date'))
+        default.setdefault('number', None)
+        default.setdefault('assigned_by', None)
+        default.setdefault('shipped_by', None)
+        default.setdefault('done_by', None)
+        return super().copy(shipments, default=default)
 
     @classmethod
     def _sync_moves(cls, shipments):

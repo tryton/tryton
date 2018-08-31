@@ -181,3 +181,9 @@ Create Internal Shipment with lead time::
     >>> shipment.click('done')
     >>> shipment.incoming_moves[0].state
     'done'
+
+Duplicate Internal Shipment::
+
+    >>> shipment_copy, = shipment.duplicate()
+    >>> len(shipment_copy.moves)
+    1

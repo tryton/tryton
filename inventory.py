@@ -184,26 +184,17 @@ class Inventory(Workflow, ModelSQL, ModelView):
     def copy(cls, inventories, default=None):
         pool = Pool()
         Date = pool.get('ir.date')
-        Line = pool.get('stock.inventory.line')
 
         if default is None:
             default = {}
-        default = default.copy()
-        default['date'] = Date.today()
-        default['lines'] = None
-        default.setdefault('number')
+        else:
+            default = default.copy()
+        default.setdefault('date', Date.today())
+        default.setdefault('lines.moves', None)
+        default.setdefault('number', None)
 
-        new_inventories = []
-        for inventory in inventories:
-            new_inventory, = super(Inventory, cls).copy([inventory],
-                default=default)
-            Line.copy(inventory.lines,
-                default={
-                    'inventory': new_inventory.id,
-                    'moves': None,
-                    })
-            cls.complete_lines([new_inventory], fill=False)
-            new_inventories.append(new_inventory)
+        new_inventories = super().copy(inventories, default=default)
+        cls.complete_lines(new_inventories, fill=False)
         return new_inventories
 
     @staticmethod

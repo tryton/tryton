@@ -463,6 +463,8 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     def copy(cls, locations, default=None):
         if default is None:
             default = {}
+        else:
+            default = default.copy()
 
         res = []
         for location in locations:
