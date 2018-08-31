@@ -216,7 +216,9 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
     def copy(cls, conditions, default=None):
         if default is None:
             default = {}
-        default['invoice_lines'] = []
+        else:
+            default = default.copy()
+        default.setdefault('invoice_lines', [])
         return super(AdvancePaymentCondition, cls).copy(conditions, default)
 
     def create_invoice(self):
@@ -323,7 +325,7 @@ class Sale(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('advance_payment_conditions')
+        default.setdefault('advance_payment_conditions', None)
         return super(Sale, cls).copy(sales, default=default)
 
     def set_advance_payment_term(self):
