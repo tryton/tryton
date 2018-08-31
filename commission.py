@@ -5,6 +5,7 @@
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, fields
 from trytond.pyson import Eval, Bool
+from trytond.transaction import Transaction
 
 
 __all__ = ['Agent', 'Commission']
@@ -75,14 +76,15 @@ class Commission(metaclass=PoolMeta):
         amount = Currency.compute(self.currency, self.amount,
             self.agent.company.currency)
         line = Line()
-        if self.type_ == 'in':
-            line.credit = amount if amount > 0 else 0
-            line.debit = amount if amount < 0 else 0
-            line.account = self.product.account_revenue_used
-        else:
-            line.debit = amount if amount > 0 else 0
-            line.credit = amount if amount < 0 else 0
-            line.account = self.product.account_expense_used
+        with Transaction().set_context(date=date):
+            if self.type_ == 'in':
+                line.credit = amount if amount > 0 else 0
+                line.debit = amount if amount < 0 else 0
+                line.account = self.product.account_revenue_used
+            else:
+                line.debit = amount if amount > 0 else 0
+                line.credit = amount if amount < 0 else 0
+                line.account = self.product.account_expense_used
         if line.account.party_required:
             line.party = self.agent.party
         # XXX second currency?
