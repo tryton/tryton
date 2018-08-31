@@ -243,7 +243,8 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     def copy(cls, opportunities, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         default.setdefault('number', None)
         default.setdefault('sales', None)
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
