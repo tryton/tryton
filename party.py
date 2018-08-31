@@ -189,8 +189,9 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     def copy(cls, parties, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['code'] = None
+        else:
+            default = default.copy()
+        default.setdefault('code', None)
         return super(Party, cls).copy(parties, default=default)
 
     @classmethod
