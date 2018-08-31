@@ -88,8 +88,9 @@ class SaleLine(metaclass=PoolMeta):
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['purchase_request'] = None
+        else:
+            default = default.copy()
+        default.setdefault('purchase_request', None)
         return super(SaleLine, cls).copy(lines, default=default)
 
     @property
