@@ -99,8 +99,8 @@ class Package(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('shipping_reference')
-        default.setdefault('shipping_label')
+        default.setdefault('shipping_reference', None)
+        default.setdefault('shipping_label', None)
         return super(Package, cls).copy(packages, default=default)
 
 
