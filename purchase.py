@@ -206,9 +206,8 @@ class Quotation(Workflow, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default['state'] = 'draft'
-        default['number'] = None
-        default['revision'] = cls.default_revision()
+        default.setdefault('number', None)
+        default.setdefault('revision', cls.default_revision())
         default.setdefault('request_quotations', None)
         return super(Quotation, cls).copy(groups, default=default)
 
