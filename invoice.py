@@ -196,6 +196,8 @@ class InvoiceLine(metaclass=PoolMeta):
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
+        else:
+            default = default.copy()
         default.setdefault('commissions', None)
         default.setdefault('from_commissions', None)
         return super(InvoiceLine, cls).copy(lines, default=default)

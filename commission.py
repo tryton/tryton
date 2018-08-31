@@ -313,6 +313,8 @@ class Commission(ModelSQL, ModelView):
     def copy(cls, commissions, default=None):
         if default is None:
             default = {}
+        else:
+            default = default.copy()
         default.setdefault('invoice_line', None)
         return super(Commission, cls).copy(commissions, default=default)
 
