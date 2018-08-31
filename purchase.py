@@ -319,9 +319,9 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     def copy(cls, requisitions, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['state'] = 'draft'
-        default['number'] = None
+        else:
+            default = default.copy()
+        default.setdefault('number', None)
         default.setdefault('supply_date', None)
         return super(PurchaseRequisition, cls).copy(
             requisitions, default=default)
