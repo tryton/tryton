@@ -3,6 +3,7 @@
 from decimal import Decimal
 import operator
 from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 __all__ = ['InvoiceLine']
 
@@ -116,6 +117,8 @@ class InvoiceLine(metaclass=PoolMeta):
             self.product, moves, abs(self.quantity), self.unit, type_)
         cost = self.invoice.currency.round(cost)
 
-        anglo_saxon_move_lines = self._get_anglo_saxon_move_lines(cost, type_)
+        with Transaction().set_context(date=accounting_date):
+            anglo_saxon_move_lines = self._get_anglo_saxon_move_lines(
+                cost, type_)
         result.extend(anglo_saxon_move_lines)
         return result
