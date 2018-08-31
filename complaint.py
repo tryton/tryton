@@ -235,8 +235,9 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def copy(cls, complaints, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['number'] = None
+        else:
+            default = default.copy()
+        default.setdefault('number', None)
         return super(Complaint, cls).copy(complaints, default=default)
 
     @classmethod
