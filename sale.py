@@ -73,7 +73,7 @@ class Sale(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('payments')
+        default.setdefault('payments', None)
         return super(Sale, cls).copy(sales, default=default)
 
     @classmethod
