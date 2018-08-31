@@ -24,7 +24,8 @@ class TimesheetLine(metaclass=PoolMeta):
     def copy(cls, records, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         default.setdefault('invoice_line', None)
         return super(TimesheetLine, cls).copy(records, default=default)
 
