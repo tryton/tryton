@@ -117,18 +117,19 @@ class Move(metaclass=PoolMeta):
         type_ = self._get_account_stock_move_type()
         if not type_:
             return
-        if type_ == 'supplier_customer':
-            account_move_lines = self._get_account_stock_move_lines(
-                'in_supplier')
-            account_move_lines.extend(self._get_account_stock_move_lines(
-                    'out_customer'))
-        elif type_ == 'customer_supplier':
-            account_move_lines = self._get_account_stock_move_lines(
-                'in_customer')
-            account_move_lines.extend(self._get_account_stock_move_lines(
-                    'out_supplier'))
-        else:
-            account_move_lines = self._get_account_stock_move_lines(type_)
+        with Transaction().set_context(date=date):
+            if type_ == 'supplier_customer':
+                account_move_lines = self._get_account_stock_move_lines(
+                    'in_supplier')
+                account_move_lines.extend(self._get_account_stock_move_lines(
+                        'out_customer'))
+            elif type_ == 'customer_supplier':
+                account_move_lines = self._get_account_stock_move_lines(
+                    'in_customer')
+                account_move_lines.extend(self._get_account_stock_move_lines(
+                        'out_supplier'))
+            else:
+                account_move_lines = self._get_account_stock_move_lines(type_)
 
         amount = Decimal('0.0')
         for line in account_move_lines:
