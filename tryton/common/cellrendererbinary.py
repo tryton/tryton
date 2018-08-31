@@ -34,9 +34,8 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         self.__gobject_init__()
         self.visible = True
         self.editable = False
-        self.set_property('mode', gtk.CELL_RENDERER_MODE_EDITABLE)
+        self.set_property('mode', gtk.CELL_RENDERER_MODE_ACTIVATABLE)
         self.use_filename = use_filename
-        self.clicking = ''
         self.images = {}
         for key, icon in (
                 ('select', 'tryton-search'),
@@ -84,10 +83,10 @@ class CellRendererBinary(gtk.GenericCellRenderer):
                 cell_area.width, cell_area.height)
     do_get_size = on_get_size
 
-    def on_start_editing(self, event, widget, path, background_area,
+    def on_activate(self, event, widget, path, background_area,
             cell_area, flags):
         if event is None:
-            return
+            return True
         button_width = self.button_width()
 
         for index, button_name in enumerate(self.buttons):
@@ -105,20 +104,15 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         else:
             button_name = None
         if not self.visible or not button_name:
-            return
+            return True
         if not self.editable and button_name in ('select', 'clear'):
-            return
-        if not self.size and button_name == 'save':
-            return
+            return True
+        if not self.size and button_name in {'open', 'save'}:
+            return True
         if event.type == gtk.gdk.BUTTON_PRESS:
-            self.clicking = button_name
             self.emit(button_name, path)
-
-            def timeout(self, widget):
-                self.clicking = ''
-                widget.queue_draw()
-            gobject.timeout_add(60, timeout, self, widget)
-    do_start_editing = on_start_editing
+        return True
+    do_activate = on_activate
 
     def do_render(self, cr, widget, background_area, cell_area, flags):
         if not self.visible:
@@ -165,13 +159,8 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         for index, button_name in enumerate(self.buttons):
             pxbf_sens, pxbf_insens, pxbf_width, pxbf_height = \
                 self.images[button_name]
-            state = gtk.StateFlags.NORMAL
-            if (self.clicking == button_name
-                    and flags & gtk.CELL_RENDERER_SELECTED):
-                state = gtk.StateFlags.ACTIVE
             if (not self.editable and button_name in {'select', 'clear'}
                     or not self.size and button_name in {'open', 'save'}):
-                state = gtk.StateFlags.INSENSITIVE
                 pixbuf = pxbf_insens
             else:
                 pixbuf = pxbf_sens
