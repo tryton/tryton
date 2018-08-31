@@ -261,6 +261,8 @@ class Payment(metaclass=PoolMeta):
     def copy(cls, payments, default=None):
         if default is None:
             default = {}
+        else:
+            default = default.copy()
         default.setdefault('sepa_mandate_sequence_type', None)
         return super(Payment, cls).copy(payments, default=default)
 
@@ -518,8 +520,8 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def copy(cls, mandates, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default.setdefault('state', 'draft')
+        else:
+            default = default.copy()
         default.setdefault('payments', [])
         default.setdefault('signature_date', None)
         default.setdefault('identification', None)
