@@ -101,7 +101,7 @@ class StatementLine(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('payment', None)
-        default.setdefault('payment_group')
+        default.setdefault('payment_group', None)
         return super(StatementLine, cls).copy(lines, default=default)
 
     @fields.depends('payment', 'party', 'account', '_parent_statement.journal')
