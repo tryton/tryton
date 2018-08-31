@@ -15,6 +15,49 @@ class CopyTestCase(unittest.TestCase):
         activate_module('tests')
 
     @with_transaction()
+    def test_copy(self):
+        "Test copy"
+        pool = Pool()
+        Copy = pool.get('test.copy')
+        record = Copy(name="Name")
+        record.save()
+
+        record_copy, = Copy.copy([record])
+
+        self.assertNotEqual(record_copy.id, record.id)
+        self.assertEqual(record_copy.name, record.name)
+
+    @with_transaction()
+    def test_copy_default(self):
+        "Test copy with default value"
+        pool = Pool()
+        Copy = pool.get('test.copy')
+        record = Copy(name="Name")
+        record.save()
+
+        record_copy, = Copy.copy([record], default={'name': "New name"})
+
+        self.assertNotEqual(record_copy.id, record.id)
+        self.assertEqual(record_copy.name, "New name")
+
+    @with_transaction()
+    def test_copy_default_callable(self):
+        "Test copy with default callable"
+        pool = Pool()
+        Copy = pool.get('test.copy')
+        record = Copy(name="Name")
+        record.save()
+
+        def default_name(data):
+            assert data['id'] == record.id
+            return data['name'] + " bis"
+
+        record_copy, = Copy.copy([record], default={'name': default_name})
+
+        self.assertNotEqual(record_copy.id, record.id)
+        self.assertEqual(record_copy.name, "Name bis")
+
+    @with_transaction()
     def test_one2many(self):
         'Test copy one2many'
         pool = Pool()
@@ -61,6 +104,23 @@ class CopyTestCase(unittest.TestCase):
 
         self.assertListEqual(
             [x.name for x in record_copy.one2many], [target.name])
+
+    @with_transaction()
+    def test_one2many_default_nested(self):
+        "Test copy one2many with default nested"
+        pool = Pool()
+        One2many = pool.get('test.copy.one2many')
+        Target = pool.get('test.copy.one2many.target')
+
+        record = One2many(name="Test")
+        record.one2many = [Target(name="Target")]
+        record.save()
+
+        record_copy, = One2many.copy(
+            [record], default={'one2many.name': "New Target"})
+
+        self.assertListEqual(
+            [x.name for x in record_copy.one2many], ["New Target"])
 
     @with_transaction()
     def test_many2many(self):

@@ -288,8 +288,17 @@ Class methods:
 
 .. classmethod:: ModelStorage.copy(records[, default])
 
-    Duplicate the records. ``default`` is a dictionary of default value for the
-    created records.
+    Duplicate the records. ``default`` is a dictionary of default value per
+    field name for the created records.
+
+    The values of ``default`` may be also callable that take a dictionary
+    containing the fields and values of the record copied and return of the
+    value.
+
+    The keys of ``default`` may use the dotted notation for the
+    :class:`fields.One2Many` to define the default to pass to its `copy`
+    operation.
+
     New records are returned following the input order.
 
 .. classmethod:: ModelStorage.search(domain[, offset[, limit[, order[, count]]]])

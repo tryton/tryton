@@ -1,3 +1,6 @@
+* Replace hard coded 'state' by '_transition_state' in copy
+* Support dotted notation in copy default
+* Allow callable in copy default
 * Add bus system
 * Allow to set any default configuration value from environment
 * Clear existing session when password is changed

@@ -269,17 +269,21 @@ class ModelStorage(Model):
         Lang = pool.get('ir.lang')
         if default is None:
             default = {}
-
-        if 'state' not in default:
-            if 'state' in cls._defaults:
-                default['state'] = cls._defaults['state']()
+        else:
+            default = default.copy()
 
         def is_readonly(Model):
             return (not issubclass(Model, ModelStorage)
                 or callable(getattr(Model, 'table_query', None)))
 
-        def convert_data(field_defs, data):
-            data = data.copy()
+        def get_default(name):
+            prefix = name + '.'
+            return {name[len(prefix):]: value
+                for name, value in default.items()
+                if name.startswith(prefix)}
+
+        def convert_data(field_defs, origin):
+            data = origin.copy()
             for field_name in field_defs:
                 ftype = field_defs[field_name]['type']
                 field = cls._fields[field_name]
@@ -293,7 +297,10 @@ class ModelStorage(Model):
                     del data[field_name]
 
                 if field_name in default:
-                    data[field_name] = default[field_name]
+                    if callable(default[field_name]):
+                        data[field_name] = default[field_name](origin)
+                    else:
+                        data[field_name] = default[field_name]
                 if (isinstance(field, fields.Function)
                         and not isinstance(field, fields.MultiValue)):
                     del data[field_name]
@@ -307,7 +314,9 @@ class ModelStorage(Model):
                     if is_readonly(field.get_target()):
                         del data[field_name]
                     elif data[field_name]:
-                        data[field_name] = [('copy', data[field_name])]
+                        data[field_name] = [(
+                                'copy', data[field_name],
+                                get_default(field_name))]
                 elif ftype == 'many2many':
                     if is_readonly(pool.get(field.relation_name)):
                         del data[field_name]

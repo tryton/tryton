@@ -45,3 +45,13 @@ class Workflow(object):
                 return result
             return wrapper
         return check_transition
+
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault(
+            cls._transition_state, cls._defaults[cls._transition_state]())
+        return super().copy(records, default=default)

@@ -2,14 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 "Test for copy"
 from trytond.model import ModelSQL, fields
+from trytond.pool import Pool
 
-__all__ = [
-    'CopyOne2Many', 'CopyOne2ManyTarget',
-    'CopyOne2ManyReference', 'CopyOne2ManyReferenceTarget',
-    'CopyMany2Many', 'CopyMany2ManyTarget', 'CopyMany2ManyRelation',
-    'CopyMany2ManyReference', 'CopyMany2ManyReferenceTarget',
-    'CopyMany2ManyReferenceRelation',
-    ]
+
+class Copy(ModelSQL):
+    "Copy"
+    __name__ = 'test.copy'
+    name = fields.Char("Name")
 
 
 class CopyOne2Many(ModelSQL):
@@ -92,3 +91,19 @@ class CopyMany2ManyReferenceRelation(ModelSQL):
             ])
     many2many_target = fields.Many2One('test.copy.many2many_reference.target',
         'Many2ManyReference Target')
+
+
+def register(module):
+    Pool.register(
+        Copy,
+        CopyOne2Many,
+        CopyOne2ManyTarget,
+        CopyOne2ManyReference,
+        CopyOne2ManyReferenceTarget,
+        CopyMany2Many,
+        CopyMany2ManyTarget,
+        CopyMany2ManyRelation,
+        CopyMany2ManyReference,
+        CopyMany2ManyReferenceTarget,
+        CopyMany2ManyReferenceRelation,
+        module=module, type_='model')
