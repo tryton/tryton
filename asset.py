@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
+from trytond.pool import Pool, PoolMeta
+from trytond.transaction import Transaction
 
 from trytond.modules.analytic_account import AnalyticMixin
 
@@ -41,11 +42,12 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
     def set_analytic_lines(self, move):
         "Fill analytic lines on lines with expense account"
         if self.analytic_accounts:
-            for line in move.lines:
-                if line.account != self.product.account_expense_used:
-                    continue
-                analytic_lines = []
-                for entry in self.analytic_accounts:
-                    analytic_lines.extend(
-                        entry.get_analytic_lines(line, move.date))
-                line.analytic_lines = analytic_lines
+            with Transaction().set_context(date=move.date):
+                for line in move.lines:
+                    if line.account != self.product.account_expense_used:
+                        continue
+                    analytic_lines = []
+                    for entry in self.analytic_accounts:
+                        analytic_lines.extend(
+                            entry.get_analytic_lines(line, move.date))
+                    line.analytic_lines = analytic_lines
