@@ -165,17 +165,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_dunning_form"/>
         </record>
-        <record model="ir.action.act_window.domain"
-            id="act_dunning_form_domain_done">
-            <field name="name">Done</field>
+        <record model="ir.action.act_window.domain" id="act_dunning_form_domain_waiting">
+            <field name="name">Waiting</field>
             <field name="sequence" eval="20"/>
-            <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
+            <field name="domain" eval="[('state', '=', 'waiting')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_dunning_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_dunning_form_domain_final">
+            <field name="name">Final</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain" eval="[('state', '=', 'final')]" pyson="1"/>
+            <field name="count" eval="True"/>
             <field name="act_window" ref="act_dunning_form"/>
         </record>
         <record model="ir.action.act_window.domain"
             id="act_dunning_form_domain_all">
             <field name="name">All</field>
-            <field name="sequence" eval="30"/>
+            <field name="sequence" eval="9999"/>
             <field name="domain"></field>
             <field name="act_window" ref="act_dunning_form"/>
         </record>

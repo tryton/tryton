@@ -196,7 +196,7 @@ Process dunning::
     >>> process_dunning.execute('process')
     >>> dunning.reload()
     >>> dunning.state
-    'done'
+    'waiting'
 
 Create dunnings on 30 days with blocked dunning::
 
@@ -211,7 +211,7 @@ Create dunnings on 30 days with blocked dunning::
     >>> dunning.level == procedure.levels[0]
     True
     >>> dunning.state
-    'done'
+    'waiting'
     >>> dunning.line == dunning_line
     True
     >>> bool(dunning.blocked)
