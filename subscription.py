@@ -235,9 +235,8 @@ class Subscription(Workflow, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('state', 'draft')
-        default.setdefault('number')
-        default.setdefault('next_invoice_date')
+        default.setdefault('number', None)
+        default.setdefault('next_invoice_date', None)
         return super(Subscription, cls).copy(subscriptions, default=default)
 
     @classmethod
@@ -702,7 +701,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('consumed')
+        default.setdefault('consumed', None)
         return super(Line, cls).copy(lines, default=default)
 
 
@@ -747,7 +746,7 @@ class LineConsumption(ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('invoice_line')
+        default.setdefault('invoice_line', None)
         return super(LineConsumption, cls).copy(consumptions, default=default)
 
     @classmethod
