@@ -171,7 +171,8 @@ class Move(metaclass=PoolMeta):
     def copy(cls, moves, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         for prefix in ('in_', 'out_'):
             default.setdefault(prefix + 'anglo_saxon_quantity',
                 getattr(cls, 'default_%sanglo_saxon_quantity' % prefix)())
