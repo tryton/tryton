@@ -64,7 +64,8 @@ class Product(metaclass=PoolMeta):
     def copy(cls, products, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         default.setdefault('boms', None)
         return super(Product, cls).copy(products, default=default)
 

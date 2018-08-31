@@ -40,7 +40,7 @@ class BOM(DeactivableMixin, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default['output_products'] = False
+        default.setdefault('output_products', None)
         return super(BOM, cls).copy(records, default=default)
 
 

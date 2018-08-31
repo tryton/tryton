@@ -521,7 +521,8 @@ class Production(Workflow, ModelSQL, ModelView):
     def copy(cls, productions, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         default.setdefault('number', None)
         return super(Production, cls).copy(productions, default=default)
 
