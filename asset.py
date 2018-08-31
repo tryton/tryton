@@ -619,9 +619,9 @@ class Asset(Workflow, ModelSQL, ModelView):
     def copy(cls, assets, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         default.setdefault('lines', [])
-        default.setdefault('state', 'draft')
         default.setdefault('number', None)
         default.setdefault('supplier_invoice_line', None)
         return super(Asset, cls).copy(assets, default=default)
