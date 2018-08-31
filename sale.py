@@ -639,13 +639,13 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     def copy(cls, sales, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['state'] = 'draft'
-        default['number'] = None
-        default['invoice_state'] = 'none'
-        default['invoices_ignored'] = None
-        default['moves'] = None
-        default['shipment_state'] = 'none'
+        else:
+            default = default.copy()
+        default.setdefault('number', None)
+        default.setdefault('invoice_state', 'none')
+        default.setdefault('invoices_ignored', None)
+        default.setdefault('moves', None)
+        default.setdefault('shipment_state', 'none')
         default.setdefault('sale_date', None)
         return super(Sale, cls).copy(sales, default=default)
 
@@ -1505,11 +1505,12 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['moves'] = None
-        default['moves_ignored'] = None
-        default['moves_recreated'] = None
-        default['invoice_lines'] = None
+        else:
+            default = default.copy()
+        default.setdefault('moves', None)
+        default.setdefault('moves_ignored', None)
+        default.setdefault('moves_recreated', None)
+        default.setdefault('invoice_lines', None)
         return super(SaleLine, cls).copy(lines, default=default)
 
 
