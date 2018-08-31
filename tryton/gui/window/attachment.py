@@ -2,9 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 "Attachment"
 import os
-import urllib.request
-import urllib.parse
-import sys
+from urllib.request import urlopen
+from urllib.parse import urlparse, unquote
 import gettext
 
 from tryton.gui.window.view_form.screen import Screen
@@ -42,9 +41,8 @@ class Attachment(WinForm):
         data_field = self.screen.group.fields['data']
         name_field = self.screen.group.fields[data_field.attrs['filename']]
         new_record = self.screen.new()
-        file_name = os.path.basename(urllib.parse.urlparse(uri).path)
+        uri = unquote(uri)
+        file_name = os.path.basename(urlparse(uri).path)
         name_field.set_client(new_record, file_name)
-        uri = urllib.parse.unquote(uri)
-        uri = uri.decode('utf-8').encode(sys.getfilesystemencoding())
-        data_field.set_client(new_record, urllib.request.urlopen(uri).read())
+        data_field.set_client(new_record, urlopen(uri).read())
         self.screen.display()
