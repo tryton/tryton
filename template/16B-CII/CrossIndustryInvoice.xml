@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<rsm:CrossIndustryInvoice
+    xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+    xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+    xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <py:def function="DateTime(value)">
+        <udt:DateTimeString>${value.strftime('%Y%m%d')}</udt:DateTimeString>
+    </py:def>
+    <py:def function="TradeParty(party, address=None, tax_identifier=None)">
+        <ram:Name>${party.name}</ram:Name>
+        <ram:SpecifiedLegalOrganization>
+            <py:for each="id, attrs in this.party_legal_ids(party, address)">
+                <ram:ID py:attrs="attrs">${id}</ram:ID>
+            </py:for>
+        </ram:SpecifiedLegalOrganization>
+        <ram:PostalTradeAddress py:if="address">${TradeAddress(address)}</ram:PostalTradeAddress>
+        <ram:SpecifiedTaxRegistration py:if="tax_identifier and tax_identifier.type == 'eu_vat'">
+            <ram:ID schemeID='VA'>${tax_identifier.code}</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+    </py:def>
+    <py:def function="TradeAddress(address)">
+        <ram:PostcodeCode py:if="address.zip">${address.zip}</ram:PostcodeCode>
+        <ram:BuildingName py:if="address.name">${address.name}</ram:BuildingName>
+        <py:with vars="lines = address.street.splitlines()">
+            <ram:LineOne py:if="len(lines) > 0">${lines[0]}</ram:LineOne>
+            <ram:LineTwo py:if="len(lines) > 1">${lines[1]}</ram:LineTwo>
+            <ram:LineThree  py:if="len(lines) > 2">${lines[2]}</ram:LineThree>
+            <ram:LineFour py:if="len(lines) > 3">${lines[3]}</ram:LineFour>
+            <ram:LineFive py:if="len(lines) > 4">${lines[4]}</ram:LineFive>
+        </py:with>
+        <ram:CityName py:if="address.city">${address.city}</ram:CityName>
+        <ram:CountryID py:if="address.country">${address.country.code}</ram:CountryID>
+        <ram:CountryName py:if="address.country">${address.country.name}</ram:CountryName>
+        <ram:CountrySubDivisionID py:if="address.subdivision">${address.subdivision.code}</ram:CountrySubDivisionID>
+        <ram:CountrySubDivisionName py:if="address.subdivision">${address.subdivision.name}</ram:CountrySubDivisionName>
+    </py:def>
+    <py:def function="TradeTax(tax, amount=None, base=None)">
+        <ram:ApplicableTradeTax>
+            <ram:CalculatedAmount py:if="amount" py:attrs="{'currencyID': this.invoice.currency.code}">${amount * this.type_sign}</ram:CalculatedAmount>
+            <ram:TypeCode py:if="tax.unece_code">${tax.unece_code}</ram:TypeCode>
+            <ram:ExemptionReason py:if="tax.legal_notice">${tax.legal_notice}</ram:ExemptionReason>
+            <ram:BasisAmount py:if="base">${base * this.type_sign}</ram:BasisAmount>
+            <ram:CategoryCode py:if="tax.unece_category_code">${tax.unece_category_code}</ram:CategoryCode>
+            <ram:RateApplicablePercent py:if="tax.type == 'percentage'">${tax.rate * 100}</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+    </py:def>
+    <rsm:ExchangedDocumentContext>
+    </rsm:ExchangedDocumentContext>
+    <rsm:ExchangedDocument>
+        <ram:ID>${this.invoice.number}</ram:ID>
+        <ram:TypeCode>${this.type_code}</ram:TypeCode>
+        <ram:IssueDateTime>
+            ${DateTime(this.invoice.invoice_date)}
+        </ram:IssueDateTime>
+    </rsm:ExchangedDocument>
+    <rsm:SupplyChainTradeTransaction>
+        <ram:IncludedSupplyChainTradeLineItem py:for="line_id, line in enumerate(this.lines, 1)">
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>${line_id}</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedTradeProduct py:if="line.product">
+                <ram:ID py:if="line.product.code">${line.product.code}</ram:ID>
+                <ram:Name>${line.product.name}</ram:Name>
+                <ram:Description py:if="line.description">${line.description}</ram:Description>
+            </ram:SpecifiedTradeProduct>
+            <ram:SpecifiedLineTradeAgreement>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.currency.round(line.unit_price)}</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedLineTradeAgreement>
+            <ram:SpecifiedLineTradeDelivery>
+                <ram:BilledQuantity py:attrs="{'unitCode': line.unit.unece_code} if line.unit and line.unit.unece_code else {}">${line.quantity * this.type_sign}</ram:BilledQuantity>
+            </ram:SpecifiedLineTradeDelivery>
+            <ram:SpecifiedLineTradeSettlement>
+                <py:for each="tax in line.invoice_taxes">
+                    ${TradeTax(tax.tax)}
+                </py:for>
+                <ram:SpecifiedTradeSettlementLineMonetarySummation>
+                    <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${line.amount}</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementLineMonetarySummation>
+            </ram:SpecifiedLineTradeSettlement>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:ApplicableHeaderTradeAgreement>
+            <ram:SellerTradeParty>
+                ${TradeParty(this.seller_trade_party, this.seller_trade_address, this.seller_trade_tax_identifier)}
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                ${TradeParty(this.buyer_trade_party, this.buyer_trade_address, this.buyer_trade_tax_identifier)}
+            </ram:BuyerTradeParty>
+            <ram:SellerOrderReferencedDocument py:if="this.invoice.type == 'in'">
+                <ram:IssuerAssignedID>${this.invoice.reference}</ram:IssuerAssignedID>
+            </ram:SellerOrderReferencedDocument>
+            <ram:BuyerOrderReferencedDocument py:if="this.invoice.type == 'out'">
+                <ram:IssuerAssignedID>${this.invoice.reference}</ram:IssuerAssignedID>
+            </ram:BuyerOrderReferencedDocument>
+        </ram:ApplicableHeaderTradeAgreement>
+        <ram:ApplicableHeaderTradeDelivery>
+            <ram:ShipToTradeParty py:if="this.ship_to_trade_party">
+                ${TradeParty(this.ship_to_trade_party, this.ship_to_trade_address)}
+            </ram:ShipToTradeParty>
+            <ram:ShipFromTradeParty py:if="this.ship_from_trade_party">
+                ${TradeParty(this.ship_from_trade_party, this.ship_from_trade_address)}
+            </ram:ShipFromTradeParty>
+        </ram:ApplicableHeaderTradeDelivery>
+        <ram:ApplicableHeaderTradeSettlement>
+            <ram:PaymentReference>${this.payment_reference}</ram:PaymentReference>
+            <ram:InvoiceCurrencyCode>${this.invoice.currency.code}</ram:InvoiceCurrencyCode>
+            <ram:InvoiceDateTime>
+                ${DateTime(this.invoice.invoice_date)}
+            </ram:InvoiceDateTime>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>1</ram:TypeCode>  <!-- Instrument not defined -->
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <py:for each="tax in this.invoice.taxes">
+                ${TradeTax(tax.tax, tax.amount, tax.base)}
+            </py:for>
+            <ram:SpecifiedTradePaymentTerms py:for="line in this.invoice.lines_to_pay">
+                <ram:Description py:if="this.invoice.payment_term and this.invoice.payment_term.description">${this.invoice.payment_term.description}</ram:Description>
+                <ram:DueDateDateTime>
+                    ${DateTime(line.maturity_date)}
+                </ram:DueDateDateTime>
+                <ram:PartialPaymentAmount py:attrs="{'currencyID': this.invoice.currency.code}">${(line.amount_second_currency or (line.debit - line.credit)) * this.type_sign}</ram:PartialPaymentAmount>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+                <ram:LineTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount * this.type_sign}</ram:LineTotalAmount>
+                <ram:TaxBasisTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.untaxed_amount * this.type_sign}</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.tax_amount * this.type_sign}</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.total_amount * this.type_sign}</ram:GrandTotalAmount>
+                <ram:DuePayableAmount py:attrs="{'currencyID': this.invoice.currency.code}">${this.invoice.amount_to_pay * this.type_sign}</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        </ram:ApplicableHeaderTradeSettlement>
+    </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
