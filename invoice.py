@@ -1125,17 +1125,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def copy(cls, invoices, default=None):
         if default is None:
             default = {}
-        default = default.copy()
-        default['state'] = 'draft'
-        default['number'] = None
-        default['move'] = None
-        default['cancel_move'] = None
-        default['invoice_report_cache'] = None
-        default['invoice_report_format'] = None
-        default['payment_lines'] = None
+        else:
+            default = default.copy()
+        default.setdefault('number', None)
+        default.setdefault('move', None)
+        default.setdefault('cancel_move', None)
+        default.setdefault('invoice_report_cache', None)
+        default.setdefault('invoice_report_format', None)
+        default.setdefault('payment_lines', None)
         default.setdefault('invoice_date', None)
         default.setdefault('accounting_date', None)
-        default['lines_to_pay'] = None
+        default.setdefault('lines_to_pay', None)
         return super(Invoice, cls).copy(invoices, default=default)
 
     @classmethod
@@ -2042,7 +2042,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def copy(cls, lines, default=None):
         if default is None:
             default = {}
-        default = default.copy()
+        else:
+            default = default.copy()
         default.setdefault('origin', None)
         return super(InvoiceLine, cls).copy(lines, default=default)
 
