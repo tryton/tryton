@@ -72,7 +72,8 @@ setup(name=name,
         ],
     package_data={
         'trytond.modules.account_es': (info.get('xml', [])
-            + ['tryton.cfg']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.text',
+                'icons/*.svg', 'tests/*.rst', 'tests/*.txt']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

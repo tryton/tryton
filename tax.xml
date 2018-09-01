@@ -375,6 +375,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_superred">
             <field name="name">IVA superreducido</field>
             <field name="code">01</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -395,6 +396,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_red">
             <field name="name">IVA reducido</field>
             <field name="code">04</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -415,6 +417,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_normal">
             <field name="name">IVA normal</field>
             <field name="code">07</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -435,6 +438,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_intracomunitario">
             <field name="name">Adquisiciones intracomunitarias de bienes y servicios</field>
             <field name="code">10</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -469,18 +473,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_sujeto_pasivo">
             <field name="name">Otras operaciones con inversión del sujeto pasivo</field>
             <field name="code">12</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_bases">
             <field name="name">Modificación bases</field>
             <field name="code">14</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_re_normal">
             <field name="name">Recargo equivalencia normal</field>
             <field name="code">16</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -501,6 +508,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_re_red">
             <field name="name">Recargo equivalencia reducido</field>
             <field name="code">19</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -521,6 +529,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_re_superred">
             <field name="name">Recargo equivalencia superreducido</field>
             <field name="code">22</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -542,6 +551,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_bases_re">
             <field name="name">Modificación bases del recargo de equivalencia</field>
             <field name="code">25</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -549,12 +559,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax">
             <field name="name">Total cuota devengada</field>
             <field name="code">27</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_superred">
             <field name="name">IVA superreducido</field>
             <field name="code">03</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -575,6 +587,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_red">
             <field name="name">IVA reducido</field>
             <field name="code">06</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -595,6 +608,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_normal">
             <field name="name">IVA normal</field>
             <field name="code">09</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -615,6 +629,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_intracomunitario">
             <field name="name">Adquisiciones intracomunitarias de bienes y servicios</field>
             <field name="code">11</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -649,18 +664,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_sujeto_pasivo">
             <field name="name">Otras operaciones con inversión del sujeto pasivo</field>
             <field name="code">13</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_taxes">
             <field name="name">Modificación cuotas</field>
             <field name="code">15</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_re_normal">
             <field name="name">Recargo equivalencia normal</field>
             <field name="code">18</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -681,6 +699,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_re_red">
             <field name="name">Recargo equivalencia reducido</field>
             <field name="code">21</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -701,6 +720,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_re_superred">
             <field name="name">Recargo equivalencia superreducido</field>
             <field name="code">24</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -722,6 +742,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_devengado_modification_taxes_re">
             <field name="name">Modificación cuotas del recargo equivalencia</field>
             <field name="code">26</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_devengado_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -741,6 +762,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_base_corrientes">
             <field name="name">Operaciones interiores corrientes</field>
             <field name="code">28</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -804,6 +826,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_base_inversion">
             <field name="name">Operaciones interiores con bienes inversión</field>
             <field name="code">30</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -853,6 +876,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_base_importacion">
             <field name="name">Importaciones de bienes corrientes</field>
             <field name="code">32</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -873,6 +897,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_base_importacion_inversion">
             <field name="name">Importaciones de bienes de inversión</field>
             <field name="code">34</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -893,6 +918,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_base_intracomunitario">
             <field name="name">Adquisiciones intracomunitarios de bienes y servicios corrientes</field>
             <field name="code">36</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -913,6 +939,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_base_intracomunitario_inv">
             <field name="name">Adquisiciones intracomunitario de bienes de inversión</field>
             <field name="code">38</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -933,6 +960,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_base_rectification_deductions">
             <field name="name">Rectificación de deducciones</field>
             <field name="code">40</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_base"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -940,12 +968,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax">
             <field name="name">Total a deducir</field>
             <field name="code">45</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_corrientes">
             <field name="name">Por cuotas soportadas en operaciones interiores corrientes</field>
             <field name="code">29</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -995,6 +1025,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_inversion">
             <field name="name">Por cuotas soportadas en operaciones interiores con bienes inversión</field>
             <field name="code">31</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1057,6 +1088,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_importacion">
             <field name="name">Por cuotas soportadas en las importaciones de bienes corrientes</field>
             <field name="code">33</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1077,6 +1109,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_importacion_inversion">
             <field name="name">Por cuotas soportadas en las importaciones de bienes de inversión</field>
             <field name="code">35</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1097,6 +1130,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_intracomunitario">
             <field name="name">En adquisiciones intracomunitarios de bienes y servicios corrientes</field>
             <field name="code">37</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1117,6 +1151,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_intracomunitario_inv">
             <field name="name">En adquisiciones intracomunitario de bienes de inversión</field>
             <field name="code">39</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1137,24 +1172,28 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_rectification_deductions">
             <field name="name">Rectificación de deducciones</field>
             <field name="code">41</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_reagp">
             <field name="name">Compensaciones Reǵimen Especial A.G y P.</field>
             <field name="code">42</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_regularization_inv">
             <field name="name">Regularización bienes de inversión</field>
             <field name="code">43</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_regularization_prorrata">
             <field name="name">Regularización por aplicación del porcentaje definitio de prorrata</field>
             <field name="code">44</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_deducible_tax"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1162,6 +1201,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_rep_intracomunitario">
             <field name="name">Entregas intracomunitarias de bienes y servicios</field>
             <field name="code">59</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1198,6 +1238,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_exportaciones">
             <field name="name">Exportaciones y operaciones asimiladas</field>
             <field name="code">60</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1218,6 +1259,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_iva_no_sujetas">
             <field name="name">Operaciones no sujetas o con inversión del sujeto pasivo que originn derecho a deducción</field>
             <field name="code">61</field>
+            <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1231,6 +1273,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Importe percepeciones actividades economicas</field>
             <field name="parent" ref="vat_code_irpf_purchase"/>
             <field name="code">08</field>
+            <field name="aeat_report">111</field>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_1_purchase-invoice">
@@ -1293,6 +1336,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.template" id="vat_code_irpf_purchase_tax">
             <field name="name">Importe retenciones actividades economicas</field>
             <field name="code">09</field>
+            <field name="aeat_report">111</field>
             <field name="parent" ref="vat_code_irpf_purchase"/>
             <field name="account" ref="pgc_0"/>
         </record>
@@ -1362,6 +1406,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Base de las retenciones e ingresos a cuenta</field>
             <field name="parent" ref="vat_code_irpf_19_purchase_rent"/>
             <field name="code">02</field>
+            <field name="aeat_report">115</field>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.line.template" id="vat_code_irpf_19_purchase_rent_base-irpf_19_purchase_rent-invoice">
@@ -1382,6 +1427,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Retenciones e ingresos a cuenta</field>
             <field name="parent" ref="vat_code_irpf_19_purchase_rent"/>
             <field name="code">03</field>
+            <field name="aeat_report">115</field>
             <field name="account" ref="pgc_0"/>
         </record>
         <record model="account.tax.code.line.template" id="vat_code_irpf_19_purchase_rent_tax-irpf_19_purchase_rent-invoice">

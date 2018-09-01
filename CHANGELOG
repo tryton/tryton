@@ -1,3 +1,4 @@
+* Allow to export tax reports as file
 * Remove support for Python 2.7
 
 Version 4.8.0 - 2018-05-21
