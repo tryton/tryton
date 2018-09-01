@@ -51,8 +51,7 @@ class Party(metaclass=PoolMeta):
                     ).select(line.party,
                     # Use credit - debit to positive deposit amount
                     Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
-                    where=account.active
-                    & (account.kind == 'deposit')
+                    where=(account.kind == 'deposit')
                     & party_clause
                     & (line.reconciliation == Null)
                     & (account.company == user.company.id)
