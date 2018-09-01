@@ -43,10 +43,14 @@ Create chart of accounts::
 Set Cash journal::
 
     >>> Journal = Model.get('account.journal')
+    >>> PaymentMethod = Model.get('account.invoice.payment.method')
     >>> journal_cash, = Journal.find([('type', '=', 'cash')])
-    >>> journal_cash.credit_account = account_cash
-    >>> journal_cash.debit_account = account_cash
-    >>> journal_cash.save()
+    >>> payment_method = PaymentMethod()
+    >>> payment_method.name = 'Cash'
+    >>> payment_method.journal = journal_cash
+    >>> payment_method.credit_account = account_cash
+    >>> payment_method.debit_account = account_cash
+    >>> payment_method.save()
 
 Create taxes::
 
@@ -131,7 +135,7 @@ Pay partially the invoice::
     >>> pay = Wizard('account.invoice.pay', [invoice],
     ...     context={'payment_date': period.start_date})
     >>> pay.form.amount = Decimal('60')
-    >>> pay.form.journal = journal_cash
+    >>> pay.form.payment_method = payment_method
     >>> pay.form.date = period.start_date
     >>> pay.execute('choice')
     >>> pay.form.type = 'partial'
