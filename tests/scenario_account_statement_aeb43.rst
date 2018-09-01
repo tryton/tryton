@@ -63,8 +63,6 @@ Create Account Journal::
     >>> sequence.save()
     >>> account_journal = AccountJournal(name='Statement',
     ...     type='statement',
-    ...     credit_account=cash,
-    ...     debit_account=cash,
     ...     sequence=sequence,
     ...     )
     >>> account_journal.save()
@@ -75,7 +73,8 @@ Create a statement::
     >>> journal = StatementJournal(name='Number',
     ...     journal=account_journal,
     ...     validation='number_of_lines',
-    ...		bank_account=bank_account,
+    ...     account=cash,
+    ...     bank_account=bank_account,
     ...     )
     >>> journal.save()
 
