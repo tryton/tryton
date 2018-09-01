@@ -139,6 +139,35 @@ class WinForm(NoModal, InfoBar):
             hbox = gtk.HBox(homogeneous=False, spacing=0)
             access = common.MODELACCESS[screen.model_name]
 
+            but_switch = gtk.Button()
+            tooltips.set_tip(but_switch, _('Switch'))
+            but_switch.connect('clicked', self.switch_view)
+            but_switch.add(common.IconFactory.get_image(
+                    'tryton-switch', gtk.ICON_SIZE_SMALL_TOOLBAR))
+            but_switch.set_relief(gtk.RELIEF_NONE)
+            hbox.pack_start(but_switch, expand=False, fill=False)
+
+            self.but_pre = gtk.Button()
+            tooltips.set_tip(self.but_pre, _('Previous'))
+            self.but_pre.connect('clicked', self._sig_previous)
+            self.but_pre.add(common.IconFactory.get_image(
+                    'tryton-back', gtk.ICON_SIZE_SMALL_TOOLBAR))
+            self.but_pre.set_relief(gtk.RELIEF_NONE)
+            hbox.pack_start(self.but_pre, expand=False, fill=False)
+
+            self.label = gtk.Label('(0,0)')
+            hbox.pack_start(self.label, expand=False, fill=False)
+
+            self.but_next = gtk.Button()
+            tooltips.set_tip(self.but_next, _('Next'))
+            self.but_next.connect('clicked', self._sig_next)
+            self.but_next.add(common.IconFactory.get_image(
+                    'tryton-forward', gtk.ICON_SIZE_SMALL_TOOLBAR))
+            self.but_next.set_relief(gtk.RELIEF_NONE)
+            hbox.pack_start(self.but_next, expand=False, fill=False)
+
+            hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
+
             if domain is not None:
                 self.wid_text = gtk.Entry()
                 self.wid_text.set_property('width_chars', 13)
@@ -198,37 +227,6 @@ class WinForm(NoModal, InfoBar):
             hbox.pack_start(self.but_undel, expand=False, fill=False)
             if not access['delete'] or readonly:
                 self.but_undel.set_sensitive(False)
-
-            hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
-
-            self.but_pre = gtk.Button()
-            tooltips.set_tip(self.but_pre, _('Previous'))
-            self.but_pre.connect('clicked', self._sig_previous)
-            self.but_pre.add(common.IconFactory.get_image(
-                    'tryton-back', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_pre.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_pre, expand=False, fill=False)
-
-            self.label = gtk.Label('(0,0)')
-            hbox.pack_start(self.label, expand=False, fill=False)
-
-            self.but_next = gtk.Button()
-            tooltips.set_tip(self.but_next, _('Next'))
-            self.but_next.connect('clicked', self._sig_next)
-            self.but_next.add(common.IconFactory.get_image(
-                    'tryton-forward', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_next.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_next, expand=False, fill=False)
-
-            hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
-
-            but_switch = gtk.Button()
-            tooltips.set_tip(but_switch, _('Switch'))
-            but_switch.connect('clicked', self.switch_view)
-            but_switch.add(common.IconFactory.get_image(
-                    'tryton-switch', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            but_switch.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(but_switch, expand=False, fill=False)
 
             but_switch.props.sensitive = screen.number_of_views > 1
 
