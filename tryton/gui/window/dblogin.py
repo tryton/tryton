@@ -484,7 +484,7 @@ class DBLogin(object):
 
         # Profile informations
         self.profile_cfg = os.path.join(get_config_dir(), 'profiles.cfg')
-        self.profiles = configparser.SafeConfigParser()
+        self.profiles = configparser.ConfigParser()
         if not os.path.exists(self.profile_cfg):
             short_version = '.'.join(__version__.split('.', 2)[:2])
             name = 'demo%s.tryton.org' % short_version

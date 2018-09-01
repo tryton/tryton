@@ -120,7 +120,8 @@ class ConfigManager(object):
                 if not parser.has_section(section):
                     parser.add_section(section)
                 parser.set(section, name, str(self.config[entry]))
-            parser.write(open(self.rcfile, 'w'))
+            with open(self.rcfile, 'w') as fp:
+                parser.write(fp)
         except IOError:
             logging.getLogger(__name__).warn(
                 _('Unable to write config file %s.')

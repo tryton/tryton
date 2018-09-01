@@ -58,7 +58,7 @@ def object_hook(dct):
         elif dct['__class__'] == 'timedelta':
             return datetime.timedelta(seconds=dct['seconds'])
         elif dct['__class__'] == 'bytes':
-            return base64.decodestring(dct['base64'].encode('utf-8'))
+            return base64.decodebytes(dct['base64'].encode('utf-8'))
         elif dct['__class__'] == 'Decimal':
             return Decimal(dct['decimal'])
     return dct
@@ -96,7 +96,7 @@ class JSONEncoder(json.JSONEncoder):
                 }
         elif isinstance(obj, bytes):
             return {'__class__': 'bytes',
-                'base64': base64.encodestring(obj).decode('utf-8'),
+                'base64': base64.encodebytes(obj).decode('utf-8'),
                 }
         elif isinstance(obj, Decimal):
             return {'__class__': 'Decimal',
@@ -151,7 +151,7 @@ class Transport(xmlrpc.client.SafeTransport):
         if extra_headers is None:
             extra_headers = []
         if self.session:
-            auth = base64.encodestring(
+            auth = base64.encodebytes(
                 self.session.encode('utf-8')).decode('ascii')
             auth = ''.join(auth.split())  # get rid of whitespace
             extra_headers.append(
