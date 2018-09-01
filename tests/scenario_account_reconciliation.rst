@@ -124,19 +124,28 @@ Create Moves for writeoff reconciliation::
     >>> move.save()
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
 
-Reconcile Lines with writeoff::
+Create a writeof payment method::
+
 
     >>> Sequence = Model.get('ir.sequence')
     >>> sequence_journal, = Sequence.find([('code', '=', 'account.journal')])
     >>> journal_writeoff = Journal(name='Write-Off', type='write-off',
-    ...     sequence=sequence_journal,
-    ...     credit_account=revenue, debit_account=expense)
+    ...     sequence=sequence_journal)
     >>> journal_writeoff.save()
+    >>> WriteOff = Model.get('account.move.reconcile.write_off')
+    >>> writeoff_method = WriteOff()
+    >>> writeoff_method.name = 'Write Off'
+    >>> writeoff_method.journal = journal_writeoff
+    >>> writeoff_method.debit_account = expense
+    >>> writeoff_method.credit_account = expense
+    >>> writeoff_method.save()
+
+Reconcile Lines with writeoff::
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [reconcile1, reconcile2])
     >>> reconcile_lines.form_state == 'writeoff'
     True
-    >>> reconcile_lines.form.journal = journal_writeoff
+    >>> reconcile_lines.form.writeoff = writeoff_method
     >>> reconcile_lines.execute('reconcile')
     >>> reconcile1.reload()
     >>> reconcile2.reload()

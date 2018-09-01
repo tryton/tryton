@@ -10,7 +10,7 @@ from sql import Null, Literal
 from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
 
-from trytond.model import ModelView, ModelSQL, fields, Check
+from trytond.model import ModelView, ModelSQL, fields, Check, DeactivableMixin
 from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
     StateReport, Button
 from trytond.report import Report
@@ -22,7 +22,7 @@ from trytond.rpc import RPC
 from trytond.tools import reduce_ids, grouped_slice
 from trytond.config import config
 
-__all__ = ['Move', 'Reconciliation', 'Line', 'OpenJournalAsk',
+__all__ = ['Move', 'Reconciliation', 'Line', 'WriteOff', 'OpenJournalAsk',
     'OpenJournal', 'OpenAccount',
     'ReconcileLinesWriteOff', 'ReconcileLines',
     'UnreconcileLines',
@@ -1158,10 +1158,11 @@ class Line(ModelSQL, ModelView):
         return toolbar
 
     @classmethod
-    def reconcile(cls, *lines_list, **writeoff):
+    def reconcile(
+            cls, *lines_list, date=None, writeoff=None, description=None):
         """
         Reconcile each list of lines together.
-        The writeoff keys are: journal, date, account and description.
+        The writeoff keys are: date, method and description.
         """
         pool = Pool()
         Reconciliation = pool.get('account.move.reconciliation')
@@ -1185,7 +1186,8 @@ class Line(ModelSQL, ModelView):
                     reconcile_party = line.party
             if amount:
                 move = cls._get_writeoff_move(
-                    reconcile_account, reconcile_party, amount, **writeoff)
+                    reconcile_account, reconcile_party, amount,
+                    date, writeoff, description)
                 move.save()
                 lines += cls.search([
                         ('move', '=', move.id),
@@ -1203,7 +1205,7 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def _get_writeoff_move(cls, reconcile_account, reconcile_party, amount,
-            journal=None, date=None, account=None, description=None):
+            date=None, writeoff=None, description=None):
         pool = Pool()
         Date = pool.get('ir.date')
         Period = pool.get('account.period')
@@ -1211,11 +1213,14 @@ class Line(ModelSQL, ModelView):
         if not date:
             date = Date.today()
         period_id = Period.find(reconcile_account.company.id, date=date)
-        if not account and journal:
+        account = None
+        journal = None
+        if writeoff:
             if amount >= 0:
-                account = journal.debit_account
+                account = writeoff.debit_account
             else:
-                account = journal.credit_account
+                account = writeoff.credit_account
+            journal = writeoff.journal
 
         move = Move()
         move.journal = journal
@@ -1241,6 +1246,33 @@ class Line(ModelSQL, ModelView):
 
         move.lines = lines
         return move
+
+
+class WriteOff(DeactivableMixin, ModelSQL, ModelView):
+    'Reconcile Write Off'
+    __name__ = 'account.move.reconcile.write_off'
+    company = fields.Many2One('company.company', "Company", required=True)
+    name = fields.Char("Name", required=True, translate=True)
+    journal = fields.Many2One('account.journal', "Journal", required=True,
+        domain=[('type', '=', 'write-off')])
+    credit_account = fields.Many2One('account.account', "Credit Account",
+        required=True,
+        domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
+    debit_account = fields.Many2One('account.account', "Debit Account",
+        required=True,
+        domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
 
 class OpenJournalAsk(ModelView):
@@ -1368,20 +1400,28 @@ class OpenAccount(Wizard):
 class ReconcileLinesWriteOff(ModelView):
     'Reconcile Lines Write-Off'
     __name__ = 'account.move.reconcile_lines.writeoff'
-    journal = fields.Many2One('account.journal', 'Journal', required=True,
+    company = fields.Many2One('company.company', "Company", readonly=True)
+    writeoff = fields.Many2One('account.move.reconcile.write_off', "Write Off",
         domain=[
-            ('type', '=', 'write-off'),
-            ])
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
     date = fields.Date('Date', required=True)
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         readonly=True, depends=['currency_digits'])
-    currency_digits = fields.Integer('Currency Digits', readonly=True)
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
     description = fields.Char('Description')
 
     @staticmethod
     def default_date():
         Date = Pool().get('ir.date')
         return Date.today()
+
+    @fields.depends('company')
+    def on_change_with_currency_digits(self, name=None):
+        if self.company:
+            return self.company.currency.digits
 
 
 class ReconcileLines(Wizard):
@@ -1419,17 +1459,17 @@ class ReconcileLines(Wizard):
         amount, company = self.get_writeoff()
         return {
             'amount': amount,
-            'currency_digits': company.currency.digits,
+            'company': company.id,
             }
 
     def transition_reconcile(self):
         Line = Pool().get('account.move.line')
 
-        journal = getattr(self.writeoff, 'journal', None)
+        writeoff = getattr(self.writeoff, 'writeoff', None)
         date = getattr(self.writeoff, 'date', None)
         description = getattr(self.writeoff, 'description', None)
         Line.reconcile(Line.browse(Transaction().context['active_ids']),
-            journal=journal, date=date, description=description)
+            writeoff=writeoff, date=date, description=description)
         return 'end'
 
 

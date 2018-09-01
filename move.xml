@@ -348,6 +348,50 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_cancel_default_form</field>
         </record>
 
+        <record model="ir.ui.view" id="reconcile_writeoff_view_form">
+            <field name="model">account.move.reconcile.write_off</field>
+            <field name="type">form</field>
+            <field name="name">writeoff_form</field>
+        </record>
+        <record model="ir.ui.view" id="reconcile_writeoff_view_list">
+            <field name="model">account.move.reconcile.write_off</field>
+            <field name="type">tree</field>
+            <field name="name">writeoff_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_reconcile_writeoff_form">
+            <field name="name">WriteOff Methods</field>
+            <field name="res_model">account.move.reconcile.write_off</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reconcile_writeoff_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="reconcile_writeoff_view_list"/>
+            <field name="act_window" ref="act_reconcile_writeoff_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_reconcile_writeoff_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="reconcile_writeoff_view_form"/>
+            <field name="act_window" ref="act_reconcile_writeoff_form"/>
+        </record>
+        <menuitem parent="menu_journal_configuration"
+            action="act_reconcile_writeoff_form"
+            id="menu_reconcile_writeoff_form"/>
+
+        <record model="ir.model.access" id="access_reconcile_writeoff">
+            <field name="model" search="[('model', '=', 'account.move.reconcile.write_off')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_reconcile_writeoff_account_admin">
+            <field name="model" search="[('model', '=', 'account.move.reconcile.write_off')]"/>
+            <field name="group" ref="group_account_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
         <record model="ir.ui.view" id="print_general_journal_start_view_form">
             <field name="model">account.move.print_general_journal.start</field>
             <field name="type">form</field>

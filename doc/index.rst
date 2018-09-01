@@ -102,10 +102,22 @@ A Journal contains the following fields:
 - Name
 - Code
 - Active: A checkbox that allow to disable the tax.
-- Default Credit Account, Default Debit Account: Used as default
-  accounts on move lines for journals of *Cash* type.
 - Type: By default take one of the following values: *General*,
   *Revenue*, *Expense*, *Cash*, *Situation*.
+
+
+Reconcile Write Off
+*******************
+
+A reconcile write off is used to set the writeoff options when reconciling
+unbalanced moves. It has the following fields:
+
+- Name
+- Company
+- Journal: Will be used for creating the write off move
+- Credit Account and Debit Account: The accounts used for the write off move
+  depending on the amount sign.
+- Active: A checkbox that allow to disable the writeoff.
 
 
 Move

@@ -1,3 +1,5 @@
+* Add writeoff method
+* Remove default account from journal
 * Add replacement account
 * Add period on account and tax code
 * Add template override mechanism to tax rules and tax rule lines

@@ -16,7 +16,7 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Journal', 'JournalSequence', 'JournalAccount',
+__all__ = ['Journal', 'JournalSequence',
     'JournalCashContext',
     'JournalPeriod']
 
@@ -52,32 +52,6 @@ class Journal(
                 }))
     sequences = fields.One2Many(
         'account.journal.sequence', 'journal', "Sequences")
-    credit_account = fields.MultiValue(fields.Many2One(
-            'account.account', "Default Credit Account",
-            domain=[
-                ('kind', '!=', 'view'),
-                ('company', '=', Eval('context', {}).get('company', -1)),
-                ],
-            states={
-                'required': ((Eval('type').in_(['cash', 'write-off']))
-                    & (Eval('context', {}).get('company', -1) != -1)),
-                'invisible': ~Eval('context', {}).get('company', -1),
-                },
-            depends=['type']))
-    debit_account = fields.MultiValue(fields.Many2One(
-            'account.account', "Default Debit Account",
-            domain=[
-                ('kind', '!=', 'view'),
-                ('company', '=', Eval('context', {}).get('company', -1)),
-                ],
-            states={
-                'required': ((Eval('type').in_(['cash', 'write-off']))
-                    & (Eval('context', {}).get('company', -1) != -1)),
-                'invisible': ~Eval('context', {}).get('company', -1),
-                },
-            depends=['type']))
-    accounts = fields.One2Many(
-        'account.journal.account', 'journal', "Accounts")
     debit = fields.Function(fields.Numeric('Debit',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_debit_credit_balance')

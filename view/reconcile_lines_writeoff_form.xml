@@ -6,8 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount"/>
     <label name="date"/>
     <field name="date"/>
-    <label name="journal"/>
-    <field name="journal"/>
+    <label name="writeoff"/>
+    <field name="writeoff"/>
     <newline/>
     <label name="description"/>
     <field name="description" colspan="3"/>
