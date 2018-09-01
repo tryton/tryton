@@ -200,11 +200,16 @@ class Binary(BinaryMixin, Widget):
             self.wid_text.set_text(self.filename_field.get(record) or '')
             reset_position(self.wid_text)
             if size:
-                stock, tooltip = 'tryton-open', _("Open...")
+                icon, tooltip = 'tryton-open', _("Open...")
             else:
-                stock, tooltip = None, ''
+                icon, tooltip = None, ''
             pos = gtk.ENTRY_ICON_PRIMARY
-            self.wid_text.set_icon_from_stock(pos, stock)
+            if icon:
+                pixbuf = common.IconFactory.get_pixbuf(
+                    icon, gtk.ICON_SIZE_MENU)
+            else:
+                pixbuf = None
+            self.wid_text.set_icon_from_pixbuf(pos, pixbuf)
             self.wid_text.set_icon_tooltip_text(pos, tooltip)
         self.update_buttons(bool(size))
         return True
