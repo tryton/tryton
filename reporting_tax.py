@@ -20,6 +20,24 @@ from trytond.wizard import Wizard, StateView, StateTransition, StateReport, \
 __all__ = ['AEAT111', 'AEAT115', 'AEAT303', 'PrintAEATStart', 'PrintAEAT']
 
 
+# XXX fix: https://genshi.edgewall.org/ticket/582
+from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
+if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
+    def visit_NameConstant(self, node):
+        if node.value is None:
+            self._write('None')
+        elif node.value is True:
+            self._write('True')
+        elif node.value is False:
+            self._write('False')
+        else:
+            raise Exception("Unknown NameConstant %r" % (node.value,))
+    ASTCodeGenerator.visit_NameConstant = visit_NameConstant
+if not hasattr(ASTTransformer, 'visit_NameConstant'):
+    # Re-use visit_Name because _clone is deleted
+    ASTTransformer.visit_NameConstant = ASTTransformer.visit_Name
+
+
 def justify(string, size):
     return string[:size].ljust(size)
 
