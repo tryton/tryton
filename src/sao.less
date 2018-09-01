@@ -3,7 +3,7 @@
 
 #tablist > li > a {
     border: 0;
-    & > span {
+    > span {
         max-width: 9em;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -52,13 +52,13 @@
 }
 
 .tab-form, .tab-board {
-    & nav.toolbar.affix {
+    nav.toolbar.affix {
         top: @navbar-height + 1px;
         z-index: @zindex-navbar - 1;
     }
 
-    & .navbar-text {
-        & .badge {
+    .navbar-text {
+        .badge {
             max-width: 5em;
             min-width: 5em;
             overflow: hidden;
@@ -66,7 +66,7 @@
         }
     }
 
-    & .navbar-btn {
+    .navbar-btn {
         .badge {
             position: absolute;
             top: -5px;
@@ -75,8 +75,8 @@
         }
     }
 
-    & .tab-domain {
-        & .badge {
+    .tab-domain {
+        .badge {
             min-width: 3em;
         }
     }
@@ -96,7 +96,7 @@
 }
 
 .modal-lg {
-    & .modal-content {
+    .modal-content {
         height: auto;
         border-radius: 0;
     }
@@ -110,16 +110,16 @@
 }
 
 input[type='color'] {
-    & .btn {
+    .btn {
         height: @line-height-base;
     }
-    & .btn-lg {
+    .btn-lg {
         height: @line-height-large;
     }
-    & .btn-sm {
+    .btn-sm {
         height: @line-height-small;
     }
-    & .btn-xs {
+    .btn-xs {
         height: @line-height-small;
     }
 }
@@ -131,9 +131,9 @@ input[type='color'] {
 
 img.icon {
     height: unit(@line-height-base, em);
-}
-[dir="rtl"] img.icon {
-    transform: scaleX(-1);
+    [dir="rtl"] & {
+        transform: scaleX(-1);
+    }
 }
 
 .filter-box {
@@ -143,21 +143,21 @@ img.icon {
 .treeview {
     overflow-x: auto;
 
-    & > table.tree {
+    > table.tree {
         width: 100%;
         table-layout: fixed;
 
-        & col.selection-state, col.favorite {
+        col.selection-state, col.favorite {
             width: 30px;
         }
 
-        & th.selection-state, td.selection-state {
-            & > input {
+        th.selection-state, td.selection-state {
+            > input {
                 .center-block();
             }
         }
-        & > thead > tr > th {
-            & > label.sortable {
+        > thead > tr > th {
+            > label.sortable {
                 cursor: pointer;
             }
             overflow: hidden;
@@ -173,38 +173,38 @@ img.icon {
                 text-align: end;
             }
         }
-        & > tbody > tr > td {
+        > tbody > tr > td {
             cursor: pointer;
-            & > * {
+            > * {
                 vertical-align: middle;
             }
         }
 
-        & td.prefix {
+        td.prefix {
             padding-right: @table-cell-padding;
+            [dir="rtl"] & {
+                padding-right: 0;
+                padding-left: @table-cell-padding;
+            }
         }
-        [dir="rtl"] & td.prefix {
-            padding-right: 0;
+        td.suffix {
             padding-left: @table-cell-padding;
+            [dir="rtl"] & {
+                padding-left: 0;
+                padding-right: @table-cell-padding;
+            }
         }
-        & td.suffix {
-            padding-left: @table-cell-padding;
-        }
-        [dir="rtl"] & td.suffix {
-            padding-left: 0;
-            padding-right: @table-cell-padding;
-        }
-        & img.column-affix, a.column-affix > img {
+        img.column-affix, a.column-affix > img {
             width: unit(@line-height-base, em);
             height: unit(@line-height-base, em);
             display: block;
         }
 
-        & tr.more-row {
+        tr.more-row {
             text-align: center;
         }
     }
-    & .editabletree-char, .editabletree-date, .editabletree-datetime,
+    .editabletree-char, .editabletree-date, .editabletree-datetime,
     .editabletree-integer, .editabletree-float, .editabletree-selection,
     .editabletree-timedelta, .editabletree-boolean, .editabletree-many2one,
     .editabletree-one2many {
@@ -216,44 +216,43 @@ img.icon {
             margin-right: auto;
         }
     }
-    & td {
+    td {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        &.edited {
+            /* We have to define an overflow:visible in order for the
+            completion widget to be shown */
+            overflow: visible;
+            padding: 0 0;
+        }
+        > .column-text {
+            white-space: pre;
+        }
     }
-    & td.edited {
-        /* We have to define an overflow:visible in order for the
-        completion widget to be shown */
-        overflow: visible;
-        padding: 0 0;
-    }
-    & td > .column-text {
-        white-space: pre;
-    }
-    & .expander {
+    .expander {
         cursor: pointer;
-        & > img {
+        > img {
             float: left;
             margin-right: 5px;
+            [dir="rtl"] & {
+                float: right;
+                margin-left: 5px;
+            }
             width: 1em;
         }
-        [dir="rtl"] & > img {
-            float: right;
-            margin-left: 5px;
-        }
     }
-    & label {
+    label {
         font-weight: normal;
         display: inline;
+        &.required {
+            font-weight: bold;
+        }
+        &.editable {
+            font-style: italic;
+        }
     }
-    & label.required {
-        font-weight: bold;
-    }
-    & label.editable {
-        font-style: italic;
-    }
-
-    & .btn {
+    .btn {
         padding-top: 0;
         padding-bottom: 0;
         margin-top: -@table-condensed-cell-padding;
@@ -263,111 +262,108 @@ img.icon {
 
 .form {
     width: 100%;
-    & table.form-container > tbody > tr > td {
+    table.form-container > tbody > tr > td {
         padding: 1px;
     }
-    & table.form-hcontainer > tbody > tr > td {
+    table.form-hcontainer > tbody > tr > td {
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    & table.form-vcontainer > tbody > tr > td {
+    table.form-vcontainer > tbody > tr > td {
         padding-left: 0px;
         padding-right: 0px;
     }
-    & td.form-label {
+    td.form-label {
         white-space: pre;
     }
-    & .form-char, .form-password, .form-integer, .form-float {
-        & input {
+    .form-char, .form-password, .form-integer, .form-float {
+        input {
             min-width: 8em;
         }
     }
-    & .form-integer, .form-float {
-        & input {
+    .form-integer, .form-float {
+        input {
             max-width: 8em;
         }
     }
-    & .form-url, .form-email, .form-callto, .form-sip {
-        & a > img {
+    .form-url, .form-email, .form-callto, .form-sip {
+        a > img {
             width: 1em;
             height: 1em;
         }
     }
-    & .form-many2one > .input-group {
+    .form-many2one > .input-group {
         width: 100%;
     }
-    & td.form-one2many, td.form-many2many {
+    td.form-one2many, td.form-many2many {
         vertical-align: top;
     }
-    & .form-one2many-menu::after, .form-many2many-menu::after {
+    .form-one2many-menu::after, .form-many2many-menu::after {
         content: "";
         display: table;
         clear: both;
     }
-    & .form-one2many-menu, .form-many2many-menu {
-        & .form-one2many-string, .form-many2many-string {
+    .form-one2many-menu, .form-many2many-menu {
+        .form-one2many-string, .form-many2many-string {
             display: inline-table;
             float: left;
             margin: 5px;
+            [dir="rtl"] & {
+                float: right;
+            }
         }
-        [dir="rtl"] & .form-one2many-string,
-        [dir="rtl"] & .form-many2many-string {
-            float: right;
-        }
-        & .form-one2many-toolbar, .form-many2many-toolbar {
+        .form-one2many-toolbar, .form-many2many-toolbar {
             display: inline-table;
             float: right;
-
-            & .badge {
+            [dir="rtl"] & {
+                float: left;
+            }
+            .badge {
                 max-width: 5em;
                 min-width: 5em;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
         }
-        [dir="rtl"] & .form-one2many-toolbar,
-        [dir="rtl"] & .form-many2many-toolbar {
-            float: left;
-        }
     }
-    & .form-one2many-content, .form-many2many-content {
-        & .treeview {
+    .form-one2many-content, .form-many2many-content {
+        .treeview {
             min-height: 100px;
             max-height: 300px;
         }
     }
-    & .form-richtext {
-        & > .btn-toolbar {
+    .form-richtext {
+        > .btn-toolbar {
             min-width: 450px;
         }
-        & .richtext {
+        .richtext {
             min-height: 5em;
         }
     }
-    & .form-separator {
-        & label {
+    .form-separator {
+        label {
             margin-top: 10px;
         }
-        & hr {
+        hr {
             margin-top: 0;
             margin-bottom: 5px;
         }
     }
-    & .form-image_ {
-        & img {
+    .form-image_ {
+        img {
             width: 4em;
             height: 4em;
         }
     }
-    & label {
+    label {
         font-weight: normal;
         display: inline;
-    }
-    & label.required {
-        font-weight: bold;
-    }
-    & label.editable {
-        font-style: italic;
+        &.required {
+            font-weight: bold;
+        }
+        &.editable {
+            font-style: italic;
+        }
     }
     .nav-tabs {
         margin-bottom: 15px;
@@ -375,7 +371,7 @@ img.icon {
     .panel-heading {
         padding: 1px 1px;
     }
-    & fieldset.form-group_ > legend {
+    fieldset.form-group_ > legend {
         font-size: @font-size-base;
         margin-bottom: 5px;
     }
@@ -388,7 +384,7 @@ img.icon {
 .form-integer, .form-float, .form-timedelta,
 .dict-integer, .dict-float, .dict-numeric,
 .editabletree-integer, .editabletree-float, .editabletree-timedelta {
-    & input {
+    input {
         text-align: right;
         text-align: end;
     }
@@ -405,7 +401,7 @@ input.column-boolean {
 }
 
 .form-boolean, .editabletree-boolean {
-    & input[type=checkbox] {
+    input[type=checkbox] {
         width: initial;
     }
 }
@@ -425,15 +421,15 @@ input.column-boolean {
 }
 
 .window-form {
-    & .window-form-toolbar {
+    .window-form-toolbar {
         text-align: right;
         text-align: end;
     }
 }
 
 .csv {
-    & .modal-dialog {
-        & .column-fields {
+    .modal-dialog {
+        .column-fields {
             height: 35vh;
             overflow-y: scroll;
         }
@@ -462,13 +458,13 @@ input.column-boolean {
     }
     table.responsive {
         /* Hide table headers (but not display: none; for accessiblity) */
-        & > thead > tr {
+        > thead > tr {
             position: absolute;
             top: -9999px;
             left: -9999px;
         }
-        & > thead > tr,
-        & > tbody > tr > td {
+        > thead > tr,
+        > tbody > tr > td {
             text-align: left !important;
             text-align: start !important;
             /* Force height to empty content */
@@ -478,7 +474,7 @@ input.column-boolean {
             }
         }
 
-        & tfoot {
+        tfoot {
             > tr > td:empty,
             > tr > td > label {
                 display: none !important;
@@ -486,7 +482,7 @@ input.column-boolean {
         }
     }
     table.responsive-noheader {
-        & > tbody > tr > td {
+        > tbody > tr > td {
             width: 100% !important;
         }
     }
@@ -494,22 +490,28 @@ input.column-boolean {
         > tbody > tr {
             border: 1px solid #ccc;
         }
-        & > tbody > tr > td,
-        & > tfoot > tr > td {
+        > tbody > tr > td,
+        > tfoot > tr > td {
             /* Behave like a "row" */
             border: none;
             border-bottom: 1px solid #eee;
             position: relative;
         }
-        & > tbody > tr,
-        & > tfoot > tr {
-            & > td:before {
+        > tbody > tr,
+        > tfoot > tr {
+            > td:before {
                 /* Now like a table header */
                 position: absolute;
                 /* Top/left values mimic padding */
                 top: 6px;
                 left: 6px;
                 padding-right: 10px;
+                [dir="rtl"] & {
+                    left: unset;
+                    right: 6px;
+                    padding-right: 0;
+                    padding-left: 10px;
+                }
                 text-align: left;
                 text-align: start;
                 overflow: hidden;
@@ -517,16 +519,10 @@ input.column-boolean {
                 /* Label */
                 content: attr(data-title);
             }
-            [dir="rtl"] & > td:before {
-                padding-right: 0;
-                padding-left: 10px;
-                left: unset;
-                right: 6px;
-            }
-            & > td.required:before {
+            > td.required:before {
                 font-weight: bold;
             }
-            & > td.editable:before {
+            > td.editable:before {
                 font-style: italic;
             }
         }
