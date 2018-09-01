@@ -17,4 +17,5 @@ API Reference
     sendmail
     filestore
     cache
+    bus
     tests

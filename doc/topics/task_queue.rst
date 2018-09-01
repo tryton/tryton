@@ -1,4 +1,4 @@
-.. _topics-task-queue
+.. _topics-task-queue:
 
 ==========
 Task Queue
@@ -41,6 +41,8 @@ parameters for the queue:
 Example:
 
 .. highlight:: python
+
+::
 
     from trytond.model import Model
 
