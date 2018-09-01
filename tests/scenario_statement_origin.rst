@@ -57,8 +57,6 @@ Create Account Journal::
     >>> sequence.save()
     >>> account_journal = AccountJournal(name="Statement",
     ...     type='statement',
-    ...     credit_account=cash,
-    ...     debit_account=cash,
     ...     sequence=sequence,
     ...     )
     >>> account_journal.save()
@@ -69,6 +67,7 @@ Create a statement with origins::
     >>> Statement = Model.get('account.statement')
     >>> journal_number = StatementJournal(name="Number",
     ...     journal=account_journal,
+    ...     account=cash,
     ...     validation='number_of_lines',
     ...     )
     >>> journal_number.save()

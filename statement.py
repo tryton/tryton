@@ -147,8 +147,6 @@ class Statement(Workflow, ModelSQL, ModelView):
                     'deletion.'),
                 'paid_invoice_draft_statement': ('There are paid invoices on '
                     'draft statements.'),
-                'debit_credit_account_statement_journal': ('Please provide '
-                    'debit and credit account on statement journal "%s".'),
                 'post_with_pending_amount': ('Origin line "%(origin)s" '
                     'of statement "%(statement)s" still has a pending amount '
                     'of "%(amount)s".'),
@@ -508,15 +506,6 @@ class Statement(Workflow, ModelSQL, ModelView):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
 
-        if amount < 0:
-            account = self.journal.journal.debit_account
-        else:
-            account = self.journal.journal.credit_account
-
-        if not account:
-            self.raise_user_error('debit_credit_account_statement_journal',
-                (self.journal.rec_name,))
-
         if self.journal.currency != self.company.currency:
             second_currency = self.journal.currency
             amount_second_currency *= -1
@@ -533,7 +522,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         return MoveLine(
             debit=abs(amount) if amount < 0 else 0,
             credit=abs(amount) if amount > 0 else 0,
-            account=account,
+            account=self.journal.account,
             second_currency=second_currency,
             amount_second_currency=amount_second_currency,
             description=description,

@@ -10,9 +10,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="currency"/>
     <label name="company"/>
     <field name="company"/>
+    <label name="account"/>
+    <field name="account"/>
     <label name="bank_account"/>
     <field name="bank_account"/>
-    <newline/>
     <label name="validation"/>
     <field name="validation"/>
 </form>

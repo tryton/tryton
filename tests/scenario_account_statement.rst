@@ -126,14 +126,13 @@ Create statement::
     >>> sequence.save()
     >>> account_journal = AccountJournal(name='Statement',
     ...     type='statement',
-    ...     credit_account=cash,
-    ...     debit_account=cash,
     ...     sequence=sequence,
     ... )
     >>> account_journal.save()
 
     >>> statement_journal = StatementJournal(name='Test',
     ...     journal=account_journal,
+    ...     account=cash,
     ...     validation='balance',
     ... )
     >>> statement_journal.save()
@@ -380,6 +379,7 @@ Testing balance validation::
 
     >>> journal_balance = StatementJournal(name='Balance',
     ...     journal=account_journal,
+    ...     account=cash,
     ...     validation='balance',
     ...     )
     >>> journal_balance.save()
@@ -409,6 +409,7 @@ Testing amount validation::
 
     >>> journal_amount = StatementJournal(name='Amount',
     ...     journal=account_journal,
+    ...     account=cash,
     ...     validation='amount',
     ...     )
     >>> journal_amount.save()
@@ -437,6 +438,7 @@ Test number of lines validation::
 
     >>> journal_number = StatementJournal(name='Number',
     ...     journal=account_journal,
+    ...     account=cash,
     ...     validation='number_of_lines',
     ...     )
     >>> journal_number.save()
