@@ -1353,15 +1353,14 @@ function eval_pyson(value){
                 this.group.css('width', '100%');
             }
             if (this.attributes.translate) {
-                var button = jQuery('<button/>', {
-                    'class': 'btn btn-default btn-sm form-control',
-                    'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Translate')
-                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-translate')
-                ).appendTo(jQuery('<span/>', {
-                    'class': 'input-group-btn'
-                }).appendTo(this.group));
-                button.click(this.translate.bind(this));
+                Sao.common.ICONFACTORY.get_icon_img('tryton-translate')
+                    .appendTo(jQuery('<div/>', {
+                        'class': 'icon-input icon-secondary',
+                        'aria-label': Sao.i18n.gettext('Translate'),
+                        'title': Sao.i18n.gettext('Translate'),
+                    }).appendTo(
+                        this.group.addClass('input-icon input-icon-secondary')))
+                .click(this.translate.bind(this));
             }
         },
         get_client_value: function(record, field) {
@@ -1469,18 +1468,15 @@ function eval_pyson(value){
                 'class': this.class_
             });
             this.date = this.labelled = jQuery('<div/>', {
-                'class': 'input-group input-group-sm'
+                'class': ('input-group input-group-sm ' +
+                    'input-icon input-icon-primary'),
             }).appendTo(this.el);
-            jQuery('<span/>', {
-                'class': 'input-group-btn'
-            }).append(jQuery('<button/>', {
-                'class': 'datepickerbutton btn btn-default',
-                'type': 'button',
-                'tabindex': -1,
-                'aria-label': Sao.i18n.gettext("Open the calendar"),
-                'title': Sao.i18n.gettext("Open the calendar"),
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date')
-            )).appendTo(this.date);
+            Sao.common.ICONFACTORY.get_icon_img('tryton-date')
+                .appendTo(jQuery('<div/>', {
+                    'class': 'datepickerbutton icon-input icon-primary',
+                    'aria-label': Sao.i18n.gettext("Open the calendar"),
+                    'title': Sao.i18n.gettext("Open the calendar"),
+                }).appendTo(this.date));
             this.input = jQuery('<input/>', {
                 'type': 'text',
                 'class': 'form-control input-sm mousetrap'
@@ -2147,12 +2143,25 @@ function eval_pyson(value){
                 'class': this.class_
             });
             var group = jQuery('<div/>', {
-                'class': 'input-group input-group-sm'
+                'class': 'input-group input-group-sm input-icon'
             }).appendTo(this.el);
             this.entry = this.labelled = jQuery('<input/>', {
                 'type': 'input',
                 'class': 'form-control input-sm mousetrap'
             }).appendTo(group);
+            this.but_primary = jQuery('<img/>', {
+                'class': 'icon',
+            }).appendTo(jQuery('<div/>', {
+                'class': 'icon-input icon-primary',
+            }).appendTo(group));
+            this.but_secondary = jQuery('<img/>', {
+                'class': 'icon',
+            }).appendTo(jQuery('<div/>', {
+                'class': 'icon-input icon-secondary',
+            }).appendTo(group));
+            this.but_primary.click('primary', this.edit.bind(this));
+            this.but_secondary.click('secondary', this.edit.bind(this));
+
             // Use keydown to not receive focus-in TAB
             this.entry.on('keydown', this.key_press.bind(this));
 
@@ -2163,29 +2172,6 @@ function eval_pyson(value){
                     this._completion_action_activated.bind(this));
                 this.wid_completion = true;
             }
-
-            // Append buttons after the completion to not break layout
-            this.but_primary = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button',
-                'tabindex': -1,
-            }).append(jQuery('<img/>', {
-                'class': 'icon'
-            })).appendTo(jQuery('<span/>', {
-                'class': 'input-group-btn'
-            }).prependTo(group));
-            this.but_secondary = jQuery('<button/>', {
-                'class': 'btn btn-default',
-                'type': 'button',
-                'tabindex': -1,
-            }).append(jQuery('<img/>', {
-                'class': 'icon'
-            })).appendTo(jQuery('<span/>', {
-                'class': 'input-group-btn'
-            }).appendTo(group));
-            this.but_primary.click('primary', this.edit.bind(this));
-            this.but_secondary.click('secondary', this.edit.bind(this));
-
             this.el.change(this.focus_out.bind(this));
             this._readonly = false;
         },
@@ -2268,21 +2254,24 @@ function eval_pyson(value){
                 secondary = null;
             }
             [
-                [primary, tooltip1, this.but_primary],
-                [secondary, tooltip2, this.but_secondary]
+                [primary, tooltip1, this.but_primary, 'primary'],
+                [secondary, tooltip2, this.but_secondary, 'secondary']
             ].forEach(function(items) {
                 var icon_name = items[0];
                 var tooltip = items[1];
                 var button = items[2];
-                var img = button.find('img');
+                var icon_input = button.parent();
+                var type = 'input-icon-' + items[3];
                 // don't use .hide/.show because the display value is not
                 // correctly restored on modal.
                 if (!icon_name) {
-                    button.parent().css('display', 'none');
+                    icon_input.hide();
+                    icon_input.parent().removeClass(type);
                 } else {
-                    button.parent().css('display', 'table-cell');
+                    icon_input.show();
+                    icon_input.parent().addClass(type);
                     Sao.common.ICONFACTORY.get_icon_url(icon_name).then(function(url) {
-                        img.attr('src', url);
+                        button.attr('src', url);
                     });
                 }
                 button.attr('aria-label', tooltip);
@@ -4411,16 +4400,12 @@ function eval_pyson(value){
         create_widget: function() {
             Sao.View.Form.Dict.Date._super.create_widget.call(this);
             this.date = this.input.parent();
-            jQuery('<span/>', {
-                'class': 'input-group-btn',
-            }).append(jQuery('<button/>', {
-                'class': 'datepickerbutton btn btn-default',
-                'type': 'button',
-                'tabindex': -1,
-                'aria-label': Sao.i18n.gettext("Open the calendar"),
-                'title': Sao.i18n.gettext("Open the calendar"),
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date')
-            )).prependTo(this.date);
+            Sao.common.ICONFACTORY.get_icon_img('tryton-date')
+                .appendTo(jQuery('<div/>', {
+                    'class': 'datepickerbutton icon-input icon-primary',
+                    'aria-label': Sao.i18n.gettext("Open the calendar"),
+                    'title': Sao.i18n.gettext("Open the calendar"),
+                }).prependTo(this.date));
             this.date.datetimepicker({
                 'format': Sao.common.moment_format(this.format),
                 'locale': moment.locale(),
@@ -4486,10 +4471,9 @@ function eval_pyson(value){
             this.decoder = new Sao.PYSON.Decoder({}, true);
             this.el.keyup(this.validate_pyson.bind(this));
             this.icon = jQuery('<img/>', {
-                'class': 'icon',
-            }).appendTo(jQuery('<span/>', {
-                'class': 'input-group-addon',
-            }).appendTo(this.group));
+                'class': 'icon form-control-feedback',
+            }).appendTo(this.group);
+            this.group.addClass('has-feedback');
         },
         display: function(record, field) {
             Sao.View.Form.PYSON._super.display.call(this, record, field);
@@ -4530,7 +4514,7 @@ function eval_pyson(value){
             if (this.get_encoded_value() === null) {
                 icon = 'error';
             }
-            Sao.common.ICONFACTORY.get_icon_img('tryton-' + icon)
+            Sao.common.ICONFACTORY.get_icon_url('tryton-' + icon)
                 .then(function(url) {
                     this.icon.attr('src', url);
                 }.bind(this));
