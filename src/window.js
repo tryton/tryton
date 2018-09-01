@@ -144,6 +144,37 @@
                     'class': 'input-group-btn'
                 }).appendTo(group);
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+
+                this.but_switch = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext('Switch')
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-switch')
+                ).appendTo(buttons);
+                this.but_switch.click(this.switch_.bind(this));
+
+                this.but_previous = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext('Previous')
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
+                ).appendTo(buttons);
+                this.but_previous.click(this.previous.bind(this));
+
+                this.label = jQuery('<span/>', {
+                    'class': 'badge'
+                }).appendTo(jQuery('<span/>', {
+                    'class': 'btn hidden-xs',
+                }).appendTo(buttons));
+
+                this.but_next = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext('Next')
+                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
+                ).appendTo(buttons);
+                this.but_next.click(this.next.bind(this));
+
                 if (this.domain) {
                     this.wid_text.show();
 
@@ -193,34 +224,7 @@
                 this.but_undel.click(this.undelete.bind(this));
                 this.but_undel.prop('disabled', !access['delete'] || readonly);
 
-                this.but_previous = jQuery('<button/>', {
-                    'class': 'btn btn-default btn-sm',
-                    'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Previous')
-                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
-                ).appendTo(buttons);
-                this.but_previous.click(this.previous.bind(this));
-
-                this.label = jQuery('<span/>', {
-                    'class': 'btn'
-                }).appendTo(buttons);
-                this.label.text('(0, 0)');
-
-                this.but_next = jQuery('<button/>', {
-                    'class': 'btn btn-default btn-sm',
-                    'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Next')
-                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
-                ).appendTo(buttons);
-                this.but_next.click(this.next.bind(this));
-
-                this.but_switch = jQuery('<button/>', {
-                    'class': 'btn btn-default btn-sm',
-                    'type': 'button',
-                    'aria-label': Sao.i18n.gettext('Switch')
-                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-switch')
-                ).appendTo(buttons);
-                this.but_switch.click(this.switch_.bind(this));
+                this.screen.message_callback = this.record_label.bind(this);
             }
 
             var content = jQuery('<div/>').appendTo(dialog.body);
@@ -240,6 +244,33 @@
             this.el.on('hidden.bs.modal', function(event) {
                 jQuery(this).remove();
             });
+        },
+        record_label: function(data) {
+            var name = '_';
+            var access = Sao.common.MODELACCESS.get(this.screen.model_name);
+            var readonly = this.screen.group.get_readonly();
+            if (data[0] >= 1) {
+                name = data[0];
+                if (this.domain) {
+                    this.but_remove.prop('disabled', false);
+                }
+                this.but_next.prop('disabled', data[0] >= data[1]);
+                this.but_previous.prop('disabled', data[0] <= 1);
+                if (access.delete && !readonly) {
+                    this.but_del.prop('disabled', false);
+                    this.but_undel.prop('disabled', false);
+                }
+            } else {
+                this.but_del.prop('disabled', true);
+                this.but_undel.prop('disabled', true);
+                this.but_next.prop('disabled', true);
+                this.but_previous.prop('disabled', true);
+                if (this.domain) {
+                    this.but_remove.prop('disabled', true);
+                }
+            }
+            var message = name + '/' + data[1];
+            this.label.text(message).attr('title', message);
         },
         add: function() {
             var domain = jQuery.extend([], this.domain);
