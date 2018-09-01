@@ -26,7 +26,7 @@ def get_require_version(name):
 
 
 config = ConfigParser()
-config.readfp(open('tryton.cfg'))
+config.read_file(open('tryton.cfg'))
 info = dict(config.items('tryton'))
 for key in ('depends', 'extras_depend', 'xml'):
     if key in info:
