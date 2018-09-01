@@ -878,8 +878,12 @@
                 }).append(jQuery('<span/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
-                td.on('click keypress', {'index': i},
-                    this.select_column.bind(this));
+                td.on('click keypress', {'index': i}, function() {
+                    if (this.expander && !this.is_expanded()) {
+                        this.toggle_row();
+                    }
+                    this.select_column();
+                }.bind(this));
                 if (!this.tree.editable) {
                     td.dblclick(this.switch_row.bind(this));
                 } else {
