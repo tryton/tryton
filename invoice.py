@@ -10,7 +10,7 @@ from sql.conditionals import Coalesce, Case
 from sql.functions import Round
 
 from trytond.model import Workflow, ModelView, ModelSQL, fields, Check, \
-    sequence_ordered, Unique
+    sequence_ordered, Unique, DeactivableMixin
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -26,7 +26,7 @@ from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.product import price_digits
 
 __all__ = ['Invoice', 'InvoicePaymentLine', 'InvoiceLine',
-    'InvoiceLineTax', 'InvoiceTax',
+    'InvoiceLineTax', 'InvoiceTax', 'PaymentMethod',
     'InvoiceReport',
     'PayInvoiceStart', 'PayInvoiceAsk', 'PayInvoice',
     'CreditInvoiceStart', 'CreditInvoice']
@@ -239,16 +239,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'invoice "%(invoice)s" on fiscalyear "%(fiscalyear)s".'),
                 'modify_invoice': ('You can not modify invoice "%s" because '
                     'it is posted, paid or cancelled.'),
-                'same_debit_account': ('The debit account on journal '
-                    '"%(journal)s" is the same as invoice "%(invoice)s"\'s '
-                    'account.'),
-                'missing_debit_account': ('The debit account on journal "%s" '
-                    'is missing.'),
-                'same_credit_account': ('The credit account on journal '
-                    '"%(journal)s" is the same as invoice "%(invoice)s"\'s '
-                    'account.'),
-                'missing_credit_account': ('The credit account on journal '
-                    '"%s" is missing.'),
                 'same_account_on_line': ('Invoice "%(invoice)s" uses the same '
                     'account "%(account)s" for the invoice and in line '
                     '"%(line)s".'),
@@ -1190,7 +1180,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     best = result
         return best
 
-    def pay_invoice(self, amount, journal, date, description,
+    def pay_invoice(self, amount, payment_method, date, description,
             amount_second_currency=None, second_currency=None):
         '''
         Adds a payment of amount to an invoice using the journal, date and
@@ -1219,18 +1209,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         line2.debit, line2.credit = line1.credit, line1.debit
         if line2.debit:
-            account_journal = 'debit_account'
+            payment_acccount = 'debit_account'
         else:
-            account_journal = 'credit_account'
-        line2.account = getattr(journal, account_journal)
-        if self.account == line2.account:
-            self.raise_user_error('same_%s' % account_journal, {
-                    'journal': journal.rec_name,
-                    'invoice': self.rec_name,
-                    })
-        if not line2.account:
-            self.raise_user_error('missing_%s' % account_journal,
-                (journal.rec_name,))
+            payment_acccount = 'credit_account'
+        line2.account = getattr(payment_method, payment_acccount)
 
         for line in lines:
             if line.account.party_required:
@@ -1242,7 +1224,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         period_id = Period.find(self.company.id, date=date)
 
-        move = Move(journal=journal, period=period_id, date=date,
+        move = Move(
+            journal=payment_method.journal, period=period_id, date=date,
             company=self.company, lines=lines)
         move.save()
         Move.post([move])
@@ -2378,6 +2361,33 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         return line
 
 
+class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):
+    'Payment Method'
+    __name__ = 'account.invoice.payment.method'
+    company = fields.Many2One('company.company', "Company", required=True)
+    name = fields.Char("Name", required=True, translate=True)
+    journal = fields.Many2One('account.journal', "Journal", required=True,
+        domain=[('type', '=', 'cash')])
+    credit_account = fields.Many2One('account.account', "Credit Account",
+        required=True,
+        domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
+    debit_account = fields.Many2One('account.account', "Debit Account",
+        required=True,
+        domain=[
+            ('kind', '!=', 'view'),
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+
 class InvoiceReport(Report):
     __name__ = 'account.invoice'
 
@@ -2441,8 +2451,17 @@ class PayInvoiceStart(ModelView):
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     currency_digits = fields.Integer('Currency Digits', readonly=True)
     description = fields.Char('Description', size=None)
-    journal = fields.Many2One('account.journal', 'Journal', required=True,
-            domain=[('type', '=', 'cash')])
+    company = fields.Many2One('company.company', "Company", readonly=True)
+    invoice_account = fields.Many2One(
+        'account.account', "Invoice Account", readonly=True)
+    payment_method = fields.Many2One(
+        'account.invoice.payment.method', "Payment Method",  required=True,
+        domain=[
+            ('company', '=', Eval('company')),
+            ('debit_account', '!=', Eval('invoice_account')),
+            ('credit_account', '!=', Eval('invoice_account')),
+            ],
+        depends=['company', 'amount', 'invoice_account'])
     date = fields.Date('Date', required=True)
 
     @staticmethod
@@ -2468,14 +2487,16 @@ class PayInvoiceAsk(ModelView):
         ('writeoff', 'Write-Off'),
         ('partial', 'Partial Payment'),
         ], 'Type', required=True)
-    journal_writeoff = fields.Many2One('account.journal', 'Write-Off Journal',
+    writeoff = fields.Many2One(
+        'account.move.reconcile.write_off', "Write Off",
         domain=[
-            ('type', '=', 'write-off'),
+            ('company', '=', Eval('company')),
             ],
         states={
             'invisible': Eval('type') != 'writeoff',
             'required': Eval('type') == 'writeoff',
-            }, depends=['type'])
+            },
+        depends=['company', 'type'])
     amount = fields.Numeric('Payment Amount',
             digits=(16, Eval('currency_digits', 2)),
             readonly=True, depends=['currency_digits'])
@@ -2577,11 +2598,13 @@ class PayInvoice(Wizard):
         Invoice = Pool().get('account.invoice')
         default = {}
         invoice = Invoice(Transaction().context['active_id'])
+        default['company'] = invoice.company.id
         default['currency'] = invoice.currency.id
         default['currency_digits'] = invoice.currency.digits
         default['amount'] = (invoice.amount_to_pay_today
             or invoice.amount_to_pay)
         default['description'] = invoice.number
+        default['invoice_account'] = invoice.account.id
         return default
 
     def transition_choice(self):
@@ -2675,7 +2698,7 @@ class PayInvoice(Wizard):
         line = None
         if not invoice.company.currency.is_zero(amount):
             line = invoice.pay_invoice(amount,
-                self.start.journal, self.start.date,
+                self.start.payment_method, self.start.date,
                 self.start.description, amount_second_currency,
                 second_currency)
 
@@ -2690,7 +2713,7 @@ class PayInvoice(Wizard):
                     lines += [line]
                 if lines:
                     MoveLine.reconcile(lines,
-                        journal=self.ask.journal_writeoff,
+                        writeoff=self.ask.writeoff,
                         date=self.start.date)
         else:
             if line:

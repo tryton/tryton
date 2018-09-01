@@ -35,6 +35,7 @@ def register():
         Move,
         MoveLine,
         Reconciliation,
+        PaymentMethod,
         module='account_invoice', type_='model')
     Pool.register(
         TestPaymentTerm,

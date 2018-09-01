@@ -62,22 +62,32 @@ Create tax::
     >>> credit_note_tax_code = create_tax_code(tax, 'tax', 'credit')
     >>> credit_note_tax_code.save()
 
-Set Cash journal::
+Create payment method::
 
     >>> Journal = Model.get('account.journal')
-    >>> journal_cash, = Journal.find([('type', '=', 'cash')])
-    >>> journal_cash.credit_account = account_cash
-    >>> journal_cash.debit_account = account_cash
-    >>> journal_cash.save()
-
-Create Write-Off journal::
-
+    >>> PaymentMethod = Model.get('account.invoice.payment.method')
     >>> Sequence = Model.get('ir.sequence')
+    >>> journal_cash, = Journal.find([('type', '=', 'cash')])
+    >>> payment_method = PaymentMethod()
+    >>> payment_method.name = 'Cash'
+    >>> payment_method.journal = journal_cash
+    >>> payment_method.credit_account = account_cash
+    >>> payment_method.debit_account = account_cash
+    >>> payment_method.save()
+
+Create Write Off method::
+
+    >>> WriteOff = Model.get('account.move.reconcile.write_off')
     >>> sequence_journal, = Sequence.find([('code', '=', 'account.journal')])
     >>> journal_writeoff = Journal(name='Write-Off', type='write-off',
-    ...     sequence=sequence_journal,
-    ...     credit_account=revenue, debit_account=expense)
+    ...     sequence=sequence_journal)
     >>> journal_writeoff.save()
+    >>> writeoff_method = WriteOff()
+    >>> writeoff_method.name = 'Rate loss'
+    >>> writeoff_method.journal = journal_writeoff
+    >>> writeoff_method.credit_account = expense
+    >>> writeoff_method.debit_account = expense
+    >>> writeoff_method.save()
 
 Create party::
 
@@ -250,7 +260,7 @@ Pay invoice::
     >>> pay.form.amount
     Decimal('240.00')
     >>> pay.form.amount = Decimal('120.00')
-    >>> pay.form.journal = journal_cash
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> pay.state
     'end'
@@ -259,7 +269,7 @@ Pay invoice::
     >>> pay.form.amount
     Decimal('120.00')
     >>> pay.form.amount = Decimal('20.00')
-    >>> pay.form.journal = journal_cash
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> pay.form.type = 'partial'
     >>> pay.form.amount
@@ -278,10 +288,10 @@ Pay invoice::
     >>> pay.form.amount
     Decimal('-20.00')
     >>> pay.form.amount = Decimal('99.00')
-    >>> pay.form.journal = journal_cash
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> pay.form.type = 'writeoff'
-    >>> pay.form.journal_writeoff = journal_writeoff
+    >>> pay.form.writeoff = writeoff_method
     >>> pay.form.amount
     Decimal('99.00')
     >>> len(pay.form.lines_to_pay)
@@ -349,7 +359,7 @@ Create a paid invoice::
     >>> line.unit_price = Decimal('40')
     >>> invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [invoice])
-    >>> pay.form.journal = journal_cash
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> pay.state
     'end'

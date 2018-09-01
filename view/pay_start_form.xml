@@ -8,8 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="currency"/>
     <label name="description"/>
     <field name="description" colspan="3"/>
-    <label name="journal"/>
-    <field name="journal"/>
+    <label name="payment_method"/>
+    <field name="payment_method"/>
     <label name="date"/>
     <field name="date"/>
     <field name="currency_digits" colspan="4" invisible="1"/>

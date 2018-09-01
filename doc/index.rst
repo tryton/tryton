@@ -127,6 +127,20 @@ computed terms base on an amount and a date.
 .. note:: The last line of payment term must be a remainder.
 
 
+Payment Method
+**************
+
+The payment options available when paying an invoice. It has the following
+fields:
+
+- Name
+- Company
+- Journal: Will be used for creating the payment move
+- Credit Account and Debit Account: The accounts used for the payment move
+  depending on the amount sign.
+- Active: A checkbox that allow to disable the payment method.
+
+
 Fiscal Year Sequences
 *********************
 
