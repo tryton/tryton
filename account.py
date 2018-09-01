@@ -280,6 +280,11 @@ class Reconciliation(metaclass=PoolMeta):
 class RenewFiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear.renew'
 
+    def fiscalyear_defaults(self):
+        defaults = super(RenewFiscalYear, self).fiscalyear_defaults()
+        defaults['invoice_sequences'] = None
+        return defaults
+
     @property
     def invoice_sequence_fields(self):
         return ['out_invoice_sequence', 'out_credit_note_sequence',
@@ -290,6 +295,24 @@ class RenewFiscalYear(metaclass=PoolMeta):
         Sequence = pool.get('ir.sequence.strict')
         InvoiceSequence = pool.get('account.fiscalyear.invoice_sequence')
         fiscalyear = super(RenewFiscalYear, self).create_fiscalyear()
+
+        def standard_period(period):
+            return period.type == 'standard'
+
+        period_mapping = {}
+        for previous, new in zip(
+                filter(
+                    standard_period, self.start.previous_fiscalyear.periods),
+                filter(standard_period, fiscalyear.periods)):
+            period_mapping[previous] = new.id
+
+        InvoiceSequence.copy(
+            self.start.previous_fiscalyear.invoice_sequences,
+            default={
+                'fiscalyear': fiscalyear.id,
+                'period': lambda data: period_mapping.get(data['period']),
+                })
+
         if not self.start.reset_sequences:
             return fiscalyear
         sequences = OrderedDict()
