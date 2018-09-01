@@ -1322,7 +1322,7 @@ class ModelGraph(Report):
                 label += '+ ' + field.name + ': ' + field.ttype
                 if field.relation:
                     label += ' ' + field.relation
-                label += '\l'
+                label += '\\l'
             label += '}"'
             node_name = '"%s"' % model.model
             node = pydot.Node(node_name, shape='record', label=label)

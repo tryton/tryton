@@ -737,21 +737,16 @@ def modules_suite(modules=None, doc=True):
         suite_ = suite()
     else:
         suite_ = all_suite()
-    from trytond.modules import create_graph, get_module_list, \
-        MODULES_PATH, EGG_MODULES
+    from trytond.modules import create_graph, get_module_list, import_module
     graph = create_graph(get_module_list())
     for node in graph:
         module = node.name
         if modules and module not in modules:
             continue
         test_module = 'trytond.modules.%s.tests' % module
-        if os.path.isdir(os.path.join(MODULES_PATH, module)) or \
-                module in EGG_MODULES:
-            try:
-                test_mod = __import__(test_module, fromlist=[''])
-            except ImportError:
-                continue
-        else:
+        try:
+            test_mod = import_module(module, test_module)
+        except ImportError:
             continue
         for test in test_mod.suite():
             if isinstance(test, doctest.DocTestCase) and not doc:

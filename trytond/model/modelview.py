@@ -127,7 +127,7 @@ class ModelView(Model):
             attr = getattr(cls, name)
             if isinstance(attr, fields.Field):
                 fields_[name] = attr
-            elif isinstance(attr, collections.Callable):
+            elif callable(attr):
                 callables[name] = attr
 
         methods = {
@@ -656,7 +656,8 @@ class ModelView(Model):
                     if button_rules:
                         clicks = ButtonClick.register(
                             cls.__name__, func.__name__, records)
-                        records = [r for r in records if all(br.test(r, clicks.get(r.id, []))
+                        records = [r for r in records
+                            if all(br.test(r, clicks.get(r.id, []))
                                 for br in button_rules)]
                 # Reset click after filtering in case the button also has rules
                 names = Button.get_reset(cls.__name__, func.__name__)

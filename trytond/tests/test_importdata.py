@@ -370,10 +370,10 @@ class ImportDataTestCase(unittest.TestCase):
                 'tests.import_data_many2many_target_test2']]), 1)
 
         self.assertEqual(Many2many.import_data(['many2many'],
-            [['Test\, comma']]), 1)
+            [['Test\\, comma']]), 1)
 
         self.assertEqual(Many2many.import_data(['many2many'],
-            [['Test\, comma,Test 1']]), 1)
+            [['Test\\, comma,Test 1']]), 1)
 
         self.assertEqual(Many2many.import_data(['many2many'],
             [['']]), 1)

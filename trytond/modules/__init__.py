@@ -2,12 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import os
 import sys
+import importlib
 import itertools
 import logging
-import imp
 import configparser
 from glob import iglob
 from collections import defaultdict
+from importlib.machinery import FileFinder, SourceFileLoader, SOURCE_SUFFIXES
 
 from sql import Table
 from sql.functions import CurrentTimestamp
@@ -43,6 +44,41 @@ def update_egg_modules():
 
 
 update_egg_modules()
+
+
+def import_module(name, fullname=None):
+    if fullname is None:
+        fullname = 'trytond.modules.' + name
+    try:
+        module = importlib.import_module(fullname)
+    except ImportError:
+        if name not in EGG_MODULES:
+            raise
+        ep = EGG_MODULES[name]
+        # Can not use ep.load because modules are declared in an importable
+        # path and it can not import submodule.
+        path = os.path.join(
+            ep.dist.location, *ep.module_name.split('.')[:-1])
+        if not os.path.isdir(path):
+            # Find module in path
+            for path in sys.path:
+                path = os.path.join(
+                    path, *ep.module_name.split('.')[:-1])
+                if os.path.isdir(os.path.join(path, name)):
+                    break
+            else:
+                # When testing modules from setuptools location is the
+                # module directory
+                path = os.path.dirname(ep.dist.location)
+        spec = FileFinder(
+            path, (SourceFileLoader, SOURCE_SUFFIXES)
+            ).find_spec(fullname)
+        if spec.loader:
+            module = spec.loader.load_module()
+        else:
+            raise
+    return module
+
 
 
 def get_module_info(name):
@@ -292,34 +328,10 @@ def register_classes():
             MODULES.append(module)
             continue
 
-        if os.path.isdir(OPJ(MODULES_PATH, module)):
-            mod_path = MODULES_PATH
-        elif module in EGG_MODULES:
-            ep = EGG_MODULES[module]
-            mod_path = os.path.join(ep.dist.location,
-                    *ep.module_name.split('.')[:-1])
-            if not os.path.isdir(mod_path):
-                # Find module in path
-                for path in sys.path:
-                    mod_path = os.path.join(path,
-                            *ep.module_name.split('.')[:-1])
-                    if os.path.isdir(os.path.join(mod_path, module)):
-                        break
-                if not os.path.isdir(os.path.join(mod_path, module)):
-                    # When testing modules from setuptools location is the
-                    # module directory
-                    mod_path = os.path.dirname(ep.dist.location)
-        else:
-            raise Exception('Couldn\'t find module %s' % module)
-        mod_file, pathname, description = imp.find_module(module,
-                [mod_path])
-        the_module = imp.load_module('trytond.modules.' + module,
-            mod_file, pathname, description)
+        the_module = import_module(module)
         # Some modules register nothing in the Pool
         if hasattr(the_module, 'register'):
             the_module.register()
-        if mod_file is not None:
-            mod_file.close()
         MODULES.append(module)
 
 
