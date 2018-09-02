@@ -32,9 +32,6 @@ class WinForm(NoModal, InfoBar):
         self.title = title
         self.prev_view = self.screen.current_view
         self.screen.screen_container.alternate_view = True
-        if view_type not in (x.view_type for x in self.screen.views) and \
-                view_type not in self.screen.view_to_load:
-            self.screen.add_view_id(None, view_type)
         self.screen.switch_view(view_type=view_type)
         if new:
             self.screen.new(rec_name=rec_name)
