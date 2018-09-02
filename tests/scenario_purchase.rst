@@ -42,10 +42,15 @@ Create chart of accounts::
     >>> cash = accounts['cash']
 
     >>> Journal = Model.get('account.journal')
+    >>> PaymentMethod = Model.get('account.invoice.payment.method')
     >>> cash_journal, = Journal.find([('type', '=', 'cash')])
-    >>> cash_journal.credit_account = cash
-    >>> cash_journal.debit_account = cash
     >>> cash_journal.save()
+    >>> payment_method = PaymentMethod()
+    >>> payment_method.name = 'Cash'
+    >>> payment_method.journal = cash_journal
+    >>> payment_method.credit_account = cash
+    >>> payment_method.debit_account = cash
+    >>> payment_method.save()
 
 Create tax::
 
@@ -498,7 +503,7 @@ Pay the service invoice::
     >>> service_invoice.invoice_date = today
     >>> service_invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [service_invoice])
-    >>> pay.form.journal = cash_journal
+    >>> pay.form.payment_method = payment_method
     >>> pay.form.amount = service_invoice.total_amount
     >>> pay.execute('choice')
     >>> service_invoice.reload()
