@@ -3412,6 +3412,19 @@
 
     };
 
+    Sao.common.get_input_data = function(input, callback, char_) {
+        var reader = new FileReader(),
+            file = input[0].files[0];
+        reader.onload = function() {
+            var value = new Uint8Array(reader.result);
+            if (char_) {
+                value = String.fromCharCode.apply(null, value);
+            }
+            callback(value, file.name);
+        };
+        reader.readAsArrayBuffer(file);
+    };
+
     Sao.common.ellipsize = function(string, length) {
         if (string.length <= length) {
             return string;

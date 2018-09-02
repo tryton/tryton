@@ -55,23 +55,12 @@
             this.info_bar = new Sao.Window.InfoBar();
             var view_type = kwargs.view_type || 'form';
 
-            var form_prm = jQuery.when();
-            var screen_views = [];
-            for (var i = 0, len = this.screen.views.length; i < len; i++) {
-                screen_views.push(this.screen.views[i].view_type);
-            }
-            if (!~screen_views.indexOf(view_type) &&
-                !~this.screen.view_to_load.indexOf(view_type)) {
-                form_prm = this.screen.add_view_id(null, view_type);
-            }
-
-            var switch_prm = form_prm.then(function() {
-                return this.screen.switch_view(view_type).done(function() {
+            this.switch_prm = this.screen.switch_view(view_type)
+                .done(function() {
                     if (kwargs.new_) {
                         this.screen.new_(undefined, kwargs.rec_name);
                     }
                 }.bind(this));
-            }.bind(this));
             var dialog = new Sao.Dialog('', 'window-form', 'lg', false);
             this.el = dialog.modal;
             this.el.on('keydown', function(e) {
@@ -231,7 +220,7 @@
 
             dialog.body.append(this.info_bar.el);
 
-            switch_prm.done(function() {
+            this.switch_prm.done(function() {
                 title_prm.done(dialog.add_title.bind(dialog));
                 content.append(this.screen.screen_container.alternate_viewport);
                 this.el.modal('show');
@@ -433,14 +422,14 @@
                 mode: ['tree', 'form'],
                 context: context,
             });
-            screen.switch_view().done(function() {
-                screen.search_filter();
-            });
             var title = record.rec_name().then(function(rec_name) {
                 return Sao.i18n.gettext('Attachments (%1)', rec_name);
             });
             Sao.Window.Attachment._super.init.call(this, screen, this.callback,
                 {view_type: 'tree', title: title});
+            this.switch_prm = this.switch_prm.then(function() {
+                return screen.search_filter();
+            });
         },
         callback: function(result) {
             var prm = jQuery.when();
@@ -450,8 +439,65 @@
             if (this.attachment_callback) {
                 prm.always(this.attachment_callback.bind(this));
             }
-        }
+        },
+        add_data: function(data, filename) {
+            var screen = this.screen;
+            this.switch_prm.then(function() {
+                screen.set_current_record(null);
+                screen.switch_view('form').then(function() {
+                    screen.new_().then(function(record) {
+                        var data_field = record.model.fields.data;
+                        record.field_set_client(
+                            data_field.description.filename, filename);
+                        record.field_set_client('data', data);
+                        screen.display();
+                    });
+                });
+            });
+        },
     });
+    Sao.Window.Attachment.get_attachments = function(record) {
+        var prm;
+        if (record && (record.id >= 0)) {
+            var context = record.get_context();
+            prm = Sao.rpc({
+                'method': 'model.ir.attachment.search_read',
+                'params': [
+                    [['resource', '=', record.model.name + ',' + record.id]],
+                    0, 20, null, ['rec_name', 'name', 'type', 'link'],
+                    context],
+            }, record.model.session);
+        } else {
+            prm = jQuery.when([]);
+        }
+        var partial = function(callback, attachment, context, session) {
+            return function() {
+                return callback(attachment, context, session);
+            };
+        };
+        return prm.then(function(attachments) {
+            return attachments.map(function(attachment) {
+                var name = attachment.rec_name;
+                if (attachment.type == 'link') {
+                    return [name, attachment.link];
+                } else {
+                    var callback = Sao.Window.Attachment[
+                        'open_' + attachment.type];
+                    return [name, partial(
+                        callback, attachment, context, record.model.session)];
+                }
+            });
+        });
+    };
+    Sao.Window.Attachment.open_data = function(attachment, context, session) {
+        Sao.rpc({
+            'method': 'model.ir.attachment.read',
+            'params': [
+                [attachment.id], ['data'], context],
+        }, session).then(function(values) {
+            Sao.common.download_file(values[0].data, attachment.name);
+        });
+    };
 
     Sao.Window.Note = Sao.class_(Sao.Window.Form, {
         init: function(record, callback) {

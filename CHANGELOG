@@ -1,3 +1,5 @@
+* Remove dialog for input file
+* Use dropdown for attachment
 * Manage icons in input
 * Support RTL language direction
 * Apply factor on domain parser

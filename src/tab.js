@@ -72,6 +72,7 @@
                     icon: 'tryton-attach',
                     label: Sao.i18n.gettext('Attachment'),
                     tooltip: Sao.i18n.gettext('Add an attachment to the record'),
+                    dropdown: true,
                 }, {
                     id: 'note',
                     icon: 'tryton-note',
@@ -208,16 +209,37 @@
                         'role': 'group'
                     }).appendTo(toolbar.find('.btn-toolbar'));
                 }
-                this.buttons[item.id] = jQuery('<button/>', {
+                var attributes = {
                     'type': 'button',
                     'class': 'btn btn-default navbar-btn',
                     'title': item.label,
                     'id': item.id
-                })
-                .append(Sao.common.ICONFACTORY.get_icon_img(item.icon, {
-                    'aria-hidden': 'true',
-                }))
-                .appendTo(group);
+                };
+                if (item.dropdown) {
+                    attributes['class'] += ' dropdown-toggle';
+                    attributes['data-toggle'] = 'dropdown';
+                    attributes['aria-expanded'] = false;
+                    attributes['aria-haspopup'] = true;
+                }
+                var button = jQuery('<button/>', attributes)
+                    .append(Sao.common.ICONFACTORY.get_icon_img(item.icon, {
+                        'aria-hidden': 'true',
+                    }));
+                this.buttons[item.id] = button;
+                if (item.dropdown) {
+                    var dropdown = jQuery('<div/>', {
+                        'class': 'btn-group dropdown',
+                        'role': 'group',
+                    }).append(button.append(jQuery('<span/>', {
+                        'class': 'caret',
+                    }))).append(jQuery('<ul/>', {
+                        'class': 'dropdown-menu',
+                        'role': 'menu',
+                        'aria-labelledby': item.id,
+                    })).appendTo(group);
+                } else {
+                    button.appendTo(group);
+                }
                 this.buttons[item.id].click(item, function(event) {
                     var item = event.data;
                     var button = this.buttons[item.id];
@@ -234,8 +256,17 @@
             }).appendTo(jQuery('<div/>', {
                 'class': 'navbar-text hidden-xs',
             }).insertAfter(this.buttons.previous));
-            toolbar.find('.btn-toolbar > .btn-group').last().addClass(
-                    'hidden-xs');
+            toolbar.find('.btn-toolbar > .btn-group').last()
+                .addClass( 'hidden-xs')
+                .find('.dropdown')
+                .on('show.bs.dropdown', function() {
+                    jQuery(this).parents('.btn-group')
+                        .removeClass( 'hidden-xs');
+                })
+                .on('hide.bs.dropdown', function() {
+                    jQuery(this).parents('.btn-group')
+                        .addClass('hidden-xs');
+                });
             var tabs = jQuery('#tabs');
             toolbar.affix({
                 'target': tabs.parent(),
@@ -487,7 +518,7 @@
                      Sao.i18n.gettext('Print report')]
                 ].forEach(function(menu_action) {
                     var button = jQuery('<div/>', {
-                        'class': 'btn-group',
+                        'class': 'btn-group dropdown',
                         'role': 'group'
                     })
                     .append(jQuery('<button/>', {
@@ -521,7 +552,7 @@
                             jQuery(this).parents('.btn-group').addClass(
                                     'hidden-xs');
                         });
-                    var menu = button.find('ul[role*="menu"]');
+                    var menu = button.find('.dropdown-menu');
                     button.click(function() {
                         menu.find('.' + menu_action[0] + '_button').remove();
                         var buttons = screen.get_buttons();
@@ -886,14 +917,77 @@
                     }.bind(this));
             }
         },
-        attach: function() {
-            var record = this.screen.current_record;
-            if (!record || (record.id < 0)) {
+        attach: function(evt) {
+            var window_ = function() {
+                return new Sao.Window.Attachment(record, function() {
+                    this.update_attachment_count(true);
+                }.bind(this));
+            }.bind(this);
+            var dropdown = this.buttons.attach.parents('.dropdown');
+            if (!evt) {
+                window.setTimeout(function() {
+                    this.buttons.attach.click();
+                }.bind(this));
                 return;
             }
-            new Sao.Window.Attachment(record, function() {
-                this.update_attachment_count(true);
-            }.bind(this));
+            var record = this.screen.current_record;
+            var menu = dropdown.find('.dropdown-menu');
+            menu.children().remove();
+            Sao.Window.Attachment.get_attachments(record)
+                .then(function(attachments) {
+                    attachments.forEach(function(value) {
+                        var name = value[0],
+                            callback = value[1];
+                        var link = jQuery('<a/>', {
+                            'role': 'menuitem',
+                            'href': '#',
+                            'tabindex': -1,
+                        }).append(name).appendTo(jQuery('<li/>', {
+                            'role': 'presentation',
+                        }).appendTo(menu));
+                        if (typeof callback == 'string') {
+                            link.attr('href', callback);
+                            link.attr('target', '_new');
+                        } else {
+                            link.click(function(evt) {
+                                evt.preventDefault();
+                                callback();
+                            });
+                        }
+                    });
+                }).always(function() {
+                    menu.append(jQuery('<li/>', {
+                        'class': 'divider',
+                    }));
+                    menu.append(jQuery('<li/>', {
+                        'role': 'presentation',
+                        'class': 'input-file',
+                    }).append(jQuery('<input/>', {
+                        'type': 'file',
+                        'role': 'menuitem',
+                        'tabindex': -1,
+                    }).change(function() {
+                        Sao.common.get_input_data(
+                            jQuery(this), function(data, filename) {
+                                window_().add_data(data, filename);
+                            });
+                    })).append(jQuery('<a/>', {
+                        'role': 'menuitem',
+                        'href': '#',
+                        'tabindex': -1,
+                    }).append(Sao.i18n.gettext('Add...'))));
+                    menu.append(jQuery('<li/>', {
+                        'role': 'presentation',
+                    }).append(jQuery('<a/>', {
+                        'role': 'menuitem',
+                        'href': '#',
+                        'tabindex': -1,
+                    }).append(Sao.i18n.gettext('Manage...'))
+                        .click(function(evt) {
+                            evt.preventDefault();
+                            window_();
+                        })));
+                });
         },
         update_attachment_count: function(reload) {
             var record = this.screen.current_record;
