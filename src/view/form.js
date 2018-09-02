@@ -945,7 +945,10 @@
             } else {
                 this.el.show();
             }
-        }
+        },
+        focus: function() {
+            this.el.focus();
+        },
     });
 
     Sao.View.Form.Char = Sao.class_(Sao.View.Form.Widget, {
