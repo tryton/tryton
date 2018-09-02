@@ -35,10 +35,15 @@ Create chart of accounts::
     >>> accounts = get_accounts(company)
 
     >>> Journal = Model.get('account.journal')
+    >>> PaymentMethod = Model.get('account.invoice.payment.method')
     >>> cash_journal, = Journal.find([('type', '=', 'cash')])
-    >>> cash_journal.credit_account = accounts['cash']
-    >>> cash_journal.debit_account = accounts['cash']
     >>> cash_journal.save()
+    >>> payment_method = PaymentMethod()
+    >>> payment_method.name = 'Cash'
+    >>> payment_method.journal = cash_journal
+    >>> payment_method.credit_account = accounts['cash']
+    >>> payment_method.debit_account = accounts['cash']
+    >>> payment_method.save()
 
 Create parties::
 
@@ -99,7 +104,7 @@ Pay for 4 products::
     >>> invoice_line.quantity = 4
     >>> invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [invoice])
-    >>> pay.form.journal = cash_journal
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
 
 Not yet a purchase request::
@@ -113,7 +118,7 @@ Pay for remaining products::
     >>> _, invoice = sale.invoices
     >>> invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [invoice])
-    >>> pay.form.journal = cash_journal
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
 
 Check purchase request::
