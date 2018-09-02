@@ -509,14 +509,14 @@
                 mode: ['tree', 'form'],
                 context: context,
             });
-            screen.switch_view().done(function() {
-                screen.search_filter();
-            });
             var title = record.rec_name().then(function(rec_name) {
                 return Sao.i18n.gettext('Notes (%1)', rec_name);
             });
             Sao.Window.Note._super.init.call(this, screen, this.callback,
                 {view_type: 'tree', title: title});
+            this.switch_prm = this.switch_prm.then(function() {
+                return screen.search_filter();
+            });
         },
         callback: function(result) {
             var prm = jQuery.when();
