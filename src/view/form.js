@@ -1115,7 +1115,10 @@ function eval_pyson(value){
             } else {
                 this.el.show();
             }
-        }
+        },
+        focus: function() {
+            this.el.focus();
+        },
     });
 
     Sao.View.Form.TranslateDialog = Sao.class_(Object,  {
