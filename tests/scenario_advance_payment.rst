@@ -51,10 +51,15 @@ Create chart of accounts::
     >>> advance_payment_account.save()
 
     >>> Journal = Model.get('account.journal')
+    >>> PaymentMethod = Model.get('account.invoice.payment.method')
     >>> cash_journal, = Journal.find([('type', '=', 'cash')])
-    >>> cash_journal.credit_account = cash
-    >>> cash_journal.debit_account = cash
     >>> cash_journal.save()
+    >>> payment_method = PaymentMethod()
+    >>> payment_method.name = 'Cash'
+    >>> payment_method.journal = cash_journal
+    >>> payment_method.credit_account = cash
+    >>> payment_method.debit_account = cash
+    >>> payment_method.save()
 
 Create customer::
 
@@ -181,7 +186,7 @@ The advance payment invoice has been created::
 Let's pay the advance payment invoice::
 
     >>> pay = Wizard('account.invoice.pay', [invoice])
-    >>> pay.form.journal = cash_journal
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
 
     >>> sale.reload()
@@ -254,7 +259,7 @@ Let's pay the advance payment invoice::
     >>> invoice, = sale.advance_payment_invoices
     >>> invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [invoice])
-    >>> pay.form.journal = cash_journal
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> sale.reload()
     >>> sale.state
@@ -311,7 +316,7 @@ The advance payment invoice has been created, now pay it::
     >>> invoice, = sale.advance_payment_invoices
     >>> invoice.click('post')
     >>> pay = Wizard('account.invoice.pay', [invoice])
-    >>> pay.form.journal = cash_journal
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> sale.reload()
     >>> sale.state
@@ -397,7 +402,7 @@ it::
 
     >>> inv_recreated.click('post')
     >>> pay = Wizard('account.invoice.pay', [inv_recreated])
-    >>> pay.form.journal = cash_journal
+    >>> pay.form.payment_method = payment_method
     >>> pay.execute('choice')
     >>> sale.reload()
     >>> last_invoice, = sale.invoices
