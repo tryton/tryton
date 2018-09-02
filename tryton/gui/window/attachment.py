@@ -5,7 +5,10 @@ import os
 from urllib.request import urlopen
 from urllib.parse import urlparse, unquote
 import gettext
+import webbrowser
+from functools import partial
 
+from tryton.common import RPCExecute, RPCException, file_write, file_open
 from tryton.gui.window.view_form.screen import Screen
 from tryton.gui.window.win_form import WinForm
 
@@ -46,3 +49,43 @@ class Attachment(WinForm):
         name_field.set_client(new_record, file_name)
         data_field.set_client(new_record, urlopen(uri).read())
         self.screen.display()
+
+    def add_file(self, filename):
+        self.add_uri('file:///' + filename)
+
+    @staticmethod
+    def get_attachments(record):
+        attachments = []
+        context = {}
+        if record and record.id >= 0:
+            context = record.get_context()
+            try:
+                attachments = RPCExecute('model', 'ir.attachment',
+                    'search_read', [
+                        ('resource', '=', '%s,%s' % (
+                                record.model_name, record.id)),
+                        ], 0, 20, None, ['rec_name', 'name', 'type', 'link'],
+                    context=context)
+            except RPCException:
+                pass
+        for attachment in attachments:
+            name = attachment['rec_name']
+            callback = getattr(
+                Attachment, 'open_' + attachment['type'], Attachment.open_data)
+            yield name, partial(
+                callback, attachment=attachment, context=context)
+
+    @staticmethod
+    def open_link(attachment, context):
+        if attachment['link']:
+            webbrowser.open(attachment['link'], new=2)
+
+    @staticmethod
+    def open_data(attachment, context):
+        try:
+            value, = RPCExecute('model', 'ir.attachment', 'read',
+                [attachment['id']], ['data'], context=context)
+        except RPCException:
+            return
+        filepath = file_write(attachment['name'], value['data'])
+        file_open(filepath)

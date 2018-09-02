@@ -106,11 +106,42 @@ class Form(SignalEvent, TabContent):
         self.screen.destroy()
 
     def sig_attach(self, widget=None):
-        record = self.screen.current_record
-        if not record or record.id < 0:
+        def window(widget):
+            return Attachment(
+                record, lambda: self.update_attachment_count(reload=True))
+
+        def add_file(widget):
+            filename = common.file_selection(_("Select"))
+            if filename:
+                window(widget).add_file(filename)
+
+        def activate(widget, callback):
+            callback()
+
+        button = self.buttons['attach']
+        if widget != button:
+            if button.props.sensitive:
+                button.props.active = True
             return
-        Attachment(record,
-            lambda: self.update_attachment_count(reload=True))
+        record = self.screen.current_record
+        menu = button._menu = Gtk.Menu()
+        for name, callback in Attachment.get_attachments(record):
+            item = Gtk.MenuItem()
+            item.set_label(name)
+            item.connect('activate', activate, callback)
+            menu.add(item)
+        menu.add(Gtk.SeparatorMenuItem())
+        add_item = Gtk.MenuItem()
+        add_item.set_label(_("Add..."))
+        add_item.connect('activate', add_file)
+        menu.add(add_item)
+        manage_item = Gtk.MenuItem()
+        manage_item.set_label(_("Manage..."))
+        manage_item.connect('activate', window)
+        menu.add(manage_item)
+        menu.show_all()
+        menu.connect('deactivate', self._popup_menu_hide, button)
+        self.action_popup(button)
 
     def update_attachment_count(self, reload=False):
         record = self.screen.current_record

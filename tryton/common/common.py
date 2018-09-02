@@ -8,6 +8,7 @@ import pango
 import gettext
 import os
 import subprocess
+import tempfile
 import re
 import logging
 import unicodedata
@@ -426,7 +427,22 @@ def slugify(value):
     return _slugify_hyphenate_re.sub('-', value)
 
 
-def file_open(filename, type, print_p=False):
+def file_write(filename, data):
+    if isinstance(data, str):
+        data = data.encode('utf-8')
+    dtemp = tempfile.mkdtemp(prefix='tryton_')
+    if not isinstance(filename, str):
+        name, ext = filename
+    else:
+        name, ext = os.path.splitext(filename)
+    filename = ''.join([slugify(name), os.extsep, slugify(ext)])
+    filepath = os.path.join(dtemp, filename)
+    with open(filepath, 'wb') as fp:
+        fp.write(data)
+    return filepath
+
+
+def file_open(filename, type=None, print_p=False):
     def save():
         save_name = file_selection(_('Save As...'),
                 action=gtk.FILE_CHOOSER_ACTION_SAVE)

@@ -1,13 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import gettext
-import tempfile
-import os
 import webbrowser
 
 import tryton.rpc as rpc
-from tryton.common import RPCProgress, RPCExecute, RPCException, slugify
-from tryton.common import message, selection, file_open, mailto
+from tryton.common import RPCProgress, RPCExecute, RPCException
+from tryton.common import message, selection, file_write, file_open, mailto
 from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder
 
@@ -39,14 +37,8 @@ class Action(object):
         (type, data, print_p, name) = res
         if not print_p and direct_print:
             print_p = True
-        dtemp = tempfile.mkdtemp(prefix='tryton_')
 
-        fp_name = os.path.join(dtemp,
-            slugify(name) + os.extsep + slugify(type))
-        if isinstance(data, str):
-            data = data.encode('utf-8')
-        with open(fp_name, 'wb') as file_d:
-            file_d.write(data)
+        fp_name = file_write((name, type), data)
         if email_print:
             mailto(to=email.get('to'), cc=email.get('cc'),
                 subject=email.get('subject'), body=email.get('body'),

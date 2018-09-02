@@ -3,9 +3,8 @@
 import gtk
 import gettext
 import os
-import tempfile
 from tryton.common import common
-from tryton.common import file_selection, Tooltips, file_open, slugify
+from tryton.common import file_selection, Tooltips, file_open, file_write
 from tryton.common.entry_position import reset_position
 from tryton.config import CONFIG
 from .widget import Widget
@@ -89,21 +88,20 @@ class BinaryMixin(Widget):
                 self.filename_field.set_client(self.record,
                     os.path.basename(filename))
 
+    def get_data(self):
+        if hasattr(self.field, 'get_data'):
+            data = self.field.get_data(self.record)
+        else:
+            data = self.field.get(self.record)
+        return data
+
     def open_(self, widget=None):
         if not self.filename_field:
             return
         filename = self.filename_field.get(self.record)
         if not filename:
             return
-        dtemp = tempfile.mkdtemp(prefix='tryton_')
-        root, ext = os.path.splitext(filename)
-        filename = ''.join([slugify(root), os.extsep, slugify(ext)])
-        file_path = os.path.join(dtemp, filename)
-        with open(file_path, 'wb') as fp:
-            if hasattr(self.field, 'get_data'):
-                fp.write(self.field.get_data(self.record))
-            else:
-                fp.write(self.field.get(self.record))
+        file_path = file_write(filename, self.get_data())
         root, type_ = os.path.splitext(filename)
         if type_:
             type_ = type_[1:]
@@ -117,10 +115,7 @@ class BinaryMixin(Widget):
             action=gtk.FILE_CHOOSER_ACTION_SAVE)
         if filename:
             with open(filename, 'wb') as fp:
-                if hasattr(self.field, 'get_data'):
-                    fp.write(self.field.get_data(self.record))
-                else:
-                    fp.write(self.field.get(self.record))
+                fp.write(self.get_data())
 
     def clear(self, widget=None):
         if self.filename_field:

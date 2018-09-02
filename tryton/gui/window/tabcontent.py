@@ -16,12 +16,13 @@ _ = gettext.gettext
 
 class ToolbarItem(object):
     def __init__(self, id, label,
-            tooltip=None, icon_name=None, accel_path=None):
+            tooltip=None, icon_name=None, accel_path=None, toggle=False):
         self.id = id
         self.label = label
         self.tooltip = tooltip
         self.icon_name = icon_name
         self.accel_path = accel_path
+        self.toggle = toggle
 
     @property
     def menu(self):
@@ -104,7 +105,8 @@ class TabContent(InfoBar):
                 label=_("A_ttachments..."),
                 tooltip=_("Add an attachment to the record"),
                 icon_name='tryton-attach',
-                accel_path='<tryton>/Form/Attachments'),
+                accel_path='<tryton>/Form/Attachments',
+                toggle=True),
             ToolbarItem(
                 id='note',
                 label=_("_Notes..."),
@@ -248,13 +250,17 @@ class TabContent(InfoBar):
                 callback = getattr(self, 'sig_%s' % item.id, None)
                 if not callback:
                     continue
-                toolitem = gtk.ToolButton()
+                if item.toggle:
+                    toolitem = gtk.ToggleToolButton()
+                    toolitem.connect('toggled', callback)
+                else:
+                    toolitem = gtk.ToolButton()
+                    toolitem.connect('clicked', callback)
                 toolitem.set_icon_widget(
                     common.IconFactory.get_image(
                         item.icon_name, gtk.ICON_SIZE_LARGE_TOOLBAR))
                 toolitem.set_label(item.label)
                 toolitem.set_use_underline(True)
-                toolitem.connect('clicked', callback)
                 self.tooltips.set_tip(toolitem, item.tooltip)
                 self.buttons[item.id] = toolitem
             elif not item and previous:
