@@ -52,6 +52,11 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
                 }, depends=['type']), 'get_size')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('create_date', 'DESC'))
+
+    @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
 

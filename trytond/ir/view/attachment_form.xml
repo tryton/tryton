@@ -6,9 +6,11 @@ this repository contains the full copyright notices and license terms. -->
         <label name="resource"/>
         <field name="resource"/>
         <label name="name"/>
-        <group id="name_data" col="2" colspan="1">
-            <field name="name"/>
-            <field name="data" xexpand="0"/>
+        <group id="name_data" col="1" colspan="1">
+            <field name="data" filename_visible="1"/>
+            <group name="link" string="">
+                <field name="name"/>
+            </group>
         </group>
         <label name="type"/>
         <field name="type"/>
