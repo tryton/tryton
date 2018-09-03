@@ -914,7 +914,7 @@ var Sao = {};
         // {shortcut, label, id of tab button or callback method}
         return [
             {
-                shortcut: 'ctrl+i',
+                shortcut: 'alt+n',
                 label: Sao.i18n.gettext('New'),
                 id: 'new_',
             }, {
@@ -950,7 +950,7 @@ var Sao = {};
                 label: Sao.i18n.gettext('Search'),
                 id: 'search',
             }, {
-                shortcut: 'ctrl+shift+w',
+                shortcut: 'alt+w',
                 label: Sao.i18n.gettext('Close Tab'),
                 id: 'close',
             }, {
@@ -992,7 +992,7 @@ var Sao = {};
                     jQuery('#global-search-entry').focus();
                 },
             }, {
-                shortcut: 'ctrl+h',
+                shortcut: 'f1',
                 label: Sao.i18n.gettext('Show this help'),
                 callback: function() {
                     shortcuts_dialog();
