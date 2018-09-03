@@ -196,7 +196,7 @@ class Main(Gtk.Application):
         self.accel_group = Gtk.AccelGroup()
         self.window.add_accel_group(self.accel_group)
 
-        gtk.accel_map_add_entry('<tryton>/Form/New', gtk.keysyms.I,
+        gtk.accel_map_add_entry('<tryton>/Form/New', gtk.keysyms.N,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Save', gtk.keysyms.S,
                 gtk.gdk.CONTROL_MASK)
@@ -211,7 +211,7 @@ class Main(Gtk.Application):
         gtk.accel_map_add_entry('<tryton>/Form/Switch View', gtk.keysyms.L,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Close', gtk.keysyms.W,
-                gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
+                gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Reload', gtk.keysyms.R,
                 gtk.gdk.CONTROL_MASK)
         gtk.accel_map_add_entry('<tryton>/Form/Attachments', gtk.keysyms.T,
