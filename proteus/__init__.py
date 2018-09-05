@@ -519,11 +519,9 @@ class ModelList(list):
 
     def __check(self, records, on_change=True):
         config = None
-        context = self._get_context()
         for record in records:
             assert isinstance(record, Model)
             assert record.__class__.__name__ == self.model_name
-            assert record._context == context, (record._context, context)
             if self.parent:
                 assert record._config == self.parent._config
             elif self:
@@ -532,14 +530,10 @@ class ModelList(list):
                 assert record._config == config
             else:
                 config = record._config
+            if record._group is not self:
+                assert record._group is None
+                record._group = self
         for record in records:
-            assert record._parent is None
-            assert not record._parent_field_name
-            assert not record._parent_name
-            record._parent = self.parent
-            record._parent_field_name = self.parent_field_name
-            record._parent_name = self.parent_name
-
             # Set parent field to trigger on_change
             if (on_change
                     and self.parent
@@ -571,9 +565,7 @@ class ModelList(list):
 
     def pop(self, index=-1):
         self.record_removed.add(self[index])
-        self[index]._parent = None
-        self[index]._parent_field_name = ''
-        self[index]._parent_name = ''
+        self[index]._group = None
         res = super(ModelList, self).pop(index)
         self._changed()
         return res
@@ -582,9 +574,7 @@ class ModelList(list):
     def remove(self, record, _changed=True):
         if record.id >= 0:
             self.record_deleted.add(record)
-        record._parent = None
-        record._parent_field_name = ''
-        record._parent_name = ''
+        record._group = None
         res = super(ModelList, self).remove(record)
         if _changed:
             self._changed()
@@ -605,15 +595,7 @@ class ModelList(list):
         config = Relation._config
         with config.reset_context(), config.set_context(self._get_context()):
             # Set parent for on_change calls from default_get
-            new_record = Relation(
-                _parent=self.parent,
-                _parent_field_name=self.parent_field_name,
-                _parent_name=self.parent_name,
-                **kwargs)
-        # Remove parent to pass __check test
-        new_record._parent = None
-        new_record._parent_field_name = ''
-        new_record._parent_name = ''
+            new_record = Relation(_group=self, **kwargs)
         self.append(new_record)
         return new_record
 
@@ -674,9 +656,7 @@ class Model(object):
     _config = None
     _fields = None
 
-    def __init__(self, id=None, _default=True,
-            _parent=None, _parent_field_name='', _parent_name='',
-            **kwargs):
+    def __init__(self, id=None, _default=True, _group=None, **kwargs):
         super(Model, self).__init__()
         if id:
             assert not kwargs
@@ -685,12 +665,8 @@ class Model(object):
             Model.__counter -= 1
         self._values = {}  # store the values of fields
         self._changed = set()  # store the changed fields
-        self._parent = _parent  # store the parent record
-        # store the field name in parent record
-        self._parent_field_name = _parent_field_name
-        # store the field name to parent record
-        self._parent_name = _parent_name
-        self._context = self._config.context  # store the context
+        self._group = _group  # store the parent group
+        self.__context = self._config.context  # store the context
         if self.id < 0 and _default:
             self._default_get()
 
@@ -716,6 +692,31 @@ class Model(object):
                         value = relation(value)
                 setattr(self, field_name, value)
     __init__.__doc__ = object.__init__.__doc__
+
+    @property
+    def _parent(self):
+        if self._group is not None:
+            return self._group.parent
+
+    @property
+    def _parent_field_name(self):
+        if self._group is not None:
+            return self._group.parent_field_name
+        return ''
+
+    @property
+    def _parent_name(self):
+        if self._group is not None:
+            return self._group.parent_name
+        return ''
+
+    @property
+    def _context(self):
+        if self._group:
+            context = self._group._get_context()
+        else:
+            context = self.__context
+        return context
 
     @classmethod
     def get(cls, name, config=None):
@@ -943,13 +944,10 @@ class Model(object):
                     Relation = Model.get(definition['relation'], self._config)
                     self._values[field] = records = ModelList(
                         definition, [], self, field)
-                    config = Relation._config
-                    with config.reset_context(), \
-                            config.set_context(records._get_context()):
-                        for vals in (value or []):
-                            record = Relation()
-                            record._default_set(vals)
-                            records.append(record)
+                    for vals in (value or []):
+                        record = Relation()
+                        record._default_set(vals)
+                        records.append(record)
             else:
                 self._values[field] = value
             fieldnames.append(field)
