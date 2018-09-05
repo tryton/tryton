@@ -220,6 +220,12 @@ class GenericText(Cell):
         field.state_set(record, states=states)
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
+        # Sometimes, the treeview with fixed height mode computes a too big
+        # height for not visible cell with text
+        # We can force an empty text because not visible cell can not be edited
+        # and so value_from_text is never called.
+        if invisible:
+            cell.set_property('text', '')
 
         if editable:
             readonly = self.attrs.get('readonly',
