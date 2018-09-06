@@ -425,6 +425,7 @@
                         'binary': 20,
                     }[column.attributes.widget] || 10;
                     column.col.css('width', width * 100 + '%');
+                    column.col.show();
                 }
             }.bind(this));
             this.tbody.find('tr.more-row > td').attr(
