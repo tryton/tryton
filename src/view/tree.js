@@ -437,6 +437,7 @@
                         width = width * 100 + '%';
                     }
                     column.col.css('width', width);
+                    column.col.show();
                 }
             }.bind(this));
             this.tbody.find('tr.more-row > td').attr(
