@@ -1008,7 +1008,7 @@ class TranslationSet(Wizard):
             reports = Report.browse(context.get('active_ids', []))
         elif context.get('active_model', 'ir.ui.menu') == 'ir.ui.menu':
             with Transaction().set_context(active_test=False):
-                reports = Report.search([])
+                reports = Report.search([('translatable', '=', True)])
         else:
             return
 
@@ -1253,6 +1253,7 @@ class TranslationClean(Wizard):
         with Transaction().set_context(active_test=False):
             if not Report.search([
                         ('report_name', '=', translation.name),
+                        ('translatable', '=', True),
                         ]):
                 return True
 

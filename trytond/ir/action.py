@@ -402,6 +402,8 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     direct_print = fields.Boolean('Direct Print')
     single = fields.Boolean("Single",
         help="Check if the template works only for one record.")
+    translatable = fields.Boolean("Translatable",
+        help="Uncheck to disable translations for this report.")
     template_extension = fields.Selection([
             ('odt', 'OpenDocument Text'),
             ('odp', 'OpenDocument Presentation'),
@@ -526,6 +528,10 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def default_single(cls):
         return False
+
+    @classmethod
+    def default_translatable(cls):
+        return True
 
     @staticmethod
     def default_template_extension():

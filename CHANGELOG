@@ -1,3 +1,4 @@
+* Allow non translatable reports
 * Replace hard coded 'state' by '_transition_state' in copy
 * Support dotted notation in copy default
 * Allow callable in copy default
