@@ -9,6 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report_name">account.reporting.aeat111</field>
             <field name="report">account_es/aeat111.txt</field>
             <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
         </record>
         <record model="ir.action-res.group" id="report_aeat_111_group_account">
             <field name="action" ref="report_aeat_111"/>
@@ -24,6 +25,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report_name">account.reporting.aeat115</field>
             <field name="report">account_es/aeat115.txt</field>
             <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
         </record>
         <record model="ir.action-res.group" id="report_aeat_115_group_account">
             <field name="action" ref="report_aeat_115"/>
@@ -39,6 +41,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report_name">account.reporting.aeat303</field>
             <field name="report">account_es/aeat303.txt</field>
             <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
         </record>
         <record model="ir.action-res.group" id="report_aeat_303_group_account">
             <field name="action" ref="report_aeat_303"/>
