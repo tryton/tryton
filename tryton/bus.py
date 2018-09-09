@@ -49,6 +49,8 @@ def _listen(connection):
                     'channels': CHANNELS,
                     }).encode('utf-8'),
             headers=headers)
+        logger.info('poll channels %s with last message %s',
+            CHANNELS, last_message)
         try:
             response = urlopen(request, timeout=bus_timeout)
             wait = 1
@@ -56,7 +58,7 @@ def _listen(connection):
             wait = 1
             continue
         except Exception as error:
-            logger.debug(
+            logger.error(
                 "An exception occured while connecting to the bus."
                 "Sleeping for %s seconds",
                 wait, exc_info=error)
