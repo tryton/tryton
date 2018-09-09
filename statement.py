@@ -1089,7 +1089,8 @@ class ReconcileStatement(Wizard):
         pool = Pool()
         Statement = pool.get('account.statement')
         statements = Statement.browse(Transaction().context['active_ids'])
-        lines = sum((map(int, s.lines_to_reconcile) for s in statements), [])
+        lines = sum(([int(l) for l in s.lines_to_reconcile]
+                for s in statements), [])
         return action, {
             'model': 'account.move.line',
             'ids': lines,
