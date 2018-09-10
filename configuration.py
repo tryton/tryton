@@ -52,7 +52,7 @@ class Configuration(
     get_sale_shipment_methods = get_sale_methods('shipment_method')
     sale_process_after = fields.TimeDelta("Process Sale after",
         help="The grace period during which confirmed sale "
-        "can still be reset to draft..\n"
+        "can still be reset to draft.\n"
         "Applied if a worker queue is activated.")
 
     @classmethod
