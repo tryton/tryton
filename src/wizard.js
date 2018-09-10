@@ -111,14 +111,16 @@
             };
             process.call(this);
         },
-        destroy: function() {
+        destroy: function(action) {
             // TODO
         },
         end: function() {
             return Sao.rpc({
                 'method': 'wizard.' + this.action + '.delete',
                 'params': [this.session_id, this.session.context]
-            }, this.session);
+            }, this.session).then(function(action) {
+                this.destroy(action);
+            }.bind(this));
         },
         clean: function() {
             this.widget.children().remove();
@@ -202,6 +204,20 @@
             }.bind(this));
             return button;
         },
+        destroy: function(action) {
+            Sao.Wizard.Form._super.destroy.call(this, action);
+            switch (action) {
+                case 'reload menu':
+                    Sao.Session.current_session.reload_context()
+                        .then(function() {
+                            Sao.menu();
+                        });
+                    break;
+                case 'reload context':
+                    Sao.Session.current_session.reload_context();
+                    break;
+            }
+        },
         end: function() {
             return Sao.Wizard.Form._super.end.call(this).always(function() {
                 return this.tab.close();
@@ -257,7 +273,7 @@
             }.bind(this));
         },
         destroy: function(action) {
-            Sao.Wizard.Dialog._super.destroy.call(this);
+            Sao.Wizard.Dialog._super.destroy.call(this, action);
             var destroy = function() {
                 this.dialog.remove();
                 var dialog = jQuery('.wizard-dialog').filter(':visible')[0];
@@ -305,10 +321,6 @@
             } else {
                 destroy();
             }
-        },
-        end: function() {
-            return Sao.Wizard.Dialog._super.end.call(this).then(
-                    this.destroy.bind(this));
         },
         show: function() {
             this.dialog.modal('show');
