@@ -1003,6 +1003,12 @@ var Sao = {};
 
     jQuery(document).ready(function() {
         set_shortcuts();
+        try {
+            Notification.requestPermission();
+        } catch (e) {
+            (console.error || console.log).call(console, e, e.stack);
+        }
+        Sao.login();
     });
 
     function set_shortcuts() {

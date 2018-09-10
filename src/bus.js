@@ -59,7 +59,12 @@
 
     Sao.Bus.handle = function(message) {
         var notify = function(message) {
-            if (Notification.permission != "granted") {
+            try {
+                if (Notification.permission != "granted") {
+                    return;
+                }
+            } catch (e) {
+                (console.error || console.log).call(console, e, e.stack);
                 return;
             }
 
