@@ -1610,7 +1610,7 @@ class Reconcile(Wizard):
         defaults['party'] = self.show.party.id if self.show.party else None
         defaults['currency_digits'] = self.show.account.company.currency.digits
         defaults['lines'] = self._default_lines()
-        defaults['write_off'] = Decimal(0)
+        defaults['write_off_amount'] = Decimal(0)
         defaults['date'] = Date.today()
         return defaults
 
@@ -1666,8 +1666,8 @@ class Reconcile(Wizard):
 
         if self.show.lines:
             Line.reconcile(self.show.lines,
-                journal=self.show.journal,
                 date=self.show.date,
+                writeoff=self.show.write_off,
                 description=self.show.description)
         return 'next_'
 
@@ -1690,31 +1690,34 @@ class ReconcileShow(ModelView):
         depends=['account', 'party'])
 
     _write_off_states = {
-        'required': Bool(Eval('write_off', 0)),
-        'invisible': ~Eval('write_off', 0),
+        'required': Bool(Eval('write_off_amount', 0)),
+        'invisible': ~Eval('write_off_amount', 0),
         }
-    _write_off_depends = ['write_off']
+    _write_off_depends = ['write_off_amount']
 
-    write_off = fields.Function(fields.Numeric('Write-Off',
+    write_off_amount = fields.Function(fields.Numeric('Amount',
             digits=(16, Eval('currency_digits', 2)),
             states=_write_off_states,
             depends=_write_off_depends + ['currency_digits']),
-        'on_change_with_write_off')
+        'on_change_with_write_off_amount')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
-    journal = fields.Many2One('account.journal', 'Journal',
-        states=_write_off_states, depends=_write_off_depends,
-        domain=[
-            ('type', '=', 'write-off'),
-            ])
+    write_off = fields.Many2One(
+        'account.move.reconcile.write_off', "Write Off",
+        states=_write_off_states, depends=_write_off_depends)
     date = fields.Date('Date',
         states=_write_off_states, depends=_write_off_depends)
     description = fields.Char('Description',
-        states=_write_off_states, depends=_write_off_depends)
+        states={
+            'invisible': _write_off_states['invisible'],
+            }, depends=_write_off_depends)
 
-    @fields.depends('lines')
-    def on_change_with_write_off(self, name=None):
-        return sum((l.debit - l.credit) for l in self.lines)
+    @fields.depends('lines', 'currency_digits')
+    def on_change_with_write_off_amount(self, name=None):
+        digits = self.currency_digits or 0
+        exp = Decimal(str(10.0 ** -digits))
+        amount = sum(((l.debit - l.credit) for l in self.lines), Decimal(0))
+        return amount.quantize(exp)
 
     @fields.depends('account')
     def on_change_with_currency_digits(self, name=None):

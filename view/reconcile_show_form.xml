@@ -8,12 +8,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party"/>
     <field name="lines" colspan="4"/>
     <separator name="write_off" colspan="4"/>
-    <label name="write_off" string="Amount"/>
-    <field name="write_off"/>
+    <label name="write_off_amount"/>
+    <field name="write_off_amount"/>
     <label name="date"/>
     <field name="date"/>
-    <label name="journal"/>
-    <field name="journal"/>
+    <label name="write_off"/>
+    <field name="write_off"/>
     <newline/>
     <label name="description"/>
     <field name="description" colspan="3"/>
