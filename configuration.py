@@ -23,12 +23,14 @@ class Configuration(
             'account.account', "Default Account Receivable",
             domain=[
                 ('kind', '=', 'receivable'),
+                ('party_required', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ]))
     default_account_payable = fields.MultiValue(fields.Many2One(
             'account.account', "Default Account Payable",
             domain=[
                 ('kind', '=', 'payable'),
+                ('party_required', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ]))
     tax_rounding = fields.MultiValue(fields.Selection(
@@ -53,6 +55,7 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
         'account.account', "Default Account Receivable",
         domain=[
             ('kind', '=', 'receivable'),
+            ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
@@ -60,6 +63,7 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
         'account.account', "Default Account Payable",
         domain=[
             ('kind', '=', 'payable'),
+            ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])

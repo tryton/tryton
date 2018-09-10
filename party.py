@@ -29,6 +29,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             'account.account', "Account Payable",
             domain=[
                 ('kind', '=', 'payable'),
+                ('party_required', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -38,6 +39,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             'account.account', "Account Receivable",
             domain=[
                 ('kind', '=', 'receivable'),
+                ('party_required', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -254,6 +256,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
         'account.account', "Account Payable",
         domain=[
             ('kind', '=', 'payable'),
+            ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
@@ -261,6 +264,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
         'account.account', "Account Receivable",
         domain=[
             ('kind', '=', 'receivable'),
+            ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])

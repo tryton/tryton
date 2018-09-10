@@ -1,3 +1,4 @@
+* Set party required on account payable and receivable of party
 * Add writeoff method
 * Remove default account from journal
 * Add replacement account
