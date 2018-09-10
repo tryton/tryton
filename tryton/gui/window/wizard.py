@@ -15,7 +15,7 @@ from tryton.gui import Main
 from tryton.exceptions import TrytonServerError
 from tryton.gui.window.nomodal import NoModal
 from tryton.common.button import Button
-from tryton.common import RPCExecute, RPCException
+from tryton.common import RPCExecute, RPCException, RPCContextReload
 from tryton.common import TRYTON_ICON
 from .infobar import InfoBar
 
@@ -143,14 +143,18 @@ class Wizard(InfoBar):
         RPCExecute('wizard', self.action, 'execute', self.session_id, data,
             self.state, context=ctx, callback=callback)
 
-    def destroy(self):
+    def destroy(self, action=None):
         if self.screen:
             self.screen.destroy()
 
     def end(self, callback=None):
+        def end_callback(action):
+            self.destroy(action=action())
+            if callback:
+                callback()
         try:
             RPCExecute('wizard', self.action, 'delete', self.session_id,
-                process_exception=False, callback=callback)
+                process_exception=False, callback=end_callback)
         except Exception:
             logger.warn(
                 _("Unable to delete wizard %s") % self.session_id,
@@ -287,11 +291,15 @@ class WizardForm(Wizard, SignalEvent):
             self.states[self.end_state].clicked()
         return self.state == self.end_state
 
-    def destroy(self):
+    def destroy(self, action=None):
         if self.toolbar_box.get_children():
             toolbar = self.toolbar_box.get_children()[0]
             self.toolbar_box.remove(toolbar)
-        super(WizardForm, self).destroy()
+        super(WizardForm, self).destroy(action=action)
+        if action == 'reload menu':
+            RPCContextReload(Main().sig_win_menu)
+        elif action == 'reload context':
+            RPCContextReload()
 
     def end(self, callback=None):
         super(WizardForm, self).end(callback=callback)
@@ -357,7 +365,7 @@ class WizardDialog(Wizard, NoModal):
         self.show()
 
     def destroy(self, action=None):
-        super(WizardDialog, self).destroy()
+        super(WizardDialog, self).destroy(action=action)
         self.dia.destroy()
         NoModal.destroy(self)
         main = Main()
@@ -384,13 +392,6 @@ class WizardDialog(Wizard, NoModal):
                 screen.reload(ids, written=True)
             if action:
                 screen.client_action(action)
-
-    def end(self, callback=None):
-        def end_callback(action):
-            self.destroy(action=action())
-            if callback:
-                callback()
-        super(WizardDialog, self).end(callback=end_callback)
 
     def close(self, widget, event=None):
         widget.emit_stop_by_name('close')
