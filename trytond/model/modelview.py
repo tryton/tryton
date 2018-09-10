@@ -170,8 +170,7 @@ class ModelView(Model):
             meth_done = set()
             while meth_names:
                 meth_name = meth_names.pop()
-                assert isinstance(
-                    getattr(cls, meth_name), collections.Callable), \
+                assert callable(getattr(cls, meth_name)), \
                     "%s.%s not callable" % (cls, meth_name)
                 setattr(field, attribute,
                     getattr(field, attribute) | methods['depends'][meth_name])

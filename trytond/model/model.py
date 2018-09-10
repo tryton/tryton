@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 
 import copy
-import collections
 from functools import total_ordering
 
 from trytond.model import fields
@@ -77,7 +76,7 @@ class Model(WarningErrorMixin, URLMixin, PoolBase, metaclass=ModelMeta):
         fields_names = list(cls._fields.keys())
         for field_name in fields_names:
             default_method = getattr(cls, 'default_%s' % field_name, False)
-            if isinstance(default_method, collections.Callable):
+            if callable(default_method):
                 cls._defaults[field_name] = default_method
 
         for k in cls._defaults:
