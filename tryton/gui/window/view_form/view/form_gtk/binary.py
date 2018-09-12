@@ -93,6 +93,8 @@ class BinaryMixin(Widget):
             data = self.field.get_data(self.record)
         else:
             data = self.field.get(self.record)
+        if isinstance(data, str):
+            data = data.encode('utf-8')
         return data
 
     def open_(self, widget=None):

@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import os
-import tempfile
 import gtk
 import gettext
 import webbrowser
@@ -12,7 +11,7 @@ from functools import wraps, partial
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
 from tryton.gui.window.view_form.screen import Screen
-from tryton.common import file_selection, file_open, slugify
+from tryton.common import file_selection, file_open, file_write
 import tryton.common as common
 from tryton.common.cellrendererbutton import CellRendererButton
 from tryton.common.cellrenderertext import CellRendererText, \
@@ -474,23 +473,12 @@ class Binary(GenericText):
     def open_binary(self, renderer, path):
         if not self.filename:
             return
-        dtemp = tempfile.mkdtemp(prefix='tryton_')
         record, field = self._get_record_field(path)
         filename_field = record.group.fields.get(self.filename)
         filename = filename_field.get(record)
         if not filename:
             return
-        root, ext = os.path.splitext(filename)
-        filename = ''.join([slugify(root), os.extsep, slugify(ext)])
-        file_path = os.path.join(dtemp, filename)
-        with open(file_path, 'wb') as fp:
-            if hasattr(field, 'get_data'):
-                data = field.get_data(record)
-            else:
-                data = field.get(record)
-            if isinstance(data, str):
-                data = data.encode('utf-8')
-            fp.write(data)
+        file_path = file_write(filename, self.get_data(record, field))
         root, type_ = os.path.splitext(filename)
         if type_:
             type_ = type_[1:]
@@ -506,10 +494,16 @@ class Binary(GenericText):
             action=gtk.FILE_CHOOSER_ACTION_SAVE)
         if filename:
             with open(filename, 'wb') as fp:
-                if hasattr(field, 'get_data'):
-                    fp.write(field.get_data(record))
-                else:
-                    fp.write(field.get(record))
+                fp.write(self.get_data(record, field))
+
+    def get_data(self, record, field):
+        if hasattr(field, 'get_data'):
+            data = field.get_data(record)
+        else:
+            data = field.get(record)
+        if isinstance(data, str):
+            data = data.encode('utf-8')
+        return data
 
     def clear_binary(self, renderer, path):
         record, field = self._get_record_field(path)
