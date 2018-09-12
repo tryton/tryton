@@ -281,6 +281,8 @@ class Statement(Workflow, ModelSQL, ModelView):
         line_offset = 0
         for index, line in enumerate(self.lines or []):
             if getattr(line, 'invoice', None) and line.id:
+                if line.invoice.id not in invoice_id2amount_to_pay:
+                    continue
                 amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
                 if (amount_to_pay
                         and getattr(line, 'amount', None)
