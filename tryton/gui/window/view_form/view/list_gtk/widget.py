@@ -222,7 +222,7 @@ class GenericText(Cell):
         # height for not visible cell with text
         # We can force an empty text because not visible cell can not be edited
         # and so value_from_text is never called.
-        if invisible:
+        if invisible and not isinstance(cell, CellRendererToggle):
             cell.set_property('text', '')
 
         if editable:
