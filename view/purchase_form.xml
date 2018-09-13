@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
                     <button name="cancel" icon="tryton-cancel"/>
                     <button name="draft"/>
                     <button name="modify_header" icon="tryton-launch"/>
-                    <button name="quote" icon="tryton-back"/>
+                    <button name="quote" icon="tryton-forward"/>
                     <button name="handle_invoice_exception" icon="tryton-forward"/>
                     <button name="handle_shipment_exception" icon="tryton-forward"/>
                     <button name="confirm" icon="tryton-ok"/>
