@@ -879,11 +879,11 @@
                 }).append(jQuery('<span/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
-                td.on('click keypress', {'index': i}, function() {
+                td.on('click keypress', {'index': i}, function(event_) {
                     if (this.expander && !this.is_expanded()) {
                         this.toggle_row();
                     }
-                    this.select_column();
+                    this.select_column(event_.data.index);
                 }.bind(this));
                 if (!this.tree.editable) {
                     td.dblclick(this.switch_row.bind(this));
@@ -1111,7 +1111,7 @@
             }
             this.tree.switch_(this.path);
         },
-        select_column: function(event_) {
+        select_column: function(index) {
         },
         select_row: function(event_) {
             if (this.tree.selection_mode == Sao.common.SELECTION_NONE) {
@@ -1237,8 +1237,8 @@
                 }
             }
         },
-        select_column: function(event_) {
-            this.edited_column = event_.data.index;
+        select_column: function(index) {
+            this.edited_column = index;
         },
         select_row: function(event_) {
             var body, listener;
