@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.model import Workflow, ModelView, fields
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, Id
+from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateTransition
 
 __all__ = ['PackageType', 'Package', 'ShipmentOut', 'CreateShipping']
@@ -136,6 +137,23 @@ class ShipmentOut(metaclass=PoolMeta):
                 'shipment_without_carrier': ('The shipment "%(shipment)s"'
                     ' does not have a carrier set'),
                 })
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        model_data = ModelData.__table__()
+        cursor = Transaction().connection.cursor()
+        super(ShipmentOut, cls).__register__(module)
+
+        # Migration from 4.6: rename create_shipping xml id
+        if module == 'stock_package_shipping':
+            cursor.execute(*model_data.update(
+                    [model_data.fs_id],
+                    ['shipment_out_create_shipping_button'],
+                    where=(model_data.module == module)
+                    & (model_data.model == 'ir.model.button')
+                    & (model_data.fs_id == 'create_shipping_button')))
 
     @classmethod
     def search_rec_name(cls, name, clause):
