@@ -643,12 +643,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
                 db_field = self._clean_value(key, record)
 
-                # if the fs value is the same has in the db, whe ignore it
-                val = values[key]
-                if isinstance(values[key], bytes):
-                    # Fix for migration to unicode
-                    val = values[key].decode('utf-8')
-                if db_field == val:
+                # if the fs value is the same as in the db, we ignore it
+                if db_field == values[key]:
                     continue
 
                 # we cannot update a field if it was changed by a user...
@@ -657,13 +653,6 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                         lambda *a: None)()
                 else:
                     expected_value = old_values[key]
-
-                # Migration from 2.0: Reference field change value
-                field_type = Model._fields[key]._type
-                if field_type == 'reference':
-                    if (expected_value and expected_value.endswith(',0')
-                            and not db_field):
-                        db_field = expected_value
 
                 # ... and we consider that there is an update if the
                 # expected value differs from the actual value, _and_
