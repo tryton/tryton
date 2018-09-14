@@ -99,15 +99,44 @@ Create some moves::
     >>> move.post_number = '1'
     >>> move.click('post')
 
-Generate FEC::
+Balance non-deferral::
 
-    >>> deferral_journal = Journal(name="Deferral", type='situation')
-    >>> deferral_journal.sequence = journal_cash.sequence
-    >>> deferral_journal.save()
+    >>> Sequence = Model.get('ir.sequence')
+    >>> Period = Model.get('account.period')
+    >>> Account = Model.get('account.account')
+
+    >>> journal_closing = Journal(name="Closing", code="CLO", type='situation')
+    >>> journal_closing.sequence, = Sequence.find([
+    ...         ('code', '=', 'account.journal'),
+    ...         ])
+    >>> journal_closing.save()
+
+    >>> period_closing = Period(name="Closing")
+    >>> period_closing.fiscalyear = fiscalyear
+    >>> period_closing.start_date = fiscalyear.end_date
+    >>> period_closing.end_date = fiscalyear.end_date
+    >>> period_closing.type = 'adjustment'
+    >>> period_closing.save()
+
+    >>> balance_non_deferral = Wizard('account.fiscalyear.balance_non_deferral')
+    >>> balance_non_deferral.form.fiscalyear = fiscalyear
+    >>> balance_non_deferral.form.journal = journal_closing
+    >>> balance_non_deferral.form.period = period_closing
+    >>> balance_non_deferral.form.credit_account, = Account.find([
+    ...         ('code', '=', '120'),
+    ...         ])
+    >>> balance_non_deferral.form.debit_account, = Account.find([
+    ...         ('code', '=', '129'),
+    ...         ])
+    >>> balance_non_deferral.execute('balance')
+    >>> move_line = balance_non_deferral.actions[0][0]
+    >>> move_line.move.click('post')
+
+Generate FEC::
 
     >>> FEC = Wizard('account.fr.fec')
     >>> FEC.form.fiscalyear = fiscalyear
-    >>> FEC.form.deferral_journal = deferral_journal
+    >>> FEC.form.deferral_period = period_closing
     >>> FEC.execute('generate')
     >>> FEC.form.filename
     >>> file = os.path.join(os.path.dirname(__file__), 'FEC.csv')

@@ -7,10 +7,17 @@ from sql import Table
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond.config import config
 from trytond.pool import PoolMeta, Pool
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.model import ModelView, ModelStorage, fields
+
+OPENING_CODE = config.get('account_fr', 'fec_opening_code', default="OUV")
+OPENING_NAME = config.get(
+    'account_fr', 'fec_opening_name', default="Balance Initiale")
+OPENING_NUMBER = config.get('account_fr', 'fec_opening_number', default="0")
 
 
 __all__ = ['TaxTemplate', 'TaxRuleTemplate',
@@ -227,10 +234,9 @@ class AccountFrFEC(Wizard):
             else:
                 debit, credit = 0, balance
             yield [
-                self.start.deferral_journal.code
-                or self.start.deferral_journal.name,
-                self.start.deferral_journal.name,
-                self.start.deferral_post_number,
+                OPENING_CODE,
+                OPENING_NAME,
+                OPENING_NUMBER,
                 format_date(self.start.fiscalyear.start_date),
                 code,
                 name,
@@ -252,10 +258,14 @@ class AccountFrFEC(Wizard):
         pool = Pool()
         Line = pool.get('account.move.line')
 
-        return Line.search([
-                ('move.period.fiscalyear', '=', self.start.fiscalyear.id),
-                ('move.state', '=', 'posted'),
-                ],
+        domain = [
+            ('move.period.fiscalyear', '=', self.start.fiscalyear.id),
+            ('move.state', '=', 'posted'),
+            ]
+        if self.start.deferral_period:
+            domain.append(('move.period', '!=', self.start.deferral_period.id))
+        return Line.search(
+            domain,
             order=[
                 ('move.post_number', 'ASC'),
                 ])
@@ -326,19 +336,19 @@ class AccountFrFECStart(ModelView):
     type = fields.Selection([
             ('is-bic', 'IS-BIC'),
             ], 'Type', required=True)
-    deferral_journal = fields.Many2One('account.journal',
-        'Deferral Journal', required=True,
-        help='Journal used for pseudo deferral move')
-    deferral_post_number = fields.Char('Deferral Number', required=True,
-        help='Post number used for pseudo deferral move')
+    deferral_period = fields.Many2One(
+        'account.period', "Deferral Period", required=True,
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('type', '=', 'adjustment'),
+            ],
+        depends=['fiscalyear'],
+        help="The period to exclude which contains "
+        "the moves to balance non-deferral account")
 
     @classmethod
     def default_type(cls):
         return 'is-bic'
-
-    @classmethod
-    def default_deferral_post_number(cls):
-        return '0'
 
 
 class AccountFrFECResult(ModelView):

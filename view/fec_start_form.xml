@@ -6,8 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="fiscalyear"/>
     <label name="type"/>
     <field name="type"/>
-    <label name="deferral_journal"/>
-    <field name="deferral_journal"/>
-    <label name="deferral_post_number"/>
-    <field name="deferral_post_number"/>
+    <label name="deferral_period"/>
+    <field name="deferral_period"/>
 </form>
