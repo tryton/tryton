@@ -865,8 +865,8 @@ class Line(
         Reconciliation = pool.get('account.move.reconciliation')
 
         reconciliations = [l.reconciliation
-            for line in lines for l in line.move.lines
-            if line.move and l.reconciliation]
+            for line in lines if line.move
+            for l in line.move.lines if l.reconciliation]
         Reconciliation.delete(reconciliations)
         Move.delete(list({l.move for l in lines if l.move}))
 
