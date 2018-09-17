@@ -515,7 +515,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 for move in moves:
                     date = (move.effective_date if move.effective_date
                         else move.planned_date)
-                    if date and date < period.date:
+                    if date and date <= period.date:
                         cls.raise_user_error('period_closed', {
                                 'move': move.rec_name,
                                 'period': period.rec_name,
@@ -1039,7 +1039,7 @@ class Move(Workflow, ModelSQL, ModelView):
                     context.get('stock_assign'))
         elif PeriodCache:
             periods = Period.search([
-                    ('date', '<', context['stock_date_end']),
+                    ('date', '<=', context['stock_date_end']),
                     ('state', '=', 'closed'),
                     ], order=[('date', 'DESC')], limit=1)
             if periods:
