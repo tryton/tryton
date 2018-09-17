@@ -261,6 +261,7 @@ class AccountFrFEC(Wizard):
         domain = [
             ('move.period.fiscalyear', '=', self.start.fiscalyear.id),
             ('move.state', '=', 'posted'),
+            ['OR', ('debit', '!=', 0), ('credit', '!=', 0)],
             ]
         if self.start.deferral_period:
             domain.append(('move.period', '!=', self.start.deferral_period.id))

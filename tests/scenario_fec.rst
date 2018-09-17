@@ -84,6 +84,8 @@ Create some moves::
     >>> move.post_number = '1'
     >>> move.click('post')
 
+With an empty line::
+
     >>> move = Move()
     >>> move.period = period
     >>> move.journal = journal_revenue
@@ -95,6 +97,9 @@ Create some moves::
     >>> line.account = receivable
     >>> line.debit = Decimal(10)
     >>> line.party = party
+    >>> line = move.lines.new()
+    >>> line.account = cash
+    >>> line.debit = line.credit = Decimal(0)
     >>> move.post_date = period.start_date
     >>> move.post_number = '1'
     >>> move.click('post')
