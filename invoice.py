@@ -2611,6 +2611,8 @@ class PayInvoice(Wizard):
         with Transaction().set_context(date=self.start.date):
             amount = Currency.compute(self.start.currency,
                 self.start.amount, invoice.company.currency)
+            amount_invoice = Currency.compute(
+                self.start.currency, self.start.amount, invoice.currency)
 
         reconcile_lines, remainder = \
             self.get_reconcile_lines_for_amount(invoice, amount)
@@ -2621,7 +2623,7 @@ class PayInvoice(Wizard):
             amount_second_currency = self.start.amount
             second_currency = self.start.currency
 
-        if (abs(amount) > abs(invoice.amount_to_pay)
+        if (amount_invoice > invoice.amount_to_pay
                 and self.ask.type != 'writeoff'):
             self.raise_user_error('amount_greater_amount_to_pay',
                 (invoice.rec_name,))
