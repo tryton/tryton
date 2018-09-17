@@ -708,7 +708,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 with Transaction().set_context(date=invoice.currency_date):
                     amount_currency += Currency.compute(
                         invoice.company.currency, amount, invoice.currency)
-            if invoice.type == 'in':
+            if invoice.type == 'in' and amount_currency:
                 amount_currency *= -1
             res[invoice.id] = amount_currency
         return res
