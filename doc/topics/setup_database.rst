@@ -50,4 +50,4 @@ When installing new modules, the list of modules must be updated with::
 
 Once updated, the new modules can be activated from the client or activated with::
 
-    trytond-admin -c <config file> -d <database name> -u <module name> --install-dependencies
+    trytond-admin -c <config file> -d <database name> -u <module name> --activate-dependencies
