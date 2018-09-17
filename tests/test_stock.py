@@ -819,6 +819,7 @@ class StockTestCase(ModuleTestCase):
                 ({'stock_date_end': today + relativedelta(days=-4)}, 25),
                 ({'stock_date_end': today + relativedelta(days=-3)}, 20),
                 ({'stock_date_end': today + relativedelta(days=-2)}, 20),
+                ({'stock_date_end': today + relativedelta(days=-1)}, 20),
                 ({'stock_date_end': today}, 20),
                 ({'stock_date_end': datetime.date.max}, 23),
                 ]
@@ -873,6 +874,18 @@ class StockTestCase(ModuleTestCase):
                         'to_location': storage.id,
                         'planned_date': today + relativedelta(days=-5),
                         'effective_date': today + relativedelta(days=-5),
+                        'company': company.id,
+                        'unit_price': Decimal('1'),
+                        'currency': currency.id,
+                        }])
+            self.assertRaises(Exception, Move.create, [{
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 10,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'planned_date': today + relativedelta(days=-3),
+                        'effective_date': today + relativedelta(days=-3),
                         'company': company.id,
                         'unit_price': Decimal('1'),
                         'currency': currency.id,
