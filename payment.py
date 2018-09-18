@@ -550,7 +550,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             return 'RCUR'
 
     @classmethod
-    def has_payments(self, mandates, name):
+    def has_payments(cls, mandates, name):
         pool = Pool()
         Payment = pool.get('account.payment')
         payment = Payment.__table__
