@@ -671,13 +671,10 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
             if self.grouped:
                 self.grouped_write[(module, model)].extend(
-                    (record, to_update, old_values, fs_id, mdata_id))
+                    (record, to_update, old_values, values, fs_id, mdata_id))
             else:
-                self.write_records(module, model, record, to_update,
-                    old_values, fs_id, mdata_id)
-            self.grouped_model_data.extend(([self.ModelData(mdata_id)], {
-                        'fs_values': self.ModelData.dump_values(values),
-                        }))
+                self.write_records(module, model,
+                    record, to_update, old_values, values, fs_id, mdata_id)
         else:
             if self.grouped:
                 self.grouped_creations[model][fs_id] = values
@@ -719,13 +716,13 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             [r.id for r in records])
 
     def write_records(self, module, model,
-            record, values, old_values, fs_id, mdata_id, *args):
-        args = (record, values, old_values, fs_id, mdata_id) + args
+            record, values, old_values, new_values, fs_id, mdata_id, *args):
+        args = (record, values, old_values, new_values, fs_id, mdata_id) + args
         Model = self.pool.get(model)
 
         actions = iter(args)
         to_update = []
-        for record, values, _, _, _ in zip(*((actions,) * 5)):
+        for record, values, _, _, _, _ in zip(*((actions,) * 6)):
             if values:
                 to_update += [[record], values]
         # if there is values to update:
@@ -750,11 +747,13 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 values[key] = self._clean_value(key, record)
 
         actions = iter(args)
-        for record, values, old_values, fs_id, mdata_id in zip(
-                *((actions,) * 5)):
+        for record, values, old_values, new_values, fs_id, mdata_id in zip(
+                *((actions,) * 6)):
             temp_values = old_values.copy()
             temp_values.update(values)
             values = temp_values
+            fs_values = old_values.copy()
+            fs_values.update(new_values)
 
             if values != old_values:
                 self.grouped_model_data.extend(([self.ModelData(mdata_id)], {
@@ -763,10 +762,11 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                             'module': module,
                             'db_id': record.id,
                             'values': self.ModelData.dump_values(values),
+                            'fs_values': self.ModelData.dump_values(fs_values),
                             }))
 
         # reset_browsercord to keep cache memory low
-        self.fs2db.reset_browsercord(module, Model.__name__, args[::5])
+        self.fs2db.reset_browsercord(module, Model.__name__, args[::6])
 
 
 def post_import(pool, module, to_delete):
