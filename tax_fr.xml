@@ -42,7 +42,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 20%</field>
             <field name="description">T.V.A. 20%</field>
             <field name="parent" ref="tva_vente_biens_taux_normal"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.20')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -54,7 +54,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_vente_biens_taux_normal"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -77,7 +77,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services 20%</field>
             <field name="description">T.V.A. 20%</field>
             <field name="parent" ref="tva_vente_services_taux_normal"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.20')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -89,7 +89,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_vente_services_taux_normal"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -112,7 +112,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 10%</field>
             <field name="description">T.V.A. 10%</field>
             <field name="parent" ref="tva_vente_biens_taux_intermediaire"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.10')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -124,7 +124,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de biens 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="parent" ref="tva_vente_biens_taux_intermediaire"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -147,7 +147,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services 10%</field>
             <field name="description">T.V.A. 10%</field>
             <field name="parent" ref="tva_vente_services_taux_intermediaire"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.10')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -159,7 +159,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Vente de services 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="parent" ref="tva_vente_services_taux_intermediaire"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44571"/>
@@ -292,7 +292,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens 20%</field>
             <field name="description">T.V.A. 20%</field>
             <field name="parent" ref="tva_achat_biens_taux_normal"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.20')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -304,7 +304,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_achat_biens_taux_normal"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -327,7 +327,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services 20%</field>
             <field name="description">T.V.A. 20%</field>
             <field name="parent" ref="tva_achat_services_taux_normal"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.20')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -339,7 +339,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_achat_services_taux_normal"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -362,7 +362,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens 10%</field>
             <field name="description">T.V.A. 10%</field>
             <field name="parent" ref="tva_achat_biens_taux_intermediaire"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.10')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -374,7 +374,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de biens 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="parent" ref="tva_achat_biens_taux_intermediaire"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -397,7 +397,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services 10%</field>
             <field name="description">T.V.A. 10%</field>
             <field name="parent" ref="tva_achat_services_taux_intermediaire"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.10')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -409,7 +409,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat de services 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="parent" ref="tva_achat_services_taux_intermediaire"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44566"/>
@@ -499,7 +499,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Immobilisations 20%</field>
             <field name="description">T.V.A. 20%</field>
             <field name="parent" ref="tva_achat_immobilisations_taux_normal"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.20')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44562"/>
@@ -511,7 +511,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Immobilisations 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_achat_immobilisations_taux_normal"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.196')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44562"/>
@@ -536,7 +536,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="description">T.V.A. 10%</field>
         <field name="parent"
             ref="tva_achat_immobilisations_taux_intermediaire"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="rate" eval="Decimal('.10')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44562"/>
@@ -549,7 +549,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="description">T.V.A. 7%</field>
         <field name="parent"
             ref="tva_achat_immobilisations_taux_intermediaire"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="rate" eval="Decimal('.07')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="44562"/>
@@ -585,7 +585,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire de biens 20%</field>
             <field name="description">T.V.A. 20%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_normal"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
@@ -617,7 +617,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire de biens 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_normal"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
@@ -658,7 +658,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire de biens 10%</field>
             <field name="description">T.V.A. 10%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_intermediaire"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
@@ -688,7 +688,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat intracommunautaire de biens 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_biens_taux_intermediaire"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="group" ref="group_tva_achat_biens"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
@@ -815,7 +815,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire de services 20%</field>
             <field name="description">T.V.A. 20%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_services_taux_normal"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="group" ref="group_tva_achat_services"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
@@ -847,7 +847,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire de services 19,6%</field>
             <field name="description">T.V.A. 19,6%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_services_taux_normal"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="group" ref="group_tva_achat_services"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
@@ -888,7 +888,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat Intracommunautaire de services 10%</field>
             <field name="description">T.V.A. 10%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_services_taux_intermediaire"/>
-            <field name="start_date">2014-01-01</field>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
             <field name="group" ref="group_tva_achat_services"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
@@ -918,7 +918,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">T.V.A. Achat intracommunautaire de services 7%</field>
             <field name="description">T.V.A. 7%</field>
             <field name="parent" ref="tva_achat_intracommunautaire_services_taux_intermediaire"/>
-            <field name="end_date">2013-12-31</field>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
             <field name="group" ref="group_tva_achat_services"/>
             <field name="type">none</field>
             <field name="account" ref="root"/>
