@@ -1052,6 +1052,13 @@
         },
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
+            if (!expr) {
+                return;
+            } else if (expr == '[]') {
+                return [];
+            } else if (expr == '{}') {
+                return {};
+            }
             var ctx = jQuery.extend({}, this.model.session.context);
             ctx.context = jQuery.extend({}, ctx);
             jQuery.extend(ctx.context, this.get_context());
