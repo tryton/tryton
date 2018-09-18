@@ -1109,6 +1109,13 @@
         },
         expr_eval: function(expr) {
             if (typeof(expr) != 'string') return expr;
+            if (!expr) {
+                return;
+            } else if (expr == '[]') {
+                return [];
+            } else if (expr == '{}') {
+                return {};
+            }
             var ctx = this.get_eval();
             ctx.context = this.get_context();
             ctx.active_model = this.model.name;
