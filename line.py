@@ -294,7 +294,7 @@ class HoursEmployeeWeekly(ModelSQL, ModelView):
         return '%02i' % int(self.week_internal)
 
     @classmethod
-    def search_week(self, name, domain):
+    def search_week(cls, name, domain):
         return [('week_internal',) + tuple(domain[1:])]
 
     @classmethod
@@ -348,7 +348,7 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
         return '%02i' % int(self.month_internal)
 
     @classmethod
-    def search_month(self, name, domain):
+    def search_month(cls, name, domain):
         return [('month_internal',) + tuple(domain[1:])]
 
     @classmethod
