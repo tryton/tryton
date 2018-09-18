@@ -604,7 +604,7 @@ class Production(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button_action('production.wizard_assign')
-    def assign_wizard(self, productions):
+    def assign_wizard(cls, productions):
         pass
 
     @classmethod
