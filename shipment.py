@@ -1233,7 +1233,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         return self.planned_date, self.planned_date
 
     @classmethod
-    def _set_move_planned_date(self, shipments):
+    def _set_move_planned_date(cls, shipments):
         '''
         Set planned date of moves for the shipments
         '''

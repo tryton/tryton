@@ -274,7 +274,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         return 'storage'
 
     @classmethod
-    def check_xml_record(self, records, values):
+    def check_xml_record(cls, records, values):
         return True
 
     def get_warehouse(self, name):
