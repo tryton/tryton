@@ -1023,11 +1023,11 @@ class Login(object):
                 return
 
     @classmethod
-    def get_char(self, message):
+    def get_char(cls, message):
         return ask(message)
 
     @classmethod
-    def get_password(self, message):
+    def get_password(cls, message):
         return ask(message, visibility=False)
 
 
