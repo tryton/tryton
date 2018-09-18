@@ -244,7 +244,7 @@ class Rate(ModelSQL, ModelView):
         return Date.today()
 
     @classmethod
-    def check_xml_record(self, records, values):
+    def check_xml_record(cls, records, values):
         return True
 
     def get_rec_name(self, name):
