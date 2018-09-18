@@ -490,6 +490,12 @@ class Record(SignalEvent):
     def expr_eval(self, expr):
         if not isinstance(expr, basestring):
             return expr
+        if not expr:
+            return
+        elif expr == '[]':
+            return []
+        elif expr == '{}':
+            return {}
         ctx = rpc.CONTEXT.copy()
         ctx['context'] = ctx.copy()
         ctx['context'].update(self.context_get())
