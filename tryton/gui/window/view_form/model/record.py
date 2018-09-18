@@ -522,6 +522,12 @@ class Record(SignalEvent):
     def expr_eval(self, expr):
         if not isinstance(expr, str):
             return expr
+        if not expr:
+            return
+        elif expr == '[]':
+            return []
+        elif expr == '{}':
+            return {}
         ctx = self.get_eval()
         ctx['context'] = self.get_context()
         ctx['active_model'] = self.model_name
