@@ -195,13 +195,13 @@ class Forecast(Workflow, ModelSQL, ModelView):
                     })
 
     @classmethod
-    def delete(self, forecasts):
+    def delete(cls, forecasts):
         # Cancel before delete
-        self.cancel(forecasts)
+        cls.cancel(forecasts)
         for forecast in forecasts:
             if forecast.state != 'cancel':
-                self.raise_user_error('delete_cancel', forecast.rec_name)
-        super(Forecast, self).delete(forecasts)
+                cls.raise_user_error('delete_cancel', forecast.rec_name)
+        super(Forecast, cls).delete(forecasts)
 
     @classmethod
     @ModelView.button
