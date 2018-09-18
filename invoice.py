@@ -471,10 +471,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return Config.get_language()
 
     @classmethod
-    def get_type_name(self, invoices, name):
+    def get_type_name(cls, invoices, name):
         type_names = {}
         type2name = {}
-        for type, name in self.fields_get(fields_names=['type']
+        for type, name in cls.fields_get(fields_names=['type']
                 )['type']['selection']:
             type2name[type] = name
         for invoice in invoices:
