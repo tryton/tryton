@@ -27,5 +27,5 @@ class Service(ModelSQL, ModelView):
         return self.product.rec_name
 
     @classmethod
-    def search_rec_name(self, name, clause):
+    def search_rec_name(cls, name, clause):
         return [('product.rec_name',) + tuple(clause[1:])]
