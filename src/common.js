@@ -2646,6 +2646,9 @@
             return window.URL.createObjectURL(blob);
         },
         get_icon_url: function(icon_name) {
+            if (!icon_name) {
+                return;
+            }
             return this.register_icon(icon_name).then(function() {
                 if (icon_name in this.loaded_icons) {
                     return this.loaded_icons[icon_name];
@@ -2665,9 +2668,11 @@
                 attrs['class'] = 'icon';
             }
             var img = jQuery('<img/>', attrs);
-            this.get_icon_url(icon_name).then(function(url) {
-                img.attr('src', url);
-            });
+            if (icon_name) {
+                this.get_icon_url(icon_name).then(function(url) {
+                    img.attr('src', url);
+                });
+            }
             return img;
         },
     });
