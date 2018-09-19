@@ -671,25 +671,10 @@ class ViewTree(View):
         for clipboard_type in (gtk.gdk.SELECTION_CLIPBOARD,
                 gtk.gdk.SELECTION_PRIMARY):
             clipboard = self.treeview.get_clipboard(clipboard_type)
-            targets = [
-                ('STRING', 0, 0),
-                ('TEXT', 0, 1),
-                ('COMPOUND_TEXT', 0, 2),
-                ('UTF8_STRING', 0, 3)
-            ]
             selection = self.treeview.get_selection()
-            # Set to clipboard directly if not too much selected rows
-            # to speed up paste
-            # Don't use set_with_data on mac see:
-            # http://bugzilla.gnome.org/show_bug.cgi?id=508601
-            if selection.count_selected_rows() < 100 \
-                    or sys.platform == 'darwin':
-                data = []
-                selection.selected_foreach(self.copy_foreach, data)
-                clipboard.set_text('\n'.join(data), -1)
-            else:
-                clipboard.set_with_data(targets, self.copy_get_func,
-                        self.copy_clear_func, selection)
+            data = []
+            selection.selected_foreach(self.copy_foreach, data)
+            clipboard.set_text('\n'.join(data), -1)
 
     def copy_foreach(self, treemodel, path, iter, data):
         record = treemodel.get_value(iter, 0)
@@ -702,17 +687,6 @@ class ViewTree(View):
                 + str(widget.get_textual_value(record)).replace('"', '""')
                 + '"')
         data.append('\t'.join(values))
-        return
-
-    def copy_get_func(self, clipboard, selectiondata, info, selection):
-        data = []
-        selection.selected_foreach(self.copy_foreach, data)
-        clipboard.set_text('\n'.join(data), -1)
-        del data
-        return
-
-    def copy_clear_func(self, clipboard, selection):
-        del selection
         return
 
     def on_paste(self):
