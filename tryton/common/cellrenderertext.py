@@ -6,10 +6,12 @@ import gobject
 
 class CellRendererText(gtk.CellRendererText):
 
-    def do_start_editing(self, event, widget, path, background_area,
-            cell_area, flags):
-        return gtk.CellRendererText.do_start_editing(self, event, widget,
-            path, background_area, cell_area, flags)
+    def __init__(self):
+        super(CellRendererText, self).__init__()
+        self.connect('editing-started', self.__class__.on_editing_started)
+
+    def on_editing_started(self, editable, path):
+        pass
 
 
 class CellRendererTextCompletion(CellRendererText):
@@ -18,13 +20,9 @@ class CellRendererTextCompletion(CellRendererText):
         super(CellRendererTextCompletion, self).__init__()
         self.set_completion = set_completion
 
-    def do_start_editing(self, event, widget, path, background_area, cell_area,
-            flags):
-        editable = super(CellRendererTextCompletion,
-            self).do_start_editing(event, widget, path, background_area,
-                cell_area, flags)
+    def on_editing_started(self, editable, path):
+        super().on_editing_started(editable, path)
         self.set_completion(editable, path)
-        return editable
 
 
 gobject.type_register(CellRendererText)

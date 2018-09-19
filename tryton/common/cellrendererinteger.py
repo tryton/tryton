@@ -7,13 +7,10 @@ import locale
 
 class CellRendererInteger(CellRendererText):
 
-    def do_start_editing(self, event, widget, path, background_area,
-            cell_area, flags):
-        editable = super(CellRendererInteger, self).do_start_editing(event,
-                widget, path, background_area, cell_area, flags)
+    def on_editing_started(self, editable, path):
+        super().on_editing_started(editable, path)
         editable.set_alignment(1.0)
         editable.connect('insert_text', self.sig_insert_text)
-        return editable
 
     def sig_insert_text(self, entry, new_text, new_text_length, position):
         value = entry.get_text()
@@ -25,5 +22,6 @@ class CellRendererInteger(CellRendererText):
             locale.atoi(new_value)
         except ValueError:
             entry.stop_emission('insert-text')
+
 
 gobject.type_register(CellRendererInteger)

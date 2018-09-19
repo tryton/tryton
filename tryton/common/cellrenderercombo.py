@@ -8,11 +8,9 @@ from tryton.common.selection import selection_shortcuts
 
 class CellRendererCombo(gtk.CellRendererCombo):
 
-    def do_start_editing(self, event, widget, path, background_area,
-            cell_area, flags):
-        editable = gtk.CellRendererCombo.do_start_editing(self, event, widget,
-            path, background_area, cell_area, flags)
-        return selection_shortcuts(editable)
+    def on_editing_started(self, editable, path):
+        super().on_editing_started(editable, path)
+        selection_shortcuts(editable)
 
 
 gobject.type_register(CellRendererCombo)
