@@ -31,12 +31,16 @@ defined by:
 - Level: The current *Level*.
 - Blocked: If true, it blocks the dunning to raise.
 
-The dunning can be in one of this states:
+The dunning can be in one of these states:
 
 * Draft
 
   The current level is not yet processed.
 
-* Done
+* Waiting
 
   The current level has been processed.
+
+* Final
+
+  All levels have been processed.
