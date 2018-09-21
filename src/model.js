@@ -391,10 +391,12 @@
         array.context = function() {
             var context = jQuery.extend({}, this.model.session.context);
             if (this.parent) {
-                jQuery.extend(context, this.parent.get_context());
+                var parent_context = this.parent.get_context();
+                jQuery.extend(context, parent_context);
                 if (this.child_name in this.parent.model.fields) {
                     var field = this.parent.model.fields[this.child_name];
-                    jQuery.extend(context, field.get_context(this.parent));
+                    jQuery.extend(context, field.get_context(
+                        this.parent, parent_context));
                 }
             }
             jQuery.extend(context, this._context);
@@ -1452,8 +1454,13 @@
         get_timestamp: function(record) {
             return {};
         },
-        get_context: function(record) {
-            var context = record.get_context();
+        get_context: function(record, record_context) {
+            var context;
+            if (record_context) {
+                context = jQuery.extend({}, record_context);
+            } else {
+                context = record.get_context();
+            }
             jQuery.extend(context,
                 record.expr_eval(this.description.context || {}));
             return context;
@@ -1890,9 +1897,9 @@
             Sao.field.Many2One._super.set_client.call(this, record, value,
                     force_change);
         },
-        get_context: function(record) {
+        get_context: function(record, record_context) {
             var context = Sao.field.Many2One._super.get_context.call(
-                this, record);
+                this, record, record_context);
             if (this.description.datetime_field) {
                 context._datetime = record.get_eval()[
                     this.description.datetime_field];
@@ -2416,9 +2423,9 @@
             return Sao.field.Reference._super.get_on_change_value.call(
                     this, record);
         },
-        get_context: function(record) {
+        get_context: function(record, record_context) {
             var context = Sao.field.Reference._super.get_context.call(
-                this, record);
+                this, record, record_context);
             if (this.description.datetime_field) {
                 context._datetime = record.get_eval()[
                     this.description.datetime_field];
