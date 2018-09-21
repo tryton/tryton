@@ -109,7 +109,6 @@ setup(name=name,
         'python-sql >= 0.5',
         'werkzeug',
         'wrapt',
-        'ipaddress',
         'passlib',
         ],
     extras_require={

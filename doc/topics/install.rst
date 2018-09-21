@@ -7,7 +7,7 @@ How to install Tryton
 Prerequisites
 =============
 
-    * Python 2.7 or later (http://www.python.org/)
+    * Python 3.4 or later (http://www.python.org/)
     * Werkzeug (http://werkzeug.pocoo.org/)
     * wrapt (https://github.com/GrahamDumpleton/wrapt)
     * lxml 2.0 or later (http://lxml.de/)
@@ -15,8 +15,7 @@ Prerequisites
     * Genshi (http://genshi.edgewall.org/)
     * python-dateutil (http://labix.org/python-dateutil)
     * polib (https://bitbucket.org/izi/polib/wiki/Home)
-    * python-sql 0.4 or later (http://code.google.com/p/python-sql/)
-    * ipaddress (https://github.com/phihag/ipaddress)
+    * python-sql 0.5 or later (http://code.google.com/p/python-sql/)
     * passlib (https://bitbucket.org/ecollins/passlib)
     * Optional: psycopg 2.5.0 or later (http://www.initd.org/)
     * Optional: psycopg2cffi 2.5.0 or later
@@ -27,7 +26,6 @@ Prerequisites
       (http://github.com/miohtama/python-Levenshtein)
     * Optional: bcrypt (https://github.com/pyca/bcrypt)
     * Optional: html2text (https://pypi.python.org/pypi/html2text)
-    * Optional: mock (http://www.voidspace.org.uk/python/mock/)
 
 Install Tryton
 ==============
