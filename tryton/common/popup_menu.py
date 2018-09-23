@@ -88,7 +88,7 @@ def populate(menu, model, record, title='', field=None, context=None):
     attachment_item = gtk.ImageMenuItem()
     attachment_item.set_label(_('Attachments...'))
     attachment_item.set_image(IconFactory.get_image(
-            'tryton-attachment', gtk.ICON_SIZE_MENU))
+            'tryton-attach', gtk.ICON_SIZE_MENU))
     action_menu.append(attachment_item)
     attachment_item.connect('activate', attachment)
     note_item = gtk.ImageMenuItem()
