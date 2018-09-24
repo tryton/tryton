@@ -284,9 +284,20 @@ img.icon {
     td.form-label {
         white-space: pre;
     }
-    .form-char, .form-password, .form-integer, .form-float {
-        input {
+    .form-char, .form-password, .form-integer, .form-float, .form-date,
+    .form-datetime, .form-time, .form-timedelta, .form-selection,
+    .form-multiselection, .form-url, .form-email, .form-callto, .form-sip,
+    .form-pyson {
+        input, select {
             min-width: 8em;
+        }
+    }
+    .form-many2one, .form-one2one, .form-reference, form-binary {
+        select {
+            min-width: 8em;
+        }
+        input {
+            min-width: 12em;
         }
     }
     .form-integer, .form-float {
