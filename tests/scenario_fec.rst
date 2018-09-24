@@ -148,3 +148,13 @@ Generate FEC::
     >>> with io.open(file, mode='rb') as fp:
     ...     FEC.form.file.decode('utf-8') == fp.read().decode('utf-8')
     True
+
+Generate FEC for previous fiscal year::
+
+    >>> FEC = Wizard('account.fr.fec')
+    >>> FEC.form.fiscalyear = fiscalyear_previous
+    >>> FEC.execute('generate')
+    >>> file = os.path.join(os.path.dirname(__file__), 'FEC-previous.csv')
+    >>> with io.open(file, mode='rb') as fp:
+    ...     FEC.form.file.decode('utf-8') == fp.read().decode('utf-8')
+    True
