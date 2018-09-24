@@ -756,8 +756,7 @@ class ViewTree(View):
         treeselection.selected_foreach(_func_sel_get, data)
         if not data:
             return
-        data = str(data[0])
-        selection.set(selection.get_target(), 8, data)
+        selection.set(selection.get_target(), 8, data[0].encode('utf-8'))
         return True
 
     def drag_data_received(self, treeview, context, x, y, selection,
