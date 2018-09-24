@@ -32,7 +32,7 @@ class Form(SignalEvent, TabContent):
     "Form"
 
     def __init__(self, model, res_id=None, name='', **attributes):
-        super(Form, self).__init__()
+        super(Form, self).__init__(**attributes)
 
         self.model = model
         self.res_id = res_id
@@ -82,20 +82,17 @@ class Form(SignalEvent, TabContent):
     def widget_get(self):
         return self.screen.widget
 
-    def __eq__(self, value):
-        if not value:
+    def compare(self, model, attributes):
+        if not attributes:
             return False
-        if not isinstance(value, Form):
-            return False
-        return (self.model == value.model
-            and self.res_id == value.res_id
-            and self.screen.domain == value.screen.domain
-            and self.mode == value.mode
-            and self.view_ids == value.view_ids
-            and self.screen.context == value.screen.context
-            and self.name == value.name
-            and self.screen.limit == value.screen.limit
-            and self.screen.search_value == value.screen.search_value)
+        return (self.model == model
+            and self.res_id == attributes['res_id']
+            and self.attributes['domain'] == attributes['domain']
+            and (self.attributes['mode'] or []) == (attributes['mode'] or [])
+            and self.attributes['view_ids'] == attributes['view_ids']
+            and self.attributes['context'] == attributes['context']
+            and self.attributes['limit'] == attributes['limit']
+            and self.attributes['search_value'] == attributes['search_value'])
 
     def __hash__(self):
         return id(self)

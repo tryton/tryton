@@ -6,7 +6,8 @@
 class SignalEvent(object):
     "Signal event"
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super(SignalEvent, self).__init__(*args, **kwargs)
         self.__connects = {}
 
     def signal(self, signal, signal_data=None):

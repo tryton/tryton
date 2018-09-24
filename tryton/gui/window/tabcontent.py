@@ -35,6 +35,10 @@ class ToolbarItem(object):
 
 class TabContent(InfoBar):
 
+    def __init__(self, **attributes):
+        super(TabContent, self).__init__()
+        self.attributes = attributes.copy()
+
     @property
     def menu_def(self):
         return [
@@ -314,3 +318,6 @@ class TabContent(InfoBar):
             gtktoolbar.set_style(gtk.TOOLBAR_ICONS)
         self.create_base_toolbar(gtktoolbar)
         return gtktoolbar
+
+    def compare(self, model, attributes):
+        return False

@@ -16,7 +16,7 @@ class Board(SignalEvent, TabContent):
     'Board'
 
     def __init__(self, model, name='', **attributes):
-        super(Board, self).__init__()
+        super(Board, self).__init__(**attributes)
 
         context = attributes.get('context')
         self.view_ids = attributes.get('view_ids')
@@ -50,15 +50,12 @@ class Board(SignalEvent, TabContent):
     def sig_close(self):
         return True
 
-    def __eq__(self, value):
-        if not value:
+    def compare(self, model, attributes):
+        if not attributes:
             return False
-        if not isinstance(value, Board):
-            return False
-        return (self.model == value.model
-            and self.view_ids == value.view_ids
-            and self.board.context == value.board.context
-            and self.name == value.name)
+        return (self.model == model
+            and self.attributes['view_ids'] == attributes['view_ids']
+            and self.attributes['context'] == attributes['context'])
 
     def __hash__(self):
         return id(self)

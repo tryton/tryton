@@ -706,18 +706,16 @@ class Main(Gtk.Application):
         store.row_changed(path, iter_)
         self.favorite_unset()
 
-    def win_add(self, page, hide_current=False, allow_similar=True):
-        if not allow_similar:
-            for other_page in self.pages:
-                if page == other_page:
-                    current_page = self.notebook.get_current_page()
-                    page_num = self.notebook.page_num(other_page.widget)
-                    other_page.widget.props.visible = True
-                    self.notebook.set_current_page(page_num)
-                    # In order to focus the page
-                    if current_page == page_num:
-                        self._sig_page_changt(self.notebook, None, page_num)
-                    return
+    def win_set(self, page):
+        current_page = self.notebook.get_current_page()
+        page_num = self.notebook.page_num(page.widget)
+        page.widget.props.visible = True
+        self.notebook.set_current_page(page_num)
+        # In order to focus the page
+        if current_page == page_num:
+            self._sig_page_changt(self.notebook, None, page_num)
+
+    def win_add(self, page, hide_current=False):
         previous_page_id = self.notebook.get_current_page()
         previous_widget = self.notebook.get_nth_page(previous_page_id)
         if previous_widget and hide_current:
