@@ -204,6 +204,8 @@ class AccountFrFEC(Wizard):
                 ('company', '=', company.id),
                 ])
         fiscalyear_ids = list(map(int, fiscalyears))
+        if not fiscalyear_ids:
+            return
 
         query = (account
             .join(line, condition=line.account == account.id)
