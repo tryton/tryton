@@ -126,7 +126,7 @@ class ShipmentOut(metaclass=PoolMeta):
                     'readonly': (Eval('reference', False)
                         | ~Eval('root_packages', False)
                         | ~Eval('carrier', False)
-                        | (Eval('state') != 'packed')),
+                        | ~Eval('state').in_(['packed', 'done'])),
                     'depends': ['state', 'carrier', 'reference',
                         'root_packages'],
                     },
@@ -189,7 +189,7 @@ class ShipmentOut(metaclass=PoolMeta):
         'stock_package_shipping.act_create_shipping_wizard')
     def create_shipping(cls, shipments):
         for shipment in shipments:
-            if shipment.state != 'packed':
+            if shipment.state not in {'packed', 'done'}:
                 cls.raise_user_error('shipment_not_packed', {
                         'shipment': shipment.rec_name,
                         })
