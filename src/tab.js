@@ -4,8 +4,9 @@
     'use strict';
 
     Sao.Tab = Sao.class_(Object, {
-        init: function() {
+        init: function(attributes) {
             Sao.Tab.tabs.push(this);
+            this.attributes = jQuery.extend({}, attributes);
             this.buttons = {};
             this.menu_buttons = {};
             this.id = 'tab-' + Sao.Tab.counter++;
@@ -387,8 +388,16 @@
     };
 
     Sao.Tab.create = function(attributes) {
+        var tablist = jQuery('#tablist');
         if (attributes.context === undefined) {
             attributes.context = {};
+        }
+        for (var i = 0; i < Sao.Tab.tabs.length; i++) {
+            var other = Sao.Tab.tabs[i];
+            if (other.compare(attributes)) {
+                tablist.find('a[href="#' + other.id + '"]').tab('show');
+                return;
+            }
         }
         var tab;
         if (attributes.model) {
@@ -463,12 +472,10 @@
     Sao.Tab.Form = Sao.class_(Sao.Tab, {
         class_: 'tab-form',
         init: function(model_name, attributes) {
-            Sao.Tab.Form._super.init.call(this);
+            Sao.Tab.Form._super.init.call(this, attributes);
             var screen = new Sao.Screen(model_name, attributes);
             screen.tab = this;
             this.screen = screen;
-            this.attributes = jQuery.extend({}, attributes);
-
             this.info_bar = new Sao.Window.InfoBar();
             this.create_tabcontent();
 
@@ -622,6 +629,26 @@
                 }.bind(this));
             }.bind(this));
             return toolbar;
+        },
+        compare: function(attributes) {
+            if (!attributes) {
+                return false;
+            }
+            var compare = Sao.common.compare;
+            return ((this.screen.model_name === attributes.model) &&
+                (this.attributes.res_id === attributes.res_id) &&
+                (compare(this.attributes.domain, attributes.domain)) &&
+                (compare(
+                    this.attributes.mode || [], attributes.mode || [])) &&
+                (compare(
+                    this.attributes.view_ids, attributes.view_ids)) &&
+                (JSON.stringify(this.attributes.context) ===
+                    JSON.stringify(attributes.context)) &&
+                (this.attributes.limit == attributes.limit) &&
+                (compare(
+                    this.attributes.search_value,
+                    attributes.search_value))
+            );
         },
         _close_allowed: function() {
             return this.modified_save();
@@ -1113,7 +1140,7 @@
         class_: 'tab-board',
         init: function(attributes) {
             var UIView, view_prm;
-            Sao.Tab.Board._super.init.call(this);
+            Sao.Tab.Board._super.init.call(this, attributes);
             this.model = attributes.model;
             this.view_id = (attributes.view_ids.length > 0 ?
                     attributes.view_ids[0] : null);
@@ -1140,6 +1167,17 @@
             this.create_tabcontent();
             this.set_name(this.name);
             this.title.html(this.name_el.text());
+        },
+        compare: function(attributes) {
+            if (!value) {
+                return false;
+            }
+            var compare = Sao.common.compare;
+            return ((this.model === attributes.model) &&
+                (compare(
+                    this.attributes.view_ids || [], attributes.view_ids || [])) &&
+                (JSON.stringify(this.context) === JSON.stringify(attributes.context))
+            );
         },
         reload: function() {
             this.board.reload();
