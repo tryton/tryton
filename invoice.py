@@ -1192,8 +1192,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Line = pool.get('account.move.line')
         Period = pool.get('account.period')
 
-        line1 = Line(description=description, account=self.account)
-        line2 = Line(description=description)
+        line1 = Line(account=self.account)
+        line2 = Line()
         lines = [line1, line2]
 
         if amount >= 0:
@@ -1226,6 +1226,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         move = Move(
             journal=payment_method.journal, period=period_id, date=date,
+            origin=self, description=description,
             company=self.company, lines=lines)
         move.save()
         Move.post([move])
@@ -2603,7 +2604,6 @@ class PayInvoice(Wizard):
         default['currency_digits'] = invoice.currency.digits
         default['amount'] = (invoice.amount_to_pay_today
             or invoice.amount_to_pay)
-        default['description'] = invoice.number
         default['invoice_account'] = invoice.account.id
         return default
 
