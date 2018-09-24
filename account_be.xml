@@ -1485,7 +1485,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="nl">Goederen in bewerking</field>
             <field name="code">32</field>
             <field name="kind">view</field>
-            <field name="type" ref="actif_VI_A_1"/>
+            <field name="type" ref="actif_VI_A_2"/>
             <field name="parent" ref="3"/>
         </record>
 
@@ -1494,7 +1494,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="nl">Gereed product</field>
             <field name="code">33</field>
             <field name="kind">view</field>
-            <field name="type" ref="actif_VI_A_2"/>
+            <field name="type" ref="actif_VI_A_3"/>
             <field name="parent" ref="3"/>
         </record>
 
@@ -2763,7 +2763,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">320</field>
             <field name="deferral" eval="True"/>
             <field name="kind">stock</field>
-            <field name="type" ref="actif_VI_A_1"/>
+            <field name="type" ref="actif_VI_A_2"/>
             <field name="parent" ref="32"/>
         </record>
 
@@ -2773,7 +2773,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">329</field>
             <field name="deferral" eval="True"/>
             <field name="kind">stock</field>
-            <field name="type" ref="actif_VI_A_1"/>
+            <field name="type" ref="actif_VI_A_2"/>
             <field name="parent" ref="32"/>
         </record>
 
@@ -2783,7 +2783,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">330</field>
             <field name="deferral" eval="True"/>
             <field name="kind">stock</field>
-            <field name="type" ref="actif_VI_A_2"/>
+            <field name="type" ref="actif_VI_A_3"/>
             <field name="parent" ref="33"/>
         </record>
 
@@ -2793,7 +2793,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">339</field>
             <field name="deferral" eval="True"/>
             <field name="kind">stock</field>
-            <field name="type" ref="actif_VI_A_2"/>
+            <field name="type" ref="actif_VI_A_3"/>
             <field name="parent" ref="33"/>
         </record>
 
