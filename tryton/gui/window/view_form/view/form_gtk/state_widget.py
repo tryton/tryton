@@ -68,7 +68,11 @@ class Frame(StateMixin, gtk.Frame):
 
 
 class ScrolledWindow(StateMixin, gtk.ScrolledWindow):
-    pass
+
+    def state_set(self, record):
+        # Force to show first to ensure it is displayed in the Notebook
+        self.show()
+        super(ScrolledWindow, self).state_set(record)
 
 
 class Notebook(StateMixin, gtk.Notebook):
