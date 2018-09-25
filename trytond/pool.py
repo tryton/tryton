@@ -83,7 +83,8 @@ class Pool(object):
         assert type_ in ('model', 'report', 'wizard')
         for cls in classes:
             mpool = Pool.classes[type_].setdefault(module, [])
-            assert cls not in mpool, cls
+            classes = {c for c, _ in mpool}
+            assert cls not in classes, cls
             assert issubclass(cls.__class__, PoolMeta), cls
             mpool.append((cls, depends))
 
