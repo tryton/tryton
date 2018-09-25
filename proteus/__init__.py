@@ -1017,18 +1017,19 @@ class Model(object):
                 getattr(self, field).remove(record, _changed=False)
             if value and (value.get('add') or value.get('update')):
                 for index, vals in value.get('add', []):
+                    group = getattr(self, field)
                     Relation = Model.get(
                         self._fields[field]['relation'], self._config)
                     config = Relation._config
                     with config.reset_context(), \
                             config.set_context(self._context):
-                        record = Relation(_default=False)
+                        record = Relation(_group=group, _default=False)
                     record._set_on_change(vals)
                     # append without signal
                     if index == -1:
-                        list.append(getattr(self, field), record)
+                        list.append(group, record)
                     else:
-                        list.insert(getattr(self, field), index, record)
+                        list.insert(group, index, record)
                 for vals in value.get('update', []):
                     if 'id' not in vals:
                         continue
