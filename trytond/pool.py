@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from threading import RLock
 import logging
 from trytond.modules import load_modules, register_classes
@@ -41,9 +41,9 @@ class PoolBase(object, metaclass=PoolMeta):
 class Pool(object):
 
     classes = {
-        'model': {},
-        'wizard': {},
-        'report': {},
+        'model': defaultdict(OrderedDict),
+        'wizard': defaultdict(OrderedDict),
+        'report': defaultdict(OrderedDict),
     }
     classes_mixin = defaultdict(list)
     _started = False
@@ -82,11 +82,10 @@ class Pool(object):
         depends = set(kwargs.get('depends', []))
         assert type_ in ('model', 'report', 'wizard')
         for cls in classes:
-            mpool = Pool.classes[type_].setdefault(module, [])
-            classes = {c for c, _ in mpool}
-            assert cls not in classes, cls
+            mpool = Pool.classes[type_][module]
+            assert cls not in mpool, cls
             assert issubclass(cls.__class__, PoolMeta), cls
-            mpool.append((cls, depends))
+            mpool[cls] = depends
 
     @staticmethod
     def register_mixin(mixin, classinfo, module):
@@ -211,7 +210,7 @@ class Pool(object):
         classes = {}
         for type_ in self.classes.keys():
             classes[type_] = []
-            for cls, depends in self.classes[type_].get(module, []):
+            for cls, depends in self.classes[type_].get(module, {}).items():
                 if not depends.issubset(modules):
                     continue
                 try:
@@ -254,4 +253,4 @@ class Pool(object):
 def isregisteredby(obj, module, type_='model'):
     pool = Pool()
     classes = pool.classes[type_]
-    return any(issubclass(obj, cls) for cls, _ in classes.get(module, []))
+    return any(issubclass(obj, cls) for cls in classes[module])
