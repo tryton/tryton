@@ -108,9 +108,11 @@ class Form(SignalEvent, TabContent):
                 record, lambda: self.update_attachment_count(reload=True))
 
         def add_file(widget):
-            filename = common.file_selection(_("Select"))
-            if filename:
-                window(widget).add_file(filename)
+            filenames = common.file_selection(_("Select"), multi=True)
+            if filenames:
+                attachment = window(widget)
+                for filename in filenames:
+                    attachment.add_file(filename)
 
         def activate(widget, callback):
             callback()

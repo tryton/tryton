@@ -40,7 +40,6 @@ class Attachment(WinForm):
             self.attachment_callback()
 
     def add_uri(self, uri):
-        self.screen.switch_view('form')
         data_field = self.screen.group.fields['data']
         name_field = self.screen.group.fields[data_field.attrs['filename']]
         new_record = self.screen.new()
