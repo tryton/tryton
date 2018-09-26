@@ -1005,8 +1005,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             pattern = pattern.copy()
 
+        accounting_date = self.accounting_date or self.invoice_date
         period_id = Period.find(
-            self.company.id, date=self.accounting_date or self.invoice_date,
+            self.company.id, date=accounting_date,
             test_state=self.type != 'in')
 
         period = Period(period_id)
@@ -1031,7 +1032,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'invoice': self.rec_name,
                     'fiscalyear': fiscalyear.rec_name,
                     })
-        with Transaction().set_context(date=self.invoice_date):
+        with Transaction().set_context(date=accounting_date):
             return Sequence.get_id(sequence.id)
 
     @classmethod
