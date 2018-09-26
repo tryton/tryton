@@ -992,11 +992,13 @@
                     }).append(jQuery('<input/>', {
                         'type': 'file',
                         'role': 'menuitem',
+                        'multiple': true,
                         'tabindex': -1,
                     }).change(function() {
+                        var attachment = window_();
                         Sao.common.get_input_data(
                             jQuery(this), function(data, filename) {
-                                window_().add_data(data, filename);
+                                attachment.add_data(data, filename);
                             });
                     })).append(jQuery('<a/>', {
                         'role': 'menuitem',

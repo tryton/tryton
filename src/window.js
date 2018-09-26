@@ -443,15 +443,12 @@
         add_data: function(data, filename) {
             var screen = this.screen;
             this.switch_prm.then(function() {
-                screen.set_current_record(null);
-                screen.switch_view('form').then(function() {
-                    screen.new_().then(function(record) {
-                        var data_field = record.model.fields.data;
-                        record.field_set_client(
-                            data_field.description.filename, filename);
-                        record.field_set_client('data', data);
-                        screen.display();
-                    });
+                screen.new_().then(function(record) {
+                    var data_field = record.model.fields.data;
+                    record.field_set_client(
+                        data_field.description.filename, filename);
+                    record.field_set_client('data', data);
+                    screen.display();
                 });
             });
         },
