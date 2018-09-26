@@ -48,6 +48,9 @@
             }
             if (error === "timeout") {
                 Sao.Bus.listen(last_message, 1);
+            } else if (response.status == 501) {
+                console.log("Bus not supported");
+                return;
             } else {
                 window.setTimeout(
                     Sao.Bus.listen,
