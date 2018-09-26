@@ -375,6 +375,13 @@ Default: `None`
 bus
 ---
 
+allow_subscribe
+~~~~~~~~~~~~~~~
+
+A boolean value to allow clients to subscribe to bus channels.
+
+Default: `False`
+
 long_polling_timeout
 ~~~~~~~~~~~~~~~~~~~~
 

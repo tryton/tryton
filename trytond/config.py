@@ -79,6 +79,7 @@ class TrytonConfigParser(configparser.RawConfigParser):
         self.set('password', 'entropy', 0.75)
         self.set('password', 'reset_timeout', 24 * 60 * 60)
         self.add_section('bus')
+        self.set('bus', 'allow_subscribe', False)
         self.set('bus', 'long_polling_timeout', 5 * 60)
         self.set('bus', 'cache_timeout', 5)
         self.set('bus', 'select_timeout', 5)

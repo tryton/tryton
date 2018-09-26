@@ -26,6 +26,7 @@ _db_timeout = config.getint('database', 'timeout')
 _cache_timeout = config.getint('bus', 'cache_timeout')
 _select_timeout = config.getint('bus', 'select_timeout')
 _long_polling_timeout = config.getint('bus', 'long_polling_timeout')
+_allow_subscribe = config.getboolean('bus', 'allow_subscribe')
 
 
 class _MessageQueue:
@@ -207,6 +208,8 @@ else:
 @app.route('/<string:database_name>/bus', methods=['POST'])
 @app.auth_required
 def subscribe(request, database_name):
+    if not _allow_subscribe:
+        raise NotImplemented
     user = request.authorization.get('userid')
     channels = request.parsed_data.get('channels', [])
     if user is None:
