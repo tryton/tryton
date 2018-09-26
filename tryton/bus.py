@@ -8,6 +8,7 @@ import threading
 import time
 import uuid
 from urllib.request import Request, urlopen
+from urllib.error import HTTPError
 
 from gi.repository import GObject
 
@@ -58,6 +59,9 @@ def _listen(connection):
             wait = 1
             continue
         except Exception as error:
+            if isinstance(error, HTTPError) and error.code == 501:
+                logger.info("Bus not supported")
+                break
             logger.error(
                 "An exception occured while connecting to the bus."
                 "Sleeping for %s seconds",
