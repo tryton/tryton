@@ -308,13 +308,6 @@ class AccountFrFEC(Wizard):
             ]
 
     def get_reference(self, line):
-        pool = Pool()
-        try:
-            Invoice = pool.get('account.invoice')
-        except KeyError:
-            Invoice = None
-        if Invoice and isinstance(line.move.origin, Invoice):
-            return line.move.origin.number
         if isinstance(line.move.origin, ModelStorage):
             return line.move.origin.rec_name
         return line.move.origin
