@@ -328,6 +328,9 @@
         },
         get_url: function() {
         },
+        compare: function(attributes) {
+            return false;
+        },
     });
 
     Sao.Tab.affix_set_with = function(toolbar) {
