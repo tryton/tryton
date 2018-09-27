@@ -18,6 +18,7 @@ from tryton.common.button import Button
 from tryton.common import RPCExecute, RPCException, RPCContextReload
 from tryton.common import TRYTON_ICON
 from .infobar import InfoBar
+from .tabcontent import TabContent
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
@@ -253,7 +254,7 @@ class Wizard(InfoBar):
         self.widget.pack_start(self.info_bar, False, True)
 
 
-class WizardForm(Wizard, SignalEvent):
+class WizardForm(Wizard, TabContent, SignalEvent):
     "Wizard"
 
     def __init__(self, name=''):
