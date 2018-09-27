@@ -102,15 +102,14 @@ class TrytonConfigParser(configparser.RawConfigParser):
         if isinstance(configfile, str):
             configfile = [configfile]
         if not configfile or not [_f for _f in configfile if _f]:
-            return
+            return []
         configfile = [os.path.expanduser(filename) for filename in configfile]
         read_files = self.read(configfile)
         logger.info('using %s as configuration files', ', '.join(read_files))
-        configfile = set(configfile)
-        read_files = set(read_files)
         if configfile != read_files:
             logger.error('could not load %s',
-                ','.join(configfile - read_files))
+                ','.join(set(configfile) - set(read_files)))
+        return configfile
 
     def get(self, section, option, *args, **kwargs):
         default = kwargs.pop('default', None)
