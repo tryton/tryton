@@ -239,7 +239,7 @@ msgstr "Artikelkategorien"
 
 msgctxt "field:product.product,code:"
 msgid "Code"
-msgstr "Variantennummer"
+msgstr "Artikelnummer"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
@@ -311,7 +311,7 @@ msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Artikel"
+msgstr "Artikelvorlage"
 
 msgctxt "field:product.product,type:"
 msgid "Type"
@@ -597,7 +597,7 @@ msgstr "Kategorien"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr "Einstellungen Varianten"
+msgstr "Einstellungen Artikel"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
@@ -681,7 +681,7 @@ msgstr "Methode Artikel Kostenpreis"
 
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
-msgstr "Variante Listenpreis"
+msgstr "Artikel Listenpreis"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
@@ -689,15 +689,15 @@ msgstr "Variante"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr "Artikel"
+msgstr "Artikelvorlage"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr "Artikel - Kategorie"
+msgstr "Artikelvorlage - Kategorie"
 
 msgctxt "model:product.template-product.category.all,name:"
 msgid "Template - Category All"
-msgstr "Artikel - Alle Kategorien"
+msgstr "Artikelvorlage - Alle Kategorien"
 
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
@@ -1045,11 +1045,11 @@ msgstr "Partei"
 
 msgctxt "view:product.product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "view:product.product:"
 msgid "Products"
-msgstr "Varianten"
+msgstr "Artikel"
 
 msgctxt "view:product.uom.category:"
 msgid "Categories of Unit of Measure"
