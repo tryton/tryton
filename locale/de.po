@@ -76,7 +76,7 @@ msgstr "Preisliste"
 
 msgctxt "field:product.price_list.line,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
@@ -124,7 +124,7 @@ msgstr "Aktivieren wenn das Ergebnis der Formel die Steuern beinhaltet."
 
 msgctxt "help:product.price_list.line,category:"
 msgid "Apply only to products of this category."
-msgstr "Nur auf Varianten dieser Kategorie anwenden."
+msgstr "Nur auf Artikel dieser Kategorie anwenden."
 
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
@@ -140,7 +140,7 @@ msgstr "Die Preisliste zu der die Position zugeordnet ist."
 
 msgctxt "help:product.price_list.line,product:"
 msgid "Apply only to this product."
-msgstr "Nur auf diese Variante anwenden."
+msgstr "Nur auf diesen Artikel anwenden."
 
 msgctxt "help:product.price_list.line,quantity:"
 msgid "Apply only when quantity is greater."
