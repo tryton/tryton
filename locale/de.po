@@ -24,7 +24,7 @@ msgstr "Lagerort"
 
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:stock.product.location,rec_name:"
 msgid "Record Name"
@@ -48,12 +48,12 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
-msgstr "Variante Lagerort"
+msgstr "Artikel Lagerort"
 
 msgctxt "view:stock.product.location:"
 msgid "Product Location"
-msgstr "Variante Lagerort"
+msgstr "Artikel Lagerort"
 
 msgctxt "view:stock.product.location:"
 msgid "Product Locations"
-msgstr "Variante Lagerorte"
+msgstr "Artikel Lagerorte"
