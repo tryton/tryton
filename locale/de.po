@@ -4,7 +4,8 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.shipment.out:"
 msgid "The shipment \"%(shipment)s\" does not have a carrier set"
-msgstr "Dem Lieferposten \"%(shipment)s\" ist kein Frachtführer zugeordnet."
+msgstr ""
+"Dem Lieferposten \"%(shipment)s\" ist kein Versanddienstleister zugeordnet."
 
 msgctxt "error:stock.shipment.out:"
 msgid ""
@@ -16,7 +17,7 @@ msgstr ""
 
 msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
-msgstr "Versanddienstleistung"
+msgstr "Versanddienst"
 
 msgctxt "field:stock.package,shipping_label:"
 msgid "Shipping Label"
