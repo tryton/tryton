@@ -2,6 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:stock.inventory.count:"
+msgid "Only lot can be selected for \"%(product)s\"."
+msgstr "Només es pot seleccionar un lot per \"%(product)s\"."
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You cannot change the product of a lot which is associated to stock moves."
+msgstr ""
+"No podeu canviar el producte d'un lot que està associat amb moviments "
+"d'existències."
+
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
 msgstr "El lot pel moviment del producte \"%s\" és obligatori."
@@ -259,6 +270,10 @@ msgstr "Lot per ubicació"
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "Període d'existències precalculat per lot"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Lot"
 
 msgctxt "view:product.template:"
 msgid "Lots"

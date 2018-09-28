@@ -2,9 +2,22 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:stock.inventory.count:"
+msgid "Only lot can be selected for \"%(product)s\"."
+msgstr "Für Artikel \"%(product)s\" können nur Chargen ausgewählt werden."
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You cannot change the product of a lot which is associated to stock moves."
+msgstr ""
+"Der Artikel einer Charge mit zugeordneten Lagerbewegungen kann nicht "
+"geändert werden."
+
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
-msgstr "Chargen-Nummer erforderlich für Lagerbewegung von Variante \"%s\"."
+msgstr ""
+"Für die Lagerbewegung von Artikel \"%s\" ist eine Chargennummer "
+"erforderlich."
 
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
@@ -72,7 +85,7 @@ msgstr "Nummer"
 
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
@@ -172,7 +185,7 @@ msgstr "Lagerperiode"
 
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Record Name"
@@ -259,6 +272,10 @@ msgstr "Chargen nach Lagerort"
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "Lager Cache Periode pro Charge"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Charge"
 
 msgctxt "view:product.template:"
 msgid "Lots"

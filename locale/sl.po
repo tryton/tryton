@@ -2,6 +2,15 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:stock.inventory.count:"
+msgid "Only lot can be selected for \"%(product)s\"."
+msgstr ""
+
+msgctxt "error:stock.lot:"
+msgid ""
+"You cannot change the product of a lot which is associated to stock moves."
+msgstr ""
+
 msgctxt "error:stock.move:"
 msgid "Lot is required for move of product \"%s\"."
 msgstr "Serija je obvezna pri prometu izdelka \"%s\"."
@@ -268,6 +277,11 @@ msgstr "Serija po lokaciji"
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "Predpomnjena obdobja po serijah"
+
+#, fuzzy
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Lot"
+msgstr "Serija"
 
 msgctxt "view:product.template:"
 msgid "Lots"
