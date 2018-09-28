@@ -45,7 +45,7 @@ msgstr "Prozentsatz"
 
 msgctxt "field:account.dunning.fee,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:account.dunning.fee,rec_name:"
 msgid "Record Name"
