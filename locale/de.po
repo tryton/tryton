@@ -166,30 +166,6 @@ msgstr ""
 " mehr geändert werden"
 
 msgctxt "error:account.invoice:"
-msgid ""
-"The credit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-"Das Habenkonto in Journal \"%(journal)s\" ist dasselbe wie das von Rechnung "
-"\"%(invoice)s\"'."
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal \"%s\" is missing."
-msgstr "Fehlendes Habenkonto in Journal \"%s\"."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The debit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-"Das Sollkonto in Journal \"%(journal)s\" ist dasselbe wie das von Rechnung "
-"\"%(invoice)s\"'."
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal \"%s\" is missing."
-msgstr "Fehlendes Sollkonto in Journal \"%s\"."
-
-msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr "Rechnung Nummer \"%s\" kann nicht gelöscht werden."
 
@@ -573,7 +549,7 @@ msgstr "Sprache Partei"
 
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
@@ -691,10 +667,6 @@ msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
 msgstr "Rechnung"
 
-msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
-msgid "Write-Off Journal"
-msgstr "Journal Ausbuchung"
-
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
 msgstr "Positionen"
@@ -711,9 +683,17 @@ msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
 msgstr "Typ"
 
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr "Ausbuchung"
+
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr "Betrag"
+
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "Unternehmen"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
@@ -735,9 +715,61 @@ msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.invoice.pay.start,journal:"
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr "Konto für Rechnung"
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr "Zahlungsweise"
+
+msgctxt "field:account.invoice.payment.method,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.invoice.payment.method,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.invoice.payment.method,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr "Habenkonto"
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr "Sollkonto"
+
+msgctxt "field:account.invoice.payment.method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
 msgstr "Journal"
+
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.invoice.payment.method,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.invoice.payment.method,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.invoice.payment.method,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
@@ -1077,6 +1109,10 @@ msgstr ""
 "Bei Aktivierung werden die ausgewählte(n ) Rechnung(en) und hierzu neu "
 "erstellte(n) Gutschrift(en) auf bezahlt gesetzt und miteinander abgestimmt."
 
+msgctxt "help:account.invoice.payment.method,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
 msgctxt "help:account.invoice.payment_term,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
@@ -1112,6 +1148,10 @@ msgstr "Rechnung bezahlen"
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
 msgstr "Rechnung bezahlen"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr "Zahlungsweise"
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
@@ -1152,6 +1192,10 @@ msgstr "Lieferantenrechnungen"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Kundenrechnungen"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "Zahlungsweisen"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1254,6 +1298,10 @@ msgstr "Kundenrechnungen"
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Rechnungen"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "Zahlungsweisen"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
@@ -1401,7 +1449,7 @@ msgstr "Geprüft"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid ""
-msgstr ""
+msgstr "Rechnungsart"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"

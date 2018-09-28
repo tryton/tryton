@@ -154,30 +154,6 @@ msgstr ""
 "porqué ya esta pagada."
 
 msgctxt "error:account.invoice:"
-msgid ""
-"The credit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-"La cuenta haber del diario \"%(journal)s\" tiene la misma cuenta de la "
-"factura \"%(invoice)s\"."
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal \"%s\" is missing."
-msgstr "Falta la cuenta haber del diario \"%s\"."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The debit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-"La cuenta debe del diario \"%(journal)s\" es la misma cuenta de la factura "
-"\"%(invoice)s\"."
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal \"%s\" is missing."
-msgstr "Falta la cuenta debe del diario \"%s\"."
-
-msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr "No se puede eliminar la factura numerada \"%s\"."
 
@@ -679,10 +655,6 @@ msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
 msgstr "Factura"
 
-msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
-msgid "Write-Off Journal"
-msgstr "Diario de desajustes"
-
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
 msgstr "Líneas"
@@ -699,9 +671,17 @@ msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
 msgstr "Tipo"
 
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr "Desajuste"
+
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr "Importe"
+
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
@@ -723,9 +703,61 @@ msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.invoice.pay.start,journal:"
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr "Cuenta de la factura"
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr "Método de pago"
+
+msgctxt "field:account.invoice.payment.method,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.invoice.payment.method,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.invoice.payment.method,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr "Cuenta haber"
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr "Cuenta debe"
+
+msgctxt "field:account.invoice.payment.method,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
 msgstr "Diario"
+
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.invoice.payment.method,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:account.invoice.payment.method,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.invoice.payment.method,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
@@ -1063,6 +1095,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "Si está marcada, se pagarán las facturas actuales."
 
+msgctxt "help:account.invoice.payment.method,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para eliminar el uso del registro en el futuro."
+
 msgctxt "help:account.invoice.payment_term,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Desmarcar para eliminar el uso del registro en el futuro."
@@ -1098,6 +1134,10 @@ msgstr "Pagar factura"
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
 msgstr "Pagar factura"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr "Método de pago"
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
@@ -1138,6 +1178,10 @@ msgstr "Facturas de proveedor"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Facturas de cliente"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "Métodos de pago de factura"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1240,6 +1284,10 @@ msgstr "Facturas de cliente"
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Facturación"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr "Métodos de pago de factura"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

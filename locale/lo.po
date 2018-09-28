@@ -125,26 +125,6 @@ msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid ""
-"The credit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal \"%s\" is missing."
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The debit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal \"%s\" is missing."
-msgstr ""
-
-msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr ""
 
@@ -673,10 +653,6 @@ msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
 msgstr "ໃບເກັບເງິນ"
 
-msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
-msgid "Write-Off Journal"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
@@ -696,9 +672,19 @@ msgid "Type"
 msgstr "ປະເພດ"
 
 #, fuzzy
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr "ເພີກຖອນ"
+
+#, fuzzy
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
 
 #, fuzzy
 msgctxt "field:account.invoice.pay.start,currency:"
@@ -724,10 +710,70 @@ msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
 msgstr "ລໍາດັບໃບເກັບເງິນ"
 
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr ""
+
 #, fuzzy
-msgctxt "field:account.invoice.pay.start,journal:"
+msgctxt "field:account.invoice.payment.method,active:"
+msgid "Active"
+msgstr "ໃຊ້ງານຢູ່"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "ບໍລິສັດ"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,create_date:"
+msgid "Create Date"
+msgstr "ສ້າງວັນທີ"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,create_uid:"
+msgid "Create User"
+msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,id:"
+msgid "ID"
+msgstr "ລໍາດັບໃບເກັບເງິນ"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
 msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.invoice.payment.method,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,write_date:"
+msgid "Write Date"
+msgstr "ຂຽນວັນທີ"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,write_uid:"
+msgid "Write User"
+msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
@@ -1104,6 +1150,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr ""
 
+msgctxt "help:account.invoice.payment.method,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.invoice.payment_term,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -1142,6 +1192,10 @@ msgstr "ຊໍາລະໃບເກັບເງິນ"
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
 msgstr "ຊໍາລະໃບເກັບເງິນ"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:account.invoice.payment_term,name:"
@@ -1189,6 +1243,10 @@ msgstr "ໃບເກັບເງິນຂອງຜູ້ສະໜອງ"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Customer Invoices"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_payment_term_form"
@@ -1306,6 +1364,10 @@ msgstr "Customer Invoices"
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Invoices"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"

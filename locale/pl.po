@@ -125,26 +125,6 @@ msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid ""
-"The credit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal \"%s\" is missing."
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The debit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal \"%s\" is missing."
-msgstr ""
-
-msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr ""
 
@@ -306,7 +286,7 @@ msgstr ""
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Rejestr"
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
@@ -642,10 +622,6 @@ msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
 msgstr "Faktura"
 
-msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
-msgid "Write-Off Journal"
-msgstr ""
-
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
 msgstr ""
@@ -662,9 +638,18 @@ msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
 msgstr "Typ"
 
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr ""
+
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "Firma"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
@@ -686,9 +671,70 @@ msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.invoice.pay.start,journal:"
-msgid "Journal"
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
 msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,active:"
+msgid "Active"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "Firma"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,journal:"
+msgid "Journal"
+msgstr "Rejestr"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
@@ -972,7 +1018,6 @@ msgctxt "field:party.address,invoice:"
 msgid "Invoice"
 msgstr "Faktura"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,invoice:"
 msgid "Invoice"
 msgstr "Faktura"
@@ -1030,6 +1075,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr ""
 
+msgctxt "help:account.invoice.payment.method,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.invoice.payment_term,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -1067,6 +1116,10 @@ msgstr "Pay Invoice"
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
 msgstr "Pay Invoice"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:account.invoice.payment_term,name:"
@@ -1113,6 +1166,10 @@ msgstr "Supplier Invoices"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "Customer Invoices"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_payment_term_form"
@@ -1229,6 +1286,10 @@ msgstr "Customer Invoices"
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "Invoices"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"

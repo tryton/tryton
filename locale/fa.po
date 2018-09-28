@@ -151,26 +151,6 @@ msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
 msgstr "خطوط پرداخت صورتحساب پرداخت شده : \"%s\" نمی توانند اصلاح شوند\""
 
 msgctxt "error:account.invoice:"
-msgid ""
-"The credit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr "حساب خرید(اعتباری) در روزنامه \"٪s\" مشابه حساب صورتحساب ها \"٪s\" است."
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal \"%s\" is missing."
-msgstr "حساب خرید(اعتباری) در روزنامه \"٪ s\" فراموش شده است."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The debit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr "حساب بدهکار در روزنامه \"٪s\" مشابه حساب صورتحساب ها \"٪s\" است."
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal \"%s\" is missing."
-msgstr "حساب بدهکاری در دفترروزنامه \"٪ s\" فراموش شده است."
-
-msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr "صورتحساب شماره \"٪ s\" نباید حذف شود."
 
@@ -670,10 +650,6 @@ msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
 msgstr "صورت حساب"
 
-msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
-msgid "Write-Off Journal"
-msgstr "نوسانات روزنامه"
-
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
 msgstr "خطوط"
@@ -690,9 +666,19 @@ msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
 msgstr "نوع"
 
+#, fuzzy
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr "سوخت شده"
+
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
+msgstr "شرکت"
 
 msgctxt "field:account.invoice.pay.start,currency:"
 msgid "Currency"
@@ -714,9 +700,72 @@ msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
 msgstr "شناسه"
 
-msgctxt "field:account.invoice.pay.start,journal:"
+#, fuzzy
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr "حساب فاکتور"
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,active:"
+msgid "Active"
+msgstr "فعال"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,id:"
+msgid "ID"
+msgstr "شناسه"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
 msgstr "روزنامه"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
@@ -1054,6 +1103,11 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "اگر درست باشد، صورتحساب های فعلی پرداخت خواهد شد."
 
+#, fuzzy
+msgctxt "help:account.invoice.payment.method,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
 msgctxt "help:account.invoice.payment_term,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
@@ -1089,6 +1143,10 @@ msgstr "پرداخت صورتحساب"
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
 msgstr "پرداخت صورتحساب"
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
+msgstr ""
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
@@ -1129,6 +1187,10 @@ msgstr "صورت حسابهای تامین کننده"
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr "صورتحساب های مشتری"
+
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1231,6 +1293,10 @@ msgstr "صورتحساب های مشتری"
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr "صورتحساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"

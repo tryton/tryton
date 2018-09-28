@@ -147,30 +147,6 @@ msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
 msgstr ""
 
 msgctxt "error:account.invoice:"
-msgid ""
-"The credit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-"La cuenta de crédito del libro diario \"%(journal)s\" tiene la misma cuenta "
-"de la factura \"%(invoice)s\"."
-
-msgctxt "error:account.invoice:"
-msgid "The credit account on journal \"%s\" is missing."
-msgstr "Falta la cuenta de crédito del libro diario \"%s\"."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The debit account on journal \"%(journal)s\" is the same as invoice "
-"\"%(invoice)s\"'s account."
-msgstr ""
-"La cuenta de débito en el libro diario \"%(journal)s\" es la misma que la "
-"cuenta de la factura \"%(invoice)s\"."
-
-msgctxt "error:account.invoice:"
-msgid "The debit account on journal \"%s\" is missing."
-msgstr "Falta la cuenta de débito del libro diario \"%s\"."
-
-msgctxt "error:account.invoice:"
 msgid "The numbered invoice \"%s\" can not be deleted."
 msgstr "La factura numerada \"%s\" no puede ser eliminada."
 
@@ -613,9 +589,10 @@ msgctxt "field:account.invoice.line-account.tax,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Fecha de factura"
 
 msgctxt "field:account.invoice.line-account.tax,rec_name:"
 msgid "Record Name"
@@ -673,10 +650,6 @@ msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
 msgstr ""
 
-msgctxt "field:account.invoice.pay.ask,journal_writeoff:"
-msgid "Write-Off Journal"
-msgstr "Libro diario de desajustes"
-
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
 msgstr ""
@@ -693,8 +666,16 @@ msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
 msgstr ""
 
+msgctxt "field:account.invoice.pay.ask,writeoff:"
+msgid "Write Off"
+msgstr ""
+
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,company:"
+msgid "Company"
 msgstr ""
 
 msgctxt "field:account.invoice.pay.start,currency:"
@@ -717,9 +698,64 @@ msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
 msgstr ""
 
-msgctxt "field:account.invoice.pay.start,journal:"
+msgctxt "field:account.invoice.pay.start,invoice_account:"
+msgid "Invoice Account"
+msgstr ""
+
+msgctxt "field:account.invoice.pay.start,payment_method:"
+msgid "Payment Method"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,active:"
+msgid "Active"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:account.invoice.payment.method,credit_account:"
+msgid "Credit Account"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,debit_account:"
+msgid "Debit Account"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
 msgstr "Libro diario"
+
+msgctxt "field:account.invoice.payment.method,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:account.invoice.payment.method,write_date:"
+msgid "Write Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.payment.method,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
 
 msgctxt "field:account.invoice.payment_term,active:"
 msgid "Active"
@@ -1062,6 +1098,10 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be paid."
 msgstr "Si está marcada, se pagará(n) la(s) factura(s) actual(es)."
 
+msgctxt "help:account.invoice.payment.method,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.invoice.payment_term,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -1097,6 +1137,10 @@ msgstr ""
 
 msgctxt "model:account.invoice.pay.start,name:"
 msgid "Pay Invoice"
+msgstr ""
+
+msgctxt "model:account.invoice.payment.method,name:"
+msgid "Payment Method"
 msgstr ""
 
 msgctxt "model:account.invoice.payment_term,name:"
@@ -1140,13 +1184,19 @@ msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
 msgstr ""
 
-msgctxt "model:ir.action,name:act_payment_term_form"
-msgid "Payment Terms"
+msgctxt "model:ir.action,name:act_payment_method_form"
+msgid "Invoice Payment Methods"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_payment_term_form"
+msgid "Payment Terms"
+msgstr "Términos de pago"
+
+#, fuzzy
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr ""
+msgstr "Crédito"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1156,9 +1206,10 @@ msgctxt "model:ir.action,name:wizard_pay"
 msgid "Pay Invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Prueba de término de pago"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
@@ -1194,17 +1245,19 @@ msgctxt ""
 msgid "Validated"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure to cancel the invoice?"
-msgstr ""
+msgstr "¿Está seguro que desea cancelar la factura?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
 msgid "Cancel the invoice"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.model.button,help:invoice_validate_button"
 msgid "Also known as Pro Forma"
-msgstr ""
+msgstr "También conocida como proforma"
 
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
@@ -1242,17 +1295,24 @@ msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
+msgid "Invoice Payment Methods"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr ""
+msgstr "Términos de pago"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr ""
+msgstr "Prueba de término de pago"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr ""
+msgstr "Términos de pago"
 
 #, fuzzy
 msgctxt "model:party.party.payment_term,name:"
