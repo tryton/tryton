@@ -929,6 +929,7 @@
                 this.set_current_record(null);
             }
             this.group.add_fields(fields);
+            this.group.exclude_field = this.exclude_field;
         },
         new_group: function(ids) {
             var group = new Sao.Group(this.model, this.context, []);
