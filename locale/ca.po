@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.attribute:"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "Domini invàlid a l'esquema \"%(schema)s\"."
+
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"
@@ -13,6 +17,10 @@ msgstr "Usuari de creació"
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
 msgstr "Decimals"
+
+msgctxt "field:product.attribute,domain:"
+msgid "Domain"
+msgstr "Domini"
 
 msgctxt "field:product.attribute,id:"
 msgid "ID"

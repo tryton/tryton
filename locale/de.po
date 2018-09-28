@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "error:product.attribute:"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "Ungültiger Wertebereich (Domain) in Schema \"%(schema)s\"."
+
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -13,6 +17,10 @@ msgstr "Erstellt durch"
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
 msgstr "Nachkommastellen"
+
+msgctxt "field:product.attribute,domain:"
+msgid "Domain"
+msgstr "Wertebereich (Domain)"
 
 msgctxt "field:product.attribute,id:"
 msgid "ID"
@@ -157,16 +165,16 @@ msgstr "Die Hauptbezeichnung des Attributsatzes."
 msgctxt "help:product.product,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
 msgstr ""
-"Auswahl eine Satzes von Attributen das auf die Variante angewandt wird."
+"Auswahl eine Satzes von Attributen der auf die Varianten angewandt wird."
 
 msgctxt "help:product.product,attributes:"
 msgid "Add attributes to the variant."
-msgstr "Der Variante Attribute hinzufügen."
+msgstr "Attribute zur Variante hinzufügen."
 
 msgctxt "help:product.template,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
 msgstr ""
-"Auswahl eines Satzes von Attributen das auf die Variante angewendet wird."
+"Auswahl eines Satzes von Attributen der auf die Varianten angewendet wird."
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
