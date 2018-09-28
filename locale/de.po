@@ -24,7 +24,7 @@ msgstr "Nachkommastellen Maßeinheit Gewicht"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
-msgstr "Frachtführer"
+msgstr "Versanddienstleister"
 
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
@@ -64,7 +64,7 @@ msgstr "Die Währung des Preises."
 
 msgctxt "help:carrier,weight_price_list:"
 msgid "Add price to the carrier service."
-msgstr "Einen Preis zur Frachtführer-Leistung hinzufügen."
+msgstr "Einen Preis zur Versanddienstleistung hinzufügen."
 
 msgctxt "help:carrier,weight_uom:"
 msgid "The unit of weight criteria of the price list."
@@ -72,11 +72,11 @@ msgstr "Die Gewichtseinheit für die Preisliste."
 
 msgctxt "help:carrier.weight_price_list,carrier:"
 msgid "The carrier that the price list belongs to."
-msgstr "Der Frachtführer dem diese Preisliste zugeordnet ist."
+msgstr "Der Versanddienstleister dem diese Preisliste zugeordnet ist."
 
 msgctxt "help:carrier.weight_price_list,price:"
 msgid "The price of the carrier service."
-msgstr "Der Preis der Frachtführer-Leistung."
+msgstr "Der Preis der Versanddienstleistung."
 
 msgctxt "help:carrier.weight_price_list,weight:"
 msgid "The upper limit for the price."
@@ -84,7 +84,7 @@ msgstr "Die Obergrenze für den Preis."
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr "Frachtgewicht Preisliste"
+msgstr "Preisliste Versandgewicht"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
@@ -92,8 +92,8 @@ msgstr "Gewicht"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price List"
-msgstr "Frachtgewicht Preisliste"
+msgstr "Preisliste Versandgewicht"
 
 msgctxt "view:carrier.weight_price_list:"
 msgid "Carrier Weight Price Lists"
-msgstr "Frachtgewicht Preislisten"
+msgstr "Preislisten Versandgewicht"
