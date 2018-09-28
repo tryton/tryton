@@ -2317,6 +2317,7 @@
         get: function(record) {
             if (record._values[this.name] &&
                 record._values[this.name][0] &&
+                record._values[this.name][1] !== null &&
                 record._values[this.name][1] >= -1) {
                 return record._values[this.name].join(',');
             }
