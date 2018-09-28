@@ -127,13 +127,15 @@ msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
-msgstr ""
+msgstr "Empaquetado de stock"
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_package"
 msgid "Stock Package"
-msgstr ""
+msgstr "Empaquetado de stock"
 
 msgctxt "model:ir.ui.menu,name:menu_package_form"
 msgid "Package Types"
