@@ -280,6 +280,7 @@ msgctxt "model:sale.advance_payment_term.line,name:"
 msgid "Advance Payment Term Line"
 msgstr "Advance Payment Terms"
 
+#, fuzzy
 msgctxt "model:sale.advance_payment_term.line.account,name:"
 msgid "Advance Payment Term Line Account"
-msgstr ""
+msgstr "Advance Payment Terms"
