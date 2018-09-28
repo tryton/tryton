@@ -6,5 +6,6 @@
         <newline/>
         <label name="asset"/>
         <field name="asset"/>
+        <newline/>
     </xpath>
 </data>
