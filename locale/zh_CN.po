@@ -131,66 +131,6 @@ msgctxt "field:product.category.account,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr ""
 
-msgctxt "field:product.product,account_stock:"
-msgid "Account Stock"
-msgstr ""
-
-msgctxt "field:product.product,account_stock_customer:"
-msgid "Account Stock Customer"
-msgstr ""
-
-msgctxt "field:product.product,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr ""
-
-msgctxt "field:product.product,account_stock_production:"
-msgid "Account Stock Production"
-msgstr ""
-
-msgctxt "field:product.product,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr ""
-
-msgctxt "field:product.template,account_stock:"
-msgid "Account Stock"
-msgstr ""
-
-msgctxt "field:product.template,account_stock_customer:"
-msgid "Account Stock Customer"
-msgstr ""
-
-msgctxt "field:product.template,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr ""
-
-msgctxt "field:product.template,account_stock_production:"
-msgid "Account Stock Production"
-msgstr ""
-
-msgctxt "field:product.template,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr ""
-
-msgctxt "field:product.template.account,account_stock:"
-msgid "Account Stock"
-msgstr ""
-
-msgctxt "field:product.template.account,account_stock_customer:"
-msgid "Account Stock Customer"
-msgstr ""
-
-msgctxt "field:product.template.account,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr ""
-
-msgctxt "field:product.template.account,account_stock_production:"
-msgid "Account Stock Production"
-msgstr ""
-
-msgctxt "field:product.template.account,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr ""
-
 msgctxt "field:product.update_cost_price.ask,cost_price:"
 msgid "Cost Price"
 msgstr ""
@@ -240,46 +180,6 @@ msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,stock_account:"
 msgid "Stock Account"
-msgstr ""
-
-msgctxt "help:product.product,account_stock:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.product,account_stock_customer:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.product,account_stock_lost_found:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.product,account_stock_production:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.product,account_stock_supplier:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.template,account_stock:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.template,account_stock_customer:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.template,account_stock_lost_found:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.template,account_stock_production:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr ""
-
-msgctxt "help:product.template,account_stock_supplier:"
-msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 
 msgctxt "model:account.configuration.cost_price_counterpart_account,name:"

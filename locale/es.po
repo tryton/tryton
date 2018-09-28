@@ -132,6 +132,106 @@ msgctxt "field:product.category.account,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Cuenta de existencias proveedor"
 
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:product.update_cost_price.ask,template:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr "Contrapartida"
+
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr "Diferencia de precio"
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr "Cuenta de existencias"
+
+msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
+msgid "Account Configuration Cost Price Counterpart Account"
+msgstr "Configuración de la cuenta contrapartida del precio de coste"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "Configuración del diario de existencias"
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr "Actualizar precio de coste"
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr "Solicitar actualizar precio de coste"
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr "Actualizar precio de coste. Mostrar asiento"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Continental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Ninguno"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Logística"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Contabilización del existencias"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "OK"
+msgstr "Aceptar"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "OK"
+msgstr "Aceptar"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
 msgctxt "field:product.product,account_stock:"
 msgid "Account Stock"
 msgstr "Cuenta de existencias"
@@ -192,54 +292,6 @@ msgctxt "field:product.template.account,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Cuenta de existencias proveedor"
 
-msgctxt "field:product.update_cost_price.ask,cost_price:"
-msgid "Cost Price"
-msgstr "Precio de coste"
-
-msgctxt "field:product.update_cost_price.ask,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.ask,product:"
-msgid "Variant"
-msgstr "Variante"
-
-msgctxt "field:product.update_cost_price.ask,template:"
-msgid "Product"
-msgstr "Producto"
-
-msgctxt "field:product.update_cost_price.show_move,amount:"
-msgid "Amount"
-msgstr "Importe"
-
-msgctxt "field:product.update_cost_price.show_move,counterpart:"
-msgid "Counterpart"
-msgstr "Contrapartida"
-
-msgctxt "field:product.update_cost_price.show_move,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimales de la moneda"
-
-msgctxt "field:product.update_cost_price.show_move,description:"
-msgid "Description"
-msgstr "Descripción"
-
-msgctxt "field:product.update_cost_price.show_move,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.show_move,journal:"
-msgid "Journal"
-msgstr "Diario"
-
-msgctxt "field:product.update_cost_price.show_move,price_difference:"
-msgid "Price Difference"
-msgstr "Diferencia de precio"
-
-msgctxt "field:product.update_cost_price.show_move,stock_account:"
-msgid "Stock Account"
-msgstr "Cuenta de existencias"
-
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Se usará esta cuenta en lugar de la definida en la categoría."
@@ -279,55 +331,3 @@ msgstr "Se usará esta cuenta en lugar de la definida en la categoría."
 msgctxt "help:product.template,account_stock_supplier:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "Se usará esta cuenta en lugar de la definida en la categoría."
-
-msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
-msgid "Account Configuration Cost Price Counterpart Account"
-msgstr "Configuración de la cuenta contrapartida del precio de coste"
-
-msgctxt "model:account.configuration.stock_journal,name:"
-msgid "Account Configuration Stock Journal"
-msgstr "Configuración del diario de existencias"
-
-msgctxt "model:ir.action,name:wizard_update_cost_price"
-msgid "Update Cost Price"
-msgstr "Actualizar precio de coste"
-
-msgctxt "model:product.update_cost_price.ask,name:"
-msgid "Update Cost Price Ask"
-msgstr "Solicitar actualizar precio de coste"
-
-msgctxt "model:product.update_cost_price.show_move,name:"
-msgid "Update Cost Price Show Move"
-msgstr "Actualizar precio de coste. Mostrar asiento"
-
-msgctxt "selection:account.fiscalyear,account_stock_method:"
-msgid "Continental"
-msgstr "Continental"
-
-msgctxt "selection:account.fiscalyear,account_stock_method:"
-msgid "None"
-msgstr "Ninguno"
-
-msgctxt "view:account.configuration:"
-msgid "Stock"
-msgstr "Logística"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Account Stock"
-msgstr "Contabilización del existencias"
-
-msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
-msgid "OK"
-msgstr "Aceptar"
-
-msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
-msgid "OK"
-msgstr "Aceptar"
-
-msgctxt "wizard_button:product.update_cost_price,show_move,end:"
-msgid "Cancel"
-msgstr "Cancelar"

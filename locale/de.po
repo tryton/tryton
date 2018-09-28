@@ -131,6 +131,106 @@ msgctxt "field:product.category.account,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Konto Lager Lieferant"
 
+msgctxt "field:product.update_cost_price.ask,cost_price:"
+msgid "Cost Price"
+msgstr "Kostenpreis"
+
+msgctxt "field:product.update_cost_price.ask,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.ask,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:product.update_cost_price.ask,template:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:product.update_cost_price.show_move,amount:"
+msgid "Amount"
+msgstr "Betrag"
+
+msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgid "Counterpart"
+msgstr "Gegenkonto"
+
+msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
+msgctxt "field:product.update_cost_price.show_move,description:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "field:product.update_cost_price.show_move,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:product.update_cost_price.show_move,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgid "Price Difference"
+msgstr "Preisdifferenz"
+
+msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgid "Stock Account"
+msgstr "Lagerkonto"
+
+msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
+msgid "Account Configuration Cost Price Counterpart Account"
+msgstr "Einstellungen Buchhaltung Gegenkonto Kostenpreis"
+
+msgctxt "model:account.configuration.stock_journal,name:"
+msgid "Account Configuration Stock Journal"
+msgstr "Einstellungen Buchhaltung Journal Lager"
+
+msgctxt "model:ir.action,name:wizard_update_cost_price"
+msgid "Update Cost Price"
+msgstr "Kostenpreis aktualisieren"
+
+msgctxt "model:product.update_cost_price.ask,name:"
+msgid "Update Cost Price Ask"
+msgstr "Nachfrage Kostenpreisaktualisierung"
+
+msgctxt "model:product.update_cost_price.show_move,name:"
+msgid "Update Cost Price Show Move"
+msgstr "Kostenpreis Aktualisierung Anzeige Buchungssatz"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Continental"
+msgstr "Kontinental"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "None"
+msgstr "Keine"
+
+msgctxt "view:account.configuration:"
+msgid "Stock"
+msgstr "Lager"
+
+msgctxt "view:account.fiscalyear:"
+msgid "Account Stock"
+msgstr "Lagerbewertung"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+msgid "OK"
+msgstr "OK"
+
+msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
 msgctxt "field:product.product,account_stock:"
 msgid "Account Stock"
 msgstr "Lagerkonto"
@@ -191,54 +291,6 @@ msgctxt "field:product.template.account,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Konto Lager Lieferant"
 
-msgctxt "field:product.update_cost_price.ask,cost_price:"
-msgid "Cost Price"
-msgstr "Kostenpreis"
-
-msgctxt "field:product.update_cost_price.ask,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.ask,product:"
-msgid "Variant"
-msgstr "Variante"
-
-msgctxt "field:product.update_cost_price.ask,template:"
-msgid "Product"
-msgstr "Artikel"
-
-msgctxt "field:product.update_cost_price.show_move,amount:"
-msgid "Amount"
-msgstr "Betrag"
-
-msgctxt "field:product.update_cost_price.show_move,counterpart:"
-msgid "Counterpart"
-msgstr "Gegenkonto"
-
-msgctxt "field:product.update_cost_price.show_move,currency_digits:"
-msgid "Currency Digits"
-msgstr "Nachkommastellen Währung"
-
-msgctxt "field:product.update_cost_price.show_move,description:"
-msgid "Description"
-msgstr "Beschreibung"
-
-msgctxt "field:product.update_cost_price.show_move,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.show_move,journal:"
-msgid "Journal"
-msgstr "Journal"
-
-msgctxt "field:product.update_cost_price.show_move,price_difference:"
-msgid "Price Difference"
-msgstr "Preisdifferenz"
-
-msgctxt "field:product.update_cost_price.show_move,stock_account:"
-msgid "Stock Account"
-msgstr "Lagerkonto"
-
 msgctxt "help:product.product,account_stock:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
@@ -298,55 +350,3 @@ msgid "This account will be used instead of the one defined on the category."
 msgstr ""
 "Dieses Konto wird benutzt anstelle des Kontos, welches in der Kategorie "
 "eingestellt ist."
-
-msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
-msgid "Account Configuration Cost Price Counterpart Account"
-msgstr "Einstellungen Buchhaltung Gegenkonto Kostenpreis"
-
-msgctxt "model:account.configuration.stock_journal,name:"
-msgid "Account Configuration Stock Journal"
-msgstr "Einstellungen Buchhaltung Journal Lager"
-
-msgctxt "model:ir.action,name:wizard_update_cost_price"
-msgid "Update Cost Price"
-msgstr "Kostenpreis aktualisieren"
-
-msgctxt "model:product.update_cost_price.ask,name:"
-msgid "Update Cost Price Ask"
-msgstr "Nachfrage Kostenpreisaktualisierung"
-
-msgctxt "model:product.update_cost_price.show_move,name:"
-msgid "Update Cost Price Show Move"
-msgstr "Kostenpreis Aktualisierung Anzeige Buchungssatz"
-
-msgctxt "selection:account.fiscalyear,account_stock_method:"
-msgid "Continental"
-msgstr "Kontinental"
-
-msgctxt "selection:account.fiscalyear,account_stock_method:"
-msgid "None"
-msgstr "Keine"
-
-msgctxt "view:account.configuration:"
-msgid "Stock"
-msgstr "Lager"
-
-msgctxt "view:account.fiscalyear:"
-msgid "Account Stock"
-msgstr "Lagerbewertung"
-
-msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:product.update_cost_price,show_move,end:"
-msgid "Cancel"
-msgstr "Abbrechen"
