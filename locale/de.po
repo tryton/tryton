@@ -8,7 +8,7 @@ msgstr "Ein Schlüssel kann nur einmal vergeben werden."
 
 msgctxt "error:web.user:"
 msgid "E-mail must be unique"
-msgstr "Eine E-Mail kann nur einmal vergeben werden."
+msgstr "Es existiert bereits ein Nutzer mit dieser E-Mail."
 
 msgctxt "field:web.user,active:"
 msgid "Active"
