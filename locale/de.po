@@ -7,11 +7,12 @@ msgid ""
 "You are trying to create a recursive BOM with product \"%s\" which is not "
 "allowed."
 msgstr ""
-"Erstellung von rekursiven Stücklisten mit Variante \"%s\" ist nicht erlaubt."
+"Die Erstellung von rekursiven Stücklisten mit Artikel \"%s\" ist nicht "
+"erlaubt."
 
 msgctxt "error:production.bom.input:"
 msgid "Product must be unique per BOM."
-msgstr "Eine Variante kann nur einmal pro Stückliste eingetragen werden."
+msgstr "Ein Artikel kann nur einmal pro Stückliste eingetragen werden."
 
 msgctxt "error:production.bom.input:"
 msgid "You can not create recursive BOMs."
@@ -23,7 +24,7 @@ msgstr " "
 
 msgctxt "error:production.bom.output:"
 msgid "Product must be unique per BOM."
-msgstr "Eine Variante kann nur einmal pro Stückliste eingetragen werden."
+msgstr "Ein Artikel kann nur einmal pro Stückliste eingetragen werden."
 
 msgctxt "error:production.bom.output:"
 msgid "You can not create recursive BOMs."
@@ -71,7 +72,7 @@ msgstr "ID"
 
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:product.product-production.bom,rec_name:"
 msgid "Record Name"
@@ -151,7 +152,7 @@ msgstr "Geplantes Startdatum"
 
 msgctxt "field:production,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:production,quantity:"
 msgid "Quantity"
@@ -263,7 +264,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
@@ -311,7 +312,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
@@ -351,7 +352,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:production.bom.tree,quantity:"
 msgid "Quantity"
@@ -379,7 +380,7 @@ msgstr "ID"
 
 msgctxt "field:production.bom.tree.open.start,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:production.bom.tree.open.start,quantity:"
 msgid "Quantity"
@@ -484,7 +485,7 @@ msgstr "Beschaffungszeit"
 
 msgctxt "field:production.lead_time,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:production.lead_time,rec_name:"
 msgid "Record Name"
@@ -532,7 +533,7 @@ msgstr "Stücklisten"
 
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
-msgstr "Produktionen"
+msgstr "Produktionsaufträge"
 
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
@@ -540,7 +541,7 @@ msgstr "Einstellungen Produktion"
 
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr "Produktionen"
+msgstr "Produktionsaufträge"
 
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
@@ -640,7 +641,7 @@ msgstr "Produktion"
 
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
-msgstr "Produktionen"
+msgstr "Produktionsaufträge"
 
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
@@ -648,11 +649,11 @@ msgstr "Einstellungen Produktion"
 
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr "Produktionen"
+msgstr "Produktionsaufträge"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
-msgstr "Variante - Stückliste"
+msgstr "Artikel - Stückliste"
 
 msgctxt "model:production,name:"
 msgid "Production"
@@ -744,7 +745,7 @@ msgstr "Produktion"
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Folgende Varianten können nicht zugewiesen werden:"
+msgstr "Folgende Artikel können nicht zugewiesen werden:"
 
 msgctxt "view:production.bom:"
 msgid "Lines"

@@ -711,9 +711,10 @@ msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:production,state:"
 msgid "Canceled"
-msgstr ""
+msgstr "Canel"
 
 msgctxt "selection:production,state:"
 msgid "Done"
@@ -763,9 +764,10 @@ msgctxt "wizard_button:production.assign,failed,force:"
 msgid "Force Assign"
 msgstr ""
 
+#, fuzzy
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Canel"
 
 msgctxt "wizard_button:production.bom.tree.open,start,tree:"
 msgid "OK"
