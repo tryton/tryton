@@ -1,0 +1,72 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:sale.subscription.line:"
+msgid "The lines \"%(line1)s\" and \"%(line2)s\" for the same lot overlap."
+msgstr ""
+"Les lignes « %(line1)s » et « %(line2)s » pour le même lot se chevauchent."
+
+msgctxt "field:sale.subscription.line,asset_lot:"
+msgid "Asset Lot"
+msgstr "Lot d'actif"
+
+msgctxt "field:sale.subscription.line,asset_lot_required:"
+msgid "Asset Lot Required"
+msgstr "Lot d'actif requis"
+
+msgctxt "field:sale.subscription.service,asset_lots:"
+msgid "Asset Lots"
+msgstr "Lots d'actif"
+
+msgctxt "field:sale.subscription.service,asset_lots_available:"
+msgid "Available Asset Lots"
+msgstr "Lot d'actif disponible"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,create_date:"
+msgid "Create Date"
+msgstr "Date de création"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,create_uid:"
+msgid "Create User"
+msgstr "Créé par"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,rec_name:"
+msgid "Record Name"
+msgstr "Nom d'enregistrement"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,service:"
+msgid "Service"
+msgstr "Service"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,write_date:"
+msgid "Write Date"
+msgstr "Date de modification"
+
+msgctxt "field:sale.subscription.service-stock.lot.asset,write_uid:"
+msgid "Write User"
+msgstr "Mis à jour par"
+
+msgctxt "field:stock.lot,subscribed:"
+msgid "Subscribed"
+msgstr "Abonné"
+
+msgctxt "field:stock.lot,subscription_lines:"
+msgid "Subscription Lines"
+msgstr "Lignes d'abonnement"
+
+msgctxt "field:stock.lot,subscription_services:"
+msgid "Services"
+msgstr "Services"
+
+msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
+msgid "Subscription Service - Stock Lot Asset"
+msgstr "Service d'abonnement - Lot d'actif"
