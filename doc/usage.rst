@@ -152,18 +152,6 @@ Preferences:
   I.e. logging in with the same credentials from different computers
   always restores the same preferences.
 
-  * Name: Real name of the Tryton user.
-  * Password: Password of the Tryton user.
-  * Email: Email address of the Tryton user.
-  * Signature: Signature block for the Tryton user.
-  * Menu Action: Defines the action which is called as the
-    `Menu`_.
-  * Language: Language of the client interface.
-  * Timezone: The local timezone where the user/client resides.
-  * Groups: Displays the users membership to access groups.
-  * Applications: A list of applications along with their access
-    key and the authorization state.
-
 Options
 ^^^^^^^
 The Options menu sets up several visual and context depending preferences.
