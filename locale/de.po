@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_allocation_method:"
 msgid "Carrier Cost Allocation Method"
-msgstr "Frachtkosten Zuordnungsmethode"
+msgstr "Zuordnungsmethode Versandkosten"
 
 msgctxt "field:stock.move,unit_shipment_cost:"
 msgid "Unit Shipment Cost"
@@ -12,7 +12,7 @@ msgstr "Einheit Lieferpostenkosten"
 
 msgctxt "field:stock.shipment.in,carrier:"
 msgid "Carrier"
-msgstr "Frachtführer"
+msgstr "Versanddienstleister"
 
 msgctxt "field:stock.shipment.in,cost:"
 msgid "Cost"
