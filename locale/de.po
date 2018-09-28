@@ -84,7 +84,7 @@ msgstr "ID"
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:sale.extra.line,product_uom_category:"
 msgid "Product UoM Category"
