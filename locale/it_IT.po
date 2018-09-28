@@ -14,12 +14,8 @@ msgctxt "field:account.fr.fec.result,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.fr.fec.start,deferral_journal:"
-msgid "Deferral Journal"
-msgstr ""
-
-msgctxt "field:account.fr.fec.start,deferral_post_number:"
-msgid "Deferral Number"
+msgctxt "field:account.fr.fec.start,deferral_period:"
+msgid "Deferral Period"
 msgstr ""
 
 #, fuzzy
@@ -37,12 +33,10 @@ msgctxt "field:account.fr.fec.start,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "help:account.fr.fec.start,deferral_journal:"
-msgid "Journal used for pseudo deferral move"
-msgstr ""
-
-msgctxt "help:account.fr.fec.start,deferral_post_number:"
-msgid "Post number used for pseudo deferral move"
+msgctxt "help:account.fr.fec.start,deferral_period:"
+msgid ""
+"The period to exclude which contains the moves to balance non-deferral "
+"account"
 msgstr ""
 
 #, fuzzy
