@@ -1013,6 +1013,7 @@
                 this.set_current_record(null);
             }
             this.group.add_fields(fields);
+            this.group.exclude_field = this.exclude_field;
         },
         new_group: function(context) {
             if (!context) {
