@@ -40,7 +40,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr "Variantenlieferant Tag"
+msgstr "Lieferant Tag"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
