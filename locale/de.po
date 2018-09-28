@@ -420,7 +420,7 @@ msgstr "ID"
 
 msgctxt "field:sale.subscription.service,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:sale.subscription.service,rec_name:"
 msgid "Record Name"
@@ -510,6 +510,10 @@ msgstr "Abonnement Dienstleistungen"
 msgctxt "model:ir.action,name:act_subscription_form"
 msgid "Subscriptions"
 msgstr "Abonnements"
+
+msgctxt "model:ir.action,name:act_subscription_invoice_relate"
+msgid "Invoices"
+msgstr "Rechnungen"
 
 msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
 msgid "Consumptions"

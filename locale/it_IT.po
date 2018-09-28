@@ -217,17 +217,20 @@ msgctxt "field:sale.subscription.line,subscription:"
 msgid "Subscription"
 msgstr "Subscription"
 
+#, fuzzy
 msgctxt "field:sale.subscription.line,subscription_end_date:"
 msgid "Subscription End Date"
-msgstr ""
+msgstr "Subscription Services"
 
+#, fuzzy
 msgctxt "field:sale.subscription.line,subscription_start_date:"
 msgid "Subscription Start Date"
-msgstr ""
+msgstr "Subscription Services"
 
+#, fuzzy
 msgctxt "field:sale.subscription.line,subscription_state:"
 msgid "Subscription State"
-msgstr ""
+msgstr "Subscription Services"
 
 msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"
@@ -513,6 +516,10 @@ msgctxt "model:ir.action,name:act_subscription_form"
 msgid "Subscriptions"
 msgstr "Subscriptions"
 
+msgctxt "model:ir.action,name:act_subscription_invoice_relate"
+msgid "Invoices"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
 msgid "Consumptions"
 msgstr "Consumptions"
@@ -613,13 +620,15 @@ msgctxt "model:sale.subscription.create_invoice.start,name:"
 msgid "Create Subscription Invoice"
 msgstr "Create Subscription Invoices"
 
+#, fuzzy
 msgctxt "model:sale.subscription.line,name:"
 msgid "Subscription Line"
-msgstr ""
+msgstr "Subscription Services"
 
+#, fuzzy
 msgctxt "model:sale.subscription.line.consumption,name:"
 msgid "Subscription Line Consumption"
-msgstr ""
+msgstr "Generate Subscription Line Consumptions"
 
 #, fuzzy
 msgctxt "model:sale.subscription.line.consumption.create.start,name:"
@@ -742,9 +751,10 @@ msgctxt "view:sale.subscription.create_invoice.start:"
 msgid "Create Subscription Invoices for date"
 msgstr "Create Subscription Invoices"
 
+#, fuzzy
 msgctxt "view:sale.subscription.line.consumption.create.start:"
 msgid "Create Subscription Line Consumptions for date"
-msgstr ""
+msgstr "Generate Subscription Line Consumptions"
 
 msgctxt "view:sale.subscription.line:"
 msgid "General"
