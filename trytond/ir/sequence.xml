@@ -65,8 +65,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="sequence_strict_view_form"/>
             <field name="act_window" ref="act_sequence_strict_form"/>
         </record>
-        <menuitem parent="menu_sequences"
-            action="act_sequence_strict_form" id="menu_sequence_strict_form"/>
+        <menuitem
+            parent="menu_sequences"
+            action="act_sequence_strict_form"
+            icon="tryton-list"
+            id="menu_sequence_strict_form"/>
 
         <record model="ir.ui.view" id="sequence_type_view_form">
             <field name="model">ir.sequence.type</field>
