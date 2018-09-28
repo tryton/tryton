@@ -6,6 +6,10 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "La duración de la línea \"%(line)s\" debe ser positiva."
 
+msgctxt "error:timesheet.line:"
+msgid "The UUID of timesheet line must be unique."
+msgstr ""
+
 msgctxt "error:timesheet.work:"
 msgid ""
 "The company of the work \"%(work)s\" is different than the origin's company"
@@ -183,6 +187,10 @@ msgctxt "field:timesheet.line,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr ""
+
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
 msgstr ""
@@ -351,13 +359,15 @@ msgctxt "model:ir.action,name:act_hours_employee_form"
 msgid "Hours per Employee"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_monthly_form"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Horas por empleado por mes"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Horas por empleado por semana"
 
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
@@ -387,13 +397,15 @@ msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_monthly"
 msgid "Hours per Employee per Month"
-msgstr ""
+msgstr "Horas por empleado por mes"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
-msgstr ""
+msgstr "Horas por empleado por semana"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"

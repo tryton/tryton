@@ -6,6 +6,10 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "ກຳນົດເວລາຂອງ \"%(line)s\" ຕ້ອງເປັນບວກ"
 
+msgctxt "error:timesheet.line:"
+msgid "The UUID of timesheet line must be unique."
+msgstr ""
+
 #, fuzzy
 msgctxt "error:timesheet.work:"
 msgid ""
@@ -184,6 +188,10 @@ msgstr "ບັດ"
 
 msgctxt "field:timesheet.line,rec_name:"
 msgid "Record Name"
+msgstr ""
+
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
 msgstr ""
 
 msgctxt "field:timesheet.line,work:"

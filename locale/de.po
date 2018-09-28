@@ -6,6 +6,10 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "Zeitdauer von Zeile \"%(line)s\" muss positiv sein."
 
+msgctxt "error:timesheet.line:"
+msgid "The UUID of timesheet line must be unique."
+msgstr "Die UUID der Zeiterfassungsposition muss eindeutig sein."
+
 msgctxt "error:timesheet.work:"
 msgid ""
 "The company of the work \"%(work)s\" is different than the origin's company"
@@ -185,6 +189,10 @@ msgctxt "field:timesheet.line,rec_name:"
 msgid "Record Name"
 msgstr "Bezeichnung des Datensatzes"
 
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr "UUID"
+
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
 msgstr "Tätigkeit"
@@ -251,7 +259,7 @@ msgstr "Zeiterfassung Ende"
 
 msgctxt "field:timesheet.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
+msgstr "Zeiterfassungspositionen"
 
 msgctxt "field:timesheet.work,timesheet_start_date:"
 msgid "Timesheet Start"
@@ -367,11 +375,11 @@ msgstr "Zur Zeiterfassung"
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr "Zeiterfassung Positionen"
+msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Zeiterfassung Positionen"
+msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
@@ -403,11 +411,11 @@ msgstr "Zur Zeiterfassung"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Zeiterfassung Positionen"
+msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Berichte"
+msgstr "Auswertungen"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
@@ -443,7 +451,7 @@ msgstr "Stunden pro Mitarbeiter und Woche"
 
 msgctxt "model:timesheet.line,name:"
 msgid "Timesheet Line"
-msgstr "Zeitposition"
+msgstr "Zeiterfassungsposition"
 
 msgctxt "model:timesheet.line.enter.start,name:"
 msgid "Enter Lines"

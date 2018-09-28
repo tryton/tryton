@@ -6,6 +6,10 @@ msgctxt "error:timesheet.line:"
 msgid "Duration of line \"%(line)s\" must be positive."
 msgstr "El temps de la línia \"%(line)s\" ha de ser positiu."
 
+msgctxt "error:timesheet.line:"
+msgid "The UUID of timesheet line must be unique."
+msgstr "El UUID de la línia del full de treball ha de ser únic."
+
 msgctxt "error:timesheet.work:"
 msgid ""
 "The company of the work \"%(work)s\" is different than the origin's company"
@@ -184,6 +188,10 @@ msgstr "ID"
 msgctxt "field:timesheet.line,rec_name:"
 msgid "Record Name"
 msgstr "Nom del registre"
+
+msgctxt "field:timesheet.line,uuid:"
+msgid "UUID"
+msgstr "UUID"
 
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
