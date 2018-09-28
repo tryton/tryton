@@ -25,18 +25,29 @@ msgstr ""
 "Vous ne pouvez pas changer le type d'un produit qui a déjà fait l'objet de "
 "mouvements de stock"
 
+msgctxt "error:stock.inventory.count:"
+msgid "No existing line found for %(search)s."
+msgstr "Aucune ligne existante n'a été trouvée pour %(search)s."
+
 msgctxt "error:stock.inventory.line:"
 msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
 msgstr ""
-"Une option pour les quantités vides manque pour l'inventaire « %(inventory)s"
-" »."
+"Une option pour les quantités vides manque pour l'inventaire "
+"« %(inventory)s »."
 
 msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "La quantité de la ligne doit être positive."
 
+msgctxt "error:stock.inventory.line:"
+msgid ""
+"The line \"%(line)s\" must be on canceled or draft inventory to be deleted."
+msgstr ""
+"La ligne « %(line)s » doit être sur un inventaire annulé ou en brouillon "
+"pour être supprimée."
+
 msgctxt "error:stock.inventory:"
-msgid "Inventory \"%s\" must be cancelled before deletion."
+msgid "Inventory \"%s\" must be canceled before deletion."
 msgstr "L'inventaire « %s » doit être annulé avant suppression."
 
 msgctxt "error:stock.inventory:"
@@ -46,8 +57,8 @@ msgstr "La ligne « %s » n'est pas unique pour l'inventaire « %s »."
 msgctxt "error:stock.location:"
 msgid "Location \"%(location)s\" must be a child of warehouse \"%(warehouse)s\"."
 msgstr ""
-"L'emplacement « %(location)s » doit être un sous-emplacement de l'entrepôt «"
-" %(warehouse)s »."
+"L'emplacement « %(location)s » doit être un sous-emplacement de l'entrepôt "
+"« %(warehouse)s »."
 
 msgctxt "error:stock.location:"
 msgid ""
@@ -88,8 +99,8 @@ msgstr ""
 msgctxt "error:stock.move:"
 msgid "You can not modify move \"%(move)s\" because period \"%(period)s\" is closed."
 msgstr ""
-"Vous ne pouvez modifier le mouvement « %(move)s » car la période « "
-"%(period)s » est clôturée."
+"Vous ne pouvez modifier le mouvement « %(move)s » car la période "
+"« %(period)s » est clôturée."
 
 msgctxt "error:stock.move:"
 msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
@@ -443,6 +454,46 @@ msgstr "Date de mise à jour"
 msgctxt "field:stock.inventory,write_uid:"
 msgid "Write User"
 msgstr "Mis à jour par"
+
+msgctxt "field:stock.inventory.count.quantity,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.inventory.count.quantity,line:"
+msgid "Line"
+msgstr "Ligne"
+
+msgctxt "field:stock.inventory.count.quantity,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:stock.inventory.count.quantity,quantity_added:"
+msgid "Added Quantity"
+msgstr "Quantité ajoutée"
+
+msgctxt "field:stock.inventory.count.quantity,quantity_resulting:"
+msgid "Resulting Quantity"
+msgstr "Quantité résultante"
+
+msgctxt "field:stock.inventory.count.quantity,unit_digits:"
+msgid "Unit Digits"
+msgstr "Décimales de l'unité"
+
+msgctxt "field:stock.inventory.count.quantity,uom:"
+msgid "UOM"
+msgstr "UDM"
+
+msgctxt "field:stock.inventory.count.search,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.inventory.count.search,search:"
+msgid "Search"
+msgstr "Recherche"
+
+msgctxt "field:stock.inventory.count.search,search_model:"
+msgid "Search Model"
+msgstr "Modèle recherché"
 
 msgctxt "field:stock.inventory.line,create_date:"
 msgid "Create Date"
@@ -1508,6 +1559,10 @@ msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
 msgstr "Liste de restockage"
 
+msgctxt "model:ir.action,name:wizard_inventory_count"
+msgid "Count"
+msgstr "Compter"
+
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
 msgstr "Recalculer le prix de revient"
@@ -1661,17 +1716,25 @@ msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
 msgstr "Ajouter une ligne d'inventaire pour chaque produit manquant"
 
+msgctxt "model:ir.model.button,help:inventory_count_button"
+msgid "Launch the wizard to count products"
+msgstr "Lance l’assistant pour compter les produits"
+
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
-msgid "Complete Inventory"
-msgstr "Compléter l'inventaire"
+msgid "Complete"
+msgstr "Achever"
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
 msgstr "Confirmer"
+
+msgctxt "model:ir.model.button,string:inventory_count_button"
+msgid "Count"
+msgstr "Compter"
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
@@ -1940,6 +2003,14 @@ msgstr "Configuration de stock Séquence"
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
 msgstr "Inventaire du stock"
+
+msgctxt "model:stock.inventory.count.quantity,name:"
+msgid "Stock Inventory Count"
+msgstr "Comptage d'inventaire de stock"
+
+msgctxt "model:stock.inventory.count.search,name:"
+msgid "Stock Inventory Count"
+msgstr "Comptage d'inventaire de stock"
 
 msgctxt "model:stock.inventory.line,name:"
 msgid "Stock Inventory Line"
@@ -2293,6 +2364,10 @@ msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
 msgstr "Brouillon"
 
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Product"
+msgstr "Produit"
+
 msgctxt "selection:stock.inventory.line,inventory_state:"
 msgid "Canceled"
 msgstr "Annulée"
@@ -2522,14 +2597,6 @@ msgid "Unable to assign those products:"
 msgstr "Impossible d'assigner ces produits :"
 
 msgctxt "view:stock.shipment.out.return:"
-msgid "Incoming Moves"
-msgstr "Mouvements entrants"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Inventory Moves"
-msgstr "Mouvements internes"
-
-msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
 msgstr "Autres informations"
 
@@ -2540,6 +2607,22 @@ msgstr "Autres informations"
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
 msgstr "Mouvements sortants"
+
+msgctxt "wizard_button:stock.inventory.count,quantity,add:"
+msgid "Add"
+msgstr "Ajouter"
+
+msgctxt "wizard_button:stock.inventory.count,quantity,search:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:stock.inventory.count,search,end:"
+msgid "End"
+msgstr "Terminer"
+
+msgctxt "wizard_button:stock.inventory.count,search,quantity:"
+msgid "Select"
+msgstr "Sélectionner"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
 msgid "OK"

@@ -19,6 +19,10 @@ msgid ""
 "You cannot change the type for a product which is associated to stock moves."
 msgstr ""
 
+msgctxt "error:stock.inventory.count:"
+msgid "No existing line found for %(search)s."
+msgstr ""
+
 msgctxt "error:stock.inventory.line:"
 msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
 msgstr ""
@@ -27,8 +31,13 @@ msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr ""
 
+msgctxt "error:stock.inventory.line:"
+msgid ""
+"The line \"%(line)s\" must be on canceled or draft inventory to be deleted."
+msgstr ""
+
 msgctxt "error:stock.inventory:"
-msgid "Inventory \"%s\" must be cancelled before deletion."
+msgid "Inventory \"%s\" must be canceled before deletion."
 msgstr ""
 
 msgctxt "error:stock.inventory:"
@@ -450,6 +459,51 @@ msgid "Write User"
 msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 #, fuzzy
+msgctxt "field:stock.inventory.count.quantity,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+#, fuzzy
+msgctxt "field:stock.inventory.count.quantity,line:"
+msgid "Line"
+msgstr "ຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:stock.inventory.count.quantity,product:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+msgctxt "field:stock.inventory.count.quantity,quantity_added:"
+msgid "Added Quantity"
+msgstr ""
+
+msgctxt "field:stock.inventory.count.quantity,quantity_resulting:"
+msgid "Resulting Quantity"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.inventory.count.quantity,unit_digits:"
+msgid "Unit Digits"
+msgstr "ຫົວໜ່ວຍເສດ"
+
+msgctxt "field:stock.inventory.count.quantity,uom:"
+msgid "UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.inventory.count.search,id:"
+msgid "ID"
+msgstr "ເລດລຳດັບ"
+
+msgctxt "field:stock.inventory.count.search,search:"
+msgid "Search"
+msgstr ""
+
+msgctxt "field:stock.inventory.count.search,search_model:"
+msgid "Search Model"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:stock.inventory.line,create_date:"
 msgid "Create Date"
 msgstr "ສ້າງວັນທີ"
@@ -651,9 +705,10 @@ msgctxt "field:stock.location.lead_time,sequence:"
 msgid "Sequence"
 msgstr "ລໍາດັບ"
 
+#, fuzzy
 msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
-msgstr ""
+msgstr "Warehouse"
 
 #, fuzzy
 msgctxt "field:stock.location.lead_time,warehouse_to:"
@@ -1647,6 +1702,10 @@ msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
 msgstr "Restocking List"
 
+msgctxt "model:ir.action,name:wizard_inventory_count"
+msgid "Count"
+msgstr ""
+
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
 msgstr "Recompute Cost Price"
@@ -1819,17 +1878,25 @@ msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
 msgstr "Add an inventory line for each missing products"
 
+msgctxt "model:ir.model.button,help:inventory_count_button"
+msgid "Launch the wizard to count products"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
-msgid "Complete Inventory"
-msgstr "Complete Inventory"
+msgid "Complete"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
 msgstr "Confirm"
+
+msgctxt "model:ir.model.button,string:inventory_count_button"
+msgid "Count"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
@@ -2124,6 +2191,14 @@ msgstr ""
 
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
+msgstr ""
+
+msgctxt "model:stock.inventory.count.quantity,name:"
+msgid "Stock Inventory Count"
+msgstr ""
+
+msgctxt "model:stock.inventory.count.search,name:"
+msgid "Stock Inventory Count"
 msgstr ""
 
 msgctxt "model:stock.inventory.line,name:"
@@ -2524,6 +2599,11 @@ msgid "Draft"
 msgstr "ຊົ່ວຄາວ"
 
 #, fuzzy
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+#, fuzzy
 msgctxt "selection:stock.inventory.line,inventory_state:"
 msgid "Canceled"
 msgstr "ຍົກເລີກແລ້ວ"
@@ -2788,14 +2868,6 @@ msgid "Unable to assign those products:"
 msgstr ""
 
 msgctxt "view:stock.shipment.out.return:"
-msgid "Incoming Moves"
-msgstr ""
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Inventory Moves"
-msgstr ""
-
-msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
 msgstr ""
 
@@ -2805,6 +2877,23 @@ msgstr ""
 
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
+msgstr ""
+
+msgctxt "wizard_button:stock.inventory.count,quantity,add:"
+msgid "Add"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:stock.inventory.count,quantity,search:"
+msgid "Cancel"
+msgstr "Cancel"
+
+msgctxt "wizard_button:stock.inventory.count,search,end:"
+msgid "End"
+msgstr ""
+
+msgctxt "wizard_button:stock.inventory.count,search,quantity:"
+msgid "Select"
 msgstr ""
 
 #, fuzzy

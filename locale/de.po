@@ -25,6 +25,10 @@ msgstr ""
 "Für Artikel, die Lagerbewegungen zugeordnet sind, kann der Typ nicht "
 "geändert werden."
 
+msgctxt "error:stock.inventory.count:"
+msgid "No existing line found for %(search)s."
+msgstr "Keine Position für %(search)s gefunden."
+
 msgctxt "error:stock.inventory.line:"
 msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
 msgstr "Es fehlt eine Option für Leermengen im Lagerbestand \"%(inventory)s\"."
@@ -33,8 +37,15 @@ msgctxt "error:stock.inventory.line:"
 msgid "Line quantity must be positive."
 msgstr "Anzahl auf der Zeile muss einen positiven Wert aufweisen."
 
+msgctxt "error:stock.inventory.line:"
+msgid ""
+"The line \"%(line)s\" must be on canceled or draft inventory to be deleted."
+msgstr ""
+"Um die Position \"%(line)s\" zu löschen, muss sie in einem Inventar mit dem "
+"Status \"Annuliert\" oder \"Entwurf\" sein."
+
 msgctxt "error:stock.inventory:"
-msgid "Inventory \"%s\" must be cancelled before deletion."
+msgid "Inventory \"%s\" must be canceled before deletion."
 msgstr ""
 "Bestandsänderung \"%s\" muss annulliert werden, bevor sie gelöscht werden "
 "kann."
@@ -132,7 +143,7 @@ msgstr ""
 msgctxt "error:stock.shipment.in.return:"
 msgid "Supplier Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
-"Lieferposten Rückgabe an Lieferant \"%s\" muss annulliert werden, bevor er "
+"Die Warenrückgabe (an Lieferanten) \"%s\" muss annulliert werden, bevor sie "
 "gelöscht werden kann."
 
 msgctxt "error:stock.shipment.in:"
@@ -153,26 +164,26 @@ msgstr ""
 msgctxt "error:stock.shipment.in:"
 msgid "Supplier Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
-"Lieferposten von Lieferant \"%s\" muss annulliert werden, bevor er gelöscht "
-"werden kann."
+"Die Wareneingangslieferung \"%s\" muss annulliert werden, bevor sie gelöscht"
+" werden kann."
 
 msgctxt "error:stock.shipment.internal:"
 msgid "Internal Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
-"Der Interne Lieferposten \"%s\" muss annulliert werden, bevor er gelöscht "
+"Die Interne Lieferung \"%s\" muss annulliert werden, bevor sie gelöscht "
 "werden kann."
 
 msgctxt "error:stock.shipment.out.return:"
 msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
-"Die Warenrücknahme Kunde \"%s\" muss annulliert werden, bevor sie gelöscht "
-"werden kann."
+"Die Warenrücknahme (von Kunden) \"%s\" muss annulliert werden, bevor sie "
+"gelöscht werden kann."
 
 msgctxt "error:stock.shipment.out:"
 msgid "Customer Shipment \"%s\" must be cancelled before deletion."
 msgstr ""
-"Der Lieferposten Kunde \"%s\" muss annulliert werden, bevor er gelöscht "
-"werden kann."
+"Die Warenausgangslieferung \"%s\" muss annulliert werden, bevor sie gelöscht"
+" werden kann."
 
 msgctxt "field:party.address,delivery:"
 msgid "Delivery"
@@ -284,27 +295,27 @@ msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
-msgstr "Nummernkreis Warenrückgabe"
+msgstr "Nummernkreis Warenrückgabe (an Lieferanten)"
 
 msgctxt "field:stock.configuration,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Nummernkreis Lieferposten von Lieferanten"
+msgstr "Nummernkreis Wareneingangslieferung"
 
 msgctxt "field:stock.configuration,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
-msgstr "Nummernkreis Interne Lieferposten"
+msgstr "Nummernkreis Interne Lieferungen"
 
 msgctxt "field:stock.configuration,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
-msgstr "Transit Interner Lieferposten"
+msgstr "Transit Interne Lieferung"
 
 msgctxt "field:stock.configuration,shipment_out_return_sequence:"
 msgid "Customer Return Shipment Sequence"
-msgstr "Nummernkreis Warenrücknahme"
+msgstr "Nummernkreis Warenrücknahme (von Kunden)"
 
 msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Nummernkreis Lieferposten an Kunden"
+msgstr "Nummernkreis Warenausgangslieferungen"
 
 msgctxt "field:stock.configuration,write_date:"
 msgid "Write Date"
@@ -332,7 +343,7 @@ msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
-msgstr "Transit Interner Lieferposten"
+msgstr "Transit Interne Lieferung"
 
 msgctxt "field:stock.configuration.location,write_date:"
 msgid "Write Date"
@@ -368,23 +379,23 @@ msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
-msgstr "Nummernkreis Warenrückgabe"
+msgstr "Nummernkreis Warenrückgabe (an Lieferanten)"
 
 msgctxt "field:stock.configuration.sequence,shipment_in_sequence:"
 msgid "Supplier Shipment Sequence"
-msgstr "Nummernkreis Lieferposten von Lieferanten"
+msgstr "Nummernkreis Wareneingangslieferung"
 
 msgctxt "field:stock.configuration.sequence,shipment_internal_sequence:"
 msgid "Internal Shipment Sequence"
-msgstr "Nummernkreis Interne Lieferposten"
+msgstr "Nummernkreis Interne Lieferung"
 
 msgctxt "field:stock.configuration.sequence,shipment_out_return_sequence:"
 msgid "Customer Return Shipment Sequence"
-msgstr "Nummernkreis Warenrücknahme"
+msgstr "Nummernkreis Warenrücknahme (von Kunden)"
 
 msgctxt "field:stock.configuration.sequence,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
-msgstr "Nummernkreis Lieferposten an Kunden"
+msgstr "Nummernkreis Warenausgangslieferung"
 
 msgctxt "field:stock.configuration.sequence,write_date:"
 msgid "Write Date"
@@ -450,6 +461,46 @@ msgctxt "field:stock.inventory,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:stock.inventory.count.quantity,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.inventory.count.quantity,line:"
+msgid "Line"
+msgstr "Position"
+
+msgctxt "field:stock.inventory.count.quantity,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:stock.inventory.count.quantity,quantity_added:"
+msgid "Added Quantity"
+msgstr "Hinzugefügte Menge"
+
+msgctxt "field:stock.inventory.count.quantity,quantity_resulting:"
+msgid "Resulting Quantity"
+msgstr "Resultierende Menge"
+
+msgctxt "field:stock.inventory.count.quantity,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:stock.inventory.count.quantity,uom:"
+msgid "UOM"
+msgstr "Maßeinheit"
+
+msgctxt "field:stock.inventory.count.search,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:stock.inventory.count.search,search:"
+msgid "Search"
+msgstr "Suchen"
+
+msgctxt "field:stock.inventory.count.search,search_model:"
+msgid "Search Model"
+msgstr "Gesuchtes Modell"
+
 msgctxt "field:stock.inventory.line,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -480,7 +531,7 @@ msgstr "Lagerbewegungen"
 
 msgctxt "field:stock.inventory.line,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:stock.inventory.line,quantity:"
 msgid "Quantity"
@@ -692,7 +743,7 @@ msgstr "Geplantes Datum"
 
 msgctxt "field:stock.move,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:stock.move,product_uom_category:"
 msgid "Product Uom Category"
@@ -808,7 +859,7 @@ msgstr "Lagerperiode"
 
 msgctxt "field:stock.period.cache,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:stock.period.cache,rec_name:"
 msgid "Record Name"
@@ -1448,15 +1499,15 @@ msgstr "Lagerperioden"
 
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
-msgstr "Variantenanzahl nach Warenlager"
+msgstr "Artikelanzahl je Warenlager"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
-msgstr "Varianten"
+msgstr "Artikel"
 
 msgctxt "model:ir.action,name:act_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Lieferposten von Lieferanten"
+msgstr "Wareneingangslieferungen"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
@@ -1464,19 +1515,19 @@ msgstr "Warenrückgaben (an Lieferanten)"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
-msgstr "Interne Lieferposten"
+msgstr "Interne Lieferungen"
 
 msgctxt "model:ir.action,name:act_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Lieferposten an Kunden"
+msgstr "Warenausgangslieferungen"
 
 msgctxt "model:ir.action,name:act_shipment_out_form2"
 msgid "Customer Shipments"
-msgstr "Lieferposten an Kunden"
+msgstr "Warenausgangslieferungen"
 
 msgctxt "model:ir.action,name:act_shipment_out_form3"
 msgid "Supplier Shipments"
-msgstr "Lieferposten von Lieferanten"
+msgstr "Wareneingangslieferungen"
 
 msgctxt "model:ir.action,name:act_shipment_out_return_form"
 msgid "Customer Return Shipments"
@@ -1492,7 +1543,7 @@ msgstr "Einlagerungsliste"
 
 msgctxt "model:ir.action,name:report_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Interner Lieferposten"
+msgstr "Interne Lieferung"
 
 msgctxt "model:ir.action,name:report_shipment_out_delivery_note"
 msgid "Delivery Note"
@@ -1505,6 +1556,10 @@ msgstr "Pickliste"
 msgctxt "model:ir.action,name:report_shipment_out_return_restocking_list"
 msgid "Restocking List"
 msgstr "Einlagerungsliste"
+
+msgctxt "model:ir.action,name:wizard_inventory_count"
+msgid "Count"
+msgstr "Anzahl"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
@@ -1520,7 +1575,7 @@ msgstr "Zuweisung Lieferposten Intern"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Customer Shipment"
-msgstr "Lieferposten Kunde zuweisen"
+msgstr "Warenausgangslieferung zuweisen"
 
 msgctxt "model:ir.action.act_window.domain,name:act_inventory_form_domain_all"
 msgid "All"
@@ -1657,19 +1712,27 @@ msgstr "Erhalten"
 
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
-msgstr "Inventurpositionen für fehlende Varianten erstellen"
+msgstr "Inventurpositionen für fehlende Artikel erstellen"
+
+msgctxt "model:ir.model.button,help:inventory_count_button"
+msgid "Launch the wizard to count products"
+msgstr "Startet den Assistenten zum Zählen der Artikel"
 
 msgctxt "model:ir.model.button,string:inventory_cancel_button"
 msgid "Cancel"
 msgstr "Annullieren"
 
 msgctxt "model:ir.model.button,string:inventory_complete_lines_button"
-msgid "Complete Inventory"
-msgstr "Lagerbestandspositionen komplettieren"
+msgid "Complete"
+msgstr "Durchführen"
 
 msgctxt "model:ir.model.button,string:inventory_confirm_button"
 msgid "Confirm"
 msgstr "Bestätigen"
+
+msgctxt "model:ir.model.button,string:inventory_count_button"
+msgid "Count"
+msgstr "Zählen"
 
 msgctxt "model:ir.model.button,string:move_cancel_button"
 msgid "Cancel"
@@ -1797,23 +1860,23 @@ msgstr "Lagerbestand"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Lieferposten Lieferant"
+msgstr "Wareneingangslieferung"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Warenrückgabe Lieferant"
+msgstr "Warenrückgabe (an Lieferanten)"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Interner Lieferposten"
+msgstr "Interne Lieferung"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out"
 msgid "Customer Shipment"
-msgstr "Lieferposten Kunde"
+msgstr "Warenausgangslieferung"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Warenrücknahme Kunde"
+msgstr "Warenrücknahme (von Kunden)"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_inventory"
 msgid "Inventory"
@@ -1821,23 +1884,23 @@ msgstr "Lagerbestand"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in"
 msgid "Supplier Shipment"
-msgstr "Lieferposten Lieferant"
+msgstr "Wareneingangslieferung"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Warenrückgabe Lieferant"
+msgstr "Warenrückgabe (an Lieferanten)"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
-msgstr "Interner Lieferposten"
+msgstr "Interne Lieferung"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out"
 msgid "Customer Shipment"
-msgstr "Lieferposten Kunde"
+msgstr "Warenausgangslieferung"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_out_return"
 msgid "Customer Return Shipment"
-msgstr "Warenrücknahme Kunde"
+msgstr "Warenrücknahme (von Kunden)"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -1853,7 +1916,7 @@ msgstr "Lagerorte"
 
 msgctxt "model:ir.ui.menu,name:menu_location_form2"
 msgid "Locations"
-msgstr "Locations"
+msgstr "Lagerorte"
 
 msgctxt "model:ir.ui.menu,name:menu_location_lead_time_form"
 msgid "Location Lead Times"
@@ -1877,7 +1940,7 @@ msgstr "Auswertungen"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_form"
 msgid "Supplier Shipments"
-msgstr "Lieferungen von Lieferanten"
+msgstr "Wareneingang"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
@@ -1889,7 +1952,7 @@ msgstr "Interne Lieferungen"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_form"
 msgid "Customer Shipments"
-msgstr "Lieferungen an Kunden"
+msgstr "Warenausgang"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_out_return_form"
 msgid "Customer Return Shipments"
@@ -1909,7 +1972,7 @@ msgstr "Partei Ort"
 
 msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
-msgstr "Variante nach Lagerort"
+msgstr "Artikel je Lagerort"
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
@@ -1938,6 +2001,14 @@ msgstr "Einstellungen Lager Nummernkreis"
 msgctxt "model:stock.inventory,name:"
 msgid "Stock Inventory"
 msgstr "Lager Lagerbestand"
+
+msgctxt "model:stock.inventory.count.quantity,name:"
+msgid "Stock Inventory Count"
+msgstr "Lagerbestand Anzahl"
+
+msgctxt "model:stock.inventory.count.search,name:"
+msgid "Stock Inventory Count"
+msgstr "Lagerbestand Anzahl"
 
 msgctxt "model:stock.inventory.line,name:"
 msgid "Stock Inventory Line"
@@ -1997,31 +2068,31 @@ msgstr "Lager Perioden Cache"
 
 msgctxt "model:stock.product_quantities_warehouse,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Variantenanzahl nach Warenlager"
+msgstr "Artikelanzahl je Warenlager"
 
 msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
-msgstr "Variantenanzahl nach Warenlager"
+msgstr "Artikelanzahl je Warenlager"
 
 msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
-msgstr "Varianten nach Lagerort"
+msgstr "Artikel je Lagerort"
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
-msgstr "Lieferposten Lieferant"
+msgstr "Wareneingangslieferung"
 
 msgctxt "model:stock.shipment.in.return,name:"
 msgid "Supplier Return Shipment"
-msgstr "Warenrückgabe Lieferant"
+msgstr "Warenrückgabe (an Lieferanten)"
 
 msgctxt "model:stock.shipment.in.return.assign.failed,name:"
 msgid "Assign Supplier Return Shipment"
-msgstr "Zuweisung Warenrückgabe Lieferant"
+msgstr "Zuweisung Warenrückgabe (an Lieferanten)"
 
 msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
-msgstr "Interner Lieferposten"
+msgstr "Interne Lieferung"
 
 msgctxt "model:stock.shipment.internal.assign.failed,name:"
 msgid "Assign Shipment Internal"
@@ -2029,15 +2100,15 @@ msgstr "Zuweisung Lieferposten Intern"
 
 msgctxt "model:stock.shipment.out,name:"
 msgid "Customer Shipment"
-msgstr "Lieferposten Kunde"
+msgstr "Warenausgangslieferung"
 
 msgctxt "model:stock.shipment.out.assign.failed,name:"
 msgid "Assign Customer Shipment"
-msgstr "Lieferposten Kunde zuweisen"
+msgstr "Warenausgangslieferung zuweisen"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
-msgstr "Warenrücknahme Kunde"
+msgstr "Warenrücknahme (von Kunden)"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "/"
@@ -2057,7 +2128,7 @@ msgstr "Geplantes Datum:"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "report:stock.shipment.in.restocking_list:"
 msgid "Quantity"
@@ -2105,7 +2176,7 @@ msgstr "Von Lagerort:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Internal Shipment"
-msgstr "Interner Lieferposten"
+msgstr "Interne Lieferung"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Planned Date:"
@@ -2113,7 +2184,7 @@ msgstr "Geplantes Datum:"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "report:stock.shipment.internal.report:"
 msgid "Quantity"
@@ -2153,7 +2224,7 @@ msgstr "Lieferschein"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "report:stock.shipment.out.delivery_note:"
 msgid "Quantity"
@@ -2193,7 +2264,7 @@ msgstr "Geplantes Datum:"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "report:stock.shipment.out.picking_list:"
 msgid "Quantity"
@@ -2241,7 +2312,7 @@ msgstr "Geplantes Datum:"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Quantity"
@@ -2290,6 +2361,10 @@ msgstr "Erledigt"
 msgctxt "selection:stock.inventory,state:"
 msgid "Draft"
 msgstr "Entwurf"
+
+msgctxt "selection:stock.inventory.count.search,search:"
+msgid "Product"
+msgstr "Artikel"
 
 msgctxt "selection:stock.inventory.line,inventory_state:"
 msgid "Canceled"
@@ -2497,7 +2572,7 @@ msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "view:stock.shipment.in.return.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Folgende Varianten können nicht zugewiesen werden:"
+msgstr "Folgende Artikel können nicht zugewiesen werden:"
 
 msgctxt "view:stock.shipment.in.return:"
 msgid "Other Info"
@@ -2509,7 +2584,7 @@ msgstr "Weitere Informationen"
 
 msgctxt "view:stock.shipment.internal.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Folgende Varianten können nicht zugewiesen werden:"
+msgstr "Folgende Artikel können nicht zugewiesen werden:"
 
 msgctxt "view:stock.shipment.internal:"
 msgid "Other Info"
@@ -2517,15 +2592,7 @@ msgstr "Weitere Informationen"
 
 msgctxt "view:stock.shipment.out.assign.failed:"
 msgid "Unable to assign those products:"
-msgstr "Folgende Varianten können nicht zugewiesen werden:"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Incoming Moves"
-msgstr "Eingehende Bewegungen"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Inventory Moves"
-msgstr "Bestandsänderungen"
+msgstr "Folgende Artikel können nicht zugewiesen werden:"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
@@ -2538,6 +2605,22 @@ msgstr "Weitere Informationen"
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
 msgstr "Ausgehende Bewegungen"
+
+msgctxt "wizard_button:stock.inventory.count,quantity,add:"
+msgid "Add"
+msgstr "Hinzufügen"
+
+msgctxt "wizard_button:stock.inventory.count,quantity,search:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:stock.inventory.count,search,end:"
+msgid "End"
+msgstr "Fertig"
+
+msgctxt "wizard_button:stock.inventory.count,search,quantity:"
+msgid "Select"
+msgstr "Auswählen"
 
 msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
 msgid "OK"
@@ -2569,7 +2652,7 @@ msgstr "Bestand nach Lagerorten"
 
 msgctxt "view:stock.inventory:"
 msgid "Add an inventory line for each missing products"
-msgstr "Inventurpositionen für fehlende Varianten erstellen"
+msgstr "Inventurpositionen für fehlende Artikel erstellen"
 
 msgctxt "view:stock.inventory:"
 msgid "Cancel"
