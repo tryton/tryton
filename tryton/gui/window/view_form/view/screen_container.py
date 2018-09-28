@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
+
 import gtk
 import gettext
 import gobject
@@ -60,9 +62,14 @@ class Times(Dates):
     def __init__(self, format_, _entry=Time):
         super(Times, self).__init__(_entry=_entry)
 
+    def _get_value(self, widget):
+        value = widget.props.value
+        if value:
+            return datetime.time.strftime(value, widget.props.format)
+
     def connect_activate(self, callback):
         for widget in self.from_.get_children() + self.to.get_children():
-            widget.get_child().connect('activate', callback)
+            widget.connect('activate', callback)
 
 
 class DateTimes(Dates):
