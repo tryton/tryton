@@ -237,7 +237,7 @@ class AccountFrFEC(Wizard):
             if balance > 0:
                 debit, credit = balance, 0
             else:
-                debit, credit = 0, balance
+                debit, credit = 0, -balance
             yield [
                 self.start.deferral_journal.code
                 or self.start.deferral_journal.name,
