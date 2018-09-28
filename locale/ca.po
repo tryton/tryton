@@ -306,10 +306,6 @@ msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
 msgstr "Comissions"
 
-msgctxt "model:account.journal.type,name:journal_type_commission"
-msgid "Commission"
-msgstr "Comissió"
-
 msgctxt "model:commission,name:"
 msgid "Commission"
 msgstr "Comissió"
@@ -397,6 +393,10 @@ msgstr "Comissió"
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
 msgstr "Administració de comissions"
+
+msgctxt "selection:account.journal,type:"
+msgid "Commission"
+msgstr "Comissió"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""

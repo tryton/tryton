@@ -308,11 +308,6 @@ msgid "Commission"
 msgstr "Commission"
 
 #, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_commission"
-msgid "Commission"
-msgstr "Commission"
-
-#, fuzzy
 msgctxt "model:commission,name:"
 msgid "Commission"
 msgstr "Commission"
@@ -418,6 +413,11 @@ msgstr "Commission"
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
 msgstr "Commission Administration"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Commission"
+msgstr "Commission"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""

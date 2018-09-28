@@ -304,10 +304,6 @@ msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
 msgstr "حق العمل"
 
-msgctxt "model:account.journal.type,name:journal_type_commission"
-msgid "Commission"
-msgstr "حق العمل"
-
 msgctxt "model:commission,name:"
 msgid "Commission"
 msgstr "حق العمل"
@@ -395,6 +391,11 @@ msgstr "حق العمل "
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
 msgstr "مدیریت حق العمل"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Commission"
+msgstr "حق العمل"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""

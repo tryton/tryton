@@ -7,7 +7,7 @@ msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
-"Ungültige Formel \"%(formula)s\" in Kommissionsplanzeile \"%(line)s\" mit "
+"Ungültige Formel \"%(formula)s\" in Provisionsplanzeile \"%(line)s\" mit "
 "Fehlermeldung \"%(exception)s\"."
 
 msgctxt "error:party.erase:"
@@ -16,23 +16,23 @@ msgid ""
 " for the company \"%(company)s\"."
 msgstr ""
 "Die Partei \"%(party)s\" kann nicht gelöscht werden, da sie offene "
-"Kommissionen für das Unternehmen \"%(company)s\" hat."
+"Provisionen für das Unternehmen \"%(company)s\" hat."
 
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
-msgstr "Kommissionsvertreter"
+msgstr "Vertreter"
 
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "field:account.invoice.line,from_commissions:"
 msgid "From Commissions"
-msgstr "Aus Kommissionen"
+msgstr "Aus Provisionen"
 
 msgctxt "field:account.invoice.line,principal:"
 msgid "Commission Principal"
-msgstr "Kommission Auftraggeber"
+msgstr "Provisionsschuldner"
 
 msgctxt "field:commission,agent:"
 msgid "Agent"
@@ -76,7 +76,7 @@ msgstr "Herkunft"
 
 msgctxt "field:commission,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:commission,rec_name:"
 msgid "Record Name"
@@ -160,11 +160,11 @@ msgstr "Typ"
 
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
-msgstr "Kommissionsmethode"
+msgstr "Provisionsmethode"
 
 msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
-msgstr "Kommissionsvariante"
+msgstr "Provisionsartikel"
 
 msgctxt "field:commission.plan,create_date:"
 msgid "Create Date"
@@ -224,7 +224,7 @@ msgstr "Plan"
 
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Record Name"
@@ -244,11 +244,11 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
-msgstr "Kommission Auftraggeber"
+msgstr "Provisionsschuldner"
 
 msgctxt "field:product.template,principals:"
 msgid "Commission Principals"
-msgstr "Kommission Auftraggeber"
+msgstr "Provisionsschuldner"
 
 msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
@@ -284,15 +284,15 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
-msgstr "Kommission Auftraggeber"
+msgstr "Provisionsschuldner"
 
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
-msgstr "Kommissionsvertreter"
+msgstr "Vertreter"
 
 msgctxt "help:commission.plan,commission_method:"
 msgid "When the commission is due"
-msgstr "Bei Fälligkeit der Kommission"
+msgstr "Bei Fälligkeit der Provision"
 
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
@@ -304,31 +304,27 @@ msgstr ""
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr "Kommission"
-
-msgctxt "model:account.journal.type,name:journal_type_commission"
-msgid "Commission"
-msgstr "Kommission"
+msgstr "Provision"
 
 msgctxt "model:commission,name:"
 msgid "Commission"
-msgstr "Kommission"
+msgstr "Provision"
 
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
-msgstr "Kommissionsvertreter"
+msgstr "Vertreter"
 
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
-msgstr "Kommissionsrechnung erstellen"
+msgstr "Provisionsrechnung erstellen"
 
 msgctxt "model:commission.plan,name:"
 msgid "Commission Plan"
-msgstr "Kommissionsplan"
+msgstr "Provisionsplan"
 
 msgctxt "model:commission.plan.line,name:"
 msgid "Commission Plan Line"
-msgstr "Kommissionsplan Zeile"
+msgstr "Provisionsplan Position"
 
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
@@ -336,27 +332,27 @@ msgstr "Vertreter"
 
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "Kommissionsrechnungen erstellen"
+msgstr "Provisionsrechnungen erstellen"
 
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "model:ir.action,name:act_commission_form2"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "model:ir.action,name:act_commission_from_relate"
 msgid "From Commissions"
-msgstr "Aus Kommissionen"
+msgstr "Aus Provisionen"
 
 msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
-msgstr "Kommissionspläne"
+msgstr "Provisionspläne"
 
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
@@ -368,15 +364,15 @@ msgstr "Vertreter"
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr "Kommission"
+msgstr "Provisionen"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "Kommissionsrechnungen erstellen"
+msgstr "Provisionsrechnungen erstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -384,19 +380,23 @@ msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
-msgstr "Kommissionspläne"
+msgstr "Provisionspläne"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
-msgstr "Artikel - Kommissonsvertreter"
+msgstr "Artikelvorlage - Kommissonsvertreter"
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr "Kommission"
+msgstr "Provision"
 
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
-msgstr "Kommission Administration"
+msgstr "Provision Administration"
+
+msgctxt "selection:account.journal,type:"
+msgid "Commission"
+msgstr "Provision"
 
 msgctxt "selection:commission,invoice_state:"
 msgid ""
@@ -452,15 +452,15 @@ msgstr "Bei Festschreibung der Rechnung"
 
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "view:product.template:"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "view:sale.line:"
 msgid "Commissions"
-msgstr "Kommissionen"
+msgstr "Provisionen"
 
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"
@@ -484,20 +484,20 @@ msgstr "Vertreter"
 
 msgctxt "view:commission.create_invoice.ask:"
 msgid "Create Commission Invoice"
-msgstr "Kommissionsrechnung erstellen"
+msgstr "Provisionsrechnung erstellen"
 
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Line"
-msgstr "Kommissionsplan Zeile"
+msgstr "Provisionsplan Position"
 
 msgctxt "view:commission.plan.line:"
 msgid "Commission Plan Lines"
-msgstr "Kommissionsplan Positionen"
+msgstr "Provisionsplan Positionen"
 
 msgctxt "view:commission.plan:"
 msgid "Commission Plan"
-msgstr "Kommissionsplan"
+msgstr "Provisionsplan"
 
 msgctxt "view:commission.plan:"
 msgid "Commission Plans"
-msgstr "Kommissionspläne"
+msgstr "Provisionspläne"
