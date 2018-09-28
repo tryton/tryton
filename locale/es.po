@@ -1,0 +1,11 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:edocument.uncefact.invoice,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "model:edocument.uncefact.invoice,name:"
+msgid "EDocument UN/CEFACT Invoice"
+msgstr "Factura digital UN/CEFACT"
