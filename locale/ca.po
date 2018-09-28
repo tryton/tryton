@@ -1,0 +1,169 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:account.invoice.chorus:"
+msgid "Invoice can be registered only once for Chorus."
+msgstr "Una factura només es pot registrar una vegada pel Chorus."
+
+msgctxt "error:account.invoice.chorus:"
+msgid "The Chorus invoice \"%(invoice)s\" can not be deleted once sent."
+msgstr ""
+"La factura del Chorus \"%(invoices)s\" no es pot eliminar una vegada "
+"enviada."
+
+msgctxt "error:account.invoice.chorus:"
+msgid "The address \"%(address)s\" is missing a SIRET."
+msgstr "Falta el SIRET per l'adreça \"%(address)s\" ."
+
+msgctxt "field:account.configuration,chorus_login:"
+msgid "Chorus Login"
+msgstr "Nom d'usuari Chorus"
+
+msgctxt "field:account.configuration,chorus_password:"
+msgid "Chorus Password"
+msgstr "Contrasenya Chorus"
+
+msgctxt "field:account.configuration,chorus_service:"
+msgid "Chorus Service"
+msgstr "Servei Chorus"
+
+msgctxt "field:account.configuration,chorus_syntax:"
+msgid "Chorus Syntax"
+msgstr "Sintaxis Chorus"
+
+msgctxt "field:account.credential.chorus,chorus_login:"
+msgid "Login"
+msgstr "Nom usuari"
+
+msgctxt "field:account.credential.chorus,chorus_password:"
+msgid "Password"
+msgstr "Contrasenya"
+
+msgctxt "field:account.credential.chorus,chorus_service:"
+msgid "Service"
+msgstr "Servei"
+
+msgctxt "field:account.credential.chorus,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.credential.chorus,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.credential.chorus,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.credential.chorus,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.credential.chorus,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.credential.chorus,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.credential.chorus,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:account.invoice.chorus,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.invoice.chorus,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.invoice.chorus,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.invoice.chorus,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.invoice.chorus,invoice:"
+msgid "Invoice"
+msgstr "Factura"
+
+msgctxt "field:account.invoice.chorus,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:account.invoice.chorus,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.invoice.chorus,syntax:"
+msgid "Syntax"
+msgstr "Sintaxis"
+
+msgctxt "field:account.invoice.chorus,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.invoice.chorus,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:party.party,chorus:"
+msgid "Chorus Pro"
+msgstr "Chorus Pro"
+
+msgctxt "help:party.party,chorus:"
+msgid "Send documents for this party through Chorus Pro"
+msgstr "Envia els documents a aquest tercer a través de Chorus Pro"
+
+msgctxt "model:account.credential.chorus,name:"
+msgid "Account Credential Chorus"
+msgstr "Credencials Comptables de Chorus"
+
+msgctxt "model:account.invoice.chorus,name:"
+msgid "Invoice Chorus"
+msgstr "Factura Chorus"
+
+msgctxt "model:ir.action,name:act_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "model:ir.cron,name:cron_invoice_send"
+msgid "Send invoices to Chorus"
+msgstr "Envia les factures a Chorus"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
+msgid "Chorus"
+msgstr "Chorus"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:account.configuration,chorus_service:"
+msgid "Qualification"
+msgstr "Desenvolupament"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:account.credential.chorus,chorus_service:"
+msgid "Qualification"
+msgstr "Desenvolupament"
+
+msgctxt "view:account.configuration:"
+msgid "Chorus"
+msgstr "Chorus"
