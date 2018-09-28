@@ -242,9 +242,10 @@ msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Modificado por usuario"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"

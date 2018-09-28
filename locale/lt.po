@@ -358,9 +358,10 @@ msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
 msgstr "Customer Complaint"
 
+#, fuzzy
 msgctxt "model:sale.complaint.action,name:"
 msgid "Customer Complaint Action"
-msgstr ""
+msgstr "Customer Complaint"
 
 msgctxt "model:sale.complaint.action-account.invoice.line,name:"
 msgid "Customer Complaint Action - Invoice Line"
