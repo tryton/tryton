@@ -371,14 +371,18 @@ msgid "All"
 msgstr "All"
 
 #, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
-msgid "Done"
-msgstr "Klaar"
-
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
 msgstr "Concept"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
@@ -410,13 +414,16 @@ msgstr "Dunning"
 
 #, fuzzy
 msgctxt "selection:account.dunning,state:"
-msgid "Done"
-msgstr "Klaar"
-
-#, fuzzy
-msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Concept"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr ""
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.configuration:"

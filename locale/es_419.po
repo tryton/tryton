@@ -304,72 +304,90 @@ msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
 msgstr "Crear cobro contable"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Procedimientos de cobro"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr ""
+msgstr "¿Procesar cobro?"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr ""
-
-msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
-msgid "Done"
 msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
 msgstr ""
 
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr ""
+msgstr "Procedimientos de cobro"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr ""
+msgstr "Cobros"
 
 msgctxt "model:party.party.dunning_procedure,name:"
 msgid "Party Dunning Procedure"
 msgstr "Procedimiento de cobro por defecto"
 
+#, fuzzy
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr ""
-
-msgctxt "selection:account.dunning,state:"
-msgid "Done"
-msgstr "Realizado"
+msgstr "Cobranzas"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr ""
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
 msgstr ""
 
 msgctxt "view:account.configuration:"

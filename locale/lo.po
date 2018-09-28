@@ -331,14 +331,18 @@ msgid "All"
 msgstr "All"
 
 #, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
-msgid "Done"
-msgstr "Done"
-
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
 msgstr "Draft"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
@@ -375,12 +379,16 @@ msgid "Dunning"
 msgstr "Dunning"
 
 msgctxt "selection:account.dunning,state:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "ຮ່າງກຽມ"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr ""
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"

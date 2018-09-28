@@ -363,14 +363,18 @@ msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
 msgstr "全部"
 
-#, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
-msgid "Done"
-msgstr "完成"
-
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
 msgstr "Draft"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
@@ -402,13 +406,16 @@ msgstr "Dunning"
 
 #, fuzzy
 msgctxt "selection:account.dunning,state:"
-msgid "Done"
-msgstr "完成"
-
-#, fuzzy
-msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Draft"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr ""
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.configuration:"

@@ -324,13 +324,18 @@ msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
 msgstr "Toutes"
 
-msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_done"
-msgid "Done"
-msgstr "Terminées"
-
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
 msgstr "Brouillons"
+
+msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
+msgid "Final"
+msgstr "Final"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
+msgid "Waiting"
+msgstr "En attente"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
@@ -361,12 +366,16 @@ msgid "Dunning"
 msgstr "Relance"
 
 msgctxt "selection:account.dunning,state:"
-msgid "Done"
-msgstr "Terminée"
-
-msgctxt "selection:account.dunning,state:"
 msgid "Draft"
 msgstr "Brouillon"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Final"
+msgstr "Final"
+
+msgctxt "selection:account.dunning,state:"
+msgid "Waiting"
+msgstr "En attente"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"
