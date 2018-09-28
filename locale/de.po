@@ -176,7 +176,7 @@ msgstr "Aufgaben"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Positionen der Zeiterfassung"
+msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
@@ -216,7 +216,7 @@ msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Projekt"
+msgstr "Projekte"
 
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
