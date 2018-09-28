@@ -11,8 +11,7 @@ msgstr ""
 msgctxt "error:stock.shipment.drop:"
 msgid "Drop Shipment \"%(shipment)s\" must be cancelled before deletion."
 msgstr ""
-"Die direkte Lieferung \"%(shipment)s\" muss vor dem Löschen annulliert "
-"werden."
+"Die Direktlieferung \"%(shipment)s\" muss vor dem Löschen annulliert werden."
 
 msgctxt "error:stock.shipment.drop:"
 msgid ""
@@ -57,7 +56,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
-msgstr "Direkter Lieferposten"
+msgstr "Direktlieferung"
 
 msgctxt "field:purchase.product_supplier,drop_shipment_available:"
 msgid "Drop Shipment Available"
@@ -77,7 +76,7 @@ msgstr "Lagerort Direktlieferung"
 
 msgctxt "field:purchase.purchase,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Direkte Lieferposten"
+msgstr "Direktlieferungen"
 
 msgctxt "field:purchase.request,customer:"
 msgid "Customer"
@@ -125,15 +124,15 @@ msgstr "Lagerort Direktlieferung"
 
 msgctxt "field:sale.sale,drop_shipments:"
 msgid "Drop Shipments"
-msgstr "Direkte Lieferposten"
+msgstr "Direktlieferungen"
 
 msgctxt "field:stock.configuration,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
-msgstr "Nummernkreis Direkte Lieferposten"
+msgstr "Nummernkreis Direktlieferung"
 
 msgctxt "field:stock.configuration.sequence,shipment_drop_sequence:"
 msgid "Drop Shipment Sequence"
-msgstr "Nummernkreis Direkte Lieferposten"
+msgstr "Nummernkreis Direktlieferung"
 
 msgctxt "field:stock.move,customer_drop:"
 msgid "Drop Customer"
@@ -217,7 +216,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Direkte Lieferposten"
+msgstr "Direktlieferungen"
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
@@ -225,7 +224,7 @@ msgstr "Einkäufe"
 
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
 msgid "Drop Shipments"
-msgstr "Direkte Lieferposten"
+msgstr "Direktlieferungen"
 
 msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
@@ -233,7 +232,7 @@ msgstr "Verkäufe"
 
 msgctxt "model:ir.action,name:act_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Direkte Lieferposten"
+msgstr "Direktlieferungen"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_drop_form_domain_all"
@@ -277,15 +276,15 @@ msgstr "Warten"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Direkter Lieferposten"
+msgstr "Direktlieferung"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_drop"
 msgid "Drop Shipment"
-msgstr "Direkter Lieferposten"
+msgstr "Direktlieferung"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_drop_form"
 msgid "Drop Shipments"
-msgstr "Direkte Lieferposten"
+msgstr "Direktlieferungen"
 
 msgctxt "model:purchase.configuration.purchase_drop_location,name:"
 msgid "Purchase Configuration Purchase Drop Location"
@@ -301,7 +300,7 @@ msgstr "Direktlieferung"
 
 msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
-msgstr "Direkter Lieferposten"
+msgstr "Direktlieferung"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Canceled"
