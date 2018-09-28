@@ -16,7 +16,7 @@ msgstr "Anhänge"
 
 msgctxt "field:notification.email,contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr "Kontaktmöglichkeit"
+msgstr "Kontaktinformation"
 
 msgctxt "field:notification.email,content:"
 msgid "Content"
@@ -70,9 +70,10 @@ msgctxt "field:notification.email,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr "Sekundäre Empfänger"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
-msgstr "Auslöser"
+msgstr "Trigger"
 
 msgctxt "field:notification.email,write_date:"
 msgid "Write Date"
@@ -150,9 +151,10 @@ msgctxt "field:notification.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr "Sekundäre Empfänger"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "field:notification.email.log,trigger:"
 msgid "Trigger"
-msgstr "Auslöser"
+msgstr "Trigger"
 
 msgctxt "field:notification.email.log,write_date:"
 msgid "Write Date"
@@ -168,7 +170,7 @@ msgstr "Der als Anhang genutzte Bericht."
 
 msgctxt "help:notification.email,contact_mechanism:"
 msgid "Define which email to use from the party's contact mechanisms"
-msgstr "Auswahl der E-Mail-Adresse aus den Kontaktmöglichkeiten der Partei"
+msgstr "Auswahl der E-Mail-Adresse aus den Kontaktinformationen der Partei"
 
 msgctxt "help:notification.email,content:"
 msgid "The report used as email template."
@@ -207,9 +209,10 @@ msgctxt "help:notification.email,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
 msgstr "Das Feld das den/die sekundären Empfänger enthält."
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
-msgstr "Einen Auslöser für die Benachrichtigung hinzufügen."
+msgstr "Einen Trigger für die Benachrichtigung hinzufügen."
 
 msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
