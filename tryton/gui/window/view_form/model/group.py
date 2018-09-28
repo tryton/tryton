@@ -172,7 +172,28 @@ class Group(SignalEvent, list):
         return saved
 
     def delete(self, records):
-        return Record.delete(records)
+        if not records:
+            return
+        root_group = self.root_group
+        assert all(r.model_name == self.model_name for r in records)
+        assert all(r.group.root_group == root_group for r in records)
+        records = [r for r in records if r.id >= 0]
+        ctx = self.context
+        ctx['_timestamp'] = {}
+        for rec in records:
+            ctx['_timestamp'].update(rec.get_timestamp())
+        record_ids = set(r.id for r in records)
+        reload_ids = set(root_group.on_write_ids(list(record_ids)))
+        reload_ids -= record_ids
+        reload_ids = list(reload_ids)
+        try:
+            RPCExecute('model', self.model_name, 'delete', list(record_ids),
+                context=ctx)
+        except RPCException:
+            return False
+        if reload_ids:
+            root_group.reload(reload_ids)
+        return True
 
     @property
     def root_group(self):
