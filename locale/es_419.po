@@ -24,6 +24,10 @@ msgctxt "error:sale.line:"
 msgid "Sale \"%(sale)s\" misses a default \"account revenue\"."
 msgstr ""
 
+msgctxt "error:sale.line:"
+msgid "The line \"%(line)s\" must be on canceled or draft sale to be deleted."
+msgstr ""
+
 msgctxt "error:sale.modify_header:"
 msgid "The sale \"%(sale)s\" must be in draft to modify header."
 msgstr ""
@@ -112,6 +116,10 @@ msgstr ""
 
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
+msgstr ""
+
+msgctxt "field:sale.configuration,sale_process_after:"
+msgid "Process Sale after"
 msgstr ""
 
 msgctxt "field:sale.configuration,sale_sequence:"
@@ -1331,8 +1339,15 @@ msgctxt "field:stock.move,sale:"
 msgid "Sale"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:stock.move,sale_exception_state:"
 msgid "Exception State"
+msgstr "Estado excepción"
+
+msgctxt "help:sale.configuration,sale_process_after:"
+msgid ""
+"The grace period during which confirmed sale can still be reset to draft.\n"
+"Applied if a worker queue is activated."
 msgstr ""
 
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
@@ -1460,9 +1475,10 @@ msgctxt "model:ir.action,name:act_sale_shipments_relate"
 msgid "Sales"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr ""
+msgstr "Envíos"
 
 msgctxt "model:ir.action,name:report_sale"
 msgid "Sale"
@@ -1480,9 +1496,10 @@ msgctxt "model:ir.action,name:wizard_reporting_region_open"
 msgid "Open Region"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_return_sale"
 msgid "Return Sale"
-msgstr ""
+msgstr "Crear devolución de venta"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -1506,14 +1523,11 @@ msgctxt ""
 msgid "Processing"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_quotation"
 msgid "Quotation"
-msgstr ""
-
-msgctxt "model:ir.cron,name:cron_process_sale"
-msgid "Process Confirmed Sales"
-msgstr ""
+msgstr "Cotización"
 
 msgctxt "model:ir.model.button,string:sale_cancel_button"
 msgid "Cancel"
@@ -1989,8 +2003,4 @@ msgstr ""
 
 msgctxt "wizard_button:sale.return_sale,start,return_:"
 msgid "Return"
-msgstr ""
-
-msgctxt "view:sale.sale:"
-msgid "Quote"
 msgstr ""
