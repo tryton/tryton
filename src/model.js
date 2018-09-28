@@ -92,6 +92,7 @@
         array.record_removed = [];
         array.record_deleted = [];
         array.__readonly = false;
+        array.exclude_field = null;
         array.skip_model_access = false;
         array.forEach(function(e, i, a) {
             e.group = a;
@@ -884,6 +885,9 @@
                 if (!(fname in this.model.fields)) {
                     continue;
                 }
+                if (fname == this.group.exclude_field) {
+                    continue;
+                }
                 if ((this.model.fields[fname] instanceof Sao.field.Many2One) ||
                         (this.model.fields[fname] instanceof Sao.field.Reference)) {
                     var field_rec_name = fname + '.rec_name';
@@ -1150,12 +1154,6 @@
         validate: function(fields, softvalidation, pre_validate, sync) {
             var validate_fields = function() {
                 var result = true;
-                var exclude_fields = [];
-                this.group.screens.forEach(function(screen) {
-                    if (screen.exclude_field) {
-                        exclude_fields.push(screen.exclude_field);
-                    }
-                });
                 for (var fname in this.model.fields) {
                     // Skip not loaded fields if sync and record is not new
                     if (sync && this.id >= 0 && !(fname in this._loaded)) {
@@ -1171,7 +1169,7 @@
                     if (field.description.readonly) {
                         continue;
                     }
-                    if (~exclude_fields.indexOf(fname)) {
+                    if (fname == this.group.exclude_field) {
                         continue;
                     }
                     if (!field.validate(this, softvalidation, pre_validate)) {

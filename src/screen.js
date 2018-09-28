@@ -1043,6 +1043,7 @@
                 var views = fields_views[name];
                 views.forEach(views_add);
             }
+            this.group.exclude_field = this.exclude_field;
         },
         new_group: function(context) {
             if (!context) {
