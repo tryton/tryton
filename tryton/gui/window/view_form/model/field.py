@@ -789,7 +789,8 @@ class ReferenceField(Field):
 
     def _is_empty(self, record):
         result = super(ReferenceField, self)._is_empty(record)
-        if not result and record.value[self.name][1] < 0:
+        if not result and (record.value[self.name] is None
+                or record.value[self.name][1] < 0):
             result = True
         return result
 
@@ -804,6 +805,7 @@ class ReferenceField(Field):
     def get(self, record):
         if (record.value.get(self.name)
                 and record.value[self.name][0]
+                and record.value[self.name][1] is not None
                 and record.value[self.name][1] >= -1):
             return ','.join(map(str, record.value[self.name]))
         return None
@@ -846,7 +848,7 @@ class ReferenceField(Field):
         else:
             ref_model, ref_id = value
         rec_name = record.value.get(self.name + '.rec_name') or ''
-        if ref_model and ref_id >= 0:
+        if ref_model and ref_id is not None and ref_id >= 0:
             if not rec_name and ref_id >= 0:
                 try:
                     result, = RPCExecute('model', ref_model, 'read', [ref_id],
