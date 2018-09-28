@@ -8,12 +8,6 @@ msgid ""
 "\"%(parent)s\"."
 msgstr "یک مرکز کاری از رده : \"%s\" در زیر منبع : \"%s\" را نمی توان پیدا کرد."
 
-msgctxt "error:production.work.center:"
-msgid "Invalid work center name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-"نام مرکز کار: \"%s\" نامعتبر است، شما نمی تواند از \"/\" در فیلد نام استفاده"
-" کنید."
-
 msgctxt "error:production.work:"
 msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
 msgstr "کار \"٪ s\" نمیتواند حذف شود چون در حالت \"درخواست\" نیست\""

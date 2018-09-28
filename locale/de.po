@@ -10,15 +10,9 @@ msgstr ""
 "Kein Arbeitsplatz der Kategorie \"%(category)s\" unter \"%(parent)s\" "
 "vorhanden."
 
-msgctxt "error:production.work.center:"
-msgid "Invalid work center name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-"Ungültiger Name für Arbeitsplatz \"%s\": Das Zeichen \" / \" ist nicht "
-"erlaubt in Feld 'Name'."
-
 msgctxt "error:production.work:"
 msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
-msgstr "Ein Arbeitsgang \"%s\" kann nur in Status \"Angefordert\" gelöscht werden."
+msgstr "Ein Arbeitsauftrag \"%s\" kann nur im Status \"Angefordert\" gelöscht werden."
 
 msgctxt "error:production:"
 msgid ""
@@ -26,7 +20,7 @@ msgid ""
 "not finished."
 msgstr ""
 "Produktion \"%(production)s\" kann nicht erledigt werden, weil "
-"Arbeitsschritt \"%(work)s\" nicht erledigt ist."
+"Arbeitsauftrag \"%(work)s\" nicht erledigt ist."
 
 msgctxt "field:production,work_center:"
 msgid "Work Center"
@@ -34,7 +28,7 @@ msgstr "Arbeitsplatz"
 
 msgctxt "field:production,works:"
 msgid "Works"
-msgstr "Arbeitsgänge"
+msgstr "Arbeitsaufträge"
 
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
@@ -62,11 +56,11 @@ msgstr "ID"
 
 msgctxt "field:production.work,operation:"
 msgid "Operation"
-msgstr "Arbeitsablauf"
+msgstr "Arbeitsvorgang"
 
 msgctxt "field:production.work,production:"
 msgid "Production"
-msgstr "Produktion"
+msgstr "Produktionsauftrag"
 
 msgctxt "field:production.work,rec_name:"
 msgid "Record Name"
@@ -218,7 +212,7 @@ msgstr "Status"
 
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
-msgstr "Arbeitsgang"
+msgstr "Arbeitsauftrag"
 
 msgctxt "field:production.work.cycle,write_date:"
 msgid "Write Date"
@@ -246,7 +240,7 @@ msgstr "Arbeitsplätze"
 
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works"
-msgstr "Tätigkeiten"
+msgstr "Arbeitsaufträge"
 
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_all"
 msgid "All"
@@ -294,7 +288,7 @@ msgstr "Arbeitsplätze"
 
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works"
-msgstr "Tätigkeiten"
+msgstr "Arbeitsaufträge"
 
 msgctxt "model:production.work,name:"
 msgid "Production Work"
@@ -398,4 +392,4 @@ msgstr "Arbeitsgänge"
 
 msgctxt "view:production.work:"
 msgid "Works"
-msgstr "Arbeitsgänge"
+msgstr "Arbeitsaufträge"

@@ -10,12 +10,6 @@ msgstr ""
 "Delovnega centra v kategoriji \"%(category)s\" pod \"%(parent)s\" ni možno "
 "najti."
 
-msgctxt "error:production.work.center:"
-msgid "Invalid work center name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-"Neveljano ime delovnega centra \"%s\": V imenu ni dovoljena uporaba znaka \""
-" / \"."
-
 msgctxt "error:production.work:"
 msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
 msgstr "Naloge \"%s\" ni  možno izbrisati, ker ni v stanju \"zahtevek\""

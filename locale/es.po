@@ -10,12 +10,6 @@ msgstr ""
 "No existe un centro de trabajo de la categoría \"%(category)s\" debajo de "
 "\"%(parent)s\"."
 
-msgctxt "error:production.work.center:"
-msgid "Invalid work center name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-"El nombre \"%s\" del centro de trabajo no es válido: No puede usar \" / \" "
-"en el nombre."
-
 msgctxt "error:production.work:"
 msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
 msgstr ""
