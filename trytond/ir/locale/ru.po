@@ -73,11 +73,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Некорректная эл.почта у отчета \"%s\"."
 
-#, fuzzy
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr "Имена вложений должны быть уникальны для ресурса!"
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr "Запланированное действие не удалось выполнить"
@@ -165,10 +160,6 @@ msgid "Dependency must be unique by module!"
 msgstr "Зависимости должны быть уникальны у модуля!"
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "Отсутствует(ют) модуль(и) %s для модуля \"%s\""
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -252,10 +243,6 @@ msgid ""
 msgstr ""
 "Условие \"%(condition)s\" не является корректным выражением python для "
 "триггера \"%(trigger)s\"."
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "\"%s\" не является корректным именем меню, так как содержит \" / \"."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -751,6 +738,11 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "Расширение шаблонов"
 
+#, fuzzy
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Переводимый"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "Тип"
@@ -1006,6 +998,10 @@ msgstr "Дата создания"
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "Создано пользователем"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr ""
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -2002,6 +1998,65 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Изменено пользователем"
 
+#, fuzzy
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "Дата создания"
+
+#, fuzzy
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Создано пользователем"
+
+#, fuzzy
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Данные"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Наименование"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "Дата изменения"
+
+#, fuzzy
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr "Изменено пользователем"
+
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr "Дата создания"
@@ -2960,6 +3015,10 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr ""
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr ""
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -3048,6 +3107,14 @@ msgid ""
 msgstr ""
 "Ввод регулярного выражения Python исключит соответствующие модели из "
 "диаграммы."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr ""
 
 #, fuzzy
 msgctxt "help:ir.rule,domain:"
@@ -3636,6 +3703,10 @@ msgstr "Комментарий"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
+msgstr ""
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
 msgstr ""
 
 msgctxt "model:ir.rule,name:"

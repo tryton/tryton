@@ -70,10 +70,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Nieprawidłowe określenie emaila w raporcie \"%s\"."
 
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr "Nazwy załączników muszą być unikatowe względem zasobu."
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr "Zaplanowana akcja nie powiodła się"
@@ -165,10 +161,6 @@ msgid "Dependency must be unique by module!"
 msgstr "Zależność musi być unikatowa odnośnie modułów!"
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "Brak zależności %s dla modułu \"%s\""
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -253,12 +245,6 @@ msgid ""
 msgstr ""
 "Warunek \"%(condition)s\" nie jest poprawnym wyrażeniem PYSON dla wyzwalacza"
 " \"%(trigger)s\"."
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr ""
-"\"%s\" nie jest prawidłową nazwą menu ponieważ zawiera niedozwolony znak "
-"\"/\"."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -741,6 +727,10 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "Rozszerzenie szablonu"
 
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Przetłumaczalny"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "Typ"
@@ -996,6 +986,10 @@ msgstr "Data utworzenia"
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "Utworzył"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "Nazwa hosta"
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -1942,6 +1936,58 @@ msgid "Write Date"
 msgstr "Data zapisu"
 
 msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
+
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Dane"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:ir.queue,write_uid:"
 msgid "Write User"
 msgstr "Zapisał"
 
@@ -2893,6 +2939,10 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr "Sprawdź, czy szablon pracuje tylko dla jednego rekordu."
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr ""
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Odznacz, aby nie używać w przyszłości."
@@ -2981,6 +3031,14 @@ msgid ""
 msgstr ""
 "Podanie regularnego wyrażenia w Pythonie spowoduje usunięcie pasujących "
 "modeli z grafu."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr ""
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -3514,6 +3572,10 @@ msgstr "Notatka"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "Notatka przeczytana"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr ""
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"

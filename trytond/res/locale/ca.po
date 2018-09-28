@@ -40,10 +40,6 @@ msgstr ""
 "Cal que els desactiveu."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "La contrasenya és incorrecta."
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "No podeu tenir dos usuaris amb el mateix nom d'usuari."
 

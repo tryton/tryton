@@ -39,10 +39,6 @@ msgstr ""
 "En vez de eso, debe desactivarlos."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr ""
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr ""
 
@@ -114,9 +110,10 @@ msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.button.click,user:"
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
@@ -302,9 +299,10 @@ msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.group,users:"
 msgid "Users"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "field:res.group,write_date:"
 msgid "Write Date"
@@ -434,9 +432,10 @@ msgctxt "field:res.user-ir.action,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "field:res.user-ir.action,write_date:"
 msgid "Write Date"
@@ -466,9 +465,10 @@ msgctxt "field:res.user-res.group,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "field:res.user-res.group,write_date:"
 msgid "Write Date"
@@ -506,9 +506,10 @@ msgctxt "field:res.user.application,state:"
 msgid "State"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.application,user:"
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "field:res.user.application,write_date:"
 msgid "Write Date"
@@ -582,9 +583,10 @@ msgctxt "field:res.user.warning,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.warning,user:"
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "field:res.user.warning,write_date:"
 msgid "Write Date"
@@ -618,9 +620,10 @@ msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
@@ -670,13 +673,15 @@ msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr ""
+msgstr "Usuario"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
@@ -690,9 +695,10 @@ msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:res.user,name:"
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
@@ -820,12 +826,4 @@ msgstr ""
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr ""
-
-msgctxt "field:ir.rule.group-res.user,user:"
-msgid "User"
-msgstr ""
-
-msgctxt "field:ir.rule.group-res.user,write_uid:"
-msgid "Write User"
 msgstr ""

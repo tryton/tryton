@@ -58,10 +58,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr ""
 
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr ""
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr ""
@@ -146,10 +142,6 @@ msgid "Dependency must be unique by module!"
 msgstr ""
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr ""
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -228,10 +220,6 @@ msgctxt "error:ir.trigger:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
-msgstr ""
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
 msgstr ""
 
 msgctxt "error:ir.ui.view:"
@@ -366,9 +354,10 @@ msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window,act_window_views:"
 msgid "Views"
-msgstr ""
+msgstr "Views"
 
 msgctxt "field:ir.action.act_window,action:"
 msgid "Action"
@@ -470,9 +459,10 @@ msgctxt "field:ir.action.act_window,usage:"
 msgid "Usage"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
-msgstr ""
+msgstr "Views"
 
 msgctxt "field:ir.action.act_window,write_date:"
 msgid "Write Date"
@@ -558,9 +548,10 @@ msgctxt "field:ir.action.act_window.view,sequence:"
 msgid "Sequence"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
-msgstr ""
+msgstr "Views"
 
 msgctxt "field:ir.action.act_window.view,write_date:"
 msgid "Write Date"
@@ -704,6 +695,10 @@ msgstr ""
 
 msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
+msgstr ""
+
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
 msgstr ""
 
 msgctxt "field:ir.action.report,type:"
@@ -962,6 +957,10 @@ msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
 
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr ""
+
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
 msgstr ""
@@ -1066,9 +1065,10 @@ msgctxt "field:ir.export,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
 
+#, fuzzy
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
-msgstr ""
+msgstr "Fields"
 
 msgctxt "field:ir.export,id:"
 msgid "ID"
@@ -1242,9 +1242,10 @@ msgctxt "field:ir.model,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
 
+#, fuzzy
 msgctxt "field:ir.model,fields:"
 msgid "Fields"
-msgstr ""
+msgstr "Fields"
 
 msgctxt "field:ir.model,global_search_p:"
 msgid "Global Search"
@@ -1630,9 +1631,10 @@ msgctxt "field:ir.model.field.access,description:"
 msgid "Description"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.model.field.access,field:"
 msgid "Field"
-msgstr ""
+msgstr "Fields"
 
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
@@ -1910,6 +1912,60 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Modificado por usuario"
 
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Creado por usuario"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr ""
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr ""
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr ""
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr "Modificado por usuario"
+
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -2094,9 +2150,10 @@ msgctxt "field:ir.sequence.strict,create_date:"
 msgid "Create Date"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.strict,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Creado por usuario"
 
 msgctxt "field:ir.sequence.strict,id:"
 msgid "ID"
@@ -2774,9 +2831,10 @@ msgctxt "field:ir.ui.view_tree_width,create_uid:"
 msgid "Create User"
 msgstr "Creado por usuario"
 
+#, fuzzy
 msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
-msgstr ""
+msgstr "Fields"
 
 msgctxt "field:ir.ui.view_tree_width,id:"
 msgid "ID"
@@ -2852,6 +2910,10 @@ msgstr ""
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
+msgstr ""
+
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
 msgstr ""
 
 msgctxt "help:ir.action.url,active:"
@@ -2934,6 +2996,14 @@ msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
+msgstr ""
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
 msgstr ""
 
 msgctxt "help:ir.rule,domain:"
@@ -3082,17 +3152,19 @@ msgctxt "model:ir.action,name:act_model_field_access_form_relate_field"
 msgid "Access"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_model_fields_form"
 msgid "Fields"
-msgstr ""
+msgstr "Fields"
 
 msgctxt "model:ir.action,name:act_model_form"
 msgid "Models"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr ""
+msgstr "Perform Pending Installation/Upgrade"
 
 msgctxt "model:ir.action,name:act_module_config"
 msgid "Configure Modules"
@@ -3154,9 +3226,10 @@ msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
-msgstr ""
+msgstr "Views"
 
 msgctxt "model:ir.action,name:act_view_search"
 msgid "View Search"
@@ -3351,9 +3424,10 @@ msgctxt "model:ir.model,name:"
 msgid "Model"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.model.access,name:"
 msgid "Model access"
-msgstr ""
+msgstr "Acceso a modelos"
 
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
@@ -3463,6 +3537,10 @@ msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr ""
 
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr ""
+
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
 msgstr ""
@@ -3547,9 +3625,10 @@ msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
-msgstr ""
+msgstr "Acciones de ventana"
 
 msgctxt "model:ir.ui.menu,name:menu_action_report_form"
 msgid "Reports"
@@ -3571,9 +3650,10 @@ msgctxt "model:ir.ui.menu,name:menu_attachment_form"
 msgid "Attachments"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr ""
+msgstr "Elementos del asistente de configuración"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
@@ -3603,9 +3683,10 @@ msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
-msgstr ""
+msgstr "Acceso a modelos"
 
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
@@ -3615,9 +3696,10 @@ msgctxt "model:ir.ui.menu,name:menu_model_data_form"
 msgid "Data"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_model_field_access_form"
 msgid "Fields Access"
-msgstr ""
+msgstr "Permisos de acceso a campos"
 
 msgctxt "model:ir.ui.menu,name:menu_model_form"
 msgid "Models"
@@ -3627,9 +3709,10 @@ msgctxt "model:ir.ui.menu,name:menu_models"
 msgid "Models"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_module_activate_upgrade"
 msgid "Perform Pending Activation/Upgrade"
-msgstr ""
+msgstr "Perform Pending Installation/Upgrade"
 
 msgctxt "model:ir.ui.menu,name:menu_module_form"
 msgid "Modules"
@@ -3691,9 +3774,10 @@ msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view"
 msgid "Views"
-msgstr ""
+msgstr "Views"
 
 msgctxt "model:ir.ui.menu,name:menu_view_search"
 msgid "View Search"
@@ -3703,13 +3787,15 @@ msgctxt "model:ir.ui.menu,name:menu_view_tree_state"
 msgid "Tree State"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_view_tree_width"
 msgid "View Tree Width"
-msgstr ""
+msgstr "Ancho de la vista de árbol"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:model_model_fields_form"
 msgid "Fields"
-msgstr ""
+msgstr "Fields"
 
 msgctxt "model:ir.ui.menu.favorite,name:"
 msgid "Menu Favorite"
@@ -3732,9 +3818,10 @@ msgctxt "model:ir.ui.view_tree_state,name:"
 msgid "View Tree State"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.view_tree_width,name:"
 msgid "View Tree Width"
-msgstr ""
+msgstr "Ancho de la vista de árbol"
 
 msgctxt "selection:ir.action.keyword,keyword:"
 msgid "Action form"
@@ -3872,9 +3959,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Error"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "Field"
-msgstr ""
+msgstr "Fields"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Help"
@@ -3892,9 +3980,10 @@ msgctxt "selection:ir.translation,type:"
 msgid "Selection"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:ir.translation,type:"
 msgid "View"
-msgstr ""
+msgstr "Views"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"

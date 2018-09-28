@@ -39,10 +39,6 @@ msgstr ""
 "Zamiast usuwać spróbuj ich deaktywować."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "Błędne hasło!"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Nie możesz mieć dwóch użytkowników z tym samym loginem!"
 

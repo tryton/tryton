@@ -38,10 +38,6 @@ msgstr ""
 "ບໍ່ສາມາດລຶບຜູ້ໃຊ້ງານສຳລັບການເຊື່ອມຕໍ່ເຂົ້າໃຊ້ງານຕ່າງໆ.ທ່ານຕ້ອງປົດການໃຊ້ງານໄວ້ແທນ."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "ລະຫັດຜ່ານຜິດ!"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "ທ່ານບໍ່ສາມາດມີສອງຜູ້ໃຊ້ງານໃນຊື່ເຊື່ອມຕໍ່ດຽວກັນ!"
 

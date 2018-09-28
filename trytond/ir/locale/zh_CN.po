@@ -71,10 +71,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "报表\"%s\"的email定义无效."
 
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr "附件文档名必须唯一 !"
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr "计划动作失败"
@@ -164,10 +160,6 @@ msgid "Dependency must be unique by module!"
 msgstr "模块的依赖对象必须唯一！"
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "模块\"%s\"的依赖 %s缺失"
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr "有已安装模块依赖你准备卸载的模块:"
@@ -247,10 +239,6 @@ msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr "触发器\"%(trigger)s\"的条件\"%(condition)s\"配置不是合法的PYSON表达式."
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "\"%s\"含有\" / \"，不可作为菜单名称."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -751,6 +739,11 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "模版扩展"
 
+#, fuzzy
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "可翻译"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "类型"
@@ -1006,6 +999,10 @@ msgstr "创建日期"
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "创建者"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr ""
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -2013,6 +2010,66 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+#, fuzzy
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "创建者"
+
+#, fuzzy
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "数据"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "标识"
+
+#, fuzzy
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "记录名称"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "写入日期"
+
+#, fuzzy
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr "写入帐号"
+
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr "创建日期"
@@ -2977,6 +3034,10 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr ""
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr ""
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -3061,6 +3122,14 @@ msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
 msgstr "输入Python表达式从图表中排除匹配的的模型"
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr ""
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -3654,6 +3723,10 @@ msgstr "注释"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
+msgstr ""
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
 msgstr ""
 
 msgctxt "model:ir.rule,name:"

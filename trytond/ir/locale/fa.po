@@ -64,10 +64,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "ایمیل تعریف شده در گزارش : \"%s\" معتبر نمیباشد."
 
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr "نام اسناد پیوستی باید منحصر به فرد باشد در هر سند."
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr "اقدام برنامه ریزی شده انجام نشد"
@@ -157,10 +153,6 @@ msgid "Dependency must be unique by module!"
 msgstr "وابستگی توسط ماژول باید منحصر به فرد باشد!"
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "وابستگی: \"%s\" فراموش شده است در ماژول: \"%s\""
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr "تعداد ماژول های فعال بستگی دارد به آن هایی که غیرفعال می کنید:"
@@ -242,10 +234,6 @@ msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
 msgstr "شرط : \"%s\" یک عبارت PYSON معتبر نیست در trigger :\"%s\"."
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "\"٪ s\" یک نام منو معتبر نیست زیرا اجازه ندارد حاوی \"/\" باشد."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -725,6 +713,11 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "الگوی افزونه ها"
 
+#, fuzzy
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "قابل ترجمه"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "نوع"
@@ -980,6 +973,10 @@ msgstr "تاریخ ایجاد"
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "کاربر ایجاد کننده"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr ""
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -1926,6 +1923,66 @@ msgid "Write Date"
 msgstr "تاریخ نوشته"
 
 msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
+#, fuzzy
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+#, fuzzy
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "داده"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "شناسه"
+
+#, fuzzy
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+#, fuzzy
+msgctxt "field:ir.queue,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
 
@@ -2877,6 +2934,10 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr "اگر قالب تنها برای یک پرونده کار می کند، تیک بزنید ."
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr ""
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
@@ -2963,6 +3024,14 @@ msgid ""
 "graph."
 msgstr ""
 "وارد کردن عبارات منظم پایتون، مدلهای تطبیقی را از نمودار حذف خواهد کرد."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr ""
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -3495,6 +3564,10 @@ msgstr "توجه"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "یاداشت خوانده شد"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr ""
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"

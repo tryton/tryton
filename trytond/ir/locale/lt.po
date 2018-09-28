@@ -66,10 +66,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr ""
 
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr ""
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr ""
@@ -154,10 +150,6 @@ msgid "Dependency must be unique by module!"
 msgstr ""
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr ""
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -236,10 +228,6 @@ msgctxt "error:ir.trigger:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
 "\"%(trigger)s\"."
-msgstr ""
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
 msgstr ""
 
 msgctxt "error:ir.ui.view:"
@@ -745,6 +733,10 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr ""
 
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr ""
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr ""
@@ -1009,6 +1001,10 @@ msgstr ""
 
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
+msgstr ""
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
 msgstr ""
 
 msgctxt "field:ir.configuration,id:"
@@ -1990,6 +1986,60 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr ""
+
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Data"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Namu"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr ""
+
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr ""
+
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -2092,9 +2142,10 @@ msgctxt "field:ir.sequence,active:"
 msgid "Active"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence,code:"
 msgid "Sequence Code"
-msgstr ""
+msgstr "Sequence Types"
 
 msgctxt "field:ir.sequence,create_date:"
 msgid "Create Date"
@@ -2112,9 +2163,10 @@ msgctxt "field:ir.sequence,last_timestamp:"
 msgid "Last Timestamp"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence,name:"
 msgid "Sequence Name"
-msgstr ""
+msgstr "Sequence Types"
 
 msgctxt "field:ir.sequence,number_increment:"
 msgid "Increment Number"
@@ -2168,9 +2220,10 @@ msgctxt "field:ir.sequence.strict,active:"
 msgid "Active"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.strict,code:"
 msgid "Sequence Code"
-msgstr ""
+msgstr "Sequence Types"
 
 msgctxt "field:ir.sequence.strict,create_date:"
 msgid "Create Date"
@@ -2188,9 +2241,10 @@ msgctxt "field:ir.sequence.strict,last_timestamp:"
 msgid "Last Timestamp"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.strict,name:"
 msgid "Sequence Name"
-msgstr ""
+msgstr "Sequence Types"
 
 msgctxt "field:ir.sequence.strict,number_increment:"
 msgid "Increment Number"
@@ -2240,9 +2294,10 @@ msgctxt "field:ir.sequence.strict,write_uid:"
 msgid "Write User"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.type,code:"
 msgid "Sequence Code"
-msgstr ""
+msgstr "Sequence Types"
 
 msgctxt "field:ir.sequence.type,create_date:"
 msgid "Create Date"
@@ -2256,9 +2311,10 @@ msgctxt "field:ir.sequence.type,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
-msgstr ""
+msgstr "Sequence Types"
 
 msgctxt "field:ir.sequence.type,rec_name:"
 msgid "Record Name"
@@ -2965,6 +3021,10 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr ""
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr ""
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -3045,6 +3105,14 @@ msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
+msgstr ""
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
 msgstr ""
 
 msgctxt "help:ir.rule,domain:"
@@ -3576,6 +3644,10 @@ msgstr "Notes"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
+msgstr ""
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
 msgstr ""
 
 msgctxt "model:ir.rule,name:"

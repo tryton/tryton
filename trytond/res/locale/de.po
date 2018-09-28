@@ -39,10 +39,6 @@ msgstr ""
 "Sie müssen stattdessen deaktiviert werden."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "Ungültiges Passwort!"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Der Anmeldename für einen Benutzer kann nur einmal vergeben werden."
 
@@ -631,6 +627,7 @@ msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
 msgstr "Aktion - Gruppe"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
 msgstr "Ausführung zeitgesteuerter Trigger"

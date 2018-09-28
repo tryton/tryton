@@ -39,10 +39,6 @@ msgstr ""
 "Você deve desativá-los."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "Senha Inválida!"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Você não pode ter dois usuários com o mesmo nome de usuário!"
 
@@ -374,14 +370,13 @@ msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
 msgstr "Hash de Senha"
 
-#, fuzzy
 msgctxt "field:res.user,password_reset:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Redefinir senha"
 
 msgctxt "field:res.user,password_reset_expire:"
 msgid "Reset Password Expire"
-msgstr ""
+msgstr "Redefinir Senha Expira"
 
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
@@ -537,11 +532,11 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "Endereço IP"
 
 msgctxt "field:res.user.login.attempt,ip_network:"
 msgid "IP Network"
-msgstr ""
+msgstr "Rede IP"
 
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
@@ -597,7 +592,7 @@ msgstr "Gravado pelo usuário"
 
 msgctxt "help:ir.model.button-res.group,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
@@ -609,22 +604,19 @@ msgstr "Ações que serão executadas ao entrar"
 
 msgctxt "help:res.user,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente. "
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr "Grupos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
-msgstr "Configure Users"
+msgstr "Configurar Usuários"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Usuários"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
@@ -634,10 +626,9 @@ msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
 msgstr "Ação - Grupo"
 
-#, fuzzy
 msgctxt "model:ir.cron,name:cron_trigger_time"
 msgid "Run On Time Triggers"
-msgstr "Run On Time Triggers"
+msgstr "Executar em Gatilhos de Tempo"
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
@@ -671,20 +662,17 @@ msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
 msgstr "Sequência Tipo - Grupo"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr "Grupos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr "Users"
+msgstr "Usuários"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Usuários"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
@@ -694,10 +682,9 @@ msgctxt "model:res.group,name:"
 msgid "Group"
 msgstr "Grupo"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
-msgstr "Administration"
+msgstr "Administração"
 
 msgctxt "model:res.user,name:"
 msgid "User"
@@ -729,44 +716,43 @@ msgstr "Alerta de Usuário"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid ", has been reset."
-msgstr ""
+msgstr ", foi redefinida."
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Redefinir senha"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password for your account,"
-msgstr ""
+msgstr "A senha para sua conta,"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire at"
-msgstr ""
+msgstr "A senha irá expirar em"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "You can connect with this temporary password"
-msgstr ""
+msgstr "Você pode corrigir com esta senha temporária"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "You must set a new one from the user's preferences."
-msgstr ""
+msgstr "Você precisa definir uma nova senha nas preferências do usuário."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "https://"
-msgstr ""
+msgstr "https://"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "to"
-msgstr ""
+msgstr "para"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "tryton://"
-msgstr ""
+msgstr "tryton://"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

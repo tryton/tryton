@@ -71,10 +71,6 @@ msgid "Invalid email definition on report \"%s\"."
 msgstr ""
 "La definició del correu electrònic sobre l'informe \"%s\", no és correcta."
 
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr "El nom dels adjunts ha de ser únic per recurs."
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr "L'acció planificada ha fallat."
@@ -166,10 +162,6 @@ msgid "Dependency must be unique by module!"
 msgstr "La dependència ha de ser únic en el mòdul."
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "No es troba la dependència %s pel mòdul \"%s\"."
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -254,10 +246,6 @@ msgid ""
 msgstr ""
 "La condició \"%(condition)s\" no és una expressió PYSON vàlida al disparador"
 " \"%(trigger)s\"."
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "\"%s\" no és un menú correcte perquè no pot contenir \" /\"."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -741,6 +729,10 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "Tipus de document"
 
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Traduïble"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "Tipus"
@@ -996,6 +988,10 @@ msgstr "Data de creació"
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "Usuari de creació"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "Nom del servidor"
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -1942,6 +1938,58 @@ msgid "Write Date"
 msgstr "Data de modificació"
 
 msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Dades"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr "Tret de la cua el"
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr "Afegit a la cua el"
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr "Prevista pel"
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr "Finalitzat el"
+
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr "Programat el"
+
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:ir.queue,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
@@ -2893,6 +2941,10 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr "Marqueu si la plantilla funciona només per un sol registre."
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr "Desmarca per desactivar les traduccions d'aquest informe."
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Desmarca per eliminar l'ús del registre en el futur."
@@ -2978,6 +3030,14 @@ msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
 msgstr "Una expressió regular de Python per excloure models de les gràfiques."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr "Quan s'ha de realitzar la data."
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr "Quan la tasca pot ser iniciada"
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -3510,6 +3570,10 @@ msgstr "Nota"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "Nota llegida"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr "Cua"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"

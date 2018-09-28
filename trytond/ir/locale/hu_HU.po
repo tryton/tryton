@@ -75,11 +75,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Érvénytelen e-mail cím a jelentésben \"%s\"."
 
-#, fuzzy
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr "A nevet egy mellékletnek csak egyszer adható meg!"
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr "Hibás tervezett művelet"
@@ -174,10 +169,6 @@ msgid "Dependency must be unique by module!"
 msgstr "A modul függősége egyértelműnek kell lenni!"
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "Hiányzó függőség %s  a \"%s\" a \"%s\" modulnak."
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -263,10 +254,6 @@ msgid ""
 msgstr ""
 "A Tigger \"%(trigger)s\" feltételei  \"%(condition)s\" nem érvényes Python "
 "kifejezés."
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "Érvénytelen menüfelirat \"%s\". \" / \" menüfelirat nem engedélyezett."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -766,6 +753,11 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "Bővített javaslat"
 
+#, fuzzy
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Fordítható"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "Típus"
@@ -1021,6 +1013,10 @@ msgstr "Létrehozás dátuma"
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "Által létrehozva"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr ""
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -2016,6 +2012,65 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Által módosítva"
 
+#, fuzzy
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "Létrehozás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Által létrehozva"
+
+#, fuzzy
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Adat"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr ""
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr ""
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr ""
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "Utolsó módosítás dátuma"
+
+#, fuzzy
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr "Által módosítva"
+
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr "Létrehozás dátuma"
@@ -2965,6 +3020,10 @@ msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr ""
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr ""
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -3049,6 +3108,14 @@ msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
 "Entering a Python Regular Expression will exclude matching models from the "
 "graph."
+msgstr ""
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr ""
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
 msgstr ""
 
 msgctxt "help:ir.rule,domain:"
@@ -3641,6 +3708,10 @@ msgstr "Notes"
 
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
+msgstr ""
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
 msgstr ""
 
 msgctxt "model:ir.rule,name:"

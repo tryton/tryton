@@ -69,11 +69,6 @@ msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "Ungültige Definition für E-Mail in Bericht \"%s\"."
 
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr ""
-"Der Name für einen Anhang kann nur einmal pro Ressource vergeben werden!"
-
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
 msgstr "Geplante Aktion fehlgeschlagen"
@@ -167,10 +162,6 @@ msgid "Dependency must be unique by module!"
 msgstr "Abhängigkeit kann nur einmal pro Modul vergeben werden."
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "Fehlende Abhängigkeiten %s für Modul \"%s\"."
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -256,6 +247,7 @@ msgstr ""
 "\"Zeitgesteuert\" und die restlichen Optionen schließen sich gegenseitig "
 "aus!"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "error:ir.trigger:"
 msgid ""
 "Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
@@ -263,10 +255,6 @@ msgid ""
 msgstr ""
 "Bedingung \"%(condition)s\" für Trigger \"%(trigger)s\" ist kein gültiger "
 "PYSON-Ausdruck."
-
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "Ungültiger Menüeintrag \"%s\". \" / \" ist in Menüeinträgen nicht erlaubt."
 
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
@@ -748,6 +736,10 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "Erweiterung Vorlage"
 
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Übersetzbar"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "Typ"
@@ -1003,6 +995,10 @@ msgstr "Erstellungsdatum"
 msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "Erstellt durch"
+
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "Hostname"
 
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
@@ -1952,6 +1948,58 @@ msgctxt "field:ir.note.read,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Daten"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr "Aus der Warteschlange entfernt um"
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr "In die Warteschlange eingefügt um"
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr "Erwartet um"
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr "Beendet um"
+
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr "Geplant um"
+
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:ir.queue,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:ir.rule,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -2492,6 +2540,7 @@ msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
 msgstr "Datensatz ID"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "field:ir.trigger.log,trigger:"
 msgid "Trigger"
 msgstr "Trigger"
@@ -2901,6 +2950,10 @@ msgid "Check if the template works only for one record."
 msgstr ""
 "Aktivieren falls das Modell nur mit einem einzelnen Datensatz funktioniert."
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr "Deaktivieren um Übersetzungen dieses Berichts zu verhindern."
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
@@ -2968,7 +3021,7 @@ msgid ""
 "It activate the rule if true."
 msgstr ""
 "Ein PYSON-Ausdruck, der mit dem Datensatz (repräsentiert durch \"self\") "
-"ausgewertet wird.\\nDie Aktion wird getriggert, wenn der Ausdruck zutrifft "
+"ausgewertet wird.\\nDie Aktion wird ausgelöst, wenn der Ausdruck zutrifft "
 "(Wahr ist)."
 
 msgctxt "help:ir.model.data,db_id:"
@@ -2990,6 +3043,14 @@ msgid ""
 msgstr ""
 "Die Eingabe eines Python Regulären Ausdrucks wird passende Modelle vom "
 "Diagramm ausschließen."
+
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr "Wann die Aufgabe erledigt werden soll."
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr "Wann die Aufgabe gestartet werden kann."
 
 msgctxt "help:ir.rule,domain:"
 msgid ""
@@ -3028,13 +3089,14 @@ msgctxt "help:ir.trigger,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "help:ir.trigger,condition:"
 msgid ""
 "A PYSON statement evaluated with record represented by \"self\"\n"
 "It triggers the action if true."
 msgstr ""
 "Ein PYSON-Ausdruck, der mit dem Datensatz (repräsentiert durch \"self\") ausgewertet wird.\n"
-"Die Aktion wird getriggert, wenn der Ausdruck zutrifft (Wahr ist)."
+"Die Aktion wird ausgelöst, wenn der Ausdruck zutrifft (Wahr ist)."
 
 msgctxt "help:ir.trigger,limit_number:"
 msgid ""
@@ -3208,13 +3270,16 @@ msgctxt "model:ir.action,name:act_translation_set"
 msgid "Set Translations"
 msgstr "Übersetzungen aktualisieren"
 
+# Übersetzungen eingeben ist IMHO passender, weil hier tatsächlich eine
+# Spreche angegeben wird in der dann übersetzt werden soll.
 msgctxt "model:ir.action,name:act_translation_update"
 msgid "Synchronize Translations"
-msgstr "Übersetzungen synchronisieren"
+msgstr "Übersetzungen eingeben"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "model:ir.action,name:act_trigger_form"
 msgid "Triggers"
-msgstr "Auslöser"
+msgstr "Trigger"
 
 msgctxt "model:ir.action,name:act_view_form"
 msgid "Views"
@@ -3524,6 +3589,10 @@ msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "Notiz gelesen"
 
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr "Warteschlange"
+
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
 msgstr "Regel"
@@ -3584,6 +3653,7 @@ msgctxt "model:ir.translation.update.start,name:"
 msgid "Update translation"
 msgstr "Übersetzung Aktualisierung"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "model:ir.trigger,name:"
 msgid "Trigger"
 msgstr "Trigger"
@@ -3744,9 +3814,10 @@ msgctxt "model:ir.ui.menu,name:menu_translation_update"
 msgid "Synchronize Translations"
 msgstr "Übersetzungen synchronisieren"
 
+# https://de.wikipedia.org/wiki/Datenbanktrigger
 msgctxt "model:ir.ui.menu,name:menu_trigger_form"
 msgid "Triggers"
-msgstr "Auslöser"
+msgstr "Trigger"
 
 msgctxt "model:ir.ui.menu,name:menu_ui"
 msgid "User Interface"
@@ -4030,7 +4101,7 @@ msgstr "Letzte Änderung"
 
 msgctxt "view:ir.cron:"
 msgid "Action to trigger"
-msgstr "Auszuführende Aktion"
+msgstr "Trigger-Aktion"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"

@@ -2,19 +2,15 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "error:access_error:"
 msgid ""
 "You try to bypass an access rule.\n"
 "(Document type: %s)"
-msgstr ""
-"You try to bypass an access rule.\n"
-"(Document type: %s)"
+msgstr "Você tentou violar uma regra de acesso.(Tipo de Documento: %s)"
 
-#, fuzzy
 msgctxt "error:delete_xml_record:"
 msgid "You are not allowed to delete this record."
-msgstr "You are not allowed to delete this record."
+msgstr "Você não tem permissão para apagar este registro."
 
 msgctxt "error:digits_validation_record:"
 msgid ""
@@ -24,28 +20,25 @@ msgstr ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
 "digits limit of \"%(digits)s\"."
 
-#, fuzzy
 msgctxt "error:domain_validation_record:"
 msgid ""
 "The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
 " to its domain."
 msgstr ""
-"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
-" to its domain."
+"O valor dom campo \"%(campo)s\" em \"%(modelo)s\" não é válido de acordo com"
+" o seu domínio."
 
-#, fuzzy
 msgctxt "error:foreign_model_exist:"
 msgid ""
 "Could not delete the records because they are used on field \"%(field)s\" of"
 " \"%(model)s\"."
 msgstr ""
-"Could not delete the records because they are used on field \"%(field)s\" of"
-" \"%(model)s\"."
+"Não foi possível apagar os registros porque eles são usados no campo "
+"\"%(field)s\" de \"%(model)s\"."
 
-#, fuzzy
 msgctxt "error:foreign_model_missing:"
 msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr "O valor \"%(value)s\" do campo \"%(field)s\" em \"%(model)s\" não existe."
 
 msgctxt "error:ir.action.act_window.domain:"
 msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
@@ -72,10 +65,6 @@ msgstr "Modelo errado no assistente da ação \"%s\"."
 msgctxt "error:ir.action.report:"
 msgid "Invalid email definition on report \"%s\"."
 msgstr "E-mail inválido na definição do relatório\"%s\"."
-
-msgctxt "error:ir.attachment:"
-msgid "The names of attachments must be unique by resource."
-msgstr "Os nomes dos anexos devem ser únicos por recurso!"
 
 msgctxt "error:ir.cron:"
 msgid "Scheduled action failed"
@@ -168,10 +157,6 @@ msgid "Dependency must be unique by module!"
 msgstr "A dependência deve ser única por módulo!"
 
 msgctxt "error:ir.module:"
-msgid "Missing dependencies %s for module \"%s\""
-msgstr "Faltam dependências %s para o módulo \"%s\""
-
-msgctxt "error:ir.module:"
 msgid ""
 "Some activated modules depend on the ones you are trying to deactivate:"
 msgstr ""
@@ -257,111 +242,93 @@ msgstr ""
 "A condição \"%(condition)s\" não é uma expressão PYSON válida sobre o "
 "gatilho \"%(trigger)s\"."
 
-msgctxt "error:ir.ui.menu:"
-msgid "\"%s\" is not a valid menu name because it is not allowed to contain \" / \"."
-msgstr "\"%s\" não é um nome de menu válido. Nomes de menu não podem conter \" / \"."
-
 msgctxt "error:ir.ui.view:"
 msgid "Invalid XML for view \"%s\"."
 msgstr "XML inválido para a view \"%s\"."
 
-#, fuzzy
 msgctxt "error:read_error:"
 msgid ""
 "You try to read records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"You try to read records that don't exist anymore.\n"
-"(Document type: %s)"
+"Você está tentando ler registros que não existem mais.(Tipo de Documento: "
+"%s)"
 
-#, fuzzy
 msgctxt "error:recursion_error:"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
 " was configured as ancestor of itself."
 msgstr ""
-"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
-" was configured as ancestor of itself."
+"Erro de recursão: o registro \"%(rec_name)s\" com o pai "
+"\"%(parent_rec_name)s\" foi configurado com ancestral de si mesmo."
 
-#, fuzzy
 msgctxt "error:reference_syntax_error:"
 msgid "Syntax error for reference %r in %s"
-msgstr "Syntax error for reference %r in %s"
+msgstr "Erro de sintaxe para a referência %r em %s"
 
-#, fuzzy
 msgctxt "error:relation_not_found:"
 msgid "Relation not found: %r in %s"
-msgstr "Relation not found: %r in %s"
+msgstr "Relação não encontrada: %r em %s"
 
-#, fuzzy
 msgctxt "error:required_field:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "O campo \"%(field)s\" no modelo \"%(model)s\" é obrigatório."
 
-#, fuzzy
 msgctxt "error:required_validation_record:"
 msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "O campo \"%(field)s\" no modelo \"%(model)s\" é obrigatório."
 
-#, fuzzy
 msgctxt "error:search_function_missing:"
 msgid "Missing search function on field \"%s\"."
-msgstr "Missing search function on field \"%s\"."
+msgstr "Falta a função de busca no campo \"%s\"."
 
-#, fuzzy
 msgctxt "error:selection_validation_record:"
 msgid ""
 "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
 "the selection."
 msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
-"the selection."
+"O valor \"%(value)s\" do campo \"%(field)s\" do modelo  \"%(model)s\" não "
+"está na seleção."
 
-#, fuzzy
 msgctxt "error:selection_value_notfound:"
 msgid "Value not in the selection for field \"%s\"."
-msgstr "Value not in the selection for field \"%s\"."
+msgstr "O valor não está na seleção para o campo \"%s\"."
 
-#, fuzzy
 msgctxt "error:size_validation_record:"
 msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
-msgstr "The size \"%(size)s\" of the field \"%(field)s\" on \"(model)%s\" is too long."
+msgstr ""
+"O tamanho \"%(size)s\" do campo \"%(field)s\" do modelo \"%(model)s\" é "
+"longo demais."
 
-#, fuzzy
 msgctxt "error:time_format_validation_record:"
 msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
 msgstr ""
-"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
-"valid."
+"O formato de hora \"%(value)s\" para o campo \"%(field)s\" no modelo "
+"\"%(model)s\" não é valido."
 
-#, fuzzy
 msgctxt "error:too_many_relations_found:"
 msgid "Too many relations found: %r in %s"
-msgstr "Too many relations found: %r in %s"
+msgstr "Muitas relações encontradas: %r em %s"
 
-#, fuzzy
 msgctxt "error:write_error:"
 msgid ""
 "You try to write on records that don't exist anymore.\n"
 "(Document type: %s)"
 msgstr ""
-"You try to write on records that don't exist anymore.\n"
-"(Document type: %s)"
+"Você está tentando editar registros que não existem mais.(Tipo de documento:"
+" %s)"
 
-#, fuzzy
 msgctxt "error:write_xml_record:"
 msgid "You are not allowed to modify this record."
-msgstr "You are not allowed to modify this record."
+msgstr "Você não tem permissão para alterar este registro."
 
-#, fuzzy
 msgctxt "error:xml_id_syntax_error:"
 msgid "Syntax error for XML id %r in %s"
-msgstr "Syntax error for XML id %r in %s"
+msgstr "Erro de sintaxe XML de id %r em %s"
 
-#, fuzzy
 msgctxt "error:xml_record_desc:"
 msgid "This record is part of the base configuration."
-msgstr "This record is part of the base configuration."
+msgstr "Esse registro é parte da configuração base."
 
 msgctxt "field:ir.action,active:"
 msgid "Active"
@@ -759,6 +726,10 @@ msgctxt "field:ir.action.report,template_extension:"
 msgid "Template Extension"
 msgstr "Extensão do modelo"
 
+msgctxt "field:ir.action.report,translatable:"
+msgid "Translatable"
+msgstr "Traduzível"
+
 msgctxt "field:ir.action.report,type:"
 msgid "Type"
 msgstr "Tipo"
@@ -1015,6 +986,10 @@ msgctxt "field:ir.configuration,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
 
+msgctxt "field:ir.configuration,hostname:"
+msgid "Hostname"
+msgstr "Hostname"
+
 msgctxt "field:ir.configuration,id:"
 msgid "ID"
 msgstr "ID"
@@ -1215,32 +1190,29 @@ msgctxt "field:ir.lang,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:ir.lang,mon_decimal_point:"
 msgid "Decimal Separator"
 msgstr "Separador Decimal"
 
-#, fuzzy
 msgctxt "field:ir.lang,mon_grouping:"
 msgid "Grouping"
 msgstr "Agrupamento"
 
-#, fuzzy
 msgctxt "field:ir.lang,mon_thousands_sep:"
 msgid "Thousands Separator"
-msgstr "Separador de milhar"
+msgstr "Separador de Milhar"
 
 msgctxt "field:ir.lang,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
-msgstr ""
+msgstr "O Símbolo Negativo Precede"
 
 msgctxt "field:ir.lang,n_sep_by_space:"
 msgid "Negative Separate by Space"
-msgstr ""
+msgstr "Negativo Separado por Espaço"
 
 msgctxt "field:ir.lang,n_sign_posn:"
 msgid "Negative Sign Position"
-msgstr ""
+msgstr "Posição do sinal negativo"
 
 msgctxt "field:ir.lang,name:"
 msgid "Name"
@@ -1248,27 +1220,27 @@ msgstr "Nome"
 
 msgctxt "field:ir.lang,negative_sign:"
 msgid "Negative Sign"
-msgstr ""
+msgstr "Sinal de negativo"
 
 msgctxt "field:ir.lang,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
-msgstr ""
+msgstr "O símbolo positivo precede"
 
 msgctxt "field:ir.lang,p_sep_by_space:"
 msgid "Positive Separate by Space"
-msgstr ""
+msgstr "Sinal positivo separado por espaço"
 
 msgctxt "field:ir.lang,p_sign_posn:"
 msgid "Positive Sign Position"
-msgstr ""
+msgstr "Posição do sinal positivo"
 
 msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
-msgstr ""
+msgstr "Código Pai"
 
 msgctxt "field:ir.lang,positive_sign:"
 msgid "Positive Sign"
-msgstr ""
+msgstr "Sinal de positivo"
 
 msgctxt "field:ir.lang,rec_name:"
 msgid "Record Name"
@@ -1396,7 +1368,7 @@ msgstr "Cliques"
 
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 msgctxt "field:ir.model.button,create_date:"
 msgid "Create Date"
@@ -1410,7 +1382,6 @@ msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
 msgstr "Grupos"
 
-#, fuzzy
 msgctxt "field:ir.model.button,help:"
 msgid "Help"
 msgstr "Ajuda"
@@ -1445,7 +1416,7 @@ msgstr "Regras"
 
 msgctxt "field:ir.model.button,string:"
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 msgctxt "field:ir.model.button,write_date:"
 msgid "Write Date"
@@ -1964,6 +1935,58 @@ msgid "Write Date"
 msgstr "Data de edição"
 
 msgctxt "field:ir.note.read,write_uid:"
+msgid "Write User"
+msgstr "Editado por"
+
+msgctxt "field:ir.queue,create_date:"
+msgid "Create Date"
+msgstr "Data de criação"
+
+msgctxt "field:ir.queue,create_uid:"
+msgid "Create User"
+msgstr "Criado por"
+
+msgctxt "field:ir.queue,data:"
+msgid "Data"
+msgstr "Dados"
+
+msgctxt "field:ir.queue,dequeued_at:"
+msgid "Dequeued at"
+msgstr "Removido da fila em"
+
+msgctxt "field:ir.queue,enqueued_at:"
+msgid "Enqueued at"
+msgstr "Adicionado à fila em"
+
+msgctxt "field:ir.queue,expected_at:"
+msgid "Expected at"
+msgstr "Esperado a"
+
+msgctxt "field:ir.queue,finished_at:"
+msgid "Finished at"
+msgstr "Concluído a "
+
+msgctxt "field:ir.queue,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.queue,name:"
+msgid "Name"
+msgstr "Nome"
+
+msgctxt "field:ir.queue,rec_name:"
+msgid "Record Name"
+msgstr "Nome do Registro"
+
+msgctxt "field:ir.queue,scheduled_at:"
+msgid "Scheduled at"
+msgstr "Programado para"
+
+msgctxt "field:ir.queue,write_date:"
+msgid "Write Date"
+msgstr "Data de edição"
+
+msgctxt "field:ir.queue,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
@@ -2865,11 +2888,11 @@ msgstr "Gravado pelo usuário"
 
 msgctxt "help:ir.action,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.action.act_window,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.action.act_window,context_domain:"
 msgid "Part of the domain that will be evaluated on each refresh"
@@ -2885,15 +2908,15 @@ msgstr "Critério de busca padrão para a listagem"
 
 msgctxt "help:ir.action.act_window.domain,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.action.act_window.view,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.action.report,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.action.report,email:"
 msgid ""
@@ -2903,26 +2926,29 @@ msgstr ""
 "Dicionário em python cujas chaves definem  \"to\" \"cc\" \"subject\"\n"
 "Exemplo: {'to': 'teste@examplo.com', 'cc': 'user@examplo.com'}"
 
-#, fuzzy
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
 "compatible format"
 msgstr ""
-"Deixe vazio para o mesmo do modelo. Veja a documentação de unoconv para "
-"formato compatível."
+"Deixe vazio para o mesmo do modelo. Veja a documentação do LibreOffice para "
+"formatos compatíveis."
 
 msgctxt "help:ir.action.report,single:"
 msgid "Check if the template works only for one record."
 msgstr "Marque se o modelo funcionar para apenas um registro."
 
+msgctxt "help:ir.action.report,translatable:"
+msgid "Uncheck to disable translations for this report."
+msgstr "Desmarque para desabilitar traduções para este relatório."
+
 msgctxt "help:ir.action.url,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.action.wizard,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window"
@@ -2930,7 +2956,7 @@ msgstr "Executar o assitente em nova janela"
 
 msgctxt "help:ir.cron,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.cron,number_calls:"
 msgid ""
@@ -2950,7 +2976,7 @@ msgstr "O usuário que executou essa ação"
 
 msgctxt "help:ir.lang,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
@@ -2958,7 +2984,7 @@ msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
-msgstr ""
+msgstr "Código de exceção do pai"
 
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
@@ -2967,6 +2993,7 @@ msgstr "Módulo no qual este modelo está definido"
 msgctxt "help:ir.model.button,confirm:"
 msgid "Text to ask user confirmation when clicking the button."
 msgstr ""
+"Texto de confirmação para exibir ao usuário quando clicar em um botão."
 
 msgctxt "help:ir.model.button,reset_by:"
 msgid "Button that should reset the rules"
@@ -2974,7 +3001,7 @@ msgstr "Botão que reiniciará as regras"
 
 msgctxt "help:ir.model.button.click,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.model.button.rule,condition:"
 msgid ""
@@ -3004,6 +3031,14 @@ msgstr ""
 "Entrar uma expressão regular em Python irá excluir os modelos que combinarem"
 " do grafo."
 
+msgctxt "help:ir.queue,expected_at:"
+msgid "When the task should be done."
+msgstr "Quando a tarefa deverá ser concluída."
+
+msgctxt "help:ir.queue,scheduled_at:"
+msgid "When the task can start."
+msgstr "Quando a tarefa pode começar."
+
 msgctxt "help:ir.rule,domain:"
 msgid ""
 "Domain is evaluated with a PYSON context containing:\n"
@@ -3030,15 +3065,15 @@ msgstr "A regra será satisfeita se pelo menos um dos testes for verdadeiro."
 
 msgctxt "help:ir.sequence,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.sequence.strict,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.trigger,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -3066,7 +3101,7 @@ msgstr ""
 
 msgctxt "help:ir.ui.menu,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:ir.ui.view_search,domain:"
 msgid "The PYSON domain"
@@ -3076,39 +3111,33 @@ msgctxt "model:ir.action,name:"
 msgid "Action"
 msgstr "Ação"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_act_window_form"
 msgid "Window Actions"
-msgstr "Window Actions"
+msgstr "Ações da Janela"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr "Actions"
+msgstr "Ações"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
-msgstr "Reports"
+msgstr "Relatórios"
 
 msgctxt "model:ir.action,name:act_action_url_form"
 msgid "URLs"
 msgstr "URLs"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr "Assistentes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr "Attachments"
+msgstr "Anexos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Config Wizard Items"
+msgstr "Itens do Assistente de Configuração"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_cron_form"
@@ -3428,7 +3457,7 @@ msgstr "Spanish (Latin American)"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
-msgstr ""
+msgstr "Persa"
 
 #, fuzzy
 msgctxt "model:ir.lang,name:lang_fr"
@@ -3599,6 +3628,10 @@ msgstr "Nota"
 msgctxt "model:ir.note.read,name:"
 msgid "Note Read"
 msgstr "Nota Lida"
+
+msgctxt "model:ir.queue,name:"
+msgid "Queue"
+msgstr "Fila"
 
 msgctxt "model:ir.rule,name:"
 msgid "Rule"
@@ -4159,7 +4192,7 @@ msgstr "Formato de data"
 
 msgctxt "view:ir.lang:"
 msgid "Monetary Formatting"
-msgstr ""
+msgstr "Formatação Monetária"
 
 msgctxt "view:ir.lang:"
 msgid "Numbers Formatting"

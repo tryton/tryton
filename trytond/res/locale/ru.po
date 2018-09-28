@@ -37,10 +37,6 @@ msgid ""
 msgstr ""
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "Неверный пароль!"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Такое имя пользователя уже есть!"
 

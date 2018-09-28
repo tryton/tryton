@@ -39,10 +39,6 @@ msgstr ""
 "Namesto tega jih morate deaktivirati."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "Napačno geslo."
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Dva uporabnika ne moreta imeti isto prijavo."
 

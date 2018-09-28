@@ -41,10 +41,6 @@ msgstr ""
 "Vous devez les désactiver à la place."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "Mauvais mot de passe !"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "Vous ne pouvez pas créer deux utilisateur avec le même identifiant !"
 

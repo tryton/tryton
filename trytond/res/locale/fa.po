@@ -39,10 +39,6 @@ msgstr ""
 "در عوض شما میتوانید آنها را غیرفعال کنید."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "کلمه عبور اشتباه!"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "شما نمیتوانید دو کاربر با نام ورود به سیستم مشابه داشته باشید!"
 

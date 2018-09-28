@@ -37,10 +37,6 @@ msgid ""
 msgstr "禁止用户登录请封闭帐号而非删除用户."
 
 msgctxt "error:res.user:"
-msgid "Wrong password!"
-msgstr "密码错误!"
-
-msgctxt "error:res.user:"
 msgid "You can not have two users with the same login!"
 msgstr "用户的登录名不能相同！"
 
