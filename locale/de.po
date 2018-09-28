@@ -60,7 +60,7 @@ msgstr "Preisliste"
 
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr "Varianten"
+msgstr "Artikel"
 
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
@@ -136,7 +136,7 @@ msgstr "ID"
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
@@ -184,11 +184,11 @@ msgstr "Verkaufsaktion"
 
 msgctxt "model:sale.promotion-product.category,name:"
 msgid "Sale Promotion - Product Category"
-msgstr "Verkaufsaktion - Varianten-Kategorie"
+msgstr "Verkaufsaktion - Artikelkategorie"
 
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
-msgstr "Verkaufsaktion - Variante"
+msgstr "Verkaufsaktion - Artikel"
 
 msgctxt "field:sale.promotion,unit_category:"
 msgid "Unit Category"
