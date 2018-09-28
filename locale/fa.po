@@ -22,6 +22,18 @@ msgctxt "field:product.category.account,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "حساب هزینه از فروش کالا ها"
 
+msgctxt "field:stock.move,in_anglo_saxon_quantity:"
+msgid "Input Anglo-Saxon Quantity"
+msgstr "مقدار ورودی آنگلو-ساکسون"
+
+msgctxt "field:stock.move,out_anglo_saxon_quantity:"
+msgid "Output Anglo-Saxon Quantity"
+msgstr "مقدار خروجی آنگلو-ساکسون"
+
+msgctxt "selection:account.fiscalyear,account_stock_method:"
+msgid "Anglo-Saxon"
+msgstr "آنگلو-ساکسون"
+
 msgctxt "field:product.product,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "حساب هزینه از فروش کالا ها"
@@ -34,14 +46,6 @@ msgctxt "field:product.template.account,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr "حساب هزینه از فروش کالا ها"
 
-msgctxt "field:stock.move,in_anglo_saxon_quantity:"
-msgid "Input Anglo-Saxon Quantity"
-msgstr "مقدار ورودی آنگلو-ساکسون"
-
-msgctxt "field:stock.move,out_anglo_saxon_quantity:"
-msgid "Output Anglo-Saxon Quantity"
-msgstr "مقدار خروجی آنگلو-ساکسون"
-
 msgctxt "help:product.product,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
@@ -49,7 +53,3 @@ msgstr "استفاده از این حساب به جای حساب تعریف شد
 msgctxt "help:product.template,account_cogs:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr "استفاده از این حساب به جای حساب تعریف شده در دسته بندی."
-
-msgctxt "selection:account.fiscalyear,account_stock_method:"
-msgid "Anglo-Saxon"
-msgstr "آنگلو-ساکسون"
