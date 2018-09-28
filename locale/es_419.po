@@ -60,9 +60,10 @@ msgctxt "model:ir.cron,name:cron_post_clearing_moves"
 msgid "Post Clearing Moves"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"
-msgstr ""
+msgstr "Exitoso"
 
 msgctxt "view:account.payment.journal:"
 msgid "Clearing"
