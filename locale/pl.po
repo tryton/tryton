@@ -10,13 +10,15 @@ msgctxt "error:purchase.requisition:"
 msgid "Requisition \"%s\" must be cancelled before deletion."
 msgstr ""
 
+#, fuzzy
 msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
-msgstr ""
+msgstr "Purchase Requisition"
 
+#, fuzzy
 msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
-msgstr ""
+msgstr "Purchase Requisition"
 
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"

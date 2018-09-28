@@ -114,7 +114,7 @@ msgstr "ID"
 
 msgctxt "field:purchase.requisition.line,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:purchase.requisition.line,product_uom_category:"
 msgid "Product Uom Category"
