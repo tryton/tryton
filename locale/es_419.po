@@ -42,9 +42,10 @@ msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
 msgstr "Recuperar anticipo"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:invoice_recall_deposit_button"
 msgid "Recall Deposit"
-msgstr ""
+msgstr "Recuperar anticipo"
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
