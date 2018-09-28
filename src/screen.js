@@ -1385,7 +1385,7 @@
             }
             if (delete_) {
                 // TODO delete children before parent
-                prm = this.model.delete_(records);
+                prm = this.group.delete_(records);
             }
             var top_record = records[0];
             var top_group = top_record.group;

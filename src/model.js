@@ -34,39 +34,6 @@
             };
             return Sao.rpc(args, this.session, async);
         },
-        delete_: function(records) {
-            if (jQuery.isEmptyObject(records)) {
-                return jQuery.when();
-            }
-            var record = records[0];
-            var root_group = record.group.root_group();
-            console.assert(records.every(function(r) {
-                return r.model.name == record.model.name;
-            }), 'records not from the same model');
-            console.assert(records.every(function(r) {
-                return r.group.root_group() == record.group.root_group();
-            }), 'records not from the same root group');
-            records = records.filter(function(record) {
-                return record.id >= 0;
-            });
-            var context = {};
-            context._timestamp = {};
-            records.forEach(function(record) {
-                jQuery.extend(context._timestamp, record.get_timestamp());
-            });
-            var record_ids = records.map(function(record) {
-                return record.id;
-            });
-            return root_group.on_write_ids(record_ids).then(function(reload_ids) {
-                reload_ids = reload_ids.filter(function(e) {
-                    return !~record_ids.indexOf(e);
-                });
-                return this.execute('delete', [record_ids], context)
-                .then(function() {
-                    root_group.reload(reload_ids);
-                });
-            }.bind(this));
-        },
         copy: function(records, context) {
             if (jQuery.isEmptyObject(records)) {
                 return jQuery.when();
@@ -274,6 +241,38 @@
                 this.parent.validate(null, true).done(function() {
                     return this.parent.group.changed();
                 }.bind(this));
+            }.bind(this));
+        };
+        array.delete_ = function(records) {
+            if (jQuery.isEmptyObject(records)) {
+                return jQuery.when();
+            }
+            var root_group = this.root_group();
+            console.assert(records.every(function(r) {
+                return r.model.name == this.model.name;
+            }.bind(this)), 'records not from the same model');
+            console.assert(records.every(function(r) {
+                return r.group.root_group() == root_group;
+            }), 'records not from the same root group');
+            records = records.filter(function(record) {
+                return record.id >= 0;
+            });
+            var context = this.context();
+            context._timestamp = {};
+            records.forEach(function(record) {
+                jQuery.extend(context._timestamp, record.get_timestamp());
+            });
+            var record_ids = records.map(function(record) {
+                return record.id;
+            });
+            return root_group.on_write_ids(record_ids).then(function(reload_ids) {
+                reload_ids = reload_ids.filter(function(e) {
+                    return !~record_ids.indexOf(e);
+                });
+                return this.model.execute('delete', [record_ids], context)
+                .then(function() {
+                    root_group.reload(reload_ids);
+                });
             }.bind(this));
         };
         array.root_group = function() {
