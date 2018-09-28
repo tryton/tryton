@@ -37,6 +37,12 @@ msgstr ""
 "Für Einkaufsposition \"%(line)s\" von Einkauf \"%(purchase)s\" ist kein "
 "Lagerort Lieferant eingetragen."
 
+msgctxt "error:purchase.line:"
+msgid "The line \"%(line)s\" must be on canceled or draft purchase to be deleted."
+msgstr ""
+"Die Position \"%(line)s\" muss Teil eines Einkaufs im Status \"Annulliert\" "
+"oder \"Entwurf\" sein, um gelöscht werden zu können."
+
 msgctxt "error:purchase.modify_header:"
 msgid "The purchase \"%(purchase)s\" must be in draft to modify header."
 msgstr ""
@@ -116,6 +122,10 @@ msgstr "ID"
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
 msgstr "Rechnungsstellung Einkauf"
+
+msgctxt "field:purchase.configuration,purchase_process_after:"
+msgid "Process Purchase after"
+msgstr "Einkauf ausführen nach"
 
 msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
@@ -284,11 +294,11 @@ msgstr "Notiz"
 
 msgctxt "field:purchase.line,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:purchase.line,product_supplier:"
 msgid "Supplier's Product"
-msgstr "Variante des Lieferanten"
+msgstr "Artikel des Lieferanten"
 
 msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
@@ -794,6 +804,14 @@ msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
 msgstr "Lieferant"
 
+msgctxt "help:purchase.configuration,purchase_process_after:"
+msgid ""
+"The grace period during which confirmed purchase can still be reset to draft.\n"
+"Applied only if a worker queue is activated."
+msgstr ""
+"Frist innerhalb der ein bestätigter Einkauf noch auf Entwurf zurückgesetzt werden kann.\n"
+"Wird nur angewandt, wenn die Warteschlange aktiviert ist."
+
 msgctxt "help:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
@@ -833,7 +851,7 @@ msgstr "Parteien mit Einkäufen"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Product Suppliers"
-msgstr "Variantenlieferanten"
+msgstr "Lieferanten"
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
@@ -909,11 +927,7 @@ msgstr "In Ausführung"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
-msgstr "Angebot"
-
-msgctxt "model:ir.cron,name:cron_process_purchase"
-msgid "Process Confirmed Purchases"
-msgstr "Process Confirmed Purchases"
+msgstr "Anfrage"
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
 msgid "Cancel"
@@ -962,11 +976,11 @@ msgstr "Einstellungen"
 
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Product Suppliers"
-msgstr "Variantenlieferanten"
+msgstr "Lieferanten"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
-msgstr "Einkäufe"
+msgstr "Einkauf"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
@@ -974,7 +988,7 @@ msgstr "Einstellungen Einkauf"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr "Einkäufe"
+msgstr "Einkauf"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
@@ -1022,7 +1036,7 @@ msgstr "Einkaufsposition - Ignorierte Lagerbewegung"
 
 msgctxt "model:purchase.product_supplier,name:"
 msgid "Product Supplier"
-msgstr "Variantenlieferanten"
+msgstr "Lieferant"
 
 msgctxt "model:purchase.product_supplier.price,name:"
 msgid "Product Supplier Price"
@@ -1042,7 +1056,7 @@ msgstr "Einkauf - Neu erstellte Rechnung"
 
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr "Einkäufe"
+msgstr "Einkauf"
 
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
@@ -1146,7 +1160,7 @@ msgstr "In Ausführung"
 
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Quotation"
-msgstr "Angebot"
+msgstr "Anfrage"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -1230,7 +1244,7 @@ msgstr "In Ausführung"
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
-msgstr "Angebot"
+msgstr "Anfrage"
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid ""
@@ -1282,7 +1296,7 @@ msgstr "Einkauf"
 
 msgctxt "view:stock.move:"
 msgid "Cancel"
-msgstr "Annulliert"
+msgstr "Abbrechen"
 
 msgctxt "view:stock.move:"
 msgid "Reset to Draft"
