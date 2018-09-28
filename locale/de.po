@@ -112,10 +112,6 @@ msgctxt "error:account.journal.period:"
 msgid "You can only open one journal per period."
 msgstr "Es kann nur ein Journal pro Buchungszeitraum eröffnet werden."
 
-msgctxt "error:account.journal.type:"
-msgid "The code must be unique."
-msgstr "Der Code kann nur einmal vergeben werden."
-
 msgctxt "error:account.move.line:"
 msgid "Line \"%s\" (%d) already reconciled."
 msgstr "Die Buchungszeile \"%s\" (%d) ist bereits abgestimmt."
@@ -154,10 +150,6 @@ msgid ""
 msgstr ""
 "Buchungszeile kann nicht angelegt werden mit Konto \"%s\", da es eine Sicht "
 "ist."
-
-msgctxt "error:account.move.line:"
-msgid "You can not create a move line with account \"%s\" because it is inactive."
-msgstr "Buchungszeile kann nicht angelegt werden mit inaktivem Konto \"%s\"."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify line \"%s\" because it is reconciled."
@@ -394,6 +386,10 @@ msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
 msgstr "Saldenvorträge"
 
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "Kontenblattsaldo"
@@ -434,6 +430,10 @@ msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
 msgstr "Abstimmen"
 
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr "Ersetzt durch"
+
 msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "Rechts"
@@ -445,6 +445,10 @@ msgstr "Fremdwährung"
 msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "Nachkommastellen Fremdwährung"
+
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "Anfangsdatum"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
@@ -586,6 +590,10 @@ msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
 msgstr "Saldenvortrag"
 
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "Kontenblattsaldo"
@@ -617,6 +625,14 @@ msgstr "Bezeichnung des Datensatzes"
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
 msgstr "Abstimmen"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr "Ersetzt durch"
+
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "Anfangsdatum"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
@@ -676,7 +692,7 @@ msgstr "Betrag"
 
 msgctxt "field:account.account.type,balance_sheet:"
 msgid "Balance Sheet"
-msgstr "Bilanzbogen"
+msgstr "Bilanz"
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
@@ -744,7 +760,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.account.type.template,balance_sheet:"
 msgid "Balance Sheet"
-msgstr "Bilanzbogen"
+msgstr "Bilanz"
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
@@ -1219,6 +1235,10 @@ msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
 msgstr "Haben bei Ende"
 
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
 msgstr "Soll bei Ende"
@@ -1250,6 +1270,10 @@ msgstr "Anfangssaldo"
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
 msgstr "Haben bei Beginn"
+
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "Anfangsdatum"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
@@ -1471,10 +1495,6 @@ msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
 msgstr "Enddatum"
 
-msgctxt "field:account.journal,accounts:"
-msgid "Accounts"
-msgstr "Konten"
-
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Aktiv"
@@ -1499,10 +1519,6 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr "Haben"
 
-msgctxt "field:account.journal,credit_account:"
-msgid "Default Credit Account"
-msgstr "Habenkonto"
-
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
 msgstr "Nachkommastellen Währung"
@@ -1510,10 +1526,6 @@ msgstr "Nachkommastellen Währung"
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "Soll"
-
-msgctxt "field:account.journal,debit_account:"
-msgid "Default Debit Account"
-msgstr "Sollkonto"
 
 msgctxt "field:account.journal,id:"
 msgid "ID"
@@ -1544,46 +1556,6 @@ msgid "Write Date"
 msgstr "Zuletzt geändert"
 
 msgctxt "field:account.journal,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:account.journal.account,company:"
-msgid "Company"
-msgstr "Unternehmen"
-
-msgctxt "field:account.journal.account,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:account.journal.account,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:account.journal.account,credit_account:"
-msgid "Default Credit Account"
-msgstr "Standard Habenkonto"
-
-msgctxt "field:account.journal.account,debit_account:"
-msgid "Default Debit Account"
-msgstr "Standard Sollkonto"
-
-msgctxt "field:account.journal.account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.journal.account,journal:"
-msgid "Journal"
-msgstr "Journal"
-
-msgctxt "field:account.journal.account,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:account.journal.account,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:account.journal.account,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
@@ -1676,38 +1648,6 @@ msgid "Write Date"
 msgstr "Zuletzt geändert"
 
 msgctxt "field:account.journal.sequence,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:account.journal.type,code:"
-msgid "Code"
-msgstr "Code"
-
-msgctxt "field:account.journal.type,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:account.journal.type,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:account.journal.type,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.journal.type,name:"
-msgid "Name"
-msgstr "Name"
-
-msgctxt "field:account.journal.type,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:account.journal.type,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:account.journal.type,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
@@ -1999,9 +1939,61 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "Bis Datum"
 
+msgctxt "field:account.move.reconcile.write_off,active:"
+msgid "Active"
+msgstr "Aktiv"
+
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.move.reconcile.write_off,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.move.reconcile.write_off,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "Habenkonto"
+
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "Sollkonto"
+
+msgctxt "field:account.move.reconcile.write_off,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "Journal"
+
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "Name"
+
+msgctxt "field:account.move.reconcile.write_off,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.move.reconcile.write_off,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.move.reconcile.write_off,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
+
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
 msgstr "Betrag"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "Unternehmen"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
@@ -2019,9 +2011,9 @@ msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
-msgid "Journal"
-msgstr "Journal"
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "Ausbuchung"
 
 msgctxt "field:account.move.reconciliation,create_date:"
 msgid "Create Date"
@@ -2279,10 +2271,6 @@ msgctxt "field:account.reconcile.show,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.reconcile.show,journal:"
-msgid "Journal"
-msgstr "Journal"
-
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
 msgstr "Positionen"
@@ -2296,8 +2284,12 @@ msgid "Party"
 msgstr "Partei"
 
 msgctxt "field:account.reconcile.show,write_off:"
-msgid "Write-Off"
+msgid "Write Off"
 msgstr "Ausbuchung"
+
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "Betrag"
 
 msgctxt "field:account.tax,active:"
 msgid "Active"
@@ -2455,6 +2447,10 @@ msgctxt "field:account.tax.code,description:"
 msgid "Description"
 msgstr "Beschreibung"
 
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
 msgctxt "field:account.tax.code,id:"
 msgid "ID"
 msgstr "ID"
@@ -2474,6 +2470,10 @@ msgstr "Übergeordnet (Steuerkennziffern)"
 msgctxt "field:account.tax.code,rec_name:"
 msgid "Record Name"
 msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "Anfangsdatum"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
@@ -2627,6 +2627,10 @@ msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
 msgstr "Beschreibung"
 
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "Enddatum"
+
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
 msgstr "ID"
@@ -2646,6 +2650,10 @@ msgstr "Übergeordnet (Steuerkennziffernvorlage)"
 msgctxt "field:account.tax.code.template,rec_name:"
 msgid "Record Name"
 msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "Anfangsdatum"
 
 msgctxt "field:account.tax.code.template,write_date:"
 msgid "Write Date"
@@ -2815,6 +2823,10 @@ msgctxt "field:account.tax.rule,template:"
 msgid "Template"
 msgstr "Vorlage"
 
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr "Vorlage überschreiben"
+
 msgctxt "field:account.tax.rule,write_date:"
 msgid "Write Date"
 msgstr "Zuletzt geändert"
@@ -2866,6 +2878,10 @@ msgstr "Anzuwendende Steuer"
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
 msgstr "Vorlage"
+
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr "Vorlage überschreiben"
 
 msgctxt "field:account.tax.rule.line,write_date:"
 msgid "Write Date"
@@ -3219,10 +3235,6 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
-msgctxt "help:account.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
-
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "Nur Salden in Kontenblättern anzeigen"
@@ -3283,10 +3295,6 @@ msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
 msgstr "Wenn aktiviert werden neue Sequenzen erstellt."
 
-msgctxt "help:account.general_ledger.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
-
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
 msgstr "Nur festgeschriebene Buchungen anzeigen"
@@ -3346,6 +3354,10 @@ msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr "Nur festgeschriebene Buchungen anzeigen"
 
+msgctxt "help:account.move.reconcile.write_off,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr "Letztes Datum der abgestimmten Position"
@@ -3396,10 +3408,6 @@ msgstr ""
 "Bei Aktivierung wird für die folgende Steuerberechnung der geänderte "
 "Einzelpreis zugrundegelegt"
 
-msgctxt "help:account.tax.code,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern. "
-
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
 msgstr "Aktivieren um die Vorlage zu überschreiben"
@@ -3421,6 +3429,10 @@ msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "Ein Python-Ausdruck der mit den Schlüsselwörtern ausgewertet wird."
 
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr "Aktivieren um die Vorlage zu überschreiben"
+
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
 msgstr ""
@@ -3432,6 +3444,10 @@ msgid ""
 msgstr ""
 "Wenn das Feld Ursprungssteuer ausgefüllt ist, wird die Steuerregel "
 "ausschließlich auf diese Steuer angewendet."
+
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr "Aktivieren um die Vorlage zu überschreiben"
 
 msgctxt "help:account.tax.rule.line.template,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
@@ -3492,11 +3508,11 @@ msgstr "Fälligkeitsliste Kontext"
 
 msgctxt "model:account.balance_sheet.comparision.context,name:"
 msgid "Balance Sheet Context"
-msgstr "Bilanzbogen Kontext"
+msgstr "Bilanz Kontext"
 
 msgctxt "model:account.balance_sheet.context,name:"
 msgid "Balance Sheet Context"
-msgstr "Bilanzbogen Kontext"
+msgstr "Bilanz Kontext"
 
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
@@ -3528,11 +3544,11 @@ msgstr "Geschäftsjahr"
 
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
-msgstr "Abgleich Saldenvortrag"
+msgstr "Erfolgskonten abschließen"
 
 msgctxt "model:account.fiscalyear.renew.start,name:"
 msgid "Renew Fiscal Year Start"
-msgstr "Geschäftsjahr erneuern"
+msgstr "Neues Geschäftsjahr anlegen"
 
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
@@ -3574,10 +3590,6 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Lager"
 
-msgctxt "model:account.journal.account,name:"
-msgid "Journal Account"
-msgstr "Buchungsjournal"
-
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
 msgstr "Journal Barvermögen Kontext"
@@ -3589,34 +3601,6 @@ msgstr "Journal Buchungszeitraum"
 msgctxt "model:account.journal.sequence,name:"
 msgid "Journal Sequence"
 msgstr "Nummernkreis Journal"
-
-msgctxt "model:account.journal.type,name:"
-msgid "Journal Type"
-msgstr "Journal Typ"
-
-msgctxt "model:account.journal.type,name:journal_type_cash"
-msgid "Cash"
-msgstr "Kasse"
-
-msgctxt "model:account.journal.type,name:journal_type_expense"
-msgid "Expense"
-msgstr "Aufwand"
-
-msgctxt "model:account.journal.type,name:journal_type_general"
-msgid "General"
-msgstr "Allgemein"
-
-msgctxt "model:account.journal.type,name:journal_type_revenue"
-msgid "Revenue"
-msgstr "Ertrag"
-
-msgctxt "model:account.journal.type,name:journal_type_situation"
-msgid "Situation"
-msgstr "Saldenvortrag"
-
-msgctxt "model:account.journal.type,name:journal_type_write_off"
-msgid "Write-Off"
-msgstr "Ausbuchung"
 
 msgctxt "model:account.move,name:"
 msgid "Account Move"
@@ -3636,11 +3620,15 @@ msgstr "Buchungszeilenvorlage"
 
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
-msgstr "Nachfrage Dialogbuchen"
+msgstr "Nachfrage Buchungen erfassen"
 
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
 msgstr "Journal Allgemein drucken"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr "Abstimmung Ausbuchung"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
@@ -3696,7 +3684,7 @@ msgstr "Vorlage Position Steuerregel"
 
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
-msgstr "Kennzifferntabelle öffnen"
+msgstr "Steuerkennzifferntabelle öffnen"
 
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
@@ -3756,7 +3744,7 @@ msgstr "Konten"
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr "Bilanzbogen"
+msgstr "Bilanz"
 
 msgctxt "model:ir.action,name:act_account_general_ledger"
 msgid "Accounts"
@@ -3800,7 +3788,7 @@ msgstr "Fälligkeitsliste"
 
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr "Abgleich Saldenvortrag"
+msgstr "Erfolgskonten abschließen"
 
 msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
@@ -3808,7 +3796,7 @@ msgstr "Buchungssätze stornieren"
 
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Kennzifferntabelle öffnen"
+msgstr "Steuerkennzifferntabelle öffnen"
 
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
@@ -3849,10 +3837,6 @@ msgstr "Journale - Buchungszeiträume"
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "Journale - Buchungszeiträume"
-
-msgctxt "model:ir.action,name:act_journal_type_form"
-msgid "Journal Types"
-msgstr "Journaltypen"
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
@@ -3918,9 +3902,13 @@ msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Buchungspositionen abstimmen"
 
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "Ausbuchungsmethoden"
+
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
-msgstr "Geschäftsjahr wieder eröffnen"
+msgstr "Neues Geschäftsjahr anlegen"
 
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
@@ -4116,7 +4104,7 @@ msgstr "Fälligkeitsliste"
 
 msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr "Abgleich Saldenvortrag"
+msgstr "Erfolgskonten abschließen"
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
@@ -4136,7 +4124,7 @@ msgstr "Buchungszeiträume abschließen"
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Kennzifferntabelle öffnen"
+msgstr "Steuerkennzifferntabelle öffnen"
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
@@ -4156,7 +4144,7 @@ msgstr "Geschäftsjahre"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr "Allgemeine Konten"
+msgstr "Konten"
 
 msgctxt "model:ir.ui.menu,name:menu_general_ledger"
 msgid "General Ledger"
@@ -4182,10 +4170,6 @@ msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "Journale - Buchungszeiträume"
 
-msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
-msgid "Journal Types"
-msgstr "Journaltypen"
-
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
 msgstr "Buchungssätze"
@@ -4196,11 +4180,11 @@ msgstr "Buchungssatz von Vorlage erstellen"
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
 msgid "Account Move Template"
-msgstr "Buchungssatzvorlage"
+msgstr "Buchungssatzvorlagen"
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr "Bilanzbogen"
+msgstr "Bilanz"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Accounts"
@@ -4212,7 +4196,7 @@ msgstr "Gewinn- und Verlustrechnung (GuV)"
 
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr "Journal eröffnen"
+msgstr "Buchungen erfassen"
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
@@ -4224,19 +4208,23 @@ msgstr "Journal Allgemein drucken"
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "In Ausführung"
+msgstr "Abschlussarbeiten"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Konten abstimmen"
 
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "Ausbuchungsmethoden"
+
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
 msgid "Renew Fiscal Year"
-msgstr "Geschäftsjahr wiedereröffnen"
+msgstr "Neues Geschäftsjahr anlegen"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Berichte"
+msgstr "Auswertungen"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
@@ -4694,6 +4682,30 @@ msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
 msgstr "Festgeschrieben"
 
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "Kasse"
+
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "Aufwand"
+
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "Ertrag"
+
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "Saldenvortrag"
+
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "Ausbuchung"
+
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
 msgstr "Geschlossen"
@@ -4997,10 +5009,6 @@ msgstr "Sonstiges"
 msgctxt "view:account.move.template:"
 msgid "Template"
 msgstr "Vorlage"
-
-msgctxt "view:account.reconcile.show:"
-msgid "Amount"
-msgstr "Betrag"
 
 msgctxt "view:account.tax.template:"
 msgid "%"

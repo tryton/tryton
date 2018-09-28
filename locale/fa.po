@@ -100,10 +100,6 @@ msgctxt "error:account.journal.period:"
 msgid "You can only open one journal per period."
 msgstr "شما از هر دوره فقط میتوانید یک روزنامه باز کنید."
 
-msgctxt "error:account.journal.type:"
-msgid "The code must be unique."
-msgstr "کد باید منحصر بفرد باشد."
-
 msgctxt "error:account.move.line:"
 msgid "Line \"%s\" (%d) already reconciled."
 msgstr "سطر \"%s\" (%d) مطابقت داده شده است."
@@ -141,11 +137,6 @@ msgid ""
 msgstr ""
 "شما نمی توانید یک سطر جابجایی با حساب \"٪ s\" ایجاد کنید زیرا آن یک حساب "
 "نمایشی است."
-
-msgctxt "error:account.move.line:"
-msgid "You can not create a move line with account \"%s\" because it is inactive."
-msgstr ""
-"شما نمی توانید یک سطر جابجایی با حساب \"٪ s\" ایجاد کنید زیرا غیرفعال است."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify line \"%s\" because it is reconciled."
@@ -367,6 +358,11 @@ msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
 msgstr "بازپرداخت ها"
 
+#, fuzzy
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "تراز دفتر کل"
@@ -407,6 +403,10 @@ msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
 msgstr "تطبیق"
 
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
 msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "راست"
@@ -418,6 +418,11 @@ msgstr "واحد پول دوم"
 msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "رقم های پول دوم"
+
+#, fuzzy
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
@@ -559,6 +564,11 @@ msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
 msgstr "بازپرداخت"
 
+#, fuzzy
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "تراز دفتر کل"
@@ -590,6 +600,15 @@ msgstr "نام پرونده"
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
 msgstr "تطبیق"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
@@ -1192,6 +1211,11 @@ msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
 msgstr "پایان بستانکاری"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
 msgstr "پایان بدهی"
@@ -1223,6 +1247,11 @@ msgstr "تراز شروع"
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
 msgstr "شروع بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
@@ -1444,10 +1473,6 @@ msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
 msgstr "تا تاریخ"
 
-msgctxt "field:account.journal,accounts:"
-msgid "Accounts"
-msgstr "حساب ها"
-
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "فعال"
@@ -1472,10 +1497,6 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr "بستانکاری"
 
-msgctxt "field:account.journal,credit_account:"
-msgid "Default Credit Account"
-msgstr "حساب بستانکاری پیش فرض"
-
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
@@ -1483,10 +1504,6 @@ msgstr "رقم های واحد پول"
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "بدهی"
-
-msgctxt "field:account.journal,debit_account:"
-msgid "Default Debit Account"
-msgstr "حساب بدهی پیش فرض"
 
 msgctxt "field:account.journal,id:"
 msgid "ID"
@@ -1517,46 +1534,6 @@ msgid "Write Date"
 msgstr "تاریخ نوشته"
 
 msgctxt "field:account.journal,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:account.journal.account,company:"
-msgid "Company"
-msgstr "شرکت"
-
-msgctxt "field:account.journal.account,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.journal.account,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:account.journal.account,credit_account:"
-msgid "Default Credit Account"
-msgstr "حساب بستانکاری پیش فرض"
-
-msgctxt "field:account.journal.account,debit_account:"
-msgid "Default Debit Account"
-msgstr "حساب بدهی پیش فرض"
-
-msgctxt "field:account.journal.account,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:account.journal.account,journal:"
-msgid "Journal"
-msgstr "روزنامه"
-
-msgctxt "field:account.journal.account,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:account.journal.account,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.journal.account,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
 
@@ -1649,38 +1626,6 @@ msgid "Write Date"
 msgstr "تاریخ نوشته"
 
 msgctxt "field:account.journal.sequence,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:account.journal.type,code:"
-msgid "Code"
-msgstr "کد"
-
-msgctxt "field:account.journal.type,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.journal.type,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:account.journal.type,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:account.journal.type,name:"
-msgid "Name"
-msgstr "نام"
-
-msgctxt "field:account.journal.type,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:account.journal.type,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.journal.type,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
 
@@ -1972,9 +1917,74 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "تا تاریخ"
 
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,active:"
+msgid "Active"
+msgstr "فعال"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,create_date:"
+msgid "Create Date"
+msgstr "تاریخ ایجاد"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,create_uid:"
+msgid "Create User"
+msgstr "کاربر ایجاد کننده"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "حساب بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "حساب بدهی"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,id:"
+msgid "ID"
+msgstr "شناسه"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "روزنامه"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,rec_name:"
+msgid "Record Name"
+msgstr "نام پرونده"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,write_date:"
+msgid "Write Date"
+msgstr "تاریخ نوشته"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,write_uid:"
+msgid "Write User"
+msgstr "نوشته کاربر"
+
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
 msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "شرکت"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
@@ -1992,9 +2002,10 @@ msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
 msgstr "شناسه"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
-msgid "Journal"
-msgstr "روزنامه"
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "قلم زده شده"
 
 msgctxt "field:account.move.reconciliation,create_date:"
 msgid "Create Date"
@@ -2252,10 +2263,6 @@ msgctxt "field:account.reconcile.show,id:"
 msgid "ID"
 msgstr "شناسه"
 
-msgctxt "field:account.reconcile.show,journal:"
-msgid "Journal"
-msgstr "روزنامه"
-
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
 msgstr "سطرها"
@@ -2268,9 +2275,15 @@ msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
+#, fuzzy
 msgctxt "field:account.reconcile.show,write_off:"
-msgid "Write-Off"
+msgid "Write Off"
 msgstr "قلم زده شده"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "مقدار"
 
 msgctxt "field:account.tax,active:"
 msgid "Active"
@@ -2428,6 +2441,11 @@ msgctxt "field:account.tax.code,description:"
 msgid "Description"
 msgstr "شرح"
 
+#, fuzzy
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
 msgctxt "field:account.tax.code,id:"
 msgid "ID"
 msgstr "شناسه"
@@ -2447,6 +2465,11 @@ msgstr "منبع"
 msgctxt "field:account.tax.code,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
+
+#, fuzzy
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
@@ -2600,6 +2623,11 @@ msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
 msgstr "شرح"
 
+#, fuzzy
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
 msgstr "شناسه"
@@ -2619,6 +2647,11 @@ msgstr "منبع"
 msgctxt "field:account.tax.code.template,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
+
+#, fuzzy
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
 
 msgctxt "field:account.tax.code.template,write_date:"
 msgid "Write Date"
@@ -2788,6 +2821,11 @@ msgctxt "field:account.tax.rule,template:"
 msgid "Template"
 msgstr "الگو"
 
+#, fuzzy
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
+
 msgctxt "field:account.tax.rule,write_date:"
 msgid "Write Date"
 msgstr "تاریخ نوشته"
@@ -2839,6 +2877,11 @@ msgstr "مالیات جایگزین"
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
 msgstr "الگو"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr "بازنویسی الگو"
 
 msgctxt "field:account.tax.rule.line,write_date:"
 msgid "Write Date"
@@ -3192,10 +3235,6 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
 
-msgctxt "help:account.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، علامت را حذف کنید."
-
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "نمایش فقط تراز در گزارش دفتر کل"
@@ -3256,10 +3295,6 @@ msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
 msgstr "اگر کادر را تیک بزنید، توالی های جدید ایجاد خواهند شد."
 
-msgctxt "help:account.general_ledger.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
-
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
 msgstr "نمایش فقط جابجایی ارسال شده"
@@ -3316,6 +3351,11 @@ msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr "نمایش فقط جابجایی ارسال شده"
 
+#, fuzzy
+msgctxt "help:account.move.reconcile.write_off,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، علامت را حذف کنید."
+
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr "بالاترین تاریخ تطبیق دادن سطرها"
@@ -3364,10 +3404,6 @@ msgstr ""
 "اگر کادر را تیک بزنید، قیمت واحد برای محاسبه مالیات بیشتر با این مالیات "
 "اصلاح خواهد شد"
 
-msgctxt "help:account.tax.code,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
-
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
 msgstr "برای بازنویسی تعاریف الگو، کادر را تیک بزنید"
@@ -3388,6 +3424,11 @@ msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "یک عبارت پایتون که با کلمات کلیدی ارزیابی می شود."
 
+#, fuzzy
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
+
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
 msgstr "برای اضافه کردن مالیات اصلی به مالیات جایگزین، کادر را تیک بزنید."
@@ -3396,6 +3437,11 @@ msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr "اگر مالیات اصلی پر شود، این قانون فقط برای این مالیات اعمال خواهد شد."
+
+#, fuzzy
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
 
 msgctxt "help:account.tax.rule.line.template,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
@@ -3538,10 +3584,6 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "موجودی"
 
-msgctxt "model:account.journal.account,name:"
-msgid "Journal Account"
-msgstr "حساب روزنامه"
-
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
 msgstr "مفاد روزنامه نقدی"
@@ -3553,34 +3595,6 @@ msgstr "روزنامه - دوره"
 msgctxt "model:account.journal.sequence,name:"
 msgid "Journal Sequence"
 msgstr "ادامه روزنامه"
-
-msgctxt "model:account.journal.type,name:"
-msgid "Journal Type"
-msgstr "نوع روزنامه"
-
-msgctxt "model:account.journal.type,name:journal_type_cash"
-msgid "Cash"
-msgstr "نقدی"
-
-msgctxt "model:account.journal.type,name:journal_type_expense"
-msgid "Expense"
-msgstr "هزینه"
-
-msgctxt "model:account.journal.type,name:journal_type_general"
-msgid "General"
-msgstr "عمومی"
-
-msgctxt "model:account.journal.type,name:journal_type_revenue"
-msgid "Revenue"
-msgstr "درآمد"
-
-msgctxt "model:account.journal.type,name:journal_type_situation"
-msgid "Situation"
-msgstr "وضعیت"
-
-msgctxt "model:account.journal.type,name:journal_type_write_off"
-msgid "Write-Off"
-msgstr "قلم زده شده"
 
 msgctxt "model:account.move,name:"
 msgid "Account Move"
@@ -3605,6 +3619,10 @@ msgstr "درخواست روزنامه باز"
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
 msgstr "چاپ روزنامه کل"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr ""
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
@@ -3814,10 +3832,6 @@ msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "روزنامه ها - دوره ها"
 
-msgctxt "model:ir.action,name:act_journal_type_form"
-msgid "Journal Types"
-msgstr "انواع روزنامه"
-
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "حساب جابجایی ها"
@@ -3881,6 +3895,10 @@ msgstr "تطبیق دادن حساب ها"
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "تطبیق دادن سطرها"
+
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
@@ -4146,10 +4164,6 @@ msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "روزنامه ها - دوره ها"
 
-msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
-msgid "Journal Types"
-msgstr "انواع روزنامه"
-
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
 msgstr "حساب جابجایی ها"
@@ -4193,6 +4207,10 @@ msgstr "در حال پردازش"
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "تطبیق دادن حساب ها"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
 msgid "Renew Fiscal Year"
@@ -4658,6 +4676,36 @@ msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
 msgstr "ارسال شده"
 
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "نقدی"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "هزینه"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "عمومی"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "درآمد"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "وضعیت"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "قلم زده شده"
+
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
 msgstr "بسته"
@@ -4961,10 +5009,6 @@ msgstr "سایر اطلاعات"
 msgctxt "view:account.move.template:"
 msgid "Template"
 msgstr "الگو"
-
-msgctxt "view:account.reconcile.show:"
-msgid "Amount"
-msgstr "میزان"
 
 msgctxt "view:account.tax.template:"
 msgid "%"

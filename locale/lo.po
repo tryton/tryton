@@ -106,10 +106,6 @@ msgctxt "error:account.journal.period:"
 msgid "You can only open one journal per period."
 msgstr "ທ່ານສາມາດໄຂພຽງແຕ່ບັນຊີປະຈຳວັນດຽວເທົ່ານັ້ນສຳລັບໜຶ່ງໄລຍະ"
 
-msgctxt "error:account.journal.type:"
-msgid "The code must be unique."
-msgstr "ລະຫັດຕ້ອງຊໍ້າກັນ"
-
 msgctxt "error:account.move.line:"
 msgid "Line \"%s\" (%d) already reconciled."
 msgstr "ແຖວລາຍການ \"%s\" (%d)ນີ້ ພິສູດຍອດແລ້ວ."
@@ -146,12 +142,6 @@ msgid ""
 msgstr ""
 "ທ່ານບໍ່ສາມາດ ສ້າງ ລາຍການເຄື່ອນໄຫວ ກັບ ບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນ "
 "ເປັນບັນຊີສຳລັບເບິ່ງເທົ່ານັ້ນ."
-
-msgctxt "error:account.move.line:"
-msgid "You can not create a move line with account \"%s\" because it is inactive."
-msgstr ""
-"ທ່ານບໍ່ສາມາດ ສ້າງ ລາຍການເຄື່ອນໄຫວ ກັບ ບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນ "
-"ເປັນບັນຊີທີ່ບໍ່ໄດ້ເຄື່ອນໄຫວ."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify line \"%s\" because it is reconciled."
@@ -372,6 +362,11 @@ msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
 msgstr "ເຍື້ອນຊໍາລະ"
 
+#, fuzzy
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
@@ -412,6 +407,10 @@ msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
 msgstr "ພິສູດຍອດ"
 
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
 msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "ຂວາ"
@@ -423,6 +422,11 @@ msgstr "ສະກຸນເງິນທີສອງ"
 msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "ເລກເສດສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
@@ -564,6 +568,11 @@ msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
 msgstr "ບັນຊີເຍື້ອນຊໍາລະ"
 
+#, fuzzy
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
@@ -595,6 +604,15 @@ msgstr ""
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
 msgstr "ພິສູດຍອດ"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
@@ -1218,6 +1236,11 @@ msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
 msgstr "ຍອດມີຍົກໄປ"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
 msgstr "ຍອດໜີ້ຍົກໄປ"
@@ -1249,6 +1272,11 @@ msgstr "ຍອດຍົກມາ"
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
 msgstr "ຍອດມີຍົກມາ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
@@ -1479,11 +1507,6 @@ msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
 msgstr "ເຖິງວັນທີ"
 
-#, fuzzy
-msgctxt "field:account.journal,accounts:"
-msgid "Accounts"
-msgstr "ບັນຊີ"
-
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "ໃຊ້ຢູ່"
@@ -1508,10 +1531,6 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr "ມີ"
 
-msgctxt "field:account.journal,credit_account:"
-msgid "Default Credit Account"
-msgstr "ບັນຊີມີ ເດີມ"
-
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
 msgstr "ເລກເສດສະຸກນເງິນ"
@@ -1519,10 +1538,6 @@ msgstr "ເລກເສດສະຸກນເງິນ"
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "ໜີ້"
-
-msgctxt "field:account.journal,debit_account:"
-msgid "Default Debit Account"
-msgstr "ບັນຊີໜີ້ ເດີມ"
 
 msgctxt "field:account.journal,id:"
 msgid "ID"
@@ -1554,55 +1569,6 @@ msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
 
 msgctxt "field:account.journal,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,company:"
-msgid "Company"
-msgstr "ສຳນັກງານ/ຫ້ອງການ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,credit_account:"
-msgid "Default Credit Account"
-msgstr "ບັນຊີມີ ເດີມ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,debit_account:"
-msgid "Default Debit Account"
-msgstr "ບັນຊີໜີ້ ເດີມ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,id:"
-msgid "ID"
-msgstr "ເລກລຳດັບ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,journal:"
-msgid "Journal"
-msgstr "ບັນຊີປະຈໍາວັນ"
-
-msgctxt "field:account.journal.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.journal.account,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:account.journal.account,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
@@ -1703,38 +1669,6 @@ msgstr "ວັນທີບັນທຶກ"
 
 #, fuzzy
 msgctxt "field:account.journal.sequence,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ບັນທຶກ"
-
-msgctxt "field:account.journal.type,code:"
-msgid "Code"
-msgstr "ລະຫັດ"
-
-msgctxt "field:account.journal.type,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-msgctxt "field:account.journal.type,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
-msgctxt "field:account.journal.type,id:"
-msgid "ID"
-msgstr "ເລກລຳດັບ"
-
-msgctxt "field:account.journal.type,name:"
-msgid "Name"
-msgstr "ຊື່"
-
-msgctxt "field:account.journal.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.journal.type,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-msgctxt "field:account.journal.type,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
@@ -2026,9 +1960,73 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "ເຖິງວັນທີ"
 
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,create_date:"
+msgid "Create Date"
+msgstr "ວັນທີສ້າງ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,create_uid:"
+msgid "Create User"
+msgstr "ຜູ້ສ້າງ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "ບັນຊີ ມີ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "ບັນຊີ ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+msgctxt "field:account.move.reconcile.write_off,rec_name:"
+msgid "Record Name"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,write_date:"
+msgid "Write Date"
+msgstr "ວັນທີບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile.write_off,write_uid:"
+msgid "Write User"
+msgstr "ຜູ້ບັນທຶກ"
+
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
 msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
@@ -2046,9 +2044,10 @@ msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
-msgid "Journal"
-msgstr "ບັນຊີປະຈໍາວັນ"
+#, fuzzy
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "ເພີກຖອນ"
 
 msgctxt "field:account.move.reconciliation,create_date:"
 msgid "Create Date"
@@ -2307,10 +2306,6 @@ msgctxt "field:account.reconcile.show,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
-msgctxt "field:account.reconcile.show,journal:"
-msgid "Journal"
-msgstr "ບັນຊີປະຈໍາວັນ"
-
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
 msgstr "ລາຍການ"
@@ -2323,9 +2318,15 @@ msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
 
+#, fuzzy
 msgctxt "field:account.reconcile.show,write_off:"
-msgid "Write-Off"
+msgid "Write Off"
 msgstr "ເພີກຖອນ"
+
+#, fuzzy
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "ມູນຄ່າ"
 
 msgctxt "field:account.tax,active:"
 msgid "Active"
@@ -2484,6 +2485,11 @@ msgctxt "field:account.tax.code,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
+#, fuzzy
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
 msgctxt "field:account.tax.code,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
@@ -2504,6 +2510,11 @@ msgstr "ຮ່ວງ"
 msgctxt "field:account.tax.code,rec_name:"
 msgid "Record Name"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
@@ -2678,6 +2689,11 @@ msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
 msgstr "ຄຳອະທິບາຍ"
 
+#, fuzzy
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
@@ -2698,6 +2714,11 @@ msgstr "ຮ່ວງ"
 msgctxt "field:account.tax.code.template,rec_name:"
 msgid "Record Name"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
 
 msgctxt "field:account.tax.code.template,write_date:"
 msgid "Write Date"
@@ -2869,6 +2890,10 @@ msgctxt "field:account.tax.rule,template:"
 msgid "Template"
 msgstr "ຮ່າງແບບ"
 
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr ""
+
 msgctxt "field:account.tax.rule,write_date:"
 msgid "Write Date"
 msgstr "ວັນທີບັນທຶກ"
@@ -2920,6 +2945,10 @@ msgstr "ພາສີທົດແທນ"
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
 msgstr "ຮ່າງແບບ"
+
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line,write_date:"
 msgid "Write Date"
@@ -3286,10 +3315,6 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
-msgctxt "help:account.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "ສະແດງແຕ່ດຸນດ່ຽງເທົ່ານັ້ນໃນບົດສະຫຼຸບບັນຊີແຍກປະເພດທົ່ວໄປ"
@@ -3345,10 +3370,6 @@ msgstr ""
 
 msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
-msgstr ""
-
-msgctxt "help:account.general_ledger.account,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:account.general_ledger.account.context,posted:"
@@ -3408,6 +3429,10 @@ msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
+msgctxt "help:account.move.reconcile.write_off,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr "ວັນທີສູງສຸດຂອງລາຍການກວດສອບຍອດ"
@@ -3456,10 +3481,6 @@ msgid ""
 "by this tax"
 msgstr "ຖ້າໝາຍເອົາແລ້ວຫົວໜ່ວຍລາຄາສຳລັບການຄິດໄລ່ພາສີຈະຖືກແກ້ໄຂດ້ວຍພາສີນີ້"
 
-msgctxt "help:account.tax.code,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
 msgstr ""
@@ -3480,6 +3501,10 @@ msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr ""
 
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr ""
+
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
 msgstr ""
@@ -3490,6 +3515,10 @@ msgid ""
 msgstr ""
 "ຖ້າຫາກວ່າອັດຕາພາສີເດີມຖືກປ້ອນເຂົ້າ "
 "ສູດຄິດໄລ່ກໍຈະປັບໃຊ້ກັບອັດຕາພາສີນີ້ເທົ່ານັ້ນ."
+
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr ""
 
 msgctxt "help:account.tax.rule.line.template,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
@@ -3634,10 +3663,6 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Stock"
 
-msgctxt "model:account.journal.account,name:"
-msgid "Journal Account"
-msgstr ""
-
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
 msgstr "ບໍລິບົດບັນຊີເງິນສົດປະຈຳວັນ"
@@ -3649,40 +3674,6 @@ msgstr "ບັນຊີປະຈຳວັນ - ໄລຍະ"
 msgctxt "model:account.journal.sequence,name:"
 msgid "Journal Sequence"
 msgstr ""
-
-msgctxt "model:account.journal.type,name:"
-msgid "Journal Type"
-msgstr "ປະເພດບັນຊີປະຈຳວັນ"
-
-#, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_cash"
-msgid "Cash"
-msgstr "Cash"
-
-#, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_expense"
-msgid "Expense"
-msgstr "Expense"
-
-#, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_general"
-msgid "General"
-msgstr "General"
-
-#, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_revenue"
-msgid "Revenue"
-msgstr "Revenue"
-
-#, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_situation"
-msgid "Situation"
-msgstr "Situation"
-
-#, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_write_off"
-msgid "Write-Off"
-msgstr "Write-Off"
 
 msgctxt "model:account.move,name:"
 msgid "Account Move"
@@ -3707,6 +3698,10 @@ msgstr "ຂໍໃຫ້ໄຂບັນຊີປະຈຳວັນ"
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
 msgstr "ພິມບັນຊີປະຈຳວັນທົ່ວໄປ"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr ""
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
@@ -3942,11 +3937,6 @@ msgid "Journals - Periods"
 msgstr "Journals - Periods"
 
 #, fuzzy
-msgctxt "model:ir.action,name:act_journal_type_form"
-msgid "Journal Types"
-msgstr "Journal Types"
-
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "Account Moves"
@@ -4024,6 +4014,10 @@ msgstr "Reconcile Accounts"
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Reconcile Lines"
+
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
@@ -4344,11 +4338,6 @@ msgid "Journals - Periods"
 msgstr "Journals - Periods"
 
 #, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
-msgid "Journal Types"
-msgstr "Journal Types"
-
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
 msgstr "Account Moves"
@@ -4402,6 +4391,10 @@ msgstr "Processing"
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Reconcile Accounts"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
@@ -4889,6 +4882,36 @@ msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
 msgstr "ປະກາດແລ້ວ"
 
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "Cash"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "Expense"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "General"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "Revenue"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "Situation"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "ເພີກຖອນ"
+
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
 msgstr "ອັດ"
@@ -5208,10 +5231,6 @@ msgstr "ຂໍ້ມູນອື່ນໆ"
 msgctxt "view:account.move.template:"
 msgid "Template"
 msgstr "ຮ່າງແບບ"
-
-msgctxt "view:account.reconcile.show:"
-msgid "Amount"
-msgstr "ມູນຄ່າ"
 
 msgctxt "view:account.tax.template:"
 msgid "%"

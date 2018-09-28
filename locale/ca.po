@@ -108,10 +108,6 @@ msgctxt "error:account.journal.period:"
 msgid "You can only open one journal per period."
 msgstr "Només podeu obrir un diari per període."
 
-msgctxt "error:account.journal.type:"
-msgid "The code must be unique."
-msgstr "El codi ha de ser únic."
-
 msgctxt "error:account.move.line:"
 msgid "Line \"%s\" (%d) already reconciled."
 msgstr "L'apunt \"%s\" (%d) ja està conciliat."
@@ -145,10 +141,6 @@ msgid ""
 "You can not create a move line with account \"%s\" because it is a view "
 "account."
 msgstr "No podeu crear un apunt amb compte \"%s\" perquè és un compte de vista."
-
-msgctxt "error:account.move.line:"
-msgid "You can not create a move line with account \"%s\" because it is inactive."
-msgstr "No podeu crear un apunt amb el compte \"%s\" perquè està inactiu."
 
 msgctxt "error:account.move.line:"
 msgid "You can not modify line \"%s\" because it is reconciled."
@@ -371,6 +363,10 @@ msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
 msgstr "Tancaments"
 
+msgctxt "field:account.account,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "Saldo en el llibre major"
@@ -411,6 +407,10 @@ msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
 msgstr "Concilia"
 
+msgctxt "field:account.account,replaced_by:"
+msgid "Replaced By"
+msgstr "Substituït per"
+
 msgctxt "field:account.account,right:"
 msgid "Right"
 msgstr "Dreta"
@@ -422,6 +422,10 @@ msgstr "Moneda secundària"
 msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "Decimals de la segona moneda"
+
+msgctxt "field:account.account,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
@@ -563,6 +567,10 @@ msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
 msgstr "Tancament"
 
+msgctxt "field:account.account.template,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "Saldo en el llibre major"
@@ -594,6 +602,14 @@ msgstr "Nom del registre"
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
 msgstr "Concilia"
+
+msgctxt "field:account.account.template,replaced_by:"
+msgid "Replaced By"
+msgstr "Substituït per"
+
+msgctxt "field:account.account.template,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
@@ -1110,7 +1126,7 @@ msgstr "Compte haver"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
 msgid "Debit Account"
-msgstr "Compte deure "
+msgstr "Compte deure"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
 msgid "Fiscal Year"
@@ -1196,6 +1212,10 @@ msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
 msgstr "Haver final"
 
+msgctxt "field:account.general_ledger.account,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
 msgstr "Deure final"
@@ -1227,6 +1247,10 @@ msgstr "Saldo inicial"
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
 msgstr "Haver inicial"
+
+msgctxt "field:account.general_ledger.account,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
@@ -1448,10 +1472,6 @@ msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
 msgstr "Fins a la data"
 
-msgctxt "field:account.journal,accounts:"
-msgid "Accounts"
-msgstr "Comptes"
-
 msgctxt "field:account.journal,active:"
 msgid "Active"
 msgstr "Actiu"
@@ -1476,10 +1496,6 @@ msgctxt "field:account.journal,credit:"
 msgid "Credit"
 msgstr "Haver"
 
-msgctxt "field:account.journal,credit_account:"
-msgid "Default Credit Account"
-msgstr "Compte haver per defecte"
-
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimals de la moneda"
@@ -1487,10 +1503,6 @@ msgstr "Decimals de la moneda"
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr "Deure"
-
-msgctxt "field:account.journal,debit_account:"
-msgid "Default Debit Account"
-msgstr "Compte deure per defecte"
 
 msgctxt "field:account.journal,id:"
 msgid "ID"
@@ -1521,46 +1533,6 @@ msgid "Write Date"
 msgstr "Data de modificació"
 
 msgctxt "field:account.journal,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:account.journal.account,company:"
-msgid "Company"
-msgstr "Empresa"
-
-msgctxt "field:account.journal.account,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:account.journal.account,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:account.journal.account,credit_account:"
-msgid "Default Credit Account"
-msgstr "Compte haver per defecte"
-
-msgctxt "field:account.journal.account,debit_account:"
-msgid "Default Debit Account"
-msgstr "Compte deure per defecte"
-
-msgctxt "field:account.journal.account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.journal.account,journal:"
-msgid "Journal"
-msgstr "Diari"
-
-msgctxt "field:account.journal.account,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:account.journal.account,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:account.journal.account,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
@@ -1653,38 +1625,6 @@ msgid "Write Date"
 msgstr "Data de modificació"
 
 msgctxt "field:account.journal.sequence,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:account.journal.type,code:"
-msgid "Code"
-msgstr "Codi"
-
-msgctxt "field:account.journal.type,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:account.journal.type,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:account.journal.type,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.journal.type,name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:account.journal.type,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:account.journal.type,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:account.journal.type,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
@@ -1976,9 +1916,61 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "Fins a la data"
 
+msgctxt "field:account.move.reconcile.write_off,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:account.move.reconcile.write_off,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.move.reconcile.write_off,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.move.reconcile.write_off,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.move.reconcile.write_off,credit_account:"
+msgid "Credit Account"
+msgstr "Compte haver"
+
+msgctxt "field:account.move.reconcile.write_off,debit_account:"
+msgid "Debit Account"
+msgstr "Compte deure"
+
+msgctxt "field:account.move.reconcile.write_off,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.move.reconcile.write_off,journal:"
+msgid "Journal"
+msgstr "Diari"
+
+msgctxt "field:account.move.reconcile.write_off,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.move.reconcile.write_off,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.move.reconcile.write_off,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.move.reconcile.write_off,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
 msgstr "Import"
+
+msgctxt "field:account.move.reconcile_lines.writeoff,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
@@ -1996,9 +1988,9 @@ msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.move.reconcile_lines.writeoff,journal:"
-msgid "Journal"
-msgstr "Diari"
+msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
+msgid "Write Off"
+msgstr "Desajust"
 
 msgctxt "field:account.move.reconciliation,create_date:"
 msgid "Create Date"
@@ -2256,10 +2248,6 @@ msgctxt "field:account.reconcile.show,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:account.reconcile.show,journal:"
-msgid "Journal"
-msgstr "Diari"
-
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
 msgstr "Apunts"
@@ -2273,8 +2261,12 @@ msgid "Party"
 msgstr "Tercer"
 
 msgctxt "field:account.reconcile.show,write_off:"
-msgid "Write-Off"
+msgid "Write Off"
 msgstr "Desajust"
+
+msgctxt "field:account.reconcile.show,write_off_amount:"
+msgid "Amount"
+msgstr "Import"
 
 msgctxt "field:account.tax,active:"
 msgid "Active"
@@ -2432,6 +2424,10 @@ msgctxt "field:account.tax.code,description:"
 msgid "Description"
 msgstr "Descripció"
 
+msgctxt "field:account.tax.code,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
 msgctxt "field:account.tax.code,id:"
 msgid "ID"
 msgstr "ID"
@@ -2451,6 +2447,10 @@ msgstr "Pare"
 msgctxt "field:account.tax.code,rec_name:"
 msgid "Record Name"
 msgstr "Nom del registre"
+
+msgctxt "field:account.tax.code,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
@@ -2604,6 +2604,10 @@ msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
 msgstr "Descripció"
 
+msgctxt "field:account.tax.code.template,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
 msgctxt "field:account.tax.code.template,id:"
 msgid "ID"
 msgstr "ID"
@@ -2623,6 +2627,10 @@ msgstr "Pare"
 msgctxt "field:account.tax.code.template,rec_name:"
 msgid "Record Name"
 msgstr "Nom del registre"
+
+msgctxt "field:account.tax.code.template,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
 
 msgctxt "field:account.tax.code.template,write_date:"
 msgid "Write Date"
@@ -2792,6 +2800,10 @@ msgctxt "field:account.tax.rule,template:"
 msgid "Template"
 msgstr "Plantilla"
 
+msgctxt "field:account.tax.rule,template_override:"
+msgid "Override Template"
+msgstr "Sobreescriu plantilla"
+
 msgctxt "field:account.tax.rule,write_date:"
 msgid "Write Date"
 msgstr "Data de modificació"
@@ -2843,6 +2855,10 @@ msgstr "Impost substitució"
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
 msgstr "Plantilla"
+
+msgctxt "field:account.tax.rule.line,template_override:"
+msgid "Override Template"
+msgstr "Sobreescriu plantilla"
 
 msgctxt "field:account.tax.rule.line,write_date:"
 msgid "Write Date"
@@ -3196,10 +3212,6 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
-msgctxt "help:account.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "Només mostra el saldo en el llibre major."
@@ -3257,10 +3269,6 @@ msgstr "Utilitzat com a referencia per la configuració del exercici fiscal."
 msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
 msgstr "Si es marca es crearà noves seqüences"
-
-msgctxt "help:account.general_ledger.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
@@ -3320,6 +3328,10 @@ msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr "Mostra només assentaments comptabilitzats."
 
+msgctxt "help:account.move.reconcile.write_off,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr "Data major dels apunts conciliats."
@@ -3370,10 +3382,6 @@ msgstr ""
 "Si es marca, aquest impost modificarà el preu unitat pels càlculs d'impostos"
 " posteriors."
 
-msgctxt "help:account.tax.code,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
 msgstr "Marca per sobreescriure la definició de la plantilla"
@@ -3395,6 +3403,10 @@ msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "Una expressió python que s'avaluarà amb les paraules clau."
 
+msgctxt "help:account.tax.rule,template_override:"
+msgid "Check to override template definition"
+msgstr "Marca per sobreescriure la definició de la plantilla"
+
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
 msgstr "Marca per afegir el impost original al impost substituït."
@@ -3404,6 +3416,10 @@ msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr ""
 "Si s'emplena l'impost original, la regla s'aplicarà només per aquest impost."
+
+msgctxt "help:account.tax.rule.line,template_override:"
+msgid "Check to override template definition"
+msgstr "Marca per sobreescriure la definició de la plantilla"
 
 msgctxt "help:account.tax.rule.line.template,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
@@ -3545,10 +3561,6 @@ msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
 msgstr "Existències"
 
-msgctxt "model:account.journal.account,name:"
-msgid "Journal Account"
-msgstr "Comptes del diari"
-
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
 msgstr "Context del diari de caixa"
@@ -3560,34 +3572,6 @@ msgstr "Diari - Període"
 msgctxt "model:account.journal.sequence,name:"
 msgid "Journal Sequence"
 msgstr "Seqüencies del diari"
-
-msgctxt "model:account.journal.type,name:"
-msgid "Journal Type"
-msgstr "Tipus de diari"
-
-msgctxt "model:account.journal.type,name:journal_type_cash"
-msgid "Cash"
-msgstr "Efectiu"
-
-msgctxt "model:account.journal.type,name:journal_type_expense"
-msgid "Expense"
-msgstr "Despesa"
-
-msgctxt "model:account.journal.type,name:journal_type_general"
-msgid "General"
-msgstr "General"
-
-msgctxt "model:account.journal.type,name:journal_type_revenue"
-msgid "Revenue"
-msgstr "Ingressos"
-
-msgctxt "model:account.journal.type,name:journal_type_situation"
-msgid "Situation"
-msgstr "Situació"
-
-msgctxt "model:account.journal.type,name:journal_type_write_off"
-msgid "Write-Off"
-msgstr "Desajust"
 
 msgctxt "model:account.move,name:"
 msgid "Account Move"
@@ -3612,6 +3596,10 @@ msgstr "Demana el diari a obrir"
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
 msgstr "Imprimeix llibre diari"
+
+msgctxt "model:account.move.reconcile.write_off,name:"
+msgid "Reconcile Write Off"
+msgstr "Desajust de concilació"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
@@ -3821,10 +3809,6 @@ msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "Diaris - Períodes"
 
-msgctxt "model:ir.action,name:act_journal_type_form"
-msgid "Journal Types"
-msgstr "Tipus de diari"
-
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "Assentaments comptables"
@@ -3888,6 +3872,10 @@ msgstr "Concilia comptes"
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
 msgstr "Concilia apunts"
+
+msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "Mètodes de desajust"
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
@@ -4153,10 +4141,6 @@ msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
 msgstr "Diaris - Períodes"
 
-msgctxt "model:ir.ui.menu,name:menu_journal_type_form"
-msgid "Journal Types"
-msgstr "Tipus de diari"
-
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
 msgstr "Assentaments comptables"
@@ -4200,6 +4184,10 @@ msgstr "Processos"
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
 msgstr "Concilia comptes"
+
+msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
+msgid "WriteOff Methods"
+msgstr "Mètodes de desajust"
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
 msgid "Renew Fiscal Year"
@@ -4665,6 +4653,30 @@ msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
 msgstr "Comptabilitzat"
 
+msgctxt "selection:account.journal,type:"
+msgid "Cash"
+msgstr "Efectiu"
+
+msgctxt "selection:account.journal,type:"
+msgid "Expense"
+msgstr "Despesa"
+
+msgctxt "selection:account.journal,type:"
+msgid "General"
+msgstr "General"
+
+msgctxt "selection:account.journal,type:"
+msgid "Revenue"
+msgstr "Ingressos"
+
+msgctxt "selection:account.journal,type:"
+msgid "Situation"
+msgstr "Situació"
+
+msgctxt "selection:account.journal,type:"
+msgid "Write-Off"
+msgstr "Desajust"
+
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
 msgstr "Tancat"
@@ -4968,10 +4980,6 @@ msgstr "Informació addicional"
 msgctxt "view:account.move.template:"
 msgid "Template"
 msgstr "Plantilla"
-
-msgctxt "view:account.reconcile.show:"
-msgid "Amount"
-msgstr "Import"
 
 msgctxt "view:account.tax.template:"
 msgid "%"
