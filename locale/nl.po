@@ -654,22 +654,25 @@ msgctxt "model:sale.opportunity.line,name:"
 msgid "Sale Opportunity Line"
 msgstr "Sale Opportunity"
 
+#, fuzzy
 msgctxt "model:sale.opportunity_employee,name:"
 msgid "Sale Opportunity per Employee"
-msgstr ""
+msgstr "Opportunities per Employee per Month"
 
+#, fuzzy
 msgctxt "model:sale.opportunity_employee.context,name:"
 msgid "Sale Opportunity per Employee Context"
-msgstr ""
+msgstr "Opportunities per Employee per Month"
 
 #, fuzzy
 msgctxt "model:sale.opportunity_employee_monthly,name:"
 msgid "Sale Opportunity per Employee per Month"
 msgstr "Opportunities per Employee per Month"
 
+#, fuzzy
 msgctxt "model:sale.opportunity_monthly,name:"
 msgid "Sale Opportunity per Month"
-msgstr ""
+msgstr "Opportunities per Employee per Month"
 
 #, fuzzy
 msgctxt "selection:sale.opportunity,state:"
