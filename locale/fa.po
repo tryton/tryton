@@ -10,6 +10,10 @@ msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr "مقدار باید دارای یک ارزش مثبت یا منفی باشد."
 
+msgctxt "error:account.statement.origin.information:"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr ""
+
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
 msgstr "پایان تراز باید : \"%s\" باشد."
@@ -25,10 +29,6 @@ msgid ""
 msgstr ""
 "خط اصلی: \"%s\" از اظهاریه: \"%s\" هنوز دارای مقادیر معلق از مجموع : \"%s\" "
 "میباشد."
-
-msgctxt "error:account.statement:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
-msgstr "لطفاً در بیانیه روزنامه : \"%s\" حساب بدهکار و بستانکار را ارائه دهید."
 
 msgctxt "error:account.statement:"
 msgid "Statement \"%s\" must be cancelled before deletion."
@@ -149,6 +149,11 @@ msgstr "فرمت فایل"
 msgctxt "field:account.statement.import.start,id:"
 msgid "ID"
 msgstr "شناسه"
+
+#, fuzzy
+msgctxt "field:account.statement.journal,account:"
+msgid "Account"
+msgstr "حساب"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
@@ -426,6 +431,10 @@ msgctxt "field:account.statement.origin.information,digits:"
 msgid "Digits"
 msgstr "رقم‌ها"
 
+msgctxt "field:account.statement.origin.information,domain:"
+msgid "Domain"
+msgstr ""
+
 msgctxt "field:account.statement.origin.information,id:"
 msgid "ID"
 msgstr "شناسه"
@@ -473,10 +482,6 @@ msgstr "یک چند کلید و برچسب جدا شده توسط \":\" در ه�
 msgctxt "help:account.statement.origin.information,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr "اگر انتخاب باید بر روی برچسب مرتب شود"
-
-msgctxt "model:account.journal.type,name:journal_type_statement"
-msgid "Statement"
-msgstr "بیانیه"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -668,6 +673,11 @@ msgstr "بیانیه"
 msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "مجموع"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Statement"
+msgstr "بیانیه"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"

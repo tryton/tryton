@@ -10,6 +10,10 @@ msgctxt "error:account.statement.line:"
 msgid "Amount should be a positive or negative value."
 msgstr ""
 
+msgctxt "error:account.statement.origin.information:"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr ""
+
 msgctxt "error:account.statement:"
 msgid "End Balance must be \"%s\"."
 msgstr ""
@@ -22,10 +26,6 @@ msgctxt "error:account.statement:"
 msgid ""
 "Origin line \"%(origin)s\" of statement \"%(statement)s\" still has a "
 "pending amount of \"%(amount)s\"."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid "Please provide debit and credit account on statement journal \"%s\"."
 msgstr ""
 
 msgctxt "error:account.statement:"
@@ -153,6 +153,11 @@ msgstr ""
 msgctxt "field:account.statement.import.start,id:"
 msgid "ID"
 msgstr "ID"
+
+#, fuzzy
+msgctxt "field:account.statement.journal,account:"
+msgid "Account"
+msgstr "Сметка"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
@@ -465,6 +470,10 @@ msgctxt "field:account.statement.origin.information,digits:"
 msgid "Digits"
 msgstr ""
 
+msgctxt "field:account.statement.origin.information,domain:"
+msgid "Domain"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.statement.origin.information,id:"
 msgid "ID"
@@ -516,11 +525,6 @@ msgstr ""
 msgctxt "help:account.statement.origin.information,selection_sorted:"
 msgid "If the selection must be sorted on label"
 msgstr ""
-
-#, fuzzy
-msgctxt "model:account.journal.type,name:journal_type_statement"
-msgid "Statement"
-msgstr "Statement"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -740,6 +744,11 @@ msgstr "Отчет"
 msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "Общо"
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Statement"
+msgstr "Отчет"
 
 msgctxt "selection:account.statement,state:"
 msgid "Canceled"
