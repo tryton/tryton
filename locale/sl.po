@@ -11,10 +11,6 @@ msgid "You can not modify the party of address \"%s\"."
 msgstr "Partnerjev naslov \"%s\" ni možno popravljati."
 
 msgctxt "error:party.category:"
-msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr "Neveljavno ime kategorije \"%s\": V imenu uporaba znaka \" / \" ni možna."
-
-msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
 msgstr "Naziv kategorije partnerja mora biti edinstven na matično kategorijo."
 
@@ -89,6 +85,10 @@ msgstr "Naziv stavbe"
 msgctxt "field:party.address,party:"
 msgid "Party"
 msgstr "Partner"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr ""
 
 msgctxt "field:party.address,rec_name:"
 msgid "Record Name"
@@ -606,16 +606,22 @@ msgctxt "help:party.address,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
 
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+
 #, fuzzy
 msgctxt "help:party.address.format,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Odznačite za Izklop nadaljne uporabe partnerja."
 
+#, fuzzy
 msgctxt "help:party.address.format,format_:"
 msgid ""
 "Available variables (also in upper case):\n"
 "- ${party_name}\n"
 "- ${name}\n"
+"- ${attn}\n"
 "- ${street}\n"
 "- ${zip}\n"
 "- ${city}\n"

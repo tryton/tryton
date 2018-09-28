@@ -11,10 +11,6 @@ msgid "You can not modify the party of address \"%s\"."
 msgstr ""
 
 msgctxt "error:party.category:"
-msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-
-msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
 msgstr ""
 
@@ -93,6 +89,10 @@ msgstr ""
 msgctxt "field:party.address,party:"
 msgid "Party"
 msgstr "Party"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr ""
 
 msgctxt "field:party.address,rec_name:"
 msgid "Record Name"
@@ -693,6 +693,10 @@ msgctxt "help:party.address,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
 
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+
 msgctxt "help:party.address.format,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -702,6 +706,7 @@ msgid ""
 "Available variables (also in upper case):\n"
 "- ${party_name}\n"
 "- ${name}\n"
+"- ${attn}\n"
 "- ${street}\n"
 "- ${zip}\n"
 "- ${city}\n"
@@ -917,9 +922,10 @@ msgctxt "model:party.configuration.party_lang,name:"
 msgid "Party Configuration Lang"
 msgstr "Party Configuration"
 
+#, fuzzy
 msgctxt "model:party.configuration.party_sequence,name:"
 msgid "Party Configuration Sequence"
-msgstr ""
+msgstr "Party Configuration"
 
 #, fuzzy
 msgctxt "model:party.contact_mechanism,name:"

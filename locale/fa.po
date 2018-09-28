@@ -11,12 +11,6 @@ msgid "You can not modify the party of address \"%s\"."
 msgstr "شما نمیتوانید نهاد/سازمان را از آدرس: \"%s\" تغییر دهید."
 
 msgctxt "error:party.category:"
-msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-"نام دسته بندی \"%s\": نامعتبر است، شما نمی تواند از \"/\" در فیلد نام "
-"استفاده کنید."
-
-msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
 msgstr "نام زیرمجموعه نهاد/سازمان باید توسط منبع منحصربفرد باشد."
 
@@ -91,6 +85,10 @@ msgstr "نام ساختمان"
 msgctxt "field:party.address,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
+msgstr ""
 
 msgctxt "field:party.address,rec_name:"
 msgid "Record Name"
@@ -604,15 +602,21 @@ msgctxt "help:party.address,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+
 msgctxt "help:party.address.format,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
+#, fuzzy
 msgctxt "help:party.address.format,format_:"
 msgid ""
 "Available variables (also in upper case):\n"
 "- ${party_name}\n"
 "- ${name}\n"
+"- ${attn}\n"
 "- ${street}\n"
 "- ${zip}\n"
 "- ${city}\n"

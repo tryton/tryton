@@ -11,10 +11,6 @@ msgid "You can not modify the party of address \"%s\"."
 msgstr ""
 
 msgctxt "error:party.category:"
-msgid "Invalid category name \"%s\": You can not use \" / \" in name field."
-msgstr ""
-
-msgctxt "error:party.category:"
 msgid "The name of a party category must be unique by parent."
 msgstr ""
 
@@ -88,6 +84,10 @@ msgstr ""
 
 msgctxt "field:party.address,party:"
 msgid "Party"
+msgstr ""
+
+msgctxt "field:party.address,party_name:"
+msgid "Party Name"
 msgstr ""
 
 msgctxt "field:party.address,rec_name:"
@@ -609,6 +609,10 @@ msgctxt "help:party.address,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
 
+msgctxt "help:party.address,party_name:"
+msgid "If filled, replace the name of the party for address formatting"
+msgstr ""
+
 msgctxt "help:party.address.format,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
@@ -618,6 +622,7 @@ msgid ""
 "Available variables (also in upper case):\n"
 "- ${party_name}\n"
 "- ${name}\n"
+"- ${attn}\n"
 "- ${street}\n"
 "- ${zip}\n"
 "- ${city}\n"
@@ -719,13 +724,15 @@ msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr ""
+msgstr "Categorías"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr ""
+msgstr "Categorías"
 
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
@@ -748,9 +755,10 @@ msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
-msgstr ""
+msgstr "Check VIES"
 
 msgctxt "model:ir.action,name:wizard_erase"
 msgid "Erase"
@@ -781,9 +789,10 @@ msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categorías"
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr ""
+msgstr "Categorías"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -797,9 +806,10 @@ msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr ""
+msgstr "Configuración de terceros"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
@@ -845,9 +855,10 @@ msgctxt "model:party.erase.ask,name:"
 msgid "Erase Party"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
-msgstr ""
+msgstr "Identificador de impuesto"
 
 msgctxt "model:party.party,name:"
 msgid "Party"
