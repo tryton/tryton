@@ -230,9 +230,10 @@ msgctxt "model:country.country,name:au"
 msgid "Australia"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.country,name:aw"
 msgid "Aruba"
-msgstr ""
+msgstr "ناحیه"
 
 msgctxt "model:country.country,name:ax"
 msgid "Åland Islands"
@@ -2611,9 +2612,10 @@ msgctxt "model:country.subdivision,name:be-wlx"
 msgid "Luxembourg"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:be-wna"
 msgid "Namur"
-msgstr ""
+msgstr "نام"
 
 msgctxt "model:country.subdivision,name:bf-01"
 msgid "Boucle du Mouhoun"
@@ -5124,9 +5126,10 @@ msgctxt "model:country.subdivision,name:do-01"
 msgid "Distrito Nacional (Santo Domingo)"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:do-02"
 msgid "Azua"
-msgstr ""
+msgstr "ناحیه"
 
 msgctxt "model:country.subdivision,name:do-03"
 msgid "Bahoruco"
@@ -5432,9 +5435,10 @@ msgctxt "model:country.subdivision,name:dz-48"
 msgid "Relizane"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ec-a"
 msgid "Azuay"
-msgstr ""
+msgstr "ناحیه"
 
 msgctxt "model:country.subdivision,name:ec-b"
 msgid "Bolívar"
@@ -11890,9 +11894,10 @@ msgctxt "model:country.subdivision,name:ma-mou"
 msgid "Moulay Yacoub"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ma-nad"
 msgid "Nador"
-msgstr ""
+msgstr "نام"
 
 msgctxt "model:country.subdivision,name:ma-nou"
 msgid "Nouaceur"
@@ -13123,9 +13128,10 @@ msgctxt "model:country.subdivision,name:mt-36"
 msgid "Munxar"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:mt-37"
 msgid "Nadur"
-msgstr ""
+msgstr "نام"
 
 msgctxt "model:country.subdivision,name:mt-38"
 msgid "Naxxar"
@@ -14091,9 +14097,10 @@ msgctxt "model:country.subdivision,name:ni-sj"
 msgid "Río San Juan"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:nl-aw"
 msgid "Aruba"
-msgstr ""
+msgstr "ناحیه"
 
 msgctxt "model:country.subdivision,name:nl-bq1"
 msgid "Bonaire"
@@ -20296,9 +20303,10 @@ msgctxt "model:country.subdivision,name:ws-al"
 msgid "Aiga-i-le-Tai"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.subdivision,name:ws-at"
 msgid "Atua"
-msgstr ""
+msgstr "ناحیه"
 
 msgctxt "model:country.subdivision,name:ws-fa"
 msgid "Fa'asaleleaga"

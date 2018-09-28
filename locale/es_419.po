@@ -26,9 +26,10 @@ msgctxt "field:country.country,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.country,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:country.country,rec_name:"
 msgid "Record Name"
@@ -50,9 +51,10 @@ msgctxt "field:country.subdivision,code:"
 msgid "Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
-msgstr ""
+msgstr "Coventry"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
@@ -66,9 +68,10 @@ msgctxt "field:country.subdivision,id:"
 msgid "ID"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
-msgstr ""
+msgstr "Namu"
 
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
@@ -94,9 +97,10 @@ msgctxt "field:country.zip,city:"
 msgid "City"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.zip,country:"
 msgid "Country"
-msgstr ""
+msgstr "Coventry"
 
 msgctxt "field:country.zip,create_date:"
 msgid "Create Date"
@@ -174,9 +178,10 @@ msgctxt "help:country.zip,subdivision:"
 msgid "The subdivision where the zip is."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:country.country,name:"
 msgid "Country"
-msgstr ""
+msgstr "Coventry"
 
 msgctxt "model:country.country,name:ad"
 msgid "Andorra"
@@ -20599,9 +20604,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Area"
-msgstr ""
+msgstr "Arta"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Atoll"
@@ -20873,9 +20879,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr ""
+msgstr "Paris"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -20897,9 +20904,10 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Quarter"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
-msgstr ""
+msgstr "Rayong"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
