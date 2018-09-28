@@ -158,8 +158,8 @@ class AccountFrFEC(Wizard):
 
     def get_header(self):
         return [
-            'JournalCode ',
-            'JournalLib ',
+            'JournalCode',
+            'JournalLib',
             'EcritureNum',
             'EcritureDate',
             'CompteNum',
