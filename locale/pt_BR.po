@@ -6,8 +6,9 @@ msgctxt "error:analytic.account.entry:"
 msgid "Only one account is allowed per analytic root and origin."
 msgstr "Somente se permite uma conta por raiz analítica e origem."
 
+#, fuzzy
 msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%."
+msgid "The distribution sum of account \"%(account)s\" is not 100%%."
 msgstr "A soma distributiva da conta \"%(account)s\" não é 100%."
 
 msgctxt "error:analytic_account.line:"

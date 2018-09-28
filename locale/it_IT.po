@@ -8,7 +8,7 @@ msgstr "E' consentito solo un conto per radice ed origine analitica"
 
 #, fuzzy
 msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%."
+msgid "The distribution sum of account \"%(account)s\" is not 100%%."
 msgstr "La somma distribuita del conto \"%(account)\" non è 100%."
 
 msgctxt "error:analytic_account.line:"

@@ -8,8 +8,8 @@ msgstr ""
 "Sólo se puede seleccionar una cuenta por cada origen y raíz analítica."
 
 msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%."
-msgstr "La suma de la distribución de la cuenta \"%(account)s\" no es el 100%."
+msgid "The distribution sum of account \"%(account)s\" is not 100%%."
+msgstr "La suma de la distribución de la cuenta \"%(account)s\" no es el 100%%."
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."

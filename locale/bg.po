@@ -7,7 +7,7 @@ msgid "Only one account is allowed per analytic root and origin."
 msgstr ""
 
 msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%."
+msgid "The distribution sum of account \"%(account)s\" is not 100%%."
 msgstr ""
 
 msgctxt "error:analytic_account.line:"

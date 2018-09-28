@@ -7,8 +7,8 @@ msgid "Only one account is allowed per analytic root and origin."
 msgstr "Només es pot seleccionar un compte per cada origen i arrel analítica."
 
 msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%."
-msgstr "La suma de la distribució del compte \"%(account)s\" no és 100%."
+msgid "The distribution sum of account \"%(account)s\" is not 100%%."
+msgstr "La suma de la distribució del compte \"%(account)s\" no és 100%%."
 
 msgctxt "error:analytic_account.line:"
 msgid "Wrong credit/debit values."
