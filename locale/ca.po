@@ -291,9 +291,53 @@ msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
 msgstr "Valor d'actiu"
 
+msgctxt "field:account.configuration,asset_bymonth:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:account.configuration,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Dia del mes"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Seqüència de referència d'actiu"
+
+msgctxt "field:account.configuration.asset_date,asset_bymonth:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Dia del mes"
+
+msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.asset_date,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:account.configuration.asset_date,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:account.configuration.asset_date,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.asset_date,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:account.configuration.asset_date,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:account.configuration.asset_date,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -351,14 +395,6 @@ msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Compte d'amortització"
 
-msgctxt "field:product.product,account_asset:"
-msgid "Account Asset"
-msgstr "Compte d'actiu"
-
-msgctxt "field:product.product,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Compte d'amortització"
-
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
 msgstr "Amortitzable"
@@ -366,14 +402,6 @@ msgstr "Amortitzable"
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durada de l'amortització"
-
-msgctxt "field:product.template,account_asset:"
-msgid "Account Asset"
-msgstr "Compte d'actiu"
-
-msgctxt "field:product.template,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Compte d'amortització"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
@@ -383,14 +411,6 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durada de l'amortització"
 
-msgctxt "field:product.template.account,account_asset:"
-msgid "Account Asset"
-msgstr "Compte d'actiu"
-
-msgctxt "field:product.template.account,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Compte d'amortització"
-
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -398,6 +418,22 @@ msgid ""
 msgstr ""
 "La data ha d'estar compresa entre l'últim dia de la data de "
 "amortització/actualització i la següent data de amortització."
+
+msgctxt "help:account.configuration,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr "El mes en que es crearan els assentaments d'amortització."
+
+msgctxt "help:account.configuration,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
+msgstr "El dia de mes en que es crearan els assentaments d'amortització."
+
+msgctxt "help:account.configuration.asset_date,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr "El mes en que es crearan els assentaments d'amortització."
+
+msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
+msgstr "El dia del mes en que es crearan els assentaments d'amortització."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -435,6 +471,10 @@ msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "Actualitza actius - Inici"
 
+msgctxt "model:account.configuration.asset_date,name:"
+msgid "Account Configuration Asset Date"
+msgstr "Configuració de les dates dels actius"
+
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr "Configuració de la seqüencia dels actius"
@@ -442,10 +482,6 @@ msgstr "Configuració de la seqüencia dels actius"
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
 msgstr "Actiu"
-
-msgctxt "model:account.journal.type,name:journal_type_asset"
-msgid "Asset"
-msgstr "Actius"
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
@@ -589,7 +625,7 @@ msgstr "Data d'impressió:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "Per:"
+msgstr "Fins:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
@@ -627,6 +663,122 @@ msgctxt "selection:account.asset,state:"
 msgid "Running"
 msgstr "En execució"
 
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "August"
+msgstr "Agost"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "December"
+msgstr "Desembre"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "February"
+msgstr "Febrer"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "January"
+msgstr "Gener"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "July"
+msgstr "Juliol"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "June"
+msgstr "Juny"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "March"
+msgstr "Març"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "May"
+msgstr "Maig"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "November"
+msgstr "Novembre"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "September"
+msgstr "Setembre"
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "First"
+msgstr "Primer"
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "Last"
+msgstr "Últim"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "August"
+msgstr "Agost"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "December"
+msgstr "Desembre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "February"
+msgstr "Febrer"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "January"
+msgstr "Gener"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "July"
+msgstr "Juliol"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "June"
+msgstr "Juny"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "March"
+msgstr "Març"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "May"
+msgstr "Maig"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "November"
+msgstr "Novembre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "September"
+msgstr "Setembre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "First"
+msgstr "Primer"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "Last"
+msgstr "Últim"
+
+msgctxt "selection:account.journal,type:"
+msgid "Asset"
+msgstr "Actiu"
+
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Crea assentaments d'actiu fins"
@@ -642,6 +794,10 @@ msgstr "Informació addicional"
 msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr "Actiu"
+
+msgctxt "view:account.configuration:"
+msgid "Asset Move"
+msgstr "Assentament d'actiu"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

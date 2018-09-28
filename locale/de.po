@@ -4,16 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.asset:"
 msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "Anlage \"%s\" kann nur in Status \"Entwurf\" gelöscht werden."
+msgstr "Anlagegut \"%s\" kann nur in Status \"Entwurf\" gelöscht werden."
 
 msgctxt "error:account.asset:"
 msgid "Supplier Invoice Line can be used only once on asset."
-msgstr "Eine Einkaufsposition kann nur einmal pro Anlage verwendet werden"
+msgstr "Eine Einkaufsposition kann nur einmal pro Anlagegut verwendet werden"
 
 msgctxt "error:account.invoice.line:"
 msgid "Asset can be used only once on invoice line!"
 msgstr ""
-"Eine Anlage kann nur mit einer einzigen Rechnungsposition verknüpft sein!"
+"Ein Anlagegut kann nur mit einer einzigen Rechnungsposition verknüpft sein!"
 
 msgctxt "error:account.period:"
 msgid ""
@@ -85,7 +85,7 @@ msgstr "Nummer"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
@@ -291,9 +291,53 @@ msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
 msgstr "Anlagenwert"
 
+msgctxt "field:account.configuration,asset_bymonth:"
+msgid "Month"
+msgstr "Monat"
+
+msgctxt "field:account.configuration,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Tag des Monats"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Nummernkreis Anlagenbelege"
+
+msgctxt "field:account.configuration.asset_date,asset_bymonth:"
+msgid "Month"
+msgstr "Monat"
+
+msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Tag des Monats"
+
+msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.configuration.asset_date,create_date:"
+msgid "Create Date"
+msgstr "Erstellungsdatum"
+
+msgctxt "field:account.configuration.asset_date,create_uid:"
+msgid "Create User"
+msgstr "Erstellt durch"
+
+msgctxt "field:account.configuration.asset_date,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.asset_date,rec_name:"
+msgid "Record Name"
+msgstr "Bezeichnung des Datensatzes"
+
+msgctxt "field:account.configuration.asset_date,write_date:"
+msgid "Write Date"
+msgstr "Zuletzt geändert"
+
+msgctxt "field:account.configuration.asset_date,write_uid:"
+msgid "Write User"
+msgstr "Letzte Änderung durch"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -351,14 +395,6 @@ msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Abschreibungskonto"
 
-msgctxt "field:product.product,account_asset:"
-msgid "Account Asset"
-msgstr "Anlagenkonto"
-
-msgctxt "field:product.product,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Abschreibungskonto"
-
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
 msgstr "Abschreibungsfähig"
@@ -366,14 +402,6 @@ msgstr "Abschreibungsfähig"
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Abschreibungsdauer"
-
-msgctxt "field:product.template,account_asset:"
-msgid "Account Asset"
-msgstr "Anlagenkonto"
-
-msgctxt "field:product.template,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Abschreibungskonto"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
@@ -383,14 +411,6 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Abschreibungsdauer"
 
-msgctxt "field:product.template.account,account_asset:"
-msgid "Account Asset"
-msgstr "Anlagenkonto"
-
-msgctxt "field:product.template.account,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Abschreibungskonto"
-
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -398,6 +418,22 @@ msgid ""
 msgstr ""
 "Das Datum muss zwischen dem letztem Aktualisierungs- bzw Abschreibungsdatum "
 "und dem nächsten Abschreibungsdatum liegen."
+
+msgctxt "help:account.configuration,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr "Der Monat in dem die Abschreibungen verbucht werden."
+
+msgctxt "help:account.configuration,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
+msgstr "Der Tag des Monats an dem die Abschreibungen verbucht werden."
+
+msgctxt "help:account.configuration.asset_date,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr "Der Monat in dem die Abschreibungen verbucht werden."
+
+msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
+msgstr "Der Tag des Monats an dem die Abschreibungen verbucht werden."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -435,15 +471,15 @@ msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "Aktualisierung Anlage Start"
 
+msgctxt "model:account.configuration.asset_date,name:"
+msgid "Account Configuration Asset Date"
+msgstr "Einstellungen Buchhaltung Anlagen Datum"
+
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr "Einstellungen Buchhaltung Nummernkreis Anlagen"
 
 msgctxt "model:account.journal,name:journal_asset"
-msgid "Asset"
-msgstr "Anlage"
-
-msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
 msgstr "Anlage"
 
@@ -517,7 +553,7 @@ msgstr "Anlage"
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Anlagen"
+msgstr "Anlagenverwaltung"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
@@ -529,7 +565,7 @@ msgstr "Abschreibungstabelle drucken"
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Abschreibebuchungen erstellen"
+msgstr "Abschreibungsbuchungen erstellen"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -627,6 +663,122 @@ msgctxt "selection:account.asset,state:"
 msgid "Running"
 msgstr "In Ausführung"
 
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "April"
+msgstr "April"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "August"
+msgstr "August"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "December"
+msgstr "Dezember"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "February"
+msgstr "Februar"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "January"
+msgstr "Januar"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "July"
+msgstr "Juli"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "June"
+msgstr "Juni"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "March"
+msgstr "März"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "May"
+msgstr "Mai"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "November"
+msgstr "November"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "October"
+msgstr "Oktober"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "September"
+msgstr "September"
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "First"
+msgstr "Erster"
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "Last"
+msgstr "Letzter"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "April"
+msgstr "April"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "August"
+msgstr "August"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "December"
+msgstr "Dezember"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "February"
+msgstr "Februar"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "January"
+msgstr "Januar"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "July"
+msgstr "Juli"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "June"
+msgstr "Juni"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "March"
+msgstr "März"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "May"
+msgstr "Mai"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "November"
+msgstr "November"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "October"
+msgstr "Oktober"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "September"
+msgstr "September"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "First"
+msgstr "Erster"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "Last"
+msgstr "Letzter"
+
+msgctxt "selection:account.journal,type:"
+msgid "Asset"
+msgstr "Inventar"
+
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Erstellung Anlagen Buchungssätze bis"
@@ -642,6 +794,10 @@ msgstr "Sonstiges"
 msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr "Anlage"
+
+msgctxt "view:account.configuration:"
+msgid "Asset Move"
+msgstr "Buchungen Anlagevermögen"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

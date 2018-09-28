@@ -290,9 +290,53 @@ msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
 msgstr ""
 
+msgctxt "field:account.configuration,asset_bymonth:"
+msgid "Month"
+msgstr "Miesiąc"
+
+msgctxt "field:account.configuration,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Dzień miesiąca"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
+
+msgctxt "field:account.configuration.asset_date,asset_bymonth:"
+msgid "Month"
+msgstr "Miesiąc"
+
+msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Dzień miesiąca"
+
+msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:account.configuration.asset_date,create_date:"
+msgid "Create Date"
+msgstr "Data utworzenia"
+
+msgctxt "field:account.configuration.asset_date,create_uid:"
+msgid "Create User"
+msgstr "Utworzył"
+
+msgctxt "field:account.configuration.asset_date,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.asset_date,rec_name:"
+msgid "Record Name"
+msgstr "Nazwa rekordu"
+
+msgctxt "field:account.configuration.asset_date,write_date:"
+msgid "Write Date"
+msgstr "Data zapisu"
+
+msgctxt "field:account.configuration.asset_date,write_uid:"
+msgid "Write User"
+msgstr "Zapisał"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -351,28 +395,12 @@ msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
 msgstr ""
 
-msgctxt "field:product.product,account_asset:"
-msgid "Account Asset"
-msgstr ""
-
-msgctxt "field:product.product,account_depreciation:"
-msgid "Account Depreciation"
-msgstr ""
-
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
 msgstr ""
 
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr ""
-
-msgctxt "field:product.template,account_asset:"
-msgid "Account Asset"
-msgstr ""
-
-msgctxt "field:product.template,account_depreciation:"
-msgid "Account Depreciation"
 msgstr ""
 
 msgctxt "field:product.template,depreciable:"
@@ -383,18 +411,26 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr ""
 
-msgctxt "field:product.template.account,account_asset:"
-msgid "Account Asset"
-msgstr ""
-
-msgctxt "field:product.template.account,account_depreciation:"
-msgid "Account Depreciation"
-msgstr ""
-
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
+msgstr ""
+
+msgctxt "help:account.configuration,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr ""
+
+msgctxt "help:account.configuration,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
+msgstr ""
+
+msgctxt "help:account.configuration.asset_date,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr ""
+
+msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
 msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
@@ -434,15 +470,15 @@ msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr ""
 
+msgctxt "model:account.configuration.asset_date,name:"
+msgid "Account Configuration Asset Date"
+msgstr ""
+
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr ""
 
 msgctxt "model:account.journal,name:journal_asset"
-msgid "Asset"
-msgstr "Asset"
-
-msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
 msgstr "Asset"
 
@@ -476,10 +512,9 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
 msgstr "Closed"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Szkic"
 
 #, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
@@ -637,6 +672,123 @@ msgctxt "selection:account.asset,state:"
 msgid "Running"
 msgstr "Uruchomione"
 
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "April"
+msgstr "Kwiecień"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "August"
+msgstr "Sierpień"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "December"
+msgstr "Grudzień"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "February"
+msgstr "Luty"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "January"
+msgstr "Styczeń"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "July"
+msgstr "Lipiec"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "June"
+msgstr "Czerwiec"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "March"
+msgstr "Marzec"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "May"
+msgstr "Maj"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "November"
+msgstr "Listopad"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "October"
+msgstr "Październik"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "September"
+msgstr "Wrzesień"
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "First"
+msgstr ""
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "Last"
+msgstr ""
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "April"
+msgstr "Kwiecień"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "August"
+msgstr "Sierpień"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "December"
+msgstr "Grudzień"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "February"
+msgstr "Luty"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "January"
+msgstr "Styczeń"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "July"
+msgstr "Lipiec"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "June"
+msgstr "Czerwiec"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "March"
+msgstr "Marzec"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "May"
+msgstr "Maj"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "November"
+msgstr "Listopad"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "October"
+msgstr "Październik"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "September"
+msgstr "Wrzesień"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "First"
+msgstr ""
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "Last"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.journal,type:"
+msgid "Asset"
+msgstr "Asset"
+
 #, fuzzy
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
@@ -654,6 +806,10 @@ msgstr "Inne informacje"
 msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr "Asset"
+
+msgctxt "view:account.configuration:"
+msgid "Asset Move"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

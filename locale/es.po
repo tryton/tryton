@@ -292,9 +292,53 @@ msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
 msgstr "Valor de activo"
 
+msgctxt "field:account.configuration,asset_bymonth:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:account.configuration,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Día del mes"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Secuencia de referencia de activo"
+
+msgctxt "field:account.configuration.asset_date,asset_bymonth:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
+msgid "Day of the Month"
+msgstr "Día del mes"
+
+msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.asset_date,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.configuration.asset_date,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:account.configuration.asset_date,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:account.configuration.asset_date,rec_name:"
+msgid "Record Name"
+msgstr "Nombre del registro"
+
+msgctxt "field:account.configuration.asset_date,write_date:"
+msgid "Write Date"
+msgstr "Fecha de modificación"
+
+msgctxt "field:account.configuration.asset_date,write_uid:"
+msgid "Write User"
+msgstr "Usuario de modificación"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -352,14 +396,6 @@ msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
 msgstr "Cuenta de amortización"
 
-msgctxt "field:product.product,account_asset:"
-msgid "Account Asset"
-msgstr "Cuenta de activo"
-
-msgctxt "field:product.product,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Cuenta de amortización"
-
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
 msgstr "Amortizable"
@@ -367,14 +403,6 @@ msgstr "Amortizable"
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Duración de la amortización"
-
-msgctxt "field:product.template,account_asset:"
-msgid "Account Asset"
-msgstr "Cuenta de activo"
-
-msgctxt "field:product.template,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Cuenta de amortización"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
@@ -384,14 +412,6 @@ msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Duración de la amortización"
 
-msgctxt "field:product.template.account,account_asset:"
-msgid "Account Asset"
-msgstr "Cuenta de activo"
-
-msgctxt "field:product.template.account,account_depreciation:"
-msgid "Account Depreciation"
-msgstr "Cuenta de amortización"
-
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
@@ -399,6 +419,22 @@ msgid ""
 msgstr ""
 "La fecha debe estar comprendida entre el último día de la fecha de "
 "amortización/actualización y la siguiente fecha de amortización."
+
+msgctxt "help:account.configuration,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr "El mes en que se van a crear los asientos de amortización."
+
+msgctxt "help:account.configuration,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
+msgstr "El día del mes en que se van a crear los asientos de amortización."
+
+msgctxt "help:account.configuration.asset_date,asset_bymonth:"
+msgid "The month to create the depreciation moves."
+msgstr "El mes en que se van a crear los asientos de amortización."
+
+msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
+msgid "The day of the month to create the depreciation moves."
+msgstr "El día del mes en que se van a crear los asientos de amortización."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -436,15 +472,15 @@ msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "Actualizar activo - Inicio"
 
+msgctxt "model:account.configuration.asset_date,name:"
+msgid "Account Configuration Asset Date"
+msgstr "Configuración de la fechas de los activos"
+
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr "Configuración de la secuencia de activos"
 
 msgctxt "model:account.journal,name:journal_asset"
-msgid "Asset"
-msgstr "Activo"
-
-msgctxt "model:account.journal.type,name:journal_type_asset"
 msgid "Asset"
 msgstr "Activo"
 
@@ -470,7 +506,7 @@ msgstr "Actualizar activo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "Tot"
+msgstr "Todo"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
@@ -590,7 +626,7 @@ msgstr "Fecha impresión:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "Para:"
+msgstr "Hasta:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
@@ -628,6 +664,122 @@ msgctxt "selection:account.asset,state:"
 msgid "Running"
 msgstr "En ejecución"
 
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "August"
+msgstr "Agosto"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "December"
+msgstr "Diciembre"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "February"
+msgstr "Febrero"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "January"
+msgstr "Enero"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "July"
+msgstr "Julio"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "June"
+msgstr "Junio"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "March"
+msgstr "Marzo"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "May"
+msgstr "Mayo"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "November"
+msgstr "Noviembre"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:account.configuration,asset_bymonth:"
+msgid "September"
+msgstr "Septiembre"
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "First"
+msgstr "Primero"
+
+msgctxt "selection:account.configuration,asset_bymonthday:"
+msgid "Last"
+msgstr "Ultimo"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "August"
+msgstr "Agosto"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "December"
+msgstr "Diciembre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "February"
+msgstr "Febrero"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "January"
+msgstr "Enero"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "July"
+msgstr "Julio"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "June"
+msgstr "Junio"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "March"
+msgstr "Marzo"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "May"
+msgstr "Mayo"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "November"
+msgstr "Noviembre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
+msgid "September"
+msgstr "Septiembre"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "First"
+msgstr "Primero"
+
+msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
+msgid "Last"
+msgstr "Ultimo"
+
+msgctxt "selection:account.journal,type:"
+msgid "Asset"
+msgstr "Activo"
+
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
 msgstr "Crear asientos de activo hasta"
@@ -643,6 +795,10 @@ msgstr "Información adicional"
 msgctxt "view:account.configuration:"
 msgid "Asset"
 msgstr "Activo"
+
+msgctxt "view:account.configuration:"
+msgid "Asset Move"
+msgstr "Asientos de activo"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
