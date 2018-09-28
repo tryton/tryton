@@ -12,7 +12,7 @@ msgstr "Verfügbar für Zeiterfassung"
 
 msgctxt "field:production.work,timesheet_lines:"
 msgid "Timesheet Lines"
-msgstr "Zeitpositionen"
+msgstr "Zeiterfassungspositionen"
 
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
