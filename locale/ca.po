@@ -279,6 +279,10 @@ msgid ":"
 msgstr ":"
 
 msgctxt "report:purchase.request.quotation:"
+msgid "Date:"
+msgstr "Data:"
+
+msgctxt "report:purchase.request.quotation:"
 msgid "Delivery Address:"
 msgstr "Direcció d'enviament:"
 
