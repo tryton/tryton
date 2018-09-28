@@ -28,11 +28,11 @@ msgstr "Maßeinheitenkategorie"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
-msgstr "Die maximale Zahl der zu erzeugenden Produktionen"
+msgstr "Die maximale Zahl der Produktionsaufträge"
 
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr "Produktion aufteilen"
+msgstr "Produktionsauftrag aufteilen"
 
 msgctxt "model:ir.model.button,string:production_split_wizard_button"
 msgid "Split"
@@ -40,7 +40,7 @@ msgstr "Aufteilen"
 
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
-msgstr "Produktionsaufteilung"
+msgstr "Produktionsauftrag aufteilen"
 
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
