@@ -222,29 +222,33 @@ msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr ""
+msgstr "Tasas de aduana"
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
+#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr ""
+msgstr "Importar"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr ""
+msgstr "Tasas de aduana"
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"

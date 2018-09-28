@@ -44,7 +44,7 @@ msgstr "Anfangsdatum"
 
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tarifcode"
+msgstr "Zolltarifnummer"
 
 msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
@@ -148,7 +148,7 @@ msgstr "Reihenfolge"
 
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tarifcode"
+msgstr "Zolltarifnummer"
 
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
@@ -160,15 +160,15 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "field:product.category,customs:"
 msgid "Customs"
-msgstr "Zölle"
+msgstr "Zoll"
 
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr "Zolltarifnummern"
 
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
-msgstr "Tarifcode der übergeordneten Kategorie anwenden"
+msgstr "Zolltarifnummern der übergeordneten Kategorie anwenden"
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
@@ -176,11 +176,11 @@ msgstr "Zollkategorie"
 
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr "Zolltarifnummern"
 
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr "Tarifcodes der Kategorie anwenden"
+msgstr "Zolltarifnummern der Kategorie anwenden"
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
@@ -188,33 +188,33 @@ msgstr "Zollkategorie"
 
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr "Zolltarifnummern"
 
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
-msgstr "Tarifcodes der Kategorie anwenden"
+msgstr "Zolltarifnummern der Kategorie anwenden"
 
 msgctxt "help:customs.tariff.code,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+msgstr "Deaktivieren, um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
 msgstr ""
-"Code des Harmonisierten Systems zur Bezeichnung und Codierung der Waren (HS "
+"Code des Harmonisierten Systems zur Bezeichnung und Codierung von Waren (HS "
 "Nomenklatur)"
 
 msgctxt "help:product.category,tariff_codes_parent:"
 msgid "Use the tariff codes defined on the parent category"
-msgstr "Tarifcodes der übergeordneten Kategorie anwenden"
+msgstr "Zolltarifnummern der übergeordneten Kategorie anwenden"
 
 msgctxt "help:product.product,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr "Tarifcode der Kategorie anwenden"
+msgstr "Zolltarifnummern der Kategorie anwenden"
 
 msgctxt "help:product.template,tariff_codes_category:"
 msgid "Use the tariff codes defined on the category"
-msgstr "Tarifcode der Kategorie anwenden"
+msgstr "Zolltarifnummern der Kategorie anwenden"
 
 msgctxt "model:customs.duty.rate,name:"
 msgid "Duty Rate"
@@ -222,7 +222,7 @@ msgstr "Zolltarif"
 
 msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
-msgstr "Tarifcode"
+msgstr "Zolltarifnummer"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
@@ -230,7 +230,7 @@ msgstr "Zolltarife"
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr "Zolltarifnummern"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
@@ -242,7 +242,7 @@ msgstr "Import"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Zölle"
+msgstr "Zoll"
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
@@ -250,11 +250,11 @@ msgstr "Zolltarife"
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tarifcodes"
+msgstr "Zolltarifnummern"
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"
-msgstr "Artikel - Tarifcode"
+msgstr "Artikel - Zolltarifnummer"
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
@@ -386,7 +386,7 @@ msgstr "Kategorie"
 
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Template"
-msgstr "Artikel"
+msgstr "Artikelvorlage"
 
 msgctxt "view:customs.duty.rate:"
 msgid "Computation"
