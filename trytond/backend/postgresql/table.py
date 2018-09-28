@@ -121,7 +121,7 @@ class TableHandler(TableHandlerInterface):
             else:
                 logger.warning(
                     'Unable to rename column %s on table %s to %s.',
-                    old_name, self.table_name, self.table_name, new_name)
+                    old_name, self.table_name, new_name)
 
     def _update_definitions(self,
             columns=None, constraints=None, indexes=None):
