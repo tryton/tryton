@@ -1,4 +1,4 @@
-JournalCode 	JournalLib 	EcritureNum	EcritureDate	CompteNum	CompteLib	CompAuxNum	CompAuxLib	PieceRef	PieceDate	EcritureLib	Debit	Credit	EcritureLet	DateLet	ValidDate	Montantdevise	Idevise
+JournalCode	JournalLib	EcritureNum	EcritureDate	CompteNum	CompteLib	CompAuxNum	CompAuxLib	PieceRef	PieceDate	EcritureLib	Debit	Credit	EcritureLet	DateLet	ValidDate	Montantdevise	Idevise
 OUV	Balance Initiale	0	20180101	797	Transferts de charges exceptionnelles			-	20180101	-	0,00	5,00			20180101		
 OUV	Balance Initiale	0	20180101	4967	Autres comptes débiteurs	2	Party	-	20180101	-	5,00	0,00			20180101		
 REV	Revenue	1	20180101	797	Transferts de charges exceptionnelles			-	20180101	-	0,00	10,00			20180101		
