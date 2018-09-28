@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product-production.bom,routing:"
 msgid "Routing"
-msgstr "Ablauf"
+msgstr "Fertigungsplan"
 
 msgctxt "field:production,routing:"
 msgid "Routing"
-msgstr "Ablauf"
+msgstr "Fertigungsplan"
 
 msgctxt "field:production.lead_time,routing:"
 msgid "Routing"
-msgstr "Ablauf"
+msgstr "Fertigungsplan"
 
 msgctxt "field:production.routing,active:"
 msgid "Active"
@@ -44,7 +44,7 @@ msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.routing,steps:"
 msgid "Steps"
-msgstr "Schritte"
+msgstr "Fertigungsschritte"
 
 msgctxt "field:production.routing,write_date:"
 msgid "Write Date"
@@ -76,7 +76,7 @@ msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.routing-production.bom,routing:"
 msgid "Routing"
-msgstr "Ablauf"
+msgstr "Fertigungsplan"
 
 msgctxt "field:production.routing-production.bom,write_date:"
 msgid "Write Date"
@@ -104,7 +104,7 @@ msgstr "ID"
 
 msgctxt "field:production.routing.operation,name:"
 msgid "Operation"
-msgstr "Arbeitsablauf"
+msgstr "Arbeitsvorgang"
 
 msgctxt "field:production.routing.operation,rec_name:"
 msgid "Record Name"
@@ -132,7 +132,7 @@ msgstr "ID"
 
 msgctxt "field:production.routing.step,operation:"
 msgid "Operation"
-msgstr "Arbeitsablauf"
+msgstr "Arbeitsvorgang"
 
 msgctxt "field:production.routing.step,rec_name:"
 msgid "Record Name"
@@ -140,7 +140,7 @@ msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:production.routing.step,routing:"
 msgid "Routing"
-msgstr "Ablauf"
+msgstr "Fertigungsplan"
 
 msgctxt "field:production.routing.step,sequence:"
 msgid "Sequence"
@@ -164,56 +164,56 @@ msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "model:ir.action,name:act_operation_list"
 msgid "Operations"
-msgstr "Arbeitsabläufe"
+msgstr "Arbeitsvorgänge"
 
 msgctxt "model:ir.action,name:act_routing_list"
 msgid "Routings"
-msgstr "Läufe"
+msgstr "Fertigungspläne"
 
 msgctxt "model:ir.ui.menu,name:menu_operation_list"
 msgid "Operations"
-msgstr "Arbeitsabläufe"
+msgstr "Arbeitsvorgänge"
 
 msgctxt "model:ir.ui.menu,name:menu_routing_list"
 msgid "Routings"
-msgstr "Läufe"
+msgstr "Fertigungspläne"
 
 msgctxt "model:production.routing,name:"
 msgid "Routing"
-msgstr "Ablauf"
+msgstr "Fertigungsplan"
 
 msgctxt "model:production.routing-production.bom,name:"
 msgid "Routing - BOM"
-msgstr "Ablauf - Stückliste"
+msgstr "Fertigungsplan - Stückliste"
 
 msgctxt "model:production.routing.operation,name:"
 msgid "Operation"
-msgstr "Arbeitsablauf"
+msgstr "Arbeitsvorgang"
 
 msgctxt "model:production.routing.step,name:"
 msgid "Route"
-msgstr "Schritt"
+msgstr "Fertigungsplan"
 
 msgctxt "view:production.routing.operation:"
 msgid "Operation"
-msgstr "Arbeitsablauf"
+msgstr "Arbeitsvorgang"
 
 msgctxt "view:production.routing.operation:"
 msgid "Operations"
-msgstr "Arbeitsabläufe"
+msgstr "Arbeitsvorgänge"
 
 msgctxt "view:production.routing.step:"
 msgid "Routing Step"
-msgstr "Arbeitsschritt"
+msgstr "Fertigungsschritt"
 
 msgctxt "view:production.routing.step:"
 msgid "Routing Steps"
-msgstr "Arbeitsschritte"
+msgstr "Fertigungsschritte"
 
 msgctxt "view:production.routing:"
 msgid "Routing"
-msgstr "Ablauf"
+msgstr "Fertigungsplan"
 
 msgctxt "view:production.routing:"
 msgid "Routings"
-msgstr "Abläufe"
+msgstr "Fertigungspläne"
