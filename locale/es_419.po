@@ -3,10 +3,6 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:account.statement.import:"
-msgid "No journal found for the bank account \"%(account)s\"."
-msgstr ""
-
-msgctxt "error:account.statement.import:"
 msgid "The OFX file is not a statement."
 msgstr ""
 
