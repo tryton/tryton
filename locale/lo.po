@@ -6,10 +6,6 @@ msgctxt "error:res.user.login.sms_code:"
 msgid "%(name)s code %(code)s"
 msgstr "%(name)s ລະຫັດ %(code)s"
 
-msgctxt "error:res.user:"
-msgid "Wrong mobile."
-msgstr "ໂທລະສັບມືຖືບໍ່ຖືກ"
-
 msgctxt "field:res.user,mobile:"
 msgid "Mobile"
 msgstr "ໂທລະສັບມືຖື"

@@ -6,10 +6,6 @@ msgctxt "error:res.user.login.sms_code:"
 msgid "%(name)s code %(code)s"
 msgstr "نام : \"٪ s\" : \"٪ s\" کد"
 
-msgctxt "error:res.user:"
-msgid "Wrong mobile."
-msgstr "تلفن همراه اشتباه است."
-
 msgctxt "field:res.user,mobile:"
 msgid "Mobile"
 msgstr "موبایل"
