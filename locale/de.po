@@ -12,7 +12,7 @@ msgstr "Fehlende Partei für Aufgabe \"%s\"."
 
 msgctxt "error:project.work:"
 msgid "There is no product on work \"%s\"."
-msgstr "Fehlende Variante für Aufgabe \"%s\"."
+msgstr "Fehlender Artikel für Aufgabe \"%s\"."
 
 msgctxt "error:timesheet.line:"
 msgid "You can not delete invoiced line."
@@ -92,7 +92,7 @@ msgstr "Rechnungsposition"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr "Positionen der Zeiterfassung"
+msgstr "Zeiterfassungspositionen"
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
