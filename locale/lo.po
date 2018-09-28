@@ -30,6 +30,10 @@ msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
 msgstr "ວຽກສູ້ຊົນ"
 
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr ""
+
 msgctxt "view:project.work:"
 msgid "Purchases"
 msgstr "ການຈັດຊື້"

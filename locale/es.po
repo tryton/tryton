@@ -30,6 +30,10 @@ msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
 msgstr "Tiempo del trabajo"
 
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr "Añade al coste del Proyecto/Tarea."
+
 msgctxt "view:project.work:"
 msgid "Purchases"
 msgstr "Compras"

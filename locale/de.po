@@ -16,7 +16,7 @@ msgstr "Listenpreis"
 
 msgctxt "field:project.work,product:"
 msgid "Product"
-msgstr "Variante"
+msgstr "Artikel"
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
@@ -29,6 +29,10 @@ msgstr "Ertrag"
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
 msgstr "Aufgabe Aufwand"
+
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr "Zu den Kosten des Arbeitsaufwands hinzufügen."
 
 msgctxt "view:project.work:"
 msgid "Purchases"

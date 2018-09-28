@@ -31,6 +31,10 @@ msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
 msgstr "Рабочие затраты"
 
+msgctxt "help:purchase.line,work:"
+msgid "Add to the cost of the work effort."
+msgstr ""
+
 #, fuzzy
 msgctxt "view:project.work:"
 msgid "Purchases"
