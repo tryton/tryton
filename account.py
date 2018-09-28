@@ -234,7 +234,7 @@ class AccountFrFEC(Wizard):
             if balance > 0:
                 debit, credit = balance, 0
             else:
-                debit, credit = 0, balance
+                debit, credit = 0, -balance
             yield [
                 OPENING_CODE,
                 OPENING_NAME,
