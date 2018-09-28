@@ -225,9 +225,10 @@ msgctxt ""
 msgid "Draft"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "model:ir.model.button,string:forecast_confirm_button"
 msgid "Confirm"
@@ -265,9 +266,10 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
@@ -277,9 +279,10 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Done"
