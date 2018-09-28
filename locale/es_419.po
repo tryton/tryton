@@ -563,19 +563,3 @@ msgstr ""
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "Cancel"
-msgstr ""
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "Draft"
-msgstr ""
