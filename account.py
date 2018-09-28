@@ -197,7 +197,7 @@ class AccountFrFEC(Wizard):
             if account.debit > account.credit:
                 debit, credit = account.debit - account.credit, 0
             else:
-                debit, credit = 0, account.debit - account.credit
+                debit, credit = 0, account.credit - account.debit
             yield [
                 self.start.deferral_journal.code
                 or self.start.deferral_journal.name,
