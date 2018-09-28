@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "error:stock.supply:"
 msgid "There are some late productions."
-msgstr "Es exisieren überfällige Produktionen."
+msgstr "Es exisieren überfällige Produktionsaufträge."
 
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
@@ -40,7 +40,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
-msgstr "Produktionen anfordern"
+msgstr "Produktionsaufträge anfordern"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
