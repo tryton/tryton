@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.configuration,dunning_email_fallback:"
+msgid "Fall-back User"
+msgstr ""
+
 msgctxt "field:account.dunning.email.log,create_date:"
 msgid "Create Date"
 msgstr ""
@@ -50,6 +54,10 @@ msgctxt "field:account.dunning.email.log,write_uid:"
 msgid "Write User"
 msgstr ""
 
+msgctxt "field:account.dunning.level,email_contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr ""
+
 msgctxt "field:account.dunning.level,email_from:"
 msgid "From"
 msgstr ""
@@ -60,6 +68,14 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,send_email:"
 msgid "Send Email"
+msgstr ""
+
+msgctxt "help:account.configuration,dunning_email_fallback:"
+msgid "User notified when no e-mail is found to send the dunning"
+msgstr ""
+
+msgctxt "help:account.dunning.level,email_contact_mechanism:"
+msgid "Define which e-mail to use from the party's contact mechanisms"
 msgstr ""
 
 msgctxt "help:account.dunning.level,email_from:"
@@ -116,4 +132,8 @@ msgstr ""
 
 msgctxt "view:account.dunning.email.log:"
 msgid "Time"
+msgstr ""
+
+msgctxt "view:account.dunning.level:"
+msgid "E-mail"
 msgstr ""
