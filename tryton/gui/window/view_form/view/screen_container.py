@@ -47,9 +47,21 @@ class Dates(gtk.HBox):
         elif to:
             return '<=%s' % quote(to)
 
+    @property
+    def _widgets(self):
+        return [self.from_, self.to]
+
     def connect_activate(self, callback):
-        self.from_.connect('activate', callback)
-        self.to.connect('activate', callback)
+        for widget in self._widgets:
+            if isinstance(widget, Date):
+                widget.connect('activate', callback)
+            elif isinstance(widget, Time):
+                widget.get_child().connect('activate', callback)
+
+    def connect_combo(self, callback):
+        for widget in self._widgets:
+            if isinstance(widget, Time):
+                widget.connect('notify::popup-shown', callback)
 
     def set_values(self, from_, to):
         self.from_.props.value = from_
@@ -65,10 +77,6 @@ class Times(Dates):
         value = widget.props.value
         if value:
             return datetime.time.strftime(value, widget.props.format)
-
-    def connect_activate(self, callback):
-        for widget in self.from_.get_children() + self.to.get_children():
-            widget.connect('activate', callback)
 
 
 class DateTimes(Dates):
@@ -86,12 +94,9 @@ class DateTimes(Dates):
             return common.datetime_strftime(value,
                 widget.props.date_format + ' ' + widget.props.time_format)
 
-    def connect_activate(self, callback):
-        for widget in self.from_.get_children() + self.to.get_children():
-            if isinstance(widget, Date):
-                widget.connect('activate', callback)
-            elif isinstance(widget, Time):
-                widget.get_child().connect('activate', callback)
+    @property
+    def _widgets(self):
+        return self.from_.get_children() + self.to.get_children()
 
 
 class Selection(gtk.ScrolledWindow):
@@ -590,6 +595,7 @@ class ScreenContainer(object):
                         elif field['type'] == 'datetime':
                             entry = DateTimes(date_format, time_format)
                     entry.connect_activate(lambda *a: search())
+                    entry.connect_combo(toggle_window_hide)
                 else:
                     entry = gtk.Entry()
                     entry.connect('activate', lambda *a: search())
