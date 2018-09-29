@@ -7,6 +7,7 @@ import gobject
 import os
 import gettext
 import threading
+import logging
 
 from gi.repository import Gtk
 
@@ -17,6 +18,7 @@ import tryton.rpc as rpc
 from tryton.common.underline import set_underline
 
 _ = gettext.gettext
+logger = logging.getLogger(__name__)
 
 
 class DBListEditor(object):
@@ -493,7 +495,10 @@ class DBLogin(object):
             self.profiles.set(name, 'database', 'demo%s' % short_version)
             self.profiles.set(name, 'username', 'demo')
         else:
-            self.profiles.read(self.profile_cfg)
+            try:
+                self.profiles.read(self.profile_cfg)
+            except configparser.ParsingError:
+                logger.error("Fail to parse profiles.cfg", exc_info=True)
         for section in self.profiles.sections():
             active = all(self.profiles.has_option(section, option)
                 for option in ('host', 'database'))
@@ -544,8 +549,11 @@ class DBLogin(object):
             if not profile_info[1]:
                 continue
             profile = profile_info[0]
-            profile_host = self.profiles.get(profile, 'host')
-            profile_db = self.profiles.get(profile, 'database')
+            try:
+                profile_host = self.profiles.get(profile, 'host')
+                profile_db = self.profiles.get(profile, 'database')
+            except configparser.NoOptionError:
+                continue
             if (host == common.get_hostname(profile_host)
                     and port == common.get_port(profile_host)
                     and database == profile_db):
@@ -566,12 +574,15 @@ class DBLogin(object):
         profile_name = CONFIG['login.profile']
         can_use_profile = self.profiles.has_section(profile_name)
         if can_use_profile:
-            for (configname, sectionname) in [
+            for (configname, option) in [
                     ('login.host', 'host'),
                     ('login.db', 'database'),
                     ]:
-                if (self.profiles.get(profile_name, sectionname)
-                        != CONFIG[configname]):
+                try:
+                    value = self.profiles.get(profile_name, option)
+                except configparser.NoOptionError:
+                    value = None
+                if value != CONFIG[configname]:
                     can_use_profile = False
                     break
 
