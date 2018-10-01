@@ -1,3 +1,5 @@
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
 * Allow non translatable reports
 * Replace hard coded 'state' by '_transition_state' in copy
 * Support dotted notation in copy default
