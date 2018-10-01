@@ -1,3 +1,5 @@
+Version 5.0.0 - 2018-10-01
+* Bug fixes (see mercurial logs for details)
 * Prevent similar tab
 * Remove dialog for input file
 * Use dropdown for attachment
