@@ -1,3 +1,5 @@
+* Use write mode by default to check create and delete of resources
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Allow non translatable reports

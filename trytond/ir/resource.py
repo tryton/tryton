@@ -69,7 +69,14 @@ class ResourceMixin(ModelSQL, ModelView):
                 if record.resource:
                     model_names.add(str(record.resource).split(',')[0])
         for model_name in model_names:
-            ModelAccess.check(model_name, mode=mode)
+            checks = cls._convert_check_access(model_name, mode)
+            for model, check_mode in checks:
+                ModelAccess.check(model, mode=check_mode)
+
+    @classmethod
+    def _convert_check_access(cls, model, mode):
+        return [
+            (model, {'create': 'write', 'delete': 'write'}.get(mode, mode))]
 
     @classmethod
     def read(cls, ids, fields_names=None):
