@@ -17,6 +17,7 @@ from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 
 __all__ = ['Email', 'EmailAttachment', 'EmailLog']
+_EMAIL_MODELS = ['res.user', 'party.party', 'web.user', 'company.employee']
 
 
 def _formataddr(name, email):
@@ -36,7 +37,7 @@ class Email(ModelSQL, ModelView):
         'ir.model.field', "Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
-            ('relation', 'in', ['res.user', 'party.party', 'web.user']),
+            ('relation', 'in', _EMAIL_MODELS),
             ],
         depends=['model'],
         help="The field that contains the recipient(s).")
@@ -54,7 +55,7 @@ class Email(ModelSQL, ModelView):
         'ir.model.field', "Secondary Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
-            ('relation', 'in', ['res.user', 'party.party', 'web.user']),
+            ('relation', 'in', _EMAIL_MODELS),
             ],
         depends=['model'],
         help="The field that contains the secondary recipient(s).")
@@ -72,7 +73,7 @@ class Email(ModelSQL, ModelView):
         'ir.model.field', "Hidden Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
-            ('relation', 'in', ['res.user', 'party.party', 'web.user']),
+            ('relation', 'in', _EMAIL_MODELS),
             ],
         depends=['model'],
         help="The field that contains the hidden recipient(s).")
@@ -149,6 +150,10 @@ class Email(ModelSQL, ModelView):
             WebUser = pool.get('web.user')
         except KeyError:
             WebUser = None
+        try:
+            Employee = pool.get('company.employee')
+        except KeyError:
+            Employee = None
         if isinstance(record, User) and record.email:
             return _formataddr(record.rec_name, record.email)
         elif Party and isinstance(record, Party):
@@ -162,6 +167,8 @@ class Email(ModelSQL, ModelView):
             if record.party:
                 name = record.party.rec_name
             return _formataddr(name, record.email)
+        elif Employee and isinstance(record, Employee):
+            return self._get_address(record.party)
 
     def _get_addresses(self, value):
         if isinstance(value, (list, tuple)):
