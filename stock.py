@@ -48,17 +48,19 @@ def set_origin_consignment(func):
     def wrapper(cls, moves):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        lines = {}
+        to_save = []
+        move2line = {}
         for move in moves:
             if not move.origin:
-                line = move.get_invoice_line_consignment()
-                if line:
-                    lines[move] = line
-        if lines:
-            InvoiceLine.save(list(lines.values()))
-            for move, line in lines.items():
+                lines = move.get_invoice_lines_consignment()
+                if lines:
+                    to_save.extend(lines)
+                    move2line[move] = lines[0]
+        if to_save:
+            InvoiceLine.save(to_save)
+            for move, line in move2line.items():
                 move.origin = line
-            cls.save(list(lines.keys()))
+            cls.save(list(move2line.keys()))
         return func(cls, moves)
     return wrapper
 
@@ -70,9 +72,8 @@ def unset_origin_consignment(func):
         InvoiceLine = pool.get('account.invoice.line')
         lines, to_save = [], []
         for move in moves:
-            if (isinstance(move.origin, InvoiceLine)
-                    and move.origin.origin == move):
-                lines.append(move.origin)
+            if isinstance(move.origin, InvoiceLine):
+                lines.extend(move.invoice_lines)
                 move.origin = None
                 to_save.append(move)
         if lines:
@@ -84,6 +85,9 @@ def unset_origin_consignment(func):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
+
+    invoice_lines = fields.One2Many(
+        'account.invoice.line', 'origin', "Invoice Lines", readonly=True)
 
     @classmethod
     def _get_origin(cls):
@@ -102,15 +106,18 @@ class Move(metaclass=PoolMeta):
     def _get_tax_rule_pattern(self):
         return {}
 
-    def get_invoice_line_consignment(self):
+    def get_invoice_lines_consignment(self):
+        lines = []
         if (self.from_location.type == 'supplier'
-                and self.to_location.type in {'storage', 'production'}
+                and self.to_location.type in {
+                    'storage', 'production', 'customer'}
                 and self.from_location.consignment_party):
-            return self._get_supplier_invoice_line_consignment()
-        elif (self.from_location.type in {'storage', 'production'}
+            lines.append(self._get_supplier_invoice_line_consignment())
+        if (self.from_location.type in {'storage', 'production', 'supplier'}
                 and self.to_location.type == 'customer'
                 and self.from_location.consignment_party):
-            return self._get_customer_invoice_line_consignment()
+            lines.append(self._get_customer_invoice_line_consignment())
+        return lines
 
     def _get_supplier_invoice_line_consignment(self):
         pool = Pool()
