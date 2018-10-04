@@ -221,7 +221,7 @@ class Transport(xmlrpc.client.SafeTransport):
                         ((y[0] % 2 and y[0] + 1 < len(value)) and ':' or ''),
                         enumerate(value), '')
                 return format_hash(hashlib.sha1(peercert).hexdigest())
-            except ssl.SSLError:
+            except (socket.error, ssl.SSLError, ssl.CertificateError):
                 if allow_http:
                     http_connection()
                 else:
