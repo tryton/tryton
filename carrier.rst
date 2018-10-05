@@ -5,11 +5,11 @@ Carrier
 
 .. glossary::
 
-    `Carrier </projects/trytond-carrier/en/4.2>`_
+    `Carrier </projects/trytond-carrier/en/4.0>`_
         Fundamentals to manage carriers.
 
-    `Percentage </projects/trytond-carrier-percentage/en/4.2>`_
+    `Percentage </projects/trytond-carrier-percentage/en/4.0>`_
         Computes cost based on percentage.
 
-    `Weight </projects/trytond-carrier-weight/en/4.2>`_
+    `Weight </projects/trytond-carrier-weight/en/4.0>`_
         Computes cost based on weight.

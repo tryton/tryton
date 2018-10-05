@@ -7,10 +7,10 @@ Main
 
 .. glossary::
 
-    `Server </projects/trytond/en/4.2>`_
+    `Server </projects/trytond/en/4.0>`_
         The main application.
 
-    `Desktop Client </projects/tryton/en/4.2>`_
+    `Desktop Client </projects/tryton/en/4.0>`_
         The application to connect to the server.
 
 Modules
@@ -39,11 +39,11 @@ Modules
     :ref:`Stock <index-stock>`
         Tracks goods in your warehouses.
 
-    `Timesheet </projects/trytond-timesheet/en/4.2>`_
+    `Timesheet </projects/trytond-timesheet/en/4.0>`_
         Tracks time spend.
 
 
-    `Banking </projects/trytond-bank/en/4.2>`_
+    `Banking </projects/trytond-bank/en/4.0>`_
         Adds bank and account.
 
     :ref:`Company <index-company>`
@@ -52,16 +52,16 @@ Modules
     :ref:`Carrier <index-carrier>`
         To ship.
 
-    `Country </projects/trytond-country/en/4.2>`_
+    `Country </projects/trytond-country/en/4.0>`_
         ISO 3166 list of countries and subdivisions.
 
-    `Currency </projects/trytond-currency/en/4.2>`_
+    `Currency </projects/trytond-currency/en/4.0>`_
         ISO 4217 list of currencies.
 
-    `Customs </projects/trytond-customs/en/4.2>`_
+    `Customs </projects/trytond-customs/en/4.0>`_
         Defines customs duty per tariff code.
 
-    `Google Maps </projects/trytond-google-maps/en/4.2>`_
+    `Google Maps </projects/trytond-google-maps/en/4.0>`_
         Links address to Google map.
 
     :ref:`Party <index-party>`
@@ -71,8 +71,5 @@ Modules
         Manages products.
 
 
-    :ref:`Authentication <index-authentication>`
-        Extends authentication mechanism.
-
-    `Web User </projects/trytond-web-user/en/4.2>`_
-        Manages external users.
+    `Authentication LDAP </projects/trytond-ldap-authentication/en/4.0>`_
+        Authentication per LDAP.
