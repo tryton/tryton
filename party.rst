@@ -5,8 +5,8 @@ Party
 
 .. glossary::
 
-    `Party </projects/trytond-party>`_
+    `Party </projects/trytond-party/en/latest>`_
         Fundamentals to store parties.
 
-    `Relationship </projects/trytond-party-relationship>`_
+    `Relationship </projects/trytond-party-relationship/en/latest>`_
         Defines relation between parties.

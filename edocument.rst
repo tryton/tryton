@@ -5,8 +5,8 @@ Electronic Document
 
 .. glossary::
 
-    `UN/CEFACT </projects/trytond-edocument-uncefact>`_
+    `UN/CEFACT </projects/trytond-edocument-uncefact/en/latest>`_
         Supports UN/CEFACT format.
 
-    `UNECE </projects/trytond-edocument-unece>`_
+    `UNECE </projects/trytond-edocument-unece/en/latest>`_
         Adds UNECE codes.
