@@ -1,3 +1,5 @@
+.. _index-edocument:
+
 Electronic Document
 ===================
 

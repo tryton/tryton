@@ -1,3 +1,5 @@
+.. _index-company:
+
 Company
 =======
 

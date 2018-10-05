@@ -1,3 +1,5 @@
+.. _index-sale:
+
 Sale
 ====
 

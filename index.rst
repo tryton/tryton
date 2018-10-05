@@ -18,31 +18,31 @@ Modules
 
 .. glossary::
 
-    `Financial Accounting </account>`_
+    :ref:`Financial Accounting <index-accounting>`
         Reports all transactions of your chart of accounts.
 
-    `Commission </commission>`_
+    :ref:`Commission <index-commission>`
         Commission sale's agents.
 
-    `EDocument </edocument>`_
+    :ref:`EDocument <index-edocument>`
         Electronic document format.
 
-    `Production </production>`_
+    :ref:`Production <index-production>`
         Transforms raw materials into finished products.
 
-    `Project </project>`_
+    :ref:`Project <index-project>`
         Checks the profitability of projects.
 
-    `Purchase </purchase>`_
+    :ref:`Purchase <index-purchase>`
         Follows your purchases.
 
-    `Sale </sale>`_
+    :ref:`Sale <index-sale>`
         Follows sale orders.
 
-    `Sale Subscription </sale_subscription>`_
+    :ref:`Sale Subscription <index-sale_subscription>`
         Subscribes to recurring service.
 
-    `Stock </stock>`_
+    :ref:`Stock <index-stock>`
         Tracks goods in your warehouses.
 
     `Timesheet </projects/trytond-timesheet>`_
@@ -52,10 +52,10 @@ Modules
     `Banking </projects/trytond-bank>`_
         Adds bank and account.
 
-    `Company </company>`_
+    :ref:`Company <index-company>`
         Structure of the company.
 
-    `Carrier </carrier>`_
+    :ref:`Carrier <index-carrier>`
         To ship.
 
     `Country </projects/trytond-country>`_
@@ -70,14 +70,14 @@ Modules
     `Google Maps </projects/trytond-google-maps>`_
         Links address to Google map.
 
-    `Party </party>`_
+    :ref:`Party <index-party>`
         Identify parties.
 
-    `Product </product>`_
+    :ref:`Product <index-product>`
         Manages products.
 
 
-    `Authentication </authentication>`_
+    :ref:`Authentication <index-authentication>`
         Extends authentication mechanism.
 
     `Notification Email </projects/trytond-notification-email>`_

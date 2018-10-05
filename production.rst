@@ -1,3 +1,5 @@
+.. _index-production:
+
 Production
 ==========
 
