@@ -437,6 +437,7 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     _depends = ['opportunity_state']
 
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity',
+        ondelete='CASCADE', select=True, required=True,
         states={
             'readonly': _states['readonly'] & Bool(Eval('opportunity')),
             },
