@@ -5,29 +5,26 @@ Product
 
 .. glossary::
 
-    `Product </projects/trytond-product/en/5.0/en/latest>`_
+    `Product </projects/trytond-product/en/4.8/en/4.8>`_
         Fundamentals to manage products.
 
-    `Attribute </projects/trytond-product-attribute/en/5.0/en/latest>`_
+    `Attribute </projects/trytond-product-attribute/en/4.8/en/4.8>`_
         Adds attributes to products.
 
-    `Classification </projects/trytond-product-classification/en/5.0/en/latest>`_
+    `Classification </projects/trytond-product-classification/en/4.8/en/4.8>`_
         Classifies products.
 
-    `Classification Taxonomic </projects/trytond-product-classification-taxonomic/en/5.0/en/latest>`_
+    `Classification Taxonomic </projects/trytond-product-classification-taxonomic/en/4.8/en/4.8>`_
         Uses Taxonomic classification.
 
-    `Cost FIFO </projects/trytond-product-cost-fifo/en/5.0/en/latest>`_
+    `Cost FIFO </projects/trytond-product-cost-fifo/en/4.8/en/4.8>`_
         Adds FIFO cost method.
 
-    `Cost History </projects/trytond-product-cost-history/en/5.0/en/latest>`_
+    `Cost History </projects/trytond-product-cost-history/en/4.8/en/4.8>`_
         Historize the cost.
 
-    `Measurements </projects/trytond-product-measurements/en/5.0/en/latest>`_
+    `Measurements </projects/trytond-product-measurements/en/4.8/en/4.8>`_
         Adds measurements to products.
 
-    `Price List Dates </projects/trytond-product-price-list-dates/en/5.0/en/latest>`_
+    `Price List Dates </projects/trytond-product-price-list-dates/en/4.8/en/4.8>`_
         Sets start and end date on price lists.
-
-    `Price List Parent </projects/trytond-product-price-list-parent/en/5.0/en/latest>`_
-        Adds price list cascading.
