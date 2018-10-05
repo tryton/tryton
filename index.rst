@@ -7,10 +7,10 @@ Main
 
 .. glossary::
 
-    `Server </projects/trytond/en/4.8>`_
+    `Server </projects/trytond/en/4.6>`_
         The main application.
 
-    `Desktop Client </projects/tryton/en/4.8>`_
+    `Desktop Client </projects/tryton/en/4.6>`_
         The application to connect to the server.
 
 Modules
@@ -36,17 +36,17 @@ Modules
     :ref:`Sale <index-sale>`
         Follows sale orders.
 
-    `Sale Subscription </projects/trytond-sale-subscription/en/4.8>`
+    `Sale Subscription </projects/trytond-sale-subscription/en/4.6>`
         Subscribes to recurring service.
 
     :ref:`Stock <index-stock>`
         Tracks goods in your warehouses.
 
-    `Timesheet </projects/trytond-timesheet/en/4.8>`_
+    `Timesheet </projects/trytond-timesheet/en/4.6>`_
         Tracks time spend.
 
 
-    `Banking </projects/trytond-bank/en/4.8>`_
+    `Banking </projects/trytond-bank/en/4.6>`_
         Adds bank and account.
 
     :ref:`Company <index-company>`
@@ -55,16 +55,16 @@ Modules
     :ref:`Carrier <index-carrier>`
         To ship.
 
-    `Country </projects/trytond-country/en/4.8>`_
+    `Country </projects/trytond-country/en/4.6>`_
         ISO 3166 list of countries and subdivisions.
 
-    `Currency </projects/trytond-currency/en/4.8>`_
+    `Currency </projects/trytond-currency/en/4.6>`_
         ISO 4217 list of currencies.
 
-    `Customs </projects/trytond-customs/en/4.8>`_
+    `Customs </projects/trytond-customs/en/4.6>`_
         Defines customs duty per tariff code.
 
-    `Google Maps </projects/trytond-google-maps/en/4.8>`_
+    `Google Maps </projects/trytond-google-maps/en/4.6>`_
         Links address to Google map.
 
     :ref:`Party <index-party>`
@@ -77,8 +77,8 @@ Modules
     :ref:`Authentication <index-authentication>`
         Extends authentication mechanism.
 
-    `Notification Email </projects/trytond-notification-email/en/4.8>`_
+    `Notification Email </projects/trytond-notification-email/en/4.6>`_
         Sends email.
 
-    `Web User </projects/trytond-web-user/en/4.8>`_
+    `Web User </projects/trytond-web-user/en/4.6>`_
         Manages external users.
