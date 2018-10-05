@@ -5,11 +5,11 @@ Production
 
 .. glossary::
 
-    `Production </projects/trytond-production/en/4.0/en/4.8>`_
+    `Production </projects/trytond-production/en/4.0>`_
         Fundamentals for production management.
 
-    `Routing </projects/trytond-production-routing/en/4.0/en/4.8>`_
+    `Routing </projects/trytond-production-routing/en/4.0>`_
         Defines routings.
 
-    `Work </projects/trytond-production-work/en/4.0/en/4.8>`_
+    `Work </projects/trytond-production-work/en/4.0>`_
         Manage work order for each production.
