@@ -80,11 +80,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         'on_change_with_company_party')
     tax_identifier = fields.Many2One(
         'party.identifier', "Tax Identifier",
-        states=_STATES,
-        domain=[
-            ('party', '=', Eval('company_party', -1)),
-            ],
-        depends=_DEPENDS + ['company_party'])
+        states=_STATES, depends=_DEPENDS)
     type = fields.Selection(_TYPE, 'Type', select=True,
         required=True, states={
             'readonly': ((Eval('state') != 'draft')
@@ -203,9 +199,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('id', 'DESC'),
             ]
         cls.tax_identifier.domain = [
-            cls.tax_identifier.domain,
+            ('party', '=', Eval('company_party', -1)),
             ('type', 'in', cls._tax_identifier_types()),
             ]
+        cls.tax_identifier.depends += ['company_party']
         cls._error_messages.update({
                 'missing_tax_line': ('Invoice "%s" has taxes defined but not '
                     'on invoice lines.\nRe-compute the invoice.'),
