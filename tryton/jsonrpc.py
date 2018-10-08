@@ -7,8 +7,6 @@ import http.client
 from decimal import Decimal
 import datetime
 import socket
-import gzip
-import io
 import hashlib
 import base64
 import threading
@@ -160,22 +158,11 @@ class Transport(xmlrpc.client.SafeTransport):
         extra_headers.append(('Connection', 'keep-alive'))
         return host, extra_headers, x509
 
-    def send_content(self, connection, request_body):
-        connection.putheader("Content-Type", "application/json")
-        if (self.encode_threshold is not None and
-                self.encode_threshold < len(request_body) and
-                gzip):
-            connection.putheader("Content-Encoding", "gzip")
-            buffer = io.BytesIO()
-            output = gzip.GzipFile(mode='wb', fileobj=buffer)
-            output.write(request_body)
-            output.close()
-            buffer.seek(0)
-            request_body = buffer.getvalue()
-        connection.putheader("Content-Length", str(len(request_body)))
-        connection.endheaders()
-        if request_body:
-            connection.send(request_body)
+    def send_headers(self, connection, headers):
+        for key, val in headers:
+            if key == 'Content-Type':
+                val = 'application/json'
+            connection.putheader(key, val)
 
     def make_connection(self, host):
         if self._connection and host == self._connection[0]:
