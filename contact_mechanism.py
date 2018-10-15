@@ -84,11 +84,9 @@ class ContactMechanism(
         }, depends=['value', 'type', 'active']),
         'get_value', setter='set_value')
     url = fields.Function(fields.Char('URL', states={
-                'invisible': (~Eval('type').in_(['email', 'website', 'skype',
-                            'sip', 'fax', 'phone'])
-                    | ~Eval('url')),
-                }, depends=['type']),
-        'get_url')
+                'invisible': ~Eval('url'),
+                }),
+        'on_change_with_url')
 
     @classmethod
     def __setup__(cls):
@@ -110,7 +108,8 @@ class ContactMechanism(
         return dict((name, dict((m.id, m.value) for m in mechanisms))
             for name in names)
 
-    def get_url(self, name=None, value=None):
+    @fields.depends('type', 'value')
+    def on_change_with_url(self, name=None, value=None):
         if value is None:
             value = self.value
         if self.type == 'email':
@@ -156,6 +155,7 @@ class ContactMechanism(
         #  Setting value is done by on_changes
         pass
 
+    @fields.depends(methods=['on_change_with_url'])
     def _change_value(self, value, type_):
         self.value = self.format_value(value=value, type_=type_)
         self.value_compact = self.format_value_compact(
@@ -165,33 +165,29 @@ class ContactMechanism(
         self.skype = value
         self.sip = value
         self.other_value = value
-        self.url = self.get_url(value=value)
+        self.url = self.on_change_with_url(value=value)
 
-    @fields.depends('value', 'type')
-    def on_change_type(self):
-        self.url = self.get_url(value=self.value)
-
-    @fields.depends('value', 'type')
+    @fields.depends('value', 'type', methods=['_change_value'])
     def on_change_value(self):
         return self._change_value(self.value, self.type)
 
-    @fields.depends('website', 'type')
+    @fields.depends('website', 'type', methods=['_change_value'])
     def on_change_website(self):
         return self._change_value(self.website, self.type)
 
-    @fields.depends('email', 'type')
+    @fields.depends('email', 'type', methods=['_change_value'])
     def on_change_email(self):
         return self._change_value(self.email, self.type)
 
-    @fields.depends('skype', 'type')
+    @fields.depends('skype', 'type', methods=['_change_value'])
     def on_change_skype(self):
         return self._change_value(self.skype, self.type)
 
-    @fields.depends('sip', 'type')
+    @fields.depends('sip', 'type', methods=['_change_value'])
     def on_change_sip(self):
         return self._change_value(self.sip, self.type)
 
-    @fields.depends('other_value', 'type')
+    @fields.depends('other_value', 'type', methods=['_change_value'])
     def on_change_other_value(self):
         return self._change_value(self.other_value, self.type)
 
