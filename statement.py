@@ -339,20 +339,21 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     def _get_grouped_line(self):
         "Return Line class for grouped lines"
-        assert self.lines
+        lines = self.origins or self.lines
+        assert lines
 
-        keys = [k[0] for k in self._group_key(self.lines[0])]
+        keys = [k[0] for k in self._group_key(lines[0])]
 
         class Line(namedtuple('Line', keys + ['lines'])):
 
             @property
             def amount(self):
-                return sum((l.amount for l in self.lines))
+                return sum((l.amount for l in lines))
 
             @property
             def descriptions(self):
                 done = set()
-                for line in self.lines:
+                for line in lines:
                     if line.description and line.description not in done:
                         done.add(line.description)
                         yield line.description
@@ -361,12 +362,14 @@ class Statement(Workflow, ModelSQL, ModelView):
     @property
     def grouped_lines(self):
         if self.origins:
-            for origin in self.origins:
-                yield origin
+            lines = self.origins
         elif self.lines:
-            Line = self._get_grouped_line()
-            for key, lines in groupby(self.lines, key=self._group_key):
-                yield Line(**dict(key + (('lines', list(lines)),)))
+            lines = self.lines
+        else:
+            return
+        Line = self._get_grouped_line()
+        for key, lines in groupby(lines, key=self._group_key):
+            yield Line(**dict(key + (('lines', list(lines)),)))
 
     @classmethod
     def delete(cls, statements):
