@@ -26,6 +26,8 @@ def sendmail_transactional(
 def sendmail(from_addr, to_addrs, msg, server=None):
     if server is None:
         server = get_smtp_server()
+        if not server:
+            return
         quit = True
     else:
         quit = False
@@ -50,9 +52,14 @@ def get_smtp_server(uri=None):
         for key, value in parse_qs(uri.query, strict_parsing=True).items():
             extra[key] = cast.get(key, lambda a: a)(value[0])
     if uri.scheme.startswith('smtps'):
-        server = smtplib.SMTP_SSL(uri.hostname, uri.port, **extra)
+        connector = smtplib.SMTP_SSL
     else:
-        server = smtplib.SMTP(uri.hostname, uri.port, **extra)
+        connector = smtplib.SMTP
+    try:
+        server = connector(uri.hostname, uri.port, **extra)
+    except smtplib.SMTPConnectError:
+        logger.error('fail to connect to %s', uri)
+        return
 
     if 'tls' in uri.scheme:
         server.starttls()
