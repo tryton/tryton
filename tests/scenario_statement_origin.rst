@@ -6,7 +6,7 @@ Imports::
 
     >>> import datetime
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+    >>> from proteus import Model, Wizard, Report
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -108,3 +108,8 @@ Statement can not be posted until all origins are finished::
     >>> statement.click('post')
     >>> statement.state
     u'posted'
+
+Test statement report::
+
+    >>> report = Report('account.statement')
+    >>> _ = report.execute([statement], {})
