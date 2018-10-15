@@ -1,3 +1,6 @@
+* Remove partial payment when cancel
+* Set cancel state when credit with refund
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Use accounting date to format invoice number

@@ -52,7 +52,7 @@ STATES = [
     ('validated', 'Validated'),
     ('posted', 'Posted'),
     ('paid', 'Paid'),
-    ('cancel', 'Canceled'),
+    ('cancel', 'Cancelled'),
     ]
 
 if config.getboolean('account_invoice', 'filestore', default=False):
@@ -135,7 +135,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'invisible': Eval('type') == 'out',
+            'invisible': ~Eval('cancel_move'),
             },
         depends=['company'])
     account = fields.Many2One('account.account', 'Account', required=True,
@@ -252,6 +252,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'modify_payment_lines_invoice_paid': (
                     'Payment lines can not be modified '
                     'on a paid invoice "%(invoice)s"'),
+                'credit_refund_non_posted': (
+                    'Invoice "%(invoice)s" can not be refund '
+                    'because it is not posted.'),
                 })
         cls._transitions |= set((
                 ('draft', 'validated'),
@@ -1043,15 +1046,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if identifier.type in types:
                 return identifier.id
 
+    @property
+    def is_modifiable(self):
+        return not (self.state in {'posted', 'paid'}
+            or (self.state == 'cancel'
+                and (self.move or self.cancel_move or self.number)))
+
     @classmethod
     def check_modify(cls, invoices):
         '''
         Check if the invoices can be modified
         '''
         for invoice in invoices:
-            if (invoice.state in ('posted', 'paid')
-                    or (invoice.state == 'cancel'
-                        and invoice.cancel_move)):
+            if not invoice.is_modifiable:
                 cls.raise_user_error('modify_invoice', (invoice.rec_name,))
 
     def get_rec_name(self, name):
@@ -1131,7 +1138,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         super(Invoice, cls).validate(invoices)
         for invoice in invoices:
             invoice.check_same_account()
-            invoice.check_cancel_move()
             invoice.check_payment_lines()
 
     def check_same_account(self):
@@ -1143,11 +1149,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         'account': self.account.rec_name,
                         'line': line.rec_name,
                         })
-
-    def check_cancel_move(self):
-        if self.type == 'out' and self.cancel_move:
-            self.raise_user_error('customer_invoice_cancel_move',
-                self.rec_name)
 
     def check_payment_lines(self):
         amount = sum(l.debit - l.credit for l in self.lines_to_pay)
@@ -1305,19 +1306,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Credit invoices and return ids of new invoices.
         Return the list of new invoice
         '''
-        MoveLine = Pool().get('account.move.line')
-
         new_invoices = [i._credit() for i in invoices]
         cls.save(new_invoices)
         cls.update_taxes(new_invoices)
         if refund:
             cls.post(new_invoices)
             for invoice, new_invoice in zip(invoices, new_invoices):
-                if new_invoice.state == 'posted':
-                    MoveLine.reconcile([l for l in invoice.lines_to_pay
-                            if not l.reconciliation] +
-                        [l for l in new_invoice.lines_to_pay
-                            if not l.reconciliation])
+                if invoice.state != 'posted':
+                    cls.raise_user_error('credit_refund_non_posted', {
+                            'invoice': invoice.rec_name,
+                            })
+                invoice.cancel_move = new_invoice.move
+            cls.save(invoices)
+            cls.cancel(invoices)
         return new_invoices
 
     @classmethod
@@ -1398,18 +1399,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @Workflow.transition('paid')
     def paid(cls, invoices):
         # Remove links to lines which actually do not pay the invoice
-        to_write = []
-        for invoice in invoices:
-            to_remove = []
-            reconciliations = [l.reconciliation for l in invoice.lines_to_pay]
-            for payment_line in invoice.payment_lines:
-                if payment_line.reconciliation not in reconciliations:
-                    to_remove.append(payment_line)
-            if to_remove:
-                to_write.append([invoice])
-                to_write.append([('remove', to_remove)])
-        if to_write:
-            cls.write(*to_write)
+        cls._clean_payments(invoices)
 
     @classmethod
     @ModelView.button
@@ -1427,6 +1417,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 if invoice.move.state == 'draft':
                     delete_moves.append(invoice.move)
                 elif not invoice.cancel_move:
+                    if invoice.type == 'out':
+                        cls.raise_user_error(
+                            'customer_invoice_cancel_move', invoice.rec_name)
                     invoice.cancel_move = invoice.move.cancel()
                     to_save.append(invoice)
                     cancel_moves.append(invoice.cancel_move)
@@ -1441,19 +1434,34 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls.write(invoices, {
                 'state': 'cancel',
                 })
-        # Reconcile lines to pay with the cancellation ones if possible
+
         for invoice in invoices:
             if not invoice.move or not invoice.cancel_move:
                 continue
             to_reconcile = []
             for line in invoice.move.lines + invoice.cancel_move.lines:
                 if line.account == invoice.account:
-                    if line.reconciliation:
-                        break
                     to_reconcile.append(line)
-            else:
-                if to_reconcile:
-                    Line.reconcile(to_reconcile)
+            Line.reconcile(to_reconcile)
+
+        cls._clean_payments(invoices)
+
+    @classmethod
+    def _clean_payments(cls, invoices):
+        to_write = []
+        for invoice in invoices:
+            to_remove = []
+            reconciliations = [l.reconciliation for l in invoice.lines_to_pay]
+            for payment_line in invoice.payment_lines:
+                if payment_line.reconciliation not in reconciliations:
+                    to_remove.append(payment_line.id)
+            if to_remove:
+                to_write.append([invoice])
+                to_write.append({
+                        'payment_lines': ('remove', to_remove),
+                        })
+        if to_write:
+            cls.write(*to_write)
 
 
 class InvoicePaymentLine(ModelSQL):
@@ -1981,8 +1989,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         '''
         if fields is None or fields - cls._check_modify_exclude:
             for line in lines:
-                if (line.invoice
-                        and line.invoice.state in ('posted', 'paid')):
+                if line.invoice and not line.invoice.is_modifiable:
                     cls.raise_user_error('modify', {
                             'line': line.rec_name,
                             'invoice': line.invoice.rec_name
@@ -2192,7 +2199,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
                 'modify': ('You can not modify tax "%(tax)s" from invoice '
                     '"%(invoice)s" because it is posted or paid.'),
                 'create': ('You can not add tax to invoice '
-                    '"%(invoice)s" because it is posted, paid or canceled.'),
+                    '"%(invoice)s" because it is posted, paid or cancelled.'),
                 })
 
     @classmethod
@@ -2261,7 +2268,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         Check if the taxes can be modified
         '''
         for tax in taxes:
-            if tax.invoice.state in ('posted', 'paid'):
+            if not tax.invoice.is_modifiable:
                 cls.raise_user_error('modify', {
                         'tax': tax.rec_name,
                         'invoice': tax.invoice.rec_name,
@@ -2729,9 +2736,10 @@ class CreditInvoiceStart(ModelView):
     with_refund = fields.Boolean('With Refund',
         states={
             'readonly': ~Eval('with_refund_allowed'),
+            'invisible': ~Eval('with_refund_allowed'),
             },
         depends=['with_refund_allowed'],
-        help='If true, the current invoice(s) will be paid.')
+        help='If true, the current invoice(s) will be cancelled.')
     with_refund_allowed = fields.Boolean("With Refund Allowed", readonly=True)
 
 
@@ -2745,19 +2753,6 @@ class CreditInvoice(Wizard):
             ])
     credit = StateAction('account_invoice.act_invoice_form')
 
-    @classmethod
-    def __setup__(cls):
-        super(CreditInvoice, cls).__setup__()
-        cls._error_messages.update({
-                'refund_non_posted': ('You can not credit with refund '
-                    'invoice "%s" because it is not posted.'),
-                'refund_with_payement': ('You can not credit with refund '
-                    'invoice "%s" because it has payments.'),
-                'refund_supplier': ('You can not credit with refund '
-                    'invoice "%s" because it is a supplier '
-                    'invoice/credit note.'),
-                })
-
     def default_start(self, fields):
         Invoice = Pool().get('account.invoice')
         default = {
@@ -2765,12 +2760,12 @@ class CreditInvoice(Wizard):
             'with_refund_allowed': True,
             }
         for invoice in Invoice.browse(Transaction().context['active_ids']):
-            if (invoice.state != 'posted'
-                    or invoice.payment_lines
-                    or invoice.type == 'in'):
+            if invoice.state != 'posted' or invoice.type == 'in':
                 default['with_refund'] = False
                 default['with_refund_allowed'] = False
                 break
+            if invoice.payment_lines:
+                default['with_refund'] = False
         return default
 
     def do_credit(self, action):
@@ -2779,17 +2774,6 @@ class CreditInvoice(Wizard):
 
         refund = self.start.with_refund
         invoices = Invoice.browse(Transaction().context['active_ids'])
-
-        if refund:
-            for invoice in invoices:
-                if invoice.state != 'posted':
-                    self.raise_user_error('refund_non_posted',
-                        (invoice.rec_name,))
-                if invoice.payment_lines:
-                    self.raise_user_error('refund_with_payement',
-                        (invoice.rec_name,))
-                if invoice.type == 'in':
-                    self.raise_user_error('refund_supplier', invoice.rec_name)
 
         credit_invoices = Invoice.credit(invoices, refund=refund)
 

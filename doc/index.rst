@@ -42,8 +42,8 @@ the same that is returned for consistency.
 A wizard allow to register a cash payment directly on the invoice. The payment
 could be partial or with write-off.
 
-An other wizard allow to create a credit note from the invoice with the option
-to refund the original invoice.
+An other wizard allow to create a credit note from the invoice. If the option
+to refund is checked, the original invoice will be cancelled by the credit note.
 
 Invoice Line
 ************
