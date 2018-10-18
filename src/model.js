@@ -293,7 +293,7 @@
                 this.record_deleted.forEach(function(record) {
                     this._remove(record);
                 }.bind(this));
-                deferreds.push(this.model.delete_(this.record_deleted));
+                deferreds.push(this.delete_(this.record_deleted));
                 this.record_deleted.splice(0, this.record_deleted.length);
             }
             return jQuery.when.apply(jQuery, deferreds);
