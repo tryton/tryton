@@ -914,7 +914,24 @@ class DomainParser(object):
                         or isinstance(clause[0], (list, tuple)))
                     and all(isinstance(c, (list, tuple)) for c in clause[1:])):
                 return self.stringable(clause)
-            if clause[0] in self.fields or clause[0] == 'rec_name':
+            name, _, value = clause[:3]
+            if name.endswith('.rec_name'):
+                name = name[:-len('.rec_name')]
+            if name in self.fields:
+                field = self.fields[name]
+                if field['type'] in {
+                        'many2one', 'one2one', 'one2many', 'many2many'}:
+                    if field['type'] == 'many2one':
+                        types = (str, type(None))
+                    else:
+                        types = str
+                    if isinstance(value, (list, tuple)):
+                        return all(isinstance(v, types) for v in value)
+                    else:
+                        return isinstance(value, types)
+                else:
+                    return True
+            elif name == 'rec_name':
                 return True
             return False
 
@@ -1202,6 +1219,14 @@ def test_stringable():
                 'string': 'Name',
                 'type': 'char',
                 },
+            'relation': {
+                'string': 'Relation',
+                'type': 'many2one',
+                },
+            'relations': {
+                'string': 'Relations',
+                'type': 'many2many',
+                },
             })
     valid = ('name', '=', 'Doe')
     invalid = ('surname', '=', 'John')
@@ -1211,6 +1236,13 @@ def test_stringable():
     assert not dom.stringable(['AND', valid, invalid])
     assert dom.stringable([[valid]])
     assert not dom.stringable([[valid], [invalid]])
+    assert dom.stringable([('relation', '=', None)])
+    assert dom.stringable([('relation', '=', "Foo")])
+    assert dom.stringable([('relation.rec_name', '=', "Foo")])
+    assert not dom.stringable([('relation', '=', 1)])
+    assert dom.stringable([('relations', '=', "Foo")])
+    assert dom.stringable([('relations', 'in', ["Foo"])])
+    assert not dom.stringable([('relations', 'in', [42])])
 
 
 def test_string():
