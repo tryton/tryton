@@ -99,20 +99,6 @@ Process the payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    'processing'
-
-Run cron::
-
-    >>> Cron = Model.get('ir.cron')
-    >>> cron_charge, = Cron.find([
-    ...         ('model', '=', 'account.payment'),
-    ...         ('function', '=', 'stripe_charge'),
-    ...         ])
-    >>> cron_charge.companies.append(Company(company.id))
-    >>> cron_charge.click('run_once')
-
-    >>> payment.reload()
-    >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
     True
@@ -143,10 +129,6 @@ Create failing payment::
     >>> payment.save()
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
-    >>> payment.state
-    'processing'
-    >>> cron_charge.click('run_once')
-    >>> payment.reload()
     >>> payment.state
     'failed'
     >>> payment.stripe_error_code
@@ -180,6 +162,7 @@ Checkout the customer::
 
 Run cron::
 
+    >>> Cron = Model.get('ir.cron')
     >>> cron_customer_create, = Cron.find([
     ...     ('model', '=', 'account.payment.stripe.customer'),
     ...     ('function', '=', 'stripe_create'),
@@ -206,10 +189,6 @@ Make payment with customer::
     'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
-    >>> payment.state
-    'processing'
-    >>> cron_charge.click('run_once')
-    >>> payment.reload()
     >>> payment.state
     'succeeded'
 
@@ -260,22 +239,13 @@ Process the capture payment::
     >>> process_payment.execute('process')
     >>> payment.state
     'processing'
-
-Run cron::
-
-    >>> Cron = Model.get('ir.cron')
-    >>> cron_charge.click('run_once')
-
-    >>> payment.reload()
-    >>> payment.state
-    'processing'
     >>> bool(payment.stripe_captured)
     False
 
 Capture lower amount::
 
     >>> payment.amount = Decimal('40')
-    >>> payment.click('stripe_capture_')
+    >>> payment.click('stripe_do_capture')
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)

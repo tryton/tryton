@@ -70,6 +70,7 @@ class Group(metaclass=PoolMeta):
                             'payment': payment.rec_name,
                             })
         Payment.save(self.payments)
+        Payment.__queue__.stripe_charge(self.payments)
 
 
 class Payment(metaclass=PoolMeta):
@@ -191,7 +192,7 @@ class Payment(metaclass=PoolMeta):
                         | ~Eval('stripe_checkout_needed', False)),
                     'depends': ['state', 'stripe_checkout_needed'],
                     },
-                'stripe_capture_': {
+                'stripe_do_capture': {
                     'invisible': ((Eval('state', 'draft') != 'processing')
                         | ~Eval('stripe_capture_needed')),
                     'depends': ['state', 'stripe_capture_needed'],
@@ -273,6 +274,7 @@ class Payment(metaclass=PoolMeta):
     def get_stripe_capture_needed(self, name):
         return (self.journal.process_method == 'stripe'
             and self.stripe_charge_id
+            and not self.stripe_capture
             and not self.stripe_captured)
 
     @fields.depends('journal')
@@ -356,7 +358,7 @@ class Payment(metaclass=PoolMeta):
 
         The transaction is committed after each payment charge.
         """
-        if not payments:
+        if payments is None:
             payments = cls.search([
                     ('state', '=', 'processing'),
                     ('journal.process_method', '=', 'stripe'),
@@ -370,6 +372,10 @@ class Payment(metaclass=PoolMeta):
                     ('stripe_charge_id', '=', None),
                     ])
         for payment in payments:
+            if (payment.stripe_charge_id
+                    or payment.journal.process_method != 'stripe'
+                    or payment.state != 'processing'):
+                continue
             try:
                 charge = stripe.Charge.create(**payment._charge_parameters())
             except (stripe.error.RateLimitError,
@@ -422,13 +428,29 @@ class Payment(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    def stripe_capture_(cls, payments):
+    def stripe_do_capture(cls, payments):
+        cls.write(payments, {
+                'stripe_capture': True,
+                })
+        cls.__queue__.stripe_capture_(payments)
+
+    @classmethod
+    def stripe_capture_(cls, payments=None):
         """Capture stripe payments
 
         The transaction is committed after each payment capture.
         """
+        if payments is None:
+            payments = cls.search([
+                    ('state', '=', 'processing'),
+                    ('journal.process_method', '=', 'stripe'),
+                    ('stripe_charge_id', '!=', None),
+                    ('stripe_captured', '=', False),
+                    ('stripe_capture', '=', True),
+                    ])
         for payment in payments:
             if (not payment.stripe_charge_id
+                    or payment.journal.process_method != 'stripe'
                     or payment.stripe_captured
                     or payment.state != 'processing'):
                 continue
@@ -801,7 +823,8 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                         ],
                     ])
         for customer in customers:
-            assert not customer.stripe_customer_id
+            if customer.stripe_customer_id:
+                continue
             try:
                 cu = stripe.Customer.create(
                     api_key=customer.stripe_account.secret_key,

@@ -109,7 +109,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.model.button" id="payment_stripe_capture_button">
-            <field name="name">stripe_capture_</field>
+            <field name="name">stripe_do_capture</field>
             <field name="string">Stripe Capture</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
         </record>
@@ -202,6 +202,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="repeat_missed" eval="False"/>
             <field name="model">account.payment</field>
             <field name="function">stripe_charge</field>
+        </record>
+
+        <record model="ir.cron" id="cron_capture">
+            <field name="name">Capture Stripe Payments</field>
+            <field name="request_user" ref="res.user_admin"/>
+            <field name="user" ref="user_stripe"/>
+            <field name="active" eval="True"/>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+            <field name="number_calls" eval="-1"/>
+            <field name="repeat_missed" eval="False"/>
+            <field name="model">account.payment</field>
+            <field name="function">stripe_capture_</field>
         </record>
 
         <record model="ir.cron" id="cron_create_customer">

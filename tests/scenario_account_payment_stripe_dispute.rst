@@ -89,18 +89,6 @@ Create fully disputed payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    'processing'
-
-    >>> Cron = Model.get('ir.cron')
-    >>> cron_charge, = Cron.find([
-    ...         ('model', '=', 'account.payment'),
-    ...         ('function', '=', 'stripe_charge'),
-    ...         ])
-    >>> cron_charge.companies.append(Company(company.id))
-    >>> cron_charge.click('run_once')
-
-    >>> payment.reload()
-    >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
     True
@@ -187,18 +175,6 @@ Create partial disputed payment::
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
-    'processing'
-
-    >>> Cron = Model.get('ir.cron')
-    >>> cron_charge, = Cron.find([
-    ...         ('model', '=', 'account.payment'),
-    ...         ('function', '=', 'stripe_charge'),
-    ...         ])
-    >>> cron_charge.companies.append(Company(company.id))
-    >>> cron_charge.click('run_once')
-
-    >>> payment.reload()
-    >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
     True
@@ -262,18 +238,6 @@ Create won disputed payment::
 
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
-    >>> payment.state
-    'processing'
-
-    >>> Cron = Model.get('ir.cron')
-    >>> cron_charge, = Cron.find([
-    ...         ('model', '=', 'account.payment'),
-    ...         ('function', '=', 'stripe_charge'),
-    ...         ])
-    >>> cron_charge.companies.append(Company(company.id))
-    >>> cron_charge.click('run_once')
-
-    >>> payment.reload()
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)

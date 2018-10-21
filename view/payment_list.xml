@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/button[@name='approve']" position="after">
         <button name="stripe_checkout"/>
-        <button name="stripe_capture_"/>
+        <button name="stripe_do_capture"/>
     </xpath>
 </data>

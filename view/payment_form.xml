@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='buttons']" position="inside">
         <button name="stripe_checkout"/>
-        <button name="stripe_capture_"/>
+        <button name="stripe_do_capture"/>
     </xpath>
     <xpath expr="//field[@name='date']" position="after">
         <newline/>
