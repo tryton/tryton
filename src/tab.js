@@ -640,17 +640,19 @@
             var compare = Sao.common.compare;
             return ((this.screen.model_name === attributes.model) &&
                 (this.attributes.res_id === attributes.res_id) &&
-                (compare(this.attributes.domain, attributes.domain)) &&
+                (compare(
+                    this.attributes.domain || [], attributes.domain || [])) &&
                 (compare(
                     this.attributes.mode || [], attributes.mode || [])) &&
                 (compare(
-                    this.attributes.view_ids, attributes.view_ids)) &&
+                    this.attributes.view_ids || [],
+                    attributes.view_ids || [])) &&
                 (JSON.stringify(this.attributes.context) ===
                     JSON.stringify(attributes.context)) &&
                 (this.attributes.limit == attributes.limit) &&
                 (compare(
-                    this.attributes.search_value,
-                    attributes.search_value))
+                    this.attributes.search_value || [],
+                    attributes.search_value || []))
             );
         },
         _close_allowed: function() {
