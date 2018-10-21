@@ -86,13 +86,15 @@ class Form(SignalEvent, TabContent):
         if not attributes:
             return False
         return (self.model == model
-            and self.res_id == attributes['res_id']
-            and self.attributes['domain'] == attributes['domain']
-            and (self.attributes['mode'] or []) == (attributes['mode'] or [])
-            and self.attributes['view_ids'] == attributes['view_ids']
-            and self.attributes['context'] == attributes['context']
-            and self.attributes['limit'] == attributes['limit']
-            and self.attributes['search_value'] == attributes['search_value'])
+            and self.res_id == attributes.get('res_id')
+            and self.attributes.get('domain') == attributes.get('domain')
+            and (self.attributes.get('mode') or []) == (
+                attributes.get('mode') or [])
+            and self.attributes.get('view_ids') == attributes.get('view_ids')
+            and self.attributes.get('context') == attributes.get('context')
+            and self.attributes.get('limit') == attributes.get('limit')
+            and self.attributes.get('search_value') == (
+                attributes.get('search_value')))
 
     def __hash__(self):
         return id(self)

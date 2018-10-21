@@ -54,8 +54,8 @@ class Board(SignalEvent, TabContent):
         if not attributes:
             return False
         return (self.model == model
-            and self.attributes['view_ids'] == attributes['view_ids']
-            and self.attributes['context'] == attributes['context'])
+            and self.attributes.get('view_ids') == attributes.get('view_ids')
+            and self.attributes.get('context') == attributes.get('context'))
 
     def __hash__(self):
         return id(self)
