@@ -1634,7 +1634,15 @@
             'name': {
                 'string': 'Name',
                 'type': 'char',
-                }
+            },
+            'relation': {
+                'string': 'Relation',
+                'type': 'many2one',
+            },
+            'relations': {
+                'string': 'Relations',
+                'type': 'many2many',
+            },
         });
         var valid = ['name', '=', 'Doe'];
         var invalid = ['surname', '=', 'John'];
@@ -1644,6 +1652,13 @@
         QUnit.ok(!parser.stringable(['AND', valid, invalid]));
         QUnit.ok(parser.stringable([[valid]]));
         QUnit.ok(!parser.stringable([[valid], [invalid]]));
+        QUnit.ok(parser.stringable([['relation', '=', null]]));
+        QUnit.ok(parser.stringable([['relation', '=', 'Foo']]));
+        QUnit.ok(parser.stringable([['relation.rec_name', '=', 'Foo']]));
+        QUnit.ok(!parser.stringable([['relation', '=', 1]]));
+        QUnit.ok(parser.stringable([['relations', '=', 'Foo']]));
+        QUnit.ok(parser.stringable([['relations', 'in', ['Foo']]]));
+        QUnit.ok(!parser.stringable([['relations', 'in', [42]]]));
     });
 
     QUnit.test('DomainParser.string', function() {

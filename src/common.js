@@ -1031,7 +1031,37 @@
                         clause.slice(1).every(is_array)) {
                     return this.stringable(clause);
                 }
-                if ((clause[0] in this.fields) || clause[0] == 'rec_name') {
+                var name = clause[0];
+                var value = clause[2];
+                if (name.endsWith('.rec_name')) {
+                    name = name.slice(0, -9);
+                }
+                if (name in this.fields) {
+                    var field = this.fields[name];
+                    if (~['many2one', 'one2one', 'one2many', 'many2many']
+                        .indexOf(field.type)) {
+                        var test = function(value) {
+                            if (field.type == 'many2one') {
+                                if ((typeof value != 'string') &&
+                                    (value !== null)) {
+                                    return false;
+                                }
+                            } else {
+                                if (typeof value != 'string') {
+                                    return false;
+                                }
+                            }
+                            return true;
+                        };
+                        if (value instanceof Array) {
+                            return value.every(test);
+                        } else {
+                            return test(value);
+                        }
+                    } else {
+                        return true;
+                    }
+                } else if (name == 'rec_name') {
                     return true;
                 }
                 return false;
