@@ -299,7 +299,7 @@ class TaxCodeLineTemplate(ModelSQL, ModelView):
 
     def _get_tax_code_line_value(self, line=None):
         value = {}
-        for name in ['code', 'operator', 'amount', 'type']:
+        for name in ['operator', 'amount', 'type']:
             if not line or getattr(line, name) != getattr(self, name):
                 value[name] = getattr(self, name)
         if not line or line.template != self:
@@ -411,8 +411,10 @@ class TaxCodeLine(ModelSQL, ModelView):
                     value['tax'] = template2tax.get(template.tax.id)
                 if value:
                     values.append([line])
-                    values.append(values)
+                    values.append(value)
                 template2tax_code_line[line.template.id] = line.id
+        if values:
+            cls.write(*values)
 
 
 class OpenChartTaxCodeStart(ModelView):
