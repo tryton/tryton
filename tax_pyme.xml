@@ -635,28 +635,28 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario-invoice_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_2_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1_pyme"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
         <record id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario-credit_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_2_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1_pyme"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
         <record id="vat_code_iva_devengado_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-invoice_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_inv_2_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1_pyme"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
         <record id="vat_code_iva_devengado_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-credit_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario_pyme"/>
-            <field name="tax" ref="iva_sop_intracomunitario_inv_2_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1_pyme"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>

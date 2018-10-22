@@ -635,28 +635,28 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario-invoice">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
-            <field name="tax" ref="iva_sop_intracomunitario_2"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario-iva_sop_intracomunitario-credit">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
-            <field name="tax" ref="iva_sop_intracomunitario_2"/>
+            <field name="tax" ref="iva_sop_intracomunitario_1"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
         <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-invoice">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
-            <field name="tax" ref="iva_sop_intracomunitario_inv_2"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_intracomunitario_inv-iva_sop_intracomunitario_inv-credit">
             <field name="code" ref="vat_code_iva_devengado_tax_intracomunitario"/>
-            <field name="tax" ref="iva_sop_intracomunitario_inv_2"/>
+            <field name="tax" ref="iva_sop_intracomunitario_inv_1"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
