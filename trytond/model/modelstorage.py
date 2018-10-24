@@ -174,7 +174,6 @@ class ModelStorage(Model):
                         cache[cls.__name__][record.id].clear()
 
     @classmethod
-    @without_check_access
     def trigger_write_get_eligibles(cls, records):
         '''
         Return eligible records for write actions by triggers
