@@ -186,9 +186,11 @@ def load_module_graph(graph, pool, update=None, lang=None):
     transaction = Transaction()
     with transaction.connection.cursor() as cursor:
         modules = [x.name for x in graph]
-        cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
-                where=ir_module.name.in_(modules)))
-        module2state = dict(cursor.fetchall())
+        module2state = dict()
+        for sub_modules in tools.grouped_slice(modules):
+            cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
+                    where=ir_module.name.in_(list(sub_modules))))
+            module2state.update(cursor.fetchall())
         modules = set(modules)
 
         for node in graph:
