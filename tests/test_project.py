@@ -129,6 +129,59 @@ class ProjectTestCase(ModuleTestCase):
                 ProjectWork.delete([p_work])
                 self.assertEqual(TimesheetWork.search([]), [])
 
+    @with_transaction()
+    def test_timesheet_default_work_empty(self):
+        "Test timesheet default work with no context"
+        pool = Pool()
+        ProjectWork = pool.get('project.work')
+        TimesheetLine = pool.get('timesheet.line')
+
+        company = create_company()
+        with set_company(company):
+            p_work = ProjectWork()
+            p_work.name = "Work"
+            p_work.timesheet_available = True
+            p_work.save()
+
+            self.assertFalse(TimesheetLine.default_work())
+
+    @with_transaction()
+    def test_timesheet_default_work_single(self):
+        "Test timesheet default work with 1 work in context"
+        pool = Pool()
+        ProjectWork = pool.get('project.work')
+        TimesheetLine = pool.get('timesheet.line')
+
+        company = create_company()
+        with set_company(company):
+            p_work = ProjectWork()
+            p_work.name = "Work"
+            p_work.timesheet_available = True
+            p_work.save()
+
+            with Transaction().set_context({'project.work': [p_work.id]}):
+                self.assertEqual(
+                    TimesheetLine.default_work(),
+                    p_work.timesheet_works[0].id)
+
+    @with_transaction()
+    def test_timesheet_default_work_multiple(self):
+        "Test timesheet default work with multiple work in context"
+        pool = Pool()
+        ProjectWork = pool.get('project.work')
+        TimesheetLine = pool.get('timesheet.line')
+
+        company = create_company()
+        with set_company(company):
+            works = ProjectWork.create([
+                    {'name': "Work 1", 'timesheet_available': True},
+                    {'name': "Work 2", 'timesheet_available': True},
+                    ])
+
+            with Transaction().set_context(
+                    {'project.work': map(int, works)}):
+                self.assertFalse(TimesheetLine.default_work())
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

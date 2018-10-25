@@ -9,6 +9,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('work.origin.id', '=', Eval('active_id'), 'project.work'), ('work.origin.id', 'in', Eval('active_ids'), 'project.work'))]"
                 pyson="1"/>
+            <field
+                name="context"
+                eval="{'project.work': Eval('active_ids')}"
+                pyson="1"/>
         </record>
         <record model="ir.action.keyword"
             id="act_timesheet_line_form_work_keyword1">

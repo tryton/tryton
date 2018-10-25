@@ -2,15 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .work import *
-from .timesheet import *
+from . import work
+from . import timesheet
 from . import party
 
 
 def register():
     Pool.register(
-        Work,
-        TimesheetWork,
+        work.Work,
+        timesheet.Line,
+        timesheet.Work,
         module='project', type_='model')
     Pool.register(
         party.PartyReplace,
