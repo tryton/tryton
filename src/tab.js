@@ -631,6 +631,9 @@
                     }.bind(this));
                 }.bind(this));
             }.bind(this));
+            this.buttons.attach
+                .on('dragover', false)
+                .on('drop', this.attach_drop.bind(this));
             return toolbar;
         },
         compare: function(attributes) {
@@ -1022,6 +1025,81 @@
                             window_();
                         })));
                 });
+        },
+        attach_drop: function(evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+            evt = evt.originalEvent;
+            var record = this.screen.current_record;
+            if (!record || record.id < 0) {
+                return;
+            }
+
+            var i, file;
+            var files = [],
+                uris = [],
+                texts = [];
+            if (evt.dataTransfer.items) {
+                console.log(evt.dataTransfer.items);
+                for (i = 0; i < evt.dataTransfer.items.length; i++) {
+                    var item = evt.dataTransfer.items[i];
+                    if (item.kind == 'string') {
+                        var list;
+                        if (item.type == 'text/uri-list') {
+                            list = uris;
+                        } else if (item.type == 'text/plain') {
+                            list = texts;
+                        } else {
+                            continue;
+                        }
+                        var prm = jQuery.Deferred();
+                        evt.dataTransfer.items[i].getAsString(prm.resolve);
+                        list.push(prm);
+                        break;
+                    } else {
+                        file = evt.dataTransfer.items[i].getAsFile();
+                        if (file) {
+                            files.push(file);
+                        }
+                    }
+                }
+            } else {
+                for (i = 0; i < evt.dataTransfer.files.length; i++) {
+                    file = evt.dataTransfer.files[i];
+                    if (file) {
+                        files.push(file);
+                    }
+                }
+            }
+
+            var window_ = new Sao.Window.Attachment(record, function() {
+                this.update_attachment_count(true);
+            }.bind(this));
+            files.forEach(function(file) {
+                Sao.common.get_file_data(file, function(data, filename) {
+                    window_.add_data(data, filename);
+                });
+            });
+            jQuery.when.apply(jQuery, uris).then(function() {
+                function empty(value) {
+                    return Boolean(value);
+                }
+                for (var i = 0; i < arguments.length; i++) {
+                    arguments[i].split('\r\n')
+                        .filter(empty)
+                        .forEach(window_.add_uri, window_);
+                }
+            });
+            jQuery.when.apply(jQuery, texts).then(function() {
+                for (var i = 0; i < arguments.length; i++) {
+                    window_.add_text(arguments[i]);
+                }
+            });
+            if (evt.dataTransfer.items) {
+                evt.dataTransfer.items.clear();
+            } else {
+                evt.dataTransfer.clearData();
+            }
         },
         update_attachment_count: function(reload) {
             var record = this.screen.current_record;

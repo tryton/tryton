@@ -452,6 +452,31 @@
                 });
             });
         },
+        add_uri: function(uri) {
+            var screen = this.screen;
+            this.switch_prm.then(function() {
+                screen.set_current_record(null);
+                screen.switch_view('form').then(function() {
+                    screen.new_().then(function(record) {
+                        record.field_set_client('link', uri);
+                        record.field_set_client('type', 'link');
+                        screen.display();
+                    });
+                });
+            });
+        },
+        add_text: function(text) {
+            var screen = this.screen;
+            this.switch_prm.then(function() {
+                screen.set_current_record(null);
+                screen.switch_view('form').then(function() {
+                    screen.new_().then(function(record) {
+                        record.field_set_client('description', text);
+                        screen.display();
+                    });
+                });
+            });
+        },
     });
     Sao.Window.Attachment.get_attachments = function(record) {
         var prm;
