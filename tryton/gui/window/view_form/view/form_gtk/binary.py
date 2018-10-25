@@ -3,6 +3,8 @@
 import gtk
 import gettext
 import os
+from urllib.request import urlopen
+from urllib.parse import urlparse, unquote
 from tryton.common import common
 from tryton.common import file_selection, Tooltips, file_open, file_write
 from tryton.common.entry_position import reset_position
@@ -36,6 +38,12 @@ class BinaryMixin(Widget):
                 'tryton-search', gtk.ICON_SIZE_SMALL_TOOLBAR))
         self.but_select.set_relief(gtk.RELIEF_NONE)
         self.but_select.connect('clicked', self.select)
+        target_entry = gtk.TargetEntry.new('text/uri-list', 0, 0)
+        self.but_select.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
+                target_entry,
+                ], gtk.gdk.ACTION_MOVE | gtk.gdk.ACTION_COPY)
+        self.but_select.connect(
+            'drag-data-received', self.select_drag_data_received)
         tooltips.set_tip(self.but_select, _('Select...'))
         hbox.pack_start(self.but_select, expand=False, fill=False)
 
@@ -78,15 +86,23 @@ class BinaryMixin(Widget):
     def select(self, widget=None):
         if not self.field:
             return
-        filters = self.filters
+        self._set_uri(
+            'file:///' + file_selection(
+                _('Select'), preview=self.preview, filters=self.filters))
 
-        filename = file_selection(_('Select'), preview=self.preview,
-            filters=filters)
-        if filename:
-            self.field.set_client(self.record, open(filename, 'rb').read())
-            if self.filename_field:
-                self.filename_field.set_client(self.record,
-                    os.path.basename(filename))
+    def select_drag_data_received(
+            self, widget, context, x, y, selection, info, timestamp):
+        if not self.field:
+            return
+        for uri in selection.get_uris():
+            self._set_uri(uri)
+
+    def _set_uri(self, uri):
+        uri = unquote(uri)
+        self.field.set_client(self.record, urlopen(uri).read())
+        if self.filename_field:
+            self.filename_field.set_client(self.record,
+                os.path.basename(urlparse(uri).path))
 
     def get_data(self):
         if hasattr(self.field, 'get_data'):

@@ -542,9 +542,9 @@ class Form(SignalEvent, TabContent):
         gtktoolbar = super(Form, self).create_toolbar(toolbars)
 
         attach_btn = self.buttons['attach']
-        target_entry = gtk.TargetEntry.new('text/uri-list', 0, 0)
         attach_btn.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
-                target_entry,
+                gtk.TargetEntry.new('text/uri-list', 0, 0),
+                gtk.TargetEntry.new('text/plain', 0, 0),
                 ], gtk.gdk.ACTION_MOVE | gtk.gdk.ACTION_COPY)
         attach_btn.connect('drag_data_received',
             self.attach_drag_data_received)
@@ -712,8 +712,11 @@ class Form(SignalEvent, TabContent):
         win_attach = Attachment(record,
             lambda: self.update_attachment_count(reload=True))
         if info == 0:
-            for uri in selection.get_uris():
-                # Win32 cut&paste terminates the list with a NULL character
-                if not uri or uri == '\0':
-                    continue
-                win_attach.add_uri(uri)
+            if selection.get_uris():
+                for uri in selection.get_uris():
+                    # Win32 cut&paste terminates the list with a NULL character
+                    if not uri or uri == '\0':
+                        continue
+                    win_attach.add_uri(uri)
+            else:
+                win_attach.add_uri(selection.get_text())

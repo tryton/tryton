@@ -41,12 +41,24 @@ class Attachment(WinForm):
 
     def add_uri(self, uri):
         data_field = self.screen.group.fields['data']
+        link_field = self.screen.group.fields['link']
+        type_field = self.screen.group.fields['type']
         name_field = self.screen.group.fields[data_field.attrs['filename']]
+        description_field = self.screen.group.fields['description']
         new_record = self.screen.new()
-        uri = unquote(uri)
-        file_name = os.path.basename(urlparse(uri).path)
-        name_field.set_client(new_record, file_name)
-        data_field.set_client(new_record, urlopen(uri).read())
+        parse = urlparse(uri)
+        if not parse.scheme:
+            description_field.set_client(new_record, uri)
+        else:
+            uri = unquote(uri)
+            file_name = os.path.basename(parse.path)
+            name_field.set_client(new_record, file_name)
+            if parse.scheme == 'file':
+                data_field.set_client(new_record, urlopen(uri).read())
+                type_field.set_client(new_record, 'data')
+            else:
+                link_field.set_client(new_record, uri)
+                type_field.set_client(new_record, 'link')
         self.screen.display()
 
     def add_file(self, filename):
