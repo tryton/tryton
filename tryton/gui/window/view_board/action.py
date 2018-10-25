@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 'Action'
 import gtk
+import gobject
 from tryton.gui.window.view_form.screen import Screen
 import tryton.rpc as rpc
 import tryton.common as common
@@ -145,4 +146,4 @@ class Action(SignalEvent):
             def display():
                 if self.screen.widget.props.window:
                     self.display()
-            gtk.idle_add(display)
+            gobject.idle_add(display)
