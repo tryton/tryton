@@ -245,9 +245,9 @@ def notify(title, body=None, priority=1, user=None, client=None):
     else:
         channel = 'client:%s' % client
 
-    return Bus.publish({
+    return Bus.publish(channel, {
             'type': 'notification',
             'title': title,
             'body': body,
             'priority': priority,
-            }, channel)
+            })
