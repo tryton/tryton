@@ -577,7 +577,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(['waiting', 'cancel']),
                     'icon': If(Eval('state') == 'cancel',
                         'tryton-undo',
-                        'tryton-forward'),
+                        If(Eval('state') == 'waiting',
+                            'tryton-back',
+                            'tryton-forward')),
                     'depends': ['state'],
                     },
                 'wait': {
@@ -914,7 +916,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
                     'invisible': ~Eval('state').in_(['waiting', 'cancel']),
                     'icon': If(Eval('state') == 'cancel',
                         'tryton-undo',
-                        'tryton-forward'),
+                        If(Eval('state') == 'waiting',
+                            'tryton-back',
+                            'tryton-forward')),
                     'depends': ['state'],
                     },
                 'wait': {
