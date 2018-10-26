@@ -391,7 +391,7 @@ Class attributes are:
 .. attribute:: ModelSQL._order_name
 
     The name of the field (or an SQL statement) on which the records must be
-    sorted when sorting on this model from an other model. If not set,
+    sorted when sorting on a field refering to the model. If not set,
     :attr:`ModelStorage._rec_name` will be used.
 
 .. attribute:: ModelSQL._history
