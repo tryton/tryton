@@ -83,5 +83,8 @@ Modules
     `Notification Email </projects/trytond-notification-email/en/latest>`_
         Sends email.
 
+    `User Role </projects/trytond-user-role/en/latest>`_
+        Manage user groups with roles.
+
     `Web User </projects/trytond-web-user/en/latest>`_
         Manages external users.
