@@ -16,7 +16,10 @@ import colorsys
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from decimal import Decimal
-from http import HTTPStatus
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
 from functools import partial
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
