@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Group"
 from itertools import chain
-from ..model import ModelView, ModelSQL, fields, Unique
+from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from ..pool import Pool
 from ..tools import grouped_slice
 
@@ -27,7 +27,7 @@ class MenuMany2Many(fields.Many2Many):
         return res
 
 
-class Group(ModelSQL, ModelView):
+class Group(DeactivableMixin, ModelSQL, ModelView):
     "Group"
     __name__ = "res.group"
     name = fields.Char('Name', required=True, select=True, translate=True)

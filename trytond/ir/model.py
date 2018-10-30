@@ -405,7 +405,7 @@ class ModelField(ModelSQL, ModelView):
         return res
 
 
-class ModelAccess(ModelSQL, ModelView):
+class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
     "Model access"
     __name__ = 'ir.model.access'
     model = fields.Many2One('ir.model', 'Model', required=True,
@@ -469,11 +469,13 @@ class ModelAccess(ModelSQL, ModelView):
         pool = Pool()
         Model = pool.get('ir.model')
         UserGroup = pool.get('res.user-res.group')
+        Group = pool.get('res.group')
         cursor = Transaction().connection.cursor()
         user = Transaction().user
         model_access = cls.__table__()
         ir_model = Model.__table__()
         user_group = UserGroup.__table__()
+        group = Group.__table__()
 
         access = {}
         for model in models:
@@ -490,6 +492,8 @@ class ModelAccess(ModelSQL, ModelView):
                 condition=model_access.model == ir_model.id
                 ).join(user_group, 'LEFT',
                 condition=user_group.group == model_access.group
+                ).join(group, 'LEFT',
+                condition=model_access.group == group.id
                 ).select(
                 ir_model.model,
                 Max(Case((model_access.perm_read == True, 1), else_=0)),
@@ -497,7 +501,9 @@ class ModelAccess(ModelSQL, ModelView):
                 Max(Case((model_access.perm_create == True, 1), else_=0)),
                 Max(Case((model_access.perm_delete == True, 1), else_=0)),
                 where=ir_model.model.in_(models)
-                & ((user_group.user == user) | (model_access.group == Null)),
+                & ((user_group.user == user) | (model_access.group == Null))
+                & (model_access.active == True)
+                & (group.active == True),
                 group_by=ir_model.model))
         access.update(dict(
                 (m, {'read': r, 'write': w, 'create': c, 'delete': d})
@@ -584,7 +590,7 @@ class ModelAccess(ModelSQL, ModelView):
         ModelView._fields_view_get_cache.clear()
 
 
-class ModelFieldAccess(ModelSQL, ModelView):
+class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
     "Model Field Access"
     __name__ = 'ir.model.field.access'
     field = fields.Many2One('ir.model.field', 'Field', required=True,
@@ -644,11 +650,13 @@ class ModelFieldAccess(ModelSQL, ModelView):
         Model = pool.get('ir.model')
         ModelField = pool.get('ir.model.field')
         UserGroup = pool.get('res.user-res.group')
+        Group = pool.get('res.group')
         user = Transaction().user
         field_access = cls.__table__()
         ir_model = Model.__table__()
         model_field = ModelField.__table__()
         user_group = UserGroup.__table__()
+        group = Group.__table__()
 
         accesses = {}
         for model in models:
@@ -668,6 +676,8 @@ class ModelFieldAccess(ModelSQL, ModelView):
                 condition=model_field.model == ir_model.id
                 ).join(user_group, 'LEFT',
                 condition=user_group.group == field_access.group
+                ).join(group, 'LEFT',
+                condition=field_access.group == group.id
                 ).select(
                 ir_model.model,
                 model_field.name,
@@ -676,7 +686,9 @@ class ModelFieldAccess(ModelSQL, ModelView):
                 Max(Case((field_access.perm_create == True, 1), else_=0)),
                 Max(Case((field_access.perm_delete == True, 1), else_=0)),
                 where=ir_model.model.in_(models)
-                & ((user_group.user == user) | (field_access.group == Null)),
+                & ((user_group.user == user) | (field_access.group == Null))
+                & (field_access.active == True)
+                & (group.active == True),
                 group_by=[ir_model.model, model_field.name]))
         for m, f, r, w, c, d in cursor.fetchall():
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
