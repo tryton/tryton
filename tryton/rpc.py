@@ -5,7 +5,10 @@ import logging
 import socket
 import ssl
 import os
-from http import HTTPStatus
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
 
 from functools import partial
 
