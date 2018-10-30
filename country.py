@@ -1,12 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields
 from trytond.pyson import Eval
 
 __all__ = ['Country', 'Subdivision', 'Zip']
 
 
-class Country(ModelSQL, ModelView):
+class Country(DeactivableMixin, ModelSQL, ModelView):
     'Country'
     __name__ = 'country.country'
     name = fields.Char('Name', required=True, translate=True,
@@ -69,7 +69,7 @@ class Country(ModelSQL, ModelView):
         super(Country, cls).write(*args)
 
 
-class Subdivision(ModelSQL, ModelView):
+class Subdivision(DeactivableMixin, ModelSQL, ModelView):
     "Subdivision"
     __name__ = 'country.subdivision'
     country = fields.Many2One('country.country', 'Country',

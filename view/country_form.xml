@@ -1,14 +1,17 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form>
+<form col="6">
     <label name="name"/>
     <field name="name"/>
+    <label name="active"/>
+    <field name="active"/>
+    <newline/>
     <label name="code"/>
     <field name="code"/>
     <label name="code3"/>
     <field name="code3"/>
     <label name="code_numeric"/>
     <field name="code_numeric"/>
-    <field name="subdivisions" colspan="4"/>
+    <field name="subdivisions" colspan="6"/>
 </form>
