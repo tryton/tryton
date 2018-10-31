@@ -93,7 +93,7 @@ class AEATReport(Report):
 
     @classmethod
     def compute_amounts(cls):
-        amounts = defaultdict(lambda: Decimal(0))
+        amounts = defaultdict(Decimal)
         for tax_code in cls.tax_codes():
             amounts[tax_code.code] += tax_code.amount
         return amounts
