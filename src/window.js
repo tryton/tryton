@@ -57,7 +57,8 @@
 
             this.switch_prm = this.screen.switch_view(view_type)
                 .done(function() {
-                    if (kwargs.new_) {
+                    if (kwargs.new_ &&
+                        (this.screen.current_view.type == view_type)) {
                         this.screen.new_(undefined, kwargs.rec_name);
                     }
                 }.bind(this));
@@ -221,9 +222,13 @@
             dialog.body.append(this.info_bar.el);
 
             this.switch_prm.done(function() {
-                title_prm.done(dialog.add_title.bind(dialog));
-                content.append(this.screen.screen_container.alternate_viewport);
-                this.el.modal('show');
+                if (this.screen.current_view.type != view_type) {
+                    this.destroy();
+                } else {
+                    title_prm.done(dialog.add_title.bind(dialog));
+                    content.append(this.screen.screen_container.alternate_viewport);
+                    this.el.modal('show');
+                }
             }.bind(this));
             this.el.on('shown.bs.modal', function(event) {
                 this.screen.display().done(function() {
