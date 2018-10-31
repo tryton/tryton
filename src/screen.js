@@ -1943,18 +1943,20 @@
                         this.get_tree_domain(parent_),
                         view.children_field], {})
                     .then(function(state) {
-                        return [timestamp,
+                        state = [timestamp,
                             JSON.parse(state[0]), JSON.parse(state[1])];
-                    });
+                        if (!(parent_ in this.tree_states)) {
+                            this.tree_states[parent_] = {};
+                        }
+                        this.tree_states[parent_][view.children_field || null] = state;
+                        return state;
+                    }.bind(this));
             } else {
                 state_prm = jQuery.when(state);
             }
+            this.tree_states_done.push(view);
             state_prm.done(function(state) {
                 var expanded_nodes, selected_nodes, record;
-                if (!(parent_ in this.tree_states)) {
-                    this.tree_states[parent_] = {};
-                }
-                this.tree_states[parent_][view.children_field || null] = state;
                 expanded_nodes = state[1];
                 selected_nodes = state[2];
                 if (view.view_type == 'tree') {
@@ -1978,7 +1980,6 @@
                     }
                 }
             }.bind(this));
-            this.tree_states_done.push(view);
         }
     });
 }());
