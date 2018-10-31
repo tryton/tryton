@@ -9,7 +9,6 @@ from sql.functions import NthValue
 
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check)
-from trytond.tools import datetime_strftime
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
@@ -167,12 +166,10 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
             else:
                 name = to_currency.name
 
-            languages = Lang.search([
-                    ('code', '=', Transaction().language),
-                    ])
+            lang = Lang.get()
             cls.raise_user_error('no_rate', {
                     'currency': name,
-                    'date': datetime_strftime(date, str(languages[0].date))
+                    'date': lang.strftime(date)
                     })
         if round:
             return to_currency.round(
