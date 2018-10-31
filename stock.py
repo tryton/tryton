@@ -408,8 +408,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         to_save = []
         cost_exp = Decimal(str(10.0 ** -Move.cost_price.digits[1]))
         for shipment in shipments:
-            product_qty = defaultdict(lambda: 0)
-            product_cost = defaultdict(lambda: 0)
+            product_qty = defaultdict(int)
+            product_cost = defaultdict(int)
 
             for c_move in shipment.customer_moves:
                 if c_move.state == 'cancel':
@@ -418,7 +418,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     c_move.uom, c_move.quantity, c_move.product.default_uom,
                     round=False)
 
-            s_product_qty = defaultdict(lambda: 0)
+            s_product_qty = defaultdict(int)
             for s_move in shipment.supplier_moves:
                 if s_move.state == 'cancel':
                     continue
