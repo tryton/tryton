@@ -103,7 +103,7 @@ class PurchaseRequest(metaclass=PoolMeta):
                     pbl = Product.products_by_location(warehouse_ids,
                         with_childs=True, grouping_filter=(product_ids,))
                 for warehouse_id in warehouse_ids:
-                    min_date_qties = defaultdict(lambda: 0,
+                    min_date_qties = defaultdict(int,
                         ((x, pbl.pop((warehouse_id, x), 0))
                             for x in product_ids))
                     # Do not compute shortage for product
