@@ -861,6 +861,9 @@
                     if (!view_id && (view_id === null)) {
                         break;
                     }
+                    if (view_type && !view_id && !this.view_to_load.length) {
+                        break;
+                    }
                 }
                 this.screen_container.set(this.current_view.el);
                 return this.display().done(function() {
