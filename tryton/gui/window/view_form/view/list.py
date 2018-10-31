@@ -142,26 +142,13 @@ class AdaptModelGroup(gtk.GenericTreeModel):
         group.move(record, 0)
 
     def sort(self, ids):
-        ids2pos = {}
-        pos = 0
+        old_idx = {record.id: i for i, record in enumerate(self.group)}
+        new_idx = {id_: i for i, id_ in enumerate(ids)}
+        self.group.sort(key=lambda r: new_idx.get(r.id))
         new_order = []
-        for record in self.group:
-            ids2pos[record.id] = pos
-            new_order.append(pos)
-            pos += 1
-        pos = 0
-        for obj_id in ids:
-            try:
-                old_pos = ids2pos[obj_id]
-                if old_pos != pos:
-                    new_order[old_pos] = pos
-                pos += 1
-            except KeyError:
-                continue
-        self.group.sort(lambda x, y:
-            cmp(new_order[ids2pos[x.id]], new_order[ids2pos[y.id]]))
         prev = None
         for record in self.group:
+            new_order.append(old_idx.get(record.id))
             if prev:
                 prev.next[id(self.group)] = record
             prev = record
