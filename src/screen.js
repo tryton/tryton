@@ -1927,7 +1927,7 @@
             if (parent_ < 0) {
                 return;
             }
-            timestamp = parent ? parent._timestamp : null;
+            timestamp = this.group.parent ? this.group.parent._timestamp : null;
             if (!(parent_ in this.tree_states)) {
                 this.tree_states[parent_] = {};
             }
