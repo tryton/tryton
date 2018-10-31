@@ -501,9 +501,10 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case((model_access.perm_create == True, 1), else_=0)),
                 Max(Case((model_access.perm_delete == True, 1), else_=0)),
                 where=ir_model.model.in_(models)
-                & ((user_group.user == user) | (model_access.group == Null))
                 & (model_access.active == True)
-                & (group.active == True),
+                & (((user_group.user == user)
+                        & (group.active == True))
+                    | (model_access.group == Null)),
                 group_by=ir_model.model))
         access.update(dict(
                 (m, {'read': r, 'write': w, 'create': c, 'delete': d})
@@ -686,9 +687,10 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case((field_access.perm_create == True, 1), else_=0)),
                 Max(Case((field_access.perm_delete == True, 1), else_=0)),
                 where=ir_model.model.in_(models)
-                & ((user_group.user == user) | (field_access.group == Null))
                 & (field_access.active == True)
-                & (group.active == True),
+                & (((user_group.user == user)
+                        & (group.active == True))
+                    | (field_access.group == Null)),
                 group_by=[ir_model.model, model_field.name]))
         for m, f, r, w, c, d in cursor.fetchall():
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
