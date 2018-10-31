@@ -340,10 +340,12 @@ class ServerPool(object):
     def ssl(self):
         for conn in self._pool + list(self._used.values()):
             return conn.ssl
-        return False
+        return None
 
     @property
     def url(self):
+        if self.ssl is None:
+            return None
         scheme = 'https' if self.ssl else 'http'
         return urljoin(
             scheme + '://' + self._host + ':' + str(self._port),

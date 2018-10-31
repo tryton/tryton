@@ -34,7 +34,6 @@ def listen(connection):
 def _listen(connection):
     bus_timeout = CONFIG['client.bus_timeout']
     session = connection.session
-    url = connection.url + '/bus'
     authorization = base64.b64encode(session.encode('utf-8'))
     headers = {
         'Content-Type': 'application/json',
@@ -43,7 +42,13 @@ def _listen(connection):
 
     wait = 1
     last_message = None
+    url = None
     while connection.session == session:
+        if url is None:
+            if connection.url is None:
+                time.sleep(1)
+                continue
+            url = connection.url + '/bus'
         request = Request(url,
             data=json.dumps({
                     'last_message': last_message,
