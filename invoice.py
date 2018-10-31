@@ -55,7 +55,7 @@ class InvoiceLine(metaclass=PoolMeta):
 
         lines = super(InvoiceLine, self).get_move_lines()
         if self.from_commissions:
-            amounts = defaultdict(lambda: 0)
+            amounts = defaultdict(int)
             for commission in self.from_commissions:
                 if not commission.waiting_move:
                     continue
