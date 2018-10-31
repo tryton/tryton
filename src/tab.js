@@ -629,7 +629,6 @@
             }
             var reload = function() {
                 return this.screen.cancel_current().then(function() {
-                    this.screen.save_tree_state(false);
                     if (this.screen.current_view.view_type != 'form') {
                         this.screen.search_filter(
                             this.screen.screen_container.search_entry.val());
@@ -645,6 +644,7 @@
             if (test_modified) {
                 return this.modified_save().then(reload);
             } else {
+                this.screen.save_tree_state(false);
                 return reload();
             }
         },
