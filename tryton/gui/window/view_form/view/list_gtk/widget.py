@@ -27,7 +27,6 @@ from tryton.common import data2pixbuf
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.selection import SelectionMixin, PopdownMixin
 from tryton.common.datetime_ import CellRendererDate, CellRendererTime
-from tryton.common.datetime_strftime import datetime_strftime
 from tryton.common.domain_parser import quote
 from tryton.config import CONFIG
 
@@ -364,7 +363,7 @@ class Date(GenericText):
             return ''
         value = record[self.attrs['name']].get_client(record)
         if value:
-            return datetime_strftime(value, self.renderer.props.format)
+            return value.strftime(self.renderer.props.format)
         else:
             return ''
 

@@ -5,7 +5,6 @@ import gettext
 
 from tryton.common import get_toplevel_window, IconFactory
 from tryton.common.datetime_ import date_parse
-from tryton.common.datetime_strftime import datetime_strftime
 from tryton.common.underline import set_underline
 from tryton.config import TRYTON_ICON
 from tryton.gui import Main
@@ -51,7 +50,7 @@ class Revision(object):
         self.entry.set_property('activates_default', True)
         self._format = format_
         if revision:
-            self.entry.set_text(datetime_strftime(revision, self._format))
+            self.entry.set_text(revision.strftime(self._format))
             self._value = revision
             active = -1
         else:
@@ -59,7 +58,7 @@ class Revision(object):
             active = 0
         list_store.append(('', ''))
         for i, (rev, id_, name) in enumerate(revisions, 1):
-            list_store.append((datetime_strftime(rev, self._format), name))
+            list_store.append((rev.strftime(self._format), name))
             if rev == revision:
                 active = i
         combobox.set_active(active)
@@ -103,7 +102,7 @@ class Revision(object):
         if not self._value:
             self.entry.set_text('')
         else:
-            self.entry.set_text(datetime_strftime(self._value, self._format))
+            self.entry.set_text(self._value.strftime(self._format))
 
     def run(self):
         response = self.win.run()

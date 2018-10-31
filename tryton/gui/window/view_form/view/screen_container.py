@@ -32,7 +32,7 @@ class Dates(gtk.HBox):
     def _get_value(self, widget):
         value = widget.props.value
         if value:
-            return common.datetime_strftime(value, widget.props.format)
+            return value.strftime(widget.props.format)
 
     def get_value(self):
         from_ = self._get_value(self.from_)
@@ -91,7 +91,7 @@ class DateTimes(Dates):
     def _get_value(self, widget):
         value = widget.props.value
         if value:
-            return common.datetime_strftime(value,
+            return value.strftime(
                 widget.props.date_format + ' ' + widget.props.time_format)
 
     @property

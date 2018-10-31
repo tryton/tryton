@@ -20,7 +20,6 @@ from tryton.signal_event import SignalEvent
 from tryton.common import message, sur, sur_3b, timezoned_date
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
-from tryton.common.datetime_strftime import datetime_strftime
 from tryton import plugins
 
 from .tabcontent import TabContent
@@ -230,7 +229,7 @@ class Form(SignalEvent, TabContent):
                 if line.get(key, False) \
                         and key in ('create_date', 'write_date'):
                     date = timezoned_date(line[key])
-                    value = common.datetime_strftime(date, datetime_format)
+                    value = date.strftime(datetime_format)
                 message_str += val + ' ' + value + '\n'
         message_str += _('Model:') + ' ' + self.model
         message(message_str)
@@ -274,7 +273,7 @@ class Form(SignalEvent, TabContent):
         if revision:
             format_ = self.screen.context.get('date_format', '%x')
             format_ += ' %H:%M:%S.%f'
-            revision_label = ' @ %s' % datetime_strftime(revision, format_)
+            revision_label = ' @ %s' % revision.strftime(format_)
             label = common.ellipsize(
                 self.name, 80 - len(revision_label)) + revision_label
             tooltip = self.name + revision_label

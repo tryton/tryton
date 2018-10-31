@@ -6,7 +6,7 @@ import gtk
 
 from functools import reduce
 from tryton.common import hex2rgb, generateColorscheme, \
-        COLOR_SCHEMES, datetime_strftime
+        COLOR_SCHEMES
 from tryton.pyson import PYSONDecoder
 import locale
 import math
@@ -391,7 +391,7 @@ class Graph(gtk.DrawingArea):
         if isinstance(minx, datetime.datetime):
             date = minx
             while date <= maxx:
-                self.labels[date] = datetime_strftime(date, datetime_format)
+                self.labels[date] = date.strftime(datetime_format)
                 self.datas.setdefault(date, {})
                 for yfield in self.yfields:
                     self.datas[date].setdefault(
@@ -400,7 +400,7 @@ class Graph(gtk.DrawingArea):
         elif isinstance(minx, datetime.date):
             date = minx
             while date <= maxx:
-                self.labels[date] = datetime_strftime(date, date_format)
+                self.labels[date] = date.strftime(date_format)
                 self.datas.setdefault(date, {})
                 for yfield in self.yfields:
                     self.datas[date].setdefault(

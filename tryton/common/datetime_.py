@@ -10,7 +10,6 @@ from dateutil.relativedelta import relativedelta
 from dateutil.parser import parse
 
 from .common import IconFactory
-from .datetime_strftime import datetime_strftime as strftime
 
 __all__ = ['Date', 'CellRendererDate', 'Time', 'CellRendererTime', 'DateTime']
 
@@ -96,7 +95,7 @@ class Date(gtk.Entry):
         if not self.__date:
             self.set_text('')
             return
-        self.set_text(strftime(self.__date, self.__format))
+        self.set_text(self.__date.strftime(self.__format))
 
     def icon_press(self, entry, icon_pos, event):
         self.grab_focus()

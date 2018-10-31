@@ -10,7 +10,7 @@ import datetime
 import io
 from collections import OrderedDict
 
-from tryton.common import untimezoned_date, timezoned_date, datetime_strftime
+from tryton.common import untimezoned_date, timezoned_date
 from tryton.common.datetime_ import date_parse
 from tryton.common.timedelta import parse as timedelta_parse
 from tryton.common.timedelta import format as timedelta_format
@@ -531,13 +531,13 @@ def format_value(field, value, target=None, context=None):
             time = timezoned_date(value)
         if time.time() == datetime.time.min:
             format_ = '%x'
-        return datetime_strftime(time, format_)
+        return time.strftime(format_)
 
     def format_date():
         if not value:
             return ''
         format_ = context.get('date_format', '%x')
-        return datetime_strftime(value, format_)
+        return value.strftime(format_)
 
     def format_time():
         if not value:
