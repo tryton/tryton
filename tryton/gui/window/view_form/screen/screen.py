@@ -789,8 +789,6 @@ class Screen(SignalEvent):
         self.tree_states_done.add(id(view))
 
     def save_tree_state(self, store=True):
-        if not CONFIG['client.save_tree_state']:
-            return
         parent = self.parent.id if self.parent else None
         timestamp = self.parent._timestamp if self.parent else None
         for view in self.views:
@@ -811,7 +809,9 @@ class Screen(SignalEvent):
                 selected_paths = view.get_selected_paths()
                 self.tree_states[parent][view.children_field] = (
                     timestamp, paths, selected_paths)
-                if store and view.attributes.get('tree_state', False):
+                if (store
+                        and int(view.attributes.get('tree_state', False))
+                        and CONFIG['client.save_tree_state']):
                     json_domain = self.get_tree_domain(parent)
                     json_paths = json.dumps(paths, separators=(',', ':'))
                     json_selected_path = json.dumps(
