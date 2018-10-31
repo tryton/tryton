@@ -183,7 +183,7 @@ class Letter(metaclass=PoolMeta):
 
             @property
             def fees(self):
-                fees = defaultdict(lambda: 0)
+                fees = defaultdict(int)
                 fees.update(super(PartyLetterFee, self).fees)
                 for dunning in self.dunnings:
                     for fee in dunning.fees:
