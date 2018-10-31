@@ -318,7 +318,7 @@
         },
         display: function(selected, expanded) {
             var current_record = this.screen.current_record;
-            if (!selected) {
+            if (jQuery.isEmptyObject(selected)) {
                 selected = this.get_selected_paths();
                 if (current_record) {
                     var current_path = current_record.get_path(this.screen.group);
