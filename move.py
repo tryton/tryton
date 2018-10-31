@@ -1340,7 +1340,7 @@ class Move(Workflow, ModelSQL, ModelView):
             Model = Template
         id_getter = operator.itemgetter(grouping.index(id_name) + 1)
         ids = set()
-        quantities = defaultdict(lambda: 0)
+        quantities = defaultdict(int)
         keys = set()
         # We can do a quick loop without propagation if the request is for a
         # single location because all the locations are children and we can sum

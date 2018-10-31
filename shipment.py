@@ -2151,7 +2151,7 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         for shipment in shipments:
             if not shipment.transit_location:
                 continue
-            product_qty = defaultdict(lambda: 0)
+            product_qty = defaultdict(int)
             for move in shipment.outgoing_moves:
                 if move.state == 'cancel':
                     continue
