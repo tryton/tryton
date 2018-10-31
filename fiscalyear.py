@@ -4,7 +4,6 @@
 from dateutil.relativedelta import relativedelta
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.tools import datetime_strftime
 from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -194,9 +193,9 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                     relativedelta(day=31)
                 if period_end_date > fiscalyear.end_date:
                     period_end_date = fiscalyear.end_date
-                name = datetime_strftime(period_start_date, '%Y-%m')
-                if name != datetime_strftime(period_end_date, '%Y-%m'):
-                    name += ' - ' + datetime_strftime(period_end_date, '%Y-%m')
+                name = period_start_date.strftime('%Y-%m')
+                if name != period_end_date.strftime('%Y-%m'):
+                    name += ' - ' + period_end_date.strftime('%Y-%m')
                 to_create.append({
                     'name': name,
                     'start_date': period_start_date,
