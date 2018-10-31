@@ -692,7 +692,11 @@
                 // TODO activate_save
             }.bind(this));
         },
-        save: function() {
+        save: function(tab) {
+            if (tab) {
+                // Called from button so we must save the tree state
+                this.screen.save_tree_state();
+            }
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
             if (!(access.write || access.create)) {
                 return jQuery.Deferred().reject();

@@ -1848,8 +1848,6 @@
             store = (store === undefined) ? true : store;
             var i, len, view, widgets, wi, wlen;
             var parent_ = this.group.parent ? this.group.parent.id : null;
-            var timestamp = this.group.parent ?
-                this.group.parent._timestamp : null;
             for (i = 0, len = this.views.length; i < len; i++) {
                 view = this.views[i];
                 if (view.view_type == 'form') {
@@ -1871,7 +1869,7 @@
                         }
                         this.tree_states[parent_][
                             view.children_field || null] = [
-                            timestamp, [], [[this.current_record.id]]];
+                                [], [[this.current_record.id]]];
                     }
                 } else if (view.view_type == 'tree') {
                     var paths = view.get_expanded_paths();
@@ -1880,7 +1878,7 @@
                         this.tree_states[parent_] = {};
                     }
                     this.tree_states[parent_][view.children_field || null] = [
-                        timestamp, paths, selected_paths];
+                        paths, selected_paths];
                     if (store && view.attributes.tree_state) {
                         var tree_state_model = new Sao.Model(
                                 'ir.ui.view_tree_state');
@@ -1907,7 +1905,7 @@
             return JSON.stringify(Sao.rpc.prepareObject(domain));
         },
         set_tree_state: function() {
-            var parent_, timestamp, state, state_prm, tree_state_model;
+            var parent_, state, state_prm, tree_state_model;
             var view = this.current_view;
             if (!~['tree', 'form'].indexOf(view.view_type)) {
                 return jQuery.when();
@@ -1928,16 +1926,10 @@
             if (parent_ < 0) {
                 return jQuery.when();
             }
-            timestamp = this.group.parent ? this.group.parent._timestamp : null;
             if (!(parent_ in this.tree_states)) {
                 this.tree_states[parent_] = {};
             }
             state = this.tree_states[parent_][view.children_field || null];
-            if (state) {
-                if (timestamp != state[0]) {
-                    state = undefined;
-                }
-            }
             if (state === undefined) {
                 tree_state_model = new Sao.Model('ir.ui.view_tree_state');
                 state_prm = tree_state_model.execute('get', [
@@ -1945,8 +1937,7 @@
                         this.get_tree_domain(parent_),
                         view.children_field], {})
                     .then(function(state) {
-                        state = [timestamp,
-                            JSON.parse(state[0]), JSON.parse(state[1])];
+                        state = [JSON.parse(state[0]), JSON.parse(state[1])];
                         if (!(parent_ in this.tree_states)) {
                             this.tree_states[parent_] = {};
                         }
