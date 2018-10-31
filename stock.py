@@ -161,7 +161,7 @@ class LotUnitMixin(object):
 
         for shipment in shipments:
             for move_attribute in cls._lot_unit_moves:
-                lot_quantities = defaultdict(lambda: 0)
+                lot_quantities = defaultdict(int)
                 for move in getattr(shipment, move_attribute):
                     if move.state != 'done':
                         continue
