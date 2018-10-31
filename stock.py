@@ -28,7 +28,7 @@ class ShipmentIn(metaclass=PoolMeta):
                         'in', move_ids),
                     ('purchase_request.origin', 'like', 'sale.sale,%'),
                     ])
-            pbl = defaultdict(lambda: defaultdict(lambda: 0))
+            pbl = defaultdict(lambda: defaultdict(int))
             for move in shipment.inventory_moves:
                 pbl[move.product][move.to_location] += move.internal_quantity
             for sale_line in sale_lines:
