@@ -786,13 +786,9 @@ class Screen(SignalEvent):
         if parent is not None and parent < 0:
             return
         expanded_nodes, selected_nodes = [], []
-        timestamp = self.parent._timestamp if self.parent else None
         state = self.tree_states[parent][view.children_field]
         if state:
-            state_timestamp, expanded_nodes, selected_nodes = state
-            if (timestamp != state_timestamp
-                    and view.view_type != 'form'):
-                state = None
+            expanded_nodes, selected_nodes = state
         if state is None and CONFIG['client.save_tree_state']:
             json_domain = self.get_tree_domain(parent)
             try:
@@ -807,7 +803,7 @@ class Screen(SignalEvent):
                     _('Unable to get view tree state for %s')
                     % self.model_name)
             self.tree_states[parent][view.children_field] = (
-                timestamp, expanded_nodes, selected_nodes)
+                expanded_nodes, selected_nodes)
         if view.view_type == 'tree':
             view.expand_nodes(expanded_nodes)
             view.select_nodes(selected_nodes)
@@ -832,7 +828,6 @@ class Screen(SignalEvent):
 
     def save_tree_state(self, store=True):
         parent = self.parent.id if self.parent else None
-        timestamp = self.parent._timestamp if self.parent else None
         for view in self.views:
             if view.view_type == 'form':
                 for widgets in view.widgets.values():
@@ -845,12 +840,12 @@ class Screen(SignalEvent):
                         path = -self.current_record.group.index(
                             self.current_record)
                     self.tree_states[parent][view.children_field] = (
-                        timestamp, [], [[path]])
+                        [], [[path]])
             elif view.view_type == 'tree':
                 paths = view.get_expanded_paths()
                 selected_paths = view.get_selected_paths()
                 self.tree_states[parent][view.children_field] = (
-                    timestamp, paths, selected_paths)
+                    paths, selected_paths)
                 if (store
                         and int(view.attributes.get('tree_state', False))
                         and CONFIG['client.save_tree_state']):
