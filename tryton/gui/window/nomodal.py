@@ -27,6 +27,8 @@ class NoModal(object):
         self.sensible_widget.props.sensitive = False
 
     def destroy(self):
+        if not self.page:
+            return
         self.page.dialogs.remove(self)
         # Test if the parent is not already destroyed
         if self.parent not in gtk.window_list_toplevels():

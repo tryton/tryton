@@ -33,6 +33,9 @@ class WinForm(NoModal, InfoBar):
         self.prev_view = self.screen.current_view
         self.screen.screen_container.alternate_view = True
         self.screen.switch_view(view_type=view_type)
+        if self.screen.current_view.view_type != view_type:
+            self.destroy()
+            return
         if new:
             self.screen.new(rec_name=rec_name)
         self.win = gtk.Dialog(_('Link'), self.parent,
@@ -425,10 +428,12 @@ class WinForm(NoModal, InfoBar):
     def destroy(self):
         self.screen.screen_container.alternate_view = False
         viewport = self.screen.screen_container.alternate_viewport
-        viewport.get_parent().remove(viewport)
+        if viewport and viewport.get_parent():
+            viewport.get_parent().remove(viewport)
         self.screen.switch_view(view_type=self.prev_view.view_type)
         self.screen.signal_unconnect(self)
-        self.win.destroy()
+        if getattr(self, 'win', None):
+            self.win.destroy()
         NoModal.destroy(self)
 
     def show(self):

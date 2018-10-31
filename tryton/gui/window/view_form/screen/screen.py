@@ -527,6 +527,8 @@ class Screen(SignalEvent):
                         % len(self.views))
             if not view_type and view_id is None:
                 break
+            if view_type and not view_id and not len(self.view_to_load):
+                break
         self.screen_container.set(self.current_view.widget)
         self.display()
         # Postpone set of the cursor to ensure widgets are allocated
