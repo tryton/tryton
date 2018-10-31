@@ -98,7 +98,7 @@ class Production(metaclass=PoolMeta):
                 for p in sub_products)
 
             for warehouse in warehouses:
-                quantities = defaultdict(lambda: 0,
+                quantities = defaultdict(int,
                     ((x, pbl.pop((warehouse.id, x), 0)) for x in product_ids))
                 # Do not compute shortage for product
                 # with different order point
