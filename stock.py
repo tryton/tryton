@@ -58,7 +58,7 @@ class ShipmentOut(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('done')
+    @Workflow.transition('cancel')
     @process_sale('outgoing_moves')
     def cancel(cls, shipments):
         super(ShipmentOut, cls).cancel(shipments)
