@@ -935,8 +935,9 @@
                             return ids;
                         }
                         this.clear();
-                        this.load(ids);
-                        this.count_tab_domain();
+                        return this.load(ids).then(function() {
+                            this.count_tab_domain();
+                        }.bind(this));
                     }.bind(this));
                 }.bind(this));
         },
@@ -1099,14 +1100,14 @@
             this.group.load(ids, modified);
             if (ids.length && this.current_view.view_type != 'calendar') {
                 this.current_record = this.group.get(ids[0]);
-                this.display();
             } else {
                 this.current_record = null;
-                this.display();
             }
-            if (set_cursor) {
-                this.set_cursor();
-            }
+            return this.display().then(function() {
+                if (set_cursor) {
+                    this.set_cursor();
+                }
+            }.bind(this));
         },
         display: function(set_cursor) {
             var deferreds = [];
@@ -1132,13 +1133,14 @@
                 }
             }
             return jQuery.when.apply(jQuery, deferreds).then(function() {
-                this.set_tree_state();
-                this.set_current_record(this.current_record);
-                // set_cursor must be called after set_tree_state because
-                // set_tree_state redraws the tree
-                if (set_cursor) {
-                    this.set_cursor(false, false);
-                }
+                return this.set_tree_state().then(function() {
+                    this.set_current_record(this.current_record);
+                    // set_cursor must be called after set_tree_state because
+                    // set_tree_state redraws the tree
+                    if (set_cursor) {
+                        this.set_cursor(false, false);
+                    }
+                }.bind(this));
             }.bind(this));
         },
         display_next: function() {
@@ -1908,15 +1910,15 @@
             var parent_, timestamp, state, state_prm, tree_state_model;
             var view = this.current_view;
             if (!~['tree', 'form'].indexOf(view.view_type)) {
-                return;
+                return jQuery.when();
             }
 
             if (~this.tree_states_done.indexOf(view)) {
-                return;
+                return jQuery.when();
             }
             if (view.view_type == 'form' &&
                     !jQuery.isEmptyObject(this.tree_states_done)) {
-                return;
+                return jQuery.when();
             }
             if (view.view_type == 'tree' && !view.attributes.tree_state) {
                 this.tree_states_done.push(view);
@@ -1924,7 +1926,7 @@
 
             parent_ = this.group.parent ? this.group.parent.id : null;
             if (parent_ < 0) {
-                return;
+                return jQuery.when();
             }
             timestamp = this.group.parent ? this.group.parent._timestamp : null;
             if (!(parent_ in this.tree_states)) {
@@ -1955,12 +1957,12 @@
                 state_prm = jQuery.when(state);
             }
             this.tree_states_done.push(view);
-            state_prm.done(function(state) {
+            return state_prm.done(function(state) {
                 var expanded_nodes, selected_nodes, record;
                 expanded_nodes = state[1];
                 selected_nodes = state[2];
                 if (view.view_type == 'tree') {
-                    view.display(selected_nodes, expanded_nodes);
+                    return view.display(selected_nodes, expanded_nodes);
                 } else {
                     if (!jQuery.isEmptyObject(selected_nodes)) {
                         for (var i = 0; i < selected_nodes[0].length; i++) {
