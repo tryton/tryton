@@ -190,8 +190,9 @@ class UIMenu(ModelSQL, ModelView):
                 parents.update(cls.search([
                             ('id', 'in', list(sub_parent_ids)),
                             ]))
-            menus = [x for x in menus
-                if (x.parent and x.parent in parents) or not x.parent]
+            # Re-browse to avoid side-cache access
+            menus = cls.browse([x.id for x in menus
+                    if (x.parent and x.parent in parents) or not x.parent])
 
         if count:
             return len(menus)
