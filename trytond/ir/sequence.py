@@ -6,7 +6,6 @@ import time
 from sql import Literal, For
 
 from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
-from ..tools import datetime_strftime
 from ..pyson import Eval, And
 from ..transaction import Transaction
 from ..pool import Pool
@@ -283,9 +282,9 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
         if not date:
             date = Date.today()
         return {
-            'year': datetime_strftime(date, '%Y'),
-            'month': datetime_strftime(date, '%m'),
-            'day': datetime_strftime(date, '%d'),
+            'year': date.strftime('%Y'),
+            'month': date.strftime('%m'),
+            'day': date.strftime('%d'),
             }
 
     @staticmethod

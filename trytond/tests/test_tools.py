@@ -4,12 +4,11 @@
 
 import unittest
 import doctest
-import datetime
 import sql
 import sql.operators
 
-from trytond.tools import reduce_ids, datetime_strftime, \
-    reduce_domain, decimal_, is_instance_method, file_open
+from trytond.tools import (
+    reduce_ids, reduce_domain, decimal_, is_instance_method, file_open)
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -58,19 +57,6 @@ class ToolsTestCase(unittest.TestCase):
             (((self.table.id >= 1.0) & (self.table.id <= 12.0))
                 | (self.table.id.in_([15.0, 18.0, 19.0, 21.0]))))
         self.assertRaises(AssertionError, reduce_ids, self.table.id, [1.1])
-
-    def test_datetime_strftime(self):
-        'Test datetime_strftime'
-        self.assertTrue(datetime_strftime(datetime.date(2005, 3, 2),
-            '%Y-%m-%d'), '2005-03-02')
-        self.assertTrue(datetime_strftime(datetime.date(1805, 3, 2),
-            '%Y-%m-%d'), '1805-03-02')
-        self.assertTrue(datetime_strftime(datetime.datetime(2005, 3, 2, 0, 0, 0),
-            '%Y-%m-%d'), '2005-03-02')
-        with self.assertRaises(TypeError):
-            datetime_strftime(None, '%Y-%m-%d')
-        with self.assertRaises(TypeError):
-            datetime_strftime(2, '%Y-%m-%d')
 
     def test_reduce_domain(self):
         'Test reduce_domain'

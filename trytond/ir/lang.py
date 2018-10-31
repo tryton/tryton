@@ -12,7 +12,6 @@ from sql import Table
 
 from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
 from ..cache import Cache
-from ..tools import datetime_strftime
 from ..transaction import Transaction
 from ..pool import Pool
 from .time_locale import TIME_LOCALE
@@ -212,7 +211,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         for lang in langs:
             date = lang.date
             try:
-                datetime_strftime(datetime.datetime.now(), date)
+                datetime.datetime.now().strftime(date)
             except Exception:
                 cls.raise_user_error('invalid_date', {
                         'format': lang.date,
@@ -478,7 +477,7 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             format = format.replace('%p',
                 TIME_LOCALE[code]['%p'][datetime.timetuple()[3] < 12 and 0
                     or 1])
-        return datetime_strftime(datetime, format)
+        return datetime.strftime(format)
 
 
 def get_parent_language(code):
