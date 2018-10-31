@@ -1261,12 +1261,10 @@
             this.fields_selected.empty();
             this.el_csv_skip.val(1);
             Papa.parse(this.file_input[0].files[0], {
-                config: {
-                    delimiter: this.el_csv_delimiter.val(),
-                    quoteChar: this.el_csv_quotechar.val(),
-                    preview: 1,
-                    encoding: this.el_csv_encoding.val()
-                },
+                delimiter: this.el_csv_delimiter.val(),
+                quoteChar: this.el_csv_quotechar.val(),
+                preview: 1,
+                encoding: this.el_csv_encoding.val(),
                 error: function(err, file, inputElem, reason) {
                     Sao.common.warning(
                         Sao.i18n.gettext('Error occured in loading the file'));
@@ -1360,11 +1358,9 @@
             var prm = jQuery.Deferred();
 
             Papa.parse(this.file_input[0].files[0], {
-                config: {
-                    delimiter: this.el_csv_delimiter.val(),
-                    quoteChar: this.el_csv_quotechar.val(),
-                    encoding: encoding
-                },
+                delimiter: this.el_csv_delimiter.val(),
+                quoteChar: this.el_csv_quotechar.val(),
+                encoding: encoding,
                 error: function(err, file, inputElem, reason) {
                     Sao.common.warning.run(
                         Sao.i18n.gettext('Error occured in loading the file'))
