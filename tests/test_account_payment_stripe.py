@@ -1,9 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-
-import unittest
-
 import doctest
+import os
+import unittest
 
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
@@ -20,9 +19,11 @@ def suite():
     suite = test_suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
             AccountPaymentStripeTestCase))
-    suite.addTests(doctest.DocFileSuite(
-            'scenario_account_payment_stripe.rst',
-            tearDown=doctest_teardown, encoding='utf-8',
-            checker=doctest_checker,
-            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    if (os.getenv('STRIPE_SECRET_KEY')
+            and os.getenv('STRIPE_PUBLISHABLE_KEY')):
+        suite.addTests(doctest.DocFileSuite(
+                'scenario_account_payment_stripe.rst',
+                tearDown=doctest_teardown, encoding='utf-8',
+                checker=doctest_checker,
+                optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite
