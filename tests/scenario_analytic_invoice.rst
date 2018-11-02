@@ -156,7 +156,7 @@ Credit invoice with refund::
     >>> credit.execute('credit')
     >>> invoice.reload()
     >>> invoice.state
-    'paid'
+    'cancel'
     >>> mandatory_analytic_account.reload()
     >>> mandatory_analytic_account.credit
     Decimal('240.00')
