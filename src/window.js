@@ -222,7 +222,7 @@
             dialog.body.append(this.info_bar.el);
 
             this.switch_prm.done(function() {
-                if (this.screen.current_view.type != view_type) {
+                if (this.screen.current_view.view_type != view_type) {
                     this.destroy();
                 } else {
                     title_prm.done(dialog.add_title.bind(dialog));
