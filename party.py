@@ -63,6 +63,7 @@ class PartyIdentifier(metaclass=PoolMeta):
                     '"%(party)s" is not valid.'),
                 })
 
+    @fields.depends('party', '_parent_party.identifiers')
     def check_code(self):
         super(PartyIdentifier, self).check_code()
         if self.type == 'sepa':
