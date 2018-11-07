@@ -1246,7 +1246,8 @@ class Line(ModelSQL, ModelView):
         line = cls()
         lines.append(line)
         line.account = account
-        line.party = reconcile_party if account.party_required else None
+        line.party = (
+            reconcile_party if account and account.party_required else None)
         line.debit = amount if amount > 0 else 0
         line.credit = -amount if amount < 0 else 0
 
