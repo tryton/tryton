@@ -196,10 +196,12 @@ def with_transaction(user=1, context=None):
         def wrapper(*args, **kwargs):
             transaction = Transaction()
             with transaction.start(DB_NAME, user, context=context):
-                result = func(*args, **kwargs)
-                transaction.rollback()
-                # Drop the cache as the transaction is rollbacked
-                Cache.drop(DB_NAME)
+                try:
+                    result = func(*args, **kwargs)
+                finally:
+                    transaction.rollback()
+                    # Drop the cache as the transaction is rollbacked
+                    Cache.drop(DB_NAME)
                 return result
         return wrapper
     return decorator
