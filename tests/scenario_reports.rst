@@ -68,6 +68,19 @@ Create a moves::
     >>> line.party = party
     >>> move.save()
 
+    >>> move = Move()
+    >>> move.period = period
+    >>> move.journal = journal_cash
+    >>> move.date = period.start_date
+    >>> line = move.lines.new()
+    >>> line.account = cash
+    >>> line.debit = Decimal(10)
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.credit = Decimal(10)
+    >>> line.party = party
+    >>> move.save()
+
 Print some reports::
 
     >>> GeneralLedgerAccount = Model.get('account.general_ledger.account')
@@ -105,3 +118,14 @@ Print some reports::
 
     >>> print_general_journal = Wizard('account.move.print_general_journal')
     >>> print_general_journal.execute('print_')
+
+    >>> with config.set_context(
+    ...         start_date=period.start_date,
+    ...         end_date=period.end_date):
+    ...     journal_cash = Journal(journal_cash.id)
+    >>> journal_cash.credit
+    Decimal('0.00')
+    >>> journal_cash.debit
+    Decimal('10.00')
+    >>> journal_cash.balance
+    Decimal('10.00')
