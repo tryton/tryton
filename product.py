@@ -326,9 +326,13 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
             if account:
                 taxes = account.taxes
         if taxes is None:
-            self.raise_user_error('missing_taxes', {
-                    'name': self.rec_name,
-                    })
+            # Allow empty values on on_change
+            if Transaction().readonly:
+                taxes = []
+            else:
+                self.raise_user_error('missing_taxes', {
+                        'name': self.rec_name,
+                        })
         return taxes
 
     @property
@@ -339,9 +343,13 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
             if account:
                 taxes = account.taxes
         if taxes is None:
-            self.raise_user_error('missing_taxes', {
-                    'name': self.rec_name,
-                    })
+            # Allow empty values on on_change
+            if Transaction().readonly:
+                taxes = []
+            else:
+                self.raise_user_error('missing_taxes', {
+                        'name': self.rec_name,
+                        })
         return taxes
 
 
