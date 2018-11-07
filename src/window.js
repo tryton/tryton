@@ -58,7 +58,7 @@
             this.switch_prm = this.screen.switch_view(view_type)
                 .done(function() {
                     if (kwargs.new_ &&
-                        (this.screen.current_view.type == view_type)) {
+                        (this.screen.current_view.view_type == view_type)) {
                         this.screen.new_(undefined, kwargs.rec_name);
                     }
                 }.bind(this));
