@@ -72,6 +72,7 @@ class PartyIdentifier:
             ('sepa', 'SEPA Creditor Identifier'),
             ]
 
+    @fields.depends('party', '_parent_party.identifiers')
     def check_code(self):
         super(PartyIdentifier, self).check_code()
         if self.type == 'sepa':
