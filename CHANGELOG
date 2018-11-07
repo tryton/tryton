@@ -1,3 +1,5 @@
+* Base journal cash report on account kind receivable and payable
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Set party required on account payable and receivable of party

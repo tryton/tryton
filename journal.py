@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
-from sql import Null
 from sql.aggregate import Sum
 
 from trytond.model import (
@@ -70,13 +69,6 @@ class Journal(
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
-    def multivalue_model(cls, field):
-        pool = Pool()
-        if field in {'credit_account', 'debit_account'}:
-            return pool.get('account.journal.account')
-        return super(Journal, cls).multivalue_model(field)
-
-    @classmethod
     def default_sequence(cls, **pattern):
         return None
 
@@ -114,6 +106,8 @@ class Journal(
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Move = pool.get('account.move')
+        Account = pool.get('account.account')
+        Company = pool.get('company.company')
         context = Transaction().context
         cursor = Transaction().connection.cursor()
 
@@ -122,32 +116,25 @@ class Journal(
         for name in ['debit', 'credit', 'balance']:
             result[name] = dict.fromkeys(ids, 0)
 
+        company_id = Transaction().context.get('company')
+        if not company_id:
+            return result
+        company = Company(company_id)
+
         line = MoveLine.__table__()
         move = Move.__table__()
-        where = ((move.date >= context['start_date'])
-            & (move.date <= context['end_date']))
+        account = Account.__table__()
+        where = ((move.date >= context.get('start_date'))
+            & (move.date <= context.get('end_date'))
+            & ~account.kind.in_(['receivable', 'payable'])
+            & (move.company == company.id))
         for sub_journals in grouped_slice(journals):
             sub_journals = list(sub_journals)
             red_sql = reduce_ids(move.journal, [j.id for j in sub_journals])
-            accounts = None
-            for journal in sub_journals:
-                credit_account = (journal.credit_account.id
-                    if journal.credit_account else None)
-                debit_account = (journal.debit_account.id
-                    if journal.debit_account else None)
-                clause = ((move.journal == journal.id)
-                    & (((line.credit != Null)
-                            & (line.account == credit_account))
-                        | ((line.debit != Null)
-                            & (line.account == debit_account))))
-                if accounts is None:
-                    accounts = clause
-                else:
-                    accounts |= clause
-
             query = line.join(move, 'LEFT', condition=line.move == move.id
+                ).join(account, 'LEFT', condition=line.account == account.id
                 ).select(move.journal, Sum(line.debit), Sum(line.credit),
-                    where=where & red_sql & accounts,
+                    where=where & red_sql,
                     group_by=move.journal)
             cursor.execute(*query)
             for journal_id, debit, credit in cursor.fetchall():
@@ -156,9 +143,10 @@ class Journal(
                     debit = Decimal(str(debit))
                 if not isinstance(credit, Decimal):
                     credit = Decimal(str(credit))
-                result['debit'][journal_id] = debit
-                result['credit'][journal_id] = credit
-                result['balance'][journal_id] = debit - credit
+                result['debit'][journal_id] = company.currency.round(debit)
+                result['credit'][journal_id] = company.currency.round(credit)
+                result['balance'][journal_id] = company.currency.round(
+                    debit - credit)
         return result
 
 
@@ -189,46 +177,6 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
     def _migrate_property(cls, field_names, value_names, fields):
         field_names.append('sequence')
         value_names.append('sequence')
-        fields.append('company')
-        migrate_property(
-            'account.journal', field_names, cls, value_names,
-            parent='journal', fields=fields)
-
-
-class JournalAccount(ModelSQL, CompanyValueMixin):
-    "Journal Account"
-    __name__ = 'account.journal.account'
-    journal = fields.Many2One(
-        'account.journal', "Journal", ondelete='CASCADE', select=True)
-    credit_account = fields.Many2One(
-        'account.account', "Default Credit Account",
-        domain=[
-            ('kind', '!=', 'view'),
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
-    debit_account = fields.Many2One(
-        'account.account', "Default Debit Account",
-        domain=[
-            ('kind', '!=', 'view'),
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
-
-    @classmethod
-    def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        exist = TableHandler.table_exist(cls._table)
-
-        super(JournalAccount, cls).__register__(module_name)
-
-        if not exist:
-            cls._migrate_property([], [], [])
-
-    @classmethod
-    def _migrate_property(cls, field_names, value_names, fields):
-        field_names.extend(['credit_account', 'debit_account'])
-        value_names.extend(['credit_account', 'debit_account'])
         fields.append('company')
         migrate_property(
             'account.journal', field_names, cls, value_names,
