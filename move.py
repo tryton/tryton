@@ -1408,6 +1408,7 @@ class ReconcileLinesWriteOff(ModelView):
     __name__ = 'account.move.reconcile_lines.writeoff'
     company = fields.Many2One('company.company', "Company", readonly=True)
     writeoff = fields.Many2One('account.move.reconcile.write_off', "Write Off",
+        required=True,
         domain=[
             ('company', '=', Eval('company')),
             ],
