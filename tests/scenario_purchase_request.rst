@@ -57,7 +57,8 @@ Create stock user::
     >>> stock_user.login = 'stock'
     >>> stock_user.main_company = company
     >>> stock_group, = Group.find([('name', '=', 'Stock')])
-    >>> stock_user.groups.append(stock_group)
+    >>> stock_group_admin, = Group.find([('name', '=', 'Stock Administration')])
+    >>> stock_user.groups.extend([stock_group, stock_group_admin])
     >>> stock_user.save()
 
 Create product user::
@@ -137,12 +138,14 @@ Create a need for missing product::
 
 There is no purchase request::
 
+    >>> config.user = purchase_user.id
     >>> PurchaseRequest = Model.get('purchase.request')
     >>> PurchaseRequest.find([])
     []
 
 Create the purchase request::
 
+    >>> config.user = stock_user.id
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
@@ -202,6 +205,7 @@ Handle again the exception::
 
 Re-create the purchase request::
 
+    >>> config.user = stock_user.id
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
