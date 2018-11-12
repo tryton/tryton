@@ -10,778 +10,908 @@ from trytond.exceptions import UserError
 _context = {'_check_access': True}
 
 
-class ModelAccessTestCase(unittest.TestCase):
-    'Test Model Access'
+class _ModelAccessTestCase(unittest.TestCase):
+    _perm = None
 
     @classmethod
     def setUpClass(cls):
         activate_module('tests')
 
+    @property
+    def model(self):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        model, = Model.search([('model', '=', 'test.access')])
+        return model
+
+    @property
+    def group(self):
+        pool = Pool()
+        Group = pool.get('res.group')
+        group, = Group.search([('users', '=', Transaction().user)])
+        return group
+
+    def _assert(self, record):
+        raise NotImplementedError
+
+    def _assert_raises(self, record):
+        raise NotImplementedError
+
     @with_transaction(context=_context)
-    def test_perm_read(self):
-        'Test Read Access'
+    def test_access_empty(self):
+        "Test access without model access"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+
+        self._assert(record)
+
+    @with_transaction(context=_context)
+    def test_access_without_group(self):
+        "Test access without group"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         TestAccess = pool.get('test.access')
-        Model = pool.get('ir.model')
-        Group = pool.get('res.group')
-
-        model, = Model.search([('model', '=', 'test.access')])
-
-        test, = TestAccess.create([{}])
-
-        # Without model access
-        TestAccess.read([test.id])
-
-        # With model access
-
-        # One access allowed for any group
-        model_access_wo_group, = ModelAccess.create([{
-                    'model': model.id,
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
                     'group': None,
+                    self._perm: True,
+                    }])
+
+        self._assert(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_without_group(self):
+        "Test no access without group"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_groups(self):
+        "Test one access with groups"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_without_group(self):
+        "Test one access without group"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert(record)
+
+    @with_transaction(context=_context)
+    def test_all_access_with_groups(self):
+        "Test all access with groups"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_groups(self):
+        "Test no access with groups"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_group(self):
+        "Test one access with group"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_group(self):
+        "Test no access with group"
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_other_group(self):
+        "Test one access with other group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_other_group(self):
+        "Test no access with other group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert_raises(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_other_group_no_perm(self):
+        "Test one access with other group no perm"
+        pool = Pool()
+        Group = pool.get('res.group')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert(record)
+
+
+class ModelAccessReadTestCase(_ModelAccessTestCase):
+    _perm = 'perm_read'
+
+    def _assert(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        TestAccess.read([record.id])
+        TestAccess.search([])
+
+    def _assert_raises(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.read([record.id])
+        with self.assertRaises(UserError):
+            TestAccess.search([])
+
+    @with_transaction(context=_context)
+    def test_access_search_relate_empty(self):
+        "Test access on search relate without model access"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+
+        TestAccess.search([('relate.value', '=', 42)])
+        TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
+
+    @with_transaction(context=_context)
+    def test_access_search_relate(self):
+        "Test access on search relate"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        Model = pool.get('ir.model')
+        ModelAccess = pool.get('ir.model.access')
+        model, = Model.search([('model', '=', 'test.access.relate')])
+        ModelAccess.create([{
+                    'model': model.id,
                     'perm_read': True,
                     }])
-        TestAccess.read([test.id])
 
-        # One access disallowed for any group
-        ModelAccess.write([model_access_wo_group], {
-                'perm_read': False,
-                })
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-
-        # Two access rules with one group allowed
-        group, = Group.search([('users', '=', Transaction().user)])
-        model_access_w_group, = ModelAccess.create([{
-                    'model': model.id,
-                    'group': group.id,
-                    'perm_read': True,
-                    }])
-
-        TestAccess.read([test.id])
-
-        # Two access rules with both allowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_read': True,
-                })
-        TestAccess.read([test.id])
-
-        # Two access rules with any group allowed
-        ModelAccess.write([model_access_w_group], {
-                'perm_read': False,
-                })
-        TestAccess.read([test.id])
-
-        # Two access rules with both disallowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_read': False,
-                })
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-
-        # One access disallowed for one group
-        ModelAccess.delete([model_access_wo_group])
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-
-        # One access allowed for one group
-        ModelAccess.write([model_access_w_group], {
-                'perm_read': True,
-                })
-        TestAccess.read([test.id])
-
-        # One access allowed for one other group
-        group, = Group.create([{'name': 'Test'}])
-        ModelAccess.write([model_access_w_group], {
-                'group': group.id,
-                })
-        TestAccess.read([test.id])
-
-        # One access disallowed for one other group
-        ModelAccess.write([model_access_w_group], {
-                'perm_read': False,
-                })
-        TestAccess.read([test.id])
+        TestAccess.search([('relate.value', '=', 42)])
+        TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
 
     @with_transaction(context=_context)
-    def test_perm_write(self):
-        'Test Write Access'
+    def test_no_access_search_relate(self):
+        "Test no access on search relate"
         pool = Pool()
-        ModelAccess = pool.get('ir.model.access')
         TestAccess = pool.get('test.access')
         Model = pool.get('ir.model')
-        Group = pool.get('res.group')
-
-        model, = Model.search([('model', '=', 'test.access')])
-
-        test, = TestAccess.create([{}])
-
-        # Without model access
-        TestAccess.write([test], {})
-
-        # With model access
-
-        # One access allowed for any group
-        model_access_wo_group, = ModelAccess.create([{
-                    'model': model.id,
-                    'group': None,
-                    'perm_write': True,
-                    }])
-        TestAccess.write([test], {})
-
-        # One access disallowed for any group
-        ModelAccess.write([model_access_wo_group], {
-                'perm_write': False,
-                })
-        self.assertRaises(UserError, TestAccess.write, [test], {})
-
-        # Two access rules with one group allowed
-        group, = Group.search([('users', '=', Transaction().user)])
-        model_access_w_group, = ModelAccess.create([{
-                    'model': model.id,
-                    'group': group.id,
-                    'perm_write': True,
-                    }])
-        TestAccess.write([test], {})
-
-        # Two access rules with both allowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_write': True,
-                })
-        TestAccess.write([test], {})
-
-        # Two access rules with any group allowed
-        ModelAccess.write([model_access_w_group], {
-                'perm_write': False,
-                })
-        TestAccess.write([test], {})
-
-        # Two access rules with both disallowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_write': False,
-                })
-        self.assertRaises(UserError, TestAccess.write, [test], {})
-
-        # One access disallowed for one group
-        ModelAccess.delete([model_access_wo_group])
-        self.assertRaises(UserError, TestAccess.write, [test], {})
-
-        # One access allowed for one group
-        ModelAccess.write([model_access_w_group], {
-                'perm_write': True,
-                })
-        TestAccess.write([test], {})
-
-        # One access allowed for one other group
-        group, = Group.create([{'name': 'Test'}])
-        ModelAccess.write([model_access_w_group], {
-                'group': group.id,
-                })
-        TestAccess.write([test], {})
-
-        # One access disallowed for one other group
-        ModelAccess.write([model_access_w_group], {
-                'perm_write': False,
-                })
-        TestAccess.write([test], {})
-
-    @with_transaction(context=_context)
-    def test_perm_create(self):
-        'Test Create Access'
-        pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
-        Model = pool.get('ir.model')
-        Group = pool.get('res.group')
-
-        model, = Model.search([('model', '=', 'test.access')])
-
-        # Without model access
-        TestAccess.create([{}])
-
-        # With model access
-
-        # One access allowed for any group
-        model_access_wo_group, = ModelAccess.create([{
+        model, = Model.search([('model', '=', 'test.access.relate')])
+        ModelAccess.create([{
                     'model': model.id,
-                    'group': None,
-                    'perm_create': True,
-                    }])
-        TestAccess.create([{}])
-
-        # One access disallowed for any group
-        ModelAccess.write([model_access_wo_group], {
-                'perm_create': False,
-                })
-        self.assertRaises(UserError, TestAccess.create, {})
-
-        # Two access rules with one group allowed
-        group, = Group.search([('users', '=', Transaction().user)])
-        model_access_w_group, = ModelAccess.create([{
-                    'model': model.id,
-                    'group': group.id,
-                    'perm_create': True,
+                    'perm_read': False,
                     }])
 
-        TestAccess.create([{}])
+        with self.assertRaises(UserError):
+            TestAccess.search([('relate.value', '=', 42)])
+        with self.assertRaises(UserError):
+            TestAccess.search(
+                [('reference.value', '=', 42, 'test.access.relate')])
 
-        # Two access rules with both allowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_create': True,
-                })
-        TestAccess.create([{}])
 
-        # Two access rules with any group allowed
-        ModelAccess.write([model_access_w_group], {
-                'perm_create': False,
-                })
-        TestAccess.create([{}])
+class ModelAccessWriteTestCase(_ModelAccessTestCase):
+    _perm = 'perm_write'
 
-        # Two access rules with both disallowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_create': False,
-                })
-        self.assertRaises(UserError, TestAccess.create, [{}])
-
-        # One access disallowed for one group
-        ModelAccess.delete([model_access_wo_group])
-        self.assertRaises(UserError, TestAccess.create, [{}])
-
-        # One access allowed for one group
-        ModelAccess.write([model_access_w_group], {
-                'perm_create': True,
-                })
-        TestAccess.create([{}])
-
-        # One access allowed for one other group
-        group, = Group.create([{'name': 'Test'}])
-        ModelAccess.write([model_access_w_group], {
-                'group': group.id,
-                })
-        TestAccess.create([{}])
-
-        # One access disallowed for one other group
-        ModelAccess.write([model_access_w_group], {
-                'perm_create': False,
-                })
-        TestAccess.create([{}])
-
-    @with_transaction(context=_context)
-    def test_perm_delete(self):
-        'Test Delete Access'
+    def _assert(self, record):
         pool = Pool()
-        ModelAccess = pool.get('ir.model.access')
         TestAccess = pool.get('test.access')
-        Model = pool.get('ir.model')
-        Group = pool.get('res.group')
+        TestAccess.write([record], {})
 
-        model, = Model.search([('model', '=', 'test.access')])
-
-        tests = [TestAccess.create([{}])[0] for x in range(11)]
-
-        # Without model access
-        TestAccess.delete([tests.pop()])
-
-        # With model access
-
-        # One access allowed for any group
-        model_access_wo_group, = ModelAccess.create([{
-                    'model': model.id,
-                    'group': None,
-                    'perm_delete': True,
-                    }])
-        TestAccess.delete([tests.pop()])
-
-        # One access disallowed for any group
-        ModelAccess.write([model_access_wo_group], {
-                'perm_delete': False,
-                })
-        self.assertRaises(UserError, TestAccess.delete, [tests.pop()])
-
-        # Two access rules with one group allowed
-        group = Group.search([('users', '=', Transaction().user)])[0]
-        model_access_w_group, = ModelAccess.create([{
-                    'model': model.id,
-                    'group': group.id,
-                    'perm_delete': True,
-                    }])
-
-        TestAccess.delete([tests.pop()])
-
-        # Two access rules with both allowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_delete': True,
-                })
-        TestAccess.delete([tests.pop()])
-
-        # Two access rules with any group allowed
-        ModelAccess.write([model_access_w_group], {
-                'perm_delete': False,
-                })
-        TestAccess.delete([tests.pop()])
-
-        # Two access rules with both disallowed
-        ModelAccess.write([model_access_wo_group], {
-                'perm_delete': False,
-                })
-        self.assertRaises(UserError, TestAccess.delete, [tests.pop()])
-
-        # One access disallowed for one group
-        ModelAccess.delete([model_access_wo_group])
-        self.assertRaises(UserError, TestAccess.delete, [tests.pop()])
-
-        # One access allowed for one group
-        ModelAccess.write([model_access_w_group], {
-                'perm_delete': True,
-                })
-        TestAccess.delete([tests.pop()])
-
-        # One access allowed for one other group
-        group, = Group.create([{'name': 'Test'}])
-        ModelAccess.write([model_access_w_group], {
-                'group': group.id,
-                })
-        TestAccess.delete([tests.pop()])
-
-        # One access disallowed for one other group
-        ModelAccess.write([model_access_w_group], {
-                'perm_delete': False,
-                })
-        TestAccess.delete([tests.pop()])
+    def _assert_raises(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.write([record], {})
 
 
-class ModelFieldAccessTestCase(unittest.TestCase):
-    'Test Model Field Access'
+class ModelAccessCreateTestCase(_ModelAccessTestCase):
+    _perm = 'perm_create'
+
+    def _assert(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        TestAccess.create([{}])
+
+    def _assert_raises(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.create([{}])
+
+
+class ModelAccessDeleteTestCase(_ModelAccessTestCase):
+    _perm = 'perm_delete'
+
+    def _assert(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        TestAccess.delete([record])
+
+    def _assert_raises(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.delete([record])
+
+
+class _ModelFieldAccessTestCase(unittest.TestCase):
+    _perm = None
 
     @classmethod
     def setUpClass(cls):
         activate_module('tests')
 
+    def _field(self, name):
+        pool = Pool()
+        Field = pool.get('ir.model.field')
+        field1, = Field.search([
+                ('model.model', '=', 'test.access'),
+                ('name', '=', name),
+                ])
+        return field1
+
+    @property
+    def field1(self):
+        return self._field('field1')
+
+    @property
+    def field2(self):
+        return self._field('field2')
+
+    @property
+    def group(self):
+        pool = Pool()
+        Group = pool.get('res.group')
+        group, = Group.search([('users', '=', Transaction().user)])
+        return group
+
+    def _assert1(self, record):
+        raise NotImplementedError
+
+    def _assert2(self, record):
+        raise NotImplementedError
+
+    def _assert_raises1(self, record):
+        raise NotImplementedError
+
+    def _assert_raises2(self, record):
+        raise NotImplementedError
+
     @with_transaction(context=_context)
-    def test0010perm_read(self):
-        'Test Read Access'
+    def test_access_empty(self):
+        "Test access without model field access"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_access_without_group(self):
+        "Test access without group"
         pool = Pool()
         FieldAccess = pool.get('ir.model.field.access')
         TestAccess = pool.get('test.access')
-        Field = pool.get('ir.model.field')
-        Group = pool.get('res.group')
-        transaction = Transaction()
-
-        field1, = Field.search([
-                ('model.model', '=', 'test.access'),
-                ('name', '=', 'field1'),
-                ])
-        field2, = Field.search([
-                ('model.model', '=', 'test.access'),
-                ('name', '=', 'field2'),
-                ])
-
-        test, = TestAccess.create([{
-                    'field1': 'ham',
-                    'field2': 'spam',
-                    }])
-
-        # Without field access
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # With field access
-
-        # One access allowed for any group
-        field_access_wo_group, = FieldAccess.create([{
-                    'field': field1.id,
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
                     'group': None,
-                    'perm_read': True,
-                    }])
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # One access disallowed for any group
-        FieldAccess.write([field_access_wo_group], {
-                'perm_read': False,
-                })
-
-        self.assertRaises(UserError, TestAccess.read, [test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-        self.assertRaises(UserError, getattr, test, 'field1')
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # Two access rules with one group allowed
-        group = Group.search([('users', '=', transaction.user)])[0]
-        field_access_w_group, = FieldAccess.create([{
-                    'field': field1.id,
-                    'group': group.id,
-                    'perm_read': True,
+                    self._perm: True,
                     }])
 
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # Two access rules with both allowed
-        FieldAccess.write([field_access_wo_group], {
-                'perm_read': True,
-                })
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # Two access rules with any group allowed
-        FieldAccess.write([field_access_w_group], {
-                'perm_read': False,
-                })
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # Two access rules with both disallowed
-        FieldAccess.write([field_access_wo_group], {
-            'perm_read': False,
-            })
-        self.assertRaises(UserError, TestAccess.read, [test.id],
-            ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-        self.assertRaises(UserError, getattr, test, 'field1')
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # One access disallowed for one group
-        FieldAccess.delete([field_access_wo_group])
-        self.assertRaises(UserError, TestAccess.read, [test.id],
-            ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-        self.assertRaises(UserError, getattr, test, 'field1')
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # One access allowed for one group
-        FieldAccess.write([field_access_w_group], {
-                'perm_read': True,
-                })
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # One access allowed for one other group
-        group, = Group.create([{'name': 'Test'}])
-        FieldAccess.write([field_access_w_group], {
-                'group': group.id,
-                })
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # One access disallowed for one other group
-        FieldAccess.write([field_access_w_group], {
-                'perm_read': False,
-                })
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # Two access rules on both fields allowed
-        FieldAccess.delete([field_access_w_group])
-
-        field_access1, = FieldAccess.create([{
-                    'field': field1.id,
-                    'group': None,
-                    'perm_read': True,
-                    }])
-        field_access2, = FieldAccess.create([{
-                    'field': field2.id,
-                    'group': None,
-                    'perm_read': True,
-                    }])
-
-        TestAccess.read([test.id], ['field1'])
-        TestAccess.read([test.id], ['field2'])
-        TestAccess.read([test.id])
-        test.field1
-        test.field2
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # Two access rules on both fields one allowed and one disallowed
-        FieldAccess.write([field_access2], {
-            'perm_read': False,
-            })
-        TestAccess.read([test.id], ['field1'])
-        self.assertRaises(UserError, TestAccess.read, [test.id],
-            ['field2'])
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-        test.field1
-        self.assertRaises(UserError, getattr, test, 'field2')
-        transaction.cache.clear()
-        test = TestAccess(test.id)
-
-        # Two access rules on both fields disallowed
-        FieldAccess.write([field_access1], {
-                'perm_read': False,
-                })
-        self.assertRaises(UserError, TestAccess.read, [test.id],
-            ['field1'])
-        self.assertRaises(UserError, TestAccess.read, [test.id],
-            ['field2'])
-        self.assertRaises(UserError, TestAccess.read, [test.id])
-        self.assertRaises(UserError, getattr, test, 'field1')
-        self.assertRaises(UserError, getattr, test, 'field2')
-        transaction.cache.clear()
-        test = TestAccess(test.id)
+        self._assert1(record)
+        self._assert2(record)
 
     @with_transaction(context=_context)
-    def test_perm_write(self):
-        'Test Write Access'
+    def test_no_access_without_group(self):
+        "Test no access without group"
         pool = Pool()
         FieldAccess = pool.get('ir.model.field.access')
         TestAccess = pool.get('test.access')
-        Field = pool.get('ir.model.field')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_groups(self):
+        "Test one access with groups"
+        pool = Pool()
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_without_group(self):
+        "Test one access without group"
+        pool = Pool()
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_all_access_with_groups(self):
+        "Test all access with groups"
+        pool = Pool()
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_groups(self):
+        "Test no access with groups"
+        pool = Pool()
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_group(self):
+        "Test one access with group"
+        pool = Pool()
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_no_access_with_group(self):
+        "Test no access with group"
+        pool = Pool()
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_other_group(self):
+        "Test no access with other group"
+        pool = Pool()
         Group = pool.get('res.group')
-        transaction = Transaction()
-
-        field1, = Field.search([
-                ('model.model', '=', 'test.access'),
-                ('name', '=', 'field1'),
-                ])
-        field2, = Field.search([
-                ('model.model', '=', 'test.access'),
-                ('name', '=', 'field2'),
-                ])
-
-        test, = TestAccess.create([{
-                    'field1': 'ham',
-                    'field2': 'spam',
-                    }])
-
-        # Without field access
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-
-        # With field access
-
-        # One access allowed for any group
-        field_access_wo_group, = FieldAccess.create([{
-                    'field': field1.id,
-                    'group': None,
-                    'perm_write': True,
-                    }])
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # One access disallowed for any group
-        FieldAccess.write([field_access_wo_group], {
-                'perm_write': False,
-                })
-
-        TestAccess.write([test], {})
-        self.assertRaises(UserError, TestAccess.write, [test],
-            {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-        self.assertRaises(UserError, TestAccess.write,
-            [test], {'field2': 'spam'}, [test], {'field1': 'ham'})
-
-        # Two access rules with one group allowed
-        group = Group.search([('users', '=', transaction.user)])[0]
-        field_access_w_group, = FieldAccess.create([{
-                    'field': field1.id,
-                    'group': group.id,
-                    'perm_write': True,
-                    }])
-
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # Two access rules with both allowed
-        FieldAccess.write([field_access_wo_group], {
-                'perm_write': True,
-                })
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # Two access rules with any group allowed
-        FieldAccess.write([field_access_w_group], {
-                'perm_write': False,
-                })
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # Two access rules with both disallowed
-        FieldAccess.write([field_access_wo_group], {
-                'perm_write': False,
-                })
-        TestAccess.write([test], {})
-        self.assertRaises(UserError, TestAccess.write, [test],
-            {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # One access disallowed for one group
-        FieldAccess.delete([field_access_wo_group])
-        TestAccess.write([test], {})
-        self.assertRaises(UserError, TestAccess.write, [test],
-            {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'ham'})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # One access allowed for one group
-        FieldAccess.write([field_access_w_group], {
-                'perm_write': True,
-                })
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # One access allowed for one other group
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
-        FieldAccess.write([field_access_w_group], {
-                'group': group.id,
-                })
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # One access disallowed for one other group
-        FieldAccess.write([field_access_w_group], {
-                'perm_write': False,
-                })
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
-
-        # Two access rules on both fields allowed
-        FieldAccess.delete([field_access_w_group])
-
-        field_access1, = FieldAccess.create([{
-                    'field': field1.id,
-                    'group': None,
-                    'perm_write': True,
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
                     }])
-        field_access2, = FieldAccess.create([{
-                    'field': field2.id,
-                    'group': None,
-                    'perm_write': True,
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': group.id,
+                    self._perm: True,
                     }])
 
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        TestAccess.write([test], {'field2': 'spam'})
-        TestAccess.write([test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
+        self._assert1(record)
+        self._assert2(record)
 
-        # Two access rules on both fields one allowed and one disallowed
-        FieldAccess.write([field_access2], {
-                'perm_write': False,
-                })
-        TestAccess.write([test], {})
-        TestAccess.write([test], {'field1': 'ham'})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field2': 'spam'})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
+    @with_transaction(context=_context)
+    def test_no_access_with_other_group(self):
+        "Test no access with other group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': group.id,
+                    self._perm: True,
+                    }])
 
-        # Two access rules on both fields disallowed
-        FieldAccess.write([field_access1], {
-                'perm_write': False,
-                })
-        TestAccess.write([test], {})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field1': 'ham'})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field2': 'spam'})
-        self.assertRaises(UserError, TestAccess.write, [test], {
-                'field1': 'ham',
-                'field2': 'spam',
-                })
+        self._assert_raises1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_one_access_with_other_group_no_perm(self):
+        "Test one access with other group no perm"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_two_access(self):
+        "Test two access"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field2.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_two_no_access(self):
+        "Test two no access"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field2.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises1(record)
+        self._assert_raises2(record)
+
+    @with_transaction(context=_context)
+    def test_two_both_access(self):
+        "Test two both access"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field2.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+
+        self._assert1(record)
+        self._assert_raises2(record)
+
+    @with_transaction(context=_context)
+    def test_two_access_with_group(self):
+        "Test two access with group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field2.id,
+                    'group': None,
+                    self._perm: True,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_two_access_with_groups(self):
+        "Test two access with groups"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field2.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_two_no_access_with_group(self):
+        "Test two no access with group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field2.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+
+        self._assert_raises1(record)
+        self._assert_raises2(record)
+
+    @with_transaction(context=_context)
+    def test_two_both_access_with_group(self):
+        "Test two both access with group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: True,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field2.id,
+                    'group': None,
+                    self._perm: False,
+                    }])
+
+        self._assert1(record)
+        self._assert_raises2(record)
+
+
+class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
+    _perm = 'perm_read'
+
+    def _assert1(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        TestAccess.read([record.id], ['field1'])
+        TestAccess.search([('field1', '=', 'test')])
+
+    def _assert2(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        TestAccess.read([record.id], ['field2'])
+        TestAccess.search([('field2', '=', 'test')])
+
+    def _assert_raises1(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.read([record.id], ['field1'])
+        with self.assertRaises(UserError):
+            TestAccess.search([('field1', '=', 'test')])
+
+    def _assert_raises2(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.read([record.id], ['field2'])
+        with self.assertRaises(UserError):
+            TestAccess.search([('field2', '=', 'test')])
+
+    @with_transaction(context=_context)
+    def test_access_search_relate_empty(self):
+        "Test access on search relate"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+
+        TestAccess.search([('relate.value', '=', 42)])
+        TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
+
+    @with_transaction(context=_context)
+    def test_access_search_relate(self):
+        "Test access on search relate"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+        field, = Field.search([
+                ('model.model', '=', 'test.access.relate'),
+                ('name', '=', 'value'),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'perm_read': True,
+                    }])
+
+        TestAccess.search([('relate.value', '=', 42)])
+        TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
+
+    @with_transaction(context=_context)
+    def test_no_access_search_relate(self):
+        "Test access on search relate"
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+        field, = Field.search([
+                ('model.model', '=', 'test.access.relate'),
+                ('name', '=', 'value'),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'perm_read': False,
+                    }])
+
+        with self.assertRaises(UserError):
+            TestAccess.search([('relate.value', '=', 42)])
+        with self.assertRaises(UserError):
+            TestAccess.search(
+                [('reference.value', '=', 42, 'test.access.relate')])
+
+
+class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):
+    _perm = 'perm_write'
+
+    def _assert1(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        TestAccess.write([record], {'field1': 'test'})
+
+    def _assert2(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        TestAccess.write([record], {'field2': 'test'})
+
+    def _assert_raises1(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.write([record], {'field1': 'test'})
+
+    def _assert_raises2(self, record):
+        pool = Pool()
+        TestAccess = pool.get('test.access')
+        with self.assertRaises(UserError):
+            TestAccess.write([record], {'field2': 'test'})
 
 
 def suite():
     suite_ = unittest.TestSuite()
     suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelAccessTestCase))
+        ).loadTestsFromTestCase(ModelAccessReadTestCase))
     suite_.addTests(unittest.TestLoader(
-        ).loadTestsFromTestCase(ModelFieldAccessTestCase))
+        ).loadTestsFromTestCase(ModelAccessWriteTestCase))
+    suite_.addTests(unittest.TestLoader(
+        ).loadTestsFromTestCase(ModelAccessCreateTestCase))
+    suite_.addTests(unittest.TestLoader(
+        ).loadTestsFromTestCase(ModelAccessDeleteTestCase))
+    suite_.addTests(unittest.TestLoader(
+        ).loadTestsFromTestCase(ModelFieldAccessReadTestCase))
+    suite_.addTests(unittest.TestLoader(
+        ).loadTestsFromTestCase(ModelFieldAccessWriteTestCase))
     return suite_

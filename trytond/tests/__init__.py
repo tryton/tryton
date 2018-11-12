@@ -13,7 +13,7 @@ from .mptt import *
 from .import_data import *
 from .export_data import *
 from .trigger import *
-from .access import *
+from . import access
 from .wizard import *
 from .workflow import *
 from .history import *
@@ -83,7 +83,6 @@ def register():
         ExportDataRelation,
         Triggered,
         TriggerAction,
-        TestAccess,
         TestWizardStart,
         WorkflowedModel,
         TestHistory,
@@ -95,6 +94,7 @@ def register():
         TestWizard,
         module='tests', type_='wizard')
 
+    access.register('tests')
     model.register('tests')
     modelstorage.register('tests')
     modelsql.register('tests')
