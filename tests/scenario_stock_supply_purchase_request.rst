@@ -149,7 +149,7 @@ Create a need for missing product::
 There is no purchase request::
 
     >>> PurchaseRequest = Model.get('purchase.request')
-    >>> set_user(purchase_user)
+    >>> config.user = purchase_user.id
     >>> PurchaseRequest.find([])
     []
 
