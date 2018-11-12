@@ -43,6 +43,13 @@ def cache_size():
         config.getint('cache', 'record'))
 
 
+def is_leaf(expression):
+    return (isinstance(expression, (list, tuple))
+        and len(expression) > 2
+        and isinstance(expression[1], basestring)
+        and expression[1] in OPERATORS)  # TODO remove OPERATORS test
+
+
 class ModelStorage(Model):
     """
     Define a model with storage capability in Tryton.
@@ -369,6 +376,36 @@ class ModelStorage(Model):
         '''
         Return a list of records that match the domain.
         '''
+        pool = Pool()
+        transaction = Transaction()
+        ModelAccess = pool.get('ir.model.access')
+        ModelFieldAccess = pool.get('ir.model.field.access')
+
+        ModelAccess.check(cls.__name__, 'read')
+
+        def check(domain, cls, to_check):
+            if is_leaf(domain):
+                local, relate = (domain[0].split('.', 1) + [None])[:2]
+                to_check[cls.__name__].add(local)
+                if relate:
+                    if len(domain) >= 4:
+                        target = pool.get(domain[3])
+                    else:
+                        target = cls._fields[local].get_target()
+                    target_domain = [(relate,) + tuple(domain[1:])]
+                    check(target_domain, target, to_check)
+            elif not domain:
+                return
+            else:
+                i = 1 if domain[0] in ['OR', 'AND'] else 0
+                for d in domain[i:]:
+                    check(d, cls, to_check)
+        if transaction.user and transaction.context.get('_check_access'):
+            to_check = defaultdict(set)
+            check(domain, cls, to_check)
+            for name, fields_names in to_check.items():
+                ModelAccess.check(name, 'read')
+                ModelFieldAccess.check(name, fields_names, 'read')
         if count:
             return 0
         return []
@@ -418,10 +455,7 @@ class ModelStorage(Model):
             while i < len(domain):
                 arg = domain[i]
                 # add test for xmlrpc that doesn't handle tuple
-                if (isinstance(arg, tuple)
-                        or (isinstance(arg, list)
-                            and len(arg) > 2
-                            and arg[1] in OPERATORS)):
+                if is_leaf(arg):
                     if arg[0] == 'active':
                         active_found = True
                 elif isinstance(arg, list):
@@ -886,6 +920,7 @@ class ModelStorage(Model):
         pass
 
     @classmethod
+    @without_check_access
     def _validate(cls, records, field_names=None):
         pool = Pool()
         # Ensure that records are readable

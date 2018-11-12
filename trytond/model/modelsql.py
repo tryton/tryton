@@ -15,7 +15,6 @@ from trytond.model import ModelStorage, ModelView
 from trytond.model import fields
 from trytond import backend
 from trytond.tools import reduce_ids, grouped_slice, cursor_dict
-from trytond.const import OPERATORS
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict
@@ -23,7 +22,7 @@ from trytond.exceptions import ConcurrencyException
 from trytond.rpc import RPC
 from trytond.config import config
 
-from .modelstorage import cache_size
+from .modelstorage import cache_size, is_leaf
 
 
 class Constraint(object):
@@ -1124,6 +1123,9 @@ class ModelSQL(ModelStorage):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
 
+        super(ModelSQL, cls).search(
+            domain, offset=offset, limit=limit, order=order, count=count)
+
         # Get domain clauses
         tables, expression = cls.search_domain(domain)
 
@@ -1292,12 +1294,6 @@ class ModelSQL(ModelStorage):
                 tables[None] = (cls.__table_history__(), None)
             else:
                 tables[None] = (cls.__table__(), None)
-
-        def is_leaf(expression):
-            return (isinstance(expression, (list, tuple))
-                and len(expression) > 2
-                and isinstance(expression[1], basestring)
-                and expression[1] in OPERATORS)  # TODO remove OPERATORS test
 
         def convert(domain):
             if is_leaf(domain):
