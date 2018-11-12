@@ -1,3 +1,6 @@
+Version 5.0.2 - 2018-11-12
+* Bug fixes (see mercurial logs for details)
+
 Version 5.0.1 - 2018-10-31
 * Bug fixes (see mercurial logs for details)
 * Ensure URL scheme of bus (issue7792)
