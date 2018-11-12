@@ -128,7 +128,9 @@ Create inventory to add enough quantity in Provisioning Location::
 Execute internal supply::
 
     >>> ShipmentInternal = Model.get('stock.shipment.internal')
+    >>> set_user(stock_admin_user)
     >>> Wizard('stock.supply').execute('create_')
+    >>> set_user(stock_user)
     >>> shipment, = ShipmentInternal.find([])
     >>> shipment.state
     'request'
@@ -158,7 +160,9 @@ Create negative quantity in Second Storage::
 
 Execute internal supply::
 
+    >>> set_user(stock_admin_user)
     >>> Wizard('stock.supply').execute('create_')
+    >>> set_user(stock_user)
     >>> shipment, = ShipmentInternal.find(
     ...     [('to_location', '=', sec_storage_loc.id)])
     >>> shipment.state
