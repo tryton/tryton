@@ -138,11 +138,13 @@ Create a need for missing product::
 There is no purchase request::
 
     >>> PurchaseRequest = Model.get('purchase.request')
+    >>> config.user = purchase_user.id
     >>> PurchaseRequest.find([])
     []
 
 Create the purchase request::
 
+    >>> config.user = stock_admin_user.id
     >>> create_pr = Wizard('stock.supply')
     >>> create_pr.execute('create_')
 
