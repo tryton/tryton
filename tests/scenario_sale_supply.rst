@@ -273,5 +273,6 @@ not create a new purchase request::
 
     >>> config.user = stock_user.id
     >>> shipment.click('done')
+    >>> config.user = purchase_user.id
     >>> len(PurchaseRequest.find([('product', '=', changing_product.id)]))
     0
