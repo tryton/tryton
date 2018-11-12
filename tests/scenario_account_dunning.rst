@@ -253,6 +253,7 @@ Pay dunning::
     >>> reconcile2, = [l for l in move.lines if l.account == receivable]
     >>> reconcile_lines = Wizard('account.move.reconcile_lines',
     ...     [MoveLine(dunning.line.id), reconcile2])
+    >>> set_user(dunning_user)
     >>> Dunning.find([])
     []
 
