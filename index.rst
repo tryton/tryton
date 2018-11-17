@@ -7,11 +7,14 @@ Main
 
 .. glossary::
 
-    `Server </projects/trytond/en/5.0>`_
+    `Server </projects/server/en/5.0>`_
         The main application.
 
-    `Desktop Client </projects/tryton/en/5.0>`_
+    `Desktop Client </projects/client-desktop/en/5.0>`_
         The application to connect to the server.
+
+    `Scripting Client </projects/client-library/en/5.0>`_
+        The library to access models, wizards and reports like a client.
 
 Modules
 -------
@@ -45,11 +48,11 @@ Modules
     :ref:`Stock <index-stock>`
         Tracks goods in your warehouses.
 
-    `Timesheet </projects/trytond-timesheet/en/5.0>`_
+    `Timesheet </projects/modules-timesheet/en/5.0>`_
         Tracks time spend.
 
 
-    `Banking </projects/trytond-bank/en/5.0>`_
+    `Banking </projects/modules-bank/en/5.0>`_
         Adds bank and account.
 
     :ref:`Company <index-company>`
@@ -58,16 +61,16 @@ Modules
     :ref:`Carrier <index-carrier>`
         To ship.
 
-    `Country </projects/trytond-country/en/5.0>`_
+    `Country </projects/modules-country/en/5.0>`_
         ISO 3166 list of countries and subdivisions.
 
-    `Currency </projects/trytond-currency/en/5.0>`_
+    `Currency </projects/modules-currency/en/5.0>`_
         ISO 4217 list of currencies.
 
-    `Customs </projects/trytond-customs/en/5.0>`_
+    `Customs </projects/modules-customs/en/5.0>`_
         Defines customs duty per tariff code.
 
-    `Google Maps </projects/trytond-google-maps/en/5.0>`_
+    `Google Maps </projects/modules-google-maps/en/5.0>`_
         Links address to Google map.
 
     :ref:`Party <index-party>`
@@ -80,8 +83,8 @@ Modules
     :ref:`Authentication <index-authentication>`
         Extends authentication mechanism.
 
-    `Notification Email </projects/trytond-notification-email/en/5.0>`_
+    `Notification Email </projects/modules-notification-email/en/5.0>`_
         Sends email.
 
-    `Web User </projects/trytond-web-user/en/5.0>`_
+    `Web User </projects/modules-web-user/en/5.0>`_
         Manages external users.

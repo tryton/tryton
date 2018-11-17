@@ -5,8 +5,8 @@ Sale Suscription
 
 .. glossary::
 
-    `Subscription </projects/trytond-sale-subscription/en/5.0>`_
+    `Subscription </projects/modules-sale-subscription/en/5.0>`_
         Fundamentals to manage subscriptions.
 
-    `Asset </projects/trytond-sale-subscription-asset/en/5.0>`_
+    `Asset </projects/modules-sale-subscription-asset/en/5.0>`_
         Add asset to subscribed service.
