@@ -5,8 +5,8 @@ Company
 
 .. glossary::
 
-    `Company </projects/trytond-company/en/4.4>`_
+    `Company </projects/modules-company/en/4.4>`_
         Defines company and employees.
 
-    `Work Time </projects/trytond-company-work-time/en/4.4>`_
+    `Work Time </projects/modules-company-work-time/en/4.4>`_
         Defines work time per company.
