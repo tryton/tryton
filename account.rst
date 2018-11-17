@@ -72,7 +72,7 @@ Accounting
         Values stock using the anglo-saxon method.
 
     `Stock Continental </projects/modules-account-stock-continental/en/4.8>`_
-        Values stock using the contental method.
+        Values stock using the continental method.
 
     `Stock Landed Cost </projects/modules-account-stock-landed-cost/en/4.8>`_
         Allocates landed cost.
