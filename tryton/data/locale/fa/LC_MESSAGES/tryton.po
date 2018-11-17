@@ -493,7 +493,7 @@ msgstr "پرویز همایون نژاد"
 #: tryton/gui/window/attachment.py:24
 #, python-format
 msgid "Attachments (%s)"
-msgstr "پیوستها (٪ s)"
+msgstr "پیوستها (%s)"
 
 #: tryton/gui/window/dblogin.py:33
 msgid "Profile Editor"
@@ -745,7 +745,7 @@ msgstr "محدودیت:"
 #: tryton/gui/window/note.py:17
 #, python-format
 msgid "Notes (%s)"
-msgstr "یادداشت ها(1%)"
+msgstr "یادداشت ها(%s)"
 
 #: tryton/gui/window/preference.py:25
 msgid "Preferences"
@@ -1140,12 +1140,12 @@ msgstr "بازنویسی %s تعاریف؟"
 #: tryton/gui/window/win_export.py:328
 #, python-format
 msgid "%d record saved."
-msgstr "%s پرونده ذخیره شد."
+msgstr "%d پرونده ذخیره شد."
 
 #: tryton/gui/window/win_export.py:330
 #, python-format
 msgid "%d records saved."
-msgstr "%s پرونده های ذخیره شده."
+msgstr "%d پرونده های ذخیره شده."
 
 #: tryton/gui/window/win_export.py:333
 #, python-format
@@ -1255,12 +1255,12 @@ msgstr "خطای پردازش فایل واقع در فیلد : \"%s\"."
 #: tryton/gui/window/win_import.py:198
 #, python-format
 msgid "%d record imported."
-msgstr "\"%s\" پرونده وارد شد."
+msgstr "%d پرونده وارد شد."
 
 #: tryton/gui/window/win_import.py:200
 #, python-format
 msgid "%d records imported."
-msgstr "\"%s\" پرونده ها وارد شدند."
+msgstr "%d پرونده ها وارد شدند."
 
 #: tryton/gui/window/view_form/view/form_gtk/dictionary.py:344
 #: tryton/gui/window/view_form/view/form_gtk/many2many.py:46

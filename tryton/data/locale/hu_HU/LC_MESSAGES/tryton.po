@@ -1325,7 +1325,7 @@ msgstr "Módosítás dátuma"
 #: tryton/gui/window/view_form/screen/screen.py:806
 #, python-format, python-format, fuzzy, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "A menü láthatósága nem állítható be"
+msgstr "A menü láthatósága nem állítható be %s"
 
 #: tryton/gui/window/view_form/screen/screen.py:867
 msgid "Unable to set view tree state"
