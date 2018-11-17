@@ -7,11 +7,14 @@ Main
 
 .. glossary::
 
-    `Server </projects/trytond/en/latest>`_
+    `Server </projects/server/en/latest>`_
         The main application.
 
-    `Desktop Client </projects/tryton/en/latest>`_
+    `Desktop Client </projects/client-desktop/en/latest>`_
         The application to connect to the server.
+
+    `Scripting Client </projects/client-library/en/latest>`_
+        The library to access models, wizards and reports like a client.
 
 Modules
 -------
@@ -45,11 +48,11 @@ Modules
     :ref:`Stock <index-stock>`
         Tracks goods in your warehouses.
 
-    `Timesheet </projects/trytond-timesheet/en/latest>`_
+    `Timesheet </projects/modules-timesheet/en/latest>`_
         Tracks time spend.
 
 
-    `Banking </projects/trytond-bank/en/latest>`_
+    `Banking </projects/modules-bank/en/latest>`_
         Adds bank and account.
 
     :ref:`Company <index-company>`
@@ -58,16 +61,16 @@ Modules
     :ref:`Carrier <index-carrier>`
         To ship.
 
-    `Country </projects/trytond-country/en/latest>`_
+    `Country </projects/modules-country/en/latest>`_
         ISO 3166 list of countries and subdivisions.
 
-    `Currency </projects/trytond-currency/en/latest>`_
+    `Currency </projects/modules-currency/en/latest>`_
         ISO 4217 list of currencies.
 
-    `Customs </projects/trytond-customs/en/latest>`_
+    `Customs </projects/modules-customs/en/latest>`_
         Defines customs duty per tariff code.
 
-    `Google Maps </projects/trytond-google-maps/en/latest>`_
+    `Google Maps </projects/modules-google-maps/en/latest>`_
         Links address to Google map.
 
     :ref:`Party <index-party>`
@@ -80,11 +83,11 @@ Modules
     :ref:`Authentication <index-authentication>`
         Extends authentication mechanism.
 
-    `Notification Email </projects/trytond-notification-email/en/latest>`_
+    `Notification Email </projects/modules-notification-email/en/latest>`_
         Sends email.
 
-    `User Role </projects/trytond-user-role/en/latest>`_
+    `User Role </projects/modules-user-role/en/latest>`_
         Manage user groups with roles.
 
-    `Web User </projects/trytond-web-user/en/latest>`_
+    `Web User </projects/modules-web-user/en/latest>`_
         Manages external users.

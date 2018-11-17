@@ -5,11 +5,11 @@ Project
 
 .. glossary::
 
-    `Project </projects/trytond-project/en/latest>`_
+    `Project </projects/modules-project/en/latest>`_
         Fundamentals for project management.
 
-    `Invoice </projects/trytond-project-invoice/en/latest>`_
+    `Invoice </projects/modules-project-invoice/en/latest>`_
         Invoices the projects.
 
-    `Plan </projects/trytond-project-plan/en/latest>`_
+    `Plan </projects/modules-project-plan/en/latest>`_
         Plans the projects.

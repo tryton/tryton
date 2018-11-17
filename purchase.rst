@@ -5,17 +5,17 @@ Purchase
 
 .. glossary::
 
-    `Purchase </projects/trytond-purchase/en/latest>`_
+    `Purchase </projects/modules-purchase/en/latest>`_
         Fundamentals to follow purchases.
 
-    `Request </projects/trytond-purchase-request/en/latest>`_
+    `Request </projects/modules-purchase-request/en/latest>`_
         Collects the purchase requests.
 
-    `Request Quotation </projects/trytond-purchase-request-quotation/en/latest>`_
+    `Request Quotation </projects/modules-purchase-request-quotation/en/latest>`_
         Asks quotation for teh purchase requests.
 
-    `Requisition </projects/trytond-purchase-requisition/en/latest>`_
+    `Requisition </projects/modules-purchase-requisition/en/latest>`_
         Requires purchase by employees.
 
-    `Shipment Cost </projects/trytond-shipment-cost/en/latest>`_
+    `Shipment Cost </projects/modules-shipment-cost/en/latest>`_
         Computes shipment cost.

@@ -5,8 +5,8 @@ Commission
 
 .. glossary::
 
-    `Commission </projects/trytond-commission/en/latest>`_
+    `Commission </projects/modules-commission/en/latest>`_
         Fundamentals to commission sale's agents.
 
-    `Waiting </projects/trytond-commission-waiting/en/latest>`_
+    `Waiting </projects/modules-commission-waiting/en/latest>`_
         Creates waiting account moves.

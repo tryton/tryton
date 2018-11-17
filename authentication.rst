@@ -5,8 +5,8 @@ Authentication
 
 .. glossary::
 
-    `SMS </projects/trytond-authentication-sms/en/latest>`_
+    `SMS </projects/modules-authentication-sms/en/latest>`_
         Authentication per SMS.
 
-    `LDAP </projects/trytond-ldap-authentication/en/latest>`_
+    `LDAP </projects/modules-ldap-authentication/en/latest>`_
         Authentication per LDAP.
