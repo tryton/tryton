@@ -12,7 +12,7 @@ Stock
         Manages consignment stock from supplier or at customer warehouse.
 
     `Forecast </projects/modules-stock-forecast/en/5.0>`_
-        Forecat the stock levels.
+        Forecast the stock levels.
 
     `Inventory Location </projects/modules-stock-inventory-location/en/5.0>`_
         Creates inventories for many locations.
