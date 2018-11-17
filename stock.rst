@@ -9,7 +9,7 @@ Stock
         Fundamentals to manage warehouses.
 
     `Forecast </projects/modules-stock-forecast/en/4.0>`_
-        Forecat the stock levels.
+        Forecast the stock levels.
 
     `Inventory Location </projects/modules-stock-inventory-location/en/4.0>`_
         Creates inventories for many locations.
