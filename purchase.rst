@@ -12,7 +12,7 @@ Purchase
         Collects the purchase requests.
 
     `Request Quotation </projects/modules-purchase-request-quotation/en/latest>`_
-        Asks quotation for teh purchase requests.
+        Asks quotation for the purchase requests.
 
     `Requisition </projects/modules-purchase-requisition/en/latest>`_
         Requires purchase by employees.
