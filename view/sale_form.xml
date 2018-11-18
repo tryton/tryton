@@ -69,13 +69,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="comment" colspan="4"/>
         </page>
         <page name="invoices">
-            <field name="invoices" colspan="4"/>
+            <field name="invoices" colspan="4" mode="tree"/>
         </page>
         <page name="shipments">
-            <field name="moves" colspan="4"
-                view_ids="sale.move_view_list_shipment"/>
-            <field name="shipments" colspan="4"/>
-            <field name="shipment_returns" colspan="4"/>
+            <field name="moves" colspan="4" view_ids="sale.move_view_list_shipment" mode="tree"/>
+            <field name="shipments" colspan="4" mode="tree"/>
+            <field name="shipment_returns" colspan="4" mode="tree"/>
         </page>
     </notebook>
     <field name="currency_digits" invisible="1" colspan="6"/>
