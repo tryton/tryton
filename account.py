@@ -320,7 +320,7 @@ class AccountFrFEC(Wizard):
             Invoice = None
         if Invoice and isinstance(line.move.origin, Invoice):
             return line.move.origin.invoice_date
-        return line.move.post_date
+        return line.move.date
 
 
 class AccountFrFECStart(ModelView):
