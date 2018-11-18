@@ -32,8 +32,11 @@ class PeriodMixin(Model):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        if hasattr(cls, 'parent') and hasattr(cls, 'childs'):
-            cls.parent.domain = [cls.parent.domain,
+        if (hasattr(cls, 'parent')
+                and hasattr(cls, 'childs')
+                and hasattr(cls, 'company')):
+            cls.parent.domain = [
+                ('company', '=', Eval('company', 0)),
                 ['OR',
                     If(Bool(Eval('start_date')),
                         ('start_date', '>=', Eval('start_date', None)),
@@ -47,9 +50,10 @@ class PeriodMixin(Model):
                     ('end_date', '=', None),
                     ],
                 ]
-            cls.parent.depends.extend(['start_date', 'end_date'])
+            cls.parent.depends.extend(['company', 'start_date', 'end_date'])
 
-            cls.childs.domain = [cls.childs.domain,
+            cls.childs.domain = [
+                ('company', '=', Eval('company', 0)),
                 If(Bool(Eval('start_date')),
                     ('start_date', '>=', Eval('start_date', None)),
                     ()),
@@ -57,7 +61,7 @@ class PeriodMixin(Model):
                     ('end_date', '<=', Eval('end_date', None)),
                     ()),
                 ]
-            cls.childs.depends.extend(['start_date', 'end_date'])
+            cls.childs.depends.extend(['company', 'start_date', 'end_date'])
 
 
 class ActivePeriodMixin(PeriodMixin):

@@ -598,16 +598,13 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         domain=[
             ('company', '=', Eval('company')),
             ], depends=['kind', 'company'])
-    parent = fields.Many2One('account.account', 'Parent', select=True,
-        left="left", right="right", ondelete="RESTRICT",
-        domain=[('company', '=', Eval('company'))],
-        states=_states, depends=['company'])
+    parent = fields.Many2One(
+        'account.account', 'Parent', select=True,
+        left="left", right="right", ondelete="RESTRICT", states=_states)
     left = fields.Integer('Left', required=True, select=True)
     right = fields.Integer('Right', required=True, select=True)
     childs = fields.One2Many(
-        'account.account', 'parent', 'Children',
-        domain=[('company', '=', Eval('company'))],
-        depends=['company'])
+        'account.account', 'parent', 'Children')
     balance = fields.Function(fields.Numeric('Balance',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_balance')
