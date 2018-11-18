@@ -137,13 +137,10 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
     code = fields.Char('Code', select=True, states=_states)
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
-    parent = fields.Many2One('account.tax.code', 'Parent', select=True,
-            domain=[('company', '=', Eval('company', 0))],
-        states=_states, depends=['company'])
+    parent = fields.Many2One(
+        'account.tax.code', 'Parent', select=True, states=_states)
     lines = fields.One2Many('account.tax.code.line', 'code', "Lines")
-    childs = fields.One2Many('account.tax.code', 'parent', 'Children',
-            domain=[('company', '=', Eval('company', 0))],
-        depends=['company'])
+    childs = fields.One2Many('account.tax.code', 'parent', 'Children')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     amount = fields.Function(fields.Numeric(
