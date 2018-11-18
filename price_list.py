@@ -106,7 +106,6 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __setup__(cls):
         super(PriceListLine, cls).__setup__()
-        cls._order.insert(1, ('price_list', 'ASC'))
         cls._error_messages.update({
                 'invalid_formula': ('Invalid formula "%(formula)s" in price '
                     'list line "%(line)s" with exception "%(exception)s".'),
