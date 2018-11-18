@@ -1251,7 +1251,7 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
 
         period = None
         if name.startswith('start_'):
-            period_ids = [0]
+            period_ids = []
             if context.get('start_period'):
                 period = Period(context['start_period'])
         elif name.startswith('end_'):
@@ -1277,7 +1277,10 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
     def get_dates(cls, name):
         context = Transaction().context
         if name.startswith('start_'):
-            return None, context.get('from_date')
+            from_date = context.get('from_date')
+            if from_date:
+                from_date -= datetime.timedelta(days=1)
+            return None, from_date
         elif name.startswith('end_'):
             return None, context.get('to_date')
         return None, None
