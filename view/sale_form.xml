@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath
         expr="/form/notebook/page[@name='shipments']/field[@name='shipments']"
         position="after">
-        <field name="drop_shipments" colspan="4"/>
+        <field name="drop_shipments" colspan="4" mode="tree"/>
     </xpath>
     <xpath expr="/form/notebook/page[@id='other']/field[@name='shipment_method']"
         position="after">
