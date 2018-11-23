@@ -378,7 +378,7 @@ of the ``string``, ``confirm`` and ``help`` attributes can be can be defined.
 
     * ``keyword``: specify where will the button be displayed in the client
       toolbar. The valid values are the keywords starting with `form_` from
-      topics-actions_ without the `form_` part.
+      :ref:`Actions <topics-actions>` without the `form_` part.
 
 notebook
 ^^^^^^^^
