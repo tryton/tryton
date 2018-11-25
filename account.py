@@ -1079,9 +1079,9 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 for tax_id in tax_ids:
                     if tax_id not in old_tax_ids:
                         values['taxes'] = [
-                            ('add', template2tax[x.id])
-                            for x in self.template.taxes
-                            if x.id in template2tax]
+                            ('add', [template2tax[x.id]
+                                    for x in child.template.taxes
+                                    if x.id in template2tax])]
                         break
                 if child.template.replaced_by:
                     replaced_by = template2account[
