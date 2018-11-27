@@ -41,14 +41,25 @@ def create_chart(company, tax=False):
             tax.credit_note_account = tax_account
             tax.save()
 
-            tax_code = TaxCodeTemplate()
-            tax_code.name = 'Tax Code'
-            tax_code.account = template
-            tax_code.save()
-            base_code = TaxCodeTemplate()
-            base_code.name = 'Base Code'
-            base_code.account = template
-            base_code.save()
+            TaxCodeTemplate.create([{
+                        'name': 'Tax Code',
+                        'account': template,
+                        'lines': [('create', [{
+                                        'operator': '+',
+                                        'type': 'invoice',
+                                        'amount': 'tax',
+                                        'tax': tax.id,
+                                        }])],
+                        }, {
+                        'name': 'Base Code',
+                        'account': template,
+                        'lines': [('create', [{
+                                        'operator': '+',
+                                        'type': 'invoice',
+                                        'amount': 'base',
+                                        'tax': tax.id,
+                                        }])],
+                        }])
 
     session_id, _, _ = CreateChart.create()
     create_chart = CreateChart(session_id)
@@ -1061,6 +1072,145 @@ class AccountTestCase(ModuleTestCase):
                         }])
             self.assertListEqual(
                 tax_rule.apply(tax, {}), [target_tax.id, tax.id])
+
+    @with_transaction()
+    def test_update_chart(self):
+        'Test all template models are updated when updating chart'
+        pool = Pool()
+        TypeTemplate = pool.get('account.account.type.template')
+        AccountTemplate = pool.get('account.account.template')
+        TaxTemplate = pool.get('account.tax.template')
+        TaxCodeTemplate = pool.get('account.tax.code.template')
+        ModelData = pool.get('ir.model.data')
+        UpdateChart = pool.get('account.update_chart', type='wizard')
+        Type = pool.get('account.account.type')
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+        TaxCode = pool.get('account.tax.code')
+
+        def check():
+            for type_ in Type.search([]):
+                self.assertEqual(type_.name, type_.template.name)
+                self.assertEqual(
+                    type_.balance_sheet, type_.template.balance_sheet)
+                self.assertEqual(
+                    type_.income_statement, type_.template.income_statement)
+                self.assertEqual(
+                    type_.display_balance, type_.template.display_balance)
+
+            for account in Account.search([]):
+                self.assertEqual(account.name, account.template.name)
+                self.assertEqual(account.code, account.template.code)
+                self.assertEqual(account.type.template, account.template.type)
+                self.assertEqual(account.reconcile, account.template.reconcile)
+                self.assertEqual(account.kind, account.template.kind)
+                self.assertEqual(account.deferral, account.template.deferral)
+                self.assertEqual(
+                    account.start_date, account.template.start_date)
+                self.assertEqual(account.end_date, account.template.end_date)
+                self.assertEqual(
+                    account.party_required, account.template.party_required)
+                self.assertEqual(
+                    account.general_ledger_balance,
+                    account.template.general_ledger_balance)
+                self.assertEqual(
+                    set(t.template for t in account.taxes),
+                    set(t for t in account.template.taxes))
+
+            for tax_code in TaxCode.search([]):
+                self.assertEqual(tax_code.name, tax_code.template.name)
+                self.assertEqual(tax_code.code, tax_code.template.code)
+                for line in tax_code.lines:
+                    self.assertEqual(line.code.template, line.template.code)
+                    self.assertEqual(line.operator, line.template.operator)
+                    self.assertEqual(line.type, line.template.type)
+                    self.assertEqual(line.tax.template, line.template.tax)
+
+            for tax in Tax.search([]):
+                self.assertEqual(tax.name, tax.template.name)
+                self.assertEqual(tax.description, tax.template.description)
+                self.assertEqual(tax.type, tax.template.type)
+                self.assertEqual(tax.rate, tax.template.rate)
+                self.assertEqual(tax.amount, tax.template.amount)
+                self.assertEqual(
+                    tax.update_unit_price, tax.template.update_unit_price)
+                self.assertEqual(
+                    tax.start_date, tax.template.start_date)
+                self.assertEqual(tax.end_date, tax.template.end_date)
+                self.assertEqual(
+                    tax.invoice_account.template, tax.template.invoice_account)
+                self.assertEqual(
+                    tax.credit_note_account.template,
+                    tax.template.credit_note_account)
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, True)
+
+            self.assertEqual(Type.search([], count=True), 16)
+            self.assertEqual(Account.search([], count=True), 7)
+            self.assertEqual(Tax.search([], count=True), 1)
+
+            check()
+
+        with Transaction().set_user(0):
+            root_type = TypeTemplate(ModelData.get_id(
+                'account', 'account_type_template_minimal_en'))
+            root_type.name = 'Updated Minimal Chart'
+            root_type.save()
+            chart = AccountTemplate(ModelData.get_id(
+                    'account', 'account_template_root_en'))
+            new_type = TypeTemplate()
+            new_type.name = 'New Type'
+            new_type.parent = root_type
+            new_type.save()
+            new_account = AccountTemplate()
+            new_account.name = 'New Account'
+            new_account.parent = chart
+            new_account.type = new_type
+            new_account.kind = 'other'
+            new_account.save()
+            updated_tax, = TaxTemplate.search([])
+            updated_tax.name = 'VAT'
+            updated_tax.invoice_account = new_account
+            updated_tax.save()
+            updated_account = AccountTemplate(ModelData.get_id(
+                    'account', 'account_template_revenue_en'))
+            updated_account.code = 'REV'
+            updated_account.name = 'Updated Account'
+            updated_account.reconcile = True
+            updated_account.end_date = datetime.date.today()
+            updated_account.taxes = [updated_tax]
+            updated_account.save()
+            new_tax = TaxTemplate()
+            new_tax.name = new_tax.description = '10% VAT'
+            new_tax.type = 'percentage'
+            new_tax.rate = Decimal('0.1')
+            new_tax.account = chart
+            new_tax.invoice_account = new_account
+            new_tax.credit_note_account = new_account
+            new_tax.save()
+            updated_tax_code, = TaxCodeTemplate.search([
+                    ('name', '=', 'Tax Code'),
+                    ])
+            updated_tax_code.name = 'Updated Tax Code'
+            updated_tax_code.save()
+            updated_tax_code_line, = updated_tax_code.lines
+            updated_tax_code_line.operator = '-'
+            updated_tax_code_line.save()
+
+        with set_company(company):
+            account, = Account.search([('parent', '=', None)])
+            session_id, _, _ = UpdateChart.create()
+            update_chart = UpdateChart(session_id)
+            update_chart.start.account = account
+            update_chart.transition_update()
+
+            self.assertEqual(Type.search([], count=True), 17)
+            self.assertEqual(Account.search([], count=True), 8)
+            self.assertEqual(Tax.search([], count=True), 2)
+
+            check()
 
 
 def suite():
