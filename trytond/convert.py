@@ -800,7 +800,6 @@ def post_import(pool, module, to_delete):
                 logger.warning(
                     'Could not delete id %d of model %s because model no '
                     'longer exists.', db_id, model)
-            transaction.commit()
         except Exception:
             transaction.rollback()
             logger.error(
@@ -820,6 +819,7 @@ def post_import(pool, module, to_delete):
                     logger.error(
                         'Could not inactivate id: %d of model %s\n',
                         db_id, model, exc_info=True)
+        transaction.commit()
 
     # Clean model_data:
     if mdata_delete:
