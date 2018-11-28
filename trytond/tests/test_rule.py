@@ -228,7 +228,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         test, = TestRule.create([{'field': 'foo'}])
 
-        TestRule.read([test.id])
+        TestRule.read([test.id], ['field'])
 
     @with_transaction()
     def test_perm_read_with_rule(self):
@@ -253,7 +253,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'bar'}])
 
-        TestRule.read([test.id])
+        TestRule.read([test.id], ['field'])
 
     @with_transaction()
     def test_perm_read_with_rule_fail(self):
@@ -279,7 +279,7 @@ class ModelRuleTestCase(unittest.TestCase):
         test, = TestRule.create([{'field': 'foo'}])
 
         with self.assertRaises(UserError):
-            TestRule.read([test.id])
+            TestRule.read([test.id], ['field'])
 
     @with_transaction()
     def test_search_without_rule(self):

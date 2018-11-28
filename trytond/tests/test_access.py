@@ -259,14 +259,14 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
     def _assert(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        TestAccess.read([record.id])
+        TestAccess.read([record.id], ['field1'])
         TestAccess.search([])
 
     def _assert_raises(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
         with self.assertRaises(UserError):
-            TestAccess.read([record.id])
+            TestAccess.read([record.id], ['field1'])
         with self.assertRaises(UserError):
             TestAccess.search([])
 

@@ -128,23 +128,14 @@ class ModelStorage(Model):
                 Trigger.trigger_action(triggers, trigger)
 
     @classmethod
-    def read(cls, ids, fields_names=None):
+    def read(cls, ids, fields_names):
         '''
         Read fields_names of record ids.
-        If fields_names is None, it read all fields.
         The order is not guaranteed.
         '''
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         ModelFieldAccess = pool.get('ir.model.field.access')
-
-        if not fields_names:
-            fields_names = []
-            for field_name in cls._fields.keys():
-                if ModelAccess.check_relation(cls.__name__, field_name,
-                        mode='read'):
-                    fields_names.append(field_name)
-
         ModelAccess.check(cls.__name__, 'read')
         ModelFieldAccess.check(cls.__name__, fields_names, 'read')
         return []

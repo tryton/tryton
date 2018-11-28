@@ -1,3 +1,4 @@
+* Remove implicit fields names in ModelStorage.read
 * Check read access on field in search domain (issue7766)
 * Add active field on ModelAccess, ModelFieldAccess and Group
 * Use write mode by default to check create and delete of resources

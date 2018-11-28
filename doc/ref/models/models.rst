@@ -252,10 +252,11 @@ Class methods:
     Trigger create actions. It will call actions defined in ``ir.trigger`` if
     ``on_create`` is set and ``condition`` is true.
 
-.. classmethod:: ModelStorage.read(ids[, fields_names])
+.. classmethod:: ModelStorage.read(ids, fields_names)
 
-    Return a list of values for the ids. If ``fields_names`` is set, there will
-    be only values for these fields otherwise it will be for all fields.
+    Return a list of dictionary for the record ids. The dictionary is composed
+    of the fields as key and their values.
+    The order of the returned list is not guaranteed.
 
 .. classmethod:: ModelStorage.write(records, values, [[records, values], ...])
 

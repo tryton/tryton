@@ -89,17 +89,17 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         return [('name',) + tuple(clause[1:])]
 
     @classmethod
-    def read(cls, ids, fields_names=None):
+    def read(cls, ids, fields_names):
         pool = Pool()
         Translation = pool.get('ir.translation')
         Config = pool.get('ir.configuration')
-        res = super(Lang, cls).read(ids, fields_names=fields_names)
+        res = super(Lang, cls).read(ids, fields_names)
         if (Transaction().context.get('translate_name')
                 and (not fields_names or 'name' in fields_names)):
             with Transaction().set_context(
                     language=Config.get_language(),
                     translate_name=False):
-                res2 = cls.read(ids, fields_names=['id', 'code', 'name'])
+                res2 = cls.read(ids, ['id', 'code', 'name'])
             for record2 in res2:
                 for record in res:
                     if record['id'] == record2['id']:

@@ -79,9 +79,9 @@ class ResourceMixin(ModelSQL, ModelView):
             (model, {'create': 'write', 'delete': 'write'}.get(mode, mode))]
 
     @classmethod
-    def read(cls, ids, fields_names=None):
+    def read(cls, ids, fields_names):
         cls.check_access(ids, mode='read')
-        return super(ResourceMixin, cls).read(ids, fields_names=fields_names)
+        return super(ResourceMixin, cls).read(ids, fields_names)
 
     @classmethod
     def delete(cls, records):

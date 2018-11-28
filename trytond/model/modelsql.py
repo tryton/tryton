@@ -656,17 +656,10 @@ class ModelSQL(ModelStorage):
         return records
 
     @classmethod
-    def read(cls, ids, fields_names=None):
+    def read(cls, ids, fields_names):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Translation = pool.get('ir.translation')
-        ModelAccess = pool.get('ir.model.access')
-        if not fields_names:
-            fields_names = []
-            for field_name in list(cls._fields.keys()):
-                if ModelAccess.check_relation(cls.__name__, field_name,
-                        mode='read'):
-                    fields_names.append(field_name)
         super(ModelSQL, cls).read(ids, fields_names=fields_names)
         transaction = Transaction()
         cursor = Transaction().connection.cursor()

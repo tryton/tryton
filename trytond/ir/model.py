@@ -330,16 +330,13 @@ class ModelField(ModelSQL, ModelView):
             ]
 
     @classmethod
-    def read(cls, ids, fields_names=None):
+    def read(cls, ids, fields_names):
         pool = Pool()
         Translation = pool.get('ir.translation')
         Model = pool.get('ir.model')
 
         to_delete = []
         if Transaction().context.get('language'):
-            if fields_names is None:
-                fields_names = list(cls._fields.keys())
-
             if 'field_description' in fields_names \
                     or 'help' in fields_names:
                 if 'model' not in fields_names:
@@ -349,7 +346,7 @@ class ModelField(ModelSQL, ModelView):
                     fields_names.append('name')
                     to_delete.append('name')
 
-        res = super(ModelField, cls).read(ids, fields_names=fields_names)
+        res = super(ModelField, cls).read(ids, fields_names)
 
         if (Transaction().context.get('language')
                 and ('field_description' in fields_names

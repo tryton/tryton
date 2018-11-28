@@ -73,7 +73,7 @@ class HistoryTestCase(unittest.TestCase):
                 self.assertEqual(history.value, value)
 
         with Transaction().set_context(_datetime=datetime.datetime.min):
-            self.assertRaises(UserError, History.read, [history_id])
+            self.assertRaises(UserError, History.read, [history_id], ['value'])
 
     @unittest.skipUnless(backend.name() == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
@@ -174,7 +174,7 @@ class HistoryTestCase(unittest.TestCase):
         transaction.rollback()
 
         History.restore_history([history_id], datetime.datetime.min)
-        self.assertRaises(UserError, History.read, [history_id])
+        self.assertRaises(UserError, History.read, [history_id], ['value'])
 
         transaction.rollback()
 
@@ -183,7 +183,7 @@ class HistoryTestCase(unittest.TestCase):
         transaction.commit()
 
         History.restore_history([history_id], datetime.datetime.max)
-        self.assertRaises(UserError, History.read, [history_id])
+        self.assertRaises(UserError, History.read, [history_id], ['value'])
 
     @with_transaction()
     def test_restore_history_before(self):

@@ -352,8 +352,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         return vals
 
     @classmethod
-    def read(cls, ids, fields_names=None):
-        result = super(User, cls).read(ids, fields_names=fields_names)
+    def read(cls, ids, fields_names):
+        result = super(User, cls).read(ids, fields_names)
         if not fields_names or 'password_hash' in fields_names:
             for values in result:
                 values['password_hash'] = None
