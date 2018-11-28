@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import PoolMeta
 
-__all__ = ['PaymentTerm', 'PaymentTermLine']
-
 
 class PaymentTerm(metaclass=PoolMeta):
     __name__ = 'account.invoice.payment_term'
@@ -12,4 +10,9 @@ class PaymentTerm(metaclass=PoolMeta):
 
 class PaymentTermLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.payment_term.line'
+    _history = True
+
+
+class PaymentTermLineRelativeDelta(metaclass=PoolMeta):
+    __name__ = 'account.invoice.payment_term.line.delta'
     _history = True
