@@ -64,7 +64,11 @@ class Invoice:
         if amount < 0:
             line = self._get_deposit_recall_invoice_line(
                 amount, account, description)
-            line.sequence = max(l.sequence for l in self.lines)
+            try:
+                line.sequence = max(l.sequence for l in self.lines
+                    if l.sequence is not None)
+            except ValueError:
+                pass
             line.save()
         if to_delete:
             InvoiceLine.delete(to_delete)
