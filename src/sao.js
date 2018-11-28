@@ -492,6 +492,7 @@ var Sao = {};
             Sao.main_menu_screen = form.screen;
             var view = form.screen.current_view;
             view.table.removeClass('table table-bordered table-striped');
+            view.table.addClass('no-responsive');
             view.table.find('thead').hide();
             jQuery('#menu').children().remove();
 
