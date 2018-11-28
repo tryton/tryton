@@ -72,7 +72,7 @@
             }
 
             new Notification(message.title, {
-                body: message.body,
+                body: message.body || '',
             });
         };
 
