@@ -686,6 +686,7 @@ var Sao = {};
         form.view_prm.done(function() {
             var view = form.screen.current_view;
             view.table.removeClass('table table-bordered table-striped');
+            view.table.addClass('no-responsive');
             view.table.find('thead').hide();
             var gs = new Sao.GlobalSearch();
             jQuery('#global-search').children().remove();
