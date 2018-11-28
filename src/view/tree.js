@@ -352,9 +352,10 @@
                 }
             }.bind(this));
 
-            if (this.columns.filter(function(c) {
-                return c.header.is(':visible');
-            }).length > 1) {
+            if (!this.table.hasClass('no-responsive') &
+                (this.columns.filter(function(c) {
+                    return !c.header.hasClass('invisible');
+                }).length > 1)) {
                 this.table.addClass('responsive');
                 this.table.addClass('responsive-header');
             } else {
