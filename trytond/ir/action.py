@@ -7,7 +7,9 @@ from functools import partial
 
 from sql import Null
 
-from ..model import ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields
+from ..model import (
+    ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields,
+    sequence_ordered)
 from ..tools import file_open
 from ..pyson import PYSONDecoder, PYSON, Eval
 from ..transaction import Transaction
@@ -861,19 +863,23 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
         return Action.get_action_values(cls.__name__, [action_id])[0]
 
 
-class ActionActWindowView(DeactivableMixin, ModelSQL, ModelView):
+class ActionActWindowView(
+        sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     "Action act window view"
     __name__ = 'ir.action.act_window.view'
-    sequence = fields.Integer('Sequence', required=True)
     view = fields.Many2One('ir.ui.view', 'View', required=True,
             ondelete='CASCADE')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
             ondelete='CASCADE')
 
     @classmethod
-    def __setup__(cls):
-        super(ActionActWindowView, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: remove required on sequence
+        table.not_null_action('sequence', 'remove')
 
     @classmethod
     def create(cls, vlist):
@@ -895,11 +901,11 @@ class ActionActWindowView(DeactivableMixin, ModelSQL, ModelView):
         pool.get('ir.action.keyword')._get_keyword_cache.clear()
 
 
-class ActionActWindowDomain(DeactivableMixin, ModelSQL, ModelView):
+class ActionActWindowDomain(
+        sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     "Action act window domain"
     __name__ = 'ir.action.act_window.domain'
     name = fields.Char('Name', translate=True)
-    sequence = fields.Integer('Sequence', required=True)
     domain = fields.Char('Domain')
     count = fields.Boolean('Count')
     act_window = fields.Many2One('ir.action.act_window', 'Action',
@@ -908,11 +914,19 @@ class ActionActWindowDomain(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ActionActWindowDomain, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls._error_messages.update({
                 'invalid_domain': ('Invalid domain or search criteria '
                     '"%(domain)s" on action "%(action)s".'),
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: remove required on sequence
+        table.not_null_action('sequence', 'remove')
 
     @classmethod
     def default_count(cls):

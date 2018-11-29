@@ -3,7 +3,7 @@
 
 import os
 
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond.tools import file_open
 from trytond.transaction import Transaction
 from trytond.rpc import RPC
@@ -13,7 +13,7 @@ __all__ = [
     ]
 
 
-class Icon(ModelSQL, ModelView):
+class Icon(sequence_ordered(), ModelSQL, ModelView):
     'Icon'
     __name__ = 'ir.ui.icon'
 
@@ -21,15 +21,22 @@ class Icon(ModelSQL, ModelView):
     module = fields.Char('Module', readonly=True, required=True)
     path = fields.Char('SVG Path', readonly=True, required=True)
     icon = fields.Function(fields.Char('Icon', depends=['path']), 'get_icon')
-    sequence = fields.Integer('Sequence', required=True)
 
     @classmethod
     def __setup__(cls):
         super(Icon, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
         cls.__rpc__.update({
                 'list_icons': RPC(),
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: remove required on sequence
+        table.not_null_action('sequence', 'remove')
 
     @staticmethod
     def default_module():

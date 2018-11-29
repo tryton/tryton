@@ -5,7 +5,7 @@ from functools import wraps
 
 from sql.operators import NotIn
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
 from trytond.modules import get_module_list, get_module_info
 from trytond.wizard import Wizard, StateView, Button, StateTransition, \
     StateAction
@@ -381,21 +381,15 @@ class ModuleDependency(ModelSQL, ModelView):
             return 'unknown'
 
 
-class ModuleConfigWizardItem(ModelSQL, ModelView):
+class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
     "Config wizard to run after activating a module"
     __name__ = 'ir.module.config_wizard.item'
     action = fields.Many2One('ir.action', 'Action', required=True,
         readonly=True)
-    sequence = fields.Integer('Sequence', required=True)
     state = fields.Selection([
         ('open', 'Open'),
         ('done', 'Done'),
         ], string='State', required=True, select=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(ModuleConfigWizardItem, cls).__setup__()
-        cls._order.insert(0, ('sequence', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):
@@ -416,6 +410,11 @@ class ModuleConfigWizardItem(ModelSQL, ModelView):
                     'ir.module.module.config_wizard.item')))
 
         super(ModuleConfigWizardItem, cls).__register__(module_name)
+
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: remove required on sequence
+        table.not_null_action('sequence', 'remove')
 
     @staticmethod
     def default_state():
