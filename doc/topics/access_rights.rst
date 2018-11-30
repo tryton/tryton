@@ -21,7 +21,7 @@ Actions Access
 ==============
 
 Each action define a list of groups that are allowed to use it.
-There is a special case for ref:`wizard <topics-wizard>` for which the read
+There is a special case for :ref:`wizard <topics-wizard>` for which the read
 access on the model is also checked and also the write access if there is no
 groups linked.
 
