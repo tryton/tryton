@@ -94,6 +94,24 @@ Print some reports::
     ...     })
     >>> _ = general_ledger.execute(gl_accounts)
 
+    >>> context = {
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     'start_period': fiscalyear.periods[1].id,
+    ...     }
+    >>> with config.set_context(context):
+    ...     gl_revenue, = GeneralLedgerAccount.find([
+    ...           ('name', '=', revenue.name),
+    ...           ])
+    >>> gl_revenue.start_balance
+    Decimal('-10.00')
+    >>> gl_revenue.credit
+    Decimal('0.00')
+    >>> gl_revenue.debit
+    Decimal('0.00')
+    >>> gl_revenue.end_balance
+    Decimal('-10.00')
+
     >>> trial_balance = Report('account.trial_balance', context={
     ...     'company': company.id,
     ...     'fiscalyear': fiscalyear.id,
