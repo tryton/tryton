@@ -126,7 +126,6 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def __register__(cls, module_name):
-        sql_table = cls.__table__()
         cursor = Transaction().connection.cursor()
         TableHandler = backend.get('TableHandler')
         super(ModelSQL, cls).__register__(module_name)
@@ -135,6 +134,9 @@ class ModelSQL(ModelStorage):
             return
 
         pool = Pool()
+        # Initiate after the callable test to prevent calling table_query which
+        # may rely on other model being registered
+        sql_table = cls.__table__()
 
         # create/update table in the database
         table = TableHandler(cls, module_name)
