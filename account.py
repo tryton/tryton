@@ -1258,6 +1258,14 @@ class GeneralLedgerAccount(ModelSQL, ModelView):
             period_ids = []
             if context.get('end_period'):
                 period = Period(context['end_period'])
+            else:
+                periods = Period.search([
+                        ('fiscalyear', '=', context.get('fiscalyear')),
+                        ('type', '=', 'standard'),
+                        ],
+                    order=[('start_date', 'DESC')], limit=1)
+                if periods:
+                    period, = periods
 
         if period:
             periods = Period.search([
