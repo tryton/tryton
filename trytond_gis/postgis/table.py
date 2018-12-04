@@ -47,7 +47,7 @@ class TableHandler(PGTableHandler):
                 return
 
             prev_type, prev_srid, prev_dimension = column_info
-            if prev_type.upper() != type.upper():
+            if prev_type.upper() != type_.upper():
                 logger.warning(
                     'Unable to migrate column %s on table %s '
                     'from %s to %s.',
