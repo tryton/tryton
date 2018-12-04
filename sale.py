@@ -359,6 +359,6 @@ class Promotion(metaclass=PoolMeta):
 
     def get_context_formula(self, sale_line):
         context = super(Promotion, self).get_context_formula(sale_line)
-        if sale_line.shipment_cost:
+        if sale_line and sale_line.shipment_cost:
             context['names']['unit_price'] = sale_line.shipment_cost
         return context
