@@ -615,7 +615,7 @@ class CountQuantity(ModelView):
     uom = fields.Many2One('product.uom', "UOM", readonly=True,
         help="The unit in which the quantities are specified.")
     quantity_resulting = fields.Float(
-        "Resulting Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Total Quantity", digits=(16, Eval('unit_digits', 2)),
         readonly=True, depends=['unit_digits'],
         help="The total amount of the line counted so far.")
 
@@ -629,5 +629,5 @@ class CountQuantity(ModelView):
     @fields.depends('quantity_added', 'line')
     def on_change_quantity_added(self):
         if self.line:
-            self.quantity_resulting = (
+            self.total_quantity = (
                 (self.line.quantity or 0) + (self.quantity_added or 0))

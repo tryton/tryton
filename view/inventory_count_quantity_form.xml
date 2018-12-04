@@ -5,8 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="product"/>
     <field name="product"/>
     <newline/>
-    <label name="quantity_resulting"/>
-    <field name="quantity_resulting"/>
+    <label name="total_quantity"/>
+    <field name="total_quantity"/>
     <label name="uom"/>
     <field name="uom"/>
     <label name="quantity_added"/>

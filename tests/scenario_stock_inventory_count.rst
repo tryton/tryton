@@ -84,13 +84,13 @@ Count inventory::
     >>> count.execute('quantity')
     >>> count.form.quantity_added
     1
-    >>> count.form.quantity_resulting
+    >>> count.form.total_quantity
     1
     >>> count.execute('add')
 
     >>> count.form.search = product
     >>> count.execute('quantity')
-    >>> count.form.quantity_resulting
+    >>> count.form.total_quantity
     2.0
     >>> count.execute('add')
 
@@ -100,9 +100,9 @@ Count inventory::
     ...     inventory.id, product2.id)).save()
     >>> count.execute('quantity')
     >>> count.form.quantity_added
-    >>> count.form.quantity_resulting
+    >>> count.form.total_quantity
     >>> count.form.quantity_added = 10
-    >>> count.form.quantity_resulting
+    >>> count.form.total_quantity
     10.0
     >>> count.execute('add')
 
