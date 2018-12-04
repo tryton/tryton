@@ -614,7 +614,7 @@ class CountQuantity(ModelView):
     product = fields.Many2One('product.product', "Product", readonly=True)
     uom = fields.Many2One('product.uom', "UOM", readonly=True,
         help="The unit in which the quantities are specified.")
-    quantity_resulting = fields.Float(
+    total_quantity = fields.Float(
         "Total Quantity", digits=(16, Eval('unit_digits', 2)),
         readonly=True, depends=['unit_digits'],
         help="The total amount of the line counted so far.")
