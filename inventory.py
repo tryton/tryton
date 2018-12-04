@@ -26,20 +26,25 @@ class Inventory(Workflow, ModelSQL, ModelView):
     'Stock Inventory'
     __name__ = 'stock.inventory'
     _rec_name = 'number'
-    number = fields.Char('Number', readonly=True)
+    number = fields.Char('Number', readonly=True,
+        help="The main identifier for the inventory.")
     location = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'storage')], states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        depends=['state'])
+        depends=['state'],
+        help="The location inventoried.")
     date = fields.Date('Date', required=True, states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        depends=['state'])
+        depends=['state'],
+        help="The date of the stock count.")
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
-        domain=[('type', '=', 'lost_found')], states=STATES, depends=DEPENDS)
+        domain=[('type', '=', 'lost_found')], states=STATES, depends=DEPENDS,
+        help="Used for the balancing entries needed when the stock is "
+        "corrected.")
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Lines',
         states={
@@ -57,9 +62,11 @@ class Inventory(Workflow, ModelSQL, ModelView):
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
-        depends=['state'])
+        depends=['state'],
+        help="The company the inventory is associated with.")
     state = fields.Selection(
-        INVENTORY_STATES, 'State', readonly=True, select=True)
+        INVENTORY_STATES, 'State', readonly=True, select=True,
+        help="The current state of the inventory.")
 
     @classmethod
     def __setup__(cls):
@@ -290,7 +297,8 @@ class InventoryLine(ModelSQL, ModelView):
             ('type', '=', 'goods'),
             ('consumable', '=', False),
             ], states=_states, depends=_depends)
-    uom = fields.Function(fields.Many2One('product.uom', 'UOM'), 'get_uom')
+    uom = fields.Function(fields.Many2One('product.uom', 'UOM',
+        help="The unit in which the quantity is specified."), 'get_uom')
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
     expected_quantity = fields.Float('Expected Quantity', required=True,
@@ -298,17 +306,20 @@ class InventoryLine(ModelSQL, ModelView):
         states={
             'invisible': Eval('id', -1) < 0,
         },
-        depends=['unit_digits'])
+        depends=['unit_digits'],
+        help="The quantity the system calculated should be in the location.")
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
-        states=_states, depends=['unit_digits'] + _depends)
+        states=_states, depends=['unit_digits'] + _depends,
+        help="The actual quantity found in the location.")
     moves = fields.One2Many('stock.move', 'origin', 'Moves', readonly=True)
     inventory = fields.Many2One('stock.inventory', 'Inventory', required=True,
         ondelete='CASCADE',
         states={
             'readonly': _states['readonly'] & Bool(Eval('inventory')),
             },
-        depends=_depends)
+        depends=_depends,
+        help="The inventory the line belongs to.")
     inventory_state = fields.Function(
         fields.Selection(INVENTORY_STATES, 'Inventory State'),
         'on_change_with_inventory_state')
@@ -574,7 +585,8 @@ class CountSearch(ModelView):
                     ('consumable', '=', False),
                     ],
                 [])],
-        depends=['search_model'])
+        depends=['search_model'],
+        help="The item that's counted.")
     search_model = fields.Function(fields.Selection(
         'get_search_models', "Search Model"),
         'on_change_with_search_model')
@@ -600,14 +612,17 @@ class CountQuantity(ModelView):
     line = fields.Many2One(
         'stock.inventory.line', "Line", readonly=True, required=True)
     product = fields.Many2One('product.product', "Product", readonly=True)
-    uom = fields.Many2One('product.uom', "UOM", readonly=True)
+    uom = fields.Many2One('product.uom', "UOM", readonly=True,
+        help="The unit in which the quantities are specified.")
     quantity_resulting = fields.Float(
         "Resulting Quantity", digits=(16, Eval('unit_digits', 2)),
-        readonly=True, depends=['unit_digits'])
+        readonly=True, depends=['unit_digits'],
+        help="The total amount of the line counted so far.")
 
     quantity_added = fields.Float(
         "Added Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
-        depends=['unit_digits'])
+        depends=['unit_digits'],
+        help="The quantity to add to the existing count.")
 
     unit_digits = fields.Integer("Unit Digits", readonly=True)
 

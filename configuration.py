@@ -17,7 +17,9 @@ shipment_internal_transit = fields.Many2One(
     'stock.location', "Internal Shipment Transit", required=True,
     domain=[
         ('type', '=', 'storage'),
-        ])
+        ],
+    help="The default location used for stock that is in transit between "
+    "warehouses.")
 
 
 def default_func(field_name):
@@ -51,42 +53,52 @@ class Configuration(
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.in'),
-                ]))
+                ],
+            help="Used to generate the number given to supplier shipments."))
     shipment_in_return_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Supplier Return Shipment Sequence", required=True,
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.in.return'),
-                ]))
+                ],
+            help="Used to generate the number given to supplier return "
+            "shipments."))
     shipment_out_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Customer Shipment Sequence", required=True,
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.out'),
-                ]))
+                ],
+            help="Used to generate the number given to customer "
+            "shipments."))
     shipment_out_return_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Customer Return Shipment Sequence", required=True,
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.out.return'),
-                ]))
+                ],
+            help="Used to generate the number given to customer return "
+            "shipments."))
     shipment_internal_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Internal Shipment Sequence", required=True,
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.shipment.internal'),
-                ]))
+                ],
+            help="Used to generate the number given to internal "
+            "shipments."))
     inventory_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Inventory Sequence", required=True,
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.inventory'),
-                ]))
+                ],
+            help="Used to generate the number given to inventories."))
     shipment_internal_transit = fields.MultiValue(shipment_internal_transit)
 
     @classmethod

@@ -65,10 +65,14 @@ def check_no_move(func):
 
 class Template(metaclass=PoolMeta):
     __name__ = "product.template"
-    quantity = fields.Function(fields.Float('Quantity'), 'sum_product')
-    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
-            'sum_product')
-    cost_value = fields.Function(fields.Numeric('Cost Value'),
+    quantity = fields.Function(fields.Float('Quantity',
+        help="The amount of stock in the location."),
+        'sum_product')
+    forecast_quantity = fields.Function(fields.Float('Forecast Quantity',
+        help="The amount of stock expected to be in the location."),
+        'sum_product')
+    cost_value = fields.Function(fields.Numeric('Cost Value',
+        help="The value of the stock in the location."),
         'sum_product')
 
     def sum_product(self, name):
@@ -113,11 +117,14 @@ class Template(metaclass=PoolMeta):
 
 class Product(StockMixin, object, metaclass=PoolMeta):
     __name__ = "product.product"
-    quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',
-            searcher='search_quantity')
-    forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
-            'get_quantity', searcher='search_quantity')
-    cost_value = fields.Function(fields.Numeric('Cost Value'),
+    quantity = fields.Function(fields.Float('Quantity',
+        help="The amount of stock in the location."),
+        'get_quantity', searcher='search_quantity')
+    forecast_quantity = fields.Function(fields.Float('Forecast Quantity',
+        help="The amount of stock expected to be in the location."),
+        'get_quantity', searcher='search_quantity')
+    cost_value = fields.Function(fields.Numeric('Cost Value',
+        help="The value of the stock in the location."),
         'get_cost_value')
 
     @classmethod
@@ -293,10 +300,10 @@ class ProductByLocationContext(ModelView):
     'Product by Location'
     __name__ = 'product.by_location.context'
     forecast_date = fields.Date(
-        'At Date', help=('Allow to compute expected '
-            'stock quantities for this date.\n'
-            '* An empty value is an infinite date in the future.\n'
-            '* A date in the past will provide historical values.'))
+        'At Date',
+        help="The date for which the stock quantity is calculated.\n"
+        "* An empty value calculates as far ahead as possible.\n"
+        "* A date in the past will provide historical values.")
     stock_date_end = fields.Function(fields.Date('At Date'),
         'on_change_with_stock_date_end')
 
@@ -414,7 +421,8 @@ class ProductQuantitiesByWarehouseContext(ModelView):
     warehouse = fields.Many2One('stock.location', 'Warehouse', required=True,
         domain=[
             ('type', '=', 'warehouse'),
-            ])
+            ],
+        help="The warehouse for which the quantities will be calculated.")
 
     @staticmethod
     def default_warehouse():

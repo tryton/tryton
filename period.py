@@ -18,18 +18,21 @@ class Period(Workflow, ModelSQL, ModelView):
     __name__ = 'stock.period'
     date = fields.Date('Date', required=True, states={
             'readonly': Eval('state') == 'closed',
-            }, depends=['state'])
+            }, depends=['state'],
+        help="When the stock period ends.")
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
-            ])
+            ],
+        help="The company the stock period is associated with.")
     caches = fields.One2Many('stock.period.cache', 'period', 'Caches',
         readonly=True)
     state = fields.Selection([
         ('draft', 'Draft'),
         ('closed', 'Closed'),
-        ], 'State', select=True, readonly=True)
+        ], 'State', select=True, readonly=True,
+        help="The current state of the stock period.")
 
     @classmethod
     def __setup__(cls):
