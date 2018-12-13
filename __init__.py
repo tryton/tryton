@@ -23,6 +23,7 @@ def register():
         party.PartyConfigurationLang,
         party.Party,
         party.PartyLang,
+        party.ContactMechanism,
         Rule,
         module='company', type_='model')
     Pool.register(

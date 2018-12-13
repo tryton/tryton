@@ -8,7 +8,7 @@ from trytond.transaction import Transaction
 from .model import CompanyMultiValueMixin, CompanyValueMixin
 
 __all__ = ['Configuration', 'PartyConfigurationLang', 'Party', 'PartyLang',
-    'PartyReplace', 'PartyErase']
+    'PartyReplace', 'PartyErase', 'ContactMechanism']
 
 
 class Configuration(CompanyMultiValueMixin, metaclass=PoolMeta):
@@ -93,3 +93,20 @@ class PartyErase(metaclass=PoolMeta):
 
     def check_erase_company(self, party, company):
         pass
+
+
+class ContactMechanism(CompanyMultiValueMixin, metaclass=PoolMeta):
+    __name__ = 'party.contact_mechanism'
+
+    def _phone_country_codes(self):
+        pool = Pool()
+        Company = pool.get('company.company')
+        context = Transaction().context
+
+        yield from super()._phone_country_codes()
+
+        if 'company' in context:
+            company = Company(context['company'])
+            for address in company.party.addresses:
+                if address.country:
+                    yield address.country.code
