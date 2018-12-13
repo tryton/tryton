@@ -1,3 +1,5 @@
+* Use country code as local prefix to parse phone numbers
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Support attention party in address format

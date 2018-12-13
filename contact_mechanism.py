@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from itertools import chain
 try:
     import phonenumbers
     from phonenumbers import PhoneNumberFormat, NumberParseException
@@ -126,26 +127,37 @@ class ContactMechanism(
             return 'fax:%s' % value
         return None
 
-    @classmethod
-    def format_value(cls, value=None, type_=None):
-        if phonenumbers and type_ in _PHONE_TYPES:
+    @fields.depends('party', '_parent_party.addreses')
+    def _phone_country_codes(self):
+        if self.party:
+            for address in self.party.addresses:
+                if address.country:
+                    yield address.country.code
+
+    @fields.depends(methods=['_phone_country_codes'])
+    def _parse_phonenumber(self, value):
+        for country_code in chain(self._phone_country_codes(), [None]):
             try:
-                phonenumber = phonenumbers.parse(value)
+                # Country code is ignored if value has an international prefix
+                return phonenumbers.parse(value, country_code)
             except NumberParseException:
                 pass
-            else:
+        return None
+
+    @fields.depends(methods=['_parse_phonenumber'])
+    def format_value(self, value=None, type_=None):
+        if phonenumbers and type_ in _PHONE_TYPES:
+            phonenumber = self._parse_phonenumber(value)
+            if phonenumber:
                 value = phonenumbers.format_number(
                     phonenumber, PhoneNumberFormat.INTERNATIONAL)
         return value
 
-    @classmethod
-    def format_value_compact(cls, value=None, type_=None):
+    @fields.depends(methods=['_parse_phonenumber'])
+    def format_value_compact(self, value=None, type_=None):
         if phonenumbers and type_ in _PHONE_TYPES:
-            try:
-                phonenumber = phonenumbers.parse(value)
-            except NumberParseException:
-                pass
-            else:
+            phonenumber = self._parse_phonenumber(value)
+            if phonenumber:
                 value = phonenumbers.format_number(
                     phonenumber, PhoneNumberFormat.E164)
         return value
@@ -155,7 +167,8 @@ class ContactMechanism(
         #  Setting value is done by on_changes
         pass
 
-    @fields.depends(methods=['on_change_with_url'])
+    @fields.depends(
+        methods=['on_change_with_url', 'format_value', 'format_value_compact'])
     def _change_value(self, value, type_):
         self.value = self.format_value(value=value, type_=type_)
         self.value_compact = self.format_value_compact(
@@ -240,10 +253,7 @@ class ContactMechanism(
     def check_valid_phonenumber(self):
         if not phonenumbers or self.type not in _PHONE_TYPES:
             return
-        try:
-            phonenumber = phonenumbers.parse(self.value)
-        except NumberParseException:
-            phonenumber = None
+        phonenumber = self._parse_phonenumber(self.value)
         if not (phonenumber and phonenumbers.is_valid_number(phonenumber)):
             self.raise_user_error(
                 'invalid_phonenumber', {
