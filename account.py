@@ -99,7 +99,8 @@ class StatementImport(metaclass=PoolMeta):
                 ])
         if len(numbers) == 1:
             number, = numbers
-            return number.account.owners[0]
+            if number.account.owners:
+                return number.account.owners[0]
 
     def coda_informations(self, coda_statement, move):
         informations = {}
