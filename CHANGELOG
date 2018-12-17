@@ -1,3 +1,4 @@
+* Change move attribute of ShipmentReport for a method
 * Rename inventory count quantity_resulting to total_quantity
 
 Version 5.0.0 - 2018-10-01

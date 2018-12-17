@@ -2485,7 +2485,6 @@ class DeliveryNote(CompanyReport):
 
 
 class ShipmentReport(CompanyReport):
-    move_attribute = 'inventory_moves'
 
     @classmethod
     def execute(cls, ids, data):
@@ -2493,25 +2492,29 @@ class ShipmentReport(CompanyReport):
             return super(ShipmentReport, cls).execute(ids, data)
 
     @classmethod
-    def get_context(cls, records, data):
-        report_context = super(ShipmentReport, cls).get_context(records, data)
+    def moves(cls, shipment):
+        raise NotImplementedError
 
-        compare_context = cls.get_compare_context(records, data)
+    @classmethod
+    def get_context(cls, shipments, data):
+        report_context = super().get_context(shipments, data)
+
+        compare_context = cls.get_compare_context(shipments, data)
         sorted_moves = {}
-        for shipment in records:
+        for shipment in shipments:
             sorted_moves[shipment.id] = sorted(
-                getattr(shipment, cls.move_attribute),
+                cls.moves(shipment),
                 key=functools.partial(cls.get_compare_key, compare_context))
         report_context['moves'] = sorted_moves
 
         return report_context
 
     @classmethod
-    def get_compare_context(cls, objects, data):
+    def get_compare_context(cls, shipments, data):
         from_location_ids = set()
         to_location_ids = set()
-        for obj in objects:
-            for move in getattr(obj, cls.move_attribute):
+        for shipment in shipments:
+            for move in cls.moves(shipment):
                 from_location_ids.add(move.from_location.id)
                 to_location_ids.add(move.to_location.id)
 
@@ -2532,18 +2535,48 @@ class PickingList(ShipmentReport):
     'Picking List'
     __name__ = 'stock.shipment.out.picking_list'
 
+    @classmethod
+    def moves(cls, shipment):
+        if shipment.warehouse_storage == shipment.warehouse_output:
+            return shipment.outgoing_moves
+        else:
+            return shipment.inventory_moves
+
 
 class SupplierRestockingList(ShipmentReport):
     'Supplier Restocking List'
     __name__ = 'stock.shipment.in.restocking_list'
+
+    @classmethod
+    def moves(cls, shipment):
+        if shipment.warehouse_input == shipment.warehouse_storage:
+            return shipment.incoming_moves
+        else:
+            return shipment.inventory_moves
 
 
 class CustomerReturnRestockingList(ShipmentReport):
     'Customer Return Restocking List'
     __name__ = 'stock.shipment.out.return.restocking_list'
 
+    @classmethod
+    def moves(cls, shipment):
+        if shipment.warehouse_input == shipment.warehouse_storage:
+            return shipment.incoming_moves
+        else:
+            return shipment.inventory_moves
+
 
 class InteralShipmentReport(ShipmentReport):
     'Interal Shipment Report'
     __name__ = 'stock.shipment.internal.report'
-    move_attribute = 'moves'
+
+    @classmethod
+    def moves(cls, shipment):
+        if shipment.transit_location:
+            if shipment.state == 'shipped':
+                return shipment.incoming_moves
+            else:
+                return shipment.outgoing_moves
+        else:
+            return shipment.moves
