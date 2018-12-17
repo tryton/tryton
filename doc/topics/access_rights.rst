@@ -4,57 +4,109 @@
 Access Rights
 =============
 
-There are 5 levels of access rights: model, actions, field, button and record.
-Every access right is based on the groups of the user.
-The model and field access rights are checked for every RPC call for which
-:attr:`trytond.rpc.RPC.check_access` is set. The others are always enforced.
+There are 5 levels of access rights: `Model`_ , `Actions`_, `Field`_, `Button`_
+and `Record Rule`_. They are based on the user's group membership.
+If any of those levels are violated, an error is raised.
 
-Model Access
-============
+The access rights are checked if the :attr:`Transaction.context
+<trytond.transaction.Transaction.context>` has the key ``_check_access`` set to
+``True`` (set by default by :attr:`RPC.check_access
+<trytond.rpc.RPC.check_access>`) and if the
+:attr:`~trytond.transaction.Transaction.user` is not `root`.
 
-They are defined by records of `ir.model.access` which define for each couple
-of model and group, the read, write, create and delete permission. If any group
-of the user has the permission activated, then the user is granted this
-permission.
+.. warning::
+    The record rules are always enforced regardless of the `_check_access`
+    value.
 
-Actions Access
-==============
+Model
+=====
 
-Each action define a list of groups that are allowed to use it.
+They are defined by records of ``ir.model.access`` which define for each couple
+of model and group, the ``read``, ``write``, ``create`` and ``delete``
+permission. The permissions are related to the
+:class:`~trytond.model.ModelStorage` methods with the same name and on
+:meth:`~trytond.model.ModelStorage.search` using the ``read`` permission.
+
+If any group the user belongs to has the checked permission activated, then the
+user is granted this permission.
+
+If there is no record for the model, then access is granted to all users.
+
+.. note::
+    Relation fields for which the user has no read access are automatically
+    removed from the :ref:`views <topics-views>`.
+
+Actions
+=======
+
+Each ``ir.action`` has a ``groups`` field which contains a list of user groups
+that are allowed to see and launch it.
+
 There is a special case for :ref:`wizard <topics-wizard>` for which the read
 access on the model is also checked and also the write access if there is no
 groups linked.
 
-Field Access
-============
+Field
+=====
 
-Same as for model access but applied on the field. It uses records of
-`ir.model.field.access`.
+They are defined by records of ``ir.model.field.access`` and work like those
+for `Model`_ but are applied to :ref:`fields <ref-models-fields>`.
+
+.. note::
+    Fields for which the user has no read access are automatically removed from
+    the :ref:`views <topics-views>`.
 
 Button
 ======
 
 For each button of a model the records of `ir.model.button` define the list of
-groups that are allowed to call it.
+groups that are allowed to call it. The user only needs to belong to one of the
+groups to be granted the permission to use it.
+
+If no group is defined for a button, the ``write`` permission to the model is
+checked instead.
+
+The ``read`` permission to the model is always enforced.
+
+.. note::
+    Buttons for which the user has no access are marked readonly.
 
 Button Rule
-===========
+-----------
 
-The `ir.model.button` could contain a list of rules which define how much
-different users must click on the button. Each rule must be passed to actually
-trigger the action. The counter can be reset when another defined button is
-clicked.
+The `ir.model.button` can contain a list of rules which define how many
+different users must click on the button.  Each rule, for which the condition
+is met, must be passed to actually trigger the action. The counter can be reset
+when another defined button is clicked.
 
 Record Rule
 ===========
 
-They are defined by records of `ir.rule.group` which contains a list of
-`ir.rule` domain to which the rule applies. The group are selected by groups or
-users. The access is granted for a record:
+The record rules are conditions that records must meet for the user to be
+granted permission to use them.
+They are defined by records of `ir.rule.group` which contains:
 
-    - if the user is in at least one group that has the permission activated,
+    - a model on which it applies
+    - the permissions granted
+    - a set of user groups to which the rule applies
+    - a global flag to always enforce
+    - a default flag to add to all users
+    - a list of `ir.rule` with a :ref:`domain <topics-domain>` to select the
+      records to which the rule applies.
 
-    - or if the user is in no group by there is a default group with the
-      permission,
+A rule group matches a record if the record is validated by at least one of the
+domains.
+The access is granted to a record:
 
-    - or if there is a global group with the permission.
+    - if the user belongs to a group which has at least one matching rule group
+      that has the permission,
+
+    - or if there is a default matching rule group with the permission,
+
+    - or if there is a global matching rule group with the permission.
+
+Otherwise the access is denied if there is any matching rule group.
+
+.. note::
+    Records for which the user has no ``read`` access are filtered out from the
+    :meth:`~trytond.model.ModelStorage.search` result.
