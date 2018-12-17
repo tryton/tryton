@@ -471,7 +471,7 @@ class OpenChartTaxCode(Wizard):
         return 'end'
 
 
-class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
+class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     'Account Tax Template'
     __name__ = 'account.tax.template'
     name = fields.Char('Name', required=True)
@@ -546,7 +546,7 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView):
         res = {}
         for field in ['name', 'description', 'sequence', 'amount', 'rate',
                 'type', 'start_date', 'end_date', 'update_unit_price',
-                'legal_notice']:
+                'legal_notice', 'active']:
             if not tax or getattr(tax, field) != getattr(self, field):
                 res[field] = getattr(self, field)
         for field in ('group',):
@@ -699,7 +699,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         depends=['company', 'type'])
     legal_notice = fields.Text("Legal Notice", translate=True,
         states=_states)
-    template = fields.Many2One('account.tax.template', 'Template')
+    template = fields.Many2One('account.tax.template', 'Template',
+        ondelete='RESTRICT')
     template_override = fields.Boolean('Override Template',
         help="Check to override template definition",
         states={
