@@ -233,14 +233,17 @@ class Model(WarningErrorMixin, URLMixin, PoolBase):
                         and getattr(cls._fields[field], arg):
                     res[field][arg] = copy.copy(getattr(cls._fields[field],
                         arg))
-            if (isinstance(cls._fields[field],
-                        (fields.Function, fields.One2Many, fields.Many2Many))
-                    and not getattr(cls, 'order_%s' % field, None)):
+            if ((isinstance(cls._fields[field],
+                            (fields.Function, fields.One2Many,
+                                fields.Many2Many))
+                        and not getattr(cls, 'order_%s' % field, None))
+                    or not hasattr(cls, 'search')):
                 res[field]['sortable'] = False
             if ((isinstance(cls._fields[field], fields.Function)
                         and not (cls._fields[field].searcher
                             or getattr(cls, 'domain_%s' % field, None)))
-                    or (cls._fields[field]._type in ('binary', 'sha'))):
+                    or (cls._fields[field]._type in ('binary', 'sha'))
+                    or not hasattr(cls, 'search')):
                 res[field]['searchable'] = False
             else:
                 res[field]['searchable'] = True
