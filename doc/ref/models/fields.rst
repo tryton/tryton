@@ -780,7 +780,7 @@ A one-to-one relation field.
 
     Same as :attr:`Many2One.datetime_field`
 
-.. attribute:: One2MOne.filter
+.. attribute:: One2One.filter
 
     Same as :attr:`One2Many.filter`
 
