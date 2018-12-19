@@ -72,12 +72,6 @@ class Journal(
     def default_sequence(cls, **pattern):
         return None
 
-    @staticmethod
-    def get_types():
-        Type = Pool().get('account.journal.type')
-        types = Type.search([])
-        return [(x.code, x.name) for x in types]
-
     @classmethod
     def search_rec_name(cls, name, clause):
         if clause[1].startswith('!') or clause[1].startswith('not '):
