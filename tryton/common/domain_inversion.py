@@ -127,6 +127,36 @@ def filter_leaf(domain, field, model):
         return [filter_leaf(d, field, model) for d in domain]
 
 
+def prepare_reference_domain(domain, reference):
+    "convert domain to replace reference fields by their local part"
+    if domain in ('AND', 'OR'):
+        return domain
+    elif is_leaf(domain):
+        # When a Reference field is using the dotted notation the model
+        # specified must be removed from the clause
+        if domain[0].count('.') and len(domain) > 3:
+            local_name, target_name = domain[0].split('.', 1)
+            if local_name == reference:
+                return [target_name] + list(domain[1:3] + domain[4:])
+        return domain
+    else:
+        return [prepare_reference_domain(d, reference) for d in domain]
+
+
+def extract_reference_models(domain, field_name):
+    "returns the set of the models available for field_name"
+    if domain in ('AND', 'OR'):
+        return set()
+    elif is_leaf(domain):
+        local_part = domain[0].split('.', 1)[0]
+        if local_part == field_name and len(domain) > 3:
+            return {domain[3]}
+        return set()
+    else:
+        return reduce(operator.or_,
+            (extract_reference_models(d, field_name) for d in domain))
+
+
 def eval_domain(domain, context, boolop=operator.and_):
     "compute domain boolean value according to the context"
     if is_leaf(domain):
@@ -150,6 +180,9 @@ def localize_domain(domain, field_name=None, strip_target=False):
         return domain
     elif is_leaf(domain):
         if 'child_of' in domain[1]:
+            if domain[0].count('.'):
+                _, target_part = domain[0].split('.', 1)
+                return [target_part] + list(domain[1:])
             if len(domain) == 3:
                 return domain
             else:
@@ -628,6 +661,13 @@ def test_localize():
     domain = [['x', 'child_of', [1], 'y']]
     assert localize_domain(domain, 'x') == [['y', 'child_of', [1]]]
 
+    domain = [['x.y', 'child_of', [1], 'parent']]
+    assert localize_domain(domain, 'x') == [['y', 'child_of', [1], 'parent']]
+
+    domain = [['x.y.z', 'child_of', [1], 'parent', 'model']]
+    assert localize_domain(domain, 'x') == \
+        [['y.z', 'child_of', [1], 'parent', 'model']]
+
     domain = [['x.id', '=', 1, 'y']]
     assert localize_domain(domain, 'x', False) == [['id', '=', 1, 'y']]
     assert localize_domain(domain, 'x', True) == [['id', '=', 1]]
@@ -635,6 +675,35 @@ def test_localize():
     domain = [['a.b.c', '=', 1, 'y', 'z']]
     assert localize_domain(domain, 'x', False) == [['b.c', '=', 1, 'y', 'z']]
     assert localize_domain(domain, 'x', True) == [['b.c', '=', 1, 'z']]
+
+
+def test_prepare_reference_domain():
+    domain = [['x', 'like', 'A%']]
+    assert prepare_reference_domain(domain, 'x') == [['x', 'like', 'A%']]
+
+    domain = [['x.y', 'like', 'A%', 'model']]
+    assert prepare_reference_domain(domain, 'x') == [['y', 'like', 'A%']]
+
+    domain = [['x.y', 'child_of', [1], 'model', 'parent']]
+    assert prepare_reference_domain(domain, 'x') == \
+        [['y', 'child_of', [1], 'parent']]
+
+
+def test_extract_models():
+    domain = [['x', 'like', 'A%']]
+    assert extract_reference_models(domain, 'x') == set()
+    assert extract_reference_models(domain, 'y') == set()
+
+    domain = [['x', 'like', 'A%', 'model']]
+    assert extract_reference_models(domain, 'x') == {'model'}
+    assert extract_reference_models(domain, 'y') == set()
+
+    domain = ['OR',
+        ['x.y', 'like', 'A%', 'model_A'],
+        ['x.z', 'like', 'B%', 'model_B']]
+    assert extract_reference_models(domain, 'x') == {'model_A', 'model_B'}
+    assert extract_reference_models(domain, 'y') == set()
+
 
 if __name__ == '__main__':
     test_simple_inversion()
@@ -648,3 +717,5 @@ if __name__ == '__main__':
     test_simplify()
     test_evaldomain()
     test_localize()
+    test_prepare_reference_domain()
+    test_extract_models()
