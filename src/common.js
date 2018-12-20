@@ -638,11 +638,6 @@
                 return;
             }
             var domain = field.get_domain(record);
-            if (field.description.type == 'reference') {
-                // The domain on reference field is not only based on the
-                // selection so the selection can not be filtered.
-                domain = [];
-            }
             if (!('relation' in this.attributes)) {
                 var change_with = this.attributes.selection_change_with || [];
                 var value = record._get_on_change_args(change_with);
@@ -707,12 +702,29 @@
         if (jQuery.isEmptyObject(domain)) {
             return;
         }
+
         var inversion = new Sao.common.DomainInversion();
-        this.selection = this.selection.filter(function(value) {
+        var _value_evaluator = function(value) {
             var context = {};
             context[this.field_name] = value[0];
             return inversion.eval_domain(domain, context);
-        }.bind(this));
+        }.bind(this);
+
+        var _model_evaluator = function(allowed_models) {
+            return function(value) {
+                return allowed_models.includes(value[0]);
+            };
+        };
+
+        var evaluator;
+        if (field.description.type == 'reference') {
+            var allowed_models = field.get_models(record);
+            evaluator = _model_evaluator(allowed_models);
+        } else {
+            evaluator = _value_evaluator;
+        }
+
+        this.selection = this.selection.filter(evaluator);
     };
     Sao.common.selection_mixin.get_inactive_selection = function(value) {
         if (!this.attributes.relation) {
@@ -2199,6 +2211,10 @@
                 return domain;
             } else if (this.is_leaf(domain)) {
                 if (domain[1].contains('child_of')) {
+                    if (domain[0].split('.').length > 1) {
+                        var target = domain[0].split('.').slice(1).join('.');
+                        return [target].concat(domain.slice(1));
+                    }
                     if (domain.length == 3) {
                         return domain;
                     } else {
@@ -2216,6 +2232,57 @@
                 return domain.map(function(e) {
                     return this.localize_domain(e, field_name, strip_target);
                 }.bind(this));
+            }
+        },
+        prepare_reference_domain: function(domain, reference) {
+            if (~['AND', 'OR'].indexOf(domain)) {
+                return domain;
+            } else if (this.is_leaf(domain)) {
+                if ((domain[0].split('.').length > 1) &&
+                        (domain.length > 3)) {
+                    var parts = domain[0].split('.');
+                    var local_name = parts[0];
+                    var target_name = parts.slice(1).join('.');
+
+                    if (local_name == reference) {
+                        var where = [];
+                        where.push(target_name);
+                        where = where.concat(
+                            domain.slice(1, 3), domain.slice(4));
+                        return where;
+                    }
+                    return domain;
+                }
+                return domain;
+            } else {
+                return domain.map(function(d) {
+                    return this.prepare_reference_domain(d, reference);
+                }.bind(this));
+            }
+        },
+        extract_reference_models: function(domain, field_name) {
+            if (~['AND', 'OR'].indexOf(domain)) {
+                return [];
+            } else if (this.is_leaf(domain)) {
+                var local_part = domain[0].split('.', 1)[0];
+                if ((local_part == field_name) &&
+                        (domain.length > 3)) {
+                    return [domain[3]];
+                }
+                return [];
+            } else {
+                var models = [];
+                domain.map(function(d) {
+                    var new_models = this.extract_reference_models(
+                        d, field_name);
+                    for (var i=0, len=new_models.length; i < len; i++) {
+                        var model = new_models[i];
+                        if (!models.includes(model)) {
+                            models.push(model);
+                        }
+                    }
+                }.bind(this));
+                return models;
             }
         },
         simplify: function(domain) {

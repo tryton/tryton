@@ -2344,6 +2344,18 @@
                 [['x', 'child_of', [1]]]),
             'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
 
+        domain = [['x.y', 'child_of', [1], 'parent']];
+        QUnit.ok(compare(
+            localize_domain(domain, 'x'),
+            [['y', 'child_of', [1], 'parent']]),
+            'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
+
+        domain = [['x.y.z', 'child_of', [1], 'parent', 'model']];
+        QUnit.ok(compare(
+            localize_domain(domain, 'x'),
+            [['y.z', 'child_of', [1], 'parent', 'model']]),
+            'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
+
         domain = [['x', 'child_of', [1], 'y']];
         QUnit.ok(compare(localize_domain(domain, 'x'),
                 [['y', 'child_of', [1]]]),
@@ -2365,6 +2377,62 @@
                 [['b.c', '=', 1, 'z']]),
             'localize_domain(' + JSON.stringify(domain) + ', \'x\')');
 
+    });
+
+    QUnit.test('DomainInversion.prepare_reference_domain', function() {
+        var domain_inversion = new Sao.common.DomainInversion();
+        var prepare_reference_domain = domain_inversion
+            .prepare_reference_domain.bind(domain_inversion);
+        var compare = Sao.common.compare;
+
+        var domain = [['x', 'like', 'A%']];
+        QUnit.ok(compare(
+            prepare_reference_domain(domain, 'x'),
+            [['x', 'like', 'A%']]));
+
+        domain = [['x.y', 'like', 'A%', 'model']];
+        QUnit.ok(compare(
+            prepare_reference_domain(domain, 'x'),
+            [['y', 'like', 'A%']]));
+
+        domain = [['x.y', 'child_of', [1], 'model', 'parent']];
+        QUnit.ok(compare(
+            prepare_reference_domain(domain, 'x'),
+            [['y', 'child_of', [1], 'parent']]));
+    });
+
+    QUnit.test('DomainInversion.extract_reference_models', function() {
+        var domain_inversion = new Sao.common.DomainInversion();
+        var extract_models = domain_inversion
+            .extract_reference_models.bind(domain_inversion);
+        var compare = Sao.common.compare;
+
+        var domain = [['x', 'like', 'A%']];
+        QUnit.ok(compare(
+            extract_reference_models(domain, 'x'),
+            []));
+        QUnit.ok(compare(
+            extract_reference_models(domain, 'y'),
+            []));
+
+        domain = [['x', 'like', 'A%', 'model']];
+        QUnit.ok(compare(
+            extract_reference_models(domain, 'x'),
+            ['model']));
+        QUnit.ok(compare(
+            extract_reference_models(domain, 'y'),
+            []));
+
+        domain = ['OR',
+            ['x', 'like', 'A%', 'model_A'],
+            ['x', 'like', 'B%', 'model_B']
+        ];
+        QUnit.ok(compare(
+            extract_reference_models(domain, 'x'),
+            ['model_A', 'model_B']));
+        QUnit.ok(compare(
+            extract_reference_models(domain, 'y'),
+            []));
     });
 
     QUnit.test('DomainParser.completion', function() {
