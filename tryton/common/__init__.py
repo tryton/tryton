@@ -3,6 +3,7 @@
 from .common import *
 from .datetime_strftime import *
 from .domain_inversion import domain_inversion, eval_domain, localize_domain, \
-        merge, inverse_leaf, filter_leaf, concat, simplify, unique_value
+        merge, inverse_leaf, filter_leaf, prepare_reference_domain, \
+        extract_reference_models, concat, simplify, unique_value
 from .environment import EvalEnvironment
 from . import timedelta
