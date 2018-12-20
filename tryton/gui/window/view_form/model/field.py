@@ -6,7 +6,8 @@ import tempfile
 import locale
 from tryton.common import \
         domain_inversion, eval_domain, localize_domain, \
-        merge, inverse_leaf, filter_leaf, concat, simplify, unique_value, \
+        merge, inverse_leaf, filter_leaf, prepare_reference_domain, \
+        extract_reference_models, concat, simplify, unique_value, \
         EvalEnvironment
 import tryton.common as common
 import datetime
@@ -869,9 +870,15 @@ class ReferenceField(Field):
         else:
             model = None
         screen_domain, attr_domain = self.domains_get(record)
+        screen_domain = prepare_reference_domain(screen_domain, self.name)
         return concat(localize_domain(
                 filter_leaf(screen_domain, self.name, model),
                 strip_target=True), attr_domain)
+
+    def get_models(self, record):
+        screen_domain, attr_domain = self.domains_get(record)
+        return extract_reference_models(
+            concat(screen_domain, attr_domain), self.name)
 
 
 class _FileCache(object):
@@ -950,8 +957,7 @@ class DictField(Field):
 
     def domain_get(self, record):
         screen_domain, attr_domain = self.domains_get(record)
-        return concat(localize_domain(inverse_leaf(screen_domain)),
-            attr_domain)
+        return concat(localize_domain(screen_domain), attr_domain)
 
     def date_format(self, record):
         context = self.get_context(record)

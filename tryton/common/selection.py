@@ -50,10 +50,6 @@ class SelectionMixin(object):
             return
 
         domain = field.domain_get(record)
-        if field.attrs['type'] == 'reference':
-            # The domain on reference field is not only based on the selection
-            # so the selection can not be filtered.
-            domain = []
         if 'relation' not in self.attrs:
             change_with = self.attrs.get('selection_change_with') or []
             value = record._get_on_change_args(change_with)
@@ -90,10 +86,23 @@ class SelectionMixin(object):
     def filter_selection(self, domain, record, field):
         if not domain:
             return
-        test = lambda value: eval_domain(domain, {
-                self.field_name: value[0],
-                })
-        self.selection = filter(test, self.selection)
+
+        def _value_evaluator(value):
+            return eval_domain(domain, {
+                    self.field_name: value[0],
+                    })
+
+        def _model_evaluator(allowed_models):
+            def test(value):
+                return value[0] in allowed_models
+            return test
+
+        if field.attrs['type'] == 'reference':
+            allowed_models = field.get_models(record)
+            evaluator = _model_evaluator(allowed_models)
+        else:
+            evaluator = _value_evaluator
+        self.selection = list(filter(evaluator, self.selection))
 
     def get_inactive_selection(self, value):
         if 'relation' not in self.attrs:
