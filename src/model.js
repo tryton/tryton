@@ -1911,8 +1911,8 @@
             var screen_domain = domains[0];
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
-            return inversion.concat([inversion.localize_domain(
-                        inversion.inverse_leaf(screen_domain), this.name),
+            return inversion.concat([
+                    inversion.localize_domain(screen_domain, this.name),
                     attr_domain]);
         },
         get_on_change_value: function(record) {
@@ -2442,9 +2442,18 @@
             var screen_domain = domains[0];
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
+            screen_domain = inversion.prepare_reference_domain(
+                screen_domain, this.name);
             return inversion.concat([inversion.localize_domain(
                         inversion.filter_leaf(screen_domain, this.name, model),
                         true), attr_domain]);
+        },
+        get_models: function(record) {
+            var domains = this.get_domains(record);
+            var inversion = new Sao.common.DomainInversion();
+            return inversion.extract_reference_models(
+                inversion.concat(domains[0], domains[1]),
+                this.name);
         },
         _is_empty: function(record) {
             var result = Sao.field.Reference._super._is_empty.call(
@@ -2522,8 +2531,8 @@
             var domains = this.get_domains(record);
             var screen_domain = domains[0];
             var attr_domain = domains[1];
-            return inversion.concat([inversion.localize_domain(
-                        inversion.inverse_leaf(screen_domain)),
+            return inversion.concat([
+                    inversion.localize_domain(screen_domain),
                     attr_domain]);
         },
         date_format: function(record) {
