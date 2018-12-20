@@ -116,8 +116,8 @@ class View(metaclass=PoolMeta):
         return arch
 
     @classmethod
-    def read(cls, ids, fields_names=None):
-        res = super(View, cls).read(ids, fields_names=fields_names)
+    def read(cls, ids, fields_names):
+        res = super(View, cls).read(ids, fields_names)
         if Transaction().user == 0:
             return res
         dashboard_id = cls.dashboard_id()

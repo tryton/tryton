@@ -16,7 +16,7 @@ class DashboardTestCase(ModuleTestCase):
         pool = Pool()
         View = pool.get('ir.ui.view')
         dashboard_id = View.dashboard_id()
-        result, = View.read([dashboard_id])
+        result, = View.read([dashboard_id], ['arch'])
         self.assertIn('board', result['arch'])
 
 
