@@ -712,7 +712,7 @@
 
         var _model_evaluator = function(allowed_models) {
             return function(value) {
-                return allowed_models.includes(value[0]);
+                return ~allowed_models.indexOf(value[0]);
             };
         };
 
@@ -2277,7 +2277,7 @@
                         d, field_name);
                     for (var i=0, len=new_models.length; i < len; i++) {
                         var model = new_models[i];
-                        if (!models.includes(model)) {
+                        if (!~models.indexOf(model)) {
                             models.push(model);
                         }
                     }
