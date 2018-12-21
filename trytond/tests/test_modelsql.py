@@ -20,6 +20,221 @@ class ModelSQLTestCase(unittest.TestCase):
     def setUpClass(cls):
         activate_module('tests')
 
+    @with_transaction()
+    def test_read(self):
+        "Test simple read"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        foo, bar = Model.create([{'name': "Foo"}, {'name': "Bar"}])
+        values = Model.read([foo.id, bar.id], ['name'])
+
+        self.assertEqual(
+            sorted(values, key=lambda v: v['id']),
+            [{'id': foo.id, 'name': "Foo"}, {'id': bar.id, 'name': "Bar"}])
+
+    @with_transaction()
+    def test_read_related_2one(self):
+        "Test read with related Many2One"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+        Target = pool.get('test.modelsql.read.target')
+
+        target, = Target.create([{'name': "Target"}])
+        record, = Model.create([{'target': target.id}])
+        values = Model.read([record.id], ['target.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'target.': {
+                        'id': target.id,
+                        'name': "Target",
+                        },
+                    }])
+
+    @with_transaction()
+    def test_read_related_2one_empty(self):
+        "Test read with empty related Many2One"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        record, = Model.create([{'target': None}])
+        values = Model.read([record.id], ['target.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'target.': None,
+                    }])
+
+    @with_transaction()
+    def test_read_related_reference(self):
+        "Test read with related Reference"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+        Target = pool.get('test.modelsql.read.target')
+
+        target, = Target.create([{'name': "Target"}])
+        record, = Model.create([{'reference': str(target)}])
+        values = Model.read([record.id], ['reference.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'reference.': {
+                        'id': target.id,
+                        'name': "Target",
+                        },
+                    }])
+
+    @with_transaction()
+    def test_read_related_reference_empty(self):
+        "Test read with empty related Reference"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        record, = Model.create([{'name': "Foo", 'reference': None}])
+        values = Model.read([record.id], ['reference.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'reference.': None,
+                    }])
+
+    @with_transaction()
+    def test_read_related_2many(self):
+        "Test read with related One2Many"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+        Target = pool.get('test.modelsql.read.target')
+
+        target, = Target.create([{'name': "Target"}])
+        record, = Model.create(
+            [{'targets': [('add', [target.id])]}])
+        values = Model.read([record.id], ['targets.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'targets.': [{
+                            'id': target.id,
+                            'name': "Target",
+                            }],
+                    }])
+
+    @with_transaction()
+    def test_read_related_2many_empty(self):
+        "Test read with empty related One2Many"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        record, = Model.create(
+            [{'targets': None}])
+        values = Model.read([record.id], ['targets.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'targets.': [],
+                    }])
+
+    @with_transaction()
+    def test_read_related_2many_multiple(self):
+        "Test read with multiple related One2Many"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+        Target = pool.get('test.modelsql.read.target')
+
+        target1, target2 = Target.create([
+                {'name': "Target 1"},
+                {'name': "Target 2"}])
+        record, = Model.create(
+            [{'targets': [('add', [target1.id, target2.id])]}])
+        values = Model.read([record.id], ['targets.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'targets.': [{
+                            'id': target1.id,
+                            'name': "Target 1",
+                            }, {
+                            'id': target2.id,
+                            'name': "Target 2",
+                            }],
+                    }])
+
+    @with_transaction()
+    def test_read_related_mixed(self):
+        "Test read mixed related"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+        Target = pool.get('test.modelsql.read.target')
+
+        target1, target2, target3 = Target.create([
+                {'name': "Target 1"},
+                {'name': "Target 2"},
+                {'name': "Target 3"}])
+        record1, record2 = Model.create([{
+                    'name': "Foo",
+                    'target': target1.id,
+                    'targets': [('add', [target1.id, target2.id])],
+                    }, {
+                    'name': "Bar",
+                    'reference': str(target2),
+                    'targets': [('add', [target3.id])],
+                    }])
+        values = Model.read(
+            [record1.id, record2.id],
+            ['name', 'target', 'target.name', 'targets', 'targets.name'])
+
+        self.assertEqual(
+            sorted(values, key=lambda v: v['id']), [{
+                    'id': record1.id,
+                    'name': "Foo",
+                    'target': target1.id,
+                    'target.': {
+                        'id': target1.id,
+                        'name': "Target 1",
+                        },
+                    'targets': (target1.id, target2.id),
+                    'targets.': [{
+                            'id': target1.id,
+                            'name': "Target 1",
+                            }, {
+                            'id': target2.id,
+                            'name': "Target 2",
+                            }],
+                    }, {
+                    'id': record2.id,
+                    'name': "Bar",
+                    'target': None,
+                    'target.': None,
+                    'targets': (target3.id,),
+                    'targets.': [{
+                            'id': target3.id,
+                            'name': "Target 3",
+                            }],
+                    }])
+
+    @with_transaction()
+    def test_read_related_nested(self):
+        "Test read with nested related"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+        Target = pool.get('test.modelsql.read.target')
+
+        target, = Target.create([{'name': "Target"}])
+        record, = Model.create(
+            [{'name': "Record", 'targets': [('add', [target.id])]}])
+        values = Model.read([record.id], ['targets.parent.name'])
+
+        self.assertEqual(values, [{
+                    'id': record.id,
+                    'targets.': [{
+                            'id': target.id,
+                            'parent.': {
+                                'id': record.id,
+                                'name': "Record",
+                                },
+                            }],
+                    }])
+
     @unittest.skipIf(backend.name() == 'sqlite',
         'SQLite not concerned because tryton don\'t set "NOT NULL"'
         'constraint: "ALTER TABLE" don\'t support NOT NULL constraint'

@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from itertools import islice, chain
-from collections import OrderedDict
+from itertools import islice, chain, product
+from collections import OrderedDict, defaultdict
 from functools import wraps
 
 from sql import (Table, Column, Literal, Desc, Asc, Expression, Null,
@@ -824,82 +824,90 @@ class ModelSQL(ModelStorage):
                     for row in result:
                         row[fname] = getter_result[row['id']]
 
+        def group_by(rows, keyfunc=None):
+            result = defaultdict(list)
+            if keyfunc is None:
+                result[None] = rows
+            else:
+                for row in rows:
+                    result[keyfunc(row)].append(row)
+            return result
+
+        def read_related(field, Target, rows, fields):
+            name = field.name
+            target_ids = []
+            if field._type.endswith('2many'):
+                add = target_ids.extend
+            elif field._type == 'reference':
+                def add(value):
+                    id_ = int(value.split(',', 1)[1])
+                    if id_ >= 0:
+                        target_ids.append(id_)
+            else:
+                add = target_ids.append
+            for row in rows:
+                value = row[name]
+                if value is not None:
+                    add(value)
+            return Target.read(target_ids, fields)
+
+        def add_related(field, rows, targets):
+            name = field.name
+            key = name + '.'
+            if field._type.endswith('2many'):
+                for row in rows:
+                    row[key] = values = list()
+                    for target in row[name]:
+                        if target is not None:
+                            values.append(targets[target])
+            else:
+                for row in rows:
+                    value = row[name]
+                    if isinstance(value, str):
+                        value = int(value.split(',', 1)[1])
+                    if value is not None and value >= 0:
+                        row[key] = targets[value]
+                    else:
+                        row[key] = None
+
         to_del = set()
-        fields_related2values = {}
-        for fname in list(fields_related.keys()) + datetime_fields:
+        for fname in chain(fields_related.keys(), datetime_fields):
             if fname not in fields_names:
                 to_del.add(fname)
             if fname not in cls._fields:
                 continue
             if fname not in fields_related:
                 continue
-            fields_related2values.setdefault(fname, {})
             field = cls._fields[fname]
-            if field._type in ('many2one', 'one2one'):
-                if hasattr(field, 'model_name'):
-                    Target = pool.get(field.model_name)
-                else:
-                    Target = field.get_target()
-                if getattr(field, 'datetime_field', None):
-                    for row in result:
-                        if row[fname] is None:
-                            continue
-                        with Transaction().set_context(
-                                _datetime=row[field.datetime_field]):
-                            date_target, = Target.read([row[fname]],
-                                fields_related[fname])
-                        target_id = date_target.pop('id')
-                        fields_related2values[fname].setdefault(target_id, {})
-                        fields_related2values[
-                            fname][target_id][row['id']] = date_target
-                else:
-                    for target in Target.read(
-                            [r[fname] for r in result if r[fname]],
-                            fields_related[fname]):
-                        target_id = target.pop('id')
-                        fields_related2values[fname].setdefault(target_id, {})
-                        for row in result:
-                            fields_related2values[
-                                fname][target_id][row['id']] = target
-            elif field._type == 'reference':
-                for row in result:
-                    if not row[fname]:
-                        continue
-                    model_name, record_id = row[fname].split(',', 1)
-                    if not model_name:
-                        continue
-                    record_id = int(record_id)
-                    if record_id < 0:
-                        continue
-                    Target = pool.get(model_name)
-                    target, = Target.read([record_id], fields_related[fname])
-                    del target['id']
-                    fields_related2values[fname][row[fname]] = target
+            datetime_field = getattr(field, 'datetime_field', None)
+            if field._type == 'reference':
+                def keyfunc(row):
+                    value = row[fname]
+                    if not value:
+                        return (None, None)
+                    model, _ = value.split(',', 1)
+                    return (pool.get(model), row.get(datetime_field))
+            else:
+                Target = field.get_target()
 
-        if to_del or fields_related or datetime_fields:
-            for row in result:
-                for fname in fields_related:
-                    if fname not in cls._fields:
-                        continue
-                    field = cls._fields[fname]
-                    for related in fields_related[fname]:
-                        related_name = '%s.%s' % (fname, related)
-                        value = None
-                        if row[fname]:
-                            if field._type in ('many2one', 'one2one'):
-                                value = fields_related2values[fname][
-                                    row[fname]][row['id']][related]
-                            elif field._type == 'reference':
-                                model_name, record_id = row[fname
-                                    ].split(',', 1)
-                                if model_name:
-                                    record_id = int(record_id)
-                                    if record_id >= 0:
-                                        value = fields_related2values[fname][
-                                            row[fname]][related]
-                        row[related_name] = value
-                for field in to_del:
-                    del row[field]
+                def keyfunc(row):
+                    return (Target, row.get(datetime_field))
+            for (Target, datetime_), rows in group_by(
+                    result, keyfunc).items():
+                ctx = {}
+                if datetime_:
+                    ctx['_datetime'] = datetime_
+                with Transaction().set_context(ctx):
+                    if Target:
+                        targets = read_related(
+                            field, Target, rows, fields_related[fname])
+                        targets = {t['id']: t for t in targets}
+                    else:
+                        targets = {}
+                    add_related(field, rows, targets)
+
+        for row, field in product(result, to_del):
+            del row[field]
 
         return result
 

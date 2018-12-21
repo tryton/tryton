@@ -271,43 +271,50 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
             TestAccess.search([])
 
     @with_transaction(context=_context)
-    def test_access_search_relate_empty(self):
+    def test_access_relate_empty(self):
         "Test access on search relate without model access"
         pool = Pool()
         TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
 
+        TestAccess.read([record.id], ['relate.value'])
         TestAccess.search([('relate.value', '=', 42)])
         TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
 
     @with_transaction(context=_context)
-    def test_access_search_relate(self):
+    def test_access_relate(self):
         "Test access on search relate"
         pool = Pool()
         TestAccess = pool.get('test.access')
         Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
+        record, = TestAccess.create([{}])
         model, = Model.search([('model', '=', 'test.access.relate')])
         ModelAccess.create([{
                     'model': model.id,
                     'perm_read': True,
                     }])
 
+        TestAccess.read([record.id], ['relate.value'])
         TestAccess.search([('relate.value', '=', 42)])
         TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
 
     @with_transaction(context=_context)
-    def test_no_access_search_relate(self):
+    def test_no_access_relate(self):
         "Test no access on search relate"
         pool = Pool()
         TestAccess = pool.get('test.access')
         Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
+        record, = TestAccess.create([{}])
         model, = Model.search([('model', '=', 'test.access.relate')])
         ModelAccess.create([{
                     'model': model.id,
                     'perm_read': False,
                     }])
 
+        with self.assertRaises(UserError):
+            TestAccess.read([record.id], ['relate.value'])
         with self.assertRaises(UserError):
             TestAccess.search([('relate.value', '=', 42)])
         with self.assertRaises(UserError):

@@ -256,6 +256,9 @@ Class methods:
 
     Return a list of dictionary for the record ids. The dictionary is composed
     of the fields as key and their values.
+    ``fields_names`` can contain dereferenced fields from related models.
+    Their values will be returned under the referencing field suffixed by a
+    `.`. The number of *dots* in the name is not limited.
     The order of the returned list is not guaranteed.
 
 .. classmethod:: ModelStorage.write(records, values, [[records, values], ...])

@@ -151,13 +151,9 @@ class Model(WarningErrorMixin, URLMixin, PoolBase, metaclass=ModelMeta):
                     and value.get(field_name)):
                 Target = pool.get(field.model_name)
                 if 'rec_name' in Target._fields:
-                    value[field_name + '.rec_name'] = Target(
-                        value[field_name]).rec_name
-
-        if not with_rec_name:
-            for field in list(value.keys()):
-                if field.endswith('.rec_name'):
-                    del value[field]
+                    value.setdefault(
+                        field_name + '.', {})['rec_name'] = Target(
+                            value[field_name]).rec_name
         return value
 
     @classmethod

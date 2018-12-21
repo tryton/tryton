@@ -37,7 +37,7 @@ class ModelSingletonTestCase(unittest.TestCase):
             'write_date',
             ])
         self.assertEqual(singleton['create_uid'], Transaction().user)
-        self.assertEqual(singleton['create_uid.rec_name'], 'Administrator')
+        self.assertEqual(singleton['create_uid.']['rec_name'], 'Administrator')
         self.assertTrue(isinstance(singleton['create_date'], datetime))
         self.assertEqual(singleton['write_uid'], None)
         self.assertEqual(singleton['write_date'], None)
