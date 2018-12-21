@@ -683,6 +683,11 @@ This field accepts as written value a list of tuples like this:
     A :ref:`domain <topics-domain>` that is not a constraint but only a
     filter on the records.
 
+.. warning::
+
+    Only a static domain is allowed, it cannot contain any
+    :class:`~trytond.pyson.PYSON` statements.
+
 .. attribute:: One2Many.order
 
     A list of tuple defining the default order of the records like for
