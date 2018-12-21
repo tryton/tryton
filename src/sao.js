@@ -68,6 +68,13 @@ var Sao = {};
         };
     }
 
+    Sao.setdefault = function(object, key, value) {
+        if (!object.hasOwnProperty(key)) {
+            object[key] = value;
+        }
+        return object[key];
+    };
+
     // Ensure RichText doesn't use style with css
     try {
         document.execCommand('styleWithCSS', false, false);
