@@ -94,7 +94,7 @@ class Product(metaclass=PoolMeta):
         '''
         Return the sale price for products and quantity.
         It uses if exists from the context:
-            uom: the unit of measure
+            uom: the unit of measure or the sale uom of the product
             currency: the currency id for the returned price
         '''
         pool = Pool()
@@ -123,6 +123,9 @@ class Product(metaclass=PoolMeta):
             if uom and product.default_uom.category == uom.category:
                 prices[product.id] = Uom.compute_price(
                     product.default_uom, prices[product.id], uom)
+            else:
+                prices[product.id] = Uom.compute_price(
+                    product.default_uom, prices[product.id], product.sale_uom)
             if currency and user.company:
                 if user.company.currency != currency:
                     date = Transaction().context.get('sale_date') or today

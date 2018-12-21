@@ -1,3 +1,5 @@
+* Use sale_uom as default for Product.get_sale_price
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Add configured delay for processing sale
