@@ -1,3 +1,4 @@
+* Add check on ModelSQL for positive id
 * New API to read related fields
 * Remove implicit fields names in ModelStorage.read
 * Check read access on field in search domain (issue7766)

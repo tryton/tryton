@@ -160,21 +160,27 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def __setup__(cls):
-        super(ModelSQL, cls).__setup__()
-        cls._sql_constraints = []
-        cls._order = [('id', 'ASC')]
-        cls._sql_error_messages = {}
-        if issubclass(cls, ModelView):
-            cls.__rpc__.update({
-                    'history_revisions': RPC(),
-                    })
-
         cls._table = config.get('table', cls.__name__, default=cls._table)
         if not cls._table:
             cls._table = cls.__name__.replace('.', '_')
 
         assert cls._table[-9:] != '__history', \
             'Model _table %s cannot end with "__history"' % cls._table
+
+        super(ModelSQL, cls).__setup__()
+
+        cls._sql_constraints = []
+        if not callable(cls.table_query):
+            table = cls.__table__()
+            cls._sql_constraints.append(
+                ('id_positive', Check(table, table.id >= 0),
+                    "ID must be positive"))
+        cls._order = [('id', 'ASC')]
+        cls._sql_error_messages = {}
+        if issubclass(cls, ModelView):
+            cls.__rpc__.update({
+                    'history_revisions': RPC(),
+                    })
 
     @classmethod
     def __table__(cls):
