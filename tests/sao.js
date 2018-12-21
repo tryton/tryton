@@ -2403,7 +2403,7 @@
 
     QUnit.test('DomainInversion.extract_reference_models', function() {
         var domain_inversion = new Sao.common.DomainInversion();
-        var extract_models = domain_inversion
+        var extract_reference_models = domain_inversion
             .extract_reference_models.bind(domain_inversion);
         var compare = Sao.common.compare;
 
