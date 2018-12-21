@@ -33,9 +33,9 @@ class Product(metaclass=PoolMeta):
             if context.get('taxes'):
                 taxes = Tax.browse(context.get('taxes'))
             for product in products:
-                uom = context_uom or product.default_uom
-                if uom.category != product.default_uom.category:
-                    uom = product.default_uom
+                uom = context_uom or product.sale_uom
+                if uom.category != product.sale_uom.category:
+                    uom = product.sale_uom
                 price = price_list.compute(
                      customer, product, prices[product.id], quantity, uom)
                 if price_list.tax_included and taxes:
