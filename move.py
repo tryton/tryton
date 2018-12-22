@@ -1037,7 +1037,7 @@ class Move(Workflow, ModelSQL, ModelView):
             product = Product.__table__()
             columns = ['id', 'state', 'effective_date', 'planned_date',
             'internal_quantity', 'from_location', 'to_location']
-            columns += list(grouping)
+            columns += [c for c in grouping if c not in columns]
             columns = [get_column(c, move, product) for c in columns]
             move = (move
                 .join(product, condition=move.product == product.id)
@@ -1050,7 +1050,7 @@ class Move(Workflow, ModelSQL, ModelView):
             if use_product:
                 product_cache = Product.__table__()
                 columns = ['internal_quantity', 'period', 'location']
-                columns += list(grouping)
+                columns += [c for c in grouping if c not in columns]
                 columns = [get_column(c, period_cache, product_cache)
                     for c in columns]
                 period_cache = (period_cache
@@ -1066,7 +1066,8 @@ class Move(Workflow, ModelSQL, ModelView):
             to_location = Location.__table__()
             to_parent_location = Location.__table__()
             columns = ['id', 'state', 'effective_date', 'planned_date',
-                'internal_quantity'] + list(grouping)
+                'internal_quantity']
+            columns += [c for c in grouping if c not in columns]
             columns = [Column(move, c).as_(c) for c in columns]
 
             move_with_parent = (move
