@@ -79,13 +79,13 @@ class StatementLine:
     payment_group = fields.Many2One(
         'account.payment.group', "Payment Group",
         domain=[
-            ('company', '=', Eval('_parent_statement', {}).get('company', -1)),
+            ('company', '=', Eval('company', -1)),
             ],
         states={
             'invisible': Bool(Eval('payment')) | Bool(Eval('invoice')),
             'readonly': Eval('statement_state') != 'draft',
             },
-        depends=['statement_state'])
+        depends=['company', 'statement_state'])
 
     @classmethod
     def __setup__(cls):
