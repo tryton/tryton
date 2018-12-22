@@ -245,24 +245,6 @@ class AccountPaymentSepaTestCase(ModuleTestCase):
                         }])
 
     @with_transaction()
-    def test_sepa_identifier_unique(self):
-        'Test SEPA Creditor Identifier uniqueness'
-        pool = Pool()
-        Party = pool.get('party.party')
-        Identifier = pool.get('party.identifier')
-
-        party = Party(name='test')
-
-        sepa = Identifier(party=party, code='ES23ZZZ47690558N',
-            type='sepa')
-        sepa.save()
-
-        sepa2 = Identifier(party=party, code='ES23ZZZ47690558N',
-            type='sepa')
-        with self.assertRaises(UserError):
-            sepa2.save()
-
-    @with_transaction()
     def test_sepa_identifier(self):
         'Test sepa indentifier validation'
         pool = Pool()

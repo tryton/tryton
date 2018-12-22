@@ -57,8 +57,6 @@ class PartyIdentifier(metaclass=PoolMeta):
         super(PartyIdentifier, cls).__setup__()
         cls.type.selection.append(('sepa', 'SEPA Creditor Identifier'))
         cls._error_messages.update({
-                'unique_sepa': ('Party "%(party)s" has more than one '
-                    'SEPA Creditor Identifier.'),
                 'sepa_invalid': ('The SEPA identifier "%(code)s" on party '
                     '"%(party)s" is not valid.'),
                 })
@@ -67,12 +65,6 @@ class PartyIdentifier(metaclass=PoolMeta):
     def check_code(self):
         super(PartyIdentifier, self).check_code()
         if self.type == 'sepa':
-            for identifier in self.party.identifiers:
-                if identifier.type == 'sepa' and self != identifier:
-                    self.raise_user_error('unique_sepa', {
-                            'invalid_sepa': self.code,
-                            'party': self.party.rec_name,
-                            })
             if not sepa.is_valid(self.code):
                 # Called from pre_validate so party may not be saved yet
                 if self.party and self.party.id > 0:
