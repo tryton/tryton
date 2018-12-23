@@ -9,7 +9,7 @@ from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
-from trytond.model import ModelView, Workflow, ModelSQL, fields, Check, Unique
+from trytond.model import ModelView, Workflow, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Not, Equal, Eval, Or, Bool, If
 from trytond.transaction import Transaction
@@ -44,10 +44,14 @@ class Forecast(Workflow, ModelSQL, ModelView):
         'stock.location', 'Destination', required=True,
         domain=[('type', 'in', ['customer', 'production'])], states=STATES,
         depends=DEPENDS)
-    from_date = fields.Date('From Date', required=True, states=STATES,
-        depends=DEPENDS)
-    to_date = fields.Date('To Date', required=True, states=STATES,
-        depends=DEPENDS)
+    from_date = fields.Date(
+        "From Date", required=True,
+        domain=[('from_date', '<=', Eval('to_date'))],
+        states=STATES, depends=DEPENDS + ['to_date'])
+    to_date = fields.Date(
+        "To Date", required=True,
+        domain=[('to_date', '>=', Eval('from_date'))],
+        states=STATES, depends=DEPENDS + ['from_date'])
     lines = fields.One2Many(
         'stock.forecast.line', 'forecast', 'Lines', states=STATES,
         depends=DEPENDS)
@@ -65,11 +69,6 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Forecast, cls).__setup__()
-        t = cls.__table__()
-        cls._sql_constraints += [
-            ('check_from_to_date', Check(t, t.to_date >= t.from_date),
-                '"To Date" must be greater than "From Date"'),
-            ]
         cls._error_messages.update({
                 'date_overlap': ('Forecast "%(first)s" overlaps with dates '
                     'of forecast "%(second)s" in the same location.'),
@@ -111,6 +110,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
+
+        # Migration from 5.0: remove check_from_to_date
+        table.drop_constraint('check_from_to_date')
 
     @staticmethod
     def default_state():
@@ -273,11 +275,14 @@ class ForecastLine(ModelSQL, ModelView):
         depends=['product', 'product_uom_category'] + _depends)
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
             'get_unit_digits')
-    quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        required=True, states=_states, depends=['unit_digits'] + _depends)
-    minimal_quantity = fields.Float('Minimal Qty',
-        digits=(16, Eval('unit_digits', 2)), required=True,
+    quantity = fields.Float(
+        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
+        domain=[('quantity', '>=', 0)],
         states=_states, depends=['unit_digits'] + _depends)
+    minimal_quantity = fields.Float(
+        "Minimal Qty", digits=(16, Eval('unit_digits', 2)), required=True,
+        domain=[('minimal_quantity', '<=', Eval('quantity'))],
+        states=_states, depends=['unit_digits', 'quantity'] + _depends)
     moves = fields.Many2Many('stock.forecast.line-stock.move',
         'line', 'move', 'Moves', readonly=True)
     forecast = fields.Many2One(
@@ -301,14 +306,19 @@ class ForecastLine(ModelSQL, ModelView):
         super(ForecastLine, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
-            ('check_line_qty_pos', Check(t, t.quantity >= 0),
-                'Line quantity must be positive'),
-            ('check_line_minimal_qty',
-                Check(t, t.quantity >= t.minimal_quantity),
-                'Line quantity must be greater than the minimal quantity'),
             ('forecast_product_uniq', Unique(t, t.forecast, t.product),
                 'Product must be unique by forecast'),
             ]
+
+    @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: remove check on quantity
+        table_h.drop_constraint('check_line_qty_pos')
+        table_h.drop_constraint('check_line_minimal_qty')
 
     @staticmethod
     def default_unit_digits():
