@@ -7,10 +7,16 @@ import requests
 import ssl
 
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import fields
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateTransition, StateAction
+
+from trytond.modules.stock_package_shipping.exceptions import (
+    PackingValidationError)
+from .exceptions import UPSError
 
 __all__ = ['PackageType', 'ShipmentOut', 'CreateShipping', 'CreateShippingUPS']
 
@@ -58,40 +64,33 @@ class PackageType(metaclass=PoolMeta):
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
-    @classmethod
-    def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
-        cls._error_messages.update({
-                'warehouse_address_required': ('An address is required for'
-                    ' warehouse "%(warehouse)s".'),
-                'phone_required': ('A phone number is required for'
-                    ' party "%(party)s".'),
-                'shipping_description_required': ('A shipping description is'
-                    ' required for shipment "%(shipment)s".'),
-                })
-
     def validate_packing_ups(self):
         warehouse_address = self.warehouse.address
         if not warehouse_address:
-            self.raise_user_error('warehouse_address_required', {
-                    'warehouse': self.warehouse.rec_name,
-                    })
+            raise PackingValidationError(
+                gettext('stock_package_shipping_ups'
+                    '.msg_warehouse_address_required',
+                    shipment=self.rec_name,
+                    warehouse=self.warehouse.rec_name))
         if warehouse_address.country != self.delivery_address.country:
             for party in {self.customer, self.company.party}:
                 for mechanism in party.contact_mechanisms:
                     if mechanism.type in ('phone', 'mobile'):
                         break
                 else:
-                    self.raise_user_error('phone_required', {
-                            'party': party.rec_name,
-                            })
+                    raise PackingValidationError(
+                        gettext('stock_package_shipping_ups'
+                            '.msg_phone_required',
+                            shipment=self.rec_name,
+                            party=party.rec_name))
             if not self.shipping_description:
                 if (any(p.type.ups_code != '01' for p in self.root_packages)
                         and self.carrier.ups_service_type != '11'):
                     # TODO Should also test if a country is not in the EU
-                    self.raise_user_error('shipping_description_required', {
-                            'shipment': self.rec_name,
-                            })
+                    raise PackingValidationError(
+                        gettext('stock_package_shipping_ups'
+                            '.msg_shipping_description_required',
+                            shipment=self.rec_name))
 
 
 class CreateShipping(metaclass=PoolMeta):
@@ -125,16 +124,6 @@ class CreateShippingUPS(Wizard):
 
     start = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(CreateShippingUPS, cls).__setup__()
-        cls._error_messages.update({
-                'ups_webservice_error': ('UPS webservice call failed with the'
-                    ' following error message:\n\n%(message)s'),
-                'has_reference_number': ('Shipment "%(shipment)s" already has'
-                    ' a reference number.'),
-                })
-
     def transition_start(self):
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
@@ -142,9 +131,10 @@ class CreateShippingUPS(Wizard):
 
         shipment = ShipmentOut(Transaction().context['active_id'])
         if shipment.reference:
-            self.raise_user_error('has_reference_number', {
-                    'shipment': shipment.rec_name,
-                    })
+            raise AccessError(
+                gettext('stock_package_shipping_ups'
+                    '.msg_shipment_has_reference_number',
+                    shipment=shipment.rec_name))
 
         credential = self.get_credential(shipment)
         packages = shipment.root_packages
@@ -167,25 +157,25 @@ class CreateShippingUPS(Wizard):
             error_message = e.message
 
         if error_message:
-            self.raise_user_error('ups_webservice_error', {
-                    'message': error_message,
-                    })
+            raise UPSError(
+                gettext('stock_package_shipping_ups.msg_ups_webservice_error',
+                    message=error_message))
 
         if 'Fault' in response:
             error = response['Fault']['detail']['Errors']
             message = '%s\n\n%s - %s' % (response['Fault']['faultstring'],
                 error['ErrorDetail']['PrimaryErrorCode']['Code'],
                 error['ErrorDetail']['PrimaryErrorCode']['Description'])
-            self.raise_user_error('ups_webservice_error', {
-                    'message': message,
-                    })
+            raise UPSError(
+                gettext('stock_package_shipping_ups.msg_ups_webservice_error',
+                    message=message))
 
         shipment_response = response['ShipmentResponse']
         response_status = shipment_response['Response']['ResponseStatus']
         if response_status['Code'] != '1':
-            self.raise_user_error('ups_webservice_error', {
-                    'message': response_status['Description'],
-                    })
+            raise UPSError(
+                gettext('stock_package_shipping_ups.msg_ups_webservice_error',
+                    message=response_status['Description']))
 
         shipment_results = shipment_response['ShipmentResults']
         shipment.reference = shipment_results['ShipmentIdentificationNumber']
