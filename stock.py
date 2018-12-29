@@ -2,10 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 import functools
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
+
+from trytond.modules.stock.exceptions import AssignError
 
 __all__ = ['Location', 'ShipmentInternal', 'ShipmentInternal_Location',
     'ShipmentOut', 'ShipmentInReturn', 'Supply']
@@ -126,15 +129,6 @@ class ShipmentInternal(metaclass=PoolMeta):
         depends=['state', 'from_location', 'to_location'])
 
     @classmethod
-    def __setup__(cls):
-        super(ShipmentInternal, cls).__setup__()
-        cls._error_messages.update({
-                'location_already_assigned': (
-                    "The location '%(location)s' is already assigned "
-                    "by '%(assigned_by)s'."),
-                })
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     @clear_location_assignation
@@ -159,15 +153,17 @@ class ShipmentInternal(metaclass=PoolMeta):
                 if not location.assigned_by:
                     location.assigned_by = shipment
                     if location in locations:
-                        cls.raise_user_error(
-                            'location_already_assigned', {
+                        raise AssignError(
+                            gettext('stock_location_move'
+                                '.msg_location_already_assigned') % {
                                 'location': location.rec_name,
                                 'assigned_by': locations[location].rec_name,
                                 })
                     locations[location] = location.assigned_by
                 elif location.assigned_by != shipment:
-                    cls.raise_user_error(
-                        'location_already_assigned', {
+                    raise AssignError(
+                        gettext('stock_location_move'
+                            '.msg_location_already_assigned') % {
                             'location': location.rec_name,
                             'assigned_by': location.assigned_by.rec_name,
                             })
