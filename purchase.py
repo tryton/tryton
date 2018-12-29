@@ -3,7 +3,9 @@
 from decimal import Decimal
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ValueMixin, fields
+from trytond.model.exceptions import RequiredValidationError
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -111,14 +113,6 @@ class Purchase(metaclass=PoolMeta):
             },
         depends=['customer'])
 
-    @classmethod
-    def __setup__(cls):
-        super(Purchase, cls).__setup__()
-        cls._error_messages.update({
-                'delivery_address_required': ('A delivery address must be '
-                    'defined for quotation of purchase "%s".'),
-                })
-
     @staticmethod
     def default_drop_location():
         pool = Pool()
@@ -147,7 +141,11 @@ class Purchase(metaclass=PoolMeta):
     def check_for_quotation(self):
         super(Purchase, self).check_for_quotation()
         if self.customer and not self.delivery_address:
-            self.raise_user_error('delivery_address_required', self.rec_name)
+            raise RequiredValidationError(
+                gettext('sale_supply_drop_shipment'
+                    '.msg_delivery_address_required_quotation_purchase') % {
+                    'purchase': self.rec_name,
+                    })
 
     def create_move(self, move_type):
         pool = Pool()
