@@ -74,12 +74,18 @@ class Selection(Field, SelectionMixin):
         table, _ = tables[None]
         selections = Model.fields_get([name])[name]['selection']
         if not isinstance(selections, (tuple, list)):
-            selections = getattr(Model, selections)()
+            if not is_instance_method(Model, selections):
+                selections = getattr(Model, selections)()
+            else:
+                selections = []
         column = self.sql_column(table)
         whens = []
         for key, value in selections:
             whens.append((column == key, value))
-        return [Case(*whens, else_=column)]
+        if whens:
+            return [Case(*whens, else_=column)]
+        else:
+            return [column]
 
 
 class TranslatedSelection(object):
