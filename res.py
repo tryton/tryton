@@ -6,6 +6,7 @@ import random
 
 from trytond.config import config
 from trytond.exceptions import LoginException
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.tools import resolve
@@ -70,13 +71,6 @@ class SMSCode(ModelSQL):
     code = fields.Char('Code')
 
     @classmethod
-    def __setup__(cls):
-        super(SMSCode, cls).__setup__()
-        cls._error_messages.update({
-                'sms_text': '%(name)s code %(code)s',
-                })
-
-    @classmethod
     def default_code(cls):
         length = config.getint('authentication_sms', 'length', default=6)
         srandom = random.SystemRandom()
@@ -106,11 +100,8 @@ class SMSCode(ModelSQL):
             record = cls(user_id=user)
             record.save()
             name = config.get('authentication_sms', 'name', default='Tryton')
-            text = cls.raise_user_error(
-                'sms_text', {
-                    'name': name,
-                    'code': record.code,
-                    }, raise_exception=False)
+            text = gettext('authentication_sms.msg_sms_text',
+                    name=name, code=record.code)
             if mobile:
                 send_sms(text, mobile)
             elif record.user.mobile:
