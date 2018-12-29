@@ -5,6 +5,7 @@ from decimal import Decimal
 
 from simpleeval import simple_eval
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import (
     ModelSQL, ModelView, MatchMixin, Workflow, DeactivableMixin, fields)
@@ -13,6 +14,7 @@ from trytond.transaction import Transaction
 from trytond.tools import decistmt
 
 from trytond.modules.product import price_digits
+from .exceptions import FormulaError
 
 __all__ = ['Sale', 'SaleLine',
     'SalePromotion', 'SalePromotion_Product', 'SalePromotion_ProductCategory']
@@ -135,15 +137,6 @@ class SalePromotion(
         help=('Python expression that will be evaluated with:\n'
             '- unit_price: the original unit_price'))
 
-    @classmethod
-    def __setup__(cls):
-        super(SalePromotion, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_formula': ('Invalid formula "%(formula)s" '
-                    'in promotion "%(promotion)s" '
-                    'with exception "%(exception)s".'),
-                })
-
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -166,11 +159,11 @@ class SalePromotion(
             if not isinstance(self.get_unit_price(**context), Decimal):
                 raise ValueError('Not a Decimal')
         except Exception as exception:
-            self.raise_user_error('invalid_formula', {
-                    'formula': self.formula,
-                    'promotion': self.rec_name,
-                    'exception': exception,
-                    })
+            raise FormulaError(
+                gettext('sale_promotion.msg_invalid_formula',
+                    formula=self.formula,
+                    promotion=self.rec_name,
+                    exception=exception)) from exception
 
     @classmethod
     def _promotions_domain(cls, sale):
