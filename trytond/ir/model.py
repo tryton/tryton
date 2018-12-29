@@ -217,8 +217,6 @@ class ModelField(ModelSQL, ModelView):
             'readonly': Bool(Eval('module')),
             },
         depends=['module'])
-    groups = fields.Many2Many('ir.model.field-res.group', 'field',
-            'group', 'Groups')
     help = fields.Text('Help', translate=True, loading='lazy',
         states={
             'readonly': Bool(Eval('module')),

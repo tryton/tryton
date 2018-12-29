@@ -4,7 +4,7 @@ from ..model import ModelSQL, DeactivableMixin, fields
 from ..pool import Pool, PoolMeta
 
 __all__ = [
-    'UIMenuGroup', 'ActionGroup', 'ModelFieldGroup', 'ModelButtonGroup',
+    'UIMenuGroup', 'ActionGroup', 'ModelButtonGroup',
     'ModelButtonRule', 'ModelButtonClick',
     'RuleGroupGroup', 'Lang', 'SequenceType',
     'SequenceTypeGroup', 'Sequence', 'SequenceStrict',
@@ -79,15 +79,6 @@ class ActionGroup(ModelSQL):
         super(ActionGroup, cls).delete(records)
         # Restart the cache on the domain_get method
         Pool().get('ir.rule')._domain_get_cache.clear()
-
-
-class ModelFieldGroup(ModelSQL):
-    "Model Field Group Rel"
-    __name__ = 'ir.model.field-res.group'
-    field = fields.Many2One('ir.model.field', 'Model Field',
-            ondelete='CASCADE', select=True, required=True)
-    group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
-            select=True, required=True)
 
 
 class ModelButtonGroup(DeactivableMixin, ModelSQL):

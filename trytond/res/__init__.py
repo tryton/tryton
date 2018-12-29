@@ -22,7 +22,6 @@ def register():
         UserConfigStart,
         UIMenuGroup,
         ActionGroup,
-        ModelFieldGroup,
         ModelButtonGroup,
         ModelButtonRule,
         ModelButtonClick,
