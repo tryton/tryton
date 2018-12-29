@@ -4,9 +4,13 @@
 from decimal import Decimal
 from math import ceil, floor, log10
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+
+from .exceptions import UOMValidationError
 
 __all__ = ['UomCategory', 'Uom']
 
@@ -59,18 +63,9 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('non_zero_rate_factor', Check(t, (t.rate != 0) | (t.factor != 0)),
-                'Rate and factor can not be both equal to zero.')
+                'product.msg_uom_no_zero_factor_rate')
             ]
         cls._order.insert(0, ('name', 'ASC'))
-        cls._error_messages.update({
-                'change_uom_rate_title': ('You cannot change Rate, Factor or '
-                    'Category on a Unit of Measure.'),
-                'change_uom_rate': ('If the UOM is still not used, you can '
-                    'delete it otherwise you can deactivate it '
-                    'and create a new one.'),
-                'invalid_factor_and_rate': (
-                    'Invalid Factor and Rate values in UOM "%s".'),
-                })
 
     @classmethod
     def check_xml_record(cls, records, values):
@@ -141,8 +136,9 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
                     1.0 / self.factor, self.__class__.rate.digits[1])
                 and self.factor != round(
                     1.0 / self.rate, self.__class__.factor.digits[1])):
-            self.raise_user_error('invalid_factor_and_rate', (
-                        self.rec_name,))
+            raise UOMValidationError(
+                gettext('product.msg_uom_incompatible_factor_rate',
+                    uom=self.rec_name))
 
     @classmethod
     def write(cls, *args):
@@ -158,18 +154,18 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
                 continue
             all_uoms += uoms
 
-        old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category.id))
+        old_uom = dict((uom.id, (uom.factor, uom.rate, uom.category))
             for uom in all_uoms)
 
         super(Uom, cls).write(*args)
 
         for uom in all_uoms:
-            if uom.factor != old_uom[uom.id][0] \
-                    or uom.rate != old_uom[uom.id][1] \
-                    or uom.category.id != old_uom[uom.id][2]:
-
-                cls.raise_user_error('change_uom_rate_title',
-                    error_description='change_uom_rate')
+            for i, field in ['factor', 'rate', 'category']:
+                if getattr(uom, field) != old_uom[uom.id][i]:
+                    raise AccessError(
+                        gettext('product.msg_uom_modify_%s' % field,
+                            uom=uom.rec_name),
+                        gettext('product.msg_uom_modify_options'))
 
     @property
     def accurate_field(self):
