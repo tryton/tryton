@@ -4,7 +4,9 @@ import datetime
 from collections import defaultdict
 from functools import wraps
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.model.exceptions import AccessError, RequiredValidationError
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
@@ -43,7 +45,7 @@ def check_no_move(func):
                 for field, state, error in cls._modify_no_move:
                     if field in values:
                         if find_moves(cls, records, state):
-                            cls.raise_user_error(error)
+                            raise AccessError(gettext(error))
                         # No moves for those records
                         break
         func(cls, *args)
@@ -64,12 +66,8 @@ class Lot(ModelSQL, ModelView, StockMixin):
     @classmethod
     def __setup__(cls):
         super(Lot, cls).__setup__()
-        cls._error_messages.update({
-                'change_product': ("You cannot change the product of a lot "
-                    "which is associated to stock moves."),
-                })
         cls._modify_no_move = [
-            ('product', None, 'change_product'),
+            ('product', None, 'stock_lot.msg_change_product'),
             ]
 
     @classmethod
@@ -132,13 +130,6 @@ class Move(metaclass=PoolMeta):
             },
         depends=['state', 'product'])
 
-    @classmethod
-    def __setup__(cls):
-        super(Move, cls).__setup__()
-        cls._error_messages.update({
-                'lot_required': 'Lot is required for move of product "%s".',
-                })
-
     def check_lot(self):
         "Check if lot is required"
         if (self.state == 'done'
@@ -146,7 +137,9 @@ class Move(metaclass=PoolMeta):
                 and not self.lot
                 and self.product.lot_is_required(
                     self.from_location, self.to_location)):
-            self.raise_user_error('lot_required', self.product.rec_name)
+            raise RequiredValidationError(
+                gettext('stock_lot.msg_lot_required',
+                    product=self.product.rec_name))
 
     @classmethod
     def validate(cls, moves):
@@ -297,13 +290,6 @@ class InventoryLine(metaclass=PoolMeta):
 class InventoryCount(metaclass=PoolMeta):
     __name__ = 'stock.inventory.count'
 
-    @classmethod
-    def __setup__(cls):
-        super(InventoryCount, cls).__setup__()
-        cls._error_messages.update({
-                'lot_required': 'Only lot can be selected for "%(product)s".',
-                })
-
     def default_quantity(self, fields):
         pool = Pool()
         Product = pool.get('product.product')
@@ -314,9 +300,9 @@ class InventoryCount(metaclass=PoolMeta):
             product = self.search.search
             if product.lot_is_required(
                     inventory.location, inventory.lost_found):
-                self.raise_user_error('lot_required', {
-                        'product': product.rec_name,
-                        })
+                raise RequiredValidationError(
+                    gettext('stock_lot.msg_only_lot',
+                        product=product.rec_name))
         return super(InventoryCount, self).default_quantity(fields)
 
     def get_line_domain(self, inventory):
