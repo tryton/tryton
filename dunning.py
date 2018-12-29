@@ -130,7 +130,7 @@ class Dunning(ModelSQL, ModelView):
         table = cls.__table__()
         cls._sql_constraints = [
             ('line_unique', Unique(table, table.line),
-                'Line can be used only once on dunning.'),
+                'account_dunning.msg_dunning_line_unique'),
             ]
         cls._active_field = 'active'
 
