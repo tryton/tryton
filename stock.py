@@ -2,9 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
+from trytond.i18n import gettext
 from trytond.pyson import Eval, If
 from trytond.pool import PoolMeta, Pool
 from trytond.wizard import StateAction
+
+from trytond.modules.stock_supply.exceptions import SupplyWarning
 
 __all__ = ['OrderPoint', 'LocationLeadTime', 'StockSupply']
 
@@ -70,13 +73,6 @@ class StockSupply(metaclass=PoolMeta):
     production = StateAction('stock_supply_production.act_production_request')
 
     @classmethod
-    def __setup__(cls):
-        super(StockSupply, cls).__setup__()
-        cls._error_messages.update({
-                'late_productions': 'There are some late productions.',
-                })
-
-    @classmethod
     def types(cls):
         return super(StockSupply, cls).types() + ['production']
 
@@ -84,6 +80,7 @@ class StockSupply(metaclass=PoolMeta):
         pool = Pool()
         Date = pool.get('ir.date')
         Move = pool.get('stock.move')
+        Warning = pool.get('res.user.warning')
         today = Date.today()
         if Move.search([
                     ('from_location.type', '=', 'production'),
@@ -91,8 +88,11 @@ class StockSupply(metaclass=PoolMeta):
                     ('state', '=', 'draft'),
                     ('planned_date', '<', today),
                     ], order=[]):
-            self.raise_user_warning('%s@%s' % (self.__name__, today),
-                'late_productions')
+            key = '%s@%s' % (self.__name__, today)
+            if Warning.check(key):
+                raise SupplyWarning(
+                    key,
+                    gettext('stock_supply_production.msg_late_productions'))
         return super(StockSupply, self).transition_create_()
 
     @property
