@@ -1,20 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta
+
+from trytond.modules.account_product.exceptions import AccountError
 
 __all__ = ['PurchaseLine']
 
 
 class PurchaseLine(metaclass=PoolMeta):
     __name__ = 'purchase.line'
-
-    @classmethod
-    def __setup__(cls):
-        super(PurchaseLine, cls).__setup__()
-        cls._error_messages.update({
-                'missing_account_asset': ('It misses '
-                    'an "Account Asset" on product "%s".'),
-                })
 
     def get_invoice_line(self):
         invoice_lines = super(PurchaseLine, self).get_invoice_line()
@@ -25,6 +20,9 @@ class PurchaseLine(metaclass=PoolMeta):
                 if invoice_line.product == self.product:
                     invoice_line.account = self.product.account_asset_used
                     if not invoice_line.account:
-                        self.raise_user_error('missing_account_asset',
-                            error_args=(self.product.rec_name,))
+                        raise AccountError(
+                            gettext('account_asset'
+                                '.msg_purchase_product_missing_account_asset',
+                                purchase=self.purchase.rec_name,
+                                product=self.product.rec_name))
         return invoice_lines

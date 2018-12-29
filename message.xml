@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data group="1">
+        <record model="ir.message" id="msg_asset_delete_draft">
+            <field name="text">You cannot delete asset "%(asset)s" because it is not in "draft" state.</field>
+        </record>
+        <record model="ir.message" id="msg_asset_running_close_period">
+            <field name="text">You cannot close period "%(period)s" because some assets "%(assets)s" still have lines without move.</field>
+        </record>
+        <record model="ir.message" id="msg_asset_invoice_line_unique">
+            <field name="text">Invoice line can be used only once on asset.</field>
+        </record>
+        <record model="ir.message" id="msg_purchase_product_missing_account_asset">
+            <field name="text">To invoice purchase "%(purchase)s", you must set an account asset on product "%(product)s".</field>
+        </record>
+        <record model="ir.message" id="msg_invoice_line_asset_unique">
+            <field name="text">Asset can be used only once on invoice line.</field>
+        </record>
+    </data>
+</tryton>

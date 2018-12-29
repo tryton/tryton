@@ -30,7 +30,7 @@ class InvoiceLine(metaclass=PoolMeta):
         table = cls.__table__()
         cls._sql_constraints += [
             ('asset_uniq', Unique(table, table.asset),
-                'Asset can be used only once on invoice line!'),
+                'account_asset.msg_invoice_line_asset_unique'),
             ]
 
     @fields.depends('product', 'invoice', 'invoice_type',

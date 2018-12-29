@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
@@ -134,14 +136,6 @@ class Move(metaclass=PoolMeta):
 class Period(metaclass=PoolMeta):
     __name__ = 'account.period'
 
-    @classmethod
-    def __setup__(cls):
-        super(Period, cls).__setup__()
-        cls._error_messages.update({
-            'running_assets_close': ('Some asset lines "%(names)s" are still '
-                'running for this period "%(period)s".'),
-            })
-
     def check_asset_line_running(self):
         """
         Check if it exist some asset lines without account move for the curent
@@ -161,10 +155,10 @@ class Period(metaclass=PoolMeta):
             names = ', '.join(a.rec_name for a in assets[:5])
             if len(assets) > 5:
                 names += '...'
-            self.raise_user_error('running_assets_close', {
-                    'period': self.rec_name,
-                    'names': names,
-                    })
+            raise AccessError(
+                gettext('account_asset.msg_asset_running_close_period',
+                    period=self.rec_name,
+                    assets=names))
 
     @classmethod
     def close(cls, periods):
