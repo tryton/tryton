@@ -11,13 +11,17 @@ import genshi.template
 from lxml import etree
 from sql import Literal
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import (ModelSQL, ModelView, Workflow, fields, dualmethod,
     Unique)
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.tools import reduce_ids, grouped_slice
 from trytond import backend
+
+from trytond.modules.account_payment.exceptions import ProcessError
 from trytond.modules.company import CompanyReport
 
 from .sepa_handler import CAMT054
@@ -144,10 +148,6 @@ class Group(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Group, cls).__setup__()
-        cls._error_messages.update({
-                'no_mandate': 'No valid mandate for payment "%s"',
-                'no_bank_account_number': 'No bank account for payment "%s".',
-                })
         cls._buttons.update({
                 'generate_message': {},
                 })
@@ -165,7 +165,10 @@ class Group(metaclass=PoolMeta):
             mandates = Payment.get_sepa_mandates(self.payments)
             for payment, mandate in zip(self.payments, mandates):
                 if not mandate:
-                    self.raise_user_error('no_mandate', payment.rec_name)
+                    raise ProcessError(
+                        gettext('account_payment_sepa'
+                            '.msg_payment_process_no_mandate',
+                            payment=payment.rec_name))
                 # Write one by one because mandate.sequence_type must be
                 # recomputed each time
                 Payment.write([payment], {
@@ -175,8 +178,10 @@ class Group(metaclass=PoolMeta):
         else:
             for payment in self.payments:
                 if not payment.sepa_bank_account_number:
-                    self.raise_user_error(
-                        'no_bank_account_number', payment.rec_name)
+                    raise ProcessError(
+                        gettext('account_payment_sepa'
+                            '.msg_payment_process_no_iban',
+                            payment=payment.rec_name))
         self.generate_message(_save=False)
 
     @dualmethod
@@ -439,13 +444,8 @@ class Mandate(Workflow, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints = [
             ('identification_unique', Unique(t, t.company, t.identification),
-                'The identification of the SEPA mandate must be unique '
-                'in a company.'),
+                'account_payment_sepa.msg_mandate_unique_id'),
             ]
-        cls._error_messages.update({
-                'delete_draft_canceled': ('You can not delete mandate "%s" '
-                    'because it is not in draft or canceled state.'),
-                })
 
     @staticmethod
     def default_company():
@@ -595,7 +595,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def delete(cls, mandates):
         for mandate in mandates:
             if mandate.state not in ('draft', 'canceled'):
-                cls.raise_user_error('delete_draft_canceled', mandate.rec_name)
+                raise AccessError(
+                    gettext('account_payment_sepa'
+                        '.msg_mandate_delete_draft_canceled',
+                        mandate=mandate.rec_name))
         super(Mandate, cls).delete(mandates)
 
 
