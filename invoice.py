@@ -1,10 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+
+from .exceptions import DepositError
 
 __all__ = ['Invoice', 'InvoiceLine',
     'DepositRecall', 'DepositRecallStart']
@@ -16,11 +19,6 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Invoice, cls).__setup__()
-        cls._error_messages.update({
-                'deposit_not_enough': (
-                    'The account "%(account)s" for party "%(party)s" '
-                    'has not enough deposit.'),
-                })
         cls._buttons.update({
                 'recall_deposit': {
                     'invisible': Eval('state') != 'draft',
@@ -106,10 +104,10 @@ class Invoice(metaclass=PoolMeta):
 
         for party, account, sign in to_check:
             if not party.check_deposit(account, sign):
-                cls.raise_user_error('deposit_not_enough', {
-                        'account': account.rec_name,
-                        'party': party.rec_name,
-                        })
+                raise DepositError(
+                    gettext('account_deposit.msg_deposit_not_enough',
+                        account=account.rec_name,
+                        party=party.rec_name))
 
 
 class InvoiceLine(metaclass=PoolMeta):

@@ -6,11 +6,14 @@ from sql import Null, Literal, For
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, reduce_ids
+
+from trytond.modules.party.exceptions import EraseError
 
 
 __all__ = ['Party', 'PartyErase']
@@ -135,18 +138,9 @@ class Party(metaclass=PoolMeta):
 class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyErase, cls).__setup__()
-        cls._error_messages.update({
-                'deposit': (
-                    'The party "%(party)s" can not be erased '
-                    'because he has deposit for the company "%(company)s".'),
-                })
-
     def check_erase_company(self, party, company):
         if party.deposit:
-            self.raise_user_error('deposit', {
-                    'party': party.rec_name,
-                    'company': company.rec_name,
-                    })
+            raise EraseError(
+                gettext('account_deposit.msg_erase_party_deposit',
+                    party=party.rec_name,
+                    company=company.rec_name))
