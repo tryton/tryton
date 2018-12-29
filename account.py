@@ -4,7 +4,10 @@ from io import StringIO
 
 from coda import CODA
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
+
+from trytond.modules.account_statement.exceptions import ImportStatementError
 
 
 class StatementImportStart(metaclass=PoolMeta):
@@ -18,18 +21,6 @@ class StatementImportStart(metaclass=PoolMeta):
 
 class StatementImport(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
-
-    @classmethod
-    def __setup__(cls):
-        super(StatementImport, cls).__setup__()
-        cls._error_messages.update({
-                'coda_no_journal': (
-                    "No journal found for the bank account '%(account)s'."),
-                'coda_wrong_currency': (
-                    "The journal '%(journal)s' must have "
-                    "the currency '%(coda_currency)s' instead of "
-                    "'%(currency)s'"),
-                })
 
     def parse_coda(self, encoding='windows-1252'):
         file_ = self.start.file_
@@ -56,15 +47,15 @@ class StatementImport(metaclass=PoolMeta):
         statement.journal = Journal.get_by_bank_account(
             statement.company, coda_statement.account)
         if not statement.journal:
-            self.raise_user_error('coda_no_journal', {
-                    'account': coda_statement.account,
-                    })
+            raise ImportStatementError(
+                gettext('account_statement.msg_import_no_journal',
+                    account=coda_statement.account))
         if statement.journal.currency.code != coda_statement.account_currency:
-            self.raise_user_error('coda_wrong_currency', {
-                    'journal': statement.journal.rec_name,
-                    'currency': statement.journal.currency.rec_name,
-                    'coda_currency': coda_statement.account_currency,
-                    })
+            raise ImportStatementError(
+                gettext('account_statement.msg_import_wrong_currency',
+                    journal=statement.journal.rec_name,
+                    currency=coda_statement.account_currency,
+                    journal_currency=statement.journal.currency.rec_name))
         statement.date = coda_statement.creation_date
         statement.start_balance = coda_statement.old_balance
         statement.end_balance = coda_statement.new_balance
