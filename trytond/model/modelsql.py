@@ -352,6 +352,15 @@ class ModelSQL(ModelStorage):
                     raise RequiredValidationError(
                         gettext('ir.msg_required_validation_record',
                             **cls._get_error_args(field_name)))
+        for name, _, error in cls._sql_constraints:
+            if TableHandler.convert_name(name) in str(exception):
+                raise SQLConstraintError(gettext(error))
+        # Check foreign key in last because this can raise false positive
+        # if the target is created during the same transaction.
+        for field_name in field_names:
+            if field_name not in cls._fields:
+                continue
+            field = cls._fields[field_name]
             if isinstance(field, fields.Many2One) and values.get(field_name):
                 Model = pool.get(field.model_name)
                 create_records = transaction.create_records.get(
@@ -369,9 +378,6 @@ class ModelSQL(ModelStorage):
                     raise ForeignKeyError(
                             gettext('ir.msg_foreign_model_missing',
                                 **error_args))
-        for name, _, error in cls._sql_constraints:
-            if TableHandler.convert_name(name) in str(exception):
-                raise SQLConstraintError(gettext(error))
 
     @classmethod
     def history_revisions(cls, ids):
