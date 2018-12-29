@@ -4,12 +4,15 @@ from decimal import Decimal
 
 from simpleeval import simple_eval
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
     sequence_ordered
 from trytond.tools import decistmt
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+
+from .exceptions import FormulaError
 
 __all__ = ['PriceList', 'PriceListLine']
 
@@ -103,14 +106,6 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         help=('Python expression that will be evaluated with:\n'
             '- unit_price: the original unit_price'))
 
-    @classmethod
-    def __setup__(cls):
-        super(PriceListLine, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_formula': ('Invalid formula "%(formula)s" in price '
-                    'list line "%(line)s" with exception "%(exception)s".'),
-                })
-
     @staticmethod
     def default_formula():
         return 'unit_price'
@@ -137,11 +132,11 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             if not isinstance(self.get_unit_price(**context), Decimal):
                 raise ValueError
         except Exception as exception:
-            self.raise_user_error('invalid_formula', {
-                    'formula': self.formula,
-                    'line': self.rec_name,
-                    'exception': exception,
-                    })
+            raise FormulaError(
+                gettext('product_price_list.msg_invalid_format',
+                    formula=self.formula,
+                    line=self.rec_name,
+                    exception=exception)) from exception
 
     def match(self, pattern):
         if 'quantity' in pattern:
