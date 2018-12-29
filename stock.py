@@ -2,9 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
+
+from .exceptions import LotUnitQuantityError
 
 __all__ = [
     'Lot', 'Move', 'Inventory', 'InventoryCount',
@@ -43,13 +46,10 @@ class Lot(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Lot, cls).__setup__()
-        cls._error_messages.update({
-                'change_unit': ("You cannot change the unit of a lot "
-                    "which is associated to done moves."),
-                })
         cls._modify_no_move += [
-            ('unit', 'done', 'change_unit'),
-            ('unit_quantity', 'done', 'change_unit'),
+            ('unit', 'done', 'stock_lot_unit.msg_change_unit'),
+            ('unit_quantity', 'done',
+                'stock_lot_unit.msg_change_unit_quantity'),
             ]
 
     @fields.depends('product', methods=['on_change_unit'])
@@ -82,15 +82,6 @@ class Lot(metaclass=PoolMeta):
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
-    @classmethod
-    def __setup__(cls):
-        super(Move, cls).__setup__()
-        cls._error_messages.update({
-                'lot_unit_quantity_greater': (
-                    'The quantity in "%(name)s" of the lot "%(lot)s" '
-                    'cannot be greater than %(quantity)s%(unit)s.'),
-                })
-
     def check_lot(self):
         pool = Pool()
         UoM = pool.get('product.uom')
@@ -102,12 +93,12 @@ class Move(metaclass=PoolMeta):
                 self.uom, self.quantity,
                 self.lot.unit, round=False)
             if quantity > self.lot.unit_quantity:
-                self.raise_user_error('lot_unit_quantity_greater', {
-                        'lot': self.lot.rec_name,
-                        'name': self.rec_name,
-                        'quantity': self.lot.unit_quantity,
-                        'unit': self.lot.unit.symbol,
-                        })
+                raise LotUnitQuantityError(
+                    gettext('stock_lot_unit.msg_lot_unit_quantity_greater',
+                        quantity=self.lot.unit_quantity,
+                        unit=self.lot.unit.symbol,
+                        lot=self.lot.rec_name,
+                        name=self.rec_name))
 
 
 class Inventory(metaclass=PoolMeta):
@@ -117,18 +108,16 @@ class Inventory(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     def confirm(cls, inventories):
-        pool = Pool()
-        Move = pool.get('stock.move')
         for inventory in inventories:
             for line in inventory.lines:
                 if (line.lot and line.lot.unit
                         and line.quantity > line.lot.unit_quantity):
-                    Move.raise_user_error('lot_unit_quantity_greater', {
-                            'lot': line.lot.rec_name,
-                            'name': line.rec_name,
-                            'quantity': line.lot.unit_quantity,
-                            'unit': line.lot.unit.symbol,
-                            })
+                    raise LotUnitQuantityError(
+                        gettext('stock_lot_unit.msg_lot_unit_quantity_greater',
+                            quantity=line.lot.unit_quantity,
+                            unit=line.lot.unit.symbol,
+                            lot=line.lot.rec_name,
+                            name=line.rec_name))
         super(Inventory, cls).confirm(inventories)
 
 
@@ -154,7 +143,6 @@ class LotUnitMixin(object):
     @classmethod
     def validate(cls, shipments):
         pool = Pool()
-        Move = pool.get('stock.move')
         UoM = pool.get('product.uom')
 
         super(LotUnitMixin, cls).validate(shipments)
@@ -172,12 +160,13 @@ class LotUnitMixin(object):
                         move.lot.unit, round=False)
                 for lot, quantity in lot_quantities.items():
                     if quantity > lot.unit_quantity:
-                        Move.raise_user_error('lot_unit_quantity_greater', {
-                                'lot': lot.rec_name,
-                                'name': shipment.rec_name,
-                                'quantity': lot.unit_quantity,
-                                'unit': lot.unit.symbol,
-                                })
+                        raise LotUnitQuantityError(
+                            gettext('stock_lot_unit'
+                                '.msg_lot_unit_quantity_greater',
+                                quantity=lot.unit_quantity,
+                                unit=lot.unit.symbol,
+                                lot=lot.rec_name,
+                                name=shipment.rec_name))
 
 
 class ShipmentIn(LotUnitMixin, metaclass=PoolMeta):
