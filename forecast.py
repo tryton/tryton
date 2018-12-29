@@ -9,12 +9,16 @@ from sql import Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, ModelSQL, fields, Unique
+from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Not, Equal, Eval, Or, Bool, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
+
+from .exceptions import ForecastValidationError
 
 __all__ = ['Forecast', 'ForecastLine', 'ForecastLineMove',
     'ForecastCompleteAsk', 'ForecastCompleteChoose', 'ForecastComplete']
@@ -69,12 +73,6 @@ class Forecast(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Forecast, cls).__setup__()
-        cls._error_messages.update({
-                'date_overlap': ('Forecast "%(first)s" overlaps with dates '
-                    'of forecast "%(second)s" in the same location.'),
-                'delete_cancel': ('Forecast "%s" must be cancelled before '
-                    'deletion.'),
-                })
         cls._order.insert(0, ('from_date', 'DESC'))
         cls._order.insert(1, ('warehouse', 'ASC'))
         cls._transitions |= set((
@@ -191,10 +189,10 @@ class Forecast(Workflow, ModelSQL, ModelView):
         forecast_id = cursor.fetchone()
         if forecast_id:
             second = self.__class__(forecast_id[0])
-            self.raise_user_error('date_overlap', {
-                    'first': self.rec_name,
-                    'second': second.rec_name,
-                    })
+            raise ForecastValidationError(
+                gettext('stock_forecast.msg_forecast_date_overlap',
+                    first=self.rec_name,
+                    second=second.rec_name))
 
     @classmethod
     def delete(cls, forecasts):
@@ -202,7 +200,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cls.cancel(forecasts)
         for forecast in forecasts:
             if forecast.state != 'cancel':
-                cls.raise_user_error('delete_cancel', forecast.rec_name)
+                raise AccessError(
+                    gettext('stock_forecast.msg_forecast_delete_cancel',
+                        forecast=forecast.rec_name))
         super(Forecast, cls).delete(forecasts)
 
     @classmethod
@@ -307,7 +307,7 @@ class ForecastLine(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('forecast_product_uniq', Unique(t, t.forecast, t.product),
-                'Product must be unique by forecast'),
+                'stock_forecast.msg_forecast_line_product_unique'),
             ]
 
     @classmethod
@@ -512,8 +512,14 @@ class ForecastLineMove(ModelSQL):
 class ForecastCompleteAsk(ModelView):
     'Complete Forecast'
     __name__ = 'stock.forecast.complete.ask'
-    from_date = fields.Date('From Date', required=True)
-    to_date = fields.Date('To Date', required=True)
+    from_date = fields.Date(
+        "From Date", required=True,
+        domain=[('from_date', '<', Eval('to_date'))],
+        depends=['to_date'])
+    to_date = fields.Date(
+        "To Date", required=True,
+        domain=[('to_date', '>', Eval('from_date'))],
+        depends=['from_date'])
 
 
 class ForecastCompleteChoose(ModelView):
@@ -540,14 +546,6 @@ class ForecastComplete(Wizard):
             ])
     complete = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(ForecastComplete, cls).__setup__()
-        cls._error_messages.update({
-                'from_to_date': (
-                    '"From Date" should be smaller than "To Date".'),
-                })
-
     def default_ask(self, fields):
         """
         Forecast dates shifted by one year.
@@ -565,8 +563,6 @@ class ForecastComplete(Wizard):
         Forecast = pool.get('stock.forecast')
         Product = pool.get('product.product')
         forecast = Forecast(Transaction().context['active_id'])
-        if self.ask.from_date > self.ask.to_date:
-            self.raise_user_error('from_to_date')
 
         with Transaction().set_context(
                 stock_destinations=[forecast.destination.id],
