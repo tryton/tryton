@@ -3,8 +3,11 @@
 from stdnum import iban
 from sql import operators, Literal
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
+
+from .exceptions import IBANValidationError
 
 
 __all__ = ['Bank', 'BankAccount', 'BankAccountNumber', 'BankAccountParty']
@@ -63,9 +66,6 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super(BankAccountNumber, cls).__setup__()
         cls._order.insert(0, ('account', 'ASC'))
-        cls._error_messages.update({
-                'invalid_iban': 'Invalid IBAN "%s".',
-                })
 
     @classmethod
     def default_type(cls):
@@ -139,7 +139,9 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
         super(BankAccountNumber, self).pre_validate()
         if (self.type == 'iban' and self.number
                 and not iban.is_valid(self.number)):
-            self.raise_user_error('invalid_iban', self.number)
+            raise IBANValidationError(
+                gettext('bank.msg_invalid_iban',
+                    number=self.number))
 
 
 class BankAccountParty(ModelSQL):
