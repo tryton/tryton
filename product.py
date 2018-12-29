@@ -10,7 +10,9 @@ from sql.aggregate import Max
 from sql.functions import CurrentTimestamp
 from sql.conditionals import Coalesce
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateTransition
 from trytond.pyson import Eval, Or
 from trytond.transaction import Transaction
@@ -41,7 +43,7 @@ def check_no_move(func):
                     ],
                 limit=1, order=[])
             if moves:
-                return True
+                return moves
         return False
 
     @functools.wraps(func)
@@ -53,10 +55,10 @@ def check_no_move(func):
                 and transaction.context.get('_check_access')):
             actions = iter(args)
             for records, values in zip(actions, actions):
-                for field, error in Template._modify_no_move:
+                for field, msg in Template._modify_no_move:
                     if field in values:
                         if find_moves(cls, records):
-                            Template.raise_user_error(error)
+                            raise AccessError(gettext(msg))
                         # No moves for those records
                         break
         func(cls, *args)
@@ -86,19 +88,13 @@ class Template(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Template, cls).__setup__()
-        cls._error_messages.update({
-                'change_default_uom': ('You cannot change the default uom for '
-                    'a product which is associated to stock moves.'),
-                'change_type': ('You cannot change the type for a product '
-                    'which is associated to stock moves.'),
-                })
         cls.cost_price.states['required'] = Or(
             cls.cost_price.states.get('required', True),
             Eval('type').in_(['goods', 'assets']))
         cls.cost_price.depends.append('type')
         cls._modify_no_move = [
-            ('default_uom', 'change_default_uom'),
-            ('type', 'change_type'),
+            ('default_uom', 'stock.msg_product_change_default_uom'),
+            ('type', 'stock.msg_product_change_type'),
             ]
 
     @classmethod

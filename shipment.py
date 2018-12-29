@@ -7,7 +7,9 @@ from functools import partial
 
 from sql import Null
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, If, Id, Bool
@@ -183,14 +185,6 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(ShipmentIn, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
-        cls._error_messages.update({
-                'incoming_move_input_dest': ('Incoming Moves must have '
-                    'the warehouse input location as destination location.'),
-                'inventory_move_input_source': ('Inventory Moves must '
-                    'have the warehouse input location as source location.'),
-                'delete_cancel': ('Supplier Shipment "%s" must be cancelled '
-                    'before deletion.'),
-                })
         cls._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -426,7 +420,9 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
-                cls.raise_user_error('delete_cancel', shipment.rec_name)
+                raise AccessError(
+                    gettext('stock.msg_shipment_delete_cancel',
+                        shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentIn, cls).delete(shipments)
 
@@ -575,10 +571,6 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(ShipmentInReturn, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
-        cls._error_messages.update({
-                'delete_cancel': ('Supplier Return Shipment "%s" must be '
-                    'cancelled before deletion.'),
-                })
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -702,7 +694,9 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
-                cls.raise_user_error('delete_cancel', shipment.rec_name)
+                raise AccessError(
+                    gettext('stock.msg_shipment_delete_cancel',
+                        shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentInReturn, cls).delete(shipments)
 
@@ -921,10 +915,6 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(ShipmentOut, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
-        cls._error_messages.update({
-                'delete_cancel': ('Customer Shipment "%s" must be cancelled '
-                    'before deletion.'),
-                })
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -1338,7 +1328,9 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
-                cls.raise_user_error('delete_cancel', shipment.rec_name)
+                raise AccessError(
+                    gettext('stock.msg_shipment_delete_cancel',
+                        shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentOut, cls).delete(shipments)
 
@@ -1494,10 +1486,6 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(ShipmentOutReturn, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
-        cls._error_messages.update({
-                'delete_cancel': ('Customer Return Shipment "%s" must be '
-                    'cancelled before deletion.'),
-                })
         cls._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -1689,7 +1677,9 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
-                cls.raise_user_error('delete_cancel', shipment.rec_name)
+                raise AccessError(
+                    gettext('stock.msg_shipment_delete_cancel',
+                        shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentOutReturn, cls).delete(shipments)
 
@@ -1994,10 +1984,6 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(ShipmentInternal, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
-        cls._error_messages.update({
-                'delete_cancel': ('Internal Shipment "%s" must be cancelled '
-                    'before deletion.'),
-                })
         cls._transitions |= set((
                 ('request', 'draft'),
                 ('draft', 'waiting'),
@@ -2166,7 +2152,9 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         cls.cancel(shipments)
         for shipment in shipments:
             if shipment.state != 'cancel':
-                cls.raise_user_error('delete_cancel', shipment.rec_name)
+                raise AccessError(
+                    gettext('stock.msg_shipment_delete_cancel',
+                        shipment=shipment.rec_name))
         Move.delete([m for s in shipments for m in s.moves])
         super(ShipmentInternal, cls).delete(shipments)
 

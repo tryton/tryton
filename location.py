@@ -4,6 +4,7 @@ import datetime
 import operator
 from decimal import Decimal
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, MatchMixin, ValueMixin, DeactivableMixin, fields,
     sequence_ordered, tree)
@@ -13,6 +14,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.tools.multivalue import migrate_property
+
+from .exceptions import LocationValidationError
 
 __all__ = ['Location', 'Party', 'PartyLocation', 'ProductsByLocationsContext',
     'LocationLeadTime']
@@ -47,6 +50,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         ('drop', 'Drop'),
         ('view', 'View'),
         ], 'Location type', states=STATES, depends=DEPENDS)
+    type_string = type.translated('type')
     parent = fields.Many2One("stock.location", "Parent", select=True,
         left="left", right="right",
         states={
@@ -133,16 +137,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     def __setup__(cls):
         super(Location, cls).__setup__()
         cls._order.insert(0, ('name', 'ASC'))
-        cls._error_messages.update({
-                'invalid_type_for_moves': ('Location "%s" with existing moves '
-                    'cannot be changed to a type that does not support moves.'
-                    ),
-                'child_of_warehouse': ('Location "%(location)s" must be a '
-                    'child of warehouse "%(warehouse)s".'),
-                'inactive_location_with_moves': (
-                    "The location '%(location)s' must be empty "
-                    "to be deactivated."),
-                })
 
         parent_domain = [
             ['OR',
@@ -220,8 +214,10 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                         ('state', 'not in', ['staging', 'draft']),
                         ])
             if moves:
-                self.raise_user_error(
-                    'invalid_type_for_moves', (self.rec_name,))
+                raise LocationValidationError(
+                    gettext('stock.msg_location_invalid_type_for_moves',
+                        location=self.rec_name,
+                        type=self.type_string))
 
     @classmethod
     def check_inactive(cls, locations):
@@ -230,9 +226,9 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         empty = cls.get_empty_locations(locations)
         non_empty = set(locations) - set(empty)
         if non_empty:
-            cls.raise_user_error('inactive_location_with_moves', {
-                    'location': next(iter(non_empty)).rec_name,
-                    })
+            raise LocationValidationError(
+                gettext('stock.msg_location_inactive_not_empty',
+                    location=next(iter(non_empty)).rec_name))
 
     @classmethod
     def get_empty_locations(cls, locations=None):
@@ -466,10 +462,10 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                             ('parent', 'child_of', warehouse.id),
                             ]))
                 if location not in childs:
-                    cls.raise_user_error('child_of_warehouse', {
-                            'location': location.rec_name,
-                            'warehouse': warehouse.rec_name,
-                            })
+                    raise LocationValidationError(
+                        gettext('stock.msg_location_child_of_warehouse',
+                            location=location.rec_name,
+                            warehouse=warehouse.rec_name))
 
     @classmethod
     def copy(cls, locations, default=None):

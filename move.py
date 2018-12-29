@@ -11,13 +11,17 @@ from sql import Literal, Union, Column, Null, For
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce, Case
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If, Bool
 from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from trytond.modules.product import price_digits
+
+from .exceptions import MoveOriginWarning
 
 __all__ = ['StockMixin', 'Move']
 
@@ -265,31 +269,15 @@ class Move(Workflow, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('check_move_qty_pos', Check(t, t.quantity >= 0),
-                'Move quantity must be positive'),
+                'stock.msg_move_quantity_positive'),
             ('check_move_internal_qty_pos',
                 Check(t, t.internal_quantity >= 0),
-                'Internal move quantity must be positive'),
+                'stock.msg_move_internal_quantity_positive'),
             ('check_from_to_locations',
                 Check(t, t.from_location != t.to_location),
-                'Source and destination location must be different'),
+                'stock.msg_move_from_to_location'),
             ]
         cls._order[0] = ('id', 'DESC')
-        cls._error_messages.update({
-            'set_state_draft': ('You can not set stock move "%s" to draft '
-                'state.'),
-            'set_state_assigned': ('You can not set stock move "%s" to '
-                'assigned state.'),
-            'set_state_done': 'You can not set stock move "%s" to done state.',
-            'delele_state': ('You can not delete stock move "%s" because '
-                'it is not in staging, draft nor cancelled state.'),
-            'period_closed': ('You can not modify move "%(move)s" because '
-                'period "%(period)s" is closed.'),
-            'modify_assigned': ('You can not modify stock move "%s" because '
-                'it is in "Assigned" state.'),
-            'modify_done_cancel': ('You can not modify stock move "%s" '
-                'because it is in "Done" or "Cancel" state.'),
-            'no_origin': 'The stock moves "%s" have no origin.',
-            })
         cls._transitions |= set((
                 ('staging', 'draft'),
                 ('staging', 'cancel'),
@@ -492,10 +480,10 @@ class Move(Workflow, ModelSQL, ModelView):
                     date = (move.effective_date if move.effective_date
                         else move.planned_date)
                     if date and date <= period.date:
-                        cls.raise_user_error('period_closed', {
-                                'move': move.rec_name,
-                                'period': period.rec_name,
-                                })
+                        raise AccessError(
+                            gettext('stock.msg_move_modify_period_close',
+                                move=move.rec_name,
+                                period=period.rec_name))
 
     def get_rec_name(self, name):
         return ("%s%s %s"
@@ -701,12 +689,15 @@ class Move(Workflow, ModelSQL, ModelView):
             if cls._deny_modify_assigned & vals_set:
                 for move in moves:
                     if move.state == 'assigned':
-                        cls.raise_user_error('modify_assigned', move.rec_name)
+                        raise AccessError(
+                            gettext('stock.msg_move_modify_assigned',
+                                move=move.rec_name))
             if cls._deny_modify_done_cancel & vals_set:
                 for move in moves:
                     if move.state in ('done', 'cancel'):
-                        cls.raise_user_error('modify_done_cancel',
-                            (move.rec_name,))
+                        raise AccessError(
+                            gettext('stock.msg_move_modify_%s' % move.state,
+                                move=move.rec_name))
 
         super(Move, cls).write(*args)
 
@@ -731,7 +722,9 @@ class Move(Workflow, ModelSQL, ModelView):
     def delete(cls, moves):
         for move in moves:
             if move.state not in {'staging', 'draft', 'cancel'}:
-                cls.raise_user_error('delele_state', (move.rec_name,))
+                raise AccessError(
+                    gettext('stock.msg_move_delete_draft_cancel',
+                        move=move.rec_name))
         super(Move, cls).delete(moves)
 
     @staticmethod
@@ -741,6 +734,8 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def check_origin(cls, moves, types=None):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
         if types is None:
             types = cls.check_origin_types()
         if not types:
@@ -757,7 +752,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 names += '...'
             warning_name = '%s.done' % hashlib.md5(
                 str(moves).encode('utf-8')).hexdigest()
-            cls.raise_user_warning(warning_name, 'no_origin', names)
+            if Warning.check(warning_name):
+                raise MoveOriginWarning(warning_name,
+                    gettext('stock.msg_move_no_origin',
+                        moves=names))
 
     def pick_product(self, location_quantities):
         """

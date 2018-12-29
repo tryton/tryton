@@ -2,11 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Null
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, Bool, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, StateTransition, Button
+
+from .exceptions import InventoryValidationError, InventoryCountWarning
 
 __all__ = ['Inventory', 'InventoryLine',
     'Count', 'CountSearch', 'CountQuantity']
@@ -72,12 +76,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Inventory, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
-        cls._error_messages.update({
-                'delete_cancel': ('Inventory "%s" must be canceled before '
-                    'deletion.'),
-                'unique_line': ('Line "%s" is not unique '
-                    'on Inventory "%s".'),
-                })
         cls._transitions |= set((
                 ('draft', 'done'),
                 ('draft', 'cancel'),
@@ -136,7 +134,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
         cls.cancel(inventories)
         for inventory in inventories:
             if inventory.state != 'cancel':
-                cls.raise_user_error('delete_cancel', inventory.rec_name)
+                raise AccessError(
+                    gettext('stock.msg_inventory_delete_cancel',
+                        inventory=inventory.rec_name))
         super(Inventory, cls).delete(inventories)
 
     @classmethod
@@ -150,8 +150,10 @@ class Inventory(Workflow, ModelSQL, ModelView):
             for line in inventory.lines:
                 key = line.unique_key
                 if key in keys:
-                    cls.raise_user_error('unique_line',
-                        (line.rec_name, inventory.rec_name))
+                    raise InventoryValidationError(
+                        gettext('stock.msg_inventory_line_unique',
+                            line=line.rec_name,
+                            inventory=inventory.rec_name))
                 keys.add(key)
                 move = line.get_move()
                 if move:
@@ -330,15 +332,9 @@ class InventoryLine(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('check_line_qty_pos', Check(t, t.quantity >= 0),
-                'Line quantity must be positive.'),
+                'stock.msg_inventory_line_quantity_positive'),
             ]
         cls._order.insert(0, ('product', 'ASC'))
-        cls._error_messages.update({
-                'missing_empty_quantity': ('An option for empty quantity is '
-                    'missing for inventory "%(inventory)s".'),
-                'delete_cancel_draft': ('The line "%(line)s" must be on '
-                    'canceled or draft inventory to be deleted.'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -428,9 +424,9 @@ class InventoryLine(ModelSQL, ModelView):
         qty = self.quantity
         if qty is None:
             if self.inventory.empty_quantity is None:
-                self.raise_user_error('missing_empty_quantity', {
-                        'inventory': self.inventory.rec_name,
-                        })
+                raise InventoryValidationError(
+                    gettext('stock.msg_inventory_missing_empty_quantity',
+                        inventory=self.inventory.rec_name))
             if self.inventory.empty_quantity == 'keep':
                 return
             else:
@@ -483,9 +479,10 @@ class InventoryLine(ModelSQL, ModelView):
     def delete(cls, lines):
         for line in lines:
             if line.inventory_state not in {'cancel', 'draft'}:
-                cls.raise_user_error('delete_cancel_draft', {
-                        'line': line.rec_name,
-                        })
+                raise AccessError(
+                    gettext('stock.msg_inventory_line_delete_cancel',
+                        line=line.rec_name,
+                        inventory=line.inventory.rec_name))
         super(InventoryLine, cls).delete(lines)
 
 
@@ -508,17 +505,11 @@ class Count(Wizard):
             ])
     add = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(Count, cls).__setup__()
-        cls._error_messages.update({
-                'create_line': "No existing line found for %(search)s.",
-                })
-
     def default_quantity(self, fields):
         pool = Pool()
         Inventory = pool.get('stock.inventory')
         InventoryLine = pool.get('stock.inventory.line')
+        Warning = pool.get('res.user.warning')
         context = Transaction().context
         inventory = Inventory(context['active_id'])
         values = {}
@@ -526,9 +517,10 @@ class Count(Wizard):
         if not lines:
             warning_name = '%s.%s.count_create' % (
                 inventory, self.search.search)
-            self.raise_user_warning(warning_name, 'create_line', {
-                    'search': self.search.search.rec_name,
-                    })
+            if Warning.check(warning_name):
+                raise InventoryCountWarning(warning_name,
+                    gettext('stock.msg_inventory_count_create_line',
+                        search=self.search.search.rec_name))
             line, = InventoryLine.create([self.get_line_values(inventory)])
         else:
             line, = lines

@@ -4,11 +4,14 @@ from itertools import chain
 
 from sql import Literal, For
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import grouped_slice
+
+from .exceptions import PeriodCloseError
 
 __all__ = ['Period', 'Cache']
 
@@ -37,13 +40,6 @@ class Period(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Period, cls).__setup__()
-        cls._error_messages.update({
-                'close_period_future_today': ('You can not close a period '
-                    'in the future or today.'),
-                'close_period_assigned_move': (
-                    'You can not close a period when '
-                    'there still are assigned moves.'),
-                })
         cls._transitions |= set((
                 ('draft', 'closed'),
                 ('closed', 'draft'),
@@ -125,7 +121,8 @@ class Period(Workflow, ModelSQL, ModelView):
 
         recent_date = max(period.date for period in periods)
         if recent_date >= today:
-            cls.raise_user_error('close_period_future_today')
+            raise PeriodCloseError(
+                gettext('stock.msg_period_close_date'))
         if Move.search([
                     ('state', '=', 'assigned'),
                     ['OR', [
@@ -134,7 +131,8 @@ class Period(Workflow, ModelSQL, ModelView):
                             ],
                         ('effective_date', '<=', recent_date),
                         ]]):
-            cls.raise_user_error('close_period_assigned_move')
+            raise PeriodCloseError(
+                gettext('stock.msg_period_close_assigned_move'))
 
         for grouping in cls.groupings():
             Cache = cls.get_cache(grouping)
