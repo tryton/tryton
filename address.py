@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 from . import luhn
+from .exceptions import SIRETValidationError
 
 __all__ = ['Address']
 
@@ -15,15 +17,6 @@ class Address(metaclass=PoolMeta):
             'readonly': ~Eval('active', True),
             }, size=5, depends=['active'])
     siret = fields.Function(fields.Char('SIRET'), 'get_siret')
-
-    @classmethod
-    def __setup__(cls):
-        super(Address, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_siret': (
-                    'Invalid SIRET number "%(siret)s" on address '
-                    '"%(address)s"'),
-                })
 
     def get_siret(self, name):
         if self.party.siren and self.siret_nic:
@@ -42,7 +35,7 @@ class Address(metaclass=PoolMeta):
         if self.siret:
             if (len(self.siret) != 14
                     or not luhn.validate(self.siret)):
-                self.raise_user_error('invalid_siret', {
-                        'siret': self.siret,
-                        'address': self.rec_name,
-                        })
+                raise SIRETValidationError(
+                    gettext('party_siret.msg_invalid_siret',
+                        number=self.siret,
+                        address=self.rec_name))

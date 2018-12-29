@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 from . import luhn
+from .exceptions import SIRENValidationError
 
 __all__ = ['Party']
 
@@ -14,14 +16,6 @@ class Party(metaclass=PoolMeta):
     siren = fields.Char('SIREN', select=True, states={
             'readonly': ~Eval('active', True),
             }, size=9, depends=['active'])
-
-    @classmethod
-    def __setup__(cls):
-        super(Party, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_siren': ('Invalid SIREN number "%(siren)s" on party '
-                    '"%(party)s".'),
-                })
 
     @classmethod
     def validate(cls, parties):
@@ -35,7 +29,7 @@ class Party(metaclass=PoolMeta):
         '''
         if self.siren:
             if len(self.siren) != 9 or not luhn.validate(self.siren):
-                self.raise_user_error('invalid_siren', {
-                        'siren': self.siren,
-                        'party': self.rec_name,
-                        })
+                raise SIRENValidationError(
+                    gettext('party_siret.msg_invalid_siren',
+                        number=self.siren,
+                        party=self.rec_name))
