@@ -3,7 +3,9 @@
 
 from collections import defaultdict
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool
 from trytond.transaction import Transaction
@@ -79,10 +81,6 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Complaint, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
-        cls._error_messages.update({
-                'delete_draft': ('Complaint "%s" must be in draft '
-                    'to be deleted.'),
-                })
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'draft'),
@@ -244,7 +242,9 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def delete(cls, complaints):
         for complaint in complaints:
             if complaint.state != 'draft':
-                cls.raise_user_error('delete_draft', complaint.rec_name)
+                raise AccessError(
+                    gettext('sale_complaint.msg_complaint_delete_draft',
+                        complaint=complaint.rec_name))
         super(Complaint, cls).delete(complaints)
 
     @classmethod
@@ -359,14 +359,6 @@ class Action(ModelSQL, ModelView):
 
     result = fields.Reference('Result', selection='get_result', readonly=True)
 
-    @classmethod
-    def __setup__(cls):
-        super(Action, cls).__setup__()
-        cls._error_messages.update({
-                'delete_result': ('Action "%s" must not have result '
-                    'to be deleted.'),
-                })
-
     @fields.depends('complaint')
     def on_change_with_unit(self, name=None):
         if self.complaint and self.complaint.origin_model == 'sale.line':
@@ -464,7 +456,9 @@ class Action(ModelSQL, ModelView):
     def delete(cls, actions):
         for action in actions:
             if action.result:
-                cls.raise_user_error('delete_result', action.rec_name)
+                raise AccessError(
+                    gettext('sale_complaint.msg_action_delete_result',
+                        action=action.rec_name))
         super(Action, cls).delete(actions)
 
 
