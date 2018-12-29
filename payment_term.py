@@ -5,6 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 from sql import Column
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
 from trytond import backend
@@ -13,6 +14,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, Button
 from trytond.config import config
+
+from .exceptions import PaymentTermValidationError, PaymentTermComputeError
 
 __all__ = ['PaymentTerm', 'PaymentTermLine', 'PaymentTermLineRelativeDelta',
     'TestPaymentTerm', 'TestPaymentTermView', 'TestPaymentTermViewResult']
@@ -30,14 +33,6 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(PaymentTerm, cls).__setup__()
         cls._order.insert(0, ('name', 'ASC'))
-        cls._error_messages.update({
-                'invalid_line': ('Invalid line "%(line)s" in payment term '
-                    '"%(term)s".'),
-                'missing_remainder': ('Missing remainder line in payment term '
-                    '"%s".'),
-                'last_remainder': ('Last line of payment term "%s" must be of '
-                    'type remainder.'),
-                })
 
     @classmethod
     def validate(cls, terms):
@@ -47,7 +42,10 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
 
     def check_remainder(self):
         if not self.lines or not self.lines[-1].type == 'remainder':
-            self.raise_user_error('last_remainder', self.rec_name)
+            raise PaymentTermValidationError(
+                gettext('account_invoive'
+                    '.msg_payment_term_missing_last_remainder',
+                    payment_term=self.rec_name))
 
     def compute(self, amount, currency, date=None):
         """Calculate payment terms and return a list of tuples
@@ -70,12 +68,6 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
             value = line.get_value(remainder, amount, currency)
             value_date = line.get_date(date)
             if value is None or not value_date:
-                if (not remainder) and line.amount:
-                    self.raise_user_error('invalid_line', {
-                            'line': line.rec_name,
-                            'term': self.rec_name,
-                            })
-                else:
                     continue
             if ((remainder - value) * sign) < Decimal('0.0'):
                 res.append((value_date, remainder))
@@ -89,7 +81,9 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
                 res.append((date, Decimal(0)))
 
         if not currency.is_zero(remainder):
-            self.raise_user_error('missing_remainder', (self.rec_name,))
+            raise PaymentTermComputeError(
+                gettext('account_invoice.msg_payment_term_missing_remainder',
+                    payment_term=self.rec_name))
         return res
 
 
@@ -128,15 +122,6 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_currency_digits')
     relativedeltas = fields.One2Many(
         'account.invoice.payment_term.line.delta', 'line', 'Deltas')
-
-    @classmethod
-    def __setup__(cls):
-        super(PaymentTermLine, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_ratio_and_divisor': ('Ratio and '
-                    'Divisor values are not consistent in line "%(line)s" '
-                    'of payment term "%(term)s".'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -243,19 +228,19 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             if line.type not in ('percent', 'percent_on_total'):
                 continue
             if line.ratio is None or line.divisor is None:
-                cls.raise_user_error('invalid_ratio_and_divisor', {
-                        'line': line.rec_name,
-                        'term': line.payment.rec_name,
-                        })
+                raise PaymentTermValidationError(
+                    gettext('account_invoice'
+                        '.msg_payment_term_invalid_ratio_divisor',
+                        line=line.rec_name))
             ratio = line.ratio
             divisor = line.divisor
             line.on_change_ratio()
             line.on_change_divisor()
             if (line.divisor != divisor) or (line.ratio != ratio):
-                cls.raise_user_error('invalid_ratio_and_divisor', {
-                        'line': line.rec_name,
-                        'term': line.payment.rec_name,
-                        })
+                raise PaymentTermValidationError(
+                    gettext('account_invoice'
+                        '.msg_payment_term_invalid_ratio_divisor',
+                        line=line.rec_name))
 
 
 class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):

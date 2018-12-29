@@ -1,9 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, ValueMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.tools.multivalue import migrate_property
+
+from trytond.modules.party.exceptions import EraseError
 
 __all__ = ['Address', 'Party', 'PartyPaymentTerm',
     'PartyReplace', 'PartyErase']
@@ -86,16 +89,6 @@ class PartyReplace(metaclass=PoolMeta):
 class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyErase, cls).__setup__()
-        cls._error_messages.update({
-                'pending_invoice': (
-                    'The party "%(party)s" can not be erased '
-                    'because he has pending invoices '
-                    'for the company "%(company)s".'),
-                })
-
     def check_erase_company(self, party, company):
         pool = Pool()
         Invoice = pool.get('account.invoice')
@@ -106,7 +99,7 @@ class PartyErase(metaclass=PoolMeta):
                 ('state', 'not in', ['paid', 'cancel']),
                 ])
         if invoices:
-            self.raise_user_error('pending_invoice', {
-                    'party': party.rec_name,
-                    'company': company.rec_name,
-                    })
+            raise EraseError(
+                gettext('account_invoice.msg_erase_party_pending_invoice',
+                    party=party.rec_name,
+                    company=company.rec_name))
