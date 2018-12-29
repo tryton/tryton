@@ -4,6 +4,7 @@ from decimal import Decimal
 
 from sql import Null
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool, If, Id
@@ -11,6 +12,8 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits
+
+from .exceptions import CostError
 
 __all__ = ['Production', 'AssignFailed', 'Assign']
 
@@ -152,11 +155,6 @@ class Production(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Production, cls).__setup__()
-        cls._error_messages.update({
-                'uneven_costs': ('The costs of the outputs (%(outputs)s) of '
-                    'production "%(production)s" do not match the cost of the '
-                    'production (%(costs)s).')
-                })
         cls._transitions |= set((
                 ('request', 'draft'),
                 ('draft', 'waiting'),
@@ -489,11 +487,11 @@ class Production(Workflow, ModelSQL, ModelView):
             return
         cost_price = self.output_cost
         if not self.company.currency.is_zero(self.cost - cost_price):
-            self.raise_user_error('uneven_costs', {
-                    'production': self.rec_name,
-                    'costs': self.cost,
-                    'outputs': cost_price,
-                    })
+            raise CostError(gettext(
+                    'production.msg_uneven_costs',
+                    production=self.rec_name,
+                    costs=self.cost,
+                    outputs=cost_price))
 
     @classmethod
     def create(cls, vlist):

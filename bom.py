@@ -76,12 +76,8 @@ class BOMInput(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints = [
             ('product_bom_uniq', Unique(t, t.product, t.bom),
-                'product_bom_uniq'),
+                'production.msg_product_bom_unique'),
             ]
-        cls._error_messages.update({
-                'product_bom_uniq': 'Product must be unique per BOM.',
-                'recursive_bom': 'You can not create recursive BOMs.',
-                })
 
     @fields.depends('product', 'uom')
     def on_change_product(self):
@@ -92,7 +88,6 @@ class BOMInput(ModelSQL, ModelView):
                 self.unit_digits = self.product.default_uom.digits
         else:
             self.uom = None
-            self.unit_digits = 2
 
     @fields.depends('product')
     def on_change_with_uom_category(self, name=None):

@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
     sequence_ordered
+from trytond.model.exceptions import RecursionError
 from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
 
@@ -35,14 +37,6 @@ class Product(metaclass=PoolMeta):
         depends=['type'])
 
     @classmethod
-    def __setup__(cls):
-        super(Product, cls).__setup__()
-        cls._error_messages.update({
-                'recursive_bom': ('You are trying to create a recursive BOM '
-                    'with product "%s" which is not allowed.'),
-                })
-
-    @classmethod
     def validate(cls, products):
         super(Product, cls).validate(products)
         for product in products:
@@ -58,7 +52,9 @@ class Product(metaclass=PoolMeta):
             for input_ in product_bom.bom.inputs:
                 if (input_.product == product or
                         input_.product.check_bom_recursion(product=product)):
-                    self.raise_user_error('recursive_bom', (product.rec_name,))
+                    raise RecursionError(
+                        gettext('production.msg_recursive_bom',
+                            product=product.rec_name))
 
     @classmethod
     def copy(cls, products, default=None):
