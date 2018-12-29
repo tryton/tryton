@@ -8,8 +8,10 @@ from sql.aggregate import Max, Count, Sum
 from sql.conditionals import Case, Coalesce
 from sql.functions import Extract
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields, \
     sequence_ordered
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -151,10 +153,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(SaleOpportunity, cls).__setup__()
         cls._order.insert(0, ('start_date', 'DESC'))
-        cls._error_messages.update({
-                'delete_cancel': ('Sale Opportunity "%s" must be cancelled '
-                    'before deletion.'),
-                })
         cls._transitions |= set((
                 ('lead', 'opportunity'),
                 ('lead', 'lost'),
@@ -304,7 +302,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         cls.cancel(opportunities)
         for opportunity in opportunities:
             if opportunity.state != 'cancelled':
-                cls.raise_user_error('delete_cancel', opportunity.rec_name)
+                raise AccessError(
+                    gettext('sale_opportunity.msg_opportunity_delete_cancel',
+                        opportunity=opportunity.rec_name))
         super(SaleOpportunity, cls).delete(opportunities)
 
     @classmethod
