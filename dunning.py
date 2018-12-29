@@ -102,7 +102,7 @@ class FeeDunningLevel(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints = [
             ('dunning_level_unique', Unique(t, t.dunning, t.level),
-                'Fee must be unique per dunning and level.'),
+                'account_dunning_fee.msg_fee_dunning_level_unique'),
             ]
 
     @fields.depends('currency')
