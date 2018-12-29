@@ -15,6 +15,7 @@ from ..transaction import Transaction
 from ..pool import Pool
 from ..config import config
 from ..sendmail import sendmail
+from trytond.worker import run_task
 
 __all__ = [
     'Cron',
@@ -184,3 +185,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                 except Exception:
                     transaction.rollback()
                     logger.error('Running cron %s', cron.id, exc_info=True)
+        while transaction.tasks:
+            task_id = transaction.tasks.pop()
+            run_task(db_name, task_id)
