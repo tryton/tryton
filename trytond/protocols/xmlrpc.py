@@ -9,7 +9,7 @@ from decimal import Decimal
 
 from werkzeug.wrappers import Response
 from werkzeug.utils import cached_property
-from werkzeug.exceptions import BadRequest
+from werkzeug.exceptions import BadRequest, InternalServerError
 
 from trytond.protocols.wrappers import Request
 from trytond.exceptions import TrytonException
@@ -167,12 +167,17 @@ class XMLProtocol:
 
     @classmethod
     def response(cls, data, request):
-        if isinstance(data, TrytonException):
-            data = client.Fault(data.code, str(data))
-        elif isinstance(data, Exception):
-            data = client.Fault(255, str(data))
+        if isinstance(request, XMLRequest):
+            if isinstance(data, TrytonException):
+                data = client.Fault(data.code, str(data))
+            elif isinstance(data, Exception):
+                data = client.Fault(255, str(data))
+            else:
+                data = (data,)
+            return Response(client.dumps(
+                    data, methodresponse=True, allow_none=True),
+                content_type='text/xml')
         else:
-            data = (data,)
-        return Response(client.dumps(
-                data, methodresponse=True, allow_none=True),
-            content_type='text/xml')
+            if isinstance(data, Exception):
+                return InternalServerError(data)
+            return Response(data)
