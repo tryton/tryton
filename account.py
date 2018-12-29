@@ -10,8 +10,10 @@ from sql import Column, Null, Window, Literal
 from sql.aggregate import Sum, Max
 from sql.conditionals import Coalesce, Case
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, fields, Unique, sequence_ordered, tree)
+from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.report import Report
@@ -21,6 +23,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from .common import PeriodMixin, ActivePeriodMixin
+from .exceptions import SecondCurrencyError, ChartWarning
 
 __all__ = ['TypeTemplate', 'Type', 'OpenType',
     'AccountTemplate', 'AccountTemplateTaxTemplate',
@@ -698,25 +701,6 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 'readonly': (Bool(Eval('template', -1))
                     & ~Eval('template_override', False)),
                 }
-        cls._error_messages.update({
-                'delete_account_containing_move_lines': ('You can not delete '
-                    'account "%s" because it has move lines.'),
-                'invalid_second_currency_type': (
-                    'The kind of Account "%(account)s" '
-                    'does not allow to set a second currency.\n'
-                    'Only "Other" type allows.'),
-                'invalid_second_currency_deferral': (
-                    'The Account "%(account)s" can not have a second currency '
-                    'because it is not deferral.'),
-                'invalid_second_currency_lines': (
-                    'The currency "%(currency)s" of '
-                    'Account "%(account)s" is not compatible '
-                    'with existing lines.'),
-                })
-        cls._sql_error_messages.update({
-                'parent_fkey': ('You can not delete accounts that have '
-                    'children.'),
-                })
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
 
@@ -969,23 +953,25 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         for account in accounts:
             if not account.second_currency:
                 continue
-            if account.kind in {'payable', 'revenue', 'receivable', 'expense'}:
-                cls.raise_user_error('invalid_second_currency_type', {
-                        'account': account.rec_name,
-                        })
+            if account.kind != 'other':
+                raise SecondCurrencyError(
+                    gettext('account.msg_account_invalid_type_second_currency',
+                        account=account.rec_name))
             if not account.deferral:
-                cls.raise_user_error('invalid_second_currency_deferral', {
-                        'account': account.rec_name,
-                        })
+                raise SecondCurrencyError(
+                    gettext('account'
+                        '.msg_account_invalid_deferral_second_currency',
+                        account=account.rec_name))
             lines = Line.search([
                     ('account', '=', account.id),
                     ('second_currency', '!=', account.second_currency.id),
                     ], order=[], limit=1)
             if lines:
-                cls.raise_user_error('invalid_second_currency_lines', {
-                        'currency': account.second_currency.rec_name,
-                        'account': account.rec_name,
-                        })
+                raise SecondCurrencyError(
+                    gettext('account'
+                        '.msg_account_invalid_lines_second_currency',
+                        currency=account.second_currency.rec_name,
+                        account=account.rec_name))
 
     @classmethod
     def copy(cls, accounts, default=None):
@@ -1009,8 +995,9 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 ('account', 'in', [a.id for a in childs]),
                 ])
         if lines:
-            cls.raise_user_error('delete_account_containing_move_lines', (
-                    lines[0].account.rec_name,))
+            raise AccessError(
+                gettext('account.msg_delete_account_with_move_lines',
+                    account=lines[0].account.rec_name))
         super(Account, cls).delete(accounts)
 
     def update_account(self, template2account=None, template2type=None):
@@ -1157,11 +1144,8 @@ class AccountDeferral(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('deferral_uniq', Unique(t, t.account, t.fiscalyear),
-                'Deferral must be unique by account and fiscal year'),
+                'account.msg_deferral_unique'),
         ]
-        cls._error_messages.update({
-            'write_deferral': 'You can not modify Account Deferral records',
-            })
 
     @classmethod
     def default_amount_second_currency(cls):
@@ -1199,7 +1183,7 @@ class AccountDeferral(ModelSQL, ModelView):
 
     @classmethod
     def write(cls, deferrals, values, *args):
-        cls.raise_user_error('write_deferral')
+        raise AccessError(gettext('account.msg_write_deferral'))
 
 
 class AccountTax(ModelSQL):
@@ -2159,14 +2143,6 @@ class CreateChart(Wizard):
             ])
     create_properties = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(CreateChart, cls).__setup__()
-        cls._error_messages.update({
-                'account_chart_exists': ('A chart of accounts already exists '
-                    'for the company "%(company)s".')
-                })
-
     def transition_create_account(self):
         pool = Pool()
         TaxCodeTemplate = pool.get('account.tax.code.template')
@@ -2177,6 +2153,7 @@ class CreateChart(Wizard):
             pool.get('account.tax.rule.line.template')
         Config = pool.get('ir.configuration')
         Account = pool.get('account.account')
+        Warning = pool.get('res.user.warning')
         transaction = Transaction()
 
         company = self.account.company
@@ -2184,10 +2161,11 @@ class CreateChart(Wizard):
         with transaction.set_user(0):
             accounts = Account.search([('company', '=', company.id)], limit=1)
         if accounts:
-            self.raise_user_warning('duplicated_chart.%d' % company.id,
-                'account_chart_exists', {
-                    'company': company.rec_name,
-                    })
+            key = 'duplicated_chart.%d' % company.id
+            if Warning.check(key):
+                raise ChartWarning(key,
+                    gettext('account.msg_account_chart_exists',
+                        company=company.rec_name))
 
         with transaction.set_context(language=Config.get_language(),
                 company=company.id):

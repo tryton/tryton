@@ -7,6 +7,7 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -15,6 +16,9 @@ from trytond.tools import reduce_ids, grouped_slice
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from trytond.modules.party.exceptions import EraseError
+
+from .exceptions import AccountMissing
 
 __all__ = ['Party', 'PartyAccount', 'PartyReplace', 'PartyErase']
 account_names = [
@@ -81,16 +85,6 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
             'get_receivable_payable', searcher='search_receivable_payable')
-
-    @classmethod
-    def __setup__(cls):
-        super(Party, cls).__setup__()
-        cls._error_messages.update({
-            'missing_receivable_account': (
-                    'There is no receivable account on party "%(name)s".'),
-            'missing_payable_account': (
-                    'There is no payable account on party "%(name)s".'),
-            })
 
     @classmethod
     def multivalue_model(cls, field):
@@ -224,9 +218,9 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             account = config.get_multivalue('default_account_payable')
         # Allow empty values on on_change
         if not account and not Transaction().readonly:
-            self.raise_user_error('missing_payable_account', {
-                    'name': self.rec_name,
-                    })
+            raise AccountMissing(
+                gettext('account.msg_party_missing_payable_account',
+                    party=self.rec_name))
         if account:
             return account.current()
 
@@ -240,9 +234,9 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             account = config.get_multivalue('default_account_receivable')
         # Allow empty values on on_change
         if not account and not Transaction().readonly:
-            self.raise_user_error('missing_receivable_account', {
-                    'name': self.rec_name,
-                    })
+            raise AccountMissing(
+                gettext('account.msg_party_missing_receivable_account',
+                    party=self.rec_name))
         if account:
             return account.current()
 
@@ -316,20 +310,10 @@ class PartyReplace(metaclass=PoolMeta):
 class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyErase, cls).__setup__()
-        cls._error_messages.update({
-                'receivable_payable': (
-                    'The party "%(party)s" can not be erased '
-                    'because he has pending receivable/payable '
-                    'for the company "%(company)s".'),
-                })
-
     def check_erase_company(self, party, company):
         super(PartyErase, self).check_erase_company(party, company)
         if party.receivable or party.payable:
-            self.raise_user_error('receivable_payable', {
-                    'party': party.rec_name,
-                    'company': company.rec_name,
-                    })
+            raise EraseError(
+                gettext('account.msg_erase_party_receivable_payable',
+                    party=party.rec_name,
+                    company=company.rec_name))

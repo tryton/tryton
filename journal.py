@@ -4,9 +4,11 @@ from decimal import Decimal
 
 from sql.aggregate import Sum
 
+from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
-from trytond import backend
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -209,18 +211,8 @@ class JournalPeriod(
         t = cls.__table__()
         cls._sql_constraints += [
             ('journal_period_uniq', Unique(t, t.journal, t.period),
-                'You can only open one journal per period.'),
+                'account.msg_journal_period_unique'),
             ]
-
-        cls._error_messages.update({
-                'modify_del_journal_period': ('You can not modify/delete '
-                        'journal - period "%s" because it has moves.'),
-                'create_journal_period': ('You can not create a '
-                        'journal - period on closed period "%s".'),
-                'open_journal_period': ('You can not open '
-                    'journal - period "%(journal_period)s" because period '
-                    '"%(period)s" is closed.'),
-                })
         cls._transitions |= set((
                 ('open', 'close'),
                 ('close', 'open'),
@@ -279,8 +271,9 @@ class JournalPeriod(
                     ('period', '=', period.period.id),
                     ], limit=1)
             if moves:
-                cls.raise_user_error('modify_del_journal_period', (
-                        period.rec_name,))
+                raise AccessError(
+                    gettext('account.msg_modify_delete_journal_period_moves',
+                        journal_period=period.rec_name))
 
     @classmethod
     def create(cls, vlist):
@@ -289,8 +282,10 @@ class JournalPeriod(
             if vals.get('period'):
                 period = Period(vals['period'])
                 if period.state != 'open':
-                    cls.raise_user_error('create_journal_period', (
-                            period.rec_name,))
+                    raise AccessError(
+                        gettext('account'
+                            '.msg_create_journal_period_closed_period',
+                            period=period.rec_name))
         return super(JournalPeriod, cls).create(vlist)
 
     @classmethod
@@ -303,10 +298,11 @@ class JournalPeriod(
             if values.get('state') == 'open':
                 for journal_period in journal_periods:
                     if journal_period.period.state != 'open':
-                        cls.raise_user_error('open_journal_period', {
-                                'journal_period': journal_period.rec_name,
-                                'period': journal_period.period.rec_name,
-                                })
+                        raise AccessError(
+                            gettext('account'
+                                '.msg_open_journal_period_closed_period',
+                                journal_period=journal_period.rec_name,
+                                period=journal_period.period.rec_name))
         super(JournalPeriod, cls).write(*args)
 
     @classmethod

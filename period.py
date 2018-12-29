@@ -1,10 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.const import OPERATORS
+
+from .exceptions import (PeriodNotFoundError, ClosePeriodError,
+    PeriodDatesError, PeriodSequenceError)
 
 __all__ = ['Period']
 
@@ -53,28 +59,6 @@ class Period(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(Period, cls).__setup__()
         cls._order.insert(0, ('start_date', 'ASC'))
-        cls._error_messages.update({
-                'no_period_date': 'No period defined for date "%s".',
-                'modify_del_period_moves': ('You can not modify/delete '
-                    'period "%s" because it has moves.'),
-                'create_period_closed_fiscalyear': ('You can not create '
-                    'a period on fiscal year "%s" because it is closed.'),
-                'open_period_closed_fiscalyear': ('You can not open period '
-                    '"%(period)s" because its fiscal year "%(fiscalyear)s" is '
-                    'closed.'),
-                'change_post_move_sequence': ('You can not change the post '
-                    'move sequence of period "%s" because there are already '
-                    'posted moves in the period.'),
-                'close_period_non_posted_move': ('You can not close period '
-                    '"%(period)s" because there are non posted moves '
-                    '"%(move)s" in this period.'),
-                'periods_overlap': ('"%(first)s" and "%(second)s" periods '
-                    'overlap.'),
-                'check_move_sequence': ('Period "%(first)s" and "%(second)s" '
-                    'have the same sequence.'),
-                'fiscalyear_dates': ('Dates of period "%s" are outside '
-                    'are outside it\'s fiscal year dates.'),
-                })
         cls._transitions |= set((
                 ('open', 'close'),
                 ('close', 'locked'),
@@ -148,15 +132,18 @@ class Period(Workflow, ModelSQL, ModelView):
         period_id = cursor.fetchone()
         if period_id:
             overlapping_period = self.__class__(period_id[0])
-            self.raise_user_error('periods_overlap', {
-                    'first': self.rec_name,
-                    'second': overlapping_period.rec_name,
-                    })
+            raise PeriodDatesError(
+                gettext('account.msg_period_overlap',
+                    first=self.rec_name,
+                    second=overlapping_period.rec_name))
 
     def check_fiscalyear_dates(self):
         if (self.start_date < self.fiscalyear.start_date
                 or self.end_date > self.fiscalyear.end_date):
-            self.raise_user_error('fiscalyear_dates', (self.rec_name,))
+            raise PeriodDatesError(
+                gettext('account.msg_period_fiscalyear_dates',
+                    period=self.rec_name,
+                    fiscalyear=self.fiscalyear.rec_name))
 
     def check_post_move_sequence(self):
         if not self.post_move_sequence:
@@ -166,10 +153,10 @@ class Period(Workflow, ModelSQL, ModelView):
                 ('fiscalyear', '!=', self.fiscalyear.id),
                 ])
         if periods:
-            self.raise_user_error('check_move_sequence', {
-                    'first': self.rec_name,
-                    'second': periods[0].rec_name,
-                    })
+            raise PeriodSequenceError(
+                gettext('account.msg_period_same_sequence',
+                    first=self.rec_name,
+                    second=periods[0].rec_name))
 
     @classmethod
     def find(cls, company_id, date=None, exception=True, test_state=True):
@@ -198,7 +185,9 @@ class Period(Workflow, ModelSQL, ModelView):
         if not periods:
             if exception:
                 lang = Lang.get()
-                cls.raise_user_error('no_period_date', lang.strftime(date))
+                raise PeriodNotFoundError(
+                    gettext('account.msg_no_period_date',
+                        date=lang.strftime(date)))
             else:
                 return None
         return periods[0].id
@@ -210,8 +199,9 @@ class Period(Workflow, ModelSQL, ModelView):
                 ('period', 'in', [p.id for p in periods]),
                 ], limit=1)
         if moves:
-            cls.raise_user_error('modify_del_period_moves', (
-                    moves[0].period.rec_name,))
+            raise AccessError(
+                gettext('account.msg_modify_delete_period_moves',
+                    period=moves[0].period.rec_name))
 
     @classmethod
     def search(cls, args, offset=0, limit=None, order=None, count=False,
@@ -248,8 +238,9 @@ class Period(Workflow, ModelSQL, ModelView):
             if vals.get('fiscalyear'):
                 fiscalyear = FiscalYear(vals['fiscalyear'])
                 if fiscalyear.state != 'open':
-                    cls.raise_user_error('create_period_closed_fiscalyear',
-                        (fiscalyear.rec_name,))
+                    raise AccessError(
+                        gettext('account.msg_create_period_closed_fiscalyear',
+                            fiscalyear=fiscalyear.rec_name))
                 if not vals.get('post_move_sequence'):
                     vals['post_move_sequence'] = (
                         fiscalyear.post_move_sequence.id)
@@ -273,10 +264,11 @@ class Period(Workflow, ModelSQL, ModelView):
             if values.get('state') == 'open':
                 for period in periods:
                     if period.fiscalyear.state != 'open':
-                        cls.raise_user_error('open_period_closed_fiscalyear', {
-                                'period': period.rec_name,
-                                'fiscalyear': period.fiscalyear.rec_name,
-                                })
+                        raise AccessError(
+                            gettext(
+                                'account.msg_open_period_closed_fiscalyear',
+                                period=period.rec_name,
+                                fiscalyear=period.fiscalyear.rec_name))
             if values.get('post_move_sequence'):
                 for period in periods:
                     if (period.post_move_sequence
@@ -286,8 +278,10 @@ class Period(Workflow, ModelSQL, ModelView):
                                     ('period', '=', period.id),
                                     ('state', '=', 'posted'),
                                     ]):
-                            cls.raise_user_error('change_post_move_sequence',
-                                (period.rec_name,))
+                            raise AccessError(
+                                gettext('account'
+                                    '.msg_change_period_post_move_sequence',
+                                    period=period.rec_name))
             args.extend((periods, values))
         super(Period, cls).write(*args)
 
@@ -316,10 +310,10 @@ class Period(Workflow, ModelSQL, ModelView):
                 ], limit=1)
         if unposted_moves:
             unposted_move, = unposted_moves
-            cls.raise_user_error('close_period_non_posted_move', {
-                    'period': unposted_move.period.rec_name,
-                    'move': unposted_move.rec_name,
-                    })
+            raise ClosePeriodError(
+                gettext('account.msg_close_period_non_posted_moves',
+                    period=unposted_move.period.rec_name,
+                    move=unposted_move.rec_name))
         journal_periods = JournalPeriod.search([
             ('period', 'in', [p.id for p in periods]),
             ])
