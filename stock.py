@@ -1,11 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, fields
+from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, Id
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateTransition
+
+from .exceptions import PackWarning
 
 __all__ = ['PackageType', 'Package', 'ShipmentOut', 'CreateShipping']
 
@@ -131,12 +135,6 @@ class ShipmentOut(metaclass=PoolMeta):
                         'root_packages'],
                     },
                 })
-        cls._error_messages.update({
-                'shipment_not_packed': ('The shipment "%(shipment)s" must be'
-                    ' packed before creating the shipping labels'),
-                'shipment_without_carrier': ('The shipment "%(shipment)s"'
-                    ' does not have a carrier set'),
-                })
 
     @classmethod
     def __register__(cls, module):
@@ -175,14 +173,17 @@ class ShipmentOut(metaclass=PoolMeta):
     @classmethod
     @Workflow.transition('packed')
     def pack(cls, shipments):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
         super(ShipmentOut, cls).pack(shipments)
         for shipment in shipments:
             if not shipment.carrier:
-                cls.raise_user_warning(
-                    'shipment_out_no_carrier_%s' % shipment.id,
-                    'shipment_without_carrier', {
-                        'shipment': shipment.rec_name,
-                        })
+                name = 'shipment_out_no_carrier_%s' % shipment.id
+                if Warning.check(name):
+                    raise PackWarning(name,
+                        gettext('stock_package_shipping'
+                            '.msg_shipment_without_carrier',
+                            shipment=shipment.rec_name))
 
     @classmethod
     @ModelView.button_action(
@@ -190,9 +191,9 @@ class ShipmentOut(metaclass=PoolMeta):
     def create_shipping(cls, shipments):
         for shipment in shipments:
             if shipment.state not in {'packed', 'done'}:
-                cls.raise_user_error('shipment_not_packed', {
-                        'shipment': shipment.rec_name,
-                        })
+                raise AccessError(
+                    gettext('stock_package_shipping.msg_shipment_not_packed',
+                        shipment=shipment.rec_name))
 
 
 # TODO Implement ShipmentInReturn
