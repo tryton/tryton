@@ -39,8 +39,19 @@ class SelectionRequired(ModelSQL):
         'Selection', required=True)
 
 
+class SelectionLabel(ModelSQL):
+    "Selection with different label"
+    __name__ = 'test.selection_label'
+    select = fields.Selection([
+            ('a', "Z"),
+            ('b', "Y"),
+            ('c', "X"),
+            ], "Selection")
+
+
 def register(module):
     Pool.register(
         Selection,
         SelectionRequired,
+        SelectionLabel,
         module=module, type_='model')
