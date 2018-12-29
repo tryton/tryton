@@ -3,10 +3,13 @@
 
 import datetime
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
+
+from .exceptions import StockQuantityError, StockQuantityWarning
 
 
 __all__ = ['Sale']
@@ -14,16 +17,6 @@ __all__ = ['Sale']
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
-
-    @classmethod
-    def __setup__(cls):
-        super(Sale, cls).__setup__()
-        cls._error_messages.update({
-                'stock_quantity': (
-                    'The forcast quantity '
-                    '%(forecast_quantity)s%(default_uom)s of '
-                    '"%(line)s" is lower than %(quantity)s%(unit)s.'),
-                })
 
     @classmethod
     @ModelView.button
@@ -72,6 +65,7 @@ class Sale(metaclass=PoolMeta):
         User = pool.get('res.user')
         ModelData = pool.get('ir.model.data')
         Line = pool.get('sale.line')
+        Warning = pool.get('res.user.warning')
 
         transaction = Transaction()
 
@@ -116,10 +110,14 @@ class Sale(metaclass=PoolMeta):
 
         def raise_(line_id, message_values):
             if not in_group():
-                self.raise_user_error('stock_quantity', message_values)
+                raise StockQuantityError(
+                    gettext('sale_stock_quantity.msg_sale_stock_quantity',
+                        **message_values))
             warning_name = 'stock_quantity_warning_%s' % line_id
-            self.raise_user_warning(
-                warning_name, 'stock_quantity', message_values)
+            if Warning.check(warning_name):
+                raise StockQuantityWarning(warning_name,
+                    gettext('sale_stock_quantity.msg_sale_stock_quantity',
+                        **message_values))
 
         today = Date.today()
         sale_date = self.sale_date or today
