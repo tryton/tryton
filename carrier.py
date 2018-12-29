@@ -5,10 +5,12 @@ import locale
 
 from zeep.exceptions import Fault
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, MatchMixin, fields
 from trytond.pool import PoolMeta
 
 from .configuration import get_client, LOGIN_SERVICE
+from .exceptions import DPDError
 
 __all__ = ['CredentialDPD', 'Carrier']
 
@@ -28,14 +30,6 @@ class CredentialDPD(ModelSQL, ModelView, MatchMixin):
     token = fields.Char('Token', readonly=True)
 
     @classmethod
-    def __setup__(cls):
-        super(CredentialDPD, cls).__setup__()
-        cls._error_messages.update({
-                'dpd_webservice_error': ('DPD webservice call failed with the'
-                    ' following error message:\n\n%(message)s'),
-                })
-
-    @classmethod
     def default_server(cls):
         return 'testing'
 
@@ -50,9 +44,9 @@ class CredentialDPD(ModelSQL, ModelView, MatchMixin):
                 messageLanguage=lang)
         except Fault as e:
             error_message = e.detail[0].find('errorMessage')
-            self.raise_user_error('authentication_error', {
-                    'message': error_message.text,
-                    })
+            raise DPDError(
+                gettext('stock_package_shipping_dpd.msg_dpd_webservice_error',
+                    message=error_message.text)) from e
 
         self.token = result.authToken
         self.depot = result.depot

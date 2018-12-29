@@ -7,12 +7,18 @@ from lxml import etree
 from zeep.exceptions import Fault
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
+from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateAction, StateTransition
 from trytond.transaction import Transaction
 
+from trytond.modules.stock_package_shipping.exceptions import (
+    PackingValidationError)
+
 from .configuration import get_client, SHIPMENT_SERVICE
+from .exceptions import DPDError
 
 __all__ = ['ShipmentOut', 'CreateShipping', 'CreateDPDShipping']
 
@@ -20,20 +26,14 @@ __all__ = ['ShipmentOut', 'CreateShipping', 'CreateDPDShipping']
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
-    @classmethod
-    def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
-        cls._error_messages.update({
-                'warehouse_address_required': ('An address is required for'
-                    ' warehouse "%(warehouse)s".'),
-                })
-
     def validate_packing_dpd(self):
         warehouse_address = self.warehouse.address
         if not warehouse_address:
-            self.raise_user_error('warehouse_address_required', {
-                    'warehouse': self.warehouse.rec_name,
-                    })
+            raise PackingValidationError(
+                gettext('stock_package_shipping_dpd'
+                    '.msg_warehouse_address_required',
+                    shipment=self.rec_name,
+                    warehouse=self.warehouse.rec_name))
 
 
 class CreateShipping(metaclass=PoolMeta):
@@ -67,16 +67,6 @@ class CreateDPDShipping(Wizard):
 
     start = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(CreateDPDShipping, cls).__setup__()
-        cls._error_messages.update({
-                'has_reference_number': ('Shipment "%(shipment)s" already has'
-                    ' a reference number.'),
-                'dpd_webservice_error': ('DPD webservice call failed with the'
-                    ' following error message:\n\n%(message)s'),
-                })
-
     def transition_start(self):
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
@@ -84,9 +74,10 @@ class CreateDPDShipping(Wizard):
 
         shipment = ShipmentOut(Transaction().context['active_id'])
         if shipment.reference:
-            self.raise_user_error('has_reference_number', {
-                    'shipment': shipment.rec_name,
-                    })
+            raise AccessError(
+                gettext('stock_package_shipping_dpd'
+                    '.msg_shipment_has_reference_number',
+                    shipment=shipment.rec_name))
 
         credential = self.get_credential(shipment)
         if not credential.depot or not credential.token:
@@ -128,9 +119,9 @@ class CreateDPDShipping(Wizard):
         response, = shipment_response.shipmentResponses
         if response.faults:
             message = '\n'.join(f.message for f in response.faults)
-            self.raise_user_error('dpd_webservice_error', {
-                    'message': message,
-                    })
+            raise DPDError(
+                gettext('stock_package_shipping_dpd.msg_dpd_webservice_error',
+                    message=message))
 
         labels = []
         labels_pdf = BytesIO(shipment_response.parcellabelsPDF)
