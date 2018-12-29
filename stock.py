@@ -1,9 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import Pool
 from trytond.model import ModelView
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
     Button)
+
+from .exceptions import SupplyWarning
 
 __all__ = ['StockSupply', 'StockSupplyStart']
 
@@ -22,14 +25,6 @@ class StockSupply(Wizard):
     purchase = StateAction('purchase_request.act_purchase_request_form')
 
     @classmethod
-    def __setup__(cls):
-        super(StockSupply, cls).__setup__()
-        cls._error_messages.update({
-                'late_supplier_moves': 'There are some late supplier moves.',
-                'late_customer_moves': 'There are some late customer moves.',
-                })
-
-    @classmethod
     def types(cls):
         return ['internal', 'purchase']
 
@@ -46,6 +41,7 @@ class StockSupply(Wizard):
         Move = pool.get('stock.move')
         ShipmentInternal = pool.get('stock.shipment.internal')
         Date = pool.get('ir.date')
+        Warning = pool.get('res.user.warning')
         today = Date.today()
         if Move.search([
                     ('from_location.type', '=', 'supplier'),
@@ -53,16 +49,20 @@ class StockSupply(Wizard):
                     ('state', '=', 'draft'),
                     ('planned_date', '<', today),
                     ], order=[]):
-            self.raise_user_warning('%s.supplier@%s' % (self.__name__, today),
-                'late_supplier_moves')
+            name = '%s.supplier@%s' % (self.__name__, today)
+            if Warning.check(name):
+                raise SupplyWarning(name,
+                    gettext('stock_supply.msg_late_supplier_moves'))
         if Move.search([
                     ('from_location.type', '=', 'storage'),
                     ('to_location.type', '=', 'customer'),
                     ('state', '=', 'draft'),
                     ('planned_date', '<', today),
                     ], order=[]):
-            self.raise_user_warning('%s.customer@%s' % (self.__name__, today),
-                'late_customer_moves')
+            name = '%s..customer@%s' % (self.__name__, today)
+            if Warning.check(name):
+                raise SupplyWarning(name,
+                    gettext('stock_supply.msg_late_customer_moves'))
 
         first = True
         created = False

@@ -2,9 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Null
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import If, Equal, Eval, Not, In
 from trytond.transaction import Transaction
+
+from .exceptions import OrderPointValidationError
 
 __all__ = ['OrderPoint']
 
@@ -106,22 +109,6 @@ class OrderPoint(ModelSQL, ModelView):
             'get_unit_digits')
 
     @classmethod
-    def __setup__(cls):
-        super(OrderPoint, cls).__setup__()
-        cls._error_messages.update({
-                'unique_op': ('Only one order point is allowed '
-                    'for each product-location pair.'),
-                'concurrent_provisioning_location_internal_op': ('You can not '
-                    'define on the same product two order points with '
-                    'opposite locations (from "Storage Location" to '
-                    '"Provisioning Location" and vice versa).'),
-                'concurrent_overflowing_location_internal_op': ('You can not '
-                    'define on the same product two order points with '
-                    'opposite locations (from "Storage Location" to '
-                    '"Overflowing Location" and vice versa).'),
-                })
-
-    @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
@@ -194,8 +181,10 @@ class OrderPoint(ModelSQL, ModelView):
                     ('type', '=', 'internal')]
                 query.append(arg)
             if query and cls.search(['OR'] + query):
-                cls.raise_user_error(
-                    'concurrent_%s_internal_op' % location_name)
+                raise OrderPointValidationError(
+                    gettext('stock_supply'
+                        '.msg_order_point_concurrent_%s_internal' %
+                        location_name))
 
     @staticmethod
     def _type2field(type=None):
@@ -226,7 +215,8 @@ class OrderPoint(ModelSQL, ModelView):
                 ]
             query.append(arg)
         if cls.search(query):
-            cls.raise_user_error('unique_op')
+            raise OrderPointValidationError(
+                gettext('stock_supply.msg_order_point_unique'))
 
     def get_rec_name(self, name):
         return "%s@%s" % (self.product.name, self.location.name)
