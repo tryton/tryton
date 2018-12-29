@@ -1,24 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 
 from trytond.modules.analytic_account import AnalyticMixin
+from trytond.modules.purchase.exceptions import PurchaseQuotationError
 
 __all__ = ['Purchase', 'PurchaseLine', 'AnalyticAccountEntry']
 
 
 class Purchase(metaclass=PoolMeta):
     __name__ = "purchase.purchase"
-
-    @classmethod
-    def __setup__(cls):
-        super(Purchase, cls).__setup__()
-        cls._error_messages.update({
-                'analytic_account_required': ('Analytic account is required '
-                    'for "%(roots)s" on line "%(line)s".'),
-                })
 
     def check_for_quotation(self):
         pool = Pool()
@@ -36,11 +30,13 @@ class Purchase(metaclass=PoolMeta):
             analytic_roots = {e.root for e in line.analytic_accounts
                 if e.account}
             if not mandatory_roots <= analytic_roots:
-                self.raise_user_error('analytic_account_required', {
-                        'line': line.rec_name,
-                        'roots': ', '.join(x.rec_name
-                            for x in mandatory_roots - analytic_roots),
-                        })
+                raise PurchaseQuotationError(
+                    gettext('analytic_purchase'
+                        '.msg_analytic_account_required_for_quotation',
+                        purchase=self.rec_name,
+                        line=line.rec_name,
+                        roots=', '.join(x.rec_name
+                            for x in mandatory_roots - analytic_roots)))
 
 
 class PurchaseLine(AnalyticMixin, metaclass=PoolMeta):
