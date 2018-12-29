@@ -127,6 +127,7 @@ Creating an overlapping line won't work::
 
     >>> overlapping = Subscription()
     >>> overlapping.party = customer
+    >>> overlapping.start_date = datetime.date(2017, 1, 1)
     >>> overlapping.invoice_start_date = datetime.date(2017, 2, 1)
     >>> overlapping.invoice_recurrence = monthly
     >>> line = overlapping.lines.new()
@@ -137,7 +138,7 @@ Creating an overlapping line won't work::
     >>> overlapping.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
-    DomainValidationError: ....
+    ValidationError: ....
 
 Cancelling the subscription will remove lot from the lines thus making it
 available again::
