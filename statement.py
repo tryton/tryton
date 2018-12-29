@@ -5,7 +5,10 @@ from io import StringIO
 from stdnum.es.ccc import calc_check_digits, to_iban
 from csb43 import csb43
 
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
+
+from trytond.modules.account_statement.exceptions import ImportStatementError
 
 __all__ = ['ImportStatementStart', 'ImportStatement']
 
@@ -22,14 +25,6 @@ class ImportStatementStart(metaclass=PoolMeta):
 
 class ImportStatement(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
-
-    @classmethod
-    def __setup__(cls):
-        super(ImportStatement, cls).__setup__()
-        cls._error_messages.update({
-                'aeb43_no_journal': (
-                    'No journal found for the bank account "%(account)s".'),
-                })
 
     def parse_aeb43(self, encoding='ascii'):
         file_ = self.start.file_
@@ -60,9 +55,9 @@ class ImportStatement(metaclass=PoolMeta):
             bank_code + branch_code + check_digits + account_number)
         journal = Journal.get_by_bank_account(self.start.company, bank_account)
         if not journal:
-            self.raise_user_error('aeb43_no_journal', {
-                    'account': bank_account,
-                    })
+            raise ImportStatementError(
+                gettext('account_statement.msg_import_no_journal',
+                    account=bank_account))
 
         statement = Statement()
         statement.name = '%(account)s@(%(start_date)s/%(end_date)s)' % {
