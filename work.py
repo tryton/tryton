@@ -5,14 +5,17 @@ import random
 from decimal import Decimal
 from functools import wraps
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelSQL, ModelView, Workflow, DeactivableMixin, fields, sequence_ordered,
     tree)
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits
+from .exceptions import PickerError
 
 __all__ = ['WorkCenterCategory', 'WorkCenter', 'Work', 'WorkCycle']
 
@@ -64,10 +67,6 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(WorkCenter, cls).__setup__()
-        cls._error_messages.update({
-                'missing_work_center': ('Could not find a work center '
-                    'of category "%(category)s" under "%(parent)s".'),
-                })
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -95,10 +94,10 @@ class WorkCenter(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
                         ('category', '=', category.id),
                         ])
                 if not work_centers:
-                    cls.raise_user_error('missing_work_center', {
-                            'category': category.rec_name,
-                            'parent': parent.rec_name,
-                            })
+                    raise PickerError(
+                        gettext('production_work.msg_missing_work_center',
+                            category=category.rec_name,
+                            parent=parent.rec_name))
                 cache[key] = work_centers
             return random.choice(cache[key])
         return picker
@@ -145,14 +144,6 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ('finished', 'Finished'),
             ('done', 'Done'),
             ], 'State', select=True, readonly=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(Work, cls).__setup__()
-        cls._error_messages.update({
-                'delete_request': ('Work "%s" can not be deleted '
-                    'as it is not in state "request"'),
-                })
 
     @fields.depends('operation')
     def on_change_with_work_center_category(self, name=None):
@@ -218,7 +209,9 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
     def delete(cls, works):
         for work in works:
             if work.state not in {'request', 'draft'}:
-                cls.raise_user_error('delete_request', work.rec_name)
+                raise AccessError(
+                    gettext('production_work.msg_delete_request',
+                        work=work.rec_name))
         super(Work, cls).delete(works)
 
 

@@ -4,8 +4,10 @@ from decimal import Decimal
 
 from sql.aggregate import Sum
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
@@ -35,15 +37,6 @@ class Production(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['state', 'company'])
-
-    @classmethod
-    def __setup__(cls):
-        super(Production, cls).__setup__()
-        cls._error_messages.update({
-                'do_finished_work': ('Production "%(production)s" '
-                    'can not be done '
-                    'because work "%(work)s" is not finished.'),
-                })
 
     def get_cost(self, name):
         pool = Pool()
@@ -134,8 +127,8 @@ class Production(metaclass=PoolMeta):
         for production in productions:
             for work in production.works:
                 if work.state != 'finished':
-                    cls.raise_user_error('do_finished_work', {
-                            'production': production.rec_name,
-                            'work': work.rec_name,
-                            })
+                    raise AccessError(
+                        gettext('production_work.msg_do_finished_work',
+                            production=production.rec_name,
+                            work=work.rec_name))
         super(Production, cls).done(productions)
