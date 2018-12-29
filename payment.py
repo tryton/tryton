@@ -9,6 +9,7 @@ from operator import attrgetter
 
 import stripe
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelSQL, ModelView, Workflow, DeactivableMixin, fields)
 from trytond.pool import PoolMeta, Pool
@@ -18,6 +19,9 @@ from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.url import HOSTNAME
 from trytond.wizard import Wizard, StateAction
+
+from trytond.modules.account_payment.exceptions import (
+    ProcessError, PaymentValidationError)
 
 __all__ = ['Journal', 'Group', 'Payment', 'Account', 'Customer',
     'Checkout', 'CheckoutPage']
@@ -46,14 +50,6 @@ class Journal(metaclass=PoolMeta):
 class Group(metaclass=PoolMeta):
     __name__ = 'account.payment.group'
 
-    @classmethod
-    def __setup__(cls):
-        super(Group, cls).__setup__()
-        cls._error_messages.update({
-                'no_stripe_token': ('No Stripe token found '
-                    'for payment "%(payment)s".'),
-                })
-
     def process_stripe(self):
         pool = Pool()
         Payment = pool.get('account.payment')
@@ -66,9 +62,9 @@ class Group(metaclass=PoolMeta):
                         payment.stripe_customer = customer
                         break
                 else:
-                    self.raise_user_error('no_stripe_token', {
-                            'payment': payment.rec_name,
-                            })
+                    raise ProcessError(
+                        gettext('account_payment_stripe.msg_no_stripe_token',
+                            payment=payment.rec_name))
         Payment.save(self.payments)
         Payment.__queue__.stripe_charge(self.payments)
 
@@ -181,10 +177,6 @@ class Payment(metaclass=PoolMeta):
         cls.amount.depends.append('stripe_capture_needed')
         cls.stripe_amount.states.update(cls.amount.states)
         cls.stripe_amount.depends.extend(cls.amount.depends)
-        cls._error_messages.update({
-                'stripe_receivable': ('Stripe journal "%(journal)s" '
-                    'can only be used for receivable payment "%(payment)s".'),
-                })
         cls._buttons.update({
                 'stripe_checkout': {
                     'invisible': (~Eval('state', 'draft').in_(
@@ -305,10 +297,10 @@ class Payment(metaclass=PoolMeta):
     def check_stripe_journal(self):
         if (self.kind != 'receivable'
                 and self.journal.process_method == 'stripe'):
-            self.raise_user_error('stripe_receivable', {
-                    'journal': self.journal.rec_name,
-                    'payment': self.rec_name,
-                    })
+            raise PaymentValidationError(
+                gettext('account_payment_stripe.msg_stripe_receivable',
+                    journal=self.journal.rec_name,
+                    payment=self.rec_name))
 
     @classmethod
     def create(cls, vlist):
