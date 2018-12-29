@@ -9,6 +9,7 @@ from sql.aggregate import Count
 from sql.conditionals import Case
 from sql.functions import Substring, Position
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, fields
 from trytond.model.modelsql import convert_from
 from trytond.pool import Pool
@@ -16,6 +17,8 @@ from trytond.report import Report
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, StateReport, \
     Button
+
+from .exceptions import PrintError
 
 __all__ = ['AEAT111', 'AEAT115', 'AEAT303', 'PrintAEATStart', 'PrintAEAT']
 
@@ -309,14 +312,6 @@ class PrintAEAT(Wizard):
     model_115 = StateReport('account.reporting.aeat115')
     model_303 = StateReport('account.reporting.aeat303')
 
-    @classmethod
-    def __setup__(cls):
-        super().__setup__()
-        cls._error_messages.update({
-                'same_fiscalyear': ("Periods should be of the same fiscalyear "
-                    "to generate the report."),
-                })
-
     def transition_choice(self):
         validate = getattr(self, 'validate_%s' % self.start.report, None)
         if validate:
@@ -332,4 +327,5 @@ class PrintAEAT(Wizard):
 
     def validate_303(self):
         if len(set(p.fiscalyear for p in self.start.periods)) > 1:
-            self.raise_user_error('same_fiscalyear')
+            raise PrintError(
+                gettext('account_es.msg_report_same_fiscalyear'))
