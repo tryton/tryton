@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, fields
+from trytond.model.exceptions import AccessError
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
@@ -29,14 +31,6 @@ class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
     @classmethod
-    def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
-        cls._error_messages.update({
-                'reset_move': ('You cannot reset to draft a move generated '
-                    'by a sale.'),
-                })
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
@@ -45,7 +39,9 @@ class ShipmentOut(metaclass=PoolMeta):
             for move in shipment.outgoing_moves:
                 if (move.state == 'cancel'
                         and isinstance(move.origin, SaleLine)):
-                    cls.raise_user_error('reset_move')
+                    raise AccessError(
+                        gettext('sale.msg_sale_move_reset_draft',
+                            move=move.rec_name))
 
         return super(ShipmentOut, cls).draft(shipments)
 
@@ -68,14 +64,6 @@ class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
     @classmethod
-    def __setup__(cls):
-        super(ShipmentOutReturn, cls).__setup__()
-        cls._error_messages.update({
-                'reset_move': ('You cannot reset to draft a move generated '
-                    'by a sale.'),
-                })
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, shipments):
@@ -84,7 +72,9 @@ class ShipmentOutReturn(metaclass=PoolMeta):
             for move in shipment.incoming_moves:
                 if (move.state == 'cancel'
                         and isinstance(move.origin, SaleLine)):
-                    cls.raise_user_error('reset_move')
+                    raise AccessError(
+                        gettext('sale.msg_sale_move_reset_draft',
+                            move=move.rec_name))
 
         return super(ShipmentOutReturn, cls).draft(shipments)
 

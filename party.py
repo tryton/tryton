@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
+
+from trytond.modules.party.exceptions import EraseError
 
 __all__ = ['PartyReplace', 'PartyErase']
 
@@ -19,16 +22,6 @@ class PartyReplace(metaclass=PoolMeta):
 class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyErase, cls).__setup__()
-        cls._error_messages.update({
-                'pending_sale': (
-                    'The party "%(party)s" can not be erased '
-                    'because he has pending sales '
-                    'for the company "%(company)s".'),
-                })
-
     def check_erase_company(self, party, company):
         pool = Pool()
         Sale = pool.get('sale.sale')
@@ -42,7 +35,7 @@ class PartyErase(metaclass=PoolMeta):
                 ('state', 'not in', ['done', 'cancel']),
                 ])
         if sales:
-            self.raise_user_error('pending_sale', {
-                    'party': party.rec_name,
-                    'company': company.rec_name,
-                    })
+            raise EraseError(
+                gettext('sale.msg_erase_party_pending_sale',
+                    party=party.rec_name,
+                    company=company.rec_name))

@@ -5,8 +5,10 @@ from decimal import Decimal
 from itertools import groupby, chain
 from functools import partial
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, \
     sequence_ordered
+from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
@@ -15,7 +17,10 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from trytond.modules.account.tax import TaxableMixin
+from trytond.modules.account_product.exceptions import AccountError
 from trytond.modules.product import price_digits
+from .exceptions import (
+    SaleValidationError, SaleQuotationError, PartyLocationError)
 
 __all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
     'SaleLine', 'SaleLineTax', 'SaleLineIgnoredMove',
@@ -175,6 +180,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
+    invoice_method_string = invoice_method.translated('invoice_method')
     invoice_state = fields.Selection([
             ('none', 'None'),
             ('waiting', 'Waiting'),
@@ -197,6 +203,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
+    shipment_method_string = shipment_method.translated('shipment_method')
     shipment_state = fields.Selection([
             ('none', 'None'),
             ('waiting', 'Waiting'),
@@ -222,17 +229,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('sale_date', 'DESC'),
             ('id', 'DESC'),
             ]
-        cls._error_messages.update({
-                'invalid_method': ('Invalid combination of shipment and '
-                    'invoicing methods on sale "%s".'),
-                'addresses_required': (
-                    'Invoice and Shipment addresses must be '
-                    'defined for the quotation of sale "%s".'),
-                'warehouse_required': ('Warehouse must be defined for the '
-                    'quotation of sale "%s".'),
-                'delete_cancel': ('Sale "%s" must be cancelled before '
-                    'deletion.'),
-                })
         cls._transitions |= set((
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
@@ -591,10 +587,18 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         '''
         if (self.invoice_method == 'shipment'
                 and self.shipment_method in ('invoice', 'manual')):
-            self.raise_user_error('invalid_method', (self.rec_name,))
+            raise SaleValidationError(
+                gettext('sale.msg_sale_invalid_method',
+                    invoice_method=self.invoice_method_string,
+                    shipment_method=self.shipment_method_string,
+                    sale=self.rec_name))
         if (self.shipment_method == 'invoice'
                 and self.invoice_method in ('shipment', 'manual')):
-            self.raise_user_error('invalid_method', (self.rec_name,))
+            raise SaleValidationError(
+                gettext('sale.msg_sale_invalid_method',
+                    invoice_method=self.invoice_method_string,
+                    shipment_method=self.shipment_method_string,
+                    sale=self.rec_name))
 
     def get_rec_name(self, name):
         items = []
@@ -650,8 +654,15 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         return super(Sale, cls).copy(sales, default=default)
 
     def check_for_quotation(self):
-        if not self.invoice_address or not self.shipment_address:
-            self.raise_user_error('addresses_required', (self.rec_name,))
+        if not self.invoice_address:
+            raise SaleQuotationError(
+                gettext('sale.msg_sale_invoice_address_required_for_quotation',
+                    sale=self.rec_name))
+        if not self.shipment_address:
+            raise SaleQuotationError(
+                gettext('sale'
+                    '.msg_sale_shipment_address_required_for_quotation',
+                    sale=self.rec_name))
         for line in self.lines:
             if (line.quantity or 0) >= 0:
                 location = line.from_location
@@ -660,8 +671,9 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             if ((not location or not line.warehouse)
                     and line.product
                     and line.product.type in ('goods', 'assets')):
-                self.raise_user_error('warehouse_required',
-                    (self.rec_name,))
+                raise SaleQuotationError(
+                    gettext('sale.msg_sale_warehouse_required_for_quotation',
+                        sale=self.rec_name))
 
     @classmethod
     def set_number(cls, sales):
@@ -816,7 +828,9 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls.cancel(sales)
         for sale in sales:
             if sale.state != 'cancel':
-                cls.raise_user_error('delete_cancel', (sale.rec_name,))
+                raise AccessError(
+                    gettext('sale.msg_sale_delete_cancel',
+                        sale=sale.rec_name))
         super(Sale, cls).delete(sales)
 
     @classmethod
@@ -1042,21 +1056,6 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_shipping_date')
     sale_state = fields.Function(fields.Selection(STATES, 'Sale State'),
         'on_change_with_sale_state')
-
-    @classmethod
-    def __setup__(cls):
-        super(SaleLine, cls).__setup__()
-        cls._error_messages.update({
-                'customer_location_required': (
-                    'Sale "%(sale)s" is missing the '
-                    'customer location in line "%(line)s".'),
-                'missing_account_revenue': ('Product "%(product)s" of sale '
-                    '%(sale)s misses a revenue account.'),
-                'missing_default_account_revenue': ('Sale "%(sale)s" '
-                    'misses a default "account revenue".'),
-                'delete_cancel_draft': ('The line "%(line)s" must be on '
-                    'canceled or draft sale to be deleted.'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -1316,17 +1315,17 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             invoice_line.account = self.product.account_revenue_used
             if not invoice_line.account:
-                self.raise_user_error('missing_account_revenue', {
-                        'sale': self.sale.rec_name,
-                        'product': self.product.rec_name,
-                        })
+                raise AccountError(
+                    gettext('sale.msg_sale_product_missing_account_expense',
+                        sale=self.sale.rec_name,
+                        product=self.product.rec_name))
         else:
             invoice_line.account = account_config.get_multivalue(
                 'default_category_account_revenue')
             if not invoice_line.account:
-                self.raise_user_error('missing_default_account_revenue', {
-                        'sale': self.sale.rec_name,
-                        })
+                raise AccountError(
+                    gettext('sale.msg_sale_missing_account_expense',
+                        sale=self.sale.rec_name))
         invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
 
@@ -1407,10 +1406,10 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             return
 
         if not self.sale.party.customer_location:
-            self.raise_user_error('customer_location_required', {
-                    'sale': self.sale.rec_name,
-                    'line': self.rec_name,
-                    })
+            raise PartyLocationError(
+                gettext('sale.msg_sale_customer_location_required',
+                    sale=self.sale.rec_name,
+                    party=self.sale.party.rec_name))
         move = Move()
         move.quantity = quantity
         move.uom = self.unit
@@ -1496,9 +1495,10 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     def delete(cls, lines):
         for line in lines:
             if line.sale_state not in {'cancel', 'draft'}:
-                cls.raise_user_error('delete_cancel_draft', {
-                        'line': line.rec_name,
-                        })
+                raise AccessError(
+                    gettext('sale.msg_sale_line_delete_cancel_draft',
+                        line=line.rec_name,
+                        sale=line.sale.rec_name))
         super(SaleLine, cls).delete(lines)
 
     @classmethod
@@ -1763,23 +1763,15 @@ class ModifyHeader(Wizard):
             ])
     modify = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(ModifyHeader, cls).__setup__()
-        cls._error_messages.update({
-                'not_in_draft': (
-                    'The sale "%(sale)s" must be in draft to modify header.'),
-                })
-
     def get_sale(self):
         pool = Pool()
         Sale = pool.get('sale.sale')
 
         sale = Sale(Transaction().context['active_id'])
         if sale.state != 'draft':
-            self.raise_user_error('not_in_draft', {
-                    'sale': sale.rec_name,
-                    })
+            raise AccessError(
+                gettext('sale.msg_sale_modify_header_draft',
+                    sale=sale.rec_name))
         return sale
 
     def default_start(self, fields):
