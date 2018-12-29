@@ -3,7 +3,8 @@
 import datetime
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -130,7 +131,7 @@ class FieldDateTimeTestCase(unittest.TestCase):
         "Test create datetime required without value"
         DateTime = Pool().get('test.datetime_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             DateTime.create([{}])
 
     @with_transaction()
@@ -150,7 +151,7 @@ class FieldDateTimeTestCase(unittest.TestCase):
         "Test create datetime with invalid format"
         DateTime = Pool().get('test.datetime_format')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(TimeFormatValidationError):
             DateTime.create([{
                         'datetime': datetime.datetime(2009, 1, 1, 12, 30, 25),
                         }])

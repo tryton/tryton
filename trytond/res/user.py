@@ -36,6 +36,8 @@ try:
 except ImportError:
     bcrypt = None
 
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 from ..model import (
     ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
 from ..wizard import Wizard, StateView, Button, StateTransition
@@ -92,6 +94,14 @@ def _send_email(from_, users, email_func):
         msg['To'] = user.email
         msg['Subject'] = Header(title, 'utf-8')
         sendmail_transactional(from_, [user.email], msg)
+
+
+class PasswordError(UserError):
+    pass
+
+
+class DeleteError(UserError):
+    pass
 
 
 class User(DeactivableMixin, ModelSQL, ModelView):
@@ -179,22 +189,6 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             'language_direction',
             'groups',
         ]
-        cls._error_messages.update({
-                'delete_forbidden': ('Users can not be deleted '
-                    'for logging purpose.\n'
-                    'Instead you must inactivate them.'),
-                'password_length': "The password is too short.",
-                'password_forbidden': "The password is forbidden.",
-                'password_name': (
-                    "The password can not be the same as user name."),
-                'password_login': (
-                    "The password can not be the same as user login."),
-                'password_email': (
-                    "The password can not be the same as user email."),
-                'password_entropy': (
-                    "The password contains too much times "
-                    "the same characters."),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -271,27 +265,27 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         length = config.getint('password', 'length', default=0)
         if length > 0:
             if len(password_b) < length:
-                cls.raise_user_error('password_length')
+                raise PasswordError(gettext('res.msg_password_length'))
         path = config.get('password', 'forbidden', default=None)
         if path:
             with open(path, 'r') as f:
                 forbidden = mmap.mmap(
                     f.fileno(), 0, access=mmap.ACCESS_READ)
                 if forbidden.find(password_b) >= 0:
-                    cls.raise_user_error('password_forbidden')
+                    raise PasswordError(gettext('res.msg_password_forbidden'))
         entropy = config.getfloat('password', 'entropy', default=0)
         if entropy:
             if len(set(password)) / len(password) < entropy:
-                cls.raise_user_error('password_entropy')
+                raise PasswordError(gettext('res.msg_password_entropy'))
         for user in users:
             # Use getattr to allow to use non User instances
-            for test, error in [
-                    (getattr(user, 'name', ''), 'password_name'),
-                    (getattr(user, 'login', ''), 'password_login'),
-                    (getattr(user, 'email', ''), 'password_email'),
+            for test, message in [
+                    (getattr(user, 'name', ''), 'msg_password_name'),
+                    (getattr(user, 'login', ''), 'msg_password_login'),
+                    (getattr(user, 'email', ''), 'msg_password_email'),
                     ]:
                 if test and password.lower() == test.lower():
-                    cls.raise_user_error(error)
+                    raise PasswordError(gettext(message))
 
     @classmethod
     @ModelView.button
@@ -411,7 +405,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, users):
-        cls.raise_user_error('delete_forbidden')
+        raise DeleteError(gettext('res.msg_user_delete_forbidden'))
 
     def get_rec_name(self, name):
         return self.name if self.name else self.login

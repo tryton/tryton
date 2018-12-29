@@ -5,7 +5,10 @@ import logging
 import json
 
 from lxml import etree
+
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.model.exceptions import ValidationError
 from trytond.pyson import Eval, Bool, PYSONDecoder, If
 from trytond.tools import file_open
 from trytond.transaction import Transaction
@@ -20,6 +23,10 @@ __all__ = [
     ]
 
 logger = logging.getLogger(__name__)
+
+
+class XMLError(ValidationError):
+    pass
 
 
 class View(ModelSQL, ModelView):
@@ -67,9 +74,6 @@ class View(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(View, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_xml': 'Invalid XML for view "%s".',
-                })
         cls._order.insert(0, ('priority', 'ASC'))
         cls._buttons.update({
                 'show': {
@@ -131,8 +135,9 @@ class View(ModelSQL, ModelView):
                             validator.error_log.filter_from_errors()))
                     logger.error('Invalid XML view %s:\n%s\n%s',
                         view.rec_name, error_log, xml)
-                    cls.raise_user_error(
-                        'invalid_xml', (view.rec_name,), error_log)
+                    raise XMLError(
+                        gettext('ir.msg_view_invalid_xml', name=view.rec_name),
+                        error_log)
             root_element = tree.getroottree().getroot()
 
             # validate pyson attributes
@@ -154,8 +159,10 @@ class View(ModelSQL, ModelView):
                         logger.error(
                             'Invalid XML view %s:\n%s\n%s',
                             view.rec_name, error_log, xml)
-                        cls.raise_user_error(
-                            'invalid_xml', (view.rec_name,), error_log)
+                        raise XMLError(
+                            gettext(
+                                'ir.msg_view_invalid_xml', name=view.rec_name),
+                            error_log) from e
                 for child in element:
                     encode(child)
             encode(root_element)

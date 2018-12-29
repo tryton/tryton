@@ -3,11 +3,17 @@
 import json
 from collections import OrderedDict
 
+from trytond.i18n import gettext
 from trytond.model import fields
+from trytond.model.exceptions import ValidationError
 from trytond.pyson import Eval, PYSONDecoder
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+
+
+class DomainError(ValidationError):
+    pass
 
 
 class DictSchemaMixin(object):
@@ -48,9 +54,6 @@ class DictSchemaMixin(object):
         cls.__rpc__.update({
                 'get_keys': RPC(instantiate=0),
                 })
-        cls._error_messages.update({
-                'invalid_domain': 'Invalid domain in schema "%(schema)s".',
-                })
 
     @staticmethod
     def default_digits():
@@ -73,13 +76,13 @@ class DictSchemaMixin(object):
             try:
                 value = PYSONDecoder().decode(schema.domain)
             except Exception:
-                cls.raise_user_error('invalid_domain', {
-                        'schema': schema.rec_name,
-                        })
+                raise DomainError(
+                    gettext('ir.msg_dict_schema_invalid_domain',
+                        schema=schema.rec_name))
             if not isinstance(value, list):
-                cls.raise_user_error('invalid_domain', {
-                        'schema': schema.rec_name,
-                        })
+                raise DomainError(
+                    gettext('ir.msg_dict_schema_invalid_domain',
+                        schema=schema.rec_name))
 
     def get_selection_json(self, name):
         db_selection = self.selection or ''

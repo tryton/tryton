@@ -3,7 +3,7 @@
 
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import DomainValidationError, RecursionError
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 
@@ -23,7 +23,7 @@ class TreeMixinTestCase(unittest.TestCase):
 
         record = Tree(name="foo / bar")
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DomainValidationError):
             record.save()
 
     @with_transaction()
@@ -163,7 +163,7 @@ class TreeMixinTestCase(unittest.TestCase):
         child = Tree(name="child", parent=record)
         child.save()
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RecursionError):
             parent.parent = child
             parent.save()
 
@@ -182,7 +182,7 @@ class TreeMixinTestCase(unittest.TestCase):
         child = Polytree(name="child", parents=[record])
         child.save()
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RecursionError):
             parent1.parents = [child]
             parent1.save()
 

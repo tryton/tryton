@@ -7,7 +7,9 @@ import time
 from unittest.mock import patch, call
 
 from trytond import backend
-from trytond.exceptions import UserError, ConcurrencyException
+from trytond.exceptions import ConcurrencyException
+from trytond.model.exceptions import (
+    RequiredValidationError, SQLConstraintError)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -253,13 +255,13 @@ class ModelSQLTestCase(unittest.TestCase):
         for key, value in fields.items():
             try:
                 Modelsql.create([{key: value}])
-            except UserError as err:
+            except RequiredValidationError as err:
                 # message must not quote key
                 msg = "'%s' not missing but quoted in error: '%s'" % (key,
                         err.message)
                 self.assertTrue(key not in err.message, msg)
             else:
-                self.fail('UserError should be caught')
+                self.fail('RequiredValidationError should be caught')
             transaction.rollback()
 
     @with_transaction()
@@ -340,12 +342,11 @@ class ModelSQLTestCase(unittest.TestCase):
         # foreign_model_missing
         record = ParentModel(name="test")
         record.targets = [TargetModel()]
-        with self.assertRaises(UserError) as cm:
+        with self.assertRaises(RequiredValidationError) as cm:
             record.save()
         err = cm.exception
-        msg = 'The field "%s" on "%s" is required.' % (
-            TargetModel.name.string, TargetModel.__doc__)
-        self.assertEqual(err.message, msg)
+        self.assertIn(TargetModel.name.string, err.message)
+        self.assertIn(TargetModel.__doc__, err.message)
 
     @with_transaction()
     def test_null_ordering(self):
@@ -413,7 +414,7 @@ class ModelSQLTestCase(unittest.TestCase):
         pool = Pool()
         Model = pool.get('test.modelsql.check')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SQLConstraintError):
             Model.create([{'value': 10}])
 
     @with_transaction()
@@ -442,7 +443,7 @@ class ModelSQLTestCase(unittest.TestCase):
         pool = Pool()
         Model = pool.get('test.modelsql.unique')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SQLConstraintError):
             Model.create([{'value': 42}, {'value': 42}])
 
     @with_transaction()
@@ -471,7 +472,7 @@ class ModelSQLTestCase(unittest.TestCase):
         pool = Pool()
         Model = pool.get('test.modelsql.exclude')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SQLConstraintError):
             Model.create([{'value': 42}, {'value': 42}])
 
 

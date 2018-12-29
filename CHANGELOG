@@ -1,3 +1,7 @@
+* Define custom exceptions
+* Remove _error_messages, raise_user_error and raise_user_warning
+* Remove ModelStorage._constraints
+* Add ir.message
 * Add check on ModelSQL for positive id
 * New API to read related fields
 * Remove implicit fields names in ModelStorage.read

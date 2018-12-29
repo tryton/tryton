@@ -5,6 +5,8 @@ import time
 from sql import Literal, Null
 from sql.aggregate import Count, Max
 
+from trytond.model.exceptions import ValidationError
+from trytond.i18n import gettext
 from ..model import (
     ModelView, ModelSQL, DeactivableMixin, fields, EvalEnvironment, Check)
 from ..pyson import Eval, PYSONDecoder
@@ -17,6 +19,10 @@ from ..pool import Pool
 __all__ = [
     'Trigger', 'TriggerLog',
     ]
+
+
+class ConditionError(ValidationError):
+    pass
 
 
 class Trigger(DeactivableMixin, ModelSQL, ModelView):
@@ -64,10 +70,6 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                             | (t.on_delete == True)))),
                 '"On Time" and others are mutually exclusive!'),
             ]
-        cls._error_messages.update({
-                'invalid_condition': ('Condition "%(condition)s" is not a '
-                    'valid PYSON expression on trigger "%(trigger)s".'),
-                })
         cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
@@ -106,10 +108,10 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             try:
                 PYSONDecoder(noeval=True).decode(trigger.condition)
             except Exception:
-                cls.raise_user_error('invalid_condition', {
-                        'condition': trigger.condition,
-                        'trigger': trigger.rec_name,
-                        })
+                raise ConditionError(
+                    gettext('ir.msg_trigger_invalid_condition',
+                        condition=trigger.condition,
+                        trigger=trigger.rec_name))
 
     @staticmethod
     def default_limit_number():

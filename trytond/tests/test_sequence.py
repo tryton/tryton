@@ -6,7 +6,7 @@ import datetime
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.exceptions import UserError
+from trytond.ir.sequence import LastTimestampError
 
 
 class SequenceTestCase(unittest.TestCase):
@@ -69,7 +69,7 @@ class SequenceTestCase(unittest.TestCase):
         self.assertNotEqual(Sequence.get_id(sequence), timestamp)
 
         next_timestamp = Sequence._timestamp(sequence)
-        self.assertRaises(UserError, Sequence.write, [sequence], {
+        self.assertRaises(LastTimestampError, Sequence.write, [sequence], {
                 'last_timestamp': next_timestamp + 100,
                 })
 
@@ -94,7 +94,7 @@ class SequenceTestCase(unittest.TestCase):
         self.assertNotEqual(Sequence.get_id(sequence), timestamp)
 
         next_timestamp = Sequence._timestamp(sequence)
-        self.assertRaises(UserError, Sequence.write, [sequence], {
+        self.assertRaises(LastTimestampError, Sequence.write, [sequence], {
                 'last_timestamp': next_timestamp + 100,
                 })
 

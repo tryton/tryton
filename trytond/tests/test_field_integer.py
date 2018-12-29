@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, DomainValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -72,7 +73,7 @@ class FieldIntegerTestCase(unittest.TestCase):
         "Test create integer required without value"
         Integer = Pool().get('test.integer_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Integer.create([{}])
 
     @with_transaction()
@@ -91,7 +92,7 @@ class FieldIntegerTestCase(unittest.TestCase):
         "Test create integer with domain invalid"
         Integer = Pool().get('test.integer_domain')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DomainValidationError):
             Integer.create([{
                         'integer': 10,
                         }])

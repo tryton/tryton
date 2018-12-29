@@ -7,6 +7,8 @@ from functools import partial
 
 from sql import Null
 
+from trytond.i18n import gettext
+from trytond.model.exceptions import ValidationError
 from ..model import (
     ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields,
     sequence_ordered)
@@ -22,6 +24,27 @@ __all__ = [
     'ActionActWindow', 'ActionActWindowView', 'ActionActWindowDomain',
     'ActionWizard', 'ActionURL',
     ]
+
+
+class WizardModelError(ValidationError):
+    pass
+
+
+class EmailError(ValidationError):
+    pass
+
+
+class ViewError(ValidationError):
+    pass
+
+
+class DomainError(ValidationError):
+    pass
+
+
+class ContextError(ValidationError):
+    pass
+
 
 EMAIL_REFKEYS = set(('cc', 'to', 'subject'))
 
@@ -112,10 +135,6 @@ class ActionKeyword(ModelSQL, ModelView):
     def __setup__(cls):
         super(ActionKeyword, cls).__setup__()
         cls.__rpc__.update({'get_keyword': RPC()})
-        cls._error_messages.update({
-                'wrong_wizard_model': ('Wrong wizard model in keyword action '
-                    '"%s".'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -149,8 +168,9 @@ class ActionKeyword(ModelSQL, ModelView):
                 if action_wizard.model:
                     if not str(self.model).startswith(
                             '%s,' % action_wizard.model):
-                        self.raise_user_error('wrong_wizard_model', (
-                                action_wizard.rec_name,))
+                        raise WizardModelError(
+                            gettext('ir.msg_action_wrong_wizard_model',
+                                name=action_wizard.rec_name))
 
     @staticmethod
     def _convert_vals(vals):
@@ -491,13 +511,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     pyson_email = fields.Function(fields.Char('PySON Email'), 'get_pyson')
 
     @classmethod
-    def __setup__(cls):
-        super(ActionReport, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_email': 'Invalid email definition on report "%s".',
-                })
-
-    @classmethod
     def __register__(cls, module_name):
         super(ActionReport, cls).__register__(module_name)
 
@@ -564,10 +577,13 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                 if isinstance(value, dict):
                     inkeys = set(value)
                     if not inkeys <= EMAIL_REFKEYS:
-                        cls.raise_user_error('invalid_email', (
-                                report.rec_name,))
+                        raise EmailError(
+                            gettext('ir.msg_report_invalid_email',
+                                name=report.rec_name))
                 else:
-                    cls.raise_user_error('invalid_email', (report.rec_name,))
+                    raise EmailError(
+                        gettext('ir.msg_report_invalid_email',
+                            name=report.rec_name))
 
     def get_is_custom(self, name):
         return bool(self.report_content_custom)
@@ -680,14 +696,6 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ActionActWindow, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_views': ('Invalid view "%(view)s" for action '
-                    '"%(action)s".'),
-                'invalid_domain': ('Invalid domain or search criteria '
-                    '"%(domain)s" on action "%(action)s".'),
-                'invalid_context': ('Invalid context "%(context)s" on action '
-                    '"%(action)s".'),
-                })
         cls.__rpc__.update({
                 'get': RPC(),
                 })
@@ -739,28 +747,28 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                 for act_window_view in action.act_window_views:
                     view = act_window_view.view
                     if view.model != action.res_model:
-                        cls.raise_user_error('invalid_views', {
-                                'view': view.rec_name,
-                                'action': action.rec_name,
-                                })
+                        raise ViewError(
+                            gettext('ir.msg_action_invalid_views',
+                                view=view.rec_name,
+                                action=action.rec_name))
                     if view.type == 'board':
-                        cls.raise_user_error('invalid_views', {
-                                'view': view.rec_name,
-                                'action': action.rec_name,
-                                })
+                        raise ViewError(
+                            gettext('ir.msg_action_invalid_views',
+                                view=view.rec_name,
+                                action=action.rec_name))
             else:
                 for act_window_view in action.act_window_views:
                     view = act_window_view.view
                     if view.model:
-                        cls.raise_user_error('invalid_views', {
-                                'view': view.rec_name,
-                                'action': action.rec_name,
-                                })
+                        raise ViewError(
+                            gettext('ir.msg_action_invalid_views',
+                                view=view.rec_name,
+                                action=action.rec_name))
                     if view.type != 'board':
-                        cls.raise_user_error('invalid_views', {
-                                'view': view.rec_name,
-                                'action': action.rec_name,
-                                })
+                        raise ViewError(
+                            gettext('ir.msg_action_invalid_views',
+                                view=view.rec_name,
+                                action=action.rec_name))
 
     @classmethod
     def check_domain(cls, actions):
@@ -772,29 +780,29 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                 try:
                     value = PYSONDecoder().decode(domain)
                 except Exception:
-                    cls.raise_user_error('invalid_domain', {
-                            'domain': domain,
-                            'action': action.rec_name,
-                            })
+                    raise DomainError(
+                        gettext('ir.msg_action_invalid_domain',
+                            domain=domain,
+                            action=action.rec_name))
                 if isinstance(value, PYSON):
                     if not value.types() == set([list]):
-                        cls.raise_user_error('invalid_domain', {
-                                'domain': domain,
-                                'action': action.rec_name,
-                                })
+                        raise DomainError(
+                            gettext('ir.msg_action_invalid_domain',
+                                domain=domain,
+                                action=action.rec_name))
                 elif not isinstance(value, list):
-                    cls.raise_user_error('invalid_domain', {
-                            'domain': domain,
-                            'action': action.rec_name,
-                            })
+                    raise DomainError(
+                        gettext('ir.msg_action_invalid_domain',
+                            domain=domain,
+                            action=action.rec_name))
                 else:
                     try:
                         fields.domain_validate(value)
                     except Exception:
-                        cls.raise_user_error('invalid_domain', {
-                                'domain': domain,
-                                'action': action.rec_name,
-                                })
+                        raise DomainError(
+                            gettext('ir.msg_action_invalid_domain',
+                                domain=domain,
+                                action=action.rec_name))
 
     @classmethod
     def check_context(cls, actions):
@@ -804,29 +812,29 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
                 try:
                     value = PYSONDecoder().decode(action.context)
                 except Exception:
-                    cls.raise_user_error('invalid_context', {
-                            'context': action.context,
-                            'action': action.rec_name,
-                            })
+                    raise ContextError(
+                        gettext('ir.msg_action_invalid_context',
+                            context=action.context,
+                            action=action.rec_name))
                 if isinstance(value, PYSON):
                     if not value.types() == set([dict]):
-                        cls.raise_user_error('invalid_context', {
-                                'context': action.context,
-                                'action': action.rec_name,
-                                })
+                        raise ContextError(
+                            gettext('ir.msg_action_invalid_context',
+                                context=action.context,
+                                action=action.rec_name))
                 elif not isinstance(value, dict):
-                    cls.raise_user_error('invalid_context', {
-                            'context': action.context,
-                            'action': action.rec_name,
-                            })
+                    raise ContextError(
+                        gettext('ir.msg_action_invalid_context',
+                            context=action.context,
+                            action=action.rec_name))
                 else:
                     try:
                         fields.context_validate(value)
                     except Exception:
-                        cls.raise_user_error('invalid_context', {
-                                'context': action.context,
-                                'action': action.rec_name,
-                                })
+                        raise ContextError(
+                            gettext('ir.msg_action_invalid_context',
+                                context=action.context,
+                                action=action.rec_name))
 
     def get_views(self, name):
         return [(view.view.id, view.view.type)
@@ -912,14 +920,6 @@ class ActionActWindowDomain(
         select=True, required=True, ondelete='CASCADE')
 
     @classmethod
-    def __setup__(cls):
-        super(ActionActWindowDomain, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_domain': ('Invalid domain or search criteria '
-                    '"%(domain)s" on action "%(action)s".'),
-                })
-
-    @classmethod
     def __register__(cls, module_name):
         super().__register__(module_name)
 
@@ -957,10 +957,10 @@ class ActionActWindowDomain(
                 except Exception:
                     value = None
             if value is None:
-                cls.raise_user_error('invalid_domain', {
-                        'domain': action.domain,
-                        'action': action.rec_name,
-                        })
+                raise DomainError(gettext(
+                        'ir.msg_action_invalid_domain',
+                        domain=action.domain,
+                        action=action.rec_name))
 
     @classmethod
     def create(cls, vlist):

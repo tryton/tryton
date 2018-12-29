@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
+from trytond.model.exceptions import ValidationError
 from ..model import ModelView, ModelSQL, fields, EvalEnvironment, Check
 from ..transaction import Transaction
 from ..cache import Cache
@@ -9,6 +11,10 @@ from ..pyson import PYSONDecoder
 __all__ = [
     'RuleGroup', 'Rule',
     ]
+
+
+class DomainError(ValidationError):
+    pass
 
 
 class RuleGroup(ModelSQL, ModelView):
@@ -99,13 +105,6 @@ class Rule(ModelSQL, ModelView):
     _domain_get_cache = Cache('ir_rule.domain_get', context=False)
 
     @classmethod
-    def __setup__(cls):
-        super(Rule, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_domain': 'Invalid domain in rule "%s".',
-                })
-
-    @classmethod
     def validate(cls, rules):
         super(Rule, cls).validate(rules)
         cls.check_domain(rules)
@@ -117,14 +116,17 @@ class Rule(ModelSQL, ModelView):
             try:
                 value = PYSONDecoder(ctx).decode(rule.domain)
             except Exception:
-                cls.raise_user_error('invalid_domain', (rule.rec_name,))
+                raise DomainError(gettext(
+                        'ir.msg_rule_invalid_domain', name=rule.rec_name))
             if not isinstance(value, list):
-                cls.raise_user_error('invalid_domain', (rule.rec_name,))
+                raise DomainError(gettext(
+                        'ir.msg_rule_invalid_domain', name=rule.rec_name))
             else:
                 try:
                     fields.domain_validate(value)
                 except Exception:
-                    cls.raise_user_error('invalid_domain', (rule.rec_name,))
+                    raise DomainError(gettext(
+                            'ir.msg_rule_invalid_domain', name=rule.rec_name))
 
     @staticmethod
     def _get_context():

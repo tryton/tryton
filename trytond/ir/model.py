@@ -11,6 +11,8 @@ from sql.conditionals import Case
 from collections import defaultdict
 from itertools import groupby
 
+from trytond.i18n import gettext
+from trytond.model.exceptions import AccessError, ValidationError
 from ..model import (ModelView, ModelSQL, Workflow, DeactivableMixin, fields,
     Unique, EvalEnvironment)
 from ..report import Report
@@ -34,6 +36,10 @@ __all__ = [
     'ModelWorkflowGraph',
     ]
 logger = logging.getLogger(__name__)
+
+
+class ConditionError(ValidationError):
+    pass
 
 
 class Model(ModelSQL, ModelView):
@@ -419,12 +425,6 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ModelAccess, cls).__setup__()
-        cls._error_messages.update({
-            'read': 'You can not read this document! (%s)',
-            'write': 'You can not write in this document! (%s)',
-            'create': 'You can not create this kind of document! (%s)',
-            'delete': 'You can not delete this document! (%s)',
-            })
         cls.__rpc__.update({
                 'get_access': RPC(),
                 })
@@ -523,7 +523,8 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         access = cls.get_access([model_name])[model_name][mode]
         if not access and access is not None:
             if raise_exception:
-                cls.raise_user_error(mode, model_name)
+                raise AccessError(gettext(
+                        'ir.msg_access_rule_error', model=model_name))
             else:
                 return False
         return True
@@ -600,14 +601,6 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
     perm_delete = fields.Boolean('Delete Access')
     description = fields.Text('Description')
     _get_access_cache = Cache('ir_model_field_access.check', context=False)
-
-    @classmethod
-    def __setup__(cls):
-        super(ModelFieldAccess, cls).__setup__()
-        cls._error_messages.update({
-            'read': 'You can not read the field! (%s.%s)',
-            'write': 'You can not write on the field! (%s.%s)',
-            })
 
     @staticmethod
     def check_xml_record(field_accesses, values):
@@ -717,7 +710,10 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         for field in fields:
             if not accesses.get(field, True):
                 if raise_exception:
-                    cls.raise_user_error(mode, (model_name, field))
+                    raise AccessError(
+                        gettext('ir.msg_access_rule_field_error',
+                            model=model_name,
+                            field=field))
                 else:
                     return False
         return True
@@ -925,14 +921,6 @@ class ModelButtonRule(ModelSQL, ModelView):
         '"self"\nIt activate the rule if true.')
 
     @classmethod
-    def __setup__(cls):
-        super(ModelButtonRule, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_condition': ('Condition "%(condition)s" is not a '
-                    'valid PYSON expression on button rule "%(rule)s".'),
-                })
-
-    @classmethod
     def default_number_user(cls):
         return 1
 
@@ -949,10 +937,10 @@ class ModelButtonRule(ModelSQL, ModelView):
             try:
                 PYSONDecoder(noeval=True).decode(rule.condition)
             except Exception:
-                cls.raise_user_error('invalid_condition', {
-                        'condition': rule.condition,
-                        'rule': rule.rec_name,
-                        })
+                raise ConditionError(
+                    gettext('ir.msg_model_invalid_condition',
+                        condition=rule.condition,
+                        rule=rule.rec_name))
 
     def test(self, record, clicks):
         "Test if the rule passes for the record"

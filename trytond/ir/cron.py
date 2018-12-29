@@ -9,6 +9,7 @@ from email.mime.text import MIMEText
 from email.header import Header
 from ast import literal_eval
 
+from trytond.i18n import gettext
 from ..model import ModelView, ModelSQL, DeactivableMixin, fields, dualmethod
 from ..transaction import Transaction
 from ..pool import Pool
@@ -62,11 +63,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Cron, cls).__setup__()
-        cls._error_messages.update({
-                'request_title': 'Scheduled action failed',
-                'request_body': ("The following action failed to execute "
-                    "properly: \"%s\"\n%s\n Traceback: \n\n%s\n")
-                })
         cls._buttons.update({
                 'run_once': {
                     'icon': 'tryton-launch',
@@ -119,11 +115,13 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             # On Python3, the traceback is already a unicode
             if hasattr(tb_s, 'decode'):
                 tb_s = tb_s.decode('utf-8', 'ignore')
-            subject = self.raise_user_error('request_title',
-                raise_exception=False)
-            body = self.raise_user_error('request_body',
-                (self.name, self.__url__, tb_s),
-                raise_exception=False)
+            message = gettext(
+                'ir.msg_cron_email',
+                name=self.name,
+                url=self.__url__,
+                traceback=tb_s).splitlines()
+            subject = message[0]
+            body = '\n'.join(message[1:])
 
             from_addr = config.get('email', 'from')
             to_addr = self.request_user.email

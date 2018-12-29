@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import DomainValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -76,7 +76,7 @@ class FieldMany2OneTestCase(unittest.TestCase):
         Many2One = pool.get('test.many2one_domainvalidation')
         target, = Target.create([{'value': 1}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DomainValidationError):
             Many2One.create([{
                         'many2one': target.id,
                         }])

@@ -4,6 +4,7 @@
 import inspect
 import copy
 
+from trytond.i18n import gettext
 from trytond.model.fields.field import Field
 from trytond.tools import is_instance_method
 from trytond.transaction import Transaction
@@ -76,7 +77,8 @@ class Function(Field):
             return method(domain, tables)
         if self.searcher:
             return getattr(Model, self.searcher)(self.name, domain)
-        Model.raise_user_error('search_function_missing', self.name)
+        raise NotImplementedError(gettext(
+                'ir.msg_search_function_missing', field=self.name))
 
     def get(self, ids, Model, name, values=None):
         '''

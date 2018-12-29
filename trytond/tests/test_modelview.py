@@ -6,9 +6,9 @@ from unittest.mock import patch
 
 from lxml import etree
 
+from trytond.model.exceptions import AccessError, AccessButtonError
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
-from trytond.exceptions import UserError
 from trytond.pyson import PYSONEncoder, Eval
 
 
@@ -100,13 +100,15 @@ class ModelView(unittest.TestCase):
         # Without read access
         access = ModelAccess(model=model, group=None, perm_read=False)
         access.save()
-        self.assertRaises(UserError, TestModel.test, [test])
+        with self.assertRaises(AccessError):
+            TestModel.test([test])
 
         # Without write access
         access.perm_read = True
         access.perm_write = False
         access.save()
-        self.assertRaises(UserError, TestModel.test, [test])
+        with self.assertRaises(AccessError):
+            TestModel.test([test])
 
         # Without write access but with button access
         button.groups = [admin]
@@ -119,7 +121,8 @@ class ModelView(unittest.TestCase):
         no_group.save()
         button.groups = [no_group]
         button.save()
-        self.assertRaises(UserError, TestModel.test, [test])
+        with self.assertRaises(AccessButtonError):
+            TestModel.test([test])
 
     @with_transaction(context={'_check_access': True})
     def test_button_no_rule(self):

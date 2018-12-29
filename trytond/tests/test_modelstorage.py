@@ -3,7 +3,8 @@
 
 import unittest
 
-from trytond.error import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, DomainValidationError)
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -99,18 +100,40 @@ class ModelStorageTestCase(unittest.TestCase):
         with Transaction().set_context(bar=True):
             bar = ModelStorage(name='bar')
         ModelStorage.save([foo, bar])
+
         self.assertNotEqual(foo._context, bar._context)
 
+    @with_transaction()
+    def test_fail_saving_mixed_context1(self):
+        'Test fail saving with mixed context '
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.required')
+
+        foo = ModelStorage(name='foo')
+        with Transaction().set_context(bar=True):
+            bar = ModelStorage(name='bar')
+        ModelStorage.save([foo, bar])
         foo.name = None
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             ModelStorage.save([foo, bar])
+
         self.assertIsNone(foo.name)
         self.assertEqual(bar.name, 'bar')
 
-        Transaction().rollback()
+    @with_transaction()
+    def test_fail_saving_mixed_context2(self):
+        'Test fail saving with mixed context '
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.required')
+
+        foo = ModelStorage(name='foo')
+        with Transaction().set_context(bar=True):
+            bar = ModelStorage(name='bar')
+        ModelStorage.save([foo, bar])
+
         bar.name = None
         foo.name = 'foo'
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             ModelStorage.save([foo, bar])
         self.assertEqual(foo.name, 'foo')
         self.assertIsNone(bar.name)
@@ -151,7 +174,7 @@ class ModelStorageTestCase(unittest.TestCase):
 
         Model.create([{'constraint': 'foo', 'value': 'foo'}] * 10)
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DomainValidationError):
             Model.create([{'constraint': 'foo', 'value': 'bar'}] * 10)
 
     @with_transaction()
@@ -163,7 +186,7 @@ class ModelStorageTestCase(unittest.TestCase):
         Model.create(
             [{'constraint': str(i), 'value': str(i)} for i in range(10)])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DomainValidationError):
             Model.create(
                 [{'constraint': str(i), 'value': str(i + 1)}
                     for i in range(10)])
@@ -176,7 +199,7 @@ class ModelStorageTestCase(unittest.TestCase):
 
         Model.create([{'constraint': 'foo', 'value': 'foo'}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DomainValidationError):
             Model.create([{'constraint': 'foo', 'value': 'bar'}])
 
     @with_transaction()

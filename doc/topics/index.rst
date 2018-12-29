@@ -21,6 +21,7 @@ Introduction to all the key parts of trytond:
     domain
     pyson
     access_rights
+    user_errors_warnings
     triggers
     actions
     views/index

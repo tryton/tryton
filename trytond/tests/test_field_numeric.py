@@ -3,7 +3,8 @@
 import unittest
 from decimal import Decimal, InvalidOperation
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, DigitsValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -84,7 +85,7 @@ class FieldNumericTestCase(unittest.TestCase):
         "Test create numeric required without value"
         Numeric = Pool().get('test.numeric_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Numeric.create([{}])
 
     @with_transaction()
@@ -104,7 +105,7 @@ class FieldNumericTestCase(unittest.TestCase):
         "Test create numeric with invalid digits"
         Numeric = Pool().get('test.numeric_digits')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Numeric.create([{
                     'digits': 1,
                     'numeric': Decimal('1.11'),
@@ -139,7 +140,7 @@ class FieldNumericTestCase(unittest.TestCase):
         "Test create a numeric with 11 digits on with 10 limit"
         Numeric = Pool().get('test.numeric_digits')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Numeric.create([{
                         'digits': 10,
                         'numeric': Decimal('1.11111111111'),
@@ -455,7 +456,7 @@ class FieldNumericTestCase(unittest.TestCase):
                     'numeric': Decimal('1.1'),
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Numeric.write([numeric], {
                     'numeric': Decimal('1.11'),
                     })
@@ -470,7 +471,7 @@ class FieldNumericTestCase(unittest.TestCase):
                     'numeric': Decimal('1.1'),
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Numeric.write([numeric], {
                     'numeric': Decimal('1.10000000000000001'),
                     })
@@ -485,7 +486,7 @@ class FieldNumericTestCase(unittest.TestCase):
                     'numeric': Decimal('1.11'),
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Numeric.write([numeric], {
                     'digits': 1,
                     })
@@ -500,7 +501,7 @@ class FieldNumericTestCase(unittest.TestCase):
                     'numeric': Decimal('1.1'),
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Numeric.write([numeric], {
                     'digits': 0,
                     })

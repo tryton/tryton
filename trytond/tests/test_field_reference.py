@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -58,7 +58,7 @@ class FieldReferenceTestCase(unittest.TestCase):
         pool = Pool()
         Reference = pool.get('test.reference_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Reference.create([{}])
 
     @with_transaction()
@@ -68,7 +68,7 @@ class FieldReferenceTestCase(unittest.TestCase):
         Target = pool.get('test.reference.target')
         Reference = pool.get('test.reference_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Reference.create([{
                         'reference': str(Target()),
                         }])

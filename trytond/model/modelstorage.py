@@ -4,7 +4,6 @@
 import datetime
 import time
 import csv
-import warnings
 
 from decimal import Decimal
 from itertools import islice, chain
@@ -12,6 +11,7 @@ from functools import reduce, wraps
 from operator import itemgetter
 from collections import defaultdict
 
+from trytond.exceptions import UserError
 from trytond.model import Model
 from trytond.model import fields
 from trytond.tools import reduce_domain, memoize, is_instance_method, \
@@ -19,6 +19,7 @@ from trytond.tools import reduce_domain, memoize, is_instance_method, \
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict, LRUDictTransaction, freeze
@@ -27,6 +28,42 @@ from .modelview import ModelView
 from .descriptors import dualmethod
 
 __all__ = ['ModelStorage', 'EvalEnvironment']
+
+
+class AccessError(UserError):
+    pass
+
+
+class ImportDataError(UserError):
+    pass
+
+
+class ValidationError(UserError):
+    pass
+
+
+class DomainValidationError(ValidationError):
+    pass
+
+
+class RequiredValidationError(ValidationError):
+    pass
+
+
+class SizeValidationError(ValidationError):
+    pass
+
+
+class DigitsValidationError(ValidationError):
+    pass
+
+
+class SelectionValidationError(ValidationError):
+    pass
+
+
+class TimeFormatValidationError(ValidationError):
+    pass
 
 
 def without_check_access(func):
@@ -80,7 +117,6 @@ class ModelStorage(Model):
                     'export_data': RPC(instantiate=0, unique=False),
                     'import_data': RPC(readonly=False),
                     })
-        cls._constraints = []
 
     @staticmethod
     def default_create_uid():
@@ -155,8 +191,9 @@ class ModelStorage(Model):
         all_fields = set()
         for records, values in zip(actions, actions):
             if not cls.check_xml_record(records, values):
-                cls.raise_user_error('write_xml_record',
-                        error_description='xml_record_desc')
+                raise AccessError(
+                    gettext('ir.msg_write_xml_record'),
+                    gettext('ir.msg_base_config_record'))
             all_records += records
             all_fields.update(values.keys())
 
@@ -227,8 +264,9 @@ class ModelStorage(Model):
 
         ModelAccess.check(cls.__name__, 'delete')
         if not cls.check_xml_record(records, None):
-            cls.raise_user_error('delete_xml_record',
-                    error_description='xml_record_desc')
+            raise AccessError(
+                gettext('ir.msg_delete_xml_record'),
+                gettext('ir.msg_base_config_record'))
 
         # Increase transaction counter
         Transaction().counter += 1
@@ -616,10 +654,15 @@ class ModelStorage(Model):
                 ('rec_name', '=', value),
                 ], limit=2)
             if len(res) < 1:
-                cls.raise_user_error('relation_not_found', (value, relation))
+                raise ImportDataError(gettext(
+                        'ir.msg_relation_not_found',
+                        value=value,
+                        model=relation))
             elif len(res) > 1:
-                cls.raise_user_error('too_many_relations_found',
-                    (value, relation))
+                raise ImportDataError(
+                    gettext('ir.msg_too_many_relations_found',
+                        value=value,
+                        model=relation))
             else:
                 res = res[0].id
             return res
@@ -636,11 +679,15 @@ class ModelStorage(Model):
                     ('rec_name', '=', word),
                     ], limit=2)
                 if len(res2) < 1:
-                    cls.raise_user_error('relation_not_found',
-                        (word, relation))
+                    raise ImportDataError(
+                        gettext('ir.msg_relation_not_found',
+                            value=word,
+                            model=relation))
                 elif len(res2) > 1:
-                    cls.raise_user_error('too_many_relations_found',
-                        (word, relation))
+                    raise ImportDataError(
+                        gettext('ir.msg_too_many_relations_found',
+                            value=word,
+                            model=relation))
                 else:
                     res.extend(res2)
             if len(res):
@@ -657,17 +704,24 @@ class ModelStorage(Model):
             try:
                 relation, value = value.split(',', 1)
             except Exception:
-                cls.raise_user_error('reference_syntax_error',
-                    (value, '/'.join(field)))
+                raise ImportDataError(
+                    gettext('ir.msg_reference_syntax_error',
+                        value=value,
+                        field='/'.join(field)))
             Relation = pool.get(relation)
             res = Relation.search([
                 ('rec_name', '=', value),
                 ], limit=2)
             if len(res) < 1:
-                cls.raise_user_error('relation_not_found', (value, relation))
+                raise ImportDataError(gettext(
+                        'ir.msg_relation_not_found',
+                        value=value,
+                        model=relation))
             elif len(res) > 1:
-                cls.raise_user_error('too_many_relations_found',
-                    (value, relation))
+                raise ImportDataError(
+                    gettext('ir.msg_too_many_relations_found',
+                        value=value,
+                        model=relation))
             else:
                 res = '%s,%s' % (relation, res[0].id)
             return res
@@ -685,8 +739,10 @@ class ModelStorage(Model):
                 try:
                     relation, value = value.split(',', 1)
                 except Exception:
-                    cls.raise_user_error('reference_syntax_error',
-                        (value, '/'.join(field)))
+                    raise ImportDataError(
+                        gettext('ir.msg_reference_syntax_error',
+                            value=value,
+                            field='/'.join(field)))
                 value = [value]
             else:
                 value = [value]
@@ -695,8 +751,10 @@ class ModelStorage(Model):
                 try:
                     module, xml_id = word.rsplit('.', 1)
                 except Exception:
-                    cls.raise_user_error('xml_id_syntax_error',
-                        (word, '/'.join(field)))
+                    raise ImportDataError(
+                        gettext('ir.msg_xml_id_syntax_error',
+                            value=word,
+                            field='/'.join(field)))
                 db_id = ModelData.get_id(module, xml_id)
                 res_ids.append(db_id)
             if ftype == 'many2many' and res_ids:
@@ -888,19 +946,6 @@ class ModelStorage(Model):
         with Transaction().set_context(_check_access=False):
             records = cls.browse(records)
 
-        def call(name):
-            method = getattr(cls, name)
-            if not is_instance_method(cls, name):
-                return method(records)
-            else:
-                return all(method(r) for r in records)
-        for field in cls._constraints:
-            warnings.warn(
-                '_constraints is deprecated, override validate instead',
-                DeprecationWarning, stacklevel=2)
-            if not call(field[0]):
-                cls.raise_user_error(field[1])
-
         ctx_pref = {}
         if Transaction().user:
             try:
@@ -1005,8 +1050,9 @@ class ModelStorage(Model):
                                 domain,
                                 ])
                     if sub_relations != set(finds):
-                        cls.raise_user_error('domain_validation_record',
-                            error_args=cls._get_error_args(field.name))
+                        raise DomainValidationError(
+                            gettext('ir.msg_domain_validation_record',
+                                **cls._get_error_args(field.name)))
 
         field_names = set(field_names or [])
         function_fields = {name for name, field in cls._fields.items()
@@ -1026,15 +1072,14 @@ class ModelStorage(Model):
                 validate_domain(field)
 
                 def required_test(value, field_name, field):
-                    if (isinstance(value, (type(None), type(False), list,
-                                    tuple, str, dict))
-                            and not value):
-                        cls.raise_user_error('required_validation_record',
-                            error_args=cls._get_error_args(field_name))
-                    if (field._type == 'reference'
-                            and not isinstance(value, ModelStorage)):
-                        cls.raise_user_error('required_validation_record',
-                            error_args=cls._get_error_args(field_name))
+                    if ((isinstance(value,
+                                    (type(None), bool, list, tuple, str, dict))
+                                and not value)
+                            or (field._type == 'reference'
+                                and not isinstance(value, ModelStorage))):
+                        raise RequiredValidationError(
+                            gettext('ir.msg_required_validation_record',
+                                **cls._get_error_args(field_name)))
                 # validate states required
                 if field.states and 'required' in field.states:
                     if is_pyson(field.states['required']):
@@ -1079,16 +1124,19 @@ class ModelStorage(Model):
                         if (size > field_size >= 0):
                             error_args = cls._get_error_args(field_name)
                             error_args['size'] = size
-                            cls.raise_user_error('size_validation_record',
-                                error_args=error_args)
+                            error_args['max_size'] = field_size
+                            raise SizeValidationError(
+                                gettext('ir.msg_size_validation_record',
+                                    **error_args))
 
                 def digits_test(value, digits, field_name):
-                    def raise_user_error(value):
+                    def raise_error(value):
                         error_args = cls._get_error_args(field_name)
                         error_args['digits'] = digits[1]
                         error_args['value'] = repr(value)
-                        cls.raise_user_error('digits_validation_record',
-                            error_args=error_args)
+                        raise DigitsValidationError(
+                            gettext('ir.msg_digits_validation_record',
+                                **error_args))
                     if (value is None
                             or not digits
                             or any(d is None for d in digits)):
@@ -1096,10 +1144,10 @@ class ModelStorage(Model):
                     if isinstance(value, Decimal):
                         exp = Decimal('.'.join(['0', '0' * digits[1]]))
                         if value.quantize(exp) != value:
-                            raise_user_error(value)
+                            raise_error(value)
                     else:
                         if not (round(value, digits[1]) == float(value)):
-                            raise_user_error(value)
+                            raise_error(value)
                 # validate digits
                 if getattr(field, 'digits', None):
                     if is_pyson(field.digits):
@@ -1144,8 +1192,9 @@ class ModelStorage(Model):
                         if value not in test:
                             error_args = cls._get_error_args(field_name)
                             error_args['value'] = value
-                            cls.raise_user_error('selection_validation_record',
-                                error_args=error_args)
+                            raise SelectionValidationError(
+                                gettext('ir.msg_selection_validation_record',
+                                    **error_args))
 
                 def format_test(value, format, field_name):
                     if not value:
@@ -1156,8 +1205,9 @@ class ModelStorage(Model):
                             value.strftime(format), format).time():
                         error_args = cls._get_error_args(field_name)
                         error_args['value'] = value
-                        cls.raise_user_error('time_format_validation_record',
-                            error_args=error_args)
+                        raise TimeFormatValidationError(
+                            gettext('ir.msg_time_format_validation_record',
+                                **error_args))
 
                 # validate time format
                 if (field._type in ('datetime', 'time')

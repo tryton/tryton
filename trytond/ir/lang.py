@@ -14,6 +14,8 @@ from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
 from ..cache import Cache
 from ..transaction import Transaction
 from ..pool import Pool
+from ..exceptions import UserError
+from ..i18n import gettext
 from .time_locale import TIME_LOCALE
 
 Transaction.cache_keys.add('translate_name')
@@ -21,6 +23,22 @@ Transaction.cache_keys.add('translate_name')
 __all__ = [
     'Lang',
     ]
+
+
+class GroupingError(UserError):
+    pass
+
+
+class DateError(UserError):
+    pass
+
+
+class TranslatableError(UserError):
+    pass
+
+
+class DeleteDefaultError(UserError):
+    pass
 
 
 class Lang(DeactivableMixin, ModelSQL, ModelView):
@@ -70,15 +88,6 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                 Check(table, table.decimal_point != table.thousands_sep),
                 'decimal_point and thousands_sep must be different!'),
             ]
-        cls._error_messages.update({
-                'invalid_grouping': ('Invalid grouping "%(grouping)s" on '
-                    '"%(language)s" language.'),
-                'invalid_date': ('Invalid date format "%(format)s" on '
-                    '"%(language)s" language.'),
-                'default_translatable': ('The default language must be '
-                    'translatable.'),
-                'delete_default': ('Default language can not be deleted.'),
-                })
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -198,10 +207,10 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                         if not isinstance(i, int):
                             raise
                 except Exception:
-                    cls.raise_user_error('invalid_grouping', {
-                            'grouping': grouping,
-                            'language': lang.rec_name,
-                            })
+                    raise GroupingError(
+                        gettext('ir.msg_language_invalid_grouping',
+                            grouping=grouping,
+                            language=lang.rec_name))
 
     @classmethod
     def check_date(cls, langs):
@@ -213,10 +222,9 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             try:
                 datetime.datetime.now().strftime(date)
             except Exception:
-                cls.raise_user_error('invalid_date', {
-                        'format': lang.date,
-                        'language': lang.rec_name,
-                        })
+                raise DateError(gettext('ir.msg_language_invalid_date',
+                        format=lang.date,
+                        language=lang.rec_name))
             if (('%Y' not in lang.date)
                     or ('%b' not in lang.date
                         and '%B' not in lang.date
@@ -230,10 +238,10 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                         or '%X' in lang.date
                         or '%c' in lang.date
                         or '%Z' in lang.date)):
-                cls.raise_user_error('invalid_date', {
-                        'format': lang.date,
-                        'language': lang.rec_name,
-                        })
+                raise DateError(gettext(
+                        'ir.msg_language_invalid_date',
+                        format=lang.date,
+                        language=lang.rec_name))
 
     @classmethod
     def check_translatable(cls, langs):
@@ -246,7 +254,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         for lang in langs:
             if (lang.code == Config.get_language()
                     and not lang.translatable):
-                cls.raise_user_error('default_translatable')
+                raise TranslatableError(
+                    gettext('ir.msg_language_default_translatable'))
 
     @staticmethod
     def check_xml_record(langs, values):
@@ -292,7 +301,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         Translation = pool.get('ir.translation')
         for lang in langs:
             if lang.code == Config.get_language():
-                cls.raise_user_error('delete_default')
+                raise DeleteDefaultError(
+                    gettext('ir.msg_language_delete_default'))
         # Clear cache
         cls._lang_cache.clear()
         cls._code_cache.clear()

@@ -22,16 +22,6 @@ Class attributes are:
     It contains a dictionary with method name as key and an instance of
     :class:`trytond.rpc.RPC` as value.
 
-.. attribute:: Model._error_messages
-
-    It contains a dictionary mapping keywords to an error message. By way of
-    example::
-
-        _error_messages = {
-            'recursive_categories': 'You can not create recursive categories!',
-            'wrong_name': 'You can not use " / " in name field!'
-        }
-
 .. attribute:: Model._rec_name
 
     It contains the name of the field used as name of records. The default
@@ -59,27 +49,6 @@ Class methods:
 .. classmethod:: Model.__register__(module_name)
 
     Registers the model in ``ir.model`` and ``ir.model.field``.
-
-.. classmethod:: Model.raise_user_error(error[, error_args[, error_description[, error_description_args[, raise_exception]]]])
-
-    Raises an exception that will be displayed as an error message in the
-    client.  ``error`` is the key of the error message in ``_error_messages``
-    and ``error_args`` is the arguments for the "%"-based substitution of the
-    error message.  There is the same parameter for an additional description.
-    The boolean ``raise_exception`` can be set to ``False`` to retrieve the
-    error message strings.
-
-.. classmethod:: Model.raise_user_warning(warning_name, warning[, warning_args[, warning_description[, warning_description_args]]])
-
-    Raises an exception that will be displayed as a warning message on the
-    client, if the user has not yet bypassed it. ``warning_name`` is used to
-    uniquely identify the warning. Others parameters are like in
-    :meth:`Model.raise_user_error`.
-
-    .. warning::
-        It requires that the cursor will be commited as it stores state of the
-        warning states by users.
-    ..
 
 .. classmethod:: Model.default_get(fields_names[, with_rec_name])
 
@@ -216,19 +185,6 @@ Class attributes are:
     The definition of the :class:`trytond.model.fields.Function` field
     :attr:`rec_name`. It is used in the client to display the records with a
     single string.
-
-.. attribute:: ModelStorage._constraints
-
-    .. warning::
-        Deprecated, use :class:`trytond.model.ModelStorage.validate` instead.
-
-    The list of constraints that each record must respect. The definition is:
-
-        [ ('function name', 'error keyword'), ... ]
-
-    where ``function name`` is the name of an instance or a class method of the
-    which must return a boolean (``False`` when the constraint is violated) and
-    ``error keyword`` is a key of :attr:`Model._error_messages`.
 
 Static methods:
 
@@ -406,18 +362,13 @@ Class attributes are:
 
     A list of SQL constraints that are added on the table:
 
-        [ ('constraint name', constraint, 'error message key'), ... ]
+        [ ('constraint name', constraint, 'xml id'), ... ]
 
     - `constraint name` is the name of the SQL constraint in the database
 
     - constraint is an instance of :class:`Constraint`
 
-    - `error message key` is the key of
-      :attr:`_sql_error_messages`
-
-.. attribute:: ModelSQL._sql_error_messages
-
-    Like :attr:`Model._error_messages` but for :attr:`_sql_constraints`
+    - message id for :meth:`trytond.i18n.gettext`
 
 Class methods:
 

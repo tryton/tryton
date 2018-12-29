@@ -5,7 +5,7 @@ import tempfile
 import unittest
 
 from trytond.config import config
-from trytond.exceptions import UserError
+from trytond.model.exceptions import RequiredValidationError
 from trytond.model import fields
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -62,7 +62,7 @@ class FieldBinaryTestCase(unittest.TestCase):
         "Test create binary without value"
         Binary = Pool().get('test.binary_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             binary, = Binary.create([{}])
 
     @with_transaction()
@@ -81,7 +81,7 @@ class FieldBinaryTestCase(unittest.TestCase):
         "Test create binary with empty"
         Binary = Pool().get('test.binary_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             binary, = Binary.create([{
                         'binary': cast(b''),
                         }])

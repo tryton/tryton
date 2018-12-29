@@ -2,6 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
 
+from trytond.i18n import gettext
+from .modelstorage import ValidationError
+
+
+class RecursionError(ValidationError):
+    pass
+
 
 def tree(parent='parent', name='name', separator=None):
     class TreeMixin(object):
@@ -97,10 +104,10 @@ def tree(parent='parent', name='name', separator=None):
                             if walk.id == record.id:
                                 parent_name = ', '.join(getattr(r, name)
                                     for r in getattr(record, parent))
-                                cls.raise_user_error('recursion_error', {
-                                        'rec_name': getattr(record, name),
-                                        'parent_rec_name': parent_name,
-                                        })
+                                raise RecursionError(
+                                    gettext('ir.recursion_error',
+                                        rec_name=getattr(record, name),
+                                        parent_rec_name=parent_name))
                         walker = list(chain(*(
                                     getattr(walk, parent)
                                     for walk in walker
@@ -110,10 +117,10 @@ def tree(parent='parent', name='name', separator=None):
                         if walker.id == record.id:
                             parent_name = getattr(
                                 getattr(record, parent), name)
-                            cls.raise_user_error('recursion_error', {
-                                    'rec_name': getattr(record, name),
-                                    'parent_rec_name': parent_name
-                                    })
+                            raise RecursionError(
+                                gettext('ir.recursion_error',
+                                    rec_name=getattr(record, name),
+                                    parent_rec_name=parent_name))
                         walker = (getattr(walker, parent) not in visited
                             and getattr(walker, parent))
                 visited.update(walked)

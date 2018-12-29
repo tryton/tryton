@@ -21,6 +21,7 @@ from .date import *
 from .trigger import *
 from .session import *
 from . import queue
+from . import message
 
 
 def register():
@@ -87,6 +88,7 @@ def register():
         Session,
         SessionWizard,
         queue.Queue,
+        message.Message,
         module='ir', type_='model')
     Pool.register(
         TranslationSet,

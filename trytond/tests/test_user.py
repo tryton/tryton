@@ -8,8 +8,8 @@ from unittest.mock import patch, ANY
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 from trytond.config import config
-from trytond.error import UserError
 from trytond.res import user as user_module
+from trytond.res.user import PasswordError
 from trytond.transaction import Transaction
 
 FROM = 'tryton@example.com'
@@ -90,7 +90,7 @@ class UserTestCase(unittest.TestCase):
         pool = Pool()
         User = pool.get('res.user')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(PasswordError):
             User.validate_password('123', [])
         User.validate_password('1234', [])
 
@@ -100,7 +100,7 @@ class UserTestCase(unittest.TestCase):
         pool = Pool()
         User = pool.get('res.user')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(PasswordError):
             User.validate_password('password', [])
 
     @with_transaction()
@@ -109,7 +109,7 @@ class UserTestCase(unittest.TestCase):
         pool = Pool()
         User = pool.get('res.user')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(PasswordError):
             User.validate_password('aaaaaa', [])
 
     @with_transaction()
@@ -119,7 +119,7 @@ class UserTestCase(unittest.TestCase):
         User = pool.get('res.user')
         user = User(name='name')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(PasswordError):
             User.validate_password('name', [user])
 
     @with_transaction()
@@ -129,7 +129,7 @@ class UserTestCase(unittest.TestCase):
         User = pool.get('res.user')
         user = User(login='login')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(PasswordError):
             User.validate_password('login', [user])
 
     @with_transaction()
@@ -139,7 +139,7 @@ class UserTestCase(unittest.TestCase):
         User = pool.get('res.user')
         user = User(email='email')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(PasswordError):
             User.validate_password('email', [user])
 
     @with_transaction()

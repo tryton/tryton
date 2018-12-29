@@ -11,9 +11,11 @@ API Reference
     wizard
     pyson
     transaction
+    exceptions
     tools/index
     pool
     rpc
+    i18n
     sendmail
     filestore
     cache

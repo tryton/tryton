@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -341,7 +342,7 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create one2many required without value"
         One2Many = Pool().get('test.one2many_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             One2Many.create([{}])
 
     @with_transaction()
@@ -362,7 +363,7 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create one2many size invalid"
         One2Many = Pool().get('test.one2many_size')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SizeValidationError):
             One2Many.create([{
                         'targets': [
                             ('create', [{}] * 4),
@@ -388,7 +389,7 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create one2many size pyson invalid"
         One2Many = Pool().get('test.one2many_size_pyson')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SizeValidationError):
             One2Many.create([{
                         'limit': 3,
                         'targets': [

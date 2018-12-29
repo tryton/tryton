@@ -4,7 +4,7 @@
 import unittest
 
 from trytond import backend
-from trytond.exceptions import UserError
+from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
@@ -364,7 +364,7 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create char required without value"
         Char = Pool().get('test.char_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Char.create([{}])
 
     @with_transaction()
@@ -372,7 +372,7 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create char required with empty"
         Char = Pool().get('test.char_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Char.create([{
                         'char': '',
                         }])

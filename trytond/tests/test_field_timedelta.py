@@ -3,7 +3,7 @@
 import datetime
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -88,7 +88,7 @@ class FieldTimeDeltaTestCase(unittest.TestCase):
         "Test create timedelta required without value"
         TimeDelta = Pool().get('test.timedelta_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             TimeDelta.create([{}])
 
     @with_transaction()

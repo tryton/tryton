@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    SelectionValidationError, RequiredValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -33,7 +34,7 @@ class FieldSelectionTestCase(unittest.TestCase):
         "Test create selection not in selection"
         Selection = Pool().get('test.selection')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SelectionValidationError):
             Selection.create([{
                         'select': 'chinese',
                         }])
@@ -82,7 +83,7 @@ class FieldSelectionTestCase(unittest.TestCase):
         "Test create selection not in"
         Selection = Pool().get('test.selection')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SelectionValidationError):
             Selection.create([{
                         'select': 'arabic',
                         'dyn_select': '0x3',
@@ -104,7 +105,7 @@ class FieldSelectionTestCase(unittest.TestCase):
         "Test create selection required without value"
         Selection = Pool().get('test.selection_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Selection.create([{}])
 
     @with_transaction()
@@ -112,7 +113,7 @@ class FieldSelectionTestCase(unittest.TestCase):
         "Test create selection required without value"
         Selection = Pool().get('test.selection_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Selection.create([{
                         'select': None,
                         }])

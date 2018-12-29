@@ -3,7 +3,7 @@
 import json
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -69,7 +69,7 @@ class ModelRuleTestCase(unittest.TestCase):
                                     }])],
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             test, = TestRule.create([{'field': 'foo'}])
 
     @with_transaction()
@@ -130,7 +130,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestRule.write([test], {'field': 'bar'})
 
     @with_transaction()
@@ -156,7 +156,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'bar'}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestRule.write([test], {'field': 'foo'})
 
     @with_transaction()
@@ -217,7 +217,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestRule.delete([test])
 
     @with_transaction()
@@ -278,7 +278,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestRule.read([test.id], ['field'])
 
     @with_transaction()

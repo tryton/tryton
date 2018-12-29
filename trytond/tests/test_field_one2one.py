@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    SQLConstraintError, RequiredValidationError, DomainValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -63,7 +64,7 @@ class FieldOne2OneTestCase(unittest.TestCase):
                     'one2one': target,
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SQLConstraintError):
             One2One.create([{
                         'one2one': target,
                         }])
@@ -90,7 +91,7 @@ class FieldOne2OneTestCase(unittest.TestCase):
         One2One = pool.get('test.one2one_required')
         target, = Target.create([{}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             One2One.create([{}])
 
     @with_transaction()
@@ -119,7 +120,7 @@ class FieldOne2OneTestCase(unittest.TestCase):
                     'name': "invalid domain",
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DomainValidationError):
             One2One.create([{
                         'one2one': target.id,
                         }])
@@ -312,7 +313,7 @@ class FieldOne2OneTestCase(unittest.TestCase):
                     'one2one': target,
                     }, {}])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SQLConstraintError):
             One2One.write([one2one2], {
                     'one2one': target.id,
                     })

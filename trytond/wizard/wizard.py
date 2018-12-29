@@ -10,7 +10,6 @@ import copy
 
 from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
-from trytond.error import WarningErrorMixin
 from trytond.url import URLMixin
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.model.fields import states_validate
@@ -178,7 +177,7 @@ class StateReport(StateAction):
         return Action.get_action_values(action.type, [action.id])[0]
 
 
-class Wizard(WarningErrorMixin, URLMixin, PoolBase):
+class Wizard(URLMixin, PoolBase):
     start_state = 'start'
     end_state = 'end'
 
@@ -190,7 +189,6 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
             'delete': RPC(readonly=False),
             'execute': RPC(readonly=False, check_access=False),
             }
-        cls._error_messages = {}
 
         # Copy states
         for attr in dir(cls):
@@ -214,7 +212,6 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
         pool = Pool()
         Translation = pool.get('ir.translation')
         Translation.register_wizard(cls, module_name)
-        Translation.register_error_messages(cls, module_name)
 
     @classmethod
     def check_access(cls):

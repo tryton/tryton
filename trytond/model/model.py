@@ -5,7 +5,6 @@ import copy
 from functools import total_ordering
 
 from trytond.model import fields
-from trytond.error import WarningErrorMixin
 from trytond.pool import Pool, PoolBase, PoolMeta
 from trytond.pyson import PYSONEncoder
 from trytond.transaction import Transaction
@@ -24,7 +23,7 @@ class ModelMeta(PoolMeta):
 
 
 @total_ordering
-class Model(WarningErrorMixin, URLMixin, PoolBase, metaclass=ModelMeta):
+class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     """
     Define a model in Tryton.
     """
@@ -40,7 +39,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase, metaclass=ModelMeta):
             'fields_get': RPC(),
             'pre_validate': RPC(instantiate=0),
             }
-        cls._error_messages = {}
 
         # Copy fields and update depends
         for attr in dir(cls):
@@ -121,7 +119,6 @@ class Model(WarningErrorMixin, URLMixin, PoolBase, metaclass=ModelMeta):
 
         Translation.register_model(cls, module_name)
         Translation.register_fields(cls, module_name)
-        Translation.register_error_messages(cls, module_name)
 
     @classmethod
     def default_get(cls, fields_names, with_rec_name=True):

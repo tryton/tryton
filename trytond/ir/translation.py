@@ -18,6 +18,8 @@ from genshi.filters.i18n import extract as genshi_extract
 from relatorio.reporting import MIMETemplateLoader
 from relatorio.templates.opendocument import get_zip_file
 
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 from ..model import ModelView, ModelSQL, fields, Unique
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -46,8 +48,11 @@ TRANSLATION_TYPE = [
     ('view', 'View'),
     ('wizard_button', 'Wizard Button'),
     ('help', 'Help'),
-    ('error', 'Error'),
 ]
+
+
+class OverriddenError(UserError):
+    pass
 
 
 class TrytonPOFile(polib.POFile):
@@ -88,11 +93,6 @@ class Translation(ModelSQL, ModelView):
                     t.name, t.res_id, t.lang, t.type, t.src_md5, t.module),
                 'Translation must be unique'),
         ]
-        cls._error_messages.update({
-                'translation_overridden': (
-                    "You can not export translation %(name)s because it is an "
-                    "overridden translation by module %(overriding_module)s"),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -237,31 +237,6 @@ class Translation(ModelSQL, ModelView):
                     and isinstance(field.selection, (tuple, list))
                     and getattr(field, 'translate_selection', True)):
                 insert_selection(field, trans_name)
-
-    @classmethod
-    def register_error_messages(cls, model, module_name):
-        cursor = Transaction().connection.cursor()
-        ir_translation = cls.__table__()
-
-        cursor.execute(*ir_translation.select(
-                ir_translation.id, ir_translation.src,
-                where=((ir_translation.lang == 'en')
-                    & (ir_translation.type == 'error')
-                    & (ir_translation.name == model.__name__))))
-        trans_error = {t['src']: t for t in cursor_dict(cursor)}
-
-        errors = model._get_error_messages()
-        for error in set(errors):
-            if error not in trans_error:
-                error_md5 = Translation.get_src_md5(error)
-                cursor.execute(*ir_translation.insert(
-                        [ir_translation.name, ir_translation.lang,
-                            ir_translation.type, ir_translation.src,
-                            ir_translation.src_md5, ir_translation.value,
-                            ir_translation.module, ir_translation.fuzzy,
-                            ir_translation.res_id],
-                        [[model.__name__, 'en', 'error', error, error_md5,
-                                '', module_name, False, -1]]))
 
     @classmethod
     def register_wizard(cls, wizard, module_name):
@@ -654,12 +629,18 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def delete(cls, translations):
+        pool = Pool()
+        Message = pool.get('ir.message')
+        Message._message_cache.clear()
         cls._translation_cache.clear()
         ModelView._fields_view_get_cache.clear()
         return super(Translation, cls).delete(translations)
 
     @classmethod
     def create(cls, vlist):
+        pool = Pool()
+        Message = pool.get('ir.message')
+        Message._message_cache.clear()
         cls._translation_cache.clear()
         ModelView._fields_view_get_cache.clear()
         vlist = [x.copy() for x in vlist]
@@ -673,6 +654,9 @@ class Translation(ModelSQL, ModelView):
 
     @classmethod
     def write(cls, translations, values, *args):
+        pool = Pool()
+        Message = pool.get('ir.message')
+        Message._message_cache.clear()
         cls._translation_cache.clear()
         ModelView._fields_view_get_cache.clear()
         actions = iter((translations, values) + args)
@@ -698,7 +682,7 @@ class Translation(ModelSQL, ModelView):
     @property
     def unique_key(self):
         if self.type in {
-                'report', 'view', 'wizard_button', 'selection', 'error'}:
+                'report', 'view', 'wizard_button', 'selection'}:
             return (self.name, self.res_id, self.type, self.src)
         elif self.type in ('field', 'model', 'help'):
             return (self.name, self.res_id, self.type)
@@ -744,6 +728,9 @@ class Translation(ModelSQL, ModelView):
                 ('module', '=', module),
                 ], order=[])
         for translation in module_translations:
+            # Migration from 5.0: ignore error type
+            if translation.type == 'error':
+                continue
             key = translation.unique_key
             if not key:
                 raise ValueError('Unknow translation type: %s' %
@@ -771,8 +758,7 @@ class Translation(ModelSQL, ModelView):
                     ('module', '=', res_id_module),
                     ]
                 if new_translation.type in {
-                        'report', 'view', 'wizard_button', 'selection',
-                        'error'}:
+                        'report', 'view', 'wizard_button', 'selection'}:
                     domain.append(('src', '=', new_translation.src))
                 translation, = cls.search(domain)
                 if translation.value != new_translation.value:
@@ -799,6 +785,9 @@ class Translation(ModelSQL, ModelView):
                     if entry.obsolete:
                         continue
                     translation, res_id = cls.from_poentry(entry)
+                    # Migration from 5.0: ignore error type
+                    if translation.type == 'error':
+                        continue
                     translation.lang = lang
                     translation.module = module
                     noupdate = False
@@ -885,10 +874,10 @@ class Translation(ModelSQL, ModelView):
         for translation in translations:
             if (translation.overriding_module
                     and translation.overriding_module != module):
-                cls.raise_user_error('translation_overridden', {
-                        'name': translation.name,
-                        'overriding_module': translation.overriding_module,
-                        })
+                raise OverriddenError(
+                    gettext('ir.msg_translation_overridden',
+                        name=translation.name,
+                        overriding_module=translation.overriding_module))
             flags = [] if not translation.fuzzy else ['fuzzy']
             trans_ctxt = '%(type)s:%(name)s:' % {
                 'type': translation.type,
@@ -1325,58 +1314,6 @@ class TranslationClean(Wizard):
         field = Model._fields[field_name]
         return not field.help
 
-    @staticmethod
-    def _clean_error(translation):
-        pool = Pool()
-        model_name = translation.name
-        if model_name in (
-                'delete_xml_record',
-                'xml_record_desc',
-                'write_xml_record',
-                'relation_not_found',
-                'too_many_relations_found',
-                'xml_id_syntax_error',
-                'reference_syntax_error',
-                'domain_validation_record',
-                'required_validation_record',
-                'size_validation_record',
-                'digits_validation_record',
-                'selection_validation_record',
-                'time_format_validation_record',
-                'access_error',
-                'read_error',
-                'write_error',
-                'required_field',
-                'foreign_model_missing',
-                'foreign_model_exist',
-                'search_function_missing',
-                'selection_value_notfound',
-                'recursion_error',
-                ):
-            return False
-        Model, Wizard = None, None
-        try:
-            Model = pool.get(model_name)
-        except KeyError:
-            try:
-                Wizard = pool.get(model_name, type='wizard')
-            except KeyError:
-                pass
-        if Model:
-            errors = list(Model._error_messages.values())
-            if issubclass(Model, ModelSQL):
-                errors += list(Model._sql_error_messages.values())
-                for _, _, error in Model._sql_constraints:
-                    errors.append(error)
-            if translation.src not in errors:
-                return True
-        elif Wizard:
-            errors = list(Wizard._error_messages.values())
-            if translation.src not in errors:
-                return True
-        else:
-            return True
-
     def transition_clean(self):
         pool = Pool()
         Translation = pool.get('ir.translation')
@@ -1434,7 +1371,7 @@ class TranslationUpdate(Wizard):
     "Update translation"
     __name__ = "ir.translation.update"
 
-    _source_types = ['report', 'view', 'wizard_button', 'selection', 'error']
+    _source_types = ['report', 'view', 'wizard_button', 'selection']
     _ressource_types = ['field', 'model', 'help']
     _updatable_types = ['field', 'model', 'selection', 'help']
 

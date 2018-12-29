@@ -3,7 +3,7 @@
 import datetime
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -119,7 +119,7 @@ class FieldDateTestCase(unittest.TestCase):
         "Test create date required without value"
         Date = Pool().get('test.date_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Date.create([{}])
 
     @with_transaction()

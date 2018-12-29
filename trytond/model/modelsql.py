@@ -12,6 +12,7 @@ from sql.conditionals import Coalesce
 from sql.operators import Or, And, Operator, Equal
 from sql.aggregate import Count, Max
 
+from trytond.i18n import gettext
 from trytond.model import ModelStorage, ModelView
 from trytond.model import fields
 from trytond import backend
@@ -23,7 +24,16 @@ from trytond.exceptions import ConcurrencyException
 from trytond.rpc import RPC
 from trytond.config import config
 
-from .modelstorage import cache_size, is_leaf
+from .modelstorage import (cache_size, is_leaf,
+    ValidationError, RequiredValidationError, AccessError)
+
+
+class ForeignKeyError(ValidationError):
+    pass
+
+
+class SQLConstraintError(ValidationError):
+    pass
 
 
 class Constraint(object):
@@ -174,9 +184,8 @@ class ModelSQL(ModelStorage):
             table = cls.__table__()
             cls._sql_constraints.append(
                 ('id_positive', Check(table, table.id >= 0),
-                    "ID must be positive"))
+                    'ir.msg_id_positive'))
         cls._order = [('id', 'ASC')]
-        cls._sql_error_messages = {}
         if issubclass(cls, ModelView):
             cls.__rpc__.update({
                     'history_revisions': RPC(),
@@ -323,14 +332,6 @@ class ModelSQL(ModelStorage):
                 history_table.add_column(field_name, field._sql_type)
 
     @classmethod
-    def _get_error_messages(cls):
-        res = super(ModelSQL, cls)._get_error_messages()
-        res += list(cls._sql_error_messages.values())
-        for _, _, error in cls._sql_constraints:
-            res.append(error)
-        return res
-
-    @classmethod
     def __raise_integrity_error(
             cls, exception, values, field_names=None, transaction=None):
         pool = Pool()
@@ -348,8 +349,9 @@ class ModelSQL(ModelStorage):
                     and field.sql_type()
                     and field_name not in ('create_uid', 'create_date')):
                 if values.get(field_name) is None:
-                    cls.raise_user_error('required_field',
-                        error_args=cls._get_error_args(field_name))
+                    raise RequiredValidationError(
+                        gettext('ir.msg_required_validation_record',
+                            **cls._get_error_args(field_name)))
             if isinstance(field, fields.Many2One) and values.get(field_name):
                 Model = pool.get(field.model_name)
                 create_records = transaction.create_records.get(
@@ -364,14 +366,12 @@ class ModelSQL(ModelStorage):
                         and (values[field_name] not in delete_records)):
                     error_args = cls._get_error_args(field_name)
                     error_args['value'] = values[field_name]
-                    cls.raise_user_error('foreign_model_missing',
-                        error_args=error_args)
+                    raise ForeignKeyError(
+                            gettext('ir.msg_foreign_model_missing',
+                                **error_args))
         for name, _, error in cls._sql_constraints:
             if TableHandler.convert_name(name) in str(exception):
-                cls.raise_user_error(error)
-        for name, error in cls._sql_error_messages.items():
-            if TableHandler.convert_name(name) in str(exception):
-                cls.raise_user_error(error)
+                raise SQLConstraintError(gettext(error))
 
     @classmethod
     def history_revisions(cls, ids):
@@ -752,8 +752,12 @@ class ModelSQL(ModelStorage):
                         if rowcount == -1 or rowcount is None:
                             rowcount = len(cursor.fetchall())
                         if rowcount == len({}.fromkeys(sub_ids)):
-                            cls.raise_user_error('access_error', cls.__name__)
-                    cls.raise_user_error('read_error', cls.__name__)
+                            raise AccessError(
+                                gettext('ir.msg_access_rule_error',
+                                    model=cls.__name__))
+                    raise AccessError(
+                        gettext('ir.msg_read_error',
+                            model=cls.__name__))
                 result.extend(fetchall)
         else:
             result = [{'id': x} for x in ids]
@@ -942,7 +946,8 @@ class ModelSQL(ModelStorage):
         table = cls.__table__()
 
         cls.__check_timestamp(all_ids)
-        cls.__check_domain_rule(all_ids, 'write', nodomain='write_error')
+        cls.__check_domain_rule(
+            all_ids, 'write', nodomain='ir.msg_write_error')
 
         fields_to_set = {}
         actions = iter((records, values) + args)
@@ -1116,8 +1121,9 @@ class ModelSQL(ModelStorage):
                                 (field_name, 'in', sub_ids),
                                 ], order=[]):
                         error_args = Model._get_error_args(field_name)
-                        cls.raise_user_error('foreign_model_exist',
-                            error_args=error_args)
+                        raise ForeignKeyError(
+                            gettext('ir.msg_foreign_model_exist',
+                                **error_args))
 
             super(ModelSQL, cls).delete(list(sub_records))
 
@@ -1162,9 +1168,11 @@ class ModelSQL(ModelStorage):
                     rowcount = len(cursor.fetchall())
                 if rowcount != len(sub_ids):
                     if domain:
-                        cls.raise_user_error('access_error', cls.__name__)
+                        msg = 'ir.msg_access_rule_error'
                     else:
-                        cls.raise_user_error(nodomain, cls.__name__)
+                        msg = nodomain
+                    raise AccessError(
+                        gettext(msg, model=cls.__name__))
 
     @classmethod
     def search(cls, domain, offset=0, limit=None, order=None, count=False,
@@ -1528,7 +1536,7 @@ class ModelSQL(ModelStorage):
                     cursor.execute(
                         *table.select(table.id, where=where, limit=1))
                     if cursor.fetchone():
-                        cls.raise_user_error(error)
+                        raise SQLConstraintError(gettext(error))
             elif isinstance(sql, Check):
                 for sub_ids in grouped_slice(ids):
                     red_sql = reduce_ids(table.id, sub_ids)
@@ -1536,7 +1544,7 @@ class ModelSQL(ModelStorage):
                             where=~sql.expression & red_sql,
                             limit=1))
                     if cursor.fetchone():
-                        cls.raise_user_error(error)
+                        raise SQLConstraintError(gettext(error))
 
 
 def convert_from(table, tables):

@@ -6,12 +6,14 @@ import time
 import datetime
 from itertools import combinations
 
+from trytond.model.exceptions import SQLConstraintError
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.tests.trigger import TRIGGER_LOGS
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.exceptions import UserError
 from trytond.pyson import PYSONEncoder, Eval
+
+from trytond.ir.exceptions import TriggerConditionError
 
 
 class TriggerTestCase(unittest.TestCase):
@@ -55,14 +57,14 @@ class TriggerTestCase(unittest.TestCase):
                 combination_values = values.copy()
                 for mode in combination:
                     combination_values['on_%s' % mode] = True
-                self.assertRaises(UserError, Trigger.create,
+                self.assertRaises(SQLConstraintError, Trigger.create,
                     [combination_values])
                 transaction.rollback()
 
         # check_condition
         condition_values = values.copy()
         condition_values['condition'] = '='
-        self.assertRaises(UserError, Trigger.create,
+        self.assertRaises(TriggerConditionError, Trigger.create,
             [condition_values])
         transaction.rollback()
 

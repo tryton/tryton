@@ -19,6 +19,7 @@ class UserError(TrytonException):
 
 
 class UserWarning(TrytonException):
+    "Exception that will be displayed as a warning message in the client."
 
     def __init__(self, name, message, description=''):
         super(UserWarning, self).__init__('UserWarning', (name, message,

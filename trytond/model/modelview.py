@@ -5,18 +5,23 @@ from functools import wraps
 import copy
 import collections
 
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 from trytond.model import Model, fields
 from trytond.tools import ClassProperty, is_instance_method
 from trytond.pyson import PYSONDecoder, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.pool import Pool
-from trytond.exceptions import UserError
 from trytond.rpc import RPC
 
 from .fields import on_change_result
 
 __all__ = ['ModelView']
+
+
+class AccessButtonError(UserError):
+    pass
 
 
 def _find(tree, element):
@@ -642,9 +647,10 @@ class ModelView(Model):
                     func.__name__)
                 if button_groups:
                     if not groups & button_groups:
-                        raise UserError(
-                            'Calling button %s on %s is not allowed!'
-                            % (func.__name__, cls.__name__))
+                        raise AccessButtonError(
+                            gettext('ir.msg_access_button_error',
+                                button=func.__name__,
+                                model=cls.__name__))
                 else:
                     ModelAccess.check(cls.__name__, 'write')
 

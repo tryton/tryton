@@ -3,7 +3,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -373,7 +374,7 @@ class FieldTextTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create text required without value"
         Text = Pool().get('test.text_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Text.create([{}])
 
     @with_transaction()
@@ -381,7 +382,7 @@ class FieldTextTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create text required with empty"
         Text = Pool().get('test.text_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Text.create([{
                         'text': '',
                         }])
@@ -402,7 +403,7 @@ class FieldTextTestCase(unittest.TestCase, CommonTestCaseMixin):
         "Test create text with invalid size"
         Text = Pool().get('test.text_size')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SizeValidationError):
             Text.create([{
                         'text': "foobar",
                         }])
@@ -444,7 +445,7 @@ class FieldTextTestCase(unittest.TestCase, CommonTestCaseMixin):
                     'text': "Test",
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(SizeValidationError):
             Text.write([text], {
                     'text': 'foobar',
                     })

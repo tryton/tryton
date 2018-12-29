@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, DigitsValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -83,7 +84,7 @@ class FieldFloatTestCase(unittest.TestCase):
         "Test create float required without value"
         Float = Pool().get('test.float_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Float.create([{}])
 
     @with_transaction()
@@ -103,7 +104,7 @@ class FieldFloatTestCase(unittest.TestCase):
         "Test create float with invalid digits"
         Float = Pool().get('test.float_digits')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Float.create([{
                         'digits': 1,
                         'float': 1.11,
@@ -414,7 +415,7 @@ class FieldFloatTestCase(unittest.TestCase):
                     'float': 1.1,
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Float.write([float_], {
                     'float': 1.11,
                     })
@@ -429,7 +430,7 @@ class FieldFloatTestCase(unittest.TestCase):
                     'float': 1.1,
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(DigitsValidationError):
             Float.write([float_], {
                     'digits': 0,
                     })

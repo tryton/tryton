@@ -2,10 +2,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
+
+from trytond.model.exceptions import AccessError
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.exceptions import UserError
 
 _context = {'_check_access': True}
 
@@ -265,9 +266,9 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
     def _assert_raises(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.read([record.id], ['field1'])
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.search([])
 
     @with_transaction(context=_context)
@@ -313,11 +314,11 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
                     'perm_read': False,
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.read([record.id], ['relate.value'])
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.search([('relate.value', '=', 42)])
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.search(
                 [('reference.value', '=', 42, 'test.access.relate')])
 
@@ -333,7 +334,7 @@ class ModelAccessWriteTestCase(_ModelAccessTestCase):
     def _assert_raises(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.write([record], {})
 
 
@@ -348,7 +349,7 @@ class ModelAccessCreateTestCase(_ModelAccessTestCase):
     def _assert_raises(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.create([{}])
 
 
@@ -363,7 +364,7 @@ class ModelAccessDeleteTestCase(_ModelAccessTestCase):
     def _assert_raises(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.delete([record])
 
 
@@ -817,17 +818,17 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
     def _assert_raises1(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.read([record.id], ['field1'])
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.search([('field1', '=', 'test')])
 
     def _assert_raises2(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.read([record.id], ['field2'])
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.search([('field2', '=', 'test')])
 
     @with_transaction(context=_context)
@@ -874,9 +875,9 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
                     'perm_read': False,
                     }])
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.search([('relate.value', '=', 42)])
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.search(
                 [('reference.value', '=', 42, 'test.access.relate')])
 
@@ -897,13 +898,13 @@ class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):
     def _assert_raises1(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.write([record], {'field1': 'test'})
 
     def _assert_raises2(self, record):
         pool = Pool()
         TestAccess = pool.get('test.access')
-        with self.assertRaises(UserError):
+        with self.assertRaises(AccessError):
             TestAccess.write([record], {'field2': 'test'})
 
 

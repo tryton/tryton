@@ -3,7 +3,8 @@
 import datetime
 import unittest
 
-from trytond.exceptions import UserError
+from trytond.model.exceptions import (
+    RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -130,7 +131,7 @@ class FieldTimeTestCase(unittest.TestCase):
         "Test create time required without value"
         Time = Pool().get('test.time_required')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(RequiredValidationError):
             Time.create([{}])
 
     @with_transaction()
@@ -150,7 +151,7 @@ class FieldTimeTestCase(unittest.TestCase):
         "Test create time with invalid format"
         Time = Pool().get('test.time_format')
 
-        with self.assertRaises(UserError):
+        with self.assertRaises(TimeFormatValidationError):
             Time.create([{
                         'time': datetime.time(12, 30, 25),
                         }])
