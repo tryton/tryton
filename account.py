@@ -8,12 +8,15 @@ from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import (ModelView, ModelSQL, DeactivableMixin, fields,
     Unique, tree)
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+
+from .exceptions import AccountValidationError, RootValidationError
 
 __all__ = ['Account', 'AccountDistribution',
     'OpenChartAccountStart', 'OpenChartAccount',
@@ -109,11 +112,6 @@ class Account(
         super(Account, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
-        cls._error_messages.update({
-                'invalid_distribution': (
-                    'The distribution sum of account "%(account)s" '
-                    'is not 100%%.'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -153,9 +151,9 @@ class Account(
         if self.type != 'distribution':
             return
         if sum((d.ratio for d in self.distributions)) != 1:
-            self.raise_user_error('invalid_distribution', {
-                    'account': self.rec_name,
-                    })
+            raise AccountValidationError(
+                gettext('analytic_account.msg_invalid_distribution',
+                    account=self.rec_name))
 
     @fields.depends('company')
     def on_change_with_currency(self, name=None):
@@ -447,7 +445,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
         t = cls.__table__()
         cls._sql_constraints += [
             ('root_origin_uniq', Unique(t, t.origin, t.root),
-                'Only one account is allowed per analytic root and origin.'),
+                'analytic_account.msg_root_origin_unique'),
             ]
 
     @classmethod
@@ -501,14 +499,6 @@ class AnalyticMixin(object):
         depends=['analytic_accounts_size'])
     analytic_accounts_size = fields.Function(fields.Integer(
             'Analytic Accounts Size'), 'get_analytic_accounts_size')
-
-    @classmethod
-    def __setup__(cls):
-        super(AnalyticMixin, cls).__setup__()
-        cls._error_messages.update({
-                'root_account': ('Some mandatory root account are missing '
-                    'on "%(name)s"'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -591,7 +581,10 @@ class AnalyticMixin(object):
             for mandatory in all_mandatory_roots:
                 if mandatory.company in companies:
                     mandatory_roots.add(mandatory)
-            if not mandatory_roots <= analytic_roots:
-                cls.raise_user_error('root_account', {
-                        'name': analytic.rec_name,
-                        })
+            mandatory_roots.difference_update(analytic_roots)
+            if mandatory_roots:
+                raise RootValidationError(
+                    gettext('analytic_account.msg_missing_root_account',
+                        name=analytic.rec_name,
+                        analytics=', '.join(
+                            (r.rec_name for r in mandatory_roots))))

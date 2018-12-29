@@ -46,15 +46,8 @@ class Line(ModelSQL, ModelView):
             ('credit_debit',
                 Check(t,
                     (t.credit * t.debit == 0) & (t.credit + t.debit >= 0)),
-                'Wrong credit/debit values.'),
+                'account.msg_line_debit_credit'),
             ]
-        cls._error_messages.update({
-                'line_on_view_account': (
-                    'You can not create a move line using '
-                    'view account "%s".'),
-                'line_on_inactive_account': ('You can not create a move line '
-                    'using inactive account "%s".'),
-                })
         cls._order.insert(0, ('date', 'ASC'))
 
     @classmethod
@@ -143,20 +136,6 @@ class Line(ModelSQL, ModelView):
         super(Line, cls).delete(lines)
         MoveLine.set_analytic_state(move_lines)
         MoveLine.save(move_lines)
-
-    @classmethod
-    def validate(cls, lines):
-        super(Line, cls).validate(lines)
-        for line in lines:
-            line.check_account()
-
-    def check_account(self):
-        if self.account.type == 'view':
-            self.raise_user_error('line_on_view_account',
-                (self.account.rec_name,))
-        if not self.account.active:
-            self.raise_user_error('line_on_inactive_account',
-                (self.account.rec_name,))
 
 
 class Move(metaclass=PoolMeta):
