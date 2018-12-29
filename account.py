@@ -6,13 +6,17 @@ import logging
 
 import requests
 
+from trytond.i18n import gettext
 from trytond.config import config
 from trytond.model import ModelSQL, ModelView, Workflow, Unique, fields
+from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, If
 from trytond.transaction import Transaction
 
 from trytond.modules.company.model import CompanyValueMixin
+
+from .exceptions import InvoiceChorusValidationError
 
 CERT = (
     config.get('account_fr_chorus', 'certificate'),
@@ -137,15 +141,8 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
         t = cls.__table__()
         cls._sql_constraints = [
             ('invoice_unique', Unique(t, t.invoice),
-                "Invoice can be registered only once for Chorus."),
+                'account_fr_chorus.msg_invoice_unique'),
             ]
-
-        cls._error_messages.update({
-                'no_siret': 'The address "%(address)s" is missing a SIRET.',
-                'delete_sent': (
-                    'The Chorus invoice "%(invoice)s" can not be deleted '
-                    'once sent.'),
-                })
 
     @classmethod
     def default_syntax(cls):
@@ -163,17 +160,19 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
                 record.invoice.invoice_address]
             for address in addresses:
                 if not address.siret:
-                    cls.raise_user_error('no_siret', {
-                            'address': address.rec_name,
-                            })
+                    raise InvoiceChorusValidationError(
+                        gettext('account_fr_chorus'
+                            '.msg_invoice_address_no_siret',
+                            invoice=record.invoice.rec_name,
+                            address=address.rec_name))
 
     @classmethod
     def delete(cls, records):
         for record in records:
             if record.number:
-                cls.raise_user_error('delete_sent', {
-                        'invoice': record.invoice.rec_name,
-                        })
+                raise AccessError(
+                    gettext('account_fr_chorus.msg_invoice_delete_sent',
+                        invoice=record.invoice.rec_name))
         super(InvoiceChorus, cls).delete(records)
 
     def _send_context(self):
