@@ -4,6 +4,7 @@ from functools import wraps
 
 from sql import Null
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval, Or, Bool
 from trytond import backend
@@ -12,6 +13,8 @@ from trytond.transaction import Transaction
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+
+from .exceptions import AccountError, TaxError
 
 __all__ = ['Category', 'CategoryAccount',
     'CategoryCustomerTax', 'CategorySupplierTax',
@@ -33,10 +36,10 @@ def account_used(field_name, field_string=None):
             if not account and not Transaction().readonly:
                 field = (
                     self.fields_get([field_string])[field_string]['string'])
-                self.raise_user_error('missing_account', {
-                        'field': field,
-                        'name': self.rec_name,
-                        })
+                raise AccountError(
+                    gettext('account_product.msg_missing_account',
+                        field=field,
+                        name=self.rec_name))
             if account:
                 return account.current()
         return wrapper
@@ -130,10 +133,6 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Category, cls).__setup__()
-        cls._error_messages.update({
-            'missing_account': ('There is no '
-                    '"%(field)s" defined on the category "%(name)s"'),
-            })
         cls.parent.domain = [
             ('accounting', '=', Eval('accounting', False)),
             cls.parent.domain or []]
@@ -290,16 +289,6 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
             ('accounting', '=', True),
             ])
 
-    @classmethod
-    def __setup__(cls):
-        super(Template, cls).__setup__()
-        cls._error_messages.update({
-                'missing_account': ('There is no '
-                    '"%(field)s" defined on the product "%(name)s"'),
-                'missing_taxes': ('There is no account category defined '
-                    'on the product "%(name)s"'),
-                })
-
     def get_account(self, name, **pattern):
         if self.account_category:
             return self.account_category.get_account(name, **pattern)
@@ -330,9 +319,9 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
             if Transaction().readonly:
                 taxes = []
             else:
-                self.raise_user_error('missing_taxes', {
-                        'name': self.rec_name,
-                        })
+                raise TaxError(
+                    gettext('account_product.msg_missing_taxes',
+                        name=self.rec_name))
         return taxes
 
     @property
@@ -347,9 +336,9 @@ class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
             if Transaction().readonly:
                 taxes = []
             else:
-                self.raise_user_error('missing_taxes', {
-                        'name': self.rec_name,
-                        })
+                raise TaxError(
+                    gettext('account_product.msg_missing_taxes',
+                        name=self.rec_name))
         return taxes
 
 
