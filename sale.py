@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Null
 
+from trytond.i18n import gettext
 from trytond.model import fields, ModelSQL, ModelView, Workflow
+from trytond.model.exceptions import ValidationError
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.tools import grouped_slice, reduce_ids
@@ -99,12 +101,6 @@ class SubscriptionLine(metaclass=PoolMeta):
             ]
         cls.quantity.depends.append('asset_lot')
 
-        cls._error_messages.update({
-                'asset_overlapping_dates': (
-                    'The lines "%(line1)s" and "%(line2)s" '
-                    'for the same lot overlap.'),
-                })
-
     @fields.depends('service')
     def on_change_with_asset_lot_required(self, name=None):
         if not self.service:
@@ -161,7 +157,7 @@ class SubscriptionLine(metaclass=PoolMeta):
             overlapping = cursor.fetchone()
             if overlapping:
                 sline1, sline2 = cls.browse(overlapping)
-                cls.raise_user_error('asset_overlapping_dates', {
-                        'line1': sline1.rec_name,
-                        'line2': sline2.rec_name,
-                        })
+                raise ValidationError(
+                    gettext('sale_subscription_asset.msg_asset_line_overlap',
+                        line1=sline1.rec_name,
+                        line2=sline2.rec_name))
