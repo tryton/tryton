@@ -32,10 +32,10 @@ class Move(metaclass=PoolMeta):
         cls._sql_constraints += [
             ('check_in_anglo_saxon_quantity',
                 Check(t, t.quantity >= t.in_anglo_saxon_quantity),
-                'Anglo-Saxon quantity can not be greater than quantity.'),
+                'account_stock_anglo_saxon.msg_move_quantity_greater'),
             ('check_out_anglo_saxon_quantity',
                 Check(t, t.quantity >= t.out_anglo_saxon_quantity),
-                'Anglo-Saxon quantity can not be greater than quantity.'),
+                'account_stock_anglo_saxon.msg_move_quantity_greater'),
             ]
 
     @staticmethod

@@ -2,24 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import operator
+
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+
+from .exceptions import COGSWarning
 
 __all__ = ['InvoiceLine']
 
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
-
-    @classmethod
-    def __setup__(cls):
-        super(InvoiceLine, cls).__setup__()
-        cls._error_messages.update({
-                'stock_move_different_product': (
-                    "The invoice line '%(line)s' is linked to stock moves "
-                    "for other products than '%(product)s'.\n"
-                    "This may compute a wrong COGS."),
-                })
 
     def _get_anglo_saxon_move_lines(self, amount, type_):
         '''
@@ -67,6 +61,7 @@ class InvoiceLine(metaclass=PoolMeta):
         pool = Pool()
         Move = pool.get('stock.move')
         Period = pool.get('account.period')
+        Warning = pool.get('res.user.warning')
 
         result = super(InvoiceLine, self).get_move_lines()
 
@@ -92,11 +87,12 @@ class InvoiceLine(metaclass=PoolMeta):
             # remove move for different product
             if move.product != self.product:
                 warning_name = '%s.stock.different_product' % self
-                self.raise_user_warning(
-                    warning_name, 'stock_move_different_product', {
-                        'line': self.rec_name,
-                        'product': self.product.rec_name,
-                        })
+                if Warning.check(warning_name):
+                    raise COGSWarning(warning_name,
+                        gettext('account_stock_anglo_saxon'
+                            '.msg_invoice_line_stock_move_different_product',
+                            line=self.rec_name,
+                            product=self.product.rec_name))
             else:
                 moves.append(move)
 
