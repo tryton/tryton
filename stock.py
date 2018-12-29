@@ -2,12 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
+from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.product import price_digits
+from .exceptions import InvoiceShipmentCostError
 
 __all__ = ['ShipmentOut']
 
@@ -34,14 +36,6 @@ class ShipmentOut(metaclass=PoolMeta):
             }, depends=['carrier', 'state'])
     cost_invoice_line = fields.Many2One('account.invoice.line',
             'Cost Invoice Line', readonly=True)
-
-    @classmethod
-    def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
-        cls._error_messages.update({
-                'missing_account_revenue': ('Missing "Account Revenue" on '
-                    'product "%s".'),
-                })
 
     def _get_carrier_context(self):
         return {}
@@ -119,6 +113,9 @@ class ShipmentOut(metaclass=PoolMeta):
 
         invoice_line.account = product.account_revenue_used
         if not invoice_line.account:
-            self.raise_user_error('missing_account_revenue',
-                    error_args=(product.rec_name,))
+            raise InvoiceShipmentCostError(
+                gettext('sale_shipment_cost'
+                    '.msg_shipment_cost_invoice_missing_account_revenue',
+                    shipment=self.rec_name,
+                    product=product.rec_name))
         return invoice_line

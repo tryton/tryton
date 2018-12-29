@@ -3,12 +3,14 @@
 from decimal import Decimal
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.transaction import Transaction
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.product import price_digits
+from trytond.modules.sale.exceptions import SaleConfirmError
 
 __all__ = ['Configuration', 'ConfigurationSaleMethod', 'Sale', 'SaleLine',
     'ReturnSale', 'Promotion']
@@ -95,15 +97,6 @@ class Sale(metaclass=PoolMeta):
         ], 'Shipment Cost Method', required=True, states={
             'readonly': Eval('state') != 'draft',
             }, depends=['state'])
-
-    @classmethod
-    def __setup__(cls):
-        super(Sale, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_carrier': (
-                    "The carrier '%(carrier)s' on sale '%(sale)s' "
-                    "is not valid."),
-                })
 
     @staticmethod
     def default_shipment_cost_method():
@@ -193,10 +186,10 @@ class Sale(metaclass=PoolMeta):
     def confirm(cls, sales):
         for sale in sales:
             if sale.carrier and sale.carrier not in sale.available_carriers:
-                cls.raise_user_error('invalid_carrier', {
-                        'sale': sale.rec_name,
-                        'carrier': sale.carrier.rec_name,
-                        })
+                raise SaleConfirmError(
+                    gettext('sale_shipment_cost.msg_sale_invalid_carrier',
+                        sale=sale.rec_name,
+                        carrier=sale.carrier.rec_name))
         super(Sale, cls).confirm(sales)
 
     def _get_carrier_context(self):
