@@ -1058,7 +1058,7 @@ function eval_pyson(value){
                 prm.then(function() {
                     Sao.rpc(args, widget.model.session)
                             .then(function(fuzzy_value) {
-                        value = fuzzy_value[0][widget.field_name];
+                        value = fuzzy_value[0][widget.field_name] || '';
                         widget.translate_widget_set(
                             input, value);
                         fuzzy_box.attr('checked',
@@ -1172,7 +1172,7 @@ function eval_pyson(value){
         }
     };
     Sao.View.Form.TranslateMixin.translate_widget_set = function(el, value) {
-        el.val(value || '');
+        el.val(value);
     };
 
     Sao.View.Form.Char = Sao.class_(Sao.View.Form.Widget, {
