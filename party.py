@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
+
+from trytond.modules.party.exceptions import EraseError
 
 __all__ = ['PartyReplace', 'PartyErase']
 
@@ -18,16 +21,6 @@ class PartyReplace(metaclass=PoolMeta):
 class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyErase, cls).__setup__()
-        cls._error_messages.update({
-                'opened_project': (
-                    'The party "%(party)s" can not be erased '
-                    'because he has opened projects '
-                    'for the company "%(company)s".'),
-                })
-
     def check_erase_company(self, party, company):
         pool = Pool()
         Work = pool.get('project.work')
@@ -38,7 +31,7 @@ class PartyErase(metaclass=PoolMeta):
                 ('state', '!=', 'done'),
                 ])
         if works:
-            self.raise_user_error('opened_project', {
-                    'party': party.rec_name,
-                    'company': company.rec_name,
-                    })
+            raise EraseError(
+                gettext('project.msg_erase_party_opened_project',
+                    party=party.rec_name,
+                    company=company.rec_name))

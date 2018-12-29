@@ -5,11 +5,14 @@ import datetime
 
 from sql import Null
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields, sequence_ordered, tree
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
+
+from .exceptions import WorkValidationError
 
 __all__ = ['Work']
 
@@ -196,17 +199,6 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             table_project_work.drop_column('work')
 
     @classmethod
-    def __setup__(cls):
-        super(Work, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_parent_state': ('Work "%(child)s" can not be opened '
-                    'because its parent work "%(parent)s" is already done.'),
-                'invalid_children_state': ('Work "%(parent)s" can not be '
-                    'done because its child work "%(child)s" is still '
-                    'opened.'),
-                })
-
-    @classmethod
     def index_set_field(cls, name):
         index = super(Work, cls).index_set_field(name)
         if name in {'timesheet_start_date', 'timesheet_end_date'}:
@@ -222,17 +214,17 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     def check_state(self):
         if (self.state == 'opened'
                 and (self.parent and self.parent.state == 'done')):
-            self.raise_user_error('invalid_parent_state', {
-                    'child': self.rec_name,
-                    'parent': self.parent.rec_name,
-                    })
+            raise WorkValidationError(
+                gettext('project.msg_work_invalid_parent_state',
+                    child=self.rec_name,
+                    parent=self.parent.rec_name))
         if self.state == 'done':
             for child in self.children:
                 if child.state == 'opened':
-                    self.raise_user_error('invalid_children_state', {
-                            'parent': self.rec_name,
-                            'child': child.rec_name,
-                            })
+                    raise WorkValidationError(
+                        gettext('project.msg_work_invalid_children_state',
+                            parent=self.rec_name,
+                            child=child.rec_name))
 
     @property
     def effort_hours(self):
