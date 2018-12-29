@@ -1,7 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+
+from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, fields, Check
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
@@ -21,12 +24,8 @@ class Move(metaclass=PoolMeta):
         cls._sql_constraints += [
             ('check_fifo_quantity_out',
                 Check(t, t.quantity >= t.fifo_quantity),
-                'FIFO quantity can not be greater than quantity.'),
+                'product_cost_fifo.msg_move_fifo_quantity_greater'),
             ]
-        cls._error_messages.update({
-                'del_move_fifo': ('You can not delete move "%s" that is used '
-                    'for FIFO cost price.'),
-                })
 
     @staticmethod
     def default_fifo_quantity():
@@ -118,5 +117,7 @@ class Move(metaclass=PoolMeta):
                 ('fifo_quantity', '!=', 0.0),
                 ])
         if fifo_moves:
-            cls.raise_user_error('del_move_fifo', (fifo_moves[0].rec_name,))
+            raise AccessError(
+                gettext('product_cost_fifo.msg_move_delete_fifo',
+                    move=fifo_moves[0].rec_name))
         super(Move, cls).delete(moves)
