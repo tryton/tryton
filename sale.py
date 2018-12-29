@@ -1,20 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
+
+from .exceptions import OverShipmentWarning
 
 __all__ = ['SaleLine']
 
 
 class SaleLine(metaclass=PoolMeta):
     __name__ = 'sale.line'
-
-    @classmethod
-    def __setup__(cls):
-        super(SaleLine, cls).__setup__()
-        cls._error_messages.update({
-                'over_shipment': (
-                    'The Sale Line "%s" exceed the over shipment tolerance.'),
-                })
 
     def _test_under_shipment_tolerance(self, quantity):
         pool = Pool()
@@ -50,6 +45,7 @@ class SaleLine(metaclass=PoolMeta):
     def check_over_shipment(self):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
+        Warning = pool.get('res.user.warning')
         config = Configuration(1)
 
         if self.quantity >= 0:
@@ -61,6 +57,9 @@ class SaleLine(metaclass=PoolMeta):
         if tolerance is not None:
             maximal_quantity = abs(self.quantity * tolerance)
             if shipped_quantity > maximal_quantity:
-                self.raise_user_warning(
-                    'over_shipment_sale_line_%d' % self.id,
-                    'over_shipment', self.rec_name)
+                name = 'over_shipment_sale_line_%d' % self.id
+                if Warning.check(name):
+                    raise OverShipmentWarning(
+                        name,
+                        gettext('sale_shipment_tolerance.msg_over_shipment',
+                            line=self.rec_name))
