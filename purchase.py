@@ -5,6 +5,7 @@ from functools import wraps
 from itertools import groupby
 from sql.conditionals import Case
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, fields, ModelSQL
 from trytond.modules.company import CompanyReport
 from trytond.modules.product import price_digits
@@ -12,6 +13,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool, If
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
+
+from .exceptions import PreviousQuotation
 
 
 __all__ = ['Configuration', 'ConfigurationSequence', 'Quotation',
@@ -458,17 +461,10 @@ class CreatePurchaseRequestQuotation(Wizard):
             Button('Close', 'end', 'tryton-close', True),
             ])
 
-    @classmethod
-    def __setup__(cls):
-        super(CreatePurchaseRequestQuotation, cls).__setup__()
-        cls._error_messages.update({
-                'previous_quotation': ('A quotation was already made for '
-                    'the request "%(request)s".'),
-                })
-
     def transition_start(self):
         pool = Pool()
         Request = pool.get('purchase.request')
+        Warning = pool.get('res.user.warning')
 
         requests = Request.browse(Transaction().context['active_ids'])
 
@@ -476,9 +472,11 @@ class CreatePurchaseRequestQuotation(Wizard):
         if reqs:
             for r in reqs:
                 if r.state == 'quotation':
-                    self.raise_user_warning(str(r),
-                                'previous_quotation',
-                                {'request': r.rec_name, })
+                    if Warning.check(str(r)):
+                        raise PreviousQuotation(str(r),
+                            gettext('purchase_request_quotation'
+                                '.msg_previous_quotation',
+                                request=r.rec_name))
             return 'ask_suppliers'
         return 'end'
 
