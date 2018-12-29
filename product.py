@@ -3,6 +3,7 @@
 from decimal import Decimal
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval
@@ -12,6 +13,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.account_product.product import (
     account_used, template_property)
 from trytond.modules.product import price_digits
+from .exceptions import UpdateCostPriceError
 
 __all__ = ['Category', 'CategoryAccount', 'Template',
     'Product', 'UpdateCostPriceAsk',
@@ -183,12 +185,9 @@ class Template(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Template, cls).__setup__()
-        cls._modify_no_move.append(('cost_price', 'change_cost_price'))
-        cls._error_messages.update({
-                'change_cost_price': ('You cannot change the cost price for '
-                    'a product which is associated to stock moves.\n'
-                    'You must use the "Update Cost Price" wizard.'),
-                })
+        cls._modify_no_move.append(
+            ('cost_price',
+                'account_stock_continental.msg_product_change_cost_price'))
 
     @property
     @account_used('account_stock', 'account_category')
@@ -282,14 +281,6 @@ class UpdateCostPrice(Wizard):
             ])
     create_move = StateTransition()
     update_price = StateTransition()
-
-    @classmethod
-    def __setup__(cls):
-        super(UpdateCostPrice, cls).__setup__()
-        cls._error_messages.update({
-                'same_account': ('The stock account and the counterpart can '
-                    'not be the same account'),
-                })
 
     def default_ask_price(self, fields):
         pool = Pool()
@@ -391,7 +382,10 @@ class UpdateCostPrice(Wizard):
         Move = Pool().get('account.move')
 
         if self.show_move.counterpart == self.show_move.stock_account:
-            self.raise_user_error('same_account')
+            raise UpdateCostPriceError(
+                gettext('account_stock_continental'
+                    '.msg_update_cost_price_same_account',
+                    account=self.show_move.counterpart.rec_name))
         move = self.get_move()
         move.save()
         Move.post([move])
