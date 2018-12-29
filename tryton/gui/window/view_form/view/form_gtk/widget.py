@@ -173,6 +173,8 @@ class TranslateDialog(NoModal):
                     context=context)[0][self.widget.field_name]
             except RPCException:
                 return
+            if fuzzy_value is None:
+                fuzzy_value = ''
             widget = self.widget.translate_widget()
             label.set_mnemonic_widget(widget)
             self.widget.translate_widget_set(widget, fuzzy_value)
