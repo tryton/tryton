@@ -5,7 +5,9 @@ from decimal import Decimal
 from itertools import groupby
 from functools import partial
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import If, In, Eval, Bool
 from trytond.transaction import Transaction
@@ -85,12 +87,6 @@ class PurchaseRequest(ModelSQL, ModelView):
     def __setup__(cls):
         super(PurchaseRequest, cls).__setup__()
         cls._order[0] = ('id', 'DESC')
-        cls._error_messages.update({
-                'create_request': ('Purchase requests are only created '
-                    'by the system.'),
-                'delete_purchase_line': ('You can not delete purchased '
-                    'request.'),
-                })
         cls._buttons.update({
                 'handle_purchase_cancellation_exception': {
                     'invisible': Eval('state') != 'exception',
@@ -256,13 +252,17 @@ class PurchaseRequest(ModelSQL, ModelView):
         for vals in vlist:
             for field_name in ('quantity', 'company'):
                 if vals.get(field_name) is None:
-                    cls.raise_user_error('create_request')
+                    raise AccessError(
+                        gettext('purchase_request.msg_request_no_create'))
         return super(PurchaseRequest, cls).create(vlist)
 
     @classmethod
     def delete(cls, requests):
-        if any(r.purchase_line for r in requests):
-            cls.raise_user_error('delete_purchase_line')
+        for request in requests:
+            if request.purchase_line:
+                raise AccessError(
+                    gettext('purchase_request.msg_request_delete_purchased',
+                        request=request.rec_name))
         super(PurchaseRequest, cls).delete(requests)
 
     @classmethod
@@ -312,15 +312,6 @@ class CreatePurchase(Wizard):
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('Continue', 'start', 'tryton-forward', default=True),
             ])
-
-    @classmethod
-    def __setup__(cls):
-        super(CreatePurchase, cls).__setup__()
-        cls._error_messages.update({
-                'missing_price': 'Purchase price is missing for product "%s".',
-                'please_update': ('This price is necessary for creating '
-                    'purchases.'),
-                })
 
     def default_ask_party(self, fields):
         Request = Pool().get('purchase.request')
