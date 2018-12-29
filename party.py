@@ -1,12 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
+
+from .exceptions import CreditLimitError, CreditLimitWarning
 
 __all__ = ['Party', 'PartyCreditLimitAmount']
 
@@ -26,16 +29,6 @@ class Party(metaclass=PoolMeta):
         'get_credit_limit_digits')
     credit_limit_amounts = fields.One2Many(
         'party.party.credit_limit_amount', 'party', "Credit Limit Amounts")
-
-    @classmethod
-    def __setup__(cls):
-        super(Party, cls).__setup__()
-        cls._error_messages.update({
-                'credit_limit_amount': (
-                    '"%s" has reached the credit limit amount (%s)'),
-                'credit_limit_dunning': (
-                    '"%s" has reached the dunning credit limit (%s)'),
-                })
 
     @classmethod
     def default_credit_limit_amount(cls, **pattern):
@@ -70,6 +63,7 @@ class Party(metaclass=PoolMeta):
         Group = pool.get('res.group')
         Company = pool.get('company.company')
         Lang = pool.get('ir.lang')
+        Warning = pool.get('res.user.warning')
 
         if self.credit_limit_amount is None:
             return
@@ -92,14 +86,20 @@ class Party(metaclass=PoolMeta):
         if self.credit_limit_amount < self.credit_amount + amount:
             company = Company(Transaction().context.get('company'))
             lang = Lang.get()
+            limit = lang.currency(self.credit_limit_amount, company.currency)
             if not in_group():
-                self.raise_user_error('credit_limit_amount',
-                    (self.rec_name, lang.currency(
-                            self.credit_limit_amount, company.currency)))
+                raise CreditLimitError(
+                    gettext('account_credit_limit'
+                        '.msg_party_credit_limit_amount',
+                        party=self.rec_name,
+                        limit=limit))
             warning_name = 'credit_limit_amount_%s' % origin
-            self.raise_user_warning(warning_name, 'credit_limit_amount',
-                (self.rec_name, lang.currency(
-                        self.credit_limit_amount, company.currency)))
+            if Warning.check(warning_name):
+                raise CreditLimitWarning(warning_name,
+                    gettext('account_credit_limit'
+                        '.msg_party_credit_limit_amount',
+                        party=self.rec_name,
+                        limit=limit))
 
         if Dunning:
             dunnings = Dunning.search([
@@ -110,11 +110,18 @@ class Party(metaclass=PoolMeta):
             if dunnings:
                 dunning = dunnings[0]
                 if not in_group():
-                    self.raise_user_error('credit_limit_dunning',
-                        (self.rec_name, dunning.rec_name))
+                    raise CreditLimitError(
+                        gettext('account_credit_limit'
+                            '.msg_party_credit_limit_dunning',
+                            party=self.rec_name,
+                            dunning=dunning.rec_name))
                 warning_name = 'credit_limit_dunning_%s' % origin
-                self.raise_user_warning(warning_name, 'credit_limit_dunning',
-                    (self.rec_name, dunning.rec_name))
+                if Warning.check(warning_name):
+                    raise CreditLimitWarning(warning_name,
+                        gettext('account_credit_limit'
+                            '.msg_party_credit_limit_dunning',
+                            party=self.rec_name,
+                            dunning=dunning.rec_name))
 
     def get_credit_limit_digits(self, name):
         pool = Pool()
