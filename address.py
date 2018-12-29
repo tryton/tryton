@@ -7,13 +7,16 @@ from sql import Null
 from sql.conditionals import Case, Coalesce
 from sql.operators import Concat
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
     sequence_ordered)
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.cache import Cache
+from .exceptions import InvalidFormat
 
 __all__ = ['Address', 'AddressFormat']
 
@@ -53,9 +56,6 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super(Address, cls).__setup__()
         cls._order.insert(0, ('party', 'ASC'))
-        cls._error_messages.update({
-                'write_party': 'You can not modify the party of address "%s".',
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -204,8 +204,9 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             if 'party' in values:
                 for address in addresses:
                     if address.party.id != values['party']:
-                        cls.raise_user_error(
-                            'write_party', (address.rec_name,))
+                        raise AccessError(
+                            gettext('party.msg_address_change_party',
+                                address=address.rec_name))
         super(Address, cls).write(*args)
 
     @fields.depends('subdivision', 'country')
@@ -240,10 +241,6 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
         super(AddressFormat, cls).__setup__()
         cls._order.insert(0, ('country', 'ASC'))
         cls._order.insert(1, ('language', 'ASC'))
-        cls._error_messages.update({
-                'invalid_format': ('Invalid format "%(format)s" '
-                    'with exception "%(exception)s".'),
-                })
 
     @classmethod
     def default_format_(cls):
@@ -289,10 +286,9 @@ ${COUNTRY}"""
             Template(self.format_).substitute(
                 **address._get_address_substitutions())
         except Exception as exception:
-            self.raise_user_error('invalid_format', {
-                    'format': self.format_,
-                    'exception': exception,
-                    })
+            raise InvalidFormat(gettext('party.invalid_format',
+                    format=self.format_,
+                    exception=exception)) from exception
 
     @classmethod
     def get_format(cls, address, pattern=None):

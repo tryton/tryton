@@ -35,7 +35,7 @@ class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
         cls._sql_constraints = [
             ('name_parent_exclude',
                 Exclude(t, (t.name, Equal), (Coalesce(t.parent, -1), Equal)),
-                'The name of a party category must be unique by parent.'),
+                'party.msg_category_name_unique'),
             ]
         cls._order.insert(0, ('name', 'ASC'))
 

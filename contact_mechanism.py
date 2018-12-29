@@ -7,9 +7,12 @@ try:
 except ImportError:
     phonenumbers = None
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
+from .exceptions import InvalidPhoneNumber
 
 __all__ = ['ContactMechanism']
 
@@ -93,12 +96,6 @@ class ContactMechanism(
     def __setup__(cls):
         super(ContactMechanism, cls).__setup__()
         cls._order.insert(0, ('party', 'ASC'))
-        cls._error_messages.update({
-                'write_party': ('You can not modify the party of contact '
-                    'mechanism "%s".'),
-                'invalid_phonenumber': ('The phone number "%(phone)s" of '
-                    'party "%(party)s" is not valid .'),
-                })
 
     @staticmethod
     def default_type():
@@ -239,8 +236,11 @@ class ContactMechanism(
             if 'party' in values:
                 for mechanism in mechanisms:
                     if mechanism.party.id != values['party']:
-                        cls.raise_user_error(
-                            'write_party', (mechanism.rec_name,))
+                        raise AccessError(
+                            gettext('party'
+                            '.msg_contact_mechanism_change_party') % {
+                                'contact': mechanism.rec_name,
+                                })
         super(ContactMechanism, cls).write(*args)
         cls._format_values(all_mechanisms)
 
@@ -255,11 +255,9 @@ class ContactMechanism(
             return
         phonenumber = self._parse_phonenumber(self.value)
         if not (phonenumber and phonenumbers.is_valid_number(phonenumber)):
-            self.raise_user_error(
-                'invalid_phonenumber', {
-                    'phone': self.value,
-                    'party': self.party.rec_name
-                    })
+            raise InvalidPhoneNumber(
+                gettext('party.msg_invalid_phone_number',
+                    phone=self.value, party=self.party.rec_name))
 
     @classmethod
     def usages(cls, _fields=None):

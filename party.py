@@ -5,6 +5,7 @@ import stdnum.exceptions
 from sql import Null, Column, Literal
 from sql.functions import CharLength, Substring, Position
 
+from trytond.i18n import gettext
 from trytond.model import (ModelView, ModelSQL, MultiValueMixin, ValueMixin,
     DeactivableMixin, fields, Unique, sequence_ordered)
 from trytond.wizard import Wizard, StateTransition, StateView, Button
@@ -13,6 +14,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 from trytond.tools.multivalue import migrate_property
+from .exceptions import (
+    InvalidIdentifierCode, VIESUnavailable, SimilarityWarning, EraseError)
 
 __all__ = ['Party', 'PartyLang', 'PartyCategory', 'PartyIdentifier',
     'CheckVIESResult', 'CheckVIES',
@@ -76,9 +79,8 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         super(Party, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
-            ('code_uniq', Unique(t, t.code),
-             'The code of the party must be unique.')
-        ]
+            ('code_uniq', Unique(t, t.code), 'party.msg_party_code_unique')
+            ]
         cls._order.insert(0, ('name', 'ASC'))
         cls.active.states.update({
                 'readonly': Bool(Eval('replaced_by')),
@@ -318,14 +320,6 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
     code = fields.Char('Code', required=True)
 
     @classmethod
-    def __setup__(cls):
-        super(PartyIdentifier, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_vat': ('Invalid VAT number "%(code)s" '
-                    'on party "%(party)s".'),
-                })
-
-    @classmethod
     def __register__(cls, module_name):
         pool = Pool()
         Party = pool.get('party.party')
@@ -376,10 +370,9 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
                     party = self.party.rec_name
                 else:
                     party = ''
-                self.raise_user_error('invalid_vat', {
-                        'code': self.code,
-                        'party': party,
-                        })
+                raise InvalidIdentifierCode(
+                    gettext('party.msg_invalid_vat_number',
+                        code=self.code, party=party))
 
 
 class CheckVIESResult(ModelView):
@@ -406,14 +399,6 @@ class CheckVIES(Wizard):
             Button('OK', 'end', 'tryton-ok', True),
             ])
 
-    @classmethod
-    def __setup__(cls):
-        super(CheckVIES, cls).__setup__()
-        cls._error_messages.update({
-                'vies_unavailable': ('The VIES service is unavailable, '
-                    'try again later.'),
-                })
-
     def transition_check(self):
         Party = Pool().get('party.party')
 
@@ -439,7 +424,8 @@ class CheckVIES(Wizard):
                                 or e.faultstring.find('MS_UNAVAILABLE') \
                                 or e.faultstring.find('TIMEOUT') \
                                 or e.faultstring.find('SERVER_BUSY'):
-                            self.raise_user_error('vies_unavailable')
+                            raise VIESUnavailable(
+                                gettext('party.msg_vies_unavailable')) from e
                     raise
         self.result.parties_succeed = parties_succeed
         self.result.parties_failed = parties_failed
@@ -462,26 +448,19 @@ class PartyReplace(Wizard):
             ])
     replace = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyReplace, cls).__setup__()
-        cls._error_messages.update({
-                'different_name': ("Parties have different names: "
-                    "%(source_name)s vs %(destination_name)s."),
-                'different_tax_identifier': (
-                    "Parties have different Tax Identifier: "
-                    "%(source_code)s vs %(destination_code)s."),
-                })
-
     def check_similarity(self):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
         source = self.ask.source
         destination = self.ask.destination
         if source.name != destination.name:
             key = 'party.replace name %s %s' % (source.id, destination.id)
-            self.raise_user_warning(key, 'different_name', {
-                    'source_name': source.name,
-                    'destination_name': destination.name,
-                    })
+            if Warning.check(key):
+                raise SimilarityWarning(
+                    key,
+                    gettext('party.msg_different_name',
+                        source_name=source.name,
+                        destination_name=destination.name))
         source_code = (source.tax_identifier.code
             if source.tax_identifier else '')
         destination_code = (destination.tax_identifier.code
@@ -489,10 +468,12 @@ class PartyReplace(Wizard):
         if source_code != destination_code:
             key = 'party.replace tax_identifier %s %s' % (
                 source.id, destination.id)
-            self.raise_user_warning(key, 'different_tax_identifier', {
-                    'source_code': source_code,
-                    'destination_code': destination_code,
-                    })
+            if Warning.check(key):
+                raise SimilarityWarning(
+                    key,
+                    gettext('party.msg_different_tax_identifier',
+                        source_code=source_code,
+                        destination_code=destination_code))
 
     def transition_replace(self):
         pool = Pool()
@@ -582,15 +563,6 @@ class PartyErase(Wizard):
             ])
     erase = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyErase, cls).__setup__()
-        cls._error_messages.update({
-                'active_party': (
-                    'The party "%(party)s" can not be erased '
-                    'because he is still active.'),
-                })
-
     def transition_erase(self):
         pool = Pool()
         Party = pool.get('party.party')
@@ -662,9 +634,8 @@ class PartyErase(Wizard):
 
     def check_erase(self, party):
         if party.active:
-            self.raise_user_error('active_party', {
-                    'party': party.rec_name,
-                    })
+            raise EraseError(gettext('party.msg_erase_active_party',
+                    party=party.rec_name))
 
     def to_erase(self, party_id):
         pool = Pool()
