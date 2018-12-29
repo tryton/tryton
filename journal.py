@@ -49,7 +49,7 @@ class Journal(ModelSQL, ModelView):
         cls._sql_constraints = [
             ('bank_account_unique',
                 Unique(t, t.bank_account, t.company),
-                "Only one journal is allowed per bank account."),
+                'account_statement.msg_journal_bank_account_unique'),
             ]
 
     @classmethod
