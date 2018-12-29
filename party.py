@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.party.exceptions import EraseError
 
 __all__ = ['Party', 'PartyPaymentDirectDebit', 'PartyReplace', 'PartyErase']
 payment_direct_debit = fields.Boolean(
@@ -42,16 +44,6 @@ class PartyReplace(metaclass=PoolMeta):
 class PartyErase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
-    @classmethod
-    def __setup__(cls):
-        super(PartyErase, cls).__setup__()
-        cls._error_messages.update({
-                'pending_payment': (
-                    'The party "%(party)s" can not be erased '
-                    'because he has pending payments '
-                    'for the company "%(company)s".'),
-                })
-
     def check_erase_company(self, party, company):
         pool = Pool()
         Payment = pool.get('account.payment')
@@ -62,7 +54,7 @@ class PartyErase(metaclass=PoolMeta):
                 ('state', 'not in', ['succeeded', 'failed']),
                 ])
         if payments:
-            self.raise_user_error('pending_payment', {
-                    'party': party.rec_name,
-                    'company': company.rec_name,
-                    })
+            raise EraseError(
+                gettext('account_payment.msg_erase_party_pending_payment',
+                    party=party.rec_name,
+                    company=company.rec_name))

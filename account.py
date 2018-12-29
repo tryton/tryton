@@ -8,6 +8,7 @@ from sql.conditionals import Case, Coalesce
 from sql.functions import Abs
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval, If, Bool
@@ -17,6 +18,7 @@ from trytond.transaction import Transaction
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
+from .exceptions import BlockedWarning
 from .payment import KINDS
 
 __all__ = ['MoveLine', 'PayLine', 'PayLineAskJournal',
@@ -202,13 +204,6 @@ class PayLine(Wizard):
             ])
     pay = StateAction('account_payment.act_payment_form')
 
-    @classmethod
-    def __setup__(cls):
-        super(PayLine, cls).__setup__()
-        cls._error_messages.update({
-                'blocked': 'The Line "%(line)s" is blocked.',
-                })
-
     def _get_journals(self):
         journals = {}
         for journal in getattr(self.ask_journal, 'journals', []):
@@ -287,6 +282,7 @@ class PayLine(Wizard):
         pool = Pool()
         Line = pool.get('account.move.line')
         Payment = pool.get('account.payment')
+        Warning = pool.get('res.user.warning')
 
         lines = Line.browse(Transaction().context['active_ids'])
         journals = self._get_journals()
@@ -294,10 +290,11 @@ class PayLine(Wizard):
         payments = []
         for line in lines:
             if line.payment_blocked:
-                self.raise_user_warning('blocked:%s' % line,
-                    'blocked', {
-                        'line': line.rec_name,
-                        })
+                warning_name = 'blocked:%s' % line
+                if Warning.check(warning_name):
+                    raise BlockedWarning(warning_name,
+                        gettext('account_payment.msg_pay_line_blocked',
+                            line=line.rec_name))
             payments.append(self.get_payment(line, journals))
         Payment.save(payments)
         return action, {
