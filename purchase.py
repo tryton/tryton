@@ -4,10 +4,12 @@ from decimal import Decimal
 from itertools import chain
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, If
 from trytond.model import Workflow, ModelView, fields, ModelSQL, \
         sequence_ordered
+from trytond.model.exceptions import RequiredValidationError, AccessError
 from trytond.wizard import Wizard
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
@@ -159,12 +161,6 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(PurchaseRequisition, cls).__setup__()
-        cls._error_messages.update({
-                'warehouse_required': ('A warehouse must be defined for '
-                    'requisition: "%(requisition)s".'),
-                'delete_cancel': ('Requisition "%s" must be cancelled '
-                    'before deletion.'),
-                })
         cls._transitions |= set((
                 ('cancel', 'draft'),
                 ('rejected', 'draft'),
@@ -304,16 +300,18 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         cls.cancel(requisitions)
         for requisition in requisitions:
             if requisition.state != 'cancel':
-                cls.raise_user_error('delete_cancel', requisition.rec_name)
+                raise AccessError(
+                    gettext('purchase_requisition.msg_delete_cancel',
+                        requisition=requisition.rec_name))
         super(PurchaseRequisition, cls).delete(requisitions)
 
     def check_for_waiting(self):
         if not self.warehouse:
             for line in self.lines:
                 if line.product and line.product.type in {'goods', 'assets'}:
-                    self.raise_user_error('warehouse_required', {
-                            'requisition': self.rec_name,
-                            })
+                    raise RequiredValidationError(
+                        gettext('purchase_requisition.msg_warehouse_required',
+                            requisition=self.rec_name))
 
     @classmethod
     def copy(cls, requisitions, default=None):
