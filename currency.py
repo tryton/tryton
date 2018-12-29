@@ -7,12 +7,15 @@ from decimal import Decimal, ROUND_HALF_EVEN
 from sql import Window
 from sql.functions import NthValue
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
 from trytond.pyson import Eval
+
+from .exceptions import RateError
 
 __all__ = ['Currency', 'Rate']
 
@@ -42,10 +45,6 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(Currency, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
-        cls._error_messages.update({
-                'no_rate': ('No rate found for currency "%(currency)s" on '
-                    '"%(date)s"'),
-                })
         cls.__rpc__.update({
                 'compute': RPC(instantiate=slice(0, 3, 2)),
                 })
@@ -167,10 +166,9 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
                 name = to_currency.name
 
             lang = Lang.get()
-            cls.raise_user_error('no_rate', {
-                    'currency': name,
-                    'date': lang.strftime(date)
-                    })
+            raise RateError(gettext('currency.msg_no_rate',
+                    currency=name,
+                    date=lang.strftime(date)))
         if round:
             return to_currency.round(
                 amount * to_currency.rate / from_currency.rate)
@@ -229,9 +227,9 @@ class Rate(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints = [
             ('date_currency_uniq', Unique(t, t.date, t.currency),
-                'A currency can only have one rate by date.'),
+                'currency.msg_currency_unique_rate_date'),
             ('check_currency_rate', Check(t, t.rate >= 0),
-                'The currency rate must greater than or equal to 0'),
+                'currency.msg_currency_rate_positive'),
             ]
         cls._order.insert(0, ('date', 'DESC'))
 
