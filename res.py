@@ -6,6 +6,8 @@ import urllib.parse
 import ldap3
 from ldap3.core.exceptions import LDAPException
 
+from trytond.i18n import gettext
+from trytond.model.exceptions import AccessError
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 from trytond.config import config, parse_uri
@@ -50,14 +52,6 @@ def ldap_server():
 
 class User(metaclass=PoolMeta):
     __name__ = 'res.user'
-
-    @classmethod
-    def __setup__(cls):
-        super(User, cls).__setup__()
-        cls._error_messages.update({
-                'set_passwd_ldap_user': (
-                    'You can not set the password of ldap user "%s".'),
-                })
 
     @staticmethod
     def ldap_search_user(login, server, attrs=None):
@@ -109,7 +103,9 @@ class User(metaclass=PoolMeta):
         except LDAPException:
             logger.error('LDAPError when checking password', exc_info=True)
         if find:
-            cls.raise_user_error('set_passwd_ldap_user', (login,))
+            raise AccessError(
+                gettext('ldap_authentication.msg_ldap_user_change_password',
+                    user=login))
 
     @classmethod
     def create(cls, vlist):
