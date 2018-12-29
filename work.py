@@ -11,6 +11,7 @@ from sql import Null
 from sql.aggregate import Sum
 from sql.operators import Concat
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, Bool, PYSONEncoder
@@ -18,6 +19,8 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateAction
 from trytond.tools import reduce_ids, grouped_slice
+
+from .exceptions import InvoicingError
 
 
 __all__ = ['Work', 'WorkInvoicedProgress', 'OpenInvoice']
@@ -78,11 +81,6 @@ class Work(metaclass=PoolMeta):
                     'depends': ['type', 'project_invoice_method',
                         'duration_to_invoice']
                     },
-                })
-        cls._error_messages.update({
-                'missing_product': 'There is no product on work "%s".',
-                'missing_list_price': 'There is no list price on work "%s".',
-                'missing_party': 'There is no party on work "%s".',
                 })
 
     @staticmethod
@@ -407,7 +405,9 @@ class Work(metaclass=PoolMeta):
             journal = None
 
         if not self.party:
-            self.raise_user_error('missing_party', (self.rec_name,))
+            raise InvoicingError(
+                gettext('project_invoice.msg_missing_party',
+                    work=self.rec_name))
 
         return Invoice(
             company=self.company,
@@ -485,9 +485,13 @@ class Work(metaclass=PoolMeta):
                 and self.effort_hours
                 and self.state == 'done'):
             if not self.product:
-                self.raise_user_error('missing_product', (self.rec_name,))
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_product',
+                        work=self.rec_name))
             elif self.list_price is None:
-                self.raise_user_error('missing_list_price', (self.rec_name,))
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_list_price',
+                        work=self.rec_name))
             return [{
                     'product': self.product,
                     'quantity': self.effort_hours,
@@ -516,9 +520,13 @@ class Work(metaclass=PoolMeta):
                 hour, quantity, self.product.default_uom)
         if quantity > 0:
             if not self.product:
-                self.raise_user_error('missing_product', (self.rec_name,))
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_product',
+                        work=self.rec_name))
             elif self.list_price is None:
-                self.raise_user_error('missing_list_price', (self.rec_name,))
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_list_price',
+                        work=self.rec_name))
             invoiced_progress = InvoicedProgress(work=self,
                 effort_duration=datetime.timedelta(hours=quantity))
             return [{
@@ -540,9 +548,13 @@ class Work(metaclass=PoolMeta):
         if (self.timesheet_works
                 and any(tw.timesheet_lines for tw in self.timesheet_works)):
             if not self.product:
-                self.raise_user_error('missing_product', (self.rec_name,))
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_product',
+                        work=self.rec_name))
             elif self.list_price is None:
-                self.raise_user_error('missing_list_price', (self.rec_name,))
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_list_price',
+                        work=self.rec_name))
             return [{
                     'product': self.product,
                     'quantity': l.hours,
