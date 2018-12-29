@@ -11,6 +11,7 @@ except ImportError:
     Null = None
 from sql.aggregate import Sum
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
     sequence_ordered
 from trytond.pyson import Eval, Bool, If, Id, PYSONEncoder
@@ -20,6 +21,8 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits
+
+from .exceptions import FormulaError
 
 __all__ = ['Agent', 'Plan', 'PlanLines', 'Commission',
     'CreateInvoice', 'CreateInvoiceAsk']
@@ -174,15 +177,6 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         help=('Python expression that will be evaluated with:\n'
             '- amount: the original amount'))
 
-    @classmethod
-    def __setup__(cls):
-        super(PlanLines, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_formula': ('Invalid formula "%(formula)s" in '
-                    'commission plan line "%(line)s" with exception '
-                    '"%(exception)s".'),
-                })
-
     @staticmethod
     def default_formula():
         return 'amount'
@@ -199,12 +193,12 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         try:
             if not isinstance(self.get_amount(**context), Decimal):
                 raise ValueError
-        except ValueError as exception:
-            self.raise_user_error('invalid_formula', {
-                    'formula': self.formula,
-                    'line': self.rec_name,
-                    'exception': exception,
-                    })
+        except Exception as exception:
+            raise FormulaError(
+                gettext('commission.msg_plan_line_invalid_formula',
+                    formula=self.formula,
+                    line=self.rec_name,
+                    exception=exception)) from exception
 
     def get_amount(self, **context):
         'Return amount (as Decimal)'
