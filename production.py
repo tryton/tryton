@@ -4,9 +4,12 @@ import hashlib
 from decimal import Decimal
 from itertools import groupby
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, If
+
+from .exceptions import PurchaseWarning
 
 
 class Routing(metaclass=PoolMeta):
@@ -99,15 +102,6 @@ class Production(metaclass=PoolMeta):
             ],
         depends=['company'],
         help="The lines to add to the production cost.")
-
-    @classmethod
-    def __setup__(cls):
-        super(Production, cls).__setup__()
-        cls._error_messages.update({
-                'pending_purchase_done': (
-                    'The productions "%s" can not be done '
-                    'as they have pending purchases'),
-                })
 
     def get_cost(self, name):
         pool = Pool()
@@ -218,6 +212,9 @@ class Production(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     def done(cls, productions):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+
         def pending_purchase(production):
             return any(l.purchase_state in {'draft', 'quotation'}
                 for l in production.purchase_lines)
@@ -228,6 +225,9 @@ class Production(metaclass=PoolMeta):
                 names += '...'
             warning_name = '%s.pending_purchase.done' % hashlib.md5(
                 str(pendings).encode('utf-8')).hexdigest()
-            cls.raise_user_warning(
-                warning_name, 'pending_purchase_done', names)
+            if Warning.check(warning_name):
+                raise PurchaseWarning(
+                    warning_name,
+                    gettext('production_outsourcing.msg_pending_purchase_done',
+                        productions=names))
         super(Production, cls).done(productions)
