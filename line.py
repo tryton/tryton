@@ -7,11 +7,14 @@ from sql import Literal
 from sql.aggregate import Max, Sum
 from sql.functions import Extract, CharLength
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields, Unique
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, PYSONEncoder, Date
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+
+from .exceptions import DurationValidationError
 
 __all__ = ['Line', 'EnterLinesStart', 'EnterLines',
     'HoursEmployee', 'HoursEmployeeContext',
@@ -64,13 +67,9 @@ class Line(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints = [
             ('uuid_unique', Unique(t, t.uuid),
-                "The UUID of timesheet line must be unique."),
+                'timesheet.msg_line_uuid_unique'),
             ]
         cls._order.insert(0, ('date', 'DESC'))
-        cls._error_messages.update({
-                'duration_positive': (
-                    'Duration of line "%(line)s" must be positive.'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -134,9 +133,9 @@ class Line(ModelSQL, ModelView):
 
     def check_duration(self):
         if self.duration < datetime.timedelta():
-            self.raise_user_error('duration_positive', {
-                    'line': self.rec_name,
-                    })
+            raise DurationValidationError(
+                gettext('timesheet.msg_line_duration_positive',
+                    line=self.rec_name))
 
     @property
     def hours(self):

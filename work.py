@@ -6,11 +6,14 @@ import datetime
 from sql import Literal
 from sql.aggregate import Sum
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from trytond.pyson import Not, Bool, Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice
+
+from .exceptions import CompanyValidationError
 
 __all__ = ['Work', 'WorkContext']
 
@@ -70,12 +73,8 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('origin_unique', Unique(t, t.origin, t.company),
-                'The origin must be unique per company.'),
+                'timesheet.msg_work_origin_unique_company'),
             ]
-        cls._error_messages.update({
-                'mismatch_company': ('The company of the work "%(work)s" '
-                    'is different than the origin\'s company'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -204,9 +203,9 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
         super(Work, cls).validate(works)
         for work in works:
             if work.origin and not work._validate_company():
-                cls.raise_user_error('mismatch_company', {
-                        'work': work.rec_name,
-                        })
+                raise CompanyValidationError(
+                    gettext('timesheet.msg_work_company_different_origin',
+                        work=work.rec_name))
 
     def _validate_company(self):
         return True
