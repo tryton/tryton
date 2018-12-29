@@ -6,10 +6,13 @@ from itertools import groupby
 
 from sql import Null, Literal
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+
+from .exceptions import ClosePeriodWarning
 
 
 def _tax_group(tax):
@@ -35,16 +38,6 @@ class Period(metaclass=PoolMeta):
         "Tax Group On Cash Basis",
         help="The tax group reported on cash basis for this period.")
 
-    @classmethod
-    def __setup__(cls):
-        super(Period, cls).__setup__()
-        cls._error_messages.update({
-                'period_close_line_payment': (
-                    'There are payable/receivable lines '
-                    'from the period "%(period)s" not linked '
-                    'to an invoice.'),
-                })
-
     def is_on_cash_basis(self, tax):
         if not tax:
             return False
@@ -58,6 +51,7 @@ class Period(metaclass=PoolMeta):
     def close(cls, periods):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
+        Warning = pool.get('res.user.warning')
         super(Period, cls).close(periods)
         for period in periods:
             if (period.tax_group_on_cash_basis
@@ -72,10 +66,11 @@ class Period(metaclass=PoolMeta):
                     warning_name = (
                         'period_close_line_payment.%s' % hashlib.md5(
                             str(move_lines).encode('utf-8')).hexdigest())
-                    cls.raise_user_warning(
-                        warning_name, 'period_close_line_payment', {
-                            'period': period.rec_name,
-                            })
+                    if Warning.check(warning_name):
+                        raise ClosePeriodWarning(warning_name,
+                            gettext('account_tax_cash'
+                                '.msg_close_period_line_payment',
+                                period=period.rec_name))
 
 
 class TaxGroupCash(ModelSQL):
