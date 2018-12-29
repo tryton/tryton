@@ -5,11 +5,16 @@ import datetime
 from sql import Union, Join, Select, Table, Null, As
 from sql.conditionals import Greatest
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, ModelSQL, ValueMixin, fields
+from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
+
+from trytond.modules.stock.exceptions import PeriodCloseError
+from .exceptions import LotExpiredError, LotExpiredWarning
 
 __all__ = ['Configuration', 'ConfigurationLotShelfLife',
     'Lot', 'Move', 'Period']
@@ -65,15 +70,6 @@ class Lot(metaclass=PoolMeta):
     expiration_state = fields.Function(
         fields.Selection(DATE_STATE, 'Expiration State'),
         'on_change_with_expiration_state')
-
-    @classmethod
-    def __setup__(cls):
-        super(Lot, cls).__setup__()
-        cls._error_messages.update({
-                'period_closed_expiration_dates': ('You can not modify '
-                    'the expiration dates of lot "%(lot)s" because '
-                    'it is used on a move "%(move)s" in a closed period'),
-                })
 
     @fields.depends('product')
     def on_change_with_shelf_life_expiration_state(self, name=None):
@@ -138,22 +134,15 @@ class Lot(metaclass=PoolMeta):
                         ]], limit=1)
             if moves:
                 move, = moves
-                cls.raise_user_error('period_closed_expiration_dates', {
-                        'lot': move.lot.rec_name,
-                        'move': move.rec_name,
-                        })
+                raise AccessError(
+                    gettext('stock_lot_sled'
+                        '.msg_lot_modify_expiration_date_period_close',
+                        lot=move.lot.rec_name,
+                        move=move.rec_name))
 
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-
-    @classmethod
-    def __setup__(cls):
-        super(Move, cls).__setup__()
-        cls._error_messages.update({
-                'expiration_dates': ('The lot "%(lot)s" '
-                    'on move "%(move)s" is expired'),
-                })
 
     @classmethod
     @ModelView.button
@@ -191,6 +180,7 @@ class Move(metaclass=PoolMeta):
         Group = pool.get('res.group')
         User = pool.get('res.user')
         ModelData = pool.get('ir.model.data')
+        Warning = pool.get('res.user.warning')
 
         types = cls.check_expiration_dates_types()
         locations = cls.check_expiration_dates_locations()
@@ -219,10 +209,15 @@ class Move(metaclass=PoolMeta):
                     'lot': move.lot.rec_name if move.lot else '',
                     }
                 if not in_group():
-                    cls.raise_user_error('expiration_dates', values)
+                    raise LotExpiredError(
+                        gettext('stock_lot_sled.msg_move_lot_expired',
+                            **values))
                 else:
-                    cls.raise_user_warning('%s.check_expiration_dates' % move,
-                        'expiration_dates', values)
+                    warning_name = '%s.check_expiration_dates' % move
+                    if Warning.check(warning_name):
+                        raise LotExpiredWarning(warning_name,
+                            gettext('stock_lot_sled.msg_move_lot_expired',
+                                **values))
 
     @classmethod
     def compute_quantities_query(cls, location_ids, with_childs=False,
@@ -328,15 +323,6 @@ class Period(metaclass=PoolMeta):
     __name__ = 'stock.period'
 
     @classmethod
-    def __setup__(cls):
-        super(Period, cls).__setup__()
-        cls._error_messages.update({
-                'close_period_sled': ('You can not close a period '
-                    'before the Shelf Live Expiration Date "%(date)s" '
-                    'of Lot "%(lot)s"'),
-                })
-
-    @classmethod
     @ModelView.button
     def close(cls, periods):
         pool = Pool()
@@ -367,7 +353,7 @@ class Period(metaclass=PoolMeta):
             lot_id, = lot_id
             lot = Lot(lot_id)
             lang = Lang.get()
-            cls.raise_user_error('close_period_sled', {
-                    'date': lang.strftime(lot.shelf_life_expiration_date),
-                    'lot': lot.rec_name,
-                    })
+            raise PeriodCloseError(
+                gettext('stock_lot_sled.msg_period_close_sled',
+                    lot=lot.rec_name,
+                    date=lang.strftime(lot.shelf_life_expiration_date)))
