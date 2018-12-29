@@ -4,8 +4,11 @@ from dateutil.rrule import MO, TU, WE, TH, FR, SA, SU
 from dateutil.rrule import YEARLY, MONTHLY, WEEKLY, DAILY
 from dateutil.rrule import rrule, rruleset
 
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.transaction import Transaction
+
+from .exceptions import RecurrenceRuleValidationError
 
 __all__ = ['RecurrenceRuleSet', 'RecurrenceRule']
 WEEKDAYS = {
@@ -99,24 +102,6 @@ class RecurrenceRule(ModelSQL, ModelView):
             ], "Week Start Day", sort=False)
 
     exclusive = fields.Boolean("Exclusive")
-
-    @classmethod
-    def __setup__(cls):
-        super(RecurrenceRule, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_byweekday': (
-                    '"By Week Day" (%(byweekday)s) is not valid.'),
-                'invalid_bymonthday': (
-                    '"By Month Day" (%(bymonthday)s) is not valid.'),
-                'invalid_byyearday': (
-                    '"By Year Day" (%(byyearday)s) is not valid.'),
-                'invalid_byweekno': (
-                    '"By Week Number" (%(byweekno)s) is not valid.'),
-                'invalid_bymonth': (
-                    '"By Month" (%(bymonth)s) is not valid.'),
-                'invalid_bysetpos': (
-                    '"By Position" (%(bysetpos)s) is not valid.'),
-                })
 
     @classmethod
     def default_interval(cls):
@@ -214,7 +199,10 @@ class RecurrenceRule(ModelSQL, ModelView):
     def check_by(self, name):
         try:
             getattr(self, '_%s' % name)
-        except ValueError:
-            self.raise_user_error('invalid_%s' % name, {
-                    name: getattr(self, name),
-                    })
+        except ValueError as exception:
+            raise RecurrenceRuleValidationError(
+                gettext('sale_subscription.msg_recurrence_rule_invalid_by',
+                    value=getattr(self, name),
+                    recurrence_rule=self.rec_name,
+                    exception=exception,
+                    **self._get_error_args(name))) from exception

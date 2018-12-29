@@ -8,8 +8,10 @@ from sql import operators, Literal, Null
 from sql.conditionals import Coalesce
 
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, \
         sequence_ordered
+from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
@@ -17,6 +19,7 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
         Button
 
 from trytond.modules.product import price_digits
+from .exceptions import InvoiceError
 
 __all__ = ['Subscription', 'Line', 'LineConsumption',
     'CreateLineConsumption', 'CreateLineConsumptionStart',
@@ -726,14 +729,6 @@ class LineConsumption(ModelSQL, ModelView):
     def __setup__(cls):
         super(LineConsumption, cls).__setup__()
         cls._order.insert(0, ('date', 'DESC'))
-        cls._error_messages.update({
-                'modify_invoiced_consumption': (
-                    "You can not modify invoiced consumption."),
-                'delete_invoiced_consumption': (
-                    "You can not delete invoiced consumption."),
-                'missing_account_revenue': ('Product "%(product)s" '
-                    'misses a revenue account.'),
-                })
 
     @fields.depends('line')
     def on_change_with_unit_digits(self, name=None):
@@ -752,16 +747,23 @@ class LineConsumption(ModelSQL, ModelView):
 
     @classmethod
     def write(cls, *args):
-        if any(c.invoice_line
-                for consumptions in args[::2]
-                for c in consumptions):
-            cls.raise_user_error('modify_invoiced_consumption')
+        for consumptions in args[::2]:
+            for consumption in consumptions:
+                if consumption.invoice_line:
+                    raise AccessError(
+                        gettext('sale_subscription'
+                            '.msg_consumption_modify_invoiced',
+                            consumption=consumption.rec_name))
         super(LineConsumption, cls).write(*args)
 
     @classmethod
     def delete(cls, consumptions):
-        if any(c.invoice_line for c in consumptions):
-            cls.raise_user_error('delete_invoiced_consumption')
+        for consumption in consumptions:
+            if consumption.invoice_line:
+                raise AccessError(
+                    gettext('sale_subscription'
+                        '.msg_consumption_modify_invoiced',
+                        consumption=consumption.rec_name))
         super(LineConsumption, cls).delete(consumptions)
 
     @classmethod
@@ -782,9 +784,10 @@ class LineConsumption(ModelSQL, ModelView):
 
             line.account = line.product.account_revenue_used
             if not line.account:
-                cls.raise_user_error('missing_account_revenue', {
-                        'product': line.product.rec_name,
-                        })
+                raise InvoiceError(
+                    gettext('sale_subscription'
+                        '.msg_consumption_invoice_missing_account_revenue',
+                        product=line.product.rec_name))
 
             taxes = []
             pattern = line._get_tax_rule_pattern()
