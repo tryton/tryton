@@ -60,7 +60,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         return entry
 
     def translate_widget_set(self, widget, value):
-        widget.set_text(value or '')
+        widget.set_text(value)
         reset_position(widget)
 
     def translate_widget_get(self, widget):
