@@ -1,10 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
+from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.report import Report
+
+from .exceptions import PackageError
 
 __all__ = ['Configuration', 'ConfigurationSequence', 'Package', 'Type', 'Move',
     'ShipmentOut', 'ShipmentInReturn', 'PackageLabel']
@@ -169,7 +172,9 @@ class PackageMixin(object):
                 continue
             length = sum(len(p.moves) for p in shipment.packages)
             if len(list(shipment.packages_moves)) != length:
-                cls.raise_user_error('package_mismatch', shipment.rec_name)
+                raise PackageError(
+                    gettext('stock_package.msg_package_mismatch',
+                        shipment=shipment.rec_name))
 
     @property
     def packages_moves(self):
@@ -178,14 +183,6 @@ class PackageMixin(object):
 
 class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
-
-    @classmethod
-    def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
-        cls._error_messages.update({
-                'package_mismatch': ('Not all Outgoing Moves of '
-                    'Customer Shipment "%s" are packaged.'),
-                })
 
     @classmethod
     @ModelView.button
@@ -208,14 +205,6 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
 
 class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.in.return'
-
-    @classmethod
-    def __setup__(cls):
-        super(ShipmentInReturn, cls).__setup__()
-        cls._error_messages.update({
-                'package_mismatch': ('Not all Moves of '
-                    'Supplier Return Shipment "%s" are packaged.'),
-                })
 
     @classmethod
     @ModelView.button
