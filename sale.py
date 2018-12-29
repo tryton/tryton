@@ -4,12 +4,15 @@ from sql import Literal
 from sql.aggregate import Count
 from sql.conditionals import Case, Coalesce
 
+from trytond.i18n import gettext
 from trytond.model import (
     ModelSQL, ModelView, Workflow, fields, DeactivableMixin)
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
+
+from .exceptions import DuplicateError
 
 __all__ = ['Promotion', 'PromotionCoupon', 'PromotionCouponNumber']
 
@@ -70,10 +73,6 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(PromotionCouponNumber, cls).__setup__()
-        cls._error_messages.update({
-                'duplicate_numbers': (
-                    "The coupon numbered '%(numbers)s' are duplicated."),
-                })
         cls.active = fields.Function(
             fields.Boolean("Active"), 'get_active', searcher='search_active')
 
@@ -189,9 +188,9 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
             numbers = ', '.join(n.number for n in duplicates[:5])
             if len(duplicates) > 5:
                 numbers += '...'
-            cls.raise_user_error('duplicate_numbers', {
-                    'numbers': numbers,
-                    })
+            raise DuplicateError(
+                gettext('sale_promotion_coupon.msg_duplicate_numbers',
+                    numbers=numbers))
 
 
 class Sale(metaclass=PoolMeta):
