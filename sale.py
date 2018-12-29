@@ -4,6 +4,7 @@ from decimal import Decimal
 from simpleeval import simple_eval
 from itertools import chain
 
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
 from trytond.model import (
     ModelSQL, ModelView, Workflow, DeactivableMixin, fields)
@@ -11,6 +12,8 @@ from trytond.pyson import Eval, Bool
 from trytond.tools import decistmt
 from trytond.transaction import Transaction
 from trytond.modules.company.model import CompanyMultiValueMixin, CompanyValueMixin
+
+from .exceptions import FormulaError
 
 __all__ = [
     'AdvancePaymentTerm', 'AdvancePaymentTermLine',
@@ -80,14 +83,6 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
             "- total_amount: The total amount of the sale.\n"
             "- untaxed_amount: The total untaxed amount of the sale.")
 
-    @classmethod
-    def __setup__(cls):
-        super(AdvancePaymentTermLine, cls).__setup__()
-        cls._error_messages.update({
-                'invalid_formula': ('Invalid formula "%(formula)s" with'
-                    ' exception "%(exception)s".'),
-                })
-
     @fields.depends('formula')
     def pre_validate(self, **names):
         super(AdvancePaymentTermLine, self).pre_validate()
@@ -96,10 +91,11 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
             if not isinstance(self.compute_amount(**names), Decimal):
                 raise Exception('The formula does not return a Decimal')
         except Exception as exception:
-            self.raise_user_error('invalid_formula', {
-                    'formula': self.formula,
-                    'exception': exception,
-                    })
+            raise FormulaError(
+                gettext('sale_advance_payment.msg_term_line_invalid_formula',
+                    formula=self.formula,
+                    term_line=self.rec_name,
+                    exception=exception)) from exception
 
     def get_compute_amount_context(self, **names):
         return {

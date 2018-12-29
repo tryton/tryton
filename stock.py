@@ -1,23 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow
 from trytond.pool import Pool, PoolMeta
+
+from .exceptions import ShippingBlocked
 
 __all__ = ['ShipmentOut']
 
 
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
-
-    @classmethod
-    def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
-        cls._error_messages.update({
-                'advance_payment_not_paid': ('The customer has not paid the'
-                    ' required advance payment amount for the sale'
-                    ' "%(sale)s".'),
-                })
 
     @classmethod
     @ModelView.button
@@ -32,7 +26,7 @@ class ShipmentOut(metaclass=PoolMeta):
             if isinstance(move.origin, SaleLine)}
         for sale in Sale.browse([s.id for s in sales]):
             if sale.shipping_blocked:
-                cls.raise_user_error('advance_payment_not_paid', {
-                        'sale': sale.rec_name,
-                        })
+                raise ShippingBlocked(
+                    gettext('sale_advance_payment.msg_shipping_blocked',
+                        sale=sale.rec_name))
         super(ShipmentOut, cls).pack(shipments)
