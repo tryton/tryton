@@ -2,7 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import functools
 
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
+
+from trytond.modules.account_payment.exceptions import PaymentValidationError
 
 __all__ = ['Payment', 'Invoice']
 
@@ -28,15 +31,6 @@ class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
 
     @classmethod
-    def __setup__(cls):
-        super(Payment, cls).__setup__()
-        cls._error_messages.update({
-                'payment_on_cancelled_sale': (
-                    'Payment cannot be approved because sale "%(sale)s" '
-                    'is cancelled.'),
-                })
-
-    @classmethod
     def _get_origin(cls):
         return super(Payment, cls)._get_origin() + ['sale.sale']
 
@@ -55,15 +49,15 @@ class Payment(metaclass=PoolMeta):
             # Do not prevent succeeding payment
             return
         if self.state != 'failed' and self.origin.state == 'draft':
-            self.raise_user_error('payment_on_draft_sale', {
-                    'payment': self.rec_name,
-                    'sale': self.origin.rec_name,
-                    })
+            raise PaymentValidationError(
+                gettext('sale_payment.msg_payment_sale_draft',
+                    sale=self.origin.rec_name,
+                    payment=self.rec_name))
         elif self.state == 'draft' and self.origin.state == 'cancel':
-            self.raise_user_error('payment_on_cancelled_sale', {
-                    'payment': self.rec_name,
-                    'sale': self.origin.rec_name,
-                    })
+            raise PaymentValidationError(
+                gettext('sale_payment.msg_payment_sale_cancel',
+                    sale=self.origin.rec_name,
+                    payment=self.rec_name))
 
     @classmethod
     def create(cls, vlist):

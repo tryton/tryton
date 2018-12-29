@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import functools
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
+from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
 
@@ -15,9 +17,7 @@ def no_payment(error):
         def wrapper(cls, sales, *args, **kwargs):
             for sale in sales:
                 if not all((p.state == 'failed' for p in sale.payments)):
-                    cls.raise_user_error(error, {
-                            'sale': sale.rec_name,
-                            })
+                    raise AccessError(gettext(error, sale=sale.rec_name))
             return func(cls, sales, *args, **kwargs)
         return wrapper
     return decorator
@@ -42,28 +42,16 @@ class Sale(metaclass=PoolMeta):
         depends=['company', 'total_amount', 'party', 'currency', 'state'])
 
     @classmethod
-    def __setup__(cls):
-        super(Sale, cls).__setup__()
-        cls._error_messages.update({
-                'cancel_with_payment': (
-                    'The sale "%(sale)s" can not be canceled because '
-                    'it has payments.'),
-                'draft_with_payment': (
-                    'The sale "%(sale)s" can not be reset to draft because '
-                    'it has payments.'),
-                })
-
-    @classmethod
     @ModelView.button
     @Workflow.transition('cancel')
-    @no_payment('cancel_with_payment')
+    @no_payment('sale_payment.msg_sale_cancel_payment')
     def cancel(cls, sales):
         super(Sale, cls).cancel(sales)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
-    @no_payment('draft_with_payment')
+    @no_payment('sale_payment.msg_sale_draft_payment')
     def draft(cls, sales):
         super(Sale, cls).draft(sales)
 
