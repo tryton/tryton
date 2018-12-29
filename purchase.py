@@ -8,8 +8,10 @@ from sql import Literal, Null
 from sql.aggregate import Count
 from sql.operators import Concat
 
+from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, \
     sequence_ordered
+from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
@@ -19,7 +21,10 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from trytond.modules.account.tax import TaxableMixin
+from trytond.modules.account_product.exceptions import AccountError
 from trytond.modules.product import price_digits
+
+from .exceptions import PurchaseQuotationError, PartyLocationError
 
 __all__ = ['Purchase', 'PurchaseIgnoredInvoice',
     'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
@@ -197,12 +202,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('purchase_date', 'DESC'),
             ('id', 'DESC'),
             ]
-        cls._error_messages.update({
-                'warehouse_required': ('A warehouse must be defined for '
-                    'quotation of purchase "%s".'),
-                'delete_cancel': ('Purchase "%s" must be cancelled before '
-                    'deletion.'),
-                })
         cls._transitions |= set((
                 ('draft', 'quotation'),
                 ('quotation', 'confirmed'),
@@ -645,7 +644,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             if (not line.to_location
                     and line.product
                     and line.product.type in ('goods', 'assets')):
-                self.raise_user_error('warehouse_required', (self.rec_name,))
+                raise PurchaseQuotationError(
+                    gettext('purchase.msg_warehouse_required_for_quotation',
+                        purchase=self.rec_name))
 
     @classmethod
     def set_number(cls, purchases):
@@ -785,7 +786,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls.cancel(purchases)
         for purchase in purchases:
             if purchase.state != 'cancel':
-                cls.raise_user_error('delete_cancel', purchase.rec_name)
+                raise AccessError(
+                    gettext('purchase.msg_purchase_delete_cancel',
+                        purchase=purchase.rec_name))
         super(Purchase, cls).delete(purchases)
 
     @classmethod
@@ -1055,20 +1058,6 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     purchase_state = fields.Function(
         fields.Selection(STATES, 'Purchase State'),
         'on_change_with_purchase_state')
-
-    @classmethod
-    def __setup__(cls):
-        super(PurchaseLine, cls).__setup__()
-        cls._error_messages.update({
-                'supplier_location_required': ('Purchase "%(purchase)s" '
-                    'misses the supplier location for line "%(line)s".'),
-                'missing_account_expense': ('Product "%(product)s" of '
-                    'purchase %(purchase)s misses an expense account.'),
-                'missing_default_account_expense': ('Purchase "%(purchase)s" '
-                    'misses a default "account expense".'),
-                'delete_cancel_draft': ('The line "%(line)s" must be on '
-                    'canceled or draft purchase to be deleted.'),
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -1358,16 +1347,19 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         if self.product:
             invoice_line.account = self.product.account_expense_used
             if not invoice_line.account:
-                self.raise_user_error('missing_account_expense', {
-                        'product': invoice_line.product.rec_name,
-                        'purchase': self.purchase.rec_name,
-                        })
+                raise AccountError(
+                    gettext('purchase'
+                        '.msg_purchase_product_missing_account_expense',
+                        purchase=self.purchase.rec_name,
+                        product=self.product.rec_name))
         else:
             invoice_line.account = account_config.get_multivalue(
                 'default_category_account_expense')
             if not invoice_line.account:
-                self.raise_user_error('missing_default_account_expense',
-                    {'purchase': self.purchase.rec_name})
+                raise AccountError(
+                    gettext('purchase'
+                        '.msg_purchase_missing_account_expense',
+                        purchase=self.purchase.rec_name))
         invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
 
@@ -1447,10 +1439,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             return
 
         if not self.purchase.party.supplier_location:
-            self.raise_user_error('supplier_location_required', {
-                    'purchase': self.purchase.rec_name,
-                    'line': self.rec_name,
-                    })
+            raise PartyLocationError(
+                gettext('purchase.msg_purchase_supplier_location_required',
+                    purchase=self.purchase.rec_name,
+                    party=self.purchase.party.rec_name))
         move = Move()
         move.quantity = quantity
         move.uom = self.unit
@@ -1521,9 +1513,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     def delete(cls, lines):
         for line in lines:
             if line.purchase_state not in {'cancel', 'draft'}:
-                cls.raise_user_error('delete_cancel_draft', {
-                        'line': line.rec_name,
-                        })
+                raise AccessError(
+                    gettext('purchase.msg_purchase_line_delete_cancel_draft',
+                        line=line.rec_name,
+                        purchase=line.purchase.rec_name))
         super(PurchaseLine, cls).delete(lines)
 
     @classmethod
@@ -1759,24 +1752,15 @@ class ModifyHeader(Wizard):
             ])
     modify = StateTransition()
 
-    @classmethod
-    def __setup__(cls):
-        super(ModifyHeader, cls).__setup__()
-        cls._error_messages.update({
-                'not_in_draft': (
-                    'The purchase "%(purchase)s" must be in draft '
-                    'to modify header.'),
-                })
-
     def get_purchase(self):
         pool = Pool()
         Purchase = pool.get('purchase.purchase')
 
         purchase = Purchase(Transaction().context['active_id'])
         if purchase.state != 'draft':
-            self.raise_user_error('not_in_draft', {
-                    'purchase': purchase.rec_name,
-                    })
+            raise AccessError(
+                gettext('purchase.msg_purchase_modify_header_draft',
+                    purchase=purchase.rec_name))
         return purchase
 
     def default_start(self, fields):

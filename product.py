@@ -5,6 +5,7 @@ import datetime
 from sql import Literal
 from sql.aggregate import Count
 
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
     sequence_ordered
 from trytond.pyson import Eval, If
@@ -12,6 +13,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits
+
+from .exceptions import PurchaseUOMWarning
 
 __all__ = ['Template', 'Product', 'ProductSupplier', 'ProductSupplierPrice']
 
@@ -35,14 +38,6 @@ class Template(metaclass=PoolMeta):
         domain=[('category', '=', Eval('default_uom_category'))],
         depends=['active', 'purchasable', 'default_uom_category'])
 
-    @classmethod
-    def __setup__(cls):
-        super(Template, cls).__setup__()
-        cls._error_messages.update({
-                'change_purchase_uom': ('Purchase prices are based '
-                    'on the purchase uom.'),
-                })
-
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_default_uom(self):
         try:
@@ -65,6 +60,8 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def write(cls, *args):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
         actions = iter(args)
         for templates, values in zip(actions, actions):
             if not values.get("purchase_uom"):
@@ -77,9 +74,10 @@ class Template(metaclass=PoolMeta):
                 for product in template.products:
                     if not product.product_suppliers:
                         continue
-                    cls.raise_user_warning(
-                            '%s@product_template' % template.id,
-                            'change_purchase_uom')
+                    name = '%s@product_template' % template.id
+                    if Warning.check(name):
+                        raise PurchaseUOMWarning(
+                            name, gettext('purchase.msg_change_purchase_uom'))
         super(Template, cls).write(*args)
 
 
