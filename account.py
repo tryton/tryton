@@ -4,7 +4,10 @@ from io import BytesIO
 
 import ofxparse
 
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
+
+from trytond.modules.account_statement.exceptions import ImportStatementError
 
 
 class StatementImportStart(metaclass=PoolMeta):
@@ -18,20 +21,6 @@ class StatementImportStart(metaclass=PoolMeta):
 
 class StatementImport(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
-
-    @classmethod
-    def __setup__(cls):
-        super(StatementImport, cls).__setup__()
-        cls._error_messages.update({
-                'ofx_no_journal': (
-                    'No journal found for the bank account "%(account)s".'),
-                'ofx_wrong_currency': (
-                    'The journal "%(journal)s" must have '
-                    'the currency "%(ofx_currency)s" instead of '
-                    '"%(currency)s".'),
-                'ofx_not_statement': (
-                    "The OFX file is not a statement."),
-                })
 
     def parse_ofx(self):
         file_ = BytesIO(self.start.file_)
@@ -56,17 +45,18 @@ class StatementImport(metaclass=PoolMeta):
         statement.journal = Journal.get_by_bank_account(
             statement.company, ofx_account.number)
         if not statement.journal:
-            self.raise_user_error('ofx_no_journal', {
-                    'account': ofx_account.number,
-                    })
+            raise ImportStatementError(
+                gettext('account_statement.msg_import_no_journal',
+                    account=ofx_account.number))
         if statement.journal.currency.code != ofx_account.curdef:
-            self.raise_user_error('ofx_wrong_currency', {
-                    'journal': statement.journal.rec_name,
-                    'currency': statement.journal.currency.rec_name,
-                    'ofx_currency': ofx_account.curdef,
-                    })
+            raise ImportStatementError(
+                gettext('account_statement.msg_import_wrong_currency',
+                    journal=statement.journal.rec_name,
+                    currency=statement.journal.currency.rec_name,
+                    journal_currency=ofx_account.curdef))
         if not isinstance(ofx_account.statement, ofxparse.Statement):
-            self.raise_user_error('ofx_not_statement')
+            raise ImportStatementError(
+                gettext('account_statement_ofx.msg_import_no_statement'))
         statement.date = ofx_account.statement.balance_date.date()
         statement.total_amount = ofx_account.statement.balance
         statement.number_of_lines = len(ofx_account.statement.transactions)
