@@ -93,7 +93,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             ('email_exclude',
                 Exclude(table, (table.email, Equal),
                     where=table.active == True),
-                'E-mail must be unique'),
+                'web_user.msg_user_email_unique'),
             ]
         cls._buttons.update({
                 'validate_email': {
@@ -414,7 +414,8 @@ class UserSession(ModelSQL):
         table = cls.__table__()
         cls.__rpc__ = {}
         cls._sql_constraints += [
-            ('key_unique', Unique(table, table.key), 'Key must be unique'),
+            ('key_unique', Unique(table, table.key),
+                'web_user.msg_user_session_key_unique'),
             ]
 
     @classmethod
