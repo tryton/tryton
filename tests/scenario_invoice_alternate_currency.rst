@@ -41,11 +41,14 @@ Set alternate currency rates::
     >>> rate.rate = eur.rates[0].rate + Decimal('0.5')
     >>> eur.save()
 
-Create fiscal year::
+Create fiscal years::
 
     >>> fiscalyear = set_fiscalyear_invoice_sequences(
-    ...     create_fiscalyear(company))
+    ...     create_fiscalyear(company, today=today))
     >>> fiscalyear.click('create_period')
+    >>> next_fiscalyear = set_fiscalyear_invoice_sequences(
+    ...     create_fiscalyear(company, today=today + relativedelta(years=1)))
+    >>> next_fiscalyear.click('create_period')
 
 Create chart of accounts::
 
