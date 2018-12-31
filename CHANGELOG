@@ -1,3 +1,4 @@
+* Rename languages: hu_HU, it_IT and pt_BR into hu, it and pt
 * Define custom exceptions
 * Remove _error_messages, raise_user_error and raise_user_warning
 * Remove ModelStorage._constraints
