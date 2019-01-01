@@ -9,11 +9,11 @@ this repository contains the full copyright notices and license terms. -->
     <label name="months"/>
     <field name="months"/>
     <label name="month"/>
-    <field name="month"/>
+    <field name="month" widget="selection"/>
     <label name="weeks"/>
     <field name="weeks"/>
     <label name="weekday"/>
-    <field name="weekday"/>
+    <field name="weekday" widget="selection"/>
     <label name="days"/>
     <field name="days"/>
     <label name="day"/>

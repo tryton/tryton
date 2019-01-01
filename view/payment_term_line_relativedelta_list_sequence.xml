@@ -4,9 +4,9 @@ this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="line"/>
     <field name="months"/>
-    <field name="month"/>
+    <field name="month" widget="selection"/>
     <field name="weeks"/>
-    <field name="weekday"/>
+    <field name="weekday" widget="selection"/>
     <field name="days"/>
     <field name="day"/>
 </tree>

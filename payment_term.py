@@ -3,7 +3,7 @@
 from decimal import Decimal
 from dateutil.relativedelta import relativedelta
 
-from sql import Column
+from sql import Column, Null
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -182,16 +182,6 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
             return self.currency.digits
         return 2
 
-    def get_delta(self):
-        return {
-            'day': self.day,
-            'month': int(self.month) if self.month else None,
-            'days': self.days,
-            'weeks': self.weeks,
-            'months': self.months,
-            'weekday': int(self.weekday) if self.weekday else None,
-            }
-
     def get_date(self, date):
         for relativedelta_ in self.relativedeltas:
             date += relativedelta_.get()
@@ -253,31 +243,8 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
             ('day', '=', None),
             [('day', '>=', 1), ('day', '<=', 31)],
             ])
-    month = fields.Selection([
-            (None, ''),
-            ('1', 'January'),
-            ('2', 'February'),
-            ('3', 'March'),
-            ('4', 'April'),
-            ('5', 'May'),
-            ('6', 'June'),
-            ('7', 'July'),
-            ('8', 'August'),
-            ('9', 'September'),
-            ('10', 'October'),
-            ('11', 'November'),
-            ('12', 'December'),
-            ], 'Month', sort=False)
-    weekday = fields.Selection([
-            (None, ''),
-            ('0', 'Monday'),
-            ('1', 'Tuesday'),
-            ('2', 'Wednesday'),
-            ('3', 'Thursday'),
-            ('4', 'Friday'),
-            ('5', 'Saturday'),
-            ('6', 'Sunday'),
-            ], 'Day of Week', sort=False)
+    month = fields.Many2One('ir.calendar.month', "Month")
+    weekday = fields.Many2One('ir.calendar.day', "Day of Week")
     months = fields.Integer('Number of Months', required=True)
     weeks = fields.Integer('Number of Weeks', required=True)
     days = fields.Integer('Number of Days', required=True)
@@ -285,11 +252,16 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TableHandler = backend.get('TableHandler')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
         pool = Pool()
         Line = pool.get('account.invoice.payment_term.line')
+        Month = pool.get('ir.calendar.month')
+        Day = pool.get('ir.calendar.day')
         sql_table = cls.__table__()
         line = Line.__table__()
+        month = Month.__table__()
+        day = Day.__table__()
 
         # Migration from 4.0: rename long table
         old_model_name = 'account.invoice.payment_term.line.relativedelta'
@@ -298,8 +270,26 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
         if TableHandler.table_exist(old_table):
             TableHandler.table_rename(old_table, cls._table)
 
+        # Migration from 5.0: use ir.calendar
+        migrate_calendar = False
+        if TableHandler.table_exist(cls._table):
+            cursor.execute(*sql_table.select(
+                    sql_table.month, sql_table.weekday,
+                    where=(sql_table.month != Null)
+                    | (sql_table.weekday != Null),
+                    limit=1))
+            try:
+                row, = cursor.fetchall()
+                migrate_calendar = any(isinstance(v, str) for v in row)
+            except ValueError:
+                pass
+            if migrate_calendar:
+                sql_table.column_rename('month', '_temp_month')
+                sql_table.column_rename('weekday', '_temp_weekday')
+
         super(PaymentTermLineRelativeDelta, cls).__register__(module_name)
 
+        table_h = cls.__table_handler__(module_name)
         line_table = Line.__table_handler__(module_name)
 
         # Migration from 3.4
@@ -313,6 +303,22 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
                     values=line.select(*columns)))
             for field in fields:
                 line_table.drop_column(field)
+
+        # Migration from 5.0: use ir.calendar
+        if migrate_calendar:
+            update = transaction.connection.cursor()
+            cursor.execute(*month.select([month.id, month.index]))
+            for month_id, index in cursor:
+                update.execute(*sql_table.update(
+                        [sql_table.month], [month_id],
+                        where=sql_table._temp_month == str(index)))
+            table_h.drop_column('_temp_month')
+            cursor.execute(*day.select([day.id, day.index]))
+            for day_id, index in cursor:
+                update.execute(*sql_table.update(
+                        [sql_table.weekday], [day_id],
+                        where=sql_table._temp_weekday == str(index)))
+            table_h.drop_column('_temp_weekday')
 
     @staticmethod
     def default_months():
@@ -330,11 +336,11 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
         "Return the relativedelta"
         return relativedelta(
             day=self.day,
-            month=int(self.month) if self.month else None,
+            month=int(self.month.index) if self.month else None,
             days=self.days,
             weeks=self.weeks,
             months=self.months,
-            weekday=int(self.weekday) if self.weekday else None,
+            weekday=int(self.weekday.index) if self.weekday else None,
             )
 
 
