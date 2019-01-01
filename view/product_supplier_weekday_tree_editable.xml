@@ -3,5 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree editable="bottom">
     <field name="product_supplier"/>
-    <field name="weekday" expand="1"/>
+    <field name="day" expand="1" widget="selection"/>
 </tree>

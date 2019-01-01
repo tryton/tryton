@@ -5,6 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <label name="product_supplier"/>
     <field name="product_supplier"/>
     <newline/>
-    <label name="weekday"/>
-    <field name="weekday"/>
+    <label name="day"/>
+    <field name="day" widget="selection"/>
 </form>

@@ -104,6 +104,7 @@ class StockSupplyDayTestCase(ModuleTestCase):
         Account = pool.get('account.account')
         ProductSupplier = pool.get('purchase.product_supplier')
         ProductSupplierDay = pool.get('purchase.product_supplier.day')
+        Day = pool.get('ir.calendar.day')
 
         uom_category, = UomCategory.create([{'name': 'Test'}])
         uom, = Uom.create([{
@@ -144,9 +145,10 @@ class StockSupplyDayTestCase(ModuleTestCase):
                         'lead_time': lead_time,
                         }])
             if weekday is not None:
+                day, = Day.search([('index', '=', weekday)])
                 ProductSupplierDay.create([{
                             'product_supplier': product_supplier.id,
-                            'weekday': str(weekday),
+                            'day': day.id,
                             }])
             return product_supplier
 
