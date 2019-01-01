@@ -12,5 +12,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="byweekno"/>
     <field name="bymonth"/>
     <field name="bysetpos"/>
-    <field name="wkst"/>
+    <field name="week_start_day" widget="selection"/>
 </tree>

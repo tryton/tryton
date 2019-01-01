@@ -6,6 +6,7 @@ from dateutil.rrule import rrule, rruleset
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
+from trytond.pool import Pool
 from trytond.transaction import Transaction
 
 from .exceptions import RecurrenceRuleValidationError
@@ -90,18 +91,31 @@ class RecurrenceRule(ModelSQL, ModelView):
     bysetpos = fields.Char(
         "By Position",
         help="A comma separated list of integers.")
-    wkst = fields.Selection([
-            (None, ''),
-            ('0', 'Monday'),
-            ('1', 'Tuesday'),
-            ('2', 'Wednesday'),
-            ('3', 'Thursday'),
-            ('4', 'Friday'),
-            ('5', 'Saturday'),
-            ('6', 'Sunday'),
-            ], "Week Start Day", sort=False)
+    week_start_day = fields.Many2One('ir.calendar.day', "Week Start Day")
 
     exclusive = fields.Boolean("Exclusive")
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Day = pool.get('ir.calendar.day')
+        day = Day.__table__()
+        transaction = Transaction()
+        table = cls.__table__()
+
+        super().__register__(module_name)
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: replace wkst by week_start_day
+        if table_h.column_exist('wkst'):
+            cursor = transaction.connection.cursor()
+            update = transaction.connection.cursor()
+            cursor.execute(*day.select([day.id, day.index]))
+            for day_id, index in cursor:
+                update.execute(*table.update(
+                        [table.week_start_day], [day_id],
+                        where=table.wkst == str(index)))
+            table_h.drop_column('wkst')
 
     @classmethod
     def default_interval(cls):
@@ -125,7 +139,7 @@ class RecurrenceRule(ModelSQL, ModelView):
             'byweekno': self._byweekno,
             'bymonth': self._bymonth,
             'bysetpos': self._bysetpos,
-            'wkst': int(self.wkst) if self.wkst else None,
+            'wkst': self.week_start_day.index if self.week_start_day else None,
             }
 
     @property
