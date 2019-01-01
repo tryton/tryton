@@ -53,16 +53,16 @@ class IrTestCase(ModuleTestCase):
         "Test Lang.strftime"
         pool = Pool()
         Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
         test_data = [
-            ((2016, 8, 3), 'en', '%d %B %Y', "03 August 2016"),
-            ((2016, 8, 3), 'fr', '%d %B %Y', "03 ao\xfbt 2016"),
-            ((2016, 8, 3), 'fr', '%d %B %Y', "03 ao\xfbt 2016"),
+            (datetime.date(2016, 8, 3), '%d %B %Y', "03 August 2016"),
+            (datetime.time(8, 20), '%I:%M %p', "08:20 AM"),
+            (datetime.datetime(2018, 11, 1, 14, 30), '%a %d %b %Y %I:%M %p',
+                "Thu 01 Nov 2018 02:30 PM"),
+            (datetime.date(2018, 11, 1), '%x', "11/01/2018"),
             ]
-        for date, code, format_, result in test_data:
-            lang = Lang.get(code)
-            self.assertEqual(
-                lang.strftime(datetime.date(*date), format_),
-                result)
+        for date, format_, result in test_data:
+            self.assertEqual(lang.strftime(date, format_), result)
 
 
 def suite():

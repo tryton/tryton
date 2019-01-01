@@ -9,6 +9,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">bg</field>
             <field name="name">Bulgarian</field>
             <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep">.</field>
@@ -28,6 +30,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">ca</field>
             <field name="name">Català</field>
             <field name="date">%d/%m/%Y</field>
+            <field name="am">a. m.</field>
+            <field name="pm">p. m.</field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep"> </field>
@@ -47,6 +51,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">cs</field>
             <field name="name">Czech</field>
             <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep"> </field>
@@ -66,6 +72,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">de</field>
             <field name="name">German</field>
             <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep">.</field>
@@ -88,6 +96,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">es</field>
             <field name="name">Spanish</field>
             <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep">.</field>
@@ -107,6 +117,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">es_419</field>
             <field name="name">Spanish (Latin American)</field>
             <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">.</field>
             <field name="thousands_sep">,</field>
@@ -127,6 +139,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Persian</field>
             <field name="direction">rtl</field>
             <field name="date">%Y/%m/%d</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 0]</field>
             <field name="decimal_point">.</field>
             <field name="thousands_sep">,</field>
@@ -146,6 +160,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">fr</field>
             <field name="name">French</field>
             <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep"> </field>
@@ -165,6 +181,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">hu</field>
             <field name="name">Hungarian</field>
             <field name="date">%Y-%m-%d</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep">.</field>
@@ -184,6 +202,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">it</field>
             <field name="name">Italian</field>
             <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep">.</field>
@@ -203,6 +223,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">lo</field>
             <field name="name">Lao</field>
             <field name="date">%d/%m/%Y</field>
+            <field name="am">AM</field>
+            <field name="pm">PM</field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">.</field>
             <field name="thousands_sep">,</field>
@@ -222,6 +244,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">lt</field>
             <field name="name">Lithuanian</field>
             <field name="date">%Y-%m-%d</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep"> </field>
@@ -241,6 +265,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">nl</field>
             <field name="name">Dutch</field>
             <field name="date">%d-%m-%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep">.</field>
@@ -260,6 +286,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">pl</field>
             <field name="name">Polish</field>
             <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep"></field>
             <field name="mon_grouping">[3, 3, 0]</field>
@@ -278,6 +306,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">pt</field>
             <field name="name">Portuguese</field>
             <field name="date">%d-%m-%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep"></field>
@@ -297,6 +327,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">ru</field>
             <field name="name">Russian</field>
             <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep"> </field>
@@ -316,6 +348,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">sl</field>
             <field name="name">Slovenian</field>
             <field name="date">%d.%m.%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
             <field name="grouping">[3, 3, 0]</field>
             <field name="decimal_point">,</field>
             <field name="thousands_sep">.</field>
@@ -335,6 +369,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">zh_CN</field>
             <field name="name">Chinese Simplified</field>
             <field name="date">%Y-%m-%d</field>
+            <field name="am">上午</field>
+            <field name="pm">下午</field>
             <field name="grouping">[3, 0]</field>
             <field name="decimal_point">.</field>
             <field name="thousands_sep">,</field>

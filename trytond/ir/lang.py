@@ -16,7 +16,6 @@ from ..transaction import Transaction
 from ..pool import Pool
 from ..exceptions import UserError
 from ..i18n import gettext
-from .time_locale import TIME_LOCALE
 
 Transaction.cache_keys.add('translate_name')
 
@@ -56,6 +55,9 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
     # date
     date = fields.Char('Date', required=True)
+
+    am = fields.Char("AM")
+    pm = fields.Char("PM")
 
     # number
     grouping = fields.Char('Grouping', required=True)
@@ -473,21 +475,35 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
 
         return s.replace('<', '').replace('>', '')
 
-    def strftime(self, datetime, format=None):
+    def strftime(self, value, format=None):
         '''
-        Convert datetime to a string as specified by the format argument.
+        Convert value to a string as specified by the format argument.
         '''
+        pool = Pool()
+        Month = pool.get('ir.calendar.month')
+        Day = pool.get('ir.calendar.day')
         if format is None:
             format = self.date
-        code = self.code[:2]
-        if code in TIME_LOCALE:
-            for f, i in (('%a', 6), ('%A', 6), ('%b', 1), ('%B', 1)):
-                format = format.replace(f,
-                        TIME_LOCALE[code][f][datetime.timetuple()[i]])
-            format = format.replace('%p',
-                TIME_LOCALE[code]['%p'][datetime.timetuple()[3] < 12 and 0
-                    or 1])
-        return datetime.strftime(format)
+        format = format.replace('%x', self.date)
+        if isinstance(value, datetime.date):
+            for f, i, klass in (('%A', 6, Day), ('%B', 1, Month)):
+                for field, f in [('name', f), ('abbreviation', f.lower())]:
+                    locale = klass.locale(self, field=field)
+                    format = format.replace(f, locale[value.timetuple()[i]])
+        if isinstance(value, datetime.time):
+            time = value
+        else:
+            try:
+                time = value.time()
+            except AttributeError:
+                time = None
+        if time:
+            if time < datetime.time(12):
+                p = self.am or 'AM'
+            else:
+                p = self.pm or 'PM'
+            format = format.replace('%p', p)
+        return value.strftime(format)
 
 
 def get_parent_language(code):

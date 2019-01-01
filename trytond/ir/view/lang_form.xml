@@ -17,6 +17,10 @@ this repository contains the full copyright notices and license terms. -->
     <separator string="Date Formatting" colspan="6" id="date"/>
     <label name="date"/>
     <field name="date"/>
+    <label name="am"/>
+    <field name="am"/>
+    <label name="pm"/>
+    <field name="pm"/>
     <separator string="Numbers Formatting" colspan="6" id="number"/>
     <label name="grouping"/>
     <field name="grouping"/>
