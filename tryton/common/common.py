@@ -984,7 +984,7 @@ def process_exception(exception, *args, **kwargs):
                     return rpc_execute(*args)
             else:
                 message(_('Concurrency Exception'), msg_type=gtk.MESSAGE_ERROR)
-        elif exception.faultCode == str(HTTPStatus.UNAUTHORIZED.value):
+        elif exception.faultCode == str(int(HTTPStatus.UNAUTHORIZED)):
             from tryton.gui.main import Main
             if PLOCK.acquire(False):
                 try:
@@ -1011,7 +1011,7 @@ class Login(object):
             try:
                 func(parameters)
             except TrytonServerError as exception:
-                if exception.faultCode == str(HTTPStatus.UNAUTHORIZED.value):
+                if exception.faultCode == str(int(HTTPStatus.UNAUTHORIZED)):
                     parameters.clear()
                     continue
                 if exception.faultCode != 'LoginException':
