@@ -3143,8 +3143,8 @@ function eval_pyson(value){
                     }.bind(this);
 
                     var make_product = function() {
+                        screen.group.remove(first, true);
                         if (jQuery.isEmptyObject(product)) {
-                            screen.group.remove(first, true);
                             return;
                         }
 
@@ -3153,22 +3153,14 @@ function eval_pyson(value){
                             return product[field];
                         });
                         Sao.common.product(values).forEach(function(values) {
-                            var set_default = function(record) {
+                            screen.new_(false).then(function(record) {
                                 var default_value = jQuery.extend({}, default_);
                                 fields.forEach(function(field, i) {
                                     default_value[field] = values[i][0];
                                     default_value[field + '.rec_name'] = values[i][1];
                                 });
                                 record.set_default(default_value);
-                            };
-
-                            var record;
-                            if (first) {
-                                set_default(first);
-                                first = null;
-                            } else {
-                                screen.new_(false).then(set_default);
-                            }
+                            });
                         });
                     };
 
