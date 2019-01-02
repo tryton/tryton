@@ -1032,6 +1032,7 @@
             }
             group.screens.push(this);
             this.tree_states_done = [];
+            this.order = null;
             this.group = group;
             this.model = group.model;
             if (group && group.length) {

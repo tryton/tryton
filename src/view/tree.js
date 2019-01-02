@@ -307,6 +307,35 @@
                 this.screen.search_filter(search_string);
             }
         },
+        update_arrow: function() {
+            var order = this.screen.order,
+                name = null,
+                direction = null,
+                icon = '';
+            if (order && (order.length == 1)) {
+                name = order[0][0];
+                direction = order[0][1];
+                icon = {
+                    'ASC': 'tryton-arrow-down',
+                    'DESC': 'tryton-arrow-up',
+                }[direction];
+            }
+            this.columns.forEach(function(col) {
+                var arrow = col.arrow;
+                if (arrow) {
+                    if (col.attributes.name != name) {
+                        arrow.data('order', '');
+                        arrow.attr('src', '');
+                    } else {
+                        arrow.data('order', direction);
+                        Sao.common.ICONFACTORY.get_icon_url(icon)
+                            .then(function(url) {
+                                arrow.attr('src', url);
+                            });
+                    }
+                }
+            });
+        },
         get_buttons: function() {
             var buttons = [];
             this.columns.forEach(function(column) {
@@ -454,6 +483,7 @@
                 this.table.removeClass('responsive-header');
             }
 
+            this.update_arrow();
             return this.redraw(selected, expanded).done(
                 Sao.common.debounce(this.update_sum.bind(this), 250));
         },
