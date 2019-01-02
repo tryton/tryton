@@ -368,6 +368,7 @@ class Screen(SignalEvent):
                 fields[name] = field.attrs
                 fields_views[name] = field.views
         self.tree_states_done.clear()
+        self.order = None
         self.__group = group
         self.parent = group.parent
         self.parent_name = group.parent_name

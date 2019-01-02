@@ -554,6 +554,25 @@ class ViewTree(View):
         else:
             self.screen.search_filter(search_string=search_string)
 
+    def update_arrow(self):
+        order = self.screen.order
+        if order and len(order) == 1:
+            (name, direction), = order
+            direction = {
+                'ASC': gtk.ARROW_DOWN,
+                'DESC': gtk.ARROW_UP,
+                }[direction]
+        else:
+            name, direction = None, None
+
+        for col in self.treeview.get_columns():
+            arrow = getattr(col, 'arrow', None)
+            if arrow:
+                if col.name != name:
+                    arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
+                else:
+                    arrow.set(direction, gtk.SHADOW_IN)
+
     def add_last_column(self):
         for column in self.treeview.get_columns():
             if column.get_expand():
@@ -1033,6 +1052,7 @@ class ViewTree(View):
         self.treeview.queue_draw()
         if self.editable:
             self.set_state()
+        self.update_arrow()
         self.update_sum()
 
         # Set column visibility depending on attributes and domain
