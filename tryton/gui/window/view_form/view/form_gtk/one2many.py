@@ -395,18 +395,14 @@ class One2Many(Widget):
             win_search.screen.search_filter()
             win_search.show()
 
-        def make_product(first=first):
+        def make_product():
+            self.screen.group.remove(first, remove=True)
             if not product:
-                self.screen.group.remove(first, remove=True)
                 return
 
             fields = product.keys()
             for values in itertools.product(*product.values()):
-                if first:
-                    record = first
-                    first = None
-                else:
-                    record = self.screen.new(default=False)
+                record = self.screen.new(default=False)
                 default_value = default.copy()
                 for field, value in zip(fields, values):
                     id_, rec_name = value
