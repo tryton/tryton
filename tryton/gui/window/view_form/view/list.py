@@ -781,6 +781,7 @@ class ViewTree(View):
             selection_data = selection.get_data()
         if not selection_data:
             return
+        selection_data = selection_data.decode('utf-8')
 
         # Don't received if the treeview was editing because it breaks the
         # internal state of the cursor.
