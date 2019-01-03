@@ -2444,7 +2444,7 @@
                 screen_domain, this.name);
             return inversion.concat([inversion.localize_domain(
                         inversion.filter_leaf(screen_domain, this.name, model),
-                        true), attr_domain]);
+                        undefined, true), attr_domain]);
         },
         get_models: function(record) {
             var domains = this.get_domains(record);
