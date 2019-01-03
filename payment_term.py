@@ -282,10 +282,13 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
                 row, = cursor.fetchall()
                 migrate_calendar = any(isinstance(v, str) for v in row)
             except ValueError:
-                pass
+                # As we cannot know the column type
+                # we migrate any way as no data need to be migrated
+                migrate_calendar = True
             if migrate_calendar:
-                sql_table.column_rename('month', '_temp_month')
-                sql_table.column_rename('weekday', '_temp_weekday')
+                table_h = cls.__table_handler__(module_name)
+                table_h.column_rename('month', '_temp_month')
+                table_h.column_rename('weekday', '_temp_weekday')
 
         super(PaymentTermLineRelativeDelta, cls).__register__(module_name)
 
@@ -307,13 +310,13 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
         # Migration from 5.0: use ir.calendar
         if migrate_calendar:
             update = transaction.connection.cursor()
-            cursor.execute(*month.select([month.id, month.index]))
+            cursor.execute(*month.select(month.id, month.index))
             for month_id, index in cursor:
                 update.execute(*sql_table.update(
                         [sql_table.month], [month_id],
                         where=sql_table._temp_month == str(index)))
             table_h.drop_column('_temp_month')
-            cursor.execute(*day.select([day.id, day.index]))
+            cursor.execute(*day.select(day.id, day.index))
             for day_id, index in cursor:
                 update.execute(*sql_table.update(
                         [sql_table.weekday], [day_id],
