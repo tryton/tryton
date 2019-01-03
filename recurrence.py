@@ -110,7 +110,7 @@ class RecurrenceRule(ModelSQL, ModelView):
         if table_h.column_exist('wkst'):
             cursor = transaction.connection.cursor()
             update = transaction.connection.cursor()
-            cursor.execute(*day.select([day.id, day.index]))
+            cursor.execute(*day.select(day.id, day.index))
             for day_id, index in cursor:
                 update.execute(*table.update(
                         [table.week_start_day], [day_id],
