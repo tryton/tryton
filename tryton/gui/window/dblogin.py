@@ -539,15 +539,18 @@ class DBLogin(object):
         host = common.get_hostname(netloc)
         port = common.get_port(netloc)
         database = self.entry_database.get_text().strip()
+        login = self.entry_login.get_text()
         for idx, profile_info in enumerate(self.profile_store):
             if not profile_info[1]:
                 continue
             profile = profile_info[0]
             profile_host = self.profiles.get(profile, 'host')
             profile_db = self.profiles.get(profile, 'database')
+            profile_login = self.profiles.get(profile, 'username')
             if (host == common.get_hostname(profile_host)
                     and port == common.get_port(profile_host)
-                    and database == profile_db):
+                    and database == profile_db
+                    and (not login or login == profile_login)):
                 break
         else:
             idx = -1
