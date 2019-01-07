@@ -260,13 +260,25 @@ class ModelStorage(Model):
         '''
         Delete records.
         '''
-        ModelAccess = Pool().get('ir.model.access')
+        pool = Pool()
+        ModelAccess = pool.get('ir.model.access')
+        ModelData = pool.get('ir.model.data')
 
         ModelAccess.check(cls.__name__, 'delete')
         if not cls.check_xml_record(records, None):
             raise AccessError(
                 gettext('ir.msg_delete_xml_record'),
                 gettext('ir.msg_base_config_record'))
+        if ModelData.has_model(cls.__name__):
+            with Transaction().set_context(_check_access=False):
+                data = []
+                for sub_records in grouped_slice(records):
+                    ids = [r.id for r in sub_records]
+                    data += ModelData.search([
+                            ('model', '=', cls.__name__),
+                            ('db_id', 'in', ids),
+                            ])
+                ModelData.write(data, {'db_id': None})
 
         # Increase transaction counter
         Transaction().counter += 1
@@ -902,15 +914,17 @@ class ModelStorage(Model):
                 ])
             if not models_data:
                 return True
-            if values is None:
-                return False
             for model_data in models_data:
-                if not model_data.values or model_data.noupdate:
-                    continue
-                xml_values = ModelData.load_values(model_data.values)
-                for key, val in values.items():
-                    if key in xml_values and val != xml_values[key]:
+                if values is None:
+                    if not model_data.noupdate:
                         return False
+                else:
+                    if not model_data.values or model_data.noupdate:
+                        continue
+                    xml_values = ModelData.load_values(model_data.values)
+                    for key, val in values.items():
+                        if key in xml_values and val != xml_values[key]:
+                            return False
         return True
 
     @classmethod

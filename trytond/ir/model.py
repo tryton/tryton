@@ -1066,9 +1066,12 @@ class ModelData(ModelSQL, ModelView):
         select=True)
     model = fields.Char('Model', required=True, select=True)
     module = fields.Char('Module', required=True, select=True)
-    db_id = fields.Integer('Resource ID',
-        help="The id of the record in the database.", select=True,
-        required=True)
+    db_id = fields.Integer(
+        "Resource ID", select=True,
+        states={
+            'required': ~Eval('noupdate', False),
+            },
+        help="The id of the record in the database.")
     values = fields.Text('Values')
     fs_values = fields.Text('Values on File System')
     noupdate = fields.Boolean('No Update')
@@ -1100,11 +1103,16 @@ class ModelData(ModelSQL, ModelView):
 
         super(ModelData, cls).__register__(module_name)
 
+        table_h = cls.__table_handler__(module_name)
+
         # Migration from 4.6: register buttons on ir module
         cursor.execute(*model_data.update(
                 [model_data.module], ['ir'],
                 where=((model_data.module == 'res')
                     & (model_data.fs_id == 'model_data_sync_button'))))
+
+        # Migration from 5.0: remove required on db_id
+        table_h.not_null_action('db_id', action='remove')
 
     @staticmethod
     def default_noupdate():

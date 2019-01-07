@@ -1,3 +1,4 @@
+* Allow records from XML with noupdate to be deleted
 * Add ir.calendar for month and day
 * Rename languages: hu_HU, it_IT and pt_BR into hu, it and pt
 * Define custom exceptions

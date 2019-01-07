@@ -293,6 +293,66 @@ class ModelStorageTestCase(unittest.TestCase):
 
         self.assertTrue(result)
 
+    @with_transaction()
+    def test_check_xml_record_with_record_no_values(self):
+        "Test check_xml_record with record and no values"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{'name': "Foo"}])
+        ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': None,
+                    'noupdate': False,
+                    }])
+
+        result = Model.check_xml_record([record], None)
+
+        self.assertFalse(result)
+
+    @with_transaction()
+    def test_check_xml_record_with_record_no_values_noupdate(self):
+        "Test check_xml_record with record and no values but noupdate"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{'name': "Foo"}])
+        ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': None,
+                    'noupdate': True,
+                    }])
+
+        result = Model.check_xml_record([record], None)
+
+        self.assertTrue(result)
+
+    @with_transaction()
+    def test_delete_clear_db_id_model_data(self):
+        "Test delete record clear DB id from model data"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{'name': "Foo"}])
+        data, = ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': None,
+                    'noupdate': True,
+                    }])
+
+        Model.delete([record])
+
+        self.assertIsNone(data.db_id)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelStorageTestCase)

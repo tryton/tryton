@@ -330,6 +330,11 @@ class Fs2bdAccessor:
             self.fetch_new_module(module)
         return self.fs2db[module].get(fs_id, None)
 
+    def exists(self, module, fs_id):
+        if module not in self.fetched_modules:
+            self.fetch_new_module(module)
+        return fs_id in self.fs2db[module]
+
     def get_browserecord(self, module, model_name, db_id):
         if module not in self.fetched_modules:
             self.fetch_new_module(module)
@@ -583,7 +588,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
         Model = self.pool.get(model)
 
-        if self.fs2db.get(module, fs_id):
+        if self.fs2db.exists(module, fs_id):
 
             # Remove this record from the to_delete list. This means that
             # the corresponding record have been found.
@@ -598,6 +603,10 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             db_id, db_model, mdata_id, old_values = [
                 self.fs2db.get(module, fs_id)[x]
                 for x in ["db_id", "model", "id", "values"]]
+
+            # Check if record has not been deleted
+            if db_id is None:
+                return
 
             if not old_values:
                 old_values = {}
