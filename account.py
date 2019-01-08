@@ -146,7 +146,7 @@ class AccountFrFEC(Wizard):
     def get_format_date(self):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        fr = Lang(code='fr_FR')
+        fr = Lang(code='fr_FR', date='%d.%m.%Y')
         return lambda value: fr.strftime(value, '%Y%m%d')
 
     def get_format_number(self):
