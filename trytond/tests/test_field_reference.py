@@ -62,6 +62,18 @@ class FieldReferenceTestCase(unittest.TestCase):
             Reference.create([{}])
 
     @with_transaction()
+    def test_create_required_with_none(self):
+        "Test create reference required with none"
+        pool = Pool()
+        Target = pool.get('test.reference.target')
+        Reference = pool.get('test.reference_required')
+
+        with self.assertRaises(RequiredValidationError):
+            Reference.create([{
+                        'reference': str(Target()),
+                        }])
+
+    @with_transaction()
     def test_create_required_with_negative(self):
         "Test create reference required with negative"
         pool = Pool()
@@ -70,7 +82,7 @@ class FieldReferenceTestCase(unittest.TestCase):
 
         with self.assertRaises(RequiredValidationError):
             Reference.create([{
-                        'reference': str(Target()),
+                        'reference': str(Target(id=-1)),
                         }])
 
     @with_transaction()
