@@ -7,7 +7,8 @@ from sql import Literal
 from sql.aggregate import Sum
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
+from trytond.model import (
+    ModelView, ModelSQL, ModelStorage, DeactivableMixin, fields, Unique)
 from trytond.pyson import Not, Bool, Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -172,7 +173,7 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
         return self.id
 
     def get_rec_name(self, name):
-        if self.origin:
+        if isinstance(self.origin, ModelStorage):
             return self.origin.rec_name
         else:
             return self.name
