@@ -28,6 +28,7 @@ class StockLotSLEDTestCase(ModuleTestCase):
         Move = pool.get('stock.move')
         Lot = pool.get('stock.lot')
         Period = pool.get('stock.period')
+        Config = pool.get('stock.configuration')
 
         u, = Uom.search([('name', '=', 'Unit')])
         template = Template(
@@ -74,10 +75,13 @@ class StockLotSLEDTestCase(ModuleTestCase):
             period.save()
             Period.close([period])
 
+            config = Config(1)
+
             empty = {}
             computed = {(storage.id, product.id): 5}
             delta = {(storage.id, product.id): -5}
             for context, result in [
+                    ({'stock_date_end': datetime.date.min}, empty),
                     ({'stock_date_end': today + datetime.timedelta(days=-1)},
                         empty),
                     ({'stock_date_end': today}, empty),
@@ -109,6 +113,7 @@ class StockLotSLEDTestCase(ModuleTestCase):
                     ({'stock_date_start': today + datetime.timedelta(days=6),
                       'stock_date_end': today + datetime.timedelta(days=7)},
                         empty),
+                    ({'stock_date_end': datetime.date.max}, empty),
                     ]:
                 with Transaction().set_context(context=context,
                         locations=[storage.id]):
@@ -116,6 +121,22 @@ class StockLotSLEDTestCase(ModuleTestCase):
                         [storage.id], grouping_filter=([product.id],))
                     self.assertEqual(quantity, result,
                         msg='context: %s' % repr(context))
+
+            for context, delay, result in [
+                    ({'stock_date_end': datetime.date.min},
+                        datetime.timedelta(days=-1), empty),
+                    ({'stock_date_end': datetime.date.max},
+                        datetime.timedelta(days=1), empty),
+                    ]:
+                config.shelf_life_delay = delay
+                config.save()
+                with Transaction().set_context(context=context,
+                        locations=[storage.id]):
+                    quantity = Product.products_by_location(
+                        [storage.id], grouping_filter=([product.id],))
+                    self.assertEqual(quantity, result,
+                        msg='context: %s; shelf_life_delay: %s' %
+                        (repr(context), delay))
 
 
 def suite():
