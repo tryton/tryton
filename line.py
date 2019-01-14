@@ -43,9 +43,8 @@ class Line(ModelSQL, ModelView):
         super(Line, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints += [
-            ('credit_debit',
-                Check(t,
-                    (t.credit * t.debit == 0) & (t.credit + t.debit >= 0)),
+            ('credit_debit_',
+                Check(t, t.credit * t.debit == 0),
                 'account.msg_line_debit_credit'),
             ]
         cls._order.insert(0, ('date', 'ASC'))
@@ -58,6 +57,9 @@ class Line(ModelSQL, ModelView):
         # Migration from 4.0: remove name and journal
         for field_name in ['name', 'journal']:
             table.not_null_action(field_name, action='remove')
+
+        # Migration from 5.0: replace credit_debit constraint by credit_debit_
+        table.drop_constraint('credit_debit')
 
     @staticmethod
     def default_date():
