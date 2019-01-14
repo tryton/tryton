@@ -251,7 +251,13 @@ class Move:
             config = Config(1)
             shelf_life_delay = config.get_multivalue('shelf_life_delay')
             if shelf_life_delay:
-                expiration_date = stock_date_end + shelf_life_delay
+                try:
+                    expiration_date = stock_date_end + shelf_life_delay
+                except OverflowError:
+                    if shelf_life_delay >= datetime.timedelta(0):
+                        expiration_date = datetime.date.max
+                    else:
+                        expiration_date = datetime.date.min
             else:
                 expiration_date = stock_date_end
 
