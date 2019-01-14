@@ -78,7 +78,7 @@ class Translation(ModelSQL, ModelView):
     overriding_module = fields.Char('Overriding Module', readonly=True)
     _translation_cache = Cache('ir.translation', size_limit=10240,
         context=False)
-    _get_language_cache = Cache('ir.translation')
+    _get_language_cache = Cache('ir.translation.get_language')
 
     @classmethod
     def __setup__(cls):
