@@ -7,7 +7,8 @@ import datetime
 from sql import Literal
 from sql.aggregate import Sum
 
-from trytond.model import ModelView, ModelSQL, fields, Unique
+from trytond.model import (
+    ModelView, ModelSQL, ModelStorage, fields, Unique)
 from trytond.pyson import Not, Bool, Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -182,7 +183,7 @@ class Work(ModelSQL, ModelView):
         return self.id
 
     def get_rec_name(self, name):
-        if self.origin:
+        if isinstance(self.origin, ModelStorage):
             return self.origin.rec_name
         else:
             return self.name
