@@ -93,7 +93,7 @@ class TableHandler(TableHandlerInterface):
         transaction = Transaction()
         database = transaction.database
         cursor = transaction.connection.cursor()
-        temp_table = '_temp_%s' % self.table_name
+        temp_table = '__temp_%s' % self.table_name
         TableHandler.table_rename(self.table_name, temp_table)
         new_table = TableHandler(self._model, history=self.history)
         columns, old_columns = [], []
@@ -116,7 +116,7 @@ class TableHandler(TableHandlerInterface):
 
     def column_rename(self, old_name, new_name):
         if self.column_exist(old_name):
-            if self.column_exist(new_name):
+            if not self.column_exist(new_name):
                 self._recreate_table({old_name: {'name': new_name}})
             else:
                 logger.warning(
@@ -322,7 +322,7 @@ class TableHandler(TableHandlerInterface):
         transaction = Transaction()
         database = transaction.database
         cursor = transaction.connection.cursor()
-        temp_table = '_temp_%s' % self.table_name
+        temp_table = '__temp_%s' % self.table_name
         TableHandler.table_rename(self.table_name, temp_table)
         new_table = TableHandler(self._model, history=self.history)
         for name, values in self._columns.items():
