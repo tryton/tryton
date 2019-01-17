@@ -5263,11 +5263,7 @@
         <record model="account.account.template" id="400">
             <field name="name">Fournisseurs et comptes rattachés</field>
             <field name="code">400</field>
-            <field name="type" ref="dettes_fournisseurs_comptes_rattaches"/>
-            <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
-            <field name="party_required" eval="True"/>
-            <field name="reconcile" eval="True"/>
+            <field name="kind">view</field>
             <field name="parent" ref="40"/>
         </record>
         <record model="account.account.template" id="401">
@@ -5278,7 +5274,7 @@
             <field name="kind">payable</field>
             <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
-            <field name="parent" ref="40"/>
+            <field name="parent" ref="400"/>
         </record>
         <record model="account.account.template" id="fr_pcg_pay">
             <field name="name">Fournisseurs - Achats de biens et prestations de services</field>
@@ -5307,13 +5303,13 @@
             <field name="deferral" eval="True"/>
             <field name="kind">payable</field>
             <field name="party_required" eval="True"/>
-            <field name="parent" ref="40"/>
+            <field name="parent" ref="400"/>
         </record>
         <record model="account.account.template" id="404">
             <field name="name">Fournisseurs d'immobilisations</field>
             <field name="code">404</field>
             <field name="kind">view</field>
-            <field name="parent" ref="40"/>
+            <field name="parent" ref="400"/>
         </record>
         <record model="account.account.template" id="4041">
             <field name="name">Fournisseurs - Achats d'immobilisations</field>
@@ -5343,13 +5339,13 @@
             <field name="kind">payable</field>
             <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
-            <field name="parent" ref="40"/>
+            <field name="parent" ref="400"/>
         </record>
         <record model="account.account.template" id="408">
             <field name="name">Fournisseurs - Factures non parvenues</field>
             <field name="code">408</field>
             <field name="kind">view</field>
-            <field name="parent" ref="40"/>
+            <field name="parent" ref="400"/>
         </record>
         <record model="account.account.template" id="4081">
             <field name="name">Fournisseurs</field>
@@ -5452,18 +5448,14 @@
         <record model="account.account.template" id="410">
             <field name="name">Clients et comptes rattachés</field>
             <field name="code">410</field>
-            <field name="type" ref="creances_clients"/>
-            <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
-            <field name="party_required" eval="True"/>
-            <field name="reconcile" eval="True"/>
+            <field name="kind">view</field>
             <field name="parent" ref="41"/>
         </record>
         <record model="account.account.template" id="411">
             <field name="name">Clients</field>
             <field name="code">411</field>
             <field name="kind">view</field>
-            <field name="parent" ref="41"/>
+            <field name="parent" ref="410"/>
         </record>
         <record model="account.account.template" id="fr_pcg_recv">
             <field name="name">Clients - Ventes de biens ou de prestations de services</field>
@@ -5493,7 +5485,7 @@
             <field name="kind">receivable</field>
             <field name="party_required" eval="True"/>
             <field name="reconcile" eval="True"/>
-            <field name="parent" ref="41"/>
+            <field name="parent" ref="410"/>
         </record>
         <record model="account.account.template" id="416">
             <field name="name">Clients douteux ou litigieux</field>
@@ -5502,13 +5494,13 @@
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
             <field name="party_required" eval="True"/>
-            <field name="parent" ref="41"/>
+            <field name="parent" ref="410"/>
         </record>
         <record model="account.account.template" id="418">
             <field name="name">Clients - Produits non encore facturés</field>
             <field name="code">418</field>
             <field name="kind">view</field>
-            <field name="parent" ref="41"/>
+            <field name="parent" ref="410"/>
         </record>
         <record model="account.account.template" id="4181">
             <field name="name">Clients - Factures à établir</field>
