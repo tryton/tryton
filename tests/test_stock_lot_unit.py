@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import doctest_teardown, doctest_checker
 class StockLotUnitTestCase(ModuleTestCase):
     'Test Stock Lot Unit module'
     module = 'stock_lot_unit'
+    extras = ['production']
 
 
 def suite():
