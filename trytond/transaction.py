@@ -130,8 +130,11 @@ class Transaction(object):
                     self.timestamp = None
                     self._datamanagers = []
         finally:
-            current_instance = transactions.pop()
-        assert current_instance is self, transactions
+            transactions.reverse()
+            try:
+                transactions.remove(self)
+            finally:
+                transactions.reverse()
 
     def set_context(self, context=None, **kwargs):
         if context is None:
