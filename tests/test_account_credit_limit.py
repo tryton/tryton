@@ -15,6 +15,7 @@ from trytond.modules.account.tests import create_chart, get_fiscalyear
 class AccountCreditLimitTestCase(ModuleTestCase):
     'Test AccountCreditLimit module'
     module = 'account_credit_limit'
+    extras = ['account_dunning']
 
     @with_transaction()
     def test_check_credit_limit(self):
