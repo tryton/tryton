@@ -246,7 +246,6 @@ class Move:
         if (query and not context.get('skip_lot_sled')
                 and ((stock_date_end == today and context.get('forecast'))
                     or stock_date_end > today)):
-            lot = Lot.__table__()
 
             config = Config(1)
             shelf_life_delay = config.get_multivalue('shelf_life_delay')
@@ -261,7 +260,7 @@ class Move:
             else:
                 expiration_date = stock_date_end
 
-            def join(move):
+            def join(move, lot):
                 return move.join(lot, 'LEFT',
                     condition=move.lot == lot.id)
 
@@ -283,17 +282,20 @@ class Move:
                             yield q
                 elif isinstance(query, Select):
                     yield query
+                    for table in query.from_:
+                        for q in find_queries(table):
+                            yield q
 
-            def add_join(from_):
+            def add_join(from_, lot):
                 # Find move table
                 for i, table in enumerate(from_):
                     if isinstance(table, Table) and table._name == cls._table:
-                        sub_query.from_[i] = join(table)
+                        sub_query.from_[i] = join(table, lot)
                         break
                     found = find_table(table)
                     if found:
                         join_, pos, table = found
-                        setattr(join_, pos, join(table))
+                        setattr(join_, pos, join(table, lot))
                         break
                 else:
                     # Not query on move table
@@ -302,7 +304,8 @@ class Move:
 
             union, = query.from_
             for sub_query in find_queries(union):
-                if add_join(sub_query.from_):
+                lot = Lot.__table__()
+                if add_join(sub_query.from_, lot):
                     sub_query.where &= (
                         (lot.shelf_life_expiration_date == Null)
                         | (lot.shelf_life_expiration_date >= expiration_date))
@@ -317,7 +320,8 @@ class Move:
                         grouping=grouping, grouping_filter=grouping_filter)
                     union_expired, = query_expired.from_
                     for sub_query in find_queries(union_expired):
-                        if add_join(sub_query.from_):
+                        lot = Lot.__table__()
+                        if add_join(sub_query.from_, lot):
                             # only lot expiring during the period
                             sub_query.where &= (
                                 (lot.shelf_life_expiration_date >=
