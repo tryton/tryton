@@ -225,7 +225,8 @@ class AccountFrFEC(Wizard):
                 & period.fiscalyear.in_(fiscalyear_ids),
                 group_by=[
                     account.id, account.code, account.name,
-                    party.code, party.name]))
+                    party.code, party.name],
+                order_by=account.code))
         cursor.execute(*query)
         for row in cursor:
             _, code, name, party_code, party_name, balance = row
@@ -271,6 +272,7 @@ class AccountFrFEC(Wizard):
             domain,
             order=[
                 ('move.post_number', 'ASC'),
+                ('id', 'ASC'),
                 ])
 
     def get_row(self, line, format_date, format_number):
