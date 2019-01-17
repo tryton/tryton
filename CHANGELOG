@@ -1,3 +1,4 @@
+* Add extras modules to ModuleTestCase
 * Add timeout to Report.convert
 * Allow records from XML with noupdate to be deleted
 * Add ir.calendar for month and day

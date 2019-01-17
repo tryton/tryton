@@ -44,10 +44,13 @@ DB_CACHE = os.environ.get('DB_CACHE')
 Pool.test = True
 
 
-def activate_module(name):
+def activate_module(modules):
     '''
-    Activate module for the tested database
+    Activate modules for the tested database
     '''
+    if isinstance(modules, str):
+        modules = [modules]
+    name = '-'.join(modules)
     if not db_exist(DB_NAME) and restore_db_cache(name):
         return
     create_db()
@@ -55,18 +58,18 @@ def activate_module(name):
         pool = Pool()
         Module = pool.get('ir.module')
 
-        modules = Module.search([
-                ('name', '=', name),
+        records = Module.search([
+                ('name', 'in', modules),
                 ])
-        assert modules, "%s not found" % name
+        assert len(records) == len(modules)
 
-        modules = Module.search([
-                ('name', '=', name),
+        records = Module.search([
+                ('name', 'in', modules),
                 ('state', '!=', 'activated'),
                 ])
 
-        if modules:
-            Module.activate(modules)
+        if records:
+            Module.activate(records)
             transaction.commit()
 
             ActivateUpgrade = pool.get('ir.module.activate_upgrade',
@@ -210,11 +213,15 @@ def with_transaction(user=1, context=None):
 class ModuleTestCase(unittest.TestCase):
     'Trytond Test Case'
     module = None
+    extras = None
 
     @classmethod
     def setUpClass(cls):
         drop_db()
-        activate_module(cls.module)
+        modules = [cls.module]
+        if cls.extras:
+            modules.extend(cls.extras)
+        activate_module(modules)
         super(ModuleTestCase, cls).setUpClass()
 
     @classmethod
