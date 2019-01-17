@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import doctest_checker
 class AnalyticInvoiceTestCase(ModuleTestCase):
     'Test AnalyticInvoice module'
     module = 'analytic_invoice'
+    extras = ['account_asset']
 
 
 def suite():
