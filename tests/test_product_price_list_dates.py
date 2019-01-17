@@ -15,6 +15,7 @@ from trytond.modules.company.tests import create_company, set_company
 class ProductPriceListDatesTestCase(ModuleTestCase):
     'Test Product Price List Dates module'
     module = 'product_price_list_dates'
+    extras = ['sale_price_list']
 
     def create_price_list(self, field, date):
         pool = Pool()
