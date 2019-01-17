@@ -74,6 +74,9 @@ Accounting
     `Statement OFX </projects/modules-account-statement-ofx/en/latest>`_
         Imports statements in OFX format.
 
+    `Statement Rule </projects/modules-account-statement-rule/en/latest>`_
+        Applies rules on imported statements.
+
     `Stock Anglo-Saxon </projects/modules-account-stock-anglo-saxon/en/latest>`_
         Values stock using the anglo-saxon method.
 
