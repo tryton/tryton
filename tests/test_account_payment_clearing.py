@@ -11,7 +11,7 @@ from trytond.tests.test_tryton import doctest_checker
 class AccountPaymentTestCase(ModuleTestCase):
     'Test Account Payment module'
     module = 'account_payment_clearing'
-    extras = ['account_statement']
+    extras = ['account_statement', 'account_statement_rule']
 
 
 def suite():

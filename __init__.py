@@ -19,5 +19,9 @@ def register():
         module='account_payment_clearing', type_='model',
         depends=['account_statement'])
     Pool.register(
+        statement.StatementRuleLine,
+        module='account_payment_clearing', type_='model',
+        depends=['account_statement_rule'])
+    Pool.register(
         payment.Succeed,
         module='account_payment_clearing', type_='wizard')
