@@ -14,6 +14,7 @@ from trytond.tests.test_tryton import doctest_checker
 class StockConsignmentTestCase(ModuleTestCase):
     'Test Stock Consignment module'
     module = 'stock_consignment'
+    extras = ['stock_supply']
 
 
 def suite():
