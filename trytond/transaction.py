@@ -145,8 +145,11 @@ class Transaction(object):
                 for func, args, kwargs in self._atexit:
                     func(*args, **kwargs)
         finally:
-            current_instance = transactions.pop()
-        assert current_instance is self, transactions
+            transactions.reverse()
+            try:
+                transactions.remove(self)
+            finally:
+                transactions.reverse()
 
     def set_context(self, context=None, **kwargs):
         if context is None:
