@@ -76,7 +76,8 @@ Partially pay line::
 
     >>> Payment = Model.get('account.payment')
     >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
-    >>> pay_line.execute('start')
+    >>> pay_line.execute('next_')
+    >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
     >>> payment.amount = Decimal('20')
     >>> payment.click('approve')
@@ -112,9 +113,11 @@ Create multiple valid payments for one line::
 
     >>> line_to_pay, = invoice.lines_to_pay
     >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
-    >>> pay_line.execute('start')
+    >>> pay_line.execute('next_')
+    >>> pay_line.execute('next_')
     >>> pay_line = Wizard('account.move.line.pay', [line_to_pay])
-    >>> pay_line.execute('start')
+    >>> pay_line.execute('next_')
+    >>> pay_line.execute('next_')
     >>> payments = Payment.find([('state', '=', 'draft')])
     >>> for payment in payments:
     ...     payment.amount = Decimal('30')

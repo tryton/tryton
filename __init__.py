@@ -13,6 +13,7 @@ def register():
         payment.Payment,
         account.MoveLine,
         payment.ProcessPaymentStart,
+        account.PayLineStart,
         account.PayLineAskJournal,
         account.Configuration,
         account.ConfigurationPaymentGroupSequence,

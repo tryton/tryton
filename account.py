@@ -177,6 +177,20 @@ class MoveLine(metaclass=PoolMeta):
                 })
 
 
+class PayLineStart(ModelView):
+    "Pay Line"
+    __name__ = 'account.move.line.pay.start'
+    date = fields.Date(
+        "Date", required=True,
+        help="When the payments are scheduled to happen.")
+
+    @classmethod
+    def default_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
+
+
 class PayLineAskJournal(ModelView):
     'Pay Line'
     __name__ = 'account.move.line.pay.ask_journal'
@@ -196,11 +210,17 @@ class PayLineAskJournal(ModelView):
 class PayLine(Wizard):
     'Pay Line'
     __name__ = 'account.move.line.pay'
-    start = StateTransition()
+    start = StateView(
+        'account.move.line.pay.start',
+        'account_payment.move_line_pay_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Pay", 'next_', 'tryton-ok', default=True),
+            ])
+    next_ = StateTransition()
     ask_journal = StateView('account.move.line.pay.ask_journal',
         'account_payment.move_line_pay_ask_journal_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Pay', 'start', 'tryton-ok', default=True),
+            Button('Pay', 'next_', 'tryton-ok', default=True),
             ])
     pay = StateAction('account_payment.act_payment_form')
 
@@ -236,7 +256,7 @@ class PayLine(Wizard):
             if key not in journals:
                 return key
 
-    def transition_start(self):
+    def transition_next_(self):
         if self._missing_journal():
             return 'ask_journal'
         else:
@@ -276,6 +296,7 @@ class PayLine(Wizard):
             kind=kind,
             amount=line.payment_amount,
             line=line,
+            date=self.start.date,
             )
 
     def do_pay(self, action):

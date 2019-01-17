@@ -11,6 +11,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
+    >>> tomorrow = datetime.date.today() + datetime.timedelta(days=1)
 
 Install account_payment::
 
@@ -65,10 +66,14 @@ Partially pay line::
     >>> Payment = Model.get('account.payment')
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
+    >>> pay_line.form.date = tomorrow
+    >>> pay_line.execute('next_')
     >>> pay_line.form.journal == payment_journal
     True
-    >>> pay_line.execute('start')
+    >>> pay_line.execute('next_')
     >>> payment, = Payment.find()
+    >>> payment.date == tomorrow
+    True
     >>> payment.party == supplier
     True
     >>> payment.amount
@@ -89,7 +94,8 @@ Partially pay line::
 Partially fail to pay the remaining::
 
     >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.execute('start')
+    >>> pay_line.execute('next_')
+    >>> pay_line.execute('next_')
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('30.00')
@@ -113,7 +119,8 @@ Pay line and block it after::
     >>> move.click('post')
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.execute('start')
+    >>> pay_line.execute('next_')
+    >>> pay_line.execute('next_')
     >>> len(line.payments)
     1
 
@@ -124,7 +131,8 @@ Pay line and block it after::
 Try to pay blocked line::
 
     >>> pay_line = Wizard('account.move.line.pay', [line])
-    >>> pay_line.execute('start')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> pay_line.execute('next_')
+    >>> pay_line.execute('next_')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     BlockedWarning: ...
