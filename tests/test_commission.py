@@ -53,6 +53,7 @@ def create_plan(lines):
 class CommissionTestCase(ModuleTestCase):
     'Test Commission module'
     module = 'commission'
+    extras = ['sale']
 
     @with_transaction()
     def test_plan_category(self):
