@@ -122,6 +122,12 @@ class StockLotSLEDTestCase(ModuleTestCase):
                     self.assertEqual(quantity, result,
                         msg='context: %s' % repr(context))
 
+                    quantity = Product.products_by_location(
+                        [storage.id], grouping_filter=([product.id],),
+                        with_childs=True)
+                    self.assertEqual(quantity, result,
+                        msg='context: %s, with childs' % repr(context))
+
             for context, delay, result in [
                     ({'stock_date_end': datetime.date.min},
                         datetime.timedelta(days=-1), empty),
