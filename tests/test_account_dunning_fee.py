@@ -13,6 +13,7 @@ from trytond.tests.test_tryton import doctest_teardown, doctest_checker
 class AccountDunningFeeTestCase(ModuleTestCase):
     'Test Account Dunning Fee module'
     module = 'account_dunning_fee'
+    extras = ['account_dunning_letter']
 
 
 def suite():
