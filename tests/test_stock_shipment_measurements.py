@@ -15,6 +15,7 @@ from trytond.modules.company.tests import create_company, set_company
 class StockShipmentMeasurementsTestCase(ModuleTestCase):
     'Test Stock Shipment Measurements module'
     module = 'stock_shipment_measurements'
+    extras = ['stock_package']
     longMessage = True
 
     @classmethod
