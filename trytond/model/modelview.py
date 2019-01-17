@@ -136,13 +136,17 @@ class ModelView(Model):
                 callables[name] = attr
 
         methods = {
+            '_done': set(),
             'depends': collections.defaultdict(set),
             'depend_methods': collections.defaultdict(set),
             'change': collections.defaultdict(set),
             }
         cls.__change_buttons = methods['change']
 
-        def get_callable_attributes(name, method):
+        def set_methods(name):
+            if name in methods['_done']:
+                return
+            methods['_done'].add(name)
             for parent_cls in cls.__mro__:
                 parent_meth = getattr(parent_cls, name, None)
                 if not parent_meth:
@@ -151,9 +155,6 @@ class ModelView(Model):
                     parent_value = getattr(parent_meth, attr, None)
                     if parent_value:
                         methods[attr][name] |= parent_value
-
-        for name, method in callables.items():
-            get_callable_attributes(name, method)
 
         def setup_field(field_name, field, attribute):
             if attribute == 'selection_change_with':
@@ -164,12 +165,12 @@ class ModelView(Model):
                     return
             else:
                 function_name = '%s_%s' % (attribute, field_name)
-            if not getattr(cls, function_name, None):
+            function = getattr(cls, function_name, None)
+            if not function:
                 return
 
-            function = getattr(cls, function_name, None)
-            setattr(field, attribute,
-                getattr(field, attribute) | methods['depends'][function_name])
+            set_methods(function_name)
+            setattr(field, attribute, methods['depends'][function_name])
 
             meth_names = list(methods['depend_methods'][function_name])
             meth_done = set()
@@ -177,6 +178,7 @@ class ModelView(Model):
                 meth_name = meth_names.pop()
                 assert callable(getattr(cls, meth_name)), \
                     "%s.%s not callable" % (cls, meth_name)
+                set_methods(meth_name)
                 setattr(field, attribute,
                     getattr(field, attribute) | methods['depends'][meth_name])
                 meth_names += list(
