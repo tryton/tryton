@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import doctest_checker
 class SaleShipmentCostTestCase(ModuleTestCase):
     'Test Sale Shipment Cost module'
     module = 'sale_shipment_cost'
+    extras = ['sale_promotion']
 
 
 def suite():
