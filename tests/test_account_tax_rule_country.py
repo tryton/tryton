@@ -13,6 +13,7 @@ from trytond.modules.account.tests import create_chart
 class AccountTaxRuleCountryTestCase(ModuleTestCase):
     'Test Account Tax Rule Country module'
     module = 'account_tax_rule_country'
+    extras = ['account_invoice', 'sale', 'purchase', 'stock']
 
     @with_transaction()
     def test_account_chart(self):

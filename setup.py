@@ -51,6 +51,9 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_requires = []
+for dep in ['account_invoice', 'sale', 'purchase', 'stock']:
+    tests_requires.append(get_require_version('trytond_%s' % dep))
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('https://trydevpi.tryton.org/')
@@ -118,4 +121,5 @@ setup(name=name,
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_requires=tests_requires,
     )
