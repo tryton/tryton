@@ -83,8 +83,9 @@ Pay the line::
     >>> Payment = Model.get('account.payment')
     >>> line, = [l for l in move.lines if l.account == payable]
     >>> pay_line = Wizard('account.move.line.pay', [line])
+    >>> pay_line.execute('next_')
     >>> pay_line.form.journal = payment_journal
-    >>> pay_line.execute('start')
+    >>> pay_line.execute('next_')
     >>> payment, = Payment.find([('state', '=', 'draft')])
     >>> payment.amount
     Decimal('50.00')
