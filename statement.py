@@ -104,7 +104,8 @@ class StatementLine(metaclass=PoolMeta):
         default.setdefault('payment_group', None)
         return super(StatementLine, cls).copy(lines, default=default)
 
-    @fields.depends('payment', 'party', 'account', '_parent_statement.journal')
+    @fields.depends('payment', 'party', 'account',
+        'statement', '_parent_statement.journal')
     def on_change_payment(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
