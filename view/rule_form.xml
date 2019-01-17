@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+
+    <notebook>
+        <page string="Criteria" id="criteria">
+            <label name="company"/>
+            <field name="company"/>
+            <label name="journal"/>
+            <field name="journal"/>
+
+            <label id="between" string="Between"/>
+            <group id="range" col="-1" colspan="3">
+                <field name="amount_low" xexpand="0"/>
+                <label id="and" string="-"/>
+                <field name="amount_high" xexpand="0"/>
+            </group>
+
+            <label name="description"/>
+            <field name="description" colspan="3"/>
+
+            <field name="information_rules" colspan="4"/>
+        </page>
+        <page name="lines">
+            <field name="lines" colspan="4"/>
+        </page>
+    </notebook>
+</form>
