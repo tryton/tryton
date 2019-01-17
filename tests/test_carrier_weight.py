@@ -15,6 +15,7 @@ from trytond.modules.currency.tests import create_currency
 class CarrierWeightTestCase(ModuleTestCase):
     'Test CarrierWeight module'
     module = 'carrier_weight'
+    extras = ['purchase_shipment_cost', 'sale_shipment_cost']
 
     @with_transaction()
     def test_compute_weight_price(self):
