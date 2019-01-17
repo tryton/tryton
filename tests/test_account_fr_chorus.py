@@ -11,6 +11,7 @@ from trytond.tests.test_tryton import suite as test_suite
 class AccountFrChorusTestCase(ModuleTestCase):
     'Test Account Fr Chorus module'
     module = 'account_fr_chorus'
+    extras = ['edocument_uncefact']
 
 
 def suite():
