@@ -10,6 +10,7 @@ except ImportError:
     from http import client as HTTPStatus
 
 from werkzeug.exceptions import abort
+from werkzeug.wrappers import Response
 from sql import Table
 
 from trytond import security
@@ -85,6 +86,11 @@ def root(request, *args):
         'common.db.list': db_list,
         }
     return methods[request.rpc_method](request, *request.rpc_params)
+
+
+@app.route('/<path:path>', methods=['OPTIONS'])
+def options(request, path):
+    return Response(status=HTTPStatus.NO_CONTENT)
 
 
 def db_exist(request, database_name):

@@ -8,7 +8,13 @@ import select
 import threading
 import time
 import uuid
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
+from urllib.parse import urljoin
 
+from werkzeug.utils import redirect
 from werkzeug.wrappers import Response
 from werkzeug.exceptions import NotImplemented, BadRequest
 
@@ -27,6 +33,8 @@ _cache_timeout = config.getint('bus', 'cache_timeout')
 _select_timeout = config.getint('bus', 'select_timeout')
 _long_polling_timeout = config.getint('bus', 'long_polling_timeout')
 _allow_subscribe = config.getboolean('bus', 'allow_subscribe')
+_url_host = config.get('bus', 'url_host')
+_web_cache_timeout = config.getint('web', 'cache_timeout')
 
 
 class _MessageQueue:
@@ -210,6 +218,13 @@ else:
 def subscribe(request, database_name):
     if not _allow_subscribe:
         raise NotImplemented
+    if _url_host and _url_host != request.host_url:
+        response = redirect(
+            urljoin(_url_host, request.path), HTTPStatus.PERMANENT_REDIRECT)
+        # Allow to change the redirection after some time
+        response.headers['Cache-Control'] = (
+            'private, max-age=%s' % _web_cache_timeout)
+        return response
     user = request.authorization.get('userid')
     channels = request.parsed_data.get('channels', [])
     if user is None:

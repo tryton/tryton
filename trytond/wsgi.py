@@ -5,6 +5,10 @@ import logging
 import os
 import sys
 import traceback
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
 
 from werkzeug.wrappers import Response
 from werkzeug.routing import Map, Rule
@@ -92,6 +96,14 @@ class TrytondWSGI(object):
                 break
         else:
             request = Request(environ)
+
+        origin = request.headers.get('Origin')
+        if origin:
+            cors = filter(
+                None, config.get('web', 'cors', default='').splitlines())
+            if origin not in cors:
+                abort(HTTPStatus.FORBIDDEN)
+
         data = self.dispatch_request(request)
         if not isinstance(data, (Response, HTTPException)):
             for cls in self.protocols:
@@ -114,6 +126,19 @@ class TrytondWSGI(object):
                         response = Response(data)
         else:
             response = data
+
+        if origin:
+            response.headers['Access-Control-Allow-Origin'] = origin
+            response.headers['Vary'] = 'Origin'
+            method = request.headers.get('Access-Control-Request-Method')
+            if method:
+                response.headers['Access-Control-Allow-Methods'] = method
+            headers = request.headers.get('Access-Control-Request-Headers')
+            if headers:
+                response.headers['Access-Control-Allow-Headers'] = headers
+            response.headers['Access-Control-Max-Age'] = config.getint(
+                'web', 'cache_timeout')
+
         # TODO custom process response
         return response(environ, start_response)
 
@@ -147,7 +172,9 @@ if config.get('web', 'root'):
     static_files = {
         '/': config.get('web', 'root'),
         }
-    app.wsgi_app = SharedDataMiddlewareIndex(app.wsgi_app, static_files)
+    app.wsgi_app = SharedDataMiddlewareIndex(
+        app.wsgi_app, static_files,
+        cache_timeout=config.getint('web', 'cache_timeout'))
 num_proxies = config.getint('web', 'num_proxies')
 if num_proxies:
     app.wsgi_app = ProxyFix(app.wsgi_app, num_proxies=num_proxies)

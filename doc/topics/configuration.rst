@@ -64,6 +64,19 @@ The number of proxy servers in front of `trytond`.
 
 Default: 0
 
+cache_timeout
+~~~~~~~~~~~~~
+
+The cache timeout in seconds.
+
+Default: 12h
+
+cors
+~~~~
+
+The list (one per line) of origins allowed for `Cross-Origin Resource sharing
+<https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_.
+
 database
 --------
 
@@ -381,6 +394,11 @@ allow_subscribe
 A boolean value to allow clients to subscribe to bus channels.
 
 Default: `False`
+
+url_host
+~~~~~~~~
+
+If set redirects bus requests to the host URL.
 
 long_polling_timeout
 ~~~~~~~~~~~~~~~~~~~~
