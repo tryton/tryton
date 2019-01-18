@@ -1,3 +1,4 @@
+* Reduce offset when no search result
 * Add support for plugins
 * Add support for expand, height and width attributes
 * Add drag & drop support on attachment button
