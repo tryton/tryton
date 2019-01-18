@@ -22,15 +22,15 @@ by this pattern::
     domain = [(<field name>, <operator>, <operand>)]
 
 ``<field name>``
-    Is the name of a :mod:`trytond.model.fields` or a
+    Is the name of a :mod:`~trytond.model.fields` or a
     :ref:`pyson <topics-pyson>` statement, that evaluates to a
     string.
 
-    A field of type :class:`trytond.model.fields.Many2One` or
-    :class:`trytond.model.fields.Many2Many` or
-    :class:`trytond.model.fields.One2Many` or
-    :class:`trytond.model.fields.One2One` or
-    :class:`trytond.model.fields.Reference` can be dereferenced to related
+    A field of type :class:`~trytond.model.fields.Many2One` or
+    :class:`~trytond.model.fields.Many2Many` or
+    :class:`~trytond.model.fields.One2Many` or
+    :class:`~trytond.model.fields.One2One` or
+    :class:`~trytond.model.fields.Reference` can be dereferenced to related
     models. This is illustrated by the following example::
 
         domain = [('country.name', '=', 'Japan')]
@@ -43,6 +43,14 @@ by this pattern::
 
         domain = [('origin.party.name', '=', 'John Doe', 'sale.sale')]
 ..
+
+    A field of type :class:`~trytond.model.fields.Dict` can be searched by key
+    also by using one *dot*. For example::
+
+        domain = [('attributes.color', '=', 'yellow')]
+
+.. warning::
+    Order comparison of `date` and `datetime` types is not supported.
 
 ``operator``
     Is an operator out of `Domain Operators`_ or a

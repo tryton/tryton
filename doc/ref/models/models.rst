@@ -437,7 +437,8 @@ Class methods:
 
     In case the field used is a :class:`fields.Many2One`, it is also possible
     to use the dotted notation to sort on a specific field from the target
-    record.
+    record. Or for a :class:`fields.Dict` field, the dotted notation is used to
+    sort on the key's value.
 
     If `count` is set to `True`, then the result is the number of records.
 

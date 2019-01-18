@@ -927,6 +927,10 @@ A dictionary field with predefined keys.
     The name of the :class:`DictSchemaMixin` model that stores the definition
     of keys.
 
+.. attribute:: Dict.search_unaccented
+
+    Same as :attr:`Char.search_unaccented` but when searching on key's value.
+
 Instance methods:
 
 .. method:: Dict.translated([name[, type_]])

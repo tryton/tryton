@@ -1,11 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
+from functools import partial
 import json
 
-from .field import Field
+from sql import operators, Literal, Select, CombiningQuery, Cast, Null
+
+from trytond import backend
+from trytond.transaction import Transaction
+from .field import Field, SQL_OPERATORS
 from ...protocols.jsonrpc import JSONDecoder, JSONEncoder
 from ...pool import Pool
 from ...tools import grouped_slice
+
+# Use canonical form
+dumps = partial(
+    json.dumps, cls=JSONEncoder, separators=(',', ':'), sort_keys=True)
 
 
 class Dict(Field):
@@ -21,6 +30,7 @@ class Dict(Field):
             states, select, on_change, on_change_with, depends, context,
             loading)
         self.schema_model = schema_model
+        self.search_unaccented = True
 
     def get(self, ids, model, name, values=None):
         dicts = dict((id, None) for id in ids)
@@ -37,9 +47,8 @@ class Dict(Field):
         if value is None:
             return None
         assert isinstance(value, dict)
-        # Use canonical form
-        return json.dumps(
-            value, cls=JSONEncoder, separators=(',', ':'), sort_keys=True)
+        value = {k: v for k, v in value.items() if v is not None}
+        return dumps(value)
 
     def translated(self, name=None, type_='values'):
         "Return a descriptor for the translated value of the field"
@@ -48,6 +57,88 @@ class Dict(Field):
         if name is None:
             raise ValueError('Missing name argument')
         return TranslatedDict(name, type_)
+
+    def _domain_column(self, operator, column, key=None):
+        database = Transaction().database
+        column = database.json_get(
+            super()._domain_column(operator, column), key)
+        if operator.endswith('like'):
+            column = Cast(column, database.sql_type('VARCHAR').base)
+            if self.search_unaccented and operator.endswith('ilike'):
+                column = database.unaccent(column)
+        return column
+
+    def _domain_value(self, operator, value):
+        if backend.name() == 'sqlite' and isinstance(value, bool):
+            # json_extract returns 0 for JSON false and 1 for JSON true
+            value = int(value)
+        if isinstance(value, (Select, CombiningQuery)):
+            return value
+        if operator.endswith('in'):
+            return [dumps(v) for v in value]
+        else:
+            value = dumps(value)
+            if self.search_unaccented and operator.endswith('ilike'):
+                database = Transaction().database
+                value = database.unaccent(value)
+            return value
+
+    def _domain_add_null(self, column, operator, value, expression):
+        expression = super()._domain_add_null(
+            column, operator, value, expression)
+        if value is None and operator.endswith('='):
+            if operator == '=':
+                expression |= (column == Null)
+            else:
+                expression &= (column != Null)
+        return expression
+
+    def convert_domain(self, domain, tables, Model):
+        name, operator, value = domain[:3]
+        if '.' not in name:
+            return super().convert_domain(domain, tables, Model)
+        database = Transaction().database
+        table, _ = tables[None]
+        name, key = name.split('.', 1)
+        Operator = SQL_OPERATORS[operator]
+        column = self.sql_column(table)
+        column = self._domain_column(operator, column, key)
+        expression = Operator(column, self._domain_value(operator, value))
+        if operator in {'=', '!='}:
+            # Try to use custom operators in case there is indexes
+            raw_column = self.sql_column(table)
+            try:
+                if value is None:
+                    expression = database.json_key_exists(
+                        raw_column, key)
+                    if operator == '=':
+                        expression = operators.Not(expression)
+                    return expression
+                else:
+                    expression = database.json_contains(
+                        raw_column, dumps({key: value}))
+                    if operator == '!=':
+                        expression = operators.Not(expression)
+                        expression &= database.json_key_exists(
+                            raw_column, key)
+                    return expression
+            except NotImplementedError:
+                pass
+        if isinstance(expression, operators.In) and not expression.right:
+            expression = Literal(False)
+        elif isinstance(expression, operators.NotIn) and not expression.right:
+            expression = Literal(True)
+        expression = self._domain_add_null(column, operator, value, expression)
+        return expression
+
+    def convert_order(self, name, tables, Model):
+        fname, _, key = name.partition('.')
+        if not key:
+            return super().convert_order(fname, tables, Model)
+        database = Transaction().database
+        table, _ = tables[None]
+        column = self.sql_column(table)
+        return [database.json_get(column, key)]
 
 
 class TranslatedDict(object):

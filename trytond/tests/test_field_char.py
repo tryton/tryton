@@ -454,20 +454,15 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
         return Pool().get('test.char_translate')
 
 
-@unittest.skipUnless(backend.name() == 'postgresql',
-    "unaccent works only on postgresql")
-class FieldCharUnaccentedTestCase(unittest.TestCase):
-    "Test Field Char with unaccented searches"
-
+class UnaccentedTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        super(FieldCharUnaccentedTestCase, cls).setUpClass()
-        activate_module('tests')
+        super().setUpClass()
         cls._activate_extension()
 
     @classmethod
     def tearDownClass(cls):
-        super(FieldCharUnaccentedTestCase, cls).tearDownClass()
+        super().tearDownClass()
         cls._deactivate_extension()
 
     @classmethod
@@ -492,6 +487,17 @@ class FieldCharUnaccentedTestCase(unittest.TestCase):
     def _clear_unaccent_cache(cls):
         Database = backend.get('Database')
         Database._has_unaccent.clear()
+
+
+@unittest.skipUnless(backend.name() == 'postgresql',
+    "unaccent works only on postgresql")
+class FieldCharUnaccentedTestCase(UnaccentedTestCase):
+    "Test Field Char with unaccented searches"
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+        super().setUpClass()
 
     @with_transaction()
     def test_normal_search(self):

@@ -29,8 +29,9 @@ from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2.extras import register_default_json, register_default_jsonb
 
-from sql import Flavor
+from sql import Flavor, Cast
 from sql.functions import Function
+from sql.operators import BinaryOperator
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
@@ -76,6 +77,31 @@ class AdvisoryLock(Function):
 
 class TryAdvisoryLock(Function):
     _function = 'pg_try_advisory_xact_lock'
+
+
+class JSONBExtractPath(Function):
+    __slots__ = ()
+    _function = 'jsonb_extract_path'
+
+
+class JSONKeyExists(BinaryOperator):
+    __slots__ = ()
+    _operator = '?'
+
+
+class JSONAnyKeyExist(BinaryOperator):
+    __slots__ = ()
+    _operator = '?|'
+
+
+class JSONAllKeyExist(BinaryOperator):
+    __slots__ = ()
+    _operator = '?&'
+
+
+class JSONContains(BinaryOperator):
+    __slots__ = ()
+    _operator = '@>'
 
 
 class Database(DatabaseInterface):
@@ -475,6 +501,24 @@ class Database(DatabaseInterface):
 
     def has_channel(self):
         return True
+
+    def json_get(self, column, key=None):
+        column = Cast(column, 'jsonb')
+        if key:
+            column = JSONBExtractPath(column, key)
+        return column
+
+    def json_key_exists(self, column, key):
+        return JSONKeyExists(Cast(column, 'jsonb'), key)
+
+    def json_any_keys_exist(self, column, keys):
+        return JSONAnyKeyExist(Cast(column, 'jsonb'), keys)
+
+    def json_all_keys_exist(self, column, keys):
+        return JSONAllKeyExist(Cast(column, 'jsonb'), keys)
+
+    def json_contains(self, column, json):
+        return JSONContains(Cast(column, 'jsonb'), Cast(json, 'jsonb'))
 
 
 register_type(UNICODE)

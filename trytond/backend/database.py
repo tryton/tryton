@@ -230,3 +230,23 @@ class DatabaseInterface(object):
     def sql_format(self, type_, value):
         'Return value correctly casted into type_'
         pass
+
+    def json_get(self, column, key=None):
+        "Return the JSON value of the JSON key"
+        raise NotImplementedError
+
+    def json_key_exists(self, column, key):
+        "Return expression for key exists in JSON column"
+        raise NotImplementedError
+
+    def json_any_keys_exist(self, column, keys):
+        "Return expression for any keys exist in JSON column"
+        raise NotImplementedError
+
+    def json_all_keys_exist(self, column, keys):
+        "Rteurn expression for all keys exist in JSON column"
+        raise NotImplementedError
+
+    def json_contains(self, column, json):
+        "Return expression for column contains JSON"
+        raise NotImplementedError

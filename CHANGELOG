@@ -1,3 +1,6 @@
+* Allow to search on key's value of Dict
+* Allow to order Dict by key's value
+* Do not store keys with null value in Dict
 * Add cache timeout for web
 * Allow the bus requests to be redirected to another host
 * Add support for CORS

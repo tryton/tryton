@@ -18,7 +18,8 @@ except ImportError:
     import sqlite3 as sqlite
     from sqlite3 import IntegrityError as DatabaseIntegrityError
     from sqlite3 import OperationalError as DatabaseOperationalError
-from sql import Flavor, Table, Query, Expression, Literal
+from sql import Flavor, Table, Query, Expression, Literal, Null
+from sql.conditionals import NullIf
 from sql.functions import (Function, Extract, Position, Substring,
     Overlay, CharLength, CurrentTimestamp, Trim)
 
@@ -213,6 +214,16 @@ MAPPING = {
     CurrentTimestamp: SQLiteCurrentTimestamp,
     Trim: SQLiteTrim,
     }
+
+
+class JSONExtract(Function):
+    __slots__ = ()
+    _function = 'JSON_EXTRACT'
+
+
+class JSONQuote(Function):
+    __slots__ = ()
+    _function = 'JSON_QUOTE'
 
 
 class SQLiteCursor(sqlite.Cursor):
@@ -441,6 +452,11 @@ class Database(DatabaseInterface):
                     and not isinstance(value, (Query, Expression))):
                 value = int(value)
         return value
+
+    def json_get(self, column, key):
+        if key:
+            column = JSONExtract(column, '$.%s' % key)
+        return NullIf(JSONQuote(column), JSONQuote(Null))
 
 sqlite.register_converter('NUMERIC', lambda val: Decimal(val.decode('utf-8')))
 sqlite.register_adapter(Decimal, lambda val: str(val).encode('utf-8'))

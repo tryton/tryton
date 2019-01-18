@@ -40,6 +40,29 @@ class DictJSONB(ModelSQL):
     dico = fields.Dict('test.dict.schema', 'Test Dict')
 
 
+class DictNoSchema(ModelSQL):
+    "Dict No Schema"
+    __name__ = 'test.dict_noschema'
+    dico = fields.Dict(None, "Dict")
+
+
+class DictUnaccentedOn(ModelSQL):
+    "Dict Unaccented On"
+    __name__ = 'test.dict_unaccented_on'
+    dico = fields.Dict(None, "Dict")
+
+
+class DictUnaccentedOff(ModelSQL):
+    "Dict Unaccented Off"
+    __name__ = 'test.dict_unaccented_off'
+    dico = fields.Dict(None, "Dict")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.dico.search_unaccented = False
+
+
 def register(module):
     Pool.register(
         DictSchema,
@@ -47,4 +70,7 @@ def register(module):
         DictDefault,
         DictRequired,
         DictJSONB,
+        DictNoSchema,
+        DictUnaccentedOn,
+        DictUnaccentedOff,
         module=module, type_='model')
