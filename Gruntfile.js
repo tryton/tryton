@@ -21,7 +21,8 @@ module.exports = function(grunt) {
       'src/window.js',
       'src/wizard.js',
       'src/board.js',
-      'src/bus.js'
+      'src/bus.js',
+      'src/plugins.js'
   ];
 
   // Project configuration.
