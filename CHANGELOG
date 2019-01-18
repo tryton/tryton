@@ -1,3 +1,4 @@
+* Reduce offset when no search result
 * Ensure URL scheme of bus (issue7792)
 * Add drag & drop support on binary widget
 
