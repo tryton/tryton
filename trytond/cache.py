@@ -1,10 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from threading import Lock
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 from datetime import datetime
+from weakref import WeakKeyDictionary
 
 from sql import Table
+from sql.aggregate import Max
 from sql.functions import CurrentTimestamp
 
 from trytond.config import config
@@ -25,13 +26,14 @@ def freeze(o):
 
 
 class BaseCache(object):
-    _cache_instance = []
+    _instances = {}
 
     def __init__(self, name, size_limit=1024, context=True):
         self._name = name
         self.size_limit = size_limit
         self.context = context
-        self._cache_instance.append(self)
+        assert self._name not in self._instances
+        self._instances[self._name] = self
 
     def _key(self, key):
         if self.context:
@@ -47,16 +49,16 @@ class BaseCache(object):
     def clear(self):
         raise NotImplemented
 
-    @staticmethod
-    def clean(dbname):
+    @classmethod
+    def sync(cls, transaction):
         raise NotImplemented
 
-    @staticmethod
-    def reset(dbname, name):
+    @classmethod
+    def commit(cls, transaction):
         raise NotImplemented
 
-    @staticmethod
-    def resets(dbname):
+    @classmethod
+    def rollback(cls, transaction):
         raise NotImplemented
 
     @classmethod
@@ -68,80 +70,80 @@ class MemoryCache(BaseCache):
     """
     A key value LRU cache with size limit.
     """
-    _resets = {}
-    _resets_lock = Lock()
+    _reset = WeakKeyDictionary()
     _clean_last = datetime.now()
 
     def __init__(self, name, size_limit=1024, context=True):
         super(MemoryCache, self).__init__(name, size_limit, context)
-        self._cache = {}
+        self._database_cache = defaultdict(lambda: LRUDict(size_limit))
+        self._transaction_cache = WeakKeyDictionary()
         self._timestamp = None
-        self._lock = Lock()
+
+    def _get_cache(self):
+        transaction = Transaction()
+        dbname = transaction.database.name
+        if transaction in self._reset:
+            try:
+                return self._transaction_cache[transaction]
+            except KeyError:
+                self._transaction_cache[transaction] = LRUDict(self.size_limit)
+                return self._transaction_cache[transaction]
+        else:
+            return self._database_cache[dbname]
 
     def get(self, key, default=None):
-        dbname = Transaction().database.name
         key = self._key(key)
-        with self._lock:
-            cache = self._cache.setdefault(dbname, LRUDict(self.size_limit))
-            try:
-                result = cache[key] = cache.pop(key)
-                return result
-            except (KeyError, TypeError):
-                return default
+        cache = self._get_cache()
+        try:
+            result = cache[key] = cache.pop(key)
+            return result
+        except (KeyError, TypeError):
+            return default
 
     def set(self, key, value):
-        dbname = Transaction().database.name
         key = self._key(key)
-        with self._lock:
-            cache = self._cache.setdefault(dbname, LRUDict(self.size_limit))
-            try:
-                cache[key] = value
-            except TypeError:
-                pass
+        cache = self._get_cache()
+        try:
+            cache[key] = value
+        except TypeError:
+            pass
         return value
 
     def clear(self):
-        dbname = Transaction().database.name
-        Cache.reset(dbname, self._name)
-        with self._lock:
-            self._cache[dbname] = LRUDict(self.size_limit)
+        transaction = Transaction()
+        self._reset.setdefault(transaction, set()).add(self._name)
+        self._transaction_cache.pop(transaction, None)
 
     @classmethod
-    def clean(cls, dbname):
+    def sync(cls, transaction):
         if (datetime.now() - cls._clean_last).total_seconds() < _clear_timeout:
             return
-        with Transaction().new_transaction(_nocache=True) as transaction,\
-                transaction.connection.cursor() as cursor:
+        dbname = transaction.database.name
+        with transaction.connection.cursor() as cursor:
             table = Table('ir_cache')
             cursor.execute(*table.select(table.timestamp, table.name))
             timestamps = {}
             for timestamp, name in cursor.fetchall():
                 timestamps[name] = timestamp
-        for inst in cls._cache_instance:
-            if inst._name in timestamps:
-                with inst._lock:
-                    if (not inst._timestamp
-                            or timestamps[inst._name] > inst._timestamp):
-                        inst._timestamp = timestamps[inst._name]
-                        inst._cache[dbname] = LRUDict(inst.size_limit)
+        for name, timestamp in timestamps.items():
+            try:
+                inst = cls._instances[name]
+            except KeyError:
+                continue
+            if not inst._timestamp or timestamp > inst._timestamp:
+                inst._timestamp = timestamp
+                inst._database_cache[dbname] = LRUDict(inst.size_limit)
         cls._clean_last = datetime.now()
 
     @classmethod
-    def reset(cls, dbname, name):
-        with cls._resets_lock:
-            cls._resets.setdefault(dbname, set())
-            cls._resets[dbname].add(name)
-
-    @classmethod
-    def resets(cls, dbname):
+    def commit(cls, transaction):
         table = Table('ir_cache')
-        resets = cls._resets.setdefault(dbname, set())
-        if not resets:
+        reset = cls._reset.setdefault(transaction, set())
+        if not reset:
             return
-        with Transaction().new_transaction(_nocache=True) as transaction,\
-                transaction.connection.cursor() as cursor,\
-                cls._resets_lock:
-            for name in resets:
+        dbname = transaction.database.name
+        with transaction.connection.cursor() as cursor:
+            for name in reset:
                 cursor.execute(*table.select(table.name,
                         where=table.name == name,
                         limit=1))
@@ -154,12 +156,27 @@ class MemoryCache(BaseCache):
                     cursor.execute(*table.insert(
                             [table.timestamp, table.name],
                             [[CurrentTimestamp(), name]]))
-            resets.clear()
+
+                cursor.execute(*table.select(
+                        Max(table.timestamp),
+                        where=table.name == name))
+                timestamp, = cursor.fetchone()
+
+                inst = cls._instances[name]
+                inst._timestamp = timestamp
+                inst._database_cache[dbname] = LRUDict(inst.size_limit)
+
+    @classmethod
+    def rollback(cls, transaction):
+        try:
+            cls._reset[transaction].clear()
+        except KeyError:
+            pass
 
     @classmethod
     def drop(cls, dbname):
-        for inst in cls._cache_instance:
-            inst._cache.pop(dbname, None)
+        for inst in cls._instances.values():
+            inst._database_cache.pop(dbname, None)
 
 
 if config.get('cache', 'class'):

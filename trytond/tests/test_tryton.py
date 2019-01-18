@@ -117,7 +117,7 @@ def _db_cache_file(path, name, backend_name):
 def _sqlite_copy(file_, restore=False):
     import sqlite3 as sqlite
 
-    with Transaction().start(DB_NAME, 0, _nocache=True) as transaction, \
+    with Transaction().start(DB_NAME, 0) as transaction, \
             sqlite.connect(file_) as conn2:
         conn1 = transaction.connection
         # sqlitebck does not work with pysqlite2
@@ -153,8 +153,7 @@ def _pg_options():
 
 def _pg_restore(cache_file):
     with Transaction().start(
-            None, 0, close=True, autocommit=True, _nocache=True) \
-            as transaction:
+            None, 0, close=True, autocommit=True) as transaction:
         transaction.database.create(transaction.connection, DB_NAME)
     cmd = ['pg_restore', '-d', DB_NAME]
     options, env = _pg_options()
@@ -165,8 +164,7 @@ def _pg_restore(cache_file):
     except OSError:
         cache_name, _ = os.path.splitext(os.path.basename(cache_file))
         with Transaction().start(
-                None, 0, close=True, autocommit=True, _nocache=True) \
-                as transaction:
+                None, 0, close=True, autocommit=True) as transaction:
             transaction.database.drop(transaction.connection, DB_NAME)
             transaction.database.create(
                 transaction.connection, DB_NAME, cache_name)
@@ -185,8 +183,7 @@ def _pg_dump(cache_file):
         # Ensure any connection is left open
         backend.get('Database')(DB_NAME).close()
         with Transaction().start(
-                None, 0, close=True, autocommit=True, _nocache=True) \
-                as transaction:
+                None, 0, close=True, autocommit=True) as transaction:
             transaction.database.create(
                 transaction.connection, cache_name, DB_NAME)
         open(cache_file, 'a').close()
@@ -626,11 +623,10 @@ def create_db(name=DB_NAME, lang='en'):
     Database = backend.get('Database')
     if not db_exist(name):
         with Transaction().start(
-                None, 0, close=True, autocommit=True, _nocache=True) \
-                as transaction:
+                None, 0, close=True, autocommit=True) as transaction:
             transaction.database.create(transaction.connection, name)
 
-        with Transaction().start(name, 0, _nocache=True) as transaction,\
+        with Transaction().start(name, 0) as transaction,\
                 transaction.connection.cursor() as cursor:
             Database(name).init()
             ir_configuration = Table('ir_configuration')
@@ -660,8 +656,7 @@ def drop_db(name=DB_NAME):
         database.close()
 
         with Transaction().start(
-                None, 0, close=True, autocommit=True, _nocache=True) \
-                as transaction:
+                None, 0, close=True, autocommit=True) as transaction:
             database.drop(transaction.connection, name)
             Pool.stop(name)
             Cache.drop(name)

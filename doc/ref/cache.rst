@@ -34,17 +34,17 @@ Sets the `value` of the `key` in the cache.
 
 Clears all the keys in the cache.
 
-.. staticmethod:: clean(dbname)
+.. classmethod:: sync(transaction)
 
-Clean the cache for database `dbname`
+Synchronize cache instances using transaction.
 
-.. staticmethod:: reset(dbname, name)
+.. classmethod:: commit(transaction)
 
-Reset the `name` cache for database `dbname`
+Apply cache changes from transaction.
 
-.. staticmethod:: resets(dbname)
+.. classmethod:: rollback(transaction)
 
-Resets all the caches stored for database `dbname`
+Remove cache changes from transaction.
 
 .. staticmethod:: drop(dbname)
 

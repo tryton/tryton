@@ -22,7 +22,7 @@ def run(options):
     init = {}
     for db_name in options.database_names:
         init[db_name] = False
-        with Transaction().start(db_name, 0, _nocache=True):
+        with Transaction().start(db_name, 0):
             database = Database(db_name)
             database.connect()
             if options.update:

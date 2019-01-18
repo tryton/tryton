@@ -108,7 +108,7 @@ def db_list(request, *args):
     context = {'_request': request.context}
     hostname = get_hostname(request.host)
     with Transaction().start(
-            None, 0, context=context, close=True, _nocache=True
+            None, 0, context=context, readonly=True, close=True,
             ) as transaction:
         return transaction.database.list(hostname=hostname)
 

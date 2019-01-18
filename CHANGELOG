@@ -1,3 +1,5 @@
+* Remove _nocache on Transaction
+* Make Cache transactional
 * Allow to search on key's value of Dict
 * Allow to order Dict by key's value
 * Do not store keys with null value in Dict
