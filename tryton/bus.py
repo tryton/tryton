@@ -64,9 +64,13 @@ def _listen(connection):
             wait = 1
             continue
         except Exception as error:
-            if isinstance(error, HTTPError) and error.code == 501:
-                logger.info("Bus not supported")
-                break
+            if isinstance(error, HTTPError):
+                if error.code in (301, 302, 303, 307, 308):
+                    url = error.headers.get('Location')
+                    continue
+                elif error.code == 501:
+                    logger.info("Bus not supported")
+                    break
             logger.error(
                 "An exception occured while connecting to the bus."
                 "Sleeping for %s seconds",
