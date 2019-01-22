@@ -81,10 +81,13 @@ Create a statement::
 Import AEB43 file::
 
     >>> Statement = Model.get('account.statement')
-    >>> aeb43 = file_open('account_statement_aeb43/tests/n43.txt', mode='rb')
+    >>> with file_open(
+    ...         'account_statement_aeb43/tests/n43.txt',
+    ...         mode='rb') as fp:
+    ...     aeb43 = fp.read()
     >>> waeb43 = Wizard('account.statement.import')
     >>> waeb43.form.file_format = 'aeb43'
-    >>> waeb43.form.file_ = aeb43.read()
+    >>> waeb43.form.file_ = aeb43
     >>> waeb43.execute('import_')
 
 Check Statement::
