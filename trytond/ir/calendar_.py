@@ -3,6 +3,7 @@
 
 from ..cache import Cache
 from ..model import ModelSQL, fields, Unique
+from ..rpc import RPC
 from ..transaction import Transaction
 
 
@@ -15,6 +16,12 @@ class _Calendar(ModelSQL):
     def __setup__(cls):
         super().__setup__()
         t = cls.__table__()
+        cls.__rpc__.update({
+                'read': RPC(),
+                'search': RPC(),
+                'search_count': RPC(),
+                'search_read': RPC(),
+                })
         cls.index.domain = [
             ('index', '>=', cls._min_index),
             ('index', '<=', cls._max_index),
