@@ -1,3 +1,4 @@
+* Use record and field properties of widget instead of method arguments
 * Reduce offset when no search result
 * Add support for plugins
 * Add support for expand, height and width attributes
