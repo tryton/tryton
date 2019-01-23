@@ -125,13 +125,13 @@ class RichTextBox(TextBox):
                 tool = toolbar.get_nth_item(n)
                 tool.set_sensitive(not value)
 
-    def set_value(self, record, field):
+    def set_value(self):
         # avoid modification of not normalized value
         value = self.get_value()
-        prev_value = field.get_client(record) or ''
+        prev_value = self.field.get_client(self.record) or ''
         if value == normalize_markup(prev_value):
             value = prev_value
-        field.set_client(record, value)
+        self.field.set_client(self.record, value)
 
     @property
     def modified(self):

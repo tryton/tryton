@@ -66,31 +66,31 @@ class MultiSelection(Widget, SelectionMixin):
         model, paths = self.tree.get_selection().get_selected_rows()
         return [model[path][0] for path in paths]
 
-    def set_value(self, record, field):
-        field.set_client(record, self.get_value())
+    def set_value(self):
+        self.field.set_client(self.record, self.get_value())
 
-    def display(self, record, field):
+    def display(self):
         selection = self.tree.get_selection()
         selection.handler_block_by_func(self.changed)
         try:
             # Remove select_function to allow update,
             # it will be set back in the super call
             selection.set_select_function(lambda *a: True)
-            self.update_selection(record, field)
+            self.update_selection(self.record, self.field)
             self.model.clear()
-            if field is None:
+            if self.field is None:
                 return
             id2path = {}
             for idx, (value, name) in enumerate(self.selection):
                 self.model.append((value, name))
                 id2path[value] = idx
             selection.unselect_all()
-            group = field.get_client(record)
+            group = self.field.get_client(self.record)
             for element in group:
                 if (element not in group.record_removed
                         and element not in group.record_deleted
                         and element.id in id2path):
                     selection.select_path(id2path[element.id])
-            super(MultiSelection, self).display(record, field)
+            super(MultiSelection, self).display()
         finally:
             selection.handler_unblock_by_func(self.changed)

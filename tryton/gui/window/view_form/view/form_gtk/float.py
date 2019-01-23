@@ -12,10 +12,10 @@ class Float(Integer):
         super(Float, self).__init__(view, attrs)
         self.entry.connect('key-press-event', self.key_press_event)
 
-    def display(self, record, field):
-        super(Float, self).display(record, field)
-        if field:
-            digits = field.digits(record, factor=self.factor)
+    def display(self):
+        super(Float, self).display()
+        if self.field:
+            digits = self.field.digits(self.record, factor=self.factor)
             if digits:
                 self.entry.set_width_chars(sum(digits))
             else:

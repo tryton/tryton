@@ -83,33 +83,33 @@ class Char(Widget, TranslateMixin, PopdownMixin):
     @property
     def modified(self):
         if self.record and self.field:
-            value = self.get_client_value(self.record, self.field)
+            value = self.get_client_value()
             return value != self.get_value()
         return False
 
-    def set_value(self, record, field):
+    def set_value(self):
         entry = self.entry.get_child() if self.autocomplete else self.entry
         value = entry.get_text() or ''
-        return field.set_client(record, value)
+        return self.field.set_client(self.record, value)
 
     def get_value(self):
         entry = self.entry.get_child() if self.autocomplete else self.entry
         return entry.get_text()
 
-    def get_client_value(self, record, field):
-        if not field:
+    def get_client_value(self):
+        if not self.field:
             value = ''
         else:
-            value = field.get_client(record)
+            value = self.field.get_client(self.record)
         return value
 
-    def display(self, record, field):
-        super(Char, self).display(record, field)
+    def display(self):
+        super(Char, self).display()
         if self.autocomplete:
-            if record:
-                if self.field_name not in record.autocompletion:
-                    record.do_autocomplete(self.field_name)
-                selection = record.autocompletion.get(self.field_name, [])
+            if self.record:
+                if self.field_name not in self.record.autocompletion:
+                    self.record.do_autocomplete(self.field_name)
+                selection = self.record.autocompletion.get(self.field_name, [])
             else:
                 selection = []
             self.set_popdown([(x, x) for x in selection], self.entry)
@@ -119,15 +119,15 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             size_entry = self.entry.get_child()
         else:
             size_entry = self.entry
-        if record:
-            field_size = record.expr_eval(self.attrs.get('size'))
+        if self.record:
+            field_size = self.record.expr_eval(self.attrs.get('size'))
             size_entry.set_width_chars(field_size or -1)
             size_entry.set_max_length(field_size or 0)
         else:
             size_entry.set_width_chars(-1)
             size_entry.set_max_length(0)
 
-        value = self.get_client_value(record, field)
+        value = self.get_client_value()
         if not self.autocomplete:
             self.entry.set_text(value)
             reset_position(self.entry)

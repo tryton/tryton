@@ -107,7 +107,7 @@ class Image(BinaryMixin, Widget):
         self.image.set_from_pixbuf(pixbuf)
         return bool(value)
 
-    def display(self, record, field):
-        super(Image, self).display(record, field)
+    def display(self):
+        super(Image, self).display()
         value = self.update_img()
         self.update_buttons(bool(value))

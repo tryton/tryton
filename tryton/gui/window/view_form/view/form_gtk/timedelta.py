@@ -29,19 +29,19 @@ class TimeDelta(Widget):
             return self.field.get_client(self.record) != value
         return False
 
-    def set_value(self, record, field):
+    def set_value(self):
         value = self.entry.get_text()
-        return field.set_client(record, value)
+        return self.field.set_client(self.record, value)
 
     def get_value(self):
         return self.entry.get_text()
 
-    def display(self, record, field):
-        super(TimeDelta, self).display(record, field)
-        if not field:
+    def display(self):
+        super(TimeDelta, self).display()
+        if not self.field:
             value = ''
         else:
-            value = field.get_client(record)
+            value = self.field.get_client(self.record)
         self.entry.set_text(value)
         reset_position(self.entry)
 

@@ -480,13 +480,12 @@ class ViewForm(View):
         if record:
             for name, widgets in self.widgets.items():
                 if name in record.group.fields:
-                    field = record.group.fields[name]
                     for widget in widgets:
                         if (not focused_widget
                                 or widget.widget.is_focus()
                                 or (isinstance(widget.widget, gtk.Container)
                                     and widget.widget.get_focus_child())):
-                            widget.set_value(record, field)
+                            widget.set_value()
 
     @property
     def selected_records(self):
@@ -534,7 +533,7 @@ class ViewForm(View):
             if field:
                 field.state_set(record)
             for widget in widgets:
-                widget.display(record, field)
+                widget.display()
         for widget in self.state_widgets:
             widget.state_set(record)
         if focused_widget:

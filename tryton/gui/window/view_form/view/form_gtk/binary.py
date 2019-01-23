@@ -195,22 +195,22 @@ class Binary(BinaryMixin, Widget):
         if icon_pos == gtk.ENTRY_ICON_PRIMARY:
             self.open_()
 
-    def display(self, record, field):
-        super(Binary, self).display(record, field)
-        if not field:
+    def display(self):
+        super(Binary, self).display()
+        if not self.field:
             if self.wid_text:
                 self.wid_text.set_text('')
             self.wid_size.set_text('')
             self.but_save_as.hide()
             return False
-        if hasattr(field, 'get_size'):
-            size = field.get_size(record)
+        if hasattr(self.field, 'get_size'):
+            size = self.field.get_size(self.record)
         else:
-            size = len(field.get(record))
+            size = len(self.field.get(self.record))
         self.wid_size.set_text(common.humanize(size or 0))
         reset_position(self.wid_size)
         if self.wid_text:
-            self.wid_text.set_text(self.filename_field.get(record) or '')
+            self.wid_text.set_text(self.filename_field.get(self.record) or '')
             reset_position(self.wid_text)
             if size:
                 icon, tooltip = 'tryton-open', _("Open...")
@@ -227,7 +227,7 @@ class Binary(BinaryMixin, Widget):
         self.update_buttons(bool(size))
         return True
 
-    def set_value(self, record, field):
+    def set_value(self):
         if self.wid_text:
             self.filename_field.set_client(self.record,
                     self.wid_text.get_text() or False)

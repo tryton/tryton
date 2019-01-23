@@ -43,6 +43,7 @@ class Widget(object):
     def field(self):
         if self.record:
             return self.record.group.fields[self.field_name]
+        return None
 
     def destroy(self):
         pass
@@ -101,15 +102,15 @@ class Widget(object):
             return False
         if not self.visible:
             return False
-        self.set_value(self.record, self.field)
+        self.set_value()
 
-    def display(self, record, field):
-        if not field:
+    def display(self):
+        if not self.field:
             self._readonly_set(self.attrs.get('readonly', True))
             self.invisible_set(self.attrs.get('invisible', False))
             self._required_set(False)
             return
-        states = field.get_state_attrs(record)
+        states = self.field.get_state_attrs(self.record)
         readonly = self.attrs.get('readonly', states.get('readonly', False))
         if self.view.screen.readonly:
             readonly = True
@@ -124,7 +125,7 @@ class Widget(object):
         self.invisible_set(self.attrs.get(
                 'invisible', states.get('invisible', False)))
 
-    def set_value(self, record, field):
+    def set_value(self):
         pass
 
 

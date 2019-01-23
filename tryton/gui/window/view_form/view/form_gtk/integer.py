@@ -19,15 +19,15 @@ class Integer(Char):
         self.entry.connect('insert_text', self.sig_insert_text)
         self.factor = float(attrs.get('factor', 1))
 
-    def set_value(self, record, field):
-        return field.set_client(record, self.entry.get_text(),
+    def set_value(self):
+        return self.field.set_client(self.record, self.entry.get_text(),
             factor=self.factor)
 
-    def get_client_value(self, record, field):
-        if not field:
+    def get_client_value(self):
+        if not self.field:
             value = ''
         else:
-            value = field.get_client(record, factor=self.factor)
+            value = self.field.get_client(self.record, factor=self.factor)
         return value
 
     def sig_insert_text(self, entry, new_text, new_text_length, position):

@@ -24,15 +24,15 @@ class ProgressBar(Widget):
             'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)
         self.widget.set_orientation(orientation)
 
-    def display(self, record, field):
-        super(ProgressBar, self).display(record, field)
-        if not field:
+    def display(self):
+        super(ProgressBar, self).display()
+        if not self.field:
             self.widget.set_text('')
             self.widget.set_fraction(0.0)
             return False
-        text = field.get_client(record, factor=100)
+        text = self.field.get_client(self.record, factor=100)
         if text:
             text = _('%s%%') % text
         self.widget.set_text(text)
-        value = field.get(record) or 0.0
+        value = self.field.get(self.record) or 0.0
         self.widget.set_fraction(value)

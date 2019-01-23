@@ -424,10 +424,10 @@ class DictWidget(Widget):
         del self.rows[key]
         if modified:
             self.send_modified()
-            self.set_value(self.record, self.field)
+            self.set_value()
 
-    def set_value(self, record, field):
-        field.set_client(record, self.get_value())
+    def set_value(self):
+        self.field.set_client(self.record, self.get_value())
 
     def get_value(self):
         return dict((key, widget.get_value())
@@ -496,25 +496,25 @@ class DictWidget(Widget):
         self.rows[key] = [label, alignment, remove_but]
         self.buttons[key] = remove_but
 
-    def display(self, record, field):
-        super(DictWidget, self).display(record, field)
+    def display(self):
+        super(DictWidget, self).display()
 
-        if field is None:
+        if self.field is None:
             return
 
-        record_id = record.id if record else None
+        record_id = self.record.id if self.record else None
         if record_id != self._record_id:
             for key in list(self.fields.keys()):
                 self._sig_remove(None, key, modified=False)
             self._record_id = record_id
 
-        value = field.get_client(record) if field else {}
-        new_key_names = set(value.keys()) - set(field.keys)
+        value = self.field.get_client(self.record) if self.field else {}
+        new_key_names = set(value.keys()) - set(self.field.keys)
         if new_key_names:
-            field.add_keys(list(new_key_names), self.record)
+            self.field.add_keys(list(new_key_names), self.record)
         decoder = PYSONDecoder()
         for key, val in sorted(value.items()):
-            if key not in field.keys:
+            if key not in self.field.keys:
                 continue
             if key not in self.fields:
                 self.add_line(key)

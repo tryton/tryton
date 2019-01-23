@@ -23,13 +23,14 @@ class URL(Char):
         self.widget.pack_start(self.button, expand=False, fill=False)
         self.widget.set_focus_chain([self.entry])
 
-    def display(self, record, field):
-        super(URL, self).display(record, field)
+    def display(self):
+        super(URL, self).display()
         self.set_tooltips()
-        if record and 'icon' in self.attrs:
+        if self.record and 'icon' in self.attrs:
             icon = self.attrs['icon']
-            if icon in record.group.fields:
-                value = record[icon].get_client(record) or 'tryton-public'
+            if icon in self.record.group.fields:
+                value = self.record[icon].get_client(self.record)
+                value = value if value else 'tryton-public'
             else:
                 value = icon
             self.button.set_image(common.IconFactory.get_image(

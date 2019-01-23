@@ -110,22 +110,22 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             value = ('', '')
         self.field.set_client(self.record, value)
 
-    def set_value(self, record, field):
+    def set_value(self):
         if not self.get_model():
             value = self.wid_text.get_text()
             if not value:
-                field.set_client(record, None)
+                self.field.set_client(self.record, None)
             else:
-                field.set_client(record, ('', value))
+                self.field.set_client(self.record, ('', value))
                 return
         else:
             try:
-                model, name = field.get_client(record)
+                model, name = self.field.get_client(self.record)
             except (ValueError, TypeError):
                 model, name = self.get_empty_value()
             if (model != self.get_model()
                     or name != self.wid_text.get_text()):
-                field.set_client(record, None)
+                self.field.set_client(self.record, None)
                 self.set_text('')
 
     def set_text(self, value):
@@ -142,7 +142,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             self.set_popdown_value(self.widget_combo, value)
         self.widget_combo.handler_unblock_by_func(self.sig_changed_combo)
 
-    def display(self, record, field):
-        self.update_selection(record, field)
+    def display(self):
+        self.update_selection(self.record, self.field)
         self.set_popdown(self.selection, self.widget_combo)
-        super(Reference, self).display(record, field)
+        super(Reference, self).display()

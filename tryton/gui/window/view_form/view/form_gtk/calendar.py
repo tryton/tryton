@@ -62,28 +62,28 @@ class Date(Widget):
     def sig_key_press(self, widget, event):
         self.send_modified()
 
-    def set_value(self, record, field):
-        field.set_client(record, self.get_value())
+    def set_value(self):
+        self.field.set_client(self.record, self.get_value())
 
     def get_value(self):
         return self.entry.props.value
 
-    def set_format(self, record, field):
-        if field and record:
-            format_ = field.date_format(record)
+    def set_format(self):
+        if self.field and self.record:
+            format_ = self.field.date_format(self.record)
         else:
             format_ = common.date_format(
                 self.view.screen.context.get('date_format'))
         self.entry.props.format = format_
 
-    def display(self, record, field):
-        super(Date, self).display(record, field)
-        if field and record:
-            value = field.get_client(record)
+    def display(self):
+        super(Date, self).display()
+        if self.field and self.record:
+            value = self.field.get_client(self.record)
         else:
             value = ''
         self.entry.props.value = value
-        self.set_format(record, field)
+        self.set_format()
 
 
 class Time(Date):
@@ -105,12 +105,12 @@ class Time(Date):
     def real_entry(self):
         return self.entry.get_child()
 
-    def display(self, record, field):
-        super(Time, self).display(record, field)
+    def display(self):
+        super(Time, self).display()
 
-    def set_format(self, record, field):
-        if field and record:
-            format_ = field.time_format(record)
+    def set_format(self):
+        if self.field and self.record:
+            format_ = self.field.time_format(self.record)
         else:
             format_ = '%X'
         self.entry.props.format = format_
@@ -155,10 +155,10 @@ class DateTime(Date):
             elif isinstance(child, gtk.ComboBoxEntry):
                 child.set_sensitive(value)
 
-    def set_format(self, record, field):
-        if field and record:
-            date_format = field.date_format(record)
-            time_format = field.time_format(record)
+    def set_format(self):
+        if self.field and self.record:
+            date_format = self.field.date_format(self.record)
+            time_format = self.field.time_format(self.record)
         else:
             date_format = common.date_format(
                 self.view.screen.context.get('date_format'))

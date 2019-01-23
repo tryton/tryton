@@ -486,18 +486,18 @@ class One2Many(Widget):
         self.label.set_text(line)
         self._set_button_sensitive()
 
-    def display(self, record, field):
-        super(One2Many, self).display(record, field)
+    def display(self):
+        super(One2Many, self).display()
 
         self._set_button_sensitive()
 
-        if field is None:
+        if self.field is None:
             self.screen.new_group()
             self.screen.current_record = None
             self.screen.parent = None
             self.screen.display()
             return False
-        new_group = field.get_client(record)
+        new_group = self.field.get_client(self.record)
 
         if id(self.screen.group) != id(new_group):
             self.screen.group = new_group
@@ -506,9 +506,9 @@ class One2Many(Widget):
                 self.screen.current_record = None
         domain = []
         size_limit = None
-        if record:
-            domain = field.domain_get(record)
-            size_limit = record.expr_eval(self.attrs.get('size'))
+        if self.record:
+            domain = self.field.domain_get(self.record)
+            size_limit = self.record.expr_eval(self.attrs.get('size'))
         if self._readonly:
             if size_limit is None:
                 size_limit = len(self.screen.group)
@@ -520,11 +520,11 @@ class One2Many(Widget):
         self.screen.display()
         return True
 
-    def set_value(self, record, field):
+    def set_value(self):
         self.screen.current_view.set_value()
         if self.screen.modified():  # TODO check if required
-            record.modified_fields.setdefault(field.name)
-            record.signal('record-modified')
+            self.record.modified_fields.setdefault(self.field.name)
+            self.record.signal('record-modified')
         return True
 
     def _completion_match_selected(self, completion, model, iter_):

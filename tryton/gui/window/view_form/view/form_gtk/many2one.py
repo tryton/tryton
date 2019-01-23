@@ -278,9 +278,9 @@ class Many2One(Widget):
     def get_value(self):
         return self.wid_text.get_text()
 
-    def set_value(self, record, field):
-        if field.get_client(record) != self.wid_text.get_text():
-            field.set_client(record, self.value_from_id(None, ''))
+    def set_value(self):
+        if self.field.get_client(self.record) != self.wid_text.get_text():
+            self.field.set_client(self.record, self.value_from_id(None, ''))
             self.set_text('')
 
     def set_text(self, value):
@@ -289,19 +289,19 @@ class Many2One(Widget):
         self.wid_text.set_text(value)
         reset_position(self.wid_text)
 
-    def display(self, record, field):
+    def display(self):
         self.changed = False
-        super(Many2One, self).display(record, field)
+        super(Many2One, self).display()
 
         self._set_button_sensitive()
         self._set_completion()
 
-        if not field:
+        if not self.field:
             self.set_text('')
             self.changed = True
             return False
-        self.set_text(field.get_client(record))
-        if self.has_target(field.get(record)):
+        self.set_text(self.field.get_client(self.record))
+        if self.has_target(self.field.get(self.record)):
             icon1, tooltip1 = 'tryton-open', _('Open the record <F2>')
             icon2, tooltip2 = 'tryton-clear', _('Clear the field <Del>')
         else:

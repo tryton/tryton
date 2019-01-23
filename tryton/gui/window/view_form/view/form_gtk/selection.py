@@ -68,22 +68,22 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
             return self.field.get(self.record) != self.get_value()
         return False
 
-    def set_value(self, record, field):
+    def set_value(self):
         value = self.get_value()
         if 'relation' in self.attrs and value:
             value = (value, self.get_popdown_text(self.entry))
-        field.set_client(record, value)
+        self.field.set_client(self.record, value)
 
-    def display(self, record, field):
-        self.update_selection(record, field)
+    def display(self):
+        self.update_selection(self.record, self.field)
         self.set_popdown(self.selection, self.entry)
-        if not field:
+        if not self.field:
             self.entry.set_active(-1)
             # When setting no item GTK doesn't clear the entry
             self.entry.get_child().set_text('')
             return
-        super(Selection, self).display(record, field)
-        value = field.get(record)
+        super(Selection, self).display()
+        value = self.field.get(self.record)
         if isinstance(value, (list, tuple)):
             # Compatibility with Many2One
             value = value[0]

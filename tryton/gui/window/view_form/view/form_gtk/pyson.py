@@ -24,18 +24,18 @@ class PYSON(Char):
         except Exception:
             return None
 
-    def set_value(self, record, field):
+    def set_value(self):
         # avoid modification because different encoding
         value = self.get_encoded_value()
-        previous = field.get_client(record)
+        previous = self.field.get_client(self.record)
         if (previous
                 and value == self.encoder.encode(
                     self.decoder.decode(previous))):
             value = previous
-        field.set_client(record, value)
+        self.field.set_client(self.record, value)
 
-    def get_client_value(self, record, field):
-        value = super(PYSON, self).get_client_value(record, field)
+    def get_client_value(self):
+        value = super(PYSON, self).get_client_value()
         if value:
             value = repr(self.decoder.decode(value))
         return value

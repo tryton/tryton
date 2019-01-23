@@ -98,8 +98,8 @@ class TextBox(Widget, TranslateMixin):
     def get_value(self):
         return self.get_buffer(self.textview)
 
-    def set_value(self, record, field):
-        field.set_client(record, self.get_value())
+    def set_value(self):
+        self.field.set_client(self.record, self.get_value())
 
     def set_buffer(self, value, textview):
         buf = textview.get_buffer()
@@ -113,9 +113,9 @@ class TextBox(Widget, TranslateMixin):
         iter_end = buf.get_end_iter()
         return buf.get_text(iter_start, iter_end, False)
 
-    def display(self, record, field):
-        super(TextBox, self).display(record, field)
-        value = field and field.get(record)
+    def display(self):
+        super(TextBox, self).display()
+        value = self.field and self.field.get(self.record)
         if not value:
             value = ''
         self.set_buffer(value, self.textview)

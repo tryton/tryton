@@ -20,12 +20,12 @@ class CheckBox(Widget):
         # TODO find a better solution to accept focus
         self.widget.set_sensitive(not value)
 
-    def set_value(self, record, field):
-        field.set_client(record, self.widget.get_active())
+    def set_value(self):
+        self.field.set_client(self.record, self.widget.get_active())
 
-    def display(self, record, field):
-        super(CheckBox, self).display(record, field)
-        if not field:
+    def display(self):
+        super(CheckBox, self).display()
+        if not self.field:
             self.widget.set_active(False)
             return False
-        self.widget.set_active(bool(field.get(record)))
+        self.widget.set_active(bool(self.field.get(self.record)))

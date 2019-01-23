@@ -253,21 +253,21 @@ class Many2Many(Widget):
         self._position = signal_data[0]
         self._set_button_sensitive()
 
-    def display(self, record, field):
-        super(Many2Many, self).display(record, field)
-        if field is None:
+    def display(self):
+        super(Many2Many, self).display()
+        if self.field is None:
             self.screen.new_group()
             self.screen.current_record = None
             self.screen.parent = None
             self.screen.display()
             return False
-        new_group = field.get_client(record)
+        new_group = self.field.get_client(self.record)
         if id(self.screen.group) != id(new_group):
             self.screen.group = new_group
         self.screen.display()
         return True
 
-    def set_value(self, record, field):
+    def set_value(self):
         self.screen.current_view.set_value()
         return True
 
