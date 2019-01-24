@@ -5,6 +5,7 @@ import logging
 import os
 import sys
 import traceback
+import urllib.parse
 try:
     from http import HTTPStatus
 except ImportError:
@@ -98,7 +99,9 @@ class TrytondWSGI(object):
             request = Request(environ)
 
         origin = request.headers.get('Origin')
-        if origin:
+        origin_host = urllib.parse.urlparse(origin).netloc if origin else ''
+        host = request.headers.get('Host')
+        if origin and origin_host != host:
             cors = filter(
                 None, config.get('web', 'cors', default='').splitlines())
             if origin not in cors:
