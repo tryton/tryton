@@ -246,6 +246,12 @@ Check customer invoice line::
     >>> move.origin == invoice_line
     True
 
+Duplicate shipment clear origin::
+
+    >>> duplicate, = shipment.duplicate()
+    >>> move, = duplicate.moves
+    >>> move.origin
+
 Cancel supplier consignment stock::
 
     >>> shipment = Shipment()
