@@ -244,6 +244,21 @@ class Move:
     def cancel(cls, moves):
         super(Move, cls).cancel(moves)
 
+    @classmethod
+    def copy(cls, moves, default=None):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        moves = super(Move, cls).copy(moves, default=default)
+        if not Transaction().context.get('_stock_move_split'):
+            to_save = []
+            for move in moves:
+                if isinstance(move.origin, InvoiceLine):
+                    move.origin = None
+                    to_save.append(move)
+            if to_save:
+                cls.save(to_save)
+        return moves
+
 
 class ShipmentInternal:
     __metaclass__ = PoolMeta
