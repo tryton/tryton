@@ -339,6 +339,8 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
 
         line = Line()
         line.statement = origin.statement
+        line.number = origin.number
+        line.description = origin.description
         line.origin = origin
         line.amount = amount
         line.date = origin.date
