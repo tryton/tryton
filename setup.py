@@ -45,8 +45,6 @@ requires = ['geomet', get_require_version('trytond'), 'psycopg2 >= 2.0.14']
 
 tests_require = []
 dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 
 setup(name=name,
