@@ -59,8 +59,6 @@ tests_require = [
     get_require_version('trytond_purchase_requisition'),
     ]
 dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
