@@ -57,8 +57,6 @@ tests_require = [get_require_version('proteus')]
 for dep in ['account_asset']:
     tests_require.append(get_require_version('trytond_%s' % dep))
 dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
