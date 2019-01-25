@@ -61,8 +61,6 @@ except ImportError:
     tests_require.append('mock')
 
 dependency_links = []
-if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
