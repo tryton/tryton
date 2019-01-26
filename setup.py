@@ -58,6 +58,8 @@ for dep in ['sale', 'purchase', 'account_invoice',
         'sale_supply_drop_shipment']:
     tests_require.append(get_require_version('trytond_%s' % dep))
 dependency_links = []
+if minor_version % 2:
+    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
