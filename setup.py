@@ -53,6 +53,8 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [get_require_version('proteus'), 'python-dateutil']
 dependency_links = []
+if minor_version % 2:
+    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
