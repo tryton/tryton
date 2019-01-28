@@ -622,20 +622,29 @@ def db_exist(name=DB_NAME):
 def create_db(name=DB_NAME, lang='en'):
     Database = backend.get('Database')
     if not db_exist(name):
-        with Transaction().start(
-                None, 0, close=True, autocommit=True) as transaction:
-            transaction.database.create(transaction.connection, name)
+        database = Database()
+        database.connect()
+        connection = database.get_connection(autocommit=True)
+        try:
+            database.create(connection, name)
+        finally:
+            database.put_connection(connection, True)
 
-        with Transaction().start(name, 0) as transaction,\
-                transaction.connection.cursor() as cursor:
-            Database(name).init()
-            ir_configuration = Table('ir_configuration')
-            cursor.execute(*ir_configuration.insert(
-                    [ir_configuration.language], [[lang]]))
+        database = Database(name)
+        connection = database.get_connection()
+        try:
+            with connection.cursor() as cursor:
+                database.init()
+                ir_configuration = Table('ir_configuration')
+                cursor.execute(*ir_configuration.insert(
+                        [ir_configuration.language], [[lang]]))
+            connection.commit()
+        finally:
+            database.put_connection(connection)
 
         pool = Pool(name)
         pool.init(update=['res', 'ir'], lang=[lang])
-        with Transaction().start(name, 0) as transaction:
+        with Transaction().start(name, 0):
             User = pool.get('res.user')
             Lang = pool.get('ir.lang')
             language, = Lang.search([('code', '=', lang)])

@@ -22,16 +22,15 @@ def run(options):
     init = {}
     for db_name in options.database_names:
         init[db_name] = False
-        with Transaction().start(db_name, 0):
-            database = Database(db_name)
-            database.connect()
-            if options.update:
-                if not database.test():
-                    logger.info("init db")
-                    database.init()
-                    init[db_name] = True
-            elif not database.test():
-                raise Exception('"%s" is not a Tryton database.' % db_name)
+        database = Database(db_name)
+        database.connect()
+        if options.update:
+            if not database.test():
+                logger.info("init db")
+                database.init()
+                init[db_name] = True
+        elif not database.test():
+            raise Exception('"%s" is not a Tryton database.' % db_name)
 
     for db_name in options.database_names:
         if options.update:
