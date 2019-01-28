@@ -362,6 +362,7 @@ class Database(DatabaseInterface):
 
     def init(self):
         from trytond.modules import get_module_info
+        Flavor.set(self.flavor)
         with self.get_connection() as conn:
             cursor = conn.cursor()
             sql_file = os.path.join(os.path.dirname(__file__), 'init.sql')
@@ -396,6 +397,7 @@ class Database(DatabaseInterface):
             conn.commit()
 
     def test(self, hostname=None):
+        Flavor.set(self.flavor)
         tables = ['ir_model', 'ir_model_field', 'ir_ui_view', 'ir_ui_menu',
             'res_user', 'res_group', 'ir_module', 'ir_module_dependency',
             'ir_translation', 'ir_lang', 'ir_configuration']
