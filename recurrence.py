@@ -40,6 +40,11 @@ class RecurrenceRuleSet(ModelSQL, ModelView):
         'sale.subscription.recurrence.rule', 'set_', "Rules")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
     def default_rules(cls):
         if Transaction().user == 0:
             return []
