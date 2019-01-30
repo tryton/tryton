@@ -45,6 +45,7 @@ class Journal(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Journal, cls).__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
         t = cls.__table__()
         cls._sql_constraints = [
             ('bank_account_unique',
