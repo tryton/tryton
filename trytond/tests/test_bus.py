@@ -96,9 +96,10 @@ class BusTestCase(unittest.TestCase):
 
     def tearDown(self):
         if DB_NAME in Bus._queues:
-            Bus._queues[DB_NAME]['timeout'] = 0
-            # Wait to let the listen thread stops
-            time.sleep(bus._select_timeout)
+            with Bus._queues_lock:
+                Bus._queues[DB_NAME]['timeout'] = 0
+                listener = Bus._queues[DB_NAME]['listener']
+            listener.join()
         Bus._messages.clear()
 
     @with_transaction()
