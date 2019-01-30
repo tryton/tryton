@@ -849,6 +849,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @ModelView.button
     def process(cls, purchases):
         process, done = [], []
+        cls.lock(purchases)
         for purchase in purchases:
             purchase.create_invoice()
             purchase.set_invoice_state()
