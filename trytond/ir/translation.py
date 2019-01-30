@@ -471,12 +471,16 @@ class Translation(ModelSQL, ModelView):
                 to_save = []
                 for record, value in zip(records, values):
                     translation = translations.get(get_name(record))
+                    if lang == 'en':
+                        src = value
+                    else:
+                        src = getattr(record, field_name)
                     if not translation:
                         translation = cls()
                         translation.name = name
                         translation.lang = lang
                         translation.type = ttype
-                    translation.src = getattr(record, field_name)
+                    translation.src = src
                     translation.value = value
                     translation.fuzzy = False
                     to_save.append(translation)
@@ -512,6 +516,10 @@ class Translation(ModelSQL, ModelView):
             to_save = []
             for record, value in zip(records, values):
                 translation = translations.get(record.id)
+                if lang == Config.get_language():
+                    src = value
+                else:
+                    src = getattr(record, field_name)
                 if not translation:
                     translation = cls()
                     translation.name = name
@@ -519,19 +527,14 @@ class Translation(ModelSQL, ModelView):
                     translation.type = ttype
                     translation.res_id = record.id
                 else:
-                    cls.write([translation], {
-                        'value': value,
-                        'src': getattr(record, field_name),
-                        'fuzzy': False,
-                        })
                     other_langs = other_translations.get(record.id)
                     if other_langs:
                         for other_lang in other_langs:
-                            other_lang.src = getattr(record, field_name)
+                            other_lang.src = src
                             other_lang.fuzzy = True
                             to_save.append(other_lang)
                 translation.value = value
-                translation.src = getattr(record, field_name)
+                translation.src = src
                 translation.fuzzy = False
                 to_save.append(translation)
             cls.save(to_save)
