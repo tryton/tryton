@@ -75,7 +75,7 @@ class MemoryCache(BaseCache):
     def __init__(self, name, size_limit=1024, context=True):
         super(MemoryCache, self).__init__(name, size_limit, context)
         self._cache = {}
-        self._timestamp = None
+        self._timestamp = {}
         self._lock = Lock()
 
     def get(self, key, default=None):
@@ -120,9 +120,10 @@ class MemoryCache(BaseCache):
         for inst in cls._cache_instance:
             if inst._name in timestamps:
                 with inst._lock:
-                    if (not inst._timestamp
-                            or timestamps[inst._name] > inst._timestamp):
-                        inst._timestamp = timestamps[inst._name]
+                    inst_timestamp = inst._timestamp.get(dbname)
+                    if (not inst_timestamp
+                            or timestamps[inst._name] > inst_timestamp):
+                        inst._timestamp[dbname] = timestamps[inst._name]
                         inst._cache[dbname] = LRUDict(inst.size_limit)
         cls._clean_last = datetime.now()
 
