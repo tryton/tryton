@@ -307,13 +307,13 @@ class TranslateMixin:
         TranslateDialog(self, languages, self._readonly)
 
     def translate_widget(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     def translate_widget_set(self, widget, value):
-        raise NotImplemented
+        raise NotImplementedError
 
     def translate_widget_get(self, widget):
-        raise NotImplemented
+        raise NotImplementedError
 
     def translate_widget_set_readonly(self, widget, value):
-        raise NotImplemented
+        raise NotImplementedError
