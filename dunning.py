@@ -25,6 +25,11 @@ class Procedure(ModelSQL, ModelView):
         help="The main identifier of the Dunning Procedure.")
     levels = fields.One2Many('account.dunning.level', 'procedure', 'Levels')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
 
 class Level(sequence_ordered(), ModelSQL, ModelView):
     'Account Dunning Level'
