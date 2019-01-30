@@ -33,6 +33,11 @@ class Journal(ModelSQL, ModelView):
             ('manual', 'Manual'),
             ], 'Process Method', required=True)
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
     @staticmethod
     def default_currency():
         if Transaction().context.get('company'):
