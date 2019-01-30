@@ -41,29 +41,29 @@ class BaseCache(object):
         return key
 
     def get(self, key, default=None):
-        raise NotImplemented
+        raise NotImplementedError
 
     def set(self, key, value):
-        raise NotImplemented
+        raise NotImplementedError
 
     def clear(self):
-        raise NotImplemented
+        raise NotImplementedError
 
     @classmethod
     def sync(cls, transaction):
-        raise NotImplemented
+        raise NotImplementedError
 
     @classmethod
     def commit(cls, transaction):
-        raise NotImplemented
+        raise NotImplementedError
 
     @classmethod
     def rollback(cls, transaction):
-        raise NotImplemented
+        raise NotImplementedError
 
     @classmethod
     def drop(cls, dbname):
-        raise NotImplemented
+        raise NotImplementedError
 
 
 class MemoryCache(BaseCache):
