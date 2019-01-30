@@ -70,7 +70,6 @@
                     {}, context,
                     decoder.decode( action.pyson_context || '{}'));
                 ctx = jQuery.extend(ctx, params.context);
-                ctx = jQuery.extend(ctx, context);
 
                 ctx.context = ctx;
                 decoder = new Sao.PYSON.Decoder(ctx);
