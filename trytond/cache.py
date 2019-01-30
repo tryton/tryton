@@ -77,7 +77,7 @@ class MemoryCache(BaseCache):
         super(MemoryCache, self).__init__(name, size_limit, context)
         self._database_cache = defaultdict(lambda: LRUDict(size_limit))
         self._transaction_cache = WeakKeyDictionary()
-        self._timestamp = None
+        self._timestamp = {}
 
     def _get_cache(self):
         transaction = Transaction()
@@ -130,8 +130,9 @@ class MemoryCache(BaseCache):
                 inst = cls._instances[name]
             except KeyError:
                 continue
-            if not inst._timestamp or timestamp > inst._timestamp:
-                inst._timestamp = timestamp
+            inst_timestamp = inst._timestamp.get(dbname)
+            if not inst_timestamp or timestamp > inst_timestamp:
+                inst._timestamp[dbname] = timestamp
                 inst._database_cache[dbname] = LRUDict(inst.size_limit)
         cls._clean_last = datetime.now()
 
@@ -163,7 +164,7 @@ class MemoryCache(BaseCache):
                 timestamp, = cursor.fetchone()
 
                 inst = cls._instances[name]
-                inst._timestamp = timestamp
+                inst._timestamp[dbname] = timestamp
                 inst._database_cache[dbname] = LRUDict(inst.size_limit)
 
     @classmethod
@@ -176,6 +177,7 @@ class MemoryCache(BaseCache):
     @classmethod
     def drop(cls, dbname):
         for inst in cls._instances.values():
+            inst._timestamp.pop(dbname, None)
             inst._database_cache.pop(dbname, None)
 
 
