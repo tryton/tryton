@@ -171,6 +171,7 @@ class Affix(Cell):
 
 class GenericText(Cell):
     align = 0
+    editable = None
 
     def __init__(self, view, attrs, renderer=None):
         super(GenericText, self).__init__()
@@ -260,6 +261,10 @@ class GenericText(Cell):
             callback()
 
     def editing_started(self, cell, editable, path):
+        def remove(editable):
+            self.editable = None
+        self.editable = editable
+        editable.connect('remove-widget', remove)
         return False
 
     def _get_record_field(self, path):
