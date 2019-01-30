@@ -87,6 +87,7 @@ class LongPollingBus:
             if start_listener:
                 listener = threading.Thread(
                     target=cls._listen, args=(database,), daemon=True)
+                cls._queues[database]['listener'] = listener
                 listener.start()
 
         messages = cls._messages.get(database)
@@ -183,7 +184,10 @@ class LongPollingBus:
                 del cls._queues[database]
             else:
                 # A query arrived between the end of the while and here
-                cls._listen(database)
+                listener = threading.Thread(
+                    target=cls._listen, args=(database,), daemon=True)
+                cls._queues[database]['listener'] = listener
+                listener.start()
 
     @classmethod
     def publish(cls, channel, message):
