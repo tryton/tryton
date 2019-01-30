@@ -40,6 +40,8 @@ class DictEntry(object):
         widget.connect('key-press-event', self.parent_widget.send_modified)
         widget.connect('focus-out-event',
             lambda w, e: self.parent_widget._focus_out())
+        widget.props.activates_default = True
+        widget.connect('activate', self.parent_widget.sig_activate)
         return widget
 
     def modified(self, value):
@@ -61,7 +63,7 @@ class DictBooleanEntry(DictEntry):
 
     def create_widget(self):
         widget = gtk.CheckButton()
-        widget.connect('toggled', self.parent_widget.send_modified)
+        widget.connect('toggled', self.parent_widget.sig_activate)
         widget.connect('focus-out-event', lambda w, e:
             self.parent_widget._focus_out())
         return widget
@@ -70,7 +72,12 @@ class DictBooleanEntry(DictEntry):
         return self.widget.props.active
 
     def set_value(self, value):
-        self.widget.props.active = bool(value)
+        self.widget.handler_block_by_func(self.parent_widget.sig_activate)
+        try:
+            self.widget.props.active = bool(value)
+        finally:
+            self.widget.handler_unblock_by_func(
+                self.parent_widget.sig_activate)
 
     def set_readonly(self, readonly):
         self.widget.set_sensitive(not readonly)
