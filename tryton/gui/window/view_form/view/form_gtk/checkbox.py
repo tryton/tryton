@@ -28,4 +28,8 @@ class CheckBox(Widget):
         if not self.field:
             self.widget.set_active(False)
             return False
-        self.widget.set_active(bool(self.field.get(self.record)))
+        self.widget.handler_block_by_func(self.sig_activate)
+        try:
+            self.widget.set_active(bool(self.field.get(self.record)))
+        finally:
+            self.widget.handler_unblock_by_func(self.sig_activate)
