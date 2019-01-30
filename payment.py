@@ -368,6 +368,7 @@ class Payment(metaclass=PoolMeta):
                     or payment.journal.process_method != 'stripe'
                     or payment.state != 'processing'):
                 continue
+            payment.lock()
             try:
                 charge = stripe.Charge.create(**payment._charge_parameters())
             except (stripe.error.RateLimitError,
@@ -446,6 +447,7 @@ class Payment(metaclass=PoolMeta):
                     or payment.stripe_captured
                     or payment.state != 'processing'):
                 continue
+            payment.lock()
             try:
                 charge = stripe.Charge.retrieve(
                     payment.stripe_charge_id,
@@ -817,6 +819,7 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
         for customer in customers:
             if customer.stripe_customer_id:
                 continue
+            customer.lock()
             try:
                 cu = stripe.Customer.create(
                     api_key=customer.stripe_account.secret_key,
@@ -856,6 +859,7 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                     ])
         for customer in customers:
             assert not customer.active
+            customer.lock()
             try:
                 cu = stripe.Customer.retrieve(
                     api_key=customer.stripe_account.secret_key,
