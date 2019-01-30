@@ -130,7 +130,7 @@ class TrytondWSGI(object):
         else:
             response = data
 
-        if origin:
+        if origin and isinstance(response, Response):
             response.headers['Access-Control-Allow-Origin'] = origin
             response.headers['Vary'] = 'Origin'
             method = request.headers.get('Access-Control-Request-Method')
