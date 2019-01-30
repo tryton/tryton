@@ -122,6 +122,11 @@ class ModelExclude(ModelSQL):
             ]
 
 
+class ModelLock(ModelSQL):
+    'Model to test lock'
+    __name__ = 'test.modelsql.lock'
+
+
 def register(module):
     Pool.register(
         ModelSQLRead,
@@ -136,4 +141,5 @@ def register(module):
         ModelCheck,
         ModelUnique,
         ModelExclude,
+        ModelLock,
         module=module, type_='model')

@@ -475,6 +475,26 @@ class ModelSQLTestCase(unittest.TestCase):
         with self.assertRaises(SQLConstraintError):
             Model.create([{'value': 42}, {'value': 42}])
 
+    @unittest.skipIf(backend.name() == 'sqlite',
+        'SQLite does not have lock at table level but on file')
+    @with_transaction()
+    def test_lock(self):
+        "Test lock"
+        pool = Pool()
+        Model = pool.get('test.modelsql.lock')
+        DatabaseOperationalError = backend.get('DatabaseOperationalError')
+        transaction = Transaction()
+        record_id = Model.create([{}])[0].id
+        transaction.commit()
+
+        with transaction.new_transaction():
+            record = Model(record_id)
+            record.lock()
+            with transaction.new_transaction():
+                record = Model(record_id)
+                with self.assertRaises(DatabaseOperationalError):
+                    record.lock()
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelSQLTestCase)

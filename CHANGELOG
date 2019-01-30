@@ -1,3 +1,4 @@
+* Allows to lock records for update
 * Remove _nocache on Transaction
 * Make Cache transactional
 * Allow to search on key's value of Dict

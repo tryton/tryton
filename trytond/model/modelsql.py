@@ -6,7 +6,7 @@ from collections import OrderedDict, defaultdict
 from functools import wraps
 
 from sql import (Table, Column, Literal, Desc, Asc, Expression, Null,
-    NullsFirst, NullsLast)
+    NullsFirst, NullsLast, For)
 from sql.functions import CurrentTimestamp, Extract
 from sql.conditionals import Coalesce
 from sql.operators import Or, And, Operator, Equal
@@ -26,6 +26,7 @@ from trytond.config import config
 
 from .modelstorage import (cache_size, is_leaf,
     ValidationError, RequiredValidationError, AccessError)
+from .descriptors import dualmethod
 
 
 class ForeignKeyError(ValidationError):
@@ -1551,6 +1552,23 @@ class ModelSQL(ModelStorage):
                             limit=1))
                     if cursor.fetchone():
                         raise SQLConstraintError(gettext(error))
+
+    @dualmethod
+    def lock(cls, records):
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+        table = cls.__table__()
+
+        if database.has_select_for():
+            for sub_records in grouped_slice(records):
+                where = reduce_ids(table.id, sub_records)
+                query = table.select(
+                    Literal(1), where=where, for_=For('UPDATE', nowait=True))
+                with connection.cursor() as cursor:
+                    cursor.execute(*query)
+        else:
+            database.lock(connection, cls._table)
 
 
 def convert_from(table, tables):

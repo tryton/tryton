@@ -463,6 +463,12 @@ Class methods:
                 },
             }
 
+Dual methods:
+
+.. classmethod:: ModelSQL.lock(records)
+
+    Take a lock for update on the records.
+
 Constraint
 ==========
 
