@@ -97,6 +97,42 @@ Print some reports::
     >>> context = {
     ...     'company': company.id,
     ...     'fiscalyear': fiscalyear.id,
+    ...     }
+    >>> with config.set_context(context):
+    ...     gl_revenue, = GeneralLedgerAccount.find([
+    ...           ('name', '=', revenue.name),
+    ...           ])
+    >>> gl_revenue.start_balance
+    Decimal('0.00')
+    >>> gl_revenue.credit
+    Decimal('10.00')
+    >>> gl_revenue.debit
+    Decimal('0.00')
+    >>> gl_revenue.end_balance
+    Decimal('-10.00')
+
+    >>> context = {
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     'from_date': fiscalyear.periods[0].start_date,
+    ...     'to_date': fiscalyear.periods[1].end_date,
+    ...     }
+    >>> with config.set_context(context):
+    ...     gl_revenue, = GeneralLedgerAccount.find([
+    ...           ('name', '=', revenue.name),
+    ...           ])
+    >>> gl_revenue.start_balance
+    Decimal('0.00')
+    >>> gl_revenue.credit
+    Decimal('10.00')
+    >>> gl_revenue.debit
+    Decimal('0.00')
+    >>> gl_revenue.end_balance
+    Decimal('-10.00')
+
+    >>> context = {
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
     ...     'start_period': fiscalyear.periods[1].id,
     ...     }
     >>> with config.set_context(context):
