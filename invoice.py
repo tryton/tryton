@@ -2346,6 +2346,11 @@ class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):
         depends=['company'])
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
 
