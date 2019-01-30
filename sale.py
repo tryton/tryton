@@ -892,6 +892,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     def process(cls, sales):
         done = []
         process = []
+        cls.lock(sales)
         for sale in sales:
             if sale.state not in ('confirmed', 'processing', 'done'):
                 continue
