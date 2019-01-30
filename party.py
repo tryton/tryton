@@ -414,7 +414,7 @@ class CheckVIES(Wizard):
                 if identifier.type != 'eu_vat':
                     continue
                 try:
-                    if not vat.check_vies(identifier.code):
+                    if not vat.check_vies(identifier.code)['valid']:
                         parties_failed.append(party.id)
                     else:
                         parties_succeed.append(party.id)
