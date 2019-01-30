@@ -161,12 +161,17 @@ class PurchaseRequest(ModelSQL, ModelView):
         tablehandler.not_null_action('origin', action='remove')
 
     def get_rec_name(self, name):
-        product_name = (self.product.name if self.product else
-            self.description.splitlines()[0])
-        if self.warehouse:
-            return "%s@%s" % (product_name, self.warehouse.name)
+        if self.product:
+            rec_name = self.product.name
+        elif self.description:
+            rec_name = self.description.splitlines()[0]
         else:
-            return product_name
+            rec_name = str(self.id)
+
+        if self.warehouse:
+            return "%s@%s" % (rec_name, self.warehouse.name)
+        else:
+            return rec_name
 
     @classmethod
     def search_rec_name(cls, name, clause):
