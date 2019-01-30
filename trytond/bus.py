@@ -15,7 +15,7 @@ from werkzeug.exceptions import NotImplemented, BadRequest
 from trytond import backend
 from trytond.wsgi import app
 from trytond.transaction import Transaction
-from trytond.protocols.jsonrpc import JSONEncoder
+from trytond.protocols.jsonrpc import JSONEncoder, JSONDecoder
 from trytond.config import config
 from trytond.tools import resolve
 
@@ -154,7 +154,9 @@ class LongPollingBus:
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()
-                    payload = json.loads(notification.payload)
+                    payload = json.loads(
+                        notification.payload,
+                        object_hook=JSONDecoder())
                     channel = payload['channel']
                     message = payload['message']
                     messages.append(channel, message)
