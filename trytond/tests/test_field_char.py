@@ -453,6 +453,24 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
     def Char(self):
         return Pool().get('test.char_translate')
 
+    @with_transaction()
+    def test_translation_default_language_cache(self):
+        """Test set translation for default language does not fill transactional
+        cache with former value"""
+        pool = Pool()
+        Config = pool.get('ir.configuration')
+        Char = self.Char()
+
+        with Transaction().set_context(language=Config.get_language()):
+            char, = Char.create([{
+                        'char': "foo",
+                        }])
+
+            char.char = "bar"
+            char.save()
+
+            self.assertEqual(char.char, "bar")
+
 
 @unittest.skipUnless(backend.name() == 'postgresql',
     "unaccent works only on postgresql")
