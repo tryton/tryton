@@ -987,12 +987,12 @@ class Line(ModelSQL, ModelView):
             fiscalyear_ids = map(int, fiscalyears)
             where &= period.fiscalyear == fiscalyear_id
             where &= move.date <= date
-        elif fiscalyear_id or period_ids or from_date or to_date:
+        elif fiscalyear_id or period_ids is not None or from_date or to_date:
             if fiscalyear_id:
                 fiscalyear_ids = [fiscalyear_id]
                 where &= fiscalyear.id == fiscalyear_id
-            if period_ids:
-                where &= move.period.in_(period_ids)
+            if period_ids is not None:
+                where &= move.period.in_(period_ids or [None])
             if from_date:
                 where &= move.date >= from_date
             if to_date:
