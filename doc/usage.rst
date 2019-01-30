@@ -737,7 +737,7 @@ Here are the list of custom selectors:
 
 For more information about style option see `GTK+ CSS`_
 
-.. GTK+ CSS:: https://developer.gnome.org/gtk3/stable/chap-css-overview.html
+.. _GTK+ CSS: https://developer.gnome.org/gtk3/stable/chap-css-overview.html
 
 Appendix
 ********
