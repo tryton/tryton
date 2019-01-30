@@ -904,7 +904,11 @@ class Screen(SignalEvent):
             self.search_active(self.current_view.view_type
                 in ('tree', 'graph', 'calendar'))
             for view in self.views:
+                # Always display tree view to update model
+                # because view can be used even if it is not shown
+                # like for save_tree_state
                 if (view == self.current_view
+                        or view.view_type == 'tree'
                         or view.widget.get_parent()):
                     view.display()
             self.current_view.widget.set_sensitive(
