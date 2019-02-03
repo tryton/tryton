@@ -158,7 +158,7 @@ function eval_pyson(value){
                 }
                 if (attributes.string === undefined) {
                     attributes.string = model.fields[name]
-                        .description.string + ': ';
+                        .description.string + Sao.i18n.gettext(':');
                 }
             }
             if (attributes.xalign === undefined) {
