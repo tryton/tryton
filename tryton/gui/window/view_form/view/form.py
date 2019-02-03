@@ -202,11 +202,7 @@ class ViewForm(View):
             if 'states' not in attributes and 'states' in field.attrs:
                 attributes['states'] = field.attrs['states']
             if 'string' not in attributes:
-                if gtk.widget_get_default_direction() == \
-                        gtk.TEXT_DIR_RTL:
-                    attributes['string'] = _(':') + field.attrs['string']
-                else:
-                    attributes['string'] = field.attrs['string'] + _(':')
+                attributes['string'] = field.attrs['string'] + _(':')
         if CONFIG['client.modepda']:
             attributes['xalign'] = 0.0
 
