@@ -334,7 +334,7 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(result)
 
     @with_transaction()
-    def test_delete_clear_db_id_model_data(self):
+    def test_delete_clear_db_id_model_data_noupdate(self):
         "Test delete record clear DB id from model data"
         pool = Pool()
         Model = pool.get('test.modelstorage')
@@ -352,6 +352,24 @@ class ModelStorageTestCase(unittest.TestCase):
         Model.delete([record])
 
         self.assertIsNone(data.db_id)
+
+    @with_transaction(user=0)
+    def test_delete_model_data_without_noupdate(self):
+        "Test delete record from model data without noupdate"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        ModelData = pool.get('ir.model.data')
+        record, = Model.create([{'name': "Foo"}])
+        data, = ModelData.create([{
+                    'fs_id': 'test',
+                    'model': 'test.modelstorage',
+                    'module': 'tests',
+                    'db_id': record.id,
+                    'values': None,
+                    'noupdate': False,
+                    }])
+
+        Model.delete([record])
 
 
 def suite():

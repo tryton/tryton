@@ -277,6 +277,7 @@ class ModelStorage(Model):
                     data += ModelData.search([
                             ('model', '=', cls.__name__),
                             ('db_id', 'in', ids),
+                            ('noupdate', '=', True),
                             ])
                 ModelData.write(data, {'db_id': None})
 
