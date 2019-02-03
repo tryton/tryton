@@ -144,7 +144,8 @@ class AdaptModelGroup(gtk.GenericTreeModel):
     def sort(self, ids):
         old_idx = {record.id: i for i, record in enumerate(self.group)}
         new_idx = {id_: i for i, id_ in enumerate(ids)}
-        self.group.sort(key=lambda r: new_idx.get(r.id))
+        size = len(self.group)
+        self.group.sort(key=lambda r: new_idx.get(r.id, size))
         new_order = []
         prev = None
         for record in self.group:
