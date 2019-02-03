@@ -1651,32 +1651,37 @@ function eval_pyson(value){
         }
     });
 
+    var integer_input = function(input) {
+        var input_text = input.clone().prependTo(input.parent());
+        input_text.attr('type', 'text');
+        input.attr('type', 'number');
+        input.attr('step', 1);
+        input.attr('lang', Sao.i18n.getlang());
+
+        input.hide().on('focusout', function() {
+            input.hide();
+            input_text.show();
+        });
+        input_text.on('focusin', function() {
+            if (!input.prop('readonly')) {
+                input_text.hide();
+                input.show();
+                window.setTimeout(function() {
+                    input.focus();
+                });
+            }
+        });
+        return input_text;
+    };
+
     Sao.View.Form.Integer = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-integer',
         init: function(field_name, model, attributes) {
             Sao.View.Form.Integer._super.init.call(this, field_name, model,
                 attributes);
-            this.input_text = this.input.clone().appendTo(this.group);
-            this.input_text.attr('type', 'text');
-            this.input.attr('type', 'number');
-            this.input.attr('step', 1);
-            this.input.attr('lang', Sao.i18n.getlang());
+            this.input_text = integer_input(this.input);
             this.group.css('width', '');
             this.factor = Number(attributes.factor || 1);
-
-            this.input.hide().on('focusout', function() {
-                this.input.hide();
-                this.input_text.show();
-            }.bind(this));
-            this.input_text.on('focusin', function() {
-                if (!this.input.prop('readonly')) {
-                    this.input_text.hide();
-                    this.input.show();
-                    window.setTimeout(function() {
-                        this.input.focus();
-                    }.bind(this));
-                }
-            }.bind(this));
         },
         set_value: function() {
             this.field().set_client(
@@ -1727,11 +1732,8 @@ function eval_pyson(value){
             if (record) {
                 var digits = field.digits(record, this.factor);
                 if (digits) {
-                    step = digits[1];
+                    step = Math.pow(10, -digits[1]);
                 }
-            }
-            if (step !== 'any') {
-                step = Math.pow(10, -step);
             }
             this.input.attr('step', step);
             Sao.View.Form.Float._super.display.call(this);
@@ -4336,45 +4338,23 @@ function eval_pyson(value){
         }
     });
 
-    Sao.View.Form.Dict.Integer = Sao.class_(Sao.View.Form.Dict.Entry, {
-        class_: 'dict-integer',
-        create_widget: function() {
-            Sao.View.Form.Dict.Integer._super.create_widget.call(this);
-            this.input.attr('type', 'number');
-            this.input.attr('step', 1);
-            this.input.attr('lang', Sao.i18n.getlang());
-        },
-        get_value: function() {
-            var value = parseInt(this.input.val(), 10);
-            if (isNaN(value)) {
-                return null;
-            }
-            return value;
-        },
-        set_value: function(value) {
-            if (value !== null) {
-                this.input.val(value);
-            } else {
-                this.input.val('');
-            }
-        },
-    });
-
-    Sao.View.Form.Dict.Float = Sao.class_(Sao.View.Form.Dict.Integer, {
+    Sao.View.Form.Dict.Float = Sao.class_(Sao.View.Form.Dict.Entry, {
         class_: 'dict-float',
+        create_widget: function() {
+            Sao.View.Form.Dict.Float._super.create_widget.call(this);
+            this.input_text = integer_input(this.input);
+        },
         digits: function() {
-            var default_ = [16, 2];
             var record = this.parent_widget.record();
-            if (!record) {
-                return default_;
-            }
-            var digits = record.expr_eval(this.definition.digits || default_);
-            digits.forEach(function(v, i, digits) {
-                if (v === null) {
-                    digits[i] = default_[i];
+            if (record) {
+                var digits = record.expr_eval(this.definition.digits);
+                if (!digits || !digits.every(function(e) {
+                    return e !== null;
+                })) {
+                    return;
                 }
-            });
-            return digits;
+                return digits;
+            }
         },
         get_value: function() {
             var value = Number(this.input.val());
@@ -4384,10 +4364,22 @@ function eval_pyson(value){
             return value;
         },
         set_value: function(value) {
+            var step = 'any',
+                options = {};
             var digits = this.digits();
-            value = value.toFixed(digits[1]);
+            if (digits) {
+                step = Math.pow(10, -digits[1]);
+                options.minimumFractionDigits = digits[1];
+                options.maximumFractionDigits = digits[1];
+            }
+            this.input.attr('step', step);
             Sao.View.Form.Dict.Float._super.set_value.call(this, value);
-            this.input.attr('step', Math.pow(10, -digits[1]));
+            if (value !== null) {
+                this.input_text.val(value.toLocaleString(
+                    Sao.i18n.BC47(Sao.i18n.getlang()), options));
+            } else {
+                this.input_text.val('');
+            }
         },
     });
 
@@ -4401,6 +4393,18 @@ function eval_pyson(value){
             return value;
         }
     });
+
+    Sao.View.Form.Dict.Integer = Sao.class_(Sao.View.Form.Dict.Float, {
+        class_: 'dict-integer',
+        get_value: function() {
+            var value = parseInt(this.input.val(), 10);
+            if (isNaN(value)) {
+                return null;
+            }
+            return value;
+        },
+    });
+
 
     Sao.View.Form.Dict.Date = Sao.class_(Sao.View.Form.Dict.Entry, {
         class_: 'dict-date',
