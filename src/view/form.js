@@ -3996,7 +3996,7 @@ function eval_pyson(value){
             label.attr('for', this.el.attr('id'));
 
             var body = jQuery('<div/>', {
-                'class': this.class_ + '-body panel-body'
+                'class': this.class_ + '-body panel-body form-horizontal'
             }).appendTo(this.el);
             this.container = jQuery('<div/>', {
                 'class': this.class_ + '-container'
@@ -4005,15 +4005,14 @@ function eval_pyson(value){
             var group = jQuery('<div/>', {
                 'class': 'input-group input-group-sm'
             }).appendTo(jQuery('<div>', {
-                'class': 'col-md-12'
+                'class': 'col-sm-10 col-sm-offset-2'
             }).appendTo(jQuery('<div/>', {
-                'class': 'row'
-            }).appendTo(jQuery('<div/>', {
-                'class': 'container-fluid'
-            }).appendTo(body))));
+                'class': 'form-group'
+            }).appendTo(body)));
             this.wid_text = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm'
+                'class': 'form-control input-sm',
+                'placeholder': Sao.i18n.gettext('Search'),
             }).appendTo(group);
 
             // TODO completion
@@ -4131,16 +4130,16 @@ function eval_pyson(value){
             this.fields[key] = field = new (
                 this.get_entries(key_schema.type_))(key, this);
             this.rows[key] = row = jQuery('<div/>', {
-                'class': 'row'
+                'class': 'form-group'
             });
             var text = key_schema.string + Sao.i18n.gettext(':');
             var label = jQuery('<label/>', {
                 'text': text
             }).appendTo(jQuery('<div/>', {
-                'class': 'dict-label col-md-4'
+                'class': 'dict-label col-sm-2 control-label'
             }).appendTo(row));
 
-            field.el.addClass('col-md-8').appendTo(row);
+            field.el.addClass('col-sm-10').appendTo(row);
 
             label.uniqueId();
             field.labelled.uniqueId();
