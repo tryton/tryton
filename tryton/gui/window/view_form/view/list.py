@@ -517,10 +517,7 @@ class ViewTree(View):
     def add_sum(self, attributes):
         if 'sum' not in attributes:
             return
-        if gtk.widget_get_default_direction() == gtk.TEXT_DIR_RTL:
-            text = _(':') + attributes['sum']
-        else:
-            text = attributes['sum'] + _(':')
+        text = attributes['sum'] + _(':')
         label, sum_ = gtk.Label(text), gtk.Label()
 
         hbox = gtk.HBox()

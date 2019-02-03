@@ -146,10 +146,7 @@ class TranslateDialog(NoModal):
         table.set_row_spacings(2)
         table.set_border_width(1)
         for i, language in enumerate(languages):
-            if gtk.widget_get_default_direction() == gtk.TEXT_DIR_RTL:
-                label = _(':') + language['name']
-            else:
-                label = language['name'] + _(':')
+            label = language['name'] + _(':')
             label = gtk.Label(label)
             label.set_alignment(1.0, 0.0 if self.widget.expand else 0.5)
             table.attach(label, 0, 1, i, i + 1, xoptions=gtk.FILL)

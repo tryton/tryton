@@ -484,10 +484,7 @@ class DictWidget(Widget):
         alignment.add(hbox)
         n_rows = self.table.props.n_rows
         self.table.resize(n_rows + 1, 3)
-        if gtk.widget_get_default_direction() == gtk.TEXT_DIR_RTL:
-            text = _(':') + self.keys[key]['string']
-        else:
-            text = self.keys[key]['string'] + _(':')
+        text = self.keys[key]['string'] + _(':')
         label = gtk.Label(text)
         label.set_alignment(1., .5)
         self.table.attach(label, 0, 1, n_rows - 1, n_rows,
