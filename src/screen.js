@@ -921,20 +921,22 @@
                     }.bind(this));
             }.bind(this);
             return search().then(function(ids) {
-                    this.search_count = ids.length;
                     var count_prm = jQuery.when(this.search_count);
-                    if ((!only_ids) &&
-                        ((this.limit !== null) &&
-                            (ids.length == this.limit))) {
-                        count_prm = this.model.execute(
-                            'search_count', [domain], context)
-                            .then(function(count) {
-                                this.search_count = count;
-                                return this.search_count;
-                            }.bind(this), function() {
-                                this.search_count = 0;
-                                return this.search_count;
-                            }.bind(this));
+                    if (!only_ids) {
+                        if ((this.limit !== null) &&
+                            (ids.length == this.limit)) {
+                            count_prm = this.model.execute(
+                                'search_count', [domain], context)
+                                .then(function(count) {
+                                    this.search_count = count;
+                                    return this.search_count;
+                                }.bind(this), function() {
+                                    this.search_count = 0;
+                                    return this.search_count;
+                                }.bind(this));
+                        } else {
+                            this.search_count = ids.length;
+                        }
                     }
                     return count_prm.then(function(count) {
                         this.screen_container.but_next.prop('disabled',
