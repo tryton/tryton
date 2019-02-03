@@ -465,17 +465,6 @@
             };
             return jQuery.when().then(browse_child);
         };
-        array.sort = function(ids) {
-                var id2record = {};
-                this.forEach(function(record) {
-                    id2record[record.id] = record;
-                });
-                ids.filter(function(id) {
-                    return id in id2record;
-                }).forEach(function(id, i){
-                    this[i] = id2record[id];
-                }.bind(this));
-        };
         return array;
     };
 

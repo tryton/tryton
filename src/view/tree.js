@@ -300,7 +300,19 @@
                     (this.screen.group.parent)) {
                 this.screen.search_filter(search_string, true).then(
                 function(ids) {
-                    this.screen.group.sort(ids);
+                    this.screen.group.sort(function(a, b) {
+                        a = ids.indexOf(a.id);
+                        a = a < 0 ? ids.length : a;
+                        b = ids.indexOf(b.id);
+                        b = b < 0 ? ids.length : b;
+                        if (a < b) {
+                            return -1;
+                        } else if (a > b) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    });
                     this.screen.display();
                 }.bind(this));
             } else {
