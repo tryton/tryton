@@ -4,7 +4,28 @@ from .char import Char
 import locale
 
 
-class Integer(Char):
+class IntegerMixin:
+    _width_chars = 8
+
+    def _prepare_entry(self, entry):
+        entry.set_width_chars(self._width_chars)
+        entry.set_max_length(0)
+        entry.set_alignment(1.0)
+        entry.connect('insert-text', self._insert_text)
+
+    def _insert_text(self, entry, new_text, new_text_length, position):
+        value = entry.get_text()
+        position = entry.get_position()
+        new_value = value[:position] + new_text + value[position:]
+        if new_value == '-':
+            return
+        try:
+            locale.atoi(new_value)
+        except ValueError:
+            entry.stop_emission('insert-text')
+
+
+class Integer(IntegerMixin, Char):
     "Integer"
 
     def __init__(self, view, attrs):
@@ -14,9 +35,7 @@ class Integer(Char):
             self.entry)
         self.widget.set_child_packing(self.entry, False, False,
             padding, pack_type)
-        self.entry.set_max_length(0)
-        self.entry.set_alignment(1.0)
-        self.entry.connect('insert_text', self.sig_insert_text)
+        self._prepare_entry(self.entry)
         self.factor = float(attrs.get('factor', 1))
 
     def set_value(self):
@@ -29,14 +48,3 @@ class Integer(Char):
         else:
             value = self.field.get_client(self.record, factor=self.factor)
         return value
-
-    def sig_insert_text(self, entry, new_text, new_text_length, position):
-        value = entry.get_text()
-        position = entry.get_position()
-        new_value = value[:position] + new_text + value[position:]
-        if new_value == '-':
-            return
-        try:
-            locale.atoi(new_value)
-        except ValueError:
-            entry.stop_emission('insert-text')

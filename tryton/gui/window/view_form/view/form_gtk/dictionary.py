@@ -10,6 +10,9 @@ import gettext
 from decimal import Decimal
 
 from .widget import Widget
+from .integer import IntegerMixin
+from .float import FloatMixin
+
 from tryton.gui.window.win_search import WinSearch
 from tryton.common import Tooltips, timezoned_date, untimezoned_date, \
         IconFactory
@@ -153,28 +156,14 @@ class DictSelectionEntry(DictEntry):
         self.widget.set_sensitive(not readonly)
 
 
-class DictIntegerEntry(DictEntry):
+class DictIntegerEntry(IntegerMixin, DictEntry):
     expand = False
     fill = False
 
     def create_widget(self):
         widget = super(DictIntegerEntry, self).create_widget()
-        widget.set_width_chars(8)
-        widget.set_max_length(0)
-        widget.set_alignment(1.0)
-        widget.connect('insert-text', self.sig_insert_text)
+        self._prepare_entry(widget)
         return widget
-
-    def sig_insert_text(self, entry, new_text, new_text_length, position):
-        value = entry.get_text()
-        position = entry.get_position()
-        new_value = value[:position] + new_text + value[position:]
-        if new_value == '-':
-            return
-        try:
-            locale.atoi(new_value)
-        except ValueError:
-            entry.stop_emission('insert-text')
 
     def get_value(self):
         txt_value = self.widget.get_text()
@@ -194,42 +183,16 @@ class DictIntegerEntry(DictEntry):
         reset_position(self.widget)
 
 
-class DictFloatEntry(DictIntegerEntry):
+class DictFloatEntry(FloatMixin, DictIntegerEntry):
 
+    @property
     def digits(self):
-        default = (16, 2)
         record = self.parent_widget.record
-        if not record:
-            return default
-        return tuple(y if x is None else x for x, y in zip(
-                record.expr_eval(self.definition.get('digits', default)),
-                default))
-
-    def sig_insert_text(self, entry, new_text, new_text_length, position):
-        value = entry.get_text()
-        position = entry.get_position()
-        new_value = value[:position] + new_text + value[position:]
-        decimal_point = locale.localeconv()['decimal_point']
-
-        if new_value in ('-', decimal_point):
-            return
-
-        digits = self.digits()
-
-        try:
-            locale.atof(new_value)
-        except ValueError:
-            entry.stop_emission('insert-text')
-            return
-
-        new_int = new_value
-        new_decimal = ''
-        if decimal_point in new_value:
-            new_int, new_decimal = new_value.rsplit(decimal_point, 1)
-
-        if (len(new_int) > digits[0]
-                or len(new_decimal) > digits[1]):
-            entry.stop_emission('insert-text')
+        if record:
+            digits = record.expr_eval(self.definition.get('digits'))
+            if not digits or any(d is None for d in digits):
+                return
+            return digits
 
     def get_value(self):
         txt_value = self.widget.get_text()
@@ -241,14 +204,14 @@ class DictFloatEntry(DictIntegerEntry):
         return None
 
     def set_value(self, value):
-        digits = self.digits()
+        digits = self.digits
         if value is not None:
-            txt_val = locale.format('%.' + str(digits[1]) + 'f', value, True)
+            txt_val = locale.format('%.*f', (digits[1], value), True)
         else:
             txt_val = ''
-        self.widget.set_width_chars(sum(digits))
         self.widget.set_text(txt_val)
         reset_position(self.widget)
+        self._set_entry_width(self.widget)
 
 
 class DictNumericEntry(DictFloatEntry):
