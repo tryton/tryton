@@ -5,6 +5,10 @@ import gzip
 import logging
 from io import BytesIO
 from functools import wraps
+try:
+    from http import HTTPStatus
+except ImportError:
+    from http import client as HTTPStatus
 
 from werkzeug.wrappers import Request as _Request, Response
 from werkzeug.utils import cached_property
@@ -13,6 +17,7 @@ from werkzeug.datastructures import Authorization
 from werkzeug.exceptions import abort, HTTPException
 
 from trytond import security, backend
+from trytond.exceptions import RateLimitException
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.config import config
@@ -66,9 +71,12 @@ class Request(_Request):
                 database_name, auth.get('userid'), auth.get('session'),
                 context=context)
         else:
-            user_id = security.login(
-                database_name, auth.username, auth, cache=False,
-                context=context)
+            try:
+                user_id = security.login(
+                    database_name, auth.username, auth, cache=False,
+                    context=context)
+            except RateLimitException:
+                abort(HTTPStatus.TOO_MANY_REQUESTS)
         return user_id
 
     @cached_property
@@ -176,13 +184,13 @@ def user_application(name, json=True):
                 auth_type, auth_info = authorization.split(None, 1)
                 auth_type = auth_type.lower()
             except ValueError:
-                abort(401)
+                abort(HTTPStatus.UNAUTHORIZED)
             if auth_type != b'bearer':
-                abort(403)
+                abort(HTTPStatus.FORBIDDEN)
 
             application = UserApplication.check(bytes_to_wsgi(auth_info), name)
             if not application:
-                abort(403)
+                abort(HTTPStatus.FORBIDDEN)
             transaction = Transaction()
             # TODO language
             with transaction.set_user(application.user.id), \
@@ -193,7 +201,7 @@ def user_application(name, json=True):
                     if isinstance(e, HTTPException):
                         raise
                     logger.error('%s', request, exc_info=True)
-                    abort(500, e)
+                    abort(HTTPStatus.INTERNAL_SERVER_ERROR, e)
             if not isinstance(response, Response) and json:
                 response = Response(json_.dumps(response, cls=JSONEncoder),
                     content_type='application/json')
