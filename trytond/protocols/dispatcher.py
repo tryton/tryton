@@ -4,6 +4,7 @@
 import http.client
 import logging
 import pydoc
+import time
 try:
     from http import HTTPStatus
 except ImportError:
@@ -169,7 +170,10 @@ def _dispatch(request, pool, *args, **kwargs):
         obj, method, args, kwargs, username, request.remote_addr, request.path)
     logger.info(log_message, *log_args)
 
-    for count in range(config.getint('database', 'retry'), -1, -1):
+    retry = config.getint('database', 'retry')
+    for count in range(retry, -1, -1):
+        if count != retry:
+            time.sleep(0.02 * (retry - count))
         with Transaction().start(pool.database_name, user,
                 readonly=rpc.readonly) as transaction:
             try:

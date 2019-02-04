@@ -3,6 +3,7 @@
 import base64
 import gzip
 import logging
+import time
 from io import BytesIO
 from functools import wraps
 try:
@@ -145,7 +146,10 @@ def with_transaction(readonly=None):
                 else:
                     readonly_ = True
             context = {'_request': request.context}
-            for count in range(config.getint('database', 'retry'), -1, -1):
+            retry = config.getint('database', 'retry')
+            for count in range(retry, -1, -1):
+                if count != retry:
+                    time.sleep(0.02 * (retry - count))
                 with Transaction().start(
                         pool.database_name, 0, readonly=readonly_,
                         context=context) as transaction:

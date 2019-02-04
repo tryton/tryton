@@ -1,3 +1,4 @@
+* Add increasing delay on database operational error retry
 * Allows to lock records for update
 * Remove _nocache on Transaction
 * Make Cache transactional
