@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
   <define name="board">
-    <element name="board">
+    <element>
+      <name ns="">board</name>
       <ref name="attlist.board"/>
       <zeroOrMore>
         <choice>
@@ -20,26 +22,37 @@
   </define>
   <define name="attlist.board" combine="interleave">
     <optional>
-      <attribute name="col" a:defaultValue="4"/>
+      <attribute a:defaultValue="4">
+        <name ns="">col</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="image">
-    <element name="image">
+    <element>
+      <name ns="">image</name>
       <ref name="attlist.image"/>
       <empty/>
     </element>
   </define>
   <define name="attlist.image" combine="interleave">
-    <attribute name="name"/>
+    <attribute>
+      <name ns="">name</name>
+      <text/>
+    </attribute>
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="colspan" a:defaultValue="1"/>
+      <attribute a:defaultValue="1">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="yexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">yexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -49,7 +62,8 @@
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="yfill" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">yfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -59,7 +73,8 @@
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="xexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">xexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -69,7 +84,8 @@
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="xfill" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">xfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -79,49 +95,75 @@
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="help"/>
+      <attribute>
+        <name ns="">help</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute name="states"/>
+      <attribute>
+        <name ns="">states</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="separator">
-    <element name="separator">
+    <element>
+      <name ns="">separator</name>
       <ref name="attlist.separator"/>
       <empty/>
     </element>
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="string" a:defaultValue=""/>
+      <attribute a:defaultValue="">
+        <name ns="">string</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.separator" combine="interleave">
     <choice>
-      <attribute name="name"/>
-      <attribute name="name"/>
+      <attribute>
+        <name ns="">name</name>
+        <text/>
+      </attribute>
+      <attribute>
+        <name ns="">name</name>
+        <text/>
+      </attribute>
     </choice>
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="states"/>
+      <attribute>
+        <name ns="">states</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="xalign" a:defaultValue="0.0"/>
+      <attribute a:defaultValue="0.0">
+        <name ns="">xalign</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="colspan" a:defaultValue="1"/>
+      <attribute a:defaultValue="1">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="yexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">yexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -131,7 +173,8 @@
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="yfill" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">yfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -141,7 +184,8 @@
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="xexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">xexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -151,7 +195,8 @@
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="xfill" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">xfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -161,44 +206,67 @@
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute name="help"/>
+      <attribute>
+        <name ns="">help</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="label">
-    <element name="label">
+    <element>
+      <name ns="">label</name>
       <ref name="attlist.label"/>
       <empty/>
     </element>
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="string" a:defaultValue=""/>
+      <attribute a:defaultValue="">
+        <name ns="">string</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.label" combine="interleave">
     <choice>
-      <attribute name="name"/>
-      <attribute name="name"/>
+      <attribute>
+        <name ns="">name</name>
+        <text/>
+      </attribute>
+      <attribute>
+        <name ns="">name</name>
+        <text/>
+      </attribute>
     </choice>
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="states"/>
+      <attribute>
+        <name ns="">states</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="xalign" a:defaultValue="0.0"/>
+      <attribute a:defaultValue="0.0">
+        <name ns="">xalign</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="yalign" a:defaultValue="0.5"/>
+      <attribute a:defaultValue="0.5">
+        <name ns="">yalign</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="yexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">yexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -208,7 +276,8 @@
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="yfill" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">yfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -218,7 +287,8 @@
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="xexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">xexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -228,7 +298,8 @@
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="xfill" a:defaultValue="1">
+      <attribute a:defaultValue="1">
+        <name ns="">xfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -238,25 +309,36 @@
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="colspan" a:defaultValue="1"/>
+      <attribute a:defaultValue="1">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.label" combine="interleave">
     <optional>
-      <attribute name="help"/>
+      <attribute>
+        <name ns="">help</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="newline">
-    <element name="newline">
+    <element>
+      <name ns="">newline</name>
       <ref name="attlist.newline"/>
       <empty/>
     </element>
   </define>
   <define name="attlist.newline" combine="interleave">
-    <attribute name="id"/>
+    <attribute>
+      <name ns="">id</name>
+      <text/>
+    </attribute>
   </define>
   <define name="notebook">
-    <element name="notebook">
+    <element>
+      <name ns="">notebook</name>
       <ref name="attlist.notebook"/>
       <zeroOrMore>
         <ref name="page"/>
@@ -265,11 +347,15 @@
   </define>
   <define name="attlist.notebook" combine="interleave">
     <optional>
-      <attribute name="colspan" a:defaultValue="4"/>
+      <attribute a:defaultValue="4">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="page">
-    <element name="page">
+    <element>
+      <name ns="">page</name>
       <ref name="attlist.page"/>
       <zeroOrMore>
         <choice>
@@ -288,27 +374,43 @@
   </define>
   <define name="attlist.page" combine="interleave">
     <optional>
-      <attribute name="angle"/>
+      <attribute>
+        <name ns="">angle</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.page" combine="interleave">
     <optional>
-      <attribute name="string" a:defaultValue="Unknown"/>
+      <attribute a:defaultValue="Unknown">
+        <name ns="">string</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.page" combine="interleave">
     <optional>
-      <attribute name="col" a:defaultValue="4"/>
+      <attribute a:defaultValue="4">
+        <name ns="">col</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.page" combine="interleave">
     <choice>
-      <attribute name="name"/>
-      <attribute name="id"/>
+      <attribute>
+        <name ns="">name</name>
+        <text/>
+      </attribute>
+      <attribute>
+        <name ns="">id</name>
+        <text/>
+      </attribute>
     </choice>
   </define>
   <define name="group">
-    <element name="group">
+    <element>
+      <name ns="">group</name>
       <ref name="attlist.group"/>
       <zeroOrMore>
         <choice>
@@ -327,17 +429,24 @@
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="string"/>
+      <attribute>
+        <name ns="">string</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="colspan" a:defaultValue="1"/>
+      <attribute a:defaultValue="1">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="yexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">yexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -347,7 +456,8 @@
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="yfill" a:defaultValue="1">
+      <attribute a:defaultValue="1">
+        <name ns="">yfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -357,7 +467,8 @@
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="xexpand" a:defaultValue="0">
+      <attribute a:defaultValue="0">
+        <name ns="">xexpand</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -367,7 +478,8 @@
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="xfill" a:defaultValue="1">
+      <attribute a:defaultValue="1">
+        <name ns="">xfill</name>
         <choice>
           <value>0</value>
           <value>1</value>
@@ -377,19 +489,29 @@
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="rowspan" a:defaultValue="1"/>
+      <attribute a:defaultValue="1">
+        <name ns="">rowspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
-      <attribute name="col" a:defaultValue="4"/>
+      <attribute a:defaultValue="4">
+        <name ns="">col</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.group" combine="interleave">
-    <attribute name="id"/>
+    <attribute>
+      <name ns="">id</name>
+      <text/>
+    </attribute>
   </define>
   <define name="hpaned">
-    <element name="hpaned">
+    <element>
+      <name ns="">hpaned</name>
       <ref name="attlist.paned"/>
       <zeroOrMore>
         <ref name="child"/>
@@ -397,7 +519,8 @@
     </element>
   </define>
   <define name="vpaned">
-    <element name="vpaned">
+    <element>
+      <name ns="">vpaned</name>
       <ref name="attlist.paned"/>
       <zeroOrMore>
         <ref name="child"/>
@@ -406,19 +529,29 @@
   </define>
   <define name="attlist.paned" combine="interleave">
     <optional>
-      <attribute name="colspan" a:defaultValue="4"/>
+      <attribute a:defaultValue="4">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.paned" combine="interleave">
     <optional>
-      <attribute name="position"/>
+      <attribute>
+        <name ns="">position</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.paned" combine="interleave">
-    <attribute name="id"/>
+    <attribute>
+      <name ns="">id</name>
+      <text/>
+    </attribute>
   </define>
   <define name="child">
-    <element name="child">
+    <element>
+      <name ns="">child</name>
       <ref name="attlist.child"/>
       <zeroOrMore>
         <choice>
@@ -436,10 +569,14 @@
     </element>
   </define>
   <define name="attlist.child" combine="interleave">
-    <attribute name="id"/>
+    <attribute>
+      <name ns="">id</name>
+      <text/>
+    </attribute>
   </define>
   <define name="data">
-    <element name="data">
+    <element>
+      <name ns="">data</name>
       <ref name="attlist.data"/>
       <oneOrMore>
         <ref name="xpath"/>
@@ -450,7 +587,8 @@
     <empty/>
   </define>
   <define name="xpath">
-    <element name="xpath">
+    <element>
+      <name ns="">xpath</name>
       <ref name="attlist.xpath"/>
       <zeroOrMore>
         <choice>
@@ -471,11 +609,15 @@
     </element>
   </define>
   <define name="attlist.xpath" combine="interleave">
-    <attribute name="expr"/>
+    <attribute>
+      <name ns="">expr</name>
+      <text/>
+    </attribute>
   </define>
   <define name="attlist.xpath" combine="interleave">
     <optional>
-      <attribute name="position" a:defaultValue="inside">
+      <attribute a:defaultValue="inside">
+        <name ns="">position</name>
         <choice>
           <value>inside</value>
           <value>replace</value>
@@ -487,17 +629,24 @@
     </optional>
   </define>
   <define name="action">
-    <element name="action">
+    <element>
+      <name ns="">action</name>
       <ref name="attlist.action"/>
       <empty/>
     </element>
   </define>
   <define name="attlist.action" combine="interleave">
-    <attribute name="name"/>
+    <attribute>
+      <name ns="">name</name>
+      <text/>
+    </attribute>
   </define>
   <define name="attlist.action" combine="interleave">
     <optional>
-      <attribute name="colspan" a:defaultValue="1"/>
+      <attribute a:defaultValue="1">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="label" combine="choice">

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
   <define name="calendar">
-    <element name="calendar">
+    <element>
+      <name ns="">calendar</name>
       <ref name="attlist.calendar"/>
       <zeroOrMore>
         <ref name="field"/>
@@ -9,16 +11,23 @@
     </element>
   </define>
   <define name="attlist.calendar" combine="interleave">
-    <attribute name="dtstart"/>
+    <attribute>
+      <name ns="">dtstart</name>
+      <text/>
+    </attribute>
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
-      <attribute name="dtend"/>
+      <attribute>
+        <name ns="">dtend</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
-      <attribute name="mode">
+      <attribute>
+        <name ns="">mode</name>
         <choice>
           <value>week</value>
           <value>month</value>
@@ -28,25 +37,36 @@
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
-      <attribute name="color" a:defaultValue="black"/>
+      <attribute a:defaultValue="black">
+        <name ns="">color</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
-      <attribute name="background_color" a:defaultValue="lightblue"/>
+      <attribute a:defaultValue="lightblue">
+        <name ns="">background_color</name>
+        <text/>
+      </attribute>
     </optional>
   </define>
   <define name="field">
-    <element name="field">
+    <element>
+      <name ns="">field</name>
       <ref name="attlist.field"/>
       <empty/>
     </element>
   </define>
   <define name="attlist.field" combine="interleave">
-    <attribute name="name"/>
+    <attribute>
+      <name ns="">name</name>
+      <text/>
+    </attribute>
   </define>
   <define name="data">
-    <element name="data">
+    <element>
+      <name ns="">data</name>
       <ref name="attlist.data"/>
       <zeroOrMore>
         <ref name="xpath"/>
@@ -57,7 +77,8 @@
     <empty/>
   </define>
   <define name="xpath">
-    <element name="xpath">
+    <element>
+      <name ns="">xpath</name>
       <ref name="attlist.xpath"/>
       <zeroOrMore>
         <choice>
@@ -68,11 +89,15 @@
     </element>
   </define>
   <define name="attlist.xpath" combine="interleave">
-    <attribute name="expr"/>
+    <attribute>
+      <name ns="">expr</name>
+      <text/>
+    </attribute>
   </define>
   <define name="attlist.xpath" combine="interleave">
     <optional>
-      <attribute name="position" a:defaultValue="inside">
+      <attribute a:defaultValue="inside">
+        <name ns="">position</name>
         <choice>
           <value>inside</value>
           <value>replace</value>

@@ -2,11 +2,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Command
+import glob
 import os
 import re
 import io
 import platform
+import subprocess
 
 
 def read(fname):
@@ -18,6 +20,25 @@ def read(fname):
 def get_version():
     init = read(os.path.join('trytond', '__init__.py'))
     return re.search('__version__ = "([0-9.]*)"', init).group(1)
+
+
+class rnc2rng(Command):
+    description = "Generate rng files from rnc"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        os.chdir(os.path.dirname(__file__) or '.')
+        for path in glob.glob('**/*.rnc', recursive=True):
+            root, ext = os.path.splitext(path)
+            cmd = ['rnc2rng', path, root + '.rng']
+            self.announce(' '.join(cmd))
+            subprocess.run(cmd)
 
 
 version = get_version()
@@ -121,4 +142,7 @@ setup(name=name,
     zip_safe=False,
     test_suite='trytond.tests',
     test_loader='trytond.test_loader:Loader',
+    cmdclass={
+        'update_rng': rnc2rng,
+        },
     )
