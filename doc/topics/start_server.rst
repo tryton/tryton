@@ -26,10 +26,19 @@ Following environment variables can be set:
 
  * `TRYTOND_CONFIG`: Point to :ref:`configuration <topics-configuration>` file.
  * `TRYTOND_LOGGING_CONFIG`: Point to :ref:`logging <topics-logs>` file.
+ * `TRYTOND_COROUTINE`: Use coroutine for concurrency.
  * `TRYTOND_DATABASE_NAMES`: A list of database names in CSV format, using
    python default dialect.
 
 .. warning:: You must manage to serve the static files from the web root.
+
+Coroutine server
+----------------
+
+The Werkzeug server uses thread for concurrency. This is not optimal for the
+long-polling request on the :ref:`bus <ref-bus>` as each client consumes
+permanently one thread.
+You can start the server with coroutine using the option `--coroutine`.
 
 Cron service
 ============

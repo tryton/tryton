@@ -37,6 +37,8 @@ def get_parser_daemon():
     parser = get_parser()
     parser.add_argument("--pidfile", dest="pidfile", metavar='FILE',
         help="file where the server pid will be stored")
+    parser.add_argument("--coroutine", action="store_true", dest="coroutine",
+        help="use coroutine for concurrency")
     return parser
 
 

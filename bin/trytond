@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import sys
-import os
 import glob
-
-from werkzeug.serving import run_simple
+import logging
+import os
+import sys
 
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', 'trytond')))
@@ -20,6 +19,11 @@ options = parser.parse_args()
 commandline.config_log(options)
 extra_files = config.update_etc(options.configfile)
 
+if options.coroutine:
+    # Monkey patching must be done before importing
+    from gevent import monkey
+    monkey.patch_all()
+
 # Import trytond things after it is configured
 from trytond.wsgi import app
 from trytond.pool import Pool
@@ -33,15 +37,27 @@ with commandline.pidfile(options):
     certificate = config.get('ssl', 'certificate')
     privatekey = config.get('ssl', 'privatekey')
     if certificate or privatekey:
-        ssl_context = (certificate, privatekey)
+        from werkzeug.serving import load_ssl_context
+        ssl_args = dict(
+            ssl_context=load_ssl_context(certificate, privatekey))
     else:
-        ssl_context = None
+        ssl_args = {}
     for module in get_module_list():
         info = get_module_info(module)
         path = os.path.join(info['directory'], 'view', '*.xml')
         extra_files.extend(glob.glob(path))
-    run_simple(hostname, port, app,
-        threaded=True,
-        extra_files=extra_files,
-        ssl_context=ssl_context,
-        use_reloader=options.dev)
+
+    if options.coroutine:
+        from gevent.pywsgi import WSGIServer
+        logger = logging.getLogger('gevent')
+        WSGIServer((hostname, port), app,
+            log=logger,
+            error_log=logger,
+            **ssl_args).serve_forever()
+    else:
+        from werkzeug.serving import run_simple
+        run_simple(hostname, port, app,
+            threaded=True,
+            extra_files=extra_files,
+            use_reloader=options.dev,
+            **ssl_args)

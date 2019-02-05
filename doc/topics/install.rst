@@ -26,6 +26,7 @@ Prerequisites
       (http://github.com/miohtama/python-Levenshtein)
     * Optional: bcrypt (https://github.com/pyca/bcrypt)
     * Optional: html2text (https://pypi.python.org/pypi/html2text)
+    * Optional: gevent (http://www.gevent.org/)
 
 Install Tryton
 ==============
