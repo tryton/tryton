@@ -25,7 +25,7 @@ class TextBox(Widget, TranslateMixin):
         self.scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC,
                 gtk.POLICY_AUTOMATIC)
         self.scrolledwindow.set_shadow_type(gtk.SHADOW_ETCHED_IN)
-        self.scrolledwindow.set_size_request(-1, 80)
+        self.scrolledwindow.set_size_request(100, 100)
 
         self.textview = self.mnemonic_widget = self._get_textview()
         self.textview.connect('focus-out-event',

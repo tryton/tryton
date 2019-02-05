@@ -84,8 +84,7 @@ class Preference(NoModal):
         self.win.vbox.pack_start(self.screen.widget)
         self.win.set_title(_('Preference'))
 
-        width, height = self.parent.get_size()
-        self.win.set_default_size(width, height)
+        self.win.set_default_size(*self.default_size())
 
         self.register()
         self.win.show()

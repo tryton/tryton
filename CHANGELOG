@@ -1,3 +1,4 @@
+* Improve default size of widgets and dialog
 * Use record and field properties of widget instead of method arguments
 * Reduce offset when no search result
 * Ensure URL scheme of bus (issue7792)

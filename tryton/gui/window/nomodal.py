@@ -34,3 +34,10 @@ class NoModal(object):
             if focus and focus.is_ancestor(self.parent):
                 focus.grab_focus()
                 break
+
+    def default_size(self):
+        from tryton.gui.main import Main
+        main = Main()
+        allocation = main.window.get_allocation()
+        width, height = allocation.width, allocation.height
+        return max(width - 150, 0), max(height - 150, 0)

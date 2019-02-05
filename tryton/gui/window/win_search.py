@@ -41,11 +41,7 @@ class WinSearch(NoModal):
         self.win.set_default_response(gtk.RESPONSE_APPLY)
         self.win.connect('response', self.response)
 
-        parent_allocation = self.parent.get_allocation()
-        width, height = parent_allocation.width, parent_allocation.height
-        if self.parent != self.sensible_widget:
-            width = max(width - 150, 0)
-        self.win.set_default_size(min(600, width), min(400, height))
+        self.win.set_default_size(*self.default_size())
 
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)

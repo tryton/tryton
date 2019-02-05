@@ -19,7 +19,7 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         child = self.mnemonic_widget = self.entry.get_child()
         child.set_property('activates_default', True)
         child.set_max_length(int(attrs.get('size', 0)))
-        child.set_width_chars(10)
+        child.set_width_chars(self.default_width_chars)
 
         selection_shortcuts(self.entry)
         child.connect('activate', lambda *a: self._focus_out())

@@ -17,6 +17,7 @@ _ = gettext.gettext
 
 class Widget(object):
     expand = False
+    default_width_chars = 25
 
     def __init__(self, view, attrs):
         super(Widget, self).__init__()
@@ -140,8 +141,7 @@ class TranslateDialog(NoModal):
         self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
         self.win.connect('response', self.response)
-        parent_allocation = self.parent.get_allocation()
-        self.win.set_default_size(-1, min(400, parent_allocation.height))
+        self.win.set_default_size(-1, self.default_size()[1])
 
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)

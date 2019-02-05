@@ -6,7 +6,7 @@ from .integer import Integer, IntegerMixin
 
 
 class FloatMixin(IntegerMixin):
-    _width_chars = 18
+    default_width_chars = 18
 
     def _prepare_entry(self, entry):
         super()._prepare_entry(entry)
@@ -43,7 +43,7 @@ class FloatMixin(IntegerMixin):
         if digits:
             width = sum(digits)
         else:
-            width = self._width_chars
+            width = self.default_width_chars
         entry.set_width_chars(width)
 
 

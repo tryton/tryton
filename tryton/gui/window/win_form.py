@@ -48,12 +48,7 @@ class WinForm(NoModal, InfoBar):
         self.win.connect('close', self.close)
         self.win.connect('response', self.response)
 
-        allocation = self.parent.get_allocation()
-        width, height, = allocation.width, allocation.height
-        if self.parent != self.sensible_widget:
-            width = max(width - 150, 0)
-            height = max(height - 150, 0)
-        self.win.set_default_size(width, height)
+        self.win.set_default_size(*self.default_size())
 
         self.accel_group = gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)

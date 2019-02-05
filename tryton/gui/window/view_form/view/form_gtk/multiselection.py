@@ -20,6 +20,7 @@ class MultiSelection(Widget, SelectionMixin):
             self.widget.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         else:
             self.widget = gtk.VBox()
+        self.widget.set_size_request(100, 100)
         self.widget.get_accessible().set_name(attrs.get('string', ''))
 
         self.model = gtk.ListStore(gobject.TYPE_INT, gobject.TYPE_STRING)

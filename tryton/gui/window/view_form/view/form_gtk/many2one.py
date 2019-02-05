@@ -27,7 +27,7 @@ class Many2One(Widget):
         self.widget.set_property('sensitive', True)
 
         self.wid_text = self.mnemonic_widget = gtk.Entry()
-        self.wid_text.set_property('width-chars', 13)
+        self.wid_text.set_property('width-chars', self.default_width_chars)
         self.wid_text.set_property('activates_default', True)
         self.wid_text.connect('key-press-event', self.send_modified)
         self.wid_text.connect('key_press_event', self.sig_key_press)

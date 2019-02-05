@@ -5,10 +5,10 @@ import locale
 
 
 class IntegerMixin:
-    _width_chars = 8
+    default_width_chars = 8
 
     def _prepare_entry(self, entry):
-        entry.set_width_chars(self._width_chars)
+        entry.set_width_chars(self.default_width_chars)
         entry.set_max_length(0)
         entry.set_alignment(1.0)
         entry.connect('insert-text', self._insert_text)
@@ -30,7 +30,6 @@ class Integer(IntegerMixin, Char):
 
     def __init__(self, view, attrs):
         super(Integer, self).__init__(view, attrs)
-        self.entry.set_width_chars(8)
         _, _, padding, pack_type = self.widget.query_child_packing(
             self.entry)
         self.widget.set_child_packing(self.entry, False, False,
