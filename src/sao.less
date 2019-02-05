@@ -142,7 +142,8 @@ input[type='color'] {
 }
 
 /* Hide empty image displayed as broken image */
-[src=''] {
+img[src=''],
+img:not([src]) {
     visibility: hidden;
 }
 
