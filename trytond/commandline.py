@@ -20,8 +20,8 @@ def get_parser():
     parser.add_argument("-c", "--config", dest="configfile", metavar='FILE',
         nargs='+', default=[os.environ.get('TRYTOND_CONFIG')],
         help='Specify configuration files')
-    parser.add_argument("-v", "--verbose", action="store_true",
-        dest="verbose", help="enable verbose mode")
+    parser.add_argument("-v", "--verbose", action='count',
+        dest="verbose", default=0, help="enable verbose mode")
     parser.add_argument('--dev', dest='dev', action='store_true',
         help='enable development mode')
 
@@ -96,13 +96,7 @@ def config_log(options):
     else:
         logformat = ('%(process)s %(thread)s [%(asctime)s] '
             '%(levelname)s %(name)s %(message)s')
-        if options.verbose:
-            if options.dev:
-                level = logging.DEBUG
-            else:
-                level = logging.INFO
-        else:
-            level = logging.ERROR
+        level = max(logging.ERROR - options.verbose * 10, logging.NOTSET)
         logging.basicConfig(level=level, format=logformat)
     logging.captureWarnings(True)
 

@@ -5,8 +5,7 @@ Logging configuration
 =====================
 
 Without any configuration, trytond writes ERROR messages to standard output.
-With the verbose flag set, it writes INFO message.
-And with the verbose and development flags set, it write DEBUG message.
+For each verbose flag set, the log level decreases.
 
 Logs can be configured using a `configparser-format`_ file. The filename can
 be specified using trytond ``logconf`` parameter.
