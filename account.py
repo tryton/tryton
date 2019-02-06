@@ -72,7 +72,7 @@ class StatementImport(metaclass=PoolMeta):
         origin.amount = transaction.amount
         origin.party = self.ofx_party(ofx_account, transaction)
         origin.description = transaction.memo
-        origin.informations = self.ofx_informations(ofx_account, transaction)
+        origin.information = self.ofx_information(ofx_account, transaction)
         return [origin]
 
     def ofx_party(self, ofx_account, transaction):
@@ -86,8 +86,8 @@ class StatementImport(metaclass=PoolMeta):
             party, = parties
             return party
 
-    def ofx_informations(self, ofx_account, transaction):
-        informations = {}
+    def ofx_information(self, ofx_account, transaction):
+        information = {}
         for name in [
                 'checknum',
                 'mcc',
@@ -96,5 +96,5 @@ class StatementImport(metaclass=PoolMeta):
                 ]:
             value = getattr(transaction, name)
             if value:
-                informations['ofx_' + name] = value
-        return informations
+                information['ofx_' + name] = value
+        return information

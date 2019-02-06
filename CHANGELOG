@@ -1,3 +1,5 @@
+* Rename StatementImport method ofx_informations to ofx_information
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 

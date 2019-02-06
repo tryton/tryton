@@ -115,5 +115,5 @@ Check Statement::
     True
     >>> origin.description
     'COMMUNICATION'
-    >>> origin.informations['ofx_type']
+    >>> origin.information['ofx_type']
     'credit'
