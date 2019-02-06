@@ -116,5 +116,5 @@ Check Statement::
     Decimal('100')
     >>> origin.description
     'COMMUNICATION'
-    >>> origin.informations['coda_bank_reference']
+    >>> origin.information['coda_bank_reference']
     'REF BANK             '

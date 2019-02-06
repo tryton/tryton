@@ -75,7 +75,7 @@ class StatementImport(metaclass=PoolMeta):
         origin.party = self.coda_party(coda_statement, move)
         # TODO select account using transaction codes
         origin.description = move.communication
-        origin.informations = self.coda_informations(coda_statement, move)
+        origin.information = self.coda_information(coda_statement, move)
         return [origin]
 
     def coda_party(self, coda_statement, move):
@@ -93,8 +93,8 @@ class StatementImport(metaclass=PoolMeta):
             if number.account.owners:
                 return number.account.owners[0]
 
-    def coda_informations(self, coda_statement, move):
-        informations = {}
+    def coda_information(self, coda_statement, move):
+        information = {}
         for name in [
                 'bank_reference',
                 'customer_reference',
@@ -109,6 +109,6 @@ class StatementImport(metaclass=PoolMeta):
                 'transaction_category']:
             value = getattr(move, name)
             if value:
-                informations['coda_' + name] = value
-        # TODO add move informations
-        return informations
+                information['coda_' + name] = value
+        # TODO add move information
+        return information
