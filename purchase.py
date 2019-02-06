@@ -835,6 +835,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @ModelView.button
     def process(cls, purchases):
         process, done = [], []
+        cls.__lock(purchases)
         for purchase in purchases:
             purchase.create_invoice()
             purchase.set_invoice_state()
@@ -854,6 +855,25 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             cls.proceed(process)
         if done:
             cls.do(done)
+
+    @classmethod
+    def __lock(cls, records):
+        from trytond.tools import grouped_slice, reduce_ids
+        from sql import Literal, For
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+        table = cls.__table__()
+
+        if database.has_select_for():
+            for sub_records in grouped_slice(records):
+                where = reduce_ids(table.id, sub_records)
+                query = table.select(
+                    Literal(1), where=where, for_=For('UPDATE', nowait=True))
+                with connection.cursor() as cursor:
+                    cursor.execute(*query)
+        else:
+            database.lock(connection, cls._table)
 
 
 class PurchaseIgnoredInvoice(ModelSQL):
