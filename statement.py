@@ -88,10 +88,10 @@ class ImportStatement(metaclass=PoolMeta):
             if item.item2:
                 descriptions.append(item.item2)
         origin.description = ''.join(descriptions)
-        origin.informations = self.aeb43_informations(statement, transaction)
+        origin.information = self.aeb43_information(statement, transaction)
         return [origin]
 
-    def aeb43_informations(self, statement, transaction):
+    def aeb43_information(self, statement, transaction):
         return {
             'aeb43_operation_date': transaction.transactionDate,
             'aeb43_record_type': transaction.sharedItem,

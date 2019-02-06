@@ -113,9 +113,9 @@ Check Statement::
     Decimal('-10.98')
     >>> origin.description
     'COMPRA TARG 5540XXXXXXXX3014 DNH*MICHAEL SCOTT'
-    >>> origin.informations['aeb43_record_type']
+    >>> origin.information['aeb43_record_type']
     '12'
-    >>> origin.informations['aeb43_first_reference']
+    >>> origin.information['aeb43_first_reference']
     '000000000000'
-    >>> origin.informations['aeb43_second_reference']
+    >>> origin.information['aeb43_second_reference']
     '5540014387733014'
