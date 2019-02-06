@@ -1,3 +1,5 @@
+* Update model 303 to new format
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Allow to export tax reports as file
