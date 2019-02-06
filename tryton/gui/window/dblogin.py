@@ -489,7 +489,7 @@ class DBLogin(object):
         label_username.set_mnemonic_widget(self.entry_login)
         self.table_main.attach(label_username, 0, 1, 6, 7, xoptions=gtk.FILL)
 
-        # Profile informations
+        # Profile information
         self.profile_cfg = os.path.join(get_config_dir(), 'profiles.cfg')
         self.profiles = configparser.ConfigParser()
         if not os.path.exists(self.profile_cfg):

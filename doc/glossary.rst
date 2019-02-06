@@ -144,7 +144,7 @@ Glossary
 
    Widgets
       A *Widget* is a visual element of a graphical user interface (GUI). Some
-      *Widgets* solely show informations, others allow manipulation from user
+      *Widgets* solely show information, others allow manipulation from user
       side. Example *Widgets* are buttons, check-boxes, entry-boxes, selection
       lists, tables, lists, trees, ...
 
