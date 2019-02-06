@@ -21,10 +21,10 @@ The Work model contains the following fields:
 Timesheet Line
 **************
 
-A timesheet line express the fact that one employee spend a part of
-his/her time on a specific work at a given date. An optional
-Description field allow to give some extra informations about what
-have been done.
+A timesheet line expresses the fact that one employee spends part of
+their time doing specific work on a given date. An optional
+Description field allows extra information to be recorded about what
+has been done.
 
 .. toctree::
     :maxdepth: 1
