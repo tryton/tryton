@@ -950,6 +950,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     def process(cls, sales):
         done = []
         process = []
+        cls.__lock(sales)
         for sale in sales:
             if sale.state not in ('confirmed', 'processing', 'done'):
                 continue
@@ -969,6 +970,25 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             cls.proceed(process)
         if done:
             cls.do(done)
+
+    @classmethod
+    def __lock(cls, records):
+        from trytond.tools import grouped_slice, reduce_ids
+        from sql import Literal, For
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+        table = cls.__table__()
+
+        if database.has_select_for():
+            for sub_records in grouped_slice(records):
+                where = reduce_ids(table.id, sub_records)
+                query = table.select(
+                    Literal(1), where=where, for_=For('UPDATE', nowait=True))
+                with connection.cursor() as cursor:
+                    cursor.execute(*query)
+        else:
+            database.lock(connection, cls._table)
 
     @classmethod
     @ModelView.button_action('sale.wizard_modify_header')
