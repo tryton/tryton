@@ -375,6 +375,7 @@ class Payment:
                     ('stripe_charge_id', '=', None),
                     ])
         for payment in payments:
+            cls.__lock([payment])
             try:
                 charge = stripe.Charge.create(**payment._charge_parameters())
             except (stripe.error.RateLimitError,
@@ -437,6 +438,7 @@ class Payment:
                     or payment.stripe_captured
                     or payment.state != 'processing'):
                 continue
+            cls.__lock([payment])
             try:
                 charge = stripe.Charge.retrieve(
                     payment.stripe_charge_id,
@@ -473,6 +475,25 @@ class Payment:
             'amount': self.stripe_amount,
             'idempotency_key': idempotency_key,
             }
+
+    @classmethod
+    def __lock(cls, records):
+        from trytond.tools import grouped_slice, reduce_ids
+        from sql import Literal, For
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+        table = cls.__table__()
+
+        if database.has_select_for():
+            for sub_records in grouped_slice(records):
+                where = reduce_ids(table.id, sub_records)
+                query = table.select(
+                    Literal(1), where=where, for_=For('UPDATE', nowait=True))
+                with connection.cursor() as cursor:
+                    cursor.execute(*query)
+        else:
+            database.lock(connection, cls._table)
 
 
 class Account(ModelSQL, ModelView):
