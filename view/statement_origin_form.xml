@@ -20,6 +20,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="account"/>
     <label name="description"/>
     <field name="description" colspan="3"/>
-    <field name="informations" colspan="4"/>
+    <field name="information" colspan="4"/>
     <field name="lines" colspan="4"/>
 </form>

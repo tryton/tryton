@@ -1008,8 +1008,17 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
             digits=(16, Eval('_parent_statement', {})
                 .get('currency_digits', 2))),
         'on_change_with_pending_amount', searcher='search_pending_amount')
-    informations = fields.Dict(
-        'account.statement.origin.information', "Informations", readonly=True)
+    information = fields.Dict(
+        'account.statement.origin.information', "Information", readonly=True)
+
+    @classmethod
+    def __register__(cls, module_name):
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: rename informations into information
+        table.column_rename('informations', 'information')
+
+        super(Origin, cls).__register__(module_name)
 
     @fields.depends('statement')
     def on_change_with_statement_id(self, name=None):
