@@ -3689,7 +3689,7 @@ function eval_pyson(value){
         display: function() {
             Sao.View.Form.Binary._super.display.call(this);
 
-            var recor = this.record(), field = this.field();
+            var record = this.record(), field = this.field();
             if (!field) {
                 if (this.text) {
                     this.text.val('');
