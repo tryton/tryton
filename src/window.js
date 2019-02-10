@@ -1609,30 +1609,12 @@
             }, this.session).done(function(export_ids) {
                 Sao.rpc({
                     'method': 'model.ir.export.read',
-                    'params': [export_ids, {}]
+                    'params': [export_ids, ['name', 'export_fields.name'], {}]
                 }, this.session).done(function(exports) {
-                    var arr = [];
-                    exports.forEach(function(o) {
-                        for (var i = 0; i < o.export_fields.length;
-                            arr.push(o.export_fields[i++]));
-                    });
-                    Sao.rpc({
-                        'method': 'model.ir.export.line.read',
-                        'params': [arr, {}]
-                    }, this.session).done(function(lines) {
-                        var id2lines = {};
-                        lines.forEach(function(line) {
-                            id2lines[line.export] = id2lines[line.export] || [];
-                            id2lines[line.export].push(line);
-                        });
-                        exports.forEach(function(export_) {
-                            this.predef_exports[export_.id] =
-                                id2lines[export_.id].map(function(obj) {
-                                    if(obj.export == export_.id)
-                                        return obj.name;
-                                });
-                            this.add_to_predef(export_.id, export_.name);
-                        }.bind(this));
+                    exports.forEach(function(export_) {
+                        this.predef_exports[export_.id] = export_['export_fields.']
+                            .map(function(field) {return field.name;});
+                        this.add_to_predef(export_.id, export_.name);
                         this.predef_exports_list.children('li').first().focus();
                     }.bind(this));
                 }.bind(this));
