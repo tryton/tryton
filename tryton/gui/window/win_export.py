@@ -169,23 +169,14 @@ class WinExport(WinCSV):
             return
         try:
             exports = RPCExecute('model', 'ir.export', 'read', export_ids,
-                None, context=self.context)
+                ['name', 'export_fields.name'], context=self.context)
         except RPCException:
             return
-        try:
-            lines = RPCExecute('model', 'ir.export.line', 'read',
-                sum((list(x['export_fields']) for x in exports), []), None,
-                context=self.context)
-        except RPCException:
-            return
-        id2lines = {}
-        for line in lines:
-            id2lines.setdefault(line['export'], []).append(line)
         for export in exports:
             self.predef_model.append((
-                export['id'],
-                [x['name'] for x in id2lines.get(export['id'], [])],
-                export['name']))
+                    export['id'],
+                    [f['name'] for f in export['export_fields.']],
+                    export['name']))
         self.pref_export.set_model(self.predef_model)
 
     def addreplace_predef(self, widget):
