@@ -191,6 +191,11 @@ this repository contains the full copyright notices and license terms. -->
                 search="[('model', '=', 'purchase.request.quotation.line')]"/>
             <field name="global_p" eval="True"/>
         </record>
+        <record model="ir.rule" id="rule_request_quotation_line">
+            <field name="domain" eval="[('quotation.company', '=', Eval('user', {}).get('company', None))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_request_quotation_line"/>
+        </record>
+
         <record model="ir.model.access" id="access_request_quotation_line">
             <field name="model"
                 search="[('model', '=', 'purchase.request.quotation.line')]"/>
