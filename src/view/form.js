@@ -1525,6 +1525,9 @@ function eval_pyson(value){
             var mousetrap = new Mousetrap(this.el[0]);
 
             mousetrap.bind(['enter', '='], function(e, combo) {
+                if (this.date.find('input').prop('readonly')) {
+                    return;
+                }
                 if (e.which != Sao.common.RETURN_KEYCODE) {
                     e.preventDefault();
                 }
@@ -1533,6 +1536,9 @@ function eval_pyson(value){
 
             Sao.common.DATE_OPERATORS.forEach(function(operator) {
                 mousetrap.bind(operator[0], function(e, combo) {
+                    if (this.date.find('input').prop('readonly')) {
+                        return;
+                    }
                     e.preventDefault();
                     var dp = this.date.data('DateTimePicker');
                     var date = dp.date();
