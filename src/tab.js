@@ -466,6 +466,13 @@
         var tablist = jQuery('#tablist');
         var tab = tablist.find('#nav-' + current_tab.id);
         var next = tab[direction]('li').first();
+        if (!next.length) {
+            if (direction == 'prevAll') {
+                next = tablist.find('li').last();
+            } else {
+                next = tablist.find('li').first();
+            }
+        }
         if (next) {
             next.find('a').tab('show');
             tabs.trigger('ready');
