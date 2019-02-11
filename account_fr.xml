@@ -5783,6 +5783,30 @@
             <field name="kind">view</field>
             <field name="parent" ref="44"/>
         </record>
+        <record model="account.account.template" id="4421">
+            <field name="name">Prélèvements à la source (Impôt sur le revenu)</field>
+            <field name="code">4421</field>
+            <field name="type" ref="dettes_fiscales_sociales"/>
+            <field name="deferral" eval="True"/>
+            <field name="kind">other</field>
+            <field name="parent" ref="442"/>
+        </record>
+        <record model="account.account.template" id="4422">
+            <field name="name">Prélèvements forfaitaires non libératoires</field>
+            <field name="code">4422</field>
+            <field name="type" ref="dettes_fiscales_sociales"/>
+            <field name="deferral" eval="True"/>
+            <field name="kind">other</field>
+            <field name="parent" ref="442"/>
+        </record>
+        <record model="account.account.template" id="4423">
+            <field name="name">Retenues et prélèvements sur les distributions</field>
+            <field name="code">4423</field>
+            <field name="type" ref="dettes_fiscales_sociales"/>
+            <field name="deferral" eval="True"/>
+            <field name="kind">other</field>
+            <field name="parent" ref="442"/>
+        </record>
         <record model="account.account.template" id="4424">
             <field name="name">Obligataires</field>
             <field name="code">4424</field>
