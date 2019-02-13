@@ -52,47 +52,6 @@ class Date(Field):
         return super(Date, self).sql_cast(expression)
 
 
-class DateTime(Field):
-    '''
-    Define a datetime field (``datetime``).
-    '''
-    _type = 'datetime'
-    _sql_type = 'DATETIME'
-
-    def __init__(self, string='', format='%H:%M:%S', help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
-            on_change=None, on_change_with=None, depends=None,
-            context=None, loading='eager'):
-        '''
-        :param format: The validation format as used by strftime.
-        '''
-        super(DateTime, self).__init__(string=string, help=help,
-            required=required, readonly=readonly, domain=domain, states=states,
-            select=select, on_change=on_change, on_change_with=on_change_with,
-            depends=depends, context=context, loading=loading)
-        self.format = format
-
-    __init__.__doc__ += Field.__init__.__doc__
-
-    def sql_format(self, value):
-        if not value:
-            return None
-        if isinstance(value, str):
-            datepart, timepart = value.split(" ")
-            year, month, day = map(int, datepart.split("-", 2))
-            hours, minutes, seconds = map(int, timepart.split(":"))
-            return datetime.datetime(year, month, day, hours, minutes, seconds)
-        if not isinstance(value, datetime.datetime):
-            raise ValueError("invalid type '%s' for %s"
-                % (type(value), type(self)))
-        return value.replace(microsecond=0)
-
-    def sql_cast(self, expression):
-        if backend.name() == 'sqlite':
-            return SQLite_DateTime(expression)
-        return super(DateTime, self).sql_cast(expression)
-
-
 class Timestamp(Field):
     '''
     Define a timestamp field (``datetime``).
@@ -118,6 +77,40 @@ class Timestamp(Field):
         if not isinstance(value, datetime.datetime):
             raise ValueError("invalid type '%s' for %s"
                 % (type(value), type(self)))
+        return value
+
+    def sql_cast(self, expression):
+        if backend.name() == 'sqlite':
+            return SQLite_DateTime(expression)
+        return super(DateTime, self).sql_cast(expression)
+
+
+class DateTime(Timestamp):
+    '''
+    Define a datetime field (``datetime``).
+    '''
+    _type = 'datetime'
+    _sql_type = 'DATETIME'
+
+    def __init__(self, string='', format='%H:%M:%S', help='', required=False,
+            readonly=False, domain=None, states=None, select=False,
+            on_change=None, on_change_with=None, depends=None,
+            context=None, loading='eager'):
+        '''
+        :param format: The validation format as used by strftime.
+        '''
+        super(DateTime, self).__init__(string=string, help=help,
+            required=required, readonly=readonly, domain=domain, states=states,
+            select=select, on_change=on_change, on_change_with=on_change_with,
+            depends=depends, context=context, loading=loading)
+        self.format = format
+
+    __init__.__doc__ += Field.__init__.__doc__
+
+    def sql_format(self, value):
+        value = super().sql_format(value)
+        if value:
+            value = value.replace(microsecond=0)
         return value
 
 
