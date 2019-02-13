@@ -982,7 +982,12 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
-        ondelete='RESTRICT', domain=[('salable', '=', True)],
+        ondelete='RESTRICT',
+        domain=[
+            If(Eval('sale_state').in_(['draft', 'quotation']),
+                ('salable', '=', True),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('sale_state') != 'draft',
