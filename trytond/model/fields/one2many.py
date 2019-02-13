@@ -338,7 +338,8 @@ class One2Many(Field):
             definition['domain'] = encoder.encode(
                 ['AND', self.domain, self.filter])
         definition['relation'] = self.model_name
-        definition['relation_field'] = self.field
+        if self.field:
+            definition['relation_field'] = self.field
         definition['search_context'] = encoder.encode(self.search_context)
         definition['search_order'] = encoder.encode(self.search_order)
         definition['size'] = encoder.encode(self.size)
