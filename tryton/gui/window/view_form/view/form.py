@@ -505,7 +505,7 @@ class ViewForm(View):
                 if field and 'invalid' in field.get_state_attrs(record):
                     for widget in widgets:
                         field.get_state_attrs(record)['invalid'] = False
-                        widget.display(record, field)
+                        widget.display()
 
     def display(self):
         record = self.screen.current_record
