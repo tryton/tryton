@@ -262,7 +262,6 @@
         update: function(view, buttons) {
             this.content.unbind('submit');
             Sao.Wizard.Dialog._super.update.call(this, view, buttons);
-            this.dialog.modal('show');
             this.dialog.on('keydown', function(e) {
                 if (e.which == Sao.common.ESC_KEYCODE) {
                     e.preventDefault();
@@ -271,6 +270,7 @@
                     }
                 }
             }.bind(this));
+            this.show();
         },
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this, action);
@@ -323,6 +323,37 @@
             }
         },
         show: function() {
+            var view = this.screen.current_view;
+            var expand;
+            if (view.view_type == 'form') {
+                expand = false;
+                var fields = view.get_fields();
+                for (var i = 0; i < fields.length; i++) {
+                    var name = fields[i];
+                    var widgets = view.widgets[name];
+                    for (var j = 0; j < widgets.length; j++) {
+                        var widget = widgets[j];
+                        if (widget.expand) {
+                            expand = true;
+                            break;
+                        }
+                    }
+                    if (expand) {
+                        break;
+                    }
+                }
+            } else {
+                expand = true;
+            }
+            if (expand) {
+                this.dialog.find('.modal-dialog')
+                    .removeClass('modal-md modal-sm')
+                    .addClass('modal-lg');
+            } else {
+                this.dialog.find('.modal-dialog')
+                    .removeClass('modal-lg modal-sm')
+                    .addClass('modal-md');
+            }
             this.dialog.modal('show');
         },
         hide: function() {
