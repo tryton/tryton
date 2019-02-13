@@ -106,9 +106,11 @@ class Main(Gtk.Application):
         action.connect('activate', lambda *a: self.edit_email())
         self.add_action(action)
 
+        self._shortcuts = None
         action = Gio.SimpleAction.new('shortcuts', None)
         action.connect('activate', lambda *a: self.shortcuts())
         self.add_action(action)
+        self.add_accelerator('<Primary>F1', 'app.shortcuts')
 
         action = Gio.SimpleAction.new('about', None)
         action.connect('activate', lambda *a: self.about())
@@ -583,8 +585,110 @@ class Main(Gtk.Application):
         About()
 
     def shortcuts(self):
-        from tryton.gui.window.shortcuts import Shortcuts
-        Shortcuts().run()
+        if self._shortcuts:
+            self._shortcuts.destroy()
+        self._shortcuts = window = Gtk.ShortcutsWindow()
+        window.set_transient_for(common.get_toplevel_window())
+        window.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
+        window.set_destroy_with_parent(True)
+        self.add_window(window)
+
+        section = Gtk.ShortcutsSection()
+        section.props.section_name = 'app'
+        section.props.title = _("Application Shortcuts")
+        section.props.visible = True
+
+        group = Gtk.ShortcutsGroup()
+        group.props.title = _("Global")
+        section.add(group)
+
+        for action, title in [
+                ('app.menu-search', _("Search menu")),
+                ('app.menu-toggle', _("Toggle menu")),
+                ('app.tab-previous', _("Previous tab"), ),
+                ('app.tab-next', _("Next tab")),
+                ('app.shortcuts', _("Shortcuts")),
+                ('app.quit', _("Quit")),
+                ]:
+            shortcut = Gtk.ShortcutsShortcut()
+            shortcut.props.title = title
+            accels = self.get_accels_for_action(action)
+            if accels:
+                shortcut.props.accelerator = ' '.join(accels)
+                group.add(shortcut)
+
+        window.add(section)
+
+        for name, title, groups in [
+                ('entry', _("Edition Shortcuts"), [
+                        (_("Text Entries"), [
+                                ('<Primary>x', _("Cut selected text")),
+                                ('<Primary>c', _("Copy selected text")),
+                                ('<Primary>v', _("Paste copied text")),
+                                ('Tab', _("Next entry")),
+                                ('<Shift>Tab', _("Previous entry")),
+                                ]),
+                        (_("Relation Entries"), [
+                                ('F3', _("Create new relation")),
+                                ('F2', _("Open/Search relation")),
+                                ]),
+                        (_("List Entries"), [
+                                ('F3', _("Create new line")),
+                                ('F2', _("Open relation")),
+                                ('Delete', _("Mark line for deletion")),
+                                ('Insert', _("Unmark line for deletion")),
+                                ]),
+                        ]),
+                ('tree', _("List/Tree Shortcuts"), [
+                        (_("Move Cursor"), [
+                                ('Right', _("Move right")),
+                                ('Left', _("Move left")),
+                                ('Up', _("Move up")),
+                                ('Down', _("Move down")),
+                                ('Page_Up', _("Move up of one page")),
+                                ('Page_Down', _("Move down of one page")),
+                                ('Home', _("Move to top")),
+                                ('End', _("Move to bottom")),
+                                ('BackSpace', _("Move to parent")),
+                                ]),
+                        (_("Selection"), [
+                                ('<Ctrl>a <Ctrl>slash', _("Select all")),
+                                ('<Shift><Ctrl>a <Shift><Ctrl>slash',
+                                    _("Unselect all")),
+                                ('BackSpace', _("Select parent")),
+                                ('space', _("Select/Activate current row")),
+                                ('<Shift>space Return',
+                                    _("Select/Activate current row")),
+                                ('<Ctrl>space', _("Toggle selection")),
+                                ]),
+                        (_("Expand/Collapse"), [
+                                ('plus', _("Expand row")),
+                                ('minus', _("Collapse row")),
+                                ('space', _("Toggle row")),
+                                ('<Shift>Left', _("Collapse all rows")),
+                                ('<Shift>Right', _("Expand all rows")),
+                                ]),
+                        ]),
+                ]:
+            section = Gtk.ShortcutsSection()
+            section.props.section_name = name
+            section.props.title = title
+            section.props.visible = True
+
+            for title, shortcuts in groups:
+                group = Gtk.ShortcutsGroup()
+                group.props.title = title
+                section.add(group)
+
+                for accelerator, title in shortcuts:
+                    shortcut = Gtk.ShortcutsShortcut()
+                    shortcut.props.title = title
+                    shortcut.props.accelerator = accelerator
+                    group.add(shortcut)
+
+            window.add(section)
+
+        window.show_all()
 
     def menu_toggle(self, *args):
         if self.menu.get_visible():
