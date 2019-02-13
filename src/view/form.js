@@ -180,6 +180,12 @@ function eval_pyson(value){
                 attributes.colspan = 4;
             }
             var notebook = new Sao.View.Form.Notebook(attributes);
+            if (attributes.height) {
+                notebook.el.css('min-height', attributes.height + 'px');
+            }
+            if (attributes.width) {
+                notebook.el.css('min-width', attributes.width + 'px');
+            }
             this.notebooks.push(notebook);
             this.state_widgets.push(notebook);
             container.add(attributes, notebook);
