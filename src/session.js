@@ -119,22 +119,22 @@
         var dialog = new Sao.Dialog(Sao.i18n.gettext('Login'), 'lg');
         dialog.database_select = jQuery('<select/>', {
             'class': 'form-control',
-            'id': 'login-database'
+            'id': 'database'
         }).hide();
         dialog.database_input = jQuery('<input/>', {
             'class': 'form-control',
-            'id': 'login-database'
+            'id': 'database'
         }).hide();
         dialog.login_input = jQuery('<input/>', {
             'class': 'form-control',
-            'id': 'login-login',
+            'id': 'login',
             'placeholder': Sao.i18n.gettext('User name')
         });
         dialog.body.append(jQuery('<div/>', {
             'class': 'form-group'
         }).append(jQuery('<label/>', {
             'class': 'control-label',
-            'for': 'login-database'
+            'for': 'database'
         }).append(Sao.i18n.gettext('Database')))
         .append(dialog.database_select)
         .append(dialog.database_input)
@@ -142,7 +142,7 @@
             'class': 'form-group'
         }).append(jQuery('<label/>', {
             'class': 'control-label',
-            'for': 'login-login'
+            'for': 'login'
         }).append(Sao.i18n.gettext('User name')))
         .append(dialog.login_input)
         );
