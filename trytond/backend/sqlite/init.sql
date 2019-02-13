@@ -44,7 +44,6 @@ CREATE TABLE ir_translation (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     lang VARCHAR,
     src TEXT,
-    src_md5 VARCHAR(32) NOT NULL,
     name VARCHAR,
     res_id INTEGER,
     value TEXT,

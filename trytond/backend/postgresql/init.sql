@@ -62,7 +62,6 @@ CREATE TABLE ir_translation (
     id INTEGER DEFAULT NEXTVAL('ir_translation_id_seq') NOT NULL,
     lang VARCHAR,
     src TEXT,
-    src_md5 VARCHAR(32) NOT NULL,
     name VARCHAR NOT NULL,
     res_id INTEGER,
     value TEXT,
