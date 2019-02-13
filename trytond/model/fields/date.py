@@ -92,7 +92,7 @@ class Timestamp(FormatMixin, Field):
     def sql_cast(self, expression):
         if backend.name() == 'sqlite':
             return SQLite_DateTime(expression)
-        return super(DateTime, self).sql_cast(expression)
+        return super().sql_cast(expression)
 
 
 class DateTime(Timestamp):
