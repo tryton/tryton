@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+import time
 import unittest
 
+from trytond import cache as cache_mod
 from trytond.cache import freeze, MemoryCache
 from trytond.tests.test_tryton import with_transaction, activate_module
 from trytond.tests.test_tryton import DB_NAME, USER
@@ -18,6 +20,13 @@ class CacheTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         activate_module('tests')
+
+    def setUp(self):
+        super().setUp()
+        clear_timeout = cache_mod._clear_timeout
+        cache_mod._clear_timeout = 1
+        self.addCleanup(
+            setattr, cache_mod, '_clear_timeout', clear_timeout)
 
     def tearDown(self):
         MemoryCache.drop(DB_NAME)
@@ -82,6 +91,16 @@ class CacheTestCase(unittest.TestCase):
 
         transaction2.commit()
         self.assertEqual(cache.get('foo'), None)
+
+    def test_memory_cache_sync(self):
+        "Test MemoryCache synchronisation"
+        with Transaction().start(DB_NAME, USER):
+            cache.clear()
+        time.sleep(cache_mod._clear_timeout)
+        last = cache._clean_last
+
+        with Transaction().start(DB_NAME, USER):
+            self.assertGreater(cache._clean_last, last)
 
 
 def suite():

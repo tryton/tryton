@@ -6,14 +6,25 @@ from weakref import WeakKeyDictionary
 
 from sql import Table
 from sql.aggregate import Max
-from sql.functions import CurrentTimestamp
+from sql.functions import CurrentTimestamp, Function
 
+from trytond import backend
 from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.tools import resolve
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict']
 _clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)
+
+
+def _cast(column):
+    class SQLite_DateTime(Function):
+        __slots__ = ()
+        _function = 'DATETIME'
+
+    if backend.name() == 'sqlite':
+        column = SQLite_DateTime(column)
+    return column
 
 
 def freeze(o):
@@ -121,7 +132,7 @@ class MemoryCache(BaseCache):
         dbname = transaction.database.name
         with transaction.connection.cursor() as cursor:
             table = Table('ir_cache')
-            cursor.execute(*table.select(table.timestamp, table.name))
+            cursor.execute(*table.select(_cast(table.timestamp), table.name))
             timestamps = {}
             for timestamp, name in cursor.fetchall():
                 timestamps[name] = timestamp
@@ -159,7 +170,7 @@ class MemoryCache(BaseCache):
                             [[CurrentTimestamp(), name]]))
 
                 cursor.execute(*table.select(
-                        Max(table.timestamp),
+                        _cast(Max(table.timestamp)),
                         where=table.name == name))
                 timestamp, = cursor.fetchone()
 
