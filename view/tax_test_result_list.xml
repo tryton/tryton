@@ -3,12 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="base"/>
-    <field name="base_sign"/>
-    <field name="base_code"/>
     <field name="amount"/>
-    <field name="tax_sign"/>
-    <field name="tax_code"/>
     <field name="account"/>
     <field name="tax"/>
     <field name="description"/>
+    <field name="legal_notice"/>
 </tree>

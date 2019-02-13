@@ -1727,10 +1727,7 @@ class TestTaxViewResult(ModelView):
     __name__ = 'account.tax.test.result'
     tax = fields.Many2One('account.tax', "Tax")
     description = fields.Char("Description")
+    legal_notice = fields.Char("Legal Notice")
     account = fields.Many2One('account.account', "Account")
     base = fields.Numeric("Base")
-    base_code = fields.Many2One('account.tax.code', "Base Code")
-    base_sign = fields.Numeric("Base Sign", digits=(2, 0))
     amount = fields.Numeric("Amount")
-    tax_code = fields.Many2One('account.tax.code', "Tax Code")
-    tax_sign = fields.Numeric("Tax Sign", digits=(2, 0))
