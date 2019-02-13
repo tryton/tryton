@@ -125,7 +125,8 @@ var Sao = {};
         ClassConstructor._super = Parent.prototype;
         if (props) {
             for (var name in props) {
-                ClassConstructor.prototype[name] = props[name];
+                Object.defineProperty(ClassConstructor.prototype, name,
+                    Object.getOwnPropertyDescriptor(props, name));
             }
         }
         return ClassConstructor;
