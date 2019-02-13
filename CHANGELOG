@@ -1,3 +1,4 @@
+* Use tab key for tab navigation
 * Use ShortcutsWindow
 * Improve default size of widgets and dialog
 * Use record and field properties of widget instead of method arguments

@@ -91,12 +91,12 @@ class Main(Gtk.Application):
         action = Gio.SimpleAction.new('tab-previous', None)
         action.connect('activate', lambda *a: self.win_prev())
         self.add_action(action)
-        self.add_accelerator('<Primary>Left', 'app.tab-previous')
+        self.add_accelerator('<Primary><Shift>Tab', 'app.tab-previous')
 
         action = Gio.SimpleAction.new('tab-next', None)
         action.connect('activate', lambda *a: self.win_next())
         self.add_action(action)
-        self.add_accelerator('<Primary>Right', 'app.tab-next')
+        self.add_accelerator('<Primary>Tab', 'app.tab-next')
 
         action = Gio.SimpleAction.new('search-limit', None)
         action.connect('activate', lambda *a: self.edit_limit())
