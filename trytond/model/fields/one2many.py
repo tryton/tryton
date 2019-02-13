@@ -342,6 +342,7 @@ class One2Many(Field):
             definition['relation_field'] = self.field
         definition['search_context'] = encoder.encode(self.search_context)
         definition['search_order'] = encoder.encode(self.search_order)
-        definition['size'] = encoder.encode(self.size)
+        if self.size is not None:
+            definition['size'] = encoder.encode(self.size)
         definition['sortable'] &= hasattr(model, 'order_' + self.name)
         return definition

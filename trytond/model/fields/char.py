@@ -82,5 +82,6 @@ class Char(FieldTranslate):
     def definition(self, model, language):
         definition = super().definition(model, language)
         definition['autocomplete'] = list(self.autocomplete)
-        definition['size'] = self.size
+        if self.size is not None:
+            definition['size'] = self.size
         return definition
