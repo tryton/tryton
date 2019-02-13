@@ -1524,14 +1524,16 @@ function eval_pyson(value){
             }.bind(this));
             var mousetrap = new Mousetrap(this.el[0]);
 
-            mousetrap.bind(['enter', '='], function(e, combo) {
-                if (this.date.find('input').prop('readonly')) {
-                    return;
+            mousetrap.bind('enter', function(e, combo) {
+                if (!this.date.find('input').prop('readonly')) {
+                    this.date.data('DateTimePicker').date();
                 }
-                if (e.which != Sao.common.RETURN_KEYCODE) {
+            }.bind(this));
+            mousetrap.bind('=', function(e, combo) {
+                if (!this.date.find('input').prop('readonly')) {
                     e.preventDefault();
+                    this.date.data('DateTimePicker').date(moment());
                 }
-                this.date.data('DateTimePicker').date(moment());
             }.bind(this));
 
             Sao.common.DATE_OPERATORS.forEach(function(operator) {
