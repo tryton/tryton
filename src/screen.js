@@ -581,10 +581,11 @@
                 entry.data('DateTimePicker').format(format);
                 var mousetrap = new Mousetrap(el[0]);
 
-                mousetrap.bind(['enter', '='], function(e, combo) {
-                    if (e.which != Sao.common.RETURN_KEYCODE) {
-                        e.preventDefault();
-                    }
+                mousetrap.bind('enter', function(e, combo) {
+                    entry.data('DateTimePicker').date();
+                });
+                mousetrap.bind('=', function(e, combo) {
+                    e.preventDefault();
                     entry.data('DateTimePicker').date(moment());
                 });
 
