@@ -51,6 +51,12 @@ class Geometry(fields.Field):
 
         return expression
 
+    def definition(self, model, language):
+        definition = super().definition(model, language)
+        definition['dimension'] = self.dimension
+        definition['geometry_type'] = self.geometry_type
+        return definition
+
 
 class Point(Geometry):
     _geometry_type = 'POINT'
