@@ -942,10 +942,12 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
         domain=[
-            ('purchasable', '=', True),
-            If(Bool(Eval('product_supplier')),
-                ('product_suppliers', '=', Eval('product_supplier')),
-                ()),
+            If(Eval('purchase_state').in_(['draft', 'quotation']),
+                [('purchasable', '=', True),
+                    If(Bool(Eval('product_supplier')),
+                        ('product_suppliers', '=', Eval('product_supplier')),
+                        ())],
+                []),
             ],
         states={
             'invisible': Eval('type') != 'line',
