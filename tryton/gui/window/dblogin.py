@@ -394,7 +394,8 @@ class DBLogin(object):
     def __init__(self):
         # Fake windows to avoid warning about Dialog without transient
         self._window = gtk.Window()
-        self.dialog = gtk.Dialog(title=_('Login'), flags=gtk.DIALOG_MODAL)
+        self.dialog = gtk.Dialog(
+            title="Tryton - " + _('Login'), flags=gtk.DIALOG_MODAL)
         self.dialog.set_transient_for(self._window)
         self.dialog.set_icon(TRYTON_ICON)
         self.dialog.set_position(gtk.WIN_POS_CENTER_ALWAYS)
