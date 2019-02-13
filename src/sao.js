@@ -982,13 +982,13 @@ var Sao = {};
                 label: Sao.i18n.gettext('Print'),
                 id: 'print',
             }, {
-                shortcut: 'ctrl+left',
+                shortcut: 'alt+shift+tab',
                 label: Sao.i18n.gettext('Previous tab'),
                 callback: function() {
                     Sao.Tab.previous_tab();
                 },
             }, {
-                shortcut: 'ctrl+right',
+                shortcut: 'alt+tab',
                 label: Sao.i18n.gettext('Next tab'),
                 callback: function() {
                     Sao.Tab.next_tab();
