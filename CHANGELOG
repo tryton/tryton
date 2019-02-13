@@ -1,3 +1,4 @@
+* Improve layout of CSV import/export
 * Add support for height and width on notebook
 * Use tab key for tab navigation
 * Use record and field properties of widget instead of method arguments

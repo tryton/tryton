@@ -463,8 +463,9 @@ input.column-boolean {
 .csv {
     .modal-dialog {
         .column-fields {
-            height: 35vh;
-            overflow-y: scroll;
+            max-height: 400px;
+            overflow: auto;
+            white-space: nowrap;
         }
     }
 }
