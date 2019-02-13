@@ -4,13 +4,15 @@ import warnings
 
 from sql.conditionals import Case
 
+from trytond.pool import Pool
 from ...transaction import Transaction
 from ...tools import is_instance_method
 from .field import Field
 from ...rpc import RPC
 
 
-class SelectionMixin:
+class SelectionMixin(Field):
+    translate_selection = True
 
     def translated(self, name=None):
         "Return a descriptor for the translated value of the field"
@@ -20,8 +22,36 @@ class SelectionMixin:
             raise ValueError('Missing name argument')
         return TranslatedSelection(name)
 
+    def definition(self, model, language):
+        pool = Pool()
+        Translation = pool.get('ir.translation')
+        definition = super().definition(model, language)
+        if not isinstance(self.selection, str) and self.translate_selection:
+            name = '%s,%s' % (model.__class__, self.name)
+            selection = []
+            for key, source in self.selection:
+                trans = Translation.get_source(
+                    name, 'selection', language, source)
+                selection.append((key, trans or source))
+        elif hasattr(self.selection, 'copy'):
+            selection = self.selection.copy()
+        else:
+            selection = self.selection
+        definition['selection'] = selection
+        definition['selection_change_with'] = list(self.selection_change_with)
+        return definition
 
-class Selection(Field, SelectionMixin):
+    def definition_translations(self, model, language):
+        name = '%s,%s' % (model.__class__, self.name)
+        selection = []
+        if not isinstance(self.selection, str) and self.translate_selection:
+            for key, source in self.selection:
+                selection.append(
+                    (name, 'selection', language, source))
+        return super().definition_translations(model, language) + selection
+
+
+class Selection(SelectionMixin, Field):
     '''
     Define a selection field (``str``).
     '''
@@ -86,6 +116,11 @@ class Selection(Field, SelectionMixin):
             return [Case(*whens, else_=column)]
         else:
             return [column]
+
+    def definition(self, model, language):
+        definition = super().definition(model, language)
+        definition['sort'] = self.sort
+        return definition
 
 
 class TranslatedSelection(object):

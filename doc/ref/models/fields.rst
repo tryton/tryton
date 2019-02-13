@@ -192,6 +192,14 @@ Instance methods:
 
     Adds to `model` the default RPC instances required by the field.
 
+.. method:: Field.definition(model, language)
+
+    Returns a dictionary with the definition of the field.
+
+.. method:: Field.definition_translations(model, language)
+
+    Returns a list of translation sources used by :meth:`~Field.definition`.
+
 Default value
 =============
 

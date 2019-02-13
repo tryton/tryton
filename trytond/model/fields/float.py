@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.pyson import PYSONEncoder
 from .field import Field
 from ...pyson import PYSON
 
@@ -52,3 +53,9 @@ class Float(Field):
         if value is None:
             return None
         return float(value)
+
+    def definition(self, model, language):
+        encoder = PYSONEncoder()
+        definition = super().definition(model, language)
+        definition['digits'] = encoder.encode(self.digits)
+        return definition

@@ -1,3 +1,4 @@
+* Move field definition from Model to Field
 * Use number of verbose flag as log level
 * Add coroutine concurrency option
 * Add increasing delay on database operational error retry

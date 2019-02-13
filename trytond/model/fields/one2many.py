@@ -5,6 +5,7 @@ from sql import Cast, Literal
 from sql.functions import Substring, Position
 from sql.conditionals import Coalesce
 
+from trytond.pyson import PYSONEncoder
 from .field import (Field, size_validate, instanciate_values, domain_validate,
     search_order_validate, context_validate)
 from ...pool import Pool
@@ -327,3 +328,19 @@ class One2Many(Field):
         if operator == 'not where':
             expression = ~expression
         return expression
+
+    def definition(self, model, language):
+        encoder = PYSONEncoder()
+        definition = super().definition(model, language)
+        definition['add_remove'] = encoder.encode(self.add_remove)
+        definition['datetime_field'] = self.datetime_field
+        if self.filter:
+            definition['domain'] = encoder.encode(
+                ['AND', self.domain, self.filter])
+        definition['relation'] = self.model_name
+        definition['relation_field'] = self.field
+        definition['search_context'] = encoder.encode(self.search_context)
+        definition['search_order'] = encoder.encode(self.search_order)
+        definition['size'] = encoder.encode(self.size)
+        definition['sortable'] &= hasattr(model, 'order_' + self.name)
+        return definition

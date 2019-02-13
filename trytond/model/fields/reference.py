@@ -5,6 +5,7 @@ import warnings
 from sql import Cast, Literal, Query, Expression
 from sql.functions import Substring, Position
 
+from trytond.pyson import PYSONEncoder
 from .field import (Field, search_order_validate, context_validate,
     with_inactive_records)
 from .selection import SelectionMixin
@@ -13,7 +14,7 @@ from ...pool import Pool
 from ...rpc import RPC
 
 
-class Reference(Field, SelectionMixin):
+class Reference(SelectionMixin, Field):
     '''
     Define a reference field (``str``).
     '''
@@ -177,3 +178,11 @@ class Reference(Field, SelectionMixin):
                     Position(',', column) + Literal(1)),
                 Model.id.sql_type().base).in_(query)
             & column.ilike(target + ',%'))
+
+    def definition(self, model, language):
+        encoder = PYSONEncoder()
+        definition = super().definition(model, language)
+        definition['datetime_field'] = self.datetime_field
+        definition['search_context'] = encoder.encode(self.search_context)
+        definition['search_order'] = encoder.encode(self.search_order)
+        return definition

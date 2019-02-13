@@ -5,6 +5,7 @@ from sql.aggregate import Max
 from sql.conditionals import Coalesce
 from sql.operators import Or
 
+from trytond.pyson import PYSONEncoder
 from .field import (Field, search_order_validate, context_validate,
     with_inactive_records)
 from ...pool import Pool
@@ -289,3 +290,21 @@ class Many2One(Field):
                 }
             tables[self.name] = target_tables
         return target_tables
+
+    def definition(self, model, language):
+        encoder = PYSONEncoder()
+
+        target = self.get_target()
+        relation_fields = [fname for fname, field in target._fields.items()
+            if field._type == 'one2many'
+            and field.model_name == model.__name__
+            and field.field == self.name]
+
+        definition = super().definition(model, language)
+        definition['datetime_field'] = self.datetime_field
+        definition['relation'] = target.__name__
+        if len(relation_fields) == 1:
+            definition['relation_field'], = relation_fields
+        definition['search_context'] = encoder.encode(self.search_context)
+        definition['search_order'] = encoder.encode(self.search_order)
+        return definition

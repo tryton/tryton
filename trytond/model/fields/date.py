@@ -3,6 +3,7 @@
 import datetime
 from sql.functions import Function
 
+from trytond.pyson import PYSONEncoder
 from ... import backend
 from .field import Field
 
@@ -52,7 +53,16 @@ class Date(Field):
         return super(Date, self).sql_cast(expression)
 
 
-class Timestamp(Field):
+class FormatMixin(Field):
+
+    def definition(self, model, language):
+        encoder = PYSONEncoder()
+        definition = super().definition(model, language)
+        definition['format'] = encoder.encode(self.format)
+        return definition
+
+
+class Timestamp(FormatMixin, Field):
     '''
     Define a timestamp field (``datetime``).
     '''
@@ -184,3 +194,8 @@ class TimeDelta(Field):
             else:
                 result[row['id']] = value
         return result
+
+    def definition(self, model, language):
+        definition = super().definition(model, language)
+        definition['converter'] = self.converter
+        return definition

@@ -140,6 +140,11 @@ class Dict(Field):
         column = self.sql_column(table)
         return [database.json_get(column, key)]
 
+    def definition(self, model, language):
+        definition = super().definition(model, language)
+        definition['schema_model'] = self.schema_model
+        return definition
+
 
 class TranslatedDict(object):
     'A descriptor for translated values of Dict field'

@@ -123,6 +123,14 @@ class Function(Field):
     def __set__(self, inst, value):
         self._field.__set__(inst, value)
 
+    def definition(self, model, language):
+        definition = self._field.definition(model, language)
+        definition.update(super().definition(model, language))
+        definition['searchable'] &= (
+            bool(self.searcher) or hasattr(model, 'domain_' + self.name))
+        definition['sortable'] &= hasattr(model, 'order_' + self.name)
+        return definition
+
 
 class MultiValue(Function):
 

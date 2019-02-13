@@ -384,6 +384,40 @@ class Field(object):
             model.__rpc__.setdefault(
                 func_name, RPC(instantiate=0, result=result))
 
+    def definition(self, model, language):
+        pool = Pool()
+        Translation = pool.get('ir.translation')
+        encoder = PYSONEncoder()
+        definition = {
+            'context': encoder.encode(self.context),
+            'loading': self.loading,
+            'name': self.name,
+            'on_change': list(self.on_change),
+            'on_change_with': list(self.on_change_with),
+            'readonly': self.readonly,
+            'required': self.required,
+            'states': encoder.encode(self.states),
+            'type': self._type,
+            'domain': encoder.encode(self.domain),
+            'searchable': hasattr(model, 'search'),
+            'sortable': hasattr(model, 'search'),
+            }
+
+        name = '%s,%s' % (model.__class__, self.name)
+        trans = Translation.get_source(name, 'field', language)
+        definition['string'] = trans or self.string
+        trans = Translation.get_source(name, 'help', language)
+        definition['help'] = trans or self.help
+        return definition
+
+    def definition_translations(self, model, language):
+        "Returns sources used for definition"
+        name = '%s,%s' % (model.__class__, self.name)
+        return [
+            (name, 'field', language, None),
+            (name, 'help', language, None),
+            ]
+
 
 class FieldTranslate(Field):
 
@@ -493,3 +527,8 @@ class FieldTranslate(Field):
             language = get_parent_language(language)
 
         return [Coalesce(column, self.sql_column(table))]
+
+    def definition(self, model, language):
+        definition = super().definition(model, language)
+        definition['translate'] = self.translate
+        return definition

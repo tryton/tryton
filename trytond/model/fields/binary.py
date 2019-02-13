@@ -20,8 +20,8 @@ class Binary(Field):
             domain=None, states=None, select=False, on_change=None,
             on_change_with=None, depends=None, context=None, loading='lazy',
             filename=None, file_id=None, store_prefix=None):
+        self.filename = filename
         if filename is not None:
-            self.filename = filename
             if depends is None:
                 depends = [filename]
             else:
@@ -116,3 +116,9 @@ class Binary(Field):
                 values = [self.sql_format(value)]
             cursor.execute(*table.update(columns, values,
                     where=reduce_ids(table.id, ids)))
+
+    def definition(self, model, language):
+        definition = super().definition(model, language)
+        definition['searchable'] = False
+        definition['filename'] = self.filename
+        return definition
