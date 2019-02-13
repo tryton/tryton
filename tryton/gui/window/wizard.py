@@ -405,9 +405,11 @@ class WizardDialog(Wizard, NoModal):
         if view.view_type == 'form':
             expand = False
             for name in view.get_fields():
-                widget = view[name]
-                if widget.expand:
-                    expand = True
+                for widget in view.widgets[name]:
+                    if widget.expand:
+                        expand = True
+                        break
+                if expand:
                     break
         else:
             expand = True
