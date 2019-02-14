@@ -274,7 +274,7 @@
 
             if (this.screen.current_view.view_type == 'tree' &&
                     (this.screen.current_view.attributes.keyword_open == 1)) {
-                record_ids = this.screen.current_view.selected_records().map(
+                record_ids = this.screen.current_view.selected_records.map(
                         function(record) { return record.id; });
                 Sao.Action.exec_keyword('tree_open', {
                     model: this.screen.model_name,

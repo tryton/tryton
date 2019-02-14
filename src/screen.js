@@ -200,7 +200,7 @@
             this.bookmark_match();
         },
         update: function() {
-            var completions = this.screen.domain_parser().completion(
+            var completions = this.screen.domain_parser.completion(
                     this.get_text());
             this.search_list.children().remove();
             completions.forEach(function(e) {
@@ -247,13 +247,13 @@
                         if (!name) {
                             return;
                         }
-                        var domain = this.screen.domain_parser().parse(text);
+                        var domain = this.screen.domain_parser.parse(text);
                         Sao.common.VIEW_SEARCH.add(model_name, name, domain)
                         .then(function() {
                             refresh();
                         });
                         this.set_text(
-                            this.screen.domain_parser().string(domain));
+                            this.screen.domain_parser.string(domain));
                     }.bind(this));
             } else {
                 var id = this.bookmark_match();
@@ -265,19 +265,19 @@
         bookmarks: function() {
             var searches = Sao.common.VIEW_SEARCH.get(this.screen.model_name);
             return searches.filter(function(search) {
-                return this.screen.domain_parser().stringable(search[2]);
+                return this.screen.domain_parser.stringable(search[2]);
             }.bind(this));
         },
         bookmark_activate: function(e) {
             e.preventDefault();
             var domain = e.data;
-            this.set_text(this.screen.domain_parser().string(domain));
+            this.set_text(this.screen.domain_parser.string(domain));
             this.do_search();
         },
         bookmark_match: function() {
             var current_text = this.get_text();
             if (current_text) {
-                var current_domain = this.screen.domain_parser().parse(
+                var current_domain = this.screen.domain_parser.parse(
                         current_text);
                 this.but_star.prop('disabled', !current_text);
                 var star = this.get_star();
@@ -286,7 +286,7 @@
                     var id = bookmarks[i][0];
                     var name = bookmarks[i][1];
                     var domain = bookmarks[i][2];
-                    var text = this.screen.domain_parser().string(domain);
+                    var text = this.screen.domain_parser.string(domain);
                     if ((text === current_text) ||
                             (Sao.common.compare(domain, current_domain))) {
                         this.set_star(true);
@@ -387,7 +387,7 @@
             return this.search_entry.val();
         },
         search_box: function() {
-            var domain_parser = this.screen.domain_parser();
+            var domain_parser = this.screen.domain_parser;
             var search = function() {
                 this.search_modal.modal('hide');
                 var text = '';
@@ -487,7 +487,7 @@
                         case 'time':
                             var format;
                             var date_format = Sao.common.date_format(
-                                this.screen.context().date_format);
+                                this.screen.context.date_format);
                             if (field.type == 'date') {
                                 format = date_format;
                             } else {
@@ -760,7 +760,7 @@
                 view = this.views_preload[view_type];
             } else {
                 var prm = this.model.execute('fields_view_get',
-                        [view_id, view_type], this.context());
+                        [view_id, view_type], this.context);
                 return prm.pipe(this.add_view.bind(this));
             }
             this.add_view(view);
@@ -798,7 +798,7 @@
 
             return view_widget;
         },
-        number_of_views: function() {
+        get number_of_views() {
             return this.views.length + this.view_to_load.length;
         },
         switch_view: function(view_type, view_id) {
@@ -891,20 +891,20 @@
                     this.context_screen.display(true);
                     return jQuery.when();
                 }
-                this.new_group(jQuery.extend(this.context(),
+                this.new_group(jQuery.extend(this.context,
                     this.context_screen.get_on_change_value()));
             }
 
             var domain = this.search_domain(search_string, true);
             if (this.context_domain) {
-                var decoder = new Sao.PYSON.Decoder(this.context());
+                var decoder = new Sao.PYSON.Decoder(this.context);
                 domain = ['AND', domain, decoder.decode(this.context_domain)];
             }
             var tab_domain = this.screen_container.get_tab_domain();
             if (!jQuery.isEmptyObject(tab_domain)) {
                 domain = ['AND', domain, tab_domain];
             }
-            var context = this.context();
+            var context = this.context;
             if (this.screen_container.but_active.hasClass('active')) {
                 context.active_test = false;
             }
@@ -960,8 +960,8 @@
             var domain = [];
 
             // Test first parent to avoid calling unnecessary domain_parser
-            if (!this.group.parent && this.domain_parser()) {
-                var domain_parser = this.domain_parser();
+            if (!this.group.parent && this.domain_parser) {
+                var domain_parser = this.domain_parser;
                 if (search_string || search_string === '') {
                     domain = domain_parser.parse(search_string);
                 } else {
@@ -1010,15 +1010,15 @@
                     var domain = ['AND', tab_domain[1], screen_domain];
                     this.screen_container.set_tab_counter(null, i);
                     this.group.model.execute(
-                        'search_count', [domain], this.context())
+                        'search_count', [domain], this.context)
                         .then(function(count) {
                             this.screen_container.set_tab_counter(count, i);
                         }.bind(this));
                 }
             }.bind(this));
         },
-        context: function() {
-            var context = this.group.context();
+        get context() {
+            var context = this.group.context;
             if ( this.context_screen ){
                 context.context_model = this.context_screen.model_name;
             }
@@ -1050,9 +1050,9 @@
             this.group = group;
             this.model = group.model;
             if (group && group.length) {
-                this.set_current_record(group[0]);
+                this.current_record = group[0];
             } else {
-                this.set_current_record(null);
+                this.current_record = null;
             }
             this.group.add_fields(fields);
             var views_add = function(view) {
@@ -1066,14 +1066,17 @@
         },
         new_group: function(context) {
             if (!context) {
-                context = this.context();
+                context = this.context;
             }
             var group = new Sao.Group(this.model, context, []);
-            group.set_readonly(this.attributes.readonly || false);
+            group.readonly = this.attributes.readonly || false;
             this.set_group(group);
         },
-        set_current_record: function(record) {
-            this.current_record = record;
+        get current_record() {
+            return this.__current_record;
+        },
+        set current_record(record) {
+            this.__current_record = record;
             if (this.message_callback){
                 var pos = null;
                 var record_id = null;
@@ -1149,7 +1152,7 @@
             }
             return jQuery.when.apply(jQuery, deferreds).then(function() {
                 return this.set_tree_state().then(function() {
-                    this.set_current_record(this.current_record);
+                    this.current_record = this.current_record;
                     // set_cursor must be called after set_tree_state because
                     // set_tree_state redraws the tree
                     if (set_cursor) {
@@ -1180,9 +1183,9 @@
                         break;
                     }
                 }
-                this.set_current_record(record);
+                this.current_record = record;
             } else {
-                this.set_current_record(this.group[0]);
+                this.current_record = this.group[0];
             }
             this.set_cursor(false, false);
             view.display();
@@ -1209,9 +1212,9 @@
                         break;
                     }
                 }
-                this.set_current_record(record);
+                this.current_record = record;
             } else {
-                this.set_current_record(this.group[0]);
+                this.current_record = this.group[0];
             }
             this.set_cursor(false, false);
             view.display();
@@ -1271,7 +1274,7 @@
                 }
                 return prm.then(function() {
                     group.add(record, this.new_model_position());
-                    this.set_current_record(record);
+                    this.current_record = record;
                     var prm = jQuery.when();
                     if (previous_view.view_type == 'calendar') {
                         prm = previous_view.set_default_date(
@@ -1323,7 +1326,7 @@
             if (!current_record) {
                 if ((this.current_view.view_type == 'tree') &&
                         this.group && this.group.length) {
-                    this.set_current_record(this.group[0]);
+                    this.current_record = this.group[0];
                     current_record = this.current_record;
                 } else {
                     return jQuery.when();
@@ -1357,7 +1360,7 @@
                             [path[path.length - 1][0], current_record.id]);
                 }
                 return this.group.get_by_path(path).then(function(record) {
-                    this.set_current_record(record);
+                    this.current_record = record;
                 }.bind(this));
             }.bind(this)).then(function() {
                 this.display().always(dfd.resolve);
@@ -1392,14 +1395,14 @@
             return false;
         },
         unremove: function() {
-            var records = this.current_view.selected_records();
+            var records = this.current_view.selected_records;
             records.forEach(function(record) {
                 record.group.unremove(record);
             });
         },
         remove: function(delete_, remove, force_remove, records) {
             var prm = jQuery.when();
-            records = records || this.current_view.selected_records();
+            records = records || this.current_view.selected_records;
             if (jQuery.isEmptyObject(records)) {
                 return prm;
             }
@@ -1440,10 +1443,10 @@
                 }
                 if (!jQuery.isEmptyObject(path)) {
                     prms.push(this.group.get_by_path(path).then(function(record) {
-                        this.set_current_record(record);
+                        this.current_record = record;
                     }.bind(this)));
                 } else if (this.group.length) {
-                    this.set_current_record(this.group[0]);
+                    this.current_record = this.group[0];
                 }
 
                 return jQuery.when.apply(jQuery, prms).then(function() {
@@ -1455,12 +1458,12 @@
         },
         copy: function() {
             var dfd = jQuery.Deferred();
-            var records = this.current_view.selected_records();
-            this.model.copy(records, this.context())
+            var records = this.current_view.selected_records;
+            this.model.copy(records, this.context)
                 .then(function(new_ids) {
                 this.group.load(new_ids);
                 if (!jQuery.isEmptyObject(new_ids)) {
-                    this.set_current_record(this.group.get(new_ids[0]));
+                    this.current_record = this.group.get(new_ids[0]);
                 }
                 this.display().always(dfd.resolve);
             }.bind(this), dfd.reject);
@@ -1475,7 +1478,7 @@
             }
             return jQuery.when();
         },
-        domain_parser: function() {
+        get domain_parser() {
             var view_id, view_tree, domain_parser;
             if (this.current_view) {
                 view_id = this.current_view.view_id;
@@ -1487,7 +1490,7 @@
             }
             if (!(view_id in this.fields_view_tree)) {
                 view_tree = this.model.execute('fields_view_get', [false, 'tree'],
-                    this.context(), false);
+                    this.context, false);
                 this.fields_view_tree[view_id] = view_tree;
             } else {
                 view_tree = this.fields_view_tree[view_id];
@@ -1566,8 +1569,7 @@
                         }
                     });
 
-            domain_parser = new Sao.common.DomainParser(
-                fields, this.context());
+            domain_parser = new Sao.common.DomainParser(fields, this.context);
             this._domain_parser[view_id] = domain_parser;
             return domain_parser;
         },
@@ -1666,12 +1668,12 @@
                 this.group.written(ids);
             }
             if (this.group.parent) {
-                this.group.parent.root_parent().reload();
+                this.group.parent.root_parent.reload();
             }
             return this.display();
         },
         get_buttons: function() {
-            var selected_records = this.current_view.selected_records();
+            var selected_records = this.current_view.selected_records;
             if (jQuery.isEmptyObject(selected_records)) {
                 return [];
             }
@@ -1700,12 +1702,12 @@
                             model: this.model_name,
                             id: this.current_record.id,
                             ids: ids
-                        }, null, this.context(), true);
+                        }, null, this.context, true);
                     }
                 }.bind(this));
             };
 
-            var selected_records = this.current_view.selected_records();
+            var selected_records = this.current_view.selected_records;
             this.current_view.set_value();
             var fields = this.current_view.get_fields();
 
@@ -1747,16 +1749,16 @@
                         var args = record.expr_eval(attributes.change || []);
                         var values = record._get_on_change_args(args);
                         return record.model.execute(attributes.name, [values],
-                            this.context()).then(function(changes) {
+                            this.context).then(function(changes) {
                             record.set_on_change(changes);
-                            record.group.root_group().screens.forEach(
+                            record.group.root_group.screens.forEach(
                                 function(screen) {
                                     screen.display();
                             });
                         });
                     } else {
                         return record.save(false).then(function() {
-                            var context = this.context();
+                            var context = this.context;
                             context._timestamp = {};
                             ids = [];
                             for (i = 0; i < selected_records.length; i++) {
@@ -1836,7 +1838,7 @@
                 function(v) {return v.view_id;}).concat(this.view_ids);
             if (this.current_view.view_type != 'form') {
                 var search_string = this.screen_container.get_text();
-                var search_value = this.domain_parser().parse(search_string);
+                var search_value = this.domain_parser.parse(search_string);
                 if (!jQuery.isEmptyObject(search_value)) {
                     query_string.push(['search_value', dumps(search_value)]);
                 }
@@ -1980,7 +1982,7 @@
                             }
                         }
                         if (record && (record != this.current_record)) {
-                            this.set_current_record(record);
+                            this.current_record = record;
                             // Force a display of the view to synchronize the
                             // widgets with the new record
                             view.display();

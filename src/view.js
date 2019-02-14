@@ -23,7 +23,7 @@
         get_fields: function() {
             return Object.keys(this.fields);
         },
-        selected_records: function() {
+        get selected_records() {
             return [];
         },
         get_buttons: function() {

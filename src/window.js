@@ -72,7 +72,7 @@
             }.bind(this));
 
             var readonly = (this.screen.attributes.readonly ||
-                    this.screen.group.get_readonly());
+                    this.screen.group.readonly);
 
             this._initial_value = null;
             if (view_type == 'form') {
@@ -242,7 +242,7 @@
         record_label: function(data) {
             var name = '_';
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-            var readonly = this.screen.group.get_readonly();
+            var readonly = this.screen.group.readonly;
             if (data[0] >= 1) {
                 name = data[0];
                 if (this.domain) {
@@ -319,7 +319,7 @@
         response: function(response_id) {
             var result;
             this.screen.current_view.set_value();
-            var readonly = this.screen.group.get_readonly();
+            var readonly = this.screen.group.readonly;
             if (~['RESPONSE_OK', 'RESPONSE_ACCEPT'].indexOf(response_id) &&
                     !readonly &&
                     this.screen.current_record) {
@@ -460,7 +460,7 @@
         add_uri: function(uri) {
             var screen = this.screen;
             this.switch_prm.then(function() {
-                screen.set_current_record(null);
+                screen.current_record = null;
                 screen.switch_view('form').then(function() {
                     screen.new_().then(function(record) {
                         record.field_set_client('link', uri);
@@ -473,7 +473,7 @@
         add_text: function(text) {
             var screen = this.screen;
             this.switch_prm.then(function() {
-                screen.set_current_record(null);
+                screen.current_record = null;
                 screen.switch_view('form').then(function() {
                     screen.new_().then(function(record) {
                         record.field_set_client('description', text);
@@ -648,7 +648,7 @@
             var records;
             var value = [];
             if (response_id == 'RESPONSE_OK') {
-                records = this.screen.current_view.selected_records();
+                records = this.screen.current_view.selected_records;
             } else if (response_id == 'RESPONSE_APPLY') {
                 this.screen.search_filter();
                 return;
@@ -722,7 +722,7 @@
             });
             // Reset readonly set automaticly by MODELACCESS
             this.screen.attributes.readonly = false;
-            this.screen.group.set_readonly(false);
+            this.screen.group.readonly = false;
             this.screen.group.skip_model_access = true;
 
             var set_view = function(view) {

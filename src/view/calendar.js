@@ -171,7 +171,7 @@
             // when loading
             if (!this.clicked_event) {
                 this.clicked_event = true;
-                this.screen.set_current_record(calEvent.record);
+                this.screen.current_record = calEvent.record;
                 this.screen.switch_view().always(function(){
                     this.clicked_event = false;
                 }.bind(this));
@@ -253,7 +253,7 @@
             if (model_access.create) {
                 // Set the calendar date to the clicked date
                 this.el.fullCalendar('gotoDate', date);
-                this.screen.set_current_record(null);
+                this.screen.current_record = null;
                 this.screen.new_();
             }
         },

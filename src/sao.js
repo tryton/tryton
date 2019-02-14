@@ -883,7 +883,7 @@ var Sao = {};
             var ir_model = new Sao.Model('ir.model');
             return ir_model.execute('global_search',
                     [text, Sao.config.limit, Sao.main_menu_screen.model_name],
-                    Sao.main_menu_screen.context())
+                    Sao.main_menu_screen.context)
                 .then(function(s_results) {
                 var results = [];
                 for (var i=0, len=s_results.length; i < len; i++) {
