@@ -1347,8 +1347,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         else:
             return self.purchase.party.supplier_location.id
 
-    @fields.depends('product', 'quantity', 'moves', 'purchase',
-        '_parent_purchase.purchase_date', '_parent_purchase.party',
+    @fields.depends('product_supplier', 'quantity', 'moves', 'purchase',
+        '_parent_purchase.purchase_date',
         'delivery_date_edit', 'delivery_date_store',
         '_parent_purchase.delivery_date')
     def on_change_with_delivery_date(self, name=None):
@@ -1367,19 +1367,15 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             delivery_date = self.delivery_date_store
         elif self.purchase and self.purchase.delivery_date:
             delivery_date = self.purchase.delivery_date
-        elif (self.product
+        elif (self.product_supplier
                 and self.quantity is not None
                 and self.quantity > 0
-                and self.purchase and self.purchase.party
-                and self.product.product_suppliers):
+                and self.purchase):
             date = self.purchase.purchase_date if self.purchase else None
-            for product_supplier in self.product.product_suppliers:
-                if product_supplier.party == self.purchase.party:
-                    delivery_date = product_supplier.compute_supply_date(
-                        date=date)
-                    if delivery_date == datetime.date.max:
-                        delivery_date = None
-                    break
+            delivery_date = self.product_supplier.compute_supply_date(
+                date=date)
+            if delivery_date == datetime.date.max:
+                delivery_date = None
         if delivery_date and delivery_date < Date.today():
             delivery_date = None
         return delivery_date
