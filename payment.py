@@ -562,10 +562,6 @@ class Account(ModelSQL, ModelView):
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
-                payment.stripe_error_message = source['failure_message']
-                payment.stripe_error_code = source['failure_code']
-                payment.stripe_error_param = None
-                payment.save()
                 Payment.fail([payment])
         return True
 
