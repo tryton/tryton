@@ -60,12 +60,6 @@ Create analytic accounts::
     >>> analytic_account = AnalyticAccount(root=root, parent=root,
     ...     name='Analytic')
     >>> analytic_account.save()
-    >>> mandatory_root = AnalyticAccount(type='root', name='Root',
-    ...     mandatory=True)
-    >>> mandatory_root.save()
-    >>> mandatory_analytic_account = AnalyticAccount(root=mandatory_root,
-    ...     parent=mandatory_root, name='Mandatory Analytic')
-    >>> mandatory_analytic_account.save()
 
 Create parties::
 
@@ -111,25 +105,13 @@ Purchase with analytic accounts::
     >>> purchase.payment_term = payment_term
     >>> purchase.invoice_method = 'order'
     >>> purchase_line = purchase.lines.new()
-    >>> entry, mandatory_entry = purchase_line.analytic_accounts
+    >>> entry, = purchase_line.analytic_accounts
     >>> entry.root == root
     True
-    >>> bool(entry.required)
-    False
     >>> entry.account = analytic_account
-    >>> mandatory_entry.root == mandatory_root
-    True
-    >>> bool(mandatory_entry.required)
-    False
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5
-    >>> mandatory_entry.account = mandatory_analytic_account
     >>> purchase.click('quote')
-    >>> purchase_line, = purchase.lines
-    >>> mandatory_entry, = [a for a in purchase_line.analytic_accounts
-    ...     if a.root == mandatory_root]
-    >>> bool(mandatory_entry.required)
-    True
     >>> purchase.click('confirm')
     >>> purchase.click('process')
 
@@ -138,10 +120,8 @@ Check invoice analytic accounts::
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice(purchase.invoices[0].id)
     >>> invoice_line, = invoice.lines
-    >>> entry, mandatory_entry = invoice_line.analytic_accounts
+    >>> entry, = invoice_line.analytic_accounts
     >>> entry.account == analytic_account
-    True
-    >>> mandatory_entry.account == mandatory_analytic_account
     True
 
 Purchase with an empty analytic account::
@@ -153,8 +133,7 @@ Purchase with an empty analytic account::
     >>> purchase.payment_term = payment_term
     >>> purchase.invoice_method = 'order'
     >>> purchase_line = purchase.lines.new()
-    >>> entry, mandatory_entry = purchase_line.analytic_accounts
-    >>> mandatory_entry.account = mandatory_analytic_account
+    >>> entry, = purchase_line.analytic_accounts
     >>> purchase_line.product = product
     >>> purchase_line.quantity = 5
     >>> purchase.click('quote')
@@ -166,26 +145,5 @@ Check invoice analytic accounts::
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice(purchase.invoices[0].id)
     >>> invoice_line, = invoice.lines
-    >>> entry, mandatory_entry = invoice_line.analytic_accounts
+    >>> entry, = invoice_line.analytic_accounts
     >>> entry.account
-    >>> mandatory_entry.account == mandatory_analytic_account
-    True
-
-Analytic entries are not required until quotation::
-
-    >>> purchase = Purchase()
-    >>> purchase.party = supplier
-    >>> purchase.payment_term = payment_term
-    >>> purchase.invoice_method = 'order'
-    >>> purchase_line = purchase.lines.new()
-    >>> purchase_line.product = product
-    >>> purchase_line.quantity = 5
-    >>> purchase.save()
-    >>> purchase.click('quote')  # doctest: +IGNORE_EXCEPTION_DETAIL
-    Traceback (most recent call last):
-        ...
-    PurchaseQuotationError: ...
-    >>> purchase_line, = purchase.lines
-    >>> entry, mandatory_entry = purchase_line.analytic_accounts
-    >>> mandatory_entry.account = mandatory_analytic_account
-    >>> purchase.click('quote')

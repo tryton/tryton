@@ -1,42 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 
 from trytond.modules.analytic_account import AnalyticMixin
-from trytond.modules.purchase.exceptions import PurchaseQuotationError
-
-__all__ = ['Purchase', 'PurchaseLine', 'AnalyticAccountEntry']
-
-
-class Purchase(metaclass=PoolMeta):
-    __name__ = "purchase.purchase"
-
-    def check_for_quotation(self):
-        pool = Pool()
-        Account = pool.get('analytic_account.account')
-        mandatory_roots = {a for a in Account.search([
-                ('type', '=', 'root'),
-                ('mandatory', '=', True),
-                ])}
-
-        super(Purchase, self).check_for_quotation()
-
-        for line in self.lines:
-            if line.type != 'line':
-                continue
-            analytic_roots = {e.root for e in line.analytic_accounts
-                if e.account}
-            if not mandatory_roots <= analytic_roots:
-                raise PurchaseQuotationError(
-                    gettext('analytic_purchase'
-                        '.msg_analytic_account_required_for_quotation',
-                        purchase=self.rec_name,
-                        line=line.rec_name,
-                        roots=', '.join(x.rec_name
-                            for x in mandatory_roots - analytic_roots)))
 
 
 class PurchaseLine(AnalyticMixin, metaclass=PoolMeta):
@@ -77,18 +45,6 @@ class AnalyticAccountEntry(metaclass=PoolMeta):
     def _get_origin(cls):
         origins = super(AnalyticAccountEntry, cls)._get_origin()
         return origins + ['purchase.line']
-
-    @fields.depends('origin')
-    def on_change_with_required(self, name=None):
-        pool = Pool()
-        PurchaseLine = pool.get('purchase.line')
-        required = super(AnalyticAccountEntry, self).on_change_with_required(
-            name)
-        if isinstance(self.origin, PurchaseLine):
-            if (not self.origin.purchase
-                    or self.origin.purchase.state in ['cancel', 'draft']):
-                return False
-        return required
 
     @fields.depends('origin')
     def on_change_with_company(self, name=None):

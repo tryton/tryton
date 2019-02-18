@@ -2,12 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .purchase import *
+from . import purchase
 
 
 def register():
     Pool.register(
-        Purchase,
-        PurchaseLine,
-        AnalyticAccountEntry,
+        purchase.PurchaseLine,
+        purchase.AnalyticAccountEntry,
         module='analytic_purchase', type_='model')
