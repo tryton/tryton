@@ -47,12 +47,6 @@ Create analytic accounts::
     >>> analytic_account = AnalyticAccount(root=root, parent=root,
     ...     name='Analytic')
     >>> analytic_account.save()
-    >>> mandatory_root = AnalyticAccount(type='root', name='Root',
-    ...     mandatory=True)
-    >>> mandatory_root.save()
-    >>> mandatory_analytic_account = AnalyticAccount(root=mandatory_root,
-    ...     parent=mandatory_root, name='Mandatory Analytic')
-    >>> mandatory_analytic_account.save()
 
 Create party::
 
@@ -95,17 +89,10 @@ Create invoice with analytic accounts::
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
     >>> line = invoice.lines.new()
-    >>> entry, mandatory_entry = line.analytic_accounts
+    >>> entry, = line.analytic_accounts
     >>> entry.root == root
     True
-    >>> bool(entry.required)
-    False
     >>> entry.account = analytic_account
-    >>> mandatory_entry.root == mandatory_root
-    True
-    >>> bool(mandatory_entry.required)
-    True
-    >>> mandatory_entry.account = mandatory_analytic_account
     >>> line.product = product
     >>> line.quantity = 5
     >>> line.unit_price = Decimal('40')
@@ -117,11 +104,6 @@ Create invoice with analytic accounts::
     Decimal('200.00')
     >>> analytic_account.debit
     Decimal('0.00')
-    >>> mandatory_analytic_account.reload()
-    >>> mandatory_analytic_account.credit
-    Decimal('200.00')
-    >>> mandatory_analytic_account.debit
-    Decimal('0.00')
 
 
 Create invoice with an empty analytic account::
@@ -130,8 +112,7 @@ Create invoice with an empty analytic account::
     >>> invoice.party = party
     >>> invoice.payment_term = payment_term
     >>> line = invoice.lines.new()
-    >>> entry, mandatory_entry = line.analytic_accounts
-    >>> mandatory_entry.account = mandatory_analytic_account
+    >>> entry, = line.analytic_accounts
     >>> line.product = product
     >>> line.quantity = 1
     >>> line.unit_price = Decimal('40')
@@ -143,11 +124,6 @@ Create invoice with an empty analytic account::
     Decimal('200.00')
     >>> analytic_account.debit
     Decimal('0.00')
-    >>> mandatory_analytic_account.reload()
-    >>> mandatory_analytic_account.credit
-    Decimal('240.00')
-    >>> mandatory_analytic_account.debit
-    Decimal('0.00')
 
 Credit invoice with refund::
 
@@ -157,8 +133,3 @@ Credit invoice with refund::
     >>> invoice.reload()
     >>> invoice.state
     'cancel'
-    >>> mandatory_analytic_account.reload()
-    >>> mandatory_analytic_account.credit
-    Decimal('240.00')
-    >>> mandatory_analytic_account.debit
-    Decimal('40.00')
