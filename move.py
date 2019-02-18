@@ -871,6 +871,8 @@ class Move(Workflow, ModelSQL, ModelView):
                     location_qties[location] = Uom.compute_qty(
                         move.product.default_uom, pbl[key], move.uom,
                         round=False)
+            # Prevent to pick from the destination location
+            location_qties.pop(move.to_location, None)
 
             to_pick = move.pick_product(location_qties)
 
