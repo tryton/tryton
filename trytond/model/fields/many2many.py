@@ -442,7 +442,8 @@ class Many2Many(Field):
     def definition(self, model, language):
         encoder = PYSONEncoder()
         definition = super().definition(model, language)
-        definition['add_remove'] = encoder.encode(self.add_remove)
+        if self.add_remove is not None:
+            definition['add_remove'] = encoder.encode(self.add_remove)
         definition['datetime_field'] = self.datetime_field
         if self.filter:
             definition['domain'] = encoder.encode(
