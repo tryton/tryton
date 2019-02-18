@@ -60,12 +60,6 @@ Create analytic accounts::
     >>> analytic_account = AnalyticAccount(root=root, parent=root,
     ...     name='Analytic')
     >>> analytic_account.save()
-    >>> mandatory_root = AnalyticAccount(type='root', name='Root',
-    ...     mandatory=True)
-    >>> mandatory_root.save()
-    >>> mandatory_analytic_account = AnalyticAccount(root=mandatory_root,
-    ...     parent=mandatory_root, name='Mandatory Analytic')
-    >>> mandatory_analytic_account.save()
 
 Create parties::
 
@@ -112,17 +106,10 @@ Sale with analytic accounts::
     >>> sale.payment_term = payment_term
     >>> sale.invoice_method = 'order'
     >>> sale_line = sale.lines.new()
-    >>> entry, mandatory_entry = sale_line.analytic_accounts
+    >>> entry, = sale_line.analytic_accounts
     >>> entry.root == root
     True
-    >>> bool(entry.required)
-    False
     >>> entry.account = analytic_account
-    >>> mandatory_entry.root == mandatory_root
-    True
-    >>> bool(mandatory_entry.required)
-    True
-    >>> mandatory_entry.account = mandatory_analytic_account
     >>> sale_line.product = product
     >>> sale_line.quantity = 5
     >>> sale.click('quote')
@@ -134,10 +121,8 @@ Check analytic accounts on invoice::
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice(sale.invoices[0].id)
     >>> invoice_line, = invoice.lines
-    >>> entry, mandatory_entry = invoice_line.analytic_accounts
+    >>> entry, = invoice_line.analytic_accounts
     >>> entry.account == analytic_account
-    True
-    >>> mandatory_entry.account == mandatory_analytic_account
     True
 
 Sale with an empty analytic account::
@@ -150,8 +135,7 @@ Sale with an empty analytic account::
     >>> sale.payment_term = payment_term
     >>> sale.invoice_method = 'order'
     >>> sale_line = sale.lines.new()
-    >>> entry, mandatory_entry = sale_line.analytic_accounts
-    >>> mandatory_entry.account = mandatory_analytic_account
+    >>> entry, = sale_line.analytic_accounts
     >>> sale_line.product = product
     >>> sale_line.quantity = 5
     >>> sale.click('quote')
@@ -162,10 +146,8 @@ Sale with an empty analytic account::
 Check invoice analytic accounts::
 
     >>> invoice_line, = invoice.lines
-    >>> entry, mandatory_entry = invoice_line.analytic_accounts
+    >>> entry, = invoice_line.analytic_accounts
     >>> entry.account
-    >>> mandatory_entry.account == mandatory_analytic_account
-    True
 
 Return sales using the wizard::
 
@@ -176,7 +158,5 @@ Return sales using the wizard::
     ...     ('state', '=', 'draft'),
     ...     ])
     >>> sale_line, = returned_sale.lines
-    >>> entry, mandatory_entry = sale_line.analytic_accounts
+    >>> entry, = sale_line.analytic_accounts
     >>> entry.account
-    >>> mandatory_entry.account == mandatory_analytic_account
-    True
