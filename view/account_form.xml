@@ -22,8 +22,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="company"/>
             <label name="currency"/>
             <field name="currency"/>
-            <label name="mandatory"/>
-            <field name="mandatory"/>
             <field name="childs" colspan="4"
                 view_ids="analytic_account.account_view_list2"/>
         </page>

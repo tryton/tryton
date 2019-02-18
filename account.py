@@ -16,7 +16,7 @@ from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from .exceptions import AccountValidationError, RootValidationError
+from .exceptions import AccountValidationError
 
 __all__ = ['Account', 'AccountDistribution',
     'OpenChartAccountStart', 'OpenChartAccount',
@@ -90,11 +90,6 @@ class Account(
         ('debit-credit', 'Debit - Credit'),
         ('credit-debit', 'Credit - Debit'),
         ], 'Display Balance', required=True)
-    mandatory = fields.Boolean('Mandatory', states={
-            'invisible': Eval('type') != 'root',
-            },
-        depends=['type'],
-        help="Make this account mandatory when filling documents")
     distributions = fields.One2Many(
         'analytic_account.account.distribution', 'parent',
         "Distributions",
@@ -136,10 +131,6 @@ class Account(
     @staticmethod
     def default_display_balance():
         return 'credit-debit'
-
-    @staticmethod
-    def default_mandatory():
-        return False
 
     @classmethod
     def validate(cls, accounts):
@@ -393,16 +384,11 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
         depends=['company'])
     account = fields.Many2One('analytic_account.account', 'Account',
         ondelete='RESTRICT',
-        states={
-            'required': Eval('required', False),
-            },
         domain=[
             ('root', '=', Eval('root')),
             ('type', 'in', ['normal', 'distribution']),
             ],
-        depends=['root', 'required', 'company'])
-    required = fields.Function(fields.Boolean('Required'),
-        'on_change_with_required')
+        depends=['root', 'company'])
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company', searcher='search_company')
 
@@ -460,12 +446,6 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
                 ('model', 'in', models),
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
-
-    @fields.depends('root')
-    def on_change_with_required(self, name=None):
-        if self.root:
-            return self.root.mandatory
-        return False
 
     def on_change_with_company(self, name=None):
         return None
@@ -541,7 +521,6 @@ class AnalyticMixin(object):
                 ])
         for account in root_accounts:
             accounts.append({
-                    'required': account.mandatory,
                     'root': account.id,
                     })
         return accounts
@@ -559,32 +538,3 @@ class AnalyticMixin(object):
     def get_analytic_accounts_size(cls, records, name):
         roots = cls.default_analytic_accounts_size()
         return {r.id: roots for r in records}
-
-    @classmethod
-    def validate(cls, analytics):
-        super(AnalyticMixin, cls).validate(analytics)
-        cls.check_roots(analytics)
-
-    @classmethod
-    def check_roots(cls, analytics):
-        "Check that all mandatory root entries are defined in entries"
-        pool = Pool()
-        Account = pool.get('analytic_account.account')
-        all_mandatory_roots = {a for a in Account.search([
-                ('type', '=', 'root'),
-                ('mandatory', '=', True),
-                ])}
-        for analytic in analytics:
-            analytic_roots = {e.root for e in analytic.analytic_accounts}
-            companies = {e.company for e in analytic.analytic_accounts}
-            mandatory_roots = set()
-            for mandatory in all_mandatory_roots:
-                if mandatory.company in companies:
-                    mandatory_roots.add(mandatory)
-            mandatory_roots.difference_update(analytic_roots)
-            if mandatory_roots:
-                raise RootValidationError(
-                    gettext('analytic_account.msg_missing_root_account',
-                        name=analytic.rec_name,
-                        analytics=', '.join(
-                            (r.rec_name for r in mandatory_roots))))

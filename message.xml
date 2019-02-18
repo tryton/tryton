@@ -6,9 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_distribution">
             <field name="text">To save account "%(account)s" the sum of their distributions must be 100%%.</field>
         </record>
-        <record model="ir.message" id="msg_missing_root_account">
-            <field name="text">To save "%(name)s" you must set a value for analytics "%(analytics)s".</field>
-        </record>
         <record model="ir.message" id="msg_root_origin_unique">
             <field name="text">Only one account is allowed by analytic root and origin.</field>
         </record>

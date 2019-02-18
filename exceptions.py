@@ -6,7 +6,3 @@ from trytond.model.exceptions import ValidationError
 
 class AccountValidationError(ValidationError):
     pass
-
-
-class RootValidationError(ValidationError):
-    pass
