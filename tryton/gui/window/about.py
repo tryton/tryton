@@ -9,7 +9,7 @@ from tryton.common import get_toplevel_window
 from tryton import __version__
 
 COPYRIGHT = '''\
-Copyright (C) 2010-2018 Nicolas Évrard.
+Copyright (C) 2010-2019 Nicolas Évrard.
 Copyright (C) 2007-2019 Cédric Krier.
 Copyright (C) 2007-2011 Bertrand Chenal.
 Copyright (C) 2008-2019 B2CK SPRL.
