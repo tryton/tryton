@@ -9,6 +9,8 @@ import webbrowser
 
 from functools import wraps, partial
 
+import gobject
+
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
 from tryton.gui.window.view_form.screen import Screen
@@ -424,9 +426,15 @@ class Binary(GenericText):
         if renderer is None:
             renderer = partial(CellRendererBinary, bool(self.filename))
         super(Binary, self).__init__(view, attrs, renderer=renderer)
-        self.renderer.connect('select', self.select_binary)
-        self.renderer.connect('open', self.open_binary)
-        self.renderer.connect('save', self.save_binary)
+        self.renderer.connect(
+            'select',
+            lambda *args: gobject.idle_add(self.select_binary, *args))
+        self.renderer.connect(
+            'open',
+            lambda *args: gobject.idle_add(self.open_binary, *args))
+        self.renderer.connect(
+            'save',
+            lambda *args: gobject.idle_add(self.save_binary, *args))
         self.renderer.connect('clear', self.clear_binary)
 
     def get_textual_value(self, record):
