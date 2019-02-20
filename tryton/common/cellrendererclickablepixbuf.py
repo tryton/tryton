@@ -1,24 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
+from gi.repository import Gtk, GObject
 
 
-class CellRendererClickablePixbuf(gtk.CellRendererPixbuf):
+class CellRendererClickablePixbuf(Gtk.CellRendererPixbuf):
     __gsignals__ = {
-        'clicked': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
-            (gobject.TYPE_STRING, )),
+        'clicked': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE,
+            (GObject.TYPE_STRING, )),
         }
 
     def __init__(self):
-        super(CellRendererClickablePixbuf, self).__init__()
-        self.set_property('mode', gtk.CELL_RENDERER_MODE_ACTIVATABLE)
+        Gtk.CellRendererPixbuf.__init__(self)
+        self.set_property('mode', Gtk.CellRendererMode.ACTIVATABLE)
 
-    def do_activate(self, event, widget, path, background_area, cell_area,
-            flags):
-        if (event
-                and cell_area.x <= event.x <= cell_area.x + cell_area.width
-                and cell_area.y <= event.y <= cell_area.y + cell_area.height):
-            self.emit('clicked', path)
+    def do_activate(
+            self, event, widget, path, background_area, cell_area, flags):
+        self.emit('clicked', path)
 
-gobject.type_register(CellRendererClickablePixbuf)
+
+GObject.type_register(CellRendererClickablePixbuf)

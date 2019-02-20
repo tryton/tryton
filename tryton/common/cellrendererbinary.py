@@ -1,8 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
-import pango
+from gi.repository import Gtk, Gdk, GObject, Pango
 
 from .common import IconFactory
 
@@ -10,31 +8,31 @@ BUTTON_BORDER = 2
 BUTTON_SPACING = 1
 
 
-class CellRendererBinary(gtk.GenericCellRenderer):
+class CellRendererBinary(Gtk.CellRenderer):
     __gproperties__ = {
-        'visible': (gobject.TYPE_BOOLEAN, 'Visible', 'Visible', True,
-            gobject.ParamFlags.READWRITE),
-        'editable': (gobject.TYPE_BOOLEAN, 'Editable', 'Editable', False,
-            gobject.ParamFlags.READWRITE),
-        'size': (gobject.TYPE_STRING, 'Size', 'Size', '',
-            gobject.ParamFlags.READWRITE),
-    }
+        'visible': (GObject.TYPE_BOOLEAN, 'Visible', 'Visible', True,
+            GObject.ParamFlags.READWRITE),
+        'editable': (GObject.TYPE_BOOLEAN, 'Editable', 'Editable', False,
+            GObject.ParamFlags.READWRITE),
+        'size': (GObject.TYPE_STRING, 'Size', 'Size', '',
+            GObject.ParamFlags.READWRITE),
+        }
     __gsignals__ = {
-        'select': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
-            (gobject.TYPE_STRING,)),
-        'open': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
-            (gobject.TYPE_STRING,)),
-        'save': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
-            (gobject.TYPE_STRING,)),
-        'clear': (gobject.SignalFlags.RUN_LAST, gobject.TYPE_NONE,
-            (gobject.TYPE_STRING,)),
-    }
+        'select': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE,
+            (GObject.TYPE_STRING,)),
+        'open': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE,
+            (GObject.TYPE_STRING,)),
+        'save': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE,
+            (GObject.TYPE_STRING,)),
+        'clear': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE,
+            (GObject.TYPE_STRING,)),
+        }
 
     def __init__(self, use_filename):
-        self.__gobject_init__()
+        Gtk.CellRenderer.__init__(self)
         self.visible = True
         self.editable = False
-        self.set_property('mode', gtk.CELL_RENDERER_MODE_ACTIVATABLE)
+        self.set_property('mode', Gtk.CellRendererMode.ACTIVATABLE)
         self.use_filename = use_filename
         self.images = {}
         for key, icon in (
@@ -42,9 +40,8 @@ class CellRendererBinary(gtk.GenericCellRenderer):
                 ('open', 'tryton-open'),
                 ('save', 'tryton-save'),
                 ('clear', 'tryton-clear')):
-            # hack to get gtk.gdk.Image from stock icon
             img_sensitive = IconFactory.get_pixbuf(
-                icon, gtk.ICON_SIZE_SMALL_TOOLBAR)
+                icon, Gtk.IconSize.SMALL_TOOLBAR)
             img_insensitive = img_sensitive.copy()
             img_sensitive.saturate_and_pixelate(img_insensitive, 0, False)
             width = img_sensitive.get_width()
@@ -75,18 +72,17 @@ class CellRendererBinary(gtk.GenericCellRenderer):
             + (2 * (BUTTON_BORDER + BUTTON_SPACING) * len(self.buttons))
             - 2 * BUTTON_SPACING)
 
-    def on_get_size(self, widget, cell_area=None):
+    def do_get_size(self, widget, cell_area=None):
         if cell_area is None:
             return (0, 0, 30, 18)
         else:
             return (cell_area.x, cell_area.y,
                 cell_area.width, cell_area.height)
-    do_get_size = on_get_size
 
-    def on_activate(self, event, widget, path, background_area,
-            cell_area, flags):
+    def do_activate(
+            self, event, widget, path, background_area, cell_area, flags):
         if event is None:
-            return True
+            return
         button_width = self.button_width()
 
         for index, button_name in enumerate(self.buttons):
@@ -104,15 +100,13 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         else:
             button_name = None
         if not self.visible or not button_name:
-            return True
-        if not self.editable and button_name in ('select', 'clear'):
-            return True
-        if not self.size and button_name in {'open', 'save'}:
-            return True
-        if event.type == gtk.gdk.BUTTON_PRESS:
-            self.emit(button_name, path)
+            return
+        elif not self.editable and button_name in ('select', 'clear'):
+            return
+        elif not self.size and button_name in {'open', 'save'}:
+            return
+        self.emit(button_name, path)
         return True
-    do_activate = on_activate
 
     def do_render(self, cr, widget, background_area, cell_area, flags):
         if not self.visible:
@@ -137,15 +131,15 @@ class CellRendererBinary(gtk.GenericCellRenderer):
         lwidth = w - button_width - padding.left - padding.right
         if lwidth < 0:
             lwidth = 0
-        layout.set_width(lwidth * pango.SCALE)
-        layout.set_ellipsize(pango.ELLIPSIZE_END)
-        layout.set_wrap(pango.WRAP_CHAR)
-        layout.set_alignment(pango.ALIGN_RIGHT)
+        layout.set_width(lwidth * Pango.SCALE)
+        layout.set_ellipsize(Pango.ELLIPSIZE_END)
+        layout.set_wrap(Pango.WRAP_CHAR)
+        layout.set_alignment(Pango.ALIGN_RIGHT)
 
         if lwidth > 0:
             lw, lh = layout.get_size()  # Can not use get_pixel_extents
-            lw /= pango.SCALE
-            lh /= pango.SCALE
+            lw /= Pango.SCALE
+            lh /= Pango.SCALE
 
             lx = x + padding.left
             if self.buttons and self.buttons[0] == 'open':
@@ -154,7 +148,7 @@ class CellRendererBinary(gtk.GenericCellRenderer):
             ly = y + padding.top + 0.5 * (
                 h - padding.top - padding.bottom - lh)
 
-            gtk.render_layout(context, cr, lx, ly, layout)
+            Gtk.render_layout(context, cr, lx, ly, layout)
 
         for index, button_name in enumerate(self.buttons):
             pxbf_sens, pxbf_insens, pxbf_width, pxbf_height = \
@@ -177,13 +171,13 @@ class CellRendererBinary(gtk.GenericCellRenderer):
             by = cell_area.y
             bw = pxbf_width + (2 * BUTTON_BORDER)
 
-            gtk.render_background(context, cr, bx, by, bw, h)
-            gtk.render_frame(context, cr, bx, by, bw, h)
+            Gtk.render_background(context, cr, bx, by, bw, h)
+            Gtk.render_frame(context, cr, bx, by, bw, h)
 
-            gtk.gdk.cairo_set_source_pixbuf(
+            Gdk.cairo_set_source_pixbuf(
                 cr, pixbuf, bx + BUTTON_BORDER, by + (h - pxbf_height) / 2)
             cr.paint()
         context.restore()
 
 
-gobject.type_register(CellRendererBinary)
+GObject.type_register(CellRendererBinary)

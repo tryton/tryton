@@ -199,6 +199,8 @@ class CellRendererDate(gtk.CellRendererText):
 
     def __init__(self):
         self.__format = '%x'
+        self.__entry = None
+        self.__focus_out_id = 0
 
         gtk.CellRendererText.__init__(self)
 
@@ -215,16 +217,34 @@ class CellRendererDate(gtk.CellRendererText):
 
     def do_start_editing(
             self, event, widget, path, background_area, cell_area, flags):
-        widget = add_operators(Date())  # TODO add_operators has option
-        widget.props.format = self.props.format
-        widget.props.value = self.props.text
-        if self.props.background_set:
-            widget.modify_base(gtk.STATE_NORMAL, self.props.background_gdk)
-        if self.props.foreground_set:
-            widget.modify_fg(gtk.STATE_NORMAL, self.props.foreground_gdk)
-        widget.grab_focus()
-        widget.show()
-        return widget
+        if not self.props.editable:
+            return
+        self.__entry = add_operators(Date())  # TODO add_operators has option
+        self.__entry.props.format = self.props.format
+        self.__entry.props.value = self.props.text
+        self.__entry.set_has_frame(False)
+        self.__entry.connect('editing-done', self.__editing_done)
+        self.__focus_out_id = self.__entry.connect(
+            'focus-out-event', self.__focus_out_event)
+        # XXX focus-out-event
+        self.__entry.show()
+        return self.__entry
+
+    def __editing_done(self, entry):
+        self.__entry = None
+        if self.__focus_out_id:
+            entry.disconnect(self.__focus_out_id)
+        canceled = entry.props.editing_canceled
+        self.stop_editing(canceled)
+        if canceled:
+            return
+        # TODO emit edited
+
+    def __focus_out_event(self, entry, event):
+        entry.props.editing_canceled = True
+        entry.editing_done()
+        entry.remove_widget()
+        return False
 
 
 gobject.type_register(CellRendererDate)
@@ -339,7 +359,7 @@ class Time(gtk.ComboBoxEntry):
 gobject.type_register(Time)
 
 
-class CellRendererTime(gtk.CellRendererText):
+class CellRendererTime(gtk.CellRendererCombo):
     __gproperties__ = {
         'format': (gobject.TYPE_STRING,
             '%X',
@@ -350,6 +370,8 @@ class CellRendererTime(gtk.CellRendererText):
 
     def __init__(self):
         self.__format = '%X'
+        self.__combo = None
+        self.__focus_out_id = 0
 
         gtk.CellRendererText.__init__(self)
 
@@ -368,16 +390,28 @@ class CellRendererTime(gtk.CellRendererText):
             self, event, widget, path, background_area, cell_area, flags):
         if not self.props.editable:
             return
-        widget = add_operators(Time())  # TODO add_operators has option
-        widget.props.format = self.props.format
-        widget.props.value = self.props.text
-        if self.props.background_set:
-            widget.modify_base(gtk.STATE_NORMAL, self.props.background_gdk)
-        if self.props.foreground_set:
-            widget.modify_fg(gtk.STATE_NORMAL, self.props.foreground_gdk)
-        widget.grab_focus()
-        widget.show()
-        return widget
+        self.__combo = add_operators(Time())  # TODO add_operators has option
+        self.__combo.props.format = self.props.format
+        self.__combo.props.value = self.props.text
+        self.__combo.props.has_frame = False
+        self.__combo.connect('editing-done', self.__editing_done)
+        # TODO: connect to changed
+        self.__focus_out_id = self.__combo.connect(
+            'focus-out-event', self.__focus_out_event)
+        self.__combo.show()
+        return self.__combo
+
+    def __editing_done(self, combo):
+        self.__combo = None
+        canceled = combo.props.editing_canceled
+        self.stop_editing(canceled)
+        if canceled:
+            return
+        # TODO emit edited
+
+    def __focus_out_event(self, combo, event):
+        self.__editing_done(combo)
+        return False
 
 
 gobject.type_register(CellRendererTime)

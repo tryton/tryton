@@ -96,8 +96,6 @@ def get_active_text(self):
         return model[active][index]
 Gtk.ComboBox.get_active_text = get_active_text
 
-Gtk.GenericCellRenderer.__gobject_init__ = Gtk.GenericCellRenderer.__init__
-
 from gi.repository import Pango
 
 
