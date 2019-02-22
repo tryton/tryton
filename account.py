@@ -386,8 +386,9 @@ class Invoice(metaclass=PoolMeta):
     payment_direct_debit = fields.Boolean("Direct Debit",
         states={
             'invisible': Eval('type') != 'in',
+            'readonly': Eval('state') != 'draft',
             },
-        depends=['type'],
+        depends=['type', 'state'],
         help="Check if the invoice is paid by direct debit.")
 
     @classmethod
