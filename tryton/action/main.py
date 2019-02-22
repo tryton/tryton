@@ -72,12 +72,18 @@ class Action(object):
         from tryton.gui.window import Window
         if context is None:
             context = {}
+        else:
+            context = context.copy()
         if data is None:
             data = {}
         else:
             data = data.copy()
         if 'type' not in (action or {}):
             return
+
+        context.pop('active_id', None)
+        context.pop('active_ids', None)
+        context.pop('active_model', None)
 
         def add_name_suffix(name, context=None):
             if not data.get('ids') or not data.get('model'):
