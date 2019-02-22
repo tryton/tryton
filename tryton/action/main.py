@@ -77,12 +77,18 @@ class Action(object):
     def _exec_action(action, data=None, context=None):
         if context is None:
             context = {}
+        else:
+            context = context.copy()
         if data is None:
             data = {}
         else:
             data = data.copy()
         if 'type' not in (action or {}):
             return
+
+        context.pop('active_id', None)
+        context.pop('active_ids', None)
+        context.pop('active_model', None)
 
         def add_name_suffix(name):
             if not data.get('ids') or not data.get('model'):
