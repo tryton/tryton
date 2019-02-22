@@ -165,6 +165,9 @@ Sale products with cost on shipment::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product
     >>> sale_line.quantity = 2.0
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.type = 'comment'
+    >>> sale_line.description = 'Comment'
     >>> sale.click('quote')
     >>> cost_line = sale.lines[-1]
     >>> cost_line.product == carrier_product
