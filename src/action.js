@@ -8,8 +8,10 @@
     };
 
     Sao.Action.exec_action = function(action, data, context) {
-        if (context === undefined) {
+        if (!context) {
             context = {};
+        } else {
+            context = jQuery.extend({}, context);
         }
         var session = Sao.Session.current_session;
         if (data === undefined) {
@@ -17,6 +19,11 @@
         } else {
             data = jQuery.extend({}, data);
         }
+
+        delete context.active_id;
+        delete context.active_ids;
+        delete context.active_model;
+
         function add_name_suffix(name, context){
             if (!data.model || !data.ids) {
                 return jQuery.when(name);
