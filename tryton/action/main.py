@@ -81,6 +81,10 @@ class Action(object):
         if 'type' not in (action or {}):
             return
 
+        context.pop('active_id', None)
+        context.pop('active_ids', None)
+        context.pop('active_model', None)
+
         def add_name_suffix(name):
             if not data.get('ids') or not data.get('model'):
                 return name
