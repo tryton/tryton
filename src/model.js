@@ -1256,9 +1256,12 @@
                 }
                 var field = this.model.fields[name];
                 var value = this._values[name];
+                if (!(value instanceof Array)) {
+                    continue;
+                }
                 var context_descriptor = Object.getOwnPropertyDescriptor(
                     value, 'context');
-                if (!value || !context_descriptor.set) {
+                if (!context_descriptor || !context_descriptor.set) {
                     continue;
                 }
                 var context = field.description.context;
