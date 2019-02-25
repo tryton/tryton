@@ -218,7 +218,7 @@ class SplitShipment(Wizard):
             Move.delete(
                 filter(lambda m: m.state == 'draft', shipment.inventory_moves))
 
-        shipment, = Shipment.copy([shipment.id], default={'moves': None})
+        shipment, = Shipment.copy([shipment], default={'moves': None})
         Move.write(list(self.start.moves), {'shipment': str(shipment)})
         return 'end'
 
