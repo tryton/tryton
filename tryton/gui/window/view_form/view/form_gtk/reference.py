@@ -126,7 +126,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             if (model != self.get_model()
                     or name != self.wid_text.get_text()):
                 self.field.set_client(self.record, None)
-                self.set_text('')
+                self.set_text(None)
 
     def set_text(self, value):
         if value:
