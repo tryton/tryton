@@ -207,15 +207,6 @@ class ScreenContainer(object):
         def deactivate(menuitem, togglebutton):
             togglebutton.props.active = False
 
-        but_active = gtk.ToggleButton()
-        self.but_active = but_active
-        self._set_active_tooltip()
-        but_active.add(common.IconFactory.get_image(
-                'tryton-archive', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        but_active.set_relief(gtk.RELIEF_NONE)
-        but_active.connect('toggled', self.search_active)
-        hbox.pack_start(but_active, expand=False, fill=False)
-
         but_bookmark = gtk.ToggleButton()
         self.but_bookmark = but_bookmark
         tooltips.set_tip(but_bookmark, _('Show bookmarks of filters'))
@@ -228,6 +219,15 @@ class ScreenContainer(object):
         but_bookmark._menu = menu
         but_bookmark.connect('toggled', popup)
         hbox.pack_start(but_bookmark, expand=False, fill=False)
+
+        but_active = gtk.ToggleButton()
+        self.but_active = but_active
+        self._set_active_tooltip()
+        but_active.add(common.IconFactory.get_image(
+                'tryton-archive', gtk.ICON_SIZE_SMALL_TOOLBAR))
+        but_active.set_relief(gtk.RELIEF_NONE)
+        but_active.connect('toggled', self.search_active)
+        hbox.pack_start(but_active, expand=False, fill=False)
 
         but_prev = gtk.Button()
         self.but_prev = but_prev
