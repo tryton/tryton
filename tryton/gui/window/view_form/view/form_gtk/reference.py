@@ -29,7 +29,6 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         self.widget_combo.set_focus_chain([child])
 
         self.widget.pack_start(self.widget_combo, expand=False, fill=True)
-        self.widget.pack_start(gtk.Label('-'), expand=False, fill=False)
 
         self.init_selection()
         self.set_popdown(self.selection, self.widget_combo)
