@@ -1,3 +1,4 @@
+* Fill 'to' with 'from' value on filter box
 * Add tab domain in URL
 * Use Popover for search filter
 * Display version on login dialog

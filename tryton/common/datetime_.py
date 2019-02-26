@@ -151,9 +151,11 @@ class Date(gtk.Entry):
         self.emit('date-changed')
 
     def focus_out(self, entry, event):
+        previous_date = self.__date
         self.parse()
         self.update_label()
-        self.emit('date-changed')
+        if self.__date != previous_date:
+            self.emit('date-changed')
         return False
 
     def activate(self, entry=None):
@@ -174,6 +176,7 @@ class Date(gtk.Entry):
                 assert isinstance(value, datetime.date), value
             self.__date = value
             self.update_label()
+            self.emit('date-changed')
         elif prop.name == 'format':
             self.__format = value
             self.update_label()
@@ -344,6 +347,7 @@ class Time(gtk.ComboBoxEntry):
                     value = value.time()
             self.__time = value
             self.update_label()
+            self.emit('time-changed')
         elif prop.name == 'format':
             self.__format = value
             self.update_label()

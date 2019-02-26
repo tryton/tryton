@@ -16,23 +16,31 @@ from tryton.pyson import PYSONDecoder
 _ = gettext.gettext
 
 
-class Dates(gtk.HBox):
+class Between(Gtk.HBox):
+    _changed_signal = None
 
-    def __init__(self, format_=None, _entry=Date):
-        super(Dates, self).__init__()
-        self.from_ = add_operators(_entry())
+    def __init__(self, _entry=Gtk.Entry):
+        super().__init__()
+        self.from_ = _entry()
         self.pack_start(self.from_, expand=True, fill=True)
-        self.pack_start(gtk.Label(_('..')), expand=False, fill=False)
-        self.to = add_operators(_entry())
+        self.pack_start(Gtk.Label(_('..')), expand=False, fill=False)
+        self.to = _entry()
         self.pack_start(self.to, expand=True, fill=True)
-        if format_:
-            self.from_.props.format = format_
-            self.to.props.format = format_
 
-    def _get_value(self, widget):
-        value = widget.props.value
-        if value:
-            return value.strftime(widget.props.format)
+        if self._changed_signal:
+            self.from_.connect_after(
+                self._changed_signal, self._from_changed)
+
+    @property
+    def _connect_widgets(self):
+        return [self.from_, self.to]
+
+    def connect(self, signal, callback):
+        for widget in self._connect_widgets:
+            try:
+                widget.connect(signal, callback)
+            except TypeError:
+                pass
 
     def get_value(self):
         from_ = self._get_value(self.from_)
@@ -47,31 +55,58 @@ class Dates(gtk.HBox):
         elif to:
             return '<=%s' % quote(to)
 
+    def _get_value(self, entry):
+        raise NotImplementedError
+
+    def set_value(self, from_, to):
+        self._set_value(self.from_, from_)
+        self._set_value(self.to, to)
+
+    def _set_value(self, entry, value):
+        raise NotImplementedError
+
+    def _from_changed(self, widget):
+        self._set_value(self.to, self._get_value(self.from_))
+
+
+class WithOperators:
+    def __init__(self, entry):
+        self.entry = entry
+
+    def __call__(self):
+        return add_operators(self.entry())
+
+
+class BetweenDates(Between):
+    _entry = None
+
+    def __init__(self, format_=None):
+        super().__init__(WithOperators(self._entry))
+        if format_:
+            self.from_.props.format = format_
+            self.to.props.format = format_
+
+    def _set_value(self, entry, value):
+        entry.props.value = value
+
+
+class Dates(BetweenDates):
+    _entry = Date
+    _changed_signal = 'date-changed'
+
+    def _get_value(self, widget):
+        value = widget.props.value
+        if value:
+            return value.strftime(widget.props.format)
+
+
+class Times(BetweenDates):
+    _entry = Time
+    _changed_signal = 'time-changed'
+
     @property
-    def _widgets(self):
-        return [self.from_, self.to]
-
-    def connect_activate(self, callback):
-        for widget in self._widgets:
-            if isinstance(widget, Date):
-                widget.connect('activate', callback)
-            elif isinstance(widget, Time):
-                widget.get_child().connect('activate', callback)
-
-    def connect_combo(self, callback):
-        for widget in self._widgets:
-            if isinstance(widget, Time):
-                widget.connect('notify::popup-shown', callback)
-
-    def set_values(self, from_, to):
-        self.from_.props.value = from_
-        self.to.props.value = to
-
-
-class Times(Dates):
-
-    def __init__(self, format_, _entry=Time):
-        super(Times, self).__init__(_entry=_entry)
+    def _connect_widgets(self):
+        return [self.from_.get_child(), self.to.get_child()]
 
     def _get_value(self, widget):
         value = widget.props.value
@@ -79,24 +114,26 @@ class Times(Dates):
             return datetime.time.strftime(value, widget.props.format)
 
 
-class DateTimes(Dates):
+class DateTimes(BetweenDates):
+    _entry = DateTime
+    _changed_signal = 'datetime-changed'
 
-    def __init__(self, date_format, time_format, _entry=DateTime):
-        super(DateTimes, self).__init__(_entry=_entry)
+    def __init__(self, date_format, time_format):
+        super().__init__()
         self.from_.props.date_format = date_format
         self.to.props.date_format = date_format
         self.from_.props.time_format = time_format
         self.to.props.time_format = time_format
+
+    @property
+    def _connect_widgets(self):
+        return self.from_.get_children() + self.to.get_children()
 
     def _get_value(self, widget):
         value = widget.props.value
         if value:
             return value.strftime(
                 widget.props.date_format + ' ' + widget.props.time_format)
-
-    @property
-    def _widgets(self):
-        return self.from_.get_children() + self.to.get_children()
 
 
 class Selection(gtk.ScrolledWindow):
@@ -511,7 +548,7 @@ class ScreenContainer(object):
             for label, entry in self.search_table.fields:
                 if isinstance(entry, gtk.ComboBox):
                     value = quote(entry.get_active_text()) or None
-                elif isinstance(entry, (Dates, Selection)):
+                elif isinstance(entry, (Between, Selection)):
                     value = entry.get_value()
                 else:
                     value = quote(entry.get_text()) or None
@@ -568,7 +605,7 @@ class ScreenContainer(object):
                             entry = Times(time_format)
                         elif field['type'] == 'datetime':
                             entry = DateTimes(date_format, time_format)
-                    entry.connect_activate(lambda *a: search())
+                    entry.connect('activate', lambda *a: search())
                 else:
                     entry = gtk.Entry()
                     entry.connect('activate', lambda *a: search())
@@ -607,8 +644,8 @@ class ScreenContainer(object):
             for label, entry in self.search_table.fields:
                 if isinstance(entry, gtk.ComboBox):
                     entry.set_active(-1)
-                elif isinstance(entry, Dates):
-                    entry.set_values(None, None)
+                elif isinstance(entry, Between):
+                    entry.set_value(None, None)
                 elif isinstance(entry, Selection):
                     entry.treeview.get_selection().unselect_all()
                 else:
