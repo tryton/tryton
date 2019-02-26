@@ -411,14 +411,10 @@
                     var label = this.search_form.fields[i][0];
                     var entry = this.search_form.fields[i][1];
                     var value;
-                    switch(entry.type) {
-                        case 'selection':
-                        case 'date':
-                        case 'datetime':
-                        case 'time':
-                            value = entry.get_value(quote);
-                            break;
-                        default:
+                    if ((entry instanceof Sao.ScreenContainer.Between) ||
+                        (entry instanceof Sao.ScreenContainer.Selection)) {
+                        value = entry.get_value(quote);
+                    } else {
                         value = quote(entry.val());
                     }
                     if (value) {
@@ -562,14 +558,73 @@
         }
     });
 
-    Sao.ScreenContainer.DateTimes = Sao.class_(Object, {
-        type: 'date',
-        init: function(format, id) {
+    Sao.ScreenContainer.Between = Sao.class_(Object, {
+        init: function(id) {
             this.el = jQuery('<div/>', {
                 'class': 'row',
                 id: id
             });
-            var build_entry = function(placeholder, el) {
+            this.from = this.build_entry(Sao.i18n.gettext("From"),
+                jQuery('<div/>', {
+                    'class': 'col-md-5'
+                }).appendTo(this.el));
+            jQuery('<p/>', {
+                'class': 'text-center'
+            }).append('..').appendTo(jQuery('<div/>', {
+                'class': 'col-md-1'
+            }).appendTo(this.el));
+            this.to = this.build_entry(Sao.i18n.gettext("To"),
+                jQuery('<div/>', {
+                    'class': 'col-md-5'
+                }).appendTo(this.el));
+        },
+        build_entry: function(placeholder, el) {
+        },
+        get_value: function(quote) {
+            var from = this._get_value(this.from);
+            var to = this._get_value(this.to);
+            if (from && to) {
+                if (from !== to) {
+                    return quote(from) + '..' + quote(to);
+                } else {
+                    return quote(from);
+                }
+            } else if (from) {
+                return '>=' + quote(from);
+            } else if (to) {
+                return '<=' + quote(to);
+            }
+        },
+        _get_value: function(entry) {
+        },
+        set_value: function(from, to) {
+            this._set_value(self.from, from);
+            this._set_value(self.to, to);
+        },
+        _set_value: function(entry, value) {
+        },
+        _from_changed: function(evt) {
+            this._set_value(this.to, this._get_value(this.from));
+        },
+    });
+
+    Sao.ScreenContainer.BetweenDates = Sao.class_(Sao.ScreenContainer.Between, {
+        init: function(format, id) {
+            this.format = format;
+            Sao.ScreenContainer.BetweenDates._super.init.call(this, id);
+            this.from.on('dp.change', this._from_changed.bind(this));
+        },
+        _get_value: function(entry, value) {
+            return entry.find('input').val();
+        },
+        _set_value: function(entry, value) {
+            entry.data('DateTimePicker').date(value);
+        },
+    });
+
+    Sao.ScreenContainer.DateTimes = Sao.class_(
+        Sao.ScreenContainer.BetweenDates, {
+        build_entry: function(placeholder, el) {
                 var entry = jQuery('<div/>', {
                     'class': 'input-group input-group-sm'
                 }).appendTo(el);
@@ -587,13 +642,12 @@
                     'class': 'form-control input-sm',
                     type: 'text',
                     placeholder: placeholder,
-                    id: id + '-from'
                 }).appendTo(entry);
                 entry.datetimepicker({
                     'locale': moment.locale(),
                     'keyBinds': null,
                 });
-                entry.data('DateTimePicker').format(format);
+                entry.data('DateTimePicker').format(this.format);
                 var mousetrap = new Mousetrap(el[0]);
 
                 mousetrap.bind('enter', function(e, combo) {
@@ -614,47 +668,10 @@
                     });
                 });
                 return entry;
-            };
-            this.from = build_entry(Sao.i18n.gettext("From"),
-                jQuery('<div/>', {
-                    'class': 'col-md-5'
-                }).appendTo(this.el));
-            jQuery('<p/>', {
-                'class': 'text-center'
-            }).append('..').appendTo(jQuery('<div/>', {
-                'class': 'col-md-1'
-            }).appendTo(this.el));
-            this.to = build_entry(Sao.i18n.gettext("To"),
-                jQuery('<div/>', {
-                    'class': 'col-md-5'
-                }).appendTo(this.el));
         },
-        _get_value: function(entry) {
-            return entry.find('input').val();
-        },
-        get_value: function(quote) {
-            var from = this._get_value(this.from);
-            var to = this._get_value(this.to);
-            if (from && to) {
-                if (from !== to) {
-                    return quote(from) + '..' + quote(to);
-                } else {
-                    return quote(from);
-                }
-            } else if (from) {
-                return '>=' + quote(from);
-            } else if (to) {
-                return '<=' + quote(to);
-            }
-        },
-        set_value: function(from, to) {
-            this.from.data('DateTimePicker').date(from);
-            this.to.data('DateTimePicker').date(to);
-        }
     });
 
     Sao.ScreenContainer.Selection = Sao.class_(Object, {
-        type: 'selection',
         init: function(selections, id) {
             this.el = jQuery('<select/>', {
                 'class': 'form-control input-sm',
