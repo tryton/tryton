@@ -361,16 +361,26 @@
             var current_record = this.screen.current_record;
             if (jQuery.isEmptyObject(selected)) {
                 selected = this.get_selected_paths();
-                if (current_record) {
-                    var current_path = current_record.get_path(this.screen.group);
-                    current_path = current_path.map(function(e) {
-                        return e[1];
-                    });
-                    if (!Sao.common.contains(selected, current_path)) {
-                        selected = [current_path];
+                if (this.selection.prop('checked') &&
+                    !this.selection.prop('indeterminate')) {
+                    this.screen.group.slice(
+                        this.rows.length, this.display_size)
+                        .forEach(function(record) {
+                            selected.push([record.id]);
+                        });
+                } else {
+                    if (current_record) {
+                        var current_path = current_record.get_path(
+                            this.screen.group);
+                        current_path = current_path.map(function(e) {
+                            return e[1];
+                        });
+                        if (!Sao.common.contains(selected, current_path)) {
+                            selected = [current_path];
+                        }
+                    } else if (!current_record) {
+                        selected = [];
                     }
-                } else if (!current_record) {
-                    selected = [];
                 }
             }
             expanded = expanded || [];
