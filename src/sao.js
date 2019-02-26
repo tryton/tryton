@@ -365,9 +365,10 @@ var Sao = {};
                 Sao.set_url(tab.get_url(), tab.name);
             }
         } else {
+            url = decodeURIComponent(url);
             for (var i = 0; i < Sao.Tab.tabs.length; i++) {
                 tab = Sao.Tab.tabs[i];
-                if (tab.get_url() == url) {
+                if (decodeURIComponent(tab.get_url()) == url) {
                     tab.show();
                     return;
                 }
