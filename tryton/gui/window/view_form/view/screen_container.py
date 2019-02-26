@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
+from gi.repository import Gtk
 import gtk
 import gettext
 import gobject
 
 import tryton.common as common
-from tryton.gui import Main
 from tryton.common.domain_parser import quote
 from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.datetime_ import Date, Time, DateTime, add_operators
@@ -142,7 +142,7 @@ class ScreenContainer(object):
         self.alternate_viewport = gtk.Viewport()
         self.alternate_viewport.set_shadow_type(gtk.SHADOW_NONE)
         self.alternate_view = False
-        self.search_window = None
+        self.search_popover = None
         self.search_table = None
         self.last_search_text = ''
         self.tab_domain = tab_domain or []
@@ -293,10 +293,6 @@ class ScreenContainer(object):
         self.but_prev.set_sensitive(False)
 
         tooltips.enable()
-
-    def destroy(self):
-        if self.search_window:
-            self.search_window.hide()
 
     def widget_get(self):
         return self.vbox
@@ -509,14 +505,8 @@ class ScreenContainer(object):
             window.hide()
             self.search_entry.grab_focus()
 
-        def key_press(widget, event):
-            if event.keyval == gtk.keysyms.Escape:
-                window_hide(widget)
-                return True
-            return False
-
         def search():
-            self.search_window.hide()
+            self.search_popover.popdown()
             text = ''
             for label, entry in self.search_table.fields:
                 if isinstance(entry, gtk.ComboBox):
@@ -533,24 +523,9 @@ class ScreenContainer(object):
             # because domain parser could simplify the text
             self.last_search_text = self.get_text()
 
-        if not self.search_window:
-            self.search_window = gtk.Window()
-            Main().add_window(self.search_window)
-            self.search_window.set_transient_for(widget.get_toplevel())
-            self.search_window.set_type_hint(
-                gtk.gdk.WINDOW_TYPE_HINT_POPUP_MENU)
-            self.search_window.set_destroy_with_parent(True)
-            self.search_window.set_decorated(False)
-            self.search_window.set_deletable(False)
-            self.search_window.connect('delete-event', window_hide)
-            self.search_window.connect('key-press-event', key_press)
-            self.search_window.connect('focus-out-event', window_hide)
-
-            def toggle_window_hide(combobox, shown):
-                if combobox.props.popup_shown:
-                    self.search_window.handler_block_by_func(window_hide)
-                else:
-                    self.search_window.handler_unblock_by_func(window_hide)
+        if not self.search_popover:
+            self.search_popover = Gtk.Popover()
+            self.search_popover.set_relative_to(widget)
 
             vbox = gtk.VBox()
             fields = [f for f in self.screen.domain_parser.fields.values()
@@ -574,7 +549,6 @@ class ScreenContainer(object):
                         entry = gtk.ComboBoxText()
                     else:
                         entry = gtk.combo_box_new_text()
-                    entry.connect('notify::popup-shown', toggle_window_hide)
                     entry.append_text('')
                     selections = (_('True'), _('False'))
                     for selection in selections:
@@ -595,7 +569,6 @@ class ScreenContainer(object):
                         elif field['type'] == 'datetime':
                             entry = DateTimes(date_format, time_format)
                     entry.connect_activate(lambda *a: search())
-                    entry.connect_combo(toggle_window_hide)
                 else:
                     entry = gtk.Entry()
                     entry.connect('activate', lambda *a: search())
@@ -607,50 +580,28 @@ class ScreenContainer(object):
             scrolled = gtk.ScrolledWindow()
             scrolled.add_with_viewport(self.search_table)
             scrolled.set_shadow_type(gtk.SHADOW_NONE)
-            scrolled.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+            scrolled.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
             vbox.pack_start(scrolled, expand=True, fill=True)
             find_button = gtk.Button(_('Find'))
             find_button.connect('clicked', lambda *a: search())
             find_button.set_image(common.IconFactory.get_image(
                     'tryton-search', gtk.ICON_SIZE_SMALL_TOOLBAR))
+            find_button.set_can_default(True)
+            self.search_popover.set_default_widget(find_button)
             hbuttonbox = gtk.HButtonBox()
-            hbuttonbox.set_spacing(5)
             hbuttonbox.pack_start(find_button)
             hbuttonbox.set_layout(gtk.BUTTONBOX_END)
             vbox.pack_start(hbuttonbox, expand=False, fill=True)
-            self.search_window.add(vbox)
+            self.search_popover.add(vbox)
             vbox.show_all()
+            scrolled.set_size_request(
+                -1, min(self.search_table.get_preferred_height()[1], 400))
 
-            new_size = list(map(sum, list(zip(self.search_table.size_request(),
-                    scrolled.size_request()))))
-            self.search_window.set_default_size(*new_size)
-
-        parent = widget.get_toplevel()
-        widget_x, widget_y = widget.translate_coordinates(parent, 0, 0)
-        widget_allocation = widget.get_allocation()
-
-        # Resize the window to not be out of the parent
-        width, height = self.search_window.get_default_size()
-        allocation = parent.get_allocation()
-        delta_width = allocation.width - (widget_x + width)
-        delta_height = allocation.height - (widget_y + widget_allocation.height
-            + height)
-        if delta_width < 0:
-            width += delta_width
-        if delta_height < 0:
-            height += delta_height
-        self.search_window.resize(width, height)
-
-        # Move the window under the button
-        if hasattr(widget.window, 'get_root_coords'):
-            x, y = widget.window.get_root_coords(
-                widget_allocation.x, widget_allocation.y)
-        else:
-            x, y = widget.window.get_origin()
-        self.search_window.move(
-            x, y + widget_allocation.height)
-        self.search_window.show()
-        self.search_window.grab_focus()
+        self.search_popover.set_pointing_to(
+            widget.get_icon_area(Gtk.EntryIconPosition.PRIMARY))
+        self.search_popover.popup()
+        if self.search_table.fields:
+            self.search_table.fields[0][1].grab_focus()
 
         if self.last_search_text.strip() != self.get_text().strip():
             for label, entry in self.search_table.fields:
@@ -662,5 +613,3 @@ class ScreenContainer(object):
                     entry.treeview.get_selection().unselect_all()
                 else:
                     entry.set_text('')
-            if self.search_table.fields:
-                self.search_table.fields[0][1].grab_focus()
