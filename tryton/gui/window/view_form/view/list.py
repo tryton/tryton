@@ -342,7 +342,7 @@ class ViewTree(View):
         widget = Widget(self, node_attrs)
         self.widgets[name].append(widget)
 
-        column = gtk.TreeViewColumn(field.attrs['string'])
+        column = gtk.TreeViewColumn(node_attrs['string'])
         column._type = 'field'
         column.name = name
 
