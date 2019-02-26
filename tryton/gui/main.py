@@ -978,6 +978,8 @@ class Main(Gtk.Application):
                 context = json.loads(params.get('context', '{}'),
                     object_hook=object_hook)
                 context_model = params.get('context_model')
+                tab_domain = json.loads(params.get('tab_domain', '[]'),
+                    object_hook=object_hook)
             except ValueError:
                 return
             if path:
@@ -996,7 +998,8 @@ class Main(Gtk.Application):
                     mode=mode,
                     name=name,
                     limit=limit,
-                    search_value=search_value)
+                    search_value=search_value,
+                    tab_domain=tab_domain)
             except Exception:
                 # Prevent crashing the client
                 return
