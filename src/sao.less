@@ -158,6 +158,14 @@ img.icon {
     margin: 5px 5px;
 }
 
+@media screen and (max-width: @screen-sm-max) {
+    .filter-box {
+        button[disabled] {
+            display: none;
+        }
+    }
+}
+
 .treeview {
     overflow-x: auto;
 

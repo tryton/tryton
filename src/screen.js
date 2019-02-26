@@ -39,8 +39,28 @@
             this.search_list = jQuery('<datalist/>');
             this.search_list.uniqueId();
             this.search_entry.attr('list', this.search_list.attr('id'));
-            this.search_entry.keypress(this.key_press.bind(this));
             this.search_entry.on('input', this.update.bind(this));
+
+            var but_clear = jQuery('<button/>', {
+                'type': 'button',
+                'class': 'btn btn-default hidden-md hidden-lg',
+                'aria-label': Sao.i18n.gettext("Clear Search"),
+                'title': Sao.i18n.gettext("Clear Search"),
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-clear'));
+            but_clear.hide();
+            but_clear.click(function() {
+                this.search_entry.val('').change();
+                this.do_search();
+            }.bind(this));
+
+            this.search_entry.on('keyup change', function() {
+                if (this.search_entry.val()) {
+                    but_clear.show();
+                } else {
+                    but_clear.hide();
+                }
+                this.bookmark_match();
+            }.bind(this));
 
             var but_submit = jQuery('<button/>', {
                 'type': 'submit',
@@ -71,7 +91,7 @@
                 'aria-hidden': true,
             }));
             var dropdown_bookmark = jQuery('<ul/>', {
-                'class': 'dropdown-menu',
+                'class': 'dropdown-menu dropdown-menu-right',
                 'role': 'menu',
                 'aria-labelledby': 'bookmarks'
             });
@@ -94,7 +114,7 @@
                 }
             }.bind(this));
             this.but_star = jQuery('<button/>', {
-                'class': 'btn btn-default',
+                'class': 'btn btn-default hidden-xs',
                 'type': 'button'
             }).append(jQuery('<img/>', {
                 'class': 'icon',
@@ -112,11 +132,12 @@
             .append(this.search_list)
             .append(jQuery('<span/>', {
                 'class': 'input-group-btn'
-            }).append(but_submit)
-                    .append(this.but_star)
-                    .append(this.but_active)
-                    .append(this.but_bookmark)
-                    .append(dropdown_bookmark))
+            }).append(but_clear)
+                .append(but_submit)
+                .append(this.but_star)
+                .append(this.but_bookmark)
+                .append(dropdown_bookmark)
+                .append(this.but_active))
             .appendTo(jQuery('<div/>', {
                 'class': 'col-sm-10 col-xs-12'
             }).appendTo(search_row));
@@ -124,7 +145,7 @@
 
             this.but_prev = jQuery('<button/>', {
                 type: 'button',
-                'class': 'btn btn-default',
+                'class': 'btn btn-default btn-sm',
                 'aria-label': Sao.i18n.gettext("Previous"),
                 'title': Sao.i18n.gettext("Previous"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back', {
@@ -133,7 +154,7 @@
             this.but_prev.click(this.search_prev.bind(this));
             this.but_next = jQuery('<button/>', {
                 type: 'button',
-                'class': 'btn btn-default',
+                'class': 'btn btn-default btn-sm',
                 'aria-label': Sao.i18n.gettext("Next"),
                 'title': Sao.i18n.gettext("Next"),
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward', {
@@ -349,12 +370,6 @@
         },
         do_search: function() {
             return this.screen.search_filter(this.get_text());
-        },
-        key_press: function(e) {
-            // Wait the current event finished
-            window.setTimeout(function() {
-                this.bookmark_match();
-            }.bind(this));
         },
         set_screen: function(screen) {
             this.screen = screen;
