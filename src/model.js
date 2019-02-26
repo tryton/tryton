@@ -774,8 +774,8 @@
             }
             return jQuery.when.apply(jQuery, promises.filter(Boolean))
                 .then(function() {
-                    for (name in values) {
-                        this._loaded[name] = true;
+                    for (var i = 0; i < fieldnames.length; i++) {
+                        this._loaded[fieldnames[i]] = true;
                     }
                     if (validate) {
                         return this.validate(fieldnames, true);
