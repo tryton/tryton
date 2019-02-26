@@ -2627,7 +2627,6 @@ function eval_pyson(value){
                 'aria-label': attributes.string,
                 'title': attributes.string,
             });
-            this.el.prepend(jQuery('<span/>').text('-'));
             this.el.prepend(this.select);
             this.select.change(this.select_changed.bind(this));
             Sao.common.selection_mixin.init.call(this);

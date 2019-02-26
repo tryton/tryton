@@ -225,7 +225,7 @@ img.icon {
     .editabletree-char, .editabletree-date, .editabletree-datetime,
     .editabletree-integer, .editabletree-float, .editabletree-selection,
     .editabletree-timedelta, .editabletree-boolean, .editabletree-many2one,
-    .editabletree-one2many {
+    .editabletree-one2many, .editabletree-reference {
         width: 100%;
 
         input[type='checkbox'] {
@@ -233,7 +233,20 @@ img.icon {
             margin-left: auto;
             margin-right: auto;
         }
+
+        > .input-group {
+            width: 100%;
+        }
     }
+
+    @media screen and (min-width: @screen-sm-min) {
+        .editabletree-reference {
+            > .input-sm, > .input-group {
+                width: 50%;
+            }
+        }
+    }
+
     td {
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -310,6 +323,22 @@ img.icon {
             min-width: 12em;
         }
     }
+
+    @media screen and (min-width: @screen-sm-min) {
+        .form-reference {
+            > .input-sm, > .input-group {
+                width: 50%;
+            }
+        }
+    }
+    @media screen and (max-width: @screen-xs-max) {
+        .form-reference {
+            > .input-sm, > .input-group {
+                width: 100%;
+            }
+        }
+    }
+
     .form-integer, .form-float {
         input {
             max-width: 8em;
