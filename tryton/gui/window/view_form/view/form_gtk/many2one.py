@@ -129,7 +129,7 @@ class Many2One(Widget):
                         self.field.set_client(self.record,
                             self.value_from_id(*result[0]), force_change=True)
                     else:
-                        self.set_text('')
+                        self.wid_text.set_text('')
                     self.focus_out = True
                     self.changed = True
 
@@ -251,7 +251,7 @@ class Many2One(Widget):
                 and editable
                 and event.keyval in (gtk.keysyms.Delete,
                     gtk.keysyms.BackSpace)):
-            self.set_text('')
+            self.wid_text.set_text('')
         return False
 
     def sig_changed(self, *args):
@@ -270,7 +270,7 @@ class Many2One(Widget):
                 # in such case, the original text should not be restored
                 if not self.wid_text.get_text():
                     # Restore text and position after display
-                    self.set_text(text)
+                    self.wid_text.set_text(text)
                     self.wid_text.set_position(position)
             gobject.idle_add(clean)
         return False
@@ -281,7 +281,7 @@ class Many2One(Widget):
     def set_value(self, record, field):
         if field.get_client(record) != self.wid_text.get_text():
             field.set_client(record, self.value_from_id(None, ''))
-            self.set_text('')
+            self.wid_text.set_text('')
 
     def set_text(self, value):
         if not value:
@@ -297,7 +297,7 @@ class Many2One(Widget):
         self._set_completion()
 
         if not field:
-            self.set_text('')
+            self.set_text(None)
             self.changed = True
             return False
         self.set_text(field.get_client(record))
