@@ -186,7 +186,7 @@ class PopdownMixin(object):
         model = entry.get_model()
         for i, values in enumerate(model):
             if values[1] == value:
-                entry.set_active(i)
+                gobject.idle_add(entry.set_active, i)
                 break
 
     def get_popdown_value(self, entry, index=1):
