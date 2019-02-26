@@ -422,6 +422,7 @@ var Sao = {};
                 attributes.domain = loads(params.domain || '[]');
                 attributes.context = loads(params.context || '{}');
                 attributes.context_model = params.context_model;
+                attributes.tab_domain = loads(params.tab_domain || '[]');
             } catch (e) {
                 return;
             }
