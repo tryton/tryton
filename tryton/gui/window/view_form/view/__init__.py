@@ -26,6 +26,18 @@ class View(object):
         raise NotImplementedError
 
     @property
+    def record(self):
+        return self.screen.current_record
+
+    @record.setter
+    def record(self, value):
+        self.screen.current_record = value
+
+    @property
+    def group(self):
+        return self.screen.group
+
+    @property
     def selected_records(self):
         return []
 

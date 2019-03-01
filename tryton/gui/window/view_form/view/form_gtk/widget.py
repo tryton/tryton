@@ -38,7 +38,7 @@ class Widget(object):
 
     @property
     def record(self):
-        return self.view.screen.current_record
+        return self.view.record
 
     @property
     def field(self):

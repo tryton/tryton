@@ -76,7 +76,7 @@ class ViewCalendar(View):
             self.screen.search_filter()
 
     def on_event_pressed(self, goocalendar, event):
-        self.screen.current_record = event.record
+        self.record = event.record
 
     def on_event_activated(self, goocalendar, event):
         self.screen.switch_view('form')
@@ -104,7 +104,7 @@ class ViewCalendar(View):
         record.save()
 
     def on_day_pressed(self, goocalendar, day):
-        self.screen.current_record = None
+        self.record = None
 
     def on_day_activated(self, goocalendar, day):
         self.screen.new()
@@ -140,7 +140,7 @@ class ViewCalendar(View):
 
     @goocalendar_required
     def display(self):
-        self.widgets['goocalendar'].display(self.screen.group)
+        self.widgets['goocalendar'].display(self.group)
 
     def set_cursor(self, new=False, reset_view=True):
         pass

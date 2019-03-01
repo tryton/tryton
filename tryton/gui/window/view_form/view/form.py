@@ -232,7 +232,7 @@ class ViewForm(View):
 
     def _parse_separator(self, node, container, attributes):
         if 'name' in attributes:
-            field = self.screen.group.fields[attributes['name']]
+            field = self.group.fields[attributes['name']]
             for attr in ('states', 'string'):
                 if attr not in attributes and attr in field.attrs:
                     attributes[attr] = field.attrs[attr]
@@ -249,7 +249,7 @@ class ViewForm(View):
 
     def _parse_label(self, node, container, attributes):
         if 'name' in attributes:
-            field = self.screen.group.fields[attributes['name']]
+            field = self.group.fields[attributes['name']]
             if attributes['name'] == self.screen.exclude_field:
                 container.add(None, attributes)
                 return
@@ -309,7 +309,7 @@ class ViewForm(View):
     def _parse_page(self, node, notebook, attributes):
         tab_box = gtk.HBox(spacing=3)
         if 'name' in attributes:
-            field = self.screen.group.fields[attributes['name']]
+            field = self.group.fields[attributes['name']]
             if attributes['name'] == self.screen.exclude_field:
                 return
             for attr in ('states', 'string'):
@@ -338,9 +338,9 @@ class ViewForm(View):
 
     def _parse_field(self, node, container, attributes):
         name = attributes['name']
-        field = self.screen.group.fields[name]
+        field = self.group.fields[name]
 
-        if (name not in self.screen.group.fields
+        if (name not in self.group.fields
                 or name == self.screen.exclude_field):
             container.add(None, attributes)
             return
@@ -378,7 +378,7 @@ class ViewForm(View):
     def _parse_group(self, node, container, attributes):
         group = self.parse(node)
         if 'name' in attributes:
-            field = self.screen.group.fields[attributes['name']]
+            field = self.group.fields[attributes['name']]
             if attributes['name'] == self.screen.exclude_field:
                 container.add(None, attributes)
                 return
@@ -472,7 +472,7 @@ class ViewForm(View):
         self.widget.destroy()
 
     def set_value(self, focused_widget=False):
-        record = self.screen.current_record
+        record = self.record
         if record:
             for name, widgets in self.widgets.items():
                 if name in record.group.fields:
@@ -485,8 +485,8 @@ class ViewForm(View):
 
     @property
     def selected_records(self):
-        if self.screen.current_record:
-            return [self.screen.current_record]
+        if self.record:
+            return [self.record]
         return []
 
     @property
@@ -498,7 +498,7 @@ class ViewForm(View):
         return [b for b in self.state_widgets if isinstance(b, gtk.Button)]
 
     def reset(self):
-        record = self.screen.current_record
+        record = self.record
         if record:
             for name, widgets in self.widgets.items():
                 field = record.group.fields.get(name)
@@ -508,7 +508,7 @@ class ViewForm(View):
                         widget.display()
 
     def display(self):
-        record = self.screen.current_record
+        record = self.record
         if record:
             # Force to set fields in record
             # Get first the lazy one from the view to reduce number of requests
@@ -553,7 +553,7 @@ class ViewForm(View):
                 child = find_focusable_child(self._viewport)
                 if child:
                     child.grab_focus()
-        record = self.screen.current_record
+        record = self.record
         if record:
             invalid_widgets = []
             for name in record.invalid_fields:

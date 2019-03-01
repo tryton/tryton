@@ -316,7 +316,7 @@ class ViewTree(View):
         self.add_last_column()
 
     def _parse_field(self, node):
-        group = self.screen.group
+        group = self.group
         node_attrs = node_attributes(node)
         name = node_attrs['name']
         field = group.fields[name]
@@ -585,7 +585,7 @@ class ViewTree(View):
     def set_drag_and_drop(self):
         dnd = False
         if self.children_field:
-            children = self.screen.group.fields.get(self.children_field)
+            children = self.group.fields.get(self.children_field)
             if children:
                 parent_name = children.attrs.get('relation_field')
                 dnd = parent_name in self.widgets
@@ -654,7 +654,7 @@ class ViewTree(View):
     def test_expand_row(self, widget, iter_, path):
         model = widget.get_model()
         if model.iter_n_children(iter_) > CONFIG['client.limit']:
-            self.screen.current_record = model.get_value(iter_, 0)
+            self.record = model.get_value(iter_, 0)
             self.screen.switch_view('form')
             return True
         iter_ = model.iter_children(iter_)
@@ -718,12 +718,12 @@ class ViewTree(View):
         if col in columns:
             idx = columns.index(col)
             columns = columns[idx:]
-        if self.screen.current_record:
-            record = self.screen.current_record
+        if self.record:
+            record = self.record
             group = record.group
             idx = group.index(record)
         else:
-            group = self.screen.group
+            group = self.group
             idx = len(group)
         default = None
         for line in data:
@@ -745,7 +745,7 @@ class ViewTree(View):
             if not record.validate():
                 break
             idx += 1
-        self.screen.current_record = record
+        self.record = record
         self.screen.display(set_cursor=True)
 
     def drag_data_get(self, treeview, context, selection, target_id,
@@ -768,8 +768,8 @@ class ViewTree(View):
             info, etime):
         treeview.emit_stop_by_name('drag-data-received')
         if self.attributes.get('sequence'):
-            field = self.screen.group.fields[self.attributes['sequence']]
-            for record in self.screen.group:
+            field = self.group.fields[self.attributes['sequence']]
+            for record in self.group:
                 if field.get_state_attrs(
                         record).get('readonly', False):
                     return
@@ -895,7 +895,7 @@ class ViewTree(View):
 
             selection = treeview.get_selection()
             if selection.count_selected_rows() == 1:
-                group = self.screen.group
+                group = self.group
                 if selection.get_mode() == gtk.SELECTION_SINGLE:
                     model = selection.get_selected()[0]
                 elif selection.get_mode() == gtk.SELECTION_MULTIPLE:
@@ -972,7 +972,7 @@ class ViewTree(View):
                     treeview.expand_row(path, False)
 
     def __select_changed(self, tree_sel):
-        previous_record = self.screen.current_record
+        previous_record = self.record
         if previous_record and previous_record not in previous_record.group:
             previous_record = None
 
@@ -980,25 +980,24 @@ class ViewTree(View):
             model, iter_ = tree_sel.get_selected()
             if model and iter_:
                 record = model.get_value(iter_, 0)
-                self.screen.current_record = record
+                self.record = record
             else:
-                self.screen.current_record = None
+                self.record = None
 
         elif tree_sel.get_mode() == gtk.SELECTION_MULTIPLE:
             model, paths = tree_sel.get_selected_rows()
             if model and paths:
                 iter_ = model.get_iter(paths[0])
                 record = model.get_value(iter_, 0)
-                self.screen.current_record = record
+                self.record = record
             else:
-                self.screen.current_record = None
+                self.record = None
 
         if self.editable and previous_record:
             def go_previous():
-                self.screen.current_record = previous_record
+                self.record = previous_record
                 self.set_cursor()
-            if (not self.screen.parent
-                    and previous_record != self.screen.current_record):
+            if not self.screen.parent and previous_record != self.record:
 
                 def save():
                     if not previous_record.destroyed:
@@ -1010,8 +1009,7 @@ class ViewTree(View):
                     return True
                 # Delay the save to let GTK process the current event
                 gobject.idle_add(save)
-            elif (previous_record != self.screen.current_record
-                    and self.screen.pre_validate):
+            elif previous_record != self.record and self.screen.pre_validate:
 
                 def pre_validate():
                     if not previous_record.destroyed:
@@ -1030,16 +1028,14 @@ class ViewTree(View):
 
     def display(self):
         self.treeview.display_counter += 1
-        current_record = self.screen.current_record
+        current_record = self.record
         if (self.reload
                 or not self.treeview.get_model()
-                or (self.screen.group !=
-                    self.treeview.get_model().group)):
-            model = AdaptModelGroup(self.screen.group,
-                    self.children_field)
+                or self.group != self.treeview.get_model().group):
+            model = AdaptModelGroup(self.group, self.children_field)
             self.treeview.set_model(model)
             # __select_changed resets current_record to None
-            self.screen.current_record = current_record
+            self.record = current_record
             if current_record:
                 selection = self.treeview.get_selection()
                 path = current_record.get_index_path(model.group)
@@ -1080,7 +1076,7 @@ class ViewTree(View):
                 column.set_visible(not unique or bool(self.children_field))
 
     def set_state(self):
-        record = self.screen.current_record
+        record = self.record
         if record:
             for field in record.group.fields:
                 field = record.group.fields.get(field, None)
@@ -1095,8 +1091,8 @@ class ViewTree(View):
             selected_sum = None
             loaded = True
             digit = 0
-            field = self.screen.group.fields[name]
-            for record in self.screen.group:
+            field = self.group.fields[name]
+            for record in self.group:
                 if not record.get_loaded([name]) and record.id >= 0:
                     loaded = False
                     break
@@ -1120,7 +1116,7 @@ class ViewTree(View):
 
             if loaded:
                 if field.attrs['type'] == 'timedelta':
-                    converter = field.converter(self.screen.group)
+                    converter = field.converter(self.group)
                     selected_sum = common.timedelta.format(
                         selected_sum, converter)
                     sum_ = common.timedelta.format(sum_, converter)
@@ -1141,8 +1137,8 @@ class ViewTree(View):
     def set_cursor(self, new=False, reset_view=True):
         self.treeview.grab_focus()
         model = self.treeview.get_model()
-        if self.screen.current_record and model:
-            path = self.screen.current_record.get_index_path(model.group)
+        if self.record and model:
+            path = self.record.get_index_path(model.group)
             if model.get_flags() & gtk.TREE_MODEL_LIST_ONLY:
                 path = (path[0],)
             focus_column = self.treeview.next_column(path, editable=new)
