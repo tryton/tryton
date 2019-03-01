@@ -140,7 +140,7 @@
             this.events =  [];
             var promisses = [];
             prm.then(function()  {
-                this.screen.group.forEach(function(record) {
+                this.group.forEach(function(record) {
                     var record_promisses = [];
                     this.fields.forEach(function(name) {
                         record_promisses.push(record.load(name));

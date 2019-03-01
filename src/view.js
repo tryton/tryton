@@ -18,6 +18,15 @@
             }
             screen.set_on_write(this.attributes.on_write);
         },
+        get record() {
+            return this.screen.current_record;
+        },
+        set record(value) {
+            this.screen.current_record = value;
+        },
+        get group() {
+            return this.screen.group;
+        },
         set_value: function() {
         },
         get_fields: function() {

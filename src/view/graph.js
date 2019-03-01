@@ -73,7 +73,7 @@
             return new Widget(this, xfield, yfields);
         },
         display: function() {
-            return this.widget.display(this.screen.group);
+            return this.widget.display(this.group);
         }
     });
 

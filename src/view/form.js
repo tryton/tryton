@@ -326,7 +326,7 @@ function eval_pyson(value){
             return buttons;
         },
         display: function() {
-            var record = this.screen.current_record;
+            var record = this.record;
             var field;
             var name;
             var promesses = [];
@@ -363,7 +363,7 @@ function eval_pyson(value){
             };
             return jQuery.when.apply(jQuery,promesses)
                 .done(function() {
-                    var record = this.screen.current_record;
+                    var record = this.record;
                     for (name in this.widgets) {
                         var widgets = this.widgets[name];
                         field = null;
@@ -377,7 +377,7 @@ function eval_pyson(value){
                     }
                 }.bind(this))
                 .done(function() {
-                    var record = this.screen.current_record;
+                    var record = this.record;
                     var j;
                     for (j in this.state_widgets) {
                         var state_widget = this.state_widgets[j];
@@ -390,7 +390,7 @@ function eval_pyson(value){
                 }.bind(this));
         },
         set_value: function() {
-            var record = this.screen.current_record;
+            var record = this.record;
             if (record) {
                 var set_value = function(widget) {
                     widget.set_value(record, this);
@@ -412,8 +412,8 @@ function eval_pyson(value){
             });
         },
         get selected_records() {
-            if (this.screen.current_record) {
-                return [this.screen.current_record];
+            if (this.record) {
+                return [this.record];
             }
             return [];
         },
@@ -442,7 +442,7 @@ function eval_pyson(value){
                 }
             }
 
-            var record = this.screen.current_record;
+            var record = this.record;
             if (record) {
                 var invalid_widgets = [];
                 // We use the has-error class to find the invalid elements
