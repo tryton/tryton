@@ -227,7 +227,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ]
         cls.tax_identifier.domain = [
             ('party', '=', Eval('company_party', -1)),
-            ('type', 'in', cls._tax_identifier_types()),
+            ('type', 'in', cls.tax_identifier_types()),
             ]
         cls.tax_identifier.depends += ['company_party']
         cls._transitions |= set((
@@ -1005,12 +1005,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             return Sequence.get_id(sequence.id)
 
     @classmethod
-    def _tax_identifier_types(cls):
-        return ['eu_vat']
+    def tax_identifier_types(cls):
+        return Pool().get('party.party').tax_identifier_types()
 
     def get_tax_identifier(self):
         "Return the default computed tax identifier"
-        types = self._tax_identifier_types()
+        types = self.tax_identifier_types()
         for identifier in self.company.party.identifiers:
             if identifier.type in types:
                 return identifier.id
