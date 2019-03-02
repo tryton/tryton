@@ -12,8 +12,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_phone_number">
             <field name="text">The phone number "%(phone)s" for party "%(party)s" is not valid.</field>
         </record>
-        <record model="ir.message" id="msg_invalid_vat_number">
-            <field name="text">The VAT number "%(code)s" for party "%(party)s" is not valid.</field>
+        <record model="ir.message" id="msg_invalid_code">
+            <field name="text">The %(type)s "%(code)s" for party "%(party)s" is not valid.</field>
         </record>
         <record model="ir.message" id="msg_vies_unavailable">
             <field name="text">The VIES service is unavailable, try again later.</field>
