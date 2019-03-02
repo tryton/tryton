@@ -871,6 +871,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 if childs is None:
                     childs = Location.search([
                             ('parent', 'child_of', [move.from_location.id]),
+                            ('type', '!=', 'view'),
                             ])
                     child_locations[move.from_location] = childs
             else:
