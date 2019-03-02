@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import logging
+import time
 from threading import local
 from sql import Flavor
 
@@ -53,6 +54,7 @@ class Transaction(object):
     delete_records = None
     delete = None  # TODO check to merge with delete_records
     timestamp = None
+    started_at = None
 
     def __new__(cls, new=False):
         transactions = cls._local.transactions
@@ -64,6 +66,13 @@ class Transaction(object):
         else:
             instance = transactions[-1]
         return instance
+
+    @staticmethod
+    def monotonic_time():
+        try:
+            return time.monotonic_ns()
+        except AttributeError:
+            return time.monotonic()
 
     @property
     def tasks(self):
@@ -87,6 +96,10 @@ class Transaction(object):
         assert self.database is None
         assert self.close is None
         assert self.context is None
+        # Compute started_at before connect to ensure
+        # it is strictly before all transactions started after
+        # but it may be also before transactions started before
+        self.started_at = self.monotonic_time()
         if not database_name:
             database = Database().connect()
         else:

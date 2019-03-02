@@ -102,6 +102,27 @@ class CacheTestCase(unittest.TestCase):
         with Transaction().start(DB_NAME, USER):
             self.assertGreater(cache._clean_last, last)
 
+    def test_memory_cache_old_transaction(self):
+        "Test old transaction does not fill cache"
+        transaction1 = Transaction().start(DB_NAME, USER)
+        self.addCleanup(transaction1.stop)
+
+        # Clear cache from new transaction
+        transaction2 = transaction1.new_transaction()
+        self.addCleanup(transaction2.stop)
+        cache.clear()
+        transaction2.commit()
+
+        # Set value from old transaction
+        Transaction().set_current_transaction(transaction1)
+        self.addCleanup(transaction1.stop)
+        cache.set('foo', 'baz')
+
+        # New transaction has still empty cache
+        transaction3 = transaction1.new_transaction()
+        self.addCleanup(transaction3.stop)
+        self.assertEqual(cache.get('foo'), None)
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase

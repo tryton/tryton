@@ -37,6 +37,10 @@ commited.
 
 .. attribute:: Transaction.timestamp
 
+.. attribute:: Transaction.started_at
+
+    The monotonic timestamp when the transaction started.
+
 .. attribute:: Transaction.language
 
     The language code defines in the context.
@@ -44,6 +48,10 @@ commited.
 .. attribute:: Transaction.counter
 
     Count the number of modification made in this transaction.
+
+.. staticmethod:: Transaction.monotonic_time
+
+    Return a monotonic time used to populate :attr:~Transaction.started_at.
 
 .. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit]]]])
 

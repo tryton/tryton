@@ -83,17 +83,21 @@ class MemoryCache(BaseCache):
     """
     _reset = WeakKeyDictionary()
     _clean_last = datetime.now()
+    _default_lower = Transaction.monotonic_time()
 
     def __init__(self, name, size_limit=1024, context=True):
         super(MemoryCache, self).__init__(name, size_limit, context)
         self._database_cache = defaultdict(lambda: LRUDict(size_limit))
         self._transaction_cache = WeakKeyDictionary()
+        self._transaction_lower = {}
         self._timestamp = {}
 
     def _get_cache(self):
         transaction = Transaction()
         dbname = transaction.database.name
-        if transaction in self._reset:
+        lower = self._transaction_lower.get(dbname, self._default_lower)
+        if (transaction in self._reset
+                or transaction.started_at < lower):
             try:
                 return self._transaction_cache[transaction]
             except KeyError:
@@ -145,6 +149,9 @@ class MemoryCache(BaseCache):
             if not inst_timestamp or timestamp > inst_timestamp:
                 inst._timestamp[dbname] = timestamp
                 inst._database_cache[dbname] = LRUDict(inst.size_limit)
+                inst._transaction_lower[dbname] = max(
+                    transaction.monotonic_time(),
+                    inst._transaction_lower.get(dbname, cls._default_lower))
         cls._clean_last = datetime.now()
 
     @classmethod
@@ -177,6 +184,9 @@ class MemoryCache(BaseCache):
                 inst = cls._instances[name]
                 inst._timestamp[dbname] = timestamp
                 inst._database_cache[dbname] = LRUDict(inst.size_limit)
+                inst._transaction_lower[dbname] = max(
+                    transaction.monotonic_time(),
+                    inst._transaction_lower.get(dbname, cls._default_lower))
 
     @classmethod
     def rollback(cls, transaction):
@@ -190,6 +200,7 @@ class MemoryCache(BaseCache):
         for inst in cls._instances.values():
             inst._timestamp.pop(dbname, None)
             inst._database_cache.pop(dbname, None)
+            inst._transaction_lower.pop(dbname, None)
 
 
 if config.get('cache', 'class'):
