@@ -1129,6 +1129,73 @@ class StockTestCase(ModuleTestCase):
             self.assertEqual(move.state, 'draft')
 
     @with_transaction()
+    def test_assign_try_prefer_from_location(self):
+        "Test Move assign_try prefer from location"
+        pool = Pool()
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+
+        uom, = Uom.search([('name', '=', 'Meter')])
+        template = Template(
+            name='Test Move.assign_try',
+            type='goods',
+            list_price=Decimal(1),
+            default_uom=uom,
+            )
+        template.save()
+        product = Product(template=template.id)
+        product.save()
+
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        # Ensure storage2 comes first when ordering locations by name
+        storage2, = Location.copy(
+            [storage], default={'name': "AAA", 'parent': storage.id})
+        customer, = Location.search([('code', '=', 'CUS')])
+
+        company = create_company()
+        with set_company(company):
+            moves = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 1,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }, {
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 1,
+                        'from_location': supplier.id,
+                        'to_location': storage2.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+            Move.do(moves)
+
+            move, = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 1,
+                        'from_location': storage.id,
+                        'to_location': customer.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+
+            Move.assign_try([move])
+
+            self.assertEqual(move.state, 'assigned')
+            self.assertEqual(move.from_location, storage)
+
+    @with_transaction()
     def test_assign_without_moves(self):
         "Test Move assign_try with empty moves"
         pool = Pool()

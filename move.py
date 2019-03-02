@@ -884,6 +884,11 @@ class Move(Workflow, ModelSQL, ModelView):
                         round=False)
             # Prevent to pick from the destination location
             location_qties.pop(move.to_location, None)
+            try:
+                # Try first to pick from source location
+                location_qties.move_to_end(move.from_location, last=False)
+            except KeyError:
+                pass
 
             to_pick = move.pick_product(location_qties)
 
