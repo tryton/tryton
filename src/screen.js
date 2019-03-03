@@ -648,6 +648,17 @@
                     'keyBinds': null,
                 });
                 entry.data('DateTimePicker').format(this.format);
+                // We must set the overflow of the modal-body
+                // containing the input to visible to prevent vertical scrollbar
+                // inherited from the auto overflow-x
+                // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
+                entry.on('dp.hide', function() {
+                    entry.closest('.modal-body').css('overflow', '');
+                });
+                entry.on('dp.show', function() {
+                    entry.closest('.modal-body').css('overflow', 'visible');
+                });
+
                 var mousetrap = new Mousetrap(el[0]);
 
                 mousetrap.bind('enter', function(e, combo) {
