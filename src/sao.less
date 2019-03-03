@@ -540,7 +540,7 @@ input.column-boolean {
             text-align: start !important;
             /* Force height to empty content */
             & > span:empty {
-                min-height: 20px;
+                min-height: calc(@line-height-computed + @table-condensed-cell-padding);
                 display: block;
             }
         }
@@ -574,14 +574,14 @@ input.column-boolean {
                 /* Now like a table header */
                 position: absolute;
                 /* Top/left values mimic padding */
-                top: 6px;
-                left: 6px;
-                padding-right: 10px;
+                top: @table-condensed-cell-padding;
+                left: @table-condensed-cell-padding;
+                padding-right: calc(@table-condensed-cell-padding * 2);
                 [dir="rtl"] & {
                     left: unset;
-                    right: 6px;
+                    right: @table-condensed-cell-padding;
                     padding-right: 0;
-                    padding-left: 10px;
+                    padding-left: calc(@table-condensed-cell-padding * 2);
                 }
                 text-align: left;
                 text-align: start;
