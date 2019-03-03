@@ -64,6 +64,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_payment_journal_form" id="menu_payment_journal_form"/>
 
         <record model="ir.rule.group" id="rule_group_payment_journal">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'account.payment.journal')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -128,6 +129,7 @@ this repository contains the full copyright notices and license terms. -->
             sequence="30" id="menu_payment_group_form"/>
 
         <record model="ir.rule.group" id="rule_group_payment_group">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'account.payment.group')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -255,6 +257,7 @@ this repository contains the full copyright notices and license terms. -->
             sequence="20" id="menu_payment_form"/>
 
         <record model="ir.rule.group" id="rule_group_payment">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'account.payment')]"/>
             <field name="global_p" eval="True"/>
         </record>
