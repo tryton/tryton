@@ -33,6 +33,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_rule_form" id="menu_rule_form"/>
 
         <record model="ir.rule.group" id="rule_group_rule">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'analytic_account.rule')]"/>
             <field name="global_p" eval="True"/>
