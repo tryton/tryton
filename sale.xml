@@ -53,6 +53,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_extra">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'sale.extra')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -100,6 +101,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_extra_line">
+            <field name="name">User in extra's company</field>
             <field name="model" search="[('model', '=', 'sale.extra.line')]"/>
             <field name="global_p" eval="True"/>
         </record>
