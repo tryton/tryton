@@ -91,6 +91,7 @@
         </record>
 
         <record model="ir.rule.group" id="rule_group_asset">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'account.asset')]"/>
             <field name="global_p" eval="True"/>
         </record>
