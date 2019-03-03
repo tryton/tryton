@@ -98,6 +98,9 @@ Cancel Move::
     True
     >>> cancel_move.description
     'Cancel'
+    >>> sorted([l.origin.id for l in cancel_move.lines]) == \
+    ...     sorted(map(int, move.lines))
+    True
     >>> revenue.reload()
     >>> revenue.credit
     Decimal('0.00')

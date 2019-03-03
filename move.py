@@ -369,6 +369,8 @@ class Move(ModelSQL, ModelView):
             if data['amount_second_currency']
             else data['amount_second_currency'])
         default['lines.tax_lines.amount'] = lambda data: data['amount'] * -1
+        default['lines.origin'] = (
+            lambda data: 'account.move.line,%s' % data['id'])
         return default
 
     def cancel(self, default=None):
@@ -575,8 +577,10 @@ class Line(ModelSQL, ModelView):
             states=_states, depends=_depends),
             'on_change_with_date', setter='set_move_field',
             searcher='search_move_field')
-    origin = fields.Function(fields.Reference('Origin',
-            selection='get_origin'),
+    origin = fields.Reference(
+        "Origin", selection='get_origin', states=_states, depends=_depends)
+    move_origin = fields.Function(
+        fields.Reference("Move Origin", selection='get_move_origin'),
         'get_move_field', searcher='search_move_field')
     description = fields.Char('Description', states=_states, depends=_depends)
     move_description = fields.Function(fields.Char('Move Description',
@@ -757,7 +761,21 @@ class Line(ModelSQL, ModelView):
             return 2
 
     @classmethod
+    def _get_origin(cls):
+        'Return list of Model names for origin Reference'
+        return ['account.move.line']
+
+    @classmethod
     def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [('', '')] + [(m.model, m.name) for m in models]
+
+    @classmethod
+    def get_move_origin(cls):
         Move = Pool().get('account.move')
         return Move.get_origin()
 
@@ -862,7 +880,7 @@ class Line(ModelSQL, ModelView):
     order_journal = _order_move_field('journal')
     order_period = _order_move_field('period')
     order_date = _order_move_field('date')
-    order_origin = _order_move_field('origin')
+    order_move_origin = _order_move_field('origin')
     order_move_state = _order_move_field('state')
 
     def get_amount(self, name):

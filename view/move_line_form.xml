@@ -14,8 +14,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="debit"/>
     <label name="credit"/>
     <field name="credit"/>
+    <label name="move_origin"/>
+    <field name="move_origin"/>
     <label name="origin"/>
-    <field name="origin" colspan="3"/>
+    <field name="origin"/>
     <label name="description"/>
     <field name="description" colspan="3"/>
     <notebook colspan="4">

@@ -7,8 +7,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="amount"/>
     <field name="amount_currency"/>
     <field name="move"/>
+    <field name="move_origin"/>
     <field name="origin"/>
-    <field name="description"/>
     <field name="move_description"/>
+    <field name="description"/>
     <field name="reconciliation"/>
 </tree>
