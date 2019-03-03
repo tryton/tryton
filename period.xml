@@ -99,6 +99,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_period_form_close" id="menu_close_period"/>
 
         <record model="ir.rule.group" id="rule_group_period">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'account.period')]"/>
             <field name="global_p" eval="True"/>
         </record>
