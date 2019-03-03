@@ -3,12 +3,21 @@
 import gtk
 import gettext
 import gobject
-from itertools import islice, cycle
+from itertools import islice, cycle, chain
+
+from gi.repository import Gtk
 
 from tryton.common import MODELACCESS
 from tryton.common.datetime_ import Date, Time
 
 _ = gettext.gettext
+
+
+def focusable_cells(column, editable=True):
+    for cell in column.get_cells():
+        mode = cell.props.mode
+        if not editable or mode & Gtk.CellRendererMode.EDITABLE:
+            yield cell
 
 
 class TreeView(gtk.TreeView):
@@ -18,7 +27,14 @@ class TreeView(gtk.TreeView):
         super(TreeView, self).__init__()
         self.view = view
 
-    def next_column(self, path, column=None, editable=True, _sign=1):
+    def next_column(
+            self, path, column=None, cell=None, editable=True, _sign=1):
+        if cell:
+            cells = list(focusable_cells(column, editable))
+            if len(cells) > 1:
+                idx = cells.index(cell) + _sign
+                if 0 <= idx < len(cells):
+                    return (column, cells[idx])
         columns = self.get_columns()
         if column is None:
             column = columns[-1 if _sign > 0 else 0]
@@ -43,11 +59,17 @@ class TreeView(gtk.TreeView):
             else:
                 readonly = False
             if not (invisible or readonly):
-                return column
+                cells = list(focusable_cells(column, editable))
+                if cells:
+                    cell = cells[0 if _sign > 0 else -1]
+                else:
+                    continue
+                return (column, cell)
+        return (None, None)
 
-    def prev_column(self, path, column=None, editable=True):
-        return self.next_column(path, column=column, editable=editable,
-            _sign=-1)
+    def prev_column(self, path, column=None, cell=None, editable=True):
+        return self.next_column(
+            path, column=column, cell=cell, editable=editable, _sign=-1)
 
 
 class EditableTreeView(TreeView):
@@ -60,7 +82,8 @@ class EditableTreeView(TreeView):
         super(EditableTreeView, self).__init__(view)
         self.editable = position
 
-    def on_quit_cell(self, current_record, column, value, callback=None):
+    def on_quit_cell(
+            self, current_record, column, renderer, value, callback=None):
         field = current_record[column.name]
         widget = self.view.get_column_widget(column)
 
@@ -70,6 +93,12 @@ class EditableTreeView(TreeView):
             if callback:
                 callback()
             return
+        if widget.renderer != renderer:
+            for widget in chain(widget.prefixes, widget.suffixes):
+                if widget.renderer == renderer:
+                    break
+            else:
+                raise ValueError("Unknown renderer")
         widget.value_from_text(current_record, value, callback=callback)
 
     def on_open_remote(self, current_record, column, create, value,
@@ -103,15 +132,19 @@ class EditableTreeView(TreeView):
             model.group.set_sequence(field=sequence)
         return res
 
-    def set_cursor(self, path, focus_column=None, start_editing=False):
+    def set_cursor(
+            self, path, focus_column=None, cell=None, start_editing=False):
         self.grab_focus()
         if focus_column:
             widget = self.view.get_column_widget(focus_column)
             if isinstance(widget.renderer, gtk.CellRendererToggle):
                 start_editing = False
         self.scroll_to_cell(path, focus_column, use_align=False)
-        super(EditableTreeView, self).set_cursor(path, focus_column,
-                start_editing)
+        if cell:
+            self.set_cursor_on_cell(path, focus_column, cell, start_editing)
+        else:
+            super(EditableTreeView, self).set_cursor(
+                path, focus_column, start_editing)
 
     def set_value(self):
         path, column = self.get_cursor()
@@ -120,10 +153,10 @@ class EditableTreeView(TreeView):
         for renderer in column.get_cell_renderers():
             if renderer.props.editing:
                 widget = self.view.get_column_widget(column)
-                self.on_editing_done(widget.editable)
+                self.on_editing_done(widget.editable, renderer)
         return True
 
-    def on_keypressed(self, entry, event):
+    def on_keypressed(self, entry, event, renderer):
         path, column = self.get_cursor()
         model = self.get_model()
         record = model.get_value(model.get_iter(path), 0)
@@ -159,50 +192,47 @@ class EditableTreeView(TreeView):
 
             def callback():
                 entry.handler_unblock(entry.editing_done_id)
-                field = record[column.name]
-                # Must wait the edited entry came back in valid state
-                if field.validate(record):
-                    if (keyval in (gtk.keysyms.Tab, gtk.keysyms.KP_Enter)
-                            or (keyval == gtk.keysyms.Right and leaving)):
-                        gobject.idle_add(self.set_cursor, path,
-                            self.next_column(path, column), True)
-                    elif (keyval == gtk.keysyms.ISO_Left_Tab
-                            or (keyval == gtk.keysyms.Left and leaving)):
-                        gobject.idle_add(self.set_cursor, path,
-                            self.prev_column(path, column), True)
-                    elif keyval in self.leaving_record_events:
-                        fields = list(self.view.widgets.keys())
-                        if not record.validate(fields):
-                            invalid_fields = record.invalid_fields
-                            col = None
-                            for col in self.get_columns():
-                                if col.name in invalid_fields:
-                                    break
-                            gobject.idle_add(self.set_cursor, path, col, True)
-                            return
-                        if ((self.view.screen.pre_validate
-                                    and not record.pre_validate())
-                                or (not self.view.screen.parent
-                                    and not record.save())):
-                            gobject.idle_add(self.set_cursor, path, column,
-                                True)
-                            return
-                        entry.handler_block(entry.editing_done_id)
-                        if keyval == gtk.keysyms.Up:
-                            self._key_up(path, model, column)
-                        elif keyval == gtk.keysyms.Down:
-                            self._key_down(path, model, column)
-                        elif keyval == gtk.keysyms.Return:
-                            if self.editable == 'top':
-                                new_path = self._key_up(path, model)
-                            else:
-                                new_path = self._key_down(path, model)
-                            gobject.idle_add(self.set_cursor, new_path,
-                                self.next_column(new_path), True)
-                        entry.handler_unblock(entry.editing_done_id)
+                if (keyval in (gtk.keysyms.Tab, gtk.keysyms.KP_Enter)
+                        or (keyval == gtk.keysyms.Right and leaving)):
+                    gobject.idle_add(self.set_cursor, path,
+                        *self.next_column(path, column, renderer), True)
+                elif (keyval == gtk.keysyms.ISO_Left_Tab
+                        or (keyval == gtk.keysyms.Left and leaving)):
+                    gobject.idle_add(self.set_cursor, path,
+                        *self.prev_column(path, column, renderer), True)
+                elif keyval in self.leaving_record_events:
+                    fields = list(self.view.widgets.keys())
+                    if not record.validate(fields):
+                        invalid_fields = record.invalid_fields
+                        col = None
+                        for col in self.get_columns():
+                            if col.name in invalid_fields:
+                                break
+                        gobject.idle_add(self.set_cursor, path, col, True)
+                        return
+                    if ((self.view.screen.pre_validate
+                                and not record.pre_validate())
+                            or (not self.view.screen.parent
+                                and not record.save())):
+                        gobject.idle_add(self.set_cursor, path, column,
+                            True)
+                        return
+                    entry.handler_block(entry.editing_done_id)
+                    if keyval == gtk.keysyms.Up:
+                        self._key_up(path, model, column)
+                    elif keyval == gtk.keysyms.Down:
+                        self._key_down(path, model, column)
+                    elif keyval == gtk.keysyms.Return:
+                        if self.editable == 'top':
+                            new_path = self._key_up(path, model)
+                        else:
+                            new_path = self._key_down(path, model)
+                        gobject.idle_add(self.set_cursor, new_path,
+                            *self.next_column(new_path), True)
+                    entry.handler_unblock(entry.editing_done_id)
                 else:
                     gobject.idle_add(self.set_cursor, path, column, True)
-            self.on_quit_cell(record, column, txt, callback=callback)
+            self.on_quit_cell(record, column, renderer, txt, callback=callback)
             return True
         elif event.keyval in (gtk.keysyms.F3, gtk.keysyms.F2):
             if isinstance(entry, gtk.Entry):
@@ -236,7 +266,7 @@ class EditableTreeView(TreeView):
             self.on_create_line()
         new_path = (path[0] + 1) % len(model)
         if not column:
-            column = self.next_column(new_path)
+            column, cell = self.next_column(new_path)
         self.set_cursor(new_path, column, True)
         self.scroll_to_cell(new_path)
         return new_path
@@ -248,12 +278,12 @@ class EditableTreeView(TreeView):
         else:
             new_path = (path[0] - 1) % len(model)
         if not column:
-            column = self.next_column(new_path)
+            column, cell = self.next_column(new_path)
         self.set_cursor(new_path, column, True)
         self.scroll_to_cell(new_path)
         return new_path
 
-    def on_editing_done(self, entry):
+    def on_editing_done(self, entry, renderer):
         path, column = self.get_cursor()
         if not path:
             return True
@@ -261,8 +291,9 @@ class EditableTreeView(TreeView):
         record = model.get_value(model.get_iter(path), 0)
         if isinstance(entry, (Date, Time)):
             entry.activate()
-            self.on_quit_cell(record, column, entry.props.value)
-        elif isinstance(entry, gtk.Entry):
-            self.on_quit_cell(record, column, entry.get_text())
+            text = entry.props.value
         elif isinstance(entry, (gtk.ComboBoxEntry, gtk.ComboBox)):
-            self.on_quit_cell(record, column, entry.get_active_text())
+            text = entry.get_active_text
+        else:
+            text = entry.get_text()
+        self.on_quit_cell(record, column, renderer, text)

@@ -6,9 +6,9 @@ import gtk
 import gettext
 import webbrowser
 
-from functools import wraps, partial
+from gi.repository import Gtk, GObject
 
-import gobject
+from functools import wraps, partial
 
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
@@ -22,7 +22,6 @@ from tryton.common.cellrenderertoggle import CellRendererToggle
 from tryton.common.cellrenderercombo import CellRendererCombo
 from tryton.common.cellrendererinteger import CellRendererInteger
 from tryton.common.cellrendererfloat import CellRendererFloat
-from tryton.common.cellrendererbinary import CellRendererBinary
 from tryton.common.cellrendererclickablepixbuf import \
     CellRendererClickablePixbuf
 from tryton.common import data2pixbuf
@@ -36,15 +35,15 @@ _ = gettext.gettext
 
 
 def send_keys(renderer, editable, position, treeview):
-    editable.connect('key_press_event', treeview.on_keypressed)
+    editable.connect('key_press_event', treeview.on_keypressed, renderer)
     editable.editing_done_id = editable.connect('editing_done',
-            treeview.on_editing_done)
+            treeview.on_editing_done, renderer)
     if isinstance(editable, (gtk.ComboBoxEntry, gtk.ComboBox)):
         def changed(combobox):
             # "changed" signal is also triggered by text editing
             # so only trigger editing-done if a row is active
             if combobox.get_active_iter():
-                treeview.on_editing_done(combobox)
+                treeview.on_editing_done(combobox, renderer)
         editable.connect('changed', changed)
 
 
@@ -91,20 +90,20 @@ class CellCache(list):
     @classmethod
     def cache(cls, func):
         @wraps(func)
-        def wrapper(self, column, cell, store, iter):
+        def wrapper(self, column, cell, store, iter_):
             if not hasattr(self, 'display_counters'):
                 self.display_counters = {}
             if not hasattr(self, 'cell_caches'):
                 self.cell_caches = {}
-            record = store.get_value(iter, 0)
+            record = store.get_value(iter_, 0)
             counter = self.view.treeview.display_counter
             if (self.display_counters.get(record.id) != counter):
                 if getattr(cell, 'decorated', None):
-                    func(self, column, cell, store, iter)
+                    func(self, column, cell, store, iter_)
                 else:
                     cache = cls()
                     cache.decorate(cell)
-                    func(self, column, cell, store, iter)
+                    func(self, column, cell, store, iter_)
                     cache.undecorate(cell)
                     self.cell_caches[record.id] = cache
                     self.display_counters[record.id] = counter
@@ -114,10 +113,31 @@ class CellCache(list):
 
 
 class Cell(object):
-    pass
+    renderer = None
+    setter = None
+    expand = True
+    attrs = None
+    view = None
+    prefixes = []
+    suffixes = []
+
+    def _get_record_field_from_path(self, path, store=None):
+        if not store:
+            store = self.view.treeview.get_model()
+        record = store.get_value(store.get_iter(path), 0)
+        field = record.group.fields[self.attrs['name']]
+        return record, field
+
+    def _get_record_field_from_iter(self, iter_, store=None):
+        if not store:
+            store = self.view.treeview.get_model()
+        record = store.get_value(iter_, 0)
+        field = record[self.attrs['name']]
+        return record, field
 
 
 class Affix(Cell):
+    expand = False
 
     def __init__(self, view, attrs, protocol=None):
         super(Affix, self).__init__()
@@ -138,7 +158,7 @@ class Affix(Cell):
     @realized
     @CellCache.cache
     def setter(self, column, cell, store, iter_):
-        record = store.get_value(iter_, 0)
+        record, field = self._get_record_field_from_iter(iter_, store)
         field = record[self.attrs['name']]
         field.state_set(record, states=('invisible',))
         invisible = field.get_state_attrs(record).get('invisible', False)
@@ -157,8 +177,7 @@ class Affix(Cell):
             cell.set_property('text', text)
 
     def clicked(self, renderer, path):
-        store = self.view.treeview.get_model()
-        record = store.get_value(store.get_iter(path), 0)
+        record, field = self._get_record_field_from_path(path)
         value = record[self.attrs['name']].get(record)
         if value:
             if self.protocol == 'email':
@@ -181,10 +200,10 @@ class GenericText(Cell):
             renderer = CellRendererText
         self.renderer = renderer()
         self.renderer.connect('editing-started', self.editing_started)
-        if not isinstance(self.renderer, CellRendererBinary):
-            self.renderer.connect_after('editing-started', send_keys,
-                view.treeview)
+        self.renderer.connect_after(
+            'editing-started', send_keys, view.treeview)
         self.renderer.set_property('yalign', 0)
+        self.renderer.set_property('xalign', self.align)
         self.view = view
 
     @property
@@ -197,8 +216,8 @@ class GenericText(Cell):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter):
-        record = store.get_value(iter, 0)
+    def setter(self, column, cell, store, iter_):
+        record = store.get_value(iter_, 0)
         text = self.get_textual_value(record)
 
         if isinstance(cell, CellRendererToggle):
@@ -244,8 +263,6 @@ class GenericText(Cell):
             if isinstance(cell, CellRendererToggle):
                 cell.set_property('activatable', False)
 
-        cell.set_property('xalign', self.align)
-
     def open_remote(self, record, create, changed=False, text=None,
             callback=None):
         raise NotImplementedError
@@ -267,12 +284,6 @@ class GenericText(Cell):
         self.editable = editable
         editable.connect('remove-widget', remove)
         return False
-
-    def _get_record_field(self, path):
-        store = self.view.treeview.get_model()
-        record = store.get_value(store.get_iter(path), 0)
-        field = record.group.fields[self.attrs['name']]
-        return record, field
 
 
 class Char(GenericText):
@@ -321,9 +332,7 @@ class Boolean(GenericText):
         self.renderer.connect('toggled', self._sig_toggled)
 
     def _sig_toggled(self, renderer, path):
-        store = self.view.treeview.get_model()
-        record = store.get_value(store.get_iter(path), 0)
-        field = record[self.attrs['name']]
+        record, field = self._get_record_field_from_path(path)
         if not self.attrs.get('readonly',
                 field.get_state_attrs(record).get('readonly', False)):
             value = record[self.attrs['name']].get_client(record)
@@ -336,10 +345,9 @@ class URL(Char):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter):
-        super(URL, self).setter(column, cell, store, iter)
-        record = store.get_value(iter, 0)
-        field = record[self.attrs['name']]
+    def setter(self, column, cell, store, iter_):
+        super(URL, self).setter(column, cell, store, iter_)
+        record, field = self._get_record_field_from_iter(iter_, store)
         field.state_set(record, states=('readonly',))
         readonly = field.get_state_attrs(record).get('readonly', False)
         cell.set_property('visible', not readonly)
@@ -353,11 +361,10 @@ class Date(GenericText):
         super(Date, self).__init__(view, attrs, renderer=renderer)
 
     @realized
-    def setter(self, column, cell, store, iter):
-        record = store.get_value(iter, 0)
-        field = record[self.attrs['name']]
+    def setter(self, column, cell, store, iter_):
+        record, field = self._get_record_field_from_iter(iter_, store)
         self.renderer.props.format = self.get_format(record, field)
-        super(Date, self).setter(column, cell, store, iter)
+        super(Date, self).setter(column, cell, store, iter_)
 
     def get_format(self, record, field):
         if field and record:
@@ -412,35 +419,44 @@ class Float(Int):
         super(Float, self).__init__(view, attrs, renderer=renderer)
 
     @realized
-    def setter(self, column, cell, store, iter):
-        super(Float, self).setter(column, cell, store, iter)
-        record = store.get_value(iter, 0)
-        field = record[self.attrs['name']]
+    def setter(self, column, cell, store, iter_):
+        super(Float, self).setter(column, cell, store, iter_)
+        record, field = self._get_record_field_from_iter(iter_, store)
         digits = field.digits(record, factor=self.factor)
         cell.digits = digits
 
 
 class Binary(GenericText):
-    align = 0.5
+    align = 1
 
     def __init__(self, view, attrs, renderer=None):
-        self.filename = attrs.get('filename')
         if renderer is None:
-            renderer = partial(CellRendererBinary, bool(self.filename))
+            renderer = CellRendererText
         super(Binary, self).__init__(view, attrs, renderer=renderer)
-        self.renderer.connect(
-            'select',
-            lambda *args: gobject.idle_add(self.select_binary, *args))
-        self.renderer.connect(
-            'open',
-            lambda *args: gobject.idle_add(self.open_binary, *args))
-        self.renderer.connect(
-            'save',
-            lambda *args: gobject.idle_add(self.save_binary, *args))
-        self.renderer.connect('clear', self.clear_binary)
+        self.renderer.set_property('editable', False)
+        self.renderer.set_property('xalign', self.align)
+        self.renderer_save = _BinarySave(self)
+        self.renderer_select = _BinarySelect(self)
+        if self.attrs.get('filename'):
+            self.renderer_open = _BinaryOpen(self)
+        else:
+            self.renderer_open = None
+
+    @property
+    def prefixes(self):
+        return filter(None, [self.renderer_open])
+
+    @property
+    def suffixes(self):
+        return [self.renderer_save, self.renderer_select]
 
     def get_textual_value(self, record):
-        pass
+        field = record[self.attrs['name']]
+        if hasattr(field, 'get_size'):
+            size = field.get_size(record)
+        else:
+            size = len(field.get(record))
+        return common.humanize(size) if size else ''
 
     def value_from_text(self, record, text, callback=None):
         if callback:
@@ -448,14 +464,10 @@ class Binary(GenericText):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter):
-        record = store.get_value(iter, 0)
-        field = record[self.attrs['name']]
-        if hasattr(field, 'get_size'):
-            size = field.get_size(record)
-        else:
-            size = len(field.get(record))
-        cell.set_property('size', common.humanize(size) if size else '')
+    def setter(self, column, cell, store, iter_):
+        record, field = self._get_record_field_from_iter(iter_, store)
+        text = self.get_textual_value(record)
+        cell.set_property('text', text)
 
         states = ('invisible',)
         if getattr(self.view.treeview, 'editable', False):
@@ -464,49 +476,6 @@ class Binary(GenericText):
         field.state_set(record, states=states)
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
-
-        if getattr(self.view.treeview, 'editable', False):
-            readonly = self.attrs.get('readonly',
-                field.get_state_attrs(record).get('readonly', False))
-            if invisible:
-                readonly = True
-            cell.set_property('editable', not readonly)
-
-    def select_binary(self, renderer, path):
-        record, field = self._get_record_field(path)
-        filename = ''
-        filename = file_selection(_('Open...'))
-        if filename:
-            field.set_client(record, open(filename, 'rb').read())
-            if self.filename:
-                filename_field = record.group.fields[self.filename]
-                filename_field.set_client(record, os.path.basename(filename))
-
-    def open_binary(self, renderer, path):
-        if not self.filename:
-            return
-        record, field = self._get_record_field(path)
-        filename_field = record.group.fields.get(self.filename)
-        filename = filename_field.get(record)
-        if not filename:
-            return
-        file_path = file_write(filename, self.get_data(record, field))
-        root, type_ = os.path.splitext(filename)
-        if type_:
-            type_ = type_[1:]
-        file_open(file_path, type_)
-
-    def save_binary(self, renderer, path):
-        filename = ''
-        record, field = self._get_record_field(path)
-        if self.filename:
-            filename_field = record.group.fields.get(self.filename)
-            filename = filename_field.get(record)
-        filename = file_selection(_('Save As...'), filename=filename,
-            action=gtk.FILE_CHOOSER_ACTION_SAVE)
-        if filename:
-            with open(filename, 'wb') as fp:
-                fp.write(self.get_data(record, field))
 
     def get_data(self, record, field):
         if hasattr(field, 'get_data'):
@@ -517,12 +486,132 @@ class Binary(GenericText):
             data = data.encode('utf-8')
         return data
 
-    def clear_binary(self, renderer, path):
-        record, field = self._get_record_field(path)
-        if self.filename:
-            filename_field = record.group.fields[self.filename]
-            filename_field.set_client(record, None)
-        field.set_client(record, None)
+
+class _BinaryIcon(Cell):
+    expand = False
+
+    def __init__(self, binary):
+        super().__init__()
+        self.binary = binary
+        self.renderer = CellRendererClickablePixbuf()
+        self.renderer.connect('clicked', self.clicked)
+
+    @property
+    def attrs(self):
+        return self.binary.attrs
+
+    @property
+    def view(self):
+        return self.binary.view
+
+
+class _BinarySave(_BinaryIcon):
+    icon_name = 'tryton-save'
+
+    def __init__(self, binary):
+        super().__init__(binary)
+        pixbuf = common.IconFactory.get_pixbuf(
+            self.icon_name, Gtk.IconSize.BUTTON)
+        self.renderer.set_property('pixbuf', pixbuf)
+
+    @common.idle_add
+    def clicked(self, renderer, path):
+        filename = ''
+        record, field = self._get_record_field_from_path(path)
+        if self.attrs.get('filename'):
+            filename_field = record.group.fields.get(self.attrs['filename'])
+            filename = filename_field.get(record)
+        filename = file_selection(_('Save As...'), filename=filename,
+            action=gtk.FILE_CHOOSER_ACTION_SAVE)
+        if filename:
+            with open(filename, 'wb') as fp:
+                fp.write(self.binary.get_data(record, field))
+
+    @realized
+    @CellCache.cache
+    def setter(self, column, cell, store, iter_):
+        record, field = self._get_record_field_from_iter(iter_, store)
+        if hasattr(field, 'get_size'):
+            size = field.get_size(record)
+        else:
+            size = len(field.get(record))
+        field.state_set(record, states=['invisible'])
+        invisible = field.get_state_attrs(record).get('invisible', False)
+        cell.set_property('visible', not invisible and size)
+
+
+class _BinarySelect(_BinaryIcon):
+    def clicked(self, renderer, path):
+        record, field = self._get_record_field_from_path(path)
+        if hasattr(field, 'get_size'):
+            size = field.get_size(record)
+        else:
+            size = len(field.get(record))
+        if self.attrs.get('filename'):
+            filename_field = record.group.fields[self.attrs['filename']]
+        else:
+            filename_field = None
+        if size:
+            if filename_field:
+                filename_field.set_client(record, None)
+            field.set_client(record, None)
+        else:
+            def _select():
+                filename = file_selection(_('Open...'))
+                if filename:
+                    with open(filename, 'rb') as fp:
+                        field.set_client(record, fp.read())
+                    if filename_field:
+                        filename_field.set_client(
+                            record, os.path.basename(filename))
+            GObject.idle_add(_select)
+
+    @realized
+    @CellCache.cache
+    def setter(self, column, cell, store, iter_):
+        record, field = self._get_record_field_from_iter(iter_, store)
+        if hasattr(field, 'get_size'):
+            size = field.get_size(record)
+        else:
+            size = len(field.get(record))
+        if size:
+            icon = 'tryton-clear'
+        else:
+            icon = 'tryton-search'
+        pixbuf = common.IconFactory.get_pixbuf(icon, Gtk.IconSize.BUTTON)
+        cell.set_property('pixbuf', pixbuf)
+        field.state_set(record, states=['invisible', 'readonly'])
+        invisible = field.get_state_attrs(record).get('invisible', False)
+        readonly = self.attrs.get('readonly',
+            field.get_state_attrs(record).get('readonly', False))
+        if readonly and size:
+            cell.set_property('visible', False)
+        else:
+            cell.set_property('visible', not invisible)
+
+
+class _BinaryOpen(_BinarySave):
+    icon_name = 'tryton-open'
+
+    def clicked(self, renderer, path):
+        record, field = self._get_record_field_from_path(path)
+        filename_field = record.group.fields.get(self.attrs.get('filename'))
+        filename = filename_field.get(record)
+        file_path = file_write(filename, self.binary.get_data(record, field))
+        root, type_ = os.path.splitext(filename)
+        if type_:
+            type_ = type_[1:]
+        GObject.idle_add(file_open, file_path, type_)
+
+    @realized
+    @CellCache.cache
+    def setter(self, column, cell, store, iter_):
+        super().setter(column, cell, store, iter_)
+        record, field = self._get_record_field_from_iter(iter_, store)
+        filename_field = record.group.fields.get(self.attrs.get('filename'))
+        filename = filename_field.get(record)
+        if not filename:
+            cell.set_property('visible', False)
 
 
 class Image(GenericText):
@@ -538,8 +627,7 @@ class Image(GenericText):
     @realized
     @CellCache.cache
     def setter(self, column, cell, store, iter_):
-        record = store.get_value(iter_, 0)
-        field = record[self.field_name]
+        record, field = self._get_record_field_from_iter(iter_, store)
         value = field.get_client(record)
         if isinstance(value, int):
             if value > CONFIG['image.max_size']:
@@ -566,31 +654,50 @@ class M2O(GenericText):
             renderer = partial(CellRendererTextCompletion, self.set_completion)
         super(M2O, self).__init__(view, attrs, renderer=renderer)
 
+    def get_model(self, record, field):
+        return self.attrs['relation']
+
+    def has_target(self, value):
+        return value is not None
+
+    def value_from_id(self, model, id_, str_=None):
+        if str_ is None:
+            str_ = ''
+        return id_, str_
+
+    def id_from_value(self, value):
+        return value
+
     def value_from_text(self, record, text, callback=None):
         field = record.group.fields[self.attrs['name']]
+        model = self.get_model(record, field)
         if not text:
-            field.set_client(record, (None, ''))
+            field.set_client(
+                record, self.value_from_id(model, None, ''))
             if callback:
                 callback()
             return
 
-        field = record[self.attrs['name']]
-        win = self.search_remote(record, field, text, callback=callback)
-        if len(win.screen.group) == 1:
-            win.response(None, gtk.RESPONSE_OK)
-        else:
-            win.show()
+        if model:
+            field = record[self.attrs['name']]
+            win = self.search_remote(record, field, text, callback=callback)
+            if len(win.screen.group) == 1:
+                win.response(None, gtk.RESPONSE_OK)
+            else:
+                win.show()
 
     def editing_started(self, cell, editable, path):
         super(M2O, self).editing_started(cell, editable, path)
-        record, field = self._get_record_field(path)
+        record, field = self._get_record_field_from_path(path)
+        model = self.get_model(record, field)
 
         def changed(editable):
             text = editable.get_text()
-            if field.get_client(record) != text:
-                field.set_client(record, (None, ''))
+            if self.get_textual_value(record) != text:
+                field.set_client(
+                    record, self.value_from_id(model, None, ''))
 
-            if field.get(record):
+            if self.has_target(field.get(record)):
                 icon1, tooltip1 = 'tryton-open', _("Open the record <F2>")
                 icon2, tooltip2 = 'tryton-clear', _("Clear the field <Del>")
             else:
@@ -609,10 +716,13 @@ class M2O(GenericText):
 
         def icon_press(editable, icon_pos, event):
             value = field.get(record)
-            if icon_pos == gtk.ENTRY_ICON_SECONDARY and value:
-                field.set_client(record, (None, ''))
+            if not model:
+                return
+            if icon_pos == gtk.ENTRY_ICON_SECONDARY and self.has_target(value):
+                field.set_client(
+                    record, self.value_from_id(model, None, ''))
                 editable.set_text('')
-            elif value:
+            elif self.has_target(value):
                 self.open_remote(record, create=False, changed=False)
             else:
                 self.open_remote(
@@ -627,9 +737,9 @@ class M2O(GenericText):
     def open_remote(self, record, create=True, changed=False, text=None,
             callback=None):
         field = record.group.fields[self.attrs['name']]
-        relation = field.attrs['relation']
+        model = self.get_model(record, field)
 
-        access = common.MODELACCESS[relation]
+        access = common.MODELACCESS[model]
         if (create
                 and not (self.attrs.get('create', True) and access['create'])):
             return
@@ -638,27 +748,26 @@ class M2O(GenericText):
 
         domain = field.domain_get(record)
         context = field.get_context(record)
-        if create:
-            obj_id = None
-        elif not changed:
-            obj_id = field.get(record)
-        else:
+        if not create and changed:
             self.search_remote(record, field, text, callback=callback).show()
             return
+        target_id = self.id_from_value(field.get(record))
 
-        screen = Screen(relation, domain=domain, context=context,
+        screen = Screen(model, domain=domain, context=context,
             mode=['form'], view_ids=self.attrs.get('view_ids', '').split(','),
             exclude_field=field.attrs.get('relation_field'))
 
         def open_callback(result):
             if result:
-                value = (screen.current_record.id,
+                value = self.value_from_id(
+                    model,
+                    screen.current_record.id,
                     screen.current_record.rec_name())
                 field.set_client(record, value, force_change=True)
             if callback:
                 callback()
-        if obj_id:
-            screen.load([obj_id])
+        if target_id and target_id >= 0:
+            screen.load([target_id])
             WinForm(screen, open_callback, save_current=True,
                 title=field.attrs.get('string'))
         else:
@@ -666,21 +775,21 @@ class M2O(GenericText):
                 title=field.attrs.get('string'), rec_name=text)
 
     def search_remote(self, record, field, text, callback=None):
-        relation = field.attrs['relation']
+        model = self.get_model(record, field)
         domain = field.domain_get(record)
         context = field.get_search_context(record)
         order = field.get_search_order(record)
-        access = common.MODELACCESS[relation]
+        access = common.MODELACCESS[model]
         create_access = self.attrs.get('create', True) and access['create']
 
         def search_callback(found):
             value = None
             if found:
-                value = found[0]
-            field.set_client(record, value)
+                value = self.value_from_id(model, *found[0])
+                field.set_client(record, value)
             if callback:
                 callback()
-        win = WinSearch(relation, search_callback, sel_multi=False,
+        win = WinSearch(model, search_callback, sel_multi=False,
             context=context, domain=domain,
             order=order, view_ids=self.attrs.get('view_ids', '').split(','),
             new=create_access, title=self.attrs.get('string'))
@@ -688,14 +797,18 @@ class M2O(GenericText):
         return win
 
     def set_completion(self, entry, path):
+        record, field = self._get_record_field_from_path(path)
         if entry.get_completion():
             entry.set_completion(None)
-        access = common.MODELACCESS[self.attrs['relation']]
+        model = self.get_model(record, field)
+        if not model:
+            return
+        access = common.MODELACCESS[model]
         completion = get_completion(
             search=access['read'],
             create=self.attrs.get('create', True) and access['create'])
         completion.connect('match-selected', self._completion_match_selected,
-            path)
+            path, model)
         completion.connect('action-activated',
             self._completion_action_activated, path)
         entry.set_completion(completion)
@@ -703,18 +816,19 @@ class M2O(GenericText):
         entry.connect('changed', self._update_completion, path)
 
     def _key_press(self, entry, event, path):
-        record, field = self._get_record_field(path)
-        if (field.get(record) is not None
+        record, field = self._get_record_field_from_path(path)
+        if (self.has_target(field.get(record))
                 and event.keyval in (gtk.keysyms.Delete,
                     gtk.keysyms.BackSpace)):
             entry.set_text('')
-            field.set_client(record, None)
         return False
 
-    def _completion_match_selected(self, completion, model, iter_, path):
-        record, field = self._get_record_field(path)
+    def _completion_match_selected(
+            self, completion, model, iter_, path, model_name):
+        record, field = self._get_record_field_from_path(path)
         rec_name, record_id = model.get(iter_, 0, 1)
-        field.set_client(record, (record_id, rec_name))
+        field.set_client(
+            record, self.value_from_id(model_name, record_id, rec_name))
 
         completion.get_entry().set_text(rec_name)
         completion_model = completion.get_model()
@@ -723,14 +837,17 @@ class M2O(GenericText):
         return True
 
     def _update_completion(self, entry, path):
-        record, field = self._get_record_field(path)
-        if field.get(record) is not None:
-            return
-        model = field.attrs['relation']
+        record, field = self._get_record_field_from_path(path)
+        value = field.get(record)
+        if self.has_target(value):
+            id_ = self.id_from_value(value)
+            if id_ is not None and id_ >= 0:
+                return
+        model = self.get_model(record, field)
         update_completion(entry, record, field, model)
 
     def _completion_action_activated(self, completion, index, path):
-        record, field = self._get_record_field(path)
+        record, field = self._get_record_field_from_path(path)
         entry = completion.get_entry()
         entry.handler_block(entry.editing_done_id)
 
@@ -819,10 +936,13 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         self.renderer.set_property('model', model)
         self.renderer.set_property('text-column', 0)
 
+    def get_value(self, record, field):
+        return field.get(record)
+
     def get_textual_value(self, record):
         field = record[self.attrs['name']]
         self.update_selection(record, field)
-        value = field.get(record)
+        value = self.get_value(record, field)
         text = dict(self.selection).get(value, '')
         if value and not text:
             text = self.get_inactive_selection(value)
@@ -834,9 +954,7 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
 
     def editing_started(self, cell, editable, path):
         super(Selection, self).editing_started(cell, editable, path)
-        store = self.view.treeview.get_model()
-        record = store.get_value(store.get_iter(path), 0)
-        field = record[self.attrs['name']]
+        record, field = self._get_record_field_from_path(path)
 
         def set_value(*a):
             return self.set_value(editable, record, field)
@@ -847,7 +965,7 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         self.update_selection(record, field)
         self.set_popdown(self.selection, editable)
 
-        value = field.get(record)
+        value = self.get_value(record, field)
         if not self.set_popdown_value(editable, value):
             self.get_inactive_selection(value)
             self.set_popdown_value(editable, value)
@@ -861,28 +979,72 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         return False
 
 
-class Reference(GenericText, SelectionMixin):
+class Reference(M2O):
 
     def __init__(self, view, attrs, renderer=None):
         super(Reference, self).__init__(view, attrs, renderer=renderer)
-        self.init_selection()
+        self.renderer_selection = _ReferenceSelection(view, attrs)
+
+    @property
+    def prefixes(self):
+        return [self.renderer_selection]
+
+    def get_model(self, record, field):
+        value = field.get_client(record)
+        if value:
+            model, value = value
+            return model
+
+    def has_target(self, value):
+        if not value:
+            return False
+        model, value = value.split(',')
+        if not value:
+            value = None
+        else:
+            try:
+                value = int(value)
+            except ValueError:
+                value = None
+        return model and value >= 0
+
+    def value_from_id(self, model, id_, str_=None):
+        if str_ is None:
+            str_ = ''
+        return model, (id_, str_)
+
+    def id_from_value(self, value):
+        _, value = value.split(',')
+        return int(value)
 
     def get_textual_value(self, record):
-        field = record[self.attrs['name']]
-        self.update_selection(record, field)
-        value = field.get_client(record)
-        if not value:
-            model, name = '', ''
+        value = super().get_textual_value(record)
+        if value:
+            model, value = value
         else:
-            model, name = value
-        if model:
-            return dict(self.selection).get(model, model) + ',' + name
-        else:
-            return name
+            value = ''
+        return value
 
-    def value_from_text(self, record, text, callback=None):
-        if callback:
-            callback()
+
+class _ReferenceSelection(Selection):
+
+    def get_value(self, record, field):
+        value = field.get_client(record)
+        if value:
+            model, value = value
+        else:
+            model = None
+        return model
+
+    def set_value(self, editable, record, field):
+        value = self.get_popdown_value(editable)
+        if value != self.get_value(record, field):
+            if value:
+                value = (value, (-1, ''))
+            else:
+                value = ('', '')
+            field.set_client(record, value)
+        return False
 
 
 class ProgressBar(object):
@@ -909,9 +1071,8 @@ class ProgressBar(object):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter):
-        record = store.get_value(iter, 0)
-        field = record[self.attrs['name']]
+    def setter(self, column, cell, store, iter_):
+        record, field = self._get_record_field_from_iter(iter_, store)
         field.state_set(record, states=('invisible',))
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
@@ -936,7 +1097,7 @@ class ProgressBar(object):
             callback()
 
 
-class Button(object):
+class Button(Cell):
 
     def __init__(self, view, attrs):
         super(Button, self).__init__()
@@ -949,8 +1110,8 @@ class Button(object):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter):
-        record = store.get_value(iter, 0)
+    def setter(self, column, cell, store, iter_):
+        record = store.get_value(iter_, 0)
         states = record.expr_eval(self.attrs.get('states', {}))
         if record.group.readonly or record.readonly:
             states['readonly'] = True

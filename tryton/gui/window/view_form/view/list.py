@@ -347,7 +347,7 @@ class ViewTree(View):
         column.name = name
 
         prefixes = []
-        suffixes = []
+        suffixes = list(widget.suffixes)
         if node_attrs['widget'] in ('url', 'email', 'callto', 'sip'):
             prefixes.append(Affix(self, node_attrs,
                     protocol=node_attrs['widget']))
@@ -362,9 +362,10 @@ class ViewTree(View):
             else:
                 list_ = suffixes
             list_.append(Affix(self, affix_attrs))
+        prefixes.extend(widget.prefixes)
 
         for prefix in prefixes:
-            column.pack_start(prefix.renderer, expand=False)
+            column.pack_start(prefix.renderer, expand=prefix.expand)
             column.set_cell_data_func(prefix.renderer,
                 prefix.setter)
 
@@ -372,7 +373,7 @@ class ViewTree(View):
         column.set_cell_data_func(widget.renderer, widget.setter)
 
         for suffix in suffixes:
-            column.pack_start(suffix.renderer, expand=False)
+            column.pack_start(suffix.renderer, expand=suffix.expand)
             column.set_cell_data_func(suffix.renderer,
                 suffix.setter)
 
@@ -1141,7 +1142,8 @@ class ViewTree(View):
             path = self.record.get_index_path(model.group)
             if model.get_flags() & gtk.TREE_MODEL_LIST_ONLY:
                 path = (path[0],)
-            focus_column = self.treeview.next_column(path, editable=new)
+            focus_column, focus_cell = self.treeview.next_column(
+                path, editable=new)
             if path[:-1]:
                 self.treeview.expand_to_path(gtk.TreePath(path[:-1]))
             self.treeview.scroll_to_cell(path, focus_column,

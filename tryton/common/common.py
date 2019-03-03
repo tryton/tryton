@@ -20,7 +20,7 @@ try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
-from functools import partial
+from functools import partial, wraps
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
 import sys
@@ -48,7 +48,7 @@ except ImportError:
 from threading import Lock
 import dateutil.tz
 
-from gi.repository import Gtk
+from gi.repository import Gtk, GLib
 
 from tryton import __version__
 from tryton.exceptions import TrytonServerError, TrytonError
@@ -1329,3 +1329,10 @@ def ellipsize(string, length):
 
 def date_format(format_):
     return format_ or rpc.CONTEXT.get('locale', {}).get('date', '%x')
+
+
+def idle_add(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        GLib.idle_add(func, *args, **kwargs)
+    return wrapper
