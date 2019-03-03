@@ -447,6 +447,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.rule.group" id="rule_group_menu">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.ui.menu')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -461,6 +462,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_menu"/>
         </record>
         <record model="ir.rule.group" id="rule_group_action">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.action')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -475,6 +477,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_action"/>
         </record>
         <record model="ir.rule.group" id="rule_group_action_keyword">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.action.keyword')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -490,6 +493,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_action_report">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.action.report')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -505,6 +509,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_action_act_window">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.action.act_window')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -520,6 +525,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_action_wizard">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.action.wizard')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -535,6 +541,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_action_url">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.action.url')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -768,6 +775,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_sequence">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.sequence')]"/>
             <field name="global_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -780,6 +788,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_sequence_strict">
+            <field name="name">User in groups</field>
             <field name="model" search="[('model', '=', 'ir.sequence.strict')]"/>
             <field name="global_p" eval="True"/>
             <field name="perm_read" eval="False"/>
@@ -831,6 +840,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_view_search">
+            <field name="name">Own view search</field>
             <field name="model"
                 search="[('model', '=', 'ir.ui.view_search')]"/>
             <field name="global_p" eval="False"/>
@@ -848,6 +858,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_view_search_admin">
+            <field name="name">Any view search</field>
             <field name="model"
                 search="[('model', '=', 'ir.ui.view_search')]"/>
             <field name="global_p" eval="False"/>
@@ -864,6 +875,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_session">
+            <field name="name">Own session</field>
             <field name="model"
                 search="[('model', '=', 'ir.session')]"/>
             <field name="global_p" eval="True"/>
@@ -876,6 +888,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_session_wizard">
+            <field name="name">Own session</field>
             <field name="model"
                 search="[('model', '=', 'ir.session.wizard')]"/>
             <field name="global_p" eval="True"/>
@@ -888,6 +901,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_ui_menu_favorite">
+            <field name="name">Own favorite</field>
             <field name="model"
                 search="[('model', '=', 'ir.ui.menu.favorite')]"/>
             <field name="global_p" eval="True"/>

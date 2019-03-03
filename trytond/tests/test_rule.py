@@ -33,6 +33,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': False,
@@ -57,6 +58,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': False,
@@ -69,7 +71,34 @@ class ModelRuleTestCase(unittest.TestCase):
                                     }])],
                     }])
 
-        with self.assertRaises(AccessError):
+        with self.assertRaisesRegex(AccessError, "Field different from foo"):
+            test, = TestRule.create([{'field': 'foo'}])
+
+    @with_transaction()
+    def test_perm_create_with_default_rule_fail(self):
+        "Test create with default rule fail"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': False,
+                    'default_p': True,
+                    'perm_read': False,
+                    'perm_create': True,
+                    'perm_write': False,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+
+        with self.assertRaisesRegex(AccessError, "Field different from foo"):
             test, = TestRule.create([{'field': 'foo'}])
 
     @with_transaction()
@@ -92,6 +121,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': False,
@@ -117,6 +147,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': False,
@@ -130,7 +161,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaises(AccessError):
+        with self.assertRaisesRegex(AccessError, "Field different from foo"):
             TestRule.write([test], {'field': 'bar'})
 
     @with_transaction()
@@ -143,6 +174,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': False,
@@ -156,7 +188,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'bar'}])
 
-        with self.assertRaises(AccessError):
+        with self.assertRaisesRegex(AccessError, "Field different from foo"):
             TestRule.write([test], {'field': 'foo'})
 
     @with_transaction()
@@ -179,6 +211,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': False,
@@ -204,6 +237,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': False,
@@ -217,7 +251,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaises(AccessError):
+        with self.assertRaisesRegex(AccessError, "Field different from foo"):
             TestRule.delete([test])
 
     @with_transaction()
@@ -240,6 +274,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': True,
@@ -265,6 +300,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': True,
@@ -278,7 +314,7 @@ class ModelRuleTestCase(unittest.TestCase):
                     }])
         test, = TestRule.create([{'field': 'foo'}])
 
-        with self.assertRaises(AccessError):
+        with self.assertRaisesRegex(AccessError, "Field different from foo"):
             TestRule.read([test.id], ['field'])
 
     @with_transaction()
@@ -301,6 +337,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': True,
@@ -326,6 +363,7 @@ class ModelRuleTestCase(unittest.TestCase):
 
         model, = Model.search([('model', '=', 'test.rule')])
         rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
                     'model': model.id,
                     'global_p': True,
                     'perm_read': True,

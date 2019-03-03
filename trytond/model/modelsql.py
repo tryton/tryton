@@ -748,23 +748,10 @@ class ModelSQL(ModelStorage):
                         order_by=history_order, limit=history_limit))
                 fetchall = list(cursor_dict(cursor))
                 if not len(fetchall) == len({}.fromkeys(sub_ids)):
-                    if domain:
-                        where = red_sql
-                        if history_clause:
-                            where &= history_clause
-                        where &= dom_exp
-                        cursor.execute(*from_.select(table.id, where=where,
-                                order_by=history_order, limit=history_limit))
-                        rowcount = cursor.rowcount
-                        if rowcount == -1 or rowcount is None:
-                            rowcount = len(cursor.fetchall())
-                        if rowcount == len({}.fromkeys(sub_ids)):
-                            raise AccessError(
-                                gettext('ir.msg_access_rule_error',
-                                    model=cls.__name__))
-                    raise AccessError(
-                        gettext('ir.msg_read_error',
-                            model=cls.__name__))
+                    cls.__check_domain_rule(
+                        ids, 'read', nodomain='ir.msg_read_error')
+                    cls.__check_domain_rule(ids, 'read')
+                    raise RuntimeError("Undetected access error")
                 result.extend(fetchall)
         else:
             result = [{'id': x} for x in ids]
@@ -1154,32 +1141,85 @@ class ModelSQL(ModelStorage):
     def __check_domain_rule(cls, ids, mode, nodomain=None):
         pool = Pool()
         Rule = pool.get('ir.rule')
+        Model = pool.get('ir.model')
         table = cls.__table__()
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        in_max = transaction.database.IN_MAX
+        history_clause = None
+        limit = None
+        if (mode == 'read'
+                and cls._history
+                and transaction.context.get('_datetime')
+                and not callable(cls.table_query)):
+            in_max = 1
+            table = cls.__table_history__()
+            column = Coalesce(table.write_date, table.create_date)
+            history_clause = (column <= Transaction().context['_datetime'])
+            limit = 1
+        cursor = transaction.connection.cursor()
+        assert mode in Rule.modes
 
-        domain = Rule.domain_get(cls.__name__, mode=mode)
-        tables = {None: (table, None)}
-        if domain or nodomain:
+        def test_domain(ids, domain):
+            result = []
+            tables = {None: (table, None)}
             if domain:
                 tables, dom_exp = cls.search_domain(
                     domain, active_test=False, tables=tables)
             from_ = convert_from(None, tables)
-            for sub_ids in grouped_slice(ids):
-                sub_ids = list(set(sub_ids))
+            for sub_ids in grouped_slice(ids, in_max):
+                sub_ids = set(sub_ids)
                 where = reduce_ids(table.id, sub_ids)
+                if history_clause:
+                    where &= history_clause
                 if domain:
                     where &= dom_exp
-                cursor.execute(*from_.select(table.id, where=where))
+                cursor.execute(
+                    *from_.select(table.id, where=where, limit=limit))
                 rowcount = cursor.rowcount
                 if rowcount == -1 or rowcount is None:
                     rowcount = len(cursor.fetchall())
                 if rowcount != len(sub_ids):
-                    if domain:
-                        msg = 'ir.msg_access_rule_error'
-                    else:
-                        msg = nodomain
-                    raise AccessError(
-                        gettext(msg, model=cls.__name__))
+                    cursor.execute(
+                        *from_.select(table.id, where=where, limit=limit))
+                    result.extend(
+                        sub_ids.difference([x for x, in cursor]))
+            return result
+
+        domain = Rule.domain_get(cls.__name__, mode=mode)
+        if not domain and not nodomain:
+            return
+        wrong_ids = test_domain(ids, domain)
+        if wrong_ids:
+            model = cls.__name__
+            if Model:
+                models = Model.search([
+                        ('model', '=', cls.__name__),
+                        ], limit=1)
+                if models:
+                    model, = models
+                    model = model.name
+            ids = ', '.join(map(str, ids[:5]))
+            if len(wrong_ids) > 5:
+                ids += '...'
+            if domain:
+                rules = []
+                clause, clause_global = Rule.get(cls.__name__, mode=mode)
+                if clause:
+                    dom = list(clause.values())
+                    dom.insert(0, 'OR')
+                    if test_domain(wrong_ids, dom):
+                        rules.extend(clause.keys())
+
+                for rule, dom in clause_global.items():
+                    if test_domain(wrong_ids, dom):
+                        rules.append(rule)
+
+                msg = gettext(
+                    'ir.msg_%s_rule_error' % mode, ids=ids, model=model,
+                    rules='\n'.join(r.name for r in rules))
+            else:
+                msg = gettext(nodomain, ids=ids, model=model)
+            raise AccessError(msg)
 
     @classmethod
     def search(cls, domain, offset=0, limit=None, order=None, count=False,

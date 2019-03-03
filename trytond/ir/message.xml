@@ -84,11 +84,27 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_access_rule_field_error">
             <field name="text">You are not allowed to access "%(model)s.%(field)s".</field>
         </record>
+        <record model="ir.message" id="msg_create_rule_error">
+            <field name="text">You are not allowed to create records of "%(model)s" because they fail on at least one of these rules:
+%(rules)s</field>
+        </record>
+        <record model="ir.message" id="msg_read_rule_error">
+            <field name="text">You are not allowed to read records "%(ids)s" of "%(model)s" because of at least one of these rules:
+%(rules)s</field>
+        </record>
         <record model="ir.message" id="msg_read_error">
-            <field name="text">You are trying to read records of "%(model)s" that don't exist anymore.</field>
+            <field name="text">You are trying to read records "%(ids)s" of "%(model)s" that don't exist anymore.</field>
+        </record>
+        <record model="ir.message" id="msg_write_rule_error">
+            <field name="text">You are not allowed to write to records "%(ids)s" of "%(model)s" because of at least one of these rules:
+%(rules)s</field>
         </record>
         <record model="ir.message" id="msg_write_error">
-            <field name="text">You are trying to write to records of "%(model)s" that don't exist anymore.</field>
+            <field name="text">You are trying to write to records "%(ids)s" of "%(model)s" that don't exist anymore.</field>
+        </record>
+        <record model="ir.message" id="msg_delete_rule_error">
+            <field name="text">You are not allowed to delete records "%(ids)s" of "%(model)s" because of at lease one of those rules:
+%(rules)s</field>
         </record>
         <record model="ir.message" id="msg_dict_schema_invalid_domain">
             <field name="text">Invalid domain in schema "%(schema)s".</field>
