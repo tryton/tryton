@@ -53,6 +53,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_product_list">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'product.price_list')]"/>
             <field name="global_p" eval="True"/>
         </record>
