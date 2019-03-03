@@ -448,6 +448,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_product_supplier" action="act_product_supplier_form"/>
 
         <record model="ir.rule.group" id="rule_group_product_supplier">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -563,6 +564,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_purchase">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
             <field name="global_p" eval="True"/>
         </record>
