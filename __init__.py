@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from . import product
 from . import configuration
 from . import account
+from . import analytic_account
 
 
 def register():
@@ -21,6 +22,10 @@ def register():
         configuration.Configuration,
         configuration.ConfigurationDefaultAccount,
         module='account_product', type_='model')
+    Pool.register(
+        account.MoveLine,
+        analytic_account.Rule,
+        module='account_product', type_='model', depends=['analytic_account'])
     Pool.register(
         account.CreateChart,
         module='account_product', type_='wizard')

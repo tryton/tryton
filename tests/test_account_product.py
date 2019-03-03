@@ -15,6 +15,7 @@ from trytond.modules.account.tests import create_chart
 class AccountProductTestCase(ModuleTestCase):
     'Test AccountProduct module'
     module = 'account_product'
+    extras = ['analytic_account']
 
     @with_transaction()
     def test_account_used(self):
