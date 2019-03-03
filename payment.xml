@@ -83,6 +83,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_mandate_form" id="menu_mandate_form"/>
 
         <record model="ir.rule.group" id="rule_group_mandate">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'account.payment.sepa.mandate')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -224,6 +225,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_message_form" id="menu_message_form"/>
 
         <record model="ir.rule.group" id="rule_group_message">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'account.payment.sepa.message')]"/>
             <field name="global_p" eval="True"/>
