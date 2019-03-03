@@ -2078,6 +2078,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         line.account = self.account
         if self.account.party_required:
             line.party = self.invoice.party
+        line.origin = self
         line.tax_lines = self._compute_taxes()
         return [line]
 
@@ -2303,6 +2304,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         line.account = self.account
         if self.account.party_required:
             line.party = self.invoice.party
+        line.origin = self
         tax_line = TaxLine()
         tax_line.amount = amount
         tax_line.type = 'tax'

@@ -220,6 +220,11 @@ class MoveLine(metaclass=PoolMeta):
         cls._check_modify_exclude.add('invoice_payment')
 
     @classmethod
+    def _get_origin(cls):
+        return super()._get_origin() + [
+            'account.invoice.line', 'account.invoice.tax']
+
+    @classmethod
     def get_invoice_payment(cls, lines, name):
         pool = Pool()
         InvoicePaymentLine = pool.get('account.invoice-account.move.line')
@@ -244,6 +249,16 @@ class MoveLine(metaclass=PoolMeta):
     @classmethod
     def search_invoice_payment(cls, name, domain):
         return [('invoice_payments',) + tuple(domain[1:])]
+
+    @property
+    def product(self):
+        pool = Pool()
+        InvoiceLine = pool.get('account.invoice.line')
+        product = super().product
+        if (isinstance(self.origin, InvoiceLine)
+                and self.origin.product):
+            product = self.origin.product
+        return product
 
 
 class Reconciliation(metaclass=PoolMeta):
