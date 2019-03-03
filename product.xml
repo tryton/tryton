@@ -11,6 +11,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_category_default">
+            <field name="name">Not accounting category</field>
             <field name="model" search="[('model', '=', 'product.category')]"/>
             <field name="default_p" eval="True"/>
             <field name="global_p" eval="False"/>
@@ -22,6 +23,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_category_accounting">
+            <field name="name">Any category</field>
             <field name="model" search="[('model', '=', 'product.category')]"/>
             <field name="global_p" eval="False"/>
             <field name="perm_read" eval="False"/>
@@ -48,6 +50,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_category_customer_taxes">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'product.category-customer-account.tax')]"/>
             <field name="global_p" eval="True"/>
@@ -60,6 +63,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_category_supplier_taxes">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'product.category-supplier-account.tax')]"/>
             <field name="global_p" eval="True"/>
