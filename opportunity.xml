@@ -200,6 +200,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_opportunity">
+            <field name="name">User in company of opportunity</field>
             <field name="model" search="[('model', '=', 'sale.opportunity')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -307,6 +308,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_opportunity_employee">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'sale.opportunity_employee')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -365,6 +367,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_opportunity_monthly_form"/>
 
         <record model="ir.rule.group" id="rule_group_opportunity_monthly">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'sale.opportunity_monthly')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -397,6 +400,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_opportunity_employee_monthly_form"/>
 
         <record model="ir.rule.group" id="rule_group_opportunity_employee_monthly">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'sale.opportunity_employee_monthly')]"/>
             <field name="global_p" eval="True"/>
         </record>
