@@ -4,6 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
         <record model="ir.rule.group" id="rule_group_line_project_invoice">
+            <field name="name">Any timesheet line</field>
             <field name="model" search="[('model', '=', 'timesheet.line')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
