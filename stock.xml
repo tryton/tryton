@@ -191,6 +191,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_shipment_drop">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.drop')]"/>
             <field name="global_p" eval="True"/>
