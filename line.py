@@ -212,13 +212,30 @@ class MoveLine(ModelSQL, ModelView):
             }
 
     @classmethod
+    def _analytic_types(cls):
+        "Return account types for which analytic lines should be set"
+        pool = Pool()
+        AccountType = pool.get('account.account.type')
+        income_types = AccountType.search([
+                ('income_statement', '=', True),
+                ])
+        income_types = AccountType.search([
+                ('parent', 'child_of', [t.id for t in income_types]),
+                ])
+        income_types = set(income_types)
+        return income_types
+
+    @classmethod
     def apply_rule(cls, lines):
         pool = Pool()
         Rule = pool.get('analytic_account.rule')
 
+        analytic_types = cls._analytic_types()
         rules = Rule.search([])
 
         for line in lines:
+            if line.account.type not in analytic_types:
+                continue
             if line.analytic_lines:
                 continue
             pattern = line.rule_pattern
@@ -236,24 +253,16 @@ class MoveLine(ModelSQL, ModelView):
     @classmethod
     def set_analytic_state(cls, lines):
         pool = Pool()
-        AccountType = pool.get('account.account.type')
         AnalyticAccount = pool.get('analytic_account.account')
 
-        income_types = AccountType.search([
-                ('income_statement', '=', True),
-                ])
-        income_types = AccountType.search([
-                ('parent', 'child_of', [t.id for t in income_types]),
-                ])
-        income_types = set(income_types)
-
+        analytic_types = cls._analytic_types()
         roots = AnalyticAccount.search([
                 ('parent', '=', None),
                 ])
         roots = set(roots)
 
         for line in lines:
-            if line.account.type not in income_types:
+            if line.account.type not in analytic_types:
                 if not line.analytic_lines:
                     line.analytic_state = 'valid'
                 else:
