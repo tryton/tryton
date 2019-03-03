@@ -58,6 +58,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_line">
+            <field name="name">Own timesheet line</field>
             <field name="model" search="[('model', '=', 'timesheet.line')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
@@ -70,6 +71,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_line"/>
         </record>
         <record model="ir.rule.group" id="rule_group_line_admin">
+            <field name="name">Any timesheet line</field>
             <field name="model" search="[('model', '=', 'timesheet.line')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
@@ -124,6 +126,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_hours_employee" sequence="20"/>
 
         <record model="ir.rule.group" id="rule_group_hours_employee">
+            <field name="name">Own employee hours</field>
             <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
@@ -135,6 +138,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_hours_employee"/>
         </record>
         <record model="ir.rule.group" id="rule_group_hours_employee_admin">
+            <field name="name">Any employee hours</field>
             <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>

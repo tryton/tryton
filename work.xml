@@ -82,6 +82,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_work">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'timesheet.work')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
@@ -93,6 +94,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_work"/>
         </record>
         <record model="ir.rule.group" id="rule_group_work_admin">
+            <field name="name">Any work</field>
             <field name="model" search="[('model', '=', 'timesheet.work')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
