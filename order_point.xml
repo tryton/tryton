@@ -68,6 +68,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_order_point">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'stock.order_point')]"/>
             <field name="global_p" eval="True"/>
         </record>
