@@ -22,6 +22,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_location_movable">
+            <field name="name">Movable location</field>
             <field name="model" search="[('model', '=', 'stock.location')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
@@ -41,6 +42,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_location_movable_admin">
+            <field name="name">Any location</field>
             <field name="model" search="[('model', '=', 'stock.location')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="False"/>
