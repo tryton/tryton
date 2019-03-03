@@ -126,6 +126,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_request_quotation">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'purchase.request.quotation')]"/>
             <field name="global_p" eval="True"/>
@@ -187,6 +188,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_request_quotation_line">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'purchase.request.quotation.line')]"/>
             <field name="global_p" eval="True"/>
