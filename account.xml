@@ -84,6 +84,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.rule.group" id="rule_group_invoice_sequence">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'account.fiscalyear.invoice_sequence')]"/>
             <field name="global_p" eval="True"/>
