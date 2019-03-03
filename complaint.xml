@@ -168,6 +168,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_complaint">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'sale.complaint')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -268,6 +269,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_action">
+            <field name="name">User in complaint's company</field>
             <field name="model" search="[('model', '=', 'sale.complaint.action')]"/>
             <field name="global_p" eval="True"/>
         </record>
