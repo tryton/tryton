@@ -1011,6 +1011,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_shipment_in">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -1021,6 +1022,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_shipment_in"/>
         </record>
         <record model="ir.rule.group" id="rule_group_shipment_in_return">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -1031,6 +1033,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_shipment_in_return"/>
         </record>
         <record model="ir.rule.group" id="rule_group_shipment_out">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -1041,6 +1044,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_shipment_out"/>
         </record>
         <record model="ir.rule.group" id="rule_group_shipment_out_return">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -1051,6 +1055,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_shipment_out_return"/>
         </record>
         <record model="ir.rule.group" id="rule_group_shipment_internal">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
             <field name="global_p" eval="True"/>
         </record>
