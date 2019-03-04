@@ -44,6 +44,19 @@
     }
 }
 
+@media screen and (min-width: @screen-sm-min) {
+    #global-search-entry {
+        width: 10em;
+        -webkit-transition: width .5s ease;
+        -o-transition: width .5s ease;
+        transition: width .5s ease;
+
+        .global-search-container:focus-within & {
+            width: 20em;
+        }
+    }
+}
+
 #user-preferences > a {
     max-width: 20em;
     overflow: hidden;
