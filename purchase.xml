@@ -290,10 +290,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model"
                 search="[('model', '=', 'purchase.purchase')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-            id="purchase_process_button_group_purchase">
+        <record model="ir.model.button-res.group" id="purchase_process_button_group_purchase_admin">
             <field name="button" ref="purchase_process_button"/>
-            <field name="group" ref="group_purchase"/>
+            <field name="group" ref="group_purchase_admin"/>
         </record>
 
         <record model="ir.model.button" id="purchase_modify_header_button">
