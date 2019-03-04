@@ -1000,6 +1000,7 @@ var Sao = {};
                 shortcut: 'ctrl+k',
                 label: Sao.i18n.gettext('Global search'),
                 callback: function() {
+                    jQuery('#main_navbar:hidden').collapse('show');
                     jQuery('#global-search-entry').focus();
                 },
             }, {
