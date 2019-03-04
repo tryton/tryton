@@ -316,9 +316,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Process</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="sale_process_button_group_sale">
+        <record model="ir.model.button-res.group" id="sale_process_button_group_sale_admin">
             <field name="button" ref="sale_process_button"/>
-            <field name="group" ref="group_sale"/>
+            <field name="group" ref="group_sale_admin"/>
         </record>
         <record model="ir.model.button" id="sale_modify_header_button">
             <field name="name">modify_header</field>

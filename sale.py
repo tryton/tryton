@@ -265,7 +265,10 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'depends': ['state'],
                     },
                 'process': {
-                    'invisible': Eval('state') != 'confirmed',
+                    'invisible': ~Eval('state').in_(
+                        ['confirmed', 'processing']),
+                    'icon': If(Eval('state') == 'confirmed',
+                        'tryton-forward', 'tryton-refresh'),
                     'depends': ['state'],
                     },
                 'handle_invoice_exception': {
