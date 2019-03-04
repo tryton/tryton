@@ -12,4 +12,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="type"/>
     <field name="data"/>
     <field name="link" widget="url"/>
+    <!-- To allow client to set description field -->
+    <field name="description" tree_invisible="1"/>
 </tree>
