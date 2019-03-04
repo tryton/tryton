@@ -1946,6 +1946,24 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
 
+    def get_rec_name(self, name):
+        if self.product:
+            prefix = self.product.rec_name
+        else:
+            prefix = self.account.rec_name
+        if self.invoice:
+            return '%s @ %s' % (prefix, self.invoice.rec_name)
+        else:
+            return prefix
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return ['OR',
+            ('invoice.rec_name',) + tuple(clause[1:]),
+            ('product.rec_name',) + tuple(clause[1:]),
+            ('account.rec_name',) + tuple(clause[1:]),
+            ]
+
     @classmethod
     def check_modify(cls, lines, fields=None):
         '''
