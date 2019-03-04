@@ -162,14 +162,11 @@ class WinExport(WinCSV):
 
     def fill_predefwin(self):
         try:
-            export_ids = RPCExecute('model', 'ir.export', 'search',
+            exports = RPCExecute(
+                'model', 'ir.export', 'search_read',
                 [('resource', '=', self.model)], 0, None, None,
+                ['name', 'export_fields.name'],
                 context=self.context)
-        except RPCException:
-            return
-        try:
-            exports = RPCExecute('model', 'ir.export', 'read', export_ids,
-                ['name', 'export_fields.name'], context=self.context)
         except RPCException:
             return
         for export in exports:
