@@ -20,6 +20,7 @@ from tryton.signal_event import SignalEvent
 from tryton.common import message, sur, sur_3b, timezoned_date
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
+from tryton.common.underline import set_underline
 from tryton import plugins
 
 from .tabcontent import TabContent
@@ -614,10 +615,7 @@ class Form(SignalEvent, TabContent):
                 new_action['direct_print'] = True
             elif special_action == 'email':
                 new_action['email_print'] = True
-            action_name = action['name']
-            if '_' not in action_name:
-                action_name = '_' + action_name
-            menuitem = gtk.MenuItem(action_name)
+            menuitem = gtk.MenuItem(set_underline(action['name']))
             menuitem.set_use_underline(True)
             menuitem.connect('activate', self._popup_menu_selected, widget,
                 new_action, keyword)
@@ -649,7 +647,8 @@ class Form(SignalEvent, TabContent):
             menu.add(gtk.SeparatorMenuItem())
         for button in buttons:
             menuitem = gtk.ImageMenuItem()
-            menuitem.set_label('_' + button.attrs.get('string', _('Unknown')))
+            menuitem.set_label(
+                set_underline(button.attrs.get('string', _('Unknown'))))
             menuitem.set_use_underline(True)
             if button.attrs.get('icon'):
                 menuitem.set_image(common.IconFactory.get_image(
@@ -674,7 +673,7 @@ class Form(SignalEvent, TabContent):
         if kw_plugins:
             menu.add(gtk.SeparatorMenuItem())
         for name, func in kw_plugins:
-            menuitem = gtk.MenuItem('_' + name)
+            menuitem = gtk.MenuItem(set_underline(name))
             menuitem.set_use_underline(True)
             menuitem.connect('activate', lambda m, func: func({
                         'model': self.model,
