@@ -176,7 +176,7 @@ class Abstract(ModelSQL):
         name = name[:-len('_trend')]
         if pygal:
             chart = pygal.Line()
-            chart.add('', [getattr(ts, name) if ts else None
+            chart.add('', [getattr(ts, name) if ts else 0
                     for ts in self.time_series_all])
             return chart.render_sparktext()
 
