@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
 import gettext
 import urllib.request
+
+from gi.repository import Gdk, Gtk
 
 from tryton.common import resize_pixbuf, data2pixbuf
 from tryton.config import CONFIG
@@ -20,24 +21,26 @@ class Image(BinaryMixin, Widget):
         self.height = int(attrs.get('height', 100))
         self.width = int(attrs.get('width', 300))
 
-        self.widget = gtk.VBox(spacing=3)
-        self.event = gtk.EventBox()
-        self.event.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
-            gtk.TargetEntry.new('text/plain', 0, 0),
-            gtk.TargetEntry.new('text/uri-list', 0, 1),
-            gtk.TargetEntry.new("image/x-xpixmap", 0, 2)], gtk.gdk.ACTION_MOVE)
+        self.widget = Gtk.VBox(spacing=3)
+        self.event = Gtk.EventBox()
+        self.event.drag_dest_set(Gtk.DestDefaults.ALL, [
+            Gtk.TargetEntry.new('text/plain', 0, 0),
+            Gtk.TargetEntry.new('text/uri-list', 0, 1),
+            Gtk.TargetEntry.new("image/x-xpixmap", 0, 2)],
+            Gdk.DragAction.MOVE)
         self.event.connect('drag_motion', self.drag_motion)
         self.event.connect('drag_data_received', self.drag_data_received)
 
-        self.image = gtk.Image()
+        self.image = Gtk.Image()
         self.event.add(self.image)
-        self.widget.pack_start(self.event, expand=True, fill=True)
+        self.widget.pack_start(self.event, expand=True, fill=True, padding=0)
 
         toolbar = self.toolbar()  # Set button attributes even if not display
         if not attrs.get('readonly'):
-            alignment = gtk.Alignment(xalign=0.5, yalign=0.5)
+            alignment = Gtk.Alignment(xalign=0.5, yalign=0.5)
             alignment.add(toolbar)
-            self.widget.pack_start(alignment, expand=False, fill=False)
+            self.widget.pack_start(
+                alignment, expand=False, fill=False, padding=0)
 
         self._readonly = False
 
@@ -46,7 +49,7 @@ class Image(BinaryMixin, Widget):
     @property
     def filters(self):
         filters = super(Image, self).filters
-        filter_image = gtk.FileFilter()
+        filter_image = Gtk.FileFilter()
         filter_image.set_name(_('Images'))
         for mime in ("image/png", "image/jpeg", "image/gif"):
             filter_image.add_mime_type(mime)
@@ -67,7 +70,7 @@ class Image(BinaryMixin, Widget):
     def drag_motion(self, widget, context, x, y, timestamp):
         if self._readonly:
             return False
-        context.drag_status(gtk.gdk.ACTION_COPY, timestamp)
+        context.drag_status(Gdk.DragAction.COPY, timestamp)
         return True
 
     def drag_data_received(self, widget, context, x, y, selection,

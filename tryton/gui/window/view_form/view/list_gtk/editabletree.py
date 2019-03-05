@@ -1,11 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
 import gettext
-import gobject
 from itertools import islice, cycle, chain
 
-from gi.repository import Gtk
+from gi.repository import Gdk, GLib, Gtk
 
 from tryton.common import MODELACCESS
 from tryton.common.datetime_ import Date, Time
@@ -20,7 +18,7 @@ def focusable_cells(column, editable=True):
             yield cell
 
 
-class TreeView(gtk.TreeView):
+class TreeView(Gtk.TreeView):
     display_counter = 0
 
     def __init__(self, view):
@@ -73,10 +71,10 @@ class TreeView(gtk.TreeView):
 
 
 class EditableTreeView(TreeView):
-    leaving_record_events = (gtk.keysyms.Up, gtk.keysyms.Down,
-            gtk.keysyms.Return)
-    leaving_events = leaving_record_events + (gtk.keysyms.Tab,
-            gtk.keysyms.ISO_Left_Tab, gtk.keysyms.KP_Enter)
+    leaving_record_events = (
+        Gdk.KEY_Up, Gdk.KEY_Down, Gdk.KEY_Return)
+    leaving_events = leaving_record_events + (
+        Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab, Gdk.KEY_KP_Enter)
 
     def __init__(self, position, view):
         super(EditableTreeView, self).__init__(view)
@@ -137,7 +135,7 @@ class EditableTreeView(TreeView):
         self.grab_focus()
         if focus_column:
             widget = self.view.get_column_widget(focus_column)
-            if isinstance(widget.renderer, gtk.CellRendererToggle):
+            if isinstance(widget.renderer, Gtk.CellRendererToggle):
                 start_editing = False
         self.scroll_to_cell(path, focus_column, use_align=False)
         if cell:
@@ -150,7 +148,7 @@ class EditableTreeView(TreeView):
         path, column = self.get_cursor()
         if not path or not column or not column.name:
             return True
-        for renderer in column.get_cell_renderers():
+        for renderer in column.get_cells():
             if renderer.props.editing:
                 widget = self.view.get_column_widget(column)
                 self.on_editing_done(widget.editable, renderer)
@@ -163,16 +161,16 @@ class EditableTreeView(TreeView):
         self.display_counter += 1  # Force a display
 
         leaving = False
-        if event.keyval == gtk.keysyms.Right:
-            if isinstance(entry, gtk.Entry):
+        if event.keyval == Gdk.KEY_Right:
+            if isinstance(entry, Gtk.Entry):
                 if entry.get_position() >= \
                         len(entry.get_text()) \
                         and not entry.get_selection_bounds():
                     leaving = True
             else:
                 leaving = True
-        elif event.keyval == gtk.keysyms.Left:
-            if isinstance(entry, gtk.Entry):
+        elif event.keyval == Gdk.KEY_Left:
+            if isinstance(entry, Gtk.Entry):
                 if entry.get_position() <= 0 \
                         and not entry.get_selection_bounds():
                     leaving = True
@@ -183,22 +181,30 @@ class EditableTreeView(TreeView):
             if isinstance(entry, (Date, Time)):
                 entry.activate()
                 txt = entry.props.value
-            elif isinstance(entry, gtk.Entry):
+            elif isinstance(entry, Gtk.Entry):
                 txt = entry.get_text()
+            elif isinstance(entry, Gtk.ComboBox):
+                active = entry.get_active()
+                if active < 0:
+                    txt = None
+                else:
+                    model = entry.get_model()
+                    index = entry.get_property('entry-text-column')
+                    txt = model[active][index]
             else:
-                txt = entry.get_active_text()
+                return True
             keyval = event.keyval
             entry.handler_block(entry.editing_done_id)
 
             def callback():
                 entry.handler_unblock(entry.editing_done_id)
-                if (keyval in (gtk.keysyms.Tab, gtk.keysyms.KP_Enter)
-                        or (keyval == gtk.keysyms.Right and leaving)):
-                    gobject.idle_add(self.set_cursor, path,
+                if (keyval in [Gdk.KEY_Tab, Gdk.KEY_KP_Enter]
+                        or (keyval == Gdk.KEY_Right and leaving)):
+                    GLib.idle_add(self.set_cursor, path,
                         *self.next_column(path, column, renderer), True)
-                elif (keyval == gtk.keysyms.ISO_Left_Tab
-                        or (keyval == gtk.keysyms.Left and leaving)):
-                    gobject.idle_add(self.set_cursor, path,
+                elif (keyval == Gdk.KEY_ISO_Left_Tab
+                        or (keyval == Gdk.KEY_Left and leaving)):
+                    GLib.idle_add(self.set_cursor, path,
                         *self.prev_column(path, column, renderer), True)
                 elif keyval in self.leaving_record_events:
                     fields = list(self.view.widgets.keys())
@@ -208,53 +214,61 @@ class EditableTreeView(TreeView):
                         for col in self.get_columns():
                             if col.name in invalid_fields:
                                 break
-                        gobject.idle_add(self.set_cursor, path, col, True)
+                        GLib.idle_add(self.set_cursor, path, col, True)
                         return
                     if ((self.view.screen.pre_validate
                                 and not record.pre_validate())
                             or (not self.view.screen.parent
                                 and not record.save())):
-                        gobject.idle_add(self.set_cursor, path, column,
+                        GLib.idle_add(self.set_cursor, path, column,
                             True)
                         return
                     entry.handler_block(entry.editing_done_id)
-                    if keyval == gtk.keysyms.Up:
+                    if keyval == Gdk.KEY_Up:
                         self._key_up(path, model, column)
-                    elif keyval == gtk.keysyms.Down:
+                    elif keyval == Gdk.KEY_Down:
                         self._key_down(path, model, column)
-                    elif keyval == gtk.keysyms.Return:
+                    elif keyval == Gdk.KEY_Return:
                         if self.editable == 'top':
                             new_path = self._key_up(path, model)
                         else:
                             new_path = self._key_down(path, model)
-                        gobject.idle_add(self.set_cursor, new_path,
+                        GLib.idle_add(self.set_cursor, new_path,
                             *self.next_column(new_path), True)
                     entry.handler_unblock(entry.editing_done_id)
                 else:
-                    gobject.idle_add(self.set_cursor, path, column, True)
+                    GLib.idle_add(self.set_cursor, path, column, True)
             self.on_quit_cell(record, column, renderer, txt, callback=callback)
             return True
-        elif event.keyval in (gtk.keysyms.F3, gtk.keysyms.F2):
-            if isinstance(entry, gtk.Entry):
+        elif event.keyval in [Gdk.KEY_F3, Gdk.KEY_F2]:
+            if isinstance(entry, Gtk.Entry):
                 value = entry.get_text()
+            elif isinstance(entry, Gtk.ComboBox):
+                active = entry.get_active()
+                if active < 0:
+                    value = None
+                else:
+                    model = entry.get_model()
+                    index = entry.get_property('entry-text-column')
+                    value = model[active][index]
             else:
-                value = entry.get_active_text()
+                return True
             entry.handler_block(entry.editing_done_id)
 
             def callback():
                 widget = self.view.get_column_widget(column)
                 value = widget.get_textual_value(record)
-                if isinstance(entry, gtk.Entry):
+                if isinstance(entry, Gtk.Entry):
                     entry.set_text(value)
                 else:
                     entry.set_active_text(value)
                 entry.handler_unblock(entry.editing_done_id)
             self.on_open_remote(record, column,
-                create=(event.keyval == gtk.keysyms.F3), value=value,
+                create=(event.keyval == Gdk.KEY_F3), value=value,
                 callback=callback)
         else:
             field = record[column.name]
-            if isinstance(entry, gtk.Entry):
+            if isinstance(entry, Gtk.Entry):
                 entry.set_max_length(int(field.attrs.get('size', 0)))
             record.modified_fields.setdefault(column.name)
             return False
@@ -292,7 +306,7 @@ class EditableTreeView(TreeView):
         if isinstance(entry, (Date, Time)):
             entry.activate()
             text = entry.props.value
-        elif isinstance(entry, (gtk.ComboBoxEntry, gtk.ComboBox)):
+        elif isinstance(entry, Gtk.ComboBox):
             text = entry.get_active_text
         else:
             text = entry.get_text()

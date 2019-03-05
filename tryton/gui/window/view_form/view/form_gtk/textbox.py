@@ -2,14 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 
-import gtk
-from .widget import Widget, TranslateMixin
-from tryton.config import CONFIG
-
+from gi.repository import Gtk
 try:
     from gi.repository import GtkSpell
 except ImportError:
     GtkSpell = None
+
+from .widget import Widget, TranslateMixin
+from tryton.config import CONFIG
+
 
 logger = logging.getLogger(__name__)
 
@@ -20,11 +21,11 @@ class TextBox(Widget, TranslateMixin):
     def __init__(self, view, attrs):
         super(TextBox, self).__init__(view, attrs)
 
-        self.widget = gtk.VBox()
-        self.scrolledwindow = gtk.ScrolledWindow()
-        self.scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC,
-                gtk.POLICY_AUTOMATIC)
-        self.scrolledwindow.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        self.widget = Gtk.VBox()
+        self.scrolledwindow = Gtk.ScrolledWindow()
+        self.scrolledwindow.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        self.scrolledwindow.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
         self.scrolledwindow.set_size_request(100, 100)
 
         self.textview = self.mnemonic_widget = self._get_textview()
@@ -37,33 +38,35 @@ class TextBox(Widget, TranslateMixin):
         self.button = None
         if attrs.get('translate'):
             self.button = self.translate_button()
-            self.widget.pack_end(self.button, False, False)
+            self.widget.pack_end(
+                self.button, expand=False, fill=False, padding=0)
 
-        self.widget.pack_end(self.scrolledwindow)
+        self.widget.pack_end(
+            self.scrolledwindow, expand=True, fill=True, padding=0)
 
     def _get_textview(self):
         if self.attrs.get('size'):
             textbuffer = TextBufferLimitSize(int(self.attrs['size']))
-            textview = gtk.TextView()
+            textview = Gtk.TextView()
             textview.set_buffer(textbuffer)
         else:
-            textview = gtk.TextView()
-        textview.set_wrap_mode(gtk.WRAP_WORD)
+            textview = Gtk.TextView()
+        textview.set_wrap_mode(Gtk.WrapMode.WORD)
         # TODO better tab solution
         textview.set_accepts_tab(False)
         return textview
 
     def translate_widget(self):
-        box = gtk.VBox()
-        scrolledwindow = gtk.ScrolledWindow()
-        scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC,
-            gtk.POLICY_AUTOMATIC)
-        scrolledwindow.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        box = Gtk.VBox()
+        scrolledwindow = Gtk.ScrolledWindow()
+        scrolledwindow.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scrolledwindow.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
         scrolledwindow.set_size_request(-1, 80)
 
         textview = self._get_textview()
         scrolledwindow.add(textview)
-        box.pack_end(scrolledwindow)
+        box.pack_end(scrolledwindow, expand=True, fill=True, padding=0)
         return box
 
     def translate_widget_set(self, widget, value):
@@ -141,7 +144,7 @@ class TextBox(Widget, TranslateMixin):
                 checker.detach()
 
 
-class TextBufferLimitSize(gtk.TextBuffer):
+class TextBufferLimitSize(Gtk.TextBuffer):
     __gsignals__ = {
         'insert-text': 'override',
         }
@@ -154,4 +157,4 @@ class TextBufferLimitSize(gtk.TextBuffer):
         free_chars = self.max_length - self.get_char_count()
         text = text[0:free_chars]
         length = len(text)
-        return gtk.TextBuffer.do_insert_text(self, iter, text, length)
+        return Gtk.TextBuffer.do_insert_text(self, iter, text, length)

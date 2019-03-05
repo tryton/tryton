@@ -2,13 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import os
-import gtk
 import gettext
 import webbrowser
-
-from gi.repository import Gtk, GObject
-
 from functools import wraps, partial
+
+from gi.repository import Gdk, GLib, Gtk
 
 from tryton.gui.window.win_search import WinSearch
 from tryton.gui.window.win_form import WinForm
@@ -38,7 +36,7 @@ def send_keys(renderer, editable, position, treeview):
     editable.connect('key_press_event', treeview.on_keypressed, renderer)
     editable.editing_done_id = editable.connect('editing_done',
             treeview.on_editing_done, renderer)
-    if isinstance(editable, (gtk.ComboBoxEntry, gtk.ComboBox)):
+    if isinstance(editable, Gtk.ComboBox):
         def changed(combobox):
             # "changed" signal is also triggered by text editing
             # so only trigger editing-done if a row is active
@@ -90,7 +88,7 @@ class CellCache(list):
     @classmethod
     def cache(cls, func):
         @wraps(func)
-        def wrapper(self, column, cell, store, iter_):
+        def wrapper(self, column, cell, store, iter_, user_data=None):
             if not hasattr(self, 'display_counters'):
                 self.display_counters = {}
             if not hasattr(self, 'cell_caches'):
@@ -99,11 +97,11 @@ class CellCache(list):
             counter = self.view.treeview.display_counter
             if (self.display_counters.get(record.id) != counter):
                 if getattr(cell, 'decorated', None):
-                    func(self, column, cell, store, iter_)
+                    func(self, column, cell, store, iter_, user_data)
                 else:
                     cache = cls()
                     cache.decorate(cell)
-                    func(self, column, cell, store, iter_)
+                    func(self, column, cell, store, iter_, user_data)
                     cache.undecorate(cell)
                     self.cell_caches[record.id] = cache
                     self.display_counters[record.id] = counter
@@ -150,14 +148,14 @@ class Affix(Cell):
             if not self.icon:
                 self.icon = 'tryton-public'
         elif self.icon:
-            self.renderer = gtk.CellRendererPixbuf()
+            self.renderer = Gtk.CellRendererPixbuf()
         else:
-            self.renderer = gtk.CellRendererText()
+            self.renderer = Gtk.CellRendererText()
         self.view = view
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         field = record[self.attrs['name']]
         field.state_set(record, states=('invisible',))
@@ -168,7 +166,7 @@ class Affix(Cell):
                 value = record[self.icon].get_client(record) or ''
             else:
                 value = self.icon
-            pixbuf = common.IconFactory.get_pixbuf(value, gtk.ICON_SIZE_BUTTON)
+            pixbuf = common.IconFactory.get_pixbuf(value, Gtk.IconSize.BUTTON)
             cell.set_property('pixbuf', pixbuf)
         else:
             text = self.attrs.get('string', '')
@@ -216,7 +214,7 @@ class GenericText(Cell):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record = store.get_value(iter_, 0)
         text = self.get_textual_value(record)
 
@@ -254,8 +252,9 @@ class GenericText(Cell):
 
             if isinstance(cell, CellRendererToggle):
                 cell.set_property('activatable', not readonly)
-            elif isinstance(cell, (gtk.CellRendererProgress,
-                        CellRendererButton, gtk.CellRendererPixbuf)):
+            elif isinstance(cell,
+                    (Gtk.CellRendererProgress, CellRendererButton,
+                        Gtk.CellRendererPixbuf)):
                 pass
             else:
                 cell.set_property('editable', not readonly)
@@ -290,8 +289,8 @@ class Char(GenericText):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
-        super(Char, self).setter(column, cell, store, iter_)
+    def setter(self, column, cell, store, iter_, user_data=None):
+        super(Char, self).setter(column, cell, store, iter_, user_data)
         cell.set_property('single-paragraph-mode', True)
 
 
@@ -345,8 +344,8 @@ class URL(Char):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
-        super(URL, self).setter(column, cell, store, iter_)
+    def setter(self, column, cell, store, iter_, user_data=None):
+        super(URL, self).setter(column, cell, store, iter_, user_data)
         record, field = self._get_record_field_from_iter(iter_, store)
         field.state_set(record, states=('readonly',))
         readonly = field.get_state_attrs(record).get('readonly', False)
@@ -361,10 +360,10 @@ class Date(GenericText):
         super(Date, self).__init__(view, attrs, renderer=renderer)
 
     @realized
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         self.renderer.props.format = self.get_format(record, field)
-        super(Date, self).setter(column, cell, store, iter_)
+        super(Date, self).setter(column, cell, store, iter_, user_data)
 
     def get_format(self, record, field):
         if field and record:
@@ -419,8 +418,8 @@ class Float(Int):
         super(Float, self).__init__(view, attrs, renderer=renderer)
 
     @realized
-    def setter(self, column, cell, store, iter_):
-        super(Float, self).setter(column, cell, store, iter_)
+    def setter(self, column, cell, store, iter_, user_data=None):
+        super(Float, self).setter(column, cell, store, iter_, user_data)
         record, field = self._get_record_field_from_iter(iter_, store)
         digits = field.digits(record, factor=self.factor)
         cell.digits = digits
@@ -464,7 +463,7 @@ class Binary(GenericText):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         text = self.get_textual_value(record)
         cell.set_property('text', text)
@@ -522,14 +521,14 @@ class _BinarySave(_BinaryIcon):
             filename_field = record.group.fields.get(self.attrs['filename'])
             filename = filename_field.get(record)
         filename = file_selection(_('Save As...'), filename=filename,
-            action=gtk.FILE_CHOOSER_ACTION_SAVE)
+            action=Gtk.FileChooserAction.SAVE)
         if filename:
             with open(filename, 'wb') as fp:
                 fp.write(self.binary.get_data(record, field))
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
@@ -564,11 +563,11 @@ class _BinarySelect(_BinaryIcon):
                     if filename_field:
                         filename_field.set_client(
                             record, os.path.basename(filename))
-            GObject.idle_add(_select)
+            GLib.idle_add(_select)
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         if hasattr(field, 'get_size'):
             size = field.get_size(record)
@@ -601,11 +600,11 @@ class _BinaryOpen(_BinarySave):
         root, type_ = os.path.splitext(filename)
         if type_:
             type_ = type_[1:]
-        GObject.idle_add(file_open, file_path, type_)
+        GLib.idle_add(file_open, file_path, type_)
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         super().setter(column, cell, store, iter_)
         record, field = self._get_record_field_from_iter(iter_, store)
         filename_field = record.group.fields.get(self.attrs.get('filename'))
@@ -619,14 +618,14 @@ class Image(GenericText):
 
     def __init__(self, view, attrs=None, renderer=None):
         if renderer is None:
-            renderer = gtk.CellRendererPixbuf
+            renderer = Gtk.CellRendererPixbuf
         super(Image, self).__init__(view, attrs, renderer)
         self.renderer.set_fixed_size(self.attrs.get('width', -1),
             self.attrs.get('height', -1))
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         value = field.get_client(record)
         if isinstance(value, int):
@@ -682,7 +681,7 @@ class M2O(GenericText):
             field = record[self.attrs['name']]
             win = self.search_remote(record, field, text, callback=callback)
             if len(win.screen.group) == 1:
-                win.response(None, gtk.RESPONSE_OK)
+                win.response(None, Gtk.ResponseType.OK)
             else:
                 win.show()
 
@@ -704,11 +703,11 @@ class M2O(GenericText):
                 icon1, tooltip1 = None, ''
                 icon2, tooltip2 = 'tryton-search', _("Search a record <F2>")
             for pos, icon, tooltip in [
-                    (gtk.ENTRY_ICON_PRIMARY, icon1, tooltip1),
-                    (gtk.ENTRY_ICON_SECONDARY, icon2, tooltip2)]:
+                    (Gtk.EntryIconPosition.PRIMARY, icon1, tooltip1),
+                    (Gtk.EntryIconPosition.SECONDARY, icon2, tooltip2)]:
                 if icon:
                     pixbuf = common.IconFactory.get_pixbuf(
-                        icon, gtk.ICON_SIZE_MENU)
+                        icon, Gtk.IconSize.MENU)
                 else:
                     pixbuf = None
                 editable.set_icon_from_pixbuf(pos, pixbuf)
@@ -718,7 +717,8 @@ class M2O(GenericText):
             value = field.get(record)
             if not model:
                 return
-            if icon_pos == gtk.ENTRY_ICON_SECONDARY and self.has_target(value):
+            if (icon_pos == Gtk.EntryIconPosition.SECONDARY
+                    and self.has_target(value)):
                 field.set_client(
                     record, self.value_from_id(model, None, ''))
                 editable.set_text('')
@@ -818,8 +818,7 @@ class M2O(GenericText):
     def _key_press(self, entry, event, path):
         record, field = self._get_record_field_from_path(path)
         if (self.has_target(field.get(record))
-                and event.keyval in (gtk.keysyms.Delete,
-                    gtk.keysyms.BackSpace)):
+                and event.keyval in [Gdk.KEY_Delete, Gdk.KEY_BackSpace]):
             entry.set_text('')
         return False
 
@@ -974,7 +973,14 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     def set_value(self, editable, record, field):
         value = self.get_popdown_value(editable)
         if 'relation' in self.attrs and value:
-            value = (value, editable.get_active_text())
+            active = editable.get_active()
+            if active < 0:
+                text = None
+            else:
+                model = editable.get_model()
+                index = editable.get_property('entry-text-column')
+                text = model[active][index]
+            value = (value, text)
         field.set_client(record, value)
         return False
 
@@ -1050,28 +1056,26 @@ class _ReferenceSelection(Selection):
 class ProgressBar(object):
     align = 0.5
     orientations = {
-        'left_to_right': gtk.PROGRESS_LEFT_TO_RIGHT,
-        'right_to_left': gtk.PROGRESS_RIGHT_TO_LEFT,
-        'bottom_to_top': gtk.PROGRESS_BOTTOM_TO_TOP,
-        'top_to_bottom': gtk.PROGRESS_TOP_TO_BOTTOM,
-    }
+        'left_to_right': (Gtk.Orientation.HORIZONTAL, False),
+        'right_to_left': (Gtk.Orientation.HORIZONTAL, True),
+        'bottom_to_top': (Gtk.Orientation.VERTICAL, True),
+        'top_to_bottom': (Gtk.Orientation.VERTICAL, False),
+        }
 
     def __init__(self, view, attrs):
         super(ProgressBar, self).__init__()
         self.view = view
         self.attrs = attrs
-        self.renderer = gtk.CellRendererProgress()
-        orientation = self.orientations.get(self.attrs.get('orientation',
-            'left_to_right'), gtk.PROGRESS_LEFT_TO_RIGHT)
-        if hasattr(self.renderer, 'set_orientation'):
-            self.renderer.set_orientation(orientation)
-        else:
-            self.renderer.set_property('orientation', orientation)
+        self.renderer = Gtk.CellRendererProgress()
+        orientation, inverted = self.orientations.get(
+            self.attrs.get('orientation', 'left_to_right'))
+        self.renderer.set_orientation(orientation)
+        self.renderer.set_property('inverted', inverted)
         self.renderer.set_property('yalign', 0)
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
         field.state_set(record, states=('invisible',))
         invisible = field.get_state_attrs(record).get('invisible', False)
@@ -1110,7 +1114,7 @@ class Button(Cell):
 
     @realized
     @CellCache.cache
-    def setter(self, column, cell, store, iter_):
+    def setter(self, column, cell, store, iter_, user_data=None):
         record = store.get_value(iter_, 0)
         states = record.expr_eval(self.attrs.get('states', {}))
         invisible = states.get('invisible', False)

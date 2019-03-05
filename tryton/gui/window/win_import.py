@@ -3,7 +3,7 @@
 import csv
 import gettext
 
-import gtk
+from gi.repository import Gtk
 
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
@@ -26,31 +26,35 @@ class WinImport(WinCSV):
         self.dialog.set_title(_('CSV Import: %s') % name)
 
     def add_buttons(self, box):
-        button_autodetect = gtk.Button(
-            _('_Auto-Detect'), stock=None, use_underline=True)
-        button_autodetect.set_alignment(0.0, 0.0)
+        button_autodetect = Gtk.Button(
+            label=_('_Auto-Detect'), stock=None, use_underline=True)
         button_autodetect.set_image(common.IconFactory.get_image(
-                'tryton-search', gtk.ICON_SIZE_BUTTON))
+                'tryton-search', Gtk.IconSize.BUTTON))
         button_autodetect.set_always_show_image(True)
         button_autodetect.connect_after('clicked', self.sig_autodetect)
-        box.pack_start(button_autodetect, False, False, 0)
+        box.pack_start(
+            button_autodetect, expand=False, fill=False, padding=0)
 
     def add_chooser(self, box):
-        hbox_csv_import = gtk.HBox()
-        box.pack_start(hbox_csv_import, False, True, 4)
-        label_csv_import = gtk.Label(_("File to Import:"))
+        hbox_csv_import = Gtk.HBox()
+        box.pack_start(hbox_csv_import, expand=False, fill=True, padding=4)
+        label_csv_import = Gtk.Label(label=_("File to Import:"))
         hbox_csv_import.pack_start(label_csv_import, False, False, 0)
-        self.import_csv_file = gtk.FileChooserButton(_("Open..."))
+        self.import_csv_file = Gtk.FileChooserButton(title=_("Open..."))
         label_csv_import.set_mnemonic_widget(self.import_csv_file)
-        hbox_csv_import.pack_start(self.import_csv_file, True, True, 0)
+        hbox_csv_import.pack_start(
+            self.import_csv_file, expand=True, fill=True, padding=0)
 
     def add_csv_header_param(self, table):
-        label_csv_skip = gtk.Label(_('Lines to Skip:'))
-        label_csv_skip.set_alignment(1, 0.5)
+        label_csv_skip = Gtk.Label(
+            label=_('Lines to Skip:'), halign=Gtk.Align.START)
         table.attach(label_csv_skip, 2, 3, 1, 2)
 
-        self.csv_skip = gtk.SpinButton()
-        self.csv_skip.configure(gtk.Adjustment(0, 0, 100, 1, 10), 1, 0)
+        self.csv_skip = Gtk.SpinButton()
+        self.csv_skip.configure(Gtk.Adjustment(
+                value=0, lower=0, upper=100,
+                step_increment=1, page_increment=10),
+            1, 0)
         label_csv_skip.set_mnemonic_widget(self.csv_skip)
         table.attach(self.csv_skip, 3, 4, 1, 2)
 
@@ -163,7 +167,7 @@ class WinImport(WinCSV):
         self.model2.clear()
 
     def response(self, dialog, response):
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             fields = []
             iter = self.model2.get_iter_first()
             while iter:

@@ -2,31 +2,31 @@
 # this repository contains the full copyright notices and license terms.
 # This code is inspired by the pycha project
 # (http://www.lorenzogil.com/projects/pycha/)
-import gtk
-
-from functools import reduce
-from tryton.common import hex2rgb, generateColorscheme, \
-        COLOR_SCHEMES
-from tryton.pyson import PYSONDecoder
+import datetime
 import locale
 import math
-import datetime
 from dateutil.relativedelta import relativedelta
-import tryton.rpc as rpc
+from functools import reduce
+
 import cairo
+from gi.repository import Gdk, Gtk
+
+import tryton.rpc as rpc
 from tryton.action import Action
+from tryton.common import hex2rgb, generateColorscheme, COLOR_SCHEMES
 from tryton.gui.window import Window
+from tryton.pyson import PYSONDecoder
 
 
 class Popup(object):
 
     def __init__(self, widget):
-        self.win = gtk.Window(gtk.WINDOW_POPUP)
+        self.win = Gtk.Window(type=Gtk.WindowType.POPUP)
         self.win.set_name('gtk-tooltips')
         self.win.set_resizable(False)
         self.win.set_border_width(1)
-        self.win.set_transient_for(widget.window)
-        self.label = gtk.Label()
+        self.win.set_transient_for(widget.props.window)
+        self.label = Gtk.Label()
         self.win.add(self.label)
         self.win.connect('enter-notify-event', self.enter)
 
@@ -34,7 +34,7 @@ class Popup(object):
         self.label.set_text(text)
 
     def set_position(self, widget, x, y):
-        widget_x, widget_y = widget.window.get_origin()
+        origin = widget.props.window.get_origin()
         allocation = widget.get_allocation()
         width, height = allocation.width, allocation.height
         popup_width, popup_height = self.win.get_size()
@@ -42,14 +42,14 @@ class Popup(object):
             x = popup_width // 2
         if x > width - popup_width // 2:
             x = width - popup_width // 2
-        pos_x = widget_x + x - popup_width // 2
+        pos_x = origin.x + x - popup_width // 2
         if pos_x < 0:
             pos_x = 0
         if y < popup_height + 5:
             y = popup_height + 5
         if y > height:
             y = height
-        pos_y = widget_y + y - popup_height - 5
+        pos_y = origin.y + y - popup_height - 5
         if pos_y < 0:
             pos_y = 0
         self.win.move(int(pos_x), int(pos_y))
@@ -67,7 +67,7 @@ class Popup(object):
         self.win.hide()
 
 
-class Graph(gtk.DrawingArea):
+class Graph(Gtk.DrawingArea):
     'Graph'
 
     __gsignals__ = {"draw": "override"}
@@ -82,7 +82,7 @@ class Graph(gtk.DrawingArea):
         self.bottomPadding = 15
         self.rightPadding = 30
         self.leftPadding = 30
-        self.set_events(gtk.gdk.POINTER_MOTION_MASK)
+        self.set_events(Gdk.EventMask.POINTER_MOTION_MASK)
         self.connect('motion-notify-event', self.motion)
         self.connect('leave-notify-event', self.leave)
         self.popup = Popup(self)
@@ -106,7 +106,6 @@ class Graph(gtk.DrawingArea):
         self.popup.hide()
 
     def do_draw(self, cr):
-        cr = self.window.cairo_create()
         width = self.get_allocated_width()
         height = self.get_allocated_height()
 
@@ -142,10 +141,10 @@ class Graph(gtk.DrawingArea):
             del ctx['active_ids']
         if 'active_id' in ctx:
             del ctx['active_id']
-        event = gtk.get_current_event()
+        event = Gtk.get_current_event()
         allow_similar = False
-        if (event.state & gtk.gdk.CONTROL_MASK
-                or event.state & gtk.gdk.MOD1_MASK):
+        if (event.state & Gdk.ModifierType.CONTROL_MASK
+                or event.state & Gdk.ModifierType.MOD1_MASK):
             allow_similar = True
         with Window(hide_current=True, allow_similar=allow_similar):
             return Action.exec_keyword('graph_open', {

@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
 import gettext
 import itertools
+
+from gi.repository import Gdk, Gtk
 
 from .widget import Widget
 from tryton.gui.window.view_form.screen import Screen
@@ -22,66 +23,66 @@ class One2Many(Widget):
     def __init__(self, view, attrs):
         super(One2Many, self).__init__(view, attrs)
 
-        self.widget = gtk.Frame()
-        self.widget.set_shadow_type(gtk.SHADOW_NONE)
+        self.widget = Gtk.Frame()
+        self.widget.set_shadow_type(Gtk.ShadowType.NONE)
         self.widget.get_accessible().set_name(attrs.get('string', ''))
-        vbox = gtk.VBox(homogeneous=False, spacing=2)
+        vbox = Gtk.VBox(homogeneous=False, spacing=2)
         self.widget.add(vbox)
         self._readonly = True
         self._required = False
         self._position = 0
         self._length = 0
 
-        self.title_box = hbox = gtk.HBox(homogeneous=False, spacing=0)
+        self.title_box = hbox = Gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_border_width(2)
 
-        self.title = gtk.Label(set_underline(attrs.get('string', '')))
-        self.title.set_use_underline(True)
-        self.title.set_alignment(0.0, 0.5)
-        hbox.pack_start(self.title, expand=True, fill=True)
+        self.title = Gtk.Label(
+            label=set_underline(attrs.get('string', '')),
+            use_underline=True, halign=Gtk.Align.START)
+        hbox.pack_start(self.title, expand=True, fill=True, padding=0)
 
-        hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
+        hbox.pack_start(Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
         tooltips = common.Tooltips()
 
-        but_switch = gtk.Button()
+        but_switch = Gtk.Button()
         tooltips.set_tip(but_switch, _('Switch'))
         but_switch.connect('clicked', self.switch_view)
         but_switch.add(common.IconFactory.get_image(
-                'tryton-switch', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        but_switch.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(but_switch, expand=False, fill=False)
+                'tryton-switch', Gtk.IconSize.SMALL_TOOLBAR))
+        but_switch.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(but_switch, expand=False, fill=False, padding=0)
 
-        self.but_pre = gtk.Button()
+        self.but_pre = Gtk.Button()
         tooltips.set_tip(self.but_pre, _('Previous'))
         self.but_pre.connect('clicked', self._sig_previous)
         self.but_pre.add(common.IconFactory.get_image(
-                'tryton-back', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_pre.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_pre, expand=False, fill=False)
+                'tryton-back', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_pre.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_pre, expand=False, fill=False, padding=0)
 
-        self.label = gtk.Label('(0,0)')
-        hbox.pack_start(self.label, expand=False, fill=False)
+        self.label = Gtk.Label(label='(0,0)')
+        hbox.pack_start(self.label, expand=False, fill=False, padding=0)
 
-        self.but_next = gtk.Button()
+        self.but_next = Gtk.Button()
         tooltips.set_tip(self.but_next, _('Next'))
         self.but_next.connect('clicked', self._sig_next)
         self.but_next.add(common.IconFactory.get_image(
-                'tryton-forward', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_next.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_next, expand=False, fill=False)
+                'tryton-forward', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_next.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_next, expand=False, fill=False, padding=0)
 
-        hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
+        hbox.pack_start(Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
         self.focus_out = True
         self.wid_completion = None
         if attrs.get('add_remove'):
 
-            self.wid_text = gtk.Entry()
+            self.wid_text = Gtk.Entry()
             self.wid_text.set_placeholder_text(_('Search'))
             self.wid_text.set_property('width_chars', 13)
             self.wid_text.connect('focus-out-event', self._focus_out)
-            hbox.pack_start(self.wid_text, expand=True, fill=True)
+            hbox.pack_start(self.wid_text, expand=True, fill=True, padding=0)
 
             if int(self.attrs.get('completion', 1)):
                 access = common.MODELACCESS[attrs['relation']]
@@ -95,56 +96,58 @@ class One2Many(Widget):
                 self.wid_text.set_completion(self.wid_completion)
                 self.wid_text.connect('changed', self._update_completion)
 
-            self.but_add = gtk.Button()
+            self.but_add = Gtk.Button()
             tooltips.set_tip(self.but_add, _('Add existing record'))
             self.but_add.connect('clicked', self._sig_add)
             self.but_add.add(common.IconFactory.get_image(
-                    'tryton-add', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_add.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_add, expand=False, fill=False)
+                    'tryton-add', Gtk.IconSize.SMALL_TOOLBAR))
+            self.but_add.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
 
-            self.but_remove = gtk.Button()
+            self.but_remove = Gtk.Button()
             tooltips.set_tip(self.but_remove,
                 _('Remove selected record'))
             self.but_remove.connect('clicked', self._sig_remove, True)
             self.but_remove.add(common.IconFactory.get_image(
-                    'tryton-remove', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_remove.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_remove, expand=False, fill=False)
+                    'tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
+            self.but_remove.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(
+                self.but_remove, expand=False, fill=False, padding=0)
 
-            hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
+            hbox.pack_start(
+                Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
-        self.but_new = gtk.Button()
+        self.but_new = Gtk.Button()
         tooltips.set_tip(self.but_new, _('Create a new record <F3>'))
         self.but_new.connect('clicked', self._sig_new)
         self.but_new.add(common.IconFactory.get_image(
-                'tryton-create', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_new.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_new, expand=False, fill=False)
+                'tryton-create', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_new.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_new, expand=False, fill=False, padding=0)
 
-        self.but_open = gtk.Button()
+        self.but_open = Gtk.Button()
         tooltips.set_tip(self.but_open, _('Edit selected record <F2>'))
         self.but_open.connect('clicked', self._sig_edit)
         self.but_open.add(common.IconFactory.get_image(
-                'tryton-open', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_open.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_open, expand=False, fill=False)
+                'tryton-open', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_open.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_open, expand=False, fill=False, padding=0)
 
-        self.but_del = gtk.Button()
+        self.but_del = Gtk.Button()
         tooltips.set_tip(self.but_del, _('Delete selected record <Del>'))
         self.but_del.connect('clicked', self._sig_remove, False)
         self.but_del.add(common.IconFactory.get_image(
-                'tryton-delete', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_del.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_del, expand=False, fill=False)
+                'tryton-delete', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_del.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_del, expand=False, fill=False, padding=0)
 
-        self.but_undel = gtk.Button()
+        self.but_undel = Gtk.Button()
         tooltips.set_tip(self.but_undel, _('Undelete selected record <Ins>'))
         self.but_undel.connect('clicked', self._sig_undelete)
         self.but_undel.add(common.IconFactory.get_image(
-                'tryton-undo', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_undel.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_undel, expand=False, fill=False)
+                'tryton-undo', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_undel.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_undel, expand=False, fill=False, padding=0)
 
         if attrs.get('add_remove'):
             hbox.set_focus_chain([self.wid_text])
@@ -153,10 +156,10 @@ class One2Many(Widget):
 
         tooltips.enable()
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
         frame.add(hbox)
-        frame.set_shadow_type(gtk.SHADOW_OUT)
-        vbox.pack_start(frame, expand=False, fill=True)
+        frame.set_shadow_type(Gtk.ShadowType.OUT)
+        vbox.pack_start(frame, expand=False, fill=True, padding=0)
 
         self.screen = Screen(attrs['relation'],
             mode=attrs.get('mode', 'tree,form').split(','),
@@ -168,7 +171,7 @@ class One2Many(Widget):
         self.screen.pre_validate = bool(int(attrs.get('pre_validate', 0)))
         self.screen.signal_connect(self, 'record-message', self._sig_label)
 
-        vbox.pack_start(self.screen.widget, expand=True, fill=True)
+        vbox.pack_start(self.screen.widget, expand=True, fill=True, padding=0)
 
         self.title.set_mnemonic_widget(
             self.screen.current_view.mnemonic_widget)
@@ -180,27 +183,27 @@ class One2Many(Widget):
         but_switch.props.sensitive = self.screen.number_of_views > 1
 
     def on_keypress(self, widget, event):
-        if (event.keyval == gtk.keysyms.F3) \
-                and self.but_new.get_property('sensitive'):
+        if ((event.keyval == Gdk.KEY_F3)
+                and self.but_new.get_property('sensitive')):
             self._sig_new(widget)
             return True
-        if event.keyval == gtk.keysyms.F2 \
-                and widget == self.screen.widget:
+        if (event.keyval == Gdk.KEY_F2
+                and widget == self.screen.widget):
             self._sig_edit(widget)
             return True
-        if (event.keyval in (gtk.keysyms.Delete, gtk.keysyms.KP_Delete)
+        if (event.keyval in [Gdk.KEY_Delete, Gdk.KEY_KP_Delete]
                 and widget == self.screen.widget
                 and self.but_del.get_property('sensitive')):
             self._sig_remove(widget)
             return True
-        if event.keyval == gtk.keysyms.Insert and widget == self.screen.widget:
+        if event.keyval == Gdk.KEY_Insert and widget == self.screen.widget:
             self._sig_undelete(widget)
             return True
         if self.attrs.get('add_remove'):
             editable = self.wid_text.get_editable()
-            activate_keys = [gtk.keysyms.Tab, gtk.keysyms.ISO_Left_Tab]
+            activate_keys = [Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab]
             if not self.wid_completion:
-                activate_keys.append(gtk.keysyms.Return)
+                activate_keys.append(Gdk.KEY_Return)
             if (widget == self.wid_text
                     and event.keyval in activate_keys
                     and editable

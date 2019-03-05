@@ -3,8 +3,7 @@
 import operator
 import math
 
-import gtk
-import gobject
+from gi.repository import Gdk, GLib, GObject, Gtk
 
 from tryton.common import RPCExecute, RPCException
 from tryton.common import eval_domain
@@ -123,9 +122,9 @@ class SelectionMixin(object):
 
 def selection_shortcuts(entry):
     def key_press(widget, event):
-        if (event.type == gtk.gdk.KEY_PRESS
-                and event.state & gtk.gdk.CONTROL_MASK
-                and event.keyval == gtk.keysyms.space):
+        if (event.type == Gdk.EventType.KEY_PRESS
+                and event.state & Gdk.ModifierType.CONTROL_MASK
+                and event.keyval == Gdk.KEY_space):
             widget.popup()
     entry.connect('key_press_event', key_press)
     return entry
@@ -149,12 +148,8 @@ class PopdownMixin(object):
             return
         model, lengths = self.get_popdown_model(selection)
         entry.set_model(model)
-        # GTK 2.24 and above use a ComboBox instead of a ComboBoxEntry
-        if hasattr(entry, 'set_text_column'):
-            entry.set_text_column(0)
-        else:
-            entry.set_entry_text_column(0)
-        completion = gtk.EntryCompletion()
+        entry.set_entry_text_column(0)
+        completion = Gtk.EntryCompletion()
         completion.set_inline_selection(True)
         completion.set_model(model)
         child.set_completion(completion)
@@ -173,7 +168,7 @@ class PopdownMixin(object):
         completion.connect('match-selected', self.match_selected, entry)
 
     def get_popdown_model(self, selection):
-        model = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
+        model = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_PYOBJECT)
         lengths = []
         for (value, name) in selection:
             name = str(name)
@@ -186,7 +181,7 @@ class PopdownMixin(object):
         model = entry.get_model()
         for i, values in enumerate(model):
             if values[1] == value:
-                gobject.idle_add(entry.set_active, i)
+                GLib.idle_add(entry.set_active, i)
                 break
 
     def get_popdown_value(self, entry, index=1):

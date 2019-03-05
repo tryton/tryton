@@ -1,3 +1,10 @@
+* Rename email and calendar file
+* Use markup for styling
+* Replace ImageMenuItem by MenuItem
+* Replace ComboBoxEntry by ComboBox or ComboBoxText
+* Replace GObject.idle_add by GLibe.idle_add
+* Remove positional arguments for PyGObject
+* Remove pygtkcompat
 * Implement Reference cell with Selection and Many2One cells
 * Replace CellRendererBinary with clickable pixbuf cells
 * Allow cell to have multiple renderers

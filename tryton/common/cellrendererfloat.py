@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
 import locale
+
+from gi.repository import Gdk, GObject
+
 from .cellrendererinteger import CellRendererInteger
 
 
@@ -18,8 +19,8 @@ class CellRendererFloat(CellRendererInteger):
 
     def key_press_event(self, widget, event):
         for name in ('KP_Decimal', 'KP_Separator'):
-            if event.keyval == gtk.gdk.keyval_from_name(name):
-                event.keyval = int(gtk.gdk.unicode_to_keyval(
+            if event.keyval == Gdk.keyval_from_name(name):
+                event.keyval = int(Gdk.unicode_to_keyval(
                     ord(locale.localeconv()['decimal_point'])))
 
     def sig_insert_text(self, entry, new_text, new_text_length, position):
@@ -34,11 +35,11 @@ class CellRendererFloat(CellRendererInteger):
         try:
             value = locale.atof(new_value)
         except ValueError:
-            entry.stop_emission('insert-text')
+            entry.stop_emission_by_name('insert-text')
             return
 
         if self.digits and not (round(value, self.digits[1]) == float(value)):
-            entry.stop_emission('insert-text')
+            entry.stop_emission_by_name('insert-text')
 
 
-gobject.type_register(CellRendererFloat)
+GObject.type_register(CellRendererFloat)

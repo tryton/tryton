@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
+from gi.repository import GLib, Gtk
 
 from .widget import Widget
 from tryton.common.selection import SelectionMixin, selection_shortcuts, \
@@ -14,8 +13,8 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
     def __init__(self, view, attrs):
         super(Selection, self).__init__(view, attrs)
 
-        self.widget = gtk.HBox(spacing=3)
-        self.entry = gtk.ComboBoxEntry()
+        self.widget = Gtk.HBox(spacing=3)
+        self.entry = Gtk.ComboBox(has_entry=True)
         child = self.mnemonic_widget = self.entry.get_child()
         child.set_property('activates_default', True)
         child.set_max_length(int(attrs.get('size', 0)))
@@ -27,8 +26,9 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         self.entry.connect('changed', self.changed)
         self.entry.connect('move-active', self._move_active)
         self.entry.connect(
-            'scroll-event', lambda c, e: c.emit_stop_by_name('scroll-event'))
-        self.widget.pack_start(self.entry)
+            'scroll-event',
+            lambda c, e: c.stop_emission_by_name('scroll-event'))
+        self.widget.pack_start(self.entry, expand=True, fill=True, padding=0)
         self.widget.set_focus_chain([child])
 
         self.selection = attrs.get('selection', [])[:]
@@ -41,17 +41,17 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
             if combobox.props.window:
                 self._focus_out()
         # Must be deferred because it triggers a display of the form
-        gobject.idle_add(focus_out)
+        GLib.idle_add(focus_out)
 
     def _move_active(self, combobox, scroll_type):
         if not combobox.get_child().get_editable():
-            combobox.emit_stop_by_name('move-active')
+            combobox.stop_emission_by_name('move-active')
 
     def _readonly_set(self, value):
         super(Selection, self)._readonly_set(value)
         self.entry.get_child().set_editable(not value)
         self.entry.set_button_sensitivity(
-            gtk.SENSITIVITY_OFF if value else gtk.SENSITIVITY_AUTO)
+            Gtk.SensitivityType.OFF if value else Gtk.SensitivityType.AUTO)
         if value and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:

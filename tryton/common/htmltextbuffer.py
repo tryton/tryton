@@ -18,6 +18,7 @@ use_serialize_func = False
 def _reverse_dict(dct):
     return {j: i for i, j in dct.items()}
 
+
 SIZE2SCALE = {
     '1': 1 / (1.2 * 1.2 * 1.2),
     '2': 1 / (1.2 * 1.2),
@@ -296,6 +297,8 @@ def deserialize(register, content, iter_, text, create_tags, data):
 def setup_tags(text_buffer):
     for name, props in reversed(_TAGS):
         text_buffer.create_tag(name, **props)
+
+
 _TAGS = [
     ('bold', {'weight': Pango.Weight.BOLD}),
     ('italic', {'style': Pango.Style.ITALIC}),

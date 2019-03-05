@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gobject
-from .cellrenderertext import CellRendererText
 import locale
+
+from gi.repository import GObject
+
+from .cellrenderertext import CellRendererText
 
 
 class CellRendererInteger(CellRendererText):
@@ -21,7 +23,7 @@ class CellRendererInteger(CellRendererText):
         try:
             locale.atoi(new_value)
         except ValueError:
-            entry.stop_emission('insert-text')
+            entry.stop_emission_by_name('insert-text')
 
 
-gobject.type_register(CellRendererInteger)
+GObject.type_register(CellRendererInteger)

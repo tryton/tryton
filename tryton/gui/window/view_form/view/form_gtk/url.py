@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-from .char import Char
 import webbrowser
+
+from gi.repository import Gtk
+
+from .char import Char
 import tryton.common as common
 from tryton.config import CONFIG
 
@@ -14,13 +16,13 @@ class URL(Char):
         super(URL, self).__init__(view, attrs)
 
         self.tooltips = common.Tooltips()
-        self.button = gtk.Button()
+        self.button = Gtk.Button()
         self.button.set_image(common.IconFactory.get_image(
-                'tryton-public', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.button.set_relief(gtk.RELIEF_NONE)
+                'tryton-public', Gtk.IconSize.SMALL_TOOLBAR))
+        self.button.set_relief(Gtk.ReliefStyle.NONE)
         self.button.connect('clicked', self.button_clicked)
-        self.button.set_alignment(0.5, 0.5)
-        self.widget.pack_start(self.button, expand=False, fill=False)
+        self.widget.pack_start(
+            self.button, expand=False, fill=False, padding=0)
         self.widget.set_focus_chain([self.entry])
 
     def display(self):
@@ -34,7 +36,7 @@ class URL(Char):
             else:
                 value = icon
             self.button.set_image(common.IconFactory.get_image(
-                    value, gtk.ICON_SIZE_SMALL_TOOLBAR))
+                    value, Gtk.IconSize.SMALL_TOOLBAR))
 
     def set_tooltips(self):
         value = self.entry.get_text()

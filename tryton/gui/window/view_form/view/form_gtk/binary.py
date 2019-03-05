@@ -1,10 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
 import gettext
 import os
 from urllib.request import urlopen
 from urllib.parse import urlparse, unquote
+
+from gi.repository import Gdk, Gtk
+
 from tryton.common import common
 from tryton.common import file_selection, Tooltips, file_open, file_write
 from tryton.common.entry_position import reset_position
@@ -22,38 +24,39 @@ class BinaryMixin(Widget):
 
     def toolbar(self):
         'Return HBox with the toolbar'
-        hbox = gtk.HBox(spacing=0)
+        hbox = Gtk.HBox(spacing=0)
         tooltips = Tooltips()
 
-        self.but_save_as = gtk.Button()
+        self.but_save_as = Gtk.Button()
         self.but_save_as.set_image(common.IconFactory.get_image(
-                'tryton-save', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_save_as.set_relief(gtk.RELIEF_NONE)
+                'tryton-save', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_save_as.set_relief(Gtk.ReliefStyle.NONE)
         self.but_save_as.connect('clicked', self.save_as)
         tooltips.set_tip(self.but_save_as, _('Save As...'))
-        hbox.pack_start(self.but_save_as, expand=False, fill=False)
+        hbox.pack_start(self.but_save_as, expand=False, fill=False, padding=0)
 
-        self.but_select = gtk.Button()
+        self.but_select = Gtk.Button()
         self.but_select.set_image(common.IconFactory.get_image(
-                'tryton-search', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_select.set_relief(gtk.RELIEF_NONE)
+                'tryton-search', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_select.set_relief(Gtk.ReliefStyle.NONE)
         self.but_select.connect('clicked', self.select)
-        target_entry = gtk.TargetEntry.new('text/uri-list', 0, 0)
-        self.but_select.drag_dest_set(gtk.DEST_DEFAULT_ALL, [
+        target_entry = Gtk.TargetEntry.new('text/uri-list', 0, 0)
+        self.but_select.drag_dest_set(Gtk.DestDefaults.ALL, [
                 target_entry,
-                ], gtk.gdk.ACTION_MOVE | gtk.gdk.ACTION_COPY)
+                ],
+            Gdk.DragAction.MOVE | Gdk.DragAction.COPY)
         self.but_select.connect(
             'drag-data-received', self.select_drag_data_received)
         tooltips.set_tip(self.but_select, _('Select...'))
-        hbox.pack_start(self.but_select, expand=False, fill=False)
+        hbox.pack_start(self.but_select, expand=False, fill=False, padding=0)
 
-        self.but_clear = gtk.Button()
+        self.but_clear = Gtk.Button()
         self.but_clear.set_image(common.IconFactory.get_image(
-                'tryton-clear', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_clear.set_relief(gtk.RELIEF_NONE)
+                'tryton-clear', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_clear.set_relief(Gtk.ReliefStyle.NONE)
         self.but_clear.connect('clicked', self.clear)
         tooltips.set_tip(self.but_clear, _('Clear'))
-        hbox.pack_start(self.but_clear, expand=False, fill=False)
+        hbox.pack_start(self.but_clear, expand=False, fill=False, padding=0)
 
         tooltips.enable()
         return hbox
@@ -64,7 +67,7 @@ class BinaryMixin(Widget):
 
     @property
     def filters(self):
-        filter_all = gtk.FileFilter()
+        filter_all = Gtk.FileFilter()
         filter_all.set_name(_('All files'))
         filter_all.add_pattern("*")
         return [filter_all]
@@ -130,7 +133,7 @@ class BinaryMixin(Widget):
         if self.filename_field:
             filename = self.filename_field.get(self.record)
         filename = file_selection(_('Save As...'), filename=filename,
-            action=gtk.FILE_CHOOSER_ACTION_SAVE)
+            action=Gtk.FileChooserAction.SAVE)
         if filename:
             with open(filename, 'wb') as fp:
                 fp.write(self.get_data())
@@ -147,26 +150,28 @@ class Binary(BinaryMixin, Widget):
     def __init__(self, view, attrs):
         super(Binary, self).__init__(view, attrs)
 
-        self.widget = gtk.HBox(spacing=0)
-        self.wid_size = gtk.Entry()
+        self.widget = Gtk.HBox(spacing=0)
+        self.wid_size = Gtk.Entry()
         self.wid_size.set_width_chars(self.default_width_chars)
         self.wid_size.set_alignment(1.0)
         self.wid_size.props.sensitive = False
         if self.filename and attrs.get('filename_visible'):
-            self.wid_text = gtk.Entry()
+            self.wid_text = Gtk.Entry()
             self.wid_text.set_property('activates_default', True)
             self.wid_text.connect('focus-out-event',
                 lambda x, y: self._focus_out())
             self.wid_text.connect_after('key_press_event', self.sig_key_press)
             self.wid_text.connect('icon-press', self.sig_icon_press)
-            self.widget.pack_start(self.wid_text, expand=True, fill=True)
+            self.widget.pack_start(
+                self.wid_text, expand=True, fill=True, padding=0)
         else:
             self.wid_text = None
         self.mnemonic_widget = self.wid_text
-        self.widget.pack_start(self.wid_size, expand=not self.filename,
-            fill=True)
+        self.widget.pack_start(
+            self.wid_size, expand=not self.filename, fill=True, padding=0)
 
-        self.widget.pack_start(self.toolbar(), expand=False, fill=False)
+        self.widget.pack_start(
+            self.toolbar(), expand=False, fill=False, padding=0)
 
     def _readonly_set(self, value):
         self.but_select.set_sensitive(not value)
@@ -180,10 +185,10 @@ class Binary(BinaryMixin, Widget):
 
     def sig_key_press(self, widget, event, *args):
         editable = self.wid_text and self.wid_text.get_editable()
-        if event.keyval == gtk.keysyms.F3 and editable:
+        if event.keyval == Gdk.KEY_F3 and editable:
             self.sig_new(widget)
             return True
-        elif event.keyval == gtk.keysyms.F2:
+        elif event.keyval == Gdk.KEY_F2:
             if self.filename:
                 self.sig_open(widget)
             else:
@@ -192,7 +197,7 @@ class Binary(BinaryMixin, Widget):
         return False
 
     def sig_icon_press(self, widget, icon_pos, event):
-        if icon_pos == gtk.ENTRY_ICON_PRIMARY:
+        if icon_pos == Gtk.EntryIconPosition.PRIMARY:
             self.open_()
 
     def display(self):
@@ -216,10 +221,10 @@ class Binary(BinaryMixin, Widget):
                 icon, tooltip = 'tryton-open', _("Open...")
             else:
                 icon, tooltip = None, ''
-            pos = gtk.ENTRY_ICON_PRIMARY
+            pos = Gtk.EntryIconPosition.PRIMARY
             if icon:
                 pixbuf = common.IconFactory.get_pixbuf(
-                    icon, gtk.ICON_SIZE_MENU)
+                    icon, Gtk.IconSize.MENU)
             else:
                 pixbuf = None
             self.wid_text.set_icon_from_pixbuf(pos, pixbuf)

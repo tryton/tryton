@@ -10,7 +10,7 @@ import uuid
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
-from gi.repository import GObject
+from gi.repository import GLib
 
 from tryton.jsonrpc import object_hook
 from tryton.config import CONFIG
@@ -85,7 +85,7 @@ def _listen(connection):
         data = json.loads(response.read(), object_hook=object_hook)
         if data['message']:
             last_message = data['message']['message_id']
-            GObject.idle_add(handle, data['message'])
+            GLib.idle_add(handle, data['message'])
 
 
 def handle(message):

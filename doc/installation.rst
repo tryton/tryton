@@ -5,8 +5,9 @@ Prerequisites
 -------------
 
  * Python 3.4 or later (http://www.python.org/)
- * gtk+ 3.20 or later and py-gobject3 (http://www.gtk.org/)
+ * gtk+ 3.20 or later and py-gobject3 3.20 or later (http://www.gtk.org/)
  * librsvg (http://librsvg.sourceforge.net/)
+ * pycairo (https://pycairo.readthedocs.io/)
  * python-dateutil (http://labix.org/python-dateutil)
  * Optional: GooCalendar 0.4 or later (https://pypi.python.org/pypi/GooCalendar)
 

@@ -32,6 +32,15 @@ def main():
     label.editable {
         font-style: italic;
     }
+    .window-title, .wizard-title {
+        background-color: white;
+        font-size: large;
+        font-weight: bold;
+    }
+    .window-title .status {
+        font-size: medium;
+        font-weight: normal;
+    }
     """
 
     screen = Gdk.Screen.get_default()

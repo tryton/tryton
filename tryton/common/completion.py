@@ -3,8 +3,7 @@
 import logging
 import gettext
 
-import gtk
-import gobject
+from gi.repository import GLib, Gtk
 
 from tryton.config import CONFIG
 from tryton.common import RPCExecute
@@ -16,9 +15,9 @@ logger = logging.getLogger(__name__)
 
 def get_completion(search=True, create=True):
     "Return a EntryCompletion"
-    completion = gtk.EntryCompletion()
+    completion = Gtk.EntryCompletion()
     completion.set_match_func(lambda *a: True)
-    completion.set_model(gtk.ListStore(str, int))
+    completion.set_model(Gtk.ListStore(str, int))
     completion.set_text_column(0)
     completion.props.popup_set_width = False
     if search:
@@ -71,4 +70,4 @@ def update_completion(entry, record, field, model, domain=None):
                 exc_info=True)
         return False
     search_text = entry.get_text()
-    gobject.timeout_add(300, update, search_text, domain)
+    GLib.timeout_add(300, update, search_text, domain)

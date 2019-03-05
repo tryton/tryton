@@ -7,7 +7,8 @@ import gettext
 import logging
 import sys
 import locale
-import gtk
+
+from gi.repository import GdkPixbuf
 
 from tryton import __version__
 
@@ -169,5 +170,5 @@ if not os.path.isdir(PIXMAPS_DIR):
     PIXMAPS_DIR = pkg_resources.resource_filename(
         'tryton', 'data/pixmaps/tryton')
 
-TRYTON_ICON = gtk.gdk.pixbuf_new_from_file(
+TRYTON_ICON = GdkPixbuf.Pixbuf.new_from_file(
     os.path.join(PIXMAPS_DIR, 'tryton-icon.png'))

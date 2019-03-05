@@ -1,11 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
+from gi.repository import GObject, Gtk
 
 
-class CellRendererToggle(gtk.CellRendererToggle):
+class CellRendererToggle(Gtk.CellRendererToggle):
     pass
 
 
-gobject.type_register(CellRendererToggle)
+GObject.type_register(CellRendererToggle)

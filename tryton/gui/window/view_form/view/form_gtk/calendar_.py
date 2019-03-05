@@ -1,11 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-
-import gtk
 import gettext
 
-import gobject
+from gi.repository import GLib, Gtk
 
 from .widget import Widget
 from tryton import common
@@ -21,7 +19,7 @@ class Date(Widget):
     def __init__(self, view, attrs, _entry=DateEntry):
         super(Date, self).__init__(view, attrs)
 
-        self.widget = gtk.HBox()
+        self.widget = Gtk.HBox()
         self.entry = self.mnemonic_widget = add_operators(_entry())
         self.real_entry.set_property('activates_default', True)
         self.real_entry.connect('key_press_event', self.sig_key_press)
@@ -29,7 +27,7 @@ class Date(Widget):
         self.real_entry.connect('changed', lambda _: self.send_modified())
         self.real_entry.connect('focus-out-event',
             lambda x, y: self._focus_out())
-        self.widget.pack_start(self.entry, expand=False, fill=False)
+        self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @property
     def real_entry(self):
@@ -37,7 +35,7 @@ class Date(Widget):
 
     def _set_editable(self, value):
         self.entry.set_editable(value)
-        self.entry.set_icon_sensitive(gtk.ENTRY_ICON_PRIMARY, value)
+        self.entry.set_icon_sensitive(Gtk.EntryIconPosition.PRIMARY, value)
 
     def _readonly_set(self, value):
         self._set_editable(not value)
@@ -122,18 +120,18 @@ class Time(Date):
         # Only when changed from pop list
         if not combobox.get_child().has_focus():
             # Must be deferred because it triggers a display of the form
-            gobject.idle_add(focus_out)
+            GLib.idle_add(focus_out)
 
 
 class DateTime(Date):
     def __init__(self, view, attrs):
         Widget.__init__(self, view, attrs)
 
-        self.widget = gtk.HBox()
+        self.widget = Gtk.HBox()
         self.entry = self.mnemonic_widget = DateTimeEntry()
         for child in self.entry.get_children():
             add_operators(child)
-            if isinstance(child, gtk.ComboBoxEntry):
+            if isinstance(child, Gtk.ComboBox):
                 child.set_focus_chain([child.get_child()])
                 child = child.get_child()
             child.set_property('activates_default', True)
@@ -141,7 +139,7 @@ class DateTime(Date):
             child.connect('activate', self.sig_activate)
             child.connect('changed', lambda _: self.send_modified())
             child.connect('focus-out-event', lambda x, y: self._focus_out())
-        self.widget.pack_start(self.entry, expand=False, fill=False)
+        self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
 
     @classmethod
     def cast(cls, value):
@@ -149,10 +147,10 @@ class DateTime(Date):
 
     def _set_editable(self, value):
         for child in self.entry.get_children():
-            if isinstance(child, gtk.Entry):
+            if isinstance(child, Gtk.Entry):
                 child.set_editable(value)
-                child.set_icon_sensitive(gtk.ENTRY_ICON_PRIMARY, value)
-            elif isinstance(child, gtk.ComboBoxEntry):
+                child.set_icon_sensitive(Gtk.EntryIconPosition.PRIMARY, value)
+            elif isinstance(child, Gtk.ComboBox):
                 child.set_sensitive(value)
 
     def set_format(self):

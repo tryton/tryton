@@ -1,10 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
+from gi.repository import Gtk, GObject
 
 
-class CellRendererText(gtk.CellRendererText):
+class CellRendererText(Gtk.CellRendererText):
 
     def __init__(self):
         super(CellRendererText, self).__init__()
@@ -25,5 +24,5 @@ class CellRendererTextCompletion(CellRendererText):
         self.set_completion(editable, path)
 
 
-gobject.type_register(CellRendererText)
-gobject.type_register(CellRendererTextCompletion)
+GObject.type_register(CellRendererText)
+GObject.type_register(CellRendererTextCompletion)

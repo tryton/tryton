@@ -2,14 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 import configparser
-import gtk
-import gobject
 import os
 import gettext
 import threading
 import logging
 
-from gi.repository import Gtk, Gdk
+from gi.repository import GLib, GObject, Gtk
 
 from tryton import __version__
 import tryton.common as common
@@ -32,112 +30,115 @@ class DBListEditor(object):
 
         # GTK Stuffs
         self.parent = parent
-        self.dialog = gtk.Dialog(title=_('Profile Editor'), parent=parent,
-            flags=gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        self.dialog = Gtk.Dialog(
+            title=_('Profile Editor'), transient_for=parent,
+            modal=True, destroy_with_parent=True)
         self.ok_button = self.dialog.add_button(
-            set_underline(_("Close")), gtk.RESPONSE_CLOSE)
-        self.dialog.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+            set_underline(_("Close")), Gtk.ResponseType.CLOSE)
+        self.dialog.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.dialog.set_icon(TRYTON_ICON)
 
         tooltips = common.Tooltips()
 
-        hpaned = gtk.HPaned()
-        vbox_profiles = gtk.VBox(homogeneous=False, spacing=6)
-        self.cell = gtk.CellRendererText()
+        hpaned = Gtk.HPaned()
+        vbox_profiles = Gtk.VBox(homogeneous=False, spacing=6)
+        self.cell = Gtk.CellRendererText()
         self.cell.set_property('editable', True)
         self.cell.connect('editing-started', self.edit_started)
-        self.profile_tree = gtk.TreeView()
+        self.profile_tree = Gtk.TreeView()
         self.profile_tree.set_model(profile_store)
         self.profile_tree.insert_column_with_attributes(-1, _('Profile'),
             self.cell, text=0)
         self.profile_tree.connect('cursor-changed', self.profile_selected)
-        scroll = gtk.ScrolledWindow()
-        scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scroll = Gtk.ScrolledWindow()
+        scroll.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scroll.add(self.profile_tree)
-        self.add_button = gtk.Button()
+        self.add_button = Gtk.Button()
         self.add_button.set_image(common.IconFactory.get_image(
-                'tryton-add', gtk.ICON_SIZE_BUTTON))
+                'tryton-add', Gtk.IconSize.BUTTON))
         tooltips.set_tip(self.add_button, _("Add new profile"))
         self.add_button.connect('clicked', self.profile_create)
-        self.remove_button = gtk.Button()
+        self.remove_button = Gtk.Button()
         self.remove_button.set_image(common.IconFactory.get_image(
-                'tryton-remove', gtk.ICON_SIZE_BUTTON))
+                'tryton-remove', Gtk.IconSize.BUTTON))
         tooltips.set_tip(self.remove_button, _("Remove selected profile"))
         self.remove_button.get_style_context().add_class(
             Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION)
         self.remove_button.connect('clicked', self.profile_delete)
         bbox = Gtk.ButtonBox()
-        bbox.pack_start(self.remove_button)
-        bbox.pack_start(self.add_button)
-        vbox_profiles.pack_start(scroll, expand=True, fill=True)
-        vbox_profiles.pack_start(bbox, expand=False, fill=True)
+        bbox.pack_start(self.remove_button, expand=True, fill=True, padding=0)
+        bbox.pack_start(self.add_button, expand=True, fill=True, padding=0)
+        vbox_profiles.pack_start(scroll, expand=True, fill=True, padding=0)
+        vbox_profiles.pack_start(bbox, expand=False, fill=True, padding=0)
         hpaned.add1(vbox_profiles)
 
-        table = gtk.Table(4, 2, homogeneous=False)
+        table = Gtk.Table(n_rows=4, n_columns=2, homogeneous=False)
         table.set_row_spacings(3)
         table.set_col_spacings(3)
-        host = gtk.Label(set_underline(_('Host:')))
-        host.set_use_underline(True)
-        host.set_alignment(1, 0.5)
-        host.set_padding(3, 3)
-        self.host_entry = gtk.Entry()
+        host = Gtk.Label(
+            label=set_underline(_('Host:')),
+            use_underline=True, halign=Gtk.Align.END)
+        self.host_entry = Gtk.Entry()
         self.host_entry.connect('focus-out-event', self.display_dbwidget)
         self.host_entry.connect('changed', self.update_profiles, 'host')
         self.host_entry.set_activates_default(True)
         host.set_mnemonic_widget(self.host_entry)
-        table.attach(host, 0, 1, 1, 2, yoptions=False, xoptions=gtk.FILL)
+        table.attach(
+            host, 0, 1, 1, 2, yoptions=False, xoptions=Gtk.AttachOptions.FILL)
         table.attach(self.host_entry, 1, 2, 1, 2, yoptions=False)
-        database = gtk.Label(set_underline(_('Database:')))
-        database.set_use_underline(True)
-        database.set_alignment(1, 0.5)
-        database.set_padding(3, 3)
-        self.database_entry = gtk.Entry()
+        database = Gtk.Label(
+            label=set_underline(_('Database:')),
+            use_underline=True, halign=Gtk.Align.END)
+        self.database_entry = Gtk.Entry()
         self.database_entry.connect('changed', self.dbentry_changed)
         self.database_entry.connect('changed', self.update_profiles,
             'database')
         self.database_entry.set_activates_default(True)
-        self.database_label = gtk.Label()
+        self.database_label = Gtk.Label(valign=Gtk.Align.START)
         self.database_label.set_use_markup(True)
-        self.database_label.set_alignment(0, 0.5)
-        self.database_combo = gtk.ComboBox()
-        dbstore = gtk.ListStore(gobject.TYPE_STRING)
-        cell = gtk.CellRendererText()
-        self.database_combo.pack_start(cell, True)
-        self.database_combo.add_attribute(cell, 'text', 0)
-        self.database_combo.set_model(dbstore)
+        self.database_combo = Gtk.ComboBoxText()
         self.database_combo.connect('changed', self.dbcombo_changed)
-        self.database_progressbar = gtk.ProgressBar()
+        self.database_progressbar = Gtk.ProgressBar()
         self.database_progressbar.set_text(_('Fetching databases list'))
-        db_box = gtk.VBox(homogeneous=True)
-        db_box.pack_start(self.database_entry)
-        db_box.pack_start(self.database_combo)
-        db_box.pack_start(self.database_label)
-        db_box.pack_start(self.database_progressbar)
+        db_box = Gtk.VBox(homogeneous=True)
+        db_box.pack_start(
+            self.database_entry, expand=True, fill=True, padding=0)
+        db_box.pack_start(
+            self.database_combo, expand=True, fill=True, padding=0)
+        db_box.pack_start(
+            self.database_label, expand=True, fill=True, padding=0)
+        db_box.pack_start(
+            self.database_progressbar, expand=True, fill=True, padding=0)
         # Compute size_request of box in order to prevent "form jumping"
         width, height = 0, 0
         for child in db_box.get_children():
-            cwidth, cheight = child.size_request()
-            width, height = max(width, cwidth), max(height, cheight)
+            request = child.get_preferred_size()[0]
+            width = max(width, request.width)
+            height = max(height, request.height)
         db_box.set_size_request(width, height)
-        table.attach(database, 0, 1, 2, 3, yoptions=False, xoptions=gtk.FILL)
+        table.attach(
+            database, 0, 1, 2, 3,
+            yoptions=False, xoptions=Gtk.AttachOptions.FILL)
         table.attach(db_box, 1, 2, 2, 3, yoptions=False)
-        username = gtk.Label(set_underline(_('Username:')))
-        username.set_use_underline(True)
-        username.set_alignment(1, 0.5)
-        username.set_padding(3, 3)
-        self.username_entry = gtk.Entry()
+        username = Gtk.Label(
+            label=set_underline(_('Username:')),
+            use_underline=True, halign=Gtk.Align.END)
+        self.username_entry = Gtk.Entry()
         self.username_entry.connect('changed', self.update_profiles,
             'username')
         username.set_mnemonic_widget(self.username_entry)
         self.username_entry.set_activates_default(True)
-        table.attach(username, 0, 1, 3, 4, yoptions=False, xoptions=gtk.FILL)
+        table.attach(
+            username, 0, 1, 3, 4,
+            yoptions=False, xoptions=Gtk.AttachOptions.FILL)
         table.attach(self.username_entry, 1, 2, 3, 4, yoptions=False)
         hpaned.add2(table)
         hpaned.set_position(250)
 
-        self.dialog.vbox.pack_start(hpaned)
+        self.dialog.vbox.pack_start(hpaned, expand=True, fill=True, padding=0)
         self.dialog.set_default_size(640, 350)
-        self.dialog.set_default_response(gtk.RESPONSE_CLOSE)
+        self.dialog.set_default_response(Gtk.ResponseType.CLOSE)
 
         self.dialog.connect('close', lambda *a: False)
         self.dialog.connect('response', self.response)
@@ -228,7 +229,7 @@ class DBListEditor(object):
         self.display_dbwidget(None, None)
 
     def edit_started(self, renderer, editable, path):
-        if isinstance(editable, gtk.Entry):
+        if isinstance(editable, Gtk.Entry):
             editable.connect('focus-out-event', self.edit_profilename,
                 renderer, path)
 
@@ -291,7 +292,7 @@ class DBListEditor(object):
         self.dbs_updated = threading.Event()
         threading.Thread(target=self.refresh_databases_start,
             args=(host, port)).start()
-        gobject.timeout_add(100, self.refresh_databases_end, host, port)
+        GLib.timeout_add(100, self.refresh_databases_end, host, port)
 
     def refresh_databases_start(self, host, port):
         dbs = None
@@ -320,11 +321,10 @@ class DBListEditor(object):
             self.database_label.set_label('<b>%s</b>' % label)
             self.database_label.show()
         else:
-            liststore = self.database_combo.get_model()
-            liststore.clear()
+            self.database_combo.remove_all()
             index = -1
             for db_num, db_name in enumerate(dbs):
-                liststore.append([db_name])
+                self.database_combo.append_text(db_name)
                 if self.current_database and db_name == self.current_database:
                     index = db_num
             if index == -1:
@@ -387,116 +387,112 @@ class DBListEditor(object):
         try:
             int(new_value)
         except ValueError:
-            entry.stop_emission('insert-text')
+            entry.stop_emission_by_name('insert-text')
 
 
 class DBLogin(object):
     def __init__(self):
         # Fake windows to avoid warning about Dialog without transient
-        self._window = gtk.Window()
-        self.dialog = gtk.Dialog(
-            title="Tryton - " + _('Login'), flags=gtk.DIALOG_MODAL)
+        self._window = Gtk.Window()
+        self.dialog = Gtk.Dialog(title="Tryton - " + _('Login'), modal=True)
         self.dialog.set_transient_for(self._window)
         self.dialog.set_icon(TRYTON_ICON)
-        self.dialog.set_position(gtk.WIN_POS_CENTER_ALWAYS)
+        self.dialog.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         self.dialog.set_resizable(False)
 
         tooltips = common.Tooltips()
-        button_cancel = gtk.Button(_('_Cancel'), use_underline=True)
+        button_cancel = Gtk.Button(label=_('_Cancel'), use_underline=True)
         tooltips.set_tip(button_cancel,
             _('Cancel connection to the Tryton server'))
-        self.dialog.add_action_widget(button_cancel, gtk.RESPONSE_CANCEL)
-        self.button_connect = gtk.Button(_('C_onnect'), use_underline=True)
+        self.dialog.add_action_widget(button_cancel, Gtk.ResponseType.CANCEL)
+        self.button_connect = Gtk.Button(
+            label=_('C_onnect'), use_underline=True)
         self.button_connect.get_style_context().add_class(
             Gtk.STYLE_CLASS_SUGGESTED_ACTION)
         self.button_connect.set_can_default(True)
         tooltips.set_tip(self.button_connect, _('Connect the Tryton server'))
-        self.dialog.add_action_widget(self.button_connect, gtk.RESPONSE_OK)
-        self.dialog.set_default_response(gtk.RESPONSE_OK)
-        alignment = gtk.Alignment(yalign=0, yscale=0, xscale=1)
-        self.table_main = gtk.Table(3, 3, False)
+        self.dialog.add_action_widget(self.button_connect, Gtk.ResponseType.OK)
+        self.dialog.set_default_response(Gtk.ResponseType.OK)
+        alignment = Gtk.Alignment(yalign=0, yscale=0, xscale=1)
+        self.table_main = Gtk.Table(n_rows=3, n_columns=3, homogeneous=False)
         self.table_main.set_border_width(0)
         self.table_main.set_row_spacings(3)
         self.table_main.set_col_spacings(3)
         alignment.add(self.table_main)
-        self.dialog.vbox.pack_start(alignment, True, True, 0)
+        self.dialog.vbox.pack_start(
+            alignment, expand=True, fill=True, padding=0)
 
-        image = gtk.Image()
+        image = Gtk.Image()
         image.set_from_file(os.path.join(PIXMAPS_DIR, 'tryton.png'))
-        image.set_alignment(0.5, 1)
+        image.set_valign(Gtk.Align.START)
         overlay = Gtk.Overlay()
         overlay.add(image)
-        label = Gtk.Label(__version__)
+        label = Gtk.Label(
+            label='<span color="white">%s</span>' % __version__,
+            use_markup=True)
         label.props.halign = Gtk.Align.END
         label.props.valign = Gtk.Align.START
         label.props.margin_right = 10
         label.props.margin_top = 5
-        label.override_color(
-            Gtk.StateFlags.NORMAL, Gdk.RGBA(1, 1, 1, 1))
         overlay.add_overlay(label)
         self.table_main.attach(overlay, 0, 3, 0, 1, ypadding=2)
 
-        self.profile_store = gtk.ListStore(gobject.TYPE_STRING,
-            gobject.TYPE_BOOLEAN)
-        self.combo_profile = gtk.ComboBox()
-        cell = gtk.CellRendererText()
-        self.combo_profile.pack_start(cell, True)
+        self.profile_store = Gtk.ListStore(
+            GObject.TYPE_STRING, GObject.TYPE_BOOLEAN)
+        self.combo_profile = Gtk.ComboBox()
+        cell = Gtk.CellRendererText()
+        self.combo_profile.pack_start(cell, expand=True)
         self.combo_profile.add_attribute(cell, 'text', 0)
         self.combo_profile.add_attribute(cell, 'sensitive', 1)
         self.combo_profile.set_model(self.profile_store)
         self.combo_profile.connect('changed', self.profile_changed)
-        self.profile_label = gtk.Label(set_underline(_('Profile:')))
-        self.profile_label.set_use_underline(True)
-        self.profile_label.set_justify(gtk.JUSTIFY_RIGHT)
-        self.profile_label.set_alignment(1, 0.5)
-        self.profile_label.set_padding(3, 3)
+        self.profile_label = Gtk.Label(
+            label=set_underline(_('Profile:')),
+            use_underline=True, halign=Gtk.Align.END)
         self.profile_label.set_mnemonic_widget(self.combo_profile)
-        self.profile_button = gtk.Button(set_underline(_('Manage...')),
-            use_underline=True)
+        self.profile_button = Gtk.Button(
+            label=set_underline(_('Manage...')), use_underline=True)
         self.profile_button.connect('clicked', self.profile_manage)
-        self.table_main.attach(self.profile_label, 0, 1, 1, 2,
-            xoptions=gtk.FILL)
+        self.table_main.attach(
+            self.profile_label, 0, 1, 1, 2, xoptions=Gtk.AttachOptions.FILL)
         self.table_main.attach(self.combo_profile, 1, 2, 1, 2)
-        self.table_main.attach(self.profile_button, 2, 3, 1, 2,
-            xoptions=gtk.FILL)
-        self.expander = gtk.Expander()
+        self.table_main.attach(
+            self.profile_button, 2, 3, 1, 2, xoptions=Gtk.AttachOptions.FILL)
+        self.expander = Gtk.Expander()
         self.expander.set_label(_('Host / Database information'))
         self.expander.connect('notify::expanded', self.expand_hostspec)
         self.table_main.attach(self.expander, 0, 3, 3, 4)
-        self.label_host = gtk.Label(set_underline(_('Host:')))
-        self.label_host.set_use_underline(True)
-        self.label_host.set_justify(gtk.JUSTIFY_RIGHT)
-        self.label_host.set_alignment(1, 0.5)
-        self.label_host.set_padding(3, 3)
-        self.entry_host = gtk.Entry()
+        self.label_host = Gtk.Label(
+            label=set_underline(_('Host:')),
+            use_underline=True, halign=Gtk.Align.END)
+        self.entry_host = Gtk.Entry()
         self.entry_host.connect_after('focus-out-event',
             self.clear_profile_combo)
         self.entry_host.set_activates_default(True)
         self.label_host.set_mnemonic_widget(self.entry_host)
-        self.table_main.attach(self.label_host, 0, 1, 4, 5, xoptions=gtk.FILL)
+        self.table_main.attach(
+            self.label_host, 0, 1, 4, 5, xoptions=Gtk.AttachOptions.FILL)
         self.table_main.attach(self.entry_host, 1, 3, 4, 5)
-        self.label_database = gtk.Label(set_underline(_('Database:')))
-        self.label_database.set_use_underline(True)
-        self.label_database.set_justify(gtk.JUSTIFY_RIGHT)
-        self.label_database.set_alignment(1, 0.5)
-        self.label_database.set_padding(3, 3)
-        self.entry_database = gtk.Entry()
+        self.label_database = Gtk.Label(
+            label=set_underline(_('Database:')),
+            use_underline=True, halign=Gtk.Align.END)
+        self.entry_database = Gtk.Entry()
         self.entry_database.connect_after('focus-out-event',
             self.clear_profile_combo)
         self.entry_database.set_activates_default(True)
         self.label_database.set_mnemonic_widget(self.entry_database)
-        self.table_main.attach(self.label_database, 0, 1, 5, 6,
-            xoptions=gtk.FILL)
+        self.table_main.attach(
+            self.label_database, 0, 1, 5, 6, xoptions=Gtk.AttachOptions.FILL)
         self.table_main.attach(self.entry_database, 1, 3, 5, 6)
-        self.entry_login = gtk.Entry()
+        self.entry_login = Gtk.Entry()
         self.entry_login.set_activates_default(True)
         self.table_main.attach(self.entry_login, 1, 3, 6, 7)
-        label_username = gtk.Label(set_underline(_("User name:")))
-        label_username.set_use_underline(True)
-        label_username.set_alignment(1, 0.5)
-        label_username.set_padding(3, 3)
+        label_username = Gtk.Label(
+            label=set_underline(_("User name:")),
+            use_underline=True, halign=Gtk.Align.END, margin=3)
         label_username.set_mnemonic_widget(self.entry_login)
-        self.table_main.attach(label_username, 0, 1, 6, 7, xoptions=gtk.FILL)
+        self.table_main.attach(
+            label_username, 0, 1, 6, 7, xoptions=Gtk.AttachOptions.FILL)
 
         # Profile information
         self.profile_cfg = os.path.join(get_config_dir(), 'profiles.cfg')
@@ -620,8 +616,6 @@ class DBLogin(object):
 
         self.entry_login.grab_focus()
 
-        # Reshow dialog for gtk-quarks
-        self.dialog.reshow_with_initial_size()
         self.expander.set_expanded(CONFIG['login.expanded'])
         # The previous action did not called expand_hostspec
         self.expand_hostspec(self.expander)
@@ -629,7 +623,7 @@ class DBLogin(object):
         response, result = None, ('', '', '', '')
         while not all(result):
             response = self.dialog.run()
-            if response != gtk.RESPONSE_OK:
+            if response != Gtk.ResponseType.OK:
                 break
             self.clear_profile_combo()
             active_profile = self.combo_profile.get_active()
@@ -663,4 +657,4 @@ class DBLogin(object):
 
         self.dialog.destroy()
         self._window.destroy()
-        return response == gtk.RESPONSE_OK
+        return response == Gtk.ResponseType.OK

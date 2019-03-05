@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
+from gi.repository import Gtk
 
 import tryton.common as common
 
@@ -22,7 +22,7 @@ class StateMixin(object):
             self.show()
 
 
-class Label(StateMixin, gtk.Label):
+class Label(StateMixin, Gtk.Label):
 
     def state_set(self, record):
         super(Label, self).state_set(record)
@@ -47,11 +47,11 @@ class Label(StateMixin, gtk.Label):
         common.apply_label_attributes(self, readonly, required)
 
 
-class VBox(StateMixin, gtk.VBox):
+class VBox(StateMixin, Gtk.VBox):
     pass
 
 
-class Image(StateMixin, gtk.Image):
+class Image(StateMixin, Gtk.Image):
 
     def state_set(self, record):
         super(Image, self).state_set(record)
@@ -62,21 +62,21 @@ class Image(StateMixin, gtk.Image):
             field = record.group.fields[name]
             name = field.get(record)
         self.set_from_pixbuf(common.IconFactory.get_pixbuf(
-                name, gtk.ICON_SIZE_DIALOG))
+                name, Gtk.IconSize.DIALOG))
 
 
-class Frame(StateMixin, gtk.Frame):
+class Frame(StateMixin, Gtk.Frame):
 
     def __init__(self, label=None, attrs=None):
         if not label:  # label must be None to have no label widget
             label = None
         super(Frame, self).__init__(label=label, attrs=attrs)
         if not label:
-            self.set_shadow_type(gtk.SHADOW_NONE)
+            self.set_shadow_type(Gtk.ShadowType.NONE)
         self.set_border_width(0)
 
 
-class ScrolledWindow(StateMixin, gtk.ScrolledWindow):
+class ScrolledWindow(StateMixin, Gtk.ScrolledWindow):
 
     def state_set(self, record):
         # Force to show first to ensure it is displayed in the Notebook
@@ -84,7 +84,7 @@ class ScrolledWindow(StateMixin, gtk.ScrolledWindow):
         super(ScrolledWindow, self).state_set(record)
 
 
-class Notebook(StateMixin, gtk.Notebook):
+class Notebook(StateMixin, Gtk.Notebook):
 
     def state_set(self, record):
         super(Notebook, self).state_set(record)
@@ -98,20 +98,20 @@ class Notebook(StateMixin, gtk.Notebook):
                     widget._readonly_set(True)
 
 
-class Alignment(gtk.Alignment):
+class Alignment(Gtk.Alignment):
 
     def __init__(self, widget, attrs):
-        super(Alignment, self).__init__(
-            float(attrs.get('xalign', 0.0)),
-            float(attrs.get('yalign', 0.5)),
-            float(attrs.get('xexpand', 1.0)),
-            float(attrs.get('yexpand', 1.0)))
+        super(Alignment, self).__init__()
+        self.props.xalign = float(attrs.get('xalign', 0.0))
+        self.props.yalign = float(attrs.get('yalign', 0.5))
+        self.props.xscale = float(attrs.get('xexpand', 1.0))
+        self.props.yscale = float(attrs.get('yexpand', 1.0))
         self.add(widget)
         widget.connect('show', lambda *a: self.show())
         widget.connect('hide', lambda *a: self.hide())
 
 
-class Expander(StateMixin, gtk.Expander):
+class Expander(StateMixin, Gtk.Expander):
 
     def __init__(self, label=None, attrs=None):
         if not label:

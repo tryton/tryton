@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import sys
 
-import gtk
 import gettext
+
+from gi.repository import Gtk
 
 from . import View
 from .graph_gtk.bar import VerticalBar, HorizontalBar
@@ -54,7 +55,7 @@ class ViewGraph(View):
         Widget = self.get_widget(self.attributes.get('type', 'vbar'))
         widget = Widget(self, xfield, yfields)
         self.widgets['root'] = widget
-        event = gtk.EventBox()
+        event = Gtk.EventBox()
         event.add(widget)
         event.connect('button-press-event', self.button_press)
         return event
@@ -99,44 +100,50 @@ class ViewGraph(View):
 
     def save(self, widget):
         parent = get_toplevel_window()
-        dia = gtk.Dialog(_('Image Size'), parent,
-            gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT)
+        dia = Gtk.Dialog(
+            title=_('Image Size'), transient_for=parent, modal=True,
+            destroy_with_parent=True)
         Main().add_window(dia)
         cancel_button = dia.add_button(
-            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+            set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
         cancel_button.set_image(IconFactory.get_image(
-                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
+                'tryton-cancel', Gtk.IconSize.BUTTON))
         cancel_button.set_always_show_image(True)
         ok_button = dia.add_button(
-            set_underline(_("OK")), gtk.RESPONSE_OK)
+            set_underline(_("OK")), Gtk.ResponseType.OK)
         ok_button.set_image(IconFactory.get_image(
-                'tryton-ok', gtk.ICON_SIZE_BUTTON))
+                'tryton-ok', Gtk.IconSize.BUTTON))
         ok_button.set_always_show_image(True)
         dia.set_icon(TRYTON_ICON)
-        dia.set_default_response(gtk.RESPONSE_OK)
+        dia.set_default_response(Gtk.ResponseType.OK)
 
-        hbox = gtk.HBox(spacing=3)
-        dia.vbox.pack_start(hbox, False, True)
+        hbox = Gtk.HBox(spacing=3)
+        dia.vbox.pack_start(hbox, expand=False, fill=True, padding=0)
 
-        hbox.pack_start(gtk.Label(_('Width:')), False, True)
-        spinwidth = gtk.SpinButton()
-        spinwidth.configure(gtk.Adjustment(400.0, 0.0, sys.maxsize, 1.0, 10.0),
+        hbox.pack_start(
+            Gtk.Label(label=_('Width:')), expand=False, fill=True, padding=0)
+        spinwidth = Gtk.SpinButton()
+        spinwidth.configure(Gtk.Adjustment(
+                value=400.0, lower=0.0, upper=sys.maxsize,
+                step_increment=1.0, page_increment=10.0),
             climb_rate=1, digits=0)
         spinwidth.set_numeric(True)
         spinwidth.set_activates_default(True)
-        hbox.pack_start(spinwidth, True, True)
+        hbox.pack_start(spinwidth, expand=True, fill=True, padding=0)
 
-        hbox.pack_start(gtk.Label(_('Height:')), False, True)
-        spinheight = gtk.SpinButton()
-        spinheight.configure(gtk.Adjustment(
-                200.0, 0.0, sys.maxsize, 1.0, 10.0),
+        hbox.pack_start(
+            Gtk.Label(label=_('Height:')), expand=False, fill=True, padding=0)
+        spinheight = Gtk.SpinButton()
+        spinheight.configure(Gtk.Adjustment(
+                value=200.0, lower=0.0, upper=sys.maxsize,
+                step_increment=1.0, page_increment=10.0),
             climb_rate=1, digits=0)
         spinheight.set_numeric(True)
         spinheight.set_activates_default(True)
-        hbox.pack_start(spinheight, True, True)
+        hbox.pack_start(spinheight, expand=True, fill=True, padding=0)
         dia.show_all()
 
-        filter = gtk.FileFilter()
+        filter = Gtk.FileFilter()
         filter.set_name(_('PNG image (*.png)'))
         filter.add_mime_type('image/png')
         filter.add_pattern('*.png')
@@ -145,9 +152,10 @@ class ViewGraph(View):
             response = dia.run()
             width = spinwidth.get_value_as_int()
             height = spinheight.get_value_as_int()
-            if response == gtk.RESPONSE_OK:
-                filename = file_selection(_('Save As'),
-                    action=gtk.FILE_CHOOSER_ACTION_SAVE,
+            if response == Gtk.ResponseType.OK:
+                filename = file_selection(
+                    _('Save As'),
+                    action=Gtk.FileChooserAction.SAVE,
                     preview=False,
                     filters=[filter])
                 if width and height and filename:
@@ -158,8 +166,9 @@ class ViewGraph(View):
                             filename, width, height)
                         break
                     except MemoryError:
-                        message(_('Image size too large.'), dia,
-                                gtk.MESSAGE_ERROR)
+                        message(
+                            _('Image size too large.'), dia,
+                            Gtk.MessageType.ERROR)
             else:
                 break
         parent.present()
@@ -167,14 +176,15 @@ class ViewGraph(View):
 
     def button_press(self, widget, event):
         if event.button == 3:
-            menu = gtk.Menu()
-            item = gtk.ImageMenuItem(_('Save As...'))
-            item.set_image(IconFactory.get_image(
-                    'tryton-save-as', gtk.ICON_SIZE_MENU))
+            menu = Gtk.Menu()
+            item = Gtk.MenuItem(label=_('Save As...'))
             item.connect('activate', self.save)
             item.show()
             menu.append(item)
-            menu.popup(None, None, None, event.button, event.time)
+            if hasattr(menu, 'popup_at_pointer'):
+                menu.popup_at_pointer(event)
+            else:
+                menu.popup(None, None, None, event.button, event.time)
             return True
         elif event.button == 1:
             self.widgets['root'].action()

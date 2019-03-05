@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 import gettext
-import gtk
-import pango
-from gi.repository import Gtk
+
+from gi.repository import Gtk, Pango
 
 import tryton.common as common
 from tryton.config import CONFIG
+from tryton.common.widget_style import widget_class
 from tryton.gui import Main
 from .infobar import InfoBar
 
@@ -173,7 +173,7 @@ class TabContent(InfoBar):
         self.tooltips = common.Tooltips()
         self.accel_group = Main().accel_group
 
-        self.widget = gtk.VBox(spacing=3)
+        self.widget = Gtk.VBox(spacing=3)
         self.widget.show()
 
         title_box = self.make_title_bar()
@@ -181,34 +181,35 @@ class TabContent(InfoBar):
 
         self.toolbar = self.create_toolbar(self.get_toolbars())
         self.toolbar.show_all()
-        self.widget.pack_start(self.toolbar, False, True)
+        self.widget.pack_start(
+            self.toolbar, expand=False, fill=True, padding=0)
 
-        viewport = gtk.Viewport()
-        viewport.set_shadow_type(gtk.SHADOW_NONE)
+        viewport = Gtk.Viewport()
+        viewport.set_shadow_type(Gtk.ShadowType.NONE)
         viewport.add(self.widget_get())
         viewport.show()
-        self.scrolledwindow = gtk.ScrolledWindow()
-        self.scrolledwindow.set_shadow_type(gtk.SHADOW_NONE)
-        self.scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC,
-                gtk.POLICY_AUTOMATIC)
+        self.scrolledwindow = Gtk.ScrolledWindow()
+        self.scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE)
+        self.scrolledwindow.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         self.scrolledwindow.add(viewport)
         self.scrolledwindow.show()
 
-        self.widget.pack_start(self.scrolledwindow)
+        self.widget.pack_start(
+            self.scrolledwindow, expand=True, fill=True, padding=0)
 
         self.create_info_bar()
-        self.widget.pack_start(self.info_bar, False, True)
+        self.widget.pack_start(
+            self.info_bar, expand=False, fill=True, padding=0)
 
     def make_title_bar(self):
-        self.title = title = gtk.Label()
-        title.modify_font(pango.FontDescription("bold 14"))
-        title.set_label(common.ellipsize(self.name, 80))
-        title.set_padding(10, 4)
-        title.set_alignment(0.0, 0.5)
+        tooltips = common.Tooltips()
+        self.title = title = Gtk.Label(
+            label=common.ellipsize(self.name, 80),
+            halign=Gtk.Align.START, margin=5,
+            ellipsize=Pango.EllipsizeMode.END)
+        tooltips.set_tip(title, self.name)
         title.set_size_request(0, -1)  # Allow overflow
-        title.set_max_width_chars(1)
-        title.set_ellipsize(pango.ELLIPSIZE_END)
-        title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 
         menu = Gtk.MenuButton.new()
@@ -216,34 +217,30 @@ class TabContent(InfoBar):
         menu.set_popup(self.set_menu_form())
         menu.show()
 
-        self.status_label = gtk.Label()
-        self.status_label.set_padding(5, 4)
-        self.status_label.set_alignment(0.0, 0.5)
+        self.status_label = Gtk.Label(
+            margin=5, halign=Gtk.Align.END)
+        widget_class(self.status_label, 'status', True)
         self.status_label.show()
 
-        hbox = gtk.HBox()
-        hbox.pack_start(title, expand=True, fill=True)
-        hbox.pack_start(self.status_label, expand=False, fill=True)
+        hbox = Gtk.HBox()
+        hbox.pack_start(title, expand=True, fill=True, padding=0)
+        hbox.pack_start(self.status_label, expand=False, fill=True, padding=0)
         hbox.show()
 
-        frame = gtk.Frame()
-        frame.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        frame = Gtk.Frame()
+        frame.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
+        widget_class(frame, 'window-title', True)
         frame.add(hbox)
         frame.show()
 
-        eb = gtk.EventBox()
-        eb.add(frame)
-        eb.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#ffffff"))
-        eb.show()
-
-        frame_menu = gtk.Frame()
-        frame_menu.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        frame_menu = Gtk.Frame()
+        frame_menu.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
         frame_menu.add(menu)
         frame_menu.show()
 
-        title_box = gtk.HBox()
-        title_box.pack_start(frame_menu, expand=False, fill=True)
-        title_box.pack_start(eb, expand=True, fill=True)
+        title_box = Gtk.HBox()
+        title_box.pack_start(frame_menu, expand=False, fill=True, padding=0)
+        title_box.pack_start(frame, expand=True, fill=True, padding=0)
         title_box.show()
         return title_box
 
@@ -255,27 +252,27 @@ class TabContent(InfoBar):
                 if not callback:
                     continue
                 if item.toggle:
-                    toolitem = gtk.ToggleToolButton()
+                    toolitem = Gtk.ToggleToolButton()
                     toolitem.connect('toggled', callback)
                 else:
-                    toolitem = gtk.ToolButton()
+                    toolitem = Gtk.ToolButton()
                     toolitem.connect('clicked', callback)
                 toolitem.set_icon_widget(
                     common.IconFactory.get_image(
-                        item.icon_name, gtk.ICON_SIZE_LARGE_TOOLBAR))
+                        item.icon_name, Gtk.IconSize.LARGE_TOOLBAR))
                 toolitem.set_label(item.label)
                 toolitem.set_use_underline(True)
                 self.tooltips.set_tip(toolitem, item.tooltip)
                 self.buttons[item.id] = toolitem
             elif not item and previous:
-                toolitem = gtk.SeparatorToolItem()
+                toolitem = Gtk.SeparatorToolItem()
             else:
                 continue
             previous = item
             toolbar.insert(toolitem, -1)
 
     def set_menu_form(self):
-        menu_form = gtk.Menu()
+        menu_form = Gtk.Menu()
         menu_form.set_accel_group(self.accel_group)
         menu_form.set_accel_path('<tryton>/Form')
         previous = None
@@ -284,19 +281,15 @@ class TabContent(InfoBar):
                 callback = getattr(self, 'sig_%s' % item.id, None)
                 if not callback:
                     continue
-                menuitem = gtk.ImageMenuItem(item.label, self.accel_group)
-                menuitem.set_use_underline(True)
+                menuitem = Gtk.MenuItem(
+                    label=item.label,
+                    use_underline=True)
                 menuitem.connect('activate', callback)
-
-                if item.icon_name:
-                    menuitem.set_image(
-                        common.IconFactory.get_image(
-                            item.icon_name, gtk.ICON_SIZE_MENU))
                 if item.accel_path:
                     menuitem.set_accel_path(item.accel_path)
                 self.menu_buttons[item.id] = menuitem
             elif not item and previous:
-                menuitem = gtk.SeparatorMenuItem()
+                menuitem = Gtk.SeparatorMenuItem()
             else:
                 continue
             previous = item
@@ -306,16 +299,16 @@ class TabContent(InfoBar):
         return menu_form
 
     def create_toolbar(self, toolbars):
-        gtktoolbar = gtk.Toolbar()
+        gtktoolbar = Gtk.Toolbar()
         option = CONFIG['client.toolbar']
         if option == 'default':
             gtktoolbar.set_style(False)
         elif option == 'both':
-            gtktoolbar.set_style(gtk.TOOLBAR_BOTH)
+            gtktoolbar.set_style(Gtk.ToolbarStyle.BOTH)
         elif option == 'text':
-            gtktoolbar.set_style(gtk.TOOLBAR_TEXT)
+            gtktoolbar.set_style(Gtk.ToolbarStyle.TEXT)
         elif option == 'icons':
-            gtktoolbar.set_style(gtk.TOOLBAR_ICONS)
+            gtktoolbar.set_style(Gtk.ToolbarStyle.ICONS)
         self.create_base_toolbar(gtktoolbar)
         return gtktoolbar
 

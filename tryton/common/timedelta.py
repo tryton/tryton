@@ -108,6 +108,7 @@ def parse(text, converter=None):
         seconds *= -1
     return datetime.timedelta(seconds=seconds)
 
+
 _tests = [
     (None, ''),
     (datetime.timedelta(), '00:00'),

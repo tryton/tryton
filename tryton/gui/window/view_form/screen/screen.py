@@ -3,7 +3,6 @@
 "Screen"
 import copy
 import functools
-import gobject
 import datetime
 import calendar
 import json
@@ -14,7 +13,7 @@ import gettext
 import logging
 from operator import itemgetter
 
-import gtk
+from gi.repository import GLib, Gtk
 
 from tryton.gui.window.view_form.model.group import Group
 from tryton.gui.window.view_form.view.screen_container import ScreenContainer
@@ -93,19 +92,19 @@ class Screen(SignalEvent):
                         yield widget
 
             for widget in reversed(list(walk_descendants(context_widget))):
-                if isinstance(widget, gtk.Entry):
+                if isinstance(widget, Gtk.Entry):
                     widget.connect_after(
                         'activate', self.screen_container.activate)
-                elif isinstance(widget, gtk.CheckButton):
+                elif isinstance(widget, Gtk.CheckButton):
                     widget.connect_after(
                         'toggled', self.screen_container.activate)
 
             def remove_bin(widget):
-                assert isinstance(widget, (gtk.ScrolledWindow, gtk.Viewport))
+                assert isinstance(widget, (Gtk.ScrolledWindow, Gtk.Viewport))
                 parent = widget.get_parent()
                 parent.remove(widget)
                 child = widget.get_child()
-                while isinstance(child, (gtk.ScrolledWindow, gtk.Viewport)):
+                while isinstance(child, (Gtk.ScrolledWindow, Gtk.Viewport)):
                     child = child.get_child()
                 child.get_parent().remove(child)
                 parent.add(child)
@@ -446,8 +445,8 @@ class Screen(SignalEvent):
             unread_note = record.unread_note
         self.signal('unread-note', unread_note)
         # update attachment-count after 1 second
-        gobject.timeout_add(1000, self.update_attachment, record)
-        gobject.timeout_add(1000, self.update_note, record)
+        GLib.timeout_add(1000, self.update_attachment, record)
+        GLib.timeout_add(1000, self.update_note, record)
         return True
 
     current_record = property(__get_current_record, __set_current_record)
@@ -537,7 +536,7 @@ class Screen(SignalEvent):
         self.screen_container.set(self.current_view.widget)
         self.display()
         # Postpone set of the cursor to ensure widgets are allocated
-        gobject.idle_add(self.set_cursor)
+        GLib.idle_add(self.set_cursor)
 
     def load_view_to_load(self):
         if len(self.view_to_load):
@@ -611,7 +610,7 @@ class Screen(SignalEvent):
         self.current_record = record
         self.display()
         # Postpone set of the cursor to ensure widgets are allocated
-        gobject.idle_add(self.set_cursor, True)
+        GLib.idle_add(self.set_cursor, True)
         return self.current_record
 
     def new_model_position(self):

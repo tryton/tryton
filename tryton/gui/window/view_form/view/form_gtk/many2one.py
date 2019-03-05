@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
 import gettext
+
+from gi.repository import Gdk, GLib, Gtk
 
 from .widget import Widget
 import tryton.common as common
@@ -23,10 +23,10 @@ class Many2One(Widget):
     def __init__(self, view, attrs):
         super(Many2One, self).__init__(view, attrs)
 
-        self.widget = gtk.HBox(spacing=0)
+        self.widget = Gtk.HBox(spacing=0)
         self.widget.set_property('sensitive', True)
 
-        self.wid_text = self.mnemonic_widget = gtk.Entry()
+        self.wid_text = self.mnemonic_widget = Gtk.Entry()
         self.wid_text.set_property('width-chars', self.default_width_chars)
         self.wid_text.set_property('activates_default', True)
         self.wid_text.connect('key-press-event', self.send_modified)
@@ -44,7 +44,7 @@ class Many2One(Widget):
 
         self.wid_text.connect('icon-press', self.sig_edit)
 
-        self.widget.pack_end(self.wid_text, expand=True, fill=True)
+        self.widget.pack_end(self.wid_text, expand=True, fill=True, padding=0)
 
         self._readonly = False
 
@@ -62,9 +62,9 @@ class Many2One(Widget):
     def _set_button_sensitive(self):
         self.wid_text.set_editable(not self._readonly)
         self.wid_text.set_icon_sensitive(
-            gtk.ENTRY_ICON_PRIMARY, self.read_access)
+            Gtk.EntryIconPosition.PRIMARY, self.read_access)
         self.wid_text.set_icon_sensitive(
-            gtk.ENTRY_ICON_SECONDARY, not self._readonly)
+            Gtk.EntryIconPosition.SECONDARY, not self._readonly)
 
     def get_access(self, type_):
         model = self.get_model()
@@ -140,7 +140,7 @@ class Many2One(Widget):
                     title=self.attrs.get('string'))
                 win.screen.search_filter(quote(text))
                 if len(win.screen.group) == 1:
-                    win.response(None, gtk.RESPONSE_OK)
+                    win.response(None, Gtk.ResponseType.OK)
                 else:
                     win.show()
                 return
@@ -184,7 +184,7 @@ class Many2One(Widget):
         self.focus_out = False
         value = self.field.get(self.record)
 
-        if (icon_pos == gtk.ENTRY_ICON_SECONDARY
+        if (icon_pos == Gtk.EntryIconPosition.SECONDARY
                 and not self._readonly
                 and self.has_target(value)):
             self.field.set_client(self.record, self.value_from_id(None, ''))
@@ -233,15 +233,15 @@ class Many2One(Widget):
 
     def sig_key_press(self, widget, event, *args):
         editable = self.wid_text.get_editable()
-        activate_keys = [gtk.keysyms.Tab, gtk.keysyms.ISO_Left_Tab]
+        activate_keys = [Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab]
         if not self.wid_completion:
-            activate_keys.append(gtk.keysyms.Return)
-        if (event.keyval == gtk.keysyms.F3
+            activate_keys.append(Gdk.KEY_Return)
+        if (event.keyval == Gdk.KEY_F3
                 and editable
                 and self.create_access):
             self.sig_new(widget, event)
             return True
-        elif event.keyval == gtk.keysyms.F2 and self.read_access:
+        elif event.keyval == Gdk.KEY_F2 and self.read_access:
             self.sig_edit(widget)
             return True
         elif (event.keyval in activate_keys
@@ -249,8 +249,7 @@ class Many2One(Widget):
             self.sig_activate()
         elif (self.has_target(self.field.get(self.record))
                 and editable
-                and event.keyval in (gtk.keysyms.Delete,
-                    gtk.keysyms.BackSpace)):
+                and event.keyval in [Gdk.KEY_Delete, Gdk.KEY_BackSpace]):
             self.wid_text.set_text('')
         return False
 
@@ -272,7 +271,7 @@ class Many2One(Widget):
                     # Restore text and position after display
                     self.wid_text.set_text(text)
                     self.wid_text.set_position(position)
-            gobject.idle_add(clean)
+            GLib.idle_add(clean)
         return False
 
     def get_value(self):
@@ -310,11 +309,11 @@ class Many2One(Widget):
         if not self.wid_text.get_editable():
             icon2, tooltip2 = None, ''
         for pos, icon, tooltip in [
-                (gtk.ENTRY_ICON_PRIMARY, icon1, tooltip1),
-                (gtk.ENTRY_ICON_SECONDARY, icon2, tooltip2)]:
+                (Gtk.EntryIconPosition.PRIMARY, icon1, tooltip1),
+                (Gtk.EntryIconPosition.SECONDARY, icon2, tooltip2)]:
             if icon:
                 pixbuf = common.IconFactory.get_pixbuf(
-                    icon, gtk.ICON_SIZE_MENU)
+                    icon, Gtk.IconSize.MENU)
             else:
                 pixbuf = None
             self.wid_text.set_icon_from_pixbuf(pos, pixbuf)
@@ -325,7 +324,7 @@ class Many2One(Widget):
         value = self.field.get(self.record)
         if self.has_target(value):
             # Delay filling of popup as it can take time
-            gobject.idle_add(populate, menu, self.get_model(),
+            GLib.idle_add(populate, menu, self.get_model(),
                 self.id_from_value(value), '', self.field)
         return True
 
@@ -345,7 +344,7 @@ class Many2One(Widget):
         rec_name, record_id = model.get(iter_, 0, 1)
         # GTK on win32 doesn't like synchronous call to set_client
         # because it triggers a display which reset the completion
-        gobject.idle_add(self.field.set_client, self.record,
+        GLib.idle_add(self.field.set_client, self.record,
             self.value_from_id(record_id, rec_name), True)
 
         completion_model = self.wid_completion.get_model()

@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 "Preference"
 import gettext
-import gtk
 import copy
+
+from gi.repository import Gdk, Gtk
 
 import tryton.rpc as rpc
 from tryton.common import RPCExecute, RPCException, IconFactory
@@ -22,29 +23,31 @@ class Preference(NoModal):
     def __init__(self, user, callback):
         NoModal.__init__(self)
         self.callback = callback
-        self.win = gtk.Dialog(_('Preferences'), self.parent,
-            gtk.DIALOG_DESTROY_WITH_PARENT)
+        self.win = Gtk.Dialog(
+            title=_('Preferences'), transient_for=self.parent,
+            destroy_with_parent=True)
         Main().add_window(self.win)
-        self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+        self.win.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
 
-        self.accel_group = gtk.AccelGroup()
+        self.accel_group = Gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
         self.but_cancel = self.win.add_button(
-            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
-        self.but_cancel.set_image(IconFactory.get_image(
-                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
+            set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
+        self.but_cancel.set_image(
+            IconFactory.get_image('tryton-cancel', Gtk.IconSize.BUTTON))
         self.but_cancel.set_always_show_image(True)
         self.but_ok = self.win.add_button(
-            set_underline(_("OK")), gtk.RESPONSE_OK)
-        self.but_ok.set_image(IconFactory.get_image(
-                'tryton-ok', gtk.ICON_SIZE_BUTTON))
+            set_underline(_("OK")), Gtk.ResponseType.OK)
+        self.but_ok.set_image(
+            IconFactory.get_image('tryton-ok', Gtk.IconSize.BUTTON))
         self.but_ok.set_always_show_image(True)
-        self.but_ok.add_accelerator('clicked', self.accel_group,
-                gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+        self.but_ok.add_accelerator(
+            'clicked', self.accel_group, Gdk.KEY_Return,
+            Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE)
 
-        self.win.set_default_response(gtk.RESPONSE_OK)
+        self.win.set_default_response(Gtk.ResponseType.OK)
         self.win.connect('response', self.response)
 
         try:
@@ -55,9 +58,9 @@ class Preference(NoModal):
             self.win = None
             return
 
-        title = gtk.Label(_('Edit User Preferences'))
+        title = Gtk.Label(label=_('Edit User Preferences'))
         title.show()
-        self.win.vbox.pack_start(title, expand=False, fill=True)
+        self.win.vbox.pack_start(title, expand=False, fill=True, padding=0)
         self.screen = Screen('res.user', mode=[])
         # Reset readonly set automaticly by MODELACCESS
         self.screen.readonly = False
@@ -81,7 +84,8 @@ class Preference(NoModal):
         self.screen.display(set_cursor=True)
 
         self.screen.widget.show()
-        self.win.vbox.pack_start(self.screen.widget)
+        self.win.vbox.pack_start(
+            self.screen.widget, expand=True, fill=True, padding=0)
         self.win.set_title(_('Preference'))
 
         self.win.set_default_size(*self.default_size())
@@ -90,7 +94,7 @@ class Preference(NoModal):
         self.win.show()
 
     def response(self, win, response_id):
-        if response_id == gtk.RESPONSE_OK:
+        if response_id == Gtk.ResponseType.OK:
             if self.screen.current_record.validate():
                 vals = copy.copy(self.screen.get())
                 try:

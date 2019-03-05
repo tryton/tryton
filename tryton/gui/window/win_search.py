@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
 import gettext
+
+from gi.repository import Gtk, Gdk
 
 import tryton.common as common
 from tryton.common.underline import set_underline
@@ -33,49 +34,52 @@ class WinSearch(NoModal):
         self.callback = callback
         self.title = title
 
-        self.win = gtk.Dialog(_('Search'), self.parent,
-            gtk.DIALOG_DESTROY_WITH_PARENT)
+        self.win = Gtk.Dialog(
+            title=_('Search'), transient_for=self.parent,
+            destroy_with_parent=True)
         Main().add_window(self.win)
         self.win.set_icon(TRYTON_ICON)
-        self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
-        self.win.set_default_response(gtk.RESPONSE_APPLY)
+        self.win.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
+        self.win.set_default_response(Gtk.ResponseType.APPLY)
         self.win.connect('response', self.response)
 
         self.win.set_default_size(*self.default_size())
 
-        self.accel_group = gtk.AccelGroup()
+        self.accel_group = Gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
         self.but_cancel = self.win.add_button(
-            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+            set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
         self.but_cancel.set_image(common.IconFactory.get_image(
-                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
+                'tryton-cancel', Gtk.IconSize.BUTTON))
         self.but_cancel.set_always_show_image(True)
         self.but_find = self.win.add_button(
-            set_underline(_("Search")), gtk.RESPONSE_APPLY)
+            set_underline(_("Search")), Gtk.ResponseType.APPLY)
         self.but_find.set_image(common.IconFactory.get_image(
-                'tryton-search', gtk.ICON_SIZE_BUTTON))
+                'tryton-search', Gtk.IconSize.BUTTON))
         self.but_find.set_always_show_image(True)
         if new and common.MODELACCESS[model]['create']:
             self.but_new = self.win.add_button(
-                set_underline(_("New")), gtk.RESPONSE_ACCEPT)
+                set_underline(_("New")), Gtk.ResponseType.ACCEPT)
             self.but_new.set_image(common.IconFactory.get_image(
-                    'tryton-create', gtk.ICON_SIZE_BUTTON))
+                    'tryton-create', Gtk.IconSize.BUTTON))
             self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
         self.but_ok = self.win.add_button(
-            set_underline(_("OK")), gtk.RESPONSE_OK)
+            set_underline(_("OK")), Gtk.ResponseType.OK)
         self.but_ok.set_image(common.IconFactory.get_image(
-                'tryton-ok', gtk.ICON_SIZE_BUTTON))
+                'tryton-ok', Gtk.IconSize.BUTTON))
         self.but_ok.set_always_show_image(True)
-        self.but_ok.add_accelerator('clicked', self.accel_group,
-                gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+        self.but_ok.add_accelerator(
+            'clicked', self.accel_group, Gdk.KEY_Return,
+            Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE)
 
-        hbox = gtk.HBox()
+        hbox = Gtk.HBox()
         hbox.show()
-        self.win.vbox.pack_start(hbox, expand=False, fill=True)
-        self.win.vbox.pack_start(gtk.HSeparator(), expand=False, fill=True)
+        self.win.vbox.pack_start(hbox, expand=False, fill=True, padding=0)
+        self.win.vbox.pack_start(
+            Gtk.HSeparator(), expand=False, fill=True, padding=0)
 
         self.screen = Screen(model, domain=domain, mode=['tree'], order=order,
             context=context, view_ids=view_ids, views_preload=views_preload,
@@ -87,10 +91,11 @@ class WinSearch(NoModal):
         self.win.set_title(_('Search %s') % self.title)
 
         if not sel_multi:
-            sel.set_mode(gtk.SELECTION_SINGLE)
+            sel.set_mode(Gtk.SelectionMode.SINGLE)
         else:
-            sel.set_mode(gtk.SELECTION_MULTIPLE)
-        self.win.vbox.pack_start(self.screen.widget, expand=True, fill=True)
+            sel.set_mode(Gtk.SelectionMode.MULTIPLE)
+        self.win.vbox.pack_start(
+            self.screen.widget, expand=True, fill=True, padding=0)
         self.screen.widget.show()
 
         self.model_name = model
@@ -98,8 +103,8 @@ class WinSearch(NoModal):
         self.register()
 
     def sig_activate(self, *args):
-        self.view.treeview.emit_stop_by_name('row_activated')
-        self.win.response(gtk.RESPONSE_OK)
+        self.view.treeview.stop_emission_by_name('row_activated')
+        self.win.response(Gtk.ResponseType.OK)
         return True
 
     def destroy(self):
@@ -115,12 +120,12 @@ class WinSearch(NoModal):
 
     def response(self, win, response_id):
         res = None
-        if response_id == gtk.RESPONSE_OK:
+        if response_id == Gtk.ResponseType.OK:
             res = [r.id for r in self.screen.selected_records]
-        elif response_id == gtk.RESPONSE_APPLY:
+        elif response_id == Gtk.ResponseType.APPLY:
             self.screen.search_filter(self.screen.screen_container.get_text())
             return
-        elif response_id == gtk.RESPONSE_ACCEPT:
+        elif response_id == Gtk.ResponseType.ACCEPT:
             # Remove first tree view as mode if form only
             view_ids = self.view_ids[1:]
             screen = Screen(self.model_name, domain=self.domain,

@@ -2,9 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
-import gtk
 import datetime
 import gettext
+
+from gi.repository import Gtk
 
 from tryton.common import node_attributes
 from . import View
@@ -38,7 +39,7 @@ class ViewCalendar(View):
         self.widget = self.parse(xml)
 
     def parse(self, node):
-        vbox = gtk.VBox()
+        vbox = Gtk.VBox()
         if not Calendar_:
             return vbox
         fields = []
@@ -59,10 +60,10 @@ class ViewCalendar(View):
         goocalendar.connect('day-pressed', self.on_day_pressed)
         goocalendar.connect('day-activated', self.on_day_activated)
         self.widgets['goocalendar'] = goocalendar
-        self.scroll = scrolledWindow = gtk.ScrolledWindow()
-        scrolledWindow.add_with_viewport(goocalendar)
-        vbox.pack_start(toolbar, False, False)
-        vbox.pack_start(scrolledWindow, True, True)
+        self.scroll = scrolledWindow = Gtk.ScrolledWindow()
+        scrolledWindow.add(goocalendar)
+        vbox.pack_start(toolbar, expand=False, fill=False, padding=0)
+        vbox.pack_start(scrolledWindow, expand=True, fill=True, padding=0)
         return vbox
 
     def on_page_changed(self, goocalendar, day, toolbar):

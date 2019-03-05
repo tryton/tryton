@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
 import gettext
-from tryton.common import RPCExecute, RPCException, IconFactory
+
+from gi.repository import Gtk, Gdk
+
+from tryton.common import RPCExecute, RPCException
 from tryton.gui.window.view_form.screen import Screen
 from tryton.action import Action
 from tryton.gui.window import Window
@@ -45,10 +47,10 @@ def populate(menu, model, record, title='', field=None, context=None):
             'id': rec.id,
             'ids': [rec.id],
             }
-        event = gtk.get_current_event()
+        event = Gtk.get_current_event()
         allow_similar = False
-        if (event.state & gtk.gdk.CONTROL_MASK
-                or event.state & gtk.gdk.MOD1_MASK):
+        if (event.state & Gdk.ModifierType.CONTROL_MASK
+                or event.state & Gdk.ModifierType.MOD1_MASK):
             allow_similar = True
         with Window(hide_current=True, allow_similar=allow_similar):
             Action._exec_action(action, data, rec.get_context())
@@ -69,32 +71,26 @@ def populate(menu, model, record, title='', field=None, context=None):
 
     if title:
         if len(menu):
-            menu.append(gtk.SeparatorMenuItem())
-        title_item = gtk.MenuItem(title)
+            menu.append(Gtk.SeparatorMenuItem())
+        title_item = Gtk.MenuItem(label=title)
         menu.append(title_item)
-        submenu = gtk.Menu()
+        submenu = Gtk.Menu()
         title_item.set_submenu(submenu)
         action_menu = submenu
     else:
         action_menu = menu
 
     if len(action_menu):
-        action_menu.append(gtk.SeparatorMenuItem())
+        action_menu.append(Gtk.SeparatorMenuItem())
     if field:
-        edit_item = gtk.MenuItem(_('Edit...'))
+        edit_item = Gtk.MenuItem(label=_('Edit...'))
         edit_item.connect('activate', edit)
         action_menu.append(edit_item)
-        action_menu.append(gtk.SeparatorMenuItem())
-    attachment_item = gtk.ImageMenuItem()
-    attachment_item.set_label(_('Attachments...'))
-    attachment_item.set_image(IconFactory.get_image(
-            'tryton-attach', gtk.ICON_SIZE_MENU))
+        action_menu.append(Gtk.SeparatorMenuItem())
+    attachment_item = Gtk.MenuItem(label=_('Attachments...'))
     action_menu.append(attachment_item)
     attachment_item.connect('activate', attachment)
-    note_item = gtk.ImageMenuItem()
-    note_item.set_label(_('Notes...'))
-    note_item.set_image(IconFactory.get_image(
-            'tryton-note', gtk.ICON_SIZE_MENU))
+    note_item = Gtk.MenuItem(label=_('Notes...'))
     action_menu.append(note_item)
     note_item.connect('activate', note)
 
@@ -111,20 +107,17 @@ def populate(menu, model, record, title='', field=None, context=None):
                 ('print', 'tryton-print', _('Print...'), 'print'),
                 ):
             if len(action_menu):
-                action_menu.append(gtk.SeparatorMenuItem())
-            title_item = gtk.ImageMenuItem()
-            title_item.set_label(label)
-            title_item.set_image(IconFactory.get_image(
-                    icon, gtk.ICON_SIZE_MENU))
+                action_menu.append(Gtk.SeparatorMenuItem())
+            title_item = Gtk.MenuItem(label=label)
             action_menu.append(title_item)
             if not toolbar[atype]:
                 title_item.set_sensitive(False)
                 continue
-            submenu = gtk.Menu()
+            submenu = Gtk.Menu()
             title_item.set_submenu(submenu)
             for action in toolbar[atype]:
                 action = action.copy()
-                item = gtk.MenuItem(action['name'])
+                item = Gtk.MenuItem(label=action['name'])
                 submenu.append(item)
                 if flavor == 'print':
                     action['direct_print'] = True

@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
 import gettext
+
+from gi.repository import Gtk
 
 from .many2one import Many2One
 from tryton.common.selection import SelectionMixin, PopdownMixin, \
@@ -16,7 +17,7 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
     def __init__(self, view, attrs):
         super(Reference, self).__init__(view, attrs)
 
-        self.widget_combo = gtk.ComboBoxEntry()
+        self.widget_combo = Gtk.ComboBox(has_entry=True)
         child = self.widget_combo.get_child()
         child.connect('activate', lambda *a: self._focus_out())
         child.connect('focus-out-event', lambda *a: self._focus_out())
@@ -24,11 +25,13 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         self.widget_combo.connect('changed', self.sig_changed_combo)
         self.widget_combo.connect('move-active', self._move_active)
         self.widget_combo.connect(
-            'scroll-event', lambda c, e: c.emit_stop_by_name('scroll-event'))
+            'scroll-event',
+            lambda c, e: c.stop_emission_by_name('scroll-event'))
         selection_shortcuts(self.widget_combo)
         self.widget_combo.set_focus_chain([child])
 
-        self.widget.pack_start(self.widget_combo, expand=False, fill=True)
+        self.widget.pack_start(
+            self.widget_combo, expand=False, fill=True, padding=0)
 
         self.init_selection()
         self.set_popdown(self.selection, self.widget_combo)
@@ -51,13 +54,14 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
 
     def _move_active(self, combobox, scroll_type):
         if not combobox.get_child().get_editable():
-            combobox.emit_stop_by_name('move-active')
+            combobox.stop_emission_by_name('move-active')
 
     def _set_button_sensitive(self):
         super(Reference, self)._set_button_sensitive()
         self.widget_combo.get_child().set_editable(not self._readonly)
         self.widget_combo.set_button_sensitivity(
-            gtk.SENSITIVITY_OFF if self._readonly else gtk.SENSITIVITY_AUTO)
+            Gtk.SensitivityType.OFF if self._readonly
+            else Gtk.SensitivityType.AUTO)
         if self._readonly and CONFIG['client.fast_tabbing']:
             self.widget.set_focus_chain([])
         else:

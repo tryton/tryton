@@ -23,8 +23,6 @@ class Button(Gtk.Button):
         image = self.get_image()
         if not image and not stock:
             return
-        elif image and image.get_stock()[0] == stock:
-            return
         if not stock:
             self.set_image(None)
             return

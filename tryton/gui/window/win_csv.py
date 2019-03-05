@@ -3,10 +3,9 @@
 import locale
 import os
 import sys
-
-import gtk
-import gobject
 import gettext
+
+from gi.repository import Gdk, GObject, Gtk
 
 from tryton.common import IconFactory
 from tryton.common.underline import set_underline
@@ -37,103 +36,111 @@ class WinCSV(NoModal):
     def __init__(self, *args, **kwargs):
         super(WinCSV, self).__init__(*args, **kwargs)
 
-        self.dialog = gtk.Dialog(
-            parent=self.parent, flags=gtk.DIALOG_DESTROY_WITH_PARENT)
+        self.dialog = Gtk.Dialog(
+            transient_for=self.parent, destroy_with_parent=True)
         Main().add_window(self.dialog)
-        self.dialog.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+        self.dialog.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.dialog.set_icon(TRYTON_ICON)
         self.dialog.set_default_size(*self.default_size())
         self.dialog.connect('response', self.response)
 
-        dialog_vbox = gtk.VBox()
+        dialog_vbox = Gtk.VBox()
 
-        hbox_mapping = gtk.HBox(True)
-        dialog_vbox.pack_start(hbox_mapping, True, True, 0)
+        hbox_mapping = Gtk.HBox(homogeneous=True)
+        dialog_vbox.pack_start(hbox_mapping, expand=True, fill=True, padding=0)
 
-        frame_fields = gtk.Frame()
-        frame_fields.set_shadow_type(gtk.SHADOW_NONE)
-        viewport_fields = gtk.Viewport()
-        scrolledwindow_fields = gtk.ScrolledWindow()
-        scrolledwindow_fields.set_policy(gtk.POLICY_AUTOMATIC,
-                gtk.POLICY_AUTOMATIC)
+        frame_fields = Gtk.Frame()
+        frame_fields.set_shadow_type(Gtk.ShadowType.NONE)
+        viewport_fields = Gtk.Viewport()
+        scrolledwindow_fields = Gtk.ScrolledWindow()
+        scrolledwindow_fields.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         viewport_fields.add(scrolledwindow_fields)
         frame_fields.add(viewport_fields)
-        label_all_fields = gtk.Label(_('<b>All fields</b>'))
-        label_all_fields.set_use_markup(True)
+        label_all_fields = Gtk.Label(
+            label=_('<b>All fields</b>'), use_markup=True)
         frame_fields.set_label_widget(label_all_fields)
-        hbox_mapping.pack_start(frame_fields, True, True, 0)
+        hbox_mapping.pack_start(
+            frame_fields, expand=True, fill=True, padding=0)
 
-        vbox_buttons = gtk.VBox(False, 10)
+        vbox_buttons = Gtk.VBox(homogeneous=False, spacing=10)
         vbox_buttons.set_border_width(5)
-        hbox_mapping.pack_start(vbox_buttons, False, True, 0)
+        hbox_mapping.pack_start(
+            vbox_buttons, expand=False, fill=True, padding=0)
 
-        button_add = gtk.Button(_('_Add'), stock=None, use_underline=True)
+        button_add = Gtk.Button(
+            label=_('_Add'), stock=None, use_underline=True)
         button_add.set_image(IconFactory.get_image(
-                'tryton-add', gtk.ICON_SIZE_BUTTON))
+                'tryton-add', Gtk.IconSize.BUTTON))
         button_add.set_always_show_image(True)
         button_add.connect_after('clicked', self.sig_sel)
-        vbox_buttons.pack_start(button_add, False, False, 0)
+        vbox_buttons.pack_start(
+            button_add, expand=False, fill=False, padding=0)
 
-        button_remove = gtk.Button(
-            _('_Remove'), stock=None, use_underline=True)
+        button_remove = Gtk.Button(
+            label=_('_Remove'), stock=None, use_underline=True)
         button_remove.set_image(IconFactory.get_image(
-                'tryton-remove', gtk.ICON_SIZE_BUTTON))
+                'tryton-remove', Gtk.IconSize.BUTTON))
         button_remove.set_always_show_image(True)
         button_remove.connect_after('clicked', self.sig_unsel)
-        vbox_buttons.pack_start(button_remove, False, False, 0)
+        vbox_buttons.pack_start(
+            button_remove, expand=False, fill=False, padding=0)
 
-        button_remove_all = gtk.Button(
-            _('_Clear'), stock=None, use_underline=True)
+        button_remove_all = Gtk.Button(
+            label=_('_Clear'), stock=None, use_underline=True)
         button_remove_all.set_image(IconFactory.get_image(
-                'tryton-clear', gtk.ICON_SIZE_BUTTON))
+                'tryton-clear', Gtk.IconSize.BUTTON))
         button_remove_all.set_always_show_image(True)
         button_remove_all.connect_after('clicked', self.sig_unsel_all)
-        vbox_buttons.pack_start(button_remove_all, False, False, 0)
+        vbox_buttons.pack_start(
+            button_remove_all, expand=False, fill=False, padding=0)
 
-        hseparator_buttons = gtk.HSeparator()
-        vbox_buttons.pack_start(hseparator_buttons, False, False, 3)
+        hseparator_buttons = Gtk.HSeparator()
+        vbox_buttons.pack_start(
+            hseparator_buttons, expand=False, fill=False, padding=3)
 
         self.add_buttons(vbox_buttons)
 
-        frame_fields_selected = gtk.Frame()
-        frame_fields_selected.set_shadow_type(gtk.SHADOW_NONE)
-        viewport_fields_selected = gtk.Viewport()
-        scrolledwindow_fields_selected = gtk.ScrolledWindow()
+        frame_fields_selected = Gtk.Frame()
+        frame_fields_selected.set_shadow_type(Gtk.ShadowType.NONE)
+        viewport_fields_selected = Gtk.Viewport()
+        scrolledwindow_fields_selected = Gtk.ScrolledWindow()
         scrolledwindow_fields_selected.set_policy(
-            gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         viewport_fields_selected.add(scrolledwindow_fields_selected)
         frame_fields_selected.add(viewport_fields_selected)
-        label_fields_selected = gtk.Label(_('<b>Fields selected</b>'))
-        label_fields_selected .set_use_markup(True)
+        label_fields_selected = Gtk.Label(
+            label=_('<b>Fields selected</b>'), use_markup=True)
         frame_fields_selected.set_label_widget(label_fields_selected)
-        hbox_mapping.pack_start(frame_fields_selected, True, True, 0)
+        hbox_mapping.pack_start(
+            frame_fields_selected, expand=True, fill=True, padding=0)
 
-        frame_csv_param = gtk.Frame()
-        frame_csv_param.set_shadow_type(gtk.SHADOW_ETCHED_OUT)
-        dialog_vbox.pack_start(frame_csv_param, False, True, 0)
-        alignment_csv_param = gtk.Alignment(0.5, 0.5, 1, 1)
-        alignment_csv_param.set_padding(7, 7, 7, 7)
-        frame_csv_param.add(alignment_csv_param)
+        frame_csv_param = Gtk.Frame()
+        frame_csv_param.set_shadow_type(Gtk.ShadowType.ETCHED_OUT)
+        dialog_vbox.pack_start(
+            frame_csv_param, expand=False, fill=True, padding=0)
 
-        vbox_csv_param = gtk.VBox()
-        alignment_csv_param.add(vbox_csv_param)
+        vbox_csv_param = Gtk.VBox()
+        vbox_csv_param.props.margin = 7
+        frame_csv_param.add(vbox_csv_param)
 
         self.add_chooser(vbox_csv_param)
 
-        expander_csv = gtk.Expander()
-        vbox_csv_param.pack_start(expander_csv, False, True, 0)
-        label_csv_param = gtk.Label(_('CSV Parameters'))
+        expander_csv = Gtk.Expander()
+        vbox_csv_param.pack_start(
+            expander_csv, expand=False, fill=True, padding=0)
+        label_csv_param = Gtk.Label(label=_('CSV Parameters'))
         expander_csv.set_label_widget(label_csv_param)
-        table = gtk.Table(2, 4, False)
+        table = Gtk.Table(n_rows=2, n_columns=4, homogeneous=False)
         table.set_border_width(8)
         table.set_row_spacings(9)
         table.set_col_spacings(8)
         expander_csv.add(table)
 
-        label_csv_delimiter = gtk.Label(_('Delimiter:'))
-        label_csv_delimiter.set_alignment(1, 0.5)
+        label_csv_delimiter = Gtk.Label(
+            label=_('Delimiter:'), halign=Gtk.Align.END)
         table.attach(label_csv_delimiter, 0, 1, 0, 1)
-        self.csv_delimiter = gtk.Entry()
+        self.csv_delimiter = Gtk.Entry()
         self.csv_delimiter.set_max_length(1)
         if os.name == 'nt' and ',' == locale.localeconv()['decimal_point']:
             delimiter = ';'
@@ -144,22 +151,19 @@ class WinCSV(NoModal):
         label_csv_delimiter.set_mnemonic_widget(self.csv_delimiter)
         table.attach(self.csv_delimiter, 1, 2, 0, 1)
 
-        label_csv_quotechar = gtk.Label(_("Quote char:"))
-        label_csv_quotechar.set_alignment(1, 0.5)
+        label_csv_quotechar = Gtk.Label(
+            label=_("Quote char:"), halign=Gtk.Align.END)
         table.attach(label_csv_quotechar, 2, 3, 0, 1)
-        self.csv_quotechar = gtk.Entry()
+        self.csv_quotechar = Gtk.Entry()
         self.csv_quotechar.set_text("\"")
         self.csv_quotechar.set_width_chars(1)
         label_csv_quotechar.set_mnemonic_widget(self.csv_quotechar)
         table.attach(self.csv_quotechar, 3, 4, 0, 1)
 
-        label_csv_enc = gtk.Label(_("Encoding:"))
-        label_csv_enc.set_alignment(1, 0.5)
+        label_csv_enc = Gtk.Label(
+            label=_("Encoding:"), halign=Gtk.Align.END)
         table.attach(label_csv_enc, 0, 1, 1, 2)
-        if hasattr(gtk, 'ComboBoxText'):
-            self.csv_enc = gtk.ComboBoxText()
-        else:
-            self.csv_enc = gtk.combo_box_new_text()
+        self.csv_enc = Gtk.ComboBoxText()
         for i, encoding in enumerate(encodings):
             self.csv_enc.append_text(encoding)
             if ((os.name == 'nt' and encoding == 'cp1252')
@@ -171,37 +175,38 @@ class WinCSV(NoModal):
         self.add_csv_header_param(table)
 
         button_cancel = self.dialog.add_button(
-            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
+            set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
         button_cancel.set_image(IconFactory.get_image(
-                'tryton-cancel', gtk.ICON_SIZE_BUTTON))
+                'tryton-cancel', Gtk.IconSize.BUTTON))
 
         button_ok = self.dialog.add_button(
-            set_underline(_("OK")), gtk.RESPONSE_OK)
+            set_underline(_("OK")), Gtk.ResponseType.OK)
         button_ok.set_image(IconFactory.get_image(
-                'tryton-ok', gtk.ICON_SIZE_BUTTON))
+                'tryton-ok', Gtk.IconSize.BUTTON))
 
-        self.dialog.vbox.pack_start(dialog_vbox)
+        self.dialog.vbox.pack_start(
+            dialog_vbox, expand=True, fill=True, padding=0)
 
-        self.view1 = gtk.TreeView()
-        self.view1.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
+        self.view1 = Gtk.TreeView()
+        self.view1.get_selection().set_mode(Gtk.SelectionMode.MULTIPLE)
         self.view1.connect('row-expanded', self.on_row_expanded)
         scrolledwindow_fields.add(self.view1)
-        self.view2 = gtk.TreeView()
-        self.view2.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
+        self.view2 = Gtk.TreeView()
+        self.view2.get_selection().set_mode(Gtk.SelectionMode.MULTIPLE)
         scrolledwindow_fields_selected.add(self.view2)
         self.view1.set_headers_visible(False)
         self.view2.set_headers_visible(False)
 
-        cell = gtk.CellRendererText()
-        column = gtk.TreeViewColumn(_('Field name'), cell, text=0)
+        cell = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(_('Field name'), cell, text=0)
         self.view1.append_column(column)
 
-        cell = gtk.CellRendererText()
-        column = gtk.TreeViewColumn(_('Field name'), cell, text=0)
+        cell = Gtk.CellRendererText()
+        column = Gtk.TreeViewColumn(_('Field name'), cell, text=0)
         self.view2.append_column(column)
 
-        self.model1 = gtk.TreeStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
-        self.model2 = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_STRING)
+        self.model1 = Gtk.TreeStore(GObject.TYPE_STRING, GObject.TYPE_STRING)
+        self.model2 = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_STRING)
 
         self.model_populate(self._get_fields(self.model))
 
@@ -217,14 +222,15 @@ class WinCSV(NoModal):
 
         if sys.platform != 'darwin':
             self.view2.drag_source_set(
-                gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
-                [gtk.TargetEntry.new(
-                        'EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
-                gtk.gdk.ACTION_MOVE)
-            self.view2.drag_dest_set(gtk.DEST_DEFAULT_ALL,
-                [gtk.TargetEntry.new(
-                        'EXPORT_TREE', gtk.TARGET_SAME_WIDGET, 0)],
-                gtk.gdk.ACTION_MOVE)
+                Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK,
+                [Gtk.TargetEntry.new(
+                        'EXPORT_TREE', Gtk.TargetFlags.SAME_WIDGET, 0)],
+                Gdk.DragAction.MOVE)
+            self.view2.drag_dest_set(
+                Gtk.DestDefaults.ALL,
+                [Gtk.TargetEntry.new(
+                        'EXPORT_TREE', Gtk.TargetFlags.SAME_WIDGET, 0)],
+                Gdk.DragAction.MOVE)
             self.view2.connect('drag-begin', self.drag_begin)
             self.view2.connect('drag-motion', self.drag_motion)
             self.view2.connect('drag-drop', self.drag_drop)
@@ -240,20 +246,17 @@ class WinCSV(NoModal):
             treeview.set_drag_dest_row(*treeview.get_dest_row_at_pos(x, y))
         except TypeError:
             treeview.set_drag_dest_row(len(treeview.get_model()) - 1,
-                gtk.TREE_VIEW_DROP_AFTER)
-        if hasattr(gtk.gdk, 'drag_status'):
-            gtk.gdk.drag_status(context, gtk.gdk.ACTION_MOVE, time)
-        else:
-            context.drag_status(gtk.gdk.ACTION_MOVE, time)
+                Gtk.TreeViewDropPosition.AFTER)
+        Gdk.drag_status(context, Gdk.DragAction.MOVE, time)
         return True
 
     def drag_drop(self, treeview, context, x, y, time):
-        treeview.emit_stop_by_name('drag-drop')
+        treeview.stop_emission_by_name('drag-drop')
         return True
 
     def drag_data_get(self, treeview, context, selection, target_id,
             etime):
-        treeview.emit_stop_by_name('drag-data-get')
+        treeview.stop_emission_by_name('drag-data-get')
 
         def _func_sel_get(store, path, iter_, data):
             data.append(path[0])
@@ -268,7 +271,7 @@ class WinCSV(NoModal):
 
     def drag_data_received(self, treeview, context, x, y, selection,
             info, etime):
-        treeview.emit_stop_by_name('drag-data-received')
+        treeview.stop_emission_by_name('drag-data-received')
         try:
             selection_data = selection.data
         except AttributeError:
@@ -285,22 +288,19 @@ class WinCSV(NoModal):
             pos = store.get_iter(path)
         else:
             pos = store.get_iter((len(store) - 1,))
-            position = gtk.TREE_VIEW_DROP_AFTER
-        if position == gtk.TREE_VIEW_DROP_AFTER:
+            position = Gtk.TreeViewDropPosition.AFTER
+        if position == Gtk.TreeViewDropPosition.AFTER:
             data_iters = reversed(data_iters)
         for item in data_iters:
-            if position == gtk.TREE_VIEW_DROP_BEFORE:
+            if position == Gtk.TreeViewDropPosition.BEFORE:
                 store.move_before(item, pos)
             else:
                 store.move_after(item, pos)
-        if hasattr(gtk.gdk, 'drop_finish'):
-            gtk.gdk.drop_finish(context, False, etime)
-        else:
-            context.drop_finish(False, etime)
+        Gdk.drop_finish(context, False, etime)
         return True
 
     def drag_data_delete(self, treeview, context):
-        treeview.emit_stop_by_name('drag-data-delete')
+        treeview.stop_emission_by_name('drag-data-delete')
 
     def get_delimiter(self):
         return self.csv_delimiter.get_text() or ','

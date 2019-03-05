@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 'Action'
-import gtk
-import gobject
+import gettext
+
+from gi.repository import GLib, Gtk
+
 from tryton.gui.window.view_form.screen import Screen
 import tryton.rpc as rpc
 import tryton.common as common
 from tryton.pyson import PYSONDecoder
-import gettext
 from tryton.signal_event import SignalEvent
 from tryton.gui.window.win_form import WinForm
 from tryton.common import RPCExecute, RPCException
@@ -60,13 +61,13 @@ class Action(SignalEvent):
         search_value = PYSONDecoder(search_context).decode(
             self.action['pyson_search_value'] or '[]')
 
-        self.widget = gtk.Frame()
+        self.widget = Gtk.Frame()
         self.widget.set_border_width(0)
 
-        vbox = gtk.VBox(homogeneous=False, spacing=3)
+        vbox = Gtk.VBox(homogeneous=False, spacing=3)
         self.widget.add(vbox)
 
-        self.title = gtk.Label()
+        self.title = Gtk.Label()
         self.widget.set_label_widget(self.title)
         self.widget.set_label_align(0.0, 0.5)
         self.widget.show_all()
@@ -75,7 +76,8 @@ class Action(SignalEvent):
             mode=self.action['view_mode'], context=self.context,
             view_ids=view_ids, domain=self.domain,
             search_value=search_value, row_activate=self.row_activate)
-        vbox.pack_start(self.screen.widget, expand=True, fill=True)
+        vbox.pack_start(
+            self.screen.widget, expand=True, fill=True, padding=0)
         self.screen.signal_connect(self, 'record-message',
             self._active_changed)
 
@@ -146,4 +148,4 @@ class Action(SignalEvent):
             def display():
                 if self.screen.widget.props.window:
                     self.display()
-            gobject.idle_add(display)
+            GLib.idle_add(display)

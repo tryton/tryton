@@ -1,8 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-import gobject
 import gettext
+
+from gi.repository import Gdk, GLib, Gtk
 
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
@@ -84,9 +84,9 @@ class Widget(object):
         def get_value():
             if not self.widget.props.window:
                 return
-            gobject.timeout_add(300, send, self.get_value())
+            GLib.timeout_add(300, send, self.get_value())
         # Wait the current event is finished to retreive the value
-        gobject.idle_add(get_value)
+        GLib.idle_add(get_value)
         return False
 
     def invisible_set(self, value):
@@ -135,44 +135,50 @@ class TranslateDialog(NoModal):
     def __init__(self, widget, languages, readonly):
         NoModal.__init__(self)
         self.widget = widget
-        self.win = gtk.Dialog(_('Translation'), self.parent,
-            gtk.DIALOG_DESTROY_WITH_PARENT)
+        self.win = Gtk.Dialog(
+            title=_('Translation'), transient_for=self.parent,
+            destroy_with_parent=True)
         Main().add_window(self.win)
-        self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+        self.win.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
         self.win.connect('response', self.response)
         self.win.set_default_size(-1, self.default_size()[1])
 
-        self.accel_group = gtk.AccelGroup()
+        self.accel_group = Gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
         cancel_button = self.win.add_button(
-            set_underline(_("Cancel")), gtk.RESPONSE_CANCEL)
-        cancel_button.set_image(common.IconFactory.get_image(
-                    'tryton-cancel', gtk.ICON_SIZE_BUTTON))
+            set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
+        cancel_button.set_image(
+            common.IconFactory.get_image('tryton-cancel', Gtk.IconSize.BUTTON))
         cancel_button.set_always_show_image(True)
         ok_button = self.win.add_button(
-            set_underline(_("OK")), gtk.RESPONSE_OK)
-        ok_button.set_image(common.IconFactory.get_image(
-                'tryton-ok', gtk.ICON_SIZE_BUTTON))
+            set_underline(_("OK")), Gtk.ResponseType.OK)
+        ok_button.set_image(
+            common.IconFactory.get_image('tryton-ok', Gtk.IconSize.BUTTON))
         ok_button.set_always_show_image(True)
         ok_button.add_accelerator(
-            'clicked', self.accel_group, gtk.keysyms.Return,
-            gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
+            'clicked', self.accel_group, Gdk.KEY_Return,
+            Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE)
 
         tooltips = common.Tooltips()
 
         self.widgets = {}
-        table = gtk.Table(len(languages), 4)
+        table = Gtk.Table(n_rows=len(languages), n_columns=4)
         table.set_homogeneous(False)
         table.set_col_spacings(3)
         table.set_row_spacings(2)
         table.set_border_width(1)
         for i, language in enumerate(languages):
             label = language['name'] + _(':')
-            label = gtk.Label(label)
-            label.set_alignment(1.0, 0.0 if self.widget.expand else 0.5)
-            table.attach(label, 0, 1, i, i + 1, xoptions=gtk.FILL, xpadding=2)
+            label = Gtk.Label(
+                label=label,
+                halign=Gtk.Alignment.END,
+                valign=(Gtk.Alignment.START if self.widget.expand
+                    else Gtk.Alignment.FILL))
+            table.attach(
+                label, 0, 1, i, i + 1,
+                xoptions=Gtk.AttachOptions.FILL, xpadding=2)
 
             context = dict(
                 language=language['code'],
@@ -201,31 +207,35 @@ class TranslateDialog(NoModal):
             self.widget.translate_widget_set_readonly(widget, True)
             yopt = 0
             if self.widget.expand:
-                yopt = gtk.EXPAND | gtk.FILL
+                yopt = Gtk.AttachOptions.EXPAND | Gtk.AttachOptions.FILL
             table.attach(widget, 1, 2, i, i + 1, yoptions=yopt)
-            editing = gtk.CheckButton()
+            editing = Gtk.CheckButton()
             editing.connect('toggled', self.editing_toggled, widget)
             editing.props.sensitive = not readonly
             tooltips.set_tip(editing, _('Edit'))
-            table.attach(editing, 2, 3, i, i + 1, xoptions=gtk.FILL)
-            fuzzy = gtk.CheckButton()
+            table.attach(
+                editing, 2, 3, i, i + 1, xoptions=Gtk.AttachOptions.FILL)
+            fuzzy = Gtk.CheckButton()
             fuzzy.set_active(value != fuzzy_value)
             fuzzy.props.sensitive = False
             tooltips.set_tip(fuzzy, _('Fuzzy'))
-            table.attach(fuzzy, 4, 5, i, i + 1, xoptions=gtk.FILL)
+            table.attach(
+                fuzzy, 4, 5, i, i + 1, xoptions=Gtk.AttachOptions.FILL)
             self.widgets[language['code']] = (widget, editing, fuzzy)
 
         tooltips.enable()
-        vbox = gtk.VBox()
-        vbox.pack_start(table, self.widget.expand, True)
-        viewport = gtk.Viewport()
-        viewport.set_shadow_type(gtk.SHADOW_NONE)
+        vbox = Gtk.VBox()
+        vbox.pack_start(table, expand=self.widget.expand, fill=True, padding=0)
+        viewport = Gtk.Viewport()
+        viewport.set_shadow_type(Gtk.ShadowType.NONE)
         viewport.add(vbox)
-        scrolledwindow = gtk.ScrolledWindow()
-        scrolledwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        scrolledwindow.set_shadow_type(gtk.SHADOW_NONE)
+        scrolledwindow = Gtk.ScrolledWindow()
+        scrolledwindow.set_policy(
+            Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE)
         scrolledwindow.add(viewport)
-        self.win.vbox.pack_start(scrolledwindow, True, True)
+        self.win.vbox.pack_start(
+            scrolledwindow, expand=True, fill=True, padding=0)
         self.win.show_all()
 
         self.register()
@@ -236,7 +246,7 @@ class TranslateDialog(NoModal):
             not editing.get_active())
 
     def response(self, win, response):
-        if response == gtk.RESPONSE_OK:
+        if response == Gtk.ResponseType.OK:
             for code, widget in self.widgets.items():
                 widget, editing, fuzzy = widget
                 if not editing.get_active():
@@ -271,10 +281,10 @@ class TranslateDialog(NoModal):
 class TranslateMixin:
 
     def translate_button(self):
-        button = gtk.Button()
+        button = Gtk.Button()
         button.set_image(common.IconFactory.get_image(
-                'tryton-translate', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        button.set_relief(gtk.RELIEF_NONE)
+                'tryton-translate', Gtk.IconSize.SMALL_TOOLBAR))
+        button.set_relief(Gtk.ReliefStyle.NONE)
         button.connect('clicked', self.translate)
         return button
 

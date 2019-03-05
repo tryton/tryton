@@ -1,14 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from tryton.common import TRYTON_ICON
-import tryton.common as common
-import gtk
-import pango
 import gettext
 
+from gi.repository import Gdk, Gtk, Pango
+
 from .infobar import InfoBar
+import tryton.common as common
+from tryton.common import TRYTON_ICON
 from tryton.common.domain_parser import quote
 from tryton.common.underline import set_underline
+from tryton.common.widget_style import widget_class
 from tryton.gui import Main
 from tryton.gui.window.nomodal import NoModal
 
@@ -38,10 +39,11 @@ class WinForm(NoModal, InfoBar):
             return
         if new:
             self.screen.new(rec_name=rec_name)
-        self.win = gtk.Dialog(_('Link'), self.parent,
-                gtk.DIALOG_DESTROY_WITH_PARENT)
+        self.win = Gtk.Dialog(
+            title=_('Link'), transient_for=self.parent,
+            destroy_with_parent=True)
         Main().add_window(self.win)
-        self.win.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+        self.win.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
         self.win.set_deletable(False)
         self.win.connect('delete-event', lambda *a: True)
@@ -50,7 +52,7 @@ class WinForm(NoModal, InfoBar):
 
         self.win.set_default_size(*self.default_size())
 
-        self.accel_group = gtk.AccelGroup()
+        self.accel_group = Gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
 
         readonly = self.screen.readonly or self.screen.group.readonly
@@ -66,184 +68,183 @@ class WinForm(NoModal, InfoBar):
                 label, icon = _("Cancel"), 'tryton-cancel'
                 self._initial_value = self.screen.current_record.get_eval()
             self.but_cancel = self.win.add_button(
-                set_underline(label), gtk.RESPONSE_CANCEL)
+                set_underline(label), Gtk.ResponseType.CANCEL)
             self.but_cancel.set_image(common.IconFactory.get_image(
-                    icon, gtk.ICON_SIZE_BUTTON))
+                    icon, Gtk.IconSize.BUTTON))
             self.but_cancel.set_always_show_image(True)
 
         if new and self.many:
             self.but_new = self.win.add_button(
-                set_underline(_("New")), gtk.RESPONSE_ACCEPT)
+                set_underline(_("New")), Gtk.ResponseType.ACCEPT)
             self.but_new.set_image(common.IconFactory.get_image(
-                    'tryton-create', gtk.ICON_SIZE_BUTTON))
+                    'tryton-create', Gtk.IconSize.BUTTON))
             self.but_new.set_always_show_image(True)
             self.but_new.set_accel_path('<tryton>/Form/New', self.accel_group)
 
         if self.save_current:
-            self.but_ok = gtk.Button(_('_Save'), use_underline=True)
+            self.but_ok = Gtk.Button(label=_('_Save'), use_underline=True)
             self.but_ok.set_image(common.IconFactory.get_image(
-                    'tryton-save', gtk.ICON_SIZE_BUTTON))
+                    'tryton-save', Gtk.IconSize.BUTTON))
             self.but_ok.set_always_show_image(True)
             self.but_ok.set_accel_path('<tryton>/Form/Save', self.accel_group)
             self.but_ok.set_can_default(True)
             self.but_ok.show()
-            self.win.add_action_widget(self.but_ok, gtk.RESPONSE_OK)
+            self.win.add_action_widget(self.but_ok, Gtk.ResponseType.OK)
             if not new:
                 self.but_ok.props.sensitive = False
         else:
             self.but_ok = self.win.add_button(
-                set_underline(_("OK")), gtk.RESPONSE_OK)
+                set_underline(_("OK")), Gtk.ResponseType.OK)
             self.but_ok.set_image(common.IconFactory.get_image(
-                    'tryton-ok', gtk.ICON_SIZE_BUTTON))
+                    'tryton-ok', Gtk.IconSize.BUTTON))
             self.but_ok.set_always_show_image(True)
         self.but_ok.add_accelerator('clicked', self.accel_group,
-            gtk.keysyms.Return, gtk.gdk.CONTROL_MASK, gtk.ACCEL_VISIBLE)
-        self.win.set_default_response(gtk.RESPONSE_OK)
+            Gdk.KEY_Return, Gdk.ModifierType.CONTROL_MASK,
+            Gtk.AccelFlags.VISIBLE)
+        self.win.set_default_response(Gtk.ResponseType.OK)
 
         self.win.set_title(self.title)
 
-        title = gtk.Label()
-        title.modify_font(pango.FontDescription("bold 12"))
-        title.set_label(common.ellipsize(self.title, 80))
+        title = Gtk.Label(
+            label=common.ellipsize(self.title, 80),
+            halign=Gtk.Align.START, margin=5,
+            ellipsize=Pango.EllipsizeMode.END)
         tooltips.set_tip(title, self.title)
-        title.set_padding(20, 3)
-        title.set_alignment(0.0, 0.5)
         title.set_size_request(0, -1)  # Allow overflow
-        title.set_max_width_chars(1)
-        title.set_ellipsize(pango.ELLIPSIZE_END)
-        title.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#000000"))
         title.show()
 
-        hbox = gtk.HBox()
-        hbox.pack_start(title, expand=True, fill=True)
+        hbox = Gtk.HBox()
+        hbox.pack_start(title, expand=True, fill=True, padding=0)
         hbox.show()
 
-        frame = gtk.Frame()
-        frame.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        frame = Gtk.Frame()
+        frame.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
+        widget_class(frame, 'window-title', True)
         frame.add(hbox)
         frame.show()
 
-        eb = gtk.EventBox()
-        eb.add(frame)
-        eb.modify_bg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#ffffff"))
-        eb.show()
-
-        self.win.vbox.pack_start(eb, expand=False, fill=True, padding=3)
+        self.win.vbox.pack_start(frame, expand=False, fill=True, padding=3)
 
         if view_type == 'tree':
-            hbox = gtk.HBox(homogeneous=False, spacing=0)
+            hbox = Gtk.HBox(homogeneous=False, spacing=0)
+            hbox.set_halign(Gtk.Align.END)
             access = common.MODELACCESS[screen.model_name]
 
-            but_switch = gtk.Button()
+            but_switch = Gtk.Button()
             tooltips.set_tip(but_switch, _('Switch'))
             but_switch.connect('clicked', self.switch_view)
             but_switch.add(common.IconFactory.get_image(
-                    'tryton-switch', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            but_switch.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(but_switch, expand=False, fill=False)
+                    'tryton-switch', Gtk.IconSize.SMALL_TOOLBAR))
+            but_switch.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(but_switch, expand=False, fill=False, padding=0)
 
-            self.but_pre = gtk.Button()
+            self.but_pre = Gtk.Button()
             tooltips.set_tip(self.but_pre, _('Previous'))
             self.but_pre.connect('clicked', self._sig_previous)
             self.but_pre.add(common.IconFactory.get_image(
-                    'tryton-back', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_pre.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_pre, expand=False, fill=False)
+                    'tryton-back', Gtk.IconSize.SMALL_TOOLBAR))
+            self.but_pre.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(self.but_pre, expand=False, fill=False, padding=0)
 
-            self.label = gtk.Label('(0,0)')
-            hbox.pack_start(self.label, expand=False, fill=False)
+            self.label = Gtk.Label(label='(0,0)')
+            hbox.pack_start(self.label, expand=False, fill=False, padding=0)
 
-            self.but_next = gtk.Button()
+            self.but_next = Gtk.Button()
             tooltips.set_tip(self.but_next, _('Next'))
             self.but_next.connect('clicked', self._sig_next)
             self.but_next.add(common.IconFactory.get_image(
-                    'tryton-forward', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_next.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_next, expand=False, fill=False)
+                    'tryton-forward', Gtk.IconSize.SMALL_TOOLBAR))
+            self.but_next.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(self.but_next, expand=False, fill=False, padding=0)
 
-            hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
+            hbox.pack_start(
+                Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
             if domain is not None:
-                self.wid_text = gtk.Entry()
+                self.wid_text = Gtk.Entry()
                 self.wid_text.set_property('width_chars', 13)
                 self.wid_text.connect('activate', self._sig_activate)
                 self.wid_text.connect('focus-out-event', self._focus_out)
-                hbox.pack_start(self.wid_text, expand=True, fill=True)
+                hbox.pack_start(
+                    self.wid_text, expand=True, fill=True, padding=0)
 
-                self.but_add = gtk.Button()
+                self.but_add = Gtk.Button()
                 tooltips.set_tip(self.but_add, _('Add'))
                 self.but_add.connect('clicked', self._sig_add)
                 self.but_add.add(common.IconFactory.get_image(
-                        'tryton-add', gtk.ICON_SIZE_SMALL_TOOLBAR))
-                self.but_add.set_relief(gtk.RELIEF_NONE)
-                hbox.pack_start(self.but_add, expand=False, fill=False)
+                        'tryton-add', Gtk.IconSize.SMALL_TOOLBAR))
+                self.but_add.set_relief(Gtk.ReliefStyle.NONE)
+                hbox.pack_start(
+                    self.but_add, expand=False, fill=False, padding=0)
                 if not access['read'] or readonly:
                     self.but_add.set_sensitive(False)
 
-                self.but_remove = gtk.Button()
+                self.but_remove = Gtk.Button()
                 tooltips.set_tip(self.but_remove, _('Remove <Del>'))
                 self.but_remove.connect('clicked', self._sig_remove, True)
                 self.but_remove.add(common.IconFactory.get_image(
-                        'tryton-remove', gtk.ICON_SIZE_SMALL_TOOLBAR))
-                self.but_remove.set_relief(gtk.RELIEF_NONE)
-                hbox.pack_start(self.but_remove, expand=False, fill=False)
+                        'tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
+                self.but_remove.set_relief(Gtk.ReliefStyle.NONE)
+                hbox.pack_start(
+                    self.but_remove, expand=False, fill=False, padding=0)
                 if not access['read'] or readonly:
                     self.but_remove.set_sensitive(False)
 
-                hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
+                hbox.pack_start(
+                    Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
-            self.but_new = gtk.Button()
+            self.but_new = Gtk.Button()
             tooltips.set_tip(self.but_new, _('Create a new record <F3>'))
             self.but_new.connect('clicked', self._sig_new)
             self.but_new.add(common.IconFactory.get_image(
-                    'tryton-create', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_new.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_new, expand=False, fill=False)
+                    'tryton-create', Gtk.IconSize.SMALL_TOOLBAR))
+            self.but_new.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(self.but_new, expand=False, fill=False, padding=0)
             if not access['create'] or readonly:
                 self.but_new.set_sensitive(False)
 
-            self.but_del = gtk.Button()
+            self.but_del = Gtk.Button()
             tooltips.set_tip(self.but_del, _('Delete selected record <Del>'))
             self.but_del.connect('clicked', self._sig_remove, False)
             self.but_del.add(common.IconFactory.get_image(
-                    'tryton-delete', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_del.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_del, expand=False, fill=False)
+                    'tryton-delete', Gtk.IconSize.SMALL_TOOLBAR))
+            self.but_del.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(self.but_del, expand=False, fill=False, padding=0)
             if not access['delete'] or readonly:
                 self.but_del.set_sensitive(False)
 
-            self.but_undel = gtk.Button()
+            self.but_undel = Gtk.Button()
             tooltips.set_tip(self.but_undel,
                 _('Undelete selected record <Ins>'))
             self.but_undel.connect('clicked', self._sig_undelete)
             self.but_undel.add(common.IconFactory.get_image(
-                    'tryton-undo', gtk.ICON_SIZE_SMALL_TOOLBAR))
-            self.but_undel.set_relief(gtk.RELIEF_NONE)
-            hbox.pack_start(self.but_undel, expand=False, fill=False)
+                    'tryton-undo', Gtk.IconSize.SMALL_TOOLBAR))
+            self.but_undel.set_relief(Gtk.ReliefStyle.NONE)
+            hbox.pack_start(
+                self.but_undel, expand=False, fill=False, padding=0)
             if not access['delete'] or readonly:
                 self.but_undel.set_sensitive(False)
 
             but_switch.props.sensitive = screen.number_of_views > 1
 
             tooltips.enable()
+            hbox.show_all()
 
-            alignment = gtk.Alignment(1.0)
-            alignment.add(hbox)
-            alignment.show_all()
+            self.win.vbox.pack_start(
+                hbox, expand=False, fill=True, padding=0)
 
-            self.win.vbox.pack_start(alignment, expand=False, fill=True)
-
-        scroll = gtk.ScrolledWindow()
-        scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scroll.set_placement(gtk.CORNER_TOP_LEFT)
-        scroll.set_shadow_type(gtk.SHADOW_NONE)
+        scroll = Gtk.ScrolledWindow()
+        scroll.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scroll.set_placement(Gtk.CornerType.TOP_LEFT)
+        scroll.set_shadow_type(Gtk.ShadowType.NONE)
         scroll.show()
-        self.win.vbox.pack_start(scroll, expand=True, fill=True)
+        self.win.vbox.pack_start(scroll, expand=True, fill=True, padding=0)
 
         scroll.add(self.screen.screen_container.alternate_viewport)
 
         self.create_info_bar()
-        self.win.vbox.pack_start(self.info_bar, False, True)
+        self.win.vbox.pack_start(
+            self.info_bar, expand=False, fill=True, padding=0)
 
         if view_type == 'tree':
             self.screen.signal_connect(self, 'record-message', self._sig_label)
@@ -263,12 +264,12 @@ class WinForm(NoModal, InfoBar):
         self.screen.current_view.set_cursor()
 
     def on_keypress(self, widget, event):
-        if (event.keyval == gtk.keysyms.F3) \
-                and self.but_new.get_property('sensitive'):
+        if ((event.keyval == Gdk.KEY_F3)
+                and self.but_new.get_property('sensitive')):
             self._sig_new(widget)
             return False
-        if event.keyval in (gtk.keysyms.Delete, gtk.keysyms.KP_Delete) \
-                and widget == self.screen.screen_container.alternate_viewport:
+        if (event.keyval in [Gdk.KEY_Delete, Gdk.KEY_KP_Delete]
+                and widget == self.screen.screen_container.alternate_viewport):
             self._sig_remove(widget)
             return False
 
@@ -353,16 +354,17 @@ class WinForm(NoModal, InfoBar):
         sensitive = modified or self.but_ok.props.sensitive
         self.but_ok.props.sensitive = sensitive
         self.win.set_default_response(
-            gtk.RESPONSE_OK if sensitive else gtk.RESPONSE_CANCEL)
+            Gtk.ResponseType.OK if sensitive else Gtk.ResponseType.CANCEL)
 
     def close(self, widget):
-        widget.emit_stop_by_name('close')
-        self.response(self.win, gtk.RESPONSE_CANCEL)
+        widget.stop_emission_by_name('close')
+        self.response(self.win, Gtk.ResponseType.CANCEL)
         return True
 
     def response(self, win, response_id):
         validate = False
-        cancel_responses = (gtk.RESPONSE_CANCEL, gtk.RESPONSE_DELETE_EVENT)
+        cancel_responses = [
+            Gtk.ResponseType.CANCEL, Gtk.ResponseType.DELETE_EVENT]
         self.screen.current_view.set_value()
         readonly = self.screen.group.readonly
         if (response_id not in cancel_responses
@@ -386,12 +388,12 @@ class WinForm(NoModal, InfoBar):
                                 validate = record.pre_validate()
             if not validate:
                 self.message_info(self.screen.invalid_message(),
-                    gtk.MESSAGE_ERROR)
+                    Gtk.MessageType.ERROR)
                 self.screen.set_cursor()
                 self.screen.display()
                 return
             self.message_info()
-            if response_id == gtk.RESPONSE_ACCEPT:
+            if response_id == Gtk.ResponseType.ACCEPT:
                 self.new()
                 return
         if (self.screen.current_record
@@ -418,7 +420,7 @@ class WinForm(NoModal, InfoBar):
         self.many -= 1
         if self.many == 0:
             self.but_new.set_sensitive(False)
-            self.win.set_default_response(gtk.RESPONSE_OK)
+            self.win.set_default_response(Gtk.ResponseType.OK)
 
     def destroy(self):
         self.screen.screen_container.alternate_view = False

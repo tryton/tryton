@@ -11,7 +11,7 @@ class InfoBar(object):
 
         self.info_bar = Gtk.InfoBar()
         self.info_bar.get_content_area().pack_start(
-            self.info_label, False, False)
+            self.info_label, False, False, 0)
         self.info_bar.set_show_close_button(True)
         self.info_bar.connect('response', lambda i, r: i.hide())
 

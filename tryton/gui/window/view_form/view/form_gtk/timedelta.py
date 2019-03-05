@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
+from gi.repository import Gtk
 
 from tryton.config import CONFIG
 from tryton.common.entry_position import reset_position
@@ -12,15 +12,15 @@ class TimeDelta(Widget):
     def __init__(self, view, attrs):
         super(TimeDelta, self).__init__(view, attrs)
 
-        self.widget = gtk.HBox()
-        self.entry = self.mnemonic_widget = gtk.Entry()
+        self.widget = Gtk.HBox()
+        self.entry = self.mnemonic_widget = Gtk.Entry()
         self.entry.set_alignment(1.0)
         self.entry.set_property('activates_default', True)
 
         self.entry.connect('activate', self.sig_activate)
         self.entry.connect('focus-out-event', lambda x, y: self._focus_out())
         self.entry.connect('key-press-event', self.send_modified)
-        self.widget.pack_start(self.entry)
+        self.widget.pack_start(self.entry, expand=True, fill=True, padding=0)
 
     @property
     def modified(self):

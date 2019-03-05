@@ -1,16 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-
-from tryton.gui.window.view_form.screen import Screen
-from .widget import Widget
-from tryton.gui.window.win_search import WinSearch
-from tryton.gui.window.win_form import WinForm
-import tryton.common as common
 import gettext
+
+from gi.repository import Gdk, Gtk
+
+import tryton.common as common
+from .widget import Widget
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.domain_parser import quote
 from tryton.common.underline import set_underline
+from tryton.gui.window.view_form.screen import Screen
+from tryton.gui.window.win_search import WinSearch
+from tryton.gui.window.win_form import WinForm
 
 _ = gettext.gettext
 
@@ -21,33 +22,33 @@ class Many2Many(Widget):
     def __init__(self, view, attrs):
         super(Many2Many, self).__init__(view, attrs)
 
-        self.widget = gtk.Frame()
-        self.widget.set_shadow_type(gtk.SHADOW_NONE)
+        self.widget = Gtk.Frame()
+        self.widget.set_shadow_type(Gtk.ShadowType.NONE)
         self.widget.get_accessible().set_name(attrs.get('string', ''))
-        vbox = gtk.VBox(homogeneous=False, spacing=5)
+        vbox = Gtk.VBox(homogeneous=False, spacing=5)
         self.widget.add(vbox)
         self._readonly = True
         self._required = False
         self._position = 0
 
-        hbox = gtk.HBox(homogeneous=False, spacing=0)
+        hbox = Gtk.HBox(homogeneous=False, spacing=0)
         hbox.set_border_width(2)
 
-        self.title = gtk.Label(set_underline(attrs.get('string', '')))
-        self.title.set_use_underline(True)
-        self.title.set_alignment(0.0, 0.5)
-        hbox.pack_start(self.title, expand=True, fill=True)
+        self.title = Gtk.Label(
+            label=set_underline(attrs.get('string', '')),
+            use_underline=True, halign=Gtk.Align.START)
+        hbox.pack_start(self.title, expand=True, fill=True, padding=0)
 
-        hbox.pack_start(gtk.VSeparator(), expand=False, fill=True)
+        hbox.pack_start(Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
         tooltips = common.Tooltips()
 
-        self.wid_text = gtk.Entry()
+        self.wid_text = Gtk.Entry()
         self.wid_text.set_placeholder_text(_('Search'))
         self.wid_text.set_property('width_chars', 13)
         self.wid_text.connect('focus-out-event', self._focus_out)
         self.focus_out = True
-        hbox.pack_start(self.wid_text, expand=True, fill=True)
+        hbox.pack_start(self.wid_text, expand=True, fill=True, padding=0)
 
         if int(self.attrs.get('completion', 1)):
             self.wid_completion = get_completion(
@@ -62,30 +63,30 @@ class Many2Many(Widget):
         else:
             self.wid_completion = None
 
-        self.but_add = gtk.Button()
+        self.but_add = Gtk.Button()
         tooltips.set_tip(self.but_add, _('Add existing record'))
         self.but_add.connect('clicked', self._sig_add)
         self.but_add.add(common.IconFactory.get_image(
-                'tryton-add', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_add.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_add, expand=False, fill=False)
+                'tryton-add', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_add.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
 
-        self.but_remove = gtk.Button()
+        self.but_remove = Gtk.Button()
         tooltips.set_tip(self.but_remove, _('Remove selected record <Del>'))
         self.but_remove.connect('clicked', self._sig_remove)
         self.but_remove.add(common.IconFactory.get_image(
-                'tryton-remove', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_remove.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_remove, expand=False, fill=False)
+                'tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_remove.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_remove, expand=False, fill=False, padding=0)
 
         hbox.set_focus_chain([self.wid_text])
 
         tooltips.enable()
 
-        frame = gtk.Frame()
+        frame = Gtk.Frame()
         frame.add(hbox)
-        frame.set_shadow_type(gtk.SHADOW_OUT)
-        vbox.pack_start(frame, expand=False, fill=True)
+        frame.set_shadow_type(Gtk.ShadowType.OUT)
+        vbox.pack_start(frame, expand=False, fill=True, padding=0)
 
         self.screen = Screen(attrs['relation'],
             view_ids=attrs.get('view_ids', '').split(','),
@@ -94,7 +95,7 @@ class Many2Many(Widget):
             limit=None)
         self.screen.signal_connect(self, 'record-message', self._sig_label)
 
-        vbox.pack_start(self.screen.widget, expand=True, fill=True)
+        vbox.pack_start(self.screen.widget, expand=True, fill=True, padding=0)
 
         self.title.set_mnemonic_widget(
             self.screen.current_view.mnemonic_widget)
@@ -104,25 +105,25 @@ class Many2Many(Widget):
 
     def on_keypress(self, widget, event):
         editable = self.wid_text.get_editable()
-        activate_keys = [gtk.keysyms.Tab, gtk.keysyms.ISO_Left_Tab]
-        remove_keys = [gtk.keysyms.Delete, gtk.keysyms.KP_Delete]
+        activate_keys = [Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab]
+        remove_keys = [Gdk.KEY_Delete, Gdk.KEY_KP_Delete]
         if not self.wid_completion:
-            activate_keys.append(gtk.keysyms.Return)
+            activate_keys.append(Gdk.KEY_Return)
         if widget == self.screen.widget:
-            if event.keyval == gtk.keysyms.F3 and editable:
+            if event.keyval == Gdk.KEY_F3 and editable:
                 self._sig_add()
                 return True
-            elif event.keyval == gtk.keysyms.F2:
+            elif event.keyval == Gdk.KEY_F2:
                 self._sig_edit()
                 return True
             elif event.keyval in remove_keys and editable:
                 self._sig_remove()
                 return True
         elif widget == self.wid_text:
-            if event.keyval == gtk.keysyms.F3:
+            if event.keyval == Gdk.KEY_F3:
                 self._sig_new()
                 return True
-            elif event.keyval == gtk.keysyms.F2:
+            elif event.keyval == Gdk.KEY_F2:
                 self._sig_add()
                 return True
             elif event.keyval in activate_keys and self.wid_text.get_text():
@@ -163,7 +164,7 @@ class Many2Many(Widget):
             title=self.attrs.get('string'))
         win.screen.search_filter(quote(value))
         if len(win.screen.group) == 1:
-            win.response(None, gtk.RESPONSE_OK)
+            win.response(None, Gtk.ResponseType.OK)
         else:
             win.show()
 

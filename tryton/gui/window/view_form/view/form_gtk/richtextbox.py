@@ -3,7 +3,7 @@
 from gettext import gettext as _
 from weakref import WeakKeyDictionary
 
-import gtk
+from gi.repository import Gtk
 
 from .textbox import TextBox
 from tryton.common import get_toplevel_window, IconFactory
@@ -25,71 +25,70 @@ class RichTextBox(TextBox):
         self.colors = {}
         if int(self.attrs.get('toolbar', 1)):
             self.toolbar = self.get_toolbar(self.textview)
-            self.widget.pack_start(self.toolbar, expand=False, fill=True)
+            self.widget.pack_start(
+                self.toolbar, expand=False, fill=True, padding=0)
 
     def get_toolbar(self, textview):
-        toolbar = gtk.Toolbar()
+        toolbar = Gtk.Toolbar()
         toolbar.set_style({
                 'default': False,
-                'both': gtk.TOOLBAR_BOTH,
-                'text': gtk.TOOLBAR_TEXT,
-                'icons': gtk.TOOLBAR_ICONS}[CONFIG['client.toolbar']])
+                'both': Gtk.ToolbarStyle.BOTH,
+                'text': Gtk.ToolbarStyle.TEXT,
+                'icons': Gtk.ToolbarStyle.ICONS,
+                }[CONFIG['client.toolbar']])
         tag_widgets = self.tag_widgets[textview] = {}
 
         for icon in ['bold', 'italic', 'underline']:
-            button = gtk.ToggleToolButton()
+            button = Gtk.ToggleToolButton()
             button.set_icon_widget(IconFactory.get_image(
                     'tryton-format-%s' % icon,
-                    gtk.ICON_SIZE_SMALL_TOOLBAR))
+                    Gtk.IconSize.SMALL_TOOLBAR))
             button.connect('toggled', self.toggle_props, icon, textview)
             toolbar.insert(button, -1)
             tag_widgets[icon] = button
 
-        toolbar.insert(gtk.SeparatorToolItem(), -1)
+        toolbar.insert(Gtk.SeparatorToolItem(), -1)
 
         for name, options, active in [
                 ('family', FAMILIES, FAMILIES.index('normal')),
                 ('size', SIZES, SIZES.index('4')),
                 ]:
-            try:
-                combobox = gtk.ComboBoxText()
-            except AttributeError:
-                combobox = gtk.combo_box_new_text()
+            combobox = Gtk.ComboBoxText()
             for option in options:
                 combobox.append_text(option)
             combobox.set_active(active)
             combobox.set_focus_on_click(False)
             combobox.connect('changed', self.change_props, name, textview)
-            tool = gtk.ToolItem()
+            tool = Gtk.ToolItem()
             tool.add(combobox)
             toolbar.insert(tool, -1)
             tag_widgets[name] = combobox
 
-        toolbar.insert(gtk.SeparatorToolItem(), -1)
+        toolbar.insert(Gtk.SeparatorToolItem(), -1)
 
         button = None
         for name in ['left', 'center', 'right', 'justify']:
             icon = 'tryton-format-align-%s' % name
-            button = gtk.RadioToolButton.new_from_widget(button)
+            button = Gtk.RadioToolButton.new_from_widget(button)
             button.set_icon_widget(IconFactory.get_image(
-                    icon, gtk.ICON_SIZE_SMALL_TOOLBAR))
+                    icon, Gtk.IconSize.SMALL_TOOLBAR))
             button.set_active(icon == 'left')
             button.connect(
                 'toggled', self.toggle_justification, name, textview)
             toolbar.insert(button, -1)
             tag_widgets[name] = button
 
-        toolbar.insert(gtk.SeparatorToolItem(), -1)
+        toolbar.insert(Gtk.SeparatorToolItem(), -1)
 
         for icon, label in [
                 ('foreground', _('Foreground')),
                 # TODO ('background', _('Background')),
                 ]:
-            button = gtk.ToolButton()
+            button = Gtk.ToolButton()
             if icon == 'foreground':
                 button.set_icon_widget(IconFactory.get_image(
                         'tryton-format-color-text',
-                        gtk.ICON_SIZE_SMALL_TOOLBAR))
+                        Gtk.IconSize.SMALL_TOOLBAR))
             button.set_label(label)
             button.connect('clicked', self.toggle_color, icon, textview)
             toolbar.insert(button, -1)
@@ -114,7 +113,7 @@ class RichTextBox(TextBox):
         textview = widget.get_children()[-1].get_child()
         if self.toolbar:
             widget.pack_start(
-                self.get_toolbar(textview), expand=False, fill=True)
+                self.get_toolbar(textview), expand=False, fill=True, padding=0)
         return widget
 
     def translate_widget_set_readonly(self, widget, value):
@@ -266,19 +265,19 @@ class RichTextBox(TextBox):
 
     def _apply_tool(self, text_buffer, name, tool, start, end):
         # First test RadioToolButton as they inherit from ToggleToolButton
-        if isinstance(tool, gtk.RadioToolButton):
+        if isinstance(tool, Gtk.RadioToolButton):
             name = 'justification %s' % name
             if not tool.get_active():
                 remove_tags(text_buffer, start, end, name)
             else:
                 remove_tags(text_buffer, start, end, 'justification')
                 text_buffer.apply_tag_by_name(name, start, end)
-        elif isinstance(tool, gtk.ToggleToolButton):
+        elif isinstance(tool, Gtk.ToggleToolButton):
             if tool.get_active():
                 text_buffer.apply_tag_by_name(name, start, end)
             else:
                 text_buffer.remove_tag_by_name(name, start, end)
-        elif isinstance(tool, gtk.ComboBox):
+        elif isinstance(tool, Gtk.ComboBoxText):
             value = tool.get_active_text()
             remove_tags(text_buffer, start, end, name)
             name = '%s %s' % (name, value)
@@ -325,14 +324,14 @@ class RichTextBox(TextBox):
             start = start.get_offset()
             end = end.get_offset()
 
-        dialog = gtk.ColorSelectionDialog(_('Select a color'))
+        dialog = Gtk.ColorSelectionDialog(_('Select a color'))
         dialog.set_transient_for(get_toplevel_window())
         colorsel = dialog.get_color_selection()
         colorsel.set_has_palette(True)
         color = self.colors.get(name)
         if color:
             colorsel.set_current_color(color)
-        if dialog.run() == gtk.RESPONSE_OK:
+        if dialog.run() == Gtk.ResponseType.OK:
             color = colorsel.get_current_color()
             self.colors[name] = color
             if start is not None and end is not None:

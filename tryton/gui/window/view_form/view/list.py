@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gobject
-import gtk
 import sys
 import json
 import locale
 import gettext
 from functools import wraps
 from collections import defaultdict
+
+from gi.repository import Gdk, GLib, GObject, Gtk
+from pygtkcompat.generictreemodel import GenericTreeModel
 
 from tryton.config import CONFIG
 from tryton.common.cellrendererbutton import CellRendererButton
@@ -37,7 +38,7 @@ def delay(func):
             if self.treeview.display_counter == display_counter:
                 func(self, *args, **kwargs)
         display_counter = self.treeview.display_counter
-        gobject.idle_add(wait)
+        GLib.idle_add(wait)
     return wrapper
 
 
@@ -57,7 +58,7 @@ def path_convert_id2pos(model, id_path):
     return tuple(indexes)
 
 
-class AdaptModelGroup(gtk.GenericTreeModel):
+class AdaptModelGroup(GenericTreeModel):
 
     def __init__(self, group, children_field=None):
         super(AdaptModelGroup, self).__init__()
@@ -154,7 +155,7 @@ class AdaptModelGroup(gtk.GenericTreeModel):
             prev = record
         if prev:
             prev.next[id(self.group)] = None
-        path = gtk.TreePath()
+        path = Gtk.TreePath()
         # XXX pygobject does not allow to create empty TreePath,
         # it is always a path of 0
         # see: https://bugzilla.gnome.org/show_bug.cgi?id=770665
@@ -168,7 +169,7 @@ class AdaptModelGroup(gtk.GenericTreeModel):
 
     def on_get_flags(self):
         if not self.children_field:
-            return gtk.TREE_MODEL_LIST_ONLY
+            return Gtk.TreeModelFlags.LIST_ONLY
         return 0
 
     def on_get_n_columns(self):
@@ -177,7 +178,7 @@ class AdaptModelGroup(gtk.GenericTreeModel):
 
     def on_get_column_type(self, index):
         # XXX
-        return gobject.TYPE_PYOBJECT
+        return GObject.TYPE_PYOBJECT
 
     def on_get_path(self, record):
         return record.get_index_path(self.group)
@@ -258,14 +259,14 @@ class ViewTree(View):
         self.state_widgets = []
         self.children_field = children_field
         self.sum_widgets = []
-        self.sum_box = gtk.HBox()
+        self.sum_box = Gtk.HBox()
         self.reload = False
         if self.attributes.get('editable') and not screen.readonly:
             self.treeview = EditableTreeView(self.attributes['editable'], self)
-            grid_lines = gtk.TREE_VIEW_GRID_LINES_BOTH
+            grid_lines = Gtk.TreeViewGridLines.BOTH
         else:
             self.treeview = TreeView(self)
-            grid_lines = gtk.TREE_VIEW_GRID_LINES_VERTICAL
+            grid_lines = Gtk.TreeViewGridLines.VERTICAL
         self.mnemonic_widget = self.treeview
 
         self.parse(xml)
@@ -273,7 +274,7 @@ class ViewTree(View):
         self.treeview.set_property('rules-hint', True)
         self.treeview.set_property('enable-grid-lines', grid_lines)
         self.treeview.set_fixed_height_mode(
-            all(c.get_sizing() == gtk.TREE_VIEW_COLUMN_FIXED
+            all(c.get_sizing() == Gtk.TreeViewColumnSizing.FIXED
                 for c in self.treeview.get_columns()))
         self.treeview.connect('button-press-event', self.__button_press)
         self.treeview.connect('key-press-event', self.on_keypress)
@@ -284,23 +285,25 @@ class ViewTree(View):
         self.treeview.set_rubber_banding(True)
 
         selection = self.treeview.get_selection()
-        selection.set_mode(gtk.SELECTION_MULTIPLE)
+        selection.set_mode(Gtk.SelectionMode.MULTIPLE)
         selection.connect('changed', self.__select_changed)
 
         self.set_drag_and_drop()
 
-        self.widget = gtk.VBox()
-        self.scroll = scroll = gtk.ScrolledWindow()
+        self.widget = Gtk.VBox()
+        self.scroll = scroll = Gtk.ScrolledWindow()
         scroll.add(self.treeview)
-        scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scroll.set_placement(gtk.CORNER_TOP_LEFT)
-        viewport = gtk.Viewport()
-        viewport.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        scroll.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scroll.set_placement(Gtk.CornerType.TOP_LEFT)
+        viewport = Gtk.Viewport()
+        viewport.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
         viewport.add(scroll)
-        self.widget.pack_start(viewport, expand=True, fill=True)
+        self.widget.pack_start(viewport, expand=True, fill=True, padding=0)
 
         self.sum_box.show()
-        self.widget.pack_start(self.sum_box, expand=False, fill=False)
+        self.widget.pack_start(
+            self.sum_box, expand=False, fill=False, padding=0)
 
         self.display()
 
@@ -342,7 +345,7 @@ class ViewTree(View):
         widget = Widget(self, node_attrs)
         self.widgets[name].append(widget)
 
-        column = gtk.TreeViewColumn(node_attrs['string'])
+        column = Gtk.TreeViewColumn(node_attrs['string'])
         column._type = 'field'
         column.name = name
 
@@ -394,7 +397,7 @@ class ViewTree(View):
         widget = Button(self, node_attrs)
         self.state_widgets.append(widget)
 
-        column = gtk.TreeViewColumn(node_attrs.get('string', ''),
+        column = Gtk.TreeViewColumn(node_attrs.get('string', ''),
             widget.renderer)
         column._type = 'button'
         column.name = None
@@ -441,8 +444,8 @@ class ViewTree(View):
 
     def set_column_widget(self, column, field, attributes,
             arrow=True, align=0.5):
-        hbox = gtk.HBox(False, 2)
-        label = gtk.Label(attributes['string'])
+        hbox = Gtk.HBox(homogeneous=False, spacing=2)
+        label = Gtk.Label(label=attributes['string'])
         if field and self.editable:
             required = field.attrs.get('required')
             readonly = field.attrs.get('readonly')
@@ -458,12 +461,14 @@ class ViewTree(View):
             tooltips.set_tip(label, help)
             tooltips.enable()
         if arrow:
-            arrow_widget = gtk.Arrow(gtk.ARROW_NONE, gtk.SHADOW_NONE)
+            arrow_widget = Gtk.Arrow(
+                arrow_type=Gtk.ArrowType.NONE, shadow_type=Gtk.ShadowType.NONE)
             arrow_widget.show()
             column.arrow = arrow_widget
-        hbox.pack_start(label, True, True, 0)
+        hbox.pack_start(label, expand=True, fill=True, padding=0)
         if arrow:
-            hbox.pack_start(arrow_widget, False, False, 0)
+            hbox.pack_start(
+                arrow_widget, expand=False, fill=False, padding=0)
             column.set_clickable(True)
         hbox.show()
         column.set_widget(hbox)
@@ -505,7 +510,7 @@ class ViewTree(View):
         column.set_expand(expand)
         column.set_resizable(True)
         if attributes.get('widget') != 'text':
-            column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
+            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
 
     def get_column_widget(self, column):
         'Return the widget of the column'
@@ -517,30 +522,30 @@ class ViewTree(View):
         if 'sum' not in attributes:
             return
         text = attributes['sum'] + _(':')
-        label, sum_ = gtk.Label(text), gtk.Label()
+        label, sum_ = Gtk.Label(label=text), Gtk.Label()
 
-        hbox = gtk.HBox()
+        hbox = Gtk.HBox()
         hbox.pack_start(label, expand=True, fill=False, padding=2)
         hbox.pack_start(sum_, expand=True, fill=False, padding=2)
         hbox.show_all()
-        self.sum_box.pack_start(hbox, expand=False, fill=False)
+        self.sum_box.pack_start(hbox, expand=False, fill=False, padding=0)
 
         self.sum_widgets.append((attributes['name'], sum_))
 
     def sort_model(self, column):
         for col in self.treeview.get_columns():
             if col != column and getattr(col, 'arrow', None):
-                col.arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
+                col.arrow.set(Gtk.ArrowType.NONE, Gtk.ShadowType.NONE)
         self.screen.order = self.screen.default_order
-        if column.arrow.props.arrow_type == gtk.ARROW_NONE:
-            column.arrow.set(gtk.ARROW_DOWN, gtk.SHADOW_IN)
+        if column.arrow.props.arrow_type == Gtk.ArrowType.NONE:
+            column.arrow.set(Gtk.ArrowType.DOWN, Gtk.ShadowType.IN)
             self.screen.order = [(column.name, 'ASC')]
         else:
-            if column.arrow.props.arrow_type == gtk.ARROW_DOWN:
-                column.arrow.set(gtk.ARROW_UP, gtk.SHADOW_IN)
+            if column.arrow.props.arrow_type == Gtk.ArrowType.DOWN:
+                column.arrow.set(Gtk.ArrowType.UP, Gtk.ShadowType.IN)
                 self.screen.order = [(column.name, 'DESC')]
             else:
-                column.arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
+                column.arrow.set(Gtk.ArrowType.NONE, Gtk.ShadowType.NONE)
         model = self.treeview.get_model()
         unsaved_records = [x for x in model.group if x.id < 0]
         search_string = self.screen.screen_container.get_text() or ''
@@ -558,8 +563,8 @@ class ViewTree(View):
         if order and len(order) == 1:
             (name, direction), = order
             direction = {
-                'ASC': gtk.ARROW_DOWN,
-                'DESC': gtk.ARROW_UP,
+                'ASC': Gtk.ArrowType.DOWN,
+                'DESC': Gtk.ArrowType.UP,
                 }[direction]
         else:
             name, direction = None, None
@@ -568,19 +573,19 @@ class ViewTree(View):
             arrow = getattr(col, 'arrow', None)
             if arrow:
                 if col.name != name:
-                    arrow.set(gtk.ARROW_NONE, gtk.SHADOW_NONE)
+                    arrow.set(Gtk.ArrowType.NONE, Gtk.ShadowType.NONE)
                 else:
-                    arrow.set(direction, gtk.SHADOW_IN)
+                    arrow.set(direction, Gtk.ShadowType.IN)
 
     def add_last_column(self):
         for column in self.treeview.get_columns():
             if column.get_expand():
                 break
         else:
-            column = gtk.TreeViewColumn()
+            column = Gtk.TreeViewColumn()
             column._type = 'fill'
             column.name = None
-            column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
+            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
             self.treeview.append_column(column)
 
     def set_drag_and_drop(self):
@@ -602,20 +607,20 @@ class ViewTree(View):
             return
 
         self.treeview.enable_model_drag_dest(
-            [('MY_TREE_MODEL_ROW', gtk.TARGET_SAME_WIDGET, 0)],
-            gtk.gdk.ACTION_MOVE)
+            [('MY_TREE_MODEL_ROW', Gtk.TargetFlags.SAME_WIDGET, 0)],
+            Gdk.DragAction.MOVE)
         self.treeview.enable_model_drag_source(
-            gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
-            [('MY_TREE_MODEL_ROW', gtk.TARGET_SAME_WIDGET, 0)],
-            gtk.gdk.ACTION_MOVE)
+            Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK,
+            [('MY_TREE_MODEL_ROW', Gtk.TargetFlags.SAME_WIDGET, 0)],
+            Gdk.DragAction.MOVE)
         # XXX have to set manually because enable_model_drag_source
         # does not set the mask
         # https://bugzilla.gnome.org/show_bug.cgi?id=756177
         self.treeview.drag_source_set(
-            gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
-            [gtk.TargetEntry.new(
-                    'MY_TREE_MODEL_ROW', gtk.TARGET_SAME_WIDGET, 0)],
-            gtk.gdk.ACTION_MOVE)
+            Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.BUTTON3_MASK,
+            [Gtk.TargetEntry.new(
+                    'MY_TREE_MODEL_ROW', Gtk.TargetFlags.SAME_WIDGET, 0)],
+            Gdk.DragAction.MOVE)
 
         self.treeview.connect("drag-data-get", self.drag_data_get)
         self.treeview.connect('drag-data-received',
@@ -640,14 +645,14 @@ class ViewTree(View):
             if isinstance(b.renderer, CellRendererButton)]
 
     def on_keypress(self, widget, event):
-        control_mask = gtk.gdk.CONTROL_MASK
+        control_mask = Gdk.ModifierType.CONTROL_MASK
         if sys.platform == 'darwin':
-            control_mask = gtk.gdk.MOD2_MASK
-        if (event.keyval == gtk.keysyms.c
+            control_mask = Gdk.ModifierType.MOD2_MASK
+        if (event.keyval == Gdk.KEY_c
                 and event.state & control_mask):
             self.on_copy()
             return False
-        if (event.keyval == gtk.keysyms.v
+        if (event.keyval == Gdk.KEY_v
                 and event.state & control_mask):
             self.on_paste()
             return False
@@ -674,8 +679,8 @@ class ViewTree(View):
         return False
 
     def on_copy(self):
-        for clipboard_type in (gtk.gdk.SELECTION_CLIPBOARD,
-                gtk.gdk.SELECTION_PRIMARY):
+        for clipboard_type in [
+                Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
             clipboard = self.treeview.get_clipboard(clipboard_type)
             selection = self.treeview.get_selection()
             data = []
@@ -704,8 +709,8 @@ class ViewTree(View):
                 return value[1:-1]
             return value
         data = []
-        for clipboard_type in (gtk.gdk.SELECTION_CLIPBOARD,
-                gtk.gdk.SELECTION_PRIMARY):
+        for clipboard_type in [
+                Gdk.SELECTION_CLIPBOARD, Gdk.SELECTION_PRIMARY]:
             clipboard = self.treeview.get_clipboard(clipboard_type)
             text = clipboard.wait_for_text()
             if not text:
@@ -751,7 +756,7 @@ class ViewTree(View):
 
     def drag_data_get(self, treeview, context, selection, target_id,
             etime):
-        treeview.emit_stop_by_name('drag-data-get')
+        treeview.stop_emission_by_name('drag-data-get')
 
         def _func_sel_get(model, path, iter_, data):
             value = model.get_value(iter_, 0)
@@ -767,7 +772,7 @@ class ViewTree(View):
 
     def drag_data_received(self, treeview, context, x, y, selection,
             info, etime):
-        treeview.emit_stop_by_name('drag-data-received')
+        treeview.stop_emission_by_name('drag-data-received')
         if self.attributes.get('sequence'):
             field = self.group.fields[self.attributes['sequence']]
             for record in self.group:
@@ -786,7 +791,7 @@ class ViewTree(View):
         # internal state of the cursor.
         cursor, column = treeview.get_cursor()
         if column:
-            for renderer in column.get_cell_renderers():
+            for renderer in column.get_cells():
                 if renderer.props.editing:
                     return
 
@@ -811,36 +816,34 @@ class ViewTree(View):
         if drop_info:
             path, position = drop_info
             check_path = tuple(path)
-            if position in (gtk.TREE_VIEW_DROP_BEFORE,
-                    gtk.TREE_VIEW_DROP_AFTER):
+            if position in [
+                    Gtk.TreeViewDropPosition.BEFORE,
+                    Gtk.TreeViewDropPosition.AFTER]:
                 check_path = path[:-1]
             if not check_recursion(record_path, check_path):
                 return
-            if position == gtk.TREE_VIEW_DROP_BEFORE:
+            if position == Gtk.TreeViewDropPosition.BEFORE:
                 model.move_before(record, path)
-            elif position == gtk.TREE_VIEW_DROP_AFTER:
+            elif position == Gtk.TreeViewDropPosition.AFTER:
                 model.move_after(record, path)
             elif self.children_field:
                 model.move_into(record, path)
         else:
             model.move_after(record, (len(model) - 1,))
-        if hasattr(gtk.gdk, 'drop_finish'):
-            gtk.gdk.drop_finish(context, False, etime)
-        else:
-            context.drop_finish(False, etime)
+        Gdk.drop_finish(context, False, etime)
         if self.attributes.get('sequence'):
             record.group.set_sequence(field=self.attributes['sequence'])
         return True
 
     def drag_drop(self, treeview, context, x, y, time):
-        treeview.emit_stop_by_name('drag-drop')
+        treeview.stop_emission_by_name('drag-drop')
         targets = treeview.drag_dest_get_target_list()
         target = treeview.drag_dest_find_target(context, targets)
         treeview.drag_get_data(context, target, time)
         return True
 
     def drag_data_delete(self, treeview, context):
-        treeview.emit_stop_by_name('drag-data-delete')
+        treeview.stop_emission_by_name('drag-data-delete')
 
     def __button_press(self, treeview, event):
         if event.button == 3:
@@ -850,18 +853,19 @@ class ViewTree(View):
             except TypeError:
                 # Outside row
                 return False
-            menu = gtk.Menu()
-            copy_item = gtk.ImageMenuItem('gtk-copy')
-            copy_item.set_use_stock(True)
+            menu = Gtk.Menu()
+            copy_item = Gtk.MenuItem(label=_('Copy'))
             copy_item.connect('activate', lambda x: self.on_copy())
             menu.append(copy_item)
             if self.editable:
-                paste_item = gtk.ImageMenuItem('gtk-paste')
-                paste_item.set_use_stock(True)
+                paste_item = Gtk.MenuItem(label=_('Paste'))
                 paste_item.connect('activate', lambda x: self.on_paste())
                 menu.append(paste_item)
             menu.show_all()
-            menu.popup(None, None, None, event.button, event.time)
+            if hasattr(menu, 'popup_at_pointer'):
+                menu.popup_at_pointer(event)
+            else:
+                menu.popup(None, None, None, event.button, event.time)
 
             def pop(menu, group, record):
                 # Don't activate actions if parent is modified
@@ -897,13 +901,13 @@ class ViewTree(View):
             selection = treeview.get_selection()
             if selection.count_selected_rows() == 1:
                 group = self.group
-                if selection.get_mode() == gtk.SELECTION_SINGLE:
+                if selection.get_mode() == Gtk.SelectionMode.SINGLE:
                     model = selection.get_selected()[0]
-                elif selection.get_mode() == gtk.SELECTION_MULTIPLE:
+                elif selection.get_mode() == Gtk.SelectionMode.MULTIPLE:
                     model = selection.get_selected_rows()[0]
                 record = model.get_value(model.get_iter(path), 0)
                 # Delay filling of popup as it can take time
-                gobject.idle_add(pop, menu, group, record)
+                GLib.idle_add(pop, menu, group, record)
             return True  # Don't change the selection
         elif event.button == 2:
             with Window(allow_similar=True):
@@ -961,9 +965,9 @@ class ViewTree(View):
         if column._type == 'button':
             return
         allow_similar = False
-        event = gtk.get_current_event()
-        if (event.state & gtk.gdk.MOD1_MASK
-                or event.state & gtk.gdk.SHIFT_MASK):
+        event = Gtk.get_current_event()
+        if (event.state & Gdk.ModifierType.MOD1_MASK
+                or event.state & Gdk.ModifierType.SHIFT_MASK):
             allow_similar = True
         with Window(allow_similar=allow_similar):
             if not self.screen.row_activate() and self.children_field:
@@ -977,7 +981,7 @@ class ViewTree(View):
         if previous_record and previous_record not in previous_record.group:
             previous_record = None
 
-        if tree_sel.get_mode() == gtk.SELECTION_SINGLE:
+        if tree_sel.get_mode() == Gtk.SelectionMode.SINGLE:
             model, iter_ = tree_sel.get_selected()
             if model and iter_:
                 record = model.get_value(iter_, 0)
@@ -985,7 +989,7 @@ class ViewTree(View):
             else:
                 self.record = None
 
-        elif tree_sel.get_mode() == gtk.SELECTION_MULTIPLE:
+        elif tree_sel.get_mode() == Gtk.SelectionMode.MULTIPLE:
             model, paths = tree_sel.get_selected_rows()
             if model and paths:
                 iter_ = model.get_iter(paths[0])
@@ -1009,7 +1013,7 @@ class ViewTree(View):
                     go_previous()
                     return True
                 # Delay the save to let GTK process the current event
-                gobject.idle_add(save)
+                GLib.idle_add(save)
             elif previous_record != self.record and self.screen.pre_validate:
 
                 def pre_validate():
@@ -1017,7 +1021,7 @@ class ViewTree(View):
                         if not previous_record.pre_validate():
                             go_previous()
                 # Delay the pre_validate to let GTK process the current event
-                gobject.idle_add(pre_validate)
+                GLib.idle_add(pre_validate)
         self.update_sum()
 
     def set_value(self):
@@ -1140,18 +1144,18 @@ class ViewTree(View):
         model = self.treeview.get_model()
         if self.record and model:
             path = self.record.get_index_path(model.group)
-            if model.get_flags() & gtk.TREE_MODEL_LIST_ONLY:
+            if model.get_flags() & Gtk.TreeModelFlags.LIST_ONLY:
                 path = (path[0],)
             focus_column, focus_cell = self.treeview.next_column(
                 path, editable=new)
             if path[:-1]:
-                self.treeview.expand_to_path(gtk.TreePath(path[:-1]))
+                self.treeview.expand_to_path(Gtk.TreePath(path[:-1]))
             self.treeview.scroll_to_cell(path, focus_column,
                 use_align=False)
             current_path = self.treeview.get_cursor()[0]
             selected_path = \
                 self.treeview.get_selection().get_selected_rows()[1]
-            path = gtk.TreePath(path)
+            path = Gtk.TreePath(path)
             if (current_path != path and path not in selected_path) or new:
                 self.treeview.set_cursor(path, focus_column, new)
 
@@ -1188,7 +1192,7 @@ class ViewTree(View):
         for node in nodes:
             path = path_convert_id2pos(model, node)
             if path:
-                selection.select_path(gtk.TreePath(path))
+                selection.select_path(Gtk.TreePath(path))
                 if not scroll:
                     self.treeview.scroll_to_cell(path)
                     scroll = True
@@ -1203,12 +1207,12 @@ class ViewTree(View):
         id_paths = []
         model = self.treeview.get_model()
         if starting_path:
-            iter_ = model.get_iter(gtk.TreePath(starting_path))
+            iter_ = model.get_iter(Gtk.TreePath(starting_path))
         else:
             iter_ = None
         for path_idx in range(model.iter_n_children(iter_)):
             path = starting_path + (path_idx,)
-            expanded = self.treeview.row_expanded(gtk.TreePath(path))
+            expanded = self.treeview.row_expanded(Gtk.TreePath(path))
             if expanded:
                 iter_ = model.get_iter(path)
                 expanded_record = model.get_value(iter_, 0)
@@ -1223,4 +1227,4 @@ class ViewTree(View):
         for node in nodes:
             expand_path = path_convert_id2pos(model, node)
             if expand_path:
-                self.treeview.expand_to_path(gtk.TreePath(expand_path))
+                self.treeview.expand_to_path(Gtk.TreePath(expand_path))

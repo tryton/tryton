@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import gtk
-from .widget import Widget
 import gettext
+
+from gi.repository import Gtk
+
+from .widget import Widget
 
 _ = gettext.gettext
 
@@ -11,7 +13,7 @@ class CheckBox(Widget):
 
     def __init__(self, view, attrs):
         super(CheckBox, self).__init__(view, attrs)
-        self.widget = self.mnemonic_widget = gtk.CheckButton()
+        self.widget = self.mnemonic_widget = Gtk.CheckButton()
         self.widget.connect('focus-out-event', lambda x, y: self._focus_out())
         self.widget.connect_after('toggled', self.sig_activate)
 

@@ -1,18 +1,19 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import operator
-import gtk
 import gettext
 from collections import defaultdict
+
+from gi.repository import Gtk
 
 from . import View
 from tryton.common.focus import (get_invisible_ancestor, find_focused_child,
     next_focus_widget, find_focusable_child, find_first_focus_widget)
-from tryton.common import Tooltips, node_attributes, IconFactory
+from tryton.common import Tooltips, node_attributes, IconFactory, get_align
 from tryton.common.underline import set_underline
 from tryton.common.button import Button
 from tryton.config import CONFIG
-from .form_gtk.calendar import Date, Time, DateTime
+from .form_gtk.calendar_ import Date, Time, DateTime
 from .form_gtk.float import Float
 from .form_gtk.integer import Integer
 from .form_gtk.selection import Selection
@@ -56,7 +57,7 @@ class Container(object):
         if col < 0:
             col = 0
         self.col = col
-        self.table = gtk.Table(1, col)
+        self.table = Gtk.Table(n_rows=1, n_columns=col)
         self.table.set_homogeneous(homogeneous)
         self.table.set_col_spacings(0)
         self.table.set_row_spacings(0)
@@ -95,21 +96,21 @@ class Container(object):
 
         yopt = 0
         if attributes.get('yexpand'):
-            yopt = gtk.EXPAND
+            yopt = Gtk.AttachOptions.EXPAND
         if attributes.get('yfill'):
             if yopt:
-                yopt |= gtk.FILL
+                yopt |= Gtk.AttachOptions.FILL
             else:
-                yopt = gtk.FILL
+                yopt = Gtk.AttachOptions.FILL
 
         xopt = 0
         if attributes.get('xexpand', True):
-            xopt = gtk.EXPAND
+            xopt = Gtk.AttachOptions.EXPAND
         if attributes.get('xfill', True):
             if xopt:
-                xopt |= gtk.FILL
+                xopt |= Gtk.AttachOptions.FILL
             else:
-                xopt = gtk.FILL
+                xopt = Gtk.AttachOptions.FILL
 
         if attributes.get('help'):
             self.tooltips.set_tip(widget, attributes['help'])
@@ -125,7 +126,7 @@ class Container(object):
 class VContainer(Container):
     def __init__(self, col=1, homogeneous=False):
         self.col = 1
-        self.table = gtk.VBox()
+        self.table = Gtk.VBox()
         self.table.set_homogeneous(homogeneous)
 
     def add_row(self):
@@ -145,7 +146,7 @@ class VContainer(Container):
 class HContainer(Container):
     def __init__(self, col=0, homogeneous=False):
         self.col = 0
-        self.table = gtk.HBox()
+        self.table = Gtk.HBox()
         self.table.set_homogeneous(homogeneous)
 
     def add_row(self):
@@ -175,18 +176,19 @@ class ViewForm(View):
 
         container = self.parse(xml)
 
-        vbox = gtk.VBox()
-        vp = gtk.Viewport()
-        vp.set_shadow_type(gtk.SHADOW_NONE)
+        vbox = Gtk.VBox()
+        vp = Gtk.Viewport()
+        vp.set_shadow_type(Gtk.ShadowType.NONE)
         vp.add(container.table)
-        self.scroll = scroll = gtk.ScrolledWindow()
+        self.scroll = scroll = Gtk.ScrolledWindow()
         scroll.add(vp)
-        scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scroll.set_placement(gtk.CORNER_TOP_LEFT)
-        viewport = gtk.Viewport()
-        viewport.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        scroll.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scroll.set_placement(Gtk.CornerType.TOP_LEFT)
+        viewport = Gtk.Viewport()
+        viewport.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
         viewport.add(scroll)
-        vbox.pack_start(viewport, expand=True, fill=True)
+        vbox.pack_start(viewport, expand=True, fill=True, padding=0)
 
         self.widget = vbox
         self._viewport = vp
@@ -238,12 +240,12 @@ class ViewForm(View):
                     attributes[attr] = field.attrs[attr]
         vbox = VBox(attrs=attributes)
         if attributes.get('string'):
-            label = Label(attributes['string'], attrs=attributes)
-            label.set_alignment(float(attributes.get('xalign', 0.0)),
-                float(attributes.get('yalign', 0.5)))
-            vbox.pack_start(label)
+            label = Label(label=attributes['string'], attrs=attributes)
+            label.set_halign(get_align(attributes.get('xalign', 0.0)))
+            label.set_valign(get_align(attributes.get('yalign', 0.5)))
+            vbox.pack_start(label, expand=True, fill=True, padding=0)
             self.state_widgets.append(label)
-        vbox.pack_start(gtk.HSeparator())
+        vbox.pack_start(Gtk.HSeparator(), expand=True, fill=True, padding=0)
         self.state_widgets.append(vbox)
         container.add(vbox, attributes)
 
@@ -260,9 +262,9 @@ class ViewForm(View):
         if CONFIG['client.modepda']:
             attributes['xalign'] = 0.0
 
-        label = Label(attributes.get('string', ''), attrs=attributes)
-        label.set_alignment(float(attributes.get('xalign', 1.0)),
-            float(attributes.get('yalign', 0.5)))
+        label = Label(label=attributes.get('string', ''), attrs=attributes)
+        label.set_halign(get_align(attributes.get('xalign', 1.0)))
+        label.set_valign(get_align(attributes.get('yalign', 0.5)))
         label.set_angle(int(attributes.get('angle', 0)))
         attributes.setdefault('xexpand', 0)
         self.state_widgets.append(label)
@@ -307,7 +309,7 @@ class ViewForm(View):
         self.parse(node, notebook)
 
     def _parse_page(self, node, notebook, attributes):
-        tab_box = gtk.HBox(spacing=3)
+        tab_box = Gtk.HBox(spacing=3)
         if 'name' in attributes:
             field = self.group.fields[attributes['name']]
             if attributes['name'] == self.screen.exclude_field:
@@ -315,20 +317,22 @@ class ViewForm(View):
             for attr in ('states', 'string'):
                 if attr not in attributes and attr in field.attrs:
                     attributes[attr] = field.attrs[attr]
-        label = gtk.Label(set_underline(attributes['string']))
+        label = Gtk.Label(label=set_underline(attributes['string']))
         label.set_use_underline(True)
 
         if 'icon' in attributes:
             tab_box.pack_start(IconFactory.get_image(
-                    attributes['icon'], gtk.ICON_SIZE_SMALL_TOOLBAR))
-        tab_box.pack_start(label)
+                    attributes['icon'], Gtk.IconSize.SMALL_TOOLBAR),
+                expand=True, fill=True, padding=0)
+        tab_box.pack_start(label, expand=True, fill=True, padding=0)
         tab_box.show_all()
 
-        viewport = gtk.Viewport()
-        viewport.set_shadow_type(gtk.SHADOW_NONE)
+        viewport = Gtk.Viewport()
+        viewport.set_shadow_type(Gtk.ShadowType.NONE)
         scrolledwindow = ScrolledWindow(attrs=attributes)
-        scrolledwindow.set_shadow_type(gtk.SHADOW_NONE)
-        scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE)
+        scrolledwindow.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
         scrolledwindow.add(viewport)
         scrolledwindow.show_all()
         self.state_widgets.append(scrolledwindow)
@@ -388,12 +392,12 @@ class ViewForm(View):
 
         can_expand = attributes.get('expandable')
         if can_expand:
-            widget = Expander(attributes.get('string'), attrs=attributes)
+            widget = Expander(label=attributes.get('string'), attrs=attributes)
             widget.add(group.table)
             widget.set_expanded(can_expand == '1')
             self.expandables.append(widget)
         else:
-            widget = Frame(attributes.get('string'), attrs=attributes)
+            widget = Frame(label=attributes.get('string'), attrs=attributes)
             widget.add(group.table)
 
         self.state_widgets.append(widget)
@@ -409,10 +413,10 @@ class ViewForm(View):
         self.parse(node, paned)
 
     def _parse_hpaned(self, node, container, attributes):
-        self._parse_paned(node, container, attributes, gtk.HPaned)
+        self._parse_paned(node, container, attributes, Gtk.HPaned)
 
     def _parse_vpaned(self, node, container, attributes):
-        self._parse_paned(node, container, attributes, gtk.VPaned)
+        self._parse_paned(node, container, attributes, Gtk.VPaned)
 
     def _parse_child(self, node, paned, attributes):
         container = self.parse(node)
@@ -479,7 +483,7 @@ class ViewForm(View):
                     for widget in widgets:
                         if (not focused_widget
                                 or widget.widget.is_focus()
-                                or (isinstance(widget.widget, gtk.Container)
+                                or (isinstance(widget.widget, Gtk.Container)
                                     and widget.widget.get_focus_child())):
                             widget.set_value()
 
@@ -495,7 +499,7 @@ class ViewForm(View):
             for w in widgets)
 
     def get_buttons(self):
-        return [b for b in self.state_widgets if isinstance(b, gtk.Button)]
+        return [b for b in self.state_widgets if isinstance(b, Gtk.Button)]
 
     def reset(self):
         record = self.record

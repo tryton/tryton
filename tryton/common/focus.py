@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from functools import cmp_to_key
 
-import gtk
+from gi.repository import Gtk
 
 
 def get_invisible_ancestor(widget):
@@ -25,7 +25,7 @@ def find_focused_child(widget):
 
 
 def tab_compare(a, b):
-    text_direction = gtk.widget_get_default_direction()
+    text_direction = Gtk.Widget.get_default_direction()
     a_allocation = a.get_allocation()
     b_allocation = b.get_allocation()
     y1 = a_allocation.y + a_allocation.height // 2
@@ -35,7 +35,7 @@ def tab_compare(a, b):
         x1 = a_allocation.x + a_allocation.width // 2
         x2 = b_allocation.x + b_allocation.width // 2
 
-        if text_direction == gtk.TEXT_DIR_RTL:
+        if text_direction == Gtk.TextDirection.RTL:
             return (x2 > x1) - (x2 < x1)
         else:
             return (x1 > x2) - (x1 < x2)

@@ -22,7 +22,7 @@ class IntegerMixin:
         try:
             locale.atoi(new_value)
         except ValueError:
-            entry.stop_emission('insert-text')
+            entry.stop_emission_by_name('insert-text')
 
 
 class Integer(IntegerMixin, Char):

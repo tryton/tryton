@@ -110,10 +110,11 @@ dist = setup(name=name,
     python_requires='>=3.4',
     install_requires=[
         # "py-gobject3",
+        'pycairo',
         "python-dateutil",
         ],
     extras_require={
-        'calendar': ['GooCalendar>=0.4'],
+        'calendar': ['GooCalendar>=0.5'],
         },
     zip_safe=False,
     **args

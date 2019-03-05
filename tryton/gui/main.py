@@ -11,9 +11,7 @@ import traceback
 import webbrowser
 from urllib.parse import urlparse, parse_qsl, unquote
 
-import gobject
-import gtk
-from gi.repository import Gtk, GLib, Gio
+from gi.repository import Gdk, GdkPixbuf, Gio, GLib, Gtk
 
 import tryton.common as common
 import tryton.plugins
@@ -55,12 +53,12 @@ class Main(Gtk.Application):
         action.connect(
             'activate', lambda *a: self.global_search_entry.grab_focus())
         self.add_action(action)
-        self.add_accelerator('<Primary>k', 'app.menu-search')
+        self.set_accels_for_action('app.menu-search', ['<Primary>k'])
 
         action = Gio.SimpleAction.new('menu-toggle', None)
         action.connect('activate', lambda *a: self.menu_toggle())
         self.add_action(action)
-        self.add_accelerator('<Primary>m', 'app.menu-toggle')
+        self.set_accels_for_action('app.menu-toggle', ['<Primary>m'])
 
         toolbar_variant = GLib.Variant.new_string(
             CONFIG['client.toolbar'] or 'both')
@@ -91,12 +89,12 @@ class Main(Gtk.Application):
         action = Gio.SimpleAction.new('tab-previous', None)
         action.connect('activate', lambda *a: self.win_prev())
         self.add_action(action)
-        self.add_accelerator('<Primary><Shift>Tab', 'app.tab-previous')
+        self.set_accels_for_action('app.tab-previous', ['<Primary><Shift>Tab'])
 
         action = Gio.SimpleAction.new('tab-next', None)
         action.connect('activate', lambda *a: self.win_next())
         self.add_action(action)
-        self.add_accelerator('<Primary>Tab', 'app.tab-next')
+        self.set_accels_for_action('app.tab-next', ['<Primary>Tab'])
 
         action = Gio.SimpleAction.new('search-limit', None)
         action.connect('activate', lambda *a: self.edit_limit())
@@ -110,7 +108,7 @@ class Main(Gtk.Application):
         action = Gio.SimpleAction.new('shortcuts', None)
         action.connect('activate', lambda *a: self.shortcuts())
         self.add_action(action)
-        self.add_accelerator('<Primary>F1', 'app.shortcuts')
+        self.set_accels_for_action('app.shortcuts', ['<Primary>F1'])
 
         action = Gio.SimpleAction.new('about', None)
         action.connect('activate', lambda *a: self.about())
@@ -119,7 +117,7 @@ class Main(Gtk.Application):
         action = Gio.SimpleAction.new('quit', None)
         action.connect('activate', self.on_quit)
         self.add_action(action)
-        self.add_accelerator('<Primary>q', 'app.quit')
+        self.set_accels_for_action('app.quit', ['<Primary>q'])
 
         menu = Gio.Menu.new()
         menu.append(_("Preferences..."), 'app.preferences')
@@ -165,7 +163,7 @@ class Main(Gtk.Application):
         self.window = Gtk.ApplicationWindow(application=self, title="Tryton")
         self.window.set_default_size(960, 720)
         self.window.maximize()
-        self.window.set_position(Gtk.WIN_POS_CENTER)
+        self.window.set_position(Gtk.WindowPosition.CENTER)
         self.window.set_resizable(True)
         self.window.set_icon(TRYTON_ICON)
         self.window.connect("destroy", self.on_quit)
@@ -198,64 +196,69 @@ class Main(Gtk.Application):
         self.accel_group = Gtk.AccelGroup()
         self.window.add_accel_group(self.accel_group)
 
-        gtk.accel_map_add_entry('<tryton>/Form/New', gtk.keysyms.N,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Save', gtk.keysyms.S,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Duplicate', gtk.keysyms.D,
-                gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Delete', gtk.keysyms.D,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Next', gtk.keysyms.Page_Down,
-                0)
-        gtk.accel_map_add_entry('<tryton>/Form/Previous', gtk.keysyms.Page_Up,
-                0)
-        gtk.accel_map_add_entry('<tryton>/Form/Switch View', gtk.keysyms.L,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Close', gtk.keysyms.W,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Reload', gtk.keysyms.R,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Attachments', gtk.keysyms.T,
-            gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Notes', gtk.keysyms.O,
-            gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Relate', gtk.keysyms.R,
-            gtk.gdk.CONTROL_MASK | gtk.gdk.SHIFT_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Actions', gtk.keysyms.E,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Report', gtk.keysyms.P,
-                gtk.gdk.CONTROL_MASK)
-        gtk.accel_map_add_entry('<tryton>/Form/Search', gtk.keysyms.F,
-            gtk.gdk.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/New', Gdk.KEY_N, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Save', Gdk.KEY_S, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Duplicate', Gdk.KEY_D,
+            Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Delete', Gdk.KEY_D, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Next', Gdk.KEY_Page_Down, 0)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Previous', Gdk.KEY_Page_Up, 0)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Switch View', Gdk.KEY_L,
+            Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Close', Gdk.KEY_W, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Reload', Gdk.KEY_R, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Attachments', Gdk.KEY_T,
+            Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Notes', Gdk.KEY_O,
+            Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Relate', Gdk.KEY_R,
+            Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Actions', Gdk.KEY_E, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Report', Gdk.KEY_P, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Search', Gdk.KEY_F, Gdk.ModifierType.CONTROL_MASK)
 
-        gtk.accel_map_load(os.path.join(get_config_dir(), 'accel.map'))
+        Gtk.AccelMap.load(os.path.join(get_config_dir(), 'accel.map'))
 
         self.tooltips = common.Tooltips()
 
-        self.vbox = gtk.VBox()
+        self.vbox = Gtk.VBox()
         self.window.add(self.vbox)
 
         self.buttons = {}
 
-        self.info = gtk.VBox()
-        self.vbox.pack_start(self.info, expand=False)
+        self.info = Gtk.VBox()
+        self.vbox.pack_start(self.info, expand=False, fill=True, padding=0)
         if CONFIG['client.check_version']:
             common.check_version(self.info)
             GLib.timeout_add_seconds(
                 int(CONFIG['download.frequency']), common.check_version,
                 self.info)
 
-        self.pane = gtk.HPaned()
-        self.vbox.pack_start(self.pane, True, True)
+        self.pane = Gtk.HPaned()
+        self.vbox.pack_start(self.pane, expand=True, fill=True, padding=0)
         self.pane.set_position(int(CONFIG['menu.pane']))
 
         self.menu_screen = None
-        self.menu = gtk.VBox()
+        self.menu = Gtk.VBox()
         self.menu.set_vexpand(True)
         self.pane.add1(self.menu)
 
-        self.notebook = gtk.Notebook()
+        self.notebook = Gtk.Notebook()
         self.notebook.popup_enable()
         self.notebook.set_scrollable(True)
         self.notebook.connect_after('switch-page', self._sig_page_changt)
@@ -308,15 +311,15 @@ class Main(Gtk.Application):
     def set_global_search(self):
         self.global_search_entry = Gtk.Entry.new()
         self.global_search_entry.set_width_chars(20)
-        global_search_completion = gtk.EntryCompletion()
+        global_search_completion = Gtk.EntryCompletion()
         global_search_completion.set_match_func(lambda *a: True)
-        global_search_completion.set_model(gtk.ListStore(
-                gtk.gdk.Pixbuf, str, str, int, str))
-        pixbuf_cell = gtk.CellRendererPixbuf()
-        global_search_completion.pack_start(pixbuf_cell, False)
+        global_search_completion.set_model(
+            Gtk.ListStore(GdkPixbuf.Pixbuf, str, str, int, str))
+        pixbuf_cell = Gtk.CellRendererPixbuf()
+        global_search_completion.pack_start(pixbuf_cell, expand=True)
         global_search_completion.add_attribute(pixbuf_cell, 'pixbuf', 0)
-        text_cell = gtk.CellRendererText()
-        global_search_completion.pack_start(text_cell)
+        text_cell = Gtk.CellRendererText()
+        global_search_completion.pack_start(text_cell, expand=True)
         global_search_completion.add_attribute(text_cell, "markup", 1)
         global_search_completion.props.popup_set_width = True
         self.global_search_entry.set_completion(global_search_completion)
@@ -369,7 +372,7 @@ class Main(Gtk.Application):
                     if icon:
                         text = common.to_xml(record_name)
                         pixbuf = common.IconFactory.get_pixbuf(
-                            icon, gtk.ICON_SIZE_BUTTON)
+                            icon, Gtk.IconSize.BUTTON)
                     else:
                         text = '<b>%s:</b>\n %s' % (
                             common.to_xml(model_name),
@@ -388,7 +391,7 @@ class Main(Gtk.Application):
 
         def changed(widget):
             search_text = widget.get_text()
-            gobject.timeout_add(300, update, widget, search_text)
+            GLib.timeout_add(300, update, widget, search_text)
 
         def activate(widget):
             def message():
@@ -433,9 +436,9 @@ class Main(Gtk.Application):
             return True
 
         def _action_favorite(widget, id_):
-            event = gtk.get_current_event()
-            allow_similar = (event.state & gtk.gdk.MOD1_MASK or
-                             event.state & gtk.gdk.SHIFT_MASK)
+            event = Gtk.get_current_event()
+            allow_similar = (event.state & Gdk.ModifierType.MOD1_MASK
+                or event.state & Gdk.ModifierType.SHIFT_MASK)
             with Window(allow_similar=allow_similar):
                 # ids is not defined to prevent to add suffix
                 Action.exec_keyword('tree_open', {
@@ -454,16 +457,11 @@ class Main(Gtk.Application):
         except Exception:
             return False
         for id_, name, icon in favorites:
-            if icon:
-                menuitem = gtk.ImageMenuItem(name)
-                menuitem.set_image(
-                    common.IconFactory.get_image(icon, gtk.ICON_SIZE_MENU))
-            else:
-                menuitem = gtk.MenuItem(name)
+            menuitem = Gtk.MenuItem(label=name)
             menuitem.connect('activate', _action_favorite, id_)
             self.menu_favorite.add(menuitem)
-        self.menu_favorite.add(gtk.SeparatorMenuItem())
-        manage_favorites = gtk.MenuItem(_("Manage..."),
+        self.menu_favorite.add(Gtk.SeparatorMenuItem())
+        manage_favorites = Gtk.MenuItem(label=_("Manage..."),
             use_underline=True)
         manage_favorites.connect('activate', _manage_favorites)
         self.menu_favorite.add(manage_favorites)
@@ -481,11 +479,11 @@ class Main(Gtk.Application):
         if option == 'default':
             barstyle = False
         elif option == 'both':
-            barstyle = gtk.TOOLBAR_BOTH
+            barstyle = Gtk.ToolbarStyle.BOTH
         elif option == 'text':
-            barstyle = gtk.TOOLBAR_TEXT
+            barstyle = Gtk.ToolbarStyle.TEXT
         elif option == 'icons':
-            barstyle = gtk.TOOLBAR_ICONS
+            barstyle = Gtk.ToolbarStyle.ICONS
         for page_idx in range(self.notebook.get_n_pages()):
             page = self.get_page(page_idx)
             page.toolbar.set_style(barstyle)
@@ -495,7 +493,7 @@ class Main(Gtk.Application):
         Limit().run()
 
     def edit_email(self):
-        from tryton.gui.window.email import Email
+        from tryton.gui.window.email_ import Email
         Email().run()
 
     def win_next(self):
@@ -745,18 +743,19 @@ class Main(Gtk.Application):
         screen.switch_view(view_type=screen.current_view.view_type)
 
         self.menu.pack_start(
-            screen.screen_container.alternate_viewport, True, True)
+            screen.screen_container.alternate_viewport,
+            expand=True, fill=True, padding=0)
         treeview = screen.current_view.treeview
         treeview.set_headers_visible(False)
 
         # Favorite column
-        column = gtk.TreeViewColumn()
+        column = Gtk.TreeViewColumn()
         column.name = None
         column._type = None
         favorite_renderer = CellRendererClickablePixbuf()
         column.pack_start(favorite_renderer, expand=False)
 
-        def favorite_setter(column, cell, store, iter_):
+        def favorite_setter(column, cell, store, iter_, user_data=None):
             menu = store.get_value(iter_, 0)
             favorite = menu.value.get('favorite')
             if favorite:
@@ -767,7 +766,7 @@ class Main(Gtk.Application):
                 icon = None
             if icon:
                 pixbuf = common.IconFactory.get_pixbuf(
-                    icon, gtk.ICON_SIZE_MENU)
+                    icon, Gtk.IconSize.MENU)
             else:
                 pixbuf = None
             cell.set_property('pixbuf', pixbuf)
@@ -777,11 +776,11 @@ class Main(Gtk.Application):
             if treeview.props.window:
                 self.toggle_favorite(renderer, path, treeview)
         favorite_renderer.connect('clicked',
-            lambda *a: gobject.idle_add(toggle_favorite, *a), treeview)
+            lambda *a: GLib.idle_add(toggle_favorite, *a), treeview)
         # Unset fixed height mode to add column
         treeview.set_fixed_height_mode(False)
         treeview.set_property(
-            'enable-grid-lines', gtk.TREE_VIEW_GRID_LINES_NONE)
+            'enable-grid-lines', Gtk.TreeViewGridLines.NONE)
         treeview.append_column(column)
 
         screen.search_filter()
@@ -828,34 +827,34 @@ class Main(Gtk.Application):
             page_id = -1
         self.previous_pages[page] = previous_widget
         self.pages.append(page)
-        hbox = gtk.HBox(spacing=3)
+        hbox = Gtk.HBox(spacing=3)
         if page.icon:
             hbox.pack_start(
                 common.IconFactory.get_image(
-                    page.icon, gtk.ICON_SIZE_SMALL_TOOLBAR),
-                expand=False, fill=False)
+                    page.icon, Gtk.IconSize.SMALL_TOOLBAR),
+                expand=False, fill=False, padding=0)
         name = page.name
-        label = gtk.Label(common.ellipsize(name, 20))
+        label = Gtk.Label(
+            label=common.ellipsize(name, 20),
+            halign=Gtk.Align.START)
         self.tooltips.set_tip(label, page.name)
         self.tooltips.enable()
-        label.set_alignment(0.0, 0.5)
-        hbox.pack_start(label, expand=True, fill=True)
+        hbox.pack_start(label, expand=True, fill=True, padding=0)
 
-        button = gtk.Button()
-        button.set_relief(gtk.RELIEF_NONE)
+        button = Gtk.Button()
+        button.set_relief(Gtk.ReliefStyle.NONE)
         button.set_can_focus(False)
         button.add(common.IconFactory.get_image(
-                'tryton-close', gtk.ICON_SIZE_MENU))
+                'tryton-close', Gtk.IconSize.MENU))
         self.tooltips.set_tip(button, _('Close Tab'))
         button.connect('clicked', self._sig_remove_book, page.widget)
-        hbox.pack_start(button, expand=False, fill=False)
-        x, y = gtk.icon_size_lookup_for_settings(button.get_settings(),
-            gtk.ICON_SIZE_MENU)[-2:]
-        button.set_size_request(x, y)
+        hbox.pack_start(button, expand=False, fill=False, padding=0)
+        size = Gtk.IconSize.lookup(Gtk.IconSize.MENU)
+        button.set_size_request(size.width, size.height)
 
         hbox.show_all()
-        label_menu = gtk.Label(page.name)
-        label_menu.set_alignment(0.0, 0.5)
+        label_menu = Gtk.Label(
+            label=page.name, halign=Gtk.Align.START)
         self.notebook.insert_page_menu(page.widget, hbox, label_menu, page_id)
         self.notebook.set_tab_reorderable(page.widget, True)
         self.notebook.set_current_page(page_id)
@@ -937,9 +936,9 @@ class Main(Gtk.Application):
         def set_cursor():
             if self.current_page == self.notebook.get_current_page():
                 current_form.set_cursor()
-        # Using idle_add because the gtk.TreeView grabs the focus at the
+        # Using idle_add because the Gtk.TreeView grabs the focus at the
         # end of the event
-        gobject.idle_add(set_cursor)
+        GLib.idle_add(set_cursor)
         for dialog in current_form.dialogs:
             dialog.show()
 
@@ -1067,10 +1066,9 @@ class Main(Gtk.Application):
 
     def open_url(self, url):
         def idle_open_url():
-            with gtk.gdk.lock:
-                self._open_url(url)
-                return False
-        gobject.idle_add(idle_open_url)
+            self._open_url(url)
+            return False
+        GLib.idle_add(idle_open_url)
 
     def show_notification(self, title, msg, priority=1):
         notification = Gio.Notification.new(title)

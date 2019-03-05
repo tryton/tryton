@@ -2,12 +2,12 @@
 # repository contains the full copyright notices and license terms.
 
 import operator
-import gobject
-import gtk
 import locale
 import decimal
 import gettext
 from decimal import Decimal
+
+from gi.repository import GLib, GObject, Gtk
 
 from .widget import Widget
 from .integer import IntegerMixin
@@ -40,7 +40,7 @@ class DictEntry(object):
         self.widget = self.create_widget()
 
     def create_widget(self):
-        widget = gtk.Entry()
+        widget = Gtk.Entry()
         widget.connect('key-press-event', self.parent_widget.send_modified)
         widget.connect('focus-out-event',
             lambda w, e: self.parent_widget._focus_out())
@@ -65,7 +65,7 @@ class DictEntry(object):
 class DictBooleanEntry(DictEntry):
 
     def create_widget(self):
-        widget = gtk.CheckButton()
+        widget = Gtk.CheckButton()
         widget.connect('toggled', self.parent_widget.sig_activate)
         widget.connect('focus-out-event', lambda w, e:
             self.parent_widget._focus_out())
@@ -91,7 +91,7 @@ class DictSelectionEntry(DictEntry):
     fill = False
 
     def create_widget(self):
-        widget = gtk.ComboBoxEntry()
+        widget = Gtk.ComboBox(has_entry=True)
 
         # customizing entry
         child = widget.get_child()
@@ -104,11 +104,12 @@ class DictSelectionEntry(DictEntry):
         widget.connect('notify::active',
             lambda w, e: self.parent_widget._focus_out())
         widget.connect(
-            'scroll-event', lambda c, e: c.emit_stop_by_name('scroll-event'))
+            'scroll-event',
+            lambda c, e: c.stop_emission_by_name('scroll-event'))
         selection_shortcuts(widget)
 
         # setting completion and selection
-        model = gtk.ListStore(gobject.TYPE_STRING)
+        model = Gtk.ListStore(GObject.TYPE_STRING)
         model.append(('',))
         self._selection = {'': None}
         width = 10
@@ -123,7 +124,7 @@ class DictSelectionEntry(DictEntry):
         widget.set_model(model)
         widget.set_text_column(0)
         child.set_width_chars(width)
-        completion = gtk.EntryCompletion()
+        completion = Gtk.EntryCompletion()
         completion.set_inline_selection(True)
         completion.set_model(model)
         child.set_completion(completion)
@@ -293,28 +294,28 @@ class DictWidget(Widget):
         self.buttons = {}
         self.rows = {}
 
-        self.widget = gtk.Frame()
-        label = gtk.Label(set_underline(attrs.get('string', '')))
+        self.widget = Gtk.Frame()
+        label = Gtk.Label(label=set_underline(attrs.get('string', '')))
         label.set_use_underline(True)
         self.widget.set_label_widget(label)
-        self.widget.set_shadow_type(gtk.SHADOW_OUT)
+        self.widget.set_shadow_type(Gtk.ShadowType.OUT)
 
-        vbox = gtk.VBox()
+        vbox = Gtk.VBox()
         self.widget.add(vbox)
 
-        self.table = gtk.Table(1, 3, homogeneous=False)
+        self.table = Gtk.Table(n_rows=1, n_columns=3, homogeneous=False)
         self.table.set_col_spacings(0)
         self.table.set_row_spacings(0)
         self.table.set_border_width(0)
-        vbox.pack_start(self.table, expand=True, fill=True)
+        vbox.pack_start(self.table, expand=True, fill=True, padding=0)
 
-        hbox = gtk.HBox()
+        hbox = Gtk.HBox()
         hbox.set_border_width(2)
-        self.wid_text = gtk.Entry()
+        self.wid_text = Gtk.Entry()
         self.wid_text.set_placeholder_text(_('Search'))
         self.wid_text.props.width_chars = 13
         self.wid_text.connect('activate', self._sig_activate)
-        hbox.pack_start(self.wid_text, expand=True, fill=True)
+        hbox.pack_start(self.wid_text, expand=True, fill=True, padding=0)
         label.set_mnemonic_widget(self.wid_text)
 
         if int(self.attrs.get('completion', 1)):
@@ -326,14 +327,14 @@ class DictWidget(Widget):
         else:
             self.wid_completion = None
 
-        self.but_add = gtk.Button()
+        self.but_add = Gtk.Button()
         self.but_add.connect('clicked', self._sig_add)
-        self.but_add.add(IconFactory.get_image(
-                'tryton-add', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        self.but_add.set_relief(gtk.RELIEF_NONE)
-        hbox.pack_start(self.but_add, expand=False, fill=False)
+        self.but_add.add(
+            IconFactory.get_image('tryton-add', Gtk.IconSize.SMALL_TOOLBAR))
+        self.but_add.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
         hbox.set_focus_chain([self.wid_text])
-        vbox.pack_start(hbox, expand=True, fill=True)
+        vbox.pack_start(hbox, expand=True, fill=True, padding=0)
 
         self.tooltips = Tooltips()
         self.tooltips.set_tip(self.but_add, _('Add value'))
@@ -347,10 +348,10 @@ class DictWidget(Widget):
         return self.wid_text
 
     def _new_remove_btn(self):
-        but_remove = gtk.Button()
-        but_remove.add(IconFactory.get_image(
-                'tryton-remove', gtk.ICON_SIZE_SMALL_TOOLBAR))
-        but_remove.set_relief(gtk.RELIEF_NONE)
+        but_remove = Gtk.Button()
+        but_remove.add(
+            IconFactory.get_image('tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
+        but_remove.set_relief(Gtk.ReliefStyle.NONE)
         return but_remove
 
     def _sig_activate(self, *args):
@@ -382,7 +383,7 @@ class DictWidget(Widget):
                 if not focus:
                     # Use idle add because it can be called from the callback
                     # of WinSearch while the popup is still there
-                    gobject.idle_add(self.fields[key_name].widget.grab_focus)
+                    GLib.idle_add(self.fields[key_name].widget.grab_focus)
                     focus = True
 
     def _sig_remove(self, button, key, modified=True):
@@ -432,32 +433,37 @@ class DictWidget(Widget):
         key_schema = self.field.keys[key]
         self.fields[key] = DICT_ENTRIES[key_schema['type_']](key, self)
         field = self.fields[key]
-        alignment = gtk.Alignment(
-            float(self.attrs.get('xalign', 0.0)),
-            float(self.attrs.get('yalign', 0.5)),
-            float(self.attrs.get('xexpand', 1.0)),
-            float(self.attrs.get('yexpand', 1.0)))
-        hbox = gtk.HBox()
-        hbox.pack_start(field.widget, expand=field.expand, fill=field.fill)
+        alignment = Gtk.Alignment()
+        alignment.props.xalign = float(self.attrs.get('xalign', 0.0))
+        alignment.props.yalign = float(self.attrs.get('yalign', 0.5))
+        alignment.props.xscale = float(self.attrs.get('xexpand', 1.0))
+        alignment.props.yscale = float(self.attrs.get('yexpand', 1.0))
+        hbox = Gtk.HBox()
+        hbox.pack_start(
+            field.widget, expand=field.expand, fill=field.fill, padding=0)
         alignment.add(hbox)
         n_rows = self.table.props.n_rows
         self.table.resize(n_rows + 1, 3)
         text = key_schema['string'] + _(':')
-        label = gtk.Label(set_underline(text))
-        label.set_use_underline(True)
-        label.set_alignment(1., .5)
-        self.table.attach(label, 0, 1, n_rows - 1, n_rows,
-            xoptions=gtk.FILL, yoptions=False, xpadding=2)
+        label = Gtk.Label(
+            label=set_underline(text),
+            use_underline=True, halign=Gtk.Align.START)
+        self.table.attach(
+            label, 0, 1, n_rows - 1, n_rows,
+            xoptions=Gtk.AttachOptions.FILL, xpadding=2, yoptions=False)
         label.set_mnemonic_widget(field.widget)
         label.show()
-        self.table.attach(alignment, 1, 2, n_rows - 1, n_rows,
-            xoptions=gtk.FILL | gtk.EXPAND, yoptions=False, xpadding=2)
+        self.table.attach(
+            alignment, 1, 2, n_rows - 1, n_rows,
+            xoptions=Gtk.AttachOptions.FILL | Gtk.AttachOptions.EXPAND,
+            xpadding=2, yoptions=False)
         alignment.show_all()
         remove_but = self._new_remove_btn()
         self.tooltips.set_tip(remove_but, _('Remove "%s"') %
             key_schema['string'])
-        self.table.attach(remove_but, 2, 3, n_rows - 1, n_rows,
-            xoptions=gtk.FILL, yoptions=False, xpadding=2)
+        self.table.attach(
+            remove_but, 2, 3, n_rows - 1, n_rows,
+            xoptions=Gtk.AttachOptions.FILL, xpadding=2, yoptions=False)
         remove_but.connect('clicked', self._sig_remove, key)
         remove_but.show_all()
         self.rows[key] = [label, alignment, remove_but]

@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import gettext
 
-import gobject
-import gtk
+from gi.repository import GLib, Gtk
+
 from .widget import Widget, TranslateMixin
 from tryton.common import Tooltips, IconFactory
 from tryton.common.entry_position import reset_position
@@ -19,10 +19,10 @@ class Char(Widget, TranslateMixin, PopdownMixin):
     def __init__(self, view, attrs):
         super(Char, self).__init__(view, attrs)
 
-        self.widget = gtk.HBox()
+        self.widget = Gtk.HBox()
         self.autocomplete = bool(attrs.get('autocomplete'))
         if self.autocomplete:
-            self.entry = gtk.ComboBoxEntry()
+            self.entry = Gtk.ComboBox(has_entry=True)
             selection_shortcuts(self.entry)
             focus_entry = self.entry.get_child()
             self.set_popdown([], self.entry)
@@ -30,9 +30,9 @@ class Char(Widget, TranslateMixin, PopdownMixin):
             self.entry.connect('move-active', self._move_active)
             self.entry.connect(
                 'scroll-event',
-                lambda c, e: c.emit_stop_by_name('scroll-event'))
+                lambda c, e: c.stop_emission_by_name('scroll-event'))
         else:
-            self.entry = gtk.Entry()
+            self.entry = Gtk.Entry()
             focus_entry = self.entry
         self.mnemonic_widget = focus_entry
 
@@ -43,16 +43,16 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         expand, fill = True, True
         if attrs.get('size'):
             expand, fill = False, False
-        self.widget.pack_start(self.entry, expand=expand, fill=fill)
+        self.widget.pack_start(self.entry, expand=expand, fill=fill, padding=0)
 
         if attrs.get('translate'):
             self.entry.set_icon_from_pixbuf(
-                gtk.ENTRY_ICON_SECONDARY,
-                IconFactory.get_pixbuf('tryton-translate', gtk.ICON_SIZE_MENU))
+                Gtk.EntryIconPosition.SECONDARY,
+                IconFactory.get_pixbuf('tryton-translate', Gtk.IconSize.MENU))
             self.entry.connect('icon-press', self.translate)
 
     def translate_widget(self):
-        entry = gtk.Entry()
+        entry = Gtk.Entry()
         entry.set_property('activates_default', True)
         if self.record:
             field_size = self.record.expr_eval(self.attrs.get('size'))
@@ -78,7 +78,7 @@ class Char(Widget, TranslateMixin, PopdownMixin):
         # Only when changed from pop list
         if not combobox.get_child().has_focus():
             # Must be deferred because it triggers a display of the form
-            gobject.idle_add(focus_out)
+            GLib.idle_add(focus_out)
 
     @property
     def modified(self):
@@ -141,10 +141,13 @@ class Char(Widget, TranslateMixin, PopdownMixin):
 
     def _move_active(self, combobox, scroll_type):
         if not combobox.get_child().get_editable():
-            combobox.emit_stop_by_name('move-active')
+            combobox.stop_emission_by_name('move-active')
 
     def _readonly_set(self, value):
-        sensitivity = {True: gtk.SENSITIVITY_OFF, False: gtk.SENSITIVITY_AUTO}
+        sensitivity = {
+            True: Gtk.SensitivityType.OFF,
+            False: Gtk.SensitivityType.AUTO,
+            }
         super(Char, self)._readonly_set(value)
         if self.autocomplete:
             entry_editable = self.entry.get_child()
@@ -164,10 +167,11 @@ class Password(Char):
         super(Password, self).__init__(view, attrs)
         self.entry.props.visibility = False
 
-        self.visibility_checkbox = gtk.CheckButton()
+        self.visibility_checkbox = Gtk.CheckButton()
         self.visibility_checkbox.connect('toggled', self.toggle_visibility)
         Tooltips().set_tip(self.visibility_checkbox, _('Show plain text'))
-        self.widget.pack_start(self.visibility_checkbox, expand=False)
+        self.widget.pack_start(
+            self.visibility_checkbox, expand=False, fill=True, padding=0)
 
     def _readonly_set(self, value):
         super(Char, self)._readonly_set(value)

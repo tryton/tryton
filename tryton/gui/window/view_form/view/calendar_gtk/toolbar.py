@@ -3,7 +3,8 @@
 import datetime
 import calendar
 import gettext
-import gtk
+
+from gi.repository import Gdk, Gtk
 
 from tryton.gui import Main
 from tryton.common.datetime_ import popup_position, popup_show, popup_hide
@@ -11,23 +12,25 @@ from tryton.common.datetime_ import popup_position, popup_show, popup_hide
 _ = gettext.gettext
 
 
-class Toolbar(gtk.Toolbar):
+class Toolbar(Gtk.Toolbar):
 
     def __init__(self, goocalendar):
         super(Toolbar, self).__init__()
         self.goocalendar = goocalendar
         self.accel_group = Main().accel_group
 
-        today_button = gtk.ToolButton()
+        today_button = Gtk.ToolButton()
         today_button.set_label(_('Today'))
         today_button.set_homogeneous(False)
         today_button.connect("clicked", self.on_today_button_clicked)
-        today_button.add_accelerator("clicked", self.accel_group,
-            gtk.keysyms.t, gtk.gdk.MODIFIER_MASK, gtk.ACCEL_VISIBLE)
+        today_button.add_accelerator(
+            "clicked", self.accel_group, Gdk.KEY_t,
+            Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
         self.insert(today_button, -1)
 
-        arrow_left = gtk.Arrow(gtk.ARROW_LEFT, gtk.SHADOW_NONE)
-        go_back = gtk.ToolButton()
+        arrow_left = Gtk.Arrow(
+            arrow_type=Gtk.ArrowType.LEFT, shadow_type=Gtk.ShadowType.NONE)
+        go_back = Gtk.ToolButton()
         go_back.set_icon_widget(arrow_left)
         go_back.set_label(_("go back"))
         go_back.set_expand(False)
@@ -35,15 +38,15 @@ class Toolbar(gtk.Toolbar):
         go_back.connect("clicked", self.on_go_back_clicked)
         self.insert(go_back, -1)
 
-        self.current_page_label = gtk.Label("")
-        self.current_page = gtk.ToggleToolButton()
+        self.current_page_label = Gtk.Label()
+        self.current_page = Gtk.ToggleToolButton()
         self.current_page.set_label_widget(self.current_page_label)
         self.current_page.connect("clicked", self.on_current_page_clicked)
         self.insert(self.current_page, -1)
 
-        self.__cal_popup = gtk.Window(gtk.WINDOW_POPUP)
+        self.__cal_popup = Gtk.Window(type=Gtk.WindowType.POPUP)
         self.__cal_popup.set_events(
-            self.__cal_popup.get_events() | gtk.gdk.KEY_PRESS_MASK)
+            self.__cal_popup.get_events() | Gdk.EventMask.KEY_PRESS_MASK)
         self.__cal_popup.set_resizable(False)
         self.__cal_popup.connect('delete-event', self.on_cal_popup_closed)
         self.__cal_popup.connect(
@@ -51,15 +54,15 @@ class Toolbar(gtk.Toolbar):
         self.__cal_popup.connect(
             'button-press-event', self.on_cal_popup_button_pressed)
 
-        gtkcal = gtk.Calendar()
+        gtkcal = Gtk.Calendar()
         gtkcal.connect('day-selected', self.on_gtkcal_day_selected)
         gtkcal.connect(
             'day-selected-double-click',
             self.on_gtkcal_day_selected_double_click)
         gtkcal.set_display_options(
-            gtk.CALENDAR_SHOW_HEADING |
-            gtk.CALENDAR_SHOW_WEEK_NUMBERS |
-            gtk.CALENDAR_SHOW_DAY_NAMES)
+            Gtk.CalendarDisplayOptions.SHOW_HEADING |
+            Gtk.CalendarDisplayOptions.SHOW_WEEK_NUMBERS |
+            Gtk.CalendarDisplayOptions.SHOW_DAY_NAMES)
         gtkcal.set_no_show_all(True)
         self.__cal_popup.add(gtkcal)
         gtkcal.show()
@@ -67,8 +70,9 @@ class Toolbar(gtk.Toolbar):
         self.goocalendar.connect('day-selected',
             self.on_goocalendar_day_selected)
 
-        arrow_right = gtk.Arrow(gtk.ARROW_RIGHT, gtk.SHADOW_NONE)
-        go_forward = gtk.ToolButton()
+        arrow_right = Gtk.Arrow(
+            arrow_type=Gtk.ArrowType.RIGHT, shadow_type=Gtk.ShadowType.NONE)
+        go_forward = Gtk.ToolButton()
         go_forward.set_icon_widget(arrow_right)
         go_forward.set_label(_("go forward"))
         go_forward.set_expand(False)
@@ -76,8 +80,9 @@ class Toolbar(gtk.Toolbar):
         go_forward.connect("clicked", self.on_go_forward_clicked)
         self.insert(go_forward, -1)
 
-        arrow_left = gtk.Arrow(gtk.ARROW_LEFT, gtk.SHADOW_NONE)
-        previous_year = gtk.ToolButton()
+        arrow_left = Gtk.Arrow(
+            arrow_type=Gtk.ArrowType.LEFT, shadow_type=Gtk.ShadowType.NONE)
+        previous_year = Gtk.ToolButton()
         previous_year.set_icon_widget(arrow_left)
         previous_year.set_label(_("previous year"))
         previous_year.set_expand(False)
@@ -85,13 +90,14 @@ class Toolbar(gtk.Toolbar):
         previous_year.connect("clicked", self.on_previous_year_clicked)
         self.insert(previous_year, -1)
 
-        self.current_year_label = gtk.Label("")
-        current_year = gtk.ToolItem()
+        self.current_year_label = Gtk.Label()
+        current_year = Gtk.ToolItem()
         current_year.add(self.current_year_label)
         self.insert(current_year, -1)
 
-        arrow_right = gtk.Arrow(gtk.ARROW_RIGHT, gtk.SHADOW_NONE)
-        next_year = gtk.ToolButton()
+        arrow_right = Gtk.Arrow(
+            arrow_type=Gtk.ArrowType.RIGHT, shadow_type=Gtk.ShadowType.NONE)
+        next_year = Gtk.ToolButton()
         next_year.set_icon_widget(arrow_right)
         next_year.set_label(_("next year"))
         next_year.set_expand(False)
@@ -99,25 +105,24 @@ class Toolbar(gtk.Toolbar):
         next_year.connect("clicked", self.on_next_year_clicked)
         self.insert(next_year, -1)
 
-        blank_widget = gtk.ToolItem()
+        blank_widget = Gtk.ToolItem()
         blank_widget.set_expand(True)
         self.insert(blank_widget, -1)
 
-        week_button = gtk.RadioToolButton()
+        week_button = Gtk.RadioToolButton()
         week_button.set_label(_('Week View'))
         week_button.connect("clicked", self.on_week_button_clicked)
-        week_button.add_accelerator("clicked", self.accel_group, gtk.keysyms.w,
-            gtk.gdk.MODIFIER_MASK, gtk.ACCEL_VISIBLE)
+        week_button.add_accelerator(
+            "clicked", self.accel_group, Gdk.KEY_w,
+            Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
         self.insert(week_button, -1)
 
-        if hasattr(gtk.RadioToolButton, 'new_from_widget'):
-            month_button = gtk.RadioToolButton.new_from_widget(week_button)
-        else:
-            month_button = gtk.RadioToolButton(week_button)
-        month_button.set_label_widget(gtk.Label(_('Month View')))
+        month_button = Gtk.RadioToolButton.new_from_widget(week_button)
+        month_button.set_label_widget(Gtk.Label(label=_('Month View')))
         month_button.connect("clicked", self.on_month_button_clicked)
-        month_button.add_accelerator("clicked", self.accel_group,
-            gtk.keysyms.m, gtk.gdk.MODIFIER_MASK, gtk.ACCEL_VISIBLE)
+        month_button.add_accelerator(
+            "clicked", self.accel_group, Gdk.KEY_m,
+            Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
         self.insert(month_button, -1)
         buttons = {
             'month': month_button,
@@ -125,7 +130,7 @@ class Toolbar(gtk.Toolbar):
             }
         buttons[self.goocalendar.view].set_active(True)
         self.update_displayed_date()
-        self.set_style(gtk.TOOLBAR_ICONS)
+        self.set_style(Gtk.ToolbarStyle.ICONS)
 
     def update_displayed_date(self):
         date = self.goocalendar.selected_date
@@ -160,17 +165,17 @@ class Toolbar(gtk.Toolbar):
         return True
 
     def on_cal_popup_key_pressed(self, widget, event):
-        if event.keyval != gtk.keysyms.Escape:
+        if event.keyval != Gdk.KEY_Escape:
             return False
-        widget.stop_emission('key-press-event')
+        widget.stop_emission_by_name('key-press-event')
         self.cal_popup_hide()
         return True
 
     def on_cal_popup_button_pressed(self, widget, event):
         child = event.window
-        if child != widget.window:
+        if child != widget.props.window:
             while child:
-                if child == widget.window:
+                if child == widget.props.window:
                     return False
                 child = child.get_parent()
         self.cal_popup_hide()
@@ -189,7 +194,7 @@ class Toolbar(gtk.Toolbar):
         self.cal_popup_hide()
 
     def on_goocalendar_day_selected(self, goocalendar, day):
-        # months go from 0 to 11 in gtk.Calendar instead of 1 to 12
+        # months go from 0 to 11 in Gtk.Calendar instead of 1 to 12
         new_date = self.goocalendar.selected_date
         self.gtkcal.select_month(new_date.month - 1, new_date.year)
         self.gtkcal.handler_block_by_func(self.on_gtkcal_day_selected)

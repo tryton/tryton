@@ -132,9 +132,9 @@ class CellRendererBinary(Gtk.CellRenderer):
         if lwidth < 0:
             lwidth = 0
         layout.set_width(lwidth * Pango.SCALE)
-        layout.set_ellipsize(Pango.ELLIPSIZE_END)
-        layout.set_wrap(Pango.WRAP_CHAR)
-        layout.set_alignment(Pango.ALIGN_RIGHT)
+        layout.set_ellipsize(Pango.EllipsizeMode.END)
+        layout.set_wrap(Pango.WrapMode.CHAR)
+        layout.set_alignment(Pango.Alignment.RIGHT)
 
         if lwidth > 0:
             lw, lh = layout.get_size()  # Can not use get_pixel_extents
