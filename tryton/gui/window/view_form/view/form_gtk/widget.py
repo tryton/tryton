@@ -173,9 +173,9 @@ class TranslateDialog(NoModal):
             label = language['name'] + _(':')
             label = Gtk.Label(
                 label=label,
-                halign=Gtk.Alignment.END,
-                valign=(Gtk.Alignment.START if self.widget.expand
-                    else Gtk.Alignment.FILL))
+                halign=Gtk.Align.END,
+                valign=(Gtk.Align.START if self.widget.expand
+                    else Gtk.Align.FILL))
             table.attach(
                 label, 0, 1, i, i + 1,
                 xoptions=Gtk.AttachOptions.FILL, xpadding=2)
