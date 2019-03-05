@@ -122,7 +122,7 @@ class DictSelectionEntry(DictEntry):
             model.append((name,))
             width = max(width, len(name))
         widget.set_model(model)
-        widget.set_text_column(0)
+        widget.set_entry_text_column(0)
         child.set_width_chars(width)
         completion = Gtk.EntryCompletion()
         completion.set_inline_selection(True)
