@@ -1103,9 +1103,7 @@ function eval_pyson(value){
             return this.el;
         },
         get record() {
-            if (this.view && this.view.screen) {
-                return this.view.screen.current_record;
-            }
+            return this.view.record;
         },
         get field() {
             var record = this.record;
