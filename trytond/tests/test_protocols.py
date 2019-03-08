@@ -62,7 +62,7 @@ class XMLTestCase(unittest.TestCase):
         self.assertEqual(req.rpc_params, ('foo', 'bar'))
 
     def dumps_loads(self, value):
-        s = client.dumps((value,))
+        s = client.dumps((value,), allow_none=True)
         result, _ = client.loads(s)
         result, = result
         self.assertEqual(value, result)
