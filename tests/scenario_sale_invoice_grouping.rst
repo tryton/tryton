@@ -115,7 +115,6 @@ Sale some products::
     >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -124,7 +123,6 @@ Make another sale::
     >>> sale, = Sale.duplicate([sale])
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -154,7 +152,6 @@ Now we'll use the same scenario with the grouped customer::
     >>> sale_line.quantity = 1.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -169,7 +166,6 @@ Make another sale::
     >>> sale_line.quantity = 2.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -212,7 +208,6 @@ Check that a new sale won't be grouped with the manual invoice::
     >>> sale_line.quantity = 3.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
