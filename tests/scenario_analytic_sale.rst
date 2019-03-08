@@ -114,7 +114,8 @@ Sale with analytic accounts::
     >>> sale_line.quantity = 5
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
+    >>> sale.state
+    'processing'
 
 Check analytic accounts on invoice::
 
@@ -140,7 +141,8 @@ Sale with an empty analytic account::
     >>> sale_line.quantity = 5
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
+    >>> sale.state
+    'processing'
     >>> invoice, = sale.invoices
 
 Check invoice analytic accounts::
