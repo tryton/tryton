@@ -464,7 +464,7 @@ class BalanceNonDeferral(Wizard):
     def do_balance(self, action):
         self.create_move()
         action['pyson_domain'] = PYSONEncoder().encode([
-                ('origin', '=', str(self.start.fiscalyear)),
+                ('move.origin', '=', str(self.start.fiscalyear)),
                 ])
         return action, {}
 
