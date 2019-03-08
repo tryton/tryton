@@ -784,7 +784,7 @@
 
     Sao.PYSON.DateTime.eval_ = function(value, context) {
         var date = Sao.DateTime(value.y, value.M && value.M - 1, value.d,
-                value.h, value.m, value.s, value.ms && value.ms / 1000);
+                value.h, value.m, value.s, value.ms && value.ms / 1000, true);
         if (value.dy) date.add(value.dy, 'y');
         if (value.dM) date.add(value.dM, 'M');
         if (value.dd) date.add(value.dd, 'd');

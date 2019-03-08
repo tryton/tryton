@@ -826,51 +826,51 @@
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2010, 0, 12, 10, 30, 20, 0).valueOf());
+                new Date(Date.UTC(2010, 0, 12, 10, 30, 20, 0)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0, -1));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2009, 0, 12, 10, 30, 20, 0).valueOf());
+                new Date(Date.UTC(2009, 0, 12, 10, 30, 20, 0)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0, 0, 12));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2011, 0, 12, 10, 30, 20, 0).valueOf());
+                new Date(Date.UTC(2011, 0, 12, 10, 30, 20, 0)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0, 0, 0, -7));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2010, 0, 5, 10, 30, 20, 0).valueOf());
+                new Date(Date.UTC(2010, 0, 5, 10, 30, 20, 0)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0,
                     0, 0, 0, 12));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2010, 0, 12, 22, 30, 20, 0).valueOf());
+                new Date(Date.UTC(2010, 0, 12, 22, 30, 20, 0)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20,
                     0, 0, 0, 0, 0, -30));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2010, 0, 12, 10, 0, 20, 0).valueOf());
+                new Date(Date.UTC(2010, 0, 12, 10, 0, 20, 0)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20,
                     0, 0, 0, 0, 0, 0, 30));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2010, 0, 12, 10, 30, 50, 0).valueOf());
+                new Date(Date.UTC(2010, 0, 12, 10, 30, 50, 0)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20,
                     0, 0, 0, 0, 0, 0, 0, 2000));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2010, 0, 12, 10, 30, 20, 2).valueOf());
+                new Date(Date.UTC(2010, 0, 12, 10, 30, 20, 2)).valueOf());
 
         eval_ = new Sao.PYSON.Encoder().encode(
                 new Sao.PYSON.DateTime(2010, 2, 22, 10, 30, 20, 2000));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_).valueOf(),
-                new Date(2010, 1, 22, 10, 30, 20, 2).valueOf());
+                new Date(Date.UTC(2010, 1, 22, 10, 30, 20, 2)).valueOf());
 
         QUnit.strictEqual(new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0,
                 -1, 12, -7, 2, 15, 30, 1).toString(),
