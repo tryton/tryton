@@ -515,6 +515,12 @@
                                     format, prefix + field.name);
                             input = entry.el;
                             break;
+                        case 'integer':
+                        case 'float':
+                        case 'numeric':
+                            entry = new Sao.ScreenContainer.Numbers(prefix + field.name);
+                            input = entry.el;
+                            break;
                         default:
                             entry = input = jQuery('<input/>', {
                                 'class': 'form-control input-sm',
@@ -679,6 +685,27 @@
                     });
                 });
                 return entry;
+        },
+    });
+
+    Sao.ScreenContainer.Numbers = Sao.class_(Sao.ScreenContainer.BetweenDates, {
+        init: function(id) {
+            Sao.ScreenContainer.Numbers._super.init.call(this, id);
+            this.from.change(this._from_changed.bind(this));
+        },
+        build_entry: function(placeholder, el) {
+            var entry = jQuery('<input/>', {
+                'class': 'form-control input-sm',
+                'type': 'number',
+                'step': 'any',
+            }).appendTo(el);
+            return entry;
+        },
+        _get_value: function(entry, value) {
+            return entry.val();
+        },
+        _set_value: function(entry, value) {
+            return entry.val(value);
         },
     });
 
