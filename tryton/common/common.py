@@ -36,7 +36,6 @@ try:
 except ImportError:
     ssl = None
 from threading import Lock
-import dateutil.tz
 
 from tryton.exceptions import TrytonServerError, TrytonError
 from tryton.pyson import PYSONEncoder
@@ -1266,8 +1265,14 @@ def filter_domain(domain):
 
 
 def timezoned_date(date, reverse=False):
-    lzone = dateutil.tz.tzlocal()
-    szone = dateutil.tz.tzutc()
+    try:
+        from dateutil.tz.win import tzwinlocal as tzlocal
+    except ImportError:
+        from dateutil.tz import tzlocal
+    from dateutil.tz import tzutc
+
+    lzone = tzlocal()
+    szone = tzutc()
     if reverse:
         lzone, szone = szone, lzone
     return date.replace(tzinfo=szone).astimezone(lzone).replace(tzinfo=None)
