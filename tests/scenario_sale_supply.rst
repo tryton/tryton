@@ -127,7 +127,6 @@ Sale 250 products::
     >>> sale_line.quantity = 250
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
     >>> shipment, = sale.shipments
@@ -165,7 +164,6 @@ Create Purchase from Request::
     >>> purchase.payment_term = payment_term
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> purchase.state
     'processing'
     >>> set_user(sale_user)
@@ -230,7 +228,6 @@ not create a new purchase request::
     >>> sale_line.quantity = 100
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
     >>> shipment, = sale.shipments
