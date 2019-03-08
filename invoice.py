@@ -111,7 +111,7 @@ class InvoiceLine(metaclass=PoolMeta):
         moves.sort(key=operator.attrgetter('effective_date'))
         cost = Move.update_anglo_saxon_quantity_product_cost(
             self.product, moves, abs(self.quantity), self.unit, type_)
-        cost = self.invoice.currency.round(cost)
+        cost = self.invoice.company.currency.round(cost)
 
         with Transaction().set_context(date=accounting_date):
             anglo_saxon_move_lines = self._get_anglo_saxon_move_lines(
