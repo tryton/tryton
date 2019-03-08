@@ -21,13 +21,6 @@ def dump_decimal(self, value, write):
     self.dump_struct(value, write)
 
 
-def dump_bytes(self, value, write):
-    self.write = write
-    value = xmlrpc.client.Binary(value)
-    value.encode(self)
-    del self.write
-
-
 def dump_date(self, value, write):
     value = {'__class__': 'date',
         'year': value.year,
@@ -53,13 +46,11 @@ def dump_timedelta(self, value, write):
         }
     self.dump_struct(value, write)
 
+
 xmlrpc.client.Marshaller.dispatch[Decimal] = dump_decimal
 xmlrpc.client.Marshaller.dispatch[datetime.date] = dump_date
 xmlrpc.client.Marshaller.dispatch[datetime.time] = dump_time
 xmlrpc.client.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
-if bytes != str:
-    xmlrpc.client.Marshaller.dispatch[bytes] = dump_bytes
-xmlrpc.client.Marshaller.dispatch[bytearray] = dump_bytes
 
 
 def dump_struct(self, value, write, escape=xmlrpc.client.escape):
@@ -90,6 +81,7 @@ class XMLRPCDecoder(object):
             return self.decoders[dct['__class__']](dct)
         return dct
 
+
 XMLRPCDecoder.register('date',
     lambda dct: datetime.date(dct['year'], dct['month'], dct['day']))
 XMLRPCDecoder.register('time',
@@ -110,6 +102,7 @@ def end_struct(self, data):
     dct = XMLRPCDecoder()(dct)
     self._stack[mark:] = [dct]
     self._value = 0
+
 
 xmlrpc.client.Unmarshaller.dispatch['struct'] = end_struct
 
@@ -322,7 +315,7 @@ class XmlrpcConfig(Config):
         super(XmlrpcConfig, self).__init__()
         self.url = url
         self.server = xmlrpc.client.ServerProxy(
-            url, allow_none=1, use_datetime=1, **kwargs)
+            url, allow_none=True, use_builtin_types=True, **kwargs)
         # TODO add user
         self.user = None
         self._context = self.server.model.res.user.get_preferences(True, {})
