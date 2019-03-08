@@ -664,6 +664,43 @@
             }
             return records;
         },
+        select_records: function(from, to) {
+            if (!from) {
+                from = this.rows[0];
+            }
+            if (from && to) {
+                var from_idx = from.get_index_path(this.screen.group);
+                var to_idx = to.get_index_path(this.screen.group);
+                var max_len = Math.min(from_idx.length, to_idx.length);
+                var tmp;
+                for (var i=0; i < max_len; i++) {
+                    if (from_idx[i] > to_idx[i]) {
+                        tmp = from;
+                        from = to;
+                        to = tmp;
+                        break;
+                    }
+                }
+                if (!tmp && (from_idx.length > to_idx.length)) {
+                    tmp = from;
+                    from = to;
+                    to = tmp;
+                }
+            }
+            var value = this.rows[0].record === from;
+            var select_record = function(row) {
+                var record = row.record;
+                if (record === from) {
+                    value = true;
+                }
+                row.set_selection(value);
+                if (record === to) {
+                    value = false;
+                }
+                row.rows.forEach(select_record);
+            };
+            this.rows.forEach(select_record);
+        },
         selection_changed: function() {
             var value = this.selection.prop('checked');
             var set_checked = function(row) {
@@ -680,9 +717,6 @@
         },
         update_selection: function() {
             this.update_sum();
-            if (this.selection.prop('checked')) {
-                return;
-            }
             var selected_records = this.selected_records;
             this.selection.prop('indeterminate', false);
             if (jQuery.isEmptyObject(selected_records)) {
@@ -1170,15 +1204,24 @@
                 this.tree.select_changed(this.record);
                 this.switch_row();
             } else {
-                if (!event_.ctrlKey ||
+                var current_record;
+                if (event_.shiftKey &&
+                    this.tree.selection_mode != Sao.common.SELECTION_SINGLE) {
+                    current_record = this.tree.screen.current_record;
+                    this.tree.select_records(current_record, this.record);
+                } else {
+                    if (!event_.ctrlKey ||
                         this.tree.selection_mode ==
                         Sao.common.SELECTION_SINGLE) {
-                    this.tree.rows.forEach(function(row) {
-                        row.set_selection(false);
-                    }.bind(this));
+                        this.tree.select_records(null, null);
+                    }
+                    this.set_selection(!this.is_selected());
                 }
-                this.set_selection(!this.is_selected());
                 this.selection_changed();
+                if (current_record) {
+                    // Keep original current record with shift select
+                    this.tree.screen.current_record = current_record;
+                }
             }
         },
         is_selected: function() {
@@ -1325,8 +1368,10 @@
             listener.on('click.sao.editabletree', handler);
 
             Sao.View.Tree.RowEditable._super.select_row.call(this, event_);
-            this.selection_changed();
-            this.tree.edit_row(this);
+
+            if (!event_.shiftKey && !event_.ctrlKey) {
+                this.tree.edit_row(this);
+            }
         },
         unset_editable: function() {
             this.tree.columns.forEach(function(col, idx) {
