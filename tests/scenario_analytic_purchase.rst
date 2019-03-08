@@ -113,7 +113,8 @@ Purchase with analytic accounts::
     >>> purchase_line.quantity = 5
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
+    >>> purchase.state
+    'processing'
 
 Check invoice analytic accounts::
 
@@ -138,7 +139,8 @@ Purchase with an empty analytic account::
     >>> purchase_line.quantity = 5
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
+    >>> purchase.state
+    'processing'
 
 Check invoice analytic accounts::
 
