@@ -34,7 +34,7 @@ class ProcessDunning(metaclass=PoolMeta):
         Dunning = pool.get('account.dunning')
         dunnings = Dunning.browse(Transaction().context['active_ids'])
         ids = [d.id for d in dunnings
-            if d.state == 'done'
+            if d.state == 'waiting'
             and not d.blocked
             and d.party
             and d.level.print_on_letter]
@@ -64,7 +64,7 @@ class Letter(CompanyReport, metaclass=PoolMeta):
         Date = pool.get('ir.date')
 
         dunnings = [d for d in records
-            if d.state == 'done'
+            if d.state == 'waiting'
             and not d.blocked
             and d.party]
         parties = list(set((d.party for d in dunnings)))

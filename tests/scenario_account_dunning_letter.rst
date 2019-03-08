@@ -186,3 +186,4 @@ Process dunning::
     >>> dunning.reload()
     >>> dunning.state
     'waiting'
+    >>> (_, _, _, _), = process_dunning.actions
