@@ -24,13 +24,6 @@ def dump_decimal(self, value, write):
     self.dump_struct(value, write)
 
 
-def dump_bytes(self, value, write):
-    self.write = write
-    value = client.Binary(value)
-    value.encode(self)
-    del self.write
-
-
 def dump_date(self, value, write):
     value = {'__class__': 'date',
         'year': value.year,
@@ -56,14 +49,11 @@ def dump_timedelta(self, value, write):
         }
     self.dump_struct(value, write)
 
+
 client.Marshaller.dispatch[Decimal] = dump_decimal
-client.Marshaller.dispatch[type(None)] = \
-        lambda self, value, write: write("<value><nil/></value>")
 client.Marshaller.dispatch[datetime.date] = dump_date
 client.Marshaller.dispatch[datetime.time] = dump_time
 client.Marshaller.dispatch[datetime.timedelta] = dump_timedelta
-if bytes == str:
-    client.Marshaller.dispatch[bytearray] = dump_bytes
 
 
 def dump_struct(self, value, write, escape=client.escape):
@@ -75,6 +65,7 @@ def dump_struct(self, value, write, escape=client.escape):
             k = repr(k)
         converted_value[k] = v
     return self.dump_struct(converted_value, write, escape=escape)
+
 
 client.Marshaller.dispatch[dict] = dump_struct
 
@@ -92,6 +83,7 @@ class XMLRPCDecoder(object):
         if dct.get('__class__') in self.decoders:
             return self.decoders[dct['__class__']](dct)
         return dct
+
 
 XMLRPCDecoder.register('date',
     lambda dct: datetime.date(dct['year'], dct['month'], dct['day']))
@@ -114,25 +106,8 @@ def end_struct(self, data):
     self._stack[mark:] = [dct]
     self._value = 0
 
+
 client.Unmarshaller.dispatch['struct'] = end_struct
-
-
-def _end_dateTime(self, data):
-    value = client.DateTime()
-    value.decode(data)
-    value = client._datetime_type(data)
-    self.append(value)
-client.Unmarshaller.dispatch["dateTime.iso8601"] = _end_dateTime
-
-
-def _end_base64(self, data):
-    value = client.Binary()
-    value.decode(data.encode('ascii'))
-    cast = bytearray if bytes == str else bytes
-    self.append(cast(value.data))
-    self._value = 0
-if bytes == str:
-    client.Unmarshaller.dispatch['base64'] = _end_base64
 
 
 class XMLRequest(Request):
@@ -143,7 +118,7 @@ class XMLRequest(Request):
         if self.parsed_content_type in self.environ.get('CONTENT_TYPE', ''):
             try:
                 # TODO replace by own loads
-                return client.loads(self.decoded_data)
+                return client.loads(self.decoded_data, use_builtin_types=True)
             except Exception:
                 raise BadRequest('Unable to read XMl request')
         else:
