@@ -205,6 +205,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'posted',
             },
         depends=['state', 'account', 'party', 'id', 'type', 'total_amount'])
+    reconciliation_lines = fields.Function(fields.Many2Many(
+            'account.move.line', None, None, "Payment Lines",
+            states={
+                'invisible': Eval('state') != 'paid',
+                }),
+        'get_reconciliation_lines')
     amount_to_pay_today = fields.Function(fields.Numeric('Amount to Pay Today',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_amount_to_pay')
@@ -645,6 +651,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             for invoice_id, line_id in cursor.fetchall():
                 lines[invoice_id].append(line_id)
         return lines
+
+    def get_reconciliation_lines(self, name):
+        if self.state != 'paid':
+            return
+        lines = set()
+        for line in self.move.lines:
+            if line.account == self.account and line.reconciliation:
+                for line in line.reconciliation.lines:
+                    if line not in self.move.lines:
+                        lines.add(line)
+        return [l.id for l in sorted(lines, key=lambda l: l.date)]
 
     @classmethod
     def get_amount_to_pay(cls, invoices, name):
