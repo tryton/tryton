@@ -276,11 +276,12 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         childs = [self]
         while childs:
             for child in childs:
-                if child.template and not child.template_override:
-                    vals = child.template._get_type_value(type=child)
-                    if vals:
-                        values.append([child])
-                        values.append(vals)
+                if child.template:
+                    if not child.template_override:
+                        vals = child.template._get_type_value(type=child)
+                        if vals:
+                            values.append([child])
+                            values.append(vals)
                     template2type[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:
@@ -1032,19 +1033,20 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         childs = [self]
         while childs:
             for child in childs:
-                if child.template and not child.template_override:
-                    vals = child.template._get_account_value(account=child)
-                    current_type = child.type.id if child.type else None
-                    if child.template.type:
-                        template_type = template2type.get(
-                            child.template.type.id)
-                    else:
-                        template_type = None
-                    if current_type != template_type:
-                        vals['type'] = template_type
-                    if vals:
-                        values.append([child])
-                        values.append(vals)
+                if child.template:
+                    if not child.template_override:
+                        vals = child.template._get_account_value(account=child)
+                        current_type = child.type.id if child.type else None
+                        if child.template.type:
+                            template_type = template2type.get(
+                                child.template.type.id)
+                        else:
+                            template_type = None
+                        if current_type != template_type:
+                            vals['type'] = template_type
+                        if vals:
+                            values.append([child])
+                            values.append(vals)
                     template2account[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:

@@ -264,11 +264,12 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 ])
         while childs:
             for child in childs:
-                if child.template and not child.template_override:
-                    vals = child.template._get_tax_code_value(code=child)
-                    if vals:
-                        values.append([child])
-                        values.append(vals)
+                if child.template:
+                    if not child.template_override:
+                        vals = child.template._get_tax_code_value(code=child)
+                        if vals:
+                            values.append([child])
+                            values.append(vals)
                     template2tax_code[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:
@@ -399,16 +400,17 @@ class TaxCodeLine(ModelSQL, ModelView):
 
         values = []
         for line in cls.search([('tax.company', '=', company_id)]):
-            if line.template and not line.template_override:
-                template = line.template
-                value = template._get_tax_code_line_value(line=line)
-                if line.code.id != template2tax_code.get(template.code.id):
-                    value['code'] = template2tax_code.get(template.code.id)
-                if line.tax.id != template2tax.get(template.tax.id):
-                    value['tax'] = template2tax.get(template.tax.id)
-                if value:
-                    values.append([line])
-                    values.append(value)
+            if line.template:
+                if not line.template_override:
+                    template = line.template
+                    value = template._get_tax_code_line_value(line=line)
+                    if line.code.id != template2tax_code.get(template.code.id):
+                        value['code'] = template2tax_code.get(template.code.id)
+                    if line.tax.id != template2tax.get(template.tax.id):
+                        value['tax'] = template2tax.get(template.tax.id)
+                    if value:
+                        values.append([line])
+                        values.append(value)
                 template2tax_code_line[line.template.id] = line.id
         if values:
             cls.write(*values)
@@ -1002,31 +1004,32 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
                 ])
         while childs:
             for child in childs:
-                if child.template and not child.template_override:
-                    vals = child.template._get_tax_value(tax=child)
-                    invoice_account_id = (child.invoice_account.id
-                        if child.invoice_account else None)
-                    if (child.template.invoice_account and
-                            invoice_account_id != template2account.get(
-                                    child.template.invoice_account.id)):
-                        vals['invoice_account'] = template2account.get(
-                            child.template.invoice_account.id)
-                    elif (not child.template.invoice_account
-                            and child.invoice_account):
-                        vals['invoice_account'] = None
-                    credit_note_account_id = (child.credit_note_account.id
-                        if child.credit_note_account else None)
-                    if (child.template.credit_note_account and
-                            credit_note_account_id != template2account.get(
-                                child.template.credit_note_account.id)):
-                        vals['credit_note_account'] = template2account.get(
-                            child.template.credit_note_account.id)
-                    elif (not child.template.credit_note_account
-                            and child.credit_note_account):
-                        vals['credit_note_account'] = None
-                    if vals:
-                        values.append([child])
-                        values.append(vals)
+                if child.template:
+                    if not child.template_override:
+                        vals = child.template._get_tax_value(tax=child)
+                        invoice_account_id = (child.invoice_account.id
+                            if child.invoice_account else None)
+                        if (child.template.invoice_account and
+                                invoice_account_id != template2account.get(
+                                        child.template.invoice_account.id)):
+                            vals['invoice_account'] = template2account.get(
+                                child.template.invoice_account.id)
+                        elif (not child.template.invoice_account
+                                and child.invoice_account):
+                            vals['invoice_account'] = None
+                        credit_note_account_id = (child.credit_note_account.id
+                            if child.credit_note_account else None)
+                        if (child.template.credit_note_account and
+                                credit_note_account_id != template2account.get(
+                                    child.template.credit_note_account.id)):
+                            vals['credit_note_account'] = template2account.get(
+                                child.template.credit_note_account.id)
+                        elif (not child.template.credit_note_account
+                                and child.credit_note_account):
+                            vals['credit_note_account'] = None
+                        if vals:
+                            values.append([child])
+                            values.append(vals)
                     template2tax[child.template.id] = child.id
             childs = sum((c.childs for c in childs), ())
         if values:
