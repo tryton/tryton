@@ -143,7 +143,6 @@ Sale 250 products::
     >>> sale_line.quantity = 250
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
     >>> sale.shipments
@@ -171,7 +170,6 @@ Create Purchase from Request::
     >>> purchase_line.unit_price = Decimal('3.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> purchase.state
     'processing'
 
@@ -260,7 +258,6 @@ Cancelling the workflow on the purchase step::
     >>> sale.save()
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
     >>> sale.shipments
