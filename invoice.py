@@ -99,7 +99,7 @@ class InvoiceLine:
         moves.sort(key=operator.attrgetter('effective_date'))
         cost = Move.update_anglo_saxon_quantity_product_cost(
             self.product, moves, abs(self.quantity), self.unit, type_)
-        cost = self.invoice.currency.round(cost)
+        cost = self.invoice.company.currency.round(cost)
 
         anglo_saxon_move_lines = self._get_anglo_saxon_move_lines(cost, type_)
         result.extend(anglo_saxon_move_lines)
