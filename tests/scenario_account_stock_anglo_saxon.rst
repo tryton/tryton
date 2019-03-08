@@ -156,7 +156,6 @@ Purchase 12 products::
     >>> purchase_line.unit_price = Decimal(6)
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> purchase.state
     'processing'
 
@@ -239,7 +238,6 @@ Sale 5 products::
     >>> sale_line.quantity = 3.0
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -308,7 +306,6 @@ Now create a supplier invoice with an accountant::
     >>> purchase_line.unit_price = Decimal(4)
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> purchase.state
     'processing'
 
@@ -374,7 +371,6 @@ Now we will use a product with different unit of measure::
     >>> purchase_line.quantity = 1.0
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
 
     >>> set_user(stock_user)
     >>> shipment = ShipmentIn(supplier=supplier)

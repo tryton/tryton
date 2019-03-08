@@ -171,7 +171,6 @@ Sale 50 products::
     >>> sale_line.quantity = 50
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
     >>> sale.state
     'processing'
 
@@ -189,7 +188,6 @@ Create Purchase from Request::
     >>> purchase_line.unit_price = Decimal('3')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
-    >>> purchase.click('process')
     >>> purchase.state
     'processing'
     >>> set_user(sale_user)
