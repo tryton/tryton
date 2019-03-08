@@ -80,9 +80,18 @@ class Package(tree(), ModelSQL, ModelView):
     __name__ = 'stock.package'
     _rec_name = 'code'
     code = fields.Char('Code', select=True, readonly=True, required=True)
-    type = fields.Many2One('stock.package.type', 'Type', required=True)
-    shipment = fields.Reference('Shipment', selection='get_shipment',
-        select=True)
+    type = fields.Many2One(
+        'stock.package.type', "Type", required=True,
+        states={
+            'readonly': Eval('state') == 'closed',
+            },
+        depends=['state'])
+    shipment = fields.Reference(
+        "Shipment", selection='get_shipment', select=True,
+        states={
+            'readonly': Eval('state') == 'closed',
+            },
+        depends=['state'])
     moves = fields.One2Many('stock.move', 'package', 'Moves',
         domain=[
             ('shipment', '=', Eval('shipment')),
@@ -92,13 +101,32 @@ class Package(tree(), ModelSQL, ModelView):
         add_remove=[
             ('package', '=', None),
             ],
-        depends=['shipment'])
-    parent = fields.Many2One('stock.package', 'Parent', select=True,
-        ondelete='CASCADE', domain=[('shipment', '=', Eval('shipment'))],
-        depends=['shipment'])
-    children = fields.One2Many('stock.package', 'parent', 'Children',
-        domain=[('shipment', '=', Eval('shipment'))],
-        depends=['shipment'])
+        states={
+            'readonly': Eval('state') == 'closed',
+            },
+        depends=['shipment', 'state'])
+    parent = fields.Many2One(
+        'stock.package', "Parent", select=True, ondelete='CASCADE',
+        domain=[
+            ('shipment', '=', Eval('shipment')),
+            ],
+        states={
+            'readonly': Eval('state') == 'closed',
+            },
+        depends=['shipment', 'state'])
+    children = fields.One2Many(
+        'stock.package', 'parent', 'Children',
+        domain=[
+            ('shipment', '=', Eval('shipment')),
+            ],
+        states={
+            'readonly': Eval('state') == 'closed',
+            },
+        depends=['shipment', 'state'])
+    state = fields.Function(fields.Selection([
+                ('open', "Open"),
+                ('closed', "Closed"),
+                ], "State"), 'on_change_with_state')
 
     @staticmethod
     def _get_shipment():
@@ -117,6 +145,13 @@ class Package(tree(), ModelSQL, ModelView):
                 ('model', 'in', models),
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
+
+    @fields.depends('shipment')
+    def on_change_with_state(self, name=None):
+        if (self.shipment
+                and self.shipment.state in {'packed', 'done', 'cancel'}):
+            return 'closed'
+        return 'open'
 
     @classmethod
     def create(cls, vlist):
@@ -145,13 +180,13 @@ class Move(metaclass=PoolMeta):
 class PackageMixin(object):
     packages = fields.One2Many('stock.package', 'shipment', 'Packages',
         states={
-            'readonly': Eval('state').in_(['done', 'cancel']),
+            'readonly': Eval('state').in_(['packed', 'done', 'cancel']),
             })
     root_packages = fields.Function(fields.One2Many('stock.package',
             'shipment', 'Packages',
             domain=[('parent', '=', None)],
             states={
-                'readonly': Eval('state').in_(['done', 'cancel']),
+                'readonly': Eval('state').in_(['packed', 'done', 'cancel']),
                 }), 'get_root_packages', setter='set_root_packages')
 
     def get_root_packages(self, name):
