@@ -1147,11 +1147,12 @@ class AccountTestCase(ModuleTestCase):
         with set_company(company):
             create_chart(company, True)
 
-            self.assertEqual(Type.search([], count=True), 16)
-            self.assertEqual(Account.search([], count=True), 7)
-            self.assertEqual(Tax.search([], count=True), 1)
+            with Transaction().set_context(active_test=False):
+                self.assertEqual(Type.search([], count=True), 16)
+                self.assertEqual(Account.search([], count=True), 7)
+                self.assertEqual(Tax.search([], count=True), 1)
 
-            check()
+                check()
 
         with Transaction().set_user(0):
             root_type = TypeTemplate(ModelData.get_id(
@@ -1182,6 +1183,10 @@ class AccountTestCase(ModuleTestCase):
             updated_account.end_date = datetime.date.today()
             updated_account.taxes = [updated_tax]
             updated_account.save()
+            inactive_account = AccountTemplate(ModelData.get_id(
+                    'account', 'account_template_expense_en'))
+            inactive_account.end_date = datetime.date.min
+            inactive_account.save()
             new_tax = TaxTemplate()
             new_tax.name = new_tax.description = '10% VAT'
             new_tax.type = 'percentage'
@@ -1206,11 +1211,104 @@ class AccountTestCase(ModuleTestCase):
             update_chart.start.account = account
             update_chart.transition_update()
 
-            self.assertEqual(Type.search([], count=True), 17)
-            self.assertEqual(Account.search([], count=True), 8)
-            self.assertEqual(Tax.search([], count=True), 2)
+            with Transaction().set_context(active_test=False):
+                self.assertEqual(Type.search([], count=True), 17)
+                self.assertEqual(Account.search([], count=True), 8)
+                self.assertEqual(Tax.search([], count=True), 2)
 
-            check()
+                check()
+
+    @with_transaction()
+    def test_update_override(self):
+        "Test all models are not updated when template override is True"
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        TypeTemplate = pool.get('account.account.type.template')
+        AccountTemplate = pool.get('account.account.template')
+        TaxTemplate = pool.get('account.tax.template')
+        TaxCodeTemplate = pool.get('account.tax.code.template')
+        UpdateChart = pool.get('account.update_chart', type='wizard')
+        Type = pool.get('account.account.type')
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+        TaxCode = pool.get('account.tax.code')
+        TaxCodeLine = pool.get('account.tax.code.line')
+
+        new_name = "Updated"
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, True)
+
+            type_count = Type.search([], count=True)
+            account_count = Account.search([], count=True)
+            tax_count = Tax.search([], count=True)
+            tax_code_count = TaxCode.search([], count=True)
+            tax_code_line_count = TaxCodeLine.search([], count=True)
+
+        with Transaction().set_user(0):
+            root = AccountTemplate(ModelData.get_id(
+                    'account', 'account_template_root_en'))
+
+            template_type, = TypeTemplate.search([
+                    ('parent', '!=', None),
+                    ('parent', 'child_of', [root.type.id]),
+                    ], limit=1)
+            template_type.name = new_name
+            template_type.save()
+            type_, = Type.search([('template', '=', template_type.id)])
+            type_.template_override = True
+            type_.save()
+
+            template_account, = AccountTemplate.search([
+                    ('parent', '!=', None),
+                    ('parent', 'child_of', [root.id]),
+                    ], limit=1)
+            template_account.name = new_name
+            template_account.save()
+            account, = Account.search([('template', '=', template_account.id)])
+            account.template_override = True
+            account.save()
+
+            template_tax, = TaxTemplate.search([])
+            template_tax.name = new_name
+            template_tax.save()
+            tax, = Tax.search([('template', '=', template_tax.id)])
+            tax.template_override = True
+            tax.save()
+
+            template_tax_code, = TaxCodeTemplate.search([], limit=1)
+            template_tax_code.name = new_name
+            template_tax_code.save()
+            tax_code, = TaxCode.search(
+                [('template', '=', template_tax_code.id)])
+            tax_code.template_override = True
+            tax_code.save()
+
+            template_tax_code_line, = TaxCodeLine.search([], limit=1)
+            tax_code_line, = TaxCodeLine.search(
+                [('template', '=', template_tax_code_line.id)])
+            tax_code_line.template_override = True
+            tax_code_line.save()
+
+        with set_company(company):
+            account, = Account.search([('parent', '=', None)])
+            session_id, _, _ = UpdateChart.create()
+            update_chart = UpdateChart(session_id)
+            update_chart.start.account = account
+            update_chart.transition_update()
+
+            self.assertEqual(Type.search([], count=True), type_count)
+            self.assertEqual(Account.search([], count=True), account_count)
+            self.assertEqual(Tax.search([], count=True), tax_count)
+            self.assertEqual(
+                TaxCode.search([], count=True), tax_code_count)
+            self.assertEqual(
+                TaxCodeLine.search([], count=True), tax_code_line_count)
+
+            for Model in [Type, Account, Tax, TaxCode]:
+                for record in Model.search([]):
+                    self.assertNotEqual(record.name, new_name)
 
 
 def suite():
