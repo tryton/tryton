@@ -9,6 +9,7 @@ import tryton.common as common
 from tryton.common.domain_parser import quote
 from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.datetime_ import Date, Time, DateTime, add_operators
+from tryton.common.number_entry import NumberEntry
 from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
@@ -133,6 +134,19 @@ class DateTimes(BetweenDates):
         if value:
             return value.strftime(
                 widget.props.date_format + ' ' + widget.props.time_format)
+
+
+class Numbers(Between):
+    _changed_signal = 'changed'
+
+    def __init__(self):
+        super().__init__(NumberEntry)
+
+    def _get_value(self, widget):
+        return widget.get_text()
+
+    def _set_value(self, entry, value):
+        entry.set_text(value or '')
 
 
 class Selection(Gtk.ScrolledWindow):
@@ -613,6 +627,9 @@ class ScreenContainer(object):
                             entry = Times(time_format)
                         elif field['type'] == 'datetime':
                             entry = DateTimes(date_format, time_format)
+                    entry.connect('activate', lambda *a: search())
+                elif field['type'] in ['integer', 'float', 'numeric']:
+                    entry = Numbers()
                     entry.connect('activate', lambda *a: search())
                 else:
                     entry = Gtk.Entry()

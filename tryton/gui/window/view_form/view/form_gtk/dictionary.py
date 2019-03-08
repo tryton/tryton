@@ -10,8 +10,6 @@ from decimal import Decimal
 from gi.repository import GLib, GObject, Gtk
 
 from .widget import Widget
-from .integer import IntegerMixin
-from .float import FloatMixin
 
 from tryton.gui.window.win_search import WinSearch
 from tryton.common import Tooltips, timezoned_date, untimezoned_date, \
@@ -21,6 +19,7 @@ from tryton.common.completion import get_completion, update_completion
 from tryton.common.datetime_ import Date, DateTime
 from tryton.common.domain_parser import quote
 from tryton.common.entry_position import reset_position
+from tryton.common.number_entry import NumberEntry
 from tryton.common.underline import set_underline
 from tryton.common.domain_inversion import eval_domain
 from tryton.common.widget_style import widget_class
@@ -157,23 +156,21 @@ class DictSelectionEntry(DictEntry):
         self.widget.set_sensitive(not readonly)
 
 
-class DictIntegerEntry(IntegerMixin, DictEntry):
+class DictIntegerEntry(DictEntry):
     expand = False
     fill = False
 
     def create_widget(self):
-        widget = super(DictIntegerEntry, self).create_widget()
-        self._prepare_entry(widget)
+        widget = NumberEntry()
+        widget.connect('key-press-event', self.parent_widget.send_modified)
+        widget.connect('focus-out-event',
+            lambda w, e: self.parent_widget._focus_out())
+        widget.props.activates_default = True
+        widget.connect('activate', self.parent_widget.sig_activate)
         return widget
 
     def get_value(self):
-        txt_value = self.widget.get_text()
-        if txt_value:
-            try:
-                return locale.atoi(txt_value)
-            except ValueError:
-                pass
-        return None
+        return int(self.widget.value)
 
     def set_value(self, value):
         if value is not None:
@@ -184,7 +181,7 @@ class DictIntegerEntry(IntegerMixin, DictEntry):
         reset_position(self.widget)
 
 
-class DictFloatEntry(FloatMixin, DictIntegerEntry):
+class DictFloatEntry(DictIntegerEntry):
 
     @property
     def digits(self):
@@ -195,24 +192,30 @@ class DictFloatEntry(FloatMixin, DictIntegerEntry):
                 return
             return digits
 
+    @property
+    def width(self):
+        digits = self.digits
+        if digits:
+            return sum(digits)
+        else:
+            return 18
+
     def get_value(self):
-        txt_value = self.widget.get_text()
-        if txt_value:
-            try:
-                return locale.atof(txt_value)
-            except ValueError:
-                pass
-        return None
+        return self.widget.value
 
     def set_value(self, value):
         digits = self.digits
+        if digits:
+            self.widget.digits = digits[1]
+        else:
+            self.widget.digits = None
+        self.widget.set_width_chars(self.width)
         if value is not None:
             txt_val = locale.format('%.*f', (digits[1], value), True)
         else:
             txt_val = ''
         self.widget.set_text(txt_val)
         reset_position(self.widget)
-        self._set_entry_width(self.widget)
 
 
 class DictNumericEntry(DictFloatEntry):
