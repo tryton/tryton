@@ -433,8 +433,8 @@ class Screen(SignalEvent):
                 # XXX offset?
                 pos = record.get_index_path()
         else:
-            pos = None
-        self.signal('record-message', (pos or 0, len(self.group) + self.offset,
+            pos = 0
+        self.signal('record-message', (pos, len(self.group) + self.offset,
             self.search_count, record and record.id))
         attachment_count = 0
         if record and record.attachment_count > 0:
