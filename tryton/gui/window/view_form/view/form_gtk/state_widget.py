@@ -62,7 +62,7 @@ class Image(StateMixin, Gtk.Image):
             field = record.group.fields[name]
             name = field.get(record)
         self.set_from_pixbuf(common.IconFactory.get_pixbuf(
-                name, Gtk.IconSize.DIALOG))
+                name, int(self.attrs.get('size', 48))))
 
 
 class Frame(StateMixin, Gtk.Frame):

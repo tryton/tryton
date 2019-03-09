@@ -119,7 +119,7 @@ class IconFactory:
             del cls._name2id[icon['name']]
 
     @classmethod
-    def get_pixbuf(cls, iconname, size=Gtk.IconSize.MENU, color=None):
+    def get_pixbuf(cls, iconname, size=16, color=None):
         cls.register_icon(iconname)
         if iconname not in cls._pixbufs[size]:
             if iconname in cls._icons:
@@ -147,12 +147,12 @@ class IconFactory:
                 Gtk.IconSize.BUTTON: 16,
                 Gtk.IconSize.DND: 12,
                 Gtk.IconSize.DIALOG: 48,
-                }.get(size)
+                }.get(size, size)
             cls._pixbufs[size][iconname] = data2pixbuf(data, width, height)
         return cls._pixbufs[size][iconname]
 
     @classmethod
-    def get_image(cls, iconname, size=Gtk.IconSize.BUTTON, color=None):
+    def get_image(cls, iconname, size=16, color=None):
         pixbuf = cls.get_pixbuf(iconname, size, color)
         image = Gtk.Image()
         image.set_from_pixbuf(pixbuf)
