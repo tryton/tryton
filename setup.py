@@ -18,11 +18,23 @@ args = {}
 try:
     from babel.messages import frontend as babel
 
+    class extract_messages(babel.extract_messages):
+        def initialize_options(self):
+            super().initialize_options()
+            self.omit_header = True
+            self.no_location = True
+
+    class update_catalog(babel.update_catalog):
+        def initialize_options(self):
+            super().initialize_options()
+            self.omit_header = True
+            self.ignore_obsolete = True
+
     args['cmdclass'] = {
         'compile_catalog': babel.compile_catalog,
-        'extract_messages': babel.extract_messages,
+        'extract_messages': extract_messages,
         'init_catalog': babel.init_catalog,
-        'update_catalog': babel.update_catalog,
+        'update_catalog': update_catalog,
         }
 
     args['message_extractors'] = {
