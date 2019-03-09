@@ -403,7 +403,7 @@ class Field(object):
             'sortable': hasattr(model, 'search'),
             }
 
-        name = '%s,%s' % (model.__class__, self.name)
+        name = '%s,%s' % (model.__name__, self.name)
         trans = Translation.get_source(name, 'field', language)
         definition['string'] = trans or self.string
         trans = Translation.get_source(name, 'help', language)
@@ -412,7 +412,7 @@ class Field(object):
 
     def definition_translations(self, model, language):
         "Returns sources used for definition"
-        name = '%s,%s' % (model.__class__, self.name)
+        name = '%s,%s' % (model.__name__, self.name)
         return [
             (name, 'field', language, None),
             (name, 'help', language, None),

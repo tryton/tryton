@@ -27,7 +27,7 @@ class SelectionMixin(Field):
         Translation = pool.get('ir.translation')
         definition = super().definition(model, language)
         if not isinstance(self.selection, str) and self.translate_selection:
-            name = '%s,%s' % (model.__class__, self.name)
+            name = '%s,%s' % (model.__name__, self.name)
             selection = []
             for key, source in self.selection:
                 trans = Translation.get_source(
@@ -42,7 +42,7 @@ class SelectionMixin(Field):
         return definition
 
     def definition_translations(self, model, language):
-        name = '%s,%s' % (model.__class__, self.name)
+        name = '%s,%s' % (model.__name__, self.name)
         selection = []
         if not isinstance(self.selection, str) and self.translate_selection:
             for key, source in self.selection:
