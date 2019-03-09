@@ -530,6 +530,14 @@
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
+      <attribute a:defaultValue="48">
+        <name ns="">size</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.image" combine="interleave">
+    <optional>
       <attribute a:defaultValue="0">
         <name ns="">xfill</name>
         <choice>

@@ -291,6 +291,8 @@ Display an image.
 
     * ``colspan``: see in common-attributes-colspan_.
 
+    * ``size``: the size of the image in pixels. The default value is 48.
+
     * ``states``: see in common-attributes-states_.
 
     * ``help``: see in common-attributes-help_.

@@ -113,6 +113,8 @@ attlist.image &=
 attlist.image &= [ a:defaultValue = "0" ] attribute yfill { "0" | "1" }?
 attlist.image &=
   [ a:defaultValue = "0" ] attribute xexpand { "0" | "1" }?
+attlist.image &=
+  [ a:defaultValue = "48" ] attribute size {text }?
 attlist.image &= [ a:defaultValue = "0" ] attribute xfill { "0" | "1" }?
 attlist.image &= attribute help { text }?
 attlist.image &= attribute states { text }?
