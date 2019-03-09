@@ -936,7 +936,9 @@ function eval_pyson(value){
                 'class_': this.class_
             });
             this.img = jQuery('<img/>', {
-                'class': 'center-block'
+                'class': 'center-block',
+                'width': (attributes.size || 48) + 'px',
+                'height': (attributes.size || 48) + 'px',
             }).appendTo(this.el);
         },
         set_state: function(record) {
