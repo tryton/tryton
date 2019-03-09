@@ -4,7 +4,7 @@
 import time
 import unittest
 
-from trytond import cache as cache_mod
+from trytond import backend, cache as cache_mod
 from trytond.cache import freeze, MemoryCache
 from trytond.tests.test_tryton import with_transaction, activate_module
 from trytond.tests.test_tryton import DB_NAME, USER
@@ -16,20 +16,6 @@ cache = MemoryCache('test.cache')
 
 class CacheTestCase(unittest.TestCase):
     "Test Cache"
-
-    @classmethod
-    def setUpClass(cls):
-        activate_module('tests')
-
-    def setUp(self):
-        super().setUp()
-        clear_timeout = cache_mod._clear_timeout
-        cache_mod._clear_timeout = 1
-        self.addCleanup(
-            setattr, cache_mod, '_clear_timeout', clear_timeout)
-
-    def tearDown(self):
-        MemoryCache.drop(DB_NAME)
 
     def testFreeze(self):
         "Test freeze"
@@ -52,6 +38,27 @@ class CacheTestCase(unittest.TestCase):
                                             ('list', (1, 2, 3)),
                                             ('string', 'test'),
                                             ]))]))]))
+
+
+class MemoryCacheTestCase(unittest.TestCase):
+    "Test Cache"
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    def setUp(self):
+        super().setUp()
+        clear_timeout = cache_mod._clear_timeout
+        cache_mod._clear_timeout = 1
+        self.addCleanup(
+            setattr, cache_mod, '_clear_timeout', clear_timeout)
+
+    def tearDown(self):
+        MemoryCache.drop(DB_NAME)
+
+    def wait_cache_sync(self):
+        pass
 
     @with_transaction()
     def test_memory_cache_set_get(self):
@@ -90,6 +97,7 @@ class CacheTestCase(unittest.TestCase):
         self.assertEqual(cache.get('foo'), 'bar')
 
         transaction2.commit()
+        self.wait_cache_sync()
         self.assertEqual(cache.get('foo'), None)
 
     def test_memory_cache_sync(self):
@@ -124,9 +132,31 @@ class CacheTestCase(unittest.TestCase):
         self.assertEqual(cache.get('foo'), None)
 
 
+@unittest.skipIf(backend.name() == 'sqlite', "SQLite has not channel")
+class MemoryCacheChannelTestCase(MemoryCacheTestCase):
+    "Test Cache with channel"
+
+    def setUp(self):
+        super().setUp()
+        clear_timeout = cache_mod._clear_timeout
+        cache_mod._clear_timeout = 0
+        self.addCleanup(
+            setattr, cache_mod, '_clear_timeout', clear_timeout)
+
+    def wait_cache_sync(self):
+        time.sleep(1)
+
+    @unittest.skip("No cache sync on transaction start with channel")
+    def test_memory_cache_sync(self):
+        super().test_memory_cache_sync()
+
+
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase
     suite = unittest.TestSuite()
-    for testcase in (CacheTestCase,):
+    for testcase in [
+            CacheTestCase,
+            MemoryCacheTestCase,
+            MemoryCacheChannelTestCase]:
         suite.addTests(func(testcase))
     return suite

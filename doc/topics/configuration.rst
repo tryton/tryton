@@ -192,6 +192,8 @@ clean_timeout
 ~~~~~~~~~~~~~
 
 The minimum number of seconds between two cleanings of the cache.
+If the value is 0, the notification between processes will be done using
+channels if the back-end supports them.
 
 Default: `300`
 

@@ -1,3 +1,4 @@
+* Allow to use channel to synchronize Cache
 * Display ids and rule names on access error
 * Move field definition from Model to Field
 * Use number of verbose flag as log level

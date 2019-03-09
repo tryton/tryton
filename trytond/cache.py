@@ -1,5 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import json
+import logging
+import select
+import threading
 from collections import OrderedDict, defaultdict
 from datetime import datetime
 from weakref import WeakKeyDictionary
@@ -15,6 +19,7 @@ from trytond.tools import resolve
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict']
 _clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)
+logger = logging.getLogger(__name__)
 
 
 def _cast(column):
@@ -84,6 +89,10 @@ class MemoryCache(BaseCache):
     _reset = WeakKeyDictionary()
     _clean_last = datetime.now()
     _default_lower = Transaction.monotonic_time()
+    _listener = {}
+    _listener_lock = threading.Lock()
+    _table = 'ir_cache'
+    _channel = _table
 
     def __init__(self, name, size_limit=1024, context=True):
         super(MemoryCache, self).__init__(name, size_limit, context)
@@ -101,8 +110,9 @@ class MemoryCache(BaseCache):
             try:
                 return self._transaction_cache[transaction]
             except KeyError:
-                self._transaction_cache[transaction] = LRUDict(self.size_limit)
-                return self._transaction_cache[transaction]
+                cache = self._database_cache.default_factory()
+                self._transaction_cache[transaction] = cache
+                return cache
         else:
             return self._database_cache[dbname]
 
@@ -129,13 +139,28 @@ class MemoryCache(BaseCache):
         self._reset.setdefault(transaction, set()).add(self._name)
         self._transaction_cache.pop(transaction, None)
 
+    def _clear(self, dbname, timestamp=None):
+        logger.debug("clearing cache '%s' of '%s'", self._name, dbname)
+        self._timestamp[dbname] = timestamp
+        self._database_cache[dbname] = self._database_cache.default_factory()
+        self._transaction_lower[dbname] = max(
+            Transaction.monotonic_time(),
+            self._transaction_lower.get(dbname, self._default_lower))
+
     @classmethod
     def sync(cls, transaction):
+        dbname = transaction.database.name
+        if not _clear_timeout and transaction.database.has_channel():
+            with cls._listener_lock:
+                if dbname not in cls._listener:
+                    cls._listener[dbname] = listener = threading.Thread(
+                        target=cls._listen, args=(dbname,), daemon=True)
+                    listener.start()
+            return
         if (datetime.now() - cls._clean_last).total_seconds() < _clear_timeout:
             return
-        dbname = transaction.database.name
         with transaction.connection.cursor() as cursor:
-            table = Table('ir_cache')
+            table = Table(cls._table)
             cursor.execute(*table.select(_cast(table.timestamp), table.name))
             timestamps = {}
             for timestamp, name in cursor.fetchall():
@@ -147,34 +172,40 @@ class MemoryCache(BaseCache):
                 continue
             inst_timestamp = inst._timestamp.get(dbname)
             if not inst_timestamp or timestamp > inst_timestamp:
-                inst._timestamp[dbname] = timestamp
-                inst._database_cache[dbname] = LRUDict(inst.size_limit)
-                inst._transaction_lower[dbname] = max(
-                    transaction.monotonic_time(),
-                    inst._transaction_lower.get(dbname, cls._default_lower))
+                inst._clear(dbname, timestamp)
         cls._clean_last = datetime.now()
 
     @classmethod
     def commit(cls, transaction):
-        table = Table('ir_cache')
+        table = Table(cls._table)
         reset = cls._reset.setdefault(transaction, set())
         if not reset:
             return
         dbname = transaction.database.name
         with transaction.connection.cursor() as cursor:
-            for name in reset:
-                cursor.execute(*table.select(table.name,
-                        where=table.name == name,
-                        limit=1))
-                if cursor.fetchone():
-                    # It would be better to insert only
-                    cursor.execute(*table.update([table.timestamp],
-                            [CurrentTimestamp()],
+            if not _clear_timeout and transaction.database.has_channel():
+                cursor.execute(
+                    'NOTIFY "%s", %%s' % cls._channel,
+                    (json.dumps(list(reset), separators=(',', ':')),))
+            else:
+                for name in reset:
+                    cursor.execute(*table.select(table.name,
+                            where=table.name == name,
+                            limit=1))
+                    if cursor.fetchone():
+                        # It would be better to insert only
+                        cursor.execute(*table.update([table.timestamp],
+                                [CurrentTimestamp()],
+                                where=table.name == name))
+                    else:
+                        cursor.execute(*table.insert(
+                                [table.timestamp, table.name],
+                                [[CurrentTimestamp(), name]]))
+
+                    cursor.execute(*table.select(
+                            Max(table.timestamp),
                             where=table.name == name))
-                else:
-                    cursor.execute(*table.insert(
-                            [table.timestamp, table.name],
-                            [[CurrentTimestamp(), name]]))
+                    timestamp, = cursor.fetchone()
 
                 cursor.execute(*table.select(
                         _cast(Max(table.timestamp)),
@@ -182,11 +213,8 @@ class MemoryCache(BaseCache):
                 timestamp, = cursor.fetchone()
 
                 inst = cls._instances[name]
-                inst._timestamp[dbname] = timestamp
-                inst._database_cache[dbname] = LRUDict(inst.size_limit)
-                inst._transaction_lower[dbname] = max(
-                    transaction.monotonic_time(),
-                    inst._transaction_lower.get(dbname, cls._default_lower))
+                inst._clear(dbname, timestamp)
+        reset.clear()
 
     @classmethod
     def rollback(cls, transaction):
@@ -197,10 +225,60 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def drop(cls, dbname):
+        with cls._listener_lock:
+            listener = cls._listener.pop(dbname, None)
+        if listener:
+            Database = backend.get('Database')
+            database = Database(dbname)
+            conn = database.get_connection()
+            try:
+                cursor = conn.cursor()
+                cursor.execute('NOTIFY "%s"' % cls._channel)
+                conn.commit()
+            finally:
+                database.put_connection(conn)
+            listener.join()
         for inst in cls._instances.values():
             inst._timestamp.pop(dbname, None)
             inst._database_cache.pop(dbname, None)
             inst._transaction_lower.pop(dbname, None)
+
+    @classmethod
+    def _listen(cls, dbname):
+        Database = backend.get('Database')
+        database = Database(dbname)
+        if not database.has_channel():
+            raise NotImplementedError
+
+        logger.info("listening on channel '%s' of '%s'", cls._channel, dbname)
+        conn = database.get_connection()
+        try:
+            cursor = conn.cursor()
+            cursor.execute('LISTEN "%s"' % cls._channel)
+            conn.commit()
+
+            while cls._listener.get(dbname) == threading.current_thread():
+                readable, _, _ = select.select([conn], [], [])
+                if not readable:
+                    continue
+
+                conn.poll()
+                while conn.notifies:
+                    notification = conn.notifies.pop()
+                    if notification.payload:
+                        reset = json.loads(notification.payload)
+                        for name in reset:
+                            inst = cls._instances[name]
+                            inst._clear(dbname)
+        except Exception:
+            logger.error(
+                "cache listener on '%s' crashed", dbname, exc_info=True)
+            raise
+        finally:
+            database.put_connection(conn)
+            with cls._listener_lock:
+                if cls._listener.get(dbname) == threading.current_thread():
+                    del cls._listener[dbname]
 
 
 if config.get('cache', 'class'):
