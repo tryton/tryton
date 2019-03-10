@@ -207,13 +207,13 @@ class MemoryCache(BaseCache):
                             where=table.name == name))
                     timestamp, = cursor.fetchone()
 
-                cursor.execute(*table.select(
-                        _cast(Max(table.timestamp)),
-                        where=table.name == name))
-                timestamp, = cursor.fetchone()
+                    cursor.execute(*table.select(
+                            _cast(Max(table.timestamp)),
+                            where=table.name == name))
+                    timestamp, = cursor.fetchone()
 
-                inst = cls._instances[name]
-                inst._clear(dbname, timestamp)
+                    inst = cls._instances[name]
+                    inst._clear(dbname, timestamp)
         reset.clear()
 
     @classmethod
