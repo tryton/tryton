@@ -4,12 +4,17 @@
     'use strict';
 
     Sao.View = Sao.class_(Object, {
+        view_type: null,
+        el: null,
+        mnemonic_widget: null,
+        view_id: null,
+        editable: null,
+        children_field: null,
+        xml_parser: null,
         init: function(screen, xml) {
             this.screen = screen;
-            this.view_type = null;
-            this.el = null;
-            this.view_id = null;
-            this.fields = {};
+            this.widgets = {};
+            this.state_widgets = [];
             var attributes = xml.children()[0].attributes;
             this.attributes = {};
             for (var i = 0, len = attributes.length; i < len; i++) {
@@ -17,6 +22,18 @@
                 this.attributes[attribute.name] = attribute.value;
             }
             screen.set_on_write(this.attributes.on_write);
+
+            var field_attrs = {};
+            for (var name in this.screen.model.fields) {
+                field_attrs[name] = this.screen.model.fields[name].description;
+            }
+            new this.xml_parser(
+                this, this.screen.exclude_field, field_attrs)
+                .parse(xml.children()[0]);
+        },
+        set_value: function() {
+        },
+        get_fields: function() {
         },
         get record() {
             return this.screen.current_record;
@@ -27,17 +44,12 @@
         get group() {
             return this.screen.group;
         },
-        set_value: function() {
-        },
-        get_fields: function() {
-            return Object.keys(this.fields);
-        },
         get selected_records() {
             return [];
         },
         get_buttons: function() {
             return [];
-        }
+        },
     });
 
     Sao.View.idpath2path = function(tree, idpath) {
@@ -70,4 +82,68 @@
                 return new Sao.View.Calendar(screen, xml);
         }
     };
+
+    Sao.View.XMLViewParser = Sao.class_(Object, {
+        init: function(view, exclude_field, field_attrs) {
+            this.view = view;
+            this.exclude_field = exclude_field;
+            this.field_attrs = field_attrs;
+        },
+        _node_attributes: function(node) {
+            var node_attrs = {};
+            for (var i = 0; i < node.attributes.length; i++) {
+                var attribute = node.attributes[i];
+                node_attrs[attribute.name] = attribute.value;
+            }
+
+            var field = {};
+            if (node_attrs.name) {
+                field = this.field_attrs[node_attrs.name] || {};
+            }
+
+            ['readonly', 'homogeneous'].forEach(function(name) {
+                if (node_attrs[name]) {
+                    node_attrs[name] = node_attrs[name] == 1;
+                }
+            });
+            ['yexpand', 'yfill', 'xexpand', 'xfill', 'colspan',
+                'position'].forEach(function(name) {
+                    if (node_attrs[name]) {
+                        node_attrs[name] = Number(node_attrs[name]);
+                    }
+            });
+            ['xalign', 'yalign'].forEach(function(name) {
+                if (node_attrs[name]) {
+                    node_attrs[name] = Number(node_attrs[name]);
+                }
+            });
+
+            if (!jQuery.isEmptyObject(field)) {
+                if (!node_attrs.widget) {
+                    node_attrs.widget = field.type;
+                }
+                if ((node.tagName == 'label') && (!node_attrs.string)) {
+                    node_attrs.string = field.string + Sao.i18n.gettext(':');
+                }
+                if ((node.tagName == 'field') && (!node_attrs.help)) {
+                    node_attrs.help = field.help;
+                }
+
+                ['relation', 'domain', 'selection', 'string', 'states',
+                    'relation_field', 'views', 'invisible', 'add_remove',
+                    'sort', 'context', 'size', 'filename', 'autocomplete',
+                    'translate', 'create', 'delete', 'selection_change_with',
+                    'schema_model'].forEach(function(name) {
+                        if (field[name] && !node_attrs[name]) {
+                            node_attrs[name] = field[name];
+                        }
+                    });
+            }
+            return node_attrs;
+        },
+        parse: function(node) {
+            var attributes = this._node_attributes(node);
+            this['_parse_' + node.tagName](node, attributes);
+        },
+    });
 }());

@@ -3,77 +3,62 @@
 (function() {
     'use strict';
 
+    Sao.View.GraphXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
+        init: function(view, exclude_field, fields) {
+            Sao.View.GraphXMLViewParser._super.init.call(
+                this, view, exclude_field, fields);
+            this._xfield = null;
+            this._yfields = [];
+        },
+        _node_attributes: function(node) {
+            var node_attrs = {};
+            for (var i = 0, len = node.attributes.length; i < len; i++) {
+                var attribute = node.attributes[i];
+                node_attrs[attribute.name] = attribute.value;
+            }
+            if (node_attrs.name) {
+                if (!node_attrs.string && (node_attrs.name != '#')) {
+                    var field = this.field_attrs[node_attrs.name];
+                    node_attrs.string = field.string;
+                }
+            }
+            return node_attrs;
+        },
+        _parse_graph: function(node, attributes) {
+            [].forEach.call(node.childNodes, function(child) {
+                this.parse(child);
+            }.bind(this));
+            var Widget = Sao.View.GraphXMLViewParser.WIDGETS[
+                attributes.type || 'vbar'];
+            var widget = new Widget(this.view, this._xfield, this._yfields);
+            this.view.el.append(widget.el);
+            this.view.widgets.root = widget;
+        },
+        _parse_x: function(node, attributes) {
+            for (var i = 0; i < node.children.length; i++) {
+                this._xfield = this._node_attributes(node.children[i]);
+            }
+        },
+        _parse_y: function(node, attributes) {
+            for (var i = 0; i < node.children.length; i++) {
+                this._yfields.push(this._node_attributes(node.children[i]));
+            }
+        }
+    });
+
     Sao.View.Graph = Sao.class_(Sao.View, {
-        init: function(screen, xml) {
-            Sao.View.Graph._super.init.call(this, screen, xml);
-            this.view_type = 'graph';
+        editable: false,
+        view_type: 'graph',
+        xml_parser: Sao.View.GraphXMLViewParser,
+        init: function(screen, xml, children_field) {
             this.el = jQuery('<div/>', {
                 'class': 'graph'
             });
-            this.widgets = {};
-            this.widget = this.parse(xml.children()[0]);
-            this.widgets.root = this.widget;
-            this.el.append(this.widget.el);
-        },
-        parse: function(node) {
-            var field, xfield = null, yfields = [], yattrs;
-            var child, node_child;
-            var i, len, j, c_len;
 
-            var get_attributes = function(node) {
-                var attributes = {}, attribute;
-                for (var i = 0, len = node.attributes.length; i < len; i++) {
-                    attribute = node.attributes[i];
-                    attributes[attribute.name] = attribute.value;
-                }
-                return attributes;
-            };
-
-            for (i=0, len=node.children.length; i < len; i++) {
-                child = node.children[i];
-                switch (child.tagName) {
-                    case 'x':
-                        for (j=0, c_len=child.children.length; j < c_len; j++) {
-                            xfield = get_attributes(child.children[j]);
-                            field = this.screen.model.fields[xfield.name];
-                            xfield.type = field.description.type;
-                            if (!(xfield.string || '')) {
-                                xfield.string = field.description.string;
-                            }
-                        }
-                        break;
-                    case 'y':
-                        for (j=0, c_len=child.children.length; j < c_len; j++) {
-                            yattrs = get_attributes(child.children[j]);
-                            if (!(yattrs.string || '') &&
-                                    (yattrs.name != '#')) {
-                                field = this.screen.model.fields[yattrs.name];
-                                yattrs.string = field.description.string;
-                            }
-                            yfields.push(yattrs);
-                        }
-                        break;
-                }
-            }
-
-            var Widget;
-            switch (this.attributes.type) {
-                case 'hbar':
-                    Widget = Sao.View.Graph.HorizontalBar;
-                    break;
-                case 'line':
-                    Widget = Sao.View.Graph.Line;
-                    break;
-                case 'pie':
-                    Widget = Sao.View.Graph.Pie;
-                    break;
-                default:
-                    Widget = Sao.View.Graph.VerticalBar;
-            }
-            return new Widget(this, xfield, yfields);
+            Sao.View.Graph._super.init.call(this, screen, xml);
         },
         display: function() {
-            return this.widget.display(this.group);
+            return this.widgets.root.display(this.group);
         }
     });
 
@@ -337,4 +322,10 @@
         }
     });
 
+    Sao.View.GraphXMLViewParser.WIDGETS = {
+        'hbar': Sao.View.Graph.HorizontalBar,
+        'line': Sao.View.Graph.Line,
+        'pie': Sao.View.Graph.Pie,
+        'vbar': Sao.View.Graph.VerticalBar,
+    };
 }());

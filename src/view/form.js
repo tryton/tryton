@@ -14,236 +14,56 @@ function eval_pyson(value){
 (function() {
     'use strict';
 
-    Sao.View.Form = Sao.class_(Sao.View, {
-        editable: true,
-        init: function(screen, xml) {
-            Sao.View.Form._super.init.call(this, screen, xml);
-            this.view_type = 'form';
-            this.el = jQuery('<div/>', {
-                'class': 'form'
-            });
-            this.widgets = {};
-            this.widget_id = 0;
-            this.state_widgets = [];
-            this.containers = [];
-            this.notebooks = [];
-            this.expandables = [];
+    Sao.View.FormXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
+        init: function(view, exclude_field, field_attrs) {
+            Sao.View.FormXMLViewParser._super.init.call(
+                this, view, exclude_field, field_attrs);
+            this._containers = [];
+            this._mnemonics = {};
+        },
+        get container() {
+            if (this._containers.length > 0) {
+                return this._containers[this._containers.length - 1];
+            }
+            return null;
+        },
+        _parse_form: function(node, attributes) {
+            var container = new Sao.View.Form.Container(
+                Number(node.getAttribute('col') || 4));
+            this.view.containers.push(container);
+            this.view.el.append(container.el);
+            this.parse_child(node, container);
+            if (this._containers.length > 0) {
+                throw 'AssertionError';
+            }
+        },
+        parse_child: function(node, container) {
+            if (container) {
+                this._containers.push(container);
+            }
+            [].forEach.call(node.childNodes, function(child) {
+                this.parse(child);
+            }.bind(this));
+            if (container) {
+                this._containers.pop();
+            }
+        },
+        _parse_field: function(node, attributes) {
+            var name = attributes.name;
+            if (name && (name == this.exclude_field)) {
+                this.container.add(null, attributes);
+                return;
+            }
+            var WidgetFactory = Sao.View.FormXMLViewParser.WIDGETS[
+                attributes.widget];
+            var widget = new WidgetFactory(this.view, attributes);
+            if (!this.view.widgets[name]) {
+                this.view.widgets[name] = [];
+            }
+            this.view.widgets[name].push(widget);
+            widget.position = this.view.widget_id += 1;
 
-            var root = xml.children()[0];
-            var container = this.parse(screen.model, root);
-            this.el.append(container.el);
-        },
-        _parse_node: function(model, child, container, attributes, labels) {
-            var widget;
-            switch (child.tagName) {
-                case 'image':
-                    this._parse_image(
-                            model, child, container, attributes);
-                    break;
-                case 'separator':
-                    this._parse_separator(
-                            model, child, container, attributes);
-                    break;
-                case 'label':
-                    widget = this._parse_label(
-                            model, child, container, attributes);
-                    if (attributes.name && widget) {
-                        labels[attributes.name] = widget;
-                    }
-                    break;
-                case 'newline':
-                    container.add_row();
-                    break;
-                case 'button':
-                    this._parse_button(child, container, attributes);
-                    break;
-                case 'notebook':
-                    this._parse_notebook(
-                            model, child, container, attributes);
-                    break;
-                case 'page':
-                    this._parse_page(model, child, container, attributes);
-                    break;
-                case 'field':
-                    widget = this._parse_field(
-                            model, child, container, attributes);
-                    if ((attributes.name in labels) &&
-                            widget &&
-                            widget.labelled) {
-                        var label = labels[attributes.name];
-                        label.el.uniqueId();
-                        widget.labelled.uniqueId();
-                        widget.labelled.attr(
-                                'aria-labelledby', label.el.attr('id'));
-                        label.el.attr('for', widget.labelled.attr('id'));
-                    }
-                    break;
-                case 'group':
-                    this._parse_group(model, child, container, attributes);
-                    break;
-                case 'hpaned':
-                    this._parse_paned(model, child, container, attributes,
-                            'horizontal');
-                    break;
-                case 'vpaned':
-                    this._parse_paned(model, child, container, attributes,
-                            'vertical');
-                    break;
-                case 'child':
-                    this._parse_child(model, child, container, attributes);
-                    break;
-            }
-        },
-        parse: function(model, node, container) {
-            if (container === undefined) {
-                container = new Sao.View.Form.Container(
-                    Number(node.getAttribute('col') || 4));
-                this.containers.push(container);
-            }
-            var labels = {};
-            var _parse = function(index, child) {
-                var attributes = {};
-                for (var i = 0, len = child.attributes.length; i < len; i++) {
-                    var attribute = child.attributes[i];
-                    attributes[attribute.name] = attribute.value;
-                }
-                ['readonly', 'invisible'].forEach(function(name) {
-                    if (attributes[name]) {
-                        attributes[name] = attributes[name] == 1;
-                    }
-                });
-                ['yexpand', 'yfill', 'xexpand', 'xfill', 'colspan'].forEach(
-                        function(name) {
-                            if (attributes[name]) {
-                                attributes[name] = Number(attributes[name]);
-                            }
-                        });
-                this._parse_node(model, child, container, attributes, labels);
-            };
-            jQuery(node).children().each(_parse.bind(this));
-            return container;
-        },
-        _parse_image: function(model, node, container, attributes) {
-            var image = new Sao.View.Form.Image_(attributes);
-            this.state_widgets.push(image);
-            container.add(attributes, image);
-        },
-        _parse_separator: function(model, node, container, attributes) {
-            var name = attributes.name;
-            var text = attributes.string;
-            if (name in model.fields) {
-                if (!attributes.states && (name in model.fields)) {
-                    attributes.states = model.fields[name].description.states;
-                }
-                if (!text) {
-                    text = model.fields[name].description.string;
-                }
-            }
-            var separator = new Sao.View.Form.Separator(text, attributes);
-            this.state_widgets.push(separator);
-            container.add(attributes, separator);
-        },
-        _parse_label: function(model, node, container, attributes) {
-            var name = attributes.name;
-            if (attributes.xexpand === undefined) {
-                attributes.xexpand = 0;
-            }
-            if (name in model.fields) {
-                if (name == this.screen.exclude_field) {
-                    container.add(attributes);
-                    return;
-                }
-                if (!attributes.states && (name in model.fields)) {
-                    attributes.states = model.fields[name].description.states;
-                }
-                if (attributes.string === undefined) {
-                    attributes.string = model.fields[name]
-                        .description.string + Sao.i18n.gettext(':');
-                }
-            }
-            if (attributes.xalign === undefined) {
-                attributes.xalign = 1.0;
-            }
-            var label = new Sao.View.Form.Label(attributes.string, attributes);
-            this.state_widgets.push(label);
-            container.add(attributes, label);
-            return label;
-        },
-        _parse_button: function(node, container, attributes) {
-            var button = new Sao.common.Button(attributes);
-            this.state_widgets.push(button);
-            container.add(attributes, button);
-            button.el.click(button, this.button_clicked.bind(this));
-        },
-        _parse_notebook: function(model, node, container, attributes) {
-            if (attributes.colspan === undefined) {
-                attributes.colspan = 4;
-            }
-            var notebook = new Sao.View.Form.Notebook(attributes);
-            if (attributes.height) {
-                notebook.el.css('min-height', attributes.height + 'px');
-            }
-            if (attributes.width) {
-                notebook.el.css('min-width', attributes.width + 'px');
-            }
-            this.notebooks.push(notebook);
-            this.state_widgets.push(notebook);
-            container.add(attributes, notebook);
-            this.parse(model, node, notebook);
-        },
-        _parse_page: function(model, node, container, attributes) {
-            var text = attributes.string;
-            if (attributes.name in model.fields) {
-                var field = model.fields[attributes.name];
-                if (attributes.name == this.screen.exclude_field) {
-                    return;
-                }
-                ['states', 'string'].forEach(function(attr) {
-                    if ((attributes[attr] === undefined) &&
-                            (field.description[attr] !== undefined)) {
-                        attributes[attr] = field.description[attr];
-                    }
-                });
-            }
-            var page = this.parse(model, node);
-            page = new Sao.View.Form.Page(
-                    container.add(
-                        page.el, attributes.string, attributes.icon),
-                attributes);
-            this.state_widgets.push(page);
-        },
-        _parse_field: function(model, node, container, attributes) {
-            var name = attributes.name;
-            if (!(name in model.fields) || name == this.screen.exclude_field) {
-                container.add(attributes);
-                return;
-            }
-            if (!attributes.widget) {
-                attributes.widget = model.fields[name]
-                    .description.type;
-            }
-            var attribute_names = ['relation', 'domain', 'selection', 'help',
-                'relation_field', 'string', 'views', 'add_remove', 'sort',
-                'context', 'size', 'filename', 'autocomplete', 'translate',
-                'create', 'delete', 'selection_change_with', 'schema_model'];
-            for (var i in attribute_names) {
-                var attr = attribute_names[i];
-                if ((attr in model.fields[name].description) &&
-                        (node.getAttribute(attr) === null)) {
-                    attributes[attr] = model.fields[name]
-                        .description[attr];
-                }
-            }
-            var WidgetFactory = Sao.View.form_widget_get(
-                    attributes.widget);
-            if (!WidgetFactory) {
-                container.add(attributes);
-                return;
-            }
-            var widget = new WidgetFactory(name, model, attributes);
-            widget.position = this.widget_id += 1;
-            widget.view = this;
-            if (WidgetFactory.prototype.expand) {
+            if (widget.expand) {
                 if (attributes.yexpand === undefined) {
                     attributes.yexpand = true;
                 }
@@ -251,62 +71,137 @@ function eval_pyson(value){
                     attributes.yfill = true;
                 }
             }
-            if (attributes.height) {
+
+            if (attributes.height !== undefined) {
                 widget.el.css('min-height', attributes.height + 'px');
             }
             if (attributes.width !== undefined) {
                 widget.el.css('min-width', attributes.width + 'px');
             }
-            container.add(attributes, widget);
-            if (this.widgets[name] === undefined) {
-                this.widgets[name] = [];
+
+            this.container.add(widget, attributes);
+
+            if (this._mnemonics[name] && widget.labelled) {
+                var label = this._mnemonics[name];
+                label.el.uniqueId();
+                widget.labelled.uniqueId();
+                widget.labelled.attr('aria-labelledby', label.el.attr('id'));
+                label.el.attr('for', widget.labelled.attr('id'));
             }
-            this.widgets[name].push(widget);
-            this.fields[name] = true;
-            return widget;
         },
-        _parse_group: function(model, node, container, attributes) {
-            if (attributes.name !== undefined) {
-                var field = model.fields[attributes.name];
-                if (attributes.name == this.screen.exclude_field) {
-                    container.add(attributes);
-                    return;
-                }
-                ['states', 'string'].forEach(function(attr) {
-                    if (!(attr in attributes) && (attr in field.description)) {
-                        attributes[attr] = field.description[attr];
-                    }
-                });
+        _parse_button: function(node, attributes) {
+            var button = new Sao.common.Button(attributes);
+            button.el.click(button, this.view.button_clicked.bind(this.view));
+            this.view.state_widgets.push(button);
+            this.container.add(button, attributes);
+        },
+        _parse_image: function(node, attributes) {
+            var image = new Sao.View.Form.Image_(attributes);
+            this.view.state_widgets.push(image);
+            this.container.add(image, attributes);
+        },
+        _parse_separator: function(node, attributes) {
+            var text = attributes.string;
+            var separator = new Sao.View.Form.Separator(text, attributes);
+            this.view.state_widgets.push(separator);
+            this.container.add(separator, attributes);
+        },
+        _parse_label: function(node, attributes) {
+            var name = attributes.name;
+            if (name && (name == this.exclude_field)) {
+                this.container.add(null, attributes);
+                return;
+            }
+            if (attributes.xexpand === undefined) {
+                attributes.xexpand = 0;
+            }
+            if (attributes.xalign === undefined) {
+                attributes.xalign = 1.0;
+            }
+            var label = new Sao.View.Form.Label(attributes.string, attributes);
+            this.view.state_widgets.push(label);
+            this.container.add(label, attributes);
+            if (name) {
+                this._mnemonics[name] = label;
+            }
+        },
+        _parse_newline: function(node, attributes) {
+            this.container.add_row();
+        },
+        _parse_notebook: function(node, attributes) {
+            if (attributes.colspan === undefined) {
+                attributes.colspan = 4;
+            }
+            var notebook = new Sao.View.Form.Notebook(attributes);
+            if (attributes.height !== undefined) {
+                notebook.el.css('min-height', attributes.height + 'px');
+            }
+            if (attributes.width !== undefined) {
+                notebook.el.css('min-width', attributes.width + 'px');
+            }
+            this.view.state_widgets.push(notebook);
+            this.view.notebooks.push(notebook);
+            this.container.add(notebook, attributes);
+            this.parse_child(node, notebook);
+        },
+        _parse_page: function(node, attributes) {
+            if (attributes.name && (attributes.name == this.exclude_field)) {
+                return;
+            }
+            var container = new Sao.View.Form.Container(
+                Number(node.getAttribute('col') || 4));
+            this.view.containers.push(container);
+            this.parse_child(node, container);
+            var page = new Sao.View.Form.Page(
+                this.container.add(
+                    container.el, attributes.string, attributes.icon),
+                attributes);
+            this.view.state_widgets.push(page);
+        },
+        _parse_group: function(node, attributes) {
+            var group = new Sao.View.Form.Container(
+                Number(node.getAttribute('col') || 4));
+            this.view.containers.push(group);
+            this.parse_child(node, group);
+
+            if (attributes.name && (attributes.name == this.exclude_field)) {
+                this.container.add(null, attributes);
+                return;
             }
 
             var widget;
             if (attributes.expandable !== undefined) {
                 widget = new Sao.View.Form.Expander(attributes);
                 widget.set_expanded(attributes.expandable === '1');
-                this.expandables.push(widget);
+                this.view.expandables.push(widget);
             } else {
                 widget = new Sao.View.Form.Group(attributes);
             }
-            widget.add(this.parse(model, node));
+            widget.add(group);
 
-            this.state_widgets.push(widget);
-            container.add(attributes, widget);
+            this.view.state_widgets.push(widget);
+            this.container.add(widget, attributes);
         },
-        _parse_paned: function(model, node, container, attributes,
-                              orientation) {
-            if (attributes.yexpand === undefined) {
-                attributes.yexpand = true;
-            }
-            if (attributes.yfill === undefined) {
-                attributes.yfill = true;
-            }
+        _parse_hpaned: function(node, attributes) {
+            this._parse_paned(node, attributes, 'horizontal');
+        },
+        _parse_vpaned: function(node, attributes) {
+            this._parse_paned(node, attributes, 'vertical');
+        },
+        _parse_paned: function(node, attributes, orientation) {
             var paned = new Sao.common.Paned(orientation);
             // TODO position
-            container.add(attributes, paned);
-            this.parse(model, node, paned);
+            this.view.containers.push(paned);
+            this.container.add(paned, attributes);
+            this.parse_child(node, paned);
         },
-        _parse_child: function(model, node, paned, attributes) {
-            var container = this.parse(model, node);
+        _parse_child: function(node, attributes) {
+            var paned = this.container;
+            var container = new Sao.View.Form.Container(
+                Number(node.getAttribute('col') || 4));
+            this.view.containers.push(container);
+            this.parse_child(node, container);
+
             var child;
             if (!paned.get_child1().children().length) {
                 child = paned.get_child1();
@@ -314,6 +209,22 @@ function eval_pyson(value){
                 child = paned.get_child2();
             }
             child.append(container.el);
+        },
+    });
+
+    Sao.View.Form = Sao.class_(Sao.View, {
+        editable: true,
+        view_type: 'form',
+        xml_parser: Sao.View.FormXMLViewParser,
+        init: function(screen, xml) {
+            this.el = jQuery('<div/>', {
+                'class': 'form'
+            });
+            this.notebooks = [];
+            this.expandables = [];
+            this.containers = [];
+            this.widget_id = 0;
+            Sao.View.Form._super.init.call(this, screen, xml);
         },
         get_buttons: function() {
             var buttons = [];
@@ -521,7 +432,7 @@ function eval_pyson(value){
         row: function() {
             return this.rows().last();
         },
-        add: function(attributes, widget) {
+        add: function(widget, attributes) {
             var colspan = attributes.colspan;
             if (colspan === undefined) colspan = 1;
             var xfill = attributes.xfill;
@@ -958,75 +869,10 @@ function eval_pyson(value){
         }
     });
 
-    Sao.View.form_widget_get = function(type) {
-        switch (type) {
-            case 'char':
-                return Sao.View.Form.Char;
-            case 'password':
-                return Sao.View.Form.Password;
-            case 'date':
-                return Sao.View.Form.Date;
-            case 'datetime':
-            case 'timestamp':
-                return Sao.View.Form.DateTime;
-            case 'time':
-                return Sao.View.Form.Time;
-            case 'timedelta':
-                return Sao.View.Form.TimeDelta;
-            case 'integer':
-            case 'biginteger':
-                return Sao.View.Form.Integer;
-            case 'float':
-            case 'numeric':
-                return Sao.View.Form.Float;
-            case 'selection':
-                return Sao.View.Form.Selection;
-            case 'boolean':
-                return Sao.View.Form.Boolean;
-            case 'text':
-                return Sao.View.Form.Text;
-            case 'richtext':
-                return Sao.View.Form.RichText;
-            case 'many2one':
-                return Sao.View.Form.Many2One;
-            case 'one2one':
-                return Sao.View.Form.One2One;
-            case 'reference':
-                return Sao.View.Form.Reference;
-            case 'one2many':
-                return Sao.View.Form.One2Many;
-            case 'many2many':
-                return Sao.View.Form.Many2Many;
-            case 'binary':
-                return Sao.View.Form.Binary;
-            case 'multiselection':
-                return Sao.View.Form.MultiSelection;
-            case 'image':
-                return Sao.View.Form.Image;
-            case 'url':
-                return Sao.View.Form.URL;
-            case 'email':
-                return Sao.View.Form.Email;
-            case 'callto':
-                return Sao.View.Form.CallTo;
-            case 'sip':
-                return Sao.View.Form.SIP;
-            case 'progressbar':
-                return Sao.View.Form.ProgressBar;
-            case 'dict':
-                return Sao.View.Form.Dict;
-            case 'pyson':
-                return Sao.View.Form.PYSON;
-        }
-    };
-
-
     Sao.View.Form.Widget = Sao.class_(Object, {
         expand: false,
-        init: function(field_name, model, attributes) {
-            this.field_name = field_name;
-            this.model = model;
-            this.view = null;  // Filled later
+        init: function(view, attributes) {
+            this.view = view;
             this.attributes = attributes;
             this.el = null;
             this.position = 0;
@@ -1103,6 +949,15 @@ function eval_pyson(value){
         },
         _invalid_el: function() {
             return this.el;
+        },
+        get field_name() {
+            return this.attributes.name;
+        },
+        get model_name() {
+            return this.view.screen.model_name;
+        },
+        get model() {
+            return this.view.screen.model;
         },
         get record() {
             return this.view.record;
@@ -1353,9 +1208,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Char = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-char',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Char._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Char._super.init.call(this, view, attributes);
             Sao.View.Form.TranslateMixin.init.call(this);
             this.el = jQuery('<div/>', {
                 'class': this.class_
@@ -1454,9 +1308,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Password = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-password',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Password._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Password._super.init.call(this, view, attributes);
             this.input.prop('type', 'password');
             this.button = jQuery('<button/>', {
                 'class': 'btn btn-default btn-sm form-control',
@@ -1490,9 +1343,8 @@ function eval_pyson(value){
     Sao.View.Form.Date = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-date',
         _width: '10em',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Date._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Date._super.init.call(this, view, attributes);
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -1632,9 +1484,8 @@ function eval_pyson(value){
 
     Sao.View.Form.TimeDelta = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-timedelta',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.TimeDelta._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.TimeDelta._super.init.call(this, view, attributes);
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -1690,9 +1541,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Integer = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-integer',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Integer._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Integer._super.init.call(this, view, attributes);
             this.input_text = integer_input(this.input);
             this.group.css('width', '');
             this.factor = Number(attributes.factor || 1);
@@ -1756,9 +1606,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Selection = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-selection',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Selection._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Selection._super.init.call(this, view, attributes);
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -1848,9 +1697,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Boolean = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-boolean',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Boolean._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Boolean._super.init.call(this, view, attributes);
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -1889,9 +1737,8 @@ function eval_pyson(value){
     Sao.View.Form.Text = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-text',
         expand: true,
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Text._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Text._super.init.call(this, view, attributes);
             Sao.View.Form.TranslateMixin.init.call(this);
             this.el = jQuery('<div/>', {
                 'class': this.class_
@@ -1949,9 +1796,8 @@ function eval_pyson(value){
     Sao.View.Form.RichText = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-richtext',
         expand: true,
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.RichText._super.init.call(
-                    this, field_name, model, attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.RichText._super.init.call(this, view, attributes);
             Sao.View.Form.TranslateMixin.init.call(this);
             this.el = jQuery('<div/>', {
                 'class': this.class_ + ' panel panel-default'
@@ -2194,9 +2040,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Many2One = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-many2one',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Many2One._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Many2One._super.init.call(this, view, attributes);
             this.el = jQuery('<div/>', {
                 'class': this.class_
             });
@@ -2618,9 +2463,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Reference = Sao.class_(Sao.View.Form.Many2One, {
         class_: 'form-reference',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Reference._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Reference._super.init.call(this, view, attributes);
             this.el.addClass('form-inline');
             this.select = jQuery('<select/>', {
                 'class': 'form-control input-sm',
@@ -2763,9 +2607,8 @@ function eval_pyson(value){
     Sao.View.Form.One2Many = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-one2many',
         expand: true,
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.One2Many._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.One2Many._super.init.call(this, view, attributes);
 
             this._readonly = true;
             this._required = false;
@@ -3283,9 +3126,8 @@ function eval_pyson(value){
     Sao.View.Form.Many2Many = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-many2many',
         expand: true,
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Many2Many._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Many2Many._super.init.call(this, view, attributes);
 
             this._readonly = true;
             this._required = false;
@@ -3544,9 +3386,9 @@ function eval_pyson(value){
     });
 
     Sao.View.Form.BinaryMixin = Sao.class_(Sao.View.Form.Widget, {
-        init: function(field_name, model, attributes) {
+        init: function(view, attributes) {
             Sao.View.Form.BinaryMixin._super.init.call(
-                    this, field_name, model, attributes);
+                this, view, attributes);
             this.filename = attributes.filename || null;
         },
         toolbar: function(class_) {
@@ -3659,9 +3501,8 @@ function eval_pyson(value){
     Sao.View.Form.Binary = Sao.class_(Sao.View.Form.BinaryMixin, {
         class_: 'form-binary',
         blob_url: '',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Binary._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Binary._super.init.call(this, view, attributes);
 
             this.el = jQuery('<div/>', {
                 'class': this.class_
@@ -3757,10 +3598,10 @@ function eval_pyson(value){
     Sao.View.Form.MultiSelection = Sao.class_(Sao.View.Form.Selection, {
         class_: 'form-multiselection',
         expand: true,
-        init: function(field_name, model, attributes) {
+        init: function(view, attributes) {
             this.nullable_widget = false;
-            Sao.View.Form.MultiSelection._super.init.call(this, field_name,
-                model, attributes);
+            Sao.View.Form.MultiSelection._super.init.call(
+                this, view, attributes);
             this.select.prop('multiple', true);
         },
         display_update_selection: function(record, field) {
@@ -3801,9 +3642,8 @@ function eval_pyson(value){
 
     Sao.View.Form.Image = Sao.class_(Sao.View.Form.BinaryMixin, {
         class_: 'form-image',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Image._super.init.call(
-                    this, field_name, model, attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Image._super.init.call(this, view, attributes);
             this.height = parseInt(attributes.height || 100, 10);
             this.width = parseInt(attributes.width || 300, 10);
 
@@ -3868,9 +3708,8 @@ function eval_pyson(value){
 
     Sao.View.Form.URL = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-url',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.URL._super.init.call(
-                    this, field_name, model, attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.URL._super.init.call(this, view, attributes);
             this.button = jQuery('<a/>', {
                 'class': 'btn btn-default',
                 'target': '_new'
@@ -3946,9 +3785,9 @@ function eval_pyson(value){
 
     Sao.View.Form.ProgressBar = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-char',
-        init: function(field_name, model, attributes) {
+        init: function(view, attributes) {
             Sao.View.Form.ProgressBar._super.init.call(
-                    this, field_name, model, attributes);
+                this, view, attributes);
             this.el = jQuery('<div/>', {
                 'class': this.class_ + ' progress'
             });
@@ -3984,9 +3823,8 @@ function eval_pyson(value){
     Sao.View.Form.Dict = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-dict',
         expand: true,
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.Dict._super.init.call(
-                    this, field_name, model, attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.Dict._super.init.call(this, view, attributes);
 
             this.schema_model = attributes.schema_model;
             this.fields = {};
@@ -4500,9 +4338,8 @@ function eval_pyson(value){
 
     Sao.View.Form.PYSON = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-pyson',
-        init: function(field_name, model, attributes) {
-            Sao.View.Form.PYSON._super.init.call(this, field_name, model,
-                attributes);
+        init: function(view, attributes) {
+            Sao.View.Form.PYSON._super.init.call(this, view, attributes);
             this.encoder = new Sao.PYSON.Encoder({});
             this.decoder = new Sao.PYSON.Decoder({}, true);
             this.el.keyup(this.validate_pyson.bind(this));
@@ -4562,4 +4399,36 @@ function eval_pyson(value){
         }
     });
 
+    Sao.View.FormXMLViewParser.WIDGETS = {
+        'biginteger': Sao.View.Form.Integer,
+        'binary': Sao.View.Form.Binary,
+        'boolean': Sao.View.Form.Boolean,
+        'callto': Sao.View.Form.CallTo,
+        'char': Sao.View.Form.Char,
+        'date': Sao.View.Form.Date,
+        'datetime': Sao.View.Form.DateTime,
+        'dict': Sao.View.Form.DictWidget,
+        'email': Sao.View.Form.Email,
+        'float': Sao.View.Form.Float,
+        'image': Sao.View.Form.Image,
+        'integer': Sao.View.Form.Integer,
+        'many2many': Sao.View.Form.Many2Many,
+        'many2one': Sao.View.Form.Many2One,
+        'multiselection': Sao.View.Form.MultiSelection,
+        'numeric': Sao.View.Form.Float,
+        'one2many': Sao.View.Form.One2Many,
+        'one2one': Sao.View.Form.One2One,
+        'password': Sao.View.Form.Password,
+        'progressbar': Sao.View.Form.ProgressBar,
+        'pyson': Sao.View.Form.PYSON,
+        'reference': Sao.View.Form.Reference,
+        'richtext': Sao.View.Form.RichText,
+        'selection': Sao.View.Form.Selection,
+        'sip': Sao.View.Form.SIP,
+        'text': Sao.View.Form.Text,
+        'time': Sao.View.Form.Time,
+        'timedelta': Sao.View.Form.TimeDelta,
+        'timestamp': Sao.View.Form.DateTime,
+        'url': Sao.View.Form.URL,
+    };
 }());

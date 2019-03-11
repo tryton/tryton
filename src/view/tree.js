@@ -3,70 +3,91 @@
 (function() {
     'use strict';
 
-    Sao.View.tree_column_get = function(type) {
-        switch (type) {
-            case 'char':
-                return Sao.View.Tree.CharColumn;
-            case 'text':
-                return Sao.View.Tree.TextColum;
-            case 'many2one':
-                return Sao.View.Tree.Many2OneColumn;
-            case 'one2one':
-                return Sao.View.Tree.One2OneColumn;
-            case 'date':
-                return Sao.View.Tree.DateColumn;
-            case 'time':
-                return Sao.View.Tree.TimeColumn;
-            case 'timedelta':
-                return Sao.View.Tree.TimeDeltaColumn;
-            case 'one2many':
-                return Sao.View.Tree.One2ManyColumn;
-            case 'many2many':
-                return Sao.View.Tree.Many2ManyColumn;
-            case 'selection':
-                return Sao.View.Tree.SelectionColumn;
-            case 'reference':
-                return Sao.View.Tree.ReferenceColumn;
-            case 'float':
-            case 'numeric':
-                return Sao.View.Tree.FloatColumn;
-            case 'integer':
-            case 'biginteger':
-                return Sao.View.Tree.IntegerColumn;
-            case 'boolean':
-                return Sao.View.Tree.BooleanColumn;
-            case 'binary':
-                return Sao.View.Tree.BinaryColumn;
-            case 'image':
-                return Sao.View.Tree.ImageColumn;
-            case 'url':
-            case 'email':
-            case 'callto':
-            case 'sip':
-                return Sao.View.Tree.URLColumn;
-            case 'progressbar':
-                return Sao.View.Tree.ProgressBar;
+    Sao.View.TreeXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
+        _parse_tree: function(node, attributes) {
+            [].forEach.call(node.childNodes, function(child) {
+                this.parse(child);
+            }.bind(this));
+        },
+        _parse_field: function(node, attributes) {
+            var name = attributes.name;
+            var ColumnFactory = Sao.View.TreeXMLViewParser.WIDGETS[
+                attributes.widget];
+            var column = new ColumnFactory(this.view.screen.model, attributes);
+            if (!this.view.widgets[name]) {
+                this.view.widgets[name] = [];
+            }
+            this.view.widgets[name].push(column);
+
+            var prefixes = [], suffixes = [];
+            if (~['url', 'email', 'callto', 'sip'
+                    ].indexOf(attributes.widget)) {
+                column.prefixes.push(
+                    new Sao.View.Tree.Affix(attributes, attributes.widget));
+            }
+            if ('icon' in attributes) {
+                column.prefixes.push(new Sao.View.Tree.Affix(attributes));
+            }
+            var affix, affix_attributes;
+            var affixes = node.childNodes;
+            for (i = 0; i < affixes.length; i++) {
+                affix = affixes[i];
+                affix_attributes = {};
+                for (var i = 0, len = affix.attributes.length; i < len; i++) {
+                    attribute = affix.attributes[i];
+                    affix_attributes[attribute.name] = attribute.value;
+                }
+                if (!affix_attributes.name) {
+                    affix_attributes.name = name;
+                }
+                var list;
+                if (affix.tagName == 'prefix') {
+                    list = column.prefixes;
+                } else {
+                    list = column.suffixes;
+                }
+                list.push(new Sao.View.Tree.Affix(affix_attributes));
+            }
+            if (!this.view.attributes.sequence &&
+                    !this.view.children_field &&
+                    this.field_attrs[name].sortable !== false){
+                column.sortable = true;
+            }
+            this.view.columns.push(column);
+
+            if (attributes.sum) {
+                var label = attributes.sum + Sao.i18n.gettext(': ');
+                var sum = jQuery('<label/>', {
+                    'text': label,
+                });
+                var aggregate = jQuery('<span/>', {
+                    'class': 'value',
+                });
+                this.view.sum_widgets[name] = [sum, aggregate];
+            }
+        },
+        _parse_button: function(node, attributes) {
+            var column = new Sao.View.Tree.ButtonColumn(
+                this.view.screen, attributes);
+            this.view.columns.push(column);
         }
-    };
+    });
 
     Sao.View.Tree = Sao.class_(Sao.View, {
+        view_type: 'tree',
+        xml_parser: Sao.View.TreeXMLViewParser,
         init: function(screen, xml, children_field) {
-            Sao.View.Tree._super.init.call(this, screen, xml);
-            this.view_type = 'tree';
+            this.children_field = children_field;
             this.sum_widgets = {};
+            this.columns = [];
             this.selection_mode = (screen.attributes.selection_mode ||
                 Sao.common.SELECTION_MULTIPLE);
             this.el = jQuery('<div/>', {
                 'class': 'treeview responsive'
             });
             this.expanded = {};
-            this.children_field = children_field;
-            this.editable = (Boolean(this.attributes.editable) &&
-                !screen.attributes.readonly);
 
-            // Columns
-            this.columns = [];
-            this.create_columns(screen.model, xml);
+            Sao.View.Tree._super.init.call(this, screen, xml);
 
             // Table of records
             this.rows = [];
@@ -164,100 +185,9 @@
 
             this.display_size = Sao.config.display_size;
         },
-        create_columns: function(model, xml) {
-            xml.find('tree').children().each(function(pos, child) {
-                var column, editable_column, attribute;
-                var attributes = {};
-                for (var i = 0, len = child.attributes.length; i < len; i++) {
-                    attribute = child.attributes[i];
-                    attributes[attribute.name] = attribute.value;
-                }
-                ['readonly', 'expand', 'completion'].forEach(
-                    function(name) {
-                        if (attributes[name]) {
-                            attributes[name] = attributes[name] == 1;
-                        }
-                    });
-                if (child.tagName == 'field') {
-                    var name = attributes.name;
-                    if (!attributes.widget) {
-                        attributes.widget = model.fields[name].description.type;
-                    }
-                    var attribute_names = ['relation', 'domain', 'selection',
-                        'relation_field', 'string', 'views', 'invisible',
-                        'add_remove', 'sort', 'context', 'filename',
-                        'autocomplete', 'translate', 'create', 'delete',
-                        'selection_change_with', 'schema_model', 'required',
-                        'readonly', 'help'];
-                    for (i in attribute_names) {
-                        var attr = attribute_names[i];
-                        if ((attr in model.fields[name].description) &&
-                            (child.getAttribute(attr) === null)) {
-                            attributes[attr] = model.fields[name]
-                                .description[attr];
-                        }
-                    }
-                    var ColumnFactory = Sao.View.tree_column_get(
-                        attributes.widget);
-                    column = new ColumnFactory(model, attributes);
-
-                    var prefixes = [], suffixes = [];
-                    if (~['url', 'email', 'callto', 'sip'
-                            ].indexOf(attributes.widget)) {
-                        column.prefixes.push(new Sao.View.Tree.Affix(
-                                    attributes, attributes.widget));
-                    }
-                    if ('icon' in attributes) {
-                        column.prefixes.push(new Sao.View.Tree.Affix(
-                                    attributes));
-                    }
-                    var affix, affix_attributes;
-                    var affixes = child.childNodes;
-                    for (i = 0; i < affixes.length; i++) {
-                        affix = affixes[i];
-                        affix_attributes = {};
-                        for (i = 0, len = affix.attributes.length; i < len;
-                                i++) {
-                            attribute = affix.attributes[i];
-                            affix_attributes[attribute.name] = attribute.value;
-                        }
-                        if (!affix_attributes.name) {
-                            affix_attributes.name = name;
-                        }
-                        if (affix.tagName == 'prefix') {
-                            column.prefixes.push(new Sao.View.Tree.Affix(
-                                        affix_attributes));
-                        } else {
-                            column.suffixes.push(new Sao.View.Tree.Affix(
-                                        affix_attributes));
-                        }
-                    }
-                    if (!this.attributes.sequence &&
-                            !this.children_field &&
-                            model.fields[name].description.sortable !== false){
-                        column.sortable = true;
-                    }
-                    this.fields[name] = true;
-                    this.add_sum(attributes);
-                } else if (child.tagName == 'button') {
-                    column = new Sao.View.Tree.ButtonColumn(this.screen,
-                            attributes);
-                }
-                this.columns.push(column);
-            }.bind(this));
-        },
-        add_sum: function(attributes){
-            if (!attributes.sum) {
-                return;
-            }
-            var label = attributes.sum + Sao.i18n.gettext(': ');
-            var sum = jQuery('<label/>', {
-                'text': label,
-            });
-            var aggregate = jQuery('<span/>', {
-                'class': 'value',
-            });
-            this.sum_widgets[attributes.name] = [sum, aggregate];
+        get editable() {
+            return (Boolean(this.attributes.editable) &&
+                !this.screen.attributes.readonly);
         },
         sort_model: function(e){
             var column = e.data;
@@ -1395,12 +1325,11 @@
                 var state_attrs = col.field.get_state_attrs(this.record);
                 var readonly = col.attributes.readonly || state_attrs.readonly;
 
-                if (!readonly) {
-                    var EditableBuilder = Sao.View.editabletree_widget_get(
-                        col.attributes.widget);
-                    var widget = new EditableBuilder(col.attributes.name,
-                        this.tree.screen.model, col.attributes);
-                    widget.view = this.tree;
+                var EditableBuilder = Sao.View.EditableTree.WIDGETS[
+                    col.attributes.widget];
+                if (!readonly && EditableBuilder) {
+                    var widget = new EditableBuilder(
+                        this.tree, col.attributes);
                     widget.el.on('keydown', this.key_press.bind(this));
 
                     var editable_el = this.get_editable_el(td);
@@ -2063,43 +1992,30 @@
         }
     });
 
-    Sao.View.editabletree_widget_get = function(type) {
-        switch (type) {
-            case 'char':
-            case 'text':
-            case 'url':
-            case 'email':
-            case 'callto':
-            case 'sip':
-                return Sao.View.EditableTree.Char;
-            case 'date':
-                return Sao.View.EditableTree.Date;
-            case 'time':
-                return Sao.View.EditableTree.Time;
-            case 'timedelta':
-                return Sao.View.EditableTree.TimeDelta;
-            case 'integer':
-            case 'biginteger':
-                return Sao.View.EditableTree.Integer;
-            case 'float':
-            case 'numeric':
-                return Sao.View.EditableTree.Float;
-            case 'selection':
-                return Sao.View.EditableTree.Selection;
-            case 'boolean':
-                return Sao.View.EditableTree.Boolean;
-            case 'many2one':
-                return Sao.View.EditableTree.Many2One;
-            case 'reference':
-                return Sao.View.EditableTree.Reference;
-            case 'one2one':
-                return Sao.View.EditableTree.One2One;
-            case 'one2many':
-            case 'many2many':
-                return Sao.View.EditableTree.One2Many;
-            case 'binary':
-                return Sao.View.EditableTree.Binary;
-        }
+    Sao.View.TreeXMLViewParser.WIDGETS = {
+        'biginteger': Sao.View.Tree.IntegerColumn,
+        'binary': Sao.View.Tree.BinaryColum,
+        'boolean': Sao.View.Tree.BooleanColumn,
+        'callto': Sao.View.Tree.URLColumn,
+        'char': Sao.View.Tree.CharColumn,
+        'date': Sao.View.Tree.DateColumn,
+        'email': Sao.View.Tree.URLColumn,
+        'float': Sao.View.Tree.FloatColumn,
+        'image': Sao.View.Tree.ImageColumn,
+        'integer': Sao.View.Tree.IntegerColumn,
+        'many2many': Sao.View.Tree.Many2ManyColumn,
+        'many2one': Sao.View.Tree.Many2OneColumn,
+        'numeric': Sao.View.Tree.FloatColumn,
+        'one2many': Sao.View.Tree.One2ManyColumn,
+        'one2one': Sao.View.Tree.One2OneColumn,
+        'progressbar': Sao.View.Tree.ProgressBar,
+        'reference': Sao.View.Tree.ReferenceColumn,
+        'selection': Sao.View.Tree.SelectionColumn,
+        'sip': Sao.View.Tree.URLColumn,
+        'text': Sao.View.Tree.TextColum,
+        'time': Sao.View.Tree.TimeColumn,
+        'timedelta': Sao.View.Tree.TimeDeltaColumn,
+        'url': Sao.View.Tree.URLColumn,
     };
 
     Sao.View.EditableTree = {};
@@ -2119,81 +2035,81 @@
 
     Sao.View.EditableTree.Char = Sao.class_(Sao.View.Form.Char, {
         class_: 'editabletree-char',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Char._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Char._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.Date = Sao.class_(Sao.View.Form.Date, {
         class_: 'editabletree-date',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Date._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Date._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.Time = Sao.class_(Sao.View.Form.Time, {
         class_: 'editabletree-time',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Time._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Time._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.TimeDelta = Sao.class_(Sao.View.Form.TimeDelta, {
         class_: 'editabletree-timedelta',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.TimeDelta._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.TimeDelta._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.Integer = Sao.class_(Sao.View.Form.Integer, {
         class_: 'editabletree-integer',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Integer._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Integer._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.Float = Sao.class_(Sao.View.Form.Float, {
         class_: 'editabletree-float',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Float._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Float._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.Selection = Sao.class_(Sao.View.Form.Selection, {
         class_: 'editabletree-selection',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Selection._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Selection._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.Boolean = Sao.class_(Sao.View.Form.Boolean, {
         class_: 'editabletree-boolean',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Boolean._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Boolean._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
 
     Sao.View.EditableTree.Many2One = Sao.class_(Sao.View.Form.Many2One, {
         class_: 'editabletree-many2one',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Many2One._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Many2One._super.init.call(
+                this, view, attributes);
             this.el.on('keydown', this.key_press.bind(this));
         },
         key_press: function(event_) {
@@ -2208,9 +2124,9 @@
 
     Sao.View.EditableTree.Reference = Sao.class_(Sao.View.Form.Reference, {
         class_: 'editabletree-reference',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Reference._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Reference._super.init.call(
+                this, view, attributes);
             this.el.on('keydown', this.key_press.bind(this));
         },
         key_press: function(event_) {
@@ -2225,9 +2141,9 @@
 
     Sao.View.EditableTree.One2One = Sao.class_(Sao.View.Form.One2One, {
         class_: 'editabletree-one2one',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.One2One._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.One2One._super.init.call(
+                this, view, attributes);
             this.el.on('keydown', this.key_press.bind(this));
         },
         key_press: function(event_) {
@@ -2242,9 +2158,9 @@
 
     Sao.View.EditableTree.One2Many = Sao.class_(Sao.View.EditableTree.Char, {
         class_: 'editabletree-one2many',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.One2Many._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.One2Many._super.init.call(
+                this, view, attributes);
         },
         display: function(record, field) {
             if (record) {
@@ -2264,11 +2180,35 @@
 
     Sao.View.EditableTree.Binary = Sao.class_(Sao.View.Form.Binary, {
         class_: 'editabletree-binary',
-        init: function(field_name, model, attributes) {
-            Sao.View.EditableTree.Binary._super.init.call(this, field_name,
-                model, attributes);
+        init: function(view, attributes) {
+            Sao.View.EditableTree.Binary._super.init.call(
+                this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
         }
     });
+
+    Sao.View.EditableTree.WIDGETS = {
+        'biginteger': Sao.View.EditableTree.Integer,
+        'binary': Sao.View.EditableTree.Binary,
+        'boolean': Sao.View.EditableTree.Boolean,
+        'callto': Sao.View.EditableTree.Char,
+        'char': Sao.View.EditableTree.Char,
+        'date': Sao.View.EditableTree.Date,
+        'email': Sao.View.EditableTree.Char,
+        'float': Sao.View.EditableTree.Float,
+        'integer': Sao.View.EditableTree.Integer,
+        'many2many': Sao.View.EditableTree.Many2Many,
+        'many2one': Sao.View.EditableTree.Many2One,
+        'numeric': Sao.View.EditableTree.Float,
+        'one2many': Sao.View.EditableTree.One2Many,
+        'one2one': Sao.View.EditableTree.One2One,
+        'reference': Sao.View.EditableTree.Reference,
+        'selection': Sao.View.EditableTree.Selection,
+        'sip': Sao.View.EditableTree.Char,
+        'text': Sao.View.EditableTree.Char,
+        'time': Sao.View.EditableTree.Time,
+        'timedelta': Sao.View.EditableTree.TimeDelta,
+        'url': Sao.View.EditableTree.Char,
+    };
 
 }());
