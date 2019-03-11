@@ -1,3 +1,4 @@
+* Use separate XML parser in Views
 * Use between numbers in filter box
 * Rename email and calendar file
 * Use markup for styling

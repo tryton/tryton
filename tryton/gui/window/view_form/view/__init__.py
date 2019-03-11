@@ -1,6 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import gettext
+from collections import defaultdict
+
 from tryton.common import node_attributes
+
+_ = gettext.gettext
+list_ = list  # list builtins is overridden by import .list
 
 
 class View(object):
@@ -12,12 +18,19 @@ class View(object):
     editable = None
     children_field = None
     scroll = None
+    xml_parser = None
 
     def __init__(self, screen, xml):
         self.screen = screen
-        self.fields = {}
+        self.widgets = defaultdict(list_)
+        self.state_widgets = []
         self.attributes = node_attributes(xml)
         screen.set_on_write(self.attributes.get('on_write'))
+
+        self.xml_parser(
+            self, self.screen.exclude_field,
+            {k: f.attrs for k, f in self.screen.group.fields.items()}
+            ).parse(xml)
 
     def set_value(self):
         raise NotImplementedError
@@ -61,3 +74,52 @@ class View(object):
             return ViewGraph(screen, root)
         elif tagname == 'calendar':
             return ViewCalendar(screen, root)
+
+
+class XMLViewParser:
+
+    def __init__(self, view, exclude_field, field_attrs):
+        self.view = view
+        self.exclude_field = exclude_field
+        self.field_attrs = field_attrs
+
+    def _node_attributes(self, node):
+        node_attrs = node_attributes(node)
+        if 'name' in node_attrs:
+            field = self.field_attrs.get(node_attrs['name'], {})
+        else:
+            field = {}
+
+        for name in ['readonly', 'homogeneous']:
+            if name in node_attrs:
+                node_attrs[name] = bool(int(node_attrs[name]))
+        for name in [
+                'yexpand', 'yfill', 'xexpand', 'xfill', 'colspan', 'position']:
+            if name in node_attrs:
+                node_attrs[name] = int(node_attrs[name])
+        for name in ['xalign', 'yalign']:
+            if name in node_attrs:
+                node_attrs[name] = float(node_attrs[name])
+
+        if field:
+            node_attrs.setdefault('widget', field['type'])
+            if node.tagName == 'label' and 'string' not in node_attrs:
+                node_attrs['string'] = field['string'] + _(':')
+            if node.tagName == 'field' and 'help' not in node_attrs:
+                node_attrs['help'] = field['help']
+            for name in [
+                    'relation', 'domain', 'selection', 'string', 'states',
+                    'relation_field', 'views', 'invisible', 'add_remove',
+                    'sort', 'context', 'size', 'filename', 'autocomplete',
+                    'translate', 'create', 'delete', 'selection_change_with',
+                    'schema_model']:
+                if name in field:
+                    node_attrs.setdefault(name, field[name])
+        return node_attrs
+
+    def parse(self, node):
+        node_attrs = self._node_attributes(node)
+        if node.nodeType != node.ELEMENT_NODE:
+            return
+        parser = getattr(self, '_parse_%s' % node.tagName)
+        parser(node, node_attrs)

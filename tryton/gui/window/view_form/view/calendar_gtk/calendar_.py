@@ -9,11 +9,11 @@ from .dates_period import DatesPeriod
 class Calendar_(goocalendar.Calendar):
     'Calendar'
 
-    def __init__(self, attrs, screen, fields, event_store=None):
+    def __init__(self, attrs, view, fields, event_store=None):
         super(Calendar_, self).__init__(
             event_store, attrs.get('mode', 'month'))
         self.attrs = attrs
-        self.screen = screen
+        self.view_calendar = view
         self.fields = fields
         self.event_store = event_store
         self.current_domain_period = self.get_displayed_period()
@@ -76,8 +76,8 @@ class Calendar_(goocalendar.Calendar):
     def display(self, group):
         dtstart = self.attrs['dtstart']
         dtend = self.attrs.get('dtend')
-        if self.screen.current_record:
-            record = self.screen.current_record
+        if self.view_calendar.record:
+            record = self.view_calendar.record
             date = record[dtstart].get(record)
             if date:  # select the day of the current record
                 self.select(date)

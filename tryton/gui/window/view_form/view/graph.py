@@ -6,7 +6,7 @@ import gettext
 
 from gi.repository import Gtk
 
-from . import View
+from . import View, XMLViewParser
 from .graph_gtk.bar import VerticalBar, HorizontalBar
 from .graph_gtk.line import Line
 from .graph_gtk.pie import Pie
@@ -19,57 +19,60 @@ from tryton.gui import Main
 _ = gettext.gettext
 
 
-class ViewGraph(View):
-
-    def __init__(self, screen, xml):
-        super(ViewGraph, self).__init__(screen, xml)
-        self.view_type = 'graph'
-        self.widgets = {}
-        self.widget = self.parse(xml)
-
-    def parse(self, node):
-        xfield = None
-        yfields = []
-
-        for node in node.childNodes:
-            if node.nodeType != node.ELEMENT_NODE:
-                continue
-            if node.tagName == 'x':
-                for child in node.childNodes:
-                    if not child.nodeType == child.ELEMENT_NODE:
-                        continue
-                    xfield = node_attributes(child)
-                    field = self.screen.group.fields[xfield['name']]
-                    if not xfield.get('string'):
-                        xfield['string'] = field.attrs['string']
-            elif node.tagName == 'y':
-                for child in node.childNodes:
-                    if not child.nodeType == child.ELEMENT_NODE:
-                        continue
-                    yattrs = node_attributes(child)
-                    if not yattrs.get('string') and yattrs['name'] != '#':
-                        field = self.screen.group.fields[yattrs['name']]
-                        yattrs['string'] = field.attrs['string']
-                    yfields.append(yattrs)
-
-        Widget = self.get_widget(self.attributes.get('type', 'vbar'))
-        widget = Widget(self, xfield, yfields)
-        self.widgets['root'] = widget
-        event = Gtk.EventBox()
-        event.add(widget)
-        event.connect('button-press-event', self.button_press)
-        return event
+class GraphXMLViewParser(XMLViewParser):
 
     WIDGETS = {
-        'vbar': VerticalBar,
         'hbar': HorizontalBar,
         'line': Line,
         'pie': Pie,
+        'vbar': VerticalBar,
         }
 
-    @classmethod
-    def get_widget(cls, name):
-        return cls.WIDGETS[name]
+    def __init__(self, view, exclude_field, field_attrs):
+        super().__init__(view, exclude_field, field_attrs)
+        self._xfield = None
+        self._yfields = []
+
+    def _node_attributes(self, node):
+        node_attrs = node_attributes(node)
+        if 'name' in node_attrs:
+            if not node_attrs.get('string') and node_attrs['name'] != '#':
+                field = self.field_attrs[node_attrs['name']]
+                node_attrs['string'] = field['string']
+        return node_attrs
+
+    def _parse_graph(self, node, attributes):
+        for child in node.childNodes:
+            self.parse(child)
+
+        Widget = self.WIDGETS.get(attributes.get('type', 'vbar'))
+        widget = Widget(
+            self.view, self._xfield, self._yfields)
+        self.view.widget.add(widget)
+        self.view.widgets['root'] = widget
+
+    def _parse_x(self, node, attributes):
+        for child in node.childNodes:
+            if not child.nodeType == child.ELEMENT_NODE:
+                continue
+            self._xfield = self._node_attributes(child)
+
+    def _parse_y(self, node, attributes):
+        for child in node.childNodes:
+            if not child.nodeType == child.ELEMENT_NODE:
+                continue
+            self._yfields.append(self._node_attributes(child))
+
+
+class ViewGraph(View):
+    view_type = 'graph'
+    editable = False
+    xml_parser = GraphXMLViewParser
+
+    def __init__(self, screen, xml):
+        self.widget = event = Gtk.EventBox()
+        super().__init__(screen, xml)
+        event.connect('button-press-event', self.button_press)
 
     def __getitem__(self, name):
         return None

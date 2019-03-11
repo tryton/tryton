@@ -5,7 +5,6 @@ import json
 import locale
 import gettext
 from functools import wraps
-from collections import defaultdict
 
 from gi.repository import Gdk, GLib, GObject, Gtk
 from pygtkcompat.generictreemodel import GenericTreeModel
@@ -18,7 +17,7 @@ from tryton.common import RPCExecute, RPCException, node_attributes, Tooltips
 from tryton.common import domain_inversion, simplify, unique_value
 from tryton.pyson import PYSONDecoder
 import tryton.common as common
-from . import View
+from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
 from .list_gtk.widget import (Affix, Char, Text, Int, Boolean, URL, Date,
     Time, Float, TimeDelta, Binary, M2O, O2O, O2M, M2M, Selection, Reference,
@@ -250,26 +249,215 @@ class AdaptModelGroup(GenericTreeModel):
         return record.parent
 
 
+class TreeXMLViewParser(XMLViewParser):
+
+    WIDGETS = {
+        'biginteger': Int,
+        'binary': Binary,
+        'boolean': Boolean,
+        'callto': URL,
+        'char': Char,
+        'date': Date,
+        'email': URL,
+        'float': Float,
+        'image': Image,
+        'integer': Int,
+        'many2many': M2M,
+        'many2one': M2O,
+        'numeric': Float,
+        'one2many': O2M,
+        'one2one': O2O,
+        'progressbar': ProgressBar,
+        'reference': Reference,
+        'selection': Selection,
+        'sip': URL,
+        'text': Text,
+        'time': Time,
+        'timedelta': TimeDelta,
+        'url': URL,
+        }
+
+    def _parse_tree(self, node, attributes):
+        for child in node.childNodes:
+            self.parse(child)
+
+    def _parse_field(self, node, attributes):
+        name = attributes['name']
+        widget = self.WIDGETS[attributes['widget']](self.view, attributes)
+        self.view.widgets[name].append(widget)
+
+        column = Gtk.TreeViewColumn(attributes['string'])
+        column._type = 'field'
+        column.name = name
+
+        prefixes = []
+        suffixes = []
+        if attributes['widget'] in ['url', 'email', 'callto', 'sip']:
+            prefixes.append(
+                Affix(self.view, attributes, protocol=attributes['widget']))
+        if 'icon' in attributes:
+            prefixes.append(Affix(self.view, attributes))
+
+        for affix in node.childNodes:
+            affix_attrs = node_attributes(affix)
+            if 'name' not in affix_attrs:
+                affix_attrs['name'] = attributes['name']
+            if affix.tagName == 'prefix':
+                list_ = prefixes
+            else:
+                list_ = suffixes
+            list_.append(Affix(self, affix_attrs))
+
+        for prefix in prefixes:
+            column.pack_start(prefix.renderer, expand=prefix.expand)
+            column.set_cell_data_func(prefix.renderer, prefix.setter)
+        column.pack_start(widget.renderer, expand=True)
+        column.set_cell_data_func(widget.renderer, widget.setter)
+        for suffix in suffixes:
+            column.pack_start(suffix.renderer, expand=suffix.expand)
+            column.set_cell_data_func(suffix.renderer, suffix.setter)
+
+        self._set_column_widget(column, attributes, align=widget.align)
+        self._set_column_width(column, attributes)
+
+        if (not self.view.attributes.get('sequence')
+                and not self.view.children_field
+                and self.field_attrs[name].get('sortable', True)):
+            column.connect('clicked', self.view.sort_model)
+
+        self.view.treeview.append_column(column)
+
+        if 'sum' in attributes:
+            text = attributes['sum'] + _(':')
+            label, sum_ = Gtk.Label(label=text), Gtk.Label()
+
+            hbox = Gtk.HBox()
+            hbox.pack_start(label, expand=True, fill=False, padding=2)
+            hbox.pack_start(sum_, expand=True, fill=False, padding=2)
+            hbox.show_all()
+            self.view.sum_box.pack_start(
+                hbox, expand=False, fill=False, padding=0)
+
+            self.view.sum_widgets.append((attributes['name'], sum_))
+
+    def _parse_button(self, node, attributes):
+        button = Button(self.view, attributes)
+        self.view.state_widgets.append(button)
+
+        column = Gtk.TreeViewColumn(
+            attributes.get('string', ''), button.renderer)
+        column._type = 'button'
+        column.name = None
+        column.set_cell_data_func(button.renderer, button.setter)
+
+        self._set_column_widget(column, attributes, arrow=False)
+        self._set_column_width(column, attributes)
+
+        decoder = PYSONDecoder(self.view.screen.context)
+        column.set_visible(
+            not decoder.decode(attributes.get('tree_invisible', '0')))
+
+        self.view.treeview.append_column(column)
+
+    def _set_column_widget(self, column, attributes, arrow=True, align=0.5):
+        hbox = Gtk.HBox(homogeneous=False, spacing=2)
+        label = Gtk.Label(label=attributes['string'])
+        field = self.field_attrs.get(attributes['name'], {})
+        if field and self.view.editable:
+            required = field.get('required')
+            readonly = field.get('readonly')
+            common.apply_label_attributes(label, readonly, required)
+        label.show()
+        help = attributes.get('help')
+        if help:
+            tooltips = Tooltips()
+            tooltips.set_tip(label, help)
+            tooltips.enable()
+        if arrow:
+            arrow_widget = Gtk.Arrow(
+                arrow_type=Gtk.ArrowType.NONE, shadow_type=Gtk.ShadowType.NONE)
+            arrow_widget.show()
+            column.arrow = arrow_widget
+        hbox.pack_start(label, expand=True, fill=True, padding=0)
+        if arrow:
+            hbox.pack_start(arrow_widget, expand=False, fill=False, padding=0)
+            column.set_clickable(True)
+        hbox.show()
+        column.set_widget(hbox)
+        column.set_alignment(align)
+
+    def _set_column_width(self, column, attributes):
+        default_width = {
+            'integer': 60,
+            'biginteger': 60,
+            'float': 80,
+            'numeric': 80,
+            'timedelta': 100,
+            'date': 100,
+            'datetime': 100,
+            'time': 100,
+            'selection': 90,
+            'char': 100,
+            'one2many': 50,
+            'many2many': 50,
+            'boolean': 20,
+            'binary': 200,
+            }
+
+        screen = self.view.screen
+        width = screen.tree_column_width[screen.model_name].get(column.name)
+        field_attrs = self.field_attrs.get(attributes['name'], {})
+        if not width:
+            if 'width' in attributes:
+                width = int(attributes['width'])
+            elif field_attrs:
+                width = default_width.get(field_attrs['type'], 100)
+            else:
+                width = 80
+        column.width = width
+        if width > 0:
+            column.set_fixed_width(width)
+        column.set_min_width(1)
+
+        expand = attributes.get('expand', False)
+        column.set_expand(expand)
+        column.set_resizable(True)
+        if attributes.get('widget') != 'text':
+            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+
+
 class ViewTree(View):
+    view_type = 'tree'
+    xml_parser = TreeXMLViewParser
 
     def __init__(self, screen, xml, children_field):
-        super(ViewTree, self).__init__(screen, xml)
-        self.view_type = 'tree'
-        self.widgets = defaultdict(list)
-        self.state_widgets = []
         self.children_field = children_field
         self.sum_widgets = []
         self.sum_box = Gtk.HBox()
         self.reload = False
-        if self.attributes.get('editable') and not screen.readonly:
-            self.treeview = EditableTreeView(self.attributes['editable'], self)
+        self.treeview = None
+        editable = xml.getAttribute('editable')
+        if editable and not screen.readonly:
+            self.treeview = EditableTreeView(editable, self)
             grid_lines = Gtk.TreeViewGridLines.BOTH
         else:
             self.treeview = TreeView(self)
             grid_lines = Gtk.TreeViewGridLines.VERTICAL
+
+        super().__init__(screen, xml)
+
         self.mnemonic_widget = self.treeview
 
-        self.parse(xml)
+        # Add last column if necessary
+        for column in self.treeview.get_columns():
+            if column.get_expand():
+                break
+        else:
+            column = Gtk.TreeViewColumn()
+            column._type = 'fill'
+            column.name = None
+            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+            self.treeview.append_column(column)
 
         self.treeview.set_property('rules-hint', True)
         self.treeview.set_property('enable-grid-lines', grid_lines)
@@ -307,230 +495,11 @@ class ViewTree(View):
 
         self.display()
 
-    def parse(self, xml):
-        for node in xml.childNodes:
-            if node.nodeType != node.ELEMENT_NODE:
-                continue
-            if node.tagName == 'field':
-                self._parse_field(node)
-            elif node.tagName == 'button':
-                self._parse_button(node)
-
-        self.add_last_column()
-
-    def _parse_field(self, node):
-        group = self.group
-        node_attrs = node_attributes(node)
-        name = node_attrs['name']
-        field = group.fields[name]
-        for b_field in ('readonly', 'expand'):
-            if b_field in node_attrs:
-                node_attrs[b_field] = bool(int(node_attrs[b_field]))
-        for i_field in ('width', 'height'):
-            if i_field in node_attrs:
-                node_attrs[i_field] = int(node_attrs[i_field])
-        if 'widget' not in node_attrs:
-            node_attrs['widget'] = field.attrs['type']
-
-        for attr in ('relation', 'domain', 'selection',
-                'relation_field', 'string', 'views', 'invisible',
-                'add_remove', 'sort', 'context', 'size', 'filename',
-                'autocomplete', 'translate', 'create', 'delete',
-                'selection_change_with', 'schema_model'):
-            if (attr in field.attrs
-                    and attr not in node_attrs):
-                node_attrs[attr] = field.attrs[attr]
-
-        Widget = self.get_widget(node_attrs['widget'])
-        widget = Widget(self, node_attrs)
-        self.widgets[name].append(widget)
-
-        column = Gtk.TreeViewColumn(node_attrs['string'])
-        column._type = 'field'
-        column.name = name
-
-        prefixes = []
-        suffixes = list(widget.suffixes)
-        if node_attrs['widget'] in ('url', 'email', 'callto', 'sip'):
-            prefixes.append(Affix(self, node_attrs,
-                    protocol=node_attrs['widget']))
-        if 'icon' in node_attrs:
-            prefixes.append(Affix(self, node_attrs))
-        for affix in node.childNodes:
-            affix_attrs = node_attributes(affix)
-            if 'name' not in affix_attrs:
-                affix_attrs['name'] = name
-            if affix.tagName == 'prefix':
-                list_ = prefixes
-            else:
-                list_ = suffixes
-            list_.append(Affix(self, affix_attrs))
-        prefixes.extend(widget.prefixes)
-
-        for prefix in prefixes:
-            column.pack_start(prefix.renderer, expand=prefix.expand)
-            column.set_cell_data_func(prefix.renderer,
-                prefix.setter)
-
-        column.pack_start(widget.renderer, expand=True)
-        column.set_cell_data_func(widget.renderer, widget.setter)
-
-        for suffix in suffixes:
-            column.pack_start(suffix.renderer, expand=suffix.expand)
-            column.set_cell_data_func(suffix.renderer,
-                suffix.setter)
-
-        self.set_column_widget(column, field, node_attrs, align=widget.align)
-        self.set_column_width(column, field, node_attrs)
-
-        if (not self.attributes.get('sequence')
-                and not self.children_field
-                and field.attrs.get('sortable', True)):
-            column.connect('clicked', self.sort_model)
-
-        self.treeview.append_column(column)
-
-        self.add_sum(node_attrs)
-
-    def _parse_button(self, node):
-        node_attrs = node_attributes(node)
-        widget = Button(self, node_attrs)
-        self.state_widgets.append(widget)
-
-        column = Gtk.TreeViewColumn(node_attrs.get('string', ''),
-            widget.renderer)
-        column._type = 'button'
-        column.name = None
-        column.set_cell_data_func(widget.renderer, widget.setter)
-
-        self.set_column_widget(column, None, node_attrs, arrow=False)
-        self.set_column_width(column, None, node_attrs)
-
-        decoder = PYSONDecoder(self.screen.context)
-        column.set_visible(
-            not decoder.decode(node_attrs.get('tree_invisible', '0')))
-
-        self.treeview.append_column(column)
-
-    WIDGETS = {
-        'char': Char,
-        'many2one': M2O,
-        'date': Date,
-        'one2many': O2M,
-        'many2many': M2M,
-        'selection': Selection,
-        'float': Float,
-        'numeric': Float,
-        'timedelta': TimeDelta,
-        'integer': Int,
-        'biginteger': Int,
-        'time': Time,
-        'boolean': Boolean,
-        'text': Text,
-        'url': URL,
-        'email': URL,
-        'callto': URL,
-        'sip': URL,
-        'progressbar': ProgressBar,
-        'reference': Reference,
-        'one2one': O2O,
-        'binary': Binary,
-        'image': Image,
-        }
-
-    @classmethod
-    def get_widget(cls, name):
-        return cls.WIDGETS[name]
-
-    def set_column_widget(self, column, field, attributes,
-            arrow=True, align=0.5):
-        hbox = Gtk.HBox(homogeneous=False, spacing=2)
-        label = Gtk.Label(label=attributes['string'])
-        if field and self.editable:
-            required = field.attrs.get('required')
-            readonly = field.attrs.get('readonly')
-            common.apply_label_attributes(label, readonly, required)
-        label.show()
-        help = None
-        if field and field.attrs.get('help'):
-            help = field.attrs['help']
-        elif attributes.get('help'):
-            help = attributes['help']
-        if help:
-            tooltips = Tooltips()
-            tooltips.set_tip(label, help)
-            tooltips.enable()
-        if arrow:
-            arrow_widget = Gtk.Arrow(
-                arrow_type=Gtk.ArrowType.NONE, shadow_type=Gtk.ShadowType.NONE)
-            arrow_widget.show()
-            column.arrow = arrow_widget
-        hbox.pack_start(label, expand=True, fill=True, padding=0)
-        if arrow:
-            hbox.pack_start(
-                arrow_widget, expand=False, fill=False, padding=0)
-            column.set_clickable(True)
-        hbox.show()
-        column.set_widget(hbox)
-        column.set_alignment(align)
-
-    def set_column_width(self, column, field, attributes):
-        default_width = {
-            'integer': 60,
-            'biginteger': 60,
-            'float': 80,
-            'numeric': 80,
-            'timedelta': 100,
-            'date': 100,
-            'datetime': 100,
-            'time': 100,
-            'selection': 90,
-            'char': 100,
-            'one2many': 50,
-            'many2many': 50,
-            'boolean': 20,
-            'binary': 200,
-            }
-
-        width = self.screen.tree_column_width[self.screen.model_name].get(
-            column.name)
-        if not width:
-            if 'width' in attributes:
-                width = int(attributes['width'])
-            elif field:
-                width = default_width.get(field.attrs['type'], 100)
-            else:
-                width = 80
-        column.width = width
-        if width > 0:
-            column.set_fixed_width(width)
-        column.set_min_width(1)
-
-        expand = attributes.get('expand', False)
-        column.set_expand(expand)
-        column.set_resizable(True)
-        if attributes.get('widget') != 'text':
-            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
-
     def get_column_widget(self, column):
         'Return the widget of the column'
         idx = [c for c in self.treeview.get_columns()
             if c.name == column.name].index(column)
         return self.widgets[column.name][idx]
-
-    def add_sum(self, attributes):
-        if 'sum' not in attributes:
-            return
-        text = attributes['sum'] + _(':')
-        label, sum_ = Gtk.Label(label=text), Gtk.Label()
-
-        hbox = Gtk.HBox()
-        hbox.pack_start(label, expand=True, fill=False, padding=2)
-        hbox.pack_start(sum_, expand=True, fill=False, padding=2)
-        hbox.show_all()
-        self.sum_box.pack_start(hbox, expand=False, fill=False, padding=0)
-
-        self.sum_widgets.append((attributes['name'], sum_))
 
     def sort_model(self, column):
         for col in self.treeview.get_columns():
@@ -576,17 +545,6 @@ class ViewTree(View):
                     arrow.set(Gtk.ArrowType.NONE, Gtk.ShadowType.NONE)
                 else:
                     arrow.set(direction, Gtk.ShadowType.IN)
-
-    def add_last_column(self):
-        for column in self.treeview.get_columns():
-            if column.get_expand():
-                break
-        else:
-            column = Gtk.TreeViewColumn()
-            column._type = 'fill'
-            column.name = None
-            column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
-            self.treeview.append_column(column)
 
     def set_drag_and_drop(self):
         dnd = False
