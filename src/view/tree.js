@@ -278,6 +278,9 @@
                 }
             });
         },
+        get_fields: function() {
+            return Object.keys(this.widgets);
+        },
         get_buttons: function() {
             var buttons = [];
             this.columns.forEach(function(column) {

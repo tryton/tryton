@@ -33,8 +33,6 @@
         },
         set_value: function() {
         },
-        get_fields: function() {
-        },
         get record() {
             return this.screen.current_record;
         },
@@ -45,6 +43,9 @@
             return this.screen.group;
         },
         get selected_records() {
+            return [];
+        },
+        get_fields: function() {
             return [];
         },
         get_buttons: function() {

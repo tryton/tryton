@@ -226,6 +226,9 @@ function eval_pyson(value){
             this.widget_id = 0;
             Sao.View.Form._super.init.call(this, screen, xml);
         },
+        get_fields: function() {
+            return Object.keys(this.widgets);
+        },
         get_buttons: function() {
             var buttons = [];
             for (var j in this.state_widgets) {
