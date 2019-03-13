@@ -82,7 +82,7 @@ class WinExport(WinCSV):
         self.saveas.set_active(0)
 
     def add_csv_header_param(self, box):
-        self.add_field_names = Gtk.CheckButton(label=_("Add _field names"))
+        self.add_field_names = Gtk.CheckButton(label=_("Add field names"))
         self.add_field_names.set_active(True)
         box.pack_start(
             self.add_field_names, expand=False, fill=True, padding=0)
