@@ -194,7 +194,7 @@ class ScreenContainer(object):
         self.alternate_viewport.set_shadow_type(Gtk.ShadowType.NONE)
         self.alternate_view = False
         self.search_popover = None
-        self.search_table = None
+        self.search_grid = None
         self.last_search_text = ''
         self.tab_domain = tab_domain or []
         self.tab_counter = []
@@ -568,7 +568,7 @@ class ScreenContainer(object):
         def search():
             self.search_popover.popdown()
             text = ''
-            for label, entry in self.search_table.fields:
+            for label, entry in self.search_grid.fields:
                 if isinstance(entry, Gtk.ComboBoxText):
                     value = quote(entry.get_active_text()) or None
                 elif isinstance(entry, (Between, Selection)):
@@ -590,21 +590,15 @@ class ScreenContainer(object):
             vbox = Gtk.VBox()
             fields = [f for f in self.screen.domain_parser.fields.values()
                 if f.get('searchable', True)]
-            self.search_table = Gtk.Table(n_rows=len(fields), n_columns=2)
-            self.search_table.set_homogeneous(False)
-            self.search_table.set_border_width(5)
-            self.search_table.set_row_spacings(2)
-            self.search_table.set_col_spacings(2)
+            self.search_grid = Gtk.Grid(column_spacing=3, row_spacing=3)
 
             # Fill table with fields
-            self.search_table.fields = []
+            self.search_grid.fields = []
             for i, field in enumerate(fields):
                 label = Gtk.Label(
                     label=field['string'],
                     halign=Gtk.Align.START, valign=Gtk.Align.START)
-                self.search_table.attach(
-                    label, 0, 1, i, i + 1, yoptions=Gtk.AttachOptions.FILL)
-                yoptions = False
+                self.search_grid.attach(label, 0, i, 1, 1)
                 if field['type'] == 'boolean':
                     entry = Gtk.ComboBoxText()
                     entry.append_text('')
@@ -614,8 +608,7 @@ class ScreenContainer(object):
                 elif field['type'] == 'selection':
                     selections = tuple(x[1] for x in field['selection'])
                     entry = Selection(selections)
-                    yoptions = (
-                        Gtk.AttachOptions.FILL | Gtk.AttachOptions.EXPAND)
+                    entry.set_vexpand(True)
                 elif field['type'] in ('date', 'datetime', 'time'):
                     date_format = common.date_format(
                         self.screen.context.get('date_format'))
@@ -635,12 +628,11 @@ class ScreenContainer(object):
                     entry = Gtk.Entry()
                     entry.connect('activate', lambda *a: search())
                 label.set_mnemonic_widget(entry)
-                self.search_table.attach(entry, 1, 2, i, i + 1,
-                    yoptions=yoptions)
-                self.search_table.fields.append((field['string'], entry))
+                self.search_grid.attach(entry, 1, i, 1, 1)
+                self.search_grid.fields.append((field['string'], entry))
 
             scrolled = Gtk.ScrolledWindow()
-            scrolled.add(self.search_table)
+            scrolled.add(self.search_grid)
             scrolled.set_shadow_type(Gtk.ShadowType.NONE)
             scrolled.set_policy(
                 Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
@@ -659,16 +651,16 @@ class ScreenContainer(object):
             self.search_popover.add(vbox)
             vbox.show_all()
             scrolled.set_size_request(
-                -1, min(self.search_table.get_preferred_height()[1], 400))
+                -1, min(self.search_grid.get_preferred_height()[1], 400))
 
         self.search_popover.set_pointing_to(
             widget.get_icon_area(Gtk.EntryIconPosition.PRIMARY))
         self.search_popover.popup()
-        if self.search_table.fields:
-            self.search_table.fields[0][1].grab_focus()
+        if self.search_grid.fields:
+            self.search_grid.fields[0][1].grab_focus()
 
         if self.last_search_text.strip() != self.get_text().strip():
-            for label, entry in self.search_table.fields:
+            for label, entry in self.search_grid.fields:
                 if isinstance(entry, Gtk.ComboBoxText):
                     entry.set_active(-1)
                 elif isinstance(entry, Between):

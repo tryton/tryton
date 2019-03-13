@@ -802,32 +802,21 @@ def send_bugtracker(title, msg):
             'tryton-info', Gtk.IconSize.DIALOG),
         expand=False, fill=False, padding=0)
 
-    table = Gtk.Table(n_rows=2, n_columns=2)
-    table.set_col_spacings(3)
-    table.set_row_spacings(3)
-    table.set_border_width(1)
+    grid = Gtk.Grid(column_spacing=3, row_spacing=3)
     label_user = Gtk.Label(
         label=_('User:'), halign=Gtk.Align.END)
-    table.attach(
-        label_user, 0, 1, 0, 1, yoptions=False,
-        xoptions=Gtk.AttachOptions.FILL)
-    entry_user = Gtk.Entry()
+    grid.attach(label_user, 0, 0, 1, 1)
+    entry_user = Gtk.Entry(hexpand=True)
     entry_user.set_activates_default(True)
-    table.attach(
-        entry_user, 1, 2, 0, 1, yoptions=False,
-        xoptions=Gtk.AttachOptions.FILL)
+    grid.attach(entry_user, 1, 0, 1, 1)
     label_password = Gtk.Label(
         label=_('Password:'), halign=Gtk.Align.END)
-    table.attach(
-        label_password, 0, 1, 1, 2, yoptions=False,
-        xoptions=Gtk.AttachOptions.FILL)
-    entry_password = Gtk.Entry()
+    grid.attach(label_password, 0, 1, 1, 1)
+    entry_password = Gtk.Entry(hexpand=True)
     entry_password.set_activates_default(True)
     entry_password.set_visibility(False)
-    table.attach(
-        entry_password, 1, 2, 1, 2, yoptions=False,
-        xoptions=Gtk.AttachOptions.FILL)
-    hbox.pack_start(table, expand=True, fill=True, padding=0)
+    grid.attach(entry_password, 1, 1, 1, 1)
+    hbox.pack_start(grid, expand=True, fill=True, padding=0)
 
     win.vbox.pack_start(hbox, expand=True, fill=True, padding=0)
     win.show_all()

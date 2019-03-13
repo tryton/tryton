@@ -45,10 +45,10 @@ class WinImport(WinCSV):
         hbox_csv_import.pack_start(
             self.import_csv_file, expand=True, fill=True, padding=0)
 
-    def add_csv_header_param(self, table):
+    def add_csv_header_param(self, box):
         label_csv_skip = Gtk.Label(
             label=_('Lines to Skip:'), halign=Gtk.Align.START)
-        table.attach(label_csv_skip, 2, 3, 1, 2)
+        box.pack_start(label_csv_skip, expand=False, fill=True, padding=0)
 
         self.csv_skip = Gtk.SpinButton()
         self.csv_skip.configure(Gtk.Adjustment(
@@ -56,7 +56,7 @@ class WinImport(WinCSV):
                 step_increment=1, page_increment=10),
             1, 0)
         label_csv_skip.set_mnemonic_widget(self.csv_skip)
-        table.attach(self.csv_skip, 3, 4, 1, 2)
+        box.pack_start(self.csv_skip, expand=False, fill=True, padding=0)
 
     def model_populate(self, fields, parent_node=None, prefix_field='',
             prefix_name=''):

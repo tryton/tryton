@@ -56,23 +56,20 @@ class Container(object):
         if col < 0:
             col = 0
         self.col = col
-        self.table = Gtk.Table(n_rows=1, n_columns=col)
-        self.table.set_homogeneous(homogeneous)
-        self.table.set_col_spacings(0)
-        self.table.set_row_spacings(0)
-        self.table.set_border_width(0)
+        self.container = Gtk.Grid(
+            column_spacing=3, row_spacing=3,
+            column_homogeneous=homogeneous, row_homogeneous=homogeneous,
+            border_width=3)
         self.last = (0, 0)
         self.tooltips = Tooltips()
         self.tooltips.enable()
 
     def add_row(self):
         height, width = self.last
-        self.table.resize(height + 1, self.col or width)
         self.last = (height + 1, 0)
 
     def add_col(self):
         height, width = self.last
-        self.table.resize(height or 1, width + 1)
         self.last = (height, width + 1)
 
     def add(self, widget, attributes):
@@ -93,40 +90,26 @@ class Container(object):
         if not widget:
             return
 
-        yopt = 0
-        if attributes.get('yexpand'):
-            yopt = Gtk.AttachOptions.EXPAND
+        widget.set_vexpand(bool(attributes.get('yexpand')))
         if attributes.get('yfill'):
-            if yopt:
-                yopt |= Gtk.AttachOptions.FILL
-            else:
-                yopt = Gtk.AttachOptions.FILL
+            widget.set_valign(Gtk.Align.FILL)
 
-        xopt = 0
-        if attributes.get('xexpand', True):
-            xopt = Gtk.AttachOptions.EXPAND
+        widget.set_hexpand(bool(attributes.get('xexpand', True)))
         if attributes.get('xfill', True):
-            if xopt:
-                xopt |= Gtk.AttachOptions.FILL
-            else:
-                xopt = Gtk.AttachOptions.FILL
+            widget.set_valign(Gtk.Align.FILL)
 
         if attributes.get('help'):
             self.tooltips.set_tip(widget, attributes['help'])
 
         widget.show_all()
-        self.table.attach(widget,
-            width, width + colspan,
-            height, height + 1,
-            yoptions=yopt, xoptions=xopt,
-            ypadding=1, xpadding=2)
+        self.container.attach(widget, width, height, colspan, 1)
 
 
 class VContainer(Container):
     def __init__(self, col=1, homogeneous=False):
         self.col = 1
-        self.table = Gtk.VBox()
-        self.table.set_homogeneous(homogeneous)
+        self.container = Gtk.VBox()
+        self.container.set_homogeneous(homogeneous)
 
     def add_row(self):
         pass
@@ -139,14 +122,14 @@ class VContainer(Container):
             return
         expand = bool(int(attributes.get('yexpand', False)))
         fill = bool(int(attributes.get('yfill', False)))
-        self.table.pack_start(widget, expand=expand, fill=fill, padding=2)
+        self.container.pack_start(widget, expand=expand, fill=fill, padding=2)
 
 
 class HContainer(Container):
     def __init__(self, col=0, homogeneous=False):
         self.col = 0
-        self.table = Gtk.HBox()
-        self.table.set_homogeneous(homogeneous)
+        self.container = Gtk.HBox()
+        self.container.set_homogeneous(homogeneous)
 
     def add_row(self):
         pass
@@ -159,7 +142,7 @@ class HContainer(Container):
             return
         expand = bool(int(attributes.get('xexpand', True)))
         fill = bool(int(attributes.get('xfill', True)))
-        self.table.pack_start(widget, expand=expand, fill=fill, padding=1)
+        self.container.pack_start(widget, expand=expand, fill=fill, padding=1)
 
 
 class FormXMLViewParser(XMLViewParser):
@@ -213,7 +196,7 @@ class FormXMLViewParser(XMLViewParser):
         container = Container.constructor(
             int(container_attributes.get('col', 4)),
             container_attributes.get('homogeneous', False))
-        self.view.viewport.add(container.table)
+        self.view.viewport.add(container.container)
         self.parse_child(node, container)
         assert not self._containers
 
@@ -351,7 +334,7 @@ class FormXMLViewParser(XMLViewParser):
             int(attributes.get('col', 4)),
             attributes.get('homogeneous', False))
         self.parse_child(node, container)
-        viewport.add(container.table)
+        viewport.add(container.container)
 
     def _parse_group(self, node, attributes):
         group = Container.constructor(
@@ -366,12 +349,12 @@ class FormXMLViewParser(XMLViewParser):
         can_expand = attributes.get('expandable')
         if can_expand:
             widget = Expander(label=attributes.get('string'), attrs=attributes)
-            widget.add(group.table)
+            widget.add(group.container)
             widget.set_expanded(can_expand == '1')
             self.view.expandables.append(widget)
         else:
             widget = Frame(label=attributes.get('string'), attrs=attributes)
-            widget.add(group.table)
+            widget.add(group.container)
 
         self.view.state_widgets.append(widget)
         self.container.add(widget, attributes)
@@ -401,7 +384,7 @@ class FormXMLViewParser(XMLViewParser):
             pack = paned.pack1
         else:
             pack = paned.pack2
-        pack(container.table, resize=True, shrink=True)
+        pack(container.container, resize=True, shrink=True)
 
 
 class ViewForm(View):

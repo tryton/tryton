@@ -306,11 +306,8 @@ class DictWidget(Widget):
         vbox = Gtk.VBox()
         self.widget.add(vbox)
 
-        self.table = Gtk.Table(n_rows=1, n_columns=3, homogeneous=False)
-        self.table.set_col_spacings(0)
-        self.table.set_row_spacings(0)
-        self.table.set_border_width(0)
-        vbox.pack_start(self.table, expand=True, fill=True, padding=0)
+        self.grid = Gtk.Grid(column_spacing=3, row_spacing=3)
+        vbox.pack_start(self.grid, expand=True, fill=True, padding=0)
 
         hbox = Gtk.HBox()
         hbox.set_border_width(2)
@@ -393,7 +390,7 @@ class DictWidget(Widget):
         del self.fields[key]
         del self.buttons[key]
         for widget in self.rows[key]:
-            self.table.remove(widget)
+            self.grid.remove(widget)
             widget.destroy()
         del self.rows[key]
         if modified:
@@ -436,40 +433,28 @@ class DictWidget(Widget):
         key_schema = self.field.keys[key]
         self.fields[key] = DICT_ENTRIES[key_schema['type_']](key, self)
         field = self.fields[key]
-        alignment = Gtk.Alignment()
-        alignment.props.xalign = float(self.attrs.get('xalign', 0.0))
-        alignment.props.yalign = float(self.attrs.get('yalign', 0.5))
-        alignment.props.xscale = float(self.attrs.get('xexpand', 1.0))
-        alignment.props.yscale = float(self.attrs.get('yexpand', 1.0))
-        hbox = Gtk.HBox()
-        hbox.pack_start(
-            field.widget, expand=field.expand, fill=field.fill, padding=0)
-        alignment.add(hbox)
-        n_rows = self.table.props.n_rows
-        self.table.resize(n_rows + 1, 3)
         text = key_schema['string'] + _(':')
         label = Gtk.Label(
             label=set_underline(text),
-            use_underline=True, halign=Gtk.Align.START)
-        self.table.attach(
-            label, 0, 1, n_rows - 1, n_rows,
-            xoptions=Gtk.AttachOptions.FILL, xpadding=2, yoptions=False)
+            use_underline=True, halign=Gtk.Align.END)
+        self.grid.attach_next_to(
+            label, None, Gtk.PositionType.BOTTOM, 1, 1)
         label.set_mnemonic_widget(field.widget)
         label.show()
-        self.table.attach(
-            alignment, 1, 2, n_rows - 1, n_rows,
-            xoptions=Gtk.AttachOptions.FILL | Gtk.AttachOptions.EXPAND,
-            xpadding=2, yoptions=False)
-        alignment.show_all()
+        hbox = Gtk.HBox(hexpand=True)
+        hbox.pack_start(
+            field.widget, expand=field.expand, fill=field.fill, padding=0)
+        self.grid.attach_next_to(
+            hbox, label, Gtk.PositionType.RIGHT, 1, 1)
+        hbox.show_all()
         remove_but = self._new_remove_btn()
         self.tooltips.set_tip(remove_but, _('Remove "%s"') %
             key_schema['string'])
-        self.table.attach(
-            remove_but, 2, 3, n_rows - 1, n_rows,
-            xoptions=Gtk.AttachOptions.FILL, xpadding=2, yoptions=False)
+        self.grid.attach_next_to(
+            remove_but, hbox, Gtk.PositionType.RIGHT, 1, 1)
         remove_but.connect('clicked', self._sig_remove, key)
         remove_but.show_all()
-        self.rows[key] = [label, alignment, remove_but]
+        self.rows[key] = [label, hbox, remove_but]
         self.buttons[key] = remove_but
 
     def display(self):

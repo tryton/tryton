@@ -81,10 +81,11 @@ class WinExport(WinCSV):
         self.saveas.append_text(_("Save"))
         self.saveas.set_active(0)
 
-    def add_csv_header_param(self, table):
+    def add_csv_header_param(self, box):
         self.add_field_names = Gtk.CheckButton(label=_("Add _field names"))
         self.add_field_names.set_active(True)
-        table.attach(self.add_field_names, 2, 4, 1, 2)
+        box.pack_start(
+            self.add_field_names, expand=False, fill=True, padding=0)
 
     def model_populate(self, fields, parent_node=None, prefix_field='',
             prefix_name=''):

@@ -131,15 +131,13 @@ class WinCSV(NoModal):
             expander_csv, expand=False, fill=True, padding=0)
         label_csv_param = Gtk.Label(label=_('CSV Parameters'))
         expander_csv.set_label_widget(label_csv_param)
-        table = Gtk.Table(n_rows=2, n_columns=4, homogeneous=False)
-        table.set_border_width(8)
-        table.set_row_spacings(9)
-        table.set_col_spacings(8)
-        expander_csv.add(table)
+
+        box = Gtk.HBox(spacing=3)
+        expander_csv.add(box)
 
         label_csv_delimiter = Gtk.Label(
             label=_('Delimiter:'), halign=Gtk.Align.END)
-        table.attach(label_csv_delimiter, 0, 1, 0, 1)
+        box.pack_start(label_csv_delimiter, expand=False, fill=True, padding=0)
         self.csv_delimiter = Gtk.Entry()
         self.csv_delimiter.set_max_length(1)
         if os.name == 'nt' and ',' == locale.localeconv()['decimal_point']:
@@ -149,20 +147,21 @@ class WinCSV(NoModal):
         self.csv_delimiter.set_text(delimiter)
         self.csv_delimiter.set_width_chars(1)
         label_csv_delimiter.set_mnemonic_widget(self.csv_delimiter)
-        table.attach(self.csv_delimiter, 1, 2, 0, 1)
+        box.pack_start(
+            self.csv_delimiter, expand=False, fill=True, padding=0)
 
         label_csv_quotechar = Gtk.Label(
             label=_("Quote char:"), halign=Gtk.Align.END)
-        table.attach(label_csv_quotechar, 2, 3, 0, 1)
+        box.pack_start(label_csv_quotechar, expand=False, fill=True, padding=0)
         self.csv_quotechar = Gtk.Entry()
         self.csv_quotechar.set_text("\"")
         self.csv_quotechar.set_width_chars(1)
         label_csv_quotechar.set_mnemonic_widget(self.csv_quotechar)
-        table.attach(self.csv_quotechar, 3, 4, 0, 1)
+        box.pack_start(self.csv_quotechar, expand=False, fill=True, padding=0)
 
         label_csv_enc = Gtk.Label(
             label=_("Encoding:"), halign=Gtk.Align.END)
-        table.attach(label_csv_enc, 0, 1, 1, 2)
+        box.pack_start(label_csv_enc, expand=False, fill=True, padding=0)
         self.csv_enc = Gtk.ComboBoxText()
         for i, encoding in enumerate(encodings):
             self.csv_enc.append_text(encoding)
@@ -170,9 +169,9 @@ class WinCSV(NoModal):
                     or (os.name != 'nt' and encoding == 'utf_8')):
                 self.csv_enc.set_active(i)
         label_csv_enc.set_mnemonic_widget(self.csv_enc)
-        table.attach(self.csv_enc, 1, 2, 1, 2)
+        box.pack_start(self.csv_enc, expand=False, fill=True, padding=0)
 
-        self.add_csv_header_param(table)
+        self.add_csv_header_param(box)
 
         button_cancel = self.dialog.add_button(
             set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)

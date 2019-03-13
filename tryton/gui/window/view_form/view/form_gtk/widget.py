@@ -142,7 +142,7 @@ class TranslateDialog(NoModal):
         self.win.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.win.set_icon(TRYTON_ICON)
         self.win.connect('response', self.response)
-        self.win.set_default_size(-1, self.default_size()[1])
+        self.win.set_default_size(*self.default_size())
 
         self.accel_group = Gtk.AccelGroup()
         self.win.add_accel_group(self.accel_group)
@@ -164,11 +164,7 @@ class TranslateDialog(NoModal):
         tooltips = common.Tooltips()
 
         self.widgets = {}
-        table = Gtk.Table(n_rows=len(languages), n_columns=4)
-        table.set_homogeneous(False)
-        table.set_col_spacings(3)
-        table.set_row_spacings(2)
-        table.set_border_width(1)
+        grid = Gtk.Grid(column_spacing=3, row_spacing=3)
         for i, language in enumerate(languages):
             label = language['name'] + _(':')
             label = Gtk.Label(
@@ -176,9 +172,7 @@ class TranslateDialog(NoModal):
                 halign=Gtk.Align.END,
                 valign=(Gtk.Align.START if self.widget.expand
                     else Gtk.Align.FILL))
-            table.attach(
-                label, 0, 1, i, i + 1,
-                xoptions=Gtk.AttachOptions.FILL, xpadding=2)
+            grid.attach(label, 0, i, 1, 1)
 
             context = dict(
                 language=language['code'],
@@ -205,27 +199,24 @@ class TranslateDialog(NoModal):
             label.set_mnemonic_widget(widget)
             self.widget.translate_widget_set(widget, fuzzy_value)
             self.widget.translate_widget_set_readonly(widget, True)
-            yopt = 0
-            if self.widget.expand:
-                yopt = Gtk.AttachOptions.EXPAND | Gtk.AttachOptions.FILL
-            table.attach(widget, 1, 2, i, i + 1, yoptions=yopt)
+            widget.set_vexpand(self.widget.expand)
+            widget.set_hexpand(True)
+            grid.attach(widget, 1, i, 1, 1)
             editing = Gtk.CheckButton()
             editing.connect('toggled', self.editing_toggled, widget)
             editing.props.sensitive = not readonly
             tooltips.set_tip(editing, _('Edit'))
-            table.attach(
-                editing, 2, 3, i, i + 1, xoptions=Gtk.AttachOptions.FILL)
+            grid.attach(editing, 2, i, 1, 1)
             fuzzy = Gtk.CheckButton()
             fuzzy.set_active(value != fuzzy_value)
             fuzzy.props.sensitive = False
             tooltips.set_tip(fuzzy, _('Fuzzy'))
-            table.attach(
-                fuzzy, 4, 5, i, i + 1, xoptions=Gtk.AttachOptions.FILL)
+            grid.attach(fuzzy, 4, i, 1, 1)
             self.widgets[language['code']] = (widget, editing, fuzzy)
 
         tooltips.enable()
         vbox = Gtk.VBox()
-        vbox.pack_start(table, expand=self.widget.expand, fill=True, padding=0)
+        vbox.pack_start(grid, expand=self.widget.expand, fill=True, padding=0)
         viewport = Gtk.Viewport()
         viewport.set_shadow_type(Gtk.ShadowType.NONE)
         viewport.add(vbox)
