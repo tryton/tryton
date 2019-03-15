@@ -2941,7 +2941,7 @@ function eval_pyson(value){
             this._set_button_sensitive();
 
             this.prm.done(function() {
-                if (field === undefined) {
+                if (!field) {
                     this.screen.new_group();
                     this.screen.set_current_record(null);
                     this.screen.group.parent = null;
@@ -3344,7 +3344,7 @@ function eval_pyson(value){
             Sao.View.Form.Many2Many._super.display.call(this, record, field);
 
             this.prm.done(function() {
-                if (field === undefined) {
+                if (!field) {
                     this.screen.new_group();
                     this.screen.set_current_record(null);
                     this.screen.group.parent = null;
