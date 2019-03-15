@@ -74,7 +74,7 @@ Create product::
 
     >>> ProductSupplier = Model.get('purchase.product_supplier')
     >>> product_supplier = ProductSupplier()
-    >>> product_supplier.product = template
+    >>> product_supplier.template = template
     >>> product_supplier.party = supplier
     >>> product_supplier.lead_time = datetime.timedelta(3)
     >>> product_supplier.save()
