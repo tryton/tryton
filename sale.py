@@ -138,17 +138,13 @@ class SaleLine(metaclass=PoolMeta):
     def get_purchase_request(self):
         request = super(SaleLine, self).get_purchase_request()
         if request and request.party:
-            drop_shipment = False
             if self.product and self.product.type in ('goods', 'assets'):
-                # FIXME this doesn't ensure to find always the right
-                # product_supplier
-                for product_supplier in self.product.product_suppliers:
-                    if product_supplier.party == request.party:
-                        drop_shipment = product_supplier.drop_shipment
-                        break
-            if drop_shipment:
-                request.customer = self.sale.party
-                request.delivery_address = self.sale.shipment_address
+                product_supplier = request.find_best_product_supplier(
+                    self.product, self.shipping_date,
+                    **self._get_purchase_request_product_supplier_pattern())
+                if product_supplier.drop_shipment:
+                    request.customer = self.sale.party
+                    request.delivery_address = self.sale.shipment_address
         return request
 
     def get_drop_moves(self):
