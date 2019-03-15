@@ -12,14 +12,19 @@ from trytond import __version__
 logger = logging.getLogger(__name__)
 
 
-def get_parser():
+def get_base_parser():
     parser = argparse.ArgumentParser()
-
     parser.add_argument('--version', action='version',
         version='%(prog)s ' + __version__)
     parser.add_argument("-c", "--config", dest="configfile", metavar='FILE',
         nargs='+', default=[os.environ.get('TRYTOND_CONFIG')],
         help='Specify configuration files')
+    return parser
+
+
+def get_parser():
+    parser = get_base_parser()
+
     parser.add_argument("-v", "--verbose", action='count',
         dest="verbose", default=0, help="enable verbose mode")
     parser.add_argument('--dev', dest='dev', action='store_true',
@@ -85,6 +90,16 @@ def get_parser_admin():
         'environment variable.\n'
         'The database URI can be specified in the TRYTOND_DATABASE_URI '
         'environment variable.')
+    return parser
+
+
+def get_parser_console():
+    parser = get_base_parser()
+    parser.add_argument("-d", "--database", dest="database_name",
+        required=True, metavar='DATABASE', help="specify the database name")
+    parser.add_argument("--histsize", dest="histsize", type=int, default=500,
+        help="The number of commands to remember in the command history")
+    parser.epilog = "To store changes, `transaction.commit()` must be called."
     return parser
 
 

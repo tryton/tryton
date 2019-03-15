@@ -84,11 +84,13 @@ setup(name=name,
     scripts=[
         'bin/trytond',
         'bin/trytond-admin',
+        'bin/trytond-console',
         'bin/trytond-cron',
         'bin/trytond-worker',
         ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
         'Environment :: No Input/Output (Daemon)',
         'Framework :: Tryton',
         'Intended Audience :: Developers',
