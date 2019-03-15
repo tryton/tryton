@@ -786,7 +786,6 @@ error = ErrorDialog()
 
 
 def send_bugtracker(title, msg):
-    from tryton import rpc
     parent = get_toplevel_window()
     win = Gtk.Dialog(
         title=_('Bug Tracker'), transient_for=parent, modal=True,
@@ -820,11 +819,7 @@ def send_bugtracker(title, msg):
 
     win.vbox.pack_start(hbox, expand=True, fill=True, padding=0)
     win.show_all()
-    if rpc._USERNAME:
-        entry_user.set_text(rpc._USERNAME)
-        entry_password.grab_focus()
-    else:
-        entry_user.grab_focus()
+    entry_user.grab_focus()
 
     response = win.run()
     parent.present()
