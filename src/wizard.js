@@ -219,6 +219,14 @@
             this.dialog = dialog.modal;
             this.content = dialog.content;
             this.footer = dialog.footer;
+            this.dialog.on('keydown', function(e) {
+                if (e.which == Sao.common.ESC_KEYCODE) {
+                    e.preventDefault();
+                    if (this.end_state in this.states) {
+                        this.response(this.end_state);
+                    }
+                }
+            }.bind(this));
             dialog.body.append(this.widget).append(this.info_bar.el);
         },
         clean: function() {
@@ -248,14 +256,6 @@
             Sao.Wizard.Dialog._super.update.call(this, view, defaults,
                     buttons);
             this.dialog.modal('show');
-            this.dialog.on('keydown', function(e) {
-                if (e.which == Sao.common.ESC_KEYCODE) {
-                    e.preventDefault();
-                    if (this.end_state in this.states) {
-                        this.response(this.end_state);
-                    }
-                }
-            }.bind(this));
         },
         destroy: function(action) {
             Sao.Wizard.Dialog._super.destroy.call(this);
