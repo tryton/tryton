@@ -1257,7 +1257,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">credit</field>
         </record>
         <record id="vat_code_iva_no_sujetas_pyme" model="account.tax.code.template">
-            <field name="name">Operaciones no sujetas o con inversión del sujeto pasivo que originn derecho a deducción</field>
+            <field name="name">Operaciones no sujetas o con inversión del sujeto pasivo que originen derecho a deducción</field>
             <field name="code">61</field>
             <field name="aeat_report">303</field>
             <field name="parent" ref="vat_code_iva_pyme"/>
