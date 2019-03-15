@@ -221,7 +221,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         max_date = None
         today = Date.today()
 
-        for product_supplier in product.product_suppliers:
+        for product_supplier in product.product_suppliers_used():
             supply_date = product_supplier.compute_supply_date(date=today)
             next_day = today + product_supplier.get_supply_period()
             next_supply_date = product_supplier.compute_supply_date(
