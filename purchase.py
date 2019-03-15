@@ -978,8 +978,14 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         ondelete='RESTRICT',
         domain=[
             If(Bool(Eval('product')),
-                ('product.products', '=', Eval('product')),
-                ()),
+                ['OR',
+                    [
+                        ('template.products', '=', Eval('product')),
+                        ('product', '=', None),
+                        ],
+                    ('product', '=', Eval('product')),
+                    ],
+                []),
             ('party', '=', Eval('_parent_purchase', {}).get('party')),
             ],
         states={
@@ -1145,9 +1151,16 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
+    @fields.depends('purchase', '_parent_purchase.party')
+    def _get_product_supplier_pattern(self):
+        return {
+            'party': self.purchase.party.id if self.purchase.party else -1,
+            }
+
     @fields.depends('product', 'unit', 'quantity', 'purchase',
         '_parent_purchase.party', 'product_supplier',
-        methods=['_get_tax_rule_pattern', '_get_context_purchase_price'])
+        methods=['_get_tax_rule_pattern', '_get_context_purchase_price',
+            '_get_product_supplier_pattern'])
     def on_change_product(self):
         pool = Pool()
         Product = pool.get('product.product')
@@ -1181,14 +1194,12 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             self.unit = self.product.purchase_uom
             self.unit_digits = self.product.purchase_uom.digits
 
-        if self.purchase and self.purchase.party:
-            product_suppliers = [ps for ps in self.product.product_suppliers
-                if ps.party == self.purchase.party]
-            if len(product_suppliers) == 1:
-                self.product_supplier, = product_suppliers
-        if (self.product_supplier
-                and (self.product_supplier
-                    not in self.product.product_suppliers)):
+        product_suppliers = list(self.product.product_suppliers_used(
+                **self._get_product_supplier_pattern()))
+        if len(product_suppliers) == 1:
+            self.product_supplier, = product_suppliers
+        elif (self.product_supplier
+                and self.product_supplier not in product_suppliers):
             self.product_supplier = None
 
         with Transaction().set_context(self._get_context_purchase_price()):
@@ -1204,9 +1215,12 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('product', 'product_supplier',
         methods=['on_change_product'])
     def on_change_product_supplier(self):
-        if not self.product and self.product_supplier:
-            if len(self.product_supplier.product.products) == 1:
-                self.product, = self.product_supplier.product.products
+        if self.product_supplier:
+            if self.product_supplier.product:
+                self.product = self.product_supplier.product
+            elif not self.product:
+                if len(self.product_supplier.template.products) == 1:
+                    self.product, = self.product_supplier.template.products
         self.on_change_product()
 
     @fields.depends('product')

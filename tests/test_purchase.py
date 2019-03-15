@@ -62,7 +62,7 @@ class PurchaseTestCase(ModuleTestCase):
                         'account_payable': payable.id,
                         }])
             product_supplier, = ProductSupplier.create([{
-                        'product': template.id,
+                        'template': template.id,
                         'party': supplier.id,
                         'prices': [('create', [{
                                         'sequence': 1,

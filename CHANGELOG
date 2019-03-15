@@ -1,3 +1,5 @@
+* Allow product supplier to be defined on variants
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Add configured delay for processing purchase
