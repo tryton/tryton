@@ -24,9 +24,6 @@ class Routing(metaclass=PoolMeta):
         domain=[
             ('purchasable', '=', True),
             ('template.type', '=', 'service'),
-            If(Bool(Eval('supplier_service_supplier')),
-                ('product_suppliers', '=', Eval('supplier_service_supplier')),
-                ()),
             ],
         states={
             'required': Bool(Eval('supplier')),
@@ -38,10 +35,16 @@ class Routing(metaclass=PoolMeta):
         'purchase.product_supplier', "Supplier's Service",
         ondelete='RESTRICT',
         domain=[
-            ('product.type', '=', 'service'),
+            ('template.type', '=', 'service'),
             If(Bool('supplier_service'),
-                ('product.products', '=', Eval('supplier_service')),
-                ()),
+                ['OR',
+                    [
+                        ('template.products', '=', Eval('supplier_service')),
+                        ('product', '=', None),
+                        ],
+                    ('product', '=', Eval('supplier_service')),
+                    ],
+                []),
             ('party', '=', Eval('supplier', -1)),
             ],
         states={
@@ -61,27 +64,35 @@ class Routing(metaclass=PoolMeta):
     def default_supplier_quantity(cls):
         return 1
 
+    @fields.depends('supplier')
+    def _get_product_supplier_pattern(self):
+        return {
+            'party': self.supplier.id if self.supplier else -1,
+            }
+
     @fields.depends('supplier', 'supplier_service',
         'supplier_service_supplier')
     def on_change_supplier_service(self):
-        if self.supplier and self.supplier_service:
-            product_suppliers = [ps for ps in
-                self.supplier_service.product_suppliers
-                if ps.party == self.supplier]
+        if self.supplier_service:
+            product_suppliers = list(
+                self.supplier_service.product_suppliers_used(
+                    **self._get_product_supplier_pattern()))
             if len(product_suppliers) == 1:
                 self.supplier_service_supplier, = product_suppliers
-        if (self.supplier_service
-                and self.supplier_service_supplier
-                and (self.supplier_service_supplier
-                    not in self.supplier_service.product_suppliers)):
-            self.supplier_service = None
+            elif (self.supplier_service_supplier
+                    and (self.supplier_service_supplier
+                        not in product_suppliers)):
+                self.supplier_service = None
 
     @fields.depends('supplier_service', 'supplier_service_supplier')
     def on_change_supplier_service_supplier(self):
-        if not self.supplier_service and self.supplier_service_supplier:
-            products = self.supplier_service_supplier.product.products
-            if len(products) == 1:
-                self.supplier_service, = products
+        if self.supplier_service_supplier:
+            if self.supplier_service_supplier.product:
+                self.supplier_service = self.supplier_service_supplier.product
+            elif not self.supplier_service:
+                products = self.supplier_service_supplier.template.products
+                if len(products) == 1:
+                    self.supplier_service, = products
 
     @classmethod
     def view_attributes(cls):
