@@ -46,7 +46,7 @@ class One2Many(Widget):
         tooltips = common.Tooltips()
 
         but_switch = Gtk.Button()
-        tooltips.set_tip(but_switch, _('Switch'))
+        tooltips.set_tip(but_switch, _('Switch <F4>'))
         but_switch.connect('clicked', self.switch_view)
         but_switch.add(common.IconFactory.get_image(
                 'tryton-switch', Gtk.IconSize.SMALL_TOOLBAR))
@@ -106,7 +106,7 @@ class One2Many(Widget):
 
             self.but_remove = Gtk.Button()
             tooltips.set_tip(self.but_remove,
-                _('Remove selected record'))
+                _('Remove selected record <CTRL> + <Del>'))
             self.but_remove.connect('clicked', self._sig_remove, True)
             self.but_remove.add(common.IconFactory.get_image(
                     'tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
@@ -118,7 +118,7 @@ class One2Many(Widget):
                 Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
         self.but_new = Gtk.Button()
-        tooltips.set_tip(self.but_new, _('Create a new record <F3>'))
+        tooltips.set_tip(self.but_new, _('Create a new record'))
         self.but_new.connect('clicked', self._sig_new)
         self.but_new.add(common.IconFactory.get_image(
                 'tryton-create', Gtk.IconSize.SMALL_TOOLBAR))
@@ -126,7 +126,7 @@ class One2Many(Widget):
         hbox.pack_start(self.but_new, expand=False, fill=False, padding=0)
 
         self.but_open = Gtk.Button()
-        tooltips.set_tip(self.but_open, _('Edit selected record <F2>'))
+        tooltips.set_tip(self.but_open, _('Edit selected record'))
         self.but_open.connect('clicked', self._sig_edit)
         self.but_open.add(common.IconFactory.get_image(
                 'tryton-open', Gtk.IconSize.SMALL_TOOLBAR))
@@ -187,15 +187,25 @@ class One2Many(Widget):
                 and self.but_new.get_property('sensitive')):
             self._sig_new(widget)
             return True
-        if (event.keyval == Gdk.KEY_F2
-                and widget == self.screen.widget):
-            self._sig_edit(widget)
-            return True
+        if event.keyval == Gdk.KEY_F2:
+            if widget == self.screen.widget:
+                self._sig_edit(widget)
+                return True
+            elif widget == self.wid_text:
+                self._sig_add(widget)
+                return True
+        if event.keyval == Gdk.KEY_F4:
+            self.switch_view(widget)
         if (event.keyval in [Gdk.KEY_Delete, Gdk.KEY_KP_Delete]
-                and widget == self.screen.widget
-                and self.but_del.get_property('sensitive')):
-            self._sig_remove(widget)
-            return True
+                and widget == self.screen.widget):
+            remove = not (event.state & Gdk.ModifierType.CONTROL_MASK)
+            if remove:
+                but = self.but_remove
+            else:
+                but = self.but_del
+            if but.get_property('sensitive'):
+                self._sig_remove(widget, remove)
+                return True
         if event.keyval == Gdk.KEY_Insert and widget == self.screen.widget:
             self._sig_undelete(widget)
             return True

@@ -1,3 +1,4 @@
+* Add shortcuts for switch and remove on One2Many
 * Rename roundup.url configuration to bug.url
 * Remove send error to bug tracker
 * Replace Table by Grid
