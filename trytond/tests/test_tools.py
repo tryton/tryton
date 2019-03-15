@@ -9,6 +9,7 @@ import sql.operators
 
 from trytond.tools import (
     reduce_ids, reduce_domain, decimal_, is_instance_method, file_open)
+from trytond.tools.string_ import StringPartitioned
 
 
 class ToolsTestCase(unittest.TestCase):
@@ -132,10 +133,62 @@ class ToolsTestCase(unittest.TestCase):
             file_open('../trytond_suffix', subdir=None)
 
 
+class StringPartitionedTestCase(unittest.TestCase):
+    "Test StringPartitioned"
+
+    def test_init(self):
+        s = StringPartitioned('foo')
+
+        self.assertEqual(s, 'foo')
+        self.assertEqual(s._parts, ('foo',))
+
+    def test_init_partitioned(self):
+        s = StringPartitioned(
+            StringPartitioned('foo') + StringPartitioned('bar'))
+
+        self.assertEqual(s, 'foobar')
+        self.assertEqual(s._parts, ('foo', 'bar'))
+
+    def test_iter(self):
+        s = StringPartitioned('foo')
+
+        self.assertEqual(list(s), ['foo'])
+
+    def test_len(self):
+        s = StringPartitioned('foo')
+
+        self.assertEqual(len(s), 3)
+
+    def test_str(self):
+        s = StringPartitioned('foo')
+
+        s = str(s)
+
+        self.assertEqual(s, 'foo')
+        self.assertIsInstance(s, str)
+        self.assertNotIsInstance(s, StringPartitioned)
+
+    def test_add(self):
+        s = StringPartitioned('foo')
+
+        s = s + 'bar'
+
+        self.assertEqual(s, 'foobar')
+        self.assertEqual(list(s), ['foo', 'bar'])
+
+    def test_radd(self):
+        s = StringPartitioned('foo')
+
+        s = 'bar' + s
+
+        self.assertEqual(s, 'barfoo')
+        self.assertEqual(list(s), ['bar', 'foo'])
+
+
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase
     suite = unittest.TestSuite()
-    for testcase in (ToolsTestCase,):
+    for testcase in [ToolsTestCase, StringPartitionedTestCase]:
         suite.addTests(func(testcase))
     suite.addTest(doctest.DocTestSuite(decimal_))
     return suite

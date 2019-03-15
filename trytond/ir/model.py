@@ -25,7 +25,7 @@ from ..rpc import RPC
 from ..protocols.jsonrpc import JSONDecoder, JSONEncoder
 from ..tools import is_instance_method, cursor_dict, grouped_slice
 try:
-    from ..tools.StringMatcher import StringMatcher
+    from ..tools.string import StringMatcher
 except ImportError:
     from difflib import SequenceMatcher as StringMatcher
 

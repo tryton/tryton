@@ -11,6 +11,7 @@ from sql.operators import Concat
 from trytond import backend
 from trytond.pyson import PYSON, PYSONEncoder, Eval
 from trytond.const import OPERATORS
+from trytond.tools.string_ import StringPartitioned
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDictTransaction
@@ -253,6 +254,22 @@ class Field(object):
         self.loading = loading
         self.name = None
 
+    @property
+    def string(self):
+        return self.__string
+
+    @string.setter
+    def string(self, value):
+        self.__string = StringPartitioned(value)
+
+    @property
+    def help(self):
+        return self.__help
+
+    @help.setter
+    def help(self, value):
+        self.__help = StringPartitioned(value)
+
     def _get_domain(self):
         return self.__domain
 
@@ -404,19 +421,22 @@ class Field(object):
             }
 
         name = '%s,%s' % (model.__name__, self.name)
-        trans = Translation.get_source(name, 'field', language)
-        definition['string'] = trans or self.string
-        trans = Translation.get_source(name, 'help', language)
-        definition['help'] = trans or self.help
+        for attr, ttype in [('string', 'field'), ('help', 'help')]:
+            definition[attr] = ''
+            for source in getattr(self, attr):
+                definition[attr] += (
+                    Translation.get_source(name, ttype, language, source)
+                    or source)
         return definition
 
     def definition_translations(self, model, language):
         "Returns sources used for definition"
         name = '%s,%s' % (model.__name__, self.name)
-        return [
-            (name, 'field', language, None),
-            (name, 'help', language, None),
-            ]
+        translations = []
+        for attr, ttype in [('string', 'field'), ('help', 'help')]:
+            for source in getattr(self, attr):
+                translations.append((name, ttype, language, source))
+        return translations
 
 
 class FieldTranslate(Field):

@@ -3,6 +3,7 @@
 import os
 import xml.dom.minidom
 from difflib import SequenceMatcher
+from collections import defaultdict
 from io import BytesIO
 from lxml import etree
 
@@ -148,9 +149,10 @@ class Translation(ModelSQL, ModelView):
         ir_translation = cls.__table__()
 
         # Prefetch field translations
-        trans_fields = {}
-        trans_help = {}
-        trans_selection = {}
+        translations = dict(
+            field=defaultdict(dict),
+            help=defaultdict(dict),
+            selection=defaultdict(dict))
         if model._fields:
             names = ['%s,%s' % (model.__name__, f) for f in model._fields]
             cursor.execute(*ir_translation.select(ir_translation.id,
@@ -161,73 +163,30 @@ class Translation(ModelSQL, ModelView):
                             ('field', 'help', 'selection'))
                         & ir_translation.name.in_(names))))
             for trans in cursor_dict(cursor):
-                if trans['type'] == 'field':
-                    trans_fields[trans['name']] = trans
-                elif trans['type'] == 'help':
-                    trans_help[trans['name']] = trans
-                elif trans['type'] == 'selection':
-                    trans_selection.setdefault(trans['name'], {})
-                    trans_selection[trans['name']][trans['src']] = trans
+                sources = translations[trans['type']][trans['name']]
+                sources[trans['src']] = trans
 
-        def update_insert_field(field, trans_name):
-            if trans_name not in trans_fields:
-                cursor.execute(*ir_translation.insert(
-                        [ir_translation.name, ir_translation.lang,
-                            ir_translation.type, ir_translation.src,
-                            ir_translation.value, ir_translation.module,
-                            ir_translation.fuzzy, ir_translation.res_id],
-                        [[trans_name, 'en',
-                                'field', field.string,
-                                '', module_name,
-                                False, -1]]))
-            elif trans_fields[trans_name]['src'] != field.string:
-                cursor.execute(*ir_translation.update(
-                        [ir_translation.src],
-                        [field.string],
-                        where=ir_translation.id ==
-                        trans_fields[trans_name]['id']))
+        columns = [ir_translation.name, ir_translation.lang,
+            ir_translation.type, ir_translation.src, ir_translation.value,
+            ir_translation.module, ir_translation.fuzzy, ir_translation.res_id]
 
-        def update_insert_help(field, trans_name):
-            if trans_name not in trans_help:
-                if field.help:
-                    cursor.execute(*ir_translation.insert(
-                            [ir_translation.name, ir_translation.lang,
-                                ir_translation.type, ir_translation.src,
-                                ir_translation.value, ir_translation.module,
-                                ir_translation.fuzzy, ir_translation.res_id],
-                            [[trans_name, 'en',
-                                    'help', field.help,
-                                    '', module_name,
-                                    False, -1]]))
-            elif trans_help[trans_name]['src'] != field.help:
-                cursor.execute(*ir_translation.update(
-                        [ir_translation.src],
-                        [field.help],
-                        where=ir_translation.id ==
-                        trans_help[trans_name]['id']))
-
-        def insert_selection(field, trans_name):
-            for (_, val) in field.selection:
-                if (trans_name not in trans_selection
-                        or val not in trans_selection[trans_name]):
-                    cursor.execute(*ir_translation.insert(
-                            [ir_translation.name, ir_translation.lang,
-                                ir_translation.type, ir_translation.src,
-                                ir_translation.value, ir_translation.module,
-                                ir_translation.fuzzy, ir_translation.res_id],
-                            [[trans_name, 'en',
-                                    'selection', val,
-                                    '', module_name,
-                                    False, -1]]))
+        def insert(field, type, name, string):
+            for val in string:
+                if val in translations[type][name]:
+                    continue
+                cursor.execute(
+                    *ir_translation.insert(columns,
+                        [[name, 'en', type, val, '', module_name, False, -1]]))
 
         for field_name, field in model._fields.items():
-            trans_name = model.__name__ + ',' + field_name
-            update_insert_field(field, trans_name)
-            update_insert_help(field, trans_name)
+            name = model.__name__ + ',' + field_name
+            insert(field, 'field', name, field.string)
+            insert(field, 'help', name, field.help)
             if (hasattr(field, 'selection')
                     and isinstance(field.selection, (tuple, list))
                     and getattr(field, 'translate_selection', True)):
-                insert_selection(field, trans_name)
+                selection = [s for _, s in field.selection]
+                insert(field, 'selection', name, selection)
 
     @classmethod
     def register_wizard(cls, wizard, module_name):

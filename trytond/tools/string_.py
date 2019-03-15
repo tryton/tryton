@@ -73,3 +73,28 @@ class StringMatcher:
         if not self._distance:
             self._distance = distance(self._str1, self._str2)
         return self._distance
+
+
+class StringPartitioned(str):
+    "A string subclass that stores parts that composes itself."
+    __slots__ = ('_parts',)
+
+    def __init__(self, base):
+        super().__init__()
+        if isinstance(base, StringPartitioned):
+            self._parts = base._parts
+        else:
+            self._parts = (base,)
+
+    def __iter__(self):
+        return iter(self._parts)
+
+    def __add__(self, other):
+        new = self.__class__(str(self) + other)
+        new._parts = self._parts + (other,)
+        return new
+
+    def __radd__(self, other):
+        new = self.__class__(other + str(self))
+        new._parts = (other,) + self._parts
+        return new
