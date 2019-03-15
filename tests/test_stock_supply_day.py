@@ -139,7 +139,7 @@ class StockSupplyDayTestCase(ModuleTestCase):
                         'account_payable': payable.id,
                         }])
             product_supplier, = ProductSupplier.create([{
-                        'product': template.id,
+                        'template': template.id,
                         'company': company.id,
                         'party': supplier.id,
                         'lead_time': lead_time,
