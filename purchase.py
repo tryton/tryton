@@ -946,10 +946,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         ondelete='RESTRICT',
         domain=[
             If(Eval('purchase_state').in_(['draft', 'quotation']),
-                [('purchasable', '=', True),
-                    If(Bool(Eval('product_supplier')),
-                        ('product_suppliers', '=', Eval('product_supplier')),
-                        ())],
+                [('purchasable', '=', True)],
                 []),
             ],
         states={
