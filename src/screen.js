@@ -809,7 +809,9 @@
             this.tab = null;
             this.message_callback = null;
             this.switch_callback = null;
-            this.count_tab_domain();
+            // count_tab_domain is called in Sao.Tab.Form.init after
+            // switch_view to avoid unnecessary call to fields_view_get by
+            // domain_parser.
         },
         load_next_view: function() {
             if (!jQuery.isEmptyObject(this.view_to_load)) {
@@ -908,11 +910,35 @@
                 }
             }.bind(this);
             var _switch = function() {
-                var switch_current_view = (function() {
+                var set_container = function() {
+                    this.screen_container.set(this.current_view.el);
+                    return this.display().done(function() {
+                        this.set_cursor();
+                        if (this.switch_callback) {
+                            this.switch_callback();
+                        }
+                    }.bind(this));
+                }.bind(this);
+                var continue_loop = function() {
+                    if (!view_type && (view_id === null)) {
+                        return false;
+                    }
+                    if (view_type && !view_id && !this.view_to_load.length) {
+                        return false;
+                    }
+                    return true;
+                }.bind(this);
+                var set_current_view = function() {
                     this.current_view = this.views[this.views.length - 1];
-                    return _switch();
+                }.bind(this);
+                var switch_current_view = (function() {
+                    set_current_view();
+                    if (continue_loop()) {
+                        return _switch();
+                    } else {
+                        return set_container();
+                    }
                 }.bind(this));
-
                 var is_view_id = function(view) {
                     return view.view_id == view_id;
                 };
@@ -922,27 +948,18 @@
                         return this.load_next_view().then(switch_current_view);
                     } else if ((view_id !== null) &&
                         !this.views.find(is_view_id)) {
-                        return this.add_view_id(view_id, view_type).then(
-                            switch_current_view);
+                        return this.add_view_id(view_id, view_type)
+                            .then(set_current_view);
                     } else {
                         var i = this.views.indexOf(this.current_view);
                         this.current_view = this.views[
                             (i + 1) % this.views.length];
                     }
-                    if (!view_id && (view_id === null)) {
-                        break;
-                    }
-                    if (view_type && !view_id && !this.view_to_load.length) {
+                    if (!continue_loop()) {
                         break;
                     }
                 }
-                this.screen_container.set(this.current_view.el);
-                return this.display().done(function() {
-                    this.set_cursor();
-                    if (this.switch_callback) {
-                        this.switch_callback();
-                    }
-                }.bind(this));
+                return set_container();
             }.bind(this);
             return _switch();
         },
