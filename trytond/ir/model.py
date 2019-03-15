@@ -24,10 +24,7 @@ from ..pyson import Bool, Eval, PYSONDecoder
 from ..rpc import RPC
 from ..protocols.jsonrpc import JSONDecoder, JSONEncoder
 from ..tools import is_instance_method, cursor_dict, grouped_slice
-try:
-    from ..tools.string import StringMatcher
-except ImportError:
-    from difflib import SequenceMatcher as StringMatcher
+from ..tools.string_ import StringMatcher
 
 __all__ = [
     'Model', 'ModelField', 'ModelAccess', 'ModelFieldAccess', 'ModelButton',
