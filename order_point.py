@@ -236,13 +236,13 @@ class OrderPoint(ModelSQL, ModelView):
 
     @classmethod
     def search_location(cls, name, domain=None):
-        ids = []
+        clauses = ['OR']
         for type, field in cls._type2field().items():
-            args = [('type', '=', type)]
-            for _, operator, operand in domain:
-                args.append((field, operator, operand))
-            ids.extend([o.id for o in cls.search(args)])
-        return [('id', 'in', ids)]
+            clauses.append([
+                    ('type', '=', type),
+                    (field,) + tuple(domain[1:]),
+                    ])
+        return clauses
 
     @staticmethod
     def default_company():
