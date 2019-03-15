@@ -1095,6 +1095,10 @@ class ModelData(ModelSQL, ModelView):
                     'depends': ['out_of_sync'],
                     },
                 })
+        cls.__rpc__.update({
+                'sync': RPC(
+                    readonly=False, instantiate=0, fresh_session=True),
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -1204,25 +1208,32 @@ class ModelData(ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     def sync(cls, records):
-        pool = Pool()
-        to_write = []
-        models_to_write = defaultdict(list)
-        for data in records:
-            Model = pool.get(data.model)
-            values = cls.load_values(data.values)
-            fs_values = cls.load_values(data.fs_values)
-            # values could be the same once loaded
-            # if they come from version < 3.2
-            if values != fs_values:
-                record = Model(data.db_id)
-                models_to_write[Model].extend(([record], fs_values))
-            to_write.extend([[data], {
-                        'values': cls.dump_values(fs_values),
-                        }])
-        for Model, values_to_write in models_to_write.items():
-            Model.write(*values_to_write)
-        if to_write:
-            cls.write(*to_write)
+        with Transaction().set_user(0):
+            pool = Pool()
+            to_write = []
+            models_to_write = defaultdict(list)
+            for data in records:
+                try:
+                    Model = pool.get(data.model)
+                except KeyError:
+                    continue
+                values = cls.load_values(data.values)
+                fs_values = cls.load_values(data.fs_values)
+                # values could be the same once loaded
+                # if they come from version < 3.2
+                if values != fs_values:
+                    values = {f: v for f, v in fs_values.items()
+                        if f in Model._fields}
+                    record = Model(data.db_id)
+                    models_to_write[Model].extend(([record], values))
+                to_write.extend([[data], {
+                            'values': cls.dump_values(fs_values),
+                            'fs_values': cls.dump_values(fs_values),
+                            }])
+            for Model, values_to_write in models_to_write.items():
+                Model.write(*values_to_write)
+            if to_write:
+                cls.write(*to_write)
 
 
 class PrintModelGraphStart(ModelView):
