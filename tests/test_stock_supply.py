@@ -118,6 +118,48 @@ class StockSupplyTestCase(ModuleTestCase):
                         }])
             return product_supplier
 
+    @with_transaction()
+    def test_order_point_location_searcher(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        OrderPoint = pool.get('stock.order_point')
+        unit, = Uom.search([('symbol', '=', 'u')])
+        template, = Template.create([{
+                    'name': 'ProductTest',
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    'purchase_uom': unit.id,
+                    'list_price': Decimal(0),
+                    'purchasable': True,
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+
+        warehouse, = Location.search([('type', '=', 'warehouse')])
+        storage, = Location.search([('code', '=', 'STO')])
+
+        company = create_company()
+        with set_company(company):
+            order_point, = OrderPoint.create([{
+                        'product': product.id,
+                        'type': 'purchase',
+                        'warehouse_location': warehouse.id,
+                        'target_quantity': 5.0,
+                        }])
+
+            for clause, result in [
+                    (('location', '=', warehouse.name), [order_point]),
+                    (('location', '=', 'storage'), []),
+                    (('location', '!=', warehouse.name), []),
+                    (('location', '!=', 'storage'), [order_point]),
+                    ]:
+                self.assertListEqual(
+                    OrderPoint.search(clause), result, msg=clause)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
