@@ -114,6 +114,9 @@ class SaleLine(metaclass=PoolMeta):
                 move.state = 'staging'
         return move
 
+    def _get_purchase_request_product_supplier_pattern(self):
+        return {}
+
     def get_purchase_request(self):
         'Return purchase request for the sale line'
         pool = Pool()
@@ -136,7 +139,8 @@ class SaleLine(metaclass=PoolMeta):
 
         product = self.product
         supplier, purchase_date = Request.find_best_supplier(product,
-            self.shipping_date)
+            self.shipping_date,
+            **self._get_purchase_request_product_supplier_pattern())
         uom = product.purchase_uom or product.default_uom
         quantity = self._get_move_quantity('out')
         quantity = Uom.compute_qty(self.unit, quantity, uom)
