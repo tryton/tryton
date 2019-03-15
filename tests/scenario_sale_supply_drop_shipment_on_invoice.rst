@@ -82,7 +82,7 @@ Create product::
     >>> template.save()
     >>> product, = template.products
     >>> product_supplier = ProductSupplier()
-    >>> product_supplier.product = template
+    >>> product_supplier.template = template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
     >>> product_supplier.lead_time = datetime.timedelta(0)
