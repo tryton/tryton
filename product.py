@@ -25,10 +25,7 @@ class PriceListLine(metaclass=PoolMeta):
     __name__ = 'product.price_list.line'
 
     @classmethod
-    def fields_get(cls, fields_names=None):
-        fields = super(PriceListLine, cls).fields_get(
-            fields_names=fields_names)
-        if 'formula' in fields:
-            # TODO add translated description
-            fields['formula']['help'] += '\n-parent_unit_price'
-        return fields
+    def __setup__(cls):
+        super().__setup__()
+        cls.formula.help += (
+            '\n- parent_unit_price: the unit_price from the parent')
