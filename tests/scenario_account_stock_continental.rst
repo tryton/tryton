@@ -273,7 +273,7 @@ Create Drop Shipment Move::
 
     >>> ProductSupplier = Model.get('purchase.product_supplier')
     >>> product_supplier = ProductSupplier()
-    >>> product_supplier.product = product.template
+    >>> product_supplier.template = product.template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
     >>> product_supplier.lead_time = datetime.timedelta(0)
@@ -325,7 +325,7 @@ Create Drop Shipment Move::
     Decimal('0.00')
 
     >>> product_supplier = ProductSupplier()
-    >>> product_supplier.product = product_average.template
+    >>> product_supplier.template = product_average.template
     >>> product_supplier.party = supplier
     >>> product_supplier.drop_shipment = True
     >>> product_supplier.lead_time = datetime.timedelta(0)
