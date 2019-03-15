@@ -2849,7 +2849,7 @@ function eval_pyson(value){
                 var record = this.record;
                 var field = this.field;
 
-                if (field === undefined) {
+                if (!field) {
                     this.screen.new_group();
                     this.screen.current_record = null;
                     this.screen.group.parent = null;
@@ -3253,7 +3253,7 @@ function eval_pyson(value){
                 var record = this.record;
                 var field = this.field;
 
-                if (field === undefined) {
+                if (!field) {
                     this.screen.new_group();
                     this.screen.current_record = null;
                     this.screen.group.parent = null;
