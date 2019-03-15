@@ -115,20 +115,20 @@ class Record(SignalEvent):
             ctx.update(dict(('%s.%s' % (self.model_name, fname), 'size')
                     for fname, field in self.group.fields.items()
                     if field.attrs['type'] == 'binary' and fname in fnames))
-            exception = None
+            exception = False
             try:
                 values = RPCExecute('model', self.model_name, 'read',
                     list(id2record.keys()), fnames, context=ctx)
-            except RPCException as exception:
+            except RPCException:
                 values = [{'id': x} for x in id2record]
                 default_values = dict((f, None) for f in fnames)
                 for value in values:
                     value.update(default_values)
-                self.exception = True
+                self.exception = exception = True
             id2value = dict((value['id'], value) for value in values)
             for id, record in id2record.items():
                 if not record.exception:
-                    record.exception = bool(exception)
+                    record.exception = exception
                 value = id2value.get(id)
                 if record and not record.destroyed and value:
                     for key in record.modified_fields:
