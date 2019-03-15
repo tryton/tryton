@@ -490,6 +490,7 @@
             this.set_buttons_sensitive();
 
             this.view_prm = this.screen.switch_view().done(function() {
+                this.screen.count_tab_domain();
                 this.set_name(attributes.name || '');
                 this.content.append(screen.screen_container.el);
                 if (attributes.res_id) {
