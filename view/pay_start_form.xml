@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="description"/>
     <field name="description" colspan="3"/>
     <label name="payment_method"/>
-    <field name="payment_method"/>
+    <field name="payment_method" widget="selection"/>
     <label name="date"/>
     <field name="date"/>
     <field name="currency_digits" colspan="4" invisible="1"/>
