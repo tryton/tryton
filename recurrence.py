@@ -224,4 +224,4 @@ class RecurrenceRule(ModelSQL, ModelView):
                     value=getattr(self, name),
                     recurrence_rule=self.rec_name,
                     exception=exception,
-                    **self._get_error_args(name))) from exception
+                    **self.__names__(name))) from exception
