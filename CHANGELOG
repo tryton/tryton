@@ -1,3 +1,5 @@
+* Rename roundup.url configuration to bug.url
+* Remove send error to bug tracker
 * Replace Table by Grid
 * Use separate XML parser in Views
 * Use between numbers in filter box

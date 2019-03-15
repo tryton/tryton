@@ -16,17 +16,10 @@ try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
-from functools import partial, wraps
+from functools import wraps
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
 import sys
-import xmlrpc.client
-from functools import reduce
-try:
-    import hashlib
-except ImportError:
-    hashlib = None
-    import md5
 import webbrowser
 import traceback
 import tryton.rpc as rpc
@@ -732,7 +725,6 @@ class ErrorDialog(UniqueDialog):
         dialog.set_default_size(600, 400)
         dialog.set_position(Gtk.WindowPosition.CENTER)
 
-        dialog.add_button(set_underline(_("Report Bug")), Gtk.ResponseType.OK)
         dialog.add_button(set_underline(_("Close")), Gtk.ResponseType.CANCEL)
         dialog.set_default_response(Gtk.ResponseType.CANCEL)
 
@@ -760,12 +752,10 @@ class ErrorDialog(UniqueDialog):
             scrolledwindow, expand=True, fill=True, padding=0)
 
         button_roundup = Gtk.LinkButton.new_with_label(
-            CONFIG['roundup.url'],
-            _('To report bugs you must have an account on %s') %
-            CONFIG['roundup.url'])
+            CONFIG['bug.url'], _("Report Bug"))
         button_roundup.get_child().set_halign(Gtk.Align.START)
         button_roundup.connect('activate-link',
-                lambda widget: webbrowser.open(CONFIG['roundup.url'], new=2))
+            lambda widget: webbrowser.open(CONFIG['bug.url'], new=2))
         dialog.vbox.pack_start(
             button_roundup, expand=False, fill=False, padding=0)
 
@@ -776,114 +766,10 @@ class ErrorDialog(UniqueDialog):
             title = ''
         log = logging.getLogger(__name__)
         log.error(details + '\n' + title)
-
-        response = super(ErrorDialog, self).__call__(title, details)
-        if response == Gtk.ResponseType.OK:
-            send_bugtracker(title, details)
+        return super(ErrorDialog, self).__call__(title, details)
 
 
 error = ErrorDialog()
-
-
-def send_bugtracker(title, msg):
-    parent = get_toplevel_window()
-    win = Gtk.Dialog(
-        title=_('Bug Tracker'), transient_for=parent, modal=True,
-        destroy_with_parent=True)
-    win.add_button(set_underline(_("Cancel")), Gtk.ResponseType.CANCEL)
-    win.add_button(set_underline(_("OK")), Gtk.ResponseType.OK)
-    win.set_icon(TRYTON_ICON)
-    win.set_default_response(Gtk.ResponseType.OK)
-
-    hbox = Gtk.HBox()
-    hbox.pack_start(
-        IconFactory.get_image(
-            'tryton-info', Gtk.IconSize.DIALOG),
-        expand=False, fill=False, padding=0)
-
-    grid = Gtk.Grid(column_spacing=3, row_spacing=3)
-    label_user = Gtk.Label(
-        label=_('User:'), halign=Gtk.Align.END)
-    grid.attach(label_user, 0, 0, 1, 1)
-    entry_user = Gtk.Entry(hexpand=True)
-    entry_user.set_activates_default(True)
-    grid.attach(entry_user, 1, 0, 1, 1)
-    label_password = Gtk.Label(
-        label=_('Password:'), halign=Gtk.Align.END)
-    grid.attach(label_password, 0, 1, 1, 1)
-    entry_password = Gtk.Entry(hexpand=True)
-    entry_password.set_activates_default(True)
-    entry_password.set_visibility(False)
-    grid.attach(entry_password, 1, 1, 1, 1)
-    hbox.pack_start(grid, expand=True, fill=True, padding=0)
-
-    win.vbox.pack_start(hbox, expand=True, fill=True, padding=0)
-    win.show_all()
-    entry_user.grab_focus()
-
-    response = win.run()
-    parent.present()
-    user = entry_user.get_text()
-    password = entry_password.get_text()
-    win.destroy()
-    if response == Gtk.ResponseType.OK:
-        try:
-            msg = msg.encode('ascii', 'replace')
-            title = title.encode('ascii', 'replace')
-            protocol = 'http'
-            if ssl or hasattr(socket, 'ssl'):
-                protocol = 'https'
-            quote = partial(urllib.parse.quote, safe="!$&'()*+,;=:")
-            server = xmlrpc.client.Server(
-                ('%s://%s:%s@' + CONFIG['roundup.xmlrpc'])
-                % (protocol, quote(user), quote(password)), allow_none=True)
-            if hashlib:
-                msg_md5 = hashlib.md5(msg + b'\n' + title).hexdigest()
-            else:
-                msg_md5 = md5.new(msg + b'\n' + title).hexdigest()
-            if not title:
-                title = '[no title]'
-            issue_id = None
-            msg_ids = server.filter('msg', None, {'summary': str(msg_md5)})
-            for msg_id in msg_ids:
-                summary = server.display(
-                    'msg%s' % msg_id, 'summary')['summary']
-                if summary == msg_md5:
-                    issue_ids = server.filter(
-                        'issue', None, {'messages': msg_id})
-                    if issue_ids:
-                        issue_id = issue_ids[0]
-                        break
-            if issue_id:
-                # issue to same message already exists, add user to nosy-list
-                server.set('issue' + str(issue_id), *['nosy=+' + user])
-                message(
-                    _('The same bug was already reported by another user.\n'
-                        'To keep you informed your username is added '
-                        'to the nosy-list of this issue') + '%s' % issue_id)
-            else:
-                # create a new issue for this error-message
-                # first create message
-                msg_id = server.create('msg', *['content=' + msg,
-                    'author=' + user, 'summary=' + msg_md5])
-                # second create issue with this message
-                issue_id = server.create('issue', *['messages=' + str(msg_id),
-                    'nosy=' + user, 'title=' + title, 'priority=bug'])
-                message(_('Created new bug with ID ')
-                    + 'issue%s' % issue_id)
-            webbrowser.open(CONFIG['roundup.url'] + 'issue%s' % issue_id,
-                new=2)
-        except (socket.error, xmlrpc.client.Fault) as exception:
-            if (isinstance(exception, xmlrpc.client.Fault)
-                    and 'roundup.cgi.exceptions.Unauthorised' in
-                    exception.faultString):
-                message(_('Connection error.\nBad username or password.'))
-                return send_bugtracker(title, msg)
-            tb_s = reduce(lambda x, y: x + y,
-                    traceback.format_exception(sys.exc_info()[0],
-                        sys.exc_info()[1], sys.exc_info()[2]))
-            message(
-                _('Exception:') + '\n' + tb_s, msg_type=Gtk.MessageType.ERROR)
 
 
 def check_version(box, version=__version__):
