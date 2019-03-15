@@ -38,7 +38,8 @@ class Toolbar(Gtk.Toolbar):
         go_back.connect("clicked", self.on_go_back_clicked)
         self.insert(go_back, -1)
 
-        self.current_page_label = Gtk.Label()
+        self.current_page_label = Gtk.Label(
+            width_chars=10, max_width_chars=10, ellipsize=True)
         self.current_page = Gtk.ToggleToolButton()
         self.current_page.set_label_widget(self.current_page_label)
         self.current_page.connect("clicked", self.on_current_page_clicked)
@@ -90,7 +91,7 @@ class Toolbar(Gtk.Toolbar):
         previous_year.connect("clicked", self.on_previous_year_clicked)
         self.insert(previous_year, -1)
 
-        self.current_year_label = Gtk.Label()
+        self.current_year_label = Gtk.Label(width_chars=4)
         current_year = Gtk.ToolItem()
         current_year.add(self.current_year_label)
         self.insert(current_year, -1)
