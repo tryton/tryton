@@ -203,6 +203,19 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     def pre_validate(self):
         pass
 
+    @classmethod
+    def __names__(cls, field=None):
+        pool = Pool()
+        IrModel = pool.get('ir.model')
+        IrModelField = pool.get('ir.model.field')
+
+        names = {
+            'model': IrModel.get_name(cls.__name__),
+            }
+        if field:
+            names['field'] = IrModelField.get_name(cls.__name__, field)
+        return names
+
     def __init__(self, id=None, **kwargs):
         super(Model, self).__init__()
         if id is not None:

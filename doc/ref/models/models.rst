@@ -63,6 +63,12 @@ Class methods:
 
     Return the definition of each field on the model.
 
+.. classmethod:: Model.__names__([field])
+
+    Returns a dictionary with the name of the `model` and the `field`.
+    It is a convenience-method used to format messages which should include
+    those names.
+
 Instance methods:
 
 .. method:: Model.on_change(fieldnames)

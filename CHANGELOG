@@ -1,3 +1,4 @@
+* Add Model.__names__ to retrieve model and field names
 * Add size attribute on image tag
 * Allow to use channel to synchronize Cache
 * Display ids and rule names on access error

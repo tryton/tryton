@@ -929,27 +929,6 @@ class ModelStorage(Model):
         return True
 
     @classmethod
-    def _get_error_args(cls, field_name):
-        pool = Pool()
-        ModelField = pool.get('ir.model.field')
-        error_args = {
-            'field': field_name,
-            'model': cls.__name__
-            }
-        if ModelField:
-            model_fields = ModelField.search([
-                        ('name', '=', field_name),
-                        ('model.model', '=', cls.__name__),
-                        ], limit=1)
-            if model_fields:
-                model_field, = model_fields
-                error_args.update({
-                        'field': model_field.field_description,
-                        'model': model_field.model.name,
-                        })
-        return error_args
-
-    @classmethod
     def validate(cls, records):
         pass
 
@@ -1067,7 +1046,7 @@ class ModelStorage(Model):
                     if sub_relations != set(finds):
                         raise DomainValidationError(
                             gettext('ir.msg_domain_validation_record',
-                                **cls._get_error_args(field.name)))
+                                **cls.__names__(field.name)))
 
         field_names = set(field_names or [])
         function_fields = {name for name, field in cls._fields.items()
@@ -1094,7 +1073,7 @@ class ModelStorage(Model):
                                 and not isinstance(value, ModelStorage))):
                         raise RequiredValidationError(
                             gettext('ir.msg_required_validation_record',
-                                **cls._get_error_args(field_name)))
+                                **cls.__names__(field_name)))
                 # validate states required
                 if field.states and 'required' in field.states:
                     if is_pyson(field.states['required']):
@@ -1137,7 +1116,7 @@ class ModelStorage(Model):
                             field_size = field.size
                         size = len(getattr(record, field_name) or '')
                         if (size > field_size >= 0):
-                            error_args = cls._get_error_args(field_name)
+                            error_args = cls.__names__(field_name)
                             error_args['size'] = size
                             error_args['max_size'] = field_size
                             raise SizeValidationError(
@@ -1146,7 +1125,7 @@ class ModelStorage(Model):
 
                 def digits_test(value, digits, field_name):
                     def raise_error(value):
-                        error_args = cls._get_error_args(field_name)
+                        error_args = cls.__names__(field_name)
                         error_args['digits'] = digits[1]
                         error_args['value'] = repr(value)
                         raise DigitsValidationError(
@@ -1205,7 +1184,7 @@ class ModelStorage(Model):
                             test.add('')
                             test.add(None)
                         if value not in test:
-                            error_args = cls._get_error_args(field_name)
+                            error_args = cls.__names__(field_name)
                             error_args['value'] = value
                             raise SelectionValidationError(
                                 gettext('ir.msg_selection_validation_record',
@@ -1218,7 +1197,7 @@ class ModelStorage(Model):
                         value = value.time()
                     if value != datetime.datetime.strptime(
                             value.strftime(format), format).time():
-                        error_args = cls._get_error_args(field_name)
+                        error_args = cls.__names__(field_name)
                         error_args['value'] = value
                         raise TimeFormatValidationError(
                             gettext('ir.msg_time_format_validation_record',

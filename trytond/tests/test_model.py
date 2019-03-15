@@ -56,6 +56,26 @@ class ModelTestCase(unittest.TestCase):
         self.assertEqual(record.parent.name, "Test 1")
         self.assertEqual(record.parent.parent.name, "Test 2")
 
+    @with_transaction()
+    def test_names_model(self):
+        "Test __names__ for model only"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        names = Model.__names__()
+
+        self.assertEqual(names, {'model': "Model"})
+
+    @with_transaction()
+    def test_names_field(self):
+        "Test __names__ with field"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        names = Model.__names__('name')
+
+        self.assertEqual(names, {'model': "Model", 'field': "Name"})
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelTestCase)

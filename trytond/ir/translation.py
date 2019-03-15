@@ -621,7 +621,11 @@ class Translation(ModelSQL, ModelView):
     def delete(cls, translations):
         pool = Pool()
         Message = pool.get('ir.message')
+        Model = pool.get('ir.model')
+        ModelField = pool.get('ir.model.field')
         Message._message_cache.clear()
+        Model._get_name_cache.clear()
+        ModelField._get_name_cache.clear()
         cls._translation_cache.clear()
         ModelView._fields_view_get_cache.clear()
         return super(Translation, cls).delete(translations)
@@ -630,7 +634,11 @@ class Translation(ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         Message = pool.get('ir.message')
+        Model = pool.get('ir.model')
+        ModelField = pool.get('ir.model.field')
         Message._message_cache.clear()
+        Model._get_name_cache.clear()
+        ModelField._get_name_cache.clear()
         cls._translation_cache.clear()
         ModelView._fields_view_get_cache.clear()
         vlist = [x.copy() for x in vlist]
@@ -645,7 +653,11 @@ class Translation(ModelSQL, ModelView):
     def write(cls, *args):
         pool = Pool()
         Message = pool.get('ir.message')
+        Model = pool.get('ir.model')
+        ModelField = pool.get('ir.model.field')
         Message._message_cache.clear()
+        Model._get_name_cache.clear()
+        ModelField._get_name_cache.clear()
         cls._translation_cache.clear()
         ModelView._fields_view_get_cache.clear()
         return super(Translation, cls).write(*args)

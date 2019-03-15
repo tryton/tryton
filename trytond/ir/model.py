@@ -66,6 +66,7 @@ class Model(ModelSQL, ModelView):
     global_search_p = fields.Boolean('Global Search')
     fields = fields.One2Many('ir.model.field', 'model', 'Fields',
        required=True)
+    _get_name_cache = Cache('ir.model.get_name')
 
     @classmethod
     def __setup__(cls):
@@ -186,6 +187,19 @@ class Model(ModelSQL, ModelView):
                         record.id, name, icon)
         return heapq.nlargest(int(limit), generate())
 
+    @classmethod
+    def get_name(cls, model):
+        name = cls._get_name_cache.get(model)
+        if name is None:
+            models = cls.search([('model', '=', model)], limit=1)
+            if models:
+                model, = models
+                name = model.name
+                cls._get_name_cache.set(model, name)
+            else:
+                name = model
+        return name
+
 
 class ModelField(ModelSQL, ModelView):
     "Model field"
@@ -224,6 +238,7 @@ class ModelField(ModelSQL, ModelView):
         depends=['module'])
     module = fields.Char('Module',
        help="Module in which this field is defined")
+    _get_name_cache = Cache('ir.model.field.get_name')
 
     @classmethod
     def __setup__(cls):
@@ -332,6 +347,22 @@ class ModelField(ModelSQL, ModelView):
             ('field_description',) + tuple(clause[1:]),
             ('name',) + tuple(clause[1:]),
             ]
+
+    @classmethod
+    def get_name(cls, model, field):
+        name = cls._get_name_cache.get((model, field))
+        if name is None:
+            fields = cls.search([
+                    ('model.model', '=', model),
+                    ('name', '=', field),
+                    ], limit=1)
+            if fields:
+                field, = fields
+                name = field.field_description
+                cls._get_name_cache.set((model, field), name)
+            else:
+                name = field
+        return name
 
     @classmethod
     def read(cls, ids, fields_names):
@@ -511,6 +542,8 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def check(cls, model_name, mode='read', raise_exception=True):
         'Check access for model_name and mode'
+        pool = Pool()
+        Model = pool.get(model_name)
         assert mode in ['read', 'write', 'create', 'delete'], \
             'Invalid access mode for security'
         if ((Transaction().user == 0)
@@ -522,7 +555,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         if not access and access is not None:
             if raise_exception:
                 raise AccessError(gettext(
-                        'ir.msg_access_rule_error', model=model_name))
+                        'ir.msg_access_rule_error', **Model.__names__()))
             else:
                 return False
         return True
@@ -557,7 +590,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                     # XXX Can not check access right on instance method
                     selection = []
             for model_name, _ in selection:
-                if not cls.check(model_name, mode=mode,
+                if model_name and not cls.check(model_name, mode=mode,
                         raise_exception=False):
                     return False
             return True
@@ -692,6 +725,8 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         '''
         Check access for fields on model_name.
         '''
+        pool = Pool()
+        Model = pool.get(model_name)
         assert mode in ('read', 'write', 'create', 'delete'), \
             'Invalid access mode'
         if ((Transaction().user == 0)
@@ -710,8 +745,7 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 if raise_exception:
                     raise AccessError(
                         gettext('ir.msg_access_rule_field_error',
-                            model=model_name,
-                            field=field))
+                            **Model.__names__(field)))
                 else:
                     return False
         return True

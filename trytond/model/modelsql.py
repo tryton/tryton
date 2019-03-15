@@ -352,7 +352,7 @@ class ModelSQL(ModelStorage):
                 if values.get(field_name) is None:
                     raise RequiredValidationError(
                         gettext('ir.msg_required_validation_record',
-                            **cls._get_error_args(field_name)))
+                            **cls.__names__(field_name)))
         for name, _, error in cls._sql_constraints:
             if TableHandler.convert_name(name) in str(exception):
                 raise SQLConstraintError(gettext(error))
@@ -374,7 +374,7 @@ class ModelSQL(ModelStorage):
                 if not ((target_records
                             or (values[field_name] in create_records))
                         and (values[field_name] not in delete_records)):
-                    error_args = cls._get_error_args(field_name)
+                    error_args = cls.__names__(field_name)
                     error_args['value'] = values[field_name]
                     raise ForeignKeyError(
                             gettext('ir.msg_foreign_model_missing',
@@ -1114,7 +1114,7 @@ class ModelSQL(ModelStorage):
                     if Model.search([
                                 (field_name, 'in', sub_ids),
                                 ], order=[]):
-                        error_args = Model._get_error_args(field_name)
+                        error_args = Model.__names__(field_name)
                         raise ForeignKeyError(
                             gettext('ir.msg_foreign_model_exist',
                                 **error_args))
