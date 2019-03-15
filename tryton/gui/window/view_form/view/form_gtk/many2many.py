@@ -256,7 +256,7 @@ class Many2Many(Widget):
 
     def display(self):
         super(Many2Many, self).display()
-        if self.field is None:
+        if not self.field:
             self.screen.new_group()
             self.screen.current_record = None
             self.screen.parent = None

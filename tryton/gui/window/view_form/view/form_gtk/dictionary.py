@@ -460,7 +460,7 @@ class DictWidget(Widget):
     def display(self):
         super(DictWidget, self).display()
 
-        if self.field is None:
+        if not self.field:
             return
 
         record_id = self.record.id if self.record else None

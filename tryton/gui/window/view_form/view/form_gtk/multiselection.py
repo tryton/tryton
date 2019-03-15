@@ -79,7 +79,7 @@ class MultiSelection(Widget, SelectionMixin):
             selection.set_select_function(lambda *a: True)
             self.update_selection(self.record, self.field)
             self.model.clear()
-            if self.field is None:
+            if not self.field:
                 return
             id2path = {}
             for idx, (value, name) in enumerate(self.selection):

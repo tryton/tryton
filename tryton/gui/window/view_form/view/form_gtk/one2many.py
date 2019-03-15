@@ -499,7 +499,7 @@ class One2Many(Widget):
 
         self._set_button_sensitive()
 
-        if self.field is None:
+        if not self.field:
             self.screen.new_group()
             self.screen.current_record = None
             self.screen.parent = None
