@@ -219,16 +219,14 @@ class OrderPoint(ModelSQL, ModelView):
                 gettext('stock_supply.msg_order_point_unique'))
 
     def get_rec_name(self, name):
-        return "%s@%s" % (self.product.name, self.location.name)
+        return "%s @ %s" % (self.product.name, self.location.name)
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        res = []
-        names = clause[2].split('@', 1)
-        res.append(('product.template.name', clause[1], names[0]))
-        if len(names) != 1 and names[1]:
-            res.append(('location', clause[1], names[1]))
-        return res
+        return ['OR',
+            ('location.rec_name',) + tuple(clause[1:]),
+            ('product.rec_name',) + tuple(clause[1:]),
+            ]
 
     def get_location(self, name):
         if self.type == 'purchase':
