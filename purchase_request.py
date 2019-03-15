@@ -271,25 +271,33 @@ class PurchaseRequest(ModelSQL, ModelView):
         super(PurchaseRequest, cls).delete(requests)
 
     @classmethod
-    def find_best_supplier(cls, product, date):
+    def find_best_product_supplier(cls, product, date, **pattern):
+        "Return the best product supplier to request product at date"
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        for product_supplier in product.product_suppliers_used(**pattern):
+            supply_date = product_supplier.compute_supply_date(date=today)
+            timedelta = date - supply_date
+            if timedelta >= datetime.timedelta(0):
+                return product_supplier
+
+    @classmethod
+    def find_best_supplier(cls, product, date, **pattern):
         '''
         Return the best supplier and purchase_date for the product.
         '''
-        Date = Pool().get('ir.date')
+        pool = Pool()
+        Date = pool.get('ir.date')
 
-        supplier = None
-        today = Date.today()
-        for product_supplier in product.product_suppliers:
-            supply_date = product_supplier.compute_supply_date(date=today)
-            timedelta = date - supply_date
-            if not supplier and timedelta >= datetime.timedelta(0):
-                supplier = product_supplier.party
-                break
-
-        if supplier:
+        product_supplier = cls.find_best_product_supplier(
+            product, date, **pattern)
+        if product_supplier:
+            supplier = product_supplier.party
             purchase_date = product_supplier.compute_purchase_date(date)
         else:
-            purchase_date = today
+            supplier = None
+            purchase_date = Date.today()
         return supplier, purchase_date
 
     @classmethod
