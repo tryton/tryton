@@ -97,7 +97,10 @@ class MemoryCacheTestCase(unittest.TestCase):
         self.assertEqual(cache.get('foo'), 'bar')
 
         transaction2.commit()
-        self.wait_cache_sync()
+        for n in range(10):
+            if cache.get('foo') is None:
+                break
+            self.wait_cache_sync()
         self.assertEqual(cache.get('foo'), None)
 
     def test_memory_cache_sync(self):
