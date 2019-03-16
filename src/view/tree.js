@@ -34,7 +34,7 @@
                 affix = affixes[i];
                 affix_attributes = {};
                 for (var i = 0, len = affix.attributes.length; i < len; i++) {
-                    attribute = affix.attributes[i];
+                    var attribute = affix.attributes[i];
                     affix_attributes[attribute.name] = attribute.value;
                 }
                 if (!affix_attributes.name) {
