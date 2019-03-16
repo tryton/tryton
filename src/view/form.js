@@ -4410,7 +4410,7 @@ function eval_pyson(value){
         'char': Sao.View.Form.Char,
         'date': Sao.View.Form.Date,
         'datetime': Sao.View.Form.DateTime,
-        'dict': Sao.View.Form.DictWidget,
+        'dict': Sao.View.Form.Dict,
         'email': Sao.View.Form.Email,
         'float': Sao.View.Form.Float,
         'image': Sao.View.Form.Image,
