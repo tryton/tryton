@@ -62,7 +62,7 @@ if bytes != str:
 xmlrpclib.Marshaller.dispatch[bytearray] = dump_bytes
 
 
-def dump_struct(self, value, write, escape=xmlrpc.client.escape):
+def dump_struct(self, value, write, escape=xmlrpclib.escape):
     converted_value = {}
     for k, v in value.items():
         if isinstance(k, int):
@@ -73,7 +73,7 @@ def dump_struct(self, value, write, escape=xmlrpc.client.escape):
     return self.dump_struct(converted_value, write, escape=escape)
 
 
-xmlrpc.client.Marshaller.dispatch[dict] = dump_struct
+xmlrpclib.Marshaller.dispatch[dict] = dump_struct
 
 
 class XMLRPCDecoder(object):
