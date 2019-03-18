@@ -354,7 +354,7 @@ class Move(ModelSQL, ModelView):
             key = '%s.cancel' % self
             if Warning.check(key):
                 raise CancelWarning(key,
-                    gettext('account.msg_move_date_outside_period',
+                    gettext('account.msg_move_cancel_closed_period',
                         move=self.rec_name))
             date = Date.today()
             period_id = Period.find(self.company.id, date=date)
