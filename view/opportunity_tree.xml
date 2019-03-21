@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="reference"/>
     <field name="start_date"/>
     <field name="end_date"/>
+    <field name="employee"/>
     <field name="description"/>
     <field name="party"/>
     <field name="amount"/>
