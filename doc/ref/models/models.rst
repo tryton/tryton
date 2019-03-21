@@ -326,8 +326,7 @@ Class methods:
 
     Create records for all values in ``datas``.
     The field names of values must be defined in ``fields_names``.
-    It returns a tuple containing: the number of records imported, the last values
-    if failed, the exception if failed and the warning if failed.
+    It returns the number of imported records.
 
 .. classmethod:: ModelStorage.check_xml_record(records, values)
 
