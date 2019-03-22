@@ -16,6 +16,10 @@ class DomainError(ValidationError):
     pass
 
 
+class SelectionError(ValidationError):
+    pass
+
+
 class DictSchemaMixin(object):
     _rec_name = 'string'
     name = fields.Char('Name', required=True)
@@ -67,6 +71,7 @@ class DictSchemaMixin(object):
     def validate(cls, schemas):
         super(DictSchemaMixin, cls).validate(schemas)
         cls.check_domain(schemas)
+        cls.check_selection(schemas)
 
     @classmethod
     def check_domain(cls, schemas):
@@ -84,7 +89,19 @@ class DictSchemaMixin(object):
                     gettext('ir.msg_dict_schema_invalid_domain',
                         schema=schema.rec_name))
 
-    def get_selection_json(self, name):
+    @classmethod
+    def check_selection(cls, schemas):
+        for schema in schemas:
+            if schema.type_ != 'selection':
+                continue
+            try:
+                dict(json.loads(schema.get_selection_json()))
+            except Exception:
+                raise SelectionError(
+                    gettext('ir.msg_dict_schema_invalid_selection',
+                        schema=schema.rec_name))
+
+    def get_selection_json(self, name=None):
         db_selection = self.selection or ''
         selection = [[w.strip() for w in v.split(':', 1)]
             for v in db_selection.splitlines() if v]

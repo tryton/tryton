@@ -3,6 +3,7 @@
 import unittest
 
 from trytond import backend
+from trytond.model.dictschema import SelectionError
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -128,6 +129,20 @@ class FieldDictTestCase(unittest.TestCase):
                     }])
 
         self.assertDictEqual(dict_.dico, {'type': 'arabic'})
+
+    @with_transaction()
+    def test_invalid_selection_schema(self):
+        "Test invalid selection schema"
+        pool = Pool()
+        DictSchema = pool.get('test.dict.schema')
+
+        with self.assertRaises(SelectionError):
+            DictSchema.create([{
+                        'name': 'selection',
+                        'string': "Selection",
+                        'type_': 'selection',
+                        'selection': 'foo',
+                        }])
 
     @with_transaction()
     @unittest.skipIf(

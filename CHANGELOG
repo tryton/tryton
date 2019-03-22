@@ -1,3 +1,4 @@
+* Validate selection format in Dict schema
 * Allow to extend Field's string and help
 * Add console
 * Add Model.__names__ to retrieve model and field names

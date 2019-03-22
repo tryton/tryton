@@ -109,6 +109,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_dict_schema_invalid_domain">
             <field name="text">Invalid domain in schema "%(schema)s".</field>
         </record>
+        <record model="ir.message" id="msg_dict_schema_invalid_selection">
+            <field name="text">Invalid selection in schema "%(schema)s".</field>
+        </record>
         <record model="ir.message" id="msg_recursion_error">
             <field name="text">Recursion error: Record "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
         </record>
