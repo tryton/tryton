@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton party relationship',
     package_dir={'trytond.modules.party_relationship': '.'},
-    packages=[
-        'trytond.modules.party_relationship',
-        'trytond.modules.party_relationship.tests',
-        ],
+    packages=(
+        ['trytond.modules.party_relationship'] +
+        ['trytond.modules.party_relationship.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.party_relationship': (info.get('xml', [])
             + ['tryton.cfg', 'locale/*.po', 'view/*.xml', 'tests/*.rst']),
