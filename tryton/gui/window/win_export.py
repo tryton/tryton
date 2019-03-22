@@ -10,6 +10,7 @@ from gi.repository import Gdk, GObject, Gtk
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
 from tryton.gui.window.win_csv import WinCSV
+from tryton.rpc import clear_toolbar_cache
 
 _ = gettext.gettext
 
@@ -213,6 +214,7 @@ class WinExport(WinCSV):
                     context=self.context)
         except RPCException:
             return
+        clear_toolbar_cache()
         if iter_ is None:
             self.predef_model.append((new_id, fields, name))
         else:
@@ -232,6 +234,7 @@ class WinExport(WinCSV):
                 context=self.context)
         except RPCException:
             return
+        clear_toolbar_cache()
         for i in range(len(self.predef_model)):
             if self.predef_model[i][0] == export_id:
                 del self.predef_model[i]
@@ -305,11 +308,7 @@ class WinExport(WinCSV):
                 delimiter=self.get_delimiter())
             if self.add_field_names.get_active():
                 writer.writerow(fields)
-            for line in data:
-                row = []
-                for val in line:
-                    row.append(val)
-                writer.writerow(row)
+            writer.writerows(data)
             if popup:
                 if len(data) == 1:
                     common.message(_('%d record saved.') % len(data))

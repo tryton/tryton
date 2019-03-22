@@ -1,7 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 "Form"
+import csv
 import gettext
+import locale
+import os
+import tempfile
 
 from gi.repository import Gdk, GLib, Gtk
 
@@ -311,6 +315,8 @@ class Form(SignalEvent, TabContent):
         WinImport(self.title.get_text(), self.model, self.screen.context)
 
     def sig_export(self, widget=None):
+        if not self.modified_save():
+            return
         export = WinExport(
             self.title.get_text(), self.model,
             [r.id for r in self.screen.selected_records],
@@ -324,6 +330,26 @@ class Form(SignalEvent, TabContent):
                 export.sel_field(name + '/rec_name')
             else:
                 export.sel_field(name)
+
+    def do_export(self, widget, export):
+        if not self.modified_save():
+            return
+        ids = [r.id for r in self.screen.selected_records]
+        fields = [f['name'] for f in export['export_fields.']]
+        data = RPCExecute(
+            'model', self.model, 'export_data', ids, fields,
+            context=self.screen.context)
+        delimiter = ','
+        if os.name == 'nt' and ',' == locale.localeconv()['decimal_point']:
+            delimiter = ';'
+        fileno, fname = tempfile.mkstemp(
+            '.csv', common.slugify(export['name']) + '_')
+        with open(fname, 'w') as fp:
+            writer = csv.writer(fp, delimiter=delimiter)
+            writer.writerow(fields)
+            writer.writerows(data)
+        os.close(fileno)
+        common.file_open(fname, 'csv')
 
     def sig_new(self, widget=None, autosave=True):
         if not common.MODELACCESS[self.model]['create']:
@@ -507,9 +533,9 @@ class Form(SignalEvent, TabContent):
         return self.modified_save()
 
     def _action(self, action, atype):
-        action = action.copy()
-        if self.screen.modified() and not self.sig_save():
+        if not self.modified_save():
             return
+        action = action.copy()
         record_id = (self.screen.current_record.id
             if self.screen.current_record else None)
         record_ids = [r.id for r in self.screen.selected_records]
@@ -573,6 +599,19 @@ class Form(SignalEvent, TabContent):
                 tbutton = Gtk.SeparatorToolItem()
             gtktoolbar.insert(tbutton, -1)
 
+        exports = toolbars['exports']
+        if exports:
+            tbutton = self.buttons['open']
+            tbutton._can_be_sensitive = True
+            menu = tbutton._menu
+            if menu.get_children():
+                menu.add(Gtk.SeparatorMenuItem())
+            for export in exports:
+                menuitem = Gtk.MenuItem(set_underline(export['name']))
+                menuitem.set_use_underline(True)
+                menuitem.connect('activate', self.do_export, export)
+                menu.add(menuitem)
+
         gtktoolbar.insert(Gtk.SeparatorToolItem(), -1)
 
         url_button = Gtk.ToggleToolButton()
@@ -628,14 +667,15 @@ class Form(SignalEvent, TabContent):
 
     def _update_popup_menu(self, tbutton, menu, keyword):
         for item in menu.get_children():
-            if (getattr(item, '_update_action', False)
-                    or isinstance(item, Gtk.SeparatorMenuItem)):
+            if getattr(item, '_update_action', False):
                 menu.remove(item)
 
         buttons = [b for b in self.screen.get_buttons()
             if keyword == b.attrs.get('keyword', 'action')]
         if buttons and menu.get_children():
-            menu.add(Gtk.SeparatorMenuItem())
+            separator = Gtk.SeparatorMenuItem()
+            separator._update_action = True
+            menu.add(separator)
         for button in buttons:
             menuitem = Gtk.MenuItem(
                 label=set_underline(button.attrs.get('string', _('Unknown'))),
@@ -658,7 +698,9 @@ class Form(SignalEvent, TabContent):
                 kw_plugins.append((name, func))
 
         if kw_plugins:
-            menu.add(Gtk.SeparatorMenuItem())
+            separator = Gtk.SeparatorMenuItem()
+            separator._update_action = True
+            menu.add(separator)
         for name, func in kw_plugins:
             menuitem = Gtk.MenuItem(label=set_underline(name))
             menuitem.set_use_underline(True)

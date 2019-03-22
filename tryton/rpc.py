@@ -162,3 +162,7 @@ def execute(*args):
 
 def execute_nonblocking(*args):
     return _execute(False, *args)
+
+
+def clear_toolbar_cache():
+    _TOOLBAR_CACHE.clear()
