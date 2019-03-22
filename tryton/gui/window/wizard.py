@@ -328,6 +328,8 @@ class WizardDialog(Wizard, NoModal):
         self.accel_group = Gtk.AccelGroup()
         self.dia.add_accel_group(self.accel_group)
 
+        self._buttons = set()
+
         self.dia.vbox.pack_start(
             self.widget, expand=True, fill=True, padding=0)
 
@@ -335,14 +337,15 @@ class WizardDialog(Wizard, NoModal):
 
     def clean(self):
         super(WizardDialog, self).clean()
-        hbuttonbox = self.dia.get_action_area()
-        for button in hbuttonbox.get_children():
-            hbuttonbox.remove(button)
+        while self._buttons:
+            button = self._buttons.pop()
+            button.get_parent().remove(button)
 
     def _get_button(self, definition):
         button = super(WizardDialog, self)._get_button(definition)
         response = len(self.states)
         self.dia.add_action_widget(button, response)
+        self._buttons.add(button)
         if definition['default']:
             button.add_accelerator(
                 'clicked', self.accel_group, Gdk.KEY_Return,
