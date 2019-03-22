@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton account stock valuation landed cost weight',
     package_dir={'trytond.modules.account_stock_landed_cost_weight': '.'},
-    packages=[
-        'trytond.modules.account_stock_landed_cost_weight',
-        'trytond.modules.account_stock_landed_cost_weight.tests',
-        ],
+    packages=(
+        ['trytond.modules.account_stock_landed_cost_weight'] +
+        ['trytond.modules.account_stock_landed_cost_weight.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_stock_landed_cost_weight': (
             info.get('xml', [])
