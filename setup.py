@@ -68,7 +68,8 @@ setup(name=name,
     package_dir={'trytond.modules.account_statement_aeb43': '.'},
     packages=(
         ['trytond.modules.account_statement_aeb43'] +
-        ['trytond.modules.account_statement_aeb43.%s' % p for p in find_packages()]
+        ['trytond.modules.account_statement_aeb43.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.account_statement_aeb43': (info.get('xml', [])
