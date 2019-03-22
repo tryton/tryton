@@ -68,7 +68,8 @@ setup(name=name,
     package_dir={'trytond.modules.account_statement_rule': '.'},
     packages=(
         ['trytond.modules.account_statement_rule'] +
-        ['trytond.modules.account_statement_rule.%s' % p for p in find_packages()]
+        ['trytond.modules.account_statement_rule.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.account_statement_rule': (info.get('xml', [])
