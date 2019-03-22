@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton account dunning email',
     package_dir={'trytond.modules.account_dunning_email': '.'},
-    packages=[
-        'trytond.modules.account_dunning_email',
-        'trytond.modules.account_dunning_email.tests',
-        ],
+    packages=(
+        ['trytond.modules.account_dunning_email'] +
+        ['trytond.modules.account_dunning_email.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_dunning_email': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.html',
