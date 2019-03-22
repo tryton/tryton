@@ -151,6 +151,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def run(cls, db_name):
+        logger.info('cron started for "%s"', db_name)
         now = datetime.datetime.now()
         with Transaction().start(db_name, 0) as transaction:
             transaction.database.lock(transaction.connection, cls._table)
@@ -160,6 +161,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     ])
 
             for cron in crons:
+                logger.info("Run cron %s", cron.id)
                 try:
                     next_call = cron.next_call
                     number_calls = cron.number_calls
@@ -188,3 +190,4 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
         while transaction.tasks:
             task_id = transaction.tasks.pop()
             run_task(db_name, task_id)
+        logger.info('cron finished for "%s"', db_name)
