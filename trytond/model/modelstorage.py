@@ -674,11 +674,10 @@ class ModelStorage(Model):
             return res
 
         @memoize(1000)
-        def get_by_id(value, field):
+        def get_by_id(value, field, ftype):
             if not value:
                 return None
             relation = None
-            ftype = fields_def[field[-1][:-3]]['type']
             if ftype == 'many2many':
                 value = csv.reader(value.splitlines(), delimiter=',',
                         quoting=csv.QUOTE_NONE, escapechar='\\').next()
@@ -721,7 +720,8 @@ class ModelStorage(Model):
                 is_prefix_len = (len(field) == (prefix_len + 1))
                 value = line[i]
                 if is_prefix_len and field[-1].endswith(':id'):
-                    row[field[0][:-3]] = get_by_id(value, field)
+                    ftype = fields_def[field[-1][:-3]]['type']
+                    row[field[0][:-3]] = get_by_id(value, field, ftype)
                 elif is_prefix_len and ':lang=' in field[-1]:
                     field_name, lang = field[-1].split(':lang=')
                     translate.setdefault(lang, {})[field_name] = value or False
