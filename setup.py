@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton email notification',
     package_dir={'trytond.modules.notification_email': '.'},
-    packages=[
-        'trytond.modules.notification_email',
-        'trytond.modules.notification_email.tests',
-        ],
+    packages=(
+        ['trytond.modules.notification_email'] +
+        ['trytond.modules.notification_email.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.notification_email': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
