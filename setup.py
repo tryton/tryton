@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton analytic account',
     package_dir={'trytond.modules.analytic_account': '.'},
-    packages=[
-        'trytond.modules.analytic_account',
-        'trytond.modules.analytic_account.tests',
-        ],
+    packages=(
+        ['trytond.modules.analytic_account'] +
+        ['trytond.modules.analytic_account.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.analytic_account': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
