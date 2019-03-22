@@ -111,10 +111,12 @@ class IconFactory:
             cls._tryton_icons.remove((icon['id'], icon['name']))
             del cls._name2id[icon['name']]
 
+    colors = CONFIG['icon.colors'].split(',')
+
     @classmethod
-    def get_pixbuf(cls, iconname, size=16, color=None):
+    def get_pixbuf(cls, iconname, size=16, color=None, badge=None):
         cls.register_icon(iconname)
-        if iconname not in cls._pixbufs[size]:
+        if iconname not in cls._pixbufs[(size, badge)]:
             if iconname in cls._icons:
                 data = cls._icons[iconname]
             elif iconname in cls._local_icons:
@@ -124,12 +126,24 @@ class IconFactory:
             else:
                 logger.error("Unknown icon %s" % iconname)
                 return
-            if color is None:
-                color = CONFIG['icon.color']
+            if not color:
+                color = cls.colors[0]
             try:
                 ET.register_namespace('', 'http://www.w3.org/2000/svg')
                 root = ET.fromstring(data)
                 root.attrib['fill'] = color
+                if badge:
+                    if not isinstance(badge, str):
+                        try:
+                            badge = cls.colors[badge]
+                        except IndexError:
+                            badge = color
+                    ET.SubElement(root, 'circle', {
+                            'cx': '20',
+                            'cy': '4',
+                            'r': '4',
+                            'fill': badge,
+                            })
                 data = ET.tostring(root)
             except ET.ParseError:
                 pass
@@ -141,12 +155,13 @@ class IconFactory:
                 Gtk.IconSize.DND: 12,
                 Gtk.IconSize.DIALOG: 48,
                 }.get(size, size)
-            cls._pixbufs[size][iconname] = data2pixbuf(data, width, height)
-        return cls._pixbufs[size][iconname]
+            pixbuf = data2pixbuf(data, width, height)
+            cls._pixbufs[(size, badge)][iconname] = pixbuf
+        return cls._pixbufs[(size, badge)][iconname]
 
     @classmethod
-    def get_image(cls, iconname, size=16, color=None):
-        pixbuf = cls.get_pixbuf(iconname, size, color)
+    def get_image(cls, iconname, size=16, color=None, badge=None):
+        pixbuf = cls.get_pixbuf(iconname, size, color, badge)
         image = Gtk.Image()
         image.set_from_pixbuf(pixbuf)
         return image

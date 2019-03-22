@@ -1,3 +1,6 @@
+* Display unread and total of notes
+* Support badge on icon
+* Use resources method
 * Replace Arrow by Image
 * Remove Fast Tabbing option
 * Remove usage of focus_chain

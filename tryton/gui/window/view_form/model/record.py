@@ -28,8 +28,7 @@ class Record(SignalEvent):
         self.state_attrs = {}
         self.modified_fields = {}
         self._timestamp = None
-        self.attachment_count = -1
-        self.unread_note = -1
+        self.resources = None
         self.button_clicks = {}
         self.next = {}  # Used in Group list
         self.value = {}
@@ -602,34 +601,15 @@ class Record(SignalEvent):
             if context:
                 value.context = self.expr_eval(context)
 
-    def get_attachment_count(self, reload=False):
-        if self.id < 0:
-            return 0
-        if self.attachment_count < 0 or reload:
+    def get_resources(self, reload=False):
+        if self.id >= 0 and (not self.resources or reload):
             try:
-                self.attachment_count = RPCExecute('model', 'ir.attachment',
-                    'search_count', [
-                        ('resource', '=',
-                            '%s,%s' % (self.model_name, self.id)),
-                        ], context=self.get_context())
+                self.resources = RPCExecute(
+                    'model', self.model_name, 'resources', self.id,
+                    context=self.get_context())
             except RPCException:
-                return 0
-        return self.attachment_count
-
-    def get_unread_note(self, reload=False):
-        if self.id < 0:
-            return 0
-        if self.unread_note < 0 or reload:
-            try:
-                self.unread_note = RPCExecute('model', 'ir.note',
-                    'search_count', [
-                        ('resource', '=',
-                            '%s,%s' % (self.model_name, self.id)),
-                        ('unread', '=', True),
-                        ], context=self.get_context())
-            except RPCException:
-                return 0
-        return self.unread_note
+                pass
+        return self.resources
 
     def get_button_clicks(self, name):
         if self.id < 0:

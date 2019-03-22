@@ -53,9 +53,9 @@ class Form(SignalEvent, TabContent):
         self.screen.signal_connect(self, 'record-modified',
             lambda *a: GLib.idle_add(self._record_modified, *a))
         self.screen.signal_connect(self, 'record-saved', self._record_saved)
-        self.screen.signal_connect(self, 'attachment-count',
-                self._attachment_count)
-        self.screen.signal_connect(self, 'unread-note', self._unread_note)
+        self.screen.signal_connect(
+            self, 'resources',
+            lambda screen, resources: self.update_resources(resources))
 
         if res_id not in (None, False):
             if isinstance(res_id, int):
@@ -105,7 +105,7 @@ class Form(SignalEvent, TabContent):
     def sig_attach(self, widget=None):
         def window(widget):
             return Attachment(
-                record, lambda: self.update_attachment_count(reload=True))
+                record, lambda: self.refresh_resources(reload=True))
 
         def add_file(widget):
             filenames = common.file_selection(_("Select"), multi=True)
@@ -139,61 +139,48 @@ class Form(SignalEvent, TabContent):
         menu.connect('deactivate', self._popup_menu_hide, button)
         self.action_popup(button)
 
-    def update_attachment_count(self, reload=False):
-        record = self.screen.current_record
-        if record:
-            attachment_count = record.get_attachment_count(reload=reload)
-        else:
-            attachment_count = 0
-        self._attachment_count(None, attachment_count)
-
-    def _attachment_count(self, widget, signal_data):
-        label = _('Attachment(%d)') % signal_data
-        self.buttons['attach'].set_label(label)
-        if signal_data:
-            # FIXME
-            icon = 'tryton-attach'
-        else:
-            icon = 'tryton-attach'
-        image = common.IconFactory.get_image(icon, Gtk.IconSize.LARGE_TOOLBAR)
-        image.show()
-        self.buttons['attach'].set_icon_widget(image)
-        record = self.screen.current_record
-        self.buttons['attach'].props.sensitive = bool(
-            record.id >= 0 if record else False)
-
     def sig_note(self, widget=None):
         record = self.screen.current_record
         if not record or record.id < 0:
             return
         Note(record,
-            lambda: self.update_unread_note(reload=True))
+            lambda: self.refresh_resources(reload=True))
 
-    def update_unread_note(self, reload=False):
+    def refresh_resources(self, reload=False):
         record = self.screen.current_record
-        if record:
-            unread = record.get_unread_note(reload=reload)
-        else:
-            unread = 0
-        self._unread_note(None, unread)
+        self.update_resources(
+            record.get_resources(reload=reload) if record else None)
 
-    def _unread_note(self, widget, signal_data):
-        label = _('Note(%d)') % signal_data
-        self.buttons['note'].set_label(label)
-        if signal_data:
-            # FIXME
-            icon = 'tryton-note'
-        else:
-            icon = 'tryton-note'
-        image = common.IconFactory.get_image(icon, Gtk.IconSize.LARGE_TOOLBAR)
-        image.show()
-        self.buttons['note'].set_icon_widget(image)
+    def update_resources(self, resources):
+        if not resources:
+            resources = {}
         record = self.screen.current_record
-        if not record or record.id < 0:
-            sensitive = False
+        sensitive = record.id >= 0 if record else False
+
+        def update(name, label, icon, badge):
+            button = self.buttons[name]
+            button.set_label(label)
+            image = common.IconFactory.get_image(
+                icon, Gtk.IconSize.LARGE_TOOLBAR, badge=badge)
+            image.show()
+            button.set_icon_widget(image)
+            button.props.sensitive = sensitive
+
+        attachment_count = resources.get('attachment_count', 0)
+        badge = 1 if attachment_count else None
+        label = _("Attachment (%s)") % attachment_count
+        update('attach', label, 'tryton-attach', badge)
+
+        note_count = resources.get('note_count', 0)
+        note_unread = resources.get('note_unread', 0)
+        if note_unread:
+            badge = 2
+        elif note_count:
+            badge = 1
         else:
-            sensitive = True
-        self.buttons['note'].props.sensitive = sensitive
+            badge = None
+        label = _("Note (%d/%d)") % (note_unread, note_count)
+        update('note', label, 'tryton-note', badge)
 
     def sig_switch(self, widget=None):
         if not self.modified_save():
@@ -498,7 +485,7 @@ class Form(SignalEvent, TabContent):
 
     def _record_saved(self, screen, signal_data):
         self.activate_save()
-        self.update_attachment_count()
+        self.refresh_resources()
 
     def modified_save(self):
         self.screen.save_tree_state()
@@ -711,7 +698,7 @@ class Form(SignalEvent, TabContent):
         if not record or record.id < 0:
             return
         win_attach = Attachment(record,
-            lambda: self.update_attachment_count(reload=True))
+            lambda: self.refresh_resources(reload=True))
         if info == 0:
             if selection.get_uris():
                 for uri in selection.get_uris():
