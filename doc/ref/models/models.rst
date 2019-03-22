@@ -328,6 +328,11 @@ Dual methods:
 
 Instance methods:
 
+.. method:: ModelStorage.resources()
+
+    Return a dictionary with the number of attachments (`attachment_count`),
+    notes (`note_count`) and unread note (`note_unread`).
+
 .. method:: ModelStorage.get_rec_name(name)
 
     Getter for the :class:`trytond.model.fields.Function` field

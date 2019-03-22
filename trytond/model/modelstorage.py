@@ -114,6 +114,7 @@ class ModelStorage(Model):
                     'search': RPC(result=lambda r: list(map(int, r))),
                     'search_count': RPC(),
                     'search_read': RPC(),
+                    'resources': RPC(instantiate=0, unique=False),
                     'export_data': RPC(instantiate=0, unique=False),
                     'import_data': RPC(readonly=False),
                     })
@@ -524,6 +525,24 @@ class ModelStorage(Model):
                     domain = ['AND', domain, ('active', '=', True)]
             return domain
         return process(domain)
+
+    def resources(self):
+        pool = Pool()
+        Attachment = pool.get('ir.attachment')
+        Note = pool.get('ir.note')
+
+        return {
+            'attachment_count': Attachment.search_count([
+                    ('resource', '=', str(self)),
+                    ]),
+            'note_count': Note.search_count([
+                    ('resource', '=', str(self)),
+                    ]),
+            'note_unread': Note.search_count([
+                    ('resource', '=', str(self)),
+                    ('unread', '=', True),
+                    ]),
+            }
 
     def get_rec_name(self, name):
         '''

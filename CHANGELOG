@@ -1,3 +1,4 @@
+* Add resources method to ModelStorage
 * Validate selection format in Dict schema
 * Allow to extend Field's string and help
 * Add console
