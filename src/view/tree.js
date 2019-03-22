@@ -1168,6 +1168,11 @@
                 return;
             }
             this.selection.prop('checked', value);
+            if (value) {
+                this.el.addClass('selected');
+            } else {
+                this.el.removeClass('selected');
+            }
             if (!value) {
                 this.tree.selection.prop('checked', false);
             }
