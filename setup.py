@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -65,10 +65,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton inventory location',
     package_dir={'trytond.modules.stock_inventory_location': '.'},
-    packages=[
-        'trytond.modules.stock_inventory_location',
-        'trytond.modules.stock_inventory_location.tests',
-        ],
+    packages=(
+        ['trytond.modules.stock_inventory_location'] +
+        ['trytond.modules.stock_inventory_location.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.stock_inventory_location': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
