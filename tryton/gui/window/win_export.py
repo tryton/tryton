@@ -313,7 +313,7 @@ class WinExport(WinCSV):
 
         try:
             writer = csv.writer(
-                open(fname, 'w+', encoding=encoding),
+                open(fname, 'w', encoding=encoding, newline=''),
                 quotechar=self.get_quotechar(),
                 delimiter=self.get_delimiter())
             if self.add_field_names.get_active():

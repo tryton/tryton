@@ -105,7 +105,7 @@ class WinImport(WinCSV):
         self.csv_skip.set_value(1)
         try:
             data = csv.reader(
-                open(fname, 'r', encoding=encoding),
+                open(fname, 'r', encoding=encoding, newline=''),
                 quotechar=self.get_quotechar(),
                 delimiter=self.get_delimiter())
         except IOError:
