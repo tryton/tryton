@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -67,10 +67,10 @@ setup(name=name,
     download_url=download_url,
     keywords='account dunning fee',
     package_dir={'trytond.modules.account_dunning_fee': '.'},
-    packages=[
-        'trytond.modules.account_dunning_fee',
-        'trytond.modules.account_dunning_fee.tests',
-        ],
+    packages=(
+        ['trytond.modules.account_dunning_fee'] +
+        ['trytond.modules.account_dunning_fee.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_dunning_fee': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
