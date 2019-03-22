@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton sms authentication two-factor 2FA',
     package_dir={'trytond.modules.authentication_sms': '.'},
-    packages=[
-        'trytond.modules.authentication_sms',
-        'trytond.modules.authentication_sms.tests',
-        ],
+    packages=(
+        ['trytond.modules.authentication_sms'] +
+        ['trytond.modules.authentication_sms.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.authentication_sms': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
@@ -82,7 +82,7 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License (GPL)',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Czech',
