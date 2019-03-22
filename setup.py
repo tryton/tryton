@@ -2,7 +2,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from setuptools import setup
 import re
 import os
 import io
@@ -10,6 +9,7 @@ try:
     from configparser import ConfigParser
 except ImportError:
     from ConfigParser import ConfigParser
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -67,9 +67,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton account invoice history',
     package_dir={'trytond.modules.account_invoice_history': '.'},
-    packages=[
-        'trytond.modules.account_invoice_history',
-        ],
+    packages=(
+        ['trytond.modules.account_invoice_history'] +
+        ['trytond.modules.account_invoice_history.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_invoice_history': (info.get('xml', [])
             + ['tryton.cfg', 'locale/*.po']),
