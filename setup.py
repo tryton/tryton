@@ -6,7 +6,7 @@ import re
 import os
 import io
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -65,10 +65,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton account standalone invoice line',
     package_dir={'trytond.modules.account_invoice_line_standalone': '.'},
-    packages=[
-        'trytond.modules.account_invoice_line_standalone',
-        'trytond.modules.account_invoice_line_standalone.tests',
-        ],
+    packages=(
+        ['trytond.modules.account_invoice_line_standalone'] +
+        ['trytond.modules.account_invoice_line_standalone.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_invoice_line_standalone': (
             info.get('xml', []) + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
