@@ -249,7 +249,6 @@ class ModelView(Model):
             if view.inherit:
                 inherit_view_id = view.id
                 view = view.inherit
-            view_id = view.id
 
         # if a view was found
         if view:
@@ -261,17 +260,18 @@ class ModelView(Model):
             # Check if view is not from an inherited model
             if view.model != cls.__name__:
                 Inherit = pool.get(view.model)
-                result['arch'] = Inherit.fields_view_get(
-                        result['view_id'])['arch']
-                view_id = inherit_view_id
+                result['arch'] = Inherit.fields_view_get(view.id)['arch']
+                real_view_id = inherit_view_id
+            else:
+                real_view_id = view.id
 
             # get all views which inherit from (ie modify) this view
             views = View.search([
                     'OR', [
-                        ('inherit', '=', view_id),
+                        ('inherit', '=', real_view_id),
                         ('model', '=', cls.__name__),
                         ], [
-                        ('id', '=', view_id),
+                        ('id', '=', real_view_id),
                         ('inherit', '!=', None),
                         ],
                     ])
@@ -331,7 +331,7 @@ class ModelView(Model):
             result['type'] = view_type
             result['arch'] = xml
             result['field_childs'] = None
-            result['view_id'] = 0
+            result['view_id'] = view_id
 
         # Update arch and compute fields from arch
         parser = etree.XMLParser(remove_blank_text=True)
