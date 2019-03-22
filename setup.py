@@ -68,7 +68,8 @@ setup(name=name,
     package_dir={'trytond.modules.sale_subscription_asset': '.'},
     packages=(
         ['trytond.modules.sale_subscription_asset'] +
-        ['trytond.modules.sale_subscription_asset.%s' % p for p in find_packages()]
+        ['trytond.modules.sale_subscription_asset.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.sale_subscription_asset': (info.get('xml', [])
