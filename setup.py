@@ -65,10 +65,6 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton party siret siren',
     package_dir={'trytond.modules.party_siret': '.'},
-    packages=[
-        'trytond.modules.party_siret',
-        'trytond.modules.party_siret.tests',
-        ],
     packages=(
         ['trytond.modules.party_siret'] +
         ['trytond.modules.party_siret.%s' % p for p in find_packages()]
