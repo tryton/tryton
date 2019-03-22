@@ -354,13 +354,16 @@ class ModelView(Model):
     @classmethod
     def view_toolbar_get(cls):
         """
-        Returns the model specific actions.
+        Returns the model specific actions and exports.
         A dictionary with keys:
             - print: a list of available reports
             - action: a list of available actions
             - relate: a list of available relations
+            - exports: a list of available exports
         """
-        Action = Pool().get('ir.action.keyword')
+        pool = Pool()
+        Action = pool.get('ir.action.keyword')
+        Export = pool.get('ir.export')
         key = cls.__name__
         result = cls._view_toolbar_get_cache.get(key)
         if result:
@@ -368,10 +371,14 @@ class ModelView(Model):
         prints = Action.get_keyword('form_print', (cls.__name__, -1))
         actions = Action.get_keyword('form_action', (cls.__name__, -1))
         relates = Action.get_keyword('form_relate', (cls.__name__, -1))
+        exports = Export.search_read(
+            [('resource', '=', cls.__name__)],
+            fields_names=['name', 'export_fields.name'])
         result = {
             'print': prints,
             'action': actions,
             'relate': relates,
+            'exports': exports,
             }
         cls._view_toolbar_get_cache.set(key, result)
         return result

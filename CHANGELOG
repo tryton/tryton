@@ -1,3 +1,4 @@
+* Add exports in view_toolbar_get
 * Add resources method to ModelStorage
 * Validate selection format in Dict schema
 * Allow to extend Field's string and help

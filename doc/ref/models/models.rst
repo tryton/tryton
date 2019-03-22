@@ -141,10 +141,11 @@ Class methods:
 
 .. classmethod:: ModelView.view_toolbar_get()
 
-    Returns the model specific actions in a dictionary with keys:
+    Returns the model specific actions and exports in a dictionary with keys:
         - `print`: a list of available reports
         - `action`: a list of available actions
         - `relate`: a list of available relations
+        - `exports`: a list of available exports
 
 .. classmethod:: ModelView.view_attributes()
 

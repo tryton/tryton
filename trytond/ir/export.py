@@ -8,7 +8,24 @@ __all__ = [
     ]
 
 
-class Export(ModelSQL, ModelView):
+class _ClearCache(ModelSQL):
+    @classmethod
+    def create(cls, vlist):
+        ModelView._view_toolbar_get_cache.clear()
+        return super().create(vlist)
+
+    @classmethod
+    def write(cls, *args):
+        ModelView._view_toolbar_get_cache.clear()
+        super().write(*args)
+
+    @classmethod
+    def delete(cls, records):
+        ModelView._view_toolbar_get_cache.clear()
+        super().delete(records)
+
+
+class Export(_ClearCache, ModelSQL, ModelView):
     "Export"
     __name__ = "ir.export"
     name = fields.Char('Name')
@@ -17,7 +34,7 @@ class Export(ModelSQL, ModelView):
        'Fields')
 
 
-class ExportLine(ModelSQL, ModelView):
+class ExportLine(_ClearCache, ModelSQL, ModelView):
     "Export line"
     __name__ = 'ir.export.line'
     name = fields.Char('Name')
