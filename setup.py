@@ -6,7 +6,7 @@ import re
 import os
 import io
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,9 +66,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton product cost fifo',
     package_dir={'trytond.modules.product_cost_fifo': '.'},
-    packages=[
-        'trytond.modules.product_cost_fifo',
-        ],
+    packages=(
+        ['trytond.modules.product_cost_fifo'] +
+        ['trytond.modules.product_cost_fifo.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.product_cost_fifo': (info.get('xml', [])
             + ['tryton.cfg', 'locale/*.po']),
