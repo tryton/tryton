@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -68,10 +68,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton analytic account invoice',
     package_dir={'trytond.modules.analytic_invoice': '.'},
-    packages=[
-        'trytond.modules.analytic_invoice',
-        'trytond.modules.analytic_invoice.tests',
-        ],
+    packages=(
+        ['trytond.modules.analytic_invoice'] +
+        ['trytond.modules.analytic_invoice.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.analytic_invoice': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
