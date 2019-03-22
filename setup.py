@@ -68,7 +68,8 @@ setup(name=name,
     package_dir={'trytond.modules.product_price_list_parent': '.'},
     packages=(
         ['trytond.modules.product_price_list_parent'] +
-        ['trytond.modules.product_price_list_parent.%s' % p for p in find_packages()]
+        ['trytond.modules.product_price_list_parent.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.product_price_list_parent': (info.get('xml', [])
