@@ -7,6 +7,7 @@ import gettext
 from gi.repository import Gdk, Gtk
 
 from tryton.gui import Main
+from tryton.common import IconFactory
 from tryton.common.datetime_ import popup_position, popup_show, popup_hide
 
 _ = gettext.gettext
@@ -28,8 +29,7 @@ class Toolbar(Gtk.Toolbar):
             Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
         self.insert(today_button, -1)
 
-        arrow_left = Gtk.Arrow(
-            arrow_type=Gtk.ArrowType.LEFT, shadow_type=Gtk.ShadowType.NONE)
+        arrow_left = IconFactory.get_image('tryton-arrow-left')
         go_back = Gtk.ToolButton()
         go_back.set_icon_widget(arrow_left)
         go_back.set_label(_("go back"))
@@ -71,8 +71,7 @@ class Toolbar(Gtk.Toolbar):
         self.goocalendar.connect('day-selected',
             self.on_goocalendar_day_selected)
 
-        arrow_right = Gtk.Arrow(
-            arrow_type=Gtk.ArrowType.RIGHT, shadow_type=Gtk.ShadowType.NONE)
+        arrow_right = IconFactory.get_image('tryton-arrow-right')
         go_forward = Gtk.ToolButton()
         go_forward.set_icon_widget(arrow_right)
         go_forward.set_label(_("go forward"))
@@ -81,8 +80,7 @@ class Toolbar(Gtk.Toolbar):
         go_forward.connect("clicked", self.on_go_forward_clicked)
         self.insert(go_forward, -1)
 
-        arrow_left = Gtk.Arrow(
-            arrow_type=Gtk.ArrowType.LEFT, shadow_type=Gtk.ShadowType.NONE)
+        arrow_left = IconFactory.get_image('tryton-arrow-left')
         previous_year = Gtk.ToolButton()
         previous_year.set_icon_widget(arrow_left)
         previous_year.set_label(_("previous year"))
@@ -96,8 +94,7 @@ class Toolbar(Gtk.Toolbar):
         current_year.add(self.current_year_label)
         self.insert(current_year, -1)
 
-        arrow_right = Gtk.Arrow(
-            arrow_type=Gtk.ArrowType.RIGHT, shadow_type=Gtk.ShadowType.NONE)
+        arrow_right = IconFactory.get_image('tryton-arrow-right')
         next_year = Gtk.ToolButton()
         next_year.set_icon_widget(arrow_right)
         next_year.set_label(_("next year"))

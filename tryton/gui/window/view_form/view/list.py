@@ -374,8 +374,7 @@ class TreeXMLViewParser(XMLViewParser):
             tooltips.set_tip(label, help)
             tooltips.enable()
         if arrow:
-            arrow_widget = Gtk.Arrow(
-                arrow_type=Gtk.ArrowType.NONE, shadow_type=Gtk.ShadowType.NONE)
+            arrow_widget = Gtk.Image()
             arrow_widget.show()
             column.arrow = arrow_widget
         hbox.pack_start(label, expand=True, fill=True, padding=0)
@@ -502,19 +501,21 @@ class ViewTree(View):
         return self.widgets[column.name][idx]
 
     def sort_model(self, column):
+        up = common.IconFactory.get_pixbuf('tryton-arrow-up')
+        down = common.IconFactory.get_pixbuf('tryton-arrow-down')
         for col in self.treeview.get_columns():
             if col != column and getattr(col, 'arrow', None):
-                col.arrow.set(Gtk.ArrowType.NONE, Gtk.ShadowType.NONE)
+                col.arrow.clear()
         self.screen.order = self.screen.default_order
-        if column.arrow.props.arrow_type == Gtk.ArrowType.NONE:
-            column.arrow.set(Gtk.ArrowType.DOWN, Gtk.ShadowType.IN)
+        if not column.arrow.props.pixbuf:
+            column.arrow.set_from_pixbuf(down)
             self.screen.order = [(column.name, 'ASC')]
         else:
-            if column.arrow.props.arrow_type == Gtk.ArrowType.DOWN:
-                column.arrow.set(Gtk.ArrowType.UP, Gtk.ShadowType.IN)
+            if column.arrow.props.pixbuf == down:
+                column.arrow.set_from_pixbuf(up)
                 self.screen.order = [(column.name, 'DESC')]
             else:
-                column.arrow.set(Gtk.ArrowType.NONE, Gtk.ShadowType.NONE)
+                column.arrow.clear()
         model = self.treeview.get_model()
         unsaved_records = [x for x in model.group if x.id < 0]
         search_string = self.screen.screen_container.get_text() or ''
@@ -532,8 +533,8 @@ class ViewTree(View):
         if order and len(order) == 1:
             (name, direction), = order
             direction = {
-                'ASC': Gtk.ArrowType.DOWN,
-                'DESC': Gtk.ArrowType.UP,
+                'ASC': common.IconFactory.get_pixbuf('tryton-arrow-down'),
+                'DESC': common.IconFactory.get_pixbuf('tryton-arrow-up'),
                 }[direction]
         else:
             name, direction = None, None
@@ -542,9 +543,12 @@ class ViewTree(View):
             arrow = getattr(col, 'arrow', None)
             if arrow:
                 if col.name != name:
-                    arrow.set(Gtk.ArrowType.NONE, Gtk.ShadowType.NONE)
+                    arrow.clear()
                 else:
-                    arrow.set(direction, Gtk.ShadowType.IN)
+                    if direction:
+                        arrow.set_from_pixbuf(direction)
+                    else:
+                        arrow.clear()
 
     def set_drag_and_drop(self):
         dnd = False
