@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -65,10 +65,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton timesheet',
     package_dir={'trytond.modules.timesheet': '.'},
-    packages=[
-        'trytond.modules.timesheet',
-        'trytond.modules.timesheet.tests',
-        ],
+    packages=(
+        ['trytond.modules.timesheet'] +
+        ['trytond.modules.timesheet.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.timesheet': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg']),
