@@ -1022,7 +1022,7 @@
         attach: function(evt) {
             var window_ = function() {
                 return new Sao.Window.Attachment(record, function() {
-                    this.update_attachment_count(true);
+                    this.refresh_resources(true);
                 }.bind(this));
             }.bind(this);
             var dropdown = this.buttons.attach.parents('.dropdown');
@@ -1140,7 +1140,7 @@
             }
 
             var window_ = new Sao.Window.Attachment(record, function() {
-                this.update_attachment_count(true);
+                this.refresh_resources(true);
             }.bind(this));
             files.forEach(function(file) {
                 Sao.common.get_file_data(file, function(data, filename) {
@@ -1168,68 +1168,77 @@
                 evt.dataTransfer.clearData();
             }
         },
-        update_attachment_count: function(reload) {
-            var record = this.screen.current_record;
-            if (record) {
-                record.get_attachment_count(reload).always(
-                        this.attachment_count.bind(this));
-            } else {
-                this.attachment_count(0);
-            }
-        },
-        attachment_count: function(count) {
-            var badge = this.buttons.attach.find('.badge');
-            if (!badge.length) {
-                badge = jQuery('<span/>', {
-                    'class': 'badge'
-                }).appendTo(this.buttons.attach);
-            }
-            var text = count || '';
-            if (count > 99) {
-                text = '99+';
-            }
-            badge.text(text);
-            this.buttons.attach.attr(
-                'title', Sao.i18n.gettext("Attachment(%1)", count));
-            var record_id = this.screen.get_id();
-            this.buttons.attach.prop('disabled',
-                record_id < 0 || record_id === null);
-        },
         note: function() {
             var record = this.screen.current_record;
             if (!record || (record.id < 0)) {
                 return;
             }
             new Sao.Window.Note(record, function() {
-                this.update_unread_note(true);
+                this.refresh_resources(true);
             }.bind(this));
         },
-        update_unread_note: function(reload) {
+        refresh_resources: function(reload) {
             var record = this.screen.current_record;
             if (record) {
-                record.get_unread_note(reload).always(
-                        this._unread_note.bind(this));
+                record.get_resources(reload).always(
+                    this.update_resources.bind(this));
             } else {
-                this._unread_note(0);
+                this.update_resources();
             }
         },
-        _unread_note: function(unread) {
-            var badge = this.buttons.note.find('.badge');
-            if (!badge.length) {
-                badge = jQuery('<span/>', {
-                    'class': 'badge'
-                }).appendTo(this.buttons.note);
+        update_resources: function(resources) {
+            if (!resources) {
+                resources = {};
             }
-            var text = unread || '';
-            if (unread > 99) {
-                text = '99+';
-            }
-            badge.text(text);
-            this.buttons.note.attr(
-                'title', Sao.i18n.gettext("Note(%1)", unread));
             var record_id = this.screen.get_id();
-            this.buttons.note.prop('disabled',
-                    record_id < 0 || record_id === null);
+            var disabled = record_id < 0 || record_id === null;
+
+            var update = function(name, title, text, color) {
+                var button = this.buttons[name];
+
+                var badge = button.find('.badge');
+                if (!badge.length) {
+                    badge = jQuery('<span/>', {
+                        'class': 'badge'
+                    }).appendTo(button);
+                }
+                if (color) {
+                    color = Sao.config.icon_colors[color];
+                } else {
+                    color = '';
+                }
+                badge.css('background-color', color);
+                badge.text(text);
+                button.attr('title', title);
+                button.prop('disabled', disabled);
+            }.bind(this);
+
+            var count = resources.attachment_count || 0;
+            var badge = count || '';
+            if (count > 99) {
+                badge = '99+';
+            }
+            var title= Sao.i18n.gettext("Attachment (%1)", count);
+            update('attach', title, badge, 1);
+
+            count = resources.note_count || 0;
+            var unread = resources.note_unread || 0;
+            badge = '';
+            var color = unread > 0 ? 2 : 1;
+            if (count) {
+                if (count > 9) {
+                    badge = '+';
+                } else {
+                    badge = count;
+                }
+                if (unread > 9) {
+                    badge = '+/' + badge;
+                } else {
+                    badge = unread + '/' + badge;
+                }
+            }
+            title = Sao.i18n.gettext("Note (%1/%2)", unread, count);
+            update('note', title, badge, color);
         },
         record_message: function(data) {
             if (data) {
@@ -1344,12 +1353,12 @@
                 action.update_domain(this.board.actions);
             }
         },
-        attachment_count: function() {
-        },
         note: function() {
         },
-        update_unread_note: function() {
-        }
+        refresh_resources: function() {
+        },
+        update_resources: function() {
+        },
     });
 
     Sao.Tab.Wizard = Sao.class_(Sao.Tab, {

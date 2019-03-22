@@ -246,7 +246,7 @@ var Sao = {};
     Sao.config.display_size = 20;
     Sao.config.bug_url = 'https://bugs.tryton.org/';
     Sao.config.title = 'Tryton';
-    Sao.config.icon_color = '#3465a4';
+    Sao.config.icon_colors = '#3465a4,#555753,#cc0000'.split(',');
     Sao.config.bus_timeout = 10 * 60 * 1000;
 
     Sao.i18n = i18n();

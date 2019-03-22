@@ -1,3 +1,5 @@
+* Display unread and total of notes
+* Use resources method
 * Rename roundup.url configuration to bug.url
 * Use separate XML parser in Views
 * Add range selection with Shift-click

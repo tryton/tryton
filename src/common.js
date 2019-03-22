@@ -2736,7 +2736,7 @@
         },
         _convert: function(data) {
             var xml = jQuery.parseXML(data);
-            jQuery(xml).find('svg').attr('fill', Sao.config.icon_color);
+            jQuery(xml).find('svg').attr('fill', Sao.config.icon_colors[0]);
             data = new XMLSerializer().serializeToString(xml);
             var blob = new Blob([data],
                 {type: 'image/svg+xml'});

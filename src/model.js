@@ -494,8 +494,7 @@
             this._loaded = {};
             this.fields = {};
             this._timestamp = null;
-            this.attachment_count = -1;
-            this.unread_note = -1;
+            this.resources = null;
             this.button_clicks = {};
             this.state_attrs = {};
             this.autocompletion = {};
@@ -1270,46 +1269,17 @@
                 }
             }
         },
-        get_attachment_count: function(reload) {
-            var prm = jQuery.Deferred();
-            if (this.id < 0) {
-                prm.resolve(0);
-                return prm;
-            }
-            if ((this.attachment_count < 0) || reload) {
-                prm = Sao.rpc({
-                    method: 'model.ir.attachment.search_count',
-                    params: [
-                    [['resource', '=', this.model.name + ',' + this.id]],
-                    this.get_context()]
-                }, this.model.session).then(function(count) {
-                    this.attachment_count = count;
-                    return count;
-                }.bind(this));
+        get_resources: function(reload) {
+            var prm;
+            if ((this.id >= 0) && (!this.resources || reload)) {
+                prm = this.model.execute(
+                    'resources', [this.id], this.get_context())
+                    .then(function(resources) {
+                        this.resources = resources;
+                        return resources;
+                    }.bind(this));
             } else {
-                prm.resolve(this.attachment_count);
-            }
-            return prm;
-        },
-        get_unread_note: function(reload) {
-            var prm = jQuery.Deferred();
-            if (this.id < 0) {
-                prm.resolve(0);
-                return prm;
-            }
-            if ((this.unread_note < 0) || reload) {
-                prm = Sao.rpc({
-                    method: 'model.ir.note.search_count',
-                    params: [
-                        [['resource', '=', this.model.name + ',' + this.id],
-                        ['unread', '=', true]],
-                        this.get_context()]
-                }, this.model.session).then(function(count) {
-                    this.unread_note = count;
-                    return count;
-                }.bind(this));
-            } else {
-                prm.resolve(this.unread_note);
+                prm = jQuery.when(this.resources);
             }
             return prm;
         },
