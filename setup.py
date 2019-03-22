@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton account credit limit',
     package_dir={'trytond.modules.account_credit_limit': '.'},
-    packages=[
-        'trytond.modules.account_credit_limit',
-        'trytond.modules.account_credit_limit.tests',
-        ],
+    packages=(
+        ['trytond.modules.account_credit_limit'] +
+        ['trytond.modules.account_credit_limit.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_credit_limit': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
