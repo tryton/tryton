@@ -2146,14 +2146,14 @@ function eval_pyson(value){
             value = field.get(record);
             if (this.has_target(value)) {
                 primary = 'tryton-open';
-                tooltip1 = Sao.i18n.gettext("Open the record <F2>");
+                tooltip1 = Sao.i18n.gettext("Open the record");
                 secondary = 'tryton-clear';
-                tooltip2 = Sao.i18n.gettext("Clear the field <Del>");
+                tooltip2 = Sao.i18n.gettext("Clear the field");
             } else {
                 primary = null;
                 tooltip1 = '';
                 secondary = 'tryton-search';
-                tooltip2 = Sao.i18n.gettext("Search a record <F2>");
+                tooltip2 = Sao.i18n.gettext("Search a record");
             }
             if (this.entry.prop('readonly')) {
                 secondary = null;
