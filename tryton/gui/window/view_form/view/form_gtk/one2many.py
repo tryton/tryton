@@ -46,7 +46,7 @@ class One2Many(Widget):
         tooltips = common.Tooltips()
 
         but_switch = Gtk.Button(can_focus=False)
-        tooltips.set_tip(but_switch, _('Switch <F4>'))
+        tooltips.set_tip(but_switch, _('Switch'))
         but_switch.connect('clicked', self.switch_view)
         but_switch.add(common.IconFactory.get_image(
                 'tryton-switch', Gtk.IconSize.SMALL_TOOLBAR))
@@ -106,7 +106,7 @@ class One2Many(Widget):
 
             self.but_remove = Gtk.Button(can_focus=False)
             tooltips.set_tip(self.but_remove,
-                _('Remove selected record <CTRL> + <Del>'))
+                _('Remove selected record'))
             self.but_remove.connect('clicked', self._sig_remove, True)
             self.but_remove.add(common.IconFactory.get_image(
                     'tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
@@ -134,7 +134,7 @@ class One2Many(Widget):
         hbox.pack_start(self.but_open, expand=False, fill=False, padding=0)
 
         self.but_del = Gtk.Button(can_focus=False)
-        tooltips.set_tip(self.but_del, _('Delete selected record <Del>'))
+        tooltips.set_tip(self.but_del, _('Delete selected record'))
         self.but_del.connect('clicked', self._sig_remove, False)
         self.but_del.add(common.IconFactory.get_image(
                 'tryton-delete', Gtk.IconSize.SMALL_TOOLBAR))

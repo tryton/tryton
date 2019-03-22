@@ -72,7 +72,7 @@ class Many2Many(Widget):
         hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
 
         self.but_remove = Gtk.Button(can_focus=False)
-        tooltips.set_tip(self.but_remove, _('Remove selected record <Del>'))
+        tooltips.set_tip(self.but_remove, _('Remove selected record'))
         self.but_remove.connect('clicked', self._sig_remove)
         self.but_remove.add(common.IconFactory.get_image(
                 'tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
