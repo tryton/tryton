@@ -557,7 +557,9 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             for move in shipment.supplier_moves:
                 if not move.origin:
                     continue
-                sale_line = request2sline[pline2request[move.origin]]
+                sale_line = request2sline.get(pline2request.get(move.origin))
+                if not sale_line:
+                    continue
                 for move in sale_line.moves:
                     if (move.state not in ('cancel', 'done')
                             and not move.shipment
