@@ -6,7 +6,7 @@ import re
 import os
 import io
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -65,10 +65,10 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton google maps',
     package_dir={'trytond.modules.google_maps': '.'},
-    packages=[
-        'trytond.modules.google_maps',
-        'trytond.modules.google_maps.tests',
-        ],
+    packages=(
+        ['trytond.modules.google_maps'] +
+        ['trytond.modules.google_maps.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.google_maps': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
