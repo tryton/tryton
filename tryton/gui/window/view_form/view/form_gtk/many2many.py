@@ -63,7 +63,7 @@ class Many2Many(Widget):
         else:
             self.wid_completion = None
 
-        self.but_add = Gtk.Button()
+        self.but_add = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_add, _('Add existing record'))
         self.but_add.connect('clicked', self._sig_add)
         self.but_add.add(common.IconFactory.get_image(
@@ -71,15 +71,13 @@ class Many2Many(Widget):
         self.but_add.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
 
-        self.but_remove = Gtk.Button()
+        self.but_remove = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_remove, _('Remove selected record <Del>'))
         self.but_remove.connect('clicked', self._sig_remove)
         self.but_remove.add(common.IconFactory.get_image(
                 'tryton-remove', Gtk.IconSize.SMALL_TOOLBAR))
         self.but_remove.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_remove, expand=False, fill=False, padding=0)
-
-        hbox.set_focus_chain([self.wid_text])
 
         tooltips.enable()
 

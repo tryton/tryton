@@ -299,7 +299,6 @@ class ScreenContainer(object):
         hbox.pack_start(but_next, expand=False, fill=False, padding=0)
 
         hbox.show_all()
-        hbox.set_focus_chain([self.search_entry])
         self.filter_vbox.pack_start(hbox, expand=False, fill=False, padding=0)
 
         hseparator = Gtk.HSeparator()

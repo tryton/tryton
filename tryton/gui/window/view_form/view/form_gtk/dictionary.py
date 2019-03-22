@@ -327,13 +327,12 @@ class DictWidget(Widget):
         else:
             self.wid_completion = None
 
-        self.but_add = Gtk.Button()
+        self.but_add = Gtk.Button(can_focus=False)
         self.but_add.connect('clicked', self._sig_add)
         self.but_add.add(
             IconFactory.get_image('tryton-add', Gtk.IconSize.SMALL_TOOLBAR))
         self.but_add.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
-        hbox.set_focus_chain([self.wid_text])
         vbox.pack_start(hbox, expand=True, fill=True, padding=0)
 
         self.tooltips = Tooltips()

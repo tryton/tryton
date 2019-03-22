@@ -5,7 +5,6 @@ from gi.repository import GLib, Gtk
 from .widget import Widget
 from tryton.common.selection import SelectionMixin, selection_shortcuts, \
     PopdownMixin
-from tryton.config import CONFIG
 
 
 class Selection(Widget, SelectionMixin, PopdownMixin):
@@ -29,7 +28,6 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
             'scroll-event',
             lambda c, e: c.stop_emission_by_name('scroll-event'))
         self.widget.pack_start(self.entry, expand=True, fill=True, padding=0)
-        self.widget.set_focus_chain([child])
 
         self.selection = attrs.get('selection', [])[:]
         self.attrs = attrs
@@ -52,10 +50,6 @@ class Selection(Widget, SelectionMixin, PopdownMixin):
         self.entry.get_child().set_editable(not value)
         self.entry.set_button_sensitivity(
             Gtk.SensitivityType.OFF if value else Gtk.SensitivityType.AUTO)
-        if value and CONFIG['client.fast_tabbing']:
-            self.widget.set_focus_chain([])
-        else:
-            self.widget.unset_focus_chain()
 
     def get_value(self):
         if not self.entry.get_child():  # entry is destroyed

@@ -7,7 +7,6 @@ from gi.repository import Gtk
 from .many2one import Many2One
 from tryton.common.selection import SelectionMixin, PopdownMixin, \
         selection_shortcuts
-from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -28,15 +27,12 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
             'scroll-event',
             lambda c, e: c.stop_emission_by_name('scroll-event'))
         selection_shortcuts(self.widget_combo)
-        self.widget_combo.set_focus_chain([child])
 
         self.widget.pack_start(
             self.widget_combo, expand=False, fill=True, padding=0)
 
         self.init_selection()
         self.set_popdown(self.selection, self.widget_combo)
-
-        self.widget.set_focus_chain([self.widget_combo, self.wid_text])
 
     def get_model(self):
         active = self.widget_combo.get_active()
@@ -62,10 +58,6 @@ class Reference(Many2One, SelectionMixin, PopdownMixin):
         self.widget_combo.set_button_sensitivity(
             Gtk.SensitivityType.OFF if self._readonly
             else Gtk.SensitivityType.AUTO)
-        if self._readonly and CONFIG['client.fast_tabbing']:
-            self.widget.set_focus_chain([])
-        else:
-            self.widget.unset_focus_chain()
 
     @property
     def modified(self):

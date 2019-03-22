@@ -87,10 +87,6 @@ class TextBox(Widget, TranslateMixin):
         self.textview.set_editable(not value)
         if self.button:
             self.button.set_sensitive(not value)
-        if value and CONFIG['client.fast_tabbing']:
-            self.widget.set_focus_chain([])
-        else:
-            self.widget.unset_focus_chain()
 
     @property
     def modified(self):

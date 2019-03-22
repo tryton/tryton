@@ -185,9 +185,6 @@ Form:
   * Save Tree Expanded State:
     Check box to enable saving of expanded and selected nodes in trees/lists.
 
-  * Fast Tabbing:
-    Check box to enable fast tabbing navigation by skipping readonly entries.
-
   * Spell Checking:
     Check box to enable spell checking in fields.
 

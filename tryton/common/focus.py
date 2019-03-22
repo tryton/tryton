@@ -43,13 +43,12 @@ def tab_compare(a, b):
         return (y1 > y2) - (y1 < y2)
 
 
-def get_focus_chain(widget):
-    focus_chain = widget.get_focus_chain()
-    # If the focus_chain is not defined on the widget then we will simply
-    # search into all its children widgets
-    return (focus_chain
-        if focus_chain is not None
-        else sorted(widget.get_children(), key=cmp_to_key(tab_compare)))
+def get_focus_children(widget):
+    if hasattr(widget, 'get_children'):
+        result = sorted(widget.get_children(), key=cmp_to_key(tab_compare))
+        return result
+    else:
+        return []
 
 
 def find_focusable_child(widget):
@@ -57,9 +56,7 @@ def find_focusable_child(widget):
         return None
     if widget.get_can_focus():
         return widget
-    if not hasattr(widget, 'get_children'):
-        return None
-    for child in get_focus_chain(widget):
+    for child in get_focus_children(widget):
         focusable = find_focusable_child(child)
         if focusable:
             return focusable
@@ -68,29 +65,18 @@ def find_focusable_child(widget):
 def next_focus_widget(widget):
     if not widget.props.parent:
         return None
-    focus_chain = widget.props.parent.get_focus_chain()
-    if focus_chain is not None:
-        idx = focus_chain.index(widget)
-        focus_widget = None
-        for widget in focus_chain[idx:] + focus_chain[:idx]:
-            focus_widget = find_focusable_child(widget)
-            if focus_widget:
-                return focus_widget
-        if not focus_widget:
-            return next_focus_widget(widget.props.parent)
+    focus_widget = find_focusable_child(widget.props.parent)
+    if focus_widget:
+        return focus_widget
     else:
-        focus_widget = find_focusable_child(widget.props.parent)
-        if focus_widget:
-            return focus_widget
-        else:
-            return next_focus_widget(widget.props.parent)
+        return next_focus_widget(widget.props.parent)
 
 
 def find_first_focus_widget(ancestor, widgets):
     "Return the widget from widgets which should have first the focus"
     if len(widgets) == 1:
         return widgets[0]
-    for child in get_focus_chain(ancestor):
+    for child in get_focus_children(ancestor):
         common = [w for w in widgets if w.is_ancestor(child)]
         if common:
             return find_first_focus_widget(child, common)

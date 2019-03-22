@@ -13,7 +13,6 @@ from tryton.common.popup_menu import populate
 from tryton.common.completion import get_completion, update_completion
 from tryton.common.entry_position import reset_position
 from tryton.common.domain_parser import quote
-from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -54,10 +53,6 @@ class Many2One(Widget):
     def _readonly_set(self, value):
         self._readonly = value
         self._set_button_sensitive()
-        if value and CONFIG['client.fast_tabbing']:
-            self.widget.set_focus_chain([])
-        else:
-            self.widget.unset_focus_chain()
 
     def _set_button_sensitive(self):
         self.wid_text.set_editable(not self._readonly)

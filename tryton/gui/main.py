@@ -77,7 +77,6 @@ class Main(Gtk.Application):
                 ('mode-pda', 'client.modepda'),
                 ('save-width-height', 'client.save_width_height'),
                 ('save-tree-state', 'client.save_tree_state'),
-                ('fast-tabbing', 'client.fast_tabbing'),
                 ('spell-checking', 'client.spellcheck'),
                 ('check-version', 'client.check_version'),
                 ]:

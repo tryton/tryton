@@ -6,7 +6,6 @@ from gi.repository import Gtk
 
 from .char import Char
 import tryton.common as common
-from tryton.config import CONFIG
 
 
 class URL(Char):
@@ -23,7 +22,6 @@ class URL(Char):
         self.button.connect('clicked', self.button_clicked)
         self.widget.pack_start(
             self.button, expand=False, fill=False, padding=0)
-        self.widget.set_focus_chain([self.entry])
 
     def display(self):
         super(URL, self).display()
@@ -53,10 +51,6 @@ class URL(Char):
             self.entry.hide()
         else:
             self.entry.show()
-        if value and CONFIG['client.fast_tabbing']:
-            self.widget.set_focus_chain([self.button])
-        else:
-            self.widget.set_focus_chain([self.entry])
         self.button.set_sensitive(True)
 
     def button_clicked(self, widget):

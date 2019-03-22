@@ -9,7 +9,6 @@ from .widget import Widget
 from tryton import common
 from tryton.common.datetime_ import (Date as DateEntry, Time as TimeEntry,
     DateTime as DateTimeEntry, add_operators)
-from tryton.config import CONFIG
 
 _ = gettext.gettext
 
@@ -39,10 +38,6 @@ class Date(Widget):
 
     def _readonly_set(self, value):
         self._set_editable(not value)
-        if value and CONFIG['client.fast_tabbing']:
-            self.widget.set_focus_chain([])
-        else:
-            self.widget.unset_focus_chain()
 
     @classmethod
     def cast(cls, value):
@@ -87,7 +82,6 @@ class Date(Widget):
 class Time(Date):
     def __init__(self, view, attrs):
         super(Time, self).__init__(view, attrs, _entry=TimeEntry)
-        self.entry.set_focus_chain([self.entry.get_child()])
         self.entry.connect('time-changed', self.changed)
 
     def _set_editable(self, value):
@@ -132,7 +126,6 @@ class DateTime(Date):
         for child in self.entry.get_children():
             add_operators(child)
             if isinstance(child, Gtk.ComboBox):
-                child.set_focus_chain([child.get_child()])
                 child = child.get_child()
             child.set_property('activates_default', True)
             child.connect('key_press_event', self.sig_key_press)

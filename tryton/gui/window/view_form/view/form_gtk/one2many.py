@@ -45,7 +45,7 @@ class One2Many(Widget):
 
         tooltips = common.Tooltips()
 
-        but_switch = Gtk.Button()
+        but_switch = Gtk.Button(can_focus=False)
         tooltips.set_tip(but_switch, _('Switch <F4>'))
         but_switch.connect('clicked', self.switch_view)
         but_switch.add(common.IconFactory.get_image(
@@ -53,7 +53,7 @@ class One2Many(Widget):
         but_switch.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(but_switch, expand=False, fill=False, padding=0)
 
-        self.but_pre = Gtk.Button()
+        self.but_pre = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_pre, _('Previous'))
         self.but_pre.connect('clicked', self._sig_previous)
         self.but_pre.add(common.IconFactory.get_image(
@@ -64,7 +64,7 @@ class One2Many(Widget):
         self.label = Gtk.Label(label='(0,0)')
         hbox.pack_start(self.label, expand=False, fill=False, padding=0)
 
-        self.but_next = Gtk.Button()
+        self.but_next = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_next, _('Next'))
         self.but_next.connect('clicked', self._sig_next)
         self.but_next.add(common.IconFactory.get_image(
@@ -96,7 +96,7 @@ class One2Many(Widget):
                 self.wid_text.set_completion(self.wid_completion)
                 self.wid_text.connect('changed', self._update_completion)
 
-            self.but_add = Gtk.Button()
+            self.but_add = Gtk.Button(can_focus=False)
             tooltips.set_tip(self.but_add, _('Add existing record'))
             self.but_add.connect('clicked', self._sig_add)
             self.but_add.add(common.IconFactory.get_image(
@@ -104,7 +104,7 @@ class One2Many(Widget):
             self.but_add.set_relief(Gtk.ReliefStyle.NONE)
             hbox.pack_start(self.but_add, expand=False, fill=False, padding=0)
 
-            self.but_remove = Gtk.Button()
+            self.but_remove = Gtk.Button(can_focus=False)
             tooltips.set_tip(self.but_remove,
                 _('Remove selected record <CTRL> + <Del>'))
             self.but_remove.connect('clicked', self._sig_remove, True)
@@ -117,7 +117,7 @@ class One2Many(Widget):
             hbox.pack_start(
                 Gtk.VSeparator(), expand=False, fill=True, padding=0)
 
-        self.but_new = Gtk.Button()
+        self.but_new = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_new, _('Create a new record'))
         self.but_new.connect('clicked', self._sig_new)
         self.but_new.add(common.IconFactory.get_image(
@@ -125,7 +125,7 @@ class One2Many(Widget):
         self.but_new.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_new, expand=False, fill=False, padding=0)
 
-        self.but_open = Gtk.Button()
+        self.but_open = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_open, _('Edit selected record'))
         self.but_open.connect('clicked', self._sig_edit)
         self.but_open.add(common.IconFactory.get_image(
@@ -133,7 +133,7 @@ class One2Many(Widget):
         self.but_open.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_open, expand=False, fill=False, padding=0)
 
-        self.but_del = Gtk.Button()
+        self.but_del = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_del, _('Delete selected record <Del>'))
         self.but_del.connect('clicked', self._sig_remove, False)
         self.but_del.add(common.IconFactory.get_image(
@@ -141,18 +141,13 @@ class One2Many(Widget):
         self.but_del.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_del, expand=False, fill=False, padding=0)
 
-        self.but_undel = Gtk.Button()
+        self.but_undel = Gtk.Button(can_focus=False)
         tooltips.set_tip(self.but_undel, _('Undelete selected record <Ins>'))
         self.but_undel.connect('clicked', self._sig_undelete)
         self.but_undel.add(common.IconFactory.get_image(
                 'tryton-undo', Gtk.IconSize.SMALL_TOOLBAR))
         self.but_undel.set_relief(Gtk.ReliefStyle.NONE)
         hbox.pack_start(self.but_undel, expand=False, fill=False, padding=0)
-
-        if attrs.get('add_remove'):
-            hbox.set_focus_chain([self.wid_text])
-        else:
-            hbox.set_focus_chain([])
 
         tooltips.enable()
 
@@ -308,17 +303,6 @@ class One2Many(Widget):
                     and access['read']))
             self.wid_text.set_sensitive(self.but_add.get_sensitive())
             self.wid_text.set_editable(self.but_add.get_sensitive())
-
-        # New button must be added to focus chain to allow keyboard only
-        # creation when there is no existing record on form view.
-        focus_chain = self.title_box.get_focus_chain() or []
-        if o2m_size == 0 and self.screen.current_view.view_type == 'form':
-            if self.but_new not in focus_chain:
-                focus_chain.append(self.but_new)
-        else:
-            if self.but_new in focus_chain:
-                focus_chain.remove(self.but_new)
-        self.title_box.set_focus_chain(focus_chain)
 
     def _validate(self):
         self.view.set_value()
