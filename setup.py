@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -66,10 +66,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton sale shipment tolerance back-order',
     package_dir={'trytond.modules.sale_shipment_tolerance': '.'},
-    packages=[
-        'trytond.modules.sale_shipment_tolerance',
-        'trytond.modules.sale_shipment_tolerance.tests',
-        ],
+    packages=(
+        ['trytond.modules.sale_shipment_tolerance'] +
+        ['trytond.modules.sale_shipment_tolerance.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.sale_shipment_tolerance': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
