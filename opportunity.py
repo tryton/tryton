@@ -83,7 +83,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         states=_STATES_START, depends=_DEPENDS_START)
     end_date = fields.Date('End Date', select=True,
         states=_STATES_STOP, depends=_DEPENDS_STOP)
-    description = fields.Char('Description', required=True,
+    description = fields.Char('Description',
         states=_STATES_STOP, depends=_DEPENDS_STOP)
     comment = fields.Text('Comment', states=_STATES_STOP,
         depends=_DEPENDS_STOP)
@@ -148,6 +148,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
 
         # Migration from 4.2: make employee not required
         table.not_null_action('employee', action='remove')
+
+        # Migration from 5.0: drop required on description
+        table.not_null_action('description', action='remove')
 
     @classmethod
     def __setup__(cls):
