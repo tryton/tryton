@@ -6,7 +6,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def read(fname):
@@ -68,10 +68,11 @@ setup(name=name,
     download_url=download_url,
     keywords='tryton account tax rule country',
     package_dir={'trytond.modules.account_tax_rule_country': '.'},
-    packages=[
-        'trytond.modules.account_tax_rule_country',
-        'trytond.modules.account_tax_rule_country.tests',
-        ],
+    packages=(
+        ['trytond.modules.account_tax_rule_country'] +
+        ['trytond.modules.account_tax_rule_country.%s' % p
+            for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_tax_rule_country': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po']),
