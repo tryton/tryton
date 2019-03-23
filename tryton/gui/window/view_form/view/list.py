@@ -1119,7 +1119,7 @@ class ViewTree(View):
                 self.treeview.get_selection().get_selected_rows()[1]
             path = Gtk.TreePath(path)
             if (current_path != path and path not in selected_path) or new:
-                self.treeview.set_cursor(path, focus_column, new)
+                self.treeview.set_cursor(path, focus_column, start_editing=new)
 
     @property
     def selected_records(self):
