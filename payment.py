@@ -57,7 +57,11 @@ class Payment(metaclass=PoolMeta):
         'account.account', "Account", ondelete='RESTRICT',
         domain=[
             ('company', '=', Eval('company', -1)),
-            ('kind', 'in', ['receivable', 'payable', 'deposit']),
+            ['OR',
+                ('type.receivable', '=', True),
+                ('type.payable', '=', True),
+                ('type.deposit', '=', True),
+                ],
             ['OR',
                 ('second_currency', '=', Eval('currency', None)),
                 [
