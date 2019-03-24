@@ -126,7 +126,7 @@ class Letter(CompanyReport, metaclass=PoolMeta):
         payments = []
         for sub_parties in grouped_slice(parties):
             payments.append(Line.search([
-                        ('account.kind', '=', 'receivable'),
+                        ('account.type.receivable', '=', True),
                         ['OR',
                             ('debit', '<', 0),
                             ('credit', '>', 0),
