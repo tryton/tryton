@@ -285,7 +285,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         'account.account', "Account",
         domain=[
             ('company', '=', Eval('company')),
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
             ],
         states={
             'readonly': ~Eval('company'),
