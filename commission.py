@@ -16,7 +16,6 @@ class Agent(metaclass=PoolMeta):
     waiting_account = fields.Many2One('account.account', 'Waiting Account',
         domain=[
             ('company', '=', Eval('company')),
-            ('kind', 'in', ['payable', 'other']),
             ],
         depends=['company'])
 
