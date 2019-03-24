@@ -54,7 +54,7 @@ Create chart of accounts::
     >>> accounts = {}
     >>> for kind in ['receivable', 'payable', 'revenue', 'expense']:
     ...     accounts[kind], = Account.find([
-    ...        ('kind', '=', kind),
+    ...        ('type.%s' % kind , '=', True),
     ...        ('company', '=', company.id),
     ...        ], limit=1)
     >>> expense = accounts['expense']
