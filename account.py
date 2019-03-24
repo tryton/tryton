@@ -12,14 +12,14 @@ class CreateChartProperties(metaclass=PoolMeta):
     category_account_expense = fields.Many2One(
         'account.account', 'Default Expense Account',
         domain=[
-            ('kind', '=', 'expense'),
+            ('type.expense', '=', True),
             ('company', '=', Eval('company')),
             ],
         depends=['company'])
     category_account_revenue = fields.Many2One(
         'account.account', 'Default Revenue Account',
         domain=[
-            ('kind', '=', 'revenue'),
+            ('type.revenue', '=', True),
             ('company', '=', Eval('company')),
             ],
         depends=['company'])

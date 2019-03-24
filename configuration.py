@@ -14,13 +14,13 @@ class Configuration(metaclass=PoolMeta):
     default_category_account_expense = fields.MultiValue(fields.Many2One(
             'account.account', 'Default Account Expense',
             domain=[
-                ('kind', '=', 'expense'),
+                ('type.expense', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ]))
     default_category_account_revenue = fields.MultiValue(fields.Many2One(
             'account.account', 'Default Account Revenue',
             domain=[
-                ('kind', '=', 'revenue'),
+                ('type.revenue', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ]))
 
@@ -38,14 +38,14 @@ class ConfigurationDefaultAccount(metaclass=PoolMeta):
     default_category_account_expense = fields.Many2One(
         'account.account', "Default Account Expense",
         domain=[
-            ('kind', '=', 'expense'),
+            ('type.expense', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     default_category_account_revenue = fields.Many2One(
         'account.account', "Default Account Revenue",
         domain=[
-            ('kind', '=', 'revenue'),
+            ('type.revenue', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])

@@ -34,7 +34,7 @@ class AccountProductTestCase(ModuleTestCase):
                     ('name', '=', 'Unit'),
                     ])
             account_expense, = Account.search([
-                    ('kind', '=', 'expense'),
+                    ('type.expense', '=', True),
                     ])
 
             # raise when empty
