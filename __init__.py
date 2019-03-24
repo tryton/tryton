@@ -15,6 +15,8 @@ def register():
         sale.AdvancePaymentCondition,
         sale.Sale,
         sale.SaleLine,
+        account.AccountTypeTemplate,
+        account.AccountType,
         account.Invoice,
         account.InvoiceLine,
         stock.ShipmentOut,

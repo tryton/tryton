@@ -61,7 +61,7 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
     account = fields.MultiValue(
         fields.Many2One('account.account', "Account", required=True,
             domain=[
-                ('kind', '=', 'revenue'),
+                ('type.unearned_revenue', '=', True),
                 ],
             help="Used for the line of advance payment invoice."))
     accounts = fields.One2Many(
@@ -132,6 +132,7 @@ class AdvancePaymentTermLineAccount(ModelSQL, CompanyValueMixin):
     account = fields.Many2One(
         'account.account', "Account", required=True,
         domain=[
+            ('type.unearned_revenue', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
@@ -163,7 +164,7 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
     account = fields.Many2One(
         'account.account', "Account", required=True,
         domain=[
-            ('kind', '=', 'revenue'),
+            ('type.unearned_revenue', '=', True),
             ('company', '=', Eval('sale_company')),
             ],
         states=_states,

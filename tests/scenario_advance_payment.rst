@@ -16,7 +16,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> from trytond.modules.sale_advance_payment.tests.tools import \
-    ...     create_advance_payment_term
+    ...     create_advance_payment_term, add_advance_payment_accounts
     >>> today = datetime.date.today()
 
 Activate sale_advance_payment::
@@ -40,21 +40,11 @@ Create fiscal years::
 Create chart of accounts::
 
     >>> _ = create_chart(company)
-    >>> accounts = get_accounts(company)
+    >>> accounts = add_advance_payment_accounts(get_accounts(company))
     >>> revenue = accounts['revenue']
     >>> payable = accounts['payable']
     >>> cash = accounts['cash']
-
-    >>> Account = Model.get('account.account')
-    >>> advance_payment_account = Account(
-    ...     name='Advance Payment',
-    ...     type=payable.type,
-    ...     kind='revenue',
-    ...     company=company,
-    ...     party_required=True,
-    ...     reconcile=True,
-    ...     )
-    >>> advance_payment_account.save()
+    >>> advance_payment_account = accounts['advance_payment']
 
     >>> Journal = Model.get('account.journal')
     >>> PaymentMethod = Model.get('account.invoice.payment.method')

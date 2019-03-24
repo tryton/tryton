@@ -4,6 +4,8 @@ from datetime import timedelta
 
 from proteus import Model
 
+from trytond.modules.company.tests.tools import get_company
+
 
 def create_advance_payment_term(
         name, formula, account, block_supply=False, block_shipping=False,
@@ -21,3 +23,17 @@ def create_advance_payment_term(
     line.formula = formula
     line.invoice_delay = timedelta(days=delay)
     return advance_payment_term
+
+
+def add_advance_payment_accounts(accounts, company=None, config=None):
+    "Add advance payment to accounts"
+    Account = Model.get('account.account', config=config)
+
+    if not company:
+        company = get_company()
+
+    accounts['advance_payment'], = Account.find([
+            ('type.unearned_revenue', '=', True),
+            ('company', '=', company.id),
+            ], limit=1)
+    return accounts

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="account.account.type.template" id="account_type_template_unearned_revenue">
+            <field name="name" lang="en">Unearned Revenue</field>
+            <field name="name" lang="bg">Неотработен доход</field>
+            <field name="name" lang="ca">Ingressos no consumits</field>
+            <field name="name" lang="de">Nicht verdiente Einnahmen</field>
+            <field name="name" lang="es">Ingresos no ganados</field>
+            <field name="name" lang="fr">Produits constatés d'avance</field>
+            <field name="name" lang="nl">Onverdiende inkomsten</field>
+            <field name="name" lang="pt">Receita não recebida</field>
+            <field name="name" lang="ru">Нетрудовые доходы</field>
+            <field name="name" lang="sl">Nezasluženi prihodki</field>
+            <field name="parent" ref="account.account_type_template_liability_current"/>
+            <field name="statement">balance</field>
+            <field name="unearned_revenue" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+
+        <record model="account.account.template" id="account_template_advance_payment">
+            <field name="name" lang="en">Advance Payment</field>
+            <field name="name" lang="bg">Авансово плащане</field>
+            <field name="name" lang="ca">Pagament avançat</field>
+            <field name="name" lang="de">Vorauszahlung</field>
+            <field name="name" lang="es">Pago por adelantado</field>
+            <field name="name" lang="fr">Acompte</field>
+            <field name="name" lang="nl">Vooruitbetaling</field>
+            <field name="name" lang="pt">Pagamento adiantado</field>
+            <field name="name" lang="ru">Предоплата</field>
+            <field name="name" lang="sl">Plačilo vnaprej</field>
+            <field name="type" ref="account_type_template_unearned_revenue"/>
+            <field name="parent" ref="account.account_template_root"/>
+        </record>
+    </data>
+</tryton>
