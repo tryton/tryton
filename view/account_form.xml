@@ -12,8 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         <page string="General Information" id="general">
             <label name="type"/>
             <field name="type"/>
-            <label name="display_balance"/>
-            <field name="display_balance"/>
+            <newline/>
             <label name="root"/>
             <field name="root"/>
             <label name="parent"/>

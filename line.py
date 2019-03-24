@@ -211,30 +211,21 @@ class MoveLine(ModelSQL, ModelView):
             'party': self.party.id if self.party else None,
             }
 
-    @classmethod
-    def _analytic_types(cls):
-        "Return account types for which analytic lines should be set"
-        pool = Pool()
-        AccountType = pool.get('account.account.type')
-        income_types = AccountType.search([
-                ('income_statement', '=', True),
-                ])
-        income_types = AccountType.search([
-                ('parent', 'child_of', [t.id for t in income_types]),
-                ])
-        income_types = set(income_types)
-        return income_types
+    @property
+    def must_have_analytic(self):
+        "If the line must have analytic lines set"
+        if self.account.type:
+            return self.account.type.statement == 'income'
 
     @classmethod
     def apply_rule(cls, lines):
         pool = Pool()
         Rule = pool.get('analytic_account.rule')
 
-        analytic_types = cls._analytic_types()
         rules = Rule.search([])
 
         for line in lines:
-            if line.account.type not in analytic_types:
+            if not line.must_have_analytic:
                 continue
             if line.analytic_lines:
                 continue
@@ -255,14 +246,13 @@ class MoveLine(ModelSQL, ModelView):
         pool = Pool()
         AnalyticAccount = pool.get('analytic_account.account')
 
-        analytic_types = cls._analytic_types()
         roots = AnalyticAccount.search([
                 ('parent', '=', None),
                 ])
         roots = set(roots)
 
         for line in lines:
-            if line.account.type not in analytic_types:
+            if not line.must_have_analytic:
                 if not line.analytic_lines:
                     line.analytic_state = 'valid'
                 else:

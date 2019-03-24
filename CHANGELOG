@@ -1,3 +1,4 @@
+* Remove display balance
 * Apply rules only on income statement lines
 * Remove mandatory on analytic roots
 * Remove positive constraint on debit/credit

@@ -86,10 +86,6 @@ class Account(
         ('closed', 'Closed'),
         ], 'State', required=True)
     note = fields.Text('Note')
-    display_balance = fields.Selection([
-        ('debit-credit', 'Debit - Credit'),
-        ('credit-debit', 'Credit - Debit'),
-        ], 'Display Balance', required=True)
     distributions = fields.One2Many(
         'analytic_account.account.distribution', 'parent',
         "Distributions",
@@ -116,6 +112,9 @@ class Account(
         # Migration from 4.0: remove currency
         table.not_null_action('currency', action='remove')
 
+        # Migration from 5.0: remove display_balance
+        table.drop_column('display_balance')
+
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
@@ -127,10 +126,6 @@ class Account(
     @staticmethod
     def default_state():
         return 'draft'
-
-    @staticmethod
-    def default_display_balance():
-        return 'credit-debit'
 
     @classmethod
     def validate(cls, accounts):
@@ -193,7 +188,7 @@ class Account(
                 ).join(move_line, 'LEFT',
                 condition=move_line.id == line.move_line
                 ).select(table.id,
-                Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
+                Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
                 where=(table.type != 'view')
                 & table.id.in_(all_ids)
                 & (table.active == True) & line_query,
@@ -214,8 +209,6 @@ class Account(
                     ])
             for child in childs:
                 balance += account_sum[child.id]
-            if account.display_balance == 'credit-debit' and balance:
-                balance *= -1
             exp = Decimal(str(10.0 ** -account.currency_digits))
             balances[account.id] = balance.quantize(exp)
         return balances
