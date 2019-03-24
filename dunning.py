@@ -86,7 +86,7 @@ class Dunning(ModelSQL, ModelView):
     line = fields.Many2One('account.move.line', 'Line', required=True,
         help="The receivable line to dun for.",
         domain=[
-            ('account.kind', '=', 'receivable'),
+            ('account.type.receivable', '=', True),
             ('account.company', '=', Eval('company', -1)),
             ['OR',
                 ('debit', '>', 0),
@@ -211,7 +211,7 @@ class Dunning(ModelSQL, ModelView):
     @classmethod
     def _overdue_line_domain(cls, date):
         return [
-            ('account.kind', '=', 'receivable'),
+            ('account.type.receivable', '=', True),
             ('dunnings', '=', None),
             ('maturity_date', '<=', date),
             ['OR',
