@@ -149,8 +149,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         domain=[
             ('company', '=', Eval('company', -1)),
             If(Eval('type') == 'out',
-                ('kind', '=', 'receivable'),
-                ('kind', '=', 'payable')),
+                ('type.receivable', '=', True),
+                ('type.payable', '=', True)),
             ])
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states=_STATES, depends=_DEPENDS)
@@ -1665,19 +1665,19 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             ('company', '=', Eval('company', -1)),
             If(Bool(Eval('_parent_invoice')),
                 If(Eval('_parent_invoice', {}).get('type') == 'out',
-                    ('kind', 'in', cls._account_domain('out')),
+                    cls._account_domain('out'),
                     If(Eval('_parent_invoice', {}).get('type') == 'in',
-                        ('kind', 'in', cls._account_domain('in')),
-                        ('kind', 'in',
-                            cls._account_domain('out')
-                            + cls._account_domain('in')))),
+                        cls._account_domain('in'),
+                        ['OR',
+                            cls._account_domain('out'),
+                            cls._account_domain('in')])),
                 If(Eval('invoice_type') == 'out',
-                    ('kind', 'in', cls._account_domain('out')),
+                    cls._account_domain('out'),
                     If(Eval('invoice_type') == 'in',
-                        ('kind', 'in', cls._account_domain('in')),
-                        ('kind', 'in',
-                            cls._account_domain('out')
-                            + cls._account_domain('in'))))),
+                        cls._account_domain('in'),
+                        ['OR',
+                            cls._account_domain('out'),
+                            cls._account_domain('in')]))),
             ]
         cls.account.depends += ['company', 'invoice_type']
         cls.sequence.states.update({
@@ -1687,9 +1687,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     @staticmethod
     def _account_domain(type_):
         if type_ == 'out':
-            return ['revenue']
+            return ['OR', ('type.revenue', '=', True)]
         elif type_ == 'in':
-            return ['expense']
+            return ['OR', ('type.expense', '=', True)]
 
     @classmethod
     def __register__(cls, module_name):
@@ -2168,7 +2168,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             'get_sequence_number')
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('_parent_invoice', {}).get('company', 0)),
             ],
         states=_states, depends=_depends)
@@ -2370,14 +2371,16 @@ class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):
     credit_account = fields.Many2One('account.account', "Credit Account",
         required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company')),
             ],
         depends=['company'])
     debit_account = fields.Many2One('account.account', "Debit Account",
         required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company')),
             ],
         depends=['company'])
