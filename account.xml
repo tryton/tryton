@@ -360,7 +360,7 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
             <field name="domain"
-                eval="[('type', 'child_of', Eval('active_id'), 'parent'), ('kind', '!=', 'view')]"
+                eval="[('type', 'child_of', Eval('active_id'), 'parent'), ('type', '!=', None)]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_list2_view1">
@@ -614,7 +614,7 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
             <field name="domain"
-                eval="[('balance_sheet', '=', True), ['OR', ('parent', '=', None), ('parent.balance_sheet', '=', False)]]"
+                eval="[('statement', '=', 'balance'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'balance'), ('parent.statement', '=', None)]]"
                 pyson="1"/>
             <field name="context" eval="{'cumulate': True}" pyson="1"/>
         </record>
@@ -653,7 +653,7 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
             <field name="domain"
-                eval="[('income_statement', '=', True), ['OR', ('parent', '=', None), ('parent.income_statement', '=', False)]]"
+                eval="[('statement', '=', 'income'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'income')]]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_income_statement_view1">

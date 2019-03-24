@@ -506,10 +506,18 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         depends=['parent'])
     parent = fields.Many2One('account.tax.template', 'Parent')
     childs = fields.One2Many('account.tax.template', 'parent', 'Children')
-    invoice_account = fields.Many2One('account.account.template',
-            'Invoice Account')
-    credit_note_account = fields.Many2One('account.account.template',
-            'Credit Note Account')
+    invoice_account = fields.Many2One(
+        'account.account.template', 'Invoice Account',
+        domain=[
+            ('type.statement', '=', 'balance'),
+            ('closed', '!=', True),
+            ])
+    credit_note_account = fields.Many2One(
+        'account.account.template', 'Credit Note Account',
+        domain=[
+            ('type.statement', '=', 'balance'),
+            ('closed', '!=', True),
+            ])
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
     legal_notice = fields.Text("Legal Notice")
@@ -677,7 +685,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     invoice_account = fields.Many2One('account.account', 'Invoice Account',
         domain=[
             ('company', '=', Eval('company')),
-            ('kind', 'not in', ['view', 'receivable', 'payable']),
+            ('type.statement', '=', 'balance'),
+            ('closed', '!=', True),
             ],
         states={
             'readonly': _states['readonly'],
@@ -689,7 +698,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         'Credit Note Account',
         domain=[
             ('company', '=', Eval('company')),
-            ('kind', 'not in', ['view', 'receivable', 'payable']),
+            ('type.statement', '=', 'balance'),
+            ('closed', '!=', True),
             ],
         states={
             'readonly': _states['readonly'],

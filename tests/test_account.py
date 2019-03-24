@@ -67,11 +67,11 @@ def create_chart(company, tax=False):
     create_chart.account.company = company
     create_chart.transition_create_account()
     receivable, = Account.search([
-            ('kind', '=', 'receivable'),
+            ('type.receivable', '=', True),
             ('company', '=', company.id),
             ])
     payable, = Account.search([
-            ('kind', '=', 'payable'),
+            ('type.payable', '=', True),
             ('company', '=', company.id),
             ])
     create_chart.properties.company = company
@@ -133,14 +133,12 @@ def close_fiscalyear(fiscalyear):
             ('name', '=', 'Equity'),
             ])
     revenue, = Account.search([
-            ('kind', '=', 'revenue'),
+            ('type.revenue', '=', True),
             ])
     account_pl, = Account.create([{
                 'name': 'P&L',
                 'type': type_equity.id,
-                'deferral': True,
                 'parent': revenue.parent.id,
-                'kind': 'other',
                 }])
 
     session_id = BalanceNonDeferral.create()[0]
@@ -236,19 +234,18 @@ class AccountTestCase(ModuleTestCase):
                     ('code', '=', 'EXP'),
                     ])
             revenue, = Account.search([
-                    ('kind', '=', 'revenue'),
+                    ('type.revenue', '=', True),
                     ])
             receivable, = Account.search([
-                    ('kind', '=', 'receivable'),
+                    ('type.receivable', '=', True),
                     ])
             expense, = Account.search([
-                    ('kind', '=', 'expense'),
+                    ('type.expense', '=', True),
                     ])
             payable, = Account.search([
-                    ('kind', '=', 'payable'),
+                    ('type.payable', '=', True),
                     ])
             cash, = Account.search([
-                    ('kind', '=', 'other'),
                     ('name', '=', 'Main Cash'),
                     ])
             cash_cur, = Account.copy([cash], default={
@@ -440,10 +437,10 @@ class AccountTestCase(ModuleTestCase):
                     ('code', '=', 'REV'),
                     ])
             revenue, = Account.search([
-                    ('kind', '=', 'revenue'),
+                    ('type.revenue', '=', True),
                     ])
             receivable, = Account.search([
-                    ('kind', '=', 'receivable'),
+                    ('type.receivable', '=', True),
                     ])
 
             move = Move()
@@ -910,16 +907,16 @@ class AccountTestCase(ModuleTestCase):
                     ('code', '=', 'EXP'),
                     ])
             revenue, = Account.search([
-                    ('kind', '=', 'revenue'),
+                    ('type.revenue', '=', True),
                     ])
             receivable, = Account.search([
-                    ('kind', '=', 'receivable'),
+                    ('type.receivable', '=', True),
                     ])
             expense, = Account.search([
-                    ('kind', '=', 'expense'),
+                    ('type.expense', '=', True),
                     ])
             payable, = Account.search([
-                    ('kind', '=', 'payable'),
+                    ('type.payable', '=', True),
                     ])
             party, = Party.create([{
                         'name': 'Receivable/Payable party',
@@ -1014,10 +1011,10 @@ class AccountTestCase(ModuleTestCase):
         with set_company(company):
             create_chart(company)
             receivable, = Account.search([
-                    ('kind', '=', 'receivable'),
+                    ('type.receivable', '=', True),
                     ])
             payable, = Account.search([
-                    ('kind', '=', 'payable'),
+                    ('type.payable', '=', True),
                     ])
 
             party = Party(party.id)
@@ -1092,19 +1089,13 @@ class AccountTestCase(ModuleTestCase):
             for type_ in Type.search([]):
                 self.assertEqual(type_.name, type_.template.name)
                 self.assertEqual(
-                    type_.balance_sheet, type_.template.balance_sheet)
-                self.assertEqual(
-                    type_.income_statement, type_.template.income_statement)
-                self.assertEqual(
-                    type_.display_balance, type_.template.display_balance)
+                    type_.statement, type_.template.statement)
 
             for account in Account.search([]):
                 self.assertEqual(account.name, account.template.name)
                 self.assertEqual(account.code, account.template.code)
                 self.assertEqual(account.type.template, account.template.type)
                 self.assertEqual(account.reconcile, account.template.reconcile)
-                self.assertEqual(account.kind, account.template.kind)
-                self.assertEqual(account.deferral, account.template.deferral)
                 self.assertEqual(
                     account.start_date, account.template.start_date)
                 self.assertEqual(account.end_date, account.template.end_date)
@@ -1164,12 +1155,12 @@ class AccountTestCase(ModuleTestCase):
             new_type = TypeTemplate()
             new_type.name = 'New Type'
             new_type.parent = root_type
+            new_type.statement = 'balance'
             new_type.save()
             new_account = AccountTemplate()
             new_account.name = 'New Account'
             new_account.parent = chart
             new_account.type = new_type
-            new_account.kind = 'other'
             new_account.save()
             updated_tax, = TaxTemplate.search([])
             updated_tax.name = 'VAT'

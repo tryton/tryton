@@ -48,14 +48,8 @@ Account Type
 ************
 
 The Account Type Model defines the structure of the accounting
-reports:
-
-- Income Statement: A checkbox that tells if accounts of this type
-  must appear at the top level of the Income Statement report.
-- Balance Sheet: A checkbox that tells if accounts of this type
-  must appear at the top level of the Balance Sheet report.
-- Display Balance: A selection that allow to choose how the balance
-  should be computed (Debit - Credit or Credit - Debit)
+reports as balance sheet and income statement.
+It also defines check boxes to filter its accounts by usage.
 
 
 Account
@@ -68,23 +62,12 @@ An Account is defined by these fields:
 - Company
 - Parent Account
 - Currency
-- kind: can take one of these values:
-
-  - Payable or Receivable: if the account is used respectively on
-    credit and debit moves of parties.
-  - Expense or Revenue: if the account is used respectively on expense
-    and revenue moves of parties.
-  - View: means that the account is used to group other accounts in
-    the account chart.
-  - Other: For other accounts.
-
 - Type: The Account Type of the account.
 - Start and End Date: The period for which the account can be used.
 - Replaced By: the account to use after end date.
-- Deferral: A checkbox. If set to true, credit and debit are carried
-  over form fiscal year to fiscal year.
 - Second currency: Force all moves for the account to have this
   secondary currency.
+- Closed: Forbid move on the account.
 - Reconcile: Allow move lines of this account to be reconciled.
 - Party Required: Make party required for move lines of this account.
 - Taxes: This list of tax auto-complete move with new moves lines

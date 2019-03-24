@@ -70,23 +70,31 @@ def get_accounts(company=None, config=None):
     if not company:
         company = get_company()
 
-    accounts = Account.find([
-            ('kind', 'in', ['receivable', 'payable', 'revenue', 'expense']),
+    accounts = {}
+    accounts['receivable'], = Account.find([
+            ('type.receivable', '=', True),
             ('company', '=', company.id),
-            ])
-    accounts = {a.kind: a for a in accounts}
-    cash, = Account.find([
-            ('kind', '=', 'other'),
+            ], limit=1)
+    accounts['payable'], = Account.find([
+            ('type.payable', '=', True),
+            ('company', '=', company.id),
+            ], limit=1)
+    accounts['revenue'], = Account.find([
+            ('type.revenue', '=', True),
+            ('company', '=', company.id),
+            ], limit=1)
+    accounts['expense'], = Account.find([
+            ('type.expense', '=', True),
+            ('company', '=', company.id),
+            ], limit=1)
+    accounts['cash'], = Account.find([
             ('company', '=', company.id),
             ('name', '=', 'Main Cash'),
-            ])
-    accounts['cash'] = cash
-    tax, = Account.find([
-            ('kind', '=', 'other'),
+            ], limit=1)
+    accounts['tax'], = Account.find([
             ('company', '=', company.id),
             ('name', '=', 'Main Tax'),
-            ])
-    accounts['tax'] = tax
+            ], limit=1)
     return accounts
 
 

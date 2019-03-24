@@ -546,7 +546,8 @@ class Line(ModelSQL, ModelView):
         _depends)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ['OR',
                 ('start_date', '=', None),
                 ('start_date', '<=', Eval('date', None)),
@@ -884,7 +885,7 @@ class Line(ModelSQL, ModelView):
     order_move_state = _order_move_field('state')
 
     def get_amount(self, name):
-        sign = 1 if self.account.type.display_balance == 'debit-credit' else -1
+        sign = -1 if self.account.type.statement == 'income' else 1
         if self.amount_second_currency is not None:
             return self.amount_second_currency * sign
         else:
@@ -990,9 +991,9 @@ class Line(ModelSQL, ModelView):
             line.check_account()
 
     def check_account(self):
-        if self.account.kind in ('view',):
+        if not self.account.type or self.account.closed:
             raise AccessError(
-                gettext('account.msg_line_view_account',
+                gettext('account.msg_line_closed_account',
                     account=self.account.rec_name))
         if bool(self.party) != bool(self.account.party_required):
             error = 'party_set' if self.party else 'party_required'
@@ -1258,14 +1259,16 @@ class WriteOff(DeactivableMixin, ModelSQL, ModelView):
     credit_account = fields.Many2One('account.account', "Credit Account",
         required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company')),
             ],
         depends=['company'])
     debit_account = fields.Many2One('account.account', "Debit Account",
         required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company')),
             ],
         depends=['company'])
@@ -1517,7 +1520,9 @@ class Reconcile(Wizard):
         Line = pool.get('account.move.line')
         line = Line.__table__()
         Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
         account = Account.__table__()
+        account_type = AccountType.__table__()
         cursor = Transaction().connection.cursor()
         account_rule = Rule.query_get(Account.__name__)
 
@@ -1529,18 +1534,23 @@ class Reconcile(Wizard):
 
         balance = line.debit - line.credit
         cursor.execute(*line.join(account,
-                condition=line.account == account.id).select(
+                condition=line.account == account.id)
+            .join(account_type, condition=account.type == account_type.id)
+            .select(
                 account.id,
                 where=((line.reconciliation == Null) & account.reconcile
                     & account.id.in_(account_rule)),
-                group_by=[account.id, account.kind],
+                group_by=[account.id,
+                    account_type.receivable, account_type.payable],
                 having=((
                         Sum(Case((balance > 0, 1), else_=0)) > 0)
                     & (Sum(Case((balance < 0, 1), else_=0)) > 0)
-                    | (Case((account.kind == 'receivable', Sum(balance) < 0),
-                            else_=False))
-                    | (Case((account.kind == 'payable', Sum(balance) > 0),
-                            else_=False))
+                    | Case((account_type.receivable & ~account_type.payable,
+                            Sum(balance) < 0),
+                        else_=False)
+                    | Case((account_type.payable & ~account_type.receivable,
+                            Sum(balance) > 0),
+                        else_=False)
                     )))
         return [a for a, in cursor.fetchall()]
 
@@ -1565,10 +1575,10 @@ class Reconcile(Wizard):
                 having=((
                         Sum(Case((balance > 0, 1), else_=0)) > 0)
                     & (Sum(Case((balance < 0, 1), else_=0)) > 0)
-                    | (Case((account.kind == 'receivable', Sum(balance) < 0),
-                            else_=False))
-                    | (Case((account.kind == 'payable', Sum(balance) > 0),
-                            else_=False))
+                    | Case((account.type.receivable, Sum(balance) < 0),
+                        else_=False)
+                    | Case((account.type.payable, Sum(balance) > 0),
+                        else_=False)
                     )))
         return [p for p, in cursor.fetchall()]
 

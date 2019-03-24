@@ -13,37 +13,39 @@ this repository contains the full copyright notices and license terms. -->
         <field name="template_override" xexpand="0" width="100"/>
     </group>
     <notebook colspan="6">
-        <page string="General Information" id="general">
+        <page string="General Information" id="general" col="6">
             <label name="company"/>
             <field name="company"/>
             <label name="parent"/>
             <field name="parent"/>
-            <label name="kind"/>
-            <field name="kind"/>
+            <newline/>
+
             <label name="type"/>
             <field name="type"/>
-            <newline/>
+            <label name="closed"/>
+            <field name="closed"/>
+            <label name="general_ledger_balance"/>
+            <field name="general_ledger_balance"/>
+
             <label name="start_date"/>
-            <group col="3" colspan="1" id="dates">
-                <field name="start_date"/>
-                <label name="end_date"/>
-                <field name="end_date"/>
-            </group>
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
             <label name="replaced_by"/>
             <field name="replaced_by"/>
-            <label name="deferral"/>
-            <field name="deferral"/>
-            <label name="reconcile"/>
-            <field name="reconcile"/>
+
             <label name="currency"/>
             <field name="currency"/>
             <label name="second_currency"/>
             <field name="second_currency"/>
+            <newline/>
+
+            <label name="reconcile"/>
+            <field name="reconcile"/>
             <label name="party_required"/>
             <field name="party_required"/>
-            <label name="general_ledger_balance"/>
-            <field name="general_ledger_balance"/>
-            <field name="taxes" colspan="4"/>
+
+            <field name="taxes" colspan="6"/>
         </page>
         <page string="Children" id="children">
             <field name="childs" colspan="4"/>

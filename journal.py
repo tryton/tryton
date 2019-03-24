@@ -103,6 +103,7 @@ class Journal(
         MoveLine = pool.get('account.move.line')
         Move = pool.get('account.move')
         Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
         Company = pool.get('company.company')
         context = Transaction().context
         cursor = Transaction().connection.cursor()
@@ -120,15 +121,19 @@ class Journal(
         line = MoveLine.__table__()
         move = Move.__table__()
         account = Account.__table__()
+        account_type = AccountType.__table__()
         where = ((move.date >= context.get('start_date'))
             & (move.date <= context.get('end_date'))
-            & ~account.kind.in_(['receivable', 'payable'])
+            & ~account_type.receivable
+            & ~account_type.payable
             & (move.company == company.id))
         for sub_journals in grouped_slice(journals):
             sub_journals = list(sub_journals)
             red_sql = reduce_ids(move.journal, [j.id for j in sub_journals])
             query = line.join(move, 'LEFT', condition=line.move == move.id
                 ).join(account, 'LEFT', condition=line.account == account.id
+                ).join(account_type, 'LEFT',
+                    condition=account.type == account_type.id
                 ).select(move.journal, Sum(line.debit), Sum(line.credit),
                     where=where & red_sql,
                     group_by=move.journal)

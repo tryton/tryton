@@ -47,33 +47,120 @@ def inactive_records(func):
     return wrapper
 
 
+def TypeMixin(template=False):
+
+    class Mixin:
+        name = fields.Char('Name', required=True)
+
+        statement = fields.Selection([
+                (None, ""),
+                ('balance', "Balance"),
+                ('income', "Income"),
+                ('off-balance', "Off-Balance"),
+                ], "Statement",
+            states={
+                'required': Bool(Eval('parent')),
+                },
+            depends=['parent'])
+        assets = fields.Boolean(
+            "Assets",
+            states={
+                'invisible': Eval('statement') != 'balance',
+                },
+            depends=['statement'])
+
+        receivable = fields.Boolean(
+            "Receivable",
+            domain=[
+                If(Eval('statement') != 'balance',
+                    ('receivable', '=', False), ()),
+                ],
+            states={
+                'invisible': ((Eval('statement') != 'balance')
+                    | ~Eval('assets', True)),
+                },
+            depends=['statement', 'assets'])
+        stock = fields.Boolean(
+            "Stock",
+            domain=[
+                If(Eval('statement') == 'off-balance',
+                    ('stock', '=', False), ()),
+                ],
+            states={
+                'invisible': Eval('statement') == 'off-balance',
+                },
+            depends=['statement'])
+
+        payable = fields.Boolean(
+            "Payable",
+            domain=[
+                If(Eval('statement') != 'balance',
+                    ('payable', '=', False), ()),
+                ],
+            states={
+                'invisible': ((Eval('statement') != 'balance')
+                    | Eval('assets', False)),
+                },
+            depends=['statement', 'assets'])
+
+        revenue = fields.Boolean(
+            "Revenue",
+            domain=[
+                If(Eval('statement') != 'income',
+                    ('revenue', '=', False), ()),
+                ],
+            states={
+                'invisible': Eval('statement') != 'income',
+                },
+            depends=['statement'])
+
+        expense = fields.Boolean(
+            "Expense",
+            domain=[
+                If(Eval('statement') != 'income',
+                    ('expense', '=', False), ()),
+                ],
+            states={
+                'invisible': Eval('statement') != 'income',
+                },
+            depends=['statement'])
+    if not template:
+        for fname in dir(Mixin):
+            field = getattr(Mixin, fname)
+            if not isinstance(field, fields.Field):
+                continue
+            field.states['readonly'] = (
+                Bool(Eval('template', -1)) & ~Eval('template_override', False))
+    return Mixin
+
+
 class TypeTemplate(
-        sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
+        TypeMixin(template=True), sequence_ordered(), tree(separator='\\'),
+        ModelSQL, ModelView):
     'Account Type Template'
     __name__ = 'account.account.type.template'
-    name = fields.Char('Name', required=True)
-    parent = fields.Many2One('account.account.type.template', 'Parent',
-            ondelete="RESTRICT")
-    childs = fields.One2Many('account.account.type.template', 'parent',
-        'Children')
-    balance_sheet = fields.Boolean('Balance Sheet')
-    income_statement = fields.Boolean('Income Statement')
-    display_balance = fields.Selection([
-        ('debit-credit', 'Debit - Credit'),
-        ('credit-debit', 'Credit - Debit'),
-        ], 'Display Balance', required=True)
+    parent = fields.Many2One(
+        'account.account.type.template', "Parent", ondelete='RESTRICT',
+        domain=['OR',
+            If(Eval('statement') == 'off-balance',
+                ('statement', '=', 'off-balance'),
+                If(Eval('statement') == 'balance',
+                    ('statement', '=', 'balance'),
+                    ('statement', '!=', 'off-balance')),
+                ),
+            ('statement', '=', None),
+            ],
+        depends=['statement'])
+    childs = fields.One2Many(
+        'account.account.type.template', 'parent', "Children")
 
-    @staticmethod
-    def default_balance_sheet():
-        return False
+    @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+        table_h = cls.__table_handler__(module_name)
 
-    @staticmethod
-    def default_income_statement():
-        return False
-
-    @staticmethod
-    def default_display_balance():
-        return 'debit-credit'
+        # Migration from 5.0: remove display_balance
+        table_h.drop_column('display_balance')
 
     def _get_type_value(self, type=None):
         '''
@@ -84,12 +171,14 @@ class TypeTemplate(
             res['name'] = self.name
         if not type or type.sequence != self.sequence:
             res['sequence'] = self.sequence
-        if not type or type.balance_sheet != self.balance_sheet:
-            res['balance_sheet'] = self.balance_sheet
-        if not type or type.income_statement != self.income_statement:
-            res['income_statement'] = self.income_statement
-        if not type or type.display_balance != self.display_balance:
-            res['display_balance'] = self.display_balance
+        if not type or type.statement != self.statement:
+            res['statement'] = self.statement
+        if not type or type.assets != self.assets:
+            res['assets'] = self.assets
+        for boolean in [
+                'receivable', 'stock', 'payable', 'revenue', 'expense']:
+            if not type or getattr(type, boolean) != getattr(self, boolean):
+                res[boolean] = getattr(self, boolean)
         if not type or type.template != self:
             res['template'] = self.id
         return res
@@ -132,26 +221,28 @@ class TypeTemplate(
             childs = sum((c.childs for c in childs), ())
 
 
-class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
+class Type(
+        TypeMixin(), sequence_ordered(), tree(separator='\\'),
+        ModelSQL, ModelView):
     'Account Type'
     __name__ = 'account.account.type'
 
-    _states = {
-        'readonly': (Bool(Eval('template', -1)) &
-            ~Eval('template_override', False)),
-        }
-    name = fields.Char('Name', size=None, required=True, states=_states)
     parent = fields.Many2One('account.account.type', 'Parent',
-        ondelete="RESTRICT", states=_states,
+        ondelete="RESTRICT",
+        states={
+            'readonly': (Bool(Eval('template', -1)) &
+                ~Eval('template_override', False)),
+            },
         domain=[
             ('company', '=', Eval('company')),
             ],
-        depends=['company'])
+        depends=['company', 'statement'])
     childs = fields.One2Many('account.account.type', 'parent', 'Children',
         domain=[
             ('company', '=', Eval('company')),
         ],
         depends=['company'])
+
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     amount = fields.Function(fields.Numeric('Amount',
@@ -160,12 +251,7 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     amount_cmp = fields.Function(fields.Numeric('Amount',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits']),
         'get_amount_cmp')
-    balance_sheet = fields.Boolean('Balance Sheet', states=_states)
-    income_statement = fields.Boolean('Income Statement', states=_states)
-    display_balance = fields.Selection([
-        ('debit-credit', 'Debit - Credit'),
-        ('credit-debit', 'Credit - Debit'),
-        ], 'Display Balance', required=True, states=_states)
+
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
     template = fields.Many2One('account.account.type.template', 'Template')
@@ -175,19 +261,14 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             'invisible': ~Bool(Eval('template', -1)),
             },
         depends=['template'])
-    del _states
 
-    @staticmethod
-    def default_balance_sheet():
-        return False
+    @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+        table_h = cls.__table_handler__(module_name)
 
-    @staticmethod
-    def default_income_statement():
-        return False
-
-    @staticmethod
-    def default_display_balance():
-        return 'debit-credit'
+        # Migration from 5.0: remove display_balance
+        table_h.drop_column('display_balance')
 
     @classmethod
     def default_template_override(cls):
@@ -221,10 +302,9 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         with Transaction().set_context(periods=period_ids):
             accounts = Account.search([
                     ('type', 'in', [t.id for t in childs]),
-                    ('kind', '!=', 'view'),
                     ])
         for account in accounts:
-            type_sum[account.type.id] += (account.debit - account.credit)
+            type_sum[account.type.id] += (account.credit - account.debit)
 
         for type_ in types:
             childs = cls.search([
@@ -234,7 +314,7 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
                 res[type_.id] += type_sum[child.id]
             exp = Decimal(str(10.0 ** -type_.currency_digits))
             res[type_.id] = res[type_.id].quantize(exp)
-            if type_.display_balance == 'credit-debit':
+            if type_.statement == 'balance' and type_.assets:
                 res[type_.id] = - res[type_.id]
         return res
 
@@ -331,53 +411,136 @@ class OpenType(Wizard):
     do_ledger_account = open_action
 
 
-class AccountTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
+def AccountMixin(template=False):
+
+    class Mixin:
+        name = fields.Char('Name', required=True, select=True)
+        code = fields.Char('Code', select=True)
+
+        closed = fields.Boolean(
+            "Closed",
+            states={
+                'invisible': ~Eval('type'),
+                },
+            depends=['type'],
+            help="Check to prevent posting move on the account.")
+        reconcile = fields.Boolean(
+            "Reconcile",
+            states={
+                'invisible': ~Eval('type'),
+                },
+            depends=['type'],
+            help="Allow move lines of this account to be reconciled.")
+
+        party_required = fields.Boolean('Party Required',
+            domain=[
+                If(~Eval('type') | ~Eval('deferral', False),
+                    ('party_required', '=', False),
+                    ()),
+                ],
+            states={
+                'invisible': ~Eval('type') | ~Eval('deferral', False),
+                },
+            depends=['type', 'deferral'])
+
+        general_ledger_balance = fields.Boolean('General Ledger Balance',
+            states={
+                'invisible': ~Eval('type'),
+                },
+            depends=['type'],
+            help="Display only the balance in the general ledger report")
+
+        deferral = fields.Function(fields.Boolean(
+                "Deferral",
+                states={
+                    'invisible': ~Eval('type'),
+                    },
+                depends=['type']),
+            'on_change_with_deferral', searcher='search_deferral')
+
+        @classmethod
+        def default_closed(cls):
+            return False
+
+        @classmethod
+        def default_reconcile(cls):
+            return False
+
+        @classmethod
+        def default_party_required(cls):
+            return False
+
+        @classmethod
+        def default_general_ledger_balance(cls):
+            return False
+
+        @fields.depends('type')
+        def on_change_with_deferral(self, name=None):
+            return (self.type
+                and self.type.statement in {'balance', 'off-balance'})
+
+        @classmethod
+        def search_deferral(cls, name, clause):
+            _, operator, value = clause
+            if operator in {'in', 'not in'}:
+                if operator == 'in':
+                    operator = '='
+                else:
+                    operator = '!='
+                if True in value and False not in value:
+                    value = '=', True
+                elif False in value and True not in value:
+                    value = '=', False
+                else:
+                    return [('id', operator, None)]
+            if ((operator == '=' and value)
+                    or (operator == '!=' and not value)):
+                return [
+                    ('type.statement', 'in', ['balance', 'off-balance']),
+                    ]
+            else:
+                return ['OR',
+                    ('type', '=', None),
+                    ('type.statement', 'not in', ['balance', 'off-balance']),
+                    ]
+
+        def get_rec_name(self, name):
+            if self.code:
+                return self.code + ' - ' + self.name
+            else:
+                return self.name
+
+        @classmethod
+        def search_rec_name(cls, name, clause):
+            if clause[1].startswith('!') or clause[1].startswith('not '):
+                bool_op = 'AND'
+            else:
+                bool_op = 'OR'
+            return [bool_op,
+                ('code',) + tuple(clause[1:]),
+                (cls._rec_name,) + tuple(clause[1:]),
+                ]
+
+    if not template:
+        for fname in dir(Mixin):
+            field = getattr(Mixin, fname)
+            if (not isinstance(field, fields.Field)
+                    or isinstance(field, fields.Function)):
+                continue
+            field.states['readonly'] = (
+                Bool(Eval('template', -1)) & ~Eval('template_override', False))
+    return Mixin
+
+
+class AccountTemplate(
+        AccountMixin(template=True), PeriodMixin, tree(), ModelSQL, ModelView):
     'Account Template'
     __name__ = 'account.account.template'
-    name = fields.Char('Name', size=None, required=True, select=True)
-    code = fields.Char('Code', size=None, select=True)
-    type = fields.Many2One('account.account.type.template', 'Type',
-        ondelete="RESTRICT",
-        states={
-            'invisible': Eval('kind') == 'view',
-            'required': Eval('kind') != 'view',
-            }, depends=['kind'])
+    type = fields.Many2One(
+        'account.account.type.template', "Type", ondelete="RESTRICT")
     parent = fields.Many2One('account.account.template', 'Parent', select=True,
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
-    reconcile = fields.Boolean('Reconcile',
-        states={
-            'invisible': Eval('kind') == 'view',
-            }, depends=['kind'])
-    kind = fields.Selection([
-            ('other', 'Other'),
-            ('payable', 'Payable'),
-            ('revenue', 'Revenue'),
-            ('receivable', 'Receivable'),
-            ('expense', 'Expense'),
-            ('stock', 'Stock'),
-            ('view', 'View'),
-            ], 'Kind', required=True)
-    deferral = fields.Boolean('Deferral', states={
-            'invisible': Eval('kind') == 'view',
-            }, depends=['kind'])
-    party_required = fields.Boolean('Party Required',
-        domain=[
-            If((Eval('kind') == 'view') | ~Eval('deferral', False),
-                ('party_required', '=', False),
-                (),
-                )
-            ],
-        states={
-            'invisible': (Eval('kind') == 'view') | ~Eval('deferral', False),
-            },
-        depends=['kind', 'deferral'])
-    general_ledger_balance = fields.Boolean('General Ledger Balance',
-        states={
-            'invisible': Eval('kind') == 'view',
-            },
-        depends=['kind'],
-        help="Display only the balance in the general ledger report")
     taxes = fields.Many2Many('account.account.template-account.tax.template',
             'account', 'tax', 'Default Taxes',
             domain=[('parent', '=', None)])
@@ -393,42 +556,14 @@ class AccountTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
         cls._order.insert(0, ('code', 'ASC'))
         cls._order.insert(1, ('name', 'ASC'))
 
-    @staticmethod
-    def default_kind():
-        return 'view'
-
-    @staticmethod
-    def default_reconcile():
-        return False
-
-    @staticmethod
-    def default_deferral():
-        return True
-
-    @staticmethod
-    def default_party_required():
-        return False
-
-    @staticmethod
-    def default_general_ledger_balance():
-        return False
-
-    def get_rec_name(self, name):
-        if self.code:
-            return self.code + ' - ' + self.name
-        else:
-            return self.name
-
     @classmethod
-    def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
-        return [bool_op,
-            ('code',) + tuple(clause[1:]),
-            (cls._rec_name,) + tuple(clause[1:]),
-            ]
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: remove kind
+        table_h.drop_column('kind')
 
     def _get_account_value(self, account=None):
         '''
@@ -439,16 +574,14 @@ class AccountTemplate(PeriodMixin, tree(), ModelSQL, ModelView):
             res['name'] = self.name
         if not account or account.code != self.code:
             res['code'] = self.code
-        if not account or account.kind != self.kind:
-            res['kind'] = self.kind
         if not account or account.start_date != self.start_date:
             res['start_date'] = self.start_date
         if not account or account.end_date != self.end_date:
             res['end_date'] = self.end_date
+        if not account or account.closed != self.closed:
+            res['closed'] = self.closed
         if not account or account.reconcile != self.reconcile:
             res['reconcile'] = self.reconcile
-        if not account or account.deferral != self.deferral:
-            res['deferral'] = self.deferral
         if not account or account.party_required != self.party_required:
             res['party_required'] = self.party_required
         if (not account
@@ -563,15 +696,13 @@ class AccountTemplateTaxTemplate(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
+class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
     'Account'
     __name__ = 'account.account'
     _states = {
         'readonly': (Bool(Eval('template', -1)) &
             ~Eval('template_override', False)),
         }
-    name = fields.Char('Name', required=True, select=True, states=_states)
-    code = fields.Char('Code', select=True, states=_states)
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")
     currency = fields.Function(fields.Many2One('currency.currency',
@@ -586,22 +717,20 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
             ],
         states={
             'reaodnly': _states['readonly'],
-            'invisible': (Eval('kind').in_(
-                    ['payable', 'revenue', 'receivable', 'expense'])
-                | ~Eval('deferral', False)),
+            'invisible': ~Eval('deferral', False),
             },
-        depends=['currency', 'kind', 'deferral'])
+        depends=['currency', 'deferral'])
     second_currency_digits = fields.Function(fields.Integer(
             "Second Currency Digits"), 'get_second_currency_digits')
-    type = fields.Many2One('account.account.type', 'Type', ondelete="RESTRICT",
+    type = fields.Many2One(
+        'account.account.type', "Type", ondelete='RESTRICT',
         states={
-            'invisible': Eval('kind') == 'view',
-            'required': Eval('kind') != 'view',
             'readonly': _states['readonly'],
             },
         domain=[
             ('company', '=', Eval('company')),
-            ], depends=['kind', 'company'])
+            ],
+        depends=['company'])
     parent = fields.Many2One(
         'account.account', 'Parent', select=True,
         left="left", right="right", ondelete="RESTRICT", states=_states)
@@ -626,48 +755,13 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 },
             depends=['second_currency_digits', 'second_currency']),
         'get_credit_debit')
-    reconcile = fields.Boolean('Reconcile',
-        help='Allow move lines of this account \nto be reconciled.',
-        states={
-            'invisible': Eval('kind') == 'view',
-            'readonly': _states['readonly'],
-            }, depends=['kind'])
     note = fields.Text('Note')
-    kind = fields.Selection([
-            ('other', 'Other'),
-            ('payable', 'Payable'),
-            ('revenue', 'Revenue'),
-            ('receivable', 'Receivable'),
-            ('expense', 'Expense'),
-            ('stock', 'Stock'),
-            ('view', 'View'),
-            ], 'Kind', required=True, states=_states)
-    deferral = fields.Boolean('Deferral', states={
-            'invisible': Eval('kind') == 'view',
-            'readonly': _states['readonly'],
-            }, depends=['kind'])
-    deferrals = fields.One2Many('account.account.deferral', 'account',
-        'Deferrals', readonly=True, states={
-            'invisible': Eval('kind') == 'view',
-            }, depends=['kind'])
-    party_required = fields.Boolean('Party Required',
-        domain=[
-            If((Eval('kind') == 'view') | ~Eval('deferral', False),
-                ('party_required', '=', False),
-                (),
-                )
-            ],
+    deferrals = fields.One2Many(
+        'account.account.deferral', 'account', "Deferrals", readonly=True,
         states={
-            'invisible': (Eval('kind') == 'view') | ~Eval('deferral', False),
-            'readonly': _states['readonly'],
+            'invisible': ~Eval('type'),
             },
-        depends=['kind', 'deferral'])
-    general_ledger_balance = fields.Boolean('General Ledger Balance',
-        states={
-            'invisible': Eval('kind') == 'view',
-            },
-        depends=['kind'],
-        help="Display only the balance in the general ledger report")
+        depends=['type'])
     taxes = fields.Many2Many('account.account-account.tax',
             'account', 'tax', 'Default Taxes',
             domain=[
@@ -706,6 +800,15 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         cls._order.insert(1, ('name', 'ASC'))
 
     @classmethod
+    def __register__(cls, module_name):
+        super().__register__(module_name)
+
+        table_h = cls.__table_handler__(module_name)
+
+        # Migration from 5.0: remove kind
+        table_h.drop_column('kind')
+
+    @classmethod
     def validate(cls, accounts):
         super(Account, cls).validate(accounts)
         cls.check_second_currency(accounts)
@@ -721,26 +824,6 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company') or None
-
-    @staticmethod
-    def default_reconcile():
-        return False
-
-    @staticmethod
-    def default_deferral():
-        return True
-
-    @staticmethod
-    def default_party_required():
-        return False
-
-    @staticmethod
-    def default_general_ledger_balance():
-        return False
-
-    @staticmethod
-    def default_kind():
-        return 'view'
 
     @classmethod
     def default_template_override(cls):
@@ -916,14 +999,8 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
 
         return values
 
-    def get_rec_name(self, name):
-        if self.code:
-            return self.code + ' - ' + self.name
-        else:
-            return self.name
-
     __on_change_parent_fields = ['name', 'code', 'company', 'type',
-        'reconcile', 'kind', 'deferral', 'party_required',
+        'reconcile', 'deferral', 'party_required',
         'general_ledger_balance', 'taxes']
 
     @fields.depends('parent', *__on_change_parent_fields)
@@ -932,7 +1009,7 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
             return
         for field in self.__on_change_parent_fields:
             if (not getattr(self, field)
-                    or field in {'reconcile', 'kind', 'deferral',
+                    or field in {'reconcile', 'deferral',
                         'party_required', 'general_ledger_balance'}):
                 setattr(self, field, getattr(self.parent, field))
 
@@ -954,7 +1031,11 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         for account in accounts:
             if not account.second_currency:
                 continue
-            if account.kind != 'other':
+            if (not account.type
+                    or account.type.payable
+                    or account.type.revenue
+                    or account.type.receivable
+                    or account.type.expense):
                 raise SecondCurrencyError(
                     gettext('account.msg_account_invalid_type_second_currency',
                         account=account.rec_name))
@@ -1301,7 +1382,7 @@ class GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
                 columns.append(Column(account, fname).as_(fname))
         return account.select(*columns,
             where=(account.company == context.get('company'))
-            & (account.kind != 'view'))
+            & (account.type != Null))
 
     @classmethod
     def get_period_ids(cls, name):
@@ -1963,17 +2044,19 @@ class AgedBalance(ModelSQL, ModelView):
         Move = pool.get('account.move')
         Reconciliation = pool.get('account.move.reconciliation')
         Account = pool.get('account.account')
+        Type = pool.get('account.account.type')
 
         line = MoveLine.__table__()
         move = Move.__table__()
         reconciliation = Reconciliation.__table__()
         account = Account.__table__()
+        type_ = Type.__table__()
 
         company_id = context.get('company')
         date = context.get('date')
         with Transaction().set_context(date=None):
             line_query, _ = MoveLine.query_get(line)
-        kind = cls.get_kind()
+        kind = cls.get_kind(type_)
         columns = [
             line.party.as_('id'),
             Literal(0).as_('create_uid'),
@@ -2008,11 +2091,12 @@ class AgedBalance(ModelSQL, ModelView):
 
         return line.join(move, condition=line.move == move.id
             ).join(account, condition=line.account == account.id
+            ).join(type_, condition=account.type == type_.id
             ).join(reconciliation, 'LEFT',
                 condition=reconciliation.id == line.reconciliation
             ).select(*columns,
                 where=(line.party != Null)
-                & account.kind.in_(kind)
+                & kind
                 & ((line.reconciliation == Null)
                     | (reconciliation.date > date))
                 & (move.date <= date)
@@ -2040,17 +2124,17 @@ class AgedBalance(ModelSQL, ModelView):
             return datetime.timedelta(days=1)
 
     @classmethod
-    def get_kind(cls):
+    def get_kind(cls, account_type):
         context = Transaction().context
         type_ = context.get('type', 'customer')
         if type_ == 'customer_supplier':
-            return ['payable', 'receivable']
+            return account_type.payable | account_type.receivable
         elif type_ == 'supplier':
-            return ['payable']
+            return account_type.payable
         elif type_ == 'customer':
-            return ['receivable']
+            return account_type.receivable
         else:
-            return []
+            return Literal(False)
 
     def get_currency_digits(self, name):
         return self.company.currency.digits
@@ -2111,14 +2195,14 @@ class CreateChartProperties(ModelView):
     account_receivable = fields.Many2One('account.account',
             'Default Receivable Account',
             domain=[
-                ('kind', '=', 'receivable'),
+                ('type.receivable', '=', True),
                 ('company', '=', Eval('company')),
             ],
             depends=['company'])
     account_payable = fields.Many2One('account.account',
             'Default Payable Account',
             domain=[
-                ('kind', '=', 'payable'),
+                ('type.payable', '=', True),
                 ('company', '=', Eval('company')),
             ],
             depends=['company'])

@@ -16,6 +16,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Минимальная схема типов счетов</field>
             <field name="name" lang="sl">Minimalni kontni načrt</field>
             <field name="sequence" eval="10"/>
+            <field name="statement" eval="None"/>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_asset">
@@ -31,7 +32,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="sl">Sredstvo</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="account_type_template_minimal"/>
-            <field name="balance_sheet" eval="True"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_asset_current">
@@ -46,6 +48,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Текущие</field>
             <field name="name" lang="sl">Kratkoročno</field>
             <field name="parent" ref="account_type_template_asset"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template"
@@ -61,6 +65,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Наличные</field>
             <field name="name" lang="sl">Denar</field>
             <field name="parent" ref="account_type_template_asset_current"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template"
@@ -76,7 +82,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Наличные</field>
             <field name="name" lang="sl">Denar</field>
             <field name="parent" ref="account_type_template_asset_current"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             <field name="sequence" eval="20"/>
+            <field name="receivable" eval="True"/>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_asset_long_term">
@@ -91,6 +100,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Долгосрочные</field>
             <field name="name" lang="sl">Dolgoročno</field>
             <field name="parent" ref="account_type_template_asset"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             <field name="sequence" eval="20"/>
         </record>
         <record model="account.account.type.template"
@@ -107,7 +118,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="sl">Obveznosti</field>
             <field name="sequence" eval="20"/>
             <field name="parent" ref="account_type_template_minimal"/>
-            <field name="balance_sheet" eval="True"/>
+            <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_liability_current">
@@ -122,6 +133,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Текущие</field>
             <field name="name" lang="sl">Kratkoročno</field>
             <field name="parent" ref="account_type_template_liability"/>
+            <field name="statement">balance</field>
             <field name="sequence" eval="10"/>
         </record>
         <record model="account.account.type.template"
@@ -137,7 +149,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Подлежащие уплате</field>
             <field name="name" lang="sl">Obveznosti</field>
             <field name="parent" ref="account_type_template_liability_current"/>
+            <field name="statement">balance</field>
             <field name="sequence" eval="10"/>
+            <field name="payable" eval="True"/>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_liability_current_tax">
@@ -152,6 +166,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Налоги</field>
             <field name="name" lang="sl">Davek</field>
             <field name="parent" ref="account_type_template_liability_current"/>
+            <field name="statement">balance</field>
             <field name="sequence" eval="20"/>
         </record>
         <record model="account.account.type.template"
@@ -167,6 +182,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Долгосрочные</field>
             <field name="name" lang="sl">Dolgoročno</field>
             <field name="parent" ref="account_type_template_liability"/>
+            <field name="statement">balance</field>
             <field name="sequence" eval="20"/>
         </record>
         <record model="account.account.type.template"
@@ -183,7 +199,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="sl">Kapital</field>
             <field name="sequence" eval="30"/>
             <field name="parent" ref="account_type_template_minimal"/>
-            <field name="balance_sheet" eval="True"/>
+            <field name="statement">balance</field>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_income">
@@ -198,9 +214,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Поступления</field>
             <field name="name" lang="sl">Prihodki</field>
             <field name="parent" ref="account_type_template_equity"/>
+            <field name="statement">income</field>
             <field name="sequence" eval="40"/>
-            <field name="income_statement" eval="True"/>
-            <field name="display_balance">credit-debit</field>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_revenue">
@@ -215,8 +230,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Доходы</field>
             <field name="name" lang="sl">Prihodki</field>
             <field name="parent" ref="account_type_template_income"/>
+            <field name="statement">income</field>
             <field name="sequence" eval="10"/>
-            <field name="display_balance">credit-debit</field>
+            <field name="revenue" eval="True"/>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_expense">
@@ -231,8 +247,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Расходы</field>
             <field name="name" lang="sl">Odhodki</field>
             <field name="parent" ref="account_type_template_income"/>
+            <field name="statement">income</field>
             <field name="sequence" eval="20"/>
-            <field name="display_balance">credit-debit</field>
+            <field name="expense" eval="True"/>
         </record>
         <record model="account.account.type.template"
                 id="account_type_template_off_balance">
@@ -248,6 +265,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="sl">Zunaj bilance</field>
             <field name="sequence" eval="60"/>
             <field name="parent" ref="account_type_template_minimal"/>
+            <field name="statement">off-balance</field>
         </record>
 
         <record model="account.account.template" id="account_template_root">
@@ -262,6 +280,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Минимальная схема счетов</field>
             <field name="name" lang="sl">Minimalni kontni načrt</field>
             <field name="type" ref="account_type_template_minimal"/>
+            <field name="closed" eval="True"/>
         </record>
         <record model="account.account.template" id="account_template_receivable">
             <field name="name" lang="en">Main Receivable</field>
@@ -276,10 +295,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="sl">Glavne terjatve</field>
             <field name="type" ref="account_type_template_asset_current_receivable"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="party_required" eval="True"/>
             <field name="parent" ref="account_template_root"/>
-            <field name="kind">receivable</field>
         </record>
         <record model="account.account.template" id="account_template_payable">
             <field name="name" lang="en">Main Payable</field>
@@ -294,10 +311,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="sl">Glavne obveznosti</field>
             <field name="type" ref="account_type_template_liability_current_payable"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="party_required" eval="True"/>
             <field name="parent" ref="account_template_root"/>
-            <field name="kind">payable</field>
         </record>
         <record model="account.account.template" id="account_template_revenue">
             <field name="name" lang="en">Main Revenue</field>
@@ -311,9 +326,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Основной Доходы</field>
             <field name="name" lang="sl">Glavni prihodki</field>
             <field name="type" ref="account_type_template_revenue"/>
-            <field name="deferral" eval="False"/>
             <field name="parent" ref="account_template_root"/>
-            <field name="kind">revenue</field>
         </record>
         <record model="account.account.template" id="account_template_expense">
             <field name="name" lang="en">Main Expense</field>
@@ -327,9 +340,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name" lang="ru">Основной Расходы</field>
             <field name="name" lang="sl">Glavni odhodki</field>
             <field name="type" ref="account_type_template_expense"/>
-            <field name="deferral" eval="False"/>
             <field name="parent" ref="account_template_root"/>
-            <field name="kind">expense</field>
         </record>
         <record model="account.account.template" id="account_template_cash">
             <field name="name" lang="en">Main Cash</field>
@@ -345,7 +356,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type" ref="account_type_template_asset_current_cash"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account_template_root"/>
-            <field name="kind">other</field>
         </record>
         <record model="account.account.template" id="account_template_tax">
             <field name="name" lang="en">Main Tax</field>
@@ -361,7 +371,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type" ref="account_type_template_liability_current_tax"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="account_template_root"/>
-            <field name="kind">other</field>
         </record>
     </data>
 </tryton>

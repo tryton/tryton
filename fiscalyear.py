@@ -249,7 +249,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         Currency = pool.get('currency.currency')
         Deferral = pool.get('account.account.deferral')
 
-        if account.kind == 'view':
+        if not account.type:
             return
         if not account.deferral:
             if not Currency.is_zero(self.company.currency, account.balance):
@@ -365,7 +365,8 @@ class BalanceNonDeferralStart(ModelView):
     credit_account = fields.Many2One('account.account', 'Credit Account',
         required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ('deferral', '=', True),
             ],
@@ -373,7 +374,8 @@ class BalanceNonDeferralStart(ModelView):
     debit_account = fields.Many2One('account.account', 'Debit Account',
         required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ('deferral', '=', True),
             ],
@@ -438,7 +440,8 @@ class BalanceNonDeferral(Wizard):
             accounts = Account.search([
                     ('company', '=', self.start.fiscalyear.company.id),
                     ('deferral', '=', False),
-                    ('kind', '!=', 'view'),
+                    ('type', '!=', None),
+                    ('closed', '!=', True),
                     ])
         lines = []
         for account in accounts:

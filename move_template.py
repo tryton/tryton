@@ -158,7 +158,8 @@ class MoveLineTemplate(ModelSQL, ModelView):
         help="A python expression that will be evaluated with the keywords.")
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('_parent_move', {}).get('company', -1)),
             ])
     party = fields.Char('Party',

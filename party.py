@@ -32,7 +32,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
     account_payable = fields.MultiValue(fields.Many2One(
             'account.account', "Account Payable",
             domain=[
-                ('kind', '=', 'payable'),
+                ('type.payable', '=', True),
                 ('party_required', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -42,7 +42,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
     account_receivable = fields.MultiValue(fields.Many2One(
             'account.account', "Account Receivable",
             domain=[
-                ('kind', '=', 'receivable'),
+                ('type.receivable', '=', True),
                 ('party_required', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -114,12 +114,14 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
         User = pool.get('res.user')
         Date = pool.get('ir.date')
         cursor = Transaction().connection.cursor()
 
         line = MoveLine.__table__()
         account = Account.__table__()
+        account_type = AccountType.__table__()
 
         for name in names:
             if name not in ('receivable', 'payable',
@@ -146,8 +148,10 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
                 party_where = reduce_ids(line.party, sub_ids)
                 cursor.execute(*line.join(account,
                         condition=account.id == line.account
+                        ).join(account_type,
+                        condition=account.type == account_type.id
                         ).select(line.party, amount,
-                        where=((account.kind == code)
+                        where=(getattr(account_type, code)
                             & (line.reconciliation == Null)
                             & (account.company == company_id)
                             & party_where
@@ -165,11 +169,13 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
         User = pool.get('res.user')
         Date = pool.get('ir.date')
 
         line = MoveLine.__table__()
         account = Account.__table__()
+        account_type = AccountType.__table__()
 
         if name not in ('receivable', 'payable',
                 'receivable_today', 'payable_today'):
@@ -197,15 +203,16 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             value = [cast_(Literal(Decimal(v or 0))) for v in value]
         else:
             value = cast_(Literal(Decimal(value or 0)))
-        query = line.join(account, condition=account.id == line.account
+        query = (line.join(account, condition=account.id == line.account
+                ).join(account_type, condition=account.type == account_type.id
                 ).select(line.party,
-                    where=(account.kind == code)
+                where=(getattr(account_type, code)
                     & (line.party != Null)
                     & (line.reconciliation == Null)
                     & (account.company == company_id)
-                    & today_query,
-                    group_by=line.party,
-                    having=Operator(amount, value))
+                    & today_query),
+                group_by=line.party,
+                having=Operator(amount, value)))
         return [('id', 'in', query)]
 
     @property
@@ -249,7 +256,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
     account_payable = fields.Many2One(
         'account.account', "Account Payable",
         domain=[
-            ('kind', '=', 'payable'),
+            ('type.payable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
@@ -257,7 +264,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
     account_receivable = fields.Many2One(
         'account.account', "Account Receivable",
         domain=[
-            ('kind', '=', 'receivable'),
+            ('type.receivable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],

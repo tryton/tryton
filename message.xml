@@ -87,7 +87,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot delete account "%(account)s" because it has move lines.</field>
         </record>
         <record model="ir.message" id="msg_account_invalid_type_second_currency">
-            <field name="text">To set a second currency for account "%(account)s", it must have the type "Other".</field>
+            <field name="text">To set a second currency for account "%(account)s", it must not have a type "payable", "revenue", "receivable" nor "expense".</field>
         </record>
         <record model="ir.message" id="msg_account_invalid_deferral_second_currency">
             <field name="text">To set a second currency for account "%(account)s", it must be deferral.</field>
@@ -155,8 +155,8 @@ Use the current period to cancel the move?</field>
         <record model="ir.message" id="msg_modify_line_reconciled">
             <field name="text">You cannot modify reconciled line "%(line)s".</field>
         </record>
-        <record model="ir.message" id="msg_line_view_account">
-            <field name="text">To create a line on account "%(account)s", you must change its "view" kind.</field>
+        <record model="ir.message" id="msg_line_closed_account">
+            <field name="text">To create a line on account "%(account)s", you must set a type or unclose it.</field>
         </record>
         <record model="ir.message" id="msg_line_already_reconciled">
             <field name="text">You cannot reconcile already reconciled line "%(line)s".</field>
