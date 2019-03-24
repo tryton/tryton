@@ -13,8 +13,8 @@ def add_cogs_accounts(accounts, company=None, config=None):
         company = get_company()
 
     accounts['cogs'], = Account.find([
-            ('kind', '=', 'other'),
+            ('type.expense', '=', True),
+            ('id', '!=', accounts['expense'].id),
             ('company', '=', company.id),
-            ('name', '=', 'COGS'),
             ])
     return accounts

@@ -13,12 +13,11 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="name">COGS</field>
             <field name="type" ref="account.account_type_template_expense_sl"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root_sl"/>
-            <field name="kind">other</field>
         </record>
 
     </data>

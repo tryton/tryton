@@ -15,7 +15,7 @@ class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     account_cogs = fields.MultiValue(fields.Many2One('account.account',
             'Account Cost of Goods Sold', domain=[
-                ('kind', '!=', 'view'),
+                ('type.expense', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -43,7 +43,7 @@ class CategoryAccount(metaclass=PoolMeta):
     account_cogs = fields.Many2One(
         'account.account', "Account Cost of Goods Sold",
         domain=[
-            ('kind', '!=', 'view'),
+            ('type.expense', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
