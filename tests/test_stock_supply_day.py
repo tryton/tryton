@@ -126,11 +126,11 @@ class StockSupplyDayTestCase(ModuleTestCase):
         with set_company(company):
             create_chart(company)
             receivable, = Account.search([
-                ('kind', '=', 'receivable'),
+                ('type.receivable', '=', True),
                 ('company', '=', company.id),
                 ])
             payable, = Account.search([
-                ('kind', '=', 'payable'),
+                ('type.payable', '=', True),
                 ('company', '=', company.id),
                 ])
             supplier, = Party.create([{
