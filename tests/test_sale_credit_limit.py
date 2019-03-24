@@ -39,10 +39,10 @@ class SaleCreditLimitTestCase(ModuleTestCase):
             period = fiscalyear.periods[0]
 
             receivable, = Account.search([
-                    ('kind', '=', 'receivable'),
+                    ('type.receivable', '=', True),
                     ])
             revenue, = Account.search([
-                    ('kind', '=', 'revenue'),
+                    ('type.revenue', '=', True),
                     ])
             journal, = Journal.search([], limit=1)
             party, = Party.create([{
