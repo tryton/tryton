@@ -60,7 +60,10 @@ class Period(metaclass=PoolMeta):
                         ('move.period', '=', period.id),
                         ('reconciliation', '=', None),
                         ('invoice_payment', '=', None),
-                        ('account.kind', 'in', ['receivable', 'payable']),
+                        ['OR',
+                            ('account.type.receivable', '=', True),
+                            ('account.type.payable', '=', True),
+                            ],
                         ])
                 if move_lines:
                     warning_name = (
