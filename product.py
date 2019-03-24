@@ -28,7 +28,7 @@ class Category(metaclass=PoolMeta):
     account_stock = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock",
             domain=[
-                ('kind', '=', 'stock'),
+                ('type.stock', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -40,7 +40,7 @@ class Category(metaclass=PoolMeta):
     account_stock_supplier = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock Supplier",
             domain=[
-                ('kind', '=', 'stock'),
+                ('type.stock', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -52,7 +52,7 @@ class Category(metaclass=PoolMeta):
     account_stock_customer = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock Customer",
             domain=[
-                ('kind', '=', 'stock'),
+                ('type.stock', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -64,7 +64,7 @@ class Category(metaclass=PoolMeta):
     account_stock_production = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock Production",
             domain=[
-                ('kind', '=', 'stock'),
+                ('type.stock', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -76,7 +76,7 @@ class Category(metaclass=PoolMeta):
     account_stock_lost_found = fields.MultiValue(fields.Many2One(
             'account.account', "Account Stock Lost and Found",
             domain=[
-                ('kind', '=', 'stock'),
+                ('type.stock', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -124,35 +124,40 @@ class CategoryAccount(metaclass=PoolMeta):
     account_stock = fields.Many2One(
         'account.account', "Account Stock",
         domain=[
-            ('kind', '=', 'stock'),
+            ('type.stock', '=', True),
+            ('type.statement', '=', 'balance'),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     account_stock_supplier = fields.Many2One(
         'account.account', "Account Stock Supplier",
         domain=[
-            ('kind', '=', 'stock'),
+            ('type.stock', '=', True),
+            ('type.statement', '=', 'income'),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     account_stock_customer = fields.Many2One(
         'account.account', "Account Stock Customer",
         domain=[
-            ('kind', '=', 'stock'),
+            ('type.stock', '=', True),
+            ('type.statement', '=', 'income'),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     account_stock_production = fields.Many2One(
         'account.account', "Account Stock Production",
         domain=[
-            ('kind', '=', 'stock'),
+            ('type.stock', '=', True),
+            ('type.statement', '=', 'income'),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     account_stock_lost_found = fields.Many2One(
         'account.account', "Account Stock Lost and Found",
         domain=[
-            ('kind', '=', 'stock'),
+            ('type.stock', '=', True),
+            ('type.statement', '=', 'income'),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
@@ -259,6 +264,7 @@ class UpdateCostPriceShowMove(ModelView):
             ('company', 'in',
                 [Eval('context', {}).get('company', -1), None]),
             ('id', '!=', Eval('stock_account')),
+            ('type.stock', '=', True),
             ],
         depends=['stock_account'], required=True)
     description = fields.Char('Description')

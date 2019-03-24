@@ -16,6 +16,8 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="parent" ref="account.account_type_template_asset_current_pt"/>
+            <field name="statement">balance</field>
+            <field name="stock" eval="True"/>
             <field name="sequence" eval="20"/>
         </record>
 
@@ -31,10 +33,24 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="type" ref="account_type_template_asset_current_inventories_pt"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root_pt"/>
-            <field name="kind">stock</field>
+        </record>
+
+        <record id="account_type_template_stock_expense_pt" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Despesa de estoque</field>
+            
+            
+            <field name="parent" ref="account.account_type_template_expense_pt"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="30"/>
+            <field name="stock" eval="True"/>
         </record>
 
         <record id="account_template_stock_supplier_pt" model="account.account.template">
@@ -48,11 +64,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Estoque do Fornecedor</field>
             
             
-            <field name="type" ref="account_type_template_asset_current_inventories_pt"/>
+            <field name="type" ref="account_type_template_stock_expense_pt"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root_pt"/>
-            <field name="kind">stock</field>
         </record>
         <record id="account_template_stock_customer_pt" model="account.account.template">
             
@@ -65,11 +79,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Estoque do Cliente</field>
             
             
-            <field name="type" ref="account_type_template_asset_current_inventories_pt"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
+            <field name="type" ref="account_type_template_stock_expense_pt"/>
             <field name="parent" ref="account.account_template_root_pt"/>
-            <field name="kind">stock</field>
         </record>
 
         <record id="account_template_stock_production_pt" model="account.account.template">
@@ -83,11 +94,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Estoque da Produção</field>
             
             
-            <field name="type" ref="account_type_template_asset_current_inventories_pt"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
+            <field name="type" ref="account_type_template_stock_expense_pt"/>
             <field name="parent" ref="account.account_template_root_pt"/>
-            <field name="kind">stock</field>
         </record>
 
         <record id="account_template_stock_lost_found_pt" model="account.account.template">
@@ -101,11 +109,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Estoque de Achados e Perdidos</field>
             
             
-            <field name="type" ref="account_type_template_asset_current_inventories_pt"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
+            <field name="type" ref="account_type_template_stock_expense_pt"/>
             <field name="parent" ref="account.account_template_root_pt"/>
-            <field name="kind">stock</field>
         </record>
     </data>
 </tryton>

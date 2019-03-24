@@ -13,8 +13,11 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="name">Popisi</field>
             <field name="parent" ref="account.account_type_template_asset_current_sl"/>
+            <field name="statement">balance</field>
+            <field name="stock" eval="True"/>
             <field name="sequence" eval="20"/>
         </record>
 
@@ -27,12 +30,27 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="name">Zaloga</field>
             <field name="type" ref="account_type_template_asset_current_inventories_sl"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root_sl"/>
-            <field name="kind">stock</field>
+        </record>
+
+        <record id="account_type_template_stock_expense_sl" model="account.account.type.template">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <field name="name">Stroški zalog</field>
+            <field name="parent" ref="account.account_type_template_expense_sl"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="30"/>
+            <field name="stock" eval="True"/>
         </record>
 
         <record id="account_template_stock_supplier_sl" model="account.account.template">
@@ -44,12 +62,11 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="name">Zaloga dobavitelja</field>
-            <field name="type" ref="account_type_template_asset_current_inventories_sl"/>
+            <field name="type" ref="account_type_template_stock_expense_sl"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root_sl"/>
-            <field name="kind">stock</field>
         </record>
         <record id="account_template_stock_customer_sl" model="account.account.template">
             
@@ -60,12 +77,10 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="name">Zaloga kupca</field>
-            <field name="type" ref="account_type_template_asset_current_inventories_sl"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
+            <field name="type" ref="account_type_template_stock_expense_sl"/>
             <field name="parent" ref="account.account_template_root_sl"/>
-            <field name="kind">stock</field>
         </record>
 
         <record id="account_template_stock_production_sl" model="account.account.template">
@@ -77,12 +92,10 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="name">Zaloga proizvodnje</field>
-            <field name="type" ref="account_type_template_asset_current_inventories_sl"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
+            <field name="type" ref="account_type_template_stock_expense_sl"/>
             <field name="parent" ref="account.account_template_root_sl"/>
-            <field name="kind">stock</field>
         </record>
 
         <record id="account_template_stock_lost_found_sl" model="account.account.template">
@@ -94,12 +107,10 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
+            
             <field name="name">Zaloga izgubljeno/najdeno</field>
-            <field name="type" ref="account_type_template_asset_current_inventories_sl"/>
-            <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
+            <field name="type" ref="account_type_template_stock_expense_sl"/>
             <field name="parent" ref="account.account_template_root_sl"/>
-            <field name="kind">stock</field>
         </record>
     </data>
 </tryton>

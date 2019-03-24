@@ -1,3 +1,5 @@
+* Enforce balance and income statement on stock accounts
+
 Version 5.0.0 - 2018-10-01
 * Bug fixes (see mercurial logs for details)
 * Remove support for Python 2.7

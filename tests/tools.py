@@ -13,7 +13,7 @@ def add_stock_accounts(accounts, company=None, config=None):
         company = get_company()
 
     stock_accounts = Account.find([
-            ('kind', '=', 'stock'),
+            ('type.stock', '=', True),
             ('company', '=', company.id),
             ])
     for account in stock_accounts:
