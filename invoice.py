@@ -94,7 +94,7 @@ class Invoice(metaclass=PoolMeta):
             for line in invoice.lines:
                 if line.type != 'line':
                     continue
-                if line.account.kind == 'deposit':
+                if line.account.type.deposit:
                     if ((invoice.type.endswith('invoice')
                             and line.amount < 0)
                             or (invoice.type.endswith('credit_note')
@@ -116,7 +116,7 @@ class InvoiceLine(metaclass=PoolMeta):
     @classmethod
     def _account_domain(cls, type_):
         domain = super(InvoiceLine, cls)._account_domain(type_)
-        return domain + ['deposit']
+        return domain + [('type.deposit', '=', True)]
 
 
 class DepositRecall(Wizard):
@@ -152,7 +152,7 @@ class DepositRecallStart(ModelView):
     company = fields.Many2One('company.company', 'Company', readonly=True)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
-            ('kind', '=', 'deposit'),
+            ('type.deposit', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])

@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record id="account_type_template_liability_current_unearned_revenues_ru" model="account.account.type.template">
+        <record id="account_type_template_deposit_ru" model="account.account.type.template">
             
             
             
@@ -11,10 +11,13 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
-            <field name="name">Unearned Revenues</field>
             
-            <field name="parent" ref="account.account_type_template_liability_current_ru"/>
-            <field name="sequence" eval="30"/>
+            <field name="name">депозит</field>
+            
+            <field name="parent" ref="account.account_type_template_off_balance_ru"/>
+            <field name="statement">off-balance</field>
+            <field name="deposit" eval="True"/>
+            <field name="sequence" eval="10"/>
         </record>
 
         <record id="account_template_deposit_ru" model="account.account.template">
@@ -25,13 +28,12 @@ this repository contains the full copyright notices and license terms. -->
             
             
             
-            <field name="name">Deposit</field>
             
-            <field name="type" ref="account_type_template_liability_current_unearned_revenues_ru"/>
+            <field name="name">депозит</field>
+            
+            <field name="type" ref="account_type_template_deposit_ru"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account.account_template_root_ru"/>
-            <field name="kind">deposit</field>
             <field name="party_required" eval="True"/>
         </record>
     </data>

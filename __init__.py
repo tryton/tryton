@@ -2,15 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .account import *
+from . import account
 from .invoice import *
 from . import party
 
 
 def register():
     Pool.register(
-        AccountTemplate,
-        Account,
+        account.AccountTypeTemplate,
+        account.AccountType,
         Invoice,
         InvoiceLine,
         DepositRecallStart,

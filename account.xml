@@ -3,6 +3,18 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.view" id="account_type_template_view_form">
+            <field name="model">account.account.type.template</field>
+            <field name="inherit" ref="account.account_type_template_view_form"/>
+            <field name="name">account_type_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_type_view_form">
+            <field name="model">account.account.type</field>
+            <field name="inherit" ref="account.account_type_view_form"/>
+            <field name="name">account_type_form</field>
+        </record>
+
         <record model="ir.ui.view" id="move_line_view_list_deposit">
             <field name="model">account.move.line</field>
             <field name="type">tree</field>
@@ -15,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">account.move.line</field>
             <field
                 name="domain"
-                eval="[('account.kind', '=', 'deposit'), If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
+                eval="[('account.type.deposit', '=', True), If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
                 pyson="1"/>
             <field name="search_value" eval="[('reconciliation', '=', None)]" pyson="1"/>
             <field name="order" eval="[('date', 'DESC')]" pyson="1"/>

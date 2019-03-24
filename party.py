@@ -32,11 +32,13 @@ class Party(metaclass=PoolMeta):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
         User = pool.get('res.user')
         cursor = Transaction().connection.cursor()
 
         line = MoveLine.__table__()
         account = Account.__table__()
+        account_type = AccountType.__table__()
 
         values = {p.id: Decimal(0) for p in parties}
 
@@ -49,12 +51,13 @@ class Party(metaclass=PoolMeta):
 
         for sub_parties in grouped_slice(parties):
             party_clause = reduce_ids(line.party, [p.id for p in sub_parties])
-            cursor.execute(*line.join(account,
-                    condition=account.id == line.account
-                    ).select(line.party,
+            cursor.execute(*line
+                .join(account, condition=account.id == line.account)
+                .join(account_type, condition=account.type == account_type.id)
+                .select(line.party,
                     # Use credit - debit to positive deposit amount
                     Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
-                    where=(account.kind == 'deposit')
+                    where=account_type.deposit
                     & party_clause
                     & (line.reconciliation == Null)
                     & (account.company == user.company.id)
@@ -72,10 +75,12 @@ class Party(metaclass=PoolMeta):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
         Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
         User = pool.get('res.user')
 
         line = MoveLine.__table__()
         account = Account.__table__()
+        account_type = AccountType.__table__()
 
         user = User(Transaction().user)
         if not user.company:
@@ -84,10 +89,12 @@ class Party(metaclass=PoolMeta):
         line_clause, _ = MoveLine.query_get(line)
         Operator = fields.SQL_OPERATORS[clause[1]]
 
-        query = line.join(account, condition=account.id == line.account
-            ).select(line.party,
+        query = (line
+            .join(account, condition=account.id == line.account)
+            .join(account_type, condition=account.type == account_type.id)
+            .select(line.party,
                 where=account.active
-                & (account.kind == 'deposit')
+                & account_type.deposit
                 & (line.party != Null)
                 & (line.reconciliation == Null)
                 & (account.company == user.company.id)
@@ -95,7 +102,7 @@ class Party(metaclass=PoolMeta):
                 group_by=line.party,
                 having=Operator(
                     Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
-                    Decimal(clause[2] or 0)))
+                    Decimal(clause[2] or 0))))
         return [('id', 'in', query)]
 
     def get_deposit_balance(self, deposit_account):
@@ -106,7 +113,7 @@ class Party(metaclass=PoolMeta):
         cursor = transaction.connection.cursor()
 
         line = MoveLine.__table__()
-        assert deposit_account.kind == 'deposit'
+        assert deposit_account.type.deposit
 
         where = ((line.account == deposit_account.id)
             & (line.party == self.id)

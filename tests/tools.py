@@ -13,7 +13,7 @@ def add_deposit_accounts(accounts, company=None, config=None):
         company = get_company()
 
     accounts['deposit'], = Account.find([
-            ('kind', '=', 'deposit'),
+            ('type.deposit', '=', True),
             ('company', '=', company.id),
             ('name', '=', 'Deposit'),
             ])
