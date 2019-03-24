@@ -37,7 +37,8 @@ class Journal(ModelSQL, ModelView):
         depends=['company_party', 'currency'])
     account = fields.Many2One('account.account', "Account", required=True,
         domain=[
-            ('kind', '!=', 'view'),
+            ('type', '!=', None),
+            ('closed', '!=', True),
             ('company', '=', Eval('company')),
             ],
         depends=['company'])

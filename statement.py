@@ -618,7 +618,8 @@ def origin_mixin(_states, _depends):
             'account.account', "Account",
             domain=[
                 ('company', '=', Eval('company', 0)),
-                ('kind', '!=', 'view'),
+                ('type', '!=', None),
+                ('closed', '!=', True),
                 ],
             context={
                 'date': Eval('date'),
