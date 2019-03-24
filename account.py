@@ -47,8 +47,7 @@ class MoveLine(metaclass=PoolMeta):
         depends=['payment_kind'])
     payment_kind = fields.Function(fields.Selection([
                 (None, ''),
-                ] + KINDS, 'Payment Kind'), 'get_payment_kind',
-        searcher='search_payment_kind')
+                ] + KINDS, 'Payment Kind'), 'get_payment_kind')
     payment_blocked = fields.Boolean('Blocked', readonly=True)
     payment_direct_debit = fields.Boolean("Direct Debit",
         states={
@@ -87,7 +86,8 @@ class MoveLine(metaclass=PoolMeta):
     def get_payment_amount(cls, lines, name):
         amounts = {}
         for line in lines:
-            if line.account.kind not in ('payable', 'receivable'):
+            if (not line.account.type.payable
+                    and not line.account.type.receivable):
                 amounts[line.id] = None
                 continue
             if line.second_currency:
@@ -107,11 +107,13 @@ class MoveLine(metaclass=PoolMeta):
         pool = Pool()
         Payment = pool.get('account.payment')
         Account = pool.get('account.account')
+        AccountType = pool.get('account.account.type')
         _, operator, value = clause
         Operator = fields.SQL_OPERATORS[operator]
         table = cls.__table__()
         payment = Payment.__table__()
         account = Account.__table__()
+        account_type = AccountType.__table__()
 
         payment_amount = Sum(Coalesce(payment.amount, 0))
         main_amount = Abs(table.credit - table.debit) - payment_amount
@@ -120,22 +122,25 @@ class MoveLine(metaclass=PoolMeta):
             else_=second_amount)
         value = cls.payment_amount.sql_format(value)
 
-        query = table.join(payment, type_='LEFT',
-            condition=(table.id == payment.line) & (payment.state != 'failed')
-            ).join(account, condition=table.account == account.id
-                ).select(table.id,
-                    where=account.kind.in_(['payable', 'receivable']),
-                    group_by=(table.id, account.kind, table.second_currency),
-                    having=Operator(amount, value)
-                    )
+        query = (table
+            .join(payment, type_='LEFT',
+            condition=(table.id == payment.line) & (payment.state != 'failed'))
+            .join(account, condition=table.account == account.id)
+            .join(account_type, condition=account.type == account_type.id)
+            .select(table.id,
+                where=(account_type.payable | account_type.receivable),
+                group_by=(table.id, table.second_currency),
+                having=Operator(amount, value)
+                ))
         return [('id', 'in', query)]
 
     def get_payment_kind(self, name):
-        return self.account.kind if self.account.kind in dict(KINDS) else None
-
-    @classmethod
-    def search_payment_kind(cls, name, clause):
-        return [('account.kind',) + tuple(clause[1:])]
+        if (self.account.type.receivable
+                and (self.debit > 0 or self.credit < 0)):
+            return 'receivable'
+        elif (self.account.type.payable
+                and (self.credit > 0 or self.debit < 0)):
+            return 'payable'
 
     @classmethod
     def default_payment_blocked(cls):

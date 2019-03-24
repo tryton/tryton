@@ -27,7 +27,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Lines to Pay</field>
             <field name="res_model">account.move.line</field>
             <field name="domain"
-                eval="[('account.kind', 'in', ['receivable', 'payable']), ('party', '!=', None), ('reconciliation', '=', None), ('payment_amount', '!=', 0), ('move_state', '=', 'posted')]"
+                eval="[['OR', ('account.type.receivable', '=', True), ('account.type.payable', '=', True)], ('party', '!=', None), ('reconciliation', '=', None), ('payment_amount', '!=', 0), ('move_state', '=', 'posted')]"
                 pyson="1"/>
             <field name="search_value"
                 eval="[('payment_blocked', '=', False)]" pyson="1"/>
