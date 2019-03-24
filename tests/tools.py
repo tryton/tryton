@@ -12,18 +12,14 @@ def add_asset_accounts(accounts, company=None, config=None):
     if not company:
         company = get_company()
 
-    expense_accounts = Account.find([
-            ('kind', '=', 'expense'),
+    accounts['asset'], = Account.find([
+            ('type.fixed_asset', '=', True),
+            ('name', '=', "Assets"),
             ('company', '=', company.id),
-            ])
-    for account in expense_accounts:
-        if account.name == 'Expense':
-            accounts['expense'] = account
-        elif account.name == 'Assets':
-            accounts['asset'] = account
-    depreciation, = Account.find([
-            ('kind', '=', 'other'),
-            ('name', '=', 'Depreciation'),
-            ])
-    accounts['depreciation'] = depreciation
+            ], limit=1)
+    accounts['depreciation'], = Account.find([
+            ('type.fixed_asset', '=', True),
+            ('name', '=', "Depreciation"),
+            ('company', '=', company.id),
+            ], limit=1)
     return accounts

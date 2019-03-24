@@ -913,7 +913,7 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def update_lines(self):
-                filter_ = lambda l: (l.account.kind == 'other'
+                filter_ = lambda l: (l.account.type.expense
                     and self.start_date < l.move.date <= self.end_date)
                 return list(filter(filter_,
                     (l for m in self.asset.update_moves for l in m.lines)))

@@ -4,13 +4,10 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If, Bool
 from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
-
-__all__ = ['Configuration', 'ConfigurationAssetSequence',
-    'ConfigurationAssetDate', 'Move', 'Period', 'Journal']
 
 asset_bymonthday = fields.Selection([
         ('1', "First"),
@@ -120,6 +117,44 @@ class ConfigurationAssetDate(ModelSQL, CompanyValueMixin):
     @classmethod
     def default_asset_bymonth(cls):
         return "12"
+
+
+def AccountTypeMixin(template=False):
+
+    class Mixin:
+        fixed_asset = fields.Boolean(
+            "Fixed Asset",
+            domain=[
+                If(Eval('statement') != 'balance',
+                    ('fixed_asset', '=', False), ()),
+                ],
+            states={
+                'invisible': ((Eval('statement') != 'balance')
+                    | ~Eval('assets', True)),
+                },
+            depends=['statement', 'assets'])
+    if not template:
+        for fname in dir(Mixin):
+            field = getattr(Mixin, fname)
+            if not isinstance(field, fields.Field):
+                continue
+            field.states['readonly'] = (
+                Bool(Eval('template', -1)) & ~Eval('template_override', False))
+    return Mixin
+
+
+class AccountTypeTemplate(AccountTypeMixin(template=True), metaclass=PoolMeta):
+    __name__ = 'account.account.type.template'
+
+    def _get_type_value(self, type=None):
+        values = super()._get_type_value(type=type)
+        if not type or type.fixed_asset != self.fixed_asset:
+            values['fixed_asset'] = self.fixed_asset
+        return values
+
+
+class AccountType(AccountTypeMixin(), metaclass=PoolMeta):
+    __name__ = 'account.account.type'
 
 
 class Move(metaclass=PoolMeta):

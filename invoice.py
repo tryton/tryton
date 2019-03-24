@@ -33,6 +33,13 @@ class InvoiceLine(metaclass=PoolMeta):
                 'account_asset.msg_invoice_line_asset_unique'),
             ]
 
+    @classmethod
+    def _account_domain(cls, type_):
+        domain = super()._account_domain(type_)
+        if type_ == 'in':
+            domain.append(('type.fixed_asset', '=', True))
+        return domain
+
     @fields.depends('product', 'invoice', 'invoice_type',
         '_parent_invoice.invoice_date', '_parent_invoice.accounting_date')
     def on_change_product(self):

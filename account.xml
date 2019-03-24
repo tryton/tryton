@@ -8,5 +8,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="account.configuration_view_form"/>
             <field name="name">configuration_form</field>
         </record>
+
+        <record model="ir.ui.view" id="account_type_template_view_form">
+            <field name="model">account.account.type.template</field>
+            <field name="inherit" ref="account.account_type_template_view_form"/>
+            <field name="name">account_type_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_type_view_form">
+            <field name="model">account.account.type</field>
+            <field name="inherit" ref="account.account_type_view_form"/>
+            <field name="name">account_type_form</field>
+        </record>
     </data>
 </tryton>

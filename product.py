@@ -14,7 +14,7 @@ class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     account_depreciation = fields.MultiValue(fields.Many2One('account.account',
             'Account Depreciation', domain=[
-                ('kind', '=', 'other'),
+                ('type.fixed_asset', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -26,7 +26,7 @@ class Category(metaclass=PoolMeta):
     account_asset = fields.MultiValue(fields.Many2One('account.account',
             'Account Asset',
             domain=[
-                ('kind', '=', 'expense'),
+                ('type.fixed_asset', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -59,14 +59,14 @@ class CategoryAccount(metaclass=PoolMeta):
     account_depreciation = fields.Many2One(
         'account.account', "Account Depreciation",
         domain=[
-            ('kind', '=', 'other'),
+            ('type.fixed_asset', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
     account_asset = fields.Many2One(
         'account.account', "Account Asset",
         domain=[
-            ('kind', '=', 'expense'),
+            ('type.fixed_asset', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])

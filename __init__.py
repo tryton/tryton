@@ -25,6 +25,8 @@ def register():
         account.Configuration,
         account.ConfigurationAssetSequence,
         account.ConfigurationAssetDate,
+        account.AccountTypeTemplate,
+        account.AccountType,
         account.Move,
         account.Period,
         account.Journal,
