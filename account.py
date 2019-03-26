@@ -251,7 +251,11 @@ class Invoice(metaclass=PoolMeta):
             ratio = 0
         else:
             payment_amount = sum(
-                l.debit - l.credit for l in self.payment_lines)
+                l.debit - l.credit for l in self.payment_lines
+                if not l.reconciliation)
+            payment_amount -= sum(
+                l.debit - l.credit for l in self.lines_to_pay
+                if l.reconciliation)
             if amount:
                 ratio = abs(payment_amount / amount)
             else:
@@ -261,21 +265,35 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     def write(cls, *args):
-        pool = Pool()
-        TaxLine = pool.get('account.tax.line')
-        Date = pool.get('ir.date')
-        Period = pool.get('account.period')
-
         super(Invoice, cls).write(*args)
 
         invoices = []
         actions = iter(args)
         for records, values in zip(actions, actions):
-            if ('payment_lines' in values
-                    or values.get('state') in {'paid', 'cancel', 'posted'}):
+            if 'payment_lines' in values:
                 invoices.extend(records)
         invoices = cls.browse(sum(args[0:None:2], []))
         invoices = [i for i in invoices if i.move]
+        cls._update_tax_cash_basis(invoices)
+
+    @classmethod
+    def process(cls, invoices):
+        super(Invoice, cls).process(invoices)
+        cls._update_tax_cash_basis(invoices)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancel')
+    def cancel(cls, invoices):
+        super(Invoice, cls).cancel(invoices)
+        cls._update_tax_cash_basis(invoices)
+
+    @classmethod
+    def _update_tax_cash_basis(cls, invoices):
+        pool = Pool()
+        TaxLine = pool.get('account.tax.line')
+        Date = pool.get('ir.date')
+        Period = pool.get('account.period')
 
         # Call update_cash_basis grouped per period and ratio only because
         # group_cash_basis_key already group per move_line.
