@@ -125,10 +125,10 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             },
         depends=['taxes_parent', 'accounting'],
         help="The taxes to apply when purchasing products of this category.")
-    customer_taxes_used = fields.Function(fields.One2Many('account.tax', None,
-            'Customer Taxes Used'), 'get_taxes')
-    supplier_taxes_used = fields.Function(fields.One2Many('account.tax', None,
-            'Supplier Taxes Used'), 'get_taxes')
+    customer_taxes_used = fields.Function(fields.Many2Many(
+            'account.tax', None, None, "Customer Taxes Used"), 'get_taxes')
+    supplier_taxes_used = fields.Function(fields.Many2Many(
+            'account.tax', None, None, "Supplier Taxes Used"), 'get_taxes')
 
     @classmethod
     def __setup__(cls):
