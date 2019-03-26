@@ -239,6 +239,13 @@ class Product(
                                 fields.Many2Many))):
                     order_method = TemplateFunction.order(attr)
                     setattr(cls, 'order_%s' % attr, order_method)
+                if isinstance(tfield, fields.One2Many):
+                    getattr(cls, attr).setter = '_set_template_function'
+
+    @classmethod
+    def _set_template_function(cls, products, name, value):
+        # Prevent NotImplementedError for One2Many
+        pass
 
     @fields.depends('template')
     def on_change_template(self):
