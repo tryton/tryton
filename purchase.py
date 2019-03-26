@@ -98,8 +98,8 @@ class Purchase(metaclass=PoolMeta):
             'invisible': ~Eval('customer'),
             },
         depends=['state', 'customer'])
-    drop_shipments = fields.Function(fields.One2Many('stock.shipment.drop',
-            None, 'Drop Shipments',
+    drop_shipments = fields.Function(fields.Many2Many('stock.shipment.drop',
+            None, None, "Drop Shipments",
             states={
                 'invisible': ~Eval('customer'),
                 },

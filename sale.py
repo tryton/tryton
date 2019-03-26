@@ -64,8 +64,8 @@ class SaleConfigSaleDropLocation(ModelSQL, ValueMixin):
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 
-    drop_shipments = fields.Function(fields.One2Many('stock.shipment.drop',
-            None, 'Drop Shipments',
+    drop_shipments = fields.Function(fields.Many2Many(
+            'stock.shipment.drop', None, None, 'Drop Shipments',
             states={
                 'invisible': ~Eval('drop_shipments'),
                 }),
