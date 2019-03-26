@@ -1334,7 +1334,6 @@ class StockTestCase(ModuleTestCase):
                     'name': "Product",
                     'type': 'goods',
                     'list_price': Decimal(0),
-                    'cost_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product, = Product.create([{'template': template.id}])
@@ -1375,7 +1374,6 @@ class StockTestCase(ModuleTestCase):
                     'name': "Product",
                     'type': 'goods',
                     'list_price': Decimal(0),
-                    'cost_price': Decimal(0),
                     'default_uom': unit.id,
                     }])
         product, = Product.create([{'template': template.id}])
