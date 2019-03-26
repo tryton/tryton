@@ -57,7 +57,7 @@ class Date(Widget):
     def modified(self):
         if self.record and self.field:
             field_value = self.cast(self.field.get_client(self.record))
-            return field_value != self.entry.props.value
+            return field_value != self.get_value()
         return False
 
     def sig_key_press(self, widget, event):
@@ -67,6 +67,7 @@ class Date(Widget):
         field.set_client(record, self.get_value())
 
     def get_value(self):
+        self.entry.parse()
         return self.entry.props.value
 
     def set_format(self, record, field):
