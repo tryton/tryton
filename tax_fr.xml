@@ -1223,14 +1223,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0207b-tva_achat_intracommunautaire_biens_20_1">
             <field name="code" ref="tax_code_0207b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_biens_20_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0207b-tva_achat_intracommunautaire_services_20_1">
             <field name="code" ref="tax_code_0207b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_20_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
@@ -1258,14 +1258,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0105b-tva_achat_intracommunautaire_biens_5_5_1">
             <field name="code" ref="tax_code_0105b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_biens_5_5_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0105b-tva_achat_intracommunautaire_services_5_5_1">
             <field name="code" ref="tax_code_0105b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_5_5_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
@@ -1314,28 +1314,28 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0151b-tva_achat_intracommunautaire_biens_10_1">
             <field name="code" ref="tax_code_0151b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_biens_10_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0151b-tva_achat_intracommunautaire_biens_7_2">
             <field name="code" ref="tax_code_0151b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_biens_7_2"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0151b-tva_achat_intracommunautaire_services_10_1">
             <field name="code" ref="tax_code_0151b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_10_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0151b-tva_achat_intracommunautaire_services_7_1">
             <field name="code" ref="tax_code_0151b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_7_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
@@ -1356,14 +1356,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0201b-tva_achat_intracommunautaire_biens_8_5_1">
             <field name="code" ref="tax_code_0201b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_biens_8_5_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0201b-tva_achat_intracommunautaire_services_8_5_1">
             <field name="code" ref="tax_code_0201b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_8_5_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
@@ -1391,14 +1391,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0100b-tva_achat_intracommunautaire_biens_2_1_1">
             <field name="code" ref="tax_code_0100b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_biens_2_1_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0100b-tva_achat_intracommunautaire_services_2_1_1">
             <field name="code" ref="tax_code_0100b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_2_1_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
