@@ -31,7 +31,8 @@ class Invoice(metaclass=PoolMeta):
         ('ignored', 'Ignored'),
         ('recreated', 'Recreated'),
         ], 'Exception State'), 'get_sale_exception_state')
-    sales = fields.Function(fields.One2Many('sale.sale', None, 'Sales'),
+    sales = fields.Function(fields.Many2Many(
+            'sale.sale', None, None, "Sales"),
         'get_sales', searcher='search_sales')
 
     def get_sale_exception_state(self, name):
