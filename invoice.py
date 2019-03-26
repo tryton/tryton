@@ -181,8 +181,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 'invisible': ~Eval('reconciled'),
                 }),
             'get_reconciled')
-    lines_to_pay = fields.Function(fields.One2Many('account.move.line', None,
-        'Lines to Pay'), 'get_lines_to_pay')
+    lines_to_pay = fields.Function(fields.Many2Many(
+            'account.move.line', None, None, 'Lines to Pay'),
+        'get_lines_to_pay')
     payment_lines = fields.Many2Many('account.invoice-account.move.line',
         'invoice', 'line', string='Payment Lines',
         domain=[
@@ -1648,8 +1649,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'readonly': _states['readonly'] | ~Bool(Eval('account')),
             },
         depends=['type', 'invoice_type', 'company', 'account'] + _depends)
-    invoice_taxes = fields.Function(fields.One2Many('account.invoice.tax',
-        None, 'Invoice Taxes'), 'get_invoice_taxes')
+    invoice_taxes = fields.Function(fields.Many2Many('account.invoice.tax',
+        None, None, 'Invoice Taxes'), 'get_invoice_taxes')
     origin = fields.Reference('Origin', selection='get_origin', select=True,
         states=_states, depends=_depends)
 
