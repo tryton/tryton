@@ -10,9 +10,9 @@ __all__ = ['Purchase', 'PurchaseIgnoredInvoiceLine',
 
 class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
-    invoice_lines = fields.Function(fields.One2Many('account.invoice.line',
-            None, 'Invoice Lines'), 'get_invoice_lines',
-        searcher='search_invoice_lines')
+    invoice_lines = fields.Function(fields.Many2Many(
+            'account.invoice.line', None, None, "Invoice Lines"),
+        'get_invoice_lines', searcher='search_invoice_lines')
     invoice_lines_ignored = fields.Many2Many(
             'purchase.purchase-ignored-account.invoice.line',
             'purchase', 'invoice', 'Invoice Lines Ignored', readonly=True)
