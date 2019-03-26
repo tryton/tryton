@@ -244,7 +244,8 @@ class WinCSV(NoModal):
         try:
             treeview.set_drag_dest_row(*treeview.get_dest_row_at_pos(x, y))
         except TypeError:
-            treeview.set_drag_dest_row(len(treeview.get_model()) - 1,
+            treeview.set_drag_dest_row(
+                Gtk.TreePath(len(treeview.get_model()) - 1),
                 Gtk.TreeViewDropPosition.AFTER)
         Gdk.drag_status(context, Gdk.DragAction.MOVE, time)
         return True
@@ -265,7 +266,7 @@ class WinCSV(NoModal):
         if not data:
             return
         data = ','.join(str(x) for x in data)
-        selection.set(selection.get_target(), 8, data)
+        selection.set(selection.get_target(), 8, data.encode('utf-8'))
         return True
 
     def drag_data_received(self, treeview, context, x, y, selection,
@@ -277,6 +278,7 @@ class WinCSV(NoModal):
             selection_data = selection.get_data()
         if not selection_data:
             return
+        selection_data = selection_data.decode('utf-8')
         store = treeview.get_model()
 
         data_iters = [store.get_iter((int(i),))
