@@ -80,8 +80,11 @@ Create some moves::
     >>> line.account = receivable
     >>> line.debit = Decimal(5)
     >>> line.party = party
-    >>> move.post_date = period_previous.start_date
-    >>> move.post_number = '1'
+    >>> move.save()
+    >>> Move.write([move.id], {
+    ...         'post_date': period_previous.start_date,
+    ...         'post_number': '1',
+    ...         }, config.context)
     >>> move.click('post')
 
 With an empty line::
@@ -100,8 +103,11 @@ With an empty line::
     >>> line = move.lines.new()
     >>> line.account = cash
     >>> line.debit = line.credit = Decimal(0)
-    >>> move.post_date = period.start_date
-    >>> move.post_number = '1'
+    >>> move.save()
+    >>> Move.write([move.id], {
+    ...         'post_date': period.start_date,
+    ...         'post_number': '1',
+    ...         }, config.context)
     >>> move.click('post')
 
 Balance non-deferral::
