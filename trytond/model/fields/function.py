@@ -78,7 +78,8 @@ class Function(Field):
         if self.searcher:
             return getattr(Model, self.searcher)(self.name, domain)
         raise NotImplementedError(gettext(
-                'ir.msg_search_function_missing', field=self.name))
+                'ir.msg_search_function_missing',
+                **Model.__names__(self.name)))
 
     def get(self, ids, Model, name, values=None):
         '''
@@ -119,6 +120,10 @@ class Function(Field):
                 args = iter((ids, value) + args)
                 for ids, value in zip(args, args):
                     setter(Model.browse(ids), name, value)
+            else:
+                raise NotImplementedError(gettext(
+                        'ir.msg_setter_function_missing',
+                        **Model.__names__(self.name)))
 
     def __set__(self, inst, value):
         self._field.__set__(inst, value)

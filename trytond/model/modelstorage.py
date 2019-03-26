@@ -1502,6 +1502,8 @@ class ModelStorage(Model):
             return values
         for fname, value in self._values.items():
             field = self._fields[fname]
+            if isinstance(field, fields.Function) and not field.setter:
+                continue
             if field._type in ('many2one', 'one2one', 'reference'):
                 if value:
                     if ((value.id is None or value.id < 0)

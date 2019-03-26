@@ -574,14 +574,19 @@ class ModelSQL(ModelStorage):
 
             # Get default values
             default = []
-            for f in cls._fields.keys():
-                if (f not in values
-                        and f not in ('create_uid', 'create_date',
-                            'write_uid', 'write_date', 'id')):
-                    if f in defaults_cache:
-                        values[f] = defaults_cache[f]
-                    else:
-                        default.append(f)
+            for fname, field in cls._fields.items():
+                if fname in values:
+                    continue
+                if fname in [
+                        'create_uid', 'create_date',
+                        'write_uid', 'write_date', 'id']:
+                    continue
+                if isinstance(field, fields.Function) and not field.setter:
+                    continue
+                if fname in defaults_cache:
+                    values[fname] = defaults_cache[fname]
+                else:
+                    default.append(fname)
 
             if default:
                 defaults = cls.default_get(default, with_rec_name=False)

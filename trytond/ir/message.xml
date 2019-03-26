@@ -116,7 +116,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Recursion error: Record "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
         </record>
         <record model="ir.message" id="msg_search_function_missing">
-            <field name="text">Missing search function for field "%(field)s".</field>
+            <field name="text">Missing search function for field "%(field)s" in "%(model)s".</field>
+        </record>
+        <record model="ir.message" id="msg_setter_function_missing">
+            <field name="text">Missing setter function for field "%(field)s" in "%(model)s".</field>
         </record>
         <record model="ir.message" id="msg_access_button_error">
             <field name="text">Calling button "%(button)s on "%(model)s" is not allowed.</field>
