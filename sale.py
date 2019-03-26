@@ -295,8 +295,8 @@ class Sale(metaclass=PoolMeta):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    advance_payment_invoices = fields.Function(fields.One2Many(
-            'account.invoice', None, "Advance Payment Invoices"),
+    advance_payment_invoices = fields.Function(fields.Many2Many(
+            'account.invoice', None, None, "Advance Payment Invoices"),
         'get_advance_payment_invoices',
         searcher='search_advance_payment_invoices')
 
