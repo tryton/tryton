@@ -166,8 +166,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('paid', 'Paid'),
             ('exception', 'Exception'),
             ], 'Invoice State', readonly=True, required=True)
-    invoices = fields.Function(fields.One2Many('account.invoice', None,
-            'Invoices'), 'get_invoices', searcher='search_invoices')
+    invoices = fields.Function(fields.Many2Many(
+            'account.invoice', None, None, "Invoices"),
+        'get_invoices', searcher='search_invoices')
     invoices_ignored = fields.Many2Many(
             'purchase.purchase-ignored-account.invoice',
             'purchase', 'invoice', 'Ignored Invoices', readonly=True)
@@ -188,10 +189,11 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('received', 'Received'),
             ('exception', 'Exception'),
             ], 'Shipment State', readonly=True, required=True)
-    shipments = fields.Function(fields.One2Many('stock.shipment.in', None,
-            'Shipments'), 'get_shipments', searcher='search_shipments')
-    shipment_returns = fields.Function(
-        fields.One2Many('stock.shipment.in.return', None, 'Shipment Returns'),
+    shipments = fields.Function(fields.Many2Many(
+            'stock.shipment.in', None, None, "Shipments"),
+        'get_shipments', searcher='search_shipments')
+    shipment_returns = fields.Function(fields.Many2Many(
+            'stock.shipment.in.return', None, None, "Shipment Returns"),
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.One2Many('stock.move', 'purchase', 'Moves', readonly=True)
 
