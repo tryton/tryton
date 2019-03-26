@@ -885,8 +885,15 @@ class Model(object):
         'Return dictionary values'
         if fields is None:
             fields = self._values.keys()
-        return dict((x, getattr(self, '__%s_value' % x)) for x in fields
-                if x not in ('id', '_timestamp'))
+        values = {}
+        for name in fields:
+            if name in ['id', '_timestamp']:
+                continue
+            definition = self._fields[name]
+            if definition.get('readonly') and definition['type'] != 'one2many':
+                continue
+            values[name] = getattr(self, '__%s_value' % name)
+        return values
 
     @property
     def _timestamp(self):
