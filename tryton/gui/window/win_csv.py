@@ -264,7 +264,7 @@ class WinCSV(NoModal):
         if not data:
             return
         data = ','.join(str(x) for x in data)
-        selection.set(selection.get_target(), 8, data)
+        selection.set(selection.get_target(), 8, data.encode('utf-8'))
         return True
 
     def drag_data_received(self, treeview, context, x, y, selection,
@@ -276,6 +276,7 @@ class WinCSV(NoModal):
             selection_data = selection.get_data()
         if not selection_data:
             return
+        selection_data = selection_data.decode('utf-8')
         store = treeview.get_model()
 
         data_iters = [store.get_iter((int(i),))
