@@ -219,13 +219,15 @@ Re-create the purchase request::
 Create a second purchase request manually::
 
     >>> set_user(1)  # admin
-    >>> pr = PurchaseRequest()
-    >>> pr.product = product
-    >>> pr.quantity = 1
-    >>> pr.uom = unit
-    >>> pr.warehouse = warehouse_loc
-    >>> pr.origin = Model.get('stock.order_point')()
-    >>> pr.save()
+    >>> pr_id, = PurchaseRequest.create([{
+    ...             'product': product.id,
+    ...             'quantity': 1,
+    ...             'uom': unit,
+    ...             'warehouse': warehouse_loc.id,
+    ...             'origin': 'stock.order_point,-1',
+    ...             'company': company.id,
+    ...             }], config.context)
+    >>> pr = PurchaseRequest(pr_id)
 
 There is now 2 draft purchase requests::
 
@@ -257,10 +259,13 @@ Create the purchase with a unique line::
 Create a purchase request without product::
 
     >>> set_user(1)  # admin
-    >>> pr = PurchaseRequest()
-    >>> pr.description = "Custom product"
-    >>> pr.quantity = 1
-    >>> pr.origin = Model.get('stock.order_point')()
+    >>> pr_id, = PurchaseRequest.create([{
+    ...             'description': "Custom product",
+    ...             'quantity': 1,
+    ...             'origin': 'stock.order_point,-1',
+    ...             'company': company.id,
+    ...             }], config.context)
+    >>> pr = PurchaseRequest(pr_id)
     >>> pr.save()
 
 Create the purchase without product::
