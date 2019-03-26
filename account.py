@@ -60,9 +60,13 @@ class Period(metaclass=PoolMeta):
                         ('move.period', '=', period.id),
                         ('reconciliation', '=', None),
                         ('invoice_payment', '=', None),
-                        ['OR',
-                            ('account.type.receivable', '=', True),
-                            ('account.type.payable', '=', True),
+                        ['OR', [
+                                ('account.type.receivable', '=', True),
+                                ('credit', '>', 0),
+                                ], [
+                                ('account.type.payable', '=', True),
+                                ('debit', '<', 0),
+                                ],
                             ],
                         ])
                 if move_lines:
