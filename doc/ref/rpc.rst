@@ -7,7 +7,7 @@ RPC
 
 .. class:: RPC([readonly[, instantiate[, result[, check_access[, unique]]]]])
 
-RPC is an object to define the behavior of Remote Procedur Call.
+RPC is an object to define the behavior of Remote Procedure Call.
 
 Instance attributes are:
 
