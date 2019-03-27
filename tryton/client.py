@@ -57,7 +57,7 @@ def main():
             screen, provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
     def excepthook(type_, value, traceback_):
-        common.error(str(value), ''.join(traceback.format_tb(traceback_)))
+        common.error(value, ''.join(traceback.format_tb(traceback_)))
     sys.excepthook = excepthook
 
     CONFIG.parse()

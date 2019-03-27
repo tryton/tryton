@@ -746,7 +746,7 @@ class ErrorDialog(UniqueDialog):
         dialog.set_markup(
             '<b>%s</b>' % GLib.markup_escape_text(_('Application Error')))
         dialog.format_secondary_markup(
-            '<b>%s</b>' % _('Error: %s') % GLib.markup_escape_text(title))
+            '<b>%s</b>' % GLib.markup_escape_text(title))
 
         scrolledwindow = Gtk.ScrolledWindow()
         scrolledwindow.set_policy(
@@ -777,10 +777,11 @@ class ErrorDialog(UniqueDialog):
         return dialog
 
     def __call__(self, title, details):
-        if title == details:
-            title = ''
+        if isinstance(title, Exception):
+            title = "%s: %s" % (title.__class__.__name__, title)
+        details += '\n' + title
         log = logging.getLogger(__name__)
-        log.error(details + '\n' + title)
+        log.error(details)
         return super(ErrorDialog, self).__call__(title, details)
 
 
@@ -885,9 +886,9 @@ def process_exception(exception, *args, **kwargs):
                 if args:
                     return rpc_execute(*args)
         else:
-            error(exception.faultCode, exception.faultString)
+            error(exception, exception.faultString)
     else:
-        error(str(exception), traceback.format_exc())
+        error(exception, traceback.format_exc())
     raise RPCException(exception)
 
 

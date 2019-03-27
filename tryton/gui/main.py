@@ -280,7 +280,7 @@ class Main(Gtk.Application):
         except Exception as exception:
             if (not isinstance(exception, TrytonError)
                     or exception.faultCode != 'QueryCanceled'):
-                common.error(str(exception), traceback.format_exc())
+                common.error(exception, traceback.format_exc())
             return self.quit()
         self.get_preferences()
 
