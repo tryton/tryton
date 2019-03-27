@@ -133,6 +133,8 @@ class Production:
             date = today
         else:
             date -= datetime.timedelta(1)
+        uom = product.default_uom
+        quantity = uom.ceil(quantity)
         return cls(
             planned_date=date,
             company=company,
@@ -140,7 +142,7 @@ class Production:
             location=warehouse.production_location,
             product=product,
             bom=product.boms[0].bom if product.boms else None,
-            uom=product.default_uom,
+            uom=uom,
             quantity=quantity,
             state='request',
             )
