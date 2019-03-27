@@ -2087,7 +2087,6 @@
             <field name="name">Compte d'ordre sur immobilisations</field>
             <field name="code">2126</field>
             <field name="type" ref="terrains"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="212"/>
         </record>
         <record model="account.account.template" id="213">
