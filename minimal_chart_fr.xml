@@ -338,7 +338,6 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="type" ref="account_type_template_asset_current_cash_fr"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account_template_root_fr"/>
         </record>
         <record id="account_template_tax_fr" model="account.account.template">
@@ -353,7 +352,6 @@ this repository contains the full copyright notices and license terms. -->
             
             
             <field name="type" ref="account_type_template_liability_current_tax_fr"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="account_template_root_fr"/>
         </record>
     </data>
