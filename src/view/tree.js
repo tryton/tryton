@@ -878,7 +878,10 @@
             this.tree.el.uniqueId();
             td = jQuery('<td/>', {
                 'class': 'selection-state',
-            });
+            }).click(function(event_) {
+                event_.stopPropagation();
+                this.selection.click();
+            }.bind(this));
             this.el.append(td);
             this.selection = jQuery('<input/>', {
                 'type': 'checkbox',
