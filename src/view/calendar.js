@@ -16,14 +16,24 @@
             } else {
                 view_week = 'basicWeek';
             }
+            var view_day;
+            if (this.view.screen.model.fields[attributes.dtstart]
+                    .description.type == "datetime") {
+                view_day = 'agendaDay';
+            } else {
+                view_day =  'basicDay';
+            }
             var defaultview = 'month';
             if (attributes.mode == 'week') {
                 defaultview = view_week;
             }
+            if (attributes.mode == 'day') {
+                defaultview = view_day;
+            }
             var header = {
                 left: 'today prev,next',
                 center: 'title',
-                right: 'month,' + view_week,
+                right: 'month,' + view_week + ',' + view_day,
             };
             if (Sao.i18n.rtl) {
                 var header_rtl = jQuery.extend({}, header);
@@ -47,6 +57,7 @@
                     'today': Sao.i18n.gettext("Today"),
                     'month': Sao.i18n.gettext("Month"),
                     'week': Sao.i18n.gettext("Week"),
+                    'day': Sao.i18n.gettext("Day"),
                 },
                 eventRender: this.view.event_render.bind(this.view),
                 eventResize: this.view.event_resize.bind(this.view),
