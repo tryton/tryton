@@ -2,11 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 import csv
 import gettext
+import locale
+from decimal import Decimal
 
 from gi.repository import Gtk
 
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
+from tryton.common.datetime_ import date_parse
 from tryton.gui.window.win_csv import WinCSV
 
 _ = gettext.gettext
@@ -183,6 +186,7 @@ class WinImport(WinCSV):
         # TODO: make it works with references
         skip = self.csv_skip.get_value_as_int()
         encoding = self.get_encoding()
+        locale_format = self.csv_locale.get_active()
         reader = csv.reader(
             open(fname, 'r', encoding=encoding),
             quotechar=self.get_quotechar(),
@@ -191,7 +195,20 @@ class WinImport(WinCSV):
         for i, line in enumerate(reader):
             if i < skip or not line:
                 continue
-            data.append([x for x in line])
+            row = []
+            for field, val in zip(fields, line):
+                if locale_format:
+                    type_ = self.fields_data[field]['type']
+                    if type_ in ['integer', 'biginteger']:
+                        val = locale.atoi(val)
+                    elif type_ == 'float':
+                        val = locale.atof(val)
+                    elif type_ == 'numeric':
+                        val = locale.atof(val, Decimal)
+                    elif type_ in ['date', 'datetime']:
+                        val = date_parse(val, common.date_format())
+                row.append(val)
+            data.append(row)
         try:
             count = RPCExecute(
                 'model', self.model, 'import_data', fields, data,

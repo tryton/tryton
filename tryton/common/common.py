@@ -1230,7 +1230,7 @@ def get_align(float_):
         return Gtk.Align.END
 
 
-def date_format(format_):
+def date_format(format_=None):
     return format_ or rpc.CONTEXT.get('locale', {}).get('date', '%x')
 
 

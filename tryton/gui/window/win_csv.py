@@ -171,6 +171,10 @@ class WinCSV(NoModal):
         label_csv_enc.set_mnemonic_widget(self.csv_enc)
         box.pack_start(self.csv_enc, expand=False, fill=True, padding=0)
 
+        self.csv_locale = Gtk.CheckButton(label=_("Use locale format"))
+        self.csv_locale.set_active(True)
+        box.pack_start(self.csv_locale, expand=False, fill=True, padding=0)
+
         self.add_csv_header_param(box)
 
         button_cancel = self.dialog.add_button(

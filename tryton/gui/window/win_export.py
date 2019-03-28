@@ -1,9 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import csv
+import datetime
 import os
 import tempfile
 import gettext
+import locale
+from numbers import Number
 
 from gi.repository import Gdk, GObject, Gtk
 
@@ -300,6 +303,7 @@ class WinExport(WinCSV):
 
     def export_csv(self, fname, fields, data, popup=True):
         encoding = self.csv_enc.get_active_text() or 'UTF-8'
+        locale_format = self.csv_locale.get_active()
 
         try:
             writer = csv.writer(
@@ -308,7 +312,20 @@ class WinExport(WinCSV):
                 delimiter=self.get_delimiter())
             if self.add_field_names.get_active():
                 writer.writerow(fields)
-            writer.writerows(data)
+            for line in data:
+                row = []
+                for val in line:
+                    if locale_format:
+                        if isinstance(val, Number):
+                            val = locale.str(val)
+                        elif isinstance(val, datetime.datetime):
+                            val = val.strftime(common.date_format() + ' %X')
+                        elif isinstance(val, datetime.date):
+                            val = val.strftime(common.date_format())
+                    elif isinstance(val, bool):
+                        val = int(val)
+                    row.append(val)
+                writer.writerow(row)
             if popup:
                 if len(data) == 1:
                     common.message(_('%d record saved.') % len(data))
