@@ -1479,18 +1479,28 @@
             }).css('cursor', 'pointer')
             .appendTo(predefined_exports_column);
 
+            this.el_csv_locale = jQuery('<input/>', {
+                'type': 'checkbox',
+                'checked': 'checked',
+            });
+
+            jQuery('<div/>', {
+                'class': 'checkbox',
+            }).append(jQuery('<label/>', {
+                'text': ' ' + Sao.i18n.gettext("Use locale format"),
+            }).prepend(this.el_csv_locale)).appendTo(this.expander_csv);
+            this.expander_csv.append(' ');
+
             this.el_add_field_names = jQuery('<input/>', {
                 'type': 'checkbox',
                 'checked': 'checked'
             });
 
             jQuery('<div/>', {
-                'class': 'form-group'
-            }).append(jQuery('<div/>', {
                 'class': 'checkbox',
             }).append(jQuery('<label/>', {
                 'text': ' '+Sao.i18n.gettext('Add Field Names')
-            }).prepend(this.el_add_field_names))).appendTo(this.expander_csv);
+            }).prepend(this.el_add_field_names)).appendTo(this.expander_csv);
             this.expander_csv.append(' ');
         },
         view_populate: function(parent_node, parent_view) {
@@ -1801,8 +1811,30 @@
         },
         export_csv: function(fields, data) {
             var encoding = this.el_csv_encoding.val();
+            var locale_format = this.el_csv_locale.prop('checked');
             var unparse_obj = {};
-            unparse_obj.data = data;
+            unparse_obj.data = [];
+            data.forEach(function(line) {
+                var row = [];
+                line.forEach(function(val) {
+                    if (locale_format) {
+                        if (val.isDateTime) {
+                            val = val.format(
+                                Sao.common.date_format() + ' ' +
+                                Sao.common.moment_format('%X'));
+                        } else if (val.isDate) {
+                            val = val.format(Sao.common.date_format());
+                        } else if (!isNaN(Number(val))) {
+                            val = val.toLocaleString(
+                                Sao.i18n.BC47(Sao.i18n.getlang()));
+                        }
+                    } else if (typeof(val) == 'boolean') {
+                        val += 0;
+                    }
+                    row.push(val);
+                });
+                unparse_obj.data.push(row);
+            });
             if (this.el_add_field_names.is(':checked')) {
                 unparse_obj.fields = fields;
             }
