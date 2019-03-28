@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-import imp
+import importlib
 import gettext
 
 from tryton.config import get_config_dir, CURRENT_DIR
@@ -25,11 +25,11 @@ def register():
     for path in paths:
         for plugin in os.listdir(path):
             module = os.path.splitext(plugin)[0]
-            if module == '__init__' or module in imported:
+            if (module.startswith('_') or module in imported):
                 continue
+            module = 'tryton.plugins.%s' % module
             try:
-                module = imp.load_module(module, *imp.find_module(module,
-                        [path]))
+                module = importlib.import_module(module)
                 MODULES.append(module)
             except ImportError:
                 continue
