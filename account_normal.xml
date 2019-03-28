@@ -5483,7 +5483,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">642</field>
             
             <field name="type" ref="es_pyg_cargas_sociales_normal"/>
-            <field name="deferral" eval="False"/>
             <field name="party_required" eval="False"/>
         </record>
         <record id="pgc_643_normal" model="account.account.template">
