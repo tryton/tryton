@@ -27,6 +27,9 @@ class Calendar_(goocalendar.Calendar):
 
     def get_displayed_period(self):
         cal = calendar.Calendar(self.firstweekday)
+        if self.view == 'day':
+            first_date = self.selected_date
+            last_date = self.selected_date + datetime.timedelta(1)
         if self.view == 'week':
             week = goocalendar.util.my_weekdatescalendar(cal,
                 self.selected_date)

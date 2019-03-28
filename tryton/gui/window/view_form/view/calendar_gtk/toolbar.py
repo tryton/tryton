@@ -107,7 +107,15 @@ class Toolbar(Gtk.Toolbar):
         blank_widget.set_expand(True)
         self.insert(blank_widget, -1)
 
-        week_button = Gtk.RadioToolButton()
+        day_button = Gtk.RadioToolButton()
+        day_button.set_label(_('Day View'))
+        day_button.connect("clicked", self.on_day_button_clicked)
+        day_button.add_accelerator(
+            "clicked", self.accel_group, Gdk.KEY_d,
+            Gdk.ModifierType.MODIFIER_MASK, Gtk.AccelFlags.VISIBLE)
+        self.insert(day_button, -1)
+
+        week_button = Gtk.RadioToolButton.new_from_widget(day_button)
         week_button.set_label(_('Week View'))
         week_button.connect("clicked", self.on_week_button_clicked)
         week_button.add_accelerator(
@@ -124,7 +132,8 @@ class Toolbar(Gtk.Toolbar):
         self.insert(month_button, -1)
         buttons = {
             'month': month_button,
-            'week': week_button
+            'week': week_button,
+            'day': day_button,
             }
         buttons[self.goocalendar.view].set_active(True)
         self.update_displayed_date()
@@ -135,15 +144,18 @@ class Toolbar(Gtk.Toolbar):
         year = date.timetuple()[0]
         month = date.timetuple()[1]
         day = date.timetuple()[2]
+        month_label = calendar.month_name[month]
         self.current_year_label.set_text(str(year))
 
         if self.goocalendar.view == "month":
-            new_label = calendar.month_name[month]
-            self.current_page_label.set_text(new_label)
+            self.current_page_label.set_text(month_label)
         elif self.goocalendar.view == "week":
             week_number = datetime.date(year, month, day).isocalendar()[1]
             new_label = _('Week') + ' ' + str(week_number)
-            new_label += ' (' + calendar.month_name[month] + ')'
+            new_label += ' (' + month_label + ')'
+            self.current_page_label.set_text(new_label)
+        elif self.goocalendar.view == "day":
+            new_label = date.strftime('%x')
             self.current_page_label.set_text(new_label)
 
     def on_today_button_clicked(self, widget):
@@ -223,6 +235,9 @@ class Toolbar(Gtk.Toolbar):
         if day not in next_month_days:
             day = max(next_month_days)
         self.goocalendar.select(datetime.datetime(year, month, day))
+
+    def on_day_button_clicked(self, widget):
+        self.goocalendar.set_view("day")
 
     def on_week_button_clicked(self, widget):
         self.goocalendar.set_view("week")
