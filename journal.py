@@ -263,8 +263,8 @@ class JournalPeriod(
 
     def get_icon(self, name):
         return {
-            'open': 'tryton-open',
-            'close': 'tryton-close',
+            'open': 'tryton-account-open',
+            'close': 'tryton-account-close',
             }.get(self.state)
 
     @classmethod

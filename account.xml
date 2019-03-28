@@ -31,6 +31,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-account</field>
             <field name="path">icons/tryton-account.svg</field>
         </record>
+        <record model="ir.ui.icon" id="account_open_icon">
+            <field name="name">tryton-account-open</field>
+            <field name="path">icons/tryton-account-open.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="account_close_icon">
+            <field name="name">tryton-account-close</field>
+            <field name="path">icons/tryton-account-close.svg</field>
+        </record>
+        <record model="ir.ui.icon" id="account_block_icon">
+            <field name="name">tryton-account-block</field>
+            <field name="path">icons/tryton-account-block.svg</field>
+        </record>
+
         <menuitem name="Financial" id="menu_account" sequence="2" icon="tryton-account"/>
         <record model="ir.ui.menu-res.group" id="menu_account_group_account">
             <field name="menu" ref="menu_account"/>

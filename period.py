@@ -98,9 +98,9 @@ class Period(Workflow, ModelSQL, ModelView):
 
     def get_icon(self, name):
         return {
-            'open': 'tryton-open',
-            'close': 'tryton-close',
-            'locked': 'tryton-readonly',
+            'open': 'tryton-account-open',
+            'close': 'tryton-account-close',
+            'locked': 'tryton-account-block',
             }.get(self.state)
 
     @classmethod
