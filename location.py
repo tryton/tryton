@@ -297,12 +297,10 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        locations = cls.search([
-                ('code', '=', clause[2]),
-                ], order=[])
-        if locations:
-            return [('id', 'in', [l.id for l in locations])]
-        return [(cls._rec_name,) + tuple(clause[1:])]
+        return ['OR',
+            (cls._rec_name,) + tuple(clause[1:]),
+            ('code',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def get_quantity(cls, locations, name):
