@@ -6,7 +6,8 @@ attlist.calendar &=
 attlist.calendar &=
   attribute dtend { text }?
 attlist.calendar &=
-  attribute mode { "week"
+  attribute mode { "day"
+      | "week"
       | "month" }?
 attlist.calendar &=
    [ a:defaultValue = "black" ] attribute color { text }?

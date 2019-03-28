@@ -29,6 +29,7 @@
       <attribute>
         <name ns="">mode</name>
         <choice>
+          <value>day</value>
           <value>week</value>
           <value>month</value>
         </choice>
