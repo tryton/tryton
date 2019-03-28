@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
 import unittest
-from decimal import InvalidOperation
+from decimal import InvalidOperation, Decimal
 
 from trytond.model.exceptions import (
     RequiredValidationError, SelectionValidationError, ImportDataError)
@@ -53,6 +54,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Integer.import_data(['integer'],
             [['1']]), 1)
+
+        self.assertEqual(Integer.import_data(['integer'],
+            [[1]]), 1)
 
         self.assertEqual(Integer.import_data(['integer'],
             [['-1']]), 1)
@@ -117,6 +121,9 @@ class ImportDataTestCase(unittest.TestCase):
             [['1.1']]), 1)
 
         self.assertEqual(Float.import_data(['float'],
+            [[1.1]]), 1)
+
+        self.assertEqual(Float.import_data(['float'],
             [['-1.1']]), 1)
 
         self.assertEqual(Float.import_data(['float'],
@@ -177,6 +184,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Numeric.import_data(['numeric'],
             [['1.1']]), 1)
+
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [[Decimal('1.1')]]), 1)
 
         self.assertEqual(Numeric.import_data(['numeric'],
             [['-1.1']]), 1)
@@ -271,6 +281,9 @@ class ImportDataTestCase(unittest.TestCase):
             [['2010-01-01']]), 1)
 
         self.assertEqual(Date.import_data(['date'],
+            [[datetime.date(2019, 3, 13)]]), 1)
+
+        self.assertEqual(Date.import_data(['date'],
             [['']]), 1)
 
         self.assertEqual(Date.import_data(['date'],
@@ -287,6 +300,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Datetime.import_data(['datetime'],
             [['2010-01-01 12:00:00']]), 1)
+
+        self.assertEqual(Datetime.import_data(['datetime'],
+            [[datetime.datetime(2019, 3, 13, 12, 0)]]), 1)
 
         self.assertEqual(Datetime.import_data(['datetime'],
             [['']]), 1)

@@ -834,13 +834,21 @@ class ModelStorage(Model):
                     elif field_type == 'numeric':
                         res = Decimal(value) if value else None
                     elif field_type == 'date':
-                        res = (datetime.datetime.strptime(value,
-                                '%Y-%m-%d').date()
-                            if value else None)
+                        if isinstance(value, datetime.date):
+                            res = value
+                        elif value:
+                            res = datetime.datetime.strptime(
+                                value, '%Y-%m-%d').date()
+                        else:
+                            res = None
                     elif field_type == 'datetime':
-                        res = (datetime.datetime.strptime(value,
-                                '%Y-%m-%d %H:%M:%S')
-                            if value else None)
+                        if isinstance(value, datetime.datetime):
+                            res = value
+                        elif value:
+                            res = datetime.datetime.strptime(
+                                value, '%Y-%m-%d %H:%M:%S')
+                        else:
+                            res = None
                     elif field_type == 'many2one':
                         res = get_many2one(this_field_def['relation'], value)
                     elif field_type == 'many2many':
