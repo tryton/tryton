@@ -67,8 +67,10 @@
 .table-row-variant(selected, @state-info-bg);
 
 .tab-form, .tab-board {
-    nav.toolbar.affix {
-        top: @navbar-height + 1px;
+    nav.toolbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
         z-index: @zindex-navbar - 1;
     }
 

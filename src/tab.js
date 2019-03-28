@@ -190,9 +190,6 @@
                 'class': 'btn-toolbar navbar-right flip',
                 'role': 'toolbar'
             })));
-            var wrapper = jQuery('<div/>', {
-                'class': 'toolbar-wrapper'
-            }).append(toolbar);
             this.set_menu(toolbar.find('ul[role*="menu"]'));
 
             var group;
@@ -268,30 +265,7 @@
                     jQuery(this).parents('.btn-group')
                         .addClass('hidden-xs');
                 });
-            var tabs = jQuery('#tabs');
-            toolbar.affix({
-                'target': tabs.parent(),
-                'offset': {
-                    'top': function() {
-                        return jQuery('#main_navbar').height();
-                    }
-                }
-            });
-            toolbar.on('affix.bs.affix', function() {
-                wrapper.height(jQuery('#main_navbar').height());
-            });
-            toolbar.on('affix-top.bs.affix affix-bottom.bs.affix',
-                    function() {
-                        wrapper.height('');
-                    });
-            toolbar.on('affixed.bs.affix', function() {
-                Sao.Tab.affix_set_with(toolbar);
-            });
-            toolbar.on('affixed-top.bs.affix affixed-bottom.bs.affix',
-                    function() {
-                        Sao.Tab.affix_unset_width(toolbar);
-                    });
-            return wrapper;
+            return toolbar;
         },
         show: function() {
             jQuery('#tablist').find('a[href="#' + this.id + '"]').tab('show');
@@ -331,25 +305,6 @@
         compare: function(attributes) {
             return false;
         },
-    });
-
-    Sao.Tab.affix_set_with = function(toolbar) {
-        var width = jQuery(toolbar.parent()).width();
-        toolbar.css('width', width);
-    };
-    Sao.Tab.affix_unset_width = function(toolbar) {
-        toolbar.css('width', '');
-    };
-    jQuery(window).resize(function() {
-        jQuery('.toolbar').each(function(i, toolbar) {
-            toolbar = jQuery(toolbar);
-            toolbar.affix('checkPosition');
-            if (toolbar.hasClass('affix')) {
-                Sao.Tab.affix_set_with(toolbar);
-            } else {
-                Sao.Tab.affix_unset_width(toolbar);
-            }
-        });
     });
 
     Sao.Tab.counter = 0;
