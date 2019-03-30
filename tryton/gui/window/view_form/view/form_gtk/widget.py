@@ -302,6 +302,9 @@ class TranslateMixin:
         except RPCException:
             return
 
+        self.translate_dialog(languages)
+
+    def translate_dialog(self, languages):
         TranslateDialog(self, languages, self._readonly)
 
     def translate_widget(self):

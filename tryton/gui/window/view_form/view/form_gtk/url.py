@@ -1,11 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import gettext
 import webbrowser
+from urllib.parse import urljoin, urlencode
 
 from gi.repository import Gtk
 
 from .char import Char
+from .widget import Widget, TranslateMixin
 import tryton.common as common
+from tryton.config import CONFIG
+from tryton.common.common import selection
+from tryton.common.underline import set_underline
+from tryton.rpc import CONNECTION
+
+_ = gettext.gettext
 
 
 class URL(Char):
@@ -111,3 +120,49 @@ class SIP(URL):
         else:
             self.tooltips.set_tip(self.button, '')
             self.tooltips.disable()
+
+
+class HTML(Widget, TranslateMixin):
+    "HTML"
+
+    def __init__(self, view, attrs):
+        super().__init__(view, attrs)
+        self.widget = Gtk.HBox()
+        self.mnemonic_widget = self.button = Gtk.LinkButton()
+        self.button.set_label(set_underline(attrs['string']))
+        self.button.set_use_underline(True)
+        self.button.set_alignment(0, 0.5)
+        self.widget.pack_start(
+            self.button, expand=False, fill=False, padding=0)
+
+        if attrs.get('translate'):
+            self.widget.pack_start(
+                self.translate_button(), expand=False, fill=False, padding=0)
+
+    def uri(self, language=None):
+        if not self.record or self.record.id < 0:
+            uri = ''
+        else:
+            path = ['ir/html', self.model_name, str(self.record.id),
+                self.field_name]
+            params = {
+                'language': language or CONFIG['client.lang'],
+                'title': CONFIG['client.title'],
+                }
+            uri = urljoin(
+                CONNECTION.url + '/', '/'.join(path) + '?' + urlencode(params))
+        return uri
+
+    def display(self):
+        super().display()
+        self.button.set_uri(self.uri())
+
+    def _readonly_set(self, value):
+        super()._readonly_set(value)
+        self.button.set_sensitive(not value)
+
+    def translate_dialog(self, languages):
+        languages = {l['name']: l['code'] for l in languages}
+        result = selection(_('Choose a language'), languages)
+        if result:
+            webbrowser.open(self.uri(language=result[1]), new=2)

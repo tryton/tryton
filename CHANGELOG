@@ -1,3 +1,4 @@
+* Support HTML widget
 * Use locale format for data import and export
 * Add day view on calendar
 * Add CSV exports into print toolbar

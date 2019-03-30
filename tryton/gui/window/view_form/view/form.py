@@ -25,7 +25,7 @@ from .form_gtk.textbox import TextBox
 from .form_gtk.one2many import One2Many
 from .form_gtk.many2many import Many2Many
 from .form_gtk.many2one import Many2One
-from .form_gtk.url import Email, URL, CallTo, SIP
+from .form_gtk.url import Email, URL, CallTo, SIP, HTML
 from .form_gtk.image import Image as Image2
 from .form_gtk.progressbar import ProgressBar
 from .form_gtk.one2one import One2One
@@ -158,6 +158,7 @@ class FormXMLViewParser(XMLViewParser):
         'dict': DictWidget,
         'email': Email,
         'float': Float,
+        'html': HTML,
         'image': Image2,
         'integer': Integer,
         'many2many': Many2Many,
