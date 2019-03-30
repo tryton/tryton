@@ -74,7 +74,8 @@ setup(name=name,
     package_data={
         'trytond.modules.marketing_automation': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt',
-                'icons/*.svg', 'tests/*.rst', '*.html', '*.gif']),
+                'icons/*.svg', '*.html', '*.gif', 'tests/*.rst',
+                'tests/*.html']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
