@@ -514,9 +514,9 @@ class Activity(ModelSQL, ModelView):
 
         def unsubscribe(redirect):
             parts = urlsplit(urljoin(
-                    URL_BASE, quote(b'/m/%(database)s/unsubscribe' % {
-                            b'database': Base64Converter(None).to_url(
-                                Transaction().database.name),
+                    URL_BASE, quote('/m/%(database)s/unsubscribe' % {
+                            'database': Base64Converter(None).to_url(
+                                Transaction().database.name).decode('utf-8'),
                             })))
             query = parse_qsl(parts.query)
             query.append(('r', record.uuid))
