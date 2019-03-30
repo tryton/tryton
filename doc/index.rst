@@ -29,5 +29,5 @@ The web_shortener modules uses the parameter from the section:
 
 - `[web]`:
 
-    - `shortner_base`: The base URL without path for shortened URL.
+    - `shortener_base`: The base URL without path for shortened URL.
       The default value is composed with the configuration `[web]` `hostname`.

@@ -17,7 +17,7 @@ from trytond.wsgi import Base64Converter
 
 USE_SSL = bool(config.get('ssl', 'certificate'))
 ALPHABET = string.digits + string.ascii_lowercase
-URL_BASE = config.get('web', 'shortner_base',
+URL_BASE = config.get('web', 'shortener_base',
     default=urlunsplit(
         ('http' + ('s' if USE_SSL else ''), HOSTNAME, '', '', '')))
 logger = logging.getLogger(__name__)
