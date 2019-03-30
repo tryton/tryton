@@ -15,12 +15,12 @@ Prerequisites
     * Genshi (http://genshi.edgewall.org/)
     * python-dateutil (http://labix.org/python-dateutil)
     * polib (https://bitbucket.org/izi/polib/wiki/Home)
-    * python-sql 0.5 or later (http://code.google.com/p/python-sql/)
+    * python-sql 0.5 or later (https://pypi.org/project/python-sql/)
     * passlib (https://bitbucket.org/ecollins/passlib)
     * Optional: psycopg 2.5.0 or later (http://www.initd.org/)
     * Optional: psycopg2cffi 2.5.0 or later
       (http://github.com/chtd/psycopg2cffi)
-    * Optional: pydot (http://code.google.com/p/pydot/)
+    * Optional: pydot (https://github.com/pydot/pydot)
     * Optional: sphinx (http://sphinx.pocoo.org/)
     * Optional: python-Levenshtein
       (http://github.com/miohtama/python-Levenshtein)
