@@ -30,7 +30,7 @@ Modules
     :ref:`EDocument <index-edocument>`
         Electronic document format.
 
-    :ref:`Marketing <index-marking>`
+    :ref:`Marketing <index-marketing>`
         Communicates with your customers.
 
     :ref:`Production <index-production>`
