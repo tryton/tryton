@@ -234,7 +234,9 @@ class AEAT303(AEATReport):
     def get_context(cls, records, data):
         pool = Pool()
         Period = pool.get('account.period')
+        Account = pool.get('account.account')
         TaxCodeLine = pool.get('account.tax.code.line')
+        transaction = Transaction()
         context = super().get_context(records, data)
         amounts = context['amounts']
 
@@ -261,12 +263,29 @@ class AEAT303(AEATReport):
             code = str(int(line.code.code) - 1).rjust(2, '0')
             amounts[code] = float(line.tax.rate * Decimal(100))
 
-        for code in ['46', '64', '66', '69', '71', '88']:
+        amount_to_compensate = Decimal(0)
+        fiscalyear = periods[0].fiscalyear
+        start_periods = Period.search([
+                ('fiscalyear', '=', fiscalyear.id),
+                ('end_date', '<=', start_date),
+                ])
+        with transaction.set_context({
+                    'fiscalyear': fiscalyear.id,
+                    'periods': [p.id for p in start_periods],
+                    }):
+            for account in Account.search([
+                        ('company', '=', fiscalyear.company.id),
+                        ('code', 'like', '4700%'),
+                        ]):
+                amount_to_compensate += account.balance
+
+        for code in ['46', '64', '66', '67', '69', '71', '88']:
             assert code not in amounts, (
                 "computed code %s already defined" % code)
         amounts['46'] = amounts['27'] - amounts['45']
         amounts['64'] = amounts['46'] + amounts['58'] + amounts['76']
         amounts['66'] = amounts['64'] * Decimal(amounts['65']) / Decimal(100.0)
+        amounts['67'] = amount_to_compensate
         amounts['69'] = (amounts['66'] + amounts['77'] - amounts['67']
             + amounts['68'])
         amounts['71'] = (amounts['69'] - amounts['70'])
