@@ -39,13 +39,13 @@ class ShortenedURL(ModelSQL, ModelView):
         urls = {}
 
         url_parts = {
-            b'database': Base64Converter(None).to_url(
-                Transaction().database.name),
+            'database': Base64Converter(None).to_url(
+                Transaction().database.name).decode('utf-8'),
             }
         for shortened in shortened_urls:
-            url_parts[b'short_id'] = cls._shorten(shortened.id).encode('utf-8')
+            url_parts['short_id'] = cls._shorten(shortened.id)
             urls[shortened.id] = urljoin(
-                URL_BASE, quote(b'/s/%(database)s$%(short_id)s' % url_parts))
+                URL_BASE, quote('/s/%(database)s$%(short_id)s' % url_parts))
         return urls
 
     @classmethod
