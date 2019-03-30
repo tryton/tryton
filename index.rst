@@ -30,6 +30,9 @@ Modules
     :ref:`EDocument <index-edocument>`
         Electronic document format.
 
+    :ref:`Marketing <index-marking>`
+        Communicates with your customers.
+
     :ref:`Production <index-production>`
         Transforms raw materials into finished products.
 
@@ -89,5 +92,5 @@ Modules
     `User Role </projects/modules-user-role/en/latest>`_
         Manage user groups with roles.
 
-    `Web User </projects/modules-web-user/en/latest>`_
-        Manages external users.
+    :ref:`Web <index-web>`
+        Manage web features.
