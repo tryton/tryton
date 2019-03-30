@@ -6,7 +6,7 @@ Prerequisites
 
  * Python 3.4 or later (http://www.python.org/)
  * trytond (http://www.tryton.org/)
- * python-sql 0.4 or later (http://code.google.com/p/python-sql/)
+ * python-sql 0.4 or later (https://pypi.org/project/python-sql/)
  * trytond_company (http://www.tryton.org/)
  * trytond_party (http://www.tryton.org/)
  * trytond_stock (http://www.tryton.org/)
