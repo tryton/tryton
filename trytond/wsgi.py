@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import base64
 import http.client
 import logging
 import os
@@ -12,7 +13,7 @@ except ImportError:
     from http import client as HTTPStatus
 
 from werkzeug.wrappers import Response
-from werkzeug.routing import Map, Rule
+from werkzeug.routing import Map, Rule, BaseConverter
 from werkzeug.exceptions import abort, HTTPException, InternalServerError
 from werkzeug.contrib.fixers import ProxyFix
 from werkzeug.wsgi import SharedDataMiddleware
@@ -29,10 +30,21 @@ __all__ = ['TrytondWSGI', 'app']
 logger = logging.getLogger(__name__)
 
 
+class Base64Converter(BaseConverter):
+
+    def to_python(self, value):
+        return base64.urlsafe_b64decode(value).decode('utf-8')
+
+    def to_url(self, value):
+        return base64.urlsafe_b64encode(value.encode('utf-8'))
+
+
 class TrytondWSGI(object):
 
     def __init__(self):
-        self.url_map = Map([])
+        self.url_map = Map([], converters={
+                'base64': Base64Converter,
+                })
         self.protocols = [JSONProtocol, XMLProtocol]
         self.error_handlers = []
 

@@ -22,6 +22,13 @@ Example::
 
 .. _Rule Format: http://werkzeug.pocoo.org/docs/latest/routing/#rule-format
 
+The following converter is added by Tryton:
+
+    - `base64`: This converter accepts any Base64_ string and transforms it
+      into its corresponding bytes value.
+
+.. _Base64: https://en.wikipedia.org/wiki/Base64
+
 Tryton also provides some wrappers in `trytond.protocols.wrappers` to ease the
 creation of such route.
 

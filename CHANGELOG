@@ -1,3 +1,4 @@
+* Add base64 converter to URL map
 * Add HTML widget
 * Support import of native numeric, date and datetime data
 * Add day view on calendar
