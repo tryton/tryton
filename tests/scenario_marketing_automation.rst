@@ -131,7 +131,7 @@ Check email sent::
     1
     >>> from_, to, msg = smtp_calls.call_args[0]
     >>> smtp_calls.reset_mock()
-    >>> msg = msg.get_payload(1).get_payload(decode=True).decode('utf-8')
+    >>> msg = msg.get_payload(0).get_payload(decode=True).decode('utf-8')
     >>> to == [contact.value]
     True
     >>> re.search(r'Hello, (.*)!', msg).group(1) == party.name
