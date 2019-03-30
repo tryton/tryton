@@ -1150,6 +1150,10 @@ function eval_pyson(value){
         if (!this.translate) {
             this.translate = Sao.View.Form.TranslateMixin.translate.bind(this);
         }
+        if (!this.translate_dialog) {
+            this.translate_dialog =
+                Sao.View.Form.TranslateMixin.translate_dialog.bind(this);
+        }
         if (!this.translate_widget_set_readonly) {
             this.translate_widget_set_readonly =
                 Sao.View.Form.TranslateMixin.translate_widget_set_readonly
@@ -1194,9 +1198,12 @@ function eval_pyson(value){
                 'params': params.concat({})
             };
             Sao.rpc(args, session).then(function(languages) {
-                var dialog = new Sao.View.Form.TranslateDialog(languages, this);
+                this.translate_dialog(languages);
             }.bind(this));
         }.bind(this));
+    };
+    Sao.View.Form.TranslateMixin.translate_dialog = function(languages) {
+        new Sao.View.Form.TranslateDialog(languages, this);
     };
     Sao.View.Form.TranslateMixin.translate_widget_set_readonly =
             function(el, value) {
@@ -3786,6 +3793,60 @@ function eval_pyson(value){
         }
     });
 
+    Sao.View.Form.HTML = Sao.class_(Sao.View.Form.Widget, {
+        class_: 'form-html',
+        init: function(view, attributes) {
+            Sao.View.Form.HTML._super.init.call(this, view, attributes);
+            Sao.View.Form.TranslateMixin.init.call(this);
+            this.el = jQuery('<div/>', {
+                'class': this.class_,
+            });
+            this.button = jQuery('<a/>', {
+                'class': 'btn btn-lnk',
+                'target': '_blank',
+            }).text(attributes.string).appendTo(this.el);
+            if (attributes.translate) {
+                var button = jQuery('<button/>', {
+                    'class': 'btn btn-default btn-sm',
+                    'type': 'button',
+                    'aria-label': Sao.i18n.gettext('Translate'),
+                }).appendTo(this.el);
+                button.append(
+                    Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
+                button.click(this.translate.bind(this));
+            }
+        },
+        uri: function(language) {
+            var record = this.record,
+                uri;
+            if (!record || (record.id < 0)) {
+                uri = '';
+            } else {
+                uri = '/' + record.model.session.database +
+                    '/ir/html/' + record.model.name + '/' + record.id + '/' +
+                    this.field_name;
+                uri += '?language=' + encodeURIComponent(
+                    language || Sao.i18n.getlang());
+                uri += '&title=' + encodeURIComponent(Sao.config.title);
+            }
+            return uri;
+        },
+        display: function() {
+            Sao.View.Form.HTML._super.display.call(this);
+            this.button.attr('href', this.uri());
+        },
+        translate_dialog: function(languages) {
+            var options = {};
+            languages.forEach(function(language) {
+                options[language.name] = language.code;
+            });
+            Sao.common.selection(Sao.i18n.gettext("Choose a language"), options)
+            .done(function(language) {
+                window.open(this.uri(language), '_blank');
+            }.bind(this));
+        },
+    });
+
     Sao.View.Form.ProgressBar = Sao.class_(Sao.View.Form.Widget, {
         class_: 'form-char',
         init: function(view, attributes) {
@@ -4413,6 +4474,7 @@ function eval_pyson(value){
         'dict': Sao.View.Form.Dict,
         'email': Sao.View.Form.Email,
         'float': Sao.View.Form.Float,
+        'html': Sao.View.Form.HTML,
         'image': Sao.View.Form.Image,
         'integer': Sao.View.Form.Integer,
         'many2many': Sao.View.Form.Many2Many,
