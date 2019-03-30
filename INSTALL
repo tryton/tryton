@@ -6,7 +6,7 @@ Prerequisites
 
  * Python 3.4 or later (http://www.python.org/)
  * python-dateutil (http://labix.org/python-dateutil)
- * python-sql (http://code.google.com/p/python-sql/)
+ * python-sql (https://pypi.org/project/python-sql/)
  * simpleeval (https://github.com/danthedeckie/simpleeval)
  * trytond (http://www.tryton.org/)
  * trytond_company (http://www.tryton.org/)
