@@ -1,7 +1,7 @@
 Marketing Automation Module
 ###########################
 
-The marketing_automation module allows marketing actions to automated. It is
+The marketing_automation module allows marketing actions to be automated. It is
 based on scenarios and activities that are executed on selected records.
 
 Scenario
