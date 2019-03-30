@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name" colspan="3"/>
+
+    <label name="model"/>
+    <field name="model"/>
+    <label name="domain"/>
+    <field name="domain" widget="pyson"/>
+
+    <field name="activities" colspan="4" view_ids="marketing_automation.activity_view_list"/>
+
+    <label name="state"/>
+    <field name="state"/>
+    <group id="buttons" col="-1" colspan="2">
+        <button name="draft" icon="tryton-undo"/>
+        <button name="run" icon="tryton-forward"/>
+        <button name="stop" icon="tryton-cancel"/>
+    </group>
+</form>
